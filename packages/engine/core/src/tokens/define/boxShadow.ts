@@ -2,7 +2,7 @@ import {
     NamespacedKey,
     TokenValue,
     Variable,
-    DefineOptions,
+    VariablesOptions,
     NamespaceType,
     NamespacedMap
 } from '../../types';
@@ -28,7 +28,7 @@ export type OutputMapBoxShadow<Namespace extends NamespaceType> = NamespacedMap<
 export function defineBoxShadow<Namespace extends NamespaceType>(
     ns: Namespace,
     value: SourceMapBoxShadow,
-    options?: DefineOptions
+    options: VariablesOptions
 ): OutputMapBoxShadow<Namespace> {
     const boxShadowOffsetX = nsvariable(ns, 'box-shadow-offset-x', 0, options);
     const boxShadowOffsetY = nsvariable(ns, 'box-shadow-offset-y', 0, options);
@@ -47,7 +47,7 @@ export function defineBoxShadow<Namespace extends NamespaceType>(
         ],
         {
             ...options,
-            register: options?.registerComposed ?? true
+            register: options.registerComposed ?? true
         }
     );
 

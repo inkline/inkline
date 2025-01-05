@@ -1,14 +1,21 @@
 import { nsvariables } from '../tokens';
 import { replaceExportsNamespace } from './replaceExportsNamespace';
+import { createContext } from '../context';
+
+const options = { context: createContext() };
 
 describe('replaceExportsNamespace', () => {
     it('should replace string namespace with string namespace in keys correctly', () => {
         const ns = 'old';
         const newns = 'new';
-        const values = nsvariables(ns, {
-            fontSize: '16px',
-            custom: 'red'
-        });
+        const values = nsvariables(
+            ns,
+            {
+                fontSize: '16px',
+                custom: 'red'
+            },
+            options
+        );
 
         const result = replaceExportsNamespace(values, ns, newns);
 
@@ -21,10 +28,14 @@ describe('replaceExportsNamespace', () => {
     it('should replace string namespace with array namespace in keys correctly', () => {
         const ns = 'old';
         const newns = ['new', 'other'] as const;
-        const values = nsvariables(ns, {
-            fontSize: '16px',
-            custom: 'red'
-        });
+        const values = nsvariables(
+            ns,
+            {
+                fontSize: '16px',
+                custom: 'red'
+            },
+            options
+        );
 
         const result = replaceExportsNamespace(values, ns, newns);
 
@@ -37,10 +48,14 @@ describe('replaceExportsNamespace', () => {
     it('should replace array namespace with string namespace in keys correctly', () => {
         const ns = ['old', 'nested'] as const;
         const newns = 'new';
-        const values = nsvariables(ns, {
-            fontSize: '16px',
-            custom: 'red'
-        });
+        const values = nsvariables(
+            ns,
+            {
+                fontSize: '16px',
+                custom: 'red'
+            },
+            options
+        );
 
         const result = replaceExportsNamespace(values, ns, newns);
 
@@ -53,10 +68,14 @@ describe('replaceExportsNamespace', () => {
     it('should replace array namespace with array namespace in keys correctly', () => {
         const ns = ['old', 'nested'] as const;
         const newns = ['new', 'other'] as const;
-        const values = nsvariables(ns, {
-            fontSize: '16px',
-            custom: 'red'
-        });
+        const values = nsvariables(
+            ns,
+            {
+                fontSize: '16px',
+                custom: 'red'
+            },
+            options
+        );
 
         const result = replaceExportsNamespace(values, ns, newns);
 
@@ -69,10 +88,14 @@ describe('replaceExportsNamespace', () => {
     it('should replace namespace with empty string correctly', () => {
         const ns = 'old';
         const newns = '';
-        const values = nsvariables(ns, {
-            fontSize: '16px',
-            custom: 'red'
-        });
+        const values = nsvariables(
+            ns,
+            {
+                fontSize: '16px',
+                custom: 'red'
+            },
+            options
+        );
 
         const result = replaceExportsNamespace(values, ns, newns);
 
@@ -85,10 +108,14 @@ describe('replaceExportsNamespace', () => {
     it('should replace empty string with namespace correctly', () => {
         const ns = '';
         const newns = 'new';
-        const values = nsvariables(ns, {
-            fontSize: '16px',
-            custom: 'red'
-        });
+        const values = nsvariables(
+            ns,
+            {
+                fontSize: '16px',
+                custom: 'red'
+            },
+            options
+        );
 
         const result = replaceExportsNamespace(values, ns, newns);
 

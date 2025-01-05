@@ -3,8 +3,8 @@ import {
     AtRules,
     AtRuleValue,
     ComponentValue,
-    DefinitionOptions,
     Selector,
+    SelectorOptions,
     TokenType
 } from '../types';
 import { nanoid } from 'nanoid';
@@ -23,7 +23,7 @@ export function atRule(
     name: AtRules,
     identifier: string,
     value: AtRuleValue,
-    options?: DefinitionOptions
+    options: SelectorOptions
 ): AtRule {
     const instance: AtRule = {
         __id: nanoid(),
@@ -51,11 +51,7 @@ export function atRule(
  * Media queries can be used to store one or more selectors.
  * Media queries automatically get added to the theme when created.
  */
-export function media(
-    identifier: string,
-    value: Selector | Selector[],
-    options?: DefinitionOptions
-) {
+export function media(identifier: string, value: Selector | Selector[], options: SelectorOptions) {
     return atRule('media', identifier, value, options);
 }
 
@@ -69,8 +65,10 @@ export function media(
 export function keyframes(
     identifier: string,
     value: Record<string, ComponentValue>,
-    options?: DefinitionOptions
+    options: SelectorOptions
 ) {
-    const keyframesValue = Object.entries(value).map(([key, value]) => selector(key, value));
+    const keyframesValue = Object.entries(value).map(([key, value]) =>
+        selector(key, value, options)
+    );
     return atRule('keyframes', identifier, keyframesValue, options);
 }

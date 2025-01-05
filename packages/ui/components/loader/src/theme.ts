@@ -21,8 +21,8 @@ const defaultLoaderSizes = ['sm', 'md', 'lg'] as const;
 type LoaderColorVariant = (typeof defaultLoaderColors)[number];
 type LoaderSizeVariant = (typeof defaultLoaderSizes)[number];
 
-export function useLoaderThemeVariables(options = defaultDefinitionOptions) {
-    const { colorPrimary } = useBrandColors();
+export function useLoaderThemeVariables(options: DefinitionOptions) {
+    const { colorPrimary } = useBrandColors(options);
 
     return {
         ...nsvariables(
@@ -42,8 +42,8 @@ export function useLoaderThemeVariables(options = defaultDefinitionOptions) {
     };
 }
 
-export function useLoaderThemeLayout() {
-    const { loaderWidth, loaderHeight } = useLoaderThemeVariables();
+export function useLoaderThemeLayout(options: DefinitionOptions) {
+    const { loaderWidth, loaderHeight } = useLoaderThemeVariables(options);
 
     selector('.loader', {
         display: 'inline-block',
@@ -78,13 +78,13 @@ export function useLoaderThemeLayout() {
     });
 }
 
-export function useLoaderThemeBase() {
+export function useLoaderThemeBase(options: DefinitionOptions) {
     const {
         loaderAnimationDirection,
         loaderAnimationIterationCount,
         loaderAnimationDuration,
         loaderColor
-    } = useLoaderThemeVariables();
+    } = useLoaderThemeVariables(options);
 
     selector('.loader > svg', {
         animationName: 'loader-rotate',
@@ -128,8 +128,8 @@ export function useLoaderThemeBase() {
 }
 
 export function useLoaderThemeSizeFactory(variant: LoaderSizeVariant) {
-    const { loaderWidth, loaderHeight } = useLoaderThemeVariables();
-    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
+    const { loaderWidth, loaderHeight } = useLoaderThemeVariables(options);
+    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
     const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
     const sizeNs = [ns, variant] as const;
 
@@ -147,13 +147,13 @@ export function useLoaderThemeSizeFactory(variant: LoaderSizeVariant) {
 }
 
 export function useLoaderThemeSizes(sizes = defaultLoaderSizes) {
-    sizes.forEach(useLoaderThemeSizeFactory);
+    sizes.forEach((size) => useLoaderThemeSizeFactory(size, options));
 }
 
 export function useLoaderThemeColorFactory(variant: LoaderColorVariant) {
     const invertedColor = variant === 'light' ? 'dark' : variant === 'dark' ? 'light' : variant;
     const colorKey = capitalize(invertedColor);
-    const brandColors = useBrandColors();
+    const brandColors = useBrandColors(options);
     const colorNs = [ns, variant] as const;
 
     const { color } = stripExportsNamespace(
@@ -168,12 +168,12 @@ export function useLoaderThemeColorFactory(variant: LoaderColorVariant) {
 }
 
 export function useLoaderThemeColors(colors = defaultLoaderColors) {
-    colors.forEach(useLoaderThemeColorFactory);
+    colors.forEach((color) => useLoaderThemeColorFactory(color, options));
 }
 
-export function useLoaderTheme() {
-    useLoaderThemeLayout();
-    useLoaderThemeBase();
-    useLoaderThemeSizes();
-    useLoaderThemeColors();
+export function useLoaderTheme(options: DefinitionOptions) {
+    useLoaderThemeLayout(options);
+    useLoaderThemeBase(options);
+    useLoaderThemeSizes(options);
+    useLoaderThemeColors(options);
 }

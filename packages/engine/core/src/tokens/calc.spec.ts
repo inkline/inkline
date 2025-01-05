@@ -2,10 +2,13 @@ import { variable } from './variable';
 import { add, calc, divide, multiply, subtract } from './calc';
 import { ref } from './ref';
 import { TokenType } from '../types';
+import { createContext } from '../context';
+
+const options = { context: createContext() };
 
 describe('calc', () => {
-    const a = variable('a', 10);
-    const b = variable('b', 5);
+    const a = variable('a', 10, options);
+    const b = variable('b', 5, options);
 
     it('should create a calc token with references and operations', () => {
         const calcInstance = calc(ref(a), '+', ref(b));

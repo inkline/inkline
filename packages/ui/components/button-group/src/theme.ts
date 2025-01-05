@@ -7,14 +7,16 @@ const ns = 'button-group';
  * Config
  */
 
-export function useButtonGroupThemeConfig() {
+export function useButtonGroupThemeConfig(options: DefinitionOptions
+)
+{
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
         boxShadowBlurRadius,
         boxShadowSpreadRadius,
         boxShadowColor
-    } = useBoxShadow();
+    } = useBoxShadow(options);
 
     return {
         boxShadow: {
@@ -31,8 +33,8 @@ export function useButtonGroupThemeConfig() {
  * Variables
  */
 
-export function useButtonGroupThemeVariables(options = defaultDefinitionOptions) {
-    return nsvariables(ns, useButtonGroupThemeConfig(), {
+export function useButtonGroupThemeVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useButtonGroupThemeConfig(options), {
         ...options,
         registerComposed: false
     });
@@ -42,7 +44,9 @@ export function useButtonGroupThemeVariables(options = defaultDefinitionOptions)
  * Selectors
  */
 
-export function useButtonGroupThemeLayoutSelectors() {
+export function useButtonGroupThemeLayoutSelectors(options: DefinitionOptions
+)
+{
     selector('.button-group', {
         position: 'relative',
         display: 'inline-flex',
@@ -139,8 +143,10 @@ export function useButtonGroupThemeLayoutSelectors() {
     );
 }
 
-export function useButtonGroupThemeBaseSelectors() {
-    const { buttonGroupBoxShadow } = useButtonGroupThemeVariables();
+export function useButtonGroupThemeBaseSelectors(options: DefinitionOptions
+)
+{
+    const { buttonGroupBoxShadow } = useButtonGroupThemeVariables(options);
 
     selector('.button-group', {
         boxShadow: vref(buttonGroupBoxShadow)
@@ -151,8 +157,10 @@ export function useButtonGroupThemeBaseSelectors() {
  * Composables
  */
 
-export function useButtonGroupTheme() {
-    useButtonGroupThemeVariables();
-    useButtonGroupThemeLayoutSelectors();
-    useButtonGroupThemeBaseSelectors();
+export function useButtonGroupTheme(options: DefinitionOptions
+)
+{
+    useButtonGroupThemeVariables(options);
+    useButtonGroupThemeLayoutSelectors(options);
+    useButtonGroupThemeBaseSelectors(options);
 }

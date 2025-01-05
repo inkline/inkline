@@ -32,7 +32,7 @@ const defaultPopoverSizes = ['sm', 'md', 'lg'] as const;
 type PopoverColorVariant = (typeof defaultPopoverColors)[number];
 type PopoverSizeVariant = (typeof defaultPopoverSizes)[number];
 
-export function usePopoverThemeVariables(options = defaultDefinitionOptions) {
+export function usePopoverThemeVariables(options: DefinitionOptions) {
     const {
         borderTopStyle,
         borderTopWidth,
@@ -42,26 +42,27 @@ export function usePopoverThemeVariables(options = defaultDefinitionOptions) {
         borderBottomWidth,
         borderLeftStyle,
         borderLeftWidth
-    } = useBorder();
-    const { colorLightShade50 } = useBrandColorVariants();
-    const { spacing } = useSpacing();
+    } = useBorder(options);
+    const { colorLightShade50 } = useBrandColorVariants(options);
+    const { spacing } = useSpacing(options);
     const {
         borderTopLeftRadius,
         borderTopRightRadius,
         borderBottomRightRadius,
         borderBottomLeftRadius
-    } = useBorderRadius();
+    } = useBorderRadius(options);
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
         boxShadowBlurRadius,
         boxShadowSpreadRadius,
         boxShadowColor
-    } = useBoxShadow();
-    const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors();
-    const { contrastTextColorLight } = useContrastTextColor();
-    const { fontSize } = useFontSize();
-    const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
+    } = useBoxShadow(options);
+    const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors(options);
+    const { contrastTextColorLight } = useContrastTextColor(options);
+    const { fontSize } = useFontSize(options);
+    const { transitionProperty, transitionDuration, transitionTimingFunction } =
+        useTransition(options);
 
     return {
         ...nsvariables(
@@ -137,8 +138,8 @@ export function usePopoverThemeVariables(options = defaultDefinitionOptions) {
     };
 }
 
-export function usePopoverThemeLayout() {
-    const { popoverZIndex, popoverWidth, popoverMaxWidth } = usePopoverThemeVariables();
+export function usePopoverThemeLayout(options: DefinitionOptions) {
+    const { popoverZIndex, popoverWidth, popoverMaxWidth } = usePopoverThemeVariables(options);
 
     selector('.popover', {
         position: 'absolute',
@@ -231,7 +232,7 @@ export function usePopoverThemeLayout() {
     );
 }
 
-export function usePopoverThemeBase() {
+export function usePopoverThemeBase(options: DefinitionOptions) {
     const {
         popoverBorderStyle,
         popoverBorderColor,
@@ -249,7 +250,7 @@ export function usePopoverThemeBase() {
         popoverTransitionDuration,
         popoverTransitionTimingFunction,
         popoverArrowSize
-    } = usePopoverThemeVariables();
+    } = usePopoverThemeVariables(options);
 
     selector('.popover', {
         boxShadow: ref(popoverBoxShadow),
@@ -343,8 +344,8 @@ export function usePopoverThemeSizeFactory(variant: PopoverSizeVariant) {
         popoverBorderBottomRightRadius,
         popoverBorderBottomLeftRadius,
         popoverFontSize
-    } = usePopoverThemeVariables();
-    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
+    } = usePopoverThemeVariables(options);
+    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
     const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
     const sizeNs = [ns, variant] as const;
 
@@ -410,7 +411,7 @@ export function usePopoverThemeSizeFactory(variant: PopoverSizeVariant) {
 }
 
 export function usePopoverThemeSizes(sizes = defaultPopoverSizes) {
-    sizes.forEach(usePopoverThemeSizeFactory);
+    sizes.forEach((size) => usePopoverThemeSizeFactory(size, options));
 }
 
 export function usePopoverThemeColorFactory(variant: PopoverColorVariant) {
@@ -418,8 +419,8 @@ export function usePopoverThemeColorFactory(variant: PopoverColorVariant) {
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
 
-    const colors = useColors();
-    const contrastTextColors = useContrastTextColor();
+    const colors = useColors(options);
+    const contrastTextColors = useContrastTextColor(options);
 
     const { borderColor, background, color } = stripExportsNamespace(
         nsvariables(colorNs, {
@@ -476,13 +477,13 @@ export function usePopoverThemeColorFactory(variant: PopoverColorVariant) {
 }
 
 export function usePopoverThemeColors(colors = defaultPopoverColors) {
-    colors.forEach(usePopoverThemeColorFactory);
+    colors.forEach((color) => usePopoverThemeColorFactory(color, options));
 }
 
-export function usePopoverTheme() {
-    usePopoverThemeVariables();
-    usePopoverThemeLayout();
-    usePopoverThemeBase();
-    usePopoverThemeSizes();
-    usePopoverThemeColors();
+export function usePopoverTheme(options: DefinitionOptions) {
+    usePopoverThemeVariables(options);
+    usePopoverThemeLayout(options);
+    usePopoverThemeBase(options);
+    usePopoverThemeSizes(options);
+    usePopoverThemeColors(options);
 }

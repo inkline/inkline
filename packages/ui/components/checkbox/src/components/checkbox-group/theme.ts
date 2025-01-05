@@ -1,6 +1,8 @@
 import { selector } from '@inkline/core';
 
-export function useCheckboxGroupTheme() {
+export function useCheckboxGroupTheme(options: DefinitionOptions
+)
+{
     selector('.checkbox-group', {
         display: 'flex',
         flexDirection: 'column'

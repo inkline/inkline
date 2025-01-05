@@ -1,29 +1,49 @@
 import { defineBorderRadius } from './borderRadius';
 import { nsvariable } from '../variable';
 import { ref } from '../ref';
+import { createContext } from '../../context';
+
+const options = { context: createContext() };
 
 describe('defineBorderRadius', () => {
     it('should create default border radius variables when no value is provided', () => {
-        const result = defineBorderRadius('namespace', '');
+        const result = defineBorderRadius('namespace', '', options);
         expect(result).toEqual({
-            namespaceBorderTopLeftRadius: nsvariable('namespace', 'border-top-left-radius', 0),
-            namespaceBorderTopRightRadius: nsvariable('namespace', 'border-top-right-radius', 0),
+            namespaceBorderTopLeftRadius: nsvariable(
+                'namespace',
+                'border-top-left-radius',
+                0,
+                options
+            ),
+            namespaceBorderTopRightRadius: nsvariable(
+                'namespace',
+                'border-top-right-radius',
+                0,
+                options
+            ),
             namespaceBorderBottomRightRadius: nsvariable(
                 'namespace',
                 'border-bottom-right-radius',
-                0
+                0,
+                options
             ),
             namespaceBorderBottomLeftRadius: nsvariable(
                 'namespace',
                 'border-bottom-left-radius',
-                0
+                0,
+                options
             ),
-            namespaceBorderRadius: nsvariable('namespace', 'border-radius', [
-                ref(nsvariable('namespace', 'border-top-left-radius', 0)),
-                ref(nsvariable('namespace', 'border-top-right-radius', 0)),
-                ref(nsvariable('namespace', 'border-bottom-right-radius', 0)),
-                ref(nsvariable('namespace', 'border-bottom-left-radius', 0))
-            ])
+            namespaceBorderRadius: nsvariable(
+                'namespace',
+                'border-radius',
+                [
+                    ref(nsvariable('namespace', 'border-top-left-radius', 0, options)),
+                    ref(nsvariable('namespace', 'border-top-right-radius', 0, options)),
+                    ref(nsvariable('namespace', 'border-bottom-right-radius', 0, options)),
+                    ref(nsvariable('namespace', 'border-bottom-left-radius', 0, options))
+                ],
+                options
+            )
         });
     });
 
@@ -34,64 +54,90 @@ describe('defineBorderRadius', () => {
             bottomRight: '30px',
             bottomLeft: '40px'
         };
-        const result = defineBorderRadius('namespace', value);
+        const result = defineBorderRadius('namespace', value, options);
         expect(result).toEqual({
-            namespaceBorderTopLeftRadius: nsvariable('namespace', 'border-top-left-radius', '10px'),
+            namespaceBorderTopLeftRadius: nsvariable(
+                'namespace',
+                'border-top-left-radius',
+                '10px',
+                options
+            ),
             namespaceBorderTopRightRadius: nsvariable(
                 'namespace',
                 'border-top-right-radius',
-                '20px'
+                '20px',
+                options
             ),
             namespaceBorderBottomRightRadius: nsvariable(
                 'namespace',
                 'border-bottom-right-radius',
-                '30px'
+                '30px',
+                options
             ),
             namespaceBorderBottomLeftRadius: nsvariable(
                 'namespace',
                 'border-bottom-left-radius',
-                '40px'
+                '40px',
+                options
             ),
-            namespaceBorderRadius: nsvariable('namespace', 'border-radius', [
-                ref(nsvariable('namespace', 'border-top-left-radius', '10px')),
-                ref(nsvariable('namespace', 'border-top-right-radius', '20px')),
-                ref(nsvariable('namespace', 'border-bottom-right-radius', '30px')),
-                ref(nsvariable('namespace', 'border-bottom-left-radius', '40px'))
-            ])
+            namespaceBorderRadius: nsvariable(
+                'namespace',
+                'border-radius',
+                [
+                    ref(nsvariable('namespace', 'border-top-left-radius', '10px', options)),
+                    ref(nsvariable('namespace', 'border-top-right-radius', '20px', options)),
+                    ref(nsvariable('namespace', 'border-bottom-right-radius', '30px', options)),
+                    ref(nsvariable('namespace', 'border-bottom-left-radius', '40px', options))
+                ],
+                options
+            )
         });
     });
 
     it('should set border radius properties from string value', () => {
         const value = '10px 20px 30px 40px';
-        const result = defineBorderRadius('namespace', value);
+        const result = defineBorderRadius('namespace', value, options);
         expect(result).toEqual({
-            namespaceBorderTopLeftRadius: nsvariable('namespace', 'border-top-left-radius', '10px'),
+            namespaceBorderTopLeftRadius: nsvariable(
+                'namespace',
+                'border-top-left-radius',
+                '10px',
+                options
+            ),
             namespaceBorderTopRightRadius: nsvariable(
                 'namespace',
                 'border-top-right-radius',
-                '20px'
+                '20px',
+                options
             ),
             namespaceBorderBottomRightRadius: nsvariable(
                 'namespace',
                 'border-bottom-right-radius',
-                '30px'
+                '30px',
+                options
             ),
             namespaceBorderBottomLeftRadius: nsvariable(
                 'namespace',
                 'border-bottom-left-radius',
-                '40px'
+                '40px',
+                options
             ),
-            namespaceBorderRadius: nsvariable('namespace', 'border-radius', [
-                ref(nsvariable('namespace', 'border-top-left-radius', '10px')),
-                ref(nsvariable('namespace', 'border-top-right-radius', '20px')),
-                ref(nsvariable('namespace', 'border-bottom-right-radius', '30px')),
-                ref(nsvariable('namespace', 'border-bottom-left-radius', '40px'))
-            ])
+            namespaceBorderRadius: nsvariable(
+                'namespace',
+                'border-radius',
+                [
+                    ref(nsvariable('namespace', 'border-top-left-radius', '10px', options)),
+                    ref(nsvariable('namespace', 'border-top-right-radius', '20px', options)),
+                    ref(nsvariable('namespace', 'border-bottom-right-radius', '30px', options)),
+                    ref(nsvariable('namespace', 'border-bottom-left-radius', '40px', options))
+                ],
+                options
+            )
         });
     });
 
     it('should return object with namespaced properties', () => {
-        const result = defineBorderRadius('namespace', '10px');
+        const result = defineBorderRadius('namespace', '10px', options);
 
         const {
             namespaceBorderTopLeftRadius,
@@ -109,7 +155,7 @@ describe('defineBorderRadius', () => {
     });
 
     it('should return object with non-namespaced properties', () => {
-        const result = defineBorderRadius('', '10px');
+        const result = defineBorderRadius('', '10px', options);
 
         const {
             borderTopLeftRadius,

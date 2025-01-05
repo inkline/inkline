@@ -2,7 +2,7 @@ import {
     NamespacedKey,
     TokenValue,
     Variable,
-    DefineOptions,
+    VariablesOptions,
     HSLAColorProperty,
     NamespaceType,
     NamespacedMap
@@ -50,7 +50,7 @@ export type OutputMapBorderTopColor<Namespace extends NamespaceType> = Namespace
 
 export function defineColorFn<Namespace extends NamespaceType, ReturnType>(
     propertyName: string
-): (ns: Namespace, value: SourceMapColor, options?: DefineOptions) => ReturnType {
+): (ns: Namespace, value: SourceMapColor, options: VariablesOptions) => ReturnType {
     return (ns, value, options) => {
         if (['inherit', 'initial', 'unset'].includes(value as string)) {
             const color = nsvariable(ns, propertyName, value as string, options);
@@ -101,35 +101,11 @@ export function defineColorFn<Namespace extends NamespaceType, ReturnType>(
 export const defineColor: <Namespace extends NamespaceType>(
     ns: Namespace,
     value: SourceMapColor,
-    options?: DefineOptions
+    options: VariablesOptions
 ) => OutputMapColor<Namespace> = defineColorFn('color');
 
 export const defineBackground: <Namespace extends NamespaceType>(
     ns: Namespace,
     value: SourceMapBackground,
-    options?: DefineOptions
+    options: VariablesOptions
 ) => OutputMapBackground<Namespace> = defineColorFn('background');
-
-export const defineBorderTopColor: <Namespace extends NamespaceType>(
-    ns: Namespace,
-    value: SourceMapColor,
-    options?: DefineOptions
-) => OutputMapBorderTopColor<Namespace> = defineColorFn('border-top-color');
-
-export const defineBorderRightColor: <Namespace extends NamespaceType>(
-    ns: Namespace,
-    value: SourceMapColor,
-    options?: DefineOptions
-) => OutputMapColor<Namespace> = defineColorFn('border-right-color');
-
-export const defineBorderBottomColor: <Namespace extends NamespaceType>(
-    ns: Namespace,
-    value: SourceMapColor,
-    options?: DefineOptions
-) => OutputMapColor<Namespace> = defineColorFn('border-bottom-color');
-
-export const defineBorderLeftColor: <Namespace extends NamespaceType>(
-    ns: Namespace,
-    value: SourceMapColor,
-    options?: DefineOptions
-) => OutputMapColor<Namespace> = defineColorFn('border-left-color');

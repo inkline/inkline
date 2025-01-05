@@ -1,45 +1,73 @@
-import { ref, selector } from '@inkline/core';
+import { DefinitionOptions, ref, selector } from '@inkline/core';
 import { useBreadcrumbThemeVariables } from '../breadcrumb/theme';
 
-export function useBreadcrumbItemThemeLayout() {
-    const { breadcrumbSeparator } = useBreadcrumbThemeVariables();
+export function useBreadcrumbItemThemeLayout(options: DefinitionOptions) {
+    const { breadcrumbSeparator } = useBreadcrumbThemeVariables(options);
 
-    selector('.breadcrumb-item', {
-        marginBottom: 0
-    });
+    selector(
+        '.breadcrumb-item',
+        {
+            marginBottom: 0
+        },
+        options
+    );
 
-    selector('.breadcrumb-item:first-of-type', {
-        paddingLeft: 0
-    });
+    selector(
+        '.breadcrumb-item:first-of-type',
+        {
+            paddingLeft: 0
+        },
+        options
+    );
 
-    selector('.breadcrumb-item > span', {
-        display: 'inline-block'
-    });
+    selector(
+        '.breadcrumb-item > span',
+        {
+            display: 'inline-block'
+        },
+        options
+    );
 
-    selector('.breadcrumb-item + .breadcrumb-item::before', {
-        display: 'inline-block',
-        content: ref(breadcrumbSeparator)
-    });
+    selector(
+        '.breadcrumb-item + .breadcrumb-item::before',
+        {
+            display: 'inline-block',
+            content: ref(breadcrumbSeparator)
+        },
+        options
+    );
 }
 
-export function useBreadcrumbItemThemeBase() {
+export function useBreadcrumbItemThemeBase(options: DefinitionOptions) {
     const { breadcrumbPaddingLeft, breadcrumbPaddingRight, breadcrumbActiveColor } =
-        useBreadcrumbThemeVariables();
+        useBreadcrumbThemeVariables(options);
 
-    selector('.breadcrumb-item', {
-        paddingLeft: ref(breadcrumbPaddingLeft)
-    });
+    selector(
+        '.breadcrumb-item',
+        {
+            paddingLeft: ref(breadcrumbPaddingLeft)
+        },
+        options
+    );
 
-    selector('.breadcrumb-item + .breadcrumb-item::before', {
-        paddingRight: ref(breadcrumbPaddingRight)
-    });
+    selector(
+        '.breadcrumb-item + .breadcrumb-item::before',
+        {
+            paddingRight: ref(breadcrumbPaddingRight)
+        },
+        options
+    );
 
-    selector('.breadcrumb-item.-active, .breadcrumb-item.-active a', {
-        color: ref(breadcrumbActiveColor)
-    });
+    selector(
+        '.breadcrumb-item.-active, .breadcrumb-item.-active a',
+        {
+            color: ref(breadcrumbActiveColor)
+        },
+        options
+    );
 }
 
-export function useBreadcrumbItemTheme() {
-    useBreadcrumbItemThemeLayout();
-    useBreadcrumbItemThemeBase();
+export function useBreadcrumbItemTheme(options: DefinitionOptions) {
+    useBreadcrumbItemThemeLayout(options);
+    useBreadcrumbItemThemeBase(options);
 }

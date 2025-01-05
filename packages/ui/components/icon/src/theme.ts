@@ -15,8 +15,8 @@ import {
 
 const ns = 'icon';
 
-export function useIconThemeVariables(options = defaultDefinitionOptions) {
-    const { fontSize } = useFontSize();
+export function useIconThemeVariables(options: DefinitionOptions) {
+    const { fontSize } = useFontSize(options);
 
     return {
         ...nsvariables(
@@ -29,8 +29,8 @@ export function useIconThemeVariables(options = defaultDefinitionOptions) {
     };
 }
 
-export function useIconThemeBase() {
-    const { iconFontSize } = useIconThemeVariables();
+export function useIconThemeBase(options: DefinitionOptions) {
+    const { iconFontSize } = useIconThemeVariables(options);
 
     selector('.icon', {
         fontSize: ref(iconFontSize)
@@ -38,8 +38,8 @@ export function useIconThemeBase() {
 }
 
 export function useIconThemeSizeFactory(variant: ComponentSize) {
-    const { iconFontSize } = useIconThemeVariables();
-    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
+    const { iconFontSize } = useIconThemeVariables(options);
+    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
     const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
     const sizeNs = [ns, variant] as const;
 
@@ -55,11 +55,11 @@ export function useIconThemeSizeFactory(variant: ComponentSize) {
 }
 
 export function useIconThemeSizes(sizes = defaultComponentSizes) {
-    sizes.forEach(useIconThemeSizeFactory);
+    sizes.forEach((size) => useIconThemeSizeFactory(size, options));
 }
 
-export function useIconTheme() {
-    useIconThemeVariables();
-    useIconThemeBase();
-    useIconThemeSizes();
+export function useIconTheme(options: DefinitionOptions) {
+    useIconThemeVariables(options);
+    useIconThemeBase(options);
+    useIconThemeSizes(options);
 }

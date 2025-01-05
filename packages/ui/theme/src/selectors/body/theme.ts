@@ -1,9 +1,8 @@
 import {
-    defaultDefinitionOptions,
     darkThemeName,
     ref,
     selector,
-    nsvariables, vref
+    nsvariables, vref, DefinitionOptions
 } from '@inkline/core';
 import {
     useBrandColorVariants,
@@ -26,31 +25,32 @@ const defaultBodyColors = [
 
 type BodyColorVariant = (typeof defaultBodyColors)[number];
 
-export function useBodyThemeConfig(variant?: BodyColorVariant) {
+export function useBodyThemeConfig(variant: BodyColorVariant, options: DefinitionOptions) {
+
     const {
         textColorH,
         textColorS,
         textColorL,
         textColorA
-    } = useTextColor();
+    } = useTextColor(options);
     const {
         colorWhiteH,
         colorWhiteS,
         colorWhiteL,
         colorWhiteA
-    } = useNeutralColors();
+    } = useNeutralColors(options);
     const {
         colorDarkShade50H,
         colorDarkShade50S,
         colorDarkShade50L,
         colorDarkShade50A
-    } = useBrandColorVariants();
-    const { fontSize } = useFontSize();
-    const { fontFamilyBase } = useFontFamily();
-    const { textAlignLeft } = useTextAlign();
+    } = useBrandColorVariants(options);
+    const { fontSize } = useFontSize(options);
+    const { fontFamilyBase } = useFontFamily(options);
+    const { textAlignLeft } = useTextAlign(options);
     const { transitionProperty, transitionDuration, transitionTimingFunction } =
-        useTransition();
-    const { lineHeight } = useLineHeight();
+        useTransition(options);
+    const { lineHeight } = useLineHeight(options);
 
     const common = {
         color: {
@@ -89,19 +89,19 @@ export function useBodyThemeConfig(variant?: BodyColorVariant) {
                 a: ref(colorDarkShade50A)
             }
         }
-    }[variant ?? defaultBodyColor];
+    }[variant];
 }
 
-export function useBodyThemeVariables(options = defaultDefinitionOptions) {
-    nsvariables(ns, useBodyThemeConfig('dark'), {
+export function useBodyThemeVariables(options: DefinitionOptions) {
+    nsvariables(ns, useBodyThemeConfig('dark', options), {
         ...options,
         theme: darkThemeName
     });
 
-    return nsvariables(ns, useBodyThemeConfig(), options);
+    return nsvariables(ns, useBodyThemeConfig(defaultBodyColor, options), options);
 }
 
-export function useBodyThemeSelectors() {
+export function useBodyThemeSelectors(options: DefinitionOptions) {
     const {
         bodyColor,
         bodyBackground,
@@ -110,7 +110,7 @@ export function useBodyThemeSelectors() {
         bodyLineHeight,
         bodyTextAlign,
         bodyTransition
-    } = useBodyThemeVariables();
+    } = useBodyThemeVariables(options);
 
     selector('body', {
         color: vref(bodyColor),
@@ -121,10 +121,10 @@ export function useBodyThemeSelectors() {
         textAlign: ref(bodyTextAlign),
         transition: ref(bodyTransition),
         textSizeAdjust: '100%'
-    });
+    }, options);
 }
 
-export function useBodyTheme() {
-    useBodyThemeVariables();
-    useBodyThemeSelectors();
+export function useBodyTheme(options: DefinitionOptions) {
+    useBodyThemeVariables(options);
+    useBodyThemeSelectors(options);
 }

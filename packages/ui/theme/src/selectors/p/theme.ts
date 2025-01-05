@@ -1,5 +1,5 @@
 import {
-    defaultDefinitionOptions,
+    DefinitionOptions,
     ref,
     selector,
     nsvariables,
@@ -7,8 +7,8 @@ import {
 } from '@inkline/core';
 import { useFontSize, useFontWeight, useSpacing } from '../../variables';
 
-export function useParagraphConfig() {
-    const { spacing } = useSpacing();
+export function useParagraphConfig(options: DefinitionOptions) {
+    const { spacing } = useSpacing(options);
 
     return {
         margin: {
@@ -20,13 +20,13 @@ export function useParagraphConfig() {
     };
 }
 
-export function useParagraphThemeVariables(options = defaultDefinitionOptions) {
-    return nsvariables('p', useParagraphConfig(), options);
+export function useParagraphThemeVariables(options: DefinitionOptions) {
+    return nsvariables('p', useParagraphConfig(options), options);
 }
 
-export function useLeadConfig() {
-    const { fontSizeLg } = useFontSize();
-    const { fontWeightLight } = useFontWeight();
+export function useLeadConfig(options: DefinitionOptions) {
+    const { fontSizeLg } = useFontSize(options);
+    const { fontWeightLight } = useFontWeight(options);
 
     return {
         fontSize: ref(fontSizeLg),
@@ -34,52 +34,52 @@ export function useLeadConfig() {
     };
 }
 
-export function useLeadVariables(options = defaultDefinitionOptions) {
-    return nsvariables('lead', useLeadConfig(), options);
+export function useLeadVariables(options: DefinitionOptions) {
+    return nsvariables('lead', useLeadConfig(options), options);
 }
 
-export function useInitialismConfig() {
+export function useInitialismConfig(_options: DefinitionOptions) {
     return {
         fontSize: '90%',
         textTransform: 'uppercase'
     };
 }
 
-export function useInitialismVariables(options = defaultDefinitionOptions) {
-    return nsvariables('initialism', useInitialismConfig(), options);
+export function useInitialismVariables(options: DefinitionOptions) {
+    return nsvariables('initialism', useInitialismConfig(options), options);
 }
 
-export function useParagraphThemeSelectors() {
+export function useParagraphThemeSelectors(options: DefinitionOptions) {
     const {
         pMargin
-    } = useParagraphThemeVariables();
+    } = useParagraphThemeVariables(options);
 
     selector('p', {
         margin: vref(pMargin)
-    });
+    }, options);
 }
 
-export function useLeadThemeSelectors() {
-    const { leadFontSize, leadFontWeight } = useLeadVariables();
+export function useLeadThemeSelectors(options: DefinitionOptions) {
+    const { leadFontSize, leadFontWeight } = useLeadVariables(options);
 
     selector('.lead', {
         fontSize: ref(leadFontSize),
         fontWeight: ref(leadFontWeight)
-    });
+    }, options);
 }
 
-export function useInitialismThemeSelectors() {
-    const { initialismFontSize, initialismTextTransform } = useInitialismVariables();
+export function useInitialismThemeSelectors(options: DefinitionOptions) {
+    const { initialismFontSize, initialismTextTransform } = useInitialismVariables(options);
 
     selector('.initialism', {
         fontSize: ref(initialismFontSize),
         textTransform: ref(initialismTextTransform)
-    });
+    }, options);
 }
 
 
-export function useParagraphTheme() {
-    useParagraphThemeSelectors();
-    useLeadThemeSelectors();
-    useInitialismThemeSelectors();
+export function useParagraphTheme(options: DefinitionOptions) {
+    useParagraphThemeSelectors(options);
+    useLeadThemeSelectors(options);
+    useInitialismThemeSelectors(options);
 }

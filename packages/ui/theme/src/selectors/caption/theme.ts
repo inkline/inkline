@@ -1,23 +1,21 @@
 import {
-    defaultDefinitionOptions,
     ref,
     selector,
     nsvariables,
-    vref
+    vref, DefinitionOptions
 } from '@inkline/core';
 import { useSpacing, useTextColor } from '../../variables';
 
 const ns = 'caption';
 
-
-export function useCaptionThemeConfig() {
+export function useCaptionThemeConfig(options: DefinitionOptions) {
     const {
         textColorWeakerH,
         textColorWeakerS,
         textColorWeakerL,
         textColorWeakerA
-    } = useTextColor();
-    const { spacing } = useSpacing();
+    } = useTextColor(options);
+    const { spacing } = useSpacing(options);
 
     return {
         color: {
@@ -35,21 +33,21 @@ export function useCaptionThemeConfig() {
     };
 }
 
-export function useCaptionThemeVariables(options = defaultDefinitionOptions) {
-    return nsvariables(ns, useCaptionThemeConfig(), options);
+export function useCaptionThemeVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useCaptionThemeConfig(options), options);
 }
 
-export function useCaptionThemeSelectors() {
-    const { captionColor, captionPadding } = useCaptionThemeVariables();
+export function useCaptionThemeSelectors(options: DefinitionOptions) {
+    const { captionColor, captionPadding } = useCaptionThemeVariables(options);
 
     selector('caption', {
         textAlign: 'left',
         padding: vref(captionPadding),
         color: vref(captionColor)
-    });
+    }, options);
 }
 
-export function useCaptionTheme() {
-    useCaptionThemeVariables();
-    useCaptionThemeSelectors();
+export function useCaptionTheme(options: DefinitionOptions) {
+    useCaptionThemeVariables(options);
+    useCaptionThemeSelectors(options);
 }

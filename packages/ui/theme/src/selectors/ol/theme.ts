@@ -1,5 +1,5 @@
 import {
-    defaultDefinitionOptions,
+    DefinitionOptions,
     ref,
     selector,
     nsvariables,
@@ -9,8 +9,8 @@ import { useSpacing } from '../../variables';
 
 const ns = 'ol';
 
-export function useOlConfig() {
-    const { spacing, spacingXl } = useSpacing();
+export function useOlConfig(options: DefinitionOptions) {
+    const { spacing, spacingXl } = useSpacing(options);
 
     return {
         margin: {
@@ -22,25 +22,24 @@ export function useOlConfig() {
     };
 }
 
-export function useOlVariables(options = defaultDefinitionOptions) {
-
-    return nsvariables(ns, useOlConfig(), options);
+export function useOlVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useOlConfig(options), options);
 }
 
-export function useOlThemeSelectors() {
-    const { olMargin, olPadding } = useOlVariables();
+export function useOlThemeSelectors(options: DefinitionOptions) {
+    const { olMargin, olPadding } = useOlVariables(options);
 
     selector('ol', {
         margin: vref(olMargin),
         padding: vref(olPadding)
-    });
+    }, options);
 
     selector('ol ul, ol ol', {
         marginBottom: 0
-    });
+    }, options);
 }
 
-export function useOlTheme() {
-    useOlVariables();
-    useOlThemeSelectors();
+export function useOlTheme(options: DefinitionOptions) {
+    useOlVariables(options);
+    useOlThemeSelectors(options);
 }

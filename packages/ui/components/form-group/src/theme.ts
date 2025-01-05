@@ -3,8 +3,8 @@ import { useSpacing } from '@inkline/theme';
 
 const ns = 'form-group';
 
-export function useFormGroupThemeVariables(options = defaultDefinitionOptions) {
-    const { spacing } = useSpacing();
+export function useFormGroupThemeVariables(options: DefinitionOptions) {
+    const { spacing } = useSpacing(options);
 
     return {
         ...nsvariables(
@@ -22,7 +22,9 @@ export function useFormGroupThemeVariables(options = defaultDefinitionOptions) {
     };
 }
 
-export function useFormGroupThemeLayout() {
+export function useFormGroupThemeLayout(options: DefinitionOptions
+)
+{
     selector('.form-group', {
         display: 'block',
         verticalAlign: 'middle',
@@ -50,8 +52,10 @@ export function useFormGroupThemeLayout() {
     });
 }
 
-export function useFormGroupThemeBase() {
-    const { formGroupMargin } = useFormGroupThemeVariables();
+export function useFormGroupThemeBase(options: DefinitionOptions
+)
+{
+    const { formGroupMargin } = useFormGroupThemeVariables(options);
 
     selector('.form-group', {
         margin: ref(formGroupMargin)
@@ -62,7 +66,9 @@ export function useFormGroupThemeBase() {
     });
 }
 
-export function useFormGroupTheme() {
-    useFormGroupThemeLayout();
-    useFormGroupThemeBase();
+export function useFormGroupTheme(options: DefinitionOptions
+)
+{
+    useFormGroupThemeLayout(options);
+    useFormGroupThemeBase(options);
 }

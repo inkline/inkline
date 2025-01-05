@@ -12,7 +12,7 @@ import { createNamespacedTokenName } from './createNamespacedTokenName';
 export function addVariableNamespace<Namespace extends NamespaceType, Name extends string>(
     ns: Namespace,
     instance: Variable<Name>,
-    options?: DefinitionOptions
+    options: DefinitionOptions
 ) {
     const namespacedValue = Array.isArray(instance.__value)
         ? instance.__value.map((value) =>

@@ -10,14 +10,14 @@ import {
     useSpacing
 } from '@inkline/theme';
 import {
-    defaultDefinitionOptions,
     multiply,
     ref,
     selector,
     nsvariables,
     vref,
     toVariableKey,
-    setExportsNamespace
+    setExportsNamespace,
+    DefinitionOptions
 } from '@inkline/core';
 import { merge } from '@inkline/utils';
 
@@ -45,7 +45,7 @@ type BadgeSizeVariant = (typeof defaultBadgeSizes)[number];
  * Config
  */
 
-export function useBadgeThemeColorConfig(variant?: BadgeColorVariant) {
+export function useBadgeThemeColorConfig(variant: BadgeColorVariant, options: DefinitionOptions) {
     const {
         colorLightShade50H,
         colorLightShade50S,
@@ -111,7 +111,7 @@ export function useBadgeThemeColorConfig(variant?: BadgeColorVariant) {
         colorInfoS,
         colorInfoL,
         colorInfoA
-    } = useColors();
+    } = useColors(options);
     const {
         contrastTextColorLightH,
         contrastTextColorLightS,
@@ -145,7 +145,7 @@ export function useBadgeThemeColorConfig(variant?: BadgeColorVariant) {
         contrastTextColorInfoS,
         contrastTextColorInfoL,
         contrastTextColorInfoA
-    } = useContrastTextColor();
+    } = useContrastTextColor(options);
 
     return {
         light: {
@@ -324,10 +324,10 @@ export function useBadgeThemeColorConfig(variant?: BadgeColorVariant) {
                 a: ref(contrastTextColorInfoA)
             }
         }
-    }[variant ?? defaultBadgeColor];
+    }[variant];
 }
 
-export function useBadgeThemeSizeConfig(variant?: BadgeSizeVariant) {
+export function useBadgeThemeSizeConfig(variant: BadgeSizeVariant, options: DefinitionOptions) {
     const {
         borderTopLeftRadiusSm,
         borderTopRightRadiusSm,
@@ -341,9 +341,9 @@ export function useBadgeThemeSizeConfig(variant?: BadgeSizeVariant) {
         borderTopRightRadiusLg,
         borderBottomRightRadiusLg,
         borderBottomLeftRadiusLg
-    } = useBorderRadius();
-    const { fontSizeXs, fontSizeSm, fontSizeMd } = useFontSize();
-    const { spacingSm, spacingMd, spacingLg } = useSpacing();
+    } = useBorderRadius(options);
+    const { fontSizeXs, fontSizeSm, fontSizeMd } = useFontSize(options);
+    const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
 
     return {
         sm: {
@@ -391,10 +391,10 @@ export function useBadgeThemeSizeConfig(variant?: BadgeSizeVariant) {
                 left: multiply(ref(spacingLg), 0.5)
             }
         }
-    }[variant ?? defaultBadgeSize];
+    }[variant];
 }
 
-export function useBadgeThemeConfig() {
+export function useBadgeThemeConfig(options: DefinitionOptions) {
     const {
         borderTopStyle,
         borderTopWidth,
@@ -404,16 +404,17 @@ export function useBadgeThemeConfig() {
         borderBottomWidth,
         borderLeftStyle,
         borderLeftWidth
-    } = useBorder();
+    } = useBorder(options);
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
         boxShadowBlurRadius,
         boxShadowSpreadRadius,
         boxShadowColor
-    } = useBoxShadow();
-    const { fontWeightSemibold } = useFontWeight();
-    const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
+    } = useBoxShadow(options);
+    const { fontWeightSemibold } = useFontWeight(options);
+    const { transitionProperty, transitionDuration, transitionTimingFunction } =
+        useTransition(options);
 
     return merge(
         {
@@ -460,8 +461,8 @@ export function useBadgeThemeConfig() {
                 }
             }
         },
-        useBadgeThemeColorConfig(),
-        useBadgeThemeSizeConfig()
+        useBadgeThemeColorConfig(defaultBadgeColor, options),
+        useBadgeThemeSizeConfig(defaultBadgeSize, options)
     );
 }
 
@@ -471,31 +472,28 @@ export function useBadgeThemeConfig() {
 
 export function useBadgeThemeColorVariables(
     variant: BadgeColorVariant,
-    options = defaultDefinitionOptions
+    options: DefinitionOptions
 ) {
     const colorNs = [ns, variant] as const;
 
-    return nsvariables(colorNs, useBadgeThemeColorConfig(variant), {
+    return nsvariables(colorNs, useBadgeThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useBadgeThemeSizeVariables(
-    variant: BadgeSizeVariant,
-    options = defaultDefinitionOptions
-) {
+export function useBadgeThemeSizeVariables(variant: BadgeSizeVariant, options: DefinitionOptions) {
     const sizeNs = [ns, variant] as const;
 
-    return nsvariables(sizeNs, useBadgeThemeSizeConfig(variant), {
+    return nsvariables(sizeNs, useBadgeThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useBadgeThemeVariables(options = defaultDefinitionOptions) {
+export function useBadgeThemeVariables(options: DefinitionOptions) {
     return {
-        ...nsvariables(ns, useBadgeThemeConfig(), {
+        ...nsvariables(ns, useBadgeThemeConfig(options), {
             ...options,
             registerComposed: false
         })
@@ -506,19 +504,27 @@ export function useBadgeThemeVariables(options = defaultDefinitionOptions) {
  * Selectors
  */
 
-export function useBadgeThemeLayoutSelectors() {
-    selector('.badge', {
-        display: 'inline-flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-    });
+export function useBadgeThemeLayoutSelectors(options: DefinitionOptions) {
+    selector(
+        '.badge',
+        {
+            display: 'inline-flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        options
+    );
 
-    selector('a:hover .badge, a:focus .badge', {
-        textDecoration: 'none'
-    });
+    selector(
+        'a:hover .badge, a:focus .badge',
+        {
+            textDecoration: 'none'
+        },
+        options
+    );
 }
 
-export function useBadgeThemeBaseSelectors() {
+export function useBadgeThemeBaseSelectors(options: DefinitionOptions) {
     const {
         badgeBorderStyle,
         badgeBorderTopColor,
@@ -537,33 +543,44 @@ export function useBadgeThemeBaseSelectors() {
         badgeTransitionDuration,
         badgeTransitionTimingFunction,
         badgePillBorderRadius
-    } = useBadgeThemeVariables();
+    } = useBadgeThemeVariables(options);
 
-    selector('.badge', {
-        borderStyle: vref(badgeBorderStyle),
-        borderTopColor: vref(badgeBorderTopColor),
-        borderRightColor: vref(badgeBorderRightColor),
-        borderBottomColor: vref(badgeBorderBottomColor),
-        borderLeftColor: vref(badgeBorderLeftColor),
-        borderWidth: vref(badgeBorderWidth),
-        borderRadius: vref(badgeBorderRadius),
-        boxShadow: vref(badgeBoxShadow),
-        background: vref(badgeBackground),
-        color: vref(badgeColor),
-        fontSize: ref(badgeFontSize),
-        fontWeight: vref(badgeFontWeight),
-        padding: vref(badgePadding),
-        transitionProperty: vref(badgeTransitionProperty),
-        transitionDuration: vref(badgeTransitionDuration),
-        transitionTimingFunction: vref(badgeTransitionTimingFunction)
-    });
+    selector(
+        '.badge',
+        {
+            borderStyle: vref(badgeBorderStyle),
+            borderTopColor: vref(badgeBorderTopColor),
+            borderRightColor: vref(badgeBorderRightColor),
+            borderBottomColor: vref(badgeBorderBottomColor),
+            borderLeftColor: vref(badgeBorderLeftColor),
+            borderWidth: vref(badgeBorderWidth),
+            borderRadius: vref(badgeBorderRadius),
+            boxShadow: vref(badgeBoxShadow),
+            background: vref(badgeBackground),
+            color: vref(badgeColor),
+            fontSize: ref(badgeFontSize),
+            fontWeight: vref(badgeFontWeight),
+            padding: vref(badgePadding),
+            transitionProperty: vref(badgeTransitionProperty),
+            transitionDuration: vref(badgeTransitionDuration),
+            transitionTimingFunction: vref(badgeTransitionTimingFunction)
+        },
+        options
+    );
 
-    selector('.badge.-pill', {
-        [toVariableKey(badgeBorderRadius)]: vref(badgePillBorderRadius)
-    });
+    selector(
+        '.badge.-pill',
+        {
+            [toVariableKey(badgeBorderRadius)]: vref(badgePillBorderRadius)
+        },
+        options
+    );
 }
 
-export function useBadgeThemeColorSelectors(variant: BadgeColorVariant) {
+export function useBadgeThemeColorSelectors(
+    variant: BadgeColorVariant,
+    options: DefinitionOptions
+) {
     const {
         badgeBackgroundH,
         badgeBackgroundS,
@@ -589,7 +606,7 @@ export function useBadgeThemeColorSelectors(variant: BadgeColorVariant) {
         badgeColorS,
         badgeColorL,
         badgeColorA
-    } = useBadgeThemeVariables();
+    } = useBadgeThemeVariables(options);
 
     const {
         variantBackgroundH,
@@ -616,37 +633,41 @@ export function useBadgeThemeColorSelectors(variant: BadgeColorVariant) {
         variantColorS,
         variantColorL,
         variantColorA
-    } = setExportsNamespace(useBadgeThemeColorVariables(variant), 'variant');
+    } = setExportsNamespace(useBadgeThemeColorVariables(variant, options), 'variant');
 
-    selector(`.badge.-${variant}`, {
-        [toVariableKey(badgeBorderTopColorH)]: ref(variantBorderTopColorH),
-        [toVariableKey(badgeBorderTopColorS)]: ref(variantBorderTopColorS),
-        [toVariableKey(badgeBorderTopColorL)]: ref(variantBorderTopColorL),
-        [toVariableKey(badgeBorderTopColorA)]: ref(variantBorderTopColorA),
-        [toVariableKey(badgeBorderRightColorH)]: ref(variantBorderRightColorH),
-        [toVariableKey(badgeBorderRightColorS)]: ref(variantBorderRightColorS),
-        [toVariableKey(badgeBorderRightColorL)]: ref(variantBorderRightColorL),
-        [toVariableKey(badgeBorderRightColorA)]: ref(variantBorderRightColorA),
-        [toVariableKey(badgeBorderBottomColorH)]: ref(variantBorderBottomColorH),
-        [toVariableKey(badgeBorderBottomColorS)]: ref(variantBorderBottomColorS),
-        [toVariableKey(badgeBorderBottomColorL)]: ref(variantBorderBottomColorL),
-        [toVariableKey(badgeBorderBottomColorA)]: ref(variantBorderBottomColorA),
-        [toVariableKey(badgeBorderLeftColorH)]: ref(variantBorderLeftColorH),
-        [toVariableKey(badgeBorderLeftColorS)]: ref(variantBorderLeftColorS),
-        [toVariableKey(badgeBorderLeftColorL)]: ref(variantBorderLeftColorL),
-        [toVariableKey(badgeBorderLeftColorA)]: ref(variantBorderLeftColorA),
-        [toVariableKey(badgeBackgroundH)]: ref(variantBackgroundH),
-        [toVariableKey(badgeBackgroundS)]: ref(variantBackgroundS),
-        [toVariableKey(badgeBackgroundL)]: ref(variantBackgroundL),
-        [toVariableKey(badgeBackgroundA)]: ref(variantBackgroundA),
-        [toVariableKey(badgeColorH)]: ref(variantColorH),
-        [toVariableKey(badgeColorS)]: ref(variantColorS),
-        [toVariableKey(badgeColorL)]: ref(variantColorL),
-        [toVariableKey(badgeColorA)]: ref(variantColorA)
-    });
+    selector(
+        `.badge.-${variant}`,
+        {
+            [toVariableKey(badgeBorderTopColorH)]: ref(variantBorderTopColorH),
+            [toVariableKey(badgeBorderTopColorS)]: ref(variantBorderTopColorS),
+            [toVariableKey(badgeBorderTopColorL)]: ref(variantBorderTopColorL),
+            [toVariableKey(badgeBorderTopColorA)]: ref(variantBorderTopColorA),
+            [toVariableKey(badgeBorderRightColorH)]: ref(variantBorderRightColorH),
+            [toVariableKey(badgeBorderRightColorS)]: ref(variantBorderRightColorS),
+            [toVariableKey(badgeBorderRightColorL)]: ref(variantBorderRightColorL),
+            [toVariableKey(badgeBorderRightColorA)]: ref(variantBorderRightColorA),
+            [toVariableKey(badgeBorderBottomColorH)]: ref(variantBorderBottomColorH),
+            [toVariableKey(badgeBorderBottomColorS)]: ref(variantBorderBottomColorS),
+            [toVariableKey(badgeBorderBottomColorL)]: ref(variantBorderBottomColorL),
+            [toVariableKey(badgeBorderBottomColorA)]: ref(variantBorderBottomColorA),
+            [toVariableKey(badgeBorderLeftColorH)]: ref(variantBorderLeftColorH),
+            [toVariableKey(badgeBorderLeftColorS)]: ref(variantBorderLeftColorS),
+            [toVariableKey(badgeBorderLeftColorL)]: ref(variantBorderLeftColorL),
+            [toVariableKey(badgeBorderLeftColorA)]: ref(variantBorderLeftColorA),
+            [toVariableKey(badgeBackgroundH)]: ref(variantBackgroundH),
+            [toVariableKey(badgeBackgroundS)]: ref(variantBackgroundS),
+            [toVariableKey(badgeBackgroundL)]: ref(variantBackgroundL),
+            [toVariableKey(badgeBackgroundA)]: ref(variantBackgroundA),
+            [toVariableKey(badgeColorH)]: ref(variantColorH),
+            [toVariableKey(badgeColorS)]: ref(variantColorS),
+            [toVariableKey(badgeColorL)]: ref(variantColorL),
+            [toVariableKey(badgeColorA)]: ref(variantColorA)
+        },
+        options
+    );
 }
 
-export function useBadgeThemeSizeSelectors(variant: BadgeSizeVariant) {
+export function useBadgeThemeSizeSelectors(variant: BadgeSizeVariant, options: DefinitionOptions) {
     const {
         badgeBorderTopLeftRadius,
         badgeBorderTopRightRadius,
@@ -657,7 +678,7 @@ export function useBadgeThemeSizeSelectors(variant: BadgeSizeVariant) {
         badgePaddingRight,
         badgePaddingBottom,
         badgePaddingLeft
-    } = useBadgeThemeVariables();
+    } = useBadgeThemeVariables(options);
 
     const {
         variantBorderTopLeftRadius,
@@ -669,37 +690,41 @@ export function useBadgeThemeSizeSelectors(variant: BadgeSizeVariant) {
         variantPaddingRight,
         variantPaddingBottom,
         variantPaddingLeft
-    } = setExportsNamespace(useBadgeThemeSizeVariables(variant), 'variant');
+    } = setExportsNamespace(useBadgeThemeSizeVariables(variant, options), 'variant');
 
-    selector(`.badge.-${variant}`, {
-        [toVariableKey(badgeBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
-        [toVariableKey(badgeBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
-        [toVariableKey(badgeBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
-        [toVariableKey(badgeBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
-        [toVariableKey(badgeFontSize)]: ref(variantFontSize),
-        [toVariableKey(badgePaddingTop)]: ref(variantPaddingTop),
-        [toVariableKey(badgePaddingRight)]: ref(variantPaddingRight),
-        [toVariableKey(badgePaddingBottom)]: ref(variantPaddingBottom),
-        [toVariableKey(badgePaddingLeft)]: ref(variantPaddingLeft)
-    });
+    selector(
+        `.badge.-${variant}`,
+        {
+            [toVariableKey(badgeBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
+            [toVariableKey(badgeBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
+            [toVariableKey(badgeBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
+            [toVariableKey(badgeBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
+            [toVariableKey(badgeFontSize)]: ref(variantFontSize),
+            [toVariableKey(badgePaddingTop)]: ref(variantPaddingTop),
+            [toVariableKey(badgePaddingRight)]: ref(variantPaddingRight),
+            [toVariableKey(badgePaddingBottom)]: ref(variantPaddingBottom),
+            [toVariableKey(badgePaddingLeft)]: ref(variantPaddingLeft)
+        },
+        options
+    );
 }
 
 /**
  * Composables
  */
 
-export function useBadgeThemeColors(colors = defaultBadgeColors) {
-    colors.forEach(useBadgeThemeColorSelectors);
+export function useBadgeThemeColors(colors: BadgeColorVariant[], options: DefinitionOptions) {
+    colors.forEach((color) => useBadgeThemeColorSelectors(color, options));
 }
 
-export function useBadgeThemeSizes(sizes = defaultBadgeSizes) {
-    sizes.forEach(useBadgeThemeSizeSelectors);
+export function useBadgeThemeSizes(sizes: BadgeSizeVariant[], options: DefinitionOptions) {
+    sizes.forEach((size) => useBadgeThemeSizeSelectors(size, options));
 }
 
-export function useBadgeTheme() {
-    useBadgeThemeVariables();
-    useBadgeThemeLayoutSelectors();
-    useBadgeThemeBaseSelectors();
-    useBadgeThemeColors();
-    useBadgeThemeSizes();
+export function useBadgeTheme(options: DefinitionOptions) {
+    useBadgeThemeVariables(options);
+    useBadgeThemeLayoutSelectors(options);
+    useBadgeThemeBaseSelectors(options);
+    useBadgeThemeColors([...defaultBadgeColors], options);
+    useBadgeThemeSizes([...defaultBadgeSizes], options);
 }

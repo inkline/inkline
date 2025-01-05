@@ -2,7 +2,7 @@ import {
     NamespacedKey,
     TokenValue,
     Variable,
-    DefineOptions,
+    VariablesOptions,
     NamespaceType,
     NamespacedMap
 } from '../../types';
@@ -27,7 +27,7 @@ export type OutputMapPadding<Namespace extends NamespaceType> = NamespacedMap<
 export function definePadding<Namespace extends NamespaceType>(
     ns: Namespace,
     value: SourceMapPadding,
-    options?: DefineOptions
+    options: VariablesOptions
 ): OutputMapPadding<Namespace> {
     const paddingTop = nsvariable(ns, 'padding-top', 0, options);
     const paddingRight = nsvariable(ns, 'padding-right', 0, options);

@@ -1,4 +1,4 @@
-import { divide, multiply, ref, variable, defaultDefinitionOptions } from '@inkline/core';
+import { divide, multiply, ref, variable } from '@inkline/core';
 import { useScale } from './useScale';
 import type { DefinitionOptions, Variable } from '@inkline/core';
 import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
@@ -21,8 +21,8 @@ export const allSizeMultiplierKeys: SizeMultiplierKeys[] = [
 
 export const defaultSizeMultiplierKeys: SizeMultiplierKeys[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
-export function useSizeMultiplier(options = defaultDefinitionOptions) {
-    const { scalePow1, scalePow2, scalePow3 } = useScale();
+export function useSizeMultiplier(options: DefinitionOptions) {
+    const { scalePow1, scalePow2, scalePow3 } = useScale(options);
 
     const sizeMultiplier = variable('size-multiplier', 1, options);
 
@@ -62,7 +62,7 @@ export function useSizeMultiplier(options = defaultDefinitionOptions) {
     };
 }
 
-export function useKeyMappedSizeMultiplier(): Record<SizeMultiplierKeys, Variable> {
+export function useKeyMappedSizeMultiplier(options: DefinitionOptions): Record<SizeMultiplierKeys, Variable> {
     const {
         sizeMultiplierXxs,
         sizeMultiplierXs,
@@ -71,7 +71,7 @@ export function useKeyMappedSizeMultiplier(): Record<SizeMultiplierKeys, Variabl
         sizeMultiplierLg,
         sizeMultiplierXl,
         sizeMultiplierXxl
-    } = useSizeMultiplier();
+    } = useSizeMultiplier(options);
 
     return {
         xxs: sizeMultiplierXxs,
@@ -86,10 +86,10 @@ export function useKeyMappedSizeMultiplier(): Record<SizeMultiplierKeys, Variabl
 
 export function useSizeMultiplierVariantsFactory<RootKey extends string>(
     target: Variable,
-    options?: { keys?: SizeMultiplierKeys[] } & DefinitionOptions
+    options: { keys?: SizeMultiplierKeys[] } & DefinitionOptions
 ) {
     const keys = options?.keys ?? defaultSizeMultiplierKeys;
-    const sizeMultipliersKeyMap = useKeyMappedSizeMultiplier();
+    const sizeMultipliersKeyMap = useKeyMappedSizeMultiplier(options);
     const variants = keys.reduce<Record<string, ReturnType<typeof createVariantFactoryFn>>>(
         (acc, key) => {
             acc[key] = createVariantFactoryFn((value) =>
@@ -100,17 +100,15 @@ export function useSizeMultiplierVariantsFactory<RootKey extends string>(
         {}
     );
 
-    return useVariantsFactory<RootKey, SizeMultiplierKeys>(target, variants, {
-        default: options?.default
-    });
+    return useVariantsFactory<RootKey, SizeMultiplierKeys>(target, variants, options);
 }
 
 export function useComposedSizeMultiplierVariantsFactory<
     RootKey extends string,
     Name extends string
->(composed: Variable<Name>, options?: { keys?: SizeMultiplierKeys[] } & DefinitionOptions) {
+>(composed: Variable<Name>, options: { keys?: SizeMultiplierKeys[] } & DefinitionOptions) {
     const keys = options?.keys ?? defaultSizeMultiplierKeys;
-    const sizeMultipliersKeyMap = useKeyMappedSizeMultiplier();
+    const sizeMultipliersKeyMap = useKeyMappedSizeMultiplier(options);
     const variants = keys.reduce<Record<string, ReturnType<typeof createComposedVariantFactoryFn>>>(
         (acc, key) => {
             acc[key] = createComposedVariantFactoryFn((values) =>
@@ -121,7 +119,5 @@ export function useComposedSizeMultiplierVariantsFactory<
         {}
     );
 
-    return useComposedVariantsFactory<RootKey, SizeMultiplierKeys>(composed, variants, {
-        default: options?.default
-    });
+    return useComposedVariantsFactory<RootKey, SizeMultiplierKeys>(composed, variants, options);
 }

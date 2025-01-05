@@ -1,7 +1,6 @@
-import { ref, variable } from '@inkline/core';
-import { defaultDefinitionOptions } from '@inkline/core';
+import { DefinitionOptions, ref, variable } from '@inkline/core';
 
-export function useTransitionBase(options = defaultDefinitionOptions) {
+export function useTransition(options: DefinitionOptions) {
     const transitionProperty = variable(
         'transition-property',
         'color, background-color, border-color',
@@ -21,8 +20,4 @@ export function useTransitionBase(options = defaultDefinitionOptions) {
         transitionTimingFunction,
         transition
     };
-}
-
-export function useTransition(options = defaultDefinitionOptions) {
-    return useTransitionBase(options);
 }

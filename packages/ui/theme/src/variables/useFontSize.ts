@@ -1,15 +1,14 @@
-import { css, multiply, ref, TokenValue, variable } from '@inkline/core';
-import { defaultDefinitionOptions } from '@inkline/core';
+import { css, DefinitionOptions, multiply, ref, TokenValue, variable } from '@inkline/core';
 import { useFluid } from './useFluid';
 import { useFluidTypeScale } from './useFluidTypeScale';
 import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
 
-export function useFontSize(options = defaultDefinitionOptions) {
-    const { fluidBreakpoint } = useFluid();
+export function useFontSize(options: DefinitionOptions) {
+    const { fluidBreakpoint } = useFluid(options);
     const {
         typeScaleMinMap,
         typeScaleMaxMap
-    } = useFluidTypeScale();
+    } = useFluidTypeScale(options);
 
     const fontSizeMin = variable('font-size-min', 18, options);
     const fontSizeMax = variable('font-size-max', 20, options);

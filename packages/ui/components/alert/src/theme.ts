@@ -2,10 +2,10 @@ import {
     ref,
     selector,
     nsvariables,
-    defaultDefinitionOptions,
     setExportsNamespace,
     toVariableKey,
-    vref
+    vref,
+    DefinitionOptions
 } from '@inkline/core';
 import { merge } from '@inkline/utils';
 import {
@@ -34,7 +34,7 @@ type AlertSizeVariant = (typeof defaultAlertSizes)[number];
  * Config
  */
 
-export function useAlertThemeColorConfig(variant?: AlertColorVariant) {
+export function useAlertThemeColorConfig(variant: AlertColorVariant, options: DefinitionOptions) {
     const {
         colorInfo100H,
         colorInfo100S,
@@ -84,7 +84,7 @@ export function useAlertThemeColorConfig(variant?: AlertColorVariant) {
         colorDangerShade50S,
         colorDangerShade50L,
         colorDangerShade50A
-    } = useBrandColorVariants();
+    } = useBrandColorVariants(options);
 
     return {
         info: {
@@ -175,10 +175,10 @@ export function useAlertThemeColorConfig(variant?: AlertColorVariant) {
                 a: ref(colorDanger800A)
             }
         }
-    }[variant ?? defaultAlertColor];
+    }[variant];
 }
 
-export function useAlertThemeSizeConfig(variant?: AlertSizeVariant) {
+export function useAlertThemeSizeConfig(variant: AlertSizeVariant, options: DefinitionOptions) {
     const {
         borderTopLeftRadiusSm,
         borderTopRightRadiusSm,
@@ -192,9 +192,9 @@ export function useAlertThemeSizeConfig(variant?: AlertSizeVariant) {
         borderTopRightRadiusLg,
         borderBottomRightRadiusLg,
         borderBottomLeftRadiusLg
-    } = useBorderRadius();
-    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize();
-    const { spacingSm, spacingMd, spacingLg } = useSpacing();
+    } = useBorderRadius(options);
+    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize(options);
+    const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
 
     return {
         sm: {
@@ -242,10 +242,10 @@ export function useAlertThemeSizeConfig(variant?: AlertSizeVariant) {
                 left: ref(spacingLg)
             }
         }
-    }[variant ?? defaultAlertSize];
+    }[variant];
 }
 
-export function useAlertThemeConfig() {
+export function useAlertThemeConfig(options: DefinitionOptions) {
     const {
         borderTopStyle,
         borderTopWidth,
@@ -255,16 +255,17 @@ export function useAlertThemeConfig() {
         borderBottomWidth,
         borderLeftStyle,
         borderLeftWidth
-    } = useBorder();
+    } = useBorder(options);
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
         boxShadowBlurRadius,
         boxShadowSpreadRadius,
         boxShadowColor
-    } = useBoxShadow();
-    const { fontWeightSemibold } = useFontWeight();
-    const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
+    } = useBoxShadow(options);
+    const { fontWeightSemibold } = useFontWeight(options);
+    const { transitionProperty, transitionDuration, transitionTimingFunction } =
+        useTransition(options);
 
     return merge(
         {
@@ -305,8 +306,8 @@ export function useAlertThemeConfig() {
                 fontWeight: ref(fontWeightSemibold)
             }
         },
-        useAlertThemeColorConfig(),
-        useAlertThemeSizeConfig()
+        useAlertThemeColorConfig(defaultAlertColor, options),
+        useAlertThemeSizeConfig(defaultAlertSize, options)
     );
 }
 
@@ -315,27 +316,24 @@ export function useAlertThemeConfig() {
  */
 
 export function useAlertThemeColorVariables(
-    variant?: AlertColorVariant,
-    options = defaultDefinitionOptions
+    variant: AlertColorVariant,
+    options: DefinitionOptions
 ) {
-    return nsvariables(ns, useAlertThemeColorConfig(variant), {
+    return nsvariables(ns, useAlertThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useAlertThemeSizeVariables(
-    variant?: AlertSizeVariant,
-    options = defaultDefinitionOptions
-) {
-    return nsvariables(ns, useAlertThemeSizeConfig(variant), {
+export function useAlertThemeSizeVariables(variant: AlertSizeVariant, options: DefinitionOptions) {
+    return nsvariables(ns, useAlertThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useAlertThemeVariables(options = defaultDefinitionOptions) {
-    return nsvariables(ns, useAlertThemeConfig(), {
+export function useAlertThemeVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useAlertThemeConfig(options), {
         ...options,
         registerComposed: false
     });
@@ -345,35 +343,51 @@ export function useAlertThemeVariables(options = defaultDefinitionOptions) {
  * Selectors
  */
 
-export function useAlertThemeLayoutSelectors() {
-    selector('.alert', {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center'
-    });
+export function useAlertThemeLayoutSelectors(options: DefinitionOptions) {
+    selector(
+        '.alert',
+        {
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center'
+        },
+        options
+    );
 
-    selector('.alert-content', {
-        flex: '0 1 100%'
-    });
+    selector(
+        '.alert-content',
+        {
+            flex: '0 1 100%'
+        },
+        options
+    );
 
-    selector('.alert-icon', {
-        flex: 1,
-        display: 'inline-flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center'
-    });
+    selector(
+        '.alert-icon',
+        {
+            flex: 1,
+            display: 'inline-flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center'
+        },
+        options
+    );
 
-    selector('.alert-dismiss', {
-        flex: '0 0 auto',
-        cursor: 'pointer',
-        display: 'inline-flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-    });
+    selector(
+        '.alert-dismiss',
+        {
+            flex: '0 0 auto',
+            cursor: 'pointer',
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+        },
+        options
+    );
 }
 
-export function useAlertThemeBaseSelectors() {
+export function useAlertThemeBaseSelectors(options: DefinitionOptions) {
     const {
         alertBorderStyle,
         alertBorderColor,
@@ -390,53 +404,88 @@ export function useAlertThemeBaseSelectors() {
         alertTransitionDuration,
         alertTransitionTimingFunction,
         alertLinkFontWeight
-    } = useAlertThemeVariables();
+    } = useAlertThemeVariables(options);
 
-    selector('.alert', {
-        borderStyle: vref(alertBorderStyle),
-        borderColor: vref(alertBorderColor),
-        borderWidth: vref(alertBorderWidth),
-        borderRadius: vref(alertBorderRadius),
-        boxShadow: vref(alertBoxShadow),
-        background: vref(alertBackground),
-        color: vref(alertColor),
-        fontSize: ref(alertFontSize),
-        transitionProperty: vref(alertTransitionProperty),
-        transitionDuration: vref(alertTransitionDuration),
-        transitionTimingFunction: vref(alertTransitionTimingFunction)
-    });
+    selector(
+        '.alert',
+        {
+            borderStyle: vref(alertBorderStyle),
+            borderColor: vref(alertBorderColor),
+            borderWidth: vref(alertBorderWidth),
+            borderRadius: vref(alertBorderRadius),
+            boxShadow: vref(alertBoxShadow),
+            background: vref(alertBackground),
+            color: vref(alertColor),
+            fontSize: ref(alertFontSize),
+            transitionProperty: vref(alertTransitionProperty),
+            transitionDuration: vref(alertTransitionDuration),
+            transitionTimingFunction: vref(alertTransitionTimingFunction)
+        },
+        options
+    );
 
-    selector('.alert-content', {
-        padding: vref(alertPadding)
-    });
+    selector(
+        '.alert-content',
+        {
+            padding: vref(alertPadding)
+        },
+        options
+    );
 
-    selector('.alert-content *:first-child', {
-        marginTop: 0
-    });
+    selector(
+        '.alert-content *:first-child',
+        {
+            marginTop: 0
+        },
+        options
+    );
 
-    selector('.alert-content *:last-child', {
-        marginBottom: 0
-    });
+    selector(
+        '.alert-content *:last-child',
+        {
+            marginBottom: 0
+        },
+        options
+    );
 
-    selector('.alert-icon', {
-        marginLeft: ref(alertPaddingLeft)
-    });
+    selector(
+        '.alert-icon',
+        {
+            marginLeft: ref(alertPaddingLeft)
+        },
+        options
+    );
 
-    selector('.alert-dismiss', {
-        marginRight: ref(alertPaddingRight)
-    });
+    selector(
+        '.alert-dismiss',
+        {
+            marginRight: ref(alertPaddingRight)
+        },
+        options
+    );
 
-    selector('.alert code', {
-        background: 'hsla(0, 0%, 0%, 0.05)'
-    });
+    selector(
+        '.alert code',
+        {
+            background: 'hsla(0, 0%, 0%, 0.05)'
+        },
+        options
+    );
 
-    selector('.alert a', {
-        color: vref(alertColor),
-        fontWeight: ref(alertLinkFontWeight)
-    });
+    selector(
+        '.alert a',
+        {
+            color: vref(alertColor),
+            fontWeight: ref(alertLinkFontWeight)
+        },
+        options
+    );
 }
 
-export function useAlertThemeColorSelectors(variant: AlertColorVariant) {
+export function useAlertThemeColorSelectors(
+    variant: AlertColorVariant,
+    options: DefinitionOptions
+) {
     const {
         alertBackgroundH,
         alertBackgroundS,
@@ -462,7 +511,7 @@ export function useAlertThemeColorSelectors(variant: AlertColorVariant) {
         alertColorS,
         alertColorL,
         alertColorA
-    } = useAlertThemeVariables();
+    } = useAlertThemeVariables(options);
 
     const {
         variantBackgroundH,
@@ -489,37 +538,41 @@ export function useAlertThemeColorSelectors(variant: AlertColorVariant) {
         variantColorS,
         variantColorL,
         variantColorA
-    } = setExportsNamespace(useAlertThemeColorVariables(variant), 'variant');
+    } = setExportsNamespace(useAlertThemeColorVariables(variant, options), 'variant');
 
-    selector(`.alert.-${variant}`, {
-        [toVariableKey(alertBorderTopColorH)]: ref(variantBorderTopColorH),
-        [toVariableKey(alertBorderTopColorS)]: ref(variantBorderTopColorS),
-        [toVariableKey(alertBorderTopColorL)]: ref(variantBorderTopColorL),
-        [toVariableKey(alertBorderTopColorA)]: ref(variantBorderTopColorA),
-        [toVariableKey(alertBorderRightColorH)]: ref(variantBorderRightColorH),
-        [toVariableKey(alertBorderRightColorS)]: ref(variantBorderRightColorS),
-        [toVariableKey(alertBorderRightColorL)]: ref(variantBorderRightColorL),
-        [toVariableKey(alertBorderRightColorA)]: ref(variantBorderRightColorA),
-        [toVariableKey(alertBorderBottomColorH)]: ref(variantBorderBottomColorH),
-        [toVariableKey(alertBorderBottomColorS)]: ref(variantBorderBottomColorS),
-        [toVariableKey(alertBorderBottomColorL)]: ref(variantBorderBottomColorL),
-        [toVariableKey(alertBorderBottomColorA)]: ref(variantBorderBottomColorA),
-        [toVariableKey(alertBorderLeftColorH)]: ref(variantBorderLeftColorH),
-        [toVariableKey(alertBorderLeftColorS)]: ref(variantBorderLeftColorS),
-        [toVariableKey(alertBorderLeftColorL)]: ref(variantBorderLeftColorL),
-        [toVariableKey(alertBorderLeftColorA)]: ref(variantBorderLeftColorA),
-        [toVariableKey(alertBackgroundH)]: ref(variantBackgroundH),
-        [toVariableKey(alertBackgroundS)]: ref(variantBackgroundS),
-        [toVariableKey(alertBackgroundL)]: ref(variantBackgroundL),
-        [toVariableKey(alertBackgroundA)]: ref(variantBackgroundA),
-        [toVariableKey(alertColorH)]: ref(variantColorH),
-        [toVariableKey(alertColorS)]: ref(variantColorS),
-        [toVariableKey(alertColorL)]: ref(variantColorL),
-        [toVariableKey(alertColorA)]: ref(variantColorA)
-    });
+    selector(
+        `.alert.-${variant}`,
+        {
+            [toVariableKey(alertBorderTopColorH)]: ref(variantBorderTopColorH),
+            [toVariableKey(alertBorderTopColorS)]: ref(variantBorderTopColorS),
+            [toVariableKey(alertBorderTopColorL)]: ref(variantBorderTopColorL),
+            [toVariableKey(alertBorderTopColorA)]: ref(variantBorderTopColorA),
+            [toVariableKey(alertBorderRightColorH)]: ref(variantBorderRightColorH),
+            [toVariableKey(alertBorderRightColorS)]: ref(variantBorderRightColorS),
+            [toVariableKey(alertBorderRightColorL)]: ref(variantBorderRightColorL),
+            [toVariableKey(alertBorderRightColorA)]: ref(variantBorderRightColorA),
+            [toVariableKey(alertBorderBottomColorH)]: ref(variantBorderBottomColorH),
+            [toVariableKey(alertBorderBottomColorS)]: ref(variantBorderBottomColorS),
+            [toVariableKey(alertBorderBottomColorL)]: ref(variantBorderBottomColorL),
+            [toVariableKey(alertBorderBottomColorA)]: ref(variantBorderBottomColorA),
+            [toVariableKey(alertBorderLeftColorH)]: ref(variantBorderLeftColorH),
+            [toVariableKey(alertBorderLeftColorS)]: ref(variantBorderLeftColorS),
+            [toVariableKey(alertBorderLeftColorL)]: ref(variantBorderLeftColorL),
+            [toVariableKey(alertBorderLeftColorA)]: ref(variantBorderLeftColorA),
+            [toVariableKey(alertBackgroundH)]: ref(variantBackgroundH),
+            [toVariableKey(alertBackgroundS)]: ref(variantBackgroundS),
+            [toVariableKey(alertBackgroundL)]: ref(variantBackgroundL),
+            [toVariableKey(alertBackgroundA)]: ref(variantBackgroundA),
+            [toVariableKey(alertColorH)]: ref(variantColorH),
+            [toVariableKey(alertColorS)]: ref(variantColorS),
+            [toVariableKey(alertColorL)]: ref(variantColorL),
+            [toVariableKey(alertColorA)]: ref(variantColorA)
+        },
+        options
+    );
 }
 
-export function useAlertThemeSizeSelectors(variant: AlertSizeVariant) {
+export function useAlertThemeSizeSelectors(variant: AlertSizeVariant, options: DefinitionOptions) {
     const {
         alertPaddingTop,
         alertPaddingRight,
@@ -530,7 +583,7 @@ export function useAlertThemeSizeSelectors(variant: AlertSizeVariant) {
         alertBorderBottomRightRadius,
         alertBorderBottomLeftRadius,
         alertFontSize
-    } = useAlertThemeVariables();
+    } = useAlertThemeVariables(options);
 
     const {
         variantBorderTopLeftRadius,
@@ -542,36 +595,40 @@ export function useAlertThemeSizeSelectors(variant: AlertSizeVariant) {
         variantPaddingRight,
         variantPaddingBottom,
         variantPaddingLeft
-    } = setExportsNamespace(useAlertThemeSizeVariables(variant), 'variant');
+    } = setExportsNamespace(useAlertThemeSizeVariables(variant, options), 'variant');
 
-    selector(`.alert.-${variant}`, {
-        [toVariableKey(alertBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
-        [toVariableKey(alertBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
-        [toVariableKey(alertBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
-        [toVariableKey(alertBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
-        [toVariableKey(alertFontSize)]: ref(variantFontSize),
-        [toVariableKey(alertPaddingTop)]: ref(variantPaddingTop),
-        [toVariableKey(alertPaddingRight)]: ref(variantPaddingRight),
-        [toVariableKey(alertPaddingBottom)]: ref(variantPaddingBottom),
-        [toVariableKey(alertPaddingLeft)]: ref(variantPaddingLeft)
-    });
+    selector(
+        `.alert.-${variant}`,
+        {
+            [toVariableKey(alertBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
+            [toVariableKey(alertBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
+            [toVariableKey(alertBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
+            [toVariableKey(alertBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
+            [toVariableKey(alertFontSize)]: ref(variantFontSize),
+            [toVariableKey(alertPaddingTop)]: ref(variantPaddingTop),
+            [toVariableKey(alertPaddingRight)]: ref(variantPaddingRight),
+            [toVariableKey(alertPaddingBottom)]: ref(variantPaddingBottom),
+            [toVariableKey(alertPaddingLeft)]: ref(variantPaddingLeft)
+        },
+        options
+    );
 }
 
 /**
  * Composables
  */
 
-export function useAlertThemeColors(colors = defaultAlertColors) {
-    colors.forEach(useAlertThemeColorSelectors);
+export function useAlertThemeColors(colors: AlertColorVariant[], options: DefinitionOptions) {
+    colors.forEach((color) => useAlertThemeColorSelectors(color, options));
 }
 
-export function useAlertThemeSizes(sizes = defaultAlertSizes) {
-    sizes.forEach(useAlertThemeSizeSelectors);
+export function useAlertThemeSizes(sizes: AlertSizeVariant[], options: DefinitionOptions) {
+    sizes.forEach((size) => useAlertThemeSizeSelectors(size, options));
 }
 
-export function useAlertTheme() {
-    useAlertThemeLayoutSelectors();
-    useAlertThemeBaseSelectors();
-    useAlertThemeColors();
-    useAlertThemeSizes();
+export function useAlertTheme(options: DefinitionOptions) {
+    useAlertThemeLayoutSelectors(options);
+    useAlertThemeBaseSelectors(options);
+    useAlertThemeColors([...defaultAlertColors], options);
+    useAlertThemeSizes([...defaultAlertSizes], options);
 }

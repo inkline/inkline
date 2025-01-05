@@ -1,10 +1,13 @@
-import { defineConfig, useTheme } from 'inkline';
-import { useAlertTheme } from '@inkline/component-alert/theme';
-import { useBadgeTheme } from '@inkline/component-badge/theme';
-import { useBreadcrumbTheme, useBreadcrumbItemTheme } from '@inkline/component-breadcrumb/theme';
-import { useButtonTheme } from '@inkline/component-button/theme';
-import { useButtonGroupTheme } from '@inkline/component-button-group/theme';
-import { useCardTheme } from '@inkline/component-card/theme';
+import { useContext } from '@inkline/core';
+import { defineConfig } from '@inkline/core';
+import { useTheme } from '@inkline/theme';
+import { useComponentsTheme } from '@inkline/components';
+// import { defineConfig, useComponentsTheme, useTheme } from 'inkline';
+// import { useBadgeTheme } from '@inkline/component-badge/theme';
+// import { useBreadcrumbTheme, useBreadcrumbItemTheme } from '@inkline/component-breadcrumb/theme';
+// import { useButtonTheme } from '@inkline/component-button/theme';
+// import { useButtonGroupTheme } from '@inkline/component-button-group/theme';
+// import { useCardTheme } from '@inkline/component-card/theme';
 // import { useCheckboxTheme, useCheckboxGroupTheme } from '@inkline/component-checkbox/theme';
 // import { useFormGroupTheme } from '@inkline/component-form-group/theme';
 // import { useIconTheme } from '@inkline/component-icon/theme';
@@ -19,15 +22,11 @@ import { useCardTheme } from '@inkline/component-card/theme';
 // import { useToggleTheme } from '@inkline/component-toggle/theme';
 // import { useTooltipTheme } from '@inkline/component-tooltip/theme';
 
-export default defineConfig(() => {
-    useTheme();
-    useAlertTheme();
-    useBadgeTheme();
-    useBreadcrumbTheme();
-    useBreadcrumbItemTheme();
-    useButtonTheme();
-    useButtonGroupTheme();
-    useCardTheme();
+export default defineConfig((context) => {
+    useTheme({ context });
+    useComponentsTheme({ context });
+
+    // console.log(useContext());
     // useCheckboxTheme();
     // useCheckboxGroupTheme();
     // useFormGroupTheme();

@@ -21,14 +21,18 @@ import {
     theme,
     variable,
     keyframes,
-    state,
     css,
-    transform
+    transform,
+    createContext,
+    defaultThemeName
 } from '@inkline/core';
 import { defaultIndent } from '@inkline/utils';
 
+const context = createContext();
+const options = { context };
+
 afterEach(() => {
-    state.themes = {};
+    context.themes = {};
 });
 
 describe('consume', () => {
@@ -65,46 +69,46 @@ describe('consumeArray', () => {
 
 describe('consumeVariable', () => {
     it('should return correct CSS for variable instance with primitive value', () => {
-        const variableInstance = variable('color', 'blue');
+        const variableInstance = variable('color', 'blue', options);
         expect(consumeVariable(variableInstance)).toBe('--color: blue;');
     });
 
     it('should return correct CSS for variable instance with ref value', () => {
         const refInstance = ref('value');
-        const variableInstance = variable('color', refInstance);
+        const variableInstance = variable('color', refInstance, options);
         expect(consumeVariable(variableInstance)).toBe('--color: var(--value);');
     });
 
     it('should return correct CSS for variable instance with array value', () => {
         const refInstance = ref('value');
-        const variableInstance = variable('color', [refInstance, '10px']);
+        const variableInstance = variable('color', [refInstance, '10px'], options);
         expect(consumeVariable(variableInstance)).toBe('--color: var(--value) 10px;');
     });
 });
 
 describe('consumeRef', () => {
     it('should return correct CSS for variable ref', () => {
-        const variableInstance = variable('color', 'blue');
+        const variableInstance = variable('color', 'blue', options);
         const refInstance = ref(variableInstance);
         expect(consumeRef(refInstance)).toBe('var(--color)');
     });
 
     it('should return correct CSS for variable ref with primitive value fallback', () => {
-        const variableInstance = variable('color', 'blue');
+        const variableInstance = variable('color', 'blue', options);
         const refInstance = ref(variableInstance, 'red');
         expect(consumeRef(refInstance)).toBe('var(--color, red)');
     });
 
     it('should return correct CSS for variable ref with ref value fallback', () => {
-        const variableInstance = variable('color', 'blue');
-        const fallbackVariableInstance = variable('fallback', 'red');
+        const variableInstance = variable('color', 'blue', options);
+        const fallbackVariableInstance = variable('fallback', 'red', options);
         const refInstance = ref(variableInstance, ref(fallbackVariableInstance));
         expect(consumeRef(refInstance)).toBe('var(--color, var(--fallback))');
     });
 
     it('should return correct CSS for variable ref with array value fallback', () => {
-        const variableInstance = variable('color', 'blue');
-        const fallbackVariableInstance = variable('fallback', 'red');
+        const variableInstance = variable('color', 'blue', options);
+        const fallbackVariableInstance = variable('fallback', 'red', options);
         const refInstance = ref(variableInstance, [ref(fallbackVariableInstance), '10px']);
         expect(consumeRef(refInstance)).toBe('var(--color, var(--fallback) 10px)');
     });
@@ -188,10 +192,14 @@ describe('consumeSelectorProperty', () => {
 
 describe('consumeSelector', () => {
     it('should process selector instance with component value correctly', () => {
-        const selectorInstance = selector('body', {
-            background: ref('background'),
-            color: 'red'
-        });
+        const selectorInstance = selector(
+            'body',
+            {
+                background: ref('background'),
+                color: 'red'
+            },
+            options
+        );
         expect(consumeSelector(selectorInstance)).toBe(`body {
 ${defaultIndent}background: var(--background);
 ${defaultIndent}color: red;
@@ -199,7 +207,7 @@ ${defaultIndent}color: red;
     });
 
     it('should process selector instance with token value correctly', () => {
-        const selectorInstance = selector(':root', variable('example', '1rem'));
+        const selectorInstance = selector(':root', variable('example', '1rem', options), options);
         expect(consumeSelector(selectorInstance)).toBe(`:root {
 ${defaultIndent}--example: 1rem;
 }`);
@@ -211,7 +219,8 @@ describe('consumeAtRule', () => {
         const mediaInstance = atRule(
             'media',
             '(min-width: 768px)',
-            selector('body', { color: 'red' })
+            selector('body', { color: 'red' }, options),
+            options
         );
 
         expect(consumeAtRule(mediaInstance)).toEqual(`@media (min-width: 768px) {
@@ -222,10 +231,15 @@ ${defaultIndent}}
     });
 
     it('should process at-rule instance correctly with selector array value', () => {
-        const mediaInstance = atRule('media', '(min-width: 768px)', [
-            selector('body', { color: 'red' }),
-            selector('h1', { color: 'blue' })
-        ]);
+        const mediaInstance = atRule(
+            'media',
+            '(min-width: 768px)',
+            [
+                selector('body', { color: 'red' }, options),
+                selector('h1', { color: 'blue' }, options)
+            ],
+            options
+        );
 
         expect(consumeAtRule(mediaInstance)).toEqual(`@media (min-width: 768px) {
 ${defaultIndent}body {
@@ -239,9 +253,14 @@ ${defaultIndent}}
     });
 
     it('should process at-rule instance correctly with component value', () => {
-        const mediaInstance = atRule('media', 'example', {
-            color: 'red'
-        });
+        const mediaInstance = atRule(
+            'media',
+            'example',
+            {
+                color: 'red'
+            },
+            options
+        );
 
         expect(consumeAtRule(mediaInstance)).toEqual(`@media example {
 ${defaultIndent}color: red;
@@ -252,7 +271,8 @@ ${defaultIndent}color: red;
         const mediaInstance = atRule(
             'media',
             'example',
-            selector(':root', variable('variable', '1rem'))
+            selector(':root', variable('variable', '1rem', options), options),
+            options
         );
 
         expect(consumeAtRule(mediaInstance)).toEqual(`@media example {
@@ -263,10 +283,14 @@ ${defaultIndent}}
     });
 
     it('should process at-keyframes instance correctly with keyframes value', () => {
-        const keyframesInstance = keyframes('example', {
-            '0%': { color: 'red' },
-            '100%': { color: 'blue' }
-        });
+        const keyframesInstance = keyframes(
+            'example',
+            {
+                '0%': { color: 'red' },
+                '100%': { color: 'blue' }
+            },
+            options
+        );
 
         expect(consumeAtRule(keyframesInstance)).toEqual(`@keyframes example {
 ${defaultIndent}0% {
@@ -350,16 +374,19 @@ describe('consumeTransform', () => {
 describe('consumeTheme', () => {
     it('should generate CSS for a theme with variables and selectors', () => {
         const themeName = 'example';
-        const themeInstance = theme(themeName);
-        const colorVariableInstance = variable('color', 'blue', { theme: themeName });
-        const backgroundVariableInstance = variable('background', 'white', { theme: themeName });
+        const themeInstance = theme(themeName, options);
+        const colorVariableInstance = variable('color', 'blue', { theme: themeName, ...options });
+        const backgroundVariableInstance = variable('background', 'white', {
+            theme: themeName,
+            ...options
+        });
         const bodySelectorInstance = selector(
             'body',
             {
                 color: ref(colorVariableInstance),
                 background: ref(backgroundVariableInstance)
             },
-            { theme: themeName }
+            { theme: themeName, ...options }
         );
 
         expect(consumeTheme(themeInstance)).toBe(`.${themeName}-theme {
@@ -375,13 +402,17 @@ describe('consumeTheme', () => {
     });
 
     it('should use :root for the default theme name', () => {
-        const themeInstance = theme();
-        const colorVariableInstance = variable('color', 'blue');
-        const backgroundVariableInstance = variable('background', 'white');
-        const bodySelectorInstance = selector('body', {
-            color: ref(colorVariableInstance),
-            background: ref(backgroundVariableInstance)
-        });
+        const themeInstance = theme(defaultThemeName, options);
+        const colorVariableInstance = variable('color', 'blue', options);
+        const backgroundVariableInstance = variable('background', 'white', options);
+        const bodySelectorInstance = selector(
+            'body',
+            {
+                color: ref(colorVariableInstance),
+                background: ref(backgroundVariableInstance)
+            },
+            options
+        );
 
         expect(consumeTheme(themeInstance)).toBe(`:root {
     --${colorVariableInstance.__name}: ${colorVariableInstance.__value as string};
@@ -397,11 +428,11 @@ ${bodySelectorInstance.__name} {
 
     it('should handle themes without variables', () => {
         const themeName = 'no-variables';
-        const themeInstance = theme(themeName);
+        const themeInstance = theme(themeName, options);
         const containerSelectorInstance = selector(
             '.container',
             { color: ref('color') },
-            { theme: themeName }
+            { theme: themeName, ...options }
         );
 
         expect(consumeTheme(themeInstance)).toBe(`.no-variables-theme {
@@ -413,8 +444,8 @@ ${bodySelectorInstance.__name} {
     });
 
     it('should handle themes without selectors', () => {
-        const themeInstance = theme('no-selectors');
-        variable('color', 'black', { theme: themeInstance });
+        const themeInstance = theme('no-selectors', options);
+        variable('color', 'black', { theme: themeInstance, ...options });
 
         expect(consumeTheme(themeInstance)).toBe(`.no-selectors-theme {
     --color: black;
@@ -423,20 +454,20 @@ ${bodySelectorInstance.__name} {
     });
 
     it('should handle empty themes', () => {
-        const themeInstance = theme('empty');
+        const themeInstance = theme('empty', options);
 
         expect(consumeTheme(themeInstance)).toBe('');
     });
 
     it('should correctly indent nested selectors', () => {
-        const themeInstance = theme('nested');
+        const themeInstance = theme('nested', options);
 
         selector(
             '.container .nested',
             {
                 color: ref('color')
             },
-            { theme: themeInstance }
+            { theme: themeInstance, ...options }
         );
 
         expect(consumeTheme(themeInstance)).toBe(`.nested-theme {

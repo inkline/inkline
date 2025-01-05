@@ -1,11 +1,11 @@
 import {
-    defaultDefinitionOptions,
     ref,
     selector,
     nsvariables,
     vref,
     toVariableKey,
-    setExportsNamespace
+    setExportsNamespace,
+    DefinitionOptions
 } from '@inkline/core';
 import { merge } from '@inkline/utils';
 import {
@@ -31,7 +31,10 @@ type BreadcrumbSizeVariant = (typeof defaultBreadcrumbSizes)[number];
  * Config
  */
 
-export function useBreadcrumbThemeColorConfig(variant?: BreadcrumbColorVariant) {
+export function useBreadcrumbThemeColorConfig(
+    variant: BreadcrumbColorVariant,
+    options: DefinitionOptions
+) {
     const {
         contrastTextColorLightH,
         contrastTextColorLightS,
@@ -41,7 +44,7 @@ export function useBreadcrumbThemeColorConfig(variant?: BreadcrumbColorVariant) 
         contrastTextColorDarkS,
         contrastTextColorDarkL,
         contrastTextColorDarkA
-    } = useContrastTextColor();
+    } = useContrastTextColor(options);
 
     return {
         light: {
@@ -60,12 +63,15 @@ export function useBreadcrumbThemeColorConfig(variant?: BreadcrumbColorVariant) 
                 a: ref(contrastTextColorDarkA)
             }
         }
-    }[variant ?? defaultBreadcrumbColor];
+    }[variant];
 }
 
-export function useBreadcrumbThemeSizeConfig(variant?: BreadcrumbSizeVariant) {
-    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize();
-    const { spacingSm, spacingMd, spacingLg } = useSpacing();
+export function useBreadcrumbThemeSizeConfig(
+    variant: BreadcrumbSizeVariant,
+    options: DefinitionOptions
+) {
+    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize(options);
+    const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
 
     return {
         sm: {
@@ -95,13 +101,14 @@ export function useBreadcrumbThemeSizeConfig(variant?: BreadcrumbSizeVariant) {
                 left: ref(spacingLg)
             }
         }
-    }[variant ?? defaultBreadcrumbSize];
+    }[variant];
 }
 
-export function useBreadcrumbThemeConfig() {
-    const { spacing } = useSpacing();
-    const { textColorWeaker } = useTextColor();
-    const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
+export function useBreadcrumbThemeConfig(options: DefinitionOptions) {
+    const { spacing } = useSpacing(options);
+    const { textColorWeaker } = useTextColor(options);
+    const { transitionProperty, transitionDuration, transitionTimingFunction } =
+        useTransition(options);
 
     return merge(
         {
@@ -121,8 +128,8 @@ export function useBreadcrumbThemeConfig() {
                 color: ref(textColorWeaker)
             }
         },
-        useBreadcrumbThemeColorConfig(),
-        useBreadcrumbThemeSizeConfig()
+        useBreadcrumbThemeColorConfig(defaultBreadcrumbColor, options),
+        useBreadcrumbThemeSizeConfig(defaultBreadcrumbSize, options)
     );
 }
 
@@ -131,27 +138,27 @@ export function useBreadcrumbThemeConfig() {
  */
 
 export function useBreadcrumbThemeColorVariables(
-    variant?: BreadcrumbColorVariant,
-    options = defaultDefinitionOptions
+    variant: BreadcrumbColorVariant,
+    options: DefinitionOptions
 ) {
-    return nsvariables(ns, useBreadcrumbThemeColorConfig(variant), {
+    return nsvariables(ns, useBreadcrumbThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
 export function useBreadcrumbThemeSizeVariables(
-    variant?: BreadcrumbSizeVariant,
-    options = defaultDefinitionOptions
+    variant: BreadcrumbSizeVariant,
+    options: DefinitionOptions
 ) {
-    return nsvariables(ns, useBreadcrumbThemeSizeConfig(variant), {
+    return nsvariables(ns, useBreadcrumbThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useBreadcrumbThemeVariables(options = defaultDefinitionOptions) {
-    return nsvariables(ns, useBreadcrumbThemeConfig(), {
+export function useBreadcrumbThemeVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useBreadcrumbThemeConfig(options), {
         ...options,
         registerComposed: false
     });
@@ -161,20 +168,28 @@ export function useBreadcrumbThemeVariables(options = defaultDefinitionOptions) 
  * Selectors
  */
 
-export function useBreadcrumbThemeLayout() {
-    selector('.breadcrumb', {
-        display: 'flex'
-    });
+export function useBreadcrumbThemeLayout(options: DefinitionOptions) {
+    selector(
+        '.breadcrumb',
+        {
+            display: 'flex'
+        },
+        options
+    );
 
-    selector('.breadcrumb ol', {
-        display: 'flex',
-        flexWrap: 'wrap',
-        paddingLeft: 0,
-        listStyle: 'none'
-    });
+    selector(
+        '.breadcrumb ol',
+        {
+            display: 'flex',
+            flexWrap: 'wrap',
+            paddingLeft: 0,
+            listStyle: 'none'
+        },
+        options
+    );
 }
 
-export function useBreadcrumbThemeBaseSelectors() {
+export function useBreadcrumbThemeBaseSelectors(options: DefinitionOptions) {
     const {
         breadcrumbPadding,
         breadcrumbMargin,
@@ -182,74 +197,98 @@ export function useBreadcrumbThemeBaseSelectors() {
         breadcrumbTransitionProperty,
         breadcrumbTransitionDuration,
         breadcrumbTransitionTimingFunction
-    } = useBreadcrumbThemeVariables();
+    } = useBreadcrumbThemeVariables(options);
 
-    selector('.breadcrumb', {
-        fontSize: ref(breadcrumbFontSize),
-        padding: vref(breadcrumbPadding),
-        margin: vref(breadcrumbMargin),
-        transitionProperty: ref(breadcrumbTransitionProperty),
-        transitionDuration: ref(breadcrumbTransitionDuration),
-        transitionTimingFunction: ref(breadcrumbTransitionTimingFunction)
-    });
+    selector(
+        '.breadcrumb',
+        {
+            fontSize: ref(breadcrumbFontSize),
+            padding: vref(breadcrumbPadding),
+            margin: vref(breadcrumbMargin),
+            transitionProperty: ref(breadcrumbTransitionProperty),
+            transitionDuration: ref(breadcrumbTransitionDuration),
+            transitionTimingFunction: ref(breadcrumbTransitionTimingFunction)
+        },
+        options
+    );
 }
 
-export function useBreadcrumbThemeSizeSelectors(variant: BreadcrumbSizeVariant) {
+export function useBreadcrumbThemeSizeSelectors(
+    variant: BreadcrumbSizeVariant,
+    options: DefinitionOptions
+) {
     const {
         breadcrumbFontSize,
         breadcrumbPaddingTop,
         breadcrumbPaddingRight,
         breadcrumbPaddingBottom,
         breadcrumbPaddingLeft
-    } = useBreadcrumbThemeVariables();
+    } = useBreadcrumbThemeVariables(options);
     const {
         variantFontSize,
         variantPaddingTop,
         variantPaddingRight,
         variantPaddingBottom,
         variantPaddingLeft
-    } = setExportsNamespace(useBreadcrumbThemeSizeVariables(variant), 'variant');
+    } = setExportsNamespace(useBreadcrumbThemeSizeVariables(variant, options), 'variant');
 
-    selector(`.breadcrumb.-${variant}`, {
-        [toVariableKey(breadcrumbFontSize)]: ref(variantFontSize),
-        [toVariableKey(breadcrumbPaddingTop)]: ref(variantPaddingTop),
-        [toVariableKey(breadcrumbPaddingRight)]: ref(variantPaddingRight),
-        [toVariableKey(breadcrumbPaddingBottom)]: ref(variantPaddingBottom),
-        [toVariableKey(breadcrumbPaddingLeft)]: ref(variantPaddingLeft)
-    });
+    selector(
+        `.breadcrumb.-${variant}`,
+        {
+            [toVariableKey(breadcrumbFontSize)]: ref(variantFontSize),
+            [toVariableKey(breadcrumbPaddingTop)]: ref(variantPaddingTop),
+            [toVariableKey(breadcrumbPaddingRight)]: ref(variantPaddingRight),
+            [toVariableKey(breadcrumbPaddingBottom)]: ref(variantPaddingBottom),
+            [toVariableKey(breadcrumbPaddingLeft)]: ref(variantPaddingLeft)
+        },
+        options
+    );
 }
 
-export function useBreadcrumbThemeColorSelectors(variant: BreadcrumbColorVariant) {
+export function useBreadcrumbThemeColorSelectors(
+    variant: BreadcrumbColorVariant,
+    options: DefinitionOptions
+) {
     const { breadcrumbColorH, breadcrumbColorS, breadcrumbColorL, breadcrumbColorA } =
-        useBreadcrumbThemeVariables();
+        useBreadcrumbThemeVariables(options);
     const { variantColorH, variantColorS, variantColorL, variantColorA } = setExportsNamespace(
-        useBreadcrumbThemeColorVariables(variant),
+        useBreadcrumbThemeColorVariables(variant, options),
         'variant'
     );
 
-    selector(`.breadcrumb.-${variant}`, {
-        [toVariableKey(breadcrumbColorH)]: ref(variantColorH),
-        [toVariableKey(breadcrumbColorS)]: ref(variantColorS),
-        [toVariableKey(breadcrumbColorL)]: ref(variantColorL),
-        [toVariableKey(breadcrumbColorA)]: ref(variantColorA)
-    });
+    selector(
+        `.breadcrumb.-${variant}`,
+        {
+            [toVariableKey(breadcrumbColorH)]: ref(variantColorH),
+            [toVariableKey(breadcrumbColorS)]: ref(variantColorS),
+            [toVariableKey(breadcrumbColorL)]: ref(variantColorL),
+            [toVariableKey(breadcrumbColorA)]: ref(variantColorA)
+        },
+        options
+    );
 }
 
 /**
  * Composables
  */
 
-export function useBreadcrumbThemeSizes(sizes = defaultBreadcrumbSizes) {
-    sizes.forEach(useBreadcrumbThemeSizeSelectors);
+export function useBreadcrumbThemeSizes(
+    sizes: BreadcrumbSizeVariant[],
+    options: DefinitionOptions
+) {
+    sizes.forEach((size) => useBreadcrumbThemeSizeSelectors(size, options));
 }
 
-export function useBreadcrumbThemeColors(colors = defaultBreadcrumbColors) {
-    colors.forEach(useBreadcrumbThemeColorSelectors);
+export function useBreadcrumbThemeColors(
+    colors: BreadcrumbColorVariant[],
+    options: DefinitionOptions
+) {
+    colors.forEach((color) => useBreadcrumbThemeColorSelectors(color, options));
 }
 
-export function useBreadcrumbTheme() {
-    useBreadcrumbThemeLayout();
-    useBreadcrumbThemeBaseSelectors();
-    useBreadcrumbThemeSizes();
-    useBreadcrumbThemeColors();
+export function useBreadcrumbTheme(options: DefinitionOptions) {
+    useBreadcrumbThemeLayout(options);
+    useBreadcrumbThemeBaseSelectors(options);
+    useBreadcrumbThemeColors([...defaultBreadcrumbColors], options);
+    useBreadcrumbThemeSizes([...defaultBreadcrumbSizes], options);
 }

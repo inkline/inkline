@@ -1,0 +1,13 @@
+{
+    "extends": "../packages/tooling/typescript-config/tsconfig.json",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "types": [
+            "vitest/globals"
+        ]
+    },
+    "include": [
+        ".vitepress/**/*.ts",
+        "inkline.config.ts"
+    ]
+}

@@ -5,7 +5,7 @@ import {
     TokenValue,
     Variable
 } from '@inkline/core';
-import { ref, variable, defaultRenameFn, defaultDefinitionOptions } from '@inkline/core';
+import { ref, variable, defaultRenameFn } from '@inkline/core';
 import { toCamelCase } from '@inkline/utils';
 
 /**
@@ -48,7 +48,7 @@ export function useVariantsFactory<RootKey extends string, VariantKeys extends s
     variantsMap: Record<VariantKeys, ApplyVariantFn>,
     options: DefinitionOptions & {
         rename?: RenameFn;
-    } = defaultDefinitionOptions
+    }
 ) {
     type ReturnKey = VariantsReturnKey<RootKey, VariantKeys>;
 

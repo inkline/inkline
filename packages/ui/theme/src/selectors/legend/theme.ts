@@ -1,11 +1,11 @@
-import { defaultDefinitionOptions, ref, selector, nsvariables, vref } from '@inkline/core';
+import { DefinitionOptions, ref, selector, nsvariables, vref } from '@inkline/core';
 import { useFontSize, useSpacing } from '../../variables';
 
 const ns = 'legend';
 
-export function useLegendThemeConfig() {
-    const { spacing } = useSpacing();
-    const { fontSizeLg } = useFontSize();
+export function useLegendThemeConfig(options: DefinitionOptions) {
+    const { spacing } = useSpacing(options);
+    const { fontSizeLg } = useFontSize(options);
 
     return {
         margin: {
@@ -15,12 +15,12 @@ export function useLegendThemeConfig() {
     };
 }
 
-export function useLegendThemeVariables(options = defaultDefinitionOptions) {
-    return nsvariables(ns, useLegendThemeConfig(), options);
+export function useLegendThemeVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useLegendThemeConfig(options), options);
 }
 
-export function useLegendThemeSelectors() {
-    const { legendMargin, legendFontSize } = useLegendThemeVariables();
+export function useLegendThemeSelectors(options: DefinitionOptions) {
+    const { legendMargin, legendFontSize } = useLegendThemeVariables(options);
 
     // By using `float: left`, the legend will behave like a block element.
     // This way the border of a fieldset wraps around the legend if present.
@@ -33,15 +33,15 @@ export function useLegendThemeSelectors() {
         margin: vref(legendMargin),
         fontSize: ref(legendFontSize),
         lineHeight: 'inherit'
-    });
+    }, options);
 
     // Fix wrapping bug.
     selector('legend + *', {
         clear: 'left'
-    });
+    }, options);
 }
 
-export function useLegendTheme() {
-    useLegendThemeVariables();
-    useLegendThemeSelectors();
+export function useLegendTheme(options: DefinitionOptions) {
+    useLegendThemeVariables(options);
+    useLegendThemeSelectors(options);
 }

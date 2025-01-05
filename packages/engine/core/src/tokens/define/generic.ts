@@ -2,7 +2,7 @@ import {
     NamespacedKey,
     TokenValue,
     Variable,
-    DefineOptions,
+    VariablesOptions,
     NamespaceType,
     NamespacedMap
 } from '../../types';
@@ -20,7 +20,7 @@ export function defineGeneric<Namespace extends NamespaceType, Name extends stri
     ns: Namespace,
     name: Name,
     value: SourceMapGeneric,
-    options?: DefineOptions
+    options: VariablesOptions
 ): OutputMapGeneric<Namespace, Name> {
     const generic = nsvariable(ns, name, value, options);
 

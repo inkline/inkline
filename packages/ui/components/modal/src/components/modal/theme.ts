@@ -41,7 +41,7 @@ const defaultModalSizes = ['sm', 'md', 'lg'] as const;
 type ModalColorVariant = (typeof defaultModalColors)[number];
 type ModalSizeVariant = (typeof defaultModalSizes)[number];
 
-export function useModalThemeVariables(options = defaultDefinitionOptions) {
+export function useModalThemeVariables(options: DefinitionOptions) {
     const {
         borderTopStyle,
         borderTopWidth,
@@ -51,26 +51,27 @@ export function useModalThemeVariables(options = defaultDefinitionOptions) {
         borderBottomWidth,
         borderLeftStyle,
         borderLeftWidth
-    } = useBorder();
-    const { colorLightShade50 } = useBrandColorVariants();
-    const { spacing } = useSpacing();
+    } = useBorder(options);
+    const { colorLightShade50 } = useBrandColorVariants(options);
+    const { spacing } = useSpacing(options);
     const {
         borderTopLeftRadius,
         borderTopRightRadius,
         borderBottomRightRadius,
         borderBottomLeftRadius
-    } = useBorderRadius();
+    } = useBorderRadius(options);
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
         boxShadowBlurRadius,
         boxShadowSpreadRadius,
         boxShadowColor
-    } = useBoxShadow();
-    const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors();
-    const { contrastTextColorLight } = useContrastTextColor();
-    const { fontSize } = useFontSize();
-    const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
+    } = useBoxShadow(options);
+    const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors(options);
+    const { contrastTextColorLight } = useContrastTextColor(options);
+    const { fontSize } = useFontSize(options);
+    const { transitionProperty, transitionDuration, transitionTimingFunction } =
+        useTransition(options);
 
     return {
         ...nsvariables(
@@ -198,8 +199,8 @@ export function useModalThemeVariables(options = defaultDefinitionOptions) {
     };
 }
 
-export function useModalThemeLayout() {
-    const { modalZIndex } = useModalThemeVariables();
+export function useModalThemeLayout(options: DefinitionOptions) {
+    const { modalZIndex } = useModalThemeVariables(options);
 
     selector('.modal-wrapper', {
         position: 'fixed',
@@ -271,7 +272,7 @@ export function useModalThemeLayout() {
     });
 }
 
-export function useModalThemeBase() {
+export function useModalThemeBase(options: DefinitionOptions) {
     const {
         modalBorderStyle,
         modalBorderColor,
@@ -297,7 +298,7 @@ export function useModalThemeBase() {
         modalFooterColor,
         modalFooterButtonMargin,
         modalIconMargin
-    } = useModalThemeVariables();
+    } = useModalThemeVariables(options);
 
     selector('.modal-wrapper', {
         background: ref(modalWrapperBackground)
@@ -392,8 +393,8 @@ export function useModalThemeSizeFactory(variant: ModalSizeVariant) {
         modalBorderBottomLeftRadius,
         modalFontSize,
         modalMaxWidth
-    } = useModalThemeVariables();
-    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
+    } = useModalThemeVariables(options);
+    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
     const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
     const sizeNs = [ns, variant] as const;
 
@@ -458,7 +459,7 @@ export function useModalThemeSizeFactory(variant: ModalSizeVariant) {
 }
 
 export function useModalThemeSizes(sizes = defaultModalSizes) {
-    sizes.forEach(useModalThemeSizeFactory);
+    sizes.forEach((size) => useModalThemeSizeFactory(size, options));
 }
 
 export function useModalThemeColorFactory(variant: ModalColorVariant) {
@@ -466,8 +467,8 @@ export function useModalThemeColorFactory(variant: ModalColorVariant) {
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
 
-    const colors = useColors();
-    const contrastTextColors = useContrastTextColor();
+    const colors = useColors(options);
+    const contrastTextColors = useContrastTextColor(options);
 
     const { borderColor, background, color } = stripExportsNamespace(
         nsvariables(colorNs, {
@@ -493,10 +494,10 @@ export function useModalThemeColorFactory(variant: ModalColorVariant) {
 }
 
 export function useModalThemeColors(colors = defaultModalColors) {
-    colors.forEach(useModalThemeColorFactory);
+    colors.forEach((color) => useModalThemeColorFactory(color, options));
 }
 
-export function useModalThemeVariants() {
+export function useModalThemeVariants(options: DefinitionOptions) {
     selector('.modal.-fullscreen', {
         width: '100%',
         height: '100%',
@@ -522,11 +523,11 @@ export function useModalThemeVariants() {
     });
 }
 
-export function useModalTheme() {
-    useModalThemeVariables();
-    useModalThemeLayout();
-    useModalThemeBase();
-    useModalThemeSizes();
-    useModalThemeColors();
-    useModalThemeVariants();
+export function useModalTheme(options: DefinitionOptions) {
+    useModalThemeVariables(options);
+    useModalThemeLayout(options);
+    useModalThemeBase(options);
+    useModalThemeSizes(options);
+    useModalThemeColors(options);
+    useModalThemeVariants(options);
 }

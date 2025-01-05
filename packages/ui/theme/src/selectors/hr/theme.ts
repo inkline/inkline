@@ -1,11 +1,11 @@
-import { defaultDefinitionOptions, ref, selector, nsvariables, vref } from '@inkline/core';
+import { DefinitionOptions, ref, selector, nsvariables, vref } from '@inkline/core';
 import { useBorder, useSpacing } from '../../variables';
 
 const ns = 'hr';
 
-export function useHrThemeConfig() {
-    const { spacing } = useSpacing();
-    const { borderTopWidth, borderTopStyle, borderTopColor } = useBorder();
+export function useHrThemeConfig(options: DefinitionOptions) {
+    const { spacing } = useSpacing(options);
+    const { borderTopWidth, borderTopStyle, borderTopColor } = useBorder(options);
 
     return {
         border: {
@@ -24,11 +24,11 @@ export function useHrThemeConfig() {
     };
 }
 
-export function useHrThemeVariables(options = defaultDefinitionOptions) {
-    return nsvariables(ns, useHrThemeConfig(), options);
+export function useHrThemeVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useHrThemeConfig(options), options);
 }
 
-export function useHrThemeSelectors() {
+export function useHrThemeSelectors(options: DefinitionOptions) {
     const {
         hrBorderTopColor,
         hrBorderRightColor,
@@ -37,7 +37,7 @@ export function useHrThemeSelectors() {
         hrBorderStyle,
         hrBorderWidth,
         hrMargin
-    } = useHrThemeVariables();
+    } = useHrThemeVariables(options);
 
     selector('hr', {
         borderTopColor: ref(hrBorderTopColor),
@@ -47,10 +47,10 @@ export function useHrThemeSelectors() {
         borderStyle: vref(hrBorderStyle),
         borderWidth: vref(hrBorderWidth),
         margin: vref(hrMargin)
-    });
+    }, options);
 }
 
-export function useHrTheme() {
-    useHrThemeVariables();
-    useHrThemeSelectors();
+export function useHrTheme(options: DefinitionOptions) {
+    useHrThemeVariables(options);
+    useHrThemeSelectors(options);
 }

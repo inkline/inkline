@@ -8,10 +8,10 @@ import { defaultThemeName } from './constants';
  *
  * If `options.default` is `true`, the variable will only be added if it does not already exist in the theme.
  */
-export function addVariableToTheme(variable: Variable, options?: DefinitionOptions) {
+export function addVariableToTheme(variable: Variable, options: DefinitionOptions) {
     const themeInstance = isTheme(options?.theme)
         ? options.theme
-        : theme(options?.theme ?? defaultThemeName);
+        : theme(options?.theme ?? defaultThemeName, options);
 
     if (options?.default && themeInstance.variables[variable.__name]) {
         return;
@@ -24,19 +24,19 @@ export function addVariableToTheme(variable: Variable, options?: DefinitionOptio
 /**
  * Adds a selector to a theme.
  */
-export function addSelectorToTheme(selector: Selector | AtRule, options?: SelectorOptions) {
+export function addSelectorToTheme(selector: Selector | AtRule, options: SelectorOptions) {
     const themeInstance = isTheme(options?.theme)
         ? options.theme
-        : theme(options?.theme ?? defaultThemeName);
+        : theme(options?.theme ?? defaultThemeName, options);
 
     themeInstance.selectors.push(selector);
     themeInstance.__keys.selectors.add(selector.__id);
 }
 
-export function removeSelectorFromTheme(id: string, options?: SelectorOptions) {
+export function removeSelectorFromTheme(id: string, options: SelectorOptions) {
     const themeInstance = isTheme(options?.theme)
         ? options.theme
-        : theme(options?.theme ?? defaultThemeName);
+        : theme(options?.theme ?? defaultThemeName, options);
 
     const selectorIndex = themeInstance.selectors.findIndex((selector) => selector.__id === id);
     if (selectorIndex === -1) {

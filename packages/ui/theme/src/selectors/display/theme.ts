@@ -1,5 +1,7 @@
+import { DefinitionOptions } from '@inkline/core';
+
 // import {
-//     defaultDefinitionOptions,
+//     DefinitionOptions,
 //     multiply,
 //     addVariableNamespace,
 //     nsvariable,
@@ -17,15 +19,15 @@
 //
 // const ns = 'display';
 //
-// export function useDisplayThemeVariables(options = defaultDefinitionOptions) {
-//     const { marginBottom } = useSpacing();
-//     const { fontFamilyBaseSecondary } = useFontFamily();
-//     const { fontStyleNormal } = useFontStyle();
-//     const { fontSize } = useFontSize();
-//     const { fontWeightBold } = useFontWeight();
+// export function useDisplayThemeVariables(options: DefinitionOptions) {    const options = { ...defaultDefinitionOptions, ...userOptions }
+//     const { marginBottom } = useSpacing(options);
+//     const { fontFamilyBaseSecondary } = useFontFamily(options);
+//     const { fontStyleNormal } = useFontStyle(options);
+//     const { fontSize } = useFontSize(options);
+//     const { fontWeightBold } = useFontWeight(options);
 //
 //     const { scalePow1, scalePow2, scalePow3, scalePow4, scalePow5 } =
-//         useScale();
+//         useScale(options);
 //
 //     const displayMarginBottom = addVariableNamespace(ns, marginBottom, options);
 //     const displayFontFamily = nsvariable(ns, 'font-family', ref(fontFamilyBaseSecondary), options);
@@ -90,8 +92,7 @@
 //     };
 // }
 //
-// export function useDisplayThemeSelectors() {
-//     const {
+// export function useDisplayThemeSelectors(options: DefinitionOptions) { //     const {
 //         displayMarginBottom,
 //         displayFontFamily,
 //         displayFontStyle,
@@ -103,7 +104,7 @@
 //         d4FontSize,
 //         d5FontSize,
 //         d6FontSize
-//     } = useDisplayThemeVariables();
+//     } = useDisplayThemeVariables(options);
 //
 //     selector('.d1, .d2, .d3, .d4, .d5, .d6', {
 //         marginBottom: ref(displayMarginBottom),
@@ -139,7 +140,8 @@
 //     });
 // }
 //
-export function useDisplayTheme() {
-//     useDisplayThemeVariables();
-//     useDisplayThemeSelectors();
+
+export function useDisplayTheme(_options: DefinitionOptions) {
+//     useDisplayThemeVariables(options);
+//     useDisplayThemeSelectors(options);
 }

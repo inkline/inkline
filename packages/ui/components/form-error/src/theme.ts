@@ -3,10 +3,10 @@ import { useBrandColors, useFontSize, useSpacing } from '@inkline/theme';
 
 const ns = 'form-error';
 
-export function useFormErrorThemeVariables(options = defaultDefinitionOptions) {
-    const { colorDanger } = useBrandColors();
-    const { fontSizeSm } = useFontSize();
-    const { spacing } = useSpacing();
+export function useFormErrorThemeVariables(options: DefinitionOptions) {
+    const { colorDanger } = useBrandColors(options);
+    const { fontSizeSm } = useFontSize(options);
+    const { spacing } = useSpacing(options);
 
     return {
         ...nsvariables(
@@ -26,7 +26,9 @@ export function useFormErrorThemeVariables(options = defaultDefinitionOptions) {
     };
 }
 
-export function useFormErrorThemeLayout() {
+export function useFormErrorThemeLayout(options: DefinitionOptions
+)
+{
     selector('.form-error', {
         position: 'relative',
         padding: 0,
@@ -38,8 +40,10 @@ export function useFormErrorThemeLayout() {
     });
 }
 
-export function useFormErrorThemeBase() {
-    const { formErrorColor, formErrorFontSize, formErrorMargin } = useFormErrorThemeVariables();
+export function useFormErrorThemeBase(options: DefinitionOptions
+)
+{
+    const { formErrorColor, formErrorFontSize, formErrorMargin } = useFormErrorThemeVariables(options);
 
     selector('.form-error', {
         color: ref(formErrorColor),
@@ -48,7 +52,9 @@ export function useFormErrorThemeBase() {
     });
 }
 
-export function useFormErrorTheme() {
-    useFormErrorThemeLayout();
-    useFormErrorThemeBase();
+export function useFormErrorTheme(options: DefinitionOptions
+)
+{
+    useFormErrorThemeLayout(options);
+    useFormErrorThemeBase(options);
 }

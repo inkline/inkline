@@ -1,12 +1,15 @@
 import { variable } from './variable';
 import { ref, vref } from './ref';
 import { TokenType } from '../types';
+import { createContext } from '../context';
+
+const options = { context: createContext() };
 
 describe('ref', () => {
     it('should create a reference to a variable', () => {
         const variableName = 'color';
         const variableValue = 'red';
-        const variableInstance = variable(variableName, variableValue);
+        const variableInstance = variable(variableName, variableValue, options);
         const refInstance = ref(variableInstance);
 
         expect(refInstance).toEqual({
@@ -42,7 +45,7 @@ describe('vref', () => {
     it('should create a reference to a variable using the variable value', () => {
         const variableName = 'color';
         const variableValue = 'red';
-        const variableInstance = variable(variableName, variableValue);
+        const variableInstance = variable(variableName, variableValue, options);
         const refInstance = vref(variableInstance);
 
         expect(refInstance).toEqual({

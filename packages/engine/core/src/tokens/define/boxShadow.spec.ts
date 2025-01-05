@@ -1,23 +1,46 @@
 import { defineBoxShadow } from './boxShadow';
 import { nsvariable } from '../../tokens';
 import { ref } from '../../tokens';
+import { createContext } from '../../context';
+
+const options = { context: createContext() };
 
 describe('defineBoxShadow', () => {
     it('should create default box shadow variables when no value is provided', () => {
-        const result = defineBoxShadow('namespace', '');
+        const result = defineBoxShadow('namespace', '', options);
         expect(result).toEqual({
-            namespaceBoxShadowOffsetX: nsvariable('namespace', 'box-shadow-offset-x', 0),
-            namespaceBoxShadowOffsetY: nsvariable('namespace', 'box-shadow-offset-y', 0),
-            namespaceBoxShadowBlurRadius: nsvariable('namespace', 'box-shadow-blur-radius', 0),
-            namespaceBoxShadowSpreadRadius: nsvariable('namespace', 'box-shadow-spread-radius', 0),
-            namespaceBoxShadowColor: nsvariable('namespace', 'box-shadow-color', 'transparent'),
-            namespaceBoxShadow: nsvariable('namespace', 'box-shadow', [
-                ref(nsvariable('namespace', 'box-shadow-offset-x', 0)),
-                ref(nsvariable('namespace', 'box-shadow-offset-y', 0)),
-                ref(nsvariable('namespace', 'box-shadow-blur-radius', 0)),
-                ref(nsvariable('namespace', 'box-shadow-spread-radius', 0)),
-                ref(nsvariable('namespace', 'box-shadow-color', 'transparent'))
-            ])
+            namespaceBoxShadowOffsetX: nsvariable('namespace', 'box-shadow-offset-x', 0, options),
+            namespaceBoxShadowOffsetY: nsvariable('namespace', 'box-shadow-offset-y', 0, options),
+            namespaceBoxShadowBlurRadius: nsvariable(
+                'namespace',
+                'box-shadow-blur-radius',
+                0,
+                options
+            ),
+            namespaceBoxShadowSpreadRadius: nsvariable(
+                'namespace',
+                'box-shadow-spread-radius',
+                0,
+                options
+            ),
+            namespaceBoxShadowColor: nsvariable(
+                'namespace',
+                'box-shadow-color',
+                'transparent',
+                options
+            ),
+            namespaceBoxShadow: nsvariable(
+                'namespace',
+                'box-shadow',
+                [
+                    ref(nsvariable('namespace', 'box-shadow-offset-x', 0, options)),
+                    ref(nsvariable('namespace', 'box-shadow-offset-y', 0, options)),
+                    ref(nsvariable('namespace', 'box-shadow-blur-radius', 0, options)),
+                    ref(nsvariable('namespace', 'box-shadow-spread-radius', 0, options)),
+                    ref(nsvariable('namespace', 'box-shadow-color', 'transparent', options))
+                ],
+                options
+            )
         });
     });
 
@@ -29,60 +52,104 @@ describe('defineBoxShadow', () => {
             spreadRadius: '0px',
             color: 'rgba(0, 0, 0, 0.1)'
         };
-        const result = defineBoxShadow('namespace', value);
+        const result = defineBoxShadow('namespace', value, options);
         expect(result).toEqual({
-            namespaceBoxShadowOffsetX: nsvariable('namespace', 'box-shadow-offset-x', '2px'),
-            namespaceBoxShadowOffsetY: nsvariable('namespace', 'box-shadow-offset-y', '4px'),
-            namespaceBoxShadowBlurRadius: nsvariable('namespace', 'box-shadow-blur-radius', '8px'),
+            namespaceBoxShadowOffsetX: nsvariable(
+                'namespace',
+                'box-shadow-offset-x',
+                '2px',
+                options
+            ),
+            namespaceBoxShadowOffsetY: nsvariable(
+                'namespace',
+                'box-shadow-offset-y',
+                '4px',
+                options
+            ),
+            namespaceBoxShadowBlurRadius: nsvariable(
+                'namespace',
+                'box-shadow-blur-radius',
+                '8px',
+                options
+            ),
             namespaceBoxShadowSpreadRadius: nsvariable(
                 'namespace',
                 'box-shadow-spread-radius',
-                '0px'
+                '0px',
+                options
             ),
             namespaceBoxShadowColor: nsvariable(
                 'namespace',
                 'box-shadow-color',
-                'rgba(0, 0, 0, 0.1)'
+                'rgba(0, 0, 0, 0.1)',
+                options
             ),
-            namespaceBoxShadow: nsvariable('namespace', 'box-shadow', [
-                ref(nsvariable('namespace', 'box-shadow-offset-x', '2px')),
-                ref(nsvariable('namespace', 'box-shadow-offset-y', '4px')),
-                ref(nsvariable('namespace', 'box-shadow-blur-radius', '8px')),
-                ref(nsvariable('namespace', 'box-shadow-spread-radius', '0px')),
-                ref(nsvariable('namespace', 'box-shadow-color', 'rgba(0, 0, 0, 0.1)'))
-            ])
+            namespaceBoxShadow: nsvariable(
+                'namespace',
+                'box-shadow',
+                [
+                    ref(nsvariable('namespace', 'box-shadow-offset-x', '2px', options)),
+                    ref(nsvariable('namespace', 'box-shadow-offset-y', '4px', options)),
+                    ref(nsvariable('namespace', 'box-shadow-blur-radius', '8px', options)),
+                    ref(nsvariable('namespace', 'box-shadow-spread-radius', '0px', options)),
+                    ref(nsvariable('namespace', 'box-shadow-color', 'rgba(0, 0, 0, 0.1)', options))
+                ],
+                options
+            )
         });
     });
 
     it('should set box shadow properties from string value', () => {
         const value = '2px 4px 8px 0px rgba(0, 0, 0, 0.1)';
-        const result = defineBoxShadow('namespace', value);
+        const result = defineBoxShadow('namespace', value, options);
         expect(result).toEqual({
-            namespaceBoxShadowOffsetX: nsvariable('namespace', 'box-shadow-offset-x', '2px'),
-            namespaceBoxShadowOffsetY: nsvariable('namespace', 'box-shadow-offset-y', '4px'),
-            namespaceBoxShadowBlurRadius: nsvariable('namespace', 'box-shadow-blur-radius', '8px'),
+            namespaceBoxShadowOffsetX: nsvariable(
+                'namespace',
+                'box-shadow-offset-x',
+                '2px',
+                options
+            ),
+            namespaceBoxShadowOffsetY: nsvariable(
+                'namespace',
+                'box-shadow-offset-y',
+                '4px',
+                options
+            ),
+            namespaceBoxShadowBlurRadius: nsvariable(
+                'namespace',
+                'box-shadow-blur-radius',
+                '8px',
+                options
+            ),
             namespaceBoxShadowSpreadRadius: nsvariable(
                 'namespace',
                 'box-shadow-spread-radius',
-                '0px'
+                '0px',
+                options
             ),
             namespaceBoxShadowColor: nsvariable(
                 'namespace',
                 'box-shadow-color',
-                'rgba(0, 0, 0, 0.1)'
+                'rgba(0, 0, 0, 0.1)',
+                options
             ),
-            namespaceBoxShadow: nsvariable('namespace', 'box-shadow', [
-                ref(nsvariable('namespace', 'box-shadow-offset-x', '2px')),
-                ref(nsvariable('namespace', 'box-shadow-offset-y', '4px')),
-                ref(nsvariable('namespace', 'box-shadow-blur-radius', '8px')),
-                ref(nsvariable('namespace', 'box-shadow-spread-radius', '0px')),
-                ref(nsvariable('namespace', 'box-shadow-color', 'rgba(0, 0, 0, 0.1)'))
-            ])
+            namespaceBoxShadow: nsvariable(
+                'namespace',
+                'box-shadow',
+                [
+                    ref(nsvariable('namespace', 'box-shadow-offset-x', '2px', options)),
+                    ref(nsvariable('namespace', 'box-shadow-offset-y', '4px', options)),
+                    ref(nsvariable('namespace', 'box-shadow-blur-radius', '8px', options)),
+                    ref(nsvariable('namespace', 'box-shadow-spread-radius', '0px', options)),
+                    ref(nsvariable('namespace', 'box-shadow-color', 'rgba(0, 0, 0, 0.1)', options))
+                ],
+                options
+            )
         });
     });
 
     it('should return object with namespaced properties', () => {
-        const result = defineBoxShadow('namespace', '2px 4px 8px black');
+        const result = defineBoxShadow('namespace', '2px 4px 8px black', options);
 
         const {
             namespaceBoxShadowOffsetX,
@@ -102,7 +169,7 @@ describe('defineBoxShadow', () => {
     });
 
     it('should return object with non-namespaced properties', () => {
-        const result = defineBoxShadow('', '2px 4px 8px black');
+        const result = defineBoxShadow('', '2px 4px 8px black', options);
 
         const {
             boxShadowOffsetX,

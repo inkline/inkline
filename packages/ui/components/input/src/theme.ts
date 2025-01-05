@@ -35,7 +35,7 @@ const defaultInputSizes = ['sm', 'md', 'lg'] as const;
 type InputColorVariant = (typeof defaultInputColors)[number];
 type InputSizeVariant = (typeof defaultInputSizes)[number];
 
-export function useInputThemeVariables(options = defaultDefinitionOptions) {
+export function useInputThemeVariables(options: DefinitionOptions) {
     const {
         borderTopStyle,
         borderTopWidth,
@@ -45,30 +45,31 @@ export function useInputThemeVariables(options = defaultDefinitionOptions) {
         borderBottomWidth,
         borderLeftStyle,
         borderLeftWidth
-    } = useBorder();
-    const { colorPrimary, colorDanger } = useBrandColors();
+    } = useBorder(options);
+    const { colorPrimary, colorDanger } = useBrandColors(options);
     const { colorLightTint100, colorLightTint50, colorLightShade50, colorLightShade100 } =
-        useBrandColorVariants();
-    const { spacing } = useSpacing();
+        useBrandColorVariants(options);
+    const { spacing } = useSpacing(options);
     const {
         borderTopLeftRadius,
         borderTopRightRadius,
         borderBottomRightRadius,
         borderBottomLeftRadius
-    } = useBorderRadius();
+    } = useBorderRadius(options);
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
         boxShadowBlurRadius,
         boxShadowSpreadRadius,
         boxShadowColor
-    } = useBoxShadow();
-    const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors();
-    const { contrastTextColorLight } = useContrastTextColor();
-    const { fontSize } = useFontSize();
-    const { lineHeight } = useLineHeight();
-    const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
-    const { textColorWeak, textColorWeaker } = useTextColor();
+    } = useBoxShadow(options);
+    const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors(options);
+    const { contrastTextColorLight } = useContrastTextColor(options);
+    const { fontSize } = useFontSize(options);
+    const { lineHeight } = useLineHeight(options);
+    const { transitionProperty, transitionDuration, transitionTimingFunction } =
+        useTransition(options);
+    const { textColorWeak, textColorWeaker } = useTextColor(options);
 
     return {
         ...nsvariables(
@@ -206,7 +207,7 @@ export function useInputThemeVariables(options = defaultDefinitionOptions) {
     };
 }
 
-export function useInputThemeLayout() {
+export function useInputThemeLayout(options: DefinitionOptions) {
     selector('.input', {
         display: 'block',
         verticalAlign: 'middle',
@@ -347,7 +348,7 @@ export function useInputThemeLayout() {
     });
 }
 
-export function useInputThemeLayoutModifiers() {
+export function useInputThemeLayoutModifiers(options: DefinitionOptions) {
     selector('.input.-prepended .input-field', {
         borderTopLeftRadius: 0,
         borderBottomLeftRadius: 0
@@ -379,7 +380,7 @@ export function useInputThemeLayoutModifiers() {
     // );
 }
 
-export function useInputThemeBase() {
+export function useInputThemeBase(options: DefinitionOptions) {
     const {
         inputBackground,
         inputBorderStyle,
@@ -409,7 +410,7 @@ export function useInputThemeBase() {
         inputIconWidth,
         inputIconHeight,
         inputIconColor
-    } = useInputThemeVariables();
+    } = useInputThemeVariables(options);
 
     selector('.input .input-field', {
         background: ref(inputBackground),
@@ -540,8 +541,8 @@ export function useInputThemeSizeFactory(variant: InputSizeVariant) {
         inputBorderBottomRightRadius,
         inputBorderBottomLeftRadius,
         inputFontSize
-    } = useInputThemeVariables();
-    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
+    } = useInputThemeVariables(options);
+    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
     const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
     const sizeNs = [ns, variant] as const;
 
@@ -632,16 +633,16 @@ export function useInputThemeSizeFactory(variant: InputSizeVariant) {
 }
 
 export function useInputThemeSizes(sizes = defaultInputSizes) {
-    sizes.forEach(useInputThemeSizeFactory);
+    sizes.forEach((size) => useInputThemeSizeFactory(size, options));
 }
 
 export function useInputThemeColorFactory(variant: InputColorVariant) {
     const colorKey = capitalize(variant);
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
-    const brandColors = useBrandColors();
-    const brandColorVariants = useBrandColorVariants();
-    const neutralColors = useNeutralColors();
-    const contrastTextColors = useContrastTextColor();
+    const brandColors = useBrandColors(options);
+    const brandColorVariants = useBrandColorVariants(options);
+    const neutralColors = useNeutralColors(options);
+    const contrastTextColors = useContrastTextColor(options);
     const colorNs = [ns, variant] as const;
 
     const { borderColor, background, color } = stripExportsNamespace(
@@ -738,14 +739,14 @@ export function useInputThemeColorFactory(variant: InputColorVariant) {
 }
 
 export function useInputThemeColors(colors = defaultInputColors) {
-    colors.forEach(useInputThemeColorFactory);
+    colors.forEach((color) => useInputThemeColorFactory(color, options));
 }
 
-export function useInputTheme() {
-    useInputThemeVariables();
-    useInputThemeLayout();
-    useInputThemeBase();
-    useInputThemeSizes();
-    useInputThemeColors();
-    useInputThemeLayoutModifiers();
+export function useInputTheme(options: DefinitionOptions) {
+    useInputThemeVariables(options);
+    useInputThemeLayout(options);
+    useInputThemeBase(options);
+    useInputThemeSizes(options);
+    useInputThemeColors(options);
+    useInputThemeLayoutModifiers(options);
 }

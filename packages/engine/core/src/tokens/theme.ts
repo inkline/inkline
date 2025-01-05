@@ -1,6 +1,4 @@
-import { defaultThemeName } from '../constants';
-import { Theme, TokenType } from '../types';
-import { state } from '../globals';
+import { DefinitionOptions, Theme, TokenType } from '../types';
 
 /**
  * Creates a theme token.
@@ -10,9 +8,11 @@ import { state } from '../globals';
  * Themes are automatically created when variables and selectors are added.
  * Themes are used to generate CSS.
  */
-export function theme(name: string = defaultThemeName): Theme {
-    if (state.themes[name]) {
-        return state.themes[name];
+export function theme(name: string, options: DefinitionOptions): Theme {
+    const { themes } = options.context;
+
+    if (themes[name]) {
+        return themes[name];
     }
 
     const instance: Theme = {
@@ -26,7 +26,7 @@ export function theme(name: string = defaultThemeName): Theme {
         selectors: []
     };
 
-    state.themes[name] = instance;
+    themes[name] = instance;
 
     return instance;
 }

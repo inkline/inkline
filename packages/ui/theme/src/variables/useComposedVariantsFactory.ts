@@ -5,7 +5,16 @@ import type {
     TokenValue,
     Variable
 } from '@inkline/core';
-import { hsla, ref, variable, isColor, isRef, normalizeTokenName, toExportedName, defaultRenameFn, defaultDefinitionOptions } from '@inkline/core';
+import {
+    hsla,
+    ref,
+    variable,
+    isColor,
+    isRef,
+    normalizeTokenName,
+    toExportedName,
+    defaultRenameFn
+} from '@inkline/core';
 import type { VariantsReturnKey } from './useVariantsFactory';
 
 /**
@@ -39,7 +48,7 @@ export function useComposedVariantsFactory<
             composed?: RenameFn;
             part?: RenameFn;
         };
-    } = defaultDefinitionOptions
+    }
 ) {
     type ReturnKey = VariantsReturnKey<RootKeys, VariantKeys>;
 
@@ -66,9 +75,7 @@ export function useComposedVariantsFactory<
                 const partVariableName = renamePartFn(
                     normalizeTokenName(isRef(part) ? `${part.__name}-${key}` : key)
                 );
-                const partVariable = variable(partVariableName, partsVariantsValues[index], {
-                    default: options?.default
-                });
+                const partVariable = variable(partVariableName, partsVariantsValues[index], options);
                 acc[toExportedName(partVariableName) as ReturnKey] = partVariable;
                 partVariables.push(partVariable);
             });
@@ -82,7 +89,7 @@ export function useComposedVariantsFactory<
                 valueIsColor
                     ? hsla(composedVariableValue as HSLAColorInlineProperty)
                     : composedVariableValue,
-                { default: options?.default }
+                options
             );
             acc[toExportedName(composedVariableName) as ReturnKey] = composedVariable;
 

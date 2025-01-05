@@ -1,1 +1,4 @@
-export function useTextareaTheme() {}
+export function useTextareaTheme(options: DefinitionOptions
+)
+{
+}

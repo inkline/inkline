@@ -1,11 +1,15 @@
 import { selector } from '@inkline/core';
 
-export function useFormThemeLayout() {
+export function useFormThemeLayout(options: DefinitionOptions
+)
+{
     selector('.form', {
         position: 'relative'
     });
 }
 
-export function useFormTheme() {
-    useFormThemeLayout();
+export function useFormTheme(options: DefinitionOptions
+)
+{
+    useFormThemeLayout(options);
 }

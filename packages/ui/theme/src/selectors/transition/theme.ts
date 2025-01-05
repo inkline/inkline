@@ -1,8 +1,8 @@
-import { defaultDefinitionOptions, ref, selector, variable } from '@inkline/core';
-import { useTransitionBase } from '../../variables';
+import { DefinitionOptions, ref, selector, variable } from '@inkline/core';
+import { useTransition } from '../../variables';
 
-export function useExpandTransitionThemeVariables(options = defaultDefinitionOptions) {
-    const { transitionDuration, transitionTimingFunction } = useTransitionBase();
+export function useExpandTransitionThemeVariables(options: DefinitionOptions) {
+    const { transitionDuration, transitionTimingFunction } = useTransition(options);
 
     const expandTransitionProperty = variable('expand-transition-property', 'height', options);
     const expandTransitionDuration = variable(
@@ -33,24 +33,24 @@ export function useExpandTransitionThemeVariables(options = defaultDefinitionOpt
     };
 }
 
-export function useExpandTransitionTheme() {
+export function useExpandTransitionTheme(options: DefinitionOptions) {
     const { expandTransitionProperty, expandTransitionDuration, expandTransitionTimingFunction } =
-        useExpandTransitionThemeVariables();
+        useExpandTransitionThemeVariables(options);
 
     selector('.expand-enter-active, .expand-leave-active', {
         transitionProperty: ref(expandTransitionProperty),
         transitionDuration: ref(expandTransitionDuration),
         transitionTimingFunction: ref(expandTransitionTimingFunction),
         overflow: 'hidden'
-    });
+    }, options);
 
     selector('.expand-enter-from, .expand-leave-to', {
         height: 0
-    });
+    }, options);
 }
 
-export function useFadeInTransitionThemeVariables(options = defaultDefinitionOptions) {
-    const { transitionDuration } = useTransitionBase();
+export function useFadeInTransitionThemeVariables(options: DefinitionOptions) {
+    const { transitionDuration } = useTransition(options);
 
     const fadeInTransitionProperty = variable('fade-in-transition-property', 'opacity', options);
     const fadeInTransitionDuration = variable(
@@ -81,23 +81,23 @@ export function useFadeInTransitionThemeVariables(options = defaultDefinitionOpt
     };
 }
 
-export function useFadeInTransitionTheme() {
+export function useFadeInTransitionTheme(options: DefinitionOptions) {
     const { fadeInTransitionProperty, fadeInTransitionDuration, fadeInTransitionTimingFunction } =
-        useFadeInTransitionThemeVariables();
+        useFadeInTransitionThemeVariables(options);
 
     selector('.fade-in-transition-enter-active, .fade-in-transition-leave-active', {
         transitionProperty: ref(fadeInTransitionProperty),
         transitionDuration: ref(fadeInTransitionDuration),
         transitionTimingFunction: ref(fadeInTransitionTimingFunction)
-    });
+    }, options);
 
     selector('.fade-in-transition-enter-from, .fade-in-transition-leave-active', {
         opacity: 0
-    });
+    }, options);
 }
 
-export function useFadeInLinearTransitionThemeVariables(options = defaultDefinitionOptions) {
-    const { transitionDuration } = useTransitionBase();
+export function useFadeInLinearTransitionThemeVariables(options: DefinitionOptions) {
+    const { transitionDuration } = useTransition(options);
 
     const fadeInLinearTransitionProperty = variable(
         'fade-in-linear-transition-property',
@@ -132,29 +132,29 @@ export function useFadeInLinearTransitionThemeVariables(options = defaultDefinit
     };
 }
 
-export function useFadeInLinearTransitionTheme() {
+export function useFadeInLinearTransitionTheme(options: DefinitionOptions) {
     const {
         fadeInLinearTransitionProperty,
         fadeInLinearTransitionDuration,
         fadeInLinearTransitionTimingFunction
-    } = useFadeInLinearTransitionThemeVariables();
+    } = useFadeInLinearTransitionThemeVariables(options);
 
     selector('.fade-in-linear-transition-enter-active, .fade-in-linear-transition-leave-active', {
         transitionProperty: ref(fadeInLinearTransitionProperty),
         transitionDuration: ref(fadeInLinearTransitionDuration),
         transitionTimingFunction: ref(fadeInLinearTransitionTimingFunction)
-    });
+    }, options);
 
     selector(
         '.fade-in-linear-transition-enter-from, .fade-in-linear-transition-leave-from, .fade-in-linear-transition-leave-active',
         {
             opacity: 0
-        }
+        }, options
     );
 }
 
-export function useSlideInRightTransitionThemeVariables(options = defaultDefinitionOptions) {
-    const { transitionDuration } = useTransitionBase();
+export function useSlideInRightTransitionThemeVariables(options: DefinitionOptions) {
+    const { transitionDuration } = useTransition(options);
 
     const slideInRightTransitionProperty = variable(
         'slide-in-right-transition-property',
@@ -189,31 +189,31 @@ export function useSlideInRightTransitionThemeVariables(options = defaultDefinit
     };
 }
 
-export function useSlideInRightTransitionTheme() {
+export function useSlideInRightTransitionTheme(options: DefinitionOptions) {
     const {
         slideInRightTransitionProperty,
         slideInRightTransitionDuration,
         slideInRightTransitionTimingFunction
-    } = useSlideInRightTransitionThemeVariables();
+    } = useSlideInRightTransitionThemeVariables(options);
 
     selector('.slide-in-right-transition-enter-active, .slide-in-right-transition-leave-active', {
         transitionProperty: ref(slideInRightTransitionProperty),
         transitionDuration: ref(slideInRightTransitionDuration),
         transitionTimingFunction: ref(slideInRightTransitionTimingFunction),
         transformOrigin: 'left'
-    });
+    }, options);
 
     selector('.slide-in-right-transition-enter-from, .slide-in-right-transition-leave-to', {
         transform: 'translateX(-100%)'
-    });
+    }, options);
 
     selector('.slide-in-right-transition-enter-to, .slide-in-right-transition-leave-from', {
         transform: 'translateX(0)'
-    });
+    }, options);
 }
 
-export function useZoomInCenterTransitionThemeVariables(options = defaultDefinitionOptions) {
-    const { transitionDuration } = useTransitionBase();
+export function useZoomInCenterTransitionThemeVariables(options: DefinitionOptions) {
+    const { transitionDuration } = useTransition(options);
 
     const zoomInCenterTransitionProperty = variable(
         'zoom-in-center-transition-property',
@@ -248,12 +248,12 @@ export function useZoomInCenterTransitionThemeVariables(options = defaultDefinit
     };
 }
 
-export function useZoomInCenterTransitionTheme() {
+export function useZoomInCenterTransitionTheme(options: DefinitionOptions) {
     const {
         zoomInCenterTransitionProperty,
         zoomInCenterTransitionDuration,
         zoomInCenterTransitionTimingFunction
-    } = useZoomInCenterTransitionThemeVariables();
+    } = useZoomInCenterTransitionThemeVariables(options);
 
     selector('.zoom-in-center-transition-enter-active, .zoom-in-center-transition-leave-active', {
         transitionProperty: ref(zoomInCenterTransitionProperty),
@@ -261,16 +261,16 @@ export function useZoomInCenterTransitionTheme() {
         transitionTimingFunction: ref(zoomInCenterTransitionTimingFunction),
         opacity: 1,
         transformOrigin: 'center center'
-    });
+    }, options);
 
     selector('.zoom-in-center-transition-enter-from, .zoom-in-center-transition-leave-active', {
         opacity: 0,
         transform: 'scale(0, 0)'
-    });
+    }, options);
 }
 
-export function useZoomInTopTransitionThemeVariables(options = defaultDefinitionOptions) {
-    const { transitionDuration } = useTransitionBase();
+export function useZoomInTopTransitionThemeVariables(options: DefinitionOptions) {
+    const { transitionDuration } = useTransition(options);
 
     const zoomInTopTransitionProperty = variable(
         'zoom-in-top-transition-property',
@@ -305,12 +305,12 @@ export function useZoomInTopTransitionThemeVariables(options = defaultDefinition
     };
 }
 
-export function useZoomInTopTransitionTheme() {
+export function useZoomInTopTransitionTheme(options: DefinitionOptions) {
     const {
         zoomInTopTransitionProperty,
         zoomInTopTransitionDuration,
         zoomInTopTransitionTimingFunction
-    } = useZoomInTopTransitionThemeVariables();
+    } = useZoomInTopTransitionThemeVariables(options);
 
     selector('.zoom-in-top-transition-enter-active, .zoom-in-top-transition-leave-active', {
         transitionProperty: ref(zoomInTopTransitionProperty),
@@ -319,16 +319,16 @@ export function useZoomInTopTransitionTheme() {
         opacity: 1,
         transform: 'scaleY(1)',
         transformOrigin: 'center top'
-    });
+    }, options);
 
     selector('.zoom-in-top-transition-enter-from, .zoom-in-top-transition-leave-active', {
         opacity: 0,
         transform: 'scaleY(0)'
-    });
+    }, options);
 }
 
-export function useZoomInRightTransitionThemeVariables(options = defaultDefinitionOptions) {
-    const { transitionDuration } = useTransitionBase();
+export function useZoomInRightTransitionThemeVariables(options: DefinitionOptions) {
+    const { transitionDuration } = useTransition(options);
 
     const zoomInRightTransitionProperty = variable(
         'zoom-in-right-transition-property',
@@ -363,12 +363,12 @@ export function useZoomInRightTransitionThemeVariables(options = defaultDefiniti
     };
 }
 
-export function useZoomInRightTransitionTheme() {
+export function useZoomInRightTransitionTheme(options: DefinitionOptions) {
     const {
         zoomInRightTransitionProperty,
         zoomInRightTransitionDuration,
         zoomInRightTransitionTimingFunction
-    } = useZoomInRightTransitionThemeVariables();
+    } = useZoomInRightTransitionThemeVariables(options);
 
     selector('.zoom-in-right-transition-enter-active, .zoom-in-right-transition-leave-active', {
         transitionProperty: ref(zoomInRightTransitionProperty),
@@ -377,16 +377,16 @@ export function useZoomInRightTransitionTheme() {
         opacity: 1,
         transform: 'scale(1, 1)',
         transformOrigin: 'top right'
-    });
+    }, options);
 
     selector('.zoom-in-right-transition-enter-from, .zoom-in-right-transition-leave-active', {
         opacity: 0,
         transform: 'scale(0.45, 0.45)'
-    });
+    }, options);
 }
 
-export function useZoomInBottomTransitionThemeVariables(options = defaultDefinitionOptions) {
-    const { transitionDuration } = useTransitionBase();
+export function useZoomInBottomTransitionThemeVariables(options: DefinitionOptions) {
+    const { transitionDuration } = useTransition(options);
 
     const zoomInBottomTransitionProperty = variable(
         'zoom-in-bottom-transition-property',
@@ -421,12 +421,12 @@ export function useZoomInBottomTransitionThemeVariables(options = defaultDefinit
     };
 }
 
-export function useZoomInBottomTransitionTheme() {
+export function useZoomInBottomTransitionTheme(options: DefinitionOptions) {
     const {
         zoomInBottomTransitionProperty,
         zoomInBottomTransitionDuration,
         zoomInBottomTransitionTimingFunction
-    } = useZoomInBottomTransitionThemeVariables();
+    } = useZoomInBottomTransitionThemeVariables(options);
 
     selector('.zoom-in-bottom-transition-enter-active, .zoom-in-bottom-transition-leave-active', {
         transitionProperty: ref(zoomInBottomTransitionProperty),
@@ -435,16 +435,16 @@ export function useZoomInBottomTransitionTheme() {
         opacity: 1,
         transform: 'scaleY(1)',
         transformOrigin: 'center bottom'
-    });
+    }, options);
 
     selector('.zoom-in-bottom-transition-enter-from, .zoom-in-bottom-transition-leave-active', {
         opacity: 0,
         transform: 'scaleY(0)'
-    });
+    }, options);
 }
 
-export function useZoomInLeftTransitionThemeVariables(options = defaultDefinitionOptions) {
-    const { transitionDuration } = useTransitionBase();
+export function useZoomInLeftTransitionThemeVariables(options: DefinitionOptions) {
+    const { transitionDuration } = useTransition(options);
 
     const zoomInLeftTransitionProperty = variable(
         'zoom-in-left-transition-property',
@@ -479,12 +479,12 @@ export function useZoomInLeftTransitionThemeVariables(options = defaultDefinitio
     };
 }
 
-export function useZoomInLeftTransitionTheme() {
+export function useZoomInLeftTransitionTheme(options: DefinitionOptions) {
     const {
         zoomInLeftTransitionProperty,
         zoomInLeftTransitionDuration,
         zoomInLeftTransitionTimingFunction
-    } = useZoomInLeftTransitionThemeVariables();
+    } = useZoomInLeftTransitionThemeVariables(options);
 
     selector('.zoom-in-left-transition-enter-active, .zoom-in-left-transition-leave-active', {
         transitionProperty: ref(zoomInLeftTransitionProperty),
@@ -493,31 +493,31 @@ export function useZoomInLeftTransitionTheme() {
         opacity: 1,
         transform: 'scale(1, 1)',
         transformOrigin: 'top left'
-    });
+    }, options);
 
     selector('.zoom-in-left-transition-enter-from, .zoom-in-left-transition-leave-active', {
         opacity: 0,
         transform: 'scale(0.45, 0.45)'
-    });
+    }, options);
 }
 
-export function useTransitionsTheme() {
-    useExpandTransitionThemeVariables();
-    useExpandTransitionTheme();
-    useFadeInTransitionThemeVariables();
-    useFadeInTransitionTheme();
-    useFadeInLinearTransitionThemeVariables();
-    useFadeInLinearTransitionTheme();
-    useSlideInRightTransitionThemeVariables();
-    useSlideInRightTransitionTheme();
-    useZoomInCenterTransitionThemeVariables();
-    useZoomInCenterTransitionTheme();
-    useZoomInTopTransitionThemeVariables();
-    useZoomInTopTransitionTheme();
-    useZoomInRightTransitionThemeVariables();
-    useZoomInRightTransitionTheme();
-    useZoomInBottomTransitionThemeVariables();
-    useZoomInBottomTransitionTheme();
-    useZoomInLeftTransitionThemeVariables();
-    useZoomInLeftTransitionTheme();
+export function useTransitionsTheme(options: DefinitionOptions) {
+    useExpandTransitionThemeVariables(options);
+    useExpandTransitionTheme(options);
+    useFadeInTransitionThemeVariables(options);
+    useFadeInTransitionTheme(options);
+    useFadeInLinearTransitionThemeVariables(options);
+    useFadeInLinearTransitionTheme(options);
+    useSlideInRightTransitionThemeVariables(options);
+    useSlideInRightTransitionTheme(options);
+    useZoomInCenterTransitionThemeVariables(options);
+    useZoomInCenterTransitionTheme(options);
+    useZoomInTopTransitionThemeVariables(options);
+    useZoomInTopTransitionTheme(options);
+    useZoomInRightTransitionThemeVariables(options);
+    useZoomInRightTransitionTheme(options);
+    useZoomInBottomTransitionThemeVariables(options);
+    useZoomInBottomTransitionTheme(options);
+    useZoomInLeftTransitionThemeVariables(options);
+    useZoomInLeftTransitionTheme(options);
 }

@@ -1,5 +1,6 @@
-import { OutputFile } from './generators';
-import { Themes } from './tokens';
+import type { OutputFile } from './generators';
+import type { Themes } from './tokens';
+import type { Context } from './context';
 
 export type ModuleOptions = object;
 
@@ -9,7 +10,7 @@ export type ConfigurationOptions<T = unknown> = {
     module?: 'scss';
 } & T;
 
-export type SetupFunction = () => void;
+export type SetupFunction = (context: Context) => void;
 
 export type Configuration<T = unknown> = {
     themes: Themes;

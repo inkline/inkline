@@ -11,12 +11,12 @@ export const darkThemeName = 'dark';
  * Definition options
  */
 
-export const defaultDefinitionOptions: DefinitionOptions = {
+export const defaultDefinitionOptions: Omit<DefinitionOptions, 'context'> = {
     theme: defaultThemeName,
     default: true
 };
 
-export const defaultSelectorOptions: SelectorOptions = {
+export const defaultSelectorOptions: Omit<SelectorOptions, 'context'> = {
     ...defaultDefinitionOptions,
     default: false
 };

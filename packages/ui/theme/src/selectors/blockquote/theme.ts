@@ -1,9 +1,8 @@
 import {
-    defaultDefinitionOptions,
     ref,
     selector,
     nsvariables,
-    vref
+    vref, DefinitionOptions
 } from '@inkline/core';
 import {
     useBorder,
@@ -14,16 +13,16 @@ import {
 
 const ns = 'blockquote';
 
-export function useBlockquoteVariables(options = defaultDefinitionOptions) {
-    const { fontSize } = useFontSize();
-    const { spacing } = useSpacing();
-    const { borderLeftWidth, borderLeftStyle, borderLeftColor } = useBorder();
+export function useBlockquoteVariables(options: DefinitionOptions) {
+    const { fontSize } = useFontSize(options);
+    const { spacing } = useSpacing(options);
+    const { borderLeftWidth, borderLeftStyle, borderLeftColor } = useBorder(options);
     const {
         textColorWeakH,
         textColorWeakS,
         textColorWeakL,
         textColorWeakA
-    } = useTextColor();
+    } = useTextColor(options);
 
     return nsvariables(ns, {
         fontSize: ref(fontSize),
@@ -58,7 +57,7 @@ export function useBlockquoteVariables(options = defaultDefinitionOptions) {
     }, options);
 }
 
-export function useBlockquoteThemeSelectors() {
+export function useBlockquoteThemeSelectors(options: DefinitionOptions) {
     const {
         blockquoteFontSize,
         blockquoteMargin,
@@ -69,55 +68,55 @@ export function useBlockquoteThemeSelectors() {
         blockquoteBorderedBorderColor,
         blockquoteFooterColor,
         blockquoteFooterFontSize
-    } = useBlockquoteVariables();
+    } = useBlockquoteVariables(options);
 
     selector('.blockquote', {
         margin: vref(blockquoteMargin),
         fontSize: ref(blockquoteFontSize)
-    });
+    }, options);
 
     selector('.blockquote.-left', {
         textAlign: 'left'
-    });
+    }, options);
 
     selector('.blockquote.-center', {
         textAlign: 'center'
-    });
+    }, options);
 
     selector('.blockquote.-right', {
         textAlign: 'right'
-    });
+    }, options);
 
     selector('.blockquote.-left.-bordered', {
         paddingLeft: vref(blockquoteBorderedPaddingLeft),
         borderLeftWidth: vref(blockquoteBorderedBorderWidth),
         borderLeftStyle: vref(blockquoteBorderedBorderStyle),
         borderLeftColor: vref(blockquoteBorderedBorderColor)
-    });
+    }, options);
 
     selector('.blockquote.-right.-bordered', {
         paddingRight: ref(blockquoteBorderedPaddingRight),
         borderRightWidth: ref(blockquoteBorderedBorderWidth),
         borderRightStyle: ref(blockquoteBorderedBorderStyle),
         borderRightColor: ref(blockquoteBorderedBorderColor)
-    });
+    }, options);
 
     selector('.blockquote > p:last-child', {
         marginBottom: '0'
-    });
+    }, options);
 
     selector('.blockquote > footer, blockquote > .footer', {
         color: vref(blockquoteFooterColor),
         fontSize: ref(blockquoteFooterFontSize),
         display: 'block'
-    });
+    }, options);
 
     selector('.blockquote > footer::before, blockquote > .footer::before', {
         content: '"\\2014 \\00A0"'
-    });
+    }, options);
 }
 
-export function useBlockquoteTheme() {
-    useBlockquoteVariables();
-    useBlockquoteThemeSelectors();
+export function useBlockquoteTheme(options: DefinitionOptions) {
+    useBlockquoteVariables(options);
+    useBlockquoteThemeSelectors(options);
 }

@@ -1,10 +1,11 @@
 import {
-    DefinitionOptions,
     NamespacedKey,
     NamespaceType,
     TokenType,
     TokenValue,
-    Variable
+    Variable,
+    VariableOptions,
+    VariablesOptions
 } from '../types';
 import { addVariableToTheme } from '../themes';
 import { isVariable } from '../typeGuards';
@@ -21,7 +22,7 @@ import { createNamespacedTokenName } from '../utils';
 export function variable<Name extends string = string>(
     name: Name,
     value: TokenValue,
-    options?: DefinitionOptions
+    options: VariableOptions
 ): Variable<Name> {
     const instance: Variable<Name> = {
         __type: TokenType.Variable,
@@ -48,7 +49,7 @@ export function nsvariable<Namespace extends NamespaceType, Name extends string>
     ns: Namespace,
     nameOrInstance: Variable<Name> | Name,
     value: TokenValue,
-    options?: DefinitionOptions
+    options: VariablesOptions
 ): Variable<NamespacedKey<Namespace, Name>> {
     const name = isVariable(nameOrInstance) ? nameOrInstance.__name : nameOrInstance;
 

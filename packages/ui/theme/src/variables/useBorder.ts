@@ -1,7 +1,6 @@
-import { ref, variable } from '@inkline/core';
-import { defaultDefinitionOptions } from '@inkline/core';
+import { DefinitionOptions, ref, variable } from '@inkline/core';
 
-export function useBorder(options = defaultDefinitionOptions) {
+export function useBorder(options: DefinitionOptions) {
     const borderTopWidth = variable('border-top-width', '1px', options);
     const borderRightWidth = variable('border-right-width', '1px', options);
     const borderBottomWidth = variable('border-bottom-width', '1px', options);

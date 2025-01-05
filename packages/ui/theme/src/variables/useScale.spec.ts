@@ -1,8 +1,11 @@
 import { useScale } from './useScale';
+import { createContext } from '@inkline/core';
+
+const options = { context: createContext() };
 
 describe('useScale', () => {
     it('should return the correct variables', () => {
-        const result = useScale();
+        const result = useScale(options);
 
         expect(result.scaleMajorSecond).toBeDefined();
         expect(result.scaleMinorSecond).toBeDefined();

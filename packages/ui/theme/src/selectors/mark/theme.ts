@@ -1,5 +1,5 @@
 import {
-    defaultDefinitionOptions,
+    DefinitionOptions,
     ref,
     selector,
     multiply,
@@ -9,9 +9,9 @@ import { useBaseColors, useSpacing } from '../../variables';
 
 const ns = 'mark';
 
-export function useMarkConfig() {
-    const { colorYellowH, colorYellowS, colorYellowL, colorYellowA } = useBaseColors();
-    const { spacing } = useSpacing();
+export function useMarkConfig(options: DefinitionOptions) {
+    const { colorYellowH, colorYellowS, colorYellowL, colorYellowA } = useBaseColors(options);
+    const { spacing } = useSpacing(options);
 
     return {
         background: {
@@ -29,20 +29,20 @@ export function useMarkConfig() {
     };
 }
 
-export function useMarkVariables(options = defaultDefinitionOptions) {
-    return nsvariables(ns, useMarkConfig(), options);
+export function useMarkVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useMarkConfig(options), options);
 }
 
-export function useMarkThemeSelectors() {
-    const { markPadding, markBackground } = useMarkVariables();
+export function useMarkThemeSelectors(options: DefinitionOptions) {
+    const { markPadding, markBackground } = useMarkVariables(options);
 
     selector('mark', {
         padding: vref(markPadding),
         background: vref(markBackground)
-    });
+    }, options);
 }
 
-export function useMarkTheme() {
-    useMarkVariables();
-    useMarkThemeSelectors();
+export function useMarkTheme(options: DefinitionOptions) {
+    useMarkVariables(options);
+    useMarkThemeSelectors(options);
 }

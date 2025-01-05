@@ -1,21 +1,21 @@
-import { selector, file } from '@inkline/core';
+import { selector, file, DefinitionOptions } from '@inkline/core';
 
-export function useRebootTheme() {
+export function useRebootTheme(options: DefinitionOptions) {
     // Display block by default
     selector('label', {
         display: 'inline-block'
-    });
+    }, options);
 
     // Remove the default `border-radius` that macOS Chrome adds.
     selector('button', {
         borderRadius: 0
-    });
+    }, options);
 
     // Inherit font size and line height for form controls
     selector('input, button, select, optgroup, textarea', {
         fontSize: 'inherit',
         lineHeight: 'inherit'
-    });
+    }, options);
 
     // Explicitly remove focus outline in Chromium when it shouldn't be
     // visible (e.g. as result of mouse click or touch tap). It already
@@ -23,17 +23,17 @@ export function useRebootTheme() {
     // confused and applies its very visible two-tone outline anyway.
     selector('button:focus:not(:focus-visible)', {
         outline: 0
-    });
+    }, options);
 
     // Set the cursor for non-`<button>` buttons
     selector('[role="button"]', {
         cursor: 'pointer'
-    });
+    }, options);
 
     // Remove the inheritance of word-wrap in Safari.
     selector('select', {
         wordWrap: 'normal'
-    });
+    }, options);
 
     // Remove the dropdown arrow only from text type inputs built with datalists in Chrome.
     // See https://stackoverflow.com/a/54997118
@@ -41,13 +41,13 @@ export function useRebootTheme() {
         '[list]:not([type="date"], [type="datetime-local"], [type="month"], [type="week"], [type="time"])::-webkit-calendar-picker-indicator',
         {
             display: 'none !important'
-        }
+        }, options
     );
 
     // Textareas should really only resize vertically so they don't break their (horizontal) containers.
     selector('textarea', {
         resize: 'vertical'
-    });
+    }, options);
 
     // Browsers set a default `min-width: min-content;` on fieldsets,
     // unlike e.g. `<div>`s, which have `min-width: 0;` by default.
@@ -60,7 +60,7 @@ export function useRebootTheme() {
         padding: 0,
         margin: 0,
         border: 0
-    });
+    }, options);
 
     // Fix height of inputs with a type of datetime-local, date, month, week, or time
     // See https://github.com/twbs/bootstrap/issues/18842
@@ -68,41 +68,41 @@ export function useRebootTheme() {
         '::-webkit-datetime-edit-fields-wrapper, ::-webkit-datetime-edit-text, ::-webkit-datetime-edit-minute, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-year-field',
         {
             padding: 0
-        }
+        }, options
     );
 
     selector('::-webkit-inner-spin-button', {
         height: 'auto'
-    });
+    }, options);
 
     // Correct the outline style in Safari.
     // Add rounded corners on search inputs in iOS
     selector('[type="search"]', {
         outlineOffset: '-2px',
         appearance: 'textfield'
-    });
+    }, options);
 
     // Remove the inner padding in Chrome and Safari on macOS.
     selector('::-webkit-search-decoration', {
         appearance: 'none'
-    });
+    }, options);
 
     // Remove padding around color pickers in webkit browsers
     selector('::-webkit-color-swatch-wrapper', {
         padding: 0
-    });
+    }, options);
 
     // Inherit font family and line height for file input buttons
     // Correct the inability to style clickable types in iOS and Safari.
     selector('::file-selector-button', {
         font: 'inherit',
         appearance: 'button'
-    });
+    }, options);
 
     // Always hide an element with the `hidden` HTML attribute.
     selector('[hidden]', {
         display: 'none !important'
-    });
+    }, options);
 
     /**
      * Reset some styles for tables
@@ -111,17 +111,17 @@ export function useRebootTheme() {
     selector('table', {
         borderCollapse: 'collapse',
         captionSide: 'bottom'
-    });
+    }, options);
 
     selector('th', {
         textAlign: 'inherit'
-    });
+    }, options);
 
     selector('thead, tbody, tfoot, tr, td, th', {
         borderColor: 'inherit',
         borderWidth: 0,
         borderStyle: 'solid'
-    });
+    }, options);
 
     /**
      * Avoid 300ms click delay on touch devices that support the `touch-action` CSS property.
@@ -139,14 +139,15 @@ export function useRebootTheme() {
         'a, area, button, [role="button"], input:not([type="range"]), label, select, summary, textarea',
         {
             touchAction: 'manipulation'
-        }
+        }, options
     );
 }
 
-export function useNormalizeTheme() {
+export function useNormalizeTheme(options: DefinitionOptions) {
     file('index.css', `@import 'normalize.css';\n`, {
+        ...options,
         prepend: true
     });
 
-    useRebootTheme();
+    useRebootTheme(options);
 }

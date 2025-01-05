@@ -1,11 +1,11 @@
-import { selector } from '@inkline/core';
+import { DefinitionOptions, selector } from '@inkline/core';
 
-export function useOutputThemeSelectors() {
+export function useOutputThemeSelectors(options: DefinitionOptions) {
     selector('output', {
         display: 'inline-block'
-    });
+    }, options);
 }
 
-export function useOutputTheme() {
-    useOutputThemeSelectors();
+export function useOutputTheme(options: DefinitionOptions) {
+    useOutputThemeSelectors(options);
 }

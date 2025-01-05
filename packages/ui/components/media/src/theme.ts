@@ -3,8 +3,8 @@ import { useSpacing } from '@inkline/theme';
 
 const ns = 'media';
 
-export function useMediaThemeVariables(options = defaultDefinitionOptions) {
-    const { spacing } = useSpacing();
+export function useMediaThemeVariables(options: DefinitionOptions) {
+    const { spacing } = useSpacing(options);
 
     return {
         ...nsvariables(
@@ -22,7 +22,9 @@ export function useMediaThemeVariables(options = defaultDefinitionOptions) {
     };
 }
 
-export function useMediaThemeLayout() {
+export function useMediaThemeLayout(options: DefinitionOptions
+)
+{
     selector('.media', {
         position: 'relative',
         display: 'flex',
@@ -40,13 +42,15 @@ export function useMediaThemeLayout() {
     });
 }
 
-export function useMediaThemeBase() {
+export function useMediaThemeBase(options: DefinitionOptions
+)
+{
     const {
         mediaImageMarginTop,
         mediaImageMarginRight,
         mediaImageMarginBottom,
         mediaImageMarginLeft
-    } = useMediaThemeVariables();
+    } = useMediaThemeVariables(options);
 
     selector('.media > img, .media > .img, .media > .image', {
         margin: [
@@ -58,7 +62,9 @@ export function useMediaThemeBase() {
     });
 }
 
-export function useMediaTheme() {
-    useMediaThemeLayout();
-    useMediaThemeBase();
+export function useMediaTheme(options: DefinitionOptions
+)
+{
+    useMediaThemeLayout(options);
+    useMediaThemeBase(options);
 }

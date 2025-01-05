@@ -1,12 +1,19 @@
 import { ref, variable } from '../tokens';
 import { addVariableNamespace } from './addVariableNamespace';
+import { createContext } from '../context';
+
+const options = { context: createContext() };
 
 describe('namespace', () => {
     it('should create a namespaced variable for a primitive value', () => {
         const namespaceString = 'ns';
         const variableName = 'originalName';
-        const variableInstance = variable('originalName', 'originalValue');
-        const namespacedVariableInstance = addVariableNamespace(namespaceString, variableInstance);
+        const variableInstance = variable('originalName', 'originalValue', options);
+        const namespacedVariableInstance = addVariableNamespace(
+            namespaceString,
+            variableInstance,
+            options
+        );
 
         expect(namespacedVariableInstance.__name).toBe(`${namespaceString}--${variableName}`);
         expect(namespacedVariableInstance.__value).toEqual(ref(variableInstance));
@@ -16,8 +23,12 @@ describe('namespace', () => {
         const namespaceString = 'ns';
         const referenceInstance = ref('refName');
         const variableName = 'originalName';
-        const variableInstance = variable('originalName', referenceInstance);
-        const namespacedVariableInstance = addVariableNamespace(namespaceString, variableInstance);
+        const variableInstance = variable('originalName', referenceInstance, options);
+        const namespacedVariableInstance = addVariableNamespace(
+            namespaceString,
+            variableInstance,
+            options
+        );
 
         expect(namespacedVariableInstance.__name).toBe(`${namespaceString}--${variableName}`);
         expect(namespacedVariableInstance.__value).toEqual(ref(variableInstance));
@@ -28,8 +39,16 @@ describe('namespace', () => {
         const referenceInstance1 = ref('refName1');
         const referenceInstance2 = ref('refName2');
         const variableName = 'originalName';
-        const variableInstance = variable(variableName, [referenceInstance1, referenceInstance2]);
-        const namespacedVariableInstance = addVariableNamespace(namespaceString, variableInstance);
+        const variableInstance = variable(
+            variableName,
+            [referenceInstance1, referenceInstance2],
+            options
+        );
+        const namespacedVariableInstance = addVariableNamespace(
+            namespaceString,
+            variableInstance,
+            options
+        );
 
         expect(namespacedVariableInstance.__name).toBe(`${namespaceString}--${variableName}`);
         expect(namespacedVariableInstance.__value).toEqual([
@@ -43,8 +62,16 @@ describe('namespace', () => {
         const referenceInstance1 = ref('refName1', 'fallback1');
         const referenceInstance2 = ref('refName2', 'fallback2');
         const variableName = 'originalName';
-        const variableInstance = variable(variableName, [referenceInstance1, referenceInstance2]);
-        const namespacedVariableInstance = addVariableNamespace(namespaceString, variableInstance);
+        const variableInstance = variable(
+            variableName,
+            [referenceInstance1, referenceInstance2],
+            options
+        );
+        const namespacedVariableInstance = addVariableNamespace(
+            namespaceString,
+            variableInstance,
+            options
+        );
 
         expect(namespacedVariableInstance.__name).toBe(`${namespaceString}--${variableName}`);
         expect(namespacedVariableInstance.__value).toEqual([
@@ -57,8 +84,16 @@ describe('namespace', () => {
         const namespaceString = 'ns';
         const referenceInstance = ref('refName');
         const variableName = 'originalName';
-        const variableInstance = variable(variableName, [referenceInstance, 'simpleValue']);
-        const namespacedVariableInstance = addVariableNamespace(namespaceString, variableInstance);
+        const variableInstance = variable(
+            variableName,
+            [referenceInstance, 'simpleValue'],
+            options
+        );
+        const namespacedVariableInstance = addVariableNamespace(
+            namespaceString,
+            variableInstance,
+            options
+        );
 
         expect(namespacedVariableInstance.__name).toBe(`${namespaceString}--${variableName}`);
         expect(namespacedVariableInstance.__value).toEqual([

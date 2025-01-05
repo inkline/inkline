@@ -3,9 +3,9 @@ import { useSpacing, useTransitionBase } from '@inkline/theme';
 
 const ns = 'toast-container';
 
-export function useToastContainerThemeVariables(options = defaultDefinitionOptions) {
-    const { spacing } = useSpacing();
-    const { transitionDuration, transitionTimingFunction } = useTransitionBase();
+export function useToastContainerThemeVariables(options: DefinitionOptions) {
+    const { spacing } = useSpacing(options);
+    const { transitionDuration, transitionTimingFunction } = useTransitionBase(options);
 
     return {
         ...nsvariables(
@@ -39,14 +39,16 @@ export function useToastContainerThemeVariables(options = defaultDefinitionOptio
     };
 }
 
-export function useToastContainerLayout() {
+export function useToastContainerLayout(options: DefinitionOptions
+)
+{
     const {
         toastContainerMargin,
         toastContainerWidth,
         toastContainerZIndex,
         toastContainerToastMargin,
         toastContainerToastTransition
-    } = useToastContainerThemeVariables();
+    } = useToastContainerThemeVariables(options);
 
     selector('.toast-container', {
         margin: ref(toastContainerMargin),
@@ -137,7 +139,9 @@ export function useToastContainerLayout() {
     });
 }
 
-export function useToastContainerTheme() {
-    useToastContainerThemeVariables();
-    useToastContainerLayout();
+export function useToastContainerTheme(options: DefinitionOptions
+)
+{
+    useToastContainerThemeVariables(options);
+    useToastContainerLayout(options);
 }

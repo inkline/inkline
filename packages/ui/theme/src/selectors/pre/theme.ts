@@ -1,5 +1,5 @@
 import {
-    defaultDefinitionOptions,
+    DefinitionOptions,
     ref,
     selector,
     nsvariables,
@@ -9,10 +9,10 @@ import { useFontFamily, useFontSize, useSpacing } from '../../variables';
 
 const ns = 'pre';
 
-export function usePreConfig() {
-    const { fontSizeSm } = useFontSize();
-    const { fontFamilyMonospace } = useFontFamily();
-    const { spacing } = useSpacing();
+export function usePreConfig(options: DefinitionOptions) {
+    const { fontSizeSm } = useFontSize(options);
+    const { fontFamilyMonospace } = useFontFamily(options);
+    const { spacing } = useSpacing(options);
 
     return {
         fontSize: ref(fontSizeSm),
@@ -23,12 +23,12 @@ export function usePreConfig() {
     };
 }
 
-export function usePreVariables(options = defaultDefinitionOptions) {
-    return nsvariables(ns, usePreConfig(), options);
+export function usePreVariables(options: DefinitionOptions) {
+    return nsvariables(ns, usePreConfig(options), options);
 }
 
-export function usePreThemeSelectors() {
-    const { preMargin, preFontSize, preFontFamily } = usePreVariables();
+export function usePreThemeSelectors(options: DefinitionOptions) {
+    const { preMargin, preFontSize, preFontFamily } = usePreVariables(options);
 
     selector('pre', {
         fontSize: ref(preFontSize),
@@ -37,7 +37,7 @@ export function usePreThemeSelectors() {
         display: 'block',
         marginTop: 0,
         overflow: 'auto'
-    });
+    }, options);
 
     /**
      * Account for some code outputs that place code tags in pre tags
@@ -49,10 +49,10 @@ export function usePreThemeSelectors() {
         wordBreak: 'normal',
         background: 'transparent',
         padding: 0
-    });
+    }, options);
 }
 
-export function usePreTheme() {
-    usePreVariables();
-    usePreThemeSelectors();
+export function usePreTheme(options: DefinitionOptions) {
+    usePreVariables(options);
+    usePreThemeSelectors(options);
 }

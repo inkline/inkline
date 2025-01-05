@@ -1,7 +1,6 @@
 import {
-    defaultDefinitionOptions,
     ref,
-    selector, nsvariables, vref
+    selector, nsvariables, vref, DefinitionOptions
 } from '@inkline/core';
 import {
     useFontFamily,
@@ -13,59 +12,59 @@ import {
 
 const ns = 'heading';
 
-export function useH1Config() {
-    const { fontSize4Xl } = useFontSize();
+export function useH1Config(options: DefinitionOptions) {
+    const { fontSize4Xl } = useFontSize(options);
 
     return {
         fontSize: ref(fontSize4Xl)
     };
 }
 
-export function useH2Config() {
-    const { fontSize3Xl } = useFontSize();
+export function useH2Config(options: DefinitionOptions) {
+    const { fontSize3Xl } = useFontSize(options);
 
     return {
         fontSize: ref(fontSize3Xl)
     };
 }
 
-export function useH3Config() {
-    const { fontSize2Xl } = useFontSize();
+export function useH3Config(options: DefinitionOptions) {
+    const { fontSize2Xl } = useFontSize(options);
 
     return {
         fontSize: ref(fontSize2Xl)
     };
 }
 
-export function useH4Config() {
-    const { fontSizeXl } = useFontSize();
+export function useH4Config(options: DefinitionOptions) {
+    const { fontSizeXl } = useFontSize(options);
 
     return {
         fontSize: ref(fontSizeXl)
     };
 }
 
-export function useH5Config() {
-    const { fontSizeLg } = useFontSize();
+export function useH5Config(options: DefinitionOptions) {
+    const { fontSizeLg } = useFontSize(options);
 
     return {
         fontSize: ref(fontSizeLg)
     };
 }
 
-export function useH6Config() {
-    const { fontSizeMd } = useFontSize();
+export function useH6Config(options: DefinitionOptions) {
+    const { fontSizeMd } = useFontSize(options);
 
     return {
         fontSize: ref(fontSizeMd)
     };
 }
 
-export function useHeadingConfig() {
-    const { spacing } = useSpacing();
-    const { fontFamilyBaseSecondary } = useFontFamily();
-    const { fontStyleNormal } = useFontStyle();
-    const { fontWeightBold } = useFontWeight();
+export function useHeadingConfig(options: DefinitionOptions) {
+    const { spacing } = useSpacing(options);
+    const { fontFamilyBaseSecondary } = useFontFamily(options);
+    const { fontStyleNormal } = useFontStyle(options);
+    const { fontWeightBold } = useFontWeight(options);
 
     return {
         margin: {
@@ -78,19 +77,19 @@ export function useHeadingConfig() {
     };
 }
 
-export function useHeadingThemeVariables(options = defaultDefinitionOptions) {
+export function useHeadingThemeVariables(options: DefinitionOptions) {
     return {
-        ...nsvariables(ns, useHeadingConfig(), options),
-        ...nsvariables('h1', useH1Config(), options),
-        ...nsvariables('h2', useH2Config(), options),
-        ...nsvariables('h3', useH3Config(), options),
-        ...nsvariables('h4', useH4Config(), options),
-        ...nsvariables('h5', useH5Config(), options),
-        ...nsvariables('h6', useH6Config(), options)
+        ...nsvariables(ns, useHeadingConfig(options), options),
+        ...nsvariables('h1', useH1Config(options), options),
+        ...nsvariables('h2', useH2Config(options), options),
+        ...nsvariables('h3', useH3Config(options), options),
+        ...nsvariables('h4', useH4Config(options), options),
+        ...nsvariables('h5', useH5Config(options), options),
+        ...nsvariables('h6', useH6Config(options), options)
     };
 }
 
-export function useHeadingThemeSelectors() {
+export function useHeadingThemeSelectors(options: DefinitionOptions) {
     const {
         headingMargin,
         headingFontFamily,
@@ -103,7 +102,7 @@ export function useHeadingThemeSelectors() {
         h4FontSize,
         h5FontSize,
         h6FontSize
-    } = useHeadingThemeVariables();
+    } = useHeadingThemeVariables(options);
 
     selector('h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6', {
         margin: vref(headingMargin),
@@ -112,34 +111,34 @@ export function useHeadingThemeSelectors() {
         fontWeight: ref(headingFontWeight),
         color: 'inherit',
         lineHeight: ref(headingLineHeight)
-    });
+    }, options);
 
     selector('h6, .h6', {
         fontSize: ref(h6FontSize)
-    });
+    }, options);
 
     selector('h5, .h5', {
         fontSize: ref(h5FontSize)
-    });
+    }, options);
 
     selector('h4, .h4', {
         fontSize: ref(h4FontSize)
-    });
+    }, options);
 
     selector('h3, .h3', {
         fontSize: ref(h3FontSize)
-    });
+    }, options);
 
     selector('h2, .h2', {
         fontSize: ref(h2FontSize)
-    });
+    }, options);
 
     selector('h1, .h1', {
         fontSize: ref(h1FontSize)
-    });
+    }, options);
 }
 
-export function useHeadingTheme() {
-    useHeadingThemeVariables();
-    useHeadingThemeSelectors();
+export function useHeadingTheme(options: DefinitionOptions) {
+    useHeadingThemeVariables(options);
+    useHeadingThemeSelectors(options);
 }

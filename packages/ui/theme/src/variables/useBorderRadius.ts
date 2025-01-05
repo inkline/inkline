@@ -1,10 +1,9 @@
-import { css, multiply, ref, TokenValue, variable } from '@inkline/core';
-import { defaultDefinitionOptions } from '@inkline/core';
+import { css, DefinitionOptions, multiply, ref, TokenValue, variable } from '@inkline/core';
 import { useFluid } from './useFluid';
 import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
 
-export function useBorderRadius(options = defaultDefinitionOptions) {
-    const { fluidBreakpoint } = useFluid();
+export function useBorderRadius(options: DefinitionOptions) {
+    const { fluidBreakpoint } = useFluid(options);
 
     const borderRadiusMin = variable('border-radius-min', 6, options);
     const borderRadiusMax = variable('border-radius-max', 8, options);

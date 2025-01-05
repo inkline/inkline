@@ -1,8 +1,7 @@
-import { color, ref } from '@inkline/core';
-import { defaultDefinitionOptions } from '@inkline/core';
+import { color, DefinitionOptions, ref } from '@inkline/core';
 import { useNeutralColors } from './useColors';
 
-export function useContrastTextColor(options = defaultDefinitionOptions) {
+export function useContrastTextColor(options: DefinitionOptions) {
     const {
         colorWhiteH,
         colorWhiteS,
@@ -12,7 +11,7 @@ export function useContrastTextColor(options = defaultDefinitionOptions) {
         colorGray900S,
         colorGray900L,
         colorGray900A
-    } = useNeutralColors();
+    } = useNeutralColors(options);
 
     const {
         contrastTextColorLight,

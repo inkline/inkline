@@ -1,9 +1,9 @@
-import { defaultDefinitionOptions, nsvariables, ref, selector, vref } from '@inkline/core';
+import { DefinitionOptions, nsvariables, ref, selector, vref } from '@inkline/core';
 import { useBrandColorVariants } from '../../variables';
 
 const ns = 'a';
 
-export function useAThemeConfig() {
+export function useAThemeConfig(options: DefinitionOptions) {
     const {
         colorPrimary500H,
         colorPrimary500S,
@@ -13,7 +13,7 @@ export function useAThemeConfig() {
         colorPrimary600S,
         colorPrimary600L,
         colorPrimary600A
-    } = useBrandColorVariants();
+    } = useBrandColorVariants(options);
 
     return {
         color: {
@@ -38,22 +38,22 @@ export function useAThemeConfig() {
     };
 }
 
-export function useAThemeVariables(options = defaultDefinitionOptions) {
-    return nsvariables(ns, useAThemeConfig(), options);
+export function useAThemeVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useAThemeConfig(options), options);
 }
 
-export function useAThemeSelectors() {
-    const { aColor, aTextDecoration, aHoverColor, aHoverTextDecoration } = useAThemeVariables();
+export function useAThemeSelectors(options: DefinitionOptions) {
+    const { aColor, aTextDecoration, aHoverColor, aHoverTextDecoration } = useAThemeVariables(options);
 
     selector('a', {
         color: vref(aColor),
         textDecoration: ref(aTextDecoration)
-    });
+    }, options);
 
     selector('a:hover', {
         color: vref(aHoverColor),
         textDecoration: ref(aHoverTextDecoration)
-    });
+    }, options);
 
     // Undo these styles for placeholder links/named anchors (without href).
     // It would be more straightforward to just use a[href] in previous block, but that
@@ -61,10 +61,10 @@ export function useAThemeSelectors() {
     selector('a:not([href], [class], [to]), a:not([href], [class], [to]):hover', {
         color: 'inherit',
         textDecoration: 'none'
-    });
+    }, options);
 }
 
-export function useATheme() {
-    useAThemeVariables();
-    useAThemeSelectors();
+export function useATheme(options: DefinitionOptions) {
+    useAThemeVariables(options);
+    useAThemeSelectors(options);
 }

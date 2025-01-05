@@ -1,1 +1,4 @@
-export function useModalContainerTheme() {}
+export function useModalContainerTheme(options: DefinitionOptions
+)
+{
+}

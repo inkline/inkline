@@ -1,8 +1,11 @@
 import { useBorder } from './useBorder';
+import { createContext } from '@inkline/core';
+
+const options = { context: createContext() };
 
 describe('useBorder', () => {
     it('should return the correct variables', () => {
-        const border = useBorder();
+        const border = useBorder(options);
 
         expect(border.borderTopWidth).toBeDefined();
         expect(border.borderRightWidth).toBeDefined();

@@ -34,4 +34,4 @@ export * from '@inkline/addon-toast-manager';
  * Components
  */
 
-export * from './components';
+export * from '@inkline/components';

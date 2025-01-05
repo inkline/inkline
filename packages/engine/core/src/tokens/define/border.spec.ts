@@ -2,275 +2,625 @@ import { defineBorder } from './border';
 import { nsvariable } from '../variable';
 import { ref } from '../ref';
 import { hsla } from '../color';
+import { createContext } from '../../context';
+
+const options = { context: createContext() };
 
 describe('defineBorder', () => {
     it('should create default border variables when no value is provided', () => {
-        const result = defineBorder('namespace', '');
+        const result = defineBorder('namespace', '', options);
         const colorHDefault = 'from currentColor h';
         const colorSDefault = 'from currentColor s';
         const colorLDefault = 'from currentColor l';
         const colorADefault = 'from currentColor a';
 
         expect(result).toEqual({
-            namespaceBorderTopWidth: nsvariable('namespace', 'border-top-width', 0),
-            namespaceBorderTopStyle: nsvariable('namespace', 'border-top-style', 'none'),
-            namespaceBorderTopColorH: nsvariable('namespace', 'border-top-color-h', colorHDefault),
-            namespaceBorderTopColorS: nsvariable('namespace', 'border-top-color-s', colorSDefault),
-            namespaceBorderTopColorL: nsvariable('namespace', 'border-top-color-l', colorLDefault),
-            namespaceBorderTopColorA: nsvariable('namespace', 'border-top-color-a', colorADefault),
+            namespaceBorderTopWidth: nsvariable('namespace', 'border-top-width', 0, options),
+            namespaceBorderTopStyle: nsvariable('namespace', 'border-top-style', 'none', options),
+            namespaceBorderTopColorH: nsvariable(
+                'namespace',
+                'border-top-color-h',
+                colorHDefault,
+                options
+            ),
+            namespaceBorderTopColorS: nsvariable(
+                'namespace',
+                'border-top-color-s',
+                colorSDefault,
+                options
+            ),
+            namespaceBorderTopColorL: nsvariable(
+                'namespace',
+                'border-top-color-l',
+                colorLDefault,
+                options
+            ),
+            namespaceBorderTopColorA: nsvariable(
+                'namespace',
+                'border-top-color-a',
+                colorADefault,
+                options
+            ),
             namespaceBorderTopColor: nsvariable(
                 'namespace',
                 'border-top-color',
                 hsla([
-                    ref(nsvariable('namespace', 'border-top-color-h', colorHDefault)),
-                    ref(nsvariable('namespace', 'border-top-color-s', colorSDefault)),
-                    ref(nsvariable('namespace', 'border-top-color-l', colorLDefault)),
-                    ref(nsvariable('namespace', 'border-top-color-a', colorADefault))
-                ])
+                    ref(nsvariable('namespace', 'border-top-color-h', colorHDefault, options)),
+                    ref(nsvariable('namespace', 'border-top-color-s', colorSDefault, options)),
+                    ref(nsvariable('namespace', 'border-top-color-l', colorLDefault, options)),
+                    ref(nsvariable('namespace', 'border-top-color-a', colorADefault, options))
+                ]),
+                options
             ),
-            namespaceBorderRightWidth: nsvariable('namespace', 'border-right-width', 0),
-            namespaceBorderRightStyle: nsvariable('namespace', 'border-right-style', 'none'),
+            namespaceBorderRightWidth: nsvariable('namespace', 'border-right-width', 0, options),
+            namespaceBorderRightStyle: nsvariable(
+                'namespace',
+                'border-right-style',
+                'none',
+                options
+            ),
             namespaceBorderRightColorH: nsvariable(
                 'namespace',
                 'border-right-color-h',
-                colorHDefault
+                colorHDefault,
+                options
             ),
             namespaceBorderRightColorS: nsvariable(
                 'namespace',
                 'border-right-color-s',
-                colorSDefault
+                colorSDefault,
+                options
             ),
             namespaceBorderRightColorL: nsvariable(
                 'namespace',
                 'border-right-color-l',
-                colorLDefault
+                colorLDefault,
+                options
             ),
             namespaceBorderRightColorA: nsvariable(
                 'namespace',
                 'border-right-color-a',
-                colorADefault
+                colorADefault,
+                options
             ),
             namespaceBorderRightColor: nsvariable(
                 'namespace',
                 'border-right-color',
                 hsla([
-                    ref(nsvariable('namespace', 'border-right-color-h', colorHDefault)),
-                    ref(nsvariable('namespace', 'border-right-color-s', colorSDefault)),
-                    ref(nsvariable('namespace', 'border-right-color-l', colorLDefault)),
-                    ref(nsvariable('namespace', 'border-right-color-a', colorADefault))
-                ])
+                    ref(nsvariable('namespace', 'border-right-color-h', colorHDefault, options)),
+                    ref(nsvariable('namespace', 'border-right-color-s', colorSDefault, options)),
+                    ref(nsvariable('namespace', 'border-right-color-l', colorLDefault, options)),
+                    ref(nsvariable('namespace', 'border-right-color-a', colorADefault, options))
+                ]),
+                options
             ),
-            namespaceBorderBottomWidth: nsvariable('namespace', 'border-bottom-width', 0),
-            namespaceBorderBottomStyle: nsvariable('namespace', 'border-bottom-style', 'none'),
+            namespaceBorderBottomWidth: nsvariable('namespace', 'border-bottom-width', 0, options),
+            namespaceBorderBottomStyle: nsvariable(
+                'namespace',
+                'border-bottom-style',
+                'none',
+                options
+            ),
             namespaceBorderBottomColorH: nsvariable(
                 'namespace',
                 'border-bottom-color-h',
-                colorHDefault
+                colorHDefault,
+                options
             ),
             namespaceBorderBottomColorS: nsvariable(
                 'namespace',
                 'border-bottom-color-s',
-                colorSDefault
+                colorSDefault,
+                options
             ),
             namespaceBorderBottomColorL: nsvariable(
                 'namespace',
                 'border-bottom-color-l',
-                colorLDefault
+                colorLDefault,
+                options
             ),
             namespaceBorderBottomColorA: nsvariable(
                 'namespace',
                 'border-bottom-color-a',
-                colorADefault
+                colorADefault,
+                options
             ),
             namespaceBorderBottomColor: nsvariable(
                 'namespace',
                 'border-bottom-color',
                 hsla([
-                    ref(nsvariable('namespace', 'border-bottom-color-h', colorHDefault)),
-                    ref(nsvariable('namespace', 'border-bottom-color-s', colorSDefault)),
-                    ref(nsvariable('namespace', 'border-bottom-color-l', colorLDefault)),
-                    ref(nsvariable('namespace', 'border-bottom-color-a', colorADefault))
-                ])
+                    ref(nsvariable('namespace', 'border-bottom-color-h', colorHDefault, options)),
+                    ref(nsvariable('namespace', 'border-bottom-color-s', colorSDefault, options)),
+                    ref(nsvariable('namespace', 'border-bottom-color-l', colorLDefault, options)),
+                    ref(nsvariable('namespace', 'border-bottom-color-a', colorADefault, options))
+                ]),
+                options
             ),
-            namespaceBorderLeftWidth: nsvariable('namespace', 'border-left-width', 0),
-            namespaceBorderLeftStyle: nsvariable('namespace', 'border-left-style', 'none'),
+            namespaceBorderLeftWidth: nsvariable('namespace', 'border-left-width', 0, options),
+            namespaceBorderLeftStyle: nsvariable('namespace', 'border-left-style', 'none', options),
             namespaceBorderLeftColorH: nsvariable(
                 'namespace',
                 'border-left-color-h',
-                colorHDefault
+                colorHDefault,
+                options
             ),
             namespaceBorderLeftColorS: nsvariable(
                 'namespace',
                 'border-left-color-s',
-                colorSDefault
+                colorSDefault,
+                options
             ),
             namespaceBorderLeftColorL: nsvariable(
                 'namespace',
                 'border-left-color-l',
-                colorLDefault
+                colorLDefault,
+                options
             ),
             namespaceBorderLeftColorA: nsvariable(
                 'namespace',
                 'border-left-color-a',
-                colorADefault
+                colorADefault,
+                options
             ),
             namespaceBorderLeftColor: nsvariable(
                 'namespace',
                 'border-left-color',
                 hsla([
-                    ref(nsvariable('namespace', 'border-left-color-h', colorHDefault)),
-                    ref(nsvariable('namespace', 'border-left-color-s', colorSDefault)),
-                    ref(nsvariable('namespace', 'border-left-color-l', colorLDefault)),
-                    ref(nsvariable('namespace', 'border-left-color-a', colorADefault))
-                ])
+                    ref(nsvariable('namespace', 'border-left-color-h', colorHDefault, options)),
+                    ref(nsvariable('namespace', 'border-left-color-s', colorSDefault, options)),
+                    ref(nsvariable('namespace', 'border-left-color-l', colorLDefault, options)),
+                    ref(nsvariable('namespace', 'border-left-color-a', colorADefault, options))
+                ]),
+                options
             ),
-            namespaceBorderColor: nsvariable('namespace', 'border-color', [
-                ref(
-                    nsvariable(
-                        'namespace',
-                        'border-top-color',
-                        hsla([
-                            ref(nsvariable('namespace', 'border-top-color-h', colorHDefault)),
-                            ref(nsvariable('namespace', 'border-top-color-s', colorSDefault)),
-                            ref(nsvariable('namespace', 'border-top-color-l', colorLDefault)),
-                            ref(nsvariable('namespace', 'border-top-color-a', colorADefault))
-                        ])
+            namespaceBorderColor: nsvariable(
+                'namespace',
+                'border-color',
+                [
+                    ref(
+                        nsvariable(
+                            'namespace',
+                            'border-top-color',
+                            hsla([
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-top-color-h',
+                                        colorHDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-top-color-s',
+                                        colorSDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-top-color-l',
+                                        colorLDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-top-color-a',
+                                        colorADefault,
+                                        options
+                                    )
+                                )
+                            ]),
+                            options
+                        )
+                    ),
+                    ref(
+                        nsvariable(
+                            'namespace',
+                            'border-right-color',
+                            hsla([
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-right-color-h',
+                                        colorHDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-right-color-s',
+                                        colorSDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-right-color-l',
+                                        colorLDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-right-color-a',
+                                        colorADefault,
+                                        options
+                                    )
+                                )
+                            ]),
+                            options
+                        )
+                    ),
+                    ref(
+                        nsvariable(
+                            'namespace',
+                            'border-bottom-color',
+                            hsla([
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-bottom-color-h',
+                                        colorHDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-bottom-color-s',
+                                        colorSDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-bottom-color-l',
+                                        colorLDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-bottom-color-a',
+                                        colorADefault,
+                                        options
+                                    )
+                                )
+                            ]),
+                            options
+                        )
+                    ),
+                    ref(
+                        nsvariable(
+                            'namespace',
+                            'border-left-color',
+                            hsla([
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-left-color-h',
+                                        colorHDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-left-color-s',
+                                        colorSDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-left-color-l',
+                                        colorLDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-left-color-a',
+                                        colorADefault,
+                                        options
+                                    )
+                                )
+                            ]),
+                            options
+                        )
                     )
-                ),
-                ref(
-                    nsvariable(
-                        'namespace',
-                        'border-right-color',
-                        hsla([
-                            ref(nsvariable('namespace', 'border-right-color-h', colorHDefault)),
-                            ref(nsvariable('namespace', 'border-right-color-s', colorSDefault)),
-                            ref(nsvariable('namespace', 'border-right-color-l', colorLDefault)),
-                            ref(nsvariable('namespace', 'border-right-color-a', colorADefault))
-                        ])
+                ],
+                options
+            ),
+            namespaceBorderStyle: nsvariable(
+                'namespace',
+                'border-style',
+                [
+                    ref(nsvariable('namespace', 'border-top-style', 'none', options)),
+                    ref(nsvariable('namespace', 'border-right-style', 'none', options)),
+                    ref(nsvariable('namespace', 'border-bottom-style', 'none', options)),
+                    ref(nsvariable('namespace', 'border-left-style', 'none', options))
+                ],
+                options
+            ),
+            namespaceBorderWidth: nsvariable(
+                'namespace',
+                'border-width',
+                [
+                    ref(nsvariable('namespace', 'border-top-width', 0, options)),
+                    ref(nsvariable('namespace', 'border-right-width', 0, options)),
+                    ref(nsvariable('namespace', 'border-bottom-width', 0, options)),
+                    ref(nsvariable('namespace', 'border-left-width', 0, options))
+                ],
+                options
+            ),
+            namespaceBorderTop: nsvariable(
+                'namespace',
+                'border-top',
+                [
+                    ref(nsvariable('namespace', 'border-top-width', 0, options)),
+                    ref(nsvariable('namespace', 'border-top-style', 'none', options)),
+                    ref(
+                        nsvariable(
+                            'namespace',
+                            'border-top-color',
+                            hsla([
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-top-color-h',
+                                        colorHDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-top-color-s',
+                                        colorSDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-top-color-l',
+                                        colorLDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-top-color-a',
+                                        colorADefault,
+                                        options
+                                    )
+                                )
+                            ]),
+                            options
+                        )
                     )
-                ),
-                ref(
-                    nsvariable(
-                        'namespace',
-                        'border-bottom-color',
-                        hsla([
-                            ref(nsvariable('namespace', 'border-bottom-color-h', colorHDefault)),
-                            ref(nsvariable('namespace', 'border-bottom-color-s', colorSDefault)),
-                            ref(nsvariable('namespace', 'border-bottom-color-l', colorLDefault)),
-                            ref(nsvariable('namespace', 'border-bottom-color-a', colorADefault))
-                        ])
+                ],
+                options
+            ),
+            namespaceBorderRight: nsvariable(
+                'namespace',
+                'border-right',
+                [
+                    ref(nsvariable('namespace', 'border-right-width', 0, options)),
+                    ref(nsvariable('namespace', 'border-right-style', 'none', options)),
+                    ref(
+                        nsvariable(
+                            'namespace',
+                            'border-right-color',
+                            hsla([
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-right-color-h',
+                                        colorHDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-right-color-s',
+                                        colorSDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-right-color-l',
+                                        colorLDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-right-color-a',
+                                        colorADefault,
+                                        options
+                                    )
+                                )
+                            ]),
+                            options
+                        )
                     )
-                ),
-                ref(
-                    nsvariable(
-                        'namespace',
-                        'border-left-color',
-                        hsla([
-                            ref(nsvariable('namespace', 'border-left-color-h', colorHDefault)),
-                            ref(nsvariable('namespace', 'border-left-color-s', colorSDefault)),
-                            ref(nsvariable('namespace', 'border-left-color-l', colorLDefault)),
-                            ref(nsvariable('namespace', 'border-left-color-a', colorADefault))
-                        ])
+                ],
+                options
+            ),
+            namespaceBorderBottom: nsvariable(
+                'namespace',
+                'border-bottom',
+                [
+                    ref(nsvariable('namespace', 'border-bottom-width', 0, options)),
+                    ref(nsvariable('namespace', 'border-bottom-style', 'none', options)),
+                    ref(
+                        nsvariable(
+                            'namespace',
+                            'border-bottom-color',
+                            hsla([
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-bottom-color-h',
+                                        colorHDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-bottom-color-s',
+                                        colorSDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-bottom-color-l',
+                                        colorLDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-bottom-color-a',
+                                        colorADefault,
+                                        options
+                                    )
+                                )
+                            ]),
+                            options
+                        )
                     )
-                )
-            ]),
-            namespaceBorderStyle: nsvariable('namespace', 'border-style', [
-                ref(nsvariable('namespace', 'border-top-style', 'none')),
-                ref(nsvariable('namespace', 'border-right-style', 'none')),
-                ref(nsvariable('namespace', 'border-bottom-style', 'none')),
-                ref(nsvariable('namespace', 'border-left-style', 'none'))
-            ]),
-            namespaceBorderWidth: nsvariable('namespace', 'border-width', [
-                ref(nsvariable('namespace', 'border-top-width', 0)),
-                ref(nsvariable('namespace', 'border-right-width', 0)),
-                ref(nsvariable('namespace', 'border-bottom-width', 0)),
-                ref(nsvariable('namespace', 'border-left-width', 0))
-            ]),
-            namespaceBorderTop: nsvariable('namespace', 'border-top', [
-                ref(nsvariable('namespace', 'border-top-width', 0)),
-                ref(nsvariable('namespace', 'border-top-style', 'none')),
-                ref(
-                    nsvariable(
-                        'namespace',
-                        'border-top-color',
-                        hsla([
-                            ref(nsvariable('namespace', 'border-top-color-h', colorHDefault)),
-                            ref(nsvariable('namespace', 'border-top-color-s', colorSDefault)),
-                            ref(nsvariable('namespace', 'border-top-color-l', colorLDefault)),
-                            ref(nsvariable('namespace', 'border-top-color-a', colorADefault))
-                        ])
+                ],
+                options
+            ),
+            namespaceBorderLeft: nsvariable(
+                'namespace',
+                'border-left',
+                [
+                    ref(nsvariable('namespace', 'border-left-width', 0, options)),
+                    ref(nsvariable('namespace', 'border-left-style', 'none', options)),
+                    ref(
+                        nsvariable(
+                            'namespace',
+                            'border-left-color',
+                            hsla([
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-left-color-h',
+                                        colorHDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-left-color-s',
+                                        colorSDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-left-color-l',
+                                        colorLDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-left-color-a',
+                                        colorADefault,
+                                        options
+                                    )
+                                )
+                            ]),
+                            options
+                        )
                     )
-                )
-            ]),
-            namespaceBorderRight: nsvariable('namespace', 'border-right', [
-                ref(nsvariable('namespace', 'border-right-width', 0)),
-                ref(nsvariable('namespace', 'border-right-style', 'none')),
-                ref(
-                    nsvariable(
-                        'namespace',
-                        'border-right-color',
-                        hsla([
-                            ref(nsvariable('namespace', 'border-right-color-h', colorHDefault)),
-                            ref(nsvariable('namespace', 'border-right-color-s', colorSDefault)),
-                            ref(nsvariable('namespace', 'border-right-color-l', colorLDefault)),
-                            ref(nsvariable('namespace', 'border-right-color-a', colorADefault))
-                        ])
+                ],
+                options
+            ),
+            namespaceBorder: nsvariable(
+                'namespace',
+                'border',
+                [
+                    ref(nsvariable('namespace', 'border-top-width', 0, options)),
+                    ref(nsvariable('namespace', 'border-top-style', 'none', options)),
+                    ref(
+                        nsvariable(
+                            'namespace',
+                            'border-top-color',
+                            hsla([
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-top-color-h',
+                                        colorHDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-top-color-s',
+                                        colorSDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-top-color-l',
+                                        colorLDefault,
+                                        options
+                                    )
+                                ),
+                                ref(
+                                    nsvariable(
+                                        'namespace',
+                                        'border-top-color-a',
+                                        colorADefault,
+                                        options
+                                    )
+                                )
+                            ]),
+                            options
+                        )
                     )
-                )
-            ]),
-            namespaceBorderBottom: nsvariable('namespace', 'border-bottom', [
-                ref(nsvariable('namespace', 'border-bottom-width', 0)),
-                ref(nsvariable('namespace', 'border-bottom-style', 'none')),
-                ref(
-                    nsvariable(
-                        'namespace',
-                        'border-bottom-color',
-                        hsla([
-                            ref(nsvariable('namespace', 'border-bottom-color-h', colorHDefault)),
-                            ref(nsvariable('namespace', 'border-bottom-color-s', colorSDefault)),
-                            ref(nsvariable('namespace', 'border-bottom-color-l', colorLDefault)),
-                            ref(nsvariable('namespace', 'border-bottom-color-a', colorADefault))
-                        ])
-                    )
-                )
-            ]),
-            namespaceBorderLeft: nsvariable('namespace', 'border-left', [
-                ref(nsvariable('namespace', 'border-left-width', 0)),
-                ref(nsvariable('namespace', 'border-left-style', 'none')),
-                ref(
-                    nsvariable(
-                        'namespace',
-                        'border-left-color',
-                        hsla([
-                            ref(nsvariable('namespace', 'border-left-color-h', colorHDefault)),
-                            ref(nsvariable('namespace', 'border-left-color-s', colorSDefault)),
-                            ref(nsvariable('namespace', 'border-left-color-l', colorLDefault)),
-                            ref(nsvariable('namespace', 'border-left-color-a', colorADefault))
-                        ])
-                    )
-                )
-            ]),
-            namespaceBorder: nsvariable('namespace', 'border', [
-                ref(nsvariable('namespace', 'border-top-width', 0)),
-                ref(nsvariable('namespace', 'border-top-style', 'none')),
-                ref(
-                    nsvariable(
-                        'namespace',
-                        'border-top-color',
-                        hsla([
-                            ref(nsvariable('namespace', 'border-top-color-h', colorHDefault)),
-                            ref(nsvariable('namespace', 'border-top-color-s', colorSDefault)),
-                            ref(nsvariable('namespace', 'border-top-color-l', colorLDefault)),
-                            ref(nsvariable('namespace', 'border-top-color-a', colorADefault))
-                        ])
-                    )
-                )
-            ])
+                ],
+                options
+            )
         });
     });
 
     it('should return object with namespaced properties', () => {
-        const result = defineBorder('namespace', '1px solid black');
+        const result = defineBorder('namespace', '1px solid black', options);
 
         const {
             namespaceBorderTopWidth,
@@ -338,7 +688,7 @@ describe('defineBorder', () => {
     });
 
     it('should return object with non-namespaced properties', () => {
-        const result = defineBorder('', '1px solid black');
+        const result = defineBorder('', '1px solid black', options);
 
         const {
             borderTopWidth,

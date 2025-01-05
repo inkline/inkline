@@ -1,0 +1,66 @@
+{
+    "name": "@inkline/docs",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "lint": "devtools eslint",
+        "dev": "vitepress dev src",
+        "build": "vitepress build src",
+        "preview": "vitepress preview src"
+    },
+    "dependencies": {
+        "inkline": "workspace:*"
+    },
+    "devDependencies": {
+        "@inkline/config": "workspace:*",
+        "@inkline/devtools": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/theme": "workspace:*",
+        "@inkline/vite": "workspace:*",
+        "eslint": "catalog:",
+        "markdown-it-container": "^4.0.0",
+        "normalize.css": "catalog:",
+        "typescript": "catalog:",
+        "vite": "catalog:",
+        "vitepress": "^1.5.0",
+        "vitest": "catalog:",
+        "vue": "catalog:"
+    },
+    "files": [
+        "dist"
+    ],
+    "exports": {
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    },
+    "eslintConfig": {
+        "extends": [
+            "plugin:storybook/recommended"
+        ]
+    }
+}

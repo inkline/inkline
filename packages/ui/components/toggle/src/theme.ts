@@ -266,7 +266,7 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //
 // const ns = 'toggle';
 //
-// export function useToggleThemeVariables(options = defaultDefinitionOptions) {
+// export function useToggleThemeVariables(options: DefinitionOptions) {
 //     const {
 //         borderTopStyle,
 //         borderTopWidth,
@@ -276,8 +276,8 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //         borderBottomWidth,
 //         borderLeftStyle,
 //         borderLeftWidth
-//     } = useBorder();
-//     const { colorPrimary, colorLightH, colorLightS, colorLightL, colorLightA } = useBrandColors();
+//     } = useBorder(options);
+//     const { colorPrimary, colorLightH, colorLightS, colorLightL, colorLightA } = useBrandColors(options);
 //     const {
 //         colorLightTint100,
 //         colorLightTint50,
@@ -286,28 +286,28 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //         colorPrimary200,
 //         colorPrimary300,
 //         colorPrimary400
-//     } = useBrandColorVariants();
-//     const { colorWhite } = useNeutralColors();
-//     const { marginRight } = useMarginBase();
+//     } = useBrandColorVariants(options);
+//     const { colorWhite } = useNeutralColors(options);
+//     const { marginRight } = useMarginBase(options);
 //     const {
 //         borderTopLeftRadius,
 //         borderTopRightRadius,
 //         borderBottomRightRadius,
 //         borderBottomLeftRadius
-//     } = useBorderRadius();
+//     } = useBorderRadius(options);
 //     const {
 //         boxShadowOffsetX,
 //         boxShadowOffsetY,
 //         boxShadowBlurRadius,
 //         boxShadowSpreadRadius,
 //         boxShadowColor
-//     } = useBoxShadow();
-//     const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors();
-//     const { contrastTextColorLight } = useContrastTextColor();
-//     const { fontSize } = useFontSize();
-//     const { lineHeight } = useLineHeight();
-//     const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
-//     const { textColorWeak } = useTextColor();
+//     } = useBoxShadow(options);
+//     const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors(options);
+//     const { contrastTextColorLight } = useContrastTextColor(options);
+//     const { fontSize } = useFontSize(options);
+//     const { lineHeight } = useLineHeight(options);
+//     const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition(options);
+//     const { textColorWeak } = useTextColor(options);
 //
 //     const toggleVariables = nsvariables(
 //         ns,
@@ -484,7 +484,7 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //     };
 // }
 //
-// export function useToggleThemeLayout() {
+// export useToggleThemeLayout(options: DefinitionOptions) {
 //     selector('.toggle', {
 //         position: 'relative',
 //         marginBottom: 0,
@@ -551,7 +551,7 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //     );
 // }
 //
-// export function useToggleThemeBase() {
+// export useToggleThemeBase(options: DefinitionOptions) {
 //     const {
 //         toggleBackground,
 //         toggleBorderStyle,
@@ -593,7 +593,7 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //         toggleCheckedReadonlyBackground,
 //         toggleCheckedReadonlyBorderColor,
 //         toggleCheckedReadonlyIndicatorBackground
-//     } = useToggleThemeVariables();
+//     } = useToggleThemeVariables(options);
 //
 //     selector('.toggle .toggle-label', {
 //         color: ref(toggleColor),
@@ -713,8 +713,8 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //         toggleIndicatorWidth,
 //         toggleIndicatorMarginTop,
 //         toggleIndicatorMarginLeft
-//     } = useToggleThemeVariables();
-//     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
+//     } = useToggleThemeVariables(options);
+//     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
 //     const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
 //     const sizeNs = [ns, variant] as const;
 //
@@ -786,7 +786,7 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 // }
 //
 // export function useToggleThemeSizes(sizes = defaultComponentSizes) {
-//     sizes.forEach(useToggleThemeSizeFactory);
+//     sizes.forEach((size) => useToggleThemeSizeFactory(size, options));
 // }
 //
 // export function useToggleThemeColorFactory(_variant: ComponentBrandNeutralColor) {
@@ -804,7 +804,7 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //     //     colorDarkS,
 //     //     colorDarkL,
 //     //     colorDarkA
-//     // } = useBrandColors();
+//     // } = useBrandColors(options);
 //     // const {
 //     //     colorLightTint50,
 //     //     colorLightTint100,
@@ -818,10 +818,10 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //     //     colorPrimary300,
 //     //     colorPrimary400,
 //     //     colorPrimary800
-//     // } = useBrandColorVariants();
-//     // const { colorGray100, colorGray300 } = useNeutralColors();
+//     // } = useBrandColorVariants(options);
+//     // const { colorGray100, colorGray300 } = useNeutralColors(options);
 //     //
-//     // const { contrastTextColorLight, contrastTextColorDark } = useContrastTextColor();
+//     // const { contrastTextColorLight, contrastTextColorDark } = useContrastTextColor(options);
 //     //
 //     // const colorNs = [ns, variant] as const;
 //     //
@@ -984,16 +984,16 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 // }
 //
 // export function useToggleThemeColors(colors = defaultComponentNeutralColors) {
-//     colors.forEach(useToggleThemeColorFactory);
+//     colors.forEach((color) => useToggleThemeColorFactory(color, options));
 // }
 //
-// export function useToggleThemeLayoutModifiers() {}
+// export useToggleThemeLayoutModifiers(options: DefinitionOptions) {}
 
-export function useToggleTheme() {
-    //     useToggleThemeVariables();
-    //     useToggleThemeLayout();
-    //     useToggleThemeBase();
-    //     useToggleThemeSizes();
-    //     useToggleThemeColors();
-    //     useToggleThemeLayoutModifiers();
+export function useToggleTheme(options: DefinitionOptions) {
+    //     useToggleThemeVariables(options);
+    //     useToggleThemeLayout(options);
+    //     useToggleThemeBase(options);
+    //     useToggleThemeSizes(options);
+    //     useToggleThemeColors(options);
+    //     useToggleThemeLayoutModifiers(options);
 }

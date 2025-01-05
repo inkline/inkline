@@ -1,4 +1,4 @@
-import { defaultDefinitionOptions } from '@inkline/core';
+import { DefinitionOptions } from '@inkline/core';
 import {
     useBorder,
     useBorderRadius,
@@ -22,7 +22,7 @@ import {
     useFluid, useFluidTypeScale
 } from '../variables';
 
-export function useDefaultThemeVariables(options = defaultDefinitionOptions) {
+export function useDefaultThemeVariables(options: DefinitionOptions) {
     return {
         ...useBorder(options),
         ...useBorderRadius(options),

@@ -1,9 +1,9 @@
-import { selector } from '@inkline/core';
+import { DefinitionOptions, selector } from '@inkline/core';
 
-export function useImgThemeSelectors() {
+export function useImgThemeSelectors(options: DefinitionOptions) {
     selector('img, svg', {
         verticalAlign: 'middle'
-    });
+    }, options);
 
     /**
      * Fluid images
@@ -15,7 +15,7 @@ export function useImgThemeSelectors() {
         height: 'auto',
         // Set the width to always be container width
         width: '100%'
-    });
+    }, options);
 
     /**
      * Responsive images
@@ -31,16 +31,16 @@ export function useImgThemeSelectors() {
         // when setting a width and height attribute on the img element.
         height: 'auto',
         maxWidth: '100%'
-    });
+    }, options);
 
     // In Internet Explorer 10, SVG images with .-responsive are
     // disproportionately sized. This fix improperly sizes other image formats,
     // so Inkline will only apply it to svg extensions
     selector('.image[src$=".svg"]', {
         width: '100% \\9'
-    });
+    }, options);
 }
 
-export function useImgTheme() {
-    useImgThemeSelectors();
+export function useImgTheme(options: DefinitionOptions) {
+    useImgThemeSelectors(options);
 }

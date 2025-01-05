@@ -1,7 +1,6 @@
-import { variable } from '@inkline/core';
-import { defaultDefinitionOptions } from '@inkline/core';
+import { DefinitionOptions, variable } from '@inkline/core';
 
-export function usePercentages(options = defaultDefinitionOptions) {
+export function usePercentages(options: DefinitionOptions) {
     const percentage0 = variable('percentage-0', '0%', options);
     const percentage25 = variable('percentage-25', '25%', options);
     const percentage50 = variable('percentage-50', '50%', options);

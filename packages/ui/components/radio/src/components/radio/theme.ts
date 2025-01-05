@@ -39,16 +39,16 @@ type RadioSizeVariant = (typeof defaultRadioSizes)[number];
 const circleIconUrl =
     'data:image/svg+xml; utf8, <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>check</title><circle cx="14" cy="14" r="12"></circle></svg>';
 
-export function useRadioThemeVariables(options = defaultDefinitionOptions) {
-    const { colorPrimary, colorPrimaryH, colorPrimaryS, colorPrimaryL } = useBrandColors();
+export function useRadioThemeVariables(options: DefinitionOptions) {
+    const { colorPrimary, colorPrimaryH, colorPrimaryS, colorPrimaryL } = useBrandColors(options);
     const {
         colorLightShade50,
         colorPrimary300,
         colorPrimary400,
         colorPrimary500,
         colorPrimaryShade50
-    } = useBrandColorVariants();
-    const { colorWhite, colorGray100 } = useNeutralColors();
+    } = useBrandColorVariants(options);
+    const { colorWhite, colorGray100 } = useNeutralColors(options);
     const {
         borderTopStyle,
         borderTopWidth,
@@ -58,19 +58,19 @@ export function useRadioThemeVariables(options = defaultDefinitionOptions) {
         borderBottomWidth,
         borderLeftStyle,
         borderLeftWidth
-    } = useBorder();
+    } = useBorder(options);
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
         boxShadowBlurRadius,
         boxShadowSpreadRadius,
         boxShadowColor
-    } = useBoxShadow();
-    const { textColorWeak } = useTextColor();
-    const { fontSize } = useFontSize();
-    const { spacing } = useSpacing();
-    const { transitionDuration, transitionTimingFunction } = useTransition();
-    const { contrastTextColorLight } = useContrastTextColor();
+    } = useBoxShadow(options);
+    const { textColorWeak } = useTextColor(options);
+    const { fontSize } = useFontSize(options);
+    const { spacing } = useSpacing(options);
+    const { transitionDuration, transitionTimingFunction } = useTransition(options);
+    const { contrastTextColorLight } = useContrastTextColor(options);
 
     return {
         ...nsvariables(
@@ -192,9 +192,9 @@ export function useRadioThemeVariables(options = defaultDefinitionOptions) {
     };
 }
 
-export function useRadioThemeLayout() {
+export function useRadioThemeLayout(options: DefinitionOptions) {
     const { radioWidth, radioHeight, radioCircleWidth, radioCircleHeight } =
-        useRadioThemeVariables();
+        useRadioThemeVariables(options);
 
     selector('.radio', {
         position: 'relative',
@@ -283,7 +283,7 @@ export function useRadioThemeLayout() {
     );
 }
 
-export function useRadioThemeBase() {
+export function useRadioThemeBase(options: DefinitionOptions) {
     const {
         radioBackground,
         radioBorderColor,
@@ -310,7 +310,7 @@ export function useRadioThemeBase() {
         radioReadonlyBackground,
         radioCircleColor,
         radioFocusBoxShadow
-    } = useRadioThemeVariables();
+    } = useRadioThemeVariables(options);
 
     selector('.radio', {
         margin: ref(radioMargin)
@@ -387,8 +387,8 @@ export function useRadioThemeSizeFactory(variant: RadioSizeVariant) {
         radioHeight,
         radioCircleWidth,
         radioCircleHeight
-    } = useRadioThemeVariables();
-    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
+    } = useRadioThemeVariables(options);
+    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
     const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
     const sizeNs = [ns, variant] as const;
 
@@ -459,7 +459,7 @@ export function useRadioThemeSizeFactory(variant: RadioSizeVariant) {
 }
 
 export function useRadioThemeSizes(sizes = defaultRadioSizes) {
-    sizes.forEach(useRadioThemeSizeFactory);
+    sizes.forEach((size) => useRadioThemeSizeFactory(size, options));
 }
 
 export function useRadioThemeColorFactory(variant: RadioColorVariant) {
@@ -467,8 +467,8 @@ export function useRadioThemeColorFactory(variant: RadioColorVariant) {
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
 
-    const colors = useColors();
-    const contrastTextColors = useContrastTextColor();
+    const colors = useColors(options);
+    const contrastTextColors = useContrastTextColor(options);
 
     const { borderColor, background, color } = stripExportsNamespace(
         nsvariables(colorNs, {
@@ -518,11 +518,11 @@ export function useRadioThemeColorFactory(variant: RadioColorVariant) {
 }
 
 export function useRadioThemeColors(colors = defaultRadioColors) {
-    colors.forEach(useRadioThemeColorFactory);
+    colors.forEach((color) => useRadioThemeColorFactory(color, options));
 }
 
-export function useRadioThemeVariants() {
-    const { radioMarginRight } = useRadioThemeVariables();
+export function useRadioThemeVariants(options: DefinitionOptions) {
+    const { radioMarginRight } = useRadioThemeVariables(options);
 
     selector('.radio.-native input', {
         top: 'auto',
@@ -542,10 +542,10 @@ export function useRadioThemeVariants() {
     });
 }
 
-export function useRadioTheme() {
-    useRadioThemeLayout();
-    useRadioThemeBase();
-    useRadioThemeSizes();
-    useRadioThemeColors();
-    useRadioThemeVariants();
+export function useRadioTheme(options: DefinitionOptions) {
+    useRadioThemeLayout(options);
+    useRadioThemeBase(options);
+    useRadioThemeSizes(options);
+    useRadioThemeColors(options);
+    useRadioThemeVariants(options);
 }

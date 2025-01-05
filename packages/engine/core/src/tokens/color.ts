@@ -6,9 +6,9 @@ import {
     NamespaceType,
     TokenType,
     TokenValue,
-    Variable
+    Variable,
+    VariableOptions
 } from '../types';
-import { defaultDefinitionOptions } from '../constants';
 import parseColor from 'color';
 import { variable } from './variable';
 import { ref } from './ref';
@@ -42,7 +42,7 @@ type ColorReturnType<Name extends string> = {
 export function color<Name extends string>(
     name: Name,
     value: TokenValue | HSLAColorProperty | HSLAColorInlineProperty,
-    options = defaultDefinitionOptions
+    options: VariableOptions
 ): ColorReturnType<Name> {
     const colorVariables: ColorReturnType<Name> = {} as ColorReturnType<Name>;
 
@@ -112,7 +112,7 @@ export function nscolor<Namespace extends NamespaceType, Name extends string>(
     ns: Namespace,
     name: Name,
     value: TokenValue | HSLAColorProperty | HSLAColorInlineProperty,
-    options = defaultDefinitionOptions
+    options: VariableOptions
 ) {
     return color(createNamespacedTokenName(ns, name), value, options);
 }

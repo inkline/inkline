@@ -1,14 +1,16 @@
 import { Configuration, ConfigurationOptions, ModuleOptions, SetupFunction } from './types';
-import { state, setState } from './globals';
+import { createContext } from './context';
 
 export function defineConfig(
     setup: SetupFunction,
     options: ConfigurationOptions<ModuleOptions> = {}
 ): Configuration {
-    setState(setup, { themes: {}, files: [] });
+    const context = createContext();
+
+    setup(context);
 
     return {
-        ...state,
+        ...context,
         options
     };
 }

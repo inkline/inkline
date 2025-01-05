@@ -1,13 +1,20 @@
-import { add, ref, subtract, resolvePercentagePropertyValue, defaultDefinitionOptions, color } from "@inkline/core";
+import {
+    add,
+    ref,
+    subtract,
+    resolvePercentagePropertyValue,
+    color,
+    DefinitionOptions
+} from '@inkline/core';
 import type {
     ColorVariantKeys,
     Variable
-} from "@inkline/core";
+} from '@inkline/core';
 import {
     ApplyComposedVariantFn,
     createComposedVariantFactoryFn,
     useComposedVariantsFactory
-} from "./useComposedVariantsFactory";
+} from './useComposedVariantsFactory';
 
 
 /**
@@ -15,29 +22,29 @@ import {
  */
 
 export const defaultColorLightnessValues = {
-    "50": "95%",
-    "100": "90%",
-    "200": "80%",
-    "300": "70%",
-    "400": "60%",
-    "500": "50%",
-    "600": "40%",
-    "700": "30%",
-    "800": "20%",
-    "900": "10%",
-    "950": "5%"
+    '50': '95%',
+    '100': '90%',
+    '200': '80%',
+    '300': '70%',
+    '400': '60%',
+    '500': '50%',
+    '600': '40%',
+    '700': '30%',
+    '800': '20%',
+    '900': '10%',
+    '950': '5%'
 };
 
 export const defaultColorTintValues = {
-    "tint-50": "5%",
-    "tint-100": "10%",
-    "tint-150": "15%"
+    'tint-50': '5%',
+    'tint-100': '10%',
+    'tint-150': '15%'
 };
 
 export const defaultColorShadeValues = {
-    "shade-50": "5%",
-    "shade-100": "10%",
-    "shade-150": "15%"
+    'shade-50': '5%',
+    'shade-100': '10%',
+    'shade-150': '15%'
 };
 
 /**
@@ -46,7 +53,7 @@ export const defaultColorShadeValues = {
 
 const defaultColorFactoryOptions = {
     rename: {
-        part: (name: string) => name.replace(/(-[hsla])((-\w+)+)/, "$2$1")
+        part: (name: string) => name.replace(/(-[hsla])((-\w+)+)/, '$2$1')
     }
 };
 
@@ -55,7 +62,7 @@ const defaultColorFactoryOptions = {
  */
 export function useColorLightnessVariantsFactory<RootKey extends string>(
     composed: Variable<RootKey>,
-    options = defaultDefinitionOptions
+    options: DefinitionOptions
 ) {
     type VariantKeys = keyof typeof defaultColorLightnessValues;
 
@@ -77,7 +84,7 @@ export function useColorLightnessVariantsFactory<RootKey extends string>(
  */
 export function useColorTintVariantsFactory<RootKey extends string>(
     composed: Variable<RootKey>,
-    options = defaultDefinitionOptions
+    options: DefinitionOptions
 ) {
     type VariantKeys = keyof typeof defaultColorTintValues;
 
@@ -104,7 +111,7 @@ export function useColorTintVariantsFactory<RootKey extends string>(
  */
 export function useColorShadeVariantsFactory<RootKey extends string>(
     composed: Variable<RootKey>,
-    options = defaultDefinitionOptions
+    options: DefinitionOptions
 ) {
     type VariantKeys = keyof typeof defaultColorShadeValues;
 
@@ -130,50 +137,50 @@ export function useColorShadeVariantsFactory<RootKey extends string>(
  * Composables
  */
 
-export function useBaseColors(options = defaultDefinitionOptions) {
+export function useBaseColors(options: DefinitionOptions) {
     const { colorRedH, colorRedS, colorRedL, colorRedA, colorRed } = color(
-        "color-red",
-        "#f55252",
+        'color-red',
+        '#f55252',
         options
     );
     const { colorOrangeH, colorOrangeS, colorOrangeL, colorOrangeA, colorOrange } = color(
-        "color-orange",
-        "#f98e5a",
+        'color-orange',
+        '#f98e5a',
         options
     );
     const { colorYellowH, colorYellowS, colorYellowL, colorYellowA, colorYellow } = color(
-        "color-yellow",
-        "#ffda77",
+        'color-yellow',
+        '#ffda77',
         options
     );
     const { colorGreenH, colorGreenS, colorGreenL, colorGreenA, colorGreen } = color(
-        "color-green",
-        "#2fb079",
+        'color-green',
+        '#2fb079',
         options
     );
     const { colorTealH, colorTealS, colorTealL, colorTealA, colorTeal } = color(
-        "color-teal",
-        "#48b4a9",
+        'color-teal',
+        '#48b4a9',
         options
     );
     const { colorBlueH, colorBlueS, colorBlueL, colorBlueA, colorBlue } = color(
-        "color-blue",
-        "#178bb2",
+        'color-blue',
+        '#178bb2',
         options
     );
     const { colorIndigoH, colorIndigoS, colorIndigoL, colorIndigoA, colorIndigo } = color(
-        "color-indigo",
-        "#4c6ef5",
+        'color-indigo',
+        '#4c6ef5',
         options
     );
     const { colorPurpleH, colorPurpleS, colorPurpleL, colorPurpleA, colorPurple } = color(
-        "color-purple",
-        "#8268ae",
+        'color-purple',
+        '#8268ae',
         options
     );
     const { colorPinkH, colorPinkS, colorPinkL, colorPinkA, colorPink } = color(
-        "color-pink",
-        "#fc778a",
+        'color-pink',
+        '#fc778a',
         options
     );
 
@@ -226,21 +233,21 @@ export function useBaseColors(options = defaultDefinitionOptions) {
     };
 }
 
-export function useNeutralColors(options = defaultDefinitionOptions) {
+export function useNeutralColors(options: DefinitionOptions) {
     const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA, colorWhite } = color(
-        "color-white",
-        "#ffffff",
+        'color-white',
+        '#ffffff',
         options
     );
     const { colorBlackH, colorBlackS, colorBlackL, colorBlackA, colorBlack } = color(
-        "color-black",
-        "#000000",
+        'color-black',
+        '#000000',
         options
     );
 
     const { colorGrayH, colorGrayS, colorGrayL, colorGrayA, colorGray } = color(
-        "color-gray",
-        "#8e9fa4",
+        'color-gray',
+        '#8e9fa4',
         options
     );
 
@@ -356,7 +363,7 @@ export function useNeutralColors(options = defaultDefinitionOptions) {
     };
 }
 
-export function useBrandColors(options = defaultDefinitionOptions) {
+export function useBrandColors(options: DefinitionOptions) {
     const {
         colorBlueH,
         colorBlueS,
@@ -382,7 +389,7 @@ export function useBrandColors(options = defaultDefinitionOptions) {
         colorRedS,
         colorRedL,
         colorRedA
-    } = useBaseColors();
+    } = useBaseColors(options);
 
     const {
         colorGray100H,
@@ -393,53 +400,53 @@ export function useBrandColors(options = defaultDefinitionOptions) {
         colorGray800S,
         colorGray800L,
         colorGray800A
-    } = useNeutralColors();
+    } = useNeutralColors(options);
 
     const { colorPrimaryH, colorPrimaryS, colorPrimaryL, colorPrimaryA, colorPrimary } = color(
-        "color-primary",
+        'color-primary',
         [ref(colorBlueH), ref(colorBlueS), ref(colorBlueL), ref(colorBlueA)],
         options
     );
 
     const { colorSecondaryH, colorSecondaryS, colorSecondaryL, colorSecondaryA, colorSecondary } =
         color(
-            "color-secondary",
+            'color-secondary',
             [ref(colorPurpleH), ref(colorPurpleS), ref(colorPurpleL), ref(colorPurpleA)],
             options
         );
 
     const { colorInfoH, colorInfoS, colorInfoL, colorInfoA, colorInfo } = color(
-        "color-info",
+        'color-info',
         [ref(colorTealH), ref(colorTealS), ref(colorTealL), ref(colorTealA)],
         options
     );
 
     const { colorSuccessH, colorSuccessS, colorSuccessL, colorSuccessA, colorSuccess } = color(
-        "color-success",
+        'color-success',
         [ref(colorGreenH), ref(colorGreenS), ref(colorGreenL), ref(colorGreenA)],
         options
     );
 
     const { colorWarningH, colorWarningS, colorWarningL, colorWarningA, colorWarning } = color(
-        "color-warning",
+        'color-warning',
         [ref(colorYellowH), ref(colorYellowS), ref(colorYellowL), ref(colorYellowA)],
         options
     );
 
     const { colorDangerH, colorDangerS, colorDangerL, colorDangerA, colorDanger } = color(
-        "color-danger",
+        'color-danger',
         [ref(colorRedH), ref(colorRedS), ref(colorRedL), ref(colorRedA)],
         options
     );
 
     const { colorLightH, colorLightS, colorLightL, colorLightA, colorLight } = color(
-        "color-light",
+        'color-light',
         [ref(colorGray100H), ref(colorGray100S), ref(colorGray100L), ref(colorGray100A)],
         options
     );
 
     const { colorDarkH, colorDarkS, colorDarkL, colorDarkA, colorDark } = color(
-        "color-dark",
+        'color-dark',
         [ref(colorGray800H), ref(colorGray800S), ref(colorGray800L), ref(colorGray800A)],
         options
     );
@@ -488,7 +495,7 @@ export function useBrandColors(options = defaultDefinitionOptions) {
     };
 }
 
-export function useBrandColorVariants(options = defaultDefinitionOptions) {
+export function useBrandColorVariants(options: DefinitionOptions) {
     const {
         colorPrimary,
         colorSecondary,
@@ -1590,7 +1597,7 @@ export function useBrandColorVariants(options = defaultDefinitionOptions) {
     };
 }
 
-export function useColors(options = defaultDefinitionOptions) {
+export function useColors(options: DefinitionOptions) {
     return {
         ...useBaseColors(options),
         ...useNeutralColors(options),

@@ -1,7 +1,7 @@
-import { defaultDefinitionOptions } from '@inkline/core';
+import { DefinitionOptions } from '@inkline/core';
 import { variable } from '@inkline/core';
 
-export function useLetterSpacing(options = defaultDefinitionOptions) {
+export function useLetterSpacing(options: DefinitionOptions) {
     const letterSpacing = variable('letter-spacing', 'normal', options);
 
     const letterSpacingNone = variable('letter-spacing-none', '0', options);

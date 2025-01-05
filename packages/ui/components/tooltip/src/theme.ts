@@ -41,7 +41,7 @@ const defaultTooltipSizes = ['sm', 'md', 'lg'] as const;
 type TooltipColorVariant = (typeof defaultTooltipColors)[number];
 type TooltipSizeVariant = (typeof defaultTooltipSizes)[number];
 
-export function useTooltipThemeVariables(options = defaultDefinitionOptions) {
+export function useTooltipThemeVariables(options: DefinitionOptions) {
     const {
         borderTopStyle,
         borderTopWidth,
@@ -51,26 +51,27 @@ export function useTooltipThemeVariables(options = defaultDefinitionOptions) {
         borderBottomWidth,
         borderLeftStyle,
         borderLeftWidth
-    } = useBorder();
-    const { colorLightShade50 } = useBrandColorVariants();
-    const { spacing } = useSpacing();
+    } = useBorder(options);
+    const { colorLightShade50 } = useBrandColorVariants(options);
+    const { spacing } = useSpacing(options);
     const {
         borderTopLeftRadius,
         borderTopRightRadius,
         borderBottomRightRadius,
         borderBottomLeftRadius
-    } = useBorderRadius();
+    } = useBorderRadius(options);
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
         boxShadowBlurRadius,
         boxShadowSpreadRadius,
         boxShadowColor
-    } = useBoxShadow();
-    const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors();
-    const { contrastTextColorLight } = useContrastTextColor();
-    const { fontSize } = useFontSize();
-    const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
+    } = useBoxShadow(options);
+    const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors(options);
+    const { contrastTextColorLight } = useContrastTextColor(options);
+    const { fontSize } = useFontSize(options);
+    const { transitionProperty, transitionDuration, transitionTimingFunction } =
+        useTransition(options);
 
     return {
         ...nsvariables(
@@ -144,8 +145,8 @@ export function useTooltipThemeVariables(options = defaultDefinitionOptions) {
     };
 }
 
-export function useTooltipThemeLayout() {
-    const { tooltipZIndex } = useTooltipThemeVariables();
+export function useTooltipThemeLayout(options: DefinitionOptions) {
+    const { tooltipZIndex } = useTooltipThemeVariables(options);
 
     selector('.tooltip', {
         position: 'absolute',
@@ -236,7 +237,7 @@ export function useTooltipThemeLayout() {
     );
 }
 
-export function useTooltipThemeBase() {
+export function useTooltipThemeBase(options: DefinitionOptions) {
     const {
         tooltipBorderStyle,
         tooltipBorderColor,
@@ -254,7 +255,7 @@ export function useTooltipThemeBase() {
         tooltipTransitionDuration,
         tooltipTransitionTimingFunction,
         tooltipArrowSize
-    } = useTooltipThemeVariables();
+    } = useTooltipThemeVariables(options);
 
     selector('.tooltip', {
         boxShadow: ref(tooltipBoxShadow),
@@ -334,8 +335,8 @@ export function useTooltipThemeSizeFactory(variant: TooltipSizeVariant) {
         tooltipBorderBottomRightRadius,
         tooltipBorderBottomLeftRadius,
         tooltipFontSize
-    } = useTooltipThemeVariables();
-    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
+    } = useTooltipThemeVariables(options);
+    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
     const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
     const sizeNs = [ns, variant] as const;
 
@@ -381,7 +382,7 @@ export function useTooltipThemeSizeFactory(variant: TooltipSizeVariant) {
 }
 
 export function useTooltipThemeSizes(sizes = defaultTooltipSizes) {
-    sizes.forEach(useTooltipThemeSizeFactory);
+    sizes.forEach((size) => useTooltipThemeSizeFactory(size, options));
 }
 
 export function useTooltipThemeColorFactory(variant: TooltipColorVariant) {
@@ -389,8 +390,8 @@ export function useTooltipThemeColorFactory(variant: TooltipColorVariant) {
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
 
-    const colors = useColors();
-    const contrastTextColors = useContrastTextColor();
+    const colors = useColors(options);
+    const contrastTextColors = useContrastTextColor(options);
 
     const { borderColor, background, color } = stripExportsNamespace(
         nsvariables(colorNs, {
@@ -440,13 +441,13 @@ export function useTooltipThemeColorFactory(variant: TooltipColorVariant) {
 }
 
 export function useTooltipThemeColors(colors = defaultTooltipColors) {
-    colors.forEach(useTooltipThemeColorFactory);
+    colors.forEach((color) => useTooltipThemeColorFactory(color, options));
 }
 
-export function useTooltipTheme() {
-    useTooltipThemeVariables();
-    useTooltipThemeLayout();
-    useTooltipThemeBase();
-    useTooltipThemeSizes();
-    useTooltipThemeColors();
+export function useTooltipTheme(options: DefinitionOptions) {
+    useTooltipThemeVariables(options);
+    useTooltipThemeLayout(options);
+    useTooltipThemeBase(options);
+    useTooltipThemeSizes(options);
+    useTooltipThemeColors(options);
 }

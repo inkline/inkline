@@ -45,7 +45,7 @@ const defaultToastSizes = ['sm', 'md', 'lg'] as const;
 type ToastColorVariant = (typeof defaultToastColors)[number];
 type ToastSizeVariant = (typeof defaultToastSizes)[number];
 
-export function useToastThemeVariables(options = defaultDefinitionOptions) {
+export function useToastThemeVariables(options: DefinitionOptions) {
     const {
         borderTopStyle,
         borderTopWidth,
@@ -55,27 +55,28 @@ export function useToastThemeVariables(options = defaultDefinitionOptions) {
         borderBottomWidth,
         borderLeftStyle,
         borderLeftWidth
-    } = useBorder();
-    const { spacing } = useSpacing();
+    } = useBorder(options);
+    const { spacing } = useSpacing(options);
     const {
         borderTopLeftRadius,
         borderTopRightRadius,
         borderBottomRightRadius,
         borderBottomLeftRadius
-    } = useBorderRadius();
+    } = useBorderRadius(options);
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
         boxShadowBlurRadius,
         boxShadowSpreadRadius,
         boxShadowColor
-    } = useBoxShadow();
-    const { contrastTextColorLight } = useContrastTextColor();
-    const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors();
-    const { colorLightShade50 } = useBrandColorVariants();
-    const { fontSize } = useFontSize();
-    const { fontWeightSemibold } = useFontWeight();
-    const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
+    } = useBoxShadow(options);
+    const { contrastTextColorLight } = useContrastTextColor(options);
+    const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors(options);
+    const { colorLightShade50 } = useBrandColorVariants(options);
+    const { fontSize } = useFontSize(options);
+    const { fontWeightSemibold } = useFontWeight(options);
+    const { transitionProperty, transitionDuration, transitionTimingFunction } =
+        useTransition(options);
 
     return {
         ...nsvariables(
@@ -155,8 +156,8 @@ export function useToastThemeVariables(options = defaultDefinitionOptions) {
     };
 }
 
-export function useToastThemeLayout() {
-    const { toastProgressHeight } = useToastThemeVariables();
+export function useToastThemeLayout(options: DefinitionOptions) {
+    const { toastProgressHeight } = useToastThemeVariables(options);
 
     selector('.toast', {
         position: 'relative',
@@ -213,7 +214,7 @@ export function useToastThemeLayout() {
     });
 }
 
-export function useToastThemeBase() {
+export function useToastThemeBase(options: DefinitionOptions) {
     const {
         toastBorderStyle,
         toastBorderColor,
@@ -234,7 +235,7 @@ export function useToastThemeBase() {
         toastTitleFontSize,
         toastProgressBackground,
         toastProgressBarBackground
-    } = useToastThemeVariables();
+    } = useToastThemeVariables(options);
 
     selector('.toast', {
         borderStyle: ref(toastBorderStyle),
@@ -303,8 +304,8 @@ export function useToastThemeSizeFactory(variant: ToastSizeVariant) {
         toastBorderBottomRightRadius,
         toastBorderBottomLeftRadius,
         toastFontSize
-    } = useToastThemeVariables();
-    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
+    } = useToastThemeVariables(options);
+    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
     const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
     const sizeNs = [ns, variant] as const;
 
@@ -360,7 +361,7 @@ export function useToastThemeSizeFactory(variant: ToastSizeVariant) {
 }
 
 export function useToastThemeSizes(sizes = defaultToastSizes) {
-    sizes.forEach(useToastThemeSizeFactory);
+    sizes.forEach((size) => useToastThemeSizeFactory(size, options));
 }
 
 export function useToastThemeColorFactory(variant: ToastColorVariant) {
@@ -368,10 +369,10 @@ export function useToastThemeColorFactory(variant: ToastColorVariant) {
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
 
-    const neutralColors = useNeutralColors();
-    const brandColors = useBrandColors();
-    const brandColorVariants = useBrandColorVariants();
-    const { contrastTextColorLight, contrastTextColorDark } = useContrastTextColor();
+    const neutralColors = useNeutralColors(options);
+    const brandColors = useBrandColors(options);
+    const brandColorVariants = useBrandColorVariants(options);
+    const { contrastTextColorLight, contrastTextColorDark } = useContrastTextColor(options);
 
     let backgroundValue: Variable;
     if (colorKey === 'Light') {
@@ -433,12 +434,12 @@ export function useToastThemeColorFactory(variant: ToastColorVariant) {
 }
 
 export function useToastThemeColors(colors = defaultToastColors) {
-    colors.forEach(useToastThemeColorFactory);
+    colors.forEach((color) => useToastThemeColorFactory(color, options));
 }
 
-export function useToastTheme() {
-    useToastThemeLayout();
-    useToastThemeBase();
-    useToastThemeSizes();
-    useToastThemeColors();
+export function useToastTheme(options: DefinitionOptions) {
+    useToastThemeLayout(options);
+    useToastThemeBase(options);
+    useToastThemeSizes(options);
+    useToastThemeColors(options);
 }

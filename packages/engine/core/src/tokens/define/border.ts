@@ -1,7 +1,7 @@
 import {
     BorderProperty,
     BorderSidesProperty,
-    DefineOptions,
+    VariablesOptions,
     NamespacedKey,
     NamespacedMap,
     NamespaceType,
@@ -61,7 +61,7 @@ export type OutputMapBorder<Namespace extends NamespaceType> = NamespacedMap<
 export function defineBorder<Namespace extends NamespaceType>(
     ns: Namespace,
     value: SourceMapBorder,
-    options?: DefineOptions
+    options: VariablesOptions
 ): OutputMapBorder<Namespace> {
     const borderTopWidth = nsvariable(ns, 'border-top-width', 0, options);
     const borderTopStyle = nsvariable(ns, 'border-top-style', 'none', options);
@@ -80,7 +80,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         ]),
         {
             ...options,
-            register: options?.registerComposed ?? true
+            register: options.registerComposed ?? true
         }
     );
 
@@ -121,7 +121,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         ]),
         {
             ...options,
-            register: options?.registerComposed ?? true
+            register: options.registerComposed ?? true
         }
     );
 
@@ -162,7 +162,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         ]),
         {
             ...options,
-            register: options?.registerComposed ?? true
+            register: options.registerComposed ?? true
         }
     );
 
@@ -183,7 +183,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         ]),
         {
             ...options,
-            register: options?.registerComposed ?? true
+            register: options.registerComposed ?? true
         }
     );
 
@@ -193,7 +193,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderTopWidth), ref(borderRightWidth), ref(borderBottomWidth), ref(borderLeftWidth)],
         {
             ...options,
-            register: options?.registerComposed ?? true
+            register: options.registerComposed ?? true
         }
     );
     const borderStyle = nsvariable(
@@ -202,7 +202,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderTopStyle), ref(borderRightStyle), ref(borderBottomStyle), ref(borderLeftStyle)],
         {
             ...options,
-            register: options?.registerComposed ?? true
+            register: options.registerComposed ?? true
         }
     );
     const borderColor = nsvariable(
@@ -211,7 +211,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderTopColor), ref(borderRightColor), ref(borderBottomColor), ref(borderLeftColor)],
         {
             ...options,
-            register: options?.registerComposed ?? true
+            register: options.registerComposed ?? true
         }
     );
     const borderTop = nsvariable(
@@ -220,7 +220,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderTopWidth), ref(borderTopStyle), ref(borderTopColor)],
         {
             ...options,
-            register: options?.registerComposed ?? true
+            register: options.registerComposed ?? true
         }
     );
     const borderRight = nsvariable(
@@ -229,7 +229,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderRightWidth), ref(borderRightStyle), ref(borderRightColor)],
         {
             ...options,
-            register: options?.registerComposed ?? true
+            register: options.registerComposed ?? true
         }
     );
     const borderBottom = nsvariable(
@@ -238,7 +238,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderBottomWidth), ref(borderBottomStyle), ref(borderBottomColor)],
         {
             ...options,
-            register: options?.registerComposed ?? true
+            register: options.registerComposed ?? true
         }
     );
     const borderLeft = nsvariable(
@@ -247,7 +247,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderLeftWidth), ref(borderLeftStyle), ref(borderLeftColor)],
         {
             ...options,
-            register: options?.registerComposed ?? true
+            register: options.registerComposed ?? true
         }
     );
     const border = nsvariable(
@@ -256,7 +256,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderTopWidth), ref(borderTopStyle), ref(borderTopColor)],
         {
             ...options,
-            register: options?.registerComposed ?? true
+            register: options.registerComposed ?? true
         }
     );
 
@@ -277,6 +277,7 @@ export function defineBorder<Namespace extends NamespaceType>(
 
         if (value.color) {
             const { colorH, colorS, colorL, colorA } = parseColor('color', value.color, {
+                ...options,
                 register: false
             });
 
@@ -318,6 +319,7 @@ export function defineBorder<Namespace extends NamespaceType>(
                         'color',
                         value.top.color,
                         {
+                            ...options,
                             register: false
                         }
                     );
@@ -337,6 +339,7 @@ export function defineBorder<Namespace extends NamespaceType>(
                         'color',
                         value.right.color,
                         {
+                            ...options,
                             register: false
                         }
                     );
@@ -356,6 +359,7 @@ export function defineBorder<Namespace extends NamespaceType>(
                         'color',
                         value.bottom.color,
                         {
+                            ...options,
                             register: false
                         }
                     );
@@ -375,6 +379,7 @@ export function defineBorder<Namespace extends NamespaceType>(
                         'color',
                         value.left.color,
                         {
+                            ...options,
                             register: false
                         }
                     );
@@ -409,6 +414,7 @@ export function defineBorder<Namespace extends NamespaceType>(
 
         if (color) {
             const { colorH, colorS, colorL, colorA } = parseColor('color', color, {
+                ...options,
                 register: false
             });
 

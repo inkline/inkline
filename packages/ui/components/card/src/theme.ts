@@ -43,7 +43,7 @@ type CardSizeVariant = (typeof defaultCardSizes)[number];
  * Config
  */
 
-export function useCardThemeColorConfig(variant?: CardColorVariant) {
+export function useCardThemeColorConfig(variant: CardColorVariant) {
     const {
         colorLightShade50H,
         colorLightShade50S,
@@ -109,7 +109,7 @@ export function useCardThemeColorConfig(variant?: CardColorVariant) {
         colorInfoS,
         colorInfoL,
         colorInfoA
-    } = useColors();
+    } = useColors(options);
     const {
         contrastTextColorLightH,
         contrastTextColorLightS,
@@ -143,7 +143,7 @@ export function useCardThemeColorConfig(variant?: CardColorVariant) {
         contrastTextColorInfoS,
         contrastTextColorInfoL,
         contrastTextColorInfoA
-    } = useContrastTextColor();
+    } = useContrastTextColor(options);
 
     return {
         light: {
@@ -325,7 +325,7 @@ export function useCardThemeColorConfig(variant?: CardColorVariant) {
     }[variant ?? defaultCardColor];
 }
 
-export function useCardThemeSizeConfig(variant?: CardSizeVariant) {
+export function useCardThemeSizeConfig(variant: CardSizeVariant) {
     const {
         borderTopLeftRadiusSm,
         borderTopRightRadiusSm,
@@ -339,9 +339,9 @@ export function useCardThemeSizeConfig(variant?: CardSizeVariant) {
         borderTopRightRadiusLg,
         borderBottomRightRadiusLg,
         borderBottomLeftRadiusLg
-    } = useBorderRadius();
-    const { fontSizeXs, fontSizeSm, fontSizeMd } = useFontSize();
-    const { spacingSm, spacingMd, spacingLg } = useSpacing();
+    } = useBorderRadius(options);
+    const { fontSizeXs, fontSizeSm, fontSizeMd } = useFontSize(options);
+    const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
 
     return {
         sm: {
@@ -392,7 +392,7 @@ export function useCardThemeSizeConfig(variant?: CardSizeVariant) {
     }[variant ?? defaultCardSize];
 }
 
-export function useCardThemeConfig() {
+export function useCardThemeConfig(options: DefinitionOptions) {
     const {
         borderTopStyle,
         borderTopWidth,
@@ -402,15 +402,16 @@ export function useCardThemeConfig() {
         borderBottomWidth,
         borderLeftStyle,
         borderLeftWidth
-    } = useBorder();
+    } = useBorder(options);
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
         boxShadowBlurRadius,
         boxShadowSpreadRadius,
         boxShadowColor
-    } = useBoxShadow();
-    const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
+    } = useBoxShadow(options);
+    const { transitionProperty, transitionDuration, transitionTimingFunction } =
+        useTransition(options);
 
     return merge(
         {
@@ -445,8 +446,8 @@ export function useCardThemeConfig() {
                 timingFunction: ref(transitionTimingFunction)
             }
         },
-        useCardThemeColorConfig(),
-        useCardThemeSizeConfig()
+        useCardThemeColorConfig(options),
+        useCardThemeSizeConfig(options)
     );
 }
 
@@ -454,34 +455,28 @@ export function useCardThemeConfig() {
  * Variables
  */
 
-export function useCardThemeColorVariables(
-    variant: CardColorVariant,
-    options = defaultDefinitionOptions
-) {
+export function useCardThemeColorVariables(variant: CardColorVariant, options: DefinitionOptions) {
     return nsvariables(ns, useCardThemeColorConfig(variant), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useCardThemeSizeVariables(
-    variant: CardSizeVariant,
-    options = defaultDefinitionOptions
-) {
+export function useCardThemeSizeVariables(variant: CardSizeVariant, options: DefinitionOptions) {
     return nsvariables(ns, useCardThemeSizeConfig(variant), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useCardThemeVariables(options = defaultDefinitionOptions) {
-    return nsvariables(ns, useCardThemeConfig(), {
+export function useCardThemeVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useCardThemeConfig(options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useCardThemeLayout() {
+export function useCardThemeLayout(options: DefinitionOptions) {
     selector('.card', {
         position: 'relative',
         display: 'flex',
@@ -496,7 +491,7 @@ export function useCardThemeLayout() {
  * Selecotrs
  */
 
-export function useCardThemeBaseSelectors() {
+export function useCardThemeBaseSelectors(options: DefinitionOptions) {
     const {
         cardBorderStyle,
         cardBorderTopColor,
@@ -513,7 +508,7 @@ export function useCardThemeBaseSelectors() {
         cardTransitionProperty,
         cardTransitionDuration,
         cardTransitionTimingFunction
-    } = useCardThemeVariables();
+    } = useCardThemeVariables(options);
 
     selector('.card', {
         boxShadow: vref(cardBoxShadow),
@@ -584,7 +579,7 @@ export function useCardThemeColorSelectors(variant: CardColorVariant) {
         cardColorS,
         cardColorL,
         cardColorA
-    } = useCardThemeVariables();
+    } = useCardThemeVariables(options);
 
     const {
         variantBackgroundH,
@@ -659,7 +654,7 @@ export function useCardThemeSizeSelectors(variant: CardSizeVariant) {
         cardPaddingRight,
         cardPaddingBottom,
         cardPaddingLeft
-    } = useCardThemeVariables();
+    } = useCardThemeVariables(options);
 
     const {
         variantBorderTopLeftRadius,
@@ -691,17 +686,17 @@ export function useCardThemeSizeSelectors(variant: CardSizeVariant) {
  */
 
 export function useCardThemeColors(colors = defaultCardColors) {
-    colors.forEach(useCardThemeColorSelectors);
+    colors.forEach((color) => useCardThemeColorSelectors(color, options));
 }
 
 export function useCardThemeSizes(sizes = defaultCardSizes) {
-    sizes.forEach(useCardThemeSizeSelectors);
+    sizes.forEach((size) => useCardThemeSizeSelectors(size, options));
 }
 
-export function useCardTheme() {
-    useCardThemeVariables();
-    useCardThemeLayout();
-    useCardThemeBaseSelectors();
-    useCardThemeColors();
-    useCardThemeSizes();
+export function useCardTheme(options: DefinitionOptions) {
+    useCardThemeVariables(options);
+    useCardThemeLayout(options);
+    useCardThemeBaseSelectors(options);
+    useCardThemeColors(options);
+    useCardThemeSizes(options);
 }

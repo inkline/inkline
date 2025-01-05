@@ -42,16 +42,16 @@ const checkmarkIconUrl =
 const minusIconUrl =
     'data:image/svg+xml; utf8, <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>minus</title><path d="M0 11.375v5.25c0 0.483 0.392 0.875 0.875 0.875h26.25c0.483 0 0.875-0.392 0.875-0.875v-5.25c0-0.483-0.392-0.875-0.875-0.875h-26.25c-0.483 0-0.875 0.392-0.875 0.875z"></path></svg>';
 
-export function useCheckboxThemeVariables(options = defaultDefinitionOptions) {
-    const { colorPrimary, colorPrimaryH, colorPrimaryS, colorPrimaryL } = useBrandColors();
+export function useCheckboxThemeVariables(options: DefinitionOptions) {
+    const { colorPrimary, colorPrimaryH, colorPrimaryS, colorPrimaryL } = useBrandColors(options);
     const {
         colorLightShade50,
         colorPrimary300,
         colorPrimary400,
         colorPrimary500,
         colorPrimaryShade50
-    } = useBrandColorVariants();
-    const { colorWhite, colorGray100 } = useNeutralColors();
+    } = useBrandColorVariants(options);
+    const { colorWhite, colorGray100 } = useNeutralColors(options);
     const {
         borderTopStyle,
         borderTopWidth,
@@ -61,25 +61,25 @@ export function useCheckboxThemeVariables(options = defaultDefinitionOptions) {
         borderBottomWidth,
         borderLeftStyle,
         borderLeftWidth
-    } = useBorder();
+    } = useBorder(options);
     const {
         borderTopLeftRadius,
         borderTopRightRadius,
         borderBottomRightRadius,
         borderBottomLeftRadius
-    } = useBorderRadius();
+    } = useBorderRadius(options);
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
         boxShadowBlurRadius,
         boxShadowSpreadRadius,
         boxShadowColor
-    } = useBoxShadow();
-    const { textColorWeak } = useTextColor();
-    const { fontSize } = useFontSize();
-    const { spacing } = useSpacing();
-    const { transitionDuration, transitionTimingFunction } = useTransition();
-    const { contrastTextColorLight } = useContrastTextColor();
+    } = useBoxShadow(options);
+    const { textColorWeak } = useTextColor(options);
+    const { fontSize } = useFontSize(options);
+    const { spacing } = useSpacing(options);
+    const { transitionDuration, transitionTimingFunction } = useTransition(options);
+    const { contrastTextColorLight } = useContrastTextColor(options);
 
     return {
         ...nsvariables(
@@ -201,9 +201,9 @@ export function useCheckboxThemeVariables(options = defaultDefinitionOptions) {
     };
 }
 
-export function useCheckboxThemeLayout() {
+export function useCheckboxThemeLayout(options: DefinitionOptions) {
     const { checkboxWidth, checkboxHeight, checkboxCheckmarkWidth, checkboxCheckmarkHeight } =
-        useCheckboxThemeVariables();
+        useCheckboxThemeVariables(options);
 
     selector('.checkbox', {
         position: 'relative',
@@ -316,7 +316,7 @@ export function useCheckboxThemeLayout() {
     );
 }
 
-export function useCheckboxThemeBase() {
+export function useCheckboxThemeBase(options: DefinitionOptions) {
     const {
         checkboxBackground,
         checkboxBorderColor,
@@ -343,7 +343,7 @@ export function useCheckboxThemeBase() {
         checkboxReadonlyBackground,
         checkboxCheckmarkColor,
         checkboxFocusBoxShadow
-    } = useCheckboxThemeVariables();
+    } = useCheckboxThemeVariables(options);
 
     selector('.checkbox', {
         margin: ref(checkboxMargin)
@@ -426,8 +426,8 @@ export function useCheckboxThemeSizeFactory(variant: CheckboxSizeVariant) {
         checkboxHeight,
         checkboxCheckmarkWidth,
         checkboxCheckmarkHeight
-    } = useCheckboxThemeVariables();
-    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier();
+    } = useCheckboxThemeVariables(options);
+    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
     const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
     const sizeNs = [ns, variant] as const;
 
@@ -501,7 +501,7 @@ export function useCheckboxThemeSizeFactory(variant: CheckboxSizeVariant) {
 }
 
 export function useCheckboxThemeSizes(sizes = defaultCheckboxSizes) {
-    sizes.forEach(useCheckboxThemeSizeFactory);
+    sizes.forEach((size) => useCheckboxThemeSizeFactory(size, options));
 }
 
 export function useCheckboxThemeColorFactory(variant: CheckboxColorVariant) {
@@ -509,8 +509,8 @@ export function useCheckboxThemeColorFactory(variant: CheckboxColorVariant) {
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
 
-    const colors = useColors();
-    const contrastTextColors = useContrastTextColor();
+    const colors = useColors(options);
+    const contrastTextColors = useContrastTextColor(options);
 
     const { borderColor, background, color } = stripExportsNamespace(
         nsvariables(colorNs, {
@@ -560,11 +560,11 @@ export function useCheckboxThemeColorFactory(variant: CheckboxColorVariant) {
 }
 
 export function useCheckboxThemeColors(colors = defaultCheckboxColors) {
-    colors.forEach(useCheckboxThemeColorFactory);
+    colors.forEach((color) => useCheckboxThemeColorFactory(color, options));
 }
 
-export function useCheckboxThemeVariants() {
-    const { checkboxMarginRight } = useCheckboxThemeVariables();
+export function useCheckboxThemeVariants(options: DefinitionOptions) {
+    const { checkboxMarginRight } = useCheckboxThemeVariables(options);
 
     selector('.checkbox.-native input', {
         top: 'auto',
@@ -587,10 +587,10 @@ export function useCheckboxThemeVariants() {
     );
 }
 
-export function useCheckboxTheme() {
-    useCheckboxThemeLayout();
-    useCheckboxThemeBase();
-    useCheckboxThemeSizes();
-    useCheckboxThemeColors();
-    useCheckboxThemeVariants();
+export function useCheckboxTheme(options: DefinitionOptions) {
+    useCheckboxThemeLayout(options);
+    useCheckboxThemeBase(options);
+    useCheckboxThemeSizes(options);
+    useCheckboxThemeColors(options);
+    useCheckboxThemeVariants(options);
 }

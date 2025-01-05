@@ -1,88 +1,138 @@
 import { nsvariable, variable } from '../variable';
 import { ref } from '../ref';
 import { defineAnimation } from './animation';
+import { createContext } from '../../context';
+
+const options = { context: createContext() };
 
 describe('defineAnimation', () => {
     it('should create default animation variables when no value is provided', () => {
-        const result = defineAnimation('namespace', '');
+        const result = defineAnimation('namespace', '', options);
         expect(result).toEqual({
-            namespaceAnimationName: nsvariable('namespace', 'animation-name', 'none'),
-            namespaceAnimationDuration: nsvariable('namespace', 'animation-duration', 0),
+            namespaceAnimationName: nsvariable('namespace', 'animation-name', 'none', options),
+            namespaceAnimationDuration: nsvariable('namespace', 'animation-duration', 0, options),
             namespaceAnimationIterationCount: nsvariable(
                 'namespace',
                 'animation-iteration-count',
-                1
+                1,
+                options
             ),
-            namespaceAnimationDirection: nsvariable('namespace', 'animation-direction', 'normal'),
-            namespaceAnimation: nsvariable('namespace', 'animation', [
-                ref(nsvariable('namespace', 'animation-name', 'none')),
-                ref(nsvariable('namespace', 'animation-duration', 0)),
-                ref(nsvariable('namespace', 'animation-iteration-count', 1)),
-                ref(nsvariable('namespace', 'animation-direction', 'normal'))
-            ])
+            namespaceAnimationDirection: nsvariable(
+                'namespace',
+                'animation-direction',
+                'normal',
+                options
+            ),
+            namespaceAnimation: nsvariable(
+                'namespace',
+                'animation',
+                [
+                    ref(nsvariable('namespace', 'animation-name', 'none', options)),
+                    ref(nsvariable('namespace', 'animation-duration', 0, options)),
+                    ref(nsvariable('namespace', 'animation-iteration-count', 1, options)),
+                    ref(nsvariable('namespace', 'animation-direction', 'normal', options))
+                ],
+                options
+            )
         });
     });
 
     it('should set animation properties from object', () => {
         const value = { name: 'fade', duration: '2s', iterationCount: 3, direction: 'reverse' };
-        const result = defineAnimation('namespace', value);
+        const result = defineAnimation('namespace', value, options);
         expect(result).toEqual({
-            namespaceAnimationName: nsvariable('namespace', 'animation-name', 'fade'),
-            namespaceAnimationDuration: nsvariable('namespace', 'animation-duration', '2s'),
+            namespaceAnimationName: nsvariable('namespace', 'animation-name', 'fade', options),
+            namespaceAnimationDuration: nsvariable(
+                'namespace',
+                'animation-duration',
+                '2s',
+                options
+            ),
             namespaceAnimationIterationCount: nsvariable(
                 'namespace',
                 'animation-iteration-count',
-                3
+                3,
+                options
             ),
-            namespaceAnimationDirection: nsvariable('namespace', 'animation-direction', 'reverse'),
-            namespaceAnimation: nsvariable('namespace', 'animation', [
-                ref(nsvariable('namespace', 'animation-name', 'fade')),
-                ref(nsvariable('namespace', 'animation-duration', '2s')),
-                ref(nsvariable('namespace', 'animation-iteration-count', 3)),
-                ref(nsvariable('namespace', 'animation-direction', 'reverse'))
-            ])
+            namespaceAnimationDirection: nsvariable(
+                'namespace',
+                'animation-direction',
+                'reverse',
+                options
+            ),
+            namespaceAnimation: nsvariable(
+                'namespace',
+                'animation',
+                [
+                    ref(nsvariable('namespace', 'animation-name', 'fade', options)),
+                    ref(nsvariable('namespace', 'animation-duration', '2s', options)),
+                    ref(nsvariable('namespace', 'animation-iteration-count', 3, options)),
+                    ref(nsvariable('namespace', 'animation-direction', 'reverse', options))
+                ],
+                options
+            )
         });
     });
 
     it('should set animation properties from string value', () => {
         const value = 'fade 2s 3 reverse';
-        const result = defineAnimation('namespace', value);
+        const result = defineAnimation('namespace', value, options);
         expect(result).toEqual({
-            namespaceAnimationName: nsvariable('namespace', 'animation-name', 'fade'),
-            namespaceAnimationDuration: nsvariable('namespace', 'animation-duration', '2s'),
+            namespaceAnimationName: nsvariable('namespace', 'animation-name', 'fade', options),
+            namespaceAnimationDuration: nsvariable(
+                'namespace',
+                'animation-duration',
+                '2s',
+                options
+            ),
             namespaceAnimationIterationCount: nsvariable(
                 'namespace',
                 'animation-iteration-count',
-                '3'
+                '3',
+                options
             ),
-            namespaceAnimationDirection: nsvariable('namespace', 'animation-direction', 'reverse'),
-            namespaceAnimation: nsvariable('namespace', 'animation', [
-                ref(nsvariable('namespace', 'animation-name', 'fade')),
-                ref(nsvariable('namespace', 'animation-duration', '2s')),
-                ref(nsvariable('namespace', 'animation-iteration-count', '3')),
-                ref(nsvariable('namespace', 'animation-direction', 'reverse'))
-            ])
+            namespaceAnimationDirection: nsvariable(
+                'namespace',
+                'animation-direction',
+                'reverse',
+                options
+            ),
+            namespaceAnimation: nsvariable(
+                'namespace',
+                'animation',
+                [
+                    ref(nsvariable('namespace', 'animation-name', 'fade', options)),
+                    ref(nsvariable('namespace', 'animation-duration', '2s', options)),
+                    ref(nsvariable('namespace', 'animation-iteration-count', '3', options)),
+                    ref(nsvariable('namespace', 'animation-direction', 'reverse', options))
+                ],
+                options
+            )
         });
     });
 
     it('should handle empty namespace', () => {
-        const result = defineAnimation('', '');
+        const result = defineAnimation('', '', options);
         expect(result).toEqual({
-            animationName: variable('animation-name', 'none'),
-            animationDuration: variable('animation-duration', 0),
-            animationIterationCount: variable('animation-iteration-count', 1),
-            animationDirection: variable('animation-direction', 'normal'),
-            animation: variable('animation', [
-                ref(variable('animation-name', 'none')),
-                ref(variable('animation-duration', 0)),
-                ref(variable('animation-iteration-count', 1)),
-                ref(variable('animation-direction', 'normal'))
-            ])
+            animationName: variable('animation-name', 'none', options),
+            animationDuration: variable('animation-duration', 0, options),
+            animationIterationCount: variable('animation-iteration-count', 1, options),
+            animationDirection: variable('animation-direction', 'normal', options),
+            animation: variable(
+                'animation',
+                [
+                    ref(variable('animation-name', 'none', options)),
+                    ref(variable('animation-duration', 0, options)),
+                    ref(variable('animation-iteration-count', 1, options)),
+                    ref(variable('animation-direction', 'normal', options))
+                ],
+                options
+            )
         });
     });
 
     it('should return object with namespaced properties', () => {
-        const result = defineAnimation('namespace', '');
+        const result = defineAnimation('namespace', '', options);
 
         const {
             namespaceAnimationName,
@@ -100,7 +150,7 @@ describe('defineAnimation', () => {
     });
 
     it('should return object with non-namespaced properties', () => {
-        const result = defineAnimation('', '');
+        const result = defineAnimation('', '', options);
 
         const {
             animationName,

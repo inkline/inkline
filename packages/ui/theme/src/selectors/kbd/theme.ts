@@ -1,5 +1,5 @@
 import {
-    defaultDefinitionOptions,
+    DefinitionOptions,
     ref,
     selector,
     multiply,
@@ -16,28 +16,28 @@ import {
 
 const ns = 'kbd';
 
-export function useKbdConfig() {
+export function useKbdConfig(options: DefinitionOptions) {
     const {
         colorDarkH,
         colorDarkS,
         colorDarkL,
         colorDarkA
-    } = useBrandColors();
+    } = useBrandColors(options);
     const {
         contrastTextColorDarkH,
         contrastTextColorDarkS,
         contrastTextColorDarkL,
         contrastTextColorDarkA
-    } = useContrastTextColor();
-    const { fontSizeSm } = useFontSize();
-    const { fontFamilyMonospace } = useFontFamily();
+    } = useContrastTextColor(options);
+    const { fontSizeSm } = useFontSize(options);
+    const { fontFamilyMonospace } = useFontFamily(options);
     const {
         borderTopLeftRadius,
         borderTopRightRadius,
         borderBottomRightRadius,
         borderBottomLeftRadius
-    } = useBorderRadius();
-    const { spacing } = useSpacing();
+    } = useBorderRadius(options);
+    const { spacing } = useSpacing(options);
 
     return {
         background: {
@@ -69,11 +69,11 @@ export function useKbdConfig() {
     };
 }
 
-export function useKbdVariables(options = defaultDefinitionOptions) {
-    return nsvariables(ns, useKbdConfig(), options);
+export function useKbdVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useKbdConfig(options), options);
 }
 
-export function useKbdThemeSelectors() {
+export function useKbdThemeSelectors(options: DefinitionOptions) {
     const {
         kbdFontSize,
         kbdFontFamily,
@@ -82,7 +82,7 @@ export function useKbdThemeSelectors() {
         kbdBackground,
         kbdBorderRadius
     } =
-        useKbdVariables();
+        useKbdVariables(options);
 
     selector('kbd', {
         fontSize: ref(kbdFontSize),
@@ -92,14 +92,14 @@ export function useKbdThemeSelectors() {
         background: vref(kbdBackground),
         borderRadius: vref(kbdBorderRadius),
         display: 'inline-block'
-    });
+    }, options);
 
     selector('kbd > kbd', {
         padding: 0
-    });
+    }, options);
 }
 
-export function useKbdTheme() {
-    useKbdVariables();
-    useKbdThemeSelectors();
+export function useKbdTheme(options: DefinitionOptions) {
+    useKbdVariables(options);
+    useKbdThemeSelectors(options);
 }

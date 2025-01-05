@@ -1,6 +1,6 @@
 import {
     add,
-    defaultDefinitionOptions,
+    DefinitionOptions,
     multiply,
     nsvariables,
     ref,
@@ -42,7 +42,7 @@ const defaultButtonSizes = ['sm', 'md', 'lg'] as const;
 type ButtonColorVariant = (typeof defaultButtonColors)[number];
 type ButtonSizeVariant = (typeof defaultButtonSizes)[number];
 
-export function useButtonThemeColorConfig(variant?: ButtonColorVariant) {
+export function useButtonThemeColorConfig(variant: ButtonColorVariant, options: DefinitionOptions) {
     const {
         colorLightH,
         colorLightS,
@@ -140,7 +140,7 @@ export function useButtonThemeColorConfig(variant?: ButtonColorVariant) {
         colorInfoShade100S,
         colorInfoShade100L,
         colorInfoShade100A
-    } = useColors();
+    } = useColors(options);
     const {
         contrastTextColorLightH,
         contrastTextColorLightS,
@@ -174,7 +174,7 @@ export function useButtonThemeColorConfig(variant?: ButtonColorVariant) {
         contrastTextColorInfoS,
         contrastTextColorInfoL,
         contrastTextColorInfoA
-    } = useContrastTextColor();
+    } = useContrastTextColor(options);
 
     return {
         light: {
@@ -1049,10 +1049,10 @@ export function useButtonThemeColorConfig(variant?: ButtonColorVariant) {
                 }
             }
         }
-    }[variant ?? defaultButtonColor];
+    }[variant];
 }
 
-export function useButtonThemeSizeConfig(variant?: ButtonSizeVariant) {
+export function useButtonThemeSizeConfig(variant: ButtonSizeVariant, options: DefinitionOptions) {
     const {
         borderTopLeftRadiusSm,
         borderTopRightRadiusSm,
@@ -1066,9 +1066,9 @@ export function useButtonThemeSizeConfig(variant?: ButtonSizeVariant) {
         borderTopRightRadiusLg,
         borderBottomRightRadiusLg,
         borderBottomLeftRadiusLg
-    } = useBorderRadius();
-    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize();
-    const { spacingSm, spacingMd, spacingLg } = useSpacing();
+    } = useBorderRadius(options);
+    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize(options);
+    const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
 
     return {
         sm: {
@@ -1137,10 +1137,10 @@ export function useButtonThemeSizeConfig(variant?: ButtonSizeVariant) {
                 height: '1rem'
             }
         }
-    }[variant ?? defaultButtonSize];
+    }[variant];
 }
 
-export function useButtonThemeConfig() {
+export function useButtonThemeConfig(options: DefinitionOptions) {
     const {
         borderTopStyle,
         borderTopWidth,
@@ -1150,17 +1150,18 @@ export function useButtonThemeConfig() {
         borderBottomWidth,
         borderLeftStyle,
         borderLeftWidth
-    } = useBorder();
-    const { spacing, spacingXs } = useSpacing();
+    } = useBorder(options);
+    const { spacing, spacingXs } = useSpacing(options);
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
         boxShadowBlurRadius,
         boxShadowSpreadRadius,
         boxShadowColor
-    } = useBoxShadow();
-    const { lineHeight } = useLineHeight();
-    const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition();
+    } = useBoxShadow(options);
+    const { lineHeight } = useLineHeight(options);
+    const { transitionProperty, transitionDuration, transitionTimingFunction } =
+        useTransition(options);
 
     return merge(
         {
@@ -1214,16 +1215,13 @@ export function useButtonThemeConfig() {
                 margin: { left: ref(spacingXs) }
             }
         },
-        useButtonThemeColorConfig(),
-        useButtonThemeSizeConfig()
+        useButtonThemeColorConfig(defaultButtonColor, options),
+        useButtonThemeSizeConfig(defaultButtonSize, options)
     );
 }
 
-export function useButtonColorVariables(
-    variant: ButtonColorVariant,
-    options = defaultDefinitionOptions
-) {
-    return nsvariables([ns, variant] as const, useButtonThemeColorConfig(variant), {
+export function useButtonColorVariables(variant: ButtonColorVariant, options: DefinitionOptions) {
+    return nsvariables([ns, variant] as const, useButtonThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
     });
@@ -1231,62 +1229,82 @@ export function useButtonColorVariables(
 
 export function useButtonThemeSizeVariables(
     variant: ButtonSizeVariant,
-    options = defaultDefinitionOptions
+    options: DefinitionOptions
 ) {
-    return nsvariables([ns, variant] as const, useButtonThemeSizeConfig(variant), {
+    return nsvariables([ns, variant] as const, useButtonThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useButtonThemeVariables(options = defaultDefinitionOptions) {
-    return nsvariables(ns, useButtonThemeConfig(), {
+export function useButtonThemeVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useButtonThemeConfig(options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useButtonThemeLayout() {
-    selector('.button', {
-        display: 'inline-flex',
-        textAlign: 'center',
-        whiteSpace: 'nowrap',
-        verticalAlign: 'middle',
-        userSelect: 'none',
-        justifyContent: 'center',
-        alignItems: 'center',
-        cursor: 'pointer',
-        textDecoration: 'none',
-        outline: 0
-    });
+export function useButtonThemeLayout(options: DefinitionOptions) {
+    selector(
+        '.button',
+        {
+            display: 'inline-flex',
+            textAlign: 'center',
+            whiteSpace: 'nowrap',
+            verticalAlign: 'middle',
+            userSelect: 'none',
+            justifyContent: 'center',
+            alignItems: 'center',
+            cursor: 'pointer',
+            textDecoration: 'none',
+            outline: 0
+        },
+        options
+    );
 
     // Button states
 
-    selector(['.button.-disabled', '.button:disabled'], {
-        cursor: 'not-allowed'
-    });
+    selector(
+        ['.button.-disabled', '.button:disabled'],
+        {
+            cursor: 'not-allowed'
+        },
+        options
+    );
 
-    selector('.button.-loading', {
-        cursor: 'default'
-    });
+    selector(
+        '.button.-loading',
+        {
+            cursor: 'default'
+        },
+        options
+    );
 
     // Button icon and content
 
-    selector(['.button-icon', 'button-content'], {
-        lineHeight: 1,
-        display: 'inline-flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-    });
+    selector(
+        ['.button-icon', 'button-content'],
+        {
+            lineHeight: 1,
+            display: 'inline-flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+        },
+        options
+    );
 
     // Future-proof disabling of clicks on `<a>` elements
 
-    selector(['a.button.-disabled', '*:disabled a.button'], {
-        pointerEvents: 'none'
-    });
+    selector(
+        ['a.button.-disabled', '*:disabled a.button'],
+        {
+            pointerEvents: 'none'
+        },
+        options
+    );
 }
 
-export function useButtonThemeBaseSelectors() {
+export function useButtonThemeBaseSelectors(options: DefinitionOptions) {
     const {
         buttonBorderWidth,
         buttonBorderStyle,
@@ -1311,66 +1329,98 @@ export function useButtonThemeBaseSelectors() {
         buttonLoaderHeight,
         buttonIconMargin,
         buttonDisabledOpacity
-    } = useButtonThemeVariables();
+    } = useButtonThemeVariables(options);
 
-    selector('.button', {
-        borderWidth: vref(buttonBorderWidth),
-        borderStyle: vref(buttonBorderStyle),
-        borderTopColor: vref(buttonBorderTopColor),
-        borderRightColor: vref(buttonBorderRightColor),
-        borderBottomColor: vref(buttonBorderBottomColor),
-        borderLeftColor: vref(buttonBorderLeftColor),
-        borderRadius: vref(buttonBorderRadius),
-        background: vref(buttonBackground),
-        boxShadow: vref(buttonBoxShadow),
-        color: vref(buttonColor),
-        fontSize: ref(buttonFontSize),
-        lineHeight: ref(buttonLineHeight),
-        padding: vref(buttonPadding),
-        transitionProperty: vref(buttonTransitionProperty),
-        transitionDuration: vref(buttonTransitionDuration),
-        transitionTimingFunction: vref(buttonTransitionTimingFunction)
-    });
+    selector(
+        '.button',
+        {
+            borderWidth: vref(buttonBorderWidth),
+            borderStyle: vref(buttonBorderStyle),
+            borderTopColor: vref(buttonBorderTopColor),
+            borderRightColor: vref(buttonBorderRightColor),
+            borderBottomColor: vref(buttonBorderBottomColor),
+            borderLeftColor: vref(buttonBorderLeftColor),
+            borderRadius: vref(buttonBorderRadius),
+            background: vref(buttonBackground),
+            boxShadow: vref(buttonBoxShadow),
+            color: vref(buttonColor),
+            fontSize: ref(buttonFontSize),
+            lineHeight: ref(buttonLineHeight),
+            padding: vref(buttonPadding),
+            transitionProperty: vref(buttonTransitionProperty),
+            transitionDuration: vref(buttonTransitionDuration),
+            transitionTimingFunction: vref(buttonTransitionTimingFunction)
+        },
+        options
+    );
 
     // Button states
 
-    selector(['.button:hover', '.button.-hover'], {
-        background: vref(buttonHoverBackground)
-    });
+    selector(
+        ['.button:hover', '.button.-hover'],
+        {
+            background: vref(buttonHoverBackground)
+        },
+        options
+    );
 
-    selector(['.button:focus', '.button.-focus'], {
-        background: vref(buttonFocusBackground)
-    });
+    selector(
+        ['.button:focus', '.button.-focus'],
+        {
+            background: vref(buttonFocusBackground)
+        },
+        options
+    );
 
-    selector(['.button:active', '.button.-active'], {
-        background: vref(buttonActiveBackground)
-    });
+    selector(
+        ['.button:active', '.button.-active'],
+        {
+            background: vref(buttonActiveBackground)
+        },
+        options
+    );
 
-    selector(['.button:disabled', '.button.-disabled'], {
-        background: vref(buttonBackground),
-        opacity: ref(buttonDisabledOpacity),
-        boxShadow: 'none'
-    });
+    selector(
+        ['.button:disabled', '.button.-disabled'],
+        {
+            background: vref(buttonBackground),
+            opacity: ref(buttonDisabledOpacity),
+            boxShadow: 'none'
+        },
+        options
+    );
 
     // Button icon and content
 
-    selector('.button-icon + .button-content', {
-        margin: vref(buttonIconMargin)
-    });
+    selector(
+        '.button-icon + .button-content',
+        {
+            margin: vref(buttonIconMargin)
+        },
+        options
+    );
 
     // Button loading icon
 
-    selector(['.button .loader', '.button .loader.-md'], {
-        width: ref(buttonLoaderWidth),
-        height: ref(buttonLoaderHeight)
-    });
+    selector(
+        ['.button .loader', '.button .loader.-md'],
+        {
+            width: ref(buttonLoaderWidth),
+            height: ref(buttonLoaderHeight)
+        },
+        options
+    );
 
-    selector('.button .loader svg circle', {
-        stroke: ref(buttonColor)
-    });
+    selector(
+        '.button .loader svg circle',
+        {
+            stroke: ref(buttonColor)
+        },
+        options
+    );
 }
 
-export function useButtonThemeVariantsSelectors() {
+export function useButtonThemeVariantsSelectors(options: DefinitionOptions) {
     const {
         buttonBackground,
         buttonBorderTopColor,
@@ -1383,18 +1433,26 @@ export function useButtonThemeVariantsSelectors() {
         buttonPaddingTop,
         buttonPaddingBottom,
         buttonBlockMargin
-    } = useButtonThemeVariables();
+    } = useButtonThemeVariables(options);
 
     // Block button
 
-    selector('.button.-block', {
-        display: 'flex',
-        width: '100%'
-    });
+    selector(
+        '.button.-block',
+        {
+            display: 'flex',
+            width: '100%'
+        },
+        options
+    );
 
-    selector('.button.-block + .button.-block', {
-        margin: vref(buttonBlockMargin)
-    });
+    selector(
+        '.button.-block + .button.-block',
+        {
+            margin: vref(buttonBlockMargin)
+        },
+        options
+    );
 
     selector(
         [
@@ -1404,22 +1462,27 @@ export function useButtonThemeVariantsSelectors() {
         ],
         {
             width: '100%'
-        }
+        },
+        options
     );
 
     // Link button
     // Remove button background, box shadow, and border
 
-    selector('.button.-link', {
-        boxShadow: 'none',
-        backgroundColor: 'transparent',
-        borderTopColor: 'transparent',
-        borderRightColor: 'transparent',
-        borderBottomColor: 'transparent',
-        borderLeftColor: 'transparent',
-        cursor: 'pointer',
-        color: vref(buttonBackground)
-    });
+    selector(
+        '.button.-link',
+        {
+            boxShadow: 'none',
+            backgroundColor: 'transparent',
+            borderTopColor: 'transparent',
+            borderRightColor: 'transparent',
+            borderBottomColor: 'transparent',
+            borderLeftColor: 'transparent',
+            cursor: 'pointer',
+            color: vref(buttonBackground)
+        },
+        options
+    );
 
     selector(
         [
@@ -1438,54 +1501,74 @@ export function useButtonThemeVariantsSelectors() {
             borderBottomColor: 'transparent',
             borderLeftColor: 'transparent',
             textDecoration: 'underline'
-        }
+        },
+        options
     );
 
     // Outline buttons
     // Remove button background
 
-    selector('.button.-outline', {
-        background: 'transparent',
-        boxShadow: 'none',
-        borderTopColor: vref(buttonBackground),
-        borderRightColor: vref(buttonBackground),
-        borderBottomColor: vref(buttonBackground),
-        borderLeftColor: vref(buttonBackground),
-        color: vref(buttonBackground)
-    });
+    selector(
+        '.button.-outline',
+        {
+            background: 'transparent',
+            boxShadow: 'none',
+            borderTopColor: vref(buttonBackground),
+            borderRightColor: vref(buttonBackground),
+            borderBottomColor: vref(buttonBackground),
+            borderLeftColor: vref(buttonBackground),
+            color: vref(buttonBackground)
+        },
+        options
+    );
 
-    selector(['.button.-outline:hover', '.button.-outline.-hover'], {
-        background: vref(buttonBackground),
-        boxShadow: 'none',
-        borderTopColor: vref(buttonBorderTopColor),
-        borderRightColor: vref(buttonBorderRightColor),
-        borderBottomColor: vref(buttonBorderBottomColor),
-        borderLeftColor: vref(buttonBorderLeftColor),
-        color: vref(buttonColor)
-    });
+    selector(
+        ['.button.-outline:hover', '.button.-outline.-hover'],
+        {
+            background: vref(buttonBackground),
+            boxShadow: 'none',
+            borderTopColor: vref(buttonBorderTopColor),
+            borderRightColor: vref(buttonBorderRightColor),
+            borderBottomColor: vref(buttonBorderBottomColor),
+            borderLeftColor: vref(buttonBorderLeftColor),
+            color: vref(buttonColor)
+        },
+        options
+    );
 
     // Circle and square button
 
-    selector(['.button.-circle', '.button.-square'], {
-        width: add(
-            ref(buttonPaddingTop),
-            multiply(ref(buttonFontSize), ref(buttonLineHeight)),
-            ref(buttonPaddingBottom)
-        ),
-        height: add(
-            ref(buttonPaddingTop),
-            multiply(ref(buttonFontSize), ref(buttonLineHeight)),
-            ref(buttonPaddingBottom)
-        ),
-        padding: 0
-    });
+    selector(
+        ['.button.-circle', '.button.-square'],
+        {
+            width: add(
+                ref(buttonPaddingTop),
+                multiply(ref(buttonFontSize), ref(buttonLineHeight)),
+                ref(buttonPaddingBottom)
+            ),
+            height: add(
+                ref(buttonPaddingTop),
+                multiply(ref(buttonFontSize), ref(buttonLineHeight)),
+                ref(buttonPaddingBottom)
+            ),
+            padding: 0
+        },
+        options
+    );
 
-    selector('.button.-circle', {
-        borderRadius: '50%'
-    });
+    selector(
+        '.button.-circle',
+        {
+            borderRadius: '50%'
+        },
+        options
+    );
 }
 
-export function useButtonThemeSizeSelectors(variant: ButtonSizeVariant) {
+export function useButtonThemeSizeSelectors(
+    variant: ButtonSizeVariant,
+    options: DefinitionOptions
+) {
     const {
         buttonPaddingTop,
         buttonPaddingRight,
@@ -1496,7 +1579,7 @@ export function useButtonThemeSizeSelectors(variant: ButtonSizeVariant) {
         buttonBorderBottomRightRadius,
         buttonBorderBottomLeftRadius,
         buttonFontSize
-    } = useButtonThemeVariables();
+    } = useButtonThemeVariables(options);
 
     const {
         variantBorderTopLeftRadius,
@@ -1508,22 +1591,29 @@ export function useButtonThemeSizeSelectors(variant: ButtonSizeVariant) {
         variantPaddingRight,
         variantPaddingBottom,
         variantPaddingLeft
-    } = setExportsNamespace(useButtonThemeSizeVariables(variant), 'variant');
+    } = setExportsNamespace(useButtonThemeSizeVariables(variant, options), 'variant');
 
-    selector(`.button.-${variant}`, {
-        [toVariableKey(buttonBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
-        [toVariableKey(buttonBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
-        [toVariableKey(buttonBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
-        [toVariableKey(buttonBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
-        [toVariableKey(buttonFontSize)]: ref(variantFontSize),
-        [toVariableKey(buttonPaddingTop)]: ref(variantPaddingTop),
-        [toVariableKey(buttonPaddingRight)]: ref(variantPaddingRight),
-        [toVariableKey(buttonPaddingBottom)]: ref(variantPaddingBottom),
-        [toVariableKey(buttonPaddingLeft)]: ref(variantPaddingLeft)
-    });
+    selector(
+        `.button.-${variant}`,
+        {
+            [toVariableKey(buttonBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
+            [toVariableKey(buttonBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
+            [toVariableKey(buttonBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
+            [toVariableKey(buttonBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
+            [toVariableKey(buttonFontSize)]: ref(variantFontSize),
+            [toVariableKey(buttonPaddingTop)]: ref(variantPaddingTop),
+            [toVariableKey(buttonPaddingRight)]: ref(variantPaddingRight),
+            [toVariableKey(buttonPaddingBottom)]: ref(variantPaddingBottom),
+            [toVariableKey(buttonPaddingLeft)]: ref(variantPaddingLeft)
+        },
+        options
+    );
 }
 
-export function useButtonThemeColorFactory(variant: ButtonColorVariant) {
+export function useButtonThemeColorSelectors(
+    variant: ButtonColorVariant,
+    options: DefinitionOptions
+) {
     const {
         buttonBackgroundH,
         buttonBackgroundS,
@@ -1609,7 +1699,7 @@ export function useButtonThemeColorFactory(variant: ButtonColorVariant) {
         buttonActiveBorderLeftColorS,
         buttonActiveBorderLeftColorL,
         buttonActiveBorderLeftColorA
-    } = useButtonThemeVariables();
+    } = useButtonThemeVariables(options);
     const {
         variantBackgroundH,
         variantBackgroundS,
@@ -1695,128 +1785,117 @@ export function useButtonThemeColorFactory(variant: ButtonColorVariant) {
         variantActiveBorderLeftColorS,
         variantActiveBorderLeftColorL,
         variantActiveBorderLeftColorA
-    } = setExportsNamespace(useButtonColorVariables(variant), 'variant');
+    } = setExportsNamespace(useButtonColorVariables(variant, options), 'variant');
 
-    selector(`.button.-${variant}`, {
-        [toVariableKey(buttonBorderTopColorH)]: ref(variantBorderTopColorH),
-        [toVariableKey(buttonBorderTopColorS)]: ref(variantBorderTopColorS),
-        [toVariableKey(buttonBorderTopColorL)]: ref(variantBorderTopColorL),
-        [toVariableKey(buttonBorderTopColorA)]: ref(variantBorderTopColorA),
-        [toVariableKey(buttonBorderRightColorH)]: ref(variantBorderRightColorH),
-        [toVariableKey(buttonBorderRightColorS)]: ref(variantBorderRightColorS),
-        [toVariableKey(buttonBorderRightColorL)]: ref(variantBorderRightColorL),
-        [toVariableKey(buttonBorderRightColorA)]: ref(variantBorderRightColorA),
-        [toVariableKey(buttonBorderBottomColorH)]: ref(variantBorderBottomColorH),
-        [toVariableKey(buttonBorderBottomColorS)]: ref(variantBorderBottomColorS),
-        [toVariableKey(buttonBorderBottomColorL)]: ref(variantBorderBottomColorL),
-        [toVariableKey(buttonBorderBottomColorA)]: ref(variantBorderBottomColorA),
-        [toVariableKey(buttonBorderLeftColorH)]: ref(variantBorderLeftColorH),
-        [toVariableKey(buttonBorderLeftColorS)]: ref(variantBorderLeftColorS),
-        [toVariableKey(buttonBorderLeftColorL)]: ref(variantBorderLeftColorL),
-        [toVariableKey(buttonBorderLeftColorA)]: ref(variantBorderLeftColorA),
-        [toVariableKey(buttonBackgroundH)]: ref(variantBackgroundH),
-        [toVariableKey(buttonBackgroundS)]: ref(variantBackgroundS),
-        [toVariableKey(buttonBackgroundL)]: ref(variantBackgroundL),
-        [toVariableKey(buttonBackgroundA)]: ref(variantBackgroundA),
-        [toVariableKey(buttonColorH)]: ref(variantColorH),
-        [toVariableKey(buttonColorS)]: ref(variantColorS),
-        [toVariableKey(buttonColorL)]: ref(variantColorL),
-        [toVariableKey(buttonColorA)]: ref(variantColorA)
-    });
-
-    // Button hover state
-
-    selector([`.button.-${variant}:hover`, `.button.-${variant}.-hover`], {
-        [toVariableKey(buttonHoverBorderTopColorH)]: ref(variantHoverBorderTopColorH),
-        [toVariableKey(buttonHoverBorderTopColorS)]: ref(variantHoverBorderTopColorS),
-        [toVariableKey(buttonHoverBorderTopColorL)]: ref(variantHoverBorderTopColorL),
-        [toVariableKey(buttonHoverBorderTopColorA)]: ref(variantHoverBorderTopColorA),
-        [toVariableKey(buttonHoverBorderRightColorH)]: ref(variantHoverBorderRightColorH),
-        [toVariableKey(buttonHoverBorderRightColorS)]: ref(variantHoverBorderRightColorS),
-        [toVariableKey(buttonHoverBorderRightColorL)]: ref(variantHoverBorderRightColorL),
-        [toVariableKey(buttonHoverBorderRightColorA)]: ref(variantHoverBorderRightColorA),
-        [toVariableKey(buttonHoverBorderBottomColorH)]: ref(variantHoverBorderBottomColorH),
-        [toVariableKey(buttonHoverBorderBottomColorS)]: ref(variantHoverBorderBottomColorS),
-        [toVariableKey(buttonHoverBorderBottomColorL)]: ref(variantHoverBorderBottomColorL),
-        [toVariableKey(buttonHoverBorderBottomColorA)]: ref(variantHoverBorderBottomColorA),
-        [toVariableKey(buttonHoverBorderLeftColorH)]: ref(variantHoverBorderLeftColorH),
-        [toVariableKey(buttonHoverBorderLeftColorS)]: ref(variantHoverBorderLeftColorS),
-        [toVariableKey(buttonHoverBorderLeftColorL)]: ref(variantHoverBorderLeftColorL),
-        [toVariableKey(buttonHoverBorderLeftColorA)]: ref(variantHoverBorderLeftColorA),
-        [toVariableKey(buttonHoverBackgroundH)]: ref(variantHoverBackgroundH),
-        [toVariableKey(buttonHoverBackgroundS)]: ref(variantHoverBackgroundS),
-        [toVariableKey(buttonHoverBackgroundL)]: ref(variantHoverBackgroundL),
-        [toVariableKey(buttonHoverBackgroundA)]: ref(variantHoverBackgroundA)
-    });
-
-    // // Button focus state
-
-    selector([`.button.-${variant}:focus`, `.button.-${variant}.-focus`], {
-        [toVariableKey(buttonFocusBorderTopColorH)]: ref(variantFocusBorderTopColorH),
-        [toVariableKey(buttonFocusBorderTopColorS)]: ref(variantFocusBorderTopColorS),
-        [toVariableKey(buttonFocusBorderTopColorL)]: ref(variantFocusBorderTopColorL),
-        [toVariableKey(buttonFocusBorderTopColorA)]: ref(variantFocusBorderTopColorA),
-        [toVariableKey(buttonFocusBorderRightColorH)]: ref(variantFocusBorderRightColorH),
-        [toVariableKey(buttonFocusBorderRightColorS)]: ref(variantFocusBorderRightColorS),
-        [toVariableKey(buttonFocusBorderRightColorL)]: ref(variantFocusBorderRightColorL),
-        [toVariableKey(buttonFocusBorderRightColorA)]: ref(variantFocusBorderRightColorA),
-        [toVariableKey(buttonFocusBorderBottomColorH)]: ref(variantFocusBorderBottomColorH),
-        [toVariableKey(buttonFocusBorderBottomColorS)]: ref(variantFocusBorderBottomColorS),
-        [toVariableKey(buttonFocusBorderBottomColorL)]: ref(variantFocusBorderBottomColorL),
-        [toVariableKey(buttonFocusBorderBottomColorA)]: ref(variantFocusBorderBottomColorA),
-        [toVariableKey(buttonFocusBorderLeftColorH)]: ref(variantFocusBorderLeftColorH),
-        [toVariableKey(buttonFocusBorderLeftColorS)]: ref(variantFocusBorderLeftColorS),
-        [toVariableKey(buttonFocusBorderLeftColorL)]: ref(variantFocusBorderLeftColorL),
-        [toVariableKey(buttonFocusBorderLeftColorA)]: ref(variantFocusBorderLeftColorA),
-        [toVariableKey(buttonFocusBackgroundH)]: ref(variantFocusBackgroundH),
-        [toVariableKey(buttonFocusBackgroundS)]: ref(variantFocusBackgroundS),
-        [toVariableKey(buttonFocusBackgroundL)]: ref(variantFocusBackgroundL),
-        [toVariableKey(buttonFocusBackgroundA)]: ref(variantFocusBackgroundA)
-    });
-
-    // Button active state
-
-    selector([`.button.-${variant}:active`, `.button.-${variant}.-active`], {
-        [toVariableKey(buttonActiveBorderTopColorH)]: ref(variantActiveBorderTopColorH),
-        [toVariableKey(buttonActiveBorderTopColorS)]: ref(variantActiveBorderTopColorS),
-        [toVariableKey(buttonActiveBorderTopColorL)]: ref(variantActiveBorderTopColorL),
-        [toVariableKey(buttonActiveBorderTopColorA)]: ref(variantActiveBorderTopColorA),
-        [toVariableKey(buttonActiveBorderRightColorH)]: ref(variantActiveBorderRightColorH),
-        [toVariableKey(buttonActiveBorderRightColorS)]: ref(variantActiveBorderRightColorS),
-        [toVariableKey(buttonActiveBorderRightColorL)]: ref(variantActiveBorderRightColorL),
-        [toVariableKey(buttonActiveBorderRightColorA)]: ref(variantActiveBorderRightColorA),
-        [toVariableKey(buttonActiveBorderBottomColorH)]: ref(variantActiveBorderBottomColorH),
-        [toVariableKey(buttonActiveBorderBottomColorS)]: ref(variantActiveBorderBottomColorS),
-        [toVariableKey(buttonActiveBorderBottomColorL)]: ref(variantActiveBorderBottomColorL),
-        [toVariableKey(buttonActiveBorderBottomColorA)]: ref(variantActiveBorderBottomColorA),
-        [toVariableKey(buttonActiveBorderLeftColorH)]: ref(variantActiveBorderLeftColorH),
-        [toVariableKey(buttonActiveBorderLeftColorS)]: ref(variantActiveBorderLeftColorS),
-        [toVariableKey(buttonActiveBorderLeftColorL)]: ref(variantActiveBorderLeftColorL),
-        [toVariableKey(buttonActiveBorderLeftColorA)]: ref(variantActiveBorderLeftColorA),
-        [toVariableKey(buttonActiveBackgroundH)]: ref(variantActiveBackgroundH),
-        [toVariableKey(buttonActiveBackgroundS)]: ref(variantActiveBackgroundS),
-        [toVariableKey(buttonActiveBackgroundL)]: ref(variantActiveBackgroundL),
-        [toVariableKey(buttonActiveBackgroundA)]: ref(variantActiveBackgroundA)
-    });
+    selector(
+        `.button.-${variant}`,
+        {
+            [toVariableKey(buttonBorderTopColorH)]: ref(variantBorderTopColorH),
+            [toVariableKey(buttonBorderTopColorS)]: ref(variantBorderTopColorS),
+            [toVariableKey(buttonBorderTopColorL)]: ref(variantBorderTopColorL),
+            [toVariableKey(buttonBorderTopColorA)]: ref(variantBorderTopColorA),
+            [toVariableKey(buttonBorderRightColorH)]: ref(variantBorderRightColorH),
+            [toVariableKey(buttonBorderRightColorS)]: ref(variantBorderRightColorS),
+            [toVariableKey(buttonBorderRightColorL)]: ref(variantBorderRightColorL),
+            [toVariableKey(buttonBorderRightColorA)]: ref(variantBorderRightColorA),
+            [toVariableKey(buttonBorderBottomColorH)]: ref(variantBorderBottomColorH),
+            [toVariableKey(buttonBorderBottomColorS)]: ref(variantBorderBottomColorS),
+            [toVariableKey(buttonBorderBottomColorL)]: ref(variantBorderBottomColorL),
+            [toVariableKey(buttonBorderBottomColorA)]: ref(variantBorderBottomColorA),
+            [toVariableKey(buttonBorderLeftColorH)]: ref(variantBorderLeftColorH),
+            [toVariableKey(buttonBorderLeftColorS)]: ref(variantBorderLeftColorS),
+            [toVariableKey(buttonBorderLeftColorL)]: ref(variantBorderLeftColorL),
+            [toVariableKey(buttonBorderLeftColorA)]: ref(variantBorderLeftColorA),
+            [toVariableKey(buttonBackgroundH)]: ref(variantBackgroundH),
+            [toVariableKey(buttonBackgroundS)]: ref(variantBackgroundS),
+            [toVariableKey(buttonBackgroundL)]: ref(variantBackgroundL),
+            [toVariableKey(buttonBackgroundA)]: ref(variantBackgroundA),
+            [toVariableKey(buttonColorH)]: ref(variantColorH),
+            [toVariableKey(buttonColorS)]: ref(variantColorS),
+            [toVariableKey(buttonColorL)]: ref(variantColorL),
+            [toVariableKey(buttonColorA)]: ref(variantColorA),
+            [toVariableKey(buttonHoverBorderTopColorH)]: ref(variantHoverBorderTopColorH),
+            [toVariableKey(buttonHoverBorderTopColorS)]: ref(variantHoverBorderTopColorS),
+            [toVariableKey(buttonHoverBorderTopColorL)]: ref(variantHoverBorderTopColorL),
+            [toVariableKey(buttonHoverBorderTopColorA)]: ref(variantHoverBorderTopColorA),
+            [toVariableKey(buttonHoverBorderRightColorH)]: ref(variantHoverBorderRightColorH),
+            [toVariableKey(buttonHoverBorderRightColorS)]: ref(variantHoverBorderRightColorS),
+            [toVariableKey(buttonHoverBorderRightColorL)]: ref(variantHoverBorderRightColorL),
+            [toVariableKey(buttonHoverBorderRightColorA)]: ref(variantHoverBorderRightColorA),
+            [toVariableKey(buttonHoverBorderBottomColorH)]: ref(variantHoverBorderBottomColorH),
+            [toVariableKey(buttonHoverBorderBottomColorS)]: ref(variantHoverBorderBottomColorS),
+            [toVariableKey(buttonHoverBorderBottomColorL)]: ref(variantHoverBorderBottomColorL),
+            [toVariableKey(buttonHoverBorderBottomColorA)]: ref(variantHoverBorderBottomColorA),
+            [toVariableKey(buttonHoverBorderLeftColorH)]: ref(variantHoverBorderLeftColorH),
+            [toVariableKey(buttonHoverBorderLeftColorS)]: ref(variantHoverBorderLeftColorS),
+            [toVariableKey(buttonHoverBorderLeftColorL)]: ref(variantHoverBorderLeftColorL),
+            [toVariableKey(buttonHoverBorderLeftColorA)]: ref(variantHoverBorderLeftColorA),
+            [toVariableKey(buttonHoverBackgroundH)]: ref(variantHoverBackgroundH),
+            [toVariableKey(buttonHoverBackgroundS)]: ref(variantHoverBackgroundS),
+            [toVariableKey(buttonHoverBackgroundL)]: ref(variantHoverBackgroundL),
+            [toVariableKey(buttonHoverBackgroundA)]: ref(variantHoverBackgroundA),
+            [toVariableKey(buttonFocusBorderTopColorH)]: ref(variantFocusBorderTopColorH),
+            [toVariableKey(buttonFocusBorderTopColorS)]: ref(variantFocusBorderTopColorS),
+            [toVariableKey(buttonFocusBorderTopColorL)]: ref(variantFocusBorderTopColorL),
+            [toVariableKey(buttonFocusBorderTopColorA)]: ref(variantFocusBorderTopColorA),
+            [toVariableKey(buttonFocusBorderRightColorH)]: ref(variantFocusBorderRightColorH),
+            [toVariableKey(buttonFocusBorderRightColorS)]: ref(variantFocusBorderRightColorS),
+            [toVariableKey(buttonFocusBorderRightColorL)]: ref(variantFocusBorderRightColorL),
+            [toVariableKey(buttonFocusBorderRightColorA)]: ref(variantFocusBorderRightColorA),
+            [toVariableKey(buttonFocusBorderBottomColorH)]: ref(variantFocusBorderBottomColorH),
+            [toVariableKey(buttonFocusBorderBottomColorS)]: ref(variantFocusBorderBottomColorS),
+            [toVariableKey(buttonFocusBorderBottomColorL)]: ref(variantFocusBorderBottomColorL),
+            [toVariableKey(buttonFocusBorderBottomColorA)]: ref(variantFocusBorderBottomColorA),
+            [toVariableKey(buttonFocusBorderLeftColorH)]: ref(variantFocusBorderLeftColorH),
+            [toVariableKey(buttonFocusBorderLeftColorS)]: ref(variantFocusBorderLeftColorS),
+            [toVariableKey(buttonFocusBorderLeftColorL)]: ref(variantFocusBorderLeftColorL),
+            [toVariableKey(buttonFocusBorderLeftColorA)]: ref(variantFocusBorderLeftColorA),
+            [toVariableKey(buttonFocusBackgroundH)]: ref(variantFocusBackgroundH),
+            [toVariableKey(buttonFocusBackgroundS)]: ref(variantFocusBackgroundS),
+            [toVariableKey(buttonFocusBackgroundL)]: ref(variantFocusBackgroundL),
+            [toVariableKey(buttonFocusBackgroundA)]: ref(variantFocusBackgroundA),
+            [toVariableKey(buttonActiveBorderTopColorH)]: ref(variantActiveBorderTopColorH),
+            [toVariableKey(buttonActiveBorderTopColorS)]: ref(variantActiveBorderTopColorS),
+            [toVariableKey(buttonActiveBorderTopColorL)]: ref(variantActiveBorderTopColorL),
+            [toVariableKey(buttonActiveBorderTopColorA)]: ref(variantActiveBorderTopColorA),
+            [toVariableKey(buttonActiveBorderRightColorH)]: ref(variantActiveBorderRightColorH),
+            [toVariableKey(buttonActiveBorderRightColorS)]: ref(variantActiveBorderRightColorS),
+            [toVariableKey(buttonActiveBorderRightColorL)]: ref(variantActiveBorderRightColorL),
+            [toVariableKey(buttonActiveBorderRightColorA)]: ref(variantActiveBorderRightColorA),
+            [toVariableKey(buttonActiveBorderBottomColorH)]: ref(variantActiveBorderBottomColorH),
+            [toVariableKey(buttonActiveBorderBottomColorS)]: ref(variantActiveBorderBottomColorS),
+            [toVariableKey(buttonActiveBorderBottomColorL)]: ref(variantActiveBorderBottomColorL),
+            [toVariableKey(buttonActiveBorderBottomColorA)]: ref(variantActiveBorderBottomColorA),
+            [toVariableKey(buttonActiveBorderLeftColorH)]: ref(variantActiveBorderLeftColorH),
+            [toVariableKey(buttonActiveBorderLeftColorS)]: ref(variantActiveBorderLeftColorS),
+            [toVariableKey(buttonActiveBorderLeftColorL)]: ref(variantActiveBorderLeftColorL),
+            [toVariableKey(buttonActiveBorderLeftColorA)]: ref(variantActiveBorderLeftColorA),
+            [toVariableKey(buttonActiveBackgroundH)]: ref(variantActiveBackgroundH),
+            [toVariableKey(buttonActiveBackgroundS)]: ref(variantActiveBackgroundS),
+            [toVariableKey(buttonActiveBackgroundL)]: ref(variantActiveBackgroundL),
+            [toVariableKey(buttonActiveBackgroundA)]: ref(variantActiveBackgroundA)
+        },
+        options
+    );
 }
 
 /**
  * Composables
  */
 
-export function useButtonThemeSizes(sizes = defaultButtonSizes) {
-    sizes.forEach(useButtonThemeSizeSelectors);
+export function useButtonThemeSizes(sizes: ButtonSizeVariant[], options: DefinitionOptions) {
+    sizes.forEach((size) => useButtonThemeSizeSelectors(size, options));
 }
 
-export function useButtonThemeColors(colors = defaultButtonColors) {
-    colors.forEach(useButtonThemeColorFactory);
+export function useButtonThemeColors(colors: ButtonColorVariant[], options: DefinitionOptions) {
+    colors.forEach((color) => useButtonThemeColorSelectors(color, options));
 }
 
-export function useButtonTheme() {
-    useButtonThemeVariables();
-    useButtonThemeLayout();
-    useButtonThemeBaseSelectors();
-    useButtonThemeSizes();
-    useButtonThemeColors();
-    useButtonThemeVariantsSelectors();
+export function useButtonTheme(options: DefinitionOptions) {
+    useButtonThemeVariables(options);
+    useButtonThemeLayout(options);
+    useButtonThemeBaseSelectors(options);
+    useButtonThemeSizes([...defaultButtonSizes], options);
+    useButtonThemeColors([...defaultButtonColors], options);
+    useButtonThemeVariantsSelectors(options);
 }

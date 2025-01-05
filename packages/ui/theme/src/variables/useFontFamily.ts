@@ -1,20 +1,19 @@
-import { ref, variable } from '@inkline/core';
-import { defaultDefinitionOptions } from '@inkline/core';
+import { DefinitionOptions, ref, variable } from '@inkline/core';
 
-export function useFontFamily(options = defaultDefinitionOptions) {
+export function useFontFamily(options: DefinitionOptions) {
     const fontFamilyBase = variable(
         'font-family-base',
-        "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
+        '-apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen-Sans, Ubuntu, Cantarell, \'Helvetica Neue\', sans-serif',
         options
     );
     const fontFamilyMonospace = variable(
         'font-family-monospace',
-        "'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+        '\'SFMono-Regular\', Menlo, Monaco, Consolas, \'Liberation Mono\', \'Courier New\', monospace',
         options
     );
     const fontFamilyPrint = variable(
         'font-family-print',
-        "'Georgia', 'Times New Roman', 'Times', serif",
+        '\'Georgia\', \'Times New Roman\', \'Times\', serif',
         options
     );
 
