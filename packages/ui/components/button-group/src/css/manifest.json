@@ -97,32 +97,6 @@
                     "__type": "reference",
                     "__name": "box-shadow-color"
                 }
-            },
-            "button-group--box-shadow": {
-                "__type": "variable",
-                "__name": "button-group--box-shadow",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "button-group--box-shadow-offset-x"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "button-group--box-shadow-offset-y"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "button-group--box-shadow-blur-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "button-group--box-shadow-spread-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "button-group--box-shadow-color"
-                    }
-                ]
             }
         },
         "selectors": [
@@ -214,7 +188,29 @@
                 "__value": {
                     "boxShadow": {
                         "__type": "reference",
-                        "__name": "button-group--box-shadow"
+                        "__name": "button-group--box-shadow",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "button-group--box-shadow-offset-x"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "button-group--box-shadow-offset-y"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "button-group--box-shadow-blur-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "button-group--box-shadow-spread-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "button-group--box-shadow-color"
+                            }
+                        ]
                     }
                 }
             }

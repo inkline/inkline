@@ -112,12 +112,7 @@ export function useTooltipThemeVariables(options: DefinitionOptions) {
                     spreadRadius: ref(boxShadowSpreadRadius),
                     color: ref(boxShadowColor)
                 },
-                background: {
-                    h: ref(colorWhiteH),
-                    s: ref(colorWhiteS),
-                    l: ref(colorWhiteL),
-                    a: ref(colorWhiteA)
-                },
+                background: ref(colorWhite),
                 color: ref(contrastTextColorLight),
                 fontSize: ref(fontSize),
                 padding: {
@@ -324,7 +319,7 @@ export function useTooltipThemeBase(options: DefinitionOptions) {
     });
 }
 
-export function useTooltipThemeSizeFactory(variant: TooltipSizeVariant) {
+export function useTooltipThemeSizeSelectors(variant: TooltipSizeVariant) {
     const {
         tooltipPaddingTop,
         tooltipPaddingRight,
@@ -382,10 +377,10 @@ export function useTooltipThemeSizeFactory(variant: TooltipSizeVariant) {
 }
 
 export function useTooltipThemeSizes(sizes = defaultTooltipSizes) {
-    sizes.forEach((size) => useTooltipThemeSizeFactory(size, options));
+    sizes.forEach((size) => useTooltipThemeSizeSelectors(size, options));
 }
 
-export function useTooltipThemeColorFactory(variant: TooltipColorVariant) {
+export function useTooltipThemeColorSelectors(variant: TooltipColorVariant) {
     const colorKey = capitalize(variant);
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
@@ -441,7 +436,7 @@ export function useTooltipThemeColorFactory(variant: TooltipColorVariant) {
 }
 
 export function useTooltipThemeColors(colors = defaultTooltipColors) {
-    colors.forEach((color) => useTooltipThemeColorFactory(color, options));
+    colors.forEach((color) => useTooltipThemeColorSelectors(color, options));
 }
 
 export function useTooltipTheme(options: DefinitionOptions) {

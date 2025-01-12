@@ -1,12 +1,15 @@
 import { createUnplugin, UnpluginFactory } from 'unplugin';
 import { sep } from 'node:path';
-import { UserOptions } from './types';
+import { PluginUserOptions } from './types';
 import { watch } from './watch';
 import { build } from './build';
 
 const blockListedEnvironments = ['vitest', 'jest'];
 
-export const unpluginFactory: UnpluginFactory<UserOptions | undefined> = (options = {}, meta) => ({
+export const unpluginFactory: UnpluginFactory<PluginUserOptions | undefined> = (
+    options = {},
+    meta
+) => ({
     name: 'inkline',
     buildStart: async () => {
         const isBlockListedCommand = process.argv

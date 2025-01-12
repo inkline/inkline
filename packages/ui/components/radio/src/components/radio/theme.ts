@@ -374,7 +374,7 @@ export function useRadioThemeBase(options: DefinitionOptions) {
     });
 }
 
-export function useRadioThemeSizeFactory(variant: RadioSizeVariant) {
+export function useRadioThemeSizeSelectors(variant: RadioSizeVariant) {
     const {
         radioMarginRight,
         radioMarginBottom,
@@ -459,10 +459,10 @@ export function useRadioThemeSizeFactory(variant: RadioSizeVariant) {
 }
 
 export function useRadioThemeSizes(sizes = defaultRadioSizes) {
-    sizes.forEach((size) => useRadioThemeSizeFactory(size, options));
+    sizes.forEach((size) => useRadioThemeSizeSelectors(size, options));
 }
 
-export function useRadioThemeColorFactory(variant: RadioColorVariant) {
+export function useRadioThemeColorSelectors(variant: RadioColorVariant) {
     const colorKey = capitalize(variant);
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
@@ -518,7 +518,7 @@ export function useRadioThemeColorFactory(variant: RadioColorVariant) {
 }
 
 export function useRadioThemeColors(colors = defaultRadioColors) {
-    colors.forEach((color) => useRadioThemeColorFactory(color, options));
+    colors.forEach((color) => useRadioThemeColorSelectors(color, options));
 }
 
 export function useRadioThemeVariants(options: DefinitionOptions) {

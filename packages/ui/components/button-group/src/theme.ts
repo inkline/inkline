@@ -1,4 +1,4 @@
-import { defaultDefinitionOptions, nsvariables, ref, selector, vref } from '@inkline/core';
+import { DefinitionOptions, nsvariables, ref, selector, vref } from '@inkline/core';
 import { useBoxShadow } from '@inkline/theme';
 
 const ns = 'button-group';
@@ -7,9 +7,7 @@ const ns = 'button-group';
  * Config
  */
 
-export function useButtonGroupThemeConfig(options: DefinitionOptions
-)
-{
+export function useButtonGroupThemeConfig(options: DefinitionOptions) {
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
@@ -44,19 +42,25 @@ export function useButtonGroupThemeVariables(options: DefinitionOptions) {
  * Selectors
  */
 
-export function useButtonGroupThemeLayoutSelectors(options: DefinitionOptions
-)
-{
-    selector('.button-group', {
-        position: 'relative',
-        display: 'inline-flex',
-        verticalAlign: 'middle',
-        boxSizing: 'border-box'
-    });
+export function useButtonGroupThemeLayoutSelectors(options: DefinitionOptions) {
+    selector(
+        '.button-group',
+        {
+            position: 'relative',
+            display: 'inline-flex',
+            verticalAlign: 'middle',
+            boxSizing: 'border-box'
+        },
+        options
+    );
 
-    selector(['.button-group .button', '.button-group .button-group'], {
-        boxShadow: 'none'
-    });
+    selector(
+        ['.button-group .button', '.button-group .button-group'],
+        {
+            boxShadow: 'none'
+        },
+        options
+    );
 
     // Horizontal button group
 
@@ -70,7 +74,8 @@ export function useButtonGroupThemeLayoutSelectors(options: DefinitionOptions
             borderTopRightRadius: 0,
             borderBottomRightRadius: 0,
             borderRightWidth: 0
-        }
+        },
+        options
     );
 
     selector(
@@ -82,7 +87,8 @@ export function useButtonGroupThemeLayoutSelectors(options: DefinitionOptions
         {
             borderTopLeftRadius: 0,
             borderBottomLeftRadius: 0
-        }
+        },
+        options
     );
 
     // Vertical button group
@@ -97,7 +103,8 @@ export function useButtonGroupThemeLayoutSelectors(options: DefinitionOptions
             borderBottomRightRadius: 0,
             borderBottomLeftRadius: 0,
             borderBottomWidth: 0
-        }
+        },
+        options
     );
 
     selector(
@@ -109,27 +116,40 @@ export function useButtonGroupThemeLayoutSelectors(options: DefinitionOptions
         {
             borderTopLeftRadius: 0,
             borderTopRightRadius: 0
-        }
+        },
+        options
     );
 
     // Block button group
 
-    selector('.button-group.-block', {
-        display: 'flex',
-        flexBasis: '100%'
-    });
+    selector(
+        '.button-group.-block',
+        {
+            display: 'flex',
+            flexBasis: '100%'
+        },
+        options
+    );
 
-    selector('.button-group.-block > .button', {
-        flexBasis: '100%'
-    });
+    selector(
+        '.button-group.-block > .button',
+        {
+            flexBasis: '100%'
+        },
+        options
+    );
 
     // Vertical button group
 
-    selector('.button-group.-vertical', {
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'center'
-    });
+    selector(
+        '.button-group.-vertical',
+        {
+            flexDirection: 'column',
+            alignItems: 'flex-start',
+            justifyContent: 'center'
+        },
+        options
+    );
 
     selector(
         [
@@ -139,27 +159,28 @@ export function useButtonGroupThemeLayoutSelectors(options: DefinitionOptions
         ],
         {
             width: '100%'
-        }
+        },
+        options
     );
 }
 
-export function useButtonGroupThemeBaseSelectors(options: DefinitionOptions
-)
-{
+export function useButtonGroupThemeBaseSelectors(options: DefinitionOptions) {
     const { buttonGroupBoxShadow } = useButtonGroupThemeVariables(options);
 
-    selector('.button-group', {
-        boxShadow: vref(buttonGroupBoxShadow)
-    });
+    selector(
+        '.button-group',
+        {
+            boxShadow: vref(buttonGroupBoxShadow)
+        },
+        options
+    );
 }
 
 /**
  * Composables
  */
 
-export function useButtonGroupTheme(options: DefinitionOptions
-)
-{
+export function useButtonGroupTheme(options: DefinitionOptions) {
     useButtonGroupThemeVariables(options);
     useButtonGroupThemeLayoutSelectors(options);
     useButtonGroupThemeBaseSelectors(options);

@@ -44,1009 +44,433 @@ type ButtonSizeVariant = (typeof defaultButtonSizes)[number];
 
 export function useButtonThemeColorConfig(variant: ButtonColorVariant, options: DefinitionOptions) {
     const {
-        colorLightH,
-        colorLightS,
-        colorLightL,
-        colorLightA,
-        colorLightShade50H,
-        colorLightShade50S,
-        colorLightShade50L,
-        colorLightShade50A,
-        colorLightShade100H,
-        colorLightShade100S,
-        colorLightShade100L,
-        colorLightShade100A,
-        colorDarkH,
-        colorDarkS,
-        colorDarkL,
-        colorDarkA,
-        colorDarkTint50H,
-        colorDarkTint50S,
-        colorDarkTint50L,
-        colorDarkTint50A,
-        colorDarkTint100H,
-        colorDarkTint100S,
-        colorDarkTint100L,
-        colorDarkTint100A,
-        colorPrimaryH,
-        colorPrimaryS,
-        colorPrimaryL,
-        colorPrimaryA,
-        colorPrimaryShade50H,
-        colorPrimaryShade50S,
-        colorPrimaryShade50L,
-        colorPrimaryShade50A,
-        colorPrimaryShade100H,
-        colorPrimaryShade100S,
-        colorPrimaryShade100L,
-        colorPrimaryShade100A,
-        colorSecondaryH,
-        colorSecondaryS,
-        colorSecondaryL,
-        colorSecondaryA,
-        colorSecondaryShade50H,
-        colorSecondaryShade50S,
-        colorSecondaryShade50L,
-        colorSecondaryShade50A,
-        colorSecondaryShade100H,
-        colorSecondaryShade100S,
-        colorSecondaryShade100L,
-        colorSecondaryShade100A,
-        colorSuccessH,
-        colorSuccessS,
-        colorSuccessL,
-        colorSuccessA,
-        colorSuccessShade50H,
-        colorSuccessShade50S,
-        colorSuccessShade50L,
-        colorSuccessShade50A,
-        colorSuccessShade100H,
-        colorSuccessShade100S,
-        colorSuccessShade100L,
-        colorSuccessShade100A,
-        colorDangerH,
-        colorDangerS,
-        colorDangerL,
-        colorDangerA,
-        colorDangerShade50H,
-        colorDangerShade50S,
-        colorDangerShade50L,
-        colorDangerShade50A,
-        colorDangerShade100H,
-        colorDangerShade100S,
-        colorDangerShade100L,
-        colorDangerShade100A,
-        colorWarningH,
-        colorWarningS,
-        colorWarningL,
-        colorWarningA,
-        colorWarningShade50H,
-        colorWarningShade50S,
-        colorWarningShade50L,
-        colorWarningShade50A,
-        colorWarningShade100H,
-        colorWarningShade100S,
-        colorWarningShade100L,
-        colorWarningShade100A,
-        colorInfoH,
-        colorInfoS,
-        colorInfoL,
-        colorInfoA,
-        colorInfoShade50H,
-        colorInfoShade50S,
-        colorInfoShade50L,
-        colorInfoShade50A,
-        colorInfoShade100H,
-        colorInfoShade100S,
-        colorInfoShade100L,
-        colorInfoShade100A
+        colorLight,
+        colorLightShade50,
+        colorLightShade100,
+        colorDark,
+        colorDarkTint50,
+        colorDarkTint100,
+        colorPrimary,
+        colorPrimaryShade50,
+        colorPrimaryShade100,
+        colorSecondary,
+        colorSecondaryShade50,
+        colorSecondaryShade100,
+        colorSuccess,
+        colorSuccessShade50,
+        colorSuccessShade100,
+        colorDanger,
+        colorDangerShade50,
+        colorDangerShade100,
+        colorWarning,
+        colorWarningShade50,
+        colorWarningShade100,
+        colorInfo,
+        colorInfoShade50,
+        colorInfoShade100
     } = useColors(options);
     const {
-        contrastTextColorLightH,
-        contrastTextColorLightS,
-        contrastTextColorLightL,
-        contrastTextColorLightA,
-        contrastTextColorDarkH,
-        contrastTextColorDarkS,
-        contrastTextColorDarkL,
-        contrastTextColorDarkA,
-        contrastTextColorPrimaryH,
-        contrastTextColorPrimaryS,
-        contrastTextColorPrimaryL,
-        contrastTextColorPrimaryA,
-        contrastTextColorSecondaryH,
-        contrastTextColorSecondaryS,
-        contrastTextColorSecondaryL,
-        contrastTextColorSecondaryA,
-        contrastTextColorSuccessH,
-        contrastTextColorSuccessS,
-        contrastTextColorSuccessL,
-        contrastTextColorSuccessA,
-        contrastTextColorDangerH,
-        contrastTextColorDangerS,
-        contrastTextColorDangerL,
-        contrastTextColorDangerA,
-        contrastTextColorWarningH,
-        contrastTextColorWarningS,
-        contrastTextColorWarningL,
-        contrastTextColorWarningA,
-        contrastTextColorInfoH,
-        contrastTextColorInfoS,
-        contrastTextColorInfoL,
-        contrastTextColorInfoA
+        contrastTextColorLight,
+        contrastTextColorDark,
+        contrastTextColorPrimary,
+        contrastTextColorSecondary,
+        contrastTextColorSuccess,
+        contrastTextColorDanger,
+        contrastTextColorWarning,
+        contrastTextColorInfo
     } = useContrastTextColor(options);
 
     return {
         light: {
             border: {
-                color: {
-                    h: ref(colorLightShade50H),
-                    s: ref(colorLightShade50S),
-                    l: ref(colorLightShade50L),
-                    a: ref(colorLightShade50A)
-                }
+                color: ref(colorLightShade50)
             },
-            background: {
-                h: ref(colorLightH),
-                s: ref(colorLightS),
-                l: ref(colorLightL),
-                a: ref(colorLightA)
-            },
-            color: {
-                h: ref(contrastTextColorLightH),
-                s: ref(contrastTextColorLightS),
-                l: ref(contrastTextColorLightL),
-                a: ref(contrastTextColorLightA)
-            },
+            background: ref(colorLight),
+            color: ref(contrastTextColorLight),
             /**
              * @state active
              */
             active: {
                 border: {
-                    color: {
-                        h: ref(colorLightShade100H),
-                        s: ref(colorLightShade100S),
-                        l: ref(colorLightShade100L),
-                        a: ref(colorLightShade100A)
-                    }
+                    color: ref(colorLightShade100)
                 },
-                background: {
-                    h: ref(colorLightShade100H),
-                    s: ref(colorLightShade100S),
-                    l: ref(colorLightShade100L),
-                    a: ref(colorLightShade100A)
-                }
+                background: ref(colorLightShade100)
             },
             /**
              * @state hover
              */
             hover: {
                 border: {
-                    color: {
-                        h: ref(colorLightShade100H),
-                        s: ref(colorLightShade100S),
-                        l: ref(colorLightShade100L),
-                        a: ref(colorLightShade100A)
-                    }
+                    color: ref(colorLightShade100)
                 },
-                background: {
-                    h: ref(colorLightShade50H),
-                    s: ref(colorLightShade50S),
-                    l: ref(colorLightShade50L),
-                    a: ref(colorLightShade50A)
-                }
+                background: ref(colorLightShade50)
             },
             /**
              * @state focus
              */
             focus: {
                 border: {
-                    color: {
-                        h: ref(colorLightShade100H),
-                        s: ref(colorLightShade100S),
-                        l: ref(colorLightShade100L),
-                        a: ref(colorLightShade100A)
-                    }
+                    color: ref(colorLightShade100)
                 },
-                background: {
-                    h: ref(colorLightShade50H),
-                    s: ref(colorLightShade50S),
-                    l: ref(colorLightShade50L),
-                    a: ref(colorLightShade50A)
-                }
+                background: ref(colorLightShade50)
             },
             /**
              * @variant outline
              */
             outline: {
                 border: {
-                    color: {
-                        h: ref(colorLightH),
-                        s: ref(colorLightS),
-                        l: ref(colorLightL),
-                        a: ref(colorLightA)
-                    }
+                    color: ref(colorLight)
                 },
-                color: {
-                    h: ref(colorLightH),
-                    s: ref(colorLightS),
-                    l: ref(colorLightL),
-                    a: ref(colorLightA)
-                }
+                color: ref(colorLight)
             },
             /**
              * @variant link
              */
             link: {
-                color: {
-                    h: ref(colorLightH),
-                    s: ref(colorLightS),
-                    l: ref(colorLightL),
-                    a: ref(colorLightA)
-                }
+                color: ref(colorLight)
             }
         },
         dark: {
             border: {
-                color: {
-                    h: ref(colorDarkTint50H),
-                    s: ref(colorDarkTint50S),
-                    l: ref(colorDarkTint50L),
-                    a: ref(colorDarkTint50A)
-                }
+                color: ref(colorDarkTint50)
             },
-            background: {
-                h: ref(colorDarkH),
-                s: ref(colorDarkS),
-                l: ref(colorDarkL),
-                a: ref(colorDarkA)
-            },
-            color: {
-                h: ref(contrastTextColorDarkH),
-                s: ref(contrastTextColorDarkS),
-                l: ref(contrastTextColorDarkL),
-                a: ref(contrastTextColorDarkA)
-            },
+            background: ref(colorDark),
+            color: ref(contrastTextColorDark),
             /**
              * @state active
              */
             active: {
                 border: {
-                    color: {
-                        h: ref(colorDarkTint100H),
-                        s: ref(colorDarkTint100S),
-                        l: ref(colorDarkTint100L),
-                        a: ref(colorDarkTint100A)
-                    }
+                    color: ref(colorDarkTint100)
                 },
-                background: {
-                    h: ref(colorDarkTint100H),
-                    s: ref(colorDarkTint100S),
-                    l: ref(colorDarkTint100L),
-                    a: ref(colorDarkTint100A)
-                }
+                background: ref(colorDarkTint100)
             },
             /**
              * @state hover
              */
             hover: {
                 border: {
-                    color: {
-                        h: ref(colorDarkTint100H),
-                        s: ref(colorDarkTint100S),
-                        l: ref(colorDarkTint100L),
-                        a: ref(colorDarkTint100A)
-                    }
+                    color: ref(colorDarkTint100)
                 },
-                background: {
-                    h: ref(colorDarkTint50H),
-                    s: ref(colorDarkTint50S),
-                    l: ref(colorDarkTint50L),
-                    a: ref(colorDarkTint50A)
-                }
+                background: ref(colorDarkTint50)
             },
             /**
              * @state focus
              */
             focus: {
                 border: {
-                    color: {
-                        h: ref(colorDarkTint100H),
-                        s: ref(colorDarkTint100S),
-                        l: ref(colorDarkTint100L),
-                        a: ref(colorDarkTint100A)
-                    }
+                    color: ref(colorDarkTint100)
                 },
-                background: {
-                    h: ref(colorDarkTint50H),
-                    s: ref(colorDarkTint50S),
-                    l: ref(colorDarkTint50L),
-                    a: ref(colorDarkTint50A)
-                }
+                background: ref(colorDarkTint50)
             },
             /**
              * @variant outline
              */
             outline: {
                 border: {
-                    color: {
-                        h: ref(colorDarkH),
-                        s: ref(colorDarkS),
-                        l: ref(colorDarkL),
-                        a: ref(colorDarkA)
-                    }
+                    color: ref(colorDark)
                 },
-                color: {
-                    h: ref(colorDarkH),
-                    s: ref(colorDarkS),
-                    l: ref(colorDarkL),
-                    a: ref(colorDarkA)
-                }
+                color: ref(colorDark)
             },
             /**
              * @variant link
              */
             link: {
-                color: {
-                    h: ref(colorDarkH),
-                    s: ref(colorDarkS),
-                    l: ref(colorDarkL),
-                    a: ref(colorDarkA)
-                }
+                color: ref(colorDark)
             }
         },
         primary: {
             border: {
-                color: {
-                    h: ref(colorPrimaryShade50H),
-                    s: ref(colorPrimaryShade50S),
-                    l: ref(colorPrimaryShade50L),
-                    a: ref(colorPrimaryShade50A)
-                }
+                color: ref(colorPrimaryShade50)
             },
-            background: {
-                h: ref(colorPrimaryH),
-                s: ref(colorPrimaryS),
-                l: ref(colorPrimaryL),
-                a: ref(colorPrimaryA)
-            },
-            color: {
-                h: ref(contrastTextColorPrimaryH),
-                s: ref(contrastTextColorPrimaryS),
-                l: ref(contrastTextColorPrimaryL),
-                a: ref(contrastTextColorPrimaryA)
-            },
+            background: ref(colorPrimary),
+            color: ref(contrastTextColorPrimary),
             /**
              * @state active
              */
             active: {
                 border: {
-                    color: {
-                        h: ref(colorPrimaryShade100H),
-                        s: ref(colorPrimaryShade100S),
-                        l: ref(colorPrimaryShade100L),
-                        a: ref(colorPrimaryShade100A)
-                    }
+                    color: ref(colorPrimaryShade100)
                 },
-                background: {
-                    h: ref(colorPrimaryShade100H),
-                    s: ref(colorPrimaryShade100S),
-                    l: ref(colorPrimaryShade100L),
-                    a: ref(colorPrimaryShade100A)
-                }
+                background: ref(colorPrimaryShade100)
             },
             /**
              * @state hover
              */
             hover: {
                 border: {
-                    color: {
-                        h: ref(colorPrimaryShade100H),
-                        s: ref(colorPrimaryShade100S),
-                        l: ref(colorPrimaryShade100L),
-                        a: ref(colorPrimaryShade100A)
-                    }
+                    color: ref(colorPrimaryShade100)
                 },
-                background: {
-                    h: ref(colorPrimaryShade50H),
-                    s: ref(colorPrimaryShade50S),
-                    l: ref(colorPrimaryShade50L),
-                    a: ref(colorPrimaryShade50A)
-                }
+                background: ref(colorPrimaryShade50)
             },
             /**
              * @state focus
              */
             focus: {
                 border: {
-                    color: {
-                        h: ref(colorPrimaryShade100H),
-                        s: ref(colorPrimaryShade100S),
-                        l: ref(colorPrimaryShade100L),
-                        a: ref(colorPrimaryShade100A)
-                    }
+                    color: ref(colorPrimaryShade100)
                 },
-                background: {
-                    h: ref(colorPrimaryShade50H),
-                    s: ref(colorPrimaryShade50S),
-                    l: ref(colorPrimaryShade50L),
-                    a: ref(colorPrimaryShade50A)
-                }
+                background: ref(colorPrimaryShade50)
             },
             /**
              * @variant outline
              */
             outline: {
                 border: {
-                    color: {
-                        h: ref(colorPrimaryH),
-                        s: ref(colorPrimaryS),
-                        l: ref(colorPrimaryL),
-                        a: ref(colorPrimaryA)
-                    }
+                    color: ref(colorPrimary)
                 },
-                color: {
-                    h: ref(colorPrimaryH),
-                    s: ref(colorPrimaryS),
-                    l: ref(colorPrimaryL),
-                    a: ref(colorPrimaryA)
-                }
+                color: ref(colorPrimary)
             },
             /**
              * @variant link
              */
             link: {
-                color: {
-                    h: ref(colorPrimaryH),
-                    s: ref(colorPrimaryS),
-                    l: ref(colorPrimaryL),
-                    a: ref(colorPrimaryA)
-                }
+                color: ref(colorPrimary)
             }
         },
         secondary: {
             border: {
-                color: {
-                    h: ref(colorSecondaryShade50H),
-                    s: ref(colorSecondaryShade50S),
-                    l: ref(colorSecondaryShade50L),
-                    a: ref(colorSecondaryShade50A)
-                }
+                color: ref(colorSecondaryShade50)
             },
-            background: {
-                h: ref(colorSecondaryH),
-                s: ref(colorSecondaryS),
-                l: ref(colorSecondaryL),
-                a: ref(colorSecondaryA)
-            },
-            color: {
-                h: ref(contrastTextColorSecondaryH),
-                s: ref(contrastTextColorSecondaryS),
-                l: ref(contrastTextColorSecondaryL),
-                a: ref(contrastTextColorSecondaryA)
-            },
+            background: ref(colorSecondary),
+            color: ref(contrastTextColorSecondary),
             /**
              * @state active
              */
             active: {
                 border: {
-                    color: {
-                        h: ref(colorSecondaryShade100H),
-                        s: ref(colorSecondaryShade100S),
-                        l: ref(colorSecondaryShade100L),
-                        a: ref(colorSecondaryShade100A)
-                    }
+                    color: ref(colorSecondaryShade100)
                 },
-                background: {
-                    h: ref(colorSecondaryShade100H),
-                    s: ref(colorSecondaryShade100S),
-                    l: ref(colorSecondaryShade100L),
-                    a: ref(colorSecondaryShade100A)
-                }
+                background: ref(colorSecondaryShade100)
             },
             /**
              * @state hover
              */
             hover: {
                 border: {
-                    color: {
-                        h: ref(colorSecondaryShade100H),
-                        s: ref(colorSecondaryShade100S),
-                        l: ref(colorSecondaryShade100L),
-                        a: ref(colorSecondaryShade100A)
-                    }
+                    color: ref(colorSecondaryShade100)
                 },
-                background: {
-                    h: ref(colorSecondaryShade50H),
-                    s: ref(colorSecondaryShade50S),
-                    l: ref(colorSecondaryShade50L),
-                    a: ref(colorSecondaryShade50A)
-                }
+                background: ref(colorSecondaryShade50)
             },
             /**
              * @state focus
              */
             focus: {
                 border: {
-                    color: {
-                        h: ref(colorSecondaryShade100H),
-                        s: ref(colorSecondaryShade100S),
-                        l: ref(colorSecondaryShade100L),
-                        a: ref(colorSecondaryShade100A)
-                    }
+                    color: ref(colorSecondaryShade100)
                 },
-                background: {
-                    h: ref(colorSecondaryShade50H),
-                    s: ref(colorSecondaryShade50S),
-                    l: ref(colorSecondaryShade50L),
-                    a: ref(colorSecondaryShade50A)
-                }
+                background: ref(colorSecondaryShade50)
             },
             /**
              * @variant outline
              */
             outline: {
                 border: {
-                    color: {
-                        h: ref(colorSecondaryH),
-                        s: ref(colorSecondaryS),
-                        l: ref(colorSecondaryL),
-                        a: ref(colorSecondaryA)
-                    }
+                    color: ref(colorSecondary)
                 },
-                color: {
-                    h: ref(colorSecondaryH),
-                    s: ref(colorSecondaryS),
-                    l: ref(colorSecondaryL),
-                    a: ref(colorSecondaryA)
-                }
+                color: ref(colorSecondary)
             },
             /**
              * @variant link
              */
             link: {
-                color: {
-                    h: ref(colorSecondaryH),
-                    s: ref(colorSecondaryS),
-                    l: ref(colorSecondaryL),
-                    a: ref(colorSecondaryA)
-                }
+                color: ref(colorSecondary)
             }
         },
         success: {
             border: {
-                color: {
-                    h: ref(colorSuccessShade50H),
-                    s: ref(colorSuccessShade50S),
-                    l: ref(colorSuccessShade50L),
-                    a: ref(colorSuccessShade50A)
-                }
+                color: ref(colorSuccessShade50)
             },
-            background: {
-                h: ref(colorSuccessH),
-                s: ref(colorSuccessS),
-                l: ref(colorSuccessL),
-                a: ref(colorSuccessA)
-            },
-            color: {
-                h: ref(contrastTextColorSuccessH),
-                s: ref(contrastTextColorSuccessS),
-                l: ref(contrastTextColorSuccessL),
-                a: ref(contrastTextColorSuccessA)
-            },
+            background: ref(colorSuccess),
+            color: ref(contrastTextColorSuccess),
             /**
              * @state active
              */
             active: {
                 border: {
-                    color: {
-                        h: ref(colorSuccessShade100H),
-                        s: ref(colorSuccessShade100S),
-                        l: ref(colorSuccessShade100L),
-                        a: ref(colorSuccessShade100A)
-                    }
+                    color: ref(colorSuccessShade100)
                 },
-                background: {
-                    h: ref(colorSuccessShade100H),
-                    s: ref(colorSuccessShade100S),
-                    l: ref(colorSuccessShade100L),
-                    a: ref(colorSuccessShade100A)
-                }
+                background: ref(colorSuccessShade100)
             },
             /**
              * @state hover
              */
             hover: {
                 border: {
-                    color: {
-                        h: ref(colorSuccessShade100H),
-                        s: ref(colorSuccessShade100S),
-                        l: ref(colorSuccessShade100L),
-                        a: ref(colorSuccessShade100A)
-                    }
+                    color: ref(colorSuccessShade100)
                 },
-                background: {
-                    h: ref(colorSuccessShade50H),
-                    s: ref(colorSuccessShade50S),
-                    l: ref(colorSuccessShade50L),
-                    a: ref(colorSuccessShade50A)
-                }
+                background: ref(colorSuccessShade50)
             },
             /**
              * @state focus
              */
             focus: {
                 border: {
-                    color: {
-                        h: ref(colorSuccessShade100H),
-                        s: ref(colorSuccessShade100S),
-                        l: ref(colorSuccessShade100L),
-                        a: ref(colorSuccessShade100A)
-                    }
+                    color: ref(colorSuccessShade100)
                 },
-                background: {
-                    h: ref(colorSuccessShade50H),
-                    s: ref(colorSuccessShade50S),
-                    l: ref(colorSuccessShade50L),
-                    a: ref(colorSuccessShade50A)
-                }
+                background: ref(colorSuccessShade50)
             },
             /**
              * @variant outline
              */
             outline: {
                 border: {
-                    color: {
-                        h: ref(colorSuccessH),
-                        s: ref(colorSuccessS),
-                        l: ref(colorSuccessL),
-                        a: ref(colorSuccessA)
-                    }
+                    color: ref(colorSuccess)
                 },
-                color: {
-                    h: ref(colorSuccessH),
-                    s: ref(colorSuccessS),
-                    l: ref(colorSuccessL),
-                    a: ref(colorSuccessA)
-                }
+                color: ref(colorSuccess)
             },
             /**
              * @variant link
              */
             link: {
-                color: {
-                    h: ref(colorSuccessH),
-                    s: ref(colorSuccessS),
-                    l: ref(colorSuccessL),
-                    a: ref(colorSuccessA)
-                }
+                color: ref(colorSuccess)
             }
         },
         danger: {
             border: {
-                color: {
-                    h: ref(colorDangerShade50H),
-                    s: ref(colorDangerShade50S),
-                    l: ref(colorDangerShade50L),
-                    a: ref(colorDangerShade50A)
-                }
+                color: ref(colorDangerShade50)
             },
-            background: {
-                h: ref(colorDangerH),
-                s: ref(colorDangerS),
-                l: ref(colorDangerL),
-                a: ref(colorDangerA)
-            },
-            color: {
-                h: ref(contrastTextColorDangerH),
-                s: ref(contrastTextColorDangerS),
-                l: ref(contrastTextColorDangerL),
-                a: ref(contrastTextColorDangerA)
-            },
+            background: ref(colorDanger),
+            color: ref(contrastTextColorDanger),
             /**
              * @state active
              */
             active: {
                 border: {
-                    color: {
-                        h: ref(colorDangerShade100H),
-                        s: ref(colorDangerShade100S),
-                        l: ref(colorDangerShade100L),
-                        a: ref(colorDangerShade100A)
-                    }
+                    color: ref(colorDangerShade100)
                 },
-                background: {
-                    h: ref(colorDangerShade100H),
-                    s: ref(colorDangerShade100S),
-                    l: ref(colorDangerShade100L),
-                    a: ref(colorDangerShade100A)
-                }
+                background: ref(colorDangerShade100)
             },
             /**
              * @state hover
              */
             hover: {
                 border: {
-                    color: {
-                        h: ref(colorDangerShade100H),
-                        s: ref(colorDangerShade100S),
-                        l: ref(colorDangerShade100L),
-                        a: ref(colorDangerShade100A)
-                    }
+                    color: ref(colorDangerShade100)
                 },
-                background: {
-                    h: ref(colorDangerShade50H),
-                    s: ref(colorDangerShade50S),
-                    l: ref(colorDangerShade50L),
-                    a: ref(colorDangerShade50A)
-                }
+                background: ref(colorDangerShade50)
             },
             /**
              * @state focus
              */
             focus: {
                 border: {
-                    color: {
-                        h: ref(colorDangerShade100H),
-                        s: ref(colorDangerShade100S),
-                        l: ref(colorDangerShade100L),
-                        a: ref(colorDangerShade100A)
-                    }
+                    color: ref(colorDangerShade100)
                 },
-                background: {
-                    h: ref(colorDangerShade50H),
-                    s: ref(colorDangerShade50S),
-                    l: ref(colorDangerShade50L),
-                    a: ref(colorDangerShade50A)
-                }
+                background: ref(colorDangerShade50)
             },
             /**
              * @variant outline
              */
             outline: {
                 border: {
-                    color: {
-                        h: ref(colorDangerH),
-                        s: ref(colorDangerS),
-                        l: ref(colorDangerL),
-                        a: ref(colorDangerA)
-                    }
+                    color: ref(colorDanger)
                 },
-                color: {
-                    h: ref(colorDangerH),
-                    s: ref(colorDangerS),
-                    l: ref(colorDangerL),
-                    a: ref(colorDangerA)
-                }
+                color: ref(colorDanger)
             },
             /**
              * @variant link
              */
             link: {
-                color: {
-                    h: ref(colorDangerH),
-                    s: ref(colorDangerS),
-                    l: ref(colorDangerL),
-                    a: ref(colorDangerA)
-                }
+                color: ref(colorDanger)
             }
         },
         warning: {
             border: {
-                color: {
-                    h: ref(colorWarningShade50H),
-                    s: ref(colorWarningShade50S),
-                    l: ref(colorWarningShade50L),
-                    a: ref(colorWarningShade50A)
-                }
+                color: ref(colorWarningShade50)
             },
-            background: {
-                h: ref(colorWarningH),
-                s: ref(colorWarningS),
-                l: ref(colorWarningL),
-                a: ref(colorWarningA)
-            },
-            color: {
-                h: ref(contrastTextColorWarningH),
-                s: ref(contrastTextColorWarningS),
-                l: ref(contrastTextColorWarningL),
-                a: ref(contrastTextColorWarningA)
-            },
+            background: ref(colorWarning),
+            color: ref(contrastTextColorWarning),
             /**
              * @state active
              */
             active: {
                 border: {
-                    color: {
-                        h: ref(colorWarningShade100H),
-                        s: ref(colorWarningShade100S),
-                        l: ref(colorWarningShade100L),
-                        a: ref(colorWarningShade100A)
-                    }
+                    color: ref(colorWarningShade100)
                 },
-                background: {
-                    h: ref(colorWarningShade100H),
-                    s: ref(colorWarningShade100S),
-                    l: ref(colorWarningShade100L),
-                    a: ref(colorWarningShade100A)
-                }
+                background: ref(colorWarningShade100)
             },
             /**
              * @state hover
              */
             hover: {
                 border: {
-                    color: {
-                        h: ref(colorWarningShade100H),
-                        s: ref(colorWarningShade100S),
-                        l: ref(colorWarningShade100L),
-                        a: ref(colorWarningShade100A)
-                    }
+                    color: ref(colorWarningShade100)
                 },
-                background: {
-                    h: ref(colorWarningShade50H),
-                    s: ref(colorWarningShade50S),
-                    l: ref(colorWarningShade50L),
-                    a: ref(colorWarningShade50A)
-                }
+                background: ref(colorWarningShade50)
             },
             /**
              * @state focus
              */
             focus: {
                 border: {
-                    color: {
-                        h: ref(colorWarningShade100H),
-                        s: ref(colorWarningShade100S),
-                        l: ref(colorWarningShade100L),
-                        a: ref(colorWarningShade100A)
-                    }
+                    color: ref(colorWarningShade100)
                 },
-                background: {
-                    h: ref(colorWarningShade50H),
-                    s: ref(colorWarningShade50S),
-                    l: ref(colorWarningShade50L),
-                    a: ref(colorWarningShade50A)
-                }
+                background: ref(colorWarningShade50)
             },
             /**
              * @variant outline
              */
             outline: {
                 border: {
-                    color: {
-                        h: ref(colorWarningH),
-                        s: ref(colorWarningS),
-                        l: ref(colorWarningL),
-                        a: ref(colorWarningA)
-                    }
+                    color: ref(colorWarning)
                 },
-                color: {
-                    h: ref(colorWarningH),
-                    s: ref(colorWarningS),
-                    l: ref(colorWarningL),
-                    a: ref(colorWarningA)
-                }
+                color: ref(colorWarning)
             },
             /**
              * @variant link
              */
             link: {
-                color: {
-                    h: ref(colorWarningH),
-                    s: ref(colorWarningS),
-                    l: ref(colorWarningL),
-                    a: ref(colorWarningA)
-                }
+                color: ref(colorWarning)
             }
         },
         info: {
             border: {
-                color: {
-                    h: ref(colorInfoShade50H),
-                    s: ref(colorInfoShade50S),
-                    l: ref(colorInfoShade50L),
-                    a: ref(colorInfoShade50A)
-                }
+                color: ref(colorInfoShade50)
             },
-            background: {
-                h: ref(colorInfoH),
-                s: ref(colorInfoS),
-                l: ref(colorInfoL),
-                a: ref(colorInfoA)
-            },
-            color: {
-                h: ref(contrastTextColorInfoH),
-                s: ref(contrastTextColorInfoS),
-                l: ref(contrastTextColorInfoL),
-                a: ref(contrastTextColorInfoA)
-            },
+            background: ref(colorInfo),
+            color: ref(contrastTextColorInfo),
             /**
              * @state active
              */
             active: {
                 border: {
-                    color: {
-                        h: ref(colorInfoShade100H),
-                        s: ref(colorInfoShade100S),
-                        l: ref(colorInfoShade100L),
-                        a: ref(colorInfoShade100A)
-                    }
+                    color: ref(colorInfoShade100)
                 },
-                background: {
-                    h: ref(colorInfoShade100H),
-                    s: ref(colorInfoShade100S),
-                    l: ref(colorInfoShade100L),
-                    a: ref(colorInfoShade100A)
-                }
+                background: ref(colorInfoShade100)
             },
             /**
              * @state hover
              */
             hover: {
                 border: {
-                    color: {
-                        h: ref(colorInfoShade100H),
-                        s: ref(colorInfoShade100S),
-                        l: ref(colorInfoShade100L),
-                        a: ref(colorInfoShade100A)
-                    }
+                    color: ref(colorInfoShade100)
                 },
-                background: {
-                    h: ref(colorInfoShade50H),
-                    s: ref(colorInfoShade50S),
-                    l: ref(colorInfoShade50L),
-                    a: ref(colorInfoShade50A)
-                }
+                background: ref(colorInfoShade50)
             },
             /**
              * @state focus
              */
             focus: {
                 border: {
-                    color: {
-                        h: ref(colorInfoShade100H),
-                        s: ref(colorInfoShade100S),
-                        l: ref(colorInfoShade100L),
-                        a: ref(colorInfoShade100A)
-                    }
+                    color: ref(colorInfoShade100)
                 },
-                background: {
-                    h: ref(colorInfoShade50H),
-                    s: ref(colorInfoShade50S),
-                    l: ref(colorInfoShade50L),
-                    a: ref(colorInfoShade50A)
-                }
+                background: ref(colorInfoShade50)
             },
             /**
              * @variant outline
              */
             outline: {
                 border: {
-                    color: {
-                        h: ref(colorInfoH),
-                        s: ref(colorInfoS),
-                        l: ref(colorInfoL),
-                        a: ref(colorInfoA)
-                    }
+                    color: ref(colorInfo)
                 },
-                color: {
-                    h: ref(colorInfoH),
-                    s: ref(colorInfoS),
-                    l: ref(colorInfoL),
-                    a: ref(colorInfoA)
-                }
+                color: ref(colorInfo)
             },
             /**
              * @variant link
              */
             link: {
-                color: {
-                    h: ref(colorInfoH),
-                    s: ref(colorInfoS),
-                    l: ref(colorInfoL),
-                    a: ref(colorInfoA)
-                }
+                color: ref(colorInfo)
             }
         }
     }[variant];
@@ -1615,265 +1039,76 @@ export function useButtonThemeColorSelectors(
     options: DefinitionOptions
 ) {
     const {
-        buttonBackgroundH,
-        buttonBackgroundS,
-        buttonBackgroundL,
-        buttonBackgroundA,
-        buttonBorderTopColorH,
-        buttonBorderTopColorS,
-        buttonBorderTopColorL,
-        buttonBorderTopColorA,
-        buttonBorderRightColorH,
-        buttonBorderRightColorS,
-        buttonBorderRightColorL,
-        buttonBorderRightColorA,
-        buttonBorderBottomColorH,
-        buttonBorderBottomColorS,
-        buttonBorderBottomColorL,
-        buttonBorderBottomColorA,
-        buttonBorderLeftColorH,
-        buttonBorderLeftColorS,
-        buttonBorderLeftColorL,
-        buttonBorderLeftColorA,
-        buttonColorH,
-        buttonColorS,
-        buttonColorL,
-        buttonColorA,
-        buttonHoverBackgroundH,
-        buttonHoverBackgroundS,
-        buttonHoverBackgroundL,
-        buttonHoverBackgroundA,
-        buttonHoverBorderTopColorH,
-        buttonHoverBorderTopColorS,
-        buttonHoverBorderTopColorL,
-        buttonHoverBorderTopColorA,
-        buttonHoverBorderRightColorH,
-        buttonHoverBorderRightColorS,
-        buttonHoverBorderRightColorL,
-        buttonHoverBorderRightColorA,
-        buttonHoverBorderBottomColorH,
-        buttonHoverBorderBottomColorS,
-        buttonHoverBorderBottomColorL,
-        buttonHoverBorderBottomColorA,
-        buttonHoverBorderLeftColorH,
-        buttonHoverBorderLeftColorS,
-        buttonHoverBorderLeftColorL,
-        buttonHoverBorderLeftColorA,
-        buttonFocusBackgroundH,
-        buttonFocusBackgroundS,
-        buttonFocusBackgroundL,
-        buttonFocusBackgroundA,
-        buttonFocusBorderTopColorH,
-        buttonFocusBorderTopColorS,
-        buttonFocusBorderTopColorL,
-        buttonFocusBorderTopColorA,
-        buttonFocusBorderRightColorH,
-        buttonFocusBorderRightColorS,
-        buttonFocusBorderRightColorL,
-        buttonFocusBorderRightColorA,
-        buttonFocusBorderBottomColorH,
-        buttonFocusBorderBottomColorS,
-        buttonFocusBorderBottomColorL,
-        buttonFocusBorderBottomColorA,
-        buttonFocusBorderLeftColorH,
-        buttonFocusBorderLeftColorS,
-        buttonFocusBorderLeftColorL,
-        buttonFocusBorderLeftColorA,
-        buttonActiveBackgroundH,
-        buttonActiveBackgroundS,
-        buttonActiveBackgroundL,
-        buttonActiveBackgroundA,
-        buttonActiveBorderTopColorH,
-        buttonActiveBorderTopColorS,
-        buttonActiveBorderTopColorL,
-        buttonActiveBorderTopColorA,
-        buttonActiveBorderRightColorH,
-        buttonActiveBorderRightColorS,
-        buttonActiveBorderRightColorL,
-        buttonActiveBorderRightColorA,
-        buttonActiveBorderBottomColorH,
-        buttonActiveBorderBottomColorS,
-        buttonActiveBorderBottomColorL,
-        buttonActiveBorderBottomColorA,
-        buttonActiveBorderLeftColorH,
-        buttonActiveBorderLeftColorS,
-        buttonActiveBorderLeftColorL,
-        buttonActiveBorderLeftColorA
+        buttonBackground,
+        buttonBorderTopColor,
+        buttonBorderRightColor,
+        buttonBorderBottomColor,
+        buttonBorderLeftColor,
+        buttonColor,
+        buttonHoverBackground,
+        buttonHoverBorderTopColor,
+        buttonHoverBorderRightColor,
+        buttonHoverBorderBottomColor,
+        buttonHoverBorderLeftColor,
+        buttonFocusBackground,
+        buttonFocusBorderTopColor,
+        buttonFocusBorderRightColor,
+        buttonFocusBorderBottomColor,
+        buttonFocusBorderLeftColor,
+        buttonActiveBackground,
+        buttonActiveBorderTopColor,
+        buttonActiveBorderRightColor,
+        buttonActiveBorderBottomColor,
+        buttonActiveBorderLeftColor
     } = useButtonThemeVariables(options);
     const {
-        variantBackgroundH,
-        variantBackgroundS,
-        variantBackgroundL,
-        variantBackgroundA,
-        variantBorderTopColorH,
-        variantBorderTopColorS,
-        variantBorderTopColorL,
-        variantBorderTopColorA,
-        variantBorderRightColorH,
-        variantBorderRightColorS,
-        variantBorderRightColorL,
-        variantBorderRightColorA,
-        variantBorderBottomColorH,
-        variantBorderBottomColorS,
-        variantBorderBottomColorL,
-        variantBorderBottomColorA,
-        variantBorderLeftColorH,
-        variantBorderLeftColorS,
-        variantBorderLeftColorL,
-        variantBorderLeftColorA,
-        variantColorH,
-        variantColorS,
-        variantColorL,
-        variantColorA,
-        variantHoverBackgroundH,
-        variantHoverBackgroundS,
-        variantHoverBackgroundL,
-        variantHoverBackgroundA,
-        variantHoverBorderTopColorH,
-        variantHoverBorderTopColorS,
-        variantHoverBorderTopColorL,
-        variantHoverBorderTopColorA,
-        variantHoverBorderRightColorH,
-        variantHoverBorderRightColorS,
-        variantHoverBorderRightColorL,
-        variantHoverBorderRightColorA,
-        variantHoverBorderBottomColorH,
-        variantHoverBorderBottomColorS,
-        variantHoverBorderBottomColorL,
-        variantHoverBorderBottomColorA,
-        variantHoverBorderLeftColorH,
-        variantHoverBorderLeftColorS,
-        variantHoverBorderLeftColorL,
-        variantHoverBorderLeftColorA,
-        variantFocusBackgroundH,
-        variantFocusBackgroundS,
-        variantFocusBackgroundL,
-        variantFocusBackgroundA,
-        variantFocusBorderTopColorH,
-        variantFocusBorderTopColorS,
-        variantFocusBorderTopColorL,
-        variantFocusBorderTopColorA,
-        variantFocusBorderRightColorH,
-        variantFocusBorderRightColorS,
-        variantFocusBorderRightColorL,
-        variantFocusBorderRightColorA,
-        variantFocusBorderBottomColorH,
-        variantFocusBorderBottomColorS,
-        variantFocusBorderBottomColorL,
-        variantFocusBorderBottomColorA,
-        variantFocusBorderLeftColorH,
-        variantFocusBorderLeftColorS,
-        variantFocusBorderLeftColorL,
-        variantFocusBorderLeftColorA,
-        variantActiveBackgroundH,
-        variantActiveBackgroundS,
-        variantActiveBackgroundL,
-        variantActiveBackgroundA,
-        variantActiveBorderTopColorH,
-        variantActiveBorderTopColorS,
-        variantActiveBorderTopColorL,
-        variantActiveBorderTopColorA,
-        variantActiveBorderRightColorH,
-        variantActiveBorderRightColorS,
-        variantActiveBorderRightColorL,
-        variantActiveBorderRightColorA,
-        variantActiveBorderBottomColorH,
-        variantActiveBorderBottomColorS,
-        variantActiveBorderBottomColorL,
-        variantActiveBorderBottomColorA,
-        variantActiveBorderLeftColorH,
-        variantActiveBorderLeftColorS,
-        variantActiveBorderLeftColorL,
-        variantActiveBorderLeftColorA
+        variantBackground,
+        variantBorderTopColor,
+        variantBorderRightColor,
+        variantBorderBottomColor,
+        variantBorderLeftColor,
+        variantColor,
+        variantHoverBackground,
+        variantHoverBorderTopColor,
+        variantHoverBorderRightColor,
+        variantHoverBorderBottomColor,
+        variantHoverBorderLeftColor,
+        variantFocusBackground,
+        variantFocusBorderTopColor,
+        variantFocusBorderRightColor,
+        variantFocusBorderBottomColor,
+        variantFocusBorderLeftColor,
+        variantActiveBackground,
+        variantActiveBorderTopColor,
+        variantActiveBorderRightColor,
+        variantActiveBorderBottomColor,
+        variantActiveBorderLeftColor
     } = setExportsNamespace(useButtonColorVariables(variant, options), 'variant');
 
     selector(
         `.button.-${variant}`,
         {
-            [toVariableKey(buttonBorderTopColorH)]: ref(variantBorderTopColorH),
-            [toVariableKey(buttonBorderTopColorS)]: ref(variantBorderTopColorS),
-            [toVariableKey(buttonBorderTopColorL)]: ref(variantBorderTopColorL),
-            [toVariableKey(buttonBorderTopColorA)]: ref(variantBorderTopColorA),
-            [toVariableKey(buttonBorderRightColorH)]: ref(variantBorderRightColorH),
-            [toVariableKey(buttonBorderRightColorS)]: ref(variantBorderRightColorS),
-            [toVariableKey(buttonBorderRightColorL)]: ref(variantBorderRightColorL),
-            [toVariableKey(buttonBorderRightColorA)]: ref(variantBorderRightColorA),
-            [toVariableKey(buttonBorderBottomColorH)]: ref(variantBorderBottomColorH),
-            [toVariableKey(buttonBorderBottomColorS)]: ref(variantBorderBottomColorS),
-            [toVariableKey(buttonBorderBottomColorL)]: ref(variantBorderBottomColorL),
-            [toVariableKey(buttonBorderBottomColorA)]: ref(variantBorderBottomColorA),
-            [toVariableKey(buttonBorderLeftColorH)]: ref(variantBorderLeftColorH),
-            [toVariableKey(buttonBorderLeftColorS)]: ref(variantBorderLeftColorS),
-            [toVariableKey(buttonBorderLeftColorL)]: ref(variantBorderLeftColorL),
-            [toVariableKey(buttonBorderLeftColorA)]: ref(variantBorderLeftColorA),
-            [toVariableKey(buttonBackgroundH)]: ref(variantBackgroundH),
-            [toVariableKey(buttonBackgroundS)]: ref(variantBackgroundS),
-            [toVariableKey(buttonBackgroundL)]: ref(variantBackgroundL),
-            [toVariableKey(buttonBackgroundA)]: ref(variantBackgroundA),
-            [toVariableKey(buttonColorH)]: ref(variantColorH),
-            [toVariableKey(buttonColorS)]: ref(variantColorS),
-            [toVariableKey(buttonColorL)]: ref(variantColorL),
-            [toVariableKey(buttonColorA)]: ref(variantColorA),
-            [toVariableKey(buttonHoverBorderTopColorH)]: ref(variantHoverBorderTopColorH),
-            [toVariableKey(buttonHoverBorderTopColorS)]: ref(variantHoverBorderTopColorS),
-            [toVariableKey(buttonHoverBorderTopColorL)]: ref(variantHoverBorderTopColorL),
-            [toVariableKey(buttonHoverBorderTopColorA)]: ref(variantHoverBorderTopColorA),
-            [toVariableKey(buttonHoverBorderRightColorH)]: ref(variantHoverBorderRightColorH),
-            [toVariableKey(buttonHoverBorderRightColorS)]: ref(variantHoverBorderRightColorS),
-            [toVariableKey(buttonHoverBorderRightColorL)]: ref(variantHoverBorderRightColorL),
-            [toVariableKey(buttonHoverBorderRightColorA)]: ref(variantHoverBorderRightColorA),
-            [toVariableKey(buttonHoverBorderBottomColorH)]: ref(variantHoverBorderBottomColorH),
-            [toVariableKey(buttonHoverBorderBottomColorS)]: ref(variantHoverBorderBottomColorS),
-            [toVariableKey(buttonHoverBorderBottomColorL)]: ref(variantHoverBorderBottomColorL),
-            [toVariableKey(buttonHoverBorderBottomColorA)]: ref(variantHoverBorderBottomColorA),
-            [toVariableKey(buttonHoverBorderLeftColorH)]: ref(variantHoverBorderLeftColorH),
-            [toVariableKey(buttonHoverBorderLeftColorS)]: ref(variantHoverBorderLeftColorS),
-            [toVariableKey(buttonHoverBorderLeftColorL)]: ref(variantHoverBorderLeftColorL),
-            [toVariableKey(buttonHoverBorderLeftColorA)]: ref(variantHoverBorderLeftColorA),
-            [toVariableKey(buttonHoverBackgroundH)]: ref(variantHoverBackgroundH),
-            [toVariableKey(buttonHoverBackgroundS)]: ref(variantHoverBackgroundS),
-            [toVariableKey(buttonHoverBackgroundL)]: ref(variantHoverBackgroundL),
-            [toVariableKey(buttonHoverBackgroundA)]: ref(variantHoverBackgroundA),
-            [toVariableKey(buttonFocusBorderTopColorH)]: ref(variantFocusBorderTopColorH),
-            [toVariableKey(buttonFocusBorderTopColorS)]: ref(variantFocusBorderTopColorS),
-            [toVariableKey(buttonFocusBorderTopColorL)]: ref(variantFocusBorderTopColorL),
-            [toVariableKey(buttonFocusBorderTopColorA)]: ref(variantFocusBorderTopColorA),
-            [toVariableKey(buttonFocusBorderRightColorH)]: ref(variantFocusBorderRightColorH),
-            [toVariableKey(buttonFocusBorderRightColorS)]: ref(variantFocusBorderRightColorS),
-            [toVariableKey(buttonFocusBorderRightColorL)]: ref(variantFocusBorderRightColorL),
-            [toVariableKey(buttonFocusBorderRightColorA)]: ref(variantFocusBorderRightColorA),
-            [toVariableKey(buttonFocusBorderBottomColorH)]: ref(variantFocusBorderBottomColorH),
-            [toVariableKey(buttonFocusBorderBottomColorS)]: ref(variantFocusBorderBottomColorS),
-            [toVariableKey(buttonFocusBorderBottomColorL)]: ref(variantFocusBorderBottomColorL),
-            [toVariableKey(buttonFocusBorderBottomColorA)]: ref(variantFocusBorderBottomColorA),
-            [toVariableKey(buttonFocusBorderLeftColorH)]: ref(variantFocusBorderLeftColorH),
-            [toVariableKey(buttonFocusBorderLeftColorS)]: ref(variantFocusBorderLeftColorS),
-            [toVariableKey(buttonFocusBorderLeftColorL)]: ref(variantFocusBorderLeftColorL),
-            [toVariableKey(buttonFocusBorderLeftColorA)]: ref(variantFocusBorderLeftColorA),
-            [toVariableKey(buttonFocusBackgroundH)]: ref(variantFocusBackgroundH),
-            [toVariableKey(buttonFocusBackgroundS)]: ref(variantFocusBackgroundS),
-            [toVariableKey(buttonFocusBackgroundL)]: ref(variantFocusBackgroundL),
-            [toVariableKey(buttonFocusBackgroundA)]: ref(variantFocusBackgroundA),
-            [toVariableKey(buttonActiveBorderTopColorH)]: ref(variantActiveBorderTopColorH),
-            [toVariableKey(buttonActiveBorderTopColorS)]: ref(variantActiveBorderTopColorS),
-            [toVariableKey(buttonActiveBorderTopColorL)]: ref(variantActiveBorderTopColorL),
-            [toVariableKey(buttonActiveBorderTopColorA)]: ref(variantActiveBorderTopColorA),
-            [toVariableKey(buttonActiveBorderRightColorH)]: ref(variantActiveBorderRightColorH),
-            [toVariableKey(buttonActiveBorderRightColorS)]: ref(variantActiveBorderRightColorS),
-            [toVariableKey(buttonActiveBorderRightColorL)]: ref(variantActiveBorderRightColorL),
-            [toVariableKey(buttonActiveBorderRightColorA)]: ref(variantActiveBorderRightColorA),
-            [toVariableKey(buttonActiveBorderBottomColorH)]: ref(variantActiveBorderBottomColorH),
-            [toVariableKey(buttonActiveBorderBottomColorS)]: ref(variantActiveBorderBottomColorS),
-            [toVariableKey(buttonActiveBorderBottomColorL)]: ref(variantActiveBorderBottomColorL),
-            [toVariableKey(buttonActiveBorderBottomColorA)]: ref(variantActiveBorderBottomColorA),
-            [toVariableKey(buttonActiveBorderLeftColorH)]: ref(variantActiveBorderLeftColorH),
-            [toVariableKey(buttonActiveBorderLeftColorS)]: ref(variantActiveBorderLeftColorS),
-            [toVariableKey(buttonActiveBorderLeftColorL)]: ref(variantActiveBorderLeftColorL),
-            [toVariableKey(buttonActiveBorderLeftColorA)]: ref(variantActiveBorderLeftColorA),
-            [toVariableKey(buttonActiveBackgroundH)]: ref(variantActiveBackgroundH),
-            [toVariableKey(buttonActiveBackgroundS)]: ref(variantActiveBackgroundS),
-            [toVariableKey(buttonActiveBackgroundL)]: ref(variantActiveBackgroundL),
-            [toVariableKey(buttonActiveBackgroundA)]: ref(variantActiveBackgroundA)
+            [toVariableKey(buttonBorderTopColor)]: ref(variantBorderTopColor),
+            [toVariableKey(buttonBorderRightColor)]: ref(variantBorderRightColor),
+            [toVariableKey(buttonBorderBottomColor)]: ref(variantBorderBottomColor),
+            [toVariableKey(buttonBorderLeftColor)]: ref(variantBorderLeftColor),
+            [toVariableKey(buttonBackground)]: ref(variantBackground),
+            [toVariableKey(buttonColor)]: ref(variantColor),
+            [toVariableKey(buttonHoverBorderTopColor)]: ref(variantHoverBorderTopColor),
+            [toVariableKey(buttonHoverBorderRightColor)]: ref(variantHoverBorderRightColor),
+            [toVariableKey(buttonHoverBorderBottomColor)]: ref(variantHoverBorderBottomColor),
+            [toVariableKey(buttonHoverBorderLeftColor)]: ref(variantHoverBorderLeftColor),
+            [toVariableKey(buttonHoverBackground)]: ref(variantHoverBackground),
+            [toVariableKey(buttonFocusBorderTopColor)]: ref(variantFocusBorderTopColor),
+            [toVariableKey(buttonFocusBorderRightColor)]: ref(variantFocusBorderRightColor),
+            [toVariableKey(buttonFocusBorderBottomColor)]: ref(variantFocusBorderBottomColor),
+            [toVariableKey(buttonFocusBorderLeftColor)]: ref(variantFocusBorderLeftColor),
+            [toVariableKey(buttonFocusBackground)]: ref(variantFocusBackground),
+            [toVariableKey(buttonActiveBorderTopColor)]: ref(variantActiveBorderTopColor),
+            [toVariableKey(buttonActiveBorderRightColor)]: ref(variantActiveBorderRightColor),
+            [toVariableKey(buttonActiveBorderBottomColor)]: ref(variantActiveBorderBottomColor),
+            [toVariableKey(buttonActiveBorderLeftColor)]: ref(variantActiveBorderLeftColor),
+            [toVariableKey(buttonActiveBackground)]: ref(variantActiveBackground)
         },
         options
     );

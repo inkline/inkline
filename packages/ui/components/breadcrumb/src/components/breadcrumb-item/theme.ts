@@ -1,4 +1,4 @@
-import { DefinitionOptions, ref, selector } from '@inkline/core';
+import { DefinitionOptions, ref, selector, vref } from '@inkline/core';
 import { useBreadcrumbThemeVariables } from '../breadcrumb/theme';
 
 export function useBreadcrumbItemThemeLayout(options: DefinitionOptions) {
@@ -61,7 +61,7 @@ export function useBreadcrumbItemThemeBase(options: DefinitionOptions) {
     selector(
         '.breadcrumb-item.-active, .breadcrumb-item.-active a',
         {
-            color: ref(breadcrumbActiveColor)
+            color: vref(breadcrumbActiveColor)
         },
         options
     );

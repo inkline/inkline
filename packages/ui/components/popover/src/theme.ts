@@ -2,22 +2,21 @@ import {
     multiply,
     ref,
     selector,
-    defaultDefinitionOptions,
     nsvariables,
-    stripExportsNamespace
+    vref,
+    setExportsNamespace,
+    toVariableKey,
+    DefinitionOptions
 } from '@inkline/core';
-import { capitalize } from '@inkline/utils';
+import { merge } from '@inkline/utils';
 import {
     useBorder,
     useBorderRadius,
     useBoxShadow,
-    useBrandColorVariants,
     useFontSize,
-    useKeyMappedSizeMultiplier,
     useTransition,
     useColors,
     useContrastTextColor,
-    useNeutralColors,
     useSpacing
 } from '@inkline/theme';
 
@@ -32,7 +31,124 @@ const defaultPopoverSizes = ['sm', 'md', 'lg'] as const;
 type PopoverColorVariant = (typeof defaultPopoverColors)[number];
 type PopoverSizeVariant = (typeof defaultPopoverSizes)[number];
 
-export function usePopoverThemeVariables(options: DefinitionOptions) {
+/**
+ * Config
+ */
+
+export function usePopoverThemeColorConfig(
+    variant: PopoverColorVariant,
+    options: DefinitionOptions
+) {
+    const { colorLightShade50, colorLight, colorDarkTint50, colorDark } = useColors(options);
+    const { contrastTextColorLight, contrastTextColorDark } = useContrastTextColor(options);
+
+    return {
+        light: {
+            border: {
+                color: ref(colorLightShade50)
+            },
+            background: ref(colorLight),
+            color: ref(contrastTextColorLight)
+        },
+        dark: {
+            border: {
+                color: ref(colorDarkTint50)
+            },
+            background: ref(colorDark),
+            color: ref(contrastTextColorDark)
+        }
+    }[variant];
+}
+
+export function usePopoverThemeSizeConfig(variant: PopoverSizeVariant, options: DefinitionOptions) {
+    const {
+        borderTopLeftRadiusSm,
+        borderTopRightRadiusSm,
+        borderBottomRightRadiusSm,
+        borderBottomLeftRadiusSm,
+        borderTopLeftRadiusMd,
+        borderTopRightRadiusMd,
+        borderBottomRightRadiusMd,
+        borderBottomLeftRadiusMd,
+        borderTopLeftRadiusLg,
+        borderTopRightRadiusLg,
+        borderBottomRightRadiusLg,
+        borderBottomLeftRadiusLg
+    } = useBorderRadius(options);
+    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize(options);
+    const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
+
+    return {
+        sm: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusSm),
+                topRight: ref(borderTopRightRadiusSm),
+                bottomRight: ref(borderBottomRightRadiusSm),
+                bottomLeft: ref(borderBottomLeftRadiusSm)
+            },
+            fontSize: ref(fontSizeSm),
+            padding: {
+                top: multiply(ref(spacingSm), 3 / 4),
+                right: ref(spacingSm),
+                bottom: multiply(ref(spacingSm), 3 / 4),
+                left: ref(spacingSm)
+            },
+            width: multiply(ref(spacingSm), 18),
+            /**
+             * @element arrow
+             */
+            arrow: {
+                size: multiply(ref(spacingSm), 0.5)
+            }
+        },
+        md: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusMd),
+                topRight: ref(borderTopRightRadiusMd),
+                bottomRight: ref(borderBottomRightRadiusMd),
+                bottomLeft: ref(borderBottomLeftRadiusMd)
+            },
+            fontSize: ref(fontSizeMd),
+            padding: {
+                top: multiply(ref(spacingMd), 3 / 4),
+                right: ref(spacingMd),
+                bottom: multiply(ref(spacingMd), 3 / 4),
+                left: ref(spacingMd)
+            },
+            width: multiply(ref(spacingMd), 18),
+            /**
+             * @element arrow
+             */
+            arrow: {
+                size: multiply(ref(spacingMd), 0.5)
+            }
+        },
+        lg: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusLg),
+                topRight: ref(borderTopRightRadiusLg),
+                bottomRight: ref(borderBottomRightRadiusLg),
+                bottomLeft: ref(borderBottomLeftRadiusLg)
+            },
+            fontSize: ref(fontSizeLg),
+            padding: {
+                top: multiply(ref(spacingLg), 3 / 4),
+                right: ref(spacingLg),
+                bottom: multiply(ref(spacingLg), 3 / 4),
+                left: ref(spacingLg)
+            },
+            width: multiply(ref(spacingLg), 18),
+            /**
+             * @element arrow
+             */
+            arrow: {
+                size: multiply(ref(spacingLg), 0.5)
+            }
+        }
+    }[variant];
+}
+
+export function usePopoverThemeConfig(options: DefinitionOptions) {
     const {
         borderTopStyle,
         borderTopWidth,
@@ -43,14 +159,7 @@ export function usePopoverThemeVariables(options: DefinitionOptions) {
         borderLeftStyle,
         borderLeftWidth
     } = useBorder(options);
-    const { colorLightShade50 } = useBrandColorVariants(options);
     const { spacing } = useSpacing(options);
-    const {
-        borderTopLeftRadius,
-        borderTopRightRadius,
-        borderBottomRightRadius,
-        borderBottomLeftRadius
-    } = useBorderRadius(options);
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
@@ -58,138 +167,178 @@ export function usePopoverThemeVariables(options: DefinitionOptions) {
         boxShadowSpreadRadius,
         boxShadowColor
     } = useBoxShadow(options);
-    const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors(options);
-    const { contrastTextColorLight } = useContrastTextColor(options);
-    const { fontSize } = useFontSize(options);
     const { transitionProperty, transitionDuration, transitionTimingFunction } =
         useTransition(options);
 
-    return {
-        ...nsvariables(
-            ns,
-            {
-                border: {
-                    top: {
-                        width: ref(borderTopWidth),
-                        style: ref(borderTopStyle),
-                        color: ref(colorLightShade50)
-                    },
-                    right: {
-                        width: ref(borderRightWidth),
-                        style: ref(borderRightStyle),
-                        color: ref(colorLightShade50)
-                    },
-                    bottom: {
-                        width: ref(borderBottomWidth),
-                        style: ref(borderBottomStyle),
-                        color: ref(colorLightShade50)
-                    },
-                    left: {
-                        width: ref(borderLeftWidth),
-                        style: ref(borderLeftStyle),
-                        color: ref(colorLightShade50)
-                    }
+    return merge(
+        {
+            border: {
+                top: {
+                    width: ref(borderTopWidth),
+                    style: ref(borderTopStyle)
                 },
-                borderRadius: {
-                    topLeft: ref(borderTopLeftRadius),
-                    topRight: ref(borderTopRightRadius),
-                    bottomRight: ref(borderBottomRightRadius),
-                    bottomLeft: ref(borderBottomLeftRadius)
+                right: {
+                    width: ref(borderRightWidth),
+                    style: ref(borderRightStyle)
                 },
-                boxShadow: {
-                    offsetX: ref(boxShadowOffsetX),
-                    offsetY: ref(boxShadowOffsetY),
-                    blurRadius: ref(boxShadowBlurRadius),
-                    spreadRadius: ref(boxShadowSpreadRadius),
-                    color: ref(boxShadowColor)
+                bottom: {
+                    width: ref(borderBottomWidth),
+                    style: ref(borderBottomStyle)
                 },
-                background: {
-                    h: ref(colorWhiteH),
-                    s: ref(colorWhiteS),
-                    l: ref(colorWhiteL),
-                    a: ref(colorWhiteA)
-                },
-                color: ref(contrastTextColorLight),
-                fontSize: ref(fontSize),
-                padding: {
-                    top: multiply(ref(spacing), 3 / 4),
-                    right: ref(spacing),
-                    bottom: multiply(ref(spacing), 3 / 4),
-                    left: ref(spacing)
-                },
-                transition: {
-                    property: ref(transitionProperty),
-                    duration: ref(transitionDuration),
-                    timingFunction: ref(transitionTimingFunction)
-                },
-                width: '280px',
-                maxWidth: '90vw',
-                zIndex: 2000
+                left: {
+                    width: ref(borderLeftWidth),
+                    style: ref(borderLeftStyle)
+                }
             },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'arrow'] as const,
-            {
-                size: '6px'
+            boxShadow: {
+                offsetX: ref(boxShadowOffsetX),
+                offsetY: ref(boxShadowOffsetY),
+                blurRadius: ref(boxShadowBlurRadius),
+                spreadRadius: ref(boxShadowSpreadRadius),
+                color: ref(boxShadowColor)
             },
-            options
-        )
-    };
+            padding: {
+                top: multiply(ref(spacing), 3 / 4),
+                right: ref(spacing),
+                bottom: multiply(ref(spacing), 3 / 4),
+                left: ref(spacing)
+            },
+            transition: {
+                property: ref(transitionProperty),
+                duration: ref(transitionDuration),
+                timingFunction: ref(transitionTimingFunction)
+            },
+            maxWidth: '90vw',
+            zIndex: 2000
+        },
+        usePopoverThemeColorConfig(defaultPopoverColor, options),
+        usePopoverThemeSizeConfig(defaultPopoverSize, options)
+    );
 }
+
+/**
+ * Variables
+ */
+
+export function usePopoverThemeColorVariables(
+    variant: PopoverColorVariant,
+    options: DefinitionOptions
+) {
+    return nsvariables(ns, usePopoverThemeColorConfig(variant, options), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+export function usePopoverThemeSizeVariables(
+    variant: PopoverSizeVariant,
+    options: DefinitionOptions
+) {
+    return nsvariables(ns, usePopoverThemeSizeConfig(variant, options), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+export function usePopoverThemeVariables(options: DefinitionOptions) {
+    return nsvariables(ns, usePopoverThemeConfig(options), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+/**
+ * Selectors
+ */
 
 export function usePopoverThemeLayout(options: DefinitionOptions) {
     const { popoverZIndex, popoverWidth, popoverMaxWidth } = usePopoverThemeVariables(options);
 
-    selector('.popover', {
-        position: 'absolute',
-        display: 'flex',
-        flexDirection: 'column',
-        minWidth: 0,
-        wordWrap: 'break-word',
-        backgroundClip: 'border-box',
-        width: ref(popoverWidth),
-        maxWidth: ref(popoverMaxWidth),
-        zIndex: ref(popoverZIndex)
-    });
+    selector(
+        '.popover',
+        {
+            position: 'absolute',
+            display: 'flex',
+            flexDirection: 'column',
+            minWidth: 0,
+            wordWrap: 'break-word',
+            backgroundClip: 'border-box',
+            width: ref(popoverWidth),
+            maxWidth: ref(popoverMaxWidth),
+            zIndex: ref(popoverZIndex)
+        },
+        options
+    );
 
-    selector('.popover-trigger', {
-        display: 'inline-flex'
-    });
+    selector(
+        '.popover-trigger',
+        {
+            display: 'inline-flex'
+        },
+        options
+    );
 
-    selector('.popover[data-popup-placement^="top"]', {
-        transformOrigin: 'center bottom'
-    });
+    selector(
+        '.popover[data-popup-placement^="top"]',
+        {
+            transformOrigin: 'center bottom'
+        },
+        options
+    );
 
-    selector('.popover[data-popup-placement^="right"]', {
-        transformOrigin: 'left center'
-    });
+    selector(
+        '.popover[data-popup-placement^="right"]',
+        {
+            transformOrigin: 'left center'
+        },
+        options
+    );
 
-    selector('.popover[data-popup-placement^="bottom"]', {
-        transformOrigin: 'center top'
-    });
+    selector(
+        '.popover[data-popup-placement^="bottom"]',
+        {
+            transformOrigin: 'center top'
+        },
+        options
+    );
 
-    selector('.popover[data-popup-placement^="left"]', {
-        transformOrigin: 'right center'
-    });
+    selector(
+        '.popover[data-popup-placement^="left"]',
+        {
+            transformOrigin: 'right center'
+        },
+        options
+    );
 
-    selector('.popover-arrow', {
-        position: 'absolute'
-    });
+    selector(
+        '.popover-arrow',
+        {
+            position: 'absolute'
+        },
+        options
+    );
 
-    selector(['.popover-arrow', '.popover-arrow::after'], {
-        display: 'block',
-        width: 0,
-        height: 0,
-        borderColor: 'transparent',
-        borderStyle: 'solid',
-        position: 'absolute',
-        boxSizing: 'border-box'
-    });
+    selector(
+        ['.popover-arrow', '.popover-arrow::after'],
+        {
+            display: 'block',
+            width: 0,
+            height: 0,
+            borderColor: 'transparent',
+            borderStyle: 'solid',
+            position: 'absolute',
+            boxSizing: 'border-box'
+        },
+        options
+    );
 
-    selector('.popover-arrow::after', {
-        content: '""'
-    });
+    selector(
+        '.popover-arrow::after',
+        {
+            content: '""'
+        },
+        options
+    );
 
     selector(
         [
@@ -198,7 +347,8 @@ export function usePopoverThemeLayout(options: DefinitionOptions) {
         ],
         {
             borderBottomWidth: 0
-        }
+        },
+        options
     );
 
     selector(
@@ -208,7 +358,8 @@ export function usePopoverThemeLayout(options: DefinitionOptions) {
         ],
         {
             borderTopWidth: 0
-        }
+        },
+        options
     );
 
     selector(
@@ -218,7 +369,8 @@ export function usePopoverThemeLayout(options: DefinitionOptions) {
         ],
         {
             borderLeftWidth: 0
-        }
+        },
+        options
     );
 
     selector(
@@ -228,14 +380,18 @@ export function usePopoverThemeLayout(options: DefinitionOptions) {
         ],
         {
             borderRightWidth: 0
-        }
+        },
+        options
     );
 }
 
-export function usePopoverThemeBase(options: DefinitionOptions) {
+export function usePopoverThemeBaseSelectors(options: DefinitionOptions) {
     const {
         popoverBorderStyle,
-        popoverBorderColor,
+        popoverBorderTopColor,
+        popoverBorderRightColor,
+        popoverBorderBottomColor,
+        popoverBorderLeftColor,
         popoverBorderWidth,
         popoverPadding,
         popoverBorderTopLeftRadius,
@@ -252,49 +408,84 @@ export function usePopoverThemeBase(options: DefinitionOptions) {
         popoverArrowSize
     } = usePopoverThemeVariables(options);
 
-    selector('.popover', {
-        boxShadow: ref(popoverBoxShadow),
-        color: ref(popoverColor),
-        fontSize: ref(popoverFontSize)
-    });
+    selector(
+        '.popover',
+        {
+            boxShadow: vref(popoverBoxShadow),
+            color: vref(popoverColor),
+            fontSize: ref(popoverFontSize)
+        },
+        options
+    );
 
-    selector(['.popover-header', '.popover-body', '.popover-footer'], {
-        background: ref(popoverBackground),
-        borderStyle: ref(popoverBorderStyle),
-        borderColor: ref(popoverBorderColor),
-        borderWidth: ref(popoverBorderWidth),
-        padding: ref(popoverPadding),
-        transitionProperty: ref(popoverTransitionProperty),
-        transitionDuration: ref(popoverTransitionDuration),
-        transitionTimingFunction: ref(popoverTransitionTimingFunction)
-    });
+    selector(
+        ['.popover-header', '.popover-body', '.popover-footer'],
+        {
+            background: vref(popoverBackground),
+            borderStyle: vref(popoverBorderStyle),
+            borderTopColor: vref(popoverBorderTopColor),
+            borderRightColor: vref(popoverBorderRightColor),
+            borderBottomColor: vref(popoverBorderBottomColor),
+            borderLeftColor: vref(popoverBorderLeftColor),
+            borderWidth: vref(popoverBorderWidth),
+            padding: vref(popoverPadding),
+            transitionProperty: ref(popoverTransitionProperty),
+            transitionDuration: ref(popoverTransitionDuration),
+            transitionTimingFunction: ref(popoverTransitionTimingFunction)
+        },
+        options
+    );
 
-    selector('.popover-header + .popover-body', {
-        borderTop: 0
-    });
+    selector(
+        '.popover-header + .popover-body',
+        {
+            borderTop: 0
+        },
+        options
+    );
 
-    selector('.popover-body:has(+ .popover-footer)', {
-        borderBottom: 0
-    });
+    selector(
+        '.popover-body:has(+ .popover-footer)',
+        {
+            borderBottom: 0
+        },
+        options
+    );
 
-    selector(['.popover > *:first-child:not(.popover-arrow)', '.popover > .popover-arrow + *'], {
-        borderTopLeftRadius: ref(popoverBorderTopLeftRadius),
-        borderTopRightRadius: ref(popoverBorderTopRightRadius)
-    });
+    selector(
+        ['.popover > *:first-child:not(.popover-arrow)', '.popover > .popover-arrow + *'],
+        {
+            borderTopLeftRadius: ref(popoverBorderTopLeftRadius),
+            borderTopRightRadius: ref(popoverBorderTopRightRadius)
+        },
+        options
+    );
 
-    selector('.popover > *:last-child', {
-        borderBottomRightRadius: ref(popoverBorderBottomRightRadius),
-        borderBottomLeftRadius: ref(popoverBorderBottomLeftRadius)
-    });
+    selector(
+        '.popover > *:last-child',
+        {
+            borderBottomRightRadius: ref(popoverBorderBottomRightRadius),
+            borderBottomLeftRadius: ref(popoverBorderBottomLeftRadius)
+        },
+        options
+    );
 
-    selector(['.popover-arrow', '.popover-arrow::after'], {
-        width: ref(popoverArrowSize),
-        height: ref(popoverArrowSize)
-    });
+    selector(
+        ['.popover-arrow', '.popover-arrow::after'],
+        {
+            width: ref(popoverArrowSize),
+            height: ref(popoverArrowSize)
+        },
+        options
+    );
 
-    selector(['.popover-arrow', '.popover-arrow::after'], {
-        borderWidth: ref(popoverArrowSize)
-    });
+    selector(
+        ['.popover-arrow', '.popover-arrow::after'],
+        {
+            borderWidth: ref(popoverArrowSize)
+        },
+        options
+    );
 
     selector(
         [
@@ -303,7 +494,8 @@ export function usePopoverThemeBase(options: DefinitionOptions) {
         ],
         {
             marginLeft: multiply(ref(popoverArrowSize), -1)
-        }
+        },
+        options
     );
 
     selector(
@@ -313,27 +505,47 @@ export function usePopoverThemeBase(options: DefinitionOptions) {
         ],
         {
             marginTop: multiply(ref(popoverArrowSize), -1)
-        }
+        },
+        options
     );
 
-    selector('.popover[data-popup-placement^="top"] .popover-arrow::after', {
-        bottom: '1px'
-    });
+    selector(
+        '.popover[data-popup-placement^="top"] .popover-arrow::after',
+        {
+            bottom: '1px'
+        },
+        options
+    );
 
-    selector('.popover[data-popup-placement^="bottom"] .popover-arrow::after', {
-        top: '1px'
-    });
+    selector(
+        '.popover[data-popup-placement^="bottom"] .popover-arrow::after',
+        {
+            top: '1px'
+        },
+        options
+    );
 
-    selector('.popover[data-popup-placement^="left"] .popover-arrow::after', {
-        right: '1px'
-    });
+    selector(
+        '.popover[data-popup-placement^="left"] .popover-arrow::after',
+        {
+            right: '1px'
+        },
+        options
+    );
 
-    selector('.popover[data-popup-placement^="right"] .popover-arrow::after', {
-        left: '1px'
-    });
+    selector(
+        '.popover[data-popup-placement^="right"] .popover-arrow::after',
+        {
+            left: '1px'
+        },
+        options
+    );
 }
 
-export function usePopoverThemeSizeFactory(variant: PopoverSizeVariant) {
+export function usePopoverThemeSizeSelectors(
+    variant: PopoverSizeVariant,
+    options: DefinitionOptions
+) {
     const {
         popoverPaddingTop,
         popoverPaddingRight,
@@ -345,145 +557,87 @@ export function usePopoverThemeSizeFactory(variant: PopoverSizeVariant) {
         popoverBorderBottomLeftRadius,
         popoverFontSize
     } = usePopoverThemeVariables(options);
-    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
-    const sizeNs = [ns, variant] as const;
 
     const {
-        borderTopLeftRadius,
-        borderTopRightRadius,
-        borderBottomRightRadius,
-        borderBottomLeftRadius,
-        fontSize,
-        paddingTop,
-        paddingRight,
-        paddingBottom,
-        paddingLeft
-    } = stripExportsNamespace(
-        nsvariables(sizeNs, {
-            padding: {
-                top: multiply(ref(popoverPaddingTop), sizeMultiplierRef),
-                right: multiply(ref(popoverPaddingRight), sizeMultiplierRef),
-                bottom: multiply(ref(popoverPaddingBottom), sizeMultiplierRef),
-                left: multiply(ref(popoverPaddingLeft), sizeMultiplierRef)
-            },
-            borderRadius: {
-                topLeft: multiply(ref(popoverBorderTopLeftRadius), sizeMultiplierRef),
-                topRight: multiply(ref(popoverBorderTopRightRadius), sizeMultiplierRef),
-                bottomRight: multiply(ref(popoverBorderBottomRightRadius), sizeMultiplierRef),
-                bottomLeft: multiply(ref(popoverBorderBottomLeftRadius), sizeMultiplierRef)
-            },
-            fontSize: multiply(ref(popoverFontSize), sizeMultiplierRef)
-        })
-    );
-
-    selector(`.popover.-${variant}`, {
-        fontSize: ref(fontSize)
-    });
+        variantBorderTopLeftRadius,
+        variantBorderTopRightRadius,
+        variantBorderBottomRightRadius,
+        variantBorderBottomLeftRadius,
+        variantFontSize,
+        variantPaddingTop,
+        variantPaddingRight,
+        variantPaddingBottom,
+        variantPaddingLeft
+    } = setExportsNamespace(usePopoverThemeSizeVariables(variant, options), 'variant');
 
     selector(
-        [
-            `.popover.-${variant} .popover-header`,
-            `.popover.-${variant} .popover-body`,
-            `.popover.-${variant} .popover-footer`
-        ],
+        `.popover.-${variant}`,
         {
-            fontSize: ref(fontSize),
-            padding: [ref(paddingTop), ref(paddingRight), ref(paddingBottom), ref(paddingLeft)]
-        }
+            [toVariableKey(popoverBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
+            [toVariableKey(popoverBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
+            [toVariableKey(popoverBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
+            [toVariableKey(popoverBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
+            [toVariableKey(popoverFontSize)]: ref(variantFontSize),
+            [toVariableKey(popoverPaddingTop)]: ref(variantPaddingTop),
+            [toVariableKey(popoverPaddingRight)]: ref(variantPaddingRight),
+            [toVariableKey(popoverPaddingBottom)]: ref(variantPaddingBottom),
+            [toVariableKey(popoverPaddingLeft)]: ref(variantPaddingLeft)
+        },
+        options
     );
+}
+
+export function usePopoverThemeColorSelectors(
+    variant: PopoverColorVariant,
+    options: DefinitionOptions
+) {
+    const {
+        popoverBorderTopColor,
+        popoverBorderRightColor,
+        popoverBorderBottomColor,
+        popoverBorderLeftColor,
+        popoverBackground,
+        popoverColor
+    } = usePopoverThemeVariables(options);
+    const {
+        variantBorderTopColor,
+        variantBorderRightColor,
+        variantBorderBottomColor,
+        variantBorderLeftColor,
+        variantBackground,
+        variantColor
+    } = setExportsNamespace(usePopoverThemeColorVariables(variant, options), 'variant');
 
     selector(
-        [
-            `.popover.-${variant} > *:first-child:not(.popover-arrow)`,
-            `.popover.-${variant} > .popover-arrow + *`
-        ],
+        `.popover.-${variant}`,
         {
-            borderTopLeftRadius: ref(borderTopLeftRadius),
-            borderTopRightRadius: ref(borderTopRightRadius)
-        }
+            [toVariableKey(popoverBorderTopColor)]: ref(variantBorderTopColor),
+            [toVariableKey(popoverBorderRightColor)]: ref(variantBorderRightColor),
+            [toVariableKey(popoverBorderBottomColor)]: ref(variantBorderBottomColor),
+            [toVariableKey(popoverBorderLeftColor)]: ref(variantBorderLeftColor),
+            [toVariableKey(popoverBackground)]: ref(variantBackground),
+            [toVariableKey(popoverColor)]: ref(variantColor)
+        },
+        options
     );
-
-    selector([`.popover.-${variant} > *:last-child`], {
-        borderBottomRightRadius: ref(borderBottomRightRadius),
-        borderBottomLeftRadius: ref(borderBottomLeftRadius)
-    });
 }
 
-export function usePopoverThemeSizes(sizes = defaultPopoverSizes) {
-    sizes.forEach((size) => usePopoverThemeSizeFactory(size, options));
+/**
+ * Composables
+ */
+
+export function usePopoverThemeColors(colors: PopoverColorVariant[], options: DefinitionOptions) {
+    colors.forEach((color) => usePopoverThemeColorSelectors(color, options));
 }
 
-export function usePopoverThemeColorFactory(variant: PopoverColorVariant) {
-    const colorKey = capitalize(variant);
-    const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
-    const colorNs = [ns, variant] as const;
-
-    const colors = useColors(options);
-    const contrastTextColors = useContrastTextColor(options);
-
-    const { borderColor, background, color } = stripExportsNamespace(
-        nsvariables(colorNs, {
-            borderColor: ref(colors[`color${colorKey}${shadeOrTint}50`]),
-            background: ref(variant === 'light' ? colors.colorWhite : colors[`color${colorKey}`]),
-            color: ref(contrastTextColors[`contrastTextColor${colorKey}`])
-        })
-    );
-
-    selector(
-        [
-            `.popover.-${variant} .popover-header`,
-            `.popover.-${variant} .popover-body`,
-            `.popover.-${variant} .popover-footer`
-        ],
-        {
-            borderColor: ref(borderColor),
-            background: ref(background),
-            color: ref(color)
-        }
-    );
-
-    selector(`.popover.-${variant}[data-popup-placement^="top"] .popover-arrow`, {
-        borderTopColor: ref(borderColor)
-    });
-
-    selector(`.popover.-${variant}[data-popup-placement^="top"] .popover-arrow::after`, {
-        borderTopColor: ref(background)
-    });
-
-    selector(`.popover.-${variant}[data-popup-placement^="right"] .popover-arrow`, {
-        borderRightColor: ref(borderColor)
-    });
-
-    selector(`.popover.-${variant}[data-popup-placement^="right"] .popover-arrow::after`, {
-        borderRightColor: ref(background)
-    });
-
-    selector(`.popover.-${variant}[data-popup-placement^="bottom"] .popover-arrow`, {
-        borderBottomColor: ref(borderColor)
-    });
-
-    selector(`.popover.-${variant}[data-popup-placement^="bottom"] .popover-arrow::after`, {
-        borderBottomColor: ref(background)
-    });
-
-    selector(`.popover.-${variant}[data-popup-placement^="left"] .popover-arrow`, {
-        borderLeftColor: ref(borderColor)
-    });
-
-    selector(`.popover.-${variant}[data-popup-placement^="left"] .popover-arrow::after`, {
-        borderLeftColor: ref(background)
-    });
-}
-
-export function usePopoverThemeColors(colors = defaultPopoverColors) {
-    colors.forEach((color) => usePopoverThemeColorFactory(color, options));
+export function usePopoverThemeSizes(sizes: PopoverSizeVariant[], options: DefinitionOptions) {
+    sizes.forEach((size) => usePopoverThemeSizeSelectors(size, options));
 }
 
 export function usePopoverTheme(options: DefinitionOptions) {
     usePopoverThemeVariables(options);
     usePopoverThemeLayout(options);
-    usePopoverThemeBase(options);
-    usePopoverThemeSizes(options);
-    usePopoverThemeColors(options);
+    usePopoverThemeBaseSelectors(options);
+    usePopoverThemeSizes([...defaultPopoverSizes], options);
+    usePopoverThemeColors([...defaultPopoverColors], options);
 }

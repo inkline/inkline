@@ -51,5 +51,5 @@
 }
 
 .button-group {
-    box-shadow: var(--button-group--box-shadow);
+    box-shadow: var(--button-group--box-shadow, var(--button-group--box-shadow-offset-x) var(--button-group--box-shadow-offset-y) var(--button-group--box-shadow-blur-radius) var(--button-group--box-shadow-spread-radius) var(--button-group--box-shadow-color));
 }

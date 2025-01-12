@@ -1,23 +1,22 @@
 import {
     ref,
     selector,
-    defaultDefinitionOptions,
     nsvariables,
     multiply,
-    stripExportsNamespace
+    vref,
+    setExportsNamespace,
+    toVariableKey,
+    DefinitionOptions
 } from '@inkline/core';
-import { capitalize } from '@inkline/utils';
+import { merge } from '@inkline/utils';
 import {
     useBorder,
     useBorderRadius,
     useBoxShadow,
-    useBrandColorVariants,
     useFontSize,
-    useKeyMappedSizeMultiplier,
     useTransition,
     useColors,
     useContrastTextColor,
-    useNeutralColors,
     useSpacing
 } from '@inkline/theme';
 
@@ -41,7 +40,384 @@ const defaultModalSizes = ['sm', 'md', 'lg'] as const;
 type ModalColorVariant = (typeof defaultModalColors)[number];
 type ModalSizeVariant = (typeof defaultModalSizes)[number];
 
-export function useModalThemeVariables(options: DefinitionOptions) {
+/**
+ * Config
+ */
+
+export function useModalThemeColorConfig(variant: ModalColorVariant, options: DefinitionOptions) {
+    const {
+        colorLightShade50,
+        colorLight,
+        colorDarkTint50,
+        colorDark,
+        colorPrimaryShade50,
+        colorPrimary,
+        colorSecondaryShade50,
+        colorSecondary,
+        colorSuccessShade50,
+        colorSuccess,
+        colorDangerShade50,
+        colorDanger,
+        colorWarningShade50,
+        colorWarning,
+        colorInfoShade50,
+        colorInfo
+    } = useColors(options);
+    const {
+        contrastTextColorLight,
+        contrastTextColorDark,
+        contrastTextColorPrimary,
+        contrastTextColorSecondary,
+        contrastTextColorSuccess,
+        contrastTextColorDanger,
+        contrastTextColorWarning,
+        contrastTextColorInfo
+    } = useContrastTextColor(options);
+
+    return {
+        /**
+         * @variant light
+         */
+        light: {
+            border: {
+                color: ref(colorLightShade50)
+            },
+            background: ref(colorLight),
+            color: ref(contrastTextColorLight),
+            /**
+             * @element header
+             */
+            header: {
+                background: ref(colorLightShade50)
+            },
+            /**
+             * @element footer
+             */
+            footer: {
+                background: ref(colorLightShade50)
+            }
+        },
+        /**
+         * @variant dark
+         */
+        dark: {
+            border: {
+                color: ref(colorDarkTint50)
+            },
+            background: ref(colorDark),
+            color: ref(contrastTextColorDark),
+            /**
+             * @element header
+             */
+            header: {
+                background: ref(colorDarkTint50)
+            },
+            /**
+             * @element footer
+             */
+            footer: {
+                background: ref(colorDarkTint50)
+            }
+        },
+        /**
+         * @variant primary
+         */
+        primary: {
+            border: {
+                color: ref(colorPrimaryShade50)
+            },
+            background: ref(colorPrimary),
+            color: ref(contrastTextColorPrimary),
+            /**
+             * @element header
+             */
+            header: {
+                background: ref(colorPrimaryShade50)
+            },
+            /**
+             * @element footer
+             */
+            footer: {
+                background: ref(colorPrimaryShade50)
+            }
+        },
+        /**
+         * @variant secondary
+         */
+        secondary: {
+            border: {
+                color: ref(colorSecondaryShade50)
+            },
+            background: ref(colorSecondary),
+            color: ref(contrastTextColorSecondary),
+            /**
+             * @element header
+             */
+            header: {
+                background: ref(colorSecondaryShade50)
+            },
+            /**
+             * @element footer
+             */
+            footer: {
+                background: ref(colorSecondaryShade50)
+            }
+        },
+        /**
+         * @variant success
+         */
+        success: {
+            border: {
+                color: ref(colorSuccessShade50)
+            },
+            background: ref(colorSuccess),
+            color: ref(contrastTextColorSuccess),
+            /**
+             * @element header
+             */
+            header: {
+                background: ref(colorSuccessShade50)
+            },
+            /**
+             * @element footer
+             */
+            footer: {
+                background: ref(colorSuccessShade50)
+            }
+        },
+        /**
+         * @variant danger
+         */
+        danger: {
+            border: {
+                color: ref(colorDangerShade50)
+            },
+            background: ref(colorDanger),
+            color: ref(contrastTextColorDanger),
+            /**
+             * @element header
+             */
+            header: {
+                background: ref(colorDangerShade50)
+            },
+            /**
+             * @element footer
+             */
+            footer: {
+                background: ref(colorDangerShade50)
+            }
+        },
+        /**
+         * @variant warning
+         */
+        warning: {
+            border: {
+                color: ref(colorWarningShade50)
+            },
+            background: ref(colorWarning),
+            color: ref(contrastTextColorWarning),
+            /**
+             * @element header
+             */
+            header: {
+                background: ref(colorWarningShade50)
+            },
+            /**
+             * @element footer
+             */
+            footer: {
+                background: ref(colorWarningShade50)
+            }
+        },
+        /**
+         * @variant info
+         */
+        info: {
+            border: {
+                color: ref(colorInfoShade50)
+            },
+            background: ref(colorInfo),
+            color: ref(contrastTextColorInfo),
+            /**
+             * @element header
+             */
+            header: {
+                background: ref(colorInfoShade50)
+            },
+            /**
+             * @element footer
+             */
+            footer: {
+                background: ref(colorInfoShade50)
+            }
+        }
+    }[variant];
+}
+
+export function useModalThemeSizeConfig(variant: ModalSizeVariant, options: DefinitionOptions) {
+    const {
+        borderTopLeftRadiusSm,
+        borderTopRightRadiusSm,
+        borderBottomRightRadiusSm,
+        borderBottomLeftRadiusSm,
+        borderTopLeftRadiusMd,
+        borderTopRightRadiusMd,
+        borderBottomRightRadiusMd,
+        borderBottomLeftRadiusMd,
+        borderTopLeftRadiusLg,
+        borderTopRightRadiusLg,
+        borderBottomRightRadiusLg,
+        borderBottomLeftRadiusLg
+    } = useBorderRadius(options);
+    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize(options);
+    const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
+
+    return {
+        /**
+         * @variant sm
+         */
+        sm: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusSm),
+                topRight: ref(borderTopRightRadiusSm),
+                bottomRight: ref(borderBottomRightRadiusSm),
+                bottomLeft: ref(borderBottomLeftRadiusSm)
+            },
+            fontSize: ref(fontSizeSm),
+            padding: {
+                top: ref(spacingSm),
+                right: ref(spacingSm),
+                bottom: ref(spacingSm),
+                left: ref(spacingSm)
+            },
+            maxWidth: multiply(ref(spacingSm), 30),
+            /**
+             * @element close
+             */
+            close: {
+                size: multiply(ref(fontSizeSm), 1.5),
+                fontSize: multiply(ref(fontSizeSm), 0.5)
+            },
+            /**
+             * @element icon
+             */
+            icon: {
+                margin: {
+                    right: ref(spacingSm)
+                }
+            },
+            /**
+             * @element footer
+             */
+            footer: {
+                /**
+                 * @element button
+                 */
+                button: {
+                    margin: {
+                        left: multiply(ref(spacingSm), 0.5)
+                    }
+                }
+            }
+        },
+        /**
+         * @variant md
+         */
+        md: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusMd),
+                topRight: ref(borderTopRightRadiusMd),
+                bottomRight: ref(borderBottomRightRadiusMd),
+                bottomLeft: ref(borderBottomLeftRadiusMd)
+            },
+            fontSize: ref(fontSizeMd),
+            padding: {
+                top: ref(spacingMd),
+                right: ref(spacingMd),
+                bottom: ref(spacingMd),
+                left: ref(spacingMd)
+            },
+            maxWidth: multiply(ref(spacingMd), 30),
+            /**
+             * @element close
+             */
+            close: {
+                size: multiply(ref(fontSizeMd), 1.5),
+                fontSize: multiply(ref(fontSizeMd), 0.5)
+            },
+            /**
+             * @element icon
+             */
+            icon: {
+                margin: {
+                    right: ref(spacingMd)
+                }
+            },
+            /**
+             * @element footer
+             */
+            footer: {
+                /**
+                 * @element button
+                 */
+                button: {
+                    margin: {
+                        left: multiply(ref(spacingMd), 0.5)
+                    }
+                }
+            }
+        },
+        /**
+         * @variant lg
+         */
+        lg: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusLg),
+                topRight: ref(borderTopRightRadiusLg),
+                bottomRight: ref(borderBottomRightRadiusLg),
+                bottomLeft: ref(borderBottomLeftRadiusLg)
+            },
+            fontSize: ref(fontSizeLg),
+            padding: {
+                top: ref(spacingLg),
+                right: ref(spacingLg),
+                bottom: ref(spacingLg),
+                left: ref(spacingLg)
+            },
+            maxWidth: multiply(ref(spacingLg), 30),
+            /**
+             * @element close
+             */
+            close: {
+                size: multiply(ref(fontSizeLg), 1.5),
+                fontSize: multiply(ref(fontSizeLg), 0.5)
+            },
+            /**
+             * @element icon
+             */
+            icon: {
+                margin: {
+                    right: ref(spacingLg)
+                }
+            },
+            /**
+             * @element footer
+             */
+            footer: {
+                /**
+                 * @element button
+                 */
+                button: {
+                    margin: {
+                        left: multiply(ref(spacingLg), 0.5)
+                    }
+                }
+            }
+        }
+    }[variant];
+}
+
+export function useModalThemeConfig(options: DefinitionOptions) {
     const {
         borderTopStyle,
         borderTopWidth,
@@ -52,14 +428,6 @@ export function useModalThemeVariables(options: DefinitionOptions) {
         borderLeftStyle,
         borderLeftWidth
     } = useBorder(options);
-    const { colorLightShade50 } = useBrandColorVariants(options);
-    const { spacing } = useSpacing(options);
-    const {
-        borderTopLeftRadius,
-        borderTopRightRadius,
-        borderBottomRightRadius,
-        borderBottomLeftRadius
-    } = useBorderRadius(options);
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
@@ -67,100 +435,54 @@ export function useModalThemeVariables(options: DefinitionOptions) {
         boxShadowSpreadRadius,
         boxShadowColor
     } = useBoxShadow(options);
-    const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors(options);
     const { contrastTextColorLight } = useContrastTextColor(options);
-    const { fontSize } = useFontSize(options);
     const { transitionProperty, transitionDuration, transitionTimingFunction } =
         useTransition(options);
 
-    return {
-        ...nsvariables(
-            ns,
-            {
-                border: {
-                    top: {
-                        width: ref(borderTopWidth),
-                        style: ref(borderTopStyle),
-                        color: ref(colorLightShade50)
-                    },
-                    right: {
-                        width: ref(borderRightWidth),
-                        style: ref(borderRightStyle),
-                        color: ref(colorLightShade50)
-                    },
-                    bottom: {
-                        width: ref(borderBottomWidth),
-                        style: ref(borderBottomStyle),
-                        color: ref(colorLightShade50)
-                    },
-                    left: {
-                        width: ref(borderLeftWidth),
-                        style: ref(borderLeftStyle),
-                        color: ref(colorLightShade50)
-                    }
+    return merge(
+        {
+            border: {
+                top: {
+                    width: ref(borderTopWidth),
+                    style: ref(borderTopStyle)
                 },
-                borderRadius: {
-                    topLeft: ref(borderTopLeftRadius),
-                    topRight: ref(borderTopRightRadius),
-                    bottomRight: ref(borderBottomRightRadius),
-                    bottomLeft: ref(borderBottomLeftRadius)
+                right: {
+                    width: ref(borderRightWidth),
+                    style: ref(borderRightStyle)
                 },
-                boxShadow: {
-                    offsetX: ref(boxShadowOffsetX),
-                    offsetY: ref(boxShadowOffsetY),
-                    blurRadius: ref(boxShadowBlurRadius),
-                    spreadRadius: ref(boxShadowSpreadRadius),
-                    color: ref(boxShadowColor)
+                bottom: {
+                    width: ref(borderBottomWidth),
+                    style: ref(borderBottomStyle)
                 },
-                background: {
-                    h: ref(colorWhiteH),
-                    s: ref(colorWhiteS),
-                    l: ref(colorWhiteL),
-                    a: ref(colorWhiteA)
-                },
-                color: ref(contrastTextColorLight),
-                fontSize: ref(fontSize),
-                padding: {
-                    top: ref(spacing),
-                    right: ref(spacing),
-                    bottom: ref(spacing),
-                    left: ref(spacing)
-                },
-                transition: {
-                    property: ref(transitionProperty),
-                    duration: ref(transitionDuration),
-                    timingFunction: ref(transitionTimingFunction)
-                },
-                maxWidth: '480px',
-                width: '100%',
-                zIndex: 2000
-            },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'wrapper'] as const,
-            {
-                background: 'rgba(0, 0, 0, 0.75)'
-            },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'icon'] as const,
-            {
-                margin: {
-                    top: '0',
-                    right: ref(spacing),
-                    bottom: '0',
-                    left: '0'
+                left: {
+                    width: ref(borderLeftWidth),
+                    style: ref(borderLeftStyle)
                 }
             },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'close'] as const,
-            {
-                size: '1.5rem',
-                fontSize: multiply(ref(fontSize), 0.5),
+            boxShadow: {
+                offsetX: ref(boxShadowOffsetX),
+                offsetY: ref(boxShadowOffsetY),
+                blurRadius: ref(boxShadowBlurRadius),
+                spreadRadius: ref(boxShadowSpreadRadius),
+                color: ref(boxShadowColor)
+            },
+            transition: {
+                property: ref(transitionProperty),
+                duration: ref(transitionDuration),
+                timingFunction: ref(transitionTimingFunction)
+            },
+            width: '100%',
+            zIndex: 2000,
+            /**
+             * @element wrapper
+             */
+            wrapper: {
+                background: 'rgba(0, 0, 0, 0.75)'
+            },
+            /**
+             * @element close
+             */
+            close: {
                 color: ref(contrastTextColorLight),
                 hover: {
                     background: 'rgba(0, 0, 0, 0.1)'
@@ -168,51 +490,63 @@ export function useModalThemeVariables(options: DefinitionOptions) {
                 active: {
                     background: 'rgba(0, 0, 0, 0.15)'
                 }
-            },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'header'] as const,
-            {
-                background: ref(colorLightShade50),
-                color: ref(contrastTextColorLight)
-            },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'footer'] as const,
-            {
-                background: ref(colorLightShade50),
-                color: ref(contrastTextColorLight)
-            },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'footer', 'button'] as const,
-            {
-                margin: {
-                    left: multiply(ref(spacing), 0.5)
-                }
-            },
-            options
-        )
-    };
+            }
+        },
+        useModalThemeColorConfig(defaultModalColor, options),
+        useModalThemeSizeConfig(defaultModalSize, options)
+    );
 }
 
-export function useModalThemeLayout(options: DefinitionOptions) {
+/**
+ * Variables
+ */
+
+export function useModalThemeColorVariables(
+    variant: ModalColorVariant,
+    options: DefinitionOptions
+) {
+    return nsvariables(ns, useModalThemeColorConfig(variant, options), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+export function useModalThemeSizeVariables(variant: ModalSizeVariant, options: DefinitionOptions) {
+    return nsvariables(ns, useModalThemeSizeConfig(variant, options), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+export function useModalThemeVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useModalThemeConfig(options), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+/**
+ * Selectors
+ */
+
+export function useModalThemeLayoutSelectors(options: DefinitionOptions) {
     const { modalZIndex } = useModalThemeVariables(options);
 
-    selector('.modal-wrapper', {
-        position: 'fixed',
-        top: '0',
-        left: '0',
-        zIndex: ref(modalZIndex),
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-    });
+    selector(
+        '.modal-wrapper',
+        {
+            position: 'fixed',
+            top: '0',
+            left: '0',
+            zIndex: ref(modalZIndex),
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+        },
+        options
+    );
 
     selector(
         [
@@ -223,65 +557,90 @@ export function useModalThemeLayout(options: DefinitionOptions) {
         {
             display: 'flex',
             justifyContent: 'flex-end'
-        }
+        },
+        options
     );
 
-    selector('.modal', {
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        minWidth: '0',
-        wordWrap: 'break-word',
-        backgroundClip: 'border-box',
-        textAlign: 'left'
-    });
+    selector(
+        '.modal',
+        {
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            minWidth: '0',
+            wordWrap: 'break-word',
+            backgroundClip: 'border-box',
+            textAlign: 'left'
+        },
+        options
+    );
 
-    selector('.modal > .modal-header', {
-        display: 'flex',
-        justifyContent: 'space-between'
-    });
+    selector(
+        '.modal > .modal-header',
+        {
+            display: 'flex',
+            justifyContent: 'space-between'
+        },
+        options
+    );
 
-    selector('.modal > .modal-body', {
-        display: 'flex',
-        flexDirection: 'row'
-    });
+    selector(
+        '.modal > .modal-body',
+        {
+            display: 'flex',
+            flexDirection: 'row'
+        },
+        options
+    );
 
-    selector('.modal > .modal-footer', {
-        display: 'flex',
-        justifyContent: 'flex-end'
-    });
+    selector(
+        '.modal > .modal-footer',
+        {
+            display: 'flex',
+            justifyContent: 'flex-end'
+        },
+        options
+    );
 
-    selector('.modal .modal-content', {
-        width: '100%',
-        display: 'block'
-    });
+    selector(
+        '.modal .modal-content',
+        {
+            width: '100%',
+            display: 'block'
+        },
+        options
+    );
 
-    selector('.modal .modal-close', {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '1.5rem',
-        width: '1.5rem',
-        lineHeight: '1.5rem',
-        fontSize: '0.5rem',
-        cursor: 'pointer',
-        padding: '0',
-        border: '0',
-        transition: 'background-color 0.3s ease',
-        backgroundColor: 'transparent'
-    });
+    selector(
+        '.modal .modal-close',
+        {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '1.5rem',
+            width: '1.5rem',
+            lineHeight: '1.5rem',
+            fontSize: '0.5rem',
+            cursor: 'pointer',
+            padding: '0',
+            border: '0',
+            transition: 'background-color 0.3s ease',
+            backgroundColor: 'transparent'
+        },
+        options
+    );
 }
 
-export function useModalThemeBase(options: DefinitionOptions) {
+export function useModalThemeBaseSelectors(options: DefinitionOptions) {
     const {
         modalBorderStyle,
-        modalBorderColor,
+        modalBorderTopColor,
+        modalBorderRightColor,
+        modalBorderBottomColor,
+        modalBorderLeftColor,
         modalBorderWidth,
         modalPadding,
-        modalBorderTopLeftRadius,
-        modalBorderTopRightRadius,
-        modalBorderBottomLeftRadius,
-        modalBorderBottomRightRadius,
+        modalBorderRadius,
         modalBoxShadow,
         modalBackground,
         modalColor,
@@ -293,218 +652,245 @@ export function useModalThemeBase(options: DefinitionOptions) {
         modalMaxWidth,
         modalWidth,
         modalHeaderBackground,
-        modalHeaderColor,
         modalFooterBackground,
-        modalFooterColor,
         modalFooterButtonMargin,
         modalIconMargin
     } = useModalThemeVariables(options);
 
-    selector('.modal-wrapper', {
-        background: ref(modalWrapperBackground)
-    });
+    selector(
+        '.modal-wrapper',
+        {
+            background: vref(modalWrapperBackground)
+        },
+        options
+    );
 
-    selector('.modal', {
-        maxWidth: ref(modalMaxWidth),
-        width: ref(modalWidth),
-        boxShadow: ref(modalBoxShadow),
-        color: ref(modalColor),
-        fontSize: ref(modalFontSize)
-    });
+    selector(
+        '.modal',
+        {
+            maxWidth: ref(modalMaxWidth),
+            width: ref(modalWidth),
+            boxShadow: vref(modalBoxShadow),
+            color: vref(modalColor),
+            fontSize: ref(modalFontSize)
+        },
+        options
+    );
 
-    selector('.modal-header', {
-        background: ref(modalHeaderBackground),
-        color: ref(modalHeaderColor),
-        borderStyle: ref(modalBorderStyle),
-        borderColor: ref(modalBorderColor),
-        borderWidth: ref(modalBorderWidth),
-        padding: ref(modalPadding),
-        transitionProperty: ref(modalTransitionProperty),
-        transitionDuration: ref(modalTransitionDuration),
-        transitionTimingFunction: ref(modalTransitionTimingFunction)
-    });
+    selector(
+        '.modal-header',
+        {
+            background: vref(modalHeaderBackground),
+            borderRadius: vref(modalBorderRadius),
+            color: vref(modalColor),
+            borderStyle: vref(modalBorderStyle),
+            borderTopColor: vref(modalBorderTopColor),
+            borderRightColor: vref(modalBorderRightColor),
+            borderBottomColor: vref(modalBorderBottomColor),
+            borderLeftColor: vref(modalBorderLeftColor),
+            borderWidth: vref(modalBorderWidth),
+            padding: vref(modalPadding),
+            transitionProperty: ref(modalTransitionProperty),
+            transitionDuration: ref(modalTransitionDuration),
+            transitionTimingFunction: ref(modalTransitionTimingFunction)
+        },
+        options
+    );
 
-    selector('.modal-body', {
-        background: ref(modalBackground),
-        borderStyle: ref(modalBorderStyle),
-        borderColor: ref(modalBorderColor),
-        borderWidth: ref(modalBorderWidth),
-        color: ref(modalColor),
-        padding: ref(modalPadding),
-        transitionProperty: ref(modalTransitionProperty),
-        transitionDuration: ref(modalTransitionDuration),
-        transitionTimingFunction: ref(modalTransitionTimingFunction)
-    });
+    selector(
+        '.modal-body',
+        {
+            background: vref(modalBackground),
+            borderRadius: vref(modalBorderRadius),
+            borderStyle: vref(modalBorderStyle),
+            borderTopColor: vref(modalBorderTopColor),
+            borderRightColor: vref(modalBorderRightColor),
+            borderBottomColor: vref(modalBorderBottomColor),
+            borderLeftColor: vref(modalBorderLeftColor),
+            borderWidth: vref(modalBorderWidth),
+            color: vref(modalColor),
+            padding: vref(modalPadding),
+            transitionProperty: ref(modalTransitionProperty),
+            transitionDuration: ref(modalTransitionDuration),
+            transitionTimingFunction: ref(modalTransitionTimingFunction)
+        },
+        options
+    );
 
-    selector('.modal-footer', {
-        background: ref(modalFooterBackground),
-        color: ref(modalFooterColor),
-        borderStyle: ref(modalBorderStyle),
-        borderColor: ref(modalBorderColor),
-        borderWidth: ref(modalBorderWidth),
-        padding: ref(modalPadding),
-        transitionProperty: ref(modalTransitionProperty),
-        transitionDuration: ref(modalTransitionDuration),
-        transitionTimingFunction: ref(modalTransitionTimingFunction)
-    });
+    selector(
+        '.modal-footer',
+        {
+            background: vref(modalFooterBackground),
+            borderRadius: vref(modalBorderRadius),
+            color: vref(modalColor),
+            borderStyle: vref(modalBorderStyle),
+            borderTopColor: vref(modalBorderTopColor),
+            borderRightColor: vref(modalBorderRightColor),
+            borderBottomColor: vref(modalBorderBottomColor),
+            borderLeftColor: vref(modalBorderLeftColor),
+            borderWidth: vref(modalBorderWidth),
+            padding: vref(modalPadding),
+            transitionProperty: ref(modalTransitionProperty),
+            transitionDuration: ref(modalTransitionDuration),
+            transitionTimingFunction: ref(modalTransitionTimingFunction)
+        },
+        options
+    );
 
-    selector('.modal-header + .modal-body', {
-        borderTop: '0'
-    });
+    selector(
+        '.modal-header + .modal-body',
+        {
+            borderTop: '0'
+        },
+        options
+    );
 
-    selector('.modal-body:has(+ .modal-footer)', {
-        borderBottom: '0'
-    });
+    selector(
+        '.modal-body:has(+ .modal-footer)',
+        {
+            borderBottom: '0'
+        },
+        options
+    );
 
-    selector('.modal > *:first-child', {
-        borderTopLeftRadius: ref(modalBorderTopLeftRadius),
-        borderTopRightRadius: ref(modalBorderTopRightRadius)
-    });
+    selector(
+        '.modal > *:not(:first-child)',
+        {
+            borderTopLeftRadius: 0,
+            borderTopRightRadius: 0
+        },
+        options
+    );
 
-    selector('.modal > *:last-child', {
-        borderBottomRightRadius: ref(modalBorderBottomRightRadius),
-        borderBottomLeftRadius: ref(modalBorderBottomLeftRadius)
-    });
+    selector(
+        '.modal > *:not(:last-child)',
+        {
+            borderBottomRightRadius: 0,
+            borderBottomLeftRadius: 0
+        },
+        options
+    );
 
-    selector('.modal .modal-close', {
-        color: ref(modalColor)
-    });
+    selector(
+        '.modal .modal-close',
+        {
+            color: vref(modalColor)
+        },
+        options
+    );
 
-    selector('.modal .modal-icon', {
-        margin: ref(modalIconMargin),
-        alignItems: 'center',
-        display: 'flex'
-    });
+    selector(
+        '.modal .modal-icon',
+        {
+            margin: vref(modalIconMargin),
+            alignItems: 'center',
+            display: 'flex'
+        },
+        options
+    );
 
-    selector('.modal-wrapper .modal-footer .button + .button', {
-        margin: ref(modalFooterButtonMargin)
-    });
+    selector(
+        '.modal-wrapper .modal-footer .button + .button',
+        {
+            margin: vref(modalFooterButtonMargin)
+        },
+        options
+    );
 }
 
-export function useModalThemeSizeFactory(variant: ModalSizeVariant) {
+export function useModalThemeColorSelectors(
+    variant: ModalColorVariant,
+    options: DefinitionOptions
+) {
     const {
-        modalPaddingTop,
-        modalPaddingRight,
-        modalPaddingBottom,
-        modalPaddingLeft,
+        modalBorderTopColor,
+        modalBorderRightColor,
+        modalBorderBottomColor,
+        modalBorderLeftColor,
+        modalBackground,
+        modalColor
+    } = useModalThemeVariables(options);
+
+    const {
+        variantBorderTopColor,
+        variantBorderRightColor,
+        variantBorderBottomColor,
+        variantBorderLeftColor,
+        variantBackground,
+        variantColor
+    } = setExportsNamespace(useModalThemeColorVariables(variant, options), 'variant');
+
+    selector(
+        [`.modal.-${variant}`],
+        {
+            [toVariableKey(modalBorderTopColor)]: ref(variantBorderTopColor),
+            [toVariableKey(modalBorderRightColor)]: ref(variantBorderRightColor),
+            [toVariableKey(modalBorderBottomColor)]: ref(variantBorderBottomColor),
+            [toVariableKey(modalBorderLeftColor)]: ref(variantBorderLeftColor),
+            [toVariableKey(modalBackground)]: ref(variantBackground),
+            [toVariableKey(modalColor)]: ref(variantColor)
+        },
+        options
+    );
+}
+
+export function useModalThemeSizeSelectors(variant: ModalSizeVariant, options: DefinitionOptions) {
+    const {
         modalBorderTopLeftRadius,
         modalBorderTopRightRadius,
         modalBorderBottomRightRadius,
         modalBorderBottomLeftRadius,
         modalFontSize,
-        modalMaxWidth
+        modalMaxWidth,
+        modalPaddingTop,
+        modalPaddingRight,
+        modalPaddingBottom,
+        modalPaddingLeft
     } = useModalThemeVariables(options);
-    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
-    const sizeNs = [ns, variant] as const;
 
     const {
-        borderTopLeftRadius,
-        borderTopRightRadius,
-        borderBottomRightRadius,
-        borderBottomLeftRadius,
-        fontSize,
-        paddingTop,
-        paddingRight,
-        paddingBottom,
-        paddingLeft,
-        maxWidth
-    } = stripExportsNamespace(
-        nsvariables(sizeNs, {
-            padding: {
-                top: multiply(ref(modalPaddingTop), sizeMultiplierRef),
-                right: multiply(ref(modalPaddingRight), sizeMultiplierRef),
-                bottom: multiply(ref(modalPaddingBottom), sizeMultiplierRef),
-                left: multiply(ref(modalPaddingLeft), sizeMultiplierRef)
-            },
-            borderRadius: {
-                topLeft: multiply(ref(modalBorderTopLeftRadius), sizeMultiplierRef),
-                topRight: multiply(ref(modalBorderTopRightRadius), sizeMultiplierRef),
-                bottomRight: multiply(ref(modalBorderBottomRightRadius), sizeMultiplierRef),
-                bottomLeft: multiply(ref(modalBorderBottomLeftRadius), sizeMultiplierRef)
-            },
-            maxWidth: multiply(ref(modalMaxWidth), sizeMultiplierRef),
-            fontSize: multiply(ref(modalFontSize), sizeMultiplierRef)
-        })
-    );
-
-    selector(`.modal.-${variant}`, {
-        fontSize: ref(fontSize),
-        maxWidth: ref(maxWidth)
-    });
+        variantBorderTopLeftRadius,
+        variantBorderTopRightRadius,
+        variantBorderBottomRightRadius,
+        variantBorderBottomLeftRadius,
+        variantFontSize,
+        variantMaxWidth,
+        variantPaddingTop,
+        variantPaddingRight,
+        variantPaddingBottom,
+        variantPaddingLeft
+    } = setExportsNamespace(useModalThemeSizeVariables(variant, options), 'variant');
 
     selector(
-        [
-            `.modal.-${variant} .modal-header`,
-            `.modal.-${variant} .modal-body`,
-            `.modal.-${variant} .modal-footer`
-        ],
+        `.modal.-${variant}`,
         {
-            paddingTop: ref(paddingTop),
-            paddingRight: ref(paddingRight),
-            paddingBottom: ref(paddingBottom),
-            paddingLeft: ref(paddingLeft)
-        }
+            [toVariableKey(modalBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
+            [toVariableKey(modalBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
+            [toVariableKey(modalBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
+            [toVariableKey(modalBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
+            [toVariableKey(modalFontSize)]: ref(variantFontSize),
+            [toVariableKey(modalMaxWidth)]: ref(variantMaxWidth),
+            [toVariableKey(modalPaddingTop)]: ref(variantPaddingTop),
+            [toVariableKey(modalPaddingRight)]: ref(variantPaddingRight),
+            [toVariableKey(modalPaddingBottom)]: ref(variantPaddingBottom),
+            [toVariableKey(modalPaddingLeft)]: ref(variantPaddingLeft)
+        },
+        options
     );
-
-    selector(`.modal.-${variant} > *:first-child`, {
-        borderTopLeftRadius: ref(borderTopLeftRadius),
-        borderTopRightRadius: ref(borderTopRightRadius)
-    });
-
-    selector(`.modal.-${variant} > *:last-child`, {
-        borderBottomRightRadius: ref(borderBottomRightRadius),
-        borderBottomLeftRadius: ref(borderBottomLeftRadius)
-    });
 }
 
-export function useModalThemeSizes(sizes = defaultModalSizes) {
-    sizes.forEach((size) => useModalThemeSizeFactory(size, options));
-}
-
-export function useModalThemeColorFactory(variant: ModalColorVariant) {
-    const colorKey = capitalize(variant);
-    const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
-    const colorNs = [ns, variant] as const;
-
-    const colors = useColors(options);
-    const contrastTextColors = useContrastTextColor(options);
-
-    const { borderColor, background, color } = stripExportsNamespace(
-        nsvariables(colorNs, {
-            borderColor: ref(colors[`color${colorKey}${shadeOrTint}50`]),
-            background: ref(variant === 'light' ? colors.colorWhite : colors[`color${colorKey}`]),
-            color: ref(contrastTextColors[`contrastTextColor${colorKey}`])
-        })
-    );
-
+export function useModalThemeVariantsSelectors(options: DefinitionOptions) {
     selector(
-        [
-            `.modal.-${variant} .modal-header`,
-            `.modal.-${variant} .modal-body`,
-            `.modal.-${variant} .modal-footer`,
-            `.modal.-${variant} .modal-close`
-        ],
+        '.modal.-fullscreen',
         {
-            borderColor: ref(borderColor),
-            background: ref(background),
-            color: ref(color)
-        }
+            width: '100%',
+            height: '100%',
+            maxWidth: '100%',
+            display: 'flex',
+            flexDirection: 'column'
+        },
+        options
     );
-}
-
-export function useModalThemeColors(colors = defaultModalColors) {
-    colors.forEach((color) => useModalThemeColorFactory(color, options));
-}
-
-export function useModalThemeVariants(options: DefinitionOptions) {
-    selector('.modal.-fullscreen', {
-        width: '100%',
-        height: '100%',
-        maxWidth: '100%',
-        display: 'flex',
-        flexDirection: 'column'
-    });
 
     selector(
         [
@@ -513,21 +899,38 @@ export function useModalThemeVariants(options: DefinitionOptions) {
             '.modal.-fullscreen > .modal-footer'
         ],
         {
-            borderRadius: '0'
-        }
+            borderRadius: 0
+        },
+        options
     );
 
-    selector('.modal.-fullscreen > .modal-body', {
-        flex: '1',
-        overflow: 'auto'
-    });
+    selector(
+        '.modal.-fullscreen > .modal-body',
+        {
+            flex: '1',
+            overflow: 'auto'
+        },
+        options
+    );
+}
+
+/**
+ * Composables
+ */
+
+export function useModalThemeColors(colors: ModalColorVariant[], options: DefinitionOptions) {
+    colors.forEach((color) => useModalThemeColorSelectors(color, options));
+}
+
+export function useModalThemeSizes(sizes: ModalSizeVariant[], options: DefinitionOptions) {
+    sizes.forEach((size) => useModalThemeSizeSelectors(size, options));
 }
 
 export function useModalTheme(options: DefinitionOptions) {
     useModalThemeVariables(options);
-    useModalThemeLayout(options);
-    useModalThemeBase(options);
-    useModalThemeSizes(options);
-    useModalThemeColors(options);
-    useModalThemeVariants(options);
+    useModalThemeLayoutSelectors(options);
+    useModalThemeBaseSelectors(options);
+    useModalThemeColors([...defaultModalColors], options);
+    useModalThemeSizes([...defaultModalSizes], options);
+    useModalThemeVariantsSelectors(options);
 }

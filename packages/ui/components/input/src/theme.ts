@@ -1,24 +1,23 @@
 import {
-    defaultDefinitionOptions,
+    DefinitionOptions,
     multiply,
     nsvariables,
     ref,
     selector,
     setExportsNamespace,
-    stripExportsNamespace
+    toVariableKey,
+    vref
 } from '@inkline/core';
-import { capitalize } from '@inkline/utils';
+import { merge } from '@inkline/utils';
 import {
     useBorder,
     useBorderRadius,
     useBoxShadow,
     useBrandColors,
-    useBrandColorVariants,
+    useColors,
     useContrastTextColor,
     useFontSize,
-    useKeyMappedSizeMultiplier,
     useLineHeight,
-    useNeutralColors,
     useSpacing,
     useTextColor,
     useTransition
@@ -35,7 +34,166 @@ const defaultInputSizes = ['sm', 'md', 'lg'] as const;
 type InputColorVariant = (typeof defaultInputColors)[number];
 type InputSizeVariant = (typeof defaultInputSizes)[number];
 
-export function useInputThemeVariables(options: DefinitionOptions) {
+/**
+ * Config
+ */
+
+export function useInputThemeColorConfig(variant: InputColorVariant, options: DefinitionOptions) {
+    const {
+        colorWhite,
+        colorLight,
+        colorLightTint50,
+        colorLightShade50,
+        colorLightShade100,
+        colorDark,
+        colorDarkTint50,
+        colorDarkTint100,
+        colorPrimary
+    } = useColors(options);
+    const { contrastTextColorLight } = useContrastTextColor(options);
+
+    return {
+        light: {
+            border: {
+                color: ref(colorLightShade50)
+            },
+            background: ref(colorWhite),
+            color: ref(contrastTextColorLight),
+            /**
+             * @state hover
+             */
+            hover: {
+                border: {
+                    color: ref(colorLightShade100)
+                }
+            },
+            /**
+             * @state focus
+             */
+            focus: {
+                border: {
+                    color: ref(colorPrimary)
+                }
+            },
+            /**
+             * @state disabled
+             */
+            disabled: {
+                background: ref(colorLight)
+            },
+            /**
+             * @state readonly
+             */
+            readonly: {
+                background: ref(colorLightTint50)
+            }
+        },
+        dark: {
+            border: {
+                color: ref(colorDarkTint50)
+            },
+            background: ref(colorDark),
+            color: ref(contrastTextColorLight),
+            /**
+             * @state hover
+             */
+            hover: {
+                border: {
+                    color: ref(colorDarkTint100)
+                }
+            },
+            /**
+             * @state focus
+             */
+            focus: {
+                border: {
+                    color: ref(colorPrimary)
+                }
+            },
+            /**
+             * @state disabled
+             */
+            disabled: {
+                background: ref(colorDarkTint100)
+            },
+            /**
+             * @state readonly
+             */
+            readonly: {
+                background: ref(colorDarkTint50)
+            }
+        }
+    }[variant];
+}
+
+export function useInputThemeSizeConfig(variant: InputSizeVariant, options: DefinitionOptions) {
+    const {
+        borderTopLeftRadiusSm,
+        borderTopRightRadiusSm,
+        borderBottomRightRadiusSm,
+        borderBottomLeftRadiusSm,
+        borderTopLeftRadiusMd,
+        borderTopRightRadiusMd,
+        borderBottomRightRadiusMd,
+        borderBottomLeftRadiusMd,
+        borderTopLeftRadiusLg,
+        borderTopRightRadiusLg,
+        borderBottomRightRadiusLg,
+        borderBottomLeftRadiusLg
+    } = useBorderRadius(options);
+    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize(options);
+    const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
+
+    return {
+        sm: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusSm),
+                topRight: ref(borderTopRightRadiusSm),
+                bottomRight: ref(borderBottomRightRadiusSm),
+                bottomLeft: ref(borderBottomLeftRadiusSm)
+            },
+            fontSize: ref(fontSizeSm),
+            padding: {
+                top: multiply(ref(spacingSm), 3 / 4),
+                right: ref(spacingSm),
+                bottom: multiply(ref(spacingSm), 3 / 4),
+                left: ref(spacingSm)
+            }
+        },
+        md: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusMd),
+                topRight: ref(borderTopRightRadiusMd),
+                bottomRight: ref(borderBottomRightRadiusMd),
+                bottomLeft: ref(borderBottomLeftRadiusMd)
+            },
+            fontSize: ref(fontSizeMd),
+            padding: {
+                top: multiply(ref(spacingMd), 3 / 4),
+                right: ref(spacingMd),
+                bottom: multiply(ref(spacingMd), 3 / 4),
+                left: ref(spacingMd)
+            }
+        },
+        lg: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusLg),
+                topRight: ref(borderTopRightRadiusLg),
+                bottomRight: ref(borderBottomRightRadiusLg),
+                bottomLeft: ref(borderBottomLeftRadiusLg)
+            },
+            fontSize: ref(fontSizeLg),
+            padding: {
+                top: multiply(ref(spacingLg), 3 / 4),
+                right: ref(spacingLg),
+                bottom: multiply(ref(spacingLg), 3 / 4),
+                left: ref(spacingLg)
+            }
+        }
+    }[variant];
+}
+
+export function useInputThemeConfig(options: DefinitionOptions) {
     const {
         borderTopStyle,
         borderTopWidth,
@@ -46,16 +204,7 @@ export function useInputThemeVariables(options: DefinitionOptions) {
         borderLeftStyle,
         borderLeftWidth
     } = useBorder(options);
-    const { colorPrimary, colorDanger } = useBrandColors(options);
-    const { colorLightTint100, colorLightTint50, colorLightShade50, colorLightShade100 } =
-        useBrandColorVariants(options);
-    const { spacing } = useSpacing(options);
-    const {
-        borderTopLeftRadius,
-        borderTopRightRadius,
-        borderBottomRightRadius,
-        borderBottomLeftRadius
-    } = useBorderRadius(options);
+    const { colorDanger } = useBrandColors(options);
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
@@ -63,166 +212,140 @@ export function useInputThemeVariables(options: DefinitionOptions) {
         boxShadowSpreadRadius,
         boxShadowColor
     } = useBoxShadow(options);
-    const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors(options);
-    const { contrastTextColorLight } = useContrastTextColor(options);
-    const { fontSize } = useFontSize(options);
     const { lineHeight } = useLineHeight(options);
     const { transitionProperty, transitionDuration, transitionTimingFunction } =
         useTransition(options);
     const { textColorWeak, textColorWeaker } = useTextColor(options);
 
-    return {
-        ...nsvariables(
-            ns,
-            {
-                border: {
-                    top: {
-                        width: ref(borderTopWidth),
-                        style: ref(borderTopStyle),
-                        color: ref(colorLightShade50)
-                    },
-                    right: {
-                        width: ref(borderRightWidth),
-                        style: ref(borderRightStyle),
-                        color: ref(colorLightShade50)
-                    },
-                    bottom: {
-                        width: ref(borderBottomWidth),
-                        style: ref(borderBottomStyle),
-                        color: ref(colorLightShade50)
-                    },
-                    left: {
-                        width: ref(borderLeftWidth),
-                        style: ref(borderLeftStyle),
-                        color: ref(colorLightShade50)
-                    }
+    return merge(
+        {
+            border: {
+                top: {
+                    width: ref(borderTopWidth),
+                    style: ref(borderTopStyle)
                 },
-                borderRadius: {
-                    topLeft: ref(borderTopLeftRadius),
-                    topRight: ref(borderTopRightRadius),
-                    bottomRight: ref(borderBottomRightRadius),
-                    bottomLeft: ref(borderBottomLeftRadius)
+                right: {
+                    width: ref(borderRightWidth),
+                    style: ref(borderRightStyle)
                 },
-                boxShadow: {
-                    offsetX: ref(boxShadowOffsetX),
-                    offsetY: ref(boxShadowOffsetY),
-                    blurRadius: ref(boxShadowBlurRadius),
-                    spreadRadius: ref(boxShadowSpreadRadius),
-                    color: ref(boxShadowColor)
+                bottom: {
+                    width: ref(borderBottomWidth),
+                    style: ref(borderBottomStyle)
                 },
-                background: {
-                    h: ref(colorWhiteH),
-                    s: ref(colorWhiteS),
-                    l: ref(colorWhiteL),
-                    a: ref(colorWhiteA)
-                },
-                color: ref(contrastTextColorLight),
-                fontSize: ref(fontSize),
-                lineHeight: ref(lineHeight),
-                padding: {
-                    top: multiply(ref(spacing), 3 / 4),
-                    right: ref(spacing),
-                    bottom: multiply(ref(spacing), 3 / 4),
-                    left: ref(spacing)
-                },
-                transition: {
-                    property: ref(transitionProperty),
-                    duration: ref(transitionDuration),
-                    timingFunction: ref(transitionTimingFunction)
+                left: {
+                    width: ref(borderLeftWidth),
+                    style: ref(borderLeftStyle)
                 }
             },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'placeholder'] as const,
-            {
-                color: ref(textColorWeaker)
+            boxShadow: {
+                offsetX: ref(boxShadowOffsetX),
+                offsetY: ref(boxShadowOffsetY),
+                blurRadius: ref(boxShadowBlurRadius),
+                spreadRadius: ref(boxShadowSpreadRadius),
+                color: ref(boxShadowColor)
             },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'icon'] as const,
-            {
-                width: 'auto',
-                height: '1rem',
-                color: ref(textColorWeak)
+            lineHeight: ref(lineHeight),
+            transition: {
+                property: ref(transitionProperty),
+                duration: ref(transitionDuration),
+                timingFunction: ref(transitionTimingFunction)
             },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'error'] as const,
-            {
+            /**
+             * @state error
+             */
+            error: {
                 border: {
                     color: ref(colorDanger)
                 }
             },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'disabled'] as const,
-            {
-                background: ref(colorLightTint50)
-            },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'readonly'] as const,
-            {
-                background: ref(colorLightTint100)
-            },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'hover'] as const,
-            {
-                border: {
-                    color: ref(colorLightShade100)
-                }
-            },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'focus'] as const,
-            {
-                border: {
-                    color: ref(colorPrimary)
-                }
-            },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'prefix'] as const,
-            {
+            /**
+             * @element placeholder
+             */
+            placeholder: {
                 color: ref(textColorWeaker)
             },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'suffix'] as const,
-            {
+            /**
+             * @element icon
+             */
+            icon: {
+                width: 'auto',
+                height: '1rem',
+                color: ref(textColorWeak)
+            },
+            /**
+             * @element prefix
+             */
+            prefix: {
                 color: ref(textColorWeaker)
             },
-            options
-        )
-    };
+            /**
+             * @element suffix
+             */
+            suffix: {
+                color: ref(textColorWeaker)
+            }
+        },
+        useInputThemeColorConfig(defaultInputColor, options),
+        useInputThemeSizeConfig(defaultInputSize, options)
+    );
 }
 
-export function useInputThemeLayout(options: DefinitionOptions) {
-    selector('.input', {
-        display: 'block',
-        verticalAlign: 'middle',
-        position: 'relative',
-        flexGrow: 1,
-        flexShrink: 1
-    });
+/**
+ * Variables
+ */
 
-    selector('.input .input-field', {
-        display: 'flex',
-        flex: '1 0 auto',
-        alignItems: 'center',
-        flexDirection: 'row',
-        backgroundClip: 'padding-box'
+export function useInputThemeColorVariables(
+    variant: InputColorVariant,
+    options: DefinitionOptions
+) {
+    return nsvariables([ns, variant] as const, useInputThemeColorConfig(variant, options), {
+        ...options,
+        registerComposed: false
     });
+}
+
+export function useInputThemeSizeVariables(variant: InputSizeVariant, options: DefinitionOptions) {
+    return nsvariables([ns, variant] as const, useInputThemeSizeConfig(variant, options), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+export function useInputThemeVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useInputThemeConfig(options), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+/**
+ * Selectors
+ */
+
+export function useInputThemeLayoutSelectors(options: DefinitionOptions) {
+    selector(
+        '.input',
+        {
+            display: 'block',
+            verticalAlign: 'middle',
+            position: 'relative',
+            flexGrow: 1,
+            flexShrink: 1
+        },
+        options
+    );
+
+    selector(
+        '.input .input-field',
+        {
+            display: 'flex',
+            flex: '1 0 auto',
+            alignItems: 'center',
+            flexDirection: 'row',
+            backgroundClip: 'padding-box'
+        },
+        options
+    );
 
     selector(
         [
@@ -238,14 +361,19 @@ export function useInputThemeLayout(options: DefinitionOptions) {
             border: '0',
             margin: '0',
             outline: '0'
-        }
+        },
+        options
     );
 
     // Remove style for the caret on `<select>`s in E10+.
-    selector('.input .input-field > select::-ms-expand', {
-        backgroundColor: 'transparent',
-        border: '0'
-    });
+    selector(
+        '.input .input-field > select::-ms-expand',
+        {
+            backgroundColor: 'transparent',
+            border: '0'
+        },
+        options
+    );
 
     // Override Firefox's unusual default opacity see https://github.com/twbs/bootstrap/pull/11526.
     selector(
@@ -256,7 +384,8 @@ export function useInputThemeLayout(options: DefinitionOptions) {
         ],
         {
             opacity: 1
-        }
+        },
+        options
     );
 
     // Disabled and read-only inputs
@@ -276,7 +405,8 @@ export function useInputThemeLayout(options: DefinitionOptions) {
         {
             opacity: 1,
             cursor: 'default'
-        }
+        },
+        options
     );
 
     selector(
@@ -287,7 +417,8 @@ export function useInputThemeLayout(options: DefinitionOptions) {
         ],
         {
             cursor: 'not-allowed'
-        }
+        },
+        options
     );
 
     selector(
@@ -298,15 +429,20 @@ export function useInputThemeLayout(options: DefinitionOptions) {
         ],
         {
             outline: 0
-        }
+        },
+        options
     );
 
-    selector(['.input .input-field .input-prefix', '.input .input-field .input-suffix'], {
-        display: 'inline-flex',
-        alignItems: 'center',
-        zIndex: 1,
-        fontStyle: 'normal'
-    });
+    selector(
+        ['.input .input-field .input-prefix', '.input .input-field .input-suffix'],
+        {
+            display: 'inline-flex',
+            alignItems: 'center',
+            zIndex: 1,
+            fontStyle: 'normal'
+        },
+        options
+    );
 
     selector(
         [
@@ -317,74 +453,110 @@ export function useInputThemeLayout(options: DefinitionOptions) {
             background: 'transparent',
             border: '0',
             color: 'inherit'
-        }
+        },
+        options
     );
 
-    selector('.input .input-field .input-icon', {
-        width: 'auto',
-        cursor: 'pointer'
-    });
+    selector(
+        '.input .input-field .input-icon',
+        {
+            width: 'auto',
+            cursor: 'pointer'
+        },
+        options
+    );
 
-    selector('.input .input-value-overlay', {
-        position: 'absolute',
-        cursor: 'default'
-    });
+    selector(
+        '.input .input-value-overlay',
+        {
+            position: 'absolute',
+            cursor: 'default'
+        },
+        options
+    );
 
-    selector(['.input.-prepended', '.input.-appended'], {
-        display: 'flex',
-        flexWrap: 'nowrap',
-        flexDirection: 'row',
-        alignItems: 'stretch',
-        padding: 0
-    });
+    selector(
+        ['.input.-prepended', '.input.-appended'],
+        {
+            display: 'flex',
+            flexWrap: 'nowrap',
+            flexDirection: 'row',
+            alignItems: 'stretch',
+            padding: 0
+        },
+        options
+    );
 
-    selector(['.input.-prepended', '.input.-appended'], {
-        display: 'flex',
-        flexWrap: 'nowrap'
-    });
+    selector(
+        ['.input.-prepended', '.input.-appended'],
+        {
+            display: 'flex',
+            flexWrap: 'nowrap'
+        },
+        options
+    );
 
-    selector(['.input.-prepended .input-field', '.input.-appended .input-field'], {
-        flexShrink: 1
-    });
+    selector(
+        ['.input.-prepended .input-field', '.input.-appended .input-field'],
+        {
+            flexShrink: 1
+        },
+        options
+    );
 }
 
-export function useInputThemeLayoutModifiers(options: DefinitionOptions) {
-    selector('.input.-prepended .input-field', {
-        borderTopLeftRadius: 0,
-        borderBottomLeftRadius: 0
-    });
+export function useInputThemeModifiersSelectors(options: DefinitionOptions) {
+    selector(
+        '.input.-prepended .input-field',
+        {
+            borderTopLeftRadius: 0,
+            borderBottomLeftRadius: 0
+        },
+        options
+    );
 
-    selector('.input.-appended .input-field', {
-        borderTopRightRadius: 0,
-        borderBottomRightRadius: 0
-    });
+    selector(
+        '.input.-appended .input-field',
+        {
+            borderTopRightRadius: 0,
+            borderBottomRightRadius: 0
+        },
+        options
+    );
 
-    selector(['.input .input-prepend > *', '.input .input-append > *'], {
-        display: 'flex',
-        flex: '1 1 auto ',
-        alignSelf: 'stretch !important',
-        alignItems: 'center !important',
-        justifySelf: 'stretch !important',
-        borderRadius: '0 !important',
-        border: 0,
-        width: '100%',
-        height: '100%'
-    });
+    selector(
+        ['.input .input-prepend > *', '.input .input-append > *'],
+        {
+            display: 'flex',
+            flex: '1 1 auto ',
+            alignSelf: 'stretch !important',
+            alignItems: 'center !important',
+            justifySelf: 'stretch !important',
+            borderRadius: '0 !important',
+            border: 0,
+            width: '100%',
+            height: '100%'
+        },
+        options
+    );
 
     // selector(
     //     ['.input.-prepended > [class$="-trigger"]', '.input.-appended > [class$="-trigger"]'],
     //     {
     //         display: 'flex',
     //         alignSelf: 'stretch'
-    //     }
+    //     }, options
     // );
 }
 
-export function useInputThemeBase(options: DefinitionOptions) {
+export function useInputThemeBaseSelectors(options: DefinitionOptions) {
     const {
         inputBackground,
         inputBorderStyle,
-        inputBorderColor,
+        inputBorderTopColor,
+        inputBorderRightColor,
+        inputBorderBottomColor,
+        inputBorderLeftColor,
         inputBorderWidth,
         inputBorderTopLeftRadius,
         inputBorderTopRightRadius,
@@ -396,12 +568,23 @@ export function useInputThemeBase(options: DefinitionOptions) {
         inputFontSize,
         inputLineHeight,
         inputPadding,
+        inputPaddingRight,
+        inputPaddingLeft,
         inputTransitionProperty,
         inputTransitionDuration,
         inputTransitionTimingFunction,
-        inputHoverBorderColor,
-        inputFocusBorderColor,
-        inputErrorBorderColor,
+        inputHoverBorderTopColor,
+        inputHoverBorderRightColor,
+        inputHoverBorderBottomColor,
+        inputHoverBorderLeftColor,
+        inputFocusBorderTopColor,
+        inputFocusBorderRightColor,
+        inputFocusBorderBottomColor,
+        inputFocusBorderLeftColor,
+        inputErrorBorderTopColor,
+        inputErrorBorderRightColor,
+        inputErrorBorderBottomColor,
+        inputErrorBorderLeftColor,
         inputDisabledBackground,
         inputReadonlyBackground,
         inputPlaceholderColor,
@@ -412,18 +595,25 @@ export function useInputThemeBase(options: DefinitionOptions) {
         inputIconColor
     } = useInputThemeVariables(options);
 
-    selector('.input .input-field', {
-        background: ref(inputBackground),
-        borderStyle: ref(inputBorderStyle),
-        borderColor: ref(inputBorderColor),
-        borderWidth: ref(inputBorderWidth),
-        borderRadius: ref(inputBorderRadius),
-        boxShadow: ref(inputBoxShadow),
-        fontSize: ref(inputFontSize),
-        transitionProperty: ref(inputTransitionProperty),
-        transitionDuration: ref(inputTransitionDuration),
-        transitionTimingFunction: ref(inputTransitionTimingFunction)
-    });
+    selector(
+        '.input .input-field',
+        {
+            background: vref(inputBackground),
+            borderStyle: vref(inputBorderStyle),
+            borderTopColor: vref(inputBorderTopColor),
+            borderRightColor: vref(inputBorderRightColor),
+            borderBottomColor: vref(inputBorderBottomColor),
+            borderLeftColor: vref(inputBorderLeftColor),
+            borderWidth: vref(inputBorderWidth),
+            borderRadius: vref(inputBorderRadius),
+            boxShadow: vref(inputBoxShadow),
+            fontSize: ref(inputFontSize),
+            transitionProperty: ref(inputTransitionProperty),
+            transitionDuration: ref(inputTransitionDuration),
+            transitionTimingFunction: ref(inputTransitionTimingFunction)
+        },
+        options
+    );
 
     selector(
         [
@@ -432,10 +622,11 @@ export function useInputThemeBase(options: DefinitionOptions) {
             '.input .input-field > textarea'
         ],
         {
-            color: ref(inputColor),
+            color: vref(inputColor),
             lineHeight: ref(inputLineHeight),
-            padding: ref(inputPadding)
-        }
+            padding: vref(inputPadding)
+        },
+        options
     );
 
     selector(
@@ -446,307 +637,286 @@ export function useInputThemeBase(options: DefinitionOptions) {
         ],
         {
             color: ref(inputPlaceholderColor)
-        }
+        },
+        options
     );
 
-    selector(['.input .input-field .input-prefix', '.input .input-field .input-suffix'], {
-        borderColor: ref(inputBorderColor),
-        paddingLeft: ref(inputPadding),
-        paddingRight: ref(inputPadding),
-        transitionProperty: ref(inputTransitionProperty),
-        transitionDuration: ref(inputTransitionDuration),
-        transitionTimingFunction: ref(inputTransitionTimingFunction)
-    });
+    selector(
+        ['.input .input-field .input-prefix', '.input .input-field .input-suffix'],
+        {
+            borderTopColor: vref(inputBorderTopColor),
+            borderRightColor: vref(inputBorderRightColor),
+            borderBottomColor: vref(inputBorderBottomColor),
+            borderLeftColor: vref(inputBorderLeftColor),
+            paddingLeft: ref(inputPaddingLeft),
+            paddingRight: ref(inputPaddingRight),
+            transitionProperty: ref(inputTransitionProperty),
+            transitionDuration: ref(inputTransitionDuration),
+            transitionTimingFunction: ref(inputTransitionTimingFunction)
+        },
+        options
+    );
 
-    selector('.input .input-field .input-prefix', {
-        borderRightWidth: ref(inputBorderWidth),
-        borderRightStyle: ref(inputBorderStyle),
-        color: ref(inputPrefixColor)
-    });
+    selector(
+        '.input .input-field .input-prefix',
+        {
+            borderRightWidth: ref(inputBorderWidth),
+            borderRightStyle: ref(inputBorderStyle),
+            color: vref(inputPrefixColor)
+        },
+        options
+    );
 
-    selector('.input .input-field .input-suffix', {
-        borderLeftWidth: ref(inputBorderWidth),
-        borderLeftStyle: ref(inputBorderStyle),
-        color: ref(inputSuffixColor)
-    });
+    selector(
+        '.input .input-field .input-suffix',
+        {
+            borderLeftWidth: ref(inputBorderWidth),
+            borderLeftStyle: ref(inputBorderStyle),
+            color: vref(inputSuffixColor)
+        },
+        options
+    );
 
-    selector('.input .input-field .input-icon', {
-        color: ref(inputIconColor),
-        width: ref(inputIconWidth),
-        height: ref(inputIconHeight),
-        transitionProperty: ref(inputTransitionProperty),
-        transitionDuration: ref(inputTransitionDuration),
-        transitionTimingFunction: ref(inputTransitionTimingFunction)
-    });
+    selector(
+        '.input .input-field .input-icon',
+        {
+            color: vref(inputIconColor),
+            width: ref(inputIconWidth),
+            height: ref(inputIconHeight),
+            transitionProperty: ref(inputTransitionProperty),
+            transitionDuration: ref(inputTransitionDuration),
+            transitionTimingFunction: ref(inputTransitionTimingFunction)
+        },
+        options
+    );
 
-    selector(['.input.-hover .input-field', '.input:hover .input-field'], {
-        borderColor: ref(inputHoverBorderColor)
-    });
+    selector(
+        ['.input.-hover .input-field', '.input:hover .input-field'],
+        {
+            borderTopColor: vref(inputHoverBorderTopColor),
+            borderRightColor: vref(inputHoverBorderRightColor),
+            borderBottomColor: vref(inputHoverBorderBottomColor),
+            borderLeftColor: vref(inputHoverBorderLeftColor)
+        },
+        options
+    );
 
-    selector(['.input.-focus .input-field', '.input:focus-within .input-field'], {
-        borderColor: ref(inputFocusBorderColor),
-        outline: 0
-    });
+    selector(
+        ['.input.-focus .input-field', '.input:focus-within .input-field'],
+        {
+            borderTopColor: ref(inputFocusBorderTopColor),
+            borderRightColor: ref(inputFocusBorderRightColor),
+            borderBottomColor: ref(inputFocusBorderBottomColor),
+            borderLeftColor: ref(inputFocusBorderLeftColor),
+            outline: 0
+        },
+        options
+    );
 
-    selector('.input.-error .input-field', {
-        borderColor: ref(inputErrorBorderColor)
-    });
+    selector(
+        '.input.-error .input-field',
+        {
+            borderTopColor: ref(inputErrorBorderTopColor),
+            borderRightColor: ref(inputErrorBorderRightColor),
+            borderBottomColor: ref(inputErrorBorderBottomColor),
+            borderLeftColor: ref(inputErrorBorderLeftColor)
+        },
+        options
+    );
 
-    selector('.input.-readonly .input-field:focus-within', {
-        borderColor: ref(inputFocusBorderColor),
-        outline: 0
-    });
+    selector(
+        '.input.-readonly .input-field:focus-within',
+        {
+            borderTopColor: ref(inputFocusBorderTopColor),
+            borderRightColor: ref(inputFocusBorderRightColor),
+            borderBottomColor: ref(inputFocusBorderBottomColor),
+            borderLeftColor: ref(inputFocusBorderLeftColor),
+            outline: 0
+        },
+        options
+    );
 
-    selector('.input.-disabled .input-field', {
-        background: ref(inputDisabledBackground)
-    });
+    selector(
+        '.input.-disabled .input-field',
+        {
+            background: vref(inputDisabledBackground)
+        },
+        options
+    );
 
-    selector('.input.-readonly .input-field', {
-        background: ref(inputReadonlyBackground)
-    });
+    selector(
+        '.input.-readonly .input-field',
+        {
+            background: vref(inputReadonlyBackground)
+        },
+        options
+    );
 
-    selector(['.input .input-prepend', '.input .input-append'], {
-        background: ref(inputBackground),
-        borderStyle: ref(inputBorderStyle),
-        borderColor: ref(inputBorderColor),
-        borderWidth: ref(inputBorderWidth),
-        fontSize: ref(inputFontSize),
-        lineHeight: ref(inputLineHeight),
-        transitionProperty: ref(inputTransitionProperty),
-        transitionDuration: ref(inputTransitionDuration),
-        transitionTimingFunction: ref(inputTransitionTimingFunction)
-    });
+    selector(
+        ['.input .input-prepend', '.input .input-append'],
+        {
+            background: vref(inputBackground),
+            borderStyle: vref(inputBorderStyle),
+            borderTopColor: vref(inputBorderTopColor),
+            borderRightColor: vref(inputBorderRightColor),
+            borderBottomColor: vref(inputBorderBottomColor),
+            borderLeftColor: vref(inputBorderLeftColor),
+            borderWidth: vref(inputBorderWidth),
+            fontSize: ref(inputFontSize),
+            lineHeight: ref(inputLineHeight),
+            transitionProperty: ref(inputTransitionProperty),
+            transitionDuration: ref(inputTransitionDuration),
+            transitionTimingFunction: ref(inputTransitionTimingFunction)
+        },
+        options
+    );
 
-    selector('.input .input-prepend', {
-        borderRightWidth: 0,
-        borderTopLeftRadius: ref(inputBorderTopLeftRadius),
-        borderBottomLeftRadius: ref(inputBorderBottomLeftRadius)
-    });
+    selector(
+        '.input .input-prepend',
+        {
+            borderRightWidth: 0,
+            borderTopLeftRadius: ref(inputBorderTopLeftRadius),
+            borderBottomLeftRadius: ref(inputBorderBottomLeftRadius)
+        },
+        options
+    );
 
-    selector('.input .input-append', {
-        borderLeftWidth: 0,
-        borderTopRightRadius: ref(inputBorderTopRightRadius),
-        borderBottomRightRadius: ref(inputBorderBottomRightRadius)
-    });
+    selector(
+        '.input .input-append',
+        {
+            borderLeftWidth: 0,
+            borderTopRightRadius: ref(inputBorderTopRightRadius),
+            borderBottomRightRadius: ref(inputBorderBottomRightRadius)
+        },
+        options
+    );
 }
 
-export function useInputThemeSizeFactory(variant: InputSizeVariant) {
+export function useInputThemeColorSelectors(
+    variant: InputColorVariant,
+    options: DefinitionOptions
+) {
     const {
-        inputPaddingTop,
-        inputPaddingRight,
-        inputPaddingBottom,
-        inputPaddingLeft,
+        inputBorderTopColor,
+        inputBorderRightColor,
+        inputBorderBottomColor,
+        inputBorderLeftColor,
+        inputBackground,
+        inputColor,
+        inputHoverBorderTopColor,
+        inputHoverBorderRightColor,
+        inputHoverBorderBottomColor,
+        inputHoverBorderLeftColor,
+        inputFocusBorderTopColor,
+        inputFocusBorderRightColor,
+        inputFocusBorderBottomColor,
+        inputFocusBorderLeftColor,
+        inputDisabledBackground,
+        inputReadonlyBackground
+    } = useInputThemeVariables(options);
+
+    const {
+        variantBorderTopColor,
+        variantBorderRightColor,
+        variantBorderBottomColor,
+        variantBorderLeftColor,
+        variantBackground,
+        variantColor,
+        variantHoverBorderTopColor,
+        variantHoverBorderRightColor,
+        variantHoverBorderBottomColor,
+        variantHoverBorderLeftColor,
+        variantFocusBorderTopColor,
+        variantFocusBorderRightColor,
+        variantFocusBorderBottomColor,
+        variantFocusBorderLeftColor,
+        variantDisabledBackground,
+        variantReadonlyBackground
+    } = setExportsNamespace(useInputThemeColorVariables(variant, options), 'variant');
+
+    selector(
+        `.input.-${variant}`,
+        {
+            [toVariableKey(inputBackground)]: ref(variantBackground),
+            [toVariableKey(inputBorderTopColor)]: ref(variantBorderTopColor),
+            [toVariableKey(inputBorderRightColor)]: ref(variantBorderRightColor),
+            [toVariableKey(inputBorderBottomColor)]: ref(variantBorderBottomColor),
+            [toVariableKey(inputBorderLeftColor)]: ref(variantBorderLeftColor),
+            [toVariableKey(inputColor)]: ref(variantColor),
+            [toVariableKey(inputHoverBorderTopColor)]: ref(variantHoverBorderTopColor),
+            [toVariableKey(inputHoverBorderRightColor)]: ref(variantHoverBorderRightColor),
+            [toVariableKey(inputHoverBorderBottomColor)]: ref(variantHoverBorderBottomColor),
+            [toVariableKey(inputHoverBorderLeftColor)]: ref(variantHoverBorderLeftColor),
+            [toVariableKey(inputFocusBorderTopColor)]: ref(variantFocusBorderTopColor),
+            [toVariableKey(inputFocusBorderRightColor)]: ref(variantFocusBorderRightColor),
+            [toVariableKey(inputFocusBorderBottomColor)]: ref(variantFocusBorderBottomColor),
+            [toVariableKey(inputFocusBorderLeftColor)]: ref(variantFocusBorderLeftColor),
+            [toVariableKey(inputDisabledBackground)]: ref(variantDisabledBackground),
+            [toVariableKey(inputReadonlyBackground)]: ref(variantReadonlyBackground)
+        },
+        options
+    );
+}
+
+export function useInputThemeSizeSelectors(variant: InputSizeVariant, options: DefinitionOptions) {
+    const {
         inputBorderTopLeftRadius,
         inputBorderTopRightRadius,
         inputBorderBottomRightRadius,
         inputBorderBottomLeftRadius,
+        inputPaddingTop,
+        inputPaddingRight,
+        inputPaddingBottom,
+        inputPaddingLeft,
         inputFontSize
     } = useInputThemeVariables(options);
-    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
-    const sizeNs = [ns, variant] as const;
 
     const {
-        borderTopLeftRadius,
-        borderTopRightRadius,
-        borderBottomRightRadius,
-        borderBottomLeftRadius,
-        fontSize,
-        paddingTop,
-        paddingRight,
-        paddingBottom,
-        paddingLeft
-    } = stripExportsNamespace(
-        nsvariables(sizeNs, {
-            borderRadius: {
-                topLeft: multiply(ref(inputBorderTopLeftRadius), sizeMultiplierRef),
-                topRight: multiply(ref(inputBorderTopRightRadius), sizeMultiplierRef),
-                bottomRight: multiply(ref(inputBorderBottomRightRadius), sizeMultiplierRef),
-                bottomLeft: multiply(ref(inputBorderBottomLeftRadius), sizeMultiplierRef)
-            },
-            fontSize: multiply(ref(inputFontSize), sizeMultiplierRef),
-            padding: {
-                top: multiply(ref(inputPaddingTop), sizeMultiplierRef),
-                right: multiply(ref(inputPaddingRight), sizeMultiplierRef),
-                bottom: multiply(ref(inputPaddingBottom), sizeMultiplierRef),
-                left: multiply(ref(inputPaddingLeft), sizeMultiplierRef)
-            }
-        })
-    );
-
-    selector(`.input.-${variant}`, {
-        fontSize: ref(fontSize)
-    });
+        variantBorderTopLeftRadius,
+        variantBorderTopRightRadius,
+        variantBorderBottomRightRadius,
+        variantBorderBottomLeftRadius,
+        variantFontSize,
+        variantPaddingTop,
+        variantPaddingRight,
+        variantPaddingBottom,
+        variantPaddingLeft
+    } = setExportsNamespace(useInputThemeSizeVariables(variant, options), 'variant');
 
     selector(
-        [
-            `.input.-${variant} .input-header`,
-            `.input.-${variant} .input-body`,
-            `.input.-${variant} .input-footer`
-        ],
+        `.input.-${variant}`,
         {
-            fontSize: ref(fontSize),
-            padding: [ref(paddingTop), ref(paddingRight), ref(paddingBottom), ref(paddingLeft)]
-        }
+            [toVariableKey(inputBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
+            [toVariableKey(inputBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
+            [toVariableKey(inputBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
+            [toVariableKey(inputBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
+            [toVariableKey(inputFontSize)]: ref(variantFontSize),
+            [toVariableKey(inputPaddingTop)]: ref(variantPaddingTop),
+            [toVariableKey(inputPaddingRight)]: ref(variantPaddingRight),
+            [toVariableKey(inputPaddingBottom)]: ref(variantPaddingBottom),
+            [toVariableKey(inputPaddingLeft)]: ref(variantPaddingLeft)
+        },
+        options
     );
-
-    selector(`.input.-${variant} .input-field`, {
-        borderTopLeftRadius: ref(borderTopLeftRadius),
-        borderTopRightRadius: ref(borderTopRightRadius),
-        borderBottomRightRadius: ref(borderBottomRightRadius),
-        borderBottomLeftRadius: ref(borderBottomLeftRadius),
-        fontSize: ref(fontSize)
-    });
-
-    selector(
-        [
-            `.input.-${variant} .input-field > input`,
-            `.input.-${variant} .input-field > select`,
-            `.input.-${variant} .input-field > textarea`
-        ],
-        {
-            paddingTop: ref(paddingTop),
-            paddingRight: ref(paddingRight),
-            paddingBottom: ref(paddingBottom),
-            paddingLeft: ref(paddingLeft)
-        }
-    );
-
-    selector([`.input.-${variant} .input-prepend`, `.input.-${variant} .input-append`], {
-        fontSize: ref(fontSize)
-    });
-
-    selector(`.input.-${variant} .input-prepend`, {
-        borderTopLeftRadius: ref(borderTopLeftRadius),
-        borderBottomLeftRadius: ref(borderBottomLeftRadius)
-    });
-
-    selector(`.input.-${variant} .input-append`, {
-        borderTopRightRadius: ref(borderTopRightRadius),
-        borderBottomRightRadius: ref(borderBottomRightRadius)
-    });
-
-    selector(['.input .input-field .input-prefix', '.input .input-field .input-suffix'], {
-        paddingLeft: ref(paddingLeft),
-        paddingRight: ref(paddingRight)
-    });
 }
 
-export function useInputThemeSizes(sizes = defaultInputSizes) {
-    sizes.forEach((size) => useInputThemeSizeFactory(size, options));
+/**
+ * Composables
+ */
+
+export function useInputThemeColors(colors: InputColorVariant[], options: DefinitionOptions) {
+    colors.forEach((color) => useInputThemeColorSelectors(color, options));
 }
 
-export function useInputThemeColorFactory(variant: InputColorVariant) {
-    const colorKey = capitalize(variant);
-    const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
-    const brandColors = useBrandColors(options);
-    const brandColorVariants = useBrandColorVariants(options);
-    const neutralColors = useNeutralColors(options);
-    const contrastTextColors = useContrastTextColor(options);
-    const colorNs = [ns, variant] as const;
-
-    const { borderColor, background, color } = stripExportsNamespace(
-        nsvariables(colorNs, {
-            borderColor: ref(brandColorVariants[`color${colorKey}${shadeOrTint}50`]),
-            background: ref(
-                variant === 'light' ? neutralColors.colorWhite : brandColors[`color${colorKey}`]
-            ),
-            color: ref(contrastTextColors[`contrastTextColor${colorKey}`])
-        })
-    );
-
-    const { hoverBorderColor } = setExportsNamespace(
-        nsvariables([...colorNs, 'hover'] as const, {
-            borderColor: ref(brandColorVariants[`color${colorKey}${shadeOrTint}100`])
-        }),
-        'hover'
-    );
-
-    const { focusBorderColor } = setExportsNamespace(
-        nsvariables([...colorNs, 'focus'] as const, {
-            borderColor: ref(brandColors.colorPrimary)
-        }),
-        'focus'
-    );
-
-    const { disabledBackground } = setExportsNamespace(
-        nsvariables([...colorNs, 'disabled'] as const, {
-            background:
-                variant === 'light'
-                    ? ref(brandColors.colorLight)
-                    : ref(brandColorVariants[`color${colorKey}${shadeOrTint}100`])
-        }),
-        'disabled'
-    );
-
-    const { readonlyBackground } = setExportsNamespace(
-        nsvariables([...colorNs, 'readonly'] as const, {
-            background:
-                variant === 'light'
-                    ? ref(brandColorVariants.colorLightTint50)
-                    : ref(brandColorVariants[`color${colorKey}${shadeOrTint}50`])
-        }),
-        'readonly'
-    );
-
-    selector(`.input.-${variant} .input-field`, {
-        background: ref(background),
-        borderColor: ref(borderColor)
-    });
-
-    selector(
-        [
-            `.input.-${variant} .input-field > input`,
-            `.input.-${variant} .input-field > select`,
-            `.input.-${variant} .input-field > textarea`
-        ],
-        {
-            color: ref(color)
-        }
-    );
-
-    selector([`.input.-${variant}.-hover .input-field`, `.input.-${variant}:hover .input-field`], {
-        borderColor: ref(hoverBorderColor)
-    });
-
-    selector(`.input.-${variant}.-disabled .input-field`, {
-        background: ref(disabledBackground)
-    });
-
-    selector(`.input.-${variant}.-readonly .input-field`, {
-        background: ref(readonlyBackground)
-    });
-
-    selector(
-        [`.input.-${variant}.-focus .input-field`, `.input.-${variant}:focus-within .input-field`],
-        {
-            borderColor: ref(focusBorderColor)
-        }
-    );
-
-    selector([`.input.-${variant} .input-prepend`, `.input.-${variant} .input-append`], {
-        background: ref(background),
-        borderColor: ref(borderColor)
-    });
-
-    selector(`.input.-${variant} .input-field .input-prefix`, {
-        borderColor: ref(borderColor)
-    });
-
-    selector(`.input.-${variant} .input-field .input-suffix`, {
-        borderColor: ref(borderColor)
-    });
-}
-
-export function useInputThemeColors(colors = defaultInputColors) {
-    colors.forEach((color) => useInputThemeColorFactory(color, options));
+export function useInputThemeSizes(sizes: InputSizeVariant[], options: DefinitionOptions) {
+    sizes.forEach((size) => useInputThemeSizeSelectors(size, options));
 }
 
 export function useInputTheme(options: DefinitionOptions) {
     useInputThemeVariables(options);
-    useInputThemeLayout(options);
-    useInputThemeBase(options);
-    useInputThemeSizes(options);
-    useInputThemeColors(options);
-    useInputThemeLayoutModifiers(options);
+    useInputThemeLayoutSelectors(options);
+    useInputThemeBaseSelectors(options);
+    useInputThemeSizes([...defaultInputSizes], options);
+    useInputThemeColors([...defaultInputColors], options);
+    useInputThemeModifiersSelectors(options);
 }

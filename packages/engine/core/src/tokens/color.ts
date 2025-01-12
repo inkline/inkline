@@ -1,5 +1,6 @@
 import {
     Color,
+    CSS,
     ExportedName,
     HSLAColorInlineProperty,
     HSLAColorProperty,
@@ -22,7 +23,7 @@ import { isHSLAColorInlineProperty, isHSLAColorProperty } from '../typeGuards';
 /**
  * Creates a HSLA color token
  */
-export function hsla(value: HSLAColorInlineProperty): Color {
+export function hsla(value: HSLAColorInlineProperty | CSS): Color {
     return {
         __type: TokenType.HSLAColor,
         __value: value

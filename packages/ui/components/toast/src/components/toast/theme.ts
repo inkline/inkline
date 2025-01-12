@@ -117,12 +117,7 @@ export function useToastThemeVariables(options: DefinitionOptions) {
                     spreadRadius: ref(boxShadowSpreadRadius),
                     color: ref(boxShadowColor)
                 },
-                background: {
-                    h: ref(colorWhiteH),
-                    s: ref(colorWhiteS),
-                    l: ref(colorWhiteL),
-                    a: ref(colorWhiteA)
-                },
+                background: ref(colorWhite),
                 color: ref(contrastTextColorLight),
                 fontSize: ref(fontSize),
                 padding: {
@@ -293,7 +288,7 @@ export function useToastThemeBase(options: DefinitionOptions) {
     });
 }
 
-export function useToastThemeSizeFactory(variant: ToastSizeVariant) {
+export function useToastThemeSizeSelectors(variant: ToastSizeVariant) {
     const {
         toastPaddingTop,
         toastPaddingRight,
@@ -361,10 +356,10 @@ export function useToastThemeSizeFactory(variant: ToastSizeVariant) {
 }
 
 export function useToastThemeSizes(sizes = defaultToastSizes) {
-    sizes.forEach((size) => useToastThemeSizeFactory(size, options));
+    sizes.forEach((size) => useToastThemeSizeSelectors(size, options));
 }
 
-export function useToastThemeColorFactory(variant: ToastColorVariant) {
+export function useToastThemeColorSelectors(variant: ToastColorVariant) {
     const colorKey = capitalize(variant);
     const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
     const colorNs = [ns, variant] as const;
@@ -434,7 +429,7 @@ export function useToastThemeColorFactory(variant: ToastColorVariant) {
 }
 
 export function useToastThemeColors(colors = defaultToastColors) {
-    colors.forEach((color) => useToastThemeColorFactory(color, options));
+    colors.forEach((color) => useToastThemeColorSelectors(color, options));
 }
 
 export function useToastTheme(options: DefinitionOptions) {

@@ -1,17 +1,13 @@
-import { UserOptions } from './types';
+import { PluginUserOptions } from './types';
 import { build as buildConfig, getResolvedBuildOptions } from '@inkline/config';
 import { Logger } from '@inkline/logger';
 
-export async function build(options: UserOptions, watch: boolean = false) {
+export async function build(options: PluginUserOptions) {
     const { configFile, configExtName } = getResolvedBuildOptions(options);
-
-    if (watch && !options.silent) {
-        Logger.success(`${configFile}${configExtName} changed, rebuilding...`);
-    }
 
     await buildConfig(options);
 
-    if (!watch && !options.silent) {
-        Logger.success(`${configFile}${configExtName} built successfully...`);
+    if (!options.silent) {
+        Logger.success(`${configFile}${configExtName} built successfully.`);
     }
 }

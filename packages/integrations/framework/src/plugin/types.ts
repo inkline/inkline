@@ -1,4 +1,4 @@
-export interface UserOptions {
+export interface PluginUserOptions {
     /**
      * Whether to watch for changes and rebuild the config. Determined automatically for Vite.js and Nuxt.js
      */

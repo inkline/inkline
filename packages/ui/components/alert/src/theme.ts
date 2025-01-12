@@ -36,144 +36,60 @@ type AlertSizeVariant = (typeof defaultAlertSizes)[number];
 
 export function useAlertThemeColorConfig(variant: AlertColorVariant, options: DefinitionOptions) {
     const {
-        colorInfo100H,
-        colorInfo100S,
-        colorInfo100L,
-        colorInfo100A,
-        colorInfo800H,
-        colorInfo800S,
-        colorInfo800L,
-        colorInfo800A,
-        colorInfoShade50H,
-        colorInfoShade50S,
-        colorInfoShade50L,
-        colorInfoShade50A,
-        colorSuccess100H,
-        colorSuccess100S,
-        colorSuccess100L,
-        colorSuccess100A,
-        colorSuccess800H,
-        colorSuccess800S,
-        colorSuccess800L,
-        colorSuccess800A,
-        colorSuccessShade50H,
-        colorSuccessShade50S,
-        colorSuccessShade50L,
-        colorSuccessShade50A,
-        colorWarning100H,
-        colorWarning100S,
-        colorWarning100L,
-        colorWarning100A,
-        colorWarning800H,
-        colorWarning800S,
-        colorWarning800L,
-        colorWarning800A,
-        colorWarningShade50H,
-        colorWarningShade50S,
-        colorWarningShade50L,
-        colorWarningShade50A,
-        colorDanger100H,
-        colorDanger100S,
-        colorDanger100L,
-        colorDanger100A,
-        colorDanger800H,
-        colorDanger800S,
-        colorDanger800L,
-        colorDanger800A,
-        colorDangerShade50H,
-        colorDangerShade50S,
-        colorDangerShade50L,
-        colorDangerShade50A
+        colorInfo100,
+        colorInfo800,
+        colorInfoShade50,
+        colorSuccess100,
+        colorSuccess800,
+        colorSuccessShade50,
+        colorWarning100,
+        colorWarning800,
+        colorWarningShade50,
+        colorDanger100,
+        colorDanger800,
+        colorDangerShade50
     } = useBrandColorVariants(options);
 
     return {
+        /**
+         * @variant info
+         */
         info: {
             border: {
-                color: {
-                    h: ref(colorInfoShade50H),
-                    s: ref(colorInfoShade50S),
-                    l: ref(colorInfoShade50L),
-                    a: ref(colorInfoShade50A)
-                }
+                color: ref(colorInfoShade50)
             },
-            background: {
-                h: ref(colorInfo100H),
-                s: ref(colorInfo100S),
-                l: ref(colorInfo100L),
-                a: ref(colorInfo100A)
-            },
-            color: {
-                h: ref(colorInfo800H),
-                s: ref(colorInfo800S),
-                l: ref(colorInfo800L),
-                a: ref(colorInfo800A)
-            }
+            background: ref(colorInfo100),
+            color: ref(colorInfo800)
         },
+        /**
+         * @variant success
+         */
         success: {
             border: {
-                color: {
-                    h: ref(colorSuccessShade50H),
-                    s: ref(colorSuccessShade50S),
-                    l: ref(colorSuccessShade50L),
-                    a: ref(colorSuccessShade50A)
-                }
+                color: ref(colorSuccessShade50)
             },
-            background: {
-                h: ref(colorSuccess100H),
-                s: ref(colorSuccess100S),
-                l: ref(colorSuccess100L),
-                a: ref(colorSuccess100A)
-            },
-            color: {
-                h: ref(colorSuccess800H),
-                s: ref(colorSuccess800S),
-                l: ref(colorSuccess800L),
-                a: ref(colorSuccess800A)
-            }
+            background: ref(colorSuccess100),
+            color: ref(colorSuccess800)
         },
+        /**
+         * @variant warning
+         */
         warning: {
             border: {
-                color: {
-                    h: ref(colorWarningShade50H),
-                    s: ref(colorWarningShade50S),
-                    l: ref(colorWarningShade50L),
-                    a: ref(colorWarningShade50A)
-                }
+                color: ref(colorWarningShade50)
             },
-            background: {
-                h: ref(colorWarning100H),
-                s: ref(colorWarning100S),
-                l: ref(colorWarning100L),
-                a: ref(colorWarning100A)
-            },
-            color: {
-                h: ref(colorWarning800H),
-                s: ref(colorWarning800S),
-                l: ref(colorWarning800L),
-                a: ref(colorWarning800A)
-            }
+            background: ref(colorWarning100),
+            color: ref(colorWarning800)
         },
+        /**
+         * @variant danger
+         */
         danger: {
             border: {
-                color: {
-                    h: ref(colorDangerShade50H),
-                    s: ref(colorDangerShade50S),
-                    l: ref(colorDangerShade50L),
-                    a: ref(colorDangerShade50A)
-                }
+                color: ref(colorDangerShade50)
             },
-            background: {
-                h: ref(colorDanger100H),
-                s: ref(colorDanger100S),
-                l: ref(colorDanger100L),
-                a: ref(colorDanger100A)
-            },
-            color: {
-                h: ref(colorDanger800H),
-                s: ref(colorDanger800S),
-                l: ref(colorDanger800L),
-                a: ref(colorDanger800A)
-            }
+            background: ref(colorDanger100),
+            color: ref(colorDanger800)
         }
     }[variant];
 }
@@ -197,6 +113,9 @@ export function useAlertThemeSizeConfig(variant: AlertSizeVariant, options: Defi
     const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
 
     return {
+        /**
+         * @variant sm
+         */
         sm: {
             borderRadius: {
                 topLeft: ref(borderTopLeftRadiusSm),
@@ -212,6 +131,9 @@ export function useAlertThemeSizeConfig(variant: AlertSizeVariant, options: Defi
                 left: ref(spacingSm)
             }
         },
+        /**
+         * @variant md
+         */
         md: {
             borderRadius: {
                 topLeft: ref(borderTopLeftRadiusMd),
@@ -227,6 +149,9 @@ export function useAlertThemeSizeConfig(variant: AlertSizeVariant, options: Defi
                 left: ref(spacingMd)
             }
         },
+        /**
+         * @variant lg
+         */
         lg: {
             borderRadius: {
                 topLeft: ref(borderTopLeftRadiusLg),
@@ -319,14 +244,14 @@ export function useAlertThemeColorVariables(
     variant: AlertColorVariant,
     options: DefinitionOptions
 ) {
-    return nsvariables(ns, useAlertThemeColorConfig(variant, options), {
+    return nsvariables([ns, variant] as const, useAlertThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
 export function useAlertThemeSizeVariables(variant: AlertSizeVariant, options: DefinitionOptions) {
-    return nsvariables(ns, useAlertThemeSizeConfig(variant, options), {
+    return nsvariables([ns, variant] as const, useAlertThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
@@ -487,86 +412,32 @@ export function useAlertThemeColorSelectors(
     options: DefinitionOptions
 ) {
     const {
-        alertBackgroundH,
-        alertBackgroundS,
-        alertBackgroundL,
-        alertBackgroundA,
-        alertBorderTopColorH,
-        alertBorderTopColorS,
-        alertBorderTopColorL,
-        alertBorderTopColorA,
-        alertBorderRightColorH,
-        alertBorderRightColorS,
-        alertBorderRightColorL,
-        alertBorderRightColorA,
-        alertBorderBottomColorH,
-        alertBorderBottomColorS,
-        alertBorderBottomColorL,
-        alertBorderBottomColorA,
-        alertBorderLeftColorH,
-        alertBorderLeftColorS,
-        alertBorderLeftColorL,
-        alertBorderLeftColorA,
-        alertColorH,
-        alertColorS,
-        alertColorL,
-        alertColorA
+        alertBackground,
+        alertBorderTopColor,
+        alertBorderRightColor,
+        alertBorderBottomColor,
+        alertBorderLeftColor,
+        alertColor
     } = useAlertThemeVariables(options);
 
     const {
-        variantBackgroundH,
-        variantBackgroundS,
-        variantBackgroundL,
-        variantBackgroundA,
-        variantBorderTopColorH,
-        variantBorderTopColorS,
-        variantBorderTopColorL,
-        variantBorderTopColorA,
-        variantBorderRightColorH,
-        variantBorderRightColorS,
-        variantBorderRightColorL,
-        variantBorderRightColorA,
-        variantBorderBottomColorH,
-        variantBorderBottomColorS,
-        variantBorderBottomColorL,
-        variantBorderBottomColorA,
-        variantBorderLeftColorH,
-        variantBorderLeftColorS,
-        variantBorderLeftColorL,
-        variantBorderLeftColorA,
-        variantColorH,
-        variantColorS,
-        variantColorL,
-        variantColorA
+        variantBackground,
+        variantBorderTopColor,
+        variantBorderRightColor,
+        variantBorderBottomColor,
+        variantBorderLeftColor,
+        variantColor
     } = setExportsNamespace(useAlertThemeColorVariables(variant, options), 'variant');
 
     selector(
         `.alert.-${variant}`,
         {
-            [toVariableKey(alertBorderTopColorH)]: ref(variantBorderTopColorH),
-            [toVariableKey(alertBorderTopColorS)]: ref(variantBorderTopColorS),
-            [toVariableKey(alertBorderTopColorL)]: ref(variantBorderTopColorL),
-            [toVariableKey(alertBorderTopColorA)]: ref(variantBorderTopColorA),
-            [toVariableKey(alertBorderRightColorH)]: ref(variantBorderRightColorH),
-            [toVariableKey(alertBorderRightColorS)]: ref(variantBorderRightColorS),
-            [toVariableKey(alertBorderRightColorL)]: ref(variantBorderRightColorL),
-            [toVariableKey(alertBorderRightColorA)]: ref(variantBorderRightColorA),
-            [toVariableKey(alertBorderBottomColorH)]: ref(variantBorderBottomColorH),
-            [toVariableKey(alertBorderBottomColorS)]: ref(variantBorderBottomColorS),
-            [toVariableKey(alertBorderBottomColorL)]: ref(variantBorderBottomColorL),
-            [toVariableKey(alertBorderBottomColorA)]: ref(variantBorderBottomColorA),
-            [toVariableKey(alertBorderLeftColorH)]: ref(variantBorderLeftColorH),
-            [toVariableKey(alertBorderLeftColorS)]: ref(variantBorderLeftColorS),
-            [toVariableKey(alertBorderLeftColorL)]: ref(variantBorderLeftColorL),
-            [toVariableKey(alertBorderLeftColorA)]: ref(variantBorderLeftColorA),
-            [toVariableKey(alertBackgroundH)]: ref(variantBackgroundH),
-            [toVariableKey(alertBackgroundS)]: ref(variantBackgroundS),
-            [toVariableKey(alertBackgroundL)]: ref(variantBackgroundL),
-            [toVariableKey(alertBackgroundA)]: ref(variantBackgroundA),
-            [toVariableKey(alertColorH)]: ref(variantColorH),
-            [toVariableKey(alertColorS)]: ref(variantColorS),
-            [toVariableKey(alertColorL)]: ref(variantColorL),
-            [toVariableKey(alertColorA)]: ref(variantColorA)
+            [toVariableKey(alertBorderTopColor)]: ref(variantBorderTopColor),
+            [toVariableKey(alertBorderRightColor)]: ref(variantBorderRightColor),
+            [toVariableKey(alertBorderBottomColor)]: ref(variantBorderBottomColor),
+            [toVariableKey(alertBorderLeftColor)]: ref(variantBorderLeftColor),
+            [toVariableKey(alertBackground)]: ref(variantBackground),
+            [toVariableKey(alertColor)]: ref(variantColor)
         },
         options
     );
@@ -627,6 +498,7 @@ export function useAlertThemeSizes(sizes: AlertSizeVariant[], options: Definitio
 }
 
 export function useAlertTheme(options: DefinitionOptions) {
+    useAlertThemeVariables(options);
     useAlertThemeLayoutSelectors(options);
     useAlertThemeBaseSelectors(options);
     useAlertThemeColors([...defaultAlertColors], options);

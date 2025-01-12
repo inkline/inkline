@@ -35,33 +35,14 @@ export function useBreadcrumbThemeColorConfig(
     variant: BreadcrumbColorVariant,
     options: DefinitionOptions
 ) {
-    const {
-        contrastTextColorLightH,
-        contrastTextColorLightS,
-        contrastTextColorLightL,
-        contrastTextColorLightA,
-        contrastTextColorDarkH,
-        contrastTextColorDarkS,
-        contrastTextColorDarkL,
-        contrastTextColorDarkA
-    } = useContrastTextColor(options);
+    const { contrastTextColorLight, contrastTextColorDark } = useContrastTextColor(options);
 
     return {
         light: {
-            color: {
-                h: ref(contrastTextColorLightH),
-                s: ref(contrastTextColorLightS),
-                l: ref(contrastTextColorLightL),
-                a: ref(contrastTextColorLightA)
-            }
+            color: ref(contrastTextColorLight)
         },
         dark: {
-            color: {
-                h: ref(contrastTextColorDarkH),
-                s: ref(contrastTextColorDarkS),
-                l: ref(contrastTextColorDarkL),
-                a: ref(contrastTextColorDarkA)
-            }
+            color: ref(contrastTextColorDark)
         }
     }[variant];
 }
@@ -141,7 +122,7 @@ export function useBreadcrumbThemeColorVariables(
     variant: BreadcrumbColorVariant,
     options: DefinitionOptions
 ) {
-    return nsvariables(ns, useBreadcrumbThemeColorConfig(variant, options), {
+    return nsvariables([ns, variant] as const, useBreadcrumbThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
     });
@@ -151,7 +132,7 @@ export function useBreadcrumbThemeSizeVariables(
     variant: BreadcrumbSizeVariant,
     options: DefinitionOptions
 ) {
-    return nsvariables(ns, useBreadcrumbThemeSizeConfig(variant, options), {
+    return nsvariables([ns, variant] as const, useBreadcrumbThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
@@ -249,9 +230,8 @@ export function useBreadcrumbThemeColorSelectors(
     variant: BreadcrumbColorVariant,
     options: DefinitionOptions
 ) {
-    const { breadcrumbColorH, breadcrumbColorS, breadcrumbColorL, breadcrumbColorA } =
-        useBreadcrumbThemeVariables(options);
-    const { variantColorH, variantColorS, variantColorL, variantColorA } = setExportsNamespace(
+    const { breadcrumbColor } = useBreadcrumbThemeVariables(options);
+    const { variantColor } = setExportsNamespace(
         useBreadcrumbThemeColorVariables(variant, options),
         'variant'
     );
@@ -259,10 +239,7 @@ export function useBreadcrumbThemeColorSelectors(
     selector(
         `.breadcrumb.-${variant}`,
         {
-            [toVariableKey(breadcrumbColorH)]: ref(variantColorH),
-            [toVariableKey(breadcrumbColorS)]: ref(variantColorS),
-            [toVariableKey(breadcrumbColorL)]: ref(variantColorL),
-            [toVariableKey(breadcrumbColorA)]: ref(variantColorA)
+            [toVariableKey(breadcrumbColor)]: ref(variantColor)
         },
         options
     );
@@ -287,6 +264,7 @@ export function useBreadcrumbThemeColors(
 }
 
 export function useBreadcrumbTheme(options: DefinitionOptions) {
+    useBreadcrumbThemeVariables(options);
     useBreadcrumbThemeLayout(options);
     useBreadcrumbThemeBaseSelectors(options);
     useBreadcrumbThemeColors([...defaultBreadcrumbColors], options);

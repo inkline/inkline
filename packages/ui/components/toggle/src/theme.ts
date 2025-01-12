@@ -700,7 +700,7 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //     });
 // }
 //
-// export function useToggleThemeSizeFactory(variant: ComponentSize) {
+// export function useToggleThemeSizeSelectors(variant: ComponentSize) {
 //     const {
 //         toggleBorderTopLeftRadius,
 //         toggleBorderTopRightRadius,
@@ -786,10 +786,10 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 // }
 //
 // export function useToggleThemeSizes(sizes = defaultComponentSizes) {
-//     sizes.forEach((size) => useToggleThemeSizeFactory(size, options));
+//     sizes.forEach((size) => useToggleThemeSizeSelectors(size, options));
 // }
 //
-// export function useToggleThemeColorFactory(_variant: ComponentBrandNeutralColor) {
+// export function useToggleThemeColorSelectors(_variant: ComponentBrandNeutralColor) {
 //     // const colorKey = capitalize(variant);
 //     // const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
 //     // const {
@@ -984,7 +984,7 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 // }
 //
 // export function useToggleThemeColors(colors = defaultComponentNeutralColors) {
-//     colors.forEach((color) => useToggleThemeColorFactory(color, options));
+//     colors.forEach((color) => useToggleThemeColorSelectors(color, options));
 // }
 //
 // export useToggleThemeLayoutModifiers(options: DefinitionOptions) {}

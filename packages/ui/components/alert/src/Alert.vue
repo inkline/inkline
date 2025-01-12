@@ -12,7 +12,7 @@ import {
 } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/composables';
 import { Icon } from '@inkline/component-icon';
-import type { StringOrRenderableType } from '@inkline/types';
+import { PrimitiveOrRenderable } from '@inkline/types';
 
 const componentName = 'Alert';
 
@@ -84,7 +84,7 @@ export default defineComponent({
          * @name icon
          */
         icon: {
-            type: [String, Object] as PropType<StringOrRenderableType>,
+            type: [Boolean, String, Object] as PropType<PrimitiveOrRenderable<string | boolean>>,
             default: undefined
         }
     },

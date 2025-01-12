@@ -5,7 +5,7 @@ export const defaultOutputDir = './src/theme';
 export const defaultConfigFileNamespace = 'inkline';
 export const defaultConfigFileBasename = `${defaultConfigFileNamespace}.config`;
 export const defaultConfigFileExtName = '.ts';
-export const defaultConsumerModule = 'scss';
+export const defaultConsumerModule = 'css';
 
 export const defaultConfig: Configuration = {
     themes: {},

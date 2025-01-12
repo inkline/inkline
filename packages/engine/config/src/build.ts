@@ -3,7 +3,7 @@
  *
  * @param options Build options.
  */
-import { ConfigurationOptions } from './types';
+import { BuildOptions, Configuration, UserBuildOptions } from './types';
 import {
     defaultConfigFileBasename,
     defaultConfigFileExtName,
@@ -16,15 +16,6 @@ import { existsSync } from 'fs';
 import { writeFile, mkdir } from 'fs/promises';
 import { exists } from './utils';
 import { cssGenerator } from '@inkline/generator-css';
-
-type UserBuildOptions = ConfigurationOptions & {
-    configFile?: string;
-};
-
-type BuildOptions = Required<UserBuildOptions> & {
-    configDir: string;
-    configExtName: string;
-};
 
 export function getResolvedBuildOptions(options: UserBuildOptions): BuildOptions {
     let configDir = process.cwd();
@@ -67,6 +58,10 @@ export async function build(userOptions: UserBuildOptions = {}) {
     });
     configuration.options = options;
 
+    return await buildConfiguration(configuration, options);
+}
+
+export async function buildConfiguration(configuration: Configuration, options: BuildOptions) {
     // Create output directory
     if (!(await exists(options.outputDir))) {
         await mkdir(options.outputDir, { recursive: true });

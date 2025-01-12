@@ -1,4 +1,3 @@
-export function useModalContainerTheme(options: DefinitionOptions
-)
-{
-}
+import { DefinitionOptions } from '@inkline/core';
+
+export function useModalContainerTheme(_options: DefinitionOptions) {}

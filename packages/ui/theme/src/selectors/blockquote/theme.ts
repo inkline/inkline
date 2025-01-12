@@ -63,9 +63,12 @@ export function useBlockquoteThemeSelectors(options: DefinitionOptions) {
         blockquoteMargin,
         blockquoteBorderedPaddingLeft,
         blockquoteBorderedPaddingRight,
-        blockquoteBorderedBorderWidth,
-        blockquoteBorderedBorderStyle,
-        blockquoteBorderedBorderColor,
+        blockquoteBorderedBorderLeftWidth,
+        blockquoteBorderedBorderLeftStyle,
+        blockquoteBorderedBorderLeftColor,
+        blockquoteBorderedBorderRightWidth,
+        blockquoteBorderedBorderRightStyle,
+        blockquoteBorderedBorderRightColor,
         blockquoteFooterColor,
         blockquoteFooterFontSize
     } = useBlockquoteVariables(options);
@@ -88,17 +91,17 @@ export function useBlockquoteThemeSelectors(options: DefinitionOptions) {
     }, options);
 
     selector('.blockquote.-left.-bordered', {
-        paddingLeft: vref(blockquoteBorderedPaddingLeft),
-        borderLeftWidth: vref(blockquoteBorderedBorderWidth),
-        borderLeftStyle: vref(blockquoteBorderedBorderStyle),
-        borderLeftColor: vref(blockquoteBorderedBorderColor)
+        paddingLeft: ref(blockquoteBorderedPaddingLeft),
+        borderLeftWidth: ref(blockquoteBorderedBorderLeftWidth),
+        borderLeftStyle: ref(blockquoteBorderedBorderLeftStyle),
+        borderLeftColor: ref(blockquoteBorderedBorderLeftColor)
     }, options);
 
     selector('.blockquote.-right.-bordered', {
         paddingRight: ref(blockquoteBorderedPaddingRight),
-        borderRightWidth: ref(blockquoteBorderedBorderWidth),
-        borderRightStyle: ref(blockquoteBorderedBorderStyle),
-        borderRightColor: ref(blockquoteBorderedBorderColor)
+        borderRightWidth: ref(blockquoteBorderedBorderRightWidth),
+        borderRightStyle: ref(blockquoteBorderedBorderRightStyle),
+        borderRightColor: ref(blockquoteBorderedBorderRightColor)
     }, options);
 
     selector('.blockquote > p:last-child', {

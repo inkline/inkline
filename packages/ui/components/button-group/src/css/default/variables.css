@@ -10,5 +10,4 @@
     --button-group--box-shadow-blur-radius: var(--box-shadow-blur-radius);
     --button-group--box-shadow-spread-radius: var(--box-shadow-spread-radius);
     --button-group--box-shadow-color: var(--box-shadow-color);
-    --button-group--box-shadow: var(--button-group--box-shadow-offset-x) var(--button-group--box-shadow-offset-y) var(--button-group--box-shadow-blur-radius) var(--button-group--box-shadow-spread-radius) var(--button-group--box-shadow-color);
 }

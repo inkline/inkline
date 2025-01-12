@@ -1,74 +1,110 @@
-import { ref, selector, nsvariables, defaultDefinitionOptions } from '@inkline/core';
+import { ref, selector, nsvariables, DefinitionOptions, vref } from '@inkline/core';
 import { useSpacing } from '@inkline/theme';
 
 const ns = 'form-group';
 
-export function useFormGroupThemeVariables(options: DefinitionOptions) {
+/**
+ * Config
+ */
+
+export function useFormGroupThemeConfig(options: DefinitionOptions) {
     const { spacing } = useSpacing(options);
 
     return {
-        ...nsvariables(
-            ns,
-            {
-                margin: {
-                    top: 0,
-                    right: 0,
-                    bottom: ref(spacing),
-                    left: 0
-                }
-            },
-            options
-        )
+        margin: {
+            top: 0,
+            right: 0,
+            bottom: ref(spacing),
+            left: 0
+        }
     };
 }
 
-export function useFormGroupThemeLayout(options: DefinitionOptions
-)
-{
-    selector('.form-group', {
-        display: 'block',
-        verticalAlign: 'middle',
-        position: 'relative',
-        padding: 0
-    });
+/**
+ * Variables
+ */
 
-    selector('.form-group.-inline', {
-        display: 'flex'
-    });
-
-    selector('.form-group.-inline > .form-input-group', {
-        flexBasis: '100%'
-    });
-
-    selector('.form-group.-inline > .form-label', {
-        display: 'flex',
-        flex: '0 0 auto',
-        alignSelf: 'center',
-        marginBottom: 0
-    });
-
-    selector('.form-group.-inline > .form-label.-right', {
-        marginRight: 0
+export function useFormGroupThemeVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useFormGroupThemeConfig(options), {
+        ...options,
+        registerComposed: false
     });
 }
 
-export function useFormGroupThemeBase(options: DefinitionOptions
-)
-{
+/**
+ * Selectors
+ */
+
+export function useFormGroupThemeLayoutSelectors(options: DefinitionOptions) {
+    selector(
+        '.form-group',
+        {
+            display: 'block',
+            verticalAlign: 'middle',
+            position: 'relative',
+            padding: 0
+        },
+        options
+    );
+
+    selector(
+        '.form-group.-inline',
+        {
+            display: 'flex'
+        },
+        options
+    );
+
+    selector(
+        '.form-group.-inline > .form-input-group',
+        {
+            flexBasis: '100%'
+        },
+        options
+    );
+
+    selector(
+        '.form-group.-inline > .form-label',
+        {
+            display: 'flex',
+            flex: '0 0 auto',
+            alignSelf: 'center',
+            marginBottom: 0
+        },
+        options
+    );
+
+    selector(
+        '.form-group.-inline > .form-label.-right',
+        {
+            marginRight: 0
+        },
+        options
+    );
+}
+
+export function useFormGroupThemeBaseSelectors(options: DefinitionOptions) {
     const { formGroupMargin } = useFormGroupThemeVariables(options);
 
-    selector('.form-group', {
-        margin: ref(formGroupMargin)
-    });
+    selector(
+        '.form-group',
+        {
+            margin: vref(formGroupMargin)
+        },
+        options
+    );
 
-    selector('.form-group:last-child', {
-        marginBottom: 0
-    });
+    selector(
+        '.form-group:last-child',
+        {
+            marginBottom: 0
+        },
+        options
+    );
 }
 
-export function useFormGroupTheme(options: DefinitionOptions
-)
-{
-    useFormGroupThemeLayout(options);
-    useFormGroupThemeBase(options);
+export function useFormGroupTheme(options: DefinitionOptions) {
+    useFormGroupThemeVariables(options);
+    useFormGroupThemeLayoutSelectors(options);
+    useFormGroupThemeBaseSelectors(options);
 }

@@ -2,7 +2,7 @@ import { defineNuxtModule, addPluginTemplate, addComponentsDir } from '@nuxt/kit
 import { join, resolve, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { createRequire } from 'module';
-import type { UserOptions } from './plugin/types';
+import type { PluginUserOptions } from './plugin/types';
 import { watch } from './plugin/watch';
 import { build } from './plugin/build';
 import { getResolvedBuildOptions } from '@inkline/config';
@@ -26,7 +26,7 @@ const defaultImportOptions: ModuleConfig['import'] = {
 export type InklineModuleOptions = {
     globals: Record<string, unknown>;
 } & ModuleConfig &
-    UserOptions;
+    PluginUserOptions;
 
 export const inkline = defineNuxtModule<InklineModuleOptions>({
     meta: {
@@ -44,7 +44,7 @@ export const inkline = defineNuxtModule<InklineModuleOptions>({
             ...importOptions
         };
 
-        const pluginOptions: UserOptions = {
+        const pluginOptions: PluginUserOptions = {
             configFile,
             outputDir,
             extName
@@ -58,8 +58,8 @@ export const inkline = defineNuxtModule<InklineModuleOptions>({
         if (importOptions.styles !== false) {
             nuxt.options.css = nuxt.options.css || [];
 
-            nuxt.options.css.unshift(`${resolvedPluginOptions.outputDir}/index.scss`);
-            nuxt.options.css.unshift('@inkline/vue/lib/css/index.scss');
+            nuxt.options.css.unshift(`${resolvedPluginOptions.outputDir}/index.css`);
+            nuxt.options.css.unshift('inkline/dist/css/index.css');
 
             if (importOptions.utilities !== false) {
                 nuxt.options.css.push('@inkline/vue/lib/css/utilities.scss');

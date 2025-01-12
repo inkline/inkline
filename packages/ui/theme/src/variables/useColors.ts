@@ -363,7 +363,7 @@ export function useNeutralColors(options: DefinitionOptions) {
     };
 }
 
-export function useBrandColors(options: DefinitionOptions) {
+export function useBrandBaseColors(options: DefinitionOptions) {
     const {
         colorBlueH,
         colorBlueS,
@@ -505,7 +505,7 @@ export function useBrandColorVariants(options: DefinitionOptions) {
         colorDanger,
         colorLight,
         colorDark
-    } = useBrandColors(options);
+    } = useBrandBaseColors(options);
 
     const {
         colorPrimary100H,
@@ -1596,6 +1596,14 @@ export function useBrandColorVariants(options: DefinitionOptions) {
         colorDarkShade150
     };
 }
+
+export function useBrandColors(options: DefinitionOptions) {
+    return {
+        ...useBrandBaseColors(options),
+        ...useBrandColorVariants(options)
+    };
+}
+
 
 export function useColors(options: DefinitionOptions) {
     return {

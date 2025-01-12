@@ -64,6 +64,10 @@ export function consumeCalc(instance: Calc): string {
  * Consumes a color instance, equivalent to setting a CSS color value
  */
 export function consumeColor(instance: Color): string {
+    if (isCSS(instance.__value)) {
+        return `hsla(${consume(instance.__value)})`;
+    }
+
     const h = consume(instance.__value[0]);
     const s = resolvePercentagePropertyValue(consume(instance.__value[1]));
     const l = resolvePercentagePropertyValue(consume(instance.__value[2]));

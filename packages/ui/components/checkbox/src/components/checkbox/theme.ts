@@ -3,25 +3,25 @@ import {
     ref,
     selector,
     nsvariables,
-    defaultDefinitionOptions,
-    stripExportsNamespace,
-    replaceExportsNamespace,
     add,
-    hsla
+    setExportsNamespace,
+    toVariableKey,
+    vref,
+    DefinitionOptions,
+    hsla,
+    css
 } from '@inkline/core';
-import { capitalize } from '@inkline/utils';
+import { merge } from '@inkline/utils';
 import {
     useBorder,
     useBorderRadius,
     useBoxShadow,
     useFontSize,
-    useKeyMappedSizeMultiplier,
     useTransition,
     useTextColor,
     useBrandColors,
     useBrandColorVariants,
     useNeutralColors,
-    useColors,
     useContrastTextColor,
     useSpacing
 } from '@inkline/theme';
@@ -42,16 +42,233 @@ const checkmarkIconUrl =
 const minusIconUrl =
     'data:image/svg+xml; utf8, <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>minus</title><path d="M0 11.375v5.25c0 0.483 0.392 0.875 0.875 0.875h26.25c0.483 0 0.875-0.392 0.875-0.875v-5.25c0-0.483-0.392-0.875-0.875-0.875h-26.25c-0.483 0-0.875 0.392-0.875 0.875z"></path></svg>';
 
-export function useCheckboxThemeVariables(options: DefinitionOptions) {
-    const { colorPrimary, colorPrimaryH, colorPrimaryS, colorPrimaryL } = useBrandColors(options);
+export function useCheckboxThemeColorConfig(
+    variant: CheckboxColorVariant,
+    options: DefinitionOptions
+) {
+    const { colorDark } = useBrandColors(options);
     const {
+        colorDarkTint50,
         colorLightShade50,
         colorPrimary300,
         colorPrimary400,
         colorPrimary500,
-        colorPrimaryShade50
+        colorPrimary600,
+        colorPrimary700,
+        colorPrimary800
     } = useBrandColorVariants(options);
-    const { colorWhite, colorGray100 } = useNeutralColors(options);
+    const { colorWhite, colorGray100, colorGray200, colorGray600, colorGray700 } =
+        useNeutralColors(options);
+
+    const { contrastTextColorLight, contrastTextColorDark } = useContrastTextColor(options);
+
+    return {
+        /**
+         * @variant light
+         */
+        light: {
+            border: {
+                color: ref(colorLightShade50)
+            },
+            background: ref(colorWhite),
+            color: ref(contrastTextColorLight),
+            /**
+             * @state disabled
+             */
+            disabled: {
+                background: ref(colorGray100),
+                border: {
+                    color: ref(colorGray200)
+                }
+            },
+            /**
+             * @state readonly
+             */
+            readonly: {
+                background: ref(colorGray100),
+                border: {
+                    color: ref(colorGray200)
+                }
+            },
+            /**
+             * @state checked
+             */
+            checked: {
+                /**
+                 * @state checked disabled
+                 */
+                disabled: {
+                    background: ref(colorPrimary300),
+                    border: {
+                        color: ref(colorPrimary400)
+                    }
+                },
+                /**
+                 * @state checked readonly
+                 */
+                readonly: {
+                    background: ref(colorPrimary400),
+                    border: {
+                        color: ref(colorPrimary500)
+                    }
+                }
+            }
+        },
+        /**
+         * @variant dark
+         */
+        dark: {
+            border: {
+                color: ref(colorDarkTint50)
+            },
+            background: ref(colorDark),
+            color: ref(contrastTextColorDark),
+            /**
+             * @state disabled
+             */
+            disabled: {
+                background: ref(colorGray600),
+                border: {
+                    color: ref(colorGray700)
+                }
+            },
+            /**
+             * @state readonly
+             */
+            readonly: {
+                background: ref(colorGray600),
+                border: {
+                    color: ref(colorGray700)
+                }
+            },
+            /**
+             * @state checked
+             */
+            checked: {
+                /**
+                 * @state checked disabled
+                 */
+                disabled: {
+                    background: ref(colorPrimary700),
+                    border: {
+                        color: ref(colorPrimary800)
+                    }
+                },
+                /**
+                 * @state checked readonly
+                 */
+                readonly: {
+                    background: ref(colorPrimary600),
+                    border: {
+                        color: ref(colorPrimary700)
+                    }
+                }
+            }
+        }
+    }[variant];
+}
+
+export function useCheckboxThemeSizeConfig(
+    variant: CheckboxSizeVariant,
+    options: DefinitionOptions
+) {
+    const {
+        borderTopLeftRadiusSm,
+        borderTopRightRadiusSm,
+        borderBottomRightRadiusSm,
+        borderBottomLeftRadiusSm,
+        borderTopLeftRadiusMd,
+        borderTopRightRadiusMd,
+        borderBottomRightRadiusMd,
+        borderBottomLeftRadiusMd,
+        borderTopLeftRadiusLg,
+        borderTopRightRadiusLg,
+        borderBottomRightRadiusLg,
+        borderBottomLeftRadiusLg
+    } = useBorderRadius(options);
+    const { fontSizeXs, fontSizeSm, fontSizeMd } = useFontSize(options);
+    const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
+
+    return {
+        sm: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusSm),
+                topRight: ref(borderTopRightRadiusSm),
+                bottomRight: ref(borderBottomRightRadiusSm),
+                bottomLeft: ref(borderBottomLeftRadiusSm)
+            },
+            fontSize: ref(fontSizeSm),
+            margin: {
+                top: 0,
+                right: multiply(ref(spacingSm), 0.5),
+                bottom: multiply(ref(spacingSm), 0.5),
+                left: 0
+            },
+            width: ref(spacingSm),
+            height: ref(spacingSm),
+            /**
+             * @element checkmark
+             */
+            checkmark: {
+                width: multiply(ref(spacingSm), 0.5),
+                height: multiply(ref(spacingSm), 0.5)
+            }
+        },
+        md: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusMd),
+                topRight: ref(borderTopRightRadiusMd),
+                bottomRight: ref(borderBottomRightRadiusMd),
+                bottomLeft: ref(borderBottomLeftRadiusMd)
+            },
+            fontSize: ref(fontSizeMd),
+            margin: {
+                top: 0,
+                right: multiply(ref(spacingMd), 0.5),
+                bottom: multiply(ref(spacingMd), 0.5),
+                left: 0
+            },
+            width: ref(spacingMd),
+            height: ref(spacingMd),
+            /**
+             * @element checkmark
+             */
+            checkmark: {
+                width: multiply(ref(spacingMd), 0.5),
+                height: multiply(ref(spacingMd), 0.5)
+            }
+        },
+        lg: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusLg),
+                topRight: ref(borderTopRightRadiusLg),
+                bottomRight: ref(borderBottomRightRadiusLg),
+                bottomLeft: ref(borderBottomLeftRadiusLg)
+            },
+            fontSize: ref(fontSizeXs),
+            margin: {
+                top: 0,
+                right: multiply(ref(spacingLg), 0.5),
+                bottom: multiply(ref(spacingLg), 0.5),
+                left: 0
+            },
+            width: ref(spacingLg),
+            height: ref(spacingLg),
+            /**
+             * @element checkmark
+             */
+            checkmark: {
+                width: multiply(ref(spacingLg), 0.5),
+                height: multiply(ref(spacingLg), 0.5)
+            }
+        }
+    }[variant];
+}
+
+export function useCheckboxThemeConfig(options: DefinitionOptions) {
+    const { colorPrimary } = useBrandColors(options);
+    const { colorPrimaryShade50 } = useBrandColorVariants(options);
+    const { colorWhite } = useNeutralColors(options);
     const {
         borderTopStyle,
         borderTopWidth,
@@ -63,12 +280,6 @@ export function useCheckboxThemeVariables(options: DefinitionOptions) {
         borderLeftWidth
     } = useBorder(options);
     const {
-        borderTopLeftRadius,
-        borderTopRightRadius,
-        borderBottomRightRadius,
-        borderBottomLeftRadius
-    } = useBorderRadius(options);
-    const {
         boxShadowOffsetX,
         boxShadowOffsetY,
         boxShadowBlurRadius,
@@ -76,197 +287,215 @@ export function useCheckboxThemeVariables(options: DefinitionOptions) {
         boxShadowColor
     } = useBoxShadow(options);
     const { textColorWeak } = useTextColor(options);
-    const { fontSize } = useFontSize(options);
-    const { spacing } = useSpacing(options);
     const { transitionDuration, transitionTimingFunction } = useTransition(options);
-    const { contrastTextColorLight } = useContrastTextColor(options);
 
-    return {
-        ...nsvariables(
-            ns,
-            {
-                background: ref(colorWhite),
-                border: {
-                    top: {
-                        color: ref(colorLightShade50),
-                        width: ref(borderTopWidth),
-                        style: ref(borderTopStyle)
-                    },
-                    right: {
-                        color: ref(colorLightShade50),
-                        width: ref(borderRightWidth),
-                        style: ref(borderRightStyle)
-                    },
-                    bottom: {
-                        color: ref(colorLightShade50),
-                        width: ref(borderBottomWidth),
-                        style: ref(borderBottomStyle)
-                    },
-                    left: {
-                        color: ref(colorLightShade50),
-                        width: ref(borderLeftWidth),
-                        style: ref(borderLeftStyle)
-                    }
+    return merge(
+        {
+            border: {
+                top: {
+                    width: ref(borderTopWidth),
+                    style: ref(borderTopStyle)
                 },
-                borderRadius: {
-                    topLeft: ref(borderTopLeftRadius),
-                    topRight: ref(borderTopRightRadius),
-                    bottomRight: ref(borderBottomRightRadius),
-                    bottomLeft: ref(borderBottomLeftRadius)
+                right: {
+                    width: ref(borderRightWidth),
+                    style: ref(borderRightStyle)
                 },
-                boxShadow: {
-                    offsetX: ref(boxShadowOffsetX),
-                    offsetY: ref(boxShadowOffsetY),
-                    blurRadius: ref(boxShadowBlurRadius),
-                    spreadRadius: ref(boxShadowSpreadRadius),
-                    color: ref(boxShadowColor)
+                bottom: {
+                    width: ref(borderBottomWidth),
+                    style: ref(borderBottomStyle)
                 },
-                color: ref(contrastTextColorLight),
-                fontSize: ref(fontSize),
-                margin: {
-                    top: 0,
-                    right: multiply(ref(spacing), 0.5),
-                    bottom: multiply(ref(spacing), 0.5),
-                    left: 0
-                },
-                width: '1rem',
-                height: '1rem',
-                transition: {
-                    property: 'background-color, color, border-color, transform',
-                    duration: ref(transitionDuration),
-                    timingFunction: ref(transitionTimingFunction)
+                left: {
+                    width: ref(borderLeftWidth),
+                    style: ref(borderLeftStyle)
                 }
             },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'checkmark'] as const,
-            {
-                color: ref(colorWhite),
-                width: '0.5rem',
-                height: '0.5rem'
+            boxShadow: {
+                offsetX: ref(boxShadowOffsetX),
+                offsetY: ref(boxShadowOffsetY),
+                blurRadius: ref(boxShadowBlurRadius),
+                spreadRadius: ref(boxShadowSpreadRadius),
+                color: ref(boxShadowColor)
             },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'checked'] as const,
-            {
+            transition: {
+                property: 'background-color, color, border-color, transform',
+                duration: ref(transitionDuration),
+                timingFunction: ref(transitionTimingFunction)
+            },
+            /**
+             * @element checkmark
+             */
+            checkmark: {
+                color: ref(colorWhite)
+            },
+            /**
+             * @state disabled
+             */
+            disabled: {
+                color: ref(textColorWeak)
+            },
+            /**
+             * @state readonly
+             */
+            readonly: {
+                color: ref(textColorWeak)
+            },
+            /**
+             * @state checked
+             */
+            checked: {
                 background: ref(colorPrimary),
                 border: {
                     color: ref(colorPrimaryShade50)
                 }
             },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'disabled'] as const,
-            {
-                color: ref(textColorWeak),
-                background: ref(colorGray100)
-            },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'readonly'] as const,
-            {
-                background: ref(colorGray100)
-            },
-            options
-        ),
-        ...nsvariables(
-            [ns, 'focus'] as const,
-            {
+            focus: {
                 boxShadow: {
-                    offsetX: 0,
-                    offsetY: 0,
-                    blurRadius: 0,
-                    spreadRadius: '3px',
-                    color: hsla([ref(colorPrimaryH), ref(colorPrimaryS), ref(colorPrimaryL), 0.25])
+                    offsetX: ref(boxShadowOffsetX),
+                    offsetY: ref(boxShadowOffsetY),
+                    blurRadius: ref(boxShadowBlurRadius),
+                    spreadRadius: ref(boxShadowSpreadRadius),
+                    color: hsla(css`from ${ref(colorPrimary)} h s l / 0.25`)
                 }
-            },
-            options
-        ),
-        ...nsvariables([ns, 'checked', 'disabled'] as const, {
-            background: ref(colorPrimary300),
-            border: {
-                color: ref(colorPrimary400)
             }
-        }),
-        ...nsvariables([ns, 'checked', 'readonly'] as const, {
-            background: ref(colorPrimary400),
-            border: {
-                color: ref(colorPrimary500)
-            }
-        })
-    };
+        },
+        useCheckboxThemeColorConfig(defaultCheckboxColor, options),
+        useCheckboxThemeSizeConfig(defaultCheckboxSize, options)
+    );
 }
 
-export function useCheckboxThemeLayout(options: DefinitionOptions) {
+/**
+ * Variables
+ */
+
+export function useCheckboxThemeColorVariables(
+    variant: CheckboxColorVariant,
+    options: DefinitionOptions
+) {
+    return nsvariables([ns, variant] as const, useCheckboxThemeColorConfig(variant, options), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+export function useCheckboxThemeSizeVariables(
+    variant: CheckboxSizeVariant,
+    options: DefinitionOptions
+) {
+    return nsvariables([ns, variant] as const, useCheckboxThemeSizeConfig(variant, options), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+export function useCheckboxThemeVariables(options: DefinitionOptions) {
+    return nsvariables(ns, useCheckboxThemeConfig(options), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+/**
+ * Selectors
+ */
+
+export function useCheckboxThemeLayoutSelectors(options: DefinitionOptions) {
     const { checkboxWidth, checkboxHeight, checkboxCheckmarkWidth, checkboxCheckmarkHeight } =
         useCheckboxThemeVariables(options);
 
-    selector('.checkbox', {
-        position: 'relative',
-        display: 'flex',
-        alignItems: 'center',
-        whiteSpace: 'nowrap',
-        outline: 0
-    });
+    selector(
+        '.checkbox',
+        {
+            position: 'relative',
+            display: 'flex',
+            alignItems: 'center',
+            whiteSpace: 'nowrap',
+            outline: 0
+        },
+        options
+    );
 
-    selector('.checkbox:last-of-type', {
-        marginRight: 0
-    });
+    selector(
+        '.checkbox:last-of-type',
+        {
+            marginRight: 0
+        },
+        options
+    );
 
-    selector('.checkbox .checkbox-label', {
-        cursor: 'pointer',
-        marginBottom: 0,
-        display: 'inline-flex',
-        alignItems: 'center',
-        position: 'relative'
-    });
+    selector(
+        '.checkbox .checkbox-label',
+        {
+            cursor: 'pointer',
+            marginBottom: 0,
+            display: 'inline-flex',
+            alignItems: 'center',
+            position: 'relative'
+        },
+        options
+    );
 
-    selector(['.checkbox .checkbox-label::before', '.checkbox .checkbox-label::after'], {
-        position: 'absolute',
-        top: '50%',
-        left: 0,
-        display: 'inline-flex',
-        cursor: 'pointer',
-        width: ref(checkboxWidth),
-        height: ref(checkboxHeight)
-    });
+    selector(
+        ['.checkbox .checkbox-label::before', '.checkbox .checkbox-label::after'],
+        {
+            position: 'absolute',
+            top: '50%',
+            left: 0,
+            display: 'inline-flex',
+            cursor: 'pointer',
+            width: ref(checkboxWidth),
+            height: ref(checkboxHeight)
+        },
+        options
+    );
 
-    selector('.checkbox .checkbox-label::before', {
-        content: '""',
-        userSelect: 'none',
-        transform: 'translate(0, -50%)'
-    });
+    selector(
+        '.checkbox .checkbox-label::before',
+        {
+            content: '""',
+            userSelect: 'none',
+            transform: 'translate(0, -50%)'
+        },
+        options
+    );
 
-    selector('.checkbox input:indeterminate ~ .checkbox-label::after', {
-        maskImage: `url('${minusIconUrl}')`
-    });
+    selector(
+        '.checkbox input:indeterminate ~ .checkbox-label::after',
+        {
+            maskImage: `url('${minusIconUrl}')`
+        },
+        options
+    );
 
-    selector('.checkbox .checkbox-label::after', {
-        content: '""',
-        zIndex: 1,
-        textAlign: 'center',
-        transform: 'scale(0) translate(0, -50%)',
-        border: '1px solid transparent',
-        transformOrigin: 'center top',
-        maskImage: `url('${checkmarkIconUrl}')`,
-        maskSize: [ref(checkboxCheckmarkWidth), ref(checkboxCheckmarkHeight)],
-        maskPosition: 'center center',
-        maskRepeat: 'no-repeat'
-    });
+    selector(
+        '.checkbox .checkbox-label::after',
+        {
+            content: '""',
+            zIndex: 1,
+            textAlign: 'center',
+            transform: 'scale(0) translate(0, -50%)',
+            border: '1px solid transparent',
+            transformOrigin: 'center top',
+            maskImage: `url('${checkmarkIconUrl}')`,
+            maskSize: [ref(checkboxCheckmarkWidth), ref(checkboxCheckmarkHeight)],
+            maskPosition: 'center center',
+            maskRepeat: 'no-repeat'
+        },
+        options
+    );
 
-    selector('.checkbox input', {
-        top: 0,
-        left: 0,
-        position: 'absolute',
-        zIndex: 0,
-        opacity: 0,
-        height: 0,
-        width: 0
-    });
+    selector(
+        '.checkbox input',
+        {
+            top: 0,
+            left: 0,
+            position: 'absolute',
+            zIndex: 0,
+            opacity: 0,
+            height: 0,
+            width: 0
+        },
+        options
+    );
 
     selector(
         [
@@ -277,7 +506,8 @@ export function useCheckboxThemeLayout(options: DefinitionOptions) {
         ],
         {
             outline: 0
-        }
+        },
+        options
     );
 
     selector(
@@ -290,7 +520,8 @@ export function useCheckboxThemeLayout(options: DefinitionOptions) {
             maskPosition: 'center center',
             maskRepeat: 'no-repeat',
             transform: 'scale(1) translate(0, -50%)'
-        }
+        },
+        options
     );
 
     selector(
@@ -300,7 +531,8 @@ export function useCheckboxThemeLayout(options: DefinitionOptions) {
         ],
         {
             cursor: 'default'
-        }
+        },
+        options
     );
 
     selector(
@@ -312,14 +544,18 @@ export function useCheckboxThemeLayout(options: DefinitionOptions) {
         ],
         {
             cursor: 'not-allowed'
-        }
+        },
+        options
     );
 }
 
-export function useCheckboxThemeBase(options: DefinitionOptions) {
+export function useCheckboxThemeBaseSelectors(options: DefinitionOptions) {
     const {
         checkboxBackground,
-        checkboxBorderColor,
+        checkboxBorderTopColor,
+        checkboxBorderRightColor,
+        checkboxBorderBottomColor,
+        checkboxBorderLeftColor,
         checkboxBorderStyle,
         checkboxBorderWidth,
         checkboxBorderRadius,
@@ -331,13 +567,22 @@ export function useCheckboxThemeBase(options: DefinitionOptions) {
         checkboxWidth,
         checkboxTransitionDuration,
         checkboxTransitionTimingFunction,
-        checkboxTransition,
+        checkboxTransitionProperty,
         checkboxCheckedBackground,
-        checkboxCheckedBorderColor,
+        checkboxCheckedBorderTopColor,
+        checkboxCheckedBorderRightColor,
+        checkboxCheckedBorderBottomColor,
+        checkboxCheckedBorderLeftColor,
         checkboxCheckedDisabledBackground,
-        checkboxCheckedDisabledBorderColor,
+        checkboxCheckedDisabledBorderTopColor,
+        checkboxCheckedDisabledBorderRightColor,
+        checkboxCheckedDisabledBorderBottomColor,
+        checkboxCheckedDisabledBorderLeftColor,
         checkboxCheckedReadonlyBackground,
-        checkboxCheckedReadonlyBorderColor,
+        checkboxCheckedReadonlyBorderTopColor,
+        checkboxCheckedReadonlyBorderRightColor,
+        checkboxCheckedReadonlyBorderBottomColor,
+        checkboxCheckedReadonlyBorderLeftColor,
         checkboxDisabledColor,
         checkboxDisabledBackground,
         checkboxReadonlyBackground,
@@ -345,36 +590,64 @@ export function useCheckboxThemeBase(options: DefinitionOptions) {
         checkboxFocusBoxShadow
     } = useCheckboxThemeVariables(options);
 
-    selector('.checkbox', {
-        margin: ref(checkboxMargin)
-    });
+    selector(
+        '.checkbox',
+        {
+            margin: vref(checkboxMargin)
+        },
+        options
+    );
 
-    selector('.checkbox .checkbox-label', {
-        color: ref(checkboxColor),
-        fontSize: ref(checkboxFontSize),
-        transition: ref(checkboxTransition),
-        paddingLeft: add(ref(checkboxWidth), ref(checkboxMarginRight))
-    });
+    selector(
+        '.checkbox .checkbox-label',
+        {
+            color: vref(checkboxColor),
+            fontSize: ref(checkboxFontSize),
+            paddingLeft: add(ref(checkboxWidth), ref(checkboxMarginRight)),
+            transitionProperty: ref(checkboxTransitionProperty),
+            transitionDuration: ref(checkboxTransitionDuration),
+            transitionTimingFunction: ref(checkboxTransitionTimingFunction)
+        },
+        options
+    );
 
-    selector('.checkbox .checkbox-label::before', {
-        background: ref(checkboxBackground),
-        borderColor: ref(checkboxBorderColor),
-        borderWidth: ref(checkboxBorderWidth),
-        borderStyle: ref(checkboxBorderStyle),
-        borderRadius: ref(checkboxBorderRadius),
-        boxShadow: ref(checkboxBoxShadow),
-        transition: ref(checkboxTransition)
-    });
+    selector(
+        '.checkbox .checkbox-label::before',
+        {
+            background: vref(checkboxBackground),
+            borderTopColor: vref(checkboxBorderTopColor),
+            borderRightColor: vref(checkboxBorderRightColor),
+            borderBottomColor: vref(checkboxBorderBottomColor),
+            borderLeftColor: vref(checkboxBorderLeftColor),
+            borderWidth: vref(checkboxBorderWidth),
+            borderStyle: vref(checkboxBorderStyle),
+            borderRadius: vref(checkboxBorderRadius),
+            boxShadow: vref(checkboxBoxShadow),
+            transitionProperty: ref(checkboxTransitionProperty),
+            transitionDuration: ref(checkboxTransitionDuration),
+            transitionTimingFunction: ref(checkboxTransitionTimingFunction)
+        },
+        options
+    );
 
-    selector('.checkbox .checkbox-label::after', {
-        background: ref(checkboxCheckmarkColor),
-        transitionDuration: ref(checkboxTransitionDuration),
-        transitionTimingFunction: ref(checkboxTransitionTimingFunction)
-    });
+    selector(
+        '.checkbox .checkbox-label::after',
+        {
+            background: vref(checkboxCheckmarkColor),
+            transitionProperty: ref(checkboxTransitionProperty),
+            transitionDuration: ref(checkboxTransitionDuration),
+            transitionTimingFunction: ref(checkboxTransitionTimingFunction)
+        },
+        options
+    );
 
-    selector('.checkbox:not(.-disabled) .checkbox-label:focus::before', {
-        boxShadow: ref(checkboxFocusBoxShadow)
-    });
+    selector(
+        '.checkbox:not(.-disabled) .checkbox-label:focus::before',
+        {
+            boxShadow: vref(checkboxFocusBoxShadow)
+        },
+        options
+    );
 
     selector(
         [
@@ -382,41 +655,72 @@ export function useCheckboxThemeBase(options: DefinitionOptions) {
             '.checkbox input:indeterminate ~ .checkbox-label::before'
         ],
         {
-            background: ref(checkboxCheckedBackground),
-            borderColor: ref(checkboxCheckedBorderColor)
-        }
+            background: vref(checkboxCheckedBackground),
+            borderTopColor: ref(checkboxCheckedBorderTopColor),
+            borderRightColor: ref(checkboxCheckedBorderRightColor),
+            borderBottomColor: ref(checkboxCheckedBorderBottomColor),
+            borderLeftColor: ref(checkboxCheckedBorderLeftColor)
+        },
+        options
     );
 
-    selector('.checkbox input:disabled ~ .checkbox-label', {
-        color: ref(checkboxDisabledColor),
-        cursor: 'default'
-    });
+    selector(
+        '.checkbox input:disabled ~ .checkbox-label',
+        {
+            color: vref(checkboxDisabledColor),
+            cursor: 'default'
+        },
+        options
+    );
 
-    selector(['.checkbox input:disabled ~ .checkbox-label::before'], {
-        background: ref(checkboxDisabledBackground),
-        cursor: 'not-allowed'
-    });
+    selector(
+        ['.checkbox input:disabled ~ .checkbox-label::before'],
+        {
+            background: vref(checkboxDisabledBackground),
+            cursor: 'not-allowed'
+        },
+        options
+    );
 
-    selector(['.checkbox input[readonly] ~ .checkbox-label::before'], {
-        background: ref(checkboxReadonlyBackground),
-        cursor: 'not-allowed'
-    });
+    selector(
+        ['.checkbox input[readonly] ~ .checkbox-label::before'],
+        {
+            background: vref(checkboxReadonlyBackground),
+            cursor: 'not-allowed'
+        },
+        options
+    );
 
-    selector('.checkbox input:checked:disabled ~ .checkbox-label::before', {
-        background: ref(checkboxCheckedDisabledBackground),
-        borderColor: ref(checkboxCheckedDisabledBorderColor)
-    });
+    selector(
+        '.checkbox input:checked:disabled ~ .checkbox-label::before',
+        {
+            background: vref(checkboxCheckedDisabledBackground),
+            borderTopColor: ref(checkboxCheckedDisabledBorderTopColor),
+            borderRightColor: ref(checkboxCheckedDisabledBorderRightColor),
+            borderBottomColor: ref(checkboxCheckedDisabledBorderBottomColor),
+            borderLeftColor: ref(checkboxCheckedDisabledBorderLeftColor)
+        },
+        options
+    );
 
-    selector('.checkbox input[readonly]:checked ~ .checkbox-label::before', {
-        background: ref(checkboxCheckedReadonlyBackground),
-        borderColor: ref(checkboxCheckedReadonlyBorderColor)
-    });
+    selector(
+        '.checkbox input[readonly]:checked ~ .checkbox-label::before',
+        {
+            background: vref(checkboxCheckedReadonlyBackground),
+            borderTopColor: ref(checkboxCheckedReadonlyBorderTopColor),
+            borderRightColor: ref(checkboxCheckedReadonlyBorderRightColor),
+            borderBottomColor: ref(checkboxCheckedReadonlyBorderBottomColor),
+            borderLeftColor: ref(checkboxCheckedReadonlyBorderLeftColor)
+        },
+        options
+    );
 }
 
-export function useCheckboxThemeSizeFactory(variant: CheckboxSizeVariant) {
+export function useCheckboxThemeSizeSelectors(
+    variant: CheckboxSizeVariant,
+    options: DefinitionOptions
+) {
     const {
-        checkboxMarginRight,
-        checkboxMarginBottom,
         checkboxBorderTopLeftRadius,
         checkboxBorderTopRightRadius,
         checkboxBorderBottomRightRadius,
@@ -424,173 +728,223 @@ export function useCheckboxThemeSizeFactory(variant: CheckboxSizeVariant) {
         checkboxFontSize,
         checkboxWidth,
         checkboxHeight,
+        checkboxMarginTop,
+        checkboxMarginRight,
+        checkboxMarginBottom,
+        checkboxMarginLeft,
         checkboxCheckmarkWidth,
         checkboxCheckmarkHeight
     } = useCheckboxThemeVariables(options);
-    const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
-    const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
-    const sizeNs = [ns, variant] as const;
 
     const {
-        borderTopLeftRadius,
-        borderTopRightRadius,
-        borderBottomRightRadius,
-        borderBottomLeftRadius,
-        fontSize,
-        width,
-        height
-    } = stripExportsNamespace(
-        nsvariables(sizeNs, {
-            borderRadius: {
-                topLeft: multiply(ref(checkboxBorderTopLeftRadius), sizeMultiplierRef),
-                topRight: multiply(ref(checkboxBorderTopRightRadius), sizeMultiplierRef),
-                bottomRight: multiply(ref(checkboxBorderBottomRightRadius), sizeMultiplierRef),
-                bottomLeft: multiply(ref(checkboxBorderBottomLeftRadius), sizeMultiplierRef)
-            },
-            fontSize: multiply(ref(checkboxFontSize), sizeMultiplierRef),
-            margin: {
-                top: 0,
-                right: multiply(ref(checkboxMarginRight), sizeMultiplierRef),
-                bottom: multiply(ref(checkboxMarginBottom), sizeMultiplierRef),
-                left: 0
-            },
-            width: multiply(ref(checkboxWidth), sizeMultiplierRef),
-            height: multiply(ref(checkboxHeight), sizeMultiplierRef)
-        })
-    );
-
-    const { checkmarkWidth, checkmarkHeight } = replaceExportsNamespace(
-        nsvariables([...sizeNs, 'checkmark'] as const, {
-            width: multiply(ref(checkboxCheckmarkWidth), sizeMultiplierRef),
-            height: multiply(ref(checkboxCheckmarkHeight), sizeMultiplierRef)
-        }),
-        [...sizeNs, 'checkmark'] as const,
-        'checkmark'
-    );
-
-    selector(`.checkbox.-${variant}`, {
-        fontSize: ref(fontSize)
-    });
-
-    selector(`.checkbox.-${variant} .checkbox-label`, {
-        fontSize: ref(checkboxFontSize),
-        paddingLeft: add(ref(width), ref(checkboxMarginRight))
-    });
+        variantBorderTopLeftRadius,
+        variantBorderTopRightRadius,
+        variantBorderBottomRightRadius,
+        variantBorderBottomLeftRadius,
+        variantFontSize,
+        variantWidth,
+        variantHeight,
+        variantMarginTop,
+        variantMarginRight,
+        variantMarginBottom,
+        variantMarginLeft,
+        variantCheckmarkWidth,
+        variantCheckmarkHeight
+    } = setExportsNamespace(useCheckboxThemeSizeVariables(variant, options), 'variant');
 
     selector(
-        [
-            `.checkbox.-${variant} .checkbox-label::before`,
-            `.checkbox.-${variant} .checkbox-label::after`
-        ],
+        `.checkbox.-${variant}`,
         {
-            width: ref(width),
-            height: ref(height)
-        }
+            [toVariableKey(checkboxBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
+            [toVariableKey(checkboxBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
+            [toVariableKey(checkboxBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
+            [toVariableKey(checkboxBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
+            [toVariableKey(checkboxFontSize)]: ref(variantFontSize),
+            [toVariableKey(checkboxMarginTop)]: ref(variantMarginTop),
+            [toVariableKey(checkboxMarginRight)]: ref(variantMarginRight),
+            [toVariableKey(checkboxMarginBottom)]: ref(variantMarginBottom),
+            [toVariableKey(checkboxMarginLeft)]: ref(variantMarginLeft),
+            [toVariableKey(checkboxWidth)]: ref(variantWidth),
+            [toVariableKey(checkboxHeight)]: ref(variantHeight),
+            [toVariableKey(checkboxCheckmarkWidth)]: ref(variantCheckmarkWidth),
+            [toVariableKey(checkboxCheckmarkHeight)]: ref(variantCheckmarkHeight)
+        },
+        options
     );
-
-    selector(`.checkbox.-${variant} .checkbox-label::before`, {
-        borderTopLeftRadius: ref(borderTopLeftRadius),
-        borderTopRightRadius: ref(borderTopRightRadius),
-        borderBottomRightRadius: ref(borderBottomRightRadius),
-        borderBottomLeftRadius: ref(borderBottomLeftRadius)
-    });
-
-    selector(`.checkbox.-${variant} .checkbox-label::after`, {
-        maskSize: [ref(checkmarkWidth), ref(checkmarkHeight)]
-    });
 }
 
-export function useCheckboxThemeSizes(sizes = defaultCheckboxSizes) {
-    sizes.forEach((size) => useCheckboxThemeSizeFactory(size, options));
+/**
+ * @TODO MIGRATE THIS
+ */
+export function useCheckboxThemeColorSelectors(
+    variant: CheckboxColorVariant,
+    options: DefinitionOptions
+) {
+    const {
+        checkboxColor,
+        checkboxBackground,
+        checkboxBorderTopColor,
+        checkboxBorderRightColor,
+        checkboxBorderBottomColor,
+        checkboxBorderLeftColor,
+        checkboxDisabledBackground,
+        checkboxDisabledBorderTopColor,
+        checkboxDisabledBorderRightColor,
+        checkboxDisabledBorderBottomColor,
+        checkboxDisabledBorderLeftColor,
+        checkboxReadonlyBackground,
+        checkboxReadonlyBorderTopColor,
+        checkboxReadonlyBorderRightColor,
+        checkboxReadonlyBorderBottomColor,
+        checkboxReadonlyBorderLeftColor,
+        checkboxCheckedDisabledBackground,
+        checkboxCheckedDisabledBorderTopColor,
+        checkboxCheckedDisabledBorderRightColor,
+        checkboxCheckedDisabledBorderBottomColor,
+        checkboxCheckedDisabledBorderLeftColor,
+        checkboxCheckedReadonlyBackground,
+        checkboxCheckedReadonlyBorderTopColor,
+        checkboxCheckedReadonlyBorderRightColor,
+        checkboxCheckedReadonlyBorderBottomColor,
+        checkboxCheckedReadonlyBorderLeftColor
+    } = useCheckboxThemeVariables(options);
+    const {
+        variantBackground,
+        variantBorderTopColor,
+        variantBorderRightColor,
+        variantBorderBottomColor,
+        variantBorderLeftColor,
+        variantColor,
+        variantDisabledBackground,
+        variantDisabledBorderTopColor,
+        variantDisabledBorderRightColor,
+        variantDisabledBorderBottomColor,
+        variantDisabledBorderLeftColor,
+        variantReadonlyBackground,
+        variantReadonlyBorderTopColor,
+        variantReadonlyBorderRightColor,
+        variantReadonlyBorderBottomColor,
+        variantReadonlyBorderLeftColor,
+        variantCheckedDisabledBackground,
+        variantCheckedDisabledBorderTopColor,
+        variantCheckedDisabledBorderRightColor,
+        variantCheckedDisabledBorderBottomColor,
+        variantCheckedDisabledBorderLeftColor,
+        variantCheckedReadonlyBackground,
+        variantCheckedReadonlyBorderTopColor,
+        variantCheckedReadonlyBorderRightColor,
+        variantCheckedReadonlyBorderBottomColor,
+        variantCheckedReadonlyBorderLeftColor
+    } = setExportsNamespace(useCheckboxThemeColorVariables(variant, options), 'variant');
+
+    selector(
+        `.checkbox.-${variant}`,
+        {
+            [toVariableKey(checkboxBorderTopColor)]: ref(variantBorderTopColor),
+            [toVariableKey(checkboxBorderRightColor)]: ref(variantBorderRightColor),
+            [toVariableKey(checkboxBorderBottomColor)]: ref(variantBorderBottomColor),
+            [toVariableKey(checkboxBorderLeftColor)]: ref(variantBorderLeftColor),
+            [toVariableKey(checkboxBackground)]: ref(variantBackground),
+            [toVariableKey(checkboxColor)]: ref(variantColor),
+            [toVariableKey(checkboxDisabledBackground)]: ref(variantDisabledBackground),
+            [toVariableKey(checkboxDisabledBorderTopColor)]: ref(variantDisabledBorderTopColor),
+            [toVariableKey(checkboxDisabledBorderRightColor)]: ref(variantDisabledBorderRightColor),
+            [toVariableKey(checkboxDisabledBorderBottomColor)]: ref(
+                variantDisabledBorderBottomColor
+            ),
+            [toVariableKey(checkboxDisabledBorderLeftColor)]: ref(variantDisabledBorderLeftColor),
+            [toVariableKey(checkboxReadonlyBackground)]: ref(variantReadonlyBackground),
+            [toVariableKey(checkboxReadonlyBorderTopColor)]: ref(variantReadonlyBorderTopColor),
+            [toVariableKey(checkboxReadonlyBorderRightColor)]: ref(variantReadonlyBorderRightColor),
+            [toVariableKey(checkboxReadonlyBorderBottomColor)]: ref(
+                variantReadonlyBorderBottomColor
+            ),
+            [toVariableKey(checkboxReadonlyBorderLeftColor)]: ref(variantReadonlyBorderLeftColor),
+            [toVariableKey(checkboxCheckedDisabledBackground)]: ref(
+                variantCheckedDisabledBackground
+            ),
+            [toVariableKey(checkboxCheckedDisabledBorderTopColor)]: ref(
+                variantCheckedDisabledBorderTopColor
+            ),
+            [toVariableKey(checkboxCheckedDisabledBorderRightColor)]: ref(
+                variantCheckedDisabledBorderRightColor
+            ),
+            [toVariableKey(checkboxCheckedDisabledBorderBottomColor)]: ref(
+                variantCheckedDisabledBorderBottomColor
+            ),
+            [toVariableKey(checkboxCheckedDisabledBorderLeftColor)]: ref(
+                variantCheckedDisabledBorderLeftColor
+            ),
+            [toVariableKey(checkboxCheckedReadonlyBackground)]: ref(
+                variantCheckedReadonlyBackground
+            ),
+            [toVariableKey(checkboxCheckedReadonlyBorderTopColor)]: ref(
+                variantCheckedReadonlyBorderTopColor
+            ),
+            [toVariableKey(checkboxCheckedReadonlyBorderRightColor)]: ref(
+                variantCheckedReadonlyBorderRightColor
+            ),
+            [toVariableKey(checkboxCheckedReadonlyBorderBottomColor)]: ref(
+                variantCheckedReadonlyBorderBottomColor
+            ),
+            [toVariableKey(checkboxCheckedReadonlyBorderLeftColor)]: ref(
+                variantCheckedReadonlyBorderLeftColor
+            )
+        },
+        options
+    );
 }
 
-export function useCheckboxThemeColorFactory(variant: CheckboxColorVariant) {
-    const colorKey = capitalize(variant);
-    const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
-    const colorNs = [ns, variant] as const;
-
-    const colors = useColors(options);
-    const contrastTextColors = useContrastTextColor(options);
-
-    const { borderColor, background, color } = stripExportsNamespace(
-        nsvariables(colorNs, {
-            borderColor: ref(colors[`color${colorKey}${shadeOrTint}50`]),
-            background: ref(variant === 'light' ? colors.colorWhite : colors[`color${colorKey}`]),
-            color: ref(contrastTextColors[`contrastTextColor${colorKey}`])
-        })
-    );
-
-    selector(`.checkbox.-${variant} .checkbox-label`, {
-        color: ref(color)
-    });
-
-    selector(`.checkbox.-${variant} .checkbox-label::before`, {
-        borderColor: ref(borderColor),
-        background: ref(background),
-        color: ref(color)
-    });
-
-    const { disabledBackground, disabledBorderColor } = replaceExportsNamespace(
-        nsvariables([...colorNs, 'disabled'] as const, {
-            background: ref(variant === 'light' ? colors.colorGray100 : colors.colorGray600),
-            borderColor: ref(variant === 'light' ? colors.colorGray200 : colors.colorGray700)
-        }),
-        [...colorNs, 'disabled'] as const,
-        'disabled'
-    );
-
-    const { checkedDisabledBackground, checkedDisabledBorderColor } = replaceExportsNamespace(
-        nsvariables([...colorNs, 'checked', 'disabled'] as const, {
-            background: ref(variant === 'light' ? colors.colorPrimary300 : colors.colorPrimary700),
-            borderColor: ref(variant === 'light' ? colors.colorPrimary400 : colors.colorPrimary800)
-        }),
-        [...colorNs, 'checked', 'disabled'] as const,
-        'checkedDisabled'
-    );
-
-    selector(`.checkbox.-${variant} input:disabled ~ .checkbox-label::before`, {
-        background: ref(disabledBackground),
-        borderColor: ref(disabledBorderColor)
-    });
-
-    selector(`.checkbox.-${variant} input:checked:disabled ~ .checkbox-label::before`, {
-        background: ref(checkedDisabledBackground),
-        borderColor: ref(checkedDisabledBorderColor)
-    });
-}
-
-export function useCheckboxThemeColors(colors = defaultCheckboxColors) {
-    colors.forEach((color) => useCheckboxThemeColorFactory(color, options));
-}
-
-export function useCheckboxThemeVariants(options: DefinitionOptions) {
+export function useCheckboxThemeVariantsSelectors(options: DefinitionOptions) {
     const { checkboxMarginRight } = useCheckboxThemeVariables(options);
 
-    selector('.checkbox.-native input', {
-        top: 'auto',
-        left: 'auto',
-        position: 'relative',
-        opacity: 1,
-        height: 'auto',
-        width: 'auto'
-    });
+    selector(
+        '.checkbox.-native input',
+        {
+            top: 'auto',
+            left: 'auto',
+            position: 'relative',
+            opacity: 1,
+            height: 'auto',
+            width: 'auto'
+        },
+        options
+    );
 
-    selector('.checkbox.-native .checkbox-label', {
-        paddingLeft: ref(checkboxMarginRight)
-    });
+    selector(
+        '.checkbox.-native .checkbox-label',
+        {
+            paddingLeft: ref(checkboxMarginRight)
+        },
+        options
+    );
 
     selector(
         ['.checkbox.-native .checkbox-label::before', '.checkbox.-native .checkbox-label::after'],
         {
             display: 'none'
-        }
+        },
+        options
     );
 }
 
+/**
+ * Composables
+ */
+
+export function useCheckboxThemeSizes(sizes: CheckboxSizeVariant[], options: DefinitionOptions) {
+    sizes.forEach((size) => useCheckboxThemeSizeSelectors(size, options));
+}
+
+export function useCheckboxThemeColors(colors: CheckboxColorVariant[], options: DefinitionOptions) {
+    colors.forEach((color) => useCheckboxThemeColorSelectors(color, options));
+}
+
 export function useCheckboxTheme(options: DefinitionOptions) {
-    useCheckboxThemeLayout(options);
-    useCheckboxThemeBase(options);
-    useCheckboxThemeSizes(options);
-    useCheckboxThemeColors(options);
-    useCheckboxThemeVariants(options);
+    useCheckboxThemeVariables(options);
+    useCheckboxThemeLayoutSelectors(options);
+    useCheckboxThemeBaseSelectors(options);
+    useCheckboxThemeSizes([...defaultCheckboxSizes], options);
+    useCheckboxThemeColors([...defaultCheckboxColors], options);
+    useCheckboxThemeVariantsSelectors(options);
 }

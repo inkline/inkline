@@ -22,7 +22,9 @@ a:hover .badge, a:focus .badge {
     font-size: var(--badge--font-size);
     font-weight: var(--badge--font-weight, var(--font-weight-semibold));
     padding: var(--badge--padding, var(--badge--padding-top) var(--badge--padding-right) var(--badge--padding-bottom) var(--badge--padding-left));
-    transition: var(--badge--transition, var(--badge--transition-property) var(--badge--transition-duration) var(--badge--transition-timing-function));
+    transition-property: var(--badge--transition-property, var(--transition-property));
+    transition-duration: var(--badge--transition-duration, var(--transition-duration));
+    transition-timing-function: var(--badge--transition-timing-function, var(--transition-timing-function));
 }
 
 .badge.-pill {

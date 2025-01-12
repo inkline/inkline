@@ -57,7 +57,7 @@ export type Reference = {
 
 export type Color = {
     __type: TokenType.HSLAColor;
-    __value: HSLAColorInlineProperty;
+    __value: HSLAColorInlineProperty | CSS;
 };
 
 export type ComponentValue = Record<string, TokenValue>;

@@ -1,11 +1,11 @@
-import { defaultDefinitionOptions, nsvariables, ref, selector } from '@inkline/core';
-import { useSpacing, useTransitionBase } from '@inkline/theme';
+import { DefinitionOptions, nsvariables, ref, selector } from '@inkline/core';
+import { useSpacing, useTransition } from '@inkline/theme';
 
 const ns = 'toast-container';
 
 export function useToastContainerThemeVariables(options: DefinitionOptions) {
     const { spacing } = useSpacing(options);
-    const { transitionDuration, transitionTimingFunction } = useTransitionBase(options);
+    const { transitionDuration, transitionTimingFunction } = useTransition(options);
 
     return {
         ...nsvariables(
@@ -39,9 +39,7 @@ export function useToastContainerThemeVariables(options: DefinitionOptions) {
     };
 }
 
-export function useToastContainerLayout(options: DefinitionOptions
-)
-{
+export function useToastContainerLayout(options: DefinitionOptions) {
     const {
         toastContainerMargin,
         toastContainerWidth,
@@ -139,9 +137,7 @@ export function useToastContainerLayout(options: DefinitionOptions
     });
 }
 
-export function useToastContainerTheme(options: DefinitionOptions
-)
-{
+export function useToastContainerTheme(options: DefinitionOptions) {
     useToastContainerThemeVariables(options);
     useToastContainerLayout(options);
 }

@@ -1,11 +1,11 @@
 import {
     ref,
     selector,
-    defaultDefinitionOptions,
     nsvariables,
     vref,
     toVariableKey,
-    setExportsNamespace
+    setExportsNamespace,
+    DefinitionOptions
 } from '@inkline/core';
 import { merge } from '@inkline/utils';
 import {
@@ -43,289 +43,97 @@ type CardSizeVariant = (typeof defaultCardSizes)[number];
  * Config
  */
 
-export function useCardThemeColorConfig(variant: CardColorVariant) {
+export function useCardThemeColorConfig(variant: CardColorVariant, options: DefinitionOptions) {
     const {
-        colorLightShade50H,
-        colorLightShade50S,
-        colorLightShade50L,
-        colorLightShade50A,
-        colorLightH,
-        colorLightS,
-        colorLightL,
-        colorLightA,
-        colorDarkTint50H,
-        colorDarkTint50S,
-        colorDarkTint50L,
-        colorDarkTint50A,
-        colorDarkH,
-        colorDarkS,
-        colorDarkL,
-        colorDarkA,
-        colorPrimaryShade50H,
-        colorPrimaryShade50S,
-        colorPrimaryShade50L,
-        colorPrimaryShade50A,
-        colorPrimaryH,
-        colorPrimaryS,
-        colorPrimaryL,
-        colorPrimaryA,
-        colorSecondaryShade50H,
-        colorSecondaryShade50S,
-        colorSecondaryShade50L,
-        colorSecondaryShade50A,
-        colorSecondaryH,
-        colorSecondaryS,
-        colorSecondaryL,
-        colorSecondaryA,
-        colorSuccessShade50H,
-        colorSuccessShade50S,
-        colorSuccessShade50L,
-        colorSuccessShade50A,
-        colorSuccessH,
-        colorSuccessS,
-        colorSuccessL,
-        colorSuccessA,
-        colorDangerShade50H,
-        colorDangerShade50S,
-        colorDangerShade50L,
-        colorDangerShade50A,
-        colorDangerH,
-        colorDangerS,
-        colorDangerL,
-        colorDangerA,
-        colorWarningShade50H,
-        colorWarningShade50S,
-        colorWarningShade50L,
-        colorWarningShade50A,
-        colorWarningH,
-        colorWarningS,
-        colorWarningL,
-        colorWarningA,
-        colorInfoShade50H,
-        colorInfoShade50S,
-        colorInfoShade50L,
-        colorInfoShade50A,
-        colorInfoH,
-        colorInfoS,
-        colorInfoL,
-        colorInfoA
+        colorLightShade50,
+        colorLight,
+        colorDarkTint50,
+        colorDark,
+        colorPrimaryShade50,
+        colorPrimary,
+        colorSecondaryShade50,
+        colorSecondary,
+        colorSuccessShade50,
+        colorSuccess,
+        colorDangerShade50,
+        colorDanger,
+        colorWarningShade50,
+        colorWarning,
+        colorInfoShade50,
+        colorInfo
     } = useColors(options);
     const {
-        contrastTextColorLightH,
-        contrastTextColorLightS,
-        contrastTextColorLightL,
-        contrastTextColorLightA,
-        contrastTextColorDarkH,
-        contrastTextColorDarkS,
-        contrastTextColorDarkL,
-        contrastTextColorDarkA,
-        contrastTextColorPrimaryH,
-        contrastTextColorPrimaryS,
-        contrastTextColorPrimaryL,
-        contrastTextColorPrimaryA,
-        contrastTextColorSecondaryH,
-        contrastTextColorSecondaryS,
-        contrastTextColorSecondaryL,
-        contrastTextColorSecondaryA,
-        contrastTextColorSuccessH,
-        contrastTextColorSuccessS,
-        contrastTextColorSuccessL,
-        contrastTextColorSuccessA,
-        contrastTextColorDangerH,
-        contrastTextColorDangerS,
-        contrastTextColorDangerL,
-        contrastTextColorDangerA,
-        contrastTextColorWarningH,
-        contrastTextColorWarningS,
-        contrastTextColorWarningL,
-        contrastTextColorWarningA,
-        contrastTextColorInfoH,
-        contrastTextColorInfoS,
-        contrastTextColorInfoL,
-        contrastTextColorInfoA
+        contrastTextColorLight,
+        contrastTextColorDark,
+        contrastTextColorPrimary,
+        contrastTextColorSecondary,
+        contrastTextColorSuccess,
+        contrastTextColorDanger,
+        contrastTextColorWarning,
+        contrastTextColorInfo
     } = useContrastTextColor(options);
 
     return {
         light: {
             border: {
-                color: {
-                    h: ref(colorLightShade50H),
-                    s: ref(colorLightShade50S),
-                    l: ref(colorLightShade50L),
-                    a: ref(colorLightShade50A)
-                }
+                color: ref(colorLightShade50)
             },
-            background: {
-                h: ref(colorLightH),
-                s: ref(colorLightS),
-                l: ref(colorLightL),
-                a: ref(colorLightA)
-            },
-            color: {
-                h: ref(contrastTextColorLightH),
-                s: ref(contrastTextColorLightS),
-                l: ref(contrastTextColorLightL),
-                a: ref(contrastTextColorLightA)
-            }
+            background: ref(colorLight),
+            color: ref(contrastTextColorLight)
         },
         dark: {
             border: {
-                color: {
-                    h: ref(colorDarkTint50H),
-                    s: ref(colorDarkTint50S),
-                    l: ref(colorDarkTint50L),
-                    a: ref(colorDarkTint50A)
-                }
+                color: ref(colorDarkTint50)
             },
-            background: {
-                h: ref(colorDarkH),
-                s: ref(colorDarkS),
-                l: ref(colorDarkL),
-                a: ref(colorDarkA)
-            },
-            color: {
-                h: ref(contrastTextColorDarkH),
-                s: ref(contrastTextColorDarkS),
-                l: ref(contrastTextColorDarkL),
-                a: ref(contrastTextColorDarkA)
-            }
+            background: ref(colorDark),
+            color: ref(contrastTextColorDark)
         },
         primary: {
             border: {
-                color: {
-                    h: ref(colorPrimaryShade50H),
-                    s: ref(colorPrimaryShade50S),
-                    l: ref(colorPrimaryShade50L),
-                    a: ref(colorPrimaryShade50A)
-                }
+                color: ref(colorPrimaryShade50)
             },
-            background: {
-                h: ref(colorPrimaryH),
-                s: ref(colorPrimaryS),
-                l: ref(colorPrimaryL),
-                a: ref(colorPrimaryA)
-            },
-            color: {
-                h: ref(contrastTextColorPrimaryH),
-                s: ref(contrastTextColorPrimaryS),
-                l: ref(contrastTextColorPrimaryL),
-                a: ref(contrastTextColorPrimaryA)
-            }
+            background: ref(colorPrimary),
+            color: ref(contrastTextColorPrimary)
         },
         secondary: {
             border: {
-                color: {
-                    h: ref(colorSecondaryShade50H),
-                    s: ref(colorSecondaryShade50S),
-                    l: ref(colorSecondaryShade50L),
-                    a: ref(colorSecondaryShade50A)
-                }
+                color: ref(colorSecondaryShade50)
             },
-            background: {
-                h: ref(colorSecondaryH),
-                s: ref(colorSecondaryS),
-                l: ref(colorSecondaryL),
-                a: ref(colorSecondaryA)
-            },
-            color: {
-                h: ref(contrastTextColorSecondaryH),
-                s: ref(contrastTextColorSecondaryS),
-                l: ref(contrastTextColorSecondaryL),
-                a: ref(contrastTextColorSecondaryA)
-            }
+            background: ref(colorSecondary),
+            color: ref(contrastTextColorSecondary)
         },
         success: {
             border: {
-                color: {
-                    h: ref(colorSuccessShade50H),
-                    s: ref(colorSuccessShade50S),
-                    l: ref(colorSuccessShade50L),
-                    a: ref(colorSuccessShade50A)
-                }
+                color: ref(colorSuccessShade50)
             },
-            background: {
-                h: ref(colorSuccessH),
-                s: ref(colorSuccessS),
-                l: ref(colorSuccessL),
-                a: ref(colorSuccessA)
-            },
-            color: {
-                h: ref(contrastTextColorSuccessH),
-                s: ref(contrastTextColorSuccessS),
-                l: ref(contrastTextColorSuccessL),
-                a: ref(contrastTextColorSuccessA)
-            }
+            background: ref(colorSuccess),
+            color: ref(contrastTextColorSuccess)
         },
         danger: {
             border: {
-                color: {
-                    h: ref(colorDangerShade50H),
-                    s: ref(colorDangerShade50S),
-                    l: ref(colorDangerShade50L),
-                    a: ref(colorDangerShade50A)
-                }
+                color: ref(colorDangerShade50)
             },
-            background: {
-                h: ref(colorDangerH),
-                s: ref(colorDangerS),
-                l: ref(colorDangerL),
-                a: ref(colorDangerA)
-            },
-            color: {
-                h: ref(contrastTextColorDangerH),
-                s: ref(contrastTextColorDangerS),
-                l: ref(contrastTextColorDangerL),
-                a: ref(contrastTextColorDangerA)
-            }
+            background: ref(colorDanger),
+            color: ref(contrastTextColorDanger)
         },
         warning: {
             border: {
-                color: {
-                    h: ref(colorWarningShade50H),
-                    s: ref(colorWarningShade50S),
-                    l: ref(colorWarningShade50L),
-                    a: ref(colorWarningShade50A)
-                }
+                color: ref(colorWarningShade50)
             },
-            background: {
-                h: ref(colorWarningH),
-                s: ref(colorWarningS),
-                l: ref(colorWarningL),
-                a: ref(colorWarningA)
-            },
-            color: {
-                h: ref(contrastTextColorWarningH),
-                s: ref(contrastTextColorWarningS),
-                l: ref(contrastTextColorWarningL),
-                a: ref(contrastTextColorWarningA)
-            }
+            background: ref(colorWarning),
+            color: ref(contrastTextColorWarning)
         },
         info: {
             border: {
-                color: {
-                    h: ref(colorInfoShade50H),
-                    s: ref(colorInfoShade50S),
-                    l: ref(colorInfoShade50L),
-                    a: ref(colorInfoShade50A)
-                }
+                color: ref(colorInfoShade50)
             },
-            background: {
-                h: ref(colorInfoH),
-                s: ref(colorInfoS),
-                l: ref(colorInfoL),
-                a: ref(colorInfoA)
-            },
-            color: {
-                h: ref(contrastTextColorInfoH),
-                s: ref(contrastTextColorInfoS),
-                l: ref(contrastTextColorInfoL),
-                a: ref(contrastTextColorInfoA)
-            }
+            background: ref(colorInfo),
+            color: ref(contrastTextColorInfo)
         }
-    }[variant ?? defaultCardColor];
+    }[variant];
 }
 
-export function useCardThemeSizeConfig(variant: CardSizeVariant) {
+export function useCardThemeSizeConfig(variant: CardSizeVariant, options: DefinitionOptions) {
     const {
         borderTopLeftRadiusSm,
         borderTopRightRadiusSm,
@@ -340,7 +148,7 @@ export function useCardThemeSizeConfig(variant: CardSizeVariant) {
         borderBottomRightRadiusLg,
         borderBottomLeftRadiusLg
     } = useBorderRadius(options);
-    const { fontSizeXs, fontSizeSm, fontSizeMd } = useFontSize(options);
+    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize(options);
     const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
 
     return {
@@ -351,7 +159,7 @@ export function useCardThemeSizeConfig(variant: CardSizeVariant) {
                 bottomRight: ref(borderBottomRightRadiusSm),
                 bottomLeft: ref(borderBottomLeftRadiusSm)
             },
-            fontSize: ref(fontSizeXs),
+            fontSize: ref(fontSizeSm),
             padding: {
                 top: ref(spacingSm),
                 right: ref(spacingSm),
@@ -366,7 +174,7 @@ export function useCardThemeSizeConfig(variant: CardSizeVariant) {
                 bottomRight: ref(borderBottomRightRadiusMd),
                 bottomLeft: ref(borderBottomLeftRadiusMd)
             },
-            fontSize: ref(fontSizeSm),
+            fontSize: ref(fontSizeMd),
             padding: {
                 top: ref(spacingMd),
                 right: ref(spacingMd),
@@ -381,7 +189,7 @@ export function useCardThemeSizeConfig(variant: CardSizeVariant) {
                 bottomRight: ref(borderBottomRightRadiusLg),
                 bottomLeft: ref(borderBottomLeftRadiusLg)
             },
-            fontSize: ref(fontSizeMd),
+            fontSize: ref(fontSizeLg),
             padding: {
                 top: ref(spacingLg),
                 right: ref(spacingLg),
@@ -389,7 +197,7 @@ export function useCardThemeSizeConfig(variant: CardSizeVariant) {
                 left: ref(spacingLg)
             }
         }
-    }[variant ?? defaultCardSize];
+    }[variant];
 }
 
 export function useCardThemeConfig(options: DefinitionOptions) {
@@ -446,8 +254,8 @@ export function useCardThemeConfig(options: DefinitionOptions) {
                 timingFunction: ref(transitionTimingFunction)
             }
         },
-        useCardThemeColorConfig(options),
-        useCardThemeSizeConfig(options)
+        useCardThemeColorConfig(defaultCardColor, options),
+        useCardThemeSizeConfig(defaultCardSize, options)
     );
 }
 
@@ -456,14 +264,14 @@ export function useCardThemeConfig(options: DefinitionOptions) {
  */
 
 export function useCardThemeColorVariables(variant: CardColorVariant, options: DefinitionOptions) {
-    return nsvariables(ns, useCardThemeColorConfig(variant), {
+    return nsvariables(ns, useCardThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
 export function useCardThemeSizeVariables(variant: CardSizeVariant, options: DefinitionOptions) {
-    return nsvariables(ns, useCardThemeSizeConfig(variant), {
+    return nsvariables(ns, useCardThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
@@ -477,14 +285,18 @@ export function useCardThemeVariables(options: DefinitionOptions) {
 }
 
 export function useCardThemeLayout(options: DefinitionOptions) {
-    selector('.card', {
-        position: 'relative',
-        display: 'flex',
-        flexDirection: 'column',
-        minWidth: 0,
-        wordWrap: 'break-word',
-        backgroundClip: 'border-box'
-    });
+    selector(
+        '.card',
+        {
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            minWidth: 0,
+            wordWrap: 'break-word',
+            backgroundClip: 'border-box'
+        },
+        options
+    );
 }
 
 /**
@@ -510,103 +322,95 @@ export function useCardThemeBaseSelectors(options: DefinitionOptions) {
         cardTransitionTimingFunction
     } = useCardThemeVariables(options);
 
-    selector('.card', {
-        boxShadow: vref(cardBoxShadow),
-        color: vref(cardColor),
-        fontSize: ref(cardFontSize)
-    });
+    selector(
+        '.card',
+        {
+            boxShadow: vref(cardBoxShadow),
+            color: vref(cardColor),
+            fontSize: ref(cardFontSize)
+        },
+        options
+    );
 
-    selector(['.card-header', '.card-body', '.card-footer'], {
-        background: vref(cardBackground),
-        borderStyle: vref(cardBorderStyle),
-        borderTopColor: vref(cardBorderTopColor),
-        borderRightColor: vref(cardBorderRightColor),
-        borderBottomColor: vref(cardBorderBottomColor),
-        borderLeftColor: vref(cardBorderLeftColor),
-        borderWidth: vref(cardBorderWidth),
-        padding: vref(cardPadding),
-        transitionProperty: ref(cardTransitionProperty),
-        transitionDuration: ref(cardTransitionDuration),
-        transitionTimingFunction: ref(cardTransitionTimingFunction)
-    });
+    selector(
+        ['.card-header', '.card-body', '.card-footer'],
+        {
+            background: vref(cardBackground),
+            borderStyle: vref(cardBorderStyle),
+            borderTopColor: vref(cardBorderTopColor),
+            borderRightColor: vref(cardBorderRightColor),
+            borderBottomColor: vref(cardBorderBottomColor),
+            borderLeftColor: vref(cardBorderLeftColor),
+            borderWidth: vref(cardBorderWidth),
+            padding: vref(cardPadding),
+            transitionProperty: ref(cardTransitionProperty),
+            transitionDuration: ref(cardTransitionDuration),
+            transitionTimingFunction: ref(cardTransitionTimingFunction)
+        },
+        options
+    );
 
-    selector('.card-header + .card-body', {
-        borderTop: 0
-    });
+    selector(
+        '.card-header + .card-body',
+        {
+            borderTop: 0
+        },
+        options
+    );
 
-    selector('.card-body:has(+ .card-footer)', {
-        borderBottom: 0
-    });
+    selector(
+        '.card-body:has(+ .card-footer)',
+        {
+            borderBottom: 0
+        },
+        options
+    );
 
-    selector('.card > *', {
-        borderRadius: vref(cardBorderRadius)
-    });
+    selector(
+        '.card > *',
+        {
+            borderRadius: vref(cardBorderRadius)
+        },
+        options
+    );
 
-    selector('.card > *:not(:first-child)', {
-        borderTopLeftRadius: 0,
-        borderTopRightRadius: 0
-    });
+    selector(
+        '.card > *:not(:first-child)',
+        {
+            borderTopLeftRadius: 0,
+            borderTopRightRadius: 0
+        },
+        options
+    );
 
-    selector('.card > *:not(:last-child)', {
-        borderBottomLeftRadius: 0,
-        borderBottomRightRadius: 0
-    });
+    selector(
+        '.card > *:not(:last-child)',
+        {
+            borderBottomLeftRadius: 0,
+            borderBottomRightRadius: 0
+        },
+        options
+    );
 }
 
-export function useCardThemeColorSelectors(variant: CardColorVariant) {
+export function useCardThemeColorSelectors(variant: CardColorVariant, options: DefinitionOptions) {
     const {
-        cardBackgroundH,
-        cardBackgroundS,
-        cardBackgroundL,
-        cardBackgroundA,
-        cardBorderTopColorH,
-        cardBorderTopColorS,
-        cardBorderTopColorL,
-        cardBorderTopColorA,
-        cardBorderRightColorH,
-        cardBorderRightColorS,
-        cardBorderRightColorL,
-        cardBorderRightColorA,
-        cardBorderBottomColorH,
-        cardBorderBottomColorS,
-        cardBorderBottomColorL,
-        cardBorderBottomColorA,
-        cardBorderLeftColorH,
-        cardBorderLeftColorS,
-        cardBorderLeftColorL,
-        cardBorderLeftColorA,
-        cardColorH,
-        cardColorS,
-        cardColorL,
-        cardColorA
+        cardBackground,
+        cardBorderTopColor,
+        cardBorderRightColor,
+        cardBorderBottomColor,
+        cardBorderLeftColor,
+        cardColor
     } = useCardThemeVariables(options);
 
     const {
-        variantBackgroundH,
-        variantBackgroundS,
-        variantBackgroundL,
-        variantBackgroundA,
-        variantBorderTopColorH,
-        variantBorderTopColorS,
-        variantBorderTopColorL,
-        variantBorderTopColorA,
-        variantBorderRightColorH,
-        variantBorderRightColorS,
-        variantBorderRightColorL,
-        variantBorderRightColorA,
-        variantBorderBottomColorH,
-        variantBorderBottomColorS,
-        variantBorderBottomColorL,
-        variantBorderBottomColorA,
-        variantBorderLeftColorH,
-        variantBorderLeftColorS,
-        variantBorderLeftColorL,
-        variantBorderLeftColorA,
-        variantColorH,
-        variantColorS,
-        variantColorL,
-        variantColorA
-    } = setExportsNamespace(useCardThemeColorVariables(variant), 'variant');
+        variantBackground,
+        variantBorderTopColor,
+        variantBorderRightColor,
+        variantBorderBottomColor,
+        variantBorderLeftColor,
+        variantColor
+    } = setExportsNamespace(useCardThemeColorVariables(variant, options), 'variant');
 
     selector(
         [
@@ -615,35 +419,18 @@ export function useCardThemeColorSelectors(variant: CardColorVariant) {
             `.card.-${variant} .card-footer`
         ],
         {
-            [toVariableKey(cardBorderTopColorH)]: ref(variantBorderTopColorH),
-            [toVariableKey(cardBorderTopColorS)]: ref(variantBorderTopColorS),
-            [toVariableKey(cardBorderTopColorL)]: ref(variantBorderTopColorL),
-            [toVariableKey(cardBorderTopColorA)]: ref(variantBorderTopColorA),
-            [toVariableKey(cardBorderRightColorH)]: ref(variantBorderRightColorH),
-            [toVariableKey(cardBorderRightColorS)]: ref(variantBorderRightColorS),
-            [toVariableKey(cardBorderRightColorL)]: ref(variantBorderRightColorL),
-            [toVariableKey(cardBorderRightColorA)]: ref(variantBorderRightColorA),
-            [toVariableKey(cardBorderBottomColorH)]: ref(variantBorderBottomColorH),
-            [toVariableKey(cardBorderBottomColorS)]: ref(variantBorderBottomColorS),
-            [toVariableKey(cardBorderBottomColorL)]: ref(variantBorderBottomColorL),
-            [toVariableKey(cardBorderBottomColorA)]: ref(variantBorderBottomColorA),
-            [toVariableKey(cardBorderLeftColorH)]: ref(variantBorderLeftColorH),
-            [toVariableKey(cardBorderLeftColorS)]: ref(variantBorderLeftColorS),
-            [toVariableKey(cardBorderLeftColorL)]: ref(variantBorderLeftColorL),
-            [toVariableKey(cardBorderLeftColorA)]: ref(variantBorderLeftColorA),
-            [toVariableKey(cardBackgroundH)]: ref(variantBackgroundH),
-            [toVariableKey(cardBackgroundS)]: ref(variantBackgroundS),
-            [toVariableKey(cardBackgroundL)]: ref(variantBackgroundL),
-            [toVariableKey(cardBackgroundA)]: ref(variantBackgroundA),
-            [toVariableKey(cardColorH)]: ref(variantColorH),
-            [toVariableKey(cardColorS)]: ref(variantColorS),
-            [toVariableKey(cardColorL)]: ref(variantColorL),
-            [toVariableKey(cardColorA)]: ref(variantColorA)
-        }
+            [toVariableKey(cardBorderTopColor)]: ref(variantBorderTopColor),
+            [toVariableKey(cardBorderRightColor)]: ref(variantBorderRightColor),
+            [toVariableKey(cardBorderBottomColor)]: ref(variantBorderBottomColor),
+            [toVariableKey(cardBorderLeftColor)]: ref(variantBorderLeftColor),
+            [toVariableKey(cardBackground)]: ref(variantBackground),
+            [toVariableKey(cardColor)]: ref(variantColor)
+        },
+        options
     );
 }
 
-export function useCardThemeSizeSelectors(variant: CardSizeVariant) {
+export function useCardThemeSizeSelectors(variant: CardSizeVariant, options: DefinitionOptions) {
     const {
         cardBorderTopLeftRadius,
         cardBorderTopRightRadius,
@@ -666,30 +453,34 @@ export function useCardThemeSizeSelectors(variant: CardSizeVariant) {
         variantPaddingRight,
         variantPaddingBottom,
         variantPaddingLeft
-    } = setExportsNamespace(useCardThemeSizeVariables(variant), 'variant');
+    } = setExportsNamespace(useCardThemeSizeVariables(variant, options), 'variant');
 
-    selector(`.card.-${variant}`, {
-        [toVariableKey(cardBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
-        [toVariableKey(cardBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
-        [toVariableKey(cardBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
-        [toVariableKey(cardBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
-        [toVariableKey(cardFontSize)]: ref(variantFontSize),
-        [toVariableKey(cardPaddingTop)]: ref(variantPaddingTop),
-        [toVariableKey(cardPaddingRight)]: ref(variantPaddingRight),
-        [toVariableKey(cardPaddingBottom)]: ref(variantPaddingBottom),
-        [toVariableKey(cardPaddingLeft)]: ref(variantPaddingLeft)
-    });
+    selector(
+        `.card.-${variant}`,
+        {
+            [toVariableKey(cardBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
+            [toVariableKey(cardBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
+            [toVariableKey(cardBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
+            [toVariableKey(cardBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
+            [toVariableKey(cardFontSize)]: ref(variantFontSize),
+            [toVariableKey(cardPaddingTop)]: ref(variantPaddingTop),
+            [toVariableKey(cardPaddingRight)]: ref(variantPaddingRight),
+            [toVariableKey(cardPaddingBottom)]: ref(variantPaddingBottom),
+            [toVariableKey(cardPaddingLeft)]: ref(variantPaddingLeft)
+        },
+        options
+    );
 }
 
 /**
  * Composables
  */
 
-export function useCardThemeColors(colors = defaultCardColors) {
+export function useCardThemeColors(colors: CardColorVariant[], options: DefinitionOptions) {
     colors.forEach((color) => useCardThemeColorSelectors(color, options));
 }
 
-export function useCardThemeSizes(sizes = defaultCardSizes) {
+export function useCardThemeSizes(sizes: CardSizeVariant[], options: DefinitionOptions) {
     sizes.forEach((size) => useCardThemeSizeSelectors(size, options));
 }
 
@@ -697,6 +488,6 @@ export function useCardTheme(options: DefinitionOptions) {
     useCardThemeVariables(options);
     useCardThemeLayout(options);
     useCardThemeBaseSelectors(options);
-    useCardThemeColors(options);
-    useCardThemeSizes(options);
+    useCardThemeColors([...defaultCardColors], options);
+    useCardThemeSizes([...defaultCardSizes], options);
 }
