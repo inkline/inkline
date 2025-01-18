@@ -245,15 +245,15 @@ export function useAlertThemeColorVariables(
     options: DefinitionOptions
 ) {
     return nsvariables([ns, variant] as const, useAlertThemeColorConfig(variant, options), {
-        ...options,
-        registerComposed: false
+        ...options
+        // registerComposed: false
     });
 }
 
 export function useAlertThemeSizeVariables(variant: AlertSizeVariant, options: DefinitionOptions) {
     return nsvariables([ns, variant] as const, useAlertThemeSizeConfig(variant, options), {
-        ...options,
-        registerComposed: false
+        ...options
+        // registerComposed: false
     });
 }
 

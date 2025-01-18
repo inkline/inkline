@@ -20,21 +20,7 @@ describe('defineColorFn', () => {
         const value = { h: 120, s: '50%', l: '50%', a: 0.5 };
         const result = defineColorFn('color')(ns, value, options);
         expect(result).toEqual({
-            namespaceColorH: nsvariable(ns, 'color-h', 120, options),
-            namespaceColorS: nsvariable(ns, 'color-s', '50%', options),
-            namespaceColorL: nsvariable(ns, 'color-l', '50%', options),
-            namespaceColorA: nsvariable(ns, 'color-a', 0.5, options),
-            namespaceColor: nsvariable(
-                ns,
-                'color',
-                hsla([
-                    ref(nsvariable(ns, 'color-h', '', options)),
-                    ref(nsvariable(ns, 'color-s', '', options)),
-                    ref(nsvariable(ns, 'color-l', '', options)),
-                    ref(nsvariable(ns, 'color-a', '', options))
-                ]),
-                options
-            )
+            namespaceColor: nsvariable(ns, 'color', hsla([120, '50%', '50%', 0.5]), options)
         });
     });
 
@@ -42,21 +28,7 @@ describe('defineColorFn', () => {
         const value = 'hsl(120, 50%, 50%)';
         const result = defineColorFn('color')(ns, value, options);
         expect(result).toEqual({
-            namespaceColorH: nsvariable(ns, 'color-h', 120, options),
-            namespaceColorS: nsvariable(ns, 'color-s', '50%', options),
-            namespaceColorL: nsvariable(ns, 'color-l', '50%', options),
-            namespaceColorA: nsvariable(ns, 'color-a', 1, options),
-            namespaceColor: nsvariable(
-                ns,
-                'color',
-                hsla([
-                    ref(nsvariable(ns, 'color-h', '', options)),
-                    ref(nsvariable(ns, 'color-s', '', options)),
-                    ref(nsvariable(ns, 'color-l', '', options)),
-                    ref(nsvariable(ns, 'color-a', '', options))
-                ]),
-                options
-            )
+            namespaceColor: nsvariable(ns, 'color', hsla([120, '50%', '50%', 1]), options)
         });
     });
 
@@ -67,18 +39,8 @@ describe('defineColorFn', () => {
             options
         );
 
-        const {
-            namespaceColorH,
-            namespaceColorS,
-            namespaceColorL,
-            namespaceColorA,
-            namespaceColor
-        } = result;
+        const { namespaceColor } = result;
 
-        expect(namespaceColorH).toBeDefined();
-        expect(namespaceColorS).toBeDefined();
-        expect(namespaceColorL).toBeDefined();
-        expect(namespaceColorA).toBeDefined();
         expect(namespaceColor).toBeDefined();
     });
 
@@ -89,12 +51,8 @@ describe('defineColorFn', () => {
             options
         );
 
-        const { colorH, colorS, colorL, colorA, color } = result;
+        const { color } = result;
 
-        expect(colorH).toBeDefined();
-        expect(colorS).toBeDefined();
-        expect(colorL).toBeDefined();
-        expect(colorA).toBeDefined();
         expect(color).toBeDefined();
     });
 });

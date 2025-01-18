@@ -87,10 +87,6 @@ describe('stripExportsNamespace', () => {
 
         expect(result).toEqual({
             fontSize: values.oldNestedFontSize,
-            colorH: values.oldNestedColorH,
-            colorS: values.oldNestedColorS,
-            colorL: values.oldNestedColorL,
-            colorA: values.oldNestedColorA,
             color: values.oldNestedColor
         });
     });
@@ -163,10 +159,6 @@ describe('stripExportsNamespace', () => {
 
         const {
             fontSize,
-            colorH,
-            colorS,
-            colorL,
-            colorA,
             color,
             nestedMargin,
             nestedMarginTop,
@@ -176,10 +168,6 @@ describe('stripExportsNamespace', () => {
         } = stripExportsNamespace(values);
 
         expect(fontSize).toBeDefined();
-        expect(colorH).toBeDefined();
-        expect(colorS).toBeDefined();
-        expect(colorL).toBeDefined();
-        expect(colorA).toBeDefined();
         expect(color).toBeDefined();
         expect(nestedMargin).toBeDefined();
         expect(nestedMarginTop).toBeDefined();

@@ -1,7 +1,6 @@
 import {
     Color,
     CSS,
-    ExportedName,
     HSLAColorInlineProperty,
     HSLAColorProperty,
     NamespaceType,
@@ -12,12 +11,7 @@ import {
 } from '../types';
 import parseColor from 'color';
 import { variable } from './variable';
-import { ref } from './ref';
-import {
-    createNamespacedTokenName,
-    resolvePercentagePropertyValue,
-    toExportedName
-} from '../utils';
+import { createNamespacedTokenName, resolvePercentagePropertyValue } from '../utils';
 import { isHSLAColorInlineProperty, isHSLAColorProperty } from '../typeGuards';
 
 /**
@@ -30,10 +24,6 @@ export function hsla(value: HSLAColorInlineProperty | CSS): Color {
     };
 }
 
-type ColorReturnType<Name extends string> = {
-    [key in ExportedName<Name | `${Name}-h` | `${Name}-s` | `${Name}-l` | `${Name}-a`>]: Variable;
-};
-
 /**
  * Creates a `color` token.
  * This is a special token that allows you to define a color with the given name and value.
@@ -44,9 +34,7 @@ export function color<Name extends string>(
     name: Name,
     value: TokenValue | HSLAColorProperty | HSLAColorInlineProperty,
     options: VariableOptions
-): ColorReturnType<Name> {
-    const colorVariables: ColorReturnType<Name> = {} as ColorReturnType<Name>;
-
+): Variable<Name> {
     let isParseableHSLAValue = true;
     let parsedColor: HSLAColorProperty = {} as HSLAColorProperty;
     if (typeof value === 'string') {
@@ -77,31 +65,17 @@ export function color<Name extends string>(
             l: resolvePercentagePropertyValue(value[2]),
             a: value[3]
         };
+    } else {
+        isParseableHSLAValue = false;
     }
 
-    const composedParts: Variable[] = [];
-
-    Object.keys(parsedColor).forEach((key) => {
-        const variableName = `${name}-${key}`;
-        const colorVariable = variable(
-            variableName,
-            parsedColor[key as keyof typeof parsedColor],
-            options
-        );
-
-        colorVariables[toExportedName(variableName) as keyof typeof colorVariables] = colorVariable;
-        composedParts.push(colorVariable);
-    });
-
-    colorVariables[toExportedName(name)] = variable(
+    return variable(
         name,
         isParseableHSLAValue
-            ? hsla(composedParts.map((part) => ref(part)) as HSLAColorInlineProperty)
+            ? hsla([parsedColor.h, parsedColor.s, parsedColor.l, parsedColor.a])
             : (value as TokenValue),
         options
     );
-
-    return colorVariables;
 }
 
 /**
