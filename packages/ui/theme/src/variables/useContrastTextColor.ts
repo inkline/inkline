@@ -1,190 +1,67 @@
-import { color, DefinitionOptions, ref } from '@inkline/core';
+import { color, defaultDefinitionOptions, DefinitionOptions, ref } from '@inkline/core';
 import { useNeutralColors } from './useColors';
 
-export function useContrastTextColor(options: DefinitionOptions) {
+export function useContrastTextColor(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
-        colorWhiteH,
-        colorWhiteS,
-        colorWhiteL,
-        colorWhiteA,
-        colorGray900H,
-        colorGray900S,
-        colorGray900L,
-        colorGray900A
+        colorWhite,
+        colorGray900
     } = useNeutralColors(options);
 
-    const {
-        contrastTextColorLight,
-        contrastTextColorLightH,
-        contrastTextColorLightS,
-        contrastTextColorLightL,
-        contrastTextColorLightA
-    } = color(
+    const contrastTextColorLight = color(
         'contrast-text-color-light',
-        [
-            ref(colorGray900H),
-            ref(colorGray900S),
-            ref(colorGray900L),
-            ref(colorGray900A)
-        ],
+        ref(colorGray900),
         options
     );
 
-    const {
-        contrastTextColorDark,
-        contrastTextColorDarkH,
-        contrastTextColorDarkS,
-        contrastTextColorDarkL,
-        contrastTextColorDarkA
-    } = color('contrast-text-color-dark', [
-        ref(colorWhiteH),
-        ref(colorWhiteS),
-        ref(colorWhiteL),
-        ref(colorWhiteA)
-    ], options);
+    const contrastTextColorDark = color('contrast-text-color-dark', ref(colorWhite), options);
 
-    const {
-        contrastTextColorPrimary,
-        contrastTextColorPrimaryH,
-        contrastTextColorPrimaryS,
-        contrastTextColorPrimaryL,
-        contrastTextColorPrimaryA
-    } = color(
+    const contrastTextColorPrimary = color(
         'contrast-text-color-primary',
-        [
-            ref(contrastTextColorDarkH),
-            ref(contrastTextColorDarkS),
-            ref(contrastTextColorDarkL),
-            ref(contrastTextColorDarkA)
-        ],
+
+        ref(contrastTextColorDark),
         options
     );
 
-    const {
-        contrastTextColorSecondary,
-        contrastTextColorSecondaryH,
-        contrastTextColorSecondaryS,
-        contrastTextColorSecondaryL,
-        contrastTextColorSecondaryA
-    } = color(
+    const contrastTextColorSecondary = color(
         'contrast-text-color-secondary',
-        [
-            ref(contrastTextColorDarkH),
-            ref(contrastTextColorDarkS),
-            ref(contrastTextColorDarkL),
-            ref(contrastTextColorDarkA)
-        ],
+        ref(contrastTextColorDark),
         options
     );
 
-    const {
-        contrastTextColorInfo,
-        contrastTextColorInfoH,
-        contrastTextColorInfoS,
-        contrastTextColorInfoL,
-        contrastTextColorInfoA
-    } = color(
+    const contrastTextColorInfo = color(
         'contrast-text-color-info',
-        [
-            ref(contrastTextColorLightH),
-            ref(contrastTextColorLightS),
-            ref(contrastTextColorLightL),
-            ref(contrastTextColorLightA)
-        ],
+        ref(contrastTextColorLight),
         options
     );
 
-    const {
-        contrastTextColorSuccess,
-        contrastTextColorSuccessH,
-        contrastTextColorSuccessS,
-        contrastTextColorSuccessL,
-        contrastTextColorSuccessA
-    } = color(
+    const contrastTextColorSuccess = color(
         'contrast-text-color-success',
-        [
-            ref(contrastTextColorLightH),
-            ref(contrastTextColorLightS),
-            ref(contrastTextColorLightL),
-            ref(contrastTextColorLightA)
-        ],
+        ref(contrastTextColorLight),
         options
     );
 
-    const {
-        contrastTextColorWarning,
-        contrastTextColorWarningH,
-        contrastTextColorWarningS,
-        contrastTextColorWarningL,
-        contrastTextColorWarningA
-    } = color(
+    const contrastTextColorWarning = color(
         'contrast-text-color-warning',
-        [
-            ref(contrastTextColorLightH),
-            ref(contrastTextColorLightS),
-            ref(contrastTextColorLightL),
-            ref(contrastTextColorLightA)
-        ],
+        ref(contrastTextColorLight),
         options
     );
 
-    const {
-        contrastTextColorDanger,
-        contrastTextColorDangerH,
-        contrastTextColorDangerS,
-        contrastTextColorDangerL,
-        contrastTextColorDangerA
-    } = color(
+    const contrastTextColorDanger = color(
         'contrast-text-color-danger',
-        [
-            ref(contrastTextColorLightH),
-            ref(contrastTextColorLightS),
-            ref(contrastTextColorLightL),
-            ref(contrastTextColorLightA)
-        ],
+        ref(contrastTextColorLight),
         options
     );
 
     return {
         contrastTextColorLight,
-        contrastTextColorLightH,
-        contrastTextColorLightS,
-        contrastTextColorLightL,
-        contrastTextColorLightA,
         contrastTextColorDark,
-        contrastTextColorDarkH,
-        contrastTextColorDarkS,
-        contrastTextColorDarkL,
-        contrastTextColorDarkA,
         contrastTextColorPrimary,
-        contrastTextColorPrimaryH,
-        contrastTextColorPrimaryS,
-        contrastTextColorPrimaryL,
-        contrastTextColorPrimaryA,
         contrastTextColorSecondary,
-        contrastTextColorSecondaryH,
-        contrastTextColorSecondaryS,
-        contrastTextColorSecondaryL,
-        contrastTextColorSecondaryA,
         contrastTextColorInfo,
-        contrastTextColorInfoH,
-        contrastTextColorInfoS,
-        contrastTextColorInfoL,
-        contrastTextColorInfoA,
         contrastTextColorSuccess,
-        contrastTextColorSuccessH,
-        contrastTextColorSuccessS,
-        contrastTextColorSuccessL,
-        contrastTextColorSuccessA,
         contrastTextColorWarning,
-        contrastTextColorWarningH,
-        contrastTextColorWarningS,
-        contrastTextColorWarningL,
-        contrastTextColorWarningA,
-        contrastTextColorDanger,
-        contrastTextColorDangerH,
-        contrastTextColorDangerS,
-        contrastTextColorDangerL,
-        contrastTextColorDangerA
+        contrastTextColorDanger
     };
 }

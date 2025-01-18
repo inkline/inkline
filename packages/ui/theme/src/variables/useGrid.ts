@@ -1,8 +1,10 @@
-import { DefinitionOptions, ref, subtract, variable } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, ref, subtract, variable } from '@inkline/core';
 import { defaultSizeMultiplierKeys, useSizeMultiplierVariantsFactory } from './useSizeMultiplier';
 import { useBreakpoints } from './useBreakpoints';
 
-export function useGrid(options: DefinitionOptions) {
+export function useGrid(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { breakpointSm, breakpointMd, breakpointLg, breakpointXl } =
         useBreakpoints(options);
 

@@ -2,7 +2,7 @@ import {
     ref,
     selector,
     nsvariables,
-    vref, DefinitionOptions
+    vref, DefinitionOptions, defaultDefinitionOptions
 } from '@inkline/core';
 import {
     useBorder,
@@ -13,16 +13,13 @@ import {
 
 const ns = 'blockquote';
 
-export function useBlockquoteVariables(options: DefinitionOptions) {
+export function useBlockquoteVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { fontSize } = useFontSize(options);
     const { spacing } = useSpacing(options);
     const { borderLeftWidth, borderLeftStyle, borderLeftColor } = useBorder(options);
-    const {
-        textColorWeakH,
-        textColorWeakS,
-        textColorWeakL,
-        textColorWeakA
-    } = useTextColor(options);
+    const { textColorWeak } = useTextColor(options);
 
     return nsvariables(ns, {
         fontSize: ref(fontSize),
@@ -46,18 +43,15 @@ export function useBlockquoteVariables(options: DefinitionOptions) {
          * @element footer
          */
         footer: {
-            color: {
-                h: ref(textColorWeakH),
-                s: ref(textColorWeakS),
-                l: ref(textColorWeakL),
-                a: ref(textColorWeakA)
-            },
+            color: ref(textColorWeak),
             fontSize: '80%'
         }
     }, options);
 }
 
-export function useBlockquoteThemeSelectors(options: DefinitionOptions) {
+export function useBlockquoteThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         blockquoteFontSize,
         blockquoteMargin,
@@ -119,7 +113,9 @@ export function useBlockquoteThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useBlockquoteTheme(options: DefinitionOptions) {
+export function useBlockquoteTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useBlockquoteVariables(options);
     useBlockquoteThemeSelectors(options);
 }

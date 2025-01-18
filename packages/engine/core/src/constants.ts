@@ -1,4 +1,4 @@
-import { DefinitionOptions, SelectorOptions } from './types';
+import { DefinitionOptions } from './types';
 
 /**
  * Themes
@@ -14,11 +14,6 @@ export const darkThemeName = 'dark';
 export const defaultDefinitionOptions: Omit<DefinitionOptions, 'context'> = {
     theme: defaultThemeName,
     default: true
-};
-
-export const defaultSelectorOptions: Omit<SelectorOptions, 'context'> = {
-    ...defaultDefinitionOptions,
-    default: false
 };
 
 /**

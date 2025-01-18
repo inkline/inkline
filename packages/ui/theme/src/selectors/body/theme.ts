@@ -2,7 +2,7 @@ import {
     darkThemeName,
     ref,
     selector,
-    nsvariables, vref, DefinitionOptions
+    nsvariables, vref, DefinitionOptions, defaultDefinitionOptions
 } from '@inkline/core';
 import {
     useBrandColorVariants,
@@ -25,26 +25,12 @@ const defaultBodyColors = [
 
 type BodyColorVariant = (typeof defaultBodyColors)[number];
 
-export function useBodyThemeConfig(variant: BodyColorVariant, options: DefinitionOptions) {
+export function useBodyThemeConfig(variant: BodyColorVariant, userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    const {
-        textColorH,
-        textColorS,
-        textColorL,
-        textColorA
-    } = useTextColor(options);
-    const {
-        colorWhiteH,
-        colorWhiteS,
-        colorWhiteL,
-        colorWhiteA
-    } = useNeutralColors(options);
-    const {
-        colorDarkShade50H,
-        colorDarkShade50S,
-        colorDarkShade50L,
-        colorDarkShade50A
-    } = useBrandColorVariants(options);
+    const { textColor } = useTextColor(options);
+    const { colorWhite } = useNeutralColors(options);
+    const { colorDarkShade50 } = useBrandColorVariants(options);
     const { fontSize } = useFontSize(options);
     const { fontFamilyBase } = useFontFamily(options);
     const { textAlignLeft } = useTextAlign(options);
@@ -53,12 +39,7 @@ export function useBodyThemeConfig(variant: BodyColorVariant, options: Definitio
     const { lineHeight } = useLineHeight(options);
 
     const common = {
-        color: {
-            h: ref(textColorH),
-            s: ref(textColorS),
-            l: ref(textColorL),
-            a: ref(textColorA)
-        },
+        color: ref(textColor),
         fontSize: ref(fontSize),
         fontFamily: ref(fontFamilyBase),
         lineHeight: ref(lineHeight),
@@ -73,26 +54,18 @@ export function useBodyThemeConfig(variant: BodyColorVariant, options: Definitio
     return {
         light: {
             ...common,
-            background: {
-                h: ref(colorWhiteH),
-                s: ref(colorWhiteS),
-                l: ref(colorWhiteL),
-                a: ref(colorWhiteA)
-            }
+            background: ref(colorWhite)
         },
         dark: {
             ...common,
-            background: {
-                h: ref(colorDarkShade50H),
-                s: ref(colorDarkShade50S),
-                l: ref(colorDarkShade50L),
-                a: ref(colorDarkShade50A)
-            }
+            background: ref(colorDarkShade50)
         }
     }[variant];
 }
 
-export function useBodyThemeVariables(options: DefinitionOptions) {
+export function useBodyThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     nsvariables(ns, useBodyThemeConfig('dark', options), {
         ...options,
         theme: darkThemeName
@@ -101,7 +74,9 @@ export function useBodyThemeVariables(options: DefinitionOptions) {
     return nsvariables(ns, useBodyThemeConfig(defaultBodyColor, options), options);
 }
 
-export function useBodyThemeSelectors(options: DefinitionOptions) {
+export function useBodyThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         bodyColor,
         bodyBackground,
@@ -124,7 +99,9 @@ export function useBodyThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useBodyTheme(options: DefinitionOptions) {
+export function useBodyTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useBodyThemeVariables(options);
     useBodyThemeSelectors(options);
 }

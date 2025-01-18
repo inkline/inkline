@@ -1,4 +1,4 @@
-import { defineConfig } from '@inkline/core';
+import { defineConfig, variable, variables } from '@inkline/core';
 import { useTheme } from '@inkline/theme';
 
 import { useAlertTheme } from '@inkline/component-alert';

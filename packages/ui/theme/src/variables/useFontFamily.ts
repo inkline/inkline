@@ -1,6 +1,8 @@
-import { DefinitionOptions, ref, variable } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, ref, variable } from '@inkline/core';
 
-export function useFontFamily(options: DefinitionOptions) {
+export function useFontFamily(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const fontFamilyBase = variable(
         'font-family-base',
         '-apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen-Sans, Ubuntu, Cantarell, \'Helvetica Neue\', sans-serif',

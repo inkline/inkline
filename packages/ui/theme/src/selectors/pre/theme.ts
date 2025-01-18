@@ -3,13 +3,15 @@ import {
     ref,
     selector,
     nsvariables,
-    vref
+    vref, defaultDefinitionOptions
 } from '@inkline/core';
 import { useFontFamily, useFontSize, useSpacing } from '../../variables';
 
 const ns = 'pre';
 
-export function usePreConfig(options: DefinitionOptions) {
+export function usePreConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { fontSizeSm } = useFontSize(options);
     const { fontFamilyMonospace } = useFontFamily(options);
     const { spacing } = useSpacing(options);
@@ -23,11 +25,15 @@ export function usePreConfig(options: DefinitionOptions) {
     };
 }
 
-export function usePreVariables(options: DefinitionOptions) {
+export function usePreVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, usePreConfig(options), options);
 }
 
-export function usePreThemeSelectors(options: DefinitionOptions) {
+export function usePreThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { preMargin, preFontSize, preFontFamily } = usePreVariables(options);
 
     selector('pre', {
@@ -52,7 +58,9 @@ export function usePreThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function usePreTheme(options: DefinitionOptions) {
+export function usePreTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     usePreVariables(options);
     usePreThemeSelectors(options);
 }

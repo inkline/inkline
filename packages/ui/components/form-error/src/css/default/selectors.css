@@ -9,7 +9,7 @@
 }
 
 .form-error {
-    color: var(--form-error--color);
+    color: var(--form-error--color, var(--color-danger));
     font-size: var(--form-error--font-size);
-    margin: var(--form-error--margin);
+    margin: var(--form-error--margin, var(--form-error--margin-top) var(--form-error--margin-right) var(--form-error--margin-bottom) var(--form-error--margin-left));
 }

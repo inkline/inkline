@@ -1,11 +1,15 @@
-import { DefinitionOptions, selector } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, selector } from '@inkline/core';
 
-export function useSummaryThemeSelectors(options: DefinitionOptions) {
+export function useSummaryThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector('summary', {
         cursor: 'pointer'
     }, options);
 }
 
-export function useSummaryTheme(options: DefinitionOptions) {
+export function useSummaryTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useSummaryThemeSelectors(options);
 }

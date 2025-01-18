@@ -1,6 +1,5 @@
 import { Configuration, ConfigurationOptions, ModuleOptions, SetupFunction } from './types';
 import { createContext } from './context';
-import { defaultDefinitionOptions } from './constants';
 
 export function defineConfig(
     setup: SetupFunction,
@@ -8,7 +7,7 @@ export function defineConfig(
 ): Configuration {
     const context = createContext();
 
-    setup({ ...defaultDefinitionOptions, context });
+    setup({ context });
 
     return {
         ...context,

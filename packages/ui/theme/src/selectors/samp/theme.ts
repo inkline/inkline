@@ -1,9 +1,11 @@
-import { DefinitionOptions, nsvariables, ref, selector } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, nsvariables, ref, selector } from '@inkline/core';
 import { useFontFamily } from '../../variables';
 
 const ns = 'samp';
 
-export function useSampConfig(options: DefinitionOptions) {
+export function useSampConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { fontFamilyMonospace } = useFontFamily(options);
 
     return {
@@ -11,11 +13,15 @@ export function useSampConfig(options: DefinitionOptions) {
     };
 }
 
-export function useSampVariables(options: DefinitionOptions) {
+export function useSampVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useSampConfig(options), options);
 }
 
-export function useSampThemeSelectors(options: DefinitionOptions) {
+export function useSampThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { sampFontFamily } = useSampVariables(options);
 
     selector('samp', {
@@ -23,7 +29,9 @@ export function useSampThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useSampTheme(options: DefinitionOptions) {
+export function useSampTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useSampVariables(options);
     useSampThemeSelectors(options);
 }

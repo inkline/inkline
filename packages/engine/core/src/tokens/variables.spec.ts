@@ -1221,13 +1221,15 @@ describe('variables', () => {
     it('should return an object from object value', () => {
         const values = variables(
             {
-                custom: 'value'
+                custom: {
+                    fontSize: '16px'
+                }
             },
             options
         );
 
         expect(values).toEqual({
-            custom: variable('custom', 'value', options)
+            customFontSize: variable('custom--font-size', '16px', options)
         });
     });
 });

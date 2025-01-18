@@ -29,6 +29,8 @@
 // } from '@inkline/theme';
 //
 
+import { DefinitionOptions } from '@inkline/core';
+
 const ns = 'toggle';
 
 const defaultToggleColor = 'light';
@@ -266,7 +268,9 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //
 // const ns = 'toggle';
 //
-// export function useToggleThemeVariables(options: DefinitionOptions) {
+// export function useToggleThemeVariables(userOptions: DefinitionOptions) {
+// const options = { ...defaultDefinitionOptions, ...userOptions };
+//
 //     const {
 //         borderTopStyle,
 //         borderTopWidth,
@@ -484,7 +488,9 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //     };
 // }
 //
-// export useToggleThemeLayout(options: DefinitionOptions) {
+// export useToggleThemeLayout(userOptions: DefinitionOptions) {
+// const options = { ...defaultDefinitionOptions, ...userOptions };
+//
 //     selector('.toggle', {
 //         position: 'relative',
 //         marginBottom: 0,
@@ -551,7 +557,9 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //     );
 // }
 //
-// export useToggleThemeBase(options: DefinitionOptions) {
+// export useToggleThemeBase(userOptions: DefinitionOptions) {
+// const options = { ...defaultDefinitionOptions, ...userOptions };
+//
 //     const {
 //         toggleBackground,
 //         toggleBorderStyle,
@@ -987,9 +995,13 @@ type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 //     colors.forEach((color) => useToggleThemeColorSelectors(color, options));
 // }
 //
-// export useToggleThemeLayoutModifiers(options: DefinitionOptions) {}
+// export useToggleThemeLayoutModifiers(userOptions: DefinitionOptions) {
+// const options = { ...defaultDefinitionOptions, ...userOptions };
+// }
 
-export function useToggleTheme(options: DefinitionOptions) {
+export function useToggleTheme(_userOptions: DefinitionOptions) {
+    // const options = { ...defaultDefinitionOptions, ...userOptions };
+    //
     //     useToggleThemeVariables(options);
     //     useToggleThemeLayout(options);
     //     useToggleThemeBase(options);

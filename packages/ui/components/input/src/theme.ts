@@ -1,5 +1,6 @@
 import {
     DefinitionOptions,
+    defaultDefinitionOptions,
     multiply,
     nsvariables,
     ref,
@@ -38,7 +39,12 @@ type InputSizeVariant = (typeof defaultInputSizes)[number];
  * Config
  */
 
-export function useInputThemeColorConfig(variant: InputColorVariant, options: DefinitionOptions) {
+export function useInputThemeColorConfig(
+    variant: InputColorVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         colorWhite,
         colorLight,
@@ -126,7 +132,9 @@ export function useInputThemeColorConfig(variant: InputColorVariant, options: De
     }[variant];
 }
 
-export function useInputThemeSizeConfig(variant: InputSizeVariant, options: DefinitionOptions) {
+export function useInputThemeSizeConfig(variant: InputSizeVariant, userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopLeftRadiusSm,
         borderTopRightRadiusSm,
@@ -193,7 +201,9 @@ export function useInputThemeSizeConfig(variant: InputSizeVariant, options: Defi
     }[variant];
 }
 
-export function useInputThemeConfig(options: DefinitionOptions) {
+export function useInputThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopStyle,
         borderTopWidth,
@@ -296,22 +306,31 @@ export function useInputThemeConfig(options: DefinitionOptions) {
 
 export function useInputThemeColorVariables(
     variant: InputColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables([ns, variant] as const, useInputThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useInputThemeSizeVariables(variant: InputSizeVariant, options: DefinitionOptions) {
+export function useInputThemeSizeVariables(
+    variant: InputSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables([ns, variant] as const, useInputThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useInputThemeVariables(options: DefinitionOptions) {
+export function useInputThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useInputThemeConfig(options), {
         ...options,
         registerComposed: false
@@ -322,7 +341,9 @@ export function useInputThemeVariables(options: DefinitionOptions) {
  * Selectors
  */
 
-export function useInputThemeLayoutSelectors(options: DefinitionOptions) {
+export function useInputThemeLayoutSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector(
         '.input',
         {
@@ -505,7 +526,9 @@ export function useInputThemeLayoutSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useInputThemeModifiersSelectors(options: DefinitionOptions) {
+export function useInputThemeModifiersSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector(
         '.input.-prepended .input-field',
         {
@@ -549,7 +572,9 @@ export function useInputThemeModifiersSelectors(options: DefinitionOptions) {
     // );
 }
 
-export function useInputThemeBaseSelectors(options: DefinitionOptions) {
+export function useInputThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         inputBackground,
         inputBorderStyle,
@@ -794,8 +819,10 @@ export function useInputThemeBaseSelectors(options: DefinitionOptions) {
 
 export function useInputThemeColorSelectors(
     variant: InputColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         inputBorderTopColor,
         inputBorderRightColor,
@@ -858,7 +885,12 @@ export function useInputThemeColorSelectors(
     );
 }
 
-export function useInputThemeSizeSelectors(variant: InputSizeVariant, options: DefinitionOptions) {
+export function useInputThemeSizeSelectors(
+    variant: InputSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         inputBorderTopLeftRadius,
         inputBorderTopRightRadius,
@@ -904,15 +936,21 @@ export function useInputThemeSizeSelectors(variant: InputSizeVariant, options: D
  * Composables
  */
 
-export function useInputThemeColors(colors: InputColorVariant[], options: DefinitionOptions) {
+export function useInputThemeColors(colors: InputColorVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     colors.forEach((color) => useInputThemeColorSelectors(color, options));
 }
 
-export function useInputThemeSizes(sizes: InputSizeVariant[], options: DefinitionOptions) {
+export function useInputThemeSizes(sizes: InputSizeVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     sizes.forEach((size) => useInputThemeSizeSelectors(size, options));
 }
 
-export function useInputTheme(options: DefinitionOptions) {
+export function useInputTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useInputThemeVariables(options);
     useInputThemeLayoutSelectors(options);
     useInputThemeBaseSelectors(options);

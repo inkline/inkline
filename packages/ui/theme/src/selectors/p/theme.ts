@@ -3,11 +3,13 @@ import {
     ref,
     selector,
     nsvariables,
-    vref
+    vref, defaultDefinitionOptions
 } from '@inkline/core';
 import { useFontSize, useFontWeight, useSpacing } from '../../variables';
 
-export function useParagraphConfig(options: DefinitionOptions) {
+export function useParagraphConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { spacing } = useSpacing(options);
 
     return {
@@ -20,11 +22,15 @@ export function useParagraphConfig(options: DefinitionOptions) {
     };
 }
 
-export function useParagraphThemeVariables(options: DefinitionOptions) {
+export function useParagraphThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables('p', useParagraphConfig(options), options);
 }
 
-export function useLeadConfig(options: DefinitionOptions) {
+export function useLeadConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { fontSizeLg } = useFontSize(options);
     const { fontWeightLight } = useFontWeight(options);
 
@@ -34,22 +40,28 @@ export function useLeadConfig(options: DefinitionOptions) {
     };
 }
 
-export function useLeadVariables(options: DefinitionOptions) {
+export function useLeadVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables('lead', useLeadConfig(options), options);
 }
 
-export function useInitialismConfig(_options: DefinitionOptions) {
+export function useInitialismConfig(_userOptions: DefinitionOptions) {
     return {
         fontSize: '90%',
         textTransform: 'uppercase'
     };
 }
 
-export function useInitialismVariables(options: DefinitionOptions) {
+export function useInitialismVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables('initialism', useInitialismConfig(options), options);
 }
 
-export function useParagraphThemeSelectors(options: DefinitionOptions) {
+export function useParagraphThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         pMargin
     } = useParagraphThemeVariables(options);
@@ -59,7 +71,9 @@ export function useParagraphThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useLeadThemeSelectors(options: DefinitionOptions) {
+export function useLeadThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { leadFontSize, leadFontWeight } = useLeadVariables(options);
 
     selector('.lead', {
@@ -68,7 +82,9 @@ export function useLeadThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useInitialismThemeSelectors(options: DefinitionOptions) {
+export function useInitialismThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { initialismFontSize, initialismTextTransform } = useInitialismVariables(options);
 
     selector('.initialism', {
@@ -78,7 +94,9 @@ export function useInitialismThemeSelectors(options: DefinitionOptions) {
 }
 
 
-export function useParagraphTheme(options: DefinitionOptions) {
+export function useParagraphTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useParagraphThemeSelectors(options);
     useLeadThemeSelectors(options);
     useInitialismThemeSelectors(options);

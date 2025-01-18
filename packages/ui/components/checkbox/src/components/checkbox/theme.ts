@@ -9,7 +9,8 @@ import {
     vref,
     DefinitionOptions,
     hsla,
-    css
+    css,
+    defaultDefinitionOptions
 } from '@inkline/core';
 import { merge } from '@inkline/utils';
 import {
@@ -44,8 +45,10 @@ const minusIconUrl =
 
 export function useCheckboxThemeColorConfig(
     variant: CheckboxColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { colorDark } = useBrandColors(options);
     const {
         colorDarkTint50,
@@ -170,8 +173,10 @@ export function useCheckboxThemeColorConfig(
 
 export function useCheckboxThemeSizeConfig(
     variant: CheckboxSizeVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopLeftRadiusSm,
         borderTopRightRadiusSm,
@@ -265,7 +270,9 @@ export function useCheckboxThemeSizeConfig(
     }[variant];
 }
 
-export function useCheckboxThemeConfig(options: DefinitionOptions) {
+export function useCheckboxThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { colorPrimary } = useBrandColors(options);
     const { colorPrimaryShade50 } = useBrandColorVariants(options);
     const { colorWhite } = useNeutralColors(options);
@@ -369,8 +376,10 @@ export function useCheckboxThemeConfig(options: DefinitionOptions) {
 
 export function useCheckboxThemeColorVariables(
     variant: CheckboxColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables([ns, variant] as const, useCheckboxThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
@@ -379,15 +388,19 @@ export function useCheckboxThemeColorVariables(
 
 export function useCheckboxThemeSizeVariables(
     variant: CheckboxSizeVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables([ns, variant] as const, useCheckboxThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useCheckboxThemeVariables(options: DefinitionOptions) {
+export function useCheckboxThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useCheckboxThemeConfig(options), {
         ...options,
         registerComposed: false
@@ -398,7 +411,9 @@ export function useCheckboxThemeVariables(options: DefinitionOptions) {
  * Selectors
  */
 
-export function useCheckboxThemeLayoutSelectors(options: DefinitionOptions) {
+export function useCheckboxThemeLayoutSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { checkboxWidth, checkboxHeight, checkboxCheckmarkWidth, checkboxCheckmarkHeight } =
         useCheckboxThemeVariables(options);
 
@@ -549,7 +564,9 @@ export function useCheckboxThemeLayoutSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useCheckboxThemeBaseSelectors(options: DefinitionOptions) {
+export function useCheckboxThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         checkboxBackground,
         checkboxBorderTopColor,
@@ -718,8 +735,10 @@ export function useCheckboxThemeBaseSelectors(options: DefinitionOptions) {
 
 export function useCheckboxThemeSizeSelectors(
     variant: CheckboxSizeVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         checkboxBorderTopLeftRadius,
         checkboxBorderTopRightRadius,
@@ -778,8 +797,10 @@ export function useCheckboxThemeSizeSelectors(
  */
 export function useCheckboxThemeColorSelectors(
     variant: CheckboxColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         checkboxColor,
         checkboxBackground,
@@ -895,7 +916,9 @@ export function useCheckboxThemeColorSelectors(
     );
 }
 
-export function useCheckboxThemeVariantsSelectors(options: DefinitionOptions) {
+export function useCheckboxThemeVariantsSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { checkboxMarginRight } = useCheckboxThemeVariables(options);
 
     selector(
@@ -932,15 +955,27 @@ export function useCheckboxThemeVariantsSelectors(options: DefinitionOptions) {
  * Composables
  */
 
-export function useCheckboxThemeSizes(sizes: CheckboxSizeVariant[], options: DefinitionOptions) {
+export function useCheckboxThemeSizes(
+    sizes: CheckboxSizeVariant[],
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     sizes.forEach((size) => useCheckboxThemeSizeSelectors(size, options));
 }
 
-export function useCheckboxThemeColors(colors: CheckboxColorVariant[], options: DefinitionOptions) {
+export function useCheckboxThemeColors(
+    colors: CheckboxColorVariant[],
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     colors.forEach((color) => useCheckboxThemeColorSelectors(color, options));
 }
 
-export function useCheckboxTheme(options: DefinitionOptions) {
+export function useCheckboxTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useCheckboxThemeVariables(options);
     useCheckboxThemeLayoutSelectors(options);
     useCheckboxThemeBaseSelectors(options);

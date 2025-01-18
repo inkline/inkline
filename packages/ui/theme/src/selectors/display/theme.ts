@@ -19,7 +19,8 @@ import { DefinitionOptions } from '@inkline/core';
 //
 // const ns = 'display';
 //
-// export function useDisplayThemeVariables(options: DefinitionOptions) {    const options = { ...defaultDefinitionOptions, ...userOptions }
+// export function useDisplayThemeVariables(userOptions: DefinitionOptions) {\nconst options = { ...defaultDefinitionOptions, ...userOptions };
+// const options = { ...defaultDefinitionOptions, ...userOptions };
 //     const { marginBottom } = useSpacing(options);
 //     const { fontFamilyBaseSecondary } = useFontFamily(options);
 //     const { fontStyleNormal } = useFontStyle(options);
@@ -92,7 +93,8 @@ import { DefinitionOptions } from '@inkline/core';
 //     };
 // }
 //
-// export function useDisplayThemeSelectors(options: DefinitionOptions) { //     const {
+// export function useDisplayThemeSelectors(userOptions: DefinitionOptions) {\nconst options = { ...defaultDefinitionOptions, ...userOptions };
+//     const {
 //         displayMarginBottom,
 //         displayFontFamily,
 //         displayFontStyle,
@@ -141,7 +143,8 @@ import { DefinitionOptions } from '@inkline/core';
 // }
 //
 
-export function useDisplayTheme(_options: DefinitionOptions) {
+export function useDisplayTheme(_userOptions: DefinitionOptions) {
+    // const options = { ...defaultDefinitionOptions, ...userOptions };
 //     useDisplayThemeVariables(options);
 //     useDisplayThemeSelectors(options);
 }

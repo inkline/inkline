@@ -2,28 +2,22 @@ import {
     ref,
     selector,
     nsvariables,
-    vref, DefinitionOptions
+    vref, DefinitionOptions, defaultDefinitionOptions
 } from '@inkline/core';
 import { useSpacing, useTextColor } from '../../variables';
 
 const ns = 'caption';
 
-export function useCaptionThemeConfig(options: DefinitionOptions) {
+export function useCaptionThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
-        textColorWeakerH,
-        textColorWeakerS,
-        textColorWeakerL,
-        textColorWeakerA
+        textColorWeaker
     } = useTextColor(options);
     const { spacing } = useSpacing(options);
 
     return {
-        color: {
-            h: ref(textColorWeakerH),
-            s: ref(textColorWeakerS),
-            l: ref(textColorWeakerL),
-            a: ref(textColorWeakerA)
-        },
+        color: ref(textColorWeaker),
         padding: {
             top: ref(spacing),
             right: 0,
@@ -33,11 +27,15 @@ export function useCaptionThemeConfig(options: DefinitionOptions) {
     };
 }
 
-export function useCaptionThemeVariables(options: DefinitionOptions) {
+export function useCaptionThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useCaptionThemeConfig(options), options);
 }
 
-export function useCaptionThemeSelectors(options: DefinitionOptions) {
+export function useCaptionThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { captionColor, captionPadding } = useCaptionThemeVariables(options);
 
     selector('caption', {
@@ -47,7 +45,9 @@ export function useCaptionThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useCaptionTheme(options: DefinitionOptions) {
+export function useCaptionTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useCaptionThemeVariables(options);
     useCaptionThemeSelectors(options);
 }

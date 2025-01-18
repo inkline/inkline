@@ -1,6 +1,8 @@
-import { DefinitionOptions, variable } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, variable } from '@inkline/core';
 
-export function useBreakpoints(options: DefinitionOptions) {
+export function useBreakpoints(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const breakpointXs = variable('breakpoint-xs', 0, options);
     const breakpointSm = variable('breakpoint-sm', 576, options);
     const breakpointMd = variable('breakpoint-md', 768, options);

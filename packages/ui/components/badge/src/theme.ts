@@ -17,7 +17,8 @@ import {
     vref,
     toVariableKey,
     setExportsNamespace,
-    DefinitionOptions
+    DefinitionOptions,
+    defaultDefinitionOptions
 } from '@inkline/core';
 import { merge } from '@inkline/utils';
 
@@ -45,7 +46,12 @@ type BadgeSizeVariant = (typeof defaultBadgeSizes)[number];
  * Config
  */
 
-export function useBadgeThemeColorConfig(variant: BadgeColorVariant, options: DefinitionOptions) {
+export function useBadgeThemeColorConfig(
+    variant: BadgeColorVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         colorLightShade50,
         colorLight,
@@ -159,7 +165,9 @@ export function useBadgeThemeColorConfig(variant: BadgeColorVariant, options: De
     }[variant];
 }
 
-export function useBadgeThemeSizeConfig(variant: BadgeSizeVariant, options: DefinitionOptions) {
+export function useBadgeThemeSizeConfig(variant: BadgeSizeVariant, userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopLeftRadiusSm,
         borderTopRightRadiusSm,
@@ -235,7 +243,9 @@ export function useBadgeThemeSizeConfig(variant: BadgeSizeVariant, options: Defi
     }[variant];
 }
 
-export function useBadgeThemeConfig(options: DefinitionOptions) {
+export function useBadgeThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopStyle,
         borderTopWidth,
@@ -313,22 +323,31 @@ export function useBadgeThemeConfig(options: DefinitionOptions) {
 
 export function useBadgeThemeColorVariables(
     variant: BadgeColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables([ns, variant] as const, useBadgeThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useBadgeThemeSizeVariables(variant: BadgeSizeVariant, options: DefinitionOptions) {
+export function useBadgeThemeSizeVariables(
+    variant: BadgeSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables([ns, variant] as const, useBadgeThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useBadgeThemeVariables(options: DefinitionOptions) {
+export function useBadgeThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useBadgeThemeConfig(options), {
         ...options,
         registerComposed: false
@@ -339,7 +358,9 @@ export function useBadgeThemeVariables(options: DefinitionOptions) {
  * Selectors
  */
 
-export function useBadgeThemeLayoutSelectors(options: DefinitionOptions) {
+export function useBadgeThemeLayoutSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector(
         '.badge',
         {
@@ -359,7 +380,9 @@ export function useBadgeThemeLayoutSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useBadgeThemeBaseSelectors(options: DefinitionOptions) {
+export function useBadgeThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         badgeBorderStyle,
         badgeBorderTopColor,
@@ -414,8 +437,10 @@ export function useBadgeThemeBaseSelectors(options: DefinitionOptions) {
 
 export function useBadgeThemeColorSelectors(
     variant: BadgeColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         badgeBackground,
         badgeBorderTopColor,
@@ -448,7 +473,12 @@ export function useBadgeThemeColorSelectors(
     );
 }
 
-export function useBadgeThemeSizeSelectors(variant: BadgeSizeVariant, options: DefinitionOptions) {
+export function useBadgeThemeSizeSelectors(
+    variant: BadgeSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         badgeBorderTopLeftRadius,
         badgeBorderTopRightRadius,
@@ -494,15 +524,21 @@ export function useBadgeThemeSizeSelectors(variant: BadgeSizeVariant, options: D
  * Composables
  */
 
-export function useBadgeThemeColors(colors: BadgeColorVariant[], options: DefinitionOptions) {
+export function useBadgeThemeColors(colors: BadgeColorVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     colors.forEach((color) => useBadgeThemeColorSelectors(color, options));
 }
 
-export function useBadgeThemeSizes(sizes: BadgeSizeVariant[], options: DefinitionOptions) {
+export function useBadgeThemeSizes(sizes: BadgeSizeVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     sizes.forEach((size) => useBadgeThemeSizeSelectors(size, options));
 }
 
-export function useBadgeTheme(options: DefinitionOptions) {
+export function useBadgeTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useBadgeThemeVariables(options);
     useBadgeThemeLayoutSelectors(options);
     useBadgeThemeBaseSelectors(options);

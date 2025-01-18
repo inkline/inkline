@@ -3,13 +3,15 @@ import {
     ref,
     selector,
     nsvariables,
-    vref
+    vref, defaultDefinitionOptions
 } from '@inkline/core';
 import { useSpacing } from '../../variables';
 
 const ns = 'ol';
 
-export function useOlConfig(options: DefinitionOptions) {
+export function useOlConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { spacing, spacingXl } = useSpacing(options);
 
     return {
@@ -22,11 +24,15 @@ export function useOlConfig(options: DefinitionOptions) {
     };
 }
 
-export function useOlVariables(options: DefinitionOptions) {
+export function useOlVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useOlConfig(options), options);
 }
 
-export function useOlThemeSelectors(options: DefinitionOptions) {
+export function useOlThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { olMargin, olPadding } = useOlVariables(options);
 
     selector('ol', {
@@ -39,7 +45,9 @@ export function useOlThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useOlTheme(options: DefinitionOptions) {
+export function useOlTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useOlVariables(options);
     useOlThemeSelectors(options);
 }

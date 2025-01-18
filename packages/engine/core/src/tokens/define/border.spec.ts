@@ -1,7 +1,6 @@
 import { defineBorder } from './border';
 import { nsvariable } from '../variable';
 import { ref } from '../ref';
-import { hsla } from '../color';
 import { createContext } from '../../context';
 
 const options = { context: createContext() };

@@ -1,4 +1,11 @@
-import { ref, selector, nsvariables, DefinitionOptions, vref } from '@inkline/core';
+import {
+    ref,
+    selector,
+    nsvariables,
+    DefinitionOptions,
+    defaultDefinitionOptions,
+    vref
+} from '@inkline/core';
 import { useSpacing } from '@inkline/theme';
 
 const ns = 'form-group';
@@ -7,7 +14,9 @@ const ns = 'form-group';
  * Config
  */
 
-export function useFormGroupThemeConfig(options: DefinitionOptions) {
+export function useFormGroupThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { spacing } = useSpacing(options);
 
     return {
@@ -24,7 +33,9 @@ export function useFormGroupThemeConfig(options: DefinitionOptions) {
  * Variables
  */
 
-export function useFormGroupThemeVariables(options: DefinitionOptions) {
+export function useFormGroupThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useFormGroupThemeConfig(options), {
         ...options,
         registerComposed: false
@@ -35,7 +46,9 @@ export function useFormGroupThemeVariables(options: DefinitionOptions) {
  * Selectors
  */
 
-export function useFormGroupThemeLayoutSelectors(options: DefinitionOptions) {
+export function useFormGroupThemeLayoutSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector(
         '.form-group',
         {
@@ -83,7 +96,9 @@ export function useFormGroupThemeLayoutSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useFormGroupThemeBaseSelectors(options: DefinitionOptions) {
+export function useFormGroupThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { formGroupMargin } = useFormGroupThemeVariables(options);
 
     selector(
@@ -103,7 +118,9 @@ export function useFormGroupThemeBaseSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useFormGroupTheme(options: DefinitionOptions) {
+export function useFormGroupTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useFormGroupThemeVariables(options);
     useFormGroupThemeLayoutSelectors(options);
     useFormGroupThemeBaseSelectors(options);

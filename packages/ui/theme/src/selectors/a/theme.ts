@@ -1,48 +1,38 @@
-import { DefinitionOptions, nsvariables, ref, selector, vref } from '@inkline/core';
+import { DefinitionOptions, defaultDefinitionOptions, nsvariables, ref, selector, vref } from '@inkline/core';
 import { useBrandColorVariants } from '../../variables';
 
 const ns = 'a';
 
-export function useAThemeConfig(options: DefinitionOptions) {
+export function useAThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
-        colorPrimary500H,
-        colorPrimary500S,
-        colorPrimary500L,
-        colorPrimary500A,
-        colorPrimary600H,
-        colorPrimary600S,
-        colorPrimary600L,
-        colorPrimary600A
+        colorPrimary500,
+        colorPrimary600
     } = useBrandColorVariants(options);
 
     return {
-        color: {
-            h: ref(colorPrimary500H),
-            s: ref(colorPrimary500S),
-            l: ref(colorPrimary500L),
-            a: ref(colorPrimary500A)
-        },
+        color: ref(colorPrimary500),
         textDecoration: 'none',
         /**
          * @state hover
          */
         hover: {
-            color: {
-                h: ref(colorPrimary600H),
-                s: ref(colorPrimary600S),
-                l: ref(colorPrimary600L),
-                a: ref(colorPrimary600A)
-            },
+            color: ref(colorPrimary600),
             textDecoration: 'underline'
         }
     };
 }
 
-export function useAThemeVariables(options: DefinitionOptions) {
+export function useAThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useAThemeConfig(options), options);
 }
 
-export function useAThemeSelectors(options: DefinitionOptions) {
+export function useAThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { aColor, aTextDecoration, aHoverColor, aHoverTextDecoration } = useAThemeVariables(options);
 
     selector('a', {
@@ -64,7 +54,9 @@ export function useAThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useATheme(options: DefinitionOptions) {
+export function useATheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useAThemeVariables(options);
     useAThemeSelectors(options);
 }

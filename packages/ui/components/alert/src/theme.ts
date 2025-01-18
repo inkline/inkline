@@ -5,7 +5,8 @@ import {
     setExportsNamespace,
     toVariableKey,
     vref,
-    DefinitionOptions
+    DefinitionOptions,
+    defaultDefinitionOptions
 } from '@inkline/core';
 import { merge } from '@inkline/utils';
 import {
@@ -34,7 +35,12 @@ type AlertSizeVariant = (typeof defaultAlertSizes)[number];
  * Config
  */
 
-export function useAlertThemeColorConfig(variant: AlertColorVariant, options: DefinitionOptions) {
+export function useAlertThemeColorConfig(
+    variant: AlertColorVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         colorInfo100,
         colorInfo800,
@@ -94,7 +100,9 @@ export function useAlertThemeColorConfig(variant: AlertColorVariant, options: De
     }[variant];
 }
 
-export function useAlertThemeSizeConfig(variant: AlertSizeVariant, options: DefinitionOptions) {
+export function useAlertThemeSizeConfig(variant: AlertSizeVariant, userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopLeftRadiusSm,
         borderTopRightRadiusSm,
@@ -170,7 +178,9 @@ export function useAlertThemeSizeConfig(variant: AlertSizeVariant, options: Defi
     }[variant];
 }
 
-export function useAlertThemeConfig(options: DefinitionOptions) {
+export function useAlertThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopStyle,
         borderTopWidth,
@@ -242,22 +252,31 @@ export function useAlertThemeConfig(options: DefinitionOptions) {
 
 export function useAlertThemeColorVariables(
     variant: AlertColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables([ns, variant] as const, useAlertThemeColorConfig(variant, options), {
         ...options
         // registerComposed: false
     });
 }
 
-export function useAlertThemeSizeVariables(variant: AlertSizeVariant, options: DefinitionOptions) {
+export function useAlertThemeSizeVariables(
+    variant: AlertSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables([ns, variant] as const, useAlertThemeSizeConfig(variant, options), {
         ...options
         // registerComposed: false
     });
 }
 
-export function useAlertThemeVariables(options: DefinitionOptions) {
+export function useAlertThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useAlertThemeConfig(options), {
         ...options,
         registerComposed: false
@@ -268,7 +287,9 @@ export function useAlertThemeVariables(options: DefinitionOptions) {
  * Selectors
  */
 
-export function useAlertThemeLayoutSelectors(options: DefinitionOptions) {
+export function useAlertThemeLayoutSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector(
         '.alert',
         {
@@ -312,7 +333,9 @@ export function useAlertThemeLayoutSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useAlertThemeBaseSelectors(options: DefinitionOptions) {
+export function useAlertThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         alertBorderStyle,
         alertBorderColor,
@@ -409,8 +432,10 @@ export function useAlertThemeBaseSelectors(options: DefinitionOptions) {
 
 export function useAlertThemeColorSelectors(
     variant: AlertColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         alertBackground,
         alertBorderTopColor,
@@ -443,7 +468,12 @@ export function useAlertThemeColorSelectors(
     );
 }
 
-export function useAlertThemeSizeSelectors(variant: AlertSizeVariant, options: DefinitionOptions) {
+export function useAlertThemeSizeSelectors(
+    variant: AlertSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         alertPaddingTop,
         alertPaddingRight,
@@ -489,15 +519,21 @@ export function useAlertThemeSizeSelectors(variant: AlertSizeVariant, options: D
  * Composables
  */
 
-export function useAlertThemeColors(colors: AlertColorVariant[], options: DefinitionOptions) {
+export function useAlertThemeColors(colors: AlertColorVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     colors.forEach((color) => useAlertThemeColorSelectors(color, options));
 }
 
-export function useAlertThemeSizes(sizes: AlertSizeVariant[], options: DefinitionOptions) {
+export function useAlertThemeSizes(sizes: AlertSizeVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     sizes.forEach((size) => useAlertThemeSizeSelectors(size, options));
 }
 
-export function useAlertTheme(options: DefinitionOptions) {
+export function useAlertTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useAlertThemeVariables(options);
     useAlertThemeLayoutSelectors(options);
     useAlertThemeBaseSelectors(options);

@@ -7,7 +7,9 @@ import {
     stripExportsNamespace,
     replaceExportsNamespace,
     add,
-    hsla
+    hsla,
+    DefinitionOptions,
+    css
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
@@ -39,8 +41,10 @@ type RadioSizeVariant = (typeof defaultRadioSizes)[number];
 const circleIconUrl =
     'data:image/svg+xml; utf8, <svg fill="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><title>check</title><circle cx="14" cy="14" r="12"></circle></svg>';
 
-export function useRadioThemeVariables(options: DefinitionOptions) {
-    const { colorPrimary, colorPrimaryH, colorPrimaryS, colorPrimaryL } = useBrandColors(options);
+export function useRadioThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    const { colorPrimary } = useBrandColors(options);
     const {
         colorLightShade50,
         colorPrimary300,
@@ -172,7 +176,7 @@ export function useRadioThemeVariables(options: DefinitionOptions) {
                     offsetY: 0,
                     blurRadius: 0,
                     spreadRadius: '3px',
-                    color: hsla([ref(colorPrimaryH), ref(colorPrimaryS), ref(colorPrimaryL), 0.25])
+                    color: hsla(css`from ${ref(colorPrimary)} h s l / 0.25`)
                 }
             },
             options
@@ -192,7 +196,9 @@ export function useRadioThemeVariables(options: DefinitionOptions) {
     };
 }
 
-export function useRadioThemeLayout(options: DefinitionOptions) {
+export function useRadioThemeLayout(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { radioWidth, radioHeight, radioCircleWidth, radioCircleHeight } =
         useRadioThemeVariables(options);
 
@@ -283,7 +289,9 @@ export function useRadioThemeLayout(options: DefinitionOptions) {
     );
 }
 
-export function useRadioThemeBase(options: DefinitionOptions) {
+export function useRadioThemeBase(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         radioBackground,
         radioBorderColor,
@@ -521,7 +529,9 @@ export function useRadioThemeColors(colors = defaultRadioColors) {
     colors.forEach((color) => useRadioThemeColorSelectors(color, options));
 }
 
-export function useRadioThemeVariants(options: DefinitionOptions) {
+export function useRadioThemeVariants(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { radioMarginRight } = useRadioThemeVariables(options);
 
     selector('.radio.-native input', {
@@ -542,7 +552,9 @@ export function useRadioThemeVariants(options: DefinitionOptions) {
     });
 }
 
-export function useRadioTheme(options: DefinitionOptions) {
+export function useRadioTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useRadioThemeLayout(options);
     useRadioThemeBase(options);
     useRadioThemeSizes(options);

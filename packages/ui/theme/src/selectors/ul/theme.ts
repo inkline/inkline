@@ -1,14 +1,16 @@
 import {
     DefinitionOptions,
     ref,
-    selector, nsvariables, vref
+    selector, nsvariables, vref, defaultDefinitionOptions
 } from '@inkline/core';
 import { useSpacing } from '../../variables';
 
 const ns = 'ul';
 
 
-export function useUlConfig(options: DefinitionOptions) {
+export function useUlConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { spacing, spacingXl } = useSpacing(options);
 
     return {
@@ -21,11 +23,15 @@ export function useUlConfig(options: DefinitionOptions) {
     };
 }
 
-export function useUlVariables(options: DefinitionOptions) {
+export function useUlVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useUlConfig(options), options);
 }
 
-export function useUlThemeSelectors(options: DefinitionOptions) {
+export function useUlThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { ulMargin, ulPadding } = useUlVariables(options);
 
     selector('ul', {
@@ -38,7 +44,9 @@ export function useUlThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useUlTheme(options: DefinitionOptions) {
+export function useUlTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useUlVariables(options);
     useUlThemeSelectors(options);
 }

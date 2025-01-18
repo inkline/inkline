@@ -1,6 +1,8 @@
-import { selector, file, DefinitionOptions } from '@inkline/core';
+import { defaultDefinitionOptions, selector, file, DefinitionOptions } from '@inkline/core';
 
-export function useRebootTheme(options: DefinitionOptions) {
+export function useRebootTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     // Display block by default
     selector('label', {
         display: 'inline-block'
@@ -143,7 +145,9 @@ export function useRebootTheme(options: DefinitionOptions) {
     );
 }
 
-export function useNormalizeTheme(options: DefinitionOptions) {
+export function useNormalizeTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     file('index.css', `@import 'normalize.css';\n`, {
         ...options,
         prepend: true

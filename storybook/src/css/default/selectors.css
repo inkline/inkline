@@ -94,12 +94,12 @@ a, area, button, [role="button"], input:not([type="range"]), label, select, summ
 }
 
 a {
-    color: var(--a--color, hsla(var(--a--color-h) var(--a--color-s) var(--a--color-l) / var(--a--color-a)));
+    color: var(--a--color, var(--color-primary-500));
     text-decoration: var(--a--text-decoration);
 }
 
 a:hover {
-    color: var(--a--hover--color, hsla(var(--a--hover--color-h) var(--a--hover--color-s) var(--a--hover--color-l) / var(--a--hover--color-a)));
+    color: var(--a--hover--color, var(--color-primary-600));
     text-decoration: var(--a--hover--text-decoration);
 }
 
@@ -155,7 +155,7 @@ address {
 }
 
 .blockquote > footer, blockquote > .footer {
-    color: var(--blockquote--footer--color, hsla(var(--blockquote--footer--color-h) var(--blockquote--footer--color-s) var(--blockquote--footer--color-l) / var(--blockquote--footer--color-a)));
+    color: var(--blockquote--footer--color, var(--text-color-weak));
     font-size: var(--blockquote--footer--font-size);
     display: block;
 }
@@ -165,8 +165,8 @@ address {
 }
 
 body {
-    color: var(--body--color, hsla(var(--body--color-h) var(--body--color-s) var(--body--color-l) / var(--body--color-a)));
-    background-color: var(--body--background, hsla(var(--body--background-h) var(--body--background-s) var(--body--background-l) / var(--body--background-a)));
+    color: var(--body--color, var(--text-color));
+    background-color: var(--body--background, var(--color-white));
     font-size: var(--body--font-size);
     font-family: var(--body--font-family);
     line-height: var(--body--line-height);
@@ -178,11 +178,11 @@ body {
 caption {
     text-align: left;
     padding: var(--caption--padding, var(--caption--padding-top) var(--caption--padding-right) var(--caption--padding-bottom) var(--caption--padding-left));
-    color: var(--caption--color, hsla(var(--caption--color-h) var(--caption--color-s) var(--caption--color-l) / var(--caption--color-a)));
+    color: var(--caption--color, var(--text-color-weaker));
 }
 
 code {
-    color: var(--code--color, hsla(var(--code--color-h) var(--code--color-s) var(--code--color-l) / var(--code--color-a)));
+    color: var(--code--color, var(--color-pink));
     font-size: var(--code--font-size);
     font-family: var(--code--font-family);
     word-wrap: break-word;
@@ -255,8 +255,8 @@ kbd {
     font-size: var(--kbd--font-size);
     font-family: var(--kbd--font-family);
     padding: var(--kbd--padding, var(--kbd--padding-top) var(--kbd--padding-right) var(--kbd--padding-bottom) var(--kbd--padding-left));
-    color: var(--kbd--color, hsla(var(--kbd--color-h) var(--kbd--color-s) var(--kbd--color-l) / var(--kbd--color-a)));
-    background: var(--kbd--background, hsla(var(--kbd--background-h) var(--kbd--background-s) var(--kbd--background-l) / var(--kbd--background-a)));
+    color: var(--kbd--color, var(--contrast-text-color-dark));
+    background: var(--kbd--background, var(--color-dark));
     border-radius: var(--kbd--border-radius, var(--kbd--border-top-left-radius) var(--kbd--border-top-right-radius) var(--kbd--border-bottom-right-radius) var(--kbd--border-bottom-left-radius));
     display: inline-block;
 }
@@ -280,7 +280,7 @@ legend + * {
 
 mark {
     padding: var(--mark--padding, var(--mark--padding-top) var(--mark--padding-right) var(--mark--padding-bottom) var(--mark--padding-left));
-    background: var(--mark--background, hsla(var(--mark--background-h) var(--mark--background-s) var(--mark--background-l) / var(--mark--background-a)));
+    background: var(--mark--background, var(--color-yellow));
 }
 
 ol {
@@ -491,8 +491,8 @@ ul ol, ul ul {
     border-width: var(--alert--border-width, var(--alert--border-top-width) var(--alert--border-right-width) var(--alert--border-bottom-width) var(--alert--border-left-width));
     border-radius: var(--alert--border-radius, var(--alert--border-top-left-radius) var(--alert--border-top-right-radius) var(--alert--border-bottom-right-radius) var(--alert--border-bottom-left-radius));
     box-shadow: var(--alert--box-shadow, var(--alert--box-shadow-offset-x) var(--alert--box-shadow-offset-y) var(--alert--box-shadow-blur-radius) var(--alert--box-shadow-spread-radius) var(--alert--box-shadow-color));
-    background: var(--alert--background, hsla(var(--alert--background-h) var(--alert--background-s) var(--alert--background-l) / var(--alert--background-a)));
-    color: var(--alert--color, hsla(var(--alert--color-h) var(--alert--color-s) var(--alert--color-l) / var(--alert--color-a)));
+    background: var(--alert--background, var(--color-info-100));
+    color: var(--alert--color, var(--color-info-800));
     font-size: var(--alert--font-size);
     transition-property: var(--alert--transition-property, var(--transition-property));
     transition-duration: var(--alert--transition-duration, var(--transition-duration));
@@ -524,7 +524,7 @@ ul ol, ul ul {
 }
 
 .alert a {
-    color: var(--alert--color, hsla(var(--alert--color-h) var(--alert--color-s) var(--alert--color-l) / var(--alert--color-a)));
+    color: var(--alert--color, var(--color-info-800));
     font-weight: var(--alert--link--font-weight);
 }
 
@@ -612,15 +612,15 @@ a:hover .badge, a:focus .badge {
 
 .badge {
     border-style: var(--badge--border-style, var(--badge--border-top-style) var(--badge--border-right-style) var(--badge--border-bottom-style) var(--badge--border-left-style));
-    border-top-color: var(--badge--border-top-color, hsla(var(--badge--border-top-color-h) var(--badge--border-top-color-s) var(--badge--border-top-color-l) / var(--badge--border-top-color-a)));
-    border-right-color: var(--badge--border-right-color, hsla(var(--badge--border-right-color-h) var(--badge--border-right-color-s) var(--badge--border-right-color-l) / var(--badge--border-right-color-a)));
-    border-bottom-color: var(--badge--border-bottom-color, hsla(var(--badge--border-bottom-color-h) var(--badge--border-bottom-color-s) var(--badge--border-bottom-color-l) / var(--badge--border-bottom-color-a)));
-    border-left-color: var(--badge--border-left-color, hsla(var(--badge--border-left-color-h) var(--badge--border-left-color-s) var(--badge--border-left-color-l) / var(--badge--border-left-color-a)));
+    border-top-color: var(--badge--border-top-color, var(--color-light-shade-50));
+    border-right-color: var(--badge--border-right-color, var(--color-light-shade-50));
+    border-bottom-color: var(--badge--border-bottom-color, var(--color-light-shade-50));
+    border-left-color: var(--badge--border-left-color, var(--color-light-shade-50));
     border-width: var(--badge--border-width, var(--badge--border-top-width) var(--badge--border-right-width) var(--badge--border-bottom-width) var(--badge--border-left-width));
     border-radius: var(--badge--border-radius, var(--badge--border-top-left-radius) var(--badge--border-top-right-radius) var(--badge--border-bottom-right-radius) var(--badge--border-bottom-left-radius));
     box-shadow: var(--badge--box-shadow, var(--badge--box-shadow-offset-x) var(--badge--box-shadow-offset-y) var(--badge--box-shadow-blur-radius) var(--badge--box-shadow-spread-radius) var(--badge--box-shadow-color));
-    background: var(--badge--background, hsla(var(--badge--background-h) var(--badge--background-s) var(--badge--background-l) / var(--badge--background-a)));
-    color: var(--badge--color, hsla(var(--badge--color-h) var(--badge--color-s) var(--badge--color-l) / var(--badge--color-a)));
+    background: var(--badge--background, var(--color-light));
+    color: var(--badge--color, var(--contrast-text-color-light));
     font-size: var(--badge--font-size);
     font-weight: var(--badge--font-weight, var(--font-weight-semibold));
     padding: var(--badge--padding, var(--badge--padding-top) var(--badge--padding-right) var(--badge--padding-bottom) var(--badge--padding-left));
@@ -819,7 +819,7 @@ a:hover .badge, a:focus .badge {
 }
 
 .breadcrumb-item.-active, .breadcrumb-item.-active a {
-    color: var(--breadcrumb--active--color, hsla(var(--breadcrumb--active--color-h) var(--breadcrumb--active--color-s) var(--breadcrumb--active--color-l) / var(--breadcrumb--active--color-a)));
+    color: var(--breadcrumb--active--color, var(--text-color-weaker));
 }
 
 .button {
@@ -857,14 +857,14 @@ a.button.-disabled, *:disabled a.button {
 .button {
     border-width: var(--button--border-width, var(--button--border-top-width) var(--button--border-right-width) var(--button--border-bottom-width) var(--button--border-left-width));
     border-style: var(--button--border-style, var(--button--border-top-style) var(--button--border-right-style) var(--button--border-bottom-style) var(--button--border-left-style));
-    border-top-color: var(--button--border-top-color, hsla(var(--button--border-top-color-h) var(--button--border-top-color-s) var(--button--border-top-color-l) / var(--button--border-top-color-a)));
-    border-right-color: var(--button--border-right-color, hsla(var(--button--border-right-color-h) var(--button--border-right-color-s) var(--button--border-right-color-l) / var(--button--border-right-color-a)));
-    border-bottom-color: var(--button--border-bottom-color, hsla(var(--button--border-bottom-color-h) var(--button--border-bottom-color-s) var(--button--border-bottom-color-l) / var(--button--border-bottom-color-a)));
-    border-left-color: var(--button--border-left-color, hsla(var(--button--border-left-color-h) var(--button--border-left-color-s) var(--button--border-left-color-l) / var(--button--border-left-color-a)));
+    border-top-color: var(--button--border-top-color, var(--color-light-shade-50));
+    border-right-color: var(--button--border-right-color, var(--color-light-shade-50));
+    border-bottom-color: var(--button--border-bottom-color, var(--color-light-shade-50));
+    border-left-color: var(--button--border-left-color, var(--color-light-shade-50));
     border-radius: var(--button--border-radius, var(--button--border-top-left-radius) var(--button--border-top-right-radius) var(--button--border-bottom-right-radius) var(--button--border-bottom-left-radius));
-    background: var(--button--background, hsla(var(--button--background-h) var(--button--background-s) var(--button--background-l) / var(--button--background-a)));
+    background: var(--button--background, var(--color-light));
     box-shadow: var(--button--box-shadow, var(--button--box-shadow-offset-x) var(--button--box-shadow-offset-y) var(--button--box-shadow-blur-radius) var(--button--box-shadow-spread-radius) var(--button--box-shadow-color));
-    color: var(--button--color, hsla(var(--button--color-h) var(--button--color-s) var(--button--color-l) / var(--button--color-a)));
+    color: var(--button--color, var(--contrast-text-color-light));
     font-size: var(--button--font-size);
     line-height: var(--button--line-height);
     padding: var(--button--padding, var(--button--padding-top) var(--button--padding-right) var(--button--padding-bottom) var(--button--padding-left));
@@ -874,19 +874,19 @@ a.button.-disabled, *:disabled a.button {
 }
 
 .button:hover, .button.-hover {
-    background: var(--button--hover--background, hsla(var(--button--hover--background-h) var(--button--hover--background-s) var(--button--hover--background-l) / var(--button--hover--background-a)));
+    background: var(--button--hover--background, var(--color-light-shade-50));
 }
 
 .button:focus, .button.-focus {
-    background: var(--button--focus--background, hsla(var(--button--focus--background-h) var(--button--focus--background-s) var(--button--focus--background-l) / var(--button--focus--background-a)));
+    background: var(--button--focus--background, var(--color-light-shade-50));
 }
 
 .button:active, .button.-active {
-    background: var(--button--active--background, hsla(var(--button--active--background-h) var(--button--active--background-s) var(--button--active--background-l) / var(--button--active--background-a)));
+    background: var(--button--active--background, var(--color-light-shade-100));
 }
 
 .button:disabled, .button.-disabled {
-    background: var(--button--background, hsla(var(--button--background-h) var(--button--background-s) var(--button--background-l) / var(--button--background-a)));
+    background: var(--button--background, var(--color-light));
     opacity: var(--button--disabled--opacity);
     box-shadow: none;
 }
@@ -1153,7 +1153,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
     border-bottom-color: transparent;
     border-left-color: transparent;
     cursor: pointer;
-    color: var(--button--background, hsla(var(--button--background-h) var(--button--background-s) var(--button--background-l) / var(--button--background-a)));
+    color: var(--button--background, var(--color-light));
 }
 
 .button.-link:active, .button.-link.-active, .button.-link:hover, .button.-link.-hover, .button.-link:focus, .button.-link.-focus {
@@ -1169,21 +1169,21 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 .button.-outline {
     background: transparent;
     box-shadow: none;
-    border-top-color: var(--button--background, hsla(var(--button--background-h) var(--button--background-s) var(--button--background-l) / var(--button--background-a)));
-    border-right-color: var(--button--background, hsla(var(--button--background-h) var(--button--background-s) var(--button--background-l) / var(--button--background-a)));
-    border-bottom-color: var(--button--background, hsla(var(--button--background-h) var(--button--background-s) var(--button--background-l) / var(--button--background-a)));
-    border-left-color: var(--button--background, hsla(var(--button--background-h) var(--button--background-s) var(--button--background-l) / var(--button--background-a)));
-    color: var(--button--background, hsla(var(--button--background-h) var(--button--background-s) var(--button--background-l) / var(--button--background-a)));
+    border-top-color: var(--button--background, var(--color-light));
+    border-right-color: var(--button--background, var(--color-light));
+    border-bottom-color: var(--button--background, var(--color-light));
+    border-left-color: var(--button--background, var(--color-light));
+    color: var(--button--background, var(--color-light));
 }
 
 .button.-outline:hover, .button.-outline.-hover {
-    background: var(--button--background, hsla(var(--button--background-h) var(--button--background-s) var(--button--background-l) / var(--button--background-a)));
+    background: var(--button--background, var(--color-light));
     box-shadow: none;
-    border-top-color: var(--button--border-top-color, hsla(var(--button--border-top-color-h) var(--button--border-top-color-s) var(--button--border-top-color-l) / var(--button--border-top-color-a)));
-    border-right-color: var(--button--border-right-color, hsla(var(--button--border-right-color-h) var(--button--border-right-color-s) var(--button--border-right-color-l) / var(--button--border-right-color-a)));
-    border-bottom-color: var(--button--border-bottom-color, hsla(var(--button--border-bottom-color-h) var(--button--border-bottom-color-s) var(--button--border-bottom-color-l) / var(--button--border-bottom-color-a)));
-    border-left-color: var(--button--border-left-color, hsla(var(--button--border-left-color-h) var(--button--border-left-color-s) var(--button--border-left-color-l) / var(--button--border-left-color-a)));
-    color: var(--button--color, hsla(var(--button--color-h) var(--button--color-s) var(--button--color-l) / var(--button--color-a)));
+    border-top-color: var(--button--border-top-color, var(--color-light-shade-50));
+    border-right-color: var(--button--border-right-color, var(--color-light-shade-50));
+    border-bottom-color: var(--button--border-bottom-color, var(--color-light-shade-50));
+    border-left-color: var(--button--border-left-color, var(--color-light-shade-50));
+    color: var(--button--color, var(--contrast-text-color-light));
 }
 
 .button.-circle, .button.-square {
@@ -1263,17 +1263,17 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 
 .card {
     box-shadow: var(--card--box-shadow, var(--card--box-shadow-offset-x) var(--card--box-shadow-offset-y) var(--card--box-shadow-blur-radius) var(--card--box-shadow-spread-radius) var(--card--box-shadow-color));
-    color: var(--card--color, hsla(var(--card--color-h) var(--card--color-s) var(--card--color-l) / var(--card--color-a)));
+    color: var(--card--color, var(--contrast-text-color-light));
     font-size: var(--card--font-size);
 }
 
 .card-header, .card-body, .card-footer {
-    background: var(--card--background, hsla(var(--card--background-h) var(--card--background-s) var(--card--background-l) / var(--card--background-a)));
+    background: var(--card--background, var(--color-light));
     border-style: var(--card--border-style, var(--card--border-top-style) var(--card--border-right-style) var(--card--border-bottom-style) var(--card--border-left-style));
-    border-top-color: var(--card--border-top-color, hsla(var(--card--border-top-color-h) var(--card--border-top-color-s) var(--card--border-top-color-l) / var(--card--border-top-color-a)));
-    border-right-color: var(--card--border-right-color, hsla(var(--card--border-right-color-h) var(--card--border-right-color-s) var(--card--border-right-color-l) / var(--card--border-right-color-a)));
-    border-bottom-color: var(--card--border-bottom-color, hsla(var(--card--border-bottom-color-h) var(--card--border-bottom-color-s) var(--card--border-bottom-color-l) / var(--card--border-bottom-color-a)));
-    border-left-color: var(--card--border-left-color, hsla(var(--card--border-left-color-h) var(--card--border-left-color-s) var(--card--border-left-color-l) / var(--card--border-left-color-a)));
+    border-top-color: var(--card--border-top-color, var(--color-light-shade-50));
+    border-right-color: var(--card--border-right-color, var(--color-light-shade-50));
+    border-bottom-color: var(--card--border-bottom-color, var(--color-light-shade-50));
+    border-left-color: var(--card--border-left-color, var(--color-light-shade-50));
     border-width: var(--card--border-width, var(--card--border-top-width) var(--card--border-right-width) var(--card--border-bottom-width) var(--card--border-left-width));
     padding: var(--card--padding, var(--card--padding-top) var(--card--padding-right) var(--card--padding-bottom) var(--card--padding-left));
     transition-property: var(--card--transition-property);
@@ -1498,7 +1498,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .checkbox .checkbox-label {
-    color: var(--checkbox--color, hsla(var(--checkbox--color-h) var(--checkbox--color-s) var(--checkbox--color-l) / var(--checkbox--color-a)));
+    color: var(--checkbox--color, var(--contrast-text-color-light));
     font-size: var(--checkbox--font-size);
     padding-left: calc(var(--checkbox--width) + var(--checkbox--margin-right));
     transition-property: var(--checkbox--transition-property);
@@ -1507,11 +1507,11 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .checkbox .checkbox-label::before {
-    background: var(--checkbox--background, hsla(var(--checkbox--background-h) var(--checkbox--background-s) var(--checkbox--background-l) / var(--checkbox--background-a)));
-    border-top-color: var(--checkbox--border-top-color, hsla(var(--checkbox--border-top-color-h) var(--checkbox--border-top-color-s) var(--checkbox--border-top-color-l) / var(--checkbox--border-top-color-a)));
-    border-right-color: var(--checkbox--border-right-color, hsla(var(--checkbox--border-right-color-h) var(--checkbox--border-right-color-s) var(--checkbox--border-right-color-l) / var(--checkbox--border-right-color-a)));
-    border-bottom-color: var(--checkbox--border-bottom-color, hsla(var(--checkbox--border-bottom-color-h) var(--checkbox--border-bottom-color-s) var(--checkbox--border-bottom-color-l) / var(--checkbox--border-bottom-color-a)));
-    border-left-color: var(--checkbox--border-left-color, hsla(var(--checkbox--border-left-color-h) var(--checkbox--border-left-color-s) var(--checkbox--border-left-color-l) / var(--checkbox--border-left-color-a)));
+    background: var(--checkbox--background, var(--color-white));
+    border-top-color: var(--checkbox--border-top-color, var(--color-light-shade-50));
+    border-right-color: var(--checkbox--border-right-color, var(--color-light-shade-50));
+    border-bottom-color: var(--checkbox--border-bottom-color, var(--color-light-shade-50));
+    border-left-color: var(--checkbox--border-left-color, var(--color-light-shade-50));
     border-width: var(--checkbox--border-width, var(--checkbox--border-top-width) var(--checkbox--border-right-width) var(--checkbox--border-bottom-width) var(--checkbox--border-left-width));
     border-style: var(--checkbox--border-style, var(--checkbox--border-top-style) var(--checkbox--border-right-style) var(--checkbox--border-bottom-style) var(--checkbox--border-left-style));
     border-radius: var(--checkbox--border-radius, var(--checkbox--border-top-left-radius) var(--checkbox--border-top-right-radius) var(--checkbox--border-bottom-right-radius) var(--checkbox--border-bottom-left-radius));
@@ -1522,7 +1522,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .checkbox .checkbox-label::after {
-    background: var(--checkbox--checkmark--color, hsla(var(--checkbox--checkmark--color-h) var(--checkbox--checkmark--color-s) var(--checkbox--checkmark--color-l) / var(--checkbox--checkmark--color-a)));
+    background: var(--checkbox--checkmark--color, var(--color-white));
     transition-property: var(--checkbox--transition-property);
     transition-duration: var(--checkbox--transition-duration);
     transition-timing-function: var(--checkbox--transition-timing-function);
@@ -1533,7 +1533,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .checkbox input:checked ~ .checkbox-label::before, .checkbox input:indeterminate ~ .checkbox-label::before {
-    background: var(--checkbox--checked--background, hsla(var(--checkbox--checked--background-h) var(--checkbox--checked--background-s) var(--checkbox--checked--background-l) / var(--checkbox--checked--background-a)));
+    background: var(--checkbox--checked--background, var(--color-primary));
     border-top-color: var(--checkbox--checked--border-top-color);
     border-right-color: var(--checkbox--checked--border-right-color);
     border-bottom-color: var(--checkbox--checked--border-bottom-color);
@@ -1541,22 +1541,22 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .checkbox input:disabled ~ .checkbox-label {
-    color: var(--checkbox--disabled--color, hsla(var(--checkbox--disabled--color-h) var(--checkbox--disabled--color-s) var(--checkbox--disabled--color-l) / var(--checkbox--disabled--color-a)));
+    color: var(--checkbox--disabled--color, var(--text-color-weak));
     cursor: default;
 }
 
 .checkbox input:disabled ~ .checkbox-label::before {
-    background: var(--checkbox--disabled--background, hsla(var(--checkbox--disabled--background-h) var(--checkbox--disabled--background-s) var(--checkbox--disabled--background-l) / var(--checkbox--disabled--background-a)));
+    background: var(--checkbox--disabled--background, var(--color-gray-100));
     cursor: not-allowed;
 }
 
 .checkbox input[readonly] ~ .checkbox-label::before {
-    background: var(--checkbox--readonly--background, hsla(var(--checkbox--readonly--background-h) var(--checkbox--readonly--background-s) var(--checkbox--readonly--background-l) / var(--checkbox--readonly--background-a)));
+    background: var(--checkbox--readonly--background, var(--color-gray-100));
     cursor: not-allowed;
 }
 
 .checkbox input:checked:disabled ~ .checkbox-label::before {
-    background: var(--checkbox--checked--disabled--background, hsla(var(--checkbox--checked--disabled--background-h) var(--checkbox--checked--disabled--background-s) var(--checkbox--checked--disabled--background-l) / var(--checkbox--checked--disabled--background-a)));
+    background: var(--checkbox--checked--disabled--background, var(--color-primary-300));
     border-top-color: var(--checkbox--checked--disabled--border-top-color);
     border-right-color: var(--checkbox--checked--disabled--border-right-color);
     border-bottom-color: var(--checkbox--checked--disabled--border-bottom-color);
@@ -1564,7 +1564,7 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
 }
 
 .checkbox input[readonly]:checked ~ .checkbox-label::before {
-    background: var(--checkbox--checked--readonly--background, hsla(var(--checkbox--checked--readonly--background-h) var(--checkbox--checked--readonly--background-s) var(--checkbox--checked--readonly--background-l) / var(--checkbox--checked--readonly--background-a)));
+    background: var(--checkbox--checked--readonly--background, var(--color-primary-400));
     border-top-color: var(--checkbox--checked--readonly--border-top-color);
     border-right-color: var(--checkbox--checked--readonly--border-right-color);
     border-bottom-color: var(--checkbox--checked--readonly--border-bottom-color);

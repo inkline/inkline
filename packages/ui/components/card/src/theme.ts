@@ -5,7 +5,8 @@ import {
     vref,
     toVariableKey,
     setExportsNamespace,
-    DefinitionOptions
+    DefinitionOptions,
+    defaultDefinitionOptions
 } from '@inkline/core';
 import { merge } from '@inkline/utils';
 import {
@@ -43,7 +44,9 @@ type CardSizeVariant = (typeof defaultCardSizes)[number];
  * Config
  */
 
-export function useCardThemeColorConfig(variant: CardColorVariant, options: DefinitionOptions) {
+export function useCardThemeColorConfig(variant: CardColorVariant, userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         colorLightShade50,
         colorLight,
@@ -133,7 +136,9 @@ export function useCardThemeColorConfig(variant: CardColorVariant, options: Defi
     }[variant];
 }
 
-export function useCardThemeSizeConfig(variant: CardSizeVariant, options: DefinitionOptions) {
+export function useCardThemeSizeConfig(variant: CardSizeVariant, userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopLeftRadiusSm,
         borderTopRightRadiusSm,
@@ -200,7 +205,9 @@ export function useCardThemeSizeConfig(variant: CardSizeVariant, options: Defini
     }[variant];
 }
 
-export function useCardThemeConfig(options: DefinitionOptions) {
+export function useCardThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopStyle,
         borderTopWidth,
@@ -263,28 +270,42 @@ export function useCardThemeConfig(options: DefinitionOptions) {
  * Variables
  */
 
-export function useCardThemeColorVariables(variant: CardColorVariant, options: DefinitionOptions) {
+export function useCardThemeColorVariables(
+    variant: CardColorVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useCardThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useCardThemeSizeVariables(variant: CardSizeVariant, options: DefinitionOptions) {
+export function useCardThemeSizeVariables(
+    variant: CardSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useCardThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useCardThemeVariables(options: DefinitionOptions) {
+export function useCardThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useCardThemeConfig(options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useCardThemeLayout(options: DefinitionOptions) {
+export function useCardThemeLayout(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector(
         '.card',
         {
@@ -303,7 +324,9 @@ export function useCardThemeLayout(options: DefinitionOptions) {
  * Selecotrs
  */
 
-export function useCardThemeBaseSelectors(options: DefinitionOptions) {
+export function useCardThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         cardBorderStyle,
         cardBorderTopColor,
@@ -393,7 +416,12 @@ export function useCardThemeBaseSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useCardThemeColorSelectors(variant: CardColorVariant, options: DefinitionOptions) {
+export function useCardThemeColorSelectors(
+    variant: CardColorVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         cardBackground,
         cardBorderTopColor,
@@ -430,7 +458,12 @@ export function useCardThemeColorSelectors(variant: CardColorVariant, options: D
     );
 }
 
-export function useCardThemeSizeSelectors(variant: CardSizeVariant, options: DefinitionOptions) {
+export function useCardThemeSizeSelectors(
+    variant: CardSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         cardBorderTopLeftRadius,
         cardBorderTopRightRadius,
@@ -476,15 +509,21 @@ export function useCardThemeSizeSelectors(variant: CardSizeVariant, options: Def
  * Composables
  */
 
-export function useCardThemeColors(colors: CardColorVariant[], options: DefinitionOptions) {
+export function useCardThemeColors(colors: CardColorVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     colors.forEach((color) => useCardThemeColorSelectors(color, options));
 }
 
-export function useCardThemeSizes(sizes: CardSizeVariant[], options: DefinitionOptions) {
+export function useCardThemeSizes(sizes: CardSizeVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     sizes.forEach((size) => useCardThemeSizeSelectors(size, options));
 }
 
-export function useCardTheme(options: DefinitionOptions) {
+export function useCardTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useCardThemeVariables(options);
     useCardThemeLayout(options);
     useCardThemeBaseSelectors(options);

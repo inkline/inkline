@@ -3,23 +3,20 @@ import {
     ref,
     selector,
     multiply,
-    vref, nsvariables
+    vref, nsvariables, defaultDefinitionOptions
 } from '@inkline/core';
 import { useBaseColors, useSpacing } from '../../variables';
 
 const ns = 'mark';
 
-export function useMarkConfig(options: DefinitionOptions) {
-    const { colorYellowH, colorYellowS, colorYellowL, colorYellowA } = useBaseColors(options);
+export function useMarkConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    const { colorYellow } = useBaseColors(options);
     const { spacing } = useSpacing(options);
 
     return {
-        background: {
-            h: ref(colorYellowH),
-            s: ref(colorYellowS),
-            l: ref(colorYellowL),
-            a: ref(colorYellowA)
-        },
+        background: ref(colorYellow),
         padding: {
             top: multiply(ref(spacing), 0.1875),
             right: multiply(ref(spacing), 0.375),
@@ -29,11 +26,15 @@ export function useMarkConfig(options: DefinitionOptions) {
     };
 }
 
-export function useMarkVariables(options: DefinitionOptions) {
+export function useMarkVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useMarkConfig(options), options);
 }
 
-export function useMarkThemeSelectors(options: DefinitionOptions) {
+export function useMarkThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { markPadding, markBackground } = useMarkVariables(options);
 
     selector('mark', {
@@ -42,7 +43,9 @@ export function useMarkThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useMarkTheme(options: DefinitionOptions) {
+export function useMarkTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useMarkVariables(options);
     useMarkThemeSelectors(options);
 }

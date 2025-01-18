@@ -13,6 +13,7 @@ import { resolveStringPropertyValue, toExportedVariable } from '../../utils';
 import { nsvariable, set, valueOf } from '../variable';
 import { ref } from '../ref';
 import { color as createColor } from '../color';
+import { addVariableToTheme } from '../../themes';
 
 export type SourceMapBorder = TokenValue | BorderProperty | BorderSidesProperty;
 
@@ -47,21 +48,59 @@ export function defineBorder<Namespace extends NamespaceType>(
     value: SourceMapBorder,
     options: VariablesOptions
 ): OutputMapBorder<Namespace> {
-    const borderTopWidth = nsvariable(ns, 'border-top-width', 0, options);
-    const borderTopStyle = nsvariable(ns, 'border-top-style', 'none', options);
-    const borderTopColor = nsvariable(ns, 'border-top-color', 'currentColor', options);
+    const registerComposed = options.registerComposed ?? true;
 
-    const borderRightWidth = nsvariable(ns, 'border-right-width', 0, options);
-    const borderRightStyle = nsvariable(ns, 'border-right-style', 'none', options);
-    const borderRightColor = nsvariable(ns, 'border-right-color', 'currentColor', options);
+    const borderTopWidth = nsvariable(ns, 'border-top-width', 0, {
+        register: false,
+        ...options
+    });
+    const borderTopStyle = nsvariable(ns, 'border-top-style', 'none', {
+        register: false,
+        ...options
+    });
+    const borderTopColor = nsvariable(ns, 'border-top-color', 'currentColor', {
+        register: false,
+        ...options
+    });
 
-    const borderBottomWidth = nsvariable(ns, 'border-bottom-width', 0, options);
-    const borderBottomStyle = nsvariable(ns, 'border-bottom-style', 'none', options);
-    const borderBottomColor = nsvariable(ns, 'border-bottom-color', 'currentColor', options);
+    const borderRightWidth = nsvariable(ns, 'border-right-width', 0, {
+        register: false,
+        ...options
+    });
+    const borderRightStyle = nsvariable(ns, 'border-right-style', 'none', {
+        register: false,
+        ...options
+    });
+    const borderRightColor = nsvariable(ns, 'border-right-color', 'currentColor', {
+        register: false,
+        ...options
+    });
 
-    const borderLeftWidth = nsvariable(ns, 'border-left-width', 0, options);
-    const borderLeftStyle = nsvariable(ns, 'border-left-style', 'none', options);
-    const borderLeftColor = nsvariable(ns, 'border-left-color', 'currentColor', options);
+    const borderBottomWidth = nsvariable(ns, 'border-bottom-width', 0, {
+        register: false,
+        ...options
+    });
+    const borderBottomStyle = nsvariable(ns, 'border-bottom-style', 'none', {
+        register: false,
+        ...options
+    });
+    const borderBottomColor = nsvariable(ns, 'border-bottom-color', 'currentColor', {
+        register: false,
+        ...options
+    });
+
+    const borderLeftWidth = nsvariable(ns, 'border-left-width', 0, {
+        register: false,
+        ...options
+    });
+    const borderLeftStyle = nsvariable(ns, 'border-left-style', 'none', {
+        register: false,
+        ...options
+    });
+    const borderLeftColor = nsvariable(ns, 'border-left-color', 'currentColor', {
+        register: false,
+        ...options
+    });
 
     const borderWidth = nsvariable(
         ns,
@@ -69,7 +108,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderTopWidth), ref(borderRightWidth), ref(borderBottomWidth), ref(borderLeftWidth)],
         {
             ...options,
-            register: options.registerComposed ?? true
+            register: false
         }
     );
     const borderStyle = nsvariable(
@@ -78,7 +117,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderTopStyle), ref(borderRightStyle), ref(borderBottomStyle), ref(borderLeftStyle)],
         {
             ...options,
-            register: options.registerComposed ?? true
+            register: false
         }
     );
     const borderColor = nsvariable(
@@ -87,7 +126,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderTopColor), ref(borderRightColor), ref(borderBottomColor), ref(borderLeftColor)],
         {
             ...options,
-            register: options.registerComposed ?? true
+            register: false
         }
     );
     const borderTop = nsvariable(
@@ -96,7 +135,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderTopWidth), ref(borderTopStyle), ref(borderTopColor)],
         {
             ...options,
-            register: options.registerComposed ?? true
+            register: false
         }
     );
     const borderRight = nsvariable(
@@ -105,7 +144,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderRightWidth), ref(borderRightStyle), ref(borderRightColor)],
         {
             ...options,
-            register: options.registerComposed ?? true
+            register: false
         }
     );
     const borderBottom = nsvariable(
@@ -114,7 +153,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderBottomWidth), ref(borderBottomStyle), ref(borderBottomColor)],
         {
             ...options,
-            register: options.registerComposed ?? true
+            register: false
         }
     );
     const borderLeft = nsvariable(
@@ -123,7 +162,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderLeftWidth), ref(borderLeftStyle), ref(borderLeftColor)],
         {
             ...options,
-            register: options.registerComposed ?? true
+            register: false
         }
     );
     const border = nsvariable(
@@ -132,7 +171,7 @@ export function defineBorder<Namespace extends NamespaceType>(
         [ref(borderTopWidth), ref(borderTopStyle), ref(borderTopColor)],
         {
             ...options,
-            register: options.registerComposed ?? true
+            register: false
         }
     );
 
@@ -142,6 +181,13 @@ export function defineBorder<Namespace extends NamespaceType>(
             set(borderRightWidth, value.width);
             set(borderBottomWidth, value.width);
             set(borderLeftWidth, value.width);
+
+            addVariableToTheme(borderTopWidth, options);
+            addVariableToTheme(borderRightWidth, options);
+            addVariableToTheme(borderBottomWidth, options);
+            addVariableToTheme(borderLeftWidth, options);
+
+            if (registerComposed) addVariableToTheme(borderWidth, options);
         }
 
         if (value.style) {
@@ -149,6 +195,13 @@ export function defineBorder<Namespace extends NamespaceType>(
             set(borderRightStyle, value.style);
             set(borderBottomStyle, value.style);
             set(borderLeftStyle, value.style);
+
+            addVariableToTheme(borderTopStyle, options);
+            addVariableToTheme(borderRightStyle, options);
+            addVariableToTheme(borderBottomStyle, options);
+            addVariableToTheme(borderLeftStyle, options);
+
+            if (registerComposed) addVariableToTheme(borderStyle, options);
         }
 
         if (value.color) {
@@ -161,14 +214,31 @@ export function defineBorder<Namespace extends NamespaceType>(
             set(borderRightColor, valueOf(colorVariable));
             set(borderBottomColor, valueOf(colorVariable));
             set(borderLeftColor, valueOf(colorVariable));
+
+            addVariableToTheme(borderTopColor, options);
+            addVariableToTheme(borderRightColor, options);
+            addVariableToTheme(borderBottomColor, options);
+            addVariableToTheme(borderLeftColor, options);
+
+            if (options.registerComposed) addVariableToTheme(borderColor, options);
         }
     }
 
     if (typeof value === 'object') {
         if (isSidesProperty(value)) {
             if (isBorderProperty(value.top)) {
-                if (value.top.width) set(borderTopWidth, value.top.width);
-                if (value.top.style) set(borderTopStyle, value.top.style);
+                if (value.top.width) {
+                    set(borderTopWidth, value.top.width);
+
+                    addVariableToTheme(borderTopWidth, options);
+                }
+
+                if (value.top.style) {
+                    set(borderTopStyle, value.top.style);
+
+                    addVariableToTheme(borderTopStyle, options);
+                }
+
                 if (value.top.color) {
                     const colorVariable = createColor('color', value.top.color, {
                         ...options,
@@ -176,12 +246,28 @@ export function defineBorder<Namespace extends NamespaceType>(
                     });
 
                     set(borderTopColor, valueOf(colorVariable));
+
+                    addVariableToTheme(borderTopColor, options);
+                }
+
+                if (registerComposed && value.top.width && value.top.style && value.top.color) {
+                    addVariableToTheme(borderTop, options);
                 }
             }
 
             if (isBorderProperty(value.right)) {
-                if (value.right.width) set(borderRightWidth, value.right.width);
-                if (value.right.style) set(borderRightStyle, value.right.style);
+                if (value.right.width) {
+                    set(borderRightWidth, value.right.width);
+
+                    addVariableToTheme(borderRightWidth, options);
+                }
+
+                if (value.right.style) {
+                    set(borderRightStyle, value.right.style);
+
+                    addVariableToTheme(borderRightStyle, options);
+                }
+
                 if (value.right.color) {
                     const colorVariable = createColor('color', value.right.color, {
                         ...options,
@@ -189,12 +275,33 @@ export function defineBorder<Namespace extends NamespaceType>(
                     });
 
                     set(borderRightColor, valueOf(colorVariable));
+
+                    addVariableToTheme(borderRightColor, options);
+                }
+
+                if (
+                    registerComposed &&
+                    value.right.width &&
+                    value.right.style &&
+                    value.right.color
+                ) {
+                    addVariableToTheme(borderRight, options);
                 }
             }
 
             if (isBorderProperty(value.bottom)) {
-                if (value.bottom.width) set(borderBottomWidth, value.bottom.width);
-                if (value.bottom.style) set(borderBottomStyle, value.bottom.style);
+                if (value.bottom.width) {
+                    set(borderBottomWidth, value.bottom.width);
+
+                    addVariableToTheme(borderBottomWidth, options);
+                }
+
+                if (value.bottom.style) {
+                    set(borderBottomStyle, value.bottom.style);
+
+                    addVariableToTheme(borderBottomStyle, options);
+                }
+
                 if (value.bottom.color) {
                     const colorVariable = createColor('color', value.bottom.color, {
                         ...options,
@@ -202,12 +309,33 @@ export function defineBorder<Namespace extends NamespaceType>(
                     });
 
                     set(borderBottomColor, valueOf(colorVariable));
+
+                    addVariableToTheme(borderBottomColor, options);
+                }
+
+                if (
+                    registerComposed &&
+                    value.bottom.width &&
+                    value.bottom.style &&
+                    value.bottom.color
+                ) {
+                    addVariableToTheme(borderBottom, options);
                 }
             }
 
             if (isBorderProperty(value.left)) {
-                if (value.left.width) set(borderLeftWidth, value.left.width);
-                if (value.left.style) set(borderLeftStyle, value.left.style);
+                if (value.left.width) {
+                    set(borderLeftWidth, value.left.width);
+
+                    addVariableToTheme(borderLeftWidth, options);
+                }
+
+                if (value.left.style) {
+                    set(borderLeftStyle, value.left.style);
+
+                    addVariableToTheme(borderLeftStyle, options);
+                }
+
                 if (value.left.color) {
                     const colorVariable = createColor('color', value.left.color, {
                         ...options,
@@ -215,7 +343,17 @@ export function defineBorder<Namespace extends NamespaceType>(
                     });
 
                     set(borderLeftColor, valueOf(colorVariable));
+
+                    addVariableToTheme(borderLeftColor, options);
                 }
+
+                if (registerComposed && value.left.width && value.left.style && value.left.color) {
+                    addVariableToTheme(borderLeft, options);
+                }
+            }
+
+            if (registerComposed && (value.top || value.right || value.bottom || value.left)) {
+                addVariableToTheme(border, options);
             }
         }
     } else if (typeof value === 'string') {
@@ -230,6 +368,13 @@ export function defineBorder<Namespace extends NamespaceType>(
             set(borderRightWidth, width);
             set(borderBottomWidth, width);
             set(borderLeftWidth, width);
+
+            addVariableToTheme(borderTopWidth, options);
+            addVariableToTheme(borderRightWidth, options);
+            addVariableToTheme(borderBottomWidth, options);
+            addVariableToTheme(borderLeftWidth, options);
+
+            if (registerComposed) addVariableToTheme(borderWidth, options);
         }
 
         if (style) {
@@ -237,6 +382,13 @@ export function defineBorder<Namespace extends NamespaceType>(
             set(borderRightStyle, style);
             set(borderBottomStyle, style);
             set(borderLeftStyle, style);
+
+            addVariableToTheme(borderTopStyle, options);
+            addVariableToTheme(borderRightStyle, options);
+            addVariableToTheme(borderBottomStyle, options);
+            addVariableToTheme(borderLeftStyle, options);
+
+            if (registerComposed) addVariableToTheme(borderStyle, options);
         }
 
         if (color) {
@@ -249,9 +401,26 @@ export function defineBorder<Namespace extends NamespaceType>(
             set(borderRightColor, valueOf(colorVariable));
             set(borderBottomColor, valueOf(colorVariable));
             set(borderLeftColor, valueOf(colorVariable));
+
+            addVariableToTheme(borderTopColor, options);
+            addVariableToTheme(borderRightColor, options);
+            addVariableToTheme(borderBottomColor, options);
+            addVariableToTheme(borderLeftColor, options);
+
+            if (registerComposed) addVariableToTheme(borderColor, options);
+        }
+
+        if (registerComposed && width && style && color) {
+            addVariableToTheme(borderTop, options);
+            addVariableToTheme(borderRight, options);
+            addVariableToTheme(borderBottom, options);
+            addVariableToTheme(borderLeft, options);
+            addVariableToTheme(border, options);
         }
     } else {
         set(border, value);
+
+        if (registerComposed) addVariableToTheme(border, options);
     }
 
     return {

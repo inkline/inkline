@@ -1,6 +1,7 @@
 import {
     add,
     DefinitionOptions,
+    defaultDefinitionOptions,
     multiply,
     nsvariables,
     ref,
@@ -42,7 +43,12 @@ const defaultButtonSizes = ['sm', 'md', 'lg'] as const;
 type ButtonColorVariant = (typeof defaultButtonColors)[number];
 type ButtonSizeVariant = (typeof defaultButtonSizes)[number];
 
-export function useButtonThemeColorConfig(variant: ButtonColorVariant, options: DefinitionOptions) {
+export function useButtonThemeColorConfig(
+    variant: ButtonColorVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         colorLight,
         colorLightShade50,
@@ -476,7 +482,12 @@ export function useButtonThemeColorConfig(variant: ButtonColorVariant, options: 
     }[variant];
 }
 
-export function useButtonThemeSizeConfig(variant: ButtonSizeVariant, options: DefinitionOptions) {
+export function useButtonThemeSizeConfig(
+    variant: ButtonSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopLeftRadiusSm,
         borderTopRightRadiusSm,
@@ -564,7 +575,9 @@ export function useButtonThemeSizeConfig(variant: ButtonSizeVariant, options: De
     }[variant];
 }
 
-export function useButtonThemeConfig(options: DefinitionOptions) {
+export function useButtonThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopStyle,
         borderTopWidth,
@@ -644,7 +657,12 @@ export function useButtonThemeConfig(options: DefinitionOptions) {
     );
 }
 
-export function useButtonColorVariables(variant: ButtonColorVariant, options: DefinitionOptions) {
+export function useButtonColorVariables(
+    variant: ButtonColorVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables([ns, variant] as const, useButtonThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
@@ -653,22 +671,28 @@ export function useButtonColorVariables(variant: ButtonColorVariant, options: De
 
 export function useButtonThemeSizeVariables(
     variant: ButtonSizeVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables([ns, variant] as const, useButtonThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useButtonThemeVariables(options: DefinitionOptions) {
+export function useButtonThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useButtonThemeConfig(options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useButtonThemeLayout(options: DefinitionOptions) {
+export function useButtonThemeLayout(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector(
         '.button',
         {
@@ -728,7 +752,9 @@ export function useButtonThemeLayout(options: DefinitionOptions) {
     );
 }
 
-export function useButtonThemeBaseSelectors(options: DefinitionOptions) {
+export function useButtonThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         buttonBorderWidth,
         buttonBorderStyle,
@@ -844,7 +870,9 @@ export function useButtonThemeBaseSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useButtonThemeVariantsSelectors(options: DefinitionOptions) {
+export function useButtonThemeVariantsSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         buttonBackground,
         buttonBorderTopColor,
@@ -991,8 +1019,10 @@ export function useButtonThemeVariantsSelectors(options: DefinitionOptions) {
 
 export function useButtonThemeSizeSelectors(
     variant: ButtonSizeVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         buttonPaddingTop,
         buttonPaddingRight,
@@ -1036,8 +1066,10 @@ export function useButtonThemeSizeSelectors(
 
 export function useButtonThemeColorSelectors(
     variant: ButtonColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         buttonBackground,
         buttonBorderTopColor,
@@ -1118,15 +1150,21 @@ export function useButtonThemeColorSelectors(
  * Composables
  */
 
-export function useButtonThemeSizes(sizes: ButtonSizeVariant[], options: DefinitionOptions) {
+export function useButtonThemeSizes(sizes: ButtonSizeVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     sizes.forEach((size) => useButtonThemeSizeSelectors(size, options));
 }
 
-export function useButtonThemeColors(colors: ButtonColorVariant[], options: DefinitionOptions) {
+export function useButtonThemeColors(colors: ButtonColorVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     colors.forEach((color) => useButtonThemeColorSelectors(color, options));
 }
 
-export function useButtonTheme(options: DefinitionOptions) {
+export function useButtonTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useButtonThemeVariables(options);
     useButtonThemeLayout(options);
     useButtonThemeBaseSelectors(options);

@@ -19,7 +19,9 @@ import { useCardTheme } from '@inkline/component-card';
 // import { useTooltipTheme } from '@inkline/component-tooltip';
 import { DefinitionOptions } from '@inkline/core';
 
-export function useComponentsTheme(options: DefinitionOptions) {
+export function useComponentsTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useAlertTheme(options);
     useBadgeTheme(options);
     useBreadcrumbTheme(options);

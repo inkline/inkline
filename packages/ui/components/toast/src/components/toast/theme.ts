@@ -45,7 +45,9 @@ const defaultToastSizes = ['sm', 'md', 'lg'] as const;
 type ToastColorVariant = (typeof defaultToastColors)[number];
 type ToastSizeVariant = (typeof defaultToastSizes)[number];
 
-export function useToastThemeVariables(options: DefinitionOptions) {
+export function useToastThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopStyle,
         borderTopWidth,
@@ -151,7 +153,9 @@ export function useToastThemeVariables(options: DefinitionOptions) {
     };
 }
 
-export function useToastThemeLayout(options: DefinitionOptions) {
+export function useToastThemeLayout(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { toastProgressHeight } = useToastThemeVariables(options);
 
     selector('.toast', {
@@ -209,7 +213,9 @@ export function useToastThemeLayout(options: DefinitionOptions) {
     });
 }
 
-export function useToastThemeBase(options: DefinitionOptions) {
+export function useToastThemeBase(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         toastBorderStyle,
         toastBorderColor,
@@ -432,7 +438,9 @@ export function useToastThemeColors(colors = defaultToastColors) {
     colors.forEach((color) => useToastThemeColorSelectors(color, options));
 }
 
-export function useToastTheme(options: DefinitionOptions) {
+export function useToastTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useToastThemeLayout(options);
     useToastThemeBase(options);
     useToastThemeSizes(options);

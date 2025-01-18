@@ -6,7 +6,8 @@ import {
     vref,
     setExportsNamespace,
     toVariableKey,
-    DefinitionOptions
+    DefinitionOptions,
+    defaultDefinitionOptions
 } from '@inkline/core';
 import { merge } from '@inkline/utils';
 import {
@@ -37,8 +38,10 @@ type PopoverSizeVariant = (typeof defaultPopoverSizes)[number];
 
 export function usePopoverThemeColorConfig(
     variant: PopoverColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { colorLightShade50, colorLight, colorDarkTint50, colorDark } = useColors(options);
     const { contrastTextColorLight, contrastTextColorDark } = useContrastTextColor(options);
 
@@ -60,7 +63,12 @@ export function usePopoverThemeColorConfig(
     }[variant];
 }
 
-export function usePopoverThemeSizeConfig(variant: PopoverSizeVariant, options: DefinitionOptions) {
+export function usePopoverThemeSizeConfig(
+    variant: PopoverSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopLeftRadiusSm,
         borderTopRightRadiusSm,
@@ -148,7 +156,9 @@ export function usePopoverThemeSizeConfig(variant: PopoverSizeVariant, options: 
     }[variant];
 }
 
-export function usePopoverThemeConfig(options: DefinitionOptions) {
+export function usePopoverThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopStyle,
         borderTopWidth,
@@ -222,8 +232,10 @@ export function usePopoverThemeConfig(options: DefinitionOptions) {
 
 export function usePopoverThemeColorVariables(
     variant: PopoverColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, usePopoverThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
@@ -232,15 +244,19 @@ export function usePopoverThemeColorVariables(
 
 export function usePopoverThemeSizeVariables(
     variant: PopoverSizeVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, usePopoverThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function usePopoverThemeVariables(options: DefinitionOptions) {
+export function usePopoverThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, usePopoverThemeConfig(options), {
         ...options,
         registerComposed: false
@@ -251,7 +267,9 @@ export function usePopoverThemeVariables(options: DefinitionOptions) {
  * Selectors
  */
 
-export function usePopoverThemeLayout(options: DefinitionOptions) {
+export function usePopoverThemeLayout(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { popoverZIndex, popoverWidth, popoverMaxWidth } = usePopoverThemeVariables(options);
 
     selector(
@@ -385,7 +403,9 @@ export function usePopoverThemeLayout(options: DefinitionOptions) {
     );
 }
 
-export function usePopoverThemeBaseSelectors(options: DefinitionOptions) {
+export function usePopoverThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         popoverBorderStyle,
         popoverBorderTopColor,
@@ -544,8 +564,10 @@ export function usePopoverThemeBaseSelectors(options: DefinitionOptions) {
 
 export function usePopoverThemeSizeSelectors(
     variant: PopoverSizeVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         popoverPaddingTop,
         popoverPaddingRight,
@@ -589,8 +611,10 @@ export function usePopoverThemeSizeSelectors(
 
 export function usePopoverThemeColorSelectors(
     variant: PopoverColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         popoverBorderTopColor,
         popoverBorderRightColor,
@@ -626,15 +650,24 @@ export function usePopoverThemeColorSelectors(
  * Composables
  */
 
-export function usePopoverThemeColors(colors: PopoverColorVariant[], options: DefinitionOptions) {
+export function usePopoverThemeColors(
+    colors: PopoverColorVariant[],
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     colors.forEach((color) => usePopoverThemeColorSelectors(color, options));
 }
 
-export function usePopoverThemeSizes(sizes: PopoverSizeVariant[], options: DefinitionOptions) {
+export function usePopoverThemeSizes(sizes: PopoverSizeVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     sizes.forEach((size) => usePopoverThemeSizeSelectors(size, options));
 }
 
-export function usePopoverTheme(options: DefinitionOptions) {
+export function usePopoverTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     usePopoverThemeVariables(options);
     usePopoverThemeLayout(options);
     usePopoverThemeBaseSelectors(options);

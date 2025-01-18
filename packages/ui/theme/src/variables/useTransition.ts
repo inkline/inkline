@@ -1,6 +1,8 @@
-import { DefinitionOptions, ref, variable } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, ref, variable } from '@inkline/core';
 
-export function useTransition(options: DefinitionOptions) {
+export function useTransition(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const transitionProperty = variable(
         'transition-property',
         'color, background-color, border-color',

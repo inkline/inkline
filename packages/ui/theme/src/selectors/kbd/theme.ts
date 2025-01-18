@@ -3,7 +3,7 @@ import {
     ref,
     selector,
     multiply,
-    vref, nsvariables
+    vref, nsvariables, defaultDefinitionOptions
 } from '@inkline/core';
 import {
     useBorderRadius,
@@ -16,18 +16,14 @@ import {
 
 const ns = 'kbd';
 
-export function useKbdConfig(options: DefinitionOptions) {
+export function useKbdConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
-        colorDarkH,
-        colorDarkS,
-        colorDarkL,
-        colorDarkA
+        colorDark
     } = useBrandColors(options);
     const {
-        contrastTextColorDarkH,
-        contrastTextColorDarkS,
-        contrastTextColorDarkL,
-        contrastTextColorDarkA
+        contrastTextColorDark
     } = useContrastTextColor(options);
     const { fontSizeSm } = useFontSize(options);
     const { fontFamilyMonospace } = useFontFamily(options);
@@ -40,24 +36,14 @@ export function useKbdConfig(options: DefinitionOptions) {
     const { spacing } = useSpacing(options);
 
     return {
-        background: {
-            h: ref(colorDarkH),
-            s: ref(colorDarkS),
-            l: ref(colorDarkL),
-            a: ref(colorDarkA)
-        },
+        background: ref(colorDark),
         borderRadius: {
             topLeft: ref(borderTopLeftRadius),
             topRight: ref(borderTopRightRadius),
             bottomRight: ref(borderBottomRightRadius),
             bottomLeft: ref(borderBottomLeftRadius)
         },
-        color: {
-            h: ref(contrastTextColorDarkH),
-            s: ref(contrastTextColorDarkS),
-            l: ref(contrastTextColorDarkL),
-            a: ref(contrastTextColorDarkA)
-        },
+        color: ref(contrastTextColorDark),
         fontFamily: ref(fontFamilyMonospace),
         fontSize: ref(fontSizeSm),
         padding: {
@@ -69,11 +55,15 @@ export function useKbdConfig(options: DefinitionOptions) {
     };
 }
 
-export function useKbdVariables(options: DefinitionOptions) {
+export function useKbdVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useKbdConfig(options), options);
 }
 
-export function useKbdThemeSelectors(options: DefinitionOptions) {
+export function useKbdThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         kbdFontSize,
         kbdFontFamily,
@@ -99,7 +89,9 @@ export function useKbdThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useKbdTheme(options: DefinitionOptions) {
+export function useKbdTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useKbdVariables(options);
     useKbdThemeSelectors(options);
 }

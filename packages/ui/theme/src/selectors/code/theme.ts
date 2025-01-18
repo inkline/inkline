@@ -1,30 +1,31 @@
-import { DefinitionOptions, nsvariables, ref, selector, vref } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, nsvariables, ref, selector, vref } from '@inkline/core';
 import { useBaseColors, useFontFamily, useFontSize } from '../../variables';
 
 const ns = 'code';
 
-export function useCodeConfig(options: DefinitionOptions) {
-    const { colorPinkH, colorPinkS, colorPinkL, colorPinkA } = useBaseColors(options);
+export function useCodeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    const { colorPink } = useBaseColors(options);
     const { fontSizeSm } = useFontSize(options);
     const { fontFamilyMonospace } = useFontFamily(options);
 
     return {
-        color: {
-            h: ref(colorPinkH),
-            s: ref(colorPinkS),
-            l: ref(colorPinkL),
-            a: ref(colorPinkA)
-        },
+        color: ref(colorPink),
         fontSize: ref(fontSizeSm),
         fontFamily: ref(fontFamilyMonospace)
     };
 }
 
-export function useCodeVariables(options: DefinitionOptions) {
+export function useCodeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useCodeConfig(options), options);
 }
 
-export function useCodeThemeSelectors(options: DefinitionOptions) {
+export function useCodeThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { codeColor, codeFontSize, codeFontFamily } = useCodeVariables(options);
 
     selector('code', {
@@ -39,7 +40,9 @@ export function useCodeThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useCodeTheme(options: DefinitionOptions) {
+export function useCodeTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useCodeVariables(options);
     useCodeThemeSelectors(options);
 }

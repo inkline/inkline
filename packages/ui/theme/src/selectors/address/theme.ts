@@ -1,9 +1,11 @@
-import { ref, selector, nsvariables, vref, DefinitionOptions } from '@inkline/core';
+import { ref, selector, nsvariables, vref, DefinitionOptions, defaultDefinitionOptions } from '@inkline/core';
 import { useSpacing } from '../../variables';
 
 const ns = 'address';
 
-export function useAddressThemeConfig(options: DefinitionOptions) {
+export function useAddressThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { spacing } = useSpacing(options);
 
     return {
@@ -13,11 +15,15 @@ export function useAddressThemeConfig(options: DefinitionOptions) {
     };
 }
 
-export function useAddressThemeVariables(options: DefinitionOptions) {
+export function useAddressThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useAddressThemeConfig(options), options);
 }
 
-export function useAddressThemeSelectors(options: DefinitionOptions) {
+export function useAddressThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { addressMargin } = useAddressThemeVariables(options);
 
     selector('address', {
@@ -27,7 +33,9 @@ export function useAddressThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useAddressTheme(options: DefinitionOptions) {
+export function useAddressTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useAddressThemeVariables(options);
     useAddressThemeSelectors(options);
 }

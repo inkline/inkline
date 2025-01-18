@@ -1,4 +1,11 @@
-import { ref, selector, nsvariables, DefinitionOptions, vref } from '@inkline/core';
+import {
+    ref,
+    selector,
+    nsvariables,
+    DefinitionOptions,
+    defaultDefinitionOptions,
+    vref
+} from '@inkline/core';
 import { useSpacing } from '@inkline/theme';
 
 const ns = 'media';
@@ -7,7 +14,9 @@ const ns = 'media';
  * Config
  */
 
-export function useMediaThemeConfig(options: DefinitionOptions) {
+export function useMediaThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { spacing } = useSpacing(options);
 
     return {
@@ -26,7 +35,9 @@ export function useMediaThemeConfig(options: DefinitionOptions) {
  * Variables
  */
 
-export function useMediaThemeVariables(options: DefinitionOptions) {
+export function useMediaThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useMediaThemeConfig(options), {
         ...options,
         registerComposed: false
@@ -37,7 +48,9 @@ export function useMediaThemeVariables(options: DefinitionOptions) {
  * Selectors
  */
 
-export function useMediaThemeLayoutSelectors(options: DefinitionOptions) {
+export function useMediaThemeLayoutSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector(
         '.media',
         {
@@ -67,7 +80,9 @@ export function useMediaThemeLayoutSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useMediaThemeBaseSelectors(options: DefinitionOptions) {
+export function useMediaThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { mediaImageMargin } = useMediaThemeVariables(options);
 
     selector(
@@ -79,7 +94,9 @@ export function useMediaThemeBaseSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useMediaTheme(options: DefinitionOptions) {
+export function useMediaTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useMediaThemeLayoutSelectors(options);
     useMediaThemeBaseSelectors(options);
 }

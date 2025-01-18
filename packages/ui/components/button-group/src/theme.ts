@@ -1,4 +1,11 @@
-import { DefinitionOptions, nsvariables, ref, selector, vref } from '@inkline/core';
+import {
+    DefinitionOptions,
+    defaultDefinitionOptions,
+    nsvariables,
+    ref,
+    selector,
+    vref
+} from '@inkline/core';
 import { useBoxShadow } from '@inkline/theme';
 
 const ns = 'button-group';
@@ -7,7 +14,9 @@ const ns = 'button-group';
  * Config
  */
 
-export function useButtonGroupThemeConfig(options: DefinitionOptions) {
+export function useButtonGroupThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         boxShadowOffsetX,
         boxShadowOffsetY,
@@ -31,7 +40,9 @@ export function useButtonGroupThemeConfig(options: DefinitionOptions) {
  * Variables
  */
 
-export function useButtonGroupThemeVariables(options: DefinitionOptions) {
+export function useButtonGroupThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useButtonGroupThemeConfig(options), {
         ...options,
         registerComposed: false
@@ -42,7 +53,9 @@ export function useButtonGroupThemeVariables(options: DefinitionOptions) {
  * Selectors
  */
 
-export function useButtonGroupThemeLayoutSelectors(options: DefinitionOptions) {
+export function useButtonGroupThemeLayoutSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector(
         '.button-group',
         {
@@ -164,7 +177,9 @@ export function useButtonGroupThemeLayoutSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useButtonGroupThemeBaseSelectors(options: DefinitionOptions) {
+export function useButtonGroupThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { buttonGroupBoxShadow } = useButtonGroupThemeVariables(options);
 
     selector(
@@ -180,7 +195,9 @@ export function useButtonGroupThemeBaseSelectors(options: DefinitionOptions) {
  * Composables
  */
 
-export function useButtonGroupTheme(options: DefinitionOptions) {
+export function useButtonGroupTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useButtonGroupThemeVariables(options);
     useButtonGroupThemeLayoutSelectors(options);
     useButtonGroupThemeBaseSelectors(options);

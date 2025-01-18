@@ -4,7 +4,8 @@ import {
     selector,
     defaultDefinitionOptions,
     nsvariables,
-    stripExportsNamespace
+    stripExportsNamespace,
+    DefinitionOptions
 } from '@inkline/core';
 import { capitalize } from '@inkline/utils';
 import {
@@ -41,7 +42,9 @@ const defaultTooltipSizes = ['sm', 'md', 'lg'] as const;
 type TooltipColorVariant = (typeof defaultTooltipColors)[number];
 type TooltipSizeVariant = (typeof defaultTooltipSizes)[number];
 
-export function useTooltipThemeVariables(options: DefinitionOptions) {
+export function useTooltipThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopStyle,
         borderTopWidth,
@@ -140,7 +143,9 @@ export function useTooltipThemeVariables(options: DefinitionOptions) {
     };
 }
 
-export function useTooltipThemeLayout(options: DefinitionOptions) {
+export function useTooltipThemeLayout(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { tooltipZIndex } = useTooltipThemeVariables(options);
 
     selector('.tooltip', {
@@ -232,7 +237,9 @@ export function useTooltipThemeLayout(options: DefinitionOptions) {
     );
 }
 
-export function useTooltipThemeBase(options: DefinitionOptions) {
+export function useTooltipThemeBase(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         tooltipBorderStyle,
         tooltipBorderColor,
@@ -439,7 +446,9 @@ export function useTooltipThemeColors(colors = defaultTooltipColors) {
     colors.forEach((color) => useTooltipThemeColorSelectors(color, options));
 }
 
-export function useTooltipTheme(options: DefinitionOptions) {
+export function useTooltipTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useTooltipThemeVariables(options);
     useTooltipThemeLayout(options);
     useTooltipThemeBase(options);

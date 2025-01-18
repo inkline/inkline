@@ -4,6 +4,7 @@ import {
     selector,
     nsvariables,
     DefinitionOptions,
+    defaultDefinitionOptions,
     setExportsNamespace,
     toVariableKey
 } from '@inkline/core';
@@ -20,7 +21,9 @@ type IconSizeVariant = (typeof defaultIconSizes)[number];
  * Config
  */
 
-export function useIconThemeSizeConfig(variant: IconSizeVariant, options: DefinitionOptions) {
+export function useIconThemeSizeConfig(variant: IconSizeVariant, userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize(options);
 
     return {
@@ -36,7 +39,9 @@ export function useIconThemeSizeConfig(variant: IconSizeVariant, options: Defini
     }[variant];
 }
 
-export function useIconThemeConfig(options: DefinitionOptions) {
+export function useIconThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return merge({}, useIconThemeSizeConfig(defaultIconSize, options));
 }
 
@@ -44,14 +49,21 @@ export function useIconThemeConfig(options: DefinitionOptions) {
  * Variables
  */
 
-export function useIconThemeSizeVariables(variant: IconSizeVariant, options: DefinitionOptions) {
+export function useIconThemeSizeVariables(
+    variant: IconSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useIconThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useIconThemeVariables(options: DefinitionOptions) {
+export function useIconThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useIconThemeConfig(options), {
         ...options,
         registerComposed: false
@@ -62,7 +74,9 @@ export function useIconThemeVariables(options: DefinitionOptions) {
  * Selectors
  */
 
-export function useIconThemeBaseSelectors(options: DefinitionOptions) {
+export function useIconThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { iconFontSize } = useIconThemeVariables(options);
 
     selector(
@@ -74,7 +88,12 @@ export function useIconThemeBaseSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useIconThemeSizeSelectors(variant: IconSizeVariant, options: DefinitionOptions) {
+export function useIconThemeSizeSelectors(
+    variant: IconSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { iconFontSize } = useIconThemeVariables(options);
 
     const { variantFontSize } = setExportsNamespace(
@@ -91,11 +110,15 @@ export function useIconThemeSizeSelectors(variant: IconSizeVariant, options: Def
     );
 }
 
-export function useIconThemeSizes(sizes: IconSizeVariant[], options: DefinitionOptions) {
+export function useIconThemeSizes(sizes: IconSizeVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     sizes.forEach((size) => useIconThemeSizeSelectors(size, options));
 }
 
-export function useIconTheme(options: DefinitionOptions) {
+export function useIconTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useIconThemeVariables(options);
     useIconThemeBaseSelectors(options);
     useIconThemeSizes([...defaultIconSizes], options);

@@ -1,11 +1,15 @@
-import { DefinitionOptions, selector } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, selector } from '@inkline/core';
 
-export function useOutputThemeSelectors(options: DefinitionOptions) {
+export function useOutputThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector('output', {
         display: 'inline-block'
     }, options);
 }
 
-export function useOutputTheme(options: DefinitionOptions) {
+export function useOutputTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useOutputThemeSelectors(options);
 }

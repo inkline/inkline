@@ -1,6 +1,8 @@
-import { DefinitionOptions, selector } from '@inkline/core';
+import { DefinitionOptions, defaultDefinitionOptions, selector } from '@inkline/core';
 
-export function useFormThemeLayoutSelectors(options: DefinitionOptions) {
+export function useFormThemeLayoutSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector(
         '.form',
         {
@@ -10,6 +12,8 @@ export function useFormThemeLayoutSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useFormTheme(options: DefinitionOptions) {
+export function useFormTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useFormThemeLayoutSelectors(options);
 }

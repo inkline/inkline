@@ -6,7 +6,8 @@ import {
     vref,
     setExportsNamespace,
     toVariableKey,
-    DefinitionOptions
+    DefinitionOptions,
+    defaultDefinitionOptions
 } from '@inkline/core';
 import { merge } from '@inkline/utils';
 import {
@@ -44,7 +45,12 @@ type ModalSizeVariant = (typeof defaultModalSizes)[number];
  * Config
  */
 
-export function useModalThemeColorConfig(variant: ModalColorVariant, options: DefinitionOptions) {
+export function useModalThemeColorConfig(
+    variant: ModalColorVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         colorLightShade50,
         colorLight,
@@ -254,7 +260,9 @@ export function useModalThemeColorConfig(variant: ModalColorVariant, options: De
     }[variant];
 }
 
-export function useModalThemeSizeConfig(variant: ModalSizeVariant, options: DefinitionOptions) {
+export function useModalThemeSizeConfig(variant: ModalSizeVariant, userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopLeftRadiusSm,
         borderTopRightRadiusSm,
@@ -417,7 +425,9 @@ export function useModalThemeSizeConfig(variant: ModalSizeVariant, options: Defi
     }[variant];
 }
 
-export function useModalThemeConfig(options: DefinitionOptions) {
+export function useModalThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         borderTopStyle,
         borderTopWidth,
@@ -503,22 +513,31 @@ export function useModalThemeConfig(options: DefinitionOptions) {
 
 export function useModalThemeColorVariables(
     variant: ModalColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useModalThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useModalThemeSizeVariables(variant: ModalSizeVariant, options: DefinitionOptions) {
+export function useModalThemeSizeVariables(
+    variant: ModalSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useModalThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useModalThemeVariables(options: DefinitionOptions) {
+export function useModalThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useModalThemeConfig(options), {
         ...options,
         registerComposed: false
@@ -529,7 +548,9 @@ export function useModalThemeVariables(options: DefinitionOptions) {
  * Selectors
  */
 
-export function useModalThemeLayoutSelectors(options: DefinitionOptions) {
+export function useModalThemeLayoutSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { modalZIndex } = useModalThemeVariables(options);
 
     selector(
@@ -631,7 +652,9 @@ export function useModalThemeLayoutSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useModalThemeBaseSelectors(options: DefinitionOptions) {
+export function useModalThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         modalBorderStyle,
         modalBorderTopColor,
@@ -800,8 +823,10 @@ export function useModalThemeBaseSelectors(options: DefinitionOptions) {
 
 export function useModalThemeColorSelectors(
     variant: ModalColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         modalBorderTopColor,
         modalBorderRightColor,
@@ -834,7 +859,12 @@ export function useModalThemeColorSelectors(
     );
 }
 
-export function useModalThemeSizeSelectors(variant: ModalSizeVariant, options: DefinitionOptions) {
+export function useModalThemeSizeSelectors(
+    variant: ModalSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         modalBorderTopLeftRadius,
         modalBorderTopRightRadius,
@@ -879,7 +909,9 @@ export function useModalThemeSizeSelectors(variant: ModalSizeVariant, options: D
     );
 }
 
-export function useModalThemeVariantsSelectors(options: DefinitionOptions) {
+export function useModalThemeVariantsSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector(
         '.modal.-fullscreen',
         {
@@ -918,15 +950,21 @@ export function useModalThemeVariantsSelectors(options: DefinitionOptions) {
  * Composables
  */
 
-export function useModalThemeColors(colors: ModalColorVariant[], options: DefinitionOptions) {
+export function useModalThemeColors(colors: ModalColorVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     colors.forEach((color) => useModalThemeColorSelectors(color, options));
 }
 
-export function useModalThemeSizes(sizes: ModalSizeVariant[], options: DefinitionOptions) {
+export function useModalThemeSizes(sizes: ModalSizeVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     sizes.forEach((size) => useModalThemeSizeSelectors(size, options));
 }
 
-export function useModalTheme(options: DefinitionOptions) {
+export function useModalTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useModalThemeVariables(options);
     useModalThemeLayoutSelectors(options);
     useModalThemeBaseSelectors(options);

@@ -1,8 +1,10 @@
-import { css, DefinitionOptions, multiply, ref, TokenValue, variable } from '@inkline/core';
+import { css, defaultDefinitionOptions, DefinitionOptions, multiply, ref, TokenValue, variable } from '@inkline/core';
 import { useFluid } from './useFluid';
 import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
 
-export function useSpacing(options: DefinitionOptions) {
+export function useSpacing(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { fluidBreakpoint } = useFluid(options);
 
     const spacingMin = variable('spacing-min', 18, options);

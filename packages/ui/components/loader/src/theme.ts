@@ -5,6 +5,7 @@ import {
     multiply,
     keyframes,
     DefinitionOptions,
+    defaultDefinitionOptions,
     setExportsNamespace,
     toVariableKey
 } from '@inkline/core';
@@ -26,7 +27,12 @@ type LoaderSizeVariant = (typeof defaultLoaderSizes)[number];
  * Config
  */
 
-export function useLoaderThemeColorConfig(variant: LoaderColorVariant, options: DefinitionOptions) {
+export function useLoaderThemeColorConfig(
+    variant: LoaderColorVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { colorLight, colorDark, colorPrimary } = useBrandColors(options);
 
     return {
@@ -42,7 +48,12 @@ export function useLoaderThemeColorConfig(variant: LoaderColorVariant, options: 
     }[variant];
 }
 
-export function useLoaderThemeSizeConfig(variant: LoaderSizeVariant, options: DefinitionOptions) {
+export function useLoaderThemeSizeConfig(
+    variant: LoaderSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
 
     return {
@@ -61,7 +72,9 @@ export function useLoaderThemeSizeConfig(variant: LoaderSizeVariant, options: De
     }[variant];
 }
 
-export function useLoaderThemeConfig(options: DefinitionOptions) {
+export function useLoaderThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return merge(
         {
             animation: {
@@ -81,8 +94,10 @@ export function useLoaderThemeConfig(options: DefinitionOptions) {
 
 export function useLoaderThemeColorVariables(
     variant: LoaderColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables([ns, variant] as const, useLoaderThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
@@ -91,15 +106,19 @@ export function useLoaderThemeColorVariables(
 
 export function useLoaderThemeSizeVariables(
     variant: LoaderSizeVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables([ns, variant] as const, useLoaderThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useLoaderThemeVariables(options: DefinitionOptions) {
+export function useLoaderThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useLoaderThemeConfig(options), {
         ...options,
         registerComposed: false
@@ -110,7 +129,9 @@ export function useLoaderThemeVariables(options: DefinitionOptions) {
  * Selectors
  */
 
-export function useLoaderThemeLayoutSelectors(options: DefinitionOptions) {
+export function useLoaderThemeLayoutSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { loaderWidth, loaderHeight } = useLoaderThemeVariables(options);
 
     selector(
@@ -166,7 +187,9 @@ export function useLoaderThemeLayoutSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useLoaderThemeBaseSelectors(options: DefinitionOptions) {
+export function useLoaderThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         loaderAnimationDirection,
         loaderAnimationIterationCount,
@@ -233,8 +256,10 @@ export function useLoaderThemeBaseSelectors(options: DefinitionOptions) {
 
 export function useLoaderThemeColorSelectors(
     variant: LoaderColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { loaderColor } = useLoaderThemeVariables(options);
 
     const { variantColor } = setExportsNamespace(
@@ -253,8 +278,10 @@ export function useLoaderThemeColorSelectors(
 
 export function useLoaderThemeSizeSelectors(
     variant: LoaderSizeVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { loaderWidth, loaderHeight } = useLoaderThemeVariables(options);
 
     const { variantWidth, variantHeight } = setExportsNamespace(
@@ -272,15 +299,21 @@ export function useLoaderThemeSizeSelectors(
     );
 }
 
-export function useLoaderThemeSizes(sizes: LoaderSizeVariant[], options: DefinitionOptions) {
+export function useLoaderThemeSizes(sizes: LoaderSizeVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     sizes.forEach((size) => useLoaderThemeSizeSelectors(size, options));
 }
 
-export function useLoaderThemeColors(colors: LoaderColorVariant[], options: DefinitionOptions) {
+export function useLoaderThemeColors(colors: LoaderColorVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     colors.forEach((color) => useLoaderThemeColorSelectors(color, options));
 }
 
-export function useLoaderTheme(options: DefinitionOptions) {
+export function useLoaderTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useLoaderThemeLayoutSelectors(options);
     useLoaderThemeBaseSelectors(options);
     useLoaderThemeColors([...defaultLoaderColors], options);

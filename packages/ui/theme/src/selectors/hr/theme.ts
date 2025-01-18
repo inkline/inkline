@@ -1,9 +1,11 @@
-import { DefinitionOptions, ref, selector, nsvariables, vref } from '@inkline/core';
+import { DefinitionOptions, ref, selector, nsvariables, vref, defaultDefinitionOptions } from '@inkline/core';
 import { useBorder, useSpacing } from '../../variables';
 
 const ns = 'hr';
 
-export function useHrThemeConfig(options: DefinitionOptions) {
+export function useHrThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { spacing } = useSpacing(options);
     const { borderTopWidth, borderTopStyle, borderTopColor } = useBorder(options);
 
@@ -24,11 +26,15 @@ export function useHrThemeConfig(options: DefinitionOptions) {
     };
 }
 
-export function useHrThemeVariables(options: DefinitionOptions) {
+export function useHrThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useHrThemeConfig(options), options);
 }
 
-export function useHrThemeSelectors(options: DefinitionOptions) {
+export function useHrThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         hrBorderTopColor,
         hrBorderRightColor,
@@ -50,7 +56,9 @@ export function useHrThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useHrTheme(options: DefinitionOptions) {
+export function useHrTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useHrThemeVariables(options);
     useHrThemeSelectors(options);
 }

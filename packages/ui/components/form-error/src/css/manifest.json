@@ -7,70 +7,18 @@
             "selectors": {}
         },
         "variables": {
-            "color-red-h": {
-                "__type": "variable",
-                "__name": "color-red-h",
-                "__value": 0
-            },
-            "color-red-s": {
-                "__type": "variable",
-                "__name": "color-red-s",
-                "__value": "89.07103825136613%"
-            },
-            "color-red-l": {
-                "__type": "variable",
-                "__name": "color-red-l",
-                "__value": "64.11764705882354%"
-            },
-            "color-red-a": {
-                "__type": "variable",
-                "__name": "color-red-a",
-                "__value": 1
-            },
             "color-red": {
                 "__type": "variable",
                 "__name": "color-red",
                 "__value": {
                     "__type": "hsla",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-red-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-red-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-red-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-red-a"
-                        }
+                        0,
+                        "89.07103825136613%",
+                        "64.11764705882354%",
+                        1
                     ]
                 }
-            },
-            "color-orange-h": {
-                "__type": "variable",
-                "__name": "color-orange-h",
-                "__value": 19.622641509433947
-            },
-            "color-orange-s": {
-                "__type": "variable",
-                "__name": "color-orange-s",
-                "__value": "92.9824561403509%"
-            },
-            "color-orange-l": {
-                "__type": "variable",
-                "__name": "color-orange-l",
-                "__value": "66.47058823529412%"
-            },
-            "color-orange-a": {
-                "__type": "variable",
-                "__name": "color-orange-a",
-                "__value": 1
             },
             "color-orange": {
                 "__type": "variable",
@@ -78,44 +26,12 @@
                 "__value": {
                     "__type": "hsla",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-orange-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-orange-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-orange-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-orange-a"
-                        }
+                        19.622641509433947,
+                        "92.9824561403509%",
+                        "66.47058823529412%",
+                        1
                     ]
                 }
-            },
-            "color-yellow-h": {
-                "__type": "variable",
-                "__name": "color-yellow-h",
-                "__value": 43.676470588235304
-            },
-            "color-yellow-s": {
-                "__type": "variable",
-                "__name": "color-yellow-s",
-                "__value": "100%"
-            },
-            "color-yellow-l": {
-                "__type": "variable",
-                "__name": "color-yellow-l",
-                "__value": "73.33333333333334%"
-            },
-            "color-yellow-a": {
-                "__type": "variable",
-                "__name": "color-yellow-a",
-                "__value": 1
             },
             "color-yellow": {
                 "__type": "variable",
@@ -123,44 +39,12 @@
                 "__value": {
                     "__type": "hsla",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-yellow-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-yellow-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-yellow-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-yellow-a"
-                        }
+                        43.676470588235304,
+                        "100%",
+                        "73.33333333333334%",
+                        1
                     ]
                 }
-            },
-            "color-green-h": {
-                "__type": "variable",
-                "__name": "color-green-h",
-                "__value": 154.4186046511628
-            },
-            "color-green-s": {
-                "__type": "variable",
-                "__name": "color-green-s",
-                "__value": "57.847533632286996%"
-            },
-            "color-green-l": {
-                "__type": "variable",
-                "__name": "color-green-l",
-                "__value": "43.72549019607843%"
-            },
-            "color-green-a": {
-                "__type": "variable",
-                "__name": "color-green-a",
-                "__value": 1
             },
             "color-green": {
                 "__type": "variable",
@@ -168,44 +52,12 @@
                 "__value": {
                     "__type": "hsla",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-green-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-green-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-green-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-green-a"
-                        }
+                        154.4186046511628,
+                        "57.847533632286996%",
+                        "43.72549019607843%",
+                        1
                     ]
                 }
-            },
-            "color-teal-h": {
-                "__type": "variable",
-                "__name": "color-teal-h",
-                "__value": 173.8888888888889
-            },
-            "color-teal-s": {
-                "__type": "variable",
-                "__name": "color-teal-s",
-                "__value": "42.85714285714286%"
-            },
-            "color-teal-l": {
-                "__type": "variable",
-                "__name": "color-teal-l",
-                "__value": "49.411764705882355%"
-            },
-            "color-teal-a": {
-                "__type": "variable",
-                "__name": "color-teal-a",
-                "__value": 1
             },
             "color-teal": {
                 "__type": "variable",
@@ -213,44 +65,12 @@
                 "__value": {
                     "__type": "hsla",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-teal-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-teal-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-teal-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-teal-a"
-                        }
+                        173.8888888888889,
+                        "42.85714285714286%",
+                        "49.411764705882355%",
+                        1
                     ]
                 }
-            },
-            "color-blue-h": {
-                "__type": "variable",
-                "__name": "color-blue-h",
-                "__value": 195.0967741935484
-            },
-            "color-blue-s": {
-                "__type": "variable",
-                "__name": "color-blue-s",
-                "__value": "77.11442786069651%"
-            },
-            "color-blue-l": {
-                "__type": "variable",
-                "__name": "color-blue-l",
-                "__value": "39.411764705882355%"
-            },
-            "color-blue-a": {
-                "__type": "variable",
-                "__name": "color-blue-a",
-                "__value": 1
             },
             "color-blue": {
                 "__type": "variable",
@@ -258,44 +78,12 @@
                 "__value": {
                     "__type": "hsla",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-blue-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-blue-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-blue-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-blue-a"
-                        }
+                        195.0967741935484,
+                        "77.11442786069651%",
+                        "39.411764705882355%",
+                        1
                     ]
                 }
-            },
-            "color-indigo-h": {
-                "__type": "variable",
-                "__name": "color-indigo-h",
-                "__value": 227.9289940828403
-            },
-            "color-indigo-s": {
-                "__type": "variable",
-                "__name": "color-indigo-s",
-                "__value": "89.41798941798945%"
-            },
-            "color-indigo-l": {
-                "__type": "variable",
-                "__name": "color-indigo-l",
-                "__value": "62.94117647058823%"
-            },
-            "color-indigo-a": {
-                "__type": "variable",
-                "__name": "color-indigo-a",
-                "__value": 1
             },
             "color-indigo": {
                 "__type": "variable",
@@ -303,44 +91,12 @@
                 "__value": {
                     "__type": "hsla",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-indigo-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-indigo-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-indigo-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-indigo-a"
-                        }
+                        227.9289940828403,
+                        "89.41798941798945%",
+                        "62.94117647058823%",
+                        1
                     ]
                 }
-            },
-            "color-purple-h": {
-                "__type": "variable",
-                "__name": "color-purple-h",
-                "__value": 262.2857142857142
-            },
-            "color-purple-s": {
-                "__type": "variable",
-                "__name": "color-purple-s",
-                "__value": "30.172413793103452%"
-            },
-            "color-purple-l": {
-                "__type": "variable",
-                "__name": "color-purple-l",
-                "__value": "54.50980392156863%"
-            },
-            "color-purple-a": {
-                "__type": "variable",
-                "__name": "color-purple-a",
-                "__value": 1
             },
             "color-purple": {
                 "__type": "variable",
@@ -348,44 +104,12 @@
                 "__value": {
                     "__type": "hsla",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-purple-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-purple-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-purple-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-purple-a"
-                        }
+                        262.2857142857142,
+                        "30.172413793103452%",
+                        "54.50980392156863%",
+                        1
                     ]
                 }
-            },
-            "color-pink-h": {
-                "__type": "variable",
-                "__name": "color-pink-h",
-                "__value": 351.42857142857144
-            },
-            "color-pink-s": {
-                "__type": "variable",
-                "__name": "color-pink-s",
-                "__value": "95.68345323741009%"
-            },
-            "color-pink-l": {
-                "__type": "variable",
-                "__name": "color-pink-l",
-                "__value": "72.74509803921569%"
-            },
-            "color-pink-a": {
-                "__type": "variable",
-                "__name": "color-pink-a",
-                "__value": 1
             },
             "color-pink": {
                 "__type": "variable",
@@ -393,44 +117,12 @@
                 "__value": {
                     "__type": "hsla",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-pink-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-pink-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-pink-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-pink-a"
-                        }
+                        351.42857142857144,
+                        "95.68345323741009%",
+                        "72.74509803921569%",
+                        1
                     ]
                 }
-            },
-            "color-white-h": {
-                "__type": "variable",
-                "__name": "color-white-h",
-                "__value": 0
-            },
-            "color-white-s": {
-                "__type": "variable",
-                "__name": "color-white-s",
-                "__value": "0%"
-            },
-            "color-white-l": {
-                "__type": "variable",
-                "__name": "color-white-l",
-                "__value": "100%"
-            },
-            "color-white-a": {
-                "__type": "variable",
-                "__name": "color-white-a",
-                "__value": 1
             },
             "color-white": {
                 "__type": "variable",
@@ -438,44 +130,12 @@
                 "__value": {
                     "__type": "hsla",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-white-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-white-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-white-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-white-a"
-                        }
+                        0,
+                        "0%",
+                        "100%",
+                        1
                     ]
                 }
-            },
-            "color-black-h": {
-                "__type": "variable",
-                "__name": "color-black-h",
-                "__value": 0
-            },
-            "color-black-s": {
-                "__type": "variable",
-                "__name": "color-black-s",
-                "__value": "0%"
-            },
-            "color-black-l": {
-                "__type": "variable",
-                "__name": "color-black-l",
-                "__value": "0%"
-            },
-            "color-black-a": {
-                "__type": "variable",
-                "__name": "color-black-a",
-                "__value": 1
             },
             "color-black": {
                 "__type": "variable",
@@ -483,44 +143,12 @@
                 "__value": {
                     "__type": "hsla",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-black-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-black-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-black-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-black-a"
-                        }
+                        0,
+                        "0%",
+                        "0%",
+                        1
                     ]
                 }
-            },
-            "color-gray-h": {
-                "__type": "variable",
-                "__name": "color-gray-h",
-                "__value": 193.63636363636363
-            },
-            "color-gray-s": {
-                "__type": "variable",
-                "__name": "color-gray-s",
-                "__value": "10.784313725490199%"
-            },
-            "color-gray-l": {
-                "__type": "variable",
-                "__name": "color-gray-l",
-                "__value": "60.00000000000001%"
-            },
-            "color-gray-a": {
-                "__type": "variable",
-                "__name": "color-gray-a",
-                "__value": 1
             },
             "color-gray": {
                 "__type": "variable",
@@ -528,52 +156,11 @@
                 "__value": {
                     "__type": "hsla",
                     "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-a"
-                        }
+                        193.63636363636363,
+                        "10.784313725490199%",
+                        "60.00000000000001%",
+                        1
                     ]
-                }
-            },
-            "color-gray-50-h": {
-                "__type": "variable",
-                "__name": "color-gray-50-h",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-h"
-                }
-            },
-            "color-gray-50-s": {
-                "__type": "variable",
-                "__name": "color-gray-50-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-s"
-                }
-            },
-            "color-gray-50-l": {
-                "__type": "variable",
-                "__name": "color-gray-50-l",
-                "__value": "95%"
-            },
-            "color-gray-50-a": {
-                "__type": "variable",
-                "__name": "color-gray-50-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-a"
                 }
             },
             "color-gray-50": {
@@ -581,53 +168,19 @@
                 "__name": "color-gray-50",
                 "__value": {
                     "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-50-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-50-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-50-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-50-a"
-                        }
-                    ]
-                }
-            },
-            "color-gray-100-h": {
-                "__type": "variable",
-                "__name": "color-gray-100-h",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-h"
-                }
-            },
-            "color-gray-100-s": {
-                "__type": "variable",
-                "__name": "color-gray-100-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-s"
-                }
-            },
-            "color-gray-100-l": {
-                "__type": "variable",
-                "__name": "color-gray-100-l",
-                "__value": "90%"
-            },
-            "color-gray-100-a": {
-                "__type": "variable",
-                "__name": "color-gray-100-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-a"
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-gray"
+                            },
+                            " h s ",
+                            "95%",
+                            " / alpha"
+                        ]
+                    }
                 }
             },
             "color-gray-100": {
@@ -635,53 +188,19 @@
                 "__name": "color-gray-100",
                 "__value": {
                     "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-100-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-100-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-100-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-100-a"
-                        }
-                    ]
-                }
-            },
-            "color-gray-200-h": {
-                "__type": "variable",
-                "__name": "color-gray-200-h",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-h"
-                }
-            },
-            "color-gray-200-s": {
-                "__type": "variable",
-                "__name": "color-gray-200-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-s"
-                }
-            },
-            "color-gray-200-l": {
-                "__type": "variable",
-                "__name": "color-gray-200-l",
-                "__value": "80%"
-            },
-            "color-gray-200-a": {
-                "__type": "variable",
-                "__name": "color-gray-200-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-a"
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-gray"
+                            },
+                            " h s ",
+                            "90%",
+                            " / alpha"
+                        ]
+                    }
                 }
             },
             "color-gray-200": {
@@ -689,53 +208,19 @@
                 "__name": "color-gray-200",
                 "__value": {
                     "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-200-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-200-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-200-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-200-a"
-                        }
-                    ]
-                }
-            },
-            "color-gray-300-h": {
-                "__type": "variable",
-                "__name": "color-gray-300-h",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-h"
-                }
-            },
-            "color-gray-300-s": {
-                "__type": "variable",
-                "__name": "color-gray-300-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-s"
-                }
-            },
-            "color-gray-300-l": {
-                "__type": "variable",
-                "__name": "color-gray-300-l",
-                "__value": "70%"
-            },
-            "color-gray-300-a": {
-                "__type": "variable",
-                "__name": "color-gray-300-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-a"
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-gray"
+                            },
+                            " h s ",
+                            "80%",
+                            " / alpha"
+                        ]
+                    }
                 }
             },
             "color-gray-300": {
@@ -743,53 +228,19 @@
                 "__name": "color-gray-300",
                 "__value": {
                     "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-300-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-300-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-300-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-300-a"
-                        }
-                    ]
-                }
-            },
-            "color-gray-400-h": {
-                "__type": "variable",
-                "__name": "color-gray-400-h",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-h"
-                }
-            },
-            "color-gray-400-s": {
-                "__type": "variable",
-                "__name": "color-gray-400-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-s"
-                }
-            },
-            "color-gray-400-l": {
-                "__type": "variable",
-                "__name": "color-gray-400-l",
-                "__value": "60%"
-            },
-            "color-gray-400-a": {
-                "__type": "variable",
-                "__name": "color-gray-400-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-a"
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-gray"
+                            },
+                            " h s ",
+                            "70%",
+                            " / alpha"
+                        ]
+                    }
                 }
             },
             "color-gray-400": {
@@ -797,53 +248,19 @@
                 "__name": "color-gray-400",
                 "__value": {
                     "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-400-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-400-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-400-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-400-a"
-                        }
-                    ]
-                }
-            },
-            "color-gray-500-h": {
-                "__type": "variable",
-                "__name": "color-gray-500-h",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-h"
-                }
-            },
-            "color-gray-500-s": {
-                "__type": "variable",
-                "__name": "color-gray-500-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-s"
-                }
-            },
-            "color-gray-500-l": {
-                "__type": "variable",
-                "__name": "color-gray-500-l",
-                "__value": "50%"
-            },
-            "color-gray-500-a": {
-                "__type": "variable",
-                "__name": "color-gray-500-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-a"
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-gray"
+                            },
+                            " h s ",
+                            "60%",
+                            " / alpha"
+                        ]
+                    }
                 }
             },
             "color-gray-500": {
@@ -851,53 +268,19 @@
                 "__name": "color-gray-500",
                 "__value": {
                     "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-500-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-500-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-500-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-500-a"
-                        }
-                    ]
-                }
-            },
-            "color-gray-600-h": {
-                "__type": "variable",
-                "__name": "color-gray-600-h",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-h"
-                }
-            },
-            "color-gray-600-s": {
-                "__type": "variable",
-                "__name": "color-gray-600-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-s"
-                }
-            },
-            "color-gray-600-l": {
-                "__type": "variable",
-                "__name": "color-gray-600-l",
-                "__value": "40%"
-            },
-            "color-gray-600-a": {
-                "__type": "variable",
-                "__name": "color-gray-600-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-a"
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-gray"
+                            },
+                            " h s ",
+                            "50%",
+                            " / alpha"
+                        ]
+                    }
                 }
             },
             "color-gray-600": {
@@ -905,53 +288,19 @@
                 "__name": "color-gray-600",
                 "__value": {
                     "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-600-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-600-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-600-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-600-a"
-                        }
-                    ]
-                }
-            },
-            "color-gray-700-h": {
-                "__type": "variable",
-                "__name": "color-gray-700-h",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-h"
-                }
-            },
-            "color-gray-700-s": {
-                "__type": "variable",
-                "__name": "color-gray-700-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-s"
-                }
-            },
-            "color-gray-700-l": {
-                "__type": "variable",
-                "__name": "color-gray-700-l",
-                "__value": "30%"
-            },
-            "color-gray-700-a": {
-                "__type": "variable",
-                "__name": "color-gray-700-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-a"
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-gray"
+                            },
+                            " h s ",
+                            "40%",
+                            " / alpha"
+                        ]
+                    }
                 }
             },
             "color-gray-700": {
@@ -959,53 +308,19 @@
                 "__name": "color-gray-700",
                 "__value": {
                     "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-700-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-700-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-700-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-700-a"
-                        }
-                    ]
-                }
-            },
-            "color-gray-800-h": {
-                "__type": "variable",
-                "__name": "color-gray-800-h",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-h"
-                }
-            },
-            "color-gray-800-s": {
-                "__type": "variable",
-                "__name": "color-gray-800-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-s"
-                }
-            },
-            "color-gray-800-l": {
-                "__type": "variable",
-                "__name": "color-gray-800-l",
-                "__value": "20%"
-            },
-            "color-gray-800-a": {
-                "__type": "variable",
-                "__name": "color-gray-800-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-a"
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-gray"
+                            },
+                            " h s ",
+                            "30%",
+                            " / alpha"
+                        ]
+                    }
                 }
             },
             "color-gray-800": {
@@ -1013,53 +328,19 @@
                 "__name": "color-gray-800",
                 "__value": {
                     "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-800-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-800-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-800-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-800-a"
-                        }
-                    ]
-                }
-            },
-            "color-gray-900-h": {
-                "__type": "variable",
-                "__name": "color-gray-900-h",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-h"
-                }
-            },
-            "color-gray-900-s": {
-                "__type": "variable",
-                "__name": "color-gray-900-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-s"
-                }
-            },
-            "color-gray-900-l": {
-                "__type": "variable",
-                "__name": "color-gray-900-l",
-                "__value": "10%"
-            },
-            "color-gray-900-a": {
-                "__type": "variable",
-                "__name": "color-gray-900-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-a"
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-gray"
+                            },
+                            " h s ",
+                            "20%",
+                            " / alpha"
+                        ]
+                    }
                 }
             },
             "color-gray-900": {
@@ -1067,53 +348,19 @@
                 "__name": "color-gray-900",
                 "__value": {
                     "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-900-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-900-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-900-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-900-a"
-                        }
-                    ]
-                }
-            },
-            "color-gray-950-h": {
-                "__type": "variable",
-                "__name": "color-gray-950-h",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-h"
-                }
-            },
-            "color-gray-950-s": {
-                "__type": "variable",
-                "__name": "color-gray-950-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-s"
-                }
-            },
-            "color-gray-950-l": {
-                "__type": "variable",
-                "__name": "color-gray-950-l",
-                "__value": "5%"
-            },
-            "color-gray-950-a": {
-                "__type": "variable",
-                "__name": "color-gray-950-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-a"
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-gray"
+                            },
+                            " h s ",
+                            "10%",
+                            " / alpha"
+                        ]
+                    }
                 }
             },
             "color-gray-950": {
@@ -1121,480 +368,2363 @@
                 "__name": "color-gray-950",
                 "__value": {
                     "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-950-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-950-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-950-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-gray-950-a"
-                        }
-                    ]
-                }
-            },
-            "color-primary-h": {
-                "__type": "variable",
-                "__name": "color-primary-h",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-blue-h"
-                }
-            },
-            "color-primary-s": {
-                "__type": "variable",
-                "__name": "color-primary-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-blue-s"
-                }
-            },
-            "color-primary-l": {
-                "__type": "variable",
-                "__name": "color-primary-l",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-blue-l"
-                }
-            },
-            "color-primary-a": {
-                "__type": "variable",
-                "__name": "color-primary-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-blue-a"
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-gray"
+                            },
+                            " h s ",
+                            "5%",
+                            " / alpha"
+                        ]
+                    }
                 }
             },
             "color-primary": {
                 "__type": "variable",
                 "__name": "color-primary",
                 "__value": {
-                    "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-primary-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-primary-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-primary-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-primary-a"
-                        }
-                    ]
-                }
-            },
-            "color-secondary-h": {
-                "__type": "variable",
-                "__name": "color-secondary-h",
-                "__value": {
                     "__type": "reference",
-                    "__name": "color-purple-h"
-                }
-            },
-            "color-secondary-s": {
-                "__type": "variable",
-                "__name": "color-secondary-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-purple-s"
-                }
-            },
-            "color-secondary-l": {
-                "__type": "variable",
-                "__name": "color-secondary-l",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-purple-l"
-                }
-            },
-            "color-secondary-a": {
-                "__type": "variable",
-                "__name": "color-secondary-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-purple-a"
+                    "__name": "color-blue"
                 }
             },
             "color-secondary": {
                 "__type": "variable",
                 "__name": "color-secondary",
                 "__value": {
-                    "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-secondary-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-secondary-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-secondary-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-secondary-a"
-                        }
-                    ]
-                }
-            },
-            "color-info-h": {
-                "__type": "variable",
-                "__name": "color-info-h",
-                "__value": {
                     "__type": "reference",
-                    "__name": "color-teal-h"
-                }
-            },
-            "color-info-s": {
-                "__type": "variable",
-                "__name": "color-info-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-teal-s"
-                }
-            },
-            "color-info-l": {
-                "__type": "variable",
-                "__name": "color-info-l",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-teal-l"
-                }
-            },
-            "color-info-a": {
-                "__type": "variable",
-                "__name": "color-info-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-teal-a"
+                    "__name": "color-purple"
                 }
             },
             "color-info": {
                 "__type": "variable",
                 "__name": "color-info",
                 "__value": {
-                    "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-info-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-info-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-info-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-info-a"
-                        }
-                    ]
-                }
-            },
-            "color-success-h": {
-                "__type": "variable",
-                "__name": "color-success-h",
-                "__value": {
                     "__type": "reference",
-                    "__name": "color-green-h"
-                }
-            },
-            "color-success-s": {
-                "__type": "variable",
-                "__name": "color-success-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-green-s"
-                }
-            },
-            "color-success-l": {
-                "__type": "variable",
-                "__name": "color-success-l",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-green-l"
-                }
-            },
-            "color-success-a": {
-                "__type": "variable",
-                "__name": "color-success-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-green-a"
+                    "__name": "color-teal"
                 }
             },
             "color-success": {
                 "__type": "variable",
                 "__name": "color-success",
                 "__value": {
-                    "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-success-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-success-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-success-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-success-a"
-                        }
-                    ]
-                }
-            },
-            "color-warning-h": {
-                "__type": "variable",
-                "__name": "color-warning-h",
-                "__value": {
                     "__type": "reference",
-                    "__name": "color-yellow-h"
-                }
-            },
-            "color-warning-s": {
-                "__type": "variable",
-                "__name": "color-warning-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-yellow-s"
-                }
-            },
-            "color-warning-l": {
-                "__type": "variable",
-                "__name": "color-warning-l",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-yellow-l"
-                }
-            },
-            "color-warning-a": {
-                "__type": "variable",
-                "__name": "color-warning-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-yellow-a"
+                    "__name": "color-green"
                 }
             },
             "color-warning": {
                 "__type": "variable",
                 "__name": "color-warning",
                 "__value": {
-                    "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-warning-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-warning-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-warning-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-warning-a"
-                        }
-                    ]
-                }
-            },
-            "color-danger-h": {
-                "__type": "variable",
-                "__name": "color-danger-h",
-                "__value": {
                     "__type": "reference",
-                    "__name": "color-red-h"
-                }
-            },
-            "color-danger-s": {
-                "__type": "variable",
-                "__name": "color-danger-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-red-s"
-                }
-            },
-            "color-danger-l": {
-                "__type": "variable",
-                "__name": "color-danger-l",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-red-l"
-                }
-            },
-            "color-danger-a": {
-                "__type": "variable",
-                "__name": "color-danger-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-red-a"
+                    "__name": "color-yellow"
                 }
             },
             "color-danger": {
                 "__type": "variable",
                 "__name": "color-danger",
                 "__value": {
-                    "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-danger-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-danger-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-danger-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-danger-a"
-                        }
-                    ]
-                }
-            },
-            "color-light-h": {
-                "__type": "variable",
-                "__name": "color-light-h",
-                "__value": {
                     "__type": "reference",
-                    "__name": "color-gray-100-h"
-                }
-            },
-            "color-light-s": {
-                "__type": "variable",
-                "__name": "color-light-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-100-s"
-                }
-            },
-            "color-light-l": {
-                "__type": "variable",
-                "__name": "color-light-l",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-100-l"
-                }
-            },
-            "color-light-a": {
-                "__type": "variable",
-                "__name": "color-light-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-100-a"
+                    "__name": "color-red"
                 }
             },
             "color-light": {
                 "__type": "variable",
                 "__name": "color-light",
                 "__value": {
-                    "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-light-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-light-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-light-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-light-a"
-                        }
-                    ]
-                }
-            },
-            "color-dark-h": {
-                "__type": "variable",
-                "__name": "color-dark-h",
-                "__value": {
                     "__type": "reference",
-                    "__name": "color-gray-800-h"
-                }
-            },
-            "color-dark-s": {
-                "__type": "variable",
-                "__name": "color-dark-s",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-800-s"
-                }
-            },
-            "color-dark-l": {
-                "__type": "variable",
-                "__name": "color-dark-l",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-800-l"
-                }
-            },
-            "color-dark-a": {
-                "__type": "variable",
-                "__name": "color-dark-a",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-gray-800-a"
+                    "__name": "color-gray-100"
                 }
             },
             "color-dark": {
                 "__type": "variable",
                 "__name": "color-dark",
                 "__value": {
+                    "__type": "reference",
+                    "__name": "color-gray-800"
+                }
+            },
+            "color-primary-50": {
+                "__type": "variable",
+                "__name": "color-primary-50",
+                "__value": {
                     "__type": "hsla",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "color-dark-h"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-dark-s"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-dark-l"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "color-dark-a"
-                        }
-                    ]
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s ",
+                            "95%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-100": {
+                "__type": "variable",
+                "__name": "color-primary-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s ",
+                            "90%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-200": {
+                "__type": "variable",
+                "__name": "color-primary-200",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s ",
+                            "80%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-300": {
+                "__type": "variable",
+                "__name": "color-primary-300",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s ",
+                            "70%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-400": {
+                "__type": "variable",
+                "__name": "color-primary-400",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s ",
+                            "60%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-500": {
+                "__type": "variable",
+                "__name": "color-primary-500",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s ",
+                            "50%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-600": {
+                "__type": "variable",
+                "__name": "color-primary-600",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s ",
+                            "40%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-700": {
+                "__type": "variable",
+                "__name": "color-primary-700",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s ",
+                            "30%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-800": {
+                "__type": "variable",
+                "__name": "color-primary-800",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s ",
+                            "20%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-900": {
+                "__type": "variable",
+                "__name": "color-primary-900",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s ",
+                            "10%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-950": {
+                "__type": "variable",
+                "__name": "color-primary-950",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s ",
+                            "5%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-tint-50": {
+                "__type": "variable",
+                "__name": "color-primary-tint-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s calc(l + ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-tint-100": {
+                "__type": "variable",
+                "__name": "color-primary-tint-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s calc(l + ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-tint-150": {
+                "__type": "variable",
+                "__name": "color-primary-tint-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s calc(l + ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-shade-50": {
+                "__type": "variable",
+                "__name": "color-primary-shade-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s calc(l - ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-shade-100": {
+                "__type": "variable",
+                "__name": "color-primary-shade-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s calc(l - ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-primary-shade-150": {
+                "__type": "variable",
+                "__name": "color-primary-shade-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-primary"
+                            },
+                            " h s calc(l - ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-50": {
+                "__type": "variable",
+                "__name": "color-secondary-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s ",
+                            "95%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-100": {
+                "__type": "variable",
+                "__name": "color-secondary-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s ",
+                            "90%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-200": {
+                "__type": "variable",
+                "__name": "color-secondary-200",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s ",
+                            "80%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-300": {
+                "__type": "variable",
+                "__name": "color-secondary-300",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s ",
+                            "70%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-400": {
+                "__type": "variable",
+                "__name": "color-secondary-400",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s ",
+                            "60%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-500": {
+                "__type": "variable",
+                "__name": "color-secondary-500",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s ",
+                            "50%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-600": {
+                "__type": "variable",
+                "__name": "color-secondary-600",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s ",
+                            "40%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-700": {
+                "__type": "variable",
+                "__name": "color-secondary-700",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s ",
+                            "30%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-800": {
+                "__type": "variable",
+                "__name": "color-secondary-800",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s ",
+                            "20%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-900": {
+                "__type": "variable",
+                "__name": "color-secondary-900",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s ",
+                            "10%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-950": {
+                "__type": "variable",
+                "__name": "color-secondary-950",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s ",
+                            "5%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-tint-50": {
+                "__type": "variable",
+                "__name": "color-secondary-tint-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s calc(l + ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-tint-100": {
+                "__type": "variable",
+                "__name": "color-secondary-tint-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s calc(l + ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-tint-150": {
+                "__type": "variable",
+                "__name": "color-secondary-tint-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s calc(l + ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-shade-50": {
+                "__type": "variable",
+                "__name": "color-secondary-shade-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s calc(l - ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-shade-100": {
+                "__type": "variable",
+                "__name": "color-secondary-shade-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s calc(l - ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-secondary-shade-150": {
+                "__type": "variable",
+                "__name": "color-secondary-shade-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-secondary"
+                            },
+                            " h s calc(l - ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-50": {
+                "__type": "variable",
+                "__name": "color-info-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s ",
+                            "95%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-100": {
+                "__type": "variable",
+                "__name": "color-info-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s ",
+                            "90%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-200": {
+                "__type": "variable",
+                "__name": "color-info-200",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s ",
+                            "80%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-300": {
+                "__type": "variable",
+                "__name": "color-info-300",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s ",
+                            "70%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-400": {
+                "__type": "variable",
+                "__name": "color-info-400",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s ",
+                            "60%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-500": {
+                "__type": "variable",
+                "__name": "color-info-500",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s ",
+                            "50%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-600": {
+                "__type": "variable",
+                "__name": "color-info-600",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s ",
+                            "40%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-700": {
+                "__type": "variable",
+                "__name": "color-info-700",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s ",
+                            "30%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-800": {
+                "__type": "variable",
+                "__name": "color-info-800",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s ",
+                            "20%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-900": {
+                "__type": "variable",
+                "__name": "color-info-900",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s ",
+                            "10%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-950": {
+                "__type": "variable",
+                "__name": "color-info-950",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s ",
+                            "5%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-tint-50": {
+                "__type": "variable",
+                "__name": "color-info-tint-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s calc(l + ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-tint-100": {
+                "__type": "variable",
+                "__name": "color-info-tint-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s calc(l + ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-tint-150": {
+                "__type": "variable",
+                "__name": "color-info-tint-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s calc(l + ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-shade-50": {
+                "__type": "variable",
+                "__name": "color-info-shade-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s calc(l - ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-shade-100": {
+                "__type": "variable",
+                "__name": "color-info-shade-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s calc(l - ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-info-shade-150": {
+                "__type": "variable",
+                "__name": "color-info-shade-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-info"
+                            },
+                            " h s calc(l - ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-50": {
+                "__type": "variable",
+                "__name": "color-success-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s ",
+                            "95%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-100": {
+                "__type": "variable",
+                "__name": "color-success-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s ",
+                            "90%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-200": {
+                "__type": "variable",
+                "__name": "color-success-200",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s ",
+                            "80%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-300": {
+                "__type": "variable",
+                "__name": "color-success-300",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s ",
+                            "70%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-400": {
+                "__type": "variable",
+                "__name": "color-success-400",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s ",
+                            "60%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-500": {
+                "__type": "variable",
+                "__name": "color-success-500",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s ",
+                            "50%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-600": {
+                "__type": "variable",
+                "__name": "color-success-600",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s ",
+                            "40%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-700": {
+                "__type": "variable",
+                "__name": "color-success-700",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s ",
+                            "30%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-800": {
+                "__type": "variable",
+                "__name": "color-success-800",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s ",
+                            "20%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-900": {
+                "__type": "variable",
+                "__name": "color-success-900",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s ",
+                            "10%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-950": {
+                "__type": "variable",
+                "__name": "color-success-950",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s ",
+                            "5%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-tint-50": {
+                "__type": "variable",
+                "__name": "color-success-tint-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s calc(l + ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-tint-100": {
+                "__type": "variable",
+                "__name": "color-success-tint-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s calc(l + ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-tint-150": {
+                "__type": "variable",
+                "__name": "color-success-tint-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s calc(l + ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-shade-50": {
+                "__type": "variable",
+                "__name": "color-success-shade-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s calc(l - ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-shade-100": {
+                "__type": "variable",
+                "__name": "color-success-shade-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s calc(l - ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-success-shade-150": {
+                "__type": "variable",
+                "__name": "color-success-shade-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-success"
+                            },
+                            " h s calc(l - ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-50": {
+                "__type": "variable",
+                "__name": "color-warning-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s ",
+                            "95%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-100": {
+                "__type": "variable",
+                "__name": "color-warning-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s ",
+                            "90%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-200": {
+                "__type": "variable",
+                "__name": "color-warning-200",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s ",
+                            "80%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-300": {
+                "__type": "variable",
+                "__name": "color-warning-300",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s ",
+                            "70%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-400": {
+                "__type": "variable",
+                "__name": "color-warning-400",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s ",
+                            "60%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-500": {
+                "__type": "variable",
+                "__name": "color-warning-500",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s ",
+                            "50%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-600": {
+                "__type": "variable",
+                "__name": "color-warning-600",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s ",
+                            "40%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-700": {
+                "__type": "variable",
+                "__name": "color-warning-700",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s ",
+                            "30%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-800": {
+                "__type": "variable",
+                "__name": "color-warning-800",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s ",
+                            "20%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-900": {
+                "__type": "variable",
+                "__name": "color-warning-900",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s ",
+                            "10%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-950": {
+                "__type": "variable",
+                "__name": "color-warning-950",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s ",
+                            "5%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-tint-50": {
+                "__type": "variable",
+                "__name": "color-warning-tint-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s calc(l + ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-tint-100": {
+                "__type": "variable",
+                "__name": "color-warning-tint-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s calc(l + ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-tint-150": {
+                "__type": "variable",
+                "__name": "color-warning-tint-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s calc(l + ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-shade-50": {
+                "__type": "variable",
+                "__name": "color-warning-shade-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s calc(l - ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-shade-100": {
+                "__type": "variable",
+                "__name": "color-warning-shade-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s calc(l - ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-warning-shade-150": {
+                "__type": "variable",
+                "__name": "color-warning-shade-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-warning"
+                            },
+                            " h s calc(l - ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-50": {
+                "__type": "variable",
+                "__name": "color-danger-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s ",
+                            "95%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-100": {
+                "__type": "variable",
+                "__name": "color-danger-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s ",
+                            "90%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-200": {
+                "__type": "variable",
+                "__name": "color-danger-200",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s ",
+                            "80%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-300": {
+                "__type": "variable",
+                "__name": "color-danger-300",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s ",
+                            "70%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-400": {
+                "__type": "variable",
+                "__name": "color-danger-400",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s ",
+                            "60%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-500": {
+                "__type": "variable",
+                "__name": "color-danger-500",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s ",
+                            "50%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-600": {
+                "__type": "variable",
+                "__name": "color-danger-600",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s ",
+                            "40%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-700": {
+                "__type": "variable",
+                "__name": "color-danger-700",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s ",
+                            "30%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-800": {
+                "__type": "variable",
+                "__name": "color-danger-800",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s ",
+                            "20%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-900": {
+                "__type": "variable",
+                "__name": "color-danger-900",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s ",
+                            "10%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-950": {
+                "__type": "variable",
+                "__name": "color-danger-950",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s ",
+                            "5%",
+                            " / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-tint-50": {
+                "__type": "variable",
+                "__name": "color-danger-tint-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s calc(l + ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-tint-100": {
+                "__type": "variable",
+                "__name": "color-danger-tint-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s calc(l + ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-tint-150": {
+                "__type": "variable",
+                "__name": "color-danger-tint-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s calc(l + ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-shade-50": {
+                "__type": "variable",
+                "__name": "color-danger-shade-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s calc(l - ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-shade-100": {
+                "__type": "variable",
+                "__name": "color-danger-shade-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s calc(l - ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-danger-shade-150": {
+                "__type": "variable",
+                "__name": "color-danger-shade-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-danger"
+                            },
+                            " h s calc(l - ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-light-shade-50": {
+                "__type": "variable",
+                "__name": "color-light-shade-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-light"
+                            },
+                            " h s calc(l - ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-light-shade-100": {
+                "__type": "variable",
+                "__name": "color-light-shade-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-light"
+                            },
+                            " h s calc(l - ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-light-shade-150": {
+                "__type": "variable",
+                "__name": "color-light-shade-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-light"
+                            },
+                            " h s calc(l - ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-light-tint-50": {
+                "__type": "variable",
+                "__name": "color-light-tint-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-light"
+                            },
+                            " h s calc(l + ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-light-tint-100": {
+                "__type": "variable",
+                "__name": "color-light-tint-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-light"
+                            },
+                            " h s calc(l + ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-light-tint-150": {
+                "__type": "variable",
+                "__name": "color-light-tint-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-light"
+                            },
+                            " h s calc(l + ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-dark-tint-50": {
+                "__type": "variable",
+                "__name": "color-dark-tint-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-dark"
+                            },
+                            " h s calc(l + ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-dark-tint-100": {
+                "__type": "variable",
+                "__name": "color-dark-tint-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-dark"
+                            },
+                            " h s calc(l + ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-dark-tint-150": {
+                "__type": "variable",
+                "__name": "color-dark-tint-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-dark"
+                            },
+                            " h s calc(l + ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-dark-shade-50": {
+                "__type": "variable",
+                "__name": "color-dark-shade-50",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-dark"
+                            },
+                            " h s calc(l - ",
+                            5,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-dark-shade-100": {
+                "__type": "variable",
+                "__name": "color-dark-shade-100",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-dark"
+                            },
+                            " h s calc(l - ",
+                            10,
+                            ") / alpha"
+                        ]
+                    }
+                }
+            },
+            "color-dark-shade-150": {
+                "__type": "variable",
+                "__name": "color-dark-shade-150",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": {
+                        "__type": "css",
+                        "__value": [
+                            "from ",
+                            {
+                                "__type": "reference",
+                                "__name": "color-dark"
+                            },
+                            " h s calc(l - ",
+                            15,
+                            ") / alpha"
+                        ]
+                    }
                 }
             },
             "fluid--min-width": {
@@ -3099,7 +4229,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-2xs"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-2xs"
@@ -3129,7 +4261,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-xs"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-xs"
@@ -3159,7 +4293,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-sm"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-sm"
@@ -3189,7 +4325,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-md"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-md"
@@ -3219,7 +4357,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-lg"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-lg"
@@ -3249,7 +4389,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-xl"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-xl"
@@ -3279,7 +4421,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-2xl"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-2xl"
@@ -3309,7 +4453,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-3xl"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-3xl"
@@ -3339,7 +4485,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-4xl"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-4xl"
@@ -3369,7 +4517,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-2xs"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-xs"
@@ -3399,7 +4549,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-xs"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-sm"
@@ -3429,7 +4581,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-sm"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-md"
@@ -3459,7 +4613,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-md"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-lg"
@@ -3489,7 +4645,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-lg"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-xl"
@@ -3519,7 +4677,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-xl"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-2xl"
@@ -3549,7 +4709,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-2xl"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-3xl"
@@ -3579,7 +4741,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-3xl"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-4xl"
@@ -3606,80 +4770,6 @@
                     "__name": "spacing-md"
                 }
             },
-            "margin-top": {
-                "__type": "variable",
-                "__name": "margin-top",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing"
-                }
-            },
-            "margin-right": {
-                "__type": "variable",
-                "__name": "margin-right",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing"
-                }
-            },
-            "margin-bottom": {
-                "__type": "variable",
-                "__name": "margin-bottom",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing"
-                }
-            },
-            "margin-left": {
-                "__type": "variable",
-                "__name": "margin-left",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing"
-                }
-            },
-            "margin": {
-                "__type": "variable",
-                "__name": "margin",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left"
-                    }
-                ]
-            },
-            "form-error--color-h": {
-                "__type": "variable",
-                "__name": "form-error--color-h",
-                "__value": 0
-            },
-            "form-error--color-s": {
-                "__type": "variable",
-                "__name": "form-error--color-s",
-                "__value": "0%"
-            },
-            "form-error--color-l": {
-                "__type": "variable",
-                "__name": "form-error--color-l",
-                "__value": "0%"
-            },
-            "form-error--color-a": {
-                "__type": "variable",
-                "__name": "form-error--color-a",
-                "__value": 1
-            },
             "form-error--color": {
                 "__type": "variable",
                 "__name": "form-error--color",
@@ -3701,7 +4791,7 @@
                 "__name": "form-error--margin-top",
                 "__value": {
                     "__type": "reference",
-                    "__name": "margin-top"
+                    "__name": "spacing"
                 }
             },
             "form-error--margin-right": {
@@ -3718,28 +4808,6 @@
                 "__type": "variable",
                 "__name": "form-error--margin-left",
                 "__value": 0
-            },
-            "form-error--margin": {
-                "__type": "variable",
-                "__name": "form-error--margin",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "form-error--margin-top"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "form-error--margin-right"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "form-error--margin-bottom"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "form-error--margin-left"
-                    }
-                ]
             }
         },
         "selectors": [
@@ -3765,7 +4833,11 @@
                 "__value": {
                     "color": {
                         "__type": "reference",
-                        "__name": "form-error--color"
+                        "__name": "form-error--color",
+                        "__fallback": {
+                            "__type": "reference",
+                            "__name": "color-danger"
+                        }
                     },
                     "fontSize": {
                         "__type": "reference",
@@ -3773,7 +4845,25 @@
                     },
                     "margin": {
                         "__type": "reference",
-                        "__name": "form-error--margin"
+                        "__name": "form-error--margin",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "form-error--margin-top"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "form-error--margin-right"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "form-error--margin-bottom"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "form-error--margin-left"
+                            }
+                        ]
                     }
                 }
             }

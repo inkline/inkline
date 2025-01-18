@@ -1,6 +1,11 @@
-import { DefinitionOptions, ref, variable } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, ref, variable } from '@inkline/core';
+import { useNeutralColors } from './useColors';
 
-export function useBorder(options: DefinitionOptions) {
+export function useBorder(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    const { colorGray200 } = useNeutralColors(options);
+
     const borderTopWidth = variable('border-top-width', '1px', options);
     const borderRightWidth = variable('border-right-width', '1px', options);
     const borderBottomWidth = variable('border-bottom-width', '1px', options);
@@ -21,10 +26,10 @@ export function useBorder(options: DefinitionOptions) {
         options
     );
 
-    const borderTopColor = variable('border-top-color', 'var(--color-gray-200)', options);
-    const borderRightColor = variable('border-right-color', 'var(--color-gray-200)', options);
-    const borderBottomColor = variable('border-bottom-color', 'var(--color-gray-200)', options);
-    const borderLeftColor = variable('border-left-color', 'var(--color-gray-200)', options);
+    const borderTopColor = variable('border-top-color', ref(colorGray200), options);
+    const borderRightColor = variable('border-right-color', ref(colorGray200), options);
+    const borderBottomColor = variable('border-bottom-color', ref(colorGray200), options);
+    const borderLeftColor = variable('border-left-color', ref(colorGray200), options);
     const borderColor = variable(
         'border-color',
         [ref(borderTopColor), ref(borderRightColor), ref(borderBottomColor), ref(borderLeftColor)],

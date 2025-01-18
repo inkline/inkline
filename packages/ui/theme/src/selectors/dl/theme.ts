@@ -1,12 +1,14 @@
 import {
     ref,
-    selector, nsvariables, vref, DefinitionOptions
+    selector, nsvariables, vref, DefinitionOptions, defaultDefinitionOptions
 } from '@inkline/core';
 import { useFontWeight, useSpacing } from '../../variables';
 
 const ns = 'dl';
 
-export function useDlConfig(options: DefinitionOptions) {
+export function useDlConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { spacing, spacingXs } = useSpacing(options);
     const { fontWeightBold } = useFontWeight(options);
 
@@ -32,11 +34,15 @@ export function useDlConfig(options: DefinitionOptions) {
 }
 
 
-export function useDlVariables(options: DefinitionOptions) {
+export function useDlVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useDlConfig(options), options);
 }
 
-export function useDlThemeSelectors(options: DefinitionOptions) {
+export function useDlThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
 
     const { dlMarginBottom, dlDtFontWeight, dlDdMarginBottom } = useDlVariables(options);
 
@@ -53,7 +59,9 @@ export function useDlThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useDlTheme(options: DefinitionOptions) {
+export function useDlTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useDlVariables(options);
     useDlThemeSelectors(options);
 

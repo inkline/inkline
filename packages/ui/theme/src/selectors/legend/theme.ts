@@ -1,9 +1,11 @@
-import { DefinitionOptions, ref, selector, nsvariables, vref } from '@inkline/core';
+import { DefinitionOptions, ref, selector, nsvariables, vref, defaultDefinitionOptions } from '@inkline/core';
 import { useFontSize, useSpacing } from '../../variables';
 
 const ns = 'legend';
 
-export function useLegendThemeConfig(options: DefinitionOptions) {
+export function useLegendThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { spacing } = useSpacing(options);
     const { fontSizeLg } = useFontSize(options);
 
@@ -15,11 +17,15 @@ export function useLegendThemeConfig(options: DefinitionOptions) {
     };
 }
 
-export function useLegendThemeVariables(options: DefinitionOptions) {
+export function useLegendThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useLegendThemeConfig(options), options);
 }
 
-export function useLegendThemeSelectors(options: DefinitionOptions) {
+export function useLegendThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { legendMargin, legendFontSize } = useLegendThemeVariables(options);
 
     // By using `float: left`, the legend will behave like a block element.
@@ -41,7 +47,9 @@ export function useLegendThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useLegendTheme(options: DefinitionOptions) {
+export function useLegendTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useLegendThemeVariables(options);
     useLegendThemeSelectors(options);
 }

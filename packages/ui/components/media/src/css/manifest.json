@@ -331,7 +331,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-2xs"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-2xs"
@@ -361,7 +363,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-xs"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-xs"
@@ -391,7 +395,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-sm"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-sm"
@@ -421,7 +427,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-md"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-md"
@@ -451,7 +459,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-lg"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-lg"
@@ -481,7 +491,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-xl"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-xl"
@@ -511,7 +523,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-2xl"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-2xl"
@@ -541,7 +555,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-3xl"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-3xl"
@@ -571,7 +587,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-4xl"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-4xl"
@@ -601,7 +619,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-2xs"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-xs"
@@ -631,7 +651,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-xs"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-sm"
@@ -661,7 +683,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-sm"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-md"
@@ -691,7 +715,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-md"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-lg"
@@ -721,7 +747,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-lg"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-xl"
@@ -751,7 +779,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-xl"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-2xl"
@@ -781,7 +811,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-2xl"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-3xl"
@@ -811,7 +843,9 @@
                             "__type": "reference",
                             "__name": "spacing-min-3xl"
                         },
-                        " / 16) * 1 rem) + (",
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
                         {
                             "__type": "reference",
                             "__name": "spacing-max-4xl"
@@ -838,1519 +872,12 @@
                     "__name": "spacing-md"
                 }
             },
-            "margin-top": {
-                "__type": "variable",
-                "__name": "margin-top",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing"
-                }
-            },
-            "margin-right": {
-                "__type": "variable",
-                "__name": "margin-right",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing"
-                }
-            },
-            "margin-bottom": {
-                "__type": "variable",
-                "__name": "margin-bottom",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing"
-                }
-            },
-            "margin-left": {
-                "__type": "variable",
-                "__name": "margin-left",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing"
-                }
-            },
-            "margin": {
-                "__type": "variable",
-                "__name": "margin",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left"
-                    }
-                ]
-            },
-            "scale-minor-second": {
-                "__type": "variable",
-                "__name": "scale-minor-second",
-                "__value": 1.067
-            },
-            "scale-major-second": {
-                "__type": "variable",
-                "__name": "scale-major-second",
-                "__value": 1.125
-            },
-            "scale-minor-third": {
-                "__type": "variable",
-                "__name": "scale-minor-third",
-                "__value": 1.2
-            },
-            "scale-major-third": {
-                "__type": "variable",
-                "__name": "scale-major-third",
-                "__value": 1.25
-            },
-            "scale-perfect-fourth": {
-                "__type": "variable",
-                "__name": "scale-perfect-fourth",
-                "__value": 1.333
-            },
-            "scale-augmented-fourth": {
-                "__type": "variable",
-                "__name": "scale-augmented-fourth",
-                "__value": 1.414
-            },
-            "scale-perfect-fifth": {
-                "__type": "variable",
-                "__name": "scale-perfect-fifth",
-                "__value": 1.5
-            },
-            "scale-golden": {
-                "__type": "variable",
-                "__name": "scale-golden",
-                "__value": 1.618
-            },
-            "scale": {
-                "__type": "variable",
-                "__name": "scale",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "scale-minor-third"
-                }
-            },
-            "scale-pow-minus-2": {
-                "__type": "variable",
-                "__name": "scale-pow-minus-2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        }
-                    ]
-                }
-            },
-            "scale-pow-minus-1": {
-                "__type": "variable",
-                "__name": "scale-pow-minus-1",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        }
-                    ]
-                }
-            },
-            "scale-pow-1": {
-                "__type": "variable",
-                "__name": "scale-pow-1",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        1
-                    ]
-                }
-            },
-            "scale-pow-2": {
-                "__type": "variable",
-                "__name": "scale-pow-2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        }
-                    ]
-                }
-            },
-            "scale-pow-3": {
-                "__type": "variable",
-                "__name": "scale-pow-3",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        }
-                    ]
-                }
-            },
-            "scale-pow-4": {
-                "__type": "variable",
-                "__name": "scale-pow-4",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        }
-                    ]
-                }
-            },
-            "scale-pow-5": {
-                "__type": "variable",
-                "__name": "scale-pow-5",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier": {
-                "__type": "variable",
-                "__name": "size-multiplier",
-                "__value": 1
-            },
-            "size-multiplier-xxs": {
-                "__type": "variable",
-                "__name": "size-multiplier-xxs",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-3"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-xs": {
-                "__type": "variable",
-                "__name": "size-multiplier-xs",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-2"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-sm": {
-                "__type": "variable",
-                "__name": "size-multiplier-sm",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-1"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-md": {
-                "__type": "variable",
-                "__name": "size-multiplier-md",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "size-multiplier"
-                }
-            },
-            "size-multiplier-lg": {
-                "__type": "variable",
-                "__name": "size-multiplier-lg",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-1"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-xl": {
-                "__type": "variable",
-                "__name": "size-multiplier-xl",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-2"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-xxl": {
-                "__type": "variable",
-                "__name": "size-multiplier-xxl",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-3"
-                        }
-                    ]
-                }
-            },
-            "margin-top-xs": {
-                "__type": "variable",
-                "__name": "margin-top-xs",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-top"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-xs"
-                        }
-                    ]
-                }
-            },
-            "margin-right-xs": {
-                "__type": "variable",
-                "__name": "margin-right-xs",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-right"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-xs"
-                        }
-                    ]
-                }
-            },
-            "margin-bottom-xs": {
-                "__type": "variable",
-                "__name": "margin-bottom-xs",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-bottom"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-xs"
-                        }
-                    ]
-                }
-            },
-            "margin-left-xs": {
-                "__type": "variable",
-                "__name": "margin-left-xs",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-left"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-xs"
-                        }
-                    ]
-                }
-            },
-            "margin-xs": {
-                "__type": "variable",
-                "__name": "margin-xs",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top-xs"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right-xs"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom-xs"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left-xs"
-                    }
-                ]
-            },
-            "margin-top-sm": {
-                "__type": "variable",
-                "__name": "margin-top-sm",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-top"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "margin-right-sm": {
-                "__type": "variable",
-                "__name": "margin-right-sm",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-right"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "margin-bottom-sm": {
-                "__type": "variable",
-                "__name": "margin-bottom-sm",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-bottom"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "margin-left-sm": {
-                "__type": "variable",
-                "__name": "margin-left-sm",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-left"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "margin-sm": {
-                "__type": "variable",
-                "__name": "margin-sm",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top-sm"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right-sm"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom-sm"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left-sm"
-                    }
-                ]
-            },
-            "margin-top-md": {
-                "__type": "variable",
-                "__name": "margin-top-md",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-top"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "margin-right-md": {
-                "__type": "variable",
-                "__name": "margin-right-md",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-right"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "margin-bottom-md": {
-                "__type": "variable",
-                "__name": "margin-bottom-md",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-bottom"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "margin-left-md": {
-                "__type": "variable",
-                "__name": "margin-left-md",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-left"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "margin-md": {
-                "__type": "variable",
-                "__name": "margin-md",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top-md"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right-md"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom-md"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left-md"
-                    }
-                ]
-            },
-            "margin-top-lg": {
-                "__type": "variable",
-                "__name": "margin-top-lg",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-top"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "margin-right-lg": {
-                "__type": "variable",
-                "__name": "margin-right-lg",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-right"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "margin-bottom-lg": {
-                "__type": "variable",
-                "__name": "margin-bottom-lg",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-bottom"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "margin-left-lg": {
-                "__type": "variable",
-                "__name": "margin-left-lg",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-left"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
-                }
-            },
-            "margin-lg": {
-                "__type": "variable",
-                "__name": "margin-lg",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top-lg"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right-lg"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom-lg"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left-lg"
-                    }
-                ]
-            },
-            "margin-top-xl": {
-                "__type": "variable",
-                "__name": "margin-top-xl",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-top"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-xl"
-                        }
-                    ]
-                }
-            },
-            "margin-right-xl": {
-                "__type": "variable",
-                "__name": "margin-right-xl",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-right"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-xl"
-                        }
-                    ]
-                }
-            },
-            "margin-bottom-xl": {
-                "__type": "variable",
-                "__name": "margin-bottom-xl",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-bottom"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-xl"
-                        }
-                    ]
-                }
-            },
-            "margin-left-xl": {
-                "__type": "variable",
-                "__name": "margin-left-xl",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-left"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-xl"
-                        }
-                    ]
-                }
-            },
-            "margin-xl": {
-                "__type": "variable",
-                "__name": "margin-xl",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top-xl"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right-xl"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom-xl"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left-xl"
-                    }
-                ]
-            },
-            "margin-top-2": {
-                "__type": "variable",
-                "__name": "margin-top-2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-top"
-                        },
-                        "*",
-                        2
-                    ]
-                }
-            },
-            "margin-right-2": {
-                "__type": "variable",
-                "__name": "margin-right-2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-right"
-                        },
-                        "*",
-                        2
-                    ]
-                }
-            },
-            "margin-bottom-2": {
-                "__type": "variable",
-                "__name": "margin-bottom-2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-bottom"
-                        },
-                        "*",
-                        2
-                    ]
-                }
-            },
-            "margin-left-2": {
-                "__type": "variable",
-                "__name": "margin-left-2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-left"
-                        },
-                        "*",
-                        2
-                    ]
-                }
-            },
-            "margin-2": {
-                "__type": "variable",
-                "__name": "margin-2",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top-2"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right-2"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom-2"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left-2"
-                    }
-                ]
-            },
-            "margin-top-3": {
-                "__type": "variable",
-                "__name": "margin-top-3",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-top"
-                        },
-                        "*",
-                        3
-                    ]
-                }
-            },
-            "margin-right-3": {
-                "__type": "variable",
-                "__name": "margin-right-3",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-right"
-                        },
-                        "*",
-                        3
-                    ]
-                }
-            },
-            "margin-bottom-3": {
-                "__type": "variable",
-                "__name": "margin-bottom-3",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-bottom"
-                        },
-                        "*",
-                        3
-                    ]
-                }
-            },
-            "margin-left-3": {
-                "__type": "variable",
-                "__name": "margin-left-3",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-left"
-                        },
-                        "*",
-                        3
-                    ]
-                }
-            },
-            "margin-3": {
-                "__type": "variable",
-                "__name": "margin-3",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top-3"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right-3"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom-3"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left-3"
-                    }
-                ]
-            },
-            "margin-top-4": {
-                "__type": "variable",
-                "__name": "margin-top-4",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-top"
-                        },
-                        "*",
-                        4
-                    ]
-                }
-            },
-            "margin-right-4": {
-                "__type": "variable",
-                "__name": "margin-right-4",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-right"
-                        },
-                        "*",
-                        4
-                    ]
-                }
-            },
-            "margin-bottom-4": {
-                "__type": "variable",
-                "__name": "margin-bottom-4",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-bottom"
-                        },
-                        "*",
-                        4
-                    ]
-                }
-            },
-            "margin-left-4": {
-                "__type": "variable",
-                "__name": "margin-left-4",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-left"
-                        },
-                        "*",
-                        4
-                    ]
-                }
-            },
-            "margin-4": {
-                "__type": "variable",
-                "__name": "margin-4",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top-4"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right-4"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom-4"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left-4"
-                    }
-                ]
-            },
-            "margin-top-5": {
-                "__type": "variable",
-                "__name": "margin-top-5",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-top"
-                        },
-                        "*",
-                        5
-                    ]
-                }
-            },
-            "margin-right-5": {
-                "__type": "variable",
-                "__name": "margin-right-5",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-right"
-                        },
-                        "*",
-                        5
-                    ]
-                }
-            },
-            "margin-bottom-5": {
-                "__type": "variable",
-                "__name": "margin-bottom-5",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-bottom"
-                        },
-                        "*",
-                        5
-                    ]
-                }
-            },
-            "margin-left-5": {
-                "__type": "variable",
-                "__name": "margin-left-5",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-left"
-                        },
-                        "*",
-                        5
-                    ]
-                }
-            },
-            "margin-5": {
-                "__type": "variable",
-                "__name": "margin-5",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top-5"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right-5"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom-5"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left-5"
-                    }
-                ]
-            },
-            "margin-top-0_2": {
-                "__type": "variable",
-                "__name": "margin-top-0_2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-top"
-                        },
-                        "/",
-                        5
-                    ]
-                }
-            },
-            "margin-right-0_2": {
-                "__type": "variable",
-                "__name": "margin-right-0_2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-right"
-                        },
-                        "/",
-                        5
-                    ]
-                }
-            },
-            "margin-bottom-0_2": {
-                "__type": "variable",
-                "__name": "margin-bottom-0_2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-bottom"
-                        },
-                        "/",
-                        5
-                    ]
-                }
-            },
-            "margin-left-0_2": {
-                "__type": "variable",
-                "__name": "margin-left-0_2",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-left"
-                        },
-                        "/",
-                        5
-                    ]
-                }
-            },
-            "margin-0_2": {
-                "__type": "variable",
-                "__name": "margin-0_2",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top-0_2"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right-0_2"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom-0_2"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left-0_2"
-                    }
-                ]
-            },
-            "margin-top-0_25": {
-                "__type": "variable",
-                "__name": "margin-top-0_25",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-top"
-                        },
-                        "/",
-                        4
-                    ]
-                }
-            },
-            "margin-right-0_25": {
-                "__type": "variable",
-                "__name": "margin-right-0_25",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-right"
-                        },
-                        "/",
-                        4
-                    ]
-                }
-            },
-            "margin-bottom-0_25": {
-                "__type": "variable",
-                "__name": "margin-bottom-0_25",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-bottom"
-                        },
-                        "/",
-                        4
-                    ]
-                }
-            },
-            "margin-left-0_25": {
-                "__type": "variable",
-                "__name": "margin-left-0_25",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-left"
-                        },
-                        "/",
-                        4
-                    ]
-                }
-            },
-            "margin-0_25": {
-                "__type": "variable",
-                "__name": "margin-0_25",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top-0_25"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right-0_25"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom-0_25"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left-0_25"
-                    }
-                ]
-            },
-            "margin-top-0_33": {
-                "__type": "variable",
-                "__name": "margin-top-0_33",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-top"
-                        },
-                        "/",
-                        3
-                    ]
-                }
-            },
-            "margin-right-0_33": {
-                "__type": "variable",
-                "__name": "margin-right-0_33",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-right"
-                        },
-                        "/",
-                        3
-                    ]
-                }
-            },
-            "margin-bottom-0_33": {
-                "__type": "variable",
-                "__name": "margin-bottom-0_33",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-bottom"
-                        },
-                        "/",
-                        3
-                    ]
-                }
-            },
-            "margin-left-0_33": {
-                "__type": "variable",
-                "__name": "margin-left-0_33",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-left"
-                        },
-                        "/",
-                        3
-                    ]
-                }
-            },
-            "margin-0_33": {
-                "__type": "variable",
-                "__name": "margin-0_33",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top-0_33"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right-0_33"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom-0_33"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left-0_33"
-                    }
-                ]
-            },
-            "margin-top-0_5": {
-                "__type": "variable",
-                "__name": "margin-top-0_5",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-top"
-                        },
-                        "/",
-                        2
-                    ]
-                }
-            },
-            "margin-right-0_5": {
-                "__type": "variable",
-                "__name": "margin-right-0_5",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-right"
-                        },
-                        "/",
-                        2
-                    ]
-                }
-            },
-            "margin-bottom-0_5": {
-                "__type": "variable",
-                "__name": "margin-bottom-0_5",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-bottom"
-                        },
-                        "/",
-                        2
-                    ]
-                }
-            },
-            "margin-left-0_5": {
-                "__type": "variable",
-                "__name": "margin-left-0_5",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "margin-left"
-                        },
-                        "/",
-                        2
-                    ]
-                }
-            },
-            "margin-0_5": {
-                "__type": "variable",
-                "__name": "margin-0_5",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "margin-top-0_5"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-right-0_5"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-bottom-0_5"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "margin-left-0_5"
-                    }
-                ]
-            },
             "media--image--margin-top": {
                 "__type": "variable",
                 "__name": "media--image--margin-top",
                 "__value": {
                     "__type": "reference",
-                    "__name": "margin-top"
+                    "__name": "spacing"
                 }
             },
             "media--image--margin-right": {
@@ -2358,7 +885,7 @@
                 "__name": "media--image--margin-right",
                 "__value": {
                     "__type": "reference",
-                    "__name": "margin-right"
+                    "__name": "spacing"
                 }
             },
             "media--image--margin-bottom": {
@@ -2366,7 +893,7 @@
                 "__name": "media--image--margin-bottom",
                 "__value": {
                     "__type": "reference",
-                    "__name": "margin-bottom"
+                    "__name": "spacing"
                 }
             },
             "media--image--margin-left": {
@@ -2374,30 +901,8 @@
                 "__name": "media--image--margin-left",
                 "__value": {
                     "__type": "reference",
-                    "__name": "margin-left"
+                    "__name": "spacing"
                 }
-            },
-            "media--image--margin": {
-                "__type": "variable",
-                "__name": "media--image--margin",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "media--image--margin-top"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "media--image--margin-right"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "media--image--margin-bottom"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "media--image--margin-left"
-                    }
-                ]
             }
         },
         "selectors": [
@@ -2430,24 +935,28 @@
                 "__type": "selector",
                 "__name": ".media > img, .media > .img, .media > .image",
                 "__value": {
-                    "margin": [
-                        {
-                            "__type": "reference",
-                            "__name": "media--image--margin-top"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "media--image--margin-right"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "media--image--margin-bottom"
-                        },
-                        {
-                            "__type": "reference",
-                            "__name": "media--image--margin-left"
-                        }
-                    ]
+                    "margin": {
+                        "__type": "reference",
+                        "__name": "media--image--margin",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "media--image--margin-top"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "media--image--margin-right"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "media--image--margin-bottom"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "media--image--margin-left"
+                            }
+                        ]
+                    }
                 }
             }
         ]

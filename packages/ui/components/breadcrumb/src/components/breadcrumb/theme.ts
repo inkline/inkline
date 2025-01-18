@@ -5,7 +5,8 @@ import {
     vref,
     toVariableKey,
     setExportsNamespace,
-    DefinitionOptions
+    DefinitionOptions,
+    defaultDefinitionOptions
 } from '@inkline/core';
 import { merge } from '@inkline/utils';
 import {
@@ -33,8 +34,10 @@ type BreadcrumbSizeVariant = (typeof defaultBreadcrumbSizes)[number];
 
 export function useBreadcrumbThemeColorConfig(
     variant: BreadcrumbColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { contrastTextColorLight, contrastTextColorDark } = useContrastTextColor(options);
 
     return {
@@ -49,8 +52,10 @@ export function useBreadcrumbThemeColorConfig(
 
 export function useBreadcrumbThemeSizeConfig(
     variant: BreadcrumbSizeVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize(options);
     const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
 
@@ -85,7 +90,9 @@ export function useBreadcrumbThemeSizeConfig(
     }[variant];
 }
 
-export function useBreadcrumbThemeConfig(options: DefinitionOptions) {
+export function useBreadcrumbThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { spacing } = useSpacing(options);
     const { textColorWeaker } = useTextColor(options);
     const { transitionProperty, transitionDuration, transitionTimingFunction } =
@@ -120,8 +127,10 @@ export function useBreadcrumbThemeConfig(options: DefinitionOptions) {
 
 export function useBreadcrumbThemeColorVariables(
     variant: BreadcrumbColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables([ns, variant] as const, useBreadcrumbThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
@@ -130,15 +139,19 @@ export function useBreadcrumbThemeColorVariables(
 
 export function useBreadcrumbThemeSizeVariables(
     variant: BreadcrumbSizeVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables([ns, variant] as const, useBreadcrumbThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
 }
 
-export function useBreadcrumbThemeVariables(options: DefinitionOptions) {
+export function useBreadcrumbThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useBreadcrumbThemeConfig(options), {
         ...options,
         registerComposed: false
@@ -149,7 +162,9 @@ export function useBreadcrumbThemeVariables(options: DefinitionOptions) {
  * Selectors
  */
 
-export function useBreadcrumbThemeLayout(options: DefinitionOptions) {
+export function useBreadcrumbThemeLayout(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector(
         '.breadcrumb',
         {
@@ -170,7 +185,9 @@ export function useBreadcrumbThemeLayout(options: DefinitionOptions) {
     );
 }
 
-export function useBreadcrumbThemeBaseSelectors(options: DefinitionOptions) {
+export function useBreadcrumbThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         breadcrumbPadding,
         breadcrumbMargin,
@@ -196,8 +213,10 @@ export function useBreadcrumbThemeBaseSelectors(options: DefinitionOptions) {
 
 export function useBreadcrumbThemeSizeSelectors(
     variant: BreadcrumbSizeVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         breadcrumbFontSize,
         breadcrumbPaddingTop,
@@ -228,8 +247,10 @@ export function useBreadcrumbThemeSizeSelectors(
 
 export function useBreadcrumbThemeColorSelectors(
     variant: BreadcrumbColorVariant,
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { breadcrumbColor } = useBreadcrumbThemeVariables(options);
     const { variantColor } = setExportsNamespace(
         useBreadcrumbThemeColorVariables(variant, options),
@@ -251,19 +272,25 @@ export function useBreadcrumbThemeColorSelectors(
 
 export function useBreadcrumbThemeSizes(
     sizes: BreadcrumbSizeVariant[],
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     sizes.forEach((size) => useBreadcrumbThemeSizeSelectors(size, options));
 }
 
 export function useBreadcrumbThemeColors(
     colors: BreadcrumbColorVariant[],
-    options: DefinitionOptions
+    userOptions: DefinitionOptions
 ) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     colors.forEach((color) => useBreadcrumbThemeColorSelectors(color, options));
 }
 
-export function useBreadcrumbTheme(options: DefinitionOptions) {
+export function useBreadcrumbTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useBreadcrumbThemeVariables(options);
     useBreadcrumbThemeLayout(options);
     useBreadcrumbThemeBaseSelectors(options);

@@ -25,9 +25,11 @@ import {
     useUlTheme,
     useTransitionsTheme
 } from '../selectors';
-import { DefinitionOptions } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions } from '@inkline/core';
 
-export function useThemeSelectors(options: DefinitionOptions) {
+export function useThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useNormalizeTheme(options);
     useFluidTheme(options);
     useATheme(options);

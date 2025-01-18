@@ -1,6 +1,6 @@
 import {
     ref,
-    selector, nsvariables, vref, DefinitionOptions
+    selector, nsvariables, vref, DefinitionOptions, defaultDefinitionOptions
 } from '@inkline/core';
 import {
     useFontFamily,
@@ -12,7 +12,9 @@ import {
 
 const ns = 'heading';
 
-export function useH1Config(options: DefinitionOptions) {
+export function useH1Config(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { fontSize4Xl } = useFontSize(options);
 
     return {
@@ -20,7 +22,9 @@ export function useH1Config(options: DefinitionOptions) {
     };
 }
 
-export function useH2Config(options: DefinitionOptions) {
+export function useH2Config(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { fontSize3Xl } = useFontSize(options);
 
     return {
@@ -28,7 +32,9 @@ export function useH2Config(options: DefinitionOptions) {
     };
 }
 
-export function useH3Config(options: DefinitionOptions) {
+export function useH3Config(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { fontSize2Xl } = useFontSize(options);
 
     return {
@@ -36,7 +42,9 @@ export function useH3Config(options: DefinitionOptions) {
     };
 }
 
-export function useH4Config(options: DefinitionOptions) {
+export function useH4Config(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { fontSizeXl } = useFontSize(options);
 
     return {
@@ -44,7 +52,9 @@ export function useH4Config(options: DefinitionOptions) {
     };
 }
 
-export function useH5Config(options: DefinitionOptions) {
+export function useH5Config(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { fontSizeLg } = useFontSize(options);
 
     return {
@@ -52,7 +62,9 @@ export function useH5Config(options: DefinitionOptions) {
     };
 }
 
-export function useH6Config(options: DefinitionOptions) {
+export function useH6Config(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { fontSizeMd } = useFontSize(options);
 
     return {
@@ -60,7 +72,9 @@ export function useH6Config(options: DefinitionOptions) {
     };
 }
 
-export function useHeadingConfig(options: DefinitionOptions) {
+export function useHeadingConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { spacing } = useSpacing(options);
     const { fontFamilyBaseSecondary } = useFontFamily(options);
     const { fontStyleNormal } = useFontStyle(options);
@@ -77,7 +91,9 @@ export function useHeadingConfig(options: DefinitionOptions) {
     };
 }
 
-export function useHeadingThemeVariables(options: DefinitionOptions) {
+export function useHeadingThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return {
         ...nsvariables(ns, useHeadingConfig(options), options),
         ...nsvariables('h1', useH1Config(options), options),
@@ -89,7 +105,9 @@ export function useHeadingThemeVariables(options: DefinitionOptions) {
     };
 }
 
-export function useHeadingThemeSelectors(options: DefinitionOptions) {
+export function useHeadingThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         headingMargin,
         headingFontFamily,
@@ -138,7 +156,9 @@ export function useHeadingThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useHeadingTheme(options: DefinitionOptions) {
+export function useHeadingTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useHeadingThemeVariables(options);
     useHeadingThemeSelectors(options);
 }

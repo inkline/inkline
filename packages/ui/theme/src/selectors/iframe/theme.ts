@@ -1,11 +1,15 @@
-import { DefinitionOptions, selector } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, selector } from '@inkline/core';
 
-export function useIframeThemeSelectors(options: DefinitionOptions) {
+export function useIframeThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector('iframe', {
         border: 0
     }, options);
 }
 
-export function useIframeTheme(options: DefinitionOptions) {
+export function useIframeTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useIframeThemeSelectors(options);
 }

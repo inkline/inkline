@@ -1,6 +1,8 @@
-import { DefinitionOptions, selector } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, selector } from '@inkline/core';
 
-export function useImgThemeSelectors(options: DefinitionOptions) {
+export function useImgThemeSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector('img, svg', {
         verticalAlign: 'middle'
     }, options);
@@ -41,6 +43,8 @@ export function useImgThemeSelectors(options: DefinitionOptions) {
     }, options);
 }
 
-export function useImgTheme(options: DefinitionOptions) {
+export function useImgTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useImgThemeSelectors(options);
 }

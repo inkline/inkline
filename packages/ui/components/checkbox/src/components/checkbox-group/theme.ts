@@ -1,6 +1,8 @@
-import { DefinitionOptions, selector } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, selector } from '@inkline/core';
 
-export function useCheckboxGroupTheme(options: DefinitionOptions) {
+export function useCheckboxGroupTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector(
         '.checkbox-group',
         {

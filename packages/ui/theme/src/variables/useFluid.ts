@@ -1,6 +1,8 @@
-import { css, DefinitionOptions, ref, variable } from '@inkline/core';
+import { css, defaultDefinitionOptions, DefinitionOptions, ref, variable } from '@inkline/core';
 
-export function useFluid(options: DefinitionOptions) {
+export function useFluid(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const fluidMinWidth = variable('fluid--min-width', 320, options);
     const fluidMaxWidth = variable('fluid--max-width', 1440, options);
     const fluidScreen = variable('fluid--screen', '100vw', options);

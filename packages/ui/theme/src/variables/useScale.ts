@@ -1,7 +1,9 @@
-import { DefinitionOptions, divide, multiply, ref, variable } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, divide, multiply, ref, variable } from '@inkline/core';
 import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
 
-export function useScale(options: DefinitionOptions) {
+export function useScale(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const scaleMinorSecond = variable('scale-minor-second', 1.067, options);
     const scaleMajorSecond = variable('scale-major-second', 1.125, options);
     const scaleMinorThird = variable('scale-minor-third', 1.2, options);

@@ -1,7 +1,9 @@
-import { DefinitionOptions, ref, selector, vref } from '@inkline/core';
+import { DefinitionOptions, defaultDefinitionOptions, ref, selector, vref } from '@inkline/core';
 import { useBreadcrumbThemeVariables } from '../breadcrumb/theme';
 
-export function useBreadcrumbItemThemeLayout(options: DefinitionOptions) {
+export function useBreadcrumbItemThemeLayout(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { breadcrumbSeparator } = useBreadcrumbThemeVariables(options);
 
     selector(
@@ -38,7 +40,9 @@ export function useBreadcrumbItemThemeLayout(options: DefinitionOptions) {
     );
 }
 
-export function useBreadcrumbItemThemeBase(options: DefinitionOptions) {
+export function useBreadcrumbItemThemeBase(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { breadcrumbPaddingLeft, breadcrumbPaddingRight, breadcrumbActiveColor } =
         useBreadcrumbThemeVariables(options);
 
@@ -67,7 +71,9 @@ export function useBreadcrumbItemThemeBase(options: DefinitionOptions) {
     );
 }
 
-export function useBreadcrumbItemTheme(options: DefinitionOptions) {
+export function useBreadcrumbItemTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useBreadcrumbItemThemeLayout(options);
     useBreadcrumbItemThemeBase(options);
 }

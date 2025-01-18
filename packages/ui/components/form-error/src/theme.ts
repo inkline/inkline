@@ -1,4 +1,11 @@
-import { ref, selector, nsvariables, DefinitionOptions, vref } from '@inkline/core';
+import {
+    ref,
+    selector,
+    nsvariables,
+    DefinitionOptions,
+    vref,
+    defaultDefinitionOptions
+} from '@inkline/core';
 import { useBrandColors, useFontSize, useSpacing } from '@inkline/theme';
 
 const ns = 'form-error';
@@ -7,7 +14,9 @@ const ns = 'form-error';
  * Config
  */
 
-export function useFormErrorThemeConfig(options: DefinitionOptions) {
+export function useFormErrorThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { colorDanger } = useBrandColors(options);
     const { fontSizeSm } = useFontSize(options);
     const { spacing } = useSpacing(options);
@@ -28,7 +37,9 @@ export function useFormErrorThemeConfig(options: DefinitionOptions) {
  * Variables
  */
 
-export function useFormErrorThemeVariables(options: DefinitionOptions) {
+export function useFormErrorThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     return nsvariables(ns, useFormErrorThemeConfig(options), {
         ...options,
         registerComposed: false
@@ -39,7 +50,9 @@ export function useFormErrorThemeVariables(options: DefinitionOptions) {
  * Selectors
  */
 
-export function useFormErrorThemeLayoutSelectors(options: DefinitionOptions) {
+export function useFormErrorThemeLayoutSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     selector(
         '.form-error',
         {
@@ -59,7 +72,9 @@ export function useFormErrorThemeLayoutSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useFormErrorThemeBaseSelectors(options: DefinitionOptions) {
+export function useFormErrorThemeBaseSelectors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { formErrorColor, formErrorFontSize, formErrorMargin } =
         useFormErrorThemeVariables(options);
 
@@ -74,7 +89,9 @@ export function useFormErrorThemeBaseSelectors(options: DefinitionOptions) {
     );
 }
 
-export function useFormErrorTheme(options: DefinitionOptions) {
+export function useFormErrorTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useFormErrorThemeVariables(options);
     useFormErrorThemeLayoutSelectors(options);
     useFormErrorThemeBaseSelectors(options);

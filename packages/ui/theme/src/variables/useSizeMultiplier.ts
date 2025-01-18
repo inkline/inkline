@@ -1,4 +1,4 @@
-import { divide, multiply, ref, variable } from '@inkline/core';
+import { defaultDefinitionOptions, divide, multiply, ref, variable } from '@inkline/core';
 import { useScale } from './useScale';
 import type { DefinitionOptions, Variable } from '@inkline/core';
 import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
@@ -21,7 +21,9 @@ export const allSizeMultiplierKeys: SizeMultiplierKeys[] = [
 
 export const defaultSizeMultiplierKeys: SizeMultiplierKeys[] = ['xs', 'sm', 'md', 'lg', 'xl'];
 
-export function useSizeMultiplier(options: DefinitionOptions) {
+export function useSizeMultiplier(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { scalePow1, scalePow2, scalePow3 } = useScale(options);
 
     const sizeMultiplier = variable('size-multiplier', 1, options);

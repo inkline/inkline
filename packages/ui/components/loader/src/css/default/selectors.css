@@ -72,29 +72,29 @@
     }
 }
 
+.loader.-primary {
+    --loader--color: var(--loader--primary--color);
+}
+
+.loader.-light {
+    --loader--color: var(--loader--light--color);
+}
+
+.loader.-dark {
+    --loader--color: var(--loader--dark--color);
+}
+
 .loader.-sm {
-    width: var(--loader--sm--width);
-    height: var(--loader--sm--height);
+    --loader--width: var(--loader--sm--width);
+    --loader--height: var(--loader--sm--height);
 }
 
 .loader.-md {
-    width: var(--loader--md--width);
-    height: var(--loader--md--height);
+    --loader--width: var(--loader--md--width);
+    --loader--height: var(--loader--md--height);
 }
 
 .loader.-lg {
-    width: var(--loader--lg--width);
-    height: var(--loader--lg--height);
-}
-
-.loader.-primary > svg > circle {
-    stroke: var(--loader--primary--color);
-}
-
-.loader.-light > svg > circle {
-    stroke: var(--loader--light--color);
-}
-
-.loader.-dark > svg > circle {
-    stroke: var(--loader--dark--color);
+    --loader--width: var(--loader--lg--width);
+    --loader--height: var(--loader--lg--height);
 }

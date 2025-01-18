@@ -1,7 +1,9 @@
-import { DefinitionOptions, ref, selector, variable } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, ref, selector, variable } from '@inkline/core';
 import { useTransition } from '../../variables';
 
-export function useExpandTransitionThemeVariables(options: DefinitionOptions) {
+export function useExpandTransitionThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { transitionDuration, transitionTimingFunction } = useTransition(options);
 
     const expandTransitionProperty = variable('expand-transition-property', 'height', options);
@@ -33,7 +35,9 @@ export function useExpandTransitionThemeVariables(options: DefinitionOptions) {
     };
 }
 
-export function useExpandTransitionTheme(options: DefinitionOptions) {
+export function useExpandTransitionTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { expandTransitionProperty, expandTransitionDuration, expandTransitionTimingFunction } =
         useExpandTransitionThemeVariables(options);
 
@@ -49,7 +53,9 @@ export function useExpandTransitionTheme(options: DefinitionOptions) {
     }, options);
 }
 
-export function useFadeInTransitionThemeVariables(options: DefinitionOptions) {
+export function useFadeInTransitionThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { transitionDuration } = useTransition(options);
 
     const fadeInTransitionProperty = variable('fade-in-transition-property', 'opacity', options);
@@ -81,7 +87,9 @@ export function useFadeInTransitionThemeVariables(options: DefinitionOptions) {
     };
 }
 
-export function useFadeInTransitionTheme(options: DefinitionOptions) {
+export function useFadeInTransitionTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { fadeInTransitionProperty, fadeInTransitionDuration, fadeInTransitionTimingFunction } =
         useFadeInTransitionThemeVariables(options);
 
@@ -96,7 +104,9 @@ export function useFadeInTransitionTheme(options: DefinitionOptions) {
     }, options);
 }
 
-export function useFadeInLinearTransitionThemeVariables(options: DefinitionOptions) {
+export function useFadeInLinearTransitionThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { transitionDuration } = useTransition(options);
 
     const fadeInLinearTransitionProperty = variable(
@@ -132,7 +142,9 @@ export function useFadeInLinearTransitionThemeVariables(options: DefinitionOptio
     };
 }
 
-export function useFadeInLinearTransitionTheme(options: DefinitionOptions) {
+export function useFadeInLinearTransitionTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         fadeInLinearTransitionProperty,
         fadeInLinearTransitionDuration,
@@ -153,7 +165,9 @@ export function useFadeInLinearTransitionTheme(options: DefinitionOptions) {
     );
 }
 
-export function useSlideInRightTransitionThemeVariables(options: DefinitionOptions) {
+export function useSlideInRightTransitionThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { transitionDuration } = useTransition(options);
 
     const slideInRightTransitionProperty = variable(
@@ -189,7 +203,9 @@ export function useSlideInRightTransitionThemeVariables(options: DefinitionOptio
     };
 }
 
-export function useSlideInRightTransitionTheme(options: DefinitionOptions) {
+export function useSlideInRightTransitionTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         slideInRightTransitionProperty,
         slideInRightTransitionDuration,
@@ -212,7 +228,9 @@ export function useSlideInRightTransitionTheme(options: DefinitionOptions) {
     }, options);
 }
 
-export function useZoomInCenterTransitionThemeVariables(options: DefinitionOptions) {
+export function useZoomInCenterTransitionThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { transitionDuration } = useTransition(options);
 
     const zoomInCenterTransitionProperty = variable(
@@ -248,7 +266,9 @@ export function useZoomInCenterTransitionThemeVariables(options: DefinitionOptio
     };
 }
 
-export function useZoomInCenterTransitionTheme(options: DefinitionOptions) {
+export function useZoomInCenterTransitionTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         zoomInCenterTransitionProperty,
         zoomInCenterTransitionDuration,
@@ -269,7 +289,9 @@ export function useZoomInCenterTransitionTheme(options: DefinitionOptions) {
     }, options);
 }
 
-export function useZoomInTopTransitionThemeVariables(options: DefinitionOptions) {
+export function useZoomInTopTransitionThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { transitionDuration } = useTransition(options);
 
     const zoomInTopTransitionProperty = variable(
@@ -305,7 +327,9 @@ export function useZoomInTopTransitionThemeVariables(options: DefinitionOptions)
     };
 }
 
-export function useZoomInTopTransitionTheme(options: DefinitionOptions) {
+export function useZoomInTopTransitionTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         zoomInTopTransitionProperty,
         zoomInTopTransitionDuration,
@@ -327,7 +351,9 @@ export function useZoomInTopTransitionTheme(options: DefinitionOptions) {
     }, options);
 }
 
-export function useZoomInRightTransitionThemeVariables(options: DefinitionOptions) {
+export function useZoomInRightTransitionThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { transitionDuration } = useTransition(options);
 
     const zoomInRightTransitionProperty = variable(
@@ -363,7 +389,9 @@ export function useZoomInRightTransitionThemeVariables(options: DefinitionOption
     };
 }
 
-export function useZoomInRightTransitionTheme(options: DefinitionOptions) {
+export function useZoomInRightTransitionTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         zoomInRightTransitionProperty,
         zoomInRightTransitionDuration,
@@ -385,7 +413,9 @@ export function useZoomInRightTransitionTheme(options: DefinitionOptions) {
     }, options);
 }
 
-export function useZoomInBottomTransitionThemeVariables(options: DefinitionOptions) {
+export function useZoomInBottomTransitionThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { transitionDuration } = useTransition(options);
 
     const zoomInBottomTransitionProperty = variable(
@@ -421,7 +451,9 @@ export function useZoomInBottomTransitionThemeVariables(options: DefinitionOptio
     };
 }
 
-export function useZoomInBottomTransitionTheme(options: DefinitionOptions) {
+export function useZoomInBottomTransitionTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         zoomInBottomTransitionProperty,
         zoomInBottomTransitionDuration,
@@ -443,7 +475,9 @@ export function useZoomInBottomTransitionTheme(options: DefinitionOptions) {
     }, options);
 }
 
-export function useZoomInLeftTransitionThemeVariables(options: DefinitionOptions) {
+export function useZoomInLeftTransitionThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const { transitionDuration } = useTransition(options);
 
     const zoomInLeftTransitionProperty = variable(
@@ -479,7 +513,9 @@ export function useZoomInLeftTransitionThemeVariables(options: DefinitionOptions
     };
 }
 
-export function useZoomInLeftTransitionTheme(options: DefinitionOptions) {
+export function useZoomInLeftTransitionTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const {
         zoomInLeftTransitionProperty,
         zoomInLeftTransitionDuration,
@@ -501,7 +537,9 @@ export function useZoomInLeftTransitionTheme(options: DefinitionOptions) {
     }, options);
 }
 
-export function useTransitionsTheme(options: DefinitionOptions) {
+export function useTransitionsTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     useExpandTransitionThemeVariables(options);
     useExpandTransitionTheme(options);
     useFadeInTransitionThemeVariables(options);

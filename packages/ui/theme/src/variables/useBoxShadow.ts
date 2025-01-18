@@ -1,6 +1,8 @@
-import { DefinitionOptions, ref, variable } from '@inkline/core';
+import { defaultDefinitionOptions, DefinitionOptions, ref, variable } from '@inkline/core';
 
-export function useBoxShadow(options: DefinitionOptions) {
+export function useBoxShadow(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
     const boxShadowOffsetX = variable('box-shadow-offset-x', 0, options);
     const boxShadowOffsetY = variable('box-shadow-offset-y', '0.5rem', options);
     const boxShadowBlurRadius = variable('box-shadow-blur-radius', '1rem', options);

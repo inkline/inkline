@@ -89,7 +89,7 @@ export function nsvariables<
                 break;
             default:
                 if (typeof value === 'object' && !isTokenValue(value)) {
-                    const subns = [...(typeof ns === 'string' ? [ns] : ns), name] as const;
+                    const subns = [...(typeof ns === 'string' && ns ? [ns] : ns), name] as const;
                     results = {
                         ...results,
                         ...nsvariables(subns, value, options)

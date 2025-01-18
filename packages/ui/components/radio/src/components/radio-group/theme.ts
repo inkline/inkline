@@ -1,9 +1,7 @@
 import { selector } from '@inkline/core';
 
-export function useRadioGroupTheme(options: DefinitionOptions
-)
-{
-    selector('.radio-group', {
+export function useRadioGroupTheme(userOptions: DefinitionOptions) {
+    const options = selector('.radio-group', {
         display: 'flex',
         flexDirection: 'column'
     });
