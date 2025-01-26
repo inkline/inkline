@@ -1,35 +1,30 @@
-// import {
-//     defaultDefinitionOptions,
-//     multiply,
-//     nsvariables,
-//     ref,
-//     selector,
-//     stripExportsNamespace,
-//     subtract,
-//     transform
-// } from '@inkline/core';
-// import {
-//     ComponentBrandNeutralColor,
-//     ComponentSize,
-//     defaultComponentNeutralColors,
-//     defaultComponentSizes,
-//     useBorder,
-//     useBorderRadius,
-//     useBoxShadow,
-//     useBrandColors,
-//     useBrandColorVariants,
-//     useContrastTextColor,
-//     useFontSize,
-//     useKeyMappedSizeMultiplier,
-//     useLineHeight,
-//     useMarginBase,
-//     useNeutralColors,
-//     useTextColor,
-//     useTransition
-// } from '@inkline/theme';
-//
-
-import { DefinitionOptions } from '@inkline/core';
+import {
+    DefinitionOptions,
+    defaultDefinitionOptions,
+    multiply,
+    nsvariables,
+    ref,
+    selector,
+    subtract,
+    vref,
+    setExportsNamespace,
+    toVariableKey
+} from '@inkline/core';
+import {
+    useBorder,
+    useBorderRadius,
+    useBoxShadow,
+    useBrandColors,
+    useBrandColorVariants,
+    useContrastTextColor,
+    useFontSize,
+    useLineHeight,
+    useNeutralColors,
+    useSpacing,
+    useTextColor,
+    useTransition
+} from '@inkline/theme';
+import { merge } from '@inkline/utils';
 
 const ns = 'toggle';
 
@@ -42,970 +37,942 @@ const defaultToggleSizes = ['sm', 'md', 'lg'] as const;
 type ToggleColorVariant = (typeof defaultToggleColors)[number];
 type ToggleSizeVariant = (typeof defaultToggleSizes)[number];
 
-// // export const toggle = defineComponent(
-// //     {
-// //         background: 'var(--color-light-shade-50)',
-// //         boxShadow: {
-// //             offsetX: 'var(--box-shadow-offset-x)',
-// //             offsetY: 'var(--box-shadow-offset-y)',
-// //             blurRadius: 'var(--box-shadow-blur-radius)',
-// //             spreadRadius: 'var(--box-shadow-spread-radius)',
-// //             color: 'var(--box-shadow-color)'
-// //         },
-// //         border: {
-// //             top: {
-// //                 width: 'var(--border-top-width)',
-// //                 style: 'var(--border-top-style)',
-// //                 color: 'var(--border-top-color)'
-// //             },
-// //             right: {
-// //                 width: 'var(--border-right-width)',
-// //                 style: 'var(--border-right-style)',
-// //                 color: 'var(--border-right-color)'
-// //             },
-// //             bottom: {
-// //                 width: 'var(--border-bottom-width)',
-// //                 style: 'var(--border-bottom-style)',
-// //                 color: 'var(--border-bottom-color)'
-// //             },
-// //             left: {
-// //                 width: 'var(--border-left-width)',
-// //                 style: 'var(--border-left-style)',
-// //                 color: 'var(--border-left-color)'
-// //             }
-// //         },
-// //         borderRadius: {
-// //             topLeft: 'var(--border-top-left-radius)',
-// //             topRight: 'var(--border-top-right-radius)',
-// //             bottomRight: 'var(--border-bottom-right-radius)',
-// //             bottomLeft: 'var(--border-bottom-left-radius)'
-// //         },
-// //         color: 'var(--contrast-text-color-light)',
-// //         fontSize: 'var(--font-size)',
-// //         transition: {
-// //             property: 'background-color, color, border-color, transform',
-// //             duration: 'var(--transition-duration)',
-// //             timingFunction: 'var(--transition-timing-function)'
-// //         },
-// //         width: '40px',
-// //         height: '20px',
-// //         margin: {
-// //             top: 0,
-// //             right: 'var(--margin-right)',
-// //             bottom: 0,
-// //             left: 0
-// //         },
-// //         indicator: {
-// //             background: 'var(--color-white)',
-// //             width: '1rem',
-// //             height: '1rem'
-// //         },
-// //         checked: {
-// //             background: 'var(--color-primary)',
-// //             border: {
-// //                 color: 'var(--color-primary-shade-50)'
-// //             },
-// //             indicator: {
-// //                 background: 'var(--color-white)'
-// //             },
-// //             disabled: {
-// //                 background: 'var(--color-primary-shade-100)'
-// //             },
-// //             readonly: {
-// //                 background: 'var(--color-light-shade-100)'
-// //             }
-// //         },
-// //         disabled: {
-// //             color: 'var(--text-color-weaker)',
-// //             background: 'var(--color-light)',
-// //             border: {
-// //                 color: 'var(--color-light-shade-50)'
-// //             },
-// //             indicator: {
-// //                 background: 'var(--color-light-shade-100)'
-// //             }
-// //         },
-// //         readonly: {
-// //             color: 'var(--text-color-weaker)',
-// //             background: 'var(--color-light)',
-// //             border: {
-// //                 color: 'var(--color-light-shade-50)'
-// //             },
-// //             indicator: {
-// //                 background: 'var(--color-light-shade-100)'
-// //             }
-// //         }
-// //     },
-// //     {
-// //         light: {
-// //             background: 'var(--color-light-shade-50)',
-// //             border: {
-// //                 color: 'var(--color-light-shade-100)'
-// //             },
-// //             color: 'var(--contrast-text-color-light)',
-// //             disabled: {
-// //                 background: 'var(--color-light)',
-// //                 border: {
-// //                     color: 'var(--color-light-shade-50)'
-// //                 },
-// //                 indicator: {
-// //                     background: 'var(--color-gray-100)'
-// //                 }
-// //             },
-// //             readonly: {
-// //                 background: 'var(--color-light)',
-// //                 border: {
-// //                     color: 'var(--color-light-shade-50)'
-// //                 },
-// //                 indicator: {
-// //                     background: 'var(--color-gray-100)'
-// //                 }
-// //             },
-// //             checked: {
-// //                 disabled: {
-// //                     background: 'var(--color-primary-200)',
-// //                     border: {
-// //                         color: 'var(--color-primary-300)'
-// //                     }
-// //                 },
-// //                 readonly: {
-// //                     background: 'var(--color-primary-200)',
-// //                     border: {
-// //                         color: 'var(--color-primary-300)'
-// //                     }
-// //                 }
-// //             }
-// //         },
-// //         dark: {
-// //             background: 'var(--color-dark)',
-// //             border: {
-// //                 color: 'var(--color-dark-tint-50)'
-// //             },
-// //             color: 'var(--contrast-text-color-dark)',
-// //             disabled: {
-// //                 background: 'var(--color-dark-tint-50)',
-// //                 border: {
-// //                     color: 'var(--color-dark-tint-100)'
-// //                 },
-// //                 indicator: {
-// //                     background: 'var(--color-gray-300)'
-// //                 }
-// //             },
-// //             readonly: {
-// //                 background: 'var(--color-dark-tint-50)',
-// //                 border: {
-// //                     color: 'var(--color-dark-tint-100)'
-// //                 },
-// //                 indicator: {
-// //                     background: 'var(--color-gray-300)'
-// //                 }
-// //             },
-// //             checked: {
-// //                 disabled: {
-// //                     background: 'var(--color-primary-800)'
-// //                 },
-// //                 readonly: {
-// //                     background: 'var(--color-primary-800)'
-// //                 }
-// //             }
-// //         },
-// //         sm: {
-// //             borderRadius: {
-// //                 topLeft: 'calc(var(--toggle--border-top-left-radius) * var(--size-multiplier-sm))',
-// //                 topRight:
-// //                     'calc(var(--toggle--border-top-right-radius) * var(--size-multiplier-sm))',
-// //                 bottomRight:
-// //                     'calc(var(--toggle--border-bottom-right-radius) * var(--size-multiplier-sm))',
-// //                 bottomLeft:
-// //                     'calc(var(--toggle--border-bottom-left-radius) * var(--size-multiplier-sm))'
-// //             },
-// //             fontSize: 'calc(var(--toggle--font-size) * var(--size-multiplier-sm))',
-// //             width: 'calc(var(--toggle--width) * var(--size-multiplier-sm))',
-// //             height: 'calc(var(--toggle--height) * var(--size-multiplier-sm))',
-// //             indicator: {
-// //                 width: 'calc(var(--toggle--indicator--width) * var(--size-multiplier-sm))',
-// //                 height: 'calc(var(--toggle--indicator--height) * var(--size-multiplier-sm))'
-// //             }
-// //         },
-// //         md: {
-// //             borderRadius: {
-// //                 topLeft: 'calc(var(--toggle--border-top-left-radius) * var(--size-multiplier-md))',
-// //                 topRight:
-// //                     'calc(var(--toggle--border-top-right-radius) * var(--size-multiplier-md))',
-// //                 bottomRight:
-// //                     'calc(var(--toggle--border-bottom-right-radius) * var(--size-multiplier-md))',
-// //                 bottomLeft:
-// //                     'calc(var(--toggle--border-bottom-left-radius) * var(--size-multiplier-md))'
-// //             },
-// //             fontSize: 'calc(var(--toggle--font-size) * var(--size-multiplier-md))',
-// //             width: 'calc(var(--toggle--width) * var(--size-multiplier-md))',
-// //             height: 'calc(var(--toggle--height) * var(--size-multiplier-md))',
-// //             indicator: {
-// //                 width: 'calc(var(--toggle--indicator--width) * var(--size-multiplier-md))',
-// //                 height: 'calc(var(--toggle--indicator--height) * var(--size-multiplier-md))'
-// //             }
-// //         },
-// //         lg: {
-// //             borderRadius: {
-// //                 topLeft: 'calc(var(--toggle--border-top-left-radius) * var(--size-multiplier-lg))',
-// //                 topRight:
-// //                     'calc(var(--toggle--border-top-right-radius) * var(--size-multiplier-lg))',
-// //                 bottomRight:
-// //                     'calc(var(--toggle--border-bottom-right-radius) * var(--size-multiplier-lg))',
-// //                 bottomLeft:
-// //                     'calc(var(--toggle--border-bottom-left-radius) * var(--size-multiplier-lg))'
-// //             },
-// //             fontSize: 'calc(var(--toggle--font-size) * var(--size-multiplier-lg))',
-// //             width: 'calc(var(--toggle--width) * var(--size-multiplier-lg))',
-// //             height: 'calc(var(--toggle--height) * var(--size-multiplier-lg))',
-// //             indicator: {
-// //                 width: 'calc(var(--toggle--indicator--width) * var(--size-multiplier-lg))',
-// //                 height: 'calc(var(--toggle--indicator--height) * var(--size-multiplier-lg))'
-// //             }
-// //         }
-// //     }
-// // );
-//
-// const ns = 'toggle';
-//
-// export function useToggleThemeVariables(userOptions: DefinitionOptions) {
-// const options = { ...defaultDefinitionOptions, ...userOptions };
-//
-//     const {
-//         borderTopStyle,
-//         borderTopWidth,
-//         borderRightStyle,
-//         borderRightWidth,
-//         borderBottomStyle,
-//         borderBottomWidth,
-//         borderLeftStyle,
-//         borderLeftWidth
-//     } = useBorder(options);
-//     const { colorPrimary, colorLightH, colorLightS, colorLightL, colorLightA } = useBrandColors(options);
-//     const {
-//         colorLightTint100,
-//         colorLightTint50,
-//         colorLightShade50,
-//         colorLightShade100,
-//         colorPrimary200,
-//         colorPrimary300,
-//         colorPrimary400
-//     } = useBrandColorVariants(options);
-//     const { colorWhite } = useNeutralColors(options);
-//     const { marginRight } = useMarginBase(options);
-//     const {
-//         borderTopLeftRadius,
-//         borderTopRightRadius,
-//         borderBottomRightRadius,
-//         borderBottomLeftRadius
-//     } = useBorderRadius(options);
-//     const {
-//         boxShadowOffsetX,
-//         boxShadowOffsetY,
-//         boxShadowBlurRadius,
-//         boxShadowSpreadRadius,
-//         boxShadowColor
-//     } = useBoxShadow(options);
-//     const { colorWhiteH, colorWhiteS, colorWhiteL, colorWhiteA } = useNeutralColors(options);
-//     const { contrastTextColorLight } = useContrastTextColor(options);
-//     const { fontSize } = useFontSize(options);
-//     const { lineHeight } = useLineHeight(options);
-//     const { transitionProperty, transitionDuration, transitionTimingFunction } = useTransition(options);
-//     const { textColorWeak } = useTextColor(options);
-//
-//     const toggleVariables = nsvariables(
-//         ns,
-//         {
-//             border: {
-//                 top: {
-//                     width: ref(borderTopWidth),
-//                     style: ref(borderTopStyle),
-//                     color: ref(colorLightShade50)
-//                 },
-//                 right: {
-//                     width: ref(borderRightWidth),
-//                     style: ref(borderRightStyle),
-//                     color: ref(colorLightShade50)
-//                 },
-//                 bottom: {
-//                     width: ref(borderBottomWidth),
-//                     style: ref(borderBottomStyle),
-//                     color: ref(colorLightShade50)
-//                 },
-//                 left: {
-//                     width: ref(borderLeftWidth),
-//                     style: ref(borderLeftStyle),
-//                     color: ref(colorLightShade50)
-//                 }
-//             },
-//             borderRadius: {
-//                 topLeft: ref(borderTopLeftRadius),
-//                 topRight: ref(borderTopRightRadius),
-//                 bottomRight: ref(borderBottomRightRadius),
-//                 bottomLeft: ref(borderBottomLeftRadius)
-//             },
-//             boxShadow: {
-//                 offsetX: ref(boxShadowOffsetX),
-//                 offsetY: ref(boxShadowOffsetY),
-//                 blurRadius: ref(boxShadowBlurRadius),
-//                 spreadRadius: ref(boxShadowSpreadRadius),
-//                 color: ref(boxShadowColor)
-//             },
-//             background: {
-//                 h: ref(colorLightH),
-//                 s: ref(colorLightS),
-//                 l: ref(colorLightL),
-//                 a: ref(colorLightA)
-//             },
-//             color: ref(contrastTextColorLight),
-//             fontSize: ref(fontSize),
-//             lineHeight: ref(lineHeight),
-//             width: '40px',
-//             height: '20px',
-//             margin: {
-//                 top: 0,
-//                 right: ref(marginRight),
-//                 bottom: 0,
-//                 left: 0
-//             },
-//             transition: {
-//                 property: ref(transitionProperty),
-//                 duration: ref(transitionDuration),
-//                 timingFunction: ref(transitionTimingFunction)
-//             },
-//             /**
-//              * @element indicator
-//              */
-//             indicator: {
-//                 background: {
-//                     h: ref(colorWhiteH),
-//                     s: ref(colorWhiteS),
-//                     l: ref(colorWhiteL),
-//                     a: ref(colorWhiteA)
-//                 },
-//                 borderRadius: {
-//                     topLeft: ref(borderTopLeftRadius),
-//                     topRight: ref(borderTopRightRadius),
-//                     bottomRight: ref(borderBottomRightRadius),
-//                     bottomLeft: ref(borderBottomLeftRadius)
-//                 },
-//                 width: '1rem',
-//                 height: '1rem',
-//                 margin: {
-//                     top: '-0.5rem',
-//                     left: subtract('20px', '1rem')
-//                 },
-//                 transition: {
-//                     property: 'background, transform',
-//                     duration: ref(transitionDuration),
-//                     timingFunction: ref(transitionTimingFunction)
-//                 }
-//             },
-//             /**
-//              * @state disabled
-//              */
-//             disabled: {
-//                 background: ref(colorLightTint50),
-//                 border: {
-//                     color: ref(colorLightShade50)
-//                 },
-//                 color: ref(textColorWeak),
-//
-//                 /**
-//                  * @state disabled
-//                  * @element indicator
-//                  */
-//                 indicator: {
-//                     background: ref(colorLightShade100)
-//                 }
-//             },
-//             /**
-//              * @state readonly
-//              */
-//             readonly: {
-//                 background: ref(colorLightTint100),
-//                 border: {
-//                     color: ref(colorLightShade50)
-//                 },
-//                 color: ref(textColorWeak),
-//                 /**
-//                  * @state readonly
-//                  * @element indicator
-//                  */
-//                 indicator: {
-//                     background: ref(colorLightShade100)
-//                 }
-//             },
-//             /**
-//              * @state checked
-//              */
-//             checked: {
-//                 background: ref(colorPrimary),
-//                 border: {
-//                     color: ref(colorLightShade50)
-//                 },
-//                 color: ref(textColorWeak),
-//                 /**
-//                  * @state checked
-//                  * @element indicator
-//                  */
-//                 indicator: {
-//                     background: ref(colorWhite)
-//                 },
-//                 /**
-//                  * @state checked
-//                  * @state disabled
-//                  */
-//                 disabled: {
-//                     background: ref(colorPrimary200),
-//                     border: {
-//                         color: ref(colorPrimary300)
-//                     }
-//                 },
-//                 /**
-//                  * @state checked
-//                  * @state readonly
-//                  */
-//                 readonly: {
-//                     background: ref(colorPrimary300),
-//                     border: {
-//                         color: ref(colorPrimary400)
-//                     }
-//                 }
-//             }
-//         },
-//         options
-//     );
-//
-//     return {
-//         ...toggleVariables,
-//         ...nsvariables([ns, 'checked', 'disabled', 'indicator'] as const, {
-//             background: ref(colorWhite)
-//         }),
-//         ...nsvariables([ns, 'checked', 'readonly', 'indicator'] as const, {
-//             background: ref(colorWhite)
-//         })
-//     };
-// }
-//
-// export useToggleThemeLayout(userOptions: DefinitionOptions) {
-// const options = { ...defaultDefinitionOptions, ...userOptions };
-//
-//     selector('.toggle', {
-//         position: 'relative',
-//         marginBottom: 0,
-//         display: 'flex'
-//     });
-//
-//     selector('.toggle .toggle-label', {
-//         display: 'flex',
-//         alignItems: 'center',
-//         position: 'relative',
-//         margin: 0,
-//         cursor: 'pointer'
-//     });
-//
-//     selector('.toggle .toggle-label::before', {
-//         content: '""',
-//         position: 'relative',
-//         display: 'inline-block',
-//         flexShrink: 0,
-//         flexGrow: 0
-//     });
-//
-//     selector('.toggle .toggle-label::after', {
-//         content: '""',
-//         position: 'absolute',
-//         display: 'block',
-//         top: '50%',
-//         left: 0,
-//         zIndex: 1,
-//         transform: 'translate(0, 0)'
-//     });
-//
-//     selector('.toggle input', {
-//         opacity: 0,
-//         width: 0,
-//         height: 0,
-//         position: 'absolute',
-//         top: 0,
-//         left: 0
-//     });
-//
-//     selector(
-//         [
-//             '.toggle input:disabled ~ .toggle-label::before',
-//             '.toggle input:disabled ~ .toggle-label::after'
-//         ],
-//         {
-//             cursor: 'not-allowed'
-//         }
-//     );
-//
-//     selector(
-//         ['.toggle input:disabled ~ .toggle-label', '.toggle input[readonly] ~ .toggle-label'],
-//         {
-//             cursor: 'not-allowed'
-//         }
-//     );
-//
-//     selector(
-//         ['.toggle > .input:disabled ~ .toggle-label', '.toggle > .input[readonly] ~ .toggle-label'],
-//         {
-//             cursor: 'default'
-//         }
-//     );
-// }
-//
-// export useToggleThemeBase(userOptions: DefinitionOptions) {
-// const options = { ...defaultDefinitionOptions, ...userOptions };
-//
-//     const {
-//         toggleBackground,
-//         toggleBorderStyle,
-//         toggleBorderColor,
-//         toggleBorderWidth,
-//         toggleBorderRadius,
-//         toggleBoxShadow,
-//         toggleColor,
-//         toggleFontSize,
-//         toggleWidth,
-//         toggleHeight,
-//         toggleMargin,
-//         toggleTransitionProperty,
-//         toggleTransitionDuration,
-//         toggleTransitionTimingFunction,
-//         toggleIndicatorBackground,
-//         toggleIndicatorBorderRadius,
-//         toggleIndicatorTransitionProperty,
-//         toggleIndicatorTransitionDuration,
-//         toggleIndicatorTransitionTimingFunction,
-//         toggleIndicatorHeight,
-//         toggleIndicatorWidth,
-//         toggleIndicatorMargin,
-//         toggleIndicatorMarginLeft,
-//         toggleDisabledBackground,
-//         toggleDisabledBorderColor,
-//         toggleDisabledColor,
-//         toggleDisabledIndicatorBackground,
-//         toggleReadonlyBackground,
-//         toggleReadonlyBorderColor,
-//         toggleReadonlyColor,
-//         toggleReadonlyIndicatorBackground,
-//         toggleCheckedBackground,
-//         toggleCheckedBorderColor,
-//         toggleCheckedIndicatorBackground,
-//         toggleCheckedDisabledBackground,
-//         toggleCheckedDisabledBorderColor,
-//         toggleCheckedDisabledIndicatorBackground,
-//         toggleCheckedReadonlyBackground,
-//         toggleCheckedReadonlyBorderColor,
-//         toggleCheckedReadonlyIndicatorBackground
-//     } = useToggleThemeVariables(options);
-//
-//     selector('.toggle .toggle-label', {
-//         color: ref(toggleColor),
-//         fontSize: ref(toggleFontSize)
-//     });
-//
-//     selector('.toggle .toggle-label::before', {
-//         background: ref(toggleBackground),
-//         boxShadow: ref(toggleBoxShadow),
-//         borderWidth: ref(toggleBorderWidth),
-//         borderStyle: ref(toggleBorderStyle),
-//         borderColor: ref(toggleBorderColor),
-//         borderRadius: ref(toggleBorderRadius),
-//         width: ref(toggleWidth),
-//         height: ref(toggleHeight),
-//         margin: ref(toggleMargin),
-//         transitionProperty: ref(toggleTransitionProperty),
-//         transitionDuration: ref(toggleTransitionDuration),
-//         transitionTimingFunction: ref(toggleTransitionTimingFunction)
-//     });
-//
-//     selector('.toggle .toggle-label::after', {
-//         background: ref(toggleIndicatorBackground),
-//         borderRadius: ref(toggleIndicatorBorderRadius),
-//         width: ref(toggleIndicatorWidth),
-//         height: ref(toggleIndicatorHeight),
-//         margin: ref(toggleIndicatorMargin),
-//         transitionProperty: ref(toggleIndicatorTransitionProperty),
-//         transitionDuration: ref(toggleIndicatorTransitionDuration),
-//         transitionTimingFunction: ref(toggleIndicatorTransitionTimingFunction)
-//     });
-//
-//     selector('.toggle input:checked ~ .toggle-label::before', {
-//         background: ref(toggleCheckedBackground),
-//         borderColor: ref(toggleCheckedBorderColor)
-//     });
-//
-//     selector('.toggle input:checked ~ .toggle-label::after', {
-//         background: ref(toggleCheckedIndicatorBackground),
-//         transform: transform(
-//             'translate',
-//             multiply(subtract(ref(toggleWidth), ref(toggleIndicatorMarginLeft)), 0.5),
-//             0
-//         )
-//     });
-//
-//     selector('.toggle input:focus ~ .toggle-label::before', {
-//         boxShadowOffsetX: 0,
-//         boxShadowOffsetY: 0,
-//         boxShadowBlurRadius: '1px',
-//         boxShadowColor: ref(toggleCheckedBackground)
-//     });
-//
-//     selector('.toggle input:disabled ~ .toggle-label', {
-//         color: ref(toggleDisabledColor)
-//     });
-//
-//     selector('.toggle input:disabled ~ .toggle-label::before', {
-//         borderColor: ref(toggleDisabledBorderColor),
-//         Background: ref(toggleDisabledBackground)
-//     });
-//
-//     selector('.toggle input:disabled ~ .toggle-label::after', {
-//         background: ref(toggleDisabledIndicatorBackground)
-//     });
-//
-//     selector('.toggle input[readonly] ~ .toggle-label', {
-//         color: ref(toggleReadonlyColor)
-//     });
-//
-//     selector('.toggle input[readonly] ~ .toggle-label::before', {
-//         borderColor: ref(toggleReadonlyBorderColor),
-//         background: ref(toggleReadonlyBackground)
-//     });
-//
-//     selector('.toggle input[readonly] ~ .toggle-label::after', {
-//         background: ref(toggleReadonlyIndicatorBackground)
-//     });
-//
-//     selector('.toggle input:checked:disabled ~ .toggle-label::before', {
-//         background: ref(toggleCheckedDisabledBackground),
-//         borderColor: ref(toggleCheckedDisabledBorderColor)
-//     });
-//
-//     selector('.toggle input:checked:disabled ~ .toggle-label::after', {
-//         background: ref(toggleCheckedDisabledIndicatorBackground)
-//     });
-//
-//     selector('.toggle input:checked[readonly] ~ .toggle-label::before', {
-//         background: ref(toggleCheckedReadonlyBackground),
-//         borderColor: ref(toggleCheckedReadonlyBorderColor)
-//     });
-//
-//     selector('.toggle input:checked[readonly] ~ .toggle-label::after', {
-//         background: ref(toggleCheckedReadonlyIndicatorBackground)
-//     });
-//
-//     selector('.toggle.-rounded .toggle-label::before', {
-//         borderRadius: ref(toggleHeight)
-//     });
-//
-//     selector('.toggle.-rounded .toggle-label::after', {
-//         borderRadius: ref(toggleIndicatorHeight)
-//     });
-// }
-//
-// export function useToggleThemeSizeSelectors(variant: ComponentSize) {
-//     const {
-//         toggleBorderTopLeftRadius,
-//         toggleBorderTopRightRadius,
-//         toggleBorderBottomRightRadius,
-//         toggleBorderBottomLeftRadius,
-//         toggleFontSize,
-//         toggleHeight,
-//         toggleWidth,
-//         toggleIndicatorHeight,
-//         toggleIndicatorWidth,
-//         toggleIndicatorMarginTop,
-//         toggleIndicatorMarginLeft
-//     } = useToggleThemeVariables(options);
-//     const sizeMultiplierKeyMap = useKeyMappedSizeMultiplier(options);
-//     const sizeMultiplierRef = ref(sizeMultiplierKeyMap[variant]);
-//     const sizeNs = [ns, variant] as const;
-//
-//     const {
-//         fontSize,
-//         height,
-//         width,
-//         borderRadius,
-//         indicatorHeight,
-//         indicatorWidth,
-//         indicatorMargin,
-//         indicatorMarginLeft
-//     } = stripExportsNamespace(
-//         nsvariables(sizeNs, {
-//             borderRadius: {
-//                 topLeft: multiply(ref(toggleBorderTopLeftRadius), sizeMultiplierRef),
-//                 topRight: multiply(ref(toggleBorderTopRightRadius), sizeMultiplierRef),
-//                 bottomRight: multiply(ref(toggleBorderBottomRightRadius), sizeMultiplierRef),
-//                 bottomLeft: multiply(ref(toggleBorderBottomLeftRadius), sizeMultiplierRef)
-//             },
-//             fontSize: multiply(ref(toggleFontSize), sizeMultiplierRef),
-//             height: multiply(ref(toggleHeight), sizeMultiplierRef),
-//             width: multiply(ref(toggleWidth), sizeMultiplierRef),
-//             /**
-//              * @element indicator
-//              */
-//             indicator: {
-//                 height: multiply(ref(toggleIndicatorHeight), sizeMultiplierRef),
-//                 width: multiply(ref(toggleIndicatorWidth), sizeMultiplierRef),
-//                 margin: {
-//                     top: multiply(ref(toggleIndicatorMarginTop), sizeMultiplierRef),
-//                     left: multiply(ref(toggleIndicatorMarginLeft), sizeMultiplierRef)
-//                 }
-//             }
-//         })
-//     );
-//
-//     selector(`.toggle.-${variant} .toggle-label`, {
-//         fontSize: ref(fontSize)
-//     });
-//
-//     selector(`.toggle.-${variant} .toggle-label::before`, {
-//         borderRadius: ref(borderRadius),
-//         width: ref(width),
-//         height: ref(height)
-//     });
-//
-//     selector(`.toggle.-${variant} .toggle-label::after`, {
-//         width: ref(indicatorWidth),
-//         height: ref(indicatorHeight),
-//         margin: ref(indicatorMargin)
-//     });
-//
-//     selector(`.toggle.-${variant} input:checked ~ .toggle-label::after`, {
-//         transform: transform(
-//             'translate',
-//             multiply(subtract(ref(width), ref(indicatorMarginLeft)), 0.5),
-//             0
-//         )
-//     });
-//
-//     selector(`.toggle.-${variant}.-rounded .toggle-label::before`, {
-//         borderRadius: ref(height)
-//     });
-//
-//     selector(`.toggle.-${variant}.-rounded .toggle-label::after`, {
-//         borderRadius: ref(indicatorHeight)
-//     });
-// }
-//
-// export function useToggleThemeSizes(sizes = defaultComponentSizes) {
-//     sizes.forEach((size) => useToggleThemeSizeSelectors(size, options));
-// }
-//
-// export function useToggleThemeColorSelectors(_variant: ComponentBrandNeutralColor) {
-//     // const colorKey = capitalize(variant);
-//     // const shadeOrTint = variant === 'dark' ? 'Tint' : 'Shade';
-//     // const {
-//     //     colorLight,
-//     //     colorDark,
-//     //     colorPrimary,
-//     //     colorLightH,
-//     //     colorLightS,
-//     //     colorLightL,
-//     //     colorLightA,
-//     //     colorDarkH,
-//     //     colorDarkS,
-//     //     colorDarkL,
-//     //     colorDarkA
-//     // } = useBrandColors(options);
-//     // const {
-//     //     colorLightTint50,
-//     //     colorLightTint100,
-//     //     colorLightShade50,
-//     //     colorLightShade100,
-//     //     colorDarkTint50,
-//     //     colorDarkTint100,
-//     //     colorDarkShade50,
-//     //     colorDarkShade100,
-//     //     colorPrimary200,
-//     //     colorPrimary300,
-//     //     colorPrimary400,
-//     //     colorPrimary800
-//     // } = useBrandColorVariants(options);
-//     // const { colorGray100, colorGray300 } = useNeutralColors(options);
-//     //
-//     // const { contrastTextColorLight, contrastTextColorDark } = useContrastTextColor(options);
-//     //
-//     // const colorNs = [ns, variant] as const;
-//     //
-//     // const {
-//     //     background,
-//     //     borderColor,
-//     //     color,
-//     //     disabledBackground,
-//     //     disabledBorderColor,
-//     //     disabledIndicatorBackground,
-//     //     readonlyBackground,
-//     //     readonlyBorderColor,
-//     //     readonlyIndicatorBackground
-//     // } = stripExportsNamespace(
-//     //     nsvariables(
-//     //         colorNs,
-//     //         {
-//     //             light: {
-//     //                 background: ref(colorLight),
-//     //                 border: {
-//     //                     color: ref(colorLightShade50)
-//     //                 },
-//     //                 color: ref(contrastTextColorLight),
-//     //                 disabled: {
-//     //                     background: ref(colorLight),
-//     //                     border: {
-//     //                         color: ref(colorLightShade50)
-//     //                     },
-//     //                     indicator: {
-//     //                         background: ref(colorGray100)
-//     //                     }
-//     //                 },
-//     //                 readonly: {
-//     //                     background: ref(colorLight),
-//     //                     border: {
-//     //                         color: ref(colorLightShade50)
-//     //                     },
-//     //                     indicator: {
-//     //                         background: ref(colorGray100)
-//     //                     }
-//     //                 },
-//     //                 checked: {
-//     //                     disabled: {
-//     //                         background: ref(colorPrimary200),
-//     //                         border: {
-//     //                             color: ref(colorPrimary300)
-//     //                         }
-//     //                     },
-//     //                     readonly: {
-//     //                         background: ref(colorPrimary200),
-//     //                         border: {
-//     //                             color: ref(colorPrimary300)
-//     //                         }
-//     //                     }
-//     //                 }
-//     //             },
-//     //             dark: {
-//     //                 background: ref(colorDark),
-//     //                 border: {
-//     //                     color: ref(colorDarkTint50)
-//     //                 },
-//     //                 color: ref(contrastTextColorDark),
-//     //                 disabled: {
-//     //                     background: ref(colorDarkTint50),
-//     //                     border: {
-//     //                         color: ref(colorDarkTint100)
-//     //                     },
-//     //                     indicator: {
-//     //                         background: ref(colorGray300)
-//     //                     }
-//     //                 },
-//     //                 readonly: {
-//     //                     background: ref(colorDarkTint50),
-//     //                     border: {
-//     //                         color: ref(colorDarkTint100)
-//     //                     },
-//     //                     indicator: {
-//     //                         background: ref(colorGray300)
-//     //                     }
-//     //                 },
-//     //                 checked: {
-//     //                     disabled: {
-//     //                         background: ref(colorPrimary800)
-//     //                     },
-//     //                     readonly: {
-//     //                         background: ref(colorPrimary800)
-//     //                     }
-//     //                 }
-//     //             }
-//     //         }[variant]
-//     //     )
-//     // );
-//     //
-//     // selector(`.toggle.-${variant} .toggle-label`, {
-//     //     color: ref(color)
-//     // });
-//     //
-//     // selector(`.toggle.-${variant} .toggle-label::before`, {
-//     //     background: ref(background),
-//     //     borderColor: ref(borderColor),
-//     //     color: ref(color)
-//     // });
-//     //
-//     // selector(`.toggle.-${variant} input:disabled ~ .toggle-label::before`, {
-//     //     background: ref(disabledBackground),
-//     //     borderColor: ref(disabledBorderColor)
-//     // });
-//     //
-//     // selector(`.toggle.-${variant} input:disabled ~ .toggle-label::after`, {
-//     //     background: ref(disabledIndicatorBackground)
-//     // });
-//     //
-//     // selector(`.toggle.-${variant} input[readonly] ~ .toggle-label::before`, {
-//     //     background: ref(readonlyBackground),
-//     //     borderColor: ref(readonlyBorderColor)
-//     // });
-//     //
-//     // selector(`.toggle.-${variant} input[readonly] ~ .toggle-label::after`, {
-//     //     background: ref(readonlyIndicatorBackground)
-//     // });
-//     //
-//     // // const { checkedDisabledBackground, checkedDisabledBorderColor } = setExportsNamespace(
-//     // //     nsvariables(checkedDisabledNs, {
-//     // //         background: variant === 'dark' ? ref('colorPrimary800') : ref('colorPrimary200'),
-//     // //         border: {
-//     // //             color: variant === 'dark' ? ref('colorPrimary800') : ref('colorPrimary300')
-//     // //         }
-//     // //     }),
-//     // //     ['checked', 'disabled'] as const
-//     // // );
-//     // //
-//     // // selector(`.toggle.-${variant} input:checked:disabled ~ .toggle-label::before`, {
-//     // //     background: ref(checkedDisabledBackground),
-//     // //     borderColor: ref(checkedDisabledBorderColor)
-//     // // });
-//     // //
-//     // // const { checkedReadonlyBackground, checkedReadonlyBorderColor } = setExportsNamespace(
-//     // //     nsvariables(checkedReadonlyNs, {
-//     // //         background: variant === 'dark' ? ref('colorPrimary800') : ref('colorPrimary200'),
-//     // //         border: {
-//     // //             color: variant === 'dark' ? ref('colorPrimary800') : ref('colorPrimary300')
-//     // //         }
-//     // //     }),
-//     // //     ['checked', 'readonly'] as const
-//     // // );
-//     // //
-//     // // selector(`.toggle.-${variant} input:checked[readonly] ~ .toggle-label::before`, {
-//     // //     background: ref(checkedReadonlyBackground),
-//     // //     borderColor: ref(checkedReadonlyBorderColor)
-//     // // });
-//     // //
-//     // // selector(`.toggle.-${variant} input:checked ~ toggle-label::before`, {
-//     // //     background: ref(checkedBackground),
-//     // //     borderColor: ref(checkedBorderColor)
-//     // // });
-//     //
-//     // // selector(`.toggle.-${variant} input:checked ~ toggle-label::after`, {
-//     // //     background: ref(checkedIndicatorBackground)
-//     // // });
-// }
-//
-// export function useToggleThemeColors(colors = defaultComponentNeutralColors) {
-//     colors.forEach((color) => useToggleThemeColorSelectors(color, options));
-// }
-//
-// export useToggleThemeLayoutModifiers(userOptions: DefinitionOptions) {
-// const options = { ...defaultDefinitionOptions, ...userOptions };
-// }
+/**
+ * Config
+ */
 
-export function useToggleTheme(_userOptions: DefinitionOptions) {
-    // const options = { ...defaultDefinitionOptions, ...userOptions };
-    //
-    //     useToggleThemeVariables(options);
-    //     useToggleThemeLayout(options);
-    //     useToggleThemeBase(options);
-    //     useToggleThemeSizes(options);
-    //     useToggleThemeColors(options);
-    //     useToggleThemeLayoutModifiers(options);
+export function useToggleThemeColorConfig(
+    variant: ToggleColorVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    const { colorLight, colorDark, colorPrimary } = useBrandColors(options);
+    const {
+        colorLightShade50,
+        colorLightShade150,
+        colorLightTint50,
+        colorLightTint100,
+        colorDarkTint50,
+        colorDarkTint100,
+        colorDarkTint150,
+        colorPrimary200,
+        colorPrimary300,
+        colorPrimary400,
+        colorPrimary600,
+        colorPrimary700,
+        colorPrimary800,
+        colorPrimaryShade50,
+        colorPrimaryTint50
+    } = useBrandColorVariants(options);
+    const { colorWhite, colorGray300 } = useNeutralColors(options);
+
+    const { contrastTextColorLight, contrastTextColorDark } = useContrastTextColor(options);
+
+    return {
+        /**
+         * @variant light
+         */
+        light: {
+            background: ref(colorLight),
+            border: {
+                color: ref(colorLightShade50)
+            },
+            color: ref(contrastTextColorLight),
+            disabled: {
+                background: ref(colorLight),
+                border: {
+                    color: ref(colorLightShade50)
+                },
+                indicator: {
+                    background: ref(colorLightShade150)
+                }
+            },
+            readonly: {
+                background: ref(colorLightTint50),
+                border: {
+                    color: ref(colorLightShade50)
+                },
+                indicator: {
+                    background: ref(colorLightShade50)
+                }
+            },
+            checked: {
+                background: ref(colorPrimary),
+                border: {
+                    color: ref(colorPrimaryShade50)
+                },
+                disabled: {
+                    background: ref(colorPrimary200),
+                    border: {
+                        color: ref(colorPrimary300)
+                    },
+                    indicator: {
+                        background: ref(colorLightTint50)
+                    }
+                },
+                readonly: {
+                    background: ref(colorPrimary300),
+                    border: {
+                        color: ref(colorPrimary400)
+                    },
+                    indicator: {
+                        background: ref(colorLightTint100)
+                    }
+                },
+                indicator: {
+                    background: ref(colorWhite)
+                }
+            },
+            indicator: {
+                background: ref(colorWhite)
+            }
+        },
+        /**
+         * @variant dark
+         */
+        dark: {
+            background: ref(colorDark),
+            border: {
+                color: ref(colorDarkTint50)
+            },
+            color: ref(contrastTextColorDark),
+            disabled: {
+                background: ref(colorDarkTint100),
+                border: {
+                    color: ref(colorDarkTint150)
+                },
+                indicator: {
+                    background: ref(colorGray300)
+                }
+            },
+            readonly: {
+                background: ref(colorDarkTint50),
+                border: {
+                    color: ref(colorDarkTint100)
+                },
+                indicator: {
+                    background: ref(colorGray300)
+                }
+            },
+            checked: {
+                background: ref(colorPrimary),
+                border: {
+                    color: ref(colorPrimaryTint50)
+                },
+                disabled: {
+                    background: ref(colorPrimary800),
+                    border: {
+                        color: ref(colorPrimary700)
+                    },
+                    indicator: {
+                        background: ref(colorGray300)
+                    }
+                },
+                readonly: {
+                    background: ref(colorPrimary700),
+                    border: {
+                        color: ref(colorPrimary600)
+                    },
+                    indicator: {
+                        background: ref(colorLight)
+                    }
+                },
+                indicator: {
+                    background: ref(colorWhite)
+                }
+            },
+            indicator: {
+                background: ref(colorWhite)
+            }
+        }
+    }[variant];
+}
+
+export function useToggleThemeSizeConfig(
+    variant: ToggleSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    const {
+        borderTopLeftRadiusSm,
+        borderTopRightRadiusSm,
+        borderBottomRightRadiusSm,
+        borderBottomLeftRadiusSm,
+        borderTopLeftRadiusMd,
+        borderTopRightRadiusMd,
+        borderBottomRightRadiusMd,
+        borderBottomLeftRadiusMd,
+        borderTopLeftRadiusLg,
+        borderTopRightRadiusLg,
+        borderBottomRightRadiusLg,
+        borderBottomLeftRadiusLg
+    } = useBorderRadius(options);
+    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize(options);
+    const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
+
+    return {
+        /**
+         * @variant sm
+         */
+        sm: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusSm),
+                topRight: ref(borderTopRightRadiusSm),
+                bottomRight: ref(borderBottomRightRadiusSm),
+                bottomLeft: ref(borderBottomLeftRadiusSm)
+            },
+            fontSize: ref(fontSizeSm),
+            margin: {
+                top: 0,
+                right: multiply(ref(spacingSm), 0.5),
+                bottom: 0,
+                left: 0
+            },
+            width: multiply(ref(spacingSm), 2),
+            height: ref(spacingSm),
+            /**
+             * @element indicator
+             */
+            indicator: {
+                margin: 0,
+                borderRadius: {
+                    topLeft: ref(borderTopLeftRadiusSm),
+                    topRight: ref(borderTopRightRadiusSm),
+                    bottomRight: ref(borderBottomRightRadiusSm),
+                    bottomLeft: ref(borderBottomLeftRadiusSm)
+                }
+            }
+        },
+        /**
+         * @variant md
+         */
+        md: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusMd),
+                topRight: ref(borderTopRightRadiusMd),
+                bottomRight: ref(borderBottomRightRadiusMd),
+                bottomLeft: ref(borderBottomLeftRadiusMd)
+            },
+            fontSize: ref(fontSizeMd),
+            margin: {
+                top: 0,
+                right: multiply(ref(spacingMd), 0.5),
+                bottom: 0,
+                left: 0
+            },
+            width: multiply(ref(spacingMd), 2),
+            height: ref(spacingMd),
+            /**
+             * @element indicator
+             */
+            indicator: {
+                margin: 0,
+                borderRadius: {
+                    topLeft: ref(borderTopLeftRadiusMd),
+                    topRight: ref(borderTopRightRadiusMd),
+                    bottomRight: ref(borderBottomRightRadiusMd),
+                    bottomLeft: ref(borderBottomLeftRadiusMd)
+                }
+            }
+        },
+        /**
+         * @variant lg
+         */
+        lg: {
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadiusLg),
+                topRight: ref(borderTopRightRadiusLg),
+                bottomRight: ref(borderBottomRightRadiusLg),
+                bottomLeft: ref(borderBottomLeftRadiusLg)
+            },
+            fontSize: ref(fontSizeLg),
+            margin: {
+                top: 0,
+                right: multiply(ref(spacingLg), 0.5),
+                bottom: 0,
+                left: 0
+            },
+            width: multiply(ref(spacingLg), 2),
+            height: ref(spacingLg),
+            /**
+             * @element indicator
+             */
+            indicator: {
+                margin: 0,
+                borderRadius: {
+                    topLeft: ref(borderTopLeftRadiusLg),
+                    topRight: ref(borderTopRightRadiusLg),
+                    bottomRight: ref(borderBottomRightRadiusLg),
+                    bottomLeft: ref(borderBottomLeftRadiusLg)
+                }
+            }
+        }
+    }[variant];
+}
+
+export function useToggleThemeConfig(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    const {
+        borderTopStyle,
+        borderTopWidth,
+        borderRightStyle,
+        borderRightWidth,
+        borderBottomStyle,
+        borderBottomWidth,
+        borderLeftStyle,
+        borderLeftWidth
+    } = useBorder(options);
+    const {
+        boxShadowOffsetX,
+        boxShadowOffsetY,
+        boxShadowBlurRadius,
+        boxShadowSpreadRadius,
+        boxShadowColor
+    } = useBoxShadow(options);
+    const { fontSize } = useFontSize(options);
+    const { lineHeight } = useLineHeight(options);
+    const { transitionProperty, transitionDuration, transitionTimingFunction } =
+        useTransition(options);
+    const { textColorWeak } = useTextColor(options);
+
+    return merge(
+        {
+            border: {
+                top: {
+                    width: ref(borderTopWidth),
+                    style: ref(borderTopStyle)
+                },
+                right: {
+                    width: ref(borderRightWidth),
+                    style: ref(borderRightStyle)
+                },
+                bottom: {
+                    width: ref(borderBottomWidth),
+                    style: ref(borderBottomStyle)
+                },
+                left: {
+                    width: ref(borderLeftWidth),
+                    style: ref(borderLeftStyle)
+                }
+            },
+            boxShadow: {
+                offsetX: ref(boxShadowOffsetX),
+                offsetY: ref(boxShadowOffsetY),
+                blurRadius: ref(boxShadowBlurRadius),
+                spreadRadius: ref(boxShadowSpreadRadius),
+                color: ref(boxShadowColor)
+            },
+            fontSize: ref(fontSize),
+            lineHeight: ref(lineHeight),
+            transition: {
+                property: ref(transitionProperty),
+                duration: ref(transitionDuration),
+                timingFunction: ref(transitionTimingFunction)
+            },
+            /**
+             * @element indicator
+             */
+            indicator: {
+                scale: 0.8,
+                transition: {
+                    property: 'background, transform, top, left',
+                    duration: ref(transitionDuration),
+                    timingFunction: ref(transitionTimingFunction)
+                }
+            },
+            /**
+             * @state disabled
+             */
+            disabled: {
+                color: ref(textColorWeak)
+            },
+            /**
+             * @state readonly
+             */
+            readonly: {
+                color: ref(textColorWeak)
+            }
+        },
+        useToggleThemeColorConfig(defaultToggleColor, options),
+        useToggleThemeSizeConfig(defaultToggleSize, options)
+    );
+}
+
+/**
+ * Variables
+ */
+
+export function useToggleThemeColorVariables(
+    variant: ToggleColorVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return nsvariables([ns, variant] as const, useToggleThemeColorConfig(variant, options), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+export function useToggleThemeSizeVariables(
+    variant: ToggleSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return nsvariables([ns, variant] as const, useToggleThemeSizeConfig(variant, options), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+export function useToggleThemeVariables(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return nsvariables(ns, useToggleThemeConfig(options), {
+        ...options,
+        registerComposed: false
+    });
+}
+
+/**
+ * Selectors
+ */
+
+export function useToggleThemeLayout(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    selector(
+        '.toggle',
+        {
+            position: 'relative',
+            marginBottom: 0,
+            display: 'flex'
+        },
+        options
+    );
+
+    selector(
+        '.toggle .toggle-label',
+        {
+            display: 'flex',
+            alignItems: 'center',
+            position: 'relative',
+            margin: 0,
+            cursor: 'pointer'
+        },
+        options
+    );
+
+    selector(
+        '.toggle .toggle-label::before',
+        {
+            content: '""',
+            position: 'relative',
+            display: 'inline-block',
+            flexShrink: 0,
+            flexGrow: 0
+        },
+        options
+    );
+
+    selector(
+        '.toggle .toggle-label::after',
+        {
+            content: '""',
+            position: 'absolute',
+            display: 'block',
+            zIndex: 1
+        },
+        options
+    );
+
+    selector(
+        '.toggle input',
+        {
+            opacity: 0,
+            width: 0,
+            height: 0,
+            position: 'absolute',
+            top: 0,
+            left: 0
+        },
+        options
+    );
+
+    selector(
+        [
+            '.toggle input:disabled ~ .toggle-label::before',
+            '.toggle input:disabled ~ .toggle-label::after'
+        ],
+        {
+            cursor: 'not-allowed'
+        },
+        options
+    );
+
+    selector(
+        ['.toggle input:disabled ~ .toggle-label', '.toggle input[readonly] ~ .toggle-label'],
+        {
+            cursor: 'not-allowed'
+        },
+        options
+    );
+
+    selector(
+        ['.toggle > .input:disabled ~ .toggle-label', '.toggle > .input[readonly] ~ .toggle-label'],
+        {
+            cursor: 'default'
+        },
+        options
+    );
+}
+
+export function useToggleThemeBase(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    const {
+        toggleBackground,
+        toggleBorderStyle,
+        toggleBorderColor,
+        toggleBorderWidth,
+        toggleBorderRadius,
+        toggleBoxShadow,
+        toggleColor,
+        toggleFontSize,
+        toggleWidth,
+        toggleHeight,
+        toggleMargin,
+        toggleTransitionProperty,
+        toggleTransitionDuration,
+        toggleTransitionTimingFunction,
+        toggleIndicatorBackground,
+        toggleIndicatorBorderRadius,
+        toggleIndicatorTransitionProperty,
+        toggleIndicatorTransitionDuration,
+        toggleIndicatorTransitionTimingFunction,
+        toggleIndicatorScale,
+        toggleIndicatorMargin,
+        toggleDisabledBackground,
+        toggleDisabledBorderColor,
+        toggleDisabledColor,
+        toggleDisabledIndicatorBackground,
+        toggleReadonlyBackground,
+        toggleReadonlyBorderColor,
+        toggleReadonlyColor,
+        toggleReadonlyIndicatorBackground,
+        toggleCheckedBackground,
+        toggleCheckedBorderColor,
+        toggleCheckedIndicatorBackground,
+        toggleCheckedDisabledBackground,
+        toggleCheckedDisabledBorderColor,
+        toggleCheckedDisabledIndicatorBackground,
+        toggleCheckedReadonlyBackground,
+        toggleCheckedReadonlyBorderColor,
+        toggleCheckedReadonlyIndicatorBackground
+    } = useToggleThemeVariables(options);
+
+    selector(
+        '.toggle .toggle-label',
+        {
+            color: ref(toggleColor),
+            fontSize: ref(toggleFontSize)
+        },
+        options
+    );
+
+    selector(
+        '.toggle .toggle-label::before',
+        {
+            background: ref(toggleBackground),
+            boxShadow: vref(toggleBoxShadow),
+            borderWidth: vref(toggleBorderWidth),
+            borderStyle: vref(toggleBorderStyle),
+            borderColor: vref(toggleBorderColor),
+            borderRadius: vref(toggleBorderRadius),
+            width: ref(toggleWidth),
+            height: ref(toggleHeight),
+            margin: vref(toggleMargin),
+            transitionProperty: ref(toggleTransitionProperty),
+            transitionDuration: ref(toggleTransitionDuration),
+            transitionTimingFunction: ref(toggleTransitionTimingFunction)
+        },
+        options
+    );
+
+    selector(
+        '.toggle .toggle-label::after',
+        {
+            background: ref(toggleIndicatorBackground),
+            borderRadius: vref(toggleIndicatorBorderRadius),
+            top: '50%',
+            left: multiply(ref(toggleHeight), subtract(1, ref(toggleIndicatorScale)), 0.5),
+            width: multiply(ref(toggleHeight), ref(toggleIndicatorScale)),
+            height: multiply(ref(toggleHeight), ref(toggleIndicatorScale)),
+            margin: vref(toggleIndicatorMargin),
+            transitionProperty: ref(toggleIndicatorTransitionProperty),
+            transitionDuration: ref(toggleIndicatorTransitionDuration),
+            transitionTimingFunction: ref(toggleIndicatorTransitionTimingFunction),
+            transform: 'translate(1px, -50%)' // Account for border-width
+        },
+        options
+    );
+
+    selector(
+        '.toggle input:checked ~ .toggle-label::before',
+        {
+            background: ref(toggleCheckedBackground),
+            borderColor: vref(toggleCheckedBorderColor)
+        },
+        options
+    );
+
+    selector(
+        '.toggle input:checked ~ .toggle-label::after',
+        {
+            background: ref(toggleCheckedIndicatorBackground),
+            left: subtract(
+                ref(toggleWidth),
+                multiply(ref(toggleHeight), subtract(1, ref(toggleIndicatorScale)), 0.5)
+            ),
+            transform: ['translate(-100%, -50%)', 'translateX(1px)'] // Account for border-width
+        },
+        options
+    );
+
+    selector(
+        '.toggle input:focus ~ .toggle-label::before',
+        {
+            boxShadowOffsetX: 0,
+            boxShadowOffsetY: 0,
+            boxShadowBlurRadius: '1px',
+            boxShadowColor: ref(toggleCheckedBackground)
+        },
+        options
+    );
+
+    selector(
+        '.toggle input:disabled ~ .toggle-label',
+        {
+            color: ref(toggleDisabledColor)
+        },
+        options
+    );
+
+    selector(
+        '.toggle input:disabled ~ .toggle-label::before',
+        {
+            borderColor: vref(toggleDisabledBorderColor),
+            background: ref(toggleDisabledBackground)
+        },
+        options
+    );
+
+    selector(
+        '.toggle input:disabled ~ .toggle-label::after',
+        {
+            background: ref(toggleDisabledIndicatorBackground)
+        },
+        options
+    );
+
+    selector(
+        '.toggle input[readonly] ~ .toggle-label',
+        {
+            color: ref(toggleReadonlyColor)
+        },
+        options
+    );
+
+    selector(
+        '.toggle input[readonly] ~ .toggle-label::before',
+        {
+            borderColor: vref(toggleReadonlyBorderColor),
+            background: ref(toggleReadonlyBackground)
+        },
+        options
+    );
+
+    selector(
+        '.toggle input[readonly] ~ .toggle-label::after',
+        {
+            background: ref(toggleReadonlyIndicatorBackground)
+        },
+        options
+    );
+
+    selector(
+        '.toggle input:checked:disabled ~ .toggle-label::before',
+        {
+            background: ref(toggleCheckedDisabledBackground),
+            borderColor: vref(toggleCheckedDisabledBorderColor)
+        },
+        options
+    );
+
+    selector(
+        '.toggle input:checked:disabled ~ .toggle-label::after',
+        {
+            background: ref(toggleCheckedDisabledIndicatorBackground)
+        },
+        options
+    );
+
+    selector(
+        '.toggle input:checked[readonly] ~ .toggle-label::before',
+        {
+            background: ref(toggleCheckedReadonlyBackground),
+            borderColor: vref(toggleCheckedReadonlyBorderColor)
+        },
+        options
+    );
+
+    selector(
+        '.toggle input:checked[readonly] ~ .toggle-label::after',
+        {
+            background: ref(toggleCheckedReadonlyIndicatorBackground)
+        },
+        options
+    );
+
+    selector(
+        ['.toggle.-rounded .toggle-label::before', '.toggle.-rounded .toggle-label::after'],
+        {
+            borderRadius: ref(toggleHeight)
+        },
+        options
+    );
+}
+
+export function useToggleThemeColorSelectors(
+    variant: ToggleColorVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    const {
+        toggleBackground,
+        toggleBorderTopColor,
+        toggleBorderRightColor,
+        toggleBorderBottomColor,
+        toggleBorderLeftColor,
+        toggleColor,
+        toggleIndicatorBackground,
+        toggleDisabledBackground,
+        toggleDisabledBorderTopColor,
+        toggleDisabledBorderRightColor,
+        toggleDisabledBorderBottomColor,
+        toggleDisabledBorderLeftColor,
+        toggleDisabledIndicatorBackground,
+        toggleReadonlyBackground,
+        toggleReadonlyBorderTopColor,
+        toggleReadonlyBorderRightColor,
+        toggleReadonlyBorderBottomColor,
+        toggleReadonlyBorderLeftColor,
+        toggleReadonlyIndicatorBackground,
+        toggleCheckedBackground,
+        toggleCheckedBorderTopColor,
+        toggleCheckedBorderRightColor,
+        toggleCheckedBorderBottomColor,
+        toggleCheckedBorderLeftColor,
+        toggleCheckedDisabledBackground,
+        toggleCheckedDisabledBorderTopColor,
+        toggleCheckedDisabledBorderRightColor,
+        toggleCheckedDisabledBorderBottomColor,
+        toggleCheckedDisabledBorderLeftColor,
+        toggleCheckedDisabledIndicatorBackground,
+        toggleCheckedReadonlyBackground,
+        toggleCheckedReadonlyBorderTopColor,
+        toggleCheckedReadonlyBorderRightColor,
+        toggleCheckedReadonlyBorderBottomColor,
+        toggleCheckedReadonlyBorderLeftColor,
+        toggleCheckedReadonlyIndicatorBackground
+    } = useToggleThemeVariables(options);
+
+    const {
+        variantBackground,
+        variantBorderTopColor,
+        variantBorderRightColor,
+        variantBorderBottomColor,
+        variantBorderLeftColor,
+        variantColor,
+        variantIndicatorBackground,
+        variantDisabledBackground,
+        variantDisabledBorderTopColor,
+        variantDisabledBorderRightColor,
+        variantDisabledBorderBottomColor,
+        variantDisabledBorderLeftColor,
+        variantDisabledIndicatorBackground,
+        variantReadonlyBackground,
+        variantReadonlyBorderTopColor,
+        variantReadonlyBorderRightColor,
+        variantReadonlyBorderBottomColor,
+        variantReadonlyBorderLeftColor,
+        variantReadonlyIndicatorBackground,
+        variantCheckedBackground,
+        variantCheckedBorderTopColor,
+        variantCheckedBorderRightColor,
+        variantCheckedBorderBottomColor,
+        variantCheckedBorderLeftColor,
+        variantCheckedDisabledBackground,
+        variantCheckedDisabledBorderTopColor,
+        variantCheckedDisabledBorderRightColor,
+        variantCheckedDisabledBorderBottomColor,
+        variantCheckedDisabledBorderLeftColor,
+        variantCheckedDisabledIndicatorBackground,
+        variantCheckedReadonlyBackground,
+        variantCheckedReadonlyBorderTopColor,
+        variantCheckedReadonlyBorderRightColor,
+        variantCheckedReadonlyBorderBottomColor,
+        variantCheckedReadonlyBorderLeftColor,
+        variantCheckedReadonlyIndicatorBackground
+    } = setExportsNamespace(useToggleThemeColorVariables(variant, options), 'variant');
+
+    selector(
+        `.toggle.-${variant}`,
+        {
+            [toVariableKey(toggleColor)]: ref(variantColor),
+            [toVariableKey(toggleBackground)]: ref(variantBackground),
+            [toVariableKey(toggleBorderTopColor)]: ref(variantBorderTopColor),
+            [toVariableKey(toggleBorderRightColor)]: ref(variantBorderRightColor),
+            [toVariableKey(toggleBorderBottomColor)]: ref(variantBorderBottomColor),
+            [toVariableKey(toggleBorderLeftColor)]: ref(variantBorderLeftColor),
+            [toVariableKey(toggleIndicatorBackground)]: ref(variantIndicatorBackground),
+            [toVariableKey(toggleDisabledBackground)]: ref(variantDisabledBackground),
+            [toVariableKey(toggleDisabledBorderTopColor)]: ref(variantDisabledBorderTopColor),
+            [toVariableKey(toggleDisabledBorderRightColor)]: ref(variantDisabledBorderRightColor),
+            [toVariableKey(toggleDisabledBorderBottomColor)]: ref(variantDisabledBorderBottomColor),
+            [toVariableKey(toggleDisabledBorderLeftColor)]: ref(variantDisabledBorderLeftColor),
+            [toVariableKey(toggleDisabledIndicatorBackground)]: ref(
+                variantDisabledIndicatorBackground
+            ),
+            [toVariableKey(toggleReadonlyBackground)]: ref(variantReadonlyBackground),
+            [toVariableKey(toggleReadonlyBorderTopColor)]: ref(variantReadonlyBorderTopColor),
+            [toVariableKey(toggleReadonlyBorderRightColor)]: ref(variantReadonlyBorderRightColor),
+            [toVariableKey(toggleReadonlyBorderBottomColor)]: ref(variantReadonlyBorderBottomColor),
+            [toVariableKey(toggleReadonlyBorderLeftColor)]: ref(variantReadonlyBorderLeftColor),
+            [toVariableKey(toggleReadonlyIndicatorBackground)]: ref(
+                variantReadonlyIndicatorBackground
+            ),
+            [toVariableKey(toggleCheckedBackground)]: ref(variantCheckedBackground),
+            [toVariableKey(toggleCheckedBorderTopColor)]: ref(variantCheckedBorderTopColor),
+            [toVariableKey(toggleCheckedBorderRightColor)]: ref(variantCheckedBorderRightColor),
+            [toVariableKey(toggleCheckedBorderBottomColor)]: ref(variantCheckedBorderBottomColor),
+            [toVariableKey(toggleCheckedBorderLeftColor)]: ref(variantCheckedBorderLeftColor),
+            [toVariableKey(toggleCheckedDisabledBackground)]: ref(variantCheckedDisabledBackground),
+            [toVariableKey(toggleCheckedDisabledBorderTopColor)]: ref(
+                variantCheckedDisabledBorderTopColor
+            ),
+            [toVariableKey(toggleCheckedDisabledBorderRightColor)]: ref(
+                variantCheckedDisabledBorderRightColor
+            ),
+            [toVariableKey(toggleCheckedDisabledBorderBottomColor)]: ref(
+                variantCheckedDisabledBorderBottomColor
+            ),
+            [toVariableKey(toggleCheckedDisabledBorderLeftColor)]: ref(
+                variantCheckedDisabledBorderLeftColor
+            ),
+            [toVariableKey(toggleCheckedDisabledIndicatorBackground)]: ref(
+                variantCheckedDisabledIndicatorBackground
+            ),
+            [toVariableKey(toggleCheckedReadonlyBackground)]: ref(variantCheckedReadonlyBackground),
+            [toVariableKey(toggleCheckedReadonlyBorderTopColor)]: ref(
+                variantCheckedReadonlyBorderTopColor
+            ),
+            [toVariableKey(toggleCheckedReadonlyBorderRightColor)]: ref(
+                variantCheckedReadonlyBorderRightColor
+            ),
+            [toVariableKey(toggleCheckedReadonlyBorderBottomColor)]: ref(
+                variantCheckedReadonlyBorderBottomColor
+            ),
+            [toVariableKey(toggleCheckedReadonlyBorderLeftColor)]: ref(
+                variantCheckedReadonlyBorderLeftColor
+            ),
+            [toVariableKey(toggleCheckedReadonlyIndicatorBackground)]: ref(
+                variantCheckedReadonlyIndicatorBackground
+            )
+        },
+        options
+    );
+}
+
+export function useToggleThemeSizeSelectors(
+    variant: ToggleSizeVariant,
+    userOptions: DefinitionOptions
+) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    const {
+        toggleBorderTopLeftRadius,
+        toggleBorderTopRightRadius,
+        toggleBorderBottomRightRadius,
+        toggleBorderBottomLeftRadius,
+        toggleFontSize,
+        toggleHeight,
+        toggleWidth,
+        toggleIndicatorMarginTop,
+        toggleIndicatorMarginRight,
+        toggleIndicatorMarginBottom,
+        toggleIndicatorMarginLeft
+    } = useToggleThemeVariables(options);
+    const {
+        variantFontSize,
+        variantHeight,
+        variantWidth,
+        variantBorderTopLeftRadius,
+        variantBorderTopRightRadius,
+        variantBorderBottomRightRadius,
+        variantBorderBottomLeftRadius,
+        variantIndicatorMarginTop,
+        variantIndicatorMarginRight,
+        variantIndicatorMarginBottom,
+        variantIndicatorMarginLeft
+    } = setExportsNamespace(useToggleThemeSizeVariables(variant, options), 'variant');
+
+    selector(
+        `.toggle.-${variant}`,
+        {
+            [toVariableKey(toggleFontSize)]: ref(variantFontSize),
+            [toVariableKey(toggleHeight)]: ref(variantHeight),
+            [toVariableKey(toggleWidth)]: ref(variantWidth),
+            [toVariableKey(toggleBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
+            [toVariableKey(toggleBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
+            [toVariableKey(toggleBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
+            [toVariableKey(toggleBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
+            [toVariableKey(toggleIndicatorMarginTop)]: ref(variantIndicatorMarginTop),
+            [toVariableKey(toggleIndicatorMarginRight)]: ref(variantIndicatorMarginRight),
+            [toVariableKey(toggleIndicatorMarginBottom)]: ref(variantIndicatorMarginBottom),
+            [toVariableKey(toggleIndicatorMarginLeft)]: ref(variantIndicatorMarginLeft)
+        },
+        options
+    );
+}
+
+/**
+ * Composables
+ */
+
+export function useToggleThemeColors(colors: ToggleColorVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    colors.forEach((color) => useToggleThemeColorSelectors(color, options));
+}
+
+export function useToggleThemeSizes(sizes: ToggleSizeVariant[], userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    sizes.forEach((size) => useToggleThemeSizeSelectors(size, options));
+}
+
+export function useToggleTheme(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    useToggleThemeVariables(options);
+    useToggleThemeLayout(options);
+    useToggleThemeBase(options);
+    useToggleThemeSizes([...defaultToggleSizes], options);
+    useToggleThemeColors([...defaultToggleColors], options);
 }

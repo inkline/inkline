@@ -1,7 +1,7 @@
 import { defineConfig } from '@inkline/config';
-import { useRadioGroupTheme, useRadioTheme } from './src/theme';
+// import { useRadioGroupTheme, useRadioTheme } from './src/theme';
 
 export default defineConfig(() => {
-    useRadioGroupTheme();
-    useRadioTheme();
+    // useRadioGroupTheme(options);
+    // useRadioTheme(options);
 });

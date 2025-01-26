@@ -693,7 +693,7 @@
             "font-size-min": {
                 "__type": "variable",
                 "__name": "font-size-min",
-                "__value": 18
+                "__value": 16
             },
             "font-size-max": {
                 "__type": "variable",
@@ -1237,182 +1237,7 @@
                 "__name": "icon--font-size",
                 "__value": {
                     "__type": "reference",
-                    "__name": "font-size"
-                }
-            },
-            "size-multiplier": {
-                "__type": "variable",
-                "__name": "size-multiplier",
-                "__value": 1
-            },
-            "size-multiplier-xxs": {
-                "__type": "variable",
-                "__name": "size-multiplier-xxs",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-3"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-xs": {
-                "__type": "variable",
-                "__name": "size-multiplier-xs",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-2"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-sm": {
-                "__type": "variable",
-                "__name": "size-multiplier-sm",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "/",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-1"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-md": {
-                "__type": "variable",
-                "__name": "size-multiplier-md",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "size-multiplier"
-                }
-            },
-            "size-multiplier-lg": {
-                "__type": "variable",
-                "__name": "size-multiplier-lg",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-1"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-xl": {
-                "__type": "variable",
-                "__name": "size-multiplier-xl",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-2"
-                        }
-                    ]
-                }
-            },
-            "size-multiplier-xxl": {
-                "__type": "variable",
-                "__name": "size-multiplier-xxl",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "scale-pow-3"
-                        }
-                    ]
-                }
-            },
-            "icon--sm--font-size": {
-                "__type": "variable",
-                "__name": "icon--sm--font-size",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "icon--font-size"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-sm"
-                        }
-                    ]
-                }
-            },
-            "icon--md--font-size": {
-                "__type": "variable",
-                "__name": "icon--md--font-size",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "icon--font-size"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-md"
-                        }
-                    ]
-                }
-            },
-            "icon--lg--font-size": {
-                "__type": "variable",
-                "__name": "icon--lg--font-size",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "icon--font-size"
-                        },
-                        "*",
-                        {
-                            "__type": "reference",
-                            "__name": "size-multiplier-lg"
-                        }
-                    ]
+                    "__name": "font-size-md"
                 }
             }
         },
@@ -1421,6 +1246,7 @@
                 "__type": "selector",
                 "__name": ".icon",
                 "__value": {
+                    "overflow": "visible",
                     "fontSize": {
                         "__type": "reference",
                         "__name": "icon--font-size"
@@ -1431,9 +1257,9 @@
                 "__type": "selector",
                 "__name": ".icon.-sm",
                 "__value": {
-                    "fontSize": {
+                    "--icon--font-size": {
                         "__type": "reference",
-                        "__name": "icon--sm--font-size"
+                        "__name": "icon--font-size"
                     }
                 }
             },
@@ -1441,9 +1267,9 @@
                 "__type": "selector",
                 "__name": ".icon.-md",
                 "__value": {
-                    "fontSize": {
+                    "--icon--font-size": {
                         "__type": "reference",
-                        "__name": "icon--md--font-size"
+                        "__name": "icon--font-size"
                     }
                 }
             },
@@ -1451,9 +1277,9 @@
                 "__type": "selector",
                 "__name": ".icon.-lg",
                 "__value": {
-                    "fontSize": {
+                    "--icon--font-size": {
                         "__type": "reference",
-                        "__name": "icon--lg--font-size"
+                        "__name": "icon--font-size"
                     }
                 }
             }

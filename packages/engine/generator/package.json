@@ -13,8 +13,8 @@
     "devDependencies": {
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
-        "@types/color": "^3.0.6",
-        "@types/node": "^20.14.5",
+        "@types/color": "catalog:",
+        "@types/node": "catalog:",
         "@vitest/coverage-v8": "catalog:",
         "eslint": "catalog:",
         "tsup": "catalog:",
@@ -42,7 +42,7 @@
         "@inkline/core": "workspace:*",
         "@inkline/utils": "workspace:*",
         "color": "^4.2.3",
-        "nanoid": "^5.0.7"
+        "nanoid": "^5.0.9"
     },
     "funding": {
         "type": "github",

@@ -45,7 +45,11 @@ component.command('build').description('Build the component package.').action(co
 component
     .command('watch')
     .description('Watch for changes in the component files and generate files accordingly.')
-    .option('-p, --pattern <pattern...>', 'The pattern to be used', ['src'])
+    .option('-p, --pattern <pattern...>', 'The pattern to be used', [
+        'src/**/*.ts',
+        'src/**/*.vue',
+        'src/**/*.json'
+    ])
     .action(componentWatch);
 
 program

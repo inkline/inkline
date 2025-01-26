@@ -65,7 +65,7 @@ export function useBreadcrumbItemThemeBase(userOptions: DefinitionOptions) {
     selector(
         '.breadcrumb-item.-active, .breadcrumb-item.-active a',
         {
-            color: vref(breadcrumbActiveColor)
+            color: ref(breadcrumbActiveColor)
         },
         options
     );

@@ -22,7 +22,7 @@
         "normalize.css": "catalog:",
         "typescript": "catalog:",
         "vite": "catalog:",
-        "vitepress": "^1.5.0",
+        "vitepress": "^1.6.3",
         "vitest": "catalog:",
         "vue": "catalog:"
     },

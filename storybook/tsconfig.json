@@ -9,7 +9,7 @@
             "inkline": [
                 "../packages/inkline/src/index.ts"
             ],
-            "inkline/": [
+            "inkline/*": [
                 "../packages/inkline/src/*"
             ],
             "@inkline/config": [
@@ -45,68 +45,12 @@
             "@inkline/components": [
                 "../packages/ui/components/bundle/src/index.ts"
             ],
+            "@inkline/component-*/examples": [
+                "../packages/ui/components/*/src/examples/index.ts",
+                "../packages/ui/components/*/src/examples.ts"
+            ],
             "@inkline/component-*": [
-                "../packages/ui/components/src/index.ts"
-            ],
-            "@inkline/component-alert": [
-                "../packages/ui/components/alert/src/index.ts"
-            ],
-            "@inkline/component-badge": [
-                "../packages/ui/components/badge/src/index.ts"
-            ],
-            "@inkline/component-breadcrumb": [
-                "../packages/ui/components/breadcrumb/src/index.ts"
-            ],
-            "@inkline/component-button": [
-                "../packages/ui/components/button/src/index.ts"
-            ],
-            "@inkline/component-button-group": [
-                "../packages/ui/components/button-group/src/index.ts"
-            ],
-            "@inkline/component-card": [
-                "../packages/ui/components/card/src/index.ts"
-            ],
-            "@inkline/component-checkbox": [
-                "../packages/ui/components/checkbox/src/index.ts"
-            ],
-            "@inkline/component-form-group": [
-                "../packages/ui/components/form-group/src/index.ts"
-            ],
-            "@inkline/component-icon": [
-                "../packages/ui/components/icon/src/index.ts"
-            ],
-            "@inkline/component-input": [
-                "../packages/ui/components/input/src/index.ts"
-            ],
-            "@inkline/component-loader": [
-                "../packages/ui/components/loader/src/index.ts"
-            ],
-            "@inkline/component-media": [
-                "../packages/ui/components/media/src/index.ts"
-            ],
-            "@inkline/component-modal": [
-                "../packages/ui/components/modal/src/index.ts"
-            ],
-            "@inkline/component-popover": [
-                "../packages/ui/components/popover/src/index.ts"
-            ],
-            "@inkline/component-popup": [
-                "../packages/ui/components/popup/src/index.ts"
-            ],
-            "@inkline/component-radio": [
-                "../packages/ui/components/radio/src/index.ts"
-            ],
-            "@inkline/component-textarea": [
-                "../packages/ui/components/textarea/src/index.ts"
-            ],
-            "@inkline/component-toast": [
-                "../packages/ui/components/toast/src/index.ts"
-            ],
-            "@inkline/component-toggle": [
-                "../packages/ui/components/toggle/src/index.ts"
-            ],
-            "@inkline/component-tooltip": [
-                "../packages/ui/components/tooltip/src/index.ts"
+                "../packages/ui/components/*/src/index.ts"
             ]
         }
     },

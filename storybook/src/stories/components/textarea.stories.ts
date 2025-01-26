@@ -1,5 +1,5 @@
 import './textarea.preview.css';
-import { Textarea } from '@inkline/component-textarea';
+import { Textarea } from '@inkline/component-input';
 import {
     TextareaBasicExample,
     TextareaColorVariantsExample,
@@ -11,7 +11,7 @@ import {
     TextareaPrependAppendButtonExample,
     TextareaPrependAppendDropdownExample,
     TextareaPrefixSuffixExample
-} from '@inkline/component-textarea/examples';
+} from '@inkline/component-input/examples';
 import { markRaw } from 'vue';
 import { Meta, StoryFn } from '@storybook/vue3';
 

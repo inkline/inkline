@@ -89,11 +89,11 @@ export default defineComponent({
          * The offset of the tooltip relative to the trigger element
          * @name offset
          * @type Number
-         * @default 6
+         * @default 8
          */
         offset: {
             type: Number,
-            default: 6
+            default: 8
         },
         /**
          * Determines whether hover state should be transferred from trigger to popup

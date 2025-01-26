@@ -249,13 +249,12 @@ export function usePopup({
             const { x: arrowX, y: arrowY } = middlewareData.arrow ?? {};
 
             const arrowSide = arrowSideByPlacement[placementSide];
+            const arrowOffset = Math.min(arrowElement.offsetHeight, arrowElement.offsetWidth) - 1;
 
             arrowStyles.value = {
-                left: arrowX !== null ? `${arrowX}px` : '',
-                top: arrowY !== null ? `${arrowY}px` : '',
-                right: '',
-                bottom: '',
-                [arrowSide as string]: `-6px`
+                ...(arrowSide === 'top' || arrowSide === 'bottom' ? { left: `${arrowX}px` } : {}),
+                ...(arrowSide === 'left' || arrowSide === 'right' ? { top: `${arrowY}px` } : {}),
+                [arrowSide as string]: `-${arrowOffset}px`
             };
         }
     }

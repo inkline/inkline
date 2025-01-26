@@ -49,7 +49,7 @@ export function useCardThemeColorConfig(variant: CardColorVariant, userOptions: 
 
     const {
         colorLightShade50,
-        colorLight,
+        colorWhite,
         colorDarkTint50,
         colorDark,
         colorPrimaryShade50,
@@ -77,13 +77,19 @@ export function useCardThemeColorConfig(variant: CardColorVariant, userOptions: 
     } = useContrastTextColor(options);
 
     return {
+        /**
+         * @variant light
+         */
         light: {
             border: {
                 color: ref(colorLightShade50)
             },
-            background: ref(colorLight),
+            background: ref(colorWhite),
             color: ref(contrastTextColorLight)
         },
+        /**
+         * @variant dark
+         */
         dark: {
             border: {
                 color: ref(colorDarkTint50)
@@ -91,6 +97,9 @@ export function useCardThemeColorConfig(variant: CardColorVariant, userOptions: 
             background: ref(colorDark),
             color: ref(contrastTextColorDark)
         },
+        /**
+         * @variant primary
+         */
         primary: {
             border: {
                 color: ref(colorPrimaryShade50)
@@ -98,6 +107,9 @@ export function useCardThemeColorConfig(variant: CardColorVariant, userOptions: 
             background: ref(colorPrimary),
             color: ref(contrastTextColorPrimary)
         },
+        /**
+         * @variant secondary
+         */
         secondary: {
             border: {
                 color: ref(colorSecondaryShade50)
@@ -105,6 +117,9 @@ export function useCardThemeColorConfig(variant: CardColorVariant, userOptions: 
             background: ref(colorSecondary),
             color: ref(contrastTextColorSecondary)
         },
+        /**
+         * @variant success
+         */
         success: {
             border: {
                 color: ref(colorSuccessShade50)
@@ -112,6 +127,9 @@ export function useCardThemeColorConfig(variant: CardColorVariant, userOptions: 
             background: ref(colorSuccess),
             color: ref(contrastTextColorSuccess)
         },
+        /**
+         * @variant danger
+         */
         danger: {
             border: {
                 color: ref(colorDangerShade50)
@@ -119,6 +137,9 @@ export function useCardThemeColorConfig(variant: CardColorVariant, userOptions: 
             background: ref(colorDanger),
             color: ref(contrastTextColorDanger)
         },
+        /**
+         * @variant warning
+         */
         warning: {
             border: {
                 color: ref(colorWarningShade50)
@@ -126,6 +147,9 @@ export function useCardThemeColorConfig(variant: CardColorVariant, userOptions: 
             background: ref(colorWarning),
             color: ref(contrastTextColorWarning)
         },
+        /**
+         * @variant info
+         */
         info: {
             border: {
                 color: ref(colorInfoShade50)
@@ -276,7 +300,7 @@ export function useCardThemeColorVariables(
 ) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    return nsvariables(ns, useCardThemeColorConfig(variant, options), {
+    return nsvariables([ns, variant] as const, useCardThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
     });
@@ -288,7 +312,7 @@ export function useCardThemeSizeVariables(
 ) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    return nsvariables(ns, useCardThemeSizeConfig(variant, options), {
+    return nsvariables([ns, variant] as const, useCardThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
@@ -303,7 +327,11 @@ export function useCardThemeVariables(userOptions: DefinitionOptions) {
     });
 }
 
-export function useCardThemeLayout(userOptions: DefinitionOptions) {
+/**
+ * Selectors
+ */
+
+export function useCardThemeLayoutSelectors(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     selector(
@@ -320,19 +348,12 @@ export function useCardThemeLayout(userOptions: DefinitionOptions) {
     );
 }
 
-/**
- * Selecotrs
- */
-
 export function useCardThemeBaseSelectors(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const {
         cardBorderStyle,
-        cardBorderTopColor,
-        cardBorderRightColor,
-        cardBorderBottomColor,
-        cardBorderLeftColor,
+        cardBorderColor,
         cardBorderWidth,
         cardPadding,
         cardBorderRadius,
@@ -349,7 +370,7 @@ export function useCardThemeBaseSelectors(userOptions: DefinitionOptions) {
         '.card',
         {
             boxShadow: vref(cardBoxShadow),
-            color: vref(cardColor),
+            color: ref(cardColor),
             fontSize: ref(cardFontSize)
         },
         options
@@ -358,12 +379,9 @@ export function useCardThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         ['.card-header', '.card-body', '.card-footer'],
         {
-            background: vref(cardBackground),
+            background: ref(cardBackground),
             borderStyle: vref(cardBorderStyle),
-            borderTopColor: vref(cardBorderTopColor),
-            borderRightColor: vref(cardBorderRightColor),
-            borderBottomColor: vref(cardBorderBottomColor),
-            borderLeftColor: vref(cardBorderLeftColor),
+            borderColor: vref(cardBorderColor),
             borderWidth: vref(cardBorderWidth),
             padding: vref(cardPadding),
             transitionProperty: ref(cardTransitionProperty),
@@ -441,11 +459,7 @@ export function useCardThemeColorSelectors(
     } = setExportsNamespace(useCardThemeColorVariables(variant, options), 'variant');
 
     selector(
-        [
-            `.card.-${variant} .card-header`,
-            `.card.-${variant} .card-body`,
-            `.card.-${variant} .card-footer`
-        ],
+        `.card.-${variant}`,
         {
             [toVariableKey(cardBorderTopColor)]: ref(variantBorderTopColor),
             [toVariableKey(cardBorderRightColor)]: ref(variantBorderRightColor),
@@ -525,7 +539,7 @@ export function useCardTheme(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     useCardThemeVariables(options);
-    useCardThemeLayout(options);
+    useCardThemeLayoutSelectors(options);
     useCardThemeBaseSelectors(options);
     useCardThemeColors([...defaultCardColors], options);
     useCardThemeSizes([...defaultCardSizes], options);

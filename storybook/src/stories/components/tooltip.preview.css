@@ -1,10 +1,10 @@
 #storybook-root {
     > .button[data-popup-type="tooltip"] {
-        display: inline-flex;
-        margin: 80px auto;
+        display: flex;
+        margin: 200px auto;
     }
 
     > .tooltip-trigger {
-        margin: 80px auto;
+        margin: 200px auto;
     }
 }

@@ -42,7 +42,7 @@ export function usePopoverThemeColorConfig(
 ) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    const { colorLightShade50, colorLight, colorDarkTint50, colorDark } = useColors(options);
+    const { colorLightShade50, colorWhite, colorDarkTint50, colorDark } = useColors(options);
     const { contrastTextColorLight, contrastTextColorDark } = useContrastTextColor(options);
 
     return {
@@ -50,7 +50,7 @@ export function usePopoverThemeColorConfig(
             border: {
                 color: ref(colorLightShade50)
             },
-            background: ref(colorLight),
+            background: ref(colorWhite),
             color: ref(contrastTextColorLight)
         },
         dark: {
@@ -236,7 +236,7 @@ export function usePopoverThemeColorVariables(
 ) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    return nsvariables(ns, usePopoverThemeColorConfig(variant, options), {
+    return nsvariables([ns, variant] as const, usePopoverThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
     });
@@ -248,7 +248,7 @@ export function usePopoverThemeSizeVariables(
 ) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    return nsvariables(ns, usePopoverThemeSizeConfig(variant, options), {
+    return nsvariables([ns, variant] as const, usePopoverThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
@@ -432,7 +432,7 @@ export function usePopoverThemeBaseSelectors(userOptions: DefinitionOptions) {
         '.popover',
         {
             boxShadow: vref(popoverBoxShadow),
-            color: vref(popoverColor),
+            color: ref(popoverColor),
             fontSize: ref(popoverFontSize)
         },
         options
@@ -441,12 +441,12 @@ export function usePopoverThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         ['.popover-header', '.popover-body', '.popover-footer'],
         {
-            background: vref(popoverBackground),
+            background: ref(popoverBackground),
             borderStyle: vref(popoverBorderStyle),
-            borderTopColor: vref(popoverBorderTopColor),
-            borderRightColor: vref(popoverBorderRightColor),
-            borderBottomColor: vref(popoverBorderBottomColor),
-            borderLeftColor: vref(popoverBorderLeftColor),
+            borderTopColor: ref(popoverBorderTopColor),
+            borderRightColor: ref(popoverBorderRightColor),
+            borderBottomColor: ref(popoverBorderBottomColor),
+            borderLeftColor: ref(popoverBorderLeftColor),
             borderWidth: vref(popoverBorderWidth),
             padding: vref(popoverPadding),
             transitionProperty: ref(popoverTransitionProperty),
@@ -532,7 +532,16 @@ export function usePopoverThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.popover[data-popup-placement^="top"] .popover-arrow::after',
         {
-            bottom: '1px'
+            bottom: '1px',
+            borderTopColor: ref(popoverBackground)
+        },
+        options
+    );
+
+    selector(
+        '.popover[data-popup-placement^="top"] .popover-arrow',
+        {
+            borderTopColor: ref(popoverBorderTopColor)
         },
         options
     );
@@ -540,7 +549,16 @@ export function usePopoverThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.popover[data-popup-placement^="bottom"] .popover-arrow::after',
         {
-            top: '1px'
+            top: '1px',
+            borderBottomColor: ref(popoverBackground)
+        },
+        options
+    );
+
+    selector(
+        '.popover[data-popup-placement^="bottom"] .popover-arrow',
+        {
+            borderBottomColor: ref(popoverBorderBottomColor)
         },
         options
     );
@@ -548,7 +566,16 @@ export function usePopoverThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.popover[data-popup-placement^="left"] .popover-arrow::after',
         {
-            right: '1px'
+            right: '1px',
+            borderLeftColor: ref(popoverBackground)
+        },
+        options
+    );
+
+    selector(
+        '.popover[data-popup-placement^="left"] .popover-arrow',
+        {
+            borderLeftColor: ref(popoverBorderLeftColor)
         },
         options
     );
@@ -556,7 +583,16 @@ export function usePopoverThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.popover[data-popup-placement^="right"] .popover-arrow::after',
         {
-            left: '1px'
+            left: '1px',
+            borderRightColor: ref(popoverBackground)
+        },
+        options
+    );
+
+    selector(
+        '.popover[data-popup-placement^="right"] .popover-arrow',
+        {
+            borderRightColor: ref(popoverBorderRightColor)
         },
         options
     );

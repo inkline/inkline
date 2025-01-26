@@ -82,6 +82,7 @@ export function useIconThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.icon',
         {
+            overflow: 'visible',
             fontSize: ref(iconFontSize)
         },
         options

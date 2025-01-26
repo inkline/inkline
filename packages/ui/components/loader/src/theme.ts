@@ -14,7 +14,7 @@ import { useBrandColors, useSpacing } from '@inkline/theme';
 
 const ns = 'loader';
 
-const defaultLoaderColor = 'primary';
+const defaultLoaderColor = 'light';
 const defaultLoaderColors = ['primary', 'light', 'dark'] as const;
 
 const defaultLoaderSize = 'md';

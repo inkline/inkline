@@ -81,7 +81,7 @@ export function useFormErrorThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.form-error',
         {
-            color: vref(formErrorColor),
+            color: ref(formErrorColor),
             fontSize: ref(formErrorFontSize),
             margin: vref(formErrorMargin)
         },

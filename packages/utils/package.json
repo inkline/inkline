@@ -20,7 +20,7 @@
         "eslint": "catalog:",
         "jsdom": "catalog:",
         "tsup": "catalog:",
-        "type-fest": "^4.26.1",
+        "type-fest": "^4.33.0",
         "typescript": "catalog:",
         "vite": "catalog:",
         "vitest": "catalog:"

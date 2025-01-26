@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > Grid > should render correctly 1`] = `
+"<div class="grid">
+  <!-- @slot default Slot for default row content -->
+</div>"
+`;

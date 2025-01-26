@@ -583,6 +583,11 @@ export function useInputThemeBaseSelectors(userOptions: DefinitionOptions) {
         inputBorderBottomColor,
         inputBorderLeftColor,
         inputBorderWidth,
+        inputBorderRightWidth,
+        inputBorderRightStyle,
+        inputBorderLeftWidth,
+        inputBorderLeftStyle,
+        inputBorderColor,
         inputBorderTopLeftRadius,
         inputBorderTopRightRadius,
         inputBorderBottomRightRadius,
@@ -623,12 +628,9 @@ export function useInputThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.input .input-field',
         {
-            background: vref(inputBackground),
+            background: ref(inputBackground),
             borderStyle: vref(inputBorderStyle),
-            borderTopColor: vref(inputBorderTopColor),
-            borderRightColor: vref(inputBorderRightColor),
-            borderBottomColor: vref(inputBorderBottomColor),
-            borderLeftColor: vref(inputBorderLeftColor),
+            borderColor: vref(inputBorderColor),
             borderWidth: vref(inputBorderWidth),
             borderRadius: vref(inputBorderRadius),
             boxShadow: vref(inputBoxShadow),
@@ -647,7 +649,7 @@ export function useInputThemeBaseSelectors(userOptions: DefinitionOptions) {
             '.input .input-field > textarea'
         ],
         {
-            color: vref(inputColor),
+            color: ref(inputColor),
             lineHeight: ref(inputLineHeight),
             padding: vref(inputPadding)
         },
@@ -669,10 +671,7 @@ export function useInputThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         ['.input .input-field .input-prefix', '.input .input-field .input-suffix'],
         {
-            borderTopColor: vref(inputBorderTopColor),
-            borderRightColor: vref(inputBorderRightColor),
-            borderBottomColor: vref(inputBorderBottomColor),
-            borderLeftColor: vref(inputBorderLeftColor),
+            borderColor: vref(inputBorderColor),
             paddingLeft: ref(inputPaddingLeft),
             paddingRight: ref(inputPaddingRight),
             transitionProperty: ref(inputTransitionProperty),
@@ -685,9 +684,9 @@ export function useInputThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.input .input-field .input-prefix',
         {
-            borderRightWidth: ref(inputBorderWidth),
-            borderRightStyle: ref(inputBorderStyle),
-            color: vref(inputPrefixColor)
+            borderRightWidth: ref(inputBorderRightWidth),
+            borderRightStyle: ref(inputBorderRightStyle),
+            color: ref(inputPrefixColor)
         },
         options
     );
@@ -695,9 +694,9 @@ export function useInputThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.input .input-field .input-suffix',
         {
-            borderLeftWidth: ref(inputBorderWidth),
-            borderLeftStyle: ref(inputBorderStyle),
-            color: vref(inputSuffixColor)
+            borderLeftWidth: ref(inputBorderLeftWidth),
+            borderLeftStyle: ref(inputBorderLeftStyle),
+            color: ref(inputSuffixColor)
         },
         options
     );
@@ -705,7 +704,7 @@ export function useInputThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.input .input-field .input-icon',
         {
-            color: vref(inputIconColor),
+            color: ref(inputIconColor),
             width: ref(inputIconWidth),
             height: ref(inputIconHeight),
             transitionProperty: ref(inputTransitionProperty),
@@ -718,10 +717,10 @@ export function useInputThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         ['.input.-hover .input-field', '.input:hover .input-field'],
         {
-            borderTopColor: vref(inputHoverBorderTopColor),
-            borderRightColor: vref(inputHoverBorderRightColor),
-            borderBottomColor: vref(inputHoverBorderBottomColor),
-            borderLeftColor: vref(inputHoverBorderLeftColor)
+            borderTopColor: ref(inputHoverBorderTopColor),
+            borderRightColor: ref(inputHoverBorderRightColor),
+            borderBottomColor: ref(inputHoverBorderBottomColor),
+            borderLeftColor: ref(inputHoverBorderLeftColor)
         },
         options
     );
@@ -764,7 +763,7 @@ export function useInputThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.input.-disabled .input-field',
         {
-            background: vref(inputDisabledBackground)
+            background: ref(inputDisabledBackground)
         },
         options
     );
@@ -772,7 +771,7 @@ export function useInputThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.input.-readonly .input-field',
         {
-            background: vref(inputReadonlyBackground)
+            background: ref(inputReadonlyBackground)
         },
         options
     );
@@ -780,12 +779,12 @@ export function useInputThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         ['.input .input-prepend', '.input .input-append'],
         {
-            background: vref(inputBackground),
+            background: ref(inputBackground),
             borderStyle: vref(inputBorderStyle),
-            borderTopColor: vref(inputBorderTopColor),
-            borderRightColor: vref(inputBorderRightColor),
-            borderBottomColor: vref(inputBorderBottomColor),
-            borderLeftColor: vref(inputBorderLeftColor),
+            borderTopColor: ref(inputBorderTopColor),
+            borderRightColor: ref(inputBorderRightColor),
+            borderBottomColor: ref(inputBorderBottomColor),
+            borderLeftColor: ref(inputBorderLeftColor),
             borderWidth: vref(inputBorderWidth),
             fontSize: ref(inputFontSize),
             lineHeight: ref(inputLineHeight),

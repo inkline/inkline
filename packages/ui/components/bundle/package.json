@@ -21,6 +21,7 @@
         "@inkline/component-card": "workspace:*",
         "@inkline/component-checkbox": "workspace:*",
         "@inkline/component-form-group": "workspace:*",
+        "@inkline/component-grid": "workspace:*",
         "@inkline/component-icon": "workspace:*",
         "@inkline/component-input": "workspace:*",
         "@inkline/component-loader": "workspace:*",
@@ -29,7 +30,6 @@
         "@inkline/component-popover": "workspace:*",
         "@inkline/component-popup": "workspace:*",
         "@inkline/component-radio": "workspace:*",
-        "@inkline/component-textarea": "workspace:*",
         "@inkline/component-toast": "workspace:*",
         "@inkline/component-toggle": "workspace:*",
         "@inkline/component-tooltip": "workspace:*"

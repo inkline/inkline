@@ -3413,7 +3413,7 @@
             "font-size-min": {
                 "__type": "variable",
                 "__name": "font-size-min",
-                "__value": 18
+                "__value": 16
             },
             "font-size-max": {
                 "__type": "variable",
@@ -3955,12 +3955,18 @@
             "spacing-min": {
                 "__type": "variable",
                 "__name": "spacing-min",
-                "__value": 18
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-min"
+                }
             },
             "spacing-max": {
                 "__type": "variable",
                 "__name": "spacing-max",
-                "__value": 20
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-max"
+                }
             },
             "spacing-min-2xs": {
                 "__type": "variable",
@@ -4570,6 +4576,102 @@
                     ]
                 }
             },
+            "spacing-xs-md": {
+                "__type": "variable",
+                "__name": "spacing-xs-md",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-xs"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max-md"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-xs"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "spacing-xs-lg": {
+                "__type": "variable",
+                "__name": "spacing-xs-lg",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-xs"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max-lg"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-xs"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "spacing-xs-xl": {
+                "__type": "variable",
+                "__name": "spacing-xs-xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-xs"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max-xl"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-xs"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
             "spacing-sm-md": {
                 "__type": "variable",
                 "__name": "spacing-sm-md",
@@ -4602,6 +4704,70 @@
                     ]
                 }
             },
+            "spacing-sm-lg": {
+                "__type": "variable",
+                "__name": "spacing-sm-lg",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-sm"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max-lg"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-sm"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "spacing-sm-xl": {
+                "__type": "variable",
+                "__name": "spacing-sm-xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-sm"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max-xl"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-sm"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
             "spacing-md-lg": {
                 "__type": "variable",
                 "__name": "spacing-md-lg",
@@ -4619,6 +4785,38 @@
                         {
                             "__type": "reference",
                             "__name": "spacing-max-lg"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-md"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "spacing-md-xl": {
+                "__type": "variable",
+                "__name": "spacing-md-xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-md"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max-xl"
                         },
                         " - ",
                         {
@@ -4833,11 +5031,7 @@
                 "__value": {
                     "color": {
                         "__type": "reference",
-                        "__name": "form-error--color",
-                        "__fallback": {
-                            "__type": "reference",
-                            "__name": "color-danger"
-                        }
+                        "__name": "form-error--color"
                     },
                     "fontSize": {
                         "__type": "reference",

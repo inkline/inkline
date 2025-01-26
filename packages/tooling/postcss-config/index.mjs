@@ -1,12 +1,12 @@
-import purgecss from '@fullhuman/postcss-purgecss';
+import { purgeCSSPlugin } from '@fullhuman/postcss-purgecss';
 
-export default (options = {}) => ({
+export default (options = { safelist: [] }) => ({
     plugins: [
-        purgecss({
+        purgeCSSPlugin({
             content: ['./src/**/*.html', './src/**/*.ts', './src/**/*.tsx', './src/**/*.vue'],
             variables: true,
             safelist: {
-                greedy: options.safelist || []
+                greedy: options.safelist ?? []
             }
         })
     ]

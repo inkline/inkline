@@ -7,15 +7,15 @@ import { ButtonGroup } from '@inkline/component-button-group';
 import { Card } from '@inkline/component-card';
 import { Checkbox, CheckboxGroup } from '@inkline/component-checkbox';
 import { FormGroup } from '@inkline/component-form-group';
+import { Grid } from '@inkline/component-grid';
 import { Icon } from '@inkline/component-icon';
-import { Input } from '@inkline/component-input';
+import { Input, Textarea } from '@inkline/component-input';
 import { Loader } from '@inkline/component-loader';
 import { Media } from '@inkline/component-media';
 import { Modal, ModalContainer } from '@inkline/component-modal';
 import { Popover } from '@inkline/component-popover';
 import { Popup } from '@inkline/component-popup';
 import { Radio, RadioGroup } from '@inkline/component-radio';
-import { Textarea } from '@inkline/component-textarea';
 import { Toast, ToastContainer } from '@inkline/component-toast';
 import { Toggle } from '@inkline/component-toggle';
 import { Tooltip } from '@inkline/component-tooltip';
@@ -31,6 +31,7 @@ export const components: Record<string, Component> = {
     Checkbox,
     CheckboxGroup,
     FormGroup,
+    Grid,
     Icon,
     Input,
     Loader,

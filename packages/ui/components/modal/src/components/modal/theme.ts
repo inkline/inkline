@@ -52,6 +52,7 @@ export function useModalThemeColorConfig(
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const {
+        colorWhite,
         colorLightShade50,
         colorLight,
         colorDarkTint50,
@@ -88,19 +89,19 @@ export function useModalThemeColorConfig(
             border: {
                 color: ref(colorLightShade50)
             },
-            background: ref(colorLight),
+            background: ref(colorWhite),
             color: ref(contrastTextColorLight),
             /**
              * @element header
              */
             header: {
-                background: ref(colorLightShade50)
+                background: ref(colorLight)
             },
             /**
              * @element footer
              */
             footer: {
-                background: ref(colorLightShade50)
+                background: ref(colorLight)
             }
         },
         /**
@@ -517,7 +518,7 @@ export function useModalThemeColorVariables(
 ) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    return nsvariables(ns, useModalThemeColorConfig(variant, options), {
+    return nsvariables([ns, variant] as const, useModalThemeColorConfig(variant, options), {
         ...options,
         registerComposed: false
     });
@@ -529,7 +530,7 @@ export function useModalThemeSizeVariables(
 ) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    return nsvariables(ns, useModalThemeSizeConfig(variant, options), {
+    return nsvariables([ns, variant] as const, useModalThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
@@ -683,7 +684,7 @@ export function useModalThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.modal-wrapper',
         {
-            background: vref(modalWrapperBackground)
+            background: ref(modalWrapperBackground)
         },
         options
     );
@@ -694,7 +695,7 @@ export function useModalThemeBaseSelectors(userOptions: DefinitionOptions) {
             maxWidth: ref(modalMaxWidth),
             width: ref(modalWidth),
             boxShadow: vref(modalBoxShadow),
-            color: vref(modalColor),
+            color: ref(modalColor),
             fontSize: ref(modalFontSize)
         },
         options
@@ -703,14 +704,14 @@ export function useModalThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.modal-header',
         {
-            background: vref(modalHeaderBackground),
+            background: ref(modalHeaderBackground),
             borderRadius: vref(modalBorderRadius),
-            color: vref(modalColor),
+            color: ref(modalColor),
             borderStyle: vref(modalBorderStyle),
-            borderTopColor: vref(modalBorderTopColor),
-            borderRightColor: vref(modalBorderRightColor),
-            borderBottomColor: vref(modalBorderBottomColor),
-            borderLeftColor: vref(modalBorderLeftColor),
+            borderTopColor: ref(modalBorderTopColor),
+            borderRightColor: ref(modalBorderRightColor),
+            borderBottomColor: ref(modalBorderBottomColor),
+            borderLeftColor: ref(modalBorderLeftColor),
             borderWidth: vref(modalBorderWidth),
             padding: vref(modalPadding),
             transitionProperty: ref(modalTransitionProperty),
@@ -723,15 +724,15 @@ export function useModalThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.modal-body',
         {
-            background: vref(modalBackground),
+            background: ref(modalBackground),
             borderRadius: vref(modalBorderRadius),
             borderStyle: vref(modalBorderStyle),
-            borderTopColor: vref(modalBorderTopColor),
-            borderRightColor: vref(modalBorderRightColor),
-            borderBottomColor: vref(modalBorderBottomColor),
-            borderLeftColor: vref(modalBorderLeftColor),
+            borderTopColor: ref(modalBorderTopColor),
+            borderRightColor: ref(modalBorderRightColor),
+            borderBottomColor: ref(modalBorderBottomColor),
+            borderLeftColor: ref(modalBorderLeftColor),
             borderWidth: vref(modalBorderWidth),
-            color: vref(modalColor),
+            color: ref(modalColor),
             padding: vref(modalPadding),
             transitionProperty: ref(modalTransitionProperty),
             transitionDuration: ref(modalTransitionDuration),
@@ -743,14 +744,14 @@ export function useModalThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.modal-footer',
         {
-            background: vref(modalFooterBackground),
+            background: ref(modalFooterBackground),
             borderRadius: vref(modalBorderRadius),
-            color: vref(modalColor),
+            color: ref(modalColor),
             borderStyle: vref(modalBorderStyle),
-            borderTopColor: vref(modalBorderTopColor),
-            borderRightColor: vref(modalBorderRightColor),
-            borderBottomColor: vref(modalBorderBottomColor),
-            borderLeftColor: vref(modalBorderLeftColor),
+            borderTopColor: ref(modalBorderTopColor),
+            borderRightColor: ref(modalBorderRightColor),
+            borderBottomColor: ref(modalBorderBottomColor),
+            borderLeftColor: ref(modalBorderLeftColor),
             borderWidth: vref(modalBorderWidth),
             padding: vref(modalPadding),
             transitionProperty: ref(modalTransitionProperty),
@@ -797,7 +798,7 @@ export function useModalThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.modal .modal-close',
         {
-            color: vref(modalColor)
+            color: ref(modalColor)
         },
         options
     );
@@ -833,7 +834,9 @@ export function useModalThemeColorSelectors(
         modalBorderBottomColor,
         modalBorderLeftColor,
         modalBackground,
-        modalColor
+        modalColor,
+        modalHeaderBackground,
+        modalFooterBackground
     } = useModalThemeVariables(options);
 
     const {
@@ -842,7 +845,9 @@ export function useModalThemeColorSelectors(
         variantBorderBottomColor,
         variantBorderLeftColor,
         variantBackground,
-        variantColor
+        variantColor,
+        variantHeaderBackground,
+        variantFooterBackground
     } = setExportsNamespace(useModalThemeColorVariables(variant, options), 'variant');
 
     selector(
@@ -853,7 +858,9 @@ export function useModalThemeColorSelectors(
             [toVariableKey(modalBorderBottomColor)]: ref(variantBorderBottomColor),
             [toVariableKey(modalBorderLeftColor)]: ref(variantBorderLeftColor),
             [toVariableKey(modalBackground)]: ref(variantBackground),
-            [toVariableKey(modalColor)]: ref(variantColor)
+            [toVariableKey(modalColor)]: ref(variantColor),
+            [toVariableKey(modalHeaderBackground)]: ref(variantHeaderBackground),
+            [toVariableKey(modalFooterBackground)]: ref(variantFooterBackground)
         },
         options
     );

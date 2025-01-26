@@ -88,11 +88,14 @@
 
 .input .input-field {
     background: var(--input--background);
-    border-style: var(--input--border-style);
-    border-color: var(--input--border-color);
-    border-width: var(--input--border-width);
-    border-radius: var(--input--border-radius);
-    box-shadow: var(--input--box-shadow);
+    border-style: var(--input--border-style, var(--input--border-top-style) var(--input--border-right-style) var(--input--border-bottom-style) var(--input--border-left-style));
+    border-top-color: var(--input--border-top-color);
+    border-right-color: var(--input--border-right-color);
+    border-bottom-color: var(--input--border-bottom-color);
+    border-left-color: var(--input--border-left-color);
+    border-width: var(--input--border-width, var(--input--border-top-width) var(--input--border-right-width) var(--input--border-bottom-width) var(--input--border-left-width));
+    border-radius: var(--input--border-radius, var(--input--border-top-left-radius) var(--input--border-top-right-radius) var(--input--border-bottom-right-radius) var(--input--border-bottom-left-radius));
+    box-shadow: var(--input--box-shadow, var(--input--box-shadow-offset-x) var(--input--box-shadow-offset-y) var(--input--box-shadow-blur-radius) var(--input--box-shadow-spread-radius) var(--input--box-shadow-color));
     font-size: var(--input--font-size);
     transition-property: var(--input--transition-property);
     transition-duration: var(--input--transition-duration);
@@ -102,7 +105,7 @@
 .input .input-field > input, .input .input-field > select, .input .input-field > textarea {
     color: var(--input--color);
     line-height: var(--input--line-height);
-    padding: var(--input--padding);
+    padding: var(--input--padding, var(--input--padding-top) var(--input--padding-right) var(--input--padding-bottom) var(--input--padding-left));
 }
 
 .input .input-field > input::placeholder, .input .input-field > select::placeholder, .input .input-field > textarea::placeholder {
@@ -110,9 +113,12 @@
 }
 
 .input .input-field .input-prefix, .input .input-field .input-suffix {
-    border-color: var(--input--border-color);
-    padding-left: var(--input--padding);
-    padding-right: var(--input--padding);
+    border-top-color: var(--input--border-top-color);
+    border-right-color: var(--input--border-right-color);
+    border-bottom-color: var(--input--border-bottom-color);
+    border-left-color: var(--input--border-left-color);
+    padding-left: var(--input--padding-left);
+    padding-right: var(--input--padding-right);
     transition-property: var(--input--transition-property);
     transition-duration: var(--input--transition-duration);
     transition-timing-function: var(--input--transition-timing-function);
@@ -140,20 +146,32 @@
 }
 
 .input.-hover .input-field, .input:hover .input-field {
-    border-color: var(--input--hover--border-color);
+    border-top-color: var(--input--hover--border-top-color);
+    border-right-color: var(--input--hover--border-right-color);
+    border-bottom-color: var(--input--hover--border-bottom-color);
+    border-left-color: var(--input--hover--border-left-color);
 }
 
 .input.-focus .input-field, .input:focus-within .input-field {
-    border-color: var(--input--focus--border-color);
+    border-top-color: var(--input--focus--border-top-color);
+    border-right-color: var(--input--focus--border-right-color);
+    border-bottom-color: var(--input--focus--border-bottom-color);
+    border-left-color: var(--input--focus--border-left-color);
     outline: 0;
 }
 
 .input.-error .input-field {
-    border-color: var(--input--error--border-color);
+    border-top-color: var(--input--error--border-top-color);
+    border-right-color: var(--input--error--border-right-color);
+    border-bottom-color: var(--input--error--border-bottom-color);
+    border-left-color: var(--input--error--border-left-color);
 }
 
 .input.-readonly .input-field:focus-within {
-    border-color: var(--input--focus--border-color);
+    border-top-color: var(--input--focus--border-top-color);
+    border-right-color: var(--input--focus--border-right-color);
+    border-bottom-color: var(--input--focus--border-bottom-color);
+    border-left-color: var(--input--focus--border-left-color);
     outline: 0;
 }
 
@@ -167,9 +185,12 @@
 
 .input .input-prepend, .input .input-append {
     background: var(--input--background);
-    border-style: var(--input--border-style);
-    border-color: var(--input--border-color);
-    border-width: var(--input--border-width);
+    border-style: var(--input--border-style, var(--input--border-top-style) var(--input--border-right-style) var(--input--border-bottom-style) var(--input--border-left-style));
+    border-top-color: var(--input--border-top-color);
+    border-right-color: var(--input--border-right-color);
+    border-bottom-color: var(--input--border-bottom-color);
+    border-left-color: var(--input--border-left-color);
+    border-width: var(--input--border-width, var(--input--border-top-width) var(--input--border-right-width) var(--input--border-bottom-width) var(--input--border-left-width));
     font-size: var(--input--font-size);
     line-height: var(--input--line-height);
     transition-property: var(--input--transition-property);
@@ -190,436 +211,77 @@
 }
 
 .input.-sm {
-    font-size: var(--input--sm--font-size);
-}
-
-.input.-sm .input-header, .input.-sm .input-body, .input.-sm .input-footer {
-    font-size: var(--input--sm--font-size);
-    padding: var(--input--sm--padding-top) var(--input--sm--padding-right) var(--input--sm--padding-bottom) var(--input--sm--padding-left);
-}
-
-.input.-sm .input-field {
-    border-top-left-radius: var(--input--sm--border-top-left-radius);
-    border-top-right-radius: var(--input--sm--border-top-right-radius);
-    border-bottom-right-radius: var(--input--sm--border-bottom-right-radius);
-    border-bottom-left-radius: var(--input--sm--border-bottom-left-radius);
-    font-size: var(--input--sm--font-size);
-}
-
-.input.-sm .input-field > input, .input.-sm .input-field > select, .input.-sm .input-field > textarea {
-    padding-top: var(--input--sm--padding-top);
-    padding-right: var(--input--sm--padding-right);
-    padding-bottom: var(--input--sm--padding-bottom);
-    padding-left: var(--input--sm--padding-left);
-}
-
-.input.-sm .input-prepend, .input.-sm .input-append {
-    font-size: var(--input--sm--font-size);
-}
-
-.input.-sm .input-prepend {
-    border-top-left-radius: var(--input--sm--border-top-left-radius);
-    border-bottom-left-radius: var(--input--sm--border-bottom-left-radius);
-}
-
-.input.-sm .input-append {
-    border-top-right-radius: var(--input--sm--border-top-right-radius);
-    border-bottom-right-radius: var(--input--sm--border-bottom-right-radius);
-}
-
-.input .input-field .input-prefix, .input .input-field .input-suffix {
-    padding-left: var(--input--sm--padding-left);
-    padding-right: var(--input--sm--padding-right);
+    --input--border-top-left-radius: var(--input--sm--border-top-left-radius);
+    --input--border-top-right-radius: var(--input--sm--border-top-right-radius);
+    --input--border-bottom-right-radius: var(--input--sm--border-bottom-right-radius);
+    --input--border-bottom-left-radius: var(--input--sm--border-bottom-left-radius);
+    --input--font-size: var(--input--sm--font-size);
+    --input--padding-top: var(--input--sm--padding-top);
+    --input--padding-right: var(--input--sm--padding-right);
+    --input--padding-bottom: var(--input--sm--padding-bottom);
+    --input--padding-left: var(--input--sm--padding-left);
 }
 
 .input.-md {
-    font-size: var(--input--md--font-size);
-}
-
-.input.-md .input-header, .input.-md .input-body, .input.-md .input-footer {
-    font-size: var(--input--md--font-size);
-    padding: var(--input--md--padding-top) var(--input--md--padding-right) var(--input--md--padding-bottom) var(--input--md--padding-left);
-}
-
-.input.-md .input-field {
-    border-top-left-radius: var(--input--md--border-top-left-radius);
-    border-top-right-radius: var(--input--md--border-top-right-radius);
-    border-bottom-right-radius: var(--input--md--border-bottom-right-radius);
-    border-bottom-left-radius: var(--input--md--border-bottom-left-radius);
-    font-size: var(--input--md--font-size);
-}
-
-.input.-md .input-field > input, .input.-md .input-field > select, .input.-md .input-field > textarea {
-    padding-top: var(--input--md--padding-top);
-    padding-right: var(--input--md--padding-right);
-    padding-bottom: var(--input--md--padding-bottom);
-    padding-left: var(--input--md--padding-left);
-}
-
-.input.-md .input-prepend, .input.-md .input-append {
-    font-size: var(--input--md--font-size);
-}
-
-.input.-md .input-prepend {
-    border-top-left-radius: var(--input--md--border-top-left-radius);
-    border-bottom-left-radius: var(--input--md--border-bottom-left-radius);
-}
-
-.input.-md .input-append {
-    border-top-right-radius: var(--input--md--border-top-right-radius);
-    border-bottom-right-radius: var(--input--md--border-bottom-right-radius);
-}
-
-.input .input-field .input-prefix, .input .input-field .input-suffix {
-    padding-left: var(--input--md--padding-left);
-    padding-right: var(--input--md--padding-right);
+    --input--border-top-left-radius: var(--input--md--border-top-left-radius);
+    --input--border-top-right-radius: var(--input--md--border-top-right-radius);
+    --input--border-bottom-right-radius: var(--input--md--border-bottom-right-radius);
+    --input--border-bottom-left-radius: var(--input--md--border-bottom-left-radius);
+    --input--font-size: var(--input--md--font-size);
+    --input--padding-top: var(--input--md--padding-top);
+    --input--padding-right: var(--input--md--padding-right);
+    --input--padding-bottom: var(--input--md--padding-bottom);
+    --input--padding-left: var(--input--md--padding-left);
 }
 
 .input.-lg {
-    font-size: var(--input--lg--font-size);
-}
-
-.input.-lg .input-header, .input.-lg .input-body, .input.-lg .input-footer {
-    font-size: var(--input--lg--font-size);
-    padding: var(--input--lg--padding-top) var(--input--lg--padding-right) var(--input--lg--padding-bottom) var(--input--lg--padding-left);
-}
-
-.input.-lg .input-field {
-    border-top-left-radius: var(--input--lg--border-top-left-radius);
-    border-top-right-radius: var(--input--lg--border-top-right-radius);
-    border-bottom-right-radius: var(--input--lg--border-bottom-right-radius);
-    border-bottom-left-radius: var(--input--lg--border-bottom-left-radius);
-    font-size: var(--input--lg--font-size);
-}
-
-.input.-lg .input-field > input, .input.-lg .input-field > select, .input.-lg .input-field > textarea {
-    padding-top: var(--input--lg--padding-top);
-    padding-right: var(--input--lg--padding-right);
-    padding-bottom: var(--input--lg--padding-bottom);
-    padding-left: var(--input--lg--padding-left);
-}
-
-.input.-lg .input-prepend, .input.-lg .input-append {
-    font-size: var(--input--lg--font-size);
-}
-
-.input.-lg .input-prepend {
-    border-top-left-radius: var(--input--lg--border-top-left-radius);
-    border-bottom-left-radius: var(--input--lg--border-bottom-left-radius);
-}
-
-.input.-lg .input-append {
-    border-top-right-radius: var(--input--lg--border-top-right-radius);
-    border-bottom-right-radius: var(--input--lg--border-bottom-right-radius);
-}
-
-.input .input-field .input-prefix, .input .input-field .input-suffix {
-    padding-left: var(--input--lg--padding-left);
-    padding-right: var(--input--lg--padding-right);
-}
-
-.input.-primary .input-field {
-    background: var(--input--primary--background);
-    border-color: var(--input--primary--border-color);
-}
-
-.input.-primary .input-field > input, .input.-primary .input-field > select, .input.-primary .input-field > textarea {
-    color: var(--input--primary--color);
-}
-
-.input.-primary.-hover .input-field, .input.-primary:hover .input-field {
-    border-color: var(--input--primary--hover--border-color);
-}
-
-.input.-primary.-disabled .input-field {
-    background: var(--input--primary--disabled--background);
-}
-
-.input.-primary.-readonly .input-field {
-    background: var(--input--primary--readonly--background);
-}
-
-.input.-primary.-focus .input-field, .input.-primary:focus-within .input-field {
-    border-color: var(--input--primary--focus--border-color);
-}
-
-.input.-primary .input-prepend, .input.-primary .input-append {
-    background: var(--input--primary--background);
-    border-color: var(--input--primary--border-color);
-}
-
-.input.-primary .input-field .input-prefix {
-    border-color: var(--input--primary--border-color);
-}
-
-.input.-primary .input-field .input-suffix {
-    border-color: var(--input--primary--border-color);
-}
-
-.input.-secondary .input-field {
-    background: var(--input--secondary--background);
-    border-color: var(--input--secondary--border-color);
-}
-
-.input.-secondary .input-field > input, .input.-secondary .input-field > select, .input.-secondary .input-field > textarea {
-    color: var(--input--secondary--color);
-}
-
-.input.-secondary.-hover .input-field, .input.-secondary:hover .input-field {
-    border-color: var(--input--secondary--hover--border-color);
-}
-
-.input.-secondary.-disabled .input-field {
-    background: var(--input--secondary--disabled--background);
-}
-
-.input.-secondary.-readonly .input-field {
-    background: var(--input--secondary--readonly--background);
-}
-
-.input.-secondary.-focus .input-field, .input.-secondary:focus-within .input-field {
-    border-color: var(--input--secondary--focus--border-color);
-}
-
-.input.-secondary .input-prepend, .input.-secondary .input-append {
-    background: var(--input--secondary--background);
-    border-color: var(--input--secondary--border-color);
-}
-
-.input.-secondary .input-field .input-prefix {
-    border-color: var(--input--secondary--border-color);
-}
-
-.input.-secondary .input-field .input-suffix {
-    border-color: var(--input--secondary--border-color);
-}
-
-.input.-light .input-field {
-    background: var(--input--light--background);
-    border-color: var(--input--light--border-color);
-}
-
-.input.-light .input-field > input, .input.-light .input-field > select, .input.-light .input-field > textarea {
-    color: var(--input--light--color);
-}
-
-.input.-light.-hover .input-field, .input.-light:hover .input-field {
-    border-color: var(--input--light--hover--border-color);
-}
-
-.input.-light.-disabled .input-field {
-    background: var(--input--light--disabled--background);
-}
-
-.input.-light.-readonly .input-field {
-    background: var(--input--light--readonly--background);
-}
-
-.input.-light.-focus .input-field, .input.-light:focus-within .input-field {
-    border-color: var(--input--light--focus--border-color);
-}
-
-.input.-light .input-prepend, .input.-light .input-append {
-    background: var(--input--light--background);
-    border-color: var(--input--light--border-color);
-}
-
-.input.-light .input-field .input-prefix {
-    border-color: var(--input--light--border-color);
-}
-
-.input.-light .input-field .input-suffix {
-    border-color: var(--input--light--border-color);
-}
-
-.input.-dark .input-field {
-    background: var(--input--dark--background);
-    border-color: var(--input--dark--border-color);
-}
-
-.input.-dark .input-field > input, .input.-dark .input-field > select, .input.-dark .input-field > textarea {
-    color: var(--input--dark--color);
-}
-
-.input.-dark.-hover .input-field, .input.-dark:hover .input-field {
-    border-color: var(--input--dark--hover--border-color);
-}
-
-.input.-dark.-disabled .input-field {
-    background: var(--input--dark--disabled--background);
-}
-
-.input.-dark.-readonly .input-field {
-    background: var(--input--dark--readonly--background);
-}
-
-.input.-dark.-focus .input-field, .input.-dark:focus-within .input-field {
-    border-color: var(--input--dark--focus--border-color);
-}
-
-.input.-dark .input-prepend, .input.-dark .input-append {
-    background: var(--input--dark--background);
-    border-color: var(--input--dark--border-color);
-}
-
-.input.-dark .input-field .input-prefix {
-    border-color: var(--input--dark--border-color);
-}
-
-.input.-dark .input-field .input-suffix {
-    border-color: var(--input--dark--border-color);
-}
-
-.input.-info .input-field {
-    background: var(--input--info--background);
-    border-color: var(--input--info--border-color);
-}
-
-.input.-info .input-field > input, .input.-info .input-field > select, .input.-info .input-field > textarea {
-    color: var(--input--info--color);
-}
-
-.input.-info.-hover .input-field, .input.-info:hover .input-field {
-    border-color: var(--input--info--hover--border-color);
-}
-
-.input.-info.-disabled .input-field {
-    background: var(--input--info--disabled--background);
-}
-
-.input.-info.-readonly .input-field {
-    background: var(--input--info--readonly--background);
-}
-
-.input.-info.-focus .input-field, .input.-info:focus-within .input-field {
-    border-color: var(--input--info--focus--border-color);
-}
-
-.input.-info .input-prepend, .input.-info .input-append {
-    background: var(--input--info--background);
-    border-color: var(--input--info--border-color);
-}
-
-.input.-info .input-field .input-prefix {
-    border-color: var(--input--info--border-color);
-}
-
-.input.-info .input-field .input-suffix {
-    border-color: var(--input--info--border-color);
-}
-
-.input.-success .input-field {
-    background: var(--input--success--background);
-    border-color: var(--input--success--border-color);
-}
-
-.input.-success .input-field > input, .input.-success .input-field > select, .input.-success .input-field > textarea {
-    color: var(--input--success--color);
-}
-
-.input.-success.-hover .input-field, .input.-success:hover .input-field {
-    border-color: var(--input--success--hover--border-color);
-}
-
-.input.-success.-disabled .input-field {
-    background: var(--input--success--disabled--background);
-}
-
-.input.-success.-readonly .input-field {
-    background: var(--input--success--readonly--background);
-}
-
-.input.-success.-focus .input-field, .input.-success:focus-within .input-field {
-    border-color: var(--input--success--focus--border-color);
-}
-
-.input.-success .input-prepend, .input.-success .input-append {
-    background: var(--input--success--background);
-    border-color: var(--input--success--border-color);
-}
-
-.input.-success .input-field .input-prefix {
-    border-color: var(--input--success--border-color);
-}
-
-.input.-success .input-field .input-suffix {
-    border-color: var(--input--success--border-color);
-}
-
-.input.-warning .input-field {
-    background: var(--input--warning--background);
-    border-color: var(--input--warning--border-color);
-}
-
-.input.-warning .input-field > input, .input.-warning .input-field > select, .input.-warning .input-field > textarea {
-    color: var(--input--warning--color);
-}
-
-.input.-warning.-hover .input-field, .input.-warning:hover .input-field {
-    border-color: var(--input--warning--hover--border-color);
-}
-
-.input.-warning.-disabled .input-field {
-    background: var(--input--warning--disabled--background);
-}
-
-.input.-warning.-readonly .input-field {
-    background: var(--input--warning--readonly--background);
-}
-
-.input.-warning.-focus .input-field, .input.-warning:focus-within .input-field {
-    border-color: var(--input--warning--focus--border-color);
-}
-
-.input.-warning .input-prepend, .input.-warning .input-append {
-    background: var(--input--warning--background);
-    border-color: var(--input--warning--border-color);
-}
-
-.input.-warning .input-field .input-prefix {
-    border-color: var(--input--warning--border-color);
-}
-
-.input.-warning .input-field .input-suffix {
-    border-color: var(--input--warning--border-color);
-}
-
-.input.-danger .input-field {
-    background: var(--input--danger--background);
-    border-color: var(--input--danger--border-color);
-}
-
-.input.-danger .input-field > input, .input.-danger .input-field > select, .input.-danger .input-field > textarea {
-    color: var(--input--danger--color);
-}
-
-.input.-danger.-hover .input-field, .input.-danger:hover .input-field {
-    border-color: var(--input--danger--hover--border-color);
-}
-
-.input.-danger.-disabled .input-field {
-    background: var(--input--danger--disabled--background);
-}
-
-.input.-danger.-readonly .input-field {
-    background: var(--input--danger--readonly--background);
-}
-
-.input.-danger.-focus .input-field, .input.-danger:focus-within .input-field {
-    border-color: var(--input--danger--focus--border-color);
-}
-
-.input.-danger .input-prepend, .input.-danger .input-append {
-    background: var(--input--danger--background);
-    border-color: var(--input--danger--border-color);
-}
-
-.input.-danger .input-field .input-prefix {
-    border-color: var(--input--danger--border-color);
-}
-
-.input.-danger .input-field .input-suffix {
-    border-color: var(--input--danger--border-color);
+    --input--border-top-left-radius: var(--input--lg--border-top-left-radius);
+    --input--border-top-right-radius: var(--input--lg--border-top-right-radius);
+    --input--border-bottom-right-radius: var(--input--lg--border-bottom-right-radius);
+    --input--border-bottom-left-radius: var(--input--lg--border-bottom-left-radius);
+    --input--font-size: var(--input--lg--font-size);
+    --input--padding-top: var(--input--lg--padding-top);
+    --input--padding-right: var(--input--lg--padding-right);
+    --input--padding-bottom: var(--input--lg--padding-bottom);
+    --input--padding-left: var(--input--lg--padding-left);
+}
+
+.input.-light {
+    --input--background: var(--input--light--background);
+    --input--border-top-color: var(--input--light--border-top-color);
+    --input--border-right-color: var(--input--light--border-right-color);
+    --input--border-bottom-color: var(--input--light--border-bottom-color);
+    --input--border-left-color: var(--input--light--border-left-color);
+    --input--color: var(--input--light--color);
+    --input--hover--border-top-color: var(--input--light--hover--border-top-color);
+    --input--hover--border-right-color: var(--input--light--hover--border-right-color);
+    --input--hover--border-bottom-color: var(--input--light--hover--border-bottom-color);
+    --input--hover--border-left-color: var(--input--light--hover--border-left-color);
+    --input--focus--border-top-color: var(--input--light--focus--border-top-color);
+    --input--focus--border-right-color: var(--input--light--focus--border-right-color);
+    --input--focus--border-bottom-color: var(--input--light--focus--border-bottom-color);
+    --input--focus--border-left-color: var(--input--light--focus--border-left-color);
+    --input--disabled--background: var(--input--light--disabled--background);
+    --input--readonly--background: var(--input--light--readonly--background);
+}
+
+.input.-dark {
+    --input--background: var(--input--dark--background);
+    --input--border-top-color: var(--input--dark--border-top-color);
+    --input--border-right-color: var(--input--dark--border-right-color);
+    --input--border-bottom-color: var(--input--dark--border-bottom-color);
+    --input--border-left-color: var(--input--dark--border-left-color);
+    --input--color: var(--input--dark--color);
+    --input--hover--border-top-color: var(--input--dark--hover--border-top-color);
+    --input--hover--border-right-color: var(--input--dark--hover--border-right-color);
+    --input--hover--border-bottom-color: var(--input--dark--hover--border-bottom-color);
+    --input--hover--border-left-color: var(--input--dark--hover--border-left-color);
+    --input--focus--border-top-color: var(--input--dark--focus--border-top-color);
+    --input--focus--border-right-color: var(--input--dark--focus--border-right-color);
+    --input--focus--border-bottom-color: var(--input--dark--focus--border-bottom-color);
+    --input--focus--border-left-color: var(--input--dark--focus--border-left-color);
+    --input--disabled--background: var(--input--dark--disabled--background);
+    --input--readonly--background: var(--input--dark--readonly--background);
 }
 
 .input.-prepended .input-field {

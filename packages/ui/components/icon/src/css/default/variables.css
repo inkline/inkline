@@ -39,7 +39,7 @@
     --type-scale-max-pow-3: calc(var(--type-scale-max) * var(--type-scale-max) * var(--type-scale-max));
     --type-scale-max-pow-4: calc(var(--type-scale-max) * var(--type-scale-max) * var(--type-scale-max) * var(--type-scale-max));
     --type-scale-max-pow-5: calc(var(--type-scale-max) * var(--type-scale-max) * var(--type-scale-max) * var(--type-scale-max) * var(--type-scale-max));
-    --font-size-min: 18;
+    --font-size-min: 16;
     --font-size-max: 20;
     --font-size-min-xs: calc(var(--font-size-min) * var(--type-scale-min-pow-minus-2));
     --font-size-min-sm: calc(var(--font-size-min) * var(--type-scale-min-pow-minus-1));
@@ -66,16 +66,5 @@
     --font-size-3xl: calc(((var(--font-size-min-3xl) / 16) * 1rem) + (var(--font-size-max-3xl) - var(--font-size-min-3xl)) * var(--fluid--breakpoint));
     --font-size-4xl: calc(((var(--font-size-min-4xl) / 16) * 1rem) + (var(--font-size-max-4xl) - var(--font-size-min-4xl)) * var(--fluid--breakpoint));
     --font-size: var(--font-size-md);
-    --icon--font-size: var(--font-size);
-    --size-multiplier: 1;
-    --size-multiplier-xxs: calc(var(--size-multiplier) / var(--scale-pow-3));
-    --size-multiplier-xs: calc(var(--size-multiplier) / var(--scale-pow-2));
-    --size-multiplier-sm: calc(var(--size-multiplier) / var(--scale-pow-1));
-    --size-multiplier-md: var(--size-multiplier);
-    --size-multiplier-lg: calc(var(--size-multiplier) * var(--scale-pow-1));
-    --size-multiplier-xl: calc(var(--size-multiplier) * var(--scale-pow-2));
-    --size-multiplier-xxl: calc(var(--size-multiplier) * var(--scale-pow-3));
-    --icon--sm--font-size: calc(var(--icon--font-size) * var(--size-multiplier-sm));
-    --icon--md--font-size: calc(var(--icon--font-size) * var(--size-multiplier-md));
-    --icon--lg--font-size: calc(var(--icon--font-size) * var(--size-multiplier-lg));
+    --icon--font-size: var(--font-size-md);
 }

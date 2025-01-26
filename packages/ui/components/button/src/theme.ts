@@ -786,20 +786,20 @@ export function useButtonThemeBaseSelectors(userOptions: DefinitionOptions) {
         {
             borderWidth: vref(buttonBorderWidth),
             borderStyle: vref(buttonBorderStyle),
-            borderTopColor: vref(buttonBorderTopColor),
-            borderRightColor: vref(buttonBorderRightColor),
-            borderBottomColor: vref(buttonBorderBottomColor),
-            borderLeftColor: vref(buttonBorderLeftColor),
+            borderTopColor: ref(buttonBorderTopColor),
+            borderRightColor: ref(buttonBorderRightColor),
+            borderBottomColor: ref(buttonBorderBottomColor),
+            borderLeftColor: ref(buttonBorderLeftColor),
             borderRadius: vref(buttonBorderRadius),
-            background: vref(buttonBackground),
+            background: ref(buttonBackground),
             boxShadow: vref(buttonBoxShadow),
-            color: vref(buttonColor),
+            color: ref(buttonColor),
             fontSize: ref(buttonFontSize),
             lineHeight: ref(buttonLineHeight),
             padding: vref(buttonPadding),
-            transitionProperty: vref(buttonTransitionProperty),
-            transitionDuration: vref(buttonTransitionDuration),
-            transitionTimingFunction: vref(buttonTransitionTimingFunction)
+            transitionProperty: ref(buttonTransitionProperty),
+            transitionDuration: ref(buttonTransitionDuration),
+            transitionTimingFunction: ref(buttonTransitionTimingFunction)
         },
         options
     );
@@ -809,7 +809,7 @@ export function useButtonThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         ['.button:hover', '.button.-hover'],
         {
-            background: vref(buttonHoverBackground)
+            background: ref(buttonHoverBackground)
         },
         options
     );
@@ -817,7 +817,7 @@ export function useButtonThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         ['.button:focus', '.button.-focus'],
         {
-            background: vref(buttonFocusBackground)
+            background: ref(buttonFocusBackground)
         },
         options
     );
@@ -825,7 +825,7 @@ export function useButtonThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         ['.button:active', '.button.-active'],
         {
-            background: vref(buttonActiveBackground)
+            background: ref(buttonActiveBackground)
         },
         options
     );
@@ -833,7 +833,7 @@ export function useButtonThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         ['.button:disabled', '.button.-disabled'],
         {
-            background: vref(buttonBackground),
+            background: ref(buttonBackground),
             opacity: ref(buttonDisabledOpacity),
             boxShadow: 'none'
         },
@@ -931,7 +931,7 @@ export function useButtonThemeVariantsSelectors(userOptions: DefinitionOptions) 
             borderBottomColor: 'transparent',
             borderLeftColor: 'transparent',
             cursor: 'pointer',
-            color: vref(buttonBackground)
+            color: ref(buttonBackground)
         },
         options
     );
@@ -965,11 +965,11 @@ export function useButtonThemeVariantsSelectors(userOptions: DefinitionOptions) 
         {
             background: 'transparent',
             boxShadow: 'none',
-            borderTopColor: vref(buttonBackground),
-            borderRightColor: vref(buttonBackground),
-            borderBottomColor: vref(buttonBackground),
-            borderLeftColor: vref(buttonBackground),
-            color: vref(buttonBackground)
+            borderTopColor: ref(buttonBackground),
+            borderRightColor: ref(buttonBackground),
+            borderBottomColor: ref(buttonBackground),
+            borderLeftColor: ref(buttonBackground),
+            color: ref(buttonBackground)
         },
         options
     );
@@ -977,13 +977,13 @@ export function useButtonThemeVariantsSelectors(userOptions: DefinitionOptions) 
     selector(
         ['.button.-outline:hover', '.button.-outline.-hover'],
         {
-            background: vref(buttonBackground),
+            background: ref(buttonBackground),
             boxShadow: 'none',
-            borderTopColor: vref(buttonBorderTopColor),
-            borderRightColor: vref(buttonBorderRightColor),
-            borderBottomColor: vref(buttonBorderBottomColor),
-            borderLeftColor: vref(buttonBorderLeftColor),
-            color: vref(buttonColor)
+            borderTopColor: ref(buttonBorderTopColor),
+            borderRightColor: ref(buttonBorderRightColor),
+            borderBottomColor: ref(buttonBorderBottomColor),
+            borderLeftColor: ref(buttonBorderLeftColor),
+            color: ref(buttonColor)
         },
         options
     );

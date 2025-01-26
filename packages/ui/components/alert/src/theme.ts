@@ -257,8 +257,8 @@ export function useAlertThemeColorVariables(
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     return nsvariables([ns, variant] as const, useAlertThemeColorConfig(variant, options), {
-        ...options
-        // registerComposed: false
+        ...options,
+        registerComposed: false
     });
 }
 
@@ -269,8 +269,8 @@ export function useAlertThemeSizeVariables(
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     return nsvariables([ns, variant] as const, useAlertThemeSizeConfig(variant, options), {
-        ...options
-        // registerComposed: false
+        ...options,
+        registerComposed: false
     });
 }
 
@@ -362,12 +362,12 @@ export function useAlertThemeBaseSelectors(userOptions: DefinitionOptions) {
             borderWidth: vref(alertBorderWidth),
             borderRadius: vref(alertBorderRadius),
             boxShadow: vref(alertBoxShadow),
-            background: vref(alertBackground),
-            color: vref(alertColor),
+            background: ref(alertBackground),
+            color: ref(alertColor),
             fontSize: ref(alertFontSize),
-            transitionProperty: vref(alertTransitionProperty),
-            transitionDuration: vref(alertTransitionDuration),
-            transitionTimingFunction: vref(alertTransitionTimingFunction)
+            transitionProperty: ref(alertTransitionProperty),
+            transitionDuration: ref(alertTransitionDuration),
+            transitionTimingFunction: ref(alertTransitionTimingFunction)
         },
         options
     );
@@ -423,7 +423,7 @@ export function useAlertThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.alert a',
         {
-            color: vref(alertColor),
+            color: ref(alertColor),
             fontWeight: ref(alertLinkFontWeight)
         },
         options

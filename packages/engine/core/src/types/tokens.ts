@@ -35,18 +35,18 @@ export type Variable<Name extends string = string> = {
 
 export type Calc = {
     __type: TokenType.Calc;
-    __value: any[];
+    __value: TokenValue[];
 };
 
 export type CSS = {
     __type: TokenType.CSS;
-    __value: any[];
+    __value: TokenValue[];
 };
 
 export type Transform = {
     __type: TokenType.Transform;
     __name: 'translate' | 'scale' | 'rotate' | 'skew' | 'matrix' | string;
-    __value: any[];
+    __value: TokenValue[];
 };
 
 export type Reference = {
@@ -57,7 +57,7 @@ export type Reference = {
 
 export type Color = {
     __type: TokenType.HSLAColor;
-    __value: HSLAColorInlineProperty | CSS;
+    __value: HSLAColorInlineProperty | CSS | 'transparent' | 'inherit' | 'initial' | 'unset';
 };
 
 export type ComponentValue = Record<string, TokenValue>;

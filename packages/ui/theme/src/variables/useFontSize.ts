@@ -12,7 +12,7 @@ export function useFontSize(userOptions: DefinitionOptions) {
         typeScaleMaxMap
     } = useFluidTypeScale(options);
 
-    const fontSizeMin = variable('font-size-min', 18, options);
+    const fontSizeMin = variable('font-size-min', 16, options);
     const fontSizeMax = variable('font-size-max', 20, options);
 
     const fontSizeMinVariants = {

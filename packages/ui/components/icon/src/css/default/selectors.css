@@ -1,15 +1,16 @@
 .icon {
+    overflow: visible;
     font-size: var(--icon--font-size);
 }
 
 .icon.-sm {
-    font-size: var(--icon--sm--font-size);
+    --icon--font-size: var(--icon--font-size);
 }
 
 .icon.-md {
-    font-size: var(--icon--md--font-size);
+    --icon--font-size: var(--icon--font-size);
 }
 
 .icon.-lg {
-    font-size: var(--icon--lg--font-size);
+    --icon--font-size: var(--icon--font-size);
 }

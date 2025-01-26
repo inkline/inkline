@@ -191,7 +191,7 @@ export function useCheckboxThemeSizeConfig(
         borderBottomRightRadiusLg,
         borderBottomLeftRadiusLg
     } = useBorderRadius(options);
-    const { fontSizeXs, fontSizeSm, fontSizeMd } = useFontSize(options);
+    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize(options);
     const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
 
     return {
@@ -250,7 +250,7 @@ export function useCheckboxThemeSizeConfig(
                 bottomRight: ref(borderBottomRightRadiusLg),
                 bottomLeft: ref(borderBottomLeftRadiusLg)
             },
-            fontSize: ref(fontSizeXs),
+            fontSize: ref(fontSizeLg),
             margin: {
                 top: 0,
                 right: multiply(ref(spacingLg), 0.5),
@@ -618,7 +618,7 @@ export function useCheckboxThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.checkbox .checkbox-label',
         {
-            color: vref(checkboxColor),
+            color: ref(checkboxColor),
             fontSize: ref(checkboxFontSize),
             paddingLeft: add(ref(checkboxWidth), ref(checkboxMarginRight)),
             transitionProperty: ref(checkboxTransitionProperty),
@@ -631,11 +631,11 @@ export function useCheckboxThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.checkbox .checkbox-label::before',
         {
-            background: vref(checkboxBackground),
-            borderTopColor: vref(checkboxBorderTopColor),
-            borderRightColor: vref(checkboxBorderRightColor),
-            borderBottomColor: vref(checkboxBorderBottomColor),
-            borderLeftColor: vref(checkboxBorderLeftColor),
+            background: ref(checkboxBackground),
+            borderTopColor: ref(checkboxBorderTopColor),
+            borderRightColor: ref(checkboxBorderRightColor),
+            borderBottomColor: ref(checkboxBorderBottomColor),
+            borderLeftColor: ref(checkboxBorderLeftColor),
             borderWidth: vref(checkboxBorderWidth),
             borderStyle: vref(checkboxBorderStyle),
             borderRadius: vref(checkboxBorderRadius),
@@ -650,7 +650,7 @@ export function useCheckboxThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.checkbox .checkbox-label::after',
         {
-            background: vref(checkboxCheckmarkColor),
+            background: ref(checkboxCheckmarkColor),
             transitionProperty: ref(checkboxTransitionProperty),
             transitionDuration: ref(checkboxTransitionDuration),
             transitionTimingFunction: ref(checkboxTransitionTimingFunction)
@@ -672,7 +672,7 @@ export function useCheckboxThemeBaseSelectors(userOptions: DefinitionOptions) {
             '.checkbox input:indeterminate ~ .checkbox-label::before'
         ],
         {
-            background: vref(checkboxCheckedBackground),
+            background: ref(checkboxCheckedBackground),
             borderTopColor: ref(checkboxCheckedBorderTopColor),
             borderRightColor: ref(checkboxCheckedBorderRightColor),
             borderBottomColor: ref(checkboxCheckedBorderBottomColor),
@@ -684,7 +684,7 @@ export function useCheckboxThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.checkbox input:disabled ~ .checkbox-label',
         {
-            color: vref(checkboxDisabledColor),
+            color: ref(checkboxDisabledColor),
             cursor: 'default'
         },
         options
@@ -693,7 +693,7 @@ export function useCheckboxThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         ['.checkbox input:disabled ~ .checkbox-label::before'],
         {
-            background: vref(checkboxDisabledBackground),
+            background: ref(checkboxDisabledBackground),
             cursor: 'not-allowed'
         },
         options
@@ -702,7 +702,7 @@ export function useCheckboxThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         ['.checkbox input[readonly] ~ .checkbox-label::before'],
         {
-            background: vref(checkboxReadonlyBackground),
+            background: ref(checkboxReadonlyBackground),
             cursor: 'not-allowed'
         },
         options
@@ -711,7 +711,7 @@ export function useCheckboxThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.checkbox input:checked:disabled ~ .checkbox-label::before',
         {
-            background: vref(checkboxCheckedDisabledBackground),
+            background: ref(checkboxCheckedDisabledBackground),
             borderTopColor: ref(checkboxCheckedDisabledBorderTopColor),
             borderRightColor: ref(checkboxCheckedDisabledBorderRightColor),
             borderBottomColor: ref(checkboxCheckedDisabledBorderBottomColor),
@@ -723,7 +723,7 @@ export function useCheckboxThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.checkbox input[readonly]:checked ~ .checkbox-label::before',
         {
-            background: vref(checkboxCheckedReadonlyBackground),
+            background: ref(checkboxCheckedReadonlyBackground),
             borderTopColor: ref(checkboxCheckedReadonlyBorderTopColor),
             borderRightColor: ref(checkboxCheckedReadonlyBorderRightColor),
             borderBottomColor: ref(checkboxCheckedReadonlyBorderBottomColor),

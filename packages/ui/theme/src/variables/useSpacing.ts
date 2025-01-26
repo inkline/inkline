@@ -1,14 +1,16 @@
 import { css, defaultDefinitionOptions, DefinitionOptions, multiply, ref, TokenValue, variable } from '@inkline/core';
 import { useFluid } from './useFluid';
 import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
+import { useFontSize } from './useFontSize';
 
 export function useSpacing(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const { fluidBreakpoint } = useFluid(options);
+    const { fontSizeMin, fontSizeMax } = useFontSize(options);
 
-    const spacingMin = variable('spacing-min', 18, options);
-    const spacingMax = variable('spacing-max', 20, options);
+    const spacingMin = variable('spacing-min', ref(fontSizeMin), options);
+    const spacingMax = variable('spacing-max', ref(fontSizeMax), options);
 
     const variantMultipliers = {
         '2xs': 0.25,
@@ -72,8 +74,14 @@ export function useSpacing(userOptions: DefinitionOptions) {
         '4xl': createSpacingVariant(ref(spacingMin4Xl), ref(spacingMax4Xl)),
         '2xs-xs': createSpacingVariant(ref(spacingMin2Xs), ref(spacingMaxXs)),
         'xs-sm': createSpacingVariant(ref(spacingMinXs), ref(spacingMaxSm)),
+        'xs-md': createSpacingVariant(ref(spacingMinXs), ref(spacingMaxMd)),
+        'xs-lg': createSpacingVariant(ref(spacingMinXs), ref(spacingMaxLg)),
+        'xs-xl': createSpacingVariant(ref(spacingMinXs), ref(spacingMaxXl)),
         'sm-md': createSpacingVariant(ref(spacingMinSm), ref(spacingMaxMd)),
+        'sm-lg': createSpacingVariant(ref(spacingMinSm), ref(spacingMaxLg)),
+        'sm-xl': createSpacingVariant(ref(spacingMinSm), ref(spacingMaxXl)),
         'md-lg': createSpacingVariant(ref(spacingMinMd), ref(spacingMaxLg)),
+        'md-xl': createSpacingVariant(ref(spacingMinMd), ref(spacingMaxXl)),
         'lg-xl': createSpacingVariant(ref(spacingMinLg), ref(spacingMaxXl)),
         'xl-2xl': createSpacingVariant(ref(spacingMinXl), ref(spacingMax2Xl)),
         '2xl-3xl': createSpacingVariant(ref(spacingMin2Xl), ref(spacingMax3Xl)),
@@ -92,8 +100,14 @@ export function useSpacing(userOptions: DefinitionOptions) {
         spacing4Xl,
         spacing2XsXs,
         spacingXsSm,
+        spacingXsMd,
+        spacingXsLg,
+        spacingXsXl,
         spacingSmMd,
+        spacingSmLg,
+        spacingSmXl,
         spacingMdLg,
+        spacingMdXl,
         spacingLgXl,
         spacingXl2Xl,
         spacing2Xl3Xl,
@@ -118,8 +132,14 @@ export function useSpacing(userOptions: DefinitionOptions) {
         spacing4Xl,
         spacing2XsXs,
         spacingXsSm,
+        spacingXsMd,
+        spacingXsLg,
+        spacingXsXl,
         spacingSmMd,
+        spacingSmLg,
+        spacingSmXl,
         spacingMdLg,
+        spacingMdXl,
         spacingLgXl,
         spacingXl2Xl,
         spacing2Xl3Xl,

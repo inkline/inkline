@@ -21,12 +21,12 @@
         "@types/shelljs": "catalog:",
         "eslint": "catalog:",
         "shelljs": "catalog:",
-        "typescript": "catalog:",
+        "tsx": "catalog:",
         "type-fest": "catalog:",
-        "tsx": "catalog:"
+        "typescript": "catalog:"
     },
     "dependencies": {
-        "@playwright/test": "^1.47.2"
+        "@playwright/test": "^1.50.0"
     },
     "funding": {
         "type": "github",
