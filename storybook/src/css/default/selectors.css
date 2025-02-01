@@ -1734,6 +1734,35 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
     margin-bottom: 0;
 }
 
+.expand-x-enter-active, .expand-x-leave-active, .expand-y-enter-active, .expand-y-leave-active {
+    transition-duration: var(--expand--transition-duration);
+    transition-property: var(--expand--transition-property);
+    transition-timing-function: var(--expand--transition-timing-function);
+    overflow: hidden;
+}
+
+.expand-x-enter, .expand-x-leave-to {
+    width: 0;
+}
+
+.expand-y-enter, .expand-y-leave-to {
+    height: 0;
+}
+
+.expand-x-enter-from, .expand-x-enter-active, .expand-x-leave-active, .expand-x-leave-to, .expand-y-enter-from, .expand-y-enter-active, .expand-y-leave-active, .expand-y-leave-to {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+.expand-x-enter-from, .expand-x-enter-active, .expand-x-leave-active, .expand-x-leave-to {
+    will-change: width;
+}
+
+.expand-y-enter-from, .expand-y-enter-active, .expand-y-leave-active, .expand-y-leave-to {
+    will-change: height;
+}
+
 .grid {
     box-sizing: border-box;
     display: flex;

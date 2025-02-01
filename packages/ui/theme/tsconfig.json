@@ -7,6 +7,7 @@
     },
     "include": [
         "src/**/*.ts",
+        "scripts/**/*.ts",
         "tsup.config.ts",
         "vite.config.ts"
     ]

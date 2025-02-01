@@ -89,10 +89,7 @@
 .input .input-field {
     background: var(--input--background);
     border-style: var(--input--border-style, var(--input--border-top-style) var(--input--border-right-style) var(--input--border-bottom-style) var(--input--border-left-style));
-    border-top-color: var(--input--border-top-color);
-    border-right-color: var(--input--border-right-color);
-    border-bottom-color: var(--input--border-bottom-color);
-    border-left-color: var(--input--border-left-color);
+    border-color: var(--input--border-color, var(--input--border-top-color) var(--input--border-right-color) var(--input--border-bottom-color) var(--input--border-left-color));
     border-width: var(--input--border-width, var(--input--border-top-width) var(--input--border-right-width) var(--input--border-bottom-width) var(--input--border-left-width));
     border-radius: var(--input--border-radius, var(--input--border-top-left-radius) var(--input--border-top-right-radius) var(--input--border-bottom-right-radius) var(--input--border-bottom-left-radius));
     box-shadow: var(--input--box-shadow, var(--input--box-shadow-offset-x) var(--input--box-shadow-offset-y) var(--input--box-shadow-blur-radius) var(--input--box-shadow-spread-radius) var(--input--box-shadow-color));
@@ -113,10 +110,7 @@
 }
 
 .input .input-field .input-prefix, .input .input-field .input-suffix {
-    border-top-color: var(--input--border-top-color);
-    border-right-color: var(--input--border-right-color);
-    border-bottom-color: var(--input--border-bottom-color);
-    border-left-color: var(--input--border-left-color);
+    border-color: var(--input--border-color, var(--input--border-top-color) var(--input--border-right-color) var(--input--border-bottom-color) var(--input--border-left-color));
     padding-left: var(--input--padding-left);
     padding-right: var(--input--padding-right);
     transition-property: var(--input--transition-property);
@@ -125,14 +119,14 @@
 }
 
 .input .input-field .input-prefix {
-    border-right-width: var(--input--border-width);
-    border-right-style: var(--input--border-style);
+    border-right-width: var(--input--border-right-width);
+    border-right-style: var(--input--border-right-style);
     color: var(--input--prefix--color);
 }
 
 .input .input-field .input-suffix {
-    border-left-width: var(--input--border-width);
-    border-left-style: var(--input--border-style);
+    border-left-width: var(--input--border-left-width);
+    border-left-style: var(--input--border-left-style);
     color: var(--input--suffix--color);
 }
 

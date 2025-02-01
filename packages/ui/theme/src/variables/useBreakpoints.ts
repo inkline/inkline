@@ -17,7 +17,7 @@ export type Breakpoint = typeof breakpointKeys[number];
  * lg - Large devices (desktops, 1200px and up) - [1200, 1440)
  * xl - Extra large devices (large desktops, 1200px and up) - [1440, Infinity)
  */
-export function useBreakpoints(userOptions: DefinitionOptions) {
+export function useBreakpointsVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const breakpointXs = variable('breakpoint-xs', 0, options);
@@ -35,4 +35,8 @@ export function useBreakpoints(userOptions: DefinitionOptions) {
     };
 }
 
+export function useBreakpoints(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
 
+    return useBreakpointsVariables(options);
+}

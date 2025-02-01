@@ -1,88 +1,70 @@
-import type { ComponentManifest } from '@inkline/devtools';
+import type { ComponentManifest } from '@inkline/types';
 
-export const manifest: ComponentManifest = {
-    name: 'ButtonGroup',
-    props: [
-        {
-            name: 'vertical',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'Display the button group with vertical orientation'
-        },
-        {
-            name: 'block',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'Display the button group as a block, spanning the full container width'
-        },
-        {
-            name: 'disabled',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The disabled state of the button group'
-        },
-        {
-            name: 'size',
-            type: ['String'],
-            default: '',
-            description: 'The size of the button group'
-        },
-        {
-            name: 'color',
-            type: ['String'],
-            default: '',
-            description: 'The color of the button group'
-        }
-    ],
-    events: [],
-    slots: [
-        {
-            name: 'default',
-            description: 'Slot for default button group content '
-        }
-    ],
-    css: {
-        selector: '.button-group',
-        variables: [
+export const manifest: ComponentManifest[] = [
+    {
+        name: 'ButtonGroup',
+        props: [
             {
-                name: '--button-group--border-radius',
-                value: [
-                    {
-                        name: '--button-group--border-bottom-left-radius',
-                        value: []
-                    },
-                    {
-                        name: '--button-group--border-bottom-right-radius',
-                        value: []
-                    },
-                    {
-                        name: '--button-group--border-top-left-radius',
-                        value: []
-                    },
-                    {
-                        name: '--button-group--border-top-right-radius',
-                        value: []
-                    },
-                    {
-                        name: '--button-group--border-top-left-radius',
-                        value: []
-                    },
-                    {
-                        name: '--button-group--border-top-right-radius',
-                        value: []
-                    },
-                    {
-                        name: '--button-group--border-bottom-right-radius',
-                        value: []
-                    },
-                    {
-                        name: '--button-group--border-bottom-left-radius',
-                        value: []
-                    }
-                ]
+                name: 'vertical',
+                type: 'Boolean',
+                description: 'Display the button group with vertical orientation',
+                default: 'false'
+            },
+            {
+                name: 'block',
+                type: 'Boolean',
+                description:
+                    'Display the button group as a block, spanning the full container width',
+                default: 'false'
+            },
+            {
+                name: 'disabled',
+                type: 'Boolean',
+                description: 'The disabled state of the button group',
+                default: 'false'
+            },
+            {
+                name: 'sizeMultiplier',
+                type: 'String',
+                description: 'The size of the button group',
+                default: ''
+            },
+            {
+                name: 'color',
+                type: 'String',
+                description: 'The color of the button group',
+                default: ''
             }
-        ]
+        ],
+        events: [],
+        slots: [
+            {
+                name: 'default',
+                description: 'Slot for default button group content'
+            }
+        ],
+        css: {
+            namespace: 'button-group',
+            variables: [
+                {
+                    name: '--button-group--box-shadow-offset-x'
+                },
+                {
+                    name: '--button-group--box-shadow-offset-y'
+                },
+                {
+                    name: '--button-group--box-shadow-blur-radius'
+                },
+                {
+                    name: '--button-group--box-shadow-spread-radius'
+                },
+                {
+                    name: '--button-group--box-shadow-color'
+                },
+                {
+                    name: '--button-group--box-shadow'
+                }
+            ]
+        }
     }
-};
-
-export default manifest;
+];

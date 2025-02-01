@@ -1,5 +1,15 @@
 {
     "extends": "../typescript-config/tsconfig.json",
+    "compilerOptions": {
+        "paths": {
+            "@inkline/types": [
+                "../../ui/types/src/index.ts"
+            ],
+            "@inkline/logger": [
+                "../logger/src/index.ts"
+            ]
+        }
+    },
     "include": [
         "src/**/*.ts",
         "tsup.config.ts"

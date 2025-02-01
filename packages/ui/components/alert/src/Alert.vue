@@ -29,9 +29,9 @@ export default defineComponent({
     props: {
         /**
          * The size variant of the alert
-         * @type sm | md | lg
-         * @default
-         * @name sizeMultiplier
+         * @type 'sm' | 'md' | 'lg'
+         * @default undefined
+         * @name size
          */
         size: {
             type: String,
@@ -39,8 +39,8 @@ export default defineComponent({
         },
         /**
          * The color variant of the alert
-         * @type info | success | warning | danger
-         * @default info
+         * @type 'info' | 'success' | 'warning' | 'danger'
+         * @default 'info'
          * @name color
          */
         color: {
@@ -49,7 +49,7 @@ export default defineComponent({
         },
         /**
          * Used to show or hide the alert
-         * @type Boolean
+         * @type boolean
          * @default undefined
          * @name modelValue
          */
@@ -59,7 +59,7 @@ export default defineComponent({
         },
         /**
          * Shows a dismiss icon on the alert
-         * @type Boolean
+         * @type boolean
          * @default false
          * @name dismissible
          */
@@ -69,7 +69,7 @@ export default defineComponent({
         },
         /**
          * The aria-label to use for the dismiss button
-         * @type String
+         * @type string
          * @default Dismiss
          * @name dismissAriaLabel
          */
@@ -91,7 +91,8 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the modelValue
-         * @event update:modelValue
+         * @type event
+         * @name update:modelValue
          */
         'update:modelValue'
     ],

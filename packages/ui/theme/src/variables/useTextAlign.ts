@@ -1,7 +1,7 @@
 import { defaultDefinitionOptions, DefinitionOptions } from '@inkline/core';
 import { variable } from '@inkline/core';
 
-export function useTextAlign(userOptions: DefinitionOptions) {
+export function useTextAlignVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const textAlign = variable('text-align', 'left', options);
@@ -17,4 +17,10 @@ export function useTextAlign(userOptions: DefinitionOptions) {
         textAlignRight,
         textAlignJustify
     };
+}
+
+export function useTextAlign(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useTextAlignVariables(options);
 }

@@ -4,6 +4,7 @@ import chalk from 'chalk';
 import { program } from 'commander';
 import {
     componentBuild,
+    componentManifest,
     componentWatch,
     eslint,
     test,
@@ -42,6 +43,11 @@ tsup.command('watch')
 
 const component = program.command('component');
 component.command('build').description('Build the component package.').action(componentBuild);
+component
+    .command('manifest')
+    .description('Generate manifest files for component.')
+    .option('--theme-only', 'Generate manifest for elements that only provide a theme file.')
+    .action(componentManifest);
 component
     .command('watch')
     .description('Watch for changes in the component files and generate files accordingly.')

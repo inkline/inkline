@@ -12,7 +12,7 @@ import { useFluid } from './useFluid';
 import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
 import { useFontSize } from './useFontSize';
 
-export function useBorderRadius(userOptions: DefinitionOptions) {
+export function useBorderRadiusVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const { fluidBreakpoint } = useFluid(options);
@@ -200,4 +200,10 @@ export function useBorderRadius(userOptions: DefinitionOptions) {
         borderBottomLeftRadiusXl,
         borderRadiusXl
     };
+}
+
+export function useBorderRadius(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useBorderRadiusVariables(options);
 }

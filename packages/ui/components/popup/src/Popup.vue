@@ -1,5 +1,6 @@
 <script lang="ts">
-import { onBeforeUnmount, PropType, toRef } from 'vue';
+import { onBeforeUnmount, toRef } from 'vue';
+import type { PropType } from 'vue';
 import { ref, defineComponent } from 'vue';
 import { uid } from '@inkline/utils';
 import type { PopupTriggerListener } from '@inkline/types';
@@ -139,12 +140,14 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the visible
-         * @event update:visible
+         * @type event
+         * @name update:visible
          */
         'update:visible',
         /**
          * Event emitted when clicking outside the tooltip
-         * @event click:outside
+         * @type event
+         * @name click:outside
          */
         'click:outside'
     ],

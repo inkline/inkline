@@ -1,34 +1,34 @@
-import type { ComponentManifest } from '@inkline/devtools';
+import type { ComponentManifest } from '@inkline/types';
 
-export const manifest: ComponentManifest = {
+export const ToastContainerManifest: ComponentManifest = {
     name: 'ToastContainer',
     props: [
         {
             name: 'eventBus',
-            type: ['EventBus'],
-            default: 'toastEventBus',
-            description: 'The event bus to use for showing/hiding toasts'
+            type: 'EventBus',
+            description: 'The event bus to use for showing/hiding toasts',
+            default: 'toastEventBus'
         },
         {
             name: 'duration',
-            type: ['number'],
-            default: 'undefined',
+            type: 'number',
             description:
-                'The default duration for toasts in milliseconds, if not specified in the plugin or toast display options'
+                'The default duration for toasts in milliseconds, if not specified in the plugin or toast display options',
+            default: 'undefined'
         },
         {
             name: 'dismissible',
-            type: ['Boolean'],
-            default: 'undefined',
+            type: 'Boolean',
             description:
-                'The default dismissible state for toasts, if not specified in the plugin or toast display options'
+                'The default dismissible state for toasts, if not specified in the plugin or toast display options',
+            default: 'undefined'
         },
         {
             name: 'showProgress',
-            type: ['Boolean'],
-            default: 'undefined',
+            type: 'Boolean',
             description:
-                'The default option for showing the progress bar for toasts, if not specified in the plugin or toast display options'
+                'The default option for showing the progress bar for toasts, if not specified in the plugin or toast display options',
+            default: 'undefined'
         }
     ],
     events: [],
@@ -37,53 +37,53 @@ export const manifest: ComponentManifest = {
         selector: '.toast-container',
         variables: [
             {
-                name: '--toast-container--z-index',
-                value: []
+                name: 'toast-container--margin-top'
             },
             {
-                name: '--toast-container--margin',
-                value: []
+                name: 'toast-container--margin-right'
             },
             {
-                name: '--toast-container--top',
-                value: []
+                name: 'toast-container--margin-bottom'
             },
             {
-                name: '--toast-container--left',
-                value: []
+                name: 'toast-container--margin-left'
             },
             {
-                name: '--toast-container--right',
-                value: []
+                name: 'toast-container--margin'
             },
             {
-                name: '--toast-container--bottom',
-                value: []
+                name: 'toast-container--width'
             },
             {
-                name: '--toast-container--toast--margin',
-                value: [
-                    {
-                        name: '--toast-container--toast--margin-bottom'
-                    }
-                ]
+                name: 'toast-container--z-index'
             },
             {
-                name: '--toast-container--toast--transition',
-                value: [
-                    {
-                        name: '--toast-container--toast--transition-property'
-                    },
-                    {
-                        name: '--toast-container--toast--transition-duration'
-                    },
-                    {
-                        name: '--toast-container--toast--transition-timing-function'
-                    }
-                ]
+                name: 'toast-container--toast--margin-top'
+            },
+            {
+                name: 'toast-container--toast--margin-right'
+            },
+            {
+                name: 'toast-container--toast--margin-bottom'
+            },
+            {
+                name: 'toast-container--toast--margin-left'
+            },
+            {
+                name: 'toast-container--toast--margin'
+            },
+            {
+                name: 'toast-container--toast--transition-property'
+            },
+            {
+                name: 'toast-container--toast--transition-duration'
+            },
+            {
+                name: 'toast-container--toast--transition-timing-function'
+            },
+            {
+                name: 'toast-container--toast--transition'
             }
         ]
     }
 };
-
-export default manifest;

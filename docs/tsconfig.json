@@ -1,13 +1,24 @@
 {
-    "extends": "../packages/tooling/typescript-config/tsconfig.json",
+    // https://nuxt.com/docs/guide/concepts/typescript
+    "extends": [
+        "../packages/tooling/typescript-config/tsconfig.json",
+        "./.nuxt/tsconfig.json"
+    ],
     "compilerOptions": {
-        "baseUrl": ".",
-        "types": [
-            "vitest/globals"
-        ]
-    },
-    "include": [
-        ".vitepress/**/*.ts",
-        "inkline.config.ts"
-    ]
+        "paths": {
+            "inkline*": [
+                "../packages/inkline/src*"
+            ],
+            "@inkline/nuxt*": [
+                "../packages/integrations/nuxt/src*"
+            ],
+            "@inkline/component-*/examples": [
+                "../packages/ui/components/*/src/examples/index.ts",
+                "../packages/ui/components/*/src/examples.ts"
+            ],
+            "@inkline/component-*": [
+                "../packages/ui/components/*/src/index.ts"
+            ]
+        }
+    }
 }

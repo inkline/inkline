@@ -1,6 +1,8 @@
 import { defaultDefinitionOptions, DefinitionOptions, ref, selector, variable } from '@inkline/core';
 import { useTransition } from '../../../variables';
 
+const ns = 'transition';
+
 export function useExpandTransitionThemeVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 

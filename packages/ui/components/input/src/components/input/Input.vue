@@ -197,17 +197,20 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the modelValue
-         * @event update:modelValue
+         * @type event
+         * @name update:modelValue
          */
         'update:modelValue',
         /**
          * Event emitted when clearing the input element
-         * @event clear
+         * @type event
+         * @name clear
          */
         'clear',
         /**
          * Event emitted when toggling the password visibility
-         * @event togglePassword
+         * @type event
+         * @name togglePassword
          */
         'togglePassword'
     ],

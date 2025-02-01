@@ -1,6 +1,6 @@
 import { defaultDefinitionOptions, DefinitionOptions, variable } from '@inkline/core';
 
-export function useFontStyle(userOptions: DefinitionOptions) {
+export function useFontStyleVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const fontStyleNormal = variable('font-style-normal', 'normal', options);
@@ -12,4 +12,10 @@ export function useFontStyle(userOptions: DefinitionOptions) {
         fontStyleItalic,
         fontStyleOblique
     };
+}
+
+export function useFontStyle(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useFontStyleVariables(options);
 }

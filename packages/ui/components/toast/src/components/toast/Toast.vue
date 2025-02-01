@@ -134,7 +134,8 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted when the toast is dismissed
-         * @event dismiss
+         * @type event
+         * @name dismiss
          */
         'update:modelValue'
     ],

@@ -161,12 +161,14 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the visible
-         * @event update:visible
+         * @type event
+         * @name update:visible
          */
         'update:visible',
         /**
          * Event emitted when clicking outside the tooltip
-         * @event click:outside
+         * @type event
+         * @name click:outside
          */
         'click:outside'
     ],

@@ -1,6 +1,6 @@
 import { css, defaultDefinitionOptions, DefinitionOptions, ref, variable } from '@inkline/core';
 
-export function useFluid(userOptions: DefinitionOptions) {
+export function useFluidVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const fluidMinWidth = variable('fluid--min-width', 320, options);
@@ -18,4 +18,10 @@ export function useFluid(userOptions: DefinitionOptions) {
         fluidScreen,
         fluidBreakpoint
     };
+}
+
+export function useFluid(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useFluidVariables(options);
 }

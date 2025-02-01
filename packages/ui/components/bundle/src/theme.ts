@@ -6,6 +6,7 @@ import { useButtonGroupTheme } from '@inkline/component-button-group';
 import { useCardTheme } from '@inkline/component-card';
 import { useCheckboxTheme, useCheckboxGroupTheme } from '@inkline/component-checkbox';
 import { useFormGroupTheme } from '@inkline/component-form-group';
+import { useExpandTheme } from '@inkline/component-expand';
 import { useGridTheme } from '@inkline/component-grid';
 import { useIconTheme } from '@inkline/component-icon';
 import { useInputTheme } from '@inkline/component-input';
@@ -33,6 +34,7 @@ export function useComponentsTheme(userOptions: DefinitionOptions) {
     useCheckboxTheme(options);
     useCheckboxGroupTheme(options);
     useFormGroupTheme(options);
+    useExpandTheme(options);
     useGridTheme(options);
     useIconTheme(options);
     useInputTheme(options);

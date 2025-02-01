@@ -3,7 +3,7 @@ import { useFluid } from './useFluid';
 import { useFluidTypeScale } from './useFluidTypeScale';
 import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
 
-export function useFontSize(userOptions: DefinitionOptions) {
+export function useFontSizeVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const { fluidBreakpoint } = useFluid(options);
@@ -100,4 +100,10 @@ export function useFontSize(userOptions: DefinitionOptions) {
         fontSize3Xl,
         fontSize4Xl
     };
+}
+
+export function useFontSize(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useFontSizeVariables(options);
 }

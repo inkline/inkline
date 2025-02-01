@@ -1,6 +1,6 @@
 import { defaultDefinitionOptions, DefinitionOptions, ref, variable } from '@inkline/core';
 
-export function useTransition(userOptions: DefinitionOptions) {
+export function useTransitionVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const transitionProperty = variable(
@@ -22,4 +22,10 @@ export function useTransition(userOptions: DefinitionOptions) {
         transitionTimingFunction,
         transition
     };
+}
+
+export function useTransition(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useTransitionVariables(options);
 }

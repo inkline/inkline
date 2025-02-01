@@ -3,7 +3,8 @@ import { PropType, toRef, watch } from 'vue';
 import { ref, computed, defineComponent } from 'vue';
 import { uid } from '@inkline/utils';
 import { useComponentColor, useComponentSize } from '@inkline/composables';
-import { Popup, Placement, ComputePositionConfig } from '@inkline/component-popup';
+import { Popup } from '@inkline/component-popup';
+import type { Placement, ComputePositionConfig } from '@inkline/component-popup';
 import { PopupTriggerListener } from '@inkline/types';
 
 const componentName = 'Popover';
@@ -151,12 +152,14 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the visible
-         * @event update:visible
+         * @type event
+         * @name update:visible
          */
         'update:visible',
         /**
          * Event emitted when clicking outside the popover
-         * @event click:outside
+         * @type event
+         * @name click:outside
          */
         'click:outside'
     ],

@@ -169,27 +169,32 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the modelValue
-         * @event update:modelValue
+         * @type event
+         * @name update:modelValue
          */
         'update:modelValue',
         /**
          * Event emitted when the modal is open
-         * @event open
+         * @type event
+         * @name open
          */
         'open',
         /**
          * Event emitted when the modal is opened and animation is finished
-         * @event opened
+         * @type event
+         * @name opened
          */
         'opened',
         /**
          * Event emitted when the modal is closed
-         * @event close
+         * @type event
+         * @name close
          */
         'close',
         /**
          * Event emitted when the modal is closed and animation is finished
-         * @event close
+         * @type event
+         * @name close
          */
         'closed'
     ],

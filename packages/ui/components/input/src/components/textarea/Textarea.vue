@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent, h } from 'vue';
-import { Input } from '@inkline/component-input';
+import { Input } from '../input';
 import { uid } from '@inkline/utils';
 
 const componentName = 'Textarea';
@@ -29,12 +29,14 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the modelValue
-         * @event update:modelValue
+         * @type event
+         * @name update:modelValue
          */
         'update:modelValue',
         /**
          * Event emitted when clearing the input element
-         * @event clear
+         * @type event
+         * @name clear
          */
         'clear'
     ],

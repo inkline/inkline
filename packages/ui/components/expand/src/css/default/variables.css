@@ -1,0 +1,10 @@
+:root {
+    --transition-property: color, background-color, border-color;
+    --transition-duration: 300ms;
+    --transition-timing-function: ease;
+    --transition: var(--transition-property) var(--transition-duration) var(--transition-timing-function);
+    --expand--transition-property: height, width;
+    --expand--transition-duration: var(--transition-duration);
+    --expand--transition-timing-function: var(--transition-timing-function);
+    --expand--transition: var(--expand--transition-property) var(--expand--transition-duration) var(--expand--transition-timing-function);
+}

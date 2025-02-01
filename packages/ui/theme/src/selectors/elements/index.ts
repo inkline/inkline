@@ -1,4 +1,3 @@
-export * from './normalize/theme';
 export * from './a/theme';
 export * from './abbr/theme';
 export * from './address/theme';

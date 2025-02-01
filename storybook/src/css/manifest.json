@@ -15024,6 +15024,45 @@
                 "__name": "form-group--margin-left",
                 "__value": 0
             },
+            "expand--transition-property": {
+                "__type": "variable",
+                "__name": "expand--transition-property",
+                "__value": "height, width"
+            },
+            "expand--transition-duration": {
+                "__type": "variable",
+                "__name": "expand--transition-duration",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-duration"
+                }
+            },
+            "expand--transition-timing-function": {
+                "__type": "variable",
+                "__name": "expand--transition-timing-function",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-timing-function"
+                }
+            },
+            "expand--transition": {
+                "__type": "variable",
+                "__name": "expand--transition",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "expand--transition-property"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "expand--transition-duration"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "expand--transition-timing-function"
+                    }
+                ]
+            },
             "icon--font-size": {
                 "__type": "variable",
                 "__name": "icon--font-size",
@@ -29141,6 +29180,62 @@
                 "__name": ".form-group:last-child",
                 "__value": {
                     "marginBottom": 0
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".expand-x-enter-active, .expand-x-leave-active, .expand-y-enter-active, .expand-y-leave-active",
+                "__value": {
+                    "transitionDuration": {
+                        "__type": "reference",
+                        "__name": "expand--transition-duration"
+                    },
+                    "transitionProperty": {
+                        "__type": "reference",
+                        "__name": "expand--transition-property"
+                    },
+                    "transitionTimingFunction": {
+                        "__type": "reference",
+                        "__name": "expand--transition-timing-function"
+                    },
+                    "overflow": "hidden"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".expand-x-enter, .expand-x-leave-to",
+                "__value": {
+                    "width": "0"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".expand-y-enter, .expand-y-leave-to",
+                "__value": {
+                    "height": "0"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".expand-x-enter-from, .expand-x-enter-active, .expand-x-leave-active, .expand-x-leave-to, .expand-y-enter-from, .expand-y-enter-active, .expand-y-leave-active, .expand-y-leave-to",
+                "__value": {
+                    "transform": "translateZ(0)",
+                    "backfaceVisibility": "hidden",
+                    "perspective": "1000px"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".expand-x-enter-from, .expand-x-enter-active, .expand-x-leave-active, .expand-x-leave-to",
+                "__value": {
+                    "willChange": "width"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".expand-y-enter-from, .expand-y-enter-active, .expand-y-leave-active, .expand-y-leave-to",
+                "__value": {
+                    "willChange": "height"
                 }
             },
             {

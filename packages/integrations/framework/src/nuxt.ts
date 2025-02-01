@@ -1,7 +1,5 @@
-import { defineNuxtModule, addPluginTemplate, addComponentsDir } from '@nuxt/kit';
-import { join, resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
-import { createRequire } from 'module';
+import components from './resources/components';
+import { createResolver, defineNuxtModule, addPluginTemplate, addComponent } from '@nuxt/kit';
 import type { PluginUserOptions } from './plugin/types';
 import { watch } from './plugin/watch';
 import { build } from './plugin/build';
@@ -38,7 +36,11 @@ export const inkline = defineNuxtModule<InklineModuleOptions>({
             bridge: true
         }
     },
-    async setup({ import: importOptions, configFile, outputDir, extName, globals }, nuxt) {
+    setup({ import: importOptions, configFile, outputDir, extName, globals }, nuxt) {
+        const resolver = createResolver(import.meta.url);
+        const templatesDir = resolver.resolve('./templates');
+        const templatePath = resolver.resolve(templatesDir, 'nuxt.ejs');
+
         importOptions = {
             ...defaultImportOptions,
             ...importOptions
@@ -51,29 +53,17 @@ export const inkline = defineNuxtModule<InklineModuleOptions>({
         };
         const resolvedPluginOptions = getResolvedBuildOptions(pluginOptions);
 
-        const templatesDir = fileURLToPath(new URL('./templates', import.meta.url));
-        const inklineRequire = createRequire(import.meta.url);
-
         // Add CSS imports
         if (importOptions.styles !== false) {
             nuxt.options.css = nuxt.options.css || [];
-
             nuxt.options.css.unshift(`${resolvedPluginOptions.outputDir}/index.css`);
-            nuxt.options.css.unshift('inkline/dist/css/index.css');
-
-            if (importOptions.utilities !== false) {
-                nuxt.options.css.push('@inkline/vue/lib/css/utilities.scss');
-            }
         }
 
-        // Add to transpile
-        nuxt.options.build.transpile.push('@inkline/vue');
-
+        // Add plugin template
         if (importOptions.scripts !== false) {
-            // Add plugin template
             addPluginTemplate({
                 mode: 'all',
-                src: resolve(templatesDir, 'nuxt.ejs'),
+                src: templatePath,
                 write: true,
                 filename: 'inkline.mjs',
                 options: globals || {}
@@ -81,15 +71,14 @@ export const inkline = defineNuxtModule<InklineModuleOptions>({
         }
 
         // Add dynamic component imports
-        await addComponentsDir({
-            path: join(dirname(inklineRequire.resolve('@inkline/vue')), 'components'),
-            pathPrefix: false,
-            pattern: '**/*.vue',
-            ignore: ['**/examples/*.vue'],
-            transpile: true,
-            global: importOptions.mode === 'global'
+        components.forEach((entry) => {
+            addComponent({
+                ...entry,
+                global: importOptions.mode === 'global'
+            });
         });
 
+        // Watch or build Inkline config
         if (nuxt.options.dev) {
             void watch(pluginOptions);
         } else {

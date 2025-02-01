@@ -1,7 +1,7 @@
 import { defaultDefinitionOptions, DefinitionOptions, divide, multiply, ref, variable } from '@inkline/core';
 import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
 
-export function useScale(userOptions: DefinitionOptions) {
+export function useScaleVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const scaleMinorSecond = variable('scale-minor-second', 1.067, options);
@@ -47,4 +47,10 @@ export function useScale(userOptions: DefinitionOptions) {
         scalePow4,
         scalePow5
     };
+}
+
+export function useScale(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useScaleVariables(options);
 }

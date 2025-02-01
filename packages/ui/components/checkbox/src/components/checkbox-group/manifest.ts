@@ -1,104 +1,96 @@
-import type { ComponentManifest } from '@inkline/devtools';
+import type { ComponentManifest } from '@inkline/types';
 
-export const manifest: ComponentManifest = {
+export const CheckboxGroupManifest: ComponentManifest = {
     name: 'CheckboxGroup',
     props: [
         {
             name: 'color',
-            type: ['light', 'dark'],
-            default: '',
-            description: 'The color variant of the checkbox group'
+            type: 'light',
+            description: 'The color variant of the checkbox group',
+            default: ''
         },
         {
             name: 'disabled',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The disabled state of the checkbox group'
+            type: 'Boolean',
+            description: 'The disabled state of the checkbox group',
+            default: 'false'
         },
         {
             name: 'error',
-            type: ['Boolean', 'Array'],
-            default: "'touched', 'dirty', 'invalid'",
-            description: 'The error state of the checkbox, computed based on schema by default.'
+            type: 'Boolean',
+            description: 'The error state of the input, computed based on schema by default.',
+            default: "'touched', 'dirty', 'invalid'"
         },
         {
             name: 'inline',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'Display the checkbox group as inline'
+            type: 'Boolean',
+            description: 'Display the checkbox group as inline',
+            default: 'false'
         },
         {
             name: 'indeterminate',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The indeterminate state of the checkbox group'
-        },
-        {
-            name: 'modelValue',
-            type: [],
-            default: '',
-            description: 'Used to set the checkbox group value'
+            type: 'Boolean',
+            description: 'The indeterminate state of the checkbox group',
+            default: 'false'
         },
         {
             name: 'name',
-            type: ['String'],
-            default: 'uid()',
-            description: 'The unique identifier of the checkbox group'
+            type: 'String',
+            description: 'The unique identifier of the checkbox group',
+            default: 'uid()'
         },
         {
             name: 'native',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'Displays the native browser checkbox input indicator'
+            type: 'Boolean',
+            description: 'Displays the native browser checkbox input indicator',
+            default: 'false'
         },
         {
             name: 'readonly',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The readonly state of the checkbox group'
+            type: 'Boolean',
+            description: 'The readonly state of the checkbox group',
+            default: 'false'
         },
         {
-            name: 'size',
-            type: ['sm', 'md', 'lg'],
-            default: '',
-            description: 'The size variant of the checkbox group'
+            name: 'sizeMultiplier',
+            type: 'sm',
+            description: 'The size variant of the checkbox group',
+            default: ''
         },
         {
             name: 'validateSchema',
-            type: ['Boolean'],
-            default: 'true',
-            description: 'Enable checkbox group validation using schema'
+            type: 'Boolean',
+            description: 'Enable checkbox group validation using schema',
+            default: 'true'
         },
         {
             name: 'options',
-            type: ['Array'],
-            default: '',
-            description: 'The options of the checkbox group'
+            type: 'Array',
+            description: 'The options of the checkbox group',
+            default: ''
         },
         {
             name: 'label',
-            type: ['String', 'Number', 'Boolean', 'Function', 'Object'],
-            default: 'undefined',
+            type: 'String',
             description:
-                'The fallback label of the checkbox group. Can be a string, number, render function, or component'
+                'The fallback label of the checkbox group. Can be a string, number, render function, or component',
+            default: 'undefined'
         }
     ],
     events: [
         {
-            description: 'Event emitted for setting the modelValue',
-            name: 'update:modelValue'
+            name: 'update:modelValue',
+            description: 'Event emitted for setting the modelValue'
         }
     ],
     slots: [
         {
             name: 'default',
-            description: 'Slot for default checkbox group options '
+            description: 'Slot for default checkbox group options'
         }
     ],
     css: {
-        selector: '.checkbox-group',
+        selector: '.',
         variables: []
     }
 };
-
-export default manifest;

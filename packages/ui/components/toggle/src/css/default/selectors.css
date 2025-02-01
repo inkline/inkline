@@ -24,10 +24,7 @@
     content: "";
     position: absolute;
     display: block;
-    top: 50%;
-    left: 0;
     z-index: 1;
-    transform: translate(0, 0);
 }
 
 .toggle input {
@@ -58,14 +55,14 @@
 
 .toggle .toggle-label::before {
     background: var(--toggle--background);
-    box-shadow: var(--toggle--box-shadow);
-    border-width: var(--toggle--border-width);
-    border-style: var(--toggle--border-style);
-    border-color: var(--toggle--border-color);
-    border-radius: var(--toggle--border-radius);
+    box-shadow: var(--toggle--box-shadow, var(--toggle--box-shadow-offset-x) var(--toggle--box-shadow-offset-y) var(--toggle--box-shadow-blur-radius) var(--toggle--box-shadow-spread-radius) var(--toggle--box-shadow-color));
+    border-width: var(--toggle--border-width, var(--toggle--border-top-width) var(--toggle--border-right-width) var(--toggle--border-bottom-width) var(--toggle--border-left-width));
+    border-style: var(--toggle--border-style, var(--toggle--border-top-style) var(--toggle--border-right-style) var(--toggle--border-bottom-style) var(--toggle--border-left-style));
+    border-color: var(--toggle--border-color, var(--toggle--border-top-color) var(--toggle--border-right-color) var(--toggle--border-bottom-color) var(--toggle--border-left-color));
+    border-radius: var(--toggle--border-radius, var(--toggle--border-top-left-radius) var(--toggle--border-top-right-radius) var(--toggle--border-bottom-right-radius) var(--toggle--border-bottom-left-radius));
     width: var(--toggle--width);
     height: var(--toggle--height);
-    margin: var(--toggle--margin);
+    margin: var(--toggle--margin, var(--toggle--margin-top) var(--toggle--margin-right) var(--toggle--margin-bottom) var(--toggle--margin-left));
     transition-property: var(--toggle--transition-property);
     transition-duration: var(--toggle--transition-duration);
     transition-timing-function: var(--toggle--transition-timing-function);
@@ -73,23 +70,27 @@
 
 .toggle .toggle-label::after {
     background: var(--toggle--indicator--background);
-    border-radius: var(--toggle--indicator--border-radius);
-    width: var(--toggle--indicator--width);
-    height: var(--toggle--indicator--height);
+    border-radius: var(--toggle--indicator--border-radius, var(--toggle--indicator--border-top-left-radius) var(--toggle--indicator--border-top-right-radius) var(--toggle--indicator--border-bottom-right-radius) var(--toggle--indicator--border-bottom-left-radius));
+    top: 50%;
+    left: calc(var(--toggle--height) * calc(1 - var(--toggle--indicator--scale)) * 0.5);
+    width: calc(var(--toggle--height) * var(--toggle--indicator--scale));
+    height: calc(var(--toggle--height) * var(--toggle--indicator--scale));
     margin: var(--toggle--indicator--margin);
     transition-property: var(--toggle--indicator--transition-property);
     transition-duration: var(--toggle--indicator--transition-duration);
     transition-timing-function: var(--toggle--indicator--transition-timing-function);
+    transform: translate(1px, -50%);
 }
 
 .toggle input:checked ~ .toggle-label::before {
     background: var(--toggle--checked--background);
-    border-color: var(--toggle--checked--border-color);
+    border-color: var(--toggle--checked--border-color, var(--toggle--checked--border-top-color) var(--toggle--checked--border-right-color) var(--toggle--checked--border-bottom-color) var(--toggle--checked--border-left-color));
 }
 
 .toggle input:checked ~ .toggle-label::after {
     background: var(--toggle--checked--indicator--background);
-    transform: translate(calc(calc(var(--toggle--width) - var(--toggle--indicator--margin-left)) * 0.5), 0);
+    left: calc(var(--toggle--width) - calc(var(--toggle--height) * calc(1 - var(--toggle--indicator--scale)) * 0.5));
+    transform: translate(-100%, -50%) translateX(1px);
 }
 
 .toggle input:focus ~ .toggle-label::before {
@@ -104,7 +105,7 @@
 }
 
 .toggle input:disabled ~ .toggle-label::before {
-    border-color: var(--toggle--disabled--border-color);
+    border-color: var(--toggle--disabled--border-color, var(--toggle--disabled--border-top-color) var(--toggle--disabled--border-right-color) var(--toggle--disabled--border-bottom-color) var(--toggle--disabled--border-left-color));
     background: var(--toggle--disabled--background);
 }
 
@@ -117,7 +118,7 @@
 }
 
 .toggle input[readonly] ~ .toggle-label::before {
-    border-color: var(--toggle--readonly--border-color);
+    border-color: var(--toggle--readonly--border-color, var(--toggle--readonly--border-top-color) var(--toggle--readonly--border-right-color) var(--toggle--readonly--border-bottom-color) var(--toggle--readonly--border-left-color));
     background: var(--toggle--readonly--background);
 }
 
@@ -127,7 +128,7 @@
 
 .toggle input:checked:disabled ~ .toggle-label::before {
     background: var(--toggle--checked--disabled--background);
-    border-color: var(--toggle--checked--disabled--border-color);
+    border-color: var(--toggle--checked--disabled--border-color, var(--toggle--checked--disabled--border-top-color) var(--toggle--checked--disabled--border-right-color) var(--toggle--checked--disabled--border-bottom-color) var(--toggle--checked--disabled--border-left-color));
 }
 
 .toggle input:checked:disabled ~ .toggle-label::after {
@@ -136,101 +137,133 @@
 
 .toggle input:checked[readonly] ~ .toggle-label::before {
     background: var(--toggle--checked--readonly--background);
-    border-color: var(--toggle--checked--readonly--border-color);
+    border-color: var(--toggle--checked--readonly--border-color, var(--toggle--checked--readonly--border-top-color) var(--toggle--checked--readonly--border-right-color) var(--toggle--checked--readonly--border-bottom-color) var(--toggle--checked--readonly--border-left-color));
 }
 
 .toggle input:checked[readonly] ~ .toggle-label::after {
     background: var(--toggle--checked--readonly--indicator--background);
 }
 
-.toggle.-rounded .toggle-label::before {
+.toggle.-rounded .toggle-label::before, .toggle.-rounded .toggle-label::after {
     border-radius: var(--toggle--height);
 }
 
-.toggle.-rounded .toggle-label::after {
-    border-radius: var(--toggle--indicator--height);
+.toggle.-sm {
+    --toggle--font-size: var(--toggle--sm--font-size);
+    --toggle--height: var(--toggle--sm--height);
+    --toggle--width: var(--toggle--sm--width);
+    --toggle--border-top-left-radius: var(--toggle--sm--border-top-left-radius);
+    --toggle--border-top-right-radius: var(--toggle--sm--border-top-right-radius);
+    --toggle--border-bottom-right-radius: var(--toggle--sm--border-bottom-right-radius);
+    --toggle--border-bottom-left-radius: var(--toggle--sm--border-bottom-left-radius);
+    --toggle--indicator--margin-top: var(--toggle--sm--indicator--margin-top);
+    --toggle--indicator--margin-right: var(--toggle--sm--indicator--margin-right);
+    --toggle--indicator--margin-bottom: var(--toggle--sm--indicator--margin-bottom);
+    --toggle--indicator--margin-left: var(--toggle--sm--indicator--margin-left);
 }
 
-.toggle.-sm .toggle-label {
-    font-size: var(--toggle--sm--font-size);
+.toggle.-md {
+    --toggle--font-size: var(--toggle--md--font-size);
+    --toggle--height: var(--toggle--md--height);
+    --toggle--width: var(--toggle--md--width);
+    --toggle--border-top-left-radius: var(--toggle--md--border-top-left-radius);
+    --toggle--border-top-right-radius: var(--toggle--md--border-top-right-radius);
+    --toggle--border-bottom-right-radius: var(--toggle--md--border-bottom-right-radius);
+    --toggle--border-bottom-left-radius: var(--toggle--md--border-bottom-left-radius);
+    --toggle--indicator--margin-top: var(--toggle--md--indicator--margin-top);
+    --toggle--indicator--margin-right: var(--toggle--md--indicator--margin-right);
+    --toggle--indicator--margin-bottom: var(--toggle--md--indicator--margin-bottom);
+    --toggle--indicator--margin-left: var(--toggle--md--indicator--margin-left);
 }
 
-.toggle.-sm .toggle-label::before {
-    border-radius: var(--toggle--sm--border-radius);
-    width: var(--toggle--sm--width);
-    height: var(--toggle--sm--height);
+.toggle.-lg {
+    --toggle--font-size: var(--toggle--lg--font-size);
+    --toggle--height: var(--toggle--lg--height);
+    --toggle--width: var(--toggle--lg--width);
+    --toggle--border-top-left-radius: var(--toggle--lg--border-top-left-radius);
+    --toggle--border-top-right-radius: var(--toggle--lg--border-top-right-radius);
+    --toggle--border-bottom-right-radius: var(--toggle--lg--border-bottom-right-radius);
+    --toggle--border-bottom-left-radius: var(--toggle--lg--border-bottom-left-radius);
+    --toggle--indicator--margin-top: var(--toggle--lg--indicator--margin-top);
+    --toggle--indicator--margin-right: var(--toggle--lg--indicator--margin-right);
+    --toggle--indicator--margin-bottom: var(--toggle--lg--indicator--margin-bottom);
+    --toggle--indicator--margin-left: var(--toggle--lg--indicator--margin-left);
 }
 
-.toggle.-sm .toggle-label::after {
-    width: var(--toggle--sm--indicator--width);
-    height: var(--toggle--sm--indicator--height);
-    margin: var(--toggle--sm--indicator--margin);
+.toggle.-light {
+    --toggle--color: var(--toggle--light--color);
+    --toggle--background: var(--toggle--light--background);
+    --toggle--border-top-color: var(--toggle--light--border-top-color);
+    --toggle--border-right-color: var(--toggle--light--border-right-color);
+    --toggle--border-bottom-color: var(--toggle--light--border-bottom-color);
+    --toggle--border-left-color: var(--toggle--light--border-left-color);
+    --toggle--indicator--background: var(--toggle--light--indicator--background);
+    --toggle--disabled--background: var(--toggle--light--disabled--background);
+    --toggle--disabled--border-top-color: var(--toggle--light--disabled--border-top-color);
+    --toggle--disabled--border-right-color: var(--toggle--light--disabled--border-right-color);
+    --toggle--disabled--border-bottom-color: var(--toggle--light--disabled--border-bottom-color);
+    --toggle--disabled--border-left-color: var(--toggle--light--disabled--border-left-color);
+    --toggle--disabled--indicator--background: var(--toggle--light--disabled--indicator--background);
+    --toggle--readonly--background: var(--toggle--light--readonly--background);
+    --toggle--readonly--border-top-color: var(--toggle--light--readonly--border-top-color);
+    --toggle--readonly--border-right-color: var(--toggle--light--readonly--border-right-color);
+    --toggle--readonly--border-bottom-color: var(--toggle--light--readonly--border-bottom-color);
+    --toggle--readonly--border-left-color: var(--toggle--light--readonly--border-left-color);
+    --toggle--readonly--indicator--background: var(--toggle--light--readonly--indicator--background);
+    --toggle--checked--background: var(--toggle--light--checked--background);
+    --toggle--checked--border-top-color: var(--toggle--light--checked--border-top-color);
+    --toggle--checked--border-right-color: var(--toggle--light--checked--border-right-color);
+    --toggle--checked--border-bottom-color: var(--toggle--light--checked--border-bottom-color);
+    --toggle--checked--border-left-color: var(--toggle--light--checked--border-left-color);
+    --toggle--checked--disabled--background: var(--toggle--light--checked--disabled--background);
+    --toggle--checked--disabled--border-top-color: var(--toggle--light--checked--disabled--border-top-color);
+    --toggle--checked--disabled--border-right-color: var(--toggle--light--checked--disabled--border-right-color);
+    --toggle--checked--disabled--border-bottom-color: var(--toggle--light--checked--disabled--border-bottom-color);
+    --toggle--checked--disabled--border-left-color: var(--toggle--light--checked--disabled--border-left-color);
+    --toggle--checked--disabled--indicator--background: var(--toggle--light--checked--disabled--indicator--background);
+    --toggle--checked--readonly--background: var(--toggle--light--checked--readonly--background);
+    --toggle--checked--readonly--border-top-color: var(--toggle--light--checked--readonly--border-top-color);
+    --toggle--checked--readonly--border-right-color: var(--toggle--light--checked--readonly--border-right-color);
+    --toggle--checked--readonly--border-bottom-color: var(--toggle--light--checked--readonly--border-bottom-color);
+    --toggle--checked--readonly--border-left-color: var(--toggle--light--checked--readonly--border-left-color);
+    --toggle--checked--readonly--indicator--background: var(--toggle--light--checked--readonly--indicator--background);
 }
 
-.toggle.-sm input:checked ~ .toggle-label::after {
-    transform: translate(calc(calc(var(--toggle--sm--width) - var(--toggle--sm--indicator--margin-left)) * 0.5), 0);
-}
-
-.toggle.-sm.-rounded .toggle-label::before {
-    border-radius: var(--toggle--sm--height);
-}
-
-.toggle.-sm.-rounded .toggle-label::after {
-    border-radius: var(--toggle--sm--indicator--height);
-}
-
-.toggle.-md .toggle-label {
-    font-size: var(--toggle--md--font-size);
-}
-
-.toggle.-md .toggle-label::before {
-    border-radius: var(--toggle--md--border-radius);
-    width: var(--toggle--md--width);
-    height: var(--toggle--md--height);
-}
-
-.toggle.-md .toggle-label::after {
-    width: var(--toggle--md--indicator--width);
-    height: var(--toggle--md--indicator--height);
-    margin: var(--toggle--md--indicator--margin);
-}
-
-.toggle.-md input:checked ~ .toggle-label::after {
-    transform: translate(calc(calc(var(--toggle--md--width) - var(--toggle--md--indicator--margin-left)) * 0.5), 0);
-}
-
-.toggle.-md.-rounded .toggle-label::before {
-    border-radius: var(--toggle--md--height);
-}
-
-.toggle.-md.-rounded .toggle-label::after {
-    border-radius: var(--toggle--md--indicator--height);
-}
-
-.toggle.-lg .toggle-label {
-    font-size: var(--toggle--lg--font-size);
-}
-
-.toggle.-lg .toggle-label::before {
-    border-radius: var(--toggle--lg--border-radius);
-    width: var(--toggle--lg--width);
-    height: var(--toggle--lg--height);
-}
-
-.toggle.-lg .toggle-label::after {
-    width: var(--toggle--lg--indicator--width);
-    height: var(--toggle--lg--indicator--height);
-    margin: var(--toggle--lg--indicator--margin);
-}
-
-.toggle.-lg input:checked ~ .toggle-label::after {
-    transform: translate(calc(calc(var(--toggle--lg--width) - var(--toggle--lg--indicator--margin-left)) * 0.5), 0);
-}
-
-.toggle.-lg.-rounded .toggle-label::before {
-    border-radius: var(--toggle--lg--height);
-}
-
-.toggle.-lg.-rounded .toggle-label::after {
-    border-radius: var(--toggle--lg--indicator--height);
+.toggle.-dark {
+    --toggle--color: var(--toggle--dark--color);
+    --toggle--background: var(--toggle--dark--background);
+    --toggle--border-top-color: var(--toggle--dark--border-top-color);
+    --toggle--border-right-color: var(--toggle--dark--border-right-color);
+    --toggle--border-bottom-color: var(--toggle--dark--border-bottom-color);
+    --toggle--border-left-color: var(--toggle--dark--border-left-color);
+    --toggle--indicator--background: var(--toggle--dark--indicator--background);
+    --toggle--disabled--background: var(--toggle--dark--disabled--background);
+    --toggle--disabled--border-top-color: var(--toggle--dark--disabled--border-top-color);
+    --toggle--disabled--border-right-color: var(--toggle--dark--disabled--border-right-color);
+    --toggle--disabled--border-bottom-color: var(--toggle--dark--disabled--border-bottom-color);
+    --toggle--disabled--border-left-color: var(--toggle--dark--disabled--border-left-color);
+    --toggle--disabled--indicator--background: var(--toggle--dark--disabled--indicator--background);
+    --toggle--readonly--background: var(--toggle--dark--readonly--background);
+    --toggle--readonly--border-top-color: var(--toggle--dark--readonly--border-top-color);
+    --toggle--readonly--border-right-color: var(--toggle--dark--readonly--border-right-color);
+    --toggle--readonly--border-bottom-color: var(--toggle--dark--readonly--border-bottom-color);
+    --toggle--readonly--border-left-color: var(--toggle--dark--readonly--border-left-color);
+    --toggle--readonly--indicator--background: var(--toggle--dark--readonly--indicator--background);
+    --toggle--checked--background: var(--toggle--dark--checked--background);
+    --toggle--checked--border-top-color: var(--toggle--dark--checked--border-top-color);
+    --toggle--checked--border-right-color: var(--toggle--dark--checked--border-right-color);
+    --toggle--checked--border-bottom-color: var(--toggle--dark--checked--border-bottom-color);
+    --toggle--checked--border-left-color: var(--toggle--dark--checked--border-left-color);
+    --toggle--checked--disabled--background: var(--toggle--dark--checked--disabled--background);
+    --toggle--checked--disabled--border-top-color: var(--toggle--dark--checked--disabled--border-top-color);
+    --toggle--checked--disabled--border-right-color: var(--toggle--dark--checked--disabled--border-right-color);
+    --toggle--checked--disabled--border-bottom-color: var(--toggle--dark--checked--disabled--border-bottom-color);
+    --toggle--checked--disabled--border-left-color: var(--toggle--dark--checked--disabled--border-left-color);
+    --toggle--checked--disabled--indicator--background: var(--toggle--dark--checked--disabled--indicator--background);
+    --toggle--checked--readonly--background: var(--toggle--dark--checked--readonly--background);
+    --toggle--checked--readonly--border-top-color: var(--toggle--dark--checked--readonly--border-top-color);
+    --toggle--checked--readonly--border-right-color: var(--toggle--dark--checked--readonly--border-right-color);
+    --toggle--checked--readonly--border-bottom-color: var(--toggle--dark--checked--readonly--border-bottom-color);
+    --toggle--checked--readonly--border-left-color: var(--toggle--dark--checked--readonly--border-left-color);
+    --toggle--checked--readonly--indicator--background: var(--toggle--dark--checked--readonly--indicator--background);
 }

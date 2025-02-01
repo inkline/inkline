@@ -17,7 +17,7 @@ import { DefinitionOptions } from '@inkline/core';
 //     useScale
 // } from '../../../variables';
 //
-// const ns = 'display';
+// const ns =  'display';
 //
 // export function useDisplayThemeVariables(userOptions: DefinitionOptions) {\nconst options = { ...defaultDefinitionOptions, ...userOptions };
 // const options = { ...defaultDefinitionOptions, ...userOptions };

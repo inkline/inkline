@@ -3,7 +3,7 @@ import { useFluid } from './useFluid';
 import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
 import { useFontSize } from './useFontSize';
 
-export function useSpacing(userOptions: DefinitionOptions) {
+export function useSpacingVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const { fluidBreakpoint } = useFluid(options);
@@ -145,4 +145,10 @@ export function useSpacing(userOptions: DefinitionOptions) {
         spacing2Xl3Xl,
         spacing3Xl4Xl
     };
+}
+
+export function useSpacing(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useSpacingVariables(options);
 }

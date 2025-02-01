@@ -1,8 +1,6 @@
-import { defineConfig, useComponentsTheme, useTheme } from 'inkline';
+import { defineConfig, useTheme, useComponentsTheme } from 'inkline';
 
-console.log(useTheme, useComponentsTheme);
-
-export default defineConfig(() => {
-    useTheme();
-    useComponentsTheme();
+export default defineConfig((options) => {
+    useTheme(options);
+    useComponentsTheme(options);
 });

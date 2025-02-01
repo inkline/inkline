@@ -1,1717 +1,565 @@
-import type { ComponentManifest } from '@inkline/devtools';
+import type { ComponentManifest } from '@inkline/types';
 
-export const manifest: ComponentManifest = {
+export const InputManifest: ComponentManifest = {
     name: 'Input',
     props: [
         {
             name: 'color',
-            type: ['light', 'dark'],
-            default: '',
-            description: 'The color variant of the input'
+            type: 'light',
+            description: 'The color variant of the input',
+            default: ''
         },
         {
             name: 'clearable',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'Display the input as clearable'
+            type: 'Boolean',
+            description: 'Display the input as clearable',
+            default: 'false'
         },
         {
             name: 'disabled',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The disabled state of the input'
+            type: 'Boolean',
+            description: 'The disabled state of the input',
+            default: 'false'
         },
         {
             name: 'error',
-            type: ['Boolean', 'Array'],
-            default: "'touched', 'dirty', 'invalid'",
-            description: 'The error state of the input, computed based on schema by default.'
+            type: 'Boolean',
+            description: 'The error state of the input, computed based on schema by default.',
+            default: "'touched', 'dirty', 'invalid'"
         },
         {
             name: 'id',
-            type: ['String'],
-            default: '',
-            description: 'The id of the internal input element'
+            type: 'String',
+            description: 'The id of the internal input element',
+            default: ''
         },
         {
             name: 'wrapperId',
-            type: ['String'],
-            default: '',
-            description: 'The id of the input wrapper element'
+            type: 'String',
+            description: 'The id of the input wrapper element',
+            default: ''
         },
         {
             name: 'modelValue',
-            type: ['String', 'Number'],
-            default: "''",
-            description: 'Used to set the field value'
+            type: 'String',
+            description: 'Used to set the field value',
+            default: "''"
         },
         {
             name: 'name',
-            type: ['String'],
-            default: 'uid()',
-            description: 'The unique identifier of the input'
+            type: 'String',
+            description: 'The unique identifier of the input',
+            default: 'uid()'
         },
         {
             name: 'plaintext',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'Display the input as plaintext, disabling interaction'
+            type: 'Boolean',
+            description: 'Display the input as plaintext, disabling interaction',
+            default: 'false'
         },
         {
             name: 'readonly',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The readonly state of the input'
+            type: 'Boolean',
+            description: 'The readonly state of the input',
+            default: 'false'
         },
         {
-            name: 'size',
-            type: ['sm', 'md', 'lg'],
-            default: '',
-            description: 'The size variant of the input'
+            name: 'sizeMultiplier',
+            type: 'sm',
+            description: 'The size variant of the input',
+            default: ''
         },
         {
             name: 'tabindex',
-            type: ['Number', 'String'],
-            default: '0',
-            description: 'The tabindex of the input'
+            type: 'Number',
+            description: 'The tabindex of the input',
+            default: '0'
         },
         {
             name: 'type',
-            type: ['String'],
-            default: 'text',
-            description: 'The type of the input'
+            type: 'String',
+            description: 'The type of the input',
+            default: 'text'
         },
         {
             name: 'clearAriaLabel',
-            type: ['String'],
-            default: 'Clear',
-            description: 'The aria-label of the clear button'
+            type: 'String',
+            description: 'The aria-label of the clear button',
+            default: 'Clear'
         },
         {
             name: 'showPasswordToggleAriaLabel',
-            type: ['String'],
-            default: 'Toggle',
-            description: 'The aria-label of the show password toggle button'
+            type: 'String',
+            description: 'The aria-label of the show password toggle button',
+            default: 'Toggle'
         },
         {
             name: 'showPasswordToggle',
-            type: ['Boolean'],
-            default: 'true',
-            description: 'Display the password toggle button'
+            type: 'Boolean',
+            description: 'Display the password toggle button',
+            default: 'true'
         },
         {
             name: 'validateSchema',
-            type: ['Boolean'],
-            default: 'true',
-            description: 'Enable input validation using schema'
+            type: 'Boolean',
+            description: 'Enable input validation using schema',
+            default: 'true'
         }
     ],
     events: [
         {
-            description: 'Event emitted for setting the modelValue',
-            name: 'update:modelValue'
+            name: 'update:modelValue',
+            description: 'Event emitted for setting the modelValue'
         },
         {
-            description: 'Event emitted when clearing the input element',
-            name: 'clear'
+            name: 'clear',
+            description: 'Event emitted when clearing the input element'
         },
         {
-            description: 'Event emitted when toggling the password visibility',
-            name: 'togglePassword'
+            name: 'togglePassword',
+            description: 'Event emitted when toggling the password visibility'
         }
     ],
     slots: [
         {
             name: 'prepend',
-            description: 'Slot for the input prepend content '
+            description: 'Slot for the input prepend content'
         },
         {
             name: 'prefix',
-            description: 'Slot for the input prefix content '
+            description: 'Slot for the input prefix content'
         },
         {
             name: 'password-toggle',
-            description: 'Slot for the password toggle button '
+            description: 'Slot for the password toggle button'
         },
         {
             name: 'clearable',
-            description: 'Slot for the clearable button '
+            description: 'Slot for the clearable button'
         },
         {
             name: 'suffix',
-            description: 'Slot for the input suffix content '
+            description: 'Slot for the input suffix content'
         },
         {
             name: 'append',
-            description: 'Slot for the input append content '
+            description: 'Slot for the input append content'
         }
     ],
     css: {
         selector: '.input',
         variables: [
             {
-                name: '--input--background',
-                value: [
-                    {
-                        name: '--input--background-h',
-                        value: [
-                            {
-                                name: '--color-white-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--background-s',
-                        value: [
-                            {
-                                name: '--color-white-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--background-l',
-                        value: [
-                            {
-                                name: '--color-white-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--background-a',
-                        value: [
-                            {
-                                name: '--color-white-a'
-                            }
-                        ]
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--light--background',
-                        value: [
-                            {
-                                name: '--input--light--background-h',
-                                value: [
-                                    {
-                                        name: '--color-white-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--background-s',
-                                value: [
-                                    {
-                                        name: '--color-white-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--background-l',
-                                value: [
-                                    {
-                                        name: '--color-white-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--background-a',
-                                value: [
-                                    {
-                                        name: '--color-white-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--light--disabled--background',
-                        value: [
-                            {
-                                name: '--input--light--disabled--background-h',
-                                value: [
-                                    {
-                                        name: '--color-light-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--disabled--background-s',
-                                value: [
-                                    {
-                                        name: '--color-light-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--disabled--background-l',
-                                value: [
-                                    {
-                                        name: '--color-light-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--disabled--background-a',
-                                value: [
-                                    {
-                                        name: '--color-light-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--light--prepend--background',
-                        value: [
-                            {
-                                name: '--input--light--prepend--background-h',
-                                value: [
-                                    {
-                                        name: '--color-light-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--prepend--background-s',
-                                value: [
-                                    {
-                                        name: '--color-light-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--prepend--background-l',
-                                value: [
-                                    {
-                                        name: '--color-light-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--prepend--background-a',
-                                value: [
-                                    {
-                                        name: '--color-light-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--light--append--background',
-                        value: [
-                            {
-                                name: '--input--light--append--background-h',
-                                value: [
-                                    {
-                                        name: '--color-light-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--append--background-s',
-                                value: [
-                                    {
-                                        name: '--color-light-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--append--background-l',
-                                value: [
-                                    {
-                                        name: '--color-light-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--append--background-a',
-                                value: [
-                                    {
-                                        name: '--color-light-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--background',
-                        value: [
-                            {
-                                name: '--input--dark--background-h',
-                                value: [
-                                    {
-                                        name: '--color-dark-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--background-s',
-                                value: [
-                                    {
-                                        name: '--color-dark-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--background-l',
-                                value: [
-                                    {
-                                        name: '--color-dark-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--background-a',
-                                value: [
-                                    {
-                                        name: '--color-dark-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--disabled--background',
-                        value: [
-                            {
-                                name: '--input--dark--disabled--background-h',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--disabled--background-s',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--disabled--background-l',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--disabled--background-a',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--prepend--background',
-                        value: [
-                            {
-                                name: '--input--dark--prepend--background-h',
-                                value: [
-                                    {
-                                        name: '--color-dark-shade-50-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--prepend--background-s',
-                                value: [
-                                    {
-                                        name: '--color-dark-shade-50-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--prepend--background-l',
-                                value: [
-                                    {
-                                        name: '--color-dark-shade-50-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--prepend--background-a',
-                                value: [
-                                    {
-                                        name: '--color-dark-shade-50-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--append--background',
-                        value: [
-                            {
-                                name: '--input--dark--append--background-h',
-                                value: [
-                                    {
-                                        name: '--color-dark-shade-50-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--append--background-s',
-                                value: [
-                                    {
-                                        name: '--color-dark-shade-50-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--append--background-l',
-                                value: [
-                                    {
-                                        name: '--color-dark-shade-50-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--append--background-a',
-                                value: [
-                                    {
-                                        name: '--color-dark-shade-50-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--border-top-width'
             },
             {
-                name: '--input--border-width',
-                value: [
-                    {
-                        name: '--input--border-top-width',
-                        value: [
-                            {
-                                name: '--border-top-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--border-right-width',
-                        value: [
-                            {
-                                name: '--border-right-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--border-bottom-width',
-                        value: [
-                            {
-                                name: '--border-bottom-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--border-left-width',
-                        value: [
-                            {
-                                name: '--border-left-width'
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--border-top-style'
             },
             {
-                name: '--input--border-style',
-                value: [
-                    {
-                        name: '--input--border-top-style',
-                        value: [
-                            {
-                                name: '--border-top-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--border-right-style',
-                        value: [
-                            {
-                                name: '--border-right-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--border-bottom-style',
-                        value: [
-                            {
-                                name: '--border-bottom-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--border-left-style',
-                        value: [
-                            {
-                                name: '--border-left-style'
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--border-top-color'
             },
             {
-                name: '--input--border-color',
-                value: [
-                    {
-                        name: '--input--border-top-color',
-                        value: []
-                    },
-                    {
-                        name: '--input--border-right-color',
-                        value: []
-                    },
-                    {
-                        name: '--input--border-bottom-color',
-                        value: []
-                    },
-                    {
-                        name: '--input--border-left-color',
-                        value: []
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--light--border-color',
-                        value: [
-                            {
-                                name: '--input--light--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--light--hover--border-color',
-                        value: [
-                            {
-                                name: '--input--light--hover--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--hover--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--hover--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--hover--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-100'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--border-color',
-                        value: [
-                            {
-                                name: '--input--dark--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--hover--border-color',
-                        value: [
-                            {
-                                name: '--input--dark--hover--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--hover--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--hover--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--hover--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--border-right-width'
             },
             {
-                name: '--input--border-radius',
-                value: [
-                    {
-                        name: '--input--border-top-left-radius',
-                        value: []
-                    },
-                    {
-                        name: '--input--border-bottom-left-radius',
-                        value: []
-                    },
-                    {
-                        name: '--input--border-top-right-radius',
-                        value: []
-                    },
-                    {
-                        name: '--input--border-bottom-right-radius',
-                        value: []
-                    },
-                    {
-                        name: '--input--border-top-left-radius',
-                        value: []
-                    },
-                    {
-                        name: '--input--border-top-right-radius',
-                        value: []
-                    },
-                    {
-                        name: '--input--border-bottom-right-radius',
-                        value: []
-                    },
-                    {
-                        name: '--input--border-bottom-left-radius',
-                        value: []
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--sm--border-radius',
-                        value: [
-                            {
-                                name: '--input--sm--border-top-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-left-radius-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--sm--border-top-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-right-radius-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--sm--border-bottom-right-radius',
-                                value: []
-                            },
-                            {
-                                name: '--input--sm--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-left-radius-sm'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--md--border-radius',
-                        value: [
-                            {
-                                name: '--input--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-left-radius-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--border-top-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-right-radius-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--border-bottom-right-radius',
-                                value: []
-                            },
-                            {
-                                name: '--input--md--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-left-radius-md'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--lg--border-radius',
-                        value: [
-                            {
-                                name: '--input--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-left-radius-lg'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--border-top-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-right-radius-lg'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--border-bottom-right-radius',
-                                value: []
-                            },
-                            {
-                                name: '--input--lg--border-bottom-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-bottom-left-radius-lg'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--border-right-style'
             },
             {
-                name: '--input--box-shadow',
-                value: []
+                name: 'input--border-right-color'
             },
             {
-                name: '--input--font-size',
-                value: [],
-                variants: [
-                    {
-                        name: '--input--sm--font-size',
-                        value: [
-                            {
-                                name: '--font-size-sm'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--md--font-size',
-                        value: [
-                            {
-                                name: '--font-size-md'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--lg--font-size',
-                        value: [
-                            {
-                                name: '--font-size-lg'
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--border-bottom-width'
             },
             {
-                name: '--input--transition',
-                value: [
-                    {
-                        name: '--input--transition-property',
-                        value: [
-                            {
-                                value: 'background-color, color, border-color'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--transition-duration',
-                        value: [
-                            {
-                                name: '--transition-duration'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--transition-timing-function',
-                        value: [
-                            {
-                                name: '--transition-timing-function'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--transition-property',
-                        value: [
-                            {
-                                value: 'background-color, color, border-color'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--transition-duration',
-                        value: [
-                            {
-                                name: '--transition-duration'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--transition-timing-function',
-                        value: [
-                            {
-                                name: '--transition-timing-function'
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--border-bottom-style'
             },
             {
-                name: '--input--color',
-                value: [
-                    {
-                        name: '--input--color-h',
-                        value: [
-                            {
-                                name: '--contrast-text-color-light-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--color-s',
-                        value: [
-                            {
-                                name: '--contrast-text-color-light-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--color-l',
-                        value: [
-                            {
-                                name: '--contrast-text-color-light-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--color-a',
-                        value: [
-                            {
-                                name: '--contrast-text-color-light-a'
-                            }
-                        ]
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--light--color',
-                        value: [
-                            {
-                                name: '--input--light--color-h',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-light-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--color-s',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-light-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--color-l',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-light-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--light--color-a',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-light-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--dark--color',
-                        value: [
-                            {
-                                name: '--input--dark--color-h',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--color-s',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--color-l',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--dark--color-a',
-                                value: [
-                                    {
-                                        name: '--contrast-text-color-dark-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--border-bottom-color'
             },
             {
-                name: '--input--line-height',
-                value: [
-                    {
-                        name: '--line-height'
-                    }
-                ]
+                name: 'input--border-left-width'
             },
             {
-                name: '--input--padding',
-                value: [
-                    {
-                        name: '--input--padding-top',
-                        value: []
-                    },
-                    {
-                        name: '--input--padding-right',
-                        value: []
-                    },
-                    {
-                        name: '--input--padding-bottom',
-                        value: []
-                    },
-                    {
-                        name: '--input--padding-left',
-                        value: []
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--input--sm--padding',
-                        value: [
-                            {
-                                name: '--input--sm--padding-top',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-top-sm) * 3 / 4)'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--sm--padding-right',
-                                value: [
-                                    {
-                                        name: '--padding-right-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--sm--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-bottom-sm) * 3 / 4)'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--sm--padding-left',
-                                value: [
-                                    {
-                                        name: '--padding-left-sm'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--md--padding',
-                        value: [
-                            {
-                                name: '--input--md--padding-top',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-top-md) * 3 / 4)'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--padding-right',
-                                value: [
-                                    {
-                                        name: '--padding-right-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-bottom-md) * 3 / 4)'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--md--padding-left',
-                                value: [
-                                    {
-                                        name: '--padding-left-md'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--lg--padding',
-                        value: [
-                            {
-                                name: '--input--lg--padding-top',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-top-lg) * 3 / 4)'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--padding-right',
-                                value: [
-                                    {
-                                        name: '--padding-right-lg'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--padding-bottom',
-                                value: [
-                                    {
-                                        value: 'calc(var(--padding-bottom-lg) * 3 / 4)'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--input--lg--padding-left',
-                                value: [
-                                    {
-                                        name: '--padding-left-lg'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--border-left-style'
             },
             {
-                name: '--input--placeholder--color',
-                value: [
-                    {
-                        name: '--input--placeholder--color-h',
-                        value: [
-                            {
-                                name: '--text-color-weaker-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--placeholder--color-s',
-                        value: [
-                            {
-                                name: '--text-color-weaker-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--placeholder--color-l',
-                        value: [
-                            {
-                                name: '--text-color-weaker-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--placeholder--color-a',
-                        value: [
-                            {
-                                name: '--text-color-weaker-a'
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--border-left-color'
             },
             {
-                name: '--input--prefix--border-width',
-                value: [
-                    {
-                        name: '--input--prefix--border-right-width'
-                    }
-                ]
+                name: 'input--border-width'
             },
             {
-                name: '--input--prefix--border-style',
-                value: [
-                    {
-                        name: '--input--prefix--border-right-style'
-                    }
-                ]
+                name: 'input--border-style'
             },
             {
-                name: '--input--prefix--border-color',
-                value: []
+                name: 'input--border-color'
             },
             {
-                name: '--input--prefix--color',
-                value: [
-                    {
-                        name: '--input--prefix--color-h',
-                        value: [
-                            {
-                                name: '--text-color-weaker-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--prefix--color-s',
-                        value: [
-                            {
-                                name: '--text-color-weaker-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--prefix--color-l',
-                        value: [
-                            {
-                                name: '--text-color-weaker-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--prefix--color-a',
-                        value: [
-                            {
-                                name: '--text-color-weaker-a'
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--border-top'
             },
             {
-                name: '--input--prefix--padding',
-                value: [
-                    {
-                        name: '--input--prefix--padding-left'
-                    },
-                    {
-                        name: '--input--prefix--padding-right'
-                    }
-                ]
+                name: 'input--border-right'
             },
             {
-                name: '--input--prefix--transition',
-                value: [
-                    {
-                        name: '--input--prefix--transition-property'
-                    },
-                    {
-                        name: '--input--prefix--transition-duration'
-                    },
-                    {
-                        name: '--input--prefix--transition-timing-function'
-                    }
-                ]
+                name: 'input--border-bottom'
             },
             {
-                name: '--input--suffix--border-width',
-                value: [
-                    {
-                        name: '--input--suffix--border-left-width'
-                    }
-                ]
+                name: 'input--border-left'
             },
             {
-                name: '--input--suffix--border-style',
-                value: [
-                    {
-                        name: '--input--suffix--border-left-style'
-                    }
-                ]
+                name: 'input--border'
             },
             {
-                name: '--input--suffix--border-color',
-                value: []
+                name: 'input--box-shadow-offset-x'
             },
             {
-                name: '--input--suffix--color',
-                value: [
-                    {
-                        name: '--input--suffix--color-h',
-                        value: [
-                            {
-                                name: '--text-color-weaker-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--suffix--color-s',
-                        value: [
-                            {
-                                name: '--text-color-weaker-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--suffix--color-l',
-                        value: [
-                            {
-                                name: '--text-color-weaker-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--suffix--color-a',
-                        value: [
-                            {
-                                name: '--text-color-weaker-a'
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--box-shadow-offset-y'
             },
             {
-                name: '--input--suffix--padding',
-                value: [
-                    {
-                        name: '--input--suffix--padding-left'
-                    },
-                    {
-                        name: '--input--suffix--padding-right'
-                    }
-                ]
+                name: 'input--box-shadow-blur-radius'
             },
             {
-                name: '--input--suffix--transition',
-                value: [
-                    {
-                        name: '--input--suffix--transition-property'
-                    },
-                    {
-                        name: '--input--suffix--transition-duration'
-                    },
-                    {
-                        name: '--input--suffix--transition-timing-function'
-                    }
-                ]
+                name: 'input--box-shadow-spread-radius'
             },
             {
-                name: '--input--icon--color',
-                value: [
-                    {
-                        name: '--input--icon--color-h',
-                        value: [
-                            {
-                                name: '--text-color-weak-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--icon--color-s',
-                        value: [
-                            {
-                                name: '--text-color-weak-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--icon--color-l',
-                        value: [
-                            {
-                                name: '--text-color-weak-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--icon--color-a',
-                        value: [
-                            {
-                                name: '--text-color-weak-a'
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--box-shadow-color'
             },
             {
-                name: '--input--icon--transition',
-                value: [
-                    {
-                        name: '--input--icon--transition-property'
-                    },
-                    {
-                        name: '--input--icon--transition-duration'
-                    },
-                    {
-                        name: '--input--icon--transition-timing-function'
-                    }
-                ]
+                name: 'input--box-shadow'
             },
             {
-                name: '--input--icon--width',
-                value: [
-                    {
-                        value: 'auto'
-                    }
-                ]
+                name: 'input--line-height'
             },
             {
-                name: '--input--icon--height',
-                value: []
+                name: 'input--transition-property'
             },
             {
-                name: '--input--icon--hover--color',
-                value: []
+                name: 'input--transition-duration'
             },
             {
-                name: '--input--icon--focus--color',
-                value: []
+                name: 'input--transition-timing-function'
             },
             {
-                name: '--input--hover--border-color',
-                value: [
-                    {
-                        name: '--input--hover--border-top-color',
-                        value: []
-                    },
-                    {
-                        name: '--input--hover--border-right-color',
-                        value: []
-                    },
-                    {
-                        name: '--input--hover--border-bottom-color',
-                        value: []
-                    },
-                    {
-                        name: '--input--hover--border-left-color',
-                        value: []
-                    }
-                ]
+                name: 'input--transition'
             },
             {
-                name: '--input--focus--box-shadow',
-                value: []
+                name: 'input--error--border-top-width'
             },
             {
-                name: '--input--focus--border-color',
-                value: [
-                    {
-                        name: '--input--focus--border-top-color',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--focus--border-right-color',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--focus--border-bottom-color',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--focus--border-left-color',
-                        value: [
-                            {
-                                name: '--color-primary'
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--error--border-top-style'
             },
             {
-                name: '--input--value-overlay--padding',
-                value: [
-                    {
-                        name: '--input--value-overlay--padding-left'
-                    },
-                    {
-                        name: '--input--value-overlay--padding-right'
-                    }
-                ]
+                name: 'input--error--border-top-color'
             },
             {
-                name: '--input--prepend--background',
-                value: []
+                name: 'input--error--border-right-width'
             },
             {
-                name: '--input--prepend--font-size',
-                value: []
+                name: 'input--error--border-right-style'
             },
             {
-                name: '--input--prepend--line-height',
-                value: []
+                name: 'input--error--border-right-color'
             },
             {
-                name: '--input--prepend--transition',
-                value: [
-                    {
-                        name: '--input--prepend--transition-property'
-                    },
-                    {
-                        name: '--input--prepend--transition-duration'
-                    },
-                    {
-                        name: '--input--prepend--transition-timing-function'
-                    }
-                ]
+                name: 'input--error--border-bottom-width'
             },
             {
-                name: '--input--prepend--padding',
-                value: [
-                    {
-                        name: '--input--prepend--padding-left'
-                    },
-                    {
-                        name: '--input--prepend--padding-right'
-                    }
-                ]
+                name: 'input--error--border-bottom-style'
             },
             {
-                name: '--input--append--background',
-                value: []
+                name: 'input--error--border-bottom-color'
             },
             {
-                name: '--input--append--font-size',
-                value: []
+                name: 'input--error--border-left-width'
             },
             {
-                name: '--input--append--line-height',
-                value: []
+                name: 'input--error--border-left-style'
             },
             {
-                name: '--input--append--transition',
-                value: [
-                    {
-                        name: '--input--append--transition-property'
-                    },
-                    {
-                        name: '--input--append--transition-duration'
-                    },
-                    {
-                        name: '--input--append--transition-timing-function'
-                    }
-                ]
+                name: 'input--error--border-left-color'
             },
             {
-                name: '--input--append--padding',
-                value: [
-                    {
-                        name: '--input--append--padding-left'
-                    },
-                    {
-                        name: '--input--append--padding-right'
-                    }
-                ]
+                name: 'input--error--border-width'
             },
             {
-                name: '--input--error--border-color',
-                value: [
-                    {
-                        name: '--input--error--border-top-color',
-                        value: [
-                            {
-                                name: '--color-danger'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--error--border-right-color',
-                        value: [
-                            {
-                                name: '--color-danger'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--error--border-bottom-color',
-                        value: [
-                            {
-                                name: '--color-danger'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--error--border-left-color',
-                        value: [
-                            {
-                                name: '--color-danger'
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--error--border-style'
             },
             {
-                name: '--input--disabled--background',
-                value: [
-                    {
-                        name: '--input--disabled--background-h',
-                        value: [
-                            {
-                                name: '--color-light-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--disabled--background-s',
-                        value: [
-                            {
-                                name: '--color-light-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--disabled--background-l',
-                        value: [
-                            {
-                                name: '--color-light-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--input--disabled--background-a',
-                        value: [
-                            {
-                                name: '--color-light-a'
-                            }
-                        ]
-                    }
-                ]
+                name: 'input--error--border-color'
             },
             {
-                name: '--input--disabled--border-color',
-                value: []
+                name: 'input--error--border-top'
             },
             {
-                name: '--input--disabled--color',
-                value: []
+                name: 'input--error--border-right'
+            },
+            {
+                name: 'input--error--border-bottom'
+            },
+            {
+                name: 'input--error--border-left'
+            },
+            {
+                name: 'input--error--border'
+            },
+            {
+                name: 'input--placeholder--color'
+            },
+            {
+                name: 'input--icon--width'
+            },
+            {
+                name: 'input--icon--height'
+            },
+            {
+                name: 'input--icon--color'
+            },
+            {
+                name: 'input--prefix--color'
+            },
+            {
+                name: 'input--suffix--color'
+            },
+            {
+                name: 'input--background'
+            },
+            {
+                name: 'input--color'
+            },
+            {
+                name: 'input--hover--border-top-width'
+            },
+            {
+                name: 'input--hover--border-top-style'
+            },
+            {
+                name: 'input--hover--border-top-color'
+            },
+            {
+                name: 'input--hover--border-right-width'
+            },
+            {
+                name: 'input--hover--border-right-style'
+            },
+            {
+                name: 'input--hover--border-right-color'
+            },
+            {
+                name: 'input--hover--border-bottom-width'
+            },
+            {
+                name: 'input--hover--border-bottom-style'
+            },
+            {
+                name: 'input--hover--border-bottom-color'
+            },
+            {
+                name: 'input--hover--border-left-width'
+            },
+            {
+                name: 'input--hover--border-left-style'
+            },
+            {
+                name: 'input--hover--border-left-color'
+            },
+            {
+                name: 'input--hover--border-width'
+            },
+            {
+                name: 'input--hover--border-style'
+            },
+            {
+                name: 'input--hover--border-color'
+            },
+            {
+                name: 'input--hover--border-top'
+            },
+            {
+                name: 'input--hover--border-right'
+            },
+            {
+                name: 'input--hover--border-bottom'
+            },
+            {
+                name: 'input--hover--border-left'
+            },
+            {
+                name: 'input--hover--border'
+            },
+            {
+                name: 'input--focus--border-top-width'
+            },
+            {
+                name: 'input--focus--border-top-style'
+            },
+            {
+                name: 'input--focus--border-top-color'
+            },
+            {
+                name: 'input--focus--border-right-width'
+            },
+            {
+                name: 'input--focus--border-right-style'
+            },
+            {
+                name: 'input--focus--border-right-color'
+            },
+            {
+                name: 'input--focus--border-bottom-width'
+            },
+            {
+                name: 'input--focus--border-bottom-style'
+            },
+            {
+                name: 'input--focus--border-bottom-color'
+            },
+            {
+                name: 'input--focus--border-left-width'
+            },
+            {
+                name: 'input--focus--border-left-style'
+            },
+            {
+                name: 'input--focus--border-left-color'
+            },
+            {
+                name: 'input--focus--border-width'
+            },
+            {
+                name: 'input--focus--border-style'
+            },
+            {
+                name: 'input--focus--border-color'
+            },
+            {
+                name: 'input--focus--border-top'
+            },
+            {
+                name: 'input--focus--border-right'
+            },
+            {
+                name: 'input--focus--border-bottom'
+            },
+            {
+                name: 'input--focus--border-left'
+            },
+            {
+                name: 'input--focus--border'
+            },
+            {
+                name: 'input--disabled--background'
+            },
+            {
+                name: 'input--readonly--background'
+            },
+            {
+                name: 'input--border-top-left-radius'
+            },
+            {
+                name: 'input--border-top-right-radius'
+            },
+            {
+                name: 'input--border-bottom-right-radius'
+            },
+            {
+                name: 'input--border-bottom-left-radius'
+            },
+            {
+                name: 'input--border-radius'
+            },
+            {
+                name: 'input--font-size'
+            },
+            {
+                name: 'input--padding-top'
+            },
+            {
+                name: 'input--padding-right'
+            },
+            {
+                name: 'input--padding-bottom'
+            },
+            {
+                name: 'input--padding-left'
+            },
+            {
+                name: 'input--padding'
+            },
+            {
+                name: 'input--{color}--border-top-color'
+            },
+            {
+                name: 'input--{color}--border-right-color'
+            },
+            {
+                name: 'input--{color}--border-bottom-color'
+            },
+            {
+                name: 'input--{color}--border-left-color'
+            },
+            {
+                name: 'input--{color}--background'
+            },
+            {
+                name: 'input--{color}--color'
+            },
+            {
+                name: 'input--{color}--hover--border-top-color'
+            },
+            {
+                name: 'input--{color}--hover--border-right-color'
+            },
+            {
+                name: 'input--{color}--hover--border-bottom-color'
+            },
+            {
+                name: 'input--{color}--hover--border-left-color'
+            },
+            {
+                name: 'input--{color}--focus--border-top-color'
+            },
+            {
+                name: 'input--{color}--focus--border-right-color'
+            },
+            {
+                name: 'input--{color}--focus--border-bottom-color'
+            },
+            {
+                name: 'input--{color}--focus--border-left-color'
+            },
+            {
+                name: 'input--{color}--disabled--background'
+            },
+            {
+                name: 'input--{color}--readonly--background'
+            },
+            {
+                name: 'input--{size}--border-top-left-radius'
+            },
+            {
+                name: 'input--{size}--border-top-right-radius'
+            },
+            {
+                name: 'input--{size}--border-bottom-right-radius'
+            },
+            {
+                name: 'input--{size}--border-bottom-left-radius'
+            },
+            {
+                name: 'input--{size}--font-size'
+            },
+            {
+                name: 'input--{size}--padding-top'
+            },
+            {
+                name: 'input--{size}--padding-right'
+            },
+            {
+                name: 'input--{size}--padding-bottom'
+            },
+            {
+                name: 'input--{size}--padding-left'
             }
         ]
     }
 };
-
-export default manifest;

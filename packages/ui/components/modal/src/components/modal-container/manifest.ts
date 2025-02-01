@@ -1,21 +1,19 @@
-import type { ComponentManifest } from '@inkline/devtools';
+import type { ComponentManifest } from '@inkline/types';
 
-export const manifest: ComponentManifest = {
+export const ModalContainerManifest: ComponentManifest = {
     name: 'ModalContainer',
     props: [
         {
             name: 'eventBus',
-            type: ['EventBus'],
-            default: 'modalEventBus',
-            description: 'The event bus to use for showing/hiding modals'
+            type: 'EventBus',
+            description: 'The event bus to use for showing/hiding modals',
+            default: 'modalEventBus'
         }
     ],
     events: [],
     slots: [],
     css: {
-        selector: '.modal-container',
+        selector: '.',
         variables: []
     }
 };
-
-export default manifest;

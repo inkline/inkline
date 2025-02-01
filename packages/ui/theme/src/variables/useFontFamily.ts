@@ -1,6 +1,6 @@
 import { defaultDefinitionOptions, DefinitionOptions, ref, variable } from '@inkline/core';
 
-export function useFontFamily(userOptions: DefinitionOptions) {
+export function useFontFamilyVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const fontFamilyBase = variable(
@@ -43,4 +43,10 @@ export function useFontFamily(userOptions: DefinitionOptions) {
         fontFamilyMonospaceSecondary,
         fontFamilyPrintSecondary
     };
+}
+
+export function useFontFamily(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useFontFamilyVariables(options);
 }

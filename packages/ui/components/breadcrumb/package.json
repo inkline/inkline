@@ -5,6 +5,9 @@
     "scripts": {
         "dev": "devtools component watch",
         "build": "devtools component build",
+        "manifest": "devtools component manifest",
+        "generate": "pnpm run manifest",
+        "prebuild": "pnpm run generate",
         "lint": "devtools eslint",
         "test": "devtools test",
         "test:dev": "devtools test --watch",
@@ -28,11 +31,11 @@
         "@testing-library/vue": "catalog:",
         "@testing-library/jest-dom": "catalog:",
         "@vitest/coverage-v8": "catalog:",
-               "eslint": "catalog:",
+        "eslint": "catalog:",
         "typescript": "catalog:",
         "tsup": "catalog:",
         "vite": "catalog:",
-                "vitest": "catalog:",
+        "vitest": "catalog:",
         "vue": "catalog:",
         "vue-tsc": "catalog:"
     },

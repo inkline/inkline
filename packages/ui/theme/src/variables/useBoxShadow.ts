@@ -1,6 +1,6 @@
 import { defaultDefinitionOptions, DefinitionOptions, ref, variable } from '@inkline/core';
 
-export function useBoxShadow(userOptions: DefinitionOptions) {
+export function useBoxShadowVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const boxShadowOffsetX = variable('box-shadow-offset-x', 0, options);
@@ -28,4 +28,10 @@ export function useBoxShadow(userOptions: DefinitionOptions) {
         boxShadowColor,
         boxShadow
     };
+}
+
+export function useBoxShadow(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useBoxShadowVariables(options);
 }

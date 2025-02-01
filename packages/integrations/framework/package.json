@@ -4,11 +4,14 @@
     "type": "module",
     "scripts": {
         "dev": "devtools tsup watch",
+        "prebuild": "pnpm run generate",
         "build": "devtools tsup build",
         "lint": "devtools eslint",
         "test": "devtools test",
         "test:dev": "devtools test --watch",
-        "test:ci": "devtools test --coverage"
+        "test:ci": "devtools test --coverage",
+        "generate": "tsx scripts/generate.ts",
+        "postinstall": "pnpm run generate"
     },
     "devDependencies": {
         "@inkline/config": "workspace:*",
@@ -18,6 +21,7 @@
         "@nuxt/schema": "catalog:",
         "chokidar": "catalog:",
         "eslint": "catalog:",
+        "fast-glob": "catalog:",
         "nuxt": "catalog:",
         "tsup": "catalog:",
         "typescript": "catalog:"

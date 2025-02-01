@@ -17,7 +17,8 @@ export default defineComponent({
     events: [
         /**
          * Emitted when the button is clicked
-         * @event click
+         * @type event
+         * @name click
          */
         'click'
     ],

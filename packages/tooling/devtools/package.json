@@ -8,13 +8,17 @@
     "scripts": {
         "dev": "tsx src/cli/main.ts tsup watch",
         "build": "tsx src/cli/main.ts tsup build",
-        "lint": "tsx src/cli/main.ts eslint"
+        "lint": "tsx src/cli/main.ts eslint",
+        "test": "tsx src/cli/main.ts"
     },
     "dependencies": {
         "@npmcli/promise-spawn": "^8.0.2",
         "chalk": "catalog:",
         "chokidar": "catalog:",
         "commander": "catalog:",
+        "comment-parser": "^1.4.1",
+        "fast-glob": "catalog:",
+        "jiti": "^2.4.2",
         "shelljs": "catalog:"
     },
     "devDependencies": {

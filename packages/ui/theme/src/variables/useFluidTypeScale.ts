@@ -14,7 +14,7 @@ export const fluidScaleVariants = {
     'pow-5': createVariantFactoryFn((value) => multiply(value, value, value, value, value))
 };
 
-export function useFluidTypeScale(userOptions: DefinitionOptions) {
+export function useFluidTypeScaleVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const { scaleMinorThird, scalePerfectFourth } = useScale(options);
@@ -69,4 +69,10 @@ export function useFluidTypeScale(userOptions: DefinitionOptions) {
         typeScaleMax,
         typeScaleMaxMap
     };
+}
+
+export function useFluidTypeScale(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useFluidTypeScaleVariables(options);
 }

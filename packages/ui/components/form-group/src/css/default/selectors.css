@@ -25,7 +25,7 @@
 }
 
 .form-group {
-    margin: var(--form-group--margin);
+    margin: var(--form-group--margin, var(--form-group--margin-top) var(--form-group--margin-right) var(--form-group--margin-bottom) var(--form-group--margin-left));
 }
 
 .form-group:last-child {

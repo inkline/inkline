@@ -53,11 +53,11 @@
 }
 
 .toast {
-    border-style: var(--toast--border-style);
-    border-color: var(--toast--border-color);
-    border-width: var(--toast--border-width);
-    border-radius: var(--toast--border-radius);
-    box-shadow: var(--toast--box-shadow);
+    border-style: var(--toast--border-style, var(--toast--border-top-style) var(--toast--border-right-style) var(--toast--border-bottom-style) var(--toast--border-left-style));
+    border-color: var(--toast--border-color, var(--toast--border-top-color) var(--toast--border-right-color) var(--toast--border-bottom-color) var(--toast--border-left-color));
+    border-width: var(--toast--border-width, var(--toast--border-top-width) var(--toast--border-right-width) var(--toast--border-bottom-width) var(--toast--border-left-width));
+    border-radius: var(--toast--border-radius, var(--toast--border-top-left-radius) var(--toast--border-top-right-radius) var(--toast--border-bottom-right-radius) var(--toast--border-bottom-left-radius));
+    box-shadow: var(--toast--box-shadow, var(--toast--box-shadow-offset-x) var(--toast--box-shadow-offset-y) var(--toast--box-shadow-blur-radius) var(--toast--box-shadow-spread-radius) var(--toast--box-shadow-color));
     background: var(--toast--background);
     color: var(--toast--color);
     font-size: var(--toast--font-size);
@@ -67,7 +67,7 @@
 }
 
 .toast-content {
-    padding: var(--toast--padding);
+    padding: var(--toast--padding, var(--toast--padding-top) var(--toast--padding-right) var(--toast--padding-bottom) var(--toast--padding-left));
 }
 
 .toast-content *:first-child {
@@ -92,7 +92,7 @@
 }
 
 .toast code {
-    background: hsla(0, 0%, 0%, 0.05);
+    background: var(--toast--code--background);
 }
 
 .toast a {
@@ -108,162 +108,135 @@
 }
 
 .toast.-sm {
-    border-radius: var(--toast--sm--border-top-left-radius) var(--toast--sm--border-top-right-radius) var(--toast--sm--border-bottom-right-radius) var(--toast--sm--border-bottom-left-radius);
-    font-size: var(--toast--sm--font-size);
-}
-
-.toast.-sm .toast-content {
-    padding: var(--toast--sm--padding-top) var(--toast--sm--padding-right) var(--toast--sm--padding-bottom) var(--toast--sm--padding-left);
-}
-
-.toast.-sm .toast-icon {
-    margin-left: var(--toast--sm--padding-left);
-}
-
-.toast.-sm .toast-dismiss {
-    margin-right: var(--toast--sm--padding-right);
+    --toast--border-top-left-radius: var(--toast--sm--border-top-left-radius);
+    --toast--border-top-right-radius: var(--toast--sm--border-top-right-radius);
+    --toast--border-bottom-right-radius: var(--toast--sm--border-bottom-right-radius);
+    --toast--border-bottom-left-radius: var(--toast--sm--border-bottom-left-radius);
+    --toast--font-size: var(--toast--sm--font-size);
+    --toast--padding-top: var(--toast--sm--padding-top);
+    --toast--padding-right: var(--toast--sm--padding-right);
+    --toast--padding-bottom: var(--toast--sm--padding-bottom);
+    --toast--padding-left: var(--toast--sm--padding-left);
 }
 
 .toast.-md {
-    border-radius: var(--toast--md--border-top-left-radius) var(--toast--md--border-top-right-radius) var(--toast--md--border-bottom-right-radius) var(--toast--md--border-bottom-left-radius);
-    font-size: var(--toast--md--font-size);
-}
-
-.toast.-md .toast-content {
-    padding: var(--toast--md--padding-top) var(--toast--md--padding-right) var(--toast--md--padding-bottom) var(--toast--md--padding-left);
-}
-
-.toast.-md .toast-icon {
-    margin-left: var(--toast--md--padding-left);
-}
-
-.toast.-md .toast-dismiss {
-    margin-right: var(--toast--md--padding-right);
+    --toast--border-top-left-radius: var(--toast--md--border-top-left-radius);
+    --toast--border-top-right-radius: var(--toast--md--border-top-right-radius);
+    --toast--border-bottom-right-radius: var(--toast--md--border-bottom-right-radius);
+    --toast--border-bottom-left-radius: var(--toast--md--border-bottom-left-radius);
+    --toast--font-size: var(--toast--md--font-size);
+    --toast--padding-top: var(--toast--md--padding-top);
+    --toast--padding-right: var(--toast--md--padding-right);
+    --toast--padding-bottom: var(--toast--md--padding-bottom);
+    --toast--padding-left: var(--toast--md--padding-left);
 }
 
 .toast.-lg {
-    border-radius: var(--toast--lg--border-top-left-radius) var(--toast--lg--border-top-right-radius) var(--toast--lg--border-bottom-right-radius) var(--toast--lg--border-bottom-left-radius);
-    font-size: var(--toast--lg--font-size);
-}
-
-.toast.-lg .toast-content {
-    padding: var(--toast--lg--padding-top) var(--toast--lg--padding-right) var(--toast--lg--padding-bottom) var(--toast--lg--padding-left);
-}
-
-.toast.-lg .toast-icon {
-    margin-left: var(--toast--lg--padding-left);
-}
-
-.toast.-lg .toast-dismiss {
-    margin-right: var(--toast--lg--padding-right);
+    --toast--border-top-left-radius: var(--toast--lg--border-top-left-radius);
+    --toast--border-top-right-radius: var(--toast--lg--border-top-right-radius);
+    --toast--border-bottom-right-radius: var(--toast--lg--border-bottom-right-radius);
+    --toast--border-bottom-left-radius: var(--toast--lg--border-bottom-left-radius);
+    --toast--font-size: var(--toast--lg--font-size);
+    --toast--padding-top: var(--toast--lg--padding-top);
+    --toast--padding-right: var(--toast--lg--padding-right);
+    --toast--padding-bottom: var(--toast--lg--padding-bottom);
+    --toast--padding-left: var(--toast--lg--padding-left);
 }
 
 .toast.-light {
-    border-color: var(--toast--light--border-color);
-    background: var(--toast--light--background);
-    color: var(--toast--light--color);
-}
-
-.toast.-light a {
-    color: var(--toast--light--color);
-}
-
-.toast.-light .toast-progress {
-    background: var(--toast--light--progress--background);
-}
-
-.toast.-light .toast-progress-bar {
-    background: var(--toast--light--progress--bar--background);
+    --toast--border-top-color: var(--toast--light--border-top-color);
+    --toast--border-right-color: var(--toast--light--border-right-color);
+    --toast--border-bottom-color: var(--toast--light--border-bottom-color);
+    --toast--border-left-color: var(--toast--light--border-left-color);
+    --toast--background: var(--toast--light--background);
+    --toast--color: var(--toast--light--color);
+    --toast--progress--background: var(--toast--light--progress--background);
+    --toast--progress--bar--background: var(--toast--light--progress--bar--background);
+    --toast--code--background: var(--toast--light--code--background);
 }
 
 .toast.-dark {
-    border-color: var(--toast--dark--border-color);
-    background: var(--toast--dark--background);
-    color: var(--toast--dark--color);
+    --toast--border-top-color: var(--toast--dark--border-top-color);
+    --toast--border-right-color: var(--toast--dark--border-right-color);
+    --toast--border-bottom-color: var(--toast--dark--border-bottom-color);
+    --toast--border-left-color: var(--toast--dark--border-left-color);
+    --toast--background: var(--toast--dark--background);
+    --toast--color: var(--toast--dark--color);
+    --toast--progress--background: var(--toast--dark--progress--background);
+    --toast--progress--bar--background: var(--toast--dark--progress--bar--background);
+    --toast--code--background: var(--toast--dark--code--background);
 }
 
-.toast.-dark a {
-    color: var(--toast--dark--color);
+.toast.-primary {
+    --toast--border-top-color: var(--toast--primary--border-top-color);
+    --toast--border-right-color: var(--toast--primary--border-right-color);
+    --toast--border-bottom-color: var(--toast--primary--border-bottom-color);
+    --toast--border-left-color: var(--toast--primary--border-left-color);
+    --toast--background: var(--toast--primary--background);
+    --toast--color: var(--toast--primary--color);
+    --toast--progress--background: var(--toast--primary--progress--background);
+    --toast--progress--bar--background: var(--toast--primary--progress--bar--background);
+    --toast--code--background: var(--toast--primary--code--background);
 }
 
-.toast.-dark .toast-progress {
-    background: var(--toast--dark--progress--background);
-}
-
-.toast.-dark .toast-progress-bar {
-    background: var(--toast--dark--progress--bar--background);
-}
-
-.toast.-info {
-    border-color: var(--toast--info--border-color);
-    background: var(--toast--info--background);
-    color: var(--toast--info--color);
-}
-
-.toast.-info a {
-    color: var(--toast--info--color);
-}
-
-.toast.-info .toast-progress {
-    background: var(--toast--info--progress--background);
-}
-
-.toast.-info .toast-progress-bar {
-    background: var(--toast--info--progress--bar--background);
+.toast.-secondary {
+    --toast--border-top-color: var(--toast--secondary--border-top-color);
+    --toast--border-right-color: var(--toast--secondary--border-right-color);
+    --toast--border-bottom-color: var(--toast--secondary--border-bottom-color);
+    --toast--border-left-color: var(--toast--secondary--border-left-color);
+    --toast--background: var(--toast--secondary--background);
+    --toast--color: var(--toast--secondary--color);
+    --toast--progress--background: var(--toast--secondary--progress--background);
+    --toast--progress--bar--background: var(--toast--secondary--progress--bar--background);
+    --toast--code--background: var(--toast--secondary--code--background);
 }
 
 .toast.-success {
-    border-color: var(--toast--success--border-color);
-    background: var(--toast--success--background);
-    color: var(--toast--success--color);
-}
-
-.toast.-success a {
-    color: var(--toast--success--color);
-}
-
-.toast.-success .toast-progress {
-    background: var(--toast--success--progress--background);
-}
-
-.toast.-success .toast-progress-bar {
-    background: var(--toast--success--progress--bar--background);
-}
-
-.toast.-warning {
-    border-color: var(--toast--warning--border-color);
-    background: var(--toast--warning--background);
-    color: var(--toast--warning--color);
-}
-
-.toast.-warning a {
-    color: var(--toast--warning--color);
-}
-
-.toast.-warning .toast-progress {
-    background: var(--toast--warning--progress--background);
-}
-
-.toast.-warning .toast-progress-bar {
-    background: var(--toast--warning--progress--bar--background);
+    --toast--border-top-color: var(--toast--success--border-top-color);
+    --toast--border-right-color: var(--toast--success--border-right-color);
+    --toast--border-bottom-color: var(--toast--success--border-bottom-color);
+    --toast--border-left-color: var(--toast--success--border-left-color);
+    --toast--background: var(--toast--success--background);
+    --toast--color: var(--toast--success--color);
+    --toast--progress--background: var(--toast--success--progress--background);
+    --toast--progress--bar--background: var(--toast--success--progress--bar--background);
+    --toast--code--background: var(--toast--success--code--background);
 }
 
 .toast.-danger {
-    border-color: var(--toast--danger--border-color);
-    background: var(--toast--danger--background);
-    color: var(--toast--danger--color);
+    --toast--border-top-color: var(--toast--danger--border-top-color);
+    --toast--border-right-color: var(--toast--danger--border-right-color);
+    --toast--border-bottom-color: var(--toast--danger--border-bottom-color);
+    --toast--border-left-color: var(--toast--danger--border-left-color);
+    --toast--background: var(--toast--danger--background);
+    --toast--color: var(--toast--danger--color);
+    --toast--progress--background: var(--toast--danger--progress--background);
+    --toast--progress--bar--background: var(--toast--danger--progress--bar--background);
+    --toast--code--background: var(--toast--danger--code--background);
 }
 
-.toast.-danger a {
-    color: var(--toast--danger--color);
+.toast.-warning {
+    --toast--border-top-color: var(--toast--warning--border-top-color);
+    --toast--border-right-color: var(--toast--warning--border-right-color);
+    --toast--border-bottom-color: var(--toast--warning--border-bottom-color);
+    --toast--border-left-color: var(--toast--warning--border-left-color);
+    --toast--background: var(--toast--warning--background);
+    --toast--color: var(--toast--warning--color);
+    --toast--progress--background: var(--toast--warning--progress--background);
+    --toast--progress--bar--background: var(--toast--warning--progress--bar--background);
+    --toast--code--background: var(--toast--warning--code--background);
 }
 
-.toast.-danger .toast-progress {
-    background: var(--toast--danger--progress--background);
-}
-
-.toast.-danger .toast-progress-bar {
-    background: var(--toast--danger--progress--bar--background);
+.toast.-info {
+    --toast--border-top-color: var(--toast--info--border-top-color);
+    --toast--border-right-color: var(--toast--info--border-right-color);
+    --toast--border-bottom-color: var(--toast--info--border-bottom-color);
+    --toast--border-left-color: var(--toast--info--border-left-color);
+    --toast--background: var(--toast--info--background);
+    --toast--color: var(--toast--info--color);
+    --toast--progress--background: var(--toast--info--progress--background);
+    --toast--progress--bar--background: var(--toast--info--progress--bar--background);
+    --toast--code--background: var(--toast--info--code--background);
 }
 
 .toast-container {

@@ -1,7 +1,7 @@
 import { color, defaultDefinitionOptions, DefinitionOptions, ref } from '@inkline/core';
 import { useNeutralColors } from './useColors';
 
-export function useTextColor(userOptions: DefinitionOptions) {
+export function useTextColorVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const {
@@ -22,4 +22,10 @@ export function useTextColor(userOptions: DefinitionOptions) {
         textColorWeaker,
         textColorWeakest
     };
+}
+
+export function useTextColor(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useTextColorVariables(options);
 }

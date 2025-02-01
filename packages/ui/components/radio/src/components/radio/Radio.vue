@@ -147,7 +147,8 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the modelValue
-         * @event update:modelValue
+         * @type event
+         * @name update:modelValue
          */
         'update:modelValue'
     ],

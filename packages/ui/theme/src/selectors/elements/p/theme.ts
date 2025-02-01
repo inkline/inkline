@@ -7,6 +7,8 @@ import {
 } from '@inkline/core';
 import { useFontSize, useFontWeight, useSpacing } from '../../../variables';
 
+const ns = 'p';
+
 export function useParagraphConfig(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
@@ -25,7 +27,7 @@ export function useParagraphConfig(userOptions: DefinitionOptions) {
 export function useParagraphThemeVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    return nsvariables('p', useParagraphConfig(options), options);
+    return nsvariables(ns, useParagraphConfig(options), options);
 }
 
 export function useLeadConfig(userOptions: DefinitionOptions) {

@@ -6,11 +6,8 @@
             "vitest/globals"
         ],
         "paths": {
-            "inkline": [
-                "../packages/inkline/src/index.ts"
-            ],
-            "inkline/*": [
-                "../packages/inkline/src/*"
+            "inkline*": [
+                "../packages/inkline/src*"
             ],
             "@inkline/config": [
                 "../packages/engine/config/src/index.ts"

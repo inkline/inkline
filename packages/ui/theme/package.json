@@ -6,13 +6,19 @@
     "scripts": {
         "dev": "devtools tsup watch",
         "build": "devtools tsup build",
+        "manifest": "devtools component manifest",
         "lint": "devtools eslint",
-        "test": "devtools test"
+        "test": "devtools test",
+        "postinstall": "pnpm run generate",
+        "prebuild": "pnpm run generate",
+        "generate": "tsx --import ./loaders/register.js scripts/generate.ts && pnpm run manifest"
     },
     "devDependencies": {
         "@inkline/eslint-config": "workspace:*",
         "@inkline/devtools": "workspace:*",
+        "@inkline/types": "workspace:*",
         "eslint": "catalog:",
+        "normalize.css": "catalog:",
         "typescript": "catalog:",
         "type-fest": "catalog:",
         "tsup": "catalog:",

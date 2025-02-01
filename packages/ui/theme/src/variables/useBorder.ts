@@ -1,7 +1,7 @@
 import { defaultDefinitionOptions, DefinitionOptions, ref, variable } from '@inkline/core';
 import { useNeutralColors } from './useColors';
 
-export function useBorder(userOptions: DefinitionOptions) {
+export function useBorderVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const { colorGray200 } = useNeutralColors(options);
@@ -85,4 +85,10 @@ export function useBorder(userOptions: DefinitionOptions) {
         borderLeft,
         border
     };
+}
+
+export function useBorder(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+    
+    return useBorderVariables(options);
 }

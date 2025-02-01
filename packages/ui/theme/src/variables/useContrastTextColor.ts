@@ -1,7 +1,7 @@
 import { color, defaultDefinitionOptions, DefinitionOptions, ref } from '@inkline/core';
 import { useNeutralColors } from './useColors';
 
-export function useContrastTextColor(userOptions: DefinitionOptions) {
+export function useContrastTextColorVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const {
@@ -64,4 +64,10 @@ export function useContrastTextColor(userOptions: DefinitionOptions) {
         contrastTextColorWarning,
         contrastTextColorDanger
     };
+}
+
+export function useContrastTextColor(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useContrastTextColorVariables(options);
 }

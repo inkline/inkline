@@ -1,7 +1,7 @@
 import { defaultDefinitionOptions, DefinitionOptions, ref, variable } from '@inkline/core';
 import { useSpacing } from './useSpacing';
 
-export function useGrid(userOptions: DefinitionOptions) {
+export function useGridVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const { spacingSmLg } = useSpacing(options);
@@ -15,4 +15,10 @@ export function useGrid(userOptions: DefinitionOptions) {
         columnGap,
         rowGap
     };
+}
+
+export function useGrid(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useGridVariables(options);
 }

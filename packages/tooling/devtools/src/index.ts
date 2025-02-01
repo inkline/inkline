@@ -1,1 +1,1 @@
-export * from './manifest';
+export * from './cli/commands/component/manifest/index';

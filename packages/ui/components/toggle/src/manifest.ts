@@ -1,1804 +1,780 @@
-import type { ComponentManifest } from '@inkline/devtools';
+import type { ComponentManifest } from '@inkline/types';
 
-export const manifest: ComponentManifest = {
+export const ToggleManifest: ComponentManifest = {
     name: 'Toggle',
     props: [
         {
             name: 'color',
-            type: ['light', 'dark'],
-            default: '',
-            description: 'The color variant of the checkbox'
+            type: 'light',
+            description: 'The color variant of the toggle',
+            default: ''
         },
         {
             name: 'disabled',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The disabled state of the checkbox'
+            type: 'Boolean',
+            description: 'The disabled state of the toggle',
+            default: 'false'
         },
         {
             name: 'error',
-            type: ['Boolean', 'Array'],
-            default: "'touched', 'dirty', 'invalid'",
-            description: 'The error state of the checkbox, computed based on schema by default.'
+            type: 'Boolean',
+            description: 'The error state of the input, computed based on schema by default.',
+            default: "'touched', 'dirty', 'invalid'"
         },
         {
             name: 'indeterminate',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The indeterminate state of the checkbox'
-        },
-        {
-            name: 'value',
-            type: [],
-            default: 'false',
-            description: 'Used to set the checkbox value when used inside a checkbox group'
-        },
-        {
-            name: 'modelValue',
-            type: [],
-            default: 'false',
-            description: 'Used to set the checkbox value when used by itself'
+            type: 'Boolean',
+            description: 'The indeterminate state of the toggle',
+            default: 'false'
         },
         {
             name: 'name',
-            type: ['String'],
-            default: 'uid()',
-            description: 'The unique identifier of the checkbox'
+            type: 'String',
+            description: 'The unique identifier of the toggle',
+            default: 'uid()'
         },
         {
             name: 'native',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'Displays the native browser checkbox input indicator'
+            type: 'Boolean',
+            description: 'Displays the native browser toggle input indicator',
+            default: 'false'
         },
         {
             name: 'readonly',
-            type: ['Boolean'],
-            default: 'false',
-            description: 'The readonly state of the checkbox'
+            type: 'Boolean',
+            description: 'The readonly state of the toggle',
+            default: 'false'
         },
         {
-            name: 'size',
-            type: ['sm', 'md', 'lg'],
-            default: '',
-            description: 'The size variant of the checkbox'
+            name: 'rounded',
+            type: 'Boolean',
+            description: 'The rounded variant of the toggle',
+            default: 'false'
+        },
+        {
+            name: 'sizeMultiplier',
+            type: 'sm',
+            description: 'The size variant of the toggle',
+            default: ''
         },
         {
             name: 'tabindex',
-            type: ['Number', 'String'],
-            default: '0',
-            description: 'The tabindex of the checkbox'
+            type: 'Number',
+            description: 'The tabindex of the toggle',
+            default: '0'
         },
         {
             name: 'validateSchema',
-            type: ['Boolean'],
-            default: 'true',
-            description: 'Enable toggle validation using schema'
+            type: 'Boolean',
+            description: 'Enable input validation using schema',
+            default: 'true'
         }
     ],
     events: [
         {
-            description: 'Event emitted for setting the modelValue',
-            name: 'update:modelValue'
+            name: 'update:modelValue',
+            description: 'Event emitted for setting the modelValue'
         }
     ],
     slots: [
         {
             name: 'default',
-            description: 'Slot for default toggle label '
+            description: 'Slot for default toggle label'
         }
     ],
     css: {
         selector: '.toggle',
         variables: [
             {
-                name: '--toggle--label--color',
-                value: []
+                name: 'toggle--border-top-width'
             },
             {
-                name: '--toggle--label--font-size',
-                value: []
+                name: 'toggle--border-top-style'
             },
             {
-                name: '--toggle--background',
-                value: [
-                    {
-                        name: '--toggle--background-h',
-                        value: [
-                            {
-                                name: '--color-light-shade-50-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--background-s',
-                        value: [
-                            {
-                                name: '--color-light-shade-50-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--background-l',
-                        value: [
-                            {
-                                name: '--color-light-shade-50-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--background-a',
-                        value: [
-                            {
-                                name: '--color-light-shade-50-a'
-                            }
-                        ]
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--toggle--light--background',
-                        value: [
-                            {
-                                name: '--toggle--light--background-h',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--background-s',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--background-l',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--background-a',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--light--disabled--background',
-                        value: [
-                            {
-                                name: '--toggle--light--disabled--background-h',
-                                value: [
-                                    {
-                                        name: '--color-light-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--disabled--background-s',
-                                value: [
-                                    {
-                                        name: '--color-light-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--disabled--background-l',
-                                value: [
-                                    {
-                                        name: '--color-light-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--disabled--background-a',
-                                value: [
-                                    {
-                                        name: '--color-light-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--light--disabled--indicator--background',
-                        value: [
-                            {
-                                name: '--toggle--light--disabled--indicator--background-h',
-                                value: [
-                                    {
-                                        name: '--color-gray-100-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--disabled--indicator--background-s',
-                                value: [
-                                    {
-                                        name: '--color-gray-100-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--disabled--indicator--background-l',
-                                value: [
-                                    {
-                                        name: '--color-gray-100-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--disabled--indicator--background-a',
-                                value: [
-                                    {
-                                        name: '--color-gray-100-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--light--readonly--background',
-                        value: [
-                            {
-                                name: '--toggle--light--readonly--background-h',
-                                value: [
-                                    {
-                                        name: '--color-light-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--readonly--background-s',
-                                value: [
-                                    {
-                                        name: '--color-light-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--readonly--background-l',
-                                value: [
-                                    {
-                                        name: '--color-light-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--readonly--background-a',
-                                value: [
-                                    {
-                                        name: '--color-light-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--light--readonly--indicator--background',
-                        value: [
-                            {
-                                name: '--toggle--light--readonly--indicator--background-h',
-                                value: [
-                                    {
-                                        name: '--color-gray-100-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--readonly--indicator--background-s',
-                                value: [
-                                    {
-                                        name: '--color-gray-100-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--readonly--indicator--background-l',
-                                value: [
-                                    {
-                                        name: '--color-gray-100-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--readonly--indicator--background-a',
-                                value: [
-                                    {
-                                        name: '--color-gray-100-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--light--checked--disabled--background',
-                        value: [
-                            {
-                                name: '--toggle--light--checked--disabled--background-h',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--light--checked--disabled--background-s',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--light--checked--disabled--background-l',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--light--checked--disabled--background-a',
-                                value: []
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--light--checked--readonly--background',
-                        value: [
-                            {
-                                name: '--toggle--light--checked--readonly--background-h',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--light--checked--readonly--background-s',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--light--checked--readonly--background-l',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--light--checked--readonly--background-a',
-                                value: []
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--dark--background',
-                        value: [
-                            {
-                                name: '--toggle--dark--background-h',
-                                value: [
-                                    {
-                                        name: '--color-dark-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--background-s',
-                                value: [
-                                    {
-                                        name: '--color-dark-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--background-l',
-                                value: [
-                                    {
-                                        name: '--color-dark-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--background-a',
-                                value: [
-                                    {
-                                        name: '--color-dark-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--dark--disabled--background',
-                        value: [
-                            {
-                                name: '--toggle--dark--disabled--background-h',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--disabled--background-s',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--disabled--background-l',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--disabled--background-a',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--dark--disabled--indicator--background',
-                        value: [
-                            {
-                                name: '--toggle--dark--disabled--indicator--background-h',
-                                value: [
-                                    {
-                                        name: '--color-gray-300-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--disabled--indicator--background-s',
-                                value: [
-                                    {
-                                        name: '--color-gray-300-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--disabled--indicator--background-l',
-                                value: [
-                                    {
-                                        name: '--color-gray-300-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--disabled--indicator--background-a',
-                                value: [
-                                    {
-                                        name: '--color-gray-300-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--dark--readonly--background',
-                        value: [
-                            {
-                                name: '--toggle--dark--readonly--background-h',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--readonly--background-s',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--readonly--background-l',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--readonly--background-a',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--dark--readonly--indicator--background',
-                        value: [
-                            {
-                                name: '--toggle--dark--readonly--indicator--background-h',
-                                value: [
-                                    {
-                                        name: '--color-gray-300-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--readonly--indicator--background-s',
-                                value: [
-                                    {
-                                        name: '--color-gray-300-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--readonly--indicator--background-l',
-                                value: [
-                                    {
-                                        name: '--color-gray-300-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--readonly--indicator--background-a',
-                                value: [
-                                    {
-                                        name: '--color-gray-300-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--dark--checked--disabled--background',
-                        value: [
-                            {
-                                name: '--toggle--dark--checked--disabled--background-h',
-                                value: [
-                                    {
-                                        name: '--color-primary-800-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--checked--disabled--background-s',
-                                value: [
-                                    {
-                                        name: '--color-primary-800-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--checked--disabled--background-l',
-                                value: [
-                                    {
-                                        name: '--color-primary-800-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--checked--disabled--background-a',
-                                value: [
-                                    {
-                                        name: '--color-primary-800-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--dark--checked--readonly--background',
-                        value: [
-                            {
-                                name: '--toggle--dark--checked--readonly--background-h',
-                                value: [
-                                    {
-                                        name: '--color-primary-800-h'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--checked--readonly--background-s',
-                                value: [
-                                    {
-                                        name: '--color-primary-800-s'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--checked--readonly--background-l',
-                                value: [
-                                    {
-                                        name: '--color-primary-800-l'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--checked--readonly--background-a',
-                                value: [
-                                    {
-                                        name: '--color-primary-800-a'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--border-top-color'
             },
             {
-                name: '--toggle--box-shadow',
-                value: []
+                name: 'toggle--border-right-width'
             },
             {
-                name: '--toggle--border-width',
-                value: [
-                    {
-                        name: '--toggle--border-top-width',
-                        value: [
-                            {
-                                name: '--border-top-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-right-width',
-                        value: [
-                            {
-                                name: '--border-right-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-bottom-width',
-                        value: [
-                            {
-                                name: '--border-bottom-width'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-left-width',
-                        value: [
-                            {
-                                name: '--border-left-width'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--border-right-style'
             },
             {
-                name: '--toggle--border-style',
-                value: [
-                    {
-                        name: '--toggle--border-top-style',
-                        value: [
-                            {
-                                name: '--border-top-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-right-style',
-                        value: [
-                            {
-                                name: '--border-right-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-bottom-style',
-                        value: [
-                            {
-                                name: '--border-bottom-style'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--border-left-style',
-                        value: [
-                            {
-                                name: '--border-left-style'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--border-right-color'
             },
             {
-                name: '--toggle--border-color',
-                value: [
-                    {
-                        name: '--toggle--border-top-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--border-right-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--border-bottom-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--border-left-color',
-                        value: []
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--toggle--light--border-color',
-                        value: [
-                            {
-                                name: '--toggle--light--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-100'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--light--disabled--border-color',
-                        value: [
-                            {
-                                name: '--toggle--light--disabled--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--disabled--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--disabled--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--disabled--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--light--readonly--border-color',
-                        value: [
-                            {
-                                name: '--toggle--light--readonly--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--readonly--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--readonly--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--light--readonly--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-light-shade-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--light--checked--disabled--border-color',
-                        value: [
-                            {
-                                name: '--toggle--light--checked--disabled--border-top-color',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--light--checked--disabled--border-right-color',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--light--checked--disabled--border-bottom-color',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--light--checked--disabled--border-left-color',
-                                value: []
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--light--checked--readonly--border-color',
-                        value: [
-                            {
-                                name: '--toggle--light--checked--readonly--border-top-color',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--light--checked--readonly--border-right-color',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--light--checked--readonly--border-bottom-color',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--light--checked--readonly--border-left-color',
-                                value: []
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--dark--border-color',
-                        value: [
-                            {
-                                name: '--toggle--dark--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-50'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--dark--disabled--border-color',
-                        value: [
-                            {
-                                name: '--toggle--dark--disabled--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--disabled--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--disabled--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--disabled--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100'
-                                    }
-                                ]
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--dark--readonly--border-color',
-                        value: [
-                            {
-                                name: '--toggle--dark--readonly--border-top-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--readonly--border-right-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--readonly--border-bottom-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--dark--readonly--border-left-color',
-                                value: [
-                                    {
-                                        name: '--color-dark-tint-100'
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--border-bottom-width'
             },
             {
-                name: '--toggle--border-radius',
-                value: [
-                    {
-                        name: '--toggle--border-top-left-radius',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--border-top-right-radius',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--border-bottom-right-radius',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--border-bottom-left-radius',
-                        value: []
-                    }
-                ],
-                variants: [
-                    {
-                        name: '--toggle--sm--border-radius',
-                        value: [
-                            {
-                                name: '--toggle--sm--border-top-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-left-radius-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--sm--border-top-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-right-radius-sm'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--sm--border-bottom-right-radius',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--sm--border-bottom-left-radius',
-                                value: []
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--md--border-radius',
-                        value: [
-                            {
-                                name: '--toggle--md--border-top-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-left-radius-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--md--border-top-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-right-radius-md'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--md--border-bottom-right-radius',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--md--border-bottom-left-radius',
-                                value: []
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--lg--border-radius',
-                        value: [
-                            {
-                                name: '--toggle--lg--border-top-left-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-left-radius-lg'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--lg--border-top-right-radius',
-                                value: [
-                                    {
-                                        name: '--border-top-right-radius-lg'
-                                    }
-                                ]
-                            },
-                            {
-                                name: '--toggle--lg--border-bottom-right-radius',
-                                value: []
-                            },
-                            {
-                                name: '--toggle--lg--border-bottom-left-radius',
-                                value: []
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--border-bottom-style'
             },
             {
-                name: '--toggle--width',
-                value: [],
-                variants: [
-                    {
-                        name: '--toggle--sm--width',
-                        value: [
-                            {
-                                value: 'calc(40px * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--sm--indicator--width',
-                        value: [
-                            {
-                                value: 'calc(1rem * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--md--width',
-                        value: [
-                            {
-                                value: 'calc(40px * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--md--indicator--width',
-                        value: [
-                            {
-                                value: 'calc(1rem * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--lg--width',
-                        value: [
-                            {
-                                value: 'calc(40px * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--lg--indicator--width',
-                        value: [
-                            {
-                                value: 'calc(1rem * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--border-bottom-color'
             },
             {
-                name: '--toggle--height',
-                value: [],
-                variants: [
-                    {
-                        name: '--toggle--sm--height',
-                        value: [
-                            {
-                                value: 'calc(20px * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--sm--indicator--height',
-                        value: [
-                            {
-                                value: 'calc(1rem * var(--size-multiplier-sm))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--md--height',
-                        value: [
-                            {
-                                value: 'calc(20px * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--md--indicator--height',
-                        value: [
-                            {
-                                value: 'calc(1rem * var(--size-multiplier-md))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--lg--height',
-                        value: [
-                            {
-                                value: 'calc(20px * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--lg--indicator--height',
-                        value: [
-                            {
-                                value: 'calc(1rem * var(--size-multiplier-lg))'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--border-left-width'
             },
             {
-                name: '--toggle--transition',
-                value: [
-                    {
-                        name: '--toggle--transition-property',
-                        value: [
-                            {
-                                value: 'background-color, color, border-color,\n      transform'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--transition-duration',
-                        value: [
-                            {
-                                name: '--transition-duration'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--transition-timing-function',
-                        value: [
-                            {
-                                name: '--transition-timing-function'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--transition-property',
-                        value: [
-                            {
-                                value: 'background-color, color, border-color,\n      transform'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--transition-duration',
-                        value: [
-                            {
-                                name: '--transition-duration'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--transition-timing-function',
-                        value: [
-                            {
-                                name: '--transition-timing-function'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--border-left-style'
             },
             {
-                name: '--toggle--margin',
-                value: [
-                    {
-                        name: '--toggle--margin-top',
-                        value: [
-                            {
-                                value: '0'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--margin-right',
-                        value: [
-                            {
-                                name: '--margin-right'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--margin-bottom',
-                        value: [
-                            {
-                                value: '0'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--margin-left',
-                        value: [
-                            {
-                                value: '0'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--border-left-color'
             },
             {
-                name: '--toggle--indicator--background',
-                value: [
-                    {
-                        name: '--toggle--indicator--background-h',
-                        value: [
-                            {
-                                name: '--color-white-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--indicator--background-s',
-                        value: [
-                            {
-                                name: '--color-white-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--indicator--background-l',
-                        value: [
-                            {
-                                name: '--color-white-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--indicator--background-a',
-                        value: [
-                            {
-                                name: '--color-white-a'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--border-width'
             },
             {
-                name: '--toggle--indicator--border-radius',
-                value: []
+                name: 'toggle--border-style'
             },
             {
-                name: '--toggle--indicator--transition',
-                value: [
-                    {
-                        name: '--toggle--indicator--transition-property'
-                    },
-                    {
-                        name: '--toggle--indicator--transition-duration'
-                    },
-                    {
-                        name: '--toggle--indicator--transition-timing-function'
-                    }
-                ]
+                name: 'toggle--border-color'
             },
             {
-                name: '--toggle--indicator--width',
-                value: []
+                name: 'toggle--border-top'
             },
             {
-                name: '--toggle--indicator--height',
-                value: []
+                name: 'toggle--border-right'
             },
             {
-                name: '--toggle--rounded--border-radius',
-                value: []
+                name: 'toggle--border-bottom'
             },
             {
-                name: '--toggle--checked--background',
-                value: [
-                    {
-                        name: '--toggle--checked--background-h',
-                        value: [
-                            {
-                                name: '--color-primary-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--background-s',
-                        value: [
-                            {
-                                name: '--color-primary-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--background-l',
-                        value: [
-                            {
-                                name: '--color-primary-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--background-a',
-                        value: [
-                            {
-                                name: '--color-primary-a'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--border-left'
             },
             {
-                name: '--toggle--checked--border-color',
-                value: [
-                    {
-                        name: '--toggle--checked--border-top-color',
-                        value: [
-                            {
-                                name: '--color-primary-shade-50'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--border-right-color',
-                        value: [
-                            {
-                                name: '--color-primary-shade-50'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--border-bottom-color',
-                        value: [
-                            {
-                                name: '--color-primary-shade-50'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--border-left-color',
-                        value: [
-                            {
-                                name: '--color-primary-shade-50'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--border'
             },
             {
-                name: '--toggle--checked--indicator--background',
-                value: [
-                    {
-                        name: '--toggle--checked--indicator--background-h',
-                        value: [
-                            {
-                                name: '--color-white-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--indicator--background-s',
-                        value: [
-                            {
-                                name: '--color-white-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--indicator--background-l',
-                        value: [
-                            {
-                                name: '--color-white-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--indicator--background-a',
-                        value: [
-                            {
-                                name: '--color-white-a'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--box-shadow-offset-x'
             },
             {
-                name: '--toggle--disabled--label--color',
-                value: []
+                name: 'toggle--box-shadow-offset-y'
             },
             {
-                name: '--toggle--disabled--background',
-                value: [
-                    {
-                        name: '--toggle--disabled--background-h',
-                        value: [
-                            {
-                                name: '--color-light-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--disabled--background-s',
-                        value: [
-                            {
-                                name: '--color-light-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--disabled--background-l',
-                        value: [
-                            {
-                                name: '--color-light-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--disabled--background-a',
-                        value: [
-                            {
-                                name: '--color-light-a'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--box-shadow-blur-radius'
             },
             {
-                name: '--toggle--disabled--border-color',
-                value: [
-                    {
-                        name: '--toggle--disabled--border-top-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--disabled--border-right-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--disabled--border-bottom-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--disabled--border-left-color',
-                        value: []
-                    }
-                ]
+                name: 'toggle--box-shadow-spread-radius'
             },
             {
-                name: '--toggle--disabled--indicator--background',
-                value: [
-                    {
-                        name: '--toggle--disabled--indicator--background-h',
-                        value: [
-                            {
-                                name: '--color-light-shade-100-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--disabled--indicator--background-s',
-                        value: [
-                            {
-                                name: '--color-light-shade-100-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--disabled--indicator--background-l',
-                        value: [
-                            {
-                                name: '--color-light-shade-100-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--disabled--indicator--background-a',
-                        value: [
-                            {
-                                name: '--color-light-shade-100-a'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--box-shadow-color'
             },
             {
-                name: '--toggle--checked--disabled--background',
-                value: [
-                    {
-                        name: '--toggle--checked--disabled--background-h',
-                        value: [
-                            {
-                                name: '--color-primary-shade-100-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--disabled--background-s',
-                        value: [
-                            {
-                                name: '--color-primary-shade-100-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--disabled--background-l',
-                        value: [
-                            {
-                                name: '--color-primary-shade-100-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--disabled--background-a',
-                        value: [
-                            {
-                                name: '--color-primary-shade-100-a'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--box-shadow'
             },
             {
-                name: '--toggle--checked--disabled--border-color',
-                value: [
-                    {
-                        name: '--toggle--checked--disabled--border-top-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--checked--disabled--border-right-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--checked--disabled--border-bottom-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--checked--disabled--border-left-color',
-                        value: []
-                    }
-                ]
+                name: 'toggle--font-size'
             },
             {
-                name: '--toggle--checked--disabled--indicator--background',
-                value: []
+                name: 'toggle--line-height'
             },
             {
-                name: '--toggle--readonly--label--color',
-                value: []
+                name: 'toggle--transition-property'
             },
             {
-                name: '--toggle--readonly--background',
-                value: [
-                    {
-                        name: '--toggle--readonly--background-h',
-                        value: [
-                            {
-                                name: '--color-light-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--readonly--background-s',
-                        value: [
-                            {
-                                name: '--color-light-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--readonly--background-l',
-                        value: [
-                            {
-                                name: '--color-light-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--readonly--background-a',
-                        value: [
-                            {
-                                name: '--color-light-a'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--transition-duration'
             },
             {
-                name: '--toggle--readonly--border-color',
-                value: [
-                    {
-                        name: '--toggle--readonly--border-top-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--readonly--border-right-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--readonly--border-bottom-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--readonly--border-left-color',
-                        value: []
-                    }
-                ]
+                name: 'toggle--transition-timing-function'
             },
             {
-                name: '--toggle--readonly--indicator--background',
-                value: [
-                    {
-                        name: '--toggle--readonly--indicator--background-h',
-                        value: [
-                            {
-                                name: '--color-light-shade-100-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--readonly--indicator--background-s',
-                        value: [
-                            {
-                                name: '--color-light-shade-100-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--readonly--indicator--background-l',
-                        value: [
-                            {
-                                name: '--color-light-shade-100-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--readonly--indicator--background-a',
-                        value: [
-                            {
-                                name: '--color-light-shade-100-a'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--transition'
             },
             {
-                name: '--toggle--checked--readonly--background',
-                value: [
-                    {
-                        name: '--toggle--checked--readonly--background-h',
-                        value: [
-                            {
-                                name: '--color-light-shade-100-h'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--readonly--background-s',
-                        value: [
-                            {
-                                name: '--color-light-shade-100-s'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--readonly--background-l',
-                        value: [
-                            {
-                                name: '--color-light-shade-100-l'
-                            }
-                        ]
-                    },
-                    {
-                        name: '--toggle--checked--readonly--background-a',
-                        value: [
-                            {
-                                name: '--color-light-shade-100-a'
-                            }
-                        ]
-                    }
-                ]
+                name: 'toggle--indicator--scale'
             },
             {
-                name: '--toggle--checked--readonly--border-color',
-                value: [
-                    {
-                        name: '--toggle--checked--readonly--border-top-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--checked--readonly--border-right-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--checked--readonly--border-bottom-color',
-                        value: []
-                    },
-                    {
-                        name: '--toggle--checked--readonly--border-left-color',
-                        value: []
-                    }
-                ]
+                name: 'toggle--indicator--transition-property'
             },
             {
-                name: '--toggle--checked--readonly--indicator--background',
-                value: []
+                name: 'toggle--indicator--transition-duration'
+            },
+            {
+                name: 'toggle--indicator--transition-timing-function'
+            },
+            {
+                name: 'toggle--indicator--transition'
+            },
+            {
+                name: 'toggle--indicator--background'
+            },
+            {
+                name: 'toggle--indicator--margin-top'
+            },
+            {
+                name: 'toggle--indicator--margin-right'
+            },
+            {
+                name: 'toggle--indicator--margin-bottom'
+            },
+            {
+                name: 'toggle--indicator--margin-left'
+            },
+            {
+                name: 'toggle--indicator--margin'
+            },
+            {
+                name: 'toggle--indicator--border-top-left-radius'
+            },
+            {
+                name: 'toggle--indicator--border-top-right-radius'
+            },
+            {
+                name: 'toggle--indicator--border-bottom-right-radius'
+            },
+            {
+                name: 'toggle--indicator--border-bottom-left-radius'
+            },
+            {
+                name: 'toggle--indicator--border-radius'
+            },
+            {
+                name: 'toggle--disabled--color'
+            },
+            {
+                name: 'toggle--disabled--background'
+            },
+            {
+                name: 'toggle--disabled--border-top-width'
+            },
+            {
+                name: 'toggle--disabled--border-top-style'
+            },
+            {
+                name: 'toggle--disabled--border-top-color'
+            },
+            {
+                name: 'toggle--disabled--border-right-width'
+            },
+            {
+                name: 'toggle--disabled--border-right-style'
+            },
+            {
+                name: 'toggle--disabled--border-right-color'
+            },
+            {
+                name: 'toggle--disabled--border-bottom-width'
+            },
+            {
+                name: 'toggle--disabled--border-bottom-style'
+            },
+            {
+                name: 'toggle--disabled--border-bottom-color'
+            },
+            {
+                name: 'toggle--disabled--border-left-width'
+            },
+            {
+                name: 'toggle--disabled--border-left-style'
+            },
+            {
+                name: 'toggle--disabled--border-left-color'
+            },
+            {
+                name: 'toggle--disabled--border-width'
+            },
+            {
+                name: 'toggle--disabled--border-style'
+            },
+            {
+                name: 'toggle--disabled--border-color'
+            },
+            {
+                name: 'toggle--disabled--border-top'
+            },
+            {
+                name: 'toggle--disabled--border-right'
+            },
+            {
+                name: 'toggle--disabled--border-bottom'
+            },
+            {
+                name: 'toggle--disabled--border-left'
+            },
+            {
+                name: 'toggle--disabled--border'
+            },
+            {
+                name: 'toggle--disabled--indicator--background'
+            },
+            {
+                name: 'toggle--readonly--color'
+            },
+            {
+                name: 'toggle--readonly--background'
+            },
+            {
+                name: 'toggle--readonly--border-top-width'
+            },
+            {
+                name: 'toggle--readonly--border-top-style'
+            },
+            {
+                name: 'toggle--readonly--border-top-color'
+            },
+            {
+                name: 'toggle--readonly--border-right-width'
+            },
+            {
+                name: 'toggle--readonly--border-right-style'
+            },
+            {
+                name: 'toggle--readonly--border-right-color'
+            },
+            {
+                name: 'toggle--readonly--border-bottom-width'
+            },
+            {
+                name: 'toggle--readonly--border-bottom-style'
+            },
+            {
+                name: 'toggle--readonly--border-bottom-color'
+            },
+            {
+                name: 'toggle--readonly--border-left-width'
+            },
+            {
+                name: 'toggle--readonly--border-left-style'
+            },
+            {
+                name: 'toggle--readonly--border-left-color'
+            },
+            {
+                name: 'toggle--readonly--border-width'
+            },
+            {
+                name: 'toggle--readonly--border-style'
+            },
+            {
+                name: 'toggle--readonly--border-color'
+            },
+            {
+                name: 'toggle--readonly--border-top'
+            },
+            {
+                name: 'toggle--readonly--border-right'
+            },
+            {
+                name: 'toggle--readonly--border-bottom'
+            },
+            {
+                name: 'toggle--readonly--border-left'
+            },
+            {
+                name: 'toggle--readonly--border'
+            },
+            {
+                name: 'toggle--readonly--indicator--background'
+            },
+            {
+                name: 'toggle--background'
+            },
+            {
+                name: 'toggle--color'
+            },
+            {
+                name: 'toggle--checked--background'
+            },
+            {
+                name: 'toggle--checked--border-top-width'
+            },
+            {
+                name: 'toggle--checked--border-top-style'
+            },
+            {
+                name: 'toggle--checked--border-top-color'
+            },
+            {
+                name: 'toggle--checked--border-right-width'
+            },
+            {
+                name: 'toggle--checked--border-right-style'
+            },
+            {
+                name: 'toggle--checked--border-right-color'
+            },
+            {
+                name: 'toggle--checked--border-bottom-width'
+            },
+            {
+                name: 'toggle--checked--border-bottom-style'
+            },
+            {
+                name: 'toggle--checked--border-bottom-color'
+            },
+            {
+                name: 'toggle--checked--border-left-width'
+            },
+            {
+                name: 'toggle--checked--border-left-style'
+            },
+            {
+                name: 'toggle--checked--border-left-color'
+            },
+            {
+                name: 'toggle--checked--border-width'
+            },
+            {
+                name: 'toggle--checked--border-style'
+            },
+            {
+                name: 'toggle--checked--border-color'
+            },
+            {
+                name: 'toggle--checked--border-top'
+            },
+            {
+                name: 'toggle--checked--border-right'
+            },
+            {
+                name: 'toggle--checked--border-bottom'
+            },
+            {
+                name: 'toggle--checked--border-left'
+            },
+            {
+                name: 'toggle--checked--border'
+            },
+            {
+                name: 'toggle--checked--disabled--background'
+            },
+            {
+                name: 'toggle--checked--disabled--border-top-width'
+            },
+            {
+                name: 'toggle--checked--disabled--border-top-style'
+            },
+            {
+                name: 'toggle--checked--disabled--border-top-color'
+            },
+            {
+                name: 'toggle--checked--disabled--border-right-width'
+            },
+            {
+                name: 'toggle--checked--disabled--border-right-style'
+            },
+            {
+                name: 'toggle--checked--disabled--border-right-color'
+            },
+            {
+                name: 'toggle--checked--disabled--border-bottom-width'
+            },
+            {
+                name: 'toggle--checked--disabled--border-bottom-style'
+            },
+            {
+                name: 'toggle--checked--disabled--border-bottom-color'
+            },
+            {
+                name: 'toggle--checked--disabled--border-left-width'
+            },
+            {
+                name: 'toggle--checked--disabled--border-left-style'
+            },
+            {
+                name: 'toggle--checked--disabled--border-left-color'
+            },
+            {
+                name: 'toggle--checked--disabled--border-width'
+            },
+            {
+                name: 'toggle--checked--disabled--border-style'
+            },
+            {
+                name: 'toggle--checked--disabled--border-color'
+            },
+            {
+                name: 'toggle--checked--disabled--border-top'
+            },
+            {
+                name: 'toggle--checked--disabled--border-right'
+            },
+            {
+                name: 'toggle--checked--disabled--border-bottom'
+            },
+            {
+                name: 'toggle--checked--disabled--border-left'
+            },
+            {
+                name: 'toggle--checked--disabled--border'
+            },
+            {
+                name: 'toggle--checked--disabled--indicator--background'
+            },
+            {
+                name: 'toggle--checked--readonly--background'
+            },
+            {
+                name: 'toggle--checked--readonly--border-top-width'
+            },
+            {
+                name: 'toggle--checked--readonly--border-top-style'
+            },
+            {
+                name: 'toggle--checked--readonly--border-top-color'
+            },
+            {
+                name: 'toggle--checked--readonly--border-right-width'
+            },
+            {
+                name: 'toggle--checked--readonly--border-right-style'
+            },
+            {
+                name: 'toggle--checked--readonly--border-right-color'
+            },
+            {
+                name: 'toggle--checked--readonly--border-bottom-width'
+            },
+            {
+                name: 'toggle--checked--readonly--border-bottom-style'
+            },
+            {
+                name: 'toggle--checked--readonly--border-bottom-color'
+            },
+            {
+                name: 'toggle--checked--readonly--border-left-width'
+            },
+            {
+                name: 'toggle--checked--readonly--border-left-style'
+            },
+            {
+                name: 'toggle--checked--readonly--border-left-color'
+            },
+            {
+                name: 'toggle--checked--readonly--border-width'
+            },
+            {
+                name: 'toggle--checked--readonly--border-style'
+            },
+            {
+                name: 'toggle--checked--readonly--border-color'
+            },
+            {
+                name: 'toggle--checked--readonly--border-top'
+            },
+            {
+                name: 'toggle--checked--readonly--border-right'
+            },
+            {
+                name: 'toggle--checked--readonly--border-bottom'
+            },
+            {
+                name: 'toggle--checked--readonly--border-left'
+            },
+            {
+                name: 'toggle--checked--readonly--border'
+            },
+            {
+                name: 'toggle--checked--readonly--indicator--background'
+            },
+            {
+                name: 'toggle--checked--indicator--background'
+            },
+            {
+                name: 'toggle--border-top-left-radius'
+            },
+            {
+                name: 'toggle--border-top-right-radius'
+            },
+            {
+                name: 'toggle--border-bottom-right-radius'
+            },
+            {
+                name: 'toggle--border-bottom-left-radius'
+            },
+            {
+                name: 'toggle--border-radius'
+            },
+            {
+                name: 'toggle--margin-top'
+            },
+            {
+                name: 'toggle--margin-right'
+            },
+            {
+                name: 'toggle--margin-bottom'
+            },
+            {
+                name: 'toggle--margin-left'
+            },
+            {
+                name: 'toggle--margin'
+            },
+            {
+                name: 'toggle--width'
+            },
+            {
+                name: 'toggle--height'
+            },
+            {
+                name: 'toggle--{color}--background'
+            },
+            {
+                name: 'toggle--{color}--border-top-color'
+            },
+            {
+                name: 'toggle--{color}--border-right-color'
+            },
+            {
+                name: 'toggle--{color}--border-bottom-color'
+            },
+            {
+                name: 'toggle--{color}--border-left-color'
+            },
+            {
+                name: 'toggle--{color}--color'
+            },
+            {
+                name: 'toggle--{color}--disabled--background'
+            },
+            {
+                name: 'toggle--{color}--disabled--border-top-color'
+            },
+            {
+                name: 'toggle--{color}--disabled--border-right-color'
+            },
+            {
+                name: 'toggle--{color}--disabled--border-bottom-color'
+            },
+            {
+                name: 'toggle--{color}--disabled--border-left-color'
+            },
+            {
+                name: 'toggle--{color}--disabled--indicator--background'
+            },
+            {
+                name: 'toggle--{color}--readonly--background'
+            },
+            {
+                name: 'toggle--{color}--readonly--border-top-color'
+            },
+            {
+                name: 'toggle--{color}--readonly--border-right-color'
+            },
+            {
+                name: 'toggle--{color}--readonly--border-bottom-color'
+            },
+            {
+                name: 'toggle--{color}--readonly--border-left-color'
+            },
+            {
+                name: 'toggle--{color}--readonly--indicator--background'
+            },
+            {
+                name: 'toggle--{color}--checked--background'
+            },
+            {
+                name: 'toggle--{color}--checked--border-top-color'
+            },
+            {
+                name: 'toggle--{color}--checked--border-right-color'
+            },
+            {
+                name: 'toggle--{color}--checked--border-bottom-color'
+            },
+            {
+                name: 'toggle--{color}--checked--border-left-color'
+            },
+            {
+                name: 'toggle--{color}--checked--disabled--background'
+            },
+            {
+                name: 'toggle--{color}--checked--disabled--border-top-color'
+            },
+            {
+                name: 'toggle--{color}--checked--disabled--border-right-color'
+            },
+            {
+                name: 'toggle--{color}--checked--disabled--border-bottom-color'
+            },
+            {
+                name: 'toggle--{color}--checked--disabled--border-left-color'
+            },
+            {
+                name: 'toggle--{color}--checked--disabled--indicator--background'
+            },
+            {
+                name: 'toggle--{color}--checked--readonly--background'
+            },
+            {
+                name: 'toggle--{color}--checked--readonly--border-top-color'
+            },
+            {
+                name: 'toggle--{color}--checked--readonly--border-right-color'
+            },
+            {
+                name: 'toggle--{color}--checked--readonly--border-bottom-color'
+            },
+            {
+                name: 'toggle--{color}--checked--readonly--border-left-color'
+            },
+            {
+                name: 'toggle--{color}--checked--readonly--indicator--background'
+            },
+            {
+                name: 'toggle--{color}--checked--indicator--background'
+            },
+            {
+                name: 'toggle--{color}--indicator--background'
+            },
+            {
+                name: 'toggle--{size}--border-top-left-radius'
+            },
+            {
+                name: 'toggle--{size}--border-top-right-radius'
+            },
+            {
+                name: 'toggle--{size}--border-bottom-right-radius'
+            },
+            {
+                name: 'toggle--{size}--border-bottom-left-radius'
+            },
+            {
+                name: 'toggle--{size}--font-size'
+            },
+            {
+                name: 'toggle--{size}--margin-top'
+            },
+            {
+                name: 'toggle--{size}--margin-right'
+            },
+            {
+                name: 'toggle--{size}--margin-bottom'
+            },
+            {
+                name: 'toggle--{size}--margin-left'
+            },
+            {
+                name: 'toggle--{size}--width'
+            },
+            {
+                name: 'toggle--{size}--height'
+            },
+            {
+                name: 'toggle--{size}--indicator--margin-top'
+            },
+            {
+                name: 'toggle--{size}--indicator--margin-right'
+            },
+            {
+                name: 'toggle--{size}--indicator--margin-bottom'
+            },
+            {
+                name: 'toggle--{size}--indicator--margin-left'
+            },
+            {
+                name: 'toggle--{size}--indicator--border-top-left-radius'
+            },
+            {
+                name: 'toggle--{size}--indicator--border-top-right-radius'
+            },
+            {
+                name: 'toggle--{size}--indicator--border-bottom-right-radius'
+            },
+            {
+                name: 'toggle--{size}--indicator--border-bottom-left-radius'
             }
         ]
     }
 };
-
-export default manifest;

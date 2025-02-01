@@ -67,18 +67,22 @@
 .modal {
     max-width: var(--modal--max-width);
     width: var(--modal--width);
-    box-shadow: var(--modal--box-shadow);
+    box-shadow: var(--modal--box-shadow, var(--modal--box-shadow-offset-x) var(--modal--box-shadow-offset-y) var(--modal--box-shadow-blur-radius) var(--modal--box-shadow-spread-radius) var(--modal--box-shadow-color));
     color: var(--modal--color);
     font-size: var(--modal--font-size);
 }
 
 .modal-header {
     background: var(--modal--header--background);
-    color: var(--modal--header--color);
-    border-style: var(--modal--border-style);
-    border-color: var(--modal--border-color);
-    border-width: var(--modal--border-width);
-    padding: var(--modal--padding);
+    border-radius: var(--modal--border-radius, var(--modal--border-top-left-radius) var(--modal--border-top-right-radius) var(--modal--border-bottom-right-radius) var(--modal--border-bottom-left-radius));
+    color: var(--modal--color);
+    border-style: var(--modal--border-style, var(--modal--border-top-style) var(--modal--border-right-style) var(--modal--border-bottom-style) var(--modal--border-left-style));
+    border-top-color: var(--modal--border-top-color);
+    border-right-color: var(--modal--border-right-color);
+    border-bottom-color: var(--modal--border-bottom-color);
+    border-left-color: var(--modal--border-left-color);
+    border-width: var(--modal--border-width, var(--modal--border-top-width) var(--modal--border-right-width) var(--modal--border-bottom-width) var(--modal--border-left-width));
+    padding: var(--modal--padding, var(--modal--padding-top) var(--modal--padding-right) var(--modal--padding-bottom) var(--modal--padding-left));
     transition-property: var(--modal--transition-property);
     transition-duration: var(--modal--transition-duration);
     transition-timing-function: var(--modal--transition-timing-function);
@@ -86,11 +90,15 @@
 
 .modal-body {
     background: var(--modal--background);
-    border-style: var(--modal--border-style);
-    border-color: var(--modal--border-color);
-    border-width: var(--modal--border-width);
+    border-radius: var(--modal--border-radius, var(--modal--border-top-left-radius) var(--modal--border-top-right-radius) var(--modal--border-bottom-right-radius) var(--modal--border-bottom-left-radius));
+    border-style: var(--modal--border-style, var(--modal--border-top-style) var(--modal--border-right-style) var(--modal--border-bottom-style) var(--modal--border-left-style));
+    border-top-color: var(--modal--border-top-color);
+    border-right-color: var(--modal--border-right-color);
+    border-bottom-color: var(--modal--border-bottom-color);
+    border-left-color: var(--modal--border-left-color);
+    border-width: var(--modal--border-width, var(--modal--border-top-width) var(--modal--border-right-width) var(--modal--border-bottom-width) var(--modal--border-left-width));
     color: var(--modal--color);
-    padding: var(--modal--padding);
+    padding: var(--modal--padding, var(--modal--padding-top) var(--modal--padding-right) var(--modal--padding-bottom) var(--modal--padding-left));
     transition-property: var(--modal--transition-property);
     transition-duration: var(--modal--transition-duration);
     transition-timing-function: var(--modal--transition-timing-function);
@@ -98,11 +106,15 @@
 
 .modal-footer {
     background: var(--modal--footer--background);
-    color: var(--modal--footer--color);
-    border-style: var(--modal--border-style);
-    border-color: var(--modal--border-color);
-    border-width: var(--modal--border-width);
-    padding: var(--modal--padding);
+    border-radius: var(--modal--border-radius, var(--modal--border-top-left-radius) var(--modal--border-top-right-radius) var(--modal--border-bottom-right-radius) var(--modal--border-bottom-left-radius));
+    color: var(--modal--color);
+    border-style: var(--modal--border-style, var(--modal--border-top-style) var(--modal--border-right-style) var(--modal--border-bottom-style) var(--modal--border-left-style));
+    border-top-color: var(--modal--border-top-color);
+    border-right-color: var(--modal--border-right-color);
+    border-bottom-color: var(--modal--border-bottom-color);
+    border-left-color: var(--modal--border-left-color);
+    border-width: var(--modal--border-width, var(--modal--border-top-width) var(--modal--border-right-width) var(--modal--border-bottom-width) var(--modal--border-left-width));
+    padding: var(--modal--padding, var(--modal--padding-top) var(--modal--padding-right) var(--modal--padding-bottom) var(--modal--padding-left));
     transition-property: var(--modal--transition-property);
     transition-duration: var(--modal--transition-duration);
     transition-timing-function: var(--modal--transition-timing-function);
@@ -116,14 +128,14 @@
     border-bottom: 0;
 }
 
-.modal > *:first-child {
-    border-top-left-radius: var(--modal--border-top-left-radius);
-    border-top-right-radius: var(--modal--border-top-right-radius);
+.modal > *:not(:first-child) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
-.modal > *:last-child {
-    border-bottom-right-radius: var(--modal--border-bottom-right-radius);
-    border-bottom-left-radius: var(--modal--border-bottom-left-radius);
+.modal > *:not(:last-child) {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .modal .modal-close {
@@ -131,127 +143,140 @@
 }
 
 .modal .modal-icon {
-    margin: var(--modal--icon--margin);
+    margin: var(--modal--icon--margin, var(--modal--icon--margin-top) var(--modal--icon--margin-right) var(--modal--icon--margin-bottom) var(--modal--icon--margin-left));
     align-items: center;
     display: flex;
 }
 
 .modal-wrapper .modal-footer .button + .button {
-    margin: var(--modal--footer--button--margin);
+    margin: var(--modal--footer--button--margin, var(--modal--footer--button--margin-top) var(--modal--footer--button--margin-right) var(--modal--footer--button--margin-bottom) var(--modal--footer--button--margin-left));
+}
+
+.modal.-light {
+    --modal--border-top-color: var(--modal--light--border-top-color);
+    --modal--border-right-color: var(--modal--light--border-right-color);
+    --modal--border-bottom-color: var(--modal--light--border-bottom-color);
+    --modal--border-left-color: var(--modal--light--border-left-color);
+    --modal--background: var(--modal--light--background);
+    --modal--color: var(--modal--light--color);
+    --modal--header--background: var(--modal--light--header--background);
+    --modal--footer--background: var(--modal--light--footer--background);
+}
+
+.modal.-dark {
+    --modal--border-top-color: var(--modal--dark--border-top-color);
+    --modal--border-right-color: var(--modal--dark--border-right-color);
+    --modal--border-bottom-color: var(--modal--dark--border-bottom-color);
+    --modal--border-left-color: var(--modal--dark--border-left-color);
+    --modal--background: var(--modal--dark--background);
+    --modal--color: var(--modal--dark--color);
+    --modal--header--background: var(--modal--dark--header--background);
+    --modal--footer--background: var(--modal--dark--footer--background);
+}
+
+.modal.-primary {
+    --modal--border-top-color: var(--modal--primary--border-top-color);
+    --modal--border-right-color: var(--modal--primary--border-right-color);
+    --modal--border-bottom-color: var(--modal--primary--border-bottom-color);
+    --modal--border-left-color: var(--modal--primary--border-left-color);
+    --modal--background: var(--modal--primary--background);
+    --modal--color: var(--modal--primary--color);
+    --modal--header--background: var(--modal--primary--header--background);
+    --modal--footer--background: var(--modal--primary--footer--background);
+}
+
+.modal.-secondary {
+    --modal--border-top-color: var(--modal--secondary--border-top-color);
+    --modal--border-right-color: var(--modal--secondary--border-right-color);
+    --modal--border-bottom-color: var(--modal--secondary--border-bottom-color);
+    --modal--border-left-color: var(--modal--secondary--border-left-color);
+    --modal--background: var(--modal--secondary--background);
+    --modal--color: var(--modal--secondary--color);
+    --modal--header--background: var(--modal--secondary--header--background);
+    --modal--footer--background: var(--modal--secondary--footer--background);
+}
+
+.modal.-success {
+    --modal--border-top-color: var(--modal--success--border-top-color);
+    --modal--border-right-color: var(--modal--success--border-right-color);
+    --modal--border-bottom-color: var(--modal--success--border-bottom-color);
+    --modal--border-left-color: var(--modal--success--border-left-color);
+    --modal--background: var(--modal--success--background);
+    --modal--color: var(--modal--success--color);
+    --modal--header--background: var(--modal--success--header--background);
+    --modal--footer--background: var(--modal--success--footer--background);
+}
+
+.modal.-danger {
+    --modal--border-top-color: var(--modal--danger--border-top-color);
+    --modal--border-right-color: var(--modal--danger--border-right-color);
+    --modal--border-bottom-color: var(--modal--danger--border-bottom-color);
+    --modal--border-left-color: var(--modal--danger--border-left-color);
+    --modal--background: var(--modal--danger--background);
+    --modal--color: var(--modal--danger--color);
+    --modal--header--background: var(--modal--danger--header--background);
+    --modal--footer--background: var(--modal--danger--footer--background);
+}
+
+.modal.-warning {
+    --modal--border-top-color: var(--modal--warning--border-top-color);
+    --modal--border-right-color: var(--modal--warning--border-right-color);
+    --modal--border-bottom-color: var(--modal--warning--border-bottom-color);
+    --modal--border-left-color: var(--modal--warning--border-left-color);
+    --modal--background: var(--modal--warning--background);
+    --modal--color: var(--modal--warning--color);
+    --modal--header--background: var(--modal--warning--header--background);
+    --modal--footer--background: var(--modal--warning--footer--background);
+}
+
+.modal.-info {
+    --modal--border-top-color: var(--modal--info--border-top-color);
+    --modal--border-right-color: var(--modal--info--border-right-color);
+    --modal--border-bottom-color: var(--modal--info--border-bottom-color);
+    --modal--border-left-color: var(--modal--info--border-left-color);
+    --modal--background: var(--modal--info--background);
+    --modal--color: var(--modal--info--color);
+    --modal--header--background: var(--modal--info--header--background);
+    --modal--footer--background: var(--modal--info--footer--background);
 }
 
 .modal.-sm {
-    font-size: var(--modal--sm--font-size);
-    max-width: var(--modal--sm--max-width);
-}
-
-.modal.-sm .modal-header, .modal.-sm .modal-body, .modal.-sm .modal-footer {
-    padding-top: var(--modal--sm--padding-top);
-    padding-right: var(--modal--sm--padding-right);
-    padding-bottom: var(--modal--sm--padding-bottom);
-    padding-left: var(--modal--sm--padding-left);
-}
-
-.modal.-sm > *:first-child {
-    border-top-left-radius: var(--modal--sm--border-top-left-radius);
-    border-top-right-radius: var(--modal--sm--border-top-right-radius);
-}
-
-.modal.-sm > *:last-child {
-    border-bottom-right-radius: var(--modal--sm--border-bottom-right-radius);
-    border-bottom-left-radius: var(--modal--sm--border-bottom-left-radius);
+    --modal--border-top-left-radius: var(--modal--sm--border-top-left-radius);
+    --modal--border-top-right-radius: var(--modal--sm--border-top-right-radius);
+    --modal--border-bottom-right-radius: var(--modal--sm--border-bottom-right-radius);
+    --modal--border-bottom-left-radius: var(--modal--sm--border-bottom-left-radius);
+    --modal--font-size: var(--modal--sm--font-size);
+    --modal--max-width: var(--modal--sm--max-width);
+    --modal--padding-top: var(--modal--sm--padding-top);
+    --modal--padding-right: var(--modal--sm--padding-right);
+    --modal--padding-bottom: var(--modal--sm--padding-bottom);
+    --modal--padding-left: var(--modal--sm--padding-left);
 }
 
 .modal.-md {
-    font-size: var(--modal--md--font-size);
-    max-width: var(--modal--md--max-width);
-}
-
-.modal.-md .modal-header, .modal.-md .modal-body, .modal.-md .modal-footer {
-    padding-top: var(--modal--md--padding-top);
-    padding-right: var(--modal--md--padding-right);
-    padding-bottom: var(--modal--md--padding-bottom);
-    padding-left: var(--modal--md--padding-left);
-}
-
-.modal.-md > *:first-child {
-    border-top-left-radius: var(--modal--md--border-top-left-radius);
-    border-top-right-radius: var(--modal--md--border-top-right-radius);
-}
-
-.modal.-md > *:last-child {
-    border-bottom-right-radius: var(--modal--md--border-bottom-right-radius);
-    border-bottom-left-radius: var(--modal--md--border-bottom-left-radius);
+    --modal--border-top-left-radius: var(--modal--md--border-top-left-radius);
+    --modal--border-top-right-radius: var(--modal--md--border-top-right-radius);
+    --modal--border-bottom-right-radius: var(--modal--md--border-bottom-right-radius);
+    --modal--border-bottom-left-radius: var(--modal--md--border-bottom-left-radius);
+    --modal--font-size: var(--modal--md--font-size);
+    --modal--max-width: var(--modal--md--max-width);
+    --modal--padding-top: var(--modal--md--padding-top);
+    --modal--padding-right: var(--modal--md--padding-right);
+    --modal--padding-bottom: var(--modal--md--padding-bottom);
+    --modal--padding-left: var(--modal--md--padding-left);
 }
 
 .modal.-lg {
-    font-size: var(--modal--lg--font-size);
-    max-width: var(--modal--lg--max-width);
-}
-
-.modal.-lg .modal-header, .modal.-lg .modal-body, .modal.-lg .modal-footer {
-    padding-top: var(--modal--lg--padding-top);
-    padding-right: var(--modal--lg--padding-right);
-    padding-bottom: var(--modal--lg--padding-bottom);
-    padding-left: var(--modal--lg--padding-left);
-}
-
-.modal.-lg > *:first-child {
-    border-top-left-radius: var(--modal--lg--border-top-left-radius);
-    border-top-right-radius: var(--modal--lg--border-top-right-radius);
-}
-
-.modal.-lg > *:last-child {
-    border-bottom-right-radius: var(--modal--lg--border-bottom-right-radius);
-    border-bottom-left-radius: var(--modal--lg--border-bottom-left-radius);
-}
-
-.modal.-primary .modal-header, .modal.-primary .modal-body, .modal.-primary .modal-footer, .modal.-primary .modal-close {
-    border-color: var(--modal--primary--border-color);
-    background: var(--modal--primary--background);
-    color: var(--modal--primary--color);
-}
-
-.modal.-secondary .modal-header, .modal.-secondary .modal-body, .modal.-secondary .modal-footer, .modal.-secondary .modal-close {
-    border-color: var(--modal--secondary--border-color);
-    background: var(--modal--secondary--background);
-    color: var(--modal--secondary--color);
-}
-
-.modal.-light .modal-header, .modal.-light .modal-body, .modal.-light .modal-footer, .modal.-light .modal-close {
-    border-color: var(--modal--light--border-color);
-    background: var(--modal--light--background);
-    color: var(--modal--light--color);
-}
-
-.modal.-dark .modal-header, .modal.-dark .modal-body, .modal.-dark .modal-footer, .modal.-dark .modal-close {
-    border-color: var(--modal--dark--border-color);
-    background: var(--modal--dark--background);
-    color: var(--modal--dark--color);
-}
-
-.modal.-info .modal-header, .modal.-info .modal-body, .modal.-info .modal-footer, .modal.-info .modal-close {
-    border-color: var(--modal--info--border-color);
-    background: var(--modal--info--background);
-    color: var(--modal--info--color);
-}
-
-.modal.-success .modal-header, .modal.-success .modal-body, .modal.-success .modal-footer, .modal.-success .modal-close {
-    border-color: var(--modal--success--border-color);
-    background: var(--modal--success--background);
-    color: var(--modal--success--color);
-}
-
-.modal.-warning .modal-header, .modal.-warning .modal-body, .modal.-warning .modal-footer, .modal.-warning .modal-close {
-    border-color: var(--modal--warning--border-color);
-    background: var(--modal--warning--background);
-    color: var(--modal--warning--color);
-}
-
-.modal.-danger .modal-header, .modal.-danger .modal-body, .modal.-danger .modal-footer, .modal.-danger .modal-close {
-    border-color: var(--modal--danger--border-color);
-    background: var(--modal--danger--background);
-    color: var(--modal--danger--color);
+    --modal--border-top-left-radius: var(--modal--lg--border-top-left-radius);
+    --modal--border-top-right-radius: var(--modal--lg--border-top-right-radius);
+    --modal--border-bottom-right-radius: var(--modal--lg--border-bottom-right-radius);
+    --modal--border-bottom-left-radius: var(--modal--lg--border-bottom-left-radius);
+    --modal--font-size: var(--modal--lg--font-size);
+    --modal--max-width: var(--modal--lg--max-width);
+    --modal--padding-top: var(--modal--lg--padding-top);
+    --modal--padding-right: var(--modal--lg--padding-right);
+    --modal--padding-bottom: var(--modal--lg--padding-bottom);
+    --modal--padding-left: var(--modal--lg--padding-left);
 }
 
 .modal.-fullscreen {

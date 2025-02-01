@@ -1,7 +1,6 @@
-import { computed, HTMLAttributes, Ref } from 'vue';
+import { computed } from 'vue';
 import { ref, watch } from 'vue';
 import { focusFirstDescendant } from '@inkline/utils';
-import type { Placement, Strategy } from '@floating-ui/dom';
 import {
     autoUpdate,
     computePosition,
@@ -10,30 +9,8 @@ import {
     offset as offsetModifier,
     shift as shiftModifier
 } from '@floating-ui/dom';
-import type { PopupTriggerListener } from '@inkline/types';
 import { useClickOutside, useKeyDown, unrefHTMLElement } from '@inkline/composables';
-
-export type UsePopupOptions = {
-    disabled: Ref<boolean | undefined>;
-    listener: Ref<PopupTriggerListener | PopupTriggerListener[]>;
-    placement: Ref<Placement>;
-    interactive: Ref<boolean>;
-    interactiveDelay: Ref<number>;
-    visible: Ref<boolean | undefined>;
-    animationDuration: Ref<number>;
-    hideOnClickOutside: Ref<boolean>;
-    offset: Ref<number>;
-    popupOptions: Ref<{
-        strategy?: Strategy;
-    }>;
-    onClickOutside: (event: MouseEvent, ...args: any[]) => void;
-    onUpdateModelValue: (visible: boolean) => void;
-};
-
-export type UsePopupProps = HTMLAttributes & {
-    'data-popup-placement': Placement;
-    ref: Ref<HTMLElement | null>;
-};
+import type { UsePopupOptions } from '../types';
 
 const arrowSideByPlacement: Record<string, 'top' | 'right' | 'bottom' | 'left'> = {
     top: 'bottom',
@@ -86,7 +63,7 @@ export function usePopup({
     });
 
     const triggerProps = computed(() =>
-        listenerTypes.value.reduce<UsePopupProps>(
+        listenerTypes.value.reduce<Record<string, unknown>>(
             (acc, listenerType) => {
                 switch (listenerType) {
                     case 'hover':
@@ -114,7 +91,7 @@ export function usePopup({
     );
 
     const popupProps = computed(() =>
-        listenerTypes.value.reduce<UsePopupProps>(
+        listenerTypes.value.reduce<Record<string, unknown>>(
             (acc, listenerType) => {
                 switch (listenerType) {
                     case 'hover':

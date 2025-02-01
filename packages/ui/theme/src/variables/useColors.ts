@@ -587,8 +587,7 @@ export function useBrandColors(userOptions: DefinitionOptions) {
     };
 }
 
-
-export function useColors(userOptions: DefinitionOptions) {
+export function useColorsVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     return {
@@ -597,4 +596,10 @@ export function useColors(userOptions: DefinitionOptions) {
         ...useBrandColors(options),
         ...useBrandColorVariants(options)
     };
+}
+
+export function useColors(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useColorsVariables(options);
 }

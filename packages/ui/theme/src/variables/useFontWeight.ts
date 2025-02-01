@@ -1,6 +1,6 @@
 import { defaultDefinitionOptions, DefinitionOptions, ref, variable } from '@inkline/core';
 
-export function useFontWeight(userOptions: DefinitionOptions) {
+export function useFontWeightVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const fontWeightExtralight = variable('font-weight-extralight', 200, options);
@@ -25,4 +25,10 @@ export function useFontWeight(userOptions: DefinitionOptions) {
         fontWeightBolder,
         fontWeight
     };
+}
+
+export function useFontWeight(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    return useFontWeightVariables(options);
 }
