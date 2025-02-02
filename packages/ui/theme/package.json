@@ -9,7 +9,6 @@
         "manifest": "devtools component manifest",
         "lint": "devtools eslint",
         "test": "devtools test",
-        "postinstall": "pnpm run generate",
         "prebuild": "pnpm run generate",
         "generate": "tsx --import ./loaders/register.js scripts/generate.ts && pnpm run manifest"
     },
@@ -21,6 +20,7 @@
         "normalize.css": "catalog:",
         "typescript": "catalog:",
         "type-fest": "catalog:",
+        "tsx": "catalog:",
         "tsup": "catalog:",
         "vite": "catalog:",
         "vitest": "catalog:"

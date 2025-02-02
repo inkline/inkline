@@ -4,7 +4,7 @@
     "description": "Inkline monorepo",
     "main": "index.js",
     "scripts": {
-        "postinstall": "turbo run build --filter @inkline/devtools",
+        "postinstall": "turbo run build --filter @inkline/devtools && turbo run generate",
         "build": "turbo run build --filter '!@inkline/e2e*'",
         "build:core": "turbo run build --filter '!@inkline/e2e*' --filter '!@inkline/component*' --filter !@inkline/storybook --filter !inkline",
         "dev": "turbo run dev --concurrency 64",
