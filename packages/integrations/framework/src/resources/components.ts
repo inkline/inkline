@@ -5,6 +5,11 @@ export default [
         "filePath": "@inkline/component-alert"
     },
     {
+        "name": "Badge",
+        "export": "Badge",
+        "filePath": "@inkline/component-badge"
+    },
+    {
         "name": "Button",
         "export": "Button",
         "filePath": "@inkline/component-button"
@@ -20,9 +25,9 @@ export default [
         "filePath": "@inkline/component-card"
     },
     {
-        "name": "Badge",
-        "export": "Badge",
-        "filePath": "@inkline/component-badge"
+        "name": "FormGroup",
+        "export": "FormGroup",
+        "filePath": "@inkline/component-form-group"
     },
     {
         "name": "Expand",
@@ -30,9 +35,9 @@ export default [
         "filePath": "@inkline/component-expand"
     },
     {
-        "name": "FormGroup",
-        "export": "FormGroup",
-        "filePath": "@inkline/component-form-group"
+        "name": "FormError",
+        "export": "FormError",
+        "filePath": "@inkline/component-form-error"
     },
     {
         "name": "Grid",
@@ -45,9 +50,9 @@ export default [
         "filePath": "@inkline/component-icon"
     },
     {
-        "name": "Linkable",
-        "export": "Linkable",
-        "filePath": "@inkline/component-linkable"
+        "name": "Form",
+        "export": "Form",
+        "filePath": "@inkline/component-form"
     },
     {
         "name": "Loader",
@@ -60,14 +65,9 @@ export default [
         "filePath": "@inkline/component-media"
     },
     {
-        "name": "Form",
-        "export": "Form",
-        "filePath": "@inkline/component-form"
-    },
-    {
-        "name": "FormError",
-        "export": "FormError",
-        "filePath": "@inkline/component-form-error"
+        "name": "Linkable",
+        "export": "Linkable",
+        "filePath": "@inkline/component-linkable"
     },
     {
         "name": "Popover",
@@ -80,14 +80,14 @@ export default [
         "filePath": "@inkline/component-popup"
     },
     {
-        "name": "Tooltip",
-        "export": "Tooltip",
-        "filePath": "@inkline/component-tooltip"
-    },
-    {
         "name": "Toggle",
         "export": "Toggle",
         "filePath": "@inkline/component-toggle"
+    },
+    {
+        "name": "Tooltip",
+        "export": "Tooltip",
+        "filePath": "@inkline/component-tooltip"
     },
     {
         "name": "Breadcrumb",
@@ -100,16 +100,6 @@ export default [
         "filePath": "@inkline/component-breadcrumb"
     },
     {
-        "name": "CheckboxGroup",
-        "export": "CheckboxGroup",
-        "filePath": "@inkline/component-checkbox"
-    },
-    {
-        "name": "Checkbox",
-        "export": "Checkbox",
-        "filePath": "@inkline/component-checkbox"
-    },
-    {
         "name": "Modal",
         "export": "Modal",
         "filePath": "@inkline/component-modal"
@@ -120,14 +110,19 @@ export default [
         "filePath": "@inkline/component-modal"
     },
     {
-        "name": "Input",
-        "export": "Input",
-        "filePath": "@inkline/component-input"
+        "name": "NavItem",
+        "export": "NavItem",
+        "filePath": "@inkline/component-nav"
     },
     {
-        "name": "Textarea",
-        "export": "Textarea",
-        "filePath": "@inkline/component-input"
+        "name": "Checkbox",
+        "export": "Checkbox",
+        "filePath": "@inkline/component-checkbox"
+    },
+    {
+        "name": "CheckboxGroup",
+        "export": "CheckboxGroup",
+        "filePath": "@inkline/component-checkbox"
     },
     {
         "name": "Nav",
@@ -135,18 +130,13 @@ export default [
         "filePath": "@inkline/component-nav"
     },
     {
-        "name": "NavItem",
-        "export": "NavItem",
-        "filePath": "@inkline/component-nav"
+        "name": "RadioGroup",
+        "export": "RadioGroup",
+        "filePath": "@inkline/component-radio"
     },
     {
         "name": "Radio",
         "export": "Radio",
-        "filePath": "@inkline/component-radio"
-    },
-    {
-        "name": "RadioGroup",
-        "export": "RadioGroup",
         "filePath": "@inkline/component-radio"
     },
     {
@@ -158,5 +148,15 @@ export default [
         "name": "ToastContainer",
         "export": "ToastContainer",
         "filePath": "@inkline/component-toast"
+    },
+    {
+        "name": "Textarea",
+        "export": "Textarea",
+        "filePath": "@inkline/component-input"
+    },
+    {
+        "name": "Input",
+        "export": "Input",
+        "filePath": "@inkline/component-input"
     }
 ];

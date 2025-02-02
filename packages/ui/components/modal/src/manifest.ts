@@ -1,0 +1,638 @@
+import type { ComponentManifest } from '@inkline/types';
+
+export const manifest: ComponentManifest[] = [
+    {
+        name: 'Modal',
+        props: [
+            {
+                name: 'closeOnPressEscape',
+                type: 'Boolean',
+                description: 'Determines if the modal should close when pressing escape',
+                default: 'true'
+            },
+            {
+                name: 'closeAriaLabel',
+                type: 'String',
+                description: 'The aria-label attribute of the close button',
+                default: 'Close'
+            },
+            {
+                name: 'color',
+                type: 'primary',
+                description: 'The color variant of the modal',
+                default: ''
+            },
+            {
+                name: 'disabled',
+                type: 'Boolean',
+                description: 'The disabled state of the modal',
+                default: 'false'
+            },
+            {
+                name: 'fullscreen',
+                type: 'Boolean',
+                description: 'Make the modal cover the entire screen',
+                default: 'false'
+            },
+            {
+                name: 'hideOnClickOutside',
+                type: 'Boolean',
+                description: 'Determines if the modal should close when clicking the overlay',
+                default: 'true'
+            },
+            {
+                name: 'name',
+                type: 'String',
+                description: 'The identifier of the modal',
+                default: 'uid()'
+            },
+            {
+                name: 'dismissible',
+                type: 'Boolean',
+                description: 'Determines if the close icon should be visible in the modal header',
+                default: 'false'
+            },
+            {
+                name: 'sizeMultiplier',
+                type: 'sm',
+                description: 'The size variant of the modal',
+                default: ''
+            },
+            {
+                name: 'modelValue',
+                type: 'Boolean',
+                description: 'Used to determine if modal is visible or not',
+                default: 'false'
+            },
+            {
+                name: 'transition',
+                type: 'fade-in-transition',
+                description: 'The modal opening and closing animation',
+                default: 'zoom-in-center-transition'
+            },
+            {
+                name: 'header',
+                type: 'string',
+                description: 'The header of the modal',
+                default: 'undefined'
+            },
+            {
+                name: 'icon',
+                type: 'string',
+                description: 'The icon of the modal',
+                default: 'undefined'
+            },
+            {
+                name: 'body',
+                type: 'string',
+                description: 'The body of the modal',
+                default: 'undefined'
+            },
+            {
+                name: 'footer',
+                type: 'string',
+                description: 'The footer of the modal',
+                default: 'undefined'
+            }
+        ],
+        events: [
+            {
+                name: 'update:modelValue',
+                description: 'Event emitted for setting the modelValue'
+            },
+            {
+                name: 'open',
+                description: 'Event emitted when the modal is open'
+            },
+            {
+                name: 'opened',
+                description: 'Event emitted when the modal is opened and animation is finished'
+            },
+            {
+                name: 'close',
+                description: 'Event emitted when the modal is closed'
+            },
+            {
+                name: 'close',
+                description: 'Event emitted when the modal is closed and animation is finished'
+            }
+        ],
+        slots: [
+            {
+                name: 'footer',
+                description: 'Slot for modal header content'
+            },
+            {
+                name: 'close',
+                description: 'Close button slot'
+            },
+            {
+                name: 'default',
+                description: 'Slot for modal body content'
+            },
+            {
+                name: 'footer',
+                description: 'Slot for modal footer content'
+            }
+        ],
+        css: {
+            namespace: 'modal',
+            variables: [
+                {
+                    name: '--modal--border-top-width'
+                },
+                {
+                    name: '--modal--border-top-style'
+                },
+                {
+                    name: '--modal--border-top-color'
+                },
+                {
+                    name: '--modal--border-right-width'
+                },
+                {
+                    name: '--modal--border-right-style'
+                },
+                {
+                    name: '--modal--border-right-color'
+                },
+                {
+                    name: '--modal--border-bottom-width'
+                },
+                {
+                    name: '--modal--border-bottom-style'
+                },
+                {
+                    name: '--modal--border-bottom-color'
+                },
+                {
+                    name: '--modal--border-left-width'
+                },
+                {
+                    name: '--modal--border-left-style'
+                },
+                {
+                    name: '--modal--border-left-color'
+                },
+                {
+                    name: '--modal--border-width'
+                },
+                {
+                    name: '--modal--border-style'
+                },
+                {
+                    name: '--modal--border-color'
+                },
+                {
+                    name: '--modal--border-top'
+                },
+                {
+                    name: '--modal--border-right'
+                },
+                {
+                    name: '--modal--border-bottom'
+                },
+                {
+                    name: '--modal--border-left'
+                },
+                {
+                    name: '--modal--border'
+                },
+                {
+                    name: '--modal--box-shadow-offset-x'
+                },
+                {
+                    name: '--modal--box-shadow-offset-y'
+                },
+                {
+                    name: '--modal--box-shadow-blur-radius'
+                },
+                {
+                    name: '--modal--box-shadow-spread-radius'
+                },
+                {
+                    name: '--modal--box-shadow-color'
+                },
+                {
+                    name: '--modal--box-shadow'
+                },
+                {
+                    name: '--modal--transition-property'
+                },
+                {
+                    name: '--modal--transition-duration'
+                },
+                {
+                    name: '--modal--transition-timing-function'
+                },
+                {
+                    name: '--modal--transition'
+                },
+                {
+                    name: '--modal--width'
+                },
+                {
+                    name: '--modal--z-index'
+                },
+                {
+                    name: '--modal--wrapper--background'
+                },
+                {
+                    name: '--modal--close--color'
+                },
+                {
+                    name: '--modal--close--hover--background'
+                },
+                {
+                    name: '--modal--close--active--background'
+                },
+                {
+                    name: '--modal--close--size'
+                },
+                {
+                    name: '--modal--close--font-size'
+                },
+                {
+                    name: '--modal--background'
+                },
+                {
+                    name: '--modal--color'
+                },
+                {
+                    name: '--modal--header--background'
+                },
+                {
+                    name: '--modal--footer--background'
+                },
+                {
+                    name: '--modal--footer--button--margin-top'
+                },
+                {
+                    name: '--modal--footer--button--margin-right'
+                },
+                {
+                    name: '--modal--footer--button--margin-bottom'
+                },
+                {
+                    name: '--modal--footer--button--margin-left'
+                },
+                {
+                    name: '--modal--footer--button--margin'
+                },
+                {
+                    name: '--modal--border-top-left-radius'
+                },
+                {
+                    name: '--modal--border-top-right-radius'
+                },
+                {
+                    name: '--modal--border-bottom-right-radius'
+                },
+                {
+                    name: '--modal--border-bottom-left-radius'
+                },
+                {
+                    name: '--modal--border-radius'
+                },
+                {
+                    name: '--modal--font-size'
+                },
+                {
+                    name: '--modal--padding-top'
+                },
+                {
+                    name: '--modal--padding-right'
+                },
+                {
+                    name: '--modal--padding-bottom'
+                },
+                {
+                    name: '--modal--padding-left'
+                },
+                {
+                    name: '--modal--padding'
+                },
+                {
+                    name: '--modal--max-width'
+                },
+                {
+                    name: '--modal--icon--margin-top'
+                },
+                {
+                    name: '--modal--icon--margin-right'
+                },
+                {
+                    name: '--modal--icon--margin-bottom'
+                },
+                {
+                    name: '--modal--icon--margin-left'
+                },
+                {
+                    name: '--modal--icon--margin'
+                },
+                {
+                    name: '--modal--{color}--border-top-color'
+                },
+                {
+                    name: '--modal--{color}--border-right-color'
+                },
+                {
+                    name: '--modal--{color}--border-bottom-color'
+                },
+                {
+                    name: '--modal--{color}--border-left-color'
+                },
+                {
+                    name: '--modal--{color}--background'
+                },
+                {
+                    name: '--modal--{color}--color'
+                },
+                {
+                    name: '--modal--{color}--header--background'
+                },
+                {
+                    name: '--modal--{color}--footer--background'
+                },
+                {
+                    name: '--modal--{size}--border-top-left-radius'
+                },
+                {
+                    name: '--modal--{size}--border-top-right-radius'
+                },
+                {
+                    name: '--modal--{size}--border-bottom-right-radius'
+                },
+                {
+                    name: '--modal--{size}--border-bottom-left-radius'
+                },
+                {
+                    name: '--modal--{size}--font-size'
+                },
+                {
+                    name: '--modal--{size}--padding-top'
+                },
+                {
+                    name: '--modal--{size}--padding-right'
+                },
+                {
+                    name: '--modal--{size}--padding-bottom'
+                },
+                {
+                    name: '--modal--{size}--padding-left'
+                },
+                {
+                    name: '--modal--{size}--max-width'
+                },
+                {
+                    name: '--modal--{size}--close--size'
+                },
+                {
+                    name: '--modal--{size}--close--font-size'
+                },
+                {
+                    name: '--modal--{size}--icon--margin-top'
+                },
+                {
+                    name: '--modal--{size}--icon--margin-right'
+                },
+                {
+                    name: '--modal--{size}--icon--margin-bottom'
+                },
+                {
+                    name: '--modal--{size}--icon--margin-left'
+                },
+                {
+                    name: '--modal--{size}--footer--button--margin-top'
+                },
+                {
+                    name: '--modal--{size}--footer--button--margin-right'
+                },
+                {
+                    name: '--modal--{size}--footer--button--margin-bottom'
+                },
+                {
+                    name: '--modal--{size}--footer--button--margin-left'
+                }
+            ]
+        }
+    },
+    {
+        name: 'ModalContainer',
+        props: [
+            {
+                name: 'eventBus',
+                type: 'EventBus',
+                description: 'The event bus to use for showing/hiding modals',
+                default: 'modalEventBus'
+            }
+        ],
+        events: [],
+        slots: [],
+        css: {
+            namespace: '',
+            variables: []
+        }
+    },
+    {
+        css: {
+            namespace: '',
+            variables: [
+                {
+                    name: '--modal--border-top-width'
+                },
+                {
+                    name: '--modal--border-top-style'
+                },
+                {
+                    name: '--modal--border-top-color'
+                },
+                {
+                    name: '--modal--border-right-width'
+                },
+                {
+                    name: '--modal--border-right-style'
+                },
+                {
+                    name: '--modal--border-right-color'
+                },
+                {
+                    name: '--modal--border-bottom-width'
+                },
+                {
+                    name: '--modal--border-bottom-style'
+                },
+                {
+                    name: '--modal--border-bottom-color'
+                },
+                {
+                    name: '--modal--border-left-width'
+                },
+                {
+                    name: '--modal--border-left-style'
+                },
+                {
+                    name: '--modal--border-left-color'
+                },
+                {
+                    name: '--modal--border-width'
+                },
+                {
+                    name: '--modal--border-style'
+                },
+                {
+                    name: '--modal--border-color'
+                },
+                {
+                    name: '--modal--border-top'
+                },
+                {
+                    name: '--modal--border-right'
+                },
+                {
+                    name: '--modal--border-bottom'
+                },
+                {
+                    name: '--modal--border-left'
+                },
+                {
+                    name: '--modal--border'
+                },
+                {
+                    name: '--modal--box-shadow-offset-x'
+                },
+                {
+                    name: '--modal--box-shadow-offset-y'
+                },
+                {
+                    name: '--modal--box-shadow-blur-radius'
+                },
+                {
+                    name: '--modal--box-shadow-spread-radius'
+                },
+                {
+                    name: '--modal--box-shadow-color'
+                },
+                {
+                    name: '--modal--box-shadow'
+                },
+                {
+                    name: '--modal--transition-property'
+                },
+                {
+                    name: '--modal--transition-duration'
+                },
+                {
+                    name: '--modal--transition-timing-function'
+                },
+                {
+                    name: '--modal--transition'
+                },
+                {
+                    name: '--modal--width'
+                },
+                {
+                    name: '--modal--z-index'
+                },
+                {
+                    name: '--modal--wrapper--background'
+                },
+                {
+                    name: '--modal--close--color'
+                },
+                {
+                    name: '--modal--close--hover--background'
+                },
+                {
+                    name: '--modal--close--active--background'
+                },
+                {
+                    name: '--modal--close--size'
+                },
+                {
+                    name: '--modal--close--font-size'
+                },
+                {
+                    name: '--modal--background'
+                },
+                {
+                    name: '--modal--color'
+                },
+                {
+                    name: '--modal--header--background'
+                },
+                {
+                    name: '--modal--footer--background'
+                },
+                {
+                    name: '--modal--footer--button--margin-top'
+                },
+                {
+                    name: '--modal--footer--button--margin-right'
+                },
+                {
+                    name: '--modal--footer--button--margin-bottom'
+                },
+                {
+                    name: '--modal--footer--button--margin-left'
+                },
+                {
+                    name: '--modal--footer--button--margin'
+                },
+                {
+                    name: '--modal--border-top-left-radius'
+                },
+                {
+                    name: '--modal--border-top-right-radius'
+                },
+                {
+                    name: '--modal--border-bottom-right-radius'
+                },
+                {
+                    name: '--modal--border-bottom-left-radius'
+                },
+                {
+                    name: '--modal--border-radius'
+                },
+                {
+                    name: '--modal--font-size'
+                },
+                {
+                    name: '--modal--padding-top'
+                },
+                {
+                    name: '--modal--padding-right'
+                },
+                {
+                    name: '--modal--padding-bottom'
+                },
+                {
+                    name: '--modal--padding-left'
+                },
+                {
+                    name: '--modal--padding'
+                },
+                {
+                    name: '--modal--max-width'
+                },
+                {
+                    name: '--modal--icon--margin-top'
+                },
+                {
+                    name: '--modal--icon--margin-right'
+                },
+                {
+                    name: '--modal--icon--margin-bottom'
+                },
+                {
+                    name: '--modal--icon--margin-left'
+                },
+                {
+                    name: '--modal--icon--margin'
+                }
+            ]
+        }
+    }
+];
+
+export default manifest;

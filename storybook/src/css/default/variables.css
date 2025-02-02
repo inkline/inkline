@@ -366,13 +366,13 @@
     --percentage-75: 75%;
     --percentage-100: 100%;
     --size-multiplier: 1;
-    --size-multiplier-xxs: calc(var(--size-multiplier) / var(--scale-pow-3));
+    --size-multiplier-2xs: calc(var(--size-multiplier) / var(--scale-pow-3));
     --size-multiplier-xs: calc(var(--size-multiplier) / var(--scale-pow-2));
     --size-multiplier-sm: calc(var(--size-multiplier) / var(--scale-pow-1));
     --size-multiplier-md: var(--size-multiplier);
     --size-multiplier-lg: calc(var(--size-multiplier) * var(--scale-pow-1));
     --size-multiplier-xl: calc(var(--size-multiplier) * var(--scale-pow-2));
-    --size-multiplier-xxl: calc(var(--size-multiplier) * var(--scale-pow-3));
+    --size-multiplier-2xl: calc(var(--size-multiplier) * var(--scale-pow-3));
     --text-align: left;
     --text-align-left: left;
     --text-align-center: center;

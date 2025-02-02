@@ -16,6 +16,7 @@
     "dependencies": {
         "@inkline/core": "workspace:*",
         "@inkline/composables": "workspace:*",
+        "@inkline/component-linkable": "workspace:*",
         "@inkline/component-dynamic-renderer": "workspace:*",
         "@inkline/theme": "workspace:*",
         "@inkline/utils": "workspace:*",

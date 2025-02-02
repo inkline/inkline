@@ -1,4 +1,5 @@
 import './popover.preview.css';
+import { markRaw } from 'vue';
 import { Popover } from '@inkline/component-popover';
 import {
     PopoverBasicExample,
@@ -10,7 +11,7 @@ import {
 import { Meta, StoryFn } from '@storybook/vue3';
 
 const meta: Meta<typeof Popover> = {
-    component: Popover,
+    component: markRaw(Popover),
     title: 'Components/Popover'
 };
 

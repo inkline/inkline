@@ -6474,9 +6474,9 @@
                 "__name": "size-multiplier",
                 "__value": 1
             },
-            "size-multiplier-xxs": {
+            "size-multiplier-2xs": {
                 "__type": "variable",
-                "__name": "size-multiplier-xxs",
+                "__name": "size-multiplier-2xs",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -6572,9 +6572,9 @@
                     ]
                 }
             },
-            "size-multiplier-xxl": {
+            "size-multiplier-2xl": {
                 "__type": "variable",
-                "__name": "size-multiplier-xxl",
+                "__name": "size-multiplier-2xl",
                 "__value": {
                     "__type": "calc",
                     "__value": [

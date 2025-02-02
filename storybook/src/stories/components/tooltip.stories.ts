@@ -1,4 +1,5 @@
 import './tooltip.preview.css';
+import { markRaw } from 'vue';
 import { Tooltip } from '@inkline/component-tooltip';
 import {
     TooltipBasicExample,
@@ -12,7 +13,7 @@ import {
 import { Meta, StoryFn } from '@storybook/vue3';
 
 const meta: Meta<typeof Tooltip> = {
-    component: Tooltip,
+    component: markRaw(Tooltip),
     title: 'Components/Tooltip'
 };
 

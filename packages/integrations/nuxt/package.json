@@ -26,7 +26,8 @@
         "@inkline/framework": "workspace:*"
     },
     "peerDependencies": {
-        "@inkline/config": "workspace:^"
+        "@inkline/config": "workspace:^",
+        "nuxt": "*"
     },
     "files": [
         "dist",

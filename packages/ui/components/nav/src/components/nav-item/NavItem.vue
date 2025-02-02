@@ -1,13 +1,13 @@
 <script lang="ts">
-import { computed, defineComponent, inject, toRef } from 'vue';
-import { useLinkable } from '@inkline/inkline/composables';
-import { NavKey } from '@inkline/inkline/constants';
+import { computed, defineComponent, inject } from 'vue';
+import { NavKey } from '@inkline/types';
+import { Linkable } from '@inkline/component-linkable';
 
 const componentName = 'NavItem';
 
 export default defineComponent({
     name: componentName,
-    inheritAttrs: false,
+    components: { Linkable },
     props: {
         /**
          * The active state of the nav item
@@ -80,20 +80,11 @@ export default defineComponent({
             default: undefined
         }
     },
-    setup(props, { attrs }) {
+    setup(props) {
         const nav = inject(NavKey, null);
-
-        const to = toRef(props, 'to');
-        const href = toRef(props, 'href');
-        const tag = toRef(props, 'tag');
-        const { tag: renderTag } = useLinkable({ to, href, tag: tag });
 
         const disabled = computed(() => props.disabled);
         const ariaDisabled = computed(() => {
-            if (attrs.role === 'link') {
-                return null;
-            }
-
             return disabled.value ? 'true' : null;
         });
 
@@ -102,17 +93,7 @@ export default defineComponent({
             '-disabled': disabled.value
         }));
 
-        const role = computed(() => (props.to || props.href ? null : 'menuitem'));
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
-
-        const bindings = computed(() => ({
-            ...attrs,
-            ...(to.value ? { to: to.value } : href.value ? { href: href.value } : {}),
-            ...(disabled.value ? { disabled: disabled.value } : {}),
-            role: role.value,
-            tabindex: tabIndex.value,
-            'aria-disabled': ariaDisabled.value
-        }));
 
         function onClick(event: Event) {
             if (props.stopPropagation || !nav) {
@@ -123,9 +104,9 @@ export default defineComponent({
         }
 
         return {
-            bindings,
+            tabIndex,
+            ariaDisabled,
             classes,
-            renderTag,
             onClick
         };
     }
@@ -133,15 +114,20 @@ export default defineComponent({
 </script>
 
 <template>
-    <component
-        v-bind="bindings"
-        :is="renderTag"
+    <Linkable
+        :to="to"
+        :href="href"
         :tag="tag"
         class="nav-item"
         :class="classes"
+        role="menuitem"
+        :tabindex="tabIndex"
+        :disabled="disabled"
+        :aria-disabled="ariaDisabled"
+        aria-live="polite"
         @click="onClick"
     >
         <!-- @slot default Slot for default nav item content -->
         <slot />
-    </component>
+    </Linkable>
 </template>

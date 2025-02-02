@@ -3,7 +3,7 @@ import type { PropType } from 'vue';
 import { computed, defineComponent, toRef, provide } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/composables';
 import { NavKey } from '@inkline/types';
-import type { NavItem } from '../../types';
+import type { NavItemDefinition } from '../../types';
 
 const componentName = 'Nav';
 
@@ -44,11 +44,11 @@ export default defineComponent({
         /**
          * Nav items to display
          * @name items
-         * @type NavItem[]
+         * @type NavItemDefinition[]
          * @default []
          */
         items: {
-            type: Array as PropType<NavItem[]>,
+            type: Array as PropType<NavItemDefinition[]>,
             default: () => []
         }
     },

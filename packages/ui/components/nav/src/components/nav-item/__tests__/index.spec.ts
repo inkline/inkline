@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/vue';
-import { NavItem } from '@inkline/inkline/components';
+import { NavItem } from '../index';
 import { createTestingInklineOptionsProvide } from '@inkline/test-utils';
-import { NavKey } from '@inkline/inkline';
+import { NavKey } from '@inkline/types';
 
 describe('Components', () => {
     describe('NavItem', () => {

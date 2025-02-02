@@ -307,3 +307,5 @@ export const manifest: ComponentManifest[] = [
         }
     }
 ];
+
+export default manifest;

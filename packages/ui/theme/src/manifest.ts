@@ -44,68 +44,6 @@ export const manifest: ComponentManifest[] = [
     },
     {
         css: {
-            namespace: 'caption',
-            variables: [
-                {
-                    name: '--caption--color'
-                },
-                {
-                    name: '--caption--padding-top'
-                },
-                {
-                    name: '--caption--padding-right'
-                },
-                {
-                    name: '--caption--padding-bottom'
-                },
-                {
-                    name: '--caption--padding-left'
-                },
-                {
-                    name: '--caption--padding'
-                }
-            ]
-        }
-    },
-    {
-        css: {
-            namespace: 'body',
-            variables: [
-                {
-                    name: '--body--color'
-                },
-                {
-                    name: '--body--font-size'
-                },
-                {
-                    name: '--body--font-family'
-                },
-                {
-                    name: '--body--line-height'
-                },
-                {
-                    name: '--body--text-align'
-                },
-                {
-                    name: '--body--transition-property'
-                },
-                {
-                    name: '--body--transition-duration'
-                },
-                {
-                    name: '--body--transition-timing-function'
-                },
-                {
-                    name: '--body--transition'
-                },
-                {
-                    name: '--body--background'
-                }
-            ]
-        }
-    },
-    {
-        css: {
             namespace: 'blockquote',
             variables: [
                 {
@@ -212,6 +150,43 @@ export const manifest: ComponentManifest[] = [
     },
     {
         css: {
+            namespace: 'body',
+            variables: [
+                {
+                    name: '--body--color'
+                },
+                {
+                    name: '--body--font-size'
+                },
+                {
+                    name: '--body--font-family'
+                },
+                {
+                    name: '--body--line-height'
+                },
+                {
+                    name: '--body--text-align'
+                },
+                {
+                    name: '--body--transition-property'
+                },
+                {
+                    name: '--body--transition-duration'
+                },
+                {
+                    name: '--body--transition-timing-function'
+                },
+                {
+                    name: '--body--transition'
+                },
+                {
+                    name: '--body--background'
+                }
+            ]
+        }
+    },
+    {
+        css: {
             namespace: 'code',
             variables: [
                 {
@@ -262,6 +237,31 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--dl--dd--margin'
+                }
+            ]
+        }
+    },
+    {
+        css: {
+            namespace: 'caption',
+            variables: [
+                {
+                    name: '--caption--color'
+                },
+                {
+                    name: '--caption--padding-top'
+                },
+                {
+                    name: '--caption--padding-right'
+                },
+                {
+                    name: '--caption--padding-bottom'
+                },
+                {
+                    name: '--caption--padding-left'
+                },
+                {
+                    name: '--caption--padding'
                 }
             ]
         }
@@ -402,6 +402,55 @@ export const manifest: ComponentManifest[] = [
     },
     {
         css: {
+            namespace: 'kbd',
+            variables: [
+                {
+                    name: '--kbd--background'
+                },
+                {
+                    name: '--kbd--border-top-left-radius'
+                },
+                {
+                    name: '--kbd--border-top-right-radius'
+                },
+                {
+                    name: '--kbd--border-bottom-right-radius'
+                },
+                {
+                    name: '--kbd--border-bottom-left-radius'
+                },
+                {
+                    name: '--kbd--border-radius'
+                },
+                {
+                    name: '--kbd--color'
+                },
+                {
+                    name: '--kbd--font-family'
+                },
+                {
+                    name: '--kbd--font-size'
+                },
+                {
+                    name: '--kbd--padding-top'
+                },
+                {
+                    name: '--kbd--padding-right'
+                },
+                {
+                    name: '--kbd--padding-bottom'
+                },
+                {
+                    name: '--kbd--padding-left'
+                },
+                {
+                    name: '--kbd--padding'
+                }
+            ]
+        }
+    },
+    {
+        css: {
             namespace: 'mark',
             variables: [
                 {
@@ -452,49 +501,34 @@ export const manifest: ComponentManifest[] = [
     },
     {
         css: {
-            namespace: 'kbd',
+            namespace: 'p',
             variables: [
                 {
-                    name: '--kbd--background'
+                    name: '--initialism--font-size'
                 },
                 {
-                    name: '--kbd--border-top-left-radius'
+                    name: '--initialism--text-transform'
                 },
                 {
-                    name: '--kbd--border-top-right-radius'
+                    name: '--lead--font-size'
                 },
                 {
-                    name: '--kbd--border-bottom-right-radius'
+                    name: '--lead--font-weight'
                 },
                 {
-                    name: '--kbd--border-bottom-left-radius'
+                    name: '--p--margin-top'
                 },
                 {
-                    name: '--kbd--border-radius'
+                    name: '--p--margin-right'
                 },
                 {
-                    name: '--kbd--color'
+                    name: '--p--margin-bottom'
                 },
                 {
-                    name: '--kbd--font-family'
+                    name: '--p--margin-left'
                 },
                 {
-                    name: '--kbd--font-size'
-                },
-                {
-                    name: '--kbd--padding-top'
-                },
-                {
-                    name: '--kbd--padding-right'
-                },
-                {
-                    name: '--kbd--padding-bottom'
-                },
-                {
-                    name: '--kbd--padding-left'
-                },
-                {
-                    name: '--kbd--padding'
+                    name: '--p--margin'
                 }
             ]
         }
@@ -538,40 +572,6 @@ export const manifest: ComponentManifest[] = [
     },
     {
         css: {
-            namespace: 'p',
-            variables: [
-                {
-                    name: '--initialism--font-size'
-                },
-                {
-                    name: '--initialism--text-transform'
-                },
-                {
-                    name: '--lead--font-size'
-                },
-                {
-                    name: '--lead--font-weight'
-                },
-                {
-                    name: '--p--margin-top'
-                },
-                {
-                    name: '--p--margin-right'
-                },
-                {
-                    name: '--p--margin-bottom'
-                },
-                {
-                    name: '--p--margin-left'
-                },
-                {
-                    name: '--p--margin'
-                }
-            ]
-        }
-    },
-    {
-        css: {
             namespace: 'pre',
             variables: [
                 {
@@ -594,16 +594,6 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--pre--margin'
-                }
-            ]
-        }
-    },
-    {
-        css: {
-            namespace: 'samp',
-            variables: [
-                {
-                    name: '--samp--font-family'
                 }
             ]
         }
@@ -759,5 +749,17 @@ export const manifest: ComponentManifest[] = [
                 }
             ]
         }
+    },
+    {
+        css: {
+            namespace: 'samp',
+            variables: [
+                {
+                    name: '--samp--font-family'
+                }
+            ]
+        }
     }
 ];
+
+export default manifest;

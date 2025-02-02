@@ -6346,174 +6346,174 @@
                     "__name": "spacing-md"
                 }
             },
-            "checkbox--border-top-color": {
+            "nav--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--border-top-color",
+                "__name": "nav--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-light-shade-50"
                 }
             },
-            "checkbox--border-right-color": {
+            "nav--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--border-right-color",
+                "__name": "nav--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-light-shade-50"
                 }
             },
-            "checkbox--border-bottom-color": {
+            "nav--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--border-bottom-color",
+                "__name": "nav--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-light-shade-50"
                 }
             },
-            "checkbox--border-left-color": {
+            "nav--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--border-left-color",
+                "__name": "nav--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-light-shade-50"
                 }
             },
-            "checkbox--border-top-width": {
+            "nav--border-top-width": {
                 "__type": "variable",
-                "__name": "checkbox--border-top-width",
+                "__name": "nav--border-top-width",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-width"
                 }
             },
-            "checkbox--border-top-style": {
+            "nav--border-top-style": {
                 "__type": "variable",
-                "__name": "checkbox--border-top-style",
+                "__name": "nav--border-top-style",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-style"
                 }
             },
-            "checkbox--border-right-width": {
+            "nav--border-right-width": {
                 "__type": "variable",
-                "__name": "checkbox--border-right-width",
+                "__name": "nav--border-right-width",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-right-width"
                 }
             },
-            "checkbox--border-right-style": {
+            "nav--border-right-style": {
                 "__type": "variable",
-                "__name": "checkbox--border-right-style",
+                "__name": "nav--border-right-style",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-right-style"
                 }
             },
-            "checkbox--border-bottom-width": {
+            "nav--border-bottom-width": {
                 "__type": "variable",
-                "__name": "checkbox--border-bottom-width",
+                "__name": "nav--border-bottom-width",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-bottom-width"
                 }
             },
-            "checkbox--border-bottom-style": {
+            "nav--border-bottom-style": {
                 "__type": "variable",
-                "__name": "checkbox--border-bottom-style",
+                "__name": "nav--border-bottom-style",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-bottom-style"
                 }
             },
-            "checkbox--border-left-width": {
+            "nav--border-left-width": {
                 "__type": "variable",
-                "__name": "checkbox--border-left-width",
+                "__name": "nav--border-left-width",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-left-width"
                 }
             },
-            "checkbox--border-left-style": {
+            "nav--border-left-style": {
                 "__type": "variable",
-                "__name": "checkbox--border-left-style",
+                "__name": "nav--border-left-style",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-left-style"
                 }
             },
-            "checkbox--box-shadow-offset-x": {
+            "nav--box-shadow-offset-x": {
                 "__type": "variable",
-                "__name": "checkbox--box-shadow-offset-x",
+                "__name": "nav--box-shadow-offset-x",
                 "__value": {
                     "__type": "reference",
                     "__name": "box-shadow-offset-x"
                 }
             },
-            "checkbox--box-shadow-offset-y": {
+            "nav--box-shadow-offset-y": {
                 "__type": "variable",
-                "__name": "checkbox--box-shadow-offset-y",
+                "__name": "nav--box-shadow-offset-y",
                 "__value": {
                     "__type": "reference",
                     "__name": "box-shadow-offset-y"
                 }
             },
-            "checkbox--box-shadow-blur-radius": {
+            "nav--box-shadow-blur-radius": {
                 "__type": "variable",
-                "__name": "checkbox--box-shadow-blur-radius",
+                "__name": "nav--box-shadow-blur-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "box-shadow-blur-radius"
                 }
             },
-            "checkbox--box-shadow-spread-radius": {
+            "nav--box-shadow-spread-radius": {
                 "__type": "variable",
-                "__name": "checkbox--box-shadow-spread-radius",
+                "__name": "nav--box-shadow-spread-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "box-shadow-spread-radius"
                 }
             },
-            "checkbox--box-shadow-color": {
+            "nav--box-shadow-color": {
                 "__type": "variable",
-                "__name": "checkbox--box-shadow-color",
+                "__name": "nav--box-shadow-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "box-shadow-color"
                 }
             },
-            "checkbox--transition-property": {
+            "nav--transition-property": {
                 "__type": "variable",
-                "__name": "checkbox--transition-property",
+                "__name": "nav--transition-property",
                 "__value": "background-color, color, border-color, transform"
             },
-            "checkbox--transition-duration": {
+            "nav--transition-duration": {
                 "__type": "variable",
-                "__name": "checkbox--transition-duration",
+                "__name": "nav--transition-duration",
                 "__value": {
                     "__type": "reference",
                     "__name": "transition-duration"
                 }
             },
-            "checkbox--transition-timing-function": {
+            "nav--transition-timing-function": {
                 "__type": "variable",
-                "__name": "checkbox--transition-timing-function",
+                "__name": "nav--transition-timing-function",
                 "__value": {
                     "__type": "reference",
                     "__name": "transition-timing-function"
                 }
             },
-            "checkbox--checkmark--color": {
+            "nav--checkmark--color": {
                 "__type": "variable",
-                "__name": "checkbox--checkmark--color",
+                "__name": "nav--checkmark--color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-white"
                 }
             },
-            "checkbox--checkmark--width": {
+            "nav--checkmark--width": {
                 "__type": "variable",
-                "__name": "checkbox--checkmark--width",
+                "__name": "nav--checkmark--width",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -6526,9 +6526,9 @@
                     ]
                 }
             },
-            "checkbox--checkmark--height": {
+            "nav--checkmark--height": {
                 "__type": "variable",
-                "__name": "checkbox--checkmark--height",
+                "__name": "nav--checkmark--height",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -6541,257 +6541,257 @@
                     ]
                 }
             },
-            "checkbox--disabled--color": {
+            "nav--disabled--color": {
                 "__type": "variable",
-                "__name": "checkbox--disabled--color",
+                "__name": "nav--disabled--color",
                 "__value": {
                     "__type": "reference",
                     "__name": "text-color-weak"
                 }
             },
-            "checkbox--disabled--background": {
+            "nav--disabled--background": {
                 "__type": "variable",
-                "__name": "checkbox--disabled--background",
+                "__name": "nav--disabled--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-100"
                 }
             },
-            "checkbox--disabled--border-top-color": {
+            "nav--disabled--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--disabled--border-top-color",
+                "__name": "nav--disabled--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--disabled--border-right-color": {
+            "nav--disabled--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--disabled--border-right-color",
+                "__name": "nav--disabled--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--disabled--border-bottom-color": {
+            "nav--disabled--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--disabled--border-bottom-color",
+                "__name": "nav--disabled--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--disabled--border-left-color": {
+            "nav--disabled--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--disabled--border-left-color",
+                "__name": "nav--disabled--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--readonly--color": {
+            "nav--readonly--color": {
                 "__type": "variable",
-                "__name": "checkbox--readonly--color",
+                "__name": "nav--readonly--color",
                 "__value": {
                     "__type": "reference",
                     "__name": "text-color-weak"
                 }
             },
-            "checkbox--readonly--background": {
+            "nav--readonly--background": {
                 "__type": "variable",
-                "__name": "checkbox--readonly--background",
+                "__name": "nav--readonly--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-100"
                 }
             },
-            "checkbox--readonly--border-top-color": {
+            "nav--readonly--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--readonly--border-top-color",
+                "__name": "nav--readonly--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--readonly--border-right-color": {
+            "nav--readonly--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--readonly--border-right-color",
+                "__name": "nav--readonly--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--readonly--border-bottom-color": {
+            "nav--readonly--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--readonly--border-bottom-color",
+                "__name": "nav--readonly--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--readonly--border-left-color": {
+            "nav--readonly--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--readonly--border-left-color",
+                "__name": "nav--readonly--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--checked--background": {
+            "nav--checked--background": {
                 "__type": "variable",
-                "__name": "checkbox--checked--background",
+                "__name": "nav--checked--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary"
                 }
             },
-            "checkbox--checked--border-top-color": {
+            "nav--checked--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--checked--border-top-color",
+                "__name": "nav--checked--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-shade-50"
                 }
             },
-            "checkbox--checked--border-right-color": {
+            "nav--checked--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--checked--border-right-color",
+                "__name": "nav--checked--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-shade-50"
                 }
             },
-            "checkbox--checked--border-bottom-color": {
+            "nav--checked--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--checked--border-bottom-color",
+                "__name": "nav--checked--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-shade-50"
                 }
             },
-            "checkbox--checked--border-left-color": {
+            "nav--checked--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--checked--border-left-color",
+                "__name": "nav--checked--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-shade-50"
                 }
             },
-            "checkbox--checked--disabled--background": {
+            "nav--checked--disabled--background": {
                 "__type": "variable",
-                "__name": "checkbox--checked--disabled--background",
+                "__name": "nav--checked--disabled--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-300"
                 }
             },
-            "checkbox--checked--disabled--border-top-color": {
+            "nav--checked--disabled--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--checked--disabled--border-top-color",
+                "__name": "nav--checked--disabled--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-400"
                 }
             },
-            "checkbox--checked--disabled--border-right-color": {
+            "nav--checked--disabled--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--checked--disabled--border-right-color",
+                "__name": "nav--checked--disabled--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-400"
                 }
             },
-            "checkbox--checked--disabled--border-bottom-color": {
+            "nav--checked--disabled--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--checked--disabled--border-bottom-color",
+                "__name": "nav--checked--disabled--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-400"
                 }
             },
-            "checkbox--checked--disabled--border-left-color": {
+            "nav--checked--disabled--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--checked--disabled--border-left-color",
+                "__name": "nav--checked--disabled--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-400"
                 }
             },
-            "checkbox--checked--readonly--background": {
+            "nav--checked--readonly--background": {
                 "__type": "variable",
-                "__name": "checkbox--checked--readonly--background",
+                "__name": "nav--checked--readonly--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-400"
                 }
             },
-            "checkbox--checked--readonly--border-top-color": {
+            "nav--checked--readonly--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--checked--readonly--border-top-color",
+                "__name": "nav--checked--readonly--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-500"
                 }
             },
-            "checkbox--checked--readonly--border-right-color": {
+            "nav--checked--readonly--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--checked--readonly--border-right-color",
+                "__name": "nav--checked--readonly--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-500"
                 }
             },
-            "checkbox--checked--readonly--border-bottom-color": {
+            "nav--checked--readonly--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--checked--readonly--border-bottom-color",
+                "__name": "nav--checked--readonly--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-500"
                 }
             },
-            "checkbox--checked--readonly--border-left-color": {
+            "nav--checked--readonly--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--checked--readonly--border-left-color",
+                "__name": "nav--checked--readonly--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-500"
                 }
             },
-            "checkbox--focus--box-shadow-offset-x": {
+            "nav--focus--box-shadow-offset-x": {
                 "__type": "variable",
-                "__name": "checkbox--focus--box-shadow-offset-x",
+                "__name": "nav--focus--box-shadow-offset-x",
                 "__value": {
                     "__type": "reference",
                     "__name": "box-shadow-offset-x"
                 }
             },
-            "checkbox--focus--box-shadow-offset-y": {
+            "nav--focus--box-shadow-offset-y": {
                 "__type": "variable",
-                "__name": "checkbox--focus--box-shadow-offset-y",
+                "__name": "nav--focus--box-shadow-offset-y",
                 "__value": {
                     "__type": "reference",
                     "__name": "box-shadow-offset-y"
                 }
             },
-            "checkbox--focus--box-shadow-blur-radius": {
+            "nav--focus--box-shadow-blur-radius": {
                 "__type": "variable",
-                "__name": "checkbox--focus--box-shadow-blur-radius",
+                "__name": "nav--focus--box-shadow-blur-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "box-shadow-blur-radius"
                 }
             },
-            "checkbox--focus--box-shadow-spread-radius": {
+            "nav--focus--box-shadow-spread-radius": {
                 "__type": "variable",
-                "__name": "checkbox--focus--box-shadow-spread-radius",
+                "__name": "nav--focus--box-shadow-spread-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "box-shadow-spread-radius"
                 }
             },
-            "checkbox--focus--box-shadow-color": {
+            "nav--focus--box-shadow-color": {
                 "__type": "variable",
-                "__name": "checkbox--focus--box-shadow-color",
+                "__name": "nav--focus--box-shadow-color",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -6807,70 +6807,70 @@
                     }
                 }
             },
-            "checkbox--background": {
+            "nav--background": {
                 "__type": "variable",
-                "__name": "checkbox--background",
+                "__name": "nav--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-white"
                 }
             },
-            "checkbox--color": {
+            "nav--color": {
                 "__type": "variable",
-                "__name": "checkbox--color",
+                "__name": "nav--color",
                 "__value": {
                     "__type": "reference",
                     "__name": "contrast-text-color-light"
                 }
             },
-            "checkbox--border-top-left-radius": {
+            "nav--border-top-left-radius": {
                 "__type": "variable",
-                "__name": "checkbox--border-top-left-radius",
+                "__name": "nav--border-top-left-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-left-radius-md"
                 }
             },
-            "checkbox--border-top-right-radius": {
+            "nav--border-top-right-radius": {
                 "__type": "variable",
-                "__name": "checkbox--border-top-right-radius",
+                "__name": "nav--border-top-right-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-right-radius-md"
                 }
             },
-            "checkbox--border-bottom-right-radius": {
+            "nav--border-bottom-right-radius": {
                 "__type": "variable",
-                "__name": "checkbox--border-bottom-right-radius",
+                "__name": "nav--border-bottom-right-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-bottom-right-radius-md"
                 }
             },
-            "checkbox--border-bottom-left-radius": {
+            "nav--border-bottom-left-radius": {
                 "__type": "variable",
-                "__name": "checkbox--border-bottom-left-radius",
+                "__name": "nav--border-bottom-left-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-bottom-left-radius-md"
                 }
             },
-            "checkbox--font-size": {
+            "nav--font-size": {
                 "__type": "variable",
-                "__name": "checkbox--font-size",
+                "__name": "nav--font-size",
                 "__value": {
                     "__type": "reference",
                     "__name": "font-size-md"
                 }
             },
-            "checkbox--margin-top": {
+            "nav--margin-top": {
                 "__type": "variable",
-                "__name": "checkbox--margin-top",
+                "__name": "nav--margin-top",
                 "__value": 0
             },
-            "checkbox--margin-right": {
+            "nav--margin-right": {
                 "__type": "variable",
-                "__name": "checkbox--margin-right",
+                "__name": "nav--margin-right",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -6883,9 +6883,9 @@
                     ]
                 }
             },
-            "checkbox--margin-bottom": {
+            "nav--margin-bottom": {
                 "__type": "variable",
-                "__name": "checkbox--margin-bottom",
+                "__name": "nav--margin-bottom",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -6898,75 +6898,75 @@
                     ]
                 }
             },
-            "checkbox--margin-left": {
+            "nav--margin-left": {
                 "__type": "variable",
-                "__name": "checkbox--margin-left",
+                "__name": "nav--margin-left",
                 "__value": 0
             },
-            "checkbox--width": {
+            "nav--width": {
                 "__type": "variable",
-                "__name": "checkbox--width",
+                "__name": "nav--width",
                 "__value": {
                     "__type": "reference",
                     "__name": "spacing-md"
                 }
             },
-            "checkbox--height": {
+            "nav--height": {
                 "__type": "variable",
-                "__name": "checkbox--height",
+                "__name": "nav--height",
                 "__value": {
                     "__type": "reference",
                     "__name": "spacing-md"
                 }
             },
-            "checkbox--sm--border-top-left-radius": {
+            "nav--sm--border-top-left-radius": {
                 "__type": "variable",
-                "__name": "checkbox--sm--border-top-left-radius",
+                "__name": "nav--sm--border-top-left-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-left-radius-sm"
                 }
             },
-            "checkbox--sm--border-top-right-radius": {
+            "nav--sm--border-top-right-radius": {
                 "__type": "variable",
-                "__name": "checkbox--sm--border-top-right-radius",
+                "__name": "nav--sm--border-top-right-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-right-radius-sm"
                 }
             },
-            "checkbox--sm--border-bottom-right-radius": {
+            "nav--sm--border-bottom-right-radius": {
                 "__type": "variable",
-                "__name": "checkbox--sm--border-bottom-right-radius",
+                "__name": "nav--sm--border-bottom-right-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-bottom-right-radius-sm"
                 }
             },
-            "checkbox--sm--border-bottom-left-radius": {
+            "nav--sm--border-bottom-left-radius": {
                 "__type": "variable",
-                "__name": "checkbox--sm--border-bottom-left-radius",
+                "__name": "nav--sm--border-bottom-left-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-bottom-left-radius-sm"
                 }
             },
-            "checkbox--sm--font-size": {
+            "nav--sm--font-size": {
                 "__type": "variable",
-                "__name": "checkbox--sm--font-size",
+                "__name": "nav--sm--font-size",
                 "__value": {
                     "__type": "reference",
                     "__name": "font-size-sm"
                 }
             },
-            "checkbox--sm--margin-top": {
+            "nav--sm--margin-top": {
                 "__type": "variable",
-                "__name": "checkbox--sm--margin-top",
+                "__name": "nav--sm--margin-top",
                 "__value": 0
             },
-            "checkbox--sm--margin-right": {
+            "nav--sm--margin-right": {
                 "__type": "variable",
-                "__name": "checkbox--sm--margin-right",
+                "__name": "nav--sm--margin-right",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -6979,9 +6979,9 @@
                     ]
                 }
             },
-            "checkbox--sm--margin-bottom": {
+            "nav--sm--margin-bottom": {
                 "__type": "variable",
-                "__name": "checkbox--sm--margin-bottom",
+                "__name": "nav--sm--margin-bottom",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -6994,30 +6994,30 @@
                     ]
                 }
             },
-            "checkbox--sm--margin-left": {
+            "nav--sm--margin-left": {
                 "__type": "variable",
-                "__name": "checkbox--sm--margin-left",
+                "__name": "nav--sm--margin-left",
                 "__value": 0
             },
-            "checkbox--sm--width": {
+            "nav--sm--width": {
                 "__type": "variable",
-                "__name": "checkbox--sm--width",
+                "__name": "nav--sm--width",
                 "__value": {
                     "__type": "reference",
                     "__name": "spacing-sm"
                 }
             },
-            "checkbox--sm--height": {
+            "nav--sm--height": {
                 "__type": "variable",
-                "__name": "checkbox--sm--height",
+                "__name": "nav--sm--height",
                 "__value": {
                     "__type": "reference",
                     "__name": "spacing-sm"
                 }
             },
-            "checkbox--sm--checkmark--width": {
+            "nav--sm--checkmark--width": {
                 "__type": "variable",
-                "__name": "checkbox--sm--checkmark--width",
+                "__name": "nav--sm--checkmark--width",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -7030,9 +7030,9 @@
                     ]
                 }
             },
-            "checkbox--sm--checkmark--height": {
+            "nav--sm--checkmark--height": {
                 "__type": "variable",
-                "__name": "checkbox--sm--checkmark--height",
+                "__name": "nav--sm--checkmark--height",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -7045,54 +7045,54 @@
                     ]
                 }
             },
-            "checkbox--md--border-top-left-radius": {
+            "nav--md--border-top-left-radius": {
                 "__type": "variable",
-                "__name": "checkbox--md--border-top-left-radius",
+                "__name": "nav--md--border-top-left-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-left-radius-md"
                 }
             },
-            "checkbox--md--border-top-right-radius": {
+            "nav--md--border-top-right-radius": {
                 "__type": "variable",
-                "__name": "checkbox--md--border-top-right-radius",
+                "__name": "nav--md--border-top-right-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-right-radius-md"
                 }
             },
-            "checkbox--md--border-bottom-right-radius": {
+            "nav--md--border-bottom-right-radius": {
                 "__type": "variable",
-                "__name": "checkbox--md--border-bottom-right-radius",
+                "__name": "nav--md--border-bottom-right-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-bottom-right-radius-md"
                 }
             },
-            "checkbox--md--border-bottom-left-radius": {
+            "nav--md--border-bottom-left-radius": {
                 "__type": "variable",
-                "__name": "checkbox--md--border-bottom-left-radius",
+                "__name": "nav--md--border-bottom-left-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-bottom-left-radius-md"
                 }
             },
-            "checkbox--md--font-size": {
+            "nav--md--font-size": {
                 "__type": "variable",
-                "__name": "checkbox--md--font-size",
+                "__name": "nav--md--font-size",
                 "__value": {
                     "__type": "reference",
                     "__name": "font-size-md"
                 }
             },
-            "checkbox--md--margin-top": {
+            "nav--md--margin-top": {
                 "__type": "variable",
-                "__name": "checkbox--md--margin-top",
+                "__name": "nav--md--margin-top",
                 "__value": 0
             },
-            "checkbox--md--margin-right": {
+            "nav--md--margin-right": {
                 "__type": "variable",
-                "__name": "checkbox--md--margin-right",
+                "__name": "nav--md--margin-right",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -7105,9 +7105,9 @@
                     ]
                 }
             },
-            "checkbox--md--margin-bottom": {
+            "nav--md--margin-bottom": {
                 "__type": "variable",
-                "__name": "checkbox--md--margin-bottom",
+                "__name": "nav--md--margin-bottom",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -7120,30 +7120,30 @@
                     ]
                 }
             },
-            "checkbox--md--margin-left": {
+            "nav--md--margin-left": {
                 "__type": "variable",
-                "__name": "checkbox--md--margin-left",
+                "__name": "nav--md--margin-left",
                 "__value": 0
             },
-            "checkbox--md--width": {
+            "nav--md--width": {
                 "__type": "variable",
-                "__name": "checkbox--md--width",
+                "__name": "nav--md--width",
                 "__value": {
                     "__type": "reference",
                     "__name": "spacing-md"
                 }
             },
-            "checkbox--md--height": {
+            "nav--md--height": {
                 "__type": "variable",
-                "__name": "checkbox--md--height",
+                "__name": "nav--md--height",
                 "__value": {
                     "__type": "reference",
                     "__name": "spacing-md"
                 }
             },
-            "checkbox--md--checkmark--width": {
+            "nav--md--checkmark--width": {
                 "__type": "variable",
-                "__name": "checkbox--md--checkmark--width",
+                "__name": "nav--md--checkmark--width",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -7156,9 +7156,9 @@
                     ]
                 }
             },
-            "checkbox--md--checkmark--height": {
+            "nav--md--checkmark--height": {
                 "__type": "variable",
-                "__name": "checkbox--md--checkmark--height",
+                "__name": "nav--md--checkmark--height",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -7171,54 +7171,54 @@
                     ]
                 }
             },
-            "checkbox--lg--border-top-left-radius": {
+            "nav--lg--border-top-left-radius": {
                 "__type": "variable",
-                "__name": "checkbox--lg--border-top-left-radius",
+                "__name": "nav--lg--border-top-left-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-left-radius-lg"
                 }
             },
-            "checkbox--lg--border-top-right-radius": {
+            "nav--lg--border-top-right-radius": {
                 "__type": "variable",
-                "__name": "checkbox--lg--border-top-right-radius",
+                "__name": "nav--lg--border-top-right-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-right-radius-lg"
                 }
             },
-            "checkbox--lg--border-bottom-right-radius": {
+            "nav--lg--border-bottom-right-radius": {
                 "__type": "variable",
-                "__name": "checkbox--lg--border-bottom-right-radius",
+                "__name": "nav--lg--border-bottom-right-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-bottom-right-radius-lg"
                 }
             },
-            "checkbox--lg--border-bottom-left-radius": {
+            "nav--lg--border-bottom-left-radius": {
                 "__type": "variable",
-                "__name": "checkbox--lg--border-bottom-left-radius",
+                "__name": "nav--lg--border-bottom-left-radius",
                 "__value": {
                     "__type": "reference",
                     "__name": "border-bottom-left-radius-lg"
                 }
             },
-            "checkbox--lg--font-size": {
+            "nav--lg--font-size": {
                 "__type": "variable",
-                "__name": "checkbox--lg--font-size",
+                "__name": "nav--lg--font-size",
                 "__value": {
                     "__type": "reference",
                     "__name": "font-size-lg"
                 }
             },
-            "checkbox--lg--margin-top": {
+            "nav--lg--margin-top": {
                 "__type": "variable",
-                "__name": "checkbox--lg--margin-top",
+                "__name": "nav--lg--margin-top",
                 "__value": 0
             },
-            "checkbox--lg--margin-right": {
+            "nav--lg--margin-right": {
                 "__type": "variable",
-                "__name": "checkbox--lg--margin-right",
+                "__name": "nav--lg--margin-right",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -7231,9 +7231,9 @@
                     ]
                 }
             },
-            "checkbox--lg--margin-bottom": {
+            "nav--lg--margin-bottom": {
                 "__type": "variable",
-                "__name": "checkbox--lg--margin-bottom",
+                "__name": "nav--lg--margin-bottom",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -7246,30 +7246,30 @@
                     ]
                 }
             },
-            "checkbox--lg--margin-left": {
+            "nav--lg--margin-left": {
                 "__type": "variable",
-                "__name": "checkbox--lg--margin-left",
+                "__name": "nav--lg--margin-left",
                 "__value": 0
             },
-            "checkbox--lg--width": {
+            "nav--lg--width": {
                 "__type": "variable",
-                "__name": "checkbox--lg--width",
+                "__name": "nav--lg--width",
                 "__value": {
                     "__type": "reference",
                     "__name": "spacing-lg"
                 }
             },
-            "checkbox--lg--height": {
+            "nav--lg--height": {
                 "__type": "variable",
-                "__name": "checkbox--lg--height",
+                "__name": "nav--lg--height",
                 "__value": {
                     "__type": "reference",
                     "__name": "spacing-lg"
                 }
             },
-            "checkbox--lg--checkmark--width": {
+            "nav--lg--checkmark--width": {
                 "__type": "variable",
-                "__name": "checkbox--lg--checkmark--width",
+                "__name": "nav--lg--checkmark--width",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -7282,9 +7282,9 @@
                     ]
                 }
             },
-            "checkbox--lg--checkmark--height": {
+            "nav--lg--checkmark--height": {
                 "__type": "variable",
-                "__name": "checkbox--lg--checkmark--height",
+                "__name": "nav--lg--checkmark--height",
                 "__value": {
                     "__type": "calc",
                     "__value": [
@@ -7297,417 +7297,417 @@
                     ]
                 }
             },
-            "checkbox--light--border-top-color": {
+            "nav--light--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--border-top-color",
+                "__name": "nav--light--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-light-shade-50"
                 }
             },
-            "checkbox--light--border-right-color": {
+            "nav--light--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--border-right-color",
+                "__name": "nav--light--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-light-shade-50"
                 }
             },
-            "checkbox--light--border-bottom-color": {
+            "nav--light--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--border-bottom-color",
+                "__name": "nav--light--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-light-shade-50"
                 }
             },
-            "checkbox--light--border-left-color": {
+            "nav--light--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--border-left-color",
+                "__name": "nav--light--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-light-shade-50"
                 }
             },
-            "checkbox--light--background": {
+            "nav--light--background": {
                 "__type": "variable",
-                "__name": "checkbox--light--background",
+                "__name": "nav--light--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-white"
                 }
             },
-            "checkbox--light--color": {
+            "nav--light--color": {
                 "__type": "variable",
-                "__name": "checkbox--light--color",
+                "__name": "nav--light--color",
                 "__value": {
                     "__type": "reference",
                     "__name": "contrast-text-color-light"
                 }
             },
-            "checkbox--light--disabled--background": {
+            "nav--light--disabled--background": {
                 "__type": "variable",
-                "__name": "checkbox--light--disabled--background",
+                "__name": "nav--light--disabled--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-100"
                 }
             },
-            "checkbox--light--disabled--border-top-color": {
+            "nav--light--disabled--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--disabled--border-top-color",
+                "__name": "nav--light--disabled--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--light--disabled--border-right-color": {
+            "nav--light--disabled--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--disabled--border-right-color",
+                "__name": "nav--light--disabled--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--light--disabled--border-bottom-color": {
+            "nav--light--disabled--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--disabled--border-bottom-color",
+                "__name": "nav--light--disabled--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--light--disabled--border-left-color": {
+            "nav--light--disabled--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--disabled--border-left-color",
+                "__name": "nav--light--disabled--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--light--readonly--background": {
+            "nav--light--readonly--background": {
                 "__type": "variable",
-                "__name": "checkbox--light--readonly--background",
+                "__name": "nav--light--readonly--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-100"
                 }
             },
-            "checkbox--light--readonly--border-top-color": {
+            "nav--light--readonly--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--readonly--border-top-color",
+                "__name": "nav--light--readonly--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--light--readonly--border-right-color": {
+            "nav--light--readonly--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--readonly--border-right-color",
+                "__name": "nav--light--readonly--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--light--readonly--border-bottom-color": {
+            "nav--light--readonly--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--readonly--border-bottom-color",
+                "__name": "nav--light--readonly--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--light--readonly--border-left-color": {
+            "nav--light--readonly--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--readonly--border-left-color",
+                "__name": "nav--light--readonly--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-200"
                 }
             },
-            "checkbox--light--checked--disabled--background": {
+            "nav--light--checked--disabled--background": {
                 "__type": "variable",
-                "__name": "checkbox--light--checked--disabled--background",
+                "__name": "nav--light--checked--disabled--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-300"
                 }
             },
-            "checkbox--light--checked--disabled--border-top-color": {
+            "nav--light--checked--disabled--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--checked--disabled--border-top-color",
+                "__name": "nav--light--checked--disabled--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-400"
                 }
             },
-            "checkbox--light--checked--disabled--border-right-color": {
+            "nav--light--checked--disabled--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--checked--disabled--border-right-color",
+                "__name": "nav--light--checked--disabled--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-400"
                 }
             },
-            "checkbox--light--checked--disabled--border-bottom-color": {
+            "nav--light--checked--disabled--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--checked--disabled--border-bottom-color",
+                "__name": "nav--light--checked--disabled--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-400"
                 }
             },
-            "checkbox--light--checked--disabled--border-left-color": {
+            "nav--light--checked--disabled--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--checked--disabled--border-left-color",
+                "__name": "nav--light--checked--disabled--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-400"
                 }
             },
-            "checkbox--light--checked--readonly--background": {
+            "nav--light--checked--readonly--background": {
                 "__type": "variable",
-                "__name": "checkbox--light--checked--readonly--background",
+                "__name": "nav--light--checked--readonly--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-400"
                 }
             },
-            "checkbox--light--checked--readonly--border-top-color": {
+            "nav--light--checked--readonly--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--checked--readonly--border-top-color",
+                "__name": "nav--light--checked--readonly--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-500"
                 }
             },
-            "checkbox--light--checked--readonly--border-right-color": {
+            "nav--light--checked--readonly--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--checked--readonly--border-right-color",
+                "__name": "nav--light--checked--readonly--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-500"
                 }
             },
-            "checkbox--light--checked--readonly--border-bottom-color": {
+            "nav--light--checked--readonly--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--checked--readonly--border-bottom-color",
+                "__name": "nav--light--checked--readonly--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-500"
                 }
             },
-            "checkbox--light--checked--readonly--border-left-color": {
+            "nav--light--checked--readonly--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--light--checked--readonly--border-left-color",
+                "__name": "nav--light--checked--readonly--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-500"
                 }
             },
-            "checkbox--dark--border-top-color": {
+            "nav--dark--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--border-top-color",
+                "__name": "nav--dark--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-dark-tint-50"
                 }
             },
-            "checkbox--dark--border-right-color": {
+            "nav--dark--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--border-right-color",
+                "__name": "nav--dark--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-dark-tint-50"
                 }
             },
-            "checkbox--dark--border-bottom-color": {
+            "nav--dark--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--border-bottom-color",
+                "__name": "nav--dark--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-dark-tint-50"
                 }
             },
-            "checkbox--dark--border-left-color": {
+            "nav--dark--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--border-left-color",
+                "__name": "nav--dark--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-dark-tint-50"
                 }
             },
-            "checkbox--dark--background": {
+            "nav--dark--background": {
                 "__type": "variable",
-                "__name": "checkbox--dark--background",
+                "__name": "nav--dark--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-dark"
                 }
             },
-            "checkbox--dark--color": {
+            "nav--dark--color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--color",
+                "__name": "nav--dark--color",
                 "__value": {
                     "__type": "reference",
                     "__name": "contrast-text-color-dark"
                 }
             },
-            "checkbox--dark--disabled--background": {
+            "nav--dark--disabled--background": {
                 "__type": "variable",
-                "__name": "checkbox--dark--disabled--background",
+                "__name": "nav--dark--disabled--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-600"
                 }
             },
-            "checkbox--dark--disabled--border-top-color": {
+            "nav--dark--disabled--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--disabled--border-top-color",
+                "__name": "nav--dark--disabled--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-700"
                 }
             },
-            "checkbox--dark--disabled--border-right-color": {
+            "nav--dark--disabled--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--disabled--border-right-color",
+                "__name": "nav--dark--disabled--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-700"
                 }
             },
-            "checkbox--dark--disabled--border-bottom-color": {
+            "nav--dark--disabled--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--disabled--border-bottom-color",
+                "__name": "nav--dark--disabled--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-700"
                 }
             },
-            "checkbox--dark--disabled--border-left-color": {
+            "nav--dark--disabled--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--disabled--border-left-color",
+                "__name": "nav--dark--disabled--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-700"
                 }
             },
-            "checkbox--dark--readonly--background": {
+            "nav--dark--readonly--background": {
                 "__type": "variable",
-                "__name": "checkbox--dark--readonly--background",
+                "__name": "nav--dark--readonly--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-600"
                 }
             },
-            "checkbox--dark--readonly--border-top-color": {
+            "nav--dark--readonly--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--readonly--border-top-color",
+                "__name": "nav--dark--readonly--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-700"
                 }
             },
-            "checkbox--dark--readonly--border-right-color": {
+            "nav--dark--readonly--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--readonly--border-right-color",
+                "__name": "nav--dark--readonly--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-700"
                 }
             },
-            "checkbox--dark--readonly--border-bottom-color": {
+            "nav--dark--readonly--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--readonly--border-bottom-color",
+                "__name": "nav--dark--readonly--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-700"
                 }
             },
-            "checkbox--dark--readonly--border-left-color": {
+            "nav--dark--readonly--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--readonly--border-left-color",
+                "__name": "nav--dark--readonly--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-gray-700"
                 }
             },
-            "checkbox--dark--checked--disabled--background": {
+            "nav--dark--checked--disabled--background": {
                 "__type": "variable",
-                "__name": "checkbox--dark--checked--disabled--background",
+                "__name": "nav--dark--checked--disabled--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-700"
                 }
             },
-            "checkbox--dark--checked--disabled--border-top-color": {
+            "nav--dark--checked--disabled--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--checked--disabled--border-top-color",
+                "__name": "nav--dark--checked--disabled--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-800"
                 }
             },
-            "checkbox--dark--checked--disabled--border-right-color": {
+            "nav--dark--checked--disabled--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--checked--disabled--border-right-color",
+                "__name": "nav--dark--checked--disabled--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-800"
                 }
             },
-            "checkbox--dark--checked--disabled--border-bottom-color": {
+            "nav--dark--checked--disabled--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--checked--disabled--border-bottom-color",
+                "__name": "nav--dark--checked--disabled--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-800"
                 }
             },
-            "checkbox--dark--checked--disabled--border-left-color": {
+            "nav--dark--checked--disabled--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--checked--disabled--border-left-color",
+                "__name": "nav--dark--checked--disabled--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-800"
                 }
             },
-            "checkbox--dark--checked--readonly--background": {
+            "nav--dark--checked--readonly--background": {
                 "__type": "variable",
-                "__name": "checkbox--dark--checked--readonly--background",
+                "__name": "nav--dark--checked--readonly--background",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-600"
                 }
             },
-            "checkbox--dark--checked--readonly--border-top-color": {
+            "nav--dark--checked--readonly--border-top-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--checked--readonly--border-top-color",
+                "__name": "nav--dark--checked--readonly--border-top-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-700"
                 }
             },
-            "checkbox--dark--checked--readonly--border-right-color": {
+            "nav--dark--checked--readonly--border-right-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--checked--readonly--border-right-color",
+                "__name": "nav--dark--checked--readonly--border-right-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-700"
                 }
             },
-            "checkbox--dark--checked--readonly--border-bottom-color": {
+            "nav--dark--checked--readonly--border-bottom-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--checked--readonly--border-bottom-color",
+                "__name": "nav--dark--checked--readonly--border-bottom-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-700"
                 }
             },
-            "checkbox--dark--checked--readonly--border-left-color": {
+            "nav--dark--checked--readonly--border-left-color": {
                 "__type": "variable",
-                "__name": "checkbox--dark--checked--readonly--border-left-color",
+                "__name": "nav--dark--checked--readonly--border-left-color",
                 "__value": {
                     "__type": "reference",
                     "__name": "color-primary-700"
@@ -7717,22 +7717,7 @@
         "selectors": [
             {
                 "__type": "selector",
-                "__name": ".checkbox-group",
-                "__value": {
-                    "display": "flex",
-                    "flexDirection": "column"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".checkbox-group.-inline",
-                "__value": {
-                    "flexDirection": "row"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".checkbox",
+                "__name": ".nav",
                 "__value": {
                     "position": "relative",
                     "display": "flex",
@@ -7743,14 +7728,14 @@
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox:last-of-type",
+                "__name": ".nav:last-of-type",
                 "__value": {
                     "marginRight": 0
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox .checkbox-label",
+                "__name": ".nav .nav-label",
                 "__value": {
                     "cursor": "pointer",
                     "marginBottom": 0,
@@ -7761,7 +7746,7 @@
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox .checkbox-label::before, .checkbox .checkbox-label::after",
+                "__name": ".nav .nav-label::before, .nav .nav-label::after",
                 "__value": {
                     "position": "absolute",
                     "top": "50%",
@@ -7770,17 +7755,17 @@
                     "cursor": "pointer",
                     "width": {
                         "__type": "reference",
-                        "__name": "checkbox--width"
+                        "__name": "nav--width"
                     },
                     "height": {
                         "__type": "reference",
-                        "__name": "checkbox--height"
+                        "__name": "nav--height"
                     }
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox .checkbox-label::before",
+                "__name": ".nav .nav-label::before",
                 "__value": {
                     "content": "\"\"",
                     "userSelect": "none",
@@ -7789,14 +7774,14 @@
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox input:indeterminate ~ .checkbox-label::after",
+                "__name": ".nav input:indeterminate ~ .nav-label::after",
                 "__value": {
                     "maskImage": "url('data:image/svg+xml; utf8, <svg fill=\"currentColor\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" width=\"28\" height=\"28\" viewBox=\"0 0 28 28\"><title>minus</title><path d=\"M0 11.375v5.25c0 0.483 0.392 0.875 0.875 0.875h26.25c0.483 0 0.875-0.392 0.875-0.875v-5.25c0-0.483-0.392-0.875-0.875-0.875h-26.25c-0.483 0-0.875 0.392-0.875 0.875z\"></path></svg>')"
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox .checkbox-label::after",
+                "__name": ".nav .nav-label::after",
                 "__value": {
                     "content": "\"\"",
                     "zIndex": 1,
@@ -7808,11 +7793,11 @@
                     "maskSize": [
                         {
                             "__type": "reference",
-                            "__name": "checkbox--checkmark--width"
+                            "__name": "nav--checkmark--width"
                         },
                         {
                             "__type": "reference",
-                            "__name": "checkbox--checkmark--height"
+                            "__name": "nav--checkmark--height"
                         }
                     ],
                     "maskPosition": "center center",
@@ -7821,7 +7806,7 @@
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox input",
+                "__name": ".nav input",
                 "__value": {
                     "top": 0,
                     "left": 0,
@@ -7834,14 +7819,14 @@
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox .checkbox-label, .checkbox input, .checkbox input:focus, .checkbox input:active",
+                "__name": ".nav .nav-label, .nav input, .nav input:focus, .nav input:active",
                 "__value": {
                     "outline": 0
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox input:indeterminate ~ .checkbox-label::after, .checkbox input:checked ~ .checkbox-label::after",
+                "__name": ".nav input:indeterminate ~ .nav-label::after, .nav input:checked ~ .nav-label::after",
                 "__value": {
                     "content": "\"\"",
                     "maskPosition": "center center",
@@ -7851,41 +7836,41 @@
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox input:disabled ~ .checkbox-label, .checkbox input[readonly] ~ .checkbox-label",
+                "__name": ".nav input:disabled ~ .nav-label, .nav input[readonly] ~ .nav-label",
                 "__value": {
                     "cursor": "default"
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox input:disabled ~ .checkbox-label::after, .checkbox input[readonly] ~ .checkbox-label::after, .checkbox input:checked:disabled ~ .checkbox-label::after, .checkbox input:checked[readonly] ~ .checkbox-label::after",
+                "__name": ".nav input:disabled ~ .nav-label::after, .nav input[readonly] ~ .nav-label::after, .nav input:checked:disabled ~ .nav-label::after, .nav input:checked[readonly] ~ .nav-label::after",
                 "__value": {
                     "cursor": "not-allowed"
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox",
+                "__name": ".nav",
                 "__value": {
                     "margin": {
                         "__type": "reference",
-                        "__name": "checkbox--margin",
+                        "__name": "nav--margin",
                         "__fallback": [
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--margin-top"
+                                "__name": "nav--margin-top"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--margin-right"
+                                "__name": "nav--margin-right"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--margin-bottom"
+                                "__name": "nav--margin-bottom"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--margin-left"
+                                "__name": "nav--margin-left"
                             }
                         ]
                     }
@@ -7893,223 +7878,223 @@
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox .checkbox-label",
+                "__name": ".nav .nav-label",
                 "__value": {
                     "color": {
                         "__type": "reference",
-                        "__name": "checkbox--color"
+                        "__name": "nav--color"
                     },
                     "fontSize": {
                         "__type": "reference",
-                        "__name": "checkbox--font-size"
+                        "__name": "nav--font-size"
                     },
                     "paddingLeft": {
                         "__type": "calc",
                         "__value": [
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--width"
+                                "__name": "nav--width"
                             },
                             "+",
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--margin-right"
+                                "__name": "nav--margin-right"
                             }
                         ]
                     },
                     "transitionProperty": {
                         "__type": "reference",
-                        "__name": "checkbox--transition-property"
+                        "__name": "nav--transition-property"
                     },
                     "transitionDuration": {
                         "__type": "reference",
-                        "__name": "checkbox--transition-duration"
+                        "__name": "nav--transition-duration"
                     },
                     "transitionTimingFunction": {
                         "__type": "reference",
-                        "__name": "checkbox--transition-timing-function"
+                        "__name": "nav--transition-timing-function"
                     }
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox .checkbox-label::before",
+                "__name": ".nav .nav-label::before",
                 "__value": {
                     "background": {
                         "__type": "reference",
-                        "__name": "checkbox--background"
+                        "__name": "nav--background"
                     },
                     "borderTopColor": {
                         "__type": "reference",
-                        "__name": "checkbox--border-top-color"
+                        "__name": "nav--border-top-color"
                     },
                     "borderRightColor": {
                         "__type": "reference",
-                        "__name": "checkbox--border-right-color"
+                        "__name": "nav--border-right-color"
                     },
                     "borderBottomColor": {
                         "__type": "reference",
-                        "__name": "checkbox--border-bottom-color"
+                        "__name": "nav--border-bottom-color"
                     },
                     "borderLeftColor": {
                         "__type": "reference",
-                        "__name": "checkbox--border-left-color"
+                        "__name": "nav--border-left-color"
                     },
                     "borderWidth": {
                         "__type": "reference",
-                        "__name": "checkbox--border-width",
+                        "__name": "nav--border-width",
                         "__fallback": [
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--border-top-width"
+                                "__name": "nav--border-top-width"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--border-right-width"
+                                "__name": "nav--border-right-width"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--border-bottom-width"
+                                "__name": "nav--border-bottom-width"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--border-left-width"
+                                "__name": "nav--border-left-width"
                             }
                         ]
                     },
                     "borderStyle": {
                         "__type": "reference",
-                        "__name": "checkbox--border-style",
+                        "__name": "nav--border-style",
                         "__fallback": [
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--border-top-style"
+                                "__name": "nav--border-top-style"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--border-right-style"
+                                "__name": "nav--border-right-style"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--border-bottom-style"
+                                "__name": "nav--border-bottom-style"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--border-left-style"
+                                "__name": "nav--border-left-style"
                             }
                         ]
                     },
                     "borderRadius": {
                         "__type": "reference",
-                        "__name": "checkbox--border-radius",
+                        "__name": "nav--border-radius",
                         "__fallback": [
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--border-top-left-radius"
+                                "__name": "nav--border-top-left-radius"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--border-top-right-radius"
+                                "__name": "nav--border-top-right-radius"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--border-bottom-right-radius"
+                                "__name": "nav--border-bottom-right-radius"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--border-bottom-left-radius"
+                                "__name": "nav--border-bottom-left-radius"
                             }
                         ]
                     },
                     "boxShadow": {
                         "__type": "reference",
-                        "__name": "checkbox--box-shadow",
+                        "__name": "nav--box-shadow",
                         "__fallback": [
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--box-shadow-offset-x"
+                                "__name": "nav--box-shadow-offset-x"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--box-shadow-offset-y"
+                                "__name": "nav--box-shadow-offset-y"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--box-shadow-blur-radius"
+                                "__name": "nav--box-shadow-blur-radius"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--box-shadow-spread-radius"
+                                "__name": "nav--box-shadow-spread-radius"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--box-shadow-color"
+                                "__name": "nav--box-shadow-color"
                             }
                         ]
                     },
                     "transitionProperty": {
                         "__type": "reference",
-                        "__name": "checkbox--transition-property"
+                        "__name": "nav--transition-property"
                     },
                     "transitionDuration": {
                         "__type": "reference",
-                        "__name": "checkbox--transition-duration"
+                        "__name": "nav--transition-duration"
                     },
                     "transitionTimingFunction": {
                         "__type": "reference",
-                        "__name": "checkbox--transition-timing-function"
+                        "__name": "nav--transition-timing-function"
                     }
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox .checkbox-label::after",
+                "__name": ".nav .nav-label::after",
                 "__value": {
                     "background": {
                         "__type": "reference",
-                        "__name": "checkbox--checkmark--color"
+                        "__name": "nav--checkmark--color"
                     },
                     "transitionProperty": {
                         "__type": "reference",
-                        "__name": "checkbox--transition-property"
+                        "__name": "nav--transition-property"
                     },
                     "transitionDuration": {
                         "__type": "reference",
-                        "__name": "checkbox--transition-duration"
+                        "__name": "nav--transition-duration"
                     },
                     "transitionTimingFunction": {
                         "__type": "reference",
-                        "__name": "checkbox--transition-timing-function"
+                        "__name": "nav--transition-timing-function"
                     }
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox:not(.-disabled) .checkbox-label:focus::before",
+                "__name": ".nav:not(.-disabled) .nav-label:focus::before",
                 "__value": {
                     "boxShadow": {
                         "__type": "reference",
-                        "__name": "checkbox--focus--box-shadow",
+                        "__name": "nav--focus--box-shadow",
                         "__fallback": [
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--focus--box-shadow-offset-x"
+                                "__name": "nav--focus--box-shadow-offset-x"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--focus--box-shadow-offset-y"
+                                "__name": "nav--focus--box-shadow-offset-y"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--focus--box-shadow-blur-radius"
+                                "__name": "nav--focus--box-shadow-blur-radius"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--focus--box-shadow-spread-radius"
+                                "__name": "nav--focus--box-shadow-spread-radius"
                             },
                             {
                                 "__type": "reference",
-                                "__name": "checkbox--focus--box-shadow-color"
+                                "__name": "nav--focus--box-shadow-color"
                             }
                         ]
                     }
@@ -8117,512 +8102,512 @@
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox input:checked ~ .checkbox-label::before, .checkbox input:indeterminate ~ .checkbox-label::before",
+                "__name": ".nav input:checked ~ .nav-label::before, .nav input:indeterminate ~ .nav-label::before",
                 "__value": {
                     "background": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--background"
+                        "__name": "nav--checked--background"
                     },
                     "borderTopColor": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--border-top-color"
+                        "__name": "nav--checked--border-top-color"
                     },
                     "borderRightColor": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--border-right-color"
+                        "__name": "nav--checked--border-right-color"
                     },
                     "borderBottomColor": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--border-bottom-color"
+                        "__name": "nav--checked--border-bottom-color"
                     },
                     "borderLeftColor": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--border-left-color"
+                        "__name": "nav--checked--border-left-color"
                     }
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox input:disabled ~ .checkbox-label",
+                "__name": ".nav input:disabled ~ .nav-label",
                 "__value": {
                     "color": {
                         "__type": "reference",
-                        "__name": "checkbox--disabled--color"
+                        "__name": "nav--disabled--color"
                     },
                     "cursor": "default"
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox input:disabled ~ .checkbox-label::before",
+                "__name": ".nav input:disabled ~ .nav-label::before",
                 "__value": {
                     "background": {
                         "__type": "reference",
-                        "__name": "checkbox--disabled--background"
+                        "__name": "nav--disabled--background"
                     },
                     "cursor": "not-allowed"
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox input[readonly] ~ .checkbox-label::before",
+                "__name": ".nav input[readonly] ~ .nav-label::before",
                 "__value": {
                     "background": {
                         "__type": "reference",
-                        "__name": "checkbox--readonly--background"
+                        "__name": "nav--readonly--background"
                     },
                     "cursor": "not-allowed"
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox input:checked:disabled ~ .checkbox-label::before",
+                "__name": ".nav input:checked:disabled ~ .nav-label::before",
                 "__value": {
                     "background": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--disabled--background"
+                        "__name": "nav--checked--disabled--background"
                     },
                     "borderTopColor": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--disabled--border-top-color"
+                        "__name": "nav--checked--disabled--border-top-color"
                     },
                     "borderRightColor": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--disabled--border-right-color"
+                        "__name": "nav--checked--disabled--border-right-color"
                     },
                     "borderBottomColor": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--disabled--border-bottom-color"
+                        "__name": "nav--checked--disabled--border-bottom-color"
                     },
                     "borderLeftColor": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--disabled--border-left-color"
+                        "__name": "nav--checked--disabled--border-left-color"
                     }
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox input[readonly]:checked ~ .checkbox-label::before",
+                "__name": ".nav input[readonly]:checked ~ .nav-label::before",
                 "__value": {
                     "background": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--readonly--background"
+                        "__name": "nav--checked--readonly--background"
                     },
                     "borderTopColor": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--readonly--border-top-color"
+                        "__name": "nav--checked--readonly--border-top-color"
                     },
                     "borderRightColor": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--readonly--border-right-color"
+                        "__name": "nav--checked--readonly--border-right-color"
                     },
                     "borderBottomColor": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--readonly--border-bottom-color"
+                        "__name": "nav--checked--readonly--border-bottom-color"
                     },
                     "borderLeftColor": {
                         "__type": "reference",
-                        "__name": "checkbox--checked--readonly--border-left-color"
+                        "__name": "nav--checked--readonly--border-left-color"
                     }
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox.-sm",
+                "__name": ".nav.-sm",
                 "__value": {
-                    "--checkbox--border-top-left-radius": {
+                    "--nav--border-top-left-radius": {
                         "__type": "reference",
-                        "__name": "checkbox--sm--border-top-left-radius"
+                        "__name": "nav--sm--border-top-left-radius"
                     },
-                    "--checkbox--border-top-right-radius": {
+                    "--nav--border-top-right-radius": {
                         "__type": "reference",
-                        "__name": "checkbox--sm--border-top-right-radius"
+                        "__name": "nav--sm--border-top-right-radius"
                     },
-                    "--checkbox--border-bottom-right-radius": {
+                    "--nav--border-bottom-right-radius": {
                         "__type": "reference",
-                        "__name": "checkbox--sm--border-bottom-right-radius"
+                        "__name": "nav--sm--border-bottom-right-radius"
                     },
-                    "--checkbox--border-bottom-left-radius": {
+                    "--nav--border-bottom-left-radius": {
                         "__type": "reference",
-                        "__name": "checkbox--sm--border-bottom-left-radius"
+                        "__name": "nav--sm--border-bottom-left-radius"
                     },
-                    "--checkbox--font-size": {
+                    "--nav--font-size": {
                         "__type": "reference",
-                        "__name": "checkbox--sm--font-size"
+                        "__name": "nav--sm--font-size"
                     },
-                    "--checkbox--margin-top": {
+                    "--nav--margin-top": {
                         "__type": "reference",
-                        "__name": "checkbox--sm--margin-top"
+                        "__name": "nav--sm--margin-top"
                     },
-                    "--checkbox--margin-right": {
+                    "--nav--margin-right": {
                         "__type": "reference",
-                        "__name": "checkbox--sm--margin-right"
+                        "__name": "nav--sm--margin-right"
                     },
-                    "--checkbox--margin-bottom": {
+                    "--nav--margin-bottom": {
                         "__type": "reference",
-                        "__name": "checkbox--sm--margin-bottom"
+                        "__name": "nav--sm--margin-bottom"
                     },
-                    "--checkbox--margin-left": {
+                    "--nav--margin-left": {
                         "__type": "reference",
-                        "__name": "checkbox--sm--margin-left"
+                        "__name": "nav--sm--margin-left"
                     },
-                    "--checkbox--width": {
+                    "--nav--width": {
                         "__type": "reference",
-                        "__name": "checkbox--sm--width"
+                        "__name": "nav--sm--width"
                     },
-                    "--checkbox--height": {
+                    "--nav--height": {
                         "__type": "reference",
-                        "__name": "checkbox--sm--height"
+                        "__name": "nav--sm--height"
                     },
-                    "--checkbox--checkmark--width": {
+                    "--nav--checkmark--width": {
                         "__type": "reference",
-                        "__name": "checkbox--sm--checkmark--width"
+                        "__name": "nav--sm--checkmark--width"
                     },
-                    "--checkbox--checkmark--height": {
+                    "--nav--checkmark--height": {
                         "__type": "reference",
-                        "__name": "checkbox--sm--checkmark--height"
+                        "__name": "nav--sm--checkmark--height"
                     }
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox.-md",
+                "__name": ".nav.-md",
                 "__value": {
-                    "--checkbox--border-top-left-radius": {
+                    "--nav--border-top-left-radius": {
                         "__type": "reference",
-                        "__name": "checkbox--md--border-top-left-radius"
+                        "__name": "nav--md--border-top-left-radius"
                     },
-                    "--checkbox--border-top-right-radius": {
+                    "--nav--border-top-right-radius": {
                         "__type": "reference",
-                        "__name": "checkbox--md--border-top-right-radius"
+                        "__name": "nav--md--border-top-right-radius"
                     },
-                    "--checkbox--border-bottom-right-radius": {
+                    "--nav--border-bottom-right-radius": {
                         "__type": "reference",
-                        "__name": "checkbox--md--border-bottom-right-radius"
+                        "__name": "nav--md--border-bottom-right-radius"
                     },
-                    "--checkbox--border-bottom-left-radius": {
+                    "--nav--border-bottom-left-radius": {
                         "__type": "reference",
-                        "__name": "checkbox--md--border-bottom-left-radius"
+                        "__name": "nav--md--border-bottom-left-radius"
                     },
-                    "--checkbox--font-size": {
+                    "--nav--font-size": {
                         "__type": "reference",
-                        "__name": "checkbox--md--font-size"
+                        "__name": "nav--md--font-size"
                     },
-                    "--checkbox--margin-top": {
+                    "--nav--margin-top": {
                         "__type": "reference",
-                        "__name": "checkbox--md--margin-top"
+                        "__name": "nav--md--margin-top"
                     },
-                    "--checkbox--margin-right": {
+                    "--nav--margin-right": {
                         "__type": "reference",
-                        "__name": "checkbox--md--margin-right"
+                        "__name": "nav--md--margin-right"
                     },
-                    "--checkbox--margin-bottom": {
+                    "--nav--margin-bottom": {
                         "__type": "reference",
-                        "__name": "checkbox--md--margin-bottom"
+                        "__name": "nav--md--margin-bottom"
                     },
-                    "--checkbox--margin-left": {
+                    "--nav--margin-left": {
                         "__type": "reference",
-                        "__name": "checkbox--md--margin-left"
+                        "__name": "nav--md--margin-left"
                     },
-                    "--checkbox--width": {
+                    "--nav--width": {
                         "__type": "reference",
-                        "__name": "checkbox--md--width"
+                        "__name": "nav--md--width"
                     },
-                    "--checkbox--height": {
+                    "--nav--height": {
                         "__type": "reference",
-                        "__name": "checkbox--md--height"
+                        "__name": "nav--md--height"
                     },
-                    "--checkbox--checkmark--width": {
+                    "--nav--checkmark--width": {
                         "__type": "reference",
-                        "__name": "checkbox--md--checkmark--width"
+                        "__name": "nav--md--checkmark--width"
                     },
-                    "--checkbox--checkmark--height": {
+                    "--nav--checkmark--height": {
                         "__type": "reference",
-                        "__name": "checkbox--md--checkmark--height"
+                        "__name": "nav--md--checkmark--height"
                     }
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox.-lg",
+                "__name": ".nav.-lg",
                 "__value": {
-                    "--checkbox--border-top-left-radius": {
+                    "--nav--border-top-left-radius": {
                         "__type": "reference",
-                        "__name": "checkbox--lg--border-top-left-radius"
+                        "__name": "nav--lg--border-top-left-radius"
                     },
-                    "--checkbox--border-top-right-radius": {
+                    "--nav--border-top-right-radius": {
                         "__type": "reference",
-                        "__name": "checkbox--lg--border-top-right-radius"
+                        "__name": "nav--lg--border-top-right-radius"
                     },
-                    "--checkbox--border-bottom-right-radius": {
+                    "--nav--border-bottom-right-radius": {
                         "__type": "reference",
-                        "__name": "checkbox--lg--border-bottom-right-radius"
+                        "__name": "nav--lg--border-bottom-right-radius"
                     },
-                    "--checkbox--border-bottom-left-radius": {
+                    "--nav--border-bottom-left-radius": {
                         "__type": "reference",
-                        "__name": "checkbox--lg--border-bottom-left-radius"
+                        "__name": "nav--lg--border-bottom-left-radius"
                     },
-                    "--checkbox--font-size": {
+                    "--nav--font-size": {
                         "__type": "reference",
-                        "__name": "checkbox--lg--font-size"
+                        "__name": "nav--lg--font-size"
                     },
-                    "--checkbox--margin-top": {
+                    "--nav--margin-top": {
                         "__type": "reference",
-                        "__name": "checkbox--lg--margin-top"
+                        "__name": "nav--lg--margin-top"
                     },
-                    "--checkbox--margin-right": {
+                    "--nav--margin-right": {
                         "__type": "reference",
-                        "__name": "checkbox--lg--margin-right"
+                        "__name": "nav--lg--margin-right"
                     },
-                    "--checkbox--margin-bottom": {
+                    "--nav--margin-bottom": {
                         "__type": "reference",
-                        "__name": "checkbox--lg--margin-bottom"
+                        "__name": "nav--lg--margin-bottom"
                     },
-                    "--checkbox--margin-left": {
+                    "--nav--margin-left": {
                         "__type": "reference",
-                        "__name": "checkbox--lg--margin-left"
+                        "__name": "nav--lg--margin-left"
                     },
-                    "--checkbox--width": {
+                    "--nav--width": {
                         "__type": "reference",
-                        "__name": "checkbox--lg--width"
+                        "__name": "nav--lg--width"
                     },
-                    "--checkbox--height": {
+                    "--nav--height": {
                         "__type": "reference",
-                        "__name": "checkbox--lg--height"
+                        "__name": "nav--lg--height"
                     },
-                    "--checkbox--checkmark--width": {
+                    "--nav--checkmark--width": {
                         "__type": "reference",
-                        "__name": "checkbox--lg--checkmark--width"
+                        "__name": "nav--lg--checkmark--width"
                     },
-                    "--checkbox--checkmark--height": {
+                    "--nav--checkmark--height": {
                         "__type": "reference",
-                        "__name": "checkbox--lg--checkmark--height"
+                        "__name": "nav--lg--checkmark--height"
                     }
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox.-light",
+                "__name": ".nav.-light",
                 "__value": {
-                    "--checkbox--border-top-color": {
+                    "--nav--border-top-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--border-top-color"
+                        "__name": "nav--light--border-top-color"
                     },
-                    "--checkbox--border-right-color": {
+                    "--nav--border-right-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--border-right-color"
+                        "__name": "nav--light--border-right-color"
                     },
-                    "--checkbox--border-bottom-color": {
+                    "--nav--border-bottom-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--border-bottom-color"
+                        "__name": "nav--light--border-bottom-color"
                     },
-                    "--checkbox--border-left-color": {
+                    "--nav--border-left-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--border-left-color"
+                        "__name": "nav--light--border-left-color"
                     },
-                    "--checkbox--background": {
+                    "--nav--background": {
                         "__type": "reference",
-                        "__name": "checkbox--light--background"
+                        "__name": "nav--light--background"
                     },
-                    "--checkbox--color": {
+                    "--nav--color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--color"
+                        "__name": "nav--light--color"
                     },
-                    "--checkbox--disabled--background": {
+                    "--nav--disabled--background": {
                         "__type": "reference",
-                        "__name": "checkbox--light--disabled--background"
+                        "__name": "nav--light--disabled--background"
                     },
-                    "--checkbox--disabled--border-top-color": {
+                    "--nav--disabled--border-top-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--disabled--border-top-color"
+                        "__name": "nav--light--disabled--border-top-color"
                     },
-                    "--checkbox--disabled--border-right-color": {
+                    "--nav--disabled--border-right-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--disabled--border-right-color"
+                        "__name": "nav--light--disabled--border-right-color"
                     },
-                    "--checkbox--disabled--border-bottom-color": {
+                    "--nav--disabled--border-bottom-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--disabled--border-bottom-color"
+                        "__name": "nav--light--disabled--border-bottom-color"
                     },
-                    "--checkbox--disabled--border-left-color": {
+                    "--nav--disabled--border-left-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--disabled--border-left-color"
+                        "__name": "nav--light--disabled--border-left-color"
                     },
-                    "--checkbox--readonly--background": {
+                    "--nav--readonly--background": {
                         "__type": "reference",
-                        "__name": "checkbox--light--readonly--background"
+                        "__name": "nav--light--readonly--background"
                     },
-                    "--checkbox--readonly--border-top-color": {
+                    "--nav--readonly--border-top-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--readonly--border-top-color"
+                        "__name": "nav--light--readonly--border-top-color"
                     },
-                    "--checkbox--readonly--border-right-color": {
+                    "--nav--readonly--border-right-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--readonly--border-right-color"
+                        "__name": "nav--light--readonly--border-right-color"
                     },
-                    "--checkbox--readonly--border-bottom-color": {
+                    "--nav--readonly--border-bottom-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--readonly--border-bottom-color"
+                        "__name": "nav--light--readonly--border-bottom-color"
                     },
-                    "--checkbox--readonly--border-left-color": {
+                    "--nav--readonly--border-left-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--readonly--border-left-color"
+                        "__name": "nav--light--readonly--border-left-color"
                     },
-                    "--checkbox--checked--disabled--background": {
+                    "--nav--checked--disabled--background": {
                         "__type": "reference",
-                        "__name": "checkbox--light--checked--disabled--background"
+                        "__name": "nav--light--checked--disabled--background"
                     },
-                    "--checkbox--checked--disabled--border-top-color": {
+                    "--nav--checked--disabled--border-top-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--checked--disabled--border-top-color"
+                        "__name": "nav--light--checked--disabled--border-top-color"
                     },
-                    "--checkbox--checked--disabled--border-right-color": {
+                    "--nav--checked--disabled--border-right-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--checked--disabled--border-right-color"
+                        "__name": "nav--light--checked--disabled--border-right-color"
                     },
-                    "--checkbox--checked--disabled--border-bottom-color": {
+                    "--nav--checked--disabled--border-bottom-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--checked--disabled--border-bottom-color"
+                        "__name": "nav--light--checked--disabled--border-bottom-color"
                     },
-                    "--checkbox--checked--disabled--border-left-color": {
+                    "--nav--checked--disabled--border-left-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--checked--disabled--border-left-color"
+                        "__name": "nav--light--checked--disabled--border-left-color"
                     },
-                    "--checkbox--checked--readonly--background": {
+                    "--nav--checked--readonly--background": {
                         "__type": "reference",
-                        "__name": "checkbox--light--checked--readonly--background"
+                        "__name": "nav--light--checked--readonly--background"
                     },
-                    "--checkbox--checked--readonly--border-top-color": {
+                    "--nav--checked--readonly--border-top-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--checked--readonly--border-top-color"
+                        "__name": "nav--light--checked--readonly--border-top-color"
                     },
-                    "--checkbox--checked--readonly--border-right-color": {
+                    "--nav--checked--readonly--border-right-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--checked--readonly--border-right-color"
+                        "__name": "nav--light--checked--readonly--border-right-color"
                     },
-                    "--checkbox--checked--readonly--border-bottom-color": {
+                    "--nav--checked--readonly--border-bottom-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--checked--readonly--border-bottom-color"
+                        "__name": "nav--light--checked--readonly--border-bottom-color"
                     },
-                    "--checkbox--checked--readonly--border-left-color": {
+                    "--nav--checked--readonly--border-left-color": {
                         "__type": "reference",
-                        "__name": "checkbox--light--checked--readonly--border-left-color"
+                        "__name": "nav--light--checked--readonly--border-left-color"
                     }
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox.-dark",
+                "__name": ".nav.-dark",
                 "__value": {
-                    "--checkbox--border-top-color": {
+                    "--nav--border-top-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--border-top-color"
+                        "__name": "nav--dark--border-top-color"
                     },
-                    "--checkbox--border-right-color": {
+                    "--nav--border-right-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--border-right-color"
+                        "__name": "nav--dark--border-right-color"
                     },
-                    "--checkbox--border-bottom-color": {
+                    "--nav--border-bottom-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--border-bottom-color"
+                        "__name": "nav--dark--border-bottom-color"
                     },
-                    "--checkbox--border-left-color": {
+                    "--nav--border-left-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--border-left-color"
+                        "__name": "nav--dark--border-left-color"
                     },
-                    "--checkbox--background": {
+                    "--nav--background": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--background"
+                        "__name": "nav--dark--background"
                     },
-                    "--checkbox--color": {
+                    "--nav--color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--color"
+                        "__name": "nav--dark--color"
                     },
-                    "--checkbox--disabled--background": {
+                    "--nav--disabled--background": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--disabled--background"
+                        "__name": "nav--dark--disabled--background"
                     },
-                    "--checkbox--disabled--border-top-color": {
+                    "--nav--disabled--border-top-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--disabled--border-top-color"
+                        "__name": "nav--dark--disabled--border-top-color"
                     },
-                    "--checkbox--disabled--border-right-color": {
+                    "--nav--disabled--border-right-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--disabled--border-right-color"
+                        "__name": "nav--dark--disabled--border-right-color"
                     },
-                    "--checkbox--disabled--border-bottom-color": {
+                    "--nav--disabled--border-bottom-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--disabled--border-bottom-color"
+                        "__name": "nav--dark--disabled--border-bottom-color"
                     },
-                    "--checkbox--disabled--border-left-color": {
+                    "--nav--disabled--border-left-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--disabled--border-left-color"
+                        "__name": "nav--dark--disabled--border-left-color"
                     },
-                    "--checkbox--readonly--background": {
+                    "--nav--readonly--background": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--readonly--background"
+                        "__name": "nav--dark--readonly--background"
                     },
-                    "--checkbox--readonly--border-top-color": {
+                    "--nav--readonly--border-top-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--readonly--border-top-color"
+                        "__name": "nav--dark--readonly--border-top-color"
                     },
-                    "--checkbox--readonly--border-right-color": {
+                    "--nav--readonly--border-right-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--readonly--border-right-color"
+                        "__name": "nav--dark--readonly--border-right-color"
                     },
-                    "--checkbox--readonly--border-bottom-color": {
+                    "--nav--readonly--border-bottom-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--readonly--border-bottom-color"
+                        "__name": "nav--dark--readonly--border-bottom-color"
                     },
-                    "--checkbox--readonly--border-left-color": {
+                    "--nav--readonly--border-left-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--readonly--border-left-color"
+                        "__name": "nav--dark--readonly--border-left-color"
                     },
-                    "--checkbox--checked--disabled--background": {
+                    "--nav--checked--disabled--background": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--checked--disabled--background"
+                        "__name": "nav--dark--checked--disabled--background"
                     },
-                    "--checkbox--checked--disabled--border-top-color": {
+                    "--nav--checked--disabled--border-top-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--checked--disabled--border-top-color"
+                        "__name": "nav--dark--checked--disabled--border-top-color"
                     },
-                    "--checkbox--checked--disabled--border-right-color": {
+                    "--nav--checked--disabled--border-right-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--checked--disabled--border-right-color"
+                        "__name": "nav--dark--checked--disabled--border-right-color"
                     },
-                    "--checkbox--checked--disabled--border-bottom-color": {
+                    "--nav--checked--disabled--border-bottom-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--checked--disabled--border-bottom-color"
+                        "__name": "nav--dark--checked--disabled--border-bottom-color"
                     },
-                    "--checkbox--checked--disabled--border-left-color": {
+                    "--nav--checked--disabled--border-left-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--checked--disabled--border-left-color"
+                        "__name": "nav--dark--checked--disabled--border-left-color"
                     },
-                    "--checkbox--checked--readonly--background": {
+                    "--nav--checked--readonly--background": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--checked--readonly--background"
+                        "__name": "nav--dark--checked--readonly--background"
                     },
-                    "--checkbox--checked--readonly--border-top-color": {
+                    "--nav--checked--readonly--border-top-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--checked--readonly--border-top-color"
+                        "__name": "nav--dark--checked--readonly--border-top-color"
                     },
-                    "--checkbox--checked--readonly--border-right-color": {
+                    "--nav--checked--readonly--border-right-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--checked--readonly--border-right-color"
+                        "__name": "nav--dark--checked--readonly--border-right-color"
                     },
-                    "--checkbox--checked--readonly--border-bottom-color": {
+                    "--nav--checked--readonly--border-bottom-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--checked--readonly--border-bottom-color"
+                        "__name": "nav--dark--checked--readonly--border-bottom-color"
                     },
-                    "--checkbox--checked--readonly--border-left-color": {
+                    "--nav--checked--readonly--border-left-color": {
                         "__type": "reference",
-                        "__name": "checkbox--dark--checked--readonly--border-left-color"
+                        "__name": "nav--dark--checked--readonly--border-left-color"
                     }
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox.-native input",
+                "__name": ".nav.-native input",
                 "__value": {
                     "top": "auto",
                     "left": "auto",
@@ -8634,17 +8619,17 @@
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox.-native .checkbox-label",
+                "__name": ".nav.-native .nav-label",
                 "__value": {
                     "paddingLeft": {
                         "__type": "reference",
-                        "__name": "checkbox--margin-right"
+                        "__name": "nav--margin-right"
                     }
                 }
             },
             {
                 "__type": "selector",
-                "__name": ".checkbox.-native .checkbox-label::before, .checkbox.-native .checkbox-label::after",
+                "__name": ".nav.-native .nav-label::before, .nav.-native .nav-label::after",
                 "__value": {
                     "display": "none"
                 }

@@ -1,6 +1,8 @@
 import { fireEvent, render } from '@testing-library/vue';
 import { createTestingInklineOptionsProvide } from '@inkline/test-utils';
-import { Nav, NavItem, NavbarKey, SidebarKey } from '@inkline/inkline';
+import { NavbarKey, SidebarKey } from '@inkline/types';
+import { Nav } from '../index';
+import { NavItem } from '../../nav-item';
 
 describe('Components', () => {
     describe('Nav', () => {
@@ -10,14 +12,14 @@ describe('Components', () => {
         };
 
         const stubs = {
-            'i-nav-item': NavItem
+            NavItem
         };
 
         const slots = {
             default: [
-                '<i-nav-item>Item 1</i-nav-item>',
-                '<i-nav-item>Item 2</i-nav-item>',
-                '<i-nav-item>Item 3</i-nav-item>'
+                '<NavItem>Item 1</NavItem>',
+                '<NavItem>Item 2</NavItem>',
+                '<NavItem>Item 3</NavItem>'
             ]
         };
 

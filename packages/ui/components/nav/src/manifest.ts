@@ -24,7 +24,7 @@ export const manifest: ComponentManifest[] = [
             },
             {
                 name: 'items',
-                type: 'NavItem[]',
+                type: 'NavItemDefinition[]',
                 description: 'Nav items to display',
                 default: ''
             }
@@ -1193,3 +1193,5 @@ export const manifest: ComponentManifest[] = [
         }
     }
 ];
+
+export default manifest;

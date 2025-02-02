@@ -8,7 +8,7 @@
     },
     "dependencies": {
         "@eslint/js": "catalog:",
-        "@typescript-eslint/parser": "^7.18.0",
+        "@typescript-eslint/parser": "^8.22.0",
         "eslint": "catalog:",
         "eslint-config-prettier": "^9.1.0",
         "eslint-plugin-prettier": "^5.2.3",
