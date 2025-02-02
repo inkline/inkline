@@ -46,7 +46,7 @@
 }
 
 .modal .modal-close {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
     height: 1.5rem;
@@ -58,6 +58,7 @@
     border: 0;
     transition: background-color 0.3s ease;
     background-color: transparent;
+    margin-left: auto;
 }
 
 .modal-wrapper {
@@ -70,25 +71,6 @@
     box-shadow: var(--modal--box-shadow, var(--modal--box-shadow-offset-x) var(--modal--box-shadow-offset-y) var(--modal--box-shadow-blur-radius) var(--modal--box-shadow-spread-radius) var(--modal--box-shadow-color));
     color: var(--modal--color);
     font-size: var(--modal--font-size);
-}
-
-.modal-header {
-    background: var(--modal--header--background);
-    border-radius: var(--modal--border-radius, var(--modal--border-top-left-radius) var(--modal--border-top-right-radius) var(--modal--border-bottom-right-radius) var(--modal--border-bottom-left-radius));
-    color: var(--modal--color);
-    border-style: var(--modal--border-style, var(--modal--border-top-style) var(--modal--border-right-style) var(--modal--border-bottom-style) var(--modal--border-left-style));
-    border-top-color: var(--modal--border-top-color);
-    border-right-color: var(--modal--border-right-color);
-    border-bottom-color: var(--modal--border-bottom-color);
-    border-left-color: var(--modal--border-left-color);
-    border-width: var(--modal--border-width, var(--modal--border-top-width) var(--modal--border-right-width) var(--modal--border-bottom-width) var(--modal--border-left-width));
-    padding: var(--modal--padding, var(--modal--padding-top) var(--modal--padding-right) var(--modal--padding-bottom) var(--modal--padding-left));
-    transition-property: var(--modal--transition-property);
-    transition-duration: var(--modal--transition-duration);
-    transition-timing-function: var(--modal--transition-timing-function);
-}
-
-.modal-body {
     background: var(--modal--background);
     border-radius: var(--modal--border-radius, var(--modal--border-top-left-radius) var(--modal--border-top-right-radius) var(--modal--border-bottom-right-radius) var(--modal--border-bottom-left-radius));
     border-style: var(--modal--border-style, var(--modal--border-top-style) var(--modal--border-right-style) var(--modal--border-bottom-style) var(--modal--border-left-style));
@@ -97,45 +79,10 @@
     border-bottom-color: var(--modal--border-bottom-color);
     border-left-color: var(--modal--border-left-color);
     border-width: var(--modal--border-width, var(--modal--border-top-width) var(--modal--border-right-width) var(--modal--border-bottom-width) var(--modal--border-left-width));
-    color: var(--modal--color);
     padding: var(--modal--padding, var(--modal--padding-top) var(--modal--padding-right) var(--modal--padding-bottom) var(--modal--padding-left));
     transition-property: var(--modal--transition-property);
     transition-duration: var(--modal--transition-duration);
     transition-timing-function: var(--modal--transition-timing-function);
-}
-
-.modal-footer {
-    background: var(--modal--footer--background);
-    border-radius: var(--modal--border-radius, var(--modal--border-top-left-radius) var(--modal--border-top-right-radius) var(--modal--border-bottom-right-radius) var(--modal--border-bottom-left-radius));
-    color: var(--modal--color);
-    border-style: var(--modal--border-style, var(--modal--border-top-style) var(--modal--border-right-style) var(--modal--border-bottom-style) var(--modal--border-left-style));
-    border-top-color: var(--modal--border-top-color);
-    border-right-color: var(--modal--border-right-color);
-    border-bottom-color: var(--modal--border-bottom-color);
-    border-left-color: var(--modal--border-left-color);
-    border-width: var(--modal--border-width, var(--modal--border-top-width) var(--modal--border-right-width) var(--modal--border-bottom-width) var(--modal--border-left-width));
-    padding: var(--modal--padding, var(--modal--padding-top) var(--modal--padding-right) var(--modal--padding-bottom) var(--modal--padding-left));
-    transition-property: var(--modal--transition-property);
-    transition-duration: var(--modal--transition-duration);
-    transition-timing-function: var(--modal--transition-timing-function);
-}
-
-.modal-header + .modal-body {
-    border-top: 0;
-}
-
-.modal-body:has(+ .modal-footer) {
-    border-bottom: 0;
-}
-
-.modal > *:not(:first-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-
-.modal > *:not(:last-child) {
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
 }
 
 .modal .modal-close {
@@ -143,13 +90,8 @@
 }
 
 .modal .modal-icon {
-    margin: var(--modal--icon--margin, var(--modal--icon--margin-top) var(--modal--icon--margin-right) var(--modal--icon--margin-bottom) var(--modal--icon--margin-left));
     align-items: center;
     display: flex;
-}
-
-.modal-wrapper .modal-footer .button + .button {
-    margin: var(--modal--footer--button--margin, var(--modal--footer--button--margin-top) var(--modal--footer--button--margin-right) var(--modal--footer--button--margin-bottom) var(--modal--footer--button--margin-left));
 }
 
 .modal.-light {
@@ -159,8 +101,6 @@
     --modal--border-left-color: var(--modal--light--border-left-color);
     --modal--background: var(--modal--light--background);
     --modal--color: var(--modal--light--color);
-    --modal--header--background: var(--modal--light--header--background);
-    --modal--footer--background: var(--modal--light--footer--background);
 }
 
 .modal.-dark {
@@ -170,8 +110,6 @@
     --modal--border-left-color: var(--modal--dark--border-left-color);
     --modal--background: var(--modal--dark--background);
     --modal--color: var(--modal--dark--color);
-    --modal--header--background: var(--modal--dark--header--background);
-    --modal--footer--background: var(--modal--dark--footer--background);
 }
 
 .modal.-primary {
@@ -181,8 +119,6 @@
     --modal--border-left-color: var(--modal--primary--border-left-color);
     --modal--background: var(--modal--primary--background);
     --modal--color: var(--modal--primary--color);
-    --modal--header--background: var(--modal--primary--header--background);
-    --modal--footer--background: var(--modal--primary--footer--background);
 }
 
 .modal.-secondary {
@@ -192,8 +128,6 @@
     --modal--border-left-color: var(--modal--secondary--border-left-color);
     --modal--background: var(--modal--secondary--background);
     --modal--color: var(--modal--secondary--color);
-    --modal--header--background: var(--modal--secondary--header--background);
-    --modal--footer--background: var(--modal--secondary--footer--background);
 }
 
 .modal.-success {
@@ -203,8 +137,6 @@
     --modal--border-left-color: var(--modal--success--border-left-color);
     --modal--background: var(--modal--success--background);
     --modal--color: var(--modal--success--color);
-    --modal--header--background: var(--modal--success--header--background);
-    --modal--footer--background: var(--modal--success--footer--background);
 }
 
 .modal.-danger {
@@ -214,8 +146,6 @@
     --modal--border-left-color: var(--modal--danger--border-left-color);
     --modal--background: var(--modal--danger--background);
     --modal--color: var(--modal--danger--color);
-    --modal--header--background: var(--modal--danger--header--background);
-    --modal--footer--background: var(--modal--danger--footer--background);
 }
 
 .modal.-warning {
@@ -225,8 +155,6 @@
     --modal--border-left-color: var(--modal--warning--border-left-color);
     --modal--background: var(--modal--warning--background);
     --modal--color: var(--modal--warning--color);
-    --modal--header--background: var(--modal--warning--header--background);
-    --modal--footer--background: var(--modal--warning--footer--background);
 }
 
 .modal.-info {
@@ -236,8 +164,6 @@
     --modal--border-left-color: var(--modal--info--border-left-color);
     --modal--background: var(--modal--info--background);
     --modal--color: var(--modal--info--color);
-    --modal--header--background: var(--modal--info--header--background);
-    --modal--footer--background: var(--modal--info--footer--background);
 }
 
 .modal.-sm {
@@ -285,13 +211,7 @@
     max-width: 100%;
     display: flex;
     flex-direction: column;
-}
-
-.modal.-fullscreen > .modal-header, .modal.-fullscreen > .modal-body, .modal.-fullscreen > .modal-footer {
     border-radius: 0;
-}
-
-.modal.-fullscreen > .modal-body {
     flex: 1;
     overflow: auto;
 }

@@ -7206,20 +7206,6 @@
                             }
                         ]
                     },
-                    "color": {
-                        "__type": "reference",
-                        "__name": "card--color"
-                    },
-                    "fontSize": {
-                        "__type": "reference",
-                        "__name": "card--font-size"
-                    }
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".card-header, .card-body, .card-footer",
-                "__value": {
                     "background": {
                         "__type": "reference",
                         "__name": "card--background"
@@ -7290,6 +7276,36 @@
                             }
                         ]
                     },
+                    "borderRadius": {
+                        "__type": "reference",
+                        "__name": "card--border-radius",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "card--border-top-left-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "card--border-top-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "card--border-bottom-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "card--border-bottom-left-radius"
+                            }
+                        ]
+                    },
+                    "color": {
+                        "__type": "reference",
+                        "__name": "card--color"
+                    },
+                    "fontSize": {
+                        "__type": "reference",
+                        "__name": "card--font-size"
+                    },
                     "padding": {
                         "__type": "reference",
                         "__name": "card--padding",
@@ -7324,64 +7340,6 @@
                         "__type": "reference",
                         "__name": "card--transition-timing-function"
                     }
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".card-header + .card-body",
-                "__value": {
-                    "borderTop": 0
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".card-body:has(+ .card-footer)",
-                "__value": {
-                    "borderBottom": 0
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".card > *",
-                "__value": {
-                    "borderRadius": {
-                        "__type": "reference",
-                        "__name": "card--border-radius",
-                        "__fallback": [
-                            {
-                                "__type": "reference",
-                                "__name": "card--border-top-left-radius"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "card--border-top-right-radius"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "card--border-bottom-right-radius"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "card--border-bottom-left-radius"
-                            }
-                        ]
-                    }
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".card > *:not(:first-child)",
-                "__value": {
-                    "borderTopLeftRadius": 0,
-                    "borderTopRightRadius": 0
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".card > *:not(:last-child)",
-                "__value": {
-                    "borderBottomLeftRadius": 0,
-                    "borderBottomRightRadius": 0
                 }
             },
             {

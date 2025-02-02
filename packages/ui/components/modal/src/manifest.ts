@@ -2,6 +2,24 @@ import type { ComponentManifest } from '@inkline/types';
 
 export const manifest: ComponentManifest[] = [
     {
+        name: 'ModalClose',
+        props: [
+            {
+                name: 'closeAriaLabel',
+                type: 'string',
+                description: 'The aria-label attribute of the close button',
+                default: 'Close'
+            }
+        ],
+        events: [],
+        slots: [
+            {
+                name: 'close',
+                description: 'Close button slot'
+            }
+        ]
+    },
+    {
         name: 'ModalContainer',
         props: [
             {
@@ -26,12 +44,6 @@ export const manifest: ComponentManifest[] = [
                 type: 'boolean',
                 description: 'Determines if the modal should close when pressing escape',
                 default: 'true'
-            },
-            {
-                name: 'closeAriaLabel',
-                type: 'string',
-                description: 'The aria-label attribute of the close button',
-                default: 'Close'
             },
             {
                 name: 'color',
@@ -70,7 +82,7 @@ export const manifest: ComponentManifest[] = [
                 default: 'false'
             },
             {
-                name: 'sizeMultiplier',
+                name: 'size',
                 type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the modal',
                 default: ''
@@ -100,9 +112,9 @@ export const manifest: ComponentManifest[] = [
                 default: 'undefined'
             },
             {
-                name: 'body',
+                name: 'content',
                 type: 'string | VNode | VNode[]',
-                description: 'The body of the modal',
+                description: 'The content of the modal',
                 default: 'undefined'
             },
             {
@@ -136,20 +148,8 @@ export const manifest: ComponentManifest[] = [
         ],
         slots: [
             {
-                name: 'footer',
-                description: 'Slot for modal header content'
-            },
-            {
-                name: 'close',
-                description: 'Close button slot'
-            },
-            {
                 name: 'default',
-                description: 'Slot for modal body content'
-            },
-            {
-                name: 'footer',
-                description: 'Slot for modal footer content'
+                description: 'Slot for modal content'
             }
         ],
         css: {
@@ -276,27 +276,6 @@ export const manifest: ComponentManifest[] = [
                     name: '--modal--color'
                 },
                 {
-                    name: '--modal--header--background'
-                },
-                {
-                    name: '--modal--footer--background'
-                },
-                {
-                    name: '--modal--footer--button--margin-top'
-                },
-                {
-                    name: '--modal--footer--button--margin-right'
-                },
-                {
-                    name: '--modal--footer--button--margin-bottom'
-                },
-                {
-                    name: '--modal--footer--button--margin-left'
-                },
-                {
-                    name: '--modal--footer--button--margin'
-                },
-                {
                     name: '--modal--border-top-left-radius'
                 },
                 {
@@ -333,19 +312,7 @@ export const manifest: ComponentManifest[] = [
                     name: '--modal--max-width'
                 },
                 {
-                    name: '--modal--icon--margin-top'
-                },
-                {
-                    name: '--modal--icon--margin-right'
-                },
-                {
-                    name: '--modal--icon--margin-bottom'
-                },
-                {
-                    name: '--modal--icon--margin-left'
-                },
-                {
-                    name: '--modal--icon--margin'
+                    name: '--modal--footer--gap'
                 },
                 {
                     name: '--modal--{color}--border-top-color'
@@ -364,12 +331,6 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--{color}--color'
-                },
-                {
-                    name: '--modal--{color}--header--background'
-                },
-                {
-                    name: '--modal--{color}--footer--background'
                 },
                 {
                     name: '--modal--{size}--border-top-left-radius'
@@ -408,28 +369,7 @@ export const manifest: ComponentManifest[] = [
                     name: '--modal--{size}--close--font-size'
                 },
                 {
-                    name: '--modal--{size}--icon--margin-top'
-                },
-                {
-                    name: '--modal--{size}--icon--margin-right'
-                },
-                {
-                    name: '--modal--{size}--icon--margin-bottom'
-                },
-                {
-                    name: '--modal--{size}--icon--margin-left'
-                },
-                {
-                    name: '--modal--{size}--footer--button--margin-top'
-                },
-                {
-                    name: '--modal--{size}--footer--button--margin-right'
-                },
-                {
-                    name: '--modal--{size}--footer--button--margin-bottom'
-                },
-                {
-                    name: '--modal--{size}--footer--button--margin-left'
+                    name: '--modal--{size}--footer--gap'
                 }
             ]
         }
@@ -559,27 +499,6 @@ export const manifest: ComponentManifest[] = [
                     name: '--modal--color'
                 },
                 {
-                    name: '--modal--header--background'
-                },
-                {
-                    name: '--modal--footer--background'
-                },
-                {
-                    name: '--modal--footer--button--margin-top'
-                },
-                {
-                    name: '--modal--footer--button--margin-right'
-                },
-                {
-                    name: '--modal--footer--button--margin-bottom'
-                },
-                {
-                    name: '--modal--footer--button--margin-left'
-                },
-                {
-                    name: '--modal--footer--button--margin'
-                },
-                {
                     name: '--modal--border-top-left-radius'
                 },
                 {
@@ -616,19 +535,7 @@ export const manifest: ComponentManifest[] = [
                     name: '--modal--max-width'
                 },
                 {
-                    name: '--modal--icon--margin-top'
-                },
-                {
-                    name: '--modal--icon--margin-right'
-                },
-                {
-                    name: '--modal--icon--margin-bottom'
-                },
-                {
-                    name: '--modal--icon--margin-left'
-                },
-                {
-                    name: '--modal--icon--margin'
+                    name: '--modal--footer--gap'
                 }
             ]
         }

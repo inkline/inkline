@@ -159,7 +159,7 @@ export default defineComponent({
         },
         /**
          * The size variant of the button
-         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
+         * @param {'sm' | 'md' | 'lg'} size
          * @default
          */
         size: {

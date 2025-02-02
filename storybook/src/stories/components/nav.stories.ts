@@ -6,7 +6,7 @@ import {
     NavRoutingExample,
     NavSizeVariantsExample,
     NavStateActiveExample,
-    NavVerticalExample
+    NavDirectionExample
 } from '@inkline/component-nav/examples';
 import type { Meta, StoryFn } from '@storybook/vue3';
 
@@ -19,7 +19,7 @@ export default meta;
 
 export const Basic: StoryFn = () => NavBasicExample;
 export const ColorVariants: StoryFn = () => NavColorVariantsExample;
-export const Routing: StoryFn = () => NavRoutingExample;
 export const SizeVariants: StoryFn = () => NavSizeVariantsExample;
+export const Routing: StoryFn = () => NavRoutingExample;
 export const StateActive: StoryFn = () => NavStateActiveExample;
-export const Vertical: StoryFn = () => NavVerticalExample;
+export const Direction: StoryFn = () => NavDirectionExample;

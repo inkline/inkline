@@ -22,7 +22,7 @@ export default defineComponent({
     props: {
         /**
          * The size variant of the toast
-         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
+         * @param {'sm' | 'md' | 'lg'} size
          * @default
          */
         size: {

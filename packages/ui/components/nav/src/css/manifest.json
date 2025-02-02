@@ -22,6 +22,11 @@
                 "__name": "font-weight-normal",
                 "__value": "normal"
             },
+            "font-weight-medium": {
+                "__type": "variable",
+                "__name": "font-weight-medium",
+                "__value": 500
+            },
             "font-weight-semibold": {
                 "__type": "variable",
                 "__name": "font-weight-semibold",
@@ -5190,7 +5195,7 @@
                 "__name": "nav--item--disabled--color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "text-color-weak"
+                    "__name": "text-color-weaker"
                 }
             },
             "nav--color": {
@@ -5209,33 +5214,9 @@
                     "__name": "font-size-md"
                 }
             },
-            "nav--padding-top": {
+            "nav--gap": {
                 "__type": "variable",
-                "__name": "nav--padding-top",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing-md"
-                }
-            },
-            "nav--padding-right": {
-                "__type": "variable",
-                "__name": "nav--padding-right",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing-md"
-                }
-            },
-            "nav--padding-bottom": {
-                "__type": "variable",
-                "__name": "nav--padding-bottom",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing-md"
-                }
-            },
-            "nav--padding-left": {
-                "__type": "variable",
-                "__name": "nav--padding-left",
+                "__name": "nav--gap",
                 "__value": {
                     "__type": "reference",
                     "__name": "spacing-md"
@@ -5249,33 +5230,9 @@
                     "__name": "font-size-sm"
                 }
             },
-            "nav--sm--padding-top": {
+            "nav--sm--gap": {
                 "__type": "variable",
-                "__name": "nav--sm--padding-top",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing-sm"
-                }
-            },
-            "nav--sm--padding-right": {
-                "__type": "variable",
-                "__name": "nav--sm--padding-right",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing-sm"
-                }
-            },
-            "nav--sm--padding-bottom": {
-                "__type": "variable",
-                "__name": "nav--sm--padding-bottom",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing-sm"
-                }
-            },
-            "nav--sm--padding-left": {
-                "__type": "variable",
-                "__name": "nav--sm--padding-left",
+                "__name": "nav--sm--gap",
                 "__value": {
                     "__type": "reference",
                     "__name": "spacing-sm"
@@ -5289,33 +5246,9 @@
                     "__name": "font-size-md"
                 }
             },
-            "nav--md--padding-top": {
+            "nav--md--gap": {
                 "__type": "variable",
-                "__name": "nav--md--padding-top",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing-md"
-                }
-            },
-            "nav--md--padding-right": {
-                "__type": "variable",
-                "__name": "nav--md--padding-right",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing-md"
-                }
-            },
-            "nav--md--padding-bottom": {
-                "__type": "variable",
-                "__name": "nav--md--padding-bottom",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing-md"
-                }
-            },
-            "nav--md--padding-left": {
-                "__type": "variable",
-                "__name": "nav--md--padding-left",
+                "__name": "nav--md--gap",
                 "__value": {
                     "__type": "reference",
                     "__name": "spacing-md"
@@ -5329,33 +5262,9 @@
                     "__name": "font-size-lg"
                 }
             },
-            "nav--lg--padding-top": {
+            "nav--lg--gap": {
                 "__type": "variable",
-                "__name": "nav--lg--padding-top",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing-lg"
-                }
-            },
-            "nav--lg--padding-right": {
-                "__type": "variable",
-                "__name": "nav--lg--padding-right",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing-lg"
-                }
-            },
-            "nav--lg--padding-bottom": {
-                "__type": "variable",
-                "__name": "nav--lg--padding-bottom",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing-lg"
-                }
-            },
-            "nav--lg--padding-left": {
-                "__type": "variable",
-                "__name": "nav--lg--padding-left",
+                "__name": "nav--lg--gap",
                 "__value": {
                     "__type": "reference",
                     "__name": "spacing-lg"
@@ -5404,7 +5313,11 @@
                     "alignItems": "center",
                     "paddingLeft": 0,
                     "marginBottom": 0,
-                    "listStyle": "none"
+                    "listStyle": "none",
+                    "gap": {
+                        "__type": "reference",
+                        "__name": "nav--gap"
+                    }
                 }
             },
             {
@@ -5431,21 +5344,9 @@
                         "__type": "reference",
                         "__name": "nav--sm--font-size"
                     },
-                    "--nav--padding-top": {
+                    "--nav--gap": {
                         "__type": "reference",
-                        "__name": "nav--sm--padding-top"
-                    },
-                    "--nav--padding-right": {
-                        "__type": "reference",
-                        "__name": "nav--sm--padding-right"
-                    },
-                    "--nav--padding-bottom": {
-                        "__type": "reference",
-                        "__name": "nav--sm--padding-bottom"
-                    },
-                    "--nav--padding-left": {
-                        "__type": "reference",
-                        "__name": "nav--sm--padding-left"
+                        "__name": "nav--sm--gap"
                     }
                 }
             },
@@ -5457,21 +5358,9 @@
                         "__type": "reference",
                         "__name": "nav--md--font-size"
                     },
-                    "--nav--padding-top": {
+                    "--nav--gap": {
                         "__type": "reference",
-                        "__name": "nav--md--padding-top"
-                    },
-                    "--nav--padding-right": {
-                        "__type": "reference",
-                        "__name": "nav--md--padding-right"
-                    },
-                    "--nav--padding-bottom": {
-                        "__type": "reference",
-                        "__name": "nav--md--padding-bottom"
-                    },
-                    "--nav--padding-left": {
-                        "__type": "reference",
-                        "__name": "nav--md--padding-left"
+                        "__name": "nav--md--gap"
                     }
                 }
             },
@@ -5483,21 +5372,9 @@
                         "__type": "reference",
                         "__name": "nav--lg--font-size"
                     },
-                    "--nav--padding-top": {
+                    "--nav--gap": {
                         "__type": "reference",
-                        "__name": "nav--lg--padding-top"
-                    },
-                    "--nav--padding-right": {
-                        "__type": "reference",
-                        "__name": "nav--lg--padding-right"
-                    },
-                    "--nav--padding-bottom": {
-                        "__type": "reference",
-                        "__name": "nav--lg--padding-bottom"
-                    },
-                    "--nav--padding-left": {
-                        "__type": "reference",
-                        "__name": "nav--lg--padding-left"
+                        "__name": "nav--lg--gap"
                     }
                 }
             },
@@ -5552,28 +5429,6 @@
                     "transitionTimingFunction": {
                         "__type": "reference",
                         "__name": "nav--transition-timing-function"
-                    },
-                    "padding": {
-                        "__type": "reference",
-                        "__name": "nav--padding",
-                        "__fallback": [
-                            {
-                                "__type": "reference",
-                                "__name": "nav--padding-top"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "nav--padding-right"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "nav--padding-bottom"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "nav--padding-left"
-                            }
-                        ]
                     },
                     "display": "block",
                     "marginBottom": 0

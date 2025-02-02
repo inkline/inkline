@@ -5,6 +5,7 @@
     padding-left: 0;
     margin-bottom: 0;
     list-style: none;
+    gap: var(--nav--gap);
 }
 
 .nav.-direction-row {
@@ -19,26 +20,17 @@
 
 .nav.-sm {
     --nav--font-size: var(--nav--sm--font-size);
-    --nav--padding-top: var(--nav--sm--padding-top);
-    --nav--padding-right: var(--nav--sm--padding-right);
-    --nav--padding-bottom: var(--nav--sm--padding-bottom);
-    --nav--padding-left: var(--nav--sm--padding-left);
+    --nav--gap: var(--nav--sm--gap);
 }
 
 .nav.-md {
     --nav--font-size: var(--nav--md--font-size);
-    --nav--padding-top: var(--nav--md--padding-top);
-    --nav--padding-right: var(--nav--md--padding-right);
-    --nav--padding-bottom: var(--nav--md--padding-bottom);
-    --nav--padding-left: var(--nav--md--padding-left);
+    --nav--gap: var(--nav--md--gap);
 }
 
 .nav.-lg {
     --nav--font-size: var(--nav--lg--font-size);
-    --nav--padding-top: var(--nav--lg--padding-top);
-    --nav--padding-right: var(--nav--lg--padding-right);
-    --nav--padding-bottom: var(--nav--lg--padding-bottom);
-    --nav--padding-left: var(--nav--lg--padding-left);
+    --nav--gap: var(--nav--lg--gap);
 }
 
 .nav.-light {
@@ -57,7 +49,6 @@
     transition-property: var(--nav--transition-property);
     transition-duration: var(--nav--transition-duration);
     transition-timing-function: var(--nav--transition-timing-function);
-    padding: var(--nav--padding, var(--nav--padding-top) var(--nav--padding-right) var(--nav--padding-bottom) var(--nav--padding-left));
     display: block;
     margin-bottom: 0;
 }

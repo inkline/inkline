@@ -9,41 +9,17 @@
 
 .card {
     box-shadow: var(--card--box-shadow, var(--card--box-shadow-offset-x) var(--card--box-shadow-offset-y) var(--card--box-shadow-blur-radius) var(--card--box-shadow-spread-radius) var(--card--box-shadow-color));
-    color: var(--card--color);
-    font-size: var(--card--font-size);
-}
-
-.card-header, .card-body, .card-footer {
     background: var(--card--background);
     border-style: var(--card--border-style, var(--card--border-top-style) var(--card--border-right-style) var(--card--border-bottom-style) var(--card--border-left-style));
     border-color: var(--card--border-color, var(--card--border-top-color) var(--card--border-right-color) var(--card--border-bottom-color) var(--card--border-left-color));
     border-width: var(--card--border-width, var(--card--border-top-width) var(--card--border-right-width) var(--card--border-bottom-width) var(--card--border-left-width));
+    border-radius: var(--card--border-radius, var(--card--border-top-left-radius) var(--card--border-top-right-radius) var(--card--border-bottom-right-radius) var(--card--border-bottom-left-radius));
+    color: var(--card--color);
+    font-size: var(--card--font-size);
     padding: var(--card--padding, var(--card--padding-top) var(--card--padding-right) var(--card--padding-bottom) var(--card--padding-left));
     transition-property: var(--card--transition-property);
     transition-duration: var(--card--transition-duration);
     transition-timing-function: var(--card--transition-timing-function);
-}
-
-.card-header + .card-body {
-    border-top: 0;
-}
-
-.card-body:has(+ .card-footer) {
-    border-bottom: 0;
-}
-
-.card > * {
-    border-radius: var(--card--border-radius, var(--card--border-top-left-radius) var(--card--border-top-right-radius) var(--card--border-bottom-right-radius) var(--card--border-bottom-left-radius));
-}
-
-.card > *:not(:first-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-
-.card > *:not(:last-child) {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
 }
 
 .card.-light {

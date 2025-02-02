@@ -22,6 +22,7 @@ import { useRadioTheme, useRadioGroupTheme } from '@inkline/component-radio';
 import { useToastTheme, useToastContainerTheme } from '@inkline/component-toast';
 import { useToggleTheme } from '@inkline/component-toggle';
 import { useTooltipTheme } from '@inkline/component-tooltip';
+import { useBlockquoteTheme, useTypographyTheme } from '@inkline/component-typography';
 
 export default defineConfig((options) => {
     useTheme(options);
@@ -52,4 +53,6 @@ export default defineConfig((options) => {
     useToastContainerTheme(options);
     useToggleTheme(options);
     useTooltipTheme(options);
+    useBlockquoteTheme(options);
+    useTypographyTheme(options);
 });

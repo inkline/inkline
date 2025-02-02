@@ -4,7 +4,6 @@ import {
     useATheme,
     useAbbrTheme,
     useAddressTheme,
-    useBlockquoteTheme,
     useBodyTheme,
     useCaptionTheme,
     useCodeTheme,
@@ -35,7 +34,6 @@ export function useThemeSelectors(userOptions: DefinitionOptions) {
     useATheme(options);
     useAbbrTheme(options);
     useAddressTheme(options);
-    useBlockquoteTheme(options);
     useBodyTheme(options);
     useCaptionTheme(options);
     useCodeTheme(options);

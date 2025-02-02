@@ -69,7 +69,7 @@ export const manifest: ComponentManifest[] = [
                 default: ''
             },
             {
-                name: 'sizeMultiplier',
+                name: 'size',
                 type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the breadcrumb',
                 default: ''

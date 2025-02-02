@@ -90,19 +90,7 @@ export function useModalThemeColorConfig(
                 color: ref(colorLightShade50)
             },
             background: ref(colorWhite),
-            color: ref(contrastTextColorLight),
-            /**
-             * @element header
-             */
-            header: {
-                background: ref(colorLight)
-            },
-            /**
-             * @element footer
-             */
-            footer: {
-                background: ref(colorLight)
-            }
+            color: ref(contrastTextColorLight)
         },
         /**
          * @variant dark
@@ -112,19 +100,7 @@ export function useModalThemeColorConfig(
                 color: ref(colorDarkTint50)
             },
             background: ref(colorDark),
-            color: ref(contrastTextColorDark),
-            /**
-             * @element header
-             */
-            header: {
-                background: ref(colorDarkTint50)
-            },
-            /**
-             * @element footer
-             */
-            footer: {
-                background: ref(colorDarkTint50)
-            }
+            color: ref(contrastTextColorDark)
         },
         /**
          * @variant primary
@@ -134,19 +110,7 @@ export function useModalThemeColorConfig(
                 color: ref(colorPrimaryShade50)
             },
             background: ref(colorPrimary),
-            color: ref(contrastTextColorPrimary),
-            /**
-             * @element header
-             */
-            header: {
-                background: ref(colorPrimaryShade50)
-            },
-            /**
-             * @element footer
-             */
-            footer: {
-                background: ref(colorPrimaryShade50)
-            }
+            color: ref(contrastTextColorPrimary)
         },
         /**
          * @variant secondary
@@ -156,19 +120,7 @@ export function useModalThemeColorConfig(
                 color: ref(colorSecondaryShade50)
             },
             background: ref(colorSecondary),
-            color: ref(contrastTextColorSecondary),
-            /**
-             * @element header
-             */
-            header: {
-                background: ref(colorSecondaryShade50)
-            },
-            /**
-             * @element footer
-             */
-            footer: {
-                background: ref(colorSecondaryShade50)
-            }
+            color: ref(contrastTextColorSecondary)
         },
         /**
          * @variant success
@@ -178,19 +130,7 @@ export function useModalThemeColorConfig(
                 color: ref(colorSuccessShade50)
             },
             background: ref(colorSuccess),
-            color: ref(contrastTextColorSuccess),
-            /**
-             * @element header
-             */
-            header: {
-                background: ref(colorSuccessShade50)
-            },
-            /**
-             * @element footer
-             */
-            footer: {
-                background: ref(colorSuccessShade50)
-            }
+            color: ref(contrastTextColorSuccess)
         },
         /**
          * @variant danger
@@ -200,19 +140,7 @@ export function useModalThemeColorConfig(
                 color: ref(colorDangerShade50)
             },
             background: ref(colorDanger),
-            color: ref(contrastTextColorDanger),
-            /**
-             * @element header
-             */
-            header: {
-                background: ref(colorDangerShade50)
-            },
-            /**
-             * @element footer
-             */
-            footer: {
-                background: ref(colorDangerShade50)
-            }
+            color: ref(contrastTextColorDanger)
         },
         /**
          * @variant warning
@@ -222,19 +150,7 @@ export function useModalThemeColorConfig(
                 color: ref(colorWarningShade50)
             },
             background: ref(colorWarning),
-            color: ref(contrastTextColorWarning),
-            /**
-             * @element header
-             */
-            header: {
-                background: ref(colorWarningShade50)
-            },
-            /**
-             * @element footer
-             */
-            footer: {
-                background: ref(colorWarningShade50)
-            }
+            color: ref(contrastTextColorWarning)
         },
         /**
          * @variant info
@@ -244,19 +160,7 @@ export function useModalThemeColorConfig(
                 color: ref(colorInfoShade50)
             },
             background: ref(colorInfo),
-            color: ref(contrastTextColorInfo),
-            /**
-             * @element header
-             */
-            header: {
-                background: ref(colorInfoShade50)
-            },
-            /**
-             * @element footer
-             */
-            footer: {
-                background: ref(colorInfoShade50)
-            }
+            color: ref(contrastTextColorInfo)
         }
     }[variant];
 }
@@ -308,25 +212,10 @@ export function useModalThemeSizeConfig(variant: ModalSizeVariant, userOptions: 
                 fontSize: multiply(ref(fontSizeSm), 0.5)
             },
             /**
-             * @element icon
-             */
-            icon: {
-                margin: {
-                    right: ref(spacingSm)
-                }
-            },
-            /**
              * @element footer
              */
             footer: {
-                /**
-                 * @element button
-                 */
-                button: {
-                    margin: {
-                        left: multiply(ref(spacingSm), 0.5)
-                    }
-                }
+                gap: multiply(ref(spacingSm), 0.5)
             }
         },
         /**
@@ -355,25 +244,10 @@ export function useModalThemeSizeConfig(variant: ModalSizeVariant, userOptions: 
                 fontSize: multiply(ref(fontSizeMd), 0.5)
             },
             /**
-             * @element icon
-             */
-            icon: {
-                margin: {
-                    right: ref(spacingMd)
-                }
-            },
-            /**
              * @element footer
              */
             footer: {
-                /**
-                 * @element button
-                 */
-                button: {
-                    margin: {
-                        left: multiply(ref(spacingMd), 0.5)
-                    }
-                }
+                gap: multiply(ref(spacingMd), 0.5)
             }
         },
         /**
@@ -402,25 +276,10 @@ export function useModalThemeSizeConfig(variant: ModalSizeVariant, userOptions: 
                 fontSize: multiply(ref(fontSizeLg), 0.5)
             },
             /**
-             * @element icon
-             */
-            icon: {
-                margin: {
-                    right: ref(spacingLg)
-                }
-            },
-            /**
              * @element footer
              */
             footer: {
-                /**
-                 * @element button
-                 */
-                button: {
-                    margin: {
-                        left: multiply(ref(spacingLg), 0.5)
-                    }
-                }
+                gap: multiply(ref(spacingLg), 0.5)
             }
         }
     }[variant];
@@ -636,7 +495,7 @@ export function useModalThemeLayoutSelectors(userOptions: DefinitionOptions) {
     selector(
         '.modal .modal-close',
         {
-            display: 'flex',
+            display: 'inline-flex',
             justifyContent: 'center',
             alignItems: 'center',
             height: '1.5rem',
@@ -647,7 +506,8 @@ export function useModalThemeLayoutSelectors(userOptions: DefinitionOptions) {
             padding: '0',
             border: '0',
             transition: 'background-color 0.3s ease',
-            backgroundColor: 'transparent'
+            backgroundColor: 'transparent',
+            marginLeft: 'auto'
         },
         options
     );
@@ -674,11 +534,7 @@ export function useModalThemeBaseSelectors(userOptions: DefinitionOptions) {
         modalTransitionTimingFunction,
         modalWrapperBackground,
         modalMaxWidth,
-        modalWidth,
-        modalHeaderBackground,
-        modalFooterBackground,
-        modalFooterButtonMargin,
-        modalIconMargin
+        modalWidth
     } = useModalThemeVariables(options);
 
     selector(
@@ -696,34 +552,7 @@ export function useModalThemeBaseSelectors(userOptions: DefinitionOptions) {
             width: ref(modalWidth),
             boxShadow: vref(modalBoxShadow),
             color: ref(modalColor),
-            fontSize: ref(modalFontSize)
-        },
-        options
-    );
-
-    selector(
-        '.modal-header',
-        {
-            background: ref(modalHeaderBackground),
-            borderRadius: vref(modalBorderRadius),
-            color: ref(modalColor),
-            borderStyle: vref(modalBorderStyle),
-            borderTopColor: ref(modalBorderTopColor),
-            borderRightColor: ref(modalBorderRightColor),
-            borderBottomColor: ref(modalBorderBottomColor),
-            borderLeftColor: ref(modalBorderLeftColor),
-            borderWidth: vref(modalBorderWidth),
-            padding: vref(modalPadding),
-            transitionProperty: ref(modalTransitionProperty),
-            transitionDuration: ref(modalTransitionDuration),
-            transitionTimingFunction: ref(modalTransitionTimingFunction)
-        },
-        options
-    );
-
-    selector(
-        '.modal-body',
-        {
+            fontSize: ref(modalFontSize),
             background: ref(modalBackground),
             borderRadius: vref(modalBorderRadius),
             borderStyle: vref(modalBorderStyle),
@@ -732,65 +561,10 @@ export function useModalThemeBaseSelectors(userOptions: DefinitionOptions) {
             borderBottomColor: ref(modalBorderBottomColor),
             borderLeftColor: ref(modalBorderLeftColor),
             borderWidth: vref(modalBorderWidth),
-            color: ref(modalColor),
             padding: vref(modalPadding),
             transitionProperty: ref(modalTransitionProperty),
             transitionDuration: ref(modalTransitionDuration),
             transitionTimingFunction: ref(modalTransitionTimingFunction)
-        },
-        options
-    );
-
-    selector(
-        '.modal-footer',
-        {
-            background: ref(modalFooterBackground),
-            borderRadius: vref(modalBorderRadius),
-            color: ref(modalColor),
-            borderStyle: vref(modalBorderStyle),
-            borderTopColor: ref(modalBorderTopColor),
-            borderRightColor: ref(modalBorderRightColor),
-            borderBottomColor: ref(modalBorderBottomColor),
-            borderLeftColor: ref(modalBorderLeftColor),
-            borderWidth: vref(modalBorderWidth),
-            padding: vref(modalPadding),
-            transitionProperty: ref(modalTransitionProperty),
-            transitionDuration: ref(modalTransitionDuration),
-            transitionTimingFunction: ref(modalTransitionTimingFunction)
-        },
-        options
-    );
-
-    selector(
-        '.modal-header + .modal-body',
-        {
-            borderTop: '0'
-        },
-        options
-    );
-
-    selector(
-        '.modal-body:has(+ .modal-footer)',
-        {
-            borderBottom: '0'
-        },
-        options
-    );
-
-    selector(
-        '.modal > *:not(:first-child)',
-        {
-            borderTopLeftRadius: 0,
-            borderTopRightRadius: 0
-        },
-        options
-    );
-
-    selector(
-        '.modal > *:not(:last-child)',
-        {
-            borderBottomRightRadius: 0,
-            borderBottomLeftRadius: 0
         },
         options
     );
@@ -806,17 +580,9 @@ export function useModalThemeBaseSelectors(userOptions: DefinitionOptions) {
     selector(
         '.modal .modal-icon',
         {
-            margin: vref(modalIconMargin),
+            // margin: vref(modalIconMargin),
             alignItems: 'center',
             display: 'flex'
-        },
-        options
-    );
-
-    selector(
-        '.modal-wrapper .modal-footer .button + .button',
-        {
-            margin: vref(modalFooterButtonMargin)
         },
         options
     );
@@ -834,9 +600,7 @@ export function useModalThemeColorSelectors(
         modalBorderBottomColor,
         modalBorderLeftColor,
         modalBackground,
-        modalColor,
-        modalHeaderBackground,
-        modalFooterBackground
+        modalColor
     } = useModalThemeVariables(options);
 
     const {
@@ -845,9 +609,7 @@ export function useModalThemeColorSelectors(
         variantBorderBottomColor,
         variantBorderLeftColor,
         variantBackground,
-        variantColor,
-        variantHeaderBackground,
-        variantFooterBackground
+        variantColor
     } = setExportsNamespace(useModalThemeColorVariables(variant, options), 'variant');
 
     selector(
@@ -858,9 +620,7 @@ export function useModalThemeColorSelectors(
             [toVariableKey(modalBorderBottomColor)]: ref(variantBorderBottomColor),
             [toVariableKey(modalBorderLeftColor)]: ref(variantBorderLeftColor),
             [toVariableKey(modalBackground)]: ref(variantBackground),
-            [toVariableKey(modalColor)]: ref(variantColor),
-            [toVariableKey(modalHeaderBackground)]: ref(variantHeaderBackground),
-            [toVariableKey(modalFooterBackground)]: ref(variantFooterBackground)
+            [toVariableKey(modalColor)]: ref(variantColor)
         },
         options
     );
@@ -926,26 +686,9 @@ export function useModalThemeVariantsSelectors(userOptions: DefinitionOptions) {
             height: '100%',
             maxWidth: '100%',
             display: 'flex',
-            flexDirection: 'column'
-        },
-        options
-    );
+            flexDirection: 'column',
+            borderRadius: 0,
 
-    selector(
-        [
-            '.modal.-fullscreen > .modal-header',
-            '.modal.-fullscreen > .modal-body',
-            '.modal.-fullscreen > .modal-footer'
-        ],
-        {
-            borderRadius: 0
-        },
-        options
-    );
-
-    selector(
-        '.modal.-fullscreen > .modal-body',
-        {
             flex: '1',
             overflow: 'auto'
         },

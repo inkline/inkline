@@ -52,6 +52,11 @@ export interface FormGroupInjection {
     onBlur: (name: any, event: any) => void;
 }
 
+export interface ModalInjection {
+    show: () => void;
+    hide: () => void;
+}
+
 export interface NavInjection {
     onItemClick: (event: Event) => void;
 }

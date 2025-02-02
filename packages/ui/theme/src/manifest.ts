@@ -44,112 +44,6 @@ export const manifest: ComponentManifest[] = [
     },
     {
         css: {
-            namespace: 'blockquote',
-            variables: [
-                {
-                    name: '--blockquote--font-size'
-                },
-                {
-                    name: '--blockquote--margin-top'
-                },
-                {
-                    name: '--blockquote--margin-right'
-                },
-                {
-                    name: '--blockquote--margin-bottom'
-                },
-                {
-                    name: '--blockquote--margin-left'
-                },
-                {
-                    name: '--blockquote--margin'
-                },
-                {
-                    name: '--blockquote--bordered--padding-top'
-                },
-                {
-                    name: '--blockquote--bordered--padding-right'
-                },
-                {
-                    name: '--blockquote--bordered--padding-bottom'
-                },
-                {
-                    name: '--blockquote--bordered--padding-left'
-                },
-                {
-                    name: '--blockquote--bordered--padding'
-                },
-                {
-                    name: '--blockquote--bordered--border-top-width'
-                },
-                {
-                    name: '--blockquote--bordered--border-top-style'
-                },
-                {
-                    name: '--blockquote--bordered--border-top-color'
-                },
-                {
-                    name: '--blockquote--bordered--border-right-width'
-                },
-                {
-                    name: '--blockquote--bordered--border-right-style'
-                },
-                {
-                    name: '--blockquote--bordered--border-right-color'
-                },
-                {
-                    name: '--blockquote--bordered--border-bottom-width'
-                },
-                {
-                    name: '--blockquote--bordered--border-bottom-style'
-                },
-                {
-                    name: '--blockquote--bordered--border-bottom-color'
-                },
-                {
-                    name: '--blockquote--bordered--border-left-width'
-                },
-                {
-                    name: '--blockquote--bordered--border-left-style'
-                },
-                {
-                    name: '--blockquote--bordered--border-left-color'
-                },
-                {
-                    name: '--blockquote--bordered--border-width'
-                },
-                {
-                    name: '--blockquote--bordered--border-style'
-                },
-                {
-                    name: '--blockquote--bordered--border-color'
-                },
-                {
-                    name: '--blockquote--bordered--border-top'
-                },
-                {
-                    name: '--blockquote--bordered--border-right'
-                },
-                {
-                    name: '--blockquote--bordered--border-bottom'
-                },
-                {
-                    name: '--blockquote--bordered--border-left'
-                },
-                {
-                    name: '--blockquote--bordered--border'
-                },
-                {
-                    name: '--blockquote--footer--color'
-                },
-                {
-                    name: '--blockquote--footer--font-size'
-                }
-            ]
-        }
-    },
-    {
-        css: {
             namespace: 'body',
             variables: [
                 {
@@ -163,6 +57,9 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--body--line-height'
+                },
+                {
+                    name: '--body--letter-spacing'
                 },
                 {
                     name: '--body--text-align'
@@ -540,18 +437,6 @@ export const manifest: ComponentManifest[] = [
         css: {
             namespace: 'p',
             variables: [
-                {
-                    name: '--initialism--font-size'
-                },
-                {
-                    name: '--initialism--text-transform'
-                },
-                {
-                    name: '--lead--font-size'
-                },
-                {
-                    name: '--lead--font-weight'
-                },
                 {
                     name: '--p--margin-top'
                 },

@@ -7,7 +7,7 @@ import {
 import {
     useBrandColorVariants,
     useFontFamily,
-    useFontSize,
+    useFontSize, useLetterSpacing,
     useLineHeight,
     useNeutralColors,
     useTextAlign,
@@ -37,12 +37,14 @@ export function useBodyThemeConfig(variant: BodyColorVariant, userOptions: Defin
     const { transitionProperty, transitionDuration, transitionTimingFunction } =
         useTransition(options);
     const { lineHeight } = useLineHeight(options);
+    const { letterSpacing } = useLetterSpacing(options);
 
     const common = {
         color: ref(textColor),
         fontSize: ref(fontSize),
         fontFamily: ref(fontFamilyBase),
         lineHeight: ref(lineHeight),
+        letterSpacing: ref(letterSpacing),
         textAlign: ref(textAlignLeft),
         transition: {
             property: ref(transitionProperty),
@@ -83,6 +85,7 @@ export function useBodyThemeSelectors(userOptions: DefinitionOptions) {
         bodyFontSize,
         bodyFontFamily,
         bodyLineHeight,
+        bodyLetterSpacing,
         bodyTextAlign,
         bodyTransition
     } = useBodyThemeVariables(options);
@@ -93,6 +96,7 @@ export function useBodyThemeSelectors(userOptions: DefinitionOptions) {
         fontSize: ref(bodyFontSize),
         fontFamily: ref(bodyFontFamily),
         lineHeight: ref(bodyLineHeight),
+        letterSpacing: ref(bodyLetterSpacing),
         textAlign: ref(bodyTextAlign),
         transition: ref(bodyTransition),
         textSizeAdjust: '100%'

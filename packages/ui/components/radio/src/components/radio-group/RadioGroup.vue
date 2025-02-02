@@ -115,7 +115,7 @@ export default defineComponent({
         },
         /**
          * The size variant of the radio group
-         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
+         * @param {'sm' | 'md' | 'lg'} size
          * @default
          */
         size: {

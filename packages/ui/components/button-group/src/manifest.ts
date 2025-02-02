@@ -24,7 +24,7 @@ export const manifest: ComponentManifest[] = [
                 default: 'false'
             },
             {
-                name: 'sizeMultiplier',
+                name: 'size',
                 type: 'string',
                 description: 'The size of the button group',
                 default: ''

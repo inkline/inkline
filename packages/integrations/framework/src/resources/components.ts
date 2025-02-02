@@ -10,6 +10,11 @@ export default [
         "filePath": "@inkline/component-badge"
     },
     {
+        "name": "Blockquote",
+        "export": "Blockquote",
+        "filePath": "@inkline/component-typography"
+    },
+    {
         "name": "Breadcrumb",
         "export": "Breadcrumb",
         "filePath": "@inkline/component-breadcrumb"
@@ -43,6 +48,11 @@ export default [
         "name": "CheckboxGroup",
         "export": "CheckboxGroup",
         "filePath": "@inkline/component-checkbox"
+    },
+    {
+        "name": "Drawer",
+        "export": "Drawer",
+        "filePath": "@inkline/component-drawer"
     },
     {
         "name": "Expand",
@@ -97,6 +107,11 @@ export default [
     {
         "name": "Modal",
         "export": "Modal",
+        "filePath": "@inkline/component-modal"
+    },
+    {
+        "name": "ModalClose",
+        "export": "ModalClose",
         "filePath": "@inkline/component-modal"
     },
     {
@@ -158,5 +173,10 @@ export default [
         "name": "Tooltip",
         "export": "Tooltip",
         "filePath": "@inkline/component-tooltip"
+    },
+    {
+        "name": "Typography",
+        "export": "Typography",
+        "filePath": "@inkline/component-typography"
     }
 ];

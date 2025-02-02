@@ -21,10 +21,12 @@ import { Radio, RadioGroup } from '@inkline/component-radio';
 import { Toast, ToastContainer } from '@inkline/component-toast';
 import { Toggle } from '@inkline/component-toggle';
 import { Tooltip } from '@inkline/component-tooltip';
+import { Blockquote, Typography } from '@inkline/component-typography';
 
 export const components: Record<string, Component> = {
     Alert,
     Badge,
+    Blockquote,
     Breadcrumb,
     BreadcrumbItem,
     Button,
@@ -51,5 +53,6 @@ export const components: Record<string, Component> = {
     Toast,
     ToastContainer,
     Toggle,
-    Tooltip
+    Tooltip,
+    Typography
 };

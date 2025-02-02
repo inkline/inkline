@@ -30,36 +30,6 @@ export function useParagraphThemeVariables(userOptions: DefinitionOptions) {
     return nsvariables(ns, useParagraphConfig(options), options);
 }
 
-export function useLeadConfig(userOptions: DefinitionOptions) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    const { fontSizeLg } = useFontSize(options);
-    const { fontWeightLight } = useFontWeight(options);
-
-    return {
-        fontSize: ref(fontSizeLg),
-        fontWeight: ref(fontWeightLight)
-    };
-}
-
-export function useLeadVariables(userOptions: DefinitionOptions) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    return nsvariables('lead', useLeadConfig(options), options);
-}
-
-export function useInitialismConfig(_userOptions: DefinitionOptions) {
-    return {
-        fontSize: '90%',
-        textTransform: 'uppercase'
-    };
-}
-
-export function useInitialismVariables(userOptions: DefinitionOptions) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    return nsvariables('initialism', useInitialismConfig(options), options);
-}
 
 export function useParagraphThemeSelectors(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
@@ -73,33 +43,9 @@ export function useParagraphThemeSelectors(userOptions: DefinitionOptions) {
     }, options);
 }
 
-export function useLeadThemeSelectors(userOptions: DefinitionOptions) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    const { leadFontSize, leadFontWeight } = useLeadVariables(options);
-
-    selector('.lead', {
-        fontSize: ref(leadFontSize),
-        fontWeight: ref(leadFontWeight)
-    }, options);
-}
-
-export function useInitialismThemeSelectors(userOptions: DefinitionOptions) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    const { initialismFontSize, initialismTextTransform } = useInitialismVariables(options);
-
-    selector('.initialism', {
-        fontSize: ref(initialismFontSize),
-        textTransform: ref(initialismTextTransform)
-    }, options);
-}
-
 
 export function useParagraphTheme(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     useParagraphThemeSelectors(options);
-    useLeadThemeSelectors(options);
-    useInitialismThemeSelectors(options);
 }

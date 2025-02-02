@@ -1,7 +1,6 @@
 export * from './a/theme';
 export * from './abbr/theme';
 export * from './address/theme';
-export * from './blockquote/theme';
 export * from './body/theme';
 export * from './caption/theme';
 export * from './code/theme';

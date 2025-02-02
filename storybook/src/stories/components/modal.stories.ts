@@ -3,7 +3,6 @@ import { Modal } from '@inkline/component-modal';
 import {
     ModalBasicExample,
     ModalFullscreenExample,
-    ModalIconExample,
     ModalColorVariantsExample,
     ModalSizeVariantsExample
 } from '@inkline/component-modal/examples';
@@ -19,6 +18,5 @@ export default meta;
 
 export const Basic: StoryFn = () => ModalBasicExample;
 export const Fullscreen: StoryFn = () => ModalFullscreenExample;
-export const Icon: StoryFn = () => ModalIconExample;
 export const ColorVariants: StoryFn = () => ModalColorVariantsExample;
 export const SizeVariants: StoryFn = () => ModalSizeVariantsExample;

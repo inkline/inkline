@@ -10,7 +10,6 @@ export function useNavItemThemeSelectors(userOptions: DefinitionOptions) {
         navTransitionProperty,
         navTransitionDuration,
         navTransitionTimingFunction,
-        navPadding,
         navItemDisabledColor,
         navItemActiveFontWeight,
         navItemActiveColor
@@ -24,7 +23,6 @@ export function useNavItemThemeSelectors(userOptions: DefinitionOptions) {
             transitionProperty: ref(navTransitionProperty),
             transitionDuration: ref(navTransitionDuration),
             transitionTimingFunction: ref(navTransitionTimingFunction),
-            padding: vref(navPadding),
             display: 'block',
             marginBottom: 0
         },

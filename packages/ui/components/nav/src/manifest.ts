@@ -71,7 +71,7 @@ export const manifest: ComponentManifest[] = [
                 default: ''
             },
             {
-                name: 'sizeMultiplier',
+                name: 'size',
                 type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the nav',
                 default: ''
@@ -127,19 +127,7 @@ export const manifest: ComponentManifest[] = [
                     name: '--nav--font-size'
                 },
                 {
-                    name: '--nav--padding-top'
-                },
-                {
-                    name: '--nav--padding-right'
-                },
-                {
-                    name: '--nav--padding-bottom'
-                },
-                {
-                    name: '--nav--padding-left'
-                },
-                {
-                    name: '--nav--padding'
+                    name: '--nav--gap'
                 },
                 {
                     name: '--nav--{color}--color'
@@ -151,16 +139,7 @@ export const manifest: ComponentManifest[] = [
                     name: '--nav--{size}--font-size'
                 },
                 {
-                    name: '--nav--{size}--padding-top'
-                },
-                {
-                    name: '--nav--{size}--padding-right'
-                },
-                {
-                    name: '--nav--{size}--padding-bottom'
-                },
-                {
-                    name: '--nav--{size}--padding-left'
+                    name: '--nav--{size}--gap'
                 }
             ]
         }
@@ -197,19 +176,7 @@ export const manifest: ComponentManifest[] = [
                     name: '--nav--font-size'
                 },
                 {
-                    name: '--nav--padding-top'
-                },
-                {
-                    name: '--nav--padding-right'
-                },
-                {
-                    name: '--nav--padding-bottom'
-                },
-                {
-                    name: '--nav--padding-left'
-                },
-                {
-                    name: '--nav--padding'
+                    name: '--nav--gap'
                 }
             ]
         }

@@ -19,7 +19,7 @@ export default defineComponent({
         },
         /**
          * The size variant of the badge
-         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
+         * @param {'sm' | 'md' | 'lg'} size
          * @default
          */
         size: {

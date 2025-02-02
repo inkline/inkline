@@ -19,7 +19,7 @@ export default defineComponent({
         },
         /**
          * The size variant of the loader
-         * @param {'sm' | 'md' | 'lg' | 'auto'} sizeMultiplier
+         * @param {'sm' | 'md' | 'lg' | 'auto'} size
          * @default
          */
         size: {

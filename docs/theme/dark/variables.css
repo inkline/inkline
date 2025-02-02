@@ -25,6 +25,7 @@
     --body--font-size: var(--font-size);
     --body--font-family: var(--font-family-base);
     --body--line-height: var(--line-height);
+    --body--letter-spacing: var(--letter-spacing);
     --body--text-align: var(--text-align-left);
     --body--transition-property: var(--transition-property);
     --body--transition-duration: var(--transition-duration);

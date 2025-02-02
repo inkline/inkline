@@ -105,7 +105,7 @@ export default defineComponent({
         },
         /**
          * The size variant of the checkbox group
-         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
+         * @param {'sm' | 'md' | 'lg'} size
          * @default
          */
         size: {

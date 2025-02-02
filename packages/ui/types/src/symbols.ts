@@ -12,7 +12,8 @@ import type {
     RadioGroupInjection,
     SidebarInjection,
     TabsInjection,
-    SelectInjection
+    SelectInjection,
+    ModalInjection
 } from './provide';
 import type { InklineOptions } from './plugin';
 
@@ -41,6 +42,8 @@ export const DropdownKey: InjectionKey<DropdownInjection> = 'Dropdown' as unknow
 export const FormKey: InjectionKey<FormInjection> = 'Form' as unknown as symbol;
 
 export const FormGroupKey: InjectionKey<FormGroupInjection> = 'FormGroup' as unknown as symbol;
+
+export const ModalKey: InjectionKey<ModalInjection> = 'Modal' as unknown as symbol;
 
 export const NavKey: InjectionKey<NavInjection> = 'Nav' as unknown as symbol;
 

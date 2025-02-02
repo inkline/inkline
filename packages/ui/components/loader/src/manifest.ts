@@ -11,7 +11,7 @@ export const manifest: ComponentManifest[] = [
                 default: ''
             },
             {
-                name: 'sizeMultiplier',
+                name: 'size',
                 type: "'sm' | 'md' | 'lg' | 'auto'",
                 description: 'The size variant of the loader',
                 default: ''

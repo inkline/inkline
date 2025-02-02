@@ -5,12 +5,17 @@
             "cache": true,
             "inputs": [
                 "src/**",
+                "inkline.config.ts",
                 "package.json"
             ],
             "outputs": [
+                "src/resources/**",
+                "src/manifest.ts",
                 "dist/**",
                 "lib/**",
-                "storybook-static/**"
+                "storybook-static/**",
+                ".output",
+                ".data"
             ],
             "dependsOn": [
                 "^build"

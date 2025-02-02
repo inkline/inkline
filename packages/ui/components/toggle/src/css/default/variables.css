@@ -106,7 +106,12 @@
     --font-size-3xl: calc(((var(--font-size-min-3xl) / 16) * 1rem) + (var(--font-size-max-3xl) - var(--font-size-min-3xl)) * var(--fluid--breakpoint));
     --font-size-4xl: calc(((var(--font-size-min-4xl) / 16) * 1rem) + (var(--font-size-max-4xl) - var(--font-size-min-4xl)) * var(--fluid--breakpoint));
     --font-size: var(--font-size-md);
-    --line-height: 1.5;
+    --line-height-tight: 1.2;
+    --line-height-snug: 1.35;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.65;
+    --line-height-loose: 1.9;
+    --line-height: var(--line-height-normal);
     --transition-property: color, background-color, border-color;
     --transition-duration: 300ms;
     --transition-timing-function: ease;

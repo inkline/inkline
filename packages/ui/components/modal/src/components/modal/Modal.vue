@@ -1,9 +1,19 @@
 <script lang="ts">
 import type { PropType } from 'vue';
-import { defineComponent, ref, toRef, computed, watch, onMounted, onBeforeUnmount } from 'vue';
+import {
+    defineComponent,
+    ref,
+    toRef,
+    computed,
+    provide,
+    watch,
+    onMounted,
+    onBeforeUnmount
+} from 'vue';
 import { addClass, removeClass, uid } from '@inkline/utils';
 import { useComponentColor, useComponentSize, useClickOutside } from '@inkline/composables';
 import type { StringOrRenderableType } from '@inkline/types';
+import { ModalKey } from '@inkline/types';
 import { overlayService } from '../../instances';
 import { Icon } from '@inkline/component-icon';
 
@@ -21,15 +31,6 @@ export default defineComponent({
         closeOnPressEscape: {
             type: Boolean,
             default: true
-        },
-        /**
-         * The aria-label attribute of the close button
-         * @param {string} closeAriaLabel
-         * @default Close
-         */
-        closeAriaLabel: {
-            type: String,
-            default: 'Close'
         },
         /**
          * The color variant of the modal
@@ -89,7 +90,7 @@ export default defineComponent({
         },
         /**
          * The size variant of the modal
-         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
+         * @param {'sm' | 'md' | 'lg'} size
          * @default
          */
         size: {
@@ -133,11 +134,11 @@ export default defineComponent({
             default: undefined
         },
         /**
-         * The body of the modal
-         * @param {string | VNode | VNode[]} body
+         * The content of the modal
+         * @param {string | VNode | VNode[]} content
          * @default undefined
          */
-        body: {
+        content: {
             type: [String, Object] as PropType<StringOrRenderableType>,
             default: undefined
         },
@@ -202,10 +203,7 @@ export default defineComponent({
         const closeOnPressEscape = toRef(props, 'closeOnPressEscape');
 
         const isVNode = computed(() => ({
-            header: typeof props.header === 'object',
-            icon: typeof props.icon === 'object',
-            body: typeof props.body === 'object',
-            footer: typeof props.footer === 'object'
+            content: typeof props.content === 'object'
         }));
 
         watch(
@@ -291,6 +289,11 @@ export default defineComponent({
             removeOnClickOutsideEventBindings();
         });
 
+        provide(ModalKey, {
+            show,
+            hide
+        });
+
         return {
             classes,
             modalRef,
@@ -321,47 +324,11 @@ export default defineComponent({
         >
             <transition :name="transition" @after-enter="onAfterEnter" @after-leave="onAfterLeave">
                 <div v-show="visible" ref="modalRef" class="modal" :class="classes">
-                    <div v-if="header || $slots.header" :id="`${name}-header`" class="modal-header">
-                        <!-- @slot footer Slot for modal header content -->
-                        <slot name="header">
-                            <component :is="header" v-if="header && isVNode.header" />
-                            <div v-else>{{ header }}</div>
-                        </slot>
-
-                        <!-- @slot close Close button slot -->
-                        <slot v-if="dismissible || $slots.close" name="close" :hide="hide">
-                            <button
-                                class="modal-close"
-                                aria-hidden="true"
-                                :aria-label="closeAriaLabel"
-                                @click="hide"
-                            >
-                                <Icon name="ink:close" />
-                            </button>
-                        </slot>
-                    </div>
-                    <div v-if="body || $slots.default" class="modal-body">
-                        <div v-if="icon || $slots.icon" class="modal-icon">
-                            <slot name="icon">
-                                <component :is="icon" v-if="icon && isVNode.icon" />
-                                <div v-else>{{ icon }}</div>
-                            </slot>
-                        </div>
-                        <div class="modal-content">
-                            <!-- @slot default Slot for modal body content -->
-                            <slot>
-                                <component :is="body" v-if="body && isVNode.body" />
-                                <div v-else>{{ body }}</div>
-                            </slot>
-                        </div>
-                    </div>
-                    <div v-if="footer || $slots.footer" class="modal-footer">
-                        <!-- @slot footer Slot for modal footer content -->
-                        <slot name="footer">
-                            <component :is="footer" v-if="footer && isVNode.footer" />
-                            <div v-else>{{ footer }}</div>
-                        </slot>
-                    </div>
+                    <!-- @slot default Slot for modal content -->
+                    <slot>
+                        <component :is="content" v-if="content && isVNode.content" />
+                        <div v-else>{{ content }}</div>
+                    </slot>
                 </div>
             </transition>
         </div>

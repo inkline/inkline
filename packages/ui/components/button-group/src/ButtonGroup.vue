@@ -38,7 +38,7 @@ export default defineComponent({
         },
         /**
          * The size of the button group
-         * @param {string} sizeMultiplier
+         * @param {string} size
          * @default
          */
         size: {

@@ -170,7 +170,12 @@
     --box-shadow-spread-radius: -0.75rem;
     --box-shadow-color: rgba(0, 0, 0, 0.15);
     --box-shadow: var(--box-shadow-offset-x) var(--box-shadow-offset-y) var(--box-shadow-blur-radius) var(--box-shadow-spread-radius) var(--box-shadow-color);
-    --line-height: 1.5;
+    --line-height-tight: 1.2;
+    --line-height-snug: 1.35;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.65;
+    --line-height-loose: 1.9;
+    --line-height: var(--line-height-normal);
     --transition-property: color, background-color, border-color;
     --transition-duration: 300ms;
     --transition-timing-function: ease;

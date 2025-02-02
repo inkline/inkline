@@ -65,7 +65,7 @@ export const manifest: ComponentManifest[] = [
                 default: 'false'
             },
             {
-                name: 'sizeMultiplier',
+                name: 'size',
                 type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the input',
                 default: ''

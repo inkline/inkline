@@ -560,6 +560,11 @@
                 "__name": "font-weight-normal",
                 "__value": "normal"
             },
+            "font-weight-medium": {
+                "__type": "variable",
+                "__name": "font-weight-medium",
+                "__value": 500
+            },
             "font-weight-semibold": {
                 "__type": "variable",
                 "__name": "font-weight-semibold",

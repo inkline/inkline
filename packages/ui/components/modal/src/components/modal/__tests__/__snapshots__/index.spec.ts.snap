@@ -13,7 +13,7 @@ exports[`Components > Modal > should render correctly 1`] = `
         <div class="modal-body">
           <!--v-if-->
           <div class="modal-content">
-            <!-- @slot default Slot for modal body content -->Body
+            <!-- @slot default Slot for modal content -->Body
           </div>
         </div>
         <div class="modal-footer">

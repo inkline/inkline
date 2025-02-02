@@ -19,6 +19,7 @@ import { useRadioTheme, useRadioGroupTheme } from '@inkline/component-radio';
 import { useToastTheme, useToastContainerTheme } from '@inkline/component-toast';
 import { useToggleTheme } from '@inkline/component-toggle';
 import { useTooltipTheme } from '@inkline/component-tooltip';
+import { useBlockquoteTheme, useTypographyTheme } from '@inkline/component-typography';
 import { defaultDefinitionOptions, DefinitionOptions } from '@inkline/core';
 
 export function useComponentsTheme(userOptions: DefinitionOptions) {
@@ -26,6 +27,7 @@ export function useComponentsTheme(userOptions: DefinitionOptions) {
 
     useAlertTheme(options);
     useBadgeTheme(options);
+    useBlockquoteTheme(options);
     useBreadcrumbTheme(options);
     useButtonTheme(options);
     useBreadcrumbItemTheme(options);
@@ -52,4 +54,5 @@ export function useComponentsTheme(userOptions: DefinitionOptions) {
     useToastContainerTheme(options);
     useToggleTheme(options);
     useTooltipTheme(options);
+    useTypographyTheme(options);
 }

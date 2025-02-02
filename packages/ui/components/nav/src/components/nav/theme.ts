@@ -70,30 +70,15 @@ export function useNavThemeSizeConfig(variant: NavSizeVariant, userOptions: Defi
     return {
         sm: {
             fontSize: ref(fontSizeSm),
-            padding: {
-                top: ref(spacingSm),
-                right: ref(spacingSm),
-                bottom: ref(spacingSm),
-                left: ref(spacingSm)
-            }
+            gap: ref(spacingSm)
         },
         md: {
             fontSize: ref(fontSizeMd),
-            padding: {
-                top: ref(spacingMd),
-                right: ref(spacingMd),
-                bottom: ref(spacingMd),
-                left: ref(spacingMd)
-            }
+            gap: ref(spacingMd)
         },
         lg: {
             fontSize: ref(fontSizeLg),
-            padding: {
-                top: ref(spacingLg),
-                right: ref(spacingLg),
-                bottom: ref(spacingLg),
-                left: ref(spacingLg)
-            }
+            gap: ref(spacingLg)
         }
     }[variant];
 }
@@ -102,7 +87,7 @@ export function useNavThemeConfig(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const { fontWeightSemibold } = useFontWeight(options);
-    const { textColorWeak } = useTextColor(options);
+    const { textColorWeaker } = useTextColor(options);
     const { transitionProperty, transitionDuration, transitionTimingFunction } =
         useTransition(options);
 
@@ -118,7 +103,7 @@ export function useNavThemeConfig(userOptions: DefinitionOptions) {
                     fontWeight: ref(fontWeightSemibold)
                 },
                 disabled: {
-                    color: ref(textColorWeak)
+                    color: ref(textColorWeaker)
                 }
             }
         },
@@ -168,6 +153,8 @@ export function useNavThemeVariables(userOptions: DefinitionOptions) {
 export function useNavThemeLayoutSelectors(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
+    const { navGap } = useNavThemeVariables(options);
+
     selector(
         `.nav`,
         {
@@ -176,7 +163,8 @@ export function useNavThemeLayoutSelectors(userOptions: DefinitionOptions) {
             alignItems: 'center',
             paddingLeft: 0,
             marginBottom: 0,
-            listStyle: 'none'
+            listStyle: 'none',
+            gap: ref(navGap)
         },
         options
     );
@@ -203,25 +191,18 @@ export function useNavThemeLayoutSelectors(userOptions: DefinitionOptions) {
 export function useNavThemeSizeSelectors(variant: NavSizeVariant, userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    const { navFontSize, navPaddingTop, navPaddingRight, navPaddingBottom, navPaddingLeft } =
-        useNavThemeVariables(options);
+    const { navFontSize, navGap } = useNavThemeVariables(options);
 
-    const {
-        variantFontSize,
-        variantPaddingTop,
-        variantPaddingRight,
-        variantPaddingBottom,
-        variantPaddingLeft
-    } = setExportsNamespace(useNavThemeSizeVariables(variant, options), 'variant');
+    const { variantFontSize, variantGap } = setExportsNamespace(
+        useNavThemeSizeVariables(variant, options),
+        'variant'
+    );
 
     selector(
         `.nav.-${variant}`,
         {
             [toVariableKey(navFontSize)]: ref(variantFontSize),
-            [toVariableKey(navPaddingTop)]: ref(variantPaddingTop),
-            [toVariableKey(navPaddingRight)]: ref(variantPaddingRight),
-            [toVariableKey(navPaddingBottom)]: ref(variantPaddingBottom),
-            [toVariableKey(navPaddingLeft)]: ref(variantPaddingLeft)
+            [toVariableKey(navGap)]: ref(variantGap)
         },
         options
     );

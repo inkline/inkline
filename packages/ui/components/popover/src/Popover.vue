@@ -110,7 +110,7 @@ export default defineComponent({
         },
         /**
          * The size variant of the popover
-         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
+         * @param {'sm' | 'md' | 'lg'} size
          * @default
          */
         size: {

@@ -92,7 +92,7 @@ export const manifest: ComponentManifest[] = [
         name: 'Toast',
         props: [
             {
-                name: 'sizeMultiplier',
+                name: 'size',
                 type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the toast',
                 default: ''

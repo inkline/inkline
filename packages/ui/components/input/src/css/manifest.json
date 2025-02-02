@@ -3006,10 +3006,38 @@
                     }
                 ]
             },
+            "line-height-tight": {
+                "__type": "variable",
+                "__name": "line-height-tight",
+                "__value": 1.2
+            },
+            "line-height-snug": {
+                "__type": "variable",
+                "__name": "line-height-snug",
+                "__value": 1.35
+            },
+            "line-height-normal": {
+                "__type": "variable",
+                "__name": "line-height-normal",
+                "__value": 1.5
+            },
+            "line-height-relaxed": {
+                "__type": "variable",
+                "__name": "line-height-relaxed",
+                "__value": 1.65
+            },
+            "line-height-loose": {
+                "__type": "variable",
+                "__name": "line-height-loose",
+                "__value": 1.9
+            },
             "line-height": {
                 "__type": "variable",
                 "__name": "line-height",
-                "__value": 1.5
+                "__value": {
+                    "__type": "reference",
+                    "__name": "line-height-normal"
+                }
             },
             "transition-property": {
                 "__type": "variable",
