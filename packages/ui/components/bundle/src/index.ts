@@ -5,6 +5,7 @@ export * from '@inkline/component-button';
 export * from '@inkline/component-button-group';
 export * from '@inkline/component-card';
 export * from '@inkline/component-checkbox';
+export * from '@inkline/component-drawer';
 export * from '@inkline/component-form-group';
 export * from '@inkline/component-expand';
 export * from '@inkline/component-grid';

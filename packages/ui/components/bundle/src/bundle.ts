@@ -6,6 +6,7 @@ import { Button } from '@inkline/component-button';
 import { ButtonGroup } from '@inkline/component-button-group';
 import { Card } from '@inkline/component-card';
 import { Checkbox, CheckboxGroup } from '@inkline/component-checkbox';
+import { Drawer } from '@inkline/component-drawer';
 import { FormGroup } from '@inkline/component-form-group';
 import { Expand } from '@inkline/component-expand';
 import { Grid } from '@inkline/component-grid';
@@ -34,6 +35,7 @@ export const components: Record<string, Component> = {
     Card,
     Checkbox,
     CheckboxGroup,
+    Drawer,
     FormGroup,
     Expand,
     Grid,

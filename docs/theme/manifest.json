@@ -15086,6 +15086,1447 @@
                     "__name": "color-primary-700"
                 }
             },
+            "drawer--border-top-color": {
+                "__type": "variable",
+                "__name": "drawer--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "drawer--border-right-color": {
+                "__type": "variable",
+                "__name": "drawer--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "drawer--border-bottom-color": {
+                "__type": "variable",
+                "__name": "drawer--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "drawer--border-left-color": {
+                "__type": "variable",
+                "__name": "drawer--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "drawer--border-top-width": {
+                "__type": "variable",
+                "__name": "drawer--border-top-width",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-width"
+                }
+            },
+            "drawer--border-top-style": {
+                "__type": "variable",
+                "__name": "drawer--border-top-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-style"
+                }
+            },
+            "drawer--border-right-width": {
+                "__type": "variable",
+                "__name": "drawer--border-right-width",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-right-width"
+                }
+            },
+            "drawer--border-right-style": {
+                "__type": "variable",
+                "__name": "drawer--border-right-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-right-style"
+                }
+            },
+            "drawer--border-bottom-width": {
+                "__type": "variable",
+                "__name": "drawer--border-bottom-width",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-width"
+                }
+            },
+            "drawer--border-bottom-style": {
+                "__type": "variable",
+                "__name": "drawer--border-bottom-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-style"
+                }
+            },
+            "drawer--border-left-width": {
+                "__type": "variable",
+                "__name": "drawer--border-left-width",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-left-width"
+                }
+            },
+            "drawer--border-left-style": {
+                "__type": "variable",
+                "__name": "drawer--border-left-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-left-style"
+                }
+            },
+            "drawer--box-shadow-offset-x": {
+                "__type": "variable",
+                "__name": "drawer--box-shadow-offset-x",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-offset-x"
+                }
+            },
+            "drawer--box-shadow-offset-y": {
+                "__type": "variable",
+                "__name": "drawer--box-shadow-offset-y",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-offset-y"
+                }
+            },
+            "drawer--box-shadow-blur-radius": {
+                "__type": "variable",
+                "__name": "drawer--box-shadow-blur-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-blur-radius"
+                }
+            },
+            "drawer--box-shadow-spread-radius": {
+                "__type": "variable",
+                "__name": "drawer--box-shadow-spread-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-spread-radius"
+                }
+            },
+            "drawer--box-shadow-color": {
+                "__type": "variable",
+                "__name": "drawer--box-shadow-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-color"
+                }
+            },
+            "drawer--transition-property": {
+                "__type": "variable",
+                "__name": "drawer--transition-property",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-property"
+                }
+            },
+            "drawer--transition-duration": {
+                "__type": "variable",
+                "__name": "drawer--transition-duration",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-duration"
+                }
+            },
+            "drawer--transition-timing-function": {
+                "__type": "variable",
+                "__name": "drawer--transition-timing-function",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-timing-function"
+                }
+            },
+            "drawer--width": {
+                "__type": "variable",
+                "__name": "drawer--width",
+                "__value": "100%"
+            },
+            "drawer--z-index": {
+                "__type": "variable",
+                "__name": "drawer--z-index",
+                "__value": 2000
+            },
+            "drawer--wrapper--background": {
+                "__type": "variable",
+                "__name": "drawer--wrapper--background",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        0,
+                        "0%",
+                        "0%",
+                        0.75
+                    ]
+                }
+            },
+            "drawer--close--color": {
+                "__type": "variable",
+                "__name": "drawer--close--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light"
+                }
+            },
+            "drawer--close--hover--background": {
+                "__type": "variable",
+                "__name": "drawer--close--hover--background",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        0,
+                        "0%",
+                        "0%",
+                        0.1
+                    ]
+                }
+            },
+            "drawer--close--active--background": {
+                "__type": "variable",
+                "__name": "drawer--close--active--background",
+                "__value": {
+                    "__type": "hsla",
+                    "__value": [
+                        0,
+                        "0%",
+                        "0%",
+                        0.15
+                    ]
+                }
+            },
+            "drawer--close--size": {
+                "__type": "variable",
+                "__name": "drawer--close--size",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-md"
+                        },
+                        "*",
+                        1.5
+                    ]
+                }
+            },
+            "drawer--close--font-size": {
+                "__type": "variable",
+                "__name": "drawer--close--font-size",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-md"
+                        },
+                        "*",
+                        0.5
+                    ]
+                }
+            },
+            "drawer--background": {
+                "__type": "variable",
+                "__name": "drawer--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white"
+                }
+            },
+            "drawer--color": {
+                "__type": "variable",
+                "__name": "drawer--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light"
+                }
+            },
+            "drawer--header--background": {
+                "__type": "variable",
+                "__name": "drawer--header--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light"
+                }
+            },
+            "drawer--footer--background": {
+                "__type": "variable",
+                "__name": "drawer--footer--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light"
+                }
+            },
+            "drawer--footer--button--margin-top": {
+                "__type": "variable",
+                "__name": "drawer--footer--button--margin-top",
+                "__value": 0
+            },
+            "drawer--footer--button--margin-right": {
+                "__type": "variable",
+                "__name": "drawer--footer--button--margin-right",
+                "__value": 0
+            },
+            "drawer--footer--button--margin-bottom": {
+                "__type": "variable",
+                "__name": "drawer--footer--button--margin-bottom",
+                "__value": 0
+            },
+            "drawer--footer--button--margin-left": {
+                "__type": "variable",
+                "__name": "drawer--footer--button--margin-left",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-md"
+                        },
+                        "*",
+                        0.5
+                    ]
+                }
+            },
+            "drawer--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "drawer--border-top-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-left-radius-md"
+                }
+            },
+            "drawer--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "drawer--border-top-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-right-radius-md"
+                }
+            },
+            "drawer--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "drawer--border-bottom-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-right-radius-md"
+                }
+            },
+            "drawer--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "drawer--border-bottom-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-left-radius-md"
+                }
+            },
+            "drawer--font-size": {
+                "__type": "variable",
+                "__name": "drawer--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-md"
+                }
+            },
+            "drawer--padding-top": {
+                "__type": "variable",
+                "__name": "drawer--padding-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "drawer--padding-right": {
+                "__type": "variable",
+                "__name": "drawer--padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "drawer--padding-bottom": {
+                "__type": "variable",
+                "__name": "drawer--padding-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "drawer--padding-left": {
+                "__type": "variable",
+                "__name": "drawer--padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "drawer--max-width": {
+                "__type": "variable",
+                "__name": "drawer--max-width",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-md"
+                        },
+                        "*",
+                        30
+                    ]
+                }
+            },
+            "drawer--icon--margin-top": {
+                "__type": "variable",
+                "__name": "drawer--icon--margin-top",
+                "__value": 0
+            },
+            "drawer--icon--margin-right": {
+                "__type": "variable",
+                "__name": "drawer--icon--margin-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "drawer--icon--margin-bottom": {
+                "__type": "variable",
+                "__name": "drawer--icon--margin-bottom",
+                "__value": 0
+            },
+            "drawer--icon--margin-left": {
+                "__type": "variable",
+                "__name": "drawer--icon--margin-left",
+                "__value": 0
+            },
+            "drawer--light--border-top-color": {
+                "__type": "variable",
+                "__name": "drawer--light--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "drawer--light--border-right-color": {
+                "__type": "variable",
+                "__name": "drawer--light--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "drawer--light--border-bottom-color": {
+                "__type": "variable",
+                "__name": "drawer--light--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "drawer--light--border-left-color": {
+                "__type": "variable",
+                "__name": "drawer--light--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "drawer--light--background": {
+                "__type": "variable",
+                "__name": "drawer--light--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white"
+                }
+            },
+            "drawer--light--color": {
+                "__type": "variable",
+                "__name": "drawer--light--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light"
+                }
+            },
+            "drawer--light--header--background": {
+                "__type": "variable",
+                "__name": "drawer--light--header--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light"
+                }
+            },
+            "drawer--light--footer--background": {
+                "__type": "variable",
+                "__name": "drawer--light--footer--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light"
+                }
+            },
+            "drawer--dark--border-top-color": {
+                "__type": "variable",
+                "__name": "drawer--dark--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "drawer--dark--border-right-color": {
+                "__type": "variable",
+                "__name": "drawer--dark--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "drawer--dark--border-bottom-color": {
+                "__type": "variable",
+                "__name": "drawer--dark--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "drawer--dark--border-left-color": {
+                "__type": "variable",
+                "__name": "drawer--dark--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "drawer--dark--background": {
+                "__type": "variable",
+                "__name": "drawer--dark--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark"
+                }
+            },
+            "drawer--dark--color": {
+                "__type": "variable",
+                "__name": "drawer--dark--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark"
+                }
+            },
+            "drawer--dark--header--background": {
+                "__type": "variable",
+                "__name": "drawer--dark--header--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "drawer--dark--footer--background": {
+                "__type": "variable",
+                "__name": "drawer--dark--footer--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "drawer--primary--border-top-color": {
+                "__type": "variable",
+                "__name": "drawer--primary--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-primary-shade-50"
+                }
+            },
+            "drawer--primary--border-right-color": {
+                "__type": "variable",
+                "__name": "drawer--primary--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-primary-shade-50"
+                }
+            },
+            "drawer--primary--border-bottom-color": {
+                "__type": "variable",
+                "__name": "drawer--primary--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-primary-shade-50"
+                }
+            },
+            "drawer--primary--border-left-color": {
+                "__type": "variable",
+                "__name": "drawer--primary--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-primary-shade-50"
+                }
+            },
+            "drawer--primary--background": {
+                "__type": "variable",
+                "__name": "drawer--primary--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-primary"
+                }
+            },
+            "drawer--primary--color": {
+                "__type": "variable",
+                "__name": "drawer--primary--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-primary"
+                }
+            },
+            "drawer--primary--header--background": {
+                "__type": "variable",
+                "__name": "drawer--primary--header--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-primary-shade-50"
+                }
+            },
+            "drawer--primary--footer--background": {
+                "__type": "variable",
+                "__name": "drawer--primary--footer--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-primary-shade-50"
+                }
+            },
+            "drawer--secondary--border-top-color": {
+                "__type": "variable",
+                "__name": "drawer--secondary--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-secondary-shade-50"
+                }
+            },
+            "drawer--secondary--border-right-color": {
+                "__type": "variable",
+                "__name": "drawer--secondary--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-secondary-shade-50"
+                }
+            },
+            "drawer--secondary--border-bottom-color": {
+                "__type": "variable",
+                "__name": "drawer--secondary--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-secondary-shade-50"
+                }
+            },
+            "drawer--secondary--border-left-color": {
+                "__type": "variable",
+                "__name": "drawer--secondary--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-secondary-shade-50"
+                }
+            },
+            "drawer--secondary--background": {
+                "__type": "variable",
+                "__name": "drawer--secondary--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-secondary"
+                }
+            },
+            "drawer--secondary--color": {
+                "__type": "variable",
+                "__name": "drawer--secondary--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-secondary"
+                }
+            },
+            "drawer--secondary--header--background": {
+                "__type": "variable",
+                "__name": "drawer--secondary--header--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-secondary-shade-50"
+                }
+            },
+            "drawer--secondary--footer--background": {
+                "__type": "variable",
+                "__name": "drawer--secondary--footer--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-secondary-shade-50"
+                }
+            },
+            "drawer--success--border-top-color": {
+                "__type": "variable",
+                "__name": "drawer--success--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-success-shade-50"
+                }
+            },
+            "drawer--success--border-right-color": {
+                "__type": "variable",
+                "__name": "drawer--success--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-success-shade-50"
+                }
+            },
+            "drawer--success--border-bottom-color": {
+                "__type": "variable",
+                "__name": "drawer--success--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-success-shade-50"
+                }
+            },
+            "drawer--success--border-left-color": {
+                "__type": "variable",
+                "__name": "drawer--success--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-success-shade-50"
+                }
+            },
+            "drawer--success--background": {
+                "__type": "variable",
+                "__name": "drawer--success--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-success"
+                }
+            },
+            "drawer--success--color": {
+                "__type": "variable",
+                "__name": "drawer--success--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-success"
+                }
+            },
+            "drawer--success--header--background": {
+                "__type": "variable",
+                "__name": "drawer--success--header--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-success-shade-50"
+                }
+            },
+            "drawer--success--footer--background": {
+                "__type": "variable",
+                "__name": "drawer--success--footer--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-success-shade-50"
+                }
+            },
+            "drawer--danger--border-top-color": {
+                "__type": "variable",
+                "__name": "drawer--danger--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-danger-shade-50"
+                }
+            },
+            "drawer--danger--border-right-color": {
+                "__type": "variable",
+                "__name": "drawer--danger--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-danger-shade-50"
+                }
+            },
+            "drawer--danger--border-bottom-color": {
+                "__type": "variable",
+                "__name": "drawer--danger--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-danger-shade-50"
+                }
+            },
+            "drawer--danger--border-left-color": {
+                "__type": "variable",
+                "__name": "drawer--danger--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-danger-shade-50"
+                }
+            },
+            "drawer--danger--background": {
+                "__type": "variable",
+                "__name": "drawer--danger--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-danger"
+                }
+            },
+            "drawer--danger--color": {
+                "__type": "variable",
+                "__name": "drawer--danger--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-danger"
+                }
+            },
+            "drawer--danger--header--background": {
+                "__type": "variable",
+                "__name": "drawer--danger--header--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-danger-shade-50"
+                }
+            },
+            "drawer--danger--footer--background": {
+                "__type": "variable",
+                "__name": "drawer--danger--footer--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-danger-shade-50"
+                }
+            },
+            "drawer--warning--border-top-color": {
+                "__type": "variable",
+                "__name": "drawer--warning--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-warning-shade-50"
+                }
+            },
+            "drawer--warning--border-right-color": {
+                "__type": "variable",
+                "__name": "drawer--warning--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-warning-shade-50"
+                }
+            },
+            "drawer--warning--border-bottom-color": {
+                "__type": "variable",
+                "__name": "drawer--warning--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-warning-shade-50"
+                }
+            },
+            "drawer--warning--border-left-color": {
+                "__type": "variable",
+                "__name": "drawer--warning--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-warning-shade-50"
+                }
+            },
+            "drawer--warning--background": {
+                "__type": "variable",
+                "__name": "drawer--warning--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-warning"
+                }
+            },
+            "drawer--warning--color": {
+                "__type": "variable",
+                "__name": "drawer--warning--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-warning"
+                }
+            },
+            "drawer--warning--header--background": {
+                "__type": "variable",
+                "__name": "drawer--warning--header--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-warning-shade-50"
+                }
+            },
+            "drawer--warning--footer--background": {
+                "__type": "variable",
+                "__name": "drawer--warning--footer--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-warning-shade-50"
+                }
+            },
+            "drawer--info--border-top-color": {
+                "__type": "variable",
+                "__name": "drawer--info--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-info-shade-50"
+                }
+            },
+            "drawer--info--border-right-color": {
+                "__type": "variable",
+                "__name": "drawer--info--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-info-shade-50"
+                }
+            },
+            "drawer--info--border-bottom-color": {
+                "__type": "variable",
+                "__name": "drawer--info--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-info-shade-50"
+                }
+            },
+            "drawer--info--border-left-color": {
+                "__type": "variable",
+                "__name": "drawer--info--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-info-shade-50"
+                }
+            },
+            "drawer--info--background": {
+                "__type": "variable",
+                "__name": "drawer--info--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-info"
+                }
+            },
+            "drawer--info--color": {
+                "__type": "variable",
+                "__name": "drawer--info--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-info"
+                }
+            },
+            "drawer--info--header--background": {
+                "__type": "variable",
+                "__name": "drawer--info--header--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-info-shade-50"
+                }
+            },
+            "drawer--info--footer--background": {
+                "__type": "variable",
+                "__name": "drawer--info--footer--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-info-shade-50"
+                }
+            },
+            "drawer--sm--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "drawer--sm--border-top-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-left-radius-sm"
+                }
+            },
+            "drawer--sm--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "drawer--sm--border-top-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-right-radius-sm"
+                }
+            },
+            "drawer--sm--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "drawer--sm--border-bottom-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-right-radius-sm"
+                }
+            },
+            "drawer--sm--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "drawer--sm--border-bottom-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-left-radius-sm"
+                }
+            },
+            "drawer--sm--font-size": {
+                "__type": "variable",
+                "__name": "drawer--sm--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-sm"
+                }
+            },
+            "drawer--sm--padding-top": {
+                "__type": "variable",
+                "__name": "drawer--sm--padding-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-sm"
+                }
+            },
+            "drawer--sm--padding-right": {
+                "__type": "variable",
+                "__name": "drawer--sm--padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-sm"
+                }
+            },
+            "drawer--sm--padding-bottom": {
+                "__type": "variable",
+                "__name": "drawer--sm--padding-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-sm"
+                }
+            },
+            "drawer--sm--padding-left": {
+                "__type": "variable",
+                "__name": "drawer--sm--padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-sm"
+                }
+            },
+            "drawer--sm--max-width": {
+                "__type": "variable",
+                "__name": "drawer--sm--max-width",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-sm"
+                        },
+                        "*",
+                        30
+                    ]
+                }
+            },
+            "drawer--sm--close--size": {
+                "__type": "variable",
+                "__name": "drawer--sm--close--size",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-sm"
+                        },
+                        "*",
+                        1.5
+                    ]
+                }
+            },
+            "drawer--sm--close--font-size": {
+                "__type": "variable",
+                "__name": "drawer--sm--close--font-size",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-sm"
+                        },
+                        "*",
+                        0.5
+                    ]
+                }
+            },
+            "drawer--sm--icon--margin-top": {
+                "__type": "variable",
+                "__name": "drawer--sm--icon--margin-top",
+                "__value": 0
+            },
+            "drawer--sm--icon--margin-right": {
+                "__type": "variable",
+                "__name": "drawer--sm--icon--margin-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-sm"
+                }
+            },
+            "drawer--sm--icon--margin-bottom": {
+                "__type": "variable",
+                "__name": "drawer--sm--icon--margin-bottom",
+                "__value": 0
+            },
+            "drawer--sm--icon--margin-left": {
+                "__type": "variable",
+                "__name": "drawer--sm--icon--margin-left",
+                "__value": 0
+            },
+            "drawer--sm--footer--button--margin-top": {
+                "__type": "variable",
+                "__name": "drawer--sm--footer--button--margin-top",
+                "__value": 0
+            },
+            "drawer--sm--footer--button--margin-right": {
+                "__type": "variable",
+                "__name": "drawer--sm--footer--button--margin-right",
+                "__value": 0
+            },
+            "drawer--sm--footer--button--margin-bottom": {
+                "__type": "variable",
+                "__name": "drawer--sm--footer--button--margin-bottom",
+                "__value": 0
+            },
+            "drawer--sm--footer--button--margin-left": {
+                "__type": "variable",
+                "__name": "drawer--sm--footer--button--margin-left",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-sm"
+                        },
+                        "*",
+                        0.5
+                    ]
+                }
+            },
+            "drawer--md--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "drawer--md--border-top-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-left-radius-md"
+                }
+            },
+            "drawer--md--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "drawer--md--border-top-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-right-radius-md"
+                }
+            },
+            "drawer--md--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "drawer--md--border-bottom-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-right-radius-md"
+                }
+            },
+            "drawer--md--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "drawer--md--border-bottom-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-left-radius-md"
+                }
+            },
+            "drawer--md--font-size": {
+                "__type": "variable",
+                "__name": "drawer--md--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-md"
+                }
+            },
+            "drawer--md--padding-top": {
+                "__type": "variable",
+                "__name": "drawer--md--padding-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "drawer--md--padding-right": {
+                "__type": "variable",
+                "__name": "drawer--md--padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "drawer--md--padding-bottom": {
+                "__type": "variable",
+                "__name": "drawer--md--padding-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "drawer--md--padding-left": {
+                "__type": "variable",
+                "__name": "drawer--md--padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "drawer--md--max-width": {
+                "__type": "variable",
+                "__name": "drawer--md--max-width",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-md"
+                        },
+                        "*",
+                        30
+                    ]
+                }
+            },
+            "drawer--md--close--size": {
+                "__type": "variable",
+                "__name": "drawer--md--close--size",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-md"
+                        },
+                        "*",
+                        1.5
+                    ]
+                }
+            },
+            "drawer--md--close--font-size": {
+                "__type": "variable",
+                "__name": "drawer--md--close--font-size",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-md"
+                        },
+                        "*",
+                        0.5
+                    ]
+                }
+            },
+            "drawer--md--icon--margin-top": {
+                "__type": "variable",
+                "__name": "drawer--md--icon--margin-top",
+                "__value": 0
+            },
+            "drawer--md--icon--margin-right": {
+                "__type": "variable",
+                "__name": "drawer--md--icon--margin-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "drawer--md--icon--margin-bottom": {
+                "__type": "variable",
+                "__name": "drawer--md--icon--margin-bottom",
+                "__value": 0
+            },
+            "drawer--md--icon--margin-left": {
+                "__type": "variable",
+                "__name": "drawer--md--icon--margin-left",
+                "__value": 0
+            },
+            "drawer--md--footer--button--margin-top": {
+                "__type": "variable",
+                "__name": "drawer--md--footer--button--margin-top",
+                "__value": 0
+            },
+            "drawer--md--footer--button--margin-right": {
+                "__type": "variable",
+                "__name": "drawer--md--footer--button--margin-right",
+                "__value": 0
+            },
+            "drawer--md--footer--button--margin-bottom": {
+                "__type": "variable",
+                "__name": "drawer--md--footer--button--margin-bottom",
+                "__value": 0
+            },
+            "drawer--md--footer--button--margin-left": {
+                "__type": "variable",
+                "__name": "drawer--md--footer--button--margin-left",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-md"
+                        },
+                        "*",
+                        0.5
+                    ]
+                }
+            },
+            "drawer--lg--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "drawer--lg--border-top-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-left-radius-lg"
+                }
+            },
+            "drawer--lg--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "drawer--lg--border-top-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-right-radius-lg"
+                }
+            },
+            "drawer--lg--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "drawer--lg--border-bottom-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-right-radius-lg"
+                }
+            },
+            "drawer--lg--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "drawer--lg--border-bottom-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-left-radius-lg"
+                }
+            },
+            "drawer--lg--font-size": {
+                "__type": "variable",
+                "__name": "drawer--lg--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-lg"
+                }
+            },
+            "drawer--lg--padding-top": {
+                "__type": "variable",
+                "__name": "drawer--lg--padding-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-lg"
+                }
+            },
+            "drawer--lg--padding-right": {
+                "__type": "variable",
+                "__name": "drawer--lg--padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-lg"
+                }
+            },
+            "drawer--lg--padding-bottom": {
+                "__type": "variable",
+                "__name": "drawer--lg--padding-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-lg"
+                }
+            },
+            "drawer--lg--padding-left": {
+                "__type": "variable",
+                "__name": "drawer--lg--padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-lg"
+                }
+            },
+            "drawer--lg--max-width": {
+                "__type": "variable",
+                "__name": "drawer--lg--max-width",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-lg"
+                        },
+                        "*",
+                        30
+                    ]
+                }
+            },
+            "drawer--lg--close--size": {
+                "__type": "variable",
+                "__name": "drawer--lg--close--size",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-lg"
+                        },
+                        "*",
+                        1.5
+                    ]
+                }
+            },
+            "drawer--lg--close--font-size": {
+                "__type": "variable",
+                "__name": "drawer--lg--close--font-size",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-lg"
+                        },
+                        "*",
+                        0.5
+                    ]
+                }
+            },
+            "drawer--lg--icon--margin-top": {
+                "__type": "variable",
+                "__name": "drawer--lg--icon--margin-top",
+                "__value": 0
+            },
+            "drawer--lg--icon--margin-right": {
+                "__type": "variable",
+                "__name": "drawer--lg--icon--margin-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-lg"
+                }
+            },
+            "drawer--lg--icon--margin-bottom": {
+                "__type": "variable",
+                "__name": "drawer--lg--icon--margin-bottom",
+                "__value": 0
+            },
+            "drawer--lg--icon--margin-left": {
+                "__type": "variable",
+                "__name": "drawer--lg--icon--margin-left",
+                "__value": 0
+            },
+            "drawer--lg--footer--button--margin-top": {
+                "__type": "variable",
+                "__name": "drawer--lg--footer--button--margin-top",
+                "__value": 0
+            },
+            "drawer--lg--footer--button--margin-right": {
+                "__type": "variable",
+                "__name": "drawer--lg--footer--button--margin-right",
+                "__value": 0
+            },
+            "drawer--lg--footer--button--margin-bottom": {
+                "__type": "variable",
+                "__name": "drawer--lg--footer--button--margin-bottom",
+                "__value": 0
+            },
+            "drawer--lg--footer--button--margin-left": {
+                "__type": "variable",
+                "__name": "drawer--lg--footer--button--margin-left",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-lg"
+                        },
+                        "*",
+                        0.5
+                    ]
+                }
+            },
             "form-group--margin-top": {
                 "__type": "variable",
                 "__name": "form-group--margin-top",
@@ -30355,6 +31796,1109 @@
                 "__name": ".checkbox-group.-inline",
                 "__value": {
                     "flexDirection": "row"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer-wrapper",
+                "__value": {
+                    "position": "fixed",
+                    "top": "0",
+                    "left": "0",
+                    "zIndex": {
+                        "__type": "reference",
+                        "__name": "drawer--z-index"
+                    },
+                    "width": "100%",
+                    "height": "100%",
+                    "display": "flex",
+                    "alignItems": "center",
+                    "justifyContent": "center"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer-wrapper.-alert > .drawer > .drawer-footer, .drawer-wrapper.-confirm > .drawer > .drawer-footer, .drawer-wrapper.-prompt > .drawer > .drawer-footer",
+                "__value": {
+                    "display": "flex",
+                    "justifyContent": "flex-end"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer",
+                "__value": {
+                    "position": "relative",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "minWidth": "0",
+                    "wordWrap": "break-word",
+                    "backgroundClip": "border-box",
+                    "textAlign": "left"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer > .drawer-header",
+                "__value": {
+                    "display": "flex",
+                    "justifyContent": "space-between"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer > .drawer-body",
+                "__value": {
+                    "display": "flex",
+                    "flexDirection": "row"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer > .drawer-footer",
+                "__value": {
+                    "display": "flex",
+                    "justifyContent": "flex-end"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer .drawer-content",
+                "__value": {
+                    "width": "100%",
+                    "display": "block"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer .drawer-close",
+                "__value": {
+                    "display": "flex",
+                    "justifyContent": "center",
+                    "alignItems": "center",
+                    "height": "1.5rem",
+                    "width": "1.5rem",
+                    "lineHeight": "1.5rem",
+                    "fontSize": "0.5rem",
+                    "cursor": "pointer",
+                    "padding": "0",
+                    "border": "0",
+                    "transition": "background-color 0.3s ease",
+                    "backgroundColor": "transparent"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer-wrapper",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "drawer--wrapper--background"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer",
+                "__value": {
+                    "maxWidth": {
+                        "__type": "reference",
+                        "__name": "drawer--max-width"
+                    },
+                    "width": {
+                        "__type": "reference",
+                        "__name": "drawer--width"
+                    },
+                    "boxShadow": {
+                        "__type": "reference",
+                        "__name": "drawer--box-shadow",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--box-shadow-offset-x"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--box-shadow-offset-y"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--box-shadow-blur-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--box-shadow-spread-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--box-shadow-color"
+                            }
+                        ]
+                    },
+                    "color": {
+                        "__type": "reference",
+                        "__name": "drawer--color"
+                    },
+                    "fontSize": {
+                        "__type": "reference",
+                        "__name": "drawer--font-size"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer-header",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "drawer--header--background"
+                    },
+                    "borderRadius": {
+                        "__type": "reference",
+                        "__name": "drawer--border-radius",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-top-left-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-top-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-bottom-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-bottom-left-radius"
+                            }
+                        ]
+                    },
+                    "color": {
+                        "__type": "reference",
+                        "__name": "drawer--color"
+                    },
+                    "borderStyle": {
+                        "__type": "reference",
+                        "__name": "drawer--border-style",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-top-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-right-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-bottom-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-left-style"
+                            }
+                        ]
+                    },
+                    "borderTopColor": {
+                        "__type": "reference",
+                        "__name": "drawer--border-top-color"
+                    },
+                    "borderRightColor": {
+                        "__type": "reference",
+                        "__name": "drawer--border-right-color"
+                    },
+                    "borderBottomColor": {
+                        "__type": "reference",
+                        "__name": "drawer--border-bottom-color"
+                    },
+                    "borderLeftColor": {
+                        "__type": "reference",
+                        "__name": "drawer--border-left-color"
+                    },
+                    "borderWidth": {
+                        "__type": "reference",
+                        "__name": "drawer--border-width",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-top-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-right-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-bottom-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-left-width"
+                            }
+                        ]
+                    },
+                    "padding": {
+                        "__type": "reference",
+                        "__name": "drawer--padding",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--padding-top"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--padding-right"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--padding-bottom"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--padding-left"
+                            }
+                        ]
+                    },
+                    "transitionProperty": {
+                        "__type": "reference",
+                        "__name": "drawer--transition-property"
+                    },
+                    "transitionDuration": {
+                        "__type": "reference",
+                        "__name": "drawer--transition-duration"
+                    },
+                    "transitionTimingFunction": {
+                        "__type": "reference",
+                        "__name": "drawer--transition-timing-function"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer-body",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "drawer--background"
+                    },
+                    "borderRadius": {
+                        "__type": "reference",
+                        "__name": "drawer--border-radius",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-top-left-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-top-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-bottom-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-bottom-left-radius"
+                            }
+                        ]
+                    },
+                    "borderStyle": {
+                        "__type": "reference",
+                        "__name": "drawer--border-style",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-top-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-right-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-bottom-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-left-style"
+                            }
+                        ]
+                    },
+                    "borderTopColor": {
+                        "__type": "reference",
+                        "__name": "drawer--border-top-color"
+                    },
+                    "borderRightColor": {
+                        "__type": "reference",
+                        "__name": "drawer--border-right-color"
+                    },
+                    "borderBottomColor": {
+                        "__type": "reference",
+                        "__name": "drawer--border-bottom-color"
+                    },
+                    "borderLeftColor": {
+                        "__type": "reference",
+                        "__name": "drawer--border-left-color"
+                    },
+                    "borderWidth": {
+                        "__type": "reference",
+                        "__name": "drawer--border-width",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-top-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-right-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-bottom-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-left-width"
+                            }
+                        ]
+                    },
+                    "color": {
+                        "__type": "reference",
+                        "__name": "drawer--color"
+                    },
+                    "padding": {
+                        "__type": "reference",
+                        "__name": "drawer--padding",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--padding-top"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--padding-right"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--padding-bottom"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--padding-left"
+                            }
+                        ]
+                    },
+                    "transitionProperty": {
+                        "__type": "reference",
+                        "__name": "drawer--transition-property"
+                    },
+                    "transitionDuration": {
+                        "__type": "reference",
+                        "__name": "drawer--transition-duration"
+                    },
+                    "transitionTimingFunction": {
+                        "__type": "reference",
+                        "__name": "drawer--transition-timing-function"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer-footer",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "drawer--footer--background"
+                    },
+                    "borderRadius": {
+                        "__type": "reference",
+                        "__name": "drawer--border-radius",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-top-left-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-top-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-bottom-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-bottom-left-radius"
+                            }
+                        ]
+                    },
+                    "color": {
+                        "__type": "reference",
+                        "__name": "drawer--color"
+                    },
+                    "borderStyle": {
+                        "__type": "reference",
+                        "__name": "drawer--border-style",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-top-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-right-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-bottom-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-left-style"
+                            }
+                        ]
+                    },
+                    "borderTopColor": {
+                        "__type": "reference",
+                        "__name": "drawer--border-top-color"
+                    },
+                    "borderRightColor": {
+                        "__type": "reference",
+                        "__name": "drawer--border-right-color"
+                    },
+                    "borderBottomColor": {
+                        "__type": "reference",
+                        "__name": "drawer--border-bottom-color"
+                    },
+                    "borderLeftColor": {
+                        "__type": "reference",
+                        "__name": "drawer--border-left-color"
+                    },
+                    "borderWidth": {
+                        "__type": "reference",
+                        "__name": "drawer--border-width",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-top-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-right-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-bottom-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--border-left-width"
+                            }
+                        ]
+                    },
+                    "padding": {
+                        "__type": "reference",
+                        "__name": "drawer--padding",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--padding-top"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--padding-right"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--padding-bottom"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--padding-left"
+                            }
+                        ]
+                    },
+                    "transitionProperty": {
+                        "__type": "reference",
+                        "__name": "drawer--transition-property"
+                    },
+                    "transitionDuration": {
+                        "__type": "reference",
+                        "__name": "drawer--transition-duration"
+                    },
+                    "transitionTimingFunction": {
+                        "__type": "reference",
+                        "__name": "drawer--transition-timing-function"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer-header + .drawer-body",
+                "__value": {
+                    "borderTop": "0"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer-body:has(+ .drawer-footer)",
+                "__value": {
+                    "borderBottom": "0"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer > *:not(:first-child)",
+                "__value": {
+                    "borderTopLeftRadius": 0,
+                    "borderTopRightRadius": 0
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer > *:not(:last-child)",
+                "__value": {
+                    "borderBottomRightRadius": 0,
+                    "borderBottomLeftRadius": 0
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer .drawer-close",
+                "__value": {
+                    "color": {
+                        "__type": "reference",
+                        "__name": "drawer--color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer .drawer-icon",
+                "__value": {
+                    "margin": {
+                        "__type": "reference",
+                        "__name": "drawer--icon--margin",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--icon--margin-top"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--icon--margin-right"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--icon--margin-bottom"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--icon--margin-left"
+                            }
+                        ]
+                    },
+                    "alignItems": "center",
+                    "display": "flex"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer-wrapper .drawer-footer .button + .button",
+                "__value": {
+                    "margin": {
+                        "__type": "reference",
+                        "__name": "drawer--footer--button--margin",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--footer--button--margin-top"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--footer--button--margin-right"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--footer--button--margin-bottom"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "drawer--footer--button--margin-left"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer.-light",
+                "__value": {
+                    "--drawer--border-top-color": {
+                        "__type": "reference",
+                        "__name": "drawer--light--border-top-color"
+                    },
+                    "--drawer--border-right-color": {
+                        "__type": "reference",
+                        "__name": "drawer--light--border-right-color"
+                    },
+                    "--drawer--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "drawer--light--border-bottom-color"
+                    },
+                    "--drawer--border-left-color": {
+                        "__type": "reference",
+                        "__name": "drawer--light--border-left-color"
+                    },
+                    "--drawer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--light--background"
+                    },
+                    "--drawer--color": {
+                        "__type": "reference",
+                        "__name": "drawer--light--color"
+                    },
+                    "--drawer--header--background": {
+                        "__type": "reference",
+                        "__name": "drawer--light--header--background"
+                    },
+                    "--drawer--footer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--light--footer--background"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer.-dark",
+                "__value": {
+                    "--drawer--border-top-color": {
+                        "__type": "reference",
+                        "__name": "drawer--dark--border-top-color"
+                    },
+                    "--drawer--border-right-color": {
+                        "__type": "reference",
+                        "__name": "drawer--dark--border-right-color"
+                    },
+                    "--drawer--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "drawer--dark--border-bottom-color"
+                    },
+                    "--drawer--border-left-color": {
+                        "__type": "reference",
+                        "__name": "drawer--dark--border-left-color"
+                    },
+                    "--drawer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--dark--background"
+                    },
+                    "--drawer--color": {
+                        "__type": "reference",
+                        "__name": "drawer--dark--color"
+                    },
+                    "--drawer--header--background": {
+                        "__type": "reference",
+                        "__name": "drawer--dark--header--background"
+                    },
+                    "--drawer--footer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--dark--footer--background"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer.-primary",
+                "__value": {
+                    "--drawer--border-top-color": {
+                        "__type": "reference",
+                        "__name": "drawer--primary--border-top-color"
+                    },
+                    "--drawer--border-right-color": {
+                        "__type": "reference",
+                        "__name": "drawer--primary--border-right-color"
+                    },
+                    "--drawer--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "drawer--primary--border-bottom-color"
+                    },
+                    "--drawer--border-left-color": {
+                        "__type": "reference",
+                        "__name": "drawer--primary--border-left-color"
+                    },
+                    "--drawer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--primary--background"
+                    },
+                    "--drawer--color": {
+                        "__type": "reference",
+                        "__name": "drawer--primary--color"
+                    },
+                    "--drawer--header--background": {
+                        "__type": "reference",
+                        "__name": "drawer--primary--header--background"
+                    },
+                    "--drawer--footer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--primary--footer--background"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer.-secondary",
+                "__value": {
+                    "--drawer--border-top-color": {
+                        "__type": "reference",
+                        "__name": "drawer--secondary--border-top-color"
+                    },
+                    "--drawer--border-right-color": {
+                        "__type": "reference",
+                        "__name": "drawer--secondary--border-right-color"
+                    },
+                    "--drawer--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "drawer--secondary--border-bottom-color"
+                    },
+                    "--drawer--border-left-color": {
+                        "__type": "reference",
+                        "__name": "drawer--secondary--border-left-color"
+                    },
+                    "--drawer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--secondary--background"
+                    },
+                    "--drawer--color": {
+                        "__type": "reference",
+                        "__name": "drawer--secondary--color"
+                    },
+                    "--drawer--header--background": {
+                        "__type": "reference",
+                        "__name": "drawer--secondary--header--background"
+                    },
+                    "--drawer--footer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--secondary--footer--background"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer.-success",
+                "__value": {
+                    "--drawer--border-top-color": {
+                        "__type": "reference",
+                        "__name": "drawer--success--border-top-color"
+                    },
+                    "--drawer--border-right-color": {
+                        "__type": "reference",
+                        "__name": "drawer--success--border-right-color"
+                    },
+                    "--drawer--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "drawer--success--border-bottom-color"
+                    },
+                    "--drawer--border-left-color": {
+                        "__type": "reference",
+                        "__name": "drawer--success--border-left-color"
+                    },
+                    "--drawer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--success--background"
+                    },
+                    "--drawer--color": {
+                        "__type": "reference",
+                        "__name": "drawer--success--color"
+                    },
+                    "--drawer--header--background": {
+                        "__type": "reference",
+                        "__name": "drawer--success--header--background"
+                    },
+                    "--drawer--footer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--success--footer--background"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer.-danger",
+                "__value": {
+                    "--drawer--border-top-color": {
+                        "__type": "reference",
+                        "__name": "drawer--danger--border-top-color"
+                    },
+                    "--drawer--border-right-color": {
+                        "__type": "reference",
+                        "__name": "drawer--danger--border-right-color"
+                    },
+                    "--drawer--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "drawer--danger--border-bottom-color"
+                    },
+                    "--drawer--border-left-color": {
+                        "__type": "reference",
+                        "__name": "drawer--danger--border-left-color"
+                    },
+                    "--drawer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--danger--background"
+                    },
+                    "--drawer--color": {
+                        "__type": "reference",
+                        "__name": "drawer--danger--color"
+                    },
+                    "--drawer--header--background": {
+                        "__type": "reference",
+                        "__name": "drawer--danger--header--background"
+                    },
+                    "--drawer--footer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--danger--footer--background"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer.-warning",
+                "__value": {
+                    "--drawer--border-top-color": {
+                        "__type": "reference",
+                        "__name": "drawer--warning--border-top-color"
+                    },
+                    "--drawer--border-right-color": {
+                        "__type": "reference",
+                        "__name": "drawer--warning--border-right-color"
+                    },
+                    "--drawer--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "drawer--warning--border-bottom-color"
+                    },
+                    "--drawer--border-left-color": {
+                        "__type": "reference",
+                        "__name": "drawer--warning--border-left-color"
+                    },
+                    "--drawer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--warning--background"
+                    },
+                    "--drawer--color": {
+                        "__type": "reference",
+                        "__name": "drawer--warning--color"
+                    },
+                    "--drawer--header--background": {
+                        "__type": "reference",
+                        "__name": "drawer--warning--header--background"
+                    },
+                    "--drawer--footer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--warning--footer--background"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer.-info",
+                "__value": {
+                    "--drawer--border-top-color": {
+                        "__type": "reference",
+                        "__name": "drawer--info--border-top-color"
+                    },
+                    "--drawer--border-right-color": {
+                        "__type": "reference",
+                        "__name": "drawer--info--border-right-color"
+                    },
+                    "--drawer--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "drawer--info--border-bottom-color"
+                    },
+                    "--drawer--border-left-color": {
+                        "__type": "reference",
+                        "__name": "drawer--info--border-left-color"
+                    },
+                    "--drawer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--info--background"
+                    },
+                    "--drawer--color": {
+                        "__type": "reference",
+                        "__name": "drawer--info--color"
+                    },
+                    "--drawer--header--background": {
+                        "__type": "reference",
+                        "__name": "drawer--info--header--background"
+                    },
+                    "--drawer--footer--background": {
+                        "__type": "reference",
+                        "__name": "drawer--info--footer--background"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer.-sm",
+                "__value": {
+                    "--drawer--border-top-left-radius": {
+                        "__type": "reference",
+                        "__name": "drawer--sm--border-top-left-radius"
+                    },
+                    "--drawer--border-top-right-radius": {
+                        "__type": "reference",
+                        "__name": "drawer--sm--border-top-right-radius"
+                    },
+                    "--drawer--border-bottom-right-radius": {
+                        "__type": "reference",
+                        "__name": "drawer--sm--border-bottom-right-radius"
+                    },
+                    "--drawer--border-bottom-left-radius": {
+                        "__type": "reference",
+                        "__name": "drawer--sm--border-bottom-left-radius"
+                    },
+                    "--drawer--font-size": {
+                        "__type": "reference",
+                        "__name": "drawer--sm--font-size"
+                    },
+                    "--drawer--max-width": {
+                        "__type": "reference",
+                        "__name": "drawer--sm--max-width"
+                    },
+                    "--drawer--padding-top": {
+                        "__type": "reference",
+                        "__name": "drawer--sm--padding-top"
+                    },
+                    "--drawer--padding-right": {
+                        "__type": "reference",
+                        "__name": "drawer--sm--padding-right"
+                    },
+                    "--drawer--padding-bottom": {
+                        "__type": "reference",
+                        "__name": "drawer--sm--padding-bottom"
+                    },
+                    "--drawer--padding-left": {
+                        "__type": "reference",
+                        "__name": "drawer--sm--padding-left"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer.-md",
+                "__value": {
+                    "--drawer--border-top-left-radius": {
+                        "__type": "reference",
+                        "__name": "drawer--md--border-top-left-radius"
+                    },
+                    "--drawer--border-top-right-radius": {
+                        "__type": "reference",
+                        "__name": "drawer--md--border-top-right-radius"
+                    },
+                    "--drawer--border-bottom-right-radius": {
+                        "__type": "reference",
+                        "__name": "drawer--md--border-bottom-right-radius"
+                    },
+                    "--drawer--border-bottom-left-radius": {
+                        "__type": "reference",
+                        "__name": "drawer--md--border-bottom-left-radius"
+                    },
+                    "--drawer--font-size": {
+                        "__type": "reference",
+                        "__name": "drawer--md--font-size"
+                    },
+                    "--drawer--max-width": {
+                        "__type": "reference",
+                        "__name": "drawer--md--max-width"
+                    },
+                    "--drawer--padding-top": {
+                        "__type": "reference",
+                        "__name": "drawer--md--padding-top"
+                    },
+                    "--drawer--padding-right": {
+                        "__type": "reference",
+                        "__name": "drawer--md--padding-right"
+                    },
+                    "--drawer--padding-bottom": {
+                        "__type": "reference",
+                        "__name": "drawer--md--padding-bottom"
+                    },
+                    "--drawer--padding-left": {
+                        "__type": "reference",
+                        "__name": "drawer--md--padding-left"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer.-lg",
+                "__value": {
+                    "--drawer--border-top-left-radius": {
+                        "__type": "reference",
+                        "__name": "drawer--lg--border-top-left-radius"
+                    },
+                    "--drawer--border-top-right-radius": {
+                        "__type": "reference",
+                        "__name": "drawer--lg--border-top-right-radius"
+                    },
+                    "--drawer--border-bottom-right-radius": {
+                        "__type": "reference",
+                        "__name": "drawer--lg--border-bottom-right-radius"
+                    },
+                    "--drawer--border-bottom-left-radius": {
+                        "__type": "reference",
+                        "__name": "drawer--lg--border-bottom-left-radius"
+                    },
+                    "--drawer--font-size": {
+                        "__type": "reference",
+                        "__name": "drawer--lg--font-size"
+                    },
+                    "--drawer--max-width": {
+                        "__type": "reference",
+                        "__name": "drawer--lg--max-width"
+                    },
+                    "--drawer--padding-top": {
+                        "__type": "reference",
+                        "__name": "drawer--lg--padding-top"
+                    },
+                    "--drawer--padding-right": {
+                        "__type": "reference",
+                        "__name": "drawer--lg--padding-right"
+                    },
+                    "--drawer--padding-bottom": {
+                        "__type": "reference",
+                        "__name": "drawer--lg--padding-bottom"
+                    },
+                    "--drawer--padding-left": {
+                        "__type": "reference",
+                        "__name": "drawer--lg--padding-left"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer.-fullscreen",
+                "__value": {
+                    "width": "100%",
+                    "height": "100%",
+                    "maxWidth": "100%",
+                    "display": "flex",
+                    "flexDirection": "column"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer.-fullscreen > .drawer-header, .drawer.-fullscreen > .drawer-body, .drawer.-fullscreen > .drawer-footer",
+                "__value": {
+                    "borderRadius": 0
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".drawer.-fullscreen > .drawer-body",
+                "__value": {
+                    "flex": "1",
+                    "overflow": "auto"
                 }
             },
             {

@@ -13,6 +13,7 @@
         "build:core": "turbo run build --filter '@inkline/types' --filter '@inkline/core' --filter '@inkline/config' --filter '@inkline/generator-css' --filter '@inkline/theme'",
         "build:ui": "turbo run build --filter '@inkline/addon-*' --filter '@inkline/composables' --filter '@inkline/i18n' --filter '@inkline/theme' --filter '@inkline/types' --filter '@inkline/validation' --filter '@inkline/vue'",
         "dev": "turbo run dev --concurrency 64",
+        "dev:docs": "turbo run dev --filter '@inkline/docs'",
         "dev:core": "turbo run dev --filter '@inkline/types' --filter '@inkline/core' --filter '@inkline/config' --filter '@inkline/generator-css' --filter '@inkline/theme'",
         "dev:ui": "turbo run dev --filter '@inkline/addon-*' --filter '@inkline/composables' --filter '@inkline/i18n' --filter '@inkline/theme' --filter '@inkline/types' --filter '@inkline/validation' --filter '@inkline/vue'",
         "storybook": "cd storybook && pnpm run dev",

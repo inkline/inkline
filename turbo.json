@@ -5,6 +5,7 @@
             "cache": true,
             "inputs": [
                 "src/**",
+                "vite.config.ts",
                 "inkline.config.ts",
                 "package.json"
             ],
