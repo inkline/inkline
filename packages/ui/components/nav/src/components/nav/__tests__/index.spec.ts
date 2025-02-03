@@ -47,7 +47,7 @@ describe('Components', () => {
                 it('should add classes based on props', () => {
                     const wrapper = render(Nav, {
                         props: {
-                            vertical: true,
+                            direction: 'column',
                             ...props
                         },
                         global: {
@@ -60,7 +60,7 @@ describe('Components', () => {
                     expect(wrapper.container.firstChild).toHaveClass(
                         `-${props.color}`,
                         `-${props.size}`,
-                        '-vertical'
+                        '-direction-column'
                     );
                 });
             });

@@ -31,12 +31,12 @@ export default defineComponent({
         },
         /**
          * Display the nav with vertical orientation
-         * @param {boolean} vertical
-         * @default false
+         * @param {'row' | 'column'} row
+         * @default 'row'
          */
-        vertical: {
-            type: Boolean,
-            default: false
+        direction: {
+            type: String as PropType<'row' | 'column'>,
+            default: 'row'
         },
         /**
          * Nav items to display
@@ -57,7 +57,7 @@ export default defineComponent({
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
-            '-vertical': props.vertical
+            [`-direction-${props.direction}`]: true
         }));
 
         provide(NavKey, {

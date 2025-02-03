@@ -14,6 +14,7 @@ import { Input, Textarea } from '@inkline/component-input';
 import { Loader } from '@inkline/component-loader';
 import { Media } from '@inkline/component-media';
 import { Modal, ModalContainer } from '@inkline/component-modal';
+import { Nav, NavItem } from '@inkline/component-nav';
 import { Popover } from '@inkline/component-popover';
 import { Popup } from '@inkline/component-popup';
 import { Radio, RadioGroup } from '@inkline/component-radio';
@@ -40,6 +41,8 @@ export const components: Record<string, Component> = {
     Media,
     Modal,
     ModalContainer,
+    Nav,
+    NavItem,
     Popover,
     Popup,
     Radio,

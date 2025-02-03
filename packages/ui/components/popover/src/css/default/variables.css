@@ -352,10 +352,6 @@
     --popover--box-shadow-blur-radius: var(--box-shadow-blur-radius);
     --popover--box-shadow-spread-radius: var(--box-shadow-spread-radius);
     --popover--box-shadow-color: var(--box-shadow-color);
-    --popover--padding-top: calc(var(--spacing) * 0.75 var(--spacing-md));
-    --popover--padding-right: var(--spacing-md);
-    --popover--padding-bottom: calc(var(--spacing) * 0.75 var(--spacing-md));
-    --popover--padding-left: var(--spacing-md);
     --popover--transition-property: var(--transition-property);
     --popover--transition-duration: var(--transition-duration);
     --popover--transition-timing-function: var(--transition-timing-function);
@@ -368,6 +364,10 @@
     --popover--border-bottom-right-radius: var(--border-bottom-right-radius-md);
     --popover--border-bottom-left-radius: var(--border-bottom-left-radius-md);
     --popover--font-size: var(--font-size-md);
+    --popover--padding-top: calc(var(--spacing-md) * 0.75);
+    --popover--padding-right: var(--spacing-md);
+    --popover--padding-bottom: calc(var(--spacing-md) * 0.75);
+    --popover--padding-left: var(--spacing-md);
     --popover--width: calc(var(--spacing-md) * 18);
     --popover--arrow--size: calc(var(--spacing-md) * 0.5);
     --popover--sm--border-top-left-radius: var(--border-top-left-radius-sm);

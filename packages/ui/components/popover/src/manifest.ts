@@ -195,21 +195,6 @@ export const manifest: ComponentManifest[] = [
                     name: '--popover--box-shadow'
                 },
                 {
-                    name: '--popover--padding-top'
-                },
-                {
-                    name: '--popover--padding-right'
-                },
-                {
-                    name: '--popover--padding-bottom'
-                },
-                {
-                    name: '--popover--padding-left'
-                },
-                {
-                    name: '--popover--padding'
-                },
-                {
                     name: '--popover--transition-property'
                 },
                 {
@@ -250,6 +235,21 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--popover--font-size'
+                },
+                {
+                    name: '--popover--padding-top'
+                },
+                {
+                    name: '--popover--padding-right'
+                },
+                {
+                    name: '--popover--padding-bottom'
+                },
+                {
+                    name: '--popover--padding-left'
+                },
+                {
+                    name: '--popover--padding'
                 },
                 {
                     name: '--popover--width'

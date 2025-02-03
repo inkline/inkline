@@ -6,7 +6,7 @@
         "dev": "devtools tsup watch",
         "prebuild": "pnpm run generate",
         "build": "devtools tsup build",
-        "postbuild": "cp -r src/templates dist/templates",
+        "postbuild": "cp -r ./src/templates ./dist",
         "lint": "devtools eslint",
         "test": "devtools test",
         "test:dev": "devtools test --watch",

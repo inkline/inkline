@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "devtools tsup watch",
         "build": "devtools tsup build",
-        "postbuild": "cp -r ../framework/src/templates dist/templates",
+        "postbuild": "cp -r ../framework/src/templates ./dist",
         "lint": "devtools eslint",
         "test": "devtools test",
         "test:dev": "devtools test --watch",

@@ -4338,6 +4338,90 @@ input[type="submit"].button.-block, input[type="reset"].button.-block, input[typ
     overflow: auto;
 }
 
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+.nav.-direction-row {
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.nav.-direction-column {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.nav.-sm {
+    --nav--font-size: var(--nav--sm--font-size);
+    --nav--padding-top: var(--nav--sm--padding-top);
+    --nav--padding-right: var(--nav--sm--padding-right);
+    --nav--padding-bottom: var(--nav--sm--padding-bottom);
+    --nav--padding-left: var(--nav--sm--padding-left);
+}
+
+.nav.-md {
+    --nav--font-size: var(--nav--md--font-size);
+    --nav--padding-top: var(--nav--md--padding-top);
+    --nav--padding-right: var(--nav--md--padding-right);
+    --nav--padding-bottom: var(--nav--md--padding-bottom);
+    --nav--padding-left: var(--nav--md--padding-left);
+}
+
+.nav.-lg {
+    --nav--font-size: var(--nav--lg--font-size);
+    --nav--padding-top: var(--nav--lg--padding-top);
+    --nav--padding-right: var(--nav--lg--padding-right);
+    --nav--padding-bottom: var(--nav--lg--padding-bottom);
+    --nav--padding-left: var(--nav--lg--padding-left);
+}
+
+.nav.-light {
+    --nav--color: var(--nav--light--color);
+    --nav--item--active--color: var(--nav--light--item--active--color);
+}
+
+.nav.-dark {
+    --nav--color: var(--nav--dark--color);
+    --nav--item--active--color: var(--nav--dark--item--active--color);
+}
+
+.nav-item {
+    color: var(--nav--color);
+    font-size: var(--nav--font-size);
+    transition-property: var(--nav--transition-property);
+    transition-duration: var(--nav--transition-duration);
+    transition-timing-function: var(--nav--transition-timing-function);
+    padding: var(--nav--padding, var(--nav--padding-top) var(--nav--padding-right) var(--nav--padding-bottom) var(--nav--padding-left));
+    display: block;
+    margin-bottom: 0;
+}
+
+.nav-item.-disabled {
+    color: var(--nav--item--disabled--color);
+    pointer-events: none;
+    cursor: default;
+}
+
+.nav-item.-active {
+    color: var(--nav--item--active--color);
+    font-weight: var(--nav--item--active--font-weight);
+}
+
+.nav-item:hover, .nav-item:focus {
+    text-decoration: none;
+    outline: 0;
+}
+
+.nav-item[to], .nav-item[href] {
+    cursor: pointer;
+}
+
 .popover {
     position: absolute;
     display: flex;

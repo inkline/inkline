@@ -207,12 +207,6 @@ export function usePopoverThemeConfig(userOptions: DefinitionOptions) {
                 spreadRadius: ref(boxShadowSpreadRadius),
                 color: ref(boxShadowColor)
             },
-            padding: {
-                top: multiply(ref(spacing), 3 / 4),
-                right: ref(spacing),
-                bottom: multiply(ref(spacing), 3 / 4),
-                left: ref(spacing)
-            },
             transition: {
                 property: ref(transitionProperty),
                 duration: ref(transitionDuration),

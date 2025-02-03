@@ -28,6 +28,7 @@
         "@inkline/component-loader": "workspace:*",
         "@inkline/component-media": "workspace:*",
         "@inkline/component-modal": "workspace:*",
+        "@inkline/component-nav": "workspace:*",
         "@inkline/component-popover": "workspace:*",
         "@inkline/component-popup": "workspace:*",
         "@inkline/component-radio": "workspace:*",

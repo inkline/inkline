@@ -7,5 +7,10 @@ export default defineNuxtConfig({
     devtools: { enabled: true },
     inkline: {
         outputDir: path.resolve(__dirname, 'theme')
+    },
+    imports: {
+        transform: {
+            exclude: [/components\/.+/]
+        }
     }
 });

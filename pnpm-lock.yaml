@@ -1384,6 +1384,9 @@ importers:
       '@inkline/component-modal':
         specifier: workspace:*
         version: link:../modal
+      '@inkline/component-nav':
+        specifier: workspace:*
+        version: link:../nav
       '@inkline/component-popover':
         specifier: workspace:*
         version: link:../popover

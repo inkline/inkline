@@ -6450,60 +6450,6 @@
                     "__name": "box-shadow-color"
                 }
             },
-            "popover--padding-top": {
-                "__type": "variable",
-                "__name": "popover--padding-top",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        0.75,
-                        {
-                            "__type": "reference",
-                            "__name": "spacing-md"
-                        }
-                    ]
-                }
-            },
-            "popover--padding-right": {
-                "__type": "variable",
-                "__name": "popover--padding-right",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing-md"
-                }
-            },
-            "popover--padding-bottom": {
-                "__type": "variable",
-                "__name": "popover--padding-bottom",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "spacing"
-                        },
-                        "*",
-                        0.75,
-                        {
-                            "__type": "reference",
-                            "__name": "spacing-md"
-                        }
-                    ]
-                }
-            },
-            "popover--padding-left": {
-                "__type": "variable",
-                "__name": "popover--padding-left",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "spacing-md"
-                }
-            },
             "popover--transition-property": {
                 "__type": "variable",
                 "__name": "popover--transition-property",
@@ -6592,6 +6538,52 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "font-size-md"
+                }
+            },
+            "popover--padding-top": {
+                "__type": "variable",
+                "__name": "popover--padding-top",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-md"
+                        },
+                        "*",
+                        0.75
+                    ]
+                }
+            },
+            "popover--padding-right": {
+                "__type": "variable",
+                "__name": "popover--padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "popover--padding-bottom": {
+                "__type": "variable",
+                "__name": "popover--padding-bottom",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-md"
+                        },
+                        "*",
+                        0.75
+                    ]
+                }
+            },
+            "popover--padding-left": {
+                "__type": "variable",
+                "__name": "popover--padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
                 }
             },
             "popover--width": {

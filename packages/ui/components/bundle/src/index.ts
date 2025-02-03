@@ -13,6 +13,7 @@ export * from '@inkline/component-input';
 export * from '@inkline/component-loader';
 export * from '@inkline/component-media';
 export * from '@inkline/component-modal';
+export * from '@inkline/component-nav';
 export * from '@inkline/component-popover';
 export * from '@inkline/component-popup';
 export * from '@inkline/component-radio';
