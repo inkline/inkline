@@ -20,9 +20,8 @@ export default defineComponent({
     props: {
         /**
          * The event bus to use for showing/hiding modals
-         * @type EventBus
+         * @param {EventBus} eventBus
          * @default modalEventBus
-         * @name eventBus
          */
         eventBus: {
             type: Object as PropType<EventBus<ModalEventBusPayload>>,

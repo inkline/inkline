@@ -6,9 +6,8 @@ import type { VNode } from 'vue';
 
 /**
  * The icon to be displayed
- * @type String
+ * @param {string} name
  * @default
- * @name name
  */
 
 const componentName = 'Icon';
@@ -23,9 +22,8 @@ export default defineComponent({
     props: {
         /**
          * @description The icon to be displayed
-         * @type String
+         * @param {string} name
          * @default
-         * @name name
          */
         name: {
             type: String,
@@ -33,9 +31,8 @@ export default defineComponent({
         },
         /**
          * The width of the icon. Will override the size prop
-         * @type String | Number
+         * @param {string | number} width
          * @default undefined
-         * @name width
          */
         width: {
             type: [String, Number],
@@ -43,9 +40,8 @@ export default defineComponent({
         },
         /**
          * The height of the icon. Will override the size prop
-         * @type String | Number
+         * @param {string | number} height
          * @default undefined
-         * @name height
          */
         height: {
             type: [String, Number],

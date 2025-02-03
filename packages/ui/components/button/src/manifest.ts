@@ -6,105 +6,105 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'active',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The active state of the button',
                 default: 'false'
             },
             {
                 name: 'block',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Display the button as a block, spanning the full container width',
                 default: 'false'
             },
             {
                 name: 'circle',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Display the button as a circle',
                 default: 'false'
             },
             {
                 name: 'color',
-                type: 'primary',
+                type: "'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'",
                 description: 'The color variant of the button',
                 default: ''
             },
             {
                 name: 'disabled',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The disabled state of the button',
                 default: 'false'
             },
             {
                 name: 'to',
-                type: 'String',
+                type: 'string',
                 description: 'Renders the component as an anchor link with a `href` attribute',
                 default: 'undefined'
             },
             {
                 name: 'link',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Display the button as a link',
                 default: 'false'
             },
             {
                 name: 'loading',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The loading state of the button',
                 default: 'false'
             },
             {
                 name: 'showLoadingIcon',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Display the button loading icon when loading state is active',
                 default: 'true'
             },
             {
                 name: 'outline',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Display the button as an outline button',
                 default: 'false'
             },
             {
                 name: 'square',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Display the button as a square',
                 default: 'false'
             },
             {
                 name: 'tag',
-                type: 'String',
+                type: 'string',
                 description: 'Set the HTML tag to be used for rendering the button',
                 default: 'button'
             },
             {
                 name: 'tabindex',
-                type: 'Number',
+                type: 'number | string',
                 description: 'The tabindex of the button',
                 default: '0'
             },
             {
                 name: 'to',
-                type: 'String',
+                type: 'string',
                 description:
                     'Renders the component as a Router Link component with a `to` attribute',
                 default: 'undefined'
             },
             {
                 name: 'type',
-                type: 'button',
+                type: "'button' | 'submit' | 'reset' | string",
                 description: 'The type of the button',
                 default: ''
             },
             {
                 name: 'sizeMultiplier',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the button',
                 default: ''
             }
         ],
         events: [
             {
-                name: 'click',
+                name: 'Button',
                 description: 'Emitted when the button is clicked'
             }
         ],

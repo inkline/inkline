@@ -6,7 +6,7 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'axis',
-                type: "'x'",
+                type: "'x' | 'y'",
                 description: 'The axis to expand on',
                 default: "'y'"
             }

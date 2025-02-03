@@ -22,9 +22,8 @@ export default defineComponent({
     props: {
         /**
          * The size variant of the toast
-         * @type sm | md | lg
+         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
          * @default
-         * @name sizeMultiplier
          */
         size: {
             type: String,
@@ -32,9 +31,8 @@ export default defineComponent({
         },
         /**
          * The color variant of the toast
-         * @type light | dark | info | success | warning | danger
+         * @param {light | dark | info | success | warning | danger} color
          * @default light
-         * @name color
          */
         color: {
             type: String,
@@ -42,9 +40,8 @@ export default defineComponent({
         },
         /**
          * The duration of the toast, in milliseconds. A duration of 0 will show the toast indefinitely.
-         * @type Number
+         * @param {number} duration
          * @default 0
-         * @name duration
          */
         duration: {
             type: Number,
@@ -52,9 +49,8 @@ export default defineComponent({
         },
         /**
          * Show progress bar for the duration of the toast
-         * @type Boolean
+         * @param {boolean} showProgress
          * @default true
-         * @name showProgress
          */
         showProgress: {
             type: Boolean,
@@ -62,9 +58,8 @@ export default defineComponent({
         },
         /**
          * The icon to be rendered in the toast
-         * @type string | VNode | VNode[]
+         * @param {string | VNode | VNode[]} icon
          * @default undefined
-         * @name icon
          */
         icon: {
             type: [String, Object] as PropType<StringOrRenderableType>,
@@ -72,9 +67,8 @@ export default defineComponent({
         },
         /**
          * The title to be rendered in the toast
-         * @type string | VNode | VNode[]
+         * @param {string | VNode | VNode[]} title
          * @default undefined
-         * @name title
          */
         title: {
             type: [String, Object] as PropType<StringOrRenderableType>,
@@ -82,9 +76,8 @@ export default defineComponent({
         },
         /**
          * The message to be rendered in the toast
-         * @type string | VNode | VNode[]
+         * @param {string | VNode | VNode[]} message
          * @default undefined
-         * @name message
          */
         message: {
             type: [String, Object] as PropType<StringOrRenderableType>,
@@ -92,9 +85,8 @@ export default defineComponent({
         },
         /**
          * Used to show or hide a dismissible toast
-         * @type Boolean
+         * @param {boolean} modelValue
          * @default true
-         * @name modelValue
          */
         modelValue: {
             type: Boolean,
@@ -102,9 +94,8 @@ export default defineComponent({
         },
         /**
          * Used to set the position of the toast
-         * @type top-left | top | top-right | right | bottom-right | bottom | bottom-left | left
+         * @param {'top-left' | 'top' | 'top-right' | 'right' | 'bottom-right' | 'bottom' | 'bottom-left' | 'left'} position
          * @default top-right
-         * @name position
          */
         position: {
             type: String,
@@ -112,9 +103,8 @@ export default defineComponent({
         },
         /**
          * Shows a dismiss icon on the toast
-         * @type Boolean
+         * @param {boolean} dismissible
          * @default false
-         * @name dismissible
          */
         dismissible: {
             type: Boolean,
@@ -122,9 +112,8 @@ export default defineComponent({
         },
         /**
          * The aria-label to use for the dismiss button
-         * @type String
+         * @param {string} dismissAriaLabel
          * @default Dismiss
-         * @name dismissAriaLabel
          */
         dismissAriaLabel: {
             type: String,
@@ -134,8 +123,7 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted when the toast is dismissed
-         * @type event
-         * @name dismiss
+         * @event dismiss
          */
         'update:modelValue'
     ],

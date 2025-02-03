@@ -6,15 +6,21 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'color',
-                type: 'primary',
+                type: "'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'",
                 description: 'The color variant of the card',
                 default: ''
             },
             {
                 name: 'sizeMultiplier',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the card',
                 default: ''
+            },
+            {
+                name: 'tag',
+                type: 'string',
+                description: 'The HTML tag to use for the card root element',
+                default: 'div'
             }
         ],
         events: [],

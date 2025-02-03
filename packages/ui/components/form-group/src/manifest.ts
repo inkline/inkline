@@ -6,55 +6,55 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'color',
-                type: 'light',
+                type: "'light' | 'dark'",
                 description: 'The color variant of the form group',
                 default: ''
             },
             {
                 name: 'disabled',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The disabled state of the form group',
                 default: 'false'
             },
             {
                 name: 'inline',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Display the form group as inline',
                 default: 'false'
             },
             {
                 name: 'name',
-                type: 'String',
+                type: 'string',
                 description: 'The identifier of the form group',
                 default: ''
             },
             {
                 name: 'readonly',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The readonly state of the form group',
                 default: 'false'
             },
             {
                 name: 'required',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The required state of the form group',
                 default: 'false'
             },
             {
                 name: 'size',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the form group',
                 default: ''
             },
             {
                 name: 'shouldValidate',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Enable form validation using schema',
                 default: 'true'
             },
             {
                 name: 'errorCondition',
-                type: 'Boolean',
+                type: 'boolean | Array',
                 description: 'The error state of the input, computed based on schema by default.',
                 default: 'undefined'
             }

@@ -9,8 +9,7 @@ export default defineComponent({
     props: {
         /**
          * The axis to expand on
-         * @name axis
-         * @type 'x' | 'y'
+         * @param {'x' | 'y'} axis
          * @default 'y'
          */
         axis: {

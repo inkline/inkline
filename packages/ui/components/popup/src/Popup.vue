@@ -16,8 +16,7 @@ export default defineComponent({
     props: {
         /**
          * The animation to be used when showing the tooltip
-         * @name animation
-         * @type String
+         * @param {string} animation
          * @default zoom-in-top-transition
          */
         animation: {
@@ -26,8 +25,7 @@ export default defineComponent({
         },
         /**
          * Animation duration in milliseconds
-         * @name animationDuration
-         * @type Number
+         * @param {number} animationDuration
          * @default 300
          */
         animationDuration: {
@@ -36,8 +34,7 @@ export default defineComponent({
         },
         /**
          * The disabled state of the tooltip
-         * @name disabled
-         * @type Boolean
+         * @param {boolean} disabled
          * @default false
          */
         disabled: {
@@ -46,8 +43,7 @@ export default defineComponent({
         },
         /**
          * Used to manually control the visibility of the tooltip
-         * @name visible
-         * @type Boolean
+         * @param {boolean} visible
          * @default undefined
          */
         visible: {
@@ -56,8 +52,7 @@ export default defineComponent({
         },
         /**
          * The identifier of the tooltip
-         * @name name
-         * @type String
+         * @param {string} name
          * @default uid()
          */
         name: {
@@ -68,8 +63,7 @@ export default defineComponent({
         },
         /**
          * The placement of the tooltip
-         * @name placement
-         * @type top | top-start | top-end | bottom | bottom-start | bottom-end | left | left-start | left-end | right | right-start | right-end
+         * @param {'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'} placement
          * @default false
          */
         placement: {
@@ -78,9 +72,8 @@ export default defineComponent({
         },
         /**
          * The listener used to trigger the tooltip
-         * @name listener
-         * @type hover | focus | click | manual
-         * @default [hover, focus]
+         * @param {'hover' | 'focus' | 'click' | 'manual'} listener
+         * @default ['hover', 'focus']
          */
         listener: {
             type: [String, Array] as PropType<PopupTriggerListener | PopupTriggerListener[]>,
@@ -88,8 +81,7 @@ export default defineComponent({
         },
         /**
          * The offset of the tooltip relative to the trigger element
-         * @name offset
-         * @type Number
+         * @param {number} offset
          * @default 8
          */
         offset: {
@@ -98,8 +90,7 @@ export default defineComponent({
         },
         /**
          * Determines whether hover state should be transferred from trigger to popup
-         * @name interactive
-         * @type Boolean
+         * @param {boolean} interactive
          * @default true
          */
         interactive: {
@@ -108,8 +99,7 @@ export default defineComponent({
         },
         /**
          * Used to override the floating-ui options used for creating the tooltip
-         * @name popupOptions
-         * @type Object
+         * @param {Object} popupOptions
          * @default {}
          */
         popupOptions: {
@@ -118,8 +108,7 @@ export default defineComponent({
         },
         /**
          * Delay in milliseconds before the tooltip is hidden on hover
-         * @name interactiveDelay
-         * @type Number
+         * @param {number} interactiveDelay
          * @default 300
          */
         interactiveDelay: {
@@ -128,8 +117,7 @@ export default defineComponent({
         },
         /**
          * Determines whether the tooltip should hide when clicking outside
-         * @name hideOnClickOutside
-         * @type Boolean
+         * @param {boolean} hideOnClickOutside
          * @default true
          */
         hideOnClickOutside: {
@@ -140,14 +128,12 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the visible
-         * @type event
-         * @name update:visible
+         * @event update:visible
          */
         'update:visible',
         /**
          * Event emitted when clicking outside the tooltip
-         * @type event
-         * @name click:outside
+         * @event click:outside
          */
         'click:outside'
     ],

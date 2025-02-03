@@ -12,9 +12,8 @@ export default defineComponent({
     props: {
         /**
          * The color variant of the form
-         * @type light | dark
+         * @param {'light' | 'dark'} color
          * @default
-         * @name color
          */
         color: {
             type: String,
@@ -22,9 +21,8 @@ export default defineComponent({
         },
         /**
          * The disabled state of the form
-         * @type Boolean
+         * @param {boolean} disabled
          * @default false
-         * @name disabled
          */
         disabled: {
             type: Boolean,
@@ -32,9 +30,8 @@ export default defineComponent({
         },
         /**
          * Display the form as inline
-         * @type Boolean
+         * @param {boolean} inline
          * @default false
-         * @name inline
          */
         inline: {
             type: Boolean,
@@ -42,9 +39,8 @@ export default defineComponent({
         },
         /**
          * The loading state of the form
-         * @type Boolean
+         * @param {boolean} loading
          * @default false
-         * @name loading
          */
         loading: {
             type: Boolean,
@@ -52,9 +48,8 @@ export default defineComponent({
         },
         /**
          * The unique identifier of the form
-         * @type String
+         * @param {string} name
          * @default undefined
-         * @name name
          */
         name: {
             type: String,
@@ -62,9 +57,8 @@ export default defineComponent({
         },
         /**
          * Used to set the form schema
-         * @type Boolean
+         * @param {boolean} modelValue
          * @default false
-         * @name modelValue
          */
         modelValue: {
             type: Object as PropType<ResolvedFormSchema<Form>>,
@@ -72,9 +66,8 @@ export default defineComponent({
         },
         /**
          * The readonly state of the form
-         * @type Boolean
+         * @param {boolean} readonly
          * @default false
-         * @name readonly
          */
         readonly: {
             type: Boolean,
@@ -82,9 +75,8 @@ export default defineComponent({
         },
         /**
          * The size variant of the form
-         * @type sm | md | lg
+         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
          * @default
-         * @name sizeMultiplier
          */
         size: {
             type: String,
@@ -92,9 +84,8 @@ export default defineComponent({
         },
         /**
          * Enable form validation using schema
-         * @type Boolean
+         * @param {boolean} shouldValidate
          * @default true
-         * @name shouldValidate
          */
         shouldValidate: {
             type: Boolean,
@@ -102,8 +93,7 @@ export default defineComponent({
         },
         /**
          * The events to validate the form on
-         * @name validateOn
-         * @type Array | String
+         * @param {Array | number} validateOn
          * @default undefined
          */
         validateOn: {
@@ -112,9 +102,8 @@ export default defineComponent({
         },
         /**
          * The error state of the input, computed based on schema by default.
-         * @type Boolean | Array
+         * @param {boolean | Array} errorCondition
          * @default ['touched', 'dirty', 'invalid']
-         * @name errorCondition
          */
         errorCondition: {
             type: [Boolean, Array] as PropType<boolean | FormStateKeys[]>,
@@ -124,14 +113,12 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the modelValue schema
-         * @type event
-         * @name update:modelValue
+         * @event update:modelValue
          */
         'update:modelValue',
         /**
          * Event emitted for submitting the form
-         * @type event
-         * @name submit
+         * @event submit
          */
         'submit'
     ],

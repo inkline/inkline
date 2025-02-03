@@ -9,6 +9,9 @@
             "inkline*": [
                 "../packages/inkline/src*"
             ],
+            "@inkline/framework*": [
+                "../packages/integrations/framework/src*"
+            ],
             "@inkline/nuxt*": [
                 "../packages/integrations/nuxt/src*"
             ],

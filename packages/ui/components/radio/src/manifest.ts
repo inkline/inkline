@@ -2,153 +2,65 @@ import type { ComponentManifest } from '@inkline/types';
 
 export const manifest: ComponentManifest[] = [
     {
-        name: 'RadioGroup',
-        props: [
-            {
-                name: 'color',
-                type: 'light',
-                description: 'The color variant of the radio group',
-                default: ''
-            },
-            {
-                name: 'disabled',
-                type: 'Boolean',
-                description: 'The disabled state of the radio group',
-                default: 'false'
-            },
-            {
-                name: 'error',
-                type: 'Boolean',
-                description: 'The error state of the input, computed based on schema by default.',
-                default: "'touched', 'dirty', 'invalid'"
-            },
-            {
-                name: 'inline',
-                type: 'Boolean',
-                description: 'Display the radio group as inline',
-                default: 'false'
-            },
-            {
-                name: 'indeterminate',
-                type: 'Boolean',
-                description: 'The indeterminate state of the radio group',
-                default: 'false'
-            },
-            {
-                name: 'label',
-                type: 'String',
-                description:
-                    'The fallback label of the radio group. Can be a string, number, render function, or component',
-                default: 'undefined'
-            },
-            {
-                name: 'name',
-                type: 'String',
-                description: 'The unique identifier of the radio group',
-                default: 'uid()'
-            },
-            {
-                name: 'native',
-                type: 'Boolean',
-                description: 'Displays the native browser radio input indicator',
-                default: 'false'
-            },
-            {
-                name: 'readonly',
-                type: 'Boolean',
-                description: 'The readonly state of the radio group',
-                default: 'false'
-            },
-            {
-                name: 'sizeMultiplier',
-                type: 'sm',
-                description: 'The size variant of the radio group',
-                default: ''
-            },
-            {
-                name: 'validateSchema',
-                type: 'Boolean',
-                description: 'Enable checkbox group validation using schema',
-                default: 'true'
-            },
-            {
-                name: 'options',
-                type: 'Array',
-                description: 'The options of the radio group',
-                default: ''
-            }
-        ],
-        events: [
-            {
-                name: 'update:modelValue',
-                description: 'Event emitted for setting the modelValue'
-            }
-        ],
-        slots: [
-            {
-                name: 'default',
-                description: 'Slot for default radio group options'
-            }
-        ],
-        css: {
-            namespace: '',
-            variables: []
-        }
-    },
-    {
         name: 'Radio',
         props: [
             {
                 name: 'color',
-                type: 'light',
+                type: "'light' | 'dark'",
                 description: 'The color variant of the radio',
                 default: ''
             },
             {
                 name: 'disabled',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The disabled state of the radio',
                 default: 'false'
             },
             {
                 name: 'error',
-                type: 'Boolean',
+                type: 'boolean | FormStateKeys[]',
                 description: 'The error state of the input, computed based on schema by default.',
                 default: "'touched', 'dirty', 'invalid'"
             },
             {
+                name: 'modelValue',
+                type: 'string | number | boolean | object',
+                description: 'Used to set the radio value when used by itself',
+                default: 'false'
+            },
+            {
                 name: 'name',
-                type: 'String',
+                type: 'string',
                 description: 'The unique identifier of the radio',
                 default: 'uid()'
             },
             {
                 name: 'native',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Displays the native browser radio input indicator',
                 default: 'false'
             },
             {
                 name: 'readonly',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The readonly state of the radio',
                 default: 'false'
             },
             {
                 name: 'sizeMultiplier',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the radio',
                 default: ''
             },
             {
                 name: 'tabindex',
-                type: 'Number',
+                type: 'number | number',
                 description: 'The tabindex of the radio',
                 default: '0'
             },
             {
                 name: 'label',
-                type: 'String',
+                type: 'string | number | boolean | Function | Object',
                 description:
                     'The label to be displayed alongside the radio. Can be a string, number, render function, or component',
                 default: 'undefined'
@@ -162,7 +74,7 @@ export const manifest: ComponentManifest[] = [
         ],
         events: [
             {
-                name: 'update:modelValue',
+                name: 'Radio',
                 description: 'Event emitted for setting the modelValue'
             }
         ],
@@ -761,6 +673,100 @@ export const manifest: ComponentManifest[] = [
                     name: '--radio--{size}--circle--height'
                 }
             ]
+        }
+    },
+    {
+        name: 'RadioGroup',
+        props: [
+            {
+                name: 'color',
+                type: "'light' | 'dark'",
+                description: 'The color variant of the radio group',
+                default: ''
+            },
+            {
+                name: 'disabled',
+                type: 'boolean',
+                description: 'The disabled state of the radio group',
+                default: 'false'
+            },
+            {
+                name: 'error',
+                type: 'boolean | FormStateKeys[]',
+                description: 'The error state of the input, computed based on schema by default.',
+                default: "'touched', 'dirty', 'invalid'"
+            },
+            {
+                name: 'inline',
+                type: 'boolean',
+                description: 'Display the radio group as inline',
+                default: 'false'
+            },
+            {
+                name: 'indeterminate',
+                type: 'boolean',
+                description: 'The indeterminate state of the radio group',
+                default: 'false'
+            },
+            {
+                name: 'label',
+                type: 'string | number | boolean | Function | Object',
+                description:
+                    'The fallback label of the radio group. Can be a string, number, render function, or component',
+                default: 'undefined'
+            },
+            {
+                name: 'name',
+                type: 'string',
+                description: 'The unique identifier of the radio group',
+                default: 'uid()'
+            },
+            {
+                name: 'native',
+                type: 'boolean',
+                description: 'Displays the native browser radio input indicator',
+                default: 'false'
+            },
+            {
+                name: 'readonly',
+                type: 'boolean',
+                description: 'The readonly state of the radio group',
+                default: 'false'
+            },
+            {
+                name: 'sizeMultiplier',
+                type: "'sm' | 'md' | 'lg'",
+                description: 'The size variant of the radio group',
+                default: ''
+            },
+            {
+                name: 'validateSchema',
+                type: 'boolean',
+                description: 'Enable checkbox group validation using schema',
+                default: 'true'
+            },
+            {
+                name: 'options',
+                type: 'Array',
+                description: 'The options of the radio group',
+                default: ''
+            }
+        ],
+        events: [
+            {
+                name: 'RadioGroup',
+                description: 'Event emitted for setting the modelValue'
+            }
+        ],
+        slots: [
+            {
+                name: 'default',
+                description: 'Slot for default radio group options'
+            }
+        ],
+        css: {
+            namespace: '',
+            variables: []
         }
     },
     {

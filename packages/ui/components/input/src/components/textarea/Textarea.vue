@@ -15,9 +15,8 @@ export default defineComponent({
         ...Input.props,
         /**
          * The unique identifier of the textarea
-         * @type String
+         * @param {string} name
          * @default uid()
-         * @name name
          */
         name: {
             type: String,
@@ -29,14 +28,12 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the modelValue
-         * @type event
-         * @name update:modelValue
+         * @event update:modelValue
          */
         'update:modelValue',
         /**
          * Event emitted when clearing the input element
-         * @type event
-         * @name clear
+         * @event clear
          */
         'clear'
     ],

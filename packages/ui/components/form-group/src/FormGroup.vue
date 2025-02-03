@@ -16,9 +16,8 @@ export default defineComponent({
     props: {
         /**
          * The color variant of the form group
-         * @type light | dark
+         * @param {'light' | 'dark'} color
          * @default
-         * @name color
          */
         color: {
             type: String,
@@ -26,9 +25,8 @@ export default defineComponent({
         },
         /**
          * The disabled state of the form group
-         * @type Boolean
+         * @param {boolean} disabled
          * @default false
-         * @name disabled
          */
         disabled: {
             type: Boolean,
@@ -36,9 +34,8 @@ export default defineComponent({
         },
         /**
          * Display the form group as inline
-         * @type Boolean
+         * @param {boolean} inline
          * @default false
-         * @name inline
          */
         inline: {
             type: Boolean,
@@ -46,9 +43,8 @@ export default defineComponent({
         },
         /**
          * The identifier of the form group
-         * @type String
+         * @param {string} name
          * @default
-         * @name name
          */
         name: {
             type: String,
@@ -56,9 +52,8 @@ export default defineComponent({
         },
         /**
          * The readonly state of the form group
-         * @type Boolean
+         * @param {boolean} readonly
          * @default false
-         * @name readonly
          */
         readonly: {
             type: Boolean,
@@ -66,9 +61,8 @@ export default defineComponent({
         },
         /**
          * The required state of the form group
-         * @type Boolean
+         * @param {boolean} required
          * @default false
-         * @name required
          */
         required: {
             type: Boolean,
@@ -76,9 +70,8 @@ export default defineComponent({
         },
         /**
          * The size variant of the form group
-         * @type sm | md | lg
+         * @param {'sm' | 'md' | 'lg'} size
          * @default
-         * @name size
          */
         size: {
             type: String,
@@ -86,9 +79,8 @@ export default defineComponent({
         },
         /**
          * Enable form validation using schema
-         * @type Boolean
+         * @param {boolean} shouldValidate
          * @default true
-         * @name shouldValidate
          */
         shouldValidate: {
             type: Boolean,
@@ -96,9 +88,8 @@ export default defineComponent({
         },
         /**
          * The error state of the input, computed based on schema by default.
-         * @type Boolean | Array
+         * @param {boolean | Array} errorCondition
          * @default undefined
-         * @name errorCondition
          */
         errorCondition: {
             type: [Boolean, Array] as PropType<boolean | FormStateKeys[]>,

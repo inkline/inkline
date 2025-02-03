@@ -2,166 +2,79 @@ import type { ComponentManifest } from '@inkline/types';
 
 export const manifest: ComponentManifest[] = [
     {
-        name: 'ToastContainer',
-        props: [
-            {
-                name: 'eventBus',
-                type: 'EventBus',
-                description: 'The event bus to use for showing/hiding toasts',
-                default: 'toastEventBus'
-            },
-            {
-                name: 'duration',
-                type: 'number',
-                description:
-                    'The default duration for toasts in milliseconds, if not specified in the plugin or toast display options',
-                default: 'undefined'
-            },
-            {
-                name: 'dismissible',
-                type: 'Boolean',
-                description:
-                    'The default dismissible state for toasts, if not specified in the plugin or toast display options',
-                default: 'undefined'
-            },
-            {
-                name: 'showProgress',
-                type: 'Boolean',
-                description:
-                    'The default option for showing the progress bar for toasts, if not specified in the plugin or toast display options',
-                default: 'undefined'
-            }
-        ],
-        events: [],
-        slots: [],
-        css: {
-            namespace: 'toast-container',
-            variables: [
-                {
-                    name: '--toast-container--margin-top'
-                },
-                {
-                    name: '--toast-container--margin-right'
-                },
-                {
-                    name: '--toast-container--margin-bottom'
-                },
-                {
-                    name: '--toast-container--margin-left'
-                },
-                {
-                    name: '--toast-container--margin'
-                },
-                {
-                    name: '--toast-container--width'
-                },
-                {
-                    name: '--toast-container--z-index'
-                },
-                {
-                    name: '--toast-container--toast--margin-top'
-                },
-                {
-                    name: '--toast-container--toast--margin-right'
-                },
-                {
-                    name: '--toast-container--toast--margin-bottom'
-                },
-                {
-                    name: '--toast-container--toast--margin-left'
-                },
-                {
-                    name: '--toast-container--toast--margin'
-                },
-                {
-                    name: '--toast-container--toast--transition-property'
-                },
-                {
-                    name: '--toast-container--toast--transition-duration'
-                },
-                {
-                    name: '--toast-container--toast--transition-timing-function'
-                },
-                {
-                    name: '--toast-container--toast--transition'
-                }
-            ]
-        }
-    },
-    {
         name: 'Toast',
         props: [
             {
                 name: 'sizeMultiplier',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the toast',
                 default: ''
             },
             {
                 name: 'color',
-                type: 'light',
+                type: 'light | dark | info | success | warning | danger',
                 description: 'The color variant of the toast',
                 default: 'light'
             },
             {
                 name: 'duration',
-                type: 'Number',
+                type: 'number',
                 description:
                     'The duration of the toast, in milliseconds. A duration of 0 will show the toast indefinitely.',
                 default: '0'
             },
             {
                 name: 'showProgress',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Show progress bar for the duration of the toast',
                 default: 'true'
             },
             {
                 name: 'icon',
-                type: 'string',
+                type: 'string | VNode | VNode[]',
                 description: 'The icon to be rendered in the toast',
                 default: 'undefined'
             },
             {
                 name: 'title',
-                type: 'string',
+                type: 'string | VNode | VNode[]',
                 description: 'The title to be rendered in the toast',
                 default: 'undefined'
             },
             {
                 name: 'message',
-                type: 'string',
+                type: 'string | VNode | VNode[]',
                 description: 'The message to be rendered in the toast',
                 default: 'undefined'
             },
             {
                 name: 'modelValue',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Used to show or hide a dismissible toast',
                 default: 'true'
             },
             {
                 name: 'position',
-                type: 'top-left',
+                type: "'top-left' | 'top' | 'top-right' | 'right' | 'bottom-right' | 'bottom' | 'bottom-left' | 'left'",
                 description: 'Used to set the position of the toast',
                 default: 'top-right'
             },
             {
                 name: 'dismissible',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Shows a dismiss icon on the toast',
                 default: 'false'
             },
             {
                 name: 'dismissAriaLabel',
-                type: 'String',
+                type: 'string',
                 description: 'The aria-label to use for the dismiss button',
                 default: 'Dismiss'
             }
         ],
         events: [
             {
-                name: 'dismiss',
+                name: 'Toast',
                 description: 'Event emitted when the toast is dismissed'
             }
         ],
@@ -392,6 +305,93 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--{size}--progress--height'
+                }
+            ]
+        }
+    },
+    {
+        name: 'ToastContainer',
+        props: [
+            {
+                name: 'eventBus',
+                type: 'EventBus',
+                description: 'The event bus to use for showing/hiding toasts',
+                default: 'toastEventBus'
+            },
+            {
+                name: 'duration',
+                type: 'number',
+                description:
+                    'The default duration for toasts in milliseconds, if not specified in the plugin or toast display options',
+                default: 'undefined'
+            },
+            {
+                name: 'dismissible',
+                type: 'boolean',
+                description:
+                    'The default dismissible state for toasts, if not specified in the plugin or toast display options',
+                default: 'undefined'
+            },
+            {
+                name: 'showProgress',
+                type: 'boolean',
+                description:
+                    'The default option for showing the progress bar for toasts, if not specified in the plugin or toast display options',
+                default: 'undefined'
+            }
+        ],
+        events: [],
+        slots: [],
+        css: {
+            namespace: 'toast-container',
+            variables: [
+                {
+                    name: '--toast-container--margin-top'
+                },
+                {
+                    name: '--toast-container--margin-right'
+                },
+                {
+                    name: '--toast-container--margin-bottom'
+                },
+                {
+                    name: '--toast-container--margin-left'
+                },
+                {
+                    name: '--toast-container--margin'
+                },
+                {
+                    name: '--toast-container--width'
+                },
+                {
+                    name: '--toast-container--z-index'
+                },
+                {
+                    name: '--toast-container--toast--margin-top'
+                },
+                {
+                    name: '--toast-container--toast--margin-right'
+                },
+                {
+                    name: '--toast-container--toast--margin-bottom'
+                },
+                {
+                    name: '--toast-container--toast--margin-left'
+                },
+                {
+                    name: '--toast-container--toast--margin'
+                },
+                {
+                    name: '--toast-container--toast--transition-property'
+                },
+                {
+                    name: '--toast-container--toast--transition-duration'
+                },
+                {
+                    name: '--toast-container--toast--transition-timing-function'
+                },
+                {
+                    name: '--toast-container--toast--transition'
                 }
             ]
         }

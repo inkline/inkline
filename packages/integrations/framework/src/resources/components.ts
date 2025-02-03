@@ -10,6 +10,11 @@ export default [
         "filePath": "@inkline/component-badge"
     },
     {
+        "name": "Button",
+        "export": "Button",
+        "filePath": "@inkline/component-button"
+    },
+    {
         "name": "ButtonGroup",
         "export": "ButtonGroup",
         "filePath": "@inkline/component-button-group"
@@ -18,11 +23,6 @@ export default [
         "name": "Card",
         "export": "Card",
         "filePath": "@inkline/component-card"
-    },
-    {
-        "name": "Button",
-        "export": "Button",
-        "filePath": "@inkline/component-button"
     },
     {
         "name": "Expand",
@@ -55,14 +55,14 @@ export default [
         "filePath": "@inkline/component-icon"
     },
     {
-        "name": "Loader",
-        "export": "Loader",
-        "filePath": "@inkline/component-loader"
-    },
-    {
         "name": "Linkable",
         "export": "Linkable",
         "filePath": "@inkline/component-linkable"
+    },
+    {
+        "name": "Loader",
+        "export": "Loader",
+        "filePath": "@inkline/component-loader"
     },
     {
         "name": "Media",
@@ -110,13 +110,13 @@ export default [
         "filePath": "@inkline/component-checkbox"
     },
     {
-        "name": "Input",
-        "export": "Input",
+        "name": "Textarea",
+        "export": "Textarea",
         "filePath": "@inkline/component-input"
     },
     {
-        "name": "Textarea",
-        "export": "Textarea",
+        "name": "Input",
+        "export": "Input",
         "filePath": "@inkline/component-input"
     },
     {
@@ -130,13 +130,13 @@ export default [
         "filePath": "@inkline/component-modal"
     },
     {
-        "name": "Nav",
-        "export": "Nav",
+        "name": "NavItem",
+        "export": "NavItem",
         "filePath": "@inkline/component-nav"
     },
     {
-        "name": "NavItem",
-        "export": "NavItem",
+        "name": "Nav",
+        "export": "Nav",
         "filePath": "@inkline/component-nav"
     },
     {

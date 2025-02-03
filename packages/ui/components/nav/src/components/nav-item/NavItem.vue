@@ -11,9 +11,8 @@ export default defineComponent({
     props: {
         /**
          * The active state of the nav item
-         * @type Boolean
+         * @param {boolean} active
          * @default false
-         * @name active
          */
         active: {
             type: Boolean,
@@ -21,9 +20,8 @@ export default defineComponent({
         },
         /**
          * The disabled state of the nav item
-         * @type Boolean
+         * @param {boolean} disabled
          * @default false
-         * @name disabled
          */
         disabled: {
             type: Boolean,
@@ -31,9 +29,8 @@ export default defineComponent({
         },
         /**
          * Renders the component as an anchor link with a `href` attribute
-         * @type String
+         * @param {string} to
          * @default undefined
-         * @name to
          */
         href: {
             type: String,
@@ -41,9 +38,8 @@ export default defineComponent({
         },
         /**
          * Used to close the nearest navbar or sidebar by propagating the onClick event
-         * @type Boolean
+         * @param {boolean} stopPropagation
          * @default false
-         * @name stopPropagation
          */
         stopPropagation: {
             type: Boolean,
@@ -51,9 +47,8 @@ export default defineComponent({
         },
         /**
          * Set the HTML tag to be used for rendering the nav item
-         * @type String
+         * @param {string} tag
          * @default div
-         * @name tag
          */
         tag: {
             type: String,
@@ -61,9 +56,8 @@ export default defineComponent({
         },
         /**
          * The tabindex of the list group item
-         * @type Number | String
+         * @param {number | string} tabindex
          * @default 0
-         * @name tabindex
          */
         tabindex: {
             type: [Number, String],
@@ -71,9 +65,8 @@ export default defineComponent({
         },
         /**
          * Renders the component as a Router Link component with a `to` attribute
-         * @type String
+         * @param {string} to
          * @default undefined
-         * @name to
          */
         to: {
             type: [String, Object],

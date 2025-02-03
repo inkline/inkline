@@ -6,74 +6,80 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'color',
-                type: 'light',
+                type: "'light' | 'dark'",
                 description: 'The color variant of the toggle',
                 default: ''
             },
             {
                 name: 'disabled',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The disabled state of the toggle',
                 default: 'false'
             },
             {
-                name: 'error',
-                type: 'Boolean',
+                name: 'name',
+                type: 'boolean | Array',
                 description: 'The error state of the input, computed based on schema by default.',
                 default: "'touched', 'dirty', 'invalid'"
             },
             {
                 name: 'indeterminate',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The indeterminate state of the toggle',
                 default: 'false'
             },
             {
+                name: 'modelValue',
+                type: 'boolean',
+                description: 'Used to set the toggle value when used by itself',
+                default: 'false'
+            },
+            {
                 name: 'name',
-                type: 'String',
+                type: 'string',
                 description: 'The unique identifier of the toggle',
                 default: 'uid()'
             },
             {
                 name: 'native',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Displays the native browser toggle input indicator',
                 default: 'false'
             },
             {
                 name: 'readonly',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The readonly state of the toggle',
                 default: 'false'
             },
             {
                 name: 'rounded',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The rounded variant of the toggle',
                 default: 'false'
             },
             {
                 name: 'sizeMultiplier',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the toggle',
                 default: ''
             },
             {
                 name: 'tabindex',
-                type: 'Number',
+                type: 'number | number',
                 description: 'The tabindex of the toggle',
                 default: '0'
             },
             {
                 name: 'validateSchema',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Enable input validation using schema',
                 default: 'true'
             }
         ],
         events: [
             {
-                name: 'update:modelValue',
+                name: 'Toggle',
                 description: 'Event emitted for setting the modelValue'
             }
         ],

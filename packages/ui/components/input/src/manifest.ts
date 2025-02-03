@@ -2,148 +2,122 @@ import type { ComponentManifest } from '@inkline/types';
 
 export const manifest: ComponentManifest[] = [
     {
-        name: 'Textarea',
-        props: [
-            {
-                name: 'name',
-                type: 'String',
-                description: 'The unique identifier of the textarea',
-                default: 'uid()'
-            }
-        ],
-        events: [
-            {
-                name: 'update:modelValue',
-                description: 'Event emitted for setting the modelValue'
-            },
-            {
-                name: 'clear',
-                description: 'Event emitted when clearing the input element'
-            }
-        ],
-        slots: [],
-        css: {
-            namespace: '',
-            variables: []
-        }
-    },
-    {
         name: 'Input',
         props: [
             {
                 name: 'color',
-                type: 'light',
+                type: "'light' | 'dark'",
                 description: 'The color variant of the input',
                 default: ''
             },
             {
                 name: 'clearable',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Display the input as clearable',
                 default: 'false'
             },
             {
                 name: 'disabled',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The disabled state of the input',
                 default: 'false'
             },
             {
                 name: 'error',
-                type: 'Boolean',
+                type: 'boolean | FormStateKeys[]',
                 description: 'The error state of the input, computed based on schema by default.',
                 default: "'touched', 'dirty', 'invalid'"
             },
             {
                 name: 'id',
-                type: 'String',
+                type: 'string',
                 description: 'The id of the internal input element',
                 default: ''
             },
             {
                 name: 'wrapperId',
-                type: 'String',
+                type: 'string',
                 description: 'The id of the input wrapper element',
                 default: ''
             },
             {
                 name: 'modelValue',
-                type: 'String',
+                type: 'string | number',
                 description: 'Used to set the field value',
                 default: "''"
             },
             {
                 name: 'name',
-                type: 'String',
+                type: 'string',
                 description: 'The unique identifier of the input',
                 default: 'uid()'
             },
             {
                 name: 'plaintext',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Display the input as plaintext, disabling interaction',
                 default: 'false'
             },
             {
                 name: 'readonly',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The readonly state of the input',
                 default: 'false'
             },
             {
                 name: 'sizeMultiplier',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the input',
                 default: ''
             },
             {
                 name: 'tabindex',
-                type: 'Number',
+                type: 'number | string',
                 description: 'The tabindex of the input',
                 default: '0'
             },
             {
                 name: 'type',
-                type: 'String',
+                type: 'string',
                 description: 'The type of the input',
                 default: 'text'
             },
             {
                 name: 'clearAriaLabel',
-                type: 'String',
+                type: 'string',
                 description: 'The aria-label of the clear button',
                 default: 'Clear'
             },
             {
                 name: 'showPasswordToggleAriaLabel',
-                type: 'String',
+                type: 'string',
                 description: 'The aria-label of the show password toggle button',
                 default: 'Toggle'
             },
             {
                 name: 'showPasswordToggle',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Display the password toggle button',
                 default: 'true'
             },
             {
                 name: 'validateSchema',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Enable input validation using schema',
                 default: 'true'
             }
         ],
         events: [
             {
-                name: 'update:modelValue',
+                name: 'Input',
                 description: 'Event emitted for setting the modelValue'
             },
             {
-                name: 'clear',
+                name: 'Input',
                 description: 'Event emitted when clearing the input element'
             },
             {
-                name: 'togglePassword',
+                name: 'Input',
                 description: 'Event emitted when toggling the password visibility'
             }
         ],
@@ -588,6 +562,32 @@ export const manifest: ComponentManifest[] = [
                     name: '--input--{size}--padding-left'
                 }
             ]
+        }
+    },
+    {
+        name: 'Textarea',
+        props: [
+            {
+                name: 'name',
+                type: 'string',
+                description: 'The unique identifier of the textarea',
+                default: 'uid()'
+            }
+        ],
+        events: [
+            {
+                name: 'Textarea',
+                description: 'Event emitted for setting the modelValue'
+            },
+            {
+                name: 'Textarea',
+                description: 'Event emitted when clearing the input element'
+            }
+        ],
+        slots: [],
+        css: {
+            namespace: '',
+            variables: []
         }
     },
     {

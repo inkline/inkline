@@ -18,9 +18,8 @@ export default defineComponent({
     props: {
         /**
          * The color variant of the popover
-         * @name color
-         * @type light | dark
-         * @default
+         * @param {'light' | 'dark'} color
+         * @default undefined
          */
         color: {
             type: String,
@@ -28,8 +27,7 @@ export default defineComponent({
         },
         /**
          * The disabled state of the popover
-         * @name disabled
-         * @type Boolean
+         * @param {boolean} disabled
          * @default false
          */
         disabled: {
@@ -38,8 +36,7 @@ export default defineComponent({
         },
         /**
          * Used to manually control the visibility of the popover
-         * @name visible
-         * @type Boolean
+         * @param {boolean} visible
          * @default undefined
          */
         visible: {
@@ -48,8 +45,7 @@ export default defineComponent({
         },
         /**
          * The identifier of the popover
-         * @name name
-         * @type String
+         * @param {string} name
          * @default uid()
          */
         name: {
@@ -60,8 +56,7 @@ export default defineComponent({
         },
         /**
          * Displays an arrow on the popover pointing to the trigger element
-         * @name arrow
-         * @type Boolean
+         * @param {boolean} arrow
          * @default true
          */
         arrow: {
@@ -70,9 +65,8 @@ export default defineComponent({
         },
         /**
          * The placement of the popover
-         * @name placement
-         * @type top | top-start | top-end | bottom | bottom-start | bottom-end | left | left-start | left-end | right | right-start | right-end
-         * @default false
+         * @param {'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'} placement
+         * @default 'top'
          */
         placement: {
             type: String as PropType<Placement>,
@@ -80,8 +74,7 @@ export default defineComponent({
         },
         /**
          * The listener used to trigger the popover
-         * @name listener
-         * @type hover | focus | click | manual
+         * @param {'hover' | 'focus' | 'click' | 'manual'} listener
          * @default [hover, focus]
          */
         listener: {
@@ -90,8 +83,7 @@ export default defineComponent({
         },
         /**
          * The offset of the popover relative to the trigger element
-         * @name offset
-         * @type Number
+         * @param {number} offset
          * @default 6
          */
         offset: {
@@ -100,8 +92,7 @@ export default defineComponent({
         },
         /**
          * Determines whether hover state should be transferred from trigger to popup
-         * @name interactable
-         * @type Boolean
+         * @param {boolean} interactable
          * @default false
          */
         interactable: {
@@ -110,8 +101,7 @@ export default defineComponent({
         },
         /**
          * Used to override the floating-ui options used for creating the popover
-         * @name popupOptions
-         * @type Object
+         * @param {ComputePositionConfig} popupOptions
          * @default {}
          */
         popupOptions: {
@@ -120,8 +110,7 @@ export default defineComponent({
         },
         /**
          * The size variant of the popover
-         * @name sizeMultiplier
-         * @type sm | md | lg
+         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
          * @default
          */
         size: {
@@ -130,8 +119,7 @@ export default defineComponent({
         },
         /**
          * Delay in milliseconds before the popover is hidden on hover
-         * @name hoverHideDelay
-         * @type Number
+         * @param {number} hoverHideDelay
          * @default 300
          */
         hoverHideDelay: {
@@ -140,8 +128,7 @@ export default defineComponent({
         },
         /**
          * Animation duration in milliseconds
-         * @name animationDuration
-         * @type Number
+         * @param {number} animationDuration
          * @default 300
          */
         animationDuration: {
@@ -152,14 +139,12 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the visible
-         * @type event
-         * @name update:visible
+         * @event update:visible
          */
         'update:visible',
         /**
          * Event emitted when clicking outside the popover
-         * @type event
-         * @name click:outside
+         * @event click:outside
          */
         'click:outside'
     ],

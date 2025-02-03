@@ -6,13 +6,13 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'size',
-                type: "'sm'",
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the alert',
                 default: 'undefined'
             },
             {
                 name: 'color',
-                type: "'info'",
+                type: "'info' | 'success' | 'warning' | 'danger'",
                 description: 'The color variant of the alert',
                 default: "'info'"
             },
@@ -36,14 +36,14 @@ export const manifest: ComponentManifest[] = [
             },
             {
                 name: 'icon',
-                type: 'string',
+                type: 'string | VNode | VNode[]',
                 description: 'The icon to be rendered in the toast',
                 default: 'undefined'
             }
         ],
         events: [
             {
-                name: 'update:modelValue',
+                name: 'Alert',
                 description: 'Event emitted for setting the modelValue'
             }
         ],

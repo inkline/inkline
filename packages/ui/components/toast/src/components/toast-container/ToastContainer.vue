@@ -21,9 +21,8 @@ export default defineComponent({
     props: {
         /**
          * The event bus to use for showing/hiding toasts
-         * @type EventBus
+         * @param {EventBus} eventBus
          * @default toastEventBus
-         * @name eventBus
          */
         eventBus: {
             type: Object as PropType<EventBus<ToastEventBusPayload>>,
@@ -31,9 +30,8 @@ export default defineComponent({
         },
         /**
          * The default duration for toasts in milliseconds, if not specified in the plugin or toast display options
-         * @type number
+         * @param {number} duration
          * @default undefined
-         * @name duration
          */
         duration: {
             type: Number,
@@ -41,9 +39,8 @@ export default defineComponent({
         },
         /**
          * The default dismissible state for toasts, if not specified in the plugin or toast display options
-         * @type Boolean
+         * @param {boolean} dismissible
          * @default undefined
-         * @name dismissible
          */
         dismissible: {
             type: Boolean,
@@ -51,9 +48,8 @@ export default defineComponent({
         },
         /**
          * The default option for showing the progress bar for toasts, if not specified in the plugin or toast display options
-         * @type Boolean
+         * @param {boolean} showProgress
          * @default undefined
-         * @name showProgress
          */
         showProgress: {
             type: Boolean,

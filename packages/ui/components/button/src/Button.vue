@@ -17,17 +17,15 @@ export default defineComponent({
     events: [
         /**
          * Emitted when the button is clicked
-         * @type event
-         * @name click
+         * @event click
          */
         'click'
     ],
     props: {
         /**
          * The active state of the button
-         * @type Boolean
+         * @param {boolean} active
          * @default false
-         * @name active
          */
         active: {
             type: Boolean,
@@ -35,9 +33,8 @@ export default defineComponent({
         },
         /**
          * Display the button as a block, spanning the full container width
-         * @type Boolean
+         * @param {boolean} block
          * @default false
-         * @name block
          */
         block: {
             type: Boolean,
@@ -45,9 +42,8 @@ export default defineComponent({
         },
         /**
          * Display the button as a circle
-         * @type Boolean
+         * @param {boolean} circle
          * @default false
-         * @name circle
          */
         circle: {
             type: Boolean,
@@ -55,9 +51,8 @@ export default defineComponent({
         },
         /**
          * The color variant of the button
-         * @type primary | success | light | dark | info | success | warning | danger
+         * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} color
          * @default
-         * @name color
          */
         color: {
             type: String,
@@ -65,9 +60,8 @@ export default defineComponent({
         },
         /**
          * The disabled state of the button
-         * @type Boolean
+         * @param {boolean} disabled
          * @default false
-         * @name disabled
          */
         disabled: {
             type: Boolean,
@@ -75,9 +69,8 @@ export default defineComponent({
         },
         /**
          * Renders the component as an anchor link with a `href` attribute
-         * @type String
+         * @param {string} to
          * @default undefined
-         * @name to
          */
         href: {
             type: String,
@@ -85,9 +78,8 @@ export default defineComponent({
         },
         /**
          * Display the button as a link
-         * @type Boolean
+         * @param {boolean} link
          * @default false
-         * @name link
          */
         link: {
             type: Boolean,
@@ -95,9 +87,8 @@ export default defineComponent({
         },
         /**
          * The loading state of the button
-         * @type Boolean
+         * @param {boolean} loading
          * @default false
-         * @name loading
          */
         loading: {
             type: Boolean,
@@ -105,9 +96,8 @@ export default defineComponent({
         },
         /**
          * Display the button loading icon when loading state is active
-         * @type Boolean
+         * @param {boolean} showLoadingIcon
          * @default true
-         * @name showLoadingIcon
          */
         showLoadingIcon: {
             type: Boolean,
@@ -115,9 +105,8 @@ export default defineComponent({
         },
         /**
          * Display the button as an outline button
-         * @type Boolean
+         * @param {boolean} outline
          * @default false
-         * @name outline
          */
         outline: {
             type: Boolean,
@@ -125,9 +114,8 @@ export default defineComponent({
         },
         /**
          * Display the button as a square
-         * @type Boolean
+         * @param {boolean} square
          * @default false
-         * @name square
          */
         square: {
             type: Boolean,
@@ -135,9 +123,8 @@ export default defineComponent({
         },
         /**
          * Set the HTML tag to be used for rendering the button
-         * @type String
+         * @param {string} tag
          * @default button
-         * @name tag
          */
         tag: {
             type: String,
@@ -145,9 +132,8 @@ export default defineComponent({
         },
         /**
          * The tabindex of the button
-         * @type Number | String
+         * @param {number | string} tabindex
          * @default 0
-         * @name tabindex
          */
         tabindex: {
             type: [Number, String] as PropType<number | string>,
@@ -155,9 +141,8 @@ export default defineComponent({
         },
         /**
          * Renders the component as a Router Link component with a `to` attribute
-         * @type String
+         * @param {string} to
          * @default undefined
-         * @name to
          */
         to: {
             type: [String, Object] as PropType<string | object>,
@@ -165,9 +150,8 @@ export default defineComponent({
         },
         /**
          * The type of the button
-         * @type button | submit | reset | undefined
+         * @param {'button' | 'submit' | 'reset' | string} type
          * @default
-         * @name type
          */
         type: {
             type: String as PropType<'button' | 'submit' | 'reset' | string>,
@@ -175,9 +159,8 @@ export default defineComponent({
         },
         /**
          * The size variant of the button
-         * @type sm | md | lg
+         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
          * @default
-         * @name sizeMultiplier
          */
         size: {
             type: String,

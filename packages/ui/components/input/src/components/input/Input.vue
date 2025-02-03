@@ -22,9 +22,8 @@ export default defineComponent({
     props: {
         /**
          * The color variant of the input
-         * @type light | dark
+         * @param {'light' | 'dark'} color
          * @default
-         * @name color
          */
         color: {
             type: String,
@@ -32,9 +31,8 @@ export default defineComponent({
         },
         /**
          * Display the input as clearable
-         * @type Boolean
+         * @param {boolean} clearable
          * @default false
-         * @name clearable
          */
         clearable: {
             type: Boolean,
@@ -42,9 +40,8 @@ export default defineComponent({
         },
         /**
          * The disabled state of the input
-         * @type Boolean
+         * @param {boolean} disabled
          * @default false
-         * @name disabled
          */
         disabled: {
             type: Boolean,
@@ -52,20 +49,18 @@ export default defineComponent({
         },
         /**
          * The error state of the input, computed based on schema by default.
-         * @type Boolean | Array
+         * @param {boolean | FormStateKeys[]} error
          * @default ['touched', 'dirty', 'invalid']
-         * @TODO use propDefaultValue to set default value
-         * @name error
          */
         errorCondition: {
             type: [Boolean, Array] as PropType<boolean | FormStateKeys[]>,
+            // @TODO use propDefaultValue to set default value
             default: undefined
         },
         /**
          * The id of the internal input element
-         * @type String
+         * @param {string} id
          * @default
-         * @name id
          */
         id: {
             type: String,
@@ -73,9 +68,8 @@ export default defineComponent({
         },
         /**
          * The id of the input wrapper element
-         * @type String
+         * @param {string} wrapperId
          * @default
-         * @name wrapperId
          */
         wrapperId: {
             type: String,
@@ -83,9 +77,8 @@ export default defineComponent({
         },
         /**
          * Used to set the field value
-         * @type String | Number
+         * @param {string | number} modelValue
          * @default ''
-         * @name modelValue
          */
         modelValue: {
             type: [String, Number],
@@ -93,9 +86,8 @@ export default defineComponent({
         },
         /**
          * The unique identifier of the input
-         * @type String
+         * @param {string} name
          * @default uid()
-         * @name name
          */
         name: {
             type: String,
@@ -105,9 +97,8 @@ export default defineComponent({
         },
         /**
          * Display the input as plaintext, disabling interaction
-         * @type Boolean
+         * @param {boolean} plaintext
          * @default false
-         * @name plaintext
          */
         plaintext: {
             type: Boolean,
@@ -115,9 +106,8 @@ export default defineComponent({
         },
         /**
          * The readonly state of the input
-         * @type Boolean
+         * @param {boolean} readonly
          * @default false
-         * @name readonly
          */
         readonly: {
             type: Boolean,
@@ -125,9 +115,8 @@ export default defineComponent({
         },
         /**
          * The size variant of the input
-         * @type sm | md | lg
+         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
          * @default
-         * @name sizeMultiplier
          */
         size: {
             type: String,
@@ -135,9 +124,8 @@ export default defineComponent({
         },
         /**
          * The tabindex of the input
-         * @type Number | String
+         * @param {number | string} tabindex
          * @default 0
-         * @name tabindex
          */
         tabindex: {
             type: [Number, String],
@@ -145,9 +133,8 @@ export default defineComponent({
         },
         /**
          * The type of the input
-         * @type String
+         * @param {string} type
          * @default text
-         * @name type
          */
         type: {
             type: String,
@@ -155,9 +142,8 @@ export default defineComponent({
         },
         /**
          * The aria-label of the clear button
-         * @type String
+         * @param {string} clearAriaLabel
          * @default Clear
-         * @name clearAriaLabel
          */
         clearAriaLabel: {
             type: String,
@@ -165,9 +151,8 @@ export default defineComponent({
         },
         /**
          * The aria-label of the show password toggle button
-         * @type String
+         * @param {string} showPasswordToggleAriaLabel
          * @default Toggle password visibility
-         * @name showPasswordToggleAriaLabel
          */
         showPasswordToggleAriaLabel: {
             type: String,
@@ -175,9 +160,8 @@ export default defineComponent({
         },
         /**
          * Display the password toggle button
-         * @type Boolean
+         * @param {boolean} showPasswordToggle
          * @default true
-         * @name showPasswordToggle
          */
         showPasswordToggle: {
             type: Boolean,
@@ -185,9 +169,8 @@ export default defineComponent({
         },
         /**
          * Enable input validation using schema
-         * @type Boolean
+         * @param {boolean} validateSchema
          * @default true
-         * @name validateSchema
          */
         shouldValidate: {
             type: Boolean,
@@ -197,20 +180,17 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the modelValue
-         * @type event
-         * @name update:modelValue
+         * @event update:modelValue
          */
         'update:modelValue',
         /**
          * Event emitted when clearing the input element
-         * @type event
-         * @name clear
+         * @event clear
          */
         'clear',
         /**
          * Event emitted when toggling the password visibility
-         * @type event
-         * @name togglePassword
+         * @event togglePassword
          */
         'togglePassword'
     ],

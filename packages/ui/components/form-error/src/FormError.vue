@@ -11,9 +11,8 @@ export default defineComponent({
     props: {
         /**
          * The schema path of the target input to show the errors for.
-         * @type String
+         * @param {string} for
          * @default
-         * @name for
          */
         for: {
             type: String,
@@ -21,9 +20,8 @@ export default defineComponent({
         },
         /**
          * Set the validation statuses for which the form error should be visible.
-         * @type FormStateKeys[] | boolean
+         * @param {FormStateKeys[] | boolean} visible
          * @default ['touched', 'dirty', 'invalid']
-         * @name visible
          */
         errorCondition: {
             type: [Boolean, Array] as PropType<FormStateKeys[] | boolean>,

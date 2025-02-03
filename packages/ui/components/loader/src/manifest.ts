@@ -6,13 +6,13 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'color',
-                type: 'primary',
+                type: "'primary' | 'light' | 'dark'",
                 description: 'The color variant of the loader',
                 default: ''
             },
             {
                 name: 'sizeMultiplier',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg' | 'auto'",
                 description: 'The size variant of the loader',
                 default: ''
             }

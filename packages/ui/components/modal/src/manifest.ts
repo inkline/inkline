@@ -6,114 +6,114 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'closeOnPressEscape',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Determines if the modal should close when pressing escape',
                 default: 'true'
             },
             {
                 name: 'closeAriaLabel',
-                type: 'String',
+                type: 'string',
                 description: 'The aria-label attribute of the close button',
                 default: 'Close'
             },
             {
                 name: 'color',
-                type: 'primary',
+                type: "'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'",
                 description: 'The color variant of the modal',
                 default: ''
             },
             {
                 name: 'disabled',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The disabled state of the modal',
                 default: 'false'
             },
             {
                 name: 'fullscreen',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Make the modal cover the entire screen',
                 default: 'false'
             },
             {
                 name: 'hideOnClickOutside',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Determines if the modal should close when clicking the overlay',
                 default: 'true'
             },
             {
                 name: 'name',
-                type: 'String',
+                type: 'string',
                 description: 'The identifier of the modal',
                 default: 'uid()'
             },
             {
                 name: 'dismissible',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Determines if the close icon should be visible in the modal header',
                 default: 'false'
             },
             {
                 name: 'sizeMultiplier',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the modal',
                 default: ''
             },
             {
                 name: 'modelValue',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Used to determine if modal is visible or not',
                 default: 'false'
             },
             {
                 name: 'transition',
-                type: 'fade-in-transition',
+                type: "'fade-in-transition' | 'fade-in-linear-transition' | 'zoom-in-top-transition' | 'zoom-in-bottom-transition' | 'zoom-in-center-transition' | 'zoom-in-left-transition' | 'zoom-in-right-transition'",
                 description: 'The modal opening and closing animation',
                 default: 'zoom-in-center-transition'
             },
             {
                 name: 'header',
-                type: 'string',
+                type: 'string | VNode | VNode[]',
                 description: 'The header of the modal',
                 default: 'undefined'
             },
             {
                 name: 'icon',
-                type: 'string',
+                type: 'string | VNode | VNode[]',
                 description: 'The icon of the modal',
                 default: 'undefined'
             },
             {
                 name: 'body',
-                type: 'string',
+                type: 'string | VNode | VNode[]',
                 description: 'The body of the modal',
                 default: 'undefined'
             },
             {
                 name: 'footer',
-                type: 'string',
+                type: 'string | VNode | VNode[]',
                 description: 'The footer of the modal',
                 default: 'undefined'
             }
         ],
         events: [
             {
-                name: 'update:modelValue',
+                name: 'Modal',
                 description: 'Event emitted for setting the modelValue'
             },
             {
-                name: 'open',
+                name: 'Modal',
                 description: 'Event emitted when the modal is open'
             },
             {
-                name: 'opened',
+                name: 'Modal',
                 description: 'Event emitted when the modal is opened and animation is finished'
             },
             {
-                name: 'close',
+                name: 'Modal',
                 description: 'Event emitted when the modal is closed'
             },
             {
-                name: 'close',
+                name: 'Modal',
                 description: 'Event emitted when the modal is closed and animation is finished'
             }
         ],

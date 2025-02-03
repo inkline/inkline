@@ -6,92 +6,92 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'color',
-                type: 'light',
+                type: "'light' | 'dark'",
                 description: 'The color variant of the popover',
-                default: ''
+                default: 'undefined'
             },
             {
                 name: 'disabled',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The disabled state of the popover',
                 default: 'false'
             },
             {
                 name: 'visible',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Used to manually control the visibility of the popover',
                 default: 'undefined'
             },
             {
                 name: 'name',
-                type: 'String',
+                type: 'string',
                 description: 'The identifier of the popover',
                 default: 'uid()'
             },
             {
                 name: 'arrow',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Displays an arrow on the popover pointing to the trigger element',
                 default: 'true'
             },
             {
                 name: 'placement',
-                type: 'top',
+                type: "'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'",
                 description: 'The placement of the popover',
-                default: 'false'
+                default: "'top'"
             },
             {
                 name: 'listener',
-                type: 'hover',
+                type: "'hover' | 'focus' | 'click' | 'manual'",
                 description: 'The listener used to trigger the popover',
                 default: 'hover, focus'
             },
             {
                 name: 'offset',
-                type: 'Number',
+                type: 'number',
                 description: 'The offset of the popover relative to the trigger element',
                 default: '6'
             },
             {
                 name: 'interactable',
-                type: 'Boolean',
+                type: 'boolean',
                 description:
                     'Determines whether hover state should be transferred from trigger to popup',
                 default: 'false'
             },
             {
                 name: 'popupOptions',
-                type: 'Object',
+                type: 'ComputePositionConfig',
                 description:
                     'Used to override the floating-ui options used for creating the popover',
                 default: ''
             },
             {
                 name: 'sizeMultiplier',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the popover',
                 default: ''
             },
             {
                 name: 'hoverHideDelay',
-                type: 'Number',
+                type: 'number',
                 description: 'Delay in milliseconds before the popover is hidden on hover',
                 default: '300'
             },
             {
                 name: 'animationDuration',
-                type: 'Number',
+                type: 'number',
                 description: 'Animation duration in milliseconds',
                 default: '300'
             }
         ],
         events: [
             {
-                name: 'update:visible',
+                name: 'Popover',
                 description: 'Event emitted for setting the visible'
             },
             {
-                name: 'click:outside',
+                name: 'Popover',
                 description: 'Event emitted when clicking outside the popover'
             }
         ],

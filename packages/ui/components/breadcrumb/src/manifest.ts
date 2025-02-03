@@ -6,19 +6,19 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'ariaLabel',
-                type: 'String',
+                type: 'string',
                 description: 'The aria-label of the breadcrumbs',
                 default: 'Breadcrumbs'
             },
             {
                 name: 'color',
-                type: 'light',
+                type: "'light' | 'dark'",
                 description: 'The color variant of the breadcrumb',
                 default: ''
             },
             {
                 name: 'sizeMultiplier',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the breadcrumb',
                 default: ''
             }
@@ -113,37 +113,37 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'active',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The active state of the breadcrumb item',
                 default: 'false'
             },
             {
                 name: 'disabled',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The disabled state of the breadcrumb item',
                 default: 'false'
             },
             {
                 name: 'to',
-                type: 'String',
+                type: 'string',
                 description: '',
                 default: 'undefined'
             },
             {
                 name: 'tabindex',
-                type: 'Number',
+                type: 'number | string',
                 description: 'The tabindex of the breadcrumb item',
                 default: '0'
             },
             {
                 name: 'tag',
-                type: 'String',
+                type: 'string',
                 description: 'Set the HTML tag to be used for rendering the breadcrumb item',
                 default: 'a'
             },
             {
                 name: 'to',
-                type: 'String',
+                type: 'string',
                 description: '',
                 default: 'undefined'
             }

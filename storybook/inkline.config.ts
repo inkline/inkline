@@ -16,6 +16,7 @@ import { useInputTheme } from '@inkline/component-input';
 import { useLoaderTheme } from '@inkline/component-loader';
 import { useMediaTheme } from '@inkline/component-media';
 import { useModalTheme, useModalContainerTheme } from '@inkline/component-modal';
+import { useNavTheme, useNavItemTheme } from '@inkline/component-nav';
 import { usePopoverTheme } from '@inkline/component-popover';
 import { useRadioTheme, useRadioGroupTheme } from '@inkline/component-radio';
 import { useToastTheme, useToastContainerTheme } from '@inkline/component-toast';
@@ -43,6 +44,8 @@ export default defineConfig((options) => {
     useModalTheme(options);
     useModalContainerTheme(options);
     usePopoverTheme(options);
+    useNavTheme(options);
+    useNavItemTheme(options);
     useRadioTheme(options);
     useRadioGroupTheme(options);
     useToastTheme(options);

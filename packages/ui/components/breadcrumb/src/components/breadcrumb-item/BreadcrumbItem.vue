@@ -12,9 +12,8 @@ export default defineComponent({
     props: {
         /**
          * The active state of the breadcrumb item
-         * @type Boolean
+         * @param {boolean} active
          * @default false
-         * @name active
          */
         active: {
             type: Boolean,
@@ -22,9 +21,8 @@ export default defineComponent({
         },
         /**
          * The disabled state of the breadcrumb item
-         * @type Boolean
+         * @param {boolean} disabled
          * @default false
-         * @name disabled
          */
         disabled: {
             type: Boolean,
@@ -32,9 +30,8 @@ export default defineComponent({
         },
         /**
          *
-         * @type String
+         * @param {string} to
          * @default undefined
-         * @name to
          */
         href: {
             type: String,
@@ -42,9 +39,8 @@ export default defineComponent({
         },
         /**
          * The tabindex of the breadcrumb item
-         * @type Number | String
+         * @param {number | string} tabindex
          * @default 0
-         * @name tabindex
          */
         tabindex: {
             type: [Number, String],
@@ -52,8 +48,7 @@ export default defineComponent({
         },
         /**
          * Set the HTML tag to be used for rendering the breadcrumb item
-         * @name tag
-         * @type String
+         * @param {string} tag
          * @default a
          */
         tag: {
@@ -62,9 +57,8 @@ export default defineComponent({
         },
         /**
          *
-         * @type String
+         * @param {string} to
          * @default undefined
-         * @name to
          */
         to: {
             type: [String, Object],

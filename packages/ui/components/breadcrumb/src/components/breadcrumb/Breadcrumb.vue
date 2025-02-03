@@ -10,9 +10,8 @@ export default defineComponent({
     props: {
         /**
          * The aria-label of the breadcrumbs
-         * @type String
+         * @param {string} ariaLabel
          * @default Breadcrumbs
-         * @name ariaLabel
          */
         ariaLabel: {
             type: String,
@@ -20,9 +19,8 @@ export default defineComponent({
         },
         /**
          * The color variant of the breadcrumb
-         * @type light | dark
+         * @param {'light' | 'dark'} color
          * @default
-         * @name color
          */
         color: {
             type: String,
@@ -30,9 +28,8 @@ export default defineComponent({
         },
         /**
          * The size variant of the breadcrumb
-         * @type sm | md | lg
+         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
          * @default
-         * @name sizeMultiplier
          */
         size: {
             type: String,

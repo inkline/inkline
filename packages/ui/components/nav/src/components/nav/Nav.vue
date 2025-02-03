@@ -13,9 +13,8 @@ export default defineComponent({
     props: {
         /**
          * The color variant of the nav
-         * @type light | dark
+         * @param {'light' | 'dark'} color
          * @default
-         * @name color
          */
         color: {
             type: String,
@@ -23,9 +22,8 @@ export default defineComponent({
         },
         /**
          * The size variant of the nav
-         * @type sm | md | lg
+         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
          * @default
-         * @name sizeMultiplier
          */
         size: {
             type: String,
@@ -33,9 +31,8 @@ export default defineComponent({
         },
         /**
          * Display the nav with vertical orientation
-         * @type Boolean
+         * @param {boolean} vertical
          * @default false
-         * @name vertical
          */
         vertical: {
             type: Boolean,
@@ -43,8 +40,7 @@ export default defineComponent({
         },
         /**
          * Nav items to display
-         * @name items
-         * @type NavItemDefinition[]
+         * @param {NavItemDefinition[]} items
          * @default []
          */
         items: {

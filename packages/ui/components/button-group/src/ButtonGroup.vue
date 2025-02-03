@@ -11,9 +11,8 @@ export default defineComponent({
     props: {
         /**
          * Display the button group with vertical orientation
-         * @type Boolean
+         * @param {boolean} vertical
          * @default false
-         * @name vertical
          */
         vertical: {
             type: Boolean,
@@ -21,9 +20,8 @@ export default defineComponent({
         },
         /**
          * Display the button group as a block, spanning the full container width
-         * @type Boolean
+         * @param {boolean} block
          * @default false
-         * @name block
          */
         block: {
             type: Boolean,
@@ -31,9 +29,8 @@ export default defineComponent({
         },
         /**
          * The disabled state of the button group
-         * @type Boolean
+         * @param {boolean} disabled
          * @default false
-         * @name disabled
          */
         disabled: {
             type: Boolean,
@@ -41,9 +38,8 @@ export default defineComponent({
         },
         /**
          * The size of the button group
-         * @type String
+         * @param {string} sizeMultiplier
          * @default
-         * @name sizeMultiplier
          */
         size: {
             type: String,
@@ -51,9 +47,8 @@ export default defineComponent({
         },
         /**
          * The color of the button group
-         * @type String
+         * @param {string} color
          * @default
-         * @name color
          */
         color: {
             type: String,

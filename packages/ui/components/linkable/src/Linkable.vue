@@ -10,9 +10,8 @@ export default defineComponent({
     props: {
         /**
          * Renders the component as an anchor link with a `href` attribute
-         * @type String
+         * @param {string} to
          * @default undefined
-         * @name to
          */
         href: {
             type: String,
@@ -20,9 +19,8 @@ export default defineComponent({
         },
         /**
          * Set the HTML tag to be used for rendering the linkable
-         * @type String
+         * @param {string} tag
          * @default button
-         * @name tag
          */
         tag: {
             type: String,
@@ -30,9 +28,8 @@ export default defineComponent({
         },
         /**
          * Renders the component as a Router Link component with a `to` attribute
-         * @type String
+         * @param {string} to
          * @default undefined
-         * @name to
          */
         to: {
             type: [String, Object] as PropType<string | object>,

@@ -15,9 +15,8 @@ export default defineComponent({
     props: {
         /**
          * Determines if the modal should close when pressing escape
-         * @type Boolean
+         * @param {boolean} closeOnPressEscape
          * @default true
-         * @name closeOnPressEscape
          */
         closeOnPressEscape: {
             type: Boolean,
@@ -25,9 +24,8 @@ export default defineComponent({
         },
         /**
          * The aria-label attribute of the close button
-         * @type String
+         * @param {string} closeAriaLabel
          * @default Close
-         * @name closeAriaLabel
          */
         closeAriaLabel: {
             type: String,
@@ -35,9 +33,8 @@ export default defineComponent({
         },
         /**
          * The color variant of the modal
-         * @type primary | success | light | dark | info | success | warning | danger
+         * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} color
          * @default
-         * @name color
          */
         color: {
             type: String,
@@ -45,9 +42,8 @@ export default defineComponent({
         },
         /**
          * The disabled state of the modal
-         * @type Boolean
+         * @param {boolean} disabled
          * @default false
-         * @name disabled
          */
         disabled: {
             type: Boolean,
@@ -55,9 +51,8 @@ export default defineComponent({
         },
         /**
          * Make the modal cover the entire screen
-         * @type Boolean
+         * @param {boolean} fullscreen
          * @default false
-         * @name fullscreen
          */
         fullscreen: {
             type: Boolean,
@@ -65,9 +60,8 @@ export default defineComponent({
         },
         /**
          * Determines if the modal should close when clicking the overlay
-         * @type Boolean
+         * @param {boolean} hideOnClickOutside
          * @default true
-         * @name hideOnClickOutside
          */
         hideOnClickOutside: {
             type: Boolean,
@@ -75,9 +69,8 @@ export default defineComponent({
         },
         /**
          * The identifier of the modal
-         * @type String
+         * @param {string} name
          * @default uid()
-         * @name name
          */
         name: {
             type: String,
@@ -87,9 +80,8 @@ export default defineComponent({
         },
         /**
          * Determines if the close icon should be visible in the modal header
-         * @type Boolean
+         * @param {boolean} dismissible
          * @default false
-         * @name dismissible
          */
         dismissible: {
             type: Boolean,
@@ -97,9 +89,8 @@ export default defineComponent({
         },
         /**
          * The size variant of the modal
-         * @type sm | md | lg
+         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
          * @default
-         * @name sizeMultiplier
          */
         size: {
             type: String,
@@ -107,9 +98,8 @@ export default defineComponent({
         },
         /**
          * Used to determine if modal is visible or not
-         * @type Boolean
+         * @param {boolean} modelValue
          * @default false
-         * @name modelValue
          */
         modelValue: {
             type: Boolean,
@@ -117,9 +107,8 @@ export default defineComponent({
         },
         /**
          * The modal opening and closing animation
-         * @type fade-in-transition | fade-in-linear-transition | zoom-in-top-transition | zoom-in-bottom-transition | zoom-in-center-transition | zoom-in-left-transition | zoom-in-right-transition
+         * @param {'fade-in-transition' | 'fade-in-linear-transition' | 'zoom-in-top-transition' | 'zoom-in-bottom-transition' | 'zoom-in-center-transition' | 'zoom-in-left-transition' | 'zoom-in-right-transition'} transition
          * @default zoom-in-center-transition
-         * @name transition
          */
         transition: {
             type: String,
@@ -127,9 +116,8 @@ export default defineComponent({
         },
         /**
          * The header of the modal
-         * @type string | VNode | VNode[]
+         * @param {string | VNode | VNode[]} header
          * @default undefined
-         * @name header
          */
         header: {
             type: [String, Object] as PropType<StringOrRenderableType>,
@@ -137,9 +125,8 @@ export default defineComponent({
         },
         /**
          * The icon of the modal
-         * @type string | VNode | VNode[]
+         * @param {string | VNode | VNode[]} icon
          * @default undefined
-         * @name icon
          */
         icon: {
             type: [String, Object] as PropType<StringOrRenderableType>,
@@ -147,9 +134,8 @@ export default defineComponent({
         },
         /**
          * The body of the modal
-         * @type string | VNode | VNode[]
+         * @param {string | VNode | VNode[]} body
          * @default undefined
-         * @name body
          */
         body: {
             type: [String, Object] as PropType<StringOrRenderableType>,
@@ -157,9 +143,8 @@ export default defineComponent({
         },
         /**
          * The footer of the modal
-         * @type string | VNode | VNode[]
+         * @param {string | VNode | VNode[]} footer
          * @default undefined
-         * @name footer
          */
         footer: {
             type: [String, Object] as PropType<StringOrRenderableType>,
@@ -169,32 +154,27 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the modelValue
-         * @type event
-         * @name update:modelValue
+         * @event update:modelValue
          */
         'update:modelValue',
         /**
          * Event emitted when the modal is open
-         * @type event
-         * @name open
+         * @event open
          */
         'open',
         /**
          * Event emitted when the modal is opened and animation is finished
-         * @type event
-         * @name opened
+         * @event opened
          */
         'opened',
         /**
          * Event emitted when the modal is closed
-         * @type event
-         * @name close
+         * @event close
          */
         'close',
         /**
          * Event emitted when the modal is closed and animation is finished
-         * @type event
-         * @name close
+         * @event close
          */
         'closed'
     ],

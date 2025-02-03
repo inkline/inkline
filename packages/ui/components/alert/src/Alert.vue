@@ -29,9 +29,8 @@ export default defineComponent({
     props: {
         /**
          * The size variant of the alert
-         * @type 'sm' | 'md' | 'lg'
+         * @param {'sm' | 'md' | 'lg'} size
          * @default undefined
-         * @name size
          */
         size: {
             type: String,
@@ -39,9 +38,8 @@ export default defineComponent({
         },
         /**
          * The color variant of the alert
-         * @type 'info' | 'success' | 'warning' | 'danger'
+         * @param {'info' | 'success' | 'warning' | 'danger'} color
          * @default 'info'
-         * @name color
          */
         color: {
             type: String,
@@ -49,9 +47,8 @@ export default defineComponent({
         },
         /**
          * Used to show or hide the alert
-         * @type boolean
+         * @param {boolean} modelValue
          * @default undefined
-         * @name modelValue
          */
         modelValue: {
             type: Boolean,
@@ -59,9 +56,8 @@ export default defineComponent({
         },
         /**
          * Shows a dismiss icon on the alert
-         * @type boolean
+         * @param {boolean} dismissible
          * @default false
-         * @name dismissible
          */
         dismissible: {
             type: Boolean,
@@ -69,9 +65,8 @@ export default defineComponent({
         },
         /**
          * The aria-label to use for the dismiss button
-         * @type string
+         * @param {string} dismissAriaLabel
          * @default Dismiss
-         * @name dismissAriaLabel
          */
         dismissAriaLabel: {
             type: String,
@@ -79,9 +74,8 @@ export default defineComponent({
         },
         /**
          * The icon to be rendered in the toast
-         * @type string | VNode | VNode[]
+         * @param {string | VNode | VNode[]} icon
          * @default undefined
-         * @name icon
          */
         icon: {
             type: [Boolean, String, Object] as PropType<PrimitiveOrRenderable<string | boolean>>,
@@ -91,8 +85,7 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the modelValue
-         * @type event
-         * @name update:modelValue
+         * @event update:modelValue
          */
         'update:modelValue'
     ],

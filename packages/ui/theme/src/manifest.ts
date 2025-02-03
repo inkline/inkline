@@ -22,28 +22,6 @@ export const manifest: ComponentManifest[] = [
     },
     {
         css: {
-            namespace: 'address',
-            variables: [
-                {
-                    name: '--address--margin-top'
-                },
-                {
-                    name: '--address--margin-right'
-                },
-                {
-                    name: '--address--margin-bottom'
-                },
-                {
-                    name: '--address--margin-left'
-                },
-                {
-                    name: '--address--margin'
-                }
-            ]
-        }
-    },
-    {
-        css: {
             namespace: 'blockquote',
             variables: [
                 {
@@ -150,6 +128,28 @@ export const manifest: ComponentManifest[] = [
     },
     {
         css: {
+            namespace: 'address',
+            variables: [
+                {
+                    name: '--address--margin-top'
+                },
+                {
+                    name: '--address--margin-right'
+                },
+                {
+                    name: '--address--margin-bottom'
+                },
+                {
+                    name: '--address--margin-left'
+                },
+                {
+                    name: '--address--margin'
+                }
+            ]
+        }
+    },
+    {
+        css: {
             namespace: 'body',
             variables: [
                 {
@@ -181,6 +181,31 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--body--background'
+                }
+            ]
+        }
+    },
+    {
+        css: {
+            namespace: 'caption',
+            variables: [
+                {
+                    name: '--caption--color'
+                },
+                {
+                    name: '--caption--padding-top'
+                },
+                {
+                    name: '--caption--padding-right'
+                },
+                {
+                    name: '--caption--padding-bottom'
+                },
+                {
+                    name: '--caption--padding-left'
+                },
+                {
+                    name: '--caption--padding'
                 }
             ]
         }
@@ -237,31 +262,6 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--dl--dd--margin'
-                }
-            ]
-        }
-    },
-    {
-        css: {
-            namespace: 'caption',
-            variables: [
-                {
-                    name: '--caption--color'
-                },
-                {
-                    name: '--caption--padding-top'
-                },
-                {
-                    name: '--caption--padding-right'
-                },
-                {
-                    name: '--caption--padding-bottom'
-                },
-                {
-                    name: '--caption--padding-left'
-                },
-                {
-                    name: '--caption--padding'
                 }
             ]
         }
@@ -451,31 +451,6 @@ export const manifest: ComponentManifest[] = [
     },
     {
         css: {
-            namespace: 'mark',
-            variables: [
-                {
-                    name: '--mark--background'
-                },
-                {
-                    name: '--mark--padding-top'
-                },
-                {
-                    name: '--mark--padding-right'
-                },
-                {
-                    name: '--mark--padding-bottom'
-                },
-                {
-                    name: '--mark--padding-left'
-                },
-                {
-                    name: '--mark--padding'
-                }
-            ]
-        }
-    },
-    {
-        css: {
             namespace: 'legend',
             variables: [
                 {
@@ -495,6 +470,31 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--legend--font-size'
+                }
+            ]
+        }
+    },
+    {
+        css: {
+            namespace: 'mark',
+            variables: [
+                {
+                    name: '--mark--background'
+                },
+                {
+                    name: '--mark--padding-top'
+                },
+                {
+                    name: '--mark--padding-right'
+                },
+                {
+                    name: '--mark--padding-bottom'
+                },
+                {
+                    name: '--mark--padding-left'
+                },
+                {
+                    name: '--mark--padding'
                 }
             ]
         }
@@ -594,6 +594,16 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--pre--margin'
+                }
+            ]
+        }
+    },
+    {
+        css: {
+            namespace: 'samp',
+            variables: [
+                {
+                    name: '--samp--font-family'
                 }
             ]
         }
@@ -746,16 +756,6 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--ul--padding'
-                }
-            ]
-        }
-    },
-    {
-        css: {
-            namespace: 'samp',
-            variables: [
-                {
-                    name: '--samp--font-family'
                 }
             ]
         }

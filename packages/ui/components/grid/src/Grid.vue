@@ -16,8 +16,7 @@ export default defineComponent({
     props: {
         /**
          * Mark the grid as a container, setting a max-width and centering the content
-         * @name container
-         * @type Boolean
+         * @param {boolean} container
          * @default false
          */
         container: {
@@ -26,8 +25,7 @@ export default defineComponent({
         },
         /**
          * Set the size of the grid item
-         * @name size
-         * @type 'auto' | number | BreakpointProp<string>
+         * @param {'auto' | number | BreakpointProp<string>} size
          * @default undefined
          */
         size: {
@@ -36,8 +34,7 @@ export default defineComponent({
         },
         /**
          * Set the size of the grid item on various screen sizes
-         * @name {breakpoint}
-         * @type 'auto' | number
+         * @param {'auto' | number} {breakpoint}
          * @default undefined
          */
         xs: {
@@ -62,8 +59,7 @@ export default defineComponent({
         },
         /**
          * Align the items in the row
-         * @name align-items
-         * @type 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' | BreakpointProp<FlexAlignItemsProp>
+         * @param {'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch' | BreakpointProp<FlexAlignItemsProp>} align-items
          * @default 'flex-start'
          */
         alignItems: {
@@ -72,8 +68,7 @@ export default defineComponent({
         },
         /**
          * Align the items in the row on various screen sizes
-         * @name align-items-{breakpoint}
-         * @type 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
+         * @param {'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'} align-items-{breakpoint}
          * @default undefined
          */
         alignItemsXs: {
@@ -98,8 +93,7 @@ export default defineComponent({
         },
         /**
          * Justify the content of the row
-         * @name justify-content
-         * @type 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | BreakpointProp<FlexJustifyContentProp>
+         * @param {'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | BreakpointProp<FlexJustifyContentProp>} justify-content
          * @default undefined
          */
         justifyContent: {
@@ -108,8 +102,7 @@ export default defineComponent({
         },
         /**
          * Justify the content of the row on various screen sizes
-         * @name direction-{breakpoint}
-         * @type 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
+         * @param {'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'} direction-{breakpoint}
          * @default 'flex-start'
          */
         justifyContentXs: {
@@ -134,8 +127,7 @@ export default defineComponent({
         },
         /**
          * Direction of the row content
-         * @name direction
-         * @type 'row' | 'row-reverse' | 'column' | 'column-reverse' | BreakpointProp<FlexDirectionProp>
+         * @param {'row' | 'row-reverse' | 'column' | 'column-reverse' | BreakpointProp<FlexDirectionProp>} direction
          * @default undefined
          */
         direction: {
@@ -144,8 +136,7 @@ export default defineComponent({
         },
         /**
          * Direction of the row content on various screen sizes
-         * @name direction-{breakpoint}
-         * @type 'row' | 'row-reverse' | 'column' | 'column-reverse'
+         * @param {'row' | 'row-reverse' | 'column' | 'column-reverse'} direction-{breakpoint}
          * @default undefined
          */
         directionXs: {
@@ -170,8 +161,7 @@ export default defineComponent({
         },
         /**
          * Offset the grid item
-         * @name offset
-         * @type number | BreakpointProp<number>
+         * @param {number | BreakpointProp<number>} offset
          * @default undefined
          */
         offset: {
@@ -180,8 +170,7 @@ export default defineComponent({
         },
         /**
          * Offset the grid item on various screen sizes
-         * @name offset-{breakpoint}
-         * @type number
+         * @param {number} offset-{breakpoint}
          * @default undefined
          */
         offsetXs: {
@@ -206,8 +195,7 @@ export default defineComponent({
         },
         /**
          * Remove gap between child elements
-         * @name no-gap
-         * @type Boolean
+         * @param {boolean} no-gap
          * @default false
          */
         noGap: {
@@ -216,8 +204,7 @@ export default defineComponent({
         },
         /**
          * Disable wrapping of child elements
-         * @name no-wrap
-         * @type Boolean
+         * @param {boolean} no-wrap
          * @default false
          */
         noWrap: {

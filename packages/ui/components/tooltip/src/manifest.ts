@@ -12,55 +12,55 @@ export const manifest: ComponentManifest[] = [
             },
             {
                 name: 'color',
-                type: "'light'",
+                type: "'light' | 'dark' | undefined",
                 description: 'The color variant of the tooltip',
                 default: 'undefined'
             },
             {
                 name: 'disabled',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The disabled state of the tooltip',
                 default: 'false'
             },
             {
                 name: 'visible',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Used to manually control the visibility of the tooltip',
                 default: 'undefined'
             },
             {
                 name: 'name',
-                type: 'String',
+                type: 'string',
                 description: 'The identifier of the tooltip',
                 default: 'uid()'
             },
             {
                 name: 'arrow',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Displays an arrow on the tooltip pointing to the trigger element',
                 default: 'true'
             },
             {
                 name: 'placement',
-                type: 'top',
+                type: "'top' | 'top-start' | 'top-end' | 'bottom' | 'bottom-start' | 'bottom-end' | 'left' | 'left-start' | 'left-end' | 'right' | 'right-start' | 'right-end'",
                 description: 'The placement of the tooltip',
                 default: 'false'
             },
             {
                 name: 'listener',
-                type: 'hover',
+                type: "'hover' | 'focus' | 'click' | 'manual'",
                 description: 'The listener used to trigger the tooltip',
                 default: 'hover, focus'
             },
             {
                 name: 'offset',
-                type: 'Number',
+                type: 'number',
                 description: 'The offset of the tooltip relative to the trigger element',
                 default: '6'
             },
             {
                 name: 'interactable',
-                type: 'Boolean',
+                type: 'boolean',
                 description:
                     'Determines whether hover state should be transferred from trigger to popup',
                 default: 'false'
@@ -74,30 +74,30 @@ export const manifest: ComponentManifest[] = [
             },
             {
                 name: 'sizeMultiplier',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the tooltip',
                 default: ''
             },
             {
                 name: 'hoverHideDelay',
-                type: 'Number',
+                type: 'number',
                 description: 'Delay in milliseconds before the tooltip is hidden on hover',
                 default: '300'
             },
             {
                 name: 'animationDuration',
-                type: 'Number',
+                type: 'number',
                 description: 'Animation duration in milliseconds',
                 default: '300'
             }
         ],
         events: [
             {
-                name: 'update:visible',
+                name: 'Tooltip',
                 description: 'Event emitted for setting the visible'
             },
             {
-                name: 'click:outside',
+                name: 'Tooltip',
                 description: 'Event emitted when clicking outside the tooltip'
             }
         ],

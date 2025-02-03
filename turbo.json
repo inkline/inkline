@@ -2,6 +2,11 @@
     "$schema": "https://turbo.build/schema.json",
     "tasks": {
         "build": {
+            "cache": true,
+            "inputs": [
+                "src/**",
+                "package.json"
+            ],
             "outputs": [
                 "dist/**",
                 "lib/**",
@@ -22,6 +27,14 @@
             ]
         },
         "generate": {
+            "inputs": [
+                "src/**/*.vue",
+                "src/**/*.ts"
+            ],
+            "outputs": [
+                "src/manifest.ts",
+                "src/resources/components.ts"
+            ],
             "dependsOn": [
                 "^generate"
             ]
@@ -35,7 +48,12 @@
             "persistent": true
         },
         "clean": {
-            "cache": false
+            "cache": false,
+            "outputs": [
+                "dist/**",
+                "lib/**",
+                "storybook-static/**"
+            ]
         }
     }
 }

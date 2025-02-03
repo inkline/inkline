@@ -6,61 +6,67 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'color',
-                type: 'light',
+                type: "'light' | 'dark'",
                 description: 'The color variant of the checkbox group',
                 default: ''
             },
             {
                 name: 'disabled',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The disabled state of the checkbox group',
                 default: 'false'
             },
             {
                 name: 'error',
-                type: 'Boolean',
+                type: 'boolean | FormStateKeys[]',
                 description: 'The error state of the input, computed based on schema by default.',
                 default: "'touched', 'dirty', 'invalid'"
             },
             {
                 name: 'inline',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Display the checkbox group as inline',
                 default: 'false'
             },
             {
                 name: 'indeterminate',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The indeterminate state of the checkbox group',
                 default: 'false'
             },
             {
+                name: 'modelValue',
+                type: 'Array',
+                description: 'Used to set the checkbox group value',
+                default: ''
+            },
+            {
                 name: 'name',
-                type: 'String',
+                type: 'string',
                 description: 'The unique identifier of the checkbox group',
                 default: 'uid()'
             },
             {
                 name: 'native',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Displays the native browser checkbox input indicator',
                 default: 'false'
             },
             {
                 name: 'readonly',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The readonly state of the checkbox group',
                 default: 'false'
             },
             {
                 name: 'sizeMultiplier',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the checkbox group',
                 default: ''
             },
             {
                 name: 'validateSchema',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Enable checkbox group validation using schema',
                 default: 'true'
             },
@@ -72,7 +78,7 @@ export const manifest: ComponentManifest[] = [
             },
             {
                 name: 'label',
-                type: 'String',
+                type: 'string | number | boolean | Function | Object',
                 description:
                     'The fallback label of the checkbox group. Can be a string, number, render function, or component',
                 default: 'undefined'
@@ -80,7 +86,7 @@ export const manifest: ComponentManifest[] = [
         ],
         events: [
             {
-                name: 'update:modelValue',
+                name: 'CheckboxGroup',
                 description: 'Event emitted for setting the modelValue'
             }
         ],
@@ -100,67 +106,80 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'color',
-                type: 'light',
+                type: "'light' | 'dark'",
                 description: 'The color variant of the checkbox',
                 default: ''
             },
             {
                 name: 'disabled',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The disabled state of the checkbox',
                 default: 'false'
             },
             {
                 name: 'error',
-                type: 'Boolean',
+                type: 'boolean | FormStateKeys[]',
                 description: 'The error state of the input, computed based on schema by default.',
                 default: "'touched', 'dirty', 'invalid'"
             },
             {
                 name: 'indeterminate',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The indeterminate state of the checkbox',
                 default: 'false'
             },
             {
+                name: 'value',
+                type: 'boolean',
+                description:
+                    '[Deprecated] Used to set the checkbox value when used inside a checkbox group',
+                default: 'false'
+            },
+            {
+                name: 'modelValue',
+                type: 'boolean',
+                description: 'Used to set the checkbox value when used by itself',
+                default: 'false'
+            },
+            {
                 name: 'name',
-                type: 'String',
+                type: 'string',
                 description: 'The unique identifier of the checkbox',
                 default: 'uid()'
             },
             {
                 name: 'native',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Displays the native browser checkbox input indicator',
                 default: 'false'
             },
             {
                 name: 'readonly',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The readonly state of the checkbox',
                 default: 'false'
             },
             {
                 name: 'sizeMultiplier',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the checkbox',
                 default: ''
             },
             {
                 name: 'tabindex',
-                type: 'Number',
+                type: 'number | string',
                 description: 'The tabindex of the checkbox',
                 default: '0'
             },
             {
                 name: 'validateSchema',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Enable input validation using schema',
                 default: 'true'
             },
             {
                 name: 'label',
-                type: 'String',
+                type: 'string | number | boolean | Function | Object',
                 description:
                     'The label to be displayed alongside the checkbox. Can be a string, number, render function, or component',
                 default: 'undefined'
@@ -174,7 +193,7 @@ export const manifest: ComponentManifest[] = [
         ],
         events: [
             {
-                name: 'update:modelValue',
+                name: 'Checkbox',
                 description: 'Event emitted for setting the modelValue'
             }
         ],

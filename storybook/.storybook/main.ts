@@ -11,7 +11,7 @@ function getAbsolutePath(value: string): any {
 }
 
 const config: StorybookConfig = {
-    stories: ['../src/**/*.stories.ts'],
+    stories: ['../src/stories/**/*.stories.ts'],
     staticDirs: ['../public'],
     addons: [
         getAbsolutePath('storybook-dark-mode'),

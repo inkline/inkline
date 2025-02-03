@@ -7,7 +7,7 @@ export default defineComponent({
     props: {
         /**
          * The primitive or render function to render. It can accept either primitive types (String, Number, Boolean), a render function, or a Vue component.
-         * @type String | Number | Boolean | RenderFunction | Raw<Component>
+         * @type {string | number | boolean | RenderFunction | Raw<Component>}
          * @default ''
          * @name render
          */
@@ -19,7 +19,7 @@ export default defineComponent({
         },
         /**
          * The context object that is passed to the component props, render function, or used for string interpolation.
-         * @type Object
+         * @type {Object}
          * @default {}
          * @name ctx
          */
@@ -29,7 +29,7 @@ export default defineComponent({
         },
         /**
          * The HTML tag to use for rendering primitives. If not specified, no tag will be rendered.
-         * @type String
+         * @type {string}
          * @default
          * @name tag
          */

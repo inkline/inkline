@@ -10,9 +10,8 @@ export default defineComponent({
     props: {
         /**
          * The color variant of the loader
-         * @type primary | light | dark
+         * @param {'primary' | 'light' | 'dark'} color
          * @default
-         * @name color
          */
         color: {
             type: String,
@@ -20,9 +19,8 @@ export default defineComponent({
         },
         /**
          * The size variant of the loader
-         * @type sm | md | lg | auto
+         * @param {'sm' | 'md' | 'lg' | 'auto'} sizeMultiplier
          * @default
-         * @name sizeMultiplier
          */
         size: {
             type: String,

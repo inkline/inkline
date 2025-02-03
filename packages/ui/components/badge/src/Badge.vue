@@ -10,9 +10,8 @@ export default defineComponent({
     props: {
         /**
          * The color variant of the badge
-         * @type primary | success | light | dark | info | success | warning | danger
+         * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} color
          * @default
-         * @name color
          */
         color: {
             type: String,
@@ -20,9 +19,8 @@ export default defineComponent({
         },
         /**
          * The size variant of the badge
-         * @type sm | md | lg
+         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
          * @default
-         * @name sizeMultiplier
          */
         size: {
             type: String,
@@ -30,9 +28,8 @@ export default defineComponent({
         },
         /**
          * Display the badge as a pill
-         * @type Boolean
+         * @param {boolean} pill
          * @default false
-         * @name pill
          */
         pill: {
             type: Boolean,

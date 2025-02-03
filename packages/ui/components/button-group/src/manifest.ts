@@ -6,32 +6,32 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'vertical',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Display the button group with vertical orientation',
                 default: 'false'
             },
             {
                 name: 'block',
-                type: 'Boolean',
+                type: 'boolean',
                 description:
                     'Display the button group as a block, spanning the full container width',
                 default: 'false'
             },
             {
                 name: 'disabled',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The disabled state of the button group',
                 default: 'false'
             },
             {
                 name: 'sizeMultiplier',
-                type: 'String',
+                type: 'string',
                 description: 'The size of the button group',
                 default: ''
             },
             {
                 name: 'color',
-                type: 'String',
+                type: 'string',
                 description: 'The color of the button group',
                 default: ''
             }

@@ -20,9 +20,8 @@ export default defineComponent({
     props: {
         /**
          * The color variant of the radio
-         * @type light | dark
+         * @param {'light' | 'dark'} color
          * @default
-         * @name color
          */
         color: {
             type: String,
@@ -30,9 +29,8 @@ export default defineComponent({
         },
         /**
          * The disabled state of the radio
-         * @type Boolean
+         * @param {boolean} disabled
          * @default false
-         * @name disabled
          */
         disabled: {
             type: Boolean,
@@ -40,13 +38,12 @@ export default defineComponent({
         },
         /**
          * The error state of the input, computed based on schema by default.
-         * @type Boolean | Array
+         * @param {boolean | FormStateKeys[]} error
          * @default ['touched', 'dirty', 'invalid']
-         * @TODO use propDefaultValue to set default value
-         * @name error
          */
         errorCondition: {
             type: [Boolean, Array] as PropType<boolean | FormStateKeys[]>,
+            // @TODO use propDefaultValue to set default value
             default: undefined
         },
         /**
@@ -61,8 +58,8 @@ export default defineComponent({
         },
         /**
          * Used to set the radio value when used by itself
+         * @param {string | number | boolean | object} modelValue
          * @default false
-         * @name modelValue
          */
         modelValue: {
             type: [String, Number, Boolean, Object] as PropType<string | number | boolean | object>,
@@ -70,9 +67,8 @@ export default defineComponent({
         },
         /**
          * The unique identifier of the radio
-         * @type String
+         * @param {string} name
          * @default uid()
-         * @name name
          */
         name: {
             type: String,
@@ -82,9 +78,8 @@ export default defineComponent({
         },
         /**
          * Displays the native browser radio input indicator
-         * @type Boolean
+         * @param {boolean} native
          * @default false
-         * @name native
          */
         native: {
             type: Boolean,
@@ -92,9 +87,8 @@ export default defineComponent({
         },
         /**
          * The readonly state of the radio
-         * @type Boolean
+         * @param {boolean} readonly
          * @default false
-         * @name readonly
          */
         readonly: {
             type: Boolean,
@@ -102,9 +96,8 @@ export default defineComponent({
         },
         /**
          * The size variant of the radio
-         * @type sm | md | lg
+         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
          * @default
-         * @name sizeMultiplier
          *
          */
         size: {
@@ -113,9 +106,8 @@ export default defineComponent({
         },
         /**
          * The tabindex of the radio
-         * @type Number | String
+         * @param {number | number} tabindex
          * @default 0
-         * @name tabindex
          */
         tabindex: {
             type: [Number, String],
@@ -123,9 +115,8 @@ export default defineComponent({
         },
         /**
          * The label to be displayed alongside the radio. Can be a string, number, render function, or component
-         * @type String | Number | Boolean | Function | Object
+         * @param {string | number | boolean | Function | Object} label
          * @default undefined
-         * @name label
          */
         label: {
             type: [String, Number, Boolean, Function, Object] as PropType<
@@ -135,9 +126,8 @@ export default defineComponent({
         },
         /**
          * The option object of the radio when used inside a radio group
-         * @type Object
+         * @param {Object} option
          * @default undefined
-         * @name option
          */
         option: {
             type: Object as PropType<RadioGroupOption>,
@@ -147,8 +137,7 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the modelValue
-         * @type event
-         * @name update:modelValue
+         * @event update:modelValue
          */
         'update:modelValue'
     ],

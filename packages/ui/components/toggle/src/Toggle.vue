@@ -16,9 +16,8 @@ export default defineComponent({
     props: {
         /**
          * The color variant of the toggle
-         * @type light | dark
+         * @param {'light' | 'dark'} color
          * @default
-         * @name color
          */
         color: {
             type: String,
@@ -26,9 +25,8 @@ export default defineComponent({
         },
         /**
          * The disabled state of the toggle
-         * @type Boolean
+         * @param {boolean} disabled
          * @default false
-         * @name disabled
          */
         disabled: {
             type: Boolean,
@@ -36,20 +34,18 @@ export default defineComponent({
         },
         /**
          * The error state of the input, computed based on schema by default.
-         * @type Boolean | Array
+         * @param {boolean | Array} name
          * @default ['touched', 'dirty', 'invalid']
-         * @TODO use propDefaultValue to set default value
-         * @name error
          */
         errorCondition: {
             type: [Boolean, Array] as PropType<boolean | FormStateKeys[]>,
+            // @TODO use propDefaultValue to set default value
             default: undefined
         },
         /**
          * The indeterminate state of the toggle
-         * @type Boolean
+         * @param {boolean} indeterminate
          * @default false
-         * @name indeterminate
          */
         indeterminate: {
             type: Boolean,
@@ -67,7 +63,7 @@ export default defineComponent({
         /**
          * Used to set the toggle value when used by itself
          * @default false
-         * @name modelValue
+         * @param {boolean} modelValue
          */
         modelValue: {
             type: Boolean,
@@ -75,9 +71,8 @@ export default defineComponent({
         },
         /**
          * The unique identifier of the toggle
-         * @type String
+         * @param {string} name
          * @default uid()
-         * @name name
          */
         name: {
             type: String,
@@ -87,9 +82,8 @@ export default defineComponent({
         },
         /**
          * Displays the native browser toggle input indicator
-         * @type Boolean
+         * @param {boolean} native
          * @default false
-         * @name native
          */
         native: {
             type: Boolean,
@@ -97,9 +91,8 @@ export default defineComponent({
         },
         /**
          * The readonly state of the toggle
-         * @type Boolean
+         * @param {boolean} readonly
          * @default false
-         * @name readonly
          */
         readonly: {
             type: Boolean,
@@ -107,9 +100,8 @@ export default defineComponent({
         },
         /**
          * The rounded variant of the toggle
-         * @type Boolean
+         * @param {boolean} rounded
          * @default false
-         * @name rounded
          */
         rounded: {
             type: Boolean,
@@ -117,9 +109,8 @@ export default defineComponent({
         },
         /**
          * The size variant of the toggle
-         * @type sm | md | lg
+         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
          * @default
-         * @name sizeMultiplier
          *
          */
         size: {
@@ -128,9 +119,8 @@ export default defineComponent({
         },
         /**
          * The tabindex of the toggle
-         * @type Number | String
+         * @param {number | number} tabindex
          * @default 0
-         * @name tabindex
          */
         tabindex: {
             type: [Number, String],
@@ -138,9 +128,8 @@ export default defineComponent({
         },
         /**
          * Enable input validation using schema
-         * @type Boolean
+         * @param {boolean} validateSchema
          * @default true
-         * @name validateSchema
          */
         shouldValidate: {
             type: Boolean,
@@ -150,8 +139,7 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the modelValue
-         * @type event
-         * @name update:modelValue
+         * @event update:modelValue
          */
         'update:modelValue'
     ],

@@ -10,9 +10,8 @@ export default defineComponent({
     props: {
         /**
          * The color variant of the card
-         * @type primary | success | light | dark | info | success | warning | danger
+         * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} color
          * @default
-         * @name color
          */
         color: {
             type: String,
@@ -20,9 +19,8 @@ export default defineComponent({
         },
         /**
          * The size variant of the card
-         * @type sm | md | lg
+         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
          * @default
-         * @name sizeMultiplier
          */
         size: {
             type: String,
@@ -31,7 +29,7 @@ export default defineComponent({
         /**
          * The HTML tag to use for the card root element
          * @default div
-         * @name tag
+         * @param {string} tag
          */
         tag: {
             type: String,

@@ -20,9 +20,8 @@ export default defineComponent({
     props: {
         /**
          * The color variant of the radio group
-         * @type light | dark
+         * @param {'light' | 'dark'} color
          * @default
-         * @name color
          */
         color: {
             type: String,
@@ -30,9 +29,8 @@ export default defineComponent({
         },
         /**
          * The disabled state of the radio group
-         * @type Boolean
+         * @param {boolean} disabled
          * @default false
-         * @name disabled
          */
         disabled: {
             type: Boolean,
@@ -40,20 +38,18 @@ export default defineComponent({
         },
         /**
          * The error state of the input, computed based on schema by default.
-         * @type Boolean | Array
+         * @param {boolean | FormStateKeys[]} error
          * @default ['touched', 'dirty', 'invalid']
-         * @TODO use propDefaultValue to set default value
-         * @name error
          */
         errorCondition: {
             type: [Boolean, Array] as PropType<boolean | FormStateKeys[]>,
+            // @TODO use propDefaultValue to set default value
             default: undefined
         },
         /**
          * Display the radio group as inline
-         * @type Boolean
+         * @param {boolean} inline
          * @default false
-         * @name inline
          */
         inline: {
             type: Boolean,
@@ -61,9 +57,8 @@ export default defineComponent({
         },
         /**
          * The indeterminate state of the radio group
-         * @type Boolean
+         * @param {boolean} indeterminate
          * @default false
-         * @name indeterminate
          */
         indeterminate: {
             type: Boolean,
@@ -71,9 +66,8 @@ export default defineComponent({
         },
         /**
          * The fallback label of the radio group. Can be a string, number, render function, or component
-         * @type String | Number | Boolean | Function | Object
+         * @param {string | number | boolean | Function | Object} label
          * @default undefined
-         * @name label
          */
         label: {
             type: [String, Number, Boolean, Function, Object] as PropType<
@@ -92,9 +86,8 @@ export default defineComponent({
         },
         /**
          * The unique identifier of the radio group
-         * @type String
+         * @param {string} name
          * @default uid()
-         * @name name
          */
         name: {
             type: String,
@@ -104,9 +97,8 @@ export default defineComponent({
         },
         /**
          * Displays the native browser radio input indicator
-         * @type Boolean
+         * @param {boolean} native
          * @default false
-         * @name native
          */
         native: {
             type: Boolean,
@@ -114,9 +106,8 @@ export default defineComponent({
         },
         /**
          * The readonly state of the radio group
-         * @type Boolean
+         * @param {boolean} readonly
          * @default false
-         * @name readonly
          */
         readonly: {
             type: Boolean,
@@ -124,9 +115,8 @@ export default defineComponent({
         },
         /**
          * The size variant of the radio group
-         * @type sm | md | lg
+         * @param {'sm' | 'md' | 'lg'} sizeMultiplier
          * @default
-         * @name sizeMultiplier
          */
         size: {
             type: String,
@@ -134,9 +124,8 @@ export default defineComponent({
         },
         /**
          * Enable checkbox group validation using schema
-         * @type Boolean
+         * @param {boolean} validateSchema
          * @default true
-         * @name validateSchema
          */
         shouldValidate: {
             type: Boolean,
@@ -144,9 +133,8 @@ export default defineComponent({
         },
         /**
          * The options of the radio group
-         * @type Array
+         * @param {Array} options
          * @default []
-         * @name options
          */
         options: {
             type: Array as PropType<RadioGroupOption[]>,
@@ -156,8 +144,7 @@ export default defineComponent({
     emits: [
         /**
          * Event emitted for setting the modelValue
-         * @type event
-         * @name update:modelValue
+         * @event update:modelValue
          */
         'update:modelValue'
     ],

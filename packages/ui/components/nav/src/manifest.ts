@@ -6,19 +6,19 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'color',
-                type: 'light',
+                type: "'light' | 'dark'",
                 description: 'The color variant of the nav',
                 default: ''
             },
             {
                 name: 'sizeMultiplier',
-                type: 'sm',
+                type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the nav',
                 default: ''
             },
             {
                 name: 'vertical',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'Display the nav with vertical orientation',
                 default: 'false'
             },
@@ -647,44 +647,44 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'active',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The active state of the nav item',
                 default: 'false'
             },
             {
                 name: 'disabled',
-                type: 'Boolean',
+                type: 'boolean',
                 description: 'The disabled state of the nav item',
                 default: 'false'
             },
             {
                 name: 'to',
-                type: 'String',
+                type: 'string',
                 description: 'Renders the component as an anchor link with a `href` attribute',
                 default: 'undefined'
             },
             {
                 name: 'stopPropagation',
-                type: 'Boolean',
+                type: 'boolean',
                 description:
                     'Used to close the nearest navbar or sidebar by propagating the onClick event',
                 default: 'false'
             },
             {
                 name: 'tag',
-                type: 'String',
+                type: 'string',
                 description: 'Set the HTML tag to be used for rendering the nav item',
                 default: 'div'
             },
             {
                 name: 'tabindex',
-                type: 'Number',
+                type: 'number | string',
                 description: 'The tabindex of the list group item',
                 default: '0'
             },
             {
                 name: 'to',
-                type: 'String',
+                type: 'string',
                 description:
                     'Renders the component as a Router Link component with a `to` attribute',
                 default: 'undefined'

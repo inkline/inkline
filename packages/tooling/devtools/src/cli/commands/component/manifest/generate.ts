@@ -26,35 +26,29 @@ export async function parseComponent(componentPath: string) {
             return;
         }
 
-        const typeTag = block.tags.find((tag) => tag.tag === 'type');
-        const nameTag = block.tags.find((tag) => tag.tag === 'name');
-        if (!typeTag || !nameTag) {
-            return;
-        }
+        const eventTag = block.tags.find((tag) => tag.tag === 'event');
+        const paramTag = block.tags.find((tag) => tag.tag === 'param');
 
         const description = block.description;
-        const type = typeTag.name;
-        const name = nameTag.name;
 
-        switch (type) {
-            case 'event': {
-                events.push({
-                    name,
-                    description
-                });
-                break;
-            }
-            default: {
-                const defaultTag = block.tags.find((tag) => tag.tag === 'default');
-                const defaultValue = defaultTag ? defaultTag.name : '';
+        if (eventTag) {
+            events.push({
+                name,
+                description
+            });
+        } else if (paramTag) {
+            const type = paramTag.type ?? 'any';
+            const name = paramTag.name;
 
-                props.push({
-                    name,
-                    type,
-                    description,
-                    default: defaultValue
-                });
-            }
+            const defaultTag = block.tags.find((tag) => tag.tag === 'default');
+            const defaultValue = defaultTag ? defaultTag.name : '';
+
+            props.push({
+                name,
+                type,
+                description,
+                default: defaultValue
+            });
         }
     });
 

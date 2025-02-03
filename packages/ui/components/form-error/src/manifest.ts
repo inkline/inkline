@@ -6,13 +6,13 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'for',
-                type: 'String',
+                type: 'string',
                 description: 'The schema path of the target input to show the errors for.',
                 default: ''
             },
             {
                 name: 'visible',
-                type: 'FormStateKeys[]',
+                type: 'FormStateKeys[] | boolean',
                 description:
                     'Set the validation statuses for which the form error should be visible.',
                 default: "'touched', 'dirty', 'invalid'"

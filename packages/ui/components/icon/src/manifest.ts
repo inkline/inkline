@@ -6,25 +6,25 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'name',
-                type: 'String',
+                type: 'string',
                 description: 'The icon to be displayed',
                 default: ''
             },
             {
                 name: 'name',
-                type: 'String',
+                type: 'string',
                 description: '',
                 default: ''
             },
             {
                 name: 'width',
-                type: 'String',
+                type: 'string | number',
                 description: 'The width of the icon. Will override the size prop',
                 default: 'undefined'
             },
             {
                 name: 'height',
-                type: 'String',
+                type: 'string | number',
                 description: 'The height of the icon. Will override the size prop',
                 default: 'undefined'
             }
