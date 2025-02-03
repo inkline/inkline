@@ -10,6 +10,16 @@ export default [
         "filePath": "@inkline/component-badge"
     },
     {
+        "name": "Breadcrumb",
+        "export": "Breadcrumb",
+        "filePath": "@inkline/component-breadcrumb"
+    },
+    {
+        "name": "BreadcrumbItem",
+        "export": "BreadcrumbItem",
+        "filePath": "@inkline/component-breadcrumb"
+    },
+    {
         "name": "Button",
         "export": "Button",
         "filePath": "@inkline/component-button"
@@ -23,6 +33,16 @@ export default [
         "name": "Card",
         "export": "Card",
         "filePath": "@inkline/component-card"
+    },
+    {
+        "name": "Checkbox",
+        "export": "Checkbox",
+        "filePath": "@inkline/component-checkbox"
+    },
+    {
+        "name": "CheckboxGroup",
+        "export": "CheckboxGroup",
+        "filePath": "@inkline/component-checkbox"
     },
     {
         "name": "Expand",
@@ -55,6 +75,11 @@ export default [
         "filePath": "@inkline/component-icon"
     },
     {
+        "name": "Input",
+        "export": "Input",
+        "filePath": "@inkline/component-input"
+    },
+    {
         "name": "Linkable",
         "export": "Linkable",
         "filePath": "@inkline/component-linkable"
@@ -70,56 +95,6 @@ export default [
         "filePath": "@inkline/component-media"
     },
     {
-        "name": "Popover",
-        "export": "Popover",
-        "filePath": "@inkline/component-popover"
-    },
-    {
-        "name": "Popup",
-        "export": "Popup",
-        "filePath": "@inkline/component-popup"
-    },
-    {
-        "name": "Toggle",
-        "export": "Toggle",
-        "filePath": "@inkline/component-toggle"
-    },
-    {
-        "name": "Tooltip",
-        "export": "Tooltip",
-        "filePath": "@inkline/component-tooltip"
-    },
-    {
-        "name": "BreadcrumbItem",
-        "export": "BreadcrumbItem",
-        "filePath": "@inkline/component-breadcrumb"
-    },
-    {
-        "name": "Breadcrumb",
-        "export": "Breadcrumb",
-        "filePath": "@inkline/component-breadcrumb"
-    },
-    {
-        "name": "Checkbox",
-        "export": "Checkbox",
-        "filePath": "@inkline/component-checkbox"
-    },
-    {
-        "name": "CheckboxGroup",
-        "export": "CheckboxGroup",
-        "filePath": "@inkline/component-checkbox"
-    },
-    {
-        "name": "Textarea",
-        "export": "Textarea",
-        "filePath": "@inkline/component-input"
-    },
-    {
-        "name": "Input",
-        "export": "Input",
-        "filePath": "@inkline/component-input"
-    },
-    {
         "name": "Modal",
         "export": "Modal",
         "filePath": "@inkline/component-modal"
@@ -130,14 +105,24 @@ export default [
         "filePath": "@inkline/component-modal"
     },
     {
+        "name": "Nav",
+        "export": "Nav",
+        "filePath": "@inkline/component-nav"
+    },
+    {
         "name": "NavItem",
         "export": "NavItem",
         "filePath": "@inkline/component-nav"
     },
     {
-        "name": "Nav",
-        "export": "Nav",
-        "filePath": "@inkline/component-nav"
+        "name": "Popover",
+        "export": "Popover",
+        "filePath": "@inkline/component-popover"
+    },
+    {
+        "name": "Popup",
+        "export": "Popup",
+        "filePath": "@inkline/component-popup"
     },
     {
         "name": "Radio",
@@ -150,6 +135,11 @@ export default [
         "filePath": "@inkline/component-radio"
     },
     {
+        "name": "Textarea",
+        "export": "Textarea",
+        "filePath": "@inkline/component-input"
+    },
+    {
         "name": "Toast",
         "export": "Toast",
         "filePath": "@inkline/component-toast"
@@ -158,5 +148,15 @@ export default [
         "name": "ToastContainer",
         "export": "ToastContainer",
         "filePath": "@inkline/component-toast"
+    },
+    {
+        "name": "Toggle",
+        "export": "Toggle",
+        "filePath": "@inkline/component-toggle"
+    },
+    {
+        "name": "Tooltip",
+        "export": "Tooltip",
+        "filePath": "@inkline/component-tooltip"
     }
 ];

@@ -196,6 +196,13 @@ export async function generateManifest(componentDir: string) {
         }
     });
 
+    paths.sort((a, b) => {
+        const aCompareField = a.componentPath ?? a.themePath ?? '';
+        const bCompareField = b.componentPath ?? b.themePath ?? '';
+
+        return aCompareField.localeCompare(bCompareField);
+    });
+
     const manifest: ComponentManifest[] = [];
     for (const { componentPath, themePath } of paths) {
         const componentManifest = {

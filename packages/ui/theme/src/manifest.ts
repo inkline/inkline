@@ -22,6 +22,28 @@ export const manifest: ComponentManifest[] = [
     },
     {
         css: {
+            namespace: 'address',
+            variables: [
+                {
+                    name: '--address--margin-top'
+                },
+                {
+                    name: '--address--margin-right'
+                },
+                {
+                    name: '--address--margin-bottom'
+                },
+                {
+                    name: '--address--margin-left'
+                },
+                {
+                    name: '--address--margin'
+                }
+            ]
+        }
+    },
+    {
+        css: {
             namespace: 'blockquote',
             variables: [
                 {
@@ -122,28 +144,6 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--blockquote--footer--font-size'
-                }
-            ]
-        }
-    },
-    {
-        css: {
-            namespace: 'address',
-            variables: [
-                {
-                    name: '--address--margin-top'
-                },
-                {
-                    name: '--address--margin-right'
-                },
-                {
-                    name: '--address--margin-bottom'
-                },
-                {
-                    name: '--address--margin-left'
-                },
-                {
-                    name: '--address--margin'
                 }
             ]
         }
@@ -501,40 +501,6 @@ export const manifest: ComponentManifest[] = [
     },
     {
         css: {
-            namespace: 'p',
-            variables: [
-                {
-                    name: '--initialism--font-size'
-                },
-                {
-                    name: '--initialism--text-transform'
-                },
-                {
-                    name: '--lead--font-size'
-                },
-                {
-                    name: '--lead--font-weight'
-                },
-                {
-                    name: '--p--margin-top'
-                },
-                {
-                    name: '--p--margin-right'
-                },
-                {
-                    name: '--p--margin-bottom'
-                },
-                {
-                    name: '--p--margin-left'
-                },
-                {
-                    name: '--p--margin'
-                }
-            ]
-        }
-    },
-    {
-        css: {
             namespace: 'ol',
             variables: [
                 {
@@ -566,6 +532,40 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--ol--padding'
+                }
+            ]
+        }
+    },
+    {
+        css: {
+            namespace: 'p',
+            variables: [
+                {
+                    name: '--initialism--font-size'
+                },
+                {
+                    name: '--initialism--text-transform'
+                },
+                {
+                    name: '--lead--font-size'
+                },
+                {
+                    name: '--lead--font-weight'
+                },
+                {
+                    name: '--p--margin-top'
+                },
+                {
+                    name: '--p--margin-right'
+                },
+                {
+                    name: '--p--margin-bottom'
+                },
+                {
+                    name: '--p--margin-left'
+                },
+                {
+                    name: '--p--margin'
                 }
             ]
         }

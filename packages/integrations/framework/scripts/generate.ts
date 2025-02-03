@@ -32,6 +32,8 @@ componentFiles.forEach((file) => {
     });
 });
 
+components.sort((a, b) => a.name.localeCompare(b.name));
+
 await fs.writeFile(
     path.resolve(resourcesDir, 'components.ts'),
     `export default ${JSON.stringify(components, null, 4)};`

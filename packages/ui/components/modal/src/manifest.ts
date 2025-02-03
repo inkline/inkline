@@ -2,6 +2,23 @@ import type { ComponentManifest } from '@inkline/types';
 
 export const manifest: ComponentManifest[] = [
     {
+        name: 'ModalContainer',
+        props: [
+            {
+                name: 'eventBus',
+                type: 'EventBus',
+                description: 'The event bus to use for showing/hiding modals',
+                default: 'modalEventBus'
+            }
+        ],
+        events: [],
+        slots: [],
+        css: {
+            namespace: '',
+            variables: []
+        }
+    },
+    {
         name: 'Modal',
         props: [
             {
@@ -415,23 +432,6 @@ export const manifest: ComponentManifest[] = [
                     name: '--modal--{size}--footer--button--margin-left'
                 }
             ]
-        }
-    },
-    {
-        name: 'ModalContainer',
-        props: [
-            {
-                name: 'eventBus',
-                type: 'EventBus',
-                description: 'The event bus to use for showing/hiding modals',
-                default: 'modalEventBus'
-            }
-        ],
-        events: [],
-        slots: [],
-        css: {
-            namespace: '',
-            variables: []
         }
     },
     {
