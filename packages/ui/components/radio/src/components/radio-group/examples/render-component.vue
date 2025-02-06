@@ -5,13 +5,13 @@ import type { RadioGroupOption } from 'inkline';
 const LabelRenderComponent = markRaw(
     defineComponent({
         props: {
-            ctx: {
-                type: Object as PropType<RadioGroupOption>,
+            id: {
+                type: String,
                 required: true
             }
         },
         setup(props) {
-            return () => h('strong', props.ctx.id);
+            return () => h('strong', props.id);
         }
     })
 );

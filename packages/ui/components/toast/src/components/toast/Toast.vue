@@ -3,7 +3,7 @@ import { PropType, toRef, VNode } from 'vue';
 import { computed, defineComponent, h, onBeforeUpdate, onMounted, ref } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/composables';
 import { Icon } from '@inkline/component-icon';
-import type { StringOrRenderableType } from '@inkline/types';
+import type { Renderable } from '@inkline/types';
 
 const componentName = 'Toast';
 
@@ -62,7 +62,7 @@ export default defineComponent({
          * @default undefined
          */
         icon: {
-            type: [String, Object] as PropType<StringOrRenderableType>,
+            type: [String, Object] as PropType<Renderable>,
             default: undefined
         },
         /**
@@ -71,7 +71,7 @@ export default defineComponent({
          * @default undefined
          */
         title: {
-            type: [String, Object] as PropType<StringOrRenderableType>,
+            type: [String, Object] as PropType<Renderable>,
             default: undefined
         },
         /**
@@ -80,7 +80,7 @@ export default defineComponent({
          * @default undefined
          */
         message: {
-            type: [String, Object] as PropType<StringOrRenderableType>,
+            type: [String, Object] as PropType<Renderable>,
             default: undefined
         },
         /**

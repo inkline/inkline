@@ -1,14 +1,20 @@
-import type { Component, VNodeChild, Raw, VNode } from 'vue';
+import type { Component, ConcreteComponent, ComponentOptions, DefineComponent, VNode } from 'vue';
 
-export type PrimitiveOrRenderable<T> = T | VNode | Component | Raw<Component>;
-
-export type StringOrRenderableType = PrimitiveOrRenderable<string>;
-export type BooleanOrRenderable = PrimitiveOrRenderable<boolean>;
-export type NumberOrRenderable = PrimitiveOrRenderable<number>;
-
-export type RenderFunction<T = object> = (ctx: T) => VNodeChild;
-
-export type Renderable = string | number | boolean | RenderFunction | Raw<Component>;
+export type RenderablePrimitives = string | number | boolean;
+export type RenderableComponent =
+    | ConcreteComponent
+    | Component
+    | ComponentOptions
+    | DefineComponent;
+export type RenderableNode = VNode;
+export type RenderableFunction = (...args: any[]) => RenderablePrimitives | RenderableNode;
+export type RenderableArray = Array<RenderablePrimitives | RenderableNode>;
+export type Renderable =
+    | RenderablePrimitives
+    | RenderableNode
+    | RenderableArray
+    | RenderableComponent
+    | RenderableFunction;
 
 export interface DOMNode {
     type: string;

@@ -1,10 +1,10 @@
-import type { ToastPosition, StringOrRenderableType } from '@inkline/types';
+import type { ToastPosition, Renderable } from '@inkline/types';
 
 export interface ToastOptions {
     id: string;
-    title: StringOrRenderableType;
-    message: StringOrRenderableType;
-    icon: StringOrRenderableType;
+    title: Renderable;
+    message: Renderable;
+    icon: Renderable;
     position: ToastPosition;
     duration: number;
     dismissible: boolean;

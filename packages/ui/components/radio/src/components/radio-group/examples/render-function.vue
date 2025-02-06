@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { h, ref } from 'vue';
-import type { RenderFunction, RadioGroupOption } from 'inkline';
+import type { RenderableFunction, RadioGroupOption } from 'inkline';
 
 const checked = ref('apple');
 
@@ -11,7 +11,8 @@ const options = ref<RadioGroupOption[]>([
     { id: 'mango' }
 ]);
 
-const labelRenderFunction: RenderFunction<RadioGroupOption> = (option) => h('strong', option.id);
+const labelRenderFunction: RenderableFunction = (option: RadioGroupOption) =>
+    h('strong', option.id);
 </script>
 
 <template>

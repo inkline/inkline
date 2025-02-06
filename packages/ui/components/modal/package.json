@@ -15,6 +15,7 @@
     },
     "dependencies": {
         "@inkline/component-button": "workspace:*",
+        "@inkline/component-dynamic-renderer": "workspace:*",
         "@inkline/component-form": "workspace:*",
         "@inkline/component-form-group": "workspace:*",
         "@inkline/component-form-error": "workspace:*",

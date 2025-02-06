@@ -1,8 +1,8 @@
-import type { StringOrRenderableType } from '@inkline/types';
+import type { Renderable } from '@inkline/types';
 
 export type NavItemDefinition = {
-    title: StringOrRenderableType;
-    icon: StringOrRenderableType;
+    title: Renderable;
+    icon: Renderable;
     url: string | object;
     children?: NavItemDefinition[];
 };

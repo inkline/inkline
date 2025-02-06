@@ -37,6 +37,28 @@ export const manifest: ComponentManifest[] = [
         }
     },
     {
+        name: 'ModalFooter',
+        props: [],
+        events: [],
+        slots: [
+            {
+                name: 'default',
+                description: 'Slot for modal footer content'
+            }
+        ]
+    },
+    {
+        name: 'ModalHeader',
+        props: [],
+        events: [],
+        slots: [
+            {
+                name: 'default',
+                description: 'Slot for modal header content'
+            }
+        ]
+    },
+    {
         name: 'Modal',
         props: [
             {
@@ -100,27 +122,15 @@ export const manifest: ComponentManifest[] = [
                 default: 'zoom-in-center-transition'
             },
             {
-                name: 'header',
-                type: 'string | VNode | VNode[]',
-                description: 'The header of the modal',
-                default: 'undefined'
-            },
-            {
-                name: 'icon',
-                type: 'string | VNode | VNode[]',
-                description: 'The icon of the modal',
-                default: 'undefined'
+                name: 'teleport',
+                type: 'boolean',
+                description: 'Teleport the modal to the modal container',
+                default: 'false'
             },
             {
                 name: 'content',
                 type: 'string | VNode | VNode[]',
                 description: 'The content of the modal',
-                default: 'undefined'
-            },
-            {
-                name: 'footer',
-                type: 'string | VNode | VNode[]',
-                description: 'The footer of the modal',
                 default: 'undefined'
             }
         ],

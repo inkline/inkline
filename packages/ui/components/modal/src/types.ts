@@ -1,14 +1,14 @@
-import type { StringOrRenderableType } from '@inkline/types';
+import type { Renderable } from '@inkline/types';
 import type { Ref } from 'vue';
 
 export interface ModalOptions {
     id?: string;
     type?: string;
     class?: string | string[] | Record<string, boolean>;
-    header?: StringOrRenderableType;
-    icon?: StringOrRenderableType;
-    body?: StringOrRenderableType;
-    footer?: StringOrRenderableType;
+    header?: Renderable;
+    icon?: Renderable;
+    body?: Renderable;
+    footer?: Renderable;
     color?:
         | 'light'
         | 'dark'

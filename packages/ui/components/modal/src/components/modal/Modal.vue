@@ -12,10 +12,9 @@ import {
 } from 'vue';
 import { addClass, removeClass, uid } from '@inkline/utils';
 import { useComponentColor, useComponentSize, useClickOutside } from '@inkline/composables';
-import type { StringOrRenderableType } from '@inkline/types';
+import type { Renderable } from '@inkline/types';
 import { ModalKey } from '@inkline/types';
 import { overlayService } from '../../instances';
-import { Icon } from '@inkline/component-icon';
 
 const componentName = 'Modal';
 
@@ -116,22 +115,13 @@ export default defineComponent({
             default: 'zoom-in-center-transition'
         },
         /**
-         * The header of the modal
-         * @param {string | VNode | VNode[]} header
-         * @default undefined
+         * Teleport the modal to the modal container
+         * @param {boolean} teleport
+         * @default false
          */
-        header: {
-            type: [String, Object] as PropType<StringOrRenderableType>,
-            default: undefined
-        },
-        /**
-         * The icon of the modal
-         * @param {string | VNode | VNode[]} icon
-         * @default undefined
-         */
-        icon: {
-            type: [String, Object] as PropType<StringOrRenderableType>,
-            default: undefined
+        teleport: {
+            type: Boolean,
+            default: true
         },
         /**
          * The content of the modal
@@ -139,16 +129,7 @@ export default defineComponent({
          * @default undefined
          */
         content: {
-            type: [String, Object] as PropType<StringOrRenderableType>,
-            default: undefined
-        },
-        /**
-         * The footer of the modal
-         * @param {string | VNode | VNode[]} footer
-         * @default undefined
-         */
-        footer: {
-            type: [String, Object] as PropType<StringOrRenderableType>,
+            type: [String, Object] as PropType<Renderable>,
             default: undefined
         }
     },
@@ -179,9 +160,6 @@ export default defineComponent({
          */
         'closed'
     ],
-    components: {
-        Icon
-    },
     setup(props, { emit }) {
         const visible = ref(props.modelValue);
 
@@ -202,9 +180,7 @@ export default defineComponent({
         const name = toRef(props, 'name');
         const closeOnPressEscape = toRef(props, 'closeOnPressEscape');
 
-        const isVNode = computed(() => ({
-            content: typeof props.content === 'object'
-        }));
+        const isContentVNode = computed(() => typeof props.content === 'object');
 
         watch(
             () => props.modelValue,
@@ -299,7 +275,7 @@ export default defineComponent({
             modalRef,
             wrapperRef,
             visible,
-            isVNode,
+            isContentVNode,
             hide,
             onAfterEnter,
             onAfterLeave
@@ -309,28 +285,34 @@ export default defineComponent({
 </script>
 
 <template>
-    <transition name="fade-in-transition">
-        <div
-            v-show="visible"
-            v-bind="$attrs"
-            :id="name"
-            ref="wrapperRef"
-            class="modal-wrapper"
-            role="dialog"
-            aria-modal="true"
-            :aria-hidden="visible ? 'false' : 'true'"
-            :name="name"
-            :aria-labelledby="`${name}-header`"
-        >
-            <transition :name="transition" @after-enter="onAfterEnter" @after-leave="onAfterLeave">
-                <div v-show="visible" ref="modalRef" class="modal" :class="classes">
-                    <!-- @slot default Slot for modal content -->
-                    <slot>
-                        <component :is="content" v-if="content && isVNode.content" />
-                        <div v-else>{{ content }}</div>
-                    </slot>
-                </div>
-            </transition>
-        </div>
-    </transition>
+    <Teleport to=".modal-container" :disabled="!teleport">
+        <transition name="fade-in-transition">
+            <div
+                v-show="visible"
+                v-bind="$attrs"
+                :id="name"
+                ref="wrapperRef"
+                class="modal-wrapper"
+                role="dialog"
+                aria-modal="true"
+                :aria-hidden="visible ? 'false' : 'true'"
+                :name="name"
+                :aria-labelledby="`${name}-header`"
+            >
+                <transition
+                    :name="transition"
+                    @after-enter="onAfterEnter"
+                    @after-leave="onAfterLeave"
+                >
+                    <div v-show="visible" ref="modalRef" class="modal" :class="classes">
+                        <!-- @slot default Slot for modal content -->
+                        <slot>
+                            <component :is="content" v-if="content && isContentVNode" />
+                            <div v-else>{{ content }}</div>
+                        </slot>
+                    </div>
+                </transition>
+            </div>
+        </transition>
+    </Teleport>
 </template>

@@ -2,11 +2,15 @@
 import { defineComponent } from 'vue';
 import { ModalKey } from '@inkline/types';
 import { useInjectStrict } from '@inkline/composables';
+import { Icon } from '@inkline/component-icon';
 
 const componentName = 'ModalClose';
 
 export default defineComponent({
     name: componentName,
+    components: {
+        Icon
+    },
     props: {
         /**
          * The aria-label attribute of the close button

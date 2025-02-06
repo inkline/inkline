@@ -1,2 +1,2 @@
 export * from '../index';
-export type { RenderFunction, CheckboxGroupOption } from '@inkline/types';
+export type { RenderableFunction, CheckboxGroupOption } from '@inkline/types';

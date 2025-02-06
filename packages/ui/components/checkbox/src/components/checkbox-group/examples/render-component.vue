@@ -5,13 +5,13 @@ import type { CheckboxGroupOption } from 'inkline';
 const LabelRenderComponent = markRaw(
     defineComponent({
         props: {
-            ctx: {
-                type: Object,
-                default: () => ({})
+            id: {
+                type: String,
+                required: true
             }
         },
         setup(props) {
-            return () => h('strong', props.ctx.id);
+            return () => h('strong', props.id);
         }
     })
 );

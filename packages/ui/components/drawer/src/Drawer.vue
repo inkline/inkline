@@ -3,7 +3,7 @@ import type { PropType } from 'vue';
 import { defineComponent, ref, toRef, computed, watch, onMounted, onBeforeUnmount } from 'vue';
 import { addClass, removeClass, uid } from '@inkline/utils';
 import { useComponentColor, useComponentSize, useClickOutside } from '@inkline/composables';
-import type { StringOrRenderableType } from '@inkline/types';
+import type { Renderable } from '@inkline/types';
 import { Icon } from '@inkline/component-icon';
 
 const componentName = 'Drawer';
@@ -119,7 +119,7 @@ export default defineComponent({
          * @default undefined
          */
         header: {
-            type: [String, Object] as PropType<StringOrRenderableType>,
+            type: [String, Object] as PropType<Renderable>,
             default: undefined
         },
         /**
@@ -128,7 +128,7 @@ export default defineComponent({
          * @default undefined
          */
         icon: {
-            type: [String, Object] as PropType<StringOrRenderableType>,
+            type: [String, Object] as PropType<Renderable>,
             default: undefined
         },
         /**
@@ -137,7 +137,7 @@ export default defineComponent({
          * @default undefined
          */
         body: {
-            type: [String, Object] as PropType<StringOrRenderableType>,
+            type: [String, Object] as PropType<Renderable>,
             default: undefined
         },
         /**
@@ -146,7 +146,7 @@ export default defineComponent({
          * @default undefined
          */
         footer: {
-            type: [String, Object] as PropType<StringOrRenderableType>,
+            type: [String, Object] as PropType<Renderable>,
             default: undefined
         }
     },

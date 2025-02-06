@@ -1,2 +1,2 @@
 export * from '../index';
-export type { RenderFunction, RadioGroupOption } from '@inkline/types';
+export type { RenderableFunction, RadioGroupOption } from '@inkline/types';

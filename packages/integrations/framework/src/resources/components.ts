@@ -120,6 +120,16 @@ export default [
         "filePath": "@inkline/component-modal"
     },
     {
+        "name": "ModalFooter",
+        "export": "ModalFooter",
+        "filePath": "@inkline/component-modal"
+    },
+    {
+        "name": "ModalHeader",
+        "export": "ModalHeader",
+        "filePath": "@inkline/component-modal"
+    },
+    {
         "name": "Nav",
         "export": "Nav",
         "filePath": "@inkline/component-nav"

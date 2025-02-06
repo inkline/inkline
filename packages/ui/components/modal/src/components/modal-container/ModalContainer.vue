@@ -1,16 +1,20 @@
 <script lang="ts">
-import { computed, nextTick, onBeforeUnmount, onMounted, PropType } from 'vue';
-import { defineComponent, ref } from 'vue';
+import { nextTick, defineComponent, ref, h, onBeforeUnmount, onMounted } from 'vue';
+import type { PropType } from 'vue';
+import type { ModalEventBusPayload, ModalOptions } from '../../types';
 import { modalEventBus } from '../../instances';
 import { EventBus, uid } from '@inkline/utils';
-import { Modal } from '../modal';
-import type { ModalEventBusPayload, ModalOptions } from '../../types';
 import { useOptions } from '@inkline/composables';
+import { Modal } from '../modal';
+import { ModalHeader } from '../modal-header';
+import { ModalFooter } from '../modal-footer';
+import { DynamicRenderer } from '@inkline/component-dynamic-renderer';
+import { RenderableNode } from '@inkline/types';
 
 const componentName = 'ModalContainer';
 
-type ModalEntry = Pick<ModalOptions, 'type' | 'color' | 'size'> &
-    Required<Pick<ModalOptions, 'id'>>;
+type ModalEntry = Required<Pick<ModalOptions, 'id'>> &
+    Pick<ModalOptions, 'color' | 'size' | 'type'> & { content?: RenderableNode };
 
 export default defineComponent({
     name: componentName,
@@ -33,7 +37,6 @@ export default defineComponent({
 
         const modals = ref<ModalEntry[]>([]);
         const modalsVisible = ref<Record<string, boolean>>({});
-        const classes = computed(() => ({}));
 
         onMounted(() => {
             addEventListeners();
@@ -55,7 +58,7 @@ export default defineComponent({
             props.eventBus.off('hideAll', hideAllModals);
         }
 
-        function showModal(modal: Partial<ModalEntry>) {
+        function showModal(modal: ModalOptions) {
             const id = modal.id || uid('modal');
 
             if (modalsVisible.value[id]) {
@@ -63,16 +66,21 @@ export default defineComponent({
                 return;
             }
 
-            const color = modal?.color ?? (options.value.modal?.color || 'light');
-            const size = modal?.size ?? (options.value.modal?.size || 'md');
-            const type = modal?.type ?? '';
+            const { header, body, footer, color, size, type, ...rest } = modal;
 
             modals.value.push({
-                ...modal,
+                ...rest,
                 id,
-                color,
-                size,
-                type
+                content: h(DynamicRenderer, {
+                    render: [
+                        h(ModalHeader, h(DynamicRenderer, { render: header })),
+                        h(DynamicRenderer, { render: body }),
+                        h(ModalFooter, h(DynamicRenderer, { render: footer }))
+                    ]
+                }),
+                color: color ?? options.value.modal?.color ?? 'light',
+                size: size ?? options.value.modal?.size ?? 'md',
+                type: type ?? ''
             });
 
             nextTick(() => {
@@ -80,7 +88,7 @@ export default defineComponent({
             });
         }
 
-        function hideModal({ id }: Partial<ModalEntry>) {
+        function hideModal({ id }: ModalEntry) {
             if (!id) return;
 
             modalsVisible.value[id] = false;
@@ -95,14 +103,13 @@ export default defineComponent({
             modalsVisible.value = {};
         }
 
-        function removeModal({ id }: Partial<ModalEntry>) {
+        function removeModal({ id }: ModalEntry) {
             modals.value = modals.value.filter((modal) => modal.id !== id);
         }
 
         return {
             modals,
             modalsVisible,
-            classes,
             hideModal,
             removeModal
         };
@@ -111,7 +118,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="modal-container" :class="classes">
+    <div class="modal-container">
         <Modal
             v-for="modal in modals"
             v-bind="modal"
