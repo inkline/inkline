@@ -1,6 +1,29 @@
 import type { NavigationItem } from '~/types';
 
-export const componentsNavigation: NavigationItem[] = [
+export const mainNavigation: NavigationItem[] = [
+    {
+        title: 'Getting Started',
+        to: '/docs/about'
+    },
+    {
+        title: 'Customization',
+        to: '/docs/customization'
+    },
+    {
+        title: 'Components',
+        to: '/docs/components'
+    },
+    {
+        title: 'Utilities',
+        to: '/docs/getting-help'
+    },
+    {
+        title: 'Community',
+        to: '/docs/getting-help'
+    }
+];
+
+export const gettingStartedNavigation: NavigationItem[] = [
     {
         title: 'Introduction',
         children: [
@@ -34,6 +57,23 @@ export const componentsNavigation: NavigationItem[] = [
                 to: '/docs/getting-started/other'
             }
         ]
+    }
+];
+
+export const customizationNavigation: NavigationItem[] = [
+    {
+        title: 'Engine',
+        children: [
+            {
+                title: 'Configuration File'
+            },
+            {
+                title: 'Variables'
+            },
+            {
+                title: 'Selectors'
+            }
+        ]
     },
     {
         title: 'Customization',
@@ -48,7 +88,10 @@ export const componentsNavigation: NavigationItem[] = [
                 title: 'Theming'
             }
         ]
-    },
+    }
+];
+
+export const componentsNavigation: NavigationItem[] = [
     {
         title: 'Basic Components',
         children: [

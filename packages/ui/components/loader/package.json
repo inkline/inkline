@@ -57,6 +57,11 @@
             "import": "./dist/loader.js",
             "require": "./dist/loader.umd.cjs"
         },
+        "./theme": {
+            "types": "./dist/theme.d.ts",
+            "import": "./dist/theme.js",
+            "require": "./dist/theme.umd.cjs"
+        },
         "./*": "./*"
     },
     "funding": {

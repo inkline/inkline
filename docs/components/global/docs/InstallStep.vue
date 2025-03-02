@@ -53,10 +53,10 @@ defineProps<{
         background: var(--color-white);
         font-size: var(--font-size-md);
         font-weight: var(--font-weight-normal);
-
-        .inkline.dark-theme & {
-            background: var(--color-dark);
-        }
     }
+}
+
+.inkline.dark-theme .install-step .install-step-number {
+    background: var(--color-dark);
 }
 </style>

@@ -1,4 +1,4 @@
-import { Configuration, ConfigurationOptions, ModuleOptions, SetupFunction } from './types';
+import type { Configuration, ConfigurationOptions, ModuleOptions, SetupFunction } from './types';
 import { createContext } from './context';
 
 export function defineConfig(

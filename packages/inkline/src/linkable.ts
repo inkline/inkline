@@ -1,1 +1,2 @@
-export * from '@inkline/component-linkable';
+export { Linkable } from '@inkline/component-linkable';
+

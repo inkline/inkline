@@ -59,6 +59,11 @@
             "import": "./dist/checkbox.js",
             "require": "./dist/checkbox.umd.cjs"
         },
+        "./theme": {
+            "types": "./dist/theme.d.ts",
+            "import": "./dist/theme.js",
+            "require": "./dist/theme.umd.cjs"
+        },
         "./*": "./*"
     },
     "funding": {
