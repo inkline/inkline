@@ -186,6 +186,8 @@ export function useNavThemeLayoutSelectors(userOptions: DefinitionOptions) {
         },
         options
     );
+
+    selector('.nav.-no-gap', { gap: 0 }, options);
 }
 
 export function useNavThemeSizeSelectors(variant: NavSizeVariant, userOptions: DefinitionOptions) {

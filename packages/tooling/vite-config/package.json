@@ -1,0 +1,52 @@
+{
+    "name": "@inkline/vite-config",
+    "version": "1.0.0",
+    "type": "module",
+    "dependencies": {
+        "vite": "catalog:",
+        "vitest": "catalog:",
+        "@vitejs/plugin-vue": "catalog:",
+        "vite-plugin-dts": "catalog:",
+        "@inkline/vite": "workspace:*",
+        "@inkline/postcss-config": "workspace:*"
+    },
+    "files": [
+        "index.mjs",
+        "LICENSE"
+    ],
+    "main": "./index.mjs",
+    "module": "./index.mjs",
+    "exports": {
+        ".": {
+            "import": "./index.mjs",
+            "require": "./index.mjs"
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

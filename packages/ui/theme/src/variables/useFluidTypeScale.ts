@@ -17,10 +17,10 @@ export const fluidScaleVariants = {
 export function useFluidTypeScaleVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    const { scaleMinorThird, scalePerfectFourth } = useScale(options);
+    const { scaleMinorThird, scaleMajorThird } = useScale(options);
 
     const typeScaleMin = variable('type-scale-min', ref(scaleMinorThird), options);
-    const typeScaleMax = variable('type-scale-max', ref(scalePerfectFourth), options);
+    const typeScaleMax = variable('type-scale-max', ref(scaleMajorThird), options);
 
     const {
         typeScaleMinPowMinus2,

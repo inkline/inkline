@@ -87,6 +87,16 @@ export default defineComponent({
             default: true
         },
         /**
+         * The position of the drawer
+         * @param {'top' | 'right' | 'bottom' | 'left'} position
+         * @default left
+         */
+        position: {
+            type: String,
+            default: 'left',
+            validator: (value: string) => ['top', 'right', 'bottom', 'left'].includes(value)
+        },
+        /**
          * The size variant of the drawer
          * @param {'sm' | 'md' | 'lg'} size
          * @default
@@ -111,7 +121,7 @@ export default defineComponent({
          */
         transition: {
             type: String,
-            default: 'zoom-in-center-transition'
+            default: undefined
         },
         /**
          * The header of the drawer
@@ -191,8 +201,13 @@ export default defineComponent({
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
+            [`-${props.position}`]: true,
             '-disabled': props.disabled,
             '-fullscreen': props.fullscreen
+        }));
+        
+        const wrapperClasses = computed(() => ({
+            [`-${props.position}`]: true
         }));
 
         const wrapperRef = ref<HTMLElement | null>(null);
@@ -204,6 +219,20 @@ export default defineComponent({
             body: typeof props.body === 'object',
             footer: typeof props.footer === 'object'
         }));
+
+        const defaultTransitionMap = {
+            top: 'zoom-in-top-transition',
+            right: 'zoom-in-right-transition',
+            bottom: 'zoom-in-bottom-transition',
+            left: 'zoom-in-left-transition'
+        };
+
+        const computedTransition = computed(() => {
+            if (props.transition) {
+                return props.transition;
+            }
+            return defaultTransitionMap[props.position as keyof typeof defaultTransitionMap] || 'zoom-in-center-transition';
+        });
 
         watch(
             () => props.modelValue,
@@ -217,6 +246,12 @@ export default defineComponent({
         );
 
         const removeOnClickOutsideEventBindings = useClickOutside(drawerRef, onClickOutside);
+
+        function handleEscapeKeydown(event: KeyboardEvent): void {
+            if (props.closeOnPressEscape && event.key === 'Escape' && visible.value) {
+                hide();
+            }
+        }
 
         function show(): void {
             if (props.disabled) {
@@ -262,19 +297,35 @@ export default defineComponent({
             emit('closed');
         }
 
+        onMounted(() => {
+            if (props.modelValue) {
+                show();
+            }
+            
+            if (props.closeOnPressEscape && typeof window !== 'undefined') {
+                window.addEventListener('keydown', handleEscapeKeydown);
+            }
+        });
+
         onBeforeUnmount(() => {
             removeOnClickOutsideEventBindings();
+            
+            if (typeof window !== 'undefined') {
+                window.removeEventListener('keydown', handleEscapeKeydown);
+            }
         });
 
         return {
             classes,
+            wrapperClasses,
             drawerRef,
             wrapperRef,
             visible,
             isVNode,
             hide,
             onAfterEnter,
-            onAfterLeave
+            onAfterLeave,
+            computedTransition
         };
     }
 });
@@ -288,13 +339,14 @@ export default defineComponent({
             :id="name"
             ref="wrapperRef"
             class="drawer-wrapper"
+            :class="wrapperClasses"
             role="dialog"
             aria-modal="true"
             :aria-hidden="visible ? 'false' : 'true'"
             :name="name"
             :aria-labelledby="`${name}-header`"
         >
-            <transition :name="transition" @after-enter="onAfterEnter" @after-leave="onAfterLeave">
+            <transition :name="computedTransition" @after-enter="onAfterEnter" @after-leave="onAfterLeave">
                 <div v-show="visible" ref="drawerRef" class="drawer" :class="classes">
                     <div
                         v-if="header || $slots.header"

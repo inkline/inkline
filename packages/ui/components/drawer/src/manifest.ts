@@ -53,6 +53,12 @@ export const manifest: ComponentManifest[] = [
                 default: 'false'
             },
             {
+                name: 'position',
+                type: "'top' | 'right' | 'bottom' | 'left'",
+                description: 'The position of the drawer',
+                default: 'left'
+            },
+            {
                 name: 'size',
                 type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the drawer',

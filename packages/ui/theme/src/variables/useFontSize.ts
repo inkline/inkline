@@ -13,7 +13,7 @@ export function useFontSizeVariables(userOptions: DefinitionOptions) {
     } = useFluidTypeScale(options);
 
     const fontSizeMin = variable('font-size-min', 16, options);
-    const fontSizeMax = variable('font-size-max', 20, options);
+    const fontSizeMax = variable('font-size-max', 18, options);
 
     const fontSizeMinVariants = {
         'xs': createVariantFactoryFn((value) => multiply(value, ref(typeScaleMinMap['-2']))),

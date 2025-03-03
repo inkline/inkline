@@ -1,5 +1,5 @@
 {
-    "extends": "../tooling/typescript-config/tsconfig.json",
+    "@inkline/typescript-config/tsconfig.json",
     "compilerOptions": {
         "rootDir": ".",
         "outDir": "lib",

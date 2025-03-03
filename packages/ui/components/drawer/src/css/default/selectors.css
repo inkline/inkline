@@ -295,3 +295,56 @@
     flex: 1;
     overflow: auto;
 }
+
+.drawer-wrapper.-top, .drawer-wrapper.-bottom, .drawer-wrapper.-left, .drawer-wrapper.-right {
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.drawer.-top {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: auto;
+    max-height: 80vh;
+    transform-origin: top center;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.drawer.-right {
+    height: 100%;
+    max-height: 100%;
+    margin-right: 0;
+    margin-left: auto;
+    width: auto;
+    max-width: 80vw;
+    transform-origin: center right;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.drawer.-bottom {
+    width: 100%;
+    max-width: 100%;
+    margin-top: auto;
+    margin-bottom: 0;
+    height: auto;
+    max-height: 80vh;
+    transform-origin: bottom center;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.drawer.-left {
+    height: 100%;
+    max-height: 100%;
+    margin-right: auto;
+    margin-left: 0;
+    width: auto;
+    max-width: 80vw;
+    transform-origin: center left;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}

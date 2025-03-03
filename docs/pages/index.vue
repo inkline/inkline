@@ -9,5 +9,5 @@ useSeoMeta({
 
 <template>
     <ContentRenderer v-if="home" :value="home" />
-    <div v-else>Home not found</div>
+    <AppError404 v-else />
 </template>

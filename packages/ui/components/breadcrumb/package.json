@@ -24,8 +24,9 @@
     "devDependencies": {
         "@inkline/config": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
+        "@inkline/typescript-config": "workspace:*",
         "@inkline/devtools": "workspace:*",
-        "@inkline/vite-component-config": "workspace:*",
+        "@inkline/vite-config": "workspace:*",
         "@inkline/test-utils": "workspace:*",
         "@inkline/types": "workspace:*",
         "@testing-library/vue": "catalog:",

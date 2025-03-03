@@ -23,11 +23,38 @@
         "@inkline/addon-icons": "workspace:*",
         "@inkline/addon-modal-manager": "workspace:*",
         "@inkline/addon-toast-manager": "workspace:*",
-        "@inkline/components": "workspace:*"
+        "@inkline/component-alert": "workspace:*",
+        "@inkline/component-badge": "workspace:*",
+        "@inkline/component-breadcrumb": "workspace:*",
+        "@inkline/component-button": "workspace:*",
+        "@inkline/component-button-group": "workspace:*",
+        "@inkline/component-card": "workspace:*",
+        "@inkline/component-checkbox": "workspace:*",
+        "@inkline/component-drawer": "workspace:*",
+        "@inkline/component-expand": "workspace:*",
+        "@inkline/component-form": "workspace:*",
+        "@inkline/component-form-group": "workspace:*",
+        "@inkline/component-form-error": "workspace:*",
+        "@inkline/component-grid": "workspace:*",
+        "@inkline/component-icon": "workspace:*",
+        "@inkline/component-input": "workspace:*",
+        "@inkline/component-linkable": "workspace:*",
+        "@inkline/component-loader": "workspace:*",
+        "@inkline/component-media": "workspace:*",
+        "@inkline/component-modal": "workspace:*",
+        "@inkline/component-nav": "workspace:*",
+        "@inkline/component-popover": "workspace:*",
+        "@inkline/component-popup": "workspace:*",
+        "@inkline/component-radio": "workspace:*",
+        "@inkline/component-toast": "workspace:*",
+        "@inkline/component-toggle": "workspace:*",
+        "@inkline/component-tooltip": "workspace:*",
+        "@inkline/component-typography": "workspace:*"
     },
     "devDependencies": {
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
+        "@inkline/typescript-config": "workspace:*",
         "@inkline/types": "workspace:*",
         "@testing-library/vue": "catalog:",
         "@types/node": "catalog:",
@@ -56,6 +83,181 @@
             "types": "./dist/index.d.ts",
             "import": "./dist/index.js",
             "require": "./dist/index.cjs"
+        },
+        "./alert": {
+            "types": "./dist/alert.d.ts",
+            "import": "./dist/alert.js",
+            "require": "./dist/alert.cjs"
+        },
+        "./badge": {
+            "types": "./dist/badge.d.ts",
+            "import": "./dist/badge.js",
+            "require": "./dist/badge.cjs"
+        },
+        "./breadcrumb": {
+            "types": "./dist/breadcrumb.d.ts",
+            "import": "./dist/breadcrumb.js",
+            "require": "./dist/breadcrumb.cjs"
+        },
+        "./button": {
+            "types": "./dist/button.d.ts",
+            "import": "./dist/button.js",
+            "require": "./dist/button.cjs"
+        },
+        "./button-group": {
+            "types": "./dist/button-group.d.ts",
+            "import": "./dist/button-group.js",
+            "require": "./dist/button-group.cjs"
+        },
+        "./card": {
+            "types": "./dist/card.d.ts",
+            "import": "./dist/card.js",
+            "require": "./dist/card.cjs"
+        },
+        "./checkbox": {
+            "types": "./dist/checkbox.d.ts",
+            "import": "./dist/checkbox.js",
+            "require": "./dist/checkbox.cjs"
+        },
+        "./composables": {
+            "types": "./dist/composables.d.ts",
+            "import": "./dist/composables.js",
+            "require": "./dist/composables.cjs"
+        },
+        "./core": {
+            "types": "./dist/core.d.ts",
+            "import": "./dist/core.js",
+            "require": "./dist/core.cjs"
+        },
+        "./drawer": {
+            "types": "./dist/drawer.d.ts",
+            "import": "./dist/drawer.js",
+            "require": "./dist/drawer.cjs"
+        },
+        "./expand": {
+            "types": "./dist/expand.d.ts",
+            "import": "./dist/expand.js",
+            "require": "./dist/expand.cjs"
+        },
+        "./form": {
+            "types": "./dist/form.d.ts",
+            "import": "./dist/form.js",
+            "require": "./dist/form.cjs"
+        },
+        "./form-group": {
+            "types": "./dist/form-group.d.ts",
+            "import": "./dist/form-group.js",
+            "require": "./dist/form-group.cjs"
+        },
+        "./form-error": {
+            "types": "./dist/form-error.d.ts",
+            "import": "./dist/form-error.js",
+            "require": "./dist/form-error.cjs"
+        },
+        "./grid": {
+            "types": "./dist/grid.d.ts",
+            "import": "./dist/grid.js",
+            "require": "./dist/grid.cjs"
+        },
+        "./i18n": {
+            "types": "./dist/i18n.d.ts",
+            "import": "./dist/i18n.js",
+            "require": "./dist/i18n.cjs"
+        },
+        "./icon": {
+            "types": "./dist/icon.d.ts",
+            "import": "./dist/icon.js",
+            "require": "./dist/icon.cjs"
+        },
+        "./input": {
+            "types": "./dist/input.d.ts",
+            "import": "./dist/input.js",
+            "require": "./dist/input.cjs"
+        },
+        "./linkable": {
+            "types": "./dist/linkable.d.ts",
+            "import": "./dist/linkable.js",
+            "require": "./dist/linkable.cjs"
+        },
+        "./loader": {
+            "types": "./dist/loader.d.ts",
+            "import": "./dist/loader.js",
+            "require": "./dist/loader.cjs"
+        },
+        "./media": {
+            "types": "./dist/media.d.ts",
+            "import": "./dist/media.js",
+            "require": "./dist/media.cjs"
+        },
+        "./modal": {
+            "types": "./dist/modal.d.ts",
+            "import": "./dist/modal.js",
+            "require": "./dist/modal.cjs"
+        },
+        "./nav": {
+            "types": "./dist/nav.d.ts",
+            "import": "./dist/nav.js",
+            "require": "./dist/nav.cjs"
+        },
+        "./popover": {
+            "types": "./dist/popover.d.ts",
+            "import": "./dist/popover.js",
+            "require": "./dist/popover.cjs"
+        },
+        "./popup": {
+            "types": "./dist/popup.d.ts",
+            "import": "./dist/popup.js",
+            "require": "./dist/popup.cjs"
+        },
+        "./radio": {
+            "types": "./dist/radio.d.ts",
+            "import": "./dist/radio.js",
+            "require": "./dist/radio.cjs"
+        },
+        "./textarea": {
+            "types": "./dist/textarea.d.ts",
+            "import": "./dist/textarea.js",
+            "require": "./dist/textarea.cjs"
+        },
+        "./theme": {
+            "types": "./dist/theme.d.ts",
+            "import": "./dist/theme.js",
+            "require": "./dist/theme.cjs"
+        },
+        "./toast": {
+            "types": "./dist/toast.d.ts",
+            "import": "./dist/toast.js",
+            "require": "./dist/toast.cjs"
+        },
+        "./toggle": {
+            "types": "./dist/toggle.d.ts",
+            "import": "./dist/toggle.js",
+            "require": "./dist/toggle.cjs"
+        },
+        "./tooltip": {
+            "types": "./dist/tooltip.d.ts",
+            "import": "./dist/tooltip.js",
+            "require": "./dist/tooltip.cjs"
+        },
+        "./typography": {
+            "types": "./dist/typography.d.ts",
+            "import": "./dist/typography.js",
+            "require": "./dist/typography.cjs"
+        },
+        "./utils": {
+            "types": "./dist/utils.d.ts",
+            "import": "./dist/utils.js",
+            "require": "./dist/utils.cjs"
+        },
+        "./validation": {
+            "types": "./dist/validation.d.ts",
+            "import": "./dist/validation.js",
+            "require": "./dist/validation.cjs"
+        },
+        "./vue": {
+            "types": "./dist/vue.d.ts",
+            "import": "./dist/vue.js",
+            "require": "./dist/vue.cjs"
         },
         "./*": "./*"
     },

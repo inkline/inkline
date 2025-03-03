@@ -46,6 +46,15 @@ export default defineComponent({
         items: {
             type: Array as PropType<NavItemDefinition[]>,
             default: () => []
+        },
+        /**
+         * Remove the gap between nav items
+         * @param {Boolean} noGap
+         * @default false
+         */
+        noGap: {
+            type: Boolean,
+            default: false
         }
     },
     setup(props, { emit }) {
@@ -57,7 +66,8 @@ export default defineComponent({
         const classes = computed(() => ({
             [`-${color.value}`]: true,
             [`-${size.value}`]: true,
-            [`-direction-${props.direction}`]: true
+            [`-direction-${props.direction}`]: true,
+            '-no-gap': props.noGap
         }));
 
         provide(NavKey, {

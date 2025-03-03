@@ -87,6 +87,12 @@ export const manifest: ComponentManifest[] = [
                 type: 'NavItemDefinition[]',
                 description: 'Nav items to display',
                 default: ''
+            },
+            {
+                name: 'noGap',
+                type: 'Boolean',
+                description: 'Remove the gap between nav items',
+                default: 'false'
             }
         ],
         events: [],

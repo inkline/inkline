@@ -922,6 +922,7 @@ export function useDrawerThemeSizeSelectors(
 export function useDrawerThemeVariantsSelectors(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
+    // Fullscreen variant
     selector(
         '.drawer.-fullscreen',
         {
@@ -951,6 +952,84 @@ export function useDrawerThemeVariantsSelectors(userOptions: DefinitionOptions) 
         {
             flex: '1',
             overflow: 'auto'
+        },
+        options
+    );
+    
+    // Position variants
+    selector(
+        ['.drawer-wrapper.-top', '.drawer-wrapper.-bottom', '.drawer-wrapper.-left', '.drawer-wrapper.-right'],
+        {
+            justifyContent: 'flex-start',
+            alignItems: 'flex-start'
+        },
+        options
+    );
+
+    // Top position
+    selector(
+        '.drawer.-top',
+        {
+            width: '100%',
+            maxWidth: '100%',
+            marginTop: '0',
+            marginBottom: '0',
+            height: 'auto',
+            maxHeight: '80vh',
+            transformOrigin: 'top center',
+            borderTopLeftRadius: '0',
+            borderTopRightRadius: '0'
+        },
+        options
+    );
+
+    // Right position
+    selector(
+        '.drawer.-right',
+        {
+            height: '100%',
+            maxHeight: '100%',
+            marginRight: '0',
+            marginLeft: 'auto',
+            width: 'auto',
+            maxWidth: '80vw',
+            transformOrigin: 'center right',
+            borderTopRightRadius: '0',
+            borderBottomRightRadius: '0'
+        },
+        options
+    );
+
+    // Bottom position
+    selector(
+        '.drawer.-bottom',
+        {
+            width: '100%',
+            maxWidth: '100%',
+            marginTop: 'auto',
+            marginBottom: '0',
+            height: 'auto',
+            maxHeight: '80vh',
+            transformOrigin: 'bottom center',
+            borderBottomLeftRadius: '0',
+            borderBottomRightRadius: '0'
+        },
+        options
+    );
+
+    // Left position
+    selector(
+        '.drawer.-left',
+        {
+            height: '100%',
+            maxHeight: '100%',
+            marginRight: 'auto',
+            marginLeft: '0',
+            width: 'auto',
+            maxWidth: '80vw',
+            transformOrigin: 'center left',
+            borderTopLeftRadius: '0',
+            borderBottomLeftRadius: '0'
         },
         options
     );

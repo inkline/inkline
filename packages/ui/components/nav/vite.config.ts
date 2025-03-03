@@ -1,3 +1,3 @@
-import { defineComponentConfig } from '@inkline/vite-component-config';
+import { defineComponentConfig } from '@inkline/vite-config';
 
 export default defineComponentConfig('nav');

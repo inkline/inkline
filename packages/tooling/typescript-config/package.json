@@ -1,0 +1,40 @@
+{
+    "name": "@inkline/typescript-config",
+    "version": "1.0.0",
+    "type": "module",
+    "files": [
+        "tsconfig.json",
+        "tsconfig.node.json",
+        "tsconfig.paths.json",
+        "LICENSE"
+    ],
+    "exports": {
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

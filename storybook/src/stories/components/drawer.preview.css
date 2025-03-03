@@ -1,0 +1,6 @@
+#storybook-root {
+    > .button {
+        margin-right: var(--spacing);
+        margin-bottom: var(--spacing);
+    }
+}

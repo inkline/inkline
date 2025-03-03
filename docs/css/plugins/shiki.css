@@ -1,0 +1,14 @@
+.shiki {
+    padding: var(--spacing);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing);
+}
+
+.light-theme .shiki {
+    background: var(--color-light-tint-50);
+}
+
+.dark-theme .shiki {
+    background: var(--color-dark-tint-50);
+}

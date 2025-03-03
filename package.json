@@ -37,5 +37,5 @@
         "prettier": "catalog:",
         "turbo": "catalog:"
     },
-    "packageManager": "pnpm@9.2.0"
+    "packageManager": "pnpm@10.5.2"
 }

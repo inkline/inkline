@@ -760,7 +760,7 @@
                 "__name": "type-scale-max",
                 "__value": {
                     "__type": "reference",
-                    "__name": "scale-perfect-fourth"
+                    "__name": "scale-major-third"
                 }
             },
             "type-scale-min-pow-minus-4": {
@@ -1185,7 +1185,7 @@
             "font-size-max": {
                 "__type": "variable",
                 "__name": "font-size-max",
-                "__value": 20
+                "__value": 18
             },
             "font-size-min-xs": {
                 "__type": "variable",
@@ -6957,10 +6957,7 @@
             "code--font-size": {
                 "__type": "variable",
                 "__name": "code--font-size",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "font-size-sm"
-                }
+                "__value": "inherit"
             },
             "code--font-family": {
                 "__type": "variable",
@@ -41128,6 +41125,13 @@
                 "__value": {
                     "flexDirection": "column",
                     "alignItems": "flex-start"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".nav.-no-gap",
+                "__value": {
+                    "gap": 0
                 }
             },
             {

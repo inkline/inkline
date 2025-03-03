@@ -78,9 +78,9 @@ export function colorModeAddon(addonOptions?: InklineOptions['colorMode']): Inkl
             if (storedColorMode) {
                 options.value.colorMode.preference = storedColorMode;
             }
-        } else {
-            onChangeColorMode(options.value.colorMode.preference ?? 'system');
         }
+
+        onChangeColorMode(options.value.colorMode.preference ?? 'system');
     };
 }
 

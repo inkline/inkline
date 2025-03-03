@@ -58,7 +58,9 @@ export const withInklineTheme = ({
 setup((app) => {
     app.use(Inkline, {
         addons: [colorModeAddon(), globalComponentsAddon(components), modalAddon(), toastAddon()],
-        routerComponent: markRaw(RouterLink)
+        router: {
+            component: markRaw(RouterLink)
+        }
     });
 });
 

@@ -16,6 +16,7 @@
     "devDependencies": {
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
+        "@inkline/typescript-config": "workspace:*",
         "@inkline/types": "workspace:*",
         "@types/node": "catalog:",
         "eslint": "catalog:",

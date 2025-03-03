@@ -17,13 +17,17 @@
         "vue-router": "catalog:"
     },
     "devDependencies": {
-        "@inkline/components": "workspace:*",
-        "@inkline/core": "workspace:*",
+        "@iconify/json": "^2.2.308",
         "@inkline/config": "workspace:*",
+        "@inkline/core": "workspace:*",
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
         "@inkline/framework": "workspace:*",
         "@inkline/logger": "workspace:*",
-        "@inkline/theme": "workspace:*"
+        "@inkline/theme": "workspace:*",
+        "@inkline/vite-config": "workspace:*",
+        "@inkline/typescript-config": "workspace:*",
+        "unplugin-icons": "^22.1.0",
+        "unplugin-vue-components": "^28.4.0"
     }
 }

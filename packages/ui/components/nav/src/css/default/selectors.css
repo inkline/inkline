@@ -18,6 +18,10 @@
     align-items: flex-start;
 }
 
+.nav.-no-gap {
+    gap: 0;
+}
+
 .nav.-sm {
     --nav--font-size: var(--nav--sm--font-size);
     --nav--gap: var(--nav--sm--gap);

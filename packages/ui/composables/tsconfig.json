@@ -1,5 +1,5 @@
 {
-    "extends": "../../tooling/typescript-config/tsconfig.json",
+    "extends": "@inkline/typescript-config/tsconfig.json",
     "compilerOptions": {
         "paths": {
             "@inkline/types": [

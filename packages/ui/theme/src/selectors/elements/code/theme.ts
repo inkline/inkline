@@ -7,12 +7,11 @@ export function useCodeConfig(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     const { colorPink } = useBaseColors(options);
-    const { fontSizeSm } = useFontSize(options);
     const { fontFamilyMonospace } = useFontFamily(options);
 
     return {
         color: ref(colorPink),
-        fontSize: ref(fontSizeSm),
+        fontSize: 'inherit',
         fontFamily: ref(fontFamilyMonospace)
     };
 }

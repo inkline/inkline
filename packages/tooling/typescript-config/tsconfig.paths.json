@@ -1,0 +1,46 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "inkline*": [
+                "${configDir}/../../inkline/src*"
+            ],
+            "@inkline/config": [
+                "${configDir}/../../engine/config/src/index.ts"
+            ],
+            "@inkline/core": [
+                "${configDir}/../../engine/core/src/index.ts"
+            ],
+            "@inkline/generator": [
+                "${configDir}/../../engine/generator/src/index.ts"
+            ],
+            "@inkline/framework": [
+                "${configDir}/../../integrations/framework/src/index.ts"
+            ],
+            "@inkline/composables": [
+                "${configDir}/../../ui/composables/src/index.ts"
+            ],
+            "@inkline/i18n": [
+                "${configDir}/../../ui/i18n/src/index.ts"
+            ],
+            "@inkline/theme": [
+                "${configDir}/../../ui/theme/src/index.ts"
+            ],
+            "@inkline/types": [
+                "${configDir}/../../ui/types/src/index.ts"
+            ],
+            "@inkline/validation": [
+                "${configDir}/../../ui/validation/src/index.ts"
+            ],
+            "@inkline/vue": [
+                "${configDir}/../../ui/vue/src/index.ts"
+            ],
+            "@inkline/component-*/examples": [
+                "${configDir}/../../ui/components/*/src/examples/index.ts",
+                "${configDir}/../../ui/components/*/src/examples.ts"
+            ],
+            "@inkline/component-*": [
+                "${configDir}/../../ui/components/*/src/index.ts"
+            ]
+        }
+    }
+}

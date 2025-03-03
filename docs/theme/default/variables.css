@@ -54,7 +54,7 @@
     --scale-pow-4: calc(var(--scale) * var(--scale) * var(--scale) * var(--scale));
     --scale-pow-5: calc(var(--scale) * var(--scale) * var(--scale) * var(--scale) * var(--scale));
     --type-scale-min: var(--scale-minor-third);
-    --type-scale-max: var(--scale-perfect-fourth);
+    --type-scale-max: var(--scale-major-third);
     --type-scale-min-pow-minus-4: calc(1 / var(--type-scale-min) / var(--type-scale-min) / var(--type-scale-min) / var(--type-scale-min));
     --type-scale-min-pow-minus-3: calc(1 / var(--type-scale-min) / var(--type-scale-min) / var(--type-scale-min));
     --type-scale-min-pow-minus-2: calc(1 / var(--type-scale-min) / var(--type-scale-min));
@@ -74,7 +74,7 @@
     --type-scale-max-pow-4: calc(var(--type-scale-max) * var(--type-scale-max) * var(--type-scale-max) * var(--type-scale-max));
     --type-scale-max-pow-5: calc(var(--type-scale-max) * var(--type-scale-max) * var(--type-scale-max) * var(--type-scale-max) * var(--type-scale-max));
     --font-size-min: 16;
-    --font-size-max: 20;
+    --font-size-max: 18;
     --font-size-min-xs: calc(var(--font-size-min) * var(--type-scale-min-pow-minus-2));
     --font-size-min-sm: calc(var(--font-size-min) * var(--type-scale-min-pow-minus-1));
     --font-size-min-md: var(--font-size-min);
@@ -420,7 +420,7 @@
     --caption--padding-left: 0;
     --caption--padding: var(--caption--padding-top) var(--caption--padding-right) var(--caption--padding-bottom) var(--caption--padding-left);
     --code--color: var(--color-pink);
-    --code--font-size: var(--font-size-sm);
+    --code--font-size: inherit;
     --code--font-family: var(--font-family-monospace);
     --dl--margin-top: 0;
     --dl--margin-right: 0;
