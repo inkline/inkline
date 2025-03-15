@@ -3,7 +3,7 @@ title: Vite Installation - Inkline
 description: Install Inkline for an application created using any build tool, bundler or framework.
 ---
 
-# Other Installation
+# Other Installation 🚧 (WIP)
 
 description: Install Inkline for an application created using any build tool, bundler or framework.
 
@@ -13,11 +13,11 @@ description: Install Inkline for an application created using any build tool, bu
 
 Create a new application using a Front End Development Tool that supports modern JavaScript (or TypeScript) such as:
 
-- [Vite.js](https://vitejs.dev){rel="noopener nofollow"} (recommended)
-- [Webpack.js](https://webpack.js.org){rel="noopener nofollow"}
-- [Astro.build](https://astro.build){rel="noopener nofollow"}
-- [Rollup.js](https://rollupjs.org){rel="noopener nofollow"}
-- [Parcel.js](https://parceljs.org){rel="noopener nofollow"}
+- [Vite.js](https://vitejs.dev){target="_blank" rel="noopener nofollow"} (recommended)
+- [Webpack.js](https://webpack.js.org){target="_blank" rel="noopener nofollow"}
+- [Astro.build](https://astro.build){target="_blank" rel="noopener nofollow"}
+- [Rollup.js](https://rollupjs.org){target="_blank" rel="noopener nofollow"}
+- [Parcel.js](https://parceljs.org){target="_blank" rel="noopener nofollow"}
 
 ::
 ::DocsInstallStep{:number="2" title="Create configuration file"}
@@ -136,4 +136,4 @@ Having issues with your installation? Here are solutions to common problems:
 - **Styling issues**: Check that the Inkline plugin is correctly added to your Vite configuration and that the output `index.css` file is imported
 - **TypeScript errors**: Ensure you have the latest `inkline` package installed
 
-Still having trouble? Join our [GitHub Discussions](https://github.com/inkline/inkline/discussions) for community support.
+Still having trouble? Join our [GitHub Discussions](https://github.com/inkline/inkline/discussions){target="_blank"} for community support.

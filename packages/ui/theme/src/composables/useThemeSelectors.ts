@@ -1,5 +1,4 @@
 import {
-    useNormalizeTheme,
     useFluidTheme,
     useATheme,
     useAbbrTheme,
@@ -29,7 +28,6 @@ import { defaultDefinitionOptions, DefinitionOptions } from '@inkline/core';
 export function useThemeSelectors(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    useNormalizeTheme(options);
     useFluidTheme(options);
     useATheme(options);
     useAbbrTheme(options);

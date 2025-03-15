@@ -101,4 +101,4 @@ Having issues with your installation? Here are solutions to common problems:
 - **Components or Styling issues**: Make sure Inkline is properly referenced in your `nuxt.config.ts` file
 - **TypeScript errors**: Ensure you have the latest `inkline` package installed
 
-Still having trouble? Join our [GitHub Discussions](https://github.com/inkline/inkline/discussions) for community support.
+Still having trouble? Join our [GitHub Discussions](https://github.com/inkline/inkline/discussions){target="_blank"} for community support.

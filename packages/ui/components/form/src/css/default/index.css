@@ -1,1 +1,1 @@
-@import "selectors.css";
+@import "./selectors.css" layer(components);

@@ -5,10 +5,12 @@
     "scripts": {
         "dev": "devtools tsup watch",
         "build": "devtools tsup build",
+        "prebuild": "pnpm run generate",
         "lint": "devtools eslint",
         "test": "devtools test",
         "test:dev": "devtools test --watch",
-        "test:ci": "devtools test --coverage"
+        "test:ci": "devtools test --coverage",
+        "generate": "tsx --import ./loaders/register.js scripts/generate.ts"
     },
     "devDependencies": {
         "@inkline/devtools": "workspace:*",
@@ -18,6 +20,8 @@
         "@types/node": "catalog:",
         "@vitest/coverage-v8": "catalog:",
         "eslint": "catalog:",
+        "normalize.css": "catalog:",
+        "tsx": "catalog:",
         "tsup": "catalog:",
         "type-fest": "catalog:",
         "typescript": "catalog:",

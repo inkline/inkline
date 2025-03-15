@@ -433,6 +433,14 @@ export function useBadgeThemeBaseSelectors(userOptions: DefinitionOptions) {
         },
         options
     );
+
+    selector(
+        '.badge.-inherit',
+        {
+            fontSize: 'inherit'
+        },
+        options
+    );
 }
 
 export function useBadgeThemeColorSelectors(

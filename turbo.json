@@ -5,18 +5,30 @@
             "cache": true,
             "inputs": [
                 "src/**",
+                "assets/**",
+                "components/**",
+                "constants/**",
+                "content/**",
+                "layouts/**",
+                "pages/**",
+                "server/**",
+                "types/**",
                 "vite.config.ts",
+                "nuxt.config.ts",
                 "inkline.config.ts",
                 "package.json"
             ],
             "outputs": [
                 "src/resources/**",
                 "src/manifest.ts",
+                "src/theme/**",
+                "theme/**",
                 "dist/**",
                 "lib/**",
                 "storybook-static/**",
                 ".output",
-                ".data"
+                ".data",
+                ".nuxt"
             ],
             "dependsOn": [
                 "^build"

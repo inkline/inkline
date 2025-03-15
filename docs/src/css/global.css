@@ -1,0 +1,9 @@
+@import './plugins/index.css';
+
+:root {
+    --navbar--height: 66px;
+}
+
+body {
+    font-family: 'Inkline', var(--font-family-base);
+}

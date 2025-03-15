@@ -79,4 +79,4 @@ Having issues with your installation? Here are solutions to common problems:
 - **Styling issues**: Check that the Inkline plugin is correctly added to your Vite configuration and that the output `index.css` file is imported
 - **TypeScript errors**: Ensure you have the latest `inkline` package installed
 
-Still having trouble? Join our [GitHub Discussions](https://github.com/inkline/inkline/discussions) for community support.
+Still having trouble? Join our [GitHub Discussions](https://github.com/inkline/inkline/discussions){target="_blank"} for community support.

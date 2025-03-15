@@ -12,7 +12,7 @@ export const manifest: ComponentManifest[] = [
             },
             {
                 name: 'size',
-                type: "'sm' | 'md' | 'lg'",
+                type: "'sm' | 'md' | 'lg' | 'inherit'",
                 description: 'The size variant of the badge',
                 default: ''
             },

@@ -56,7 +56,11 @@ export async function build(userOptions: UserBuildOptions = {}) {
         cwd: options.configDir,
         configFile: `${options.configFile}${options.configExtName}`
     });
-    configuration.options = options;
+    
+    configuration.options = {
+        ...configuration.options,
+        ...options
+    };
 
     return await buildConfiguration(configuration, options);
 }

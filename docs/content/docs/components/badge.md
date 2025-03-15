@@ -1,0 +1,6 @@
+---
+title: Badge - Inkline
+---
+
+# Badge
+

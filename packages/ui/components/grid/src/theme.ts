@@ -50,7 +50,7 @@ export function useGridThemeSelectors(userOptions: DefinitionOptions) {
     );
 
     selector('.grid.-no-wrap', { flexWrap: 'nowrap' }, options);
-    
+
     selector('.grid.-no-gap', { gap: 0 }, options);
 
     flexDirectionValues.forEach((flexDirection) => {

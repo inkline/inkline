@@ -31,6 +31,10 @@ a:hover .badge, a:focus .badge {
     --badge--border-radius: var(--badge--pill--border-radius, var(--badge--pill--border-top-left-radius) var(--badge--pill--border-top-right-radius) var(--badge--pill--border-bottom-right-radius) var(--badge--pill--border-bottom-left-radius));
 }
 
+.badge.-inherit {
+    font-size: inherit;
+}
+
 .badge.-light {
     --badge--border-top-color: var(--badge--light--border-top-color);
     --badge--border-right-color: var(--badge--light--border-right-color);

@@ -1,4 +1,4 @@
-import type { OutputFile } from './generators';
+import type { GeneratorOptions, OutputFile } from './generators';
 import type { Themes } from './tokens';
 import { DefinitionOptions } from './options';
 
@@ -10,6 +10,7 @@ export type ConfigurationOptions<T = unknown> = {
     outputDir?: string;
     manifest?: boolean;
     module?: 'css';
+    generator?: GeneratorOptions;
 } & T;
 
 export type Configuration<T = unknown> = {

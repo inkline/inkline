@@ -1,2 +1,2 @@
-@import "variables.css";
-@import "selectors.css";
+@import "./variables.css" layer(theme);
+@import "./selectors.css" layer(components);

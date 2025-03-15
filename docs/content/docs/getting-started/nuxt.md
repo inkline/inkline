@@ -25,7 +25,7 @@ npm install
 
 This creates a new Vue project with Nuxt's blazing-fast build tooling already configured.
 
-For more information about Nuxt, you can read the [Getting Started](https://vitejs.dev/guide/){target="_blank"} guide.
+For more information about Nuxt, you can read the [Getting Started](https://nuxt.com/docs/getting-started/installation){target="_blank"} guide.
 
 ::
 ::DocsInstallStep{:number="2" title="Install Inkline"}
@@ -77,4 +77,4 @@ Having issues with your installation? Here are solutions to common problems:
 - **Components or Styling issues**: Make sure Inkline is properly referenced in your `nuxt.config.ts` file
 - **TypeScript errors**: Ensure you have the latest `inkline` package installed
 
-Still having trouble? Join our [GitHub Discussions](https://github.com/inkline/inkline/discussions) for community support.
+Still having trouble? Join our [GitHub Discussions](https://github.com/inkline/inkline/discussions){target="_blank"} for community support.

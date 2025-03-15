@@ -4,5 +4,6 @@
         "@inkline/typescript-config/tsconfig.json",
         "@inkline/typescript-config/tsconfig.paths.json",
         "./.nuxt/tsconfig.json"
-    ]
+    ],
+    "compilerOptions": {}
 }

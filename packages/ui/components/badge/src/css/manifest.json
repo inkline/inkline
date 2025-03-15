@@ -7571,6 +7571,13 @@
             },
             {
                 "__type": "selector",
+                "__name": ".badge.-inherit",
+                "__value": {
+                    "fontSize": "inherit"
+                }
+            },
+            {
+                "__type": "selector",
                 "__name": ".badge.-light",
                 "__value": {
                     "--badge--border-top-color": {
