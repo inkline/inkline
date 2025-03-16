@@ -1,4 +1,10 @@
 /**
+ * Types
+ */
+
+export * from '@inkline/types';
+
+/**
  * Engine
  */
 

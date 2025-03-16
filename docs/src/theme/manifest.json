@@ -26458,6 +26458,13 @@
             },
             {
                 "__type": "selector",
+                "__name": "h1 .badge, h2 .badge, h3 .badge, h4 .badge, h5 .badge, h6 .badge, p .badge",
+                "__value": {
+                    "fontSize": "inherit"
+                }
+            },
+            {
+                "__type": "selector",
                 "__name": ".badge",
                 "__value": {
                     "borderStyle": {

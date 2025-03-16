@@ -2,8 +2,56 @@
     // https://nuxt.com/docs/guide/concepts/typescript
     "extends": [
         "@inkline/typescript-config/tsconfig.json",
-        "@inkline/typescript-config/tsconfig.paths.json",
         "./.nuxt/tsconfig.json"
     ],
-    "compilerOptions": {}
+    "compilerOptions": {
+        "paths": {
+            "~/*": [
+                "./src/*"
+            ],
+            "inkline": [
+                "../packages/inkline/src/index.ts"
+            ],
+            "inkline/*": [
+                "../packages/inkline/src/*"
+            ],
+            "@inkline/config": [
+                "../packages/engine/config/src/index.ts"
+            ],
+            "@inkline/core": [
+                "../packages/engine/core/src/index.ts"
+            ],
+            "@inkline/generator": [
+                "../packages/engine/generator/src/index.ts"
+            ],
+            "@inkline/framework": [
+                "../packages/integrations/framework/src/index.ts"
+            ],
+            "@inkline/composables": [
+                "../packages/ui/composables/src/index.ts"
+            ],
+            "@inkline/i18n": [
+                "../packages/ui/i18n/src/index.ts"
+            ],
+            "@inkline/theme": [
+                "../packages/ui/theme/src/index.ts"
+            ],
+            "@inkline/types": [
+                "../packages/ui/types/src/index.ts"
+            ],
+            "@inkline/validation": [
+                "../packages/ui/validation/src/index.ts"
+            ],
+            "@inkline/vue": [
+                "../packages/ui/vue/src/index.ts"
+            ],
+            "@inkline/component-*/examples": [
+                "../packages/ui/components/*/src/examples/index.ts",
+                "../packages/ui/components/*/src/examples.ts"
+            ],
+            "@inkline/component-*": [
+                "../packages/ui/components/*/src/index.ts"
+            ]
+        }
+    }
 }

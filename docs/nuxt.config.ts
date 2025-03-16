@@ -1,6 +1,7 @@
 import path, { resolve } from 'path';
 import TailwindCSS from '@tailwindcss/vite';
 import { aliases } from '@inkline/vite-config';
+import { contentFileBeforeParseHook } from './hooks';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -80,7 +81,8 @@ export default defineNuxtConfig({
     },
     css: ['~/css/index.css'],
     routeRules: {
-        '/docs': { redirect: '/docs/introduction' }
+        '/docs': { redirect: '/docs/introduction' },
+        '/docs/getting-started': { redirect: '/docs/getting-started/vite' }
     },
     imports: {
         transform: {
@@ -93,7 +95,20 @@ export default defineNuxtConfig({
                 ...aliases.map((alias) => ({
                     find: alias.find,
                     replacement: resolve(__dirname, '..', 'packages', alias.replacement)
-                }))
+                })),
+                {
+                    find: /@inkline\/component-(.+)\/examples/,
+                    replacement: resolve(
+                        __dirname,
+                        '..',
+                        'packages',
+                        'ui',
+                        'components',
+                        '$1',
+                        'src',
+                        'examples'
+                    )
+                }
             ]
         },
         plugins: [TailwindCSS()]
@@ -160,6 +175,9 @@ export default defineNuxtConfig({
      */
     site: {
         url: 'https://www.inkline.io'
+    },
+    hooks: {
+        'content:file:beforeParse': contentFileBeforeParseHook
     },
     srcDir: 'src'
 });
