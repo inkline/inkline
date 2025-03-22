@@ -1,6 +1,43 @@
 .icon {
+    color: var(--icon--color);
     overflow: visible;
     font-size: var(--icon--font-size);
+}
+
+.icon.-inherit {
+    color: inherit;
+}
+
+.icon.-light {
+    --icon--color: var(--icon--light--color);
+}
+
+.icon.-dark {
+    --icon--color: var(--icon--dark--color);
+}
+
+.icon.-primary {
+    --icon--color: var(--icon--primary--color);
+}
+
+.icon.-secondary {
+    --icon--color: var(--icon--secondary--color);
+}
+
+.icon.-success {
+    --icon--color: var(--icon--success--color);
+}
+
+.icon.-danger {
+    --icon--color: var(--icon--danger--color);
+}
+
+.icon.-warning {
+    --icon--color: var(--icon--warning--color);
+}
+
+.icon.-info {
+    --icon--color: var(--icon--info--color);
 }
 
 .icon.-sm {

@@ -14,7 +14,7 @@ export type FormValue = FormValue[] | object | string | number | boolean | null 
 
 export type FormErrorCondition = boolean | FormStateKeys[];
 
-export type FormValidatorFn<T = Record<string, any>, S extends Form = Form> = (
+export type FormValidatorFn<T = Record<string, any>, S extends FormValues = FormValues> = (
     value: FormValue,
     options: T & {
         schema?: ResolvedFormSchema<S> | FormSchema<S>;
@@ -38,9 +38,9 @@ export type FormField<V> = {
     validators?: Array<FormValidator | string>;
 };
 
-export type Form = Record<string, any>;
+export type FormValues = Record<string, any>;
 
-export type FormSchema<T extends Form> = {
+export type FormSchema<T extends FormValues> = {
     [K in keyof T]: T[K] extends infer U
         ? U extends Array<infer V>
             ? U extends FormField<V[]>
@@ -79,7 +79,7 @@ export type ResolvedFormField<V> = {
     validators: Array<FormValidator | string>;
 } & FormState;
 
-export type ResolvedFormSchema<T extends Form> = {
+export type ResolvedFormSchema<T extends FormValues> = {
     [K in keyof T]: T[K] extends Array<infer V>
         ? V extends object
             ? ResolvedFormSchema<V>[]

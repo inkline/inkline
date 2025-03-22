@@ -50,6 +50,7 @@ export function useMediaThemeVariables(userOptions: DefinitionOptions) {
 
 export function useMediaThemeLayoutSelectors(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
+    const { spacing } = useSpacing(options);
 
     selector(
         '.media',
@@ -64,6 +65,8 @@ export function useMediaThemeLayoutSelectors(userOptions: DefinitionOptions) {
     selector(
         '.media > .media-body',
         {
+            display: 'flex',
+            flexDirection: 'column',
             flex: '0 1 auto'
         },
         options
@@ -83,12 +86,12 @@ export function useMediaThemeLayoutSelectors(userOptions: DefinitionOptions) {
 export function useMediaThemeBaseSelectors(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    const { mediaImageMargin } = useMediaThemeVariables(options);
+    const { mediaImageMarginRight } = useMediaThemeVariables(options);
 
     selector(
         '.media > img, .media > .img, .media > .image',
         {
-            margin: vref(mediaImageMargin)
+            marginRight: vref(mediaImageMarginRight)
         },
         options
     );

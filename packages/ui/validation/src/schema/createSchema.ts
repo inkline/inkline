@@ -1,5 +1,5 @@
 import type {
-    Form,
+    FormValues,
     FormField,
     FormSchema,
     ResolvedFormField,
@@ -29,8 +29,8 @@ export function createFormFieldSchema<T>(field: FormField<T>): ResolvedFormField
  * @return { (ResolvedFormSchema<T> | ResolvedFormField<T>)[] }
  */
 export function createFormArraySchema<T>(
-    items: (FormSchema<T extends Form ? T : never> | FormField<T>)[]
-): (ResolvedFormSchema<T extends Form ? T : never> | ResolvedFormField<T>)[] {
+    items: (FormSchema<T extends FormValues ? T : never> | FormField<T>)[]
+): (ResolvedFormSchema<T extends FormValues ? T : never> | ResolvedFormField<T>)[] {
     return items.map((item) => {
         if (isFormGroup(item)) {
             return createSchema(item);
@@ -46,7 +46,9 @@ export function createFormArraySchema<T>(
  * @param schema { FormSchema<T> }
  * @return { ResolvedFormSchema<T> }
  */
-export function createFormSchema<T extends Form>(schema: FormSchema<T>): ResolvedFormSchema<T> {
+export function createFormSchema<T extends FormValues>(
+    schema: FormSchema<T>
+): ResolvedFormSchema<T> {
     const resolved = {
         ...defaultValidationStateValues
     } as ResolvedFormSchema<T>;
@@ -76,6 +78,6 @@ export function createFormSchema<T extends Form>(schema: FormSchema<T>): Resolve
  * @param schema { FormSchema<T> }
  * @return { ResolvedFormSchema<T> }
  */
-export function createSchema<T extends Form>(schema: FormSchema<T>): ResolvedFormSchema<T> {
+export function createSchema<T extends FormValues>(schema: FormSchema<T>): ResolvedFormSchema<T> {
     return createFormSchema(schema);
 }

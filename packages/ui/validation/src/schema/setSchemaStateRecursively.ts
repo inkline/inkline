@@ -1,5 +1,5 @@
 import { reservedValidationFields } from '../constants';
-import type { Form, FormState, FormValue, ResolvedFormSchema } from '@inkline/types';
+import type { FormValues, FormState, FormValue, ResolvedFormSchema } from '@inkline/types';
 
 /**
  * Update schema recursively with given values
@@ -8,7 +8,7 @@ import type { Form, FormState, FormValue, ResolvedFormSchema } from '@inkline/ty
  * @param values { Record<ReservedFormKeys, boolean> }
  * @returns { ResolvedFormSchema }
  */
-export function setSchemaStateRecursively<T extends Form>(
+export function setSchemaStateRecursively<T extends FormValues>(
     schema: ResolvedFormSchema<T>,
     values: Record<string, any>
 ) {

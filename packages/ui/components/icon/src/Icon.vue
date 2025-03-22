@@ -1,14 +1,8 @@
 <script lang="ts">
-import { h, computed, defineComponent, onMounted } from 'vue';
+import { h, computed, defineComponent, onMounted, PropType } from 'vue';
 import { useOptions } from '@inkline/composables';
 import type { DOMNode } from '@inkline/types';
 import type { VNode } from 'vue';
-
-/**
- * The icon to be displayed
- * @param {string} name
- * @default
- */
 
 const componentName = 'Icon';
 
@@ -21,7 +15,7 @@ export default defineComponent({
     name: componentName,
     props: {
         /**
-         * @description The icon to be displayed
+         * The icon to be displayed
          * @param {string} name
          * @default
          */
@@ -30,12 +24,30 @@ export default defineComponent({
             default: ''
         },
         /**
+         * The color of the icon
+         * @param {'inherit' | light' | 'dark' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'} color
+         * @default undefined
+         */
+        color: {
+            type: String,
+            default: 'inherit'
+        },
+        /**
+         * The size of the icon
+         * @param {string | number} size
+         * @default undefined
+         */
+        size: {
+            type: [String, Number] as PropType<string | number>,
+            default: undefined
+        },
+        /**
          * The width of the icon. Will override the size prop
          * @param {string | number} width
          * @default undefined
          */
         width: {
-            type: [String, Number],
+            type: [String, Number] as PropType<string | number>,
             default: undefined
         },
         /**
@@ -44,7 +56,7 @@ export default defineComponent({
          * @default undefined
          */
         height: {
-            type: [String, Number],
+            type: [String, Number] as PropType<string | number>,
             default: undefined
         }
     },
@@ -63,15 +75,19 @@ export default defineComponent({
                 return h(options.value.icons.component, props);
             }
 
+            const color = props.color;
+            const width = props.width ?? props.size;
+            const height = props.height ?? props.size;
+
             const rootNode = icon.value?.body[0];
             return rootNode
                 ? h(
                       rootNode.type,
                       {
-                          class: `icon ${props.name}`,
+                          class: `icon ${props.name} ${color ? `-${color}` : ''}`,
                           ...rootNode.props,
-                          ...(props.width ? { width: props.width } : {}),
-                          ...(props.height ? { height: props.height } : {})
+                          ...(width ? { width } : {}),
+                          ...(height ? { height } : {})
                       },
                       renderSvg(rootNode.children ?? [])
                   )

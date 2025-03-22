@@ -1,4 +1,4 @@
-@import 'normalize.css';
-
-@import 'default/index.css';
-@import 'dark/index.css';
+@layer theme, base, components, utilities;
+@import "./normalize.css" layer(base);
+@import "./default/index.css";
+@import "./dark/index.css";

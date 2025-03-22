@@ -1,1 +1,1 @@
-@import "variables.css";
+@import "./variables.css" layer(theme);

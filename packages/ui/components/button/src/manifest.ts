@@ -53,12 +53,6 @@ export const manifest: ComponentManifest[] = [
                 default: 'false'
             },
             {
-                name: 'showLoadingIcon',
-                type: 'boolean',
-                description: 'Display the button loading icon when loading state is active',
-                default: 'true'
-            },
-            {
                 name: 'outline',
                 type: 'boolean',
                 description: 'Display the button as an outline button',
@@ -109,6 +103,10 @@ export const manifest: ComponentManifest[] = [
             }
         ],
         slots: [
+            {
+                name: 'loading-icon',
+                description: 'Slot for button loading icon'
+            },
             {
                 name: 'loading',
                 description: 'Slot for button loading text'

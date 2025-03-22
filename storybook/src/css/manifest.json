@@ -14946,12 +14946,84 @@
                     }
                 ]
             },
+            "icon--color": {
+                "__type": "variable",
+                "__name": "icon--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light"
+                }
+            },
             "icon--font-size": {
                 "__type": "variable",
                 "__name": "icon--font-size",
                 "__value": {
                     "__type": "reference",
                     "__name": "font-size-md"
+                }
+            },
+            "icon--light--color": {
+                "__type": "variable",
+                "__name": "icon--light--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light"
+                }
+            },
+            "icon--dark--color": {
+                "__type": "variable",
+                "__name": "icon--dark--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark"
+                }
+            },
+            "icon--primary--color": {
+                "__type": "variable",
+                "__name": "icon--primary--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-primary"
+                }
+            },
+            "icon--secondary--color": {
+                "__type": "variable",
+                "__name": "icon--secondary--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-secondary"
+                }
+            },
+            "icon--success--color": {
+                "__type": "variable",
+                "__name": "icon--success--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-success"
+                }
+            },
+            "icon--danger--color": {
+                "__type": "variable",
+                "__name": "icon--danger--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-danger"
+                }
+            },
+            "icon--warning--color": {
+                "__type": "variable",
+                "__name": "icon--warning--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-warning"
+                }
+            },
+            "icon--info--color": {
+                "__type": "variable",
+                "__name": "icon--info--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-info"
                 }
             },
             "input--border-top-color": {
@@ -19378,6 +19450,2041 @@
                     "__name": "color-primary-700"
                 }
             },
+            "tab-list--border-top-color": {
+                "__type": "variable",
+                "__name": "tab-list--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-list--border-right-color": {
+                "__type": "variable",
+                "__name": "tab-list--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-list--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab-list--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-list--border-left-color": {
+                "__type": "variable",
+                "__name": "tab-list--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-list--border-top-width": {
+                "__type": "variable",
+                "__name": "tab-list--border-top-width",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-width"
+                }
+            },
+            "tab-list--border-top-style": {
+                "__type": "variable",
+                "__name": "tab-list--border-top-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-style"
+                }
+            },
+            "tab-list--border-right-width": {
+                "__type": "variable",
+                "__name": "tab-list--border-right-width",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-right-width"
+                }
+            },
+            "tab-list--border-right-style": {
+                "__type": "variable",
+                "__name": "tab-list--border-right-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-right-style"
+                }
+            },
+            "tab-list--border-bottom-width": {
+                "__type": "variable",
+                "__name": "tab-list--border-bottom-width",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-width"
+                }
+            },
+            "tab-list--border-bottom-style": {
+                "__type": "variable",
+                "__name": "tab-list--border-bottom-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-style"
+                }
+            },
+            "tab-list--border-left-width": {
+                "__type": "variable",
+                "__name": "tab-list--border-left-width",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-left-width"
+                }
+            },
+            "tab-list--border-left-style": {
+                "__type": "variable",
+                "__name": "tab-list--border-left-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-left-style"
+                }
+            },
+            "tab-list--box-shadow-offset-x": {
+                "__type": "variable",
+                "__name": "tab-list--box-shadow-offset-x",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-offset-x"
+                }
+            },
+            "tab-list--box-shadow-offset-y": {
+                "__type": "variable",
+                "__name": "tab-list--box-shadow-offset-y",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-offset-y"
+                }
+            },
+            "tab-list--box-shadow-blur-radius": {
+                "__type": "variable",
+                "__name": "tab-list--box-shadow-blur-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-blur-radius"
+                }
+            },
+            "tab-list--box-shadow-spread-radius": {
+                "__type": "variable",
+                "__name": "tab-list--box-shadow-spread-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-spread-radius"
+                }
+            },
+            "tab-list--box-shadow-color": {
+                "__type": "variable",
+                "__name": "tab-list--box-shadow-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-color"
+                }
+            },
+            "tab-list--transition-property": {
+                "__type": "variable",
+                "__name": "tab-list--transition-property",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-property"
+                }
+            },
+            "tab-list--transition-duration": {
+                "__type": "variable",
+                "__name": "tab-list--transition-duration",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-duration"
+                }
+            },
+            "tab-list--transition-timing-function": {
+                "__type": "variable",
+                "__name": "tab-list--transition-timing-function",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-timing-function"
+                }
+            },
+            "tab-list--background": {
+                "__type": "variable",
+                "__name": "tab-list--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white"
+                }
+            },
+            "tab-list--color": {
+                "__type": "variable",
+                "__name": "tab-list--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light"
+                }
+            },
+            "tab-list--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "tab-list--border-top-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-left-radius-md"
+                }
+            },
+            "tab-list--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "tab-list--border-top-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-right-radius-md"
+                }
+            },
+            "tab-list--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "tab-list--border-bottom-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-right-radius-md"
+                }
+            },
+            "tab-list--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "tab-list--border-bottom-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-left-radius-md"
+                }
+            },
+            "tab-list--font-size": {
+                "__type": "variable",
+                "__name": "tab-list--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-md"
+                }
+            },
+            "tab-list--padding-top": {
+                "__type": "variable",
+                "__name": "tab-list--padding-top",
+                "__value": 0
+            },
+            "tab-list--padding-right": {
+                "__type": "variable",
+                "__name": "tab-list--padding-right",
+                "__value": 0
+            },
+            "tab-list--padding-bottom": {
+                "__type": "variable",
+                "__name": "tab-list--padding-bottom",
+                "__value": 0
+            },
+            "tab-list--padding-left": {
+                "__type": "variable",
+                "__name": "tab-list--padding-left",
+                "__value": 0
+            },
+            "tab-list--margin-top": {
+                "__type": "variable",
+                "__name": "tab-list--margin-top",
+                "__value": 0
+            },
+            "tab-list--margin-right": {
+                "__type": "variable",
+                "__name": "tab-list--margin-right",
+                "__value": 0
+            },
+            "tab-list--margin-bottom": {
+                "__type": "variable",
+                "__name": "tab-list--margin-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab-list--margin-left": {
+                "__type": "variable",
+                "__name": "tab-list--margin-left",
+                "__value": 0
+            },
+            "tab-list--light--border-top-color": {
+                "__type": "variable",
+                "__name": "tab-list--light--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-list--light--border-right-color": {
+                "__type": "variable",
+                "__name": "tab-list--light--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-list--light--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab-list--light--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-list--light--border-left-color": {
+                "__type": "variable",
+                "__name": "tab-list--light--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-list--light--background": {
+                "__type": "variable",
+                "__name": "tab-list--light--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white"
+                }
+            },
+            "tab-list--light--color": {
+                "__type": "variable",
+                "__name": "tab-list--light--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light"
+                }
+            },
+            "tab-list--dark--border-top-color": {
+                "__type": "variable",
+                "__name": "tab-list--dark--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "tab-list--dark--border-right-color": {
+                "__type": "variable",
+                "__name": "tab-list--dark--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "tab-list--dark--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab-list--dark--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "tab-list--dark--border-left-color": {
+                "__type": "variable",
+                "__name": "tab-list--dark--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "tab-list--dark--background": {
+                "__type": "variable",
+                "__name": "tab-list--dark--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark"
+                }
+            },
+            "tab-list--dark--color": {
+                "__type": "variable",
+                "__name": "tab-list--dark--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark"
+                }
+            },
+            "tab-list--sm--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "tab-list--sm--border-top-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-left-radius-sm"
+                }
+            },
+            "tab-list--sm--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "tab-list--sm--border-top-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-right-radius-sm"
+                }
+            },
+            "tab-list--sm--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "tab-list--sm--border-bottom-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-right-radius-sm"
+                }
+            },
+            "tab-list--sm--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "tab-list--sm--border-bottom-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-left-radius-sm"
+                }
+            },
+            "tab-list--sm--font-size": {
+                "__type": "variable",
+                "__name": "tab-list--sm--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-sm"
+                }
+            },
+            "tab-list--sm--padding-top": {
+                "__type": "variable",
+                "__name": "tab-list--sm--padding-top",
+                "__value": 0
+            },
+            "tab-list--sm--padding-right": {
+                "__type": "variable",
+                "__name": "tab-list--sm--padding-right",
+                "__value": 0
+            },
+            "tab-list--sm--padding-bottom": {
+                "__type": "variable",
+                "__name": "tab-list--sm--padding-bottom",
+                "__value": 0
+            },
+            "tab-list--sm--padding-left": {
+                "__type": "variable",
+                "__name": "tab-list--sm--padding-left",
+                "__value": 0
+            },
+            "tab-list--sm--margin-top": {
+                "__type": "variable",
+                "__name": "tab-list--sm--margin-top",
+                "__value": 0
+            },
+            "tab-list--sm--margin-right": {
+                "__type": "variable",
+                "__name": "tab-list--sm--margin-right",
+                "__value": 0
+            },
+            "tab-list--sm--margin-bottom": {
+                "__type": "variable",
+                "__name": "tab-list--sm--margin-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-sm"
+                }
+            },
+            "tab-list--sm--margin-left": {
+                "__type": "variable",
+                "__name": "tab-list--sm--margin-left",
+                "__value": 0
+            },
+            "tab-list--md--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "tab-list--md--border-top-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-left-radius-md"
+                }
+            },
+            "tab-list--md--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "tab-list--md--border-top-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-right-radius-md"
+                }
+            },
+            "tab-list--md--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "tab-list--md--border-bottom-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-right-radius-md"
+                }
+            },
+            "tab-list--md--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "tab-list--md--border-bottom-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-left-radius-md"
+                }
+            },
+            "tab-list--md--font-size": {
+                "__type": "variable",
+                "__name": "tab-list--md--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-md"
+                }
+            },
+            "tab-list--md--padding-top": {
+                "__type": "variable",
+                "__name": "tab-list--md--padding-top",
+                "__value": 0
+            },
+            "tab-list--md--padding-right": {
+                "__type": "variable",
+                "__name": "tab-list--md--padding-right",
+                "__value": 0
+            },
+            "tab-list--md--padding-bottom": {
+                "__type": "variable",
+                "__name": "tab-list--md--padding-bottom",
+                "__value": 0
+            },
+            "tab-list--md--padding-left": {
+                "__type": "variable",
+                "__name": "tab-list--md--padding-left",
+                "__value": 0
+            },
+            "tab-list--md--margin-top": {
+                "__type": "variable",
+                "__name": "tab-list--md--margin-top",
+                "__value": 0
+            },
+            "tab-list--md--margin-right": {
+                "__type": "variable",
+                "__name": "tab-list--md--margin-right",
+                "__value": 0
+            },
+            "tab-list--md--margin-bottom": {
+                "__type": "variable",
+                "__name": "tab-list--md--margin-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab-list--md--margin-left": {
+                "__type": "variable",
+                "__name": "tab-list--md--margin-left",
+                "__value": 0
+            },
+            "tab-list--lg--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "tab-list--lg--border-top-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-left-radius-lg"
+                }
+            },
+            "tab-list--lg--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "tab-list--lg--border-top-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-right-radius-lg"
+                }
+            },
+            "tab-list--lg--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "tab-list--lg--border-bottom-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-right-radius-lg"
+                }
+            },
+            "tab-list--lg--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "tab-list--lg--border-bottom-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-left-radius-lg"
+                }
+            },
+            "tab-list--lg--font-size": {
+                "__type": "variable",
+                "__name": "tab-list--lg--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-lg"
+                }
+            },
+            "tab-list--lg--padding-top": {
+                "__type": "variable",
+                "__name": "tab-list--lg--padding-top",
+                "__value": 0
+            },
+            "tab-list--lg--padding-right": {
+                "__type": "variable",
+                "__name": "tab-list--lg--padding-right",
+                "__value": 0
+            },
+            "tab-list--lg--padding-bottom": {
+                "__type": "variable",
+                "__name": "tab-list--lg--padding-bottom",
+                "__value": 0
+            },
+            "tab-list--lg--padding-left": {
+                "__type": "variable",
+                "__name": "tab-list--lg--padding-left",
+                "__value": 0
+            },
+            "tab-list--lg--margin-top": {
+                "__type": "variable",
+                "__name": "tab-list--lg--margin-top",
+                "__value": 0
+            },
+            "tab-list--lg--margin-right": {
+                "__type": "variable",
+                "__name": "tab-list--lg--margin-right",
+                "__value": 0
+            },
+            "tab-list--lg--margin-bottom": {
+                "__type": "variable",
+                "__name": "tab-list--lg--margin-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-lg"
+                }
+            },
+            "tab-list--lg--margin-left": {
+                "__type": "variable",
+                "__name": "tab-list--lg--margin-left",
+                "__value": 0
+            },
+            "tab--border-top-color": {
+                "__type": "variable",
+                "__name": "tab--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--border-right-color": {
+                "__type": "variable",
+                "__name": "tab--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--border-left-color": {
+                "__type": "variable",
+                "__name": "tab--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--border-top-width": {
+                "__type": "variable",
+                "__name": "tab--border-top-width",
+                "__value": "0"
+            },
+            "tab--border-top-style": {
+                "__type": "variable",
+                "__name": "tab--border-top-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-style"
+                }
+            },
+            "tab--border-right-width": {
+                "__type": "variable",
+                "__name": "tab--border-right-width",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-right-width"
+                }
+            },
+            "tab--border-right-style": {
+                "__type": "variable",
+                "__name": "tab--border-right-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-right-style"
+                }
+            },
+            "tab--border-bottom-width": {
+                "__type": "variable",
+                "__name": "tab--border-bottom-width",
+                "__value": "0"
+            },
+            "tab--border-bottom-style": {
+                "__type": "variable",
+                "__name": "tab--border-bottom-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-style"
+                }
+            },
+            "tab--border-left-width": {
+                "__type": "variable",
+                "__name": "tab--border-left-width",
+                "__value": "0"
+            },
+            "tab--border-left-style": {
+                "__type": "variable",
+                "__name": "tab--border-left-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-left-style"
+                }
+            },
+            "tab--box-shadow-offset-x": {
+                "__type": "variable",
+                "__name": "tab--box-shadow-offset-x",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-offset-x"
+                }
+            },
+            "tab--box-shadow-offset-y": {
+                "__type": "variable",
+                "__name": "tab--box-shadow-offset-y",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-offset-y"
+                }
+            },
+            "tab--box-shadow-blur-radius": {
+                "__type": "variable",
+                "__name": "tab--box-shadow-blur-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-blur-radius"
+                }
+            },
+            "tab--box-shadow-spread-radius": {
+                "__type": "variable",
+                "__name": "tab--box-shadow-spread-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-spread-radius"
+                }
+            },
+            "tab--box-shadow-color": {
+                "__type": "variable",
+                "__name": "tab--box-shadow-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-color"
+                }
+            },
+            "tab--transition-property": {
+                "__type": "variable",
+                "__name": "tab--transition-property",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-property"
+                }
+            },
+            "tab--transition-duration": {
+                "__type": "variable",
+                "__name": "tab--transition-duration",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-duration"
+                }
+            },
+            "tab--transition-timing-function": {
+                "__type": "variable",
+                "__name": "tab--transition-timing-function",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-timing-function"
+                }
+            },
+            "tab--active--font-weight": {
+                "__type": "variable",
+                "__name": "tab--active--font-weight",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-weight-semibold"
+                }
+            },
+            "tab--active--border-top-color": {
+                "__type": "variable",
+                "__name": "tab--active--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--active--border-right-color": {
+                "__type": "variable",
+                "__name": "tab--active--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--active--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab--active--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--active--border-left-color": {
+                "__type": "variable",
+                "__name": "tab--active--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--active--background": {
+                "__type": "variable",
+                "__name": "tab--active--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-tint-50"
+                }
+            },
+            "tab--background": {
+                "__type": "variable",
+                "__name": "tab--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white"
+                }
+            },
+            "tab--color": {
+                "__type": "variable",
+                "__name": "tab--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light"
+                }
+            },
+            "tab--hover--border-top-color": {
+                "__type": "variable",
+                "__name": "tab--hover--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--hover--border-right-color": {
+                "__type": "variable",
+                "__name": "tab--hover--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--hover--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab--hover--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--hover--border-left-color": {
+                "__type": "variable",
+                "__name": "tab--hover--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--hover--background": {
+                "__type": "variable",
+                "__name": "tab--hover--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-tint-50"
+                }
+            },
+            "tab--focus--border-top-color": {
+                "__type": "variable",
+                "__name": "tab--focus--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--focus--border-right-color": {
+                "__type": "variable",
+                "__name": "tab--focus--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--focus--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab--focus--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--focus--border-left-color": {
+                "__type": "variable",
+                "__name": "tab--focus--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--focus--background": {
+                "__type": "variable",
+                "__name": "tab--focus--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-tint-50"
+                }
+            },
+            "tab--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "tab--border-top-left-radius",
+                "__value": 0
+            },
+            "tab--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "tab--border-top-right-radius",
+                "__value": 0
+            },
+            "tab--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "tab--border-bottom-right-radius",
+                "__value": 0
+            },
+            "tab--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "tab--border-bottom-left-radius",
+                "__value": 0
+            },
+            "tab--font-size": {
+                "__type": "variable",
+                "__name": "tab--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-md"
+                }
+            },
+            "tab--padding-top": {
+                "__type": "variable",
+                "__name": "tab--padding-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab--padding-right": {
+                "__type": "variable",
+                "__name": "tab--padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab--padding-bottom": {
+                "__type": "variable",
+                "__name": "tab--padding-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab--padding-left": {
+                "__type": "variable",
+                "__name": "tab--padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab--light--border-top-color": {
+                "__type": "variable",
+                "__name": "tab--light--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--border-right-color": {
+                "__type": "variable",
+                "__name": "tab--light--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab--light--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--border-left-color": {
+                "__type": "variable",
+                "__name": "tab--light--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--background": {
+                "__type": "variable",
+                "__name": "tab--light--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white"
+                }
+            },
+            "tab--light--color": {
+                "__type": "variable",
+                "__name": "tab--light--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light"
+                }
+            },
+            "tab--light--active--border-top-color": {
+                "__type": "variable",
+                "__name": "tab--light--active--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--active--border-right-color": {
+                "__type": "variable",
+                "__name": "tab--light--active--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--active--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab--light--active--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--active--border-left-color": {
+                "__type": "variable",
+                "__name": "tab--light--active--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--active--background": {
+                "__type": "variable",
+                "__name": "tab--light--active--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-tint-50"
+                }
+            },
+            "tab--light--hover--border-top-color": {
+                "__type": "variable",
+                "__name": "tab--light--hover--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--hover--border-right-color": {
+                "__type": "variable",
+                "__name": "tab--light--hover--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--hover--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab--light--hover--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--hover--border-left-color": {
+                "__type": "variable",
+                "__name": "tab--light--hover--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--hover--background": {
+                "__type": "variable",
+                "__name": "tab--light--hover--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-tint-50"
+                }
+            },
+            "tab--light--focus--border-top-color": {
+                "__type": "variable",
+                "__name": "tab--light--focus--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--focus--border-right-color": {
+                "__type": "variable",
+                "__name": "tab--light--focus--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--focus--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab--light--focus--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--focus--border-left-color": {
+                "__type": "variable",
+                "__name": "tab--light--focus--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab--light--focus--background": {
+                "__type": "variable",
+                "__name": "tab--light--focus--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-tint-50"
+                }
+            },
+            "tab--dark--border-top-color": {
+                "__type": "variable",
+                "__name": "tab--dark--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "tab--dark--border-right-color": {
+                "__type": "variable",
+                "__name": "tab--dark--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "tab--dark--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab--dark--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "tab--dark--border-left-color": {
+                "__type": "variable",
+                "__name": "tab--dark--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "tab--dark--background": {
+                "__type": "variable",
+                "__name": "tab--dark--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark"
+                }
+            },
+            "tab--dark--color": {
+                "__type": "variable",
+                "__name": "tab--dark--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark"
+                }
+            },
+            "tab--dark--active--border-top-color": {
+                "__type": "variable",
+                "__name": "tab--dark--active--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-100"
+                }
+            },
+            "tab--dark--active--border-right-color": {
+                "__type": "variable",
+                "__name": "tab--dark--active--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-100"
+                }
+            },
+            "tab--dark--active--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab--dark--active--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-100"
+                }
+            },
+            "tab--dark--active--border-left-color": {
+                "__type": "variable",
+                "__name": "tab--dark--active--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-100"
+                }
+            },
+            "tab--dark--active--background": {
+                "__type": "variable",
+                "__name": "tab--dark--active--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-100"
+                }
+            },
+            "tab--dark--hover--border-top-color": {
+                "__type": "variable",
+                "__name": "tab--dark--hover--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-100"
+                }
+            },
+            "tab--dark--hover--border-right-color": {
+                "__type": "variable",
+                "__name": "tab--dark--hover--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-100"
+                }
+            },
+            "tab--dark--hover--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab--dark--hover--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-100"
+                }
+            },
+            "tab--dark--hover--border-left-color": {
+                "__type": "variable",
+                "__name": "tab--dark--hover--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-100"
+                }
+            },
+            "tab--dark--hover--background": {
+                "__type": "variable",
+                "__name": "tab--dark--hover--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "tab--dark--focus--border-top-color": {
+                "__type": "variable",
+                "__name": "tab--dark--focus--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-100"
+                }
+            },
+            "tab--dark--focus--border-right-color": {
+                "__type": "variable",
+                "__name": "tab--dark--focus--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-100"
+                }
+            },
+            "tab--dark--focus--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab--dark--focus--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-100"
+                }
+            },
+            "tab--dark--focus--border-left-color": {
+                "__type": "variable",
+                "__name": "tab--dark--focus--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-100"
+                }
+            },
+            "tab--dark--focus--background": {
+                "__type": "variable",
+                "__name": "tab--dark--focus--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "tab--sm--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "tab--sm--border-top-left-radius",
+                "__value": 0
+            },
+            "tab--sm--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "tab--sm--border-top-right-radius",
+                "__value": 0
+            },
+            "tab--sm--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "tab--sm--border-bottom-right-radius",
+                "__value": 0
+            },
+            "tab--sm--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "tab--sm--border-bottom-left-radius",
+                "__value": 0
+            },
+            "tab--sm--font-size": {
+                "__type": "variable",
+                "__name": "tab--sm--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-sm"
+                }
+            },
+            "tab--sm--padding-top": {
+                "__type": "variable",
+                "__name": "tab--sm--padding-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-sm"
+                }
+            },
+            "tab--sm--padding-right": {
+                "__type": "variable",
+                "__name": "tab--sm--padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-sm"
+                }
+            },
+            "tab--sm--padding-bottom": {
+                "__type": "variable",
+                "__name": "tab--sm--padding-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-sm"
+                }
+            },
+            "tab--sm--padding-left": {
+                "__type": "variable",
+                "__name": "tab--sm--padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-sm"
+                }
+            },
+            "tab--md--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "tab--md--border-top-left-radius",
+                "__value": 0
+            },
+            "tab--md--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "tab--md--border-top-right-radius",
+                "__value": 0
+            },
+            "tab--md--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "tab--md--border-bottom-right-radius",
+                "__value": 0
+            },
+            "tab--md--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "tab--md--border-bottom-left-radius",
+                "__value": 0
+            },
+            "tab--md--font-size": {
+                "__type": "variable",
+                "__name": "tab--md--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-md"
+                }
+            },
+            "tab--md--padding-top": {
+                "__type": "variable",
+                "__name": "tab--md--padding-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab--md--padding-right": {
+                "__type": "variable",
+                "__name": "tab--md--padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab--md--padding-bottom": {
+                "__type": "variable",
+                "__name": "tab--md--padding-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab--md--padding-left": {
+                "__type": "variable",
+                "__name": "tab--md--padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab--lg--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "tab--lg--border-top-left-radius",
+                "__value": 0
+            },
+            "tab--lg--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "tab--lg--border-top-right-radius",
+                "__value": 0
+            },
+            "tab--lg--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "tab--lg--border-bottom-right-radius",
+                "__value": 0
+            },
+            "tab--lg--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "tab--lg--border-bottom-left-radius",
+                "__value": 0
+            },
+            "tab--lg--font-size": {
+                "__type": "variable",
+                "__name": "tab--lg--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-lg"
+                }
+            },
+            "tab--lg--padding-top": {
+                "__type": "variable",
+                "__name": "tab--lg--padding-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-lg"
+                }
+            },
+            "tab--lg--padding-right": {
+                "__type": "variable",
+                "__name": "tab--lg--padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-lg"
+                }
+            },
+            "tab--lg--padding-bottom": {
+                "__type": "variable",
+                "__name": "tab--lg--padding-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-lg"
+                }
+            },
+            "tab--lg--padding-left": {
+                "__type": "variable",
+                "__name": "tab--lg--padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-lg"
+                }
+            },
+            "tab-panel--border-top-color": {
+                "__type": "variable",
+                "__name": "tab-panel--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-panel--border-right-color": {
+                "__type": "variable",
+                "__name": "tab-panel--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-panel--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab-panel--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-panel--border-left-color": {
+                "__type": "variable",
+                "__name": "tab-panel--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-panel--border-top-width": {
+                "__type": "variable",
+                "__name": "tab-panel--border-top-width",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-width"
+                }
+            },
+            "tab-panel--border-top-style": {
+                "__type": "variable",
+                "__name": "tab-panel--border-top-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-style"
+                }
+            },
+            "tab-panel--border-right-width": {
+                "__type": "variable",
+                "__name": "tab-panel--border-right-width",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-right-width"
+                }
+            },
+            "tab-panel--border-right-style": {
+                "__type": "variable",
+                "__name": "tab-panel--border-right-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-right-style"
+                }
+            },
+            "tab-panel--border-bottom-width": {
+                "__type": "variable",
+                "__name": "tab-panel--border-bottom-width",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-width"
+                }
+            },
+            "tab-panel--border-bottom-style": {
+                "__type": "variable",
+                "__name": "tab-panel--border-bottom-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-style"
+                }
+            },
+            "tab-panel--border-left-width": {
+                "__type": "variable",
+                "__name": "tab-panel--border-left-width",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-left-width"
+                }
+            },
+            "tab-panel--border-left-style": {
+                "__type": "variable",
+                "__name": "tab-panel--border-left-style",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-left-style"
+                }
+            },
+            "tab-panel--box-shadow-offset-x": {
+                "__type": "variable",
+                "__name": "tab-panel--box-shadow-offset-x",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-offset-x"
+                }
+            },
+            "tab-panel--box-shadow-offset-y": {
+                "__type": "variable",
+                "__name": "tab-panel--box-shadow-offset-y",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-offset-y"
+                }
+            },
+            "tab-panel--box-shadow-blur-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--box-shadow-blur-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-blur-radius"
+                }
+            },
+            "tab-panel--box-shadow-spread-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--box-shadow-spread-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-spread-radius"
+                }
+            },
+            "tab-panel--box-shadow-color": {
+                "__type": "variable",
+                "__name": "tab-panel--box-shadow-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "box-shadow-color"
+                }
+            },
+            "tab-panel--transition-property": {
+                "__type": "variable",
+                "__name": "tab-panel--transition-property",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-property"
+                }
+            },
+            "tab-panel--transition-duration": {
+                "__type": "variable",
+                "__name": "tab-panel--transition-duration",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-duration"
+                }
+            },
+            "tab-panel--transition-timing-function": {
+                "__type": "variable",
+                "__name": "tab-panel--transition-timing-function",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "transition-timing-function"
+                }
+            },
+            "tab-panel--background": {
+                "__type": "variable",
+                "__name": "tab-panel--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white"
+                }
+            },
+            "tab-panel--color": {
+                "__type": "variable",
+                "__name": "tab-panel--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light"
+                }
+            },
+            "tab-panel--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--border-top-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-left-radius-md"
+                }
+            },
+            "tab-panel--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--border-top-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-right-radius-md"
+                }
+            },
+            "tab-panel--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--border-bottom-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-right-radius-md"
+                }
+            },
+            "tab-panel--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--border-bottom-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-left-radius-md"
+                }
+            },
+            "tab-panel--font-size": {
+                "__type": "variable",
+                "__name": "tab-panel--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-md"
+                }
+            },
+            "tab-panel--padding-top": {
+                "__type": "variable",
+                "__name": "tab-panel--padding-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab-panel--padding-right": {
+                "__type": "variable",
+                "__name": "tab-panel--padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab-panel--padding-bottom": {
+                "__type": "variable",
+                "__name": "tab-panel--padding-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab-panel--padding-left": {
+                "__type": "variable",
+                "__name": "tab-panel--padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab-panel--light--border-top-color": {
+                "__type": "variable",
+                "__name": "tab-panel--light--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-panel--light--border-right-color": {
+                "__type": "variable",
+                "__name": "tab-panel--light--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-panel--light--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab-panel--light--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-panel--light--border-left-color": {
+                "__type": "variable",
+                "__name": "tab-panel--light--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light-shade-50"
+                }
+            },
+            "tab-panel--light--background": {
+                "__type": "variable",
+                "__name": "tab-panel--light--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-white"
+                }
+            },
+            "tab-panel--light--color": {
+                "__type": "variable",
+                "__name": "tab-panel--light--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-light"
+                }
+            },
+            "tab-panel--dark--border-top-color": {
+                "__type": "variable",
+                "__name": "tab-panel--dark--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "tab-panel--dark--border-right-color": {
+                "__type": "variable",
+                "__name": "tab-panel--dark--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "tab-panel--dark--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tab-panel--dark--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "tab-panel--dark--border-left-color": {
+                "__type": "variable",
+                "__name": "tab-panel--dark--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark-tint-50"
+                }
+            },
+            "tab-panel--dark--background": {
+                "__type": "variable",
+                "__name": "tab-panel--dark--background",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-dark"
+                }
+            },
+            "tab-panel--dark--color": {
+                "__type": "variable",
+                "__name": "tab-panel--dark--color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "contrast-text-color-dark"
+                }
+            },
+            "tab-panel--sm--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--sm--border-top-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-left-radius-sm"
+                }
+            },
+            "tab-panel--sm--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--sm--border-top-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-right-radius-sm"
+                }
+            },
+            "tab-panel--sm--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--sm--border-bottom-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-right-radius-sm"
+                }
+            },
+            "tab-panel--sm--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--sm--border-bottom-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-left-radius-sm"
+                }
+            },
+            "tab-panel--sm--font-size": {
+                "__type": "variable",
+                "__name": "tab-panel--sm--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-sm"
+                }
+            },
+            "tab-panel--sm--padding-top": {
+                "__type": "variable",
+                "__name": "tab-panel--sm--padding-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-sm"
+                }
+            },
+            "tab-panel--sm--padding-right": {
+                "__type": "variable",
+                "__name": "tab-panel--sm--padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-sm"
+                }
+            },
+            "tab-panel--sm--padding-bottom": {
+                "__type": "variable",
+                "__name": "tab-panel--sm--padding-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-sm"
+                }
+            },
+            "tab-panel--sm--padding-left": {
+                "__type": "variable",
+                "__name": "tab-panel--sm--padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-sm"
+                }
+            },
+            "tab-panel--md--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--md--border-top-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-left-radius-md"
+                }
+            },
+            "tab-panel--md--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--md--border-top-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-right-radius-md"
+                }
+            },
+            "tab-panel--md--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--md--border-bottom-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-right-radius-md"
+                }
+            },
+            "tab-panel--md--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--md--border-bottom-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-left-radius-md"
+                }
+            },
+            "tab-panel--md--font-size": {
+                "__type": "variable",
+                "__name": "tab-panel--md--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-md"
+                }
+            },
+            "tab-panel--md--padding-top": {
+                "__type": "variable",
+                "__name": "tab-panel--md--padding-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab-panel--md--padding-right": {
+                "__type": "variable",
+                "__name": "tab-panel--md--padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab-panel--md--padding-bottom": {
+                "__type": "variable",
+                "__name": "tab-panel--md--padding-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab-panel--md--padding-left": {
+                "__type": "variable",
+                "__name": "tab-panel--md--padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-md"
+                }
+            },
+            "tab-panel--lg--border-top-left-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--lg--border-top-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-left-radius-lg"
+                }
+            },
+            "tab-panel--lg--border-top-right-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--lg--border-top-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-right-radius-lg"
+                }
+            },
+            "tab-panel--lg--border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--lg--border-bottom-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-right-radius-lg"
+                }
+            },
+            "tab-panel--lg--border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "tab-panel--lg--border-bottom-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-left-radius-lg"
+                }
+            },
+            "tab-panel--lg--font-size": {
+                "__type": "variable",
+                "__name": "tab-panel--lg--font-size",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "font-size-lg"
+                }
+            },
+            "tab-panel--lg--padding-top": {
+                "__type": "variable",
+                "__name": "tab-panel--lg--padding-top",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-lg"
+                }
+            },
+            "tab-panel--lg--padding-right": {
+                "__type": "variable",
+                "__name": "tab-panel--lg--padding-right",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-lg"
+                }
+            },
+            "tab-panel--lg--padding-bottom": {
+                "__type": "variable",
+                "__name": "tab-panel--lg--padding-bottom",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-lg"
+                }
+            },
+            "tab-panel--lg--padding-left": {
+                "__type": "variable",
+                "__name": "tab-panel--lg--padding-left",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "spacing-lg"
+                }
+            },
             "toast--border-top-color": {
                 "__type": "variable",
                 "__name": "toast--border-top-color",
@@ -23362,155 +25469,6 @@
         },
         "selectors": [
             {
-                "__type": "selector",
-                "__name": "label",
-                "__value": {
-                    "display": "inline-block"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "button",
-                "__value": {
-                    "borderRadius": 0
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "input, button, select, optgroup, textarea",
-                "__value": {
-                    "fontSize": "inherit",
-                    "lineHeight": "inherit"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "button:focus:not(:focus-visible)",
-                "__value": {
-                    "outline": 0
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "[role=\"button\"]",
-                "__value": {
-                    "cursor": "pointer"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "select",
-                "__value": {
-                    "wordWrap": "normal"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "[list]:not([type=\"date\"], [type=\"datetime-local\"], [type=\"month\"], [type=\"week\"], [type=\"time\"])::-webkit-calendar-picker-indicator",
-                "__value": {
-                    "display": "none !important"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "textarea",
-                "__value": {
-                    "resize": "vertical"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "fieldset",
-                "__value": {
-                    "minWidth": 0,
-                    "padding": 0,
-                    "margin": 0,
-                    "border": 0
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "::-webkit-datetime-edit-fields-wrapper, ::-webkit-datetime-edit-text, ::-webkit-datetime-edit-minute, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-year-field",
-                "__value": {
-                    "padding": 0
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "::-webkit-inner-spin-button",
-                "__value": {
-                    "height": "auto"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "[type=\"search\"]",
-                "__value": {
-                    "outlineOffset": "-2px",
-                    "appearance": "textfield"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "::-webkit-search-decoration",
-                "__value": {
-                    "appearance": "none"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "::-webkit-color-swatch-wrapper",
-                "__value": {
-                    "padding": 0
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "::file-selector-button",
-                "__value": {
-                    "font": "inherit",
-                    "appearance": "button"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "[hidden]",
-                "__value": {
-                    "display": "none !important"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "table",
-                "__value": {
-                    "borderCollapse": "collapse",
-                    "captionSide": "bottom"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "th",
-                "__value": {
-                    "textAlign": "inherit"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "thead, tbody, tfoot, tr, td, th",
-                "__value": {
-                    "borderColor": "inherit",
-                    "borderWidth": 0,
-                    "borderStyle": "solid"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": "a, area, button, [role=\"button\"], input:not([type=\"range\"]), label, select, summary, textarea",
-                "__value": {
-                    "touchAction": "manipulation"
-                }
-            },
-            {
                 "__type": "media",
                 "__name": "media",
                 "__identifier": "screen and (min-width: 1440px)",
@@ -25319,6 +27277,13 @@
                             }
                         ]
                     }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".badge.-inherit",
+                "__value": {
+                    "fontSize": "inherit"
                 }
             },
             {
@@ -35133,10 +37098,101 @@
                 "__type": "selector",
                 "__name": ".icon",
                 "__value": {
+                    "color": {
+                        "__type": "reference",
+                        "__name": "icon--color"
+                    },
                     "overflow": "visible",
                     "fontSize": {
                         "__type": "reference",
                         "__name": "icon--font-size"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".icon.-inherit",
+                "__value": {
+                    "color": "inherit"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".icon.-light",
+                "__value": {
+                    "--icon--color": {
+                        "__type": "reference",
+                        "__name": "icon--light--color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".icon.-dark",
+                "__value": {
+                    "--icon--color": {
+                        "__type": "reference",
+                        "__name": "icon--dark--color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".icon.-primary",
+                "__value": {
+                    "--icon--color": {
+                        "__type": "reference",
+                        "__name": "icon--primary--color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".icon.-secondary",
+                "__value": {
+                    "--icon--color": {
+                        "__type": "reference",
+                        "__name": "icon--secondary--color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".icon.-success",
+                "__value": {
+                    "--icon--color": {
+                        "__type": "reference",
+                        "__name": "icon--success--color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".icon.-danger",
+                "__value": {
+                    "--icon--color": {
+                        "__type": "reference",
+                        "__name": "icon--danger--color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".icon.-warning",
+                "__value": {
+                    "--icon--color": {
+                        "__type": "reference",
+                        "__name": "icon--warning--color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".icon.-info",
+                "__value": {
+                    "--icon--color": {
+                        "__type": "reference",
+                        "__name": "icon--info--color"
                     }
                 }
             },
@@ -36359,6 +38415,8 @@
                 "__type": "selector",
                 "__name": ".media > .media-body",
                 "__value": {
+                    "display": "flex",
+                    "flexDirection": "column",
                     "flex": "0 1 auto"
                 }
             },
@@ -36375,27 +38433,13 @@
                 "__type": "selector",
                 "__name": ".media > img, .media > .img, .media > .image",
                 "__value": {
-                    "margin": {
+                    "marginRight": {
                         "__type": "reference",
-                        "__name": "media--image--margin",
-                        "__fallback": [
-                            {
-                                "__type": "reference",
-                                "__name": "media--image--margin-top"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "media--image--margin-right"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "media--image--margin-bottom"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "media--image--margin-left"
-                            }
-                        ]
+                        "__name": "media--image--margin-right",
+                        "__fallback": {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        }
                     }
                 }
             },
@@ -38760,6 +40804,1334 @@
                 "__name": ".radio-group.-inline",
                 "__value": {
                     "flexDirection": "row"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tabs",
+                "__value": {
+                    "position": "relative",
+                    "display": "block",
+                    "width": "100%"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-list",
+                "__value": {
+                    "position": "relative",
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "minWidth": 0,
+                    "wordWrap": "break-word",
+                    "backgroundClip": "border-box",
+                    "justifyContent": "flex-start",
+                    "flexWrap": "nowrap",
+                    "alignItems": "center",
+                    "overflow": "auto"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-list.-stretch .tab",
+                "__value": {
+                    "flexGrow": 1
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-list.-stretch .tab:last-child",
+                "__value": {
+                    "borderRightWidth": 0
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-list",
+                "__value": {
+                    "boxShadow": {
+                        "__type": "reference",
+                        "__name": "tab-list--box-shadow",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--box-shadow-offset-x"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--box-shadow-offset-y"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--box-shadow-blur-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--box-shadow-spread-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--box-shadow-color"
+                            }
+                        ]
+                    },
+                    "background": {
+                        "__type": "reference",
+                        "__name": "tab-list--background"
+                    },
+                    "borderStyle": {
+                        "__type": "reference",
+                        "__name": "tab-list--border-style",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-top-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-right-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-bottom-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-left-style"
+                            }
+                        ]
+                    },
+                    "borderColor": {
+                        "__type": "reference",
+                        "__name": "tab-list--border-color",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-top-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-right-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-bottom-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-left-color"
+                            }
+                        ]
+                    },
+                    "borderWidth": {
+                        "__type": "reference",
+                        "__name": "tab-list--border-width",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-top-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-right-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-bottom-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-left-width"
+                            }
+                        ]
+                    },
+                    "borderRadius": {
+                        "__type": "reference",
+                        "__name": "tab-list--border-radius",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-top-left-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-top-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-bottom-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--border-bottom-left-radius"
+                            }
+                        ]
+                    },
+                    "color": {
+                        "__type": "reference",
+                        "__name": "tab-list--color"
+                    },
+                    "fontSize": {
+                        "__type": "reference",
+                        "__name": "tab-list--font-size"
+                    },
+                    "padding": {
+                        "__type": "reference",
+                        "__name": "tab-list--padding"
+                    },
+                    "margin": {
+                        "__type": "reference",
+                        "__name": "tab-list--margin",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--margin-top"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--margin-right"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--margin-bottom"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-list--margin-left"
+                            }
+                        ]
+                    },
+                    "transitionProperty": {
+                        "__type": "reference",
+                        "__name": "tab-list--transition-property"
+                    },
+                    "transitionDuration": {
+                        "__type": "reference",
+                        "__name": "tab-list--transition-duration"
+                    },
+                    "transitionTimingFunction": {
+                        "__type": "reference",
+                        "__name": "tab-list--transition-timing-function"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-list.-light",
+                "__value": {
+                    "--tab-list--border-top-color": {
+                        "__type": "reference",
+                        "__name": "tab-list--light--border-top-color"
+                    },
+                    "--tab-list--border-right-color": {
+                        "__type": "reference",
+                        "__name": "tab-list--light--border-right-color"
+                    },
+                    "--tab-list--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "tab-list--light--border-bottom-color"
+                    },
+                    "--tab-list--border-left-color": {
+                        "__type": "reference",
+                        "__name": "tab-list--light--border-left-color"
+                    },
+                    "--tab-list--background": {
+                        "__type": "reference",
+                        "__name": "tab-list--light--background"
+                    },
+                    "--tab-list--color": {
+                        "__type": "reference",
+                        "__name": "tab-list--light--color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-list.-dark",
+                "__value": {
+                    "--tab-list--border-top-color": {
+                        "__type": "reference",
+                        "__name": "tab-list--dark--border-top-color"
+                    },
+                    "--tab-list--border-right-color": {
+                        "__type": "reference",
+                        "__name": "tab-list--dark--border-right-color"
+                    },
+                    "--tab-list--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "tab-list--dark--border-bottom-color"
+                    },
+                    "--tab-list--border-left-color": {
+                        "__type": "reference",
+                        "__name": "tab-list--dark--border-left-color"
+                    },
+                    "--tab-list--background": {
+                        "__type": "reference",
+                        "__name": "tab-list--dark--background"
+                    },
+                    "--tab-list--color": {
+                        "__type": "reference",
+                        "__name": "tab-list--dark--color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-list.-sm",
+                "__value": {
+                    "--tab-list--border-top-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab-list--sm--border-top-left-radius"
+                    },
+                    "--tab-list--border-top-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab-list--sm--border-top-right-radius"
+                    },
+                    "--tab-list--border-bottom-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab-list--sm--border-bottom-right-radius"
+                    },
+                    "--tab-list--border-bottom-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab-list--sm--border-bottom-left-radius"
+                    },
+                    "--tab-list--font-size": {
+                        "__type": "reference",
+                        "__name": "tab-list--sm--font-size"
+                    },
+                    "--tab-list--padding-top": {
+                        "__type": "reference",
+                        "__name": "tab-list--sm--padding-top"
+                    },
+                    "--tab-list--padding-right": {
+                        "__type": "reference",
+                        "__name": "tab-list--sm--padding-right"
+                    },
+                    "--tab-list--padding-bottom": {
+                        "__type": "reference",
+                        "__name": "tab-list--sm--padding-bottom"
+                    },
+                    "--tab-list--padding-left": {
+                        "__type": "reference",
+                        "__name": "tab-list--sm--padding-left"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-list.-md",
+                "__value": {
+                    "--tab-list--border-top-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab-list--md--border-top-left-radius"
+                    },
+                    "--tab-list--border-top-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab-list--md--border-top-right-radius"
+                    },
+                    "--tab-list--border-bottom-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab-list--md--border-bottom-right-radius"
+                    },
+                    "--tab-list--border-bottom-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab-list--md--border-bottom-left-radius"
+                    },
+                    "--tab-list--font-size": {
+                        "__type": "reference",
+                        "__name": "tab-list--md--font-size"
+                    },
+                    "--tab-list--padding-top": {
+                        "__type": "reference",
+                        "__name": "tab-list--md--padding-top"
+                    },
+                    "--tab-list--padding-right": {
+                        "__type": "reference",
+                        "__name": "tab-list--md--padding-right"
+                    },
+                    "--tab-list--padding-bottom": {
+                        "__type": "reference",
+                        "__name": "tab-list--md--padding-bottom"
+                    },
+                    "--tab-list--padding-left": {
+                        "__type": "reference",
+                        "__name": "tab-list--md--padding-left"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-list.-lg",
+                "__value": {
+                    "--tab-list--border-top-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab-list--lg--border-top-left-radius"
+                    },
+                    "--tab-list--border-top-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab-list--lg--border-top-right-radius"
+                    },
+                    "--tab-list--border-bottom-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab-list--lg--border-bottom-right-radius"
+                    },
+                    "--tab-list--border-bottom-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab-list--lg--border-bottom-left-radius"
+                    },
+                    "--tab-list--font-size": {
+                        "__type": "reference",
+                        "__name": "tab-list--lg--font-size"
+                    },
+                    "--tab-list--padding-top": {
+                        "__type": "reference",
+                        "__name": "tab-list--lg--padding-top"
+                    },
+                    "--tab-list--padding-right": {
+                        "__type": "reference",
+                        "__name": "tab-list--lg--padding-right"
+                    },
+                    "--tab-list--padding-bottom": {
+                        "__type": "reference",
+                        "__name": "tab-list--lg--padding-bottom"
+                    },
+                    "--tab-list--padding-left": {
+                        "__type": "reference",
+                        "__name": "tab-list--lg--padding-left"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab",
+                "__value": {
+                    "position": "relative",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "minWidth": 0,
+                    "wordWrap": "break-word",
+                    "backgroundClip": "border-box",
+                    "cursor": "pointer",
+                    "justifyContent": "center",
+                    "alignItems": "center"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab",
+                "__value": {
+                    "boxShadow": {
+                        "__type": "reference",
+                        "__name": "tab--box-shadow",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab--box-shadow-offset-x"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--box-shadow-offset-y"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--box-shadow-blur-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--box-shadow-spread-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--box-shadow-color"
+                            }
+                        ]
+                    },
+                    "background": {
+                        "__type": "reference",
+                        "__name": "tab--background"
+                    },
+                    "borderStyle": {
+                        "__type": "reference",
+                        "__name": "tab--border-style",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab--border-top-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--border-right-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--border-bottom-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--border-left-style"
+                            }
+                        ]
+                    },
+                    "borderColor": {
+                        "__type": "reference",
+                        "__name": "tab--border-color",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab--border-top-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--border-right-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--border-bottom-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--border-left-color"
+                            }
+                        ]
+                    },
+                    "borderWidth": {
+                        "__type": "reference",
+                        "__name": "tab--border-width",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab--border-top-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--border-right-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--border-bottom-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--border-left-width"
+                            }
+                        ]
+                    },
+                    "borderRadius": {
+                        "__type": "reference",
+                        "__name": "tab--border-radius"
+                    },
+                    "color": {
+                        "__type": "reference",
+                        "__name": "tab--color"
+                    },
+                    "fontSize": {
+                        "__type": "reference",
+                        "__name": "tab--font-size"
+                    },
+                    "padding": {
+                        "__type": "reference",
+                        "__name": "tab--padding",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab--padding-top"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--padding-right"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--padding-bottom"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--padding-left"
+                            }
+                        ]
+                    },
+                    "transitionProperty": {
+                        "__type": "reference",
+                        "__name": "tab--transition-property"
+                    },
+                    "transitionDuration": {
+                        "__type": "reference",
+                        "__name": "tab--transition-duration"
+                    },
+                    "transitionTimingFunction": {
+                        "__type": "reference",
+                        "__name": "tab--transition-timing-function"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab:hover, .tab.-hover",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "tab--hover--background"
+                    },
+                    "borderColor": {
+                        "__type": "reference",
+                        "__name": "tab--hover--border-color",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab--hover--border-top-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--hover--border-right-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--hover--border-bottom-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--hover--border-left-color"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab:focus, .tab.-focus",
+                "__value": {
+                    "background": {
+                        "__type": "reference",
+                        "__name": "tab--focus--background"
+                    },
+                    "borderColor": {
+                        "__type": "reference",
+                        "__name": "tab--focus--border-color",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab--focus--border-top-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--focus--border-right-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--focus--border-bottom-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--focus--border-left-color"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab:active, .tab.-active",
+                "__value": {
+                    "fontWeight": {
+                        "__type": "reference",
+                        "__name": "tab--active--font-weight"
+                    },
+                    "background": {
+                        "__type": "reference",
+                        "__name": "tab--active--background"
+                    },
+                    "borderColor": {
+                        "__type": "reference",
+                        "__name": "tab--active--border-color",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab--active--border-top-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--active--border-right-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--active--border-bottom-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab--active--border-left-color"
+                            }
+                        ]
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab.-light",
+                "__value": {
+                    "--tab--border-top-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--border-top-color"
+                    },
+                    "--tab--border-right-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--border-right-color"
+                    },
+                    "--tab--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--border-bottom-color"
+                    },
+                    "--tab--border-left-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--border-left-color"
+                    },
+                    "--tab--background": {
+                        "__type": "reference",
+                        "__name": "tab--light--background"
+                    },
+                    "--tab--color": {
+                        "__type": "reference",
+                        "__name": "tab--light--color"
+                    },
+                    "--tab--active--background": {
+                        "__type": "reference",
+                        "__name": "tab--light--active--background"
+                    },
+                    "--tab--active--border-top-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--active--border-top-color"
+                    },
+                    "--tab--active--border-right-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--active--border-right-color"
+                    },
+                    "--tab--active--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--active--border-bottom-color"
+                    },
+                    "--tab--active--border-left-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--active--border-left-color"
+                    },
+                    "--tab--hover--background": {
+                        "__type": "reference",
+                        "__name": "tab--light--hover--background"
+                    },
+                    "--tab--hover--border-top-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--hover--border-top-color"
+                    },
+                    "--tab--hover--border-right-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--hover--border-right-color"
+                    },
+                    "--tab--hover--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--hover--border-bottom-color"
+                    },
+                    "--tab--hover--border-left-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--hover--border-left-color"
+                    },
+                    "--tab--focus--background": {
+                        "__type": "reference",
+                        "__name": "tab--light--focus--background"
+                    },
+                    "--tab--focus--border-top-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--focus--border-top-color"
+                    },
+                    "--tab--focus--border-right-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--focus--border-right-color"
+                    },
+                    "--tab--focus--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--focus--border-bottom-color"
+                    },
+                    "--tab--focus--border-left-color": {
+                        "__type": "reference",
+                        "__name": "tab--light--focus--border-left-color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab.-dark",
+                "__value": {
+                    "--tab--border-top-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--border-top-color"
+                    },
+                    "--tab--border-right-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--border-right-color"
+                    },
+                    "--tab--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--border-bottom-color"
+                    },
+                    "--tab--border-left-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--border-left-color"
+                    },
+                    "--tab--background": {
+                        "__type": "reference",
+                        "__name": "tab--dark--background"
+                    },
+                    "--tab--color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--color"
+                    },
+                    "--tab--active--background": {
+                        "__type": "reference",
+                        "__name": "tab--dark--active--background"
+                    },
+                    "--tab--active--border-top-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--active--border-top-color"
+                    },
+                    "--tab--active--border-right-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--active--border-right-color"
+                    },
+                    "--tab--active--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--active--border-bottom-color"
+                    },
+                    "--tab--active--border-left-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--active--border-left-color"
+                    },
+                    "--tab--hover--background": {
+                        "__type": "reference",
+                        "__name": "tab--dark--hover--background"
+                    },
+                    "--tab--hover--border-top-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--hover--border-top-color"
+                    },
+                    "--tab--hover--border-right-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--hover--border-right-color"
+                    },
+                    "--tab--hover--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--hover--border-bottom-color"
+                    },
+                    "--tab--hover--border-left-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--hover--border-left-color"
+                    },
+                    "--tab--focus--background": {
+                        "__type": "reference",
+                        "__name": "tab--dark--focus--background"
+                    },
+                    "--tab--focus--border-top-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--focus--border-top-color"
+                    },
+                    "--tab--focus--border-right-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--focus--border-right-color"
+                    },
+                    "--tab--focus--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--focus--border-bottom-color"
+                    },
+                    "--tab--focus--border-left-color": {
+                        "__type": "reference",
+                        "__name": "tab--dark--focus--border-left-color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab.-sm",
+                "__value": {
+                    "--tab--border-top-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab--sm--border-top-left-radius"
+                    },
+                    "--tab--border-top-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab--sm--border-top-right-radius"
+                    },
+                    "--tab--border-bottom-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab--sm--border-bottom-right-radius"
+                    },
+                    "--tab--border-bottom-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab--sm--border-bottom-left-radius"
+                    },
+                    "--tab--font-size": {
+                        "__type": "reference",
+                        "__name": "tab--sm--font-size"
+                    },
+                    "--tab--padding-top": {
+                        "__type": "reference",
+                        "__name": "tab--sm--padding-top"
+                    },
+                    "--tab--padding-right": {
+                        "__type": "reference",
+                        "__name": "tab--sm--padding-right"
+                    },
+                    "--tab--padding-bottom": {
+                        "__type": "reference",
+                        "__name": "tab--sm--padding-bottom"
+                    },
+                    "--tab--padding-left": {
+                        "__type": "reference",
+                        "__name": "tab--sm--padding-left"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab.-md",
+                "__value": {
+                    "--tab--border-top-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab--md--border-top-left-radius"
+                    },
+                    "--tab--border-top-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab--md--border-top-right-radius"
+                    },
+                    "--tab--border-bottom-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab--md--border-bottom-right-radius"
+                    },
+                    "--tab--border-bottom-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab--md--border-bottom-left-radius"
+                    },
+                    "--tab--font-size": {
+                        "__type": "reference",
+                        "__name": "tab--md--font-size"
+                    },
+                    "--tab--padding-top": {
+                        "__type": "reference",
+                        "__name": "tab--md--padding-top"
+                    },
+                    "--tab--padding-right": {
+                        "__type": "reference",
+                        "__name": "tab--md--padding-right"
+                    },
+                    "--tab--padding-bottom": {
+                        "__type": "reference",
+                        "__name": "tab--md--padding-bottom"
+                    },
+                    "--tab--padding-left": {
+                        "__type": "reference",
+                        "__name": "tab--md--padding-left"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab.-lg",
+                "__value": {
+                    "--tab--border-top-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab--lg--border-top-left-radius"
+                    },
+                    "--tab--border-top-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab--lg--border-top-right-radius"
+                    },
+                    "--tab--border-bottom-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab--lg--border-bottom-right-radius"
+                    },
+                    "--tab--border-bottom-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab--lg--border-bottom-left-radius"
+                    },
+                    "--tab--font-size": {
+                        "__type": "reference",
+                        "__name": "tab--lg--font-size"
+                    },
+                    "--tab--padding-top": {
+                        "__type": "reference",
+                        "__name": "tab--lg--padding-top"
+                    },
+                    "--tab--padding-right": {
+                        "__type": "reference",
+                        "__name": "tab--lg--padding-right"
+                    },
+                    "--tab--padding-bottom": {
+                        "__type": "reference",
+                        "__name": "tab--lg--padding-bottom"
+                    },
+                    "--tab--padding-left": {
+                        "__type": "reference",
+                        "__name": "tab--lg--padding-left"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-panel",
+                "__value": {
+                    "position": "relative",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "minWidth": 0,
+                    "wordWrap": "break-word",
+                    "backgroundClip": "border-box"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-panel",
+                "__value": {
+                    "boxShadow": {
+                        "__type": "reference",
+                        "__name": "tab-panel--box-shadow",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--box-shadow-offset-x"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--box-shadow-offset-y"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--box-shadow-blur-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--box-shadow-spread-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--box-shadow-color"
+                            }
+                        ]
+                    },
+                    "background": {
+                        "__type": "reference",
+                        "__name": "tab-panel--background"
+                    },
+                    "borderStyle": {
+                        "__type": "reference",
+                        "__name": "tab-panel--border-style",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-top-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-right-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-bottom-style"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-left-style"
+                            }
+                        ]
+                    },
+                    "borderColor": {
+                        "__type": "reference",
+                        "__name": "tab-panel--border-color",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-top-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-right-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-bottom-color"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-left-color"
+                            }
+                        ]
+                    },
+                    "borderWidth": {
+                        "__type": "reference",
+                        "__name": "tab-panel--border-width",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-top-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-right-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-bottom-width"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-left-width"
+                            }
+                        ]
+                    },
+                    "borderRadius": {
+                        "__type": "reference",
+                        "__name": "tab-panel--border-radius",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-top-left-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-top-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-bottom-right-radius"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--border-bottom-left-radius"
+                            }
+                        ]
+                    },
+                    "color": {
+                        "__type": "reference",
+                        "__name": "tab-panel--color"
+                    },
+                    "fontSize": {
+                        "__type": "reference",
+                        "__name": "tab-panel--font-size"
+                    },
+                    "padding": {
+                        "__type": "reference",
+                        "__name": "tab-panel--padding",
+                        "__fallback": [
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--padding-top"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--padding-right"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--padding-bottom"
+                            },
+                            {
+                                "__type": "reference",
+                                "__name": "tab-panel--padding-left"
+                            }
+                        ]
+                    },
+                    "transitionProperty": {
+                        "__type": "reference",
+                        "__name": "tab-panel--transition-property"
+                    },
+                    "transitionDuration": {
+                        "__type": "reference",
+                        "__name": "tab-panel--transition-duration"
+                    },
+                    "transitionTimingFunction": {
+                        "__type": "reference",
+                        "__name": "tab-panel--transition-timing-function"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-panel.-light",
+                "__value": {
+                    "--tab-panel--border-top-color": {
+                        "__type": "reference",
+                        "__name": "tab-panel--light--border-top-color"
+                    },
+                    "--tab-panel--border-right-color": {
+                        "__type": "reference",
+                        "__name": "tab-panel--light--border-right-color"
+                    },
+                    "--tab-panel--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "tab-panel--light--border-bottom-color"
+                    },
+                    "--tab-panel--border-left-color": {
+                        "__type": "reference",
+                        "__name": "tab-panel--light--border-left-color"
+                    },
+                    "--tab-panel--background": {
+                        "__type": "reference",
+                        "__name": "tab-panel--light--background"
+                    },
+                    "--tab-panel--color": {
+                        "__type": "reference",
+                        "__name": "tab-panel--light--color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-panel.-dark",
+                "__value": {
+                    "--tab-panel--border-top-color": {
+                        "__type": "reference",
+                        "__name": "tab-panel--dark--border-top-color"
+                    },
+                    "--tab-panel--border-right-color": {
+                        "__type": "reference",
+                        "__name": "tab-panel--dark--border-right-color"
+                    },
+                    "--tab-panel--border-bottom-color": {
+                        "__type": "reference",
+                        "__name": "tab-panel--dark--border-bottom-color"
+                    },
+                    "--tab-panel--border-left-color": {
+                        "__type": "reference",
+                        "__name": "tab-panel--dark--border-left-color"
+                    },
+                    "--tab-panel--background": {
+                        "__type": "reference",
+                        "__name": "tab-panel--dark--background"
+                    },
+                    "--tab-panel--color": {
+                        "__type": "reference",
+                        "__name": "tab-panel--dark--color"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-panel.-sm",
+                "__value": {
+                    "--tab-panel--border-top-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab-panel--sm--border-top-left-radius"
+                    },
+                    "--tab-panel--border-top-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab-panel--sm--border-top-right-radius"
+                    },
+                    "--tab-panel--border-bottom-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab-panel--sm--border-bottom-right-radius"
+                    },
+                    "--tab-panel--border-bottom-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab-panel--sm--border-bottom-left-radius"
+                    },
+                    "--tab-panel--font-size": {
+                        "__type": "reference",
+                        "__name": "tab-panel--sm--font-size"
+                    },
+                    "--tab-panel--padding-top": {
+                        "__type": "reference",
+                        "__name": "tab-panel--sm--padding-top"
+                    },
+                    "--tab-panel--padding-right": {
+                        "__type": "reference",
+                        "__name": "tab-panel--sm--padding-right"
+                    },
+                    "--tab-panel--padding-bottom": {
+                        "__type": "reference",
+                        "__name": "tab-panel--sm--padding-bottom"
+                    },
+                    "--tab-panel--padding-left": {
+                        "__type": "reference",
+                        "__name": "tab-panel--sm--padding-left"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-panel.-md",
+                "__value": {
+                    "--tab-panel--border-top-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab-panel--md--border-top-left-radius"
+                    },
+                    "--tab-panel--border-top-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab-panel--md--border-top-right-radius"
+                    },
+                    "--tab-panel--border-bottom-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab-panel--md--border-bottom-right-radius"
+                    },
+                    "--tab-panel--border-bottom-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab-panel--md--border-bottom-left-radius"
+                    },
+                    "--tab-panel--font-size": {
+                        "__type": "reference",
+                        "__name": "tab-panel--md--font-size"
+                    },
+                    "--tab-panel--padding-top": {
+                        "__type": "reference",
+                        "__name": "tab-panel--md--padding-top"
+                    },
+                    "--tab-panel--padding-right": {
+                        "__type": "reference",
+                        "__name": "tab-panel--md--padding-right"
+                    },
+                    "--tab-panel--padding-bottom": {
+                        "__type": "reference",
+                        "__name": "tab-panel--md--padding-bottom"
+                    },
+                    "--tab-panel--padding-left": {
+                        "__type": "reference",
+                        "__name": "tab-panel--md--padding-left"
+                    }
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".tab-panel.-lg",
+                "__value": {
+                    "--tab-panel--border-top-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab-panel--lg--border-top-left-radius"
+                    },
+                    "--tab-panel--border-top-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab-panel--lg--border-top-right-radius"
+                    },
+                    "--tab-panel--border-bottom-right-radius": {
+                        "__type": "reference",
+                        "__name": "tab-panel--lg--border-bottom-right-radius"
+                    },
+                    "--tab-panel--border-bottom-left-radius": {
+                        "__type": "reference",
+                        "__name": "tab-panel--lg--border-bottom-left-radius"
+                    },
+                    "--tab-panel--font-size": {
+                        "__type": "reference",
+                        "__name": "tab-panel--lg--font-size"
+                    },
+                    "--tab-panel--padding-top": {
+                        "__type": "reference",
+                        "__name": "tab-panel--lg--padding-top"
+                    },
+                    "--tab-panel--padding-right": {
+                        "__type": "reference",
+                        "__name": "tab-panel--lg--padding-right"
+                    },
+                    "--tab-panel--padding-bottom": {
+                        "__type": "reference",
+                        "__name": "tab-panel--lg--padding-bottom"
+                    },
+                    "--tab-panel--padding-left": {
+                        "__type": "reference",
+                        "__name": "tab-panel--lg--padding-left"
+                    }
                 }
             },
             {

@@ -160,6 +160,26 @@ export default [
         "filePath": "@inkline/component-radio"
     },
     {
+        "name": "Tab",
+        "export": "Tab",
+        "filePath": "@inkline/component-tabs"
+    },
+    {
+        "name": "TabList",
+        "export": "TabList",
+        "filePath": "@inkline/component-tabs"
+    },
+    {
+        "name": "TabPanel",
+        "export": "TabPanel",
+        "filePath": "@inkline/component-tabs"
+    },
+    {
+        "name": "Tabs",
+        "export": "Tabs",
+        "filePath": "@inkline/component-tabs"
+    },
+    {
         "name": "Textarea",
         "export": "Textarea",
         "filePath": "@inkline/component-input"

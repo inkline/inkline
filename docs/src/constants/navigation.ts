@@ -134,6 +134,29 @@ export const customizationNavigation: NavigationItem[] = [
 
 export const componentsNavigation: NavigationItem[] = [
     {
+        id: 'core-components',
+        title: 'Core Components',
+        children: [
+            {
+                id: 'grid',
+                title: 'Grid'
+            },
+            {
+                id: 'image',
+                title: 'Image'
+            },
+            {
+                id: 'table',
+                title: 'Table',
+                to: '/docs/components/table'
+            },
+            {
+                id: 'typography',
+                title: 'Typography'
+            }
+        ]
+    },
+    {
         id: 'basic-components',
         title: 'Basic Components',
         children: [
@@ -144,65 +167,53 @@ export const componentsNavigation: NavigationItem[] = [
             },
             {
                 id: 'button',
-                title: 'Button'
+                title: 'Button',
+                to: '/docs/components/button'
             },
             {
                 id: 'button-group',
-                title: 'Button Group'
+                title: 'Button Group',
+                to: '/docs/components/button-group'
             },
             {
                 id: 'card',
-                title: 'Card'
+                title: 'Card',
+                to: '/docs/components/card'
             },
             {
                 id: 'collapsible',
-                title: 'Collapsible'
+                title: 'Collapsible 🚧'
             },
             {
                 id: 'dropdown',
-                title: 'Dropdown'
-            },
-            {
-                id: 'header',
-                title: 'Header'
+                title: 'Dropdown 🚧'
             },
             {
                 id: 'icon',
-                title: 'Icon'
+                title: 'Icon',
+                to: '/docs/components/icon'
             },
             {
                 id: 'list-group',
-                title: 'List Group'
+                title: 'List Group 🚧'
             },
             {
                 id: 'media',
-                title: 'Media'
+                title: 'Media',
+                to: '/docs/components/media'
             },
             {
                 id: 'pagination',
-                title: 'Pagination'
+                title: 'Pagination 🚧'
             },
             {
                 id: 'progress',
-                title: 'Progress'
-            },
-            {
-                id: 'table',
-                title: 'Table'
+                title: 'Progress 🚧'
             },
             {
                 id: 'tabs',
-                title: 'Tabs'
-            }
-        ]
-    },
-    {
-        id: 'layout-components',
-        title: 'Layout Components',
-        children: [
-            {
-                id: 'grid',
-                title: 'Grid'
+                title: 'Tabs',
+                to: '/docs/components/tabs'
             }
         ]
     },

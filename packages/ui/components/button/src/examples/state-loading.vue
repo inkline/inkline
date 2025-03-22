@@ -1,17 +1,16 @@
 <template>
-    <Button :loading="true"> Default Button </Button>
+    <Button :loading="true" square> Default Button</Button>
 
     <Button :loading="true">
         Default Button
-        <template #loading> Loading... </template>
+        <template #loading> Loading...</template>
     </Button>
 
-    <Button :loading="true" :show-loading-icon="false">
+    <Button :loading="true">
         Default Button
-        <template #loading>
+        <template #loading-icon>
             <Loader color="primary" class="_margin-right:1/2" />
-            Loading with Custom Icon...
         </template>
+        <template #loading> Loading with Custom Icon...</template>
     </Button>
 </template>
-<script setup></script>

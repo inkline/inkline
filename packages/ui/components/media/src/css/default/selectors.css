@@ -5,6 +5,8 @@
 }
 
 .media > .media-body {
+    display: flex;
+    flex-direction: column;
     flex: 0 1 auto;
 }
 
@@ -15,5 +17,5 @@
 }
 
 .media > img, .media > .img, .media > .image {
-    margin: var(--media--image--margin, var(--media--image--margin-top) var(--media--image--margin-right) var(--media--image--margin-bottom) var(--media--image--margin-left));
+    margin-right: var(--media--image--margin-right, var(--spacing));
 }

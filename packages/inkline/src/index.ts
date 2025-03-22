@@ -46,6 +46,7 @@ export * from './nav';
 export * from './popover';
 export * from './popup';
 export * from './radio';
+export * from './tabs';
 export * from './toast';
 export * from './toggle';
 export * from './tooltip';

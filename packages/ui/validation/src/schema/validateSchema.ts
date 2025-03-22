@@ -5,7 +5,7 @@ import type {
     ResolvedFormSchema,
     ResolvedFormField,
     FormError,
-    Form,
+    FormValues,
     FormValue,
     FormSchema,
     FormField,
@@ -21,7 +21,7 @@ import { isFormFieldArray, isFormGroupArray, isFormField, isFormGroup } from '..
  * @param rootSchema { FormSchema<R> | ResolvedFormSchema<R> }
  * @returns { ResolvedFormField<T> }
  */
-export async function validateFormField<T = FormValue, R extends Form = Form>(
+export async function validateFormField<T = FormValue, R extends FormValues = FormValues>(
     schema: FormField<T> | ResolvedFormField<T>,
     path = '',
     rootSchema?: FormSchema<R> | ResolvedFormSchema<R>
@@ -80,7 +80,7 @@ export async function validateFormField<T = FormValue, R extends Form = Form>(
  * @param rootSchema { FormSchema<R> | ResolvedFormSchema<R> }
  * @returns { ResolvedFormField<T>[] }
  */
-export async function validateFormFieldArray<T = FormValue, R extends Form = Form>(
+export async function validateFormFieldArray<T = FormValue, R extends FormValues = FormValues>(
     schema: FormField<T>[] | ResolvedFormField<T>[],
     path = '',
     rootSchema?: FormSchema<R> | ResolvedFormSchema<R>
@@ -100,7 +100,10 @@ export async function validateFormFieldArray<T = FormValue, R extends Form = For
  * @param rootSchema { FormSchema<R> | ResolvedFormSchema<R> }
  * @returns { Promise<ResolvedFormSchema<T>[]> }
  */
-export async function validateFormArray<T extends Form = Form, R extends Form = Form>(
+export async function validateFormArray<
+    T extends FormValues = FormValues,
+    R extends FormValues = FormValues
+>(
     schema: FormSchema<T>[] | ResolvedFormSchema<T>[],
     path = '',
     rootSchema?: FormSchema<R> | ResolvedFormSchema<R>
@@ -120,7 +123,10 @@ export async function validateFormArray<T extends Form = Form, R extends Form = 
  * @param rootSchema { FormSchema<R> | ResolvedFormSchema<R> }
  * @returns { Promise<ResolvedFormSchema<T>> }
  */
-export async function validateForm<T extends Form = Form, R extends Form = Form>(
+export async function validateForm<
+    T extends FormValues = FormValues,
+    R extends FormValues = FormValues
+>(
     schema: FormSchema<T> | ResolvedFormSchema<T>,
     name = '',
     rootSchema?: FormSchema<R> | ResolvedFormSchema<R>
@@ -186,7 +192,7 @@ export async function validateForm<T extends Form = Form, R extends Form = Form>
  * @param schema { FormSchema }
  * @returns { FormSchema }
  */
-export async function validateSchema<T extends Form = Form>(
+export async function validateSchema<T extends FormValues = FormValues>(
     schema: FormSchema<T> | ResolvedFormSchema<T>
 ) {
     return validateForm<T>(schema, '', schema);

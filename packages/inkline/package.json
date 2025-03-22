@@ -46,6 +46,7 @@
         "@inkline/component-popover": "workspace:*",
         "@inkline/component-popup": "workspace:*",
         "@inkline/component-radio": "workspace:*",
+        "@inkline/component-tabs": "workspace:*",
         "@inkline/component-toast": "workspace:*",
         "@inkline/component-toggle": "workspace:*",
         "@inkline/component-tooltip": "workspace:*",

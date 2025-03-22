@@ -15,9 +15,20 @@ import(`@inkline/component-${props.package}/examples/${props.name}.vue`).then((m
 
 <template>
     <Suspense>
-        <div>
+        <Grid v-bind="$attrs" class="component-demo">
             <Component :is="component" :key="`${package}/${name}`" />
-            <slot mdc-unwrap="p" />
-        </div>
+        </Grid>
     </Suspense>
 </template>
+
+<style>
+.component-demo {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+}
+</style>

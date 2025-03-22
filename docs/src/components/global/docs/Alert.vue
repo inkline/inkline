@@ -37,3 +37,9 @@ export default defineComponent({
         <slot mdc-unwrap="p" />
     </Alert>
 </template>
+
+<style>
+.docs-alert {
+    margin-bottom: var(--spacing);
+}
+</style>

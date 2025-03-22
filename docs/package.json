@@ -33,6 +33,7 @@
         "@inkline/theme": "workspace:*",
         "@inkline/typescript-config": "workspace:*",
         "@inkline/vite-config": "workspace:*",
+        "@intlify/message-compiler": "^11.1.2",
         "@nuxtjs/sitemap": "^7.2.7",
         "@vite-pwa/nuxt": "^0.10.6"
     }

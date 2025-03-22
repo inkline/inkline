@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 const items = [
-    { title: 'Home', href: '/' },
-    { title: 'Components', to: 'components' },
-    { title: 'Breadcrumbs', active: true }
+    { label: 'Home', href: '/' },
+    { label: 'Components', to: 'components' },
+    { label: 'Breadcrumbs', active: true }
 ];
 </script>
 
 <template>
     <Breadcrumb>
-        <BreadcrumbItem v-for="item in items" v-bind="item" :key="item.title">
-            {{ item.title }}
+        <BreadcrumbItem v-for="item in items" v-bind="item" :key="item.label">
+            {{ item.label }}
         </BreadcrumbItem>
     </Breadcrumb>
 </template>

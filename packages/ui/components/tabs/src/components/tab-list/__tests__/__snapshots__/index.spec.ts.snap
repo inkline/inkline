@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > TabList > should render correctly 1`] = `
+"<div class="tab-list" role="tablist">
+  <!-- @slot default Slot for tab list items -->
+</div>"
+`;

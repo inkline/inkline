@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > Tab > should render correctly 1`] = `
+"<div class="tab -active -light -md" role="tab" id="tab-tab" aria-expanded="true" aria-controls="tab-panel-tab" aria-describedby="tab-panel-tab" tabindex="0">
+  <!-- @slot default Slot for tab content -->
+</div>"
+`;

@@ -1,0 +1,5 @@
+#storybook-root {
+    > .tabs + .tabs {
+        margin-top: var(--spacing);
+    }
+}

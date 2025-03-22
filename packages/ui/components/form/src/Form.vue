@@ -2,7 +2,7 @@
 import { computed, defineComponent, type PropType, provide, toRef } from 'vue';
 import { useComponentColor, useComponentSize, useFormValidation } from '@inkline/composables';
 import { uid } from '@inkline/utils';
-import { Form, FormKey, ResolvedFormSchema, ValidateOnEvent } from '@inkline/types';
+import { FormValues, FormKey, ResolvedFormSchema, ValidateOnEvent } from '@inkline/types';
 import type { FormStateKeys } from '@inkline/types';
 
 const componentName = 'Form';
@@ -61,7 +61,7 @@ export default defineComponent({
          * @default false
          */
         modelValue: {
-            type: Object as PropType<ResolvedFormSchema<Form>>,
+            type: Object as PropType<ResolvedFormSchema<FormValues>>,
             default: undefined
         },
         /**

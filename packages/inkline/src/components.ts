@@ -19,6 +19,7 @@ import { Nav, NavItem } from './nav';
 import { Popover } from './popover';
 import { Popup } from './popup';
 import { Radio, RadioGroup } from './radio';
+import { Tabs, TabList, Tab, TabPanel } from './tabs';
 import { Toast, ToastContainer } from './toast';
 import { Toggle } from './toggle';
 import { Tooltip } from './tooltip';
@@ -51,6 +52,10 @@ export const components: Record<string, Component> = {
     Popup,
     Radio,
     RadioGroup,
+    Tabs,
+    TabList,
+    Tab,
+    TabPanel,
     Textarea,
     Toast,
     ToastContainer,

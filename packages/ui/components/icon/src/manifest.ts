@@ -11,10 +11,16 @@ export const manifest: ComponentManifest[] = [
                 default: ''
             },
             {
-                name: 'name',
-                type: 'string',
-                description: '',
-                default: ''
+                name: 'color',
+                type: "'inherit' | light' | 'dark' | 'primary' | 'secondary' | 'success' | 'danger' | 'warning' | 'info'",
+                description: 'The color of the icon',
+                default: 'undefined'
+            },
+            {
+                name: 'size',
+                type: 'string | number',
+                description: 'The size of the icon',
+                default: 'undefined'
             },
             {
                 name: 'width',
@@ -35,7 +41,13 @@ export const manifest: ComponentManifest[] = [
             namespace: 'icon',
             variables: [
                 {
+                    name: '--icon--color'
+                },
+                {
                     name: '--icon--font-size'
+                },
+                {
+                    name: '--icon--{color}--color'
                 },
                 {
                     name: '--icon--font-size'

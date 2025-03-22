@@ -1,5 +1,5 @@
 import { translate } from '@inkline/i18n';
-import type { Form as FormType, FormSchema, ResolvedFormSchema } from '@inkline/types';
+import type { FormValues as FormType, FormSchema, ResolvedFormSchema } from '@inkline/types';
 import { uid } from '@inkline/utils';
 import type { VNode } from 'vue';
 import { computed, defineComponent, h, markRaw } from 'vue';

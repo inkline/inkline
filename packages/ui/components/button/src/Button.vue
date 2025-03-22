@@ -95,15 +95,6 @@ export default defineComponent({
             default: false
         },
         /**
-         * Display the button loading icon when loading state is active
-         * @param {boolean} showLoadingIcon
-         * @default true
-         */
-        showLoadingIcon: {
-            type: Boolean,
-            default: true
-        },
-        /**
          * Display the button as an outline button
          * @param {boolean} outline
          * @default false
@@ -267,7 +258,10 @@ export default defineComponent({
         aria-live="polite"
     >
         <template v-if="loading">
-            <Loader v-if="showLoadingIcon" class="button-icon" />
+            <slot name="loading-icon">
+                <!-- @slot loading-icon Slot for button loading icon -->
+                <Loader class="button-icon" />
+            </slot>
             <span v-if="$slots.loading" class="button-content">
                 <!-- @slot loading Slot for button loading text -->
                 <slot name="loading" />

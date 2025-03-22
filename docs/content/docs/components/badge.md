@@ -20,11 +20,10 @@ The `Badge` component in Inkline is versatile and can be easily customized to fi
 ## Import
 
 ```ts
-import { Badge } from 'inkline';
+import { Badge } from 'inkline/badge';
 ```
 
-::DocsImportNotice
-::
+:DocsImportNotice
 
 ## Usage
 
@@ -32,7 +31,10 @@ import { Badge } from 'inkline';
 
 In its simplest form, the `Badge` component is used to show a static label or count. By default, it uses the `light` or `dark` color variant, depending on the user's system color mode.
 
-::DocsComponentDemo{ package="badge" name="basic" }
+::DocsTabs
+#preview 
+:DocsComponentDemo{ package="badge" name="basic" }
+#code
 <!-- :DocsCode{ package="@inkline/component-badge" file="examples/basic.vue" } -->
 ::
 
@@ -42,7 +44,10 @@ In its simplest form, the `Badge` component is used to show a static label or co
 
 Using the `color` prop, you can quickly style the badge in different thematic contexts.
 
-::DocsComponentDemo{ package="badge" name="color-variants" }
+::DocsTabs
+#preview
+:DocsComponentDemo{ package="badge" name="color-variants" }
+#code
 <!-- :DocsCode{ package="@inkline/component-badge" file="examples/color-variants.vue" } -->
 ::
 
@@ -52,7 +57,10 @@ Using the `color` prop, you can quickly style the badge in different thematic co
 
 Using the `size` prop, you can quickly style the badge in different sizes. By setting the value to `inherit`, the `Badge` will inherit the font size of the element it is used in.
 
-::DocsComponentDemo{ package="badge" name="size-variants" }
+::DocsTabs
+#preview
+:DocsComponentDemo{ package="badge" name="size-variants" }
+#code
 <!-- :DocsCode{ package="@inkline/component-badge" file="examples/size-variants.vue" } -->
 ::
 
@@ -62,7 +70,10 @@ Using the `size` prop, you can quickly style the badge in different sizes. By se
 
 A common use case for badges is to show a status or category label next to a heading or title. Here’s how you might use a `Badge` in a heading:
 
-::DocsComponentDemo{ package="badge" name="heading" }
+::DocsTabs
+#preview
+:DocsComponentDemo{ package="badge" name="heading" direction="column" }
+#code
 <!-- :DocsCode{ package="@inkline/component-badge" file="examples/heading.vue" } -->
 ::
 
@@ -72,7 +83,10 @@ A common use case for badges is to show a status or category label next to a hea
 
 Setting the `pill` prop modifies the badge’s border radius to create a pill shape. This variation is a popular choice for tags and labels.
 
-::DocsComponentDemo{ package="badge" name="pill" }
+::DocsTabs
+#preview
+:DocsComponentDemo{ package="badge" name="pill" }
+#code
 <!-- :DocsCode{ package="@inkline/component-badge" file="examples/pill.vue" } -->
 ::
 
@@ -111,13 +125,24 @@ By default, Inkline aims to ensure badges are accessible out of the box. However
 
 **Additional guidelines:**
 
-- Provide text or an accessible label if the badge uses an icon or relies on color alone to convey meaning. This is particularly relevant if the badge shows a status color (e.g., “error” in red). Offer a textual representation for color-blind or screen reader users.
+- Provide text or an accessible label if the `Badge` uses an icon or relies on color alone to convey meaning. This is particularly relevant if the badge shows a status color (e.g., “error” in red). Offer a textual representation for color-blind or screen reader users.
 
 ## Best Practices
 
-- **Don’t overload the badge with too much text:** Keep badges concise. If you need more context, consider a tooltip or a label.
-- **Use color intentionally:** Rely on meaningful color usage to reflect status or category. For better accessibility, pair color with text (e.g., “Error” instead of just a red badge).
-- **Link to content if needed:** If the badge represents a navigable item (like a filter or category tag), ensure it is keyboard accessible and has the correct role or is rendered as a clickable element.
-- **Combine with icons judiciously:** While a number or short label is most common, an icon can help convey meaning (e.g., a check icon for “confirmed”).
-- **Respect theming:** Stick to the color variants provided by Inkline to maintain a consistent design system. Avoid manual color overrides unless necessary for your branding.
-- **Performance considerations:** A badge is lightweight, so performance is rarely a concern. However, if you update the badge count frequently (e.g., real-time updates), ensure it’s efficient (e.g., use watchers or computed properties sparingly).
+**Don’t overload the badge with too much text:** 
+- Keep badges concise. If you need more context, consider a tooltip or a label.
+
+**Use color intentionally:** 
+- Rely on meaningful color usage to reflect status or category. For better accessibility, pair color with text (e.g., “Error” instead of just a red badge).
+
+**Link to content if needed:** 
+- If the `Badge` represents a navigable item (like a filter or category tag), ensure it is keyboard accessible and has the correct role or is rendered as a clickable element.
+
+**Combine with icons judiciously:** 
+- While a number or short label is most common, an icon can help convey meaning (e.g., a check icon for “confirmed”).
+
+**Respect theming:** 
+- Try to stick to the color variants provided by Inkline to maintain a consistent design system. Avoid manual color overrides unless necessary for your branding.
+
+**Performance considerations:** 
+- A `Badge` is lightweight, so performance is rarely a concern. However, if you update the badge count frequently (e.g., real-time updates), ensure it’s efficient (e.g., use watchers or computed properties sparingly).

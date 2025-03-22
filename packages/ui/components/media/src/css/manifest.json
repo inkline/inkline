@@ -2295,6 +2295,8 @@
                 "__type": "selector",
                 "__name": ".media > .media-body",
                 "__value": {
+                    "display": "flex",
+                    "flexDirection": "column",
                     "flex": "0 1 auto"
                 }
             },
@@ -2311,27 +2313,13 @@
                 "__type": "selector",
                 "__name": ".media > img, .media > .img, .media > .image",
                 "__value": {
-                    "margin": {
+                    "marginRight": {
                         "__type": "reference",
-                        "__name": "media--image--margin",
-                        "__fallback": [
-                            {
-                                "__type": "reference",
-                                "__name": "media--image--margin-top"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "media--image--margin-right"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "media--image--margin-bottom"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "media--image--margin-left"
-                            }
-                        ]
+                        "__name": "media--image--margin-right",
+                        "__fallback": {
+                            "__type": "reference",
+                            "__name": "spacing"
+                        }
                     }
                 }
             }
