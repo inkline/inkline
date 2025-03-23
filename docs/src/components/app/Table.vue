@@ -2,6 +2,7 @@
 import { computed, defineComponent } from 'vue';
 import type { PropType, VNode } from 'vue';
 import type { AppTableColumn } from '~/types';
+import { isFunction } from '@inkline/utils';
 
 export default defineComponent({
     props: {
@@ -48,6 +49,21 @@ export default defineComponent({
             return prerendered;
         });
 
+        const tdWidthValues = computed(() => {
+            const widths: Record<string, Record<string, number>> = {};
+
+            props.rows.forEach((row) => {
+                widths[row.name] = {};
+                props.columns.forEach((column) => {
+                    widths[row.name][column.key] = isFunction(column.width)
+                        ? column.width(row, column)
+                        : column.width || 12;
+                });
+            });
+
+            return widths;
+        });
+
         const tdVisibleValues = computed(() => {
             const visible: Record<string, Record<string, boolean>> = {};
 
@@ -65,6 +81,7 @@ export default defineComponent({
 
         return {
             prerenderedTdValues,
+            tdWidthValues,
             tdVisibleValues
         };
     }
@@ -78,7 +95,7 @@ export default defineComponent({
                 <Grid
                     v-if="tdVisibleValues[row.name][column.key]"
                     :key="column.key"
-                    :md="column.width || 12"
+                    :md="tdWidthValues[row.name][column.key]"
                     class="td"
                     direction="column"
                 >

@@ -16,9 +16,7 @@
         "chalk": "catalog:",
         "chokidar": "catalog:",
         "commander": "catalog:",
-        "comment-parser": "^1.4.1",
         "fast-glob": "catalog:",
-        "jiti": "^2.4.2",
         "shelljs": "catalog:"
     },
     "devDependencies": {

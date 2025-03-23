@@ -1,6 +1,10 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
 
+const props = defineProps<{
+    title?: string;
+}>();
+
 const slots = defineSlots<{
     preview(): any;
     config(): any;
@@ -13,12 +17,13 @@ const slots = defineSlots<{
     code(): any;
     css(): any;
     output(): any;
+    custom(): any;
 }>();
 
 const tabs = ref<
     Array<{
         name: keyof typeof slots;
-        title: string;
+        title?: string;
     }>
 >([
     { name: 'preview', title: 'Preview' },
@@ -31,7 +36,8 @@ const tabs = ref<
     { name: 'vue', title: 'Component.vue' },
     { name: 'code', title: 'Code' },
     { name: 'css', title: 'style.css' },
-    { name: 'output', title: 'Output' }
+    { name: 'output', title: 'Output' },
+    { name: 'custom', title: props.title }
 ]);
 
 const availableTabs = computed(() => tabs.value.filter((tab) => !!slots[tab.name]));
@@ -48,7 +54,7 @@ const active = ref(availableTabs.value[0].name);
         </TabList>
 
         <TabPanel v-for="tab in availableTabs" :key="tab.name" :name="tab.name">
-            <slot :name="tab.name" mdc-unwrap="p" />
+            <slot :name="tab.name" />
         </TabPanel>
     </Tabs>
 </template>
@@ -58,7 +64,6 @@ const active = ref(availableTabs.value[0].name);
     margin-bottom: var(--spacing);
 
     > .tab-list {
-        justify-content: flex-end;
         margin-bottom: 0;
         border-bottom: 0;
         border-bottom-left-radius: 0;
@@ -66,8 +71,6 @@ const active = ref(availableTabs.value[0].name);
 
         .tab {
             min-width: 100px;
-            border-right: 0;
-            border-left: 1px solid var(--border-left-color);
         }
     }
 

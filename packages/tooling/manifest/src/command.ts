@@ -1,16 +1,16 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { generateManifest } from './manifest/index';
+import { parse } from './parse';
 import prettier from 'prettier';
 import type { Options as PrettierOptions } from 'prettier';
 import prettierConfig from '@inkline/eslint-config/.prettierrc';
 import { Logger } from '@inkline/logger';
 
-export async function componentManifest() {
+export async function command() {
     const srcDir = path.resolve(process.cwd(), 'src');
     const manifestPath = path.resolve(srcDir, 'manifest.ts');
 
-    const manifest = await generateManifest(srcDir);
+    const manifest = await parse(srcDir);
 
     const output = `import type { ComponentManifest } from '@inkline/types';
 

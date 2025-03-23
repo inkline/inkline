@@ -106,72 +106,112 @@ The stretch mode allows the tabs to expand and fill the available width, ensurin
 
 ## Props
 
-### Tabs Props
+::DocsCard{ title="Tabs Props" }
 Below is an outline of available props for the `Tabs` component.
 
 ::DocsComponentProps{ package="tabs" component="Tabs" }
 ::
+::
 
-### Tab List Props
+::DocsCard{ title="Tab List Props" }
 Below is an outline of available props for the `TabList` component.
 
 ::DocsComponentProps{ package="tabs" component="TabList" }
 ::
+::
 
-### Tab Props
+::DocsCard{ title="Tab Props" }
 Below is an outline of available props for the `Tab` component.
 
 ::DocsComponentProps{ package="tabs" component="Tab" }
 ::
+::
 
-### Tab Panel Props
+::DocsCard{ title="Tab Panel Props" }
 Below is an outline of available props for the `TabPanel` component.
 
 ::DocsComponentProps{ package="tabs" component="TabPanel" }
 ::
+::
 
 ## Events
 
-### Tabs Events
+::DocsCard{ title="Tabs Events" }
 Below is an outline of available events for the `Tabs` component.
 
 ::DocsComponentEvents{ package="tabs" component="Tabs" }
 ::
+::
 
-### Tab List Events
+::DocsCard{ title="Tab List Events" }
 The `TabList` component does not emit any events.
+::
 
-### Tab Events
+::DocsCard{ title="Tab Events" }
 The `Tab` component does not emit any events. However, you can bind native events like `@click` to handle custom interactions.
+::
 
-### Tab Panel Events
+::DocsCard{ title="Tab Panel Events" }
 The `TabPanel` component does not emit any events.
+::
 
 ## Slots
 
-### Tabs Slots
+::DocsCard{ title="Tabs Slots" }
 Below is an outline of available slots for the `Tabs` component.
 
 ::DocsComponentSlots{ package="tabs" component="Tabs" }
 ::
+::
 
-### Tab List Slots
+::DocsCard{ title="Tab List Slots" }
 Below is an outline of available slots for the `TabList` component.
 
 ::DocsComponentSlots{ package="tabs" component="TabList" }
 ::
+::
 
-### Tab Slots
+::DocsCard{ title="Tab Slots" }
 Below is an outline of available slots for the `Tab` component.
 
 ::DocsComponentSlots{ package="tabs" component="Tab" }
 ::
+::
 
-### Tab Panel Slots
+::DocsCard{ title="Tab Panel Slots" }
 Below is an outline of available slots for the `TabPanel` component.
 
 ::DocsComponentSlots{ package="tabs" component="TabPanel" }
 ::
+::
+
+## Design Tokens
+
+::DocsCard{ title="Tabs Design Tokens" }
+The `Tabs` component itself acts as a wrapper and does not have any design tokens.
+::
+
+::DocsCard{ title="Tab List Design Tokens" }
+Below is an outline of available design tokens for the `TabList` component.
+
+::DocsComponentDesignTokens{ package="tabs" component="TabList" }
+::
+::
+
+::DocsCard{ title="Tab Design Tokens" }
+Below is an outline of available design tokens for the `Tab` component.
+
+::DocsComponentDesignTokens{ package="tabs" component="Tab" }
+::
+::
+
+::DocsCard{ title="Tab Panel Design Tokens" }
+Below is an outline of available design tokens for the `TabPanel` component.
+
+::DocsComponentDesignTokens{ package="tabs" component="TabPanel" }
+::
+::
+
 
 ## Accessibility
 

@@ -182,484 +182,644 @@ export const manifest: ComponentManifest[] = [
             namespace: 'radio',
             variables: [
                 {
-                    name: '--radio--border-top-width'
+                    name: '--radio--border-top-width',
+                    value: 'var(--border-top-width)'
                 },
                 {
-                    name: '--radio--border-top-style'
+                    name: '--radio--border-top-style',
+                    value: 'var(--border-top-style)'
                 },
                 {
-                    name: '--radio--border-top-color'
+                    name: '--radio--border-top-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--radio--border-right-width'
+                    name: '--radio--border-right-width',
+                    value: 'var(--border-right-width)'
                 },
                 {
-                    name: '--radio--border-right-style'
+                    name: '--radio--border-right-style',
+                    value: 'var(--border-right-style)'
                 },
                 {
-                    name: '--radio--border-right-color'
+                    name: '--radio--border-right-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--radio--border-bottom-width'
+                    name: '--radio--border-bottom-width',
+                    value: 'var(--border-bottom-width)'
                 },
                 {
-                    name: '--radio--border-bottom-style'
+                    name: '--radio--border-bottom-style',
+                    value: 'var(--border-bottom-style)'
                 },
                 {
-                    name: '--radio--border-bottom-color'
+                    name: '--radio--border-bottom-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--radio--border-left-width'
+                    name: '--radio--border-left-width',
+                    value: 'var(--border-left-width)'
                 },
                 {
-                    name: '--radio--border-left-style'
+                    name: '--radio--border-left-style',
+                    value: 'var(--border-left-style)'
                 },
                 {
-                    name: '--radio--border-left-color'
+                    name: '--radio--border-left-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--radio--border-width'
+                    name: '--radio--border-width',
+                    value: 'var(--radio--border-top-width) var(--radio--border-right-width) var(--radio--border-bottom-width) var(--radio--border-left-width)'
                 },
                 {
-                    name: '--radio--border-style'
+                    name: '--radio--border-style',
+                    value: 'var(--radio--border-top-style) var(--radio--border-right-style) var(--radio--border-bottom-style) var(--radio--border-left-style)'
                 },
                 {
-                    name: '--radio--border-color'
+                    name: '--radio--border-color',
+                    value: 'var(--radio--border-top-color) var(--radio--border-right-color) var(--radio--border-bottom-color) var(--radio--border-left-color)'
                 },
                 {
-                    name: '--radio--border-top'
+                    name: '--radio--border-top',
+                    value: 'var(--radio--border-top-width) var(--radio--border-top-style) var(--radio--border-top-color)'
                 },
                 {
-                    name: '--radio--border-right'
+                    name: '--radio--border-right',
+                    value: 'var(--radio--border-right-width) var(--radio--border-right-style) var(--radio--border-right-color)'
                 },
                 {
-                    name: '--radio--border-bottom'
+                    name: '--radio--border-bottom',
+                    value: 'var(--radio--border-bottom-width) var(--radio--border-bottom-style) var(--radio--border-bottom-color)'
                 },
                 {
-                    name: '--radio--border-left'
+                    name: '--radio--border-left',
+                    value: 'var(--radio--border-left-width) var(--radio--border-left-style) var(--radio--border-left-color)'
                 },
                 {
-                    name: '--radio--border'
+                    name: '--radio--border',
+                    value: 'var(--radio--border-top-width) var(--radio--border-top-style) var(--radio--border-top-color)'
                 },
                 {
-                    name: '--radio--border-top-left-radius'
+                    name: '--radio--border-top-left-radius',
+                    value: '50%'
                 },
                 {
-                    name: '--radio--border-top-right-radius'
+                    name: '--radio--border-top-right-radius',
+                    value: '50%'
                 },
                 {
-                    name: '--radio--border-bottom-right-radius'
+                    name: '--radio--border-bottom-right-radius',
+                    value: '50%'
                 },
                 {
-                    name: '--radio--border-bottom-left-radius'
+                    name: '--radio--border-bottom-left-radius',
+                    value: '50%'
                 },
                 {
-                    name: '--radio--border-radius'
+                    name: '--radio--border-radius',
+                    value: 'var(--radio--border-top-left-radius) var(--radio--border-top-right-radius) var(--radio--border-bottom-right-radius) var(--radio--border-bottom-left-radius)'
                 },
                 {
-                    name: '--radio--box-shadow-offset-x'
+                    name: '--radio--box-shadow-offset-x',
+                    value: 'var(--box-shadow-offset-x)'
                 },
                 {
-                    name: '--radio--box-shadow-offset-y'
+                    name: '--radio--box-shadow-offset-y',
+                    value: 'var(--box-shadow-offset-y)'
                 },
                 {
-                    name: '--radio--box-shadow-blur-radius'
+                    name: '--radio--box-shadow-blur-radius',
+                    value: 'var(--box-shadow-blur-radius)'
                 },
                 {
-                    name: '--radio--box-shadow-spread-radius'
+                    name: '--radio--box-shadow-spread-radius',
+                    value: 'var(--box-shadow-spread-radius)'
                 },
                 {
-                    name: '--radio--box-shadow-color'
+                    name: '--radio--box-shadow-color',
+                    value: 'var(--box-shadow-color)'
                 },
                 {
-                    name: '--radio--box-shadow'
+                    name: '--radio--box-shadow',
+                    value: 'var(--radio--box-shadow-offset-x) var(--radio--box-shadow-offset-y) var(--radio--box-shadow-blur-radius) var(--radio--box-shadow-spread-radius) var(--radio--box-shadow-color)'
                 },
                 {
-                    name: '--radio--transition-property'
+                    name: '--radio--transition-property',
+                    value: 'background-color, color, border-color, transform'
                 },
                 {
-                    name: '--radio--transition-duration'
+                    name: '--radio--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--radio--transition-timing-function'
+                    name: '--radio--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--radio--transition'
+                    name: '--radio--transition',
+                    value: 'var(--radio--transition-property) var(--radio--transition-duration) var(--radio--transition-timing-function)'
                 },
                 {
-                    name: '--radio--circle--color'
+                    name: '--radio--circle--color',
+                    value: 'var(--color-white)'
                 },
                 {
-                    name: '--radio--circle--width'
+                    name: '--radio--circle--width',
+                    value: 'calc(var(--spacing-md) * 0.5)'
                 },
                 {
-                    name: '--radio--circle--height'
+                    name: '--radio--circle--height',
+                    value: 'calc(var(--spacing-md) * 0.5)'
                 },
                 {
-                    name: '--radio--checked--background'
+                    name: '--radio--checked--background',
+                    value: 'var(--color-primary)'
                 },
                 {
-                    name: '--radio--checked--border-top-width'
+                    name: '--radio--checked--border-top-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--border-top-style'
+                    name: '--radio--checked--border-top-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--border-top-color'
+                    name: '--radio--checked--border-top-color',
+                    value: 'var(--color-primary-shade-50)'
                 },
                 {
-                    name: '--radio--checked--border-right-width'
+                    name: '--radio--checked--border-right-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--border-right-style'
+                    name: '--radio--checked--border-right-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--border-right-color'
+                    name: '--radio--checked--border-right-color',
+                    value: 'var(--color-primary-shade-50)'
                 },
                 {
-                    name: '--radio--checked--border-bottom-width'
+                    name: '--radio--checked--border-bottom-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--border-bottom-style'
+                    name: '--radio--checked--border-bottom-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--border-bottom-color'
+                    name: '--radio--checked--border-bottom-color',
+                    value: 'var(--color-primary-shade-50)'
                 },
                 {
-                    name: '--radio--checked--border-left-width'
+                    name: '--radio--checked--border-left-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--border-left-style'
+                    name: '--radio--checked--border-left-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--border-left-color'
+                    name: '--radio--checked--border-left-color',
+                    value: 'var(--color-primary-shade-50)'
                 },
                 {
-                    name: '--radio--checked--border-width'
+                    name: '--radio--checked--border-width',
+                    value: 'var(--radio--checked--border-top-width) var(--radio--checked--border-right-width) var(--radio--checked--border-bottom-width) var(--radio--checked--border-left-width)'
                 },
                 {
-                    name: '--radio--checked--border-style'
+                    name: '--radio--checked--border-style',
+                    value: 'var(--radio--checked--border-top-style) var(--radio--checked--border-right-style) var(--radio--checked--border-bottom-style) var(--radio--checked--border-left-style)'
                 },
                 {
-                    name: '--radio--checked--border-color'
+                    name: '--radio--checked--border-color',
+                    value: 'var(--radio--checked--border-top-color) var(--radio--checked--border-right-color) var(--radio--checked--border-bottom-color) var(--radio--checked--border-left-color)'
                 },
                 {
-                    name: '--radio--checked--border-top'
+                    name: '--radio--checked--border-top',
+                    value: 'var(--radio--checked--border-top-width) var(--radio--checked--border-top-style) var(--radio--checked--border-top-color)'
                 },
                 {
-                    name: '--radio--checked--border-right'
+                    name: '--radio--checked--border-right',
+                    value: 'var(--radio--checked--border-right-width) var(--radio--checked--border-right-style) var(--radio--checked--border-right-color)'
                 },
                 {
-                    name: '--radio--checked--border-bottom'
+                    name: '--radio--checked--border-bottom',
+                    value: 'var(--radio--checked--border-bottom-width) var(--radio--checked--border-bottom-style) var(--radio--checked--border-bottom-color)'
                 },
                 {
-                    name: '--radio--checked--border-left'
+                    name: '--radio--checked--border-left',
+                    value: 'var(--radio--checked--border-left-width) var(--radio--checked--border-left-style) var(--radio--checked--border-left-color)'
                 },
                 {
-                    name: '--radio--checked--border'
+                    name: '--radio--checked--border',
+                    value: 'var(--radio--checked--border-top-width) var(--radio--checked--border-top-style) var(--radio--checked--border-top-color)'
                 },
                 {
-                    name: '--radio--checked--disabled--background'
+                    name: '--radio--checked--disabled--background',
+                    value: 'var(--color-primary-300)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-top-width'
+                    name: '--radio--checked--disabled--border-top-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--disabled--border-top-style'
+                    name: '--radio--checked--disabled--border-top-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--disabled--border-top-color'
+                    name: '--radio--checked--disabled--border-top-color',
+                    value: 'var(--color-primary-400)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-right-width'
+                    name: '--radio--checked--disabled--border-right-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--disabled--border-right-style'
+                    name: '--radio--checked--disabled--border-right-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--disabled--border-right-color'
+                    name: '--radio--checked--disabled--border-right-color',
+                    value: 'var(--color-primary-400)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-bottom-width'
+                    name: '--radio--checked--disabled--border-bottom-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--disabled--border-bottom-style'
+                    name: '--radio--checked--disabled--border-bottom-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--disabled--border-bottom-color'
+                    name: '--radio--checked--disabled--border-bottom-color',
+                    value: 'var(--color-primary-400)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-left-width'
+                    name: '--radio--checked--disabled--border-left-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--disabled--border-left-style'
+                    name: '--radio--checked--disabled--border-left-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--disabled--border-left-color'
+                    name: '--radio--checked--disabled--border-left-color',
+                    value: 'var(--color-primary-400)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-width'
+                    name: '--radio--checked--disabled--border-width',
+                    value: 'var(--radio--checked--disabled--border-top-width) var(--radio--checked--disabled--border-right-width) var(--radio--checked--disabled--border-bottom-width) var(--radio--checked--disabled--border-left-width)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-style'
+                    name: '--radio--checked--disabled--border-style',
+                    value: 'var(--radio--checked--disabled--border-top-style) var(--radio--checked--disabled--border-right-style) var(--radio--checked--disabled--border-bottom-style) var(--radio--checked--disabled--border-left-style)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-color'
+                    name: '--radio--checked--disabled--border-color',
+                    value: 'var(--radio--checked--disabled--border-top-color) var(--radio--checked--disabled--border-right-color) var(--radio--checked--disabled--border-bottom-color) var(--radio--checked--disabled--border-left-color)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-top'
+                    name: '--radio--checked--disabled--border-top',
+                    value: 'var(--radio--checked--disabled--border-top-width) var(--radio--checked--disabled--border-top-style) var(--radio--checked--disabled--border-top-color)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-right'
+                    name: '--radio--checked--disabled--border-right',
+                    value: 'var(--radio--checked--disabled--border-right-width) var(--radio--checked--disabled--border-right-style) var(--radio--checked--disabled--border-right-color)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-bottom'
+                    name: '--radio--checked--disabled--border-bottom',
+                    value: 'var(--radio--checked--disabled--border-bottom-width) var(--radio--checked--disabled--border-bottom-style) var(--radio--checked--disabled--border-bottom-color)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-left'
+                    name: '--radio--checked--disabled--border-left',
+                    value: 'var(--radio--checked--disabled--border-left-width) var(--radio--checked--disabled--border-left-style) var(--radio--checked--disabled--border-left-color)'
                 },
                 {
-                    name: '--radio--checked--disabled--border'
+                    name: '--radio--checked--disabled--border',
+                    value: 'var(--radio--checked--disabled--border-top-width) var(--radio--checked--disabled--border-top-style) var(--radio--checked--disabled--border-top-color)'
                 },
                 {
-                    name: '--radio--checked--readonly--background'
+                    name: '--radio--checked--readonly--background',
+                    value: 'var(--color-primary-400)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-top-width'
+                    name: '--radio--checked--readonly--border-top-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--readonly--border-top-style'
+                    name: '--radio--checked--readonly--border-top-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--readonly--border-top-color'
+                    name: '--radio--checked--readonly--border-top-color',
+                    value: 'var(--color-primary-500)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-right-width'
+                    name: '--radio--checked--readonly--border-right-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--readonly--border-right-style'
+                    name: '--radio--checked--readonly--border-right-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--readonly--border-right-color'
+                    name: '--radio--checked--readonly--border-right-color',
+                    value: 'var(--color-primary-500)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-bottom-width'
+                    name: '--radio--checked--readonly--border-bottom-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--readonly--border-bottom-style'
+                    name: '--radio--checked--readonly--border-bottom-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--readonly--border-bottom-color'
+                    name: '--radio--checked--readonly--border-bottom-color',
+                    value: 'var(--color-primary-500)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-left-width'
+                    name: '--radio--checked--readonly--border-left-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--readonly--border-left-style'
+                    name: '--radio--checked--readonly--border-left-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--readonly--border-left-color'
+                    name: '--radio--checked--readonly--border-left-color',
+                    value: 'var(--color-primary-500)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-width'
+                    name: '--radio--checked--readonly--border-width',
+                    value: 'var(--radio--checked--readonly--border-top-width) var(--radio--checked--readonly--border-right-width) var(--radio--checked--readonly--border-bottom-width) var(--radio--checked--readonly--border-left-width)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-style'
+                    name: '--radio--checked--readonly--border-style',
+                    value: 'var(--radio--checked--readonly--border-top-style) var(--radio--checked--readonly--border-right-style) var(--radio--checked--readonly--border-bottom-style) var(--radio--checked--readonly--border-left-style)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-color'
+                    name: '--radio--checked--readonly--border-color',
+                    value: 'var(--radio--checked--readonly--border-top-color) var(--radio--checked--readonly--border-right-color) var(--radio--checked--readonly--border-bottom-color) var(--radio--checked--readonly--border-left-color)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-top'
+                    name: '--radio--checked--readonly--border-top',
+                    value: 'var(--radio--checked--readonly--border-top-width) var(--radio--checked--readonly--border-top-style) var(--radio--checked--readonly--border-top-color)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-right'
+                    name: '--radio--checked--readonly--border-right',
+                    value: 'var(--radio--checked--readonly--border-right-width) var(--radio--checked--readonly--border-right-style) var(--radio--checked--readonly--border-right-color)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-bottom'
+                    name: '--radio--checked--readonly--border-bottom',
+                    value: 'var(--radio--checked--readonly--border-bottom-width) var(--radio--checked--readonly--border-bottom-style) var(--radio--checked--readonly--border-bottom-color)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-left'
+                    name: '--radio--checked--readonly--border-left',
+                    value: 'var(--radio--checked--readonly--border-left-width) var(--radio--checked--readonly--border-left-style) var(--radio--checked--readonly--border-left-color)'
                 },
                 {
-                    name: '--radio--checked--readonly--border'
+                    name: '--radio--checked--readonly--border',
+                    value: 'var(--radio--checked--readonly--border-top-width) var(--radio--checked--readonly--border-top-style) var(--radio--checked--readonly--border-top-color)'
                 },
                 {
-                    name: '--radio--disabled--color'
+                    name: '--radio--disabled--color',
+                    value: 'var(--text-color-weak)'
                 },
                 {
-                    name: '--radio--disabled--background'
+                    name: '--radio--disabled--background',
+                    value: 'var(--color-gray-100)'
                 },
                 {
-                    name: '--radio--disabled--border-top-width'
+                    name: '--radio--disabled--border-top-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--disabled--border-top-style'
+                    name: '--radio--disabled--border-top-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--disabled--border-top-color'
+                    name: '--radio--disabled--border-top-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--disabled--border-right-width'
+                    name: '--radio--disabled--border-right-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--disabled--border-right-style'
+                    name: '--radio--disabled--border-right-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--disabled--border-right-color'
+                    name: '--radio--disabled--border-right-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--disabled--border-bottom-width'
+                    name: '--radio--disabled--border-bottom-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--disabled--border-bottom-style'
+                    name: '--radio--disabled--border-bottom-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--disabled--border-bottom-color'
+                    name: '--radio--disabled--border-bottom-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--disabled--border-left-width'
+                    name: '--radio--disabled--border-left-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--disabled--border-left-style'
+                    name: '--radio--disabled--border-left-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--disabled--border-left-color'
+                    name: '--radio--disabled--border-left-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--disabled--border-width'
+                    name: '--radio--disabled--border-width',
+                    value: 'var(--radio--disabled--border-top-width) var(--radio--disabled--border-right-width) var(--radio--disabled--border-bottom-width) var(--radio--disabled--border-left-width)'
                 },
                 {
-                    name: '--radio--disabled--border-style'
+                    name: '--radio--disabled--border-style',
+                    value: 'var(--radio--disabled--border-top-style) var(--radio--disabled--border-right-style) var(--radio--disabled--border-bottom-style) var(--radio--disabled--border-left-style)'
                 },
                 {
-                    name: '--radio--disabled--border-color'
+                    name: '--radio--disabled--border-color',
+                    value: 'var(--radio--disabled--border-top-color) var(--radio--disabled--border-right-color) var(--radio--disabled--border-bottom-color) var(--radio--disabled--border-left-color)'
                 },
                 {
-                    name: '--radio--disabled--border-top'
+                    name: '--radio--disabled--border-top',
+                    value: 'var(--radio--disabled--border-top-width) var(--radio--disabled--border-top-style) var(--radio--disabled--border-top-color)'
                 },
                 {
-                    name: '--radio--disabled--border-right'
+                    name: '--radio--disabled--border-right',
+                    value: 'var(--radio--disabled--border-right-width) var(--radio--disabled--border-right-style) var(--radio--disabled--border-right-color)'
                 },
                 {
-                    name: '--radio--disabled--border-bottom'
+                    name: '--radio--disabled--border-bottom',
+                    value: 'var(--radio--disabled--border-bottom-width) var(--radio--disabled--border-bottom-style) var(--radio--disabled--border-bottom-color)'
                 },
                 {
-                    name: '--radio--disabled--border-left'
+                    name: '--radio--disabled--border-left',
+                    value: 'var(--radio--disabled--border-left-width) var(--radio--disabled--border-left-style) var(--radio--disabled--border-left-color)'
                 },
                 {
-                    name: '--radio--disabled--border'
+                    name: '--radio--disabled--border',
+                    value: 'var(--radio--disabled--border-top-width) var(--radio--disabled--border-top-style) var(--radio--disabled--border-top-color)'
                 },
                 {
-                    name: '--radio--focus--box-shadow-offset-x'
+                    name: '--radio--focus--box-shadow-offset-x',
+                    value: '0'
                 },
                 {
-                    name: '--radio--focus--box-shadow-offset-y'
+                    name: '--radio--focus--box-shadow-offset-y',
+                    value: '0'
                 },
                 {
-                    name: '--radio--focus--box-shadow-blur-radius'
+                    name: '--radio--focus--box-shadow-blur-radius',
+                    value: '0'
                 },
                 {
-                    name: '--radio--focus--box-shadow-spread-radius'
+                    name: '--radio--focus--box-shadow-spread-radius',
+                    value: '3px'
                 },
                 {
-                    name: '--radio--focus--box-shadow-color'
+                    name: '--radio--focus--box-shadow-color',
+                    value: 'hsla(from var(--color-primary) h s l / 0.25)'
                 },
                 {
-                    name: '--radio--focus--box-shadow'
+                    name: '--radio--focus--box-shadow',
+                    value: 'var(--radio--focus--box-shadow-offset-x) var(--radio--focus--box-shadow-offset-y) var(--radio--focus--box-shadow-blur-radius) var(--radio--focus--box-shadow-spread-radius) var(--radio--focus--box-shadow-color)'
                 },
                 {
-                    name: '--radio--background'
+                    name: '--radio--background',
+                    value: 'var(--color-white)'
                 },
                 {
-                    name: '--radio--color'
+                    name: '--radio--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--radio--readonly--background'
+                    name: '--radio--readonly--background',
+                    value: 'var(--color-gray-100)'
                 },
                 {
-                    name: '--radio--readonly--border-top-width'
+                    name: '--radio--readonly--border-top-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--readonly--border-top-style'
+                    name: '--radio--readonly--border-top-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--readonly--border-top-color'
+                    name: '--radio--readonly--border-top-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--readonly--border-right-width'
+                    name: '--radio--readonly--border-right-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--readonly--border-right-style'
+                    name: '--radio--readonly--border-right-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--readonly--border-right-color'
+                    name: '--radio--readonly--border-right-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--readonly--border-bottom-width'
+                    name: '--radio--readonly--border-bottom-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--readonly--border-bottom-style'
+                    name: '--radio--readonly--border-bottom-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--readonly--border-bottom-color'
+                    name: '--radio--readonly--border-bottom-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--readonly--border-left-width'
+                    name: '--radio--readonly--border-left-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--readonly--border-left-style'
+                    name: '--radio--readonly--border-left-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--readonly--border-left-color'
+                    name: '--radio--readonly--border-left-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--readonly--border-width'
+                    name: '--radio--readonly--border-width',
+                    value: 'var(--radio--readonly--border-top-width) var(--radio--readonly--border-right-width) var(--radio--readonly--border-bottom-width) var(--radio--readonly--border-left-width)'
                 },
                 {
-                    name: '--radio--readonly--border-style'
+                    name: '--radio--readonly--border-style',
+                    value: 'var(--radio--readonly--border-top-style) var(--radio--readonly--border-right-style) var(--radio--readonly--border-bottom-style) var(--radio--readonly--border-left-style)'
                 },
                 {
-                    name: '--radio--readonly--border-color'
+                    name: '--radio--readonly--border-color',
+                    value: 'var(--radio--readonly--border-top-color) var(--radio--readonly--border-right-color) var(--radio--readonly--border-bottom-color) var(--radio--readonly--border-left-color)'
                 },
                 {
-                    name: '--radio--readonly--border-top'
+                    name: '--radio--readonly--border-top',
+                    value: 'var(--radio--readonly--border-top-width) var(--radio--readonly--border-top-style) var(--radio--readonly--border-top-color)'
                 },
                 {
-                    name: '--radio--readonly--border-right'
+                    name: '--radio--readonly--border-right',
+                    value: 'var(--radio--readonly--border-right-width) var(--radio--readonly--border-right-style) var(--radio--readonly--border-right-color)'
                 },
                 {
-                    name: '--radio--readonly--border-bottom'
+                    name: '--radio--readonly--border-bottom',
+                    value: 'var(--radio--readonly--border-bottom-width) var(--radio--readonly--border-bottom-style) var(--radio--readonly--border-bottom-color)'
                 },
                 {
-                    name: '--radio--readonly--border-left'
+                    name: '--radio--readonly--border-left',
+                    value: 'var(--radio--readonly--border-left-width) var(--radio--readonly--border-left-style) var(--radio--readonly--border-left-color)'
                 },
                 {
-                    name: '--radio--readonly--border'
+                    name: '--radio--readonly--border',
+                    value: 'var(--radio--readonly--border-top-width) var(--radio--readonly--border-top-style) var(--radio--readonly--border-top-color)'
                 },
                 {
-                    name: '--radio--font-size'
+                    name: '--radio--font-size',
+                    value: 'var(--font-size-md)'
                 },
                 {
-                    name: '--radio--margin-top'
+                    name: '--radio--margin-top',
+                    value: '0'
                 },
                 {
-                    name: '--radio--margin-right'
+                    name: '--radio--margin-right',
+                    value: 'calc(var(--spacing-md) * 0.5)'
                 },
                 {
-                    name: '--radio--margin-bottom'
+                    name: '--radio--margin-bottom',
+                    value: 'calc(var(--spacing-md) * 0.5)'
                 },
                 {
-                    name: '--radio--margin-left'
+                    name: '--radio--margin-left',
+                    value: '0'
                 },
                 {
-                    name: '--radio--margin'
+                    name: '--radio--margin',
+                    value: 'var(--radio--margin-top) var(--radio--margin-right) var(--radio--margin-bottom) var(--radio--margin-left)'
                 },
                 {
-                    name: '--radio--width'
+                    name: '--radio--width',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--radio--height'
+                    name: '--radio--height',
+                    value: 'var(--spacing-md)'
                 },
                 {
                     name: '--radio--{color}--border-top-color'
@@ -774,484 +934,644 @@ export const manifest: ComponentManifest[] = [
             namespace: '',
             variables: [
                 {
-                    name: '--radio--border-top-width'
+                    name: '--radio--border-top-width',
+                    value: 'var(--border-top-width)'
                 },
                 {
-                    name: '--radio--border-top-style'
+                    name: '--radio--border-top-style',
+                    value: 'var(--border-top-style)'
                 },
                 {
-                    name: '--radio--border-top-color'
+                    name: '--radio--border-top-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--radio--border-right-width'
+                    name: '--radio--border-right-width',
+                    value: 'var(--border-right-width)'
                 },
                 {
-                    name: '--radio--border-right-style'
+                    name: '--radio--border-right-style',
+                    value: 'var(--border-right-style)'
                 },
                 {
-                    name: '--radio--border-right-color'
+                    name: '--radio--border-right-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--radio--border-bottom-width'
+                    name: '--radio--border-bottom-width',
+                    value: 'var(--border-bottom-width)'
                 },
                 {
-                    name: '--radio--border-bottom-style'
+                    name: '--radio--border-bottom-style',
+                    value: 'var(--border-bottom-style)'
                 },
                 {
-                    name: '--radio--border-bottom-color'
+                    name: '--radio--border-bottom-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--radio--border-left-width'
+                    name: '--radio--border-left-width',
+                    value: 'var(--border-left-width)'
                 },
                 {
-                    name: '--radio--border-left-style'
+                    name: '--radio--border-left-style',
+                    value: 'var(--border-left-style)'
                 },
                 {
-                    name: '--radio--border-left-color'
+                    name: '--radio--border-left-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--radio--border-width'
+                    name: '--radio--border-width',
+                    value: 'var(--radio--border-top-width) var(--radio--border-right-width) var(--radio--border-bottom-width) var(--radio--border-left-width)'
                 },
                 {
-                    name: '--radio--border-style'
+                    name: '--radio--border-style',
+                    value: 'var(--radio--border-top-style) var(--radio--border-right-style) var(--radio--border-bottom-style) var(--radio--border-left-style)'
                 },
                 {
-                    name: '--radio--border-color'
+                    name: '--radio--border-color',
+                    value: 'var(--radio--border-top-color) var(--radio--border-right-color) var(--radio--border-bottom-color) var(--radio--border-left-color)'
                 },
                 {
-                    name: '--radio--border-top'
+                    name: '--radio--border-top',
+                    value: 'var(--radio--border-top-width) var(--radio--border-top-style) var(--radio--border-top-color)'
                 },
                 {
-                    name: '--radio--border-right'
+                    name: '--radio--border-right',
+                    value: 'var(--radio--border-right-width) var(--radio--border-right-style) var(--radio--border-right-color)'
                 },
                 {
-                    name: '--radio--border-bottom'
+                    name: '--radio--border-bottom',
+                    value: 'var(--radio--border-bottom-width) var(--radio--border-bottom-style) var(--radio--border-bottom-color)'
                 },
                 {
-                    name: '--radio--border-left'
+                    name: '--radio--border-left',
+                    value: 'var(--radio--border-left-width) var(--radio--border-left-style) var(--radio--border-left-color)'
                 },
                 {
-                    name: '--radio--border'
+                    name: '--radio--border',
+                    value: 'var(--radio--border-top-width) var(--radio--border-top-style) var(--radio--border-top-color)'
                 },
                 {
-                    name: '--radio--border-top-left-radius'
+                    name: '--radio--border-top-left-radius',
+                    value: '50%'
                 },
                 {
-                    name: '--radio--border-top-right-radius'
+                    name: '--radio--border-top-right-radius',
+                    value: '50%'
                 },
                 {
-                    name: '--radio--border-bottom-right-radius'
+                    name: '--radio--border-bottom-right-radius',
+                    value: '50%'
                 },
                 {
-                    name: '--radio--border-bottom-left-radius'
+                    name: '--radio--border-bottom-left-radius',
+                    value: '50%'
                 },
                 {
-                    name: '--radio--border-radius'
+                    name: '--radio--border-radius',
+                    value: 'var(--radio--border-top-left-radius) var(--radio--border-top-right-radius) var(--radio--border-bottom-right-radius) var(--radio--border-bottom-left-radius)'
                 },
                 {
-                    name: '--radio--box-shadow-offset-x'
+                    name: '--radio--box-shadow-offset-x',
+                    value: 'var(--box-shadow-offset-x)'
                 },
                 {
-                    name: '--radio--box-shadow-offset-y'
+                    name: '--radio--box-shadow-offset-y',
+                    value: 'var(--box-shadow-offset-y)'
                 },
                 {
-                    name: '--radio--box-shadow-blur-radius'
+                    name: '--radio--box-shadow-blur-radius',
+                    value: 'var(--box-shadow-blur-radius)'
                 },
                 {
-                    name: '--radio--box-shadow-spread-radius'
+                    name: '--radio--box-shadow-spread-radius',
+                    value: 'var(--box-shadow-spread-radius)'
                 },
                 {
-                    name: '--radio--box-shadow-color'
+                    name: '--radio--box-shadow-color',
+                    value: 'var(--box-shadow-color)'
                 },
                 {
-                    name: '--radio--box-shadow'
+                    name: '--radio--box-shadow',
+                    value: 'var(--radio--box-shadow-offset-x) var(--radio--box-shadow-offset-y) var(--radio--box-shadow-blur-radius) var(--radio--box-shadow-spread-radius) var(--radio--box-shadow-color)'
                 },
                 {
-                    name: '--radio--transition-property'
+                    name: '--radio--transition-property',
+                    value: 'background-color, color, border-color, transform'
                 },
                 {
-                    name: '--radio--transition-duration'
+                    name: '--radio--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--radio--transition-timing-function'
+                    name: '--radio--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--radio--transition'
+                    name: '--radio--transition',
+                    value: 'var(--radio--transition-property) var(--radio--transition-duration) var(--radio--transition-timing-function)'
                 },
                 {
-                    name: '--radio--circle--color'
+                    name: '--radio--circle--color',
+                    value: 'var(--color-white)'
                 },
                 {
-                    name: '--radio--circle--width'
+                    name: '--radio--circle--width',
+                    value: 'calc(var(--spacing-md) * 0.5)'
                 },
                 {
-                    name: '--radio--circle--height'
+                    name: '--radio--circle--height',
+                    value: 'calc(var(--spacing-md) * 0.5)'
                 },
                 {
-                    name: '--radio--checked--background'
+                    name: '--radio--checked--background',
+                    value: 'var(--color-primary)'
                 },
                 {
-                    name: '--radio--checked--border-top-width'
+                    name: '--radio--checked--border-top-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--border-top-style'
+                    name: '--radio--checked--border-top-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--border-top-color'
+                    name: '--radio--checked--border-top-color',
+                    value: 'var(--color-primary-shade-50)'
                 },
                 {
-                    name: '--radio--checked--border-right-width'
+                    name: '--radio--checked--border-right-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--border-right-style'
+                    name: '--radio--checked--border-right-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--border-right-color'
+                    name: '--radio--checked--border-right-color',
+                    value: 'var(--color-primary-shade-50)'
                 },
                 {
-                    name: '--radio--checked--border-bottom-width'
+                    name: '--radio--checked--border-bottom-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--border-bottom-style'
+                    name: '--radio--checked--border-bottom-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--border-bottom-color'
+                    name: '--radio--checked--border-bottom-color',
+                    value: 'var(--color-primary-shade-50)'
                 },
                 {
-                    name: '--radio--checked--border-left-width'
+                    name: '--radio--checked--border-left-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--border-left-style'
+                    name: '--radio--checked--border-left-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--border-left-color'
+                    name: '--radio--checked--border-left-color',
+                    value: 'var(--color-primary-shade-50)'
                 },
                 {
-                    name: '--radio--checked--border-width'
+                    name: '--radio--checked--border-width',
+                    value: 'var(--radio--checked--border-top-width) var(--radio--checked--border-right-width) var(--radio--checked--border-bottom-width) var(--radio--checked--border-left-width)'
                 },
                 {
-                    name: '--radio--checked--border-style'
+                    name: '--radio--checked--border-style',
+                    value: 'var(--radio--checked--border-top-style) var(--radio--checked--border-right-style) var(--radio--checked--border-bottom-style) var(--radio--checked--border-left-style)'
                 },
                 {
-                    name: '--radio--checked--border-color'
+                    name: '--radio--checked--border-color',
+                    value: 'var(--radio--checked--border-top-color) var(--radio--checked--border-right-color) var(--radio--checked--border-bottom-color) var(--radio--checked--border-left-color)'
                 },
                 {
-                    name: '--radio--checked--border-top'
+                    name: '--radio--checked--border-top',
+                    value: 'var(--radio--checked--border-top-width) var(--radio--checked--border-top-style) var(--radio--checked--border-top-color)'
                 },
                 {
-                    name: '--radio--checked--border-right'
+                    name: '--radio--checked--border-right',
+                    value: 'var(--radio--checked--border-right-width) var(--radio--checked--border-right-style) var(--radio--checked--border-right-color)'
                 },
                 {
-                    name: '--radio--checked--border-bottom'
+                    name: '--radio--checked--border-bottom',
+                    value: 'var(--radio--checked--border-bottom-width) var(--radio--checked--border-bottom-style) var(--radio--checked--border-bottom-color)'
                 },
                 {
-                    name: '--radio--checked--border-left'
+                    name: '--radio--checked--border-left',
+                    value: 'var(--radio--checked--border-left-width) var(--radio--checked--border-left-style) var(--radio--checked--border-left-color)'
                 },
                 {
-                    name: '--radio--checked--border'
+                    name: '--radio--checked--border',
+                    value: 'var(--radio--checked--border-top-width) var(--radio--checked--border-top-style) var(--radio--checked--border-top-color)'
                 },
                 {
-                    name: '--radio--checked--disabled--background'
+                    name: '--radio--checked--disabled--background',
+                    value: 'var(--color-primary-300)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-top-width'
+                    name: '--radio--checked--disabled--border-top-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--disabled--border-top-style'
+                    name: '--radio--checked--disabled--border-top-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--disabled--border-top-color'
+                    name: '--radio--checked--disabled--border-top-color',
+                    value: 'var(--color-primary-400)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-right-width'
+                    name: '--radio--checked--disabled--border-right-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--disabled--border-right-style'
+                    name: '--radio--checked--disabled--border-right-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--disabled--border-right-color'
+                    name: '--radio--checked--disabled--border-right-color',
+                    value: 'var(--color-primary-400)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-bottom-width'
+                    name: '--radio--checked--disabled--border-bottom-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--disabled--border-bottom-style'
+                    name: '--radio--checked--disabled--border-bottom-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--disabled--border-bottom-color'
+                    name: '--radio--checked--disabled--border-bottom-color',
+                    value: 'var(--color-primary-400)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-left-width'
+                    name: '--radio--checked--disabled--border-left-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--disabled--border-left-style'
+                    name: '--radio--checked--disabled--border-left-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--disabled--border-left-color'
+                    name: '--radio--checked--disabled--border-left-color',
+                    value: 'var(--color-primary-400)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-width'
+                    name: '--radio--checked--disabled--border-width',
+                    value: 'var(--radio--checked--disabled--border-top-width) var(--radio--checked--disabled--border-right-width) var(--radio--checked--disabled--border-bottom-width) var(--radio--checked--disabled--border-left-width)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-style'
+                    name: '--radio--checked--disabled--border-style',
+                    value: 'var(--radio--checked--disabled--border-top-style) var(--radio--checked--disabled--border-right-style) var(--radio--checked--disabled--border-bottom-style) var(--radio--checked--disabled--border-left-style)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-color'
+                    name: '--radio--checked--disabled--border-color',
+                    value: 'var(--radio--checked--disabled--border-top-color) var(--radio--checked--disabled--border-right-color) var(--radio--checked--disabled--border-bottom-color) var(--radio--checked--disabled--border-left-color)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-top'
+                    name: '--radio--checked--disabled--border-top',
+                    value: 'var(--radio--checked--disabled--border-top-width) var(--radio--checked--disabled--border-top-style) var(--radio--checked--disabled--border-top-color)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-right'
+                    name: '--radio--checked--disabled--border-right',
+                    value: 'var(--radio--checked--disabled--border-right-width) var(--radio--checked--disabled--border-right-style) var(--radio--checked--disabled--border-right-color)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-bottom'
+                    name: '--radio--checked--disabled--border-bottom',
+                    value: 'var(--radio--checked--disabled--border-bottom-width) var(--radio--checked--disabled--border-bottom-style) var(--radio--checked--disabled--border-bottom-color)'
                 },
                 {
-                    name: '--radio--checked--disabled--border-left'
+                    name: '--radio--checked--disabled--border-left',
+                    value: 'var(--radio--checked--disabled--border-left-width) var(--radio--checked--disabled--border-left-style) var(--radio--checked--disabled--border-left-color)'
                 },
                 {
-                    name: '--radio--checked--disabled--border'
+                    name: '--radio--checked--disabled--border',
+                    value: 'var(--radio--checked--disabled--border-top-width) var(--radio--checked--disabled--border-top-style) var(--radio--checked--disabled--border-top-color)'
                 },
                 {
-                    name: '--radio--checked--readonly--background'
+                    name: '--radio--checked--readonly--background',
+                    value: 'var(--color-primary-400)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-top-width'
+                    name: '--radio--checked--readonly--border-top-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--readonly--border-top-style'
+                    name: '--radio--checked--readonly--border-top-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--readonly--border-top-color'
+                    name: '--radio--checked--readonly--border-top-color',
+                    value: 'var(--color-primary-500)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-right-width'
+                    name: '--radio--checked--readonly--border-right-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--readonly--border-right-style'
+                    name: '--radio--checked--readonly--border-right-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--readonly--border-right-color'
+                    name: '--radio--checked--readonly--border-right-color',
+                    value: 'var(--color-primary-500)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-bottom-width'
+                    name: '--radio--checked--readonly--border-bottom-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--readonly--border-bottom-style'
+                    name: '--radio--checked--readonly--border-bottom-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--readonly--border-bottom-color'
+                    name: '--radio--checked--readonly--border-bottom-color',
+                    value: 'var(--color-primary-500)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-left-width'
+                    name: '--radio--checked--readonly--border-left-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--checked--readonly--border-left-style'
+                    name: '--radio--checked--readonly--border-left-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--checked--readonly--border-left-color'
+                    name: '--radio--checked--readonly--border-left-color',
+                    value: 'var(--color-primary-500)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-width'
+                    name: '--radio--checked--readonly--border-width',
+                    value: 'var(--radio--checked--readonly--border-top-width) var(--radio--checked--readonly--border-right-width) var(--radio--checked--readonly--border-bottom-width) var(--radio--checked--readonly--border-left-width)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-style'
+                    name: '--radio--checked--readonly--border-style',
+                    value: 'var(--radio--checked--readonly--border-top-style) var(--radio--checked--readonly--border-right-style) var(--radio--checked--readonly--border-bottom-style) var(--radio--checked--readonly--border-left-style)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-color'
+                    name: '--radio--checked--readonly--border-color',
+                    value: 'var(--radio--checked--readonly--border-top-color) var(--radio--checked--readonly--border-right-color) var(--radio--checked--readonly--border-bottom-color) var(--radio--checked--readonly--border-left-color)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-top'
+                    name: '--radio--checked--readonly--border-top',
+                    value: 'var(--radio--checked--readonly--border-top-width) var(--radio--checked--readonly--border-top-style) var(--radio--checked--readonly--border-top-color)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-right'
+                    name: '--radio--checked--readonly--border-right',
+                    value: 'var(--radio--checked--readonly--border-right-width) var(--radio--checked--readonly--border-right-style) var(--radio--checked--readonly--border-right-color)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-bottom'
+                    name: '--radio--checked--readonly--border-bottom',
+                    value: 'var(--radio--checked--readonly--border-bottom-width) var(--radio--checked--readonly--border-bottom-style) var(--radio--checked--readonly--border-bottom-color)'
                 },
                 {
-                    name: '--radio--checked--readonly--border-left'
+                    name: '--radio--checked--readonly--border-left',
+                    value: 'var(--radio--checked--readonly--border-left-width) var(--radio--checked--readonly--border-left-style) var(--radio--checked--readonly--border-left-color)'
                 },
                 {
-                    name: '--radio--checked--readonly--border'
+                    name: '--radio--checked--readonly--border',
+                    value: 'var(--radio--checked--readonly--border-top-width) var(--radio--checked--readonly--border-top-style) var(--radio--checked--readonly--border-top-color)'
                 },
                 {
-                    name: '--radio--disabled--color'
+                    name: '--radio--disabled--color',
+                    value: 'var(--text-color-weak)'
                 },
                 {
-                    name: '--radio--disabled--background'
+                    name: '--radio--disabled--background',
+                    value: 'var(--color-gray-100)'
                 },
                 {
-                    name: '--radio--disabled--border-top-width'
+                    name: '--radio--disabled--border-top-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--disabled--border-top-style'
+                    name: '--radio--disabled--border-top-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--disabled--border-top-color'
+                    name: '--radio--disabled--border-top-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--disabled--border-right-width'
+                    name: '--radio--disabled--border-right-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--disabled--border-right-style'
+                    name: '--radio--disabled--border-right-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--disabled--border-right-color'
+                    name: '--radio--disabled--border-right-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--disabled--border-bottom-width'
+                    name: '--radio--disabled--border-bottom-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--disabled--border-bottom-style'
+                    name: '--radio--disabled--border-bottom-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--disabled--border-bottom-color'
+                    name: '--radio--disabled--border-bottom-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--disabled--border-left-width'
+                    name: '--radio--disabled--border-left-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--disabled--border-left-style'
+                    name: '--radio--disabled--border-left-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--disabled--border-left-color'
+                    name: '--radio--disabled--border-left-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--disabled--border-width'
+                    name: '--radio--disabled--border-width',
+                    value: 'var(--radio--disabled--border-top-width) var(--radio--disabled--border-right-width) var(--radio--disabled--border-bottom-width) var(--radio--disabled--border-left-width)'
                 },
                 {
-                    name: '--radio--disabled--border-style'
+                    name: '--radio--disabled--border-style',
+                    value: 'var(--radio--disabled--border-top-style) var(--radio--disabled--border-right-style) var(--radio--disabled--border-bottom-style) var(--radio--disabled--border-left-style)'
                 },
                 {
-                    name: '--radio--disabled--border-color'
+                    name: '--radio--disabled--border-color',
+                    value: 'var(--radio--disabled--border-top-color) var(--radio--disabled--border-right-color) var(--radio--disabled--border-bottom-color) var(--radio--disabled--border-left-color)'
                 },
                 {
-                    name: '--radio--disabled--border-top'
+                    name: '--radio--disabled--border-top',
+                    value: 'var(--radio--disabled--border-top-width) var(--radio--disabled--border-top-style) var(--radio--disabled--border-top-color)'
                 },
                 {
-                    name: '--radio--disabled--border-right'
+                    name: '--radio--disabled--border-right',
+                    value: 'var(--radio--disabled--border-right-width) var(--radio--disabled--border-right-style) var(--radio--disabled--border-right-color)'
                 },
                 {
-                    name: '--radio--disabled--border-bottom'
+                    name: '--radio--disabled--border-bottom',
+                    value: 'var(--radio--disabled--border-bottom-width) var(--radio--disabled--border-bottom-style) var(--radio--disabled--border-bottom-color)'
                 },
                 {
-                    name: '--radio--disabled--border-left'
+                    name: '--radio--disabled--border-left',
+                    value: 'var(--radio--disabled--border-left-width) var(--radio--disabled--border-left-style) var(--radio--disabled--border-left-color)'
                 },
                 {
-                    name: '--radio--disabled--border'
+                    name: '--radio--disabled--border',
+                    value: 'var(--radio--disabled--border-top-width) var(--radio--disabled--border-top-style) var(--radio--disabled--border-top-color)'
                 },
                 {
-                    name: '--radio--focus--box-shadow-offset-x'
+                    name: '--radio--focus--box-shadow-offset-x',
+                    value: '0'
                 },
                 {
-                    name: '--radio--focus--box-shadow-offset-y'
+                    name: '--radio--focus--box-shadow-offset-y',
+                    value: '0'
                 },
                 {
-                    name: '--radio--focus--box-shadow-blur-radius'
+                    name: '--radio--focus--box-shadow-blur-radius',
+                    value: '0'
                 },
                 {
-                    name: '--radio--focus--box-shadow-spread-radius'
+                    name: '--radio--focus--box-shadow-spread-radius',
+                    value: '3px'
                 },
                 {
-                    name: '--radio--focus--box-shadow-color'
+                    name: '--radio--focus--box-shadow-color',
+                    value: 'hsla(from var(--color-primary) h s l / 0.25)'
                 },
                 {
-                    name: '--radio--focus--box-shadow'
+                    name: '--radio--focus--box-shadow',
+                    value: 'var(--radio--focus--box-shadow-offset-x) var(--radio--focus--box-shadow-offset-y) var(--radio--focus--box-shadow-blur-radius) var(--radio--focus--box-shadow-spread-radius) var(--radio--focus--box-shadow-color)'
                 },
                 {
-                    name: '--radio--background'
+                    name: '--radio--background',
+                    value: 'var(--color-white)'
                 },
                 {
-                    name: '--radio--color'
+                    name: '--radio--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--radio--readonly--background'
+                    name: '--radio--readonly--background',
+                    value: 'var(--color-gray-100)'
                 },
                 {
-                    name: '--radio--readonly--border-top-width'
+                    name: '--radio--readonly--border-top-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--readonly--border-top-style'
+                    name: '--radio--readonly--border-top-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--readonly--border-top-color'
+                    name: '--radio--readonly--border-top-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--readonly--border-right-width'
+                    name: '--radio--readonly--border-right-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--readonly--border-right-style'
+                    name: '--radio--readonly--border-right-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--readonly--border-right-color'
+                    name: '--radio--readonly--border-right-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--readonly--border-bottom-width'
+                    name: '--radio--readonly--border-bottom-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--readonly--border-bottom-style'
+                    name: '--radio--readonly--border-bottom-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--readonly--border-bottom-color'
+                    name: '--radio--readonly--border-bottom-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--readonly--border-left-width'
+                    name: '--radio--readonly--border-left-width',
+                    value: '0'
                 },
                 {
-                    name: '--radio--readonly--border-left-style'
+                    name: '--radio--readonly--border-left-style',
+                    value: 'none'
                 },
                 {
-                    name: '--radio--readonly--border-left-color'
+                    name: '--radio--readonly--border-left-color',
+                    value: 'var(--color-gray-200)'
                 },
                 {
-                    name: '--radio--readonly--border-width'
+                    name: '--radio--readonly--border-width',
+                    value: 'var(--radio--readonly--border-top-width) var(--radio--readonly--border-right-width) var(--radio--readonly--border-bottom-width) var(--radio--readonly--border-left-width)'
                 },
                 {
-                    name: '--radio--readonly--border-style'
+                    name: '--radio--readonly--border-style',
+                    value: 'var(--radio--readonly--border-top-style) var(--radio--readonly--border-right-style) var(--radio--readonly--border-bottom-style) var(--radio--readonly--border-left-style)'
                 },
                 {
-                    name: '--radio--readonly--border-color'
+                    name: '--radio--readonly--border-color',
+                    value: 'var(--radio--readonly--border-top-color) var(--radio--readonly--border-right-color) var(--radio--readonly--border-bottom-color) var(--radio--readonly--border-left-color)'
                 },
                 {
-                    name: '--radio--readonly--border-top'
+                    name: '--radio--readonly--border-top',
+                    value: 'var(--radio--readonly--border-top-width) var(--radio--readonly--border-top-style) var(--radio--readonly--border-top-color)'
                 },
                 {
-                    name: '--radio--readonly--border-right'
+                    name: '--radio--readonly--border-right',
+                    value: 'var(--radio--readonly--border-right-width) var(--radio--readonly--border-right-style) var(--radio--readonly--border-right-color)'
                 },
                 {
-                    name: '--radio--readonly--border-bottom'
+                    name: '--radio--readonly--border-bottom',
+                    value: 'var(--radio--readonly--border-bottom-width) var(--radio--readonly--border-bottom-style) var(--radio--readonly--border-bottom-color)'
                 },
                 {
-                    name: '--radio--readonly--border-left'
+                    name: '--radio--readonly--border-left',
+                    value: 'var(--radio--readonly--border-left-width) var(--radio--readonly--border-left-style) var(--radio--readonly--border-left-color)'
                 },
                 {
-                    name: '--radio--readonly--border'
+                    name: '--radio--readonly--border',
+                    value: 'var(--radio--readonly--border-top-width) var(--radio--readonly--border-top-style) var(--radio--readonly--border-top-color)'
                 },
                 {
-                    name: '--radio--font-size'
+                    name: '--radio--font-size',
+                    value: 'var(--font-size-md)'
                 },
                 {
-                    name: '--radio--margin-top'
+                    name: '--radio--margin-top',
+                    value: '0'
                 },
                 {
-                    name: '--radio--margin-right'
+                    name: '--radio--margin-right',
+                    value: 'calc(var(--spacing-md) * 0.5)'
                 },
                 {
-                    name: '--radio--margin-bottom'
+                    name: '--radio--margin-bottom',
+                    value: 'calc(var(--spacing-md) * 0.5)'
                 },
                 {
-                    name: '--radio--margin-left'
+                    name: '--radio--margin-left',
+                    value: '0'
                 },
                 {
-                    name: '--radio--margin'
+                    name: '--radio--margin',
+                    value: 'var(--radio--margin-top) var(--radio--margin-right) var(--radio--margin-bottom) var(--radio--margin-left)'
                 },
                 {
-                    name: '--radio--width'
+                    name: '--radio--width',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--radio--height'
+                    name: '--radio--height',
+                    value: 'var(--spacing-md)'
                 }
             ]
         }

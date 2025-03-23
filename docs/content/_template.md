@@ -259,20 +259,29 @@ Other Example Description
 
 ## Props
 
+::DocsCard{ title="{{ComponentName}} Props" }
 Below is an outline of available props for the `{{ComponentName}}` component.
 
 ::DocsComponentProps{ package="{{component-package}}" component="{{ComponentName}}" }
 ::
+::
 
 ## Events
 
+::DocsCard{ title="{{ComponentName}} Events" }
 The `{{ComponentName}}` component does not emit any custom events. However, you can bind native events like `@click` to make the `{{ComponentName}}` interactive.
+
+::DocsComponentEvents{ package="{{component-package}}" component="{{ComponentName}}" }
+::
+::
 
 ## Slots
 
+::DocsCard{ title="{{ComponentName}} Slots" }
 Below is an outline of available slots for the `{{ComponentName}}` component.
 
 ::DocsComponentSlots{ package="{{component-package}}" component="{{ComponentName}}" }
+::
 ::
 
 ## Accessibility

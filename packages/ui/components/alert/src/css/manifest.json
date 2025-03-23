@@ -6973,6 +6973,7 @@
                 "__type": "selector",
                 "__name": ".alert",
                 "__value": {
+                    "flex": 1,
                     "display": "flex",
                     "flexDirection": "row",
                     "alignItems": "center"

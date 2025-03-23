@@ -38,103 +38,136 @@ export const manifest: ComponentManifest[] = [
             namespace: 'blockquote',
             variables: [
                 {
-                    name: '--blockquote--font-size'
+                    name: '--blockquote--font-size',
+                    value: 'var(--font-size)'
                 },
                 {
-                    name: '--blockquote--margin-top'
+                    name: '--blockquote--margin-top',
+                    value: '0'
                 },
                 {
-                    name: '--blockquote--margin-right'
+                    name: '--blockquote--margin-right',
+                    value: '0'
                 },
                 {
-                    name: '--blockquote--margin-bottom'
+                    name: '--blockquote--margin-bottom',
+                    value: '0'
                 },
                 {
-                    name: '--blockquote--margin-left'
+                    name: '--blockquote--margin-left',
+                    value: '0'
                 },
                 {
-                    name: '--blockquote--margin'
+                    name: '--blockquote--margin',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--blockquote--padding-top'
+                    name: '--blockquote--padding-top',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--blockquote--padding-right'
+                    name: '--blockquote--padding-right',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--blockquote--padding-bottom'
+                    name: '--blockquote--padding-bottom',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--blockquote--padding-left'
+                    name: '--blockquote--padding-left',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--blockquote--padding'
+                    name: '--blockquote--padding',
+                    value: 'var(--blockquote--padding-top) var(--blockquote--padding-right) var(--blockquote--padding-bottom) var(--blockquote--padding-left)'
                 },
                 {
-                    name: '--blockquote--border-top-width'
+                    name: '--blockquote--border-top-width',
+                    value: '0'
                 },
                 {
-                    name: '--blockquote--border-top-style'
+                    name: '--blockquote--border-top-style',
+                    value: 'none'
                 },
                 {
-                    name: '--blockquote--border-top-color'
+                    name: '--blockquote--border-top-color',
+                    value: 'currentColor'
                 },
                 {
-                    name: '--blockquote--border-right-width'
+                    name: '--blockquote--border-right-width',
+                    value: '4px'
                 },
                 {
-                    name: '--blockquote--border-right-style'
+                    name: '--blockquote--border-right-style',
+                    value: 'var(--border-left-style)'
                 },
                 {
-                    name: '--blockquote--border-right-color'
+                    name: '--blockquote--border-right-color',
+                    value: 'var(--border-left-color)'
                 },
                 {
-                    name: '--blockquote--border-bottom-width'
+                    name: '--blockquote--border-bottom-width',
+                    value: '0'
                 },
                 {
-                    name: '--blockquote--border-bottom-style'
+                    name: '--blockquote--border-bottom-style',
+                    value: 'none'
                 },
                 {
-                    name: '--blockquote--border-bottom-color'
+                    name: '--blockquote--border-bottom-color',
+                    value: 'currentColor'
                 },
                 {
-                    name: '--blockquote--border-left-width'
+                    name: '--blockquote--border-left-width',
+                    value: '4px'
                 },
                 {
-                    name: '--blockquote--border-left-style'
+                    name: '--blockquote--border-left-style',
+                    value: 'var(--border-left-style)'
                 },
                 {
-                    name: '--blockquote--border-left-color'
+                    name: '--blockquote--border-left-color',
+                    value: 'var(--border-left-color)'
                 },
                 {
-                    name: '--blockquote--border-width'
+                    name: '--blockquote--border-width',
+                    value: 'var(--blockquote--border-top-width) var(--blockquote--border-right-width) var(--blockquote--border-bottom-width) var(--blockquote--border-left-width)'
                 },
                 {
-                    name: '--blockquote--border-style'
+                    name: '--blockquote--border-style',
+                    value: 'var(--blockquote--border-top-style) var(--blockquote--border-right-style) var(--blockquote--border-bottom-style) var(--blockquote--border-left-style)'
                 },
                 {
-                    name: '--blockquote--border-color'
+                    name: '--blockquote--border-color',
+                    value: 'var(--blockquote--border-top-color) var(--blockquote--border-right-color) var(--blockquote--border-bottom-color) var(--blockquote--border-left-color)'
                 },
                 {
-                    name: '--blockquote--border-top'
+                    name: '--blockquote--border-top',
+                    value: 'var(--blockquote--border-top-width) var(--blockquote--border-top-style) var(--blockquote--border-top-color)'
                 },
                 {
-                    name: '--blockquote--border-right'
+                    name: '--blockquote--border-right',
+                    value: 'var(--blockquote--border-right-width) var(--blockquote--border-right-style) var(--blockquote--border-right-color)'
                 },
                 {
-                    name: '--blockquote--border-bottom'
+                    name: '--blockquote--border-bottom',
+                    value: 'var(--blockquote--border-bottom-width) var(--blockquote--border-bottom-style) var(--blockquote--border-bottom-color)'
                 },
                 {
-                    name: '--blockquote--border-left'
+                    name: '--blockquote--border-left',
+                    value: 'var(--blockquote--border-left-width) var(--blockquote--border-left-style) var(--blockquote--border-left-color)'
                 },
                 {
-                    name: '--blockquote--border'
+                    name: '--blockquote--border',
+                    value: 'var(--blockquote--border-top-width) var(--blockquote--border-top-style) var(--blockquote--border-top-color)'
                 },
                 {
-                    name: '--blockquote--cite--color'
+                    name: '--blockquote--cite--color',
+                    value: 'var(--text-color-weak)'
                 },
                 {
-                    name: '--blockquote--cite--font-size'
+                    name: '--blockquote--cite--font-size',
+                    value: '80%'
                 }
             ]
         }
@@ -245,16 +278,20 @@ export const manifest: ComponentManifest[] = [
             namespace: 'typography',
             variables: [
                 {
-                    name: '--typography--lead--font-size'
+                    name: '--typography--lead--font-size',
+                    value: 'var(--font-size-lg)'
                 },
                 {
-                    name: '--typography--lead--font-weight'
+                    name: '--typography--lead--font-weight',
+                    value: 'var(--font-weight-light)'
                 },
                 {
-                    name: '--typography--initialism--font-size'
+                    name: '--typography--initialism--font-size',
+                    value: '90%'
                 },
                 {
-                    name: '--typography--initialism--text-transform'
+                    name: '--typography--initialism--text-transform',
+                    value: 'uppercase'
                 }
             ]
         }
@@ -264,115 +301,152 @@ export const manifest: ComponentManifest[] = [
             namespace: '',
             variables: [
                 {
-                    name: '--blockquote--font-size'
+                    name: '--blockquote--font-size',
+                    value: 'var(--font-size)'
                 },
                 {
-                    name: '--blockquote--margin-top'
+                    name: '--blockquote--margin-top',
+                    value: '0'
                 },
                 {
-                    name: '--blockquote--margin-right'
+                    name: '--blockquote--margin-right',
+                    value: '0'
                 },
                 {
-                    name: '--blockquote--margin-bottom'
+                    name: '--blockquote--margin-bottom',
+                    value: '0'
                 },
                 {
-                    name: '--blockquote--margin-left'
+                    name: '--blockquote--margin-left',
+                    value: '0'
                 },
                 {
-                    name: '--blockquote--margin'
+                    name: '--blockquote--margin',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--blockquote--padding-top'
+                    name: '--blockquote--padding-top',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--blockquote--padding-right'
+                    name: '--blockquote--padding-right',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--blockquote--padding-bottom'
+                    name: '--blockquote--padding-bottom',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--blockquote--padding-left'
+                    name: '--blockquote--padding-left',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--blockquote--padding'
+                    name: '--blockquote--padding',
+                    value: 'var(--blockquote--padding-top) var(--blockquote--padding-right) var(--blockquote--padding-bottom) var(--blockquote--padding-left)'
                 },
                 {
-                    name: '--blockquote--border-top-width'
+                    name: '--blockquote--border-top-width',
+                    value: '0'
                 },
                 {
-                    name: '--blockquote--border-top-style'
+                    name: '--blockquote--border-top-style',
+                    value: 'none'
                 },
                 {
-                    name: '--blockquote--border-top-color'
+                    name: '--blockquote--border-top-color',
+                    value: 'currentColor'
                 },
                 {
-                    name: '--blockquote--border-right-width'
+                    name: '--blockquote--border-right-width',
+                    value: '4px'
                 },
                 {
-                    name: '--blockquote--border-right-style'
+                    name: '--blockquote--border-right-style',
+                    value: 'var(--border-left-style)'
                 },
                 {
-                    name: '--blockquote--border-right-color'
+                    name: '--blockquote--border-right-color',
+                    value: 'var(--border-left-color)'
                 },
                 {
-                    name: '--blockquote--border-bottom-width'
+                    name: '--blockquote--border-bottom-width',
+                    value: '0'
                 },
                 {
-                    name: '--blockquote--border-bottom-style'
+                    name: '--blockquote--border-bottom-style',
+                    value: 'none'
                 },
                 {
-                    name: '--blockquote--border-bottom-color'
+                    name: '--blockquote--border-bottom-color',
+                    value: 'currentColor'
                 },
                 {
-                    name: '--blockquote--border-left-width'
+                    name: '--blockquote--border-left-width',
+                    value: '4px'
                 },
                 {
-                    name: '--blockquote--border-left-style'
+                    name: '--blockquote--border-left-style',
+                    value: 'var(--border-left-style)'
                 },
                 {
-                    name: '--blockquote--border-left-color'
+                    name: '--blockquote--border-left-color',
+                    value: 'var(--border-left-color)'
                 },
                 {
-                    name: '--blockquote--border-width'
+                    name: '--blockquote--border-width',
+                    value: 'var(--blockquote--border-top-width) var(--blockquote--border-right-width) var(--blockquote--border-bottom-width) var(--blockquote--border-left-width)'
                 },
                 {
-                    name: '--blockquote--border-style'
+                    name: '--blockquote--border-style',
+                    value: 'var(--blockquote--border-top-style) var(--blockquote--border-right-style) var(--blockquote--border-bottom-style) var(--blockquote--border-left-style)'
                 },
                 {
-                    name: '--blockquote--border-color'
+                    name: '--blockquote--border-color',
+                    value: 'var(--blockquote--border-top-color) var(--blockquote--border-right-color) var(--blockquote--border-bottom-color) var(--blockquote--border-left-color)'
                 },
                 {
-                    name: '--blockquote--border-top'
+                    name: '--blockquote--border-top',
+                    value: 'var(--blockquote--border-top-width) var(--blockquote--border-top-style) var(--blockquote--border-top-color)'
                 },
                 {
-                    name: '--blockquote--border-right'
+                    name: '--blockquote--border-right',
+                    value: 'var(--blockquote--border-right-width) var(--blockquote--border-right-style) var(--blockquote--border-right-color)'
                 },
                 {
-                    name: '--blockquote--border-bottom'
+                    name: '--blockquote--border-bottom',
+                    value: 'var(--blockquote--border-bottom-width) var(--blockquote--border-bottom-style) var(--blockquote--border-bottom-color)'
                 },
                 {
-                    name: '--blockquote--border-left'
+                    name: '--blockquote--border-left',
+                    value: 'var(--blockquote--border-left-width) var(--blockquote--border-left-style) var(--blockquote--border-left-color)'
                 },
                 {
-                    name: '--blockquote--border'
+                    name: '--blockquote--border',
+                    value: 'var(--blockquote--border-top-width) var(--blockquote--border-top-style) var(--blockquote--border-top-color)'
                 },
                 {
-                    name: '--blockquote--cite--color'
+                    name: '--blockquote--cite--color',
+                    value: 'var(--text-color-weak)'
                 },
                 {
-                    name: '--blockquote--cite--font-size'
+                    name: '--blockquote--cite--font-size',
+                    value: '80%'
                 },
                 {
-                    name: '--typography--lead--font-size'
+                    name: '--typography--lead--font-size',
+                    value: 'var(--font-size-lg)'
                 },
                 {
-                    name: '--typography--lead--font-weight'
+                    name: '--typography--lead--font-weight',
+                    value: 'var(--font-weight-light)'
                 },
                 {
-                    name: '--typography--initialism--font-size'
+                    name: '--typography--initialism--font-size',
+                    value: '90%'
                 },
                 {
-                    name: '--typography--initialism--text-transform'
+                    name: '--typography--initialism--text-transform',
+                    value: 'uppercase'
                 }
             ]
         }

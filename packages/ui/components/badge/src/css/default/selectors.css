@@ -8,10 +8,6 @@ a:hover .badge, a:focus .badge {
     text-decoration: none;
 }
 
-h1 .badge, h2 .badge, h3 .badge, h4 .badge, h5 .badge, h6 .badge, p .badge {
-    font-size: inherit;
-}
-
 .badge {
     border-style: var(--badge--border-style, var(--badge--border-top-style) var(--badge--border-right-style) var(--badge--border-bottom-style) var(--badge--border-left-style));
     border-top-color: var(--badge--border-top-color);

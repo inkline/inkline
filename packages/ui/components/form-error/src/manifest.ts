@@ -24,25 +24,32 @@ export const manifest: ComponentManifest[] = [
             namespace: 'form-error',
             variables: [
                 {
-                    name: '--form-error--color'
+                    name: '--form-error--color',
+                    value: 'var(--color-danger)'
                 },
                 {
-                    name: '--form-error--font-size'
+                    name: '--form-error--font-size',
+                    value: 'var(--font-size-sm)'
                 },
                 {
-                    name: '--form-error--margin-top'
+                    name: '--form-error--margin-top',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--form-error--margin-right'
+                    name: '--form-error--margin-right',
+                    value: '0'
                 },
                 {
-                    name: '--form-error--margin-bottom'
+                    name: '--form-error--margin-bottom',
+                    value: '0'
                 },
                 {
-                    name: '--form-error--margin-left'
+                    name: '--form-error--margin-left',
+                    value: '0'
                 },
                 {
-                    name: '--form-error--margin'
+                    name: '--form-error--margin',
+                    value: 'var(--form-error--margin-top) var(--form-error--margin-right) var(--form-error--margin-bottom) var(--form-error--margin-left)'
                 }
             ]
         }

@@ -77,20 +77,36 @@ The `CardHeader` and `CardFooter` components are currently a work in progress. C
 
 ## Props
 
+::DocsCard{ title="Card Props" }
 Below is an outline of available props for the `Card` component.
 
 ::DocsComponentProps{ package="card" component="Card" }
 ::
+::
 
 ## Events
 
+::DocsCard{ title="Card Events" }
 The `Card` component does not emit any custom events. However, you can bind native events like `@click` to make the `Card` interactive.
+::
 
 ## Slots
 
+::DocsCard{ title="Card Slots" }
 Below is an outline of available slots for the `Card` component.
 
 ::DocsComponentSlots{ package="card" component="Card" }
+::
+::
+
+
+## Design Tokens
+
+::DocsCard{ title="Card Design Tokens" }
+Below is an outline of available design tokens for the `Card` component.
+
+::DocsComponentDesignTokens{ package="card" component="Card" }
+::
 ::
 
 ## Accessibility

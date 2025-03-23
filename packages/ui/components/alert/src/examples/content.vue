@@ -1,7 +1,7 @@
 <template>
     <Alert>
         <template #icon>
-            <Icon name="ink:info" size="lg" />
+            <Icon name="ink:info" size="24" />
         </template>
         <strong>Alert Title</strong>
         <p>
@@ -10,4 +10,3 @@
         </p>
     </Alert>
 </template>
-<script setup lang="ts"></script>

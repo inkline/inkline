@@ -117,145 +117,192 @@ export const manifest: ComponentManifest[] = [
             namespace: 'popover',
             variables: [
                 {
-                    name: '--popover--border-top-width'
+                    name: '--popover--border-top-width',
+                    value: 'var(--border-top-width)'
                 },
                 {
-                    name: '--popover--border-top-style'
+                    name: '--popover--border-top-style',
+                    value: 'var(--border-top-style)'
                 },
                 {
-                    name: '--popover--border-top-color'
+                    name: '--popover--border-top-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--popover--border-right-width'
+                    name: '--popover--border-right-width',
+                    value: 'var(--border-right-width)'
                 },
                 {
-                    name: '--popover--border-right-style'
+                    name: '--popover--border-right-style',
+                    value: 'var(--border-right-style)'
                 },
                 {
-                    name: '--popover--border-right-color'
+                    name: '--popover--border-right-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--popover--border-bottom-width'
+                    name: '--popover--border-bottom-width',
+                    value: 'var(--border-bottom-width)'
                 },
                 {
-                    name: '--popover--border-bottom-style'
+                    name: '--popover--border-bottom-style',
+                    value: 'var(--border-bottom-style)'
                 },
                 {
-                    name: '--popover--border-bottom-color'
+                    name: '--popover--border-bottom-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--popover--border-left-width'
+                    name: '--popover--border-left-width',
+                    value: 'var(--border-left-width)'
                 },
                 {
-                    name: '--popover--border-left-style'
+                    name: '--popover--border-left-style',
+                    value: 'var(--border-left-style)'
                 },
                 {
-                    name: '--popover--border-left-color'
+                    name: '--popover--border-left-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--popover--border-width'
+                    name: '--popover--border-width',
+                    value: 'var(--popover--border-top-width) var(--popover--border-right-width) var(--popover--border-bottom-width) var(--popover--border-left-width)'
                 },
                 {
-                    name: '--popover--border-style'
+                    name: '--popover--border-style',
+                    value: 'var(--popover--border-top-style) var(--popover--border-right-style) var(--popover--border-bottom-style) var(--popover--border-left-style)'
                 },
                 {
-                    name: '--popover--border-color'
+                    name: '--popover--border-color',
+                    value: 'var(--popover--border-top-color) var(--popover--border-right-color) var(--popover--border-bottom-color) var(--popover--border-left-color)'
                 },
                 {
-                    name: '--popover--border-top'
+                    name: '--popover--border-top',
+                    value: 'var(--popover--border-top-width) var(--popover--border-top-style) var(--popover--border-top-color)'
                 },
                 {
-                    name: '--popover--border-right'
+                    name: '--popover--border-right',
+                    value: 'var(--popover--border-right-width) var(--popover--border-right-style) var(--popover--border-right-color)'
                 },
                 {
-                    name: '--popover--border-bottom'
+                    name: '--popover--border-bottom',
+                    value: 'var(--popover--border-bottom-width) var(--popover--border-bottom-style) var(--popover--border-bottom-color)'
                 },
                 {
-                    name: '--popover--border-left'
+                    name: '--popover--border-left',
+                    value: 'var(--popover--border-left-width) var(--popover--border-left-style) var(--popover--border-left-color)'
                 },
                 {
-                    name: '--popover--border'
+                    name: '--popover--border',
+                    value: 'var(--popover--border-top-width) var(--popover--border-top-style) var(--popover--border-top-color)'
                 },
                 {
-                    name: '--popover--box-shadow-offset-x'
+                    name: '--popover--box-shadow-offset-x',
+                    value: 'var(--box-shadow-offset-x)'
                 },
                 {
-                    name: '--popover--box-shadow-offset-y'
+                    name: '--popover--box-shadow-offset-y',
+                    value: 'var(--box-shadow-offset-y)'
                 },
                 {
-                    name: '--popover--box-shadow-blur-radius'
+                    name: '--popover--box-shadow-blur-radius',
+                    value: 'var(--box-shadow-blur-radius)'
                 },
                 {
-                    name: '--popover--box-shadow-spread-radius'
+                    name: '--popover--box-shadow-spread-radius',
+                    value: 'var(--box-shadow-spread-radius)'
                 },
                 {
-                    name: '--popover--box-shadow-color'
+                    name: '--popover--box-shadow-color',
+                    value: 'var(--box-shadow-color)'
                 },
                 {
-                    name: '--popover--box-shadow'
+                    name: '--popover--box-shadow',
+                    value: 'var(--popover--box-shadow-offset-x) var(--popover--box-shadow-offset-y) var(--popover--box-shadow-blur-radius) var(--popover--box-shadow-spread-radius) var(--popover--box-shadow-color)'
                 },
                 {
-                    name: '--popover--transition-property'
+                    name: '--popover--transition-property',
+                    value: 'var(--transition-property)'
                 },
                 {
-                    name: '--popover--transition-duration'
+                    name: '--popover--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--popover--transition-timing-function'
+                    name: '--popover--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--popover--transition'
+                    name: '--popover--transition',
+                    value: 'var(--popover--transition-property) var(--popover--transition-duration) var(--popover--transition-timing-function)'
                 },
                 {
-                    name: '--popover--max-width'
+                    name: '--popover--max-width',
+                    value: '90vw'
                 },
                 {
-                    name: '--popover--z-index'
+                    name: '--popover--z-index',
+                    value: '2000'
                 },
                 {
-                    name: '--popover--background'
+                    name: '--popover--background',
+                    value: 'var(--color-white)'
                 },
                 {
-                    name: '--popover--color'
+                    name: '--popover--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--popover--border-top-left-radius'
+                    name: '--popover--border-top-left-radius',
+                    value: 'var(--border-top-left-radius-md)'
                 },
                 {
-                    name: '--popover--border-top-right-radius'
+                    name: '--popover--border-top-right-radius',
+                    value: 'var(--border-top-right-radius-md)'
                 },
                 {
-                    name: '--popover--border-bottom-right-radius'
+                    name: '--popover--border-bottom-right-radius',
+                    value: 'var(--border-bottom-right-radius-md)'
                 },
                 {
-                    name: '--popover--border-bottom-left-radius'
+                    name: '--popover--border-bottom-left-radius',
+                    value: 'var(--border-bottom-left-radius-md)'
                 },
                 {
-                    name: '--popover--border-radius'
+                    name: '--popover--border-radius',
+                    value: 'var(--popover--border-top-left-radius) var(--popover--border-top-right-radius) var(--popover--border-bottom-right-radius) var(--popover--border-bottom-left-radius)'
                 },
                 {
-                    name: '--popover--font-size'
+                    name: '--popover--font-size',
+                    value: 'var(--font-size-md)'
                 },
                 {
-                    name: '--popover--padding-top'
+                    name: '--popover--padding-top',
+                    value: 'calc(var(--spacing-md) * 0.75)'
                 },
                 {
-                    name: '--popover--padding-right'
+                    name: '--popover--padding-right',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--popover--padding-bottom'
+                    name: '--popover--padding-bottom',
+                    value: 'calc(var(--spacing-md) * 0.75)'
                 },
                 {
-                    name: '--popover--padding-left'
+                    name: '--popover--padding-left',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--popover--padding'
+                    name: '--popover--padding',
+                    value: 'var(--popover--padding-top) var(--popover--padding-right) var(--popover--padding-bottom) var(--popover--padding-left)'
                 },
                 {
-                    name: '--popover--width'
+                    name: '--popover--width',
+                    value: 'calc(var(--spacing-md) * 18)'
                 },
                 {
-                    name: '--popover--arrow--size'
+                    name: '--popover--arrow--size',
+                    value: 'calc(var(--spacing-md) * 0.5)'
                 },
                 {
                     name: '--popover--{color}--border-top-color'

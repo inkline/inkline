@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "devtools component watch",
         "build": "devtools component build",
-        "manifest": "devtools component manifest",
+        "manifest": "generate-manifest",
         "generate": "pnpm run manifest",
         "prebuild": "pnpm run generate",
         "lint": "devtools eslint",
@@ -33,6 +33,7 @@
         "@inkline/eslint-config": "workspace:*",
         "@inkline/typescript-config": "workspace:*",
         "@inkline/devtools": "workspace:*",
+        "@inkline/manifest": "workspace:*",
         "@inkline/postcss-config": "workspace:*",
         "@inkline/vite-config": "workspace:*",
         "@inkline/test-utils": "workspace:*",

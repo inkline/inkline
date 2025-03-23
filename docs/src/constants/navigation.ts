@@ -223,27 +223,33 @@ export const componentsNavigation: NavigationItem[] = [
         children: [
             {
                 id: 'alert',
-                title: 'Alert'
+                title: 'Alert',
+                to: '/docs/components/alert'
             },
             {
                 id: 'loader',
-                title: 'Loader'
+                title: 'Loader',
+                to: '/docs/components/loader'
             },
             {
                 id: 'modal',
-                title: 'Modal'
+                title: 'Modal',
+                to: '/docs/components/modal'
             },
             {
                 id: 'popover',
-                title: 'Popover'
+                title: 'Popover',
+                to: '/docs/components/popover'
             },
             {
                 id: 'toast',
-                title: 'Toast'
+                title: 'Toast',
+                to: '/docs/components/toast'
             },
             {
                 id: 'tooltip',
-                title: 'Tooltip'
+                title: 'Tooltip',
+                to: '/docs/components/tooltip'
             }
         ]
     },

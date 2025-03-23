@@ -41,10 +41,12 @@ export const manifest: ComponentManifest[] = [
             namespace: 'icon',
             variables: [
                 {
-                    name: '--icon--color'
+                    name: '--icon--color',
+                    value: 'var(--color-light)'
                 },
                 {
-                    name: '--icon--font-size'
+                    name: '--icon--font-size',
+                    value: 'var(--font-size-md)'
                 },
                 {
                     name: '--icon--{color}--color'

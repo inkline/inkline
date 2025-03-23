@@ -77,13 +77,6 @@ You can customize the size of the `Icon` component in various ways:
 
 Inkline provides a set of basic icons that can be used out of the box. However, you can also add custom icons to your application by defining them as renderable SVG objects and using the `Icon` component to render them.
 
-**Developer Experience Recommendation**
-- We recommend using the [Icônes](https://icones.js.org/) website for browsing through thousands of icons across multiple icon packages
-- Although very flexible, defining custom icons as renderable SVG objects can be cumbersome and error-prone
-
-To import thousands icons directly into your application:
-- If you're using **Vite**, for a better developer experience, we recommend using the [Unplugin Icons](https://github.com/unplugin/unplugin-icons) plugin
-- If you're using **Nuxt**, for a better developer experience, we recommend using the [Nuxt Icon](https://nuxt.com/modules/icon) module
 
 ```ts
 import { createApp } from 'vue';
@@ -126,20 +119,49 @@ app.use(Inkline, {
 })
 ```
 
+
+#### Developer Experience Recommendation
+- We recommend using the [Icônes](https://icones.js.org/) website for browsing through thousands of icons across multiple icon packages
+- Although very flexible, defining custom icons as renderable SVG objects can be cumbersome and error-prone
+
+To import thousands icons directly into your application:
+
+**Unplugin Icons**
+- If you're using **Vite**, for a better developer experience, we recommend using the [Unplugin Icons](https://github.com/unplugin/unplugin-icons) plugin
+
+**Nuxt Icon Module**
+- If you're using **Nuxt**, for a better developer experience, we recommend using the [Nuxt Icon](https://nuxt.com/modules/icon) module
+
 ## Props
 
+::DocsCard{ title="Icon Props" }
 Below is an outline of available props for the `Icon` component.
 
 ::DocsComponentProps{ package="icon" component="Icon" }
 ::
+::
 
 ## Events
 
+::DocsCard{ title="Icon Events" }
 The `Icon` component does not emit any custom events. However, you can bind native events like `@click` to make the Icon interactive.
+::
 
 ## Slots
 
+::DocsCard{ title="Icon Slots" }
 The `Icon` component does not have any slots. 
+::
+
+## Design Tokens
+
+::DocsCard{ title="Icon Design Tokens" }
+Below is an outline of available design tokens for the `Icon` component.
+
+::DocsComponentDesignTokens{ package="icon" component="Icon" }
+::
+::
+
 
 ## Accessibility
 

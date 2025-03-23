@@ -293,6 +293,7 @@ export function useAlertThemeLayoutSelectors(userOptions: DefinitionOptions) {
     selector(
         '.alert',
         {
+            flex: 1,
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center'

@@ -28,28 +28,36 @@ export const manifest: ComponentManifest[] = [
             namespace: 'loader',
             variables: [
                 {
-                    name: '--loader--animation-name'
+                    name: '--loader--animation-name',
+                    value: 'none'
                 },
                 {
-                    name: '--loader--animation-duration'
+                    name: '--loader--animation-duration',
+                    value: '1.2s'
                 },
                 {
-                    name: '--loader--animation-iteration-count'
+                    name: '--loader--animation-iteration-count',
+                    value: 'infinite'
                 },
                 {
-                    name: '--loader--animation-direction'
+                    name: '--loader--animation-direction',
+                    value: 'normal'
                 },
                 {
-                    name: '--loader--animation'
+                    name: '--loader--animation',
+                    value: 'var(--loader--animation-name) var(--loader--animation-duration) var(--loader--animation-iteration-count) var(--loader--animation-direction)'
                 },
                 {
-                    name: '--loader--color'
+                    name: '--loader--color',
+                    value: 'var(--color-dark)'
                 },
                 {
-                    name: '--loader--width'
+                    name: '--loader--width',
+                    value: 'calc(var(--spacing-md) * 4)'
                 },
                 {
-                    name: '--loader--height'
+                    name: '--loader--height',
+                    value: 'calc(var(--spacing-md) * 4)'
                 },
                 {
                     name: '--loader--{color}--color'

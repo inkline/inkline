@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "devtools tsup watch",
         "build": "devtools tsup build",
-        "manifest": "devtools component manifest",
+        "manifest": "generate-manifest",
         "lint": "devtools eslint",
         "test": "devtools test",
         "prebuild": "pnpm run generate",
@@ -16,6 +16,7 @@
         "@inkline/eslint-config": "workspace:*",
         "@inkline/typescript-config": "workspace:*",
         "@inkline/devtools": "workspace:*",
+        "@inkline/manifest": "workspace:*",
         "@inkline/types": "workspace:*",
         "eslint": "catalog:",
         "typescript": "catalog:",

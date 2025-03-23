@@ -62,6 +62,20 @@ defineProps<{
         margin-left: -2px;
     }
 
+    .app-navigation-child-menu {
+        margin-left: var(--spacing-lg);
+    }
+
+    .app-navigation-subchild {
+        display: list-item;
+        list-style: disc;
+        padding: var(--spacing-2xs) 0 var(--spacing-2xs) 0;
+    }
+
+    .app-navigation-subchild::marker {
+        color: var(--text-color-weakest);
+    }
+
     .app-navigation-child.-active {
         padding-left: calc(var(--spacing-sm) - 3px);
         border-left: 3px solid var(--color-primary);

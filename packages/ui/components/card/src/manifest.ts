@@ -34,133 +34,176 @@ export const manifest: ComponentManifest[] = [
             namespace: 'card',
             variables: [
                 {
-                    name: '--card--border-top-width'
+                    name: '--card--border-top-width',
+                    value: 'var(--border-top-width)'
                 },
                 {
-                    name: '--card--border-top-style'
+                    name: '--card--border-top-style',
+                    value: 'var(--border-top-style)'
                 },
                 {
-                    name: '--card--border-top-color'
+                    name: '--card--border-top-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--card--border-right-width'
+                    name: '--card--border-right-width',
+                    value: 'var(--border-right-width)'
                 },
                 {
-                    name: '--card--border-right-style'
+                    name: '--card--border-right-style',
+                    value: 'var(--border-right-style)'
                 },
                 {
-                    name: '--card--border-right-color'
+                    name: '--card--border-right-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--card--border-bottom-width'
+                    name: '--card--border-bottom-width',
+                    value: 'var(--border-bottom-width)'
                 },
                 {
-                    name: '--card--border-bottom-style'
+                    name: '--card--border-bottom-style',
+                    value: 'var(--border-bottom-style)'
                 },
                 {
-                    name: '--card--border-bottom-color'
+                    name: '--card--border-bottom-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--card--border-left-width'
+                    name: '--card--border-left-width',
+                    value: 'var(--border-left-width)'
                 },
                 {
-                    name: '--card--border-left-style'
+                    name: '--card--border-left-style',
+                    value: 'var(--border-left-style)'
                 },
                 {
-                    name: '--card--border-left-color'
+                    name: '--card--border-left-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--card--border-width'
+                    name: '--card--border-width',
+                    value: 'var(--card--border-top-width) var(--card--border-right-width) var(--card--border-bottom-width) var(--card--border-left-width)'
                 },
                 {
-                    name: '--card--border-style'
+                    name: '--card--border-style',
+                    value: 'var(--card--border-top-style) var(--card--border-right-style) var(--card--border-bottom-style) var(--card--border-left-style)'
                 },
                 {
-                    name: '--card--border-color'
+                    name: '--card--border-color',
+                    value: 'var(--card--border-top-color) var(--card--border-right-color) var(--card--border-bottom-color) var(--card--border-left-color)'
                 },
                 {
-                    name: '--card--border-top'
+                    name: '--card--border-top',
+                    value: 'var(--card--border-top-width) var(--card--border-top-style) var(--card--border-top-color)'
                 },
                 {
-                    name: '--card--border-right'
+                    name: '--card--border-right',
+                    value: 'var(--card--border-right-width) var(--card--border-right-style) var(--card--border-right-color)'
                 },
                 {
-                    name: '--card--border-bottom'
+                    name: '--card--border-bottom',
+                    value: 'var(--card--border-bottom-width) var(--card--border-bottom-style) var(--card--border-bottom-color)'
                 },
                 {
-                    name: '--card--border-left'
+                    name: '--card--border-left',
+                    value: 'var(--card--border-left-width) var(--card--border-left-style) var(--card--border-left-color)'
                 },
                 {
-                    name: '--card--border'
+                    name: '--card--border',
+                    value: 'var(--card--border-top-width) var(--card--border-top-style) var(--card--border-top-color)'
                 },
                 {
-                    name: '--card--box-shadow-offset-x'
+                    name: '--card--box-shadow-offset-x',
+                    value: 'var(--box-shadow-offset-x)'
                 },
                 {
-                    name: '--card--box-shadow-offset-y'
+                    name: '--card--box-shadow-offset-y',
+                    value: 'var(--box-shadow-offset-y)'
                 },
                 {
-                    name: '--card--box-shadow-blur-radius'
+                    name: '--card--box-shadow-blur-radius',
+                    value: 'var(--box-shadow-blur-radius)'
                 },
                 {
-                    name: '--card--box-shadow-spread-radius'
+                    name: '--card--box-shadow-spread-radius',
+                    value: 'var(--box-shadow-spread-radius)'
                 },
                 {
-                    name: '--card--box-shadow-color'
+                    name: '--card--box-shadow-color',
+                    value: 'var(--box-shadow-color)'
                 },
                 {
-                    name: '--card--box-shadow'
+                    name: '--card--box-shadow',
+                    value: 'var(--card--box-shadow-offset-x) var(--card--box-shadow-offset-y) var(--card--box-shadow-blur-radius) var(--card--box-shadow-spread-radius) var(--card--box-shadow-color)'
                 },
                 {
-                    name: '--card--transition-property'
+                    name: '--card--transition-property',
+                    value: 'var(--transition-property)'
                 },
                 {
-                    name: '--card--transition-duration'
+                    name: '--card--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--card--transition-timing-function'
+                    name: '--card--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--card--transition'
+                    name: '--card--transition',
+                    value: 'var(--card--transition-property) var(--card--transition-duration) var(--card--transition-timing-function)'
                 },
                 {
-                    name: '--card--background'
+                    name: '--card--background',
+                    value: 'var(--color-white)'
                 },
                 {
-                    name: '--card--color'
+                    name: '--card--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--card--border-top-left-radius'
+                    name: '--card--border-top-left-radius',
+                    value: 'var(--border-top-left-radius-md)'
                 },
                 {
-                    name: '--card--border-top-right-radius'
+                    name: '--card--border-top-right-radius',
+                    value: 'var(--border-top-right-radius-md)'
                 },
                 {
-                    name: '--card--border-bottom-right-radius'
+                    name: '--card--border-bottom-right-radius',
+                    value: 'var(--border-bottom-right-radius-md)'
                 },
                 {
-                    name: '--card--border-bottom-left-radius'
+                    name: '--card--border-bottom-left-radius',
+                    value: 'var(--border-bottom-left-radius-md)'
                 },
                 {
-                    name: '--card--border-radius'
+                    name: '--card--border-radius',
+                    value: 'var(--card--border-top-left-radius) var(--card--border-top-right-radius) var(--card--border-bottom-right-radius) var(--card--border-bottom-left-radius)'
                 },
                 {
-                    name: '--card--font-size'
+                    name: '--card--font-size',
+                    value: 'var(--font-size-md)'
                 },
                 {
-                    name: '--card--padding-top'
+                    name: '--card--padding-top',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--card--padding-right'
+                    name: '--card--padding-right',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--card--padding-bottom'
+                    name: '--card--padding-bottom',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--card--padding-left'
+                    name: '--card--padding-left',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--card--padding'
+                    name: '--card--padding',
+                    value: 'var(--card--padding-top) var(--card--padding-right) var(--card--padding-bottom) var(--card--padding-left)'
                 },
                 {
                     name: '--card--{color}--border-top-color'
@@ -215,133 +258,176 @@ export const manifest: ComponentManifest[] = [
             namespace: '',
             variables: [
                 {
-                    name: '--card--border-top-width'
+                    name: '--card--border-top-width',
+                    value: 'var(--border-top-width)'
                 },
                 {
-                    name: '--card--border-top-style'
+                    name: '--card--border-top-style',
+                    value: 'var(--border-top-style)'
                 },
                 {
-                    name: '--card--border-top-color'
+                    name: '--card--border-top-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--card--border-right-width'
+                    name: '--card--border-right-width',
+                    value: 'var(--border-right-width)'
                 },
                 {
-                    name: '--card--border-right-style'
+                    name: '--card--border-right-style',
+                    value: 'var(--border-right-style)'
                 },
                 {
-                    name: '--card--border-right-color'
+                    name: '--card--border-right-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--card--border-bottom-width'
+                    name: '--card--border-bottom-width',
+                    value: 'var(--border-bottom-width)'
                 },
                 {
-                    name: '--card--border-bottom-style'
+                    name: '--card--border-bottom-style',
+                    value: 'var(--border-bottom-style)'
                 },
                 {
-                    name: '--card--border-bottom-color'
+                    name: '--card--border-bottom-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--card--border-left-width'
+                    name: '--card--border-left-width',
+                    value: 'var(--border-left-width)'
                 },
                 {
-                    name: '--card--border-left-style'
+                    name: '--card--border-left-style',
+                    value: 'var(--border-left-style)'
                 },
                 {
-                    name: '--card--border-left-color'
+                    name: '--card--border-left-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--card--border-width'
+                    name: '--card--border-width',
+                    value: 'var(--card--border-top-width) var(--card--border-right-width) var(--card--border-bottom-width) var(--card--border-left-width)'
                 },
                 {
-                    name: '--card--border-style'
+                    name: '--card--border-style',
+                    value: 'var(--card--border-top-style) var(--card--border-right-style) var(--card--border-bottom-style) var(--card--border-left-style)'
                 },
                 {
-                    name: '--card--border-color'
+                    name: '--card--border-color',
+                    value: 'var(--card--border-top-color) var(--card--border-right-color) var(--card--border-bottom-color) var(--card--border-left-color)'
                 },
                 {
-                    name: '--card--border-top'
+                    name: '--card--border-top',
+                    value: 'var(--card--border-top-width) var(--card--border-top-style) var(--card--border-top-color)'
                 },
                 {
-                    name: '--card--border-right'
+                    name: '--card--border-right',
+                    value: 'var(--card--border-right-width) var(--card--border-right-style) var(--card--border-right-color)'
                 },
                 {
-                    name: '--card--border-bottom'
+                    name: '--card--border-bottom',
+                    value: 'var(--card--border-bottom-width) var(--card--border-bottom-style) var(--card--border-bottom-color)'
                 },
                 {
-                    name: '--card--border-left'
+                    name: '--card--border-left',
+                    value: 'var(--card--border-left-width) var(--card--border-left-style) var(--card--border-left-color)'
                 },
                 {
-                    name: '--card--border'
+                    name: '--card--border',
+                    value: 'var(--card--border-top-width) var(--card--border-top-style) var(--card--border-top-color)'
                 },
                 {
-                    name: '--card--box-shadow-offset-x'
+                    name: '--card--box-shadow-offset-x',
+                    value: 'var(--box-shadow-offset-x)'
                 },
                 {
-                    name: '--card--box-shadow-offset-y'
+                    name: '--card--box-shadow-offset-y',
+                    value: 'var(--box-shadow-offset-y)'
                 },
                 {
-                    name: '--card--box-shadow-blur-radius'
+                    name: '--card--box-shadow-blur-radius',
+                    value: 'var(--box-shadow-blur-radius)'
                 },
                 {
-                    name: '--card--box-shadow-spread-radius'
+                    name: '--card--box-shadow-spread-radius',
+                    value: 'var(--box-shadow-spread-radius)'
                 },
                 {
-                    name: '--card--box-shadow-color'
+                    name: '--card--box-shadow-color',
+                    value: 'var(--box-shadow-color)'
                 },
                 {
-                    name: '--card--box-shadow'
+                    name: '--card--box-shadow',
+                    value: 'var(--card--box-shadow-offset-x) var(--card--box-shadow-offset-y) var(--card--box-shadow-blur-radius) var(--card--box-shadow-spread-radius) var(--card--box-shadow-color)'
                 },
                 {
-                    name: '--card--transition-property'
+                    name: '--card--transition-property',
+                    value: 'var(--transition-property)'
                 },
                 {
-                    name: '--card--transition-duration'
+                    name: '--card--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--card--transition-timing-function'
+                    name: '--card--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--card--transition'
+                    name: '--card--transition',
+                    value: 'var(--card--transition-property) var(--card--transition-duration) var(--card--transition-timing-function)'
                 },
                 {
-                    name: '--card--background'
+                    name: '--card--background',
+                    value: 'var(--color-white)'
                 },
                 {
-                    name: '--card--color'
+                    name: '--card--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--card--border-top-left-radius'
+                    name: '--card--border-top-left-radius',
+                    value: 'var(--border-top-left-radius-md)'
                 },
                 {
-                    name: '--card--border-top-right-radius'
+                    name: '--card--border-top-right-radius',
+                    value: 'var(--border-top-right-radius-md)'
                 },
                 {
-                    name: '--card--border-bottom-right-radius'
+                    name: '--card--border-bottom-right-radius',
+                    value: 'var(--border-bottom-right-radius-md)'
                 },
                 {
-                    name: '--card--border-bottom-left-radius'
+                    name: '--card--border-bottom-left-radius',
+                    value: 'var(--border-bottom-left-radius-md)'
                 },
                 {
-                    name: '--card--border-radius'
+                    name: '--card--border-radius',
+                    value: 'var(--card--border-top-left-radius) var(--card--border-top-right-radius) var(--card--border-bottom-right-radius) var(--card--border-bottom-left-radius)'
                 },
                 {
-                    name: '--card--font-size'
+                    name: '--card--font-size',
+                    value: 'var(--font-size-md)'
                 },
                 {
-                    name: '--card--padding-top'
+                    name: '--card--padding-top',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--card--padding-right'
+                    name: '--card--padding-right',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--card--padding-bottom'
+                    name: '--card--padding-bottom',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--card--padding-left'
+                    name: '--card--padding-left',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--card--padding'
+                    name: '--card--padding',
+                    value: 'var(--card--padding-top) var(--card--padding-right) var(--card--padding-bottom) var(--card--padding-left)'
                 }
             ]
         }

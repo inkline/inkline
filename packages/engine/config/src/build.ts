@@ -15,7 +15,7 @@ import { basename, dirname, extname, resolve } from 'node:path';
 import { existsSync } from 'fs';
 import { writeFile, mkdir } from 'fs/promises';
 import { exists } from './utils';
-import { cssGenerator } from '@inkline/generator-css';
+import { cssGenerator } from '@inkline/generator';
 
 export function getResolvedBuildOptions(options: UserBuildOptions): BuildOptions {
     let configDir = process.cwd();
@@ -56,7 +56,7 @@ export async function build(userOptions: UserBuildOptions = {}) {
         cwd: options.configDir,
         configFile: `${options.configFile}${options.configExtName}`
     });
-    
+
     configuration.options = {
         ...configuration.options,
         ...options

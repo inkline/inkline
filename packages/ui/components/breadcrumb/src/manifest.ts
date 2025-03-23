@@ -86,58 +86,76 @@ export const manifest: ComponentManifest[] = [
             namespace: 'breadcrumb',
             variables: [
                 {
-                    name: '--breadcrumb--margin-top'
+                    name: '--breadcrumb--margin-top',
+                    value: '0'
                 },
                 {
-                    name: '--breadcrumb--margin-right'
+                    name: '--breadcrumb--margin-right',
+                    value: '0'
                 },
                 {
-                    name: '--breadcrumb--margin-bottom'
+                    name: '--breadcrumb--margin-bottom',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--breadcrumb--margin-left'
+                    name: '--breadcrumb--margin-left',
+                    value: '0'
                 },
                 {
-                    name: '--breadcrumb--margin'
+                    name: '--breadcrumb--margin',
+                    value: 'var(--breadcrumb--margin-top) var(--breadcrumb--margin-right) var(--breadcrumb--margin-bottom) var(--breadcrumb--margin-left)'
                 },
                 {
-                    name: '--breadcrumb--separator'
+                    name: '--breadcrumb--separator',
+                    value: '"/"'
                 },
                 {
-                    name: '--breadcrumb--transition-property'
+                    name: '--breadcrumb--transition-property',
+                    value: 'var(--transition-property)'
                 },
                 {
-                    name: '--breadcrumb--transition-duration'
+                    name: '--breadcrumb--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--breadcrumb--transition-timing-function'
+                    name: '--breadcrumb--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--breadcrumb--transition'
+                    name: '--breadcrumb--transition',
+                    value: 'var(--breadcrumb--transition-property) var(--breadcrumb--transition-duration) var(--breadcrumb--transition-timing-function)'
                 },
                 {
-                    name: '--breadcrumb--active--color'
+                    name: '--breadcrumb--active--color',
+                    value: 'var(--text-color-weaker)'
                 },
                 {
-                    name: '--breadcrumb--color'
+                    name: '--breadcrumb--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--breadcrumb--font-size'
+                    name: '--breadcrumb--font-size',
+                    value: 'var(--font-size-md)'
                 },
                 {
-                    name: '--breadcrumb--padding-top'
+                    name: '--breadcrumb--padding-top',
+                    value: '0'
                 },
                 {
-                    name: '--breadcrumb--padding-right'
+                    name: '--breadcrumb--padding-right',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--breadcrumb--padding-bottom'
+                    name: '--breadcrumb--padding-bottom',
+                    value: '0'
                 },
                 {
-                    name: '--breadcrumb--padding-left'
+                    name: '--breadcrumb--padding-left',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--breadcrumb--padding'
+                    name: '--breadcrumb--padding',
+                    value: 'var(--breadcrumb--padding-top) var(--breadcrumb--padding-right) var(--breadcrumb--padding-bottom) var(--breadcrumb--padding-left)'
                 },
                 {
                     name: '--breadcrumb--{color}--color'
@@ -165,58 +183,76 @@ export const manifest: ComponentManifest[] = [
             namespace: '',
             variables: [
                 {
-                    name: '--breadcrumb--margin-top'
+                    name: '--breadcrumb--margin-top',
+                    value: '0'
                 },
                 {
-                    name: '--breadcrumb--margin-right'
+                    name: '--breadcrumb--margin-right',
+                    value: '0'
                 },
                 {
-                    name: '--breadcrumb--margin-bottom'
+                    name: '--breadcrumb--margin-bottom',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--breadcrumb--margin-left'
+                    name: '--breadcrumb--margin-left',
+                    value: '0'
                 },
                 {
-                    name: '--breadcrumb--margin'
+                    name: '--breadcrumb--margin',
+                    value: 'var(--breadcrumb--margin-top) var(--breadcrumb--margin-right) var(--breadcrumb--margin-bottom) var(--breadcrumb--margin-left)'
                 },
                 {
-                    name: '--breadcrumb--separator'
+                    name: '--breadcrumb--separator',
+                    value: '"/"'
                 },
                 {
-                    name: '--breadcrumb--transition-property'
+                    name: '--breadcrumb--transition-property',
+                    value: 'var(--transition-property)'
                 },
                 {
-                    name: '--breadcrumb--transition-duration'
+                    name: '--breadcrumb--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--breadcrumb--transition-timing-function'
+                    name: '--breadcrumb--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--breadcrumb--transition'
+                    name: '--breadcrumb--transition',
+                    value: 'var(--breadcrumb--transition-property) var(--breadcrumb--transition-duration) var(--breadcrumb--transition-timing-function)'
                 },
                 {
-                    name: '--breadcrumb--active--color'
+                    name: '--breadcrumb--active--color',
+                    value: 'var(--text-color-weaker)'
                 },
                 {
-                    name: '--breadcrumb--color'
+                    name: '--breadcrumb--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--breadcrumb--font-size'
+                    name: '--breadcrumb--font-size',
+                    value: 'var(--font-size-md)'
                 },
                 {
-                    name: '--breadcrumb--padding-top'
+                    name: '--breadcrumb--padding-top',
+                    value: '0'
                 },
                 {
-                    name: '--breadcrumb--padding-right'
+                    name: '--breadcrumb--padding-right',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--breadcrumb--padding-bottom'
+                    name: '--breadcrumb--padding-bottom',
+                    value: '0'
                 },
                 {
-                    name: '--breadcrumb--padding-left'
+                    name: '--breadcrumb--padding-left',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--breadcrumb--padding'
+                    name: '--breadcrumb--padding',
+                    value: 'var(--breadcrumb--padding-top) var(--breadcrumb--padding-right) var(--breadcrumb--padding-bottom) var(--breadcrumb--padding-left)'
                 }
             ]
         }

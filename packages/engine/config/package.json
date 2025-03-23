@@ -40,7 +40,7 @@
     },
     "dependencies": {
         "@inkline/core": "workspace:*",
-        "@inkline/generator-css": "workspace:*",
+        "@inkline/generator": "workspace:*",
         "c12": "^2.0.1"
     },
     "funding": {

@@ -106,34 +106,44 @@ export const manifest: ComponentManifest[] = [
             namespace: 'nav',
             variables: [
                 {
-                    name: '--nav--transition-property'
+                    name: '--nav--transition-property',
+                    value: 'var(--transition-property)'
                 },
                 {
-                    name: '--nav--transition-duration'
+                    name: '--nav--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--nav--transition-timing-function'
+                    name: '--nav--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--nav--transition'
+                    name: '--nav--transition',
+                    value: 'var(--nav--transition-property) var(--nav--transition-duration) var(--nav--transition-timing-function)'
                 },
                 {
-                    name: '--nav--item--active--font-weight'
+                    name: '--nav--item--active--font-weight',
+                    value: 'var(--font-weight-semibold)'
                 },
                 {
-                    name: '--nav--item--active--color'
+                    name: '--nav--item--active--color',
+                    value: 'var(--color-primary)'
                 },
                 {
-                    name: '--nav--item--disabled--color'
+                    name: '--nav--item--disabled--color',
+                    value: 'var(--text-color-weaker)'
                 },
                 {
-                    name: '--nav--color'
+                    name: '--nav--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--nav--font-size'
+                    name: '--nav--font-size',
+                    value: 'var(--font-size-md)'
                 },
                 {
-                    name: '--nav--gap'
+                    name: '--nav--gap',
+                    value: 'var(--spacing-md)'
                 },
                 {
                     name: '--nav--{color}--color'
@@ -155,34 +165,44 @@ export const manifest: ComponentManifest[] = [
             namespace: '',
             variables: [
                 {
-                    name: '--nav--transition-property'
+                    name: '--nav--transition-property',
+                    value: 'var(--transition-property)'
                 },
                 {
-                    name: '--nav--transition-duration'
+                    name: '--nav--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--nav--transition-timing-function'
+                    name: '--nav--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--nav--transition'
+                    name: '--nav--transition',
+                    value: 'var(--nav--transition-property) var(--nav--transition-duration) var(--nav--transition-timing-function)'
                 },
                 {
-                    name: '--nav--item--active--font-weight'
+                    name: '--nav--item--active--font-weight',
+                    value: 'var(--font-weight-semibold)'
                 },
                 {
-                    name: '--nav--item--active--color'
+                    name: '--nav--item--active--color',
+                    value: 'var(--color-primary)'
                 },
                 {
-                    name: '--nav--item--disabled--color'
+                    name: '--nav--item--disabled--color',
+                    value: 'var(--text-color-weaker)'
                 },
                 {
-                    name: '--nav--color'
+                    name: '--nav--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--nav--font-size'
+                    name: '--nav--font-size',
+                    value: 'var(--font-size-md)'
                 },
                 {
-                    name: '--nav--gap'
+                    name: '--nav--gap',
+                    value: 'var(--spacing-md)'
                 }
             ]
         }

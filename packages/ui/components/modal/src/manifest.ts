@@ -166,163 +166,216 @@ export const manifest: ComponentManifest[] = [
             namespace: 'modal',
             variables: [
                 {
-                    name: '--modal--border-top-width'
+                    name: '--modal--border-top-width',
+                    value: 'var(--border-top-width)'
                 },
                 {
-                    name: '--modal--border-top-style'
+                    name: '--modal--border-top-style',
+                    value: 'var(--border-top-style)'
                 },
                 {
-                    name: '--modal--border-top-color'
+                    name: '--modal--border-top-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--modal--border-right-width'
+                    name: '--modal--border-right-width',
+                    value: 'var(--border-right-width)'
                 },
                 {
-                    name: '--modal--border-right-style'
+                    name: '--modal--border-right-style',
+                    value: 'var(--border-right-style)'
                 },
                 {
-                    name: '--modal--border-right-color'
+                    name: '--modal--border-right-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--modal--border-bottom-width'
+                    name: '--modal--border-bottom-width',
+                    value: 'var(--border-bottom-width)'
                 },
                 {
-                    name: '--modal--border-bottom-style'
+                    name: '--modal--border-bottom-style',
+                    value: 'var(--border-bottom-style)'
                 },
                 {
-                    name: '--modal--border-bottom-color'
+                    name: '--modal--border-bottom-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--modal--border-left-width'
+                    name: '--modal--border-left-width',
+                    value: 'var(--border-left-width)'
                 },
                 {
-                    name: '--modal--border-left-style'
+                    name: '--modal--border-left-style',
+                    value: 'var(--border-left-style)'
                 },
                 {
-                    name: '--modal--border-left-color'
+                    name: '--modal--border-left-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--modal--border-width'
+                    name: '--modal--border-width',
+                    value: 'var(--modal--border-top-width) var(--modal--border-right-width) var(--modal--border-bottom-width) var(--modal--border-left-width)'
                 },
                 {
-                    name: '--modal--border-style'
+                    name: '--modal--border-style',
+                    value: 'var(--modal--border-top-style) var(--modal--border-right-style) var(--modal--border-bottom-style) var(--modal--border-left-style)'
                 },
                 {
-                    name: '--modal--border-color'
+                    name: '--modal--border-color',
+                    value: 'var(--modal--border-top-color) var(--modal--border-right-color) var(--modal--border-bottom-color) var(--modal--border-left-color)'
                 },
                 {
-                    name: '--modal--border-top'
+                    name: '--modal--border-top',
+                    value: 'var(--modal--border-top-width) var(--modal--border-top-style) var(--modal--border-top-color)'
                 },
                 {
-                    name: '--modal--border-right'
+                    name: '--modal--border-right',
+                    value: 'var(--modal--border-right-width) var(--modal--border-right-style) var(--modal--border-right-color)'
                 },
                 {
-                    name: '--modal--border-bottom'
+                    name: '--modal--border-bottom',
+                    value: 'var(--modal--border-bottom-width) var(--modal--border-bottom-style) var(--modal--border-bottom-color)'
                 },
                 {
-                    name: '--modal--border-left'
+                    name: '--modal--border-left',
+                    value: 'var(--modal--border-left-width) var(--modal--border-left-style) var(--modal--border-left-color)'
                 },
                 {
-                    name: '--modal--border'
+                    name: '--modal--border',
+                    value: 'var(--modal--border-top-width) var(--modal--border-top-style) var(--modal--border-top-color)'
                 },
                 {
-                    name: '--modal--box-shadow-offset-x'
+                    name: '--modal--box-shadow-offset-x',
+                    value: 'var(--box-shadow-offset-x)'
                 },
                 {
-                    name: '--modal--box-shadow-offset-y'
+                    name: '--modal--box-shadow-offset-y',
+                    value: 'var(--box-shadow-offset-y)'
                 },
                 {
-                    name: '--modal--box-shadow-blur-radius'
+                    name: '--modal--box-shadow-blur-radius',
+                    value: 'var(--box-shadow-blur-radius)'
                 },
                 {
-                    name: '--modal--box-shadow-spread-radius'
+                    name: '--modal--box-shadow-spread-radius',
+                    value: 'var(--box-shadow-spread-radius)'
                 },
                 {
-                    name: '--modal--box-shadow-color'
+                    name: '--modal--box-shadow-color',
+                    value: 'var(--box-shadow-color)'
                 },
                 {
-                    name: '--modal--box-shadow'
+                    name: '--modal--box-shadow',
+                    value: 'var(--modal--box-shadow-offset-x) var(--modal--box-shadow-offset-y) var(--modal--box-shadow-blur-radius) var(--modal--box-shadow-spread-radius) var(--modal--box-shadow-color)'
                 },
                 {
-                    name: '--modal--transition-property'
+                    name: '--modal--transition-property',
+                    value: 'var(--transition-property)'
                 },
                 {
-                    name: '--modal--transition-duration'
+                    name: '--modal--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--modal--transition-timing-function'
+                    name: '--modal--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--modal--transition'
+                    name: '--modal--transition',
+                    value: 'var(--modal--transition-property) var(--modal--transition-duration) var(--modal--transition-timing-function)'
                 },
                 {
-                    name: '--modal--width'
+                    name: '--modal--width',
+                    value: '100%'
                 },
                 {
-                    name: '--modal--z-index'
+                    name: '--modal--z-index',
+                    value: '2000'
                 },
                 {
-                    name: '--modal--wrapper--background'
+                    name: '--modal--wrapper--background',
+                    value: 'hsla(0 0% 0% / 0.75)'
                 },
                 {
-                    name: '--modal--close--color'
+                    name: '--modal--close--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--modal--close--hover--background'
+                    name: '--modal--close--hover--background',
+                    value: 'hsla(0 0% 0% / 0.1)'
                 },
                 {
-                    name: '--modal--close--active--background'
+                    name: '--modal--close--active--background',
+                    value: 'hsla(0 0% 0% / 0.15)'
                 },
                 {
-                    name: '--modal--close--size'
+                    name: '--modal--close--size',
+                    value: 'calc(var(--font-size-md) * 1.5)'
                 },
                 {
-                    name: '--modal--close--font-size'
+                    name: '--modal--close--font-size',
+                    value: 'calc(var(--font-size-md) * 0.5)'
                 },
                 {
-                    name: '--modal--background'
+                    name: '--modal--background',
+                    value: 'var(--color-white)'
                 },
                 {
-                    name: '--modal--color'
+                    name: '--modal--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--modal--border-top-left-radius'
+                    name: '--modal--border-top-left-radius',
+                    value: 'var(--border-top-left-radius-md)'
                 },
                 {
-                    name: '--modal--border-top-right-radius'
+                    name: '--modal--border-top-right-radius',
+                    value: 'var(--border-top-right-radius-md)'
                 },
                 {
-                    name: '--modal--border-bottom-right-radius'
+                    name: '--modal--border-bottom-right-radius',
+                    value: 'var(--border-bottom-right-radius-md)'
                 },
                 {
-                    name: '--modal--border-bottom-left-radius'
+                    name: '--modal--border-bottom-left-radius',
+                    value: 'var(--border-bottom-left-radius-md)'
                 },
                 {
-                    name: '--modal--border-radius'
+                    name: '--modal--border-radius',
+                    value: 'var(--modal--border-top-left-radius) var(--modal--border-top-right-radius) var(--modal--border-bottom-right-radius) var(--modal--border-bottom-left-radius)'
                 },
                 {
-                    name: '--modal--font-size'
+                    name: '--modal--font-size',
+                    value: 'var(--font-size-md)'
                 },
                 {
-                    name: '--modal--padding-top'
+                    name: '--modal--padding-top',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--modal--padding-right'
+                    name: '--modal--padding-right',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--modal--padding-bottom'
+                    name: '--modal--padding-bottom',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--modal--padding-left'
+                    name: '--modal--padding-left',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--modal--padding'
+                    name: '--modal--padding',
+                    value: 'var(--modal--padding-top) var(--modal--padding-right) var(--modal--padding-bottom) var(--modal--padding-left)'
                 },
                 {
-                    name: '--modal--max-width'
+                    name: '--modal--max-width',
+                    value: 'calc(var(--spacing-md) * 30)'
                 },
                 {
-                    name: '--modal--footer--gap'
+                    name: '--modal--footer--gap',
+                    value: 'calc(var(--spacing-md) * 0.5)'
                 },
                 {
                     name: '--modal--{color}--border-top-color'
@@ -389,163 +442,216 @@ export const manifest: ComponentManifest[] = [
             namespace: '',
             variables: [
                 {
-                    name: '--modal--border-top-width'
+                    name: '--modal--border-top-width',
+                    value: 'var(--border-top-width)'
                 },
                 {
-                    name: '--modal--border-top-style'
+                    name: '--modal--border-top-style',
+                    value: 'var(--border-top-style)'
                 },
                 {
-                    name: '--modal--border-top-color'
+                    name: '--modal--border-top-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--modal--border-right-width'
+                    name: '--modal--border-right-width',
+                    value: 'var(--border-right-width)'
                 },
                 {
-                    name: '--modal--border-right-style'
+                    name: '--modal--border-right-style',
+                    value: 'var(--border-right-style)'
                 },
                 {
-                    name: '--modal--border-right-color'
+                    name: '--modal--border-right-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--modal--border-bottom-width'
+                    name: '--modal--border-bottom-width',
+                    value: 'var(--border-bottom-width)'
                 },
                 {
-                    name: '--modal--border-bottom-style'
+                    name: '--modal--border-bottom-style',
+                    value: 'var(--border-bottom-style)'
                 },
                 {
-                    name: '--modal--border-bottom-color'
+                    name: '--modal--border-bottom-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--modal--border-left-width'
+                    name: '--modal--border-left-width',
+                    value: 'var(--border-left-width)'
                 },
                 {
-                    name: '--modal--border-left-style'
+                    name: '--modal--border-left-style',
+                    value: 'var(--border-left-style)'
                 },
                 {
-                    name: '--modal--border-left-color'
+                    name: '--modal--border-left-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--modal--border-width'
+                    name: '--modal--border-width',
+                    value: 'var(--modal--border-top-width) var(--modal--border-right-width) var(--modal--border-bottom-width) var(--modal--border-left-width)'
                 },
                 {
-                    name: '--modal--border-style'
+                    name: '--modal--border-style',
+                    value: 'var(--modal--border-top-style) var(--modal--border-right-style) var(--modal--border-bottom-style) var(--modal--border-left-style)'
                 },
                 {
-                    name: '--modal--border-color'
+                    name: '--modal--border-color',
+                    value: 'var(--modal--border-top-color) var(--modal--border-right-color) var(--modal--border-bottom-color) var(--modal--border-left-color)'
                 },
                 {
-                    name: '--modal--border-top'
+                    name: '--modal--border-top',
+                    value: 'var(--modal--border-top-width) var(--modal--border-top-style) var(--modal--border-top-color)'
                 },
                 {
-                    name: '--modal--border-right'
+                    name: '--modal--border-right',
+                    value: 'var(--modal--border-right-width) var(--modal--border-right-style) var(--modal--border-right-color)'
                 },
                 {
-                    name: '--modal--border-bottom'
+                    name: '--modal--border-bottom',
+                    value: 'var(--modal--border-bottom-width) var(--modal--border-bottom-style) var(--modal--border-bottom-color)'
                 },
                 {
-                    name: '--modal--border-left'
+                    name: '--modal--border-left',
+                    value: 'var(--modal--border-left-width) var(--modal--border-left-style) var(--modal--border-left-color)'
                 },
                 {
-                    name: '--modal--border'
+                    name: '--modal--border',
+                    value: 'var(--modal--border-top-width) var(--modal--border-top-style) var(--modal--border-top-color)'
                 },
                 {
-                    name: '--modal--box-shadow-offset-x'
+                    name: '--modal--box-shadow-offset-x',
+                    value: 'var(--box-shadow-offset-x)'
                 },
                 {
-                    name: '--modal--box-shadow-offset-y'
+                    name: '--modal--box-shadow-offset-y',
+                    value: 'var(--box-shadow-offset-y)'
                 },
                 {
-                    name: '--modal--box-shadow-blur-radius'
+                    name: '--modal--box-shadow-blur-radius',
+                    value: 'var(--box-shadow-blur-radius)'
                 },
                 {
-                    name: '--modal--box-shadow-spread-radius'
+                    name: '--modal--box-shadow-spread-radius',
+                    value: 'var(--box-shadow-spread-radius)'
                 },
                 {
-                    name: '--modal--box-shadow-color'
+                    name: '--modal--box-shadow-color',
+                    value: 'var(--box-shadow-color)'
                 },
                 {
-                    name: '--modal--box-shadow'
+                    name: '--modal--box-shadow',
+                    value: 'var(--modal--box-shadow-offset-x) var(--modal--box-shadow-offset-y) var(--modal--box-shadow-blur-radius) var(--modal--box-shadow-spread-radius) var(--modal--box-shadow-color)'
                 },
                 {
-                    name: '--modal--transition-property'
+                    name: '--modal--transition-property',
+                    value: 'var(--transition-property)'
                 },
                 {
-                    name: '--modal--transition-duration'
+                    name: '--modal--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--modal--transition-timing-function'
+                    name: '--modal--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--modal--transition'
+                    name: '--modal--transition',
+                    value: 'var(--modal--transition-property) var(--modal--transition-duration) var(--modal--transition-timing-function)'
                 },
                 {
-                    name: '--modal--width'
+                    name: '--modal--width',
+                    value: '100%'
                 },
                 {
-                    name: '--modal--z-index'
+                    name: '--modal--z-index',
+                    value: '2000'
                 },
                 {
-                    name: '--modal--wrapper--background'
+                    name: '--modal--wrapper--background',
+                    value: 'hsla(0 0% 0% / 0.75)'
                 },
                 {
-                    name: '--modal--close--color'
+                    name: '--modal--close--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--modal--close--hover--background'
+                    name: '--modal--close--hover--background',
+                    value: 'hsla(0 0% 0% / 0.1)'
                 },
                 {
-                    name: '--modal--close--active--background'
+                    name: '--modal--close--active--background',
+                    value: 'hsla(0 0% 0% / 0.15)'
                 },
                 {
-                    name: '--modal--close--size'
+                    name: '--modal--close--size',
+                    value: 'calc(var(--font-size-md) * 1.5)'
                 },
                 {
-                    name: '--modal--close--font-size'
+                    name: '--modal--close--font-size',
+                    value: 'calc(var(--font-size-md) * 0.5)'
                 },
                 {
-                    name: '--modal--background'
+                    name: '--modal--background',
+                    value: 'var(--color-white)'
                 },
                 {
-                    name: '--modal--color'
+                    name: '--modal--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--modal--border-top-left-radius'
+                    name: '--modal--border-top-left-radius',
+                    value: 'var(--border-top-left-radius-md)'
                 },
                 {
-                    name: '--modal--border-top-right-radius'
+                    name: '--modal--border-top-right-radius',
+                    value: 'var(--border-top-right-radius-md)'
                 },
                 {
-                    name: '--modal--border-bottom-right-radius'
+                    name: '--modal--border-bottom-right-radius',
+                    value: 'var(--border-bottom-right-radius-md)'
                 },
                 {
-                    name: '--modal--border-bottom-left-radius'
+                    name: '--modal--border-bottom-left-radius',
+                    value: 'var(--border-bottom-left-radius-md)'
                 },
                 {
-                    name: '--modal--border-radius'
+                    name: '--modal--border-radius',
+                    value: 'var(--modal--border-top-left-radius) var(--modal--border-top-right-radius) var(--modal--border-bottom-right-radius) var(--modal--border-bottom-left-radius)'
                 },
                 {
-                    name: '--modal--font-size'
+                    name: '--modal--font-size',
+                    value: 'var(--font-size-md)'
                 },
                 {
-                    name: '--modal--padding-top'
+                    name: '--modal--padding-top',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--modal--padding-right'
+                    name: '--modal--padding-right',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--modal--padding-bottom'
+                    name: '--modal--padding-bottom',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--modal--padding-left'
+                    name: '--modal--padding-left',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--modal--padding'
+                    name: '--modal--padding',
+                    value: 'var(--modal--padding-top) var(--modal--padding-right) var(--modal--padding-bottom) var(--modal--padding-left)'
                 },
                 {
-                    name: '--modal--max-width'
+                    name: '--modal--max-width',
+                    value: 'calc(var(--spacing-md) * 30)'
                 },
                 {
-                    name: '--modal--footer--gap'
+                    name: '--modal--footer--gap',
+                    value: 'calc(var(--spacing-md) * 0.5)'
                 }
             ]
         }

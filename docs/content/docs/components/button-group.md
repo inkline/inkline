@@ -154,20 +154,35 @@ You can extends the nested configuration by using the `block` variant within nes
 
 ## Props
 
+::DocsCard{ title="Button Group Props" }
 Below is an outline of available props for the `ButtonGroup` component.
 
 ::DocsComponentProps{ package="button-group" component="ButtonGroup" }
 ::
+::
 
 ## Events
 
+::DocsCard{ title="Button Group Events" }
 The `ButtonGroup` component does not emit any custom events. However, you can bind native events like `@click` to the individual buttons within the group.
+::
 
 ## Slots
 
+::DocsCard{ title="Button Group Slots" }
 Below is an outline of available slots for the `ButtonGroup` component.
 
 ::DocsComponentSlots{ package="button-group" component="ButtonGroup" }
+::
+::
+
+## Design Tokens
+
+::DocsCard{ title="Button Group Design Tokens" }
+Below is an outline of available design tokens for the `ButtonGroup` component.
+
+::DocsComponentDesignTokens{ package="button-group" component="ButtonGroup" }
+::
 ::
 
 ## Accessibility

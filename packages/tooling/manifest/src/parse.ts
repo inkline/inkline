@@ -1,6 +1,6 @@
 import path from 'path';
 import fs from 'fs/promises';
-import { parse } from 'comment-parser';
+import { parse as parseComments } from 'comment-parser';
 import type {
     ComponentManifest,
     ComponentManifestCss,
@@ -10,6 +10,7 @@ import type {
 } from '@inkline/types';
 import { createJiti } from 'jiti';
 import glob from 'fast-glob';
+import { consume } from '@inkline/generator';
 
 export const jiti = createJiti(import.meta.url);
 
@@ -20,7 +21,7 @@ export async function parseComponent(componentPath: string) {
     // Props and Events
     const props: ComponentManifestProp[] = [];
     const events: ComponentManifestEvent[] = [];
-    const blocks = parse(source);
+    const blocks = parseComments(source);
     blocks.forEach((block) => {
         if (block.tags.length === 0) {
             return;
@@ -95,7 +96,13 @@ export async function parseTheme(themePath: string) {
 
     type ThemeVariable = {
         __name: string;
-        __value: unknown;
+        __type: 'variable' | 'reference';
+        __value: ThemeVariable[] | ThemeVariable | string;
+    };
+
+    type ThemeCalc = {
+        __type: 'calc';
+        __value: ThemeVariable[];
     };
 
     type ThemeUseFn = (options: { context: typeof context }) => Record<string, ThemeVariable>;
@@ -120,16 +127,17 @@ export async function parseTheme(themePath: string) {
     const themeColorVariablesFn = themeKeys.find((key) => key.endsWith('ColorVariables'));
     const themeSizeVariablesFn = themeKeys.find((key) => key.endsWith('SizeVariables'));
 
-    const toCSSVariable = (name: string) => `--${name}`;
+    const nameToCSSVariableString = (name: string): string => `--${name}`;
 
     if (themeVariablesFns.length > 0) {
         themeVariablesFns.forEach((themeVariablesFn) => {
             const themeVariables = (theme[themeVariablesFn] as ThemeUseFn)({ context });
             Object.keys(themeVariables).forEach((variableKey) => {
                 const themeVariable = themeVariables[variableKey];
-                css.variables.push({
-                    name: toCSSVariable(themeVariable.__name)
-                });
+                const [name, rawValue] = consume(themeVariable).split(': ');
+                const value = rawValue.replace(/;$/, '');
+
+                css.variables.push({ name, value });
             });
         });
     }
@@ -143,7 +151,7 @@ export async function parseTheme(themePath: string) {
             const themeVariable = themeColorVariables[variableKey];
             if (context.themes.default.__keys.variables.has(themeVariable.__name)) {
                 css.variables.push({
-                    name: toCSSVariable(
+                    name: nameToCSSVariableString(
                         themeVariable.__name.replace(`--${defaultColor}`, '--{color}')
                     )
                 });
@@ -159,7 +167,7 @@ export async function parseTheme(themePath: string) {
             const themeVariable = themeSizeVariables[variableKey];
             if (context.themes.default.__keys.variables.has(themeVariable.__name)) {
                 css.variables.push({
-                    name: toCSSVariable(
+                    name: nameToCSSVariableString(
                         themeVariable.__name.replace(`--${defaultSize}`, '--{size}')
                     )
                 });
@@ -172,7 +180,7 @@ export async function parseTheme(themePath: string) {
     return { css };
 }
 
-export async function generateManifest(componentDir: string) {
+export async function parse(componentDir: string) {
     const componentPaths = await glob(path.resolve(componentDir, '**', '*.vue'), {
         ignore: [path.resolve(componentDir, '**', 'examples', '*.vue')]
     });

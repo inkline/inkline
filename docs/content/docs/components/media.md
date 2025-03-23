@@ -55,17 +55,32 @@ You can nest `Media` components to build complex, hierarchical layouts such as c
 
 ## Props
 
+::DocsCard{ title="Media Props" }
 The `Media` component does not have any specific props.
+::
 
 ## Events
 
+::DocsCard{ title="Media Events" }
 The `Media` component does not emit any custom events. However, you can bind native events like `@click` to make the `Media` component interactive.
+::
 
 ## Slots
 
+::DocsCard{ title="Media Slots" }
 Below is an outline of available slots for the `Media` component.
 
 ::DocsComponentSlots{ package="media" component="Media" }
+::
+::
+
+## Design Tokens
+
+::DocsCard{ title="Media Design Tokens" }
+Below is an outline of available design tokens for the `Media` component.
+
+::DocsComponentDesignTokens{ package="media" component="Media" }
+::
 ::
 
 ## Accessibility

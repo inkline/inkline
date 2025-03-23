@@ -5,20 +5,18 @@
             "cache": true,
             "inputs": [
                 "src/**",
-                "assets/**",
-                "components/**",
-                "constants/**",
+                "!src/css/**",
+                "!src/resources/**",
+                "!src/manifest.ts",
+                "!src/theme/**",
                 "content/**",
-                "layouts/**",
-                "pages/**",
-                "server/**",
-                "types/**",
                 "vite.config.ts",
                 "nuxt.config.ts",
                 "inkline.config.ts",
                 "package.json"
             ],
             "outputs": [
+                "src/css/**",
                 "src/resources/**",
                 "src/manifest.ts",
                 "src/theme/**",
@@ -47,11 +45,13 @@
         "generate": {
             "inputs": [
                 "src/**/*.vue",
-                "src/**/*.ts"
+                "src/**/*.ts",
+                "!src/manifest.ts",
+                "!src/resources/**"
             ],
             "outputs": [
                 "src/manifest.ts",
-                "src/resources/components.ts"
+                "src/resources/**"
             ],
             "dependsOn": [
                 "^generate"
@@ -66,12 +66,7 @@
             "persistent": true
         },
         "clean": {
-            "cache": false,
-            "outputs": [
-                "dist/**",
-                "lib/**",
-                "storybook-static/**"
-            ]
+            "cache": false
         }
     }
 }

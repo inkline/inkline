@@ -70,19 +70,24 @@ export const manifest: ComponentManifest[] = [
             namespace: 'form-group',
             variables: [
                 {
-                    name: '--form-group--margin-top'
+                    name: '--form-group--margin-top',
+                    value: '0'
                 },
                 {
-                    name: '--form-group--margin-right'
+                    name: '--form-group--margin-right',
+                    value: '0'
                 },
                 {
-                    name: '--form-group--margin-bottom'
+                    name: '--form-group--margin-bottom',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--form-group--margin-left'
+                    name: '--form-group--margin-left',
+                    value: '0'
                 },
                 {
-                    name: '--form-group--margin'
+                    name: '--form-group--margin',
+                    value: 'var(--form-group--margin-top) var(--form-group--margin-right) var(--form-group--margin-bottom) var(--form-group--margin-left)'
                 }
             ]
         }

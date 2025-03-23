@@ -229,16 +229,35 @@ By default, the button will display a standard `Loader` component. You can provi
 
 ## Props
 
+::DocsCard{ title="Button Props" }
+Below is an outline of available props for the `Button` component.
+
 ::DocsComponentProps{ package="button" component="Button" }
+::
 ::
 
 ## Events
 
+::DocsCard{ title="Button Events" }
 The Button component does not emit any custom events. However, you can bind native events such as `@click` to handle user interactions.
+::
 
 ## Slots
 
+::DocsCard{ title="Button Slots" }
+Below is an outline of available slots for the `Button` component.
+
 ::DocsComponentSlots{ package="button" component="Button" }
+::
+::
+
+## Design Tokens
+
+::DocsCard{ title="Button Design Tokens" }
+Below is an outline of available design tokens for the `Button` component.
+
+::DocsComponentDesignTokens{ package="button" component="Button" }
+::
 ::
 
 ## Accessibility

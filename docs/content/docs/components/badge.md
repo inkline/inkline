@@ -94,20 +94,35 @@ Setting the `pill` prop modifies the badge’s border radius to create a pill sh
 
 ## Props
 
-Below is an outline of available props for the `Badge` component. 
+::DocsCard{ title="Badge Props" }
+Below is an outline of available props for the `Badge` component.
 
 ::DocsComponentProps{ package="badge" component="Badge" }
+::
 ::
 
 ## Events
 
+::DocsCard{ title="Badge Events" }
 The `Badge` component does not emit any custom events. However, you can bind native events like `@click` to make the badge interactive.
+::
 
 ## Slots
 
+::DocsCard{ title="Badge Slots" }
 Below is an outline of available slots for the `Badge` component.
 
 ::DocsComponentSlots{ package="badge" component="Badge" }
+::
+::
+
+## Design Tokens
+
+::DocsCard{ title="Badge Design Tokens" }
+Below is an outline of available design tokens for the `Badge` component.
+
+::DocsComponentDesignTokens{ package="badge" component="Badge" }
+::
 ::
 
 ## Accessibility

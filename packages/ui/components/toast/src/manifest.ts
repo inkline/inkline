@@ -38,52 +38,68 @@ export const manifest: ComponentManifest[] = [
             namespace: 'toast-container',
             variables: [
                 {
-                    name: '--toast-container--margin-top'
+                    name: '--toast-container--margin-top',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--toast-container--margin-right'
+                    name: '--toast-container--margin-right',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--toast-container--margin-bottom'
+                    name: '--toast-container--margin-bottom',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--toast-container--margin-left'
+                    name: '--toast-container--margin-left',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--toast-container--margin'
+                    name: '--toast-container--margin',
+                    value: 'var(--toast-container--margin-top) var(--toast-container--margin-right) var(--toast-container--margin-bottom) var(--toast-container--margin-left)'
                 },
                 {
-                    name: '--toast-container--width'
+                    name: '--toast-container--width',
+                    value: '320px'
                 },
                 {
-                    name: '--toast-container--z-index'
+                    name: '--toast-container--z-index',
+                    value: '2010'
                 },
                 {
-                    name: '--toast-container--toast--margin-top'
+                    name: '--toast-container--toast--margin-top',
+                    value: '0'
                 },
                 {
-                    name: '--toast-container--toast--margin-right'
+                    name: '--toast-container--toast--margin-right',
+                    value: '0'
                 },
                 {
-                    name: '--toast-container--toast--margin-bottom'
+                    name: '--toast-container--toast--margin-bottom',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--toast-container--toast--margin-left'
+                    name: '--toast-container--toast--margin-left',
+                    value: '0'
                 },
                 {
-                    name: '--toast-container--toast--margin'
+                    name: '--toast-container--toast--margin',
+                    value: 'var(--toast-container--toast--margin-top) var(--toast-container--toast--margin-right) var(--toast-container--toast--margin-bottom) var(--toast-container--toast--margin-left)'
                 },
                 {
-                    name: '--toast-container--toast--transition-property'
+                    name: '--toast-container--toast--transition-property',
+                    value: 'transform, opacity'
                 },
                 {
-                    name: '--toast-container--toast--transition-duration'
+                    name: '--toast-container--toast--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--toast-container--toast--transition-timing-function'
+                    name: '--toast-container--toast--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--toast-container--toast--transition'
+                    name: '--toast-container--toast--transition',
+                    value: 'var(--toast-container--toast--transition-property) var(--toast-container--toast--transition-duration) var(--toast-container--toast--transition-timing-function)'
                 }
             ]
         }
@@ -187,154 +203,204 @@ export const manifest: ComponentManifest[] = [
             namespace: 'toast',
             variables: [
                 {
-                    name: '--toast--border-top-width'
+                    name: '--toast--border-top-width',
+                    value: 'var(--border-top-width)'
                 },
                 {
-                    name: '--toast--border-top-style'
+                    name: '--toast--border-top-style',
+                    value: 'var(--border-top-style)'
                 },
                 {
-                    name: '--toast--border-top-color'
+                    name: '--toast--border-top-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--toast--border-right-width'
+                    name: '--toast--border-right-width',
+                    value: 'var(--border-right-width)'
                 },
                 {
-                    name: '--toast--border-right-style'
+                    name: '--toast--border-right-style',
+                    value: 'var(--border-right-style)'
                 },
                 {
-                    name: '--toast--border-right-color'
+                    name: '--toast--border-right-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--toast--border-bottom-width'
+                    name: '--toast--border-bottom-width',
+                    value: 'var(--border-bottom-width)'
                 },
                 {
-                    name: '--toast--border-bottom-style'
+                    name: '--toast--border-bottom-style',
+                    value: 'var(--border-bottom-style)'
                 },
                 {
-                    name: '--toast--border-bottom-color'
+                    name: '--toast--border-bottom-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--toast--border-left-width'
+                    name: '--toast--border-left-width',
+                    value: 'var(--border-left-width)'
                 },
                 {
-                    name: '--toast--border-left-style'
+                    name: '--toast--border-left-style',
+                    value: 'var(--border-left-style)'
                 },
                 {
-                    name: '--toast--border-left-color'
+                    name: '--toast--border-left-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--toast--border-width'
+                    name: '--toast--border-width',
+                    value: 'var(--toast--border-top-width) var(--toast--border-right-width) var(--toast--border-bottom-width) var(--toast--border-left-width)'
                 },
                 {
-                    name: '--toast--border-style'
+                    name: '--toast--border-style',
+                    value: 'var(--toast--border-top-style) var(--toast--border-right-style) var(--toast--border-bottom-style) var(--toast--border-left-style)'
                 },
                 {
-                    name: '--toast--border-color'
+                    name: '--toast--border-color',
+                    value: 'var(--toast--border-top-color) var(--toast--border-right-color) var(--toast--border-bottom-color) var(--toast--border-left-color)'
                 },
                 {
-                    name: '--toast--border-top'
+                    name: '--toast--border-top',
+                    value: 'var(--toast--border-top-width) var(--toast--border-top-style) var(--toast--border-top-color)'
                 },
                 {
-                    name: '--toast--border-right'
+                    name: '--toast--border-right',
+                    value: 'var(--toast--border-right-width) var(--toast--border-right-style) var(--toast--border-right-color)'
                 },
                 {
-                    name: '--toast--border-bottom'
+                    name: '--toast--border-bottom',
+                    value: 'var(--toast--border-bottom-width) var(--toast--border-bottom-style) var(--toast--border-bottom-color)'
                 },
                 {
-                    name: '--toast--border-left'
+                    name: '--toast--border-left',
+                    value: 'var(--toast--border-left-width) var(--toast--border-left-style) var(--toast--border-left-color)'
                 },
                 {
-                    name: '--toast--border'
+                    name: '--toast--border',
+                    value: 'var(--toast--border-top-width) var(--toast--border-top-style) var(--toast--border-top-color)'
                 },
                 {
-                    name: '--toast--box-shadow-offset-x'
+                    name: '--toast--box-shadow-offset-x',
+                    value: 'var(--box-shadow-offset-x)'
                 },
                 {
-                    name: '--toast--box-shadow-offset-y'
+                    name: '--toast--box-shadow-offset-y',
+                    value: 'var(--box-shadow-offset-y)'
                 },
                 {
-                    name: '--toast--box-shadow-blur-radius'
+                    name: '--toast--box-shadow-blur-radius',
+                    value: 'var(--box-shadow-blur-radius)'
                 },
                 {
-                    name: '--toast--box-shadow-spread-radius'
+                    name: '--toast--box-shadow-spread-radius',
+                    value: 'var(--box-shadow-spread-radius)'
                 },
                 {
-                    name: '--toast--box-shadow-color'
+                    name: '--toast--box-shadow-color',
+                    value: 'var(--box-shadow-color)'
                 },
                 {
-                    name: '--toast--box-shadow'
+                    name: '--toast--box-shadow',
+                    value: 'var(--toast--box-shadow-offset-x) var(--toast--box-shadow-offset-y) var(--toast--box-shadow-blur-radius) var(--toast--box-shadow-spread-radius) var(--toast--box-shadow-color)'
                 },
                 {
-                    name: '--toast--transition-property'
+                    name: '--toast--transition-property',
+                    value: 'var(--transition-property)'
                 },
                 {
-                    name: '--toast--transition-duration'
+                    name: '--toast--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--toast--transition-timing-function'
+                    name: '--toast--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--toast--transition'
+                    name: '--toast--transition',
+                    value: 'var(--toast--transition-property) var(--toast--transition-duration) var(--toast--transition-timing-function)'
                 },
                 {
-                    name: '--toast--link--font-weight'
+                    name: '--toast--link--font-weight',
+                    value: 'var(--font-weight-semibold)'
                 },
                 {
-                    name: '--toast--title--font-weight'
+                    name: '--toast--title--font-weight',
+                    value: 'var(--font-weight-semibold)'
                 },
                 {
-                    name: '--toast--title--font-size'
+                    name: '--toast--title--font-size',
+                    value: 'var(--font-size)'
                 },
                 {
-                    name: '--toast--background'
+                    name: '--toast--background',
+                    value: 'var(--color-white)'
                 },
                 {
-                    name: '--toast--color'
+                    name: '--toast--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--toast--progress--background'
+                    name: '--toast--progress--background',
+                    value: 'hsla(0 0% 0% / 0.05)'
                 },
                 {
-                    name: '--toast--progress--bar--background'
+                    name: '--toast--progress--bar--background',
+                    value: 'hsla(0 0% 0% / 0.15)'
                 },
                 {
-                    name: '--toast--progress--height'
+                    name: '--toast--progress--height',
+                    value: 'calc(var(--spacing-md) * 0.25)'
                 },
                 {
-                    name: '--toast--code--background'
+                    name: '--toast--code--background',
+                    value: 'hsla(0 0% 0% / 0.05)'
                 },
                 {
-                    name: '--toast--border-top-left-radius'
+                    name: '--toast--border-top-left-radius',
+                    value: 'var(--border-top-left-radius-md)'
                 },
                 {
-                    name: '--toast--border-top-right-radius'
+                    name: '--toast--border-top-right-radius',
+                    value: 'var(--border-top-right-radius-md)'
                 },
                 {
-                    name: '--toast--border-bottom-right-radius'
+                    name: '--toast--border-bottom-right-radius',
+                    value: 'var(--border-bottom-right-radius-md)'
                 },
                 {
-                    name: '--toast--border-bottom-left-radius'
+                    name: '--toast--border-bottom-left-radius',
+                    value: 'var(--border-bottom-left-radius-md)'
                 },
                 {
-                    name: '--toast--border-radius'
+                    name: '--toast--border-radius',
+                    value: 'var(--toast--border-top-left-radius) var(--toast--border-top-right-radius) var(--toast--border-bottom-right-radius) var(--toast--border-bottom-left-radius)'
                 },
                 {
-                    name: '--toast--font-size'
+                    name: '--toast--font-size',
+                    value: 'var(--font-size-md)'
                 },
                 {
-                    name: '--toast--padding-top'
+                    name: '--toast--padding-top',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--toast--padding-right'
+                    name: '--toast--padding-right',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--toast--padding-bottom'
+                    name: '--toast--padding-bottom',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--toast--padding-left'
+                    name: '--toast--padding-left',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--toast--padding'
+                    name: '--toast--padding',
+                    value: 'var(--toast--padding-top) var(--toast--padding-right) var(--toast--padding-bottom) var(--toast--padding-left)'
                 },
                 {
                     name: '--toast--{color}--border-top-color'
@@ -401,202 +467,268 @@ export const manifest: ComponentManifest[] = [
             namespace: '',
             variables: [
                 {
-                    name: '--toast--border-top-width'
+                    name: '--toast--border-top-width',
+                    value: 'var(--border-top-width)'
                 },
                 {
-                    name: '--toast--border-top-style'
+                    name: '--toast--border-top-style',
+                    value: 'var(--border-top-style)'
                 },
                 {
-                    name: '--toast--border-top-color'
+                    name: '--toast--border-top-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--toast--border-right-width'
+                    name: '--toast--border-right-width',
+                    value: 'var(--border-right-width)'
                 },
                 {
-                    name: '--toast--border-right-style'
+                    name: '--toast--border-right-style',
+                    value: 'var(--border-right-style)'
                 },
                 {
-                    name: '--toast--border-right-color'
+                    name: '--toast--border-right-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--toast--border-bottom-width'
+                    name: '--toast--border-bottom-width',
+                    value: 'var(--border-bottom-width)'
                 },
                 {
-                    name: '--toast--border-bottom-style'
+                    name: '--toast--border-bottom-style',
+                    value: 'var(--border-bottom-style)'
                 },
                 {
-                    name: '--toast--border-bottom-color'
+                    name: '--toast--border-bottom-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--toast--border-left-width'
+                    name: '--toast--border-left-width',
+                    value: 'var(--border-left-width)'
                 },
                 {
-                    name: '--toast--border-left-style'
+                    name: '--toast--border-left-style',
+                    value: 'var(--border-left-style)'
                 },
                 {
-                    name: '--toast--border-left-color'
+                    name: '--toast--border-left-color',
+                    value: 'var(--color-light-shade-50)'
                 },
                 {
-                    name: '--toast--border-width'
+                    name: '--toast--border-width',
+                    value: 'var(--toast--border-top-width) var(--toast--border-right-width) var(--toast--border-bottom-width) var(--toast--border-left-width)'
                 },
                 {
-                    name: '--toast--border-style'
+                    name: '--toast--border-style',
+                    value: 'var(--toast--border-top-style) var(--toast--border-right-style) var(--toast--border-bottom-style) var(--toast--border-left-style)'
                 },
                 {
-                    name: '--toast--border-color'
+                    name: '--toast--border-color',
+                    value: 'var(--toast--border-top-color) var(--toast--border-right-color) var(--toast--border-bottom-color) var(--toast--border-left-color)'
                 },
                 {
-                    name: '--toast--border-top'
+                    name: '--toast--border-top',
+                    value: 'var(--toast--border-top-width) var(--toast--border-top-style) var(--toast--border-top-color)'
                 },
                 {
-                    name: '--toast--border-right'
+                    name: '--toast--border-right',
+                    value: 'var(--toast--border-right-width) var(--toast--border-right-style) var(--toast--border-right-color)'
                 },
                 {
-                    name: '--toast--border-bottom'
+                    name: '--toast--border-bottom',
+                    value: 'var(--toast--border-bottom-width) var(--toast--border-bottom-style) var(--toast--border-bottom-color)'
                 },
                 {
-                    name: '--toast--border-left'
+                    name: '--toast--border-left',
+                    value: 'var(--toast--border-left-width) var(--toast--border-left-style) var(--toast--border-left-color)'
                 },
                 {
-                    name: '--toast--border'
+                    name: '--toast--border',
+                    value: 'var(--toast--border-top-width) var(--toast--border-top-style) var(--toast--border-top-color)'
                 },
                 {
-                    name: '--toast--box-shadow-offset-x'
+                    name: '--toast--box-shadow-offset-x',
+                    value: 'var(--box-shadow-offset-x)'
                 },
                 {
-                    name: '--toast--box-shadow-offset-y'
+                    name: '--toast--box-shadow-offset-y',
+                    value: 'var(--box-shadow-offset-y)'
                 },
                 {
-                    name: '--toast--box-shadow-blur-radius'
+                    name: '--toast--box-shadow-blur-radius',
+                    value: 'var(--box-shadow-blur-radius)'
                 },
                 {
-                    name: '--toast--box-shadow-spread-radius'
+                    name: '--toast--box-shadow-spread-radius',
+                    value: 'var(--box-shadow-spread-radius)'
                 },
                 {
-                    name: '--toast--box-shadow-color'
+                    name: '--toast--box-shadow-color',
+                    value: 'var(--box-shadow-color)'
                 },
                 {
-                    name: '--toast--box-shadow'
+                    name: '--toast--box-shadow',
+                    value: 'var(--toast--box-shadow-offset-x) var(--toast--box-shadow-offset-y) var(--toast--box-shadow-blur-radius) var(--toast--box-shadow-spread-radius) var(--toast--box-shadow-color)'
                 },
                 {
-                    name: '--toast--transition-property'
+                    name: '--toast--transition-property',
+                    value: 'var(--transition-property)'
                 },
                 {
-                    name: '--toast--transition-duration'
+                    name: '--toast--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--toast--transition-timing-function'
+                    name: '--toast--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--toast--transition'
+                    name: '--toast--transition',
+                    value: 'var(--toast--transition-property) var(--toast--transition-duration) var(--toast--transition-timing-function)'
                 },
                 {
-                    name: '--toast--link--font-weight'
+                    name: '--toast--link--font-weight',
+                    value: 'var(--font-weight-semibold)'
                 },
                 {
-                    name: '--toast--title--font-weight'
+                    name: '--toast--title--font-weight',
+                    value: 'var(--font-weight-semibold)'
                 },
                 {
-                    name: '--toast--title--font-size'
+                    name: '--toast--title--font-size',
+                    value: 'var(--font-size)'
                 },
                 {
-                    name: '--toast--background'
+                    name: '--toast--background',
+                    value: 'var(--color-white)'
                 },
                 {
-                    name: '--toast--color'
+                    name: '--toast--color',
+                    value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--toast--progress--background'
+                    name: '--toast--progress--background',
+                    value: 'hsla(0 0% 0% / 0.05)'
                 },
                 {
-                    name: '--toast--progress--bar--background'
+                    name: '--toast--progress--bar--background',
+                    value: 'hsla(0 0% 0% / 0.15)'
                 },
                 {
-                    name: '--toast--progress--height'
+                    name: '--toast--progress--height',
+                    value: 'calc(var(--spacing-md) * 0.25)'
                 },
                 {
-                    name: '--toast--code--background'
+                    name: '--toast--code--background',
+                    value: 'hsla(0 0% 0% / 0.05)'
                 },
                 {
-                    name: '--toast--border-top-left-radius'
+                    name: '--toast--border-top-left-radius',
+                    value: 'var(--border-top-left-radius-md)'
                 },
                 {
-                    name: '--toast--border-top-right-radius'
+                    name: '--toast--border-top-right-radius',
+                    value: 'var(--border-top-right-radius-md)'
                 },
                 {
-                    name: '--toast--border-bottom-right-radius'
+                    name: '--toast--border-bottom-right-radius',
+                    value: 'var(--border-bottom-right-radius-md)'
                 },
                 {
-                    name: '--toast--border-bottom-left-radius'
+                    name: '--toast--border-bottom-left-radius',
+                    value: 'var(--border-bottom-left-radius-md)'
                 },
                 {
-                    name: '--toast--border-radius'
+                    name: '--toast--border-radius',
+                    value: 'var(--toast--border-top-left-radius) var(--toast--border-top-right-radius) var(--toast--border-bottom-right-radius) var(--toast--border-bottom-left-radius)'
                 },
                 {
-                    name: '--toast--font-size'
+                    name: '--toast--font-size',
+                    value: 'var(--font-size-md)'
                 },
                 {
-                    name: '--toast--padding-top'
+                    name: '--toast--padding-top',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--toast--padding-right'
+                    name: '--toast--padding-right',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--toast--padding-bottom'
+                    name: '--toast--padding-bottom',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--toast--padding-left'
+                    name: '--toast--padding-left',
+                    value: 'var(--spacing-md)'
                 },
                 {
-                    name: '--toast--padding'
+                    name: '--toast--padding',
+                    value: 'var(--toast--padding-top) var(--toast--padding-right) var(--toast--padding-bottom) var(--toast--padding-left)'
                 },
                 {
-                    name: '--toast-container--margin-top'
+                    name: '--toast-container--margin-top',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--toast-container--margin-right'
+                    name: '--toast-container--margin-right',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--toast-container--margin-bottom'
+                    name: '--toast-container--margin-bottom',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--toast-container--margin-left'
+                    name: '--toast-container--margin-left',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--toast-container--margin'
+                    name: '--toast-container--margin',
+                    value: 'var(--toast-container--margin-top) var(--toast-container--margin-right) var(--toast-container--margin-bottom) var(--toast-container--margin-left)'
                 },
                 {
-                    name: '--toast-container--width'
+                    name: '--toast-container--width',
+                    value: '320px'
                 },
                 {
-                    name: '--toast-container--z-index'
+                    name: '--toast-container--z-index',
+                    value: '2010'
                 },
                 {
-                    name: '--toast-container--toast--margin-top'
+                    name: '--toast-container--toast--margin-top',
+                    value: '0'
                 },
                 {
-                    name: '--toast-container--toast--margin-right'
+                    name: '--toast-container--toast--margin-right',
+                    value: '0'
                 },
                 {
-                    name: '--toast-container--toast--margin-bottom'
+                    name: '--toast-container--toast--margin-bottom',
+                    value: 'var(--spacing)'
                 },
                 {
-                    name: '--toast-container--toast--margin-left'
+                    name: '--toast-container--toast--margin-left',
+                    value: '0'
                 },
                 {
-                    name: '--toast-container--toast--margin'
+                    name: '--toast-container--toast--margin',
+                    value: 'var(--toast-container--toast--margin-top) var(--toast-container--toast--margin-right) var(--toast-container--toast--margin-bottom) var(--toast-container--toast--margin-left)'
                 },
                 {
-                    name: '--toast-container--toast--transition-property'
+                    name: '--toast-container--toast--transition-property',
+                    value: 'transform, opacity'
                 },
                 {
-                    name: '--toast-container--toast--transition-duration'
+                    name: '--toast-container--toast--transition-duration',
+                    value: 'var(--transition-duration)'
                 },
                 {
-                    name: '--toast-container--toast--transition-timing-function'
+                    name: '--toast-container--toast--transition-timing-function',
+                    value: 'var(--transition-timing-function)'
                 },
                 {
-                    name: '--toast-container--toast--transition'
+                    name: '--toast-container--toast--transition',
+                    value: 'var(--toast-container--toast--transition-property) var(--toast-container--toast--transition-duration) var(--toast-container--toast--transition-timing-function)'
                 }
             ]
         }

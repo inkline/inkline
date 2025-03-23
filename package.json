@@ -8,7 +8,7 @@
         "pregenerate": "pnpm run build:core",
         "generate": "turbo run generate --filter '!@inkline/docs'",
         "prebuild": "pnpm run generate",
-        "build": "turbo run build --filter '!@inkline/e2e*'",
+        "build": "turbo run build --filter '!@inkline/e2e*' --filter '!@inkline/docs*'",
         "build:devtools": "turbo run build --filter @inkline/devtools",
         "build:core": "turbo run build --filter './packages/engine/*' --filter '@inkline/types' --filter '@inkline/theme'",
         "build:ui": "turbo run build --filter './packages/ui/*' --filter './packages/ui/addons/*'",
