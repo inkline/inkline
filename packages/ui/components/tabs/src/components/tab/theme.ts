@@ -26,11 +26,7 @@ const ns = 'tab';
 const defaultTabColor = 'light';
 const defaultTabColors = ['light', 'dark'] as const;
 
-const defaultTabSize = 'md';
-const defaultTabSizes = ['sm', 'md', 'lg'] as const;
-
 type TabColorVariant = (typeof defaultTabColors)[number];
-type TabSizeVariant = (typeof defaultTabSizes)[number];
 
 /**
  * Config
@@ -41,11 +37,8 @@ export function useTabThemeColorConfig(variant: TabColorVariant, userOptions: De
 
     const {
         colorWhite,
-        colorLightTint100,
         colorLightTint50,
-        colorLight,
         colorLightShade50,
-        colorLightShade100,
         colorDark,
         colorDarkTint50,
         colorDarkTint100
@@ -130,46 +123,6 @@ export function useTabThemeColorConfig(variant: TabColorVariant, userOptions: De
     }[variant];
 }
 
-export function useTabThemeSizeConfig(variant: TabSizeVariant, userOptions: DefinitionOptions) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize(options);
-    const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
-
-    return {
-        sm: {
-            borderRadius: 0,
-            fontSize: ref(fontSizeSm),
-            padding: {
-                top: ref(spacingSm),
-                right: ref(spacingSm),
-                bottom: ref(spacingSm),
-                left: ref(spacingSm)
-            }
-        },
-        md: {
-            borderRadius: 0,
-            fontSize: ref(fontSizeMd),
-            padding: {
-                top: ref(spacingMd),
-                right: ref(spacingMd),
-                bottom: ref(spacingMd),
-                left: ref(spacingMd)
-            }
-        },
-        lg: {
-            borderRadius: 0,
-            fontSize: ref(fontSizeLg),
-            padding: {
-                top: ref(spacingLg),
-                right: ref(spacingLg),
-                bottom: ref(spacingLg),
-                left: ref(spacingLg)
-            }
-        }
-    }[variant];
-}
-
 export function useTabThemeConfig(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
@@ -190,6 +143,8 @@ export function useTabThemeConfig(userOptions: DefinitionOptions) {
     const { transitionProperty, transitionDuration, transitionTimingFunction } =
         useTransition(options);
     const { fontWeightSemibold } = useFontWeight(options);
+    const { fontSize } = useFontSize(options);
+    const { spacing } = useSpacing(options);
 
     return merge(
         {
@@ -211,12 +166,25 @@ export function useTabThemeConfig(userOptions: DefinitionOptions) {
                     style: ref(borderLeftStyle)
                 }
             },
+            borderRadius: {
+                topLeft: '0',
+                topRight: '0',
+                bottomRight: '0',
+                bottomLeft: '0'
+            },
             boxShadow: {
                 offsetX: ref(boxShadowOffsetX),
                 offsetY: ref(boxShadowOffsetY),
                 blurRadius: ref(boxShadowBlurRadius),
                 spreadRadius: ref(boxShadowSpreadRadius),
                 color: ref(boxShadowColor)
+            },
+            fontSize: ref(fontSize),
+            padding: {
+                top: ref(spacing),
+                right: ref(spacing),
+                bottom: ref(spacing),
+                left: ref(spacing)
             },
             transition: {
                 property: ref(transitionProperty),
@@ -227,8 +195,7 @@ export function useTabThemeConfig(userOptions: DefinitionOptions) {
                 fontWeight: ref(fontWeightSemibold)
             }
         },
-        useTabThemeColorConfig(defaultTabColor, options),
-        useTabThemeSizeConfig(defaultTabSize, options)
+        useTabThemeColorConfig(defaultTabColor, options)
     );
 }
 
@@ -243,15 +210,6 @@ export function useTabThemeColorVariables(
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     return nsvariables([ns, variant] as const, useTabThemeColorConfig(variant, options), {
-        ...options,
-        registerComposed: false
-    });
-}
-
-export function useTabThemeSizeVariables(variant: TabSizeVariant, userOptions: DefinitionOptions) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    return nsvariables([ns, variant] as const, useTabThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
@@ -448,50 +406,6 @@ export function useTabThemeColorSelectors(
     );
 }
 
-export function useTabThemeSizeSelectors(variant: TabSizeVariant, userOptions: DefinitionOptions) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    const {
-        tabBorderTopLeftRadius,
-        tabBorderTopRightRadius,
-        tabBorderBottomRightRadius,
-        tabBorderBottomLeftRadius,
-        tabFontSize,
-        tabPaddingTop,
-        tabPaddingRight,
-        tabPaddingBottom,
-        tabPaddingLeft
-    } = useTabThemeVariables(options);
-
-    const {
-        variantBorderTopLeftRadius,
-        variantBorderTopRightRadius,
-        variantBorderBottomRightRadius,
-        variantBorderBottomLeftRadius,
-        variantFontSize,
-        variantPaddingTop,
-        variantPaddingRight,
-        variantPaddingBottom,
-        variantPaddingLeft
-    } = setExportsNamespace(useTabThemeSizeVariables(variant, options), 'variant');
-
-    selector(
-        `.tab.-${variant}`,
-        {
-            [toVariableKey(tabBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
-            [toVariableKey(tabBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
-            [toVariableKey(tabBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
-            [toVariableKey(tabBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
-            [toVariableKey(tabFontSize)]: ref(variantFontSize),
-            [toVariableKey(tabPaddingTop)]: ref(variantPaddingTop),
-            [toVariableKey(tabPaddingRight)]: ref(variantPaddingRight),
-            [toVariableKey(tabPaddingBottom)]: ref(variantPaddingBottom),
-            [toVariableKey(tabPaddingLeft)]: ref(variantPaddingLeft)
-        },
-        options
-    );
-}
-
 /**
  * Composables
  */
@@ -502,12 +416,6 @@ export function useTabThemeColors(colors: TabColorVariant[], userOptions: Defini
     colors.forEach((color) => useTabThemeColorSelectors(color, options));
 }
 
-export function useTabThemeSizes(sizes: TabSizeVariant[], userOptions: DefinitionOptions) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    sizes.forEach((size) => useTabThemeSizeSelectors(size, options));
-}
-
 export function useTabTheme(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
@@ -515,5 +423,4 @@ export function useTabTheme(userOptions: DefinitionOptions) {
     useTabThemeLayoutSelectors(options);
     useTabThemeBaseSelectors(options);
     useTabThemeColors([...defaultTabColors], options);
-    useTabThemeSizes([...defaultTabSizes], options);
 }

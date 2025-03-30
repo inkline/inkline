@@ -19,6 +19,11 @@
     max-width: calc(var(--fluid--max-width) * 1px);
 }
 
+.grid.-inline {
+    display: inline-flex;
+    width: auto;
+}
+
 .grid.-no-wrap {
     flex-wrap: nowrap;
 }

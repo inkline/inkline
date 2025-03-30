@@ -9,7 +9,7 @@ export interface ComponentColorProps {
 
 export function useComponentColor(props: ComponentColorProps) {
     const inkline = useInkline();
-    const color = computed(() => {
+    const color = computed<string>(() => {
         let colorClass = props.color.value || 'light';
 
         if (!props.color.value && inkline?.options) {

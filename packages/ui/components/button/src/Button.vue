@@ -1,16 +1,90 @@
 <script lang="ts">
-import type { PropType } from 'vue';
+import { markRaw, PropType } from 'vue';
 import { computed, defineComponent, inject } from 'vue';
-import { useComponentColor, useComponentSize } from '@inkline/composables';
+import { useComponentColor, useComponentSize, useOptions } from '@inkline/composables';
 import { ButtonGroupKey, FormKey, FormGroupKey } from '@inkline/types';
+import { GridBox } from '@inkline/component-box';
 import { Linkable } from '@inkline/component-linkable';
 import { Loader } from '@inkline/component-loader';
 
 const componentName = 'Button';
 
+export function useButtonVariants() {
+    const { addThemeVariant } = useOptions();
+    const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
+    const colors = [
+        'primary',
+        'secondary',
+        'success',
+        'light',
+        'dark',
+        'info',
+        'success',
+        'warning',
+        'danger'
+    ];
+    const modifiers = ['block', 'outline', 'link'];
+    const builtins = [...sizes, ...colors, ...modifiers];
+
+    addThemeVariant(
+        'button',
+        {
+            extends: ['default:interactive', 'button:md']
+        },
+        { default: true }
+    );
+
+    ['hover', 'focus', 'active'].forEach((state) => {
+        addThemeVariant(
+            `button:${state}`,
+            {
+                extends: [`default:interactive:${state}`]
+            },
+            { default: true }
+        );
+    });
+
+    sizes.forEach((size) => {
+        addThemeVariant(
+            `button:${size}`,
+            {
+                extends: `box:wide:${size}`
+            },
+            { default: true }
+        );
+    });
+
+    colors.forEach((color) => {
+        addThemeVariant(
+            `button:${color}`,
+            {
+                extends: `${color}:interactive`
+            },
+            { default: true }
+        );
+
+        ['hover', 'focus', 'active'].forEach((state) => {
+            addThemeVariant(
+                `button:${color}:${state}`,
+                {
+                    extends: [`${color}:interactive:${state}`]
+                },
+                { default: true }
+            );
+        });
+    });
+
+    return {
+        builtins,
+        colors,
+        sizes
+    };
+}
+
 export default defineComponent({
     name: componentName,
     components: {
+        GridBox,
         Linkable,
         Loader
     },
@@ -156,6 +230,15 @@ export default defineComponent({
         size: {
             type: String,
             default: undefined
+        },
+        /**
+         * The variant of the button
+         * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} variant
+         * @default
+         */
+        variant: {
+            type: [String, Array] as PropType<string | string[]>,
+            default: undefined
         }
     },
     setup(props) {
@@ -167,6 +250,19 @@ export default defineComponent({
         const rawSize = computed(() => props.size || buttonGroup?.size.value);
         const { color } = useComponentColor(componentName, rawColor);
         const { size } = useComponentSize(componentName, rawSize);
+
+        const { builtins } = useButtonVariants();
+
+        const variants = computed(() => {
+            const variantList = Array.isArray(props.variant)
+                ? props.variant
+                : (props.variant ?? '').split(/\s+/g);
+
+            return [
+                'button',
+                ...variantList.map((v) => (builtins.includes(v) ? `button:${v}` : v))
+            ];
+        });
 
         const disabled = computed(() => {
             return (
@@ -235,18 +331,23 @@ export default defineComponent({
             disabled,
             ariaDisabled,
             ariaPressed,
-            ariaBusy
+            ariaBusy,
+            variants,
+            component: markRaw(Linkable)
         };
     }
 });
 </script>
 
 <template>
-    <Linkable
+    <GridBox
         :to="to"
         :href="href"
-        :tag="tag"
+        :is="component"
         class="button"
+        :tag="tag"
+        :inline="!block"
+        justify-content="center"
         :class="classes"
         :role="role"
         :type="type"
@@ -256,6 +357,7 @@ export default defineComponent({
         :aria-pressed="ariaPressed"
         :aria-busy="ariaBusy"
         aria-live="polite"
+        :variant="variants"
     >
         <template v-if="loading">
             <slot name="loading-icon">
@@ -277,5 +379,5 @@ export default defineComponent({
                 <slot />
             </span>
         </template>
-    </Linkable>
+    </GridBox>
 </template>

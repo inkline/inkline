@@ -22,11 +22,9 @@ export default defineComponent({
 
         const active = computed(() => tabs?.active.value === props.name);
         const color = computed(() => tabs?.color.value);
-        const size = computed(() => tabs?.size.value);
         const classes = computed(() => ({
             '-active': active.value,
-            [`-${color.value}`]: color.value,
-            [`-${size.value}`]: size.value
+            [`-${color.value}`]: color.value
         }));
 
         // Delay the hiding of the tab content to allow for crawling by search engines

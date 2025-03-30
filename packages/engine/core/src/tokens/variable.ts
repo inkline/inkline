@@ -71,6 +71,13 @@ export function valueOf<Name extends string>(instance: Variable<Name>): TokenVal
 }
 
 /**
+ * Returns the name of a variable
+ */
+export function nameOf<Name extends string>(instance: Variable<Name>): Name {
+    return instance.__name;
+}
+
+/**
  * Returns the CSS name of a variable
  */
 export function toVariableKey<Name extends string>(instance: Variable<Name>): string {

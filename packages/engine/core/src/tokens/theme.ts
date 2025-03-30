@@ -20,10 +20,14 @@ export function theme(name: string, options: DefinitionOptions): Theme {
         __name: name,
         __keys: {
             variables: new Set(),
-            selectors: new Set()
+            variants: new Set(),
+            selectors: new Set(),
+            utilities: new Set()
         },
         variables: {},
-        selectors: []
+        variants: {},
+        selectors: [],
+        utilities: []
     };
 
     themes[name] = instance;

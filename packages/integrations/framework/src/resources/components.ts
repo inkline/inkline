@@ -15,6 +15,11 @@ export default [
         "filePath": "@inkline/component-typography"
     },
     {
+        "name": "Box",
+        "export": "Box",
+        "filePath": "@inkline/component-box"
+    },
+    {
         "name": "Breadcrumb",
         "export": "Breadcrumb",
         "filePath": "@inkline/component-breadcrumb"
@@ -37,6 +42,21 @@ export default [
     {
         "name": "Card",
         "export": "Card",
+        "filePath": "@inkline/component-card"
+    },
+    {
+        "name": "CardFooter",
+        "export": "CardFooter",
+        "filePath": "@inkline/component-card"
+    },
+    {
+        "name": "CardHeader",
+        "export": "CardHeader",
+        "filePath": "@inkline/component-card"
+    },
+    {
+        "name": "CardImage",
+        "export": "CardImage",
         "filePath": "@inkline/component-card"
     },
     {
@@ -83,6 +103,11 @@ export default [
         "name": "Icon",
         "export": "Icon",
         "filePath": "@inkline/component-icon"
+    },
+    {
+        "name": "Image",
+        "export": "Image",
+        "filePath": "@inkline/component-image"
     },
     {
         "name": "Input",
@@ -142,6 +167,16 @@ export default [
     {
         "name": "Popover",
         "export": "Popover",
+        "filePath": "@inkline/component-popover"
+    },
+    {
+        "name": "PopoverFooter",
+        "export": "PopoverFooter",
+        "filePath": "@inkline/component-popover"
+    },
+    {
+        "name": "PopoverHeader",
+        "export": "PopoverHeader",
         "filePath": "@inkline/component-popover"
     },
     {

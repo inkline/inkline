@@ -143,9 +143,9 @@ export default defineComponent({
          * Determines whether hover state should be transferred from trigger to popup
          * @type Boolean
          * @default true
-         * @name interactable
+         * @name interactive
          */
-        interactable: {
+        interactive: {
             type: Boolean,
             default: true
         },
@@ -211,7 +211,7 @@ export default defineComponent({
             disabled: props.disabled,
             events: props.events,
             placement: props.placement,
-            interactable: props.interactable,
+            interactive: props.interactive,
             visible: props.visible,
             animationDuration: props.animationDuration,
             hoverHideDelay: props.hoverHideDelay,

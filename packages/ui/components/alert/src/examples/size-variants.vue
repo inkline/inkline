@@ -1,16 +1,21 @@
 <template>
-    <Alert size="sm">
-        Some quick example text to build on the alert title and make up the bulk of the alert's
-        content.
+    <Alert variant="xs">
+        Some quick example text to make up the bulk of the alert's content.
     </Alert>
 
-    <Alert size="md">
-        Some quick example text to build on the alert title and make up the bulk of the alert's
-        content.
+    <Alert variant="sm">
+        Some quick example text to make up the bulk of the alert's content.
     </Alert>
 
-    <Alert size="lg">
-        Some quick example text to build on the alert title and make up the bulk of the alert's
-        content.
+    <Alert variant="md">
+        Some quick example text to make up the bulk of the alert's content.
+    </Alert>
+
+    <Alert variant="lg">
+        Some quick example text to make up the bulk of the alert's content.
+    </Alert>
+
+    <Alert variant="xl">
+        Some quick example text to make up the bulk of the alert's content.
     </Alert>
 </template>

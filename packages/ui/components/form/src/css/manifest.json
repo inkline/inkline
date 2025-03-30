@@ -4,7 +4,8 @@
         "__name": "default",
         "__keys": {
             "variables": {},
-            "selectors": {}
+            "selectors": {},
+            "utilities": {}
         },
         "variables": {},
         "selectors": [
@@ -15,6 +16,7 @@
                     "position": "relative"
                 }
             }
-        ]
+        ],
+        "utilities": []
     }
 }

@@ -144,7 +144,7 @@ And a `::DocsImportNotice::` to indicate important usage notes.
 5. Provide a **Usage** section with multiple sub-sections (e.g., Basic Usage, Variants, etc.). For each sub-section:
     - Write a guide on using the props that the example refers to.
     - Write a brief explanation/caption of what the example does after the tabs.
-    - Use `::DocsComponentDemo{ package="{{component-package}}" name="{{demo-name}}" }::` markers to indicate demo components.
+    - Use `::DocsComponentDemo{ package="@inkline/component-{{component-package}}" name="examples/{{demo-file}}.vue" }::` markers to indicate demo components.
     - Use HTML comments for code references:
       ```html
       <!-- :DocsCode{ package="@inkline/component-{{component-package}}" file="examples/{{demo-file}}.vue" } -->
@@ -152,26 +152,32 @@ And a `::DocsImportNotice::` to indicate important usage notes.
 
 6. Create a **Props** section referencing the Inkline component props:
    ```
-   ::DocsComponentProps{ package="{{component-package}}" component="{{ComponentName}}" }
+   ::DocsComponentProps{ package="@inkline/component-{{component-package}}" component="{{ComponentName}}" }
    ::
    ```
 
 7. If the component emits any events, create an **Events** section:
    ```
-   ::DocsComponentEvents{ package="{{component-package}}" component="{{ComponentName}}" }
+   ::DocsComponentEvents{ package="@inkline/component-{{component-package}}" component="{{ComponentName}}" }
    ::
    ```
    Otherwise, mention it does not emit custom events.
 
 8. Provide a **Slots** section:
    ```
-   ::DocsComponentSlots{ package="{{component-package}}" component="{{ComponentName}}" }
+   ::DocsComponentSlots{ package="@inkline/component-{{component-package}}" component="{{ComponentName}}" }
+   ::
+   ```
+   
+9. Provide a **Design Tokens** section:
+   ```
+   ::DocsComponentDesignTokens{ package="@inkline/component-{{component-package}}" component="{{ComponentName}}" }
    ::
    ```
 
-9. Write an **Accessibility** section with bullet points for ARIA roles, keyboard navigation, and additional guidelines. Focus on best practices.
+10. Write an **Accessibility** section with bullet points for ARIA roles, keyboard navigation, and additional guidelines. Focus on best practices.
 
-10. Write a **Best Practices** section with tips on using the component effectively.
+11. Write a **Best Practices** section with tips on using the component effectively.
 
 Use the example structure below as a reference. Update it with the specific examples, text, and sub-sections for the `{{ComponentName}}` component:
 
@@ -211,7 +217,7 @@ In its simplest form, the `{{ComponentName}}` component is used...
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="{{component-package}}" name="basic" }
+:DocsComponentDemo{ package="@inkline/component-{{component-package}}" name="examples/basic.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-{{component-package}}" file="examples/basic.vue" } -->
 ::
@@ -224,7 +230,7 @@ Using the `color` prop, you can quickly style the `{{ComponentName}}` in differe
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="{{component-package}}" name="color-variants" }
+:DocsComponentDemo{ package="@inkline/component-{{component-package}}" name="examples/color-variants.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-{{component-package}}" file="examples/color-variants.vue" } -->
 ::
@@ -237,7 +243,7 @@ Using the `size` prop, you can quickly style the `{{ComponentName}}` in differen
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="{{component-package}}" name="size-variants" }
+:DocsComponentDemo{ package="@inkline/component-{{component-package}}" name="examples/size-variants.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-{{component-package}}" file="examples/size-variants.vue" } -->
 ::
@@ -250,9 +256,9 @@ Other Example Description
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="{{component-package}}" name="[other-example]" }
+:DocsComponentDemo{ package="@inkline/component-{{component-package}}" name="examples/[other-example].vue" }
 #code
-<!-- :DocsCode{ package="@inkline/component-{{component-package}}" file="examples/size-variants.vue" } -->
+<!-- :DocsCode{ package="@inkline/component-{{component-package}}" file="examples/[other-example].vue" } -->
 ::
 
 *Other Example Caption*
@@ -262,7 +268,7 @@ Other Example Description
 ::DocsCard{ title="{{ComponentName}} Props" }
 Below is an outline of available props for the `{{ComponentName}}` component.
 
-::DocsComponentProps{ package="{{component-package}}" component="{{ComponentName}}" }
+::DocsComponentProps{ package="@inkline/component-{{component-package}}" component="{{ComponentName}}" }
 ::
 ::
 
@@ -271,7 +277,7 @@ Below is an outline of available props for the `{{ComponentName}}` component.
 ::DocsCard{ title="{{ComponentName}} Events" }
 The `{{ComponentName}}` component does not emit any custom events. However, you can bind native events like `@click` to make the `{{ComponentName}}` interactive.
 
-::DocsComponentEvents{ package="{{component-package}}" component="{{ComponentName}}" }
+::DocsComponentEvents{ package="@inkline/component-{{component-package}}" component="{{ComponentName}}" }
 ::
 ::
 
@@ -280,7 +286,16 @@ The `{{ComponentName}}` component does not emit any custom events. However, you 
 ::DocsCard{ title="{{ComponentName}} Slots" }
 Below is an outline of available slots for the `{{ComponentName}}` component.
 
-::DocsComponentSlots{ package="{{component-package}}" component="{{ComponentName}}" }
+::DocsComponentSlots{ package="@inkline/component-{{component-package}}" component="{{ComponentName}}" }
+::
+::
+
+## Design Tokens
+
+::DocsCard{ title="{{ComponentName}} Design Tokens" }
+Below is an outline of available design tokens for the `{{ComponentName}}` component.
+
+::DocsComponentDesignTokens{ package="@inkline/component-{{component-package}}" component="{{ComponentName}}" }
 ::
 ::
 

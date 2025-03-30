@@ -10,6 +10,7 @@ export * from './fluid/theme';
 export * from './heading/theme';
 export * from './hr/theme';
 export * from './iframe/theme';
+export * from './img/theme';
 export * from './kbd/theme';
 export * from './legend/theme';
 export * from './mark/theme';

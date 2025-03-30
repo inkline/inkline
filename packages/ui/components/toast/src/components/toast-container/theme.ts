@@ -32,9 +32,7 @@ export function useToastContainerThemeConfig(userOptions: DefinitionOptions) {
          * @element toast
          */
         toast: {
-            margin: {
-                bottom: ref(spacing)
-            },
+            gap: ref(spacing),
             transition: {
                 property: 'transform, opacity',
                 duration: ref(transitionDuration),
@@ -68,13 +66,16 @@ export function useToastContainerLayoutSelectors(userOptions: DefinitionOptions)
         toastContainerMargin,
         toastContainerWidth,
         toastContainerZIndex,
-        toastContainerToastMargin,
+        toastContainerToastGap,
         toastContainerToastTransition
     } = useToastContainerThemeVariables(options);
 
     selector(
         '.toast-container',
         {
+            display: 'flex',
+            flexDirection: 'column',
+            gap: ref(toastContainerToastGap),
             margin: ref(toastContainerMargin),
             width: ref(toastContainerWidth),
             position: 'fixed',
@@ -167,7 +168,6 @@ export function useToastContainerLayoutSelectors(userOptions: DefinitionOptions)
     selector(
         '.toast-container > .toast',
         {
-            margin: ref(toastContainerToastMargin),
             width: ref(toastContainerWidth),
             maxWidth: '100%',
             position: 'relative'

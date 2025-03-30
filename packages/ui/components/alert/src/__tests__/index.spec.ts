@@ -5,8 +5,7 @@ import { createTestingInklineOptionsProvide } from '@inkline/test-utils';
 describe('Components', () => {
     describe('Alert', () => {
         const props = {
-            color: 'primary',
-            size: 'md'
+            variant: ['info', 'md']
         };
 
         it('should be named correctly', () => {
@@ -23,34 +22,6 @@ describe('Components', () => {
                 }
             });
             expect(wrapper.html()).toMatchSnapshot();
-        });
-
-        describe('computed', () => {
-            describe('classes', () => {
-                it('should add classes based on props', () => {
-                    const wrapper = render(Alert, {
-                        slots: {
-                            icon: '<span />'
-                        },
-                        props: {
-                            dismissible: true,
-                            ...props
-                        },
-                        global: {
-                            provide: {
-                                ...createTestingInklineOptionsProvide()
-                            }
-                        }
-                    });
-
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        `-${props.color}`,
-                        `-${props.size}`,
-                        '-dismissible',
-                        '-with-icon'
-                    );
-                });
-            });
         });
 
         describe('methods', () => {

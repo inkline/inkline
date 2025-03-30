@@ -68,78 +68,6 @@ export function useTabPanelThemeColorConfig(
     }[variant];
 }
 
-export function useTabPanelThemeSizeConfig(
-    variant: TabPanelSizeVariant,
-    userOptions: DefinitionOptions
-) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    const {
-        borderTopLeftRadiusSm,
-        borderTopRightRadiusSm,
-        borderBottomRightRadiusSm,
-        borderBottomLeftRadiusSm,
-        borderTopLeftRadiusMd,
-        borderTopRightRadiusMd,
-        borderBottomRightRadiusMd,
-        borderBottomLeftRadiusMd,
-        borderTopLeftRadiusLg,
-        borderTopRightRadiusLg,
-        borderBottomRightRadiusLg,
-        borderBottomLeftRadiusLg
-    } = useBorderRadius(options);
-    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize(options);
-    const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
-
-    return {
-        sm: {
-            borderRadius: {
-                topLeft: ref(borderTopLeftRadiusSm),
-                topRight: ref(borderTopRightRadiusSm),
-                bottomRight: ref(borderBottomRightRadiusSm),
-                bottomLeft: ref(borderBottomLeftRadiusSm)
-            },
-            fontSize: ref(fontSizeSm),
-            padding: {
-                top: ref(spacingSm),
-                right: ref(spacingSm),
-                bottom: ref(spacingSm),
-                left: ref(spacingSm)
-            }
-        },
-        md: {
-            borderRadius: {
-                topLeft: ref(borderTopLeftRadiusMd),
-                topRight: ref(borderTopRightRadiusMd),
-                bottomRight: ref(borderBottomRightRadiusMd),
-                bottomLeft: ref(borderBottomLeftRadiusMd)
-            },
-            fontSize: ref(fontSizeMd),
-            padding: {
-                top: ref(spacingMd),
-                right: ref(spacingMd),
-                bottom: ref(spacingMd),
-                left: ref(spacingMd)
-            }
-        },
-        lg: {
-            borderRadius: {
-                topLeft: ref(borderTopLeftRadiusLg),
-                topRight: ref(borderTopRightRadiusLg),
-                bottomRight: ref(borderBottomRightRadiusLg),
-                bottomLeft: ref(borderBottomLeftRadiusLg)
-            },
-            fontSize: ref(fontSizeLg),
-            padding: {
-                top: ref(spacingLg),
-                right: ref(spacingLg),
-                bottom: ref(spacingLg),
-                left: ref(spacingLg)
-            }
-        }
-    }[variant];
-}
-
 export function useTabPanelThemeConfig(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
@@ -162,6 +90,14 @@ export function useTabPanelThemeConfig(userOptions: DefinitionOptions) {
     } = useBoxShadow(options);
     const { transitionProperty, transitionDuration, transitionTimingFunction } =
         useTransition(options);
+    const {
+        borderTopLeftRadius,
+        borderTopRightRadius,
+        borderBottomRightRadius,
+        borderBottomLeftRadius
+    } = useBorderRadius(options);
+    const { fontSize } = useFontSize(options);
+    const { spacing } = useSpacing(options);
 
     return merge(
         {
@@ -190,14 +126,26 @@ export function useTabPanelThemeConfig(userOptions: DefinitionOptions) {
                 spreadRadius: ref(boxShadowSpreadRadius),
                 color: ref(boxShadowColor)
             },
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadius),
+                topRight: ref(borderTopRightRadius),
+                bottomRight: ref(borderBottomRightRadius),
+                bottomLeft: ref(borderBottomLeftRadius)
+            },
+            fontSize: ref(fontSize),
+            padding: {
+                top: ref(spacing),
+                right: ref(spacing),
+                bottom: ref(spacing),
+                left: ref(spacing)
+            },
             transition: {
                 property: ref(transitionProperty),
                 duration: ref(transitionDuration),
                 timingFunction: ref(transitionTimingFunction)
             }
         },
-        useTabPanelThemeColorConfig(defaultTabPanelColor, options),
-        useTabPanelThemeSizeConfig(defaultTabPanelSize, options)
+        useTabPanelThemeColorConfig(defaultTabPanelColor, options)
     );
 }
 
@@ -212,18 +160,6 @@ export function useTabPanelThemeColorVariables(
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     return nsvariables([ns, variant] as const, useTabPanelThemeColorConfig(variant, options), {
-        ...options,
-        registerComposed: false
-    });
-}
-
-export function useTabPanelThemeSizeVariables(
-    variant: TabPanelSizeVariant,
-    userOptions: DefinitionOptions
-) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    return nsvariables([ns, variant] as const, useTabPanelThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
@@ -335,53 +271,6 @@ export function useTabPanelThemeColorSelectors(
     );
 }
 
-export function useTabPanelThemeSizeSelectors(
-    variant: TabPanelSizeVariant,
-    userOptions: DefinitionOptions
-) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    const {
-        tabPanelBorderTopLeftRadius,
-        tabPanelBorderTopRightRadius,
-        tabPanelBorderBottomRightRadius,
-        tabPanelBorderBottomLeftRadius,
-        tabPanelFontSize,
-        tabPanelPaddingTop,
-        tabPanelPaddingRight,
-        tabPanelPaddingBottom,
-        tabPanelPaddingLeft
-    } = useTabPanelThemeVariables(options);
-
-    const {
-        variantBorderTopLeftRadius,
-        variantBorderTopRightRadius,
-        variantBorderBottomRightRadius,
-        variantBorderBottomLeftRadius,
-        variantFontSize,
-        variantPaddingTop,
-        variantPaddingRight,
-        variantPaddingBottom,
-        variantPaddingLeft
-    } = setExportsNamespace(useTabPanelThemeSizeVariables(variant, options), 'variant');
-
-    selector(
-        `.tab-panel.-${variant}`,
-        {
-            [toVariableKey(tabPanelBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
-            [toVariableKey(tabPanelBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
-            [toVariableKey(tabPanelBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
-            [toVariableKey(tabPanelBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
-            [toVariableKey(tabPanelFontSize)]: ref(variantFontSize),
-            [toVariableKey(tabPanelPaddingTop)]: ref(variantPaddingTop),
-            [toVariableKey(tabPanelPaddingRight)]: ref(variantPaddingRight),
-            [toVariableKey(tabPanelPaddingBottom)]: ref(variantPaddingBottom),
-            [toVariableKey(tabPanelPaddingLeft)]: ref(variantPaddingLeft)
-        },
-        options
-    );
-}
-
 /**
  * Composables
  */
@@ -395,15 +284,6 @@ export function useTabPanelThemeColors(
     colors.forEach((color) => useTabPanelThemeColorSelectors(color, options));
 }
 
-export function useTabPanelThemeSizes(
-    sizes: TabPanelSizeVariant[],
-    userOptions: DefinitionOptions
-) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    sizes.forEach((size) => useTabPanelThemeSizeSelectors(size, options));
-}
-
 export function useTabPanelTheme(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
@@ -411,5 +291,4 @@ export function useTabPanelTheme(userOptions: DefinitionOptions) {
     useTabPanelThemeLayoutSelectors(options);
     useTabPanelThemeBaseSelectors(options);
     useTabPanelThemeColors([...defaultTabPanelColors], options);
-    useTabPanelThemeSizes([...defaultTabPanelSizes], options);
 }

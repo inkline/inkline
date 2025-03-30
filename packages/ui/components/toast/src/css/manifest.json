@@ -4,7 +4,8 @@
         "__name": "default",
         "__keys": {
             "variables": {},
-            "selectors": {}
+            "selectors": {},
+            "utilities": {}
         },
         "variables": {
             "color-white": {
@@ -494,6 +495,57 @@
                     }
                 ]
             },
+            "box-shadow-offset-x-sm": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-x-sm",
+                "__value": 0
+            },
+            "box-shadow-offset-y-sm": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-y-sm",
+                "__value": "0.25rem"
+            },
+            "box-shadow-blur-radius-sm": {
+                "__type": "variable",
+                "__name": "box-shadow-blur-radius-sm",
+                "__value": "0.5rem"
+            },
+            "box-shadow-spread-radius-sm": {
+                "__type": "variable",
+                "__name": "box-shadow-spread-radius-sm",
+                "__value": "-0.125rem"
+            },
+            "box-shadow-color-sm": {
+                "__type": "variable",
+                "__name": "box-shadow-color-sm",
+                "__value": "rgba(0, 0, 0, 0.075)"
+            },
+            "box-shadow-sm": {
+                "__type": "variable",
+                "__name": "box-shadow-sm",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-x-sm"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-y-sm"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-blur-radius-sm"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-spread-radius-sm"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-color-sm"
+                    }
+                ]
+            },
             "box-shadow-offset-x": {
                 "__type": "variable",
                 "__name": "box-shadow-offset-x",
@@ -542,6 +594,57 @@
                     {
                         "__type": "reference",
                         "__name": "box-shadow-color"
+                    }
+                ]
+            },
+            "box-shadow-offset-x-lg": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-x-lg",
+                "__value": 0
+            },
+            "box-shadow-offset-y-lg": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-y-lg",
+                "__value": "1rem"
+            },
+            "box-shadow-blur-radius-lg": {
+                "__type": "variable",
+                "__name": "box-shadow-blur-radius-lg",
+                "__value": "1.5rem"
+            },
+            "box-shadow-spread-radius-lg": {
+                "__type": "variable",
+                "__name": "box-shadow-spread-radius-lg",
+                "__value": "-1.5rem"
+            },
+            "box-shadow-color-lg": {
+                "__type": "variable",
+                "__name": "box-shadow-color-lg",
+                "__value": "rgba(0, 0, 0, 0.2)"
+            },
+            "box-shadow-lg": {
+                "__type": "variable",
+                "__name": "box-shadow-lg",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-x-lg"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-y-lg"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-blur-radius-lg"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-spread-radius-lg"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-color-lg"
                     }
                 ]
             },
@@ -6367,6 +6470,46 @@
                     "__name": "spacing-md"
                 }
             },
+            "toast--animation-name": {
+                "__type": "variable",
+                "__name": "toast--animation-name",
+                "__value": "toast-duration"
+            },
+            "toast--animation-fill-mode": {
+                "__type": "variable",
+                "__name": "toast--animation-fill-mode",
+                "__value": "forwards"
+            },
+            "toast--animation-play-state": {
+                "__type": "variable",
+                "__name": "toast--animation-play-state",
+                "__value": "running"
+            },
+            "toast--animation-duration": {
+                "__type": "variable",
+                "__name": "toast--animation-duration",
+                "__value": 4000
+            },
+            "toast--animation-iteration-count": {
+                "__type": "variable",
+                "__name": "toast--animation-iteration-count",
+                "__value": 1
+            },
+            "toast--animation-direction": {
+                "__type": "variable",
+                "__name": "toast--animation-direction",
+                "__value": "normal"
+            },
+            "toast--animation-delay": {
+                "__type": "variable",
+                "__name": "toast--animation-delay",
+                "__value": 0
+            },
+            "toast--animation-timing-function": {
+                "__type": "variable",
+                "__name": "toast--animation-timing-function",
+                "__value": "linear"
+            },
             "toast--border-top-color": {
                 "__type": "variable",
                 "__name": "toast--border-top-color",
@@ -7692,28 +7835,13 @@
                 "__name": "toast-container--z-index",
                 "__value": 2010
             },
-            "toast-container--toast--margin-top": {
+            "toast-container--toast--gap": {
                 "__type": "variable",
-                "__name": "toast-container--toast--margin-top",
-                "__value": 0
-            },
-            "toast-container--toast--margin-right": {
-                "__type": "variable",
-                "__name": "toast-container--toast--margin-right",
-                "__value": 0
-            },
-            "toast-container--toast--margin-bottom": {
-                "__type": "variable",
-                "__name": "toast-container--toast--margin-bottom",
+                "__name": "toast-container--toast--gap",
                 "__value": {
                     "__type": "reference",
                     "__name": "spacing"
                 }
-            },
-            "toast-container--toast--margin-left": {
-                "__type": "variable",
-                "__name": "toast-container--toast--margin-left",
-                "__value": 0
             },
             "toast-container--toast--transition-property": {
                 "__type": "variable",
@@ -7801,7 +7929,18 @@
                 "__type": "selector",
                 "__name": ".toast-progress-bar",
                 "__value": {
-                    "animation": "toast-duration var(--toast--duration) forwards",
+                    "animationName": {
+                        "__type": "reference",
+                        "__name": "toast--animation-name"
+                    },
+                    "animationFillMode": {
+                        "__type": "reference",
+                        "__name": "toast--animation-fill-mode"
+                    },
+                    "animationDuration": {
+                        "__type": "reference",
+                        "__name": "toast--animation-duration"
+                    },
                     "transformOrigin": "left center",
                     "width": "100%",
                     "height": "100%"
@@ -8547,6 +8686,12 @@
                 "__type": "selector",
                 "__name": ".toast-container",
                 "__value": {
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "gap": {
+                        "__type": "reference",
+                        "__name": "toast-container--toast--gap"
+                    },
                     "margin": {
                         "__type": "reference",
                         "__name": "toast-container--margin"
@@ -8637,10 +8782,6 @@
                 "__type": "selector",
                 "__name": ".toast-container > .toast",
                 "__value": {
-                    "margin": {
-                        "__type": "reference",
-                        "__name": "toast-container--toast--margin"
-                    },
                     "width": {
                         "__type": "reference",
                         "__name": "toast-container--width"
@@ -8680,6 +8821,7 @@
                     "position": "absolute"
                 }
             }
-        ]
+        ],
+        "utilities": []
     }
 }

@@ -2,6 +2,39 @@ import type { ComponentManifest } from '@inkline/types';
 
 export const manifest: ComponentManifest[] = [
     {
+        name: 'CardFooter',
+        props: [],
+        events: [],
+        slots: [
+            {
+                name: 'default',
+                description: 'Slot for card footer content'
+            }
+        ]
+    },
+    {
+        name: 'CardHeader',
+        props: [],
+        events: [],
+        slots: [
+            {
+                name: 'default',
+                description: 'Slot for card header content'
+            }
+        ]
+    },
+    {
+        name: 'CardImage',
+        props: [],
+        events: [],
+        slots: [
+            {
+                name: 'default',
+                description: 'Slot for card image content'
+            }
+        ]
+    },
+    {
         name: 'Card',
         props: [
             {

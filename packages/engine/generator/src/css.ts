@@ -59,7 +59,7 @@ export const cssGenerator = defineGenerator((configuration) => {
     );
 
     const themeFiles: OutputFile[] = Object.values(configuration.themes).flatMap((theme) => {
-        const { variables, selectors, ...common } = theme;
+        const { variables, selectors, utilities, ...common } = theme;
         const themeOutputFiles: OutputFile[] = [];
         const themeIndexFileLines: string[] = [];
 
@@ -80,6 +80,16 @@ export const cssGenerator = defineGenerator((configuration) => {
             themeOutputFiles.push({
                 path: `${theme.__name}/selectors.css`,
                 content: consume({ selectors, ...common })
+            });
+        }
+
+        if (Object.keys(utilities).length) {
+            themeIndexFileLines.push(
+                `@import "./utilities.css"${layersEnabled ? ' layer(utilities)' : ''};`
+            );
+            themeOutputFiles.push({
+                path: `${theme.__name}/utilities.css`,
+                content: consume({ utilities, ...common })
             });
         }
 

@@ -28,15 +28,6 @@ export default defineComponent({
             default: ''
         },
         /**
-         * The size variant of the tabs
-         * @param {'sm' | 'md' | 'lg'} size
-         * @default
-         */
-        size: {
-            type: String,
-            default: undefined
-        },
-        /**
          * Delay the hiding of the tab content to allow for crawling by search engines
          * @param {boolean} seo
          * @default true
@@ -60,13 +51,10 @@ export default defineComponent({
         const seo = ref(props.seo);
 
         const rawColor = toRef(props, 'color');
-        const rawSize = toRef(props, 'size');
         const { color } = useComponentColor(componentName, rawColor);
-        const { size } = useComponentSize(componentName, rawSize);
 
         const classes = computed(() => ({
-            [`-${color.value}`]: true,
-            [`-${size.value}`]: true
+            [`-${color.value}`]: true
         }));
 
         function setActive(id: string) {
@@ -85,7 +73,6 @@ export default defineComponent({
             active,
             seo,
             color,
-            size,
             setActive
         });
 

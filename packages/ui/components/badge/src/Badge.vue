@@ -1,29 +1,20 @@
 <script lang="ts">
-import { useComponentColor, useComponentSize } from '@inkline/composables';
-import { computed, defineComponent, toRef } from 'vue';
+import { computed, defineComponent, PropType } from 'vue';
+import { Box } from '@inkline/component-box';
 
 const componentName = 'Badge';
 
 export default defineComponent({
     name: componentName,
-    inheritAttrs: false,
+    components: { Box },
     props: {
         /**
-         * The color variant of the badge
-         * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} color
+         * The variant of the badge
+         * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} variant
          * @default
          */
-        color: {
-            type: String,
-            default: undefined
-        },
-        /**
-         * The size variant of the badge
-         * @param {'sm' | 'md' | 'lg' | 'inherit'} size
-         * @default
-         */
-        size: {
-            type: String,
+        variant: {
+            type: [String, Array] as PropType<string | string[]>,
             default: undefined
         },
         /**
@@ -37,27 +28,25 @@ export default defineComponent({
         }
     },
     setup(props) {
-        const rawColor = toRef(props, 'color');
-        const rawSize = toRef(props, 'size');
-        const { color } = useComponentColor(componentName, rawColor);
-        const { size } = useComponentSize(componentName, rawSize);
-
-        const classes = computed(() => ({
-            [`-${color.value}`]: Boolean(color.value),
-            [`-${size.value}`]: Boolean(size.value),
-            '-pill': props.pill
-        }));
+        const variants = computed(() => {
+            // const variantList = toVariantList(props.variant);
+            return [
+                'badge',
+                ...(props.pill ? ['badge:pill'] : [])
+                // ...variantList.map((v) => (builtins.includes(v) ? `badge:${v}` : v))
+            ];
+        });
 
         return {
-            classes
+            variants
         };
     }
 });
 </script>
 
 <template>
-    <div v-bind="$attrs" class="badge" :class="classes">
+    <Box class="badge" :variant="variants">
         <!-- @slot default Slot for default badge content -->
         <slot />
-    </div>
+    </Box>
 </template>

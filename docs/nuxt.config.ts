@@ -3,6 +3,9 @@ import TailwindCSS from '@tailwindcss/vite';
 import { aliases } from '@inkline/vite-config';
 import { contentFileBeforeParseHook } from './hooks';
 
+const packagesDir = resolve(__dirname, '..', 'packages');
+const componentsDir = resolve(packagesDir, 'ui', 'components');
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     modules: [
@@ -97,13 +100,20 @@ export default defineNuxtConfig({
                     replacement: resolve(__dirname, '..', 'packages', alias.replacement)
                 })),
                 {
+                    find: /@inkline\/component-(.+)\/components\/(.+)\/examples/,
+                    replacement: resolve(
+                        componentsDir,
+                        '$1',
+                        'src',
+                        'components',
+                        '$2',
+                        'examples'
+                    )
+                },
+                {
                     find: /@inkline\/component-(.+)\/examples/,
                     replacement: resolve(
-                        __dirname,
-                        '..',
-                        'packages',
-                        'ui',
-                        'components',
+                        componentsDir,
                         '$1',
                         'src',
                         'examples'
@@ -179,5 +189,6 @@ export default defineNuxtConfig({
     hooks: {
         'content:file:beforeParse': contentFileBeforeParseHook
     },
+    telemetry: false,
     srcDir: 'src'
 });

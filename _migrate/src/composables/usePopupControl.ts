@@ -16,7 +16,7 @@ export function usePopupControl(props: {
         readonly?: boolean;
         events: PopupEvent | PopupEvent[];
         placement: Placement;
-        interactable: boolean;
+        interactive: boolean;
         visible?: boolean;
         animationDuration: number;
         hoverHideDelay: number;
@@ -65,15 +65,15 @@ export function usePopupControl(props: {
                     on(
                         triggerRef,
                         'mouseenter',
-                        props.componentProps.value.interactable ? hoverShow : show
+                        props.componentProps.value.interactive ? hoverShow : show
                     );
                     on(
                         triggerRef,
                         'mouseleave',
-                        props.componentProps.value.interactable ? hoverHide : hide
+                        props.componentProps.value.interactive ? hoverHide : hide
                     );
 
-                    if (props.componentProps.value.interactable) {
+                    if (props.componentProps.value.interactive) {
                         on(popupRef, 'mouseenter', hoverShow);
                         on(popupRef, 'mouseleave', hoverHide);
                     }
@@ -107,15 +107,15 @@ export function usePopupControl(props: {
                     off(
                         triggerRef,
                         'mouseenter',
-                        props.componentProps.value.interactable ? hoverShow : show
+                        props.componentProps.value.interactive ? hoverShow : show
                     );
                     off(
                         triggerRef,
                         'mouseleave',
-                        props.componentProps.value.interactable ? hoverHide : hide
+                        props.componentProps.value.interactive ? hoverHide : hide
                     );
 
-                    if (props.componentProps.value.interactable) {
+                    if (props.componentProps.value.interactive) {
                         off(popupRef, 'mouseenter', hoverShow);
                         off(popupRef, 'mouseleave', hoverHide);
                     }

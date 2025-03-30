@@ -693,16 +693,15 @@ export function useButtonThemeVariables(userOptions: DefinitionOptions) {
 export function useButtonThemeLayout(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
+    const { fontSize } = useFontSize(options);
+
     selector(
         '.button',
         {
-            display: 'inline-flex',
+            lineHeight: 1,
             textAlign: 'center',
             whiteSpace: 'nowrap',
-            verticalAlign: 'middle',
             userSelect: 'none',
-            justifyContent: 'center',
-            alignItems: 'center',
             cursor: 'pointer',
             textDecoration: 'none',
             outline: 0
@@ -711,6 +710,14 @@ export function useButtonThemeLayout(userOptions: DefinitionOptions) {
     );
 
     // Button states
+
+    selector(
+        ['.button:hover', '.button:focus', '.button:active'],
+        {
+            textDecoration: 'none'
+        },
+        options
+    );
 
     selector(
         ['.button.-disabled', '.button:disabled'],
@@ -733,10 +740,19 @@ export function useButtonThemeLayout(userOptions: DefinitionOptions) {
     selector(
         ['.button-icon', 'button-content'],
         {
-            lineHeight: 1,
             display: 'inline-flex',
-            justifyContent: 'center',
             alignItems: 'center'
+        },
+        options
+    );
+
+    // Button loader
+
+    selector(
+        ['.button .loader'],
+        {
+            width: ref(fontSize),
+            height: ref(fontSize)
         },
         options
     );
@@ -1165,10 +1181,10 @@ export function useButtonThemeColors(colors: ButtonColorVariant[], userOptions: 
 export function useButtonTheme(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    useButtonThemeVariables(options);
+    // useButtonThemeVariables(options);
     useButtonThemeLayout(options);
-    useButtonThemeBaseSelectors(options);
-    useButtonThemeSizes([...defaultButtonSizes], options);
-    useButtonThemeColors([...defaultButtonColors], options);
-    useButtonThemeVariantsSelectors(options);
+    // useButtonThemeBaseSelectors(options);
+    // useButtonThemeSizes([...defaultButtonSizes], options);
+    // useButtonThemeColors([...defaultButtonColors], options);
+    // useButtonThemeVariantsSelectors(options);
 }

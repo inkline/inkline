@@ -9,6 +9,8 @@ export const enum TokenType {
     Reference = 'reference',
     HSLAColor = 'hsla',
     Selector = 'selector',
+    Utility = 'utility',
+    Variant = 'variant',
     Keyframes = 'keyframes',
     AtRule = 'media',
     Theme = 'theme',
@@ -69,6 +71,20 @@ export type Selector = {
     __value: ComponentValue | TokenValue;
 };
 
+export type Utility = {
+    __id: string;
+    __type: TokenType.Utility;
+    __name: string;
+    __value: Selector;
+};
+
+export type Variant = {
+    __id: string;
+    __type: TokenType.Variant;
+    __name: string;
+    __value: ComponentValue;
+};
+
 export type AtRules = 'media' | 'supports' | 'keyframes';
 
 export type AtRuleValue = ComponentValue | Selector | Selector[];
@@ -86,10 +102,14 @@ export type Theme = {
     __name: string;
     __keys: {
         variables: Set<string>;
+        variants: Set<string>;
         selectors: Set<string>;
+        utilities: Set<string>;
     };
     variables: Record<string, Variable>;
+    variants: Record<string, Variant>;
     selectors: Array<Selector | AtRule>;
+    utilities: Array<Utility>;
 };
 
 export type Themes = Record<string, Theme>;

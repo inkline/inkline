@@ -1,5 +1,6 @@
 import { useThemeVariables } from './useThemeVariables';
 import { useThemeSelectors } from './useThemeSelectors';
+import { useThemeUtilities } from "./useThemeUtilities";
 import { defaultDefinitionOptions, DefinitionOptions } from '@inkline/core';
 
 export function useTheme(userOptions: DefinitionOptions) {
@@ -7,4 +8,5 @@ export function useTheme(userOptions: DefinitionOptions) {
 
     useThemeVariables(options);
     useThemeSelectors(options);
+    useThemeUtilities(options);
 }

@@ -4,6 +4,7 @@
     "type": "module",
     "scripts": {
         "build": "nuxt build",
+        "predev": "cd ../packages/integrations/framework && pnpm run generate",
         "dev": "nuxt dev",
         "generate": "nuxt generate",
         "preview": "nuxt preview",

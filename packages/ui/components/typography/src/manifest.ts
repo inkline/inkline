@@ -178,13 +178,13 @@ export const manifest: ComponentManifest[] = [
             {
                 name: 'color',
                 type: "'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'",
-                description: 'The color variant of the badge',
+                description: 'The color variant of the text',
                 default: ''
             },
             {
                 name: 'size',
                 type: "'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'lg' | '2xl'",
-                description: 'The size variant of the badge',
+                description: 'The size variant of the text',
                 default: ''
             },
             {

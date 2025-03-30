@@ -32,7 +32,7 @@ export const mainNavigation: NavigationItem[] = [
         title: 'Utilities',
         to: '/docs/utilities',
         icon: 'uil:wrench',
-        active: [/\/docs\/utilities\/.*/]
+        active: [/\/docs\/utilities\/.*/, /\/docs\/services\/.*/]
     },
     {
         id: 'community',
@@ -233,7 +233,7 @@ export const componentsNavigation: NavigationItem[] = [
             },
             {
                 id: 'modal',
-                title: 'Modal',
+                title: 'Modal 🚧',
                 to: '/docs/components/modal'
             },
             {
@@ -375,8 +375,24 @@ export const componentsNavigation: NavigationItem[] = [
 
 export const utilitiesNavigation: NavigationItem[] = [
     {
-        id: 'utilities',
-        title: 'Utilities',
+        id: 'feedback-services',
+        title: 'Feedback Services',
+        children: [
+            {
+                id: 'modal-service',
+                title: 'Modal Service',
+                to: '/docs/services/modal'
+            },
+            {
+                id: 'toast-service',
+                title: 'Toast Service',
+                to: '/docs/services/toast'
+            }
+        ]
+    },
+    {
+        id: 'integrations',
+        title: 'Integrations',
         children: [
             {
                 id: 'tailwindcss',

@@ -4,7 +4,8 @@
         "__name": "default",
         "__keys": {
             "variables": {},
-            "selectors": {}
+            "selectors": {},
+            "utilities": {}
         },
         "variables": {
             "font-weight-extralight": {
@@ -5482,6 +5483,7 @@
                     "cursor": "pointer"
                 }
             }
-        ]
+        ],
+        "utilities": []
     }
 }

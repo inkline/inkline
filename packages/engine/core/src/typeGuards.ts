@@ -17,7 +17,9 @@ import {
     Transform,
     PrimitiveTokenValue,
     CSS,
-    HSLAColorInlineProperty
+    HSLAColorInlineProperty,
+    Utility,
+    Variant
 } from './types';
 import { TokenType } from './types';
 
@@ -53,6 +55,14 @@ export function isColor(value: unknown): value is Color {
 
 export function isSelector(value: unknown): value is Selector {
     return isToken(value, TokenType.Selector);
+}
+
+export function isUtility(value: unknown): value is Utility {
+    return isToken(value, TokenType.Utility);
+}
+
+export function isVariant(value: unknown): value is Variant {
+    return isToken(value, TokenType.Variant);
 }
 
 export function isAtRule(value: unknown): value is AtRule {

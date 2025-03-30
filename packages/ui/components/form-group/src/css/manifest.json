@@ -4,7 +4,8 @@
         "__name": "default",
         "__keys": {
             "variables": {},
-            "selectors": {}
+            "selectors": {},
+            "utilities": {}
         },
         "variables": {
             "fluid--min-width": {
@@ -2349,6 +2350,7 @@
                     "marginBottom": 0
                 }
             }
-        ]
+        ],
+        "utilities": []
     }
 }

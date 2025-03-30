@@ -33,7 +33,7 @@ In its simplest form, the `Badge` component is used to show a static label or co
 
 ::DocsTabs
 #preview 
-:DocsComponentDemo{ package="badge" name="basic" }
+:DocsComponentDemo{ package="@inkline/component-badge" file="examples/basic.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-badge" file="examples/basic.vue" } -->
 ::
@@ -46,7 +46,7 @@ Using the `color` prop, you can quickly style the badge in different thematic co
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="badge" name="color-variants" }
+:DocsComponentDemo{ package="@inkline/component-badge" file="examples/color-variants.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-badge" file="examples/color-variants.vue" } -->
 ::
@@ -59,7 +59,7 @@ Using the `size` prop, you can quickly style the badge in different sizes. By se
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="badge" name="size-variants" }
+:DocsComponentDemo{ package="@inkline/component-badge" file="examples/size-variants.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-badge" file="examples/size-variants.vue" } -->
 ::
@@ -72,7 +72,7 @@ A common use case for badges is to show a status or category label next to a hea
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="badge" name="heading" direction="column" }
+:DocsComponentDemo{ package="@inkline/component-badge" file="examples/heading" direction="column.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-badge" file="examples/heading.vue" } -->
 ::
@@ -85,7 +85,7 @@ Setting the `pill` prop modifies the badge’s border radius to create a pill sh
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="badge" name="pill" }
+:DocsComponentDemo{ package="@inkline/component-badge" file="examples/pill.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-badge" file="examples/pill.vue" } -->
 ::
@@ -97,7 +97,7 @@ Setting the `pill` prop modifies the badge’s border radius to create a pill sh
 ::DocsCard{ title="Badge Props" }
 Below is an outline of available props for the `Badge` component.
 
-::DocsComponentProps{ package="badge" component="Badge" }
+::DocsComponentProps{ package="@inkline/component-badge" component="Badge" }
 ::
 ::
 
@@ -112,7 +112,7 @@ The `Badge` component does not emit any custom events. However, you can bind nat
 ::DocsCard{ title="Badge Slots" }
 Below is an outline of available slots for the `Badge` component.
 
-::DocsComponentSlots{ package="badge" component="Badge" }
+::DocsComponentSlots{ package="@inkline/component-badge" component="Badge" }
 ::
 ::
 
@@ -121,13 +121,13 @@ Below is an outline of available slots for the `Badge` component.
 ::DocsCard{ title="Badge Design Tokens" }
 Below is an outline of available design tokens for the `Badge` component.
 
-::DocsComponentDesignTokens{ package="badge" component="Badge" }
+::DocsComponentDesignTokens{ package="@inkline/component-badge" component="Badge" }
 ::
 ::
 
 ## Accessibility
 
-By default, Inkline aims to ensure badges are accessible out of the box. However, confirm your usage aligns with these best practices and any app-specific guidelines. Here are some accessibility considerations for the `Badge` component:
+By default, Inkline aims to ensure `Badge` components are accessible out of the box. However, confirm your usage aligns with these best practices and any app-specific guidelines. Here are some accessibility considerations for the `Badge` component:
 
 **ARIA roles/attributes:**
 

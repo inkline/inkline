@@ -16,20 +16,22 @@ async function loadManifest(
     return manifestCache.get(packageName) ?? [];
 }
 
-export function useManifest(packageName: MaybeRef<string>, componentName: MaybeRef<string>) {
+export function useManifest(packageNameRef: MaybeRef<string>, componentNameRef: MaybeRef<string>) {
     const manifest = ref<ComponentManifest | undefined>();
 
     onMounted(async () => {
-        let manifests = manifestCache.get(unref(packageName));
+        const packageName = unref(packageNameRef);
+        const componentPath = packageName.replace('@inkline/component-', '');
+        let manifests = manifestCache.get(packageName);
         if (!manifests) {
             manifests = await loadManifest(
-                unref(packageName),
+                packageName,
                 async () =>
-                    import(`../../../packages/ui/components/${unref(packageName)}/src/manifest.ts`)
+                    import(`../../../packages/ui/components/${componentPath}/src/manifest.ts`)
             );
         }
 
-        manifest.value = manifests.find((m) => m.name === unref(componentName));
+        manifest.value = manifests.find((m) => m.name === unref(componentNameRef));
     });
 
     return { manifest };

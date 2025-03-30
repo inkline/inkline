@@ -32,6 +32,22 @@ export const manifest: ComponentManifest[] = [
                     value: 'none'
                 },
                 {
+                    name: '--loader--animation-fill-mode',
+                    value: 'none'
+                },
+                {
+                    name: '--loader--animation-play-state',
+                    value: 'running'
+                },
+                {
+                    name: '--loader--animation-delay',
+                    value: '0'
+                },
+                {
+                    name: '--loader--animation-timing-function',
+                    value: 'linear'
+                },
+                {
                     name: '--loader--animation-duration',
                     value: '1.2s'
                 },

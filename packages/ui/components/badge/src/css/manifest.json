@@ -4,7 +4,8 @@
         "__name": "default",
         "__keys": {
             "variables": {},
-            "selectors": {}
+            "selectors": {},
+            "utilities": {}
         },
         "variables": {
             "color-white": {
@@ -494,6 +495,57 @@
                     }
                 ]
             },
+            "box-shadow-offset-x-sm": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-x-sm",
+                "__value": 0
+            },
+            "box-shadow-offset-y-sm": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-y-sm",
+                "__value": "0.25rem"
+            },
+            "box-shadow-blur-radius-sm": {
+                "__type": "variable",
+                "__name": "box-shadow-blur-radius-sm",
+                "__value": "0.5rem"
+            },
+            "box-shadow-spread-radius-sm": {
+                "__type": "variable",
+                "__name": "box-shadow-spread-radius-sm",
+                "__value": "-0.125rem"
+            },
+            "box-shadow-color-sm": {
+                "__type": "variable",
+                "__name": "box-shadow-color-sm",
+                "__value": "rgba(0, 0, 0, 0.075)"
+            },
+            "box-shadow-sm": {
+                "__type": "variable",
+                "__name": "box-shadow-sm",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-x-sm"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-y-sm"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-blur-radius-sm"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-spread-radius-sm"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-color-sm"
+                    }
+                ]
+            },
             "box-shadow-offset-x": {
                 "__type": "variable",
                 "__name": "box-shadow-offset-x",
@@ -542,6 +594,57 @@
                     {
                         "__type": "reference",
                         "__name": "box-shadow-color"
+                    }
+                ]
+            },
+            "box-shadow-offset-x-lg": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-x-lg",
+                "__value": 0
+            },
+            "box-shadow-offset-y-lg": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-y-lg",
+                "__value": "1rem"
+            },
+            "box-shadow-blur-radius-lg": {
+                "__type": "variable",
+                "__name": "box-shadow-blur-radius-lg",
+                "__value": "1.5rem"
+            },
+            "box-shadow-spread-radius-lg": {
+                "__type": "variable",
+                "__name": "box-shadow-spread-radius-lg",
+                "__value": "-1.5rem"
+            },
+            "box-shadow-color-lg": {
+                "__type": "variable",
+                "__name": "box-shadow-color-lg",
+                "__value": "rgba(0, 0, 0, 0.2)"
+            },
+            "box-shadow-lg": {
+                "__type": "variable",
+                "__name": "box-shadow-lg",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-x-lg"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-y-lg"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-blur-radius-lg"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-spread-radius-lg"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-color-lg"
                     }
                 ]
             },
@@ -7942,6 +8045,7 @@
                     }
                 }
             }
-        ]
+        ],
+        "utilities": []
     }
 }

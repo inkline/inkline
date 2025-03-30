@@ -49,6 +49,8 @@ export function useGridThemeSelectors(userOptions: DefinitionOptions) {
         options
     );
 
+    selector('.grid.-inline', { display: 'inline-flex', width: 'auto' }, options);
+
     selector('.grid.-no-wrap', { flexWrap: 'nowrap' }, options);
 
     selector('.grid.-no-gap', { gap: 0 }, options);

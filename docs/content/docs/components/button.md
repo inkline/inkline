@@ -33,7 +33,7 @@ Use the `Button` component to create a standard clickable element in your applic
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="basic" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/basic.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/basic.vue" } -->
 ::
@@ -47,7 +47,7 @@ Using the `color` prop, you can quickly style the `Button` component in differen
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="color-variants" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/color-variants.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/color-variants.vue" } -->
 ::
@@ -61,7 +61,7 @@ Using the `size` prop, you can quickly style the `Button` component in different
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="size-variants" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/size-variants.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/size-variants.vue" } -->
 ::
@@ -74,7 +74,7 @@ Using the pre-configured `vue-router` integration, you can use the `Button` comp
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="routing" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/routing.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/routing.vue" } -->
 ::
@@ -87,7 +87,7 @@ You can render the Button as a different HTML element using the `tag` prop, allo
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="button-tag" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/button-tag.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/button-tag.vue" } -->
 ::
@@ -100,7 +100,7 @@ You can change the behaviour of a button in various contexts by using the `type`
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="button-type" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/button-type.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/button-type.vue" } -->
 ::
@@ -113,7 +113,7 @@ You can use the `block` prop if you want to render a block-level `Button` compon
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="block" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/block.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/block.vue" } -->
 ::
@@ -127,7 +127,7 @@ You can add an icon to the `Button` component using the `icon` slot. This provid
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="icon" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/icon.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/icon.vue" } -->
 ::
@@ -140,7 +140,7 @@ You can render the `Button` component as a circle using the `circle` prop, which
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="circle" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/circle.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/circle.vue" } -->
 ::
@@ -153,7 +153,7 @@ You can render the `Button` component as a square using the `square` prop, suita
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="square" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/square.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/square.vue" } -->
 ::
@@ -166,7 +166,7 @@ You can style the `Button` component as a link using the `link` prop, combining 
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="link" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/link.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/link.vue" } -->
 ::
@@ -179,7 +179,7 @@ You can use the `outline` prop to apply an outline style to the `Button` compone
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="outline" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/outline.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/outline.vue" } -->
 ::
@@ -192,7 +192,7 @@ You can use the `active` prop to indicate the active state of the `Button` compo
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="state-active" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/state-active.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/state-active.vue" } -->
 ::
@@ -205,7 +205,7 @@ You can use the `disabled` prop to indicate the disabled state of the `Button` c
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="state-disabled" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/state-disabled.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/state-disabled.vue" } -->
 ::
@@ -220,7 +220,7 @@ By default, the button will display a standard `Loader` component. You can provi
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button" name="state-loading" }
+:DocsComponentDemo{ package="@inkline/component-button" file="examples/state-loading.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button" file="examples/state-loading.vue" } -->
 ::
@@ -232,7 +232,7 @@ By default, the button will display a standard `Loader` component. You can provi
 ::DocsCard{ title="Button Props" }
 Below is an outline of available props for the `Button` component.
 
-::DocsComponentProps{ package="button" component="Button" }
+::DocsComponentProps{ package="@inkline/component-button" component="Button" }
 ::
 ::
 
@@ -247,7 +247,7 @@ The Button component does not emit any custom events. However, you can bind nati
 ::DocsCard{ title="Button Slots" }
 Below is an outline of available slots for the `Button` component.
 
-::DocsComponentSlots{ package="button" component="Button" }
+::DocsComponentSlots{ package="@inkline/component-button" component="Button" }
 ::
 ::
 
@@ -256,11 +256,14 @@ Below is an outline of available slots for the `Button` component.
 ::DocsCard{ title="Button Design Tokens" }
 Below is an outline of available design tokens for the `Button` component.
 
-::DocsComponentDesignTokens{ package="button" component="Button" }
+::DocsComponentDesignTokens{ package="@inkline/component-button" component="Button" }
 ::
 ::
 
 ## Accessibility
+
+By default, Inkline aims to ensure `Button` components are accessible out of the box. However, confirm your usage aligns with these best practices and any app-specific guidelines. Here are some accessibility considerations for the `Button` component:
+
 
 **ARIA roles/attributes:** 
 

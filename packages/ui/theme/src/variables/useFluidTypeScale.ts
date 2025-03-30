@@ -1,4 +1,11 @@
-import { defaultDefinitionOptions, DefinitionOptions, divide, multiply, ref, variable } from '@inkline/core';
+import {
+    defaultDefinitionOptions,
+    DefinitionOptions,
+    divide,
+    multiply,
+    ref,
+    variable
+} from '@inkline/core';
 import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory';
 import { useScale } from './useScale';
 
@@ -23,6 +30,8 @@ export function useFluidTypeScaleVariables(userOptions: DefinitionOptions) {
     const typeScaleMax = variable('type-scale-max', ref(scaleMajorThird), options);
 
     const {
+        typeScaleMinPowMinus4,
+        typeScaleMinPowMinus3,
         typeScaleMinPowMinus2,
         typeScaleMinPowMinus1,
         typeScaleMinPow1,
@@ -30,10 +39,15 @@ export function useFluidTypeScaleVariables(userOptions: DefinitionOptions) {
         typeScaleMinPow3,
         typeScaleMinPow4,
         typeScaleMinPow5
-    } =
-        useVariantsFactory<'type-scale-min', keyof typeof fluidScaleVariants>(typeScaleMin, fluidScaleVariants, options);
+    } = useVariantsFactory<'type-scale-min', keyof typeof fluidScaleVariants>(
+        typeScaleMin,
+        fluidScaleVariants,
+        options
+    );
 
     const typeScaleMinMap = {
+        '-4': typeScaleMinPowMinus4,
+        '-3': typeScaleMinPowMinus3,
         '-2': typeScaleMinPowMinus2,
         '-1': typeScaleMinPowMinus1,
         '1': typeScaleMinPow1,
@@ -44,6 +58,8 @@ export function useFluidTypeScaleVariables(userOptions: DefinitionOptions) {
     };
 
     const {
+        typeScaleMaxPowMinus4,
+        typeScaleMaxPowMinus3,
         typeScaleMaxPowMinus2,
         typeScaleMaxPowMinus1,
         typeScaleMaxPow1,
@@ -51,9 +67,15 @@ export function useFluidTypeScaleVariables(userOptions: DefinitionOptions) {
         typeScaleMaxPow3,
         typeScaleMaxPow4,
         typeScaleMaxPow5
-    } = useVariantsFactory<'type-scale-max', keyof typeof fluidScaleVariants>(typeScaleMax, fluidScaleVariants, options);
+    } = useVariantsFactory<'type-scale-max', keyof typeof fluidScaleVariants>(
+        typeScaleMax,
+        fluidScaleVariants,
+        options
+    );
 
     const typeScaleMaxMap = {
+        '-4': typeScaleMaxPowMinus4,
+        '-3': typeScaleMaxPowMinus3,
         '-2': typeScaleMaxPowMinus2,
         '-1': typeScaleMaxPowMinus1,
         '1': typeScaleMaxPow1,

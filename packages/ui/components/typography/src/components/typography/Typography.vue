@@ -8,7 +8,7 @@ export default defineComponent({
     inheritAttrs: false,
     props: {
         /**
-         * The color variant of the badge
+         * The color variant of the text
          * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} color
          * @default
          */
@@ -17,7 +17,7 @@ export default defineComponent({
             default: undefined
         },
         /**
-         * The size variant of the badge
+         * The size variant of the text
          * @param {'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'lg' | '2xl'} size
          * @default
          */

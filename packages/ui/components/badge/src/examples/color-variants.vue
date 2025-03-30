@@ -1,17 +1,17 @@
 <template>
-    <Badge color="primary">Primary</Badge>
+    <Badge variant="primary">Primary</Badge>
 
-    <Badge color="secondary">Secondary</Badge>
+    <Badge variant="secondary">Secondary</Badge>
 
-    <Badge color="light">Light</Badge>
+    <Badge variant="light">Light</Badge>
 
-    <Badge color="dark">Dark</Badge>
+    <Badge variant="dark">Dark</Badge>
 
-    <Badge color="info">Info</Badge>
+    <Badge variant="info">Info</Badge>
 
-    <Badge color="success">Success</Badge>
+    <Badge variant="success">Success</Badge>
 
-    <Badge color="warning">Warning</Badge>
+    <Badge variant="warning">Warning</Badge>
 
-    <Badge color="danger">Danger</Badge>
+    <Badge variant="danger">Danger</Badge>
 </template>

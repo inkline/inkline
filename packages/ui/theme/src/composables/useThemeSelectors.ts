@@ -11,6 +11,7 @@ import {
     useHeadingTheme,
     useHrTheme,
     useIframeTheme,
+    useImgTheme,
     useKbdTheme,
     useLegendTheme,
     useMarkTheme,
@@ -21,7 +22,8 @@ import {
     useSampTheme,
     useSummaryTheme,
     useUlTheme,
-    useTransitionsTheme
+    useTransitionsTheme,
+    useUtilities
 } from '../selectors';
 import { defaultDefinitionOptions, DefinitionOptions } from '@inkline/core';
 
@@ -40,6 +42,7 @@ export function useThemeSelectors(userOptions: DefinitionOptions) {
     useHeadingTheme(options);
     useHrTheme(options);
     useIframeTheme(options);
+    useImgTheme(options);
     useKbdTheme(options);
     useLegendTheme(options);
     useMarkTheme(options);
@@ -51,4 +54,5 @@ export function useThemeSelectors(userOptions: DefinitionOptions) {
     useSummaryTheme(options);
     useUlTheme(options);
     useTransitionsTheme(options);
+    useUtilities(options);
 }

@@ -3,6 +3,7 @@ import { useTheme } from '@inkline/theme';
 
 import { useAlertTheme } from '@inkline/component-alert';
 import { useBadgeTheme } from '@inkline/component-badge';
+import { useBoxTheme } from '@inkline/component-box';
 import { useBreadcrumbTheme, useBreadcrumbItemTheme } from '@inkline/component-breadcrumb';
 import { useButtonTheme } from '@inkline/component-button';
 import { useButtonGroupTheme } from '@inkline/component-button-group';
@@ -24,11 +25,13 @@ import { useToastTheme, useToastContainerTheme } from '@inkline/component-toast'
 import { useToggleTheme } from '@inkline/component-toggle';
 import { useTooltipTheme } from '@inkline/component-tooltip';
 import { useBlockquoteTheme, useTypographyTheme } from '@inkline/component-typography';
+import { useImageTheme } from '@inkline/component-image';
 
 export default defineConfig((options) => {
     useTheme(options);
     useAlertTheme(options);
     useBadgeTheme(options);
+    useBoxTheme(options);
     useBreadcrumbTheme(options);
     useBreadcrumbItemTheme(options);
     useButtonTheme(options);
@@ -41,6 +44,7 @@ export default defineConfig((options) => {
     useGridTheme(options);
     useIconTheme(options);
     useInputTheme(options);
+    useImageTheme(options);
     useLoaderTheme(options);
     useMediaTheme(options);
     useModalTheme(options);

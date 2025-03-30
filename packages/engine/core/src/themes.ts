@@ -1,4 +1,13 @@
-import { DefinitionOptions, AtRule, Selector, SelectorOptions, Variable } from './types';
+import {
+    DefinitionOptions,
+    AtRule,
+    Selector,
+    SelectorOptions,
+    Variable,
+    Utility,
+    VariantOptions,
+    Variant
+} from './types';
 import { isTheme } from './typeGuards';
 import { theme } from './tokens';
 import { defaultThemeName } from './constants';
@@ -45,4 +54,28 @@ export function removeSelectorFromTheme(id: string, options: SelectorOptions) {
 
     themeInstance.selectors.splice(selectorIndex, 1);
     themeInstance.__keys.selectors.delete(id);
+}
+
+/**
+ * Adds a utility to a theme.
+ */
+export function addUtilityToTheme(utility: Utility, options: SelectorOptions) {
+    const themeInstance = isTheme(options?.theme)
+        ? options.theme
+        : theme(options?.theme ?? defaultThemeName, options);
+
+    themeInstance.utilities.push(utility);
+    themeInstance.__keys.utilities.add(utility.__id);
+}
+
+/**
+ * Adds a variant to a theme.
+ */
+export function addVariantToTheme(variant: Variant, options: VariantOptions) {
+    const themeInstance = isTheme(options?.theme)
+        ? options.theme
+        : theme(options?.theme ?? defaultThemeName, options);
+
+    themeInstance.variants[variant.__name] = variant;
+    themeInstance.__keys.variants.add(variant.__name);
 }

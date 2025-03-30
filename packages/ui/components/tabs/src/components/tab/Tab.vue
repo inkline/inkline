@@ -23,11 +23,9 @@ export default defineComponent({
         const name = toRef(props, 'name');
         const active = computed(() => tabs?.active.value === props.name);
         const color = computed(() => tabs?.color.value);
-        const size = computed(() => tabs?.size.value);
         const classes = computed(() => ({
             '-active': active.value,
-            [`-${color.value}`]: color.value,
-            [`-${size.value}`]: size.value
+            [`-${color.value}`]: color.value
         }));
 
         function onClick() {

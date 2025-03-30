@@ -33,7 +33,7 @@ In its simplest form, the `Media` component is used to display a basic media obj
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="media" name="basic" }
+:DocsComponentDemo{ package="@inkline/component-media" file="examples/basic.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-media" file="examples/basic.vue" } -->
 ::
@@ -46,7 +46,7 @@ You can nest `Media` components to build complex, hierarchical layouts such as c
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="media" name="nesting" }
+:DocsComponentDemo{ package="@inkline/component-media" file="examples/nesting.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-media" file="examples/nesting.vue" } -->
 ::
@@ -70,7 +70,7 @@ The `Media` component does not emit any custom events. However, you can bind nat
 ::DocsCard{ title="Media Slots" }
 Below is an outline of available slots for the `Media` component.
 
-::DocsComponentSlots{ package="media" component="Media" }
+::DocsComponentSlots{ package="@inkline/component-media" component="Media" }
 ::
 ::
 
@@ -79,7 +79,7 @@ Below is an outline of available slots for the `Media` component.
 ::DocsCard{ title="Media Design Tokens" }
 Below is an outline of available design tokens for the `Media` component.
 
-::DocsComponentDesignTokens{ package="media" component="Media" }
+::DocsComponentDesignTokens{ package="@inkline/component-media" component="Media" }
 ::
 ::
 

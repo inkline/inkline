@@ -38,7 +38,16 @@ describe('defineAnimation', () => {
     });
 
     it('should set animation properties from object', () => {
-        const value = { name: 'fade', duration: '2s', iterationCount: 3, direction: 'reverse' };
+        const value = {
+            name: 'fade',
+            delay: '0s',
+            fillMode: 'forwards',
+            playState: 'running',
+            duration: '2s',
+            iterationCount: 3,
+            direction: 'reverse',
+            timingFunction: 'ease'
+        };
         const result = defineAnimation('namespace', value, options);
         expect(result).toEqual({
             namespaceAnimationName: nsvariable('namespace', 'animation-name', 'fade', options),

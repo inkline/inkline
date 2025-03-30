@@ -34,7 +34,7 @@ In its simplest form, the `Alert` component is rendered with default `info` styl
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="alert" name="basic" }
+:DocsComponentDemo{ package="@inkline/component-alert" file="examples/basic" direction="column.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-alert" file="examples/basic.vue" } -->
 ::
@@ -47,7 +47,7 @@ Using the `color` prop, you can quickly style the `Alert` to represent different
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="alert" name="color-variants" }
+:DocsComponentDemo{ package="@inkline/component-alert" file="examples/color-variants" direction="column.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-alert" file="examples/color-variants.vue" } -->
 ::
@@ -60,7 +60,7 @@ Adjust the size of the `Alert` component using the `size` prop to better fit the
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="alert" name="size-variants" }
+:DocsComponentDemo{ package="@inkline/component-alert" file="examples/size-variants" direction="column.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-alert" file="examples/size-variants.vue" } -->
 ::
@@ -73,7 +73,7 @@ When an alert should no longer persist on the screen, the dismissible variant al
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="alert" name="dismissible" }
+:DocsComponentDemo{ package="@inkline/component-alert" file="examples/dismissible" direction="column.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-alert" file="examples/dismissible.vue" } -->
 ::
@@ -86,7 +86,7 @@ Enhance the visual indication of the alert by including an icon alongside the me
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="alert" name="icon" }
+:DocsComponentDemo{ package="@inkline/component-alert" file="examples/icon" direction="column.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-alert" file="examples/icon.vue" } -->
 ::
@@ -99,7 +99,7 @@ Customize the content within the `Alert` component using slots to incorporate ad
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="alert" name="content" }
+:DocsComponentDemo{ package="@inkline/component-alert" file="examples/content" direction="column.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-alert" file="examples/content.vue" } -->
 ::
@@ -111,7 +111,7 @@ Customize the content within the `Alert` component using slots to incorporate ad
 ::DocsCard{ title="Alert Props" }
 Below is an outline of available props for the `Alert` component.
 
-::DocsComponentProps{ package="alert" component="Alert" }
+::DocsComponentProps{ package="@inkline/component-alert" component="Alert" }
 ::
 ::
 
@@ -120,7 +120,7 @@ Below is an outline of available props for the `Alert` component.
 ::DocsCard{ title="Alert Events" }
 The `Alert` component emits custom events to handle user interactions. For example, when the alert is dismissible, it emits a `dismiss` event when the dismiss action is triggered.
 
-::DocsComponentEvents{ package="alert" component="Alert" }
+::DocsComponentEvents{ package="@inkline/component-alert" component="Alert" }
 ::
 ::
 
@@ -129,7 +129,7 @@ The `Alert` component emits custom events to handle user interactions. For examp
 ::DocsCard{ title="Alert Slots" }
 Below is an outline of available slots for the `Alert` component.
 
-::DocsComponentSlots{ package="alert" component="Alert" }
+::DocsComponentSlots{ package="@inkline/component-alert" component="Alert" }
 ::
 ::
 
@@ -138,13 +138,13 @@ Below is an outline of available slots for the `Alert` component.
 ::DocsCard{ title="Alert Design Tokens" }
 Below is an outline of available design tokens for the `Alert` component.
 
-::DocsComponentDesignTokens{ package="alert" component="Alert" }
+::DocsComponentDesignTokens{ package="@inkline/component-alert" component="Alert" }
 ::
 ::
 
 ## Accessibility
 
-To ensure the `Alert` component is accessible, consider the following:
+By default, Inkline aims to ensure `Alert` components are accessible out of the box. However, confirm your usage aligns with these best practices and any app-specific guidelines. Here are some accessibility considerations for the `Alert` component:
 
 **ARIA roles/attributes:** 
 - Use `role="alert"` to indicate that the message is important and should be announced by assistive technologies.

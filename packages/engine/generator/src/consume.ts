@@ -8,6 +8,7 @@ import {
     isAtRule,
     isRef,
     isSelector,
+    isUtility,
     isTheme,
     isVariable,
     isCSS,
@@ -21,6 +22,7 @@ import type {
     AtRule,
     Reference,
     Selector,
+    Utility,
     Theme,
     Variable,
     ComponentValue,
@@ -102,6 +104,19 @@ ${indentLines(value)}
 }
 
 /**
+ * Consumes a utility instance, equivalent to setting a utility CSS selector
+ */
+export function consumeUtility(instance: Utility): string {
+    const value = isTokenValue(instance.__value)
+        ? consume(instance.__value)
+        : consumeComponentValue(instance.__value);
+
+    return `${instance.__name} {
+${indentLines(value)}
+}`;
+}
+
+/**
  * Consumes a component value, equivalent to the body of a selector
  */
 export function consumeComponentValue(instance: ComponentValue): string {
@@ -162,10 +177,11 @@ export function consumeTheme(instance: Theme) {
               .join('\n')
         : '';
     const selectors = instance.selectors ? instance.selectors.map(consume).join('\n\n') : '';
+    const utilities = instance.utilities ? instance.utilities.map(consume).join('\n\n') : '';
 
     return isDefaultTheme
-        ? defaultThemeTemplate(':root', variables, selectors)
-        : themeTemplate(`.${instance.__name}-theme`, variables, selectors);
+        ? defaultThemeTemplate(':root', variables, selectors, utilities)
+        : themeTemplate(`.${instance.__name}-theme`, variables, selectors, utilities);
 }
 
 /**
@@ -192,6 +208,8 @@ export function consume(instance: unknown): string {
             return consumeColor(instance);
         case isSelector(instance):
             return consumeSelector(instance);
+        case isUtility(instance):
+            return consumeUtility(instance);
         case isAtRule(instance):
             return consumeAtRule(instance);
         case isTransform(instance):

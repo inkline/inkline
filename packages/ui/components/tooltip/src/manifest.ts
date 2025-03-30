@@ -59,7 +59,7 @@ export const manifest: ComponentManifest[] = [
                 default: '6'
             },
             {
-                name: 'interactable',
+                name: 'interactive',
                 type: 'boolean',
                 description:
                     'Determines whether hover state should be transferred from trigger to popup',

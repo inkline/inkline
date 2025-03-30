@@ -126,6 +126,70 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--tab-list--box-shadow-offset-x) var(--tab-list--box-shadow-offset-y) var(--tab-list--box-shadow-blur-radius) var(--tab-list--box-shadow-spread-radius) var(--tab-list--box-shadow-color)'
                 },
                 {
+                    name: '--tab-list--border-top-left-radius',
+                    value: 'var(--border-top-left-radius)'
+                },
+                {
+                    name: '--tab-list--border-top-right-radius',
+                    value: 'var(--border-top-right-radius)'
+                },
+                {
+                    name: '--tab-list--border-bottom-right-radius',
+                    value: 'var(--border-bottom-right-radius)'
+                },
+                {
+                    name: '--tab-list--border-bottom-left-radius',
+                    value: 'var(--border-bottom-left-radius)'
+                },
+                {
+                    name: '--tab-list--border-radius',
+                    value: 'var(--tab-list--border-top-left-radius) var(--tab-list--border-top-right-radius) var(--tab-list--border-bottom-right-radius) var(--tab-list--border-bottom-left-radius)'
+                },
+                {
+                    name: '--tab-list--font-size',
+                    value: 'var(--font-size)'
+                },
+                {
+                    name: '--tab-list--padding-top',
+                    value: '0'
+                },
+                {
+                    name: '--tab-list--padding-right',
+                    value: '0'
+                },
+                {
+                    name: '--tab-list--padding-bottom',
+                    value: '0'
+                },
+                {
+                    name: '--tab-list--padding-left',
+                    value: '0'
+                },
+                {
+                    name: '--tab-list--padding',
+                    value: 'var(--tab-list--padding-top) var(--tab-list--padding-right) var(--tab-list--padding-bottom) var(--tab-list--padding-left)'
+                },
+                {
+                    name: '--tab-list--margin-top',
+                    value: '0'
+                },
+                {
+                    name: '--tab-list--margin-right',
+                    value: '0'
+                },
+                {
+                    name: '--tab-list--margin-bottom',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab-list--margin-left',
+                    value: '0'
+                },
+                {
+                    name: '--tab-list--margin',
+                    value: 'var(--tab-list--margin-top) var(--tab-list--margin-right) var(--tab-list--margin-bottom) var(--tab-list--margin-left)'
+                },
+                {
                     name: '--tab-list--transition-property',
                     value: 'var(--transition-property)'
                 },
@@ -150,70 +214,6 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--tab-list--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
-                },
-                {
-                    name: '--tab-list--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
-                },
-                {
-                    name: '--tab-list--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
-                },
-                {
-                    name: '--tab-list--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
-                },
-                {
-                    name: '--tab-list--border-radius',
-                    value: 'var(--tab-list--border-top-left-radius) var(--tab-list--border-top-right-radius) var(--tab-list--border-bottom-right-radius) var(--tab-list--border-bottom-left-radius)'
-                },
-                {
-                    name: '--tab-list--font-size',
-                    value: 'var(--font-size-md)'
-                },
-                {
-                    name: '--tab-list--padding-top',
-                    value: '0'
-                },
-                {
-                    name: '--tab-list--padding-right',
-                    value: '0'
-                },
-                {
-                    name: '--tab-list--padding-bottom',
-                    value: '0'
-                },
-                {
-                    name: '--tab-list--padding-left',
-                    value: '0'
-                },
-                {
-                    name: '--tab-list--padding',
-                    value: '0'
-                },
-                {
-                    name: '--tab-list--margin-top',
-                    value: '0'
-                },
-                {
-                    name: '--tab-list--margin-right',
-                    value: '0'
-                },
-                {
-                    name: '--tab-list--margin-bottom',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab-list--margin-left',
-                    value: '0'
-                },
-                {
-                    name: '--tab-list--margin',
-                    value: 'var(--tab-list--margin-top) var(--tab-list--margin-right) var(--tab-list--margin-bottom) var(--tab-list--margin-left)'
-                },
-                {
                     name: '--tab-list--{color}--border-top-color'
                 },
                 {
@@ -230,45 +230,6 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab-list--{color}--color'
-                },
-                {
-                    name: '--tab-list--{size}--border-top-left-radius'
-                },
-                {
-                    name: '--tab-list--{size}--border-top-right-radius'
-                },
-                {
-                    name: '--tab-list--{size}--border-bottom-right-radius'
-                },
-                {
-                    name: '--tab-list--{size}--border-bottom-left-radius'
-                },
-                {
-                    name: '--tab-list--{size}--font-size'
-                },
-                {
-                    name: '--tab-list--{size}--padding-top'
-                },
-                {
-                    name: '--tab-list--{size}--padding-right'
-                },
-                {
-                    name: '--tab-list--{size}--padding-bottom'
-                },
-                {
-                    name: '--tab-list--{size}--padding-left'
-                },
-                {
-                    name: '--tab-list--{size}--margin-top'
-                },
-                {
-                    name: '--tab-list--{size}--margin-right'
-                },
-                {
-                    name: '--tab-list--{size}--margin-bottom'
-                },
-                {
-                    name: '--tab-list--{size}--margin-left'
                 }
             ]
         }
@@ -398,6 +359,50 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--tab-panel--box-shadow-offset-x) var(--tab-panel--box-shadow-offset-y) var(--tab-panel--box-shadow-blur-radius) var(--tab-panel--box-shadow-spread-radius) var(--tab-panel--box-shadow-color)'
                 },
                 {
+                    name: '--tab-panel--border-top-left-radius',
+                    value: 'var(--border-top-left-radius)'
+                },
+                {
+                    name: '--tab-panel--border-top-right-radius',
+                    value: 'var(--border-top-right-radius)'
+                },
+                {
+                    name: '--tab-panel--border-bottom-right-radius',
+                    value: 'var(--border-bottom-right-radius)'
+                },
+                {
+                    name: '--tab-panel--border-bottom-left-radius',
+                    value: 'var(--border-bottom-left-radius)'
+                },
+                {
+                    name: '--tab-panel--border-radius',
+                    value: 'var(--tab-panel--border-top-left-radius) var(--tab-panel--border-top-right-radius) var(--tab-panel--border-bottom-right-radius) var(--tab-panel--border-bottom-left-radius)'
+                },
+                {
+                    name: '--tab-panel--font-size',
+                    value: 'var(--font-size)'
+                },
+                {
+                    name: '--tab-panel--padding-top',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab-panel--padding-right',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab-panel--padding-bottom',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab-panel--padding-left',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab-panel--padding',
+                    value: 'var(--tab-panel--padding-top) var(--tab-panel--padding-right) var(--tab-panel--padding-bottom) var(--tab-panel--padding-left)'
+                },
+                {
                     name: '--tab-panel--transition-property',
                     value: 'var(--transition-property)'
                 },
@@ -422,50 +427,6 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--contrast-text-color-light)'
                 },
                 {
-                    name: '--tab-panel--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
-                },
-                {
-                    name: '--tab-panel--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
-                },
-                {
-                    name: '--tab-panel--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
-                },
-                {
-                    name: '--tab-panel--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
-                },
-                {
-                    name: '--tab-panel--border-radius',
-                    value: 'var(--tab-panel--border-top-left-radius) var(--tab-panel--border-top-right-radius) var(--tab-panel--border-bottom-right-radius) var(--tab-panel--border-bottom-left-radius)'
-                },
-                {
-                    name: '--tab-panel--font-size',
-                    value: 'var(--font-size-md)'
-                },
-                {
-                    name: '--tab-panel--padding-top',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab-panel--padding-right',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab-panel--padding-bottom',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab-panel--padding-left',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab-panel--padding',
-                    value: 'var(--tab-panel--padding-top) var(--tab-panel--padding-right) var(--tab-panel--padding-bottom) var(--tab-panel--padding-left)'
-                },
-                {
                     name: '--tab-panel--{color}--border-top-color'
                 },
                 {
@@ -482,33 +443,6 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab-panel--{color}--color'
-                },
-                {
-                    name: '--tab-panel--{size}--border-top-left-radius'
-                },
-                {
-                    name: '--tab-panel--{size}--border-top-right-radius'
-                },
-                {
-                    name: '--tab-panel--{size}--border-bottom-right-radius'
-                },
-                {
-                    name: '--tab-panel--{size}--border-bottom-left-radius'
-                },
-                {
-                    name: '--tab-panel--{size}--font-size'
-                },
-                {
-                    name: '--tab-panel--{size}--padding-top'
-                },
-                {
-                    name: '--tab-panel--{size}--padding-right'
-                },
-                {
-                    name: '--tab-panel--{size}--padding-bottom'
-                },
-                {
-                    name: '--tab-panel--{size}--padding-left'
                 }
             ]
         }
@@ -614,6 +548,26 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--tab--border-top-width) var(--tab--border-top-style) var(--tab--border-top-color)'
                 },
                 {
+                    name: '--tab--border-top-left-radius',
+                    value: '0'
+                },
+                {
+                    name: '--tab--border-top-right-radius',
+                    value: '0'
+                },
+                {
+                    name: '--tab--border-bottom-right-radius',
+                    value: '0'
+                },
+                {
+                    name: '--tab--border-bottom-left-radius',
+                    value: '0'
+                },
+                {
+                    name: '--tab--border-radius',
+                    value: 'var(--tab--border-top-left-radius) var(--tab--border-top-right-radius) var(--tab--border-bottom-right-radius) var(--tab--border-bottom-left-radius)'
+                },
+                {
                     name: '--tab--box-shadow-offset-x',
                     value: 'var(--box-shadow-offset-x)'
                 },
@@ -636,6 +590,30 @@ export const manifest: ComponentManifest[] = [
                 {
                     name: '--tab--box-shadow',
                     value: 'var(--tab--box-shadow-offset-x) var(--tab--box-shadow-offset-y) var(--tab--box-shadow-blur-radius) var(--tab--box-shadow-spread-radius) var(--tab--box-shadow-color)'
+                },
+                {
+                    name: '--tab--font-size',
+                    value: 'var(--font-size)'
+                },
+                {
+                    name: '--tab--padding-top',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab--padding-right',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab--padding-bottom',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab--padding-left',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab--padding',
+                    value: 'var(--tab--padding-top) var(--tab--padding-right) var(--tab--padding-bottom) var(--tab--padding-left)'
                 },
                 {
                     name: '--tab--transition-property',
@@ -918,50 +896,6 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--color-light-tint-50)'
                 },
                 {
-                    name: '--tab--border-top-left-radius',
-                    value: '0'
-                },
-                {
-                    name: '--tab--border-top-right-radius',
-                    value: '0'
-                },
-                {
-                    name: '--tab--border-bottom-right-radius',
-                    value: '0'
-                },
-                {
-                    name: '--tab--border-bottom-left-radius',
-                    value: '0'
-                },
-                {
-                    name: '--tab--border-radius',
-                    value: '0'
-                },
-                {
-                    name: '--tab--font-size',
-                    value: 'var(--font-size-md)'
-                },
-                {
-                    name: '--tab--padding-top',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab--padding-right',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab--padding-bottom',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab--padding-left',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab--padding',
-                    value: 'var(--tab--padding-top) var(--tab--padding-right) var(--tab--padding-bottom) var(--tab--padding-left)'
-                },
-                {
                     name: '--tab--{color}--border-top-color'
                 },
                 {
@@ -1023,33 +957,6 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--{color}--focus--background'
-                },
-                {
-                    name: '--tab--{size}--border-top-left-radius'
-                },
-                {
-                    name: '--tab--{size}--border-top-right-radius'
-                },
-                {
-                    name: '--tab--{size}--border-bottom-right-radius'
-                },
-                {
-                    name: '--tab--{size}--border-bottom-left-radius'
-                },
-                {
-                    name: '--tab--{size}--font-size'
-                },
-                {
-                    name: '--tab--{size}--padding-top'
-                },
-                {
-                    name: '--tab--{size}--padding-right'
-                },
-                {
-                    name: '--tab--{size}--padding-bottom'
-                },
-                {
-                    name: '--tab--{size}--padding-left'
                 }
             ]
         }
@@ -1067,12 +974,6 @@ export const manifest: ComponentManifest[] = [
                 name: 'modelValue',
                 type: 'string',
                 description: 'Used to set the currently active tab',
-                default: ''
-            },
-            {
-                name: 'size',
-                type: "'sm' | 'md' | 'lg'",
-                description: 'The size variant of the tabs',
                 default: ''
             },
             {
@@ -1185,6 +1086,26 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--tab--border-top-width) var(--tab--border-top-style) var(--tab--border-top-color)'
                 },
                 {
+                    name: '--tab--border-top-left-radius',
+                    value: '0'
+                },
+                {
+                    name: '--tab--border-top-right-radius',
+                    value: '0'
+                },
+                {
+                    name: '--tab--border-bottom-right-radius',
+                    value: '0'
+                },
+                {
+                    name: '--tab--border-bottom-left-radius',
+                    value: '0'
+                },
+                {
+                    name: '--tab--border-radius',
+                    value: 'var(--tab--border-top-left-radius) var(--tab--border-top-right-radius) var(--tab--border-bottom-right-radius) var(--tab--border-bottom-left-radius)'
+                },
+                {
                     name: '--tab--box-shadow-offset-x',
                     value: 'var(--box-shadow-offset-x)'
                 },
@@ -1207,6 +1128,30 @@ export const manifest: ComponentManifest[] = [
                 {
                     name: '--tab--box-shadow',
                     value: 'var(--tab--box-shadow-offset-x) var(--tab--box-shadow-offset-y) var(--tab--box-shadow-blur-radius) var(--tab--box-shadow-spread-radius) var(--tab--box-shadow-color)'
+                },
+                {
+                    name: '--tab--font-size',
+                    value: 'var(--font-size)'
+                },
+                {
+                    name: '--tab--padding-top',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab--padding-right',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab--padding-bottom',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab--padding-left',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab--padding',
+                    value: 'var(--tab--padding-top) var(--tab--padding-right) var(--tab--padding-bottom) var(--tab--padding-left)'
                 },
                 {
                     name: '--tab--transition-property',
@@ -1489,50 +1434,6 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--color-light-tint-50)'
                 },
                 {
-                    name: '--tab--border-top-left-radius',
-                    value: '0'
-                },
-                {
-                    name: '--tab--border-top-right-radius',
-                    value: '0'
-                },
-                {
-                    name: '--tab--border-bottom-right-radius',
-                    value: '0'
-                },
-                {
-                    name: '--tab--border-bottom-left-radius',
-                    value: '0'
-                },
-                {
-                    name: '--tab--border-radius',
-                    value: '0'
-                },
-                {
-                    name: '--tab--font-size',
-                    value: 'var(--font-size-md)'
-                },
-                {
-                    name: '--tab--padding-top',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab--padding-right',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab--padding-bottom',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab--padding-left',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab--padding',
-                    value: 'var(--tab--padding-top) var(--tab--padding-right) var(--tab--padding-bottom) var(--tab--padding-left)'
-                },
-                {
                     name: '--tab-panel--border-top-width',
                     value: 'var(--border-top-width)'
                 },
@@ -1637,6 +1538,50 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--tab-panel--box-shadow-offset-x) var(--tab-panel--box-shadow-offset-y) var(--tab-panel--box-shadow-blur-radius) var(--tab-panel--box-shadow-spread-radius) var(--tab-panel--box-shadow-color)'
                 },
                 {
+                    name: '--tab-panel--border-top-left-radius',
+                    value: 'var(--border-top-left-radius)'
+                },
+                {
+                    name: '--tab-panel--border-top-right-radius',
+                    value: 'var(--border-top-right-radius)'
+                },
+                {
+                    name: '--tab-panel--border-bottom-right-radius',
+                    value: 'var(--border-bottom-right-radius)'
+                },
+                {
+                    name: '--tab-panel--border-bottom-left-radius',
+                    value: 'var(--border-bottom-left-radius)'
+                },
+                {
+                    name: '--tab-panel--border-radius',
+                    value: 'var(--tab-panel--border-top-left-radius) var(--tab-panel--border-top-right-radius) var(--tab-panel--border-bottom-right-radius) var(--tab-panel--border-bottom-left-radius)'
+                },
+                {
+                    name: '--tab-panel--font-size',
+                    value: 'var(--font-size)'
+                },
+                {
+                    name: '--tab-panel--padding-top',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab-panel--padding-right',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab-panel--padding-bottom',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab-panel--padding-left',
+                    value: 'var(--spacing)'
+                },
+                {
+                    name: '--tab-panel--padding',
+                    value: 'var(--tab-panel--padding-top) var(--tab-panel--padding-right) var(--tab-panel--padding-bottom) var(--tab-panel--padding-left)'
+                },
+                {
                     name: '--tab-panel--transition-property',
                     value: 'var(--transition-property)'
                 },
@@ -1659,50 +1604,6 @@ export const manifest: ComponentManifest[] = [
                 {
                     name: '--tab-panel--color',
                     value: 'var(--contrast-text-color-light)'
-                },
-                {
-                    name: '--tab-panel--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
-                },
-                {
-                    name: '--tab-panel--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
-                },
-                {
-                    name: '--tab-panel--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
-                },
-                {
-                    name: '--tab-panel--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
-                },
-                {
-                    name: '--tab-panel--border-radius',
-                    value: 'var(--tab-panel--border-top-left-radius) var(--tab-panel--border-top-right-radius) var(--tab-panel--border-bottom-right-radius) var(--tab-panel--border-bottom-left-radius)'
-                },
-                {
-                    name: '--tab-panel--font-size',
-                    value: 'var(--font-size-md)'
-                },
-                {
-                    name: '--tab-panel--padding-top',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab-panel--padding-right',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab-panel--padding-bottom',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab-panel--padding-left',
-                    value: 'var(--spacing-md)'
-                },
-                {
-                    name: '--tab-panel--padding',
-                    value: 'var(--tab-panel--padding-top) var(--tab-panel--padding-right) var(--tab-panel--padding-bottom) var(--tab-panel--padding-left)'
                 }
             ]
         }

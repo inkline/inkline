@@ -68,72 +68,6 @@ export function useTabListThemeColorConfig(
     }[variant];
 }
 
-export function useTabListThemeSizeConfig(
-    variant: TabListSizeVariant,
-    userOptions: DefinitionOptions
-) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    const {
-        borderTopLeftRadiusSm,
-        borderTopRightRadiusSm,
-        borderBottomRightRadiusSm,
-        borderBottomLeftRadiusSm,
-        borderTopLeftRadiusMd,
-        borderTopRightRadiusMd,
-        borderBottomRightRadiusMd,
-        borderBottomLeftRadiusMd,
-        borderTopLeftRadiusLg,
-        borderTopRightRadiusLg,
-        borderBottomRightRadiusLg,
-        borderBottomLeftRadiusLg
-    } = useBorderRadius(options);
-    const { fontSizeSm, fontSizeMd, fontSizeLg } = useFontSize(options);
-    const { spacingSm, spacingMd, spacingLg } = useSpacing(options);
-
-    return {
-        sm: {
-            borderRadius: {
-                topLeft: ref(borderTopLeftRadiusSm),
-                topRight: ref(borderTopRightRadiusSm),
-                bottomRight: ref(borderBottomRightRadiusSm),
-                bottomLeft: ref(borderBottomLeftRadiusSm)
-            },
-            fontSize: ref(fontSizeSm),
-            padding: 0,
-            margin: {
-                bottom: ref(spacingSm)
-            }
-        },
-        md: {
-            borderRadius: {
-                topLeft: ref(borderTopLeftRadiusMd),
-                topRight: ref(borderTopRightRadiusMd),
-                bottomRight: ref(borderBottomRightRadiusMd),
-                bottomLeft: ref(borderBottomLeftRadiusMd)
-            },
-            fontSize: ref(fontSizeMd),
-            padding: 0,
-            margin: {
-                bottom: ref(spacingMd)
-            }
-        },
-        lg: {
-            borderRadius: {
-                topLeft: ref(borderTopLeftRadiusLg),
-                topRight: ref(borderTopRightRadiusLg),
-                bottomRight: ref(borderBottomRightRadiusLg),
-                bottomLeft: ref(borderBottomLeftRadiusLg)
-            },
-            fontSize: ref(fontSizeLg),
-            padding: 0,
-            margin: {
-                bottom: ref(spacingLg)
-            }
-        }
-    }[variant];
-}
-
 export function useTabListThemeConfig(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
@@ -156,6 +90,14 @@ export function useTabListThemeConfig(userOptions: DefinitionOptions) {
     } = useBoxShadow(options);
     const { transitionProperty, transitionDuration, transitionTimingFunction } =
         useTransition(options);
+    const {
+        borderTopLeftRadius,
+        borderTopRightRadius,
+        borderBottomRightRadius,
+        borderBottomLeftRadius
+    } = useBorderRadius(options);
+    const { fontSize } = useFontSize(options);
+    const { spacing } = useSpacing(options);
 
     return merge(
         {
@@ -184,14 +126,29 @@ export function useTabListThemeConfig(userOptions: DefinitionOptions) {
                 spreadRadius: ref(boxShadowSpreadRadius),
                 color: ref(boxShadowColor)
             },
+            borderRadius: {
+                topLeft: ref(borderTopLeftRadius),
+                topRight: ref(borderTopRightRadius),
+                bottomRight: ref(borderBottomRightRadius),
+                bottomLeft: ref(borderBottomLeftRadius)
+            },
+            fontSize: ref(fontSize),
+            padding: {
+                top: 0,
+                right: 0,
+                bottom: 0,
+                left: 0
+            },
+            margin: {
+                bottom: ref(spacing)
+            },
             transition: {
                 property: ref(transitionProperty),
                 duration: ref(transitionDuration),
                 timingFunction: ref(transitionTimingFunction)
             }
         },
-        useTabListThemeColorConfig(defaultTabListColor, options),
-        useTabListThemeSizeConfig(defaultTabListSize, options)
+        useTabListThemeColorConfig(defaultTabListColor, options)
     );
 }
 
@@ -206,18 +163,6 @@ export function useTabListThemeColorVariables(
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     return nsvariables([ns, variant] as const, useTabListThemeColorConfig(variant, options), {
-        ...options,
-        registerComposed: false
-    });
-}
-
-export function useTabListThemeSizeVariables(
-    variant: TabListSizeVariant,
-    userOptions: DefinitionOptions
-) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    return nsvariables([ns, variant] as const, useTabListThemeSizeConfig(variant, options), {
         ...options,
         registerComposed: false
     });
@@ -351,53 +296,6 @@ export function useTabListThemeColorSelectors(
     );
 }
 
-export function useTabListThemeSizeSelectors(
-    variant: TabListSizeVariant,
-    userOptions: DefinitionOptions
-) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    const {
-        tabListBorderTopLeftRadius,
-        tabListBorderTopRightRadius,
-        tabListBorderBottomRightRadius,
-        tabListBorderBottomLeftRadius,
-        tabListFontSize,
-        tabListPaddingTop,
-        tabListPaddingRight,
-        tabListPaddingBottom,
-        tabListPaddingLeft
-    } = useTabListThemeVariables(options);
-
-    const {
-        variantBorderTopLeftRadius,
-        variantBorderTopRightRadius,
-        variantBorderBottomRightRadius,
-        variantBorderBottomLeftRadius,
-        variantFontSize,
-        variantPaddingTop,
-        variantPaddingRight,
-        variantPaddingBottom,
-        variantPaddingLeft
-    } = setExportsNamespace(useTabListThemeSizeVariables(variant, options), 'variant');
-
-    selector(
-        `.tab-list.-${variant}`,
-        {
-            [toVariableKey(tabListBorderTopLeftRadius)]: ref(variantBorderTopLeftRadius),
-            [toVariableKey(tabListBorderTopRightRadius)]: ref(variantBorderTopRightRadius),
-            [toVariableKey(tabListBorderBottomRightRadius)]: ref(variantBorderBottomRightRadius),
-            [toVariableKey(tabListBorderBottomLeftRadius)]: ref(variantBorderBottomLeftRadius),
-            [toVariableKey(tabListFontSize)]: ref(variantFontSize),
-            [toVariableKey(tabListPaddingTop)]: ref(variantPaddingTop),
-            [toVariableKey(tabListPaddingRight)]: ref(variantPaddingRight),
-            [toVariableKey(tabListPaddingBottom)]: ref(variantPaddingBottom),
-            [toVariableKey(tabListPaddingLeft)]: ref(variantPaddingLeft)
-        },
-        options
-    );
-}
-
 /**
  * Composables
  */
@@ -411,12 +309,6 @@ export function useTabListThemeColors(
     colors.forEach((color) => useTabListThemeColorSelectors(color, options));
 }
 
-export function useTabListThemeSizes(sizes: TabListSizeVariant[], userOptions: DefinitionOptions) {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    sizes.forEach((size) => useTabListThemeSizeSelectors(size, options));
-}
-
 export function useTabListTheme(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
@@ -424,5 +316,4 @@ export function useTabListTheme(userOptions: DefinitionOptions) {
     useTabListThemeLayoutSelectors(options);
     useTabListThemeBaseSelectors(options);
     useTabListThemeColors([...defaultTabListColors], options);
-    useTabListThemeSizes([...defaultTabListSizes], options);
 }

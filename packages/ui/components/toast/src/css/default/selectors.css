@@ -40,7 +40,9 @@
 }
 
 .toast-progress-bar {
-    animation: toast-duration var(--toast--duration) forwards;
+    animation-name: var(--toast--animation-name);
+    animation-fill-mode: var(--toast--animation-fill-mode);
+    animation-duration: var(--toast--animation-duration);
     transform-origin: left center;
     width: 100%;
     height: 100%;
@@ -240,6 +242,9 @@
 }
 
 .toast-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--toast-container--toast--gap);
     margin: var(--toast-container--margin);
     width: var(--toast-container--width);
     position: fixed;
@@ -294,7 +299,6 @@
 }
 
 .toast-container > .toast {
-    margin: var(--toast-container--toast--margin);
     width: var(--toast-container--width);
     max-width: 100%;
     position: relative;

@@ -336,6 +336,11 @@ export function useToastThemeConfig(userOptions: DefinitionOptions) {
 
     return merge(
         {
+            animation: {
+                name: 'toast-duration',
+                fillMode: 'forwards',
+                duration: 4000
+            },
             border: {
                 top: {
                     width: ref(borderTopWidth),
@@ -429,7 +434,12 @@ export function useToastThemeVariables(userOptions: DefinitionOptions) {
 export function useToastThemeLayoutSelectors(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    const { toastProgressHeight } = useToastThemeVariables(options);
+    const {
+        toastAnimationName,
+        toastAnimationFillMode,
+        toastAnimationDuration,
+        toastProgressHeight
+    } = useToastThemeVariables(options);
 
     selector(
         '.toast',
@@ -495,7 +505,9 @@ export function useToastThemeLayoutSelectors(userOptions: DefinitionOptions) {
     selector(
         '.toast-progress-bar',
         {
-            animation: 'toast-duration var(--toast--duration) forwards',
+            animationName: ref(toastAnimationName),
+            animationFillMode: ref(toastAnimationFillMode),
+            animationDuration: ref(toastAnimationDuration),
             transformOrigin: 'left center',
             width: '100%',
             height: '100%'

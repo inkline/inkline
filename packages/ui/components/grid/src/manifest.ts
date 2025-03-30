@@ -60,6 +60,12 @@ export const manifest: ComponentManifest[] = [
                 default: 'undefined'
             },
             {
+                name: 'inline',
+                type: 'boolean',
+                description: 'Display the grid as inline flex',
+                default: 'false'
+            },
+            {
                 name: 'offset',
                 type: 'number | BreakpointProp<number>',
                 description: 'Offset the grid item',

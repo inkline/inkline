@@ -64,7 +64,7 @@ export const manifest: ComponentManifest = {
             description: 'The keydown events bound to the select option elements'
         },
         {
-            name: 'interactable',
+            name: 'interactive',
             type: ['Boolean'],
             default: 'true',
             description:

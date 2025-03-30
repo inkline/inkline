@@ -1,5 +1,6 @@
 import { useTheme } from '@inkline/theme';
 import { useAlertTheme } from '@inkline/component-alert';
+import { useBoxTheme } from '@inkline/component-box';
 import { useBadgeTheme } from '@inkline/component-badge';
 import { useBreadcrumbTheme, useBreadcrumbItemTheme } from '@inkline/component-breadcrumb';
 import { useButtonTheme } from '@inkline/component-button';
@@ -14,6 +15,7 @@ import { useExpandTheme } from '@inkline/component-expand';
 import { useGridTheme } from '@inkline/component-grid';
 import { useIconTheme } from '@inkline/component-icon';
 import { useInputTheme } from '@inkline/component-input';
+import { useImageTheme } from '@inkline/component-image';
 import { useLoaderTheme } from '@inkline/component-loader';
 import { useMediaTheme } from '@inkline/component-media';
 import { useModalTheme, useModalContainerTheme } from '@inkline/component-modal';
@@ -34,6 +36,7 @@ export function useInklineTheme(userOptions: DefinitionOptions) {
 
     useTheme(options);
     useAlertTheme(options);
+    useBoxTheme(options);
     useBadgeTheme(options);
     useBlockquoteTheme(options);
     useBreadcrumbTheme(options);
@@ -51,6 +54,7 @@ export function useInklineTheme(userOptions: DefinitionOptions) {
     useGridTheme(options);
     useIconTheme(options);
     useInputTheme(options);
+    useImageTheme(options);
     useLoaderTheme(options);
     useMediaTheme(options);
     useModalTheme(options);

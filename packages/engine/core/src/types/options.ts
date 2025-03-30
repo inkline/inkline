@@ -17,6 +17,12 @@ export type VariablesOptions = DefinitionOptions & { registerComposed?: boolean 
 
 export type SelectorOptions = DefinitionOptions;
 
+export type VariantOptions = DefinitionOptions;
+
+export type UtilityOptions = DefinitionOptions & {
+    prefix?: string;
+};
+
 export type FileOptions = ContextOptions & { append?: boolean; prepend?: boolean };
 
 export type RenameFn = (name: string) => string;

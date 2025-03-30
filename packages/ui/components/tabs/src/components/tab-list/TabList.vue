@@ -21,11 +21,9 @@ export default defineComponent({
         const tabs = inject(TabsKey, null);
 
         const color = computed(() => tabs?.color.value);
-        const size = computed(() => tabs?.size.value);
         const classes = computed(() => ({
             '-stretch': props.stretch,
-            [`-${color.value}`]: color.value,
-            [`-${size.value}`]: size.value
+            [`-${color.value}`]: color.value
         }));
 
         return {

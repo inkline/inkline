@@ -1,0 +1,52 @@
+{
+    "default": {
+        "__type": "theme",
+        "__name": "default",
+        "__keys": {
+            "variables": {},
+            "selectors": {},
+            "utilities": {}
+        },
+        "variables": {},
+        "selectors": [
+            {
+                "__type": "selector",
+                "__name": ".image.-fluid",
+                "__value": {
+                    "height": "auto",
+                    "width": "100%"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".image.-responsive",
+                "__value": {
+                    "height": "auto",
+                    "maxWidth": "100%"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".image.-float-left",
+                "__value": {
+                    "float": "left"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".image.-float-right",
+                "__value": {
+                    "float": "right"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".image[src$=\".svg\"]",
+                "__value": {
+                    "width": "100% \\9"
+                }
+            }
+        ],
+        "utilities": []
+    }
+}

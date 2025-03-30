@@ -1,0 +1,21 @@
+.image.-fluid {
+    height: auto;
+    width: 100%;
+}
+
+.image.-responsive {
+    height: auto;
+    max-width: 100%;
+}
+
+.image.-float-left {
+    float: left;
+}
+
+.image.-float-right {
+    float: right;
+}
+
+.image[src$=".svg"] {
+    width: 100% \9;
+}

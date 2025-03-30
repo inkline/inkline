@@ -33,7 +33,7 @@ A basic button group has a horizontal layout and contains multiple buttons with 
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button-group" name="basic" }
+:DocsComponentDemo{ package="@inkline/component-button-group" file="examples/basic.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button-group" file="examples/basic.vue" } -->
 ::
@@ -47,7 +47,7 @@ You can display a `ButtonGroup` with buttons arranged vertically by using the `v
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button-group" name="vertical" }
+:DocsComponentDemo{ package="@inkline/component-button-group" file="examples/vertical.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button-group" file="examples/vertical.vue" } -->
 ::
@@ -61,7 +61,7 @@ Using the `color` prop, you can set the sizes of all the buttons within the `But
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button-group" name="color-variants" direction="column" }
+:DocsComponentDemo{ package="@inkline/component-button-group" file="examples/color-variants" direction="column.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button-group" file="examples/color-variants.vue" } -->
 ::
@@ -74,7 +74,7 @@ Using the `size` prop, you can set the sizes of all the buttons within the `Butt
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button-group" name="size-variants" direction="column" }
+:DocsComponentDemo{ package="@inkline/component-button-group" file="examples/size-variants" direction="column.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button-group" file="examples/size-variants.vue" } -->
 ::
@@ -83,7 +83,7 @@ Using the `size` prop, you can set the sizes of all the buttons within the `Butt
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button-group" name="vertical-size-variants" }
+:DocsComponentDemo{ package="@inkline/component-button-group" file="examples/vertical-size-variants.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button-group" file="examples/vertical-size-variants.vue" } -->
 ::
@@ -97,7 +97,7 @@ Using the `block` prop, you can render a `ButtonGroup` component that stretches 
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button-group" name="block" }
+:DocsComponentDemo{ package="@inkline/component-button-group" file="examples/block.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button-group" file="examples/block.vue" } -->
 ::
@@ -108,7 +108,7 @@ You can combine the vertical orientation of the `ButtonGroup` component with the
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button-group" name="vertical-block" }
+:DocsComponentDemo{ package="@inkline/component-button-group" file="examples/vertical-block.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button-group" file="examples/vertical-block.vue" } -->
 ::
@@ -121,7 +121,7 @@ Using the `disabled` prop, you can disable all the buttons within the `ButtonGro
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button-group" name="disabled" }
+:DocsComponentDemo{ package="@inkline/component-button-group" file="examples/disabled.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button-group" file="examples/disabled.vue" } -->
 ::
@@ -134,7 +134,7 @@ You can nest `ButtonGroup` components within each other, which can be useful for
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button-group" name="nested" }
+:DocsComponentDemo{ package="@inkline/component-button-group" file="examples/nested.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button-group" file="examples/nested.vue" } -->
 ::
@@ -145,7 +145,7 @@ You can extends the nested configuration by using the `block` variant within nes
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="button-group" name="nested-block" }
+:DocsComponentDemo{ package="@inkline/component-button-group" file="examples/nested-block.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-button-group" file="examples/nested-block.vue" } -->
 ::
@@ -157,7 +157,7 @@ You can extends the nested configuration by using the `block` variant within nes
 ::DocsCard{ title="Button Group Props" }
 Below is an outline of available props for the `ButtonGroup` component.
 
-::DocsComponentProps{ package="button-group" component="ButtonGroup" }
+::DocsComponentProps{ package="@inkline/component-button-group" component="ButtonGroup" }
 ::
 ::
 
@@ -172,7 +172,7 @@ The `ButtonGroup` component does not emit any custom events. However, you can bi
 ::DocsCard{ title="Button Group Slots" }
 Below is an outline of available slots for the `ButtonGroup` component.
 
-::DocsComponentSlots{ package="button-group" component="ButtonGroup" }
+::DocsComponentSlots{ package="@inkline/component-button-group" component="ButtonGroup" }
 ::
 ::
 
@@ -181,13 +181,13 @@ Below is an outline of available slots for the `ButtonGroup` component.
 ::DocsCard{ title="Button Group Design Tokens" }
 Below is an outline of available design tokens for the `ButtonGroup` component.
 
-::DocsComponentDesignTokens{ package="button-group" component="ButtonGroup" }
+::DocsComponentDesignTokens{ package="@inkline/component-button-group" component="ButtonGroup" }
 ::
 ::
 
 ## Accessibility
 
-When using the `ButtonGroup` component, consider the following accessibility best practices:
+By default, Inkline aims to ensure `ButtonGroup` components are accessible out of the box. However, confirm your usage aligns with these best practices and any app-specific guidelines. Here are some accessibility considerations for the `ButtonGroup` component:
 
 **ARIA Roles/Attributes:** 
 - If the button group functions as a toolbar or segmented control, consider using appropriate ARIA roles (e.g., `role="toolbar"`) and labels.

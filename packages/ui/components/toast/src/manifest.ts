@@ -66,24 +66,8 @@ export const manifest: ComponentManifest[] = [
                     value: '2010'
                 },
                 {
-                    name: '--toast-container--toast--margin-top',
-                    value: '0'
-                },
-                {
-                    name: '--toast-container--toast--margin-right',
-                    value: '0'
-                },
-                {
-                    name: '--toast-container--toast--margin-bottom',
+                    name: '--toast-container--toast--gap',
                     value: 'var(--spacing)'
-                },
-                {
-                    name: '--toast-container--toast--margin-left',
-                    value: '0'
-                },
-                {
-                    name: '--toast-container--toast--margin',
-                    value: 'var(--toast-container--toast--margin-top) var(--toast-container--toast--margin-right) var(--toast-container--toast--margin-bottom) var(--toast-container--toast--margin-left)'
                 },
                 {
                     name: '--toast-container--toast--transition-property',
@@ -202,6 +186,42 @@ export const manifest: ComponentManifest[] = [
         css: {
             namespace: 'toast',
             variables: [
+                {
+                    name: '--toast--animation-name',
+                    value: 'toast-duration'
+                },
+                {
+                    name: '--toast--animation-fill-mode',
+                    value: 'forwards'
+                },
+                {
+                    name: '--toast--animation-play-state',
+                    value: 'running'
+                },
+                {
+                    name: '--toast--animation-delay',
+                    value: '0'
+                },
+                {
+                    name: '--toast--animation-timing-function',
+                    value: 'linear'
+                },
+                {
+                    name: '--toast--animation-duration',
+                    value: '4000'
+                },
+                {
+                    name: '--toast--animation-iteration-count',
+                    value: '1'
+                },
+                {
+                    name: '--toast--animation-direction',
+                    value: 'normal'
+                },
+                {
+                    name: '--toast--animation',
+                    value: 'var(--toast--animation-name) var(--toast--animation-duration) var(--toast--animation-iteration-count) var(--toast--animation-direction)'
+                },
                 {
                     name: '--toast--border-top-width',
                     value: 'var(--border-top-width)'
@@ -467,6 +487,42 @@ export const manifest: ComponentManifest[] = [
             namespace: '',
             variables: [
                 {
+                    name: '--toast--animation-name',
+                    value: 'toast-duration'
+                },
+                {
+                    name: '--toast--animation-fill-mode',
+                    value: 'forwards'
+                },
+                {
+                    name: '--toast--animation-play-state',
+                    value: 'running'
+                },
+                {
+                    name: '--toast--animation-delay',
+                    value: '0'
+                },
+                {
+                    name: '--toast--animation-timing-function',
+                    value: 'linear'
+                },
+                {
+                    name: '--toast--animation-duration',
+                    value: '4000'
+                },
+                {
+                    name: '--toast--animation-iteration-count',
+                    value: '1'
+                },
+                {
+                    name: '--toast--animation-direction',
+                    value: 'normal'
+                },
+                {
+                    name: '--toast--animation',
+                    value: 'var(--toast--animation-name) var(--toast--animation-duration) var(--toast--animation-iteration-count) var(--toast--animation-direction)'
+                },
+                {
                     name: '--toast--border-top-width',
                     value: 'var(--border-top-width)'
                 },
@@ -695,24 +751,8 @@ export const manifest: ComponentManifest[] = [
                     value: '2010'
                 },
                 {
-                    name: '--toast-container--toast--margin-top',
-                    value: '0'
-                },
-                {
-                    name: '--toast-container--toast--margin-right',
-                    value: '0'
-                },
-                {
-                    name: '--toast-container--toast--margin-bottom',
+                    name: '--toast-container--toast--gap',
                     value: 'var(--spacing)'
-                },
-                {
-                    name: '--toast-container--toast--margin-left',
-                    value: '0'
-                },
-                {
-                    name: '--toast-container--toast--margin',
-                    value: 'var(--toast-container--toast--margin-top) var(--toast-container--toast--margin-right) var(--toast-container--toast--margin-bottom) var(--toast-container--toast--margin-left)'
                 },
                 {
                     name: '--toast-container--toast--transition-property',

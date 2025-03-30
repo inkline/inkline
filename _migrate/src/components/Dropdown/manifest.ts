@@ -83,7 +83,7 @@ export const manifest: ComponentManifest = {
             description: 'The offset of the dropdown relative to the trigger element'
         },
         {
-            name: 'interactable',
+            name: 'interactive',
             type: ['Boolean'],
             default: 'true',
             description:

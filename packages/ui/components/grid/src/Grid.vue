@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, PropType } from 'vue';
+import { computed, defineComponent, h, PropType } from 'vue';
 import {
     BreakpointProp,
     FlexAlignItemsProp,
@@ -29,7 +29,7 @@ export default defineComponent({
          * @default undefined
          */
         size: {
-            type: [String, Object] as PropType<BreakpointProp<GridSizeProp>>,
+            type: [String, Number, Object] as PropType<BreakpointProp<GridSizeProp>>,
             default: undefined
         },
         /**
@@ -38,23 +38,23 @@ export default defineComponent({
          * @default undefined
          */
         xs: {
-            type: String as PropType<GridSizeProp>,
+            type: [String, Number] as PropType<GridSizeProp>,
             default: undefined
         },
         sm: {
-            type: String as PropType<GridSizeProp>,
+            type: [String, Number] as PropType<GridSizeProp>,
             default: undefined
         },
         md: {
-            type: String as PropType<GridSizeProp>,
+            type: [String, Number] as PropType<GridSizeProp>,
             default: undefined
         },
         lg: {
-            type: String as PropType<GridSizeProp>,
+            type: [String, Number] as PropType<GridSizeProp>,
             default: undefined
         },
         xl: {
-            type: String as PropType<GridSizeProp>,
+            type: [String, Number] as PropType<GridSizeProp>,
             default: undefined
         },
         /**
@@ -160,12 +160,21 @@ export default defineComponent({
             default: undefined
         },
         /**
+         * Display the grid as inline flex
+         * @param {boolean} inline
+         * @default false
+         */
+        inline: {
+            type: Boolean,
+            default: false
+        },
+        /**
          * Offset the grid item
          * @param {number | BreakpointProp<number>} offset
          * @default undefined
          */
         offset: {
-            type: [Number, Object] as PropType<BreakpointProp<number>>,
+            type: [String, Number, Object] as PropType<BreakpointProp<`${number}` | number>>,
             default: undefined
         },
         /**
@@ -174,23 +183,23 @@ export default defineComponent({
          * @default undefined
          */
         offsetXs: {
-            type: Number,
+            type: [String, Number],
             default: undefined
         },
         offsetSm: {
-            type: Number,
+            type: [String, Number],
             default: undefined
         },
         offsetMd: {
-            type: Number,
+            type: [String, Number],
             default: undefined
         },
         offsetLg: {
-            type: Number,
+            type: [String, Number],
             default: undefined
         },
         offsetXl: {
-            type: Number,
+            type: [String, Number],
             default: undefined
         },
         /**
@@ -210,12 +219,23 @@ export default defineComponent({
         noWrap: {
             type: Boolean,
             default: false
+        },
+        /**
+         * The tag to use for the grid element
+         * @param {string} tag
+         * @default 'div'
+         */
+        tag: {
+            type: String,
+            default: 'div'
         }
     },
-    setup(props) {
+    setup(props, { slots }) {
         const classes = computed(() => {
             const result: Record<string, boolean> = {
+                grid: true,
                 '-container': props.container,
+                '-inline': props.inline,
                 '-no-gap': props.noGap,
                 '-no-wrap': props.noWrap,
                 ...toBreakpointClasses('size', props.size, {
@@ -258,16 +278,8 @@ export default defineComponent({
             return result;
         });
 
-        return {
-            classes
-        };
+        // <!-- @slot default Slot for default grid content -->
+        return () => h(props.tag, { class: classes.value }, slots.default?.());
     }
 });
 </script>
-
-<template>
-    <div class="grid" :class="classes">
-        <!-- @slot default Slot for default row content -->
-        <slot />
-    </div>
-</template>

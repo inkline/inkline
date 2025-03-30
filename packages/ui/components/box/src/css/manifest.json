@@ -1,0 +1,22 @@
+{
+    "default": {
+        "__type": "theme",
+        "__name": "default",
+        "__keys": {
+            "variables": {},
+            "selectors": {},
+            "utilities": {}
+        },
+        "variables": {},
+        "selectors": [
+            {
+                "__type": "selector",
+                "__name": ".box",
+                "__value": {
+                    "boxSizing": "border-box"
+                }
+            }
+        ],
+        "utilities": []
+    }
+}

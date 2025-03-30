@@ -1,5 +1,5 @@
 import { render, fireEvent } from '@testing-library/vue';
-import Popover from '../Popover.vue';
+import Popover from '../components/popover/Popover.vue';
 import { createTestingInklineOptionsProvide } from '@inkline/test-utils';
 
 describe('Components', () => {

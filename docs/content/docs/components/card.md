@@ -20,10 +20,47 @@ The `Card` component in Inkline can be used in various scenarios:
 ## Import
 
 ```ts
-import { Card } from 'inkline/card';
+import { Card, CardHeader, CardImage, CardFooter } from 'inkline/card';
 ```
 
 :DocsImportNotice
+
+## Components Structure
+
+The `Card` component is composed of multiple parts that work together to create a structured and visually appealing layout. Each component plays a specific role:
+
+```html 
+Card
+├── CardHeader
+├── CardImage
+├── ...
+└── CardFooter
+```
+
+### Card
+
+The `default` slot serves as the main content area for the `Card` component. Here you can display any information or interactive elements.
+
+Additionally, you have the flexibility to include:
+- `CardHeader`: An optional section at the top for titles or introductory content.
+- `CardImage`: An optional section for displaying images within the card.
+- `CardFooter`: An optional section at the bottom for actions like links or buttons.
+
+### Card Header
+
+The `CardHeader` component is an optional section that can be used to display a title or introductory information at the top of the card. 
+- It helps to provide context and structure to the card's content.
+- It can include text, icons, or other elements.
+
+### Card Image
+
+The `CardImage` component is an optional section that allows you to include an image within the card.
+- The image spans the full width of the card, providing a visually appealing layout.
+
+### Card Footer
+
+The `CardFooter` component is an optional section that can be used to display additional actions, links, or buttons at the bottom of the card. 
+- It helps to provide a clear separation between the card's content and any interactive elements.
 
 ## Usage
 
@@ -33,7 +70,7 @@ In its simplest form, the `Card` component wraps content with default styling, p
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="card" name="basic" }
+:DocsComponentDemo{ package="@inkline/component-card" file="examples/basic.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-card" file="examples/basic.vue" } -->
 ::
@@ -46,41 +83,45 @@ Using the `color` prop, you can easily adjust the visual theme of the `Card` com
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="card" name="color-variants" }
+:DocsComponentDemo{ package="@inkline/component-card" file="examples/color-variants.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-card" file="examples/color-variants.vue" } -->
 ::
 
 *In this example, the `Card` component is showcased with multiple color variants, adapting to different design themes.*
 
-### Example: Size Variants
-
-Using the `size` prop, you can modify the padding, typography, and overall scale of the `Card` component.
-
-::DocsTabs
-#preview
-:DocsComponentDemo{ package="card" name="size-variants" }
-#code
-<!-- :DocsCode{ package="@inkline/component-card" file="examples/size-variants.vue" } -->
-::
-
-*This example demonstrates the `Card` component in various sizes, including small, medium, and large variants.*
-
-### 🚧 Example: Header and Footer (WIP)
+### Example: Header and Footer
 
 The `Card` component can also be enhanced with `CardHeader` and `CardFooter` components, allowing you to separate content into distinct sections.
 
-::DocsAlert{ color="warning" }
-The `CardHeader` and `CardFooter` components are currently a work in progress. Check back soon for updates!
+::DocsTabs
+#preview
+:DocsComponentDemo{ package="@inkline/component-card" file="examples/header-footer.vue" }
+#code
+<!-- :DocsCode{ package="@inkline/component-card" file="examples/header-footer.vue" } -->
 ::
 
+*This example demonstrates the use of header and footer to structure content within the `Card`.*
+
+### Example: Card with Image 
+
+You can include images within the `Card` component to create visually appealing layouts. Using the `CardImage` component, you can have full-width images that fit perfectly within the card.
+
+::DocsTabs
+#preview
+:DocsComponentDemo{ package="@inkline/component-card" file="examples/image.vue" }
+#code
+<!-- :DocsCode{ package="@inkline/component-card" file="examples/image.vue" } -->
+::
+
+*This example showcases a card with a image using the `CardImage` component.*
 
 ## Props
 
 ::DocsCard{ title="Card Props" }
 Below is an outline of available props for the `Card` component.
 
-::DocsComponentProps{ package="card" component="Card" }
+::DocsComponentProps{ package="@inkline/component-card" component="Card" }
 ::
 ::
 
@@ -95,7 +136,7 @@ The `Card` component does not emit any custom events. However, you can bind nati
 ::DocsCard{ title="Card Slots" }
 Below is an outline of available slots for the `Card` component.
 
-::DocsComponentSlots{ package="card" component="Card" }
+::DocsComponentSlots{ package="@inkline/component-card" component="Card" }
 ::
 ::
 
@@ -105,7 +146,7 @@ Below is an outline of available slots for the `Card` component.
 ::DocsCard{ title="Card Design Tokens" }
 Below is an outline of available design tokens for the `Card` component.
 
-::DocsComponentDesignTokens{ package="card" component="Card" }
+::DocsComponentDesignTokens{ package="@inkline/component-card" component="Card" }
 ::
 ::
 

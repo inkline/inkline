@@ -15,6 +15,19 @@ export function useFontWeightVariables(userOptions: DefinitionOptions) {
 
     const fontWeight = variable('font-weight', ref(fontWeightNormal), options);
 
+    const fontWeightMap = {
+        extralight: fontWeightExtralight,
+        light: fontWeightLight,
+        normal: fontWeightNormal,
+        medium: fontWeightMedium,
+        semibold: fontWeightSemibold,
+        bold: fontWeightBold,
+        black: fontWeightBlack,
+        lighter: fontWeightLighter,
+        bolder: fontWeightBolder,
+        default: fontWeight
+    };
+
     return {
         fontWeightExtralight,
         fontWeightLight,
@@ -25,7 +38,8 @@ export function useFontWeightVariables(userOptions: DefinitionOptions) {
         fontWeightBlack,
         fontWeightLighter,
         fontWeightBolder,
-        fontWeight
+        fontWeight,
+        fontWeightMap
     };
 }
 

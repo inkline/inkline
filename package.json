@@ -9,7 +9,7 @@
         "generate": "turbo run generate --filter '!@inkline/docs'",
         "prebuild": "pnpm run generate",
         "build": "turbo run build --filter '!@inkline/e2e*' --filter '!@inkline/docs*'",
-        "build:devtools": "turbo run build --filter @inkline/devtools",
+        "build:devtools": "turbo run build --filter @inkline/devtools --filter @inkline/manifest",
         "build:core": "turbo run build --filter './packages/engine/*' --filter '@inkline/types' --filter '@inkline/theme'",
         "build:ui": "turbo run build --filter './packages/ui/*' --filter './packages/ui/addons/*'",
         "build:docs": "turbo run build --filter '@inkline/docs'",

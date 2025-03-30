@@ -100,10 +100,10 @@ export default defineComponent({
         },
         /**
          * Determines whether hover state should be transferred from trigger to popup
-         * @param {boolean} interactable
+         * @param {boolean} interactive
          * @default false
          */
-        interactable: {
+        interactive: {
             type: Boolean,
             default: false
         },

@@ -17,9 +17,29 @@ The `Tabs` component in Inkline is versatile and can be used in various scenario
 - *Form segmentation:* Group related form elements or settings in separate tabs to enhance usability.
 - *Content organization:* Improve readability by breaking down large amounts of information into manageable, categorized sections.
 
-## Components Overview
+
+## Import
+
+```ts
+import { Tabs, TabList, Tab, TabPanel } from 'inkline/tabs';
+```
+
+:DocsImportNotice
+
+## Components Structure
 
 The Inkline tabs system is composed of multiple components that work together to create a dynamic and accessible tabbed interface. Each component plays a specific role:
+
+```html
+Tabs
+├── TabList
+│   ├── Tab
+│   ├── Tab
+│   └── Tab
+├── TabPanel
+├── TabPanel
+└── TabPanel
+```
 
 ### Tabs
 The `Tabs` component is the main container component that orchestrates the tabbed interface. 
@@ -42,14 +62,6 @@ The `TabPanel` component displays the content related to the active tab.
 
 These components are designed to work together seamlessly, ensuring that the user experience remains intuitive and accessible.
 
-## Import
-
-```ts
-import { Tabs, TabList, Tab, TabPanel } from 'inkline/tabs';
-```
-
-:DocsImportNotice
-
 ## Usage
 
 ### Basic Usage
@@ -58,7 +70,7 @@ In its simplest form, the `Tabs` component is used together with `TabList`, `Tab
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="tabs" name="basic" }
+:DocsComponentDemo{ package="@inkline/component-tabs" file="examples/basic.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-tabs" file="examples/basic.vue" } -->
 ::
@@ -71,25 +83,12 @@ Using the `color` prop, you can quickly style the `Tabs` component to match vari
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="tabs" name="color-variants" }
+:DocsComponentDemo{ package="@inkline/component-tabs" file="examples/color-variants.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-tabs" file="examples/color-variants.vue" } -->
 ::
 
 *In this example, the `Tabs` component is rendered in light and dark color variants.*
-
-### Example: Size Variants
-
-The `Tabs` component supports different sizes to better fit your design needs. Adjusting the `size` prop modifies the spacing, font size, and overall dimensions of the tab elements.
-
-::DocsTabs
-#preview
-:DocsComponentDemo{ package="tabs" name="size-variants" }
-#code
-<!-- :DocsCode{ package="@inkline/component-tabs" file="examples/size-variants.vue" } -->
-::
-
-*This example demonstrates small, medium, and large variations of the `Tabs` component.*
 
 ### Example: Stretch Mode
 
@@ -97,7 +96,7 @@ The stretch mode allows the tabs to expand and fill the available width, ensurin
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="tabs" name="stretch" }
+:DocsComponentDemo{ package="@inkline/component-tabs" file="examples/stretch.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-tabs" file="examples/stretch.vue" } -->
 ::
@@ -109,28 +108,28 @@ The stretch mode allows the tabs to expand and fill the available width, ensurin
 ::DocsCard{ title="Tabs Props" }
 Below is an outline of available props for the `Tabs` component.
 
-::DocsComponentProps{ package="tabs" component="Tabs" }
+::DocsComponentProps{ package="@inkline/component-tabs" component="Tabs" }
 ::
 ::
 
 ::DocsCard{ title="Tab List Props" }
 Below is an outline of available props for the `TabList` component.
 
-::DocsComponentProps{ package="tabs" component="TabList" }
+::DocsComponentProps{ package="@inkline/component-tabs" component="TabList" }
 ::
 ::
 
 ::DocsCard{ title="Tab Props" }
 Below is an outline of available props for the `Tab` component.
 
-::DocsComponentProps{ package="tabs" component="Tab" }
+::DocsComponentProps{ package="@inkline/component-tabs" component="Tab" }
 ::
 ::
 
 ::DocsCard{ title="Tab Panel Props" }
 Below is an outline of available props for the `TabPanel` component.
 
-::DocsComponentProps{ package="tabs" component="TabPanel" }
+::DocsComponentProps{ package="@inkline/component-tabs" component="TabPanel" }
 ::
 ::
 
@@ -139,7 +138,7 @@ Below is an outline of available props for the `TabPanel` component.
 ::DocsCard{ title="Tabs Events" }
 Below is an outline of available events for the `Tabs` component.
 
-::DocsComponentEvents{ package="tabs" component="Tabs" }
+::DocsComponentEvents{ package="@inkline/component-tabs" component="Tabs" }
 ::
 ::
 
@@ -160,28 +159,28 @@ The `TabPanel` component does not emit any events.
 ::DocsCard{ title="Tabs Slots" }
 Below is an outline of available slots for the `Tabs` component.
 
-::DocsComponentSlots{ package="tabs" component="Tabs" }
+::DocsComponentSlots{ package="@inkline/component-tabs" component="Tabs" }
 ::
 ::
 
 ::DocsCard{ title="Tab List Slots" }
 Below is an outline of available slots for the `TabList` component.
 
-::DocsComponentSlots{ package="tabs" component="TabList" }
+::DocsComponentSlots{ package="@inkline/component-tabs" component="TabList" }
 ::
 ::
 
 ::DocsCard{ title="Tab Slots" }
 Below is an outline of available slots for the `Tab` component.
 
-::DocsComponentSlots{ package="tabs" component="Tab" }
+::DocsComponentSlots{ package="@inkline/component-tabs" component="Tab" }
 ::
 ::
 
 ::DocsCard{ title="Tab Panel Slots" }
 Below is an outline of available slots for the `TabPanel` component.
 
-::DocsComponentSlots{ package="tabs" component="TabPanel" }
+::DocsComponentSlots{ package="@inkline/component-tabs" component="TabPanel" }
 ::
 ::
 
@@ -194,21 +193,21 @@ The `Tabs` component itself acts as a wrapper and does not have any design token
 ::DocsCard{ title="Tab List Design Tokens" }
 Below is an outline of available design tokens for the `TabList` component.
 
-::DocsComponentDesignTokens{ package="tabs" component="TabList" }
+::DocsComponentDesignTokens{ package="@inkline/component-tabs" component="TabList" }
 ::
 ::
 
 ::DocsCard{ title="Tab Design Tokens" }
 Below is an outline of available design tokens for the `Tab` component.
 
-::DocsComponentDesignTokens{ package="tabs" component="Tab" }
+::DocsComponentDesignTokens{ package="@inkline/component-tabs" component="Tab" }
 ::
 ::
 
 ::DocsCard{ title="Tab Panel Design Tokens" }
 Below is an outline of available design tokens for the `TabPanel` component.
 
-::DocsComponentDesignTokens{ package="tabs" component="TabPanel" }
+::DocsComponentDesignTokens{ package="@inkline/component-tabs" component="TabPanel" }
 ::
 ::
 

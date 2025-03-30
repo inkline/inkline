@@ -97,7 +97,6 @@ export interface SidebarInjection {
 export interface TabsInjection {
     active: Ref<string>;
     color: Ref<string>;
-    size: Ref<string>;
     seo: Ref<boolean>;
     setActive: (id: string) => void;
 }

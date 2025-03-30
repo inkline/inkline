@@ -33,7 +33,7 @@ In its simplest form, the `Icon` component is used to render an icon with defaul
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="icon" name="icons" }
+:DocsComponentDemo{ package="@inkline/component-icon" file="examples/icons.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-icon" file="examples/icons.vue" } -->
 ::
@@ -49,7 +49,7 @@ You can customize the color of the `Icon` component in various ways:
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="icon" name="color-variants" }
+:DocsComponentDemo{ package="@inkline/component-icon" file="examples/color-variants.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-icon" file="examples/color-variants.vue" } -->
 ::
@@ -66,7 +66,7 @@ You can customize the size of the `Icon` component in various ways:
 
 ::DocsTabs
 #preview
-:DocsComponentDemo{ package="icon" name="size" }
+:DocsComponentDemo{ package="@inkline/component-icon" file="examples/size.vue" }
 #code
 <!-- :DocsCode{ package="@inkline/component-icon" file="examples/size.vue" } -->
 ::
@@ -137,7 +137,7 @@ To import thousands icons directly into your application:
 ::DocsCard{ title="Icon Props" }
 Below is an outline of available props for the `Icon` component.
 
-::DocsComponentProps{ package="icon" component="Icon" }
+::DocsComponentProps{ package="@inkline/component-icon" component="Icon" }
 ::
 ::
 
@@ -158,14 +158,14 @@ The `Icon` component does not have any slots.
 ::DocsCard{ title="Icon Design Tokens" }
 Below is an outline of available design tokens for the `Icon` component.
 
-::DocsComponentDesignTokens{ package="icon" component="Icon" }
+::DocsComponentDesignTokens{ package="@inkline/component-icon" component="Icon" }
 ::
 ::
 
 
 ## Accessibility
 
-To ensure that the `Icon` component is accessible, consider the following guidelines:
+By default, Inkline aims to ensure `Icon` components are accessible out of the box. However, confirm your usage aligns with these best practices and any app-specific guidelines. Here are some accessibility considerations for the `Icon` component:
 
 **ARIA roles/attributes:**
 - If the icon is purely decorative, add `aria-hidden="true"` to hide it from assistive technologies.
