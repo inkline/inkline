@@ -15,7 +15,7 @@ import { basename, dirname, extname, resolve } from 'node:path';
 import { existsSync } from 'fs';
 import { writeFile, mkdir } from 'fs/promises';
 import { exists } from './utils';
-import { cssGenerator } from '@inkline/generator';
+import { generator } from '@inkline/generator';
 
 export function getResolvedBuildOptions(options: UserBuildOptions): BuildOptions {
     let configDir = process.cwd();
@@ -72,7 +72,7 @@ export async function buildConfiguration(configuration: Configuration, options: 
     }
 
     // Generate output files data
-    const outputFiles = cssGenerator(configuration);
+    const outputFiles = generator(configuration);
 
     // Write output files
     const outputFilePromises: Promise<void>[] = [];

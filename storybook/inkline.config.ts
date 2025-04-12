@@ -1,9 +1,8 @@
 import { defineConfig } from '@inkline/core';
 import { useTheme } from '@inkline/theme';
-
+import { useVariantsTheme } from '@inkline/variants';
 import { useAlertTheme } from '@inkline/component-alert';
 import { useBadgeTheme } from '@inkline/component-badge';
-import { useBoxTheme } from '@inkline/component-box';
 import { useBreadcrumbTheme, useBreadcrumbItemTheme } from '@inkline/component-breadcrumb';
 import { useButtonTheme } from '@inkline/component-button';
 import { useButtonGroupTheme } from '@inkline/component-button-group';
@@ -29,9 +28,9 @@ import { useImageTheme } from '@inkline/component-image';
 
 export default defineConfig((options) => {
     useTheme(options);
+    useVariantsTheme(options);
     useAlertTheme(options);
     useBadgeTheme(options);
-    useBoxTheme(options);
     useBreadcrumbTheme(options);
     useBreadcrumbItemTheme(options);
     useButtonTheme(options);

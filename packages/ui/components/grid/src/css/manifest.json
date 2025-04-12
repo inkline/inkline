@@ -4,6 +4,7 @@
         "__name": "default",
         "__keys": {
             "variables": {},
+            "variants": {},
             "selectors": {},
             "utilities": {}
         },
@@ -1293,6 +1294,11 @@
                     ]
                 }
             },
+            "font-size-inherit": {
+                "__type": "variable",
+                "__name": "font-size-inherit",
+                "__value": "inherit"
+            },
             "font-size": {
                 "__type": "variable",
                 "__name": "font-size",
@@ -2488,6 +2494,7 @@
                 "__value": 1440
             }
         },
+        "variants": {},
         "selectors": [
             {
                 "__type": "selector",

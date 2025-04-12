@@ -118,6 +118,18 @@ export function useBaseColors(userOptions: DefinitionOptions) {
     const colorPurple = color('color-purple', '#8268ae', options);
     const colorPink = color('color-pink', '#fc778a', options);
 
+    const baseColorMap = {
+        red: colorRed,
+        orange: colorOrange,
+        yellow: colorYellow,
+        green: colorGreen,
+        teal: colorTeal,
+        blue: colorBlue,
+        indigo: colorIndigo,
+        purple: colorPurple,
+        pink: colorPink
+    };
+
     return {
         colorRed,
         colorOrange,
@@ -127,7 +139,8 @@ export function useBaseColors(userOptions: DefinitionOptions) {
         colorBlue,
         colorIndigo,
         colorPurple,
-        colorPink
+        colorPink,
+        baseColorMap
     };
 }
 
@@ -153,6 +166,23 @@ export function useNeutralColors(userOptions: DefinitionOptions) {
         colorGray950
     } = useColorLightnessVariantsFactory(colorGray, options);
 
+    const neutralColorMap = {
+        gray50: colorGray50,
+        gray100: colorGray100,
+        gray200: colorGray200,
+        gray300: colorGray300,
+        gray400: colorGray400,
+        gray500: colorGray500,
+        gray600: colorGray600,
+        gray700: colorGray700,
+        gray800: colorGray800,
+        gray900: colorGray900,
+        gray950: colorGray950,
+        gray: colorGray,
+        white: colorWhite,
+        black: colorBlack
+    };
+
     return {
         colorWhite,
         colorBlack,
@@ -167,7 +197,8 @@ export function useNeutralColors(userOptions: DefinitionOptions) {
         colorGray700,
         colorGray800,
         colorGray900,
-        colorGray950
+        colorGray950,
+        neutralColorMap
     };
 }
 
@@ -180,20 +211,24 @@ export function useBrandBaseColors(userOptions: DefinitionOptions) {
     const { colorGray800, colorGray100 } = useNeutralColors(options);
 
     const colorPrimary = color('color-primary', ref(colorBlue), options);
-
     const colorSecondary = color('color-secondary', ref(colorPurple), options);
-
     const colorInfo = color('color-info', ref(colorTeal), options);
-
     const colorSuccess = color('color-success', ref(colorGreen), options);
-
     const colorWarning = color('color-warning', ref(colorYellow), options);
-
     const colorDanger = color('color-danger', ref(colorRed), options);
-
     const colorLight = color('color-light', ref(colorGray100), options);
-
     const colorDark = color('color-dark', ref(colorGray800), options);
+
+    const brandColorMap = {
+        primary: colorPrimary,
+        secondary: colorSecondary,
+        info: colorInfo,
+        success: colorSuccess,
+        warning: colorWarning,
+        danger: colorDanger,
+        light: colorLight,
+        dark: colorDark
+    };
 
     return {
         colorPrimary,
@@ -203,7 +238,8 @@ export function useBrandBaseColors(userOptions: DefinitionOptions) {
         colorWarning,
         colorDanger,
         colorLight,
-        colorDark
+        colorDark,
+        brandColorMap
     };
 }
 
@@ -351,6 +387,118 @@ export function useBrandColorVariants(userOptions: DefinitionOptions) {
         options
     );
 
+    const brandColorVariantMap = {
+        'primary-100': colorPrimary100,
+        'primary-200': colorPrimary200,
+        'primary-300': colorPrimary300,
+        'primary-400': colorPrimary400,
+        'primary-500': colorPrimary500,
+        'primary-600': colorPrimary600,
+        'primary-700': colorPrimary700,
+        'primary-800': colorPrimary800,
+        'primary-900': colorPrimary900,
+        'primary-tint-50': colorPrimaryTint50,
+        'primary-tint-100': colorPrimaryTint100,
+        'primary-tint-150': colorPrimaryTint150,
+        'primary-shade-50': colorPrimaryShade50,
+        'primary-shade-100': colorPrimaryShade100,
+        'primary-shade-150': colorPrimaryShade150,
+
+        'secondary-100': colorSecondary100,
+        'secondary-200': colorSecondary200,
+        'secondary-300': colorSecondary300,
+        'secondary-400': colorSecondary400,
+        'secondary-500': colorSecondary500,
+        'secondary-600': colorSecondary600,
+        'secondary-700': colorSecondary700,
+        'secondary-800': colorSecondary800,
+        'secondary-900': colorSecondary900,
+        'secondary-tint-50': colorSecondaryTint50,
+        'secondary-tint-100': colorSecondaryTint100,
+        'secondary-tint-150': colorSecondaryTint150,
+        'secondary-shade-50': colorSecondaryShade50,
+        'secondary-shade-100': colorSecondaryShade100,
+        'secondary-shade-150': colorSecondaryShade150,
+
+        'info-100': colorInfo100,
+        'info-200': colorInfo200,
+        'info-300': colorInfo300,
+        'info-400': colorInfo400,
+        'info-500': colorInfo500,
+        'info-600': colorInfo600,
+        'info-700': colorInfo700,
+        'info-800': colorInfo800,
+        'info-900': colorInfo900,
+        'info-tint-50': colorInfoTint50,
+        'info-tint-100': colorInfoTint100,
+        'info-tint-150': colorInfoTint150,
+        'info-shade-50': colorInfoShade50,
+        'info-shade-100': colorInfoShade100,
+        'info-shade-150': colorInfoShade150,
+
+        'success-100': colorSuccess100,
+        'success-200': colorSuccess200,
+        'success-300': colorSuccess300,
+        'success-400': colorSuccess400,
+        'success-500': colorSuccess500,
+        'success-600': colorSuccess600,
+        'success-700': colorSuccess700,
+        'success-800': colorSuccess800,
+        'success-900': colorSuccess900,
+        'success-tint-50': colorSuccessTint50,
+        'success-tint-100': colorSuccessTint100,
+        'success-tint-150': colorSuccessTint150,
+        'success-shade-50': colorSuccessShade50,
+        'success-shade-100': colorSuccessShade100,
+        'success-shade-150': colorSuccessShade150,
+
+        'warning-100': colorWarning100,
+        'warning-200': colorWarning200,
+        'warning-300': colorWarning300,
+        'warning-400': colorWarning400,
+        'warning-500': colorWarning500,
+        'warning-600': colorWarning600,
+        'warning-700': colorWarning700,
+        'warning-800': colorWarning800,
+        'warning-900': colorWarning900,
+        'warning-tint-50': colorWarningTint50,
+        'warning-tint-100': colorWarningTint100,
+        'warning-tint-150': colorWarningTint150,
+        'warning-shade-50': colorWarningShade50,
+        'warning-shade-100': colorWarningShade100,
+        'warning-shade-150': colorWarningShade150,
+
+        'danger-100': colorDanger100,
+        'danger-200': colorDanger200,
+        'danger-300': colorDanger300,
+        'danger-400': colorDanger400,
+        'danger-500': colorDanger500,
+        'danger-600': colorDanger600,
+        'danger-700': colorDanger700,
+        'danger-800': colorDanger800,
+        'danger-900': colorDanger900,
+        'danger-tint-50': colorDangerTint50,
+        'danger-tint-100': colorDangerTint100,
+        'danger-tint-150': colorDangerTint150,
+        'danger-shade-50': colorDangerShade50,
+        'danger-shade-100': colorDangerShade100,
+        'danger-shade-150': colorDangerShade150,
+
+        'light-tint-50': colorLightTint50,
+        'light-tint-100': colorLightTint100,
+        'light-tint-150': colorLightTint150,
+        'light-shade-50': colorLightShade50,
+        'light-shade-100': colorLightShade100,
+        'light-shade-150': colorLightShade150,
+
+        'dark-tint-50': colorDarkTint50,
+        'dark-tint-100': colorDarkTint100,
+        'dark-tint-150': colorDarkTint150,
+        'dark-shade-50': colorDarkShade50,
+        'dark-shade-100': colorDarkShade100,
+        'dark-shade-150': colorDarkShade150
+    };
+
     return {
         colorPrimary100,
         colorPrimary200,
@@ -453,7 +601,8 @@ export function useBrandColorVariants(userOptions: DefinitionOptions) {
         colorDarkTint150,
         colorDarkShade50,
         colorDarkShade100,
-        colorDarkShade150
+        colorDarkShade150,
+        brandColorVariantMap
     };
 }
 
@@ -469,11 +618,23 @@ export function useBrandColors(userOptions: DefinitionOptions) {
 export function useColorsVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
+    const baseColors = useBaseColors(options);
+    const neutralColors = useNeutralColors(options);
+    const brandColors = useBrandBaseColors(options);
+    const brandColorVariants = useBrandColorVariants(options);
+    const colorMap = {
+        ...baseColors.baseColorMap,
+        ...neutralColors.neutralColorMap,
+        ...brandColors.brandColorMap,
+        ...brandColorVariants.brandColorVariantMap
+    };
+
     return {
-        ...useBaseColors(options),
-        ...useNeutralColors(options),
-        ...useBrandColors(options),
-        ...useBrandColorVariants(options)
+        ...baseColors,
+        ...neutralColors,
+        ...brandColors,
+        ...brandColorVariants,
+        colorMap
     };
 }
 

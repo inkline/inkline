@@ -4,6 +4,7 @@
         "__name": "default",
         "__keys": {
             "variables": {},
+            "variants": {},
             "selectors": {},
             "utilities": {}
         },
@@ -81,6 +82,7 @@
                 ]
             }
         },
+        "variants": {},
         "selectors": [
             {
                 "__type": "selector",

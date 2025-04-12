@@ -1,6 +1,7 @@
 import { HSLAColorInlineProperty } from './properties';
 import { ExportedName } from './namespaces';
 import { CamelCase } from 'type-fest';
+import type { ComponentVariantProps } from '@inkline/types';
 
 export const enum TokenType {
     Variable = 'variable',
@@ -82,7 +83,7 @@ export type Variant = {
     __id: string;
     __type: TokenType.Variant;
     __name: string;
-    __value: ComponentValue;
+    __value: ComponentVariantProps;
 };
 
 export type AtRules = 'media' | 'supports' | 'keyframes';

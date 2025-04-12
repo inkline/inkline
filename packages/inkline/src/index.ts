@@ -15,9 +15,10 @@ export * from './core';
  */
 
 export * from './i18n';
-export * from './validation';
 export * from './composables';
 export * from './utils';
+export * from './validation';
+export * from './variants';
 export * from './vue';
 
 /**
@@ -27,6 +28,7 @@ export * from './vue';
 export * from './components';
 export * from './alert';
 export * from './badge';
+export * from './base';
 export * from './breadcrumb';
 export * from './button';
 export * from './button-group';

@@ -1,2 +1,2 @@
 export * from './consume';
-export { cssGenerator } from './css';
+export { generator } from './generator';

@@ -26,6 +26,9 @@
             "@inkline/composables": [
                 "../packages/ui/composables/src/index.ts"
             ],
+            "@inkline/variants": [
+                "../packages/ui/variants/src/index.ts"
+            ],
             "@inkline/i18n": [
                 "../packages/ui/i18n/src/index.ts"
             ],

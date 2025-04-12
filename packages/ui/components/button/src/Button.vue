@@ -3,7 +3,7 @@ import { markRaw, PropType } from 'vue';
 import { computed, defineComponent, inject } from 'vue';
 import { useComponentColor, useComponentSize, useOptions } from '@inkline/composables';
 import { ButtonGroupKey, FormKey, FormGroupKey } from '@inkline/types';
-import { GridBox } from '@inkline/component-box';
+import { BaseComponent } from '@inkline/component-base';
 import { Linkable } from '@inkline/component-linkable';
 import { Loader } from '@inkline/component-loader';
 
@@ -84,7 +84,7 @@ export function useButtonVariants() {
 export default defineComponent({
     name: componentName,
     components: {
-        GridBox,
+        BaseComponent,
         Linkable,
         Loader
     },
@@ -340,14 +340,13 @@ export default defineComponent({
 </script>
 
 <template>
-    <GridBox
+    <BaseComponent
         :to="to"
         :href="href"
         :is="component"
         class="button"
         :tag="tag"
         :inline="!block"
-        justify-content="center"
         :class="classes"
         :role="role"
         :type="type"
@@ -379,5 +378,5 @@ export default defineComponent({
                 <slot />
             </span>
         </template>
-    </GridBox>
+    </BaseComponent>
 </template>

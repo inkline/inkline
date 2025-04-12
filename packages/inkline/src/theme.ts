@@ -1,6 +1,5 @@
 import { useTheme } from '@inkline/theme';
 import { useAlertTheme } from '@inkline/component-alert';
-import { useBoxTheme } from '@inkline/component-box';
 import { useBadgeTheme } from '@inkline/component-badge';
 import { useBreadcrumbTheme, useBreadcrumbItemTheme } from '@inkline/component-breadcrumb';
 import { useButtonTheme } from '@inkline/component-button';
@@ -27,6 +26,7 @@ import { useToastTheme, useToastContainerTheme } from '@inkline/component-toast'
 import { useToggleTheme } from '@inkline/component-toggle';
 import { useTooltipTheme } from '@inkline/component-tooltip';
 import { useBlockquoteTheme, useTypographyTheme } from '@inkline/component-typography';
+import { useVariantsTheme } from '@inkline/variants';
 import { defaultDefinitionOptions, DefinitionOptions } from '@inkline/core';
 
 export * from '@inkline/theme';
@@ -35,8 +35,8 @@ export function useInklineTheme(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     useTheme(options);
+    useVariantsTheme(options);
     useAlertTheme(options);
-    useBoxTheme(options);
     useBadgeTheme(options);
     useBlockquoteTheme(options);
     useBreadcrumbTheme(options);

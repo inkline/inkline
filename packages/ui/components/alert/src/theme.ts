@@ -1,6 +1,9 @@
-import { selector, DefinitionOptions, defaultDefinitionOptions } from '@inkline/core';
+import { selector, variant, DefinitionOptions, defaultDefinitionOptions } from '@inkline/core';
 
 const ns = 'alert';
+
+const defaultAlertSizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
+const defaultAlertColors = ['info', 'success', 'warning', 'danger'] as const;
 
 /**
  * Selectors
@@ -12,7 +15,10 @@ export function useAlertThemeLayoutSelectors(userOptions: DefinitionOptions) {
     selector(
         '.alert',
         {
-            width: '100%'
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'flex-start'
         },
         options
     );
@@ -83,6 +89,43 @@ export function useAlertThemeBaseSelectors(userOptions: DefinitionOptions) {
 }
 
 /**
+ * Variants
+ */
+
+export function useAlertVariants(userOptions: DefinitionOptions) {
+    const options = { ...defaultDefinitionOptions, ...userOptions };
+
+    defaultAlertSizes.forEach((size) => {
+        variant(
+            `alert--${size}`,
+            {
+                extends: [`box--${size}`]
+            },
+            options
+        );
+    });
+
+    defaultAlertColors.forEach((color) => {
+        variant(
+            `alert--${color}`,
+            {
+                extends: [`${color}--tint`]
+            },
+            options
+        );
+    });
+
+    variant(
+        'alert',
+        {
+            extends: ['alert--md', 'alert--info'],
+            gap: 'default'
+        },
+        options
+    );
+}
+
+/**
  * Composables
  */
 
@@ -91,4 +134,5 @@ export function useAlertTheme(userOptions: DefinitionOptions) {
 
     useAlertThemeLayoutSelectors(options);
     useAlertThemeBaseSelectors(options);
+    useAlertVariants(options);
 }

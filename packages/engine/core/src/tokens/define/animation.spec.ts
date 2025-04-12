@@ -23,6 +23,25 @@ describe('defineAnimation', () => {
                 'normal',
                 options
             ),
+            namespaceAnimationDelay: nsvariable('namespace', 'animation-delay', 0, options),
+            namespaceAnimationFillMode: nsvariable(
+                'namespace',
+                'animation-fill-mode',
+                'none',
+                options
+            ),
+            namespaceAnimationPlayState: nsvariable(
+                'namespace',
+                'animation-play-state',
+                'running',
+                options
+            ),
+            namespaceAnimationTimingFunction: nsvariable(
+                'namespace',
+                'animation-timing-function',
+                'linear',
+                options
+            ),
             namespaceAnimation: nsvariable(
                 'namespace',
                 'animation',
@@ -69,6 +88,25 @@ describe('defineAnimation', () => {
                 'reverse',
                 options
             ),
+            namespaceAnimationDelay: nsvariable('namespace', 'animation-delay', '0s', options),
+            namespaceAnimationFillMode: nsvariable(
+                'namespace',
+                'animation-fill-mode',
+                'forwards',
+                options
+            ),
+            namespaceAnimationPlayState: nsvariable(
+                'namespace',
+                'animation-play-state',
+                'running',
+                options
+            ),
+            namespaceAnimationTimingFunction: nsvariable(
+                'namespace',
+                'animation-timing-function',
+                'ease',
+                options
+            ),
             namespaceAnimation: nsvariable(
                 'namespace',
                 'animation',
@@ -84,26 +122,45 @@ describe('defineAnimation', () => {
     });
 
     it('should set animation properties from string value', () => {
-        const value = 'fade 2s 3 reverse';
+        const value = '3s ease-in 1s 2 reverse both paused slide-in';
         const result = defineAnimation('namespace', value, options);
         expect(result).toEqual({
-            namespaceAnimationName: nsvariable('namespace', 'animation-name', 'fade', options),
+            namespaceAnimationName: nsvariable('namespace', 'animation-name', 'slide-in', options),
             namespaceAnimationDuration: nsvariable(
                 'namespace',
                 'animation-duration',
-                '2s',
+                '3s',
                 options
             ),
             namespaceAnimationIterationCount: nsvariable(
                 'namespace',
                 'animation-iteration-count',
-                '3',
+                '2',
+                options
+            ),
+            namespaceAnimationDelay: nsvariable('namespace', 'animation-delay', '1s', options),
+            namespaceAnimationFillMode: nsvariable(
+                'namespace',
+                'animation-fill-mode',
+                'both',
                 options
             ),
             namespaceAnimationDirection: nsvariable(
                 'namespace',
                 'animation-direction',
                 'reverse',
+                options
+            ),
+            namespaceAnimationPlayState: nsvariable(
+                'namespace',
+                'animation-play-state',
+                'paused',
+                options
+            ),
+            namespaceAnimationTimingFunction: nsvariable(
+                'namespace',
+                'animation-timing-function',
+                'ease-in',
                 options
             ),
             namespaceAnimation: nsvariable(
@@ -124,9 +181,13 @@ describe('defineAnimation', () => {
         const result = defineAnimation('', '', options);
         expect(result).toEqual({
             animationName: variable('animation-name', 'none', options),
+            animationDelay: variable('animation-delay', 0, options),
             animationDuration: variable('animation-duration', 0, options),
+            animationFillMode: variable('animation-fill-mode', 'none', options),
             animationIterationCount: variable('animation-iteration-count', 1, options),
             animationDirection: variable('animation-direction', 'normal', options),
+            animationPlayState: variable('animation-play-state', 'running', options),
+            animationTimingFunction: variable('animation-timing-function', 'linear', options),
             animation: variable(
                 'animation',
                 [

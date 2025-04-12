@@ -15,7 +15,6 @@ describe('Components', () => {
         });
 
         it('should render correctly', () => {
-            console.log(createTestingInklineOptionsProvide());
             const wrapper = render(Icon, {
                 props,
                 global: {

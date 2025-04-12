@@ -1,12 +1,15 @@
 <script lang="ts">
-import { computed, defineComponent } from 'vue';
+import { computed, defineComponent, markRaw, type PropType } from 'vue';
 import { Linkable } from '@inkline/component-linkable';
+import { toVariantList } from '@inkline/variants';
+import { BaseComponent } from '@inkline/component-base';
 
 const componentName = 'BreadcrumbItem';
 
 export default defineComponent({
     name: componentName,
     components: {
+        BaseComponent,
         Linkable
     },
     props: {
@@ -63,37 +66,54 @@ export default defineComponent({
         to: {
             type: [String, Object],
             default: undefined
+        },
+        /**
+         * The variant of the alert
+         * @param {string} variant
+         * @default 'info'
+         */
+        variant: {
+            type: [String, Array] as PropType<string | string[]>,
+            default: undefined
         }
     },
     setup(props) {
-        const classes = computed(() => ({
-            '-active': props.active,
-            '-disabled': props.disabled
-        }));
+        const variantList = computed(() => toVariantList(props.variant));
+        const variants = computed(() => [
+            'breadcrumb-item',
+            ...(props.active ? ['breadcrumb-item--active'] : []),
+            ...(props.disabled ? ['breadcrumb-item--disabled'] : []),
+            ...variantList.value
+        ]);
 
         const tabIndex = computed(() => (props.disabled || props.active ? -1 : props.tabindex));
 
         return {
-            classes,
-            tabIndex
+            variants,
+            tabIndex,
+            component: markRaw(Linkable)
         };
     }
 });
 </script>
 
 <template>
-    <li class="breadcrumb-item" :class="classes" role="menuitem">
-        <Linkable
-            :to="to"
-            :href="href"
-            :tag="tag"
-            :tabindex="tabIndex"
-            :aria-disabled="disabled && 'true'"
-            :aria-current="active && 'location'"
-        >
-            <!-- @slot default Slot for default breadcrumb item content -->
-            <slot />
-        </Linkable>
-    </li>
+    <BaseComponent
+        class="breadcrumb-item"
+        :to="to"
+        :href="href"
+        :component="component"
+        :tag="tag"
+        :tabindex="tabIndex"
+        :aria-disabled="disabled"
+        :data-disabled="disabled"
+        :aria-current="active && 'location'"
+        :data-active="active"
+        :variant="variants"
+        role="menuitem"
+    >
+        <!-- @slot default Slot for default breadcrumb item content -->
+        <slot />
+    </BaseComponent>
 </template>
 `

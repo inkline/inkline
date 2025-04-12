@@ -1,0 +1,6 @@
+#storybook-root {
+    > div {
+        margin-right: var(--spacing);
+        margin-bottom: var(--spacing);
+    }
+}

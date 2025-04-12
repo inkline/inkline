@@ -4,6 +4,7 @@
         "__name": "default",
         "__keys": {
             "variables": {},
+            "variants": {},
             "selectors": {},
             "utilities": {}
         },
@@ -749,6 +750,11 @@
                         "__name": "box-shadow-color-xl"
                     }
                 ]
+            },
+            "box-shadow-none": {
+                "__type": "variable",
+                "__name": "box-shadow-none",
+                "__value": "none"
             },
             "transition-property": {
                 "__type": "variable",
@@ -3501,6 +3507,11 @@
                     ]
                 }
             },
+            "border-top-left-radius-none": {
+                "__type": "variable",
+                "__name": "border-top-left-radius-none",
+                "__value": "0"
+            },
             "border-top-left-radius-xs": {
                 "__type": "variable",
                 "__name": "border-top-left-radius-xs",
@@ -3660,6 +3671,16 @@
                         ")"
                     ]
                 }
+            },
+            "border-top-left-radius-full": {
+                "__type": "variable",
+                "__name": "border-top-left-radius-full",
+                "__value": "50%"
+            },
+            "border-top-right-radius-none": {
+                "__type": "variable",
+                "__name": "border-top-right-radius-none",
+                "__value": "0"
             },
             "border-top-right-radius-xs": {
                 "__type": "variable",
@@ -3821,6 +3842,16 @@
                     ]
                 }
             },
+            "border-top-right-radius-full": {
+                "__type": "variable",
+                "__name": "border-top-right-radius-full",
+                "__value": "50%"
+            },
+            "border-bottom-right-radius-none": {
+                "__type": "variable",
+                "__name": "border-bottom-right-radius-none",
+                "__value": "0"
+            },
             "border-bottom-right-radius-xs": {
                 "__type": "variable",
                 "__name": "border-bottom-right-radius-xs",
@@ -3980,6 +4011,16 @@
                         ")"
                     ]
                 }
+            },
+            "border-bottom-right-radius-full": {
+                "__type": "variable",
+                "__name": "border-bottom-right-radius-full",
+                "__value": "50%"
+            },
+            "border-bottom-left-radius-none": {
+                "__type": "variable",
+                "__name": "border-bottom-left-radius-none",
+                "__value": "0"
             },
             "border-bottom-left-radius-xs": {
                 "__type": "variable",
@@ -4141,6 +4182,11 @@
                     ]
                 }
             },
+            "border-bottom-left-radius-full": {
+                "__type": "variable",
+                "__name": "border-bottom-left-radius-full",
+                "__value": "50%"
+            },
             "border-radius-xs": {
                 "__type": "variable",
                 "__name": "border-radius-xs",
@@ -4248,6 +4294,28 @@
                     {
                         "__type": "reference",
                         "__name": "border-bottom-left-radius-xl"
+                    }
+                ]
+            },
+            "border-radius-full": {
+                "__type": "variable",
+                "__name": "border-radius-full",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-left-radius-full"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-right-radius-full"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-right-radius-full"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-left-radius-full"
                     }
                 ]
             },
@@ -5542,6 +5610,11 @@
                         ")"
                     ]
                 }
+            },
+            "font-size-inherit": {
+                "__type": "variable",
+                "__name": "font-size-inherit",
+                "__value": "inherit"
             },
             "font-size": {
                 "__type": "variable",
@@ -7252,6 +7325,7 @@
                 }
             }
         },
+        "variants": {},
         "selectors": [
             {
                 "__type": "selector",

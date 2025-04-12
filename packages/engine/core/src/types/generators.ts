@@ -20,6 +20,8 @@ export type GeneratorOptions = {
     addons?: GeneratorAddon[];
     tailwindcss?: GeneratorAddonTailwindCSSOptions;
     layers?: GeneratorAddonLayersOptions;
+    typescript?: boolean;
+    variants?: boolean;
 };
 
 export interface Generator<T> {

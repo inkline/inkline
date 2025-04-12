@@ -1,1 +1,1 @@
-export const manualInstallationUrl = 'https://www.inkline.io/docs/installation/manual';
+export const manualInstallationUrl = 'https://inkline.io/docs/installation/manual';

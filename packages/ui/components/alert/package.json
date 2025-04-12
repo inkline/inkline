@@ -16,10 +16,11 @@
     "dependencies": {
         "@inkline/core": "workspace:*",
         "@inkline/composables": "workspace:*",
-        "@inkline/component-box": "workspace:*",
+        "@inkline/component-base": "workspace:*",
         "@inkline/component-icon": "workspace:*",
         "@inkline/theme": "workspace:*",
         "@inkline/utils": "workspace:*",
+        "@inkline/variants": "workspace:*",
         "@inkline/vue": "workspace:*"
     },
     "devDependencies": {

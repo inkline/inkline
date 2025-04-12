@@ -1,3 +1,5 @@
+import { isArray } from "./isArray";
+
 /**
  * Get a deeply nested value based on a given path string
  *
@@ -5,8 +7,8 @@
  * @param path
  * @returns {ReturnType}
  */
-export function getValueByPath<ReturnType = any, SourceType extends Record<string, any> = Record<string, any>>(object: SourceType, path: string): ReturnType {
-    return path.split('.').reduce<Record<string, any>>((acc, part) => {
+export function getValueByPath<ReturnType = any, SourceType extends Record<string, any> = Record<string, any>>(object: SourceType, path: string | string[]): ReturnType {
+    return (isArray(path) ? path : path.split('.')).reduce<Record<string, any>>((acc, part) => {
         return (acc && acc[part]) as Record<string, any>;
     }, object) as ReturnType;
 }
@@ -22,11 +24,11 @@ export function getValueByPath<ReturnType = any, SourceType extends Record<strin
  */
 export function setValueByPath<SourceType extends Record<string, any> = Record<string, any>, ValueType = any>(
     object: SourceType,
-    path: string,
+    path: string | string[],
     value: ValueType,
     initialize = true
 ): SourceType {
-    const parts = path.split('.');
+    const parts = isArray(path) ? path : path.split('.');
     const key = parts.pop();
 
     let target = object as Record<string, any>;
@@ -55,11 +57,11 @@ export function setValueByPath<SourceType extends Record<string, any> = Record<s
  */
 export function setValuesAlongPath<SourceType = Record<string, any>, ValuesType extends Record<string, any> = Record<string, any>>(
     object: SourceType,
-    path: string,
+    path: string | string[],
     values: ValuesType
 ): SourceType {
     if (path) {
-        path.split('.').reduce<Record<string, Record<string, any>>>((acc, part) => {
+        (isArray(path) ? path : path.split('.')).reduce<Record<string, Record<string, any>>>((acc, part) => {
             Object.keys(values).forEach((key) => {
                 acc[part][key] = values[key] as ValuesType[keyof ValuesType];
             });

@@ -19,6 +19,8 @@ export type OutputMapAnimation<Namespace extends NamespaceType> = NamespacedMap<
     {
         animationName: Variable<NamespacedKey<Namespace, 'animation-name'>>;
         animationFillMode: Variable<NamespacedKey<Namespace, 'animation-fill-mode'>>;
+        animationDelay: Variable<NamespacedKey<Namespace, 'animation-delay'>>;
+        animationPlayState: Variable<NamespacedKey<Namespace, 'animation-play-state'>>;
         animationDuration: Variable<NamespacedKey<Namespace, 'animation-duration'>>;
         animationIterationCount: Variable<NamespacedKey<Namespace, 'animation-iteration-count'>>;
         animationDirection: Variable<NamespacedKey<Namespace, 'animation-direction'>>;

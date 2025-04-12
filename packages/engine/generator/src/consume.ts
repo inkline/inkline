@@ -25,11 +25,13 @@ import type {
     Utility,
     Theme,
     Variable,
+    Variant,
     ComponentValue,
     CSS
 } from '@inkline/core';
 import { indentLines } from '@inkline/utils';
 import { defaultThemeTemplate, themeTemplate } from './templates';
+import type { ComponentVariantProps } from '@inkline/types';
 
 /**
  * Consumes each item in an array and joins the result
@@ -107,13 +109,7 @@ ${indentLines(value)}
  * Consumes a utility instance, equivalent to setting a utility CSS selector
  */
 export function consumeUtility(instance: Utility): string {
-    const value = isTokenValue(instance.__value)
-        ? consume(instance.__value)
-        : consumeComponentValue(instance.__value);
-
-    return `${instance.__name} {
-${indentLines(value)}
-}`;
+    return consumeSelector(instance.__value);
 }
 
 /**
@@ -161,6 +157,35 @@ export function consumeTransform(instance: Transform): string {
  */
 export function consumeCSS(instance: CSS): string {
     return instance.__value.map(consume).join('');
+}
+
+/**
+ * Consumes variants, equivalent to stringifying an object
+ */
+export function consumeVariants(
+    instance: Record<string, Variant>,
+    options: {
+        typescript?: boolean;
+        tailwindcss?: boolean;
+    }
+): string {
+    const variants = Object.entries(instance).reduce<Record<string, ComponentVariantProps>>(
+        (acc, [key, variant]) => {
+            acc[key] = variant.__value;
+            return acc;
+        },
+        {}
+    );
+
+    const importString = options.typescript
+        ? `import { ThemeOptions } from '@inkline/types';\n\n`
+        : '';
+    const themeTypeString = options.typescript ? `: ThemeOptions` : '';
+
+    return `${importString}export const theme${themeTypeString} = {
+    tailwindcss: ${options.tailwindcss},
+    variants: ${indentLines(JSON.stringify(variants, null, 4)).trim()}
+};`;
 }
 
 /**

@@ -3,5 +3,7 @@ export * from './forms';
 export * from './manifest';
 export * from './plugin';
 export * from './provide';
+export * from './props';
 export * from './renderable';
 export * from './symbols';
+export * from './variants';

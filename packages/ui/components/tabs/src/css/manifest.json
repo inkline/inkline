@@ -4,6 +4,7 @@
         "__name": "default",
         "__keys": {
             "variables": {},
+            "variants": {},
             "selectors": {},
             "utilities": {}
         },
@@ -495,6 +496,57 @@
                     }
                 ]
             },
+            "box-shadow-offset-x-xs": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-x-xs",
+                "__value": 0
+            },
+            "box-shadow-offset-y-xs": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-y-xs",
+                "__value": "0.125rem"
+            },
+            "box-shadow-blur-radius-xs": {
+                "__type": "variable",
+                "__name": "box-shadow-blur-radius-xs",
+                "__value": "0.25rem"
+            },
+            "box-shadow-spread-radius-xs": {
+                "__type": "variable",
+                "__name": "box-shadow-spread-radius-xs",
+                "__value": "-0.125rem"
+            },
+            "box-shadow-color-xs": {
+                "__type": "variable",
+                "__name": "box-shadow-color-xs",
+                "__value": "transparent"
+            },
+            "box-shadow-xs": {
+                "__type": "variable",
+                "__name": "box-shadow-xs",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-x-xs"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-y-xs"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-blur-radius-xs"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-spread-radius-xs"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-color-xs"
+                    }
+                ]
+            },
             "box-shadow-offset-x-sm": {
                 "__type": "variable",
                 "__name": "box-shadow-offset-x-sm",
@@ -513,7 +565,7 @@
             "box-shadow-spread-radius-sm": {
                 "__type": "variable",
                 "__name": "box-shadow-spread-radius-sm",
-                "__value": "-0.125rem"
+                "__value": "-0.25rem"
             },
             "box-shadow-color-sm": {
                 "__type": "variable",
@@ -648,6 +700,62 @@
                     }
                 ]
             },
+            "box-shadow-offset-x-xl": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-x-xl",
+                "__value": 0
+            },
+            "box-shadow-offset-y-xl": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-y-xl",
+                "__value": "1.5rem"
+            },
+            "box-shadow-blur-radius-xl": {
+                "__type": "variable",
+                "__name": "box-shadow-blur-radius-xl",
+                "__value": "2rem"
+            },
+            "box-shadow-spread-radius-xl": {
+                "__type": "variable",
+                "__name": "box-shadow-spread-radius-xl",
+                "__value": "-2rem"
+            },
+            "box-shadow-color-xl": {
+                "__type": "variable",
+                "__name": "box-shadow-color-xl",
+                "__value": "rgba(0, 0, 0, 0.25)"
+            },
+            "box-shadow-xl": {
+                "__type": "variable",
+                "__name": "box-shadow-xl",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-x-xl"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-y-xl"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-blur-radius-xl"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-spread-radius-xl"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-color-xl"
+                    }
+                ]
+            },
+            "box-shadow-none": {
+                "__type": "variable",
+                "__name": "box-shadow-none",
+                "__value": "none"
+            },
             "transition-property": {
                 "__type": "variable",
                 "__name": "transition-property",
@@ -727,6 +835,1018 @@
                         "))"
                     ]
                 }
+            },
+            "border-radius-min": {
+                "__type": "variable",
+                "__name": "border-radius-min",
+                "__value": 6
+            },
+            "border-radius-max": {
+                "__type": "variable",
+                "__name": "border-radius-max",
+                "__value": 8
+            },
+            "border-radius-min-xs": {
+                "__type": "variable",
+                "__name": "border-radius-min-xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min"
+                        },
+                        "*",
+                        0.5
+                    ]
+                }
+            },
+            "border-radius-min-sm": {
+                "__type": "variable",
+                "__name": "border-radius-min-sm",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min"
+                        },
+                        "*",
+                        0.75
+                    ]
+                }
+            },
+            "border-radius-min-md": {
+                "__type": "variable",
+                "__name": "border-radius-min-md",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-radius-min"
+                }
+            },
+            "border-radius-min-lg": {
+                "__type": "variable",
+                "__name": "border-radius-min-lg",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min"
+                        },
+                        "*",
+                        1.25
+                    ]
+                }
+            },
+            "border-radius-min-xl": {
+                "__type": "variable",
+                "__name": "border-radius-min-xl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min"
+                        },
+                        "*",
+                        1.5
+                    ]
+                }
+            },
+            "border-radius-max-xs": {
+                "__type": "variable",
+                "__name": "border-radius-max-xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max"
+                        },
+                        "*",
+                        0.5
+                    ]
+                }
+            },
+            "border-radius-max-sm": {
+                "__type": "variable",
+                "__name": "border-radius-max-sm",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max"
+                        },
+                        "*",
+                        0.75
+                    ]
+                }
+            },
+            "border-radius-max-md": {
+                "__type": "variable",
+                "__name": "border-radius-max-md",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-radius-max"
+                }
+            },
+            "border-radius-max-lg": {
+                "__type": "variable",
+                "__name": "border-radius-max-lg",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max"
+                        },
+                        "*",
+                        1.25
+                    ]
+                }
+            },
+            "border-radius-max-xl": {
+                "__type": "variable",
+                "__name": "border-radius-max-xl",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max"
+                        },
+                        "*",
+                        1.5
+                    ]
+                }
+            },
+            "border-top-left-radius-none": {
+                "__type": "variable",
+                "__name": "border-top-left-radius-none",
+                "__value": "0"
+            },
+            "border-top-left-radius-xs": {
+                "__type": "variable",
+                "__name": "border-top-left-radius-xs",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xs"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-xs"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xs"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-top-left-radius-sm": {
+                "__type": "variable",
+                "__name": "border-top-left-radius-sm",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-sm"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-sm"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-sm"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-top-left-radius-md": {
+                "__type": "variable",
+                "__name": "border-top-left-radius-md",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-md"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-md"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-md"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-top-left-radius-lg": {
+                "__type": "variable",
+                "__name": "border-top-left-radius-lg",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-lg"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-lg"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-lg"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-top-left-radius-xl": {
+                "__type": "variable",
+                "__name": "border-top-left-radius-xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xl"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-xl"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xl"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-top-left-radius-full": {
+                "__type": "variable",
+                "__name": "border-top-left-radius-full",
+                "__value": "50%"
+            },
+            "border-top-right-radius-none": {
+                "__type": "variable",
+                "__name": "border-top-right-radius-none",
+                "__value": "0"
+            },
+            "border-top-right-radius-xs": {
+                "__type": "variable",
+                "__name": "border-top-right-radius-xs",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xs"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-xs"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xs"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-top-right-radius-sm": {
+                "__type": "variable",
+                "__name": "border-top-right-radius-sm",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-sm"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-sm"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-sm"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-top-right-radius-md": {
+                "__type": "variable",
+                "__name": "border-top-right-radius-md",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-md"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-md"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-md"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-top-right-radius-lg": {
+                "__type": "variable",
+                "__name": "border-top-right-radius-lg",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-lg"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-lg"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-lg"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-top-right-radius-xl": {
+                "__type": "variable",
+                "__name": "border-top-right-radius-xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xl"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-xl"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xl"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-top-right-radius-full": {
+                "__type": "variable",
+                "__name": "border-top-right-radius-full",
+                "__value": "50%"
+            },
+            "border-bottom-right-radius-none": {
+                "__type": "variable",
+                "__name": "border-bottom-right-radius-none",
+                "__value": "0"
+            },
+            "border-bottom-right-radius-xs": {
+                "__type": "variable",
+                "__name": "border-bottom-right-radius-xs",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xs"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-xs"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xs"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-bottom-right-radius-sm": {
+                "__type": "variable",
+                "__name": "border-bottom-right-radius-sm",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-sm"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-sm"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-sm"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-bottom-right-radius-md": {
+                "__type": "variable",
+                "__name": "border-bottom-right-radius-md",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-md"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-md"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-md"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-bottom-right-radius-lg": {
+                "__type": "variable",
+                "__name": "border-bottom-right-radius-lg",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-lg"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-lg"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-lg"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-bottom-right-radius-xl": {
+                "__type": "variable",
+                "__name": "border-bottom-right-radius-xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xl"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-xl"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xl"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-bottom-right-radius-full": {
+                "__type": "variable",
+                "__name": "border-bottom-right-radius-full",
+                "__value": "50%"
+            },
+            "border-bottom-left-radius-none": {
+                "__type": "variable",
+                "__name": "border-bottom-left-radius-none",
+                "__value": "0"
+            },
+            "border-bottom-left-radius-xs": {
+                "__type": "variable",
+                "__name": "border-bottom-left-radius-xs",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xs"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-xs"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xs"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-bottom-left-radius-sm": {
+                "__type": "variable",
+                "__name": "border-bottom-left-radius-sm",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-sm"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-sm"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-sm"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-bottom-left-radius-md": {
+                "__type": "variable",
+                "__name": "border-bottom-left-radius-md",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-md"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-md"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-md"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-bottom-left-radius-lg": {
+                "__type": "variable",
+                "__name": "border-bottom-left-radius-lg",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-lg"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-lg"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-lg"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-bottom-left-radius-xl": {
+                "__type": "variable",
+                "__name": "border-bottom-left-radius-xl",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xl"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-max-xl"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "border-radius-min-xl"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "border-bottom-left-radius-full": {
+                "__type": "variable",
+                "__name": "border-bottom-left-radius-full",
+                "__value": "50%"
+            },
+            "border-radius-xs": {
+                "__type": "variable",
+                "__name": "border-radius-xs",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-left-radius-xs"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-right-radius-xs"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-right-radius-xs"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-left-radius-xs"
+                    }
+                ]
+            },
+            "border-radius-sm": {
+                "__type": "variable",
+                "__name": "border-radius-sm",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-left-radius-sm"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-right-radius-sm"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-right-radius-sm"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-left-radius-sm"
+                    }
+                ]
+            },
+            "border-radius-md": {
+                "__type": "variable",
+                "__name": "border-radius-md",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-left-radius-md"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-right-radius-md"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-right-radius-md"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-left-radius-md"
+                    }
+                ]
+            },
+            "border-radius-lg": {
+                "__type": "variable",
+                "__name": "border-radius-lg",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-left-radius-lg"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-right-radius-lg"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-right-radius-lg"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-left-radius-lg"
+                    }
+                ]
+            },
+            "border-radius-xl": {
+                "__type": "variable",
+                "__name": "border-radius-xl",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-left-radius-xl"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-right-radius-xl"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-right-radius-xl"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-left-radius-xl"
+                    }
+                ]
+            },
+            "border-radius-full": {
+                "__type": "variable",
+                "__name": "border-radius-full",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-left-radius-full"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-right-radius-full"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-right-radius-full"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-left-radius-full"
+                    }
+                ]
+            },
+            "border-top-left-radius": {
+                "__type": "variable",
+                "__name": "border-top-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-left-radius-md"
+                }
+            },
+            "border-top-right-radius": {
+                "__type": "variable",
+                "__name": "border-top-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-top-right-radius-md"
+                }
+            },
+            "border-bottom-right-radius": {
+                "__type": "variable",
+                "__name": "border-bottom-right-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-right-radius-md"
+                }
+            },
+            "border-bottom-left-radius": {
+                "__type": "variable",
+                "__name": "border-bottom-left-radius",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "border-bottom-left-radius-md"
+                }
+            },
+            "border-radius": {
+                "__type": "variable",
+                "__name": "border-radius",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-left-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-right-radius"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-left-radius"
+                    }
+                ]
             },
             "scale-minor-second": {
                 "__type": "variable",
@@ -1374,6 +2494,24 @@
                 "__name": "font-size-max",
                 "__value": 18
             },
+            "font-size-min-2xs": {
+                "__type": "variable",
+                "__name": "font-size-min-2xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-minus-3"
+                        }
+                    ]
+                }
+            },
             "font-size-min-xs": {
                 "__type": "variable",
                 "__name": "font-size-min-xs",
@@ -1504,6 +2642,24 @@
                         {
                             "__type": "reference",
                             "__name": "type-scale-min-pow-5"
+                        }
+                    ]
+                }
+            },
+            "font-size-max-2xs": {
+                "__type": "variable",
+                "__name": "font-size-max-2xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-minus-3"
                         }
                     ]
                 }
@@ -1639,6 +2795,38 @@
                             "__type": "reference",
                             "__name": "type-scale-max-pow-5"
                         }
+                    ]
+                }
+            },
+            "font-size-2xs": {
+                "__type": "variable",
+                "__name": "font-size-2xs",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min-2xs"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max-2xs"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min-2xs"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
                     ]
                 }
             },
@@ -1898,6 +3086,11 @@
                     ]
                 }
             },
+            "font-size-inherit": {
+                "__type": "variable",
+                "__name": "font-size-inherit",
+                "__value": "inherit"
+            },
             "font-size": {
                 "__type": "variable",
                 "__name": "font-size",
@@ -1905,976 +3098,6 @@
                     "__type": "reference",
                     "__name": "font-size-md"
                 }
-            },
-            "border-radius-min": {
-                "__type": "variable",
-                "__name": "border-radius-min",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "font-size-min"
-                        },
-                        "/",
-                        4
-                    ]
-                }
-            },
-            "border-radius-max": {
-                "__type": "variable",
-                "__name": "border-radius-max",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "font-size-max"
-                        },
-                        "/",
-                        4
-                    ]
-                }
-            },
-            "border-radius-min-xs": {
-                "__type": "variable",
-                "__name": "border-radius-min-xs",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min"
-                        },
-                        "*",
-                        0.25
-                    ]
-                }
-            },
-            "border-radius-min-sm": {
-                "__type": "variable",
-                "__name": "border-radius-min-sm",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min"
-                        },
-                        "*",
-                        0.5
-                    ]
-                }
-            },
-            "border-radius-min-md": {
-                "__type": "variable",
-                "__name": "border-radius-min-md",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "border-radius-min"
-                }
-            },
-            "border-radius-min-lg": {
-                "__type": "variable",
-                "__name": "border-radius-min-lg",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min"
-                        },
-                        "*",
-                        1.5
-                    ]
-                }
-            },
-            "border-radius-min-xl": {
-                "__type": "variable",
-                "__name": "border-radius-min-xl",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min"
-                        },
-                        "*",
-                        2
-                    ]
-                }
-            },
-            "border-radius-max-xs": {
-                "__type": "variable",
-                "__name": "border-radius-max-xs",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max"
-                        },
-                        "*",
-                        0.25
-                    ]
-                }
-            },
-            "border-radius-max-sm": {
-                "__type": "variable",
-                "__name": "border-radius-max-sm",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max"
-                        },
-                        "*",
-                        0.5
-                    ]
-                }
-            },
-            "border-radius-max-md": {
-                "__type": "variable",
-                "__name": "border-radius-max-md",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "border-radius-max"
-                }
-            },
-            "border-radius-max-lg": {
-                "__type": "variable",
-                "__name": "border-radius-max-lg",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max"
-                        },
-                        "*",
-                        1.5
-                    ]
-                }
-            },
-            "border-radius-max-xl": {
-                "__type": "variable",
-                "__name": "border-radius-max-xl",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max"
-                        },
-                        "*",
-                        2
-                    ]
-                }
-            },
-            "border-top-left-radius-xs": {
-                "__type": "variable",
-                "__name": "border-top-left-radius-xs",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xs"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-xs"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xs"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-top-left-radius-sm": {
-                "__type": "variable",
-                "__name": "border-top-left-radius-sm",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-sm"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-sm"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-sm"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-top-left-radius-md": {
-                "__type": "variable",
-                "__name": "border-top-left-radius-md",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-md"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-md"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-md"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-top-left-radius-lg": {
-                "__type": "variable",
-                "__name": "border-top-left-radius-lg",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-lg"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-lg"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-lg"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-top-left-radius-xl": {
-                "__type": "variable",
-                "__name": "border-top-left-radius-xl",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xl"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-xl"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xl"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-top-right-radius-xs": {
-                "__type": "variable",
-                "__name": "border-top-right-radius-xs",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xs"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-xs"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xs"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-top-right-radius-sm": {
-                "__type": "variable",
-                "__name": "border-top-right-radius-sm",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-sm"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-sm"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-sm"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-top-right-radius-md": {
-                "__type": "variable",
-                "__name": "border-top-right-radius-md",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-md"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-md"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-md"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-top-right-radius-lg": {
-                "__type": "variable",
-                "__name": "border-top-right-radius-lg",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-lg"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-lg"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-lg"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-top-right-radius-xl": {
-                "__type": "variable",
-                "__name": "border-top-right-radius-xl",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xl"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-xl"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xl"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-bottom-right-radius-xs": {
-                "__type": "variable",
-                "__name": "border-bottom-right-radius-xs",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xs"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-xs"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xs"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-bottom-right-radius-sm": {
-                "__type": "variable",
-                "__name": "border-bottom-right-radius-sm",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-sm"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-sm"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-sm"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-bottom-right-radius-md": {
-                "__type": "variable",
-                "__name": "border-bottom-right-radius-md",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-md"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-md"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-md"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-bottom-right-radius-lg": {
-                "__type": "variable",
-                "__name": "border-bottom-right-radius-lg",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-lg"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-lg"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-lg"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-bottom-right-radius-xl": {
-                "__type": "variable",
-                "__name": "border-bottom-right-radius-xl",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xl"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-xl"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xl"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-bottom-left-radius-xs": {
-                "__type": "variable",
-                "__name": "border-bottom-left-radius-xs",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xs"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-xs"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xs"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-bottom-left-radius-sm": {
-                "__type": "variable",
-                "__name": "border-bottom-left-radius-sm",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-sm"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-sm"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-sm"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-bottom-left-radius-md": {
-                "__type": "variable",
-                "__name": "border-bottom-left-radius-md",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-md"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-md"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-md"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-bottom-left-radius-lg": {
-                "__type": "variable",
-                "__name": "border-bottom-left-radius-lg",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-lg"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-lg"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-lg"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-bottom-left-radius-xl": {
-                "__type": "variable",
-                "__name": "border-bottom-left-radius-xl",
-                "__value": {
-                    "__type": "css",
-                    "__value": [
-                        "calc(((",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xl"
-                        },
-                        " / 16) * ",
-                        "1rem",
-                        ") + (",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-max-xl"
-                        },
-                        " - ",
-                        {
-                            "__type": "reference",
-                            "__name": "border-radius-min-xl"
-                        },
-                        ") * ",
-                        {
-                            "__type": "reference",
-                            "__name": "fluid--breakpoint"
-                        },
-                        ")"
-                    ]
-                }
-            },
-            "border-radius-xs": {
-                "__type": "variable",
-                "__name": "border-radius-xs",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "border-top-left-radius-xs"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-top-right-radius-xs"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-bottom-right-radius-xs"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-bottom-left-radius-xs"
-                    }
-                ]
-            },
-            "border-radius-sm": {
-                "__type": "variable",
-                "__name": "border-radius-sm",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "border-top-left-radius-sm"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-top-right-radius-sm"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-bottom-right-radius-sm"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-bottom-left-radius-sm"
-                    }
-                ]
-            },
-            "border-radius-md": {
-                "__type": "variable",
-                "__name": "border-radius-md",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "border-top-left-radius-md"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-top-right-radius-md"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-bottom-right-radius-md"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-bottom-left-radius-md"
-                    }
-                ]
-            },
-            "border-radius-lg": {
-                "__type": "variable",
-                "__name": "border-radius-lg",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "border-top-left-radius-lg"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-top-right-radius-lg"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-bottom-right-radius-lg"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-bottom-left-radius-lg"
-                    }
-                ]
-            },
-            "border-radius-xl": {
-                "__type": "variable",
-                "__name": "border-radius-xl",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "border-top-left-radius-xl"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-top-right-radius-xl"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-bottom-right-radius-xl"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-bottom-left-radius-xl"
-                    }
-                ]
-            },
-            "border-top-left-radius": {
-                "__type": "variable",
-                "__name": "border-top-left-radius",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "border-top-left-radius-md"
-                }
-            },
-            "border-top-right-radius": {
-                "__type": "variable",
-                "__name": "border-top-right-radius",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "border-top-right-radius-md"
-                }
-            },
-            "border-bottom-right-radius": {
-                "__type": "variable",
-                "__name": "border-bottom-right-radius",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "border-bottom-right-radius-md"
-                }
-            },
-            "border-bottom-left-radius": {
-                "__type": "variable",
-                "__name": "border-bottom-left-radius",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "border-bottom-left-radius-md"
-                }
-            },
-            "border-radius": {
-                "__type": "variable",
-                "__name": "border-radius",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "border-top-left-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-top-right-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-bottom-right-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "border-bottom-left-radius"
-                    }
-                ]
             },
             "spacing-min": {
                 "__type": "variable",
@@ -2890,6 +3113,36 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "font-size-max"
+                }
+            },
+            "spacing-min-4xs": {
+                "__type": "variable",
+                "__name": "spacing-min-4xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        "*",
+                        0.0625
+                    ]
+                }
+            },
+            "spacing-min-3xs": {
+                "__type": "variable",
+                "__name": "spacing-min-3xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        "*",
+                        0.125
+                    ]
                 }
             },
             "spacing-min-2xs": {
@@ -3020,6 +3273,36 @@
                     ]
                 }
             },
+            "spacing-max-4xs": {
+                "__type": "variable",
+                "__name": "spacing-max-4xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max"
+                        },
+                        "*",
+                        0.0625
+                    ]
+                }
+            },
+            "spacing-max-3xs": {
+                "__type": "variable",
+                "__name": "spacing-max-3xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max"
+                        },
+                        "*",
+                        0.125
+                    ]
+                }
+            },
             "spacing-max-2xs": {
                 "__type": "variable",
                 "__name": "spacing-max-2xs",
@@ -3145,6 +3428,70 @@
                         },
                         "*",
                         8
+                    ]
+                }
+            },
+            "spacing-4xs": {
+                "__type": "variable",
+                "__name": "spacing-4xs",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-4xs"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max-4xs"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-4xs"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "spacing-3xs": {
+                "__type": "variable",
+                "__name": "spacing-3xs",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-3xs"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max-3xs"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-3xs"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
                     ]
                 }
             },
@@ -7861,6 +8208,7 @@
                 }
             }
         },
+        "variants": {},
         "selectors": [
             {
                 "__type": "selector",

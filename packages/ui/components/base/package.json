@@ -1,0 +1,96 @@
+{
+    "name": "@inkline/component-base",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "devtools component watch",
+        "build": "devtools component build",
+        "manifest": "generate-manifest",
+        "generate": "pnpm run manifest",
+        "prebuild": "pnpm run generate",
+        "lint": "devtools eslint",
+        "test": "devtools test",
+        "test:dev": "devtools test --watch",
+        "test:ci": "devtools test --coverage"
+    },
+    "dependencies": {
+        "@inkline/core": "workspace:*",
+        "@inkline/composables": "workspace:*",
+        "@inkline/component-grid": "workspace:*",
+        "@inkline/theme": "workspace:*",
+        "@inkline/utils": "workspace:*",
+        "@inkline/variants": "workspace:*",
+        "@inkline/vue": "workspace:*"
+    },
+    "devDependencies": {
+        "@inkline/config": "workspace:*",
+        "@inkline/devtools": "workspace:*",
+        "@inkline/manifest": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/typescript-config": "workspace:*",
+        "@inkline/postcss-config": "workspace:*",
+        "@inkline/vite-config": "workspace:*",
+        "@inkline/test-utils": "workspace:*",
+        "@inkline/types": "workspace:*",
+        "@testing-library/jest-dom": "catalog:",
+        "@testing-library/vue": "catalog:",
+        "@vitest/coverage-v8": "catalog:",
+        "eslint": "catalog:",
+        "typescript": "catalog:",
+        "tsup": "catalog:",
+        "vite": "catalog:",
+        "vitest": "catalog:",
+        "vue": "catalog:",
+        "vue-tsc": "catalog:"
+    },
+    "peerDependencies": {
+        "vue": ">=3.0.0"
+    },
+    "files": [
+        "dist",
+        "LICENSE",
+        "README.md"
+    ],
+    "types": "./dist/base.d.ts",
+    "main": "./dist/base.umd.cjs",
+    "module": "./dist/base.js",
+    "exports": {
+        ".": {
+            "types": "./dist/base.d.ts",
+            "import": "./dist/base.js",
+            "require": "./dist/base.umd.cjs"
+        },
+        "./theme": {
+            "types": "./dist/theme.d.ts",
+            "import": "./dist/theme.js",
+            "require": "./dist/theme.umd.cjs"
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

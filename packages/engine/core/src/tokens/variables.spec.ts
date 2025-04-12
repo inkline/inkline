@@ -24,6 +24,10 @@ describe('nsvariables', () => {
                 namespaceAnimationDuration,
                 namespaceAnimationIterationCount,
                 namespaceAnimationDirection,
+                namespaceAnimationDelay,
+                namespaceAnimationFillMode,
+                namespaceAnimationPlayState,
+                namespaceAnimationTimingFunction,
                 namespaceAnimation
             } = values;
 
@@ -32,6 +36,10 @@ describe('nsvariables', () => {
             expect(namespaceAnimationIterationCount).toBeDefined();
             expect(namespaceAnimationDirection).toBeDefined();
             expect(namespaceAnimation).toBeDefined();
+            expect(namespaceAnimationDelay).toBeDefined();
+            expect(namespaceAnimationFillMode).toBeDefined();
+            expect(namespaceAnimationPlayState).toBeDefined();
+            expect(namespaceAnimationTimingFunction).toBeDefined();
         });
 
         it('should return an object from string value', () => {
@@ -39,24 +47,38 @@ describe('nsvariables', () => {
             const values = nsvariables(
                 ns,
                 {
-                    animation: 'slide 1s infinite normal'
+                    animation: '3s ease-in 1s 2 reverse both paused slide-in'
                 },
                 options
             );
 
             expect(values).toEqual({
-                namespaceAnimationName: nsvariable(ns, 'animation-name', 'slide', options),
-                namespaceAnimationDuration: nsvariable(ns, 'animation-duration', '1s', options),
+                namespaceAnimationName: nsvariable(ns, 'animation-name', 'slide-in', options),
+                namespaceAnimationDuration: nsvariable(ns, 'animation-duration', '3s', options),
                 namespaceAnimationIterationCount: nsvariable(
                     ns,
                     'animation-iteration-count',
-                    'infinite',
+                    '2',
+                    options
+                ),
+                namespaceAnimationDelay: nsvariable(ns, 'animation-delay', '1s', options),
+                namespaceAnimationFillMode: nsvariable(ns, 'animation-fill-mode', 'both', options),
+                namespaceAnimationPlayState: nsvariable(
+                    ns,
+                    'animation-play-state',
+                    'paused',
                     options
                 ),
                 namespaceAnimationDirection: nsvariable(
                     ns,
                     'animation-direction',
-                    'normal',
+                    'reverse',
+                    options
+                ),
+                namespaceAnimationTimingFunction: nsvariable(
+                    ns,
+                    'animation-timing-function',
+                    'ease-in',
                     options
                 ),
                 namespaceAnimation: nsvariable(
@@ -101,6 +123,20 @@ describe('nsvariables', () => {
                     ns,
                     'animation-direction',
                     'normal',
+                    options
+                ),
+                namespaceAnimationDelay: nsvariable(ns, 'animation-delay', 0, options),
+                namespaceAnimationFillMode: nsvariable(ns, 'animation-fill-mode', 'none', options),
+                namespaceAnimationPlayState: nsvariable(
+                    ns,
+                    'animation-play-state',
+                    'running',
+                    options
+                ),
+                namespaceAnimationTimingFunction: nsvariable(
+                    ns,
+                    'animation-timing-function',
+                    'linear',
                     options
                 ),
                 namespaceAnimation: nsvariable(

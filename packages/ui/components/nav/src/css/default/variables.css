@@ -212,6 +212,7 @@
     --type-scale-max-pow-5: calc(var(--type-scale-max) * var(--type-scale-max) * var(--type-scale-max) * var(--type-scale-max) * var(--type-scale-max));
     --font-size-min: 16;
     --font-size-max: 18;
+    --font-size-min-2xs: calc(var(--font-size-min) * var(--type-scale-min-pow-minus-3));
     --font-size-min-xs: calc(var(--font-size-min) * var(--type-scale-min-pow-minus-2));
     --font-size-min-sm: calc(var(--font-size-min) * var(--type-scale-min-pow-minus-1));
     --font-size-min-md: var(--font-size-min);
@@ -220,6 +221,7 @@
     --font-size-min-2xl: calc(var(--font-size-min) * var(--type-scale-min-pow-3));
     --font-size-min-3xl: calc(var(--font-size-min) * var(--type-scale-min-pow-4));
     --font-size-min-4xl: calc(var(--font-size-min) * var(--type-scale-min-pow-5));
+    --font-size-max-2xs: calc(var(--font-size-max) * var(--type-scale-max-pow-minus-3));
     --font-size-max-xs: calc(var(--font-size-max) * var(--type-scale-max-pow-minus-2));
     --font-size-max-sm: calc(var(--font-size-max) * var(--type-scale-max-pow-minus-1));
     --font-size-max-md: var(--font-size-max);
@@ -228,6 +230,7 @@
     --font-size-max-2xl: calc(var(--font-size-max) * var(--type-scale-max-pow-3));
     --font-size-max-3xl: calc(var(--font-size-max) * var(--type-scale-max-pow-4));
     --font-size-max-4xl: calc(var(--font-size-max) * var(--type-scale-max-pow-5));
+    --font-size-2xs: calc(((var(--font-size-min-2xs) / 16) * 1rem) + (var(--font-size-max-2xs) - var(--font-size-min-2xs)) * var(--fluid--breakpoint));
     --font-size-xs: calc(((var(--font-size-min-xs) / 16) * 1rem) + (var(--font-size-max-xs) - var(--font-size-min-xs)) * var(--fluid--breakpoint));
     --font-size-sm: calc(((var(--font-size-min-sm) / 16) * 1rem) + (var(--font-size-max-sm) - var(--font-size-min-sm)) * var(--fluid--breakpoint));
     --font-size-md: calc(((var(--font-size-min-md) / 16) * 1rem) + (var(--font-size-max-md) - var(--font-size-min-md)) * var(--fluid--breakpoint));
@@ -236,9 +239,12 @@
     --font-size-2xl: calc(((var(--font-size-min-2xl) / 16) * 1rem) + (var(--font-size-max-2xl) - var(--font-size-min-2xl)) * var(--fluid--breakpoint));
     --font-size-3xl: calc(((var(--font-size-min-3xl) / 16) * 1rem) + (var(--font-size-max-3xl) - var(--font-size-min-3xl)) * var(--fluid--breakpoint));
     --font-size-4xl: calc(((var(--font-size-min-4xl) / 16) * 1rem) + (var(--font-size-max-4xl) - var(--font-size-min-4xl)) * var(--fluid--breakpoint));
+    --font-size-inherit: inherit;
     --font-size: var(--font-size-md);
     --spacing-min: var(--font-size-min);
     --spacing-max: var(--font-size-max);
+    --spacing-min-4xs: calc(var(--spacing-min) * 0.0625);
+    --spacing-min-3xs: calc(var(--spacing-min) * 0.125);
     --spacing-min-2xs: calc(var(--spacing-min) * 0.25);
     --spacing-min-xs: calc(var(--spacing-min) * 0.5);
     --spacing-min-sm: calc(var(--spacing-min) * 0.75);
@@ -248,6 +254,8 @@
     --spacing-min-2xl: calc(var(--spacing-min) * 4);
     --spacing-min-3xl: calc(var(--spacing-min) * 6);
     --spacing-min-4xl: calc(var(--spacing-min) * 8);
+    --spacing-max-4xs: calc(var(--spacing-max) * 0.0625);
+    --spacing-max-3xs: calc(var(--spacing-max) * 0.125);
     --spacing-max-2xs: calc(var(--spacing-max) * 0.25);
     --spacing-max-xs: calc(var(--spacing-max) * 0.5);
     --spacing-max-sm: calc(var(--spacing-max) * 0.75);
@@ -257,6 +265,8 @@
     --spacing-max-2xl: calc(var(--spacing-max) * 4);
     --spacing-max-3xl: calc(var(--spacing-max) * 6);
     --spacing-max-4xl: calc(var(--spacing-max) * 8);
+    --spacing-4xs: calc(((var(--spacing-min-4xs) / 16) * 1rem) + (var(--spacing-max-4xs) - var(--spacing-min-4xs)) * var(--fluid--breakpoint));
+    --spacing-3xs: calc(((var(--spacing-min-3xs) / 16) * 1rem) + (var(--spacing-max-3xs) - var(--spacing-min-3xs)) * var(--fluid--breakpoint));
     --spacing-2xs: calc(((var(--spacing-min-2xs) / 16) * 1rem) + (var(--spacing-max-2xs) - var(--spacing-min-2xs)) * var(--fluid--breakpoint));
     --spacing-xs: calc(((var(--spacing-min-xs) / 16) * 1rem) + (var(--spacing-max-xs) - var(--spacing-min-xs)) * var(--fluid--breakpoint));
     --spacing-sm: calc(((var(--spacing-min-sm) / 16) * 1rem) + (var(--spacing-max-sm) - var(--spacing-min-sm)) * var(--fluid--breakpoint));

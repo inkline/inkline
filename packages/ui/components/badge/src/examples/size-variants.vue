@@ -1,13 +1,13 @@
 <template>
-    <Badge variant="inherit">Inherit</Badge>
+    <Badge size="inherit">Inherit</Badge>
 
-    <Badge variant="xs">Extra-small</Badge>
+    <Badge size="xs">Extra-small</Badge>
 
-    <Badge variant="sm">Small</Badge>
+    <Badge size="sm">Small</Badge>
 
-    <Badge variant="md">Medium</Badge>
+    <Badge size="md">Medium</Badge>
 
-    <Badge variant="lg">Large</Badge>
+    <Badge size="lg">Large</Badge>
 
-    <Badge variant="xl">Extra-large</Badge>
+    <Badge size="xl">Extra-large</Badge>
 </template>

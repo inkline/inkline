@@ -4,6 +4,7 @@
         "__name": "default",
         "__keys": {
             "variables": {},
+            "variants": {},
             "selectors": {},
             "utilities": {}
         },
@@ -263,6 +264,11 @@
                     }
                 ]
             },
+            "box-shadow-none": {
+                "__type": "variable",
+                "__name": "box-shadow-none",
+                "__value": "none"
+            },
             "button-group--box-shadow-offset-x": {
                 "__type": "variable",
                 "__name": "button-group--box-shadow-offset-x",
@@ -304,6 +310,7 @@
                 }
             }
         },
+        "variants": {},
         "selectors": [
             {
                 "__type": "selector",

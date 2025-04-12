@@ -29,6 +29,7 @@
     --box-shadow-spread-radius-xl: -2rem;
     --box-shadow-color-xl: rgba(0, 0, 0, 0.25);
     --box-shadow-xl: var(--box-shadow-offset-x-xl) var(--box-shadow-offset-y-xl) var(--box-shadow-blur-radius-xl) var(--box-shadow-spread-radius-xl) var(--box-shadow-color-xl);
+    --box-shadow-none: none;
     --button-group--box-shadow-offset-x: var(--box-shadow-offset-x);
     --button-group--box-shadow-offset-y: var(--box-shadow-offset-y);
     --button-group--box-shadow-blur-radius: var(--box-shadow-blur-radius);

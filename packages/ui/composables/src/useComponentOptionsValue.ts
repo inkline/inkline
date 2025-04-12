@@ -1,7 +1,8 @@
 import { computed, unref } from 'vue';
 import type { MaybeRef } from 'vue';
 import { useOptions } from './useOptions';
-import type { ComponentProps, ColorModeComponentProp } from '@inkline/types';
+import type { ComponentProps, ColorModePropValue } from '@inkline/types';
+import { isArray } from '@inkline/utils';
 
 export function getComponentOptionsValue<T extends keyof ComponentProps>(
     options: ReturnType<typeof useOptions>['options'],
@@ -38,7 +39,12 @@ export function getComponentOptionsColorModeValue<T extends keyof ComponentProps
     );
     if (typeof value === 'undefined') {
         return value;
-    } else if (typeof value === 'string') {
+    } else if (
+        typeof value === 'string' ||
+        typeof value === 'number' ||
+        typeof value === 'boolean' ||
+        isArray(value)
+    ) {
         return value;
     } else if (options.value.colorMode.preference === 'system') {
         return typeof window !== 'undefined' &&
@@ -46,7 +52,7 @@ export function getComponentOptionsColorModeValue<T extends keyof ComponentProps
             ? value.dark
             : value.light;
     } else if (options.value.colorMode.preference) {
-        return value[options.value.colorMode.preference as keyof ColorModeComponentProp];
+        return value[options.value.colorMode.preference as keyof ColorModePropValue];
     }
 
     return value;

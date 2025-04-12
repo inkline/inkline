@@ -1,6 +1,6 @@
 <template>
     <Breadcrumb>
-        <BreadcrumbItem>Home</BreadcrumbItem>
+        <BreadcrumbItem to="/">Home</BreadcrumbItem>
         <BreadcrumbItem active>Breadcrumbs</BreadcrumbItem>
     </Breadcrumb>
 </template>

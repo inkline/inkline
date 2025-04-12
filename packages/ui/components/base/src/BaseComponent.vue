@@ -1,0 +1,57 @@
+<script lang="ts">
+import { h, defineComponent } from 'vue';
+import type { Component } from 'vue';
+import type { PropType } from 'vue';
+import { variantProps, useVariants } from '@inkline/variants';
+import { ComponentProps } from '@inkline/types';
+
+const componentName = 'Box';
+
+export default defineComponent({
+    name: componentName,
+    props: {
+        ...variantProps,
+
+        /**
+         * The component to use as the root element
+         * @default undefined
+         * @param {string} component
+         */
+        component: {
+            type: Object as PropType<Component>,
+            default: undefined
+        },
+        /**
+         * The HTML tag to use for the component root element
+         * @default div
+         * @param {string} tag
+         */
+        tag: {
+            type: String,
+            default: 'div'
+        },
+        /**
+         * The variants applied to the component
+         * @param {string | string[]} variant
+         * @default []
+         */
+        variant: {
+            type: [String, Array] as PropType<string | string[]>,
+            default: 'default'
+        }
+    },
+    setup(props, { slots }) {
+        const { classes } = useVariants(componentName, props as ComponentProps, {
+            exclude: ['variant', 'tag', 'component'] as const
+        });
+
+        // <!-- @slot default The default slot of the box component -->
+        return () =>
+            h(
+                props.component ?? props.tag,
+                { class: classes.value, ...(props.component ? { tag: props.tag } : {}) },
+                slots.default?.()
+            );
+    }
+});
+</script>

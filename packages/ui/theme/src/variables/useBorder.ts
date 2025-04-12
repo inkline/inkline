@@ -6,6 +6,25 @@ export function useBorderVariables(userOptions: DefinitionOptions) {
 
     const { colorGray200 } = useNeutralColors(options);
 
+    const borderStyleMap = {
+        none: 'none',
+        solid: 'solid',
+        dashed: 'dashed',
+        dotted: 'dotted',
+        double: 'double',
+        groove: 'groove',
+        default: 'solid'
+    };
+
+    const borderWidthMap = {
+        0: 0,
+        none: 0,
+        thin: 'thin',
+        medium: 'medium',
+        thick: 'thick',
+        default: 'thin'
+    };
+
     const borderTopWidth = variable('border-top-width', '1px', options);
     const borderRightWidth = variable('border-right-width', '1px', options);
     const borderBottomWidth = variable('border-bottom-width', '1px', options);
@@ -35,6 +54,10 @@ export function useBorderVariables(userOptions: DefinitionOptions) {
         [ref(borderTopColor), ref(borderRightColor), ref(borderBottomColor), ref(borderLeftColor)],
         options
     );
+
+    const borderColorMap = {
+        default: borderColor
+    };
 
     const borderTop = variable(
         'border-top',
@@ -83,12 +106,15 @@ export function useBorderVariables(userOptions: DefinitionOptions) {
         borderRight,
         borderBottom,
         borderLeft,
-        border
+        border,
+        borderColorMap,
+        borderStyleMap,
+        borderWidthMap
     };
 }
 
 export function useBorder(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
-    
+
     return useBorderVariables(options);
 }

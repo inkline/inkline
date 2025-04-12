@@ -1,5 +1,4 @@
-import { ref, selector, variant, DefinitionOptions, defaultDefinitionOptions } from '@inkline/core';
-import { useFontWeight, useFontSize } from '@inkline/theme';
+import { selector, variant, DefinitionOptions, defaultDefinitionOptions } from '@inkline/core';
 
 const ns = 'badge';
 
@@ -28,8 +27,8 @@ export function useBadgeThemeLayoutSelectors(userOptions: DefinitionOptions) {
         {
             lineHeight: 1,
             display: 'inline-flex',
-            justifyContent: 'center',
-            alignItems: 'center'
+            alignItems: 'center',
+            justifyContent: 'center'
         },
         options
     );
@@ -53,9 +52,9 @@ export function useBadgeThemeVariants(userOptions: DefinitionOptions) {
     const fontSizeMap = {
         xs: '2xs',
         sm: 'xs',
-        md: 'md',
-        lg: 'lg',
-        xl: 'xl'
+        md: 'sm',
+        lg: 'md',
+        xl: 'lg'
     };
 
     const boxWideMap = {
@@ -68,9 +67,9 @@ export function useBadgeThemeVariants(userOptions: DefinitionOptions) {
 
     defaultBadgeSizes.forEach((size) => {
         variant(
-            `badge:${size}`,
+            `badge--${size}`,
             {
-                extends: `box:wide:${boxWideMap[size]}`,
+                extends: `box--wide--${boxWideMap[size]}`,
                 fontSize: fontSizeMap[size]
             },
             options
@@ -79,7 +78,7 @@ export function useBadgeThemeVariants(userOptions: DefinitionOptions) {
 
     defaultBadgeColors.forEach((color) => {
         variant(
-            `badge:${color}`,
+            `badge--${color}`,
             {
                 extends: color
             },
@@ -88,7 +87,7 @@ export function useBadgeThemeVariants(userOptions: DefinitionOptions) {
     });
 
     variant(
-        'badge:inherit',
+        'badge--inherit',
         {
             fontSize: 'inherit'
         },
@@ -96,7 +95,7 @@ export function useBadgeThemeVariants(userOptions: DefinitionOptions) {
     );
 
     variant(
-        `badge:pill`,
+        `badge--pill`,
         {
             borderRadius: 'full'
         },
@@ -106,7 +105,7 @@ export function useBadgeThemeVariants(userOptions: DefinitionOptions) {
     variant(
         'badge',
         {
-            extends: ['default', 'badge:md'],
+            extends: ['default', 'badge--md'],
             fontWeight: 'semibold'
         },
         options

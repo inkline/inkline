@@ -1,5 +1,6 @@
 .breadcrumb {
     display: flex;
+    gap: var(--breadcrumb--gap);
 }
 
 .breadcrumb ol {
@@ -7,45 +8,4 @@
     flex-wrap: wrap;
     padding-left: 0;
     list-style: none;
-}
-
-.breadcrumb {
-    font-size: var(--breadcrumb--font-size);
-    padding: var(--breadcrumb--padding, var(--breadcrumb--padding-top) var(--breadcrumb--padding-right) var(--breadcrumb--padding-bottom) var(--breadcrumb--padding-left));
-    margin: var(--breadcrumb--margin, var(--breadcrumb--margin-top) var(--breadcrumb--margin-right) var(--breadcrumb--margin-bottom) var(--breadcrumb--margin-left));
-    transition-property: var(--breadcrumb--transition-property);
-    transition-duration: var(--breadcrumb--transition-duration);
-    transition-timing-function: var(--breadcrumb--transition-timing-function);
-}
-
-.breadcrumb.-light {
-    --breadcrumb--color: var(--breadcrumb--light--color);
-}
-
-.breadcrumb.-dark {
-    --breadcrumb--color: var(--breadcrumb--dark--color);
-}
-
-.breadcrumb.-sm {
-    --breadcrumb--font-size: var(--breadcrumb--sm--font-size);
-    --breadcrumb--padding-top: var(--breadcrumb--sm--padding-top);
-    --breadcrumb--padding-right: var(--breadcrumb--sm--padding-right);
-    --breadcrumb--padding-bottom: var(--breadcrumb--sm--padding-bottom);
-    --breadcrumb--padding-left: var(--breadcrumb--sm--padding-left);
-}
-
-.breadcrumb.-md {
-    --breadcrumb--font-size: var(--breadcrumb--md--font-size);
-    --breadcrumb--padding-top: var(--breadcrumb--md--padding-top);
-    --breadcrumb--padding-right: var(--breadcrumb--md--padding-right);
-    --breadcrumb--padding-bottom: var(--breadcrumb--md--padding-bottom);
-    --breadcrumb--padding-left: var(--breadcrumb--md--padding-left);
-}
-
-.breadcrumb.-lg {
-    --breadcrumb--font-size: var(--breadcrumb--lg--font-size);
-    --breadcrumb--padding-top: var(--breadcrumb--lg--padding-top);
-    --breadcrumb--padding-right: var(--breadcrumb--lg--padding-right);
-    --breadcrumb--padding-bottom: var(--breadcrumb--lg--padding-bottom);
-    --breadcrumb--padding-left: var(--breadcrumb--lg--padding-left);
 }

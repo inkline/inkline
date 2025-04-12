@@ -1,29 +1,23 @@
 .alert {
-    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: var(--alert--gap);
+    justify-content: flex-start;
 }
 
 .alert-content {
-    flex: 0 1 100%;
+    flex-grow: 1;
 }
 
 .alert-icon {
-    flex: 1;
     display: inline-flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 
 .alert-dismiss {
-    flex: 0 0 auto;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
 }
 
 .alert a {

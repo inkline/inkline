@@ -5,8 +5,20 @@ export const manifest: ComponentManifest[] = [
         name: 'Alert',
         props: [
             {
+                name: 'color',
+                type: "'info' | 'success' | 'warning' | 'danger' | string",
+                description: 'The color of the alert',
+                default: 'undefined'
+            },
+            {
+                name: 'size',
+                type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | string",
+                description: 'The size of the alert',
+                default: 'undefined'
+            },
+            {
                 name: 'variant',
-                type: "'info' | 'success' | 'warning' | 'danger'",
+                type: 'string',
                 description: 'The variant of the alert',
                 default: "'info'"
             },
@@ -57,12 +69,7 @@ export const manifest: ComponentManifest[] = [
         ],
         css: {
             namespace: 'alert',
-            variables: [
-                {
-                    name: '--alert--gap',
-                    value: 'var(--spacing)'
-                }
-            ]
+            variables: []
         }
     }
 ];

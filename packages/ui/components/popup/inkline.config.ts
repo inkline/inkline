@@ -1,3 +1,7 @@
 import { defineConfig } from '@inkline/config';
 
-export default defineConfig(() => {});
+export default defineConfig(() => {}, {
+    generator: {
+        variants: false
+    }
+});

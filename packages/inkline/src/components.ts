@@ -1,7 +1,7 @@
 import type { Component } from 'vue';
 import { Alert } from './alert';
 import { Badge } from './badge';
-import { Box, GridBox } from './box';
+import { BaseComponent } from './base';
 import { Breadcrumb, BreadcrumbItem } from './breadcrumb';
 import { Button } from './button';
 import { ButtonGroup } from './button-group';
@@ -30,7 +30,7 @@ import { Blockquote, Typography } from './typography';
 export const components: Record<string, Component> = {
     Alert,
     Badge,
-    Box,
+    BaseComponent,
     Blockquote,
     Breadcrumb,
     BreadcrumbItem,
@@ -46,7 +46,6 @@ export const components: Record<string, Component> = {
     FormGroup,
     Expand,
     Grid,
-    GridBox,
     Icon,
     Input,
     Image,

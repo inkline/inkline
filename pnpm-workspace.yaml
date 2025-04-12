@@ -1,12 +1,6 @@
 packages:
   - docs
-  - packages/*
-  - packages/engine/*
-  - packages/ui/*
-  - packages/ui/components/*
-  - packages/ui/addons/*
-  - packages/integrations/*
-  - packages/tooling/*
+  - packages/**/*
   - e2e/*
   - storybook
 catalog:
@@ -31,6 +25,7 @@ catalog:
   eslint: ^9.19.0
   fast-glob: ^3.3.3
   jsdom: ^26.0.0
+  micromustache: ^8.0.3
   normalize.css: ^8.0.1
   np: ^6.2.4
   nodemon: ^3.1.9

@@ -1,6 +1,0 @@
-#storybook-root {
-    > .box {
-        margin-right: var(--spacing);
-        margin-bottom: var(--spacing);
-    }
-}

@@ -68,6 +68,7 @@
     --font-size-2xl: calc(((var(--font-size-min-2xl) / 16) * 1rem) + (var(--font-size-max-2xl) - var(--font-size-min-2xl)) * var(--fluid--breakpoint));
     --font-size-3xl: calc(((var(--font-size-min-3xl) / 16) * 1rem) + (var(--font-size-max-3xl) - var(--font-size-min-3xl)) * var(--fluid--breakpoint));
     --font-size-4xl: calc(((var(--font-size-min-4xl) / 16) * 1rem) + (var(--font-size-max-4xl) - var(--font-size-min-4xl)) * var(--fluid--breakpoint));
+    --font-size-inherit: inherit;
     --font-size: var(--font-size-md);
     --spacing-min: var(--font-size-min);
     --spacing-max: var(--font-size-max);

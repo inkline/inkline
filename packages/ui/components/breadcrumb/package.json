@@ -14,11 +14,13 @@
         "test:ci": "devtools test --coverage"
     },
     "dependencies": {
+        "@inkline/component-base": "workspace:*",
         "@inkline/component-linkable": "workspace:*",
         "@inkline/core": "workspace:*",
         "@inkline/composables": "workspace:*",
         "@inkline/theme": "workspace:*",
         "@inkline/utils": "workspace:*",
+        "@inkline/variants": "workspace:*",
         "@inkline/vue": "workspace:*"
     },
     "devDependencies": {

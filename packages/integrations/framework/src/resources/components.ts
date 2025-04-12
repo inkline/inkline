@@ -10,14 +10,14 @@ export default [
         "filePath": "@inkline/component-badge"
     },
     {
+        "name": "BaseComponent",
+        "export": "BaseComponent",
+        "filePath": "@inkline/component-base"
+    },
+    {
         "name": "Blockquote",
         "export": "Blockquote",
         "filePath": "@inkline/component-typography"
-    },
-    {
-        "name": "Box",
-        "export": "Box",
-        "filePath": "@inkline/component-box"
     },
     {
         "name": "Breadcrumb",

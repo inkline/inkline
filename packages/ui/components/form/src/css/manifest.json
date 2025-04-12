@@ -4,10 +4,12 @@
         "__name": "default",
         "__keys": {
             "variables": {},
+            "variants": {},
             "selectors": {},
             "utilities": {}
         },
         "variables": {},
+        "variants": {},
         "selectors": [
             {
                 "__type": "selector",

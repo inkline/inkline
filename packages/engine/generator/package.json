@@ -46,6 +46,7 @@
     "dependencies": {
         "@inkline/core": "workspace:*",
         "@inkline/utils": "workspace:*",
+        "@inkline/types": "workspace:*",
         "color": "^4.2.3",
         "nanoid": "^5.0.9"
     },

@@ -45,6 +45,6 @@ await (async () => {
     const watch = createWatcher(build);
 
     await watch({
-        outputDir: resolve(__dirname, '..', 'src', 'css')
+        outputDir: resolve(__dirname, '..', 'src', 'theme')
     });
 })();

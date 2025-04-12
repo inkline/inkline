@@ -1,11 +1,10 @@
 <script lang="ts">
 import { ref, computed, h, watch, defineComponent } from 'vue';
 import type { VNode, PropType } from 'vue';
-import { GridBox } from '@inkline/component-box';
+import { BaseComponent } from '@inkline/component-base';
 import { Icon } from '@inkline/component-icon';
 import { Renderable } from '@inkline/types';
-import { useOptions } from '@inkline/composables';
-import { toVariantList } from '@inkline/utils';
+import { toVariantList } from '@inkline/variants';
 
 const componentName = 'Alert';
 
@@ -16,62 +15,39 @@ const iconByType: Record<string, VNode> = {
     danger: h(Icon, { name: 'ink:danger' })
 };
 
-export function useAlertVariants() {
-    const { addThemeVariant } = useOptions();
-    const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
-    const colors = ['info', 'success', 'warning', 'danger'];
-    const builtins = [...sizes, ...colors];
-
-    addThemeVariant(
-        'alert',
-        {
-            extends: ['alert:md', 'alert:info']
-        },
-        { default: true }
-    );
-
-    sizes.forEach((size) => {
-        addThemeVariant(
-            `alert:${size}`,
-            {
-                extends: [`box:${size}`]
-            },
-            { default: true }
-        );
-    });
-
-    colors.forEach((color) => {
-        addThemeVariant(
-            `alert:${color}`,
-            {
-                extends: [`${color}:tint`]
-            },
-            { default: true }
-        );
-    });
-
-    return {
-        builtins,
-        colors,
-        sizes
-    };
-}
-
 export default defineComponent({
     name: componentName,
     components: {
-        GridBox,
+        BaseComponent,
         Icon
     },
     props: {
         /**
+         * The color of the alert
+         * @param {'info' | 'success' | 'warning' | 'danger' | string} color
+         * @default undefined
+         */
+        color: {
+            type: String as PropType<'info' | 'success' | 'warning' | 'danger' | string>,
+            default: undefined
+        },
+        /**
+         * The size of the alert
+         * @param { 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string } size
+         * @default undefined
+         */
+        size: {
+            type: String as PropType<'xs' | 'sm' | 'md' | 'lg' | 'xl' | string>,
+            default: undefined
+        },
+        /**
          * The variant of the alert
-         * @param {'info' | 'success' | 'warning' | 'danger'} variant
+         * @param {string} variant
          * @default 'info'
          */
         variant: {
             type: [String, Array] as PropType<string | string[]>,
-            default: 'info'
+            default: undefined
         },
         /**
          * Used to show or hide the alert
@@ -118,23 +94,22 @@ export default defineComponent({
         'update:modelValue'
     ],
     setup(props, { emit }) {
-        const { builtins, colors } = useAlertVariants();
-
-        const variants = computed(() => {
-            const variantList = toVariantList(props.variant);
-
-            return ['alert', ...variantList.map((v) => (builtins.includes(v) ? `alert:${v}` : v))];
-        });
+        const variantList = computed(() => toVariantList(props.variant));
+        const variants = computed(() => [
+            'alert',
+            ...(props.color ? [`alert--${props.color}`] : []),
+            ...(props.size ? [`alert--${props.size}`] : []),
+            ...variantList.value
+        ]);
 
         const visible = ref<boolean | undefined>(
             typeof props.modelValue !== 'undefined' ? props.modelValue : true
         );
 
         const resolvedIcon = computed(() => {
-            const variantList = toVariantList(props.variant);
-            const color = variantList.find((v) => colors.includes(v)) ?? 'info';
-
-            return typeof props.icon !== 'undefined' ? props.icon : iconByType[color];
+            return typeof props.icon !== 'undefined'
+                ? props.icon
+                : iconByType[props.color ?? 'info'];
         });
 
         const isVNodeIcon = computed(() => typeof resolvedIcon.value === 'object');
@@ -163,14 +138,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <GridBox
-        v-show="visible"
-        class="alert"
-        direction="row"
-        role="alert"
-        no-wrap
-        :variant="variants"
-    >
+    <BaseComponent v-show="visible" class="alert" role="alert" :variant="variants">
         <span v-if="resolvedIcon || $slots.icon" class="alert-icon" role="img" aria-hidden="true">
             <!-- @slot icon Slot for alert icon -->
             <slot name="icon">
@@ -192,5 +160,5 @@ export default defineComponent({
             <!-- @slot dismiss Slot for alert dismiss button -->
             <slot name="dismiss">&times;</slot>
         </span>
-    </GridBox>
+    </BaseComponent>
 </template>

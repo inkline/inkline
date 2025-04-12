@@ -1,31 +1,36 @@
-import { DefinitionOptions, defaultDefinitionOptions, ref, selector, vref } from '@inkline/core';
+import { DefinitionOptions, defaultDefinitionOptions, ref, selector, variant } from '@inkline/core';
 import { useBreadcrumbThemeVariables } from '../breadcrumb/theme';
 
 export function useBreadcrumbItemThemeLayout(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    const { breadcrumbSeparator } = useBreadcrumbThemeVariables(options);
+    const { breadcrumbSeparator, breadcrumbGap } = useBreadcrumbThemeVariables(options);
 
     selector(
-        '.breadcrumb-item',
+        ['.breadcrumb-item', '.breadcrumb-item:hover'],
         {
-            marginBottom: 0
+            color: 'inherit'
         },
         options
     );
 
     selector(
-        '.breadcrumb-item:first-of-type',
+        [
+            '.breadcrumb-item[data-active="true"]',
+            '.breadcrumb-item[data-active="true"]:hover',
+            '.breadcrumb-item[data-disabled="true"]',
+            '.breadcrumb-item[data-disabled="true"]:hover'
+        ],
         {
-            paddingLeft: 0
+            textDecoration: 'none'
         },
         options
     );
 
     selector(
-        '.breadcrumb-item > span',
+        ['.breadcrumb-item[to]', '.breadcrumb-item[href]'],
         {
-            display: 'inline-block'
+            cursor: 'pointer'
         },
         options
     );
@@ -34,38 +39,32 @@ export function useBreadcrumbItemThemeLayout(userOptions: DefinitionOptions) {
         '.breadcrumb-item + .breadcrumb-item::before',
         {
             display: 'inline-block',
-            content: ref(breadcrumbSeparator)
+            content: ref(breadcrumbSeparator),
+            marginRight: ref(breadcrumbGap)
         },
         options
     );
 }
 
-export function useBreadcrumbItemThemeBase(userOptions: DefinitionOptions) {
+/**
+ * Variants
+ */
+
+export function useBreadcrumbItemThemeVariants(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    const { breadcrumbPaddingLeft, breadcrumbPaddingRight, breadcrumbActiveColor } =
-        useBreadcrumbThemeVariables(options);
-
-    selector(
-        '.breadcrumb-item',
+    variant(
+        'breadcrumb-item--disabled',
         {
-            paddingLeft: ref(breadcrumbPaddingLeft)
+            color: 'weaker'
         },
         options
     );
 
-    selector(
-        '.breadcrumb-item + .breadcrumb-item::before',
+    variant(
+        'breadcrumb-item--active',
         {
-            paddingRight: ref(breadcrumbPaddingRight)
-        },
-        options
-    );
-
-    selector(
-        '.breadcrumb-item.-active, .breadcrumb-item.-active a',
-        {
-            color: ref(breadcrumbActiveColor)
+            color: 'weakest'
         },
         options
     );
@@ -75,5 +74,5 @@ export function useBreadcrumbItemTheme(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     useBreadcrumbItemThemeLayout(options);
-    useBreadcrumbItemThemeBase(options);
+    useBreadcrumbItemThemeVariants(options);
 }

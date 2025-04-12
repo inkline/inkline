@@ -94,6 +94,12 @@ export const manifest: ComponentManifest[] = [
                 type: "'sm' | 'md' | 'lg'",
                 description: 'The size variant of the button',
                 default: ''
+            },
+            {
+                name: 'variant',
+                type: "'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'",
+                description: 'The variant of the button',
+                default: ''
             }
         ],
         events: [

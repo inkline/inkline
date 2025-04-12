@@ -22,8 +22,6 @@ export default defineComponent({
             const element = componentElement as HTMLElement;
             const height = getStyleProperty(element, 'height') ?? '';
 
-            console.log({ height });
-
             element.style.height = typeof height === 'number' ? `${height}px` : height;
             element.style.position = 'absolute';
             element.style.visibility = 'hidden';

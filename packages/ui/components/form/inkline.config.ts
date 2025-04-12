@@ -1,6 +1,13 @@
 import { defineConfig } from '@inkline/config';
 import { useFormTheme } from './src/theme';
 
-export default defineConfig((options) => {
-    useFormTheme(options);
-});
+export default defineConfig(
+    (options) => {
+        useFormTheme(options);
+    },
+    {
+        generator: {
+            variants: false
+        }
+    }
+);

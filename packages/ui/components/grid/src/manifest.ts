@@ -88,13 +88,19 @@ export const manifest: ComponentManifest[] = [
                 type: 'boolean',
                 description: 'Disable wrapping of child elements',
                 default: 'false'
+            },
+            {
+                name: 'tag',
+                type: 'string',
+                description: 'The tag to use for the grid element',
+                default: "'div'"
             }
         ],
         events: [],
         slots: [
             {
                 name: 'default',
-                description: 'Slot for default row content'
+                description: 'Slot for default grid content'
             }
         ],
         css: {

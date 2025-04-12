@@ -1,5 +1,5 @@
 import { Plugin, ref } from 'vue';
-import { defaultIconDefinitions, defaultVariants } from './defaults';
+import { defaultIconDefinitions } from './defaults';
 import { InklineOptionsKey, InklineOptions, UserOptions } from '@inkline/types';
 import defu from 'defu';
 
@@ -24,7 +24,7 @@ export const defaultOptions: InklineOptions = {
     theme: {
         tailwindcss: false,
         prefix: '_',
-        variants: defaultVariants
+        variants: {}
     },
     propsByComponentName: {},
     addons: []

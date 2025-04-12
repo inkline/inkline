@@ -1,4 +1,4 @@
-import { InklineOptionsKey, ComponentVariant } from '@inkline/types';
+import { InklineOptionsKey, ComponentVariantProps } from '@inkline/types';
 import { useInjectStrict } from './useInjectStrict';
 
 export function useOptions() {
@@ -6,7 +6,7 @@ export function useOptions() {
 
     function addThemeVariant(
         name: string,
-        variant: ComponentVariant,
+        variant: ComponentVariantProps,
         variantOptions: { default?: boolean } = {}
     ) {
         options.value.theme.variants ||= {};

@@ -1,12 +1,16 @@
 <script lang="ts">
-import { computed, defineComponent, toRef } from 'vue';
+import { computed, defineComponent, type PropType, toRef } from 'vue';
 import { useComponentColor, useComponentSize } from '@inkline/composables';
+import { BaseComponent } from '@inkline/component-base';
+import { toVariantList } from '@inkline/variants';
 
 const componentName = 'Breadcrumb';
 
 export default defineComponent({
     name: componentName,
-    inheritAttrs: false,
+    components: {
+        BaseComponent
+    },
     props: {
         /**
          * The aria-label of the breadcrumbs
@@ -19,46 +23,51 @@ export default defineComponent({
         },
         /**
          * The color variant of the breadcrumb
-         * @param {'light' | 'dark'} color
+         * @param {'light' | 'dark' | string} color
          * @default
          */
         color: {
-            type: String,
+            type: String as PropType<'light' | 'dark' | string>,
             default: undefined
         },
         /**
          * The size variant of the breadcrumb
-         * @param {'sm' | 'md' | 'lg'} size
+         * @param {'xs' | 'sm' | 'md' | 'lg' | 'xl' | string} size
          * @default
          */
         size: {
-            type: String,
+            type: String as PropType<'xs' | 'sm' | 'md' | 'lg' | 'xl' | string>,
+            default: undefined
+        },
+        /**
+         * The variant of the alert
+         * @param {string} variant
+         * @default 'info'
+         */
+        variant: {
+            type: [String, Array] as PropType<string | string[]>,
             default: undefined
         }
     },
     setup(props) {
-        const rawColor = toRef(props, 'color');
-        const rawSize = toRef(props, 'size');
-        const { color } = useComponentColor(componentName, rawColor);
-        const { size } = useComponentSize(componentName, rawSize);
-
-        const classes = computed(() => ({
-            [`-${color.value}`]: Boolean(color.value),
-            [`-${size.value}`]: Boolean(size.value)
-        }));
+        const variantList = computed(() => toVariantList(props.variant));
+        const variants = computed(() => [
+            'breadcrumb',
+            ...(props.color ? [`breadcrumb--${props.color}`] : []),
+            ...(props.size ? [`breadcrumb--${props.size}`] : []),
+            ...variantList.value
+        ]);
 
         return {
-            classes
+            variants
         };
     }
 });
 </script>
 
 <template>
-    <nav v-bind="$attrs" class="breadcrumb" :class="classes" :aria-label="ariaLabel">
-        <ol>
-            <!-- @slot default Slot for default breadcrumb content -->
-            <slot />
-        </ol>
-    </nav>
+    <BaseComponent class="breadcrumb" tag="nav" :variant="variants" :aria-label="ariaLabel">
+        <!-- @slot default Slot for default breadcrumb content -->
+        <slot />
+    </BaseComponent>
 </template>

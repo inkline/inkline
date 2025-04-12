@@ -1,16 +1,45 @@
 <script lang="ts">
 import { computed, defineComponent, PropType } from 'vue';
-import { Box } from '@inkline/component-box';
+import { BaseComponent } from '@inkline/component-base';
+import { toVariantList } from '@inkline/variants';
 
 const componentName = 'Badge';
 
 export default defineComponent({
     name: componentName,
-    components: { Box },
+    components: { BaseComponent },
     props: {
         /**
+         * The color of the badge
+         * @param {'primary' | 'secondary' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger' | string} color
+         * @default undefined
+         */
+        color: {
+            type: String as PropType<
+                | 'primary'
+                | 'secondary'
+                | 'light'
+                | 'dark'
+                | 'info'
+                | 'success'
+                | 'warning'
+                | 'danger'
+                | string
+            >,
+            default: undefined
+        },
+        /**
+         * The size of the badge
+         * @param { 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'inherit' | string } size
+         * @default undefined
+         */
+        size: {
+            type: String as PropType<'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'inherit' | string>,
+            default: undefined
+        },
+        /**
          * The variant of the badge
-         * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} variant
+         * @param {string | string[]} variant
          * @default
          */
         variant: {
@@ -28,14 +57,14 @@ export default defineComponent({
         }
     },
     setup(props) {
-        const variants = computed(() => {
-            // const variantList = toVariantList(props.variant);
-            return [
-                'badge',
-                ...(props.pill ? ['badge:pill'] : [])
-                // ...variantList.map((v) => (builtins.includes(v) ? `badge:${v}` : v))
-            ];
-        });
+        const variantList = computed(() => toVariantList(props.variant));
+        const variants = computed(() => [
+            'badge',
+            ...(props.pill ? ['badge--pill'] : []),
+            ...(props.color ? [`badge--${props.color}`] : []),
+            ...(props.size ? [`badge--${props.size}`] : []),
+            ...variantList.value
+        ]);
 
         return {
             variants
@@ -45,8 +74,8 @@ export default defineComponent({
 </script>
 
 <template>
-    <Box class="badge" :variant="variants">
+    <BaseComponent class="badge" :variant="variants">
         <!-- @slot default Slot for default badge content -->
         <slot />
-    </Box>
+    </BaseComponent>
 </template>

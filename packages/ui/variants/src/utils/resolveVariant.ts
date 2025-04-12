@@ -1,0 +1,79 @@
+import type { ComponentProps, ComponentVariantProps } from '@inkline/types';
+import { toVariantList, unfold } from '../utils';
+import { merge } from '@inkline/utils';
+import { getValueByPath } from '@inkline/utils';
+import { variantValueReferenceMarker } from '../constants';
+
+const variantsCache = new Map<string, ComponentProps>();
+
+export function resolveVariant(
+    variants: Record<string, ComponentVariantProps>,
+    variantName: string,
+    visited: Set<string> = new Set()
+): ComponentProps {
+    if (variantsCache.has(variantName)) {
+        return variantsCache.get(variantName)!;
+    }
+
+    if (visited.has(variantName)) {
+        throw new Error(`Circular reference detected for variant key: ${variantName}`);
+    }
+
+    visited.add(variantName);
+
+    const variant = variants[variantName];
+    if (!variant) {
+        return {};
+    }
+
+    /**
+     * Unfold the variant to get all properties and resolve extensions recursively
+     */
+
+    const { extends: variantExtends, ...rest } = variant;
+    const unfoldedVariant = unfold(rest);
+    let resolved: ComponentProps;
+    if (variantExtends) {
+        const extensions = toVariantList(variantExtends);
+        resolved = extensions.reduce<ComponentProps>((acc, extension) => {
+            const parentVariant = resolveVariant(variants, extension, visited);
+
+            return merge(acc, parentVariant, unfoldedVariant);
+        }, {});
+    } else {
+        resolved = unfoldedVariant;
+    }
+
+    resolveReferenceValues(variants, resolved);
+
+    variantsCache.set(variantName, resolved);
+
+    return resolved;
+}
+
+/**
+ * Resolve reference strings in the variant object
+ *
+ * Reference strings are in the format of `{{variantName.propertyName}}`
+ */
+export function resolveReferenceValues(
+    variants: Record<string, ComponentVariantProps>,
+    resolved: ComponentProps
+) {
+    Object.entries(resolved).forEach(([key, value]) => {
+        if (typeof value !== 'string' || !value.startsWith(variantValueReferenceMarker)) {
+            return;
+        }
+
+        const variantsPath = value.slice(2, -2).trim();
+        const variantsPathParts = variantsPath.split('.');
+
+        const targetVariantName = variantsPathParts.shift();
+        if (!targetVariantName) {
+            return;
+        }
+
+        const targetVariant = resolveVariant(variants, targetVariantName);
+        resolved[key] = getValueByPath(targetVariant, variantsPathParts);
+    });
+}

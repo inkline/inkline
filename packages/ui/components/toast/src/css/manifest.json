@@ -4,6 +4,7 @@
         "__name": "default",
         "__keys": {
             "variables": {},
+            "variants": {},
             "selectors": {},
             "utilities": {}
         },
@@ -495,6 +496,57 @@
                     }
                 ]
             },
+            "box-shadow-offset-x-xs": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-x-xs",
+                "__value": 0
+            },
+            "box-shadow-offset-y-xs": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-y-xs",
+                "__value": "0.125rem"
+            },
+            "box-shadow-blur-radius-xs": {
+                "__type": "variable",
+                "__name": "box-shadow-blur-radius-xs",
+                "__value": "0.25rem"
+            },
+            "box-shadow-spread-radius-xs": {
+                "__type": "variable",
+                "__name": "box-shadow-spread-radius-xs",
+                "__value": "-0.125rem"
+            },
+            "box-shadow-color-xs": {
+                "__type": "variable",
+                "__name": "box-shadow-color-xs",
+                "__value": "transparent"
+            },
+            "box-shadow-xs": {
+                "__type": "variable",
+                "__name": "box-shadow-xs",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-x-xs"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-y-xs"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-blur-radius-xs"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-spread-radius-xs"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-color-xs"
+                    }
+                ]
+            },
             "box-shadow-offset-x-sm": {
                 "__type": "variable",
                 "__name": "box-shadow-offset-x-sm",
@@ -513,7 +565,7 @@
             "box-shadow-spread-radius-sm": {
                 "__type": "variable",
                 "__name": "box-shadow-spread-radius-sm",
-                "__value": "-0.125rem"
+                "__value": "-0.25rem"
             },
             "box-shadow-color-sm": {
                 "__type": "variable",
@@ -647,6 +699,62 @@
                         "__name": "box-shadow-color-lg"
                     }
                 ]
+            },
+            "box-shadow-offset-x-xl": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-x-xl",
+                "__value": 0
+            },
+            "box-shadow-offset-y-xl": {
+                "__type": "variable",
+                "__name": "box-shadow-offset-y-xl",
+                "__value": "1.5rem"
+            },
+            "box-shadow-blur-radius-xl": {
+                "__type": "variable",
+                "__name": "box-shadow-blur-radius-xl",
+                "__value": "2rem"
+            },
+            "box-shadow-spread-radius-xl": {
+                "__type": "variable",
+                "__name": "box-shadow-spread-radius-xl",
+                "__value": "-2rem"
+            },
+            "box-shadow-color-xl": {
+                "__type": "variable",
+                "__name": "box-shadow-color-xl",
+                "__value": "rgba(0, 0, 0, 0.25)"
+            },
+            "box-shadow-xl": {
+                "__type": "variable",
+                "__name": "box-shadow-xl",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-x-xl"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-offset-y-xl"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-blur-radius-xl"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-spread-radius-xl"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "box-shadow-color-xl"
+                    }
+                ]
+            },
+            "box-shadow-none": {
+                "__type": "variable",
+                "__name": "box-shadow-none",
+                "__value": "none"
             },
             "fluid--min-width": {
                 "__type": "variable",
@@ -1341,6 +1449,24 @@
                 "__name": "font-size-max",
                 "__value": 18
             },
+            "font-size-min-2xs": {
+                "__type": "variable",
+                "__name": "font-size-min-2xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-min-pow-minus-3"
+                        }
+                    ]
+                }
+            },
             "font-size-min-xs": {
                 "__type": "variable",
                 "__name": "font-size-min-xs",
@@ -1471,6 +1597,24 @@
                         {
                             "__type": "reference",
                             "__name": "type-scale-min-pow-5"
+                        }
+                    ]
+                }
+            },
+            "font-size-max-2xs": {
+                "__type": "variable",
+                "__name": "font-size-max-2xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max"
+                        },
+                        "*",
+                        {
+                            "__type": "reference",
+                            "__name": "type-scale-max-pow-minus-3"
                         }
                     ]
                 }
@@ -1606,6 +1750,38 @@
                             "__type": "reference",
                             "__name": "type-scale-max-pow-5"
                         }
+                    ]
+                }
+            },
+            "font-size-2xs": {
+                "__type": "variable",
+                "__name": "font-size-2xs",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min-2xs"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-max-2xs"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "font-size-min-2xs"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
                     ]
                 }
             },
@@ -1864,6 +2040,11 @@
                         ")"
                     ]
                 }
+            },
+            "font-size-inherit": {
+                "__type": "variable",
+                "__name": "font-size-inherit",
+                "__value": "inherit"
             },
             "font-size": {
                 "__type": "variable",
@@ -4487,32 +4668,12 @@
             "border-radius-min": {
                 "__type": "variable",
                 "__name": "border-radius-min",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "font-size-min"
-                        },
-                        "/",
-                        4
-                    ]
-                }
+                "__value": 6
             },
             "border-radius-max": {
                 "__type": "variable",
                 "__name": "border-radius-max",
-                "__value": {
-                    "__type": "calc",
-                    "__value": [
-                        {
-                            "__type": "reference",
-                            "__name": "font-size-max"
-                        },
-                        "/",
-                        4
-                    ]
-                }
+                "__value": 8
             },
             "border-radius-min-xs": {
                 "__type": "variable",
@@ -4525,7 +4686,7 @@
                             "__name": "border-radius-min"
                         },
                         "*",
-                        0.25
+                        0.5
                     ]
                 }
             },
@@ -4540,7 +4701,7 @@
                             "__name": "border-radius-min"
                         },
                         "*",
-                        0.5
+                        0.75
                     ]
                 }
             },
@@ -4563,7 +4724,7 @@
                             "__name": "border-radius-min"
                         },
                         "*",
-                        1.5
+                        1.25
                     ]
                 }
             },
@@ -4578,7 +4739,7 @@
                             "__name": "border-radius-min"
                         },
                         "*",
-                        2
+                        1.5
                     ]
                 }
             },
@@ -4593,7 +4754,7 @@
                             "__name": "border-radius-max"
                         },
                         "*",
-                        0.25
+                        0.5
                     ]
                 }
             },
@@ -4608,7 +4769,7 @@
                             "__name": "border-radius-max"
                         },
                         "*",
-                        0.5
+                        0.75
                     ]
                 }
             },
@@ -4631,7 +4792,7 @@
                             "__name": "border-radius-max"
                         },
                         "*",
-                        1.5
+                        1.25
                     ]
                 }
             },
@@ -4646,9 +4807,14 @@
                             "__name": "border-radius-max"
                         },
                         "*",
-                        2
+                        1.5
                     ]
                 }
+            },
+            "border-top-left-radius-none": {
+                "__type": "variable",
+                "__name": "border-top-left-radius-none",
+                "__value": "0"
             },
             "border-top-left-radius-xs": {
                 "__type": "variable",
@@ -4810,6 +4976,16 @@
                     ]
                 }
             },
+            "border-top-left-radius-full": {
+                "__type": "variable",
+                "__name": "border-top-left-radius-full",
+                "__value": "50%"
+            },
+            "border-top-right-radius-none": {
+                "__type": "variable",
+                "__name": "border-top-right-radius-none",
+                "__value": "0"
+            },
             "border-top-right-radius-xs": {
                 "__type": "variable",
                 "__name": "border-top-right-radius-xs",
@@ -4969,6 +5145,16 @@
                         ")"
                     ]
                 }
+            },
+            "border-top-right-radius-full": {
+                "__type": "variable",
+                "__name": "border-top-right-radius-full",
+                "__value": "50%"
+            },
+            "border-bottom-right-radius-none": {
+                "__type": "variable",
+                "__name": "border-bottom-right-radius-none",
+                "__value": "0"
             },
             "border-bottom-right-radius-xs": {
                 "__type": "variable",
@@ -5130,6 +5316,16 @@
                     ]
                 }
             },
+            "border-bottom-right-radius-full": {
+                "__type": "variable",
+                "__name": "border-bottom-right-radius-full",
+                "__value": "50%"
+            },
+            "border-bottom-left-radius-none": {
+                "__type": "variable",
+                "__name": "border-bottom-left-radius-none",
+                "__value": "0"
+            },
             "border-bottom-left-radius-xs": {
                 "__type": "variable",
                 "__name": "border-bottom-left-radius-xs",
@@ -5290,6 +5486,11 @@
                     ]
                 }
             },
+            "border-bottom-left-radius-full": {
+                "__type": "variable",
+                "__name": "border-bottom-left-radius-full",
+                "__value": "50%"
+            },
             "border-radius-xs": {
                 "__type": "variable",
                 "__name": "border-radius-xs",
@@ -5400,6 +5601,28 @@
                     }
                 ]
             },
+            "border-radius-full": {
+                "__type": "variable",
+                "__name": "border-radius-full",
+                "__value": [
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-left-radius-full"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-top-right-radius-full"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-right-radius-full"
+                    },
+                    {
+                        "__type": "reference",
+                        "__name": "border-bottom-left-radius-full"
+                    }
+                ]
+            },
             "border-top-left-radius": {
                 "__type": "variable",
                 "__name": "border-top-left-radius",
@@ -5468,6 +5691,36 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "font-size-max"
+                }
+            },
+            "spacing-min-4xs": {
+                "__type": "variable",
+                "__name": "spacing-min-4xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        "*",
+                        0.0625
+                    ]
+                }
+            },
+            "spacing-min-3xs": {
+                "__type": "variable",
+                "__name": "spacing-min-3xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min"
+                        },
+                        "*",
+                        0.125
+                    ]
                 }
             },
             "spacing-min-2xs": {
@@ -5598,6 +5851,36 @@
                     ]
                 }
             },
+            "spacing-max-4xs": {
+                "__type": "variable",
+                "__name": "spacing-max-4xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max"
+                        },
+                        "*",
+                        0.0625
+                    ]
+                }
+            },
+            "spacing-max-3xs": {
+                "__type": "variable",
+                "__name": "spacing-max-3xs",
+                "__value": {
+                    "__type": "calc",
+                    "__value": [
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max"
+                        },
+                        "*",
+                        0.125
+                    ]
+                }
+            },
             "spacing-max-2xs": {
                 "__type": "variable",
                 "__name": "spacing-max-2xs",
@@ -5723,6 +6006,70 @@
                         },
                         "*",
                         8
+                    ]
+                }
+            },
+            "spacing-4xs": {
+                "__type": "variable",
+                "__name": "spacing-4xs",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-4xs"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max-4xs"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-4xs"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
+                    ]
+                }
+            },
+            "spacing-3xs": {
+                "__type": "variable",
+                "__name": "spacing-3xs",
+                "__value": {
+                    "__type": "css",
+                    "__value": [
+                        "calc(((",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-3xs"
+                        },
+                        " / 16) * ",
+                        "1rem",
+                        ") + (",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-max-3xs"
+                        },
+                        " - ",
+                        {
+                            "__type": "reference",
+                            "__name": "spacing-min-3xs"
+                        },
+                        ") * ",
+                        {
+                            "__type": "reference",
+                            "__name": "fluid--breakpoint"
+                        },
+                        ")"
                     ]
                 }
             },
@@ -7865,6 +8212,7 @@
                 }
             }
         },
+        "variants": {},
         "selectors": [
             {
                 "__type": "selector",

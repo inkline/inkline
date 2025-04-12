@@ -32,7 +32,6 @@ export * from './sortByPath';
 export * from './toCamelCase';
 export * from './toKebabCase';
 export * from './toSnakeCase';
-export * from './toVariantList';
 export * from './triggerEvent';
 export * from './trim';
 export * from './uid';

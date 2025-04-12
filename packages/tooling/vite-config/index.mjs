@@ -13,6 +13,7 @@ export const aliases = [
     { find: /^@inkline\/generator/, replacement: 'engine/generator/src' },
     { find: /^@inkline\/framework/, replacement: 'integrations/framework/src' },
     { find: /^@inkline\/composables/, replacement: 'ui/composables/src' },
+    { find: /^@inkline\/variants/, replacement: 'ui/variants/src' },
     { find: /^@inkline\/i18n/, replacement: 'ui/i18n/src' },
     { find: /^@inkline\/theme/, replacement: 'ui/theme/src' },
     { find: /^@inkline\/types/, replacement: 'ui/types/src' },

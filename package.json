@@ -38,5 +38,11 @@
         "prettier": "catalog:",
         "turbo": "catalog:"
     },
+    "workspaces": [
+        "docs",
+        "e2e",
+        "packages/**/*",
+        "storybook"
+    ],
     "packageManager": "pnpm@10.5.2"
 }
