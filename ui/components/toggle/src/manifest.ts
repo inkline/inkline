@@ -792,13 +792,37 @@ export const manifest: ComponentManifest[] = [
                     name: '--toggle--{color}--background'
                 },
                 {
+                    name: '--toggle--{color}--border-top-width'
+                },
+                {
+                    name: '--toggle--{color}--border-top-style'
+                },
+                {
                     name: '--toggle--{color}--border-top-color'
+                },
+                {
+                    name: '--toggle--{color}--border-right-width'
+                },
+                {
+                    name: '--toggle--{color}--border-right-style'
                 },
                 {
                     name: '--toggle--{color}--border-right-color'
                 },
                 {
+                    name: '--toggle--{color}--border-bottom-width'
+                },
+                {
+                    name: '--toggle--{color}--border-bottom-style'
+                },
+                {
                     name: '--toggle--{color}--border-bottom-color'
+                },
+                {
+                    name: '--toggle--{color}--border-left-width'
+                },
+                {
+                    name: '--toggle--{color}--border-left-style'
                 },
                 {
                     name: '--toggle--{color}--border-left-color'
@@ -810,13 +834,37 @@ export const manifest: ComponentManifest[] = [
                     name: '--toggle--{color}--disabled--background'
                 },
                 {
+                    name: '--toggle--{color}--disabled--border-top-width'
+                },
+                {
+                    name: '--toggle--{color}--disabled--border-top-style'
+                },
+                {
                     name: '--toggle--{color}--disabled--border-top-color'
+                },
+                {
+                    name: '--toggle--{color}--disabled--border-right-width'
+                },
+                {
+                    name: '--toggle--{color}--disabled--border-right-style'
                 },
                 {
                     name: '--toggle--{color}--disabled--border-right-color'
                 },
                 {
+                    name: '--toggle--{color}--disabled--border-bottom-width'
+                },
+                {
+                    name: '--toggle--{color}--disabled--border-bottom-style'
+                },
+                {
                     name: '--toggle--{color}--disabled--border-bottom-color'
+                },
+                {
+                    name: '--toggle--{color}--disabled--border-left-width'
+                },
+                {
+                    name: '--toggle--{color}--disabled--border-left-style'
                 },
                 {
                     name: '--toggle--{color}--disabled--border-left-color'
@@ -828,13 +876,37 @@ export const manifest: ComponentManifest[] = [
                     name: '--toggle--{color}--readonly--background'
                 },
                 {
+                    name: '--toggle--{color}--readonly--border-top-width'
+                },
+                {
+                    name: '--toggle--{color}--readonly--border-top-style'
+                },
+                {
                     name: '--toggle--{color}--readonly--border-top-color'
+                },
+                {
+                    name: '--toggle--{color}--readonly--border-right-width'
+                },
+                {
+                    name: '--toggle--{color}--readonly--border-right-style'
                 },
                 {
                     name: '--toggle--{color}--readonly--border-right-color'
                 },
                 {
+                    name: '--toggle--{color}--readonly--border-bottom-width'
+                },
+                {
+                    name: '--toggle--{color}--readonly--border-bottom-style'
+                },
+                {
                     name: '--toggle--{color}--readonly--border-bottom-color'
+                },
+                {
+                    name: '--toggle--{color}--readonly--border-left-width'
+                },
+                {
+                    name: '--toggle--{color}--readonly--border-left-style'
                 },
                 {
                     name: '--toggle--{color}--readonly--border-left-color'
@@ -846,13 +918,37 @@ export const manifest: ComponentManifest[] = [
                     name: '--toggle--{color}--checked--background'
                 },
                 {
+                    name: '--toggle--{color}--checked--border-top-width'
+                },
+                {
+                    name: '--toggle--{color}--checked--border-top-style'
+                },
+                {
                     name: '--toggle--{color}--checked--border-top-color'
+                },
+                {
+                    name: '--toggle--{color}--checked--border-right-width'
+                },
+                {
+                    name: '--toggle--{color}--checked--border-right-style'
                 },
                 {
                     name: '--toggle--{color}--checked--border-right-color'
                 },
                 {
+                    name: '--toggle--{color}--checked--border-bottom-width'
+                },
+                {
+                    name: '--toggle--{color}--checked--border-bottom-style'
+                },
+                {
                     name: '--toggle--{color}--checked--border-bottom-color'
+                },
+                {
+                    name: '--toggle--{color}--checked--border-left-width'
+                },
+                {
+                    name: '--toggle--{color}--checked--border-left-style'
                 },
                 {
                     name: '--toggle--{color}--checked--border-left-color'
@@ -861,13 +957,37 @@ export const manifest: ComponentManifest[] = [
                     name: '--toggle--{color}--checked--disabled--background'
                 },
                 {
+                    name: '--toggle--{color}--checked--disabled--border-top-width'
+                },
+                {
+                    name: '--toggle--{color}--checked--disabled--border-top-style'
+                },
+                {
                     name: '--toggle--{color}--checked--disabled--border-top-color'
+                },
+                {
+                    name: '--toggle--{color}--checked--disabled--border-right-width'
+                },
+                {
+                    name: '--toggle--{color}--checked--disabled--border-right-style'
                 },
                 {
                     name: '--toggle--{color}--checked--disabled--border-right-color'
                 },
                 {
+                    name: '--toggle--{color}--checked--disabled--border-bottom-width'
+                },
+                {
+                    name: '--toggle--{color}--checked--disabled--border-bottom-style'
+                },
+                {
                     name: '--toggle--{color}--checked--disabled--border-bottom-color'
+                },
+                {
+                    name: '--toggle--{color}--checked--disabled--border-left-width'
+                },
+                {
+                    name: '--toggle--{color}--checked--disabled--border-left-style'
                 },
                 {
                     name: '--toggle--{color}--checked--disabled--border-left-color'
@@ -879,13 +999,37 @@ export const manifest: ComponentManifest[] = [
                     name: '--toggle--{color}--checked--readonly--background'
                 },
                 {
+                    name: '--toggle--{color}--checked--readonly--border-top-width'
+                },
+                {
+                    name: '--toggle--{color}--checked--readonly--border-top-style'
+                },
+                {
                     name: '--toggle--{color}--checked--readonly--border-top-color'
+                },
+                {
+                    name: '--toggle--{color}--checked--readonly--border-right-width'
+                },
+                {
+                    name: '--toggle--{color}--checked--readonly--border-right-style'
                 },
                 {
                     name: '--toggle--{color}--checked--readonly--border-right-color'
                 },
                 {
+                    name: '--toggle--{color}--checked--readonly--border-bottom-width'
+                },
+                {
+                    name: '--toggle--{color}--checked--readonly--border-bottom-style'
+                },
+                {
                     name: '--toggle--{color}--checked--readonly--border-bottom-color'
+                },
+                {
+                    name: '--toggle--{color}--checked--readonly--border-left-width'
+                },
+                {
+                    name: '--toggle--{color}--checked--readonly--border-left-style'
                 },
                 {
                     name: '--toggle--{color}--checked--readonly--border-left-color'

@@ -6936,38 +6936,6 @@
                     "__name": "spacing--md"
                 }
             },
-            "checkbox--border-top-color": {
-                "__type": "variable",
-                "__name": "checkbox--border-top-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "checkbox--border-right-color": {
-                "__type": "variable",
-                "__name": "checkbox--border-right-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "checkbox--border-bottom-color": {
-                "__type": "variable",
-                "__name": "checkbox--border-bottom-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "checkbox--border-left-color": {
-                "__type": "variable",
-                "__name": "checkbox--border-left-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
             "checkbox--border-top-width": {
                 "__type": "variable",
                 "__name": "checkbox--border-top-width",
@@ -6982,6 +6950,14 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-style"
+                }
+            },
+            "checkbox--border-top-color": {
+                "__type": "variable",
+                "__name": "checkbox--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
                 }
             },
             "checkbox--border-right-width": {
@@ -7000,6 +6976,14 @@
                     "__name": "border-right-style"
                 }
             },
+            "checkbox--border-right-color": {
+                "__type": "variable",
+                "__name": "checkbox--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
+                }
+            },
             "checkbox--border-bottom-width": {
                 "__type": "variable",
                 "__name": "checkbox--border-bottom-width",
@@ -7016,6 +7000,14 @@
                     "__name": "border-bottom-style"
                 }
             },
+            "checkbox--border-bottom-color": {
+                "__type": "variable",
+                "__name": "checkbox--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
+                }
+            },
             "checkbox--border-left-width": {
                 "__type": "variable",
                 "__name": "checkbox--border-left-width",
@@ -7030,6 +7022,14 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "border-left-style"
+                }
+            },
+            "checkbox--border-left-color": {
+                "__type": "variable",
+                "__name": "checkbox--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
                 }
             },
             "checkbox--box-shadow-offset-x": {
@@ -7147,6 +7147,16 @@
                     "__name": "color-gray--100"
                 }
             },
+            "checkbox--disabled--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--disabled--border-top-width",
+                "__value": 0
+            },
+            "checkbox--disabled--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--disabled--border-top-style",
+                "__value": "none"
+            },
             "checkbox--disabled--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--disabled--border-top-color",
@@ -7154,6 +7164,16 @@
                     "__type": "reference",
                     "__name": "color-gray--200"
                 }
+            },
+            "checkbox--disabled--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--disabled--border-right-width",
+                "__value": 0
+            },
+            "checkbox--disabled--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--disabled--border-right-style",
+                "__value": "none"
             },
             "checkbox--disabled--border-right-color": {
                 "__type": "variable",
@@ -7163,6 +7183,16 @@
                     "__name": "color-gray--200"
                 }
             },
+            "checkbox--disabled--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--disabled--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--disabled--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--disabled--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--disabled--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--disabled--border-bottom-color",
@@ -7170,6 +7200,16 @@
                     "__type": "reference",
                     "__name": "color-gray--200"
                 }
+            },
+            "checkbox--disabled--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--disabled--border-left-width",
+                "__value": 0
+            },
+            "checkbox--disabled--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--disabled--border-left-style",
+                "__value": "none"
             },
             "checkbox--disabled--border-left-color": {
                 "__type": "variable",
@@ -7195,6 +7235,16 @@
                     "__name": "color-gray--100"
                 }
             },
+            "checkbox--readonly--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--readonly--border-top-width",
+                "__value": 0
+            },
+            "checkbox--readonly--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--readonly--border-top-style",
+                "__value": "none"
+            },
             "checkbox--readonly--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--readonly--border-top-color",
@@ -7202,6 +7252,16 @@
                     "__type": "reference",
                     "__name": "color-gray--200"
                 }
+            },
+            "checkbox--readonly--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--readonly--border-right-width",
+                "__value": 0
+            },
+            "checkbox--readonly--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--readonly--border-right-style",
+                "__value": "none"
             },
             "checkbox--readonly--border-right-color": {
                 "__type": "variable",
@@ -7211,6 +7271,16 @@
                     "__name": "color-gray--200"
                 }
             },
+            "checkbox--readonly--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--readonly--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--readonly--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--readonly--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--readonly--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--readonly--border-bottom-color",
@@ -7218,6 +7288,16 @@
                     "__type": "reference",
                     "__name": "color-gray--200"
                 }
+            },
+            "checkbox--readonly--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--readonly--border-left-width",
+                "__value": 0
+            },
+            "checkbox--readonly--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--readonly--border-left-style",
+                "__value": "none"
             },
             "checkbox--readonly--border-left-color": {
                 "__type": "variable",
@@ -7235,6 +7315,16 @@
                     "__name": "color-primary"
                 }
             },
+            "checkbox--checked--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-top-width",
+                "__value": 0
+            },
+            "checkbox--checked--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-top-style",
+                "__value": "none"
+            },
             "checkbox--checked--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--border-top-color",
@@ -7242,6 +7332,16 @@
                     "__type": "reference",
                     "__name": "color-primary--shade-50"
                 }
+            },
+            "checkbox--checked--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-right-width",
+                "__value": 0
+            },
+            "checkbox--checked--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-right-style",
+                "__value": "none"
             },
             "checkbox--checked--border-right-color": {
                 "__type": "variable",
@@ -7251,6 +7351,16 @@
                     "__name": "color-primary--shade-50"
                 }
             },
+            "checkbox--checked--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--checked--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--checked--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--border-bottom-color",
@@ -7258,6 +7368,16 @@
                     "__type": "reference",
                     "__name": "color-primary--shade-50"
                 }
+            },
+            "checkbox--checked--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-left-width",
+                "__value": 0
+            },
+            "checkbox--checked--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--checked--border-left-style",
+                "__value": "none"
             },
             "checkbox--checked--border-left-color": {
                 "__type": "variable",
@@ -7275,6 +7395,16 @@
                     "__name": "color-primary--300"
                 }
             },
+            "checkbox--checked--disabled--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-top-width",
+                "__value": 0
+            },
+            "checkbox--checked--disabled--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-top-style",
+                "__value": "none"
+            },
             "checkbox--checked--disabled--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--disabled--border-top-color",
@@ -7282,6 +7412,16 @@
                     "__type": "reference",
                     "__name": "color-primary--400"
                 }
+            },
+            "checkbox--checked--disabled--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-right-width",
+                "__value": 0
+            },
+            "checkbox--checked--disabled--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-right-style",
+                "__value": "none"
             },
             "checkbox--checked--disabled--border-right-color": {
                 "__type": "variable",
@@ -7291,6 +7431,16 @@
                     "__name": "color-primary--400"
                 }
             },
+            "checkbox--checked--disabled--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--checked--disabled--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--checked--disabled--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--disabled--border-bottom-color",
@@ -7298,6 +7448,16 @@
                     "__type": "reference",
                     "__name": "color-primary--400"
                 }
+            },
+            "checkbox--checked--disabled--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-left-width",
+                "__value": 0
+            },
+            "checkbox--checked--disabled--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--checked--disabled--border-left-style",
+                "__value": "none"
             },
             "checkbox--checked--disabled--border-left-color": {
                 "__type": "variable",
@@ -7315,6 +7475,16 @@
                     "__name": "color-primary--400"
                 }
             },
+            "checkbox--checked--readonly--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-top-width",
+                "__value": 0
+            },
+            "checkbox--checked--readonly--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-top-style",
+                "__value": "none"
+            },
             "checkbox--checked--readonly--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--readonly--border-top-color",
@@ -7322,6 +7492,16 @@
                     "__type": "reference",
                     "__name": "color-primary--500"
                 }
+            },
+            "checkbox--checked--readonly--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-right-width",
+                "__value": 0
+            },
+            "checkbox--checked--readonly--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-right-style",
+                "__value": "none"
             },
             "checkbox--checked--readonly--border-right-color": {
                 "__type": "variable",
@@ -7331,6 +7511,16 @@
                     "__name": "color-primary--500"
                 }
             },
+            "checkbox--checked--readonly--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--checked--readonly--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--checked--readonly--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--checked--readonly--border-bottom-color",
@@ -7338,6 +7528,16 @@
                     "__type": "reference",
                     "__name": "color-primary--500"
                 }
+            },
+            "checkbox--checked--readonly--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-left-width",
+                "__value": 0
+            },
+            "checkbox--checked--readonly--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--checked--readonly--border-left-style",
+                "__value": "none"
             },
             "checkbox--checked--readonly--border-left-color": {
                 "__type": "variable",
@@ -7887,6 +8087,16 @@
                     ]
                 }
             },
+            "checkbox--light--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--border-top-width",
+                "__value": 0
+            },
+            "checkbox--light--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--border-top-style",
+                "__value": "none"
+            },
             "checkbox--light--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--light--border-top-color",
@@ -7894,6 +8104,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-50"
                 }
+            },
+            "checkbox--light--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--border-right-width",
+                "__value": 0
+            },
+            "checkbox--light--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--border-right-style",
+                "__value": "none"
             },
             "checkbox--light--border-right-color": {
                 "__type": "variable",
@@ -7903,6 +8123,16 @@
                     "__name": "color-light--shade-50"
                 }
             },
+            "checkbox--light--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--light--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--light--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--light--border-bottom-color",
@@ -7910,6 +8140,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-50"
                 }
+            },
+            "checkbox--light--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--border-left-width",
+                "__value": 0
+            },
+            "checkbox--light--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--border-left-style",
+                "__value": "none"
             },
             "checkbox--light--border-left-color": {
                 "__type": "variable",
@@ -7943,6 +8183,16 @@
                     "__name": "color-gray--100"
                 }
             },
+            "checkbox--light--disabled--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--disabled--border-top-width",
+                "__value": 0
+            },
+            "checkbox--light--disabled--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--disabled--border-top-style",
+                "__value": "none"
+            },
             "checkbox--light--disabled--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--light--disabled--border-top-color",
@@ -7950,6 +8200,16 @@
                     "__type": "reference",
                     "__name": "color-gray--200"
                 }
+            },
+            "checkbox--light--disabled--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--disabled--border-right-width",
+                "__value": 0
+            },
+            "checkbox--light--disabled--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--disabled--border-right-style",
+                "__value": "none"
             },
             "checkbox--light--disabled--border-right-color": {
                 "__type": "variable",
@@ -7959,6 +8219,16 @@
                     "__name": "color-gray--200"
                 }
             },
+            "checkbox--light--disabled--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--disabled--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--light--disabled--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--disabled--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--light--disabled--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--light--disabled--border-bottom-color",
@@ -7966,6 +8236,16 @@
                     "__type": "reference",
                     "__name": "color-gray--200"
                 }
+            },
+            "checkbox--light--disabled--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--disabled--border-left-width",
+                "__value": 0
+            },
+            "checkbox--light--disabled--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--disabled--border-left-style",
+                "__value": "none"
             },
             "checkbox--light--disabled--border-left-color": {
                 "__type": "variable",
@@ -7983,6 +8263,16 @@
                     "__name": "color-gray--100"
                 }
             },
+            "checkbox--light--readonly--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--readonly--border-top-width",
+                "__value": 0
+            },
+            "checkbox--light--readonly--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--readonly--border-top-style",
+                "__value": "none"
+            },
             "checkbox--light--readonly--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--light--readonly--border-top-color",
@@ -7990,6 +8280,16 @@
                     "__type": "reference",
                     "__name": "color-gray--200"
                 }
+            },
+            "checkbox--light--readonly--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--readonly--border-right-width",
+                "__value": 0
+            },
+            "checkbox--light--readonly--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--readonly--border-right-style",
+                "__value": "none"
             },
             "checkbox--light--readonly--border-right-color": {
                 "__type": "variable",
@@ -7999,6 +8299,16 @@
                     "__name": "color-gray--200"
                 }
             },
+            "checkbox--light--readonly--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--readonly--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--light--readonly--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--readonly--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--light--readonly--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--light--readonly--border-bottom-color",
@@ -8006,6 +8316,16 @@
                     "__type": "reference",
                     "__name": "color-gray--200"
                 }
+            },
+            "checkbox--light--readonly--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--readonly--border-left-width",
+                "__value": 0
+            },
+            "checkbox--light--readonly--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--readonly--border-left-style",
+                "__value": "none"
             },
             "checkbox--light--readonly--border-left-color": {
                 "__type": "variable",
@@ -8023,6 +8343,16 @@
                     "__name": "color-primary--300"
                 }
             },
+            "checkbox--light--checked--disabled--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--disabled--border-top-width",
+                "__value": 0
+            },
+            "checkbox--light--checked--disabled--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--disabled--border-top-style",
+                "__value": "none"
+            },
             "checkbox--light--checked--disabled--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--light--checked--disabled--border-top-color",
@@ -8030,6 +8360,16 @@
                     "__type": "reference",
                     "__name": "color-primary--400"
                 }
+            },
+            "checkbox--light--checked--disabled--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--disabled--border-right-width",
+                "__value": 0
+            },
+            "checkbox--light--checked--disabled--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--disabled--border-right-style",
+                "__value": "none"
             },
             "checkbox--light--checked--disabled--border-right-color": {
                 "__type": "variable",
@@ -8039,6 +8379,16 @@
                     "__name": "color-primary--400"
                 }
             },
+            "checkbox--light--checked--disabled--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--disabled--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--light--checked--disabled--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--disabled--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--light--checked--disabled--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--light--checked--disabled--border-bottom-color",
@@ -8046,6 +8396,16 @@
                     "__type": "reference",
                     "__name": "color-primary--400"
                 }
+            },
+            "checkbox--light--checked--disabled--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--disabled--border-left-width",
+                "__value": 0
+            },
+            "checkbox--light--checked--disabled--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--disabled--border-left-style",
+                "__value": "none"
             },
             "checkbox--light--checked--disabled--border-left-color": {
                 "__type": "variable",
@@ -8063,6 +8423,16 @@
                     "__name": "color-primary--400"
                 }
             },
+            "checkbox--light--checked--readonly--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--readonly--border-top-width",
+                "__value": 0
+            },
+            "checkbox--light--checked--readonly--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--readonly--border-top-style",
+                "__value": "none"
+            },
             "checkbox--light--checked--readonly--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--light--checked--readonly--border-top-color",
@@ -8070,6 +8440,16 @@
                     "__type": "reference",
                     "__name": "color-primary--500"
                 }
+            },
+            "checkbox--light--checked--readonly--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--readonly--border-right-width",
+                "__value": 0
+            },
+            "checkbox--light--checked--readonly--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--readonly--border-right-style",
+                "__value": "none"
             },
             "checkbox--light--checked--readonly--border-right-color": {
                 "__type": "variable",
@@ -8079,6 +8459,16 @@
                     "__name": "color-primary--500"
                 }
             },
+            "checkbox--light--checked--readonly--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--readonly--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--light--checked--readonly--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--readonly--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--light--checked--readonly--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--light--checked--readonly--border-bottom-color",
@@ -8086,6 +8476,16 @@
                     "__type": "reference",
                     "__name": "color-primary--500"
                 }
+            },
+            "checkbox--light--checked--readonly--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--readonly--border-left-width",
+                "__value": 0
+            },
+            "checkbox--light--checked--readonly--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--light--checked--readonly--border-left-style",
+                "__value": "none"
             },
             "checkbox--light--checked--readonly--border-left-color": {
                 "__type": "variable",
@@ -8095,6 +8495,16 @@
                     "__name": "color-primary--500"
                 }
             },
+            "checkbox--dark--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--border-top-width",
+                "__value": 0
+            },
+            "checkbox--dark--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--border-top-style",
+                "__value": "none"
+            },
             "checkbox--dark--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--dark--border-top-color",
@@ -8102,6 +8512,16 @@
                     "__type": "reference",
                     "__name": "color-dark--tint-50"
                 }
+            },
+            "checkbox--dark--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--border-right-width",
+                "__value": 0
+            },
+            "checkbox--dark--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--border-right-style",
+                "__value": "none"
             },
             "checkbox--dark--border-right-color": {
                 "__type": "variable",
@@ -8111,6 +8531,16 @@
                     "__name": "color-dark--tint-50"
                 }
             },
+            "checkbox--dark--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--dark--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--dark--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--dark--border-bottom-color",
@@ -8118,6 +8548,16 @@
                     "__type": "reference",
                     "__name": "color-dark--tint-50"
                 }
+            },
+            "checkbox--dark--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--border-left-width",
+                "__value": 0
+            },
+            "checkbox--dark--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--border-left-style",
+                "__value": "none"
             },
             "checkbox--dark--border-left-color": {
                 "__type": "variable",
@@ -8151,6 +8591,16 @@
                     "__name": "color-gray--600"
                 }
             },
+            "checkbox--dark--disabled--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--disabled--border-top-width",
+                "__value": 0
+            },
+            "checkbox--dark--disabled--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--disabled--border-top-style",
+                "__value": "none"
+            },
             "checkbox--dark--disabled--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--dark--disabled--border-top-color",
@@ -8158,6 +8608,16 @@
                     "__type": "reference",
                     "__name": "color-gray--700"
                 }
+            },
+            "checkbox--dark--disabled--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--disabled--border-right-width",
+                "__value": 0
+            },
+            "checkbox--dark--disabled--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--disabled--border-right-style",
+                "__value": "none"
             },
             "checkbox--dark--disabled--border-right-color": {
                 "__type": "variable",
@@ -8167,6 +8627,16 @@
                     "__name": "color-gray--700"
                 }
             },
+            "checkbox--dark--disabled--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--disabled--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--dark--disabled--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--disabled--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--dark--disabled--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--dark--disabled--border-bottom-color",
@@ -8174,6 +8644,16 @@
                     "__type": "reference",
                     "__name": "color-gray--700"
                 }
+            },
+            "checkbox--dark--disabled--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--disabled--border-left-width",
+                "__value": 0
+            },
+            "checkbox--dark--disabled--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--disabled--border-left-style",
+                "__value": "none"
             },
             "checkbox--dark--disabled--border-left-color": {
                 "__type": "variable",
@@ -8191,6 +8671,16 @@
                     "__name": "color-gray--600"
                 }
             },
+            "checkbox--dark--readonly--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--readonly--border-top-width",
+                "__value": 0
+            },
+            "checkbox--dark--readonly--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--readonly--border-top-style",
+                "__value": "none"
+            },
             "checkbox--dark--readonly--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--dark--readonly--border-top-color",
@@ -8198,6 +8688,16 @@
                     "__type": "reference",
                     "__name": "color-gray--700"
                 }
+            },
+            "checkbox--dark--readonly--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--readonly--border-right-width",
+                "__value": 0
+            },
+            "checkbox--dark--readonly--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--readonly--border-right-style",
+                "__value": "none"
             },
             "checkbox--dark--readonly--border-right-color": {
                 "__type": "variable",
@@ -8207,6 +8707,16 @@
                     "__name": "color-gray--700"
                 }
             },
+            "checkbox--dark--readonly--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--readonly--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--dark--readonly--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--readonly--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--dark--readonly--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--dark--readonly--border-bottom-color",
@@ -8214,6 +8724,16 @@
                     "__type": "reference",
                     "__name": "color-gray--700"
                 }
+            },
+            "checkbox--dark--readonly--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--readonly--border-left-width",
+                "__value": 0
+            },
+            "checkbox--dark--readonly--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--readonly--border-left-style",
+                "__value": "none"
             },
             "checkbox--dark--readonly--border-left-color": {
                 "__type": "variable",
@@ -8231,6 +8751,16 @@
                     "__name": "color-primary--700"
                 }
             },
+            "checkbox--dark--checked--disabled--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--disabled--border-top-width",
+                "__value": 0
+            },
+            "checkbox--dark--checked--disabled--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--disabled--border-top-style",
+                "__value": "none"
+            },
             "checkbox--dark--checked--disabled--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--dark--checked--disabled--border-top-color",
@@ -8238,6 +8768,16 @@
                     "__type": "reference",
                     "__name": "color-primary--800"
                 }
+            },
+            "checkbox--dark--checked--disabled--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--disabled--border-right-width",
+                "__value": 0
+            },
+            "checkbox--dark--checked--disabled--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--disabled--border-right-style",
+                "__value": "none"
             },
             "checkbox--dark--checked--disabled--border-right-color": {
                 "__type": "variable",
@@ -8247,6 +8787,16 @@
                     "__name": "color-primary--800"
                 }
             },
+            "checkbox--dark--checked--disabled--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--disabled--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--dark--checked--disabled--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--disabled--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--dark--checked--disabled--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--dark--checked--disabled--border-bottom-color",
@@ -8254,6 +8804,16 @@
                     "__type": "reference",
                     "__name": "color-primary--800"
                 }
+            },
+            "checkbox--dark--checked--disabled--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--disabled--border-left-width",
+                "__value": 0
+            },
+            "checkbox--dark--checked--disabled--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--disabled--border-left-style",
+                "__value": "none"
             },
             "checkbox--dark--checked--disabled--border-left-color": {
                 "__type": "variable",
@@ -8271,6 +8831,16 @@
                     "__name": "color-primary--600"
                 }
             },
+            "checkbox--dark--checked--readonly--border-top-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--readonly--border-top-width",
+                "__value": 0
+            },
+            "checkbox--dark--checked--readonly--border-top-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--readonly--border-top-style",
+                "__value": "none"
+            },
             "checkbox--dark--checked--readonly--border-top-color": {
                 "__type": "variable",
                 "__name": "checkbox--dark--checked--readonly--border-top-color",
@@ -8278,6 +8848,16 @@
                     "__type": "reference",
                     "__name": "color-primary--700"
                 }
+            },
+            "checkbox--dark--checked--readonly--border-right-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--readonly--border-right-width",
+                "__value": 0
+            },
+            "checkbox--dark--checked--readonly--border-right-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--readonly--border-right-style",
+                "__value": "none"
             },
             "checkbox--dark--checked--readonly--border-right-color": {
                 "__type": "variable",
@@ -8287,6 +8867,16 @@
                     "__name": "color-primary--700"
                 }
             },
+            "checkbox--dark--checked--readonly--border-bottom-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--readonly--border-bottom-width",
+                "__value": 0
+            },
+            "checkbox--dark--checked--readonly--border-bottom-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--readonly--border-bottom-style",
+                "__value": "none"
+            },
             "checkbox--dark--checked--readonly--border-bottom-color": {
                 "__type": "variable",
                 "__name": "checkbox--dark--checked--readonly--border-bottom-color",
@@ -8294,6 +8884,16 @@
                     "__type": "reference",
                     "__name": "color-primary--700"
                 }
+            },
+            "checkbox--dark--checked--readonly--border-left-width": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--readonly--border-left-width",
+                "__value": 0
+            },
+            "checkbox--dark--checked--readonly--border-left-style": {
+                "__type": "variable",
+                "__name": "checkbox--dark--checked--readonly--border-left-style",
+                "__value": "none"
             },
             "checkbox--dark--checked--readonly--border-left-color": {
                 "__type": "variable",

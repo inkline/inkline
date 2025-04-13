@@ -168,6 +168,35 @@
                 }
             }
         ],
-        "utilities": []
+        "utilities": [
+            {
+                "__type": "utility",
+                "__name": "gap:default",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._gap:default",
+                    "__value": {
+                        "gap": {
+                            "__type": "reference",
+                            "__name": "gap--default"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "gap:default",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._gap:default",
+                    "__value": {
+                        "gap": {
+                            "__type": "reference",
+                            "__name": "gap--default"
+                        }
+                    }
+                }
+            }
+        ]
     }
 }

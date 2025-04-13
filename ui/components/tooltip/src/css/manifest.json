@@ -6904,38 +6904,6 @@
                     "__name": "spacing--md"
                 }
             },
-            "tooltip--border-top-color": {
-                "__type": "variable",
-                "__name": "tooltip--border-top-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "tooltip--border-right-color": {
-                "__type": "variable",
-                "__name": "tooltip--border-right-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "tooltip--border-bottom-color": {
-                "__type": "variable",
-                "__name": "tooltip--border-bottom-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "tooltip--border-left-color": {
-                "__type": "variable",
-                "__name": "tooltip--border-left-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
             "tooltip--border-top-width": {
                 "__type": "variable",
                 "__name": "tooltip--border-top-width",
@@ -6950,6 +6918,14 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-style"
+                }
+            },
+            "tooltip--border-top-color": {
+                "__type": "variable",
+                "__name": "tooltip--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
                 }
             },
             "tooltip--border-right-width": {
@@ -6968,6 +6944,14 @@
                     "__name": "border-right-style"
                 }
             },
+            "tooltip--border-right-color": {
+                "__type": "variable",
+                "__name": "tooltip--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
+                }
+            },
             "tooltip--border-bottom-width": {
                 "__type": "variable",
                 "__name": "tooltip--border-bottom-width",
@@ -6984,6 +6968,14 @@
                     "__name": "border-bottom-style"
                 }
             },
+            "tooltip--border-bottom-color": {
+                "__type": "variable",
+                "__name": "tooltip--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
+                }
+            },
             "tooltip--border-left-width": {
                 "__type": "variable",
                 "__name": "tooltip--border-left-width",
@@ -6998,6 +6990,14 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "border-left-style"
+                }
+            },
+            "tooltip--border-left-color": {
+                "__type": "variable",
+                "__name": "tooltip--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
                 }
             },
             "tooltip--box-shadow-offset-x": {
@@ -7549,6 +7549,16 @@
                     ]
                 }
             },
+            "tooltip--light--border-top-width": {
+                "__type": "variable",
+                "__name": "tooltip--light--border-top-width",
+                "__value": 0
+            },
+            "tooltip--light--border-top-style": {
+                "__type": "variable",
+                "__name": "tooltip--light--border-top-style",
+                "__value": "none"
+            },
             "tooltip--light--border-top-color": {
                 "__type": "variable",
                 "__name": "tooltip--light--border-top-color",
@@ -7556,6 +7566,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-50"
                 }
+            },
+            "tooltip--light--border-right-width": {
+                "__type": "variable",
+                "__name": "tooltip--light--border-right-width",
+                "__value": 0
+            },
+            "tooltip--light--border-right-style": {
+                "__type": "variable",
+                "__name": "tooltip--light--border-right-style",
+                "__value": "none"
             },
             "tooltip--light--border-right-color": {
                 "__type": "variable",
@@ -7565,6 +7585,16 @@
                     "__name": "color-light--shade-50"
                 }
             },
+            "tooltip--light--border-bottom-width": {
+                "__type": "variable",
+                "__name": "tooltip--light--border-bottom-width",
+                "__value": 0
+            },
+            "tooltip--light--border-bottom-style": {
+                "__type": "variable",
+                "__name": "tooltip--light--border-bottom-style",
+                "__value": "none"
+            },
             "tooltip--light--border-bottom-color": {
                 "__type": "variable",
                 "__name": "tooltip--light--border-bottom-color",
@@ -7572,6 +7602,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-50"
                 }
+            },
+            "tooltip--light--border-left-width": {
+                "__type": "variable",
+                "__name": "tooltip--light--border-left-width",
+                "__value": 0
+            },
+            "tooltip--light--border-left-style": {
+                "__type": "variable",
+                "__name": "tooltip--light--border-left-style",
+                "__value": "none"
             },
             "tooltip--light--border-left-color": {
                 "__type": "variable",
@@ -7597,6 +7637,16 @@
                     "__name": "contrast-text-color-light"
                 }
             },
+            "tooltip--dark--border-top-width": {
+                "__type": "variable",
+                "__name": "tooltip--dark--border-top-width",
+                "__value": 0
+            },
+            "tooltip--dark--border-top-style": {
+                "__type": "variable",
+                "__name": "tooltip--dark--border-top-style",
+                "__value": "none"
+            },
             "tooltip--dark--border-top-color": {
                 "__type": "variable",
                 "__name": "tooltip--dark--border-top-color",
@@ -7604,6 +7654,16 @@
                     "__type": "reference",
                     "__name": "color-dark--tint-50"
                 }
+            },
+            "tooltip--dark--border-right-width": {
+                "__type": "variable",
+                "__name": "tooltip--dark--border-right-width",
+                "__value": 0
+            },
+            "tooltip--dark--border-right-style": {
+                "__type": "variable",
+                "__name": "tooltip--dark--border-right-style",
+                "__value": "none"
             },
             "tooltip--dark--border-right-color": {
                 "__type": "variable",
@@ -7613,6 +7673,16 @@
                     "__name": "color-dark--tint-50"
                 }
             },
+            "tooltip--dark--border-bottom-width": {
+                "__type": "variable",
+                "__name": "tooltip--dark--border-bottom-width",
+                "__value": 0
+            },
+            "tooltip--dark--border-bottom-style": {
+                "__type": "variable",
+                "__name": "tooltip--dark--border-bottom-style",
+                "__value": "none"
+            },
             "tooltip--dark--border-bottom-color": {
                 "__type": "variable",
                 "__name": "tooltip--dark--border-bottom-color",
@@ -7620,6 +7690,16 @@
                     "__type": "reference",
                     "__name": "color-dark--tint-50"
                 }
+            },
+            "tooltip--dark--border-left-width": {
+                "__type": "variable",
+                "__name": "tooltip--dark--border-left-width",
+                "__value": 0
+            },
+            "tooltip--dark--border-left-style": {
+                "__type": "variable",
+                "__name": "tooltip--dark--border-left-style",
+                "__value": "none"
             },
             "tooltip--dark--border-left-color": {
                 "__type": "variable",

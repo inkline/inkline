@@ -35,6 +35,10 @@ export const propertyFoldingDefinitions: PropertyFold[] = [
 
 export const propertyToVariableMap: Record<string, string | string[]> = {
     background: 'color',
+    color: ['color', 'textColor'],
+    columnGap: 'spacing',
+    gap: 'spacing',
+    height: 'spacing',
     margin: 'spacing',
     marginTop: 'spacing',
     marginRight: 'spacing',
@@ -44,7 +48,9 @@ export const propertyToVariableMap: Record<string, string | string[]> = {
     paddingTop: 'spacing',
     paddingRight: 'spacing',
     paddingBottom: 'spacing',
-    paddingLeft: 'spacing'
+    paddingLeft: 'spacing',
+    rowGap: 'spacing',
+    width: 'spacing'
 };
 
 export const variantStateKeys: VariantState[] = [

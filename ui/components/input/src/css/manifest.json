@@ -6969,38 +6969,6 @@
                     "__name": "spacing--md"
                 }
             },
-            "input--border-top-color": {
-                "__type": "variable",
-                "__name": "input--border-top-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "input--border-right-color": {
-                "__type": "variable",
-                "__name": "input--border-right-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "input--border-bottom-color": {
-                "__type": "variable",
-                "__name": "input--border-bottom-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "input--border-left-color": {
-                "__type": "variable",
-                "__name": "input--border-left-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
             "input--border-top-width": {
                 "__type": "variable",
                 "__name": "input--border-top-width",
@@ -7015,6 +6983,14 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-style"
+                }
+            },
+            "input--border-top-color": {
+                "__type": "variable",
+                "__name": "input--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
                 }
             },
             "input--border-right-width": {
@@ -7033,6 +7009,14 @@
                     "__name": "border-right-style"
                 }
             },
+            "input--border-right-color": {
+                "__type": "variable",
+                "__name": "input--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
+                }
+            },
             "input--border-bottom-width": {
                 "__type": "variable",
                 "__name": "input--border-bottom-width",
@@ -7049,6 +7033,14 @@
                     "__name": "border-bottom-style"
                 }
             },
+            "input--border-bottom-color": {
+                "__type": "variable",
+                "__name": "input--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
+                }
+            },
             "input--border-left-width": {
                 "__type": "variable",
                 "__name": "input--border-left-width",
@@ -7063,6 +7055,14 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "border-left-style"
+                }
+            },
+            "input--border-left-color": {
+                "__type": "variable",
+                "__name": "input--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
                 }
             },
             "input--box-shadow-offset-x": {
@@ -7137,6 +7137,16 @@
                     "__name": "transition-timing-function"
                 }
             },
+            "input--error--border-top-width": {
+                "__type": "variable",
+                "__name": "input--error--border-top-width",
+                "__value": 0
+            },
+            "input--error--border-top-style": {
+                "__type": "variable",
+                "__name": "input--error--border-top-style",
+                "__value": "none"
+            },
             "input--error--border-top-color": {
                 "__type": "variable",
                 "__name": "input--error--border-top-color",
@@ -7144,6 +7154,16 @@
                     "__type": "reference",
                     "__name": "color-danger"
                 }
+            },
+            "input--error--border-right-width": {
+                "__type": "variable",
+                "__name": "input--error--border-right-width",
+                "__value": 0
+            },
+            "input--error--border-right-style": {
+                "__type": "variable",
+                "__name": "input--error--border-right-style",
+                "__value": "none"
             },
             "input--error--border-right-color": {
                 "__type": "variable",
@@ -7153,6 +7173,16 @@
                     "__name": "color-danger"
                 }
             },
+            "input--error--border-bottom-width": {
+                "__type": "variable",
+                "__name": "input--error--border-bottom-width",
+                "__value": 0
+            },
+            "input--error--border-bottom-style": {
+                "__type": "variable",
+                "__name": "input--error--border-bottom-style",
+                "__value": "none"
+            },
             "input--error--border-bottom-color": {
                 "__type": "variable",
                 "__name": "input--error--border-bottom-color",
@@ -7160,6 +7190,16 @@
                     "__type": "reference",
                     "__name": "color-danger"
                 }
+            },
+            "input--error--border-left-width": {
+                "__type": "variable",
+                "__name": "input--error--border-left-width",
+                "__value": 0
+            },
+            "input--error--border-left-style": {
+                "__type": "variable",
+                "__name": "input--error--border-left-style",
+                "__value": "none"
             },
             "input--error--border-left-color": {
                 "__type": "variable",
@@ -7227,6 +7267,16 @@
                     "__name": "contrast-text-color-light"
                 }
             },
+            "input--hover--border-top-width": {
+                "__type": "variable",
+                "__name": "input--hover--border-top-width",
+                "__value": 0
+            },
+            "input--hover--border-top-style": {
+                "__type": "variable",
+                "__name": "input--hover--border-top-style",
+                "__value": "none"
+            },
             "input--hover--border-top-color": {
                 "__type": "variable",
                 "__name": "input--hover--border-top-color",
@@ -7234,6 +7284,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-100"
                 }
+            },
+            "input--hover--border-right-width": {
+                "__type": "variable",
+                "__name": "input--hover--border-right-width",
+                "__value": 0
+            },
+            "input--hover--border-right-style": {
+                "__type": "variable",
+                "__name": "input--hover--border-right-style",
+                "__value": "none"
             },
             "input--hover--border-right-color": {
                 "__type": "variable",
@@ -7243,6 +7303,16 @@
                     "__name": "color-light--shade-100"
                 }
             },
+            "input--hover--border-bottom-width": {
+                "__type": "variable",
+                "__name": "input--hover--border-bottom-width",
+                "__value": 0
+            },
+            "input--hover--border-bottom-style": {
+                "__type": "variable",
+                "__name": "input--hover--border-bottom-style",
+                "__value": "none"
+            },
             "input--hover--border-bottom-color": {
                 "__type": "variable",
                 "__name": "input--hover--border-bottom-color",
@@ -7250,6 +7320,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-100"
                 }
+            },
+            "input--hover--border-left-width": {
+                "__type": "variable",
+                "__name": "input--hover--border-left-width",
+                "__value": 0
+            },
+            "input--hover--border-left-style": {
+                "__type": "variable",
+                "__name": "input--hover--border-left-style",
+                "__value": "none"
             },
             "input--hover--border-left-color": {
                 "__type": "variable",
@@ -7259,6 +7339,16 @@
                     "__name": "color-light--shade-100"
                 }
             },
+            "input--focus--border-top-width": {
+                "__type": "variable",
+                "__name": "input--focus--border-top-width",
+                "__value": 0
+            },
+            "input--focus--border-top-style": {
+                "__type": "variable",
+                "__name": "input--focus--border-top-style",
+                "__value": "none"
+            },
             "input--focus--border-top-color": {
                 "__type": "variable",
                 "__name": "input--focus--border-top-color",
@@ -7266,6 +7356,16 @@
                     "__type": "reference",
                     "__name": "color-primary"
                 }
+            },
+            "input--focus--border-right-width": {
+                "__type": "variable",
+                "__name": "input--focus--border-right-width",
+                "__value": 0
+            },
+            "input--focus--border-right-style": {
+                "__type": "variable",
+                "__name": "input--focus--border-right-style",
+                "__value": "none"
             },
             "input--focus--border-right-color": {
                 "__type": "variable",
@@ -7275,6 +7375,16 @@
                     "__name": "color-primary"
                 }
             },
+            "input--focus--border-bottom-width": {
+                "__type": "variable",
+                "__name": "input--focus--border-bottom-width",
+                "__value": 0
+            },
+            "input--focus--border-bottom-style": {
+                "__type": "variable",
+                "__name": "input--focus--border-bottom-style",
+                "__value": "none"
+            },
             "input--focus--border-bottom-color": {
                 "__type": "variable",
                 "__name": "input--focus--border-bottom-color",
@@ -7282,6 +7392,16 @@
                     "__type": "reference",
                     "__name": "color-primary"
                 }
+            },
+            "input--focus--border-left-width": {
+                "__type": "variable",
+                "__name": "input--focus--border-left-width",
+                "__value": 0
+            },
+            "input--focus--border-left-style": {
+                "__type": "variable",
+                "__name": "input--focus--border-left-style",
+                "__value": "none"
             },
             "input--focus--border-left-color": {
                 "__type": "variable",
@@ -7651,6 +7771,16 @@
                     "__name": "spacing--lg"
                 }
             },
+            "input--light--border-top-width": {
+                "__type": "variable",
+                "__name": "input--light--border-top-width",
+                "__value": 0
+            },
+            "input--light--border-top-style": {
+                "__type": "variable",
+                "__name": "input--light--border-top-style",
+                "__value": "none"
+            },
             "input--light--border-top-color": {
                 "__type": "variable",
                 "__name": "input--light--border-top-color",
@@ -7658,6 +7788,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-50"
                 }
+            },
+            "input--light--border-right-width": {
+                "__type": "variable",
+                "__name": "input--light--border-right-width",
+                "__value": 0
+            },
+            "input--light--border-right-style": {
+                "__type": "variable",
+                "__name": "input--light--border-right-style",
+                "__value": "none"
             },
             "input--light--border-right-color": {
                 "__type": "variable",
@@ -7667,6 +7807,16 @@
                     "__name": "color-light--shade-50"
                 }
             },
+            "input--light--border-bottom-width": {
+                "__type": "variable",
+                "__name": "input--light--border-bottom-width",
+                "__value": 0
+            },
+            "input--light--border-bottom-style": {
+                "__type": "variable",
+                "__name": "input--light--border-bottom-style",
+                "__value": "none"
+            },
             "input--light--border-bottom-color": {
                 "__type": "variable",
                 "__name": "input--light--border-bottom-color",
@@ -7674,6 +7824,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-50"
                 }
+            },
+            "input--light--border-left-width": {
+                "__type": "variable",
+                "__name": "input--light--border-left-width",
+                "__value": 0
+            },
+            "input--light--border-left-style": {
+                "__type": "variable",
+                "__name": "input--light--border-left-style",
+                "__value": "none"
             },
             "input--light--border-left-color": {
                 "__type": "variable",
@@ -7699,6 +7859,16 @@
                     "__name": "contrast-text-color-light"
                 }
             },
+            "input--light--hover--border-top-width": {
+                "__type": "variable",
+                "__name": "input--light--hover--border-top-width",
+                "__value": 0
+            },
+            "input--light--hover--border-top-style": {
+                "__type": "variable",
+                "__name": "input--light--hover--border-top-style",
+                "__value": "none"
+            },
             "input--light--hover--border-top-color": {
                 "__type": "variable",
                 "__name": "input--light--hover--border-top-color",
@@ -7706,6 +7876,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-100"
                 }
+            },
+            "input--light--hover--border-right-width": {
+                "__type": "variable",
+                "__name": "input--light--hover--border-right-width",
+                "__value": 0
+            },
+            "input--light--hover--border-right-style": {
+                "__type": "variable",
+                "__name": "input--light--hover--border-right-style",
+                "__value": "none"
             },
             "input--light--hover--border-right-color": {
                 "__type": "variable",
@@ -7715,6 +7895,16 @@
                     "__name": "color-light--shade-100"
                 }
             },
+            "input--light--hover--border-bottom-width": {
+                "__type": "variable",
+                "__name": "input--light--hover--border-bottom-width",
+                "__value": 0
+            },
+            "input--light--hover--border-bottom-style": {
+                "__type": "variable",
+                "__name": "input--light--hover--border-bottom-style",
+                "__value": "none"
+            },
             "input--light--hover--border-bottom-color": {
                 "__type": "variable",
                 "__name": "input--light--hover--border-bottom-color",
@@ -7722,6 +7912,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-100"
                 }
+            },
+            "input--light--hover--border-left-width": {
+                "__type": "variable",
+                "__name": "input--light--hover--border-left-width",
+                "__value": 0
+            },
+            "input--light--hover--border-left-style": {
+                "__type": "variable",
+                "__name": "input--light--hover--border-left-style",
+                "__value": "none"
             },
             "input--light--hover--border-left-color": {
                 "__type": "variable",
@@ -7731,6 +7931,16 @@
                     "__name": "color-light--shade-100"
                 }
             },
+            "input--light--focus--border-top-width": {
+                "__type": "variable",
+                "__name": "input--light--focus--border-top-width",
+                "__value": 0
+            },
+            "input--light--focus--border-top-style": {
+                "__type": "variable",
+                "__name": "input--light--focus--border-top-style",
+                "__value": "none"
+            },
             "input--light--focus--border-top-color": {
                 "__type": "variable",
                 "__name": "input--light--focus--border-top-color",
@@ -7738,6 +7948,16 @@
                     "__type": "reference",
                     "__name": "color-primary"
                 }
+            },
+            "input--light--focus--border-right-width": {
+                "__type": "variable",
+                "__name": "input--light--focus--border-right-width",
+                "__value": 0
+            },
+            "input--light--focus--border-right-style": {
+                "__type": "variable",
+                "__name": "input--light--focus--border-right-style",
+                "__value": "none"
             },
             "input--light--focus--border-right-color": {
                 "__type": "variable",
@@ -7747,6 +7967,16 @@
                     "__name": "color-primary"
                 }
             },
+            "input--light--focus--border-bottom-width": {
+                "__type": "variable",
+                "__name": "input--light--focus--border-bottom-width",
+                "__value": 0
+            },
+            "input--light--focus--border-bottom-style": {
+                "__type": "variable",
+                "__name": "input--light--focus--border-bottom-style",
+                "__value": "none"
+            },
             "input--light--focus--border-bottom-color": {
                 "__type": "variable",
                 "__name": "input--light--focus--border-bottom-color",
@@ -7754,6 +7984,16 @@
                     "__type": "reference",
                     "__name": "color-primary"
                 }
+            },
+            "input--light--focus--border-left-width": {
+                "__type": "variable",
+                "__name": "input--light--focus--border-left-width",
+                "__value": 0
+            },
+            "input--light--focus--border-left-style": {
+                "__type": "variable",
+                "__name": "input--light--focus--border-left-style",
+                "__value": "none"
             },
             "input--light--focus--border-left-color": {
                 "__type": "variable",
@@ -7779,6 +8019,16 @@
                     "__name": "color-light--tint-50"
                 }
             },
+            "input--dark--border-top-width": {
+                "__type": "variable",
+                "__name": "input--dark--border-top-width",
+                "__value": 0
+            },
+            "input--dark--border-top-style": {
+                "__type": "variable",
+                "__name": "input--dark--border-top-style",
+                "__value": "none"
+            },
             "input--dark--border-top-color": {
                 "__type": "variable",
                 "__name": "input--dark--border-top-color",
@@ -7786,6 +8036,16 @@
                     "__type": "reference",
                     "__name": "color-dark--tint-50"
                 }
+            },
+            "input--dark--border-right-width": {
+                "__type": "variable",
+                "__name": "input--dark--border-right-width",
+                "__value": 0
+            },
+            "input--dark--border-right-style": {
+                "__type": "variable",
+                "__name": "input--dark--border-right-style",
+                "__value": "none"
             },
             "input--dark--border-right-color": {
                 "__type": "variable",
@@ -7795,6 +8055,16 @@
                     "__name": "color-dark--tint-50"
                 }
             },
+            "input--dark--border-bottom-width": {
+                "__type": "variable",
+                "__name": "input--dark--border-bottom-width",
+                "__value": 0
+            },
+            "input--dark--border-bottom-style": {
+                "__type": "variable",
+                "__name": "input--dark--border-bottom-style",
+                "__value": "none"
+            },
             "input--dark--border-bottom-color": {
                 "__type": "variable",
                 "__name": "input--dark--border-bottom-color",
@@ -7802,6 +8072,16 @@
                     "__type": "reference",
                     "__name": "color-dark--tint-50"
                 }
+            },
+            "input--dark--border-left-width": {
+                "__type": "variable",
+                "__name": "input--dark--border-left-width",
+                "__value": 0
+            },
+            "input--dark--border-left-style": {
+                "__type": "variable",
+                "__name": "input--dark--border-left-style",
+                "__value": "none"
             },
             "input--dark--border-left-color": {
                 "__type": "variable",
@@ -7827,6 +8107,16 @@
                     "__name": "contrast-text-color-light"
                 }
             },
+            "input--dark--hover--border-top-width": {
+                "__type": "variable",
+                "__name": "input--dark--hover--border-top-width",
+                "__value": 0
+            },
+            "input--dark--hover--border-top-style": {
+                "__type": "variable",
+                "__name": "input--dark--hover--border-top-style",
+                "__value": "none"
+            },
             "input--dark--hover--border-top-color": {
                 "__type": "variable",
                 "__name": "input--dark--hover--border-top-color",
@@ -7834,6 +8124,16 @@
                     "__type": "reference",
                     "__name": "color-dark--tint-100"
                 }
+            },
+            "input--dark--hover--border-right-width": {
+                "__type": "variable",
+                "__name": "input--dark--hover--border-right-width",
+                "__value": 0
+            },
+            "input--dark--hover--border-right-style": {
+                "__type": "variable",
+                "__name": "input--dark--hover--border-right-style",
+                "__value": "none"
             },
             "input--dark--hover--border-right-color": {
                 "__type": "variable",
@@ -7843,6 +8143,16 @@
                     "__name": "color-dark--tint-100"
                 }
             },
+            "input--dark--hover--border-bottom-width": {
+                "__type": "variable",
+                "__name": "input--dark--hover--border-bottom-width",
+                "__value": 0
+            },
+            "input--dark--hover--border-bottom-style": {
+                "__type": "variable",
+                "__name": "input--dark--hover--border-bottom-style",
+                "__value": "none"
+            },
             "input--dark--hover--border-bottom-color": {
                 "__type": "variable",
                 "__name": "input--dark--hover--border-bottom-color",
@@ -7850,6 +8160,16 @@
                     "__type": "reference",
                     "__name": "color-dark--tint-100"
                 }
+            },
+            "input--dark--hover--border-left-width": {
+                "__type": "variable",
+                "__name": "input--dark--hover--border-left-width",
+                "__value": 0
+            },
+            "input--dark--hover--border-left-style": {
+                "__type": "variable",
+                "__name": "input--dark--hover--border-left-style",
+                "__value": "none"
             },
             "input--dark--hover--border-left-color": {
                 "__type": "variable",
@@ -7859,6 +8179,16 @@
                     "__name": "color-dark--tint-100"
                 }
             },
+            "input--dark--focus--border-top-width": {
+                "__type": "variable",
+                "__name": "input--dark--focus--border-top-width",
+                "__value": 0
+            },
+            "input--dark--focus--border-top-style": {
+                "__type": "variable",
+                "__name": "input--dark--focus--border-top-style",
+                "__value": "none"
+            },
             "input--dark--focus--border-top-color": {
                 "__type": "variable",
                 "__name": "input--dark--focus--border-top-color",
@@ -7866,6 +8196,16 @@
                     "__type": "reference",
                     "__name": "color-primary"
                 }
+            },
+            "input--dark--focus--border-right-width": {
+                "__type": "variable",
+                "__name": "input--dark--focus--border-right-width",
+                "__value": 0
+            },
+            "input--dark--focus--border-right-style": {
+                "__type": "variable",
+                "__name": "input--dark--focus--border-right-style",
+                "__value": "none"
             },
             "input--dark--focus--border-right-color": {
                 "__type": "variable",
@@ -7875,6 +8215,16 @@
                     "__name": "color-primary"
                 }
             },
+            "input--dark--focus--border-bottom-width": {
+                "__type": "variable",
+                "__name": "input--dark--focus--border-bottom-width",
+                "__value": 0
+            },
+            "input--dark--focus--border-bottom-style": {
+                "__type": "variable",
+                "__name": "input--dark--focus--border-bottom-style",
+                "__value": "none"
+            },
             "input--dark--focus--border-bottom-color": {
                 "__type": "variable",
                 "__name": "input--dark--focus--border-bottom-color",
@@ -7882,6 +8232,16 @@
                     "__type": "reference",
                     "__name": "color-primary"
                 }
+            },
+            "input--dark--focus--border-left-width": {
+                "__type": "variable",
+                "__name": "input--dark--focus--border-left-width",
+                "__value": 0
+            },
+            "input--dark--focus--border-left-style": {
+                "__type": "variable",
+                "__name": "input--dark--focus--border-left-style",
+                "__value": "none"
             },
             "input--dark--focus--border-left-color": {
                 "__type": "variable",

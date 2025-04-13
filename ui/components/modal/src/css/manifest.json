@@ -6904,38 +6904,6 @@
                     "__name": "spacing--md"
                 }
             },
-            "modal--border-top-color": {
-                "__type": "variable",
-                "__name": "modal--border-top-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "modal--border-right-color": {
-                "__type": "variable",
-                "__name": "modal--border-right-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "modal--border-bottom-color": {
-                "__type": "variable",
-                "__name": "modal--border-bottom-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "modal--border-left-color": {
-                "__type": "variable",
-                "__name": "modal--border-left-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
             "modal--border-top-width": {
                 "__type": "variable",
                 "__name": "modal--border-top-width",
@@ -6950,6 +6918,14 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-style"
+                }
+            },
+            "modal--border-top-color": {
+                "__type": "variable",
+                "__name": "modal--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
                 }
             },
             "modal--border-right-width": {
@@ -6968,6 +6944,14 @@
                     "__name": "border-right-style"
                 }
             },
+            "modal--border-right-color": {
+                "__type": "variable",
+                "__name": "modal--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
+                }
+            },
             "modal--border-bottom-width": {
                 "__type": "variable",
                 "__name": "modal--border-bottom-width",
@@ -6984,6 +6968,14 @@
                     "__name": "border-bottom-style"
                 }
             },
+            "modal--border-bottom-color": {
+                "__type": "variable",
+                "__name": "modal--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
+                }
+            },
             "modal--border-left-width": {
                 "__type": "variable",
                 "__name": "modal--border-left-width",
@@ -6998,6 +6990,14 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "border-left-style"
+                }
+            },
+            "modal--border-left-color": {
+                "__type": "variable",
+                "__name": "modal--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
                 }
             },
             "modal--box-shadow-offset-x": {
@@ -7269,6 +7269,16 @@
                     ]
                 }
             },
+            "modal--light--border-top-width": {
+                "__type": "variable",
+                "__name": "modal--light--border-top-width",
+                "__value": 0
+            },
+            "modal--light--border-top-style": {
+                "__type": "variable",
+                "__name": "modal--light--border-top-style",
+                "__value": "none"
+            },
             "modal--light--border-top-color": {
                 "__type": "variable",
                 "__name": "modal--light--border-top-color",
@@ -7276,6 +7286,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-50"
                 }
+            },
+            "modal--light--border-right-width": {
+                "__type": "variable",
+                "__name": "modal--light--border-right-width",
+                "__value": 0
+            },
+            "modal--light--border-right-style": {
+                "__type": "variable",
+                "__name": "modal--light--border-right-style",
+                "__value": "none"
             },
             "modal--light--border-right-color": {
                 "__type": "variable",
@@ -7285,6 +7305,16 @@
                     "__name": "color-light--shade-50"
                 }
             },
+            "modal--light--border-bottom-width": {
+                "__type": "variable",
+                "__name": "modal--light--border-bottom-width",
+                "__value": 0
+            },
+            "modal--light--border-bottom-style": {
+                "__type": "variable",
+                "__name": "modal--light--border-bottom-style",
+                "__value": "none"
+            },
             "modal--light--border-bottom-color": {
                 "__type": "variable",
                 "__name": "modal--light--border-bottom-color",
@@ -7292,6 +7322,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-50"
                 }
+            },
+            "modal--light--border-left-width": {
+                "__type": "variable",
+                "__name": "modal--light--border-left-width",
+                "__value": 0
+            },
+            "modal--light--border-left-style": {
+                "__type": "variable",
+                "__name": "modal--light--border-left-style",
+                "__value": "none"
             },
             "modal--light--border-left-color": {
                 "__type": "variable",
@@ -7317,6 +7357,16 @@
                     "__name": "contrast-text-color-light"
                 }
             },
+            "modal--dark--border-top-width": {
+                "__type": "variable",
+                "__name": "modal--dark--border-top-width",
+                "__value": 0
+            },
+            "modal--dark--border-top-style": {
+                "__type": "variable",
+                "__name": "modal--dark--border-top-style",
+                "__value": "none"
+            },
             "modal--dark--border-top-color": {
                 "__type": "variable",
                 "__name": "modal--dark--border-top-color",
@@ -7324,6 +7374,16 @@
                     "__type": "reference",
                     "__name": "color-dark--tint-50"
                 }
+            },
+            "modal--dark--border-right-width": {
+                "__type": "variable",
+                "__name": "modal--dark--border-right-width",
+                "__value": 0
+            },
+            "modal--dark--border-right-style": {
+                "__type": "variable",
+                "__name": "modal--dark--border-right-style",
+                "__value": "none"
             },
             "modal--dark--border-right-color": {
                 "__type": "variable",
@@ -7333,6 +7393,16 @@
                     "__name": "color-dark--tint-50"
                 }
             },
+            "modal--dark--border-bottom-width": {
+                "__type": "variable",
+                "__name": "modal--dark--border-bottom-width",
+                "__value": 0
+            },
+            "modal--dark--border-bottom-style": {
+                "__type": "variable",
+                "__name": "modal--dark--border-bottom-style",
+                "__value": "none"
+            },
             "modal--dark--border-bottom-color": {
                 "__type": "variable",
                 "__name": "modal--dark--border-bottom-color",
@@ -7340,6 +7410,16 @@
                     "__type": "reference",
                     "__name": "color-dark--tint-50"
                 }
+            },
+            "modal--dark--border-left-width": {
+                "__type": "variable",
+                "__name": "modal--dark--border-left-width",
+                "__value": 0
+            },
+            "modal--dark--border-left-style": {
+                "__type": "variable",
+                "__name": "modal--dark--border-left-style",
+                "__value": "none"
             },
             "modal--dark--border-left-color": {
                 "__type": "variable",
@@ -7365,6 +7445,16 @@
                     "__name": "contrast-text-color-dark"
                 }
             },
+            "modal--primary--border-top-width": {
+                "__type": "variable",
+                "__name": "modal--primary--border-top-width",
+                "__value": 0
+            },
+            "modal--primary--border-top-style": {
+                "__type": "variable",
+                "__name": "modal--primary--border-top-style",
+                "__value": "none"
+            },
             "modal--primary--border-top-color": {
                 "__type": "variable",
                 "__name": "modal--primary--border-top-color",
@@ -7372,6 +7462,16 @@
                     "__type": "reference",
                     "__name": "color-primary--shade-50"
                 }
+            },
+            "modal--primary--border-right-width": {
+                "__type": "variable",
+                "__name": "modal--primary--border-right-width",
+                "__value": 0
+            },
+            "modal--primary--border-right-style": {
+                "__type": "variable",
+                "__name": "modal--primary--border-right-style",
+                "__value": "none"
             },
             "modal--primary--border-right-color": {
                 "__type": "variable",
@@ -7381,6 +7481,16 @@
                     "__name": "color-primary--shade-50"
                 }
             },
+            "modal--primary--border-bottom-width": {
+                "__type": "variable",
+                "__name": "modal--primary--border-bottom-width",
+                "__value": 0
+            },
+            "modal--primary--border-bottom-style": {
+                "__type": "variable",
+                "__name": "modal--primary--border-bottom-style",
+                "__value": "none"
+            },
             "modal--primary--border-bottom-color": {
                 "__type": "variable",
                 "__name": "modal--primary--border-bottom-color",
@@ -7388,6 +7498,16 @@
                     "__type": "reference",
                     "__name": "color-primary--shade-50"
                 }
+            },
+            "modal--primary--border-left-width": {
+                "__type": "variable",
+                "__name": "modal--primary--border-left-width",
+                "__value": 0
+            },
+            "modal--primary--border-left-style": {
+                "__type": "variable",
+                "__name": "modal--primary--border-left-style",
+                "__value": "none"
             },
             "modal--primary--border-left-color": {
                 "__type": "variable",
@@ -7413,6 +7533,16 @@
                     "__name": "contrast-text-color-primary"
                 }
             },
+            "modal--secondary--border-top-width": {
+                "__type": "variable",
+                "__name": "modal--secondary--border-top-width",
+                "__value": 0
+            },
+            "modal--secondary--border-top-style": {
+                "__type": "variable",
+                "__name": "modal--secondary--border-top-style",
+                "__value": "none"
+            },
             "modal--secondary--border-top-color": {
                 "__type": "variable",
                 "__name": "modal--secondary--border-top-color",
@@ -7420,6 +7550,16 @@
                     "__type": "reference",
                     "__name": "color-secondary--shade-50"
                 }
+            },
+            "modal--secondary--border-right-width": {
+                "__type": "variable",
+                "__name": "modal--secondary--border-right-width",
+                "__value": 0
+            },
+            "modal--secondary--border-right-style": {
+                "__type": "variable",
+                "__name": "modal--secondary--border-right-style",
+                "__value": "none"
             },
             "modal--secondary--border-right-color": {
                 "__type": "variable",
@@ -7429,6 +7569,16 @@
                     "__name": "color-secondary--shade-50"
                 }
             },
+            "modal--secondary--border-bottom-width": {
+                "__type": "variable",
+                "__name": "modal--secondary--border-bottom-width",
+                "__value": 0
+            },
+            "modal--secondary--border-bottom-style": {
+                "__type": "variable",
+                "__name": "modal--secondary--border-bottom-style",
+                "__value": "none"
+            },
             "modal--secondary--border-bottom-color": {
                 "__type": "variable",
                 "__name": "modal--secondary--border-bottom-color",
@@ -7436,6 +7586,16 @@
                     "__type": "reference",
                     "__name": "color-secondary--shade-50"
                 }
+            },
+            "modal--secondary--border-left-width": {
+                "__type": "variable",
+                "__name": "modal--secondary--border-left-width",
+                "__value": 0
+            },
+            "modal--secondary--border-left-style": {
+                "__type": "variable",
+                "__name": "modal--secondary--border-left-style",
+                "__value": "none"
             },
             "modal--secondary--border-left-color": {
                 "__type": "variable",
@@ -7461,6 +7621,16 @@
                     "__name": "contrast-text-color-secondary"
                 }
             },
+            "modal--success--border-top-width": {
+                "__type": "variable",
+                "__name": "modal--success--border-top-width",
+                "__value": 0
+            },
+            "modal--success--border-top-style": {
+                "__type": "variable",
+                "__name": "modal--success--border-top-style",
+                "__value": "none"
+            },
             "modal--success--border-top-color": {
                 "__type": "variable",
                 "__name": "modal--success--border-top-color",
@@ -7468,6 +7638,16 @@
                     "__type": "reference",
                     "__name": "color-success--shade-50"
                 }
+            },
+            "modal--success--border-right-width": {
+                "__type": "variable",
+                "__name": "modal--success--border-right-width",
+                "__value": 0
+            },
+            "modal--success--border-right-style": {
+                "__type": "variable",
+                "__name": "modal--success--border-right-style",
+                "__value": "none"
             },
             "modal--success--border-right-color": {
                 "__type": "variable",
@@ -7477,6 +7657,16 @@
                     "__name": "color-success--shade-50"
                 }
             },
+            "modal--success--border-bottom-width": {
+                "__type": "variable",
+                "__name": "modal--success--border-bottom-width",
+                "__value": 0
+            },
+            "modal--success--border-bottom-style": {
+                "__type": "variable",
+                "__name": "modal--success--border-bottom-style",
+                "__value": "none"
+            },
             "modal--success--border-bottom-color": {
                 "__type": "variable",
                 "__name": "modal--success--border-bottom-color",
@@ -7484,6 +7674,16 @@
                     "__type": "reference",
                     "__name": "color-success--shade-50"
                 }
+            },
+            "modal--success--border-left-width": {
+                "__type": "variable",
+                "__name": "modal--success--border-left-width",
+                "__value": 0
+            },
+            "modal--success--border-left-style": {
+                "__type": "variable",
+                "__name": "modal--success--border-left-style",
+                "__value": "none"
             },
             "modal--success--border-left-color": {
                 "__type": "variable",
@@ -7509,6 +7709,16 @@
                     "__name": "contrast-text-color-success"
                 }
             },
+            "modal--danger--border-top-width": {
+                "__type": "variable",
+                "__name": "modal--danger--border-top-width",
+                "__value": 0
+            },
+            "modal--danger--border-top-style": {
+                "__type": "variable",
+                "__name": "modal--danger--border-top-style",
+                "__value": "none"
+            },
             "modal--danger--border-top-color": {
                 "__type": "variable",
                 "__name": "modal--danger--border-top-color",
@@ -7516,6 +7726,16 @@
                     "__type": "reference",
                     "__name": "color-danger--shade-50"
                 }
+            },
+            "modal--danger--border-right-width": {
+                "__type": "variable",
+                "__name": "modal--danger--border-right-width",
+                "__value": 0
+            },
+            "modal--danger--border-right-style": {
+                "__type": "variable",
+                "__name": "modal--danger--border-right-style",
+                "__value": "none"
             },
             "modal--danger--border-right-color": {
                 "__type": "variable",
@@ -7525,6 +7745,16 @@
                     "__name": "color-danger--shade-50"
                 }
             },
+            "modal--danger--border-bottom-width": {
+                "__type": "variable",
+                "__name": "modal--danger--border-bottom-width",
+                "__value": 0
+            },
+            "modal--danger--border-bottom-style": {
+                "__type": "variable",
+                "__name": "modal--danger--border-bottom-style",
+                "__value": "none"
+            },
             "modal--danger--border-bottom-color": {
                 "__type": "variable",
                 "__name": "modal--danger--border-bottom-color",
@@ -7532,6 +7762,16 @@
                     "__type": "reference",
                     "__name": "color-danger--shade-50"
                 }
+            },
+            "modal--danger--border-left-width": {
+                "__type": "variable",
+                "__name": "modal--danger--border-left-width",
+                "__value": 0
+            },
+            "modal--danger--border-left-style": {
+                "__type": "variable",
+                "__name": "modal--danger--border-left-style",
+                "__value": "none"
             },
             "modal--danger--border-left-color": {
                 "__type": "variable",
@@ -7557,6 +7797,16 @@
                     "__name": "contrast-text-color-danger"
                 }
             },
+            "modal--warning--border-top-width": {
+                "__type": "variable",
+                "__name": "modal--warning--border-top-width",
+                "__value": 0
+            },
+            "modal--warning--border-top-style": {
+                "__type": "variable",
+                "__name": "modal--warning--border-top-style",
+                "__value": "none"
+            },
             "modal--warning--border-top-color": {
                 "__type": "variable",
                 "__name": "modal--warning--border-top-color",
@@ -7564,6 +7814,16 @@
                     "__type": "reference",
                     "__name": "color-warning--shade-50"
                 }
+            },
+            "modal--warning--border-right-width": {
+                "__type": "variable",
+                "__name": "modal--warning--border-right-width",
+                "__value": 0
+            },
+            "modal--warning--border-right-style": {
+                "__type": "variable",
+                "__name": "modal--warning--border-right-style",
+                "__value": "none"
             },
             "modal--warning--border-right-color": {
                 "__type": "variable",
@@ -7573,6 +7833,16 @@
                     "__name": "color-warning--shade-50"
                 }
             },
+            "modal--warning--border-bottom-width": {
+                "__type": "variable",
+                "__name": "modal--warning--border-bottom-width",
+                "__value": 0
+            },
+            "modal--warning--border-bottom-style": {
+                "__type": "variable",
+                "__name": "modal--warning--border-bottom-style",
+                "__value": "none"
+            },
             "modal--warning--border-bottom-color": {
                 "__type": "variable",
                 "__name": "modal--warning--border-bottom-color",
@@ -7580,6 +7850,16 @@
                     "__type": "reference",
                     "__name": "color-warning--shade-50"
                 }
+            },
+            "modal--warning--border-left-width": {
+                "__type": "variable",
+                "__name": "modal--warning--border-left-width",
+                "__value": 0
+            },
+            "modal--warning--border-left-style": {
+                "__type": "variable",
+                "__name": "modal--warning--border-left-style",
+                "__value": "none"
             },
             "modal--warning--border-left-color": {
                 "__type": "variable",
@@ -7605,6 +7885,16 @@
                     "__name": "contrast-text-color-warning"
                 }
             },
+            "modal--info--border-top-width": {
+                "__type": "variable",
+                "__name": "modal--info--border-top-width",
+                "__value": 0
+            },
+            "modal--info--border-top-style": {
+                "__type": "variable",
+                "__name": "modal--info--border-top-style",
+                "__value": "none"
+            },
             "modal--info--border-top-color": {
                 "__type": "variable",
                 "__name": "modal--info--border-top-color",
@@ -7612,6 +7902,16 @@
                     "__type": "reference",
                     "__name": "color-info--shade-50"
                 }
+            },
+            "modal--info--border-right-width": {
+                "__type": "variable",
+                "__name": "modal--info--border-right-width",
+                "__value": 0
+            },
+            "modal--info--border-right-style": {
+                "__type": "variable",
+                "__name": "modal--info--border-right-style",
+                "__value": "none"
             },
             "modal--info--border-right-color": {
                 "__type": "variable",
@@ -7621,6 +7921,16 @@
                     "__name": "color-info--shade-50"
                 }
             },
+            "modal--info--border-bottom-width": {
+                "__type": "variable",
+                "__name": "modal--info--border-bottom-width",
+                "__value": 0
+            },
+            "modal--info--border-bottom-style": {
+                "__type": "variable",
+                "__name": "modal--info--border-bottom-style",
+                "__value": "none"
+            },
             "modal--info--border-bottom-color": {
                 "__type": "variable",
                 "__name": "modal--info--border-bottom-color",
@@ -7628,6 +7938,16 @@
                     "__type": "reference",
                     "__name": "color-info--shade-50"
                 }
+            },
+            "modal--info--border-left-width": {
+                "__type": "variable",
+                "__name": "modal--info--border-left-width",
+                "__value": 0
+            },
+            "modal--info--border-left-style": {
+                "__type": "variable",
+                "__name": "modal--info--border-left-style",
+                "__value": "none"
             },
             "modal--info--border-left-color": {
                 "__type": "variable",

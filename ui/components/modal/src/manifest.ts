@@ -378,13 +378,37 @@ export const manifest: ComponentManifest[] = [
                     value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
+                    name: '--modal--{color}--border-top-width'
+                },
+                {
+                    name: '--modal--{color}--border-top-style'
+                },
+                {
                     name: '--modal--{color}--border-top-color'
+                },
+                {
+                    name: '--modal--{color}--border-right-width'
+                },
+                {
+                    name: '--modal--{color}--border-right-style'
                 },
                 {
                     name: '--modal--{color}--border-right-color'
                 },
                 {
+                    name: '--modal--{color}--border-bottom-width'
+                },
+                {
+                    name: '--modal--{color}--border-bottom-style'
+                },
+                {
                     name: '--modal--{color}--border-bottom-color'
+                },
+                {
+                    name: '--modal--{color}--border-left-width'
+                },
+                {
+                    name: '--modal--{color}--border-left-style'
                 },
                 {
                     name: '--modal--{color}--border-left-color'

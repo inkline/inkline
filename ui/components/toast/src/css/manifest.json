@@ -6997,38 +6997,6 @@
                 "__name": "toast--animation-timing-function",
                 "__value": "linear"
             },
-            "toast--border-top-color": {
-                "__type": "variable",
-                "__name": "toast--border-top-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "toast--border-right-color": {
-                "__type": "variable",
-                "__name": "toast--border-right-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "toast--border-bottom-color": {
-                "__type": "variable",
-                "__name": "toast--border-bottom-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "toast--border-left-color": {
-                "__type": "variable",
-                "__name": "toast--border-left-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
             "toast--border-top-width": {
                 "__type": "variable",
                 "__name": "toast--border-top-width",
@@ -7043,6 +7011,14 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-style"
+                }
+            },
+            "toast--border-top-color": {
+                "__type": "variable",
+                "__name": "toast--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
                 }
             },
             "toast--border-right-width": {
@@ -7061,6 +7037,14 @@
                     "__name": "border-right-style"
                 }
             },
+            "toast--border-right-color": {
+                "__type": "variable",
+                "__name": "toast--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
+                }
+            },
             "toast--border-bottom-width": {
                 "__type": "variable",
                 "__name": "toast--border-bottom-width",
@@ -7077,6 +7061,14 @@
                     "__name": "border-bottom-style"
                 }
             },
+            "toast--border-bottom-color": {
+                "__type": "variable",
+                "__name": "toast--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
+                }
+            },
             "toast--border-left-width": {
                 "__type": "variable",
                 "__name": "toast--border-left-width",
@@ -7091,6 +7083,14 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "border-left-style"
+                }
+            },
+            "toast--border-left-color": {
+                "__type": "variable",
+                "__name": "toast--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
                 }
             },
             "toast--box-shadow-offset-x": {
@@ -7584,6 +7584,16 @@
                     ]
                 }
             },
+            "toast--light--border-top-width": {
+                "__type": "variable",
+                "__name": "toast--light--border-top-width",
+                "__value": 0
+            },
+            "toast--light--border-top-style": {
+                "__type": "variable",
+                "__name": "toast--light--border-top-style",
+                "__value": "none"
+            },
             "toast--light--border-top-color": {
                 "__type": "variable",
                 "__name": "toast--light--border-top-color",
@@ -7591,6 +7601,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-50"
                 }
+            },
+            "toast--light--border-right-width": {
+                "__type": "variable",
+                "__name": "toast--light--border-right-width",
+                "__value": 0
+            },
+            "toast--light--border-right-style": {
+                "__type": "variable",
+                "__name": "toast--light--border-right-style",
+                "__value": "none"
             },
             "toast--light--border-right-color": {
                 "__type": "variable",
@@ -7600,6 +7620,16 @@
                     "__name": "color-light--shade-50"
                 }
             },
+            "toast--light--border-bottom-width": {
+                "__type": "variable",
+                "__name": "toast--light--border-bottom-width",
+                "__value": 0
+            },
+            "toast--light--border-bottom-style": {
+                "__type": "variable",
+                "__name": "toast--light--border-bottom-style",
+                "__value": "none"
+            },
             "toast--light--border-bottom-color": {
                 "__type": "variable",
                 "__name": "toast--light--border-bottom-color",
@@ -7607,6 +7637,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-50"
                 }
+            },
+            "toast--light--border-left-width": {
+                "__type": "variable",
+                "__name": "toast--light--border-left-width",
+                "__value": 0
+            },
+            "toast--light--border-left-style": {
+                "__type": "variable",
+                "__name": "toast--light--border-left-style",
+                "__value": "none"
             },
             "toast--light--border-left-color": {
                 "__type": "variable",
@@ -7671,6 +7711,16 @@
                     ]
                 }
             },
+            "toast--dark--border-top-width": {
+                "__type": "variable",
+                "__name": "toast--dark--border-top-width",
+                "__value": 0
+            },
+            "toast--dark--border-top-style": {
+                "__type": "variable",
+                "__name": "toast--dark--border-top-style",
+                "__value": "none"
+            },
             "toast--dark--border-top-color": {
                 "__type": "variable",
                 "__name": "toast--dark--border-top-color",
@@ -7678,6 +7728,16 @@
                     "__type": "reference",
                     "__name": "color-dark--tint-50"
                 }
+            },
+            "toast--dark--border-right-width": {
+                "__type": "variable",
+                "__name": "toast--dark--border-right-width",
+                "__value": 0
+            },
+            "toast--dark--border-right-style": {
+                "__type": "variable",
+                "__name": "toast--dark--border-right-style",
+                "__value": "none"
             },
             "toast--dark--border-right-color": {
                 "__type": "variable",
@@ -7687,6 +7747,16 @@
                     "__name": "color-dark--tint-50"
                 }
             },
+            "toast--dark--border-bottom-width": {
+                "__type": "variable",
+                "__name": "toast--dark--border-bottom-width",
+                "__value": 0
+            },
+            "toast--dark--border-bottom-style": {
+                "__type": "variable",
+                "__name": "toast--dark--border-bottom-style",
+                "__value": "none"
+            },
             "toast--dark--border-bottom-color": {
                 "__type": "variable",
                 "__name": "toast--dark--border-bottom-color",
@@ -7694,6 +7764,16 @@
                     "__type": "reference",
                     "__name": "color-dark--tint-50"
                 }
+            },
+            "toast--dark--border-left-width": {
+                "__type": "variable",
+                "__name": "toast--dark--border-left-width",
+                "__value": 0
+            },
+            "toast--dark--border-left-style": {
+                "__type": "variable",
+                "__name": "toast--dark--border-left-style",
+                "__value": "none"
             },
             "toast--dark--border-left-color": {
                 "__type": "variable",
@@ -7758,6 +7838,16 @@
                     ]
                 }
             },
+            "toast--primary--border-top-width": {
+                "__type": "variable",
+                "__name": "toast--primary--border-top-width",
+                "__value": 0
+            },
+            "toast--primary--border-top-style": {
+                "__type": "variable",
+                "__name": "toast--primary--border-top-style",
+                "__value": "none"
+            },
             "toast--primary--border-top-color": {
                 "__type": "variable",
                 "__name": "toast--primary--border-top-color",
@@ -7765,6 +7855,16 @@
                     "__type": "reference",
                     "__name": "color-primary--shade-50"
                 }
+            },
+            "toast--primary--border-right-width": {
+                "__type": "variable",
+                "__name": "toast--primary--border-right-width",
+                "__value": 0
+            },
+            "toast--primary--border-right-style": {
+                "__type": "variable",
+                "__name": "toast--primary--border-right-style",
+                "__value": "none"
             },
             "toast--primary--border-right-color": {
                 "__type": "variable",
@@ -7774,6 +7874,16 @@
                     "__name": "color-primary--shade-50"
                 }
             },
+            "toast--primary--border-bottom-width": {
+                "__type": "variable",
+                "__name": "toast--primary--border-bottom-width",
+                "__value": 0
+            },
+            "toast--primary--border-bottom-style": {
+                "__type": "variable",
+                "__name": "toast--primary--border-bottom-style",
+                "__value": "none"
+            },
             "toast--primary--border-bottom-color": {
                 "__type": "variable",
                 "__name": "toast--primary--border-bottom-color",
@@ -7781,6 +7891,16 @@
                     "__type": "reference",
                     "__name": "color-primary--shade-50"
                 }
+            },
+            "toast--primary--border-left-width": {
+                "__type": "variable",
+                "__name": "toast--primary--border-left-width",
+                "__value": 0
+            },
+            "toast--primary--border-left-style": {
+                "__type": "variable",
+                "__name": "toast--primary--border-left-style",
+                "__value": "none"
             },
             "toast--primary--border-left-color": {
                 "__type": "variable",
@@ -7845,6 +7965,16 @@
                     ]
                 }
             },
+            "toast--secondary--border-top-width": {
+                "__type": "variable",
+                "__name": "toast--secondary--border-top-width",
+                "__value": 0
+            },
+            "toast--secondary--border-top-style": {
+                "__type": "variable",
+                "__name": "toast--secondary--border-top-style",
+                "__value": "none"
+            },
             "toast--secondary--border-top-color": {
                 "__type": "variable",
                 "__name": "toast--secondary--border-top-color",
@@ -7852,6 +7982,16 @@
                     "__type": "reference",
                     "__name": "color-secondary--shade-50"
                 }
+            },
+            "toast--secondary--border-right-width": {
+                "__type": "variable",
+                "__name": "toast--secondary--border-right-width",
+                "__value": 0
+            },
+            "toast--secondary--border-right-style": {
+                "__type": "variable",
+                "__name": "toast--secondary--border-right-style",
+                "__value": "none"
             },
             "toast--secondary--border-right-color": {
                 "__type": "variable",
@@ -7861,6 +8001,16 @@
                     "__name": "color-secondary--shade-50"
                 }
             },
+            "toast--secondary--border-bottom-width": {
+                "__type": "variable",
+                "__name": "toast--secondary--border-bottom-width",
+                "__value": 0
+            },
+            "toast--secondary--border-bottom-style": {
+                "__type": "variable",
+                "__name": "toast--secondary--border-bottom-style",
+                "__value": "none"
+            },
             "toast--secondary--border-bottom-color": {
                 "__type": "variable",
                 "__name": "toast--secondary--border-bottom-color",
@@ -7868,6 +8018,16 @@
                     "__type": "reference",
                     "__name": "color-secondary--shade-50"
                 }
+            },
+            "toast--secondary--border-left-width": {
+                "__type": "variable",
+                "__name": "toast--secondary--border-left-width",
+                "__value": 0
+            },
+            "toast--secondary--border-left-style": {
+                "__type": "variable",
+                "__name": "toast--secondary--border-left-style",
+                "__value": "none"
             },
             "toast--secondary--border-left-color": {
                 "__type": "variable",
@@ -7932,6 +8092,16 @@
                     ]
                 }
             },
+            "toast--success--border-top-width": {
+                "__type": "variable",
+                "__name": "toast--success--border-top-width",
+                "__value": 0
+            },
+            "toast--success--border-top-style": {
+                "__type": "variable",
+                "__name": "toast--success--border-top-style",
+                "__value": "none"
+            },
             "toast--success--border-top-color": {
                 "__type": "variable",
                 "__name": "toast--success--border-top-color",
@@ -7939,6 +8109,16 @@
                     "__type": "reference",
                     "__name": "color-success--shade-50"
                 }
+            },
+            "toast--success--border-right-width": {
+                "__type": "variable",
+                "__name": "toast--success--border-right-width",
+                "__value": 0
+            },
+            "toast--success--border-right-style": {
+                "__type": "variable",
+                "__name": "toast--success--border-right-style",
+                "__value": "none"
             },
             "toast--success--border-right-color": {
                 "__type": "variable",
@@ -7948,6 +8128,16 @@
                     "__name": "color-success--shade-50"
                 }
             },
+            "toast--success--border-bottom-width": {
+                "__type": "variable",
+                "__name": "toast--success--border-bottom-width",
+                "__value": 0
+            },
+            "toast--success--border-bottom-style": {
+                "__type": "variable",
+                "__name": "toast--success--border-bottom-style",
+                "__value": "none"
+            },
             "toast--success--border-bottom-color": {
                 "__type": "variable",
                 "__name": "toast--success--border-bottom-color",
@@ -7955,6 +8145,16 @@
                     "__type": "reference",
                     "__name": "color-success--shade-50"
                 }
+            },
+            "toast--success--border-left-width": {
+                "__type": "variable",
+                "__name": "toast--success--border-left-width",
+                "__value": 0
+            },
+            "toast--success--border-left-style": {
+                "__type": "variable",
+                "__name": "toast--success--border-left-style",
+                "__value": "none"
             },
             "toast--success--border-left-color": {
                 "__type": "variable",
@@ -8019,6 +8219,16 @@
                     ]
                 }
             },
+            "toast--danger--border-top-width": {
+                "__type": "variable",
+                "__name": "toast--danger--border-top-width",
+                "__value": 0
+            },
+            "toast--danger--border-top-style": {
+                "__type": "variable",
+                "__name": "toast--danger--border-top-style",
+                "__value": "none"
+            },
             "toast--danger--border-top-color": {
                 "__type": "variable",
                 "__name": "toast--danger--border-top-color",
@@ -8026,6 +8236,16 @@
                     "__type": "reference",
                     "__name": "color-danger--shade-50"
                 }
+            },
+            "toast--danger--border-right-width": {
+                "__type": "variable",
+                "__name": "toast--danger--border-right-width",
+                "__value": 0
+            },
+            "toast--danger--border-right-style": {
+                "__type": "variable",
+                "__name": "toast--danger--border-right-style",
+                "__value": "none"
             },
             "toast--danger--border-right-color": {
                 "__type": "variable",
@@ -8035,6 +8255,16 @@
                     "__name": "color-danger--shade-50"
                 }
             },
+            "toast--danger--border-bottom-width": {
+                "__type": "variable",
+                "__name": "toast--danger--border-bottom-width",
+                "__value": 0
+            },
+            "toast--danger--border-bottom-style": {
+                "__type": "variable",
+                "__name": "toast--danger--border-bottom-style",
+                "__value": "none"
+            },
             "toast--danger--border-bottom-color": {
                 "__type": "variable",
                 "__name": "toast--danger--border-bottom-color",
@@ -8042,6 +8272,16 @@
                     "__type": "reference",
                     "__name": "color-danger--shade-50"
                 }
+            },
+            "toast--danger--border-left-width": {
+                "__type": "variable",
+                "__name": "toast--danger--border-left-width",
+                "__value": 0
+            },
+            "toast--danger--border-left-style": {
+                "__type": "variable",
+                "__name": "toast--danger--border-left-style",
+                "__value": "none"
             },
             "toast--danger--border-left-color": {
                 "__type": "variable",
@@ -8106,6 +8346,16 @@
                     ]
                 }
             },
+            "toast--warning--border-top-width": {
+                "__type": "variable",
+                "__name": "toast--warning--border-top-width",
+                "__value": 0
+            },
+            "toast--warning--border-top-style": {
+                "__type": "variable",
+                "__name": "toast--warning--border-top-style",
+                "__value": "none"
+            },
             "toast--warning--border-top-color": {
                 "__type": "variable",
                 "__name": "toast--warning--border-top-color",
@@ -8113,6 +8363,16 @@
                     "__type": "reference",
                     "__name": "color-warning--shade-50"
                 }
+            },
+            "toast--warning--border-right-width": {
+                "__type": "variable",
+                "__name": "toast--warning--border-right-width",
+                "__value": 0
+            },
+            "toast--warning--border-right-style": {
+                "__type": "variable",
+                "__name": "toast--warning--border-right-style",
+                "__value": "none"
             },
             "toast--warning--border-right-color": {
                 "__type": "variable",
@@ -8122,6 +8382,16 @@
                     "__name": "color-warning--shade-50"
                 }
             },
+            "toast--warning--border-bottom-width": {
+                "__type": "variable",
+                "__name": "toast--warning--border-bottom-width",
+                "__value": 0
+            },
+            "toast--warning--border-bottom-style": {
+                "__type": "variable",
+                "__name": "toast--warning--border-bottom-style",
+                "__value": "none"
+            },
             "toast--warning--border-bottom-color": {
                 "__type": "variable",
                 "__name": "toast--warning--border-bottom-color",
@@ -8129,6 +8399,16 @@
                     "__type": "reference",
                     "__name": "color-warning--shade-50"
                 }
+            },
+            "toast--warning--border-left-width": {
+                "__type": "variable",
+                "__name": "toast--warning--border-left-width",
+                "__value": 0
+            },
+            "toast--warning--border-left-style": {
+                "__type": "variable",
+                "__name": "toast--warning--border-left-style",
+                "__value": "none"
             },
             "toast--warning--border-left-color": {
                 "__type": "variable",
@@ -8193,6 +8473,16 @@
                     ]
                 }
             },
+            "toast--info--border-top-width": {
+                "__type": "variable",
+                "__name": "toast--info--border-top-width",
+                "__value": 0
+            },
+            "toast--info--border-top-style": {
+                "__type": "variable",
+                "__name": "toast--info--border-top-style",
+                "__value": "none"
+            },
             "toast--info--border-top-color": {
                 "__type": "variable",
                 "__name": "toast--info--border-top-color",
@@ -8200,6 +8490,16 @@
                     "__type": "reference",
                     "__name": "color-info--shade-50"
                 }
+            },
+            "toast--info--border-right-width": {
+                "__type": "variable",
+                "__name": "toast--info--border-right-width",
+                "__value": 0
+            },
+            "toast--info--border-right-style": {
+                "__type": "variable",
+                "__name": "toast--info--border-right-style",
+                "__value": "none"
             },
             "toast--info--border-right-color": {
                 "__type": "variable",
@@ -8209,6 +8509,16 @@
                     "__name": "color-info--shade-50"
                 }
             },
+            "toast--info--border-bottom-width": {
+                "__type": "variable",
+                "__name": "toast--info--border-bottom-width",
+                "__value": 0
+            },
+            "toast--info--border-bottom-style": {
+                "__type": "variable",
+                "__name": "toast--info--border-bottom-style",
+                "__value": "none"
+            },
             "toast--info--border-bottom-color": {
                 "__type": "variable",
                 "__name": "toast--info--border-bottom-color",
@@ -8216,6 +8526,16 @@
                     "__type": "reference",
                     "__name": "color-info--shade-50"
                 }
+            },
+            "toast--info--border-left-width": {
+                "__type": "variable",
+                "__name": "toast--info--border-left-width",
+                "__value": 0
+            },
+            "toast--info--border-left-style": {
+                "__type": "variable",
+                "__name": "toast--info--border-left-style",
+                "__value": "none"
             },
             "toast--info--border-left-color": {
                 "__type": "variable",

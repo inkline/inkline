@@ -401,13 +401,37 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--drawer--icon--margin-top) var(--drawer--icon--margin-right) var(--drawer--icon--margin-bottom) var(--drawer--icon--margin-left)'
                 },
                 {
+                    name: '--drawer--{color}--border-top-width'
+                },
+                {
+                    name: '--drawer--{color}--border-top-style'
+                },
+                {
                     name: '--drawer--{color}--border-top-color'
+                },
+                {
+                    name: '--drawer--{color}--border-right-width'
+                },
+                {
+                    name: '--drawer--{color}--border-right-style'
                 },
                 {
                     name: '--drawer--{color}--border-right-color'
                 },
                 {
+                    name: '--drawer--{color}--border-bottom-width'
+                },
+                {
+                    name: '--drawer--{color}--border-bottom-style'
+                },
+                {
                     name: '--drawer--{color}--border-bottom-color'
+                },
+                {
+                    name: '--drawer--{color}--border-left-width'
+                },
+                {
+                    name: '--drawer--{color}--border-left-style'
                 },
                 {
                     name: '--drawer--{color}--border-left-color'

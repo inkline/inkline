@@ -21,6 +21,12 @@ export const manifest: ComponentManifest[] = [
                 type: 'string | string[] | VariantProps',
                 description: 'The variants applied to the component',
                 default: ''
+            },
+            {
+                name: 'hover:variant',
+                type: 'string | string[] | VariantProps',
+                description: 'The variants applied to the component on hover',
+                default: ''
             }
         ],
         events: [],

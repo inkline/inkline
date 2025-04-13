@@ -1,6 +1,7 @@
 import { TokenType, Utility, DefinitionOptions } from '../types';
 import { nanoid } from 'nanoid';
 import { addUtilityToTheme, removeSelectorFromTheme } from '../side-effects';
+import { isUtilityDefined } from '../utils';
 
 /**
  * Creates a utility token.
@@ -15,7 +16,6 @@ export function utility(
     options: DefinitionOptions
 ): Utility {
     const instance: Utility = {
-        __id: nanoid(),
         __type: TokenType.Utility,
         __name: name,
         __value: value

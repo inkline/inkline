@@ -27,3 +27,5 @@ export type GeneratorOptions = {
 export interface Generator<T> {
     (configuration: Configuration<T>): OutputFile[];
 }
+
+export type RenameFn = (name: string) => string;

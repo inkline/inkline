@@ -38,6 +38,9 @@
             "@inkline/generator": [
                 "../engine/generator/src/index.ts"
             ],
+            "@inkline/variants": [
+                "../engine/variants/src/index.ts"
+            ],
 
             // Plugin
 

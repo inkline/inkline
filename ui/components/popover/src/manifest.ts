@@ -319,13 +319,37 @@ export const manifest: ComponentManifest[] = [
                     value: 'calc(var(--spacing--md) * 18)'
                 },
                 {
+                    name: '--popover--{color}--border-top-width'
+                },
+                {
+                    name: '--popover--{color}--border-top-style'
+                },
+                {
                     name: '--popover--{color}--border-top-color'
+                },
+                {
+                    name: '--popover--{color}--border-right-width'
+                },
+                {
+                    name: '--popover--{color}--border-right-style'
                 },
                 {
                     name: '--popover--{color}--border-right-color'
                 },
                 {
+                    name: '--popover--{color}--border-bottom-width'
+                },
+                {
+                    name: '--popover--{color}--border-bottom-style'
+                },
+                {
                     name: '--popover--{color}--border-bottom-color'
+                },
+                {
+                    name: '--popover--{color}--border-left-width'
+                },
+                {
+                    name: '--popover--{color}--border-left-style'
                 },
                 {
                     name: '--popover--{color}--border-left-color'

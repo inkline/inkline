@@ -114,7 +114,8 @@ export function useButtonThemeVariants(userOptions: DefinitionOptions) {
         variant(
             `button--${size}--square`,
             {
-                square: size,
+                width: size,
+                height: size,
                 padding: '0'
             },
             options

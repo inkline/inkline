@@ -423,13 +423,37 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--toast--padding-top) var(--toast--padding-right) var(--toast--padding-bottom) var(--toast--padding-left)'
                 },
                 {
+                    name: '--toast--{color}--border-top-width'
+                },
+                {
+                    name: '--toast--{color}--border-top-style'
+                },
+                {
                     name: '--toast--{color}--border-top-color'
+                },
+                {
+                    name: '--toast--{color}--border-right-width'
+                },
+                {
+                    name: '--toast--{color}--border-right-style'
                 },
                 {
                     name: '--toast--{color}--border-right-color'
                 },
                 {
+                    name: '--toast--{color}--border-bottom-width'
+                },
+                {
+                    name: '--toast--{color}--border-bottom-style'
+                },
+                {
                     name: '--toast--{color}--border-bottom-color'
+                },
+                {
+                    name: '--toast--{color}--border-left-width'
+                },
+                {
+                    name: '--toast--{color}--border-left-style'
                 },
                 {
                     name: '--toast--{color}--border-left-color'

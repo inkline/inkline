@@ -1,0 +1,31 @@
+._border:0 {
+    border: var(--border--0);
+}
+
+._border:0 {
+    border: var(--border--0);
+}
+
+._padding:0 {
+    padding: var(--spacing--0);
+}
+
+._padding:0 {
+    padding: var(--spacing--0);
+}
+
+._width:100 {
+    width: var(--width--100);
+}
+
+._width:100 {
+    width: var(--width--100);
+}
+
+._flex-basis:100 {
+    flex-basis: var(--flexBasis--100);
+}
+
+._flex-basis:100 {
+    flex-basis: var(--flexBasis--100);
+}

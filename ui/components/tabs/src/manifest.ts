@@ -214,13 +214,37 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--contrast-text-color-light)'
                 },
                 {
+                    name: '--tab-list--{color}--border-top-width'
+                },
+                {
+                    name: '--tab-list--{color}--border-top-style'
+                },
+                {
                     name: '--tab-list--{color}--border-top-color'
+                },
+                {
+                    name: '--tab-list--{color}--border-right-width'
+                },
+                {
+                    name: '--tab-list--{color}--border-right-style'
                 },
                 {
                     name: '--tab-list--{color}--border-right-color'
                 },
                 {
+                    name: '--tab-list--{color}--border-bottom-width'
+                },
+                {
+                    name: '--tab-list--{color}--border-bottom-style'
+                },
+                {
                     name: '--tab-list--{color}--border-bottom-color'
+                },
+                {
+                    name: '--tab-list--{color}--border-left-width'
+                },
+                {
+                    name: '--tab-list--{color}--border-left-style'
                 },
                 {
                     name: '--tab-list--{color}--border-left-color'
@@ -427,13 +451,37 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--contrast-text-color-light)'
                 },
                 {
+                    name: '--tab-panel--{color}--border-top-width'
+                },
+                {
+                    name: '--tab-panel--{color}--border-top-style'
+                },
+                {
                     name: '--tab-panel--{color}--border-top-color'
+                },
+                {
+                    name: '--tab-panel--{color}--border-right-width'
+                },
+                {
+                    name: '--tab-panel--{color}--border-right-style'
                 },
                 {
                     name: '--tab-panel--{color}--border-right-color'
                 },
                 {
+                    name: '--tab-panel--{color}--border-bottom-width'
+                },
+                {
+                    name: '--tab-panel--{color}--border-bottom-style'
+                },
+                {
                     name: '--tab-panel--{color}--border-bottom-color'
+                },
+                {
+                    name: '--tab-panel--{color}--border-left-width'
+                },
+                {
+                    name: '--tab-panel--{color}--border-left-style'
                 },
                 {
                     name: '--tab-panel--{color}--border-left-color'
@@ -896,13 +944,37 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--color-light--tint-50)'
                 },
                 {
+                    name: '--tab--{color}--border-top-width'
+                },
+                {
+                    name: '--tab--{color}--border-top-style'
+                },
+                {
                     name: '--tab--{color}--border-top-color'
+                },
+                {
+                    name: '--tab--{color}--border-right-width'
+                },
+                {
+                    name: '--tab--{color}--border-right-style'
                 },
                 {
                     name: '--tab--{color}--border-right-color'
                 },
                 {
+                    name: '--tab--{color}--border-bottom-width'
+                },
+                {
+                    name: '--tab--{color}--border-bottom-style'
+                },
+                {
                     name: '--tab--{color}--border-bottom-color'
+                },
+                {
+                    name: '--tab--{color}--border-left-width'
+                },
+                {
+                    name: '--tab--{color}--border-left-style'
                 },
                 {
                     name: '--tab--{color}--border-left-color'
@@ -914,13 +986,37 @@ export const manifest: ComponentManifest[] = [
                     name: '--tab--{color}--color'
                 },
                 {
+                    name: '--tab--{color}--active--border-top-width'
+                },
+                {
+                    name: '--tab--{color}--active--border-top-style'
+                },
+                {
                     name: '--tab--{color}--active--border-top-color'
+                },
+                {
+                    name: '--tab--{color}--active--border-right-width'
+                },
+                {
+                    name: '--tab--{color}--active--border-right-style'
                 },
                 {
                     name: '--tab--{color}--active--border-right-color'
                 },
                 {
+                    name: '--tab--{color}--active--border-bottom-width'
+                },
+                {
+                    name: '--tab--{color}--active--border-bottom-style'
+                },
+                {
                     name: '--tab--{color}--active--border-bottom-color'
+                },
+                {
+                    name: '--tab--{color}--active--border-left-width'
+                },
+                {
+                    name: '--tab--{color}--active--border-left-style'
                 },
                 {
                     name: '--tab--{color}--active--border-left-color'
@@ -929,13 +1025,37 @@ export const manifest: ComponentManifest[] = [
                     name: '--tab--{color}--active--background'
                 },
                 {
+                    name: '--tab--{color}--hover--border-top-width'
+                },
+                {
+                    name: '--tab--{color}--hover--border-top-style'
+                },
+                {
                     name: '--tab--{color}--hover--border-top-color'
+                },
+                {
+                    name: '--tab--{color}--hover--border-right-width'
+                },
+                {
+                    name: '--tab--{color}--hover--border-right-style'
                 },
                 {
                     name: '--tab--{color}--hover--border-right-color'
                 },
                 {
+                    name: '--tab--{color}--hover--border-bottom-width'
+                },
+                {
+                    name: '--tab--{color}--hover--border-bottom-style'
+                },
+                {
                     name: '--tab--{color}--hover--border-bottom-color'
+                },
+                {
+                    name: '--tab--{color}--hover--border-left-width'
+                },
+                {
+                    name: '--tab--{color}--hover--border-left-style'
                 },
                 {
                     name: '--tab--{color}--hover--border-left-color'
@@ -944,13 +1064,37 @@ export const manifest: ComponentManifest[] = [
                     name: '--tab--{color}--hover--background'
                 },
                 {
+                    name: '--tab--{color}--focus--border-top-width'
+                },
+                {
+                    name: '--tab--{color}--focus--border-top-style'
+                },
+                {
                     name: '--tab--{color}--focus--border-top-color'
+                },
+                {
+                    name: '--tab--{color}--focus--border-right-width'
+                },
+                {
+                    name: '--tab--{color}--focus--border-right-style'
                 },
                 {
                     name: '--tab--{color}--focus--border-right-color'
                 },
                 {
+                    name: '--tab--{color}--focus--border-bottom-width'
+                },
+                {
+                    name: '--tab--{color}--focus--border-bottom-style'
+                },
+                {
                     name: '--tab--{color}--focus--border-bottom-color'
+                },
+                {
+                    name: '--tab--{color}--focus--border-left-width'
+                },
+                {
+                    name: '--tab--{color}--focus--border-left-style'
                 },
                 {
                     name: '--tab--{color}--focus--border-left-color'

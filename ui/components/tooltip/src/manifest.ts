@@ -299,13 +299,37 @@ export const manifest: ComponentManifest[] = [
                     value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
+                    name: '--tooltip--{color}--border-top-width'
+                },
+                {
+                    name: '--tooltip--{color}--border-top-style'
+                },
+                {
                     name: '--tooltip--{color}--border-top-color'
+                },
+                {
+                    name: '--tooltip--{color}--border-right-width'
+                },
+                {
+                    name: '--tooltip--{color}--border-right-style'
                 },
                 {
                     name: '--tooltip--{color}--border-right-color'
                 },
                 {
+                    name: '--tooltip--{color}--border-bottom-width'
+                },
+                {
+                    name: '--tooltip--{color}--border-bottom-style'
+                },
+                {
                     name: '--tooltip--{color}--border-bottom-color'
+                },
+                {
+                    name: '--tooltip--{color}--border-left-width'
+                },
+                {
+                    name: '--tooltip--{color}--border-left-style'
                 },
                 {
                     name: '--tooltip--{color}--border-left-color'

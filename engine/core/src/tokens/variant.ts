@@ -1,6 +1,7 @@
 import { TokenType, Variant, DefinitionOptions } from '../types';
 import { nanoid } from 'nanoid';
 import { addVariantToTheme, registerUtilitiesForVariant } from '../side-effects';
+import { unfold } from '@inkline/variants';
 
 /**
  * Creates a variant token.
@@ -16,7 +17,7 @@ export function variant(
         __id: nanoid(),
         __type: TokenType.Variant,
         __name: name,
-        __value: value
+        __value: unfold(value)
     };
 
     addVariantToTheme(instance, options);

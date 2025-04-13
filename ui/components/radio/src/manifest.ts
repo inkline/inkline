@@ -822,13 +822,37 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--spacing--md)'
                 },
                 {
+                    name: '--radio--{color}--border-top-width'
+                },
+                {
+                    name: '--radio--{color}--border-top-style'
+                },
+                {
                     name: '--radio--{color}--border-top-color'
+                },
+                {
+                    name: '--radio--{color}--border-right-width'
+                },
+                {
+                    name: '--radio--{color}--border-right-style'
                 },
                 {
                     name: '--radio--{color}--border-right-color'
                 },
                 {
+                    name: '--radio--{color}--border-bottom-width'
+                },
+                {
+                    name: '--radio--{color}--border-bottom-style'
+                },
+                {
                     name: '--radio--{color}--border-bottom-color'
+                },
+                {
+                    name: '--radio--{color}--border-left-width'
+                },
+                {
+                    name: '--radio--{color}--border-left-style'
                 },
                 {
                     name: '--radio--{color}--border-left-color'
@@ -843,13 +867,37 @@ export const manifest: ComponentManifest[] = [
                     name: '--radio--{color}--disabled--background'
                 },
                 {
+                    name: '--radio--{color}--disabled--border-top-width'
+                },
+                {
+                    name: '--radio--{color}--disabled--border-top-style'
+                },
+                {
                     name: '--radio--{color}--disabled--border-top-color'
+                },
+                {
+                    name: '--radio--{color}--disabled--border-right-width'
+                },
+                {
+                    name: '--radio--{color}--disabled--border-right-style'
                 },
                 {
                     name: '--radio--{color}--disabled--border-right-color'
                 },
                 {
+                    name: '--radio--{color}--disabled--border-bottom-width'
+                },
+                {
+                    name: '--radio--{color}--disabled--border-bottom-style'
+                },
+                {
                     name: '--radio--{color}--disabled--border-bottom-color'
+                },
+                {
+                    name: '--radio--{color}--disabled--border-left-width'
+                },
+                {
+                    name: '--radio--{color}--disabled--border-left-style'
                 },
                 {
                     name: '--radio--{color}--disabled--border-left-color'
@@ -858,13 +906,37 @@ export const manifest: ComponentManifest[] = [
                     name: '--radio--{color}--readonly--background'
                 },
                 {
+                    name: '--radio--{color}--readonly--border-top-width'
+                },
+                {
+                    name: '--radio--{color}--readonly--border-top-style'
+                },
+                {
                     name: '--radio--{color}--readonly--border-top-color'
+                },
+                {
+                    name: '--radio--{color}--readonly--border-right-width'
+                },
+                {
+                    name: '--radio--{color}--readonly--border-right-style'
                 },
                 {
                     name: '--radio--{color}--readonly--border-right-color'
                 },
                 {
+                    name: '--radio--{color}--readonly--border-bottom-width'
+                },
+                {
+                    name: '--radio--{color}--readonly--border-bottom-style'
+                },
+                {
                     name: '--radio--{color}--readonly--border-bottom-color'
+                },
+                {
+                    name: '--radio--{color}--readonly--border-left-width'
+                },
+                {
+                    name: '--radio--{color}--readonly--border-left-style'
                 },
                 {
                     name: '--radio--{color}--readonly--border-left-color'
@@ -873,13 +945,37 @@ export const manifest: ComponentManifest[] = [
                     name: '--radio--{color}--checked--disabled--background'
                 },
                 {
+                    name: '--radio--{color}--checked--disabled--border-top-width'
+                },
+                {
+                    name: '--radio--{color}--checked--disabled--border-top-style'
+                },
+                {
                     name: '--radio--{color}--checked--disabled--border-top-color'
+                },
+                {
+                    name: '--radio--{color}--checked--disabled--border-right-width'
+                },
+                {
+                    name: '--radio--{color}--checked--disabled--border-right-style'
                 },
                 {
                     name: '--radio--{color}--checked--disabled--border-right-color'
                 },
                 {
+                    name: '--radio--{color}--checked--disabled--border-bottom-width'
+                },
+                {
+                    name: '--radio--{color}--checked--disabled--border-bottom-style'
+                },
+                {
                     name: '--radio--{color}--checked--disabled--border-bottom-color'
+                },
+                {
+                    name: '--radio--{color}--checked--disabled--border-left-width'
+                },
+                {
+                    name: '--radio--{color}--checked--disabled--border-left-style'
                 },
                 {
                     name: '--radio--{color}--checked--disabled--border-left-color'
@@ -888,13 +984,37 @@ export const manifest: ComponentManifest[] = [
                     name: '--radio--{color}--checked--readonly--background'
                 },
                 {
+                    name: '--radio--{color}--checked--readonly--border-top-width'
+                },
+                {
+                    name: '--radio--{color}--checked--readonly--border-top-style'
+                },
+                {
                     name: '--radio--{color}--checked--readonly--border-top-color'
+                },
+                {
+                    name: '--radio--{color}--checked--readonly--border-right-width'
+                },
+                {
+                    name: '--radio--{color}--checked--readonly--border-right-style'
                 },
                 {
                     name: '--radio--{color}--checked--readonly--border-right-color'
                 },
                 {
+                    name: '--radio--{color}--checked--readonly--border-bottom-width'
+                },
+                {
+                    name: '--radio--{color}--checked--readonly--border-bottom-style'
+                },
+                {
                     name: '--radio--{color}--checked--readonly--border-bottom-color'
+                },
+                {
+                    name: '--radio--{color}--checked--readonly--border-left-width'
+                },
+                {
+                    name: '--radio--{color}--checked--readonly--border-left-style'
                 },
                 {
                     name: '--radio--{color}--checked--readonly--border-left-color'

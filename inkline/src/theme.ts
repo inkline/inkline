@@ -26,7 +26,6 @@ import { useToastTheme, useToastContainerTheme } from '@inkline/component-toast'
 import { useToggleTheme } from '@inkline/component-toggle';
 import { useTooltipTheme } from '@inkline/component-tooltip';
 import { useBlockquoteTheme, useTypographyTheme } from '@inkline/component-typography';
-import { useVariantsTheme } from '@inkline/variants';
 import { defaultDefinitionOptions, DefinitionOptions } from '@inkline/core';
 
 export * from '@inkline/theme';
@@ -35,7 +34,6 @@ export function useInklineTheme(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     useTheme(options);
-    useVariantsTheme(options);
     useAlertTheme(options);
     useBadgeTheme(options);
     useBlockquoteTheme(options);

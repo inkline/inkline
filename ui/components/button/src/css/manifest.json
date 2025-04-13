@@ -1737,6 +1737,427 @@
                 }
             }
         ],
-        "utilities": []
+        "utilities": [
+            {
+                "__type": "utility",
+                "__name": "font-size:sm",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size:sm",
+                    "__value": {
+                        "fontSize": {
+                            "__type": "reference",
+                            "__name": "fontSize--sm"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:sm",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size:sm",
+                    "__value": {
+                        "fontSize": {
+                            "__type": "reference",
+                            "__name": "fontSize--sm"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "square:sm",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._square:sm",
+                    "__value": {
+                        "square": {
+                            "__type": "reference",
+                            "__name": "square--sm"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "square:sm",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._square:sm",
+                    "__value": {
+                        "square": {
+                            "__type": "reference",
+                            "__name": "square--sm"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "padding:0",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._padding:0",
+                    "__value": {
+                        "padding": {
+                            "__type": "reference",
+                            "__name": "spacing--0"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "padding:0",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._padding:0",
+                    "__value": {
+                        "padding": {
+                            "__type": "reference",
+                            "__name": "spacing--0"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "border-radius:full",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._border-radius:full",
+                    "__value": {
+                        "borderRadius": {
+                            "__type": "reference",
+                            "__name": "borderRadius--full"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "border-radius:full",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._border-radius:full",
+                    "__value": {
+                        "borderRadius": {
+                            "__type": "reference",
+                            "__name": "borderRadius--full"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:md",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size:md",
+                    "__value": {
+                        "fontSize": {
+                            "__type": "reference",
+                            "__name": "fontSize--md"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:md",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size:md",
+                    "__value": {
+                        "fontSize": {
+                            "__type": "reference",
+                            "__name": "fontSize--md"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "square:md",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._square:md",
+                    "__value": {
+                        "square": {
+                            "__type": "reference",
+                            "__name": "square--md"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "square:md",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._square:md",
+                    "__value": {
+                        "square": {
+                            "__type": "reference",
+                            "__name": "square--md"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "padding:0",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._padding:0",
+                    "__value": {
+                        "padding": {
+                            "__type": "reference",
+                            "__name": "spacing--0"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "padding:0",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._padding:0",
+                    "__value": {
+                        "padding": {
+                            "__type": "reference",
+                            "__name": "spacing--0"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "border-radius:full",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._border-radius:full",
+                    "__value": {
+                        "borderRadius": {
+                            "__type": "reference",
+                            "__name": "borderRadius--full"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "border-radius:full",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._border-radius:full",
+                    "__value": {
+                        "borderRadius": {
+                            "__type": "reference",
+                            "__name": "borderRadius--full"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:lg",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size:lg",
+                    "__value": {
+                        "fontSize": {
+                            "__type": "reference",
+                            "__name": "fontSize--lg"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:lg",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size:lg",
+                    "__value": {
+                        "fontSize": {
+                            "__type": "reference",
+                            "__name": "fontSize--lg"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "square:lg",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._square:lg",
+                    "__value": {
+                        "square": {
+                            "__type": "reference",
+                            "__name": "square--lg"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "square:lg",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._square:lg",
+                    "__value": {
+                        "square": {
+                            "__type": "reference",
+                            "__name": "square--lg"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "padding:0",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._padding:0",
+                    "__value": {
+                        "padding": {
+                            "__type": "reference",
+                            "__name": "spacing--0"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "padding:0",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._padding:0",
+                    "__value": {
+                        "padding": {
+                            "__type": "reference",
+                            "__name": "spacing--0"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "border-radius:full",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._border-radius:full",
+                    "__value": {
+                        "borderRadius": {
+                            "__type": "reference",
+                            "__name": "borderRadius--full"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "border-radius:full",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._border-radius:full",
+                    "__value": {
+                        "borderRadius": {
+                            "__type": "reference",
+                            "__name": "borderRadius--full"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "gap:md",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._gap:md",
+                    "__value": {
+                        "gap": {
+                            "__type": "reference",
+                            "__name": "gap--md"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "gap:md",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._gap:md",
+                    "__value": {
+                        "gap": {
+                            "__type": "reference",
+                            "__name": "gap--md"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "width:100",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._width:100",
+                    "__value": {
+                        "width": {
+                            "__type": "reference",
+                            "__name": "width--100"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "width:100",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._width:100",
+                    "__value": {
+                        "width": {
+                            "__type": "reference",
+                            "__name": "width--100"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "opacity:75",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._opacity:75",
+                    "__value": {
+                        "opacity": {
+                            "__type": "reference",
+                            "__name": "opacity--75"
+                        }
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "opacity:75",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._opacity:75",
+                    "__value": {
+                        "opacity": {
+                            "__type": "reference",
+                            "__name": "opacity--75"
+                        }
+                    }
+                }
+            }
+        ]
     }
 }

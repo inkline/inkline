@@ -239,13 +239,37 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--card--padding-top) var(--card--padding-right) var(--card--padding-bottom) var(--card--padding-left)'
                 },
                 {
+                    name: '--card--{color}--border-top-width'
+                },
+                {
+                    name: '--card--{color}--border-top-style'
+                },
+                {
                     name: '--card--{color}--border-top-color'
+                },
+                {
+                    name: '--card--{color}--border-right-width'
+                },
+                {
+                    name: '--card--{color}--border-right-style'
                 },
                 {
                     name: '--card--{color}--border-right-color'
                 },
                 {
+                    name: '--card--{color}--border-bottom-width'
+                },
+                {
+                    name: '--card--{color}--border-bottom-style'
+                },
+                {
                     name: '--card--{color}--border-bottom-color'
+                },
+                {
+                    name: '--card--{color}--border-left-width'
+                },
+                {
+                    name: '--card--{color}--border-left-style'
                 },
                 {
                     name: '--card--{color}--border-left-color'

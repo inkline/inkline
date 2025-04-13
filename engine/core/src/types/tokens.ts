@@ -73,7 +73,6 @@ export type Selector = {
 };
 
 export type Utility = {
-    __id: string;
     __type: TokenType.Utility;
     __name: string;
     __value: Selector;

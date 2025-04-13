@@ -2,6 +2,7 @@ import type { DefinitionOptions, AtRule, Selector, Variable, Utility, Variant } 
 import { isTheme } from '../typeGuards';
 import { theme } from '../tokens';
 import { defaultThemeName } from '../constants';
+import { isUtilityDefined } from '../utils';
 
 /**
  * Adds a variable to a theme.
@@ -55,8 +56,12 @@ export function addUtilityToTheme(utility: Utility, options: DefinitionOptions) 
         ? options.theme
         : theme(options?.theme ?? defaultThemeName, options);
 
+    if (options.default && isUtilityDefined(utility.__name, themeInstance)) {
+        return;
+    }
+
     themeInstance.utilities.push(utility);
-    themeInstance.__keys.utilities.add(utility.__id);
+    themeInstance.__keys.utilities.add(utility.__name);
 }
 
 /**

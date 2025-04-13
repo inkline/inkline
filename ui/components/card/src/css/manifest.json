@@ -6904,38 +6904,6 @@
                     "__name": "spacing--md"
                 }
             },
-            "card--border-top-color": {
-                "__type": "variable",
-                "__name": "card--border-top-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "card--border-right-color": {
-                "__type": "variable",
-                "__name": "card--border-right-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "card--border-bottom-color": {
-                "__type": "variable",
-                "__name": "card--border-bottom-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
-            "card--border-left-color": {
-                "__type": "variable",
-                "__name": "card--border-left-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "color-light--shade-50"
-                }
-            },
             "card--border-top-width": {
                 "__type": "variable",
                 "__name": "card--border-top-width",
@@ -6950,6 +6918,14 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "border-top-style"
+                }
+            },
+            "card--border-top-color": {
+                "__type": "variable",
+                "__name": "card--border-top-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
                 }
             },
             "card--border-right-width": {
@@ -6968,6 +6944,14 @@
                     "__name": "border-right-style"
                 }
             },
+            "card--border-right-color": {
+                "__type": "variable",
+                "__name": "card--border-right-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
+                }
+            },
             "card--border-bottom-width": {
                 "__type": "variable",
                 "__name": "card--border-bottom-width",
@@ -6984,6 +6968,14 @@
                     "__name": "border-bottom-style"
                 }
             },
+            "card--border-bottom-color": {
+                "__type": "variable",
+                "__name": "card--border-bottom-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
+                }
+            },
             "card--border-left-width": {
                 "__type": "variable",
                 "__name": "card--border-left-width",
@@ -6998,6 +6990,14 @@
                 "__value": {
                     "__type": "reference",
                     "__name": "border-left-style"
+                }
+            },
+            "card--border-left-color": {
+                "__type": "variable",
+                "__name": "card--border-left-color",
+                "__value": {
+                    "__type": "reference",
+                    "__name": "color-light--shade-50"
                 }
             },
             "card--box-shadow-offset-x": {
@@ -7152,6 +7152,16 @@
                     "__name": "spacing--md"
                 }
             },
+            "card--light--border-top-width": {
+                "__type": "variable",
+                "__name": "card--light--border-top-width",
+                "__value": 0
+            },
+            "card--light--border-top-style": {
+                "__type": "variable",
+                "__name": "card--light--border-top-style",
+                "__value": "none"
+            },
             "card--light--border-top-color": {
                 "__type": "variable",
                 "__name": "card--light--border-top-color",
@@ -7159,6 +7169,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-50"
                 }
+            },
+            "card--light--border-right-width": {
+                "__type": "variable",
+                "__name": "card--light--border-right-width",
+                "__value": 0
+            },
+            "card--light--border-right-style": {
+                "__type": "variable",
+                "__name": "card--light--border-right-style",
+                "__value": "none"
             },
             "card--light--border-right-color": {
                 "__type": "variable",
@@ -7168,6 +7188,16 @@
                     "__name": "color-light--shade-50"
                 }
             },
+            "card--light--border-bottom-width": {
+                "__type": "variable",
+                "__name": "card--light--border-bottom-width",
+                "__value": 0
+            },
+            "card--light--border-bottom-style": {
+                "__type": "variable",
+                "__name": "card--light--border-bottom-style",
+                "__value": "none"
+            },
             "card--light--border-bottom-color": {
                 "__type": "variable",
                 "__name": "card--light--border-bottom-color",
@@ -7175,6 +7205,16 @@
                     "__type": "reference",
                     "__name": "color-light--shade-50"
                 }
+            },
+            "card--light--border-left-width": {
+                "__type": "variable",
+                "__name": "card--light--border-left-width",
+                "__value": 0
+            },
+            "card--light--border-left-style": {
+                "__type": "variable",
+                "__name": "card--light--border-left-style",
+                "__value": "none"
             },
             "card--light--border-left-color": {
                 "__type": "variable",
@@ -7200,6 +7240,16 @@
                     "__name": "contrast-text-color-light"
                 }
             },
+            "card--dark--border-top-width": {
+                "__type": "variable",
+                "__name": "card--dark--border-top-width",
+                "__value": 0
+            },
+            "card--dark--border-top-style": {
+                "__type": "variable",
+                "__name": "card--dark--border-top-style",
+                "__value": "none"
+            },
             "card--dark--border-top-color": {
                 "__type": "variable",
                 "__name": "card--dark--border-top-color",
@@ -7207,6 +7257,16 @@
                     "__type": "reference",
                     "__name": "color-dark--tint-50"
                 }
+            },
+            "card--dark--border-right-width": {
+                "__type": "variable",
+                "__name": "card--dark--border-right-width",
+                "__value": 0
+            },
+            "card--dark--border-right-style": {
+                "__type": "variable",
+                "__name": "card--dark--border-right-style",
+                "__value": "none"
             },
             "card--dark--border-right-color": {
                 "__type": "variable",
@@ -7216,6 +7276,16 @@
                     "__name": "color-dark--tint-50"
                 }
             },
+            "card--dark--border-bottom-width": {
+                "__type": "variable",
+                "__name": "card--dark--border-bottom-width",
+                "__value": 0
+            },
+            "card--dark--border-bottom-style": {
+                "__type": "variable",
+                "__name": "card--dark--border-bottom-style",
+                "__value": "none"
+            },
             "card--dark--border-bottom-color": {
                 "__type": "variable",
                 "__name": "card--dark--border-bottom-color",
@@ -7223,6 +7293,16 @@
                     "__type": "reference",
                     "__name": "color-dark--tint-50"
                 }
+            },
+            "card--dark--border-left-width": {
+                "__type": "variable",
+                "__name": "card--dark--border-left-width",
+                "__value": 0
+            },
+            "card--dark--border-left-style": {
+                "__type": "variable",
+                "__name": "card--dark--border-left-style",
+                "__value": "none"
             },
             "card--dark--border-left-color": {
                 "__type": "variable",

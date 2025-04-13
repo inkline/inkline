@@ -1,10 +1,11 @@
-import { ComponentValue, DefinitionOptions, Variant } from '../types';
+import { DefinitionOptions, Variant } from '../types';
 import type { VariantState } from '@inkline/types';
 import { toKebabCase, toStatefulName, isArray } from '@inkline/utils';
 import { propertyToVariableMap } from '@inkline/variants';
 import { ref, selector, utility } from '../tokens';
 import { defaultUtilityPrefix } from '../constants';
 import { addUtilityToTheme } from './themes';
+import { isVariableDefined, normalizeCSSSelector } from '../utils';
 
 /**
  * When registering a variant, we also need to register related utility selectors.
@@ -44,36 +45,36 @@ export function registerUtilitiesForVariant(instance: Variant, options: Definiti
             return;
 
         const utilityNameWithState = toStatefulName(
-            `${toKebabCase(key)}:${value.toString()}`,
+            `${toKebabCase(key)}${value === 'default' ? '' : `:${value}`}`,
             state
         );
 
-        const selectorProperties = propertyToVariableMap[key] ?? key;
-        const selectorPropertiesList = isArray(selectorProperties)
-            ? selectorProperties
-            : [selectorProperties];
+        const propertyValues = propertyToVariableMap[key] ?? key;
+        const propertyValuesList = isArray(propertyValues) ? propertyValues : [propertyValues];
 
-        const selectorValue = selectorPropertiesList.reduce<ComponentValue>(
-            (acc, selectorProperty) => {
-                acc[key] = ref(`${selectorProperty}--${value}`);
-                return acc;
-            },
-            {}
-        );
+        const valueReference: string | undefined = propertyValuesList.find((propertyValue) => {
+            const variableName = `${toKebabCase(propertyValue)}${value === 'default' ? '' : `--${value}`}`;
+            return isVariableDefined(variableName, options);
+        });
+
+        const selectorValue = {
+            [key]: valueReference ? ref(toKebabCase(valueReference)) : value
+        };
 
         const utilityInstance = utility(
             utilityNameWithState,
             selector(
-                `.${options.utilityPrefix ?? defaultUtilityPrefix}${utilityNameWithState}`,
+                normalizeCSSSelector(
+                    `.${options.utilityPrefix ?? defaultUtilityPrefix}${utilityNameWithState}`
+                ),
                 selectorValue,
                 options
             ),
-            options
+            {
+                ...options,
+                default: true
+            }
         );
-
-        if (instance.__name.startsWith('box')) {
-            console.log(JSON.stringify(utilityInstance, null, 2));
-        }
 
         addUtilityToTheme(utilityInstance, options);
     });

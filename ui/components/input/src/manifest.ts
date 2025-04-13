@@ -599,13 +599,37 @@ export const manifest: ComponentManifest[] = [
                     value: 'var(--input--padding-top) var(--input--padding-right) var(--input--padding-bottom) var(--input--padding-left)'
                 },
                 {
+                    name: '--input--{color}--border-top-width'
+                },
+                {
+                    name: '--input--{color}--border-top-style'
+                },
+                {
                     name: '--input--{color}--border-top-color'
+                },
+                {
+                    name: '--input--{color}--border-right-width'
+                },
+                {
+                    name: '--input--{color}--border-right-style'
                 },
                 {
                     name: '--input--{color}--border-right-color'
                 },
                 {
+                    name: '--input--{color}--border-bottom-width'
+                },
+                {
+                    name: '--input--{color}--border-bottom-style'
+                },
+                {
                     name: '--input--{color}--border-bottom-color'
+                },
+                {
+                    name: '--input--{color}--border-left-width'
+                },
+                {
+                    name: '--input--{color}--border-left-style'
                 },
                 {
                     name: '--input--{color}--border-left-color'
@@ -617,25 +641,73 @@ export const manifest: ComponentManifest[] = [
                     name: '--input--{color}--color'
                 },
                 {
+                    name: '--input--{color}--hover--border-top-width'
+                },
+                {
+                    name: '--input--{color}--hover--border-top-style'
+                },
+                {
                     name: '--input--{color}--hover--border-top-color'
+                },
+                {
+                    name: '--input--{color}--hover--border-right-width'
+                },
+                {
+                    name: '--input--{color}--hover--border-right-style'
                 },
                 {
                     name: '--input--{color}--hover--border-right-color'
                 },
                 {
+                    name: '--input--{color}--hover--border-bottom-width'
+                },
+                {
+                    name: '--input--{color}--hover--border-bottom-style'
+                },
+                {
                     name: '--input--{color}--hover--border-bottom-color'
+                },
+                {
+                    name: '--input--{color}--hover--border-left-width'
+                },
+                {
+                    name: '--input--{color}--hover--border-left-style'
                 },
                 {
                     name: '--input--{color}--hover--border-left-color'
                 },
                 {
+                    name: '--input--{color}--focus--border-top-width'
+                },
+                {
+                    name: '--input--{color}--focus--border-top-style'
+                },
+                {
                     name: '--input--{color}--focus--border-top-color'
+                },
+                {
+                    name: '--input--{color}--focus--border-right-width'
+                },
+                {
+                    name: '--input--{color}--focus--border-right-style'
                 },
                 {
                     name: '--input--{color}--focus--border-right-color'
                 },
                 {
+                    name: '--input--{color}--focus--border-bottom-width'
+                },
+                {
+                    name: '--input--{color}--focus--border-bottom-style'
+                },
+                {
                     name: '--input--{color}--focus--border-bottom-color'
+                },
+                {
+                    name: '--input--{color}--focus--border-left-width'
+                },
+                {
+                    name: '--input--{color}--focus--border-left-style'
                 },
                 {
                     name: '--input--{color}--focus--border-left-color'

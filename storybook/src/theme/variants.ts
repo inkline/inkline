@@ -3,6 +3,39 @@ import { ThemeOptions } from '@inkline/types';
 export const theme: ThemeOptions = {
     tailwindcss: false,
     variants: {
+        "default": {
+            "extends": [
+                "box"
+            ]
+        },
+        "box--base": {
+            "borderTopWidth": "default",
+            "borderRightWidth": "default",
+            "borderBottomWidth": "default",
+            "borderLeftWidth": "default",
+            "borderTopStyle": "default",
+            "borderRightStyle": "default",
+            "borderBottomStyle": "default",
+            "borderLeftStyle": "default"
+        },
+        "box--base--md": {
+            "extends": "box--base",
+            "borderTopLeftRadius": "md",
+            "borderTopRightRadius": "md",
+            "borderBottomRightRadius": "md",
+            "borderBottomLeftRadius": "md",
+            "boxShadow": "md"
+        },
+        "box--md": {
+            "extends": "box--base--md",
+            "paddingTop": "md",
+            "paddingRight": "md",
+            "paddingBottom": "md",
+            "paddingLeft": "md"
+        },
+        "box": {
+            "extends": "box--md"
+        },
         "alert--xs": {
             "extends": [
                 "box--xs"
@@ -103,7 +136,10 @@ export const theme: ThemeOptions = {
             "fontSize": "inherit"
         },
         "badge--pill": {
-            "borderRadius": "full"
+            "borderTopLeftRadius": "full",
+            "borderTopRightRadius": "full",
+            "borderBottomRightRadius": "full",
+            "borderBottomLeftRadius": "full"
         },
         "badge": {
             "extends": [
@@ -147,36 +183,57 @@ export const theme: ThemeOptions = {
             "fontSize": "sm"
         },
         "button--sm--square": {
-            "square": "sm",
-            "padding": "0"
+            "width": "sm",
+            "height": "sm",
+            "paddingTop": "0",
+            "paddingRight": "0",
+            "paddingBottom": "0",
+            "paddingLeft": "0"
         },
         "button--sm--circle": {
             "extends": "button--sm--square",
-            "borderRadius": "full"
+            "borderTopLeftRadius": "full",
+            "borderTopRightRadius": "full",
+            "borderBottomRightRadius": "full",
+            "borderBottomLeftRadius": "full"
         },
         "button--md": {
             "extends": "box--wide--md",
             "fontSize": "md"
         },
         "button--md--square": {
-            "square": "md",
-            "padding": "0"
+            "width": "md",
+            "height": "md",
+            "paddingTop": "0",
+            "paddingRight": "0",
+            "paddingBottom": "0",
+            "paddingLeft": "0"
         },
         "button--md--circle": {
             "extends": "button--md--square",
-            "borderRadius": "full"
+            "borderTopLeftRadius": "full",
+            "borderTopRightRadius": "full",
+            "borderBottomRightRadius": "full",
+            "borderBottomLeftRadius": "full"
         },
         "button--lg": {
             "extends": "box--wide--lg",
             "fontSize": "lg"
         },
         "button--lg--square": {
-            "square": "lg",
-            "padding": "0"
+            "width": "lg",
+            "height": "lg",
+            "paddingTop": "0",
+            "paddingRight": "0",
+            "paddingBottom": "0",
+            "paddingLeft": "0"
         },
         "button--lg--circle": {
             "extends": "button--lg--square",
-            "borderRadius": "full"
+            "borderTopLeftRadius": "full",
+            "borderTopRightRadius": "full",
+            "borderBottomRightRadius": "full",
+            "borderBottomLeftRadius": "full"
         },
         "button--light": {
             "extends": "light--interactive"
@@ -314,7 +371,10 @@ export const theme: ThemeOptions = {
                 "box"
             ],
             "border": "0",
-            "padding": "0"
+            "paddingTop": "0",
+            "paddingRight": "0",
+            "paddingBottom": "0",
+            "paddingLeft": "0"
         },
         "button-group--block": {
             "width": "100"

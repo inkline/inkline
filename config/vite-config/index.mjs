@@ -17,6 +17,7 @@ export const aliases = [
     { find: /^@inkline\/config/, replacement: 'engine/config/src' },
     { find: /^@inkline\/core/, replacement: 'engine/core/src' },
     { find: /^@inkline\/generator/, replacement: 'engine/generator/src' },
+    { find: /^@inkline\/variants/, replacement: 'engine/variants/src' },
 
     // Plugin
     { find: /^@inkline\/plugin/, replacement: 'plugin/src' },
