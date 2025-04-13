@@ -1,8 +1,16 @@
 packages:
+  - build/**/*
+  - common/**/*
+  - config/**/*
   - docs
-  - packages/**/*
   - e2e/*
+  - engine/**/*
+  - inkline
+  - integrations/**/*
   - storybook
+  - theme
+  - tooling/**/*
+  - ui/**/*
 catalog:
   '@types/node': ^20.14.5
   '@types/color': ^4.2.0

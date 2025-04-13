@@ -1,7 +1,7 @@
 import { loadConfig as c12, LoadConfigOptions } from 'c12';
 import { Configuration } from './types';
 
-export const defaultOutputDir = './src/theme';
+export const defaultOutputDir = './theme';
 export const defaultConfigFileNamespace = 'inkline';
 export const defaultConfigFileBasename = `${defaultConfigFileNamespace}.config`;
 export const defaultConfigFileExtName = '.ts';
