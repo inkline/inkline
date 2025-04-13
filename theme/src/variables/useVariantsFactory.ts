@@ -15,7 +15,7 @@ import { toCamelCase } from '@inkline/utils';
 export type VariantsReturnKey<
     RootKeys extends string,
     VariantKeys extends string
-> = ExportedName<`${RootKeys}-${VariantKeys}`>;
+> = ExportedName<`${RootKeys}--${VariantKeys}`>;
 
 export type ApplyVariantFn = (current: TokenValue) => TokenValue;
 
@@ -57,7 +57,7 @@ export function useVariantsFactory<RootKey extends string, VariantKeys extends s
     return Object.keys(variantsMap).reduce<Record<ReturnKey, Variable>>(
         (acc, key) => {
             const variantFn = variantsMap[key as VariantKeys];
-            const variableName = renameFn(`${typeof target === 'string' ? target : target.__name}-${key}`);
+            const variableName = renameFn(`${typeof target === 'string' ? target : target.__name}--${key}`);
             acc[toCamelCase(variableName) as ReturnKey] = variable(
                 variableName,
                 variantFn(ref(target)),

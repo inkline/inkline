@@ -175,7 +175,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--modal--border-right-width',
@@ -187,7 +187,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--modal--border-bottom-width',
@@ -199,7 +199,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--modal--border-left-width',
@@ -211,7 +211,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--modal--border-width',
@@ -311,11 +311,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--close--size',
-                    value: 'calc(var(--font-size-md) * 1.5)'
+                    value: 'calc(var(--font-size--md) * 1.5)'
                 },
                 {
                     name: '--modal--close--font-size',
-                    value: 'calc(var(--font-size-md) * 0.5)'
+                    value: 'calc(var(--font-size--md) * 0.5)'
                 },
                 {
                     name: '--modal--background',
@@ -327,19 +327,19 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
+                    value: 'var(--border-top-left-radius--md)'
                 },
                 {
                     name: '--modal--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
+                    value: 'var(--border-top-right-radius--md)'
                 },
                 {
                     name: '--modal--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
+                    value: 'var(--border-bottom-right-radius--md)'
                 },
                 {
                     name: '--modal--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
+                    value: 'var(--border-bottom-left-radius--md)'
                 },
                 {
                     name: '--modal--border-radius',
@@ -347,23 +347,23 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--modal--padding-top',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--modal--padding-right',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--modal--padding-bottom',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--modal--padding-left',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--modal--padding',
@@ -371,11 +371,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--max-width',
-                    value: 'calc(var(--spacing-md) * 30)'
+                    value: 'calc(var(--spacing--md) * 30)'
                 },
                 {
                     name: '--modal--footer--gap',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--modal--{color}--border-top-color'
@@ -451,7 +451,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--modal--border-right-width',
@@ -463,7 +463,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--modal--border-bottom-width',
@@ -475,7 +475,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--modal--border-left-width',
@@ -487,7 +487,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--modal--border-width',
@@ -587,11 +587,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--close--size',
-                    value: 'calc(var(--font-size-md) * 1.5)'
+                    value: 'calc(var(--font-size--md) * 1.5)'
                 },
                 {
                     name: '--modal--close--font-size',
-                    value: 'calc(var(--font-size-md) * 0.5)'
+                    value: 'calc(var(--font-size--md) * 0.5)'
                 },
                 {
                     name: '--modal--background',
@@ -603,19 +603,19 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
+                    value: 'var(--border-top-left-radius--md)'
                 },
                 {
                     name: '--modal--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
+                    value: 'var(--border-top-right-radius--md)'
                 },
                 {
                     name: '--modal--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
+                    value: 'var(--border-bottom-right-radius--md)'
                 },
                 {
                     name: '--modal--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
+                    value: 'var(--border-bottom-left-radius--md)'
                 },
                 {
                     name: '--modal--border-radius',
@@ -623,23 +623,23 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--modal--padding-top',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--modal--padding-right',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--modal--padding-bottom',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--modal--padding-left',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--modal--padding',
@@ -647,11 +647,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--modal--max-width',
-                    value: 'calc(var(--spacing-md) * 30)'
+                    value: 'calc(var(--spacing--md) * 30)'
                 },
                 {
                     name: '--modal--footer--gap',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 }
             ]
         }

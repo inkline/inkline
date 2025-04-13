@@ -160,7 +160,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--input--border-right-width',
@@ -172,7 +172,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--input--border-bottom-width',
@@ -184,7 +184,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--input--border-left-width',
@@ -196,7 +196,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--input--border-width',
@@ -356,7 +356,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--placeholder--color',
-                    value: 'var(--text-color-weaker)'
+                    value: 'var(--text-color--weaker)'
                 },
                 {
                     name: '--input--icon--width',
@@ -368,15 +368,15 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--icon--color',
-                    value: 'var(--text-color-weak)'
+                    value: 'var(--text-color--weak)'
                 },
                 {
                     name: '--input--prefix--color',
-                    value: 'var(--text-color-weaker)'
+                    value: 'var(--text-color--weaker)'
                 },
                 {
                     name: '--input--suffix--color',
-                    value: 'var(--text-color-weaker)'
+                    value: 'var(--text-color--weaker)'
                 },
                 {
                     name: '--input--background',
@@ -396,7 +396,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--hover--border-top-color',
-                    value: 'var(--color-light-shade-100)'
+                    value: 'var(--color-light--shade-100)'
                 },
                 {
                     name: '--input--hover--border-right-width',
@@ -408,7 +408,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--hover--border-right-color',
-                    value: 'var(--color-light-shade-100)'
+                    value: 'var(--color-light--shade-100)'
                 },
                 {
                     name: '--input--hover--border-bottom-width',
@@ -420,7 +420,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--hover--border-bottom-color',
-                    value: 'var(--color-light-shade-100)'
+                    value: 'var(--color-light--shade-100)'
                 },
                 {
                     name: '--input--hover--border-left-width',
@@ -432,7 +432,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--hover--border-left-color',
-                    value: 'var(--color-light-shade-100)'
+                    value: 'var(--color-light--shade-100)'
                 },
                 {
                     name: '--input--hover--border-width',
@@ -552,23 +552,23 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--readonly--background',
-                    value: 'var(--color-light-tint-50)'
+                    value: 'var(--color-light--tint-50)'
                 },
                 {
                     name: '--input--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
+                    value: 'var(--border-top-left-radius--md)'
                 },
                 {
                     name: '--input--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
+                    value: 'var(--border-top-right-radius--md)'
                 },
                 {
                     name: '--input--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
+                    value: 'var(--border-bottom-right-radius--md)'
                 },
                 {
                     name: '--input--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
+                    value: 'var(--border-bottom-left-radius--md)'
                 },
                 {
                     name: '--input--border-radius',
@@ -576,23 +576,23 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--input--padding-top',
-                    value: 'calc(var(--spacing-md) * 0.75)'
+                    value: 'calc(var(--spacing--md) * 0.75)'
                 },
                 {
                     name: '--input--padding-right',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--input--padding-bottom',
-                    value: 'calc(var(--spacing-md) * 0.75)'
+                    value: 'calc(var(--spacing--md) * 0.75)'
                 },
                 {
                     name: '--input--padding-left',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--input--padding',
@@ -716,7 +716,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--input--border-right-width',
@@ -728,7 +728,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--input--border-bottom-width',
@@ -740,7 +740,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--input--border-left-width',
@@ -752,7 +752,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--input--border-width',
@@ -912,7 +912,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--placeholder--color',
-                    value: 'var(--text-color-weaker)'
+                    value: 'var(--text-color--weaker)'
                 },
                 {
                     name: '--input--icon--width',
@@ -924,15 +924,15 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--icon--color',
-                    value: 'var(--text-color-weak)'
+                    value: 'var(--text-color--weak)'
                 },
                 {
                     name: '--input--prefix--color',
-                    value: 'var(--text-color-weaker)'
+                    value: 'var(--text-color--weaker)'
                 },
                 {
                     name: '--input--suffix--color',
-                    value: 'var(--text-color-weaker)'
+                    value: 'var(--text-color--weaker)'
                 },
                 {
                     name: '--input--background',
@@ -952,7 +952,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--hover--border-top-color',
-                    value: 'var(--color-light-shade-100)'
+                    value: 'var(--color-light--shade-100)'
                 },
                 {
                     name: '--input--hover--border-right-width',
@@ -964,7 +964,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--hover--border-right-color',
-                    value: 'var(--color-light-shade-100)'
+                    value: 'var(--color-light--shade-100)'
                 },
                 {
                     name: '--input--hover--border-bottom-width',
@@ -976,7 +976,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--hover--border-bottom-color',
-                    value: 'var(--color-light-shade-100)'
+                    value: 'var(--color-light--shade-100)'
                 },
                 {
                     name: '--input--hover--border-left-width',
@@ -988,7 +988,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--hover--border-left-color',
-                    value: 'var(--color-light-shade-100)'
+                    value: 'var(--color-light--shade-100)'
                 },
                 {
                     name: '--input--hover--border-width',
@@ -1108,23 +1108,23 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--readonly--background',
-                    value: 'var(--color-light-tint-50)'
+                    value: 'var(--color-light--tint-50)'
                 },
                 {
                     name: '--input--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
+                    value: 'var(--border-top-left-radius--md)'
                 },
                 {
                     name: '--input--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
+                    value: 'var(--border-top-right-radius--md)'
                 },
                 {
                     name: '--input--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
+                    value: 'var(--border-bottom-right-radius--md)'
                 },
                 {
                     name: '--input--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
+                    value: 'var(--border-bottom-left-radius--md)'
                 },
                 {
                     name: '--input--border-radius',
@@ -1132,23 +1132,23 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--input--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--input--padding-top',
-                    value: 'calc(var(--spacing-md) * 0.75)'
+                    value: 'calc(var(--spacing--md) * 0.75)'
                 },
                 {
                     name: '--input--padding-right',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--input--padding-bottom',
-                    value: 'calc(var(--spacing-md) * 0.75)'
+                    value: 'calc(var(--spacing--md) * 0.75)'
                 },
                 {
                     name: '--input--padding-left',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--input--padding',

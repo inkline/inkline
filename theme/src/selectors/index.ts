@@ -1,4 +1,4 @@
 export * from './elements';
 export * from './useBreakpointSelector';
-export * from './useResetTheme';
+export * from './useResetThemeSelectors';
 export * from '../utilities/useUtilities';

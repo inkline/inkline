@@ -7,7 +7,7 @@ export const manifest: ComponentManifest[] = [
             variables: [
                 {
                     name: '--a--color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--a--text-decoration',
@@ -15,7 +15,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--a--hover--color',
-                    value: 'var(--color-primary-600)'
+                    value: 'var(--color-primary--600)'
                 },
                 {
                     name: '--a--hover--text-decoration',
@@ -77,7 +77,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--body--text-align',
-                    value: 'var(--text-align-left)'
+                    value: 'var(--text-align--left)'
                 },
                 {
                     name: '--body--transition-property',
@@ -108,7 +108,7 @@ export const manifest: ComponentManifest[] = [
             variables: [
                 {
                     name: '--caption--color',
-                    value: 'var(--text-color-weaker)'
+                    value: 'var(--text-color--weaker)'
                 },
                 {
                     name: '--caption--padding-top',
@@ -178,7 +178,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--dl--dt--font-weight',
-                    value: 'var(--font-weight-bold)'
+                    value: 'var(--font-weight--bold)'
                 },
                 {
                     name: '--dl--dd--margin-top',
@@ -190,7 +190,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--dl--dd--margin-bottom',
-                    value: 'var(--spacing-xs)'
+                    value: 'var(--spacing--xs)'
                 },
                 {
                     name: '--dl--dd--margin-left',
@@ -229,15 +229,15 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--heading--font-family',
-                    value: 'var(--font-family-base-secondary)'
+                    value: 'var(--font-family-base--secondary)'
                 },
                 {
                     name: '--heading--font-style',
-                    value: 'var(--font-style-normal)'
+                    value: 'var(--font-style--normal)'
                 },
                 {
                     name: '--heading--font-weight',
-                    value: 'var(--font-weight-bold)'
+                    value: 'var(--font-weight--bold)'
                 },
                 {
                     name: '--heading--line-height',
@@ -245,27 +245,27 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--h1--font-size',
-                    value: 'var(--font-size-4xl)'
+                    value: 'var(--font-size--4xl)'
                 },
                 {
                     name: '--h2--font-size',
-                    value: 'var(--font-size-3xl)'
+                    value: 'var(--font-size--3xl)'
                 },
                 {
                     name: '--h3--font-size',
-                    value: 'var(--font-size-2xl)'
+                    value: 'var(--font-size--2xl)'
                 },
                 {
                     name: '--h4--font-size',
-                    value: 'var(--font-size-xl)'
+                    value: 'var(--font-size--xl)'
                 },
                 {
                     name: '--h5--font-size',
-                    value: 'var(--font-size-lg)'
+                    value: 'var(--font-size--lg)'
                 },
                 {
                     name: '--h6--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 }
             ]
         }
@@ -415,7 +415,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--kbd--font-size',
-                    value: 'var(--font-size-sm)'
+                    value: 'var(--font-size--sm)'
                 },
                 {
                     name: '--kbd--padding-top',
@@ -466,7 +466,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--legend--font-size',
-                    value: 'var(--font-size-lg)'
+                    value: 'var(--font-size--lg)'
                 }
             ]
         }
@@ -540,7 +540,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--ol--padding-left',
-                    value: 'var(--spacing-xl)'
+                    value: 'var(--spacing--xl)'
                 },
                 {
                     name: '--ol--padding',
@@ -582,7 +582,7 @@ export const manifest: ComponentManifest[] = [
             variables: [
                 {
                     name: '--pre--font-size',
-                    value: 'var(--font-size-sm)'
+                    value: 'var(--font-size--sm)'
                 },
                 {
                     name: '--pre--font-family',
@@ -811,7 +811,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--ul--padding-left',
-                    value: 'var(--spacing-xl)'
+                    value: 'var(--spacing--xl)'
                 },
                 {
                     name: '--ul--padding',

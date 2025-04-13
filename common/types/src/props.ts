@@ -76,6 +76,5 @@ export type ComponentProps = {
     paddingY?: string;
     size?: string;
     width?: string;
-    variant?: string | string[];
     [key: string]: string | string[] | boolean | number | ColorModePropValue | undefined;
 };

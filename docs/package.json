@@ -4,7 +4,7 @@
     "type": "module",
     "scripts": {
         "build": "nuxt build",
-        "predev": "cd ../packages/integrations/framework && pnpm run generate",
+        "predev": "cd ../plugin && pnpm run generate",
         "dev": "nuxt dev",
         "generate": "nuxt generate",
         "preview": "nuxt preview",
@@ -29,7 +29,7 @@
         "@inkline/core": "workspace:*",
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
-        "@inkline/framework": "workspace:*",
+        "@inkline/plugin": "workspace:*",
         "@inkline/logger": "workspace:*",
         "@inkline/theme": "workspace:*",
         "@inkline/typescript-config": "workspace:*",

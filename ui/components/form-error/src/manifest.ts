@@ -29,7 +29,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--form-error--font-size',
-                    value: 'var(--font-size-sm)'
+                    value: 'var(--font-size--sm)'
                 },
                 {
                     name: '--form-error--margin-top',

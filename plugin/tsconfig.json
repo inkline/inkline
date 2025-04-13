@@ -2,6 +2,7 @@
     "extends": "@inkline/typescript-config/tsconfig.json",
     "include": [
         "src",
+        "resources",
         "scripts"
     ]
 }

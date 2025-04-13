@@ -76,7 +76,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--card--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--card--border-right-width',
@@ -88,7 +88,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--card--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--card--border-bottom-width',
@@ -100,7 +100,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--card--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--card--border-left-width',
@@ -112,7 +112,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--card--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--card--border-width',
@@ -196,19 +196,19 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--card--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
+                    value: 'var(--border-top-left-radius--md)'
                 },
                 {
                     name: '--card--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
+                    value: 'var(--border-top-right-radius--md)'
                 },
                 {
                     name: '--card--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
+                    value: 'var(--border-bottom-right-radius--md)'
                 },
                 {
                     name: '--card--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
+                    value: 'var(--border-bottom-left-radius--md)'
                 },
                 {
                     name: '--card--border-radius',
@@ -216,23 +216,23 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--card--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--card--padding-top',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--card--padding-right',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--card--padding-bottom',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--card--padding-left',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--card--padding',
@@ -300,7 +300,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--card--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--card--border-right-width',
@@ -312,7 +312,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--card--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--card--border-bottom-width',
@@ -324,7 +324,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--card--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--card--border-left-width',
@@ -336,7 +336,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--card--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--card--border-width',
@@ -420,19 +420,19 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--card--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
+                    value: 'var(--border-top-left-radius--md)'
                 },
                 {
                     name: '--card--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
+                    value: 'var(--border-top-right-radius--md)'
                 },
                 {
                     name: '--card--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
+                    value: 'var(--border-bottom-right-radius--md)'
                 },
                 {
                     name: '--card--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
+                    value: 'var(--border-bottom-left-radius--md)'
                 },
                 {
                     name: '--card--border-radius',
@@ -440,23 +440,23 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--card--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--card--padding-top',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--card--padding-right',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--card--padding-bottom',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--card--padding-left',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--card--padding',

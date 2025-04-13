@@ -6,6 +6,7 @@ export default defineConfig({
         globals: true,
         environment: 'jsdom',
         include: ['src/**/*.spec.{ts,tsx}'],
-        exclude: vitestConfig.exclude
+        exclude: vitestConfig.exclude,
     }
 });
+

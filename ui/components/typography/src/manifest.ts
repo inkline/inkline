@@ -163,7 +163,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--blockquote--cite--color',
-                    value: 'var(--text-color-weak)'
+                    value: 'var(--text-color--weak)'
                 },
                 {
                     name: '--blockquote--cite--font-size',
@@ -279,11 +279,11 @@ export const manifest: ComponentManifest[] = [
             variables: [
                 {
                     name: '--typography--lead--font-size',
-                    value: 'var(--font-size-lg)'
+                    value: 'var(--font-size--lg)'
                 },
                 {
                     name: '--typography--lead--font-weight',
-                    value: 'var(--font-weight-light)'
+                    value: 'var(--font-weight--light)'
                 },
                 {
                     name: '--typography--initialism--font-size',
@@ -426,7 +426,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--blockquote--cite--color',
-                    value: 'var(--text-color-weak)'
+                    value: 'var(--text-color--weak)'
                 },
                 {
                     name: '--blockquote--cite--font-size',
@@ -434,11 +434,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--typography--lead--font-size',
-                    value: 'var(--font-size-lg)'
+                    value: 'var(--font-size--lg)'
                 },
                 {
                     name: '--typography--lead--font-weight',
-                    value: 'var(--font-weight-light)'
+                    value: 'var(--font-weight--light)'
                 },
                 {
                     name: '--typography--initialism--font-size',

@@ -1,14 +1,17 @@
 <template>
+    <BaseComponent :variant="{ extends: 'default', background: 'red' }">
+        Some quick example text to make up the bulk of the box's content.
+    </BaseComponent>
     <BaseComponent variant="default">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
-    <BaseComponent variant="box light">
+    <BaseComponent :variant="['box', 'light']">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
     <BaseComponent variant="box dark">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
-    <BaseComponent variant="box primary">
+    <BaseComponent variant="box primary" hover:variant="secondary">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
     <BaseComponent variant="box primary:tint">
@@ -45,3 +48,4 @@
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 </template>
+<script setup lang="ts"></script>

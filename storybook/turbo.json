@@ -1,0 +1,20 @@
+{
+    "extends": ["//"],
+    "tasks": {
+        "build": {
+            "inputs": [
+                ".storybook/**/*",
+                "public/**/*",
+                "src/**/*",
+                "vite.config.ts",
+                "inkline.config.ts"
+            ],
+            "outputs": [
+                "storybook-static"
+            ],
+            "dependsOn": [
+                "^build"
+            ]
+        }
+    }
+}

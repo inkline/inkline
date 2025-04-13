@@ -1,6 +1,6 @@
 import { defaultDefinitionOptions, selector, DefinitionOptions } from '@inkline/core';
 
-export function useResetTheme(userOptions: DefinitionOptions) {
+export function useResetThemeSelectors(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
     // Display block by default

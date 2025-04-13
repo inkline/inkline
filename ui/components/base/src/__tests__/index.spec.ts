@@ -6,8 +6,7 @@ import { createTestingInklineOptionsProvide } from '@inkline/test-utils';
 describe('Components', () => {
     describe('BaseComponent', () => {
         const props = {
-            color: 'light',
-            size: 'md'
+            variant: 'default',
         };
 
         it('should be named correctly', () => {
@@ -24,26 +23,6 @@ describe('Components', () => {
                 }
             });
             expect(wrapper.html()).toMatchSnapshot();
-        });
-
-        describe('computed', () => {
-            describe('classes', () => {
-                it('should add classes based on props', () => {
-                    const wrapper = render(BaseComponent, {
-                        props,
-                        global: {
-                            provide: {
-                                ...createTestingInklineOptionsProvide()
-                            }
-                        }
-                    });
-
-                    expect(wrapper.container.firstChild).toHaveClass(
-                        `-${props.color}`,
-                        `-${props.size}`
-                    );
-                });
-            });
         });
 
         describe('tag', () => {

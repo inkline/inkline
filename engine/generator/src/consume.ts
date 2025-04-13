@@ -30,7 +30,7 @@ import type {
     CSS
 } from '@inkline/core';
 import { indentLines } from '@inkline/utils';
-import { defaultThemeTemplate, themeTemplate } from './templates';
+import { rootThemeTemplate, themeTemplate } from './templates';
 import type { ComponentVariantProps } from '@inkline/types';
 
 /**
@@ -205,7 +205,7 @@ export function consumeTheme(instance: Theme) {
     const utilities = instance.utilities ? instance.utilities.map(consume).join('\n\n') : '';
 
     return isDefaultTheme
-        ? defaultThemeTemplate(':root', variables, selectors, utilities)
+        ? rootThemeTemplate(variables, selectors, utilities)
         : themeTemplate(`.${instance.__name}-theme`, variables, selectors, utilities);
 }
 

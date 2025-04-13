@@ -1,4 +1,4 @@
-import components from './resources/components';
+import components from '../resources/components';
 import { createResolver, defineNuxtModule, addPluginTemplate, addComponent } from '@nuxt/kit';
 import type { PluginUserOptions } from './plugin/types';
 import { watch } from './plugin/watch';

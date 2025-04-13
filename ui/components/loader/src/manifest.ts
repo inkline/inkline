@@ -69,11 +69,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--loader--width',
-                    value: 'calc(var(--spacing-md) * 4)'
+                    value: 'calc(var(--spacing--md) * 4)'
                 },
                 {
                     name: '--loader--height',
-                    value: 'calc(var(--spacing-md) * 4)'
+                    value: 'calc(var(--spacing--md) * 4)'
                 },
                 {
                     name: '--loader--{color}--color'

@@ -3,9 +3,9 @@ import { defaultDefinitionOptions, DefinitionOptions, variable } from '@inkline/
 export function useFontStyleVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    const fontStyleNormal = variable('font-style-normal', 'normal', options);
-    const fontStyleItalic = variable('font-style-italic', 'italic', options);
-    const fontStyleOblique = variable('font-style-oblique', 'oblique', options);
+    const fontStyleNormal = variable('font-style--normal', 'normal', options);
+    const fontStyleItalic = variable('font-style--italic', 'italic', options);
+    const fontStyleOblique = variable('font-style--oblique', 'oblique', options);
 
     return {
         fontStyleNormal,

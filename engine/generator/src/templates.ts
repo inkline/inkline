@@ -1,7 +1,6 @@
 import { indentLines } from '@inkline/utils';
 
-export function defaultThemeTemplate(
-    themeSelector: string,
+export function rootThemeTemplate(
     variables: string,
     selectors: string,
     utilities: string
@@ -10,7 +9,7 @@ export function defaultThemeTemplate(
         return '';
     }
 
-    const variablesString = `${themeSelector} {\n${indentLines(variables)}\n}`;
+    const variablesString = `:root {\n${indentLines(variables)}\n}`;
     const firstSpacingString = variables && (selectors || utilities) ? '\n\n' : '';
     const selectorsString = selectors ? `${selectors}` : '';
     const secondSpacingString = selectors && utilities ? '\n\n' : '';

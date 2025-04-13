@@ -1,22 +1,20 @@
-import { defaultThemeTemplate, themeTemplate } from './templates';
+import { rootThemeTemplate, themeTemplate } from './templates';
 
 describe('defaultThemeTemplate', () => {
     it('should return only selectors when no variables or utilities are provided', () => {
-        const themeSelector = ':root';
         const variables = '';
         const selectors = `body {
     color: white;
 }`;
         const utilities = '';
 
-        expect(defaultThemeTemplate(themeSelector, variables, selectors, utilities)).toBe(`body {
+        expect(rootThemeTemplate(variables, selectors, utilities)).toBe(`body {
     color: white;
 }
 `);
     });
 
     it('should return formatted theme with variables, selectors, and utilities', () => {
-        const themeSelector = ':root';
         const variables = '--color: black;';
         const selectors = `body {
     color: var(--color);
@@ -25,7 +23,7 @@ describe('defaultThemeTemplate', () => {
     display: flex;
 }`;
 
-        expect(defaultThemeTemplate(themeSelector, variables, selectors, utilities)).toBe(`:root {
+        expect(rootThemeTemplate( variables, selectors, utilities)).toBe(`:root {
     --color: black;
 }
 
@@ -40,12 +38,11 @@ body {
     });
 
     it('should return empty string when no variables or selectors are provided', () => {
-        const themeSelector = ':root';
         const variables = '';
         const selectors = '';
         const utilities = '';
 
-        expect(defaultThemeTemplate(themeSelector, variables, selectors, utilities)).toBe('');
+        expect(rootThemeTemplate( variables, selectors, utilities)).toBe('');
     });
 });
 

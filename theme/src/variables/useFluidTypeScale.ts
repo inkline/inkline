@@ -26,8 +26,8 @@ export function useFluidTypeScaleVariables(userOptions: DefinitionOptions) {
 
     const { scaleMinorThird, scaleMajorThird } = useScale(options);
 
-    const typeScaleMin = variable('type-scale-min', ref(scaleMinorThird), options);
-    const typeScaleMax = variable('type-scale-max', ref(scaleMajorThird), options);
+    const typeScaleMin = variable('type-scale--min', ref(scaleMinorThird), options);
+    const typeScaleMax = variable('type-scale--max', ref(scaleMajorThird), options);
 
     const {
         typeScaleMinPowMinus4,
@@ -39,7 +39,7 @@ export function useFluidTypeScaleVariables(userOptions: DefinitionOptions) {
         typeScaleMinPow3,
         typeScaleMinPow4,
         typeScaleMinPow5
-    } = useVariantsFactory<'type-scale-min', keyof typeof fluidScaleVariants>(
+    } = useVariantsFactory<'type-scale--min', keyof typeof fluidScaleVariants>(
         typeScaleMin,
         fluidScaleVariants,
         options
@@ -67,7 +67,7 @@ export function useFluidTypeScaleVariables(userOptions: DefinitionOptions) {
         typeScaleMaxPow3,
         typeScaleMaxPow4,
         typeScaleMaxPow5
-    } = useVariantsFactory<'type-scale-max', keyof typeof fluidScaleVariants>(
+    } = useVariantsFactory<'type-scale--max', keyof typeof fluidScaleVariants>(
         typeScaleMax,
         fluidScaleVariants,
         options

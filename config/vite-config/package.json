@@ -7,7 +7,7 @@
         "vitest": "catalog:",
         "@vitejs/plugin-vue": "catalog:",
         "vite-plugin-dts": "catalog:",
-        "@inkline/vite": "workspace:*",
+        "@inkline/plugin": "workspace:*",
         "@inkline/postcss-config": "workspace:*"
     },
     "files": [

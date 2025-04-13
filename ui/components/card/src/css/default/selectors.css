@@ -68,16 +68,16 @@
     border-top-width: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-top-left-radius: var(--card--border-top-left-radius, var(--border-top-left-radius-md));
-    border-top-right-radius: var(--card--border-top-right-radius, var(--border-top-right-radius-md));
+    border-top-left-radius: var(--card--border-top-left-radius, var(--border-top-left-radius--md));
+    border-top-right-radius: var(--card--border-top-right-radius, var(--border-top-right-radius--md));
 }
 
 .card .card-header:last-child, .card .card-footer:last-child {
     border-bottom-width: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-bottom-right-radius: var(--card--border-bottom-right-radius, var(--border-bottom-right-radius-md));
-    border-bottom-left-radius: var(--card--border-bottom-left-radius, var(--border-bottom-left-radius-md));
+    border-bottom-right-radius: var(--card--border-bottom-right-radius, var(--border-bottom-right-radius--md));
+    border-bottom-left-radius: var(--card--border-bottom-left-radius, var(--border-bottom-left-radius--md));
 }
 
 .card.-light {

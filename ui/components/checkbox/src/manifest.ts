@@ -216,7 +216,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--checkbox--border-right-width',
@@ -228,7 +228,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--checkbox--border-bottom-width',
@@ -240,7 +240,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--checkbox--border-left-width',
@@ -252,7 +252,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--checkbox--border-width',
@@ -332,19 +332,19 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checkmark--width',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--checkbox--checkmark--height',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--checkbox--disabled--color',
-                    value: 'var(--text-color-weak)'
+                    value: 'var(--text-color--weak)'
                 },
                 {
                     name: '--checkbox--disabled--background',
-                    value: 'var(--color-gray-100)'
+                    value: 'var(--color-gray--100)'
                 },
                 {
                     name: '--checkbox--disabled--border-top-width',
@@ -356,7 +356,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--disabled--border-top-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--disabled--border-right-width',
@@ -368,7 +368,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--disabled--border-right-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--disabled--border-bottom-width',
@@ -380,7 +380,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--disabled--border-bottom-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--disabled--border-left-width',
@@ -392,7 +392,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--disabled--border-left-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--disabled--border-width',
@@ -428,11 +428,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--readonly--color',
-                    value: 'var(--text-color-weak)'
+                    value: 'var(--text-color--weak)'
                 },
                 {
                     name: '--checkbox--readonly--background',
-                    value: 'var(--color-gray-100)'
+                    value: 'var(--color-gray--100)'
                 },
                 {
                     name: '--checkbox--readonly--border-top-width',
@@ -444,7 +444,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--readonly--border-top-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--readonly--border-right-width',
@@ -456,7 +456,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--readonly--border-right-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--readonly--border-bottom-width',
@@ -468,7 +468,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--readonly--border-bottom-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--readonly--border-left-width',
@@ -480,7 +480,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--readonly--border-left-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--readonly--border-width',
@@ -528,7 +528,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--border-top-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--checkbox--checked--border-right-width',
@@ -540,7 +540,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--border-right-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--checkbox--checked--border-bottom-width',
@@ -552,7 +552,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--border-bottom-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--checkbox--checked--border-left-width',
@@ -564,7 +564,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--border-left-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--checkbox--checked--border-width',
@@ -600,7 +600,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--disabled--background',
-                    value: 'var(--color-primary-300)'
+                    value: 'var(--color-primary--300)'
                 },
                 {
                     name: '--checkbox--checked--disabled--border-top-width',
@@ -612,7 +612,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--disabled--border-top-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--checkbox--checked--disabled--border-right-width',
@@ -624,7 +624,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--disabled--border-right-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--checkbox--checked--disabled--border-bottom-width',
@@ -636,7 +636,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--disabled--border-bottom-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--checkbox--checked--disabled--border-left-width',
@@ -648,7 +648,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--disabled--border-left-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--checkbox--checked--disabled--border-width',
@@ -684,7 +684,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--readonly--background',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--checkbox--checked--readonly--border-top-width',
@@ -696,7 +696,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--readonly--border-top-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--checkbox--checked--readonly--border-right-width',
@@ -708,7 +708,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--readonly--border-right-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--checkbox--checked--readonly--border-bottom-width',
@@ -720,7 +720,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--readonly--border-bottom-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--checkbox--checked--readonly--border-left-width',
@@ -732,7 +732,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--readonly--border-left-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--checkbox--checked--readonly--border-width',
@@ -800,19 +800,19 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
+                    value: 'var(--border-top-left-radius--md)'
                 },
                 {
                     name: '--checkbox--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
+                    value: 'var(--border-top-right-radius--md)'
                 },
                 {
                     name: '--checkbox--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
+                    value: 'var(--border-bottom-right-radius--md)'
                 },
                 {
                     name: '--checkbox--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
+                    value: 'var(--border-bottom-left-radius--md)'
                 },
                 {
                     name: '--checkbox--border-radius',
@@ -820,7 +820,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--checkbox--margin-top',
@@ -828,11 +828,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--margin-right',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--checkbox--margin-bottom',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--checkbox--margin-left',
@@ -844,11 +844,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--width',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--checkbox--height',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--checkbox--{color}--border-top-color'
@@ -984,7 +984,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--checkbox--border-right-width',
@@ -996,7 +996,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--checkbox--border-bottom-width',
@@ -1008,7 +1008,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--checkbox--border-left-width',
@@ -1020,7 +1020,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--checkbox--border-width',
@@ -1100,19 +1100,19 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checkmark--width',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--checkbox--checkmark--height',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--checkbox--disabled--color',
-                    value: 'var(--text-color-weak)'
+                    value: 'var(--text-color--weak)'
                 },
                 {
                     name: '--checkbox--disabled--background',
-                    value: 'var(--color-gray-100)'
+                    value: 'var(--color-gray--100)'
                 },
                 {
                     name: '--checkbox--disabled--border-top-width',
@@ -1124,7 +1124,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--disabled--border-top-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--disabled--border-right-width',
@@ -1136,7 +1136,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--disabled--border-right-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--disabled--border-bottom-width',
@@ -1148,7 +1148,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--disabled--border-bottom-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--disabled--border-left-width',
@@ -1160,7 +1160,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--disabled--border-left-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--disabled--border-width',
@@ -1196,11 +1196,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--readonly--color',
-                    value: 'var(--text-color-weak)'
+                    value: 'var(--text-color--weak)'
                 },
                 {
                     name: '--checkbox--readonly--background',
-                    value: 'var(--color-gray-100)'
+                    value: 'var(--color-gray--100)'
                 },
                 {
                     name: '--checkbox--readonly--border-top-width',
@@ -1212,7 +1212,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--readonly--border-top-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--readonly--border-right-width',
@@ -1224,7 +1224,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--readonly--border-right-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--readonly--border-bottom-width',
@@ -1236,7 +1236,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--readonly--border-bottom-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--readonly--border-left-width',
@@ -1248,7 +1248,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--readonly--border-left-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--checkbox--readonly--border-width',
@@ -1296,7 +1296,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--border-top-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--checkbox--checked--border-right-width',
@@ -1308,7 +1308,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--border-right-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--checkbox--checked--border-bottom-width',
@@ -1320,7 +1320,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--border-bottom-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--checkbox--checked--border-left-width',
@@ -1332,7 +1332,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--border-left-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--checkbox--checked--border-width',
@@ -1368,7 +1368,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--disabled--background',
-                    value: 'var(--color-primary-300)'
+                    value: 'var(--color-primary--300)'
                 },
                 {
                     name: '--checkbox--checked--disabled--border-top-width',
@@ -1380,7 +1380,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--disabled--border-top-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--checkbox--checked--disabled--border-right-width',
@@ -1392,7 +1392,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--disabled--border-right-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--checkbox--checked--disabled--border-bottom-width',
@@ -1404,7 +1404,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--disabled--border-bottom-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--checkbox--checked--disabled--border-left-width',
@@ -1416,7 +1416,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--disabled--border-left-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--checkbox--checked--disabled--border-width',
@@ -1452,7 +1452,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--readonly--background',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--checkbox--checked--readonly--border-top-width',
@@ -1464,7 +1464,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--readonly--border-top-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--checkbox--checked--readonly--border-right-width',
@@ -1476,7 +1476,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--readonly--border-right-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--checkbox--checked--readonly--border-bottom-width',
@@ -1488,7 +1488,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--readonly--border-bottom-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--checkbox--checked--readonly--border-left-width',
@@ -1500,7 +1500,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--checked--readonly--border-left-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--checkbox--checked--readonly--border-width',
@@ -1568,19 +1568,19 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
+                    value: 'var(--border-top-left-radius--md)'
                 },
                 {
                     name: '--checkbox--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
+                    value: 'var(--border-top-right-radius--md)'
                 },
                 {
                     name: '--checkbox--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
+                    value: 'var(--border-bottom-right-radius--md)'
                 },
                 {
                     name: '--checkbox--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
+                    value: 'var(--border-bottom-left-radius--md)'
                 },
                 {
                     name: '--checkbox--border-radius',
@@ -1588,7 +1588,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--checkbox--margin-top',
@@ -1596,11 +1596,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--margin-right',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--checkbox--margin-bottom',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--checkbox--margin-left',
@@ -1612,11 +1612,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--checkbox--width',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--checkbox--height',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 }
             ]
         }

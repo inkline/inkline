@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import { createRequire } from 'node:module';
-import { createWatcher, PluginUserOptions } from '@inkline/framework';
+import { createWatcher, PluginUserOptions } from '@inkline/plugin';
 import { BuildOptions, Configuration } from '@inkline/config';
 import { buildConfiguration } from '@inkline/config';
 import { Logger } from '@inkline/logger';

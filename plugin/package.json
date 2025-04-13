@@ -1,5 +1,5 @@
 {
-    "name": "@inkline/framework",
+    "name": "@inkline/plugin",
     "version": "1.0.0",
     "type": "module",
     "scripts": {

@@ -124,7 +124,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tooltip--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tooltip--border-right-width',
@@ -136,7 +136,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tooltip--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tooltip--border-bottom-width',
@@ -148,7 +148,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tooltip--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tooltip--border-left-width',
@@ -160,7 +160,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tooltip--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tooltip--border-width',
@@ -248,19 +248,19 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tooltip--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
+                    value: 'var(--border-top-left-radius--md)'
                 },
                 {
                     name: '--tooltip--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
+                    value: 'var(--border-top-right-radius--md)'
                 },
                 {
                     name: '--tooltip--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
+                    value: 'var(--border-bottom-right-radius--md)'
                 },
                 {
                     name: '--tooltip--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
+                    value: 'var(--border-bottom-left-radius--md)'
                 },
                 {
                     name: '--tooltip--border-radius',
@@ -268,23 +268,23 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tooltip--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--tooltip--padding-top',
-                    value: 'calc(var(--spacing-md) * 0.75)'
+                    value: 'calc(var(--spacing--md) * 0.75)'
                 },
                 {
                     name: '--tooltip--padding-right',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--tooltip--padding-bottom',
-                    value: 'calc(var(--spacing-md) * 0.75)'
+                    value: 'calc(var(--spacing--md) * 0.75)'
                 },
                 {
                     name: '--tooltip--padding-left',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--tooltip--padding',
@@ -292,11 +292,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tooltip--width',
-                    value: 'calc(var(--spacing-md) * 18)'
+                    value: 'calc(var(--spacing--md) * 18)'
                 },
                 {
                     name: '--tooltip--arrow--size',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--tooltip--{color}--border-top-color'

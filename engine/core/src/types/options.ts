@@ -17,7 +17,10 @@ export type VariablesOptions = DefinitionOptions & { registerComposed?: boolean 
 
 export type SelectorOptions = DefinitionOptions;
 
-export type VariantOptions = DefinitionOptions;
+export type VariantOptions = DefinitionOptions & {
+    selectorFn?: (name: string, variant: string) => string;
+    prefix?: string;
+};
 
 export type UtilityOptions = DefinitionOptions & {
     prefix?: string;

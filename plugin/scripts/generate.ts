@@ -2,16 +2,16 @@ import glob from 'fast-glob';
 import path from 'path';
 import fs from 'fs/promises';
 
-interface ComponentEntry {
+type ComponentEntry = {
     name: string;
     export: string;
     filePath: string;
 }
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
-const resourcesDir = path.resolve(__dirname, '..', 'src', 'resources');
-const packagesDir = path.resolve(__dirname, '..', '..', '..');
-const componentsDir = path.resolve(packagesDir, 'ui', 'components');
+
+const rootDir = path.resolve(__dirname, '..', '..');
+const componentsDir = path.resolve(rootDir, 'ui', 'components');
 
 const componentFiles = await glob([path.resolve(componentsDir, '*/src/**/*.vue')], {
     ignore: ['**/examples/**/*']
@@ -34,6 +34,7 @@ componentFiles.forEach((file) => {
 
 components.sort((a, b) => a.name.localeCompare(b.name));
 
+const resourcesDir = path.resolve(__dirname, '..', 'resources');
 await fs.writeFile(
     path.resolve(resourcesDir, 'components.ts'),
     `export default ${JSON.stringify(components, null, 4)};`

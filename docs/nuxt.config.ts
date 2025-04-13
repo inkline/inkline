@@ -3,13 +3,13 @@ import TailwindCSS from '@tailwindcss/vite';
 import { aliases } from '@inkline/vite-config';
 import { contentFileBeforeParseHook } from './hooks';
 
-const packagesDir = resolve(__dirname, '..', 'packages');
+const packagesDir = resolve(__dirname, '..');
 const componentsDir = resolve(packagesDir, 'ui', 'components');
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
     modules: [
-        '../packages/integrations/framework/src/nuxt',
+        '../plugin/src/nuxt',
         '@nuxt/icon',
         '@nuxt/image',
         '@nuxtjs/i18n',
@@ -97,7 +97,7 @@ export default defineNuxtConfig({
             alias: [
                 ...aliases.map((alias) => ({
                     find: alias.find,
-                    replacement: resolve(__dirname, '..', 'packages', alias.replacement)
+                    replacement: resolve(__dirname, '..', alias.replacement)
                 })),
                 {
                     find: /@inkline\/component-(.+)\/components\/(.+)\/examples/,

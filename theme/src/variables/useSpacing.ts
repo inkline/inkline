@@ -17,8 +17,8 @@ export function useSpacingVariables(userOptions: DefinitionOptions) {
     const { fluidBreakpoint } = useFluid(options);
     const { fontSizeMin, fontSizeMax } = useFontSize(options);
 
-    const spacingMin = variable('spacing-min', ref(fontSizeMin), options);
-    const spacingMax = variable('spacing-max', ref(fontSizeMax), options);
+    const spacingMin = variable('spacing--min', ref(fontSizeMin), options);
+    const spacingMax = variable('spacing--max', ref(fontSizeMax), options);
 
     const variantMultipliers = {
         '4xs': 0.0625,
@@ -60,7 +60,7 @@ export function useSpacingVariables(userOptions: DefinitionOptions) {
         spacingMin2Xl,
         spacingMin3Xl,
         spacingMin4Xl
-    } = useVariantsFactory<'spacing-min', keyof typeof spacingMinMaxVariants>(
+    } = useVariantsFactory<'spacing--min', keyof typeof spacingMinMaxVariants>(
         spacingMin,
         spacingMinMaxVariants,
         options
@@ -78,7 +78,7 @@ export function useSpacingVariables(userOptions: DefinitionOptions) {
         spacingMax2Xl,
         spacingMax3Xl,
         spacingMax4Xl
-    } = useVariantsFactory<'spacing-max', keyof typeof spacingMinMaxVariants>(
+    } = useVariantsFactory<'spacing--max', keyof typeof spacingMinMaxVariants>(
         spacingMax,
         spacingMinMaxVariants,
         options

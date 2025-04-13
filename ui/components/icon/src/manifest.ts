@@ -46,7 +46,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--icon--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--icon--{color}--color'

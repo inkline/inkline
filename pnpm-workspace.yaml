@@ -6,7 +6,7 @@ packages:
   - e2e/*
   - engine/**/*
   - inkline
-  - integrations/**/*
+  - plugin
   - storybook
   - theme
   - tooling/**/*

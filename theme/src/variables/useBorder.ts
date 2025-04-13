@@ -6,54 +6,69 @@ export function useBorderVariables(userOptions: DefinitionOptions) {
 
     const { colorGray200 } = useNeutralColors(options);
 
+    const borderStyleNone = variable('border-style--none', 'none', options);
+    const borderStyleSolid = variable('border-style--solid', 'solid', options);
+    const borderStyleDashed = variable('border-style--dashed', 'dashed', options);
+    const borderStyleDotted = variable('border-style--dotted', 'dotted', options);
+    const borderStyleDouble = variable('border-style--double', 'double', options);
+    const borderStyleGroove = variable('border-style--groove', 'groove', options);
+
+    const borderTopStyle = variable('border-top-style', ref(borderStyleSolid), options);
+    const borderRightStyle = variable('border-right-style', ref(borderStyleSolid), options);
+    const borderBottomStyle = variable('border-bottom-style', ref(borderStyleSolid), options);
+    const borderLeftStyle = variable('border-left-style', ref(borderStyleSolid), options);
+    const borderStyle = variable('border-style', [
+        ref(borderTopStyle),
+        ref(borderRightStyle),
+        ref(borderBottomStyle),
+        ref(borderLeftStyle)
+    ], options);
+
     const borderStyleMap = {
-        none: 'none',
-        solid: 'solid',
-        dashed: 'dashed',
-        dotted: 'dotted',
-        double: 'double',
-        groove: 'groove',
-        default: 'solid'
+        none: borderStyleNone,
+        solid: borderStyleSolid,
+        dashed: borderStyleDashed,
+        dotted: borderStyleDotted,
+        double: borderStyleDouble,
+        groove: borderStyleGroove,
+        default: borderStyle
     };
+
+    const borderWidthNone = variable('border-width--none', 0, options);
+    const borderWidthThin = variable('border-width--thin', 'thin', options);
+    const borderWidthMedium = variable('border-width--medium', 'medium', options);
+    const borderWidthThick = variable('border-width--thick', 'thick', options);
+
+    const borderTopWidth = variable('border-top-width', ref(borderWidthThin), options);
+    const borderRightWidth = variable('border-right-width', ref(borderWidthThin), options);
+    const borderBottomWidth = variable('border-bottom-width', ref(borderWidthThin), options);
+    const borderLeftWidth = variable('border-left-width', ref(borderWidthThin), options);
+    const borderWidth = variable('border-width', [
+        ref(borderTopWidth),
+        ref(borderRightWidth),
+        ref(borderBottomWidth),
+        ref(borderLeftWidth)
+    ], options);
 
     const borderWidthMap = {
-        0: 0,
-        none: 0,
-        thin: 'thin',
-        medium: 'medium',
-        thick: 'thick',
-        default: 'thin'
+        0: borderWidthNone,
+        none: borderWidthNone,
+        thin: borderWidthThin,
+        medium: borderWidthMedium,
+        thick: borderWidthThick,
+        default: borderWidth
     };
-
-    const borderTopWidth = variable('border-top-width', '1px', options);
-    const borderRightWidth = variable('border-right-width', '1px', options);
-    const borderBottomWidth = variable('border-bottom-width', '1px', options);
-    const borderLeftWidth = variable('border-left-width', '1px', options);
-    const borderWidth = variable(
-        'border-width',
-        [ref(borderTopWidth), ref(borderRightWidth), ref(borderBottomWidth), ref(borderLeftWidth)],
-        options
-    );
-
-    const borderTopStyle = variable('border-top-style', 'solid', options);
-    const borderRightStyle = variable('border-right-style', 'solid', options);
-    const borderBottomStyle = variable('border-bottom-style', 'solid', options);
-    const borderLeftStyle = variable('border-left-style', 'solid', options);
-    const borderStyle = variable(
-        'border-style',
-        [ref(borderTopStyle), ref(borderRightStyle), ref(borderBottomStyle), ref(borderLeftStyle)],
-        options
-    );
 
     const borderTopColor = variable('border-top-color', ref(colorGray200), options);
     const borderRightColor = variable('border-right-color', ref(colorGray200), options);
     const borderBottomColor = variable('border-bottom-color', ref(colorGray200), options);
     const borderLeftColor = variable('border-left-color', ref(colorGray200), options);
-    const borderColor = variable(
-        'border-color',
-        [ref(borderTopColor), ref(borderRightColor), ref(borderBottomColor), ref(borderLeftColor)],
-        options
-    );
+    const borderColor = variable('border-color', [
+        ref(borderTopColor),
+        ref(borderRightColor),
+        ref(borderBottomColor),
+        ref(borderLeftColor)
+    ], options);
 
     const borderColorMap = {
         default: borderColor
@@ -87,16 +102,26 @@ export function useBorderVariables(userOptions: DefinitionOptions) {
     );
 
     return {
-        borderTopWidth,
-        borderRightWidth,
-        borderBottomWidth,
-        borderLeftWidth,
-        borderWidth,
+        borderStyleNone,
+        borderStyleSolid,
+        borderStyleDashed,
+        borderStyleDotted,
+        borderStyleDouble,
+        borderStyleGroove,
+        borderStyle,
         borderTopStyle,
         borderRightStyle,
         borderBottomStyle,
         borderLeftStyle,
-        borderStyle,
+        borderWidthNone,
+        borderWidthThin,
+        borderWidthMedium,
+        borderWidthThick,
+        borderWidth,
+        borderTopWidth,
+        borderRightWidth,
+        borderBottomWidth,
+        borderLeftWidth,
         borderTopColor,
         borderRightColor,
         borderBottomColor,

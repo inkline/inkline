@@ -154,7 +154,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--drawer--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--drawer--border-right-width',
@@ -166,7 +166,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--drawer--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--drawer--border-bottom-width',
@@ -178,7 +178,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--drawer--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--drawer--border-left-width',
@@ -190,7 +190,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--drawer--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--drawer--border-width',
@@ -290,11 +290,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--drawer--close--size',
-                    value: 'calc(var(--font-size-md) * 1.5)'
+                    value: 'calc(var(--font-size--md) * 1.5)'
                 },
                 {
                     name: '--drawer--close--font-size',
-                    value: 'calc(var(--font-size-md) * 0.5)'
+                    value: 'calc(var(--font-size--md) * 0.5)'
                 },
                 {
                     name: '--drawer--background',
@@ -326,7 +326,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--drawer--footer--button--margin-left',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--drawer--footer--button--margin',
@@ -334,19 +334,19 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--drawer--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
+                    value: 'var(--border-top-left-radius--md)'
                 },
                 {
                     name: '--drawer--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
+                    value: 'var(--border-top-right-radius--md)'
                 },
                 {
                     name: '--drawer--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
+                    value: 'var(--border-bottom-right-radius--md)'
                 },
                 {
                     name: '--drawer--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
+                    value: 'var(--border-bottom-left-radius--md)'
                 },
                 {
                     name: '--drawer--border-radius',
@@ -354,23 +354,23 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--drawer--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--drawer--padding-top',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--drawer--padding-right',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--drawer--padding-bottom',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--drawer--padding-left',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--drawer--padding',
@@ -378,7 +378,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--drawer--max-width',
-                    value: 'calc(var(--spacing-md) * 30)'
+                    value: 'calc(var(--spacing--md) * 30)'
                 },
                 {
                     name: '--drawer--icon--margin-top',
@@ -386,7 +386,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--drawer--icon--margin-right',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--drawer--icon--margin-bottom',

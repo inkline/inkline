@@ -31,7 +31,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab-list--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab-list--border-right-width',
@@ -43,7 +43,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab-list--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab-list--border-bottom-width',
@@ -55,7 +55,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab-list--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab-list--border-left-width',
@@ -67,7 +67,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab-list--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab-list--border-width',
@@ -264,7 +264,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab-panel--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab-panel--border-right-width',
@@ -276,7 +276,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab-panel--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab-panel--border-bottom-width',
@@ -288,7 +288,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab-panel--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab-panel--border-left-width',
@@ -300,7 +300,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab-panel--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab-panel--border-width',
@@ -477,7 +477,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--border-right-width',
@@ -489,7 +489,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--border-bottom-width',
@@ -501,7 +501,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--border-left-width',
@@ -513,7 +513,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--border-width',
@@ -633,7 +633,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--active--font-weight',
-                    value: 'var(--font-weight-semibold)'
+                    value: 'var(--font-weight--semibold)'
                 },
                 {
                     name: '--tab--active--border-top-width',
@@ -645,7 +645,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--active--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--active--border-right-width',
@@ -657,7 +657,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--active--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--active--border-bottom-width',
@@ -669,7 +669,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--active--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--active--border-left-width',
@@ -681,7 +681,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--active--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--active--border-width',
@@ -717,7 +717,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--active--background',
-                    value: 'var(--color-light-tint-50)'
+                    value: 'var(--color-light--tint-50)'
                 },
                 {
                     name: '--tab--background',
@@ -737,7 +737,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--hover--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--hover--border-right-width',
@@ -749,7 +749,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--hover--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--hover--border-bottom-width',
@@ -761,7 +761,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--hover--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--hover--border-left-width',
@@ -773,7 +773,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--hover--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--hover--border-width',
@@ -809,7 +809,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--hover--background',
-                    value: 'var(--color-light-tint-50)'
+                    value: 'var(--color-light--tint-50)'
                 },
                 {
                     name: '--tab--focus--border-top-width',
@@ -821,7 +821,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--focus--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--focus--border-right-width',
@@ -833,7 +833,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--focus--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--focus--border-bottom-width',
@@ -845,7 +845,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--focus--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--focus--border-left-width',
@@ -857,7 +857,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--focus--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--focus--border-width',
@@ -893,7 +893,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--focus--background',
-                    value: 'var(--color-light-tint-50)'
+                    value: 'var(--color-light--tint-50)'
                 },
                 {
                     name: '--tab--{color}--border-top-color'
@@ -1015,7 +1015,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--border-right-width',
@@ -1027,7 +1027,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--border-bottom-width',
@@ -1039,7 +1039,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--border-left-width',
@@ -1051,7 +1051,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--border-width',
@@ -1171,7 +1171,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--active--font-weight',
-                    value: 'var(--font-weight-semibold)'
+                    value: 'var(--font-weight--semibold)'
                 },
                 {
                     name: '--tab--active--border-top-width',
@@ -1183,7 +1183,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--active--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--active--border-right-width',
@@ -1195,7 +1195,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--active--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--active--border-bottom-width',
@@ -1207,7 +1207,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--active--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--active--border-left-width',
@@ -1219,7 +1219,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--active--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--active--border-width',
@@ -1255,7 +1255,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--active--background',
-                    value: 'var(--color-light-tint-50)'
+                    value: 'var(--color-light--tint-50)'
                 },
                 {
                     name: '--tab--background',
@@ -1275,7 +1275,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--hover--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--hover--border-right-width',
@@ -1287,7 +1287,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--hover--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--hover--border-bottom-width',
@@ -1299,7 +1299,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--hover--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--hover--border-left-width',
@@ -1311,7 +1311,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--hover--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--hover--border-width',
@@ -1347,7 +1347,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--hover--background',
-                    value: 'var(--color-light-tint-50)'
+                    value: 'var(--color-light--tint-50)'
                 },
                 {
                     name: '--tab--focus--border-top-width',
@@ -1359,7 +1359,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--focus--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--focus--border-right-width',
@@ -1371,7 +1371,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--focus--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--focus--border-bottom-width',
@@ -1383,7 +1383,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--focus--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--focus--border-left-width',
@@ -1395,7 +1395,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--focus--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab--focus--border-width',
@@ -1431,7 +1431,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab--focus--background',
-                    value: 'var(--color-light-tint-50)'
+                    value: 'var(--color-light--tint-50)'
                 },
                 {
                     name: '--tab-panel--border-top-width',
@@ -1443,7 +1443,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab-panel--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab-panel--border-right-width',
@@ -1455,7 +1455,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab-panel--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab-panel--border-bottom-width',
@@ -1467,7 +1467,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab-panel--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab-panel--border-left-width',
@@ -1479,7 +1479,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--tab-panel--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--tab-panel--border-width',

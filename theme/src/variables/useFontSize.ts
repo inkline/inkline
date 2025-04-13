@@ -17,8 +17,8 @@ export function useFontSizeVariables(userOptions: DefinitionOptions) {
     const { fluidBreakpoint } = useFluid(options);
     const { typeScaleMinMap, typeScaleMaxMap } = useFluidTypeScale(options);
 
-    const fontSizeMin = variable('font-size-min', 16, options);
-    const fontSizeMax = variable('font-size-max', 18, options);
+    const fontSizeMin = variable('font-size--min', 16, options);
+    const fontSizeMax = variable('font-size--max', 18, options);
 
     const fontSizeMinVariants = {
         '2xs': createVariantFactoryFn((value) => multiply(value, ref(typeScaleMinMap['-3']))),
@@ -42,7 +42,7 @@ export function useFontSizeVariables(userOptions: DefinitionOptions) {
         fontSizeMin2Xl,
         fontSizeMin3Xl,
         fontSizeMin4Xl
-    } = useVariantsFactory<'font-size-min', keyof typeof fontSizeMinVariants>(
+    } = useVariantsFactory<'font-size--min', keyof typeof fontSizeMinVariants>(
         fontSizeMin,
         fontSizeMinVariants,
         options
@@ -70,7 +70,7 @@ export function useFontSizeVariables(userOptions: DefinitionOptions) {
         fontSizeMax2Xl,
         fontSizeMax3Xl,
         fontSizeMax4Xl
-    } = useVariantsFactory<'font-size-max', keyof typeof fontSizeMaxVariants>(
+    } = useVariantsFactory<'font-size--max', keyof typeof fontSizeMaxVariants>(
         fontSizeMax,
         fontSizeMaxVariants,
         options
@@ -105,7 +105,7 @@ export function useFontSizeVariables(userOptions: DefinitionOptions) {
         fontSize4Xl
     } = useVariantsFactory<'font-size', keyof typeof variants>('font-size', variants, options);
 
-    const fontSizeInherit = variable('font-size-inherit', 'inherit', options);
+    const fontSizeInherit = variable('font-size--inherit', 'inherit', options);
 
     const fontSize = variable('font-size', ref(fontSizeMd), options);
 

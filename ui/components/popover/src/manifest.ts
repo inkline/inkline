@@ -140,7 +140,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--popover--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--popover--border-right-width',
@@ -152,7 +152,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--popover--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--popover--border-bottom-width',
@@ -164,7 +164,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--popover--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--popover--border-left-width',
@@ -176,7 +176,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--popover--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--popover--border-width',
@@ -316,7 +316,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--popover--width',
-                    value: 'calc(var(--spacing-md) * 18)'
+                    value: 'calc(var(--spacing--md) * 18)'
                 },
                 {
                     name: '--popover--{color}--border-top-color'
@@ -356,7 +356,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--popover--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--popover--border-right-width',
@@ -368,7 +368,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--popover--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--popover--border-bottom-width',
@@ -380,7 +380,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--popover--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--popover--border-left-width',
@@ -392,7 +392,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--popover--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--popover--border-width',
@@ -532,7 +532,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--popover--width',
-                    value: 'calc(var(--spacing-md) * 18)'
+                    value: 'calc(var(--spacing--md) * 18)'
                 }
             ]
         }

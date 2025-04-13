@@ -4,14 +4,14 @@ import { createVariantFactoryFn, useVariantsFactory } from './useVariantsFactory
 export function useScaleVariables(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    const scaleMinorSecond = variable('scale-minor-second', 1.067, options);
-    const scaleMajorSecond = variable('scale-major-second', 1.125, options);
-    const scaleMinorThird = variable('scale-minor-third', 1.2, options);
-    const scaleMajorThird = variable('scale-major-third', 1.25, options);
-    const scalePerfectFourth = variable('scale-perfect-fourth', 1.333, options);
-    const scaleAugmentedFourth = variable('scale-augmented-fourth', 1.414, options);
-    const scalePerfectFifth = variable('scale-perfect-fifth', 1.5, options);
-    const scaleGolden = variable('scale-golden', 1.618, options);
+    const scaleMinorSecond = variable('scale--minor-second', 1.067, options);
+    const scaleMajorSecond = variable('scale--major-second', 1.125, options);
+    const scaleMinorThird = variable('scale--minor-third', 1.2, options);
+    const scaleMajorThird = variable('scale--major-third', 1.25, options);
+    const scalePerfectFourth = variable('scale--perfect-fourth', 1.333, options);
+    const scaleAugmentedFourth = variable('scale--augmented-fourth', 1.414, options);
+    const scalePerfectFifth = variable('scale--perfect-fifth', 1.5, options);
+    const scaleGolden = variable('scale--golden', 1.618, options);
 
     // @TODO REMOVE
     const scale = variable('scale', ref(scaleMinorThird), options); // @TODO REMOVE

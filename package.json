@@ -5,8 +5,10 @@
     "main": "index.js",
     "scripts": {
         "prebuild": "turbo run build --filter=@inkline/devtools",
-        "build": "turbo run build",
-        "dev": "turbo run dev",
+        "build": "turbo run build --filter='!./docs' --filter='!./e2e' --filter='!./storybook'",
+        "dev": "turbo run dev --filter='!./docs' --filter='!./e2e' --filter='!./storybook'",
+        "dev:docs": "turbo run dev --filter='./docs'",
+        "dev:storybook": "turbo run dev --filter='./storybook'",
         "test": "turbo run test",
         "lint": "turbo run lint"
     },

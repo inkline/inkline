@@ -102,7 +102,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toggle--border-right-width',
@@ -114,7 +114,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toggle--border-bottom-width',
@@ -126,7 +126,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toggle--border-left-width',
@@ -138,7 +138,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toggle--border-width',
@@ -198,7 +198,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--toggle--line-height',
@@ -266,19 +266,19 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--indicator--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
+                    value: 'var(--border-top-left-radius--md)'
                 },
                 {
                     name: '--toggle--indicator--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
+                    value: 'var(--border-top-right-radius--md)'
                 },
                 {
                     name: '--toggle--indicator--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
+                    value: 'var(--border-bottom-right-radius--md)'
                 },
                 {
                     name: '--toggle--indicator--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
+                    value: 'var(--border-bottom-left-radius--md)'
                 },
                 {
                     name: '--toggle--indicator--border-radius',
@@ -286,7 +286,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--disabled--color',
-                    value: 'var(--text-color-weak)'
+                    value: 'var(--text-color--weak)'
                 },
                 {
                     name: '--toggle--disabled--background',
@@ -302,7 +302,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--disabled--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toggle--disabled--border-right-width',
@@ -314,7 +314,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--disabled--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toggle--disabled--border-bottom-width',
@@ -326,7 +326,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--disabled--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toggle--disabled--border-left-width',
@@ -338,7 +338,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--disabled--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toggle--disabled--border-width',
@@ -374,15 +374,15 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--disabled--indicator--background',
-                    value: 'var(--color-light-shade-150)'
+                    value: 'var(--color-light--shade-150)'
                 },
                 {
                     name: '--toggle--readonly--color',
-                    value: 'var(--text-color-weak)'
+                    value: 'var(--text-color--weak)'
                 },
                 {
                     name: '--toggle--readonly--background',
-                    value: 'var(--color-light-tint-50)'
+                    value: 'var(--color-light--tint-50)'
                 },
                 {
                     name: '--toggle--readonly--border-top-width',
@@ -394,7 +394,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--readonly--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toggle--readonly--border-right-width',
@@ -406,7 +406,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--readonly--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toggle--readonly--border-bottom-width',
@@ -418,7 +418,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--readonly--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toggle--readonly--border-left-width',
@@ -430,7 +430,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--readonly--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toggle--readonly--border-width',
@@ -466,7 +466,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--readonly--indicator--background',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toggle--background',
@@ -490,7 +490,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--border-top-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--toggle--checked--border-right-width',
@@ -502,7 +502,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--border-right-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--toggle--checked--border-bottom-width',
@@ -514,7 +514,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--border-bottom-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--toggle--checked--border-left-width',
@@ -526,7 +526,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--border-left-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--toggle--checked--border-width',
@@ -562,7 +562,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--disabled--background',
-                    value: 'var(--color-primary-200)'
+                    value: 'var(--color-primary--200)'
                 },
                 {
                     name: '--toggle--checked--disabled--border-top-width',
@@ -574,7 +574,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--disabled--border-top-color',
-                    value: 'var(--color-primary-300)'
+                    value: 'var(--color-primary--300)'
                 },
                 {
                     name: '--toggle--checked--disabled--border-right-width',
@@ -586,7 +586,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--disabled--border-right-color',
-                    value: 'var(--color-primary-300)'
+                    value: 'var(--color-primary--300)'
                 },
                 {
                     name: '--toggle--checked--disabled--border-bottom-width',
@@ -598,7 +598,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--disabled--border-bottom-color',
-                    value: 'var(--color-primary-300)'
+                    value: 'var(--color-primary--300)'
                 },
                 {
                     name: '--toggle--checked--disabled--border-left-width',
@@ -610,7 +610,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--disabled--border-left-color',
-                    value: 'var(--color-primary-300)'
+                    value: 'var(--color-primary--300)'
                 },
                 {
                     name: '--toggle--checked--disabled--border-width',
@@ -646,11 +646,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--disabled--indicator--background',
-                    value: 'var(--color-light-tint-50)'
+                    value: 'var(--color-light--tint-50)'
                 },
                 {
                     name: '--toggle--checked--readonly--background',
-                    value: 'var(--color-primary-300)'
+                    value: 'var(--color-primary--300)'
                 },
                 {
                     name: '--toggle--checked--readonly--border-top-width',
@@ -662,7 +662,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--readonly--border-top-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--toggle--checked--readonly--border-right-width',
@@ -674,7 +674,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--readonly--border-right-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--toggle--checked--readonly--border-bottom-width',
@@ -686,7 +686,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--readonly--border-bottom-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--toggle--checked--readonly--border-left-width',
@@ -698,7 +698,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--readonly--border-left-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--toggle--checked--readonly--border-width',
@@ -734,7 +734,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--checked--readonly--indicator--background',
-                    value: 'var(--color-light-tint-100)'
+                    value: 'var(--color-light--tint-100)'
                 },
                 {
                     name: '--toggle--checked--indicator--background',
@@ -742,19 +742,19 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
+                    value: 'var(--border-top-left-radius--md)'
                 },
                 {
                     name: '--toggle--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
+                    value: 'var(--border-top-right-radius--md)'
                 },
                 {
                     name: '--toggle--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
+                    value: 'var(--border-bottom-right-radius--md)'
                 },
                 {
                     name: '--toggle--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
+                    value: 'var(--border-bottom-left-radius--md)'
                 },
                 {
                     name: '--toggle--border-radius',
@@ -766,7 +766,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--margin-right',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--toggle--margin-bottom',
@@ -782,11 +782,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toggle--width',
-                    value: 'calc(var(--spacing-md) * 2)'
+                    value: 'calc(var(--spacing--md) * 2)'
                 },
                 {
                     name: '--toggle--height',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--toggle--{color}--background'

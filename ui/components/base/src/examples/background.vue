@@ -1,41 +1,41 @@
 <template>
-    <BaseComponent background="white">
+    <BaseComponent :variant="{ background: 'white' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent background="light">
+    <BaseComponent :variant="{ background: 'light' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent background="dark">
+    <BaseComponent :variant="{ background: 'dark' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent background="black">
+    <BaseComponent :variant="{ background: 'black' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent background="primary">
+    <BaseComponent :variant="{ background: 'primary' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent background="secondary">
+    <BaseComponent :variant="{ background: 'secondary' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent background="success">
+    <BaseComponent :variant="{ background: 'success' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent background="info">
+    <BaseComponent :variant="{ background: 'info' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent background="warning">
+    <BaseComponent :variant="{ background: 'warning' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent background="danger">
+    <BaseComponent :variant="{ background: 'danger' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 </template>

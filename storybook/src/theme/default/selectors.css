@@ -5,12 +5,12 @@
 }
 
 a {
-    color: var(--a--color, var(--color-primary-500));
+    color: var(--a--color, var(--color-primary--500));
     text-decoration: var(--a--text-decoration);
 }
 
 a:hover {
-    color: var(--a--hover--color, var(--color-primary-600));
+    color: var(--a--hover--color, var(--color-primary--600));
     text-decoration: var(--a--hover--text-decoration);
 }
 
@@ -45,7 +45,7 @@ body {
 caption {
     text-align: left;
     padding: var(--caption--padding, var(--caption--padding-top) var(--caption--padding-right) var(--caption--padding-bottom) var(--caption--padding-left));
-    color: var(--caption--color, var(--text-color-weaker));
+    color: var(--caption--color, var(--text-color--weaker));
 }
 
 code {
@@ -68,7 +68,7 @@ dl dt {
 }
 
 dl dd {
-    margin: var(--dl--dd--margin-bottom, var(--spacing-xs));
+    margin: var(--dl--dd--margin-bottom, var(--spacing--xs));
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
@@ -553,16 +553,16 @@ a.button.-disabled, *:disabled a.button {
     border-top-width: 0;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-top-left-radius: var(--card--border-top-left-radius, var(--border-top-left-radius-md));
-    border-top-right-radius: var(--card--border-top-right-radius, var(--border-top-right-radius-md));
+    border-top-left-radius: var(--card--border-top-left-radius, var(--border-top-left-radius--md));
+    border-top-right-radius: var(--card--border-top-right-radius, var(--border-top-right-radius--md));
 }
 
 .card .card-header:last-child, .card .card-footer:last-child {
     border-bottom-width: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-bottom-right-radius: var(--card--border-bottom-right-radius, var(--border-bottom-right-radius-md));
-    border-bottom-left-radius: var(--card--border-bottom-left-radius, var(--border-bottom-left-radius-md));
+    border-bottom-right-radius: var(--card--border-bottom-right-radius, var(--border-bottom-right-radius--md));
+    border-bottom-left-radius: var(--card--border-bottom-left-radius, var(--border-bottom-left-radius--md));
 }
 
 .card.-light {
@@ -4714,7 +4714,7 @@ a.button.-disabled, *:disabled a.button {
 }
 
 .blockquote cite {
-    color: var(--blockquote--cite--color, var(--text-color-weak));
+    color: var(--blockquote--cite--color, var(--text-color--weak));
     font-size: var(--blockquote--cite--font-size);
     display: block;
 }
@@ -4732,36 +4732,36 @@ a.button.-disabled, *:disabled a.button {
     letter-spacing: var(--letter-spacing);
 }
 
-.typography.-font-size-xs {
-    font-size: var(--font-size-xs);
+.typography.-font-size--xs {
+    font-size: var(--font-size--xs);
 }
 
-.typography.-font-size-sm {
-    font-size: var(--font-size-sm);
+.typography.-font-size--sm {
+    font-size: var(--font-size--sm);
 }
 
-.typography.-font-size-md {
-    font-size: var(--font-size-md);
+.typography.-font-size--md {
+    font-size: var(--font-size--md);
 }
 
-.typography.-font-size-lg {
-    font-size: var(--font-size-lg);
+.typography.-font-size--lg {
+    font-size: var(--font-size--lg);
 }
 
-.typography.-font-size-xl {
-    font-size: var(--font-size-xl);
+.typography.-font-size--xl {
+    font-size: var(--font-size--xl);
 }
 
-.typography.-font-size-2xl {
-    font-size: var(--font-size-2xl);
+.typography.-font-size--2xl {
+    font-size: var(--font-size--2xl);
 }
 
-.typography.-font-size-3xl {
-    font-size: var(--font-size-3xl);
+.typography.-font-size--3xl {
+    font-size: var(--font-size--3xl);
 }
 
-.typography.-font-size-4xl {
-    font-size: var(--font-size-4xl);
+.typography.-font-size--4xl {
+    font-size: var(--font-size--4xl);
 }
 
 .typography.-font-size-h1 {
@@ -4848,80 +4848,80 @@ a.button.-disabled, *:disabled a.button {
     text-decoration: overline;
 }
 
-.typography.-font-weight-extralight {
-    font-weight: var(--font-weight-extralight);
+.typography.-font-weight--extralight {
+    font-weight: var(--font-weight--extralight);
 }
 
-.typography.-font-weight-light {
-    font-weight: var(--font-weight-light);
+.typography.-font-weight--light {
+    font-weight: var(--font-weight--light);
 }
 
-.typography.-font-weight-normal {
-    font-weight: var(--font-weight-normal);
+.typography.-font-weight--normal {
+    font-weight: var(--font-weight--normal);
 }
 
-.typography.-font-weight-medium {
-    font-weight: var(--font-weight-medium);
+.typography.-font-weight--medium {
+    font-weight: var(--font-weight--medium);
 }
 
-.typography.-font-weight-semibold {
-    font-weight: var(--font-weight-semibold);
+.typography.-font-weight--semibold {
+    font-weight: var(--font-weight--semibold);
 }
 
-.typography.-font-weight-bold {
-    font-weight: var(--font-weight-bold);
+.typography.-font-weight--bold {
+    font-weight: var(--font-weight--bold);
 }
 
-.typography.-font-weight-black {
-    font-weight: var(--font-weight-black);
+.typography.-font-weight--black {
+    font-weight: var(--font-weight--black);
 }
 
-.typography.-font-weight-lighter {
-    font-weight: var(--font-weight-lighter);
+.typography.-font-weight--lighter {
+    font-weight: var(--font-weight--lighter);
 }
 
-.typography.-font-weight-bolder {
-    font-weight: var(--font-weight-bolder);
+.typography.-font-weight--bolder {
+    font-weight: var(--font-weight--bolder);
 }
 
-.typography.-line-height-tight {
-    line-height: var(--line-height-tight);
+.typography.-line-height--tight {
+    line-height: var(--line-height--tight);
 }
 
-.typography.-line-height-snug {
-    line-height: var(--line-height-snug);
+.typography.-line-height--snug {
+    line-height: var(--line-height--snug);
 }
 
-.typography.-line-height-normal {
-    line-height: var(--line-height-normal);
+.typography.-line-height--normal {
+    line-height: var(--line-height--normal);
 }
 
-.typography.-line-height-relaxed {
-    line-height: var(--line-height-relaxed);
+.typography.-line-height--relaxed {
+    line-height: var(--line-height--relaxed);
 }
 
-.typography.-line-height-loose {
-    line-height: var(--line-height-loose);
+.typography.-line-height--loose {
+    line-height: var(--line-height--loose);
 }
 
-.typography.-letter-spacing-tighter {
-    letter-spacing: var(--letter-spacing-tighter);
+.typography.-letter-spacing--tighter {
+    letter-spacing: var(--letter-spacing--tighter);
 }
 
-.typography.-letter-spacing-tight {
-    letter-spacing: var(--letter-spacing-tight);
+.typography.-letter-spacing--tight {
+    letter-spacing: var(--letter-spacing--tight);
 }
 
-.typography.-letter-spacing-normal {
-    letter-spacing: var(--letter-spacing-normal);
+.typography.-letter-spacing--normal {
+    letter-spacing: var(--letter-spacing--normal);
 }
 
-.typography.-letter-spacing-wide {
-    letter-spacing: var(--letter-spacing-wide);
+.typography.-letter-spacing--wide {
+    letter-spacing: var(--letter-spacing--wide);
 }
 
-.typography.-letter-spacing-wider {
-    letter-spacing: var(--letter-spacing-wider);
+.typography.-letter-spacing--wider {
+    letter-spacing: var(--letter-spacing--wider);
 }
 
 .typography.-truncate {

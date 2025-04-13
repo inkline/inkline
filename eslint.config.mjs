@@ -1,4 +1,4 @@
-import pluginInkline from "./packages/tooling/eslint-config/index.mjs";
+import pluginInkline from "./tooling/eslint-config/index.mjs";
 import { dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 

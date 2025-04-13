@@ -7,10 +7,11 @@ import prettierConfig from '@inkline/eslint-config/.prettierrc';
 import { Logger } from '@inkline/logger';
 
 export async function command() {
-    const srcDir = path.resolve(process.cwd(), 'src');
-    const manifestPath = path.resolve(srcDir, 'manifest.ts');
+    const rootDir = process.cwd();
+    const inputDir = path.resolve(rootDir, 'src');
+    const outputDir = path.resolve(rootDir, 'src');
 
-    const manifest = await parse(srcDir);
+    const manifest = await parse(inputDir);
 
     const output = `import type { ComponentManifest } from '@inkline/types';
 
@@ -22,7 +23,8 @@ export default manifest;`;
         ...(prettierConfig as PrettierOptions)
     });
 
-    await fs.writeFile(manifestPath, formattedOutput, 'utf-8');
+    const outputPath = path.resolve(outputDir, 'manifest.ts');
+    await fs.writeFile(outputPath, formattedOutput, 'utf-8');
 
     Logger.info(`Generated manifest file.`);
 }

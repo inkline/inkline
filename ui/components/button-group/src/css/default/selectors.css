@@ -3,7 +3,6 @@
     display: inline-flex;
     vertical-align: middle;
     box-sizing: border-box;
-    overflow: hidden;
 }
 
 .button-group .button, .button-group .button-group {
@@ -30,4 +29,18 @@
 .button-group.-vertical > .button:not(:first-child), .button-group.-vertical > .button-group + .button-group .button:first-child, .button-group.-vertical > .button + .button-group .button:first-child {
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
+}
+
+.button-group.-block > .button {
+    flex-basis: 100%;
+}
+
+.button-group.-vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.button-group.-vertical .button, .button-group.-vertical .button-group, .button-group.-vertical [class$="-wrapper"] {
+    width: 100%;
 }

@@ -1,0 +1,23 @@
+{
+    "extends": ["//"],
+    "tasks": {
+        "build": {
+            "inputs": [
+                "content/**/*",
+                "hooks/**/*",
+                "src/**/*",
+                "content.config.ts",
+                "inkline.config.ts",
+                "nuxt.config.ts"
+            ],
+            "outputs": [
+                ".data",
+                ".nuxt",
+                ".output"
+            ],
+            "dependsOn": [
+                "^build"
+            ]
+        }
+    }
+}

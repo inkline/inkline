@@ -18,6 +18,7 @@
                         "default",
                         "box"
                     ],
+                    "border": "0",
                     "padding": "0"
                 }
             },
@@ -26,14 +27,6 @@
                 "__name": "button-group--block",
                 "__value": {
                     "width": "100"
-                }
-            },
-            "button-group--child": {
-                "__type": "variant",
-                "__name": "button-group--child",
-                "__value": {
-                    "border": "0",
-                    "borderRadius": "0"
                 }
             },
             "button-group--block--child": {
@@ -52,8 +45,7 @@
                     "position": "relative",
                     "display": "inline-flex",
                     "verticalAlign": "middle",
-                    "boxSizing": "border-box",
-                    "overflow": "hidden"
+                    "boxSizing": "border-box"
                 }
             },
             {
@@ -95,6 +87,29 @@
                 "__value": {
                     "borderTopLeftRadius": "0 !important",
                     "borderTopRightRadius": "0 !important"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".button-group.-block > .button",
+                "__value": {
+                    "flexBasis": "100%"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".button-group.-vertical",
+                "__value": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "center"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".button-group.-vertical .button, .button-group.-vertical .button-group, .button-group.-vertical [class$=\"-wrapper\"]",
+                "__value": {
+                    "width": "100%"
                 }
             }
         ],

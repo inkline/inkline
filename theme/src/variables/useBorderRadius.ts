@@ -15,8 +15,8 @@ export function useBorderRadiusVariables(userOptions: DefinitionOptions) {
 
     const { fluidBreakpoint } = useFluid(options);
 
-    const borderRadiusMin = variable('border-radius-min', 6, options);
-    const borderRadiusMax = variable('border-radius-max', 8, options);
+    const borderRadiusMin = variable('border-radius--min', 6, options);
+    const borderRadiusMax = variable('border-radius--max', 8, options);
 
     const variantMultipliers = {
         xs: 0.5,
@@ -40,7 +40,7 @@ export function useBorderRadiusVariables(userOptions: DefinitionOptions) {
         borderRadiusMinMd,
         borderRadiusMinLg,
         borderRadiusMinXl
-    } = useVariantsFactory<'border-radius-min', keyof typeof borderRadiusMinMaxVariants>(
+    } = useVariantsFactory<'border-radius--min', keyof typeof borderRadiusMinMaxVariants>(
         borderRadiusMin,
         borderRadiusMinMaxVariants,
         options
@@ -52,7 +52,7 @@ export function useBorderRadiusVariables(userOptions: DefinitionOptions) {
         borderRadiusMaxMd,
         borderRadiusMaxLg,
         borderRadiusMaxXl
-    } = useVariantsFactory<'border-radius-max', keyof typeof borderRadiusMinMaxVariants>(
+    } = useVariantsFactory<'border-radius--max', keyof typeof borderRadiusMinMaxVariants>(
         borderRadiusMax,
         borderRadiusMinMaxVariants,
         options
@@ -126,7 +126,7 @@ export function useBorderRadiusVariables(userOptions: DefinitionOptions) {
     );
 
     const borderRadiusXs = variable(
-        'border-radius-xs',
+        'border-radius--xs',
         [
             ref(borderTopLeftRadiusXs),
             ref(borderTopRightRadiusXs),
@@ -137,7 +137,7 @@ export function useBorderRadiusVariables(userOptions: DefinitionOptions) {
     );
 
     const borderRadiusSm = variable(
-        'border-radius-sm',
+        'border-radius--sm',
         [
             ref(borderTopLeftRadiusSm),
             ref(borderTopRightRadiusSm),
@@ -148,7 +148,7 @@ export function useBorderRadiusVariables(userOptions: DefinitionOptions) {
     );
 
     const borderRadiusMd = variable(
-        'border-radius-md',
+        'border-radius--md',
         [
             ref(borderTopLeftRadiusMd),
             ref(borderTopRightRadiusMd),
@@ -159,7 +159,7 @@ export function useBorderRadiusVariables(userOptions: DefinitionOptions) {
     );
 
     const borderRadiusLg = variable(
-        'border-radius-lg',
+        'border-radius--lg',
         [
             ref(borderTopLeftRadiusLg),
             ref(borderTopRightRadiusLg),
@@ -170,7 +170,7 @@ export function useBorderRadiusVariables(userOptions: DefinitionOptions) {
     );
 
     const borderRadiusXl = variable(
-        'border-radius-xl',
+        'border-radius--xl',
         [
             ref(borderTopLeftRadiusXl),
             ref(borderTopRightRadiusXl),
@@ -181,7 +181,7 @@ export function useBorderRadiusVariables(userOptions: DefinitionOptions) {
     );
 
     const borderRadiusFull = variable(
-        'border-radius-full',
+        'border-radius--full',
         [
             ref(borderTopLeftRadiusFull),
             ref(borderTopRightRadiusFull),

@@ -1,1 +1,1 @@
-module.exports = require('./packages/tooling/eslint-config/.prettierrc.js');
+module.exports = require('./config/eslint-config/.prettierrc.js');

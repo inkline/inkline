@@ -6,7 +6,7 @@ import { variantValueReferenceMarker } from '../constants';
 
 const variantsCache = new Map<string, ComponentProps>();
 
-export function resolveVariant(
+export function resolveVariantByName(
     variants: Record<string, ComponentVariantProps>,
     variantName: string,
     visited: Set<string> = new Set()
@@ -26,17 +26,28 @@ export function resolveVariant(
         return {};
     }
 
-    /**
-     * Unfold the variant to get all properties and resolve extensions recursively
-     */
+    const resolved = resolveVariant(variants, variant, visited);
 
+    variantsCache.set(variantName, resolved);
+
+    return resolved;
+}
+
+/**
+ * Unfold the variant to get all properties and resolve extensions recursively
+ */
+export function resolveVariant(
+    variants: Record<string, ComponentVariantProps>,
+    variant: ComponentVariantProps,
+    visited: Set<string> = new Set()
+): ComponentProps {
     const { extends: variantExtends, ...rest } = variant;
     const unfoldedVariant = unfold(rest);
     let resolved: ComponentProps;
     if (variantExtends) {
         const extensions = toVariantList(variantExtends);
         resolved = extensions.reduce<ComponentProps>((acc, extension) => {
-            const parentVariant = resolveVariant(variants, extension, visited);
+            const parentVariant = resolveVariantByName(variants, extension, visited);
 
             return merge(acc, parentVariant, unfoldedVariant);
         }, {});
@@ -45,8 +56,6 @@ export function resolveVariant(
     }
 
     resolveReferenceValues(variants, resolved);
-
-    variantsCache.set(variantName, resolved);
 
     return resolved;
 }
@@ -73,7 +82,7 @@ export function resolveReferenceValues(
             return;
         }
 
-        const targetVariant = resolveVariant(variants, targetVariantName);
+        const targetVariant = resolveVariantByName(variants, targetVariantName);
         resolved[key] = getValueByPath(targetVariant, variantsPathParts);
     });
 }

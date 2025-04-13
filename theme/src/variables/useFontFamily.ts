@@ -20,18 +20,24 @@ export function useFontFamilyVariables(userOptions: DefinitionOptions) {
     );
 
     const fontFamilyBaseSecondary = variable(
-        'font-family-base-secondary',
+        'font-family-base--secondary',
         ref(fontFamilyBase),
         options
     );
     const fontFamilyMonospaceSecondary = variable(
-        'font-family-monospace-secondary',
+        'font-family-monospace--secondary',
         ref(fontFamilyMonospace),
         options
     );
     const fontFamilyPrintSecondary = variable(
-        'font-family-print-secondary',
+        'font-family-print--secondary',
         ref(fontFamilyPrint),
+        options
+    );
+
+    const fontFamily = variable(
+        'font-family',
+        ref(fontFamilyBase),
         options
     );
 

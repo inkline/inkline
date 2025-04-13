@@ -232,7 +232,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toast--border-right-width',
@@ -244,7 +244,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toast--border-bottom-width',
@@ -256,7 +256,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toast--border-left-width',
@@ -268,7 +268,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toast--border-width',
@@ -344,11 +344,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--link--font-weight',
-                    value: 'var(--font-weight-semibold)'
+                    value: 'var(--font-weight--semibold)'
                 },
                 {
                     name: '--toast--title--font-weight',
-                    value: 'var(--font-weight-semibold)'
+                    value: 'var(--font-weight--semibold)'
                 },
                 {
                     name: '--toast--title--font-size',
@@ -372,7 +372,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--progress--height',
-                    value: 'calc(var(--spacing-md) * 0.25)'
+                    value: 'calc(var(--spacing--md) * 0.25)'
                 },
                 {
                     name: '--toast--code--background',
@@ -380,19 +380,19 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
+                    value: 'var(--border-top-left-radius--md)'
                 },
                 {
                     name: '--toast--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
+                    value: 'var(--border-top-right-radius--md)'
                 },
                 {
                     name: '--toast--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
+                    value: 'var(--border-bottom-right-radius--md)'
                 },
                 {
                     name: '--toast--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
+                    value: 'var(--border-bottom-left-radius--md)'
                 },
                 {
                     name: '--toast--border-radius',
@@ -400,23 +400,23 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--toast--padding-top',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--toast--padding-right',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--toast--padding-bottom',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--toast--padding-left',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--toast--padding',
@@ -532,7 +532,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toast--border-right-width',
@@ -544,7 +544,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toast--border-bottom-width',
@@ -556,7 +556,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toast--border-left-width',
@@ -568,7 +568,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--toast--border-width',
@@ -644,11 +644,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--link--font-weight',
-                    value: 'var(--font-weight-semibold)'
+                    value: 'var(--font-weight--semibold)'
                 },
                 {
                     name: '--toast--title--font-weight',
-                    value: 'var(--font-weight-semibold)'
+                    value: 'var(--font-weight--semibold)'
                 },
                 {
                     name: '--toast--title--font-size',
@@ -672,7 +672,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--progress--height',
-                    value: 'calc(var(--spacing-md) * 0.25)'
+                    value: 'calc(var(--spacing--md) * 0.25)'
                 },
                 {
                     name: '--toast--code--background',
@@ -680,19 +680,19 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--border-top-left-radius',
-                    value: 'var(--border-top-left-radius-md)'
+                    value: 'var(--border-top-left-radius--md)'
                 },
                 {
                     name: '--toast--border-top-right-radius',
-                    value: 'var(--border-top-right-radius-md)'
+                    value: 'var(--border-top-right-radius--md)'
                 },
                 {
                     name: '--toast--border-bottom-right-radius',
-                    value: 'var(--border-bottom-right-radius-md)'
+                    value: 'var(--border-bottom-right-radius--md)'
                 },
                 {
                     name: '--toast--border-bottom-left-radius',
-                    value: 'var(--border-bottom-left-radius-md)'
+                    value: 'var(--border-bottom-left-radius--md)'
                 },
                 {
                     name: '--toast--border-radius',
@@ -700,23 +700,23 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--toast--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--toast--padding-top',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--toast--padding-right',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--toast--padding-bottom',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--toast--padding-left',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--toast--padding',

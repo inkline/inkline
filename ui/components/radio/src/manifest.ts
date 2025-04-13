@@ -191,7 +191,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--radio--border-right-width',
@@ -203,7 +203,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--radio--border-bottom-width',
@@ -215,7 +215,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--radio--border-left-width',
@@ -227,7 +227,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--radio--border-width',
@@ -327,11 +327,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--circle--width',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--radio--circle--height',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--radio--checked--background',
@@ -347,7 +347,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--border-top-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--radio--checked--border-right-width',
@@ -359,7 +359,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--border-right-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--radio--checked--border-bottom-width',
@@ -371,7 +371,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--border-bottom-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--radio--checked--border-left-width',
@@ -383,7 +383,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--border-left-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--radio--checked--border-width',
@@ -419,7 +419,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--disabled--background',
-                    value: 'var(--color-primary-300)'
+                    value: 'var(--color-primary--300)'
                 },
                 {
                     name: '--radio--checked--disabled--border-top-width',
@@ -431,7 +431,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--disabled--border-top-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--radio--checked--disabled--border-right-width',
@@ -443,7 +443,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--disabled--border-right-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--radio--checked--disabled--border-bottom-width',
@@ -455,7 +455,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--disabled--border-bottom-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--radio--checked--disabled--border-left-width',
@@ -467,7 +467,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--disabled--border-left-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--radio--checked--disabled--border-width',
@@ -503,7 +503,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--readonly--background',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--radio--checked--readonly--border-top-width',
@@ -515,7 +515,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--readonly--border-top-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--radio--checked--readonly--border-right-width',
@@ -527,7 +527,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--readonly--border-right-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--radio--checked--readonly--border-bottom-width',
@@ -539,7 +539,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--readonly--border-bottom-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--radio--checked--readonly--border-left-width',
@@ -551,7 +551,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--readonly--border-left-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--radio--checked--readonly--border-width',
@@ -587,11 +587,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--disabled--color',
-                    value: 'var(--text-color-weak)'
+                    value: 'var(--text-color--weak)'
                 },
                 {
                     name: '--radio--disabled--background',
-                    value: 'var(--color-gray-100)'
+                    value: 'var(--color-gray--100)'
                 },
                 {
                     name: '--radio--disabled--border-top-width',
@@ -603,7 +603,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--disabled--border-top-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--disabled--border-right-width',
@@ -615,7 +615,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--disabled--border-right-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--disabled--border-bottom-width',
@@ -627,7 +627,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--disabled--border-bottom-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--disabled--border-left-width',
@@ -639,7 +639,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--disabled--border-left-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--disabled--border-width',
@@ -707,7 +707,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--readonly--background',
-                    value: 'var(--color-gray-100)'
+                    value: 'var(--color-gray--100)'
                 },
                 {
                     name: '--radio--readonly--border-top-width',
@@ -719,7 +719,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--readonly--border-top-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--readonly--border-right-width',
@@ -731,7 +731,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--readonly--border-right-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--readonly--border-bottom-width',
@@ -743,7 +743,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--readonly--border-bottom-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--readonly--border-left-width',
@@ -755,7 +755,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--readonly--border-left-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--readonly--border-width',
@@ -791,7 +791,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--radio--margin-top',
@@ -799,11 +799,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--margin-right',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--radio--margin-bottom',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--radio--margin-left',
@@ -815,11 +815,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--width',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--radio--height',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--radio--{color}--border-top-color'
@@ -943,7 +943,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--border-top-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--radio--border-right-width',
@@ -955,7 +955,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--border-right-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--radio--border-bottom-width',
@@ -967,7 +967,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--border-bottom-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--radio--border-left-width',
@@ -979,7 +979,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--border-left-color',
-                    value: 'var(--color-light-shade-50)'
+                    value: 'var(--color-light--shade-50)'
                 },
                 {
                     name: '--radio--border-width',
@@ -1079,11 +1079,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--circle--width',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--radio--circle--height',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--radio--checked--background',
@@ -1099,7 +1099,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--border-top-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--radio--checked--border-right-width',
@@ -1111,7 +1111,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--border-right-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--radio--checked--border-bottom-width',
@@ -1123,7 +1123,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--border-bottom-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--radio--checked--border-left-width',
@@ -1135,7 +1135,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--border-left-color',
-                    value: 'var(--color-primary-shade-50)'
+                    value: 'var(--color-primary--shade-50)'
                 },
                 {
                     name: '--radio--checked--border-width',
@@ -1171,7 +1171,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--disabled--background',
-                    value: 'var(--color-primary-300)'
+                    value: 'var(--color-primary--300)'
                 },
                 {
                     name: '--radio--checked--disabled--border-top-width',
@@ -1183,7 +1183,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--disabled--border-top-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--radio--checked--disabled--border-right-width',
@@ -1195,7 +1195,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--disabled--border-right-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--radio--checked--disabled--border-bottom-width',
@@ -1207,7 +1207,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--disabled--border-bottom-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--radio--checked--disabled--border-left-width',
@@ -1219,7 +1219,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--disabled--border-left-color',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--radio--checked--disabled--border-width',
@@ -1255,7 +1255,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--readonly--background',
-                    value: 'var(--color-primary-400)'
+                    value: 'var(--color-primary--400)'
                 },
                 {
                     name: '--radio--checked--readonly--border-top-width',
@@ -1267,7 +1267,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--readonly--border-top-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--radio--checked--readonly--border-right-width',
@@ -1279,7 +1279,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--readonly--border-right-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--radio--checked--readonly--border-bottom-width',
@@ -1291,7 +1291,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--readonly--border-bottom-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--radio--checked--readonly--border-left-width',
@@ -1303,7 +1303,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--checked--readonly--border-left-color',
-                    value: 'var(--color-primary-500)'
+                    value: 'var(--color-primary--500)'
                 },
                 {
                     name: '--radio--checked--readonly--border-width',
@@ -1339,11 +1339,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--disabled--color',
-                    value: 'var(--text-color-weak)'
+                    value: 'var(--text-color--weak)'
                 },
                 {
                     name: '--radio--disabled--background',
-                    value: 'var(--color-gray-100)'
+                    value: 'var(--color-gray--100)'
                 },
                 {
                     name: '--radio--disabled--border-top-width',
@@ -1355,7 +1355,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--disabled--border-top-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--disabled--border-right-width',
@@ -1367,7 +1367,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--disabled--border-right-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--disabled--border-bottom-width',
@@ -1379,7 +1379,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--disabled--border-bottom-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--disabled--border-left-width',
@@ -1391,7 +1391,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--disabled--border-left-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--disabled--border-width',
@@ -1459,7 +1459,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--readonly--background',
-                    value: 'var(--color-gray-100)'
+                    value: 'var(--color-gray--100)'
                 },
                 {
                     name: '--radio--readonly--border-top-width',
@@ -1471,7 +1471,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--readonly--border-top-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--readonly--border-right-width',
@@ -1483,7 +1483,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--readonly--border-right-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--readonly--border-bottom-width',
@@ -1495,7 +1495,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--readonly--border-bottom-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--readonly--border-left-width',
@@ -1507,7 +1507,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--readonly--border-left-color',
-                    value: 'var(--color-gray-200)'
+                    value: 'var(--color-gray--200)'
                 },
                 {
                     name: '--radio--readonly--border-width',
@@ -1543,7 +1543,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--radio--margin-top',
@@ -1551,11 +1551,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--margin-right',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--radio--margin-bottom',
-                    value: 'calc(var(--spacing-md) * 0.5)'
+                    value: 'calc(var(--spacing--md) * 0.5)'
                 },
                 {
                     name: '--radio--margin-left',
@@ -1567,11 +1567,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--radio--width',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--radio--height',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 }
             ]
         }

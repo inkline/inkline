@@ -123,7 +123,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--nav--item--active--font-weight',
-                    value: 'var(--font-weight-semibold)'
+                    value: 'var(--font-weight--semibold)'
                 },
                 {
                     name: '--nav--item--active--color',
@@ -131,7 +131,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--nav--item--disabled--color',
-                    value: 'var(--text-color-weaker)'
+                    value: 'var(--text-color--weaker)'
                 },
                 {
                     name: '--nav--color',
@@ -139,11 +139,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--nav--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--nav--gap',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 },
                 {
                     name: '--nav--{color}--color'
@@ -182,7 +182,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--nav--item--active--font-weight',
-                    value: 'var(--font-weight-semibold)'
+                    value: 'var(--font-weight--semibold)'
                 },
                 {
                     name: '--nav--item--active--color',
@@ -190,7 +190,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--nav--item--disabled--color',
-                    value: 'var(--text-color-weaker)'
+                    value: 'var(--text-color--weaker)'
                 },
                 {
                     name: '--nav--color',
@@ -198,11 +198,11 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--nav--font-size',
-                    value: 'var(--font-size-md)'
+                    value: 'var(--font-size--md)'
                 },
                 {
                     name: '--nav--gap',
-                    value: 'var(--spacing-md)'
+                    value: 'var(--spacing--md)'
                 }
             ]
         }

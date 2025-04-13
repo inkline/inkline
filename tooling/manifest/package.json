@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "type": "module",
     "bin": {
-        "generate-manifest": "dist/main.js"
+        "generate-manifest": "bin/cli.js"
     },
     "scripts": {
         "dev": "devtools tsup watch",
@@ -31,6 +31,7 @@
     },
     "files": [
         "dist",
+        "bin",
         "LICENSE"
     ],
     "types": "./dist/index.d.ts",

@@ -5,7 +5,7 @@ import vue from '@vitejs/plugin-vue';
 import glob from 'fast-glob';
 import { aliases } from '@inkline/vite-config';
 
-const componentsDirPath = resolve(__dirname, '..', 'packages', 'ui', 'components');
+const componentsDirPath = resolve(__dirname, '..', 'ui', 'components');
 const individualComponentDirPaths = glob.sync('**', {
     cwd: componentsDirPath,
     deep: 1,
@@ -20,7 +20,7 @@ export default defineConfig({
         alias: [
             ...aliases.map((alias) => ({
                 find: alias.find,
-                replacement: resolve(__dirname, '..', 'packages', alias.replacement)
+                replacement: resolve(__dirname, '..', alias.replacement)
             })),
             ...individualComponentDirPaths.flatMap((component) => [
                 {

@@ -12,11 +12,11 @@
     text-decoration: none;
 }
 
-.button.-disabled, .button:disabled {
+.button[disabled], .button:disabled {
     cursor: not-allowed;
 }
 
-.button.-loading {
+.button[data-loading="true"] {
     cursor: default;
 }
 
