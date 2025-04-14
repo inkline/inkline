@@ -177,7 +177,7 @@ export const manifest: ComponentManifest[] = [
         props: [
             {
                 name: 'color',
-                type: "'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'",
+                type: "'primary' | 'secondary' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'",
                 description: 'The color variant of the text',
                 default: ''
             },

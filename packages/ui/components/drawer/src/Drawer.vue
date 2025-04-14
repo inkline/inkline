@@ -32,7 +32,7 @@ export default defineComponent({
         },
         /**
          * The color variant of the drawer
-         * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} color
+         * @param {'primary' | 'secondary' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} color
          * @default
          */
         color: {
@@ -205,7 +205,7 @@ export default defineComponent({
             '-disabled': props.disabled,
             '-fullscreen': props.fullscreen
         }));
-        
+
         const wrapperClasses = computed(() => ({
             [`-${props.position}`]: true
         }));
@@ -231,7 +231,10 @@ export default defineComponent({
             if (props.transition) {
                 return props.transition;
             }
-            return defaultTransitionMap[props.position as keyof typeof defaultTransitionMap] || 'zoom-in-center-transition';
+            return (
+                defaultTransitionMap[props.position as keyof typeof defaultTransitionMap] ||
+                'zoom-in-center-transition'
+            );
         });
 
         watch(
@@ -301,7 +304,7 @@ export default defineComponent({
             if (props.modelValue) {
                 show();
             }
-            
+
             if (props.closeOnPressEscape && typeof window !== 'undefined') {
                 window.addEventListener('keydown', handleEscapeKeydown);
             }
@@ -309,7 +312,7 @@ export default defineComponent({
 
         onBeforeUnmount(() => {
             removeOnClickOutsideEventBindings();
-            
+
             if (typeof window !== 'undefined') {
                 window.removeEventListener('keydown', handleEscapeKeydown);
             }
@@ -346,7 +349,11 @@ export default defineComponent({
             :name="name"
             :aria-labelledby="`${name}-header`"
         >
-            <transition :name="computedTransition" @after-enter="onAfterEnter" @after-leave="onAfterLeave">
+            <transition
+                :name="computedTransition"
+                @after-enter="onAfterEnter"
+                @after-leave="onAfterLeave"
+            >
                 <div v-show="visible" ref="drawerRef" class="drawer" :class="classes">
                     <div
                         v-if="header || $slots.header"

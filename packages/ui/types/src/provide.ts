@@ -4,8 +4,9 @@ import { FormErrorCondition, ResolvedFormSchema } from './forms';
 
 export interface ButtonGroupInjection {
     disabled: ComputedRef<boolean>;
-    size: ComputedRef<string>;
-    color: ComputedRef<string>;
+    size: ComputedRef<string | undefined>;
+    color: ComputedRef<string | undefined>;
+    variants: ComputedRef<string[]>;
 }
 
 export interface CheckboxGroupInjection {

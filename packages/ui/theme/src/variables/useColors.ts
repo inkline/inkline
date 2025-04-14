@@ -167,17 +167,17 @@ export function useNeutralColors(userOptions: DefinitionOptions) {
     } = useColorLightnessVariantsFactory(colorGray, options);
 
     const neutralColorMap = {
-        gray50: colorGray50,
-        gray100: colorGray100,
-        gray200: colorGray200,
-        gray300: colorGray300,
-        gray400: colorGray400,
-        gray500: colorGray500,
-        gray600: colorGray600,
-        gray700: colorGray700,
-        gray800: colorGray800,
-        gray900: colorGray900,
-        gray950: colorGray950,
+        'gray-50': colorGray50,
+        'gray-100': colorGray100,
+        'gray-200': colorGray200,
+        'gray-300': colorGray300,
+        'gray-400': colorGray400,
+        'gray-500': colorGray500,
+        'gray-600': colorGray600,
+        'gray-700': colorGray700,
+        'gray-800': colorGray800,
+        'gray-900': colorGray900,
+        'gray-950': colorGray950,
         gray: colorGray,
         white: colorWhite,
         black: colorBlack

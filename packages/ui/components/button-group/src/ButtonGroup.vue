@@ -1,13 +1,16 @@
 <script lang="ts">
-import { computed, defineComponent, inject, provide } from 'vue';
+import { computed, defineComponent, inject, PropType, provide } from 'vue';
 import { ButtonGroupKey } from '@inkline/types';
-import { useComponentColor, useComponentSize } from '@inkline/composables';
+import { BaseComponent } from '@inkline/component-base';
+import { toVariantList } from '@inkline/variants';
 
 const componentName = 'ButtonGroup';
 
 export default defineComponent({
     name: componentName,
-    inheritAttrs: false,
+    components: {
+        BaseComponent
+    },
     props: {
         /**
          * Display the button group with vertical orientation
@@ -53,52 +56,71 @@ export default defineComponent({
         color: {
             type: String,
             default: undefined
+        },
+        /**
+         * The variant of the button
+         * @param {string} variant
+         * @default
+         */
+        variant: {
+            type: [String, Array] as PropType<string | string[]>,
+            default: undefined
         }
     },
     setup(props) {
         const buttonGroup = inject(ButtonGroupKey, null);
 
-        const rawColor = computed(() => props.color || buttonGroup?.color.value);
-        const rawSize = computed(() => props.size || buttonGroup?.size.value);
-        const { color } = useComponentColor(componentName, rawColor);
-        const { size } = useComponentSize(componentName, rawSize);
+        const color = computed(() => props.color || buttonGroup?.color.value);
+        const size = computed(() => props.size || buttonGroup?.size.value);
+
+        const variantList = computed(() => toVariantList(props.variant));
+        const variants = computed(() => [
+            'button-group',
+            ...(props.block ? ['button-group--block'] : []),
+            ...(buttonGroup ? (buttonGroup.variants.value ?? []) : []),
+            ...variantList.value
+        ]);
 
         const isDisabled = computed((): boolean => {
             return !!(props.disabled || buttonGroup?.disabled.value);
         });
 
         const classes = computed(() => ({
-            [`-${size.value}`]: true,
-            [`-${color.value}`]: true,
             '-horizontal': !props.vertical,
             '-vertical': props.vertical,
-            '-block': props.block,
-            '-disabled': isDisabled.value
+            '-block': props.block
         }));
+
+        const childVariants = computed(() => [
+            'button-group--child',
+            ...(props.block ? ['button-group--block--child'] : [])
+        ]);
 
         provide(ButtonGroupKey, {
             disabled: isDisabled,
             size,
-            color
+            color,
+            variants: childVariants
         });
 
         return {
+            isDisabled,
             classes,
-            isDisabled
+            variants
         };
     }
 });
 </script>
 
 <template>
-    <div
-        v-bind="$attrs"
+    <BaseComponent
         role="group"
         class="button-group"
-        :class="classes"
         :aria-disabled="isDisabled ? 'true' : undefined"
+        :variant="variants"
+        :class="classes"
     >
         <!-- @slot default Slot for default button group content -->
         <slot />
-    </div>
+    </BaseComponent>
 </template>

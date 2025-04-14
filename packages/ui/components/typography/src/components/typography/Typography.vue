@@ -9,7 +9,7 @@ export default defineComponent({
     props: {
         /**
          * The color variant of the text
-         * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} color
+         * @param {'primary' | 'secondary' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} color
          * @default
          */
         color: {

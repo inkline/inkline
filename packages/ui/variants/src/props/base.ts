@@ -4,7 +4,7 @@ import { ColorModePropValue } from '@inkline/types';
 export const baseProps = {
     /**
      * The background of the box
-     * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger' | 'white' | 'black' | { light: 'color', dark: 'color' } | string} background
+     * @param {'primary' | 'secondary' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger' | 'white' | 'black' | { light: 'color', dark: 'color' } | string} background
      * @default
      */
     background: {
@@ -112,7 +112,7 @@ export const baseProps = {
     },
     /**
      * The border-color of the box
-     * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger' | 'white' | 'black' | { light: 'color', dark: 'color' } | string} borderColor
+     * @param {'primary' | 'secondary' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger' | 'white' | 'black' | { light: 'color', dark: 'color' } | string} borderColor
      * @default
      */
     borderColor: {
@@ -121,7 +121,7 @@ export const baseProps = {
     },
     /**
      * The border-top-color of the box
-     * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger' | 'white' | 'black' | { light: 'color', dark: 'color' } | string} borderTopColor
+     * @param {'primary' | 'secondary' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger' | 'white' | 'black' | { light: 'color', dark: 'color' } | string} borderTopColor
      * @default
      */
     borderTopColor: {
@@ -130,7 +130,7 @@ export const baseProps = {
     },
     /**
      * The border-right-color of the box
-     * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger' | 'white' | 'black' | { light: 'color', dark: 'color' } | string} borderRightColor
+     * @param {'primary' | 'secondary' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger' | 'white' | 'black' | { light: 'color', dark: 'color' } | string} borderRightColor
      * @default
      */
     borderRightColor: {
@@ -139,7 +139,7 @@ export const baseProps = {
     },
     /**
      * The border-bottom-color of the box
-     * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger' | 'white' | 'black' | { light: 'color', dark: 'color' } | string} borderBottomColor
+     * @param {'primary' | 'secondary' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger' | 'white' | 'black' | { light: 'color', dark: 'color' } | string} borderBottomColor
      * @default
      */
     borderBottomColor: {
@@ -148,7 +148,7 @@ export const baseProps = {
     },
     /**
      * The border-left-color of the box
-     * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger' | 'white' | 'black' | { light: 'color', dark: 'color' } | string} borderLeftColor
+     * @param {'primary' | 'secondary' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger' | 'white' | 'black' | { light: 'color', dark: 'color' } | string} borderLeftColor
      * @default
      */
     borderLeftColor: {
@@ -274,6 +274,14 @@ export const baseProps = {
         default: undefined
     },
     /**
+     * The opacity of the box
+     * @param {number | string} opacity
+     */
+    opacity: {
+        type: [Number, String],
+        default: undefined
+    },
+    /**
      * The padding of the box
      * @param {'sm' | 'md' | 'lg'} padding
      * @default
@@ -334,6 +342,33 @@ export const baseProps = {
      */
     paddingLeft: {
         type: String,
+        default: undefined
+    },
+    /**
+     * The width of the box
+     * @param {'100' | '0' | 'auto' | 'screen' | string} width
+     * @default
+     */
+    width: {
+        type: String as PropType<'100' | '0' | 'auto' | 'screen' | string>,
+        default: undefined
+    },
+    /**
+     * The height of the box
+     * @param {'100' | '0' | 'auto' | 'screen' | string} height
+     * @default
+     */
+    height: {
+        type: String as PropType<'100' | '0' | 'auto' | 'screen' | string>,
+        default: undefined
+    },
+    /**
+     * Set equal width and height to the box
+     * @param {'sm' | 'md' | 'lg' | string} square
+     * @default
+     */
+    square: {
+        type: String as PropType<'sm' | 'md' | 'lg' | string>,
         default: undefined
     }
 } as const;

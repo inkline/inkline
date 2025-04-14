@@ -34,6 +34,12 @@ export const manifest: ComponentManifest[] = [
                 type: 'string',
                 description: 'The color of the button group',
                 default: ''
+            },
+            {
+                name: 'variant',
+                type: 'string',
+                description: 'The variant of the button',
+                default: ''
             }
         ],
         events: [],
@@ -45,32 +51,7 @@ export const manifest: ComponentManifest[] = [
         ],
         css: {
             namespace: 'button-group',
-            variables: [
-                {
-                    name: '--button-group--box-shadow-offset-x',
-                    value: 'var(--box-shadow-offset-x)'
-                },
-                {
-                    name: '--button-group--box-shadow-offset-y',
-                    value: 'var(--box-shadow-offset-y)'
-                },
-                {
-                    name: '--button-group--box-shadow-blur-radius',
-                    value: 'var(--box-shadow-blur-radius)'
-                },
-                {
-                    name: '--button-group--box-shadow-spread-radius',
-                    value: 'var(--box-shadow-spread-radius)'
-                },
-                {
-                    name: '--button-group--box-shadow-color',
-                    value: 'var(--box-shadow-color)'
-                },
-                {
-                    name: '--button-group--box-shadow',
-                    value: 'var(--button-group--box-shadow-offset-x) var(--button-group--box-shadow-offset-y) var(--button-group--box-shadow-blur-radius) var(--button-group--box-shadow-spread-radius) var(--button-group--box-shadow-color)'
-                }
-            ]
+            variables: []
         }
     }
 ];

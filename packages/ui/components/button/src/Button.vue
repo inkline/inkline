@@ -1,85 +1,13 @@
 <script lang="ts">
 import { markRaw, PropType } from 'vue';
 import { computed, defineComponent, inject } from 'vue';
-import { useComponentColor, useComponentSize, useOptions } from '@inkline/composables';
 import { ButtonGroupKey, FormKey, FormGroupKey } from '@inkline/types';
 import { BaseComponent } from '@inkline/component-base';
 import { Linkable } from '@inkline/component-linkable';
 import { Loader } from '@inkline/component-loader';
+import { toVariantList } from '@inkline/variants';
 
 const componentName = 'Button';
-
-export function useButtonVariants() {
-    const { addThemeVariant } = useOptions();
-    const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
-    const colors = [
-        'primary',
-        'secondary',
-        'success',
-        'light',
-        'dark',
-        'info',
-        'success',
-        'warning',
-        'danger'
-    ];
-    const modifiers = ['block', 'outline', 'link'];
-    const builtins = [...sizes, ...colors, ...modifiers];
-
-    addThemeVariant(
-        'button',
-        {
-            extends: ['default:interactive', 'button:md']
-        },
-        { default: true }
-    );
-
-    ['hover', 'focus', 'active'].forEach((state) => {
-        addThemeVariant(
-            `button:${state}`,
-            {
-                extends: [`default:interactive:${state}`]
-            },
-            { default: true }
-        );
-    });
-
-    sizes.forEach((size) => {
-        addThemeVariant(
-            `button:${size}`,
-            {
-                extends: `box:wide:${size}`
-            },
-            { default: true }
-        );
-    });
-
-    colors.forEach((color) => {
-        addThemeVariant(
-            `button:${color}`,
-            {
-                extends: `${color}:interactive`
-            },
-            { default: true }
-        );
-
-        ['hover', 'focus', 'active'].forEach((state) => {
-            addThemeVariant(
-                `button:${color}:${state}`,
-                {
-                    extends: [`${color}:interactive:${state}`]
-                },
-                { default: true }
-            );
-        });
-    });
-
-    return {
-        builtins,
-        colors,
-        sizes
-    };
-}
 
 export default defineComponent({
     name: componentName,
@@ -125,11 +53,21 @@ export default defineComponent({
         },
         /**
          * The color variant of the button
-         * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} color
+         * @param {'primary' | 'secondary' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger' | string} color
          * @default
          */
         color: {
-            type: String,
+            type: String as PropType<
+                | 'primary'
+                | 'secondary'
+                | 'light'
+                | 'dark'
+                | 'info'
+                | 'success'
+                | 'warning'
+                | 'danger'
+                | string
+            >,
             default: undefined
         },
         /**
@@ -224,16 +162,16 @@ export default defineComponent({
         },
         /**
          * The size variant of the button
-         * @param {'sm' | 'md' | 'lg'} size
+         * @param {'xs' | 'sm' | 'md' | 'lg' | 'xl' | string} size
          * @default
          */
         size: {
-            type: String,
+            type: String as PropType<'xs' | 'sm' | 'md' | 'lg' | 'xl' | string>,
             default: undefined
         },
         /**
          * The variant of the button
-         * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} variant
+         * @param {string | string[]} variant
          * @default
          */
         variant: {
@@ -246,23 +184,25 @@ export default defineComponent({
         const form = inject(FormKey, null);
         const formGroup = inject(FormGroupKey, null);
 
-        const rawColor = computed(() => props.color || buttonGroup?.color.value);
-        const rawSize = computed(() => props.size || buttonGroup?.size.value);
-        const { color } = useComponentColor(componentName, rawColor);
-        const { size } = useComponentSize(componentName, rawSize);
+        const color = computed(() => props.color || buttonGroup?.color.value);
+        const size = computed(() => props.size || buttonGroup?.size.value);
 
-        const { builtins } = useButtonVariants();
-
-        const variants = computed(() => {
-            const variantList = Array.isArray(props.variant)
-                ? props.variant
-                : (props.variant ?? '').split(/\s+/g);
-
-            return [
-                'button',
-                ...variantList.map((v) => (builtins.includes(v) ? `button:${v}` : v))
-            ];
-        });
+        const variantList = computed(() => toVariantList(props.variant));
+        const variants = computed(() => [
+            'button',
+            ...(color.value ? [`button--${color.value}`] : []),
+            ...(size.value ? [`button--${size.value}`] : []),
+            ...(props.block ? ['button--block'] : []),
+            ...(props.disabled ? ['button--disabled'] : []),
+            ...(props.square
+                ? [size.value ? `button--${size.value}--square` : 'button--square']
+                : []),
+            ...(props.circle
+                ? [size.value ? `button--${size.value}--circle` : 'button--circle']
+                : []),
+            ...(buttonGroup ? (buttonGroup.variants.value ?? []) : []),
+            ...variantList.value
+        ]);
 
         const disabled = computed(() => {
             return (
@@ -292,21 +232,6 @@ export default defineComponent({
             return props.active ? 'true' : null;
         });
 
-        const classes = computed(() => {
-            return {
-                [`-${color.value}`]: true,
-                [`-${size.value}`]: true,
-                '-active': props.active,
-                '-block': props.block,
-                '-circle': props.circle,
-                '-square': props.square,
-                '-disabled': disabled.value,
-                '-link': props.link,
-                '-outline': props.outline,
-                '-loading': props.loading
-            };
-        });
-
         const role = computed(() => {
             if (props.tag === 'button' || props.tag === 'input') {
                 return null;
@@ -324,7 +249,6 @@ export default defineComponent({
         const tabIndex = computed(() => (disabled.value ? -1 : props.tabindex));
 
         return {
-            classes,
             role,
             type,
             tabIndex,
@@ -343,11 +267,9 @@ export default defineComponent({
     <BaseComponent
         :to="to"
         :href="href"
-        :is="component"
+        :component="component"
         class="button"
         :tag="tag"
-        :inline="!block"
-        :class="classes"
         :role="role"
         :type="type"
         :tabindex="tabIndex"
@@ -357,6 +279,9 @@ export default defineComponent({
         :aria-busy="ariaBusy"
         aria-live="polite"
         :variant="variants"
+        :data-active="active"
+        :data-loading="loading"
+        :data-disabled="disabled"
     >
         <template v-if="loading">
             <slot name="loading-icon">

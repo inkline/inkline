@@ -33,7 +33,7 @@ export default defineComponent({
         },
         /**
          * The color variant of the modal
-         * @param {'primary' | 'success' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} color
+         * @param {'primary' | 'secondary' | 'light' | 'dark' | 'info' | 'success' | 'warning' | 'danger'} color
          * @default
          */
         color: {

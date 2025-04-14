@@ -50,6 +50,15 @@ export const gridProps = {
         default: undefined
     },
     /**
+     * The flex-basis of the element
+     * @param {'100' | '0' | 'auto' | string} flex-basis
+     * @default undefined
+     */
+    flexBasis: {
+        type: String as PropType<'100' | '0' | 'auto' | string>,
+        default: undefined
+    },
+    /**
      * Gap between child elements
      * @param {'2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | string} gap
      * @default undefined

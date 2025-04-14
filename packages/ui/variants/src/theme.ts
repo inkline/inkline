@@ -44,8 +44,8 @@ export function useVariantsTheme(userOptions: DefinitionOptions) {
                 dark: 'dark-tint-100'
             },
             borderColor: {
-                light: 'light-shade-50',
-                dark: 'dark-tint-50'
+                light: 'light-shade-100',
+                dark: 'dark-tint-100'
             }
         },
         options
@@ -59,8 +59,8 @@ export function useVariantsTheme(userOptions: DefinitionOptions) {
                 dark: 'dark-tint-50'
             },
             borderColor: {
-                light: 'light-shade-50',
-                dark: 'dark-tint-50'
+                light: 'light-shade-100',
+                dark: 'dark-tint-100'
             }
         },
         options
@@ -74,8 +74,8 @@ export function useVariantsTheme(userOptions: DefinitionOptions) {
                 dark: 'dark-tint-50'
             },
             borderColor: {
-                light: 'light-shade-50',
-                dark: 'dark-tint-50'
+                light: 'light-shade-100',
+                dark: 'dark-tint-100'
             }
         },
         options

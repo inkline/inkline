@@ -79,10 +79,12 @@ export function addUtilityVariants(
 export function useUtilities(userOptions: DefinitionOptions, prefix: string = '_') {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    const { spacingMap } = useSpacing(options);
-    const { colorMap } = useColors(options);
+    const borderValues = {
+        0: 0,
+        none: 0
+    };
+
     const { borderColorMap, borderWidthMap, borderStyleMap } = useBorder(options);
-    const { textColorMap } = useTextColor(options);
     const {
         borderRadiusMap,
         borderTopLeftRadiusMap,
@@ -94,9 +96,38 @@ export function useUtilities(userOptions: DefinitionOptions, prefix: string = '_
     const { fontSizeMap } = useFontSize(options);
     const { fontWeightMap } = useFontWeight(options);
 
-    const borderValues = {
+    const { colorMap } = useColors(options);
+
+    const heightMap = {
+        auto: 'auto',
+        100: '100%',
         0: 0,
-        none: 0
+        screen: '100vh'
+    };
+
+    const opacityMap = {
+        0: 0,
+        25: '0.25',
+        50: '0.5',
+        75: '0.75',
+        100: 1
+    };
+
+    const { spacingMap } = useSpacing(options);
+
+    const squareMap = {
+        sm: '32px',
+        md: '44px',
+        lg: '56px'
+    };
+
+    const { textColorMap } = useTextColor(options);
+
+    const widthMap = {
+        auto: 'auto',
+        100: '100%',
+        0: 0,
+        screen: '100vw'
     };
 
     const utilityVariants: UtilityVariantsEntry[] = [
@@ -191,11 +222,29 @@ export function useUtilities(userOptions: DefinitionOptions, prefix: string = '_
                 ...colorMap
             }
         },
+        { name: 'flex-basis', variants: widthMap },
         { name: 'font-size', variants: fontSizeMap },
         { name: 'font-weight', variants: fontWeightMap },
         { name: 'gap', variants: spacingMap },
         { name: 'gap-x', variants: spacingMap, transform: (value) => ({ rowGap: value }) },
         { name: 'gap-y', variants: spacingMap, transform: (value) => ({ columnGap: value }) },
+        { name: 'height', variants: heightMap },
+        { name: 'margin', variants: spacingMap },
+        { name: 'margin-top', variants: spacingMap },
+        { name: 'margin-right', variants: spacingMap },
+        { name: 'margin-bottom', variants: spacingMap },
+        { name: 'margin-left', variants: spacingMap },
+        {
+            name: 'margin-x',
+            variants: spacingMap,
+            transform: (value) => ({ paddingLeft: value, paddingRight: value })
+        },
+        {
+            name: 'margin-y',
+            variants: spacingMap,
+            transform: (value) => ({ paddingLeft: value, paddingRight: value })
+        },
+        { name: 'opacity', variants: opacityMap },
         { name: 'padding', variants: spacingMap },
         { name: 'padding-top', variants: spacingMap },
         { name: 'padding-right', variants: spacingMap },
@@ -211,20 +260,14 @@ export function useUtilities(userOptions: DefinitionOptions, prefix: string = '_
             variants: spacingMap,
             transform: (value) => ({ paddingTop: value, paddingBottom: value })
         },
-        { name: 'margin', variants: spacingMap },
-        { name: 'margin-top', variants: spacingMap },
-        { name: 'margin-right', variants: spacingMap },
-        { name: 'margin-bottom', variants: spacingMap },
-        { name: 'margin-left', variants: spacingMap },
         {
-            name: 'margin-x',
-            variants: spacingMap,
-            transform: (value) => ({ paddingLeft: value, paddingRight: value })
+            name: 'square',
+            variants: squareMap,
+            transform: (value) => ({ width: value, height: value })
         },
         {
-            name: 'margin-y',
-            variants: spacingMap,
-            transform: (value) => ({ paddingLeft: value, paddingRight: value })
+            name: 'width',
+            variants: widthMap
         }
     ];
 

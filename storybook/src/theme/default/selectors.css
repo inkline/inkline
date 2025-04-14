@@ -414,11 +414,11 @@ a:hover .badge, a:focus .badge {
     text-decoration: none;
 }
 
-.button.-disabled, .button:disabled {
+.button[disabled], .button:disabled {
     cursor: not-allowed;
 }
 
-.button.-loading {
+.button[data-loading="true"] {
     cursor: default;
 }
 
@@ -444,34 +444,29 @@ a.button.-disabled, *:disabled a.button {
 }
 
 .button-group .button, .button-group .button-group {
-    box-shadow: none;
+    box-shadow: none !important;
 }
 
 .button-group.-horizontal > .button:not(:last-child), .button-group.-horizontal > .button-group:has(+ .button-group) .button:last-child, .button-group.-horizontal > .button-group:has(+ .button) .button:last-child {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right-width: 0;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right-width: 0 !important;
 }
 
 .button-group.-horizontal > .button:not(:first-child), .button-group.-horizontal > .button-group + .button-group .button:first-child, .button-group.-horizontal > .button + .button-group .button:first-child {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
 }
 
 .button-group.-vertical > .button:not(:last-child), .button-group.-vertical > .button-group:has(+ .button-group) .button:last-child, .button-group.-vertical > .button-group:has(+ .button) .button:last-child {
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    border-bottom-width: 0;
+    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-bottom-width: 0 !important;
 }
 
 .button-group.-vertical > .button:not(:first-child), .button-group.-vertical > .button-group + .button-group .button:first-child, .button-group.-vertical > .button + .button-group .button:first-child {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
-
-.button-group.-block {
-    display: flex;
-    flex-basis: 100%;
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
 }
 
 .button-group.-block > .button {
@@ -486,10 +481,6 @@ a.button.-disabled, *:disabled a.button {
 
 .button-group.-vertical .button, .button-group.-vertical .button-group, .button-group.-vertical [class$="-wrapper"] {
     width: 100%;
-}
-
-.button-group {
-    box-shadow: var(--button-group--box-shadow, var(--button-group--box-shadow-offset-x) var(--button-group--box-shadow-offset-y) var(--button-group--box-shadow-blur-radius) var(--button-group--box-shadow-spread-radius) var(--button-group--box-shadow-color));
 }
 
 .card {

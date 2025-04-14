@@ -1794,6 +1794,9 @@ importers:
 
   packages/ui/components/button-group:
     dependencies:
+      '@inkline/component-base':
+        specifier: workspace:*
+        version: link:../base
       '@inkline/composables':
         specifier: workspace:*
         version: link:../../composables
@@ -1806,6 +1809,9 @@ importers:
       '@inkline/utils':
         specifier: workspace:*
         version: link:../../../utils
+      '@inkline/variants':
+        specifier: workspace:*
+        version: link:../../variants
       '@inkline/vue':
         specifier: workspace:*
         version: link:../../vue

@@ -8,309 +8,42 @@
             "selectors": {},
             "utilities": {}
         },
-        "variables": {
-            "box-shadow-offset-x-xs": {
-                "__type": "variable",
-                "__name": "box-shadow-offset-x-xs",
-                "__value": 0
-            },
-            "box-shadow-offset-y-xs": {
-                "__type": "variable",
-                "__name": "box-shadow-offset-y-xs",
-                "__value": "0.125rem"
-            },
-            "box-shadow-blur-radius-xs": {
-                "__type": "variable",
-                "__name": "box-shadow-blur-radius-xs",
-                "__value": "0.25rem"
-            },
-            "box-shadow-spread-radius-xs": {
-                "__type": "variable",
-                "__name": "box-shadow-spread-radius-xs",
-                "__value": "-0.125rem"
-            },
-            "box-shadow-color-xs": {
-                "__type": "variable",
-                "__name": "box-shadow-color-xs",
-                "__value": "transparent"
-            },
-            "box-shadow-xs": {
-                "__type": "variable",
-                "__name": "box-shadow-xs",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-offset-x-xs"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-offset-y-xs"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-blur-radius-xs"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-spread-radius-xs"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-color-xs"
-                    }
-                ]
-            },
-            "box-shadow-offset-x-sm": {
-                "__type": "variable",
-                "__name": "box-shadow-offset-x-sm",
-                "__value": 0
-            },
-            "box-shadow-offset-y-sm": {
-                "__type": "variable",
-                "__name": "box-shadow-offset-y-sm",
-                "__value": "0.25rem"
-            },
-            "box-shadow-blur-radius-sm": {
-                "__type": "variable",
-                "__name": "box-shadow-blur-radius-sm",
-                "__value": "0.5rem"
-            },
-            "box-shadow-spread-radius-sm": {
-                "__type": "variable",
-                "__name": "box-shadow-spread-radius-sm",
-                "__value": "-0.25rem"
-            },
-            "box-shadow-color-sm": {
-                "__type": "variable",
-                "__name": "box-shadow-color-sm",
-                "__value": "rgba(0, 0, 0, 0.075)"
-            },
-            "box-shadow-sm": {
-                "__type": "variable",
-                "__name": "box-shadow-sm",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-offset-x-sm"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-offset-y-sm"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-blur-radius-sm"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-spread-radius-sm"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-color-sm"
-                    }
-                ]
-            },
-            "box-shadow-offset-x": {
-                "__type": "variable",
-                "__name": "box-shadow-offset-x",
-                "__value": 0
-            },
-            "box-shadow-offset-y": {
-                "__type": "variable",
-                "__name": "box-shadow-offset-y",
-                "__value": "0.5rem"
-            },
-            "box-shadow-blur-radius": {
-                "__type": "variable",
-                "__name": "box-shadow-blur-radius",
-                "__value": "1rem"
-            },
-            "box-shadow-spread-radius": {
-                "__type": "variable",
-                "__name": "box-shadow-spread-radius",
-                "__value": "-0.75rem"
-            },
-            "box-shadow-color": {
-                "__type": "variable",
-                "__name": "box-shadow-color",
-                "__value": "rgba(0, 0, 0, 0.15)"
-            },
-            "box-shadow": {
-                "__type": "variable",
-                "__name": "box-shadow",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-offset-x"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-offset-y"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-blur-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-spread-radius"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-color"
-                    }
-                ]
-            },
-            "box-shadow-offset-x-lg": {
-                "__type": "variable",
-                "__name": "box-shadow-offset-x-lg",
-                "__value": 0
-            },
-            "box-shadow-offset-y-lg": {
-                "__type": "variable",
-                "__name": "box-shadow-offset-y-lg",
-                "__value": "1rem"
-            },
-            "box-shadow-blur-radius-lg": {
-                "__type": "variable",
-                "__name": "box-shadow-blur-radius-lg",
-                "__value": "1.5rem"
-            },
-            "box-shadow-spread-radius-lg": {
-                "__type": "variable",
-                "__name": "box-shadow-spread-radius-lg",
-                "__value": "-1.5rem"
-            },
-            "box-shadow-color-lg": {
-                "__type": "variable",
-                "__name": "box-shadow-color-lg",
-                "__value": "rgba(0, 0, 0, 0.2)"
-            },
-            "box-shadow-lg": {
-                "__type": "variable",
-                "__name": "box-shadow-lg",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-offset-x-lg"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-offset-y-lg"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-blur-radius-lg"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-spread-radius-lg"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-color-lg"
-                    }
-                ]
-            },
-            "box-shadow-offset-x-xl": {
-                "__type": "variable",
-                "__name": "box-shadow-offset-x-xl",
-                "__value": 0
-            },
-            "box-shadow-offset-y-xl": {
-                "__type": "variable",
-                "__name": "box-shadow-offset-y-xl",
-                "__value": "1.5rem"
-            },
-            "box-shadow-blur-radius-xl": {
-                "__type": "variable",
-                "__name": "box-shadow-blur-radius-xl",
-                "__value": "2rem"
-            },
-            "box-shadow-spread-radius-xl": {
-                "__type": "variable",
-                "__name": "box-shadow-spread-radius-xl",
-                "__value": "-2rem"
-            },
-            "box-shadow-color-xl": {
-                "__type": "variable",
-                "__name": "box-shadow-color-xl",
-                "__value": "rgba(0, 0, 0, 0.25)"
-            },
-            "box-shadow-xl": {
-                "__type": "variable",
-                "__name": "box-shadow-xl",
-                "__value": [
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-offset-x-xl"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-offset-y-xl"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-blur-radius-xl"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-spread-radius-xl"
-                    },
-                    {
-                        "__type": "reference",
-                        "__name": "box-shadow-color-xl"
-                    }
-                ]
-            },
-            "box-shadow-none": {
-                "__type": "variable",
-                "__name": "box-shadow-none",
-                "__value": "none"
-            },
-            "button-group--box-shadow-offset-x": {
-                "__type": "variable",
-                "__name": "button-group--box-shadow-offset-x",
+        "variables": {},
+        "variants": {
+            "button-group": {
+                "__type": "variant",
+                "__name": "button-group",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "box-shadow-offset-x"
+                    "extends": [
+                        "default",
+                        "box"
+                    ],
+                    "padding": "0"
                 }
             },
-            "button-group--box-shadow-offset-y": {
-                "__type": "variable",
-                "__name": "button-group--box-shadow-offset-y",
+            "button-group--block": {
+                "__type": "variant",
+                "__name": "button-group--block",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "box-shadow-offset-y"
+                    "width": "100"
                 }
             },
-            "button-group--box-shadow-blur-radius": {
-                "__type": "variable",
-                "__name": "button-group--box-shadow-blur-radius",
+            "button-group--child": {
+                "__type": "variant",
+                "__name": "button-group--child",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "box-shadow-blur-radius"
+                    "border": "0",
+                    "borderRadius": "0"
                 }
             },
-            "button-group--box-shadow-spread-radius": {
-                "__type": "variable",
-                "__name": "button-group--box-shadow-spread-radius",
+            "button-group--block--child": {
+                "__type": "variant",
+                "__name": "button-group--block--child",
                 "__value": {
-                    "__type": "reference",
-                    "__name": "box-shadow-spread-radius"
-                }
-            },
-            "button-group--box-shadow-color": {
-                "__type": "variable",
-                "__name": "button-group--box-shadow-color",
-                "__value": {
-                    "__type": "reference",
-                    "__name": "box-shadow-color"
+                    "flexBasis": "100"
                 }
             }
         },
-        "variants": {},
         "selectors": [
             {
                 "__type": "selector",
@@ -319,111 +52,49 @@
                     "position": "relative",
                     "display": "inline-flex",
                     "verticalAlign": "middle",
-                    "boxSizing": "border-box"
+                    "boxSizing": "border-box",
+                    "overflow": "hidden"
                 }
             },
             {
                 "__type": "selector",
                 "__name": ".button-group .button, .button-group .button-group",
                 "__value": {
-                    "boxShadow": "none"
+                    "boxShadow": "none !important"
                 }
             },
             {
                 "__type": "selector",
                 "__name": ".button-group.-horizontal > .button:not(:last-child), .button-group.-horizontal > .button-group:has(+ .button-group) .button:last-child, .button-group.-horizontal > .button-group:has(+ .button) .button:last-child",
                 "__value": {
-                    "borderTopRightRadius": 0,
-                    "borderBottomRightRadius": 0,
-                    "borderRightWidth": 0
+                    "borderTopRightRadius": "0 !important",
+                    "borderBottomRightRadius": "0 !important",
+                    "borderRightWidth": "0 !important"
                 }
             },
             {
                 "__type": "selector",
                 "__name": ".button-group.-horizontal > .button:not(:first-child), .button-group.-horizontal > .button-group + .button-group .button:first-child, .button-group.-horizontal > .button + .button-group .button:first-child",
                 "__value": {
-                    "borderTopLeftRadius": 0,
-                    "borderBottomLeftRadius": 0
+                    "borderTopLeftRadius": "0 !important",
+                    "borderBottomLeftRadius": "0 !important"
                 }
             },
             {
                 "__type": "selector",
                 "__name": ".button-group.-vertical > .button:not(:last-child), .button-group.-vertical > .button-group:has(+ .button-group) .button:last-child, .button-group.-vertical > .button-group:has(+ .button) .button:last-child",
                 "__value": {
-                    "borderBottomRightRadius": 0,
-                    "borderBottomLeftRadius": 0,
-                    "borderBottomWidth": 0
+                    "borderBottomRightRadius": "0 !important",
+                    "borderBottomLeftRadius": "0 !important",
+                    "borderBottomWidth": "0 !important"
                 }
             },
             {
                 "__type": "selector",
                 "__name": ".button-group.-vertical > .button:not(:first-child), .button-group.-vertical > .button-group + .button-group .button:first-child, .button-group.-vertical > .button + .button-group .button:first-child",
                 "__value": {
-                    "borderTopLeftRadius": 0,
-                    "borderTopRightRadius": 0
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".button-group.-block",
-                "__value": {
-                    "display": "flex",
-                    "flexBasis": "100%"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".button-group.-block > .button",
-                "__value": {
-                    "flexBasis": "100%"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".button-group.-vertical",
-                "__value": {
-                    "flexDirection": "column",
-                    "alignItems": "flex-start",
-                    "justifyContent": "center"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".button-group.-vertical .button, .button-group.-vertical .button-group, .button-group.-vertical [class$=\"-wrapper\"]",
-                "__value": {
-                    "width": "100%"
-                }
-            },
-            {
-                "__type": "selector",
-                "__name": ".button-group",
-                "__value": {
-                    "boxShadow": {
-                        "__type": "reference",
-                        "__name": "button-group--box-shadow",
-                        "__fallback": [
-                            {
-                                "__type": "reference",
-                                "__name": "button-group--box-shadow-offset-x"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "button-group--box-shadow-offset-y"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "button-group--box-shadow-blur-radius"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "button-group--box-shadow-spread-radius"
-                            },
-                            {
-                                "__type": "reference",
-                                "__name": "button-group--box-shadow-color"
-                            }
-                        ]
-                    }
+                    "borderTopLeftRadius": "0 !important",
+                    "borderTopRightRadius": "0 !important"
                 }
             }
         ],
