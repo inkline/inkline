@@ -2,7 +2,7 @@ import type { App, Component, Ref } from 'vue';
 import type { IconDefinition, ToastPosition } from './components';
 import type { ValidateOnEvent } from './forms';
 import type { ComponentProps } from './props';
-import type { ComponentVariantProps } from './variants';
+import type { VariantProps } from './variants';
 
 export type ColorMode = 'system' | 'light' | 'dark' | string;
 export type ColorModeStrategy = 'localStorage' | null;
@@ -48,7 +48,7 @@ export type ValidationOptions = {
 export type ThemeOptions = {
     tailwindcss?: boolean;
     prefix?: string;
-    variants?: Record<string, ComponentVariantProps>;
+    variants?: Record<string, VariantProps>;
 };
 
 export type UserOptions = {

@@ -1,5 +1,5 @@
 import type { PropertyFold } from './types';
-import type { ComponentVariantState } from '@inkline/types';
+import type { VariantState } from '@inkline/types';
 
 export const variantValueReferenceMarker = '{{';
 
@@ -33,7 +33,7 @@ export const propertyFoldingDefinitions: PropertyFold[] = [
     }
 ];
 
-export const variantStateKeys: ComponentVariantState[] = [
+export const variantStateKeys: VariantState[] = [
     'default',
     'active',
     'hover',

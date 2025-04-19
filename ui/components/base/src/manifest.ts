@@ -18,7 +18,7 @@ export const manifest: ComponentManifest[] = [
             },
             {
                 name: 'variant',
-                type: 'string | string[]',
+                type: 'string | string[] | VariantProps',
                 description: 'The variants applied to the component',
                 default: ''
             }

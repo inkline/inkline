@@ -1,8 +1,5 @@
-import type { ComponentProps, ComponentVariantState } from '@inkline/types';
+import type { ComponentProps, VariantState } from '@inkline/types';
 
-export function toStatefulName(
-    propertyName: keyof ComponentProps,
-    state: ComponentVariantState
-): string {
+export function toStatefulName(propertyName: keyof ComponentProps, state: VariantState): string {
     return state === 'default' ? `${propertyName}` : `${state}:${propertyName}`;
 }

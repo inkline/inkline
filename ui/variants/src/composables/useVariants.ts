@@ -1,21 +1,18 @@
-import { computed, unref, MaybeRef } from 'vue';
+import { computed, toValue, MaybeRefOrGetter } from 'vue';
 import {
     useOptions,
     getComponentOptionsColorModeValue,
     getComponentOptionsValue
 } from '@inkline/composables';
-import type { ComponentProps, ComponentVariantState } from '@inkline/types';
-import {
-    toVariantList,
-    fold,
-    toStatefulName,
-    resolveVariantByName,
-    resolveVariant
-} from '../utils';
-import { toKebabCase, isArray } from '@inkline/utils';
-import { variantStateKeys } from '../constants';
-import { ComponentVariantProps } from '@inkline/types';
-import { VariantType } from '../types';
+import type {
+    ComponentProps,
+    VariantProps,
+    VariantState,
+    ValueByVariantState
+} from '@inkline/types';
+import { toVariantList, fold, toStatefulName, resolveVariantByName } from '../utils';
+import { isArray } from '@inkline/utils';
+import { VariantNameOrProps } from '../types';
 
 const isColorProp = {
     background: true,
@@ -38,97 +35,93 @@ const isColorProp = {
 
 export function useVariants(
     componentName: string,
-    variantByState: MaybeRef<Record<string, VariantType>>
+    variantNameOrPropsByState: MaybeRefOrGetter<ValueByVariantState<VariantNameOrProps>>
 ) {
     const { options } = useOptions();
 
     const utilityPrefix = computed(() => options.value.theme?.prefix ?? '');
-    const variants = computed(() => options.value.theme?.variants ?? {});
+    const themeVariants = computed(() => options.value.theme?.variants ?? {});
 
-    const variantOverrides = computed(() => {
-        const variantByStateValue = unref(variantByState);
-
-        return Object.entries(variantByStateValue).reduce<Record<string, ComponentVariantProps>>(
-            (acc, [state, variant]) => {
-                acc[state] = variant;
-
-                return acc;
-            },
-            {}
-        );
-    });
-
-    // const variantList = computed(() => {
-    //     const list = unref(variantNameOrProps);
-    //     if (typeof list === 'string' || isArray(list)) {
-    //         return toVariantList(list);
-    //     }
-    //
-    //     return [];
-    // });
+    const stateKeys = computed(
+        () => Object.keys(toValue(variantNameOrPropsByState)) as VariantState[]
+    );
 
     /**
-     * Resolve variants based on props for each state
+     * Resolve variants props based on each state
      */
-    const variantStates = computed(
-        () => ({})
-        // variantStateKeys.reduce<Record<ComponentVariantState, ComponentProps>>(
-        //     (acc, state) => {
-        //         acc[state] = fold(
-        //             variantList.value.reduce<ComponentProps>((acc, variantName) => {
-        //                 const variantNameWithState = toStatefulName(variantName, state);
-        //                 const value = resolveVariantByName(variants.value, variantNameWithState);
-        //
-        //                 return { ...acc, ...value };
-        //             }, {})
-        //         );
-        //
-        //         return acc;
-        //     },
-        //     {} as Record<ComponentVariantState, ComponentProps>
-        // )
-    );
+    const variantPropsByState = computed(() => {
+        const variantNameOrPropsByStateValue = toValue(variantNameOrPropsByState);
+
+        return stateKeys.value.reduce<ValueByVariantState<VariantProps>>((acc, state) => {
+            const variant = variantNameOrPropsByStateValue[state];
+
+            if (typeof variant === 'string' || isArray(variant)) {
+                const variantList = toVariantList(variant);
+
+                acc[state] = fold(
+                    variantList.reduce<ComponentProps>((acc, variantName) => {
+                        const variantNameWithState = toStatefulName(variantName, state);
+                        const value = resolveVariantByName(
+                            themeVariants.value,
+                            variantNameWithState
+                        );
+
+                        return { ...acc, ...value };
+                    }, {})
+                );
+            } else {
+                acc[state] = variant;
+            }
+
+            return acc;
+        }, {});
+    });
 
     /**
      * Resolve props based on variants
      * Each property can also be set through the global theme settings
      */
-    const resolvedProps = computed(
-        () => ({})
-        // Object.keys(variantProps.value).reduce<Record<string, string>>((acc, key) => {
-        //     const propertyName = key as keyof ComponentProps;
-        //     variantStateKeys.forEach((state) => {
-        //         const propertyNameWithState = toStatefulName(propertyName, state);
-        //         const propertyValueFromState = variantStates.value[state][propertyName];
-        //         const propertyValue =
-        //             state === 'default'
-        //                 ? ((variantProps.value[key] as string) ?? propertyValueFromState)
-        //                 : propertyValueFromState;
-        //
-        //         const resolvedValue = isColorProp[propertyName as keyof typeof isColorProp]
-        //             ? getComponentOptionsColorModeValue(
-        //                   options,
-        //                   componentName,
-        //                   propertyName,
-        //                   propertyValue
-        //               )
-        //             : getComponentOptionsValue(options, componentName, propertyName, propertyValue);
-        //
-        //         if (resolvedValue) {
-        //             acc[propertyNameWithState] = resolvedValue as string;
-        //         }
-        //     });
-        //
-        //     return acc;
-        // }, {})
+    const resolvedProps = computed(() =>
+        stateKeys.value.reduce<Record<string, string>>((acc, state) => {
+            const stateProps = variantPropsByState.value[state];
+            if (!stateProps) {
+                return acc;
+            }
+
+            Object.entries(stateProps).forEach(([propertyName, propertyValueFromState]) => {
+                const propertyNameWithState = toStatefulName(propertyName, state);
+
+                const resolvedValue = isColorProp[propertyName as keyof typeof isColorProp]
+                    ? getComponentOptionsColorModeValue(
+                          options,
+                          componentName,
+                          propertyName,
+                          propertyValueFromState
+                      )
+                    : getComponentOptionsValue(
+                          options,
+                          componentName,
+                          propertyName,
+                          propertyValueFromState
+                      );
+
+                if (resolvedValue) {
+                    acc[propertyNameWithState] = resolvedValue as string;
+                }
+            });
+
+            return acc;
+        }, {})
     );
+
+    console.log(resolvedProps.value);
 
     /**
      * Generate classes based on resolved props
      */
-    const classes = computed(() => {
-        return [];
-        // return Object.entries(resolvedProps.value).reduce<Record<string, boolean>>(
+    const classes = computed(
+        () => ({})
+        // Object.entries(resolvedProps.value).reduce<Record<string, boolean>>(
         //     (acc, [key, variant]) => {
         //         if (variant) {
         //             const variantString = variant === 'default' ? '' : `:${variant}`;
@@ -139,8 +132,8 @@ export function useVariants(
         //         return acc;
         //     },
         //     {}
-        // );
-    });
+        // )
+    );
 
     return { classes };
 }

@@ -3,7 +3,8 @@ import { h, computed, defineComponent } from 'vue';
 import type { Component } from 'vue';
 import type { PropType } from 'vue';
 import { useVariants } from '@inkline/variants';
-import { ComponentVariantProps } from '@inkline/types';
+import type { VariantNameOrProps } from '@inkline/variants';
+import type { ValueByVariantState } from '@inkline/types';
 
 const componentName = 'Box';
 
@@ -30,16 +31,18 @@ export default defineComponent({
         },
         /**
          * The variants applied to the component
-         * @param {string | string[] | ComponentVariantProps} variant
+         * @param {string | string[] | VariantProps} variant
          * @default []
          */
         variant: {
-            type: [String, Array, Object] as PropType<string | string[] | ComponentVariantProps>,
+            type: [String, Array, Object] as PropType<VariantNameOrProps>,
             default: 'default'
         }
     },
     setup(props, { slots }) {
-        const variants = computed(() => ({ default: props.variant }));
+        const variants = computed<ValueByVariantState<VariantNameOrProps>>(() => ({
+            default: props.variant
+        }));
         const { classes } = useVariants(componentName, variants);
 
         // <!-- @slot default The default slot of the box component -->

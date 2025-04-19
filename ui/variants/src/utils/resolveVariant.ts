@@ -1,4 +1,4 @@
-import type { ComponentProps, ComponentVariantProps } from '@inkline/types';
+import type { ComponentProps, VariantProps } from '@inkline/types';
 import { toVariantList, unfold } from '../utils';
 import { merge } from '@inkline/utils';
 import { getValueByPath } from '@inkline/utils';
@@ -7,7 +7,7 @@ import { variantValueReferenceMarker } from '../constants';
 const variantsCache = new Map<string, ComponentProps>();
 
 export function resolveVariantByName(
-    variants: Record<string, ComponentVariantProps>,
+    variants: Record<string, VariantProps>,
     variantName: string,
     visited: Set<string> = new Set()
 ): ComponentProps {
@@ -37,8 +37,8 @@ export function resolveVariantByName(
  * Unfold the variant to get all properties and resolve extensions recursively
  */
 export function resolveVariant(
-    variants: Record<string, ComponentVariantProps>,
-    variant: ComponentVariantProps,
+    variants: Record<string, VariantProps>,
+    variant: VariantProps,
     visited: Set<string> = new Set()
 ): ComponentProps {
     const { extends: variantExtends, ...rest } = variant;
@@ -66,7 +66,7 @@ export function resolveVariant(
  * Reference strings are in the format of `{{variantName.propertyName}}`
  */
 export function resolveReferenceValues(
-    variants: Record<string, ComponentVariantProps>,
+    variants: Record<string, VariantProps>,
     resolved: ComponentProps
 ) {
     Object.entries(resolved).forEach(([key, value]) => {

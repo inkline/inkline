@@ -31,7 +31,7 @@ import type {
 } from '@inkline/core';
 import { indentLines } from '@inkline/utils';
 import { rootThemeTemplate, themeTemplate } from './templates';
-import type { ComponentVariantProps } from '@inkline/types';
+import type { VariantProps } from '@inkline/types';
 
 /**
  * Consumes each item in an array and joins the result
@@ -169,7 +169,7 @@ export function consumeVariants(
         tailwindcss?: boolean;
     }
 ): string {
-    const variants = Object.entries(instance).reduce<Record<string, ComponentVariantProps>>(
+    const variants = Object.entries(instance).reduce<Record<string, VariantProps>>(
         (acc, [key, variant]) => {
             acc[key] = variant.__value;
             return acc;

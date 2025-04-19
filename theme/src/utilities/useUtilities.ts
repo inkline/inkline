@@ -19,11 +19,11 @@ import {
     useTextColor
 } from '../variables';
 import { toCamelCase } from '@inkline/utils';
-import type { ComponentVariantState } from '@inkline/types';
+import type { VariantState } from '@inkline/types';
 
 export type UtilityVariantsEntry = {
     name: string;
-    state?: ComponentVariantState;
+    state?: VariantState;
     variants: Record<string, TokenValue>;
     transform?: (value: TokenValue) => ComponentValue;
 };
