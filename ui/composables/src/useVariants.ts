@@ -1,18 +1,18 @@
 import { computed, toValue, MaybeRefOrGetter } from 'vue';
-import {
-    useOptions,
-    getComponentOptionsColorModeValue,
-    getComponentOptionsValue
-} from '@inkline/composables';
 import type {
     ComponentProps,
     VariantProps,
     VariantState,
     ValueByVariantState
 } from '@inkline/types';
-import { toVariantList, fold, toStatefulName, resolveVariantByName } from '../utils';
-import { isArray } from '@inkline/utils';
-import { VariantNameOrProps } from '../types';
+import { toVariantList, fold, resolveVariantByName, resolveVariant } from '@inkline/variants';
+import type { VariantNameOrProps } from '@inkline/variants';
+import { isArray, toKebabCase, toStatefulName } from '@inkline/utils';
+import { useOptions } from './useOptions';
+import {
+    getComponentOptionsColorModeValue,
+    getComponentOptionsValue
+} from './useComponentOptionsValue';
 
 const isColorProp = {
     background: true,
@@ -55,6 +55,10 @@ export function useVariants(
         return stateKeys.value.reduce<ValueByVariantState<VariantProps>>((acc, state) => {
             const variant = variantNameOrPropsByStateValue[state];
 
+            if (!variant) {
+                return acc;
+            }
+
             if (typeof variant === 'string' || isArray(variant)) {
                 const variantList = toVariantList(variant);
 
@@ -70,7 +74,7 @@ export function useVariants(
                     }, {})
                 );
             } else {
-                acc[state] = variant;
+                acc[state] = resolveVariant(themeVariants.value, variant);
             }
 
             return acc;
@@ -114,26 +118,26 @@ export function useVariants(
         }, {})
     );
 
-    console.log(resolvedProps.value);
+    console.log(variantPropsByState.value, resolvedProps.value);
 
     /**
      * Generate classes based on resolved props
      */
-    const classes = computed(
-        () => ({})
-        // Object.entries(resolvedProps.value).reduce<Record<string, boolean>>(
-        //     (acc, [key, variant]) => {
-        //         if (variant) {
-        //             const variantString = variant === 'default' ? '' : `:${variant}`;
-        //             acc[`${utilityPrefix.value}${kebabCasePropNamesCache[key]}${variantString}`] =
-        //                 true;
-        //         }
-        //
-        //         return acc;
-        //     },
-        //     {}
-        // )
+    const classes = computed(() =>
+        Object.entries(resolvedProps.value).reduce<Record<string, boolean>>(
+            (acc, [key, variant]) => {
+                if (variant) {
+                    const variantString = variant === 'default' ? '' : `:${variant}`;
+                    acc[`${utilityPrefix.value}${toKebabCase(key)}${variantString}`] = true;
+                }
+
+                return acc;
+            },
+            {}
+        )
     );
+
+    console.log(classes.value);
 
     return { classes };
 }

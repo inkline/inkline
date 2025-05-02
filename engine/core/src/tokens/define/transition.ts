@@ -2,7 +2,7 @@ import {
     NamespacedKey,
     TokenValue,
     Variable,
-    VariablesOptions,
+    DefinitionOptions,
     NamespaceType,
     NamespacedMap
 } from '../../types';
@@ -26,7 +26,7 @@ export type OutputMapTransition<Namespace extends NamespaceType> = NamespacedMap
 export function defineTransition<Namespace extends NamespaceType>(
     ns: Namespace,
     value: SourceMapTransition,
-    options: VariablesOptions
+    options: DefinitionOptions
 ): OutputMapTransition<Namespace> {
     const transitionProperty = nsvariable(ns, 'transition-property', 'none', options);
     const transitionDuration = nsvariable(ns, 'transition-duration', 0, options);

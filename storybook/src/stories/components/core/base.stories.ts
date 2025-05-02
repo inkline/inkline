@@ -8,6 +8,7 @@ import {
     BaseComponentBoxShadowExample,
     BaseComponentColorExample,
     BaseComponentPaddingExample,
+    BaseComponentStateExample,
     BaseComponentVariantsExample
 } from '@inkline/component-base/examples';
 import type { Meta, StoryFn } from '@storybook/vue3';
@@ -27,4 +28,5 @@ export const BorderRadius: StoryFn = () => BaseComponentBorderRadiusExample;
 export const BoxShadow: StoryFn = () => BaseComponentBoxShadowExample;
 export const Color: StoryFn = () => BaseComponentColorExample;
 export const Padding: StoryFn = () => BaseComponentPaddingExample;
+export const State: StoryFn = () => BaseComponentStateExample;
 export const Variants: StoryFn = () => BaseComponentVariantsExample;

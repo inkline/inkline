@@ -2,7 +2,7 @@
 import { h, computed, defineComponent } from 'vue';
 import type { Component } from 'vue';
 import type { PropType } from 'vue';
-import { useVariants } from '@inkline/variants';
+import { useVariants } from '@inkline/composables';
 import type { VariantNameOrProps } from '@inkline/variants';
 import type { ValueByVariantState } from '@inkline/types';
 
@@ -37,11 +37,21 @@ export default defineComponent({
         variant: {
             type: [String, Array, Object] as PropType<VariantNameOrProps>,
             default: 'default'
+        },
+        /**
+         * The variants applied to the component on hover
+         * @param {string | string[] | VariantProps} hover:variant
+         * @default []
+         */
+        'hover:variant': {
+            type: [String, Array, Object] as PropType<VariantNameOrProps>,
+            default: () => []
         }
     },
     setup(props, { slots }) {
         const variants = computed<ValueByVariantState<VariantNameOrProps>>(() => ({
-            default: props.variant
+            default: props.variant,
+            hover: props['hover:variant']
         }));
         const { classes } = useVariants(componentName, variants);
 

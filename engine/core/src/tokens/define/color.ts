@@ -2,7 +2,7 @@ import {
     NamespacedKey,
     TokenValue,
     Variable,
-    VariablesOptions,
+    DefinitionOptions,
     HSLAColorProperty,
     NamespaceType,
     NamespacedMap
@@ -30,7 +30,7 @@ export type OutputMapBackground<Namespace extends NamespaceType> = NamespacedMap
 
 export function defineColorFn<Namespace extends NamespaceType, ReturnType>(
     propertyName: string
-): (ns: Namespace, value: SourceMapColor, options: VariablesOptions) => ReturnType {
+): (ns: Namespace, value: SourceMapColor, options: DefinitionOptions) => ReturnType {
     return (ns, value, options) => {
         const color = nscolor(ns, propertyName, value, options);
 
@@ -43,11 +43,11 @@ export function defineColorFn<Namespace extends NamespaceType, ReturnType>(
 export const defineColor: <Namespace extends NamespaceType>(
     ns: Namespace,
     value: SourceMapColor,
-    options: VariablesOptions
+    options: DefinitionOptions
 ) => OutputMapColor<Namespace> = defineColorFn('color');
 
 export const defineBackground: <Namespace extends NamespaceType>(
     ns: Namespace,
     value: SourceMapBackground,
-    options: VariablesOptions
+    options: DefinitionOptions
 ) => OutputMapBackground<Namespace> = defineColorFn('background');

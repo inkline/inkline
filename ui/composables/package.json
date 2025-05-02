@@ -11,6 +11,7 @@
     },
     "dependencies": {
         "@inkline/validation": "workspace:*",
+        "@inkline/variants": "workspace:*",
         "@inkline/utils": "workspace:*"
     },
     "devDependencies": {

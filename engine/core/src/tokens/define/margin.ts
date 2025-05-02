@@ -2,7 +2,7 @@ import {
     NamespacedKey,
     TokenValue,
     Variable,
-    VariablesOptions,
+    DefinitionOptions,
     NamespaceType,
     NamespacedMap
 } from '../../types';
@@ -28,7 +28,7 @@ export type OutputMapMargin<Namespace extends NamespaceType> = NamespacedMap<
 export function defineMargin<Namespace extends NamespaceType>(
     ns: Namespace,
     value: SourceMapMargin,
-    options: VariablesOptions
+    options: DefinitionOptions
 ): OutputMapMargin<Namespace> {
     const marginTop = nsvariable(ns, 'margin-top', 0, options);
     const marginRight = nsvariable(ns, 'margin-right', 0, options);

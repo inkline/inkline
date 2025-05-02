@@ -1,6 +1,6 @@
-import { Selector, SelectorOptions, TokenType } from '../types';
+import { Selector, DefinitionOptions, TokenType } from '../types';
 import { nanoid } from 'nanoid';
-import { addSelectorToTheme, removeSelectorFromTheme } from '../themes';
+import { addSelectorToTheme, removeSelectorFromTheme } from '../side-effects';
 import { isAtRule, isSelector } from '../typeGuards';
 
 /**
@@ -13,7 +13,7 @@ import { isAtRule, isSelector } from '../typeGuards';
 export function selector(
     name: string | string[],
     value: Selector['__value'],
-    options: SelectorOptions
+    options: DefinitionOptions
 ): Selector {
     const resolvedName = Array.isArray(name) ? name.join(', ') : name;
     const instance: Selector = {
@@ -31,7 +31,7 @@ export function selector(
 /**
  * Sets a selector type as nested
  */
-export function handleNestedSelector(instance: unknown, options: SelectorOptions) {
+export function handleNestedSelector(instance: unknown, options: DefinitionOptions) {
     if (!isSelector(instance) && !isAtRule(instance)) return;
 
     removeSelectorFromTheme(instance.__id, options);

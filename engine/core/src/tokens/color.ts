@@ -7,7 +7,7 @@ import {
     TokenType,
     TokenValue,
     Variable,
-    VariableOptions
+    DefinitionOptions
 } from '../types';
 import parseColor from 'color';
 import { variable } from './variable';
@@ -33,7 +33,7 @@ export function hsla(value: HSLAColorInlineProperty | CSS): Color {
 export function color<Name extends string>(
     name: Name,
     value: TokenValue | HSLAColorProperty | HSLAColorInlineProperty,
-    options: VariableOptions
+    options: DefinitionOptions
 ): Variable<Name> {
     let isParseableHSLAValue = true;
     let parsedColor: HSLAColorProperty = {} as HSLAColorProperty;
@@ -87,7 +87,7 @@ export function nscolor<Namespace extends NamespaceType, Name extends string>(
     ns: Namespace,
     name: Name,
     value: TokenValue | HSLAColorProperty | HSLAColorInlineProperty,
-    options: VariableOptions
+    options: DefinitionOptions
 ) {
     return color(createNamespacedTokenName(ns, name), value, options);
 }

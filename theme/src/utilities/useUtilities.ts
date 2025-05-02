@@ -76,202 +76,202 @@ export function addUtilityVariants(
     });
 }
 
-export function useUtilities(userOptions: DefinitionOptions, prefix: string = '_') {
-    const options = { ...defaultDefinitionOptions, ...userOptions };
-
-    const borderValues = {
-        0: 0,
-        none: 0
-    };
-
-    const { borderColorMap, borderWidthMap, borderStyleMap } = useBorder(options);
-    const {
-        borderRadiusMap,
-        borderTopLeftRadiusMap,
-        borderTopRightRadiusMap,
-        borderBottomRightRadiusMap,
-        borderBottomLeftRadiusMap
-    } = useBorderRadius(options);
-    const { boxShadowMap } = useBoxShadow(options);
-    const { fontSizeMap } = useFontSize(options);
-    const { fontWeightMap } = useFontWeight(options);
-
-    const { colorMap } = useColors(options);
-
-    const heightMap = {
-        auto: 'auto',
-        100: '100%',
-        0: 0,
-        screen: '100vh'
-    };
-
-    const opacityMap = {
-        0: 0,
-        25: '0.25',
-        50: '0.5',
-        75: '0.75',
-        100: 1
-    };
-
-    const { spacingMap } = useSpacing(options);
-
-    const squareMap = {
-        sm: '32px',
-        md: '44px',
-        lg: '56px'
-    };
-
-    const { textColorMap } = useTextColor(options);
-
-    const widthMap = {
-        auto: 'auto',
-        100: '100%',
-        0: 0,
-        screen: '100vw'
-    };
-
-    const utilityVariants: UtilityVariantsEntry[] = [
-        { name: 'background', variants: colorMap },
-        { name: 'background', state: 'hover', variants: colorMap },
-        { name: 'background', state: 'focus', variants: colorMap },
-        { name: 'background', state: 'active', variants: colorMap },
-        {
-            name: 'border-color',
-            variants: {
-                ...borderColorMap,
-                ...colorMap
-            }
-        },
-        {
-            name: 'border-color',
-            state: 'hover',
-            variants: {
-                ...borderColorMap,
-                ...colorMap
-            }
-        },
-        {
-            name: 'border-color',
-            state: 'focus',
-            variants: {
-                ...borderColorMap,
-                ...colorMap
-            }
-        },
-        {
-            name: 'border-color',
-            state: 'active',
-            variants: {
-                ...borderColorMap,
-                ...colorMap
-            }
-        },
-        { name: 'border-top-color', variants: colorMap },
-        { name: 'border-right-color', variants: colorMap },
-        { name: 'border-bottom-color', variants: colorMap },
-        { name: 'border-left-color', variants: colorMap },
-        { name: 'border-style', variants: borderStyleMap },
-        { name: 'border-top-style', variants: borderStyleMap },
-        { name: 'border-right-style', variants: borderStyleMap },
-        { name: 'border-bottom-style', variants: borderStyleMap },
-        { name: 'border-left-style', variants: borderStyleMap },
-        { name: 'border-width', variants: borderWidthMap },
-        { name: 'border-top-width', variants: borderWidthMap },
-        { name: 'border-right-width', variants: borderWidthMap },
-        { name: 'border-bottom-width', variants: borderWidthMap },
-        { name: 'border-left-width', variants: borderWidthMap },
-        { name: 'border', variants: borderValues },
-        { name: 'border-top', variants: borderValues },
-        { name: 'border-right', variants: borderValues },
-        { name: 'border-bottom', variants: borderValues },
-        { name: 'border-left', variants: borderValues },
-        { name: 'border-radius', variants: borderRadiusMap },
-        { name: 'border-top-left-radius', variants: borderTopLeftRadiusMap },
-        { name: 'border-top-right-radius', variants: borderTopRightRadiusMap },
-        { name: 'border-bottom-right-radius', variants: borderBottomRightRadiusMap },
-        { name: 'border-bottom-left-radius', variants: borderBottomLeftRadiusMap },
-        { name: 'box-shadow', variants: boxShadowMap },
-        {
-            name: 'color',
-            variants: {
-                ...textColorMap,
-                ...colorMap
-            }
-        },
-        {
-            name: 'color',
-            state: 'hover',
-            variants: {
-                ...textColorMap,
-                ...colorMap
-            }
-        },
-        {
-            name: 'color',
-            state: 'focus',
-            variants: {
-                ...textColorMap,
-                ...colorMap
-            }
-        },
-        {
-            name: 'color',
-            state: 'active',
-            variants: {
-                ...textColorMap,
-                ...colorMap
-            }
-        },
-        { name: 'flex-basis', variants: widthMap },
-        { name: 'font-size', variants: fontSizeMap },
-        { name: 'font-weight', variants: fontWeightMap },
-        { name: 'gap', variants: spacingMap },
-        { name: 'gap-x', variants: spacingMap, transform: (value) => ({ rowGap: value }) },
-        { name: 'gap-y', variants: spacingMap, transform: (value) => ({ columnGap: value }) },
-        { name: 'height', variants: heightMap },
-        { name: 'margin', variants: spacingMap },
-        { name: 'margin-top', variants: spacingMap },
-        { name: 'margin-right', variants: spacingMap },
-        { name: 'margin-bottom', variants: spacingMap },
-        { name: 'margin-left', variants: spacingMap },
-        {
-            name: 'margin-x',
-            variants: spacingMap,
-            transform: (value) => ({ paddingLeft: value, paddingRight: value })
-        },
-        {
-            name: 'margin-y',
-            variants: spacingMap,
-            transform: (value) => ({ paddingLeft: value, paddingRight: value })
-        },
-        { name: 'opacity', variants: opacityMap },
-        { name: 'padding', variants: spacingMap },
-        { name: 'padding-top', variants: spacingMap },
-        { name: 'padding-right', variants: spacingMap },
-        { name: 'padding-bottom', variants: spacingMap },
-        { name: 'padding-left', variants: spacingMap },
-        {
-            name: 'padding-x',
-            variants: spacingMap,
-            transform: (value) => ({ paddingLeft: value, paddingRight: value })
-        },
-        {
-            name: 'padding-y',
-            variants: spacingMap,
-            transform: (value) => ({ paddingTop: value, paddingBottom: value })
-        },
-        {
-            name: 'square',
-            variants: squareMap,
-            transform: (value) => ({ width: value, height: value })
-        },
-        {
-            name: 'width',
-            variants: widthMap
-        }
-    ];
-
-    utilityVariants.forEach((entry) => {
-        addUtilityVariants(options, entry, prefix);
-    });
+export function useUtilities(_userOptions: DefinitionOptions, _prefix: string = '_') {
+    // const options = { ...defaultDefinitionOptions, ...userOptions };
+    //
+    // const borderValues = {
+    //     0: 0,
+    //     none: 0
+    // };
+    //
+    // const { borderColorMap, borderWidthMap, borderStyleMap } = useBorder(options);
+    // const {
+    //     borderRadiusMap,
+    //     borderTopLeftRadiusMap,
+    //     borderTopRightRadiusMap,
+    //     borderBottomRightRadiusMap,
+    //     borderBottomLeftRadiusMap
+    // } = useBorderRadius(options);
+    // const { boxShadowMap } = useBoxShadow(options);
+    // const { fontSizeMap } = useFontSize(options);
+    // const { fontWeightMap } = useFontWeight(options);
+    //
+    // const { colorMap } = useColors(options);
+    //
+    // const heightMap = {
+    //     auto: 'auto',
+    //     100: '100%',
+    //     0: 0,
+    //     screen: '100vh'
+    // };
+    //
+    // const opacityMap = {
+    //     0: 0,
+    //     25: '0.25',
+    //     50: '0.5',
+    //     75: '0.75',
+    //     100: 1
+    // };
+    //
+    // const { spacingMap } = useSpacing(options);
+    //
+    // const squareMap = {
+    //     sm: '32px',
+    //     md: '44px',
+    //     lg: '56px'
+    // };
+    //
+    // const { textColorMap } = useTextColor(options);
+    //
+    // const widthMap = {
+    //     auto: 'auto',
+    //     100: '100%',
+    //     0: 0,
+    //     screen: '100vw'
+    // };
+    //
+    // const utilityVariants: UtilityVariantsEntry[] = [
+    //     { name: 'background', variants: colorMap },
+    //     { name: 'background', state: 'hover', variants: colorMap },
+    //     { name: 'background', state: 'focus', variants: colorMap },
+    //     { name: 'background', state: 'active', variants: colorMap },
+    //     {
+    //         name: 'border-color',
+    //         variants: {
+    //             ...borderColorMap,
+    //             ...colorMap
+    //         }
+    //     },
+    //     {
+    //         name: 'border-color',
+    //         state: 'hover',
+    //         variants: {
+    //             ...borderColorMap,
+    //             ...colorMap
+    //         }
+    //     },
+    //     {
+    //         name: 'border-color',
+    //         state: 'focus',
+    //         variants: {
+    //             ...borderColorMap,
+    //             ...colorMap
+    //         }
+    //     },
+    //     {
+    //         name: 'border-color',
+    //         state: 'active',
+    //         variants: {
+    //             ...borderColorMap,
+    //             ...colorMap
+    //         }
+    //     },
+    //     { name: 'border-top-color', variants: colorMap },
+    //     { name: 'border-right-color', variants: colorMap },
+    //     { name: 'border-bottom-color', variants: colorMap },
+    //     { name: 'border-left-color', variants: colorMap },
+    //     { name: 'border-style', variants: borderStyleMap },
+    //     { name: 'border-top-style', variants: borderStyleMap },
+    //     { name: 'border-right-style', variants: borderStyleMap },
+    //     { name: 'border-bottom-style', variants: borderStyleMap },
+    //     { name: 'border-left-style', variants: borderStyleMap },
+    //     { name: 'border-width', variants: borderWidthMap },
+    //     { name: 'border-top-width', variants: borderWidthMap },
+    //     { name: 'border-right-width', variants: borderWidthMap },
+    //     { name: 'border-bottom-width', variants: borderWidthMap },
+    //     { name: 'border-left-width', variants: borderWidthMap },
+    //     { name: 'border', variants: borderValues },
+    //     { name: 'border-top', variants: borderValues },
+    //     { name: 'border-right', variants: borderValues },
+    //     { name: 'border-bottom', variants: borderValues },
+    //     { name: 'border-left', variants: borderValues },
+    //     { name: 'border-radius', variants: borderRadiusMap },
+    //     { name: 'border-top-left-radius', variants: borderTopLeftRadiusMap },
+    //     { name: 'border-top-right-radius', variants: borderTopRightRadiusMap },
+    //     { name: 'border-bottom-right-radius', variants: borderBottomRightRadiusMap },
+    //     { name: 'border-bottom-left-radius', variants: borderBottomLeftRadiusMap },
+    //     { name: 'box-shadow', variants: boxShadowMap },
+    //     {
+    //         name: 'color',
+    //         variants: {
+    //             ...textColorMap,
+    //             ...colorMap
+    //         }
+    //     },
+    //     {
+    //         name: 'color',
+    //         state: 'hover',
+    //         variants: {
+    //             ...textColorMap,
+    //             ...colorMap
+    //         }
+    //     },
+    //     {
+    //         name: 'color',
+    //         state: 'focus',
+    //         variants: {
+    //             ...textColorMap,
+    //             ...colorMap
+    //         }
+    //     },
+    //     {
+    //         name: 'color',
+    //         state: 'active',
+    //         variants: {
+    //             ...textColorMap,
+    //             ...colorMap
+    //         }
+    //     },
+    //     { name: 'flex-basis', variants: widthMap },
+    //     { name: 'font-size', variants: fontSizeMap },
+    //     { name: 'font-weight', variants: fontWeightMap },
+    //     { name: 'gap', variants: spacingMap },
+    //     { name: 'gap-x', variants: spacingMap, transform: (value) => ({ rowGap: value }) },
+    //     { name: 'gap-y', variants: spacingMap, transform: (value) => ({ columnGap: value }) },
+    //     { name: 'height', variants: heightMap },
+    //     { name: 'margin', variants: spacingMap },
+    //     { name: 'margin-top', variants: spacingMap },
+    //     { name: 'margin-right', variants: spacingMap },
+    //     { name: 'margin-bottom', variants: spacingMap },
+    //     { name: 'margin-left', variants: spacingMap },
+    //     {
+    //         name: 'margin-x',
+    //         variants: spacingMap,
+    //         transform: (value) => ({ paddingLeft: value, paddingRight: value })
+    //     },
+    //     {
+    //         name: 'margin-y',
+    //         variants: spacingMap,
+    //         transform: (value) => ({ paddingLeft: value, paddingRight: value })
+    //     },
+    //     { name: 'opacity', variants: opacityMap },
+    //     { name: 'padding', variants: spacingMap },
+    //     { name: 'padding-top', variants: spacingMap },
+    //     { name: 'padding-right', variants: spacingMap },
+    //     { name: 'padding-bottom', variants: spacingMap },
+    //     { name: 'padding-left', variants: spacingMap },
+    //     {
+    //         name: 'padding-x',
+    //         variants: spacingMap,
+    //         transform: (value) => ({ paddingLeft: value, paddingRight: value })
+    //     },
+    //     {
+    //         name: 'padding-y',
+    //         variants: spacingMap,
+    //         transform: (value) => ({ paddingTop: value, paddingBottom: value })
+    //     },
+    //     {
+    //         name: 'square',
+    //         variants: squareMap,
+    //         transform: (value) => ({ width: value, height: value })
+    //     },
+    //     {
+    //         name: 'width',
+    //         variants: widthMap
+    //     }
+    // ];
+    //
+    // utilityVariants.forEach((entry) => {
+    //     addUtilityVariants(options, entry, prefix);
+    // });
 }

@@ -1,33 +1,36 @@
 <template>
-    <BaseComponent border-radius="none">
+    <BaseComponent :variant="{ extends: 'default', borderRadius: 'none' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-radius="xs">
+    <BaseComponent :variant="{ extends: 'default', borderRadius: 'xs' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-radius="sm">
+    <BaseComponent :variant="{ extends: 'default', borderRadius: 'sm' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-radius="md">
+    <BaseComponent :variant="{ extends: 'default', borderRadius: 'md' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-radius="lg">
+    <BaseComponent :variant="{ extends: 'default', borderRadius: 'lg' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-radius="xl">
+    <BaseComponent :variant="{ extends: 'default', borderRadius: 'xl' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
     <BaseComponent
-        border-top-left-radius="sm"
-        border-top-right-radius="md"
-        border-bottom-left-radius="lg"
-        border-bottom-right-radius="xl"
+        :variant="{
+            extends: 'default',
+            borderTopLeftRadius: 'sm',
+            borderTopRightRadius: 'md',
+            borderBottomLeftRadius: 'lg',
+            borderBottomRightRadius: 'xl'
+        }"
     >
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>

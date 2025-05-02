@@ -1,33 +1,33 @@
 <template>
-    <BaseComponent color="light">
+    <BaseComponent :variant="{ extends: 'default', color: 'light' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent color="dark">
+    <BaseComponent :variant="{ extends: 'default', color: 'dark' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent color="primary">
+    <BaseComponent :variant="{ extends: 'default', color: 'primary' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent color="secondary">
+    <BaseComponent :variant="{ extends: 'default', color: 'secondary' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent color="success">
+    <BaseComponent :variant="{ extends: 'default', color: 'success' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent color="info">
+    <BaseComponent :variant="{ extends: 'default', color: 'info' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent color="warning">
+    <BaseComponent :variant="{ extends: 'default', color: 'warning' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent color="danger">
+    <BaseComponent :variant="{ extends: 'default', color: 'danger' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 </template>

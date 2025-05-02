@@ -1,16 +1,7 @@
-import {
-    DefinitionOptions,
-    AtRule,
-    Selector,
-    SelectorOptions,
-    Variable,
-    Utility,
-    VariantOptions,
-    Variant
-} from './types';
-import { isTheme } from './typeGuards';
-import { theme } from './tokens';
-import { defaultThemeName } from './constants';
+import type { DefinitionOptions, AtRule, Selector, Variable, Utility, Variant } from '../types';
+import { isTheme } from '../typeGuards';
+import { theme } from '../tokens';
+import { defaultThemeName } from '../constants';
 
 /**
  * Adds a variable to a theme.
@@ -33,7 +24,7 @@ export function addVariableToTheme(variable: Variable, options: DefinitionOption
 /**
  * Adds a selector to a theme.
  */
-export function addSelectorToTheme(selector: Selector | AtRule, options: SelectorOptions) {
+export function addSelectorToTheme(selector: Selector | AtRule, options: DefinitionOptions) {
     const themeInstance = isTheme(options?.theme)
         ? options.theme
         : theme(options?.theme ?? defaultThemeName, options);
@@ -42,7 +33,7 @@ export function addSelectorToTheme(selector: Selector | AtRule, options: Selecto
     themeInstance.__keys.selectors.add(selector.__id);
 }
 
-export function removeSelectorFromTheme(id: string, options: SelectorOptions) {
+export function removeSelectorFromTheme(id: string, options: DefinitionOptions) {
     const themeInstance = isTheme(options?.theme)
         ? options.theme
         : theme(options?.theme ?? defaultThemeName, options);
@@ -59,7 +50,7 @@ export function removeSelectorFromTheme(id: string, options: SelectorOptions) {
 /**
  * Adds a utility to a theme.
  */
-export function addUtilityToTheme(utility: Utility, options: SelectorOptions) {
+export function addUtilityToTheme(utility: Utility, options: DefinitionOptions) {
     const themeInstance = isTheme(options?.theme)
         ? options.theme
         : theme(options?.theme ?? defaultThemeName, options);
@@ -71,7 +62,7 @@ export function addUtilityToTheme(utility: Utility, options: SelectorOptions) {
 /**
  * Adds a variant to a theme.
  */
-export function addVariantToTheme(variant: Variant, options: VariantOptions) {
+export function addVariantToTheme(variant: Variant, options: DefinitionOptions) {
     const themeInstance = isTheme(options?.theme)
         ? options.theme
         : theme(options?.theme ?? defaultThemeName, options);

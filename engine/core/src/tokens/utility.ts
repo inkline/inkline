@@ -1,6 +1,6 @@
-import { TokenType, Utility, UtilityOptions } from '../types';
+import { TokenType, Utility, DefinitionOptions } from '../types';
 import { nanoid } from 'nanoid';
-import { addUtilityToTheme, removeSelectorFromTheme } from '../themes';
+import { addUtilityToTheme, removeSelectorFromTheme } from '../side-effects';
 
 /**
  * Creates a utility token.
@@ -9,7 +9,11 @@ import { addUtilityToTheme, removeSelectorFromTheme } from '../themes';
  * Utilities are used to store utility classes
  * Utilities automatically added to the theme when created.
  */
-export function utility(name: string, value: Utility['__value'], options: UtilityOptions): Utility {
+export function utility(
+    name: string,
+    value: Utility['__value'],
+    options: DefinitionOptions
+): Utility {
     const instance: Utility = {
         __id: nanoid(),
         __type: TokenType.Utility,

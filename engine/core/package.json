@@ -40,8 +40,9 @@
         "./*": "./*"
     },
     "dependencies": {
-        "@inkline/utils": "workspace:*",
         "@inkline/types": "workspace:*",
+        "@inkline/utils": "workspace:*",
+        "@inkline/variants": "workspace:*",
         "color": "^4.2.3",
         "nanoid": "^5.0.9"
     },

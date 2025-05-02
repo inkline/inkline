@@ -6,5 +6,6 @@ export * from './useInjectStrict';
 export * from './useIsServer';
 export * from './useKeyDown';
 export * from './useOptions';
+export * from './useVariants';
 export * from './utils';
 export * from './forms';

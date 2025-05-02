@@ -10,12 +10,9 @@
         "test:dev": "devtools test --watch"
     },
     "dependencies": {
-        "@inkline/validation": "workspace:*",
-        "@inkline/core": "workspace:*",
         "@inkline/utils": "workspace:*"
     },
     "devDependencies": {
-        "@inkline/composables": "workspace:*",
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
         "@inkline/typescript-config": "workspace:*",
@@ -32,8 +29,7 @@
         "vue": "catalog:"
     },
     "peerDependencies": {
-        "vue": ">=3.0.0",
-        "@inkline/composables": "workspace:*"
+        "vue": ">=3.0.0"
     },
     "files": [
         "dist",

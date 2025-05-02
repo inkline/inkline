@@ -16,6 +16,8 @@ export const defaultDefinitionOptions: Omit<DefinitionOptions, 'context'> = {
     default: true
 };
 
+export const defaultUtilityPrefix = '_';
+
 /**
  * Generator options
  */

@@ -1,89 +1,98 @@
 <template>
-    <BaseComponent border-style="solid">
+    <BaseComponent :variant="{ extends: 'default', borderStyle: 'solid' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-style="dashed">
+    <BaseComponent :variant="{ extends: 'default', borderStyle: 'dashed' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-style="dotted">
+    <BaseComponent :variant="{ extends: 'default', borderStyle: 'dotted' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-style="double" border-width="thick">
+    <BaseComponent :variant="{ extends: 'default', borderStyle: 'double', borderWidth: 'thick' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-style="groove" border-width="thick">
+    <BaseComponent :variant="{ extends: 'default', borderStyle: 'groove', borderWidth: 'thick' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-width="0">
+    <BaseComponent :variant="{ extends: 'default', borderWidth: '0' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-width="thin">
+    <BaseComponent :variant="{ extends: 'default', borderWidth: 'thin' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-width="medium">
+    <BaseComponent :variant="{ extends: 'default', borderWidth: 'medium' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-width="thick">
+    <BaseComponent :variant="{ extends: 'default', borderWidth: 'thick' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-color="primary">
+    <BaseComponent :variant="{ extends: 'default', borderColor: 'primary' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-color="secondary">
+    <BaseComponent :variant="{ extends: 'default', borderColor: 'secondary' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-color="success">
+    <BaseComponent :variant="{ extends: 'default', borderColor: 'success' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-color="danger">
+    <BaseComponent :variant="{ extends: 'default', borderColor: 'danger' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-color="warning">
+    <BaseComponent :variant="{ extends: 'default', borderColor: 'warning' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent border-color="info">
+    <BaseComponent :variant="{ extends: 'default', borderColor: 'info' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
     <BaseComponent
-        border-top-style="solid"
-        border-right-style="dashed"
-        border-bottom-style="dotted"
-        border-left-style="double"
-        border-width="thick"
+        :variant="{
+            extends: 'default',
+            borderTopStyle: 'solid',
+            borderRightStyle: 'dashed',
+            borderBottomStyle: 'dotted',
+            borderLeftStyle: 'double',
+            borderWidth: 'thick'
+        }"
     >
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
     <BaseComponent
-        border-top-color="primary"
-        border-right-color="secondary"
-        border-bottom-color="success"
-        border-left-color="danger"
-        border-width="medium"
+        :variant="{
+            extends: 'default',
+            borderTopColor: 'primary',
+            borderRightColor: 'secondary',
+            borderBottomColor: 'success',
+            borderLeftColor: 'danger',
+            borderWidth: 'medium'
+        }"
     >
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
     <BaseComponent
-        border-top-width="thin"
-        border-right-width="medium"
-        border-bottom-width="thick"
-        border-left-width="none"
+        :variant="{
+            extends: 'default',
+            borderTopWidth: 'thin',
+            borderRightWidth: 'medium',
+            borderBottomWidth: 'thick',
+            borderLeftWidth: 'none'
+        }"
     >
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>

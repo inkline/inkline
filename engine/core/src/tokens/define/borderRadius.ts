@@ -2,7 +2,7 @@ import {
     NamespacedKey,
     TokenValue,
     Variable,
-    VariablesOptions,
+    DefinitionOptions,
     NamespaceType,
     NamespacedMap
 } from '../../types';
@@ -28,7 +28,7 @@ export type OutputMapBorderRadius<Namespace extends NamespaceType> = NamespacedM
 export function defineBorderRadius<Namespace extends NamespaceType>(
     ns: Namespace,
     value: SourceMapBorderRadius,
-    options: VariablesOptions
+    options: DefinitionOptions
 ): OutputMapBorderRadius<Namespace> {
     const borderTopLeftRadius = nsvariable(ns, 'border-top-left-radius', 0, options);
     const borderTopRightRadius = nsvariable(ns, 'border-top-right-radius', 0, options);

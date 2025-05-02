@@ -33,6 +33,20 @@ export const propertyFoldingDefinitions: PropertyFold[] = [
     }
 ];
 
+export const propertyToVariableMap: Record<string, string | string[]> = {
+    background: 'color',
+    margin: 'spacing',
+    marginTop: 'spacing',
+    marginRight: 'spacing',
+    marginBottom: 'spacing',
+    marginLeft: 'spacing',
+    padding: 'spacing',
+    paddingTop: 'spacing',
+    paddingRight: 'spacing',
+    paddingBottom: 'spacing',
+    paddingLeft: 'spacing'
+};
+
 export const variantStateKeys: VariantState[] = [
     'default',
     'active',

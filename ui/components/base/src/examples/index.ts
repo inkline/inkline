@@ -6,3 +6,4 @@ export { default as BaseComponentBoxShadowExample } from './box-shadow.vue';
 export { default as BaseComponentColorExample } from './color.vue';
 export { default as BaseComponentPaddingExample } from './padding.vue';
 export { default as BaseComponentVariantsExample } from './variants.vue';
+export { default as BaseComponentStateExample } from './state.vue';

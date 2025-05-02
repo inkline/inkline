@@ -1,7 +1,7 @@
 import {
     BorderProperty,
     BorderSidesProperty,
-    VariablesOptions,
+    DefinitionOptions,
     NamespacedKey,
     NamespacedMap,
     NamespaceType,
@@ -13,7 +13,7 @@ import { resolveStringPropertyValue, toExportedVariable } from '../../utils';
 import { nsvariable, set, valueOf } from '../variable';
 import { ref } from '../ref';
 import { color as createColor } from '../color';
-import { addVariableToTheme } from '../../themes';
+import { addVariableToTheme } from '../../side-effects';
 
 export type SourceMapBorder = TokenValue | BorderProperty | BorderSidesProperty;
 
@@ -46,61 +46,25 @@ export type OutputMapBorder<Namespace extends NamespaceType> = NamespacedMap<
 export function defineBorder<Namespace extends NamespaceType>(
     ns: Namespace,
     value: SourceMapBorder,
-    options: VariablesOptions
+    options: DefinitionOptions
 ): OutputMapBorder<Namespace> {
     const registerComposed = options.registerComposed ?? true;
 
-    const borderTopWidth = nsvariable(ns, 'border-top-width', 0, {
-        register: false,
-        ...options
-    });
-    const borderTopStyle = nsvariable(ns, 'border-top-style', 'none', {
-        register: false,
-        ...options
-    });
-    const borderTopColor = nsvariable(ns, 'border-top-color', 'currentColor', {
-        register: false,
-        ...options
-    });
+    const borderTopWidth = nsvariable(ns, 'border-top-width', 0, options);
+    const borderTopStyle = nsvariable(ns, 'border-top-style', 'none', options);
+    const borderTopColor = nsvariable(ns, 'border-top-color', 'currentColor', options);
 
-    const borderRightWidth = nsvariable(ns, 'border-right-width', 0, {
-        register: false,
-        ...options
-    });
-    const borderRightStyle = nsvariable(ns, 'border-right-style', 'none', {
-        register: false,
-        ...options
-    });
-    const borderRightColor = nsvariable(ns, 'border-right-color', 'currentColor', {
-        register: false,
-        ...options
-    });
+    const borderRightWidth = nsvariable(ns, 'border-right-width', 0, options);
+    const borderRightStyle = nsvariable(ns, 'border-right-style', 'none', options);
+    const borderRightColor = nsvariable(ns, 'border-right-color', 'currentColor', options);
 
-    const borderBottomWidth = nsvariable(ns, 'border-bottom-width', 0, {
-        register: false,
-        ...options
-    });
-    const borderBottomStyle = nsvariable(ns, 'border-bottom-style', 'none', {
-        register: false,
-        ...options
-    });
-    const borderBottomColor = nsvariable(ns, 'border-bottom-color', 'currentColor', {
-        register: false,
-        ...options
-    });
+    const borderBottomWidth = nsvariable(ns, 'border-bottom-width', 0, options);
+    const borderBottomStyle = nsvariable(ns, 'border-bottom-style', 'none', options);
+    const borderBottomColor = nsvariable(ns, 'border-bottom-color', 'currentColor', options);
 
-    const borderLeftWidth = nsvariable(ns, 'border-left-width', 0, {
-        register: false,
-        ...options
-    });
-    const borderLeftStyle = nsvariable(ns, 'border-left-style', 'none', {
-        register: false,
-        ...options
-    });
-    const borderLeftColor = nsvariable(ns, 'border-left-color', 'currentColor', {
-        register: false,
-        ...options
-    });
+    const borderLeftWidth = nsvariable(ns, 'border-left-width', 0, options);
+    const borderLeftStyle = nsvariable(ns, 'border-left-style', 'none', options);
+    const borderLeftColor = nsvariable(ns, 'border-left-color', 'currentColor', options);
 
     const borderWidth = nsvariable(
         ns,

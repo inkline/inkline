@@ -1,4 +1,4 @@
-import { Define, VariablesOptions, NamespaceType, SourceMap, Variable } from '../types';
+import { Define, DefinitionOptions, NamespaceType, SourceMap, Variable } from '../types';
 import {
     defineBorder,
     SourceMapBorder,
@@ -28,7 +28,11 @@ import { isTokenValue } from '../typeGuards';
 export function nsvariables<
     Namespace extends NamespaceType,
     SourceSubMap extends PartialDeep<SourceMap>
->(ns: Namespace, values: SourceSubMap, options: VariablesOptions): Define<Namespace, SourceSubMap> {
+>(
+    ns: Namespace,
+    values: SourceSubMap,
+    options: DefinitionOptions
+): Define<Namespace, SourceSubMap> {
     let results: Record<string, Variable> = {};
 
     Object.entries(values).forEach(([name, value]) => {
@@ -108,7 +112,7 @@ export function nsvariables<
 
 export function variables<SourceSubMap extends PartialDeep<SourceMap>>(
     values: SourceSubMap,
-    options: VariablesOptions
+    options: DefinitionOptions
 ): Define<'', SourceSubMap> {
     return nsvariables('', values, options);
 }

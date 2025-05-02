@@ -1,41 +1,41 @@
 <template>
-    <BaseComponent :variant="{ background: 'white' }">
+    <BaseComponent :variant="{ extends: 'default', background: 'white' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent :variant="{ background: 'light' }">
+    <BaseComponent :variant="{ extends: 'default', background: 'light' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent :variant="{ background: 'dark' }">
+    <BaseComponent :variant="{ extends: 'default', background: 'dark' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent :variant="{ background: 'black' }">
+    <BaseComponent :variant="{ extends: 'default', background: 'black' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent :variant="{ background: 'primary' }">
+    <BaseComponent :variant="{ extends: 'default', background: 'primary' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent :variant="{ background: 'secondary' }">
+    <BaseComponent :variant="{ extends: 'default', background: 'secondary' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent :variant="{ background: 'success' }">
+    <BaseComponent :variant="{ extends: 'default', background: 'success' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent :variant="{ background: 'info' }">
+    <BaseComponent :variant="{ extends: 'default', background: 'info' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent :variant="{ background: 'warning' }">
+    <BaseComponent :variant="{ extends: 'default', background: 'warning' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 
-    <BaseComponent :variant="{ background: 'danger' }">
+    <BaseComponent :variant="{ extends: 'default', background: 'danger' }">
         Some quick example text to make up the bulk of the box's content.
     </BaseComponent>
 </template>

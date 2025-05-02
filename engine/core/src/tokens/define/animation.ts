@@ -2,7 +2,7 @@ import {
     NamespacedKey,
     TokenValue,
     Variable,
-    VariablesOptions,
+    DefinitionOptions,
     NamespaceType,
     NamespacedMap
 } from '../../types';
@@ -32,7 +32,7 @@ export type OutputMapAnimation<Namespace extends NamespaceType> = NamespacedMap<
 export function defineAnimation<Namespace extends NamespaceType>(
     ns: Namespace,
     value: SourceMapAnimation,
-    options: VariablesOptions
+    options: DefinitionOptions
 ): OutputMapAnimation<Namespace> {
     const animationName = nsvariable(ns, 'animation-name', 'none', options);
     const animationFillMode = nsvariable(ns, 'animation-fill-mode', 'none', options);
