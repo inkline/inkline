@@ -17,7 +17,7 @@ export function variant(
         __id: nanoid(),
         __type: TokenType.Variant,
         __name: name,
-        __value: unfold(value)
+        __value: value
     };
 
     addVariantToTheme(instance, options);

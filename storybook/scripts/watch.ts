@@ -1,9 +1,6 @@
 import { resolve } from 'path';
 import { createRequire } from 'node:module';
-import { createWatcher, PluginUserOptions } from '@inkline/plugin';
-import { BuildOptions, Configuration } from '@inkline/config';
-import { buildConfiguration } from '@inkline/config';
-import { Logger } from '@inkline/logger';
+import { createInklineContext } from '@inkline/plugin';
 
 const require = createRequire(import.meta.url);
 
@@ -20,31 +17,22 @@ const __dirname = new URL('.', import.meta.url).pathname;
 const baseDir = resolve(__dirname, '..');
 const packagesDir = resolve(baseDir, '..', 'packages');
 
-export async function build(options: PluginUserOptions) {
+const ctx = createInklineContext({
+    outputDir: resolve(__dirname, '..', 'src', 'theme')
+});
+
+export async function build() {
+    console.log(`${ctx.configFile} changed, rebuilding...`);
+
     Object.keys(require.cache).forEach((key) => {
         if (key.startsWith(packagesDir) || key.startsWith(baseDir)) {
             delete require.cache[key];
         }
     });
 
-    try {
-        const { default: configuration } = require(resolve(baseDir, `inkline.config.ts`)) as {
-            default: Configuration;
-        };
-
-        await buildConfiguration(configuration, options as BuildOptions);
-
-        Logger.success(`inkline.config.ts built successfully.`);
-    } catch (e) {
-        Logger.error(`inkline.config.ts build failed:`);
-        console.log((e as Error).message);
-    }
+    await ctx.build();
 }
 
 await (async () => {
-    const watch = createWatcher(build);
-
-    await watch({
-        outputDir: resolve(__dirname, '..', 'src', 'theme')
-    });
+    await ctx.watch(build);
 })();

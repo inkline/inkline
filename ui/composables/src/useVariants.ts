@@ -74,7 +74,7 @@ export function useVariants(
                     }, {})
                 );
             } else {
-                acc[state] = resolveVariant(themeVariants.value, variant);
+                acc[state] = fold(resolveVariant(themeVariants.value, variant));
             }
 
             return acc;

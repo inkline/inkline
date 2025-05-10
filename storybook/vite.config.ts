@@ -2,6 +2,7 @@ import type { PluginOption } from 'vite';
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import vue from '@vitejs/plugin-vue';
+import inkline from '@inkline/plugin/vite';
 import glob from 'fast-glob';
 import { aliases } from '@inkline/vite-config';
 
@@ -15,7 +16,13 @@ const individualComponentDirPaths = glob.sync('**', {
 individualComponentDirPaths.sort((a, b) => (a.includes(b) ? -1 : a.localeCompare(b)));
 
 export default defineConfig({
-    plugins: [ignoreComponentsCss(), vue()],
+    plugins: [
+        ignoreComponentsCss(),
+        vue(),
+        inkline({
+            outputDir: resolve(__dirname, 'src', 'theme')
+        })
+    ],
     resolve: {
         alias: [
             ...aliases.map((alias) => ({

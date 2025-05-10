@@ -42,16 +42,17 @@ export function resolveVariant(
     visited: Set<string> = new Set()
 ): ComponentProps {
     const { extends: variantExtends, ...currentVariant } = variant;
+    const unfoldedVariant = unfold(currentVariant);
     let resolved: ComponentProps;
     if (variantExtends) {
         const extensions = toVariantList(variantExtends);
         resolved = extensions.reduce<ComponentProps>((acc, extension) => {
             const parentVariant = resolveVariantByName(variants, extension, visited);
 
-            return merge(acc, parentVariant, currentVariant);
+            return merge(acc, parentVariant, unfoldedVariant);
         }, {});
     } else {
-        resolved = currentVariant;
+        resolved = unfoldedVariant;
     }
 
     resolveReferenceValues(variants, resolved);

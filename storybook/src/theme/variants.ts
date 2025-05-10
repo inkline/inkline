@@ -9,29 +9,17 @@ export const theme: ThemeOptions = {
             ]
         },
         "box--base": {
-            "borderTopWidth": "default",
-            "borderRightWidth": "default",
-            "borderBottomWidth": "default",
-            "borderLeftWidth": "default",
-            "borderTopStyle": "default",
-            "borderRightStyle": "default",
-            "borderBottomStyle": "default",
-            "borderLeftStyle": "default"
+            "borderWidth": "default",
+            "borderStyle": "default"
         },
         "box--base--md": {
             "extends": "box--base",
-            "borderTopLeftRadius": "md",
-            "borderTopRightRadius": "md",
-            "borderBottomRightRadius": "md",
-            "borderBottomLeftRadius": "md",
+            "borderRadius": "md",
             "boxShadow": "md"
         },
         "box--md": {
             "extends": "box--base--md",
-            "paddingTop": "md",
-            "paddingRight": "md",
-            "paddingBottom": "md",
-            "paddingLeft": "md"
+            "padding": "md"
         },
         "box": {
             "extends": "box--md"
@@ -136,10 +124,7 @@ export const theme: ThemeOptions = {
             "fontSize": "inherit"
         },
         "badge--pill": {
-            "borderTopLeftRadius": "full",
-            "borderTopRightRadius": "full",
-            "borderBottomRightRadius": "full",
-            "borderBottomLeftRadius": "full"
+            "borderRadius": "full"
         },
         "badge": {
             "extends": [
@@ -185,17 +170,11 @@ export const theme: ThemeOptions = {
         "button--sm--square": {
             "width": "sm",
             "height": "sm",
-            "paddingTop": "0",
-            "paddingRight": "0",
-            "paddingBottom": "0",
-            "paddingLeft": "0"
+            "padding": "0"
         },
         "button--sm--circle": {
             "extends": "button--sm--square",
-            "borderTopLeftRadius": "full",
-            "borderTopRightRadius": "full",
-            "borderBottomRightRadius": "full",
-            "borderBottomLeftRadius": "full"
+            "borderRadius": "full"
         },
         "button--md": {
             "extends": "box--wide--md",
@@ -204,17 +183,11 @@ export const theme: ThemeOptions = {
         "button--md--square": {
             "width": "md",
             "height": "md",
-            "paddingTop": "0",
-            "paddingRight": "0",
-            "paddingBottom": "0",
-            "paddingLeft": "0"
+            "padding": "0"
         },
         "button--md--circle": {
             "extends": "button--md--square",
-            "borderTopLeftRadius": "full",
-            "borderTopRightRadius": "full",
-            "borderBottomRightRadius": "full",
-            "borderBottomLeftRadius": "full"
+            "borderRadius": "full"
         },
         "button--lg": {
             "extends": "box--wide--lg",
@@ -223,17 +196,11 @@ export const theme: ThemeOptions = {
         "button--lg--square": {
             "width": "lg",
             "height": "lg",
-            "paddingTop": "0",
-            "paddingRight": "0",
-            "paddingBottom": "0",
-            "paddingLeft": "0"
+            "padding": "0"
         },
         "button--lg--circle": {
             "extends": "button--lg--square",
-            "borderTopLeftRadius": "full",
-            "borderTopRightRadius": "full",
-            "borderBottomRightRadius": "full",
-            "borderBottomLeftRadius": "full"
+            "borderRadius": "full"
         },
         "button--light": {
             "extends": "light--interactive"
@@ -371,10 +338,7 @@ export const theme: ThemeOptions = {
                 "box"
             ],
             "border": "0",
-            "paddingTop": "0",
-            "paddingRight": "0",
-            "paddingBottom": "0",
-            "paddingLeft": "0"
+            "padding": "0"
         },
         "button-group--block": {
             "width": "100"

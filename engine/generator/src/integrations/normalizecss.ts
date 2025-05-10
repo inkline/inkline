@@ -224,7 +224,7 @@ export function useNormalizeTheme(userOptions: DefinitionOptions) {
     );
 }
 
-export function createNormalizeCSS(_configuration: Configuration): string {
+export function createNormalizeCSS(): string {
     const context = createContext();
     const options = { context };
 

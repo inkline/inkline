@@ -1,4 +1,5 @@
 import {
+    Context,
     Configuration,
     Variable,
     createContext,
@@ -9,14 +10,14 @@ import {
 import { consume } from '../consume';
 
 export function createTailwindCSSTheme(
-    configuration: Configuration,
+    context: Context,
     addonOptions?: GeneratorAddonTailwindCSSOptions
 ): string {
     const variables: Variable[] = [];
-    const context = createContext();
-    const options = { context };
+    const twContext = createContext();
+    const options = { context: twContext };
 
-    const defaultTheme = configuration.themes.default;
+    const defaultTheme = context.themes.default;
     const defaultThemeVariables = defaultTheme.variables;
     const defaultThemeVariablesKeys = [...defaultTheme.__keys.variables];
 
@@ -178,9 +179,6 @@ export function createTailwindCSSTheme(
 }`;
 }
 
-export function createTailwindCSSUtilities(
-    _configuration: Configuration,
-    _addonOptions?: GeneratorAddonTailwindCSSOptions
-) {
+export function createTailwindCSSUtilities() {
     return `@tailwind utilities;`;
 }

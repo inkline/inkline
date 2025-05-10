@@ -14,6 +14,7 @@
         "generate": "tsx scripts/generate.ts"
     },
     "devDependencies": {
+        "@inkline/core": "workspace:*",
         "@inkline/config": "workspace:*",
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",

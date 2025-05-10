@@ -24,7 +24,6 @@ describe('utility', () => {
         const utilityInstance = utility(utilityName, utilityValue, options);
 
         expect(utilityInstance).toEqual({
-            __id: expect.any(String) as string,
             __type: TokenType.Utility,
             __name: utilityName,
             __value: utilityValue

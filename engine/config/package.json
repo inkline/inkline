@@ -41,7 +41,8 @@
     "dependencies": {
         "@inkline/core": "workspace:*",
         "@inkline/generator": "workspace:*",
-        "c12": "^2.0.1"
+        "c12": "^2.0.1",
+        "esbuild": "^0.25.4"
     },
     "funding": {
         "type": "github",

@@ -1,24 +1,12 @@
-import type { OutputFile, Themes } from '@inkline/core';
+import type { Context, Options } from '@inkline/core';
 
-export type ModuleOptions = object;
-
-export type ConfigurationOptions<T = unknown> = {
-    outputDir?: string;
-    manifest?: boolean;
-    module?: 'css';
-} & T;
-
-export type Configuration<T = unknown> = {
-    themes: Themes;
-    files: OutputFile[];
-    options: ConfigurationOptions<T>;
-};
-
-export type UserBuildOptions = ConfigurationOptions & {
-    configFile?: string;
+export type UserBuildOptions = Options & {
+    context?: Context;
 };
 
 export type BuildOptions = Required<UserBuildOptions> & {
+    configPath: string;
     configDir: string;
-    configExtName: string;
+    configBasename: string;
+    configExtname: string;
 };

@@ -1,4 +1,4 @@
-import { Configuration } from './build';
+import type { Context } from './context';
 
 export type OutputFile = {
     id?: string;
@@ -25,7 +25,7 @@ export type GeneratorOptions = {
 };
 
 export interface Generator<T> {
-    (configuration: Configuration<T>): OutputFile[];
+    (context: Context, options: T): OutputFile[];
 }
 
 export type RenameFn = (name: string) => string;

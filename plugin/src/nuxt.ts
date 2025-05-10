@@ -1,9 +1,7 @@
 import components from '../resources/components';
 import { createResolver, defineNuxtModule, addPluginTemplate, addComponent } from '@nuxt/kit';
 import type { PluginUserOptions } from './plugin/types';
-import { watch } from './plugin/watch';
-import { build } from './plugin/build';
-import { getResolvedBuildOptions } from '@inkline/config';
+import { createInklineContext } from './plugin/context';
 
 interface ModuleConfig {
     import?: {
@@ -36,7 +34,7 @@ export const inkline = defineNuxtModule<InklineModuleOptions>({
             bridge: true
         }
     },
-    setup({ import: importOptions, configFile, outputDir, extName, globals }, nuxt) {
+    setup({ import: importOptions, configFile, outputDir, extname, globals }, nuxt) {
         const resolver = createResolver(import.meta.url);
         const templatesDir = resolver.resolve('./templates');
         const templatePath = resolver.resolve(templatesDir, 'nuxt.ejs');
@@ -46,17 +44,16 @@ export const inkline = defineNuxtModule<InklineModuleOptions>({
             ...importOptions
         };
 
-        const pluginOptions: PluginUserOptions = {
+        const ctx = createInklineContext({
             configFile,
             outputDir,
-            extName
-        };
-        const resolvedPluginOptions = getResolvedBuildOptions(pluginOptions);
+            extname
+        });
 
         // Add CSS imports
         if (importOptions.styles !== false) {
             nuxt.options.css = nuxt.options.css || [];
-            nuxt.options.css.unshift(`${resolvedPluginOptions.outputDir}/index.css`);
+            nuxt.options.css.unshift(`${ctx.outputDir}/index.css`);
         }
 
         // Add plugin template
@@ -80,9 +77,9 @@ export const inkline = defineNuxtModule<InklineModuleOptions>({
 
         // Watch or build Inkline config
         if (nuxt.options.dev) {
-            void watch(pluginOptions);
+            void ctx.watch();
         } else {
-            void build(pluginOptions);
+            void ctx.build();
         }
     }
 });

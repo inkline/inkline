@@ -1,12 +1,9 @@
-/**
- * Load configuration, resolve and generate files.
- *
- * @param options Build options.
- */
-import { BuildOptions, Configuration, UserBuildOptions } from './types';
+import type { Configuration } from '@inkline/core';
+import { createContext } from '@inkline/core';
+import { BuildOptions, UserBuildOptions } from './types';
 import {
     defaultConfigFileBasename,
-    defaultConfigFileExtName,
+    defaultConfigFileExtname,
     defaultConsumerModule,
     defaultOutputDir,
     loadConfigFromFile
@@ -19,16 +16,16 @@ import { generator } from '@inkline/generator';
 
 export function getResolvedBuildOptions(options: UserBuildOptions): BuildOptions {
     let configDir = process.cwd();
-    let configFile = defaultConfigFileBasename;
-    let configExtName = defaultConfigFileExtName;
+    let configBasename = defaultConfigFileBasename;
+    let configExtname = defaultConfigFileExtname;
 
     if (options.configFile) {
         configDir = dirname(options.configFile);
-        configExtName = extname(options.configFile);
-        configFile = basename(options.configFile, configExtName);
+        configExtname = extname(options.configFile);
+        configBasename = basename(options.configFile, configExtname);
     } else {
-        if (existsSync(resolve(configDir, `${configFile}.js`))) {
-            configExtName = '.js';
+        if (existsSync(resolve(configDir, `${configBasename}.js`))) {
+            configExtname = '.js';
         }
     }
 
@@ -36,10 +33,18 @@ export function getResolvedBuildOptions(options: UserBuildOptions): BuildOptions
     const outputDir = options.outputDir ?? resolve(configDir, defaultOutputDir);
     const manifest = options.manifest ?? false;
 
+    const configFile = `${configBasename}${configExtname}`;
+    const configPath = resolve(configDir, configFile);
+
     return {
+        context: createContext(),
+        generator: {},
+        ...options,
+        configPath,
         configDir,
         configFile,
-        configExtName,
+        configBasename,
+        configExtname,
         module: buildModule,
         outputDir,
         manifest
@@ -47,22 +52,22 @@ export function getResolvedBuildOptions(options: UserBuildOptions): BuildOptions
 }
 
 export async function build(userOptions: UserBuildOptions = {}) {
-    /**
-     * Load configuration
-     */
-
     const options = getResolvedBuildOptions(userOptions);
+
+    // Load configuration
     const configuration = await loadConfigFromFile({
         cwd: options.configDir,
-        configFile: `${options.configFile}${options.configExtName}`
+        configFile: options.configPath,
+        defaults: {
+            context: options.context,
+            options: {}
+        }
     });
 
-    configuration.options = {
+    return await buildConfiguration(configuration, {
         ...configuration.options,
         ...options
-    };
-
-    return await buildConfiguration(configuration, options);
+    });
 }
 
 export async function buildConfiguration(configuration: Configuration, options: BuildOptions) {
@@ -72,7 +77,7 @@ export async function buildConfiguration(configuration: Configuration, options: 
     }
 
     // Generate output files data
-    const outputFiles = generator(configuration);
+    const outputFiles = generator(configuration.context, options.generator);
 
     // Write output files
     const outputFilePromises: Promise<void>[] = [];
@@ -92,7 +97,7 @@ export async function buildConfiguration(configuration: Configuration, options: 
         writeFile(
             resolve(options.outputDir, 'manifest.json'),
             JSON.stringify(
-                configuration.themes,
+                configuration.context.themes,
                 (key, value: unknown) => (key === '__id' ? undefined : value),
                 4
             )

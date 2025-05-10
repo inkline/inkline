@@ -1,16 +1,20 @@
-import type { Configuration, ConfigurationOptions, ModuleOptions, SetupFunction } from './types';
+import type { Configuration, Options, ModuleOptions, SetupFunction } from './types';
 import { createContext } from './context';
 
 export function defineConfig(
     setup: SetupFunction,
-    options: ConfigurationOptions<ModuleOptions> = {}
+    options: Options<ModuleOptions> = {}
 ): Configuration {
     const context = createContext();
 
+    console.log('BEFORE SETUP', setup, options);
+
     setup({ context });
 
+    console.log('AFTER SETUP', context, options);
+
     return {
-        ...context,
+        context,
         options
     };
 }

@@ -23,3 +23,8 @@ export const defaultUtilityPrefix = '_';
  */
 
 export const defaultRenameFn = (name: string) => name;
+
+/**
+ * Parser options
+ */
+export const disableComment = '/* inkline disabled */';

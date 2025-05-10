@@ -1,11 +1,51 @@
-import { DefinitionOptions, Variant } from '../types';
+import { DefinitionOptions, UtilityClassEntry, Variant } from '../types';
 import type { VariantState } from '@inkline/types';
 import { toKebabCase, toStatefulName, isArray } from '@inkline/utils';
 import { propertyToVariableMap } from '@inkline/variants';
 import { ref, selector, utility } from '../tokens';
 import { defaultUtilityPrefix } from '../constants';
-import { addUtilityToTheme } from './themes';
+import { addUtilityToTheme } from './addToTheme';
 import { isVariableDefined, normalizeCSSSelector } from '../utils';
+
+export function registerUtilityForVariantProperty(
+    { name, value, state }: UtilityClassEntry,
+    options: DefinitionOptions
+) {
+    const utilityNameWithState = toStatefulName(
+        `${toKebabCase(name)}${value === 'default' ? '' : `:${value}`}`,
+        state
+    );
+
+    const propertyValues = propertyToVariableMap[name] ?? name;
+    const propertyValuesList = (isArray(propertyValues) ? propertyValues : [propertyValues]).map(
+        (propertyValue) => `${toKebabCase(propertyValue)}${value === 'default' ? '' : `--${value}`}`
+    );
+
+    const valueReference: string | undefined = propertyValuesList.find((variableName) =>
+        isVariableDefined(variableName, options)
+    );
+
+    const selectorValue = {
+        [name]: valueReference ? ref(toKebabCase(valueReference)) : value
+    };
+
+    const utilityInstance = utility(
+        utilityNameWithState,
+        selector(
+            normalizeCSSSelector(
+                `.${options.utilityPrefix ?? defaultUtilityPrefix}${utilityNameWithState}`
+            ),
+            selectorValue,
+            options
+        ),
+        {
+            ...options,
+            default: true
+        }
+    );
+
+    addUtilityToTheme(utilityInstance, options);
+}
 
 /**
  * When registering a variant, we also need to register related utility selectors.
@@ -44,38 +84,13 @@ export function registerUtilitiesForVariant(instance: Variant, options: Definiti
         )
             return;
 
-        const utilityNameWithState = toStatefulName(
-            `${toKebabCase(key)}${value === 'default' ? '' : `:${value}`}`,
-            state
-        );
-
-        const propertyValues = propertyToVariableMap[key] ?? key;
-        const propertyValuesList = isArray(propertyValues) ? propertyValues : [propertyValues];
-
-        const valueReference: string | undefined = propertyValuesList.find((propertyValue) => {
-            const variableName = `${toKebabCase(propertyValue)}${value === 'default' ? '' : `--${value}`}`;
-            return isVariableDefined(variableName, options);
-        });
-
-        const selectorValue = {
-            [key]: valueReference ? ref(toKebabCase(valueReference)) : value
-        };
-
-        const utilityInstance = utility(
-            utilityNameWithState,
-            selector(
-                normalizeCSSSelector(
-                    `.${options.utilityPrefix ?? defaultUtilityPrefix}${utilityNameWithState}`
-                ),
-                selectorValue,
-                options
-            ),
+        registerUtilityForVariantProperty(
             {
-                ...options,
-                default: true
-            }
+                name: key,
+                value: value as string,
+                state
+            },
+            options
         );
-
-        addUtilityToTheme(utilityInstance, options);
     });
 }

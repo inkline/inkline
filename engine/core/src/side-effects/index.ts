@@ -1,2 +1,2 @@
 export * from './registerUtilitiesForVariant';
-export * from './themes';
+export * from './addToTheme';

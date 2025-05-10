@@ -5,7 +5,9 @@ import { DecoratorHelpers } from '@storybook/addon-themes';
 
 import { markRaw, watch, ref } from 'vue';
 import { light, dark } from './theme';
-import { theme } from '../src/theme';
+// import { theme } from '../src/theme';
+
+const theme = {};
 
 import {
     Inkline,
