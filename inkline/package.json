@@ -11,7 +11,7 @@
     },
     "dependencies": {
         "@inkline/core": "workspace:*",
-        "@inkline/config": "workspace:*",
+        "@inkline/loader": "workspace:*",
         "@inkline/theme": "workspace:*",
         "@inkline/composables": "workspace:*",
         "@inkline/i18n": "workspace:*",

@@ -4,7 +4,7 @@ export const packageJsonExtension = {
     },
     devDependencies: {
         '@inkline/plugin': '^2.0.0',
-        '@inkline/config': '^2.0.0',
+        '@inkline/loader': '^2.0.0',
     }
 };
 
@@ -14,6 +14,6 @@ export const packageJsonDevelopmentExtension = {
     },
     devDependencies: {
         '@inkline/plugin': 'workspace:*',
-        '@inkline/config': 'workspace:*',
+        '@inkline/loader': 'workspace:*',
     }
 };

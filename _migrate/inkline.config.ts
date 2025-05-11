@@ -1,4 +1,4 @@
-import { defineConfig } from '@inkline/config';
+import { defineConfig } from '@inkline/loader';
 import { useTheme } from '@inkline/theme';
 import { useThemeComponents } from './src/theme';
 

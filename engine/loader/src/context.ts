@@ -1,26 +1,26 @@
-import type { PluginUserOptions } from './types';
 import type { FSWatcher } from 'fs';
-import { build as buildConfig, exists, getResolvedBuildOptions } from '@inkline/config';
+import { build as buildConfig, getResolvedBuildOptions } from './build';
+import { exists } from './utils';
 import { Logger } from '@inkline/logger';
-import type { ViteDevServer, ResolvedConfig } from 'vite';
-import { resolve, sep } from 'path';
+import { resolve } from 'path';
 import * as chokidar from 'chokidar';
 import dependencyTree from 'dependency-tree';
-import { BLOCKLISTED_ENVIRONMENTS } from './constants';
 import {
-    registerUtilityForVariantProperty,
     shouldExtract,
+    registerUtilityForVariantProperty,
     extractUtilityClasses,
     extractHelperFunctionUtilityClasses,
     extractVariantPropertyUtilityClasses,
-    extractCompiledVariantPropertyUtilityClasses
+    extractCompiledVariantPropertyUtilityClasses,
+    Options
 } from '@inkline/core';
 import type { DefinitionOptions, UtilityClassEntry } from '@inkline/core';
 import { debounce } from '@inkline/utils';
 
-export function createInklineContext(userOptions: PluginUserOptions) {
+export function createInklineLoaderContext(userOptions: Options) {
     let serverWatcher: FSWatcher | null = null;
     let initialized = false;
+    let silent = false;
 
     const { configPath, configDir, configFile, configBasename, configExtname, outputDir, context } =
         getResolvedBuildOptions(userOptions);
@@ -33,21 +33,14 @@ export function createInklineContext(userOptions: PluginUserOptions) {
     /**
      * Initialize the Inkline context.
      */
-    function initialize(config: ResolvedConfig) {
+    function initialize(options: { watch?: boolean; silent?: boolean } = {}) {
         if (initialized) {
             return;
         }
         initialized = true;
+        silent = options.silent ?? false;
 
-        const isBlockListedCommand = process.argv
-            .map((arg) => arg.split(sep).pop() ?? '')
-            .some((arg) => BLOCKLISTED_ENVIRONMENTS.find((command) => arg.includes(command)));
-        if (isBlockListedCommand) {
-            return;
-        }
-
-        const isDevMode = config.command !== 'build' && !process.argv.includes('build');
-        if (isDevMode) {
+        if (options.watch) {
             void watch();
         } else {
             void build();
@@ -58,18 +51,13 @@ export function createInklineContext(userOptions: PluginUserOptions) {
      * Build the config file and generate output files.
      */
     async function build() {
-        console.log('build', {
-            userOptions,
-            context
-        });
-
         await buildConfig({
             configFile: configPath,
             outputDir,
             context
         });
 
-        if (!userOptions.silent) {
+        if (!silent) {
             Logger.success(`${configBasename}${configExtname} built successfully.`);
         }
 
@@ -80,7 +68,7 @@ export function createInklineContext(userOptions: PluginUserOptions) {
      * Called when the config file changes.
      */
     function onConfigChange() {
-        if (!userOptions.silent) {
+        if (!silent) {
             Logger.info(`${configFile} changed, rebuilding...`);
         }
 
@@ -91,7 +79,7 @@ export function createInklineContext(userOptions: PluginUserOptions) {
      * Watch the config file for changes.
      */
     async function watch(onChange = onConfigChange) {
-        if (!userOptions.silent) {
+        if (!silent) {
             Logger.info(`Watching ${configFile} for changes...`);
         }
 
@@ -117,11 +105,11 @@ export function createInklineContext(userOptions: PluginUserOptions) {
     /**
      * Setup watcher for utility classes
      */
-    function setupServer(server: ViteDevServer) {
-        if (serverWatcher === server.watcher) {
+    function setupServer(watcher: FSWatcher) {
+        if (serverWatcher === watcher) {
             return;
         }
-        serverWatcher = server.watcher;
+        serverWatcher = watcher;
 
         serverWatcher.on('unlink', (path) => {
             console.log('unlink', path);

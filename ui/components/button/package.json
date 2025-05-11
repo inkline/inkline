@@ -25,7 +25,7 @@
         "@inkline/vue": "workspace:*"
     },
     "devDependencies": {
-        "@inkline/config": "workspace:*",
+        "@inkline/loader": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
         "@inkline/typescript-config": "workspace:*",
         "@inkline/devtools": "workspace:*",

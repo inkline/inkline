@@ -4,7 +4,7 @@
             "inkline*": [
                 "${configDir}/../../inkline/src*"
             ],
-            "@inkline/config": [
+            "@inkline/loader": [
                 "${configDir}/../../engine/config/src/index.ts"
             ],
             "@inkline/core": [

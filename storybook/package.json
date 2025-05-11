@@ -4,7 +4,7 @@
     "type": "module",
     "scripts": {
         "start": "pnpm run storybook",
-        "dev": "run-p storybook watch",
+        "dev": "pnpm run storybook",
         "watch": "tsx scripts/watch.ts",
         "build": "storybook build",
         "lint": "devtools eslint",
@@ -18,7 +18,7 @@
     },
     "devDependencies": {
         "@chromatic-com/storybook": "^3.2.4",
-        "@inkline/config": "workspace:*",
+        "@inkline/loader": "workspace:*",
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
         "@inkline/plugin": "workspace:*",

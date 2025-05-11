@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import { createRequire } from 'node:module';
-import { createInklineContext } from '@inkline/plugin';
+import { createInklineLoaderContext } from '@inkline/loader';
 
 const require = createRequire(import.meta.url);
 
@@ -17,7 +17,7 @@ const __dirname = new URL('.', import.meta.url).pathname;
 const baseDir = resolve(__dirname, '..');
 const packagesDir = resolve(baseDir, '..', 'packages');
 
-const ctx = createInklineContext({
+const ctx = createInklineLoaderContext({
     outputDir: resolve(__dirname, '..', 'src', 'theme')
 });
 

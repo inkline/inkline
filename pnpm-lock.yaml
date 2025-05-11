@@ -344,9 +344,6 @@ importers:
       '@iconify/json':
         specifier: ^2.2.308
         version: 2.2.308
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../engine/config
       '@inkline/core':
         specifier: workspace:*
         version: link:../engine/core
@@ -356,6 +353,9 @@ importers:
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../engine/loader
       '@inkline/logger':
         specifier: workspace:*
         version: link:../tooling/logger
@@ -420,9 +420,9 @@ importers:
 
   engine/cli:
     dependencies:
-      '@inkline/config':
+      '@inkline/loader':
         specifier: workspace:*
-        version: link:../config
+        version: link:../loader
       '@inkline/logger':
         specifier: workspace:*
         version: link:../../tooling/logger
@@ -469,55 +469,6 @@ importers:
       tsx:
         specifier: 'catalog:'
         version: 4.19.2
-      type-fest:
-        specifier: 'catalog:'
-        version: 4.33.0
-      typescript:
-        specifier: 'catalog:'
-        version: 5.7.3
-      vite:
-        specifier: 'catalog:'
-        version: 6.0.11(@types/node@20.14.9)(jiti@2.4.2)(lightningcss@1.29.1)(sass@1.77.6)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.1)
-      vitest:
-        specifier: 'catalog:'
-        version: 3.0.4(@types/debug@4.1.12)(@types/node@20.14.9)(jiti@2.4.2)(jsdom@26.0.0)(lightningcss@1.29.1)(sass@1.77.6)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.1)
-
-  engine/config:
-    dependencies:
-      '@inkline/core':
-        specifier: workspace:*
-        version: link:../core
-      '@inkline/generator':
-        specifier: workspace:*
-        version: link:../generator
-      c12:
-        specifier: ^2.0.1
-        version: 2.0.4(magicast@0.3.5)
-      esbuild:
-        specifier: ^0.25.4
-        version: 0.25.4
-    devDependencies:
-      '@inkline/devtools':
-        specifier: workspace:*
-        version: link:../../tooling/devtools
-      '@inkline/eslint-config':
-        specifier: workspace:*
-        version: link:../../config/eslint-config
-      '@inkline/typescript-config':
-        specifier: workspace:*
-        version: link:../../config/typescript-config
-      '@types/node':
-        specifier: 'catalog:'
-        version: 20.14.9
-      '@vitest/coverage-v8':
-        specifier: 'catalog:'
-        version: 3.0.4(vitest@3.0.4(@types/debug@4.1.12)(@types/node@20.14.9)(jiti@2.4.2)(jsdom@26.0.0)(lightningcss@1.29.1)(sass@1.77.6)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.1))
-      eslint:
-        specifier: 'catalog:'
-        version: 9.19.0(jiti@2.4.2)
-      tsup:
-        specifier: 'catalog:'
-        version: 8.3.6(@microsoft/api-extractor@7.49.1(@types/node@20.14.9))(jiti@2.4.2)(postcss@8.5.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.1)
       type-fest:
         specifier: 'catalog:'
         version: 4.33.0
@@ -634,6 +585,67 @@ importers:
       tsx:
         specifier: 'catalog:'
         version: 4.19.2
+      type-fest:
+        specifier: 'catalog:'
+        version: 4.33.0
+      typescript:
+        specifier: 'catalog:'
+        version: 5.7.3
+      vite:
+        specifier: 'catalog:'
+        version: 6.0.11(@types/node@20.14.9)(jiti@2.4.2)(lightningcss@1.29.1)(sass@1.77.6)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.1)
+      vitest:
+        specifier: 'catalog:'
+        version: 3.0.4(@types/debug@4.1.12)(@types/node@20.14.9)(jiti@2.4.2)(jsdom@26.0.0)(lightningcss@1.29.1)(sass@1.77.6)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.1)
+
+  engine/loader:
+    dependencies:
+      '@inkline/core':
+        specifier: workspace:*
+        version: link:../core
+      '@inkline/generator':
+        specifier: workspace:*
+        version: link:../generator
+      '@inkline/logger':
+        specifier: workspace:*
+        version: link:../../tooling/logger
+      '@inkline/utils':
+        specifier: workspace:*
+        version: link:../../common/utils
+      c12:
+        specifier: ^2.0.1
+        version: 2.0.4(magicast@0.3.5)
+      chokidar:
+        specifier: 'catalog:'
+        version: 3.6.0
+      dependency-tree:
+        specifier: ^11.0.1
+        version: 11.0.1
+      esbuild:
+        specifier: ^0.25.4
+        version: 0.25.4
+    devDependencies:
+      '@inkline/devtools':
+        specifier: workspace:*
+        version: link:../../tooling/devtools
+      '@inkline/eslint-config':
+        specifier: workspace:*
+        version: link:../../config/eslint-config
+      '@inkline/typescript-config':
+        specifier: workspace:*
+        version: link:../../config/typescript-config
+      '@types/node':
+        specifier: 'catalog:'
+        version: 20.14.9
+      '@vitest/coverage-v8':
+        specifier: 'catalog:'
+        version: 3.0.4(vitest@3.0.4(@types/debug@4.1.12)(@types/node@20.14.9)(jiti@2.4.2)(jsdom@26.0.0)(lightningcss@1.29.1)(sass@1.77.6)(terser@5.37.0)(tsx@4.19.2)(yaml@2.7.1))
+      eslint:
+        specifier: 'catalog:'
+        version: 9.19.0(jiti@2.4.2)
+      tsup:
+        specifier: 'catalog:'
+        version: 8.3.6(@microsoft/api-extractor@7.49.1(@types/node@20.14.9))(jiti@2.4.2)(postcss@8.5.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.1)
       type-fest:
         specifier: 'catalog:'
         version: 4.33.0
@@ -806,15 +818,15 @@ importers:
       '@inkline/composables':
         specifier: workspace:*
         version: link:../ui/composables
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../engine/config
       '@inkline/core':
         specifier: workspace:*
         version: link:../engine/core
       '@inkline/i18n':
         specifier: workspace:*
         version: link:../ui/i18n
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../engine/loader
       '@inkline/theme':
         specifier: workspace:*
         version: link:../theme
@@ -888,16 +900,10 @@ importers:
       '@nuxt/kit':
         specifier: 'catalog:'
         version: 3.15.4(magicast@0.3.5)
-      dependency-tree:
-        specifier: ^11.0.1
-        version: 11.0.1
       unplugin:
         specifier: 'catalog:'
         version: 2.1.2
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../engine/config
       '@inkline/core':
         specifier: workspace:*
         version: link:../engine/core
@@ -907,6 +913,9 @@ importers:
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../engine/loader
       '@inkline/typescript-config':
         specifier: workspace:*
         version: link:../config/typescript-config
@@ -916,9 +925,6 @@ importers:
       '@nuxt/schema':
         specifier: 'catalog:'
         version: 3.15.4
-      chokidar:
-        specifier: 'catalog:'
-        version: 3.6.0
       eslint:
         specifier: 'catalog:'
         version: 9.19.0(jiti@2.4.2)
@@ -950,15 +956,15 @@ importers:
       '@chromatic-com/storybook':
         specifier: ^3.2.4
         version: 3.2.4(react@18.3.1)(storybook@8.5.3(prettier@3.4.2))
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../engine/loader
       '@inkline/logger':
         specifier: workspace:*
         version: link:../tooling/logger
@@ -1566,15 +1572,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -1648,15 +1654,15 @@ importers:
       '@inkline/component-loader':
         specifier: workspace:*
         version: link:../loader
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -1727,15 +1733,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -1812,15 +1818,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -1897,15 +1903,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -1979,15 +1985,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -2055,15 +2061,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -2137,15 +2143,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -2216,15 +2222,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -2295,15 +2301,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -2377,15 +2383,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -2459,15 +2465,15 @@ importers:
       '@inkline/component-input':
         specifier: workspace:*
         version: link:../input
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -2538,15 +2544,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -2620,15 +2626,15 @@ importers:
       '@inkline/component-input':
         specifier: workspace:*
         version: link:../input
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -2702,15 +2708,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -2781,15 +2787,15 @@ importers:
       '@inkline/component-loader':
         specifier: workspace:*
         version: link:../loader
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -2860,15 +2866,15 @@ importers:
       '@inkline/component-loader':
         specifier: workspace:*
         version: link:../loader
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -2939,15 +2945,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -3018,15 +3024,15 @@ importers:
       '@inkline/component-loader':
         specifier: workspace:*
         version: link:../loader
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -3094,15 +3100,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -3173,15 +3179,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -3273,15 +3279,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -3355,15 +3361,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -3434,15 +3440,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -3516,15 +3522,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -3598,15 +3604,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -3677,15 +3683,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -3753,15 +3759,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -3835,15 +3841,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -3914,15 +3920,15 @@ importers:
         specifier: workspace:*
         version: link:../../vue
     devDependencies:
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -3993,15 +3999,15 @@ importers:
       '@inkline/component-loader':
         specifier: workspace:*
         version: link:../loader
-      '@inkline/config':
-        specifier: workspace:*
-        version: link:../../../engine/config
       '@inkline/devtools':
         specifier: workspace:*
         version: link:../../../tooling/devtools
       '@inkline/eslint-config':
         specifier: workspace:*
         version: link:../../../config/eslint-config
+      '@inkline/loader':
+        specifier: workspace:*
+        version: link:../../../engine/loader
       '@inkline/manifest':
         specifier: workspace:*
         version: link:../../../tooling/manifest
@@ -20195,12 +20201,12 @@ snapshots:
       decode-named-character-reference: 1.0.2
       devlop: 1.1.0
       mdast-util-to-string: 4.0.0
-      micromark: 4.0.1
+      micromark: 4.0.2
       micromark-util-decode-numeric-character-reference: 2.0.2
       micromark-util-decode-string: 2.0.1
       micromark-util-normalize-identifier: 2.0.1
       micromark-util-symbol: 2.0.1
-      micromark-util-types: 2.0.1
+      micromark-util-types: 2.0.2
       unist-util-stringify-position: 4.0.0
     transitivePeerDependencies:
       - supports-color

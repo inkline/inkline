@@ -1,4 +1,4 @@
-import { build } from '@inkline/config';
+import { build } from '@inkline/loader';
 import { Logger } from '@inkline/logger';
 import { GenerateCommandOptions } from "../types";
 

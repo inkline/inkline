@@ -13,7 +13,7 @@
         "test:dev": "devtools vitest --watch"
     },
     "dependencies": {
-        "@inkline/config": "workspace:*",
+        "@inkline/loader": "workspace:*",
         "@inkline/logger": "workspace:*",
         "@inkline/utils": "workspace:*",
         "chalk": "catalog:",

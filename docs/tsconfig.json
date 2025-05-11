@@ -27,7 +27,7 @@
 
             // Engine
 
-            "@inkline/config": [
+            "@inkline/loader": [
                 "../engine/config/src/index.ts"
             ],
             "@inkline/core": [

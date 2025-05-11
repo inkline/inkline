@@ -7,11 +7,7 @@ export function defineConfig(
 ): Configuration {
     const context = createContext();
 
-    console.log('BEFORE SETUP', setup, options);
-
     setup({ context });
-
-    console.log('AFTER SETUP', context, options);
 
     return {
         context,

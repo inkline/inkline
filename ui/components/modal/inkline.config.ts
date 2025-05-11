@@ -1,4 +1,4 @@
-import { defineConfig } from '@inkline/config';
+import { defineConfig } from '@inkline/loader';
 import { useModalContainerTheme, useModalTheme } from './src/theme';
 
 export default defineConfig(

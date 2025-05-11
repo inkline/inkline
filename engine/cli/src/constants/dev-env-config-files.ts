@@ -1,4 +1,4 @@
-export const defaultConfigFileContents = `import { defineConfig, defineTheme, defineThemes } from '@inkline/config';
+export const defaultConfigFileContents = `import { defineConfig, defineTheme, defineThemes } from '@inkline/loader';
 
 /**
  * Inkline Configuration

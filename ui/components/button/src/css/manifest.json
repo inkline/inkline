@@ -1321,7 +1321,8 @@
                 "__type": "variant",
                 "__name": "button--sm--square",
                 "__value": {
-                    "square": "sm",
+                    "width": "sm",
+                    "height": "sm",
                     "padding": "0"
                 }
             },
@@ -1345,7 +1346,8 @@
                 "__type": "variant",
                 "__name": "button--md--square",
                 "__value": {
-                    "square": "md",
+                    "width": "md",
+                    "height": "md",
                     "padding": "0"
                 }
             },
@@ -1369,7 +1371,8 @@
                 "__type": "variant",
                 "__name": "button--lg--square",
                 "__value": {
-                    "square": "lg",
+                    "width": "lg",
+                    "height": "lg",
                     "padding": "0"
                 }
             },
@@ -1743,54 +1746,34 @@
                 "__name": "font-size:sm",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:sm",
+                    "__name": "._font-size\\:sm",
                     "__value": {
                         "fontSize": {
                             "__type": "reference",
-                            "__name": "fontSize--sm"
+                            "__name": "font-size--sm"
                         }
                     }
                 }
             },
             {
                 "__type": "utility",
-                "__name": "font-size:sm",
+                "__name": "width:sm",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:sm",
+                    "__name": "._width\\:sm",
                     "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--sm"
-                        }
+                        "width": "sm"
                     }
                 }
             },
             {
                 "__type": "utility",
-                "__name": "square:sm",
+                "__name": "height:sm",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._square:sm",
+                    "__name": "._height\\:sm",
                     "__value": {
-                        "square": {
-                            "__type": "reference",
-                            "__name": "square--sm"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "square:sm",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._square:sm",
-                    "__value": {
-                        "square": {
-                            "__type": "reference",
-                            "__name": "square--sm"
-                        }
+                        "height": "sm"
                     }
                 }
             },
@@ -1799,26 +1782,9 @@
                 "__name": "padding:0",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._padding:0",
+                    "__name": "._padding\\:0",
                     "__value": {
-                        "padding": {
-                            "__type": "reference",
-                            "__name": "spacing--0"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "padding:0",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._padding:0",
-                    "__value": {
-                        "padding": {
-                            "__type": "reference",
-                            "__name": "spacing--0"
-                        }
+                        "padding": "0"
                     }
                 }
             },
@@ -1827,26 +1793,9 @@
                 "__name": "border-radius:full",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._border-radius:full",
+                    "__name": "._border-radius\\:full",
                     "__value": {
-                        "borderRadius": {
-                            "__type": "reference",
-                            "__name": "borderRadius--full"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "border-radius:full",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._border-radius:full",
-                    "__value": {
-                        "borderRadius": {
-                            "__type": "reference",
-                            "__name": "borderRadius--full"
-                        }
+                        "borderRadius": "full"
                     }
                 }
             },
@@ -1855,110 +1804,34 @@
                 "__name": "font-size:md",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:md",
+                    "__name": "._font-size\\:md",
                     "__value": {
                         "fontSize": {
                             "__type": "reference",
-                            "__name": "fontSize--md"
+                            "__name": "font-size--md"
                         }
                     }
                 }
             },
             {
                 "__type": "utility",
-                "__name": "font-size:md",
+                "__name": "width:md",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:md",
+                    "__name": "._width\\:md",
                     "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--md"
-                        }
+                        "width": "md"
                     }
                 }
             },
             {
                 "__type": "utility",
-                "__name": "square:md",
+                "__name": "height:md",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._square:md",
+                    "__name": "._height\\:md",
                     "__value": {
-                        "square": {
-                            "__type": "reference",
-                            "__name": "square--md"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "square:md",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._square:md",
-                    "__value": {
-                        "square": {
-                            "__type": "reference",
-                            "__name": "square--md"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "padding:0",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._padding:0",
-                    "__value": {
-                        "padding": {
-                            "__type": "reference",
-                            "__name": "spacing--0"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "padding:0",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._padding:0",
-                    "__value": {
-                        "padding": {
-                            "__type": "reference",
-                            "__name": "spacing--0"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "border-radius:full",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._border-radius:full",
-                    "__value": {
-                        "borderRadius": {
-                            "__type": "reference",
-                            "__name": "borderRadius--full"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "border-radius:full",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._border-radius:full",
-                    "__value": {
-                        "borderRadius": {
-                            "__type": "reference",
-                            "__name": "borderRadius--full"
-                        }
+                        "height": "md"
                     }
                 }
             },
@@ -1967,110 +1840,34 @@
                 "__name": "font-size:lg",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:lg",
+                    "__name": "._font-size\\:lg",
                     "__value": {
                         "fontSize": {
                             "__type": "reference",
-                            "__name": "fontSize--lg"
+                            "__name": "font-size--lg"
                         }
                     }
                 }
             },
             {
                 "__type": "utility",
-                "__name": "font-size:lg",
+                "__name": "width:lg",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:lg",
+                    "__name": "._width\\:lg",
                     "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--lg"
-                        }
+                        "width": "lg"
                     }
                 }
             },
             {
                 "__type": "utility",
-                "__name": "square:lg",
+                "__name": "height:lg",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._square:lg",
+                    "__name": "._height\\:lg",
                     "__value": {
-                        "square": {
-                            "__type": "reference",
-                            "__name": "square--lg"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "square:lg",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._square:lg",
-                    "__value": {
-                        "square": {
-                            "__type": "reference",
-                            "__name": "square--lg"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "padding:0",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._padding:0",
-                    "__value": {
-                        "padding": {
-                            "__type": "reference",
-                            "__name": "spacing--0"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "padding:0",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._padding:0",
-                    "__value": {
-                        "padding": {
-                            "__type": "reference",
-                            "__name": "spacing--0"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "border-radius:full",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._border-radius:full",
-                    "__value": {
-                        "borderRadius": {
-                            "__type": "reference",
-                            "__name": "borderRadius--full"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "border-radius:full",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._border-radius:full",
-                    "__value": {
-                        "borderRadius": {
-                            "__type": "reference",
-                            "__name": "borderRadius--full"
-                        }
+                        "height": "lg"
                     }
                 }
             },
@@ -2079,26 +1876,9 @@
                 "__name": "gap:md",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._gap:md",
+                    "__name": "._gap\\:md",
                     "__value": {
-                        "gap": {
-                            "__type": "reference",
-                            "__name": "gap--md"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "gap:md",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._gap:md",
-                    "__value": {
-                        "gap": {
-                            "__type": "reference",
-                            "__name": "gap--md"
-                        }
+                        "gap": "md"
                     }
                 }
             },
@@ -2107,26 +1887,9 @@
                 "__name": "width:100",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._width:100",
+                    "__name": "._width\\:100",
                     "__value": {
-                        "width": {
-                            "__type": "reference",
-                            "__name": "width--100"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "width:100",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._width:100",
-                    "__value": {
-                        "width": {
-                            "__type": "reference",
-                            "__name": "width--100"
-                        }
+                        "width": "100"
                     }
                 }
             },
@@ -2135,26 +1898,31 @@
                 "__name": "opacity:75",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._opacity:75",
+                    "__name": "._opacity\\:75",
                     "__value": {
-                        "opacity": {
-                            "__type": "reference",
-                            "__name": "opacity--75"
-                        }
+                        "opacity": "75"
                     }
                 }
             },
             {
                 "__type": "utility",
-                "__name": "opacity:75",
+                "__name": "default",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._opacity:75",
+                    "__name": "._default",
                     "__value": {
-                        "opacity": {
-                            "__type": "reference",
-                            "__name": "opacity--75"
-                        }
+                        "default": "default"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "default",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._default",
+                    "__value": {
+                        "default": "default"
                     }
                 }
             }

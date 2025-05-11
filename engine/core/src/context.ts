@@ -1,5 +1,4 @@
 import type { Context } from './types';
-import { nanoid } from 'nanoid';
 
 /**
  * Context
@@ -10,7 +9,6 @@ import { nanoid } from 'nanoid';
 
 export function createContext(): Context {
     return {
-        id: nanoid(),
         themes: {},
         files: []
     };

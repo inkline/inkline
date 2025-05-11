@@ -25,7 +25,7 @@
     },
     "devDependencies": {
         "@iconify/json": "^2.2.308",
-        "@inkline/config": "workspace:*",
+        "@inkline/loader": "workspace:*",
         "@inkline/core": "workspace:*",
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",

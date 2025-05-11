@@ -2548,25 +2548,11 @@
                 "__name": "font-size:xs",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:xs",
+                    "__name": "._font-size\\:xs",
                     "__value": {
                         "fontSize": {
                             "__type": "reference",
-                            "__name": "fontSize--xs"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "font-size:xs",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._font-size:xs",
-                    "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--xs"
+                            "__name": "font-size--xs"
                         }
                     }
                 }
@@ -2576,25 +2562,11 @@
                 "__name": "font-size:sm",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:sm",
+                    "__name": "._font-size\\:sm",
                     "__value": {
                         "fontSize": {
                             "__type": "reference",
-                            "__name": "fontSize--sm"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "font-size:sm",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._font-size:sm",
-                    "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--sm"
+                            "__name": "font-size--sm"
                         }
                     }
                 }
@@ -2604,25 +2576,11 @@
                 "__name": "font-size:md",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:md",
+                    "__name": "._font-size\\:md",
                     "__value": {
                         "fontSize": {
                             "__type": "reference",
-                            "__name": "fontSize--md"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "font-size:md",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._font-size:md",
-                    "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--md"
+                            "__name": "font-size--md"
                         }
                     }
                 }
@@ -2632,25 +2590,11 @@
                 "__name": "font-size:lg",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:lg",
+                    "__name": "._font-size\\:lg",
                     "__value": {
                         "fontSize": {
                             "__type": "reference",
-                            "__name": "fontSize--lg"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "font-size:lg",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._font-size:lg",
-                    "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--lg"
+                            "__name": "font-size--lg"
                         }
                     }
                 }
@@ -2660,26 +2604,34 @@
                 "__name": "font-size:xl",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:xl",
+                    "__name": "._font-size\\:xl",
                     "__value": {
                         "fontSize": {
                             "__type": "reference",
-                            "__name": "fontSize--xl"
+                            "__name": "font-size--xl"
                         }
                     }
                 }
             },
             {
                 "__type": "utility",
-                "__name": "font-size:xl",
+                "__name": "default",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:xl",
+                    "__name": "._default",
                     "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--xl"
-                        }
+                        "default": "default"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "default",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._default",
+                    "__value": {
+                        "default": "default"
                     }
                 }
             }

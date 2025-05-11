@@ -1,4 +1,4 @@
-import { defineConfig } from '@inkline/config';
+import { defineConfig } from '@inkline/loader';
 
 export default defineConfig(() => {}, {
     generator: {

@@ -15,13 +15,12 @@
     },
     "devDependencies": {
         "@inkline/core": "workspace:*",
-        "@inkline/config": "workspace:*",
+        "@inkline/loader": "workspace:*",
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
         "@inkline/typescript-config": "workspace:*",
         "@nuxt/module-builder": "catalog:",
         "@nuxt/schema": "catalog:",
-        "chokidar": "catalog:",
         "eslint": "catalog:",
         "fast-glob": "catalog:",
         "vite": "catalog:",
@@ -34,11 +33,10 @@
         "@inkline/logger": "workspace:*",
         "@inkline/utils": "workspace:*",
         "@nuxt/kit": "catalog:",
-        "dependency-tree": "^11.0.1",
         "unplugin": "catalog:"
     },
     "peerDependencies": {
-        "@inkline/config": "workspace:^"
+        "@inkline/loader": "workspace:^"
     },
     "files": [
         "dist",

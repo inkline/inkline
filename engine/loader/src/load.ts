@@ -46,7 +46,8 @@ export async function loadConfig(options: CustomLoadConfigOptions = {}): Promise
                         '.ts': 'ts',
                         '.json': 'json',
                         '.css': 'empty',
-                        '.vue': 'empty'
+                        '.vue': 'empty',
+                        '.node': 'empty'
                     }
                 });
 

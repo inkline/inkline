@@ -157,26 +157,9 @@
                 "__name": "font-size:2xs",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:2xs",
+                    "__name": "._font-size\\:2xs",
                     "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--2xs"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "font-size:2xs",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._font-size:2xs",
-                    "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--2xs"
-                        }
+                        "fontSize": "2xs"
                     }
                 }
             },
@@ -185,26 +168,9 @@
                 "__name": "font-size:xs",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:xs",
+                    "__name": "._font-size\\:xs",
                     "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--xs"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "font-size:xs",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._font-size:xs",
-                    "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--xs"
-                        }
+                        "fontSize": "xs"
                     }
                 }
             },
@@ -213,26 +179,9 @@
                 "__name": "font-size:sm",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:sm",
+                    "__name": "._font-size\\:sm",
                     "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--sm"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "font-size:sm",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._font-size:sm",
-                    "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--sm"
-                        }
+                        "fontSize": "sm"
                     }
                 }
             },
@@ -241,26 +190,9 @@
                 "__name": "font-size:md",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:md",
+                    "__name": "._font-size\\:md",
                     "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--md"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "font-size:md",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._font-size:md",
-                    "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--md"
-                        }
+                        "fontSize": "md"
                     }
                 }
             },
@@ -269,26 +201,9 @@
                 "__name": "font-size:lg",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:lg",
+                    "__name": "._font-size\\:lg",
                     "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--lg"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "font-size:lg",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._font-size:lg",
-                    "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--lg"
-                        }
+                        "fontSize": "lg"
                     }
                 }
             },
@@ -297,26 +212,9 @@
                 "__name": "font-size:inherit",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-size:inherit",
+                    "__name": "._font-size\\:inherit",
                     "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--inherit"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "font-size:inherit",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._font-size:inherit",
-                    "__value": {
-                        "fontSize": {
-                            "__type": "reference",
-                            "__name": "fontSize--inherit"
-                        }
+                        "fontSize": "inherit"
                     }
                 }
             },
@@ -325,26 +223,9 @@
                 "__name": "border-radius:full",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._border-radius:full",
+                    "__name": "._border-radius\\:full",
                     "__value": {
-                        "borderRadius": {
-                            "__type": "reference",
-                            "__name": "borderRadius--full"
-                        }
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "border-radius:full",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._border-radius:full",
-                    "__value": {
-                        "borderRadius": {
-                            "__type": "reference",
-                            "__name": "borderRadius--full"
-                        }
+                        "borderRadius": "full"
                     }
                 }
             },
@@ -353,26 +234,31 @@
                 "__name": "font-weight:semibold",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-weight:semibold",
+                    "__name": "._font-weight\\:semibold",
                     "__value": {
-                        "fontWeight": {
-                            "__type": "reference",
-                            "__name": "fontWeight--semibold"
-                        }
+                        "fontWeight": "semibold"
                     }
                 }
             },
             {
                 "__type": "utility",
-                "__name": "font-weight:semibold",
+                "__name": "default",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._font-weight:semibold",
+                    "__name": "._default",
                     "__value": {
-                        "fontWeight": {
-                            "__type": "reference",
-                            "__name": "fontWeight--semibold"
-                        }
+                        "default": "default"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "default",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._default",
+                    "__value": {
+                        "default": "default"
                     }
                 }
             }

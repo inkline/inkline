@@ -1,7 +1,7 @@
 import components from '../resources/components';
 import { createResolver, defineNuxtModule, addPluginTemplate, addComponent } from '@nuxt/kit';
+import { createInklineLoaderContext } from '@inkline/loader';
 import type { PluginUserOptions } from './plugin/types';
-import { createInklineContext } from './plugin/context';
 
 interface ModuleConfig {
     import?: {
@@ -34,7 +34,7 @@ export const inkline = defineNuxtModule<InklineModuleOptions>({
             bridge: true
         }
     },
-    setup({ import: importOptions, configFile, outputDir, extname, globals }, nuxt) {
+    setup({ import: importOptions, configFile, outputDir, globals }, nuxt) {
         const resolver = createResolver(import.meta.url);
         const templatesDir = resolver.resolve('./templates');
         const templatePath = resolver.resolve(templatesDir, 'nuxt.ejs');
@@ -44,10 +44,9 @@ export const inkline = defineNuxtModule<InklineModuleOptions>({
             ...importOptions
         };
 
-        const ctx = createInklineContext({
+        const ctx = createInklineLoaderContext({
             configFile,
-            outputDir,
-            extname
+            outputDir
         });
 
         // Add CSS imports

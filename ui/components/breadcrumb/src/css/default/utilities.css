@@ -1,39 +1,27 @@
-._font-size:xs {
-    font-size: var(--fontSize--xs);
+._font-size\:xs {
+    font-size: var(--font-size--xs);
 }
 
-._font-size:xs {
-    font-size: var(--fontSize--xs);
+._font-size\:sm {
+    font-size: var(--font-size--sm);
 }
 
-._font-size:sm {
-    font-size: var(--fontSize--sm);
+._font-size\:md {
+    font-size: var(--font-size--md);
 }
 
-._font-size:sm {
-    font-size: var(--fontSize--sm);
+._font-size\:lg {
+    font-size: var(--font-size--lg);
 }
 
-._font-size:md {
-    font-size: var(--fontSize--md);
+._font-size\:xl {
+    font-size: var(--font-size--xl);
 }
 
-._font-size:md {
-    font-size: var(--fontSize--md);
+._default {
+    default: default;
 }
 
-._font-size:lg {
-    font-size: var(--fontSize--lg);
-}
-
-._font-size:lg {
-    font-size: var(--fontSize--lg);
-}
-
-._font-size:xl {
-    font-size: var(--fontSize--xl);
-}
-
-._font-size:xl {
-    font-size: var(--fontSize--xl);
+._default {
+    default: default;
 }

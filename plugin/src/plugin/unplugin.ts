@@ -1,11 +1,12 @@
-import type { ViteDevServer, ResolvedConfig } from 'vite';
 import { createUnplugin, UnpluginOptions } from 'unplugin';
 import { PluginUserOptions } from './types';
-import { createInklineContext } from './context';
+import { createInklineLoaderContext } from '@inkline/loader';
+import { sep } from 'path';
+import { BLOCKLISTED_ENVIRONMENTS } from './constants';
 
 export const unplugin = createUnplugin<PluginUserOptions | undefined>(
     (options = {}): UnpluginOptions => {
-        const ctx = createInklineContext(options);
+        const ctx = createInklineLoaderContext(options);
 
         return {
             name: 'inkline',
@@ -16,10 +17,22 @@ export const unplugin = createUnplugin<PluginUserOptions | undefined>(
             },
             vite: {
                 configResolved(config) {
-                    ctx.initialize(config as unknown as ResolvedConfig);
+                    const isBlockListedCommand = process.argv
+                        .map((arg) => arg.split(sep).pop() ?? '')
+                        .some((arg) =>
+                            BLOCKLISTED_ENVIRONMENTS.find((command) => arg.includes(command))
+                        );
+                    if (isBlockListedCommand) {
+                        return;
+                    }
+
+                    const isDevMode = config.command !== 'build' && !process.argv.includes('build');
+                    ctx.initialize({
+                        watch: isDevMode
+                    });
                 },
                 configureServer(server) {
-                    ctx.setupServer(server as unknown as ViteDevServer);
+                    ctx.setupServer(server.watcher);
                 }
             }
         };

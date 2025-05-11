@@ -1,4 +1,4 @@
-import { defineConfig } from '@inkline/config';
+import { defineConfig } from '@inkline/loader';
 import { useCardTheme } from './src/theme';
 
 export default defineConfig(

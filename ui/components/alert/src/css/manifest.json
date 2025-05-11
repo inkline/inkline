@@ -171,29 +171,34 @@
         "utilities": [
             {
                 "__type": "utility",
-                "__name": "gap:default",
+                "__name": "gap",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._gap:default",
+                    "__name": "._gap",
                     "__value": {
-                        "gap": {
-                            "__type": "reference",
-                            "__name": "gap--default"
-                        }
+                        "gap": "default"
                     }
                 }
             },
             {
                 "__type": "utility",
-                "__name": "gap:default",
+                "__name": "default",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._gap:default",
+                    "__name": "._default",
                     "__value": {
-                        "gap": {
-                            "__type": "reference",
-                            "__name": "gap--default"
-                        }
+                        "default": "default"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "default",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._default",
+                    "__value": {
+                        "default": "default"
                     }
                 }
             }

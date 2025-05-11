@@ -1,119 +1,63 @@
-._font-size:sm {
-    font-size: var(--fontSize--sm);
+._font-size\:sm {
+    font-size: var(--font-size--sm);
 }
 
-._font-size:sm {
-    font-size: var(--fontSize--sm);
+._width\:sm {
+    width: sm;
 }
 
-._square:sm {
-    square: var(--square--sm);
+._height\:sm {
+    height: sm;
 }
 
-._square:sm {
-    square: var(--square--sm);
+._padding\:0 {
+    padding: 0;
 }
 
-._padding:0 {
-    padding: var(--spacing--0);
+._border-radius\:full {
+    border-radius: full;
 }
 
-._padding:0 {
-    padding: var(--spacing--0);
+._font-size\:md {
+    font-size: var(--font-size--md);
 }
 
-._border-radius:full {
-    border-radius: var(--borderRadius--full);
+._width\:md {
+    width: md;
 }
 
-._border-radius:full {
-    border-radius: var(--borderRadius--full);
+._height\:md {
+    height: md;
 }
 
-._font-size:md {
-    font-size: var(--fontSize--md);
+._font-size\:lg {
+    font-size: var(--font-size--lg);
 }
 
-._font-size:md {
-    font-size: var(--fontSize--md);
+._width\:lg {
+    width: lg;
 }
 
-._square:md {
-    square: var(--square--md);
+._height\:lg {
+    height: lg;
 }
 
-._square:md {
-    square: var(--square--md);
+._gap\:md {
+    gap: md;
 }
 
-._padding:0 {
-    padding: var(--spacing--0);
+._width\:100 {
+    width: 100;
 }
 
-._padding:0 {
-    padding: var(--spacing--0);
+._opacity\:75 {
+    opacity: 75;
 }
 
-._border-radius:full {
-    border-radius: var(--borderRadius--full);
+._default {
+    default: default;
 }
 
-._border-radius:full {
-    border-radius: var(--borderRadius--full);
-}
-
-._font-size:lg {
-    font-size: var(--fontSize--lg);
-}
-
-._font-size:lg {
-    font-size: var(--fontSize--lg);
-}
-
-._square:lg {
-    square: var(--square--lg);
-}
-
-._square:lg {
-    square: var(--square--lg);
-}
-
-._padding:0 {
-    padding: var(--spacing--0);
-}
-
-._padding:0 {
-    padding: var(--spacing--0);
-}
-
-._border-radius:full {
-    border-radius: var(--borderRadius--full);
-}
-
-._border-radius:full {
-    border-radius: var(--borderRadius--full);
-}
-
-._gap:md {
-    gap: var(--gap--md);
-}
-
-._gap:md {
-    gap: var(--gap--md);
-}
-
-._width:100 {
-    width: var(--width--100);
-}
-
-._width:100 {
-    width: var(--width--100);
-}
-
-._opacity:75 {
-    opacity: var(--opacity--75);
-}
-
-._opacity:75 {
-    opacity: var(--opacity--75);
+._default {
+    default: default;
 }

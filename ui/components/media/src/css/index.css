@@ -1,2 +1,3 @@
 @layer theme, base, components, utilities;
 @import "./normalize.css" layer(base);
+@import "./default/index.css";

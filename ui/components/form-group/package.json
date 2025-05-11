@@ -23,7 +23,7 @@
     },
     "devDependencies": {
         "@inkline/component-input": "workspace:*",
-        "@inkline/config": "workspace:*",
+        "@inkline/loader": "workspace:*",
         "@inkline/devtools": "workspace:*",
         "@inkline/manifest": "workspace:*",
         "@inkline/eslint-config": "workspace:*",

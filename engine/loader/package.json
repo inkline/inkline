@@ -1,5 +1,5 @@
 {
-    "name": "@inkline/config",
+    "name": "@inkline/loader",
     "version": "1.0.0",
     "type": "module",
     "scripts": {
@@ -40,8 +40,12 @@
     },
     "dependencies": {
         "@inkline/core": "workspace:*",
+        "@inkline/logger": "workspace:*",
         "@inkline/generator": "workspace:*",
+        "@inkline/utils": "workspace:*",
         "c12": "^2.0.1",
+        "chokidar": "catalog:",
+        "dependency-tree": "^11.0.1",
         "esbuild": "^0.25.4"
     },
     "funding": {

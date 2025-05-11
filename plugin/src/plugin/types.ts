@@ -12,10 +12,6 @@ export interface PluginUserOptions {
      */
     outputDir?: string;
     /**
-     * The output file extension to use for CSS Variables files
-     */
-    extname?: `.${string}`;
-    /**
      * Whether to enable or disable logging
      */
     silent?: boolean;
