@@ -3,10 +3,16 @@
         "__type": "theme",
         "__name": "default",
         "__keys": {
-            "variables": {},
-            "variants": {},
-            "selectors": {},
-            "utilities": {}
+            "variables": [],
+            "variants": [],
+            "selectors": [
+                "E0JB6R67CT-yv7JZLTptu",
+                "gIv33qQTE2wvYVF2MNpW2",
+                "-BB4dZXm9t_kt2N1O-Vmo",
+                "69rdWOqPiAc-ZGbZhUtLy",
+                "3ChadhCM9oKU5MpdG30u9"
+            ],
+            "utilities": []
         },
         "variables": {},
         "variants": {},

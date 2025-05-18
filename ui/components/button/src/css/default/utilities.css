@@ -1,5 +1,17 @@
+._default {
+    default: default;
+}
+
 ._font-size\:sm {
     font-size: var(--font-size--sm);
+}
+
+._font-size\:sm {
+    font-size: var(--font-size--sm);
+}
+
+._width\:sm {
+    width: sm;
 }
 
 ._width\:sm {
@@ -10,8 +22,20 @@
     height: sm;
 }
 
+._height\:sm {
+    height: sm;
+}
+
 ._padding\:0 {
     padding: 0;
+}
+
+._padding\:0 {
+    padding: 0;
+}
+
+._border-radius\:full {
+    border-radius: full;
 }
 
 ._border-radius\:full {
@@ -22,12 +46,36 @@
     font-size: var(--font-size--md);
 }
 
+._font-size\:md {
+    font-size: var(--font-size--md);
+}
+
+._width\:md {
+    width: md;
+}
+
 ._width\:md {
     width: md;
 }
 
 ._height\:md {
     height: md;
+}
+
+._height\:md {
+    height: md;
+}
+
+._padding\:0 {
+    padding: 0;
+}
+
+._border-radius\:full {
+    border-radius: full;
+}
+
+._font-size\:lg {
+    font-size: var(--font-size--lg);
 }
 
 ._font-size\:lg {
@@ -38,8 +86,28 @@
     width: lg;
 }
 
+._width\:lg {
+    width: lg;
+}
+
 ._height\:lg {
     height: lg;
+}
+
+._height\:lg {
+    height: lg;
+}
+
+._padding\:0 {
+    padding: 0;
+}
+
+._border-radius\:full {
+    border-radius: full;
+}
+
+._gap\:md {
+    gap: md;
 }
 
 ._gap\:md {
@@ -50,14 +118,14 @@
     width: 100;
 }
 
+._width\:100 {
+    width: 100;
+}
+
 ._opacity\:75 {
     opacity: 75;
 }
 
-._default {
-    default: default;
-}
-
-._default {
-    default: default;
+._opacity\:75 {
+    opacity: 75;
 }

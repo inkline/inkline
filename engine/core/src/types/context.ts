@@ -1,7 +1,7 @@
-import type { Themes } from './tokens';
-import type { OutputFile } from './generators';
+import type { Theme } from './tokens';
 
-export type Context = {
-    themes: Themes;
-    files: OutputFile[];
+export type DefinitionOptions = {
+    theme?: string | Theme;
+    default?: boolean;
+    register?: boolean;
 };

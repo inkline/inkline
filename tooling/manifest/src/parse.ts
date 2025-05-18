@@ -78,17 +78,20 @@ export async function parseTheme(themePath: string) {
     };
 
     const context = {
-        id: '',
         themes: {
             default: {
                 __type: 'theme',
                 __name: 'default',
                 __keys: {
-                    variables: new Set(),
-                    selectors: new Set()
+                    variables: [] as string[],
+                    selectors: [] as string[],
+                    utilities: [] as string[],
+                    variants: [] as string[]
                 },
                 variables: {},
-                selectors: []
+                variants: {},
+                selectors: [],
+                utilities: []
             }
         },
         files: []
@@ -149,7 +152,7 @@ export async function parseTheme(themePath: string) {
         );
         Object.keys(themeColorVariables).forEach((variableKey) => {
             const themeVariable = themeColorVariables[variableKey];
-            if (context.themes.default.__keys.variables.has(themeVariable.__name)) {
+            if (context.themes.default.__keys.variables.includes(themeVariable.__name)) {
                 css.variables.push({
                     name: nameToCSSVariableString(
                         themeVariable.__name.replace(`--${defaultColor}`, '--{color}')
@@ -165,7 +168,7 @@ export async function parseTheme(themePath: string) {
         });
         Object.keys(themeSizeVariables).forEach((variableKey) => {
             const themeVariable = themeSizeVariables[variableKey];
-            if (context.themes.default.__keys.variables.has(themeVariable.__name)) {
+            if (context.themes.default.__keys.variables.includes(themeVariable.__name)) {
                 css.variables.push({
                     name: nameToCSSVariableString(
                         themeVariable.__name.replace(`--${defaultSize}`, '--{size}')

@@ -1,0 +1,75 @@
+{
+    "name": "@inkline/core2",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "devtools tsup watch",
+        "build": "devtools tsup build",
+        "lint": "devtools eslint",
+        "test": "devtools test",
+        "test:dev": "devtools test --watch",
+        "test:ci": "devtools test --coverage"
+    },
+    "devDependencies": {
+        "@inkline/devtools": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/typescript-config": "workspace:*",
+        "@types/color": "catalog:",
+        "@types/node": "catalog:",
+        "@vitest/coverage-v8": "catalog:",
+        "eslint": "catalog:",
+        "tsup": "catalog:",
+        "type-fest": "catalog:",
+        "typescript": "catalog:",
+        "vite": "catalog:",
+        "vitest": "catalog:"
+    },
+    "files": [
+        "dist",
+        "LICENSE"
+    ],
+    "types": "./dist/index.d.ts",
+    "module": "./dist/index.js",
+    "main": "./dist/index.cjs",
+    "exports": {
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        },
+        "./*": "./*"
+    },
+    "dependencies": {
+        "@inkline/types": "workspace:*",
+        "@inkline/utils": "workspace:*",
+        "@inkline/variants": "workspace:*",
+        "color": "^4.2.3",
+        "nanoid": "^5.0.9"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

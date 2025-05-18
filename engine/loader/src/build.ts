@@ -1,5 +1,5 @@
 import type { Configuration } from '@inkline/core';
-import { createContext } from '@inkline/core';
+import { createContext, mergeContexts } from '@inkline/core';
 import { BuildOptions, UserBuildOptions } from './types';
 import {
     defaultConfigFileBasename,
@@ -13,6 +13,7 @@ import { existsSync } from 'fs';
 import { writeFile, mkdir } from 'fs/promises';
 import { exists } from './utils';
 import { generator } from '@inkline/generator';
+import { applySideEffects } from './side-effects';
 
 export function getResolvedBuildOptions(options: UserBuildOptions): BuildOptions {
     let configDir = process.cwd();
@@ -39,6 +40,7 @@ export function getResolvedBuildOptions(options: UserBuildOptions): BuildOptions
     return {
         context: createContext(),
         generator: {},
+        additionalUtilities: [],
         ...options,
         configPath,
         configDir,
@@ -76,8 +78,16 @@ export async function buildConfiguration(configuration: Configuration, options: 
         await mkdir(options.outputDir, { recursive: true });
     }
 
+    // Merge loaded configuration context with user provided context
+    const context = options.context
+        ? mergeContexts(configuration.context, options.context)
+        : configuration.context;
+
+    // Apply side effects here. All variables, utilities, variants, etc. are now available in the context.
+    applySideEffects(context, options);
+
     // Generate output files data
-    const outputFiles = generator(configuration.context, options.generator);
+    const outputFiles = generator(context, options.generator);
 
     // Write output files
     const outputFilePromises: Promise<void>[] = [];
@@ -97,7 +107,7 @@ export async function buildConfiguration(configuration: Configuration, options: 
         writeFile(
             resolve(options.outputDir, 'manifest.json'),
             JSON.stringify(
-                configuration.context.themes,
+                context.themes,
                 (key, value: unknown) => (key === '__id' ? undefined : value),
                 4
             )

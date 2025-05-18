@@ -7,14 +7,12 @@ import * as chokidar from 'chokidar';
 import dependencyTree from 'dependency-tree';
 import {
     shouldExtract,
-    registerUtilityForVariantProperty,
     extractUtilityClasses,
     extractHelperFunctionUtilityClasses,
     extractVariantPropertyUtilityClasses,
-    extractCompiledVariantPropertyUtilityClasses,
-    Options
+    extractCompiledVariantPropertyUtilityClasses
 } from '@inkline/core';
-import type { DefinitionOptions, UtilityClassEntry } from '@inkline/core';
+import type { Options, DefinitionOptions, UtilityClassEntry } from '@inkline/core';
 import { debounce } from '@inkline/utils';
 
 export function createInklineLoaderContext(userOptions: Options) {
@@ -54,7 +52,7 @@ export function createInklineLoaderContext(userOptions: Options) {
         await buildConfig({
             configFile: configPath,
             outputDir,
-            context
+            additionalUtilities: additionalUtilityClasses
         });
 
         if (!silent) {
@@ -140,7 +138,11 @@ export function createInklineLoaderContext(userOptions: Options) {
             ...helperFunctionUtilityClasses
         ];
 
-        const newClassesAdded = classes.some(registerUtilityClass);
+        const newClassesAdded = classes.reduce((acc, entry) => {
+            const registered = registerUtilityClass(entry);
+            return acc || registered;
+        }, false);
+
         if (newClassesAdded) {
             void debouncedBuild();
         }
@@ -150,18 +152,18 @@ export function createInklineLoaderContext(userOptions: Options) {
      * Register utility classes
      */
 
-    const utilityClassesSeen = new Set<string>();
+    const seenUtilityClasses = new Set<string>();
+    const additionalUtilityClasses: UtilityClassEntry[] = [];
 
     function registerUtilityClass(entry: UtilityClassEntry) {
         const cacheKey = `_${entry.state}:${entry.name}:${entry.value}`;
 
-        if (utilityClassesSeen.has(cacheKey)) {
+        if (seenUtilityClasses.has(cacheKey)) {
             return false;
         }
 
-        utilityClassesSeen.add(cacheKey);
-
-        registerUtilityForVariantProperty(entry, definitionOptions);
+        seenUtilityClasses.add(cacheKey);
+        additionalUtilityClasses.push(entry);
 
         return true;
     }

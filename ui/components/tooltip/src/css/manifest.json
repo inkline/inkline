@@ -3,15 +3,540 @@
         "__type": "theme",
         "__name": "default",
         "__keys": {
-            "variables": {},
-            "variants": {},
-            "selectors": {},
-            "utilities": {}
+            "variables": [
+                "color--white",
+                "color--black",
+                "color--gray",
+                "color--gray--50",
+                "color--gray--100",
+                "color--gray--200",
+                "color--gray--300",
+                "color--gray--400",
+                "color--gray--500",
+                "color--gray--600",
+                "color--gray--700",
+                "color--gray--800",
+                "color--gray--900",
+                "color--gray--950",
+                "border-style--none",
+                "border-style--solid",
+                "border-style--dashed",
+                "border-style--dotted",
+                "border-style--double",
+                "border-style--groove",
+                "border-top-style",
+                "border-right-style",
+                "border-bottom-style",
+                "border-left-style",
+                "border-style",
+                "border-width--none",
+                "border-width--thin",
+                "border-width--medium",
+                "border-width--thick",
+                "border-top-width",
+                "border-right-width",
+                "border-bottom-width",
+                "border-left-width",
+                "border-width",
+                "border-top-color",
+                "border-right-color",
+                "border-bottom-color",
+                "border-left-color",
+                "border-color",
+                "border-top",
+                "border-right",
+                "border-bottom",
+                "border-left",
+                "border",
+                "box-shadow-offset-x--xs",
+                "box-shadow-offset-y--xs",
+                "box-shadow-blur-radius--xs",
+                "box-shadow-spread-radius--xs",
+                "box-shadow-color--xs",
+                "box-shadow--xs",
+                "box-shadow-offset-x--sm",
+                "box-shadow-offset-y--sm",
+                "box-shadow-blur-radius--sm",
+                "box-shadow-spread-radius--sm",
+                "box-shadow-color--sm",
+                "box-shadow--sm",
+                "box-shadow-offset-x--md",
+                "box-shadow-offset-y--md",
+                "box-shadow-blur-radius--md",
+                "box-shadow-spread-radius--md",
+                "box-shadow-color--md",
+                "box-shadow--md",
+                "box-shadow-offset-x--lg",
+                "box-shadow-offset-y--lg",
+                "box-shadow-blur-radius--lg",
+                "box-shadow-spread-radius--lg",
+                "box-shadow-color--lg",
+                "box-shadow--lg",
+                "box-shadow-offset-x--xl",
+                "box-shadow-offset-y--xl",
+                "box-shadow-blur-radius--xl",
+                "box-shadow-spread-radius--xl",
+                "box-shadow-color--xl",
+                "box-shadow--xl",
+                "box-shadow-offset-x",
+                "box-shadow-offset-y",
+                "box-shadow-blur-radius",
+                "box-shadow-spread-radius",
+                "box-shadow-color",
+                "box-shadow",
+                "box-shadow--none",
+                "transition-property",
+                "transition-duration",
+                "transition-timing-function",
+                "transition",
+                "color--red",
+                "color--orange",
+                "color--yellow",
+                "color--green",
+                "color--teal",
+                "color--blue",
+                "color--indigo",
+                "color--purple",
+                "color--pink",
+                "color--primary",
+                "color--secondary",
+                "color--info",
+                "color--success",
+                "color--warning",
+                "color--danger",
+                "color--light",
+                "color--dark",
+                "color--primary--50",
+                "color--primary--100",
+                "color--primary--200",
+                "color--primary--300",
+                "color--primary--400",
+                "color--primary--500",
+                "color--primary--600",
+                "color--primary--700",
+                "color--primary--800",
+                "color--primary--900",
+                "color--primary--950",
+                "color--primary--tint-50",
+                "color--primary--tint-100",
+                "color--primary--tint-150",
+                "color--primary--shade-50",
+                "color--primary--shade-100",
+                "color--primary--shade-150",
+                "color--secondary--50",
+                "color--secondary--100",
+                "color--secondary--200",
+                "color--secondary--300",
+                "color--secondary--400",
+                "color--secondary--500",
+                "color--secondary--600",
+                "color--secondary--700",
+                "color--secondary--800",
+                "color--secondary--900",
+                "color--secondary--950",
+                "color--secondary--tint-50",
+                "color--secondary--tint-100",
+                "color--secondary--tint-150",
+                "color--secondary--shade-50",
+                "color--secondary--shade-100",
+                "color--secondary--shade-150",
+                "color--info--50",
+                "color--info--100",
+                "color--info--200",
+                "color--info--300",
+                "color--info--400",
+                "color--info--500",
+                "color--info--600",
+                "color--info--700",
+                "color--info--800",
+                "color--info--900",
+                "color--info--950",
+                "color--info--tint-50",
+                "color--info--tint-100",
+                "color--info--tint-150",
+                "color--info--shade-50",
+                "color--info--shade-100",
+                "color--info--shade-150",
+                "color--success--50",
+                "color--success--100",
+                "color--success--200",
+                "color--success--300",
+                "color--success--400",
+                "color--success--500",
+                "color--success--600",
+                "color--success--700",
+                "color--success--800",
+                "color--success--900",
+                "color--success--950",
+                "color--success--tint-50",
+                "color--success--tint-100",
+                "color--success--tint-150",
+                "color--success--shade-50",
+                "color--success--shade-100",
+                "color--success--shade-150",
+                "color--warning--50",
+                "color--warning--100",
+                "color--warning--200",
+                "color--warning--300",
+                "color--warning--400",
+                "color--warning--500",
+                "color--warning--600",
+                "color--warning--700",
+                "color--warning--800",
+                "color--warning--900",
+                "color--warning--950",
+                "color--warning--tint-50",
+                "color--warning--tint-100",
+                "color--warning--tint-150",
+                "color--warning--shade-50",
+                "color--warning--shade-100",
+                "color--warning--shade-150",
+                "color--danger--50",
+                "color--danger--100",
+                "color--danger--200",
+                "color--danger--300",
+                "color--danger--400",
+                "color--danger--500",
+                "color--danger--600",
+                "color--danger--700",
+                "color--danger--800",
+                "color--danger--900",
+                "color--danger--950",
+                "color--danger--tint-50",
+                "color--danger--tint-100",
+                "color--danger--tint-150",
+                "color--danger--shade-50",
+                "color--danger--shade-100",
+                "color--danger--shade-150",
+                "color--light--shade-50",
+                "color--light--shade-100",
+                "color--light--shade-150",
+                "color--light--tint-50",
+                "color--light--tint-100",
+                "color--light--tint-150",
+                "color--dark--tint-50",
+                "color--dark--tint-100",
+                "color--dark--tint-150",
+                "color--dark--shade-50",
+                "color--dark--shade-100",
+                "color--dark--shade-150",
+                "contrast-text-color-light",
+                "contrast-text-color-dark",
+                "contrast-text-color-primary",
+                "contrast-text-color-secondary",
+                "contrast-text-color-info",
+                "contrast-text-color-success",
+                "contrast-text-color-warning",
+                "contrast-text-color-danger",
+                "fluid--min-width",
+                "fluid--max-width",
+                "fluid--screen",
+                "fluid--breakpoint",
+                "border-radius--min",
+                "border-radius--max",
+                "border-radius--min--xs",
+                "border-radius--min--sm",
+                "border-radius--min--md",
+                "border-radius--min--lg",
+                "border-radius--min--xl",
+                "border-radius--max--xs",
+                "border-radius--max--sm",
+                "border-radius--max--md",
+                "border-radius--max--lg",
+                "border-radius--max--xl",
+                "border-top-left-radius--none",
+                "border-top-left-radius--xs",
+                "border-top-left-radius--sm",
+                "border-top-left-radius--md",
+                "border-top-left-radius--lg",
+                "border-top-left-radius--xl",
+                "border-top-left-radius--full",
+                "border-top-right-radius--none",
+                "border-top-right-radius--xs",
+                "border-top-right-radius--sm",
+                "border-top-right-radius--md",
+                "border-top-right-radius--lg",
+                "border-top-right-radius--xl",
+                "border-top-right-radius--full",
+                "border-bottom-right-radius--none",
+                "border-bottom-right-radius--xs",
+                "border-bottom-right-radius--sm",
+                "border-bottom-right-radius--md",
+                "border-bottom-right-radius--lg",
+                "border-bottom-right-radius--xl",
+                "border-bottom-right-radius--full",
+                "border-bottom-left-radius--none",
+                "border-bottom-left-radius--xs",
+                "border-bottom-left-radius--sm",
+                "border-bottom-left-radius--md",
+                "border-bottom-left-radius--lg",
+                "border-bottom-left-radius--xl",
+                "border-bottom-left-radius--full",
+                "border-radius--xs",
+                "border-radius--sm",
+                "border-radius--md",
+                "border-radius--lg",
+                "border-radius--xl",
+                "border-radius--full",
+                "border-top-left-radius",
+                "border-top-right-radius",
+                "border-bottom-right-radius",
+                "border-bottom-left-radius",
+                "border-radius",
+                "scale--minor-second",
+                "scale--major-second",
+                "scale--minor-third",
+                "scale--major-third",
+                "scale--perfect-fourth",
+                "scale--augmented-fourth",
+                "scale--perfect-fifth",
+                "scale--golden",
+                "scale",
+                "scale--pow-minus-2",
+                "scale--pow-minus-1",
+                "scale--pow-1",
+                "scale--pow-2",
+                "scale--pow-3",
+                "scale--pow-4",
+                "scale--pow-5",
+                "type-scale--min",
+                "type-scale--max",
+                "type-scale--min--pow-minus-4",
+                "type-scale--min--pow-minus-3",
+                "type-scale--min--pow-minus-2",
+                "type-scale--min--pow-minus-1",
+                "type-scale--min--pow-1",
+                "type-scale--min--pow-2",
+                "type-scale--min--pow-3",
+                "type-scale--min--pow-4",
+                "type-scale--min--pow-5",
+                "type-scale--max--pow-minus-4",
+                "type-scale--max--pow-minus-3",
+                "type-scale--max--pow-minus-2",
+                "type-scale--max--pow-minus-1",
+                "type-scale--max--pow-1",
+                "type-scale--max--pow-2",
+                "type-scale--max--pow-3",
+                "type-scale--max--pow-4",
+                "type-scale--max--pow-5",
+                "font-size--min",
+                "font-size--max",
+                "font-size--min--2xs",
+                "font-size--min--xs",
+                "font-size--min--sm",
+                "font-size--min--md",
+                "font-size--min--lg",
+                "font-size--min--xl",
+                "font-size--min--2xl",
+                "font-size--min--3xl",
+                "font-size--min--4xl",
+                "font-size--max--2xs",
+                "font-size--max--xs",
+                "font-size--max--sm",
+                "font-size--max--md",
+                "font-size--max--lg",
+                "font-size--max--xl",
+                "font-size--max--2xl",
+                "font-size--max--3xl",
+                "font-size--max--4xl",
+                "font-size--2xs",
+                "font-size--xs",
+                "font-size--sm",
+                "font-size--md",
+                "font-size--lg",
+                "font-size--xl",
+                "font-size--2xl",
+                "font-size--3xl",
+                "font-size--4xl",
+                "font-size--inherit",
+                "font-size",
+                "spacing--min",
+                "spacing--max",
+                "spacing--min--4xs",
+                "spacing--min--3xs",
+                "spacing--min--2xs",
+                "spacing--min--xs",
+                "spacing--min--sm",
+                "spacing--min--md",
+                "spacing--min--lg",
+                "spacing--min--xl",
+                "spacing--min--2xl",
+                "spacing--min--3xl",
+                "spacing--min--4xl",
+                "spacing--max--4xs",
+                "spacing--max--3xs",
+                "spacing--max--2xs",
+                "spacing--max--xs",
+                "spacing--max--sm",
+                "spacing--max--md",
+                "spacing--max--lg",
+                "spacing--max--xl",
+                "spacing--max--2xl",
+                "spacing--max--3xl",
+                "spacing--max--4xl",
+                "spacing--4xs",
+                "spacing--3xs",
+                "spacing--2xs",
+                "spacing--xs",
+                "spacing--sm",
+                "spacing--md",
+                "spacing--lg",
+                "spacing--xl",
+                "spacing--2xl",
+                "spacing--3xl",
+                "spacing--4xl",
+                "spacing--2xs-xs",
+                "spacing--xs-sm",
+                "spacing--xs-md",
+                "spacing--xs-lg",
+                "spacing--xs-xl",
+                "spacing--sm-md",
+                "spacing--sm-lg",
+                "spacing--sm-xl",
+                "spacing--md-lg",
+                "spacing--md-xl",
+                "spacing--lg-xl",
+                "spacing--xl-2xl",
+                "spacing--2xl-3xl",
+                "spacing--3xl-4xl",
+                "spacing",
+                "tooltip--border-top-width",
+                "tooltip--border-top-style",
+                "tooltip--border-top-color",
+                "tooltip--border-right-width",
+                "tooltip--border-right-style",
+                "tooltip--border-right-color",
+                "tooltip--border-bottom-width",
+                "tooltip--border-bottom-style",
+                "tooltip--border-bottom-color",
+                "tooltip--border-left-width",
+                "tooltip--border-left-style",
+                "tooltip--border-left-color",
+                "tooltip--box-shadow-offset-x",
+                "tooltip--box-shadow-offset-y",
+                "tooltip--box-shadow-blur-radius",
+                "tooltip--box-shadow-spread-radius",
+                "tooltip--box-shadow-color",
+                "tooltip--transition-property",
+                "tooltip--transition-duration",
+                "tooltip--transition-timing-function",
+                "tooltip--z-index",
+                "tooltip--background",
+                "tooltip--color",
+                "tooltip--border-top-left-radius",
+                "tooltip--border-top-right-radius",
+                "tooltip--border-bottom-right-radius",
+                "tooltip--border-bottom-left-radius",
+                "tooltip--font-size",
+                "tooltip--padding-top",
+                "tooltip--padding-right",
+                "tooltip--padding-bottom",
+                "tooltip--padding-left",
+                "tooltip--width",
+                "tooltip--arrow--size",
+                "tooltip--sm--border-top-left-radius",
+                "tooltip--sm--border-top-right-radius",
+                "tooltip--sm--border-bottom-right-radius",
+                "tooltip--sm--border-bottom-left-radius",
+                "tooltip--sm--font-size",
+                "tooltip--sm--padding-top",
+                "tooltip--sm--padding-right",
+                "tooltip--sm--padding-bottom",
+                "tooltip--sm--padding-left",
+                "tooltip--sm--width",
+                "tooltip--sm--arrow--size",
+                "tooltip--md--border-top-left-radius",
+                "tooltip--md--border-top-right-radius",
+                "tooltip--md--border-bottom-right-radius",
+                "tooltip--md--border-bottom-left-radius",
+                "tooltip--md--font-size",
+                "tooltip--md--padding-top",
+                "tooltip--md--padding-right",
+                "tooltip--md--padding-bottom",
+                "tooltip--md--padding-left",
+                "tooltip--md--width",
+                "tooltip--md--arrow--size",
+                "tooltip--lg--border-top-left-radius",
+                "tooltip--lg--border-top-right-radius",
+                "tooltip--lg--border-bottom-right-radius",
+                "tooltip--lg--border-bottom-left-radius",
+                "tooltip--lg--font-size",
+                "tooltip--lg--padding-top",
+                "tooltip--lg--padding-right",
+                "tooltip--lg--padding-bottom",
+                "tooltip--lg--padding-left",
+                "tooltip--lg--width",
+                "tooltip--lg--arrow--size",
+                "tooltip--light--border-top-width",
+                "tooltip--light--border-top-style",
+                "tooltip--light--border-top-color",
+                "tooltip--light--border-right-width",
+                "tooltip--light--border-right-style",
+                "tooltip--light--border-right-color",
+                "tooltip--light--border-bottom-width",
+                "tooltip--light--border-bottom-style",
+                "tooltip--light--border-bottom-color",
+                "tooltip--light--border-left-width",
+                "tooltip--light--border-left-style",
+                "tooltip--light--border-left-color",
+                "tooltip--light--background",
+                "tooltip--light--color",
+                "tooltip--dark--border-top-width",
+                "tooltip--dark--border-top-style",
+                "tooltip--dark--border-top-color",
+                "tooltip--dark--border-right-width",
+                "tooltip--dark--border-right-style",
+                "tooltip--dark--border-right-color",
+                "tooltip--dark--border-bottom-width",
+                "tooltip--dark--border-bottom-style",
+                "tooltip--dark--border-bottom-color",
+                "tooltip--dark--border-left-width",
+                "tooltip--dark--border-left-style",
+                "tooltip--dark--border-left-color",
+                "tooltip--dark--background",
+                "tooltip--dark--color"
+            ],
+            "variants": [],
+            "selectors": [
+                "Txr29qwmIkc52Cv_7bsOU",
+                "PpDkg-qUdJ-6lLzZJ8xFL",
+                "AQ2BIdQjOK59GRW8QGB7o",
+                "Vfxid2W-TI0vbQ2rNGFLP",
+                "evQVWQtecuFgoBlEO_Ucq",
+                "yWe7ncYsCUz0o2wfXt46G",
+                "_snB24_iRRKK3qV-WQi0k",
+                "CqTTPRlPGV82MvrxrIwe7",
+                "pliWdg2R6f7tY8NHAvAAe",
+                "_guyOQyTyOyNC0w1c3ppL",
+                "S96ulDnHBvargBQklbRYV",
+                "EXogobQXsQgZKImEJ3N4-",
+                "icgfkScuEl9RMMM_ovyZS",
+                "PSOE394YQNsQtAjWk3tOf",
+                "MnWLWeJRDcRjIfG9Vk-wf",
+                "oCHbGjIu5QuR-HbAa4M7V",
+                "4dvLo0qYlS5u2Ttvq4_8A",
+                "SjlMYouBtCkbGL_2P_3Vj",
+                "NIb8GnEfr5ugFoJz-e6gC",
+                "hspeeTepbWmsRENgW3aUT",
+                "sYNf4Wz8n0aEOeRg8IMFz",
+                "X1ltZXGb_M-iVBjBw6tWG",
+                "vJTUZIXThtDkjIwkMZhx3",
+                "niOvpRJLOE82tBcoDFADT",
+                "6RyokfbYNf-8YdgjkQLp0",
+                "Eh-MYt4bBAn004DotFIiJ",
+                "qJhOcZM2WpTfn9ct191Zv",
+                "B7pyU66aEoISVCzW9JFoe",
+                "aCBeEuK--OUB4dJ-_FxzB",
+                "g-pmXo2n7UKltaboKk4p4",
+                "vN8ZwVlI365bT2uGnABnS",
+                "OMl4aHJUnArgfPn_MTAo3"
+            ],
+            "utilities": []
         },
         "variables": {
-            "color-white": {
+            "color--white": {
                 "__type": "variable",
-                "__name": "color-white",
+                "__name": "color--white",
                 "__value": {
                     "__type": "hsla",
                     "__value": [
@@ -22,9 +547,9 @@
                     ]
                 }
             },
-            "color-black": {
+            "color--black": {
                 "__type": "variable",
-                "__name": "color-black",
+                "__name": "color--black",
                 "__value": {
                     "__type": "hsla",
                     "__value": [
@@ -35,9 +560,9 @@
                     ]
                 }
             },
-            "color-gray": {
+            "color--gray": {
                 "__type": "variable",
-                "__name": "color-gray",
+                "__name": "color--gray",
                 "__value": {
                     "__type": "hsla",
                     "__value": [
@@ -48,9 +573,9 @@
                     ]
                 }
             },
-            "color-gray--50": {
+            "color--gray--50": {
                 "__type": "variable",
-                "__name": "color-gray--50",
+                "__name": "color--gray--50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -59,7 +584,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-gray"
+                                "__name": "color--gray"
                             },
                             " h s ",
                             "95%",
@@ -68,9 +593,9 @@
                     }
                 }
             },
-            "color-gray--100": {
+            "color--gray--100": {
                 "__type": "variable",
-                "__name": "color-gray--100",
+                "__name": "color--gray--100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -79,7 +604,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-gray"
+                                "__name": "color--gray"
                             },
                             " h s ",
                             "90%",
@@ -88,9 +613,9 @@
                     }
                 }
             },
-            "color-gray--200": {
+            "color--gray--200": {
                 "__type": "variable",
-                "__name": "color-gray--200",
+                "__name": "color--gray--200",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -99,7 +624,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-gray"
+                                "__name": "color--gray"
                             },
                             " h s ",
                             "80%",
@@ -108,9 +633,9 @@
                     }
                 }
             },
-            "color-gray--300": {
+            "color--gray--300": {
                 "__type": "variable",
-                "__name": "color-gray--300",
+                "__name": "color--gray--300",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -119,7 +644,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-gray"
+                                "__name": "color--gray"
                             },
                             " h s ",
                             "70%",
@@ -128,9 +653,9 @@
                     }
                 }
             },
-            "color-gray--400": {
+            "color--gray--400": {
                 "__type": "variable",
-                "__name": "color-gray--400",
+                "__name": "color--gray--400",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -139,7 +664,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-gray"
+                                "__name": "color--gray"
                             },
                             " h s ",
                             "60%",
@@ -148,9 +673,9 @@
                     }
                 }
             },
-            "color-gray--500": {
+            "color--gray--500": {
                 "__type": "variable",
-                "__name": "color-gray--500",
+                "__name": "color--gray--500",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -159,7 +684,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-gray"
+                                "__name": "color--gray"
                             },
                             " h s ",
                             "50%",
@@ -168,9 +693,9 @@
                     }
                 }
             },
-            "color-gray--600": {
+            "color--gray--600": {
                 "__type": "variable",
-                "__name": "color-gray--600",
+                "__name": "color--gray--600",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -179,7 +704,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-gray"
+                                "__name": "color--gray"
                             },
                             " h s ",
                             "40%",
@@ -188,9 +713,9 @@
                     }
                 }
             },
-            "color-gray--700": {
+            "color--gray--700": {
                 "__type": "variable",
-                "__name": "color-gray--700",
+                "__name": "color--gray--700",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -199,7 +724,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-gray"
+                                "__name": "color--gray"
                             },
                             " h s ",
                             "30%",
@@ -208,9 +733,9 @@
                     }
                 }
             },
-            "color-gray--800": {
+            "color--gray--800": {
                 "__type": "variable",
-                "__name": "color-gray--800",
+                "__name": "color--gray--800",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -219,7 +744,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-gray"
+                                "__name": "color--gray"
                             },
                             " h s ",
                             "20%",
@@ -228,9 +753,9 @@
                     }
                 }
             },
-            "color-gray--900": {
+            "color--gray--900": {
                 "__type": "variable",
-                "__name": "color-gray--900",
+                "__name": "color--gray--900",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -239,7 +764,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-gray"
+                                "__name": "color--gray"
                             },
                             " h s ",
                             "10%",
@@ -248,9 +773,9 @@
                     }
                 }
             },
-            "color-gray--950": {
+            "color--gray--950": {
                 "__type": "variable",
-                "__name": "color-gray--950",
+                "__name": "color--gray--950",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -259,7 +784,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-gray"
+                                "__name": "color--gray"
                             },
                             " h s ",
                             "5%",
@@ -431,7 +956,7 @@
                 "__name": "border-top-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-gray--200"
+                    "__name": "color--gray--200"
                 }
             },
             "border-right-color": {
@@ -439,7 +964,7 @@
                 "__name": "border-right-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-gray--200"
+                    "__name": "color--gray--200"
                 }
             },
             "border-bottom-color": {
@@ -447,7 +972,7 @@
                 "__name": "border-bottom-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-gray--200"
+                    "__name": "color--gray--200"
                 }
             },
             "border-left-color": {
@@ -455,7 +980,7 @@
                 "__name": "border-left-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-gray--200"
+                    "__name": "color--gray--200"
                 }
             },
             "border-color": {
@@ -929,9 +1454,9 @@
                     }
                 ]
             },
-            "color-red": {
+            "color--red": {
                 "__type": "variable",
-                "__name": "color-red",
+                "__name": "color--red",
                 "__value": {
                     "__type": "hsla",
                     "__value": [
@@ -942,9 +1467,9 @@
                     ]
                 }
             },
-            "color-orange": {
+            "color--orange": {
                 "__type": "variable",
-                "__name": "color-orange",
+                "__name": "color--orange",
                 "__value": {
                     "__type": "hsla",
                     "__value": [
@@ -955,9 +1480,9 @@
                     ]
                 }
             },
-            "color-yellow": {
+            "color--yellow": {
                 "__type": "variable",
-                "__name": "color-yellow",
+                "__name": "color--yellow",
                 "__value": {
                     "__type": "hsla",
                     "__value": [
@@ -968,9 +1493,9 @@
                     ]
                 }
             },
-            "color-green": {
+            "color--green": {
                 "__type": "variable",
-                "__name": "color-green",
+                "__name": "color--green",
                 "__value": {
                     "__type": "hsla",
                     "__value": [
@@ -981,9 +1506,9 @@
                     ]
                 }
             },
-            "color-teal": {
+            "color--teal": {
                 "__type": "variable",
-                "__name": "color-teal",
+                "__name": "color--teal",
                 "__value": {
                     "__type": "hsla",
                     "__value": [
@@ -994,9 +1519,9 @@
                     ]
                 }
             },
-            "color-blue": {
+            "color--blue": {
                 "__type": "variable",
-                "__name": "color-blue",
+                "__name": "color--blue",
                 "__value": {
                     "__type": "hsla",
                     "__value": [
@@ -1007,9 +1532,9 @@
                     ]
                 }
             },
-            "color-indigo": {
+            "color--indigo": {
                 "__type": "variable",
-                "__name": "color-indigo",
+                "__name": "color--indigo",
                 "__value": {
                     "__type": "hsla",
                     "__value": [
@@ -1020,9 +1545,9 @@
                     ]
                 }
             },
-            "color-purple": {
+            "color--purple": {
                 "__type": "variable",
-                "__name": "color-purple",
+                "__name": "color--purple",
                 "__value": {
                     "__type": "hsla",
                     "__value": [
@@ -1033,9 +1558,9 @@
                     ]
                 }
             },
-            "color-pink": {
+            "color--pink": {
                 "__type": "variable",
-                "__name": "color-pink",
+                "__name": "color--pink",
                 "__value": {
                     "__type": "hsla",
                     "__value": [
@@ -1046,73 +1571,73 @@
                     ]
                 }
             },
-            "color-primary": {
+            "color--primary": {
                 "__type": "variable",
-                "__name": "color-primary",
+                "__name": "color--primary",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-blue"
+                    "__name": "color--blue"
                 }
             },
-            "color-secondary": {
+            "color--secondary": {
                 "__type": "variable",
-                "__name": "color-secondary",
+                "__name": "color--secondary",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-purple"
+                    "__name": "color--purple"
                 }
             },
-            "color-info": {
+            "color--info": {
                 "__type": "variable",
-                "__name": "color-info",
+                "__name": "color--info",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-teal"
+                    "__name": "color--teal"
                 }
             },
-            "color-success": {
+            "color--success": {
                 "__type": "variable",
-                "__name": "color-success",
+                "__name": "color--success",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-green"
+                    "__name": "color--green"
                 }
             },
-            "color-warning": {
+            "color--warning": {
                 "__type": "variable",
-                "__name": "color-warning",
+                "__name": "color--warning",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-yellow"
+                    "__name": "color--yellow"
                 }
             },
-            "color-danger": {
+            "color--danger": {
                 "__type": "variable",
-                "__name": "color-danger",
+                "__name": "color--danger",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-red"
+                    "__name": "color--red"
                 }
             },
-            "color-light": {
+            "color--light": {
                 "__type": "variable",
-                "__name": "color-light",
+                "__name": "color--light",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-gray--100"
+                    "__name": "color--gray--100"
                 }
             },
-            "color-dark": {
+            "color--dark": {
                 "__type": "variable",
-                "__name": "color-dark",
+                "__name": "color--dark",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-gray--800"
+                    "__name": "color--gray--800"
                 }
             },
-            "color-primary--50": {
+            "color--primary--50": {
                 "__type": "variable",
-                "__name": "color-primary--50",
+                "__name": "color--primary--50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1121,7 +1646,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s ",
                             "95%",
@@ -1130,9 +1655,9 @@
                     }
                 }
             },
-            "color-primary--100": {
+            "color--primary--100": {
                 "__type": "variable",
-                "__name": "color-primary--100",
+                "__name": "color--primary--100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1141,7 +1666,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s ",
                             "90%",
@@ -1150,9 +1675,9 @@
                     }
                 }
             },
-            "color-primary--200": {
+            "color--primary--200": {
                 "__type": "variable",
-                "__name": "color-primary--200",
+                "__name": "color--primary--200",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1161,7 +1686,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s ",
                             "80%",
@@ -1170,9 +1695,9 @@
                     }
                 }
             },
-            "color-primary--300": {
+            "color--primary--300": {
                 "__type": "variable",
-                "__name": "color-primary--300",
+                "__name": "color--primary--300",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1181,7 +1706,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s ",
                             "70%",
@@ -1190,9 +1715,9 @@
                     }
                 }
             },
-            "color-primary--400": {
+            "color--primary--400": {
                 "__type": "variable",
-                "__name": "color-primary--400",
+                "__name": "color--primary--400",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1201,7 +1726,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s ",
                             "60%",
@@ -1210,9 +1735,9 @@
                     }
                 }
             },
-            "color-primary--500": {
+            "color--primary--500": {
                 "__type": "variable",
-                "__name": "color-primary--500",
+                "__name": "color--primary--500",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1221,7 +1746,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s ",
                             "50%",
@@ -1230,9 +1755,9 @@
                     }
                 }
             },
-            "color-primary--600": {
+            "color--primary--600": {
                 "__type": "variable",
-                "__name": "color-primary--600",
+                "__name": "color--primary--600",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1241,7 +1766,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s ",
                             "40%",
@@ -1250,9 +1775,9 @@
                     }
                 }
             },
-            "color-primary--700": {
+            "color--primary--700": {
                 "__type": "variable",
-                "__name": "color-primary--700",
+                "__name": "color--primary--700",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1261,7 +1786,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s ",
                             "30%",
@@ -1270,9 +1795,9 @@
                     }
                 }
             },
-            "color-primary--800": {
+            "color--primary--800": {
                 "__type": "variable",
-                "__name": "color-primary--800",
+                "__name": "color--primary--800",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1281,7 +1806,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s ",
                             "20%",
@@ -1290,9 +1815,9 @@
                     }
                 }
             },
-            "color-primary--900": {
+            "color--primary--900": {
                 "__type": "variable",
-                "__name": "color-primary--900",
+                "__name": "color--primary--900",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1301,7 +1826,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s ",
                             "10%",
@@ -1310,9 +1835,9 @@
                     }
                 }
             },
-            "color-primary--950": {
+            "color--primary--950": {
                 "__type": "variable",
-                "__name": "color-primary--950",
+                "__name": "color--primary--950",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1321,7 +1846,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s ",
                             "5%",
@@ -1330,9 +1855,9 @@
                     }
                 }
             },
-            "color-primary--tint-50": {
+            "color--primary--tint-50": {
                 "__type": "variable",
-                "__name": "color-primary--tint-50",
+                "__name": "color--primary--tint-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1341,7 +1866,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s calc(l + ",
                             5,
@@ -1350,9 +1875,9 @@
                     }
                 }
             },
-            "color-primary--tint-100": {
+            "color--primary--tint-100": {
                 "__type": "variable",
-                "__name": "color-primary--tint-100",
+                "__name": "color--primary--tint-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1361,7 +1886,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s calc(l + ",
                             10,
@@ -1370,9 +1895,9 @@
                     }
                 }
             },
-            "color-primary--tint-150": {
+            "color--primary--tint-150": {
                 "__type": "variable",
-                "__name": "color-primary--tint-150",
+                "__name": "color--primary--tint-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1381,7 +1906,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s calc(l + ",
                             15,
@@ -1390,9 +1915,9 @@
                     }
                 }
             },
-            "color-primary--shade-50": {
+            "color--primary--shade-50": {
                 "__type": "variable",
-                "__name": "color-primary--shade-50",
+                "__name": "color--primary--shade-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1401,7 +1926,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s calc(l - ",
                             5,
@@ -1410,9 +1935,9 @@
                     }
                 }
             },
-            "color-primary--shade-100": {
+            "color--primary--shade-100": {
                 "__type": "variable",
-                "__name": "color-primary--shade-100",
+                "__name": "color--primary--shade-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1421,7 +1946,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s calc(l - ",
                             10,
@@ -1430,9 +1955,9 @@
                     }
                 }
             },
-            "color-primary--shade-150": {
+            "color--primary--shade-150": {
                 "__type": "variable",
-                "__name": "color-primary--shade-150",
+                "__name": "color--primary--shade-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1441,7 +1966,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-primary"
+                                "__name": "color--primary"
                             },
                             " h s calc(l - ",
                             15,
@@ -1450,9 +1975,9 @@
                     }
                 }
             },
-            "color-secondary--50": {
+            "color--secondary--50": {
                 "__type": "variable",
-                "__name": "color-secondary--50",
+                "__name": "color--secondary--50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1461,7 +1986,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s ",
                             "95%",
@@ -1470,9 +1995,9 @@
                     }
                 }
             },
-            "color-secondary--100": {
+            "color--secondary--100": {
                 "__type": "variable",
-                "__name": "color-secondary--100",
+                "__name": "color--secondary--100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1481,7 +2006,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s ",
                             "90%",
@@ -1490,9 +2015,9 @@
                     }
                 }
             },
-            "color-secondary--200": {
+            "color--secondary--200": {
                 "__type": "variable",
-                "__name": "color-secondary--200",
+                "__name": "color--secondary--200",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1501,7 +2026,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s ",
                             "80%",
@@ -1510,9 +2035,9 @@
                     }
                 }
             },
-            "color-secondary--300": {
+            "color--secondary--300": {
                 "__type": "variable",
-                "__name": "color-secondary--300",
+                "__name": "color--secondary--300",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1521,7 +2046,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s ",
                             "70%",
@@ -1530,9 +2055,9 @@
                     }
                 }
             },
-            "color-secondary--400": {
+            "color--secondary--400": {
                 "__type": "variable",
-                "__name": "color-secondary--400",
+                "__name": "color--secondary--400",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1541,7 +2066,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s ",
                             "60%",
@@ -1550,9 +2075,9 @@
                     }
                 }
             },
-            "color-secondary--500": {
+            "color--secondary--500": {
                 "__type": "variable",
-                "__name": "color-secondary--500",
+                "__name": "color--secondary--500",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1561,7 +2086,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s ",
                             "50%",
@@ -1570,9 +2095,9 @@
                     }
                 }
             },
-            "color-secondary--600": {
+            "color--secondary--600": {
                 "__type": "variable",
-                "__name": "color-secondary--600",
+                "__name": "color--secondary--600",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1581,7 +2106,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s ",
                             "40%",
@@ -1590,9 +2115,9 @@
                     }
                 }
             },
-            "color-secondary--700": {
+            "color--secondary--700": {
                 "__type": "variable",
-                "__name": "color-secondary--700",
+                "__name": "color--secondary--700",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1601,7 +2126,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s ",
                             "30%",
@@ -1610,9 +2135,9 @@
                     }
                 }
             },
-            "color-secondary--800": {
+            "color--secondary--800": {
                 "__type": "variable",
-                "__name": "color-secondary--800",
+                "__name": "color--secondary--800",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1621,7 +2146,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s ",
                             "20%",
@@ -1630,9 +2155,9 @@
                     }
                 }
             },
-            "color-secondary--900": {
+            "color--secondary--900": {
                 "__type": "variable",
-                "__name": "color-secondary--900",
+                "__name": "color--secondary--900",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1641,7 +2166,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s ",
                             "10%",
@@ -1650,9 +2175,9 @@
                     }
                 }
             },
-            "color-secondary--950": {
+            "color--secondary--950": {
                 "__type": "variable",
-                "__name": "color-secondary--950",
+                "__name": "color--secondary--950",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1661,7 +2186,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s ",
                             "5%",
@@ -1670,9 +2195,9 @@
                     }
                 }
             },
-            "color-secondary--tint-50": {
+            "color--secondary--tint-50": {
                 "__type": "variable",
-                "__name": "color-secondary--tint-50",
+                "__name": "color--secondary--tint-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1681,7 +2206,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s calc(l + ",
                             5,
@@ -1690,9 +2215,9 @@
                     }
                 }
             },
-            "color-secondary--tint-100": {
+            "color--secondary--tint-100": {
                 "__type": "variable",
-                "__name": "color-secondary--tint-100",
+                "__name": "color--secondary--tint-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1701,7 +2226,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s calc(l + ",
                             10,
@@ -1710,9 +2235,9 @@
                     }
                 }
             },
-            "color-secondary--tint-150": {
+            "color--secondary--tint-150": {
                 "__type": "variable",
-                "__name": "color-secondary--tint-150",
+                "__name": "color--secondary--tint-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1721,7 +2246,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s calc(l + ",
                             15,
@@ -1730,9 +2255,9 @@
                     }
                 }
             },
-            "color-secondary--shade-50": {
+            "color--secondary--shade-50": {
                 "__type": "variable",
-                "__name": "color-secondary--shade-50",
+                "__name": "color--secondary--shade-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1741,7 +2266,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s calc(l - ",
                             5,
@@ -1750,9 +2275,9 @@
                     }
                 }
             },
-            "color-secondary--shade-100": {
+            "color--secondary--shade-100": {
                 "__type": "variable",
-                "__name": "color-secondary--shade-100",
+                "__name": "color--secondary--shade-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1761,7 +2286,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s calc(l - ",
                             10,
@@ -1770,9 +2295,9 @@
                     }
                 }
             },
-            "color-secondary--shade-150": {
+            "color--secondary--shade-150": {
                 "__type": "variable",
-                "__name": "color-secondary--shade-150",
+                "__name": "color--secondary--shade-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1781,7 +2306,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-secondary"
+                                "__name": "color--secondary"
                             },
                             " h s calc(l - ",
                             15,
@@ -1790,9 +2315,9 @@
                     }
                 }
             },
-            "color-info--50": {
+            "color--info--50": {
                 "__type": "variable",
-                "__name": "color-info--50",
+                "__name": "color--info--50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1801,7 +2326,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s ",
                             "95%",
@@ -1810,9 +2335,9 @@
                     }
                 }
             },
-            "color-info--100": {
+            "color--info--100": {
                 "__type": "variable",
-                "__name": "color-info--100",
+                "__name": "color--info--100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1821,7 +2346,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s ",
                             "90%",
@@ -1830,9 +2355,9 @@
                     }
                 }
             },
-            "color-info--200": {
+            "color--info--200": {
                 "__type": "variable",
-                "__name": "color-info--200",
+                "__name": "color--info--200",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1841,7 +2366,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s ",
                             "80%",
@@ -1850,9 +2375,9 @@
                     }
                 }
             },
-            "color-info--300": {
+            "color--info--300": {
                 "__type": "variable",
-                "__name": "color-info--300",
+                "__name": "color--info--300",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1861,7 +2386,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s ",
                             "70%",
@@ -1870,9 +2395,9 @@
                     }
                 }
             },
-            "color-info--400": {
+            "color--info--400": {
                 "__type": "variable",
-                "__name": "color-info--400",
+                "__name": "color--info--400",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1881,7 +2406,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s ",
                             "60%",
@@ -1890,9 +2415,9 @@
                     }
                 }
             },
-            "color-info--500": {
+            "color--info--500": {
                 "__type": "variable",
-                "__name": "color-info--500",
+                "__name": "color--info--500",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1901,7 +2426,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s ",
                             "50%",
@@ -1910,9 +2435,9 @@
                     }
                 }
             },
-            "color-info--600": {
+            "color--info--600": {
                 "__type": "variable",
-                "__name": "color-info--600",
+                "__name": "color--info--600",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1921,7 +2446,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s ",
                             "40%",
@@ -1930,9 +2455,9 @@
                     }
                 }
             },
-            "color-info--700": {
+            "color--info--700": {
                 "__type": "variable",
-                "__name": "color-info--700",
+                "__name": "color--info--700",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1941,7 +2466,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s ",
                             "30%",
@@ -1950,9 +2475,9 @@
                     }
                 }
             },
-            "color-info--800": {
+            "color--info--800": {
                 "__type": "variable",
-                "__name": "color-info--800",
+                "__name": "color--info--800",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1961,7 +2486,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s ",
                             "20%",
@@ -1970,9 +2495,9 @@
                     }
                 }
             },
-            "color-info--900": {
+            "color--info--900": {
                 "__type": "variable",
-                "__name": "color-info--900",
+                "__name": "color--info--900",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -1981,7 +2506,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s ",
                             "10%",
@@ -1990,9 +2515,9 @@
                     }
                 }
             },
-            "color-info--950": {
+            "color--info--950": {
                 "__type": "variable",
-                "__name": "color-info--950",
+                "__name": "color--info--950",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2001,7 +2526,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s ",
                             "5%",
@@ -2010,9 +2535,9 @@
                     }
                 }
             },
-            "color-info--tint-50": {
+            "color--info--tint-50": {
                 "__type": "variable",
-                "__name": "color-info--tint-50",
+                "__name": "color--info--tint-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2021,7 +2546,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s calc(l + ",
                             5,
@@ -2030,9 +2555,9 @@
                     }
                 }
             },
-            "color-info--tint-100": {
+            "color--info--tint-100": {
                 "__type": "variable",
-                "__name": "color-info--tint-100",
+                "__name": "color--info--tint-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2041,7 +2566,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s calc(l + ",
                             10,
@@ -2050,9 +2575,9 @@
                     }
                 }
             },
-            "color-info--tint-150": {
+            "color--info--tint-150": {
                 "__type": "variable",
-                "__name": "color-info--tint-150",
+                "__name": "color--info--tint-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2061,7 +2586,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s calc(l + ",
                             15,
@@ -2070,9 +2595,9 @@
                     }
                 }
             },
-            "color-info--shade-50": {
+            "color--info--shade-50": {
                 "__type": "variable",
-                "__name": "color-info--shade-50",
+                "__name": "color--info--shade-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2081,7 +2606,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s calc(l - ",
                             5,
@@ -2090,9 +2615,9 @@
                     }
                 }
             },
-            "color-info--shade-100": {
+            "color--info--shade-100": {
                 "__type": "variable",
-                "__name": "color-info--shade-100",
+                "__name": "color--info--shade-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2101,7 +2626,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s calc(l - ",
                             10,
@@ -2110,9 +2635,9 @@
                     }
                 }
             },
-            "color-info--shade-150": {
+            "color--info--shade-150": {
                 "__type": "variable",
-                "__name": "color-info--shade-150",
+                "__name": "color--info--shade-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2121,7 +2646,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-info"
+                                "__name": "color--info"
                             },
                             " h s calc(l - ",
                             15,
@@ -2130,9 +2655,9 @@
                     }
                 }
             },
-            "color-success--50": {
+            "color--success--50": {
                 "__type": "variable",
-                "__name": "color-success--50",
+                "__name": "color--success--50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2141,7 +2666,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s ",
                             "95%",
@@ -2150,9 +2675,9 @@
                     }
                 }
             },
-            "color-success--100": {
+            "color--success--100": {
                 "__type": "variable",
-                "__name": "color-success--100",
+                "__name": "color--success--100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2161,7 +2686,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s ",
                             "90%",
@@ -2170,9 +2695,9 @@
                     }
                 }
             },
-            "color-success--200": {
+            "color--success--200": {
                 "__type": "variable",
-                "__name": "color-success--200",
+                "__name": "color--success--200",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2181,7 +2706,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s ",
                             "80%",
@@ -2190,9 +2715,9 @@
                     }
                 }
             },
-            "color-success--300": {
+            "color--success--300": {
                 "__type": "variable",
-                "__name": "color-success--300",
+                "__name": "color--success--300",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2201,7 +2726,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s ",
                             "70%",
@@ -2210,9 +2735,9 @@
                     }
                 }
             },
-            "color-success--400": {
+            "color--success--400": {
                 "__type": "variable",
-                "__name": "color-success--400",
+                "__name": "color--success--400",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2221,7 +2746,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s ",
                             "60%",
@@ -2230,9 +2755,9 @@
                     }
                 }
             },
-            "color-success--500": {
+            "color--success--500": {
                 "__type": "variable",
-                "__name": "color-success--500",
+                "__name": "color--success--500",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2241,7 +2766,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s ",
                             "50%",
@@ -2250,9 +2775,9 @@
                     }
                 }
             },
-            "color-success--600": {
+            "color--success--600": {
                 "__type": "variable",
-                "__name": "color-success--600",
+                "__name": "color--success--600",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2261,7 +2786,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s ",
                             "40%",
@@ -2270,9 +2795,9 @@
                     }
                 }
             },
-            "color-success--700": {
+            "color--success--700": {
                 "__type": "variable",
-                "__name": "color-success--700",
+                "__name": "color--success--700",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2281,7 +2806,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s ",
                             "30%",
@@ -2290,9 +2815,9 @@
                     }
                 }
             },
-            "color-success--800": {
+            "color--success--800": {
                 "__type": "variable",
-                "__name": "color-success--800",
+                "__name": "color--success--800",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2301,7 +2826,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s ",
                             "20%",
@@ -2310,9 +2835,9 @@
                     }
                 }
             },
-            "color-success--900": {
+            "color--success--900": {
                 "__type": "variable",
-                "__name": "color-success--900",
+                "__name": "color--success--900",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2321,7 +2846,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s ",
                             "10%",
@@ -2330,9 +2855,9 @@
                     }
                 }
             },
-            "color-success--950": {
+            "color--success--950": {
                 "__type": "variable",
-                "__name": "color-success--950",
+                "__name": "color--success--950",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2341,7 +2866,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s ",
                             "5%",
@@ -2350,9 +2875,9 @@
                     }
                 }
             },
-            "color-success--tint-50": {
+            "color--success--tint-50": {
                 "__type": "variable",
-                "__name": "color-success--tint-50",
+                "__name": "color--success--tint-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2361,7 +2886,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s calc(l + ",
                             5,
@@ -2370,9 +2895,9 @@
                     }
                 }
             },
-            "color-success--tint-100": {
+            "color--success--tint-100": {
                 "__type": "variable",
-                "__name": "color-success--tint-100",
+                "__name": "color--success--tint-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2381,7 +2906,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s calc(l + ",
                             10,
@@ -2390,9 +2915,9 @@
                     }
                 }
             },
-            "color-success--tint-150": {
+            "color--success--tint-150": {
                 "__type": "variable",
-                "__name": "color-success--tint-150",
+                "__name": "color--success--tint-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2401,7 +2926,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s calc(l + ",
                             15,
@@ -2410,9 +2935,9 @@
                     }
                 }
             },
-            "color-success--shade-50": {
+            "color--success--shade-50": {
                 "__type": "variable",
-                "__name": "color-success--shade-50",
+                "__name": "color--success--shade-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2421,7 +2946,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s calc(l - ",
                             5,
@@ -2430,9 +2955,9 @@
                     }
                 }
             },
-            "color-success--shade-100": {
+            "color--success--shade-100": {
                 "__type": "variable",
-                "__name": "color-success--shade-100",
+                "__name": "color--success--shade-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2441,7 +2966,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s calc(l - ",
                             10,
@@ -2450,9 +2975,9 @@
                     }
                 }
             },
-            "color-success--shade-150": {
+            "color--success--shade-150": {
                 "__type": "variable",
-                "__name": "color-success--shade-150",
+                "__name": "color--success--shade-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2461,7 +2986,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-success"
+                                "__name": "color--success"
                             },
                             " h s calc(l - ",
                             15,
@@ -2470,9 +2995,9 @@
                     }
                 }
             },
-            "color-warning--50": {
+            "color--warning--50": {
                 "__type": "variable",
-                "__name": "color-warning--50",
+                "__name": "color--warning--50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2481,7 +3006,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s ",
                             "95%",
@@ -2490,9 +3015,9 @@
                     }
                 }
             },
-            "color-warning--100": {
+            "color--warning--100": {
                 "__type": "variable",
-                "__name": "color-warning--100",
+                "__name": "color--warning--100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2501,7 +3026,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s ",
                             "90%",
@@ -2510,9 +3035,9 @@
                     }
                 }
             },
-            "color-warning--200": {
+            "color--warning--200": {
                 "__type": "variable",
-                "__name": "color-warning--200",
+                "__name": "color--warning--200",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2521,7 +3046,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s ",
                             "80%",
@@ -2530,9 +3055,9 @@
                     }
                 }
             },
-            "color-warning--300": {
+            "color--warning--300": {
                 "__type": "variable",
-                "__name": "color-warning--300",
+                "__name": "color--warning--300",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2541,7 +3066,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s ",
                             "70%",
@@ -2550,9 +3075,9 @@
                     }
                 }
             },
-            "color-warning--400": {
+            "color--warning--400": {
                 "__type": "variable",
-                "__name": "color-warning--400",
+                "__name": "color--warning--400",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2561,7 +3086,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s ",
                             "60%",
@@ -2570,9 +3095,9 @@
                     }
                 }
             },
-            "color-warning--500": {
+            "color--warning--500": {
                 "__type": "variable",
-                "__name": "color-warning--500",
+                "__name": "color--warning--500",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2581,7 +3106,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s ",
                             "50%",
@@ -2590,9 +3115,9 @@
                     }
                 }
             },
-            "color-warning--600": {
+            "color--warning--600": {
                 "__type": "variable",
-                "__name": "color-warning--600",
+                "__name": "color--warning--600",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2601,7 +3126,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s ",
                             "40%",
@@ -2610,9 +3135,9 @@
                     }
                 }
             },
-            "color-warning--700": {
+            "color--warning--700": {
                 "__type": "variable",
-                "__name": "color-warning--700",
+                "__name": "color--warning--700",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2621,7 +3146,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s ",
                             "30%",
@@ -2630,9 +3155,9 @@
                     }
                 }
             },
-            "color-warning--800": {
+            "color--warning--800": {
                 "__type": "variable",
-                "__name": "color-warning--800",
+                "__name": "color--warning--800",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2641,7 +3166,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s ",
                             "20%",
@@ -2650,9 +3175,9 @@
                     }
                 }
             },
-            "color-warning--900": {
+            "color--warning--900": {
                 "__type": "variable",
-                "__name": "color-warning--900",
+                "__name": "color--warning--900",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2661,7 +3186,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s ",
                             "10%",
@@ -2670,9 +3195,9 @@
                     }
                 }
             },
-            "color-warning--950": {
+            "color--warning--950": {
                 "__type": "variable",
-                "__name": "color-warning--950",
+                "__name": "color--warning--950",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2681,7 +3206,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s ",
                             "5%",
@@ -2690,9 +3215,9 @@
                     }
                 }
             },
-            "color-warning--tint-50": {
+            "color--warning--tint-50": {
                 "__type": "variable",
-                "__name": "color-warning--tint-50",
+                "__name": "color--warning--tint-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2701,7 +3226,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s calc(l + ",
                             5,
@@ -2710,9 +3235,9 @@
                     }
                 }
             },
-            "color-warning--tint-100": {
+            "color--warning--tint-100": {
                 "__type": "variable",
-                "__name": "color-warning--tint-100",
+                "__name": "color--warning--tint-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2721,7 +3246,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s calc(l + ",
                             10,
@@ -2730,9 +3255,9 @@
                     }
                 }
             },
-            "color-warning--tint-150": {
+            "color--warning--tint-150": {
                 "__type": "variable",
-                "__name": "color-warning--tint-150",
+                "__name": "color--warning--tint-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2741,7 +3266,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s calc(l + ",
                             15,
@@ -2750,9 +3275,9 @@
                     }
                 }
             },
-            "color-warning--shade-50": {
+            "color--warning--shade-50": {
                 "__type": "variable",
-                "__name": "color-warning--shade-50",
+                "__name": "color--warning--shade-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2761,7 +3286,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s calc(l - ",
                             5,
@@ -2770,9 +3295,9 @@
                     }
                 }
             },
-            "color-warning--shade-100": {
+            "color--warning--shade-100": {
                 "__type": "variable",
-                "__name": "color-warning--shade-100",
+                "__name": "color--warning--shade-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2781,7 +3306,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s calc(l - ",
                             10,
@@ -2790,9 +3315,9 @@
                     }
                 }
             },
-            "color-warning--shade-150": {
+            "color--warning--shade-150": {
                 "__type": "variable",
-                "__name": "color-warning--shade-150",
+                "__name": "color--warning--shade-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2801,7 +3326,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-warning"
+                                "__name": "color--warning"
                             },
                             " h s calc(l - ",
                             15,
@@ -2810,9 +3335,9 @@
                     }
                 }
             },
-            "color-danger--50": {
+            "color--danger--50": {
                 "__type": "variable",
-                "__name": "color-danger--50",
+                "__name": "color--danger--50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2821,7 +3346,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s ",
                             "95%",
@@ -2830,9 +3355,9 @@
                     }
                 }
             },
-            "color-danger--100": {
+            "color--danger--100": {
                 "__type": "variable",
-                "__name": "color-danger--100",
+                "__name": "color--danger--100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2841,7 +3366,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s ",
                             "90%",
@@ -2850,9 +3375,9 @@
                     }
                 }
             },
-            "color-danger--200": {
+            "color--danger--200": {
                 "__type": "variable",
-                "__name": "color-danger--200",
+                "__name": "color--danger--200",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2861,7 +3386,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s ",
                             "80%",
@@ -2870,9 +3395,9 @@
                     }
                 }
             },
-            "color-danger--300": {
+            "color--danger--300": {
                 "__type": "variable",
-                "__name": "color-danger--300",
+                "__name": "color--danger--300",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2881,7 +3406,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s ",
                             "70%",
@@ -2890,9 +3415,9 @@
                     }
                 }
             },
-            "color-danger--400": {
+            "color--danger--400": {
                 "__type": "variable",
-                "__name": "color-danger--400",
+                "__name": "color--danger--400",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2901,7 +3426,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s ",
                             "60%",
@@ -2910,9 +3435,9 @@
                     }
                 }
             },
-            "color-danger--500": {
+            "color--danger--500": {
                 "__type": "variable",
-                "__name": "color-danger--500",
+                "__name": "color--danger--500",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2921,7 +3446,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s ",
                             "50%",
@@ -2930,9 +3455,9 @@
                     }
                 }
             },
-            "color-danger--600": {
+            "color--danger--600": {
                 "__type": "variable",
-                "__name": "color-danger--600",
+                "__name": "color--danger--600",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2941,7 +3466,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s ",
                             "40%",
@@ -2950,9 +3475,9 @@
                     }
                 }
             },
-            "color-danger--700": {
+            "color--danger--700": {
                 "__type": "variable",
-                "__name": "color-danger--700",
+                "__name": "color--danger--700",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2961,7 +3486,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s ",
                             "30%",
@@ -2970,9 +3495,9 @@
                     }
                 }
             },
-            "color-danger--800": {
+            "color--danger--800": {
                 "__type": "variable",
-                "__name": "color-danger--800",
+                "__name": "color--danger--800",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -2981,7 +3506,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s ",
                             "20%",
@@ -2990,9 +3515,9 @@
                     }
                 }
             },
-            "color-danger--900": {
+            "color--danger--900": {
                 "__type": "variable",
-                "__name": "color-danger--900",
+                "__name": "color--danger--900",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3001,7 +3526,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s ",
                             "10%",
@@ -3010,9 +3535,9 @@
                     }
                 }
             },
-            "color-danger--950": {
+            "color--danger--950": {
                 "__type": "variable",
-                "__name": "color-danger--950",
+                "__name": "color--danger--950",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3021,7 +3546,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s ",
                             "5%",
@@ -3030,9 +3555,9 @@
                     }
                 }
             },
-            "color-danger--tint-50": {
+            "color--danger--tint-50": {
                 "__type": "variable",
-                "__name": "color-danger--tint-50",
+                "__name": "color--danger--tint-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3041,7 +3566,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s calc(l + ",
                             5,
@@ -3050,9 +3575,9 @@
                     }
                 }
             },
-            "color-danger--tint-100": {
+            "color--danger--tint-100": {
                 "__type": "variable",
-                "__name": "color-danger--tint-100",
+                "__name": "color--danger--tint-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3061,7 +3586,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s calc(l + ",
                             10,
@@ -3070,9 +3595,9 @@
                     }
                 }
             },
-            "color-danger--tint-150": {
+            "color--danger--tint-150": {
                 "__type": "variable",
-                "__name": "color-danger--tint-150",
+                "__name": "color--danger--tint-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3081,7 +3606,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s calc(l + ",
                             15,
@@ -3090,9 +3615,9 @@
                     }
                 }
             },
-            "color-danger--shade-50": {
+            "color--danger--shade-50": {
                 "__type": "variable",
-                "__name": "color-danger--shade-50",
+                "__name": "color--danger--shade-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3101,7 +3626,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s calc(l - ",
                             5,
@@ -3110,9 +3635,9 @@
                     }
                 }
             },
-            "color-danger--shade-100": {
+            "color--danger--shade-100": {
                 "__type": "variable",
-                "__name": "color-danger--shade-100",
+                "__name": "color--danger--shade-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3121,7 +3646,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s calc(l - ",
                             10,
@@ -3130,9 +3655,9 @@
                     }
                 }
             },
-            "color-danger--shade-150": {
+            "color--danger--shade-150": {
                 "__type": "variable",
-                "__name": "color-danger--shade-150",
+                "__name": "color--danger--shade-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3141,7 +3666,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-danger"
+                                "__name": "color--danger"
                             },
                             " h s calc(l - ",
                             15,
@@ -3150,9 +3675,9 @@
                     }
                 }
             },
-            "color-light--shade-50": {
+            "color--light--shade-50": {
                 "__type": "variable",
-                "__name": "color-light--shade-50",
+                "__name": "color--light--shade-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3161,7 +3686,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-light"
+                                "__name": "color--light"
                             },
                             " h s calc(l - ",
                             5,
@@ -3170,9 +3695,9 @@
                     }
                 }
             },
-            "color-light--shade-100": {
+            "color--light--shade-100": {
                 "__type": "variable",
-                "__name": "color-light--shade-100",
+                "__name": "color--light--shade-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3181,7 +3706,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-light"
+                                "__name": "color--light"
                             },
                             " h s calc(l - ",
                             10,
@@ -3190,9 +3715,9 @@
                     }
                 }
             },
-            "color-light--shade-150": {
+            "color--light--shade-150": {
                 "__type": "variable",
-                "__name": "color-light--shade-150",
+                "__name": "color--light--shade-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3201,7 +3726,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-light"
+                                "__name": "color--light"
                             },
                             " h s calc(l - ",
                             15,
@@ -3210,9 +3735,9 @@
                     }
                 }
             },
-            "color-light--tint-50": {
+            "color--light--tint-50": {
                 "__type": "variable",
-                "__name": "color-light--tint-50",
+                "__name": "color--light--tint-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3221,7 +3746,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-light"
+                                "__name": "color--light"
                             },
                             " h s calc(l + ",
                             5,
@@ -3230,9 +3755,9 @@
                     }
                 }
             },
-            "color-light--tint-100": {
+            "color--light--tint-100": {
                 "__type": "variable",
-                "__name": "color-light--tint-100",
+                "__name": "color--light--tint-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3241,7 +3766,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-light"
+                                "__name": "color--light"
                             },
                             " h s calc(l + ",
                             10,
@@ -3250,9 +3775,9 @@
                     }
                 }
             },
-            "color-light--tint-150": {
+            "color--light--tint-150": {
                 "__type": "variable",
-                "__name": "color-light--tint-150",
+                "__name": "color--light--tint-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3261,7 +3786,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-light"
+                                "__name": "color--light"
                             },
                             " h s calc(l + ",
                             15,
@@ -3270,9 +3795,9 @@
                     }
                 }
             },
-            "color-dark--tint-50": {
+            "color--dark--tint-50": {
                 "__type": "variable",
-                "__name": "color-dark--tint-50",
+                "__name": "color--dark--tint-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3281,7 +3806,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-dark"
+                                "__name": "color--dark"
                             },
                             " h s calc(l + ",
                             5,
@@ -3290,9 +3815,9 @@
                     }
                 }
             },
-            "color-dark--tint-100": {
+            "color--dark--tint-100": {
                 "__type": "variable",
-                "__name": "color-dark--tint-100",
+                "__name": "color--dark--tint-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3301,7 +3826,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-dark"
+                                "__name": "color--dark"
                             },
                             " h s calc(l + ",
                             10,
@@ -3310,9 +3835,9 @@
                     }
                 }
             },
-            "color-dark--tint-150": {
+            "color--dark--tint-150": {
                 "__type": "variable",
-                "__name": "color-dark--tint-150",
+                "__name": "color--dark--tint-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3321,7 +3846,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-dark"
+                                "__name": "color--dark"
                             },
                             " h s calc(l + ",
                             15,
@@ -3330,9 +3855,9 @@
                     }
                 }
             },
-            "color-dark--shade-50": {
+            "color--dark--shade-50": {
                 "__type": "variable",
-                "__name": "color-dark--shade-50",
+                "__name": "color--dark--shade-50",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3341,7 +3866,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-dark"
+                                "__name": "color--dark"
                             },
                             " h s calc(l - ",
                             5,
@@ -3350,9 +3875,9 @@
                     }
                 }
             },
-            "color-dark--shade-100": {
+            "color--dark--shade-100": {
                 "__type": "variable",
-                "__name": "color-dark--shade-100",
+                "__name": "color--dark--shade-100",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3361,7 +3886,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-dark"
+                                "__name": "color--dark"
                             },
                             " h s calc(l - ",
                             10,
@@ -3370,9 +3895,9 @@
                     }
                 }
             },
-            "color-dark--shade-150": {
+            "color--dark--shade-150": {
                 "__type": "variable",
-                "__name": "color-dark--shade-150",
+                "__name": "color--dark--shade-150",
                 "__value": {
                     "__type": "hsla",
                     "__value": {
@@ -3381,7 +3906,7 @@
                             "from ",
                             {
                                 "__type": "reference",
-                                "__name": "color-dark"
+                                "__name": "color--dark"
                             },
                             " h s calc(l - ",
                             15,
@@ -3395,7 +3920,7 @@
                 "__name": "contrast-text-color-light",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-gray--900"
+                    "__name": "color--gray--900"
                 }
             },
             "contrast-text-color-dark": {
@@ -3403,7 +3928,7 @@
                 "__name": "contrast-text-color-dark",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-white"
+                    "__name": "color--white"
                 }
             },
             "contrast-text-color-primary": {
@@ -6925,7 +7450,7 @@
                 "__name": "tooltip--border-top-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-light--shade-50"
+                    "__name": "color--light--shade-50"
                 }
             },
             "tooltip--border-right-width": {
@@ -6949,7 +7474,7 @@
                 "__name": "tooltip--border-right-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-light--shade-50"
+                    "__name": "color--light--shade-50"
                 }
             },
             "tooltip--border-bottom-width": {
@@ -6973,7 +7498,7 @@
                 "__name": "tooltip--border-bottom-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-light--shade-50"
+                    "__name": "color--light--shade-50"
                 }
             },
             "tooltip--border-left-width": {
@@ -6997,7 +7522,7 @@
                 "__name": "tooltip--border-left-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-light--shade-50"
+                    "__name": "color--light--shade-50"
                 }
             },
             "tooltip--box-shadow-offset-x": {
@@ -7074,7 +7599,7 @@
                 "__name": "tooltip--background",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-white"
+                    "__name": "color--white"
                 }
             },
             "tooltip--color": {
@@ -7564,7 +8089,7 @@
                 "__name": "tooltip--light--border-top-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-light--shade-50"
+                    "__name": "color--light--shade-50"
                 }
             },
             "tooltip--light--border-right-width": {
@@ -7582,7 +8107,7 @@
                 "__name": "tooltip--light--border-right-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-light--shade-50"
+                    "__name": "color--light--shade-50"
                 }
             },
             "tooltip--light--border-bottom-width": {
@@ -7600,7 +8125,7 @@
                 "__name": "tooltip--light--border-bottom-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-light--shade-50"
+                    "__name": "color--light--shade-50"
                 }
             },
             "tooltip--light--border-left-width": {
@@ -7618,7 +8143,7 @@
                 "__name": "tooltip--light--border-left-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-light--shade-50"
+                    "__name": "color--light--shade-50"
                 }
             },
             "tooltip--light--background": {
@@ -7626,7 +8151,7 @@
                 "__name": "tooltip--light--background",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-white"
+                    "__name": "color--white"
                 }
             },
             "tooltip--light--color": {
@@ -7652,7 +8177,7 @@
                 "__name": "tooltip--dark--border-top-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-dark--tint-50"
+                    "__name": "color--dark--tint-50"
                 }
             },
             "tooltip--dark--border-right-width": {
@@ -7670,7 +8195,7 @@
                 "__name": "tooltip--dark--border-right-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-dark--tint-50"
+                    "__name": "color--dark--tint-50"
                 }
             },
             "tooltip--dark--border-bottom-width": {
@@ -7688,7 +8213,7 @@
                 "__name": "tooltip--dark--border-bottom-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-dark--tint-50"
+                    "__name": "color--dark--tint-50"
                 }
             },
             "tooltip--dark--border-left-width": {
@@ -7706,7 +8231,7 @@
                 "__name": "tooltip--dark--border-left-color",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-dark--tint-50"
+                    "__name": "color--dark--tint-50"
                 }
             },
             "tooltip--dark--background": {
@@ -7714,7 +8239,7 @@
                 "__name": "tooltip--dark--background",
                 "__value": {
                     "__type": "reference",
-                    "__name": "color-dark"
+                    "__name": "color--dark"
                 }
             },
             "tooltip--dark--color": {

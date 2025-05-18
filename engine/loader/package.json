@@ -14,6 +14,7 @@
         "@inkline/devtools": "workspace:*",
         "@inkline/eslint-config": "workspace:*",
         "@inkline/typescript-config": "workspace:*",
+        "@inkline/types": "workspace:*",
         "@types/node": "catalog:",
         "@vitest/coverage-v8": "catalog:",
         "eslint": "catalog:",
@@ -43,7 +44,9 @@
         "@inkline/logger": "workspace:*",
         "@inkline/generator": "workspace:*",
         "@inkline/utils": "workspace:*",
-        "c12": "^2.0.1",
+        "@inkline/variants": "workspace:*",
+        "c12": "^2.0.4",
+        "jiti": "^2.4.2",
         "chokidar": "catalog:",
         "dependency-tree": "^11.0.1",
         "esbuild": "^0.25.4"

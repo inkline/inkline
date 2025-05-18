@@ -7,7 +7,7 @@ export const manifest: ComponentManifest[] = [
             variables: [
                 {
                     name: '--a--color',
-                    value: 'var(--color-primary--500)'
+                    value: 'var(--color--primary--500)'
                 },
                 {
                     name: '--a--text-decoration',
@@ -15,7 +15,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--a--hover--color',
-                    value: 'var(--color-primary--600)'
+                    value: 'var(--color--primary--600)'
                 },
                 {
                     name: '--a--hover--text-decoration',
@@ -97,7 +97,7 @@ export const manifest: ComponentManifest[] = [
                 },
                 {
                     name: '--body--background',
-                    value: 'var(--color-white)'
+                    value: 'var(--color--white)'
                 }
             ]
         }
@@ -139,7 +139,7 @@ export const manifest: ComponentManifest[] = [
             variables: [
                 {
                     name: '--code--color',
-                    value: 'var(--color-pink)'
+                    value: 'var(--color--pink)'
                 },
                 {
                     name: '--code--font-size',
@@ -383,7 +383,7 @@ export const manifest: ComponentManifest[] = [
             variables: [
                 {
                     name: '--kbd--background',
-                    value: 'var(--color-dark)'
+                    value: 'var(--color--dark)'
                 },
                 {
                     name: '--kbd--border-top-left-radius',
@@ -477,7 +477,7 @@ export const manifest: ComponentManifest[] = [
             variables: [
                 {
                     name: '--mark--background',
-                    value: 'var(--color-yellow)'
+                    value: 'var(--color--yellow)'
                 },
                 {
                     name: '--mark--padding-top',

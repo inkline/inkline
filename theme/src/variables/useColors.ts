@@ -108,15 +108,15 @@ export function useColorShadeVariantsFactory<RootKey extends string>(
 export function useBaseColors(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    const colorRed = color('color-red', '#f55252', options);
-    const colorOrange = color('color-orange', '#f98e5a', options);
-    const colorYellow = color('color-yellow', '#ffda77', options);
-    const colorGreen = color('color-green', '#2fb079', options);
-    const colorTeal = color('color-teal', '#48b4a9', options);
-    const colorBlue = color('color-blue', '#178bb2', options);
-    const colorIndigo = color('color-indigo', '#4c6ef5', options);
-    const colorPurple = color('color-purple', '#8268ae', options);
-    const colorPink = color('color-pink', '#fc778a', options);
+    const colorRed = color('color--red', '#f55252', options);
+    const colorOrange = color('color--orange', '#f98e5a', options);
+    const colorYellow = color('color--yellow', '#ffda77', options);
+    const colorGreen = color('color--green', '#2fb079', options);
+    const colorTeal = color('color--teal', '#48b4a9', options);
+    const colorBlue = color('color--blue', '#178bb2', options);
+    const colorIndigo = color('color--indigo', '#4c6ef5', options);
+    const colorPurple = color('color--purple', '#8268ae', options);
+    const colorPink = color('color--pink', '#fc778a', options);
 
     const baseColorMap = {
         red: colorRed,
@@ -147,10 +147,10 @@ export function useBaseColors(userOptions: DefinitionOptions) {
 export function useNeutralColors(userOptions: DefinitionOptions) {
     const options = { ...defaultDefinitionOptions, ...userOptions };
 
-    const colorWhite = color('color-white', '#ffffff', options);
-    const colorBlack = color('color-black', '#000000', options);
+    const colorWhite = color('color--white', '#ffffff', options);
+    const colorBlack = color('color--black', '#000000', options);
 
-    const colorGray = color('color-gray', '#8e9fa4', options);
+    const colorGray = color('color--gray', '#8e9fa4', options);
 
     const {
         colorGray50,
@@ -210,14 +210,14 @@ export function useBrandBaseColors(userOptions: DefinitionOptions) {
 
     const { colorGray800, colorGray100 } = useNeutralColors(options);
 
-    const colorPrimary = color('color-primary', ref(colorBlue), options);
-    const colorSecondary = color('color-secondary', ref(colorPurple), options);
-    const colorInfo = color('color-info', ref(colorTeal), options);
-    const colorSuccess = color('color-success', ref(colorGreen), options);
-    const colorWarning = color('color-warning', ref(colorYellow), options);
-    const colorDanger = color('color-danger', ref(colorRed), options);
-    const colorLight = color('color-light', ref(colorGray100), options);
-    const colorDark = color('color-dark', ref(colorGray800), options);
+    const colorPrimary = color('color--primary', ref(colorBlue), options);
+    const colorSecondary = color('color--secondary', ref(colorPurple), options);
+    const colorInfo = color('color--info', ref(colorTeal), options);
+    const colorSuccess = color('color--success', ref(colorGreen), options);
+    const colorWarning = color('color--warning', ref(colorYellow), options);
+    const colorDanger = color('color--danger', ref(colorRed), options);
+    const colorLight = color('color--light', ref(colorGray100), options);
+    const colorDark = color('color--dark', ref(colorGray800), options);
 
     const brandColorMap = {
         primary: colorPrimary,

@@ -1,11 +1,11 @@
+._default {
+    default: default;
+}
+
 ._gap {
     gap: default;
 }
 
-._default {
-    default: default;
-}
-
-._default {
-    default: default;
+._gap {
+    gap: default;
 }

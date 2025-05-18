@@ -6,29 +6,21 @@ type TIndexValue<T, K extends PropertyKey, D = never> = T extends any
         : D
     : never;
 
-type TPartialKeys<T, K extends keyof T> = Omit<T, K> &
-    Partial<Pick<T, K>> extends infer O
+type TPartialKeys<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>> extends infer O
     ? { [P in keyof O]: O[P] }
     : never;
 
 type TFunction = (...a: any[]) => any;
 
-type TPrimitives =
-    | string
-    | number
-    | boolean
-    | bigint
-    | symbol
-    | Date
-    | TFunction;
+type TPrimitives = string | number | boolean | bigint | symbol | Date | TFunction;
 
 type TMerged<T> = [T] extends [Array<any>]
     ? { [K in keyof T]: TMerged<T[K]> }
     : [T] extends [TPrimitives]
-        ? T
-        : [T] extends [object]
-            ? TPartialKeys<{ [K in TAllKeys<T>]: TMerged<TIndexValue<T, K>> }, never>
-            : T;
+      ? T
+      : [T] extends [object]
+        ? TPartialKeys<{ [K in TAllKeys<T>]: TMerged<TIndexValue<T, K>> }, never>
+        : T;
 
 interface GenericObject {
     [key: string]: any;
@@ -79,49 +71,45 @@ function isObject(object: unknown): object is Record<string, unknown> {
     return false;
 }
 
-const isOptionsObject = (object: unknown): object is MergeOptions => {
-    return isObject(object) && Object.keys(object).some((key) =>
-        Object.keys(defaultOptions).includes(key)
-    );
-};
+export function createMerge(userOptions: Partial<MergeOptions> = {}) {
+    const options: MergeOptions = { ...defaultOptions, ...userOptions };
 
-export function merge<T extends GenericObject[]>(...args: T): TMerged<T[number]> {
-    const options: MergeOptions = isOptionsObject(args[args.length - 1])
-        ? { ...defaultOptions, ...args.pop() }
-        : defaultOptions;
-
-    return args.reduce((result, current) => {
-        if (Array.isArray(current)) {
-            throw new TypeError(
-                'Arguments provided to ts-deepmerge must be objects, not arrays.'
-            );
-        }
-
-        Object.keys(current).forEach((key) => {
-            if (['__proto__', 'constructor', 'prototype'].includes(key)) {
-                return;
+    return function merge<T extends GenericObject[]>(...args: T): TMerged<T[number]> {
+        return args.reduce((result, current) => {
+            if (Array.isArray(current)) {
+                throw new TypeError('Arguments provided to merge must be objects, not arrays.');
             }
 
-            if (Array.isArray(result[key]) && Array.isArray(current[key])) {
-                result[key] = options.mergeArrays
-                    ? options.uniqueArrayItems
-                        ? Array.from(
-                            new Set((result[key] as unknown[]).concat(current[key]))
-                        )
-                        : [...(result[key] as T), ...(current[key] as T)]
-                    : current[key];
-            } else if (isObject(result[key]) && isObject(current[key])) {
-                result[key] = merge(result[key] as GenericObject, current[key] as GenericObject);
-            } else {
-                result[key] =
-                    (current[key] === undefined
-                        ? options.allowUndefinedOverrides
-                            ? current[key]
-                            : result[key]
-                        : current[key]) as T[number];
-            }
-        });
+            Object.keys(current).forEach((key) => {
+                if (['__proto__', 'constructor', 'prototype'].includes(key)) {
+                    return;
+                }
 
-        return result;
-    }, {}) as TMerged<T[number]>;
+                if (Array.isArray(result[key]) && Array.isArray(current[key])) {
+                    result[key] = options.mergeArrays
+                        ? options.uniqueArrayItems
+                            ? Array.from(new Set((result[key] as unknown[]).concat(current[key])))
+                            : [...(result[key] as T), ...(current[key] as T)]
+                        : current[key];
+                } else if (isObject(result[key]) && isObject(current[key])) {
+                    result[key] = merge(
+                        result[key] as GenericObject,
+                        current[key] as GenericObject
+                    );
+                } else {
+                    result[key] = (
+                        current[key] === undefined
+                            ? options.allowUndefinedOverrides
+                                ? current[key]
+                                : result[key]
+                            : current[key]
+                    ) as T[number];
+                }
+            });
+
+            return result;
+        }, {}) as TMerged<T[number]>;
+    };
 }
+
+export const merge = createMerge();

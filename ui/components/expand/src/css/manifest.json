@@ -3,10 +3,26 @@
         "__type": "theme",
         "__name": "default",
         "__keys": {
-            "variables": {},
-            "variants": {},
-            "selectors": {},
-            "utilities": {}
+            "variables": [
+                "transition-property",
+                "transition-duration",
+                "transition-timing-function",
+                "transition",
+                "expand--transition-property",
+                "expand--transition-duration",
+                "expand--transition-timing-function",
+                "expand--transition"
+            ],
+            "variants": [],
+            "selectors": [
+                "wV6nm9aAURG9doFILLMvu",
+                "_zzGuINbFy0RCXpjk5AjZ",
+                "fZWAnAfQdAlbwAYhyPC-q",
+                "07z8EF4UeqMNYjSj-U9Rd",
+                "gX8dzaYLFOE2VjduudG3K",
+                "LK5MqhH8rsIip8C7_JQYJ"
+            ],
+            "utilities": []
         },
         "variables": {
             "transition-property": {

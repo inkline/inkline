@@ -1,14 +1,14 @@
-import eslint from "@eslint/js";
-import tslint from "typescript-eslint";
-import pluginVue from "eslint-plugin-vue";
-import pluginPrettier from "eslint-plugin-prettier/recommended";
-import tsParser from "@typescript-eslint/parser";
-import vueParser from "vue-eslint-parser";
+import eslint from '@eslint/js';
+import tslint from 'typescript-eslint';
+import pluginVue from 'eslint-plugin-vue';
+import pluginPrettier from 'eslint-plugin-prettier/recommended';
+import tsParser from '@typescript-eslint/parser';
+import vueParser from 'vue-eslint-parser';
 
 const overrides = {
     rules: {
-        semi: ["warn", "always"],
-        "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
+        semi: ['warn', 'always'],
+        'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
         // 'no-prototype-builtins': 'off',
         // 'max-params': 'off',
         // indent: 'off',
@@ -19,15 +19,16 @@ const overrides = {
         // 'no-case-declarations': 'off',
         // 'max-nested-callbacks': 'off',
         // '@typescript-eslint/ban-ts-comment': 'off',
-        "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/no-redundant-type-constituents": "off",
-        "@typescript-eslint/no-duplicate-type-constituents": "off",
-        "@typescript-eslint/no-unused-vars": [
-            "warn", // or "error"
+        '@typescript-eslint/consistent-type-imports': 'error',
+        '@typescript-eslint/no-explicit-any': 'off',
+        '@typescript-eslint/no-redundant-type-constituents': 'off',
+        '@typescript-eslint/no-duplicate-type-constituents': 'off',
+        '@typescript-eslint/no-unused-vars': [
+            'warn', // or "error"
             {
-                "argsIgnorePattern": "^_",
-                "varsIgnorePattern": "^_",
-                "caughtErrorsIgnorePattern": "^_"
+                argsIgnorePattern: '^_',
+                varsIgnorePattern: '^_',
+                caughtErrorsIgnorePattern: '^_'
             }
         ]
         // '@typescript-eslint/no-non-null-assertion': 'off',
@@ -39,7 +40,7 @@ const overrides = {
 
 const vueOverrides = {
     rules: {
-        "vue/html-indent": ["warn", 4]
+        'vue/html-indent': ['warn', 4]
         // 'vue/max-attributes-per-line': 'off',
         // 'vue/custom-event-name-casing': 'off',
         // 'vue/multi-word-component-names': 'off',
@@ -55,10 +56,10 @@ const vueOverrides = {
 
 export default (baseDir) => ({
     configs: {
-        "vue": [
+        vue: [
             eslint.configs.recommended,
             ...tslint.configs.recommended,
-            ...pluginVue.configs["flat/recommended"],
+            ...pluginVue.configs['flat/recommended'],
             overrides,
             vueOverrides,
             pluginPrettier,
@@ -67,24 +68,20 @@ export default (baseDir) => ({
                     parser: vueParser,
                     parserOptions: {
                         parser: tsParser,
-                        extraFileExtensions: [".vue"],
-                        project: [
-                            "./tsconfig.json"
-                        ],
+                        extraFileExtensions: ['.vue'],
+                        project: ['./tsconfig.json'],
                         tsconfigRootDir: baseDir
                     }
                 }
             }
         ],
-        "default": tslint.config(
+        default: tslint.config(
             eslint.configs.recommended,
             ...tslint.configs.recommendedTypeChecked,
             {
                 languageOptions: {
                     parserOptions: {
-                        project: [
-                            "./tsconfig.json"
-                        ],
+                        project: ['./tsconfig.json'],
                         tsconfigRootDir: baseDir
                     }
                 }
@@ -93,4 +90,3 @@ export default (baseDir) => ({
         )
     }
 });
-

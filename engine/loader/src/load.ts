@@ -30,6 +30,10 @@ export async function loadConfig(options: CustomLoadConfigOptions = {}): Promise
             fsCache: false,
             moduleCache: false,
             transform(opts) {
+                if (opts.filename?.endsWith('.css') || opts.filename?.endsWith('.vue')) {
+                    return { code: '' };
+                }
+
                 const result = esbuild.buildSync({
                     stdin: {
                         contents: opts.source,
@@ -37,7 +41,7 @@ export async function loadConfig(options: CustomLoadConfigOptions = {}): Promise
                         sourcefile: 'inline.ts',
                         loader: 'ts'
                     },
-                    bundle: true,
+                    bundle: false,
                     write: false,
                     platform: 'node',
                     format: 'cjs',

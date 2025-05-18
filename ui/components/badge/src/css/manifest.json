@@ -3,10 +3,40 @@
         "__type": "theme",
         "__name": "default",
         "__keys": {
-            "variables": {},
-            "variants": {},
-            "selectors": {},
-            "utilities": {}
+            "variables": [],
+            "variants": [
+                "badge--xs",
+                "badge--sm",
+                "badge--md",
+                "badge--lg",
+                "badge--xl",
+                "badge--light",
+                "badge--dark",
+                "badge--primary",
+                "badge--secondary",
+                "badge--success",
+                "badge--danger",
+                "badge--warning",
+                "badge--info",
+                "badge--inherit",
+                "badge--pill",
+                "badge"
+            ],
+            "selectors": [
+                "ZbY4IsHbbSELQzEQ3oYMR",
+                "saBKpF0hM2hc1dEluKBIu"
+            ],
+            "utilities": [
+                "default",
+                "font-size:2xs",
+                "font-size:xs",
+                "font-size:sm",
+                "font-size:md",
+                "font-size:lg",
+                "font-size:inherit",
+                "border-radius:full",
+                "font-weight:semibold"
+            ]
         },
         "variables": {},
         "variants": {
@@ -154,12 +184,45 @@
         "utilities": [
             {
                 "__type": "utility",
+                "__name": "default",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._default",
+                    "__value": {
+                        "default": "default"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
                 "__name": "font-size:2xs",
                 "__value": {
                     "__type": "selector",
                     "__name": "._font-size\\:2xs",
                     "__value": {
                         "fontSize": "2xs"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:2xs",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:2xs",
+                    "__value": {
+                        "fontSize": "2xs"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:xs",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:xs",
+                    "__value": {
+                        "fontSize": "xs"
                     }
                 }
             },
@@ -187,12 +250,45 @@
             },
             {
                 "__type": "utility",
+                "__name": "font-size:sm",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:sm",
+                    "__value": {
+                        "fontSize": "sm"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
                 "__name": "font-size:md",
                 "__value": {
                     "__type": "selector",
                     "__name": "._font-size\\:md",
                     "__value": {
                         "fontSize": "md"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:md",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:md",
+                    "__value": {
+                        "fontSize": "md"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:lg",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:lg",
+                    "__value": {
+                        "fontSize": "lg"
                     }
                 }
             },
@@ -220,6 +316,28 @@
             },
             {
                 "__type": "utility",
+                "__name": "font-size:inherit",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:inherit",
+                    "__value": {
+                        "fontSize": "inherit"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "border-radius:full",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._border-radius\\:full",
+                    "__value": {
+                        "borderRadius": "full"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
                 "__name": "border-radius:full",
                 "__value": {
                     "__type": "selector",
@@ -242,23 +360,12 @@
             },
             {
                 "__type": "utility",
-                "__name": "default",
+                "__name": "font-weight:semibold",
                 "__value": {
                     "__type": "selector",
-                    "__name": "._default",
+                    "__name": "._font-weight\\:semibold",
                     "__value": {
-                        "default": "default"
-                    }
-                }
-            },
-            {
-                "__type": "utility",
-                "__name": "default",
-                "__value": {
-                    "__type": "selector",
-                    "__name": "._default",
-                    "__value": {
-                        "default": "default"
+                        "fontWeight": "semibold"
                     }
                 }
             }

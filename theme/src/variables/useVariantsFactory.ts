@@ -1,10 +1,4 @@
-import {
-    DefinitionOptions,
-    ExportedName,
-    RenameFn,
-    TokenValue,
-    Variable
-} from '@inkline/core';
+import { DefinitionOptions, ExportedName, RenameFn, TokenValue, Variable } from '@inkline/core';
 import { ref, variable, defaultRenameFn } from '@inkline/core';
 import { toCamelCase } from '@inkline/utils';
 
@@ -47,17 +41,21 @@ export function useVariantsFactory<RootKey extends string, VariantKeys extends s
     target: Variable | Variable['__name'],
     variantsMap: Record<VariantKeys, ApplyVariantFn>,
     options: DefinitionOptions & {
+        separator?: string;
         rename?: RenameFn;
     }
 ) {
     type ReturnKey = VariantsReturnKey<RootKey, VariantKeys>;
 
     const renameFn = options.rename || defaultRenameFn;
+    const separator = options.separator || '--';
 
     return Object.keys(variantsMap).reduce<Record<ReturnKey, Variable>>(
         (acc, key) => {
             const variantFn = variantsMap[key as VariantKeys];
-            const variableName = renameFn(`${typeof target === 'string' ? target : target.__name}--${key}`);
+            const variableName = renameFn(
+                `${typeof target === 'string' ? target : target.__name}${separator}${key}`
+            );
             acc[toCamelCase(variableName) as ReturnKey] = variable(
                 variableName,
                 variantFn(ref(target)),

@@ -3,10 +3,12 @@
         "__type": "theme",
         "__name": "default",
         "__keys": {
-            "variables": {},
-            "variants": {},
-            "selectors": {},
-            "utilities": {}
+            "variables": [],
+            "variants": [],
+            "selectors": [
+                "6NtMPrIaMxBIMk7BFt81z"
+            ],
+            "utilities": []
         },
         "variables": {},
         "variants": {},

@@ -1,5 +1,17 @@
+._default {
+    default: default;
+}
+
 ._font-size\:2xs {
     font-size: 2xs;
+}
+
+._font-size\:2xs {
+    font-size: 2xs;
+}
+
+._font-size\:xs {
+    font-size: xs;
 }
 
 ._font-size\:xs {
@@ -10,8 +22,20 @@
     font-size: sm;
 }
 
+._font-size\:sm {
+    font-size: sm;
+}
+
 ._font-size\:md {
     font-size: md;
+}
+
+._font-size\:md {
+    font-size: md;
+}
+
+._font-size\:lg {
+    font-size: lg;
 }
 
 ._font-size\:lg {
@@ -22,6 +46,14 @@
     font-size: inherit;
 }
 
+._font-size\:inherit {
+    font-size: inherit;
+}
+
+._border-radius\:full {
+    border-radius: full;
+}
+
 ._border-radius\:full {
     border-radius: full;
 }
@@ -30,10 +62,6 @@
     font-weight: semibold;
 }
 
-._default {
-    default: default;
-}
-
-._default {
-    default: default;
+._font-weight\:semibold {
+    font-weight: semibold;
 }
