@@ -8,6 +8,7 @@ export default defineConfig({
     exports: true,
   },
   lint: {
+    ignorePatterns: ["dist/**", "coverage/**", "src/__fixtures__/**"],
     options: {
       typeAware: true,
       typeCheck: true,

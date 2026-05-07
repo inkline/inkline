@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": ["es2023"],
+    "lib": ["es2023", "dom"],
     "moduleDetection": "force",
     "module": "nodenext",
     "moduleResolution": "nodenext",
@@ -16,5 +16,6 @@
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": ["src/__fixtures__/**"]
 }
