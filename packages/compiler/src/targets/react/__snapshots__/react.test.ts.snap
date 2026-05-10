@@ -10,7 +10,7 @@ export function Button({ label, tone }) {
 
   return (
     <button className={pressed ? "pressed" : "idle"} onClick={() => setPressed(true)}>
-      {props.label}
+      {label}
     </button>
   );
 }
@@ -18,13 +18,11 @@ export function Button({ label, tone }) {
 `;
 
 exports[`React target > Card fixture 1`] = `
-"import type { FC } from 'react';
-
-export function Card({ children, header, footer }) {
+"export function Card({ children, header, footer }) {
 
   return (
     <div className="card">
-      {slots.header && (
+      {header && (
         <div className="card-header">
         {header?.()}
       </div>
@@ -32,7 +30,7 @@ export function Card({ children, header, footer }) {
       <div className="card-body">
         {children}
       </div>
-      {slots.footer && (
+      {footer && (
         <div className="card-footer">
         {footer?.({ count: 3 })}
       </div>
@@ -74,7 +72,7 @@ export function Conditional() {
           Hide
         </button>
       ) : (
-        {<button onClick={() => setIsVisible(true)}>Show</button>}
+        <button onClick={() => setIsVisible(true)}>Show</button>
       )}
       <button onClick={() => setCount(count + 1)}>
         Increment
@@ -148,7 +146,7 @@ export function FormField() {
   const [bio, setBio] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
-  inputRef.current.focus();
+  inputRef.current?.focus();
 }, []);
 
   return (
@@ -157,13 +155,13 @@ export function FormField() {
         
         Name
         
-        <input value={setName} type="text" onInput={event => setName(event.target.value)} ref={inputRef} />
+        <input value={name} type="text" onInput={event => setName(event.target.value)} ref={inputRef} />
       </label>
       <label>
         
         Country
         
-        <select value={setCountry} onChange={event => setCountry(event.target.value)}>
+        <select value={country} onChange={event => setCountry(event.target.value)}>
           <option value="us">
             United States
           </option>
@@ -179,7 +177,7 @@ export function FormField() {
         
         Bio
         
-        <textarea value={setBio} rows={4} onInput={event => setBio(event.target.value)} />
+        <textarea value={bio} rows={4} onInput={event => setBio(event.target.value)} />
       </label>
     </form>
   );
@@ -305,7 +303,7 @@ export function SwitchTabs() {
           </p>
         </section>
       ) : (
-        {<p>Unknown tab.</p>}
+        <p>Unknown tab.</p>
       )}
     </div>
   );

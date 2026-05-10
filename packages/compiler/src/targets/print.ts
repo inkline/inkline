@@ -14,19 +14,23 @@ export interface CodegenScope {
   stableSetters: ReadonlySet<string>;
   /** Ref names whose `.current` access may need target-specific rewriting. */
   refs: ReadonlySet<string>;
+  /** Maps setter name → getter name for two-way binding value resolution. */
+  setterToGetter: ReadonlyMap<string, string>;
 }
 
 export function buildCodegenScope(component: IRComponent): CodegenScope {
   const readers = new Set<string>();
   const setters = new Set<string>();
   const refs = new Set<string>();
+  const setterToGetter = new Map<string, string>();
   for (const s of component.state) {
     readers.add(s.name);
     setters.add(s.setterName);
+    setterToGetter.set(s.setterName, s.name);
   }
   for (const m of component.memos) readers.add(m.name);
   for (const r of component.refs) refs.add(r.name);
-  return { reactiveReaders: readers, stableSetters: setters, refs };
+  return { reactiveReaders: readers, stableSetters: setters, refs, setterToGetter };
 }
 
 /**
@@ -36,13 +40,33 @@ export function buildCodegenScope(component: IRComponent): CodegenScope {
  */
 export type ReadStyle = "strip" | "keep";
 
+export interface MemberRewrite {
+  strip: true;
+  rename?: ReadonlyMap<string, string>;
+}
+
 export interface PrintExpressionOptions {
   readStyle: ReadStyle;
   scope: CodegenScope;
+  memberRewrites?: ReadonlyMap<string, MemberRewrite>;
 }
 
 export function printExpression(node: IRExpressionNode, opts: PrintExpressionOptions): string {
   return rewrite(node.expr, opts);
+}
+
+export function isJsxExpression(expr: ts.Expression): boolean {
+  return ts.isJsxElement(expr) || ts.isJsxSelfClosingElement(expr) || ts.isJsxFragment(expr);
+}
+
+export function resolveBindingGetter(node: IRExpressionNode, opts: PrintExpressionOptions): string {
+  if (ts.isIdentifier(node.expr)) {
+    const getter = opts.scope.setterToGetter.get(node.expr.text);
+    if (getter) {
+      return opts.readStyle === "strip" ? getter : `${getter}()`;
+    }
+  }
+  return printExpression(node, opts);
 }
 
 export function printAttrValue(
@@ -76,13 +100,19 @@ function rewrite(expr: ts.Expression, opts: PrintExpressionOptions): string {
     return `${rewrite(expr.operand, opts)}${ts.tokenToString(expr.operator)}`;
   }
   if (ts.isPropertyAccessExpression(expr)) {
-    return `${rewrite(expr.expression, opts)}.${expr.name.text}`;
-  }
-  if (ts.isPropertyAccessChain(expr)) {
-    return `${rewrite(expr.expression, opts)}?.${expr.name.text}`;
+    if (ts.isIdentifier(expr.expression) && opts.memberRewrites) {
+      const rule = opts.memberRewrites.get(expr.expression.text);
+      if (rule) {
+        const name = rule.rename?.get(expr.name.text) ?? expr.name.text;
+        return name;
+      }
+    }
+    const dot = expr.questionDotToken ? "?." : ".";
+    return `${rewrite(expr.expression, opts)}${dot}${expr.name.text}`;
   }
   if (ts.isElementAccessExpression(expr)) {
-    return `${rewrite(expr.expression, opts)}[${rewrite(expr.argumentExpression, opts)}]`;
+    const bracket = expr.questionDotToken ? "?.[" : "[";
+    return `${rewrite(expr.expression, opts)}${bracket}${rewrite(expr.argumentExpression, opts)}]`;
   }
   if (ts.isObjectLiteralExpression(expr)) return rewriteObject(expr, opts);
   if (ts.isArrayLiteralExpression(expr)) {
@@ -117,7 +147,8 @@ function rewriteCall(call: ts.CallExpression, opts: PrintExpressionOptions): str
   }
   const args = call.arguments.map((a) => rewrite(a, opts));
   const calleeStr = rewrite(callee, opts);
-  return `${calleeStr}(${args.join(", ")})`;
+  const open = call.questionDotToken ? "?.(" : "(";
+  return `${calleeStr}${open}${args.join(", ")})`;
 }
 
 function rewriteArrow(fn: ts.ArrowFunction, opts: PrintExpressionOptions): string {

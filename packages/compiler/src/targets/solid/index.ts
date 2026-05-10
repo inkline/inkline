@@ -17,9 +17,11 @@ import type {
 import type { GenerateContext, GeneratedFile, Target } from "../../plugin.ts";
 import {
   buildCodegenScope,
+  isJsxExpression,
   printAttrValue,
   printExpression,
   printStaticValue,
+  resolveBindingGetter,
   type CodegenScope,
   type PrintExpressionOptions,
 } from "../print.ts";
@@ -50,7 +52,6 @@ function emitImports(component: IRComponent): string {
   if (component.effects.length > 0) imports.add("createEffect");
   if (component.lifecycle.onMount.length > 0) imports.add("onMount");
   if (component.lifecycle.onCleanup.length > 0) imports.add("onCleanup");
-  if (component.refs.length > 0) imports.add("createSignal");
 
   const controlImports = new Set<string>();
   collectControlFlowImports(component.render, controlImports);
@@ -175,8 +176,11 @@ function emitJSX(
       return emitComponentInstance(node, scope, opts, depth);
     case "Text":
       return `${pad}${node.value}`;
-    case "Expression":
-      return `${pad}{${printExpression(node, opts)}}`;
+    case "Expression": {
+      const text = printExpression(node, opts);
+      if (isJsxExpression(node.expr)) return `${pad}${text}`;
+      return `${pad}{${text}}`;
+    }
     case "Fragment":
       return emitFragment(node, scope, opts, depth);
     case "If":
@@ -324,6 +328,9 @@ function emitAttributes(
       } else {
         parts.push(`${attr.name}={${printStaticValue(attr.value)}}`);
       }
+    } else if (attr.binding === "twoWay" && attr.value.kind === "Expression") {
+      const getter = resolveBindingGetter(attr.value, opts);
+      parts.push(`${attr.name}={${getter}}`);
     } else {
       parts.push(`${attr.name}={${printAttrValue(attr.value, opts)}}`);
     }

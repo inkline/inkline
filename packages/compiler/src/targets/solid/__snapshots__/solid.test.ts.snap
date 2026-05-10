@@ -63,7 +63,7 @@ export function Conditional() {
           {count()}
         </span>
       </Show>
-      <Show when={isVisible()} fallback={{<button onClick={() => setIsVisible(true)}>Show</button>}}>
+      <Show when={isVisible()} fallback={<button onClick={() => setIsVisible(true)}>Show</button>}>
         <button onClick={() => setIsVisible(false)}>
           Hide
         </button>
@@ -136,7 +136,7 @@ export function FormField() {
   const [bio, setBio] = createSignal("");
   let inputRef: HTMLInputElement | undefined;
   onMount(() => {
-  inputRef.current.focus();
+  inputRef.current?.focus();
 });
 
   return (
@@ -145,13 +145,13 @@ export function FormField() {
         
         Name
         
-        <input value={setName} type="text" onInput={event => setName(event.target.value)} ref={inputRef} />
+        <input value={name()} type="text" onInput={event => setName(event.target.value)} ref={inputRef} />
       </label>
       <label>
         
         Country
         
-        <select value={setCountry} onChange={event => setCountry(event.target.value)}>
+        <select value={country()} onChange={event => setCountry(event.target.value)}>
           <option value="us">
             United States
           </option>
@@ -167,7 +167,7 @@ export function FormField() {
         
         Bio
         
-        <textarea value={setBio} rows={4} onInput={event => setBio(event.target.value)} />
+        <textarea value={bio()} rows={4} onInput={event => setBio(event.target.value)} />
       </label>
     </form>
   );
@@ -257,7 +257,7 @@ export function SwitchTabs() {
           Settings
         </button>
       </nav>
-      <Switch fallback={{<p>Unknown tab.</p>}}>
+      <Switch fallback={<p>Unknown tab.</p>}>
         <Match when={activeTab() === "home"}>
           <section>
             <h2>

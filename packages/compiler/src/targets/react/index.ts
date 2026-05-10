@@ -20,10 +20,13 @@ import type {
 import type { GenerateContext, GeneratedFile, Target } from "../../plugin.ts";
 import {
   buildCodegenScope,
+  isJsxExpression,
   printAttrValue,
   printExpression,
   printStaticValue,
+  resolveBindingGetter,
   type CodegenScope,
+  type MemberRewrite,
   type PrintExpressionOptions,
 } from "../print.ts";
 
@@ -36,9 +39,23 @@ export const reactTarget: Target = {
   },
 };
 
+function buildMemberRewrites(component: IRComponent): ReadonlyMap<string, MemberRewrite> {
+  const rewrites = new Map<string, MemberRewrite>();
+  if (component.props.length > 0) {
+    rewrites.set("props", { strip: true });
+  }
+  if (component.slots.length > 0) {
+    const rename = new Map<string, string>();
+    rename.set("default", "children");
+    rewrites.set("slots", { strip: true, rename });
+  }
+  return rewrites;
+}
+
 function emitReactComponent(component: IRComponent): string {
   const scope = buildCodegenScope(component);
-  const opts: PrintExpressionOptions = { readStyle: "strip", scope };
+  const memberRewrites = buildMemberRewrites(component);
+  const opts: PrintExpressionOptions = { readStyle: "strip", scope, memberRewrites };
   const lines: string[] = [];
   const hasReactivity =
     component.state.length > 0 ||
@@ -50,8 +67,11 @@ function emitReactComponent(component: IRComponent): string {
 
   if (hasReactivity) lines.push("'use client';", "");
 
-  lines.push(emitImports(component));
-  lines.push("");
+  const imports = emitImports(component);
+  if (imports) {
+    lines.push(imports);
+    lines.push("");
+  }
   lines.push(emitFunctionComponent(component, scope, opts));
   return lines.join("\n") + "\n";
 }
@@ -65,7 +85,7 @@ function emitImports(component: IRComponent): string {
   if (component.lifecycle.onMount.length > 0 || component.lifecycle.onCleanup.length > 0) {
     hooks.add("useEffect");
   }
-  if (hooks.size === 0) return "import type { FC } from 'react';";
+  if (hooks.size === 0) return "";
   const hooksList = Array.from(hooks).sort().join(", ");
   return `import { ${hooksList} } from 'react';`;
 }
@@ -177,8 +197,11 @@ function emitJSX(
       return emitComponentInstance(node, scope, opts, depth);
     case "Text":
       return `${pad}${node.value}`;
-    case "Expression":
-      return `${pad}{${printExpression(node, opts)}}`;
+    case "Expression": {
+      const text = printExpression(node, opts);
+      if (isJsxExpression(node.expr)) return `${pad}${text}`;
+      return `${pad}{${text}}`;
+    }
     case "Fragment":
       return emitFragment(node, scope, opts, depth);
     case "If":
@@ -372,6 +395,9 @@ function emitAttributes(
       } else {
         parts.push(`${name}={${printStaticValue(attr.value)}}`);
       }
+    } else if (attr.binding === "twoWay" && attr.value.kind === "Expression") {
+      const getter = resolveBindingGetter(attr.value, opts);
+      parts.push(`${name}={${getter}}`);
     } else {
       parts.push(`${name}={${printAttrValue(attr.value, opts)}}`);
     }
