@@ -124,3 +124,14 @@ export { definePlugin, defineTarget } from "./plugin.ts";
 // Top-level orchestration
 export type { CompileResult } from "./compile.ts";
 export { compile, diagnoseCycles } from "./compile.ts";
+
+// Targets
+export { reactTarget } from "./targets/react/index.ts";
+export { solidTarget } from "./targets/solid/index.ts";
+export type { CodegenScope, PrintExpressionOptions, ReadStyle } from "./targets/print.ts";
+export {
+  buildCodegenScope,
+  printAttrValue,
+  printExpression,
+  printStaticValue,
+} from "./targets/print.ts";
