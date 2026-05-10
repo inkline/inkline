@@ -1,21 +1,23 @@
 {
-  "name": "utils",
+  "name": "@inkline/compiler",
   "version": "0.0.0",
-  "description": "A starter for creating a TypeScript package.",
-  "homepage": "https://github.com/author/library#readme",
+  "description": "Inkline compiler: TSX with signal primitives to per-target component output via a typed IR.",
+  "homepage": "https://github.com/inkline/inkline#readme",
   "bugs": {
-    "url": "https://github.com/author/library/issues"
+    "url": "https://github.com/inkline/inkline/issues"
   },
   "license": "MIT",
-  "author": "Author Name <author.name@mail.com>",
+  "author": "Inkline contributors",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/author/library.git"
+    "url": "git+https://github.com/inkline/inkline.git",
+    "directory": "packages/compiler"
   },
   "files": [
     "dist"
   ],
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
     "./package.json": "./package.json"
@@ -33,8 +35,13 @@
   "devDependencies": {
     "@types/node": "^25.5.0",
     "@typescript/native-preview": "7.0.0-dev.20260328.1",
+    "@vitest/coverage-v8": "catalog:",
     "bumpp": "^11.0.1",
     "typescript": "^6.0.2",
-    "vite-plus": "^0.1.14"
+    "vite-plus": "^0.1.14",
+    "vitest": "catalog:"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.4 <8"
   }
 }
