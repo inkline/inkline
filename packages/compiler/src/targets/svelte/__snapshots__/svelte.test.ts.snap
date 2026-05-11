@@ -1,0 +1,288 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Svelte target > Button fixture 1`] = `
+"<script lang="ts">
+  let { label, tone } = $props();
+  let pressed = $state(false);
+</script>
+
+<button class={pressed ? "pressed" : "idle"} onclick={() => {
+  pressed = true;
+}}>
+  {label}
+</button>
+"
+`;
+
+exports[`Svelte target > Card fixture 1`] = `
+"<script lang="ts">
+  let { children, header, footer } = $props();
+</script>
+
+<div class="card">
+  {#if header}
+    <div class="card-header">
+      {@render header()}
+    </div>
+  {/if}
+  <div class="card-body">
+    {@render children()}
+  </div>
+  {#if footer}
+    <div class="card-footer">
+      {@render footer({ count: 3 })}
+    </div>
+  {/if}
+</div>
+"
+`;
+
+exports[`Svelte target > Conditional fixture 1`] = `
+"<script lang="ts">
+  let isVisible = $state(false);
+  let count = $state(0);
+</script>
+
+<div>
+  {#if isVisible}
+    <p>
+      Content is visible
+    </p>
+  {:else}
+    <p>
+      Content is hidden
+    </p>
+  {/if}
+  {#if count > 0}
+    <span>
+      Count: 
+      {count}
+    </span>
+  {/if}
+  {#if isVisible}
+    <button onclick={() => {
+  isVisible = false;
+}}>
+      Hide
+    </button>
+  {:else}
+    <button onclick={() => {
+  isVisible = true;
+}}>
+      Show
+    </button>
+  {/if}
+  <button onclick={() => {
+  count = count + 1;
+}}>
+    Increment
+  </button>
+</div>
+"
+`;
+
+exports[`Svelte target > Counter fixture 1`] = `
+"<script lang="ts">
+  let count = $state(0);
+  let doubled = $derived(count * 2);
+  $effect(() => {
+  console.log("count is", count);
+});
+</script>
+
+<div>
+  <p>
+    {count}
+  </p>
+  <p>
+    {doubled}
+  </p>
+  <button onclick={() => {
+  count = count + 1;
+}}>
+    +1
+  </button>
+</div>
+"
+`;
+
+exports[`Svelte target > ForLoop fixture 1`] = `
+"<script lang="ts">
+  let items = $state([]);
+</script>
+
+<ul>
+  {#each items as item, index (item.id)}
+    <li>
+      {index + 1}
+      . 
+      {item.label}
+    </li>
+  {/each}
+</ul>
+"
+`;
+
+exports[`Svelte target > FormField fixture 1`] = `
+"<script lang="ts">
+  import { onMount } from 'svelte';
+  let name = $state("");
+  let country = $state("us");
+  let bio = $state("");
+  let inputRef: HTMLInputElement;
+  onMount(() => {
+  inputRef?.focus();
+});
+</script>
+
+<form>
+  <label>
+    
+        Name
+        
+    <input bind:value={name} type="text" bind:this={inputRef} />
+  </label>
+  <label>
+    
+        Country
+        
+    <select bind:value={country}>
+      <option value="us">
+        United States
+      </option>
+      <option value="eu">
+        European Union
+      </option>
+      <option value="uk">
+        United Kingdom
+      </option>
+    </select>
+  </label>
+  <label>
+    
+        Bio
+        
+    <textarea bind:value={bio} rows={4} />
+  </label>
+</form>
+"
+`;
+
+exports[`Svelte target > Lifecycle fixture 1`] = `
+"<script lang="ts">
+  import { onDestroy, onMount } from 'svelte';
+  let count = $state(0);
+  let title = $state("Inkline");
+  let heading = $derived(\`\${title} — \${count}\`);
+  $effect(() => {
+  const id = setInterval(() => {
+  count = count + 1;
+}, 1000);
+  return () => clearInterval(id);
+});
+  $effect(() => {
+  document.title = heading;
+});
+  onMount(() => {
+  document.title = heading;
+});
+  onDestroy(() => {
+  document.title = "Inkline";
+});
+</script>
+
+<div>
+  <h1 style:font-weight={count > 10 ? "bold" : "normal"}>
+    {heading}
+  </h1>
+  <p>
+    Count: 
+    {count}
+  </p>
+  <button onclick={() => {
+  count = 0;
+}}>
+    Reset
+  </button>
+  <button onclick={() => {
+  title = "Updated";
+}}>
+    Change Title
+  </button>
+</div>
+"
+`;
+
+exports[`Svelte target > List fixture 1`] = `
+"<script lang="ts">
+  let items = $state([]);
+</script>
+
+<ul>
+  {#each items as item (item.id)}
+    <li>
+      {item.name}
+    </li>
+  {/each}
+</ul>
+"
+`;
+
+exports[`Svelte target > SwitchTabs fixture 1`] = `
+"<script lang="ts">
+  let activeTab = $state("home");
+</script>
+
+<div>
+  <nav>
+    <button onclick={() => {
+  activeTab = "home";
+}}>
+      Home
+    </button>
+    <button onclick={() => {
+  activeTab = "profile";
+}}>
+      Profile
+    </button>
+    <button onclick={() => {
+  activeTab = "settings";
+}}>
+      Settings
+    </button>
+  </nav>
+  {#if activeTab === "home"}
+    <section>
+      <h2>
+        Home
+      </h2>
+      <p>
+        Welcome to the home page.
+      </p>
+    </section>
+  {:else if activeTab === "profile"}
+    <section>
+      <h2>
+        Profile
+      </h2>
+      <p>
+        Your profile details go here.
+      </p>
+    </section>
+  {:else if activeTab === "settings"}
+    <section>
+      <h2>
+        Settings
+      </h2>
+      <p>
+        Configure your preferences here.
+      </p>
+    </section>
+  {:else}
+    <p>
+      Unknown tab.
+    </p>
+  {/if}
+</div>
+"
+`;

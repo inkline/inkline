@@ -155,6 +155,13 @@ export interface IREventBinding {
   name: string;
   handler: IRExpressionNode;
   loc: SourceLocation;
+  /**
+   * True when the parser synthesized this handler from a `$bind:` attribute
+   * (e.g. `(e) => setValue(e.target.value)`). Targets with native two-way
+   * binding sugar (Vue's v-model, Svelte's bind:) skip these so the source
+   * handler is not double-emitted.
+   */
+  synthesized?: boolean;
 }
 
 export interface IRRefBinding {

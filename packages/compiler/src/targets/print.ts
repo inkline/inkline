@@ -216,6 +216,21 @@ function rewriteObject(obj: ts.ObjectLiteralExpression, opts: PrintExpressionOpt
   return `{ ${entries.join(", ")} }`;
 }
 
+/** Print a raw `ts.Expression` with reactive-read rewriting — no IRExpressionNode wrapper needed. */
+export function printRawExpression(expr: ts.Expression, opts: PrintExpressionOptions): string {
+  return rewrite(expr, opts);
+}
+
+/** Print a `ts.Block` with reactive-read rewriting inside each statement. */
+export function printBlock(block: ts.Block, opts: PrintExpressionOptions): string {
+  return rewriteBlock(block, opts);
+}
+
+/** Print a single `ts.Statement` with reactive-read rewriting. */
+export function printStatement(stmt: ts.Statement, opts: PrintExpressionOptions): string {
+  return rewriteStatement(stmt, opts);
+}
+
 const tsPrinter = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
 const emptySF = ts.createSourceFile("_gen.tsx", "", ts.ScriptTarget.ESNext);
 

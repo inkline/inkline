@@ -128,10 +128,15 @@ export { compile, diagnoseCycles } from "./compile.ts";
 // Targets
 export { reactTarget } from "./targets/react/index.ts";
 export { solidTarget } from "./targets/solid/index.ts";
+export { vueTarget } from "./targets/vue/index.ts";
+export { svelteTarget } from "./targets/svelte/index.ts";
 export type { CodegenScope, PrintExpressionOptions, ReadStyle } from "./targets/print.ts";
 export {
   buildCodegenScope,
   printAttrValue,
+  printBlock,
   printExpression,
+  printRawExpression,
+  printStatement,
   printStaticValue,
 } from "./targets/print.ts";

@@ -578,7 +578,7 @@ function parseAttributes(
           ? defaultEventForControl(tag)
           : "onInput";
       const handler = synthesizeTwoWayHandler(value, ctx, loc);
-      events.push({ name: eventName, handler, loc });
+      events.push({ name: eventName, handler, loc, synthesized: true });
     }
   }
   return { attributes, events, refs };
