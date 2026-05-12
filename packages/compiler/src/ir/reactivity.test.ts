@@ -161,6 +161,24 @@ describe("SymbolTable", () => {
     expect(table.setterOf(id)).toBeUndefined();
   });
 
+  it("mint() throws on duplicate id", () => {
+    const table = new SymbolTable();
+    table.mint({
+      componentId: "test.tsx#Counter",
+      kind: "signal",
+      name: "count",
+      loc,
+    });
+    expect(() =>
+      table.mint({
+        componentId: "test.tsx#Counter",
+        kind: "signal",
+        name: "count",
+        loc,
+      }),
+    ).toThrow("duplicate id");
+  });
+
   it("freeze() prevents further minting", () => {
     const table = new SymbolTable();
     table.freeze();

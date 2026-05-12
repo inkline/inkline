@@ -1,6 +1,7 @@
 import type { SourceMapMode } from "../../core/options.ts";
 import { SourceMapBuilder } from "../../core/sourcemap.ts";
 import { assertNever } from "../../core/assert.ts";
+import { UNKNOWN_LOCATION } from "../../ir/types.ts";
 import type {
   CFile,
   CGroup,
@@ -21,6 +22,7 @@ export interface PrintOptions {
   readonly indent: number;
   readonly newline: "\n" | "\r\n";
   readonly sourceMap: SourceMapMode;
+  readonly file?: string;
 }
 
 export interface PrintResult {
@@ -75,7 +77,7 @@ class Printer {
   }
 
   private map(node: { span?: { file: string; line: number; column: number } }): void {
-    if (!this.sm || !node.span || node.span.file === "<unknown>") return;
+    if (!this.sm || !node.span || node.span.file === UNKNOWN_LOCATION.file) return;
     const genCol = this.atLineStart ? this.depth * this.opts.indent : this.col;
     this.sm.add(this.line, genCol, node.span.file, node.span.line - 1, node.span.column - 1);
   }
@@ -325,8 +327,9 @@ export function print(root: Code, opts?: Partial<PrintOptions>): PrintResult {
     indent: opts?.indent ?? 2,
     newline: opts?.newline ?? "\n",
     sourceMap: opts?.sourceMap ?? "none",
+    file: opts?.file,
   };
   const printer = new Printer(resolved);
   printer.emit(root);
-  return printer.result();
+  return printer.result(resolved.file);
 }

@@ -253,6 +253,30 @@ describe("print", () => {
     expect(map.sources).toContain("test.tsx");
   });
 
+  it("forwards the output file name into the source map", () => {
+    const loc = { file: "test.tsx", line: 1, column: 1, offset: 0, length: 5 };
+    const file = cFile({
+      flavor: "tsx",
+      children: [cStmt({ body: "const x = 1;", span: loc })],
+    });
+    const result = print(file, { sourceMap: "external", file: "out.jsx" });
+
+    const map = JSON.parse(result.map!);
+    expect(map.file).toBe("out.jsx");
+  });
+
+  it("defaults source map file to empty when not provided", () => {
+    const loc = { file: "test.tsx", line: 1, column: 1, offset: 0, length: 5 };
+    const file = cFile({
+      flavor: "tsx",
+      children: [cStmt({ body: "const x = 1;", span: loc })],
+    });
+    const result = print(file, { sourceMap: "external" });
+
+    const map = JSON.parse(result.map!);
+    expect(map.file).toBe("");
+  });
+
   it("generates inline source map", () => {
     const loc = { file: "test.tsx", line: 1, column: 1, offset: 0, length: 5 };
     const file = cFile({

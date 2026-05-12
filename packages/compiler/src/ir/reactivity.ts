@@ -63,6 +63,10 @@ export class SymbolTable {
 
     const id = `${args.componentId}::${args.kind}::${args.name}@${args.loc.offset}` as SymbolId;
 
+    if (this.symbols.has(id)) {
+      throw new Error(`SymbolTable: duplicate id ${id}`);
+    }
+
     this.symbols.set(id, {
       id,
       kind: args.kind,
