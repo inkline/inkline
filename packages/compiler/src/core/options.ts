@@ -1,4 +1,5 @@
 import { ALL_TARGETS, type TargetName, type TargetRegistry } from "../codegen/context.ts";
+import { builtinRegistry } from "../codegen/registry.ts";
 import type { Plugin } from "../plugin/types.ts";
 
 export type SourceMapMode = "external" | "inline" | "none";
@@ -23,12 +24,6 @@ export interface ResolvedCompilerOptions {
   readonly registry: TargetRegistry;
 }
 
-const emptyRegistry: TargetRegistry = {
-  get: () => undefined,
-  has: () => false,
-  list: () => [],
-};
-
 export function resolveOptions(
   userConfig: Partial<InklineConfig> | undefined,
 ): ResolvedCompilerOptions {
@@ -45,7 +40,7 @@ export function resolveOptions(
     }
   }
 
-  const registry = config.registry ?? emptyRegistry;
+  const registry = config.registry ?? builtinRegistry;
 
   return {
     targets,

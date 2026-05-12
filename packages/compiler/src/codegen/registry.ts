@@ -22,4 +22,8 @@ export function createRegistry(): MutableTargetRegistry {
 
 const _builtin = createRegistry();
 
-export const builtinRegistry: TargetRegistry = _builtin;
+export const builtinRegistry: TargetRegistry = {
+  get: (name) => _builtin.get(name),
+  has: (name) => _builtin.has(name),
+  list: () => _builtin.list(),
+};

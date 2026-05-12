@@ -1,15 +1,16 @@
-import type { Diagnostic } from "../core/diagnostics/codes.ts";
+import { DIAGNOSTICS, type Diagnostic } from "../core/diagnostics/codes.ts";
 import type { GeneratedFile, TargetName } from "../codegen/context.ts";
 import { UNKNOWN_LOCATION } from "../ir/types.ts";
 import type { Plugin, PluginContext } from "./types.ts";
 
 function makeErrorDiagnostic(pluginName: string, err: unknown): Diagnostic {
+  const def = DIAGNOSTICS.INK0090;
   const message = err instanceof Error ? err.message : String(err);
   return {
     code: "INK0090",
-    severity: "error",
+    severity: def.severity,
     title: `Plugin '${pluginName}' threw: ${message}`,
-    url: "https://docs.inkline.dev/diagnostics/INK0090",
+    url: def.url,
     loc: UNKNOWN_LOCATION,
   };
 }

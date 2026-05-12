@@ -58,6 +58,6 @@ describe("builtinRegistry", () => {
   });
 
   it("does not expose register method", () => {
-    expect("register" in builtinRegistry).toBe(true);
+    expect("register" in builtinRegistry).toBe(false);
   });
 });
