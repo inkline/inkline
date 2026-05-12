@@ -19,3 +19,9 @@ export interface TargetRegistry {
   has(name: TargetName): boolean;
   list(): readonly TargetName[];
 }
+
+export interface GeneratedFile {
+  readonly path: string;
+  readonly contents: string;
+  readonly sourceMap?: string;
+}
