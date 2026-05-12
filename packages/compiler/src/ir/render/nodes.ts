@@ -102,6 +102,7 @@ export interface IRFor {
   readonly itemBinding: string;
   readonly indexBinding?: string;
   readonly key: IRExprNode;
+  readonly syntheticKey?: boolean;
   readonly body: IRNode;
   readonly loc: SourceLocation;
 }
