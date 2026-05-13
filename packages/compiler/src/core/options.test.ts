@@ -72,10 +72,10 @@ describe("resolveOptions", () => {
     expect(opts.targets).toEqual(allTargets);
   });
 
-  it("default registry returns undefined for any target", () => {
+  it("default registry has built-in targets", () => {
     const opts = resolveOptions({ targets: ["react"] });
-    expect(opts.registry.get("react")).toBeUndefined();
-    expect(opts.registry.has("react")).toBe(false);
-    expect(opts.registry.list()).toEqual([]);
+    expect(opts.registry.get("react")).toBeDefined();
+    expect(opts.registry.has("react")).toBe(true);
+    expect(opts.registry.list().length).toBeGreaterThan(0);
   });
 });

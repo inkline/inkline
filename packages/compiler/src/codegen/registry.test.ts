@@ -1,5 +1,24 @@
 import { describe, it, expect } from "vitest";
 import { createRegistry, defineTarget, builtinRegistry } from "./registry.ts";
+import type { Target } from "./context.ts";
+
+function stubTarget(name: "react" | "solid" | "vue" | "svelte"): Target {
+  return {
+    name,
+    rewrites: {
+      reactiveRead: { kind: "strip-call" },
+      setterStyle: { kind: "function-call" },
+      refAccess: { kind: "bare" },
+      jsxAttrCasing: "html",
+      eventNameCase: "camel",
+    },
+    emit: () => ({
+      componentName: "X",
+      root: { kind: "CFile" as const, flavor: "tsx" as const, children: [] },
+      fileName: "x.tsx",
+    }),
+  };
+}
 
 describe("createRegistry", () => {
   it("starts empty", () => {
@@ -9,22 +28,22 @@ describe("createRegistry", () => {
 
   it("register and get", () => {
     const reg = createRegistry();
-    const target = defineTarget({ name: "react" });
+    const target = stubTarget("react");
     reg.register(target);
     expect(reg.get("react")).toBe(target);
   });
 
   it("has returns true for registered targets", () => {
     const reg = createRegistry();
-    reg.register(defineTarget({ name: "react" }));
+    reg.register(stubTarget("react"));
     expect(reg.has("react")).toBe(true);
     expect(reg.has("vue")).toBe(false);
   });
 
   it("list returns registered target names", () => {
     const reg = createRegistry();
-    reg.register(defineTarget({ name: "react" }));
-    reg.register(defineTarget({ name: "solid" }));
+    reg.register(stubTarget("react"));
+    reg.register(stubTarget("solid"));
     expect(reg.list()).toEqual(["react", "solid"]);
   });
 
@@ -35,8 +54,8 @@ describe("createRegistry", () => {
 
   it("overwrites on re-register", () => {
     const reg = createRegistry();
-    const t1 = defineTarget({ name: "react" });
-    const t2 = defineTarget({ name: "react" });
+    const t1 = stubTarget("react");
+    const t2 = stubTarget("react");
     reg.register(t1);
     reg.register(t2);
     expect(reg.get("react")).toBe(t2);
@@ -45,16 +64,21 @@ describe("createRegistry", () => {
 
 describe("defineTarget", () => {
   it("returns the target unchanged", () => {
-    const target = { name: "vue" as const };
+    const target = stubTarget("vue");
     expect(defineTarget(target)).toBe(target);
   });
 });
 
 describe("builtinRegistry", () => {
-  it("is a valid TargetRegistry", () => {
-    expect(typeof builtinRegistry.get).toBe("function");
-    expect(typeof builtinRegistry.has).toBe("function");
-    expect(typeof builtinRegistry.list).toBe("function");
+  it("has all 4 built-in targets registered", () => {
+    expect(builtinRegistry.has("react")).toBe(true);
+    expect(builtinRegistry.has("solid")).toBe(true);
+    expect(builtinRegistry.has("svelte")).toBe(true);
+    expect(builtinRegistry.has("vue")).toBe(true);
+  });
+
+  it("list returns 4 target names", () => {
+    expect(builtinRegistry.list()).toHaveLength(4);
   });
 
   it("does not expose register method", () => {

@@ -1,4 +1,8 @@
 import type { Target, TargetName, TargetRegistry } from "./context.ts";
+import { solid as solidTarget } from "./targets/solid/index.ts";
+import { react as reactTarget } from "./targets/react/index.ts";
+import { svelte as svelteTarget } from "./targets/svelte/index.ts";
+import { vue as vueTarget } from "./targets/vue/index.ts";
 
 export interface MutableTargetRegistry extends TargetRegistry {
   register(target: Target): void;
@@ -21,6 +25,10 @@ export function createRegistry(): MutableTargetRegistry {
 }
 
 const _builtin = createRegistry();
+_builtin.register(solidTarget);
+_builtin.register(reactTarget);
+_builtin.register(svelteTarget);
+_builtin.register(vueTarget);
 
 export const builtinRegistry: TargetRegistry = {
   get: (name) => _builtin.get(name),

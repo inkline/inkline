@@ -1,3 +1,9 @@
+import type { Code } from "./code-ir/nodes.ts";
+import type { IRComponent } from "../ir/render/nodes.ts";
+import type { DiagnosticCollector } from "../core/diagnostics/collector.ts";
+import type { ResolvedCompilerOptions } from "../core/options.ts";
+import type { SymbolTable } from "../ir/reactivity.ts";
+
 export type TargetName = "react" | "solid" | "vue" | "svelte" | "angular" | "qwik" | "astro";
 
 export const ALL_TARGETS: readonly TargetName[] = Object.freeze([
@@ -10,8 +16,45 @@ export const ALL_TARGETS: readonly TargetName[] = Object.freeze([
   "astro",
 ]);
 
+export type ReactiveReadKind =
+  | { readonly kind: "strip-call" }
+  | { readonly kind: "preserve-call" }
+  | { readonly kind: "field-access"; readonly field: string };
+
+export type SetterStyleKind =
+  | { readonly kind: "function-call" }
+  | { readonly kind: "field-assignment"; readonly field: string }
+  | { readonly kind: "direct-assignment" };
+
+export type RefAccessKind =
+  | { readonly kind: "field"; readonly field: string }
+  | { readonly kind: "bare" };
+
+export interface RewriteRules {
+  readonly reactiveRead: ReactiveReadKind;
+  readonly setterStyle: SetterStyleKind;
+  readonly refAccess: RefAccessKind;
+  readonly jsxAttrCasing: "react" | "html";
+  readonly eventNameCase: "camel" | "kebab" | "lower";
+}
+
+export interface CodegenContext {
+  readonly diagnostics: DiagnosticCollector;
+  readonly options: ResolvedCompilerOptions;
+  readonly symbols: SymbolTable;
+  readonly rewrites: RewriteRules;
+}
+
+export interface CodeModule {
+  readonly componentName: string;
+  readonly root: Code;
+  readonly fileName: string;
+}
+
 export interface Target {
   readonly name: TargetName;
+  readonly rewrites: RewriteRules;
+  emit(component: IRComponent, ctx: CodegenContext): CodeModule;
 }
 
 export interface TargetRegistry {
