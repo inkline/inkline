@@ -2,8 +2,14 @@ import { describe, it, expect } from "vitest";
 import * as ts from "typescript";
 import { UNKNOWN_LOCATION } from "../../ir/types.ts";
 import { DYNAMIC_DEPS, SymbolTable, type SymbolId } from "../../ir/reactivity.ts";
-import type { IRComponent, IRElement } from "../../ir/render/nodes.ts";
-import { createElement, createExpr, createText } from "../../ir/render/builders.ts";
+import type { IRComponent, IRNode } from "../../ir/render/nodes.ts";
+import {
+  createElement,
+  createExpr,
+  createIf,
+  createSwitch,
+  createText,
+} from "../../ir/render/builders.ts";
 import { createDiagnosticCollector } from "../../core/diagnostics/collector.ts";
 import { resolveOptions } from "../../core/options.ts";
 import type { CodegenContext } from "../context.ts";
@@ -20,7 +26,7 @@ function mockExpr(code: string): ts.Expression {
 
 const loc = UNKNOWN_LOCATION;
 
-function makeComp(name: string, render: IRElement): IRComponent {
+function makeComp(name: string, render: IRNode): IRComponent {
   return {
     kind: "Component",
     id: `t.tsx#${name}`,
@@ -175,5 +181,79 @@ describe("target emit + print", () => {
     const result = print(react.emit(comp, makeCtx(react)).root);
     expect(result.code).toContain("{count}");
     expect(result.code).not.toContain("{count()}");
+  });
+
+  it("React strips reactive calls in compound expressions", () => {
+    const render = createElement({
+      tag: "p",
+      children: [createExpr({ expr: mockExpr("count() * 2 + other()"), isReactive: true })],
+    });
+    const comp = makeComp("Compound", render);
+    const result = print(react.emit(comp, makeCtx(react)).root);
+    expect(result.code).toContain("{count * 2 + other}");
+    expect(result.code).not.toContain("count()");
+  });
+
+  it("Solid preserves reactive calls in compound expressions", () => {
+    const render = createElement({
+      tag: "p",
+      children: [createExpr({ expr: mockExpr("count() * 2"), isReactive: true })],
+    });
+    const comp = makeComp("Compound", render);
+    const result = print(solid.emit(comp, makeCtx(solid)).root);
+    expect(result.code).toContain("{count() * 2}");
+  });
+
+  it("Solid: multi-branch If emits nested Show", () => {
+    const ifNode = createIf({
+      branches: [
+        { test: createExpr({ expr: mockExpr("a()") }), body: createText({ value: "A" }) },
+        { test: createExpr({ expr: mockExpr("b()") }), body: createText({ value: "B" }) },
+        { test: createExpr({ expr: mockExpr("c()") }), body: createText({ value: "C" }) },
+      ],
+      fallback: createText({ value: "fallback" }),
+    });
+    const comp = makeComp("Multi", createElement({ tag: "div", children: [ifNode] }));
+    const result = print(solid.emit(comp, makeCtx(solid)).root);
+    const showCount = (result.code.match(/<Show/g) ?? []).length;
+    expect(showCount).toBe(3);
+    expect(result.code).toContain("A");
+    expect(result.code).toContain("B");
+    expect(result.code).toContain("C");
+    expect(result.code).toContain("fallback");
+  });
+
+  it("Solid: single-branch If with fallback unchanged", () => {
+    const ifNode = createIf({
+      branches: [
+        { test: createExpr({ expr: mockExpr("ok()") }), body: createText({ value: "yes" }) },
+      ],
+      fallback: createText({ value: "no" }),
+    });
+    const comp = makeComp("Single", createElement({ tag: "div", children: [ifNode] }));
+    const result = print(solid.emit(comp, makeCtx(solid)).root);
+    const showCount = (result.code.match(/<Show/g) ?? []).length;
+    expect(showCount).toBe(1);
+    expect(result.code).toContain("yes");
+    expect(result.code).toContain("no");
+    expect(result.code).toContain("fallback");
+  });
+
+  it("Solid: Switch with fallback passes fallback prop", () => {
+    const switchNode = createSwitch({
+      cases: [
+        { test: createExpr({ expr: mockExpr("x()") }), body: createText({ value: "X" }) },
+        { test: createExpr({ expr: mockExpr("y()") }), body: createText({ value: "Y" }) },
+      ],
+      fallback: createText({ value: "default" }),
+    });
+    const comp = makeComp("Sw", createElement({ tag: "div", children: [switchNode] }));
+    const result = print(solid.emit(comp, makeCtx(solid)).root);
+    expect(result.code).toContain("<Switch");
+    expect(result.code).toContain("fallback");
+    expect(result.code).toContain("default");
+    expect(result.code).toContain("<Match");
+    const matchCount = (result.code.match(/<Match/g) ?? []).length;
+    expect(matchCount).toBe(2);
   });
 });
