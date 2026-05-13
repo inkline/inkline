@@ -14,9 +14,16 @@ describe("compileFixture", () => {
     expect("solid" in result.files).toBe(true);
   });
 
-  it("compiles Button fixture", async () => {
+  it("compiles Button fixture and extracts props from parameter type", async () => {
     const result = await compileFixture("Button", ["react"]);
     expect(result.diagnostics).toEqual([]);
+    const comp = result.ir?.module.components[0];
+    expect(comp).toBeDefined();
+    expect(comp!.props).toHaveLength(2);
+    expect(comp!.props[0]!.name).toBe("label");
+    expect(comp!.props[0]!.required).toBe(true);
+    expect(comp!.props[1]!.name).toBe("disabled");
+    expect(comp!.props[1]!.required).toBe(false);
   });
 
   it("compiles Conditional fixture", async () => {

@@ -114,6 +114,94 @@ describe("parsePass", () => {
     }
   });
 
+  it("parses props from parameter type annotation", async () => {
+    const source = `
+      import { defineComponent } from "@inkline/core";
+      export default defineComponent((props: { label: string; disabled?: boolean }) => {
+        return <button disabled={props.disabled}>{props.label}</button>;
+      });
+    `;
+    const ctx = makeCtx();
+    const artifact = await programPass.run({ fileName: "Button.ink.tsx", source }, ctx);
+    const module = parsePass.run(artifact, ctx);
+    const resolved = module instanceof Promise ? await module : module;
+
+    const comp = resolved.components[0]!;
+    expect(comp.props).toHaveLength(2);
+    expect(comp.props[0]!.name).toBe("label");
+    expect(comp.props[0]!.required).toBe(true);
+    expect(comp.props[1]!.name).toBe("disabled");
+    expect(comp.props[1]!.required).toBe(false);
+  });
+
+  it("parses props from options object", async () => {
+    const source = `
+      import { defineComponent } from "@inkline/core";
+      export default defineComponent(
+        { props: { title: String, count: Number } },
+        (props) => {
+          return <div>{props.title}</div>;
+        },
+      );
+    `;
+    const ctx = makeCtx();
+    const artifact = await programPass.run({ fileName: "WithOptions.ink.tsx", source }, ctx);
+    const module = parsePass.run(artifact, ctx);
+    const resolved = module instanceof Promise ? await module : module;
+
+    const comp = resolved.components[0]!;
+    expect(comp.props).toHaveLength(2);
+    expect(comp.props[0]!.name).toBe("title");
+    expect(comp.props[0]!.required).toBe(true);
+    expect(comp.props[1]!.name).toBe("count");
+    expect(comp.props[1]!.required).toBe(true);
+  });
+
+  it("parses slots and events from options object", async () => {
+    const source = `
+      import { defineComponent } from "@inkline/core";
+      export default defineComponent(
+        {
+          slots: { default: {}, header: { scoped: true } },
+          events: { change: {} },
+        },
+        () => {
+          return <div />;
+        },
+      );
+    `;
+    const ctx = makeCtx();
+    const artifact = await programPass.run({ fileName: "SE.ink.tsx", source }, ctx);
+    const module = parsePass.run(artifact, ctx);
+    const resolved = module instanceof Promise ? await module : module;
+
+    const comp = resolved.components[0]!;
+    expect(comp.slots).toHaveLength(2);
+    expect(comp.slots[0]!.name).toBe("default");
+    expect(comp.slots[1]!.isScoped).toBe(true);
+    expect(comp.events).toHaveLength(1);
+    expect(comp.events[0]!.name).toBe("change");
+  });
+
+  it("registers props in scope for reactive dep tracking", async () => {
+    const source = `
+      import { defineComponent, createEffect } from "@inkline/core";
+      export default defineComponent((props: { value: number }) => {
+        createEffect(() => { console.log(props.value); });
+        return <div>{props.value}</div>;
+      });
+    `;
+    const ctx = makeCtx();
+    const artifact = await programPass.run({ fileName: "ReactiveProps.ink.tsx", source }, ctx);
+    const module = parsePass.run(artifact, ctx);
+    const resolved = module instanceof Promise ? await module : module;
+
+    const comp = resolved.components[0]!;
+    expect(comp.effects[0]!.deps.length).toBeGreaterThan(0);
+    expect(comp.effects[0]!.deps[0]!.kind).toBe("prop");
+    expect(comp.effects[0]!.deps[0]!.path).toEqual(["value"]);
+  });
+
   it("has name 'parse'", () => {
     expect(parsePass.name).toBe("parse");
   });

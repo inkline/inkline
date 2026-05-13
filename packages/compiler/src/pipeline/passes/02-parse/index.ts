@@ -5,6 +5,7 @@ import type {
   IREffectDeclaration,
   IRExprNode,
   IRModule,
+  IRProp,
   PrimitiveUsage,
 } from "../../../ir/render/nodes.ts";
 import { walkRenderTree } from "../../../ir/render/visit.ts";
@@ -13,6 +14,7 @@ import type { TsProgramArtifact } from "../01-program.ts";
 import { bindPrimitives } from "./bind-primitives.ts";
 import { extractDeps, extractDepsFromFunctionBody } from "./deps.ts";
 import { parseExpression } from "./jsx/index.ts";
+import { parseOptions, parsePropsFromParameterType } from "./options.ts";
 import { findSites } from "./sites.ts";
 import { parseSetup } from "./setup.ts";
 
@@ -33,8 +35,22 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
     for (const site of sites) {
       const componentId = `${sourceFile.fileName}#${site.name}`;
 
+      // (c) options — extract props, slots, events from options object or parameter type
+      const optionsResult = site.options
+        ? parseOptions(site.options, componentId, sourceFile, ctx)
+        : undefined;
+
+      const props =
+        optionsResult?.props ??
+        parsePropsFromParameterType(site.setupFn, componentId, sourceFile, ctx);
+      const slots = optionsResult?.slots ?? [];
+      const events = optionsResult?.events ?? [];
+
       // (d) setup
       const setupResult = parseSetup(site.setupFn, componentId, bindings, sourceFile, checker, ctx);
+
+      // Register props in the scope so `props.foo` resolves during dep extraction
+      registerPropsInScope(site.setupFn, props, componentId, setupResult.scope, checker, ctx);
 
       // (e) jsx
       const render = setupResult.renderExpr
@@ -52,9 +68,9 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         id: componentId,
         name: site.name,
         loc: site.loc,
-        props: [],
-        slots: [],
-        events: [],
+        props,
+        slots,
+        events,
         state: setupResult.state,
         refs: setupResult.refs,
         memos: setupResult.memos,
@@ -140,4 +156,26 @@ function resolveDeps(
       }
     },
   });
+}
+
+function registerPropsInScope(
+  setupFn: ts.ArrowFunction | ts.FunctionExpression,
+  props: readonly IRProp[],
+  componentId: string,
+  scope: import("./scope.ts").ParseBindingScope,
+  checker: ts.TypeChecker,
+  ctx: import("../../types.ts").PassContext,
+): void {
+  if (props.length === 0) return;
+  const propsParam = setupFn.parameters[0];
+  if (!propsParam) return;
+  const sym = checker.getSymbolAtLocation(propsParam.name);
+  if (!sym) return;
+  const id = ctx.symbols.mint({
+    componentId,
+    kind: "prop",
+    name: "props",
+    loc: { file: "", line: 0, column: 0, offset: 0, length: 0 },
+  });
+  scope.register(sym, id, "prop");
 }
