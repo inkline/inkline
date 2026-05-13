@@ -9,6 +9,8 @@ import { PluginRunner } from "../plugin/runner.ts";
 import type { PluginContext } from "../plugin/types.ts";
 import type { ReactivityGraph } from "./passes/04-analyze/graph.ts";
 import { programPass, type CompileInput } from "./passes/01-program.ts";
+import { parsePass } from "./passes/02-parse/index.ts";
+import { lower } from "./passes/03-lower/index.ts";
 import type { PassContext } from "./types.ts";
 
 export type { CompileInput } from "./passes/01-program.ts";
@@ -57,15 +59,13 @@ export async function compile(
   // P1: create TS program
   const artifact = await programPass.run(input, ctx);
 
-  // P2 parse, P3 lower — not yet implemented; empty module
-  const module: IRModule = {
-    fileName: input.fileName,
-    components: [],
-    imports: [],
-    sourceFile: artifact.sourceFile,
-  };
+  // P2: parse .ink.tsx → IRModule
+  const rawModule = await parsePass.run(artifact, ctx);
 
-  // P4 analyze — stub
+  // P3: lower (normalize control flow, slots, bindings, static marks)
+  const module = lower(rawModule, ctx);
+
+  // P4 analyze — stub (graph built on demand)
   const analyzedModule: AnalyzedModule = { module, graphs: new Map() };
 
   // Plugin runner

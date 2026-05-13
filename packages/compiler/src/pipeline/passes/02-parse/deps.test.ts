@@ -214,4 +214,12 @@ describe("extractDeps", () => {
     expect(result.deps).toHaveLength(2);
     expect(result.deps.map((d) => d.path)).toEqual([["a"], ["b"]]);
   });
+
+  it("detects signal call inside property access chain", () => {
+    const { checker, scope, expr } = createTestEnv({ user: { kind: "signal" } }, "user().name");
+    const result = extractDeps(expr, scope, checker);
+    expect(result.isReactive).toBe(true);
+    expect(result.deps).toHaveLength(1);
+    expect(result.deps[0]!.name).toBe("user");
+  });
 });

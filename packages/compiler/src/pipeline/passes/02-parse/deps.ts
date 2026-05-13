@@ -108,8 +108,8 @@ export function extractDeps(
             });
           }
         }
+        return;
       }
-      return;
     }
 
     if (ts.isConditionalExpression(node)) {
