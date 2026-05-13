@@ -37,13 +37,23 @@
     "prepublishOnly": "vp run build"
   },
   "devDependencies": {
+    "@jridgewell/trace-mapping": "^0.3",
     "@types/node": "^25.5.0",
+    "@types/react": "^19",
     "@typescript/native-preview": "7.0.0-dev.20260328.1",
     "@vitest/coverage-v8": "catalog:",
+    "@vue/server-renderer": "^3.4",
     "bumpp": "^11.0.1",
+    "happy-dom": "^15",
+    "react": "^19",
+    "react-dom": "^19",
+    "solid-js": "^1.8",
+    "svelte": "^5",
+    "tinybench": "^2",
     "typescript": "^6.0.2",
     "vite-plus": "^0.1.14",
-    "vitest": "catalog:"
+    "vitest": "catalog:",
+    "vue": "^3.4"
   },
   "peerDependencies": {
     "typescript": ">=5.4 <8"
