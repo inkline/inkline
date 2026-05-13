@@ -13,6 +13,9 @@
     "url": "git+https://github.com/inkline/inkline.git",
     "directory": "packages/compiler"
   },
+  "bin": {
+    "inkline": "./dist/bin/inkline.mjs"
+  },
   "files": [
     "dist"
   ],
@@ -20,6 +23,7 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.mjs",
+    "./testing": "./dist/testing/index.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {
