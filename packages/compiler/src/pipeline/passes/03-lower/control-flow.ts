@@ -80,42 +80,22 @@ function lowerFor(ci: IRComponentInstance, ctx: PassContext): IRNode | undefined
 
 function lowerSwitch(ci: IRComponentInstance): IRNode | undefined {
   const cases: IRSwitchCase[] = [];
-  let fallback: IRNode | undefined;
 
-  for (const slot of ci.slots) {
-    if (slot.name === "default") {
-      fallback = slot.body;
-      continue;
-    }
-  }
+  const fallbackSlot = ci.slots.find((s) => s.name === "fallback");
+  let fallback: IRNode | undefined = fallbackSlot?.body ?? getAttr(ci, "fallback");
 
-  for (const slot of ci.slots) {
-    if (slot.name === "default") continue;
-    const matchSlots = slot.body;
-    if (matchSlots.kind === "ComponentInstance") {
-      const when = getAttr(matchSlots, "when");
-      const matchBody = getDefaultSlotBody(matchSlots);
-      if (when && matchBody) {
-        cases.push({ test: when, body: matchBody });
-      }
-    }
-  }
-
-  if (cases.length === 0) {
-    const body = getDefaultSlotBody(ci);
-    if (!body) return undefined;
-
-    if (body.kind === "Fragment") {
-      for (const child of body.children) {
-        if (child.kind === "ComponentInstance" && getRefName(child) === "Match") {
-          const when = getAttr(child, "when");
-          const matchBody = getDefaultSlotBody(child);
-          if (when && matchBody) {
-            cases.push({ test: when, body: matchBody });
-          }
-        } else {
-          fallback = child;
+  const body = getDefaultSlotBody(ci);
+  if (body) {
+    const children = body.kind === "Fragment" ? body.children : [body];
+    for (const child of children) {
+      if (child.kind === "ComponentInstance" && getRefName(child) === "Match") {
+        const when = getAttr(child, "when");
+        const matchBody = getDefaultSlotBody(child);
+        if (when && matchBody) {
+          cases.push({ test: when, body: matchBody });
         }
+      } else if (fallback === undefined) {
+        fallback = child;
       }
     }
   }

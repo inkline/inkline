@@ -7,6 +7,7 @@ import type {
   IRElement,
   IREventBinding,
   IRExprNode,
+  IRStateDeclaration,
 } from "../../../ir/render/nodes.ts";
 import { transformComponent } from "../../../ir/render/transform.ts";
 
@@ -38,8 +39,7 @@ function resolveBindingSpec(
   return { eventName: "onInput", valueExpr: "e.target.value" };
 }
 
-function createHandlerExpr(setterText: string, valueExpr: string): ts.Expression {
-  const code = `(e) => ${setterText}(${valueExpr})`;
+function parseExpr(code: string): ts.Expression {
   const sf = ts.createSourceFile("__synth__.ts", code, ts.ScriptTarget.Latest, true);
   return (sf.statements[0] as ts.ExpressionStatement).expression;
 }
@@ -51,7 +51,7 @@ function makeHandlerExprNode(
 ): IRExprNode {
   return {
     kind: "Expression",
-    expr: createHandlerExpr(setterText, valueExpr),
+    expr: parseExpr(`(e) => ${setterText}(${valueExpr})`),
     deps: DYNAMIC_DEPS,
     isReactive: false,
     emissionContext: "setup",
@@ -60,14 +60,39 @@ function makeHandlerExprNode(
   };
 }
 
-function getSetterText(binding: IRAttribute): string {
-  if (binding.value.kind === "Expression") {
-    return binding.value.expr.getText?.() ?? "setter";
+interface BindingResolution {
+  readonly setterText: string;
+  readonly valueExpr: IRExprNode;
+}
+
+function resolveBinding(
+  value: IRExprNode,
+  stateBySetterName: ReadonlyMap<string, IRStateDeclaration>,
+): BindingResolution {
+  // §10.3 step 1: if the binding is an Identifier that names a known setter,
+  // rewrite the value attribute to call the paired getter; the setter itself
+  // is retained for the synthesized event handler.
+  if (ts.isIdentifier(value.expr)) {
+    const setterText = value.expr.text;
+    const state = stateBySetterName.get(setterText);
+    if (state) {
+      return {
+        setterText,
+        valueExpr: { ...value, expr: parseExpr(`${state.name}()`) },
+      };
+    }
+    return { setterText, valueExpr: value };
   }
-  return "setter";
+  // Rare case ("the value is the same expression as the binding"): leave as-is
+  // and call the binding expression as the setter in the handler.
+  return { setterText: value.expr.getText(), valueExpr: value };
 }
 
 export function twoWayBinding(component: IRComponent): IRComponent {
+  const stateBySetterName = new Map<string, IRStateDeclaration>(
+    component.state.map((s) => [s.setterName, s]),
+  );
+
   return transformComponent(component, {
     enter(node) {
       if (node.kind !== "Element") return;
@@ -85,12 +110,19 @@ export function twoWayBinding(component: IRComponent): IRComponent {
           continue;
         }
 
+        // $bind:* must be expression-valued; a static value is malformed input,
+        // demote the binding and skip handler synthesis rather than emit garbage.
+        if (attr.value.kind !== "Expression") {
+          remainingAttrs.push({ ...attr, binding: "normal" });
+          continue;
+        }
+
         const spec = resolveBindingSpec(el.tag, attr.name, el.attrs);
-        const setterText = getSetterText(attr);
+        const { setterText, valueExpr } = resolveBinding(attr.value, stateBySetterName);
 
         remainingAttrs.push({
           name: attr.name,
-          value: attr.value,
+          value: valueExpr,
           binding: "normal",
           loc: attr.loc,
         });

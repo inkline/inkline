@@ -222,13 +222,13 @@ describe("controlFlow", () => {
   });
 
   describe("Switch lowering", () => {
-    it("lowers <Switch> with Match children to IRSwitch", () => {
-      const matchCI = createComponentInstance({
+    function makeMatch(when: string, body: string): IRComponentInstance {
+      return createComponentInstance({
         reference: ident("Match"),
         attrs: [
           {
             name: "when",
-            value: createExpr({ expr: mockExpr("x === 1") }),
+            value: createExpr({ expr: mockExpr(when) }),
             binding: "normal",
             loc: UNKNOWN_LOCATION,
           },
@@ -236,12 +236,16 @@ describe("controlFlow", () => {
         slots: [
           {
             name: "default",
-            body: createText({ value: "case1" }),
+            body: createText({ value: body }),
             scopedParams: [],
             loc: UNKNOWN_LOCATION,
           },
         ],
       });
+    }
+
+    it("lowers <Switch> with Match children to IRSwitch", () => {
+      const matchCI = makeMatch("x === 1", "case1");
       const ci = createComponentInstance({
         reference: ident("Switch"),
         slots: [
@@ -258,6 +262,135 @@ describe("controlFlow", () => {
       expect(result.render.kind).toBe("Switch");
       const sw = result.render as IRSwitch;
       expect(sw.cases).toHaveLength(1);
+      expect(sw.fallback).toBeUndefined();
+    });
+
+    it("emits no fallback when every default-slot child is a <Match>", () => {
+      const ci = createComponentInstance({
+        reference: ident("Switch"),
+        slots: [
+          {
+            name: "default",
+            body: {
+              kind: "Fragment",
+              children: [makeMatch("x === 1", "a"), makeMatch("x === 2", "b")],
+              loc: UNKNOWN_LOCATION,
+            },
+            scopedParams: [],
+            loc: UNKNOWN_LOCATION,
+          },
+        ],
+      });
+      const sw = controlFlow(makeComp(ci), makeCtx()).render as IRSwitch;
+      expect(sw.cases).toHaveLength(2);
+      expect(sw.fallback).toBeUndefined();
+    });
+
+    it("uses an explicit `fallback` named slot as the fallback", () => {
+      const fbExpr = createExpr({ expr: mockExpr("<div>fb</div>") });
+      const ci = createComponentInstance({
+        reference: ident("Switch"),
+        slots: [
+          {
+            name: "default",
+            body: {
+              kind: "Fragment",
+              children: [makeMatch("x === 1", "a")],
+              loc: UNKNOWN_LOCATION,
+            },
+            scopedParams: [],
+            loc: UNKNOWN_LOCATION,
+          },
+          { name: "fallback", body: fbExpr, scopedParams: [], loc: UNKNOWN_LOCATION },
+        ],
+      });
+      const sw = controlFlow(makeComp(ci), makeCtx()).render as IRSwitch;
+      expect(sw.cases).toHaveLength(1);
+      expect(sw.fallback).toBe(fbExpr);
+    });
+
+    it("uses a non-Match Fragment child as the fallback", () => {
+      const fb = createText({ value: "fb" });
+      const ci = createComponentInstance({
+        reference: ident("Switch"),
+        slots: [
+          {
+            name: "default",
+            body: {
+              kind: "Fragment",
+              children: [makeMatch("x === 1", "a"), fb],
+              loc: UNKNOWN_LOCATION,
+            },
+            scopedParams: [],
+            loc: UNKNOWN_LOCATION,
+          },
+        ],
+      });
+      const sw = controlFlow(makeComp(ci), makeCtx()).render as IRSwitch;
+      expect(sw.cases).toHaveLength(1);
+      expect(sw.fallback).toBe(fb);
+    });
+
+    it("prefers the explicit fallback slot over a non-Match Fragment child", () => {
+      const namedFb = createExpr({ expr: mockExpr("<div>named</div>") });
+      const inlineFb = createText({ value: "inline" });
+      const ci = createComponentInstance({
+        reference: ident("Switch"),
+        slots: [
+          {
+            name: "default",
+            body: {
+              kind: "Fragment",
+              children: [makeMatch("x === 1", "a"), inlineFb],
+              loc: UNKNOWN_LOCATION,
+            },
+            scopedParams: [],
+            loc: UNKNOWN_LOCATION,
+          },
+          { name: "fallback", body: namedFb, scopedParams: [], loc: UNKNOWN_LOCATION },
+        ],
+      });
+      const sw = controlFlow(makeComp(ci), makeCtx()).render as IRSwitch;
+      expect(sw.fallback).toBe(namedFb);
+    });
+
+    it("lowers a single <Match> default child (not wrapped in a Fragment)", () => {
+      const ci = createComponentInstance({
+        reference: ident("Switch"),
+        slots: [
+          {
+            name: "default",
+            body: makeMatch("x === 1", "a"),
+            scopedParams: [],
+            loc: UNKNOWN_LOCATION,
+          },
+        ],
+      });
+      const sw = controlFlow(makeComp(ci), makeCtx()).render as IRSwitch;
+      expect(sw.cases).toHaveLength(1);
+      expect(sw.fallback).toBeUndefined();
+    });
+
+    it("uses a non-JSX `fallback` attribute as the fallback", () => {
+      const fbExpr = createExpr({ expr: mockExpr("loadingNode") });
+      const ci = createComponentInstance({
+        reference: ident("Switch"),
+        attrs: [{ name: "fallback", value: fbExpr, binding: "normal", loc: UNKNOWN_LOCATION }],
+        slots: [
+          {
+            name: "default",
+            body: {
+              kind: "Fragment",
+              children: [makeMatch("x === 1", "a")],
+              loc: UNKNOWN_LOCATION,
+            },
+            scopedParams: [],
+            loc: UNKNOWN_LOCATION,
+          },
+        ],
+      });
+      const sw = controlFlow(makeComp(ci), makeCtx()).render as IRSwitch;
+      expect(sw.fallback).toBe(fbExpr);
     });
   });
 
