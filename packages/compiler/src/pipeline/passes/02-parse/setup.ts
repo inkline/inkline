@@ -1,5 +1,5 @@
 import * as ts from "typescript";
-import { DYNAMIC_DEPS } from "../../../ir/reactivity.ts";
+import { DYNAMIC_DEPS, type IRReactiveKind, type SymbolId } from "../../../ir/reactivity.ts";
 import type {
   IREffectDeclaration,
   IRExprNode,
@@ -59,6 +59,7 @@ export function parseSetup(
   componentId: string,
   bindings: BindingTable,
   sourceFile: ts.SourceFile,
+  checker: ts.TypeChecker,
   ctx: PassContext,
 ): SetupResult {
   const scope = new ParseBindingScope();
@@ -93,8 +94,11 @@ export function parseSetup(
     };
   }
 
-  const checker = ctx.symbols as unknown as { resolve?: never };
-  void checker;
+  const registerBinding = (name: ts.BindingName, id: SymbolId, kind: IRReactiveKind): void => {
+    if (!ts.isIdentifier(name)) return;
+    const sym = checker.getSymbolAtLocation(name);
+    if (sym) scope.register(sym, id, kind);
+  };
 
   for (const stmt of body) {
     const loc = toLoc(stmt, sourceFile);
@@ -112,17 +116,25 @@ export function parseSetup(
         if (isCallTo(init, signalLocal)) {
           let valueName: string;
           let setterNameExplicit: string | undefined;
+          let getterBindingName: ts.BindingName | undefined;
+          let setterBindingName: ts.BindingName | undefined;
 
           if (ts.isIdentifier(decl.name)) {
             valueName = decl.name.text;
+            getterBindingName = decl.name;
           } else if (ts.isArrayBindingPattern(decl.name) && decl.name.elements.length >= 1) {
             const first = decl.name.elements[0]!;
-            valueName =
-              ts.isBindingElement(first) && ts.isIdentifier(first.name) ? first.name.text : "value";
+            if (ts.isBindingElement(first) && ts.isIdentifier(first.name)) {
+              valueName = first.name.text;
+              getterBindingName = first.name;
+            } else {
+              valueName = "value";
+            }
             if (decl.name.elements.length >= 2) {
               const second = decl.name.elements[1]!;
               if (ts.isBindingElement(second) && ts.isIdentifier(second.name)) {
                 setterNameExplicit = second.name.text;
+                setterBindingName = second.name;
               }
             }
           } else {
@@ -149,6 +161,8 @@ export function parseSetup(
 
           ctx.symbols.linkSetter(getterId, setterId);
           scope.markSetter(setterId);
+          if (getterBindingName) registerBinding(getterBindingName, getterId, "signal");
+          if (setterBindingName) registerBinding(setterBindingName, setterId, "signal");
 
           state.push({
             name: valueName,
@@ -166,19 +180,24 @@ export function parseSetup(
         if (!ts.isIdentifier(decl.name)) continue;
 
         if (isCallTo(init, memoLocal)) {
-          const memoExpr = init.arguments[0];
-          if (!memoExpr) continue;
-          const tsSymbol: ts.Symbol | undefined = undefined;
+          const memoArg = init.arguments[0];
+          if (!memoArg) continue;
+          // Idiomatic memo: createMemo(() => expr). Unwrap the arrow to the body
+          // so memo.expr.expr holds the value expression, not the thunk.
+          const memoExpr =
+            (ts.isArrowFunction(memoArg) || ts.isFunctionExpression(memoArg)) &&
+            !ts.isBlock(memoArg.body)
+              ? memoArg.body
+              : memoArg;
 
           const id = ctx.symbols.mint({
             componentId,
             kind: "memo",
             name: decl.name.text,
             loc: toLoc(decl, sourceFile),
-            tsSymbol: tsSymbol as ts.Symbol | undefined,
           });
 
-          if (tsSymbol) scope.register(tsSymbol as ts.Symbol, id, "memo");
+          registerBinding(decl.name, id, "memo");
 
           memos.push({
             name: decl.name.text,
@@ -190,17 +209,14 @@ export function parseSetup(
         }
 
         if (isCallTo(init, refLocal)) {
-          const tsSymbol: ts.Symbol | undefined = undefined;
-
           const id = ctx.symbols.mint({
             componentId,
             kind: "ref",
             name: decl.name.text,
             loc: toLoc(decl, sourceFile),
-            tsSymbol: tsSymbol as ts.Symbol | undefined,
           });
 
-          if (tsSymbol) scope.register(tsSymbol as ts.Symbol, id, "ref");
+          registerBinding(decl.name, id, "ref");
 
           refs.push({
             name: decl.name.text,

@@ -94,43 +94,37 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     case "Expression":
       return cExpr({ text: `{${rewriteExpr(node.expr, rules)}}` });
     case "If": {
-      const [first, ...rest] = node.branches;
-      let result: Code = cJsxElement({
-        tag: "Show",
-        attrs: [
+      let fallback: Code | undefined = node.fallback ? emitNode(node.fallback, rules) : undefined;
+
+      for (let i = node.branches.length - 1; i >= 0; i--) {
+        const b = node.branches[i]!;
+        const attrs = [
           cJsxAttr({
             name: "when",
-            value: { kind: "expr", expr: cExpr({ text: rewriteExpr(first.test.expr, rules) }) },
+            value: { kind: "expr", expr: cExpr({ text: rewriteExpr(b.test.expr, rules) }) },
           }),
-          ...(node.fallback && rest.length === 0
+          ...(fallback
             ? [
                 cJsxAttr({
                   name: "fallback",
                   value: {
                     kind: "expr",
-                    expr: cExpr({ text: `<>${inlineNode(node.fallback, rules)}</>` }),
+                    expr: cExpr({ text: `<>${inlineCode(fallback)}</>` }),
                   },
                 }),
               ]
             : []),
-        ],
-        children: [emitNode(first.body, rules)],
-        selfClose: false,
-      });
-      for (const b of rest) {
-        result = cJsxElement({
+        ];
+        const show = cJsxElement({
           tag: "Show",
-          attrs: [
-            cJsxAttr({
-              name: "when",
-              value: { kind: "expr", expr: cExpr({ text: rewriteExpr(b.test.expr, rules) }) },
-            }),
-          ],
+          attrs,
           children: [emitNode(b.body, rules)],
           selfClose: false,
         });
+        fallback = show;
       }
-      return result;
+
+      return fallback!;
     }
     case "For": {
       const params = node.indexBinding
@@ -162,7 +156,18 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
           selfClose: false,
         }),
       );
-      return cJsxElement({ tag: "Switch", attrs: [], children, selfClose: false });
+      const switchAttrs = node.fallback
+        ? [
+            cJsxAttr({
+              name: "fallback",
+              value: {
+                kind: "expr",
+                expr: cExpr({ text: `<>${inlineCode(emitNode(node.fallback, rules))}</>` }),
+              },
+            }),
+          ]
+        : [];
+      return cJsxElement({ tag: "Switch", attrs: switchAttrs, children, selfClose: false });
     }
     case "SlotPlaceholder":
       return node.fallback
@@ -180,10 +185,37 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
   }
 }
 
+function inlineCode(code: Code): string {
+  switch (code.kind) {
+    case "CJsxText":
+      return code.text;
+    case "CExpr":
+      return code.text;
+    case "CJsxElement": {
+      const tag = code.tag || "";
+      const attrStr = code.attrs
+        .map((a) => {
+          if (a.kind !== "CJsxAttr") return "";
+          if (a.value.kind === "boolean") return ` ${a.name}`;
+          if (a.value.kind === "static") return ` ${a.name}="${a.value.text}"`;
+          return ` ${a.name}={${a.value.expr.text}}`;
+        })
+        .join("");
+      if (code.selfClose) return `<${tag}${attrStr} />`;
+      const childStr = code.children.map((c) => inlineCode(c)).join("");
+      return `<${tag}${attrStr}>${childStr}</${tag}>`;
+    }
+    case "CGroup":
+      return code.children.map((c) => inlineCode(c)).join("");
+    case "CRaw":
+      return code.text;
+    default:
+      return "";
+  }
+}
+
 function inlineNode(node: IRNode, rules: RewriteRules): string {
-  const code = emitNode(node, rules);
-  if (code.kind === "CJsxText") return `"${code.text}"`;
-  return "(<>...</>)";
+  return inlineCode(emitNode(node, rules));
 }
 
 // ── Control-flow import collector ──────────────────────────────────
@@ -245,15 +277,15 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   }
   for (const e of component.effects) {
     solidImports.push("createEffect");
-    body.push(cStmt({ body: `createEffect(() => { ${e.body.getText()} })` }));
+    body.push(cStmt({ body: `createEffect(${rewriteExpr(e.body, rules)})` }));
   }
   for (const m of component.lifecycle.onMount) {
     solidImports.push("onMount");
-    body.push(cStmt({ body: `onMount(() => { ${m.body.getText()} })` }));
+    body.push(cStmt({ body: `onMount(${rewriteExpr(m.body, rules)})` }));
   }
   for (const c of component.lifecycle.onCleanup) {
     solidImports.push("onCleanup");
-    body.push(cStmt({ body: `onCleanup(() => { ${c.body.getText()} })` }));
+    body.push(cStmt({ body: `onCleanup(${rewriteExpr(c.body, rules)})` }));
   }
   for (const r of component.refs) body.push(cStmt({ body: `let ${r.name}` }));
 

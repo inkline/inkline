@@ -62,8 +62,8 @@ function dedupeByIdAndPath(deps: IRDependency[]): IRDependency[] {
   return [...map.values()];
 }
 
-export function extractDeps(
-  expr: ts.Expression,
+function collectFromBody(
+  body: ts.Node,
   scope: BindingScope,
   checker: ts.TypeChecker,
 ): IRDepResolution {
@@ -131,11 +131,32 @@ export function extractDeps(
     node.forEachChild((c) => walk(c, conditional));
   }
 
-  walk(expr, false);
+  walk(body, false);
   const deduped = dedupeByIdAndPath(deps);
   return {
     deps: Object.freeze(deduped),
     isReactive: deduped.length > 0 || isDynamic,
     isDynamic,
   };
+}
+
+export function extractDeps(
+  expr: ts.Expression,
+  scope: BindingScope,
+  checker: ts.TypeChecker,
+): IRDepResolution {
+  return collectFromBody(expr, scope, checker);
+}
+
+export function extractDepsFromFunctionBody(
+  fn: ts.Expression,
+  scope: BindingScope,
+  checker: ts.TypeChecker,
+): IRDepResolution {
+  if (!ts.isArrowFunction(fn) && !ts.isFunctionExpression(fn)) {
+    return extractDeps(fn, scope, checker);
+  }
+  // Walk the function body directly — `collectFromBody` skips nested function-likes,
+  // but starting from the body (not the function itself) avoids the top-level guard.
+  return collectFromBody(fn.body, scope, checker);
 }

@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import * as ts from "typescript";
 import type { IRReactiveKind, SymbolId } from "../../../ir/reactivity.ts";
-import { extractDeps, type BindingScope } from "./deps.ts";
+import { extractDeps, extractDepsFromFunctionBody, type BindingScope } from "./deps.ts";
 
 function createTestEnv(
   bindings: Record<string, { kind: IRReactiveKind; isSetter?: boolean }>,
@@ -221,5 +221,63 @@ describe("extractDeps", () => {
     expect(result.isReactive).toBe(true);
     expect(result.deps).toHaveLength(1);
     expect(result.deps[0]!.name).toBe("user");
+  });
+});
+
+describe("extractDepsFromFunctionBody", () => {
+  it("extracts deps from arrow with expression body", () => {
+    const { checker, scope, expr } = createTestEnv({ count: { kind: "signal" } }, "() => count()");
+    const result = extractDepsFromFunctionBody(expr, scope, checker);
+    expect(result.isReactive).toBe(true);
+    expect(result.deps).toHaveLength(1);
+    expect(result.deps[0]!.name).toBe("count");
+  });
+
+  it("extracts deps from arrow with block body", () => {
+    const { checker, scope, expr } = createTestEnv(
+      { count: { kind: "signal" } },
+      "() => { console.log(count()); }",
+    );
+    const result = extractDepsFromFunctionBody(expr, scope, checker);
+    expect(result.isReactive).toBe(true);
+    expect(result.deps).toHaveLength(1);
+    expect(result.deps[0]!.name).toBe("count");
+  });
+
+  it("extracts deps from function expression block body", () => {
+    const { checker, scope, expr } = createTestEnv(
+      { count: { kind: "signal" } },
+      "function () { return count(); }",
+    );
+    const result = extractDepsFromFunctionBody(expr, scope, checker);
+    expect(result.isReactive).toBe(true);
+    expect(result.deps).toHaveLength(1);
+    expect(result.deps[0]!.name).toBe("count");
+  });
+
+  it("does not enter nested function expressions inside the body", () => {
+    const { checker, scope, expr } = createTestEnv(
+      { count: { kind: "signal" } },
+      "() => { () => count(); }",
+    );
+    const result = extractDepsFromFunctionBody(expr, scope, checker);
+    expect(result.deps).toHaveLength(0);
+  });
+
+  it("falls back to extractDeps when given a non-function expression", () => {
+    const { checker, scope, expr } = createTestEnv({ count: { kind: "signal" } }, "count() + 1");
+    const result = extractDepsFromFunctionBody(expr, scope, checker);
+    expect(result.deps).toHaveLength(1);
+    expect(result.deps[0]!.name).toBe("count");
+  });
+
+  it("aggregates deps across multiple statements", () => {
+    const { checker, scope, expr } = createTestEnv(
+      { a: { kind: "signal" }, b: { kind: "signal" } },
+      "() => { a(); b(); }",
+    );
+    const result = extractDepsFromFunctionBody(expr, scope, checker);
+    expect(result.deps).toHaveLength(2);
+    expect(result.deps.map((d) => d.name).sort()).toEqual(["a", "b"]);
   });
 });

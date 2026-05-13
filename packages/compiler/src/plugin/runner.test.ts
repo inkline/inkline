@@ -1,9 +1,21 @@
 import { describe, it, expect, vi } from "vitest";
 import { PluginRunner } from "./runner.ts";
+import * as ts from "typescript";
 import type { Plugin, PluginContext } from "./types.ts";
 import type { Diagnostic } from "../core/diagnostics/codes.ts";
 import type { GeneratedFile } from "../codegen/context.ts";
 import { resolveOptions } from "../core/options.ts";
+import type { AnalyzedModule } from "../pipeline/passes/04-analyze/index.ts";
+
+const stubAnalyzed: AnalyzedModule = {
+  module: {
+    fileName: "stub.tsx",
+    components: [],
+    imports: [],
+    sourceFile: ts.createSourceFile("stub.tsx", "", ts.ScriptTarget.Latest, true),
+  },
+  graphs: new Map(),
+};
 
 function makeCtx(): PluginContext & { diags: Diagnostic[] } {
   const diags: Diagnostic[] = [];
@@ -38,7 +50,7 @@ describe("PluginRunner", () => {
         },
       };
       const runner = new PluginRunner([p1, p2]);
-      await runner.invokeIrPost({}, makeCtx());
+      await runner.invokeIrPost(stubAnalyzed, makeCtx());
       expect(order).toEqual(["p1", "p2"]);
     });
 
@@ -54,7 +66,7 @@ describe("PluginRunner", () => {
         },
       };
       const runner = new PluginRunner([p1, p2]);
-      await runner.invokeIrPost({}, makeCtx());
+      await runner.invokeIrPost(stubAnalyzed, makeCtx());
       expect(called).toEqual(["p2"]);
     });
 
@@ -78,7 +90,7 @@ describe("PluginRunner", () => {
         },
       };
       const runner = new PluginRunner([p1, p2]);
-      await runner.invokeIrPost({}, makeCtx());
+      await runner.invokeIrPost(stubAnalyzed, makeCtx());
       expect(order).toEqual(["p1", "p2"]);
     });
 
@@ -99,7 +111,7 @@ describe("PluginRunner", () => {
       };
       const runner = new PluginRunner([p1, p2]);
       const ctx = makeCtx();
-      await runner.invokeIrPost({}, ctx);
+      await runner.invokeIrPost(stubAnalyzed, ctx);
 
       expect(ctx.diags).toHaveLength(1);
       expect(ctx.diags[0]!.code).toBe("INK0090");
@@ -126,7 +138,7 @@ describe("PluginRunner", () => {
         },
       };
       const runner = new PluginRunner([p1, p2]);
-      await runner.invokeIrPost({}, makeCtx());
+      await runner.invokeIrPost(stubAnalyzed, makeCtx());
       expect(called).toEqual(["good"]);
     });
 
@@ -142,7 +154,7 @@ describe("PluginRunner", () => {
         },
       };
       const runner = new PluginRunner([p1]);
-      await runner.invokeIrPost({}, makeCtx());
+      await runner.invokeIrPost(stubAnalyzed, makeCtx());
       expect(called).toEqual(["react-only"]);
     });
 
@@ -159,7 +171,7 @@ describe("PluginRunner", () => {
       const runner = new PluginRunner([p1]);
       const ctx = makeCtx();
       (ctx.options as { verbose: boolean }).verbose = true;
-      await runner.invokeIrPost({}, ctx);
+      await runner.invokeIrPost(stubAnalyzed, ctx);
       expect(spy).toHaveBeenCalled();
       spy.mockRestore();
     });

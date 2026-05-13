@@ -223,7 +223,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   }
   for (const e of component.effects) {
     vueImports.push("watchEffect");
-    scriptBody.push(cStmt({ body: `watchEffect(() => { ${e.body.getText()} })` }));
+    scriptBody.push(cStmt({ body: `watchEffect(${rewriteExpr(e.body, rules)})` }));
   }
   for (const r of component.refs) {
     vueImports.push("ref");
@@ -235,11 +235,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   }
   for (const m of component.lifecycle.onMount) {
     vueImports.push("onMounted");
-    scriptBody.push(cStmt({ body: `onMounted(() => { ${m.body.getText()} })` }));
+    scriptBody.push(cStmt({ body: `onMounted(${rewriteExpr(m.body, rules)})` }));
   }
   for (const c of component.lifecycle.onCleanup) {
     vueImports.push("onUnmounted");
-    scriptBody.push(cStmt({ body: `onUnmounted(() => { ${c.body.getText()} })` }));
+    scriptBody.push(cStmt({ body: `onUnmounted(${rewriteExpr(c.body, rules)})` }));
   }
 
   const unique = [...new Set(vueImports)];

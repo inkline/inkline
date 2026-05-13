@@ -198,9 +198,9 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cStmt({ body: `let ${m.name} = $derived(${rewriteExpr(m.expr.expr, rules)})` }),
     );
   for (const e of component.effects)
-    scriptBody.push(cStmt({ body: `$effect(() => { ${e.body.getText()} })` }));
+    scriptBody.push(cStmt({ body: `$effect(${rewriteExpr(e.body, rules)})` }));
   for (const m of component.lifecycle.onMount)
-    scriptBody.push(cStmt({ body: `$effect(() => { ${m.body.getText()} })` }));
+    scriptBody.push(cStmt({ body: `$effect(${rewriteExpr(m.body, rules)})` }));
   for (const r of component.refs)
     scriptBody.push(
       cStmt({ body: `let ${r.name} = $state<${r.elementType ?? "HTMLElement"} | null>(null)` }),

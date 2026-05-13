@@ -2,6 +2,7 @@ import * as ts from "typescript";
 import { DYNAMIC_DEPS } from "../../../ir/reactivity.ts";
 import type {
   IRComponent,
+  IREffectDeclaration,
   IRExprNode,
   IRModule,
   PrimitiveUsage,
@@ -10,7 +11,7 @@ import { walkRenderTree } from "../../../ir/render/visit.ts";
 import type { Pass } from "../../types.ts";
 import type { TsProgramArtifact } from "../01-program.ts";
 import { bindPrimitives } from "./bind-primitives.ts";
-import { extractDeps } from "./deps.ts";
+import { extractDeps, extractDepsFromFunctionBody } from "./deps.ts";
 import { parseExpression } from "./jsx/index.ts";
 import { findSites } from "./sites.ts";
 import { parseSetup } from "./setup.ts";
@@ -33,7 +34,7 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
       const componentId = `${sourceFile.fileName}#${site.name}`;
 
       // (d) setup
-      const setupResult = parseSetup(site.setupFn, componentId, bindings, sourceFile, ctx);
+      const setupResult = parseSetup(site.setupFn, componentId, bindings, sourceFile, checker, ctx);
 
       // (e) jsx
       const render = setupResult.renderExpr
@@ -97,19 +98,28 @@ function resolveDeps(
   };
 
   for (const memo of component.memos) resolve(memo.expr);
+
+  const writeEffectDeps = (
+    effect: IREffectDeclaration,
+    result: ReturnType<typeof extractDeps>,
+  ): void => {
+    (effect as { deps: typeof result.deps }).deps = result.deps;
+    (effect as { isDynamic: boolean }).isDynamic = result.isDynamic;
+  };
+
   for (const effect of component.effects) {
-    if (ts.isArrowFunction(effect.body) || ts.isFunctionExpression(effect.body)) {
-      const body = effect.body;
-      const syntheticExpr: IRExprNode = {
-        kind: "Expression",
-        expr: body,
-        deps: DYNAMIC_DEPS,
-        isReactive: false,
-        emissionContext: "setup",
-        isDynamic: false,
-        loc: component.loc,
-      };
-      resolve(syntheticExpr);
+    if (effect.deps === DYNAMIC_DEPS) {
+      writeEffectDeps(effect, extractDepsFromFunctionBody(effect.body, scope, checker));
+    }
+  }
+  for (const m of component.lifecycle.onMount) {
+    if (m.deps === DYNAMIC_DEPS) {
+      writeEffectDeps(m, extractDepsFromFunctionBody(m.body, scope, checker));
+    }
+  }
+  for (const c of component.lifecycle.onCleanup) {
+    if (c.deps === DYNAMIC_DEPS) {
+      writeEffectDeps(c, extractDepsFromFunctionBody(c.body, scope, checker));
     }
   }
 

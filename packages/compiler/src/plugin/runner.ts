@@ -1,6 +1,7 @@
 import { DIAGNOSTICS, type Diagnostic } from "../core/diagnostics/codes.ts";
 import type { GeneratedFile, TargetName } from "../codegen/context.ts";
 import { UNKNOWN_LOCATION } from "../ir/types.ts";
+import type { AnalyzedModule } from "../pipeline/passes/04-analyze/index.ts";
 import type { Plugin, PluginContext } from "./types.ts";
 
 function makeErrorDiagnostic(pluginName: string, err: unknown): Diagnostic {
@@ -18,7 +19,7 @@ function makeErrorDiagnostic(pluginName: string, err: unknown): Diagnostic {
 export class PluginRunner {
   constructor(private readonly plugins: readonly Plugin[]) {}
 
-  async invokeIrPost(module: unknown, ctx: PluginContext): Promise<void> {
+  async invokeIrPost(module: AnalyzedModule, ctx: PluginContext): Promise<void> {
     for (const plugin of this.plugins) {
       const fn = plugin.hooks["ir:post"];
       if (!fn) continue;

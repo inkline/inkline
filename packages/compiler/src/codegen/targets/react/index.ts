@@ -184,7 +184,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   }
   for (const e of component.effects) {
     reactImports.push("useEffect");
-    body.push(cStmt({ body: `useEffect(() => { ${e.body.getText()} }, ${depsList(e.deps)})` }));
+    body.push(cStmt({ body: `useEffect(${rewriteExpr(e.body, rules)}, ${depsList(e.deps)})` }));
   }
   for (const r of component.refs) {
     reactImports.push("useRef");
@@ -194,11 +194,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   }
   for (const m of component.lifecycle.onMount) {
     reactImports.push("useEffect");
-    body.push(cStmt({ body: `useEffect(() => { ${m.body.getText()} }, [])` }));
+    body.push(cStmt({ body: `useEffect(${rewriteExpr(m.body, rules)}, [])` }));
   }
   for (const c of component.lifecycle.onCleanup) {
     reactImports.push("useEffect");
-    body.push(cStmt({ body: `useEffect(() => { return () => { ${c.body.getText()} } }, [])` }));
+    body.push(cStmt({ body: `useEffect(() => ${rewriteExpr(c.body, rules)}, [])` }));
   }
 
   const unique = [...new Set(reactImports)];

@@ -2,23 +2,19 @@ import type { Diagnostic } from "../core/diagnostics/codes.ts";
 import { createDiagnosticCollector } from "../core/diagnostics/collector.ts";
 import { resolveOptions, type InklineConfig } from "../core/options.ts";
 import { SymbolTable } from "../ir/reactivity.ts";
-import type { IRComponent, IRModule } from "../ir/render/nodes.ts";
+import type { IRComponent } from "../ir/render/nodes.ts";
 import type { GeneratedFile, Target, TargetName } from "../codegen/context.ts";
 import { print } from "../codegen/print/printer.ts";
 import { PluginRunner } from "../plugin/runner.ts";
 import type { PluginContext } from "../plugin/types.ts";
-import type { ReactivityGraph } from "./passes/04-analyze/graph.ts";
+import { analyzePass, type AnalyzedModule } from "./passes/04-analyze/index.ts";
 import { programPass, type CompileInput } from "./passes/01-program.ts";
 import { parsePass } from "./passes/02-parse/index.ts";
 import { lower } from "./passes/03-lower/index.ts";
 import type { PassContext } from "./types.ts";
 
 export type { CompileInput } from "./passes/01-program.ts";
-
-export interface AnalyzedModule {
-  readonly module: IRModule;
-  readonly graphs: ReadonlyMap<string, ReactivityGraph>;
-}
+export type { AnalyzedModule } from "./passes/04-analyze/index.ts";
 
 export interface CompileResult {
   readonly module?: AnalyzedModule;
@@ -65,8 +61,8 @@ export async function compile(
   // P3: lower (normalize control flow, slots, bindings, static marks)
   const module = lower(rawModule, ctx);
 
-  // P4 analyze — stub (graph built on demand)
-  const analyzedModule: AnalyzedModule = { module, graphs: new Map() };
+  // P4: analyze (reactivity graph + validation + cycle detection)
+  const analyzedModule = await analyzePass.run(module, ctx);
 
   // Plugin runner
   const runner = new PluginRunner(options.plugins);
