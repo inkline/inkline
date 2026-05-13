@@ -2,8 +2,11 @@ import type { Diagnostic } from "../core/diagnostics/codes.ts";
 import { createDiagnosticCollector } from "../core/diagnostics/collector.ts";
 import { resolveOptions, type InklineConfig } from "../core/options.ts";
 import { SymbolTable } from "../ir/reactivity.ts";
-import type { IRModule } from "../ir/render/nodes.ts";
-import type { GeneratedFile, TargetName } from "../codegen/context.ts";
+import type { IRComponent, IRModule } from "../ir/render/nodes.ts";
+import type { GeneratedFile, Target, TargetName } from "../codegen/context.ts";
+import { print } from "../codegen/print/printer.ts";
+import { PluginRunner } from "../plugin/runner.ts";
+import type { PluginContext } from "../plugin/types.ts";
 import type { ReactivityGraph } from "./passes/04-analyze/graph.ts";
 import { programPass, type CompileInput } from "./passes/01-program.ts";
 import type { PassContext } from "./types.ts";
@@ -19,6 +22,21 @@ export interface CompileResult {
   readonly module?: AnalyzedModule;
   readonly files: Readonly<Partial<Record<TargetName, readonly GeneratedFile[]>>>;
   readonly diagnostics: readonly Diagnostic[];
+}
+
+function emitComponent(component: IRComponent, target: Target, ctx: PassContext): GeneratedFile {
+  const codeModule = target.emit(component, {
+    diagnostics: ctx.diagnostics,
+    options: ctx.options,
+    symbols: ctx.symbols,
+    rewrites: target.rewrites,
+  });
+  const result = print(codeModule.root, { sourceMap: ctx.options.sourceMap });
+  return {
+    path: codeModule.fileName,
+    contents: result.code,
+    sourceMap: result.map,
+  };
 }
 
 export async function compile(
@@ -37,13 +55,57 @@ export async function compile(
   };
 
   // P1: create TS program
-  await programPass.run(input, ctx);
+  const artifact = await programPass.run(input, ctx);
 
-  // P2 parse, P3 lower, P4 analyze — added in Phases E/F
-  // P5 emit, P6 print — added in Phase G/H
+  // P2 parse, P3 lower — not yet implemented; empty module
+  const module: IRModule = {
+    fileName: input.fileName,
+    components: [],
+    imports: [],
+    sourceFile: artifact.sourceFile,
+  };
+
+  // P4 analyze — stub
+  const analyzedModule: AnalyzedModule = { module, graphs: new Map() };
+
+  // Plugin runner
+  const runner = new PluginRunner(options.plugins);
+  const pluginCtx: PluginContext = {
+    pushDiagnostic: (d) => diagnostics.pushFrom([d]),
+    options,
+  };
+
+  // ir:post hook (after P4)
+  await runner.invokeIrPost(analyzedModule, pluginCtx);
+
+  // P5 emit + P6 print per target, with H3 error recovery
+  const files: Partial<Record<TargetName, GeneratedFile[]>> = {};
+
+  for (const targetName of options.targets) {
+    const target = options.registry.get(targetName);
+    if (!target) continue;
+
+    const targetFiles: GeneratedFile[] = [];
+
+    for (const component of module.components) {
+      try {
+        targetFiles.push(emitComponent(component, target, ctx));
+      } catch (err) {
+        diagnostics.push("INK0100", component.loc, {
+          name: component.name,
+          message: err instanceof Error ? err.message : String(err),
+        });
+      }
+    }
+
+    // code:post hook (after P6 per target)
+    const finalFiles = await runner.invokeCodePost(targetName, targetFiles, pluginCtx);
+    files[targetName] = [...finalFiles];
+  }
 
   return {
-    files: {},
+    module: analyzedModule,
+    files,
     diagnostics: diagnostics.freeze(),
   };
 }
