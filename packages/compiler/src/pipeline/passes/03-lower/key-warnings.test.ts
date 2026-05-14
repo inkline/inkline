@@ -41,6 +41,7 @@ function makeComp(render: IRFor): IRComponent {
     setup: [],
     render,
     primitives: [],
+    styles: [],
     targetOverrides: {},
   };
 }

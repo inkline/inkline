@@ -14,6 +14,7 @@ import {
   cTmplMustache,
   cTmplDirective,
   cGroup,
+  cStyle,
 } from "../../code-ir/builders.ts";
 import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
 import { assertNever } from "../../../core/assert.ts";
@@ -223,6 +224,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cScript({ lang: "ts", setup: false, children: scriptBody }),
       cRaw({ text: "" }),
       renderTree,
+      ...component.styles.map((s) => cStyle({ css: s.css, scoped: true })),
     ],
   });
   return { componentName: component.name, root: file, fileName: `${component.name}.svelte` };

@@ -310,11 +310,17 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ? [cImport({ module: "solid-js", named: unique.map((i) => ({ imported: i })) })]
       : [];
 
+  const styleImport =
+    component.styles.length > 0
+      ? [cRaw({ text: `import styles from "./${component.name}.module.css";` })]
+      : [];
+
   const renderTree = emitNode(component.render, rules);
   const file = cFile({
     flavor: "tsx",
     children: [
       ...imports,
+      ...styleImport,
       cRaw({ text: "" }),
       cStmt({
         body: `export default function ${component.name}(props: ${buildSolidPropsType(component)})`,

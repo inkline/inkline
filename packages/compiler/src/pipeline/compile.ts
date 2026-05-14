@@ -22,7 +22,7 @@ export interface CompileResult {
   readonly diagnostics: readonly Diagnostic[];
 }
 
-function emitComponent(component: IRComponent, target: Target, ctx: PassContext): GeneratedFile {
+function emitComponent(component: IRComponent, target: Target, ctx: PassContext): GeneratedFile[] {
   const codeModule = target.emit(component, {
     diagnostics: ctx.diagnostics,
     options: ctx.options,
@@ -30,11 +30,25 @@ function emitComponent(component: IRComponent, target: Target, ctx: PassContext)
     rewrites: target.rewrites,
   });
   const result = print(codeModule.root, { sourceMap: ctx.options.sourceMap });
-  return {
-    path: codeModule.fileName,
-    contents: result.code,
-    sourceMap: result.map,
-  };
+  const files: GeneratedFile[] = [
+    {
+      path: codeModule.fileName,
+      contents: result.code,
+      sourceMap: result.map,
+    },
+  ];
+
+  for (const style of component.styles) {
+    const isCssModule = target.name === "react" || target.name === "solid";
+    if (isCssModule) {
+      files.push({
+        path: `${component.name}.module.css`,
+        contents: style.css,
+      });
+    }
+  }
+
+  return files;
 }
 
 export async function compile(
@@ -114,7 +128,7 @@ export async function compile(
 
     for (const component of module.components) {
       try {
-        targetFiles.push(emitComponent(component, target, ctx));
+        targetFiles.push(...emitComponent(component, target, ctx));
       } catch (err) {
         diagnostics.push("INK0100", component.loc, {
           name: component.name,

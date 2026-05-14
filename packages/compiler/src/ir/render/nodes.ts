@@ -251,6 +251,13 @@ export interface IRSetupStatement {
 
 // ── IRComponent and IRModule ────────────────────────────────────────
 
+export interface IRStyleBlock {
+  readonly css: string;
+  readonly scoped: boolean;
+  readonly lang: "css" | "scss" | "less";
+  readonly loc: SourceLocation;
+}
+
 export interface IRComponent {
   readonly kind: "Component";
   readonly id: string;
@@ -268,6 +275,7 @@ export interface IRComponent {
   readonly render: IRNode;
   readonly primitives: readonly PrimitiveUsage[];
   readonly expose?: readonly string[];
+  readonly styles: readonly IRStyleBlock[];
   readonly targetOverrides: Readonly<Partial<Record<TargetName, IRTargetOverride>>>;
 }
 

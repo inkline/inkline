@@ -34,6 +34,7 @@ function visitChildren(node: Code, visitor: CodeVisitor): void {
     case "CTmplDirective":
     case "CTmplAttr":
     case "CJsxAttr":
+    case "CStyle":
       break;
     case "CStmt":
       if (typeof node.body !== "string") {

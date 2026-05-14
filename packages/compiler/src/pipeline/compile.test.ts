@@ -287,6 +287,7 @@ describe("compile error recovery (H3)", () => {
       setup: [],
       render: { kind: "Text" as const, value: "", loc: UNKNOWN_LOCATION },
       primitives: [],
+      styles: [],
       targetOverrides: {},
     };
 

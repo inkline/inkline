@@ -74,6 +74,7 @@ async function main() {
 
       let targetErrors = 0;
       for (const file of files) {
+        if (file.path.endsWith(".css")) continue;
         const diags = runConformanceInvariants(target.conformance.invariants, file);
         if (diags.length > 0) {
           console.error(`  ✗ ${fixture} → ${targetName}/${file.path}`);

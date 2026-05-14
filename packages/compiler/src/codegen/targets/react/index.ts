@@ -282,12 +282,18 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     ? `export const ${component.name} = forwardRef(function ${component.name}(props: ${propsType}, ref)`
     : `export function ${component.name}(props: ${propsType})`;
 
+  const styleImport =
+    component.styles.length > 0
+      ? [cRaw({ text: `import styles from "./${component.name}.module.css";` })]
+      : [];
+
   const file = cFile({
     flavor: "tsx",
     children: [
       cRaw({ text: '"use client";' }),
       cRaw({ text: "" }),
       ...updatedImports,
+      ...styleImport,
       cRaw({ text: "" }),
       cStmt({ body: signature }),
       cRaw({ text: "{" }),

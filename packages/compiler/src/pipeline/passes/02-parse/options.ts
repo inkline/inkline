@@ -5,6 +5,7 @@ import type {
   IRExprNode,
   IRProp,
   IRSlotDeclaration,
+  IRStyleBlock,
 } from "../../../ir/render/nodes.ts";
 import type { PassContext } from "../../types.ts";
 import { toLoc } from "./loc.ts";
@@ -13,6 +14,7 @@ export interface ParsedOptions {
   readonly props: IRProp[];
   readonly slots: IRSlotDeclaration[];
   readonly events: IREventDeclaration[];
+  readonly styles: IRStyleBlock[];
 }
 
 function makeExprNode(expr: ts.Expression, sf: ts.SourceFile): IRExprNode {
@@ -36,6 +38,7 @@ export function parseOptions(
   const props: IRProp[] = [];
   const slots: IRSlotDeclaration[] = [];
   const events: IREventDeclaration[] = [];
+  const styles: IRStyleBlock[] = [];
 
   for (const prop of options.properties) {
     if (!ts.isPropertyAssignment(prop) || !ts.isIdentifier(prop.name)) continue;
@@ -50,10 +53,45 @@ export function parseOptions(
       case "events":
         events.push(...parseEventsFromObject(prop.initializer, sourceFile));
         break;
+      case "style": {
+        const style = parseStyleFromValue(prop.initializer, sourceFile);
+        if (style) styles.push(style);
+        break;
+      }
     }
   }
 
-  return { props, slots, events };
+  return { props, slots, events, styles };
+}
+
+function parseStyleFromValue(
+  value: ts.Expression,
+  sourceFile: ts.SourceFile,
+): IRStyleBlock | undefined {
+  if (ts.isStringLiteral(value) || ts.isNoSubstitutionTemplateLiteral(value)) {
+    return {
+      css: value.text,
+      scoped: true,
+      lang: "css",
+      loc: toLoc(value, sourceFile),
+    };
+  }
+  if (ts.isTaggedTemplateExpression(value)) {
+    const tag = value.tag;
+    if (ts.isIdentifier(tag) && tag.text === "css") {
+      const template = value.template;
+      const css = ts.isNoSubstitutionTemplateLiteral(template)
+        ? template.text
+        : template.head.text + template.templateSpans.map((s) => s.literal.text).join("");
+      return {
+        css,
+        scoped: true,
+        lang: "css",
+        loc: toLoc(value, sourceFile),
+      };
+    }
+  }
+  return undefined;
 }
 
 function parsePropsFromObject(

@@ -46,6 +46,7 @@ export type {
   IRRefCategory,
   IREffectCleanup,
   IRComponent,
+  IRStyleBlock,
   IRTargetOverride,
   IRModule,
   PrimitiveName,
@@ -126,6 +127,7 @@ export type {
   CTmplMustache,
   CGroup,
   CIndent,
+  CStyle,
 } from "./codegen/code-ir/nodes.ts";
 export {
   cFile,
@@ -144,6 +146,7 @@ export {
   cTmplMustache,
   cGroup,
   cIndent,
+  cStyle,
 } from "./codegen/code-ir/builders.ts";
 
 // ============ PRINTER ============

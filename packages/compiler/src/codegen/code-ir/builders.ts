@@ -11,6 +11,7 @@ import type {
   CRaw,
   CScript,
   CStmt,
+  CStyle,
   CTmplAttr,
   CTmplDirective,
   CTmplElement,
@@ -148,4 +149,8 @@ export function cGroup(init: {
 
 export function cIndent(init: { children: readonly Code[]; span?: SourceLocation }): CIndent {
   return { kind: "CIndent", ...init };
+}
+
+export function cStyle(init: { css: string; scoped: boolean; span?: SourceLocation }): CStyle {
+  return { kind: "CStyle", ...init };
 }

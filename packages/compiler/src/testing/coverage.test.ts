@@ -43,6 +43,7 @@ function makeComp(render: ReturnType<typeof createElement>): IRComponent {
     setup: [],
     render,
     primitives: [],
+    styles: [],
     targetOverrides: {},
   };
 }

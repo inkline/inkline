@@ -52,6 +52,7 @@ function makeComp(render: IRComponentInstance): IRComponent {
     setup: [],
     render,
     primitives: [],
+    styles: [],
     targetOverrides: {},
   };
 }
@@ -413,6 +414,7 @@ describe("controlFlow", () => {
         setup: [],
         render: expr,
         primitives: [],
+        styles: [],
         targetOverrides: {},
       };
       const ctx = makeCtx();

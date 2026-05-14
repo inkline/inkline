@@ -46,6 +46,7 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         parsePropsFromParameterType(site.setupFn, componentId, sourceFile, ctx);
       const slots = optionsResult?.slots ?? [];
       const events = optionsResult?.events ?? [];
+      const styles = optionsResult?.styles ?? [];
 
       // (d) setup
       const setupResult = parseSetup(site.setupFn, componentId, bindings, sourceFile, checker, ctx);
@@ -80,6 +81,7 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         setup: setupResult.setup,
         render,
         primitives,
+        styles,
         targetOverrides: {},
       };
 

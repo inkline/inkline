@@ -11,6 +11,7 @@ import type {
   CJsxElement,
   CScript,
   CStmt,
+  CStyle,
   CTmplAttr,
   CTmplDirective,
   CTmplElement,
@@ -138,6 +139,9 @@ class Printer {
         break;
       case "CIndent":
         this.emitIndent(node);
+        break;
+      case "CStyle":
+        this.emitStyle(node);
         break;
       default:
         assertNever(node);
@@ -304,6 +308,19 @@ class Printer {
       this.emit(child);
     }
     this.depth--;
+  }
+
+  private emitStyle(node: CStyle): void {
+    const tag = node.scoped ? "<style scoped>" : "<style>";
+    this.ensureNewline();
+    this.write(tag);
+    this.writeLine();
+    for (const line of node.css.split("\n")) {
+      this.write(`  ${line}`);
+      this.writeLine();
+    }
+    this.write("</style>");
+    this.writeLine();
   }
 
   result(file?: string): PrintResult {

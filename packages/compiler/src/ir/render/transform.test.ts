@@ -39,6 +39,7 @@ function makeComponent(render: IRNode): IRComponent {
     setup: [],
     render,
     primitives: [],
+    styles: [],
     targetOverrides: {},
   };
 }

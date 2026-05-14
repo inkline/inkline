@@ -155,4 +155,7 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   SlotWithDefault: [{ name: "renders structure", asserts: { textOf: { p: "Default content" } } }],
   ControlledTextarea: [{ name: "initial empty", asserts: { textOf: { p: "0 characters" } } }],
   DynamicList: [{ name: "initial empty list", asserts: {} }],
+
+  // ── Scoped CSS ──
+  ScopedStyle: [{ name: "renders with style", asserts: { textOf: { h1: "Hello" } } }],
 };

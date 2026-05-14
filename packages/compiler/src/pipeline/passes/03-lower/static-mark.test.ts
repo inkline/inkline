@@ -34,6 +34,7 @@ function makeComp(render: IRElement): IRComponent {
     setup: [],
     render,
     primitives: [],
+    styles: [],
     targetOverrides: {},
   };
 }

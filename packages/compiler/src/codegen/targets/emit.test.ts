@@ -79,6 +79,7 @@ function makeComp(name: string, render: IRNode): IRComponent {
     setup: [],
     render,
     primitives: [],
+    styles: [],
     targetOverrides: {},
   };
 }

@@ -123,6 +123,12 @@ export interface CIndent extends CNodeBase {
 
 // ── Discriminated union ─────────────────────────────────────────────
 
+export interface CStyle extends CNodeBase {
+  readonly kind: "CStyle";
+  readonly css: string;
+  readonly scoped: boolean;
+}
+
 export type Code =
   | CFile
   | CScript
@@ -139,4 +145,5 @@ export type Code =
   | CTmplText
   | CTmplMustache
   | CGroup
-  | CIndent;
+  | CIndent
+  | CStyle;

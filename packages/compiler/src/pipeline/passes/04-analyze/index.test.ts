@@ -45,6 +45,7 @@ function makeComp(overrides: Partial<IRComponent> = {}): IRComponent {
     setup: [],
     render: { kind: "Text", value: "", loc: UNKNOWN_LOCATION },
     primitives: [],
+    styles: [],
     targetOverrides: {},
     ...overrides,
   };

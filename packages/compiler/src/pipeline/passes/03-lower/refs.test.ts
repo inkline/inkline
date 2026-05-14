@@ -49,6 +49,7 @@ function makeComp(render: IRElement, refDecls: IRRefDeclaration[] = []): IRCompo
     setup: [],
     render,
     primitives: [],
+    styles: [],
     targetOverrides: {},
   };
 }
