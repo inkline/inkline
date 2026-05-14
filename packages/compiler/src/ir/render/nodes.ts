@@ -76,6 +76,7 @@ export interface IRText {
 export interface IRExprNode {
   readonly kind: "Expression";
   readonly expr: ts.Expression;
+  readonly raw?: string;
   readonly deps: IRDependencySet;
   readonly isReactive: boolean;
   readonly emissionContext: "template" | "setup";

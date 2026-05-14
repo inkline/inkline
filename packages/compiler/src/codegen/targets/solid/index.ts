@@ -280,34 +280,39 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     body.push(
       cStmt({
         body: `const [${s.name}, ${s.setterName}] = createSignal(${rewriteExpr(s.initial.expr, rules)})`,
+        span: s.loc,
       }),
     );
   }
   for (const m of component.memos) {
     solidImports.push("createMemo");
     body.push(
-      cStmt({ body: `const ${m.name} = createMemo(() => ${rewriteExpr(m.expr.expr, rules)})` }),
+      cStmt({
+        body: `const ${m.name} = createMemo(() => ${rewriteExpr(m.expr.expr, rules)})`,
+        span: m.loc,
+      }),
     );
   }
   for (const e of component.effects) {
     solidImports.push("createEffect");
-    body.push(cStmt({ body: `createEffect(${rewriteExpr(e.body, rules)})` }));
+    body.push(cStmt({ body: `createEffect(${rewriteExpr(e.body, rules)})`, span: e.loc }));
   }
   for (const res of component.resources) {
     solidImports.push("createResource");
     body.push(
       cStmt({
         body: `const [${res.name}, { ${res.loadingName}: loading, ${res.errorName}: error, ${res.refetchName}: refetch }] = createResource(${rewriteExpr(res.fetcher.expr, rules)})`,
+        span: res.loc,
       }),
     );
   }
   for (const m of component.lifecycle.onMount) {
     solidImports.push("onMount");
-    body.push(cStmt({ body: `onMount(${rewriteExpr(m.body, rules)})` }));
+    body.push(cStmt({ body: `onMount(${rewriteExpr(m.body, rules)})`, span: m.loc }));
   }
   for (const c of component.lifecycle.onCleanup) {
     solidImports.push("onCleanup");
-    body.push(cStmt({ body: `onCleanup(${rewriteExpr(c.body, rules)})` }));
+    body.push(cStmt({ body: `onCleanup(${rewriteExpr(c.body, rules)})`, span: c.loc }));
   }
   for (const r of component.refs) body.push(cStmt({ body: `let ${r.name}` }));
 

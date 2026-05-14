@@ -217,23 +217,29 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   for (const s of component.state) {
     vueImports.push("ref");
     scriptBody.push(
-      cStmt({ body: `const ${s.name} = ref(${rewriteExpr(s.initial.expr, rules)})` }),
+      cStmt({ body: `const ${s.name} = ref(${rewriteExpr(s.initial.expr, rules)})`, span: s.loc }),
     );
   }
   for (const m of component.memos) {
     vueImports.push("computed");
     scriptBody.push(
-      cStmt({ body: `const ${m.name} = computed(() => ${rewriteExpr(m.expr.expr, rules)})` }),
+      cStmt({
+        body: `const ${m.name} = computed(() => ${rewriteExpr(m.expr.expr, rules)})`,
+        span: m.loc,
+      }),
     );
   }
   for (const e of component.effects) {
     vueImports.push("watchEffect");
-    scriptBody.push(cStmt({ body: `watchEffect(${rewriteExpr(e.body, rules)})` }));
+    scriptBody.push(cStmt({ body: `watchEffect(${rewriteExpr(e.body, rules)})`, span: e.loc }));
   }
   for (const res of component.resources) {
     vueImports.push("ref");
     scriptBody.push(
-      cStmt({ body: `const ${res.name} = ref(await (${rewriteExpr(res.fetcher.expr, rules)})())` }),
+      cStmt({
+        body: `const ${res.name} = ref(await (${rewriteExpr(res.fetcher.expr, rules)})())`,
+        span: res.loc,
+      }),
     );
   }
   for (const r of component.refs) {
@@ -241,16 +247,17 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     scriptBody.push(
       cStmt({
         body: `const ${r.name} = ref${r.elementType ? `<${r.elementType} | null>` : ""}(null)`,
+        span: r.loc,
       }),
     );
   }
   for (const m of component.lifecycle.onMount) {
     vueImports.push("onMounted");
-    scriptBody.push(cStmt({ body: `onMounted(${rewriteExpr(m.body, rules)})` }));
+    scriptBody.push(cStmt({ body: `onMounted(${rewriteExpr(m.body, rules)})`, span: m.loc }));
   }
   for (const c of component.lifecycle.onCleanup) {
     vueImports.push("onUnmounted");
-    scriptBody.push(cStmt({ body: `onUnmounted(${rewriteExpr(c.body, rules)})` }));
+    scriptBody.push(cStmt({ body: `onUnmounted(${rewriteExpr(c.body, rules)})`, span: c.loc }));
   }
 
   if (component.expose && component.expose.length > 0) {

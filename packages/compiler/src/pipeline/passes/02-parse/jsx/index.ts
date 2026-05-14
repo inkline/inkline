@@ -8,6 +8,7 @@ function makeExpr(expr: ts.Expression, sf: ts.SourceFile): IRExprNode {
   return {
     kind: "Expression",
     expr,
+    raw: expr.getText(sf),
     deps: DYNAMIC_DEPS,
     isReactive: false,
     emissionContext: "template",

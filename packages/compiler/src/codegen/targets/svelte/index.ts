@@ -197,25 +197,35 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   }
   for (const s of component.state)
     scriptBody.push(
-      cStmt({ body: `let ${s.name} = $state(${rewriteExpr(s.initial.expr, rules)})` }),
+      cStmt({
+        body: `let ${s.name} = $state(${rewriteExpr(s.initial.expr, rules)})`,
+        span: s.loc,
+      }),
     );
   for (const m of component.memos)
     scriptBody.push(
-      cStmt({ body: `let ${m.name} = $derived(${rewriteExpr(m.expr.expr, rules)})` }),
+      cStmt({
+        body: `let ${m.name} = $derived(${rewriteExpr(m.expr.expr, rules)})`,
+        span: m.loc,
+      }),
     );
   for (const e of component.effects)
-    scriptBody.push(cStmt({ body: `$effect(${rewriteExpr(e.body, rules)})` }));
+    scriptBody.push(cStmt({ body: `$effect(${rewriteExpr(e.body, rules)})`, span: e.loc }));
   for (const res of component.resources)
     scriptBody.push(
       cStmt({
         body: `let ${res.name} = $state(await (${rewriteExpr(res.fetcher.expr, rules)})())`,
+        span: res.loc,
       }),
     );
   for (const m of component.lifecycle.onMount)
-    scriptBody.push(cStmt({ body: `$effect(${rewriteExpr(m.body, rules)})` }));
+    scriptBody.push(cStmt({ body: `$effect(${rewriteExpr(m.body, rules)})`, span: m.loc }));
   for (const r of component.refs)
     scriptBody.push(
-      cStmt({ body: `let ${r.name} = $state<${r.elementType ?? "HTMLElement"} | null>(null)` }),
+      cStmt({
+        body: `let ${r.name} = $state<${r.elementType ?? "HTMLElement"} | null>(null)`,
+        span: r.loc,
+      }),
     );
   if (component.expose) {
     for (const name of component.expose) {

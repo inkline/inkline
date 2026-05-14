@@ -65,6 +65,9 @@ export { IR_VERSION } from "./ir/render/nodes.ts";
 // ============ IR — MIGRATION ============
 export { migrate, registerMigration, type IRMigration } from "./ir/migration.ts";
 
+// ============ IR — SERIALIZATION ============
+export { serializeModule, deserializeModule } from "./ir/serialize.ts";
+
 // ============ IR — BUILDERS ============
 export {
   createElement,
