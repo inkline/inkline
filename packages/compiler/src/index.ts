@@ -51,6 +51,10 @@ export type {
   PrimitiveName,
   PrimitiveUsage,
 } from "./ir/render/nodes.ts";
+export { IR_VERSION } from "./ir/render/nodes.ts";
+
+// ============ IR — MIGRATION ============
+export { migrate, registerMigration, type IRMigration } from "./ir/migration.ts";
 
 // ============ IR — BUILDERS ============
 export {

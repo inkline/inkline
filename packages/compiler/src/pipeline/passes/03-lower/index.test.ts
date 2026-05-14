@@ -22,6 +22,7 @@ function makeCtx(): PassContext {
 function makeModule(components: IRComponent[]): IRModule {
   const sf = ts.createSourceFile("t.tsx", "", ts.ScriptTarget.Latest, true);
   return {
+    version: 1,
     fileName: "t.tsx",
     components,
     imports: [],

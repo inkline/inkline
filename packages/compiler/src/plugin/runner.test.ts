@@ -9,6 +9,7 @@ import type { AnalyzedModule } from "../pipeline/passes/04-analyze/index.ts";
 
 const stubAnalyzed: AnalyzedModule = {
   module: {
+    version: 1,
     fileName: "stub.tsx",
     components: [],
     imports: [],

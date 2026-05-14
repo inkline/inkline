@@ -1,12 +1,13 @@
 import * as ts from "typescript";
 import { DYNAMIC_DEPS } from "../../../ir/reactivity.ts";
-import type {
-  IRComponent,
-  IREffectDeclaration,
-  IRExprNode,
-  IRModule,
-  IRProp,
-  PrimitiveUsage,
+import {
+  IR_VERSION,
+  type IRComponent,
+  type IREffectDeclaration,
+  type IRExprNode,
+  type IRModule,
+  type IRProp,
+  type PrimitiveUsage,
 } from "../../../ir/render/nodes.ts";
 import { walkRenderTree } from "../../../ir/render/visit.ts";
 import type { Pass } from "../../types.ts";
@@ -91,6 +92,7 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
     const importDecls = sourceFile.statements.filter(ts.isImportDeclaration);
 
     return {
+      version: IR_VERSION,
       fileName: sourceFile.fileName,
       components,
       imports: [...importDecls],

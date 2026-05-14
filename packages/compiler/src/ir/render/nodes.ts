@@ -275,7 +275,10 @@ export interface IRTargetOverride {
   readonly render?: IRNode;
 }
 
+export const IR_VERSION = 1;
+
 export interface IRModule {
+  readonly version: number;
   readonly fileName: string;
   readonly components: readonly IRComponent[];
   readonly imports: readonly ts.ImportDeclaration[];
