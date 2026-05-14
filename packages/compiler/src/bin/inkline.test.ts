@@ -1,8 +1,8 @@
 import { describe, it, expect } from "vitest";
-import { execFileSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { existsSync, rmSync } from "node:fs";
+import { existsSync, rmSync, writeFileSync, mkdirSync } from "node:fs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const CLI_PATH = resolve(__dirname, "inkline.ts");
@@ -10,22 +10,16 @@ const FIXTURES_DIR = resolve(__dirname, "..", "__fixtures__");
 const TMP_OUT = resolve(__dirname, "..", "..", ".tmp-cli-test");
 
 function run(...args: string[]): { stdout: string; stderr: string; status: number } {
-  try {
-    const stdout = execFileSync("npx", ["tsx", CLI_PATH, ...args], {
-      encoding: "utf-8",
-      cwd: resolve(__dirname, "..", ".."),
-      timeout: 30_000,
-      stdio: ["pipe", "pipe", "pipe"],
-    });
-    return { stdout, stderr: "", status: 0 };
-  } catch (err: unknown) {
-    const e = err as { stdout?: string; stderr?: string; status?: number };
-    return {
-      stdout: e.stdout ?? "",
-      stderr: e.stderr ?? "",
-      status: e.status ?? 1,
-    };
-  }
+  const result = spawnSync("npx", ["tsx", CLI_PATH, ...args], {
+    encoding: "utf-8",
+    cwd: resolve(__dirname, "..", ".."),
+    timeout: 30_000,
+  });
+  return {
+    stdout: result.stdout ?? "",
+    stderr: result.stderr ?? "",
+    status: result.status ?? 1,
+  };
 }
 
 describe("inkline CLI", () => {
@@ -84,5 +78,52 @@ describe("inkline CLI", () => {
       "react",
     );
     expect(status).toBe(0);
+  });
+
+  it("help build mentions --config", () => {
+    const { stdout } = run("help", "build");
+    expect(stdout).toContain("--config");
+  });
+
+  it("build with --config loads targets from config file", () => {
+    const configDir = resolve(TMP_OUT, "config-test");
+    const configPath = resolve(configDir, "inkline.config.mjs");
+    const outDir = resolve(configDir, "out");
+    try {
+      mkdirSync(configDir, { recursive: true });
+      writeFileSync(
+        configPath,
+        `export default { targets: ["react"], outDir: ${JSON.stringify(outDir)} };\n`,
+        "utf-8",
+      );
+      const { status } = run(
+        "build",
+        resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+        "--config",
+        configPath,
+      );
+      expect(status).toBe(0);
+    } finally {
+      if (existsSync(configDir)) rmSync(configDir, { recursive: true });
+    }
+  });
+
+  it("build with nonexistent --config prints error and falls back to CLI flags", () => {
+    const { status, stderr } = run(
+      "build",
+      resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+      "--config",
+      "/nonexistent/inkline.config.ts",
+      "--target",
+      "react",
+      "--out-dir",
+      TMP_OUT,
+    );
+    try {
+      expect(stderr).toContain("Config file not found");
+      expect(status).toBe(0);
+    } finally {
+      if (existsSync(TMP_OUT)) rmSync(TMP_OUT, { recursive: true });
+    }
   });
 });

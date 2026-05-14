@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
-import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { resolve, dirname, basename, extname } from "node:path";
 import { compile } from "../pipeline/compile.ts";
+import type { InklineConfig } from "../core/options.ts";
 import type { TargetName } from "../codegen/context.ts";
 import type { Diagnostic } from "../core/diagnostics/codes.ts";
 
@@ -21,6 +22,7 @@ Options:
   --target <name>[,<name>...]  Comma-separated targets. Required.
   --out-dir <path>             Output directory. Default: dist.
   --source-map <mode>          external | inline | none. Default: external.
+  --config <path>              Path to config file. Auto-detects inkline.config.{ts,js,mjs}.
   --verbose                    Verbose plugin error logs.`);
     return;
   }
@@ -28,7 +30,8 @@ Options:
     console.log(`Usage: inkline diagnose <file> [options]
 
 Options:
-  --target <name>[,<name>...]  Comma-separated targets. Default: all.`);
+  --target <name>[,<name>...]  Comma-separated targets. Default: all.
+  --config <path>              Path to config file. Auto-detects inkline.config.{ts,js,mjs}.`);
     return;
   }
   console.log(`Usage: inkline <command> [options]
@@ -77,17 +80,56 @@ function parseArgs(argv: string[]): {
   return { command, files, flags };
 }
 
+const CONFIG_NAMES = ["inkline.config.ts", "inkline.config.js", "inkline.config.mjs"];
+
+async function loadConfig(explicitPath?: string): Promise<Partial<InklineConfig>> {
+  let configPath: string | undefined;
+
+  if (explicitPath) {
+    configPath = resolve(explicitPath);
+    if (!existsSync(configPath)) {
+      console.error(`Config file not found: ${configPath}`);
+      return {};
+    }
+  } else {
+    for (const name of CONFIG_NAMES) {
+      const candidate = resolve(process.cwd(), name);
+      if (existsSync(candidate)) {
+        configPath = candidate;
+        break;
+      }
+    }
+  }
+
+  if (!configPath) return {};
+
+  try {
+    const mod = (await import(configPath)) as { default?: Partial<InklineConfig> };
+    return mod.default ?? {};
+  } catch (err) {
+    console.error(
+      `Failed to load config from ${configPath}: ${err instanceof Error ? err.message : err}`,
+    );
+    return {};
+  }
+}
+
 async function runBuild(files: string[], flags: Record<string, string>): Promise<number> {
-  const targetStr = flags.target;
+  const fileConfig = await loadConfig(flags.config);
+
+  const targetStr = flags.target ?? fileConfig.targets?.join(",");
   if (!targetStr) {
-    console.error("Error: --target is required.");
+    console.error("Error: --target is required (or set targets in config file).");
     return 2;
   }
 
   const targets = targetStr.split(",").map((t) => t.trim()) as TargetName[];
-  const outDir = flags["out-dir"] ?? "dist";
-  const sourceMap = (flags["source-map"] ?? "external") as "external" | "inline" | "none";
-  const verbose = flags.verbose === "true";
+  const outDir = flags["out-dir"] ?? fileConfig.outDir ?? "dist";
+  const sourceMap = (flags["source-map"] ?? fileConfig.sourceMap ?? "external") as
+    | "external"
+    | "inline"
+    | "none";
+  const verbose = flags.verbose === "true" || fileConfig.verbose === true;
 
   let hasError = false;
 
@@ -98,7 +140,15 @@ async function runBuild(files: string[], flags: Record<string, string>): Promise
 
     const result = await compile(
       { fileName: absPath, source },
-      { targets, outDir, sourceMap, verbose },
+      {
+        targets,
+        outDir,
+        sourceMap,
+        verbose,
+        plugins: fileConfig.plugins,
+        targetOptions: fileConfig.targetOptions,
+        registry: fileConfig.registry,
+      },
     );
 
     for (const d of result.diagnostics) {
@@ -127,14 +177,18 @@ async function runBuild(files: string[], flags: Record<string, string>): Promise
 }
 
 async function runDiagnose(files: string[], flags: Record<string, string>): Promise<number> {
-  const targetStr = flags.target ?? "react,solid,vue,svelte";
+  const fileConfig = await loadConfig(flags.config);
+  const targetStr = flags.target ?? fileConfig.targets?.join(",") ?? "react,solid,vue,svelte";
   const targets = targetStr.split(",").map((t) => t.trim()) as TargetName[];
   let hasError = false;
 
   for (const filePath of files) {
     const absPath = resolve(filePath);
     const source = readFileSync(absPath, "utf-8");
-    const result = await compile({ fileName: absPath, source }, { targets, sourceMap: "none" });
+    const result = await compile(
+      { fileName: absPath, source },
+      { targets, sourceMap: "none", plugins: fileConfig.plugins, registry: fileConfig.registry },
+    );
 
     for (const d of result.diagnostics) {
       console.error(formatDiagnostic(d));
