@@ -70,12 +70,99 @@ import { qwik as qwikTarget } from "./targets/qwik/index.ts";
 _builtin.register(qwikTarget);
 ```
 
-## 6. Add tests
+## 6. Add conformance spec
 
-Create `src/codegen/targets/qwik/index.test.ts` that builds an `IRComponent` with signals, memos, and JSX, calls `emit()`, and verifies the printed output contains the expected framework patterns.
-
-## 7. Re-export from index.ts
+Create `src/codegen/targets/<name>/conformance.ts`:
 
 ```ts
-export { qwik as qwikTarget } from "./codegen/targets/qwik/index.ts";
+import type { TargetConformanceSpec } from "../../context.ts";
+import { requireFileExtension } from "../../../testing/conformance.ts";
+
+export const <name>Conformance: TargetConformanceSpec = {
+  controlFlowImports: {
+    // Solid: { if: { module: "solid-js", named: ["Show"] } }
+    // Others: empty {}
+  },
+  lint: {
+    eslintConfig: "./tsconfigs/<name>.eslintrc.json",
+    requiredPlugins: ["<name>"],
+  },
+  typecheck: {
+    tsconfig: "./tsconfigs/<name>.tsconfig.json",
+    dtsImports: ["<framework-package>"],
+  },
+  invariants: [requireFileExtension(".<ext>")],
+};
 ```
+
+Wire into target: `import { <name>Conformance } from "./conformance.ts"` and add `conformance: <name>Conformance` to the Target object:
+
+```ts
+export const <name>: Target = {
+  name: "<name>",
+  rewrites: REWRITES,
+  conformance: <name>Conformance,
+  emit,
+};
+```
+
+## 7. Handle styles
+
+If the target uses SFC format (Vue, Svelte), append `component.styles` as CStyle nodes in the emit function:
+
+```ts
+...component.styles.map((s) => cStyle({ css: s.css, scoped: s.scoped })),
+```
+
+If the target uses JSX (React, Solid, Qwik), emit CSS module import when styles exist:
+
+```ts
+const styleImport =
+  component.styles.length > 0
+    ? [cRaw({ text: `import styles from "./${component.name}.module.css";` })]
+    : [];
+```
+
+## 8. Handle resources
+
+For each `component.resources`, emit the framework's async data pattern. The pattern varies by target:
+
+- **React**: `const data = use(fetcher)`
+- **Solid**: `createResource(fetcher)` (native)
+- **Vue**: `const data = ref(await (fetcher)())`
+- **Angular**: `signal(await (fetcher)())`
+
+## 9. Handle runtime directive
+
+Check `component.runtime` and emit framework-specific directives:
+
+- **React**: `"use client"` / `"use server"` / nothing (for `"iso"`)
+
+```ts
+if (component.runtime === "client") {
+  body.unshift(cRaw({ text: `"use client";` }));
+} else if (component.runtime === "server") {
+  body.unshift(cRaw({ text: `"use server";` }));
+}
+```
+
+## 10. Add tests
+
+Create `src/codegen/targets/<name>/index.test.ts` that builds an `IRComponent` with signals, memos, and JSX, calls `emit()`, and verifies the printed output contains the expected framework patterns.
+
+## 11. Re-export from index.ts
+
+```ts
+export { <name> as <name>Target } from "./codegen/targets/<name>/index.ts";
+```
+
+## Existing targets as reference
+
+The compiler ships with 7 built-in targets across three paradigms:
+
+- **JSX-based**: React (`src/codegen/targets/react/`), Solid (`src/codegen/targets/solid/`), Qwik (`src/codegen/targets/qwik/`)
+- **SFC-based**: Vue (`src/codegen/targets/vue/`), Svelte (`src/codegen/targets/svelte/`)
+- **Template-based**: Angular (`src/codegen/targets/angular/`)
+- **Meta-target**: Astro (`src/codegen/targets/astro/`)
+
+Study targets in the same paradigm as your new target. JSX targets share the most structure (imports, JSX element emission, CSS module handling). SFC targets share template and script block patterns. Angular uses its own template syntax with directives.

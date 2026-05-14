@@ -1,65 +1,45 @@
-# Out-of-Scope (v0) & Future Work
+# Implemented Features & Future Work
 
-This document tracks features deliberately excluded from v0 and sketches their v1 implementation path.
+This document tracks what has been implemented in each version and what remains for future work.
 
-## Deferred to v1+
+## Implemented in v0
 
-### Component-ref forwarding
+- **6-pass compilation pipeline**: parse, analyze, lower, codegen, print, source-map
+- **4 target emitters**: React, Vue, Solid, Svelte
+- **IR type system**: IRModule, IRComponent, IRSetupBinding, IRJsxTree, IRSlot, IRRef, IRDiagnostic
+- **Code IR and printer**: CModule, CStmt, CExpr, CJsxElement with target-agnostic code generation
+- **Diagnostics**: structured INK-prefixed diagnostics with severity, span, and suggestions
+- **CLI**: `inkc` command with `--target`, `--outDir`, `--verbose` flags
+- **Plugin system**: compiler plugin API with before/after hooks per pass
+- **Props parsing**: constructor-ref shorthand, full `{ type, required, default }`, default-value inference
+- **Reactive dependency tracking**: scope-based binding analysis for signals, memos, and effects
+- **Source maps**: one mapping per CExpr, CJsxElement, CStmt, CImport
+- **Testing harnesses**: typecheck, lint, mount, equivalence, and bench harnesses
+- **38 fixture components**: Counter, Button, TodoList, and scenario-based test cases
 
-- **v0**: `IRComponentInstance.refs` exists in the IR. `03-lower/refs.ts` sets `category: "component"` and pushes INK0070. The IR shape is forward-compatible.
-- **v1**: per-target emission — React: `forwardRef` + `useImperativeHandle`; Vue: `defineExpose`; Svelte 5: `bind:this`; Solid: `ref={ref}` pattern.
+## Implemented in v1
 
-### `<style>` blocks / scoped CSS
+- **IR migration framework** (Phase 1A) -- IRModule.version, migrate(), registerMigration(), IR_VERSION constant
+- **Component-ref forwarding** (Phase 1B) -- React forwardRef, Vue defineExpose, Svelte export functions; removed INK0070 diagnostic
+- **Emit quality hardening** (Phase 1C) -- typed props in React/Solid, MemberRewriteRules, conformance invariants, 14 new emit tests
+- **Scoped CSS / style blocks** (Phase 2) -- IRStyleBlock, CStyle node, per-target emission (Vue `<style scoped>`, Svelte `<style>`, React/Solid `.module.css`)
+- **Server/client boundaries** (Phase 3A) -- IRRuntimeMode, conditional `'use client'`/`'use server'` directives
+- **Vite plugin + HMR + watch** (Phase 3B) -- @inkline/vite-plugin, compileIncremental, `--watch` CLI flag
+- **createResource async primitive** (Phase 4) -- IRResourceDeclaration, per-target async patterns (React use/Suspense, Vue async setup, Solid createResource, Svelte await)
+- **IR serialization/caching** (Phase 5A) -- serializeModule, deserializeModule, raw field on IR expression nodes
+- **Source-map spans all targets** (Phase 5B) -- span wiring for Solid, Vue, and Svelte emitters (previously React-only)
+- **Angular/Qwik/Astro targets** (Phase 6A) -- 3 new target emitters, bringing total to 7
+- **Multi-file components** (Phase 6B) -- sibling `.ink.css` resolver for split-file component authoring
+- **Output validation suite** -- 106 snapshot tests, 56 fixtures covering all targets and feature combinations
 
-- **v0**: not in IR.
-- **v1**: add `IRStyleBlock { css: string; scoped: boolean }` to `IRComponent`. Vue: `<style scoped>`, Svelte: `<style>`, React/Solid: CSS modules.
+## Deferred to v2+
 
-### Server/client component boundaries
-
-- **v0**: React always emits `'use client'`.
-- **v1**: `defineComponent({ runtime: "server" | "client" | "iso" })` option with per-target handling.
-
-### Async components / Suspense
-
-- **v0**: not handled.
-- **v1**: `createResource()` primitive with per-target async-component patterns.
-
-### Vite plugin / HMR
-
-- **v0**: separate package `@inkline/vite-plugin` consumes `compile()`.
-- **v1**: HMR boundary tracking via `IRComponent.id`; `compileIncremental(prev, changes)`.
-
-### Cross-process IR caching
-
-- **v0**: in-memory only. `IRModule` is not serializable (holds `ts.Expression` references).
-- **v1**: store `raw: string` + `span` on `IRExprNode`; cache hit re-parses via small TS scaffold.
-
-### Sub-expression source-map granularity
-
-- **v0**: one mapping per `CExpr`, `CJsxElement` opening tag, `CStmt`, `CImport`.
-- **v1**: `expr-rewrite.ts` emits `CExpr` subtrees with per-identifier spans.
-
-### IR migration framework
-
-- **v0**: no `IRModule.version` field.
-- **v1**: introduce `version: number` + `migrate(module, fromVersion, toVersion)`.
-
-### New targets (Angular, Qwik, Astro)
-
-- **v0**: reserved in `TargetName` union type.
-- **v1+**: one directory per target under `codegen/targets/<name>/`. See `docs/adding-a-target.md`.
-
-### Multi-file components
-
-- **v0**: one `.ink.tsx` per component (multiple `defineComponent` in one file is supported).
-- **v1**: split-file components (template/script/style siblings) with a virtual-file resolver in P1.
-
-### Props parsing from options
-
-- **v0**: Props are parsed from both the setup function's parameter type annotation (`(props: { label: string }) => ...`) and the options object (`defineComponent({ props: { ... } }, setup)`). Three prop shapes are supported: constructor-ref shorthand, full `{ type, required, default }`, and default-value inference. Props are registered in the binding scope for reactive dependency tracking.
-- **v1**: richer prop validation (runtime type checking, custom validators).
-
-### Full expression rewriting in setup
-
-- **v0**: `rewriteExpr` handles render-tree expressions and top-level calls. Compound expressions in memo/effect bodies (e.g., `count() * 2` → `count * 2` for React) use the recursive walker but may not cover all edge cases.
-- **v1**: guaranteed recursive rewriting of all reactive calls in all expression contexts.
+- **Sub-expression source-map granularity** -- per-identifier CExpr subtrees in rewriteExpr for finer-grained mappings
+- **Full recursive expression rewriting in ALL setup contexts** -- guaranteed rewriting of all reactive calls in every expression context (memo/effect bodies, nested calls)
+- **PostCSS-based scope hashing** -- currently raw CSS with no selector rewriting; future: PostCSS transform for scoped attribute selectors
+- **Runtime type validation for props** -- custom validators, runtime type checking beyond static analysis
+- **Angular/Qwik/Astro tsconfigs and eslint configs** -- target-specific TypeScript and lint configurations for new targets
+- **Server component primitive validation (INK0120 diagnostic)** -- validate that server components do not use client-only primitives
+- **Async component Suspense boundary injection** -- automatic Suspense wrapper insertion for async components
+- **HMR module graph invalidation in Vite plugin** -- invalidate dependent modules in the Vite dev server module graph on recompilation
+- **`.ink.html` template file support** -- multi-file HTML templates as an alternative to JSX in `.ink.tsx`
