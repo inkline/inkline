@@ -1,8 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`full output snapshots > BatchUpdates > react 1`] = `
-""use client";
-import { useState, useMemo } from "react";
+"import { useState, useMemo } from "react";
 export function BatchUpdates(props: Record<string, never>)
 {
 const [x, setX] = useState(0)
@@ -81,8 +80,7 @@ exports[`full output snapshots > BatchUpdates > vue 1`] = `
 `;
 
 exports[`full output snapshots > Button > react 1`] = `
-""use client";
-export function Button(props: { label: string; disabled?: boolean })
+"export function Button(props: { label: string; disabled?: boolean })
 {
 return (
 <button disabled={props.disabled}>
@@ -128,8 +126,7 @@ exports[`full output snapshots > Button > vue 1`] = `
 `;
 
 exports[`full output snapshots > Composite > react 1`] = `
-""use client";
-import { useState, useMemo, useEffect } from "react";
+"import { useState, useMemo, useEffect } from "react";
 export function Composite(props: Record<string, never>)
 {
 const [x, setX] = useState(1)
@@ -224,8 +221,7 @@ exports[`full output snapshots > Composite > vue 1`] = `
 `;
 
 exports[`full output snapshots > Conditional > react 1`] = `
-""use client";
-import { useState } from "react";
+"import { useState } from "react";
 export function Conditional(props: Record<string, never>)
 {
 const [visible, setVisible] = useState(true)
@@ -300,8 +296,7 @@ exports[`full output snapshots > Conditional > vue 1`] = `
 `;
 
 exports[`full output snapshots > ConditionalClass > react 1`] = `
-""use client";
-import { useState } from "react";
+"import { useState } from "react";
 export function ConditionalClass(props: Record<string, never>)
 {
 const [active, setActive] = useState(false)
@@ -360,8 +355,7 @@ exports[`full output snapshots > ConditionalClass > vue 1`] = `
 `;
 
 exports[`full output snapshots > ControlledSelect > react 1`] = `
-""use client";
-import { useState } from "react";
+"import { useState } from "react";
 export function ControlledSelect(props: Record<string, never>)
 {
 const [value, setValue] = useState("b")
@@ -444,8 +438,7 @@ exports[`full output snapshots > ControlledSelect > vue 1`] = `
 `;
 
 exports[`full output snapshots > ControlledTextarea > react 1`] = `
-""use client";
-import { useState } from "react";
+"import { useState } from "react";
 export function ControlledTextarea(props: Record<string, never>)
 {
 const [text, setText] = useState("")
@@ -512,8 +505,7 @@ exports[`full output snapshots > ControlledTextarea > vue 1`] = `
 `;
 
 exports[`full output snapshots > Counter > react 1`] = `
-""use client";
-import { useState, useMemo, useEffect } from "react";
+"import { useState, useMemo, useEffect } from "react";
 export function Counter(props: Record<string, never>)
 {
 const [count, setCount] = useState(0)
@@ -604,8 +596,7 @@ exports[`full output snapshots > Counter > vue 1`] = `
 `;
 
 exports[`full output snapshots > DynamicList > react 1`] = `
-""use client";
-import { useState } from "react";
+"import { useState } from "react";
 export function DynamicList(props: Record<string, never>)
 {
 const [items, setItems] = useState([])
@@ -688,8 +679,7 @@ exports[`full output snapshots > DynamicList > vue 1`] = `
 `;
 
 exports[`full output snapshots > EffectCleanup > react 1`] = `
-""use client";
-import { useState, useEffect } from "react";
+"import { useState, useEffect } from "react";
 export function EffectCleanup(props: Record<string, never>)
 {
 const [active, setActive] = useState(true)
@@ -756,8 +746,7 @@ exports[`full output snapshots > EffectCleanup > vue 1`] = `
 `;
 
 exports[`full output snapshots > ElementRef > react 1`] = `
-""use client";
-import { useRef, useEffect } from "react";
+"import { useRef, useEffect } from "react";
 export function ElementRef(props: Record<string, never>)
 {
 const inputRef = useRef(null)
@@ -804,8 +793,7 @@ exports[`full output snapshots > ElementRef > vue 1`] = `
 `;
 
 exports[`full output snapshots > ForLoop > react 1`] = `
-""use client";
-import { useState } from "react";
+"import { useState } from "react";
 export function ForLoop(props: Record<string, never>)
 {
 const [items, setItems] = useState(["Apple", "Banana", "Cherry"])
@@ -860,8 +848,7 @@ exports[`full output snapshots > ForLoop > vue 1`] = `
 `;
 
 exports[`full output snapshots > FormField > react 1`] = `
-""use client";
-import { useState } from "react";
+"import { useState } from "react";
 export function FormField(props: Record<string, never>)
 {
 const [value, setValue] = useState("")
@@ -924,8 +911,7 @@ exports[`full output snapshots > FormField > vue 1`] = `
 `;
 
 exports[`full output snapshots > Lifecycle > react 1`] = `
-""use client";
-import { useState, useEffect } from "react";
+"import { useState, useEffect } from "react";
 export function Lifecycle(props: Record<string, never>)
 {
 const [mounted, setMounted] = useState(false)
@@ -983,8 +969,7 @@ exports[`full output snapshots > Lifecycle > vue 1`] = `
 `;
 
 exports[`full output snapshots > MemoChain > react 1`] = `
-""use client";
-import { useState, useMemo } from "react";
+"import { useState, useMemo } from "react";
 export function MemoChain(props: Record<string, never>)
 {
 const [base, setBase] = useState(1)
@@ -1067,8 +1052,7 @@ exports[`full output snapshots > MemoChain > vue 1`] = `
 `;
 
 exports[`full output snapshots > MixedControlFlow > react 1`] = `
-""use client";
-import { useState } from "react";
+"import { useState } from "react";
 export function MixedControlFlow(props: Record<string, never>)
 {
 const [items, setItems] = useState(["a", "b", "c"])
@@ -1147,8 +1131,7 @@ exports[`full output snapshots > MixedControlFlow > vue 1`] = `
 `;
 
 exports[`full output snapshots > MultiRefs > react 1`] = `
-""use client";
-import { useRef, useEffect } from "react";
+"import { useRef, useEffect } from "react";
 export function MultiRefs(props: Record<string, never>)
 {
 const inputRef = useRef(null)
@@ -1219,8 +1202,7 @@ exports[`full output snapshots > MultiRefs > vue 1`] = `
 `;
 
 exports[`full output snapshots > MultipleComponentsPerFile > react 1`] = `
-""use client";
-export function Label(props: { text: string })
+"export function Label(props: { text: string })
 {
 return (
 <span>
@@ -1266,8 +1248,7 @@ exports[`full output snapshots > MultipleComponentsPerFile > vue 1`] = `
 `;
 
 exports[`full output snapshots > PropDefaults > react 1`] = `
-""use client";
-export function PropDefaults(props: { color?; size })
+"export function PropDefaults(props: { color?; size })
 {
 return (
 <div style={\`color: \${props.color}\`}>
@@ -1313,8 +1294,7 @@ exports[`full output snapshots > PropDefaults > vue 1`] = `
 `;
 
 exports[`full output snapshots > SlotWithDefault > react 1`] = `
-""use client";
-export function SlotWithDefault(props: { children?: React.ReactNode })
+"export function SlotWithDefault(props: { children?: React.ReactNode })
 {
 return (
 <div>
@@ -1394,8 +1374,7 @@ exports[`full output snapshots > SlotWithDefault > vue 1`] = `
 `;
 
 exports[`full output snapshots > SwitchTabs > react 1`] = `
-""use client";
-import { useState } from "react";
+"import { useState } from "react";
 export function SwitchTabs(props: Record<string, never>)
 {
 const [tab, setTab] = useState("a")
@@ -1480,8 +1459,7 @@ exports[`full output snapshots > SwitchTabs > vue 1`] = `
 `;
 
 exports[`multi-component files > ComponentRef → react (all files) 1`] = `
-""use client";
-export function Child(props: Record<string, never>)
+"export function Child(props: Record<string, never>)
 {
 return (
 <div>
@@ -1490,7 +1468,6 @@ return (
 )
 }
 
-"use client";
 import { useRef, useEffect } from "react";
 export function ComponentRef(props: Record<string, never>)
 {

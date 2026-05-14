@@ -158,4 +158,9 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
 
   // ── Scoped CSS ──
   ScopedStyle: [{ name: "renders with style", asserts: { textOf: { h1: "Hello" } } }],
+
+  // ── Server/Client boundaries ──
+  ClientComponent: [{ name: "client component", asserts: {} }],
+  ServerComponent: [{ name: "server component", asserts: {} }],
+  IsoComponent: [{ name: "iso component", asserts: {} }],
 };

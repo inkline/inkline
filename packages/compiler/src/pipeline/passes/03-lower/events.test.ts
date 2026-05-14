@@ -28,6 +28,7 @@ function makeComp(render: IRElement): IRComponent {
     render,
     primitives: [],
     styles: [],
+    runtime: "iso",
     targetOverrides: {},
   };
 }

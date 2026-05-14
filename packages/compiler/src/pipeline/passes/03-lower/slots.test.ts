@@ -33,6 +33,7 @@ function makeComp(render: IRComponentInstance): IRComponent {
     render,
     primitives: [],
     styles: [],
+    runtime: "iso",
     targetOverrides: {},
   };
 }
@@ -116,6 +117,7 @@ describe("slots", () => {
       render: createText({ value: "plain" }),
       primitives: [],
       styles: [],
+      runtime: "iso",
       targetOverrides: {},
     };
     const result = slots(comp);

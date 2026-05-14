@@ -1,8 +1,7 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`React forwardRef + props > expose and props both present 1`] = `
-""use client";
-import { useState, useMemo, useEffect, forwardRef, useImperativeHandle } from "react";
+"import { useState, useMemo, useEffect, forwardRef, useImperativeHandle } from "react";
 export const Modal = forwardRef(function Modal(props: { title }, ref)
 {
 const [count, setCount] = useState(0)
@@ -76,8 +75,7 @@ return (
 `;
 
 exports[`props type generation > React: typed props 1`] = `
-""use client";
-import { useState, useMemo, useEffect } from "react";
+"import { useState, useMemo, useEffect } from "react";
 export function Button(props: { label; disabled? })
 {
 const [count, setCount] = useState(0)
@@ -130,8 +128,7 @@ exports[`props type generation > Vue: defineProps with types 1`] = `
 `;
 
 exports[`reactive call rewriting > React: strips reactive calls in compound expression 1`] = `
-""use client";
-import { useState, useMemo, useEffect } from "react";
+"import { useState, useMemo, useEffect } from "react";
 export function Compound(props: Record<string, never>)
 {
 const [count, setCount] = useState(0)
@@ -147,8 +144,7 @@ return (
 `;
 
 exports[`reactive call rewriting > React: strips reactive calls in simple expression 1`] = `
-""use client";
-import { useState, useMemo, useEffect } from "react";
+"import { useState, useMemo, useEffect } from "react";
 export function Simple(props: Record<string, never>)
 {
 const [count, setCount] = useState(0)
@@ -180,8 +176,7 @@ return (
 `;
 
 exports[`ref emission > React: useRef with element type 1`] = `
-""use client";
-import { useState, useMemo, useEffect, useRef } from "react";
+"import { useState, useMemo, useEffect, useRef } from "react";
 export function Form(props: Record<string, never>)
 {
 const [count, setCount] = useState(0)
@@ -225,8 +220,7 @@ exports[`ref emission > Vue: ref() for element ref 1`] = `
 `;
 
 exports[`target emit + print (full output) > React: Counter component 1`] = `
-""use client";
-import { useState, useMemo, useEffect } from "react";
+"import { useState, useMemo, useEffect } from "react";
 export function Counter(props: Record<string, never>)
 {
 const [count, setCount] = useState(0)

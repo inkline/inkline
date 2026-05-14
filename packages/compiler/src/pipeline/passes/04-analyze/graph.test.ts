@@ -49,6 +49,7 @@ function makeComponent(memos: IRMemoDeclaration[]): IRComponent {
     render: { kind: "Text", value: "", loc: UNKNOWN_LOCATION },
     primitives: [],
     styles: [],
+    runtime: "iso",
     targetOverrides: {},
   };
 }

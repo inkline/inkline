@@ -44,6 +44,7 @@ function makeComp(render: ReturnType<typeof createElement>): IRComponent {
     render,
     primitives: [],
     styles: [],
+    runtime: "iso",
     targetOverrides: {},
   };
 }

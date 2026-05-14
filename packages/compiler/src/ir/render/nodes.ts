@@ -258,6 +258,8 @@ export interface IRStyleBlock {
   readonly loc: SourceLocation;
 }
 
+export type IRRuntimeMode = "client" | "server" | "iso";
+
 export interface IRComponent {
   readonly kind: "Component";
   readonly id: string;
@@ -276,6 +278,7 @@ export interface IRComponent {
   readonly primitives: readonly PrimitiveUsage[];
   readonly expose?: readonly string[];
   readonly styles: readonly IRStyleBlock[];
+  readonly runtime: IRRuntimeMode;
   readonly targetOverrides: Readonly<Partial<Record<TargetName, IRTargetOverride>>>;
 }
 

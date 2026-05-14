@@ -287,11 +287,18 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ? [cRaw({ text: `import styles from "./${component.name}.module.css";` })]
       : [];
 
+  const runtimeDirective =
+    component.runtime === "client"
+      ? [cRaw({ text: '"use client";' })]
+      : component.runtime === "server"
+        ? [cRaw({ text: '"use server";' })]
+        : [];
+
   const file = cFile({
     flavor: "tsx",
     children: [
-      cRaw({ text: '"use client";' }),
-      cRaw({ text: "" }),
+      ...runtimeDirective,
+      ...(runtimeDirective.length > 0 ? [cRaw({ text: "" })] : []),
       ...updatedImports,
       ...styleImport,
       cRaw({ text: "" }),

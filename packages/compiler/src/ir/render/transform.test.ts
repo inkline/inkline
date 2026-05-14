@@ -40,6 +40,7 @@ function makeComponent(render: IRNode): IRComponent {
     render,
     primitives: [],
     styles: [],
+    runtime: "iso",
     targetOverrides: {},
   };
 }

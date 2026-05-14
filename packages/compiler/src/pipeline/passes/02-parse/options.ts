@@ -4,6 +4,7 @@ import type {
   IREventDeclaration,
   IRExprNode,
   IRProp,
+  IRRuntimeMode,
   IRSlotDeclaration,
   IRStyleBlock,
 } from "../../../ir/render/nodes.ts";
@@ -15,6 +16,7 @@ export interface ParsedOptions {
   readonly slots: IRSlotDeclaration[];
   readonly events: IREventDeclaration[];
   readonly styles: IRStyleBlock[];
+  readonly runtime: IRRuntimeMode;
 }
 
 function makeExprNode(expr: ts.Expression, sf: ts.SourceFile): IRExprNode {
@@ -39,6 +41,7 @@ export function parseOptions(
   const slots: IRSlotDeclaration[] = [];
   const events: IREventDeclaration[] = [];
   const styles: IRStyleBlock[] = [];
+  let runtime: IRRuntimeMode = "iso";
 
   for (const prop of options.properties) {
     if (!ts.isPropertyAssignment(prop) || !ts.isIdentifier(prop.name)) continue;
@@ -58,10 +61,19 @@ export function parseOptions(
         if (style) styles.push(style);
         break;
       }
+      case "runtime": {
+        if (ts.isStringLiteral(prop.initializer)) {
+          const val = prop.initializer.text;
+          if (val === "client" || val === "server" || val === "iso") {
+            runtime = val;
+          }
+        }
+        break;
+      }
     }
   }
 
-  return { props, slots, events, styles };
+  return { props, slots, events, styles, runtime };
 }
 
 function parseStyleFromValue(

@@ -50,6 +50,7 @@ function makeComp(render: IRElement, refDecls: IRRefDeclaration[] = []): IRCompo
     render,
     primitives: [],
     styles: [],
+    runtime: "iso",
     targetOverrides: {},
   };
 }

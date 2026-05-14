@@ -46,6 +46,7 @@ export type {
   IRRefCategory,
   IREffectCleanup,
   IRComponent,
+  IRRuntimeMode,
   IRStyleBlock,
   IRTargetOverride,
   IRModule,
