@@ -78,6 +78,7 @@ export interface Target {
   readonly name: TargetName;
   readonly rewrites: RewriteRules;
   readonly conformance?: TargetConformanceSpec;
+  readonly defaultOptions?: Readonly<Record<string, unknown>>;
   emit(component: IRComponent, ctx: CodegenContext): CodeModule;
 }
 

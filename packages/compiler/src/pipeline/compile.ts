@@ -52,6 +52,35 @@ export async function compile(
     registry: options.registry,
   };
 
+  // Validate: registry supports all requested targets
+  for (const targetName of options.targets) {
+    if (!options.registry.has(targetName)) {
+      throw new Error(
+        `Registry does not support target "${targetName}". ` +
+          `Available: ${options.registry.list().join(", ") || "(none)"}`,
+      );
+    }
+  }
+
+  // Validate: warn on unknown target option keys
+  for (const [targetName, userOpts] of Object.entries(options.targetOptions)) {
+    if (!userOpts) continue;
+    const target = options.registry.get(targetName as TargetName);
+    if (!target?.defaultOptions) continue;
+    const knownKeys = Object.keys(target.defaultOptions);
+    for (const key of Object.keys(userOpts)) {
+      if (!knownKeys.includes(key)) {
+        diagnostics.push(
+          "INK0080",
+          { file: "", line: 0, column: 0, offset: 0, length: 0 },
+          {
+            key: `${targetName}.${key}`,
+          },
+        );
+      }
+    }
+  }
+
   // P1: create TS program
   const artifact = await programPass.run(input, ctx);
 

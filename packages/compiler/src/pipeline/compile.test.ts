@@ -37,13 +37,82 @@ describe("compile", () => {
     expect("vue" in result.files).toBe(true);
   });
 
-  it("skips targets not in registry", async () => {
+  it("throws when registry does not support a requested target", async () => {
     const reg = createRegistry();
+    await expect(
+      compile(
+        { fileName: "test.tsx", source: "const x = 1;" },
+        { targets: ["angular"], registry: reg },
+      ),
+    ).rejects.toThrow('Registry does not support target "angular"');
+  });
+
+  it("warns on unknown target option keys (INK0080)", async () => {
+    const target: Target = {
+      name: "react",
+      rewrites: {
+        reactiveRead: { kind: "strip-call" },
+        setterStyle: { kind: "function-call" },
+        refAccess: { kind: "bare" },
+        jsxAttrCasing: "react",
+        eventNameCase: "camel",
+      },
+      defaultOptions: { strict: false },
+      emit(_comp) {
+        return {
+          componentName: "X",
+          root: { kind: "CFile" as const, flavor: "tsx" as const, children: [] },
+          fileName: "X.tsx",
+        };
+      },
+    };
+    const reg = createRegistry();
+    reg.register(target);
+
     const result = await compile(
       { fileName: "test.tsx", source: "const x = 1;" },
-      { targets: ["angular"], registry: reg },
+      {
+        targets: ["react"],
+        registry: reg,
+        targetOptions: { react: { strict: true, unknownKey: 42 } },
+      },
     );
-    expect(result.files.angular).toBeUndefined();
+    const ink0080 = result.diagnostics.filter((d) => d.code === "INK0080");
+    expect(ink0080).toHaveLength(1);
+    expect(ink0080[0]!.title).toContain("react.unknownKey");
+  });
+
+  it("does not warn for known target option keys", async () => {
+    const target: Target = {
+      name: "react",
+      rewrites: {
+        reactiveRead: { kind: "strip-call" },
+        setterStyle: { kind: "function-call" },
+        refAccess: { kind: "bare" },
+        jsxAttrCasing: "react",
+        eventNameCase: "camel",
+      },
+      defaultOptions: { strict: false, mode: "production" },
+      emit(_comp) {
+        return {
+          componentName: "X",
+          root: { kind: "CFile" as const, flavor: "tsx" as const, children: [] },
+          fileName: "X.tsx",
+        };
+      },
+    };
+    const reg = createRegistry();
+    reg.register(target);
+
+    const result = await compile(
+      { fileName: "test.tsx", source: "const x = 1;" },
+      {
+        targets: ["react"],
+        registry: reg,
+        targetOptions: { react: { strict: true, mode: "development" } },
+      },
+    );
+    expect(result.diagnostics.filter((d) => d.code === "INK0080")).toHaveLength(0);
   });
 });
 
