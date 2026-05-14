@@ -25,9 +25,12 @@ const REWRITES: RewriteRules = {
   refAccess: { kind: "bare" },
   jsxAttrCasing: "html",
   eventNameCase: "kebab",
+  members: {
+    props: { strip: true },
+    slots: { strip: true },
+  },
 };
 
-/** Template rules strip .value -- Vue auto-unwraps refs in templates. */
 const TEMPLATE_RULES: RewriteRules = { ...REWRITES, reactiveRead: { kind: "strip-call" } };
 
 // ── Shared template attr helpers ───────────────────────────────────

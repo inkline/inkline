@@ -31,12 +31,18 @@ export type RefAccessKind =
   | { readonly kind: "field"; readonly field: string }
   | { readonly kind: "bare" };
 
+export interface MemberRewriteRules {
+  readonly props?: { readonly strip: boolean };
+  readonly slots?: { readonly strip: boolean; readonly rename?: Readonly<Record<string, string>> };
+}
+
 export interface RewriteRules {
   readonly reactiveRead: ReactiveReadKind;
   readonly setterStyle: SetterStyleKind;
   readonly refAccess: RefAccessKind;
   readonly jsxAttrCasing: "react" | "html";
   readonly eventNameCase: "camel" | "kebab" | "lower";
+  readonly members?: MemberRewriteRules;
 }
 
 export interface CodegenContext {

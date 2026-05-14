@@ -98,6 +98,7 @@ export type {
   TargetPlan,
   TargetConformanceSpec,
   ControlFlowImportSpec,
+  MemberRewriteRules,
   RewriteRules,
   TargetRegistry,
   CodegenContext,

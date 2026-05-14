@@ -22,6 +22,7 @@ const REWRITES: RewriteRules = {
   refAccess: { kind: "bare" },
   jsxAttrCasing: "html",
   eventNameCase: "lower",
+  members: { props: { strip: false } },
 };
 
 // ── Shared attr / event / ref helpers ──────────────────────────────
@@ -257,6 +258,18 @@ function collectCFImports(node: IRNode, out: string[]): void {
 
 // ── Emit entry point ───────────────────────────────────────────────
 
+function buildSolidPropsType(component: IRComponent): string {
+  if (component.props.length === 0) return "Record<string, never>";
+  const defs = component.props
+    .map((p) => {
+      const opt = p.required ? "" : "?";
+      const type = p.typeNode ? `: ${p.typeNode.getText()}` : "";
+      return `${p.name}${opt}${type}`;
+    })
+    .join("; ");
+  return `{ ${defs} }`;
+}
+
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const rules = ctx.rewrites;
   const body: Code[] = [];
@@ -303,7 +316,9 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     children: [
       ...imports,
       cRaw({ text: "" }),
-      cStmt({ body: `export default function ${component.name}(props: any)` }),
+      cStmt({
+        body: `export default function ${component.name}(props: ${buildSolidPropsType(component)})`,
+      }),
       cRaw({ text: "{" }),
       cGroup({
         children: [

@@ -3,6 +3,10 @@ export {
   runConformanceInvariants,
   requireFileExtension,
   requireContains,
+  requireNotContains,
+  requireImports,
+  requirePropsNotDestructured,
+  requireReactiveReadsPreserveCall,
   type Invariant,
 } from "./conformance.ts";
 export {

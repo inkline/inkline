@@ -1,5 +1,12 @@
 import { describe, it, expect } from "vitest";
-import { runConformanceInvariants, requireFileExtension, requireContains } from "./conformance.ts";
+import {
+  runConformanceInvariants,
+  requireFileExtension,
+  requireContains,
+  requireNotContains,
+  requireImports,
+  requirePropsNotDestructured,
+} from "./conformance.ts";
 import type { GeneratedFile } from "../codegen/context.ts";
 
 const validFile: GeneratedFile = {
@@ -52,5 +59,47 @@ describe("requireContains", () => {
   it("fails when content does not contain substring", () => {
     const inv = requireContains("createSignal");
     expect(inv(validFile)).toHaveLength(1);
+  });
+});
+
+describe("requireNotContains", () => {
+  it("passes when content does not contain substring", () => {
+    const inv = requireNotContains("createSignal");
+    expect(inv(validFile)).toEqual([]);
+  });
+
+  it("fails when content contains substring", () => {
+    const inv = requireNotContains("useState");
+    expect(inv(validFile)).toHaveLength(1);
+  });
+});
+
+describe("requireImports", () => {
+  it("passes when all imports are present", () => {
+    const inv = requireImports("react", ["useState"]);
+    expect(inv(validFile)).toEqual([]);
+  });
+
+  it("fails when import is missing", () => {
+    const inv = requireImports("react", ["useState", "useEffect"]);
+    expect(inv(validFile)).toHaveLength(1);
+  });
+});
+
+describe("requirePropsNotDestructured", () => {
+  it("passes when props are not destructured", () => {
+    const file: GeneratedFile = {
+      path: "X.tsx",
+      contents: "export default function X(props: any) { return props.x; }",
+    };
+    expect(requirePropsNotDestructured(file)).toEqual([]);
+  });
+
+  it("fails when props are destructured", () => {
+    const file: GeneratedFile = {
+      path: "X.tsx",
+      contents: "export default function X(props: any) { const { x } = props; return x; }",
+    };
+    expect(requirePropsNotDestructured(file)).toHaveLength(1);
   });
 });

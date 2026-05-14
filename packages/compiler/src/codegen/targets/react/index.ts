@@ -23,6 +23,10 @@ const REWRITES: RewriteRules = {
   refAccess: { kind: "field", field: "current" },
   jsxAttrCasing: "react",
   eventNameCase: "camel",
+  members: {
+    props: { strip: true },
+    slots: { strip: true, rename: { default: "children" } },
+  },
 };
 
 // ── Shared attr helpers ────────────────────────────────────────────
@@ -175,6 +179,27 @@ function depsList(deps: readonly { readonly name: string }[]): string {
   return deps.length === 0 ? "[]" : `[${deps.map((d) => d.name).join(", ")}]`;
 }
 
+function buildPropsType(component: IRComponent, hasDefaultSlot: boolean): string {
+  const parts: string[] = [];
+
+  if (component.props.length > 0) {
+    const defs = component.props
+      .map((p) => {
+        const opt = p.required ? "" : "?";
+        const type = p.typeNode ? `: ${p.typeNode.getText()}` : "";
+        return `${p.name}${opt}${type}`;
+      })
+      .join("; ");
+    parts.push(`{ ${defs} }`);
+  }
+
+  if (hasDefaultSlot) {
+    parts.push("{ children?: React.ReactNode }");
+  }
+
+  return parts.length > 0 ? parts.join(" & ") : "Record<string, never>";
+}
+
 // ── Emit entry point ───────────────────────────────────────────────
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
@@ -240,7 +265,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     }
   }
 
-  const propsType = hasDefaultSlot ? "{ children?: React.ReactNode }" : "Record<string, never>";
+  const propsType = buildPropsType(component, hasDefaultSlot);
   const renderTree = emitNode(component.render, rules);
 
   const updatedImports: Code[] =

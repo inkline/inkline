@@ -24,6 +24,10 @@ const REWRITES: RewriteRules = {
   refAccess: { kind: "bare" },
   jsxAttrCasing: "html",
   eventNameCase: "lower",
+  members: {
+    props: { strip: true },
+    slots: { strip: true },
+  },
 };
 
 // ── Shared template attr helpers ───────────────────────────────────

@@ -1,5 +1,5 @@
 import type { TargetConformanceSpec } from "../../context.ts";
-import { requireFileExtension } from "../../../testing/conformance.ts";
+import { requireFileExtension, requirePropsNotDestructured } from "../../../testing/conformance.ts";
 
 export const solidConformance: TargetConformanceSpec = {
   controlFlowImports: {
@@ -15,5 +15,5 @@ export const solidConformance: TargetConformanceSpec = {
     tsconfig: "./tsconfigs/solid.tsconfig.json",
     dtsImports: ["solid-js"],
   },
-  invariants: [requireFileExtension(".tsx")],
+  invariants: [requireFileExtension(".tsx"), requirePropsNotDestructured],
 };

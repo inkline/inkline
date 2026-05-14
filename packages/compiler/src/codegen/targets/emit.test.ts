@@ -257,3 +257,98 @@ describe("target emit + print", () => {
     expect(matchCount).toBe(2);
   });
 });
+
+describe("props type generation", () => {
+  function makeCompWithProps(name: string): IRComponent {
+    return {
+      ...makeComp(name, createElement({ tag: "div" })),
+      props: [
+        { name: "label", required: true, symbolId: "t::prop::label@0" as SymbolId, loc },
+        { name: "disabled", required: false, symbolId: "t::prop::disabled@1" as SymbolId, loc },
+      ],
+    };
+  }
+
+  it("React: emits typed props in function signature", () => {
+    const comp = makeCompWithProps("Button");
+    const result = print(react.emit(comp, makeCtx(react)).root);
+    expect(result.code).toContain("label");
+    expect(result.code).toContain("disabled?");
+    expect(result.code).not.toContain("Record<string, never>");
+  });
+
+  it("Solid: emits typed props instead of any", () => {
+    const comp = makeCompWithProps("Button");
+    const result = print(solid.emit(comp, makeCtx(solid)).root);
+    expect(result.code).toContain("label");
+    expect(result.code).toContain("disabled?");
+    expect(result.code).not.toContain("props: any");
+  });
+
+  it("Vue: emits defineProps with prop types", () => {
+    const comp = makeCompWithProps("Button");
+    const result = print(vue.emit(comp, makeCtx(vue)).root);
+    expect(result.code).toContain("defineProps");
+    expect(result.code).toContain("label");
+    expect(result.code).toContain("disabled?");
+  });
+
+  it("Svelte: emits $props destructuring with types", () => {
+    const comp = makeCompWithProps("Button");
+    const result = print(svelte.emit(comp, makeCtx(svelte)).root);
+    expect(result.code).toContain("$props()");
+    expect(result.code).toContain("label");
+    expect(result.code).toContain("disabled");
+  });
+});
+
+describe("ref emission", () => {
+  function makeCompWithRef(name: string): IRComponent {
+    return {
+      ...makeComp(name, createElement({ tag: "div" })),
+      refs: [
+        {
+          name: "inputRef",
+          symbolId: "t::ref::inputRef@0" as SymbolId,
+          category: "element" as const,
+          elementType: "HTMLInputElement",
+          loc,
+        },
+      ],
+    };
+  }
+
+  it("React: emits useRef with element type", () => {
+    const comp = makeCompWithRef("Form");
+    const result = print(react.emit(comp, makeCtx(react)).root);
+    expect(result.code).toContain("useRef<HTMLInputElement>");
+  });
+
+  it("Solid: emits let declaration for ref", () => {
+    const comp = makeCompWithRef("Form");
+    const result = print(solid.emit(comp, makeCtx(solid)).root);
+    expect(result.code).toContain("let inputRef");
+  });
+
+  it("Vue: emits ref() for element ref", () => {
+    const comp = makeCompWithRef("Form");
+    const result = print(vue.emit(comp, makeCtx(vue)).root);
+    expect(result.code).toContain("ref<HTMLInputElement");
+  });
+});
+
+describe("React forwardRef + props", () => {
+  it("generates correct signature when expose and props both present", () => {
+    const comp: IRComponent = {
+      ...makeComp("Modal", createElement({ tag: "div" })),
+      props: [{ name: "title", required: true, symbolId: "t::prop::title@0" as SymbolId, loc }],
+      expose: ["open", "close"],
+    };
+    const result = print(react.emit(comp, makeCtx(react)).root);
+    expect(result.code).toContain("forwardRef");
+    expect(result.code).toContain("useImperativeHandle");
+    expect(result.code).toContain("title");
+    expect(result.code).toContain("open");
+    expect(result.code).toContain("close");
+  });
+});
