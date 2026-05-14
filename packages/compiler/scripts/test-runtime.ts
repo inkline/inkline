@@ -3,6 +3,7 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { compileFixture } from "../src/testing/harness.ts";
 import { runConformanceInvariants } from "../src/testing/conformance.ts";
+import { scenarios } from "../src/__fixtures__/scenarios.ts";
 import type { TargetName } from "../src/codegen/context.ts";
 import { builtinRegistry } from "../src/codegen/registry.ts";
 
@@ -22,12 +23,42 @@ async function main() {
   let totalErrors = 0;
 
   for (const fixture of fixtures) {
+    const fixtureScenarios = scenarios[fixture];
+    const expectedDiags = fixtureScenarios?.[0]?.asserts.expectedDiagnostics;
+
     const compiled = await compileFixture(fixture, TARGETS);
 
     if (compiled.diagnostics.some((d) => d.severity === "error")) {
+      if (expectedDiags) {
+        const codes = compiled.diagnostics.map((d) => d.code);
+        const allFound = expectedDiags.every((e) => codes.includes(e));
+        if (allFound) {
+          console.log(`  ✓ ${fixture}: expected diagnostics [${expectedDiags.join(", ")}]`);
+          continue;
+        }
+        console.error(
+          `  ✗ ${fixture}: expected [${expectedDiags.join(", ")}] but got [${codes.join(", ")}]`,
+        );
+        totalErrors++;
+        continue;
+      }
       console.error(`  ✗ ${fixture}: compilation errors`);
       for (const d of compiled.diagnostics) console.error(`    ${d.code}: ${d.title}`);
       totalErrors++;
+      continue;
+    }
+
+    if (expectedDiags) {
+      const codes = compiled.diagnostics.map((d) => d.code);
+      const allFound = expectedDiags.every((e) => codes.includes(e));
+      if (allFound) {
+        console.log(`  ✓ ${fixture}: expected diagnostics [${expectedDiags.join(", ")}]`);
+      } else {
+        console.error(
+          `  ✗ ${fixture}: expected [${expectedDiags.join(", ")}] but got [${codes.join(", ")}]`,
+        );
+        totalErrors++;
+      }
       continue;
     }
 
