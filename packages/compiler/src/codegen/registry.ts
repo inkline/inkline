@@ -3,6 +3,9 @@ import { solid as solidTarget } from "./targets/solid/index.ts";
 import { react as reactTarget } from "./targets/react/index.ts";
 import { svelte as svelteTarget } from "./targets/svelte/index.ts";
 import { vue as vueTarget } from "./targets/vue/index.ts";
+import { angular as angularTarget } from "./targets/angular/index.ts";
+import { qwik as qwikTarget } from "./targets/qwik/index.ts";
+import { astro as astroTarget } from "./targets/astro/index.ts";
 
 export interface MutableTargetRegistry extends TargetRegistry {
   register(target: Target): void;
@@ -29,6 +32,9 @@ _builtin.register(solidTarget);
 _builtin.register(reactTarget);
 _builtin.register(svelteTarget);
 _builtin.register(vueTarget);
+_builtin.register(angularTarget);
+_builtin.register(qwikTarget);
+_builtin.register(astroTarget);
 
 export const builtinRegistry: TargetRegistry = {
   get: (name) => _builtin.get(name),

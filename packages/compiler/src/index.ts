@@ -168,3 +168,6 @@ export { react as reactTarget } from "./codegen/targets/react/index.ts";
 export { vue as vueTarget } from "./codegen/targets/vue/index.ts";
 export { svelte as svelteTarget } from "./codegen/targets/svelte/index.ts";
 export { solid as solidTarget } from "./codegen/targets/solid/index.ts";
+export { angular as angularTarget } from "./codegen/targets/angular/index.ts";
+export { qwik as qwikTarget } from "./codegen/targets/qwik/index.ts";
+export { astro as astroTarget } from "./codegen/targets/astro/index.ts";

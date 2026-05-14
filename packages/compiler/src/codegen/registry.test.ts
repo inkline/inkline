@@ -77,8 +77,8 @@ describe("builtinRegistry", () => {
     expect(builtinRegistry.has("vue")).toBe(true);
   });
 
-  it("list returns 4 target names", () => {
-    expect(builtinRegistry.list()).toHaveLength(4);
+  it("list returns 7 target names", () => {
+    expect(builtinRegistry.list()).toHaveLength(7);
   });
 
   it("does not expose register method", () => {
