@@ -56,8 +56,8 @@ This document tracks features deliberately excluded from v0 and sketches their v
 
 ### Props parsing from options
 
-- **v0**: `component.props` is always `[]`. Props are passed through but not statically analyzed.
-- **v1**: parse `defineComponent({ props: { ... } }, setup)` options object to produce `IRProp[]` with types, defaults, and required flags.
+- **v0**: Props are parsed from both the setup function's parameter type annotation (`(props: { label: string }) => ...`) and the options object (`defineComponent({ props: { ... } }, setup)`). Three prop shapes are supported: constructor-ref shorthand, full `{ type, required, default }`, and default-value inference. Props are registered in the binding scope for reactive dependency tracking.
+- **v1**: richer prop validation (runtime type checking, custom validators).
 
 ### Full expression rewriting in setup
 
