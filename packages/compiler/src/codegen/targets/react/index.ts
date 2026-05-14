@@ -231,6 +231,15 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cStmt({ body: `useEffect(${rewriteExpr(e.body, rules)}, ${depsList(e.deps)})`, span: e.loc }),
     );
   }
+  for (const res of component.resources) {
+    reactImports.push("use");
+    body.push(
+      cStmt({
+        body: `const ${res.name} = use(${rewriteExpr(res.fetcher.expr, rules)})`,
+        span: res.loc,
+      }),
+    );
+  }
   for (const r of component.refs) {
     reactImports.push("useRef");
     body.push(

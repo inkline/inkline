@@ -163,4 +163,7 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   ClientComponent: [{ name: "client component", asserts: {} }],
   ServerComponent: [{ name: "server component", asserts: {} }],
   IsoComponent: [{ name: "iso component", asserts: {} }],
+
+  // ── Async resources ──
+  AsyncData: [{ name: "initial loading", asserts: {} }],
 };

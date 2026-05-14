@@ -30,6 +30,7 @@ function makeComp(render: IRElement): IRComponent {
     refs: [],
     memos: [],
     effects: [],
+    resources: [],
     lifecycle: { onMount: [], onCleanup: [] },
     setup: [],
     render,

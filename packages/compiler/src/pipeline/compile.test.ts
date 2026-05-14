@@ -283,6 +283,7 @@ describe("compile error recovery (H3)", () => {
       refs: [],
       memos: [],
       effects: [],
+      resources: [],
       lifecycle: { onMount: [] as const, onCleanup: [] as const },
       setup: [],
       render: { kind: "Text" as const, value: "", loc: UNKNOWN_LOCATION },

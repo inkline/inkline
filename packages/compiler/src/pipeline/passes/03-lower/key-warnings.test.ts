@@ -37,6 +37,7 @@ function makeComp(render: IRFor): IRComponent {
     refs: [],
     memos: [],
     effects: [],
+    resources: [],
     lifecycle: { onMount: [], onCleanup: [] },
     setup: [],
     render,

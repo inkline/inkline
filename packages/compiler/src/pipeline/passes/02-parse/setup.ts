@@ -6,6 +6,7 @@ import type {
   IRLifecycle,
   IRMemoDeclaration,
   IRRefDeclaration,
+  IRResourceDeclaration,
   IRSetupStatement,
   IRStateDeclaration,
   PrimitiveName,
@@ -48,6 +49,7 @@ export interface SetupResult {
   readonly memos: IRMemoDeclaration[];
   readonly refs: IRRefDeclaration[];
   readonly effects: IREffectDeclaration[];
+  readonly resources: IRResourceDeclaration[];
   readonly lifecycle: IRLifecycle;
   readonly setup: IRSetupStatement[];
   readonly renderExpr: ts.Expression | undefined;
@@ -67,6 +69,7 @@ export function parseSetup(
   const memos: IRMemoDeclaration[] = [];
   const refs: IRRefDeclaration[] = [];
   const effects: IREffectDeclaration[] = [];
+  const resources: IRResourceDeclaration[] = [];
   const onMountDecls: IREffectDeclaration[] = [];
   const onCleanupDecls: IREffectDeclaration[] = [];
   const setup: IRSetupStatement[] = [];
@@ -76,6 +79,7 @@ export function parseSetup(
   const memoLocal = localFor(bindings, "createMemo");
   const effectLocal = localFor(bindings, "createEffect");
   const refLocal = localFor(bindings, "createRef");
+  const resourceLocal = localFor(bindings, "createResource");
   const mountLocal = localFor(bindings, "onMount");
   const cleanupLocal = localFor(bindings, "onCleanup");
 
@@ -87,6 +91,7 @@ export function parseSetup(
       memos,
       refs,
       effects,
+      resources,
       lifecycle: { onMount: onMountDecls, onCleanup: onCleanupDecls },
       setup,
       renderExpr,
@@ -177,6 +182,55 @@ export function parseSetup(
           continue;
         }
 
+        if (isCallTo(init, resourceLocal)) {
+          let dataName = "data";
+          let metaNames = { loading: "loading", error: "error", refetch: "refetch" };
+
+          if (ts.isArrayBindingPattern(decl.name) && decl.name.elements.length >= 1) {
+            const first = decl.name.elements[0]!;
+            if (ts.isBindingElement(first) && ts.isIdentifier(first.name)) {
+              dataName = first.name.text;
+            }
+            if (decl.name.elements.length >= 2) {
+              const second = decl.name.elements[1]!;
+              if (ts.isBindingElement(second) && ts.isObjectBindingPattern(second.name)) {
+                for (const el of second.name.elements) {
+                  if (ts.isBindingElement(el) && ts.isIdentifier(el.name)) {
+                    const n = el.name.text;
+                    if (n === "loading" || n === "error" || n === "refetch") {
+                      metaNames = { ...metaNames, [n]: n };
+                    }
+                  }
+                }
+              }
+            }
+          } else if (ts.isIdentifier(decl.name)) {
+            dataName = decl.name.text;
+          }
+
+          const resId = ctx.symbols.mint({
+            componentId,
+            kind: "signal",
+            name: dataName,
+            loc: toLoc(decl, sourceFile),
+          });
+
+          const fetcherArg = init.arguments[0];
+          if (fetcherArg) {
+            resources.push({
+              name: dataName,
+              fetcher: makeExprNode(fetcherArg, sourceFile),
+              source: init.arguments[1] ? makeExprNode(init.arguments[1], sourceFile) : undefined,
+              symbolId: resId,
+              loadingName: metaNames.loading,
+              errorName: metaNames.error,
+              refetchName: metaNames.refetch,
+              loc: toLoc(decl, sourceFile),
+            });
+          }
+          continue;
+        }
+
         if (!ts.isIdentifier(decl.name)) continue;
 
         if (isCallTo(init, memoLocal)) {
@@ -234,7 +288,8 @@ export function parseSetup(
             d.initializer &&
             (isCallTo(d.initializer, signalLocal) ||
               isCallTo(d.initializer, memoLocal) ||
-              isCallTo(d.initializer, refLocal)),
+              isCallTo(d.initializer, refLocal) ||
+              isCallTo(d.initializer, resourceLocal)),
         )
       ) {
         setup.push({ stmt, defines: [], loc });
@@ -287,6 +342,7 @@ export function parseSetup(
     memos,
     refs,
     effects,
+    resources,
     lifecycle: { onMount: onMountDecls, onCleanup: onCleanupDecls },
     setup,
     renderExpr,

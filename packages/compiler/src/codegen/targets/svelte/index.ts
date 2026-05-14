@@ -205,6 +205,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   for (const e of component.effects)
     scriptBody.push(cStmt({ body: `$effect(${rewriteExpr(e.body, rules)})` }));
+  for (const res of component.resources)
+    scriptBody.push(
+      cStmt({
+        body: `let ${res.name} = $state(await (${rewriteExpr(res.fetcher.expr, rules)})())`,
+      }),
+    );
   for (const m of component.lifecycle.onMount)
     scriptBody.push(cStmt({ body: `$effect(${rewriteExpr(m.body, rules)})` }));
   for (const r of component.refs)

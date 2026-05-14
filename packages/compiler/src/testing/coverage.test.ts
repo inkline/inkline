@@ -39,6 +39,7 @@ function makeComp(render: ReturnType<typeof createElement>): IRComponent {
     refs: [],
     memos: [],
     effects: [],
+    resources: [],
     lifecycle: { onMount: [], onCleanup: [] },
     setup: [],
     render,

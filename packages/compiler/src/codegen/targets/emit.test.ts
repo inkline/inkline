@@ -75,6 +75,7 @@ function makeComp(name: string, render: IRNode): IRComponent {
         loc,
       },
     ],
+    resources: [],
     lifecycle: { onMount: [], onCleanup: [] },
     setup: [],
     render,

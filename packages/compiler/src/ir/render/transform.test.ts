@@ -35,6 +35,7 @@ function makeComponent(render: IRNode): IRComponent {
     refs: [],
     memos: [],
     effects: [],
+    resources: [],
     lifecycle: { onMount: [], onCleanup: [] },
     setup: [],
     render,

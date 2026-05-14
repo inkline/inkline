@@ -47,6 +47,7 @@ export type {
   IRRefDeclaration,
   IRMemoDeclaration,
   IREffectDeclaration,
+  IRResourceDeclaration,
   IRLifecycle,
   IRSetupStatement,
   IRRefCategory,

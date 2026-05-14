@@ -293,6 +293,14 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     solidImports.push("createEffect");
     body.push(cStmt({ body: `createEffect(${rewriteExpr(e.body, rules)})` }));
   }
+  for (const res of component.resources) {
+    solidImports.push("createResource");
+    body.push(
+      cStmt({
+        body: `const [${res.name}, { ${res.loadingName}: loading, ${res.errorName}: error, ${res.refetchName}: refetch }] = createResource(${rewriteExpr(res.fetcher.expr, rules)})`,
+      }),
+    );
+  }
   for (const m of component.lifecycle.onMount) {
     solidImports.push("onMount");
     body.push(cStmt({ body: `onMount(${rewriteExpr(m.body, rules)})` }));

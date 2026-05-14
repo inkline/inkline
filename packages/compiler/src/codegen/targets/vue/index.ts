@@ -230,6 +230,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     vueImports.push("watchEffect");
     scriptBody.push(cStmt({ body: `watchEffect(${rewriteExpr(e.body, rules)})` }));
   }
+  for (const res of component.resources) {
+    vueImports.push("ref");
+    scriptBody.push(
+      cStmt({ body: `const ${res.name} = ref(await (${rewriteExpr(res.fetcher.expr, rules)})())` }),
+    );
+  }
   for (const r of component.refs) {
     vueImports.push("ref");
     scriptBody.push(

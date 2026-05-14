@@ -78,6 +78,7 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         refs: setupResult.refs,
         memos: setupResult.memos,
         effects: setupResult.effects,
+        resources: setupResult.resources,
         lifecycle: setupResult.lifecycle,
         setup: setupResult.setup,
         render,

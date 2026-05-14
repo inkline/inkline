@@ -10,6 +10,7 @@ export type PrimitiveName =
   | "createMemo"
   | "createEffect"
   | "createRef"
+  | "createResource"
   | "defineComponent"
   | "onMount"
   | "onCleanup"
@@ -258,6 +259,17 @@ export interface IRStyleBlock {
   readonly loc: SourceLocation;
 }
 
+export interface IRResourceDeclaration {
+  readonly name: string;
+  readonly fetcher: IRExprNode;
+  readonly source?: IRExprNode;
+  readonly symbolId: SymbolId;
+  readonly loadingName: string;
+  readonly errorName: string;
+  readonly refetchName: string;
+  readonly loc: SourceLocation;
+}
+
 export type IRRuntimeMode = "client" | "server" | "iso";
 
 export interface IRComponent {
@@ -272,6 +284,7 @@ export interface IRComponent {
   readonly refs: readonly IRRefDeclaration[];
   readonly memos: readonly IRMemoDeclaration[];
   readonly effects: readonly IREffectDeclaration[];
+  readonly resources: readonly IRResourceDeclaration[];
   readonly lifecycle: IRLifecycle;
   readonly setup: readonly IRSetupStatement[];
   readonly render: IRNode;
