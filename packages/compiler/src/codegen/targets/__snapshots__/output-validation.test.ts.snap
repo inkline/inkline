@@ -1,0 +1,1561 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`full output snapshots > BatchUpdates > react 1`] = `
+""use client";
+import { useState, useMemo } from "react";
+export function BatchUpdates(props: Record<string, never>)
+{
+const [x, setX] = useState(0)
+const [y, setY] = useState(0)
+const sum = useMemo(() => x + y, [x, y])
+return (
+<div>
+  <span>
+    {sum}
+  </span>
+  <button onClick={() => batch(() => { setX(x + 1); setY(y + 1); })}>
+    Both
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > BatchUpdates > solid 1`] = `
+"import { createSignal, createMemo } from "solid-js";
+export default function BatchUpdates(props: Record<string, never>)
+{
+const [x, setX] = createSignal(0)
+const [y, setY] = createSignal(0)
+const sum = createMemo(() => x() + y())
+return (
+<div>
+  <span>
+    {sum()}
+  </span>
+  <button onclick={() => batch(() => { setX(x() + 1); setY(y() + 1); })}>
+    Both
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > BatchUpdates > svelte 1`] = `
+"<script lang="ts">
+  let x = $state(0)
+  let y = $state(0)
+  let sum = $derived(x + y)
+</script>
+<div>
+  <span>
+    {{ sum }}
+  </span>
+  <button onclick="() => batch(() => { setX(x + 1); setY(y + 1); })">
+    Both
+  </button>
+</div>
+"
+`;
+
+exports[`full output snapshots > BatchUpdates > vue 1`] = `
+"<script setup lang="ts">
+  import { ref, computed } from "vue";
+  const x = ref(0)
+  const y = ref(0)
+  const sum = computed(() => x + y)
+</script>
+<template>
+<div>
+  <span>
+    {{ sum }}
+  </span>
+  <button @click="() => batch(() => { setX(x + 1); setY(y + 1); })">
+    Both
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > Button > react 1`] = `
+""use client";
+export function Button(props: { label: string; disabled?: boolean })
+{
+return (
+<button disabled={props.disabled}>
+  {props.label}
+</button>
+)
+}
+"
+`;
+
+exports[`full output snapshots > Button > solid 1`] = `
+"export default function Button(props: { label: string; disabled?: boolean })
+{
+return (
+<button disabled={props.disabled}>
+  {props.label}
+</button>
+)
+}
+"
+`;
+
+exports[`full output snapshots > Button > svelte 1`] = `
+"<script lang="ts">
+  let { label, disabled }: { label: string; disabled?: boolean } = $props()
+</script>
+<button disabled="props.disabled">
+  {{ props.label }}
+</button>
+"
+`;
+
+exports[`full output snapshots > Button > vue 1`] = `
+"<script setup lang="ts">
+  const props = defineProps<{ label: string; disabled?: boolean }>()
+</script>
+<template>
+<button :disabled="props.disabled">
+  {{ props.label }}
+</button>
+</template>
+"
+`;
+
+exports[`full output snapshots > Composite > react 1`] = `
+""use client";
+import { useState, useMemo, useEffect } from "react";
+export function Composite(props: Record<string, never>)
+{
+const [x, setX] = useState(1)
+const [y, setY] = useState(2)
+const sum = useMemo(() => x + y, [x, y])
+useEffect(() => { console.log("sum:", sum); }, [sum])
+return (
+<div>
+  <span id="sum">
+    {sum}
+  </span>
+  <button id="incX" onClick={() => setX(x + 1)}>
+    +X
+  </button>
+  <button id="incY" onClick={() => setY(y + 1)}>
+    +Y
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > Composite > solid 1`] = `
+"import { createSignal, createMemo, createEffect } from "solid-js";
+export default function Composite(props: Record<string, never>)
+{
+const [x, setX] = createSignal(1)
+const [y, setY] = createSignal(2)
+const sum = createMemo(() => x() + y())
+createEffect(() => { console.log("sum:", sum()); })
+return (
+<div>
+  <span id="sum">
+    {sum()}
+  </span>
+  <button id="incX" onclick={() => setX(x() + 1)}>
+    +X
+  </button>
+  <button id="incY" onclick={() => setY(y() + 1)}>
+    +Y
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > Composite > svelte 1`] = `
+"<script lang="ts">
+  let x = $state(1)
+  let y = $state(2)
+  let sum = $derived(x + y)
+  $effect(() => { console.log("sum:", sum); })
+</script>
+<div>
+  <span id="sum">
+    {{ sum }}
+  </span>
+  <button id="incX" onclick="() => setX(x + 1)">
+    +X
+  </button>
+  <button id="incY" onclick="() => setY(y + 1)">
+    +Y
+  </button>
+</div>
+"
+`;
+
+exports[`full output snapshots > Composite > vue 1`] = `
+"<script setup lang="ts">
+  import { ref, computed, watchEffect } from "vue";
+  const x = ref(1)
+  const y = ref(2)
+  const sum = computed(() => x + y)
+  watchEffect(() => { console.log("sum:", sum); })
+</script>
+<template>
+<div>
+  <span id="sum">
+    {{ sum }}
+  </span>
+  <button id="incX" @click="() => setX(x + 1)">
+    +X
+  </button>
+  <button id="incY" @click="() => setY(y + 1)">
+    +Y
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > Conditional > react 1`] = `
+""use client";
+import { useState } from "react";
+export function Conditional(props: Record<string, never>)
+{
+const [visible, setVisible] = useState(true)
+return (
+<div>
+  {visible ? (<>...</>) : {<span>Hidden</span>}}
+  <button onClick={() => setVisible(!visible)}>
+    Toggle
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > Conditional > solid 1`] = `
+"import { createSignal, Show } from "solid-js";
+export default function Conditional(props: Record<string, never>)
+{
+const [visible, setVisible] = createSignal(true)
+return (
+<div>
+  <Show when={visible()} fallback={<>{<span>Hidden</span>}</>}>
+    <span>
+      Visible
+    </span>
+  </Show>
+  <button onclick={() => setVisible(!visible())}>
+    Toggle
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > Conditional > svelte 1`] = `
+"<script lang="ts">
+  let visible = $state(true)
+</script>
+<div>
+  {#if visible}<span>
+    Visible
+  </span>
+  {:else}{{ <span>Hidden</span> }}{/if}
+  <button onclick="() => setVisible(!visible)">
+    Toggle
+  </button>
+</div>
+"
+`;
+
+exports[`full output snapshots > Conditional > vue 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const visible = ref(true)
+</script>
+<template>
+<div>
+  <span v-if="visible">
+    Visible
+  </span>
+  <template v-else>
+    {{ <span>Hidden</span> }}
+  </template>
+  <button @click="() => setVisible(!visible)">
+    Toggle
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > ConditionalClass > react 1`] = `
+""use client";
+import { useState } from "react";
+export function ConditionalClass(props: Record<string, never>)
+{
+const [active, setActive] = useState(false)
+return (
+<div className={active ? "active" : "inactive"}>
+  <button onClick={() => setActive(!active)}>
+    Toggle
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > ConditionalClass > solid 1`] = `
+"import { createSignal } from "solid-js";
+export default function ConditionalClass(props: Record<string, never>)
+{
+const [active, setActive] = createSignal(false)
+return (
+<div class={active() ? "active" : "inactive"}>
+  <button onclick={() => setActive(!active())}>
+    Toggle
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > ConditionalClass > svelte 1`] = `
+"<script lang="ts">
+  let active = $state(false)
+</script>
+<div class="active ? "active" : "inactive"">
+  <button onclick="() => setActive(!active)">
+    Toggle
+  </button>
+</div>
+"
+`;
+
+exports[`full output snapshots > ConditionalClass > vue 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const active = ref(false)
+</script>
+<template>
+<div :class="active ? "active" : "inactive"">
+  <button @click="() => setActive(!active)">
+    Toggle
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > ControlledSelect > react 1`] = `
+""use client";
+import { useState } from "react";
+export function ControlledSelect(props: Record<string, never>)
+{
+const [value, setValue] = useState("b")
+return (
+<select value={value} onChange={e => setValue(e.target.value)}>
+  <option value="a">
+    A
+  </option>
+  <option value="b">
+    B
+  </option>
+  <option value="c">
+    C
+  </option>
+</select>
+)
+}
+"
+`;
+
+exports[`full output snapshots > ControlledSelect > solid 1`] = `
+"import { createSignal } from "solid-js";
+export default function ControlledSelect(props: Record<string, never>)
+{
+const [value, setValue] = createSignal("b")
+return (
+<select value={value()} onchange={e => setValue(e.target.value)}>
+  <option value="a">
+    A
+  </option>
+  <option value="b">
+    B
+  </option>
+  <option value="c">
+    C
+  </option>
+</select>
+)
+}
+"
+`;
+
+exports[`full output snapshots > ControlledSelect > svelte 1`] = `
+"<script lang="ts">
+  let value = $state("b")
+</script>
+<select value="value" onchange="e => setValue(e.target.value)">
+  <option value="a">
+    A
+  </option>
+  <option value="b">
+    B
+  </option>
+  <option value="c">
+    C
+  </option>
+</select>
+"
+`;
+
+exports[`full output snapshots > ControlledSelect > vue 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const value = ref("b")
+</script>
+<template>
+<select :value="value" @change="e => setValue(e.target.value)">
+  <option value="a">
+    A
+  </option>
+  <option value="b">
+    B
+  </option>
+  <option value="c">
+    C
+  </option>
+</select>
+</template>
+"
+`;
+
+exports[`full output snapshots > ControlledTextarea > react 1`] = `
+""use client";
+import { useState } from "react";
+export function ControlledTextarea(props: Record<string, never>)
+{
+const [text, setText] = useState("")
+return (
+<div>
+  <textarea value={text} onInput={e => setText(e.target.value)} />
+  <p>
+    {text.length}
+    characters
+  </p>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > ControlledTextarea > solid 1`] = `
+"import { createSignal } from "solid-js";
+export default function ControlledTextarea(props: Record<string, never>)
+{
+const [text, setText] = createSignal("")
+return (
+<div>
+  <textarea value={text()} oninput={e => setText(e.target.value)} />
+  <p>
+    {text().length}
+    characters
+  </p>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > ControlledTextarea > svelte 1`] = `
+"<script lang="ts">
+  let text = $state("")
+</script>
+<div>
+  <textarea value="text" oninput="e => setText(e.target.value)" />
+  <p>
+    {{ text.length }}
+    characters
+  </p>
+</div>
+"
+`;
+
+exports[`full output snapshots > ControlledTextarea > vue 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const text = ref("")
+</script>
+<template>
+<div>
+  <textarea :value="text" @input="e => setText(e.target.value)" />
+  <p>
+    {{ text.length }}
+    characters
+  </p>
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > Counter > react 1`] = `
+""use client";
+import { useState, useMemo, useEffect } from "react";
+export function Counter(props: Record<string, never>)
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("count:", count); }, [count])
+return (
+<div>
+  <p>
+    {count}
+  </p>
+  <p>
+    {doubled}
+  </p>
+  <button onClick={() => setCount(count + 1)}>
+    +1
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > Counter > solid 1`] = `
+"import { createSignal, createMemo, createEffect } from "solid-js";
+export default function Counter(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("count:", count()); })
+return (
+<div>
+  <p>
+    {count()}
+  </p>
+  <p>
+    {doubled()}
+  </p>
+  <button onclick={() => setCount(count() + 1)}>
+    +1
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > Counter > svelte 1`] = `
+"<script lang="ts">
+  let count = $state(0)
+  let doubled = $derived(count * 2)
+  $effect(() => { console.log("count:", count); })
+</script>
+<div>
+  <p>
+    {{ count }}
+  </p>
+  <p>
+    {{ doubled }}
+  </p>
+  <button onclick="() => setCount(count + 1)">
+    +1
+  </button>
+</div>
+"
+`;
+
+exports[`full output snapshots > Counter > vue 1`] = `
+"<script setup lang="ts">
+  import { ref, computed, watchEffect } from "vue";
+  const count = ref(0)
+  const doubled = computed(() => count * 2)
+  watchEffect(() => { console.log("count:", count); })
+</script>
+<template>
+<div>
+  <p>
+    {{ count }}
+  </p>
+  <p>
+    {{ doubled }}
+  </p>
+  <button @click="() => setCount(count + 1)">
+    +1
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > DynamicList > react 1`] = `
+""use client";
+import { useState } from "react";
+export function DynamicList(props: Record<string, never>)
+{
+const [items, setItems] = useState([])
+const [input, setInput] = useState("")
+return (
+<div>
+  <input value={input} onInput={e => setInput(e.target.value)} />
+  <button onClick={() => { setItems([...items, input]); setInput(""); }}>
+    Add
+  </button>
+  <ul>
+    {items.map((item) => (<React.Fragment key={(item, i) => i}>{item => <li>{item}</li>}</React.Fragment>))}
+  </ul>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > DynamicList > solid 1`] = `
+"import { createSignal, For } from "solid-js";
+export default function DynamicList(props: Record<string, never>)
+{
+const [items, setItems] = createSignal([])
+const [input, setInput] = createSignal("")
+return (
+<div>
+  <input value={input()} oninput={e => setInput(e.target.value)} />
+  <button onclick={() => { setItems([...items(), input()]); setInput(""); }}>
+    Add
+  </button>
+  <ul>
+    <For each={items()}>
+      {(item) => {item => <li>{item}</li>}}
+    </For>
+  </ul>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > DynamicList > svelte 1`] = `
+"<script lang="ts">
+  let items = $state([])
+  let input = $state("")
+</script>
+<div>
+  <input value="input" oninput="e => setInput(e.target.value)" />
+  <button onclick="() => { setItems([...items, input]); setInput(""); }">
+    Add
+  </button>
+  <ul>
+    {#each items as item ((item, i) => i)}{{ item => <li>{item}</li> }}{/each}
+  </ul>
+</div>
+"
+`;
+
+exports[`full output snapshots > DynamicList > vue 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const items = ref([])
+  const input = ref("")
+</script>
+<template>
+<div>
+  <input :value="input" @input="e => setInput(e.target.value)" />
+  <button @click="() => { setItems([...items, input]); setInput(""); }">
+    Add
+  </button>
+  <ul>
+    <template v-for="item in items" :key="(item, i) => i">
+      {{ item => <li>{item}</li> }}
+    </template>
+  </ul>
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > EffectCleanup > react 1`] = `
+""use client";
+import { useState, useEffect } from "react";
+export function EffectCleanup(props: Record<string, never>)
+{
+const [active, setActive] = useState(true)
+useEffect(() => { if (active()) {
+      const id = setInterval(() => console.log("tick"), 1000);
+      return () => clearInterval(id);
+    } }, [active])
+return (
+<button onClick={() => setActive(!active)}>
+  Toggle
+</button>
+)
+}
+"
+`;
+
+exports[`full output snapshots > EffectCleanup > solid 1`] = `
+"import { createSignal, createEffect } from "solid-js";
+export default function EffectCleanup(props: Record<string, never>)
+{
+const [active, setActive] = createSignal(true)
+createEffect(() => { if (active()) {
+      const id = setInterval(() => console.log("tick"), 1000);
+      return () => clearInterval(id);
+    } })
+return (
+<button onclick={() => setActive(!active())}>
+  Toggle
+</button>
+)
+}
+"
+`;
+
+exports[`full output snapshots > EffectCleanup > svelte 1`] = `
+"<script lang="ts">
+  let active = $state(true)
+  $effect(() => { if (active()) {
+      const id = setInterval(() => console.log("tick"), 1000);
+      return () => clearInterval(id);
+    } })
+</script>
+<button onclick="() => setActive(!active)">
+  Toggle
+</button>
+"
+`;
+
+exports[`full output snapshots > EffectCleanup > vue 1`] = `
+"<script setup lang="ts">
+  import { ref, watchEffect } from "vue";
+  const active = ref(true)
+  watchEffect(() => { if (active()) {
+      const id = setInterval(() => console.log("tick"), 1000);
+      return () => clearInterval(id);
+    } })
+</script>
+<template>
+<button @click="() => setActive(!active)">
+  Toggle
+</button>
+</template>
+"
+`;
+
+exports[`full output snapshots > ElementRef > react 1`] = `
+""use client";
+import { useRef, useEffect } from "react";
+export function ElementRef(props: Record<string, never>)
+{
+const inputRef = useRef(null)
+useEffect(() => { inputRef.current?.focus(); }, [])
+return (
+<input placeholder="auto-focus" ref={inputRef} />
+)
+}
+"
+`;
+
+exports[`full output snapshots > ElementRef > solid 1`] = `
+"import { onMount } from "solid-js";
+export default function ElementRef(props: Record<string, never>)
+{
+onMount(() => { inputRef.current?.focus(); })
+let inputRef
+return (
+<input placeholder="auto-focus" ref={inputRef} />
+)
+}
+"
+`;
+
+exports[`full output snapshots > ElementRef > svelte 1`] = `
+"<script lang="ts">
+  $effect(() => { inputRef.current?.focus(); })
+  let inputRef = $state<HTMLElement | null>(null)
+</script>
+<input bind:this="inputRef" placeholder="auto-focus" />
+"
+`;
+
+exports[`full output snapshots > ElementRef > vue 1`] = `
+"<script setup lang="ts">
+  import { ref, onMounted } from "vue";
+  const inputRef = ref(null)
+  onMounted(() => { inputRef.current?.focus(); })
+</script>
+<template>
+<input placeholder="auto-focus" ref="inputRef" />
+</template>
+"
+`;
+
+exports[`full output snapshots > ForLoop > react 1`] = `
+""use client";
+import { useState } from "react";
+export function ForLoop(props: Record<string, never>)
+{
+const [items, setItems] = useState(["Apple", "Banana", "Cherry"])
+return (
+<ul>
+  {items.map((item) => (<React.Fragment key={item => item}>{item => <li>{item}</li>}</React.Fragment>))}
+</ul>
+)
+}
+"
+`;
+
+exports[`full output snapshots > ForLoop > solid 1`] = `
+"import { createSignal, For } from "solid-js";
+export default function ForLoop(props: Record<string, never>)
+{
+const [items, setItems] = createSignal(["Apple", "Banana", "Cherry"])
+return (
+<ul>
+  <For each={items()}>
+    {(item) => {item => <li>{item}</li>}}
+  </For>
+</ul>
+)
+}
+"
+`;
+
+exports[`full output snapshots > ForLoop > svelte 1`] = `
+"<script lang="ts">
+  let items = $state(["Apple", "Banana", "Cherry"])
+</script>
+<ul>
+  {#each items as item (item => item)}{{ item => <li>{item}</li> }}{/each}
+</ul>
+"
+`;
+
+exports[`full output snapshots > ForLoop > vue 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const items = ref(["Apple", "Banana", "Cherry"])
+</script>
+<template>
+<ul>
+  <template v-for="item in items" :key="item => item">
+    {{ item => <li>{item}</li> }}
+  </template>
+</ul>
+</template>
+"
+`;
+
+exports[`full output snapshots > FormField > react 1`] = `
+""use client";
+import { useState } from "react";
+export function FormField(props: Record<string, never>)
+{
+const [value, setValue] = useState("")
+return (
+<div>
+  <input value={value} onInput={e => setValue(e.target.value)} />
+  <p>
+    {value}
+  </p>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > FormField > solid 1`] = `
+"import { createSignal } from "solid-js";
+export default function FormField(props: Record<string, never>)
+{
+const [value, setValue] = createSignal("")
+return (
+<div>
+  <input value={value()} oninput={e => setValue(e.target.value)} />
+  <p>
+    {value()}
+  </p>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > FormField > svelte 1`] = `
+"<script lang="ts">
+  let value = $state("")
+</script>
+<div>
+  <input value="value" oninput="e => setValue(e.target.value)" />
+  <p>
+    {{ value }}
+  </p>
+</div>
+"
+`;
+
+exports[`full output snapshots > FormField > vue 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const value = ref("")
+</script>
+<template>
+<div>
+  <input :value="value" @input="e => setValue(e.target.value)" />
+  <p>
+    {{ value }}
+  </p>
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > Lifecycle > react 1`] = `
+""use client";
+import { useState, useEffect } from "react";
+export function Lifecycle(props: Record<string, never>)
+{
+const [mounted, setMounted] = useState(false)
+useEffect(() => { setMounted(true); }, [])
+useEffect(() => () => { console.log("cleanup"); }, [])
+return (
+<span>
+  {mounted ? "mounted" : "pending"}
+</span>
+)
+}
+"
+`;
+
+exports[`full output snapshots > Lifecycle > solid 1`] = `
+"import { createSignal, onMount, onCleanup } from "solid-js";
+export default function Lifecycle(props: Record<string, never>)
+{
+const [mounted, setMounted] = createSignal(false)
+onMount(() => { setMounted(true); })
+onCleanup(() => { console.log("cleanup"); })
+return (
+<span>
+  {mounted() ? "mounted" : "pending"}
+</span>
+)
+}
+"
+`;
+
+exports[`full output snapshots > Lifecycle > svelte 1`] = `
+"<script lang="ts">
+  let mounted = $state(false)
+  $effect(() => { setMounted(true); })
+</script>
+<span>
+  {{ mounted ? "mounted" : "pending" }}
+</span>
+"
+`;
+
+exports[`full output snapshots > Lifecycle > vue 1`] = `
+"<script setup lang="ts">
+  import { ref, onMounted, onUnmounted } from "vue";
+  const mounted = ref(false)
+  onMounted(() => { setMounted(true); })
+  onUnmounted(() => { console.log("cleanup"); })
+</script>
+<template>
+<span>
+  {{ mounted ? "mounted" : "pending" }}
+</span>
+</template>
+"
+`;
+
+exports[`full output snapshots > MemoChain > react 1`] = `
+""use client";
+import { useState, useMemo } from "react";
+export function MemoChain(props: Record<string, never>)
+{
+const [base, setBase] = useState(1)
+const doubled = useMemo(() => base * 2, [base])
+const quadrupled = useMemo(() => doubled * 2, [doubled])
+const label = useMemo(() => \`Value: \${quadrupled}\`, [quadrupled])
+return (
+<div>
+  <span>
+    {label}
+  </span>
+  <button onClick={() => setBase(base + 1)}>
+    +1
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > MemoChain > solid 1`] = `
+"import { createSignal, createMemo } from "solid-js";
+export default function MemoChain(props: Record<string, never>)
+{
+const [base, setBase] = createSignal(1)
+const doubled = createMemo(() => base() * 2)
+const quadrupled = createMemo(() => doubled() * 2)
+const label = createMemo(() => \`Value: \${quadrupled()}\`)
+return (
+<div>
+  <span>
+    {label()}
+  </span>
+  <button onclick={() => setBase(base() + 1)}>
+    +1
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > MemoChain > svelte 1`] = `
+"<script lang="ts">
+  let base = $state(1)
+  let doubled = $derived(base * 2)
+  let quadrupled = $derived(doubled * 2)
+  let label = $derived(\`Value: \${quadrupled}\`)
+</script>
+<div>
+  <span>
+    {{ label }}
+  </span>
+  <button onclick="() => setBase(base + 1)">
+    +1
+  </button>
+</div>
+"
+`;
+
+exports[`full output snapshots > MemoChain > vue 1`] = `
+"<script setup lang="ts">
+  import { ref, computed } from "vue";
+  const base = ref(1)
+  const doubled = computed(() => base * 2)
+  const quadrupled = computed(() => doubled * 2)
+  const label = computed(() => \`Value: \${quadrupled}\`)
+</script>
+<template>
+<div>
+  <span>
+    {{ label }}
+  </span>
+  <button @click="() => setBase(base + 1)">
+    +1
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > MixedControlFlow > react 1`] = `
+""use client";
+import { useState } from "react";
+export function MixedControlFlow(props: Record<string, never>)
+{
+const [items, setItems] = useState(["a", "b", "c"])
+const [filter, setFilter] = useState("")
+return (
+<div>
+  <input value={filter} onInput={e => setFilter(e.target.value)} />
+  <ul>
+    {items.map((item) => (<React.Fragment key={item => item}>{item => (<Show when={item.includes(filter())}>
+              <li>{item}</li>
+            </Show>)}</React.Fragment>))}
+  </ul>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > MixedControlFlow > solid 1`] = `
+"import { createSignal, For } from "solid-js";
+export default function MixedControlFlow(props: Record<string, never>)
+{
+const [items, setItems] = createSignal(["a", "b", "c"])
+const [filter, setFilter] = createSignal("")
+return (
+<div>
+  <input value={filter()} oninput={e => setFilter(e.target.value)} />
+  <ul>
+    <For each={items()}>
+      {(item) => {item => (<Show when={item.includes(filter())}>
+              <li>{item}</li>
+            </Show>)}}
+    </For>
+  </ul>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > MixedControlFlow > svelte 1`] = `
+"<script lang="ts">
+  let items = $state(["a", "b", "c"])
+  let filter = $state("")
+</script>
+<div>
+  <input value="filter" oninput="e => setFilter(e.target.value)" />
+  <ul>
+    {#each items as item (item => item)}{{ item => (<Show when={item.includes(filter())}>
+              <li>{item}</li>
+            </Show>) }}{/each}
+  </ul>
+</div>
+"
+`;
+
+exports[`full output snapshots > MixedControlFlow > vue 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const items = ref(["a", "b", "c"])
+  const filter = ref("")
+</script>
+<template>
+<div>
+  <input :value="filter" @input="e => setFilter(e.target.value)" />
+  <ul>
+    <template v-for="item in items" :key="item => item">
+      {{ item => (<Show when={item.includes(filter())}>
+              <li>{item}</li>
+            </Show>) }}
+    </template>
+  </ul>
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > MultiRefs > react 1`] = `
+""use client";
+import { useRef, useEffect } from "react";
+export function MultiRefs(props: Record<string, never>)
+{
+const inputRef = useRef(null)
+const buttonRef = useRef(null)
+useEffect(() => { inputRef.current?.focus(); }, [])
+return (
+<div>
+  <input placeholder="focus me" ref={inputRef} />
+  <button ref={buttonRef}>
+    Click
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > MultiRefs > solid 1`] = `
+"import { onMount } from "solid-js";
+export default function MultiRefs(props: Record<string, never>)
+{
+onMount(() => { inputRef.current?.focus(); })
+let inputRef
+let buttonRef
+return (
+<div>
+  <input placeholder="focus me" ref={inputRef} />
+  <button ref={buttonRef}>
+    Click
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > MultiRefs > svelte 1`] = `
+"<script lang="ts">
+  $effect(() => { inputRef.current?.focus(); })
+  let inputRef = $state<HTMLElement | null>(null)
+  let buttonRef = $state<HTMLElement | null>(null)
+</script>
+<div>
+  <input bind:this="inputRef" placeholder="focus me" />
+  <button bind:this="buttonRef">
+    Click
+  </button>
+</div>
+"
+`;
+
+exports[`full output snapshots > MultiRefs > vue 1`] = `
+"<script setup lang="ts">
+  import { ref, onMounted } from "vue";
+  const inputRef = ref(null)
+  const buttonRef = ref(null)
+  onMounted(() => { inputRef.current?.focus(); })
+</script>
+<template>
+<div>
+  <input placeholder="focus me" ref="inputRef" />
+  <button ref="buttonRef">
+    Click
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > MultipleComponentsPerFile > react 1`] = `
+""use client";
+export function Label(props: { text: string })
+{
+return (
+<span>
+  {props.text}
+</span>
+)
+}
+"
+`;
+
+exports[`full output snapshots > MultipleComponentsPerFile > solid 1`] = `
+"export default function Label(props: { text: string })
+{
+return (
+<span>
+  {props.text}
+</span>
+)
+}
+"
+`;
+
+exports[`full output snapshots > MultipleComponentsPerFile > svelte 1`] = `
+"<script lang="ts">
+  let { text }: { text: string } = $props()
+</script>
+<span>
+  {{ props.text }}
+</span>
+"
+`;
+
+exports[`full output snapshots > MultipleComponentsPerFile > vue 1`] = `
+"<script setup lang="ts">
+  const props = defineProps<{ text: string }>()
+</script>
+<template>
+<span>
+  {{ props.text }}
+</span>
+</template>
+"
+`;
+
+exports[`full output snapshots > PropDefaults > react 1`] = `
+""use client";
+export function PropDefaults(props: { color?; size })
+{
+return (
+<div style={\`color: \${props.color}\`}>
+  {props.size}
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > PropDefaults > solid 1`] = `
+"export default function PropDefaults(props: { color?; size })
+{
+return (
+<div style={\`color: \${props.color}\`}>
+  {props.size}
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > PropDefaults > svelte 1`] = `
+"<script lang="ts">
+  let { color, size }: { color?; size } = $props()
+</script>
+<div style="\`color: \${props.color}\`">
+  {{ props.size }}
+</div>
+"
+`;
+
+exports[`full output snapshots > PropDefaults > vue 1`] = `
+"<script setup lang="ts">
+  const props = defineProps<{ color?; size }>()
+</script>
+<template>
+<div :style="\`color: \${props.color}\`">
+  {{ props.size }}
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > SlotWithDefault > react 1`] = `
+""use client";
+export function SlotWithDefault(props: { children?: React.ReactNode })
+{
+return (
+<div>
+  <main>
+    <p>
+      Default content
+    </p>
+  </main>
+  <footer>
+    <span>
+      Action area
+    </span>
+  </footer>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SlotWithDefault > solid 1`] = `
+"export default function SlotWithDefault(props: Record<string, never>)
+{
+return (
+<div>
+  <main>
+    <p>
+      Default content
+    </p>
+  </main>
+  <footer>
+    <span>
+      Action area
+    </span>
+  </footer>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SlotWithDefault > svelte 1`] = `
+"<script lang="ts">
+</script>
+<div>
+  <main>
+    <p>
+      Default content
+    </p>
+  </main>
+  <footer>
+    <span>
+      Action area
+    </span>
+  </footer>
+</div>
+"
+`;
+
+exports[`full output snapshots > SlotWithDefault > vue 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div>
+  <main>
+    <p>
+      Default content
+    </p>
+  </main>
+  <footer>
+    <span>
+      Action area
+    </span>
+  </footer>
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > SwitchTabs > react 1`] = `
+""use client";
+import { useState } from "react";
+export function SwitchTabs(props: Record<string, never>)
+{
+const [tab, setTab] = useState("a")
+return (
+<div>
+  {tab === "a" ? (<>...</>) : tab === "b" ? (<>...</>) : null}
+  <button onClick={() => setTab(tab === "a" ? "b" : "a")}>
+    Switch
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SwitchTabs > solid 1`] = `
+"import { createSignal, Switch, Match } from "solid-js";
+export default function SwitchTabs(props: Record<string, never>)
+{
+const [tab, setTab] = createSignal("a")
+return (
+<div>
+  <Switch>
+    <Match when={tab() === "a"}>
+      <p>
+        Tab A
+      </p>
+    </Match>
+    <Match when={tab() === "b"}>
+      <p>
+        Tab B
+      </p>
+    </Match>
+  </Switch>
+  <button onclick={() => setTab(tab() === "a" ? "b" : "a")}>
+    Switch
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SwitchTabs > svelte 1`] = `
+"<script lang="ts">
+  let tab = $state("a")
+</script>
+<div>
+  {#if tab === "a"}<p>
+    Tab A
+  </p>
+  {:else if tab === "b"}<p>
+    Tab B
+  </p>
+  {/if}
+  <button onclick="() => setTab(tab === "a" ? "b" : "a")">
+    Switch
+  </button>
+</div>
+"
+`;
+
+exports[`full output snapshots > SwitchTabs > vue 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const tab = ref("a")
+</script>
+<template>
+<div>
+  <p v-if="tab === "a"">
+    Tab A
+  </p>
+  <p v-else-if="tab === "b"">
+    Tab B
+  </p>
+  <button @click="() => setTab(tab === "a" ? "b" : "a")">
+    Switch
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`multi-component files > ComponentRef → react (all files) 1`] = `
+""use client";
+export function Child(props: Record<string, never>)
+{
+return (
+<div>
+  Child
+</div>
+)
+}
+
+"use client";
+import { useRef, useEffect } from "react";
+export function ComponentRef(props: Record<string, never>)
+{
+const childRef = useRef(null)
+useEffect(() => { console.log(childRef.current); }, [])
+return (
+<Child ref={childRef} />
+)
+}
+"
+`;
+
+exports[`multi-component files > ComponentRef → solid (all files) 1`] = `
+"export default function Child(props: Record<string, never>)
+{
+return (
+<div>
+  Child
+</div>
+)
+}
+
+import { onMount } from "solid-js";
+export default function ComponentRef(props: Record<string, never>)
+{
+onMount(() => { console.log(childRef.current); })
+let childRef
+return (
+<Child ref={childRef} />
+)
+}
+"
+`;
+
+exports[`multi-component files > ComponentRef → svelte (all files) 1`] = `
+"<script lang="ts">
+</script>
+<div>
+  Child
+</div>
+
+<script lang="ts">
+  $effect(() => { console.log(childRef.current); })
+  let childRef = $state<HTMLElement | null>(null)
+</script>
+<Child bind:this="childRef" />
+"
+`;
+
+exports[`multi-component files > ComponentRef → vue (all files) 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div>
+  Child
+</div>
+</template>
+
+<script setup lang="ts">
+  import { ref, onMounted } from "vue";
+  const childRef = ref(null)
+  onMounted(() => { console.log(childRef.current); })
+</script>
+<template>
+<Child ref="childRef" />
+</template>
+"
+`;
