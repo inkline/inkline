@@ -61,6 +61,20 @@ Each target declares rewrite rules that control how reactive reads, setters, ref
 | setterStyle   | function-call   | function-call   | field-assignment(.value) | direct-assignment |
 | eventNameCase | camel (onClick) | lower (onclick) | kebab (@click)           | lower (onclick)   |
 
+## Performance
+
+Budgets are enforced by `testing/bench.ts` using tinybench. CI fails on >10% regression from `.bench-baseline.json`.
+
+| Benchmark                                        | Budget   | Baseline    |
+| ------------------------------------------------ | -------- | ----------- |
+| Parse + lower + analyze, Composite fixture, cold | < 30 ms  | —           |
+| Parse + lower + analyze, Composite fixture, warm | < 5 ms   | —           |
+| Emit + print, single component, single target    | < 10 ms  | —           |
+| Full compile (Counter, react)                    | < 100 ms | ~0.28 ms/op |
+| Full compile (Counter, all 4 targets)            | < 100 ms | ~0.24 ms/op |
+
+Current baseline is from the Counter fixture (simplest component). As the Composite fixture lands, those rows will be populated. Run `vp run bench` to compare against the baseline; `vp run bench -- --save-baseline` to update it.
+
 ## Directory layout
 
 ```
@@ -81,9 +95,9 @@ src/
 │   ├── types.ts                # Pass, PassContext, pipe
 │   └── passes/
 │       ├── 01-program.ts
-│       ├── 02-parse/           # bind-primitives, sites, setup, jsx/, deps, scope
+│       ├── 02-parse/           # bind-primitives, sites, setup, options, jsx/, deps, scope
 │       ├── 03-lower/           # slots, control-flow, two-way-binding, events, refs, key-warnings, static-mark
-│       └── 04-analyze/graph.ts
+│       └── 04-analyze/         # graph, validate (INK0010/0011/0020/0030)
 ├── plugin/                     # Plugin types, PluginRunner
-└── testing/                    # harness, conformance, sourcemap, coverage
+└── testing/                    # harness, conformance, sourcemap, coverage, typecheck, lint, mount, equivalence, bench
 ```

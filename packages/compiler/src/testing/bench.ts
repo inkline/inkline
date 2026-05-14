@@ -1,4 +1,4 @@
-import { readFileSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Bench } from "tinybench";
@@ -74,7 +74,6 @@ function loadBaseline(): Record<string, number> | null {
 }
 
 export function saveBaseline(results: readonly BenchResult[]): void {
-  const { writeFileSync } = require("node:fs") as typeof import("node:fs");
   const data: Record<string, number> = {};
   for (const r of results) data[r.name] = r.hz;
   writeFileSync(BASELINE_PATH, JSON.stringify(data, null, 2) + "\n", "utf-8");
