@@ -24,7 +24,7 @@ This document tracks what has been implemented in each version and what remains 
 - **Emit quality hardening** (Phase 1C) -- typed props in React/Solid, MemberRewriteRules, conformance invariants, 14 new emit tests
 - **Scoped CSS / style blocks** (Phase 2) -- IRStyleBlock, CStyle node, per-target emission (Vue `<style scoped>`, Svelte `<style>`, React/Solid `.module.css`)
 - **Server/client boundaries** (Phase 3A) -- IRRuntimeMode, conditional `'use client'`/`'use server'` directives
-- **Vite plugin + HMR + watch** (Phase 3B) -- @inkline/vite-plugin, compileIncremental, `--watch` CLI flag
+- **Build plugin + HMR + watch** (Phase 3B) -- @inkline/plugin (multi-bundler via unplugin), compileIncremental, `--watch` CLI flag
 - **createResource async primitive** (Phase 4) -- IRResourceDeclaration, per-target async patterns (React use/Suspense, Vue async setup, Solid createResource, Svelte await)
 - **IR serialization/caching** (Phase 5A) -- serializeModule, deserializeModule, raw field on IR expression nodes
 - **Source-map spans all targets** (Phase 5B) -- span wiring for Solid, Vue, and Svelte emitters (previously React-only)

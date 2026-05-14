@@ -46,7 +46,7 @@
 ### Phase 3B: Vite plugin + watch (`5cf83f361`)
 
 - Implemented `compileIncremental(prev, changes)` for incremental recompilation
-- Created `@inkline/vite-plugin` package with transform hook integration
+- Created `@inkline/plugin` package (multi-bundler via unplugin) with transform hook integration
 - Added `--watch` CLI flag for file-system watching with automatic recompilation
 
 ### Phase 4: createResource (`7a336e623`)

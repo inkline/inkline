@@ -2671,7 +2671,7 @@ Each item links to a tracking issue and a v1 implementation hint.
 
 ### 27.5 Vite plugin / HMR
 
-- **v0**: separate package `@inkline/vite-plugin` consumes `compile()` output.
+- **v0**: separate package `@inkline/plugin` (multi-bundler via unplugin) consumes `compile()` output.
 - **v1**: HMR boundary tracking via `IRComponent.id`; compiler exposes `compileIncremental(prev, changes)`.
 
 ### 27.6 Cross-process IR caching
