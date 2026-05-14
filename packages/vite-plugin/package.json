@@ -1,0 +1,20 @@
+{
+  "name": "@inkline/vite-plugin",
+  "version": "0.0.0",
+  "description": "Vite plugin for @inkline/compiler — compile .ink.tsx files to framework components",
+  "files": [
+    "src",
+    "dist"
+  ],
+  "type": "module",
+  "main": "./src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@inkline/compiler": "workspace:*"
+  },
+  "peerDependencies": {
+    "vite": ">=5"
+  }
+}

@@ -1,8 +1,13 @@
 #!/usr/bin/env node
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync, watch } from "node:fs";
 import { resolve, dirname, basename, extname } from "node:path";
 import { compile } from "../pipeline/compile.ts";
+import {
+  compileIncremental,
+  createIncrementalState,
+  type IncrementalState,
+} from "../pipeline/incremental.ts";
 import type { InklineConfig } from "../core/options.ts";
 import type { TargetName } from "../codegen/context.ts";
 import type { Diagnostic } from "../core/diagnostics/codes.ts";
@@ -23,7 +28,8 @@ Options:
   --out-dir <path>             Output directory. Default: dist.
   --source-map <mode>          external | inline | none. Default: external.
   --config <path>              Path to config file. Auto-detects inkline.config.{ts,js,mjs}.
-  --verbose                    Verbose plugin error logs.`);
+  --verbose                    Verbose plugin error logs.
+  --watch                      Watch .ink.tsx files and recompile on change.`);
     return;
   }
   if (command === "diagnose") {
@@ -173,7 +179,75 @@ async function runBuild(files: string[], flags: Record<string, string>): Promise
     }
   }
 
+  if (flags.watch === "true") {
+    return runWatch(files, targets, outDir, sourceMap, verbose, fileConfig);
+  }
+
   return hasError ? 1 : 0;
+}
+
+function runWatch(
+  files: string[],
+  targets: TargetName[],
+  outDir: string,
+  sourceMap: "external" | "inline" | "none",
+  verbose: boolean,
+  fileConfig: Partial<InklineConfig>,
+): never {
+  console.log(`Watching ${files.length} file(s) for changes...\n`);
+  let state: IncrementalState = createIncrementalState();
+  let debounceTimer: ReturnType<typeof setTimeout> | undefined;
+
+  const rebuild = async () => {
+    const inputs = files.map((f) => {
+      const absPath = resolve(f);
+      return { fileName: absPath, source: readFileSync(absPath, "utf-8") };
+    });
+
+    const result = await compileIncremental(state, inputs, {
+      targets,
+      outDir,
+      sourceMap,
+      verbose,
+      plugins: fileConfig.plugins,
+      targetOptions: fileConfig.targetOptions,
+      registry: fileConfig.registry,
+    });
+
+    state = result.nextState;
+
+    for (const d of result.diagnostics) {
+      console.error(formatDiagnostic(d));
+    }
+
+    for (const [target, targetFiles] of Object.entries(result.files)) {
+      if (!targetFiles) continue;
+      for (const file of targetFiles) {
+        const outPath = resolve(outDir, target, file.path);
+        mkdirSync(dirname(outPath), { recursive: true });
+        writeFileSync(outPath, file.contents, "utf-8");
+        if (file.sourceMap && sourceMap === "external") {
+          writeFileSync(`${outPath}.map`, file.sourceMap, "utf-8");
+        }
+      }
+    }
+
+    if (result.changed.length > 0) {
+      console.log(`Rebuilt ${result.changed.length} file(s), skipped ${result.skipped.length}`);
+    }
+  };
+
+  for (const filePath of files) {
+    const absPath = resolve(filePath);
+    watch(absPath, () => {
+      if (debounceTimer) clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        rebuild().catch((err) => console.error("Rebuild error:", err));
+      }, 100);
+    });
+  }
+
+  return undefined as never;
 }
 
 async function runDiagnose(files: string[], flags: Record<string, string>): Promise<number> {

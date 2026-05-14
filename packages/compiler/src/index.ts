@@ -1,6 +1,12 @@
 // ============ TOP-LEVEL ENTRY POINT ============
 export { compile } from "./pipeline/compile.ts";
 export type { CompileInput, CompileResult, AnalyzedModule } from "./pipeline/compile.ts";
+export {
+  compileIncremental,
+  createIncrementalState,
+  type IncrementalState,
+  type IncrementalCompileResult,
+} from "./pipeline/incremental.ts";
 
 // ============ CONFIGURATION ============
 export type { InklineConfig, ResolvedCompilerOptions, SourceMapMode } from "./core/options.ts";
