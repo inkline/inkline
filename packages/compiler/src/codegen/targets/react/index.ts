@@ -2,6 +2,7 @@ import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../con
 import { reactConformance } from "./conformance.ts";
 import type { Code } from "../../code-ir/nodes.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
+import type { SourceLocation } from "../../../ir/types.ts";
 import {
   cFile,
   cImport,
@@ -69,11 +70,19 @@ function jsxAttrs(
 // ── Render-tree walker ─────────────────────────────────────────────
 
 function emitNode(node: IRNode, rules: RewriteRules): Code {
+  const span = "loc" in node ? (node as { loc: SourceLocation }).loc : undefined;
+
   switch (node.kind) {
     case "Element": {
       const attrs = jsxAttrs(node, rules);
       const children = node.children.map((c) => emitNode(c, rules));
-      return cJsxElement({ tag: node.tag, attrs, children, selfClose: children.length === 0 });
+      return cJsxElement({
+        tag: node.tag,
+        attrs,
+        children,
+        selfClose: children.length === 0,
+        span,
+      });
     }
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? node.reference.getText();
@@ -86,16 +95,20 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
               attrs: [],
               children: [emitNode(s.body, rules)],
               selfClose: false,
+              span: s.loc,
             }),
       );
-      return cJsxElement({ tag, attrs, children, selfClose: children.length === 0 });
+      return cJsxElement({ tag, attrs, children, selfClose: children.length === 0, span });
     }
     case "Text":
-      return cJsxText({ text: node.value });
+      return cJsxText({ text: node.value, span });
     case "Expression":
-      return cExpr({ text: `{${rewriteExpr(node.expr, rules)}}` });
+      return cExpr({ text: `{${rewriteExpr(node.expr, rules)}}`, span });
     case "If":
-      return cExpr({ text: `{${buildTernary(node.branches, 0, node.fallback, rules)}}` });
+      return cExpr({
+        text: `{${buildTernary(node.branches, 0, node.fallback, rules)}}`,
+        span,
+      });
     case "For": {
       const each = rewriteExpr(node.each.expr, rules);
       const params = node.indexBinding
@@ -104,6 +117,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       const key = rewriteExpr(node.key.expr, rules);
       return cExpr({
         text: `{${each}.map(${params} => (<React.Fragment key={${key}}>${inlineNode(node.body, rules)}</React.Fragment>))}`,
+        span,
       });
     }
     case "Switch": {
@@ -113,18 +127,18 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         result = `${rewriteExpr(c.test.expr, rules)} ? ${inlineNode(c.body, rules)} : ${result}`;
       }
       if (node.fallback) result = result.replace(/null$/, inlineNode(node.fallback, rules));
-      return cExpr({ text: `{${result}}` });
+      return cExpr({ text: `{${result}}`, span });
     }
     case "SlotPlaceholder": {
       if (node.name === "default") {
         return node.fallback
-          ? cExpr({ text: `{children ?? ${inlineNode(node.fallback, rules)}}` })
-          : cExpr({ text: "{children}" });
+          ? cExpr({ text: `{children ?? ${inlineNode(node.fallback, rules)}}`, span })
+          : cExpr({ text: "{children}", span });
       }
       const prop = `render${node.name.charAt(0).toUpperCase()}${node.name.slice(1)}`;
       return node.fallback
-        ? cExpr({ text: `{${prop}?.() ?? ${inlineNode(node.fallback, rules)}}` })
-        : cExpr({ text: `{${prop}?.()}` });
+        ? cExpr({ text: `{${prop}?.() ?? ${inlineNode(node.fallback, rules)}}`, span })
+        : cExpr({ text: `{${prop}?.()}`, span });
     }
     case "Fragment":
       return cJsxElement({
@@ -132,6 +146,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         attrs: [],
         children: node.children.map((c) => emitNode(c, rules)),
         selfClose: false,
+        span,
       });
     default:
       assertNever(node);
@@ -172,6 +187,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     body.push(
       cStmt({
         body: `const [${s.name}, ${s.setterName}] = useState(${rewriteExpr(s.initial.expr, rules)})`,
+        span: s.loc,
       }),
     );
   }
@@ -180,26 +196,32 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     body.push(
       cStmt({
         body: `const ${m.name} = useMemo(() => ${rewriteExpr(m.expr.expr, rules)}, [${m.expr.deps.map((d) => d.name).join(", ")}])`,
+        span: m.loc,
       }),
     );
   }
   for (const e of component.effects) {
     reactImports.push("useEffect");
-    body.push(cStmt({ body: `useEffect(${rewriteExpr(e.body, rules)}, ${depsList(e.deps)})` }));
+    body.push(
+      cStmt({ body: `useEffect(${rewriteExpr(e.body, rules)}, ${depsList(e.deps)})`, span: e.loc }),
+    );
   }
   for (const r of component.refs) {
     reactImports.push("useRef");
     body.push(
-      cStmt({ body: `const ${r.name} = useRef${r.elementType ? `<${r.elementType}>` : ""}(null)` }),
+      cStmt({
+        body: `const ${r.name} = useRef${r.elementType ? `<${r.elementType}>` : ""}(null)`,
+        span: r.loc,
+      }),
     );
   }
   for (const m of component.lifecycle.onMount) {
     reactImports.push("useEffect");
-    body.push(cStmt({ body: `useEffect(${rewriteExpr(m.body, rules)}, [])` }));
+    body.push(cStmt({ body: `useEffect(${rewriteExpr(m.body, rules)}, [])`, span: m.loc }));
   }
   for (const c of component.lifecycle.onCleanup) {
     reactImports.push("useEffect");
-    body.push(cStmt({ body: `useEffect(() => ${rewriteExpr(c.body, rules)}, [])` }));
+    body.push(cStmt({ body: `useEffect(() => ${rewriteExpr(c.body, rules)}, [])`, span: c.loc }));
   }
 
   const unique = [...new Set(reactImports)];
