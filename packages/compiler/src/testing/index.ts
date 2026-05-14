@@ -7,6 +7,11 @@ export {
 } from "./conformance.ts";
 export { expectMappingAt } from "./sourcemap.ts";
 export { computeCoverageFromModules, type CoverageReport } from "./coverage.ts";
+export { typecheckEmittedForTarget, type TypecheckResult } from "./typecheck.ts";
+export { lintEmittedForTarget, type LintResult } from "./lint.ts";
+export { mountForTarget, type MountResult } from "./mount.ts";
+export { runScenarioAcrossTargets, type EquivalenceResult } from "./equivalence.ts";
+export { runBenchSuite, saveBaseline, type BenchResult, type BenchSuiteResult } from "./bench.ts";
 export {
   scenarios,
   type Scenario,
