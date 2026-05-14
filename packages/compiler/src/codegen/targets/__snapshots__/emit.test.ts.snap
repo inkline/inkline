@@ -1,0 +1,305 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`React forwardRef + props > expose and props both present 1`] = `
+""use client";
+import { useState, useMemo, useEffect, forwardRef, useImperativeHandle } from "react";
+export const Modal = forwardRef(function Modal(props: { title }, ref)
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("effect"); }, [])
+useImperativeHandle(ref, () => ({ open, close }))
+return (
+<div />
+)
+});
+"
+`;
+
+exports[`control flow emission > Solid: Switch with fallback 1`] = `
+"import { createSignal, createMemo, createEffect, Switch, Match } from "solid-js";
+export default function Sw(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+return (
+<div>
+  <Switch fallback={<>default</>}>
+    <Match when={x()}>
+      X
+    </Match>
+    <Match when={y()}>
+      Y
+    </Match>
+  </Switch>
+</div>
+)
+}
+"
+`;
+
+exports[`control flow emission > Solid: multi-branch If emits nested Show 1`] = `
+"import { createSignal, createMemo, createEffect, Show } from "solid-js";
+export default function Multi(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+return (
+<div>
+  <Show when={a()} fallback={<><Show when={b()} fallback={<><Show when={c()} fallback={<>fallback</>}>C</Show></>}>B</Show></>}>
+    A
+  </Show>
+</div>
+)
+}
+"
+`;
+
+exports[`control flow emission > Solid: single-branch If with fallback 1`] = `
+"import { createSignal, createMemo, createEffect, Show } from "solid-js";
+export default function Single(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+return (
+<div>
+  <Show when={ok()} fallback={<>no</>}>
+    yes
+  </Show>
+</div>
+)
+}
+"
+`;
+
+exports[`props type generation > React: typed props 1`] = `
+""use client";
+import { useState, useMemo, useEffect } from "react";
+export function Button(props: { label; disabled? })
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("effect"); }, [])
+return (
+<div />
+)
+}
+"
+`;
+
+exports[`props type generation > Solid: typed props 1`] = `
+"import { createSignal, createMemo, createEffect } from "solid-js";
+export default function Button(props: { label; disabled? })
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+return (
+<div />
+)
+}
+"
+`;
+
+exports[`props type generation > Svelte: $props destructuring 1`] = `
+"<script lang="ts">
+  let { label, disabled }: { label; disabled? } = $props()
+  let count = $state(0)
+  let doubled = $derived(count * 2)
+  $effect(() => { console.log("effect"); })
+</script>
+<div />
+"
+`;
+
+exports[`props type generation > Vue: defineProps with types 1`] = `
+"<script setup lang="ts">
+  import { ref, computed, watchEffect } from "vue";
+  const props = defineProps<{ label; disabled? }>()
+  const count = ref(0)
+  const doubled = computed(() => count * 2)
+  watchEffect(() => { console.log("effect"); })
+</script>
+<template>
+<div />
+</template>
+"
+`;
+
+exports[`reactive call rewriting > React: strips reactive calls in compound expression 1`] = `
+""use client";
+import { useState, useMemo, useEffect } from "react";
+export function Compound(props: Record<string, never>)
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("effect"); }, [])
+return (
+<p>
+  {count * 2 + other}
+</p>
+)
+}
+"
+`;
+
+exports[`reactive call rewriting > React: strips reactive calls in simple expression 1`] = `
+""use client";
+import { useState, useMemo, useEffect } from "react";
+export function Simple(props: Record<string, never>)
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("effect"); }, [])
+return (
+<p>
+  {count}
+</p>
+)
+}
+"
+`;
+
+exports[`reactive call rewriting > Solid: preserves reactive calls in compound expression 1`] = `
+"import { createSignal, createMemo, createEffect } from "solid-js";
+export default function Compound(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+return (
+<p>
+  {count() * 2}
+</p>
+)
+}
+"
+`;
+
+exports[`ref emission > React: useRef with element type 1`] = `
+""use client";
+import { useState, useMemo, useEffect, useRef } from "react";
+export function Form(props: Record<string, never>)
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("effect"); }, [])
+const inputRef = useRef<HTMLInputElement>(null)
+return (
+<div />
+)
+}
+"
+`;
+
+exports[`ref emission > Solid: let declaration for ref 1`] = `
+"import { createSignal, createMemo, createEffect } from "solid-js";
+export default function Form(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+let inputRef
+return (
+<div />
+)
+}
+"
+`;
+
+exports[`ref emission > Vue: ref() for element ref 1`] = `
+"<script setup lang="ts">
+  import { ref, computed, watchEffect } from "vue";
+  const count = ref(0)
+  const doubled = computed(() => count * 2)
+  watchEffect(() => { console.log("effect"); })
+  const inputRef = ref<HTMLInputElement | null>(null)
+</script>
+<template>
+<div />
+</template>
+"
+`;
+
+exports[`target emit + print (full output) > React: Counter component 1`] = `
+""use client";
+import { useState, useMemo, useEffect } from "react";
+export function Counter(props: Record<string, never>)
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("effect"); }, [])
+return (
+<div>
+  <p>
+    {count}
+  </p>
+  <button onClick={() => setCount(count + 1)}>
+    +1
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`target emit + print (full output) > Solid: Counter component 1`] = `
+"import { createSignal, createMemo, createEffect } from "solid-js";
+export default function Counter(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+return (
+<div>
+  <p>
+    {count()}
+  </p>
+  <button onclick={() => setCount(count() + 1)}>
+    +1
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`target emit + print (full output) > Svelte: Counter component 1`] = `
+"<script lang="ts">
+  let count = $state(0)
+  let doubled = $derived(count * 2)
+  $effect(() => { console.log("effect"); })
+</script>
+<div>
+  <p>
+    {{ count }}
+  </p>
+  <button onclick="() => setCount(count + 1)">
+    +1
+  </button>
+</div>
+"
+`;
+
+exports[`target emit + print (full output) > Vue: Counter component 1`] = `
+"<script setup lang="ts">
+  import { ref, computed, watchEffect } from "vue";
+  const count = ref(0)
+  const doubled = computed(() => count * 2)
+  watchEffect(() => { console.log("effect"); })
+</script>
+<template>
+<div>
+  <p>
+    {{ count }}
+  </p>
+  <button @click="() => setCount(count + 1)">
+    +1
+  </button>
+</div>
+</template>
+"
+`;

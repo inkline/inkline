@@ -113,97 +113,73 @@ const renderTree = createElement({
   ],
 });
 
-describe("target emit + print", () => {
-  it("Solid: emits valid Code IR that prints", () => {
+describe("target emit + print (full output)", () => {
+  it("Solid: Counter component", () => {
     const comp = makeComp("Counter", renderTree);
-    const ctx = makeCtx(solid);
-    const module = solid.emit(comp, ctx);
+    const module = solid.emit(comp, makeCtx(solid));
     const result = print(module.root);
-    expect(result.code).toContain("createSignal");
-    expect(result.code).toContain("createMemo");
-    expect(result.code).toContain("Counter");
-    expect(module.fileName).toContain(".tsx");
+    expect(module.fileName).toBe("Counter.tsx");
+    expect(result.code).toMatchSnapshot();
   });
 
-  it("React: emits valid Code IR that prints", () => {
+  it("React: Counter component", () => {
     const comp = makeComp("Counter", renderTree);
-    const ctx = makeCtx(react);
-    const module = react.emit(comp, ctx);
+    const module = react.emit(comp, makeCtx(react));
     const result = print(module.root);
-    expect(result.code).toContain("useState");
-    expect(result.code).toContain("useMemo");
-    expect(result.code).toContain("Counter");
-    expect(module.fileName).toContain(".tsx");
+    expect(module.fileName).toBe("Counter.tsx");
+    expect(result.code).toMatchSnapshot();
   });
 
-  it("Svelte: emits valid Code IR that prints", () => {
+  it("Svelte: Counter component", () => {
     const comp = makeComp("Counter", renderTree);
-    const ctx = makeCtx(svelte);
-    const module = svelte.emit(comp, ctx);
+    const module = svelte.emit(comp, makeCtx(svelte));
     const result = print(module.root);
-    expect(result.code).toContain("$state");
-    expect(result.code).toContain("$derived");
-    expect(result.code).toContain("<script");
-    expect(module.fileName).toContain(".svelte");
+    expect(module.fileName).toBe("Counter.svelte");
+    expect(result.code).toMatchSnapshot();
   });
 
-  it("Vue: emits valid Code IR that prints", () => {
+  it("Vue: Counter component", () => {
     const comp = makeComp("Counter", renderTree);
-    const ctx = makeCtx(vue);
-    const module = vue.emit(comp, ctx);
+    const module = vue.emit(comp, makeCtx(vue));
     const result = print(module.root);
-    expect(result.code).toContain("ref(");
-    expect(result.code).toContain("computed(");
-    expect(result.code).toContain("<script");
-    expect(module.fileName).toContain(".vue");
+    expect(module.fileName).toBe("Counter.vue");
+    expect(result.code).toMatchSnapshot();
   });
+});
 
-  it("each target produces different file extensions", () => {
-    const comp = makeComp("X", createElement({ tag: "div" }));
-    expect(solid.emit(comp, makeCtx(solid)).fileName).toMatch(/\.tsx$/);
-    expect(react.emit(comp, makeCtx(react)).fileName).toMatch(/\.tsx$/);
-    expect(svelte.emit(comp, makeCtx(svelte)).fileName).toMatch(/\.svelte$/);
-    expect(vue.emit(comp, makeCtx(vue)).fileName).toMatch(/\.vue$/);
-  });
-
-  it("Solid preserves reactive calls in output", () => {
-    const comp = makeComp("Counter", renderTree);
-    const result = print(solid.emit(comp, makeCtx(solid)).root);
-    expect(result.code).toContain("count()");
-  });
-
-  it("React strips reactive calls in render expressions", () => {
-    const simpleRender = createElement({
+describe("reactive call rewriting", () => {
+  it("React: strips reactive calls in simple expression", () => {
+    const render = createElement({
       tag: "p",
       children: [createExpr({ expr: mockExpr("count()"), isReactive: true })],
     });
-    const comp = makeComp("Simple", simpleRender);
+    const comp = makeComp("Simple", render);
     const result = print(react.emit(comp, makeCtx(react)).root);
-    expect(result.code).toContain("{count}");
-    expect(result.code).not.toContain("{count()}");
+    expect(result.code).toMatchSnapshot();
   });
 
-  it("React strips reactive calls in compound expressions", () => {
+  it("React: strips reactive calls in compound expression", () => {
     const render = createElement({
       tag: "p",
       children: [createExpr({ expr: mockExpr("count() * 2 + other()"), isReactive: true })],
     });
     const comp = makeComp("Compound", render);
     const result = print(react.emit(comp, makeCtx(react)).root);
-    expect(result.code).toContain("{count * 2 + other}");
-    expect(result.code).not.toContain("count()");
+    expect(result.code).toMatchSnapshot();
   });
 
-  it("Solid preserves reactive calls in compound expressions", () => {
+  it("Solid: preserves reactive calls in compound expression", () => {
     const render = createElement({
       tag: "p",
       children: [createExpr({ expr: mockExpr("count() * 2"), isReactive: true })],
     });
     const comp = makeComp("Compound", render);
     const result = print(solid.emit(comp, makeCtx(solid)).root);
-    expect(result.code).toContain("{count() * 2}");
+    expect(result.code).toMatchSnapshot();
   });
+});
 
+describe("control flow emission", () => {
   it("Solid: multi-branch If emits nested Show", () => {
     const ifNode = createIf({
       branches: [
@@ -215,15 +191,10 @@ describe("target emit + print", () => {
     });
     const comp = makeComp("Multi", createElement({ tag: "div", children: [ifNode] }));
     const result = print(solid.emit(comp, makeCtx(solid)).root);
-    const showCount = (result.code.match(/<Show/g) ?? []).length;
-    expect(showCount).toBe(3);
-    expect(result.code).toContain("A");
-    expect(result.code).toContain("B");
-    expect(result.code).toContain("C");
-    expect(result.code).toContain("fallback");
+    expect(result.code).toMatchSnapshot();
   });
 
-  it("Solid: single-branch If with fallback unchanged", () => {
+  it("Solid: single-branch If with fallback", () => {
     const ifNode = createIf({
       branches: [
         { test: createExpr({ expr: mockExpr("ok()") }), body: createText({ value: "yes" }) },
@@ -232,14 +203,10 @@ describe("target emit + print", () => {
     });
     const comp = makeComp("Single", createElement({ tag: "div", children: [ifNode] }));
     const result = print(solid.emit(comp, makeCtx(solid)).root);
-    const showCount = (result.code.match(/<Show/g) ?? []).length;
-    expect(showCount).toBe(1);
-    expect(result.code).toContain("yes");
-    expect(result.code).toContain("no");
-    expect(result.code).toContain("fallback");
+    expect(result.code).toMatchSnapshot();
   });
 
-  it("Solid: Switch with fallback passes fallback prop", () => {
+  it("Solid: Switch with fallback", () => {
     const switchNode = createSwitch({
       cases: [
         { test: createExpr({ expr: mockExpr("x()") }), body: createText({ value: "X" }) },
@@ -249,12 +216,7 @@ describe("target emit + print", () => {
     });
     const comp = makeComp("Sw", createElement({ tag: "div", children: [switchNode] }));
     const result = print(solid.emit(comp, makeCtx(solid)).root);
-    expect(result.code).toContain("<Switch");
-    expect(result.code).toContain("fallback");
-    expect(result.code).toContain("default");
-    expect(result.code).toContain("<Match");
-    const matchCount = (result.code.match(/<Match/g) ?? []).length;
-    expect(matchCount).toBe(2);
+    expect(result.code).toMatchSnapshot();
   });
 });
 
@@ -269,36 +231,28 @@ describe("props type generation", () => {
     };
   }
 
-  it("React: emits typed props in function signature", () => {
+  it("React: typed props", () => {
     const comp = makeCompWithProps("Button");
     const result = print(react.emit(comp, makeCtx(react)).root);
-    expect(result.code).toContain("label");
-    expect(result.code).toContain("disabled?");
-    expect(result.code).not.toContain("Record<string, never>");
+    expect(result.code).toMatchSnapshot();
   });
 
-  it("Solid: emits typed props instead of any", () => {
+  it("Solid: typed props", () => {
     const comp = makeCompWithProps("Button");
     const result = print(solid.emit(comp, makeCtx(solid)).root);
-    expect(result.code).toContain("label");
-    expect(result.code).toContain("disabled?");
-    expect(result.code).not.toContain("props: any");
+    expect(result.code).toMatchSnapshot();
   });
 
-  it("Vue: emits defineProps with prop types", () => {
+  it("Vue: defineProps with types", () => {
     const comp = makeCompWithProps("Button");
     const result = print(vue.emit(comp, makeCtx(vue)).root);
-    expect(result.code).toContain("defineProps");
-    expect(result.code).toContain("label");
-    expect(result.code).toContain("disabled?");
+    expect(result.code).toMatchSnapshot();
   });
 
-  it("Svelte: emits $props destructuring with types", () => {
+  it("Svelte: $props destructuring", () => {
     const comp = makeCompWithProps("Button");
     const result = print(svelte.emit(comp, makeCtx(svelte)).root);
-    expect(result.code).toContain("$props()");
-    expect(result.code).toContain("label");
-    expect(result.code).toContain("disabled");
+    expect(result.code).toMatchSnapshot();
   });
 });
 
@@ -318,37 +272,33 @@ describe("ref emission", () => {
     };
   }
 
-  it("React: emits useRef with element type", () => {
+  it("React: useRef with element type", () => {
     const comp = makeCompWithRef("Form");
     const result = print(react.emit(comp, makeCtx(react)).root);
-    expect(result.code).toContain("useRef<HTMLInputElement>");
+    expect(result.code).toMatchSnapshot();
   });
 
-  it("Solid: emits let declaration for ref", () => {
+  it("Solid: let declaration for ref", () => {
     const comp = makeCompWithRef("Form");
     const result = print(solid.emit(comp, makeCtx(solid)).root);
-    expect(result.code).toContain("let inputRef");
+    expect(result.code).toMatchSnapshot();
   });
 
-  it("Vue: emits ref() for element ref", () => {
+  it("Vue: ref() for element ref", () => {
     const comp = makeCompWithRef("Form");
     const result = print(vue.emit(comp, makeCtx(vue)).root);
-    expect(result.code).toContain("ref<HTMLInputElement");
+    expect(result.code).toMatchSnapshot();
   });
 });
 
 describe("React forwardRef + props", () => {
-  it("generates correct signature when expose and props both present", () => {
+  it("expose and props both present", () => {
     const comp: IRComponent = {
       ...makeComp("Modal", createElement({ tag: "div" })),
       props: [{ name: "title", required: true, symbolId: "t::prop::title@0" as SymbolId, loc }],
       expose: ["open", "close"],
     };
     const result = print(react.emit(comp, makeCtx(react)).root);
-    expect(result.code).toContain("forwardRef");
-    expect(result.code).toContain("useImperativeHandle");
-    expect(result.code).toContain("title");
-    expect(result.code).toContain("open");
-    expect(result.code).toContain("close");
+    expect(result.code).toMatchSnapshot();
   });
 });
