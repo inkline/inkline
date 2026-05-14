@@ -206,6 +206,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     scriptBody.push(
       cStmt({ body: `let ${r.name} = $state<${r.elementType ?? "HTMLElement"} | null>(null)` }),
     );
+  if (component.expose) {
+    for (const name of component.expose) {
+      scriptBody.push(cStmt({ body: `export function ${name}() {}` }));
+    }
+  }
 
   const renderTree = emitNode(component.render, rules);
   const file = cFile({

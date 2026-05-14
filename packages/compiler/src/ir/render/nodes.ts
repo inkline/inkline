@@ -267,6 +267,7 @@ export interface IRComponent {
   readonly setup: readonly IRSetupStatement[];
   readonly render: IRNode;
   readonly primitives: readonly PrimitiveUsage[];
+  readonly expose?: readonly string[];
   readonly targetOverrides: Readonly<Partial<Record<TargetName, IRTargetOverride>>>;
 }
 

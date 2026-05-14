@@ -41,7 +41,6 @@ export function refs(component: IRComponent, ctx: PassContext): IRComponent {
         }
       } else if (node.kind === "ComponentInstance") {
         for (const ref of node.refs) {
-          ctx.diagnostics.push("INK0070", ref.loc);
           const symbolId = ref.ref.deps[0]?.symbolId;
           if (symbolId) {
             updates.set(symbolId, { category: "component" });

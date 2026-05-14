@@ -95,7 +95,7 @@ describe("refs", () => {
     expect(result.refs[0]!.elementType).toBe("HTMLElement");
   });
 
-  it("pushes INK0070 for refs on ComponentInstance", () => {
+  it("classifies refs on ComponentInstance as component category", () => {
     const refExpr = createExpr({
       expr: mockExpr("myRef"),
       deps: [{ symbolId: refSymbolId, kind: "ref", name: "myRef", path: [], conditional: false }],
@@ -115,10 +115,9 @@ describe("refs", () => {
       render: ci,
     };
     const ctx = makeCtx();
-    refs(comp, ctx);
-    const diags = ctx.diagnostics.freeze();
-    expect(diags).toHaveLength(1);
-    expect(diags[0]!.code).toBe("INK0070");
+    const result = refs(comp, ctx);
+    expect(result.refs[0]!.category).toBe("component");
+    expect(ctx.diagnostics.freeze()).toHaveLength(0);
   });
 
   it("returns same component when no refs", () => {

@@ -139,5 +139,8 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   Diag_MissingKey: [{ name: "triggers INK0050", asserts: { expectedDiagnostics: ["INK0050"] } }],
   Diag_ShowNoWhen: [{ name: "triggers INK0060", asserts: { expectedDiagnostics: ["INK0060"] } }],
   Diag_ForNoEach: [{ name: "triggers INK0062", asserts: { expectedDiagnostics: ["INK0062"] } }],
-  Diag_ComponentRef: [{ name: "triggers INK0070", asserts: { expectedDiagnostics: ["INK0070"] } }],
+  Diag_ComponentRef: [{ name: "compiles without error (ref forwarding supported)", asserts: {} }],
+
+  // ── v1: Component refs ──
+  ComponentRef: [{ name: "compiles component ref", asserts: {} }],
 };

@@ -224,24 +224,47 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     body.push(cStmt({ body: `useEffect(() => ${rewriteExpr(c.body, rules)}, [])`, span: c.loc }));
   }
 
-  const unique = [...new Set(reactImports)];
-  const imports: Code[] =
-    unique.length > 0
-      ? [cImport({ module: "react", named: unique.map((i) => ({ imported: i })) })]
-      : [];
-
   const hasDefaultSlot = component.slots.some((s) => s.name === "default");
+  const hasComponentRefs = component.refs.some((r) => r.category === "component");
+  const needsForwardRef = hasComponentRefs || (component.expose && component.expose.length > 0);
+
+  if (needsForwardRef) {
+    reactImports.push("forwardRef");
+    if (component.expose && component.expose.length > 0) {
+      reactImports.push("useImperativeHandle");
+      body.push(
+        cStmt({
+          body: `useImperativeHandle(ref, () => ({ ${component.expose.join(", ")} }))`,
+        }),
+      );
+    }
+  }
+
   const propsType = hasDefaultSlot ? "{ children?: React.ReactNode }" : "Record<string, never>";
   const renderTree = emitNode(component.render, rules);
+
+  const updatedImports: Code[] =
+    new Set(reactImports).size > 0
+      ? [
+          cImport({
+            module: "react",
+            named: [...new Set(reactImports)].map((i) => ({ imported: i })),
+          }),
+        ]
+      : [];
+
+  const signature = needsForwardRef
+    ? `export const ${component.name} = forwardRef(function ${component.name}(props: ${propsType}, ref)`
+    : `export function ${component.name}(props: ${propsType})`;
 
   const file = cFile({
     flavor: "tsx",
     children: [
       cRaw({ text: '"use client";' }),
       cRaw({ text: "" }),
-      ...imports,
+      ...updatedImports,
       cRaw({ text: "" }),
-      cStmt({ body: `export function ${component.name}(props: ${propsType})` }),
+      cStmt({ body: signature }),
       cRaw({ text: "{" }),
       cGroup({
         children: [
@@ -252,7 +275,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
           cStmt({ body: ")" }),
         ],
       }),
-      cRaw({ text: "}" }),
+      cRaw({ text: needsForwardRef ? "});" : "}" }),
     ],
   });
   return { componentName: component.name, root: file, fileName: `${component.name}.tsx` };

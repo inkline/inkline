@@ -243,6 +243,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     scriptBody.push(cStmt({ body: `onUnmounted(${rewriteExpr(c.body, rules)})` }));
   }
 
+  if (component.expose && component.expose.length > 0) {
+    scriptBody.push(cStmt({ body: `defineExpose({ ${component.expose.join(", ")} })` }));
+  }
+
   const unique = [...new Set(vueImports)];
   const imports: Code[] =
     unique.length > 0
