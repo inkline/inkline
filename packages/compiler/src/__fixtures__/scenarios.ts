@@ -166,4 +166,7 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
 
   // ── Async resources ──
   AsyncData: [{ name: "initial loading", asserts: {} }],
+
+  // ── Multi-file components ──
+  MultiFile: [{ name: "component with sibling CSS", asserts: {} }],
 };

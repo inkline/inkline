@@ -2,7 +2,7 @@ import type { Diagnostic } from "../core/diagnostics/codes.ts";
 import { createDiagnosticCollector } from "../core/diagnostics/collector.ts";
 import { resolveOptions, type InklineConfig } from "../core/options.ts";
 import { SymbolTable } from "../ir/reactivity.ts";
-import type { IRComponent } from "../ir/render/nodes.ts";
+import type { IRComponent, IRModule } from "../ir/render/nodes.ts";
 import type { GeneratedFile, Target, TargetName } from "../codegen/context.ts";
 import { print } from "../codegen/print/printer.ts";
 import { PluginRunner } from "../plugin/runner.ts";
@@ -11,6 +11,7 @@ import { analyzePass, type AnalyzedModule } from "./passes/04-analyze/index.ts";
 import { programPass, type CompileInput } from "./passes/01-program.ts";
 import { parsePass } from "./passes/02-parse/index.ts";
 import { lower } from "./passes/03-lower/index.ts";
+import { resolveSiblings } from "./passes/01-program/resolver.ts";
 import type { PassContext } from "./types.ts";
 
 export type { CompileInput } from "./passes/01-program.ts";
@@ -101,8 +102,21 @@ export async function compile(
   // P2: parse .ink.tsx → IRModule
   const rawModule = await parsePass.run(artifact, ctx);
 
+  // P2.5: resolve sibling files (.ink.css, .ink.scss) and merge styles
+  const siblings = resolveSiblings(input.fileName);
+  const moduleWithSiblings: IRModule =
+    siblings.styles.length > 0
+      ? {
+          ...rawModule,
+          components: rawModule.components.map((c) => ({
+            ...c,
+            styles: [...c.styles, ...siblings.styles],
+          })),
+        }
+      : rawModule;
+
   // P3: lower (normalize control flow, slots, bindings, static marks)
-  const module = lower(rawModule, ctx);
+  const module = lower(moduleWithSiblings, ctx);
 
   // P4: analyze (reactivity graph + validation + cycle detection)
   const analyzedModule = await analyzePass.run(module, ctx);
