@@ -1,41 +1,41 @@
-import { compile } from "../src/pipeline/compile.ts";
-
-const FIXTURE = `
-import { createSignal, createMemo, createEffect, defineComponent } from "@inkline/core";
-export default defineComponent(() => {
-  const [count, setCount] = createSignal(0);
-  const doubled = createMemo(() => count() * 2);
-  createEffect(() => console.log(count()));
-  return (
-    <div>
-      <p>{count()}</p>
-      <p>{doubled()}</p>
-      <button onClick={() => setCount(count() + 1)}>+1</button>
-    </div>
-  );
-});
-`;
+import { runBenchSuite, saveBaseline } from "../src/testing/bench.ts";
 
 async function main() {
-  const iterations = 10;
-  const times: number[] = [];
+  const saveFlag = process.argv.includes("--save-baseline");
 
-  for (let i = 0; i < iterations; i++) {
-    const start = performance.now();
-    await compile(
-      { fileName: "Counter.ink.tsx", source: FIXTURE },
-      { targets: ["react", "solid", "vue", "svelte"], sourceMap: "none" },
+  console.log("Running benchmark suite...\n");
+  const suite = await runBenchSuite();
+
+  for (const r of suite.results) {
+    console.log(`  ${r.name}`);
+    console.log(
+      `    ${r.hz.toFixed(1)} ops/s  mean: ${r.meanMs.toFixed(2)}ms  p99: ${r.p99Ms.toFixed(2)}ms`,
     );
-    times.push(performance.now() - start);
   }
 
-  const avg = times.reduce((a, b) => a + b, 0) / times.length;
-  const min = Math.min(...times);
-  const max = Math.max(...times);
+  if (suite.baseline) {
+    console.log("\nBaseline comparison:");
+    for (const r of suite.results) {
+      const base = suite.baseline[r.name];
+      if (!base) continue;
+      const delta = ((r.hz - base) / base) * 100;
+      const sign = delta >= 0 ? "+" : "";
+      console.log(`  ${r.name}: ${sign}${delta.toFixed(1)}%`);
+    }
+  }
 
-  console.log(`Benchmark: full compile (Counter, 4 targets, ${iterations} iterations)`);
-  console.log(`  avg: ${avg.toFixed(1)}ms  min: ${min.toFixed(1)}ms  max: ${max.toFixed(1)}ms`);
-  console.log("Formal tinybench integration with .bench-baseline.json: deferred.");
+  if (suite.regressions.length > 0) {
+    console.error("\n✗ Performance regressions detected:");
+    for (const r of suite.regressions) console.error(`  ${r}`);
+    process.exitCode = 1;
+  } else {
+    console.log("\n✓ No regressions.");
+  }
+
+  if (saveFlag) {
+    saveBaseline(suite.results);
+    console.log("\nBaseline saved to .bench-baseline.json");
+  }
 }
 
 main().catch((err) => {

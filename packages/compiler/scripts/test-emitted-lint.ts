@@ -1,30 +1,59 @@
-import { compile } from "../src/pipeline/compile.ts";
+import { readdirSync } from "node:fs";
+import { resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import { compileFixture } from "../src/testing/harness.ts";
+import { lintEmittedForTarget } from "../src/testing/lint.ts";
+import type { TargetName } from "../src/codegen/context.ts";
+import { builtinRegistry } from "../src/codegen/registry.ts";
 
-const FIXTURE = `
-import { createSignal, defineComponent } from "@inkline/core";
-export default defineComponent(() => {
-  const [count, setCount] = createSignal(0);
-  return <button onClick={() => setCount(count() + 1)}>{count()}</button>;
-});
-`;
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const FIXTURES_DIR = resolve(__dirname, "..", "src", "__fixtures__");
+const TARGETS: TargetName[] = ["react", "solid", "vue", "svelte"];
 
 async function main() {
-  const result = await compile(
-    { fileName: "Counter.ink.tsx", source: FIXTURE },
-    { targets: ["react", "solid", "vue", "svelte"] },
-  );
+  const fixtures = readdirSync(FIXTURES_DIR)
+    .filter((f) => f.endsWith(".ink.tsx"))
+    .map((f) => f.replace(".ink.tsx", ""));
 
-  if (result.diagnostics.some((d) => d.severity === "error")) {
-    console.error("Compilation errors:");
-    for (const d of result.diagnostics) console.error(`  ${d.code}: ${d.title}`);
-    process.exitCode = 1;
-    return;
+  console.log(`Linting ${fixtures.length} fixtures × ${TARGETS.length} targets...\n`);
+
+  let totalErrors = 0;
+
+  for (const fixture of fixtures) {
+    const compiled = await compileFixture(fixture, TARGETS);
+
+    if (compiled.diagnostics.some((d) => d.severity === "error")) {
+      console.error(`  ✗ ${fixture}: compilation errors`);
+      for (const d of compiled.diagnostics) console.error(`    ${d.code}: ${d.title}`);
+      totalErrors++;
+      continue;
+    }
+
+    for (const targetName of TARGETS) {
+      const files = compiled.files[targetName];
+      if (!files || files.length === 0) continue;
+
+      const target = builtinRegistry.get(targetName);
+      if (!target?.conformance) {
+        console.log(`  ⊘ ${fixture} → ${targetName}: no conformance spec`);
+        continue;
+      }
+
+      const result = await lintEmittedForTarget(target.conformance, files);
+      if (result.pass) {
+        console.log(`  ✓ ${fixture} → ${targetName}`);
+      } else {
+        console.error(`  ✗ ${fixture} → ${targetName}`);
+        for (const d of result.diagnostics) console.error(`    ${d.title}`);
+        totalErrors++;
+      }
+    }
   }
 
-  const totalFiles = Object.values(result.files).reduce((n, f) => n + (f?.length ?? 0), 0);
   console.log(
-    `Emitted ${totalFiles} files. Lint validation: per-target ESLint invocation deferred until plugins are installed.`,
+    totalErrors === 0 ? `\n✓ All fixtures lint clean.` : `\n✗ ${totalErrors} failure(s).`,
   );
+  process.exitCode = totalErrors > 0 ? 1 : 0;
 }
 
 main().catch((err) => {

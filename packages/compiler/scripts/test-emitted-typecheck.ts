@@ -1,56 +1,59 @@
-import { compile } from "../src/pipeline/compile.ts";
-import { writeFileSync, mkdirSync, rmSync } from "node:fs";
+import { readdirSync } from "node:fs";
 import { resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import { compileFixture } from "../src/testing/harness.ts";
+import { typecheckEmittedForTarget } from "../src/testing/typecheck.ts";
+import type { TargetName } from "../src/codegen/context.ts";
+import { builtinRegistry } from "../src/codegen/registry.ts";
 
-const FIXTURE = `
-import { createSignal, createMemo, defineComponent } from "@inkline/core";
-export default defineComponent(() => {
-  const [count, setCount] = createSignal(0);
-  const doubled = createMemo(() => count() * 2);
-  return (
-    <div>
-      <p>{count()}</p>
-      <button onClick={() => setCount(count() + 1)}>+1</button>
-    </div>
-  );
-});
-`;
-
-const TARGETS = ["react", "solid", "vue", "svelte"] as const;
-const OUT_DIR = resolve(import.meta.dirname!, "..", ".emitted-check");
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const FIXTURES_DIR = resolve(__dirname, "..", "src", "__fixtures__");
+const TARGETS: TargetName[] = ["react", "solid", "vue", "svelte"];
 
 async function main() {
-  rmSync(OUT_DIR, { recursive: true, force: true });
+  const fixtures = readdirSync(FIXTURES_DIR)
+    .filter((f) => f.endsWith(".ink.tsx"))
+    .map((f) => f.replace(".ink.tsx", ""));
 
-  const result = await compile(
-    { fileName: "Counter.ink.tsx", source: FIXTURE },
-    { targets: [...TARGETS] },
-  );
+  console.log(`Typechecking ${fixtures.length} fixtures × ${TARGETS.length} targets...\n`);
 
-  if (result.diagnostics.some((d) => d.severity === "error")) {
-    console.error("Compilation errors:");
-    for (const d of result.diagnostics) console.error(`  ${d.code}: ${d.title}`);
-    process.exitCode = 1;
-    return;
-  }
+  let totalErrors = 0;
 
-  let fileCount = 0;
-  for (const [target, files] of Object.entries(result.files)) {
-    if (!files) continue;
-    for (const file of files) {
-      const outPath = resolve(OUT_DIR, target, file.path);
-      mkdirSync(dirname(outPath), { recursive: true });
-      writeFileSync(outPath, file.contents, "utf-8");
-      fileCount++;
+  for (const fixture of fixtures) {
+    const compiled = await compileFixture(fixture, TARGETS);
+
+    if (compiled.diagnostics.some((d) => d.severity === "error")) {
+      console.error(`  ✗ ${fixture}: compilation errors`);
+      for (const d of compiled.diagnostics) console.error(`    ${d.code}: ${d.title}`);
+      totalErrors++;
+      continue;
+    }
+
+    for (const targetName of TARGETS) {
+      const files = compiled.files[targetName];
+      if (!files || files.length === 0) continue;
+
+      const target = builtinRegistry.get(targetName);
+      if (!target?.conformance) {
+        console.log(`  ⊘ ${fixture} → ${targetName}: no conformance spec`);
+        continue;
+      }
+
+      const result = await typecheckEmittedForTarget(target.conformance, files);
+      if (result.pass) {
+        console.log(`  ✓ ${fixture} → ${targetName}`);
+      } else {
+        console.error(`  ✗ ${fixture} → ${targetName}`);
+        for (const d of result.diagnostics) console.error(`    ${d.title}`);
+        totalErrors++;
+      }
     }
   }
 
-  console.log(`Emitted ${fileCount} files across ${TARGETS.length} targets.`);
   console.log(
-    "Typecheck validation: per-target tsc invocation deferred until ESLint plugins are installed.",
+    totalErrors === 0 ? `\n✓ All fixtures type-check clean.` : `\n✗ ${totalErrors} failure(s).`,
   );
-
-  rmSync(OUT_DIR, { recursive: true, force: true });
+  process.exitCode = totalErrors > 0 ? 1 : 0;
 }
 
 main().catch((err) => {
