@@ -1,5 +1,6 @@
 import type { Code } from "./code-ir/nodes.ts";
 import type { IRComponent } from "../ir/render/nodes.ts";
+import type { Diagnostic } from "../core/diagnostics/codes.ts";
 import type { DiagnosticCollector } from "../core/diagnostics/collector.ts";
 import type { ResolvedCompilerOptions } from "../core/options.ts";
 import type { SymbolTable } from "../ir/reactivity.ts";
@@ -51,11 +52,38 @@ export interface CodeModule {
   readonly fileName: string;
 }
 
+export interface ControlFlowImportSpec {
+  readonly module: string;
+  readonly named?: readonly string[];
+}
+
+export interface TargetConformanceSpec {
+  readonly controlFlowImports: {
+    readonly if?: ControlFlowImportSpec;
+    readonly for?: ControlFlowImportSpec;
+    readonly switch?: ControlFlowImportSpec;
+  };
+  readonly lint: {
+    readonly eslintConfig: string;
+    readonly requiredPlugins: readonly string[];
+  };
+  readonly typecheck: {
+    readonly tsconfig: string;
+    readonly dtsImports: readonly string[];
+  };
+  readonly invariants: ReadonlyArray<(file: GeneratedFile) => readonly Diagnostic[]>;
+}
+
 export interface Target {
   readonly name: TargetName;
   readonly rewrites: RewriteRules;
+  readonly conformance?: TargetConformanceSpec;
   emit(component: IRComponent, ctx: CodegenContext): CodeModule;
 }
+
+export type TargetPlan = Pick<Target, "name" | "rewrites"> & {
+  readonly conformance?: TargetConformanceSpec;
+};
 
 export interface TargetRegistry {
   get(name: TargetName): Target | undefined;

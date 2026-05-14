@@ -91,6 +91,9 @@ export { definePlugin } from "./plugin/types.ts";
 export type {
   Target,
   TargetName,
+  TargetPlan,
+  TargetConformanceSpec,
+  ControlFlowImportSpec,
   RewriteRules,
   TargetRegistry,
   CodegenContext,

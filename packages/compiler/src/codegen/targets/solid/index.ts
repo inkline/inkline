@@ -1,4 +1,5 @@
 import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../context.ts";
+import { solidConformance } from "./conformance.ts";
 import type { Code } from "../../code-ir/nodes.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import {
@@ -319,5 +320,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   return { componentName: component.name, root: file, fileName: `${component.name}.tsx` };
 }
 
-export const solid: Target = { name: "solid", rewrites: REWRITES, emit };
+export const solid: Target = {
+  name: "solid",
+  rewrites: REWRITES,
+  conformance: solidConformance,
+  emit,
+};
 export default solid;

@@ -1,4 +1,5 @@
 import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../context.ts";
+import { reactConformance } from "./conformance.ts";
 import type { Code } from "../../code-ir/nodes.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import {
@@ -235,5 +236,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   return { componentName: component.name, root: file, fileName: `${component.name}.tsx` };
 }
 
-export const react: Target = { name: "react", rewrites: REWRITES, emit };
+export const react: Target = {
+  name: "react",
+  rewrites: REWRITES,
+  conformance: reactConformance,
+  emit,
+};
 export default react;

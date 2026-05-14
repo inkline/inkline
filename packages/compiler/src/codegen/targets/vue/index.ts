@@ -1,4 +1,5 @@
 import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../context.ts";
+import { vueConformance } from "./conformance.ts";
 import type { Code } from "../../code-ir/nodes.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import {
@@ -275,5 +276,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   return { componentName: component.name, root: file, fileName: `${component.name}.vue` };
 }
 
-export const vue: Target = { name: "vue", rewrites: REWRITES, emit };
+export const vue: Target = {
+  name: "vue",
+  rewrites: REWRITES,
+  conformance: vueConformance,
+  emit,
+};
 export default vue;
