@@ -143,4 +143,16 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
 
   // ── v1: Component refs ──
   ComponentRef: [{ name: "compiles component ref", asserts: {} }],
+
+  // ── Common UI patterns ──
+  ControlledSelect: [{ name: "initial B selected", asserts: {} }],
+  ConditionalClass: [{ name: "initial inactive", asserts: {} }],
+  MemoChain: [{ name: "initial chain value", asserts: { textOf: { span: "Value: 4" } } }],
+  EffectCleanup: [{ name: "initial active", asserts: {} }],
+  MixedControlFlow: [{ name: "renders all items", asserts: {} }],
+  BatchUpdates: [{ name: "initial zero sum", asserts: { textOf: { span: "0" } } }],
+  MultiRefs: [{ name: "renders both elements", asserts: {} }],
+  SlotWithDefault: [{ name: "renders structure", asserts: { textOf: { p: "Default content" } } }],
+  ControlledTextarea: [{ name: "initial empty", asserts: { textOf: { p: "0 characters" } } }],
+  DynamicList: [{ name: "initial empty list", asserts: {} }],
 };
