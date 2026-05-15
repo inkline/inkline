@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../../../node_modules/oxlint/configuration_schema.json",
+  "jsPlugins": ["eslint-plugin-solid"],
+  "env": { "browser": true },
+  "categories": { "correctness": "error" },
+  "rules": {
+    "no-unused-vars": "off",
+    "solid/no-react-specific-props": "off",
+    "solid/jsx-no-duplicate-props": "error",
+    "solid/prefer-for": "off"
+  }
+}

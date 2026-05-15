@@ -13,6 +13,7 @@ import {
   cJsxText,
   cGroup,
 } from "../../code-ir/builders.ts";
+import * as ts from "typescript";
 import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
 import { assertNever } from "../../../core/assert.ts";
 
@@ -57,10 +58,11 @@ function jsxAttrs(
     );
   }
   for (const r of node.refs) {
+    const name = rewriteExpr(r.ref.expr, rules);
     out.push(
       cJsxAttr({
         name: "ref",
-        value: { kind: "expr", expr: cExpr({ text: rewriteExpr(r.ref.expr, rules) }) },
+        value: { kind: "expr", expr: cExpr({ text: `(el) => ${name} = el` }) },
       }),
     );
   }
@@ -132,6 +134,16 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       const params = node.indexBinding
         ? `(${node.itemBinding}, ${node.indexBinding})`
         : `(${node.itemBinding})`;
+      let bodyStr: string;
+      if (node.body.kind === "Expression" && ts.isArrowFunction(node.body.expr)) {
+        const arrow = node.body.expr;
+        const arrowBody = ts.isBlock(arrow.body)
+          ? rewriteExpr(arrow, rules)
+          : rewriteExpr(arrow.body, rules);
+        bodyStr = arrowBody;
+      } else {
+        bodyStr = inlineNode(node.body, rules);
+      }
       return cJsxElement({
         tag: "For",
         attrs: [
@@ -140,7 +152,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
             value: { kind: "expr", expr: cExpr({ text: rewriteExpr(node.each.expr, rules) }) },
           }),
         ],
-        children: [cExpr({ text: `{${params} => ${inlineNode(node.body, rules)}}` })],
+        children: [cExpr({ text: `{${params} => ${bodyStr}}` })],
         selfClose: false,
       });
     }
@@ -314,7 +326,8 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     solidImports.push("onCleanup");
     body.push(cStmt({ body: `onCleanup(${rewriteExpr(c.body, rules)})`, span: c.loc }));
   }
-  for (const r of component.refs) body.push(cStmt({ body: `let ${r.name}` }));
+  for (const r of component.refs)
+    body.push(cStmt({ body: `let ${r.name}: ${r.elementType ?? "HTMLElement"} | undefined` }));
 
   collectCFImports(component.render, solidImports);
   const unique = [...new Set(solidImports)];
