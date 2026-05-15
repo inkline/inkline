@@ -17,11 +17,16 @@ import {
   cGroup,
   cStyle,
 } from "../../code-ir/builders.ts";
-import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
+import {
+  rewriteExpr,
+  rewriteEventName,
+  rewriteAttrName,
+  extractKeyBody,
+} from "../../shared/expr-rewrite.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
-  reactiveRead: { kind: "strip-call" },
+  reactiveRead: { kind: "field-access", field: "value" },
   setterStyle: { kind: "field-assignment", field: "value" },
   refAccess: { kind: "bare" },
   jsxAttrCasing: "html",
@@ -140,7 +145,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         ? `(${node.itemBinding}, ${node.indexBinding})`
         : node.itemBinding;
       const each = rewriteExpr(node.each.expr, rules);
-      const key = rewriteExpr(node.key.expr, rules);
+      const key = extractKeyBody(node.key.expr, rules);
       const body = emitNode(node.body, rules);
       const vFor = cTmplDirective({
         directive: "v-for",
