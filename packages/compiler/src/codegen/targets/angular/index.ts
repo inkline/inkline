@@ -103,7 +103,9 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     children: [
       cImport({ module: "@angular/core", named: angularImports.map((i) => ({ imported: i })) }),
       cRaw({ text: "" }),
-      cRaw({ text: `@Component({ standalone: true, template: \`${template}\` })` }),
+      cRaw({
+        text: `@Component({ standalone: true, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
+      }),
       cStmt({ body: `export class ${component.name}Component` }),
       cRaw({ text: "{" }),
       cGroup({ children: body }),
