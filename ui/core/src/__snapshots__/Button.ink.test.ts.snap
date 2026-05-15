@@ -1,0 +1,136 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button > output matches snapshots 1`] = `
+{
+  "angular/Button.component.ts": "import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<button [disabled]="props.disabled">
+{{ props.label }}
+</button>\` })
+export class ButtonComponent
+{
+}
+",
+  "astro/Button.astro": "---
+interface Props { label: string; disabled?: boolean }
+const { label, disabled } = Astro.props as Props;
+---
+<button disabled={props.disabled}>
+{props.label}
+</button>
+",
+  "qwik/Button.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const Button = component$(() =>
+{
+return (
+<button disabled={props.disabled}>
+  {props.label}
+</button>
+)
+});
+",
+  "react/Button.module.css": "button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+",
+  "react/Button.tsx": "import styles from "./Button.module.css";
+export function Button(props: { label: string; disabled?: boolean })
+{
+return (
+<button disabled={props.disabled}>
+  {props.label}
+</button>
+)
+}
+",
+  "solid/Button.module.css": "button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+",
+  "solid/Button.tsx": "import styles from "./Button.module.css";
+export default function Button(props: { label: string; disabled?: boolean })
+{
+return (
+<button disabled={props.disabled}>
+  {props.label}
+</button>
+)
+}
+",
+  "svelte/Button.svelte": "<script lang="ts">
+  let { label, disabled }: { label: string; disabled?: boolean } = $props()
+</script>
+<button disabled="props.disabled">
+  {{ props.label }}
+</button>
+<style scoped>
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+</style>
+",
+  "vue/Button.vue": "<script setup lang="ts">
+  const props = defineProps<{ label: string; disabled?: boolean }>()
+</script>
+<template>
+<button :disabled="props.disabled">
+  {{ props.label }}
+</button>
+</template>
+<style scoped>
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+</style>
+",
+}
+`;

@@ -1,0 +1,83 @@
+{
+  "name": "@inkline/test-utils",
+  "version": "0.0.0",
+  "description": "Cross-target testing utilities for Inkline .ink.tsx components.",
+  "homepage": "https://github.com/inkline/inkline#readme",
+  "bugs": {
+    "url": "https://github.com/inkline/inkline/issues"
+  },
+  "license": "MIT",
+  "author": "Inkline contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inkline/inkline.git",
+    "directory": "packages/test-utils"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "dev": "vp pack --watch",
+    "test": "vp test",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@inkline/compiler": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "@types/react": "^19",
+    "@vue/server-renderer": "^3.4",
+    "react": "^19",
+    "react-dom": "^19",
+    "solid-js": "^1.8",
+    "svelte": "^5",
+    "typescript": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:",
+    "vue": "^3.4"
+  },
+  "peerDependencies": {
+    "@vue/server-renderer": ">=3.4",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "solid-js": ">=1.8",
+    "svelte": ">=5",
+    "vitest": "*",
+    "vue": ">=3.4"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    },
+    "@vue/server-renderer": {
+      "optional": true
+    },
+    "solid-js": {
+      "optional": true
+    },
+    "svelte": {
+      "optional": true
+    }
+  }
+}

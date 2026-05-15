@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "build": "inkline build 'src/**/*.ink.tsx' --config inkline.config.ts",
-    "dev": "inkline build 'src/**/*.ink.tsx' --config inkline.config.ts --watch"
+    "dev": "inkline build 'src/**/*.ink.tsx' --config inkline.config.ts --watch",
+    "test": "vp test"
   },
   "devDependencies": {
-    "@inkline/compiler": "workspace:*"
+    "@inkline/compiler": "workspace:*",
+    "@inkline/test-utils": "workspace:*",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
   }
 }
