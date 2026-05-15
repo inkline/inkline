@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, watch } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, existsSync, watch, globSync } from "node:fs";
 import { resolve, dirname, basename, extname } from "node:path";
 import { compile } from "../pipeline/compile.ts";
 import {
@@ -21,15 +21,19 @@ function printVersion(): void {
 
 function printHelp(command?: string): void {
   if (command === "build") {
-    console.log(`Usage: inkline build <glob> [options]
+    console.log(`Usage: inkline build <glob...> [options]
 
 Options:
-  --target <name>[,<name>...]  Comma-separated targets. Required.
-  --out-dir <path>             Output directory. Default: dist.
+  --target <name>[,<name>...]  Comma-separated targets. Required unless set in config.
+  --out-dir <path>             Default output directory. Default: dist.
   --source-map <mode>          external | inline | none. Default: external.
   --config <path>              Path to config file. Auto-detects inkline.config.{ts,js,mjs}.
   --verbose                    Verbose plugin error logs.
-  --watch                      Watch .ink.tsx files and recompile on change.`);
+  --watch                      Watch .ink.tsx files and recompile on change.
+
+Glob patterns (e.g. 'src/**/*.ink.tsx') are expanded by the CLI.
+Per-target output directories can be set via targetOutDir in the config file.
+A barrel index.ts is auto-generated in each target output directory.`);
     return;
   }
   if (command === "diagnose") {
@@ -56,6 +60,57 @@ function formatDiagnostic(d: Diagnostic): string {
   if (d.help) msg += `\n    help: ${d.help}`;
   if (d.url) msg += `\n    docs: ${d.url}`;
   return msg;
+}
+
+function expandGlobs(patterns: string[]): string[] {
+  const files: string[] = [];
+  for (const pattern of patterns) {
+    if (/[*?{[]/.test(pattern)) {
+      const matches = globSync(pattern) as string[];
+      files.push(...matches);
+    } else {
+      files.push(pattern);
+    }
+  }
+  return files;
+}
+
+function resolveTargetDir(
+  target: string,
+  outDir: string,
+  targetOutDir: Partial<Record<string, string>>,
+): string {
+  return resolve(targetOutDir[target] ?? `${outDir}/${target}`);
+}
+
+interface BarrelEntry {
+  readonly componentName: string;
+  readonly fileName: string;
+  readonly target: TargetName;
+}
+
+const DEFAULT_EXPORT_TARGETS: ReadonlySet<TargetName> = new Set([
+  "solid",
+  "vue",
+  "svelte",
+  "astro",
+]);
+
+function generateBarrel(entries: BarrelEntry[]): string {
+  const sorted = [...entries].sort((a, b) => a.componentName.localeCompare(b.componentName));
+  return (
+    sorted
+      .map((e) => {
+        if (DEFAULT_EXPORT_TARGETS.has(e.target)) {
+          return `export { default as ${e.componentName} } from './${e.fileName}';`;
+        }
+        if (e.target === "angular") {
+          return `export { ${e.componentName}Component as ${e.componentName} } from './${e.fileName}';`;
+        }
+        return `export { ${e.componentName} } from './${e.fileName}';`;
+      })
+      .join("\n") + "\n"
+  );
 }
 
 function parseArgs(argv: string[]): {
@@ -131,15 +186,23 @@ async function runBuild(files: string[], flags: Record<string, string>): Promise
 
   const targets = targetStr.split(",").map((t) => t.trim()) as TargetName[];
   const outDir = flags["out-dir"] ?? fileConfig.outDir ?? "dist";
+  const targetOutDir = fileConfig.targetOutDir ?? {};
   const sourceMap = (flags["source-map"] ?? fileConfig.sourceMap ?? "external") as
     | "external"
     | "inline"
     | "none";
   const verbose = flags.verbose === "true" || fileConfig.verbose === true;
 
-  let hasError = false;
+  const resolvedFiles = expandGlobs(files);
+  if (resolvedFiles.length === 0) {
+    console.error("Error: no files matched the given patterns.");
+    return 2;
+  }
 
-  for (const filePath of files) {
+  let hasError = false;
+  const barrelEntries = new Map<string, BarrelEntry[]>();
+
+  for (const filePath of resolvedFiles) {
     const absPath = resolve(filePath);
     const source = readFileSync(absPath, "utf-8");
     const name = basename(absPath, extname(absPath)).replace(/\.ink$/, "");
@@ -164,23 +227,33 @@ async function runBuild(files: string[], flags: Record<string, string>): Promise
 
     for (const [target, targetFiles] of Object.entries(result.files)) {
       if (!targetFiles) continue;
+      const targetDir = resolveTargetDir(target, outDir, targetOutDir);
+
       for (const file of targetFiles) {
-        const outPath = resolve(
-          outDir,
-          target,
-          file.path.includes("/") ? basename(file.path) : `${name}${extname(file.path) || ".tsx"}`,
-        );
+        const fileName = basename(file.path);
+        const outPath = resolve(targetDir, fileName);
         mkdirSync(dirname(outPath), { recursive: true });
         writeFileSync(outPath, file.contents, "utf-8");
         if (file.sourceMap && sourceMap === "external") {
           writeFileSync(`${outPath}.map`, file.sourceMap, "utf-8");
         }
+
+        if (!file.path.endsWith(".css")) {
+          const entries = barrelEntries.get(targetDir) ?? [];
+          entries.push({ componentName: name, fileName, target: target as TargetName });
+          barrelEntries.set(targetDir, entries);
+        }
       }
     }
   }
 
+  for (const [dir, entries] of barrelEntries) {
+    const barrelPath = resolve(dir, "index.ts");
+    writeFileSync(barrelPath, generateBarrel(entries), "utf-8");
+  }
+
   if (flags.watch === "true") {
-    return runWatch(files, targets, outDir, sourceMap, verbose, fileConfig);
+    return runWatch(resolvedFiles, targets, outDir, targetOutDir, sourceMap, verbose, fileConfig);
   }
 
   return hasError ? 1 : 0;
@@ -190,6 +263,7 @@ function runWatch(
   files: string[],
   targets: TargetName[],
   outDir: string,
+  targetOutDir: Partial<Record<string, string>>,
   sourceMap: "external" | "inline" | "none",
   verbose: boolean,
   fileConfig: Partial<InklineConfig>,
@@ -220,16 +294,31 @@ function runWatch(
       console.error(formatDiagnostic(d));
     }
 
+    const barrelEntries = new Map<string, BarrelEntry[]>();
+
     for (const [target, targetFiles] of Object.entries(result.files)) {
       if (!targetFiles) continue;
+      const targetDir = resolveTargetDir(target, outDir, targetOutDir);
+
       for (const file of targetFiles) {
-        const outPath = resolve(outDir, target, file.path);
+        const outPath = resolve(targetDir, file.path);
         mkdirSync(dirname(outPath), { recursive: true });
         writeFileSync(outPath, file.contents, "utf-8");
         if (file.sourceMap && sourceMap === "external") {
           writeFileSync(`${outPath}.map`, file.sourceMap, "utf-8");
         }
+
+        if (!file.path.endsWith(".css")) {
+          const componentName = basename(file.path).split(".")[0]!;
+          const entries = barrelEntries.get(targetDir) ?? [];
+          entries.push({ componentName, fileName: file.path, target: target as TargetName });
+          barrelEntries.set(targetDir, entries);
+        }
       }
+    }
+
+    for (const [dir, entries] of barrelEntries) {
+      writeFileSync(resolve(dir, "index.ts"), generateBarrel(entries), "utf-8");
     }
 
     if (result.changed.length > 0) {

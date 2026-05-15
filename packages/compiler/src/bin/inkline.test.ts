@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import { spawnSync } from "node:child_process";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { existsSync, rmSync, writeFileSync, mkdirSync } from "node:fs";
+import { existsSync, rmSync, writeFileSync, mkdirSync, readFileSync } from "node:fs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const CLI_PATH = resolve(__dirname, "inkline.ts");
@@ -124,6 +124,129 @@ describe("inkline CLI", () => {
       expect(status).toBe(0);
     } finally {
       if (existsSync(TMP_OUT)) rmSync(TMP_OUT, { recursive: true });
+    }
+  });
+
+  it("build with targetOutDir routes output to per-target directories", () => {
+    const configDir = resolve(TMP_OUT, "target-out-dir-test");
+    const reactDir = resolve(configDir, "react-out");
+    const vueDir = resolve(configDir, "vue-out");
+    const configPath = resolve(configDir, "inkline.config.mjs");
+    try {
+      mkdirSync(configDir, { recursive: true });
+      writeFileSync(
+        configPath,
+        `export default {
+          targets: ["react", "vue"],
+          targetOutDir: {
+            react: ${JSON.stringify(reactDir)},
+            vue: ${JSON.stringify(vueDir)},
+          },
+        };\n`,
+        "utf-8",
+      );
+      const { status } = run(
+        "build",
+        resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+        "--config",
+        configPath,
+      );
+      expect(status).toBe(0);
+      expect(existsSync(resolve(reactDir, "Counter.tsx"))).toBe(true);
+      expect(existsSync(resolve(vueDir, "Counter.vue"))).toBe(true);
+    } finally {
+      if (existsSync(configDir)) rmSync(configDir, { recursive: true });
+    }
+  });
+
+  it("build generates barrel index.ts per target directory", () => {
+    const configDir = resolve(TMP_OUT, "barrel-test");
+    const reactDir = resolve(configDir, "react-out");
+    const configPath = resolve(configDir, "inkline.config.mjs");
+    try {
+      mkdirSync(configDir, { recursive: true });
+      writeFileSync(
+        configPath,
+        `export default {
+          targets: ["react"],
+          targetOutDir: { react: ${JSON.stringify(reactDir)} },
+        };\n`,
+        "utf-8",
+      );
+      const { status } = run(
+        "build",
+        resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+        "--config",
+        configPath,
+      );
+      expect(status).toBe(0);
+
+      const barrelPath = resolve(reactDir, "index.ts");
+      expect(existsSync(barrelPath)).toBe(true);
+      const barrel = readFileSync(barrelPath, "utf-8");
+      expect(barrel).toContain("export { Counter }");
+    } finally {
+      if (existsSync(configDir)) rmSync(configDir, { recursive: true });
+    }
+  });
+
+  it("build barrel includes multiple components sorted alphabetically", () => {
+    const configDir = resolve(TMP_OUT, "barrel-multi-test");
+    const reactDir = resolve(configDir, "react-out");
+    const configPath = resolve(configDir, "inkline.config.mjs");
+    try {
+      mkdirSync(configDir, { recursive: true });
+      writeFileSync(
+        configPath,
+        `export default {
+          targets: ["react"],
+          targetOutDir: { react: ${JSON.stringify(reactDir)} },
+        };\n`,
+        "utf-8",
+      );
+      const { status } = run(
+        "build",
+        resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+        resolve(FIXTURES_DIR, "Button.ink.tsx"),
+        "--config",
+        configPath,
+      );
+      expect(status).toBe(0);
+
+      const barrel = readFileSync(resolve(reactDir, "index.ts"), "utf-8");
+      const lines = barrel.trim().split("\n");
+      expect(lines).toHaveLength(2);
+      expect(lines[0]).toContain("Button");
+      expect(lines[1]).toContain("Counter");
+    } finally {
+      if (existsSync(configDir)) rmSync(configDir, { recursive: true });
+    }
+  });
+
+  it("build falls back to outDir/target when targetOutDir not set for a target", () => {
+    const configDir = resolve(TMP_OUT, "fallback-test");
+    const outDir = resolve(configDir, "dist");
+    const configPath = resolve(configDir, "inkline.config.mjs");
+    try {
+      mkdirSync(configDir, { recursive: true });
+      writeFileSync(
+        configPath,
+        `export default {
+          targets: ["react"],
+          outDir: ${JSON.stringify(outDir)},
+        };\n`,
+        "utf-8",
+      );
+      const { status } = run(
+        "build",
+        resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+        "--config",
+        configPath,
+      );
+      expect(status).toBe(0);
+      expect(existsSync(resolve(outDir, "react", "Counter.tsx"))).toBe(true);
+    } finally {
+      if (existsSync(configDir)) rmSync(configDir, { recursive: true });
     }
   });
 });

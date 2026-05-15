@@ -22,14 +22,7 @@
   "type": "module",
   "sideEffects": false,
   "exports": {
-    ".": {
-      "types": "./src/index.ts",
-      "default": "./dist/index.mjs"
-    },
-    "./testing": {
-      "types": "./src/testing/index.ts",
-      "default": "./dist/testing/index.mjs"
-    },
+    ".": "./dist/index.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {

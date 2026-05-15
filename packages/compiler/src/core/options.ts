@@ -7,6 +7,7 @@ export type SourceMapMode = "external" | "inline" | "none";
 export interface InklineConfig {
   readonly targets: readonly TargetName[];
   readonly outDir?: string;
+  readonly targetOutDir?: Partial<Record<TargetName, string>>;
   readonly sourceMap?: SourceMapMode;
   readonly targetOptions?: Partial<Record<TargetName, Record<string, unknown>>>;
   readonly plugins?: readonly Plugin[];
@@ -17,6 +18,7 @@ export interface InklineConfig {
 export interface ResolvedCompilerOptions {
   readonly targets: readonly TargetName[];
   readonly outDir: string;
+  readonly targetOutDir: Readonly<Partial<Record<TargetName, string>>>;
   readonly sourceMap: SourceMapMode;
   readonly targetOptions: Readonly<Partial<Record<TargetName, Readonly<Record<string, unknown>>>>>;
   readonly plugins: readonly Plugin[];
@@ -45,6 +47,7 @@ export function resolveOptions(
   return {
     targets,
     outDir: config.outDir ?? "dist",
+    targetOutDir: config.targetOutDir ?? {},
     sourceMap: config.sourceMap ?? "external",
     targetOptions: config.targetOptions ?? {},
     plugins: config.plugins ?? [],

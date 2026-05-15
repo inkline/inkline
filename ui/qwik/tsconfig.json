@@ -1,0 +1,8 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "@builder.io/qwik"
+  },
+  "include": ["src", "generated"]
+}

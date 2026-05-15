@@ -1,0 +1,13 @@
+{
+  "name": "@inkline/core",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "inkline build 'src/**/*.ink.tsx' --config inkline.config.ts",
+    "dev": "inkline build 'src/**/*.ink.tsx' --config inkline.config.ts --watch"
+  },
+  "devDependencies": {
+    "@inkline/compiler": "workspace:*"
+  }
+}

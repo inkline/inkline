@@ -78,4 +78,31 @@ describe("resolveOptions", () => {
     expect(opts.registry.has("react")).toBe(true);
     expect(opts.registry.list().length).toBeGreaterThan(0);
   });
+
+  it("defaults targetOutDir to empty object", () => {
+    const opts = resolveOptions({ targets: ["react"] });
+    expect(opts.targetOutDir).toEqual({});
+  });
+
+  it("preserves targetOutDir mapping", () => {
+    const opts = resolveOptions({
+      targets: ["react", "vue"],
+      targetOutDir: {
+        react: "../react/generated",
+        vue: "../vue/generated",
+      },
+    });
+    expect(opts.targetOutDir).toEqual({
+      react: "../react/generated",
+      vue: "../vue/generated",
+    });
+  });
+
+  it("preserves partial targetOutDir", () => {
+    const opts = resolveOptions({
+      targets: ["react", "vue"],
+      targetOutDir: { react: "./out/react" },
+    });
+    expect(opts.targetOutDir).toEqual({ react: "./out/react" });
+  });
 });
