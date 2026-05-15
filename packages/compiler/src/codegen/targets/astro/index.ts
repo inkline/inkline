@@ -2,7 +2,7 @@ import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../con
 import { astroConformance } from "./conformance.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import { cFile, cStmt, cRaw } from "../../code-ir/builders.ts";
-import { rewriteExpr, rewriteAttrName } from "../../shared/expr-rewrite.ts";
+import { rewriteExpr, rewriteAttrName, emitExprAsTemplate } from "../../shared/expr-rewrite.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -31,7 +31,7 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
     case "Text":
       return node.value;
     case "Expression":
-      return `{${rewriteExpr(node.expr, rules)}}`;
+      return emitExprAsTemplate(node.expr, rules);
     case "If":
       return `{${node.branches.map((b) => `${rewriteExpr(b.test.expr, rules)} ? (${emitNode(b.body, rules)})`).join(" : ")} : ${node.fallback ? `(${emitNode(node.fallback, rules)})` : "null"}}`;
     case "For":
