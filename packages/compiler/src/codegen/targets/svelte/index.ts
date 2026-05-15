@@ -16,7 +16,13 @@ import {
   cGroup,
   cStyle,
 } from "../../code-ir/builders.ts";
-import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
+import {
+  rewriteExpr,
+  rewriteEventName,
+  rewriteAttrName,
+  extractKeyBody,
+  emitExprAsTemplate,
+} from "../../shared/expr-rewrite.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -98,8 +104,11 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     }
     case "Text":
       return cTmplText({ text: node.value });
-    case "Expression":
-      return cTmplMustache({ expr: cExpr({ text: rewriteExpr(node.expr, rules) }) });
+    case "Expression": {
+      const tmpl = emitExprAsTemplate(node.expr, rules);
+      if (tmpl.startsWith("{")) return cTmplMustache({ expr: cExpr({ text: tmpl.slice(1, -1) }) });
+      return cRaw({ text: tmpl });
+    }
     case "If": {
       const [first, ...rest] = node.branches;
       const children: Code[] = [
@@ -121,10 +130,11 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       const binding = node.indexBinding
         ? `${node.itemBinding}, ${node.indexBinding}`
         : node.itemBinding;
+      const key = extractKeyBody(node.key.expr, rules);
       return cGroup({
         children: [
           cRaw({
-            text: `{#each ${rewriteExpr(node.each.expr, rules)} as ${binding} (${rewriteExpr(node.key.expr, rules)})}`,
+            text: `{#each ${rewriteExpr(node.each.expr, rules)} as ${binding} (${key})}`,
           }),
           emitNode(node.body, rules),
           cRaw({ text: "{/each}" }),
@@ -189,9 +199,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         (p) => `${p.name}${p.required ? "" : "?"}${p.typeNode ? `: ${p.typeNode.getText()}` : ""}`,
       )
       .join("; ");
+    scriptBody.push(cStmt({ body: `interface Props { ${defs} }` }));
     scriptBody.push(
       cStmt({
-        body: `let { ${component.props.map((p) => p.name).join(", ")} }: { ${defs} } = $props()`,
+        body: `let { ${component.props.map((p) => p.name).join(", ")} }: Props = $props()`,
       }),
     );
   }

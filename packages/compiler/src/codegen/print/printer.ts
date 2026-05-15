@@ -34,6 +34,7 @@ export interface PrintResult {
 class Printer {
   private readonly chunks: string[] = [];
   private readonly sm?: SourceMapBuilder;
+  private flavor: CFile["flavor"] = "tsx";
   private depth = 0;
   private line = 0;
   private col = 0;
@@ -151,6 +152,7 @@ class Printer {
   }
 
   private emitFile(node: CFile): void {
+    this.flavor = node.flavor;
     for (const child of node.children) {
       this.emit(child);
       this.ensureNewline();
@@ -279,7 +281,13 @@ class Printer {
       for (const m of node.modifier) this.write(`.${m}`);
     }
     if (node.expr) {
-      this.write(`="${node.expr.text}"`);
+      if (this.flavor === "sfc-svelte") {
+        this.write(`={${node.expr.text}}`);
+      } else {
+        const text = node.expr.text;
+        const quote = text.includes('"') ? "'" : '"';
+        this.write(`=${quote}${text}${quote}`);
+      }
     }
   }
 
@@ -287,13 +295,21 @@ class Printer {
     this.write(node.name);
     if (node.value.kind === "static") {
       this.write(`="${node.value.text}"`);
+    } else if (this.flavor === "sfc-svelte") {
+      this.write(`={${node.value.expr.text}}`);
     } else {
-      this.write(`="${node.value.expr.text}"`);
+      const text = node.value.expr.text;
+      const quote = text.includes('"') ? "'" : '"';
+      this.write(`=${quote}${text}${quote}`);
     }
   }
 
   private emitMustache(node: CTmplMustache): void {
-    this.write(`{{ ${node.expr.text} }}`);
+    if (this.flavor === "sfc-svelte") {
+      this.write(`{${node.expr.text}}`);
+    } else {
+      this.write(`{{ ${node.expr.text} }}`);
+    }
   }
 
   private emitGroup(node: CGroup): void {

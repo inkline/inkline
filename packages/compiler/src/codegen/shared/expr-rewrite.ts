@@ -143,3 +143,29 @@ export function rewriteAttrName(name: string, rules: RewriteRules): string {
   if (rules.jsxAttrCasing === "react") return REACT_ATTR_MAP[name] ?? name;
   return name;
 }
+
+export function extractKeyBody(expr: ts.Expression, rules: RewriteRules): string {
+  if (ts.isArrowFunction(expr) && !ts.isBlock(expr.body)) {
+    return rewriteExpr(expr.body, rules);
+  }
+  return rewriteExpr(expr, rules);
+}
+
+function unwrapParens(expr: ts.Expression): ts.Expression {
+  if (ts.isParenthesizedExpression(expr)) return unwrapParens(expr.expression);
+  return expr;
+}
+
+function isJsxLike(expr: ts.Expression): boolean {
+  const e = unwrapParens(expr);
+  return ts.isJsxElement(e) || ts.isJsxSelfClosingElement(e) || ts.isJsxFragment(e);
+}
+
+export function emitExprAsTemplate(expr: ts.Expression, rules: RewriteRules): string {
+  const inner = unwrapParens(expr);
+  if (ts.isArrowFunction(inner) && !ts.isBlock(inner.body)) {
+    return emitExprAsTemplate(inner.body, rules);
+  }
+  if (isJsxLike(inner)) return verbatim(inner);
+  return `{${rewriteExpr(expr, rules)}}`;
+}
