@@ -125,4 +125,48 @@ describe("slots", () => {
     const result = slots(comp);
     expect(result).toBe(comp);
   });
+
+  it("moves multiple JSX-valued attrs to named slots", () => {
+    const ci = createComponentInstance({
+      reference: ident("Layout"),
+      attrs: [
+        {
+          name: "header",
+          value: createExpr({ expr: mockExpr("<h1>Title</h1>") }),
+          binding: "normal",
+          loc: UNKNOWN_LOCATION,
+        },
+        {
+          name: "footer",
+          value: createExpr({ expr: mockExpr("<footer>End</footer>") }),
+          binding: "normal",
+          loc: UNKNOWN_LOCATION,
+        },
+      ],
+      slots: [
+        {
+          name: "default",
+          body: createText({ value: "body" }),
+          scopedParams: [],
+          loc: UNKNOWN_LOCATION,
+        },
+      ],
+    });
+    const result = slots(makeComp(ci));
+    const out = result.render as IRComponentInstance;
+    expect(out.attrs).toHaveLength(0);
+    expect(out.slots).toHaveLength(3);
+    expect(out.slots.map((s) => s.name)).toEqual(["default", "header", "footer"]);
+  });
+
+  it("component with no attrs and no slots returns unchanged", () => {
+    const ci = createComponentInstance({
+      reference: ident("Empty"),
+      attrs: [],
+      slots: [],
+    });
+    const comp = makeComp(ci);
+    const result = slots(comp);
+    expect(result).toBe(comp);
+  });
 });

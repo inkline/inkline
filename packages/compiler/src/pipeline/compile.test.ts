@@ -315,3 +315,55 @@ describe("compile error recovery (H3)", () => {
     expect(frozen[0]!.title).toContain("boom");
   });
 });
+
+const COUNTER_SOURCE = `
+import { createSignal, defineComponent } from "@inkline/core";
+export default defineComponent(() => {
+  const [count, setCount] = createSignal(0);
+  return <button onClick={() => setCount(count() + 1)}>{count()}</button>;
+});
+`;
+
+describe("compile end-to-end (M1)", () => {
+  it("compiles a real component and produces non-empty output", async () => {
+    const result = await compile(
+      { fileName: "Counter.ink.tsx", source: COUNTER_SOURCE },
+      { targets: ["react"] },
+    );
+    expect(result.files.react).toBeDefined();
+    expect(result.files.react!.length).toBeGreaterThan(0);
+    expect(result.files.react![0]!.contents.length).toBeGreaterThan(0);
+    expect(result.module).toBeDefined();
+  });
+
+  it("multi-target compilation produces output for each target", async () => {
+    const result = await compile(
+      { fileName: "Counter.ink.tsx", source: COUNTER_SOURCE },
+      { targets: ["react", "vue"] },
+    );
+    expect(result.files.react).toBeDefined();
+    expect(result.files.vue).toBeDefined();
+    expect(result.files.react!.length).toBeGreaterThan(0);
+    expect(result.files.vue!.length).toBeGreaterThan(0);
+  });
+
+  it("react output contains expected patterns", async () => {
+    const result = await compile(
+      { fileName: "Counter.ink.tsx", source: COUNTER_SOURCE },
+      { targets: ["react"] },
+    );
+    const code = result.files.react![0]!.contents;
+    expect(code).toContain("useState");
+    expect(code).toContain("Counter");
+  });
+
+  it("vue output is valid SFC", async () => {
+    const result = await compile(
+      { fileName: "Counter.ink.tsx", source: COUNTER_SOURCE },
+      { targets: ["vue"] },
+    );
+    const code = result.files.vue![0]!.contents;
+    expect(code).toContain("<script setup");
+    expect(code).toContain("<template>");
+  });
+});

@@ -1,3 +1,6 @@
+import { readdirSync } from "node:fs";
+import { resolve, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import { describe, it, expect } from "vitest";
 import {
   runConformanceInvariants,
@@ -7,7 +10,10 @@ import {
   requireImports,
   requirePropsNotDestructured,
 } from "./conformance.ts";
-import type { GeneratedFile } from "../codegen/context.ts";
+import { compileFixture } from "./harness.ts";
+import { scenarios } from "../__fixtures__/scenarios.ts";
+import type { GeneratedFile, TargetName } from "../codegen/context.ts";
+import { builtinRegistry } from "../codegen/registry.ts";
 
 const validFile: GeneratedFile = {
   path: "Counter.tsx",
@@ -102,4 +108,60 @@ describe("requirePropsNotDestructured", () => {
     };
     expect(requirePropsNotDestructured(file)).toHaveLength(1);
   });
+});
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const FIXTURES_DIR = resolve(__dirname, "..", "__fixtures__");
+const TARGETS: TargetName[] = ["react", "solid", "vue", "svelte"];
+
+const fixtures = readdirSync(FIXTURES_DIR)
+  .filter((f) => f.endsWith(".ink.tsx"))
+  .map((f) => f.replace(".ink.tsx", ""));
+
+describe("fixture conformance matrix", () => {
+  for (const fixture of fixtures) {
+    describe(fixture, () => {
+      const fixtureScenarios = scenarios[fixture];
+      const expectedDiags = fixtureScenarios?.[0]?.asserts.expectedDiagnostics;
+
+      it("compiles without unexpected errors", async () => {
+        const compiled = await compileFixture(fixture, TARGETS);
+
+        if (expectedDiags) {
+          const codes = compiled.diagnostics.map((d) => d.code);
+          for (const expected of expectedDiags) {
+            expect(codes, `expected diagnostic ${expected}`).toContain(expected);
+          }
+          return;
+        }
+
+        const errors = compiled.diagnostics.filter((d) => d.severity === "error");
+        expect(
+          errors,
+          `unexpected compilation errors: ${errors.map((d) => `${d.code}: ${d.title}`).join(", ")}`,
+        ).toHaveLength(0);
+      });
+
+      if (!expectedDiags) {
+        for (const targetName of TARGETS) {
+          it(`passes conformance for ${targetName}`, async () => {
+            const compiled = await compileFixture(fixture, TARGETS);
+            const files = compiled.files[targetName];
+            if (!files || files.length === 0) return;
+
+            const target = builtinRegistry.get(targetName);
+            if (!target?.conformance) return;
+
+            for (const file of files) {
+              if (file.path.endsWith(".css")) continue;
+              const diags = runConformanceInvariants(target.conformance.invariants, file);
+              expect(diags, `${file.path}: ${diags.map((d) => d.title).join(", ")}`).toHaveLength(
+                0,
+              );
+            }
+          });
+        }
+      }
+    });
+  }
 });

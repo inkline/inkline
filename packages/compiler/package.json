@@ -33,22 +33,29 @@
     "dev": "vp pack --watch",
     "test": "vp test",
     "check": "vp check",
-    "test:emitted-typecheck": "node --experimental-strip-types --experimental-transform-types scripts/test-emitted-typecheck.ts",
-    "test:emitted-lint": "node --experimental-strip-types --experimental-transform-types scripts/test-emitted-lint.ts",
-    "test:runtime": "node --experimental-strip-types --experimental-transform-types scripts/test-runtime.ts",
     "bench": "node --experimental-strip-types --experimental-transform-types scripts/bench.ts",
     "docs:diagnostics": "node --experimental-strip-types --experimental-transform-types scripts/gen-diagnostics.ts",
     "prepublishOnly": "vp run build"
   },
   "devDependencies": {
+    "@angular-eslint/eslint-plugin": "catalog:",
+    "@angular-eslint/template-parser": "catalog:",
     "@jridgewell/trace-mapping": "^0.3",
     "@types/node": "^25.5.0",
     "@types/react": "^19",
+    "@typescript-eslint/parser": "catalog:",
     "@typescript/native-preview": "7.0.0-dev.20260328.1",
     "@vitest/coverage-v8": "catalog:",
     "@vue/server-renderer": "^3.4",
     "bumpp": "^11.0.1",
+    "eslint": "catalog:",
+    "eslint-plugin-astro": "catalog:",
+    "eslint-plugin-qwik": "catalog:",
+    "eslint-plugin-solid": "catalog:",
+    "eslint-plugin-svelte": "catalog:",
+    "eslint-plugin-vue": "catalog:",
     "happy-dom": "^15",
+    "oxlint": "catalog:",
     "react": "^19",
     "react-dom": "^19",
     "solid-js": "^1.8",
@@ -57,7 +64,8 @@
     "typescript": "^6.0.2",
     "vite-plus": "^0.1.14",
     "vitest": "catalog:",
-    "vue": "^3.4"
+    "vue": "^3.4",
+    "vue-eslint-parser": "catalog:"
   },
   "peerDependencies": {
     "typescript": ">=5.4 <8"

@@ -108,5 +108,43 @@ describe("compileIncremental", () => {
     );
 
     expect(result.diagnostics).toBeDefined();
+    expect(Array.isArray(result.diagnostics)).toBe(true);
+  });
+
+  it("file removal between runs excludes removed file from output", async () => {
+    const state0 = createIncrementalState();
+    const r1 = await compileIncremental(
+      state0,
+      [
+        { fileName: "Counter.ink.tsx", source: COUNTER_SOURCE },
+        { fileName: "Button.ink.tsx", source: BUTTON_SOURCE },
+      ],
+      { targets: ["react"] },
+    );
+
+    expect(r1.changed).toHaveLength(2);
+
+    const r2 = await compileIncremental(
+      r1.nextState,
+      [{ fileName: "Counter.ink.tsx", source: COUNTER_SOURCE }],
+      { targets: ["react"] },
+    );
+
+    expect(r2.skipped).toEqual(["Counter.ink.tsx"]);
+    expect(r2.changed).toEqual([]);
+  });
+
+  it("multi-target incremental produces output for each target", async () => {
+    const state = createIncrementalState();
+    const result = await compileIncremental(
+      state,
+      [{ fileName: "Counter.ink.tsx", source: COUNTER_SOURCE }],
+      { targets: ["react", "vue"] },
+    );
+
+    expect(result.files.react).toBeDefined();
+    expect(result.files.vue).toBeDefined();
+    expect(result.files.react!.length).toBeGreaterThan(0);
+    expect(result.files.vue!.length).toBeGreaterThan(0);
   });
 });

@@ -70,15 +70,26 @@ describe("defineTarget", () => {
 });
 
 describe("builtinRegistry", () => {
-  it("has all 4 built-in targets registered", () => {
+  it("has all 7 built-in targets registered", () => {
     expect(builtinRegistry.has("react")).toBe(true);
     expect(builtinRegistry.has("solid")).toBe(true);
     expect(builtinRegistry.has("svelte")).toBe(true);
     expect(builtinRegistry.has("vue")).toBe(true);
+    expect(builtinRegistry.has("angular")).toBe(true);
+    expect(builtinRegistry.has("qwik")).toBe(true);
+    expect(builtinRegistry.has("astro")).toBe(true);
   });
 
   it("list returns 7 target names", () => {
-    expect(builtinRegistry.list()).toHaveLength(7);
+    const list = builtinRegistry.list();
+    expect(list).toHaveLength(7);
+    expect(list).toContain("react");
+    expect(list).toContain("solid");
+    expect(list).toContain("vue");
+    expect(list).toContain("svelte");
+    expect(list).toContain("angular");
+    expect(list).toContain("qwik");
+    expect(list).toContain("astro");
   });
 
   it("does not expose register method", () => {

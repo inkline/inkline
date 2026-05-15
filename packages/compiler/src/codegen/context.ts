@@ -69,10 +69,9 @@ export interface TargetConformanceSpec {
     readonly for?: ControlFlowImportSpec;
     readonly switch?: ControlFlowImportSpec;
   };
-  readonly lint: {
-    readonly eslintConfig: string;
-    readonly requiredPlugins: readonly string[];
-  };
+  readonly lint:
+    | { readonly tool: "oxlint"; readonly config: string }
+    | { readonly tool: "eslint"; readonly config: string };
   readonly typecheck: {
     readonly tsconfig: string;
     readonly dtsImports: readonly string[];

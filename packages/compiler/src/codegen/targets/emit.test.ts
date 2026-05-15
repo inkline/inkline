@@ -18,6 +18,9 @@ import { solid } from "./solid/index.ts";
 import { react } from "./react/index.ts";
 import { svelte } from "./svelte/index.ts";
 import { vue } from "./vue/index.ts";
+import { angular } from "./angular/index.ts";
+import { qwik } from "./qwik/index.ts";
+import { astro } from "./astro/index.ts";
 
 function mockExpr(code: string): ts.Expression {
   const sf = ts.createSourceFile("t.ts", code, ts.ScriptTarget.Latest, true);
@@ -302,6 +305,125 @@ describe("React forwardRef + props", () => {
       expose: ["open", "close"],
     };
     const result = print(react.emit(comp, makeCtx(react)).root);
+    expect(result.code).toMatchSnapshot();
+  });
+});
+
+describe("Angular target", () => {
+  it("Counter component", () => {
+    const comp = makeComp("Counter", renderTree);
+    const module = angular.emit(comp, makeCtx(angular));
+    const result = print(module.root);
+    expect(module.fileName).toBe("Counter.component.ts");
+    expect(result.code).toMatchSnapshot();
+  });
+
+  it("output contains @Component decorator", () => {
+    const comp = makeComp("Counter", renderTree);
+    const result = print(angular.emit(comp, makeCtx(angular)).root);
+    expect(result.code).toContain("@Component");
+  });
+
+  it("output imports from @angular/core", () => {
+    const comp = makeComp("Counter", renderTree);
+    const result = print(angular.emit(comp, makeCtx(angular)).root);
+    expect(result.code).toContain("@angular/core");
+  });
+
+  it("props type generation", () => {
+    const comp: IRComponent = {
+      ...makeComp("Button", createElement({ tag: "div" })),
+      props: [
+        { name: "label", required: true, symbolId: "t::prop::label@0" as SymbolId, loc },
+        { name: "disabled", required: false, symbolId: "t::prop::disabled@1" as SymbolId, loc },
+      ],
+    };
+    const result = print(angular.emit(comp, makeCtx(angular)).root);
+    expect(result.code).toMatchSnapshot();
+  });
+
+  it("control flow: If emits @if/@else if", () => {
+    const ifNode = createIf({
+      branches: [
+        { test: createExpr({ expr: mockExpr("a()") }), body: createText({ value: "A" }) },
+        { test: createExpr({ expr: mockExpr("b()") }), body: createText({ value: "B" }) },
+      ],
+      fallback: createText({ value: "fallback" }),
+    });
+    const comp = makeComp("IfTest", createElement({ tag: "div", children: [ifNode] }));
+    const result = print(angular.emit(comp, makeCtx(angular)).root);
+    expect(result.code).toContain("@if");
+    expect(result.code).toContain("@else if");
+    expect(result.code).toContain("@else");
+  });
+});
+
+describe("Qwik target", () => {
+  it("Counter component", () => {
+    const comp = makeComp("Counter", renderTree);
+    const module = qwik.emit(comp, makeCtx(qwik));
+    const result = print(module.root);
+    expect(module.fileName).toBe("Counter.tsx");
+    expect(result.code).toMatchSnapshot();
+  });
+
+  it("output contains component$", () => {
+    const comp = makeComp("Counter", renderTree);
+    const result = print(qwik.emit(comp, makeCtx(qwik)).root);
+    expect(result.code).toContain("component$");
+  });
+
+  it("output imports from @builder.io/qwik", () => {
+    const comp = makeComp("Counter", renderTree);
+    const result = print(qwik.emit(comp, makeCtx(qwik)).root);
+    expect(result.code).toContain("@builder.io/qwik");
+  });
+
+  it("output uses useSignal and useComputed$", () => {
+    const comp = makeComp("Counter", renderTree);
+    const result = print(qwik.emit(comp, makeCtx(qwik)).root);
+    expect(result.code).toContain("useSignal");
+    expect(result.code).toContain("useComputed$");
+  });
+
+  it("props type generation", () => {
+    const comp: IRComponent = {
+      ...makeComp("Button", createElement({ tag: "div" })),
+      props: [
+        { name: "label", required: true, symbolId: "t::prop::label@0" as SymbolId, loc },
+        { name: "disabled", required: false, symbolId: "t::prop::disabled@1" as SymbolId, loc },
+      ],
+    };
+    const result = print(qwik.emit(comp, makeCtx(qwik)).root);
+    expect(result.code).toMatchSnapshot();
+  });
+});
+
+describe("Astro target", () => {
+  it("Counter component", () => {
+    const comp = makeComp("Counter", renderTree);
+    const module = astro.emit(comp, makeCtx(astro));
+    const result = print(module.root);
+    expect(module.fileName).toBe("Counter.astro");
+    expect(result.code).toMatchSnapshot();
+  });
+
+  it("output contains --- frontmatter delimiters", () => {
+    const comp = makeComp("Counter", renderTree);
+    const result = print(astro.emit(comp, makeCtx(astro)).root);
+    expect(result.code).toContain("---");
+  });
+
+  it("props use Astro.props", () => {
+    const comp: IRComponent = {
+      ...makeComp("Button", createElement({ tag: "div" })),
+      props: [
+        { name: "label", required: true, symbolId: "t::prop::label@0" as SymbolId, loc },
+        { name: "disabled", required: false, symbolId: "t::prop::disabled@1" as SymbolId, loc },
+      ],
+    };
+    const result = print(astro.emit(comp, makeCtx(astro)).root);
+    expect(result.code).toContain("Astro.props");
     expect(result.code).toMatchSnapshot();
   });
 });

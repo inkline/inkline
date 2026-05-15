@@ -1,5 +1,59 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`full output snapshots > BatchUpdates > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div>
+<span>
+{{ sum() }}
+</span>
+<button (click)="() => batch(() => { setX(x() + 1); setY(y() + 1); })">
+Both
+</button>
+</div>\` })
+export class BatchUpdatesComponent
+{
+x = signal(0)
+y = signal(0)
+sum = computed(() => x() + y())
+}
+"
+`;
+
+exports[`full output snapshots > BatchUpdates > astro 1`] = `
+"---
+---
+<div>
+<span>
+{sum}
+</span>
+<button>
+Both
+</button>
+</div>
+"
+`;
+
+exports[`full output snapshots > BatchUpdates > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const BatchUpdates = component$(() =>
+{
+const x = useSignal(0)
+const y = useSignal(0)
+const sum = useComputed$(() => x.value + y.value)
+return (
+<div>
+  <span>
+    {sum.value}
+  </span>
+  <button onClick={$(() => () => batch(() => { setX(x.value + 1); setY(y.value + 1); }))}>
+    Both
+  </button>
+</div>
+)
+});
+"
+`;
+
 exports[`full output snapshots > BatchUpdates > react 1`] = `
 "import { useState, useMemo } from "react";
 export function BatchUpdates(props: Record<string, never>)
@@ -79,6 +133,41 @@ exports[`full output snapshots > BatchUpdates > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > Button > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<button [disabled]="props.disabled">
+{{ props.label }}
+</button>\` })
+export class ButtonComponent
+{
+}
+"
+`;
+
+exports[`full output snapshots > Button > astro 1`] = `
+"---
+interface Props { label: string; disabled?: boolean }
+const { label, disabled } = Astro.props as Props;
+---
+<button disabled={props.disabled}>
+{props.label}
+</button>
+"
+`;
+
+exports[`full output snapshots > Button > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const Button = component$(() =>
+{
+return (
+<button disabled={props.disabled}>
+  {props.label}
+</button>
+)
+});
+"
+`;
+
 exports[`full output snapshots > Button > react 1`] = `
 "export function Button(props: { label: string; disabled?: boolean })
 {
@@ -122,6 +211,71 @@ exports[`full output snapshots > Button > vue 1`] = `
   {{ props.label }}
 </button>
 </template>
+"
+`;
+
+exports[`full output snapshots > Composite > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div>
+<span id="sum">
+{{ sum() }}
+</span>
+<button id="incX" (click)="() => setX(x() + 1)">
++X
+</button>
+<button id="incY" (click)="() => setY(y() + 1)">
++Y
+</button>
+</div>\` })
+export class CompositeComponent
+{
+x = signal(1)
+y = signal(2)
+sum = computed(() => x() + y())
+constructor() { effect(() => { console.log("sum:", sum()); }) }
+}
+"
+`;
+
+exports[`full output snapshots > Composite > astro 1`] = `
+"---
+---
+<div>
+<span id="sum">
+{sum}
+</span>
+<button id="incX">
++X
+</button>
+<button id="incY">
++Y
+</button>
+</div>
+"
+`;
+
+exports[`full output snapshots > Composite > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const Composite = component$(() =>
+{
+const x = useSignal(1)
+const y = useSignal(2)
+const sum = useComputed$(() => x.value + y.value)
+useVisibleTask$(() => { console.log("sum:", sum.value); })
+return (
+<div>
+  <span id="sum">
+    {sum.value}
+  </span>
+  <button id="incX" onClick={$(() => () => setX(x.value + 1))}>
+    +X
+  </button>
+  <button id="incY" onClick={$(() => () => setY(y.value + 1))}>
+    +Y
+  </button>
+</div>
+)
+});
 "
 `;
 
@@ -220,6 +374,58 @@ exports[`full output snapshots > Composite > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > Conditional > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div>
+@if (visible()) {
+<span>
+Visible
+</span>
+} @else {
+{{ <span>Hidden</span> }}
+}
+<button (click)="() => setVisible(!visible())">
+Toggle
+</button>
+</div>\` })
+export class ConditionalComponent
+{
+visible = signal(true)
+}
+"
+`;
+
+exports[`full output snapshots > Conditional > astro 1`] = `
+"---
+---
+<div>
+{visible ? (<span>
+Visible
+</span>) : ({<span>Hidden</span>})}
+<button>
+Toggle
+</button>
+</div>
+"
+`;
+
+exports[`full output snapshots > Conditional > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const Conditional = component$(() =>
+{
+const visible = useSignal(true)
+return (
+<div>
+  {visible.value ? (<></>) : (<>{<span>Hidden</span>}</>)}
+  <button onClick={$(() => () => setVisible(!visible.value))}>
+    Toggle
+  </button>
+</div>
+)
+});
+"
+`;
+
 exports[`full output snapshots > Conditional > react 1`] = `
 "import { useState } from "react";
 export function Conditional(props: Record<string, never>)
@@ -295,6 +501,47 @@ exports[`full output snapshots > Conditional > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > ConditionalClass > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div [class]="active() ? "active" : "inactive"">
+<button (click)="() => setActive(!active())">
+Toggle
+</button>
+</div>\` })
+export class ConditionalClassComponent
+{
+active = signal(false)
+}
+"
+`;
+
+exports[`full output snapshots > ConditionalClass > astro 1`] = `
+"---
+---
+<div class={active ? "active" : "inactive"}>
+<button>
+Toggle
+</button>
+</div>
+"
+`;
+
+exports[`full output snapshots > ConditionalClass > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const ConditionalClass = component$(() =>
+{
+const active = useSignal(false)
+return (
+<div class={active.value ? "active" : "inactive"}>
+  <button onClick={$(() => () => setActive(!active.value))}>
+    Toggle
+  </button>
+</div>
+)
+});
+"
+`;
+
 exports[`full output snapshots > ConditionalClass > react 1`] = `
 "import { useState } from "react";
 export function ConditionalClass(props: Record<string, never>)
@@ -351,6 +598,65 @@ exports[`full output snapshots > ConditionalClass > vue 1`] = `
   </button>
 </div>
 </template>
+"
+`;
+
+exports[`full output snapshots > ControlledSelect > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<select [value]="value()" (change)="e => setValue(e.target.value)">
+<option value="a">
+A
+</option>
+<option value="b">
+B
+</option>
+<option value="c">
+C
+</option>
+</select>\` })
+export class ControlledSelectComponent
+{
+value = signal("b")
+}
+"
+`;
+
+exports[`full output snapshots > ControlledSelect > astro 1`] = `
+"---
+---
+<select value={value}>
+<option value="a">
+A
+</option>
+<option value="b">
+B
+</option>
+<option value="c">
+C
+</option>
+</select>
+"
+`;
+
+exports[`full output snapshots > ControlledSelect > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const ControlledSelect = component$(() =>
+{
+const value = useSignal("b")
+return (
+<select value={value.value} onChange={$(() => e => setValue(e.target.value))}>
+  <option value="a">
+    A
+  </option>
+  <option value="b">
+    B
+  </option>
+  <option value="c">
+    C
+  </option>
+</select>
+)
+});
 "
 `;
 
@@ -437,6 +743,53 @@ exports[`full output snapshots > ControlledSelect > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > ControlledTextarea > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div>
+<textarea [value]="text()" (input)="e => setText(e.target.value)" />
+<p>
+{{ text().length }}
+characters
+</p>
+</div>\` })
+export class ControlledTextareaComponent
+{
+text = signal("")
+}
+"
+`;
+
+exports[`full output snapshots > ControlledTextarea > astro 1`] = `
+"---
+---
+<div>
+<textarea value={text} />
+<p>
+{text.length}
+characters
+</p>
+</div>
+"
+`;
+
+exports[`full output snapshots > ControlledTextarea > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const ControlledTextarea = component$(() =>
+{
+const text = useSignal("")
+return (
+<div>
+  <textarea value={text.value} onInput={$(() => e => setText(e.target.value))} />
+  <p>
+    {text.value.length}
+    characters
+  </p>
+</div>
+)
+});
+"
+`;
+
 exports[`full output snapshots > ControlledTextarea > react 1`] = `
 "import { useState } from "react";
 export function ControlledTextarea(props: Record<string, never>)
@@ -501,6 +854,69 @@ exports[`full output snapshots > ControlledTextarea > vue 1`] = `
   </p>
 </div>
 </template>
+"
+`;
+
+exports[`full output snapshots > Counter > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div>
+<p>
+{{ count() }}
+</p>
+<p>
+{{ doubled() }}
+</p>
+<button (click)="() => setCount(count() + 1)">
++1
+</button>
+</div>\` })
+export class CounterComponent
+{
+count = signal(0)
+doubled = computed(() => count() * 2)
+constructor() { effect(() => { console.log("count:", count()); }) }
+}
+"
+`;
+
+exports[`full output snapshots > Counter > astro 1`] = `
+"---
+---
+<div>
+<p>
+{count}
+</p>
+<p>
+{doubled}
+</p>
+<button>
++1
+</button>
+</div>
+"
+`;
+
+exports[`full output snapshots > Counter > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const Counter = component$(() =>
+{
+const count = useSignal(0)
+const doubled = useComputed$(() => count.value * 2)
+useVisibleTask$(() => { console.log("count:", count.value); })
+return (
+<div>
+  <p>
+    {count.value}
+  </p>
+  <p>
+    {doubled.value}
+  </p>
+  <button onClick={$(() => () => setCount(count.value + 1))}>
+    +1
+  </button>
+</div>
+)
+});
 "
 `;
 
@@ -595,6 +1011,63 @@ exports[`full output snapshots > Counter > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > DynamicList > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div>
+<input [value]="input()" (input)="e => setInput(e.target.value)" />
+<button (click)="() => { setItems([...items(), input()]); setInput(""); }">
+Add
+</button>
+<ul>
+@for (item of items(); track (item, i) => i) {
+{{ item => <li>{item}</li> }}
+}
+</ul>
+</div>\` })
+export class DynamicListComponent
+{
+items = signal([])
+input = signal("")
+}
+"
+`;
+
+exports[`full output snapshots > DynamicList > astro 1`] = `
+"---
+---
+<div>
+<input value={input} />
+<button>
+Add
+</button>
+<ul>
+{items.map((item) => ({item => <li>{item}</li>}))}
+</ul>
+</div>
+"
+`;
+
+exports[`full output snapshots > DynamicList > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const DynamicList = component$(() =>
+{
+const items = useSignal([])
+const input = useSignal("")
+return (
+<div>
+  <input value={input.value} onInput={$(() => e => setInput(e.target.value))} />
+  <button onClick={$(() => () => { setItems([...items.value, input.value]); setInput(""); })}>
+    Add
+  </button>
+  <ul>
+    {items.value.map((item) => (<>{item => <li>{item}</li>}</>))}
+  </ul>
+</div>
+)
+});
+"
+`;
+
 exports[`full output snapshots > DynamicList > react 1`] = `
 "import { useState } from "react";
 export function DynamicList(props: Record<string, never>)
@@ -678,6 +1151,49 @@ exports[`full output snapshots > DynamicList > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > EffectCleanup > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<button (click)="() => setActive(!active())">
+Toggle
+</button>\` })
+export class EffectCleanupComponent
+{
+active = signal(true)
+constructor() { effect(() => { if (active()) {
+      const id = setInterval(() => console.log("tick"), 1000);
+      return () => clearInterval(id);
+    } }) }
+}
+"
+`;
+
+exports[`full output snapshots > EffectCleanup > astro 1`] = `
+"---
+---
+<button>
+Toggle
+</button>
+"
+`;
+
+exports[`full output snapshots > EffectCleanup > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const EffectCleanup = component$(() =>
+{
+const active = useSignal(true)
+useVisibleTask$(() => { if (active()) {
+      const id = setInterval(() => console.log("tick"), 1000);
+      return () => clearInterval(id);
+    } })
+return (
+<button onClick={$(() => () => setActive(!active.value))}>
+  Toggle
+</button>
+)
+});
+"
+`;
+
 exports[`full output snapshots > EffectCleanup > react 1`] = `
 "import { useState, useEffect } from "react";
 export function EffectCleanup(props: Record<string, never>)
@@ -745,6 +1261,33 @@ exports[`full output snapshots > EffectCleanup > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > ElementRef > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<input placeholder="auto-focus" />\` })
+export class ElementRefComponent
+{
+}
+"
+`;
+
+exports[`full output snapshots > ElementRef > astro 1`] = `
+"---
+---
+<input placeholder="auto-focus" />
+"
+`;
+
+exports[`full output snapshots > ElementRef > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const ElementRef = component$(() =>
+{
+return (
+<input placeholder="auto-focus" />
+)
+});
+"
+`;
+
 exports[`full output snapshots > ElementRef > react 1`] = `
 "import { useRef, useEffect } from "react";
 export function ElementRef(props: Record<string, never>)
@@ -789,6 +1332,43 @@ exports[`full output snapshots > ElementRef > vue 1`] = `
 <template>
 <input placeholder="auto-focus" ref="inputRef" />
 </template>
+"
+`;
+
+exports[`full output snapshots > ForLoop > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<ul>
+@for (item of items(); track item => item) {
+{{ item => <li>{item}</li> }}
+}
+</ul>\` })
+export class ForLoopComponent
+{
+items = signal(["Apple", "Banana", "Cherry"])
+}
+"
+`;
+
+exports[`full output snapshots > ForLoop > astro 1`] = `
+"---
+---
+<ul>
+{items.map((item) => ({item => <li>{item}</li>}))}
+</ul>
+"
+`;
+
+exports[`full output snapshots > ForLoop > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const ForLoop = component$(() =>
+{
+const items = useSignal(["Apple", "Banana", "Cherry"])
+return (
+<ul>
+  {items.value.map((item) => (<>{item => <li>{item}</li>}</>))}
+</ul>
+)
+});
 "
 `;
 
@@ -844,6 +1424,50 @@ exports[`full output snapshots > ForLoop > vue 1`] = `
   </template>
 </ul>
 </template>
+"
+`;
+
+exports[`full output snapshots > FormField > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div>
+<input [value]="value()" (input)="e => setValue(e.target.value)" />
+<p>
+{{ value() }}
+</p>
+</div>\` })
+export class FormFieldComponent
+{
+value = signal("")
+}
+"
+`;
+
+exports[`full output snapshots > FormField > astro 1`] = `
+"---
+---
+<div>
+<input value={value} />
+<p>
+{value}
+</p>
+</div>
+"
+`;
+
+exports[`full output snapshots > FormField > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const FormField = component$(() =>
+{
+const value = useSignal("")
+return (
+<div>
+  <input value={value.value} onInput={$(() => e => setValue(e.target.value))} />
+  <p>
+    {value.value}
+  </p>
+</div>
+)
+});
 "
 `;
 
@@ -910,6 +1534,41 @@ exports[`full output snapshots > FormField > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > Lifecycle > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<span>
+{{ mounted() ? "mounted" : "pending" }}
+</span>\` })
+export class LifecycleComponent
+{
+mounted = signal(false)
+}
+"
+`;
+
+exports[`full output snapshots > Lifecycle > astro 1`] = `
+"---
+---
+<span>
+{mounted ? "mounted" : "pending"}
+</span>
+"
+`;
+
+exports[`full output snapshots > Lifecycle > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const Lifecycle = component$(() =>
+{
+const mounted = useSignal(false)
+return (
+<span>
+  {mounted.value ? "mounted" : "pending"}
+</span>
+)
+});
+"
+`;
+
 exports[`full output snapshots > Lifecycle > react 1`] = `
 "import { useState, useEffect } from "react";
 export function Lifecycle(props: Record<string, never>)
@@ -965,6 +1624,62 @@ exports[`full output snapshots > Lifecycle > vue 1`] = `
   {{ mounted ? "mounted" : "pending" }}
 </span>
 </template>
+"
+`;
+
+exports[`full output snapshots > MemoChain > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div>
+<span>
+{{ label() }}
+</span>
+<button (click)="() => setBase(base() + 1)">
++1
+</button>
+</div>\` })
+export class MemoChainComponent
+{
+base = signal(1)
+doubled = computed(() => base() * 2)
+quadrupled = computed(() => doubled() * 2)
+label = computed(() => \`Value: \${quadrupled()}\`)
+}
+"
+`;
+
+exports[`full output snapshots > MemoChain > astro 1`] = `
+"---
+---
+<div>
+<span>
+{label}
+</span>
+<button>
++1
+</button>
+</div>
+"
+`;
+
+exports[`full output snapshots > MemoChain > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const MemoChain = component$(() =>
+{
+const base = useSignal(1)
+const doubled = useComputed$(() => base.value * 2)
+const quadrupled = useComputed$(() => doubled.value * 2)
+const label = useComputed$(() => \`Value: \${quadrupled.value}\`)
+return (
+<div>
+  <span>
+    {label.value}
+  </span>
+  <button onClick={$(() => () => setBase(base.value + 1))}>
+    +1
+  </button>
+</div>
+)
+});
 "
 `;
 
@@ -1051,6 +1766,60 @@ exports[`full output snapshots > MemoChain > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > MixedControlFlow > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div>
+<input [value]="filter()" (input)="e => setFilter(e.target.value)" />
+<ul>
+@for (item of items(); track item => item) {
+{{ item => (<Show when={item.includes(filter())}>
+              <li>{item}</li>
+            </Show>) }}
+}
+</ul>
+</div>\` })
+export class MixedControlFlowComponent
+{
+items = signal(["a", "b", "c"])
+filter = signal("")
+}
+"
+`;
+
+exports[`full output snapshots > MixedControlFlow > astro 1`] = `
+"---
+---
+<div>
+<input value={filter} />
+<ul>
+{items.map((item) => ({item => (<Show when={item.includes(filter())}>
+              <li>{item}</li>
+            </Show>)}))}
+</ul>
+</div>
+"
+`;
+
+exports[`full output snapshots > MixedControlFlow > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const MixedControlFlow = component$(() =>
+{
+const items = useSignal(["a", "b", "c"])
+const filter = useSignal("")
+return (
+<div>
+  <input value={filter.value} onInput={$(() => e => setFilter(e.target.value))} />
+  <ul>
+    {items.value.map((item) => (<>{item => (<Show when={item.includes(filter())}>
+              <li>{item}</li>
+            </Show>)}</>))}
+  </ul>
+</div>
+)
+});
+"
+`;
+
 exports[`full output snapshots > MixedControlFlow > react 1`] = `
 "import { useState } from "react";
 export function MixedControlFlow(props: Record<string, never>)
@@ -1130,6 +1899,48 @@ exports[`full output snapshots > MixedControlFlow > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > MultiRefs > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div>
+<input placeholder="focus me" />
+<button>
+Click
+</button>
+</div>\` })
+export class MultiRefsComponent
+{
+}
+"
+`;
+
+exports[`full output snapshots > MultiRefs > astro 1`] = `
+"---
+---
+<div>
+<input placeholder="focus me" />
+<button>
+Click
+</button>
+</div>
+"
+`;
+
+exports[`full output snapshots > MultiRefs > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const MultiRefs = component$(() =>
+{
+return (
+<div>
+  <input placeholder="focus me" />
+  <button>
+    Click
+  </button>
+</div>
+)
+});
+"
+`;
+
 exports[`full output snapshots > MultiRefs > react 1`] = `
 "import { useRef, useEffect } from "react";
 export function MultiRefs(props: Record<string, never>)
@@ -1201,6 +2012,41 @@ exports[`full output snapshots > MultiRefs > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > MultipleComponentsPerFile > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<span>
+{{ props.text }}
+</span>\` })
+export class LabelComponent
+{
+}
+"
+`;
+
+exports[`full output snapshots > MultipleComponentsPerFile > astro 1`] = `
+"---
+interface Props { text: string }
+const { text } = Astro.props as Props;
+---
+<span>
+{props.text}
+</span>
+"
+`;
+
+exports[`full output snapshots > MultipleComponentsPerFile > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const Label = component$(() =>
+{
+return (
+<span>
+  {props.text}
+</span>
+)
+});
+"
+`;
+
 exports[`full output snapshots > MultipleComponentsPerFile > react 1`] = `
 "export function Label(props: { text: string })
 {
@@ -1247,6 +2093,41 @@ exports[`full output snapshots > MultipleComponentsPerFile > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > PropDefaults > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div [style]="\`color: \${props.color}\`">
+{{ props.size }}
+</div>\` })
+export class PropDefaultsComponent
+{
+}
+"
+`;
+
+exports[`full output snapshots > PropDefaults > astro 1`] = `
+"---
+interface Props { color?: unknown; size: unknown }
+const { color, size } = Astro.props as Props;
+---
+<div style={\`color: \${props.color}\`}>
+{props.size}
+</div>
+"
+`;
+
+exports[`full output snapshots > PropDefaults > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const PropDefaults = component$(() =>
+{
+return (
+<div style={\`color: \${props.color}\`}>
+  {props.size}
+</div>
+)
+});
+"
+`;
+
 exports[`full output snapshots > PropDefaults > react 1`] = `
 "export function PropDefaults(props: { color?; size })
 {
@@ -1290,6 +2171,66 @@ exports[`full output snapshots > PropDefaults > vue 1`] = `
   {{ props.size }}
 </div>
 </template>
+"
+`;
+
+exports[`full output snapshots > SlotWithDefault > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div>
+<main>
+<p>
+Default content
+</p>
+</main>
+<footer>
+<span>
+Action area
+</span>
+</footer>
+</div>\` })
+export class SlotWithDefaultComponent
+{
+}
+"
+`;
+
+exports[`full output snapshots > SlotWithDefault > astro 1`] = `
+"---
+---
+<div>
+<main>
+<p>
+Default content
+</p>
+</main>
+<footer>
+<span>
+Action area
+</span>
+</footer>
+</div>
+"
+`;
+
+exports[`full output snapshots > SlotWithDefault > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const SlotWithDefault = component$(() =>
+{
+return (
+<div>
+  <main>
+    <p>
+      Default content
+    </p>
+  </main>
+  <footer>
+    <span>
+      Action area
+    </span>
+  </footer>
+</div>
+)
+});
 "
 `;
 
@@ -1370,6 +2311,65 @@ exports[`full output snapshots > SlotWithDefault > vue 1`] = `
   </footer>
 </div>
 </template>
+"
+`;
+
+exports[`full output snapshots > SwitchTabs > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div>
+@switch (true) {
+  @case (tab() === "a") {
+    <p>
+Tab A
+</p>
+  }
+  @case (tab() === "b") {
+    <p>
+Tab B
+</p>
+  }
+}
+<button (click)="() => setTab(tab() === "a" ? "b" : "a")">
+Switch
+</button>
+</div>\` })
+export class SwitchTabsComponent
+{
+tab = signal("a")
+}
+"
+`;
+
+exports[`full output snapshots > SwitchTabs > astro 1`] = `
+"---
+---
+<div>
+{tab === "a" ? (<p>
+Tab A
+</p>) : tab === "b" ? (<p>
+Tab B
+</p>) : null}
+<button>
+Switch
+</button>
+</div>
+"
+`;
+
+exports[`full output snapshots > SwitchTabs > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const SwitchTabs = component$(() =>
+{
+const tab = useSignal("a")
+return (
+<div>
+  {tab.value === "a" ? (<></>) : tab.value === "b" ? (<></>) : null}
+  <button onClick={$(() => () => setTab(tab.value === "a" ? "b" : "a"))}>
+    Switch
+  </button>
+</div>
+)
+});
 "
 `;
 
@@ -1455,6 +2455,57 @@ exports[`full output snapshots > SwitchTabs > vue 1`] = `
   </button>
 </div>
 </template>
+"
+`;
+
+exports[`multi-component files > ComponentRef → angular (all files) 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<div>
+Child
+</div>\` })
+export class ChildComponent
+{
+}
+
+import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, template: \`<unknown />\` })
+export class ComponentRefComponent
+{
+}
+"
+`;
+
+exports[`multi-component files > ComponentRef → astro (all files) 1`] = `
+"---
+---
+<div>
+Child
+</div>
+
+---
+---
+<unknown client:load />
+"
+`;
+
+exports[`multi-component files > ComponentRef → qwik (all files) 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const Child = component$(() =>
+{
+return (
+<div>
+  Child
+</div>
+)
+});
+
+import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+export const ComponentRef = component$(() =>
+{
+return (
+<Child />
+)
+});
 "
 `;
 

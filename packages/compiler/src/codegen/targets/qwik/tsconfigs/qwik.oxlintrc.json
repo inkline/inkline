@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../../../node_modules/oxlint/configuration_schema.json",
+  "jsPlugins": ["eslint-plugin-qwik"],
+  "env": { "browser": true },
+  "categories": { "correctness": "error" },
+  "rules": {
+    "no-unused-vars": "off",
+    "qwik/no-react-props": "warn",
+    "qwik/jsx-key": "warn",
+    "qwik/jsx-no-script-url": "warn"
+  }
+}

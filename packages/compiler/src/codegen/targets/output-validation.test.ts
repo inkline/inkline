@@ -27,7 +27,7 @@ async function getAllOutputs(fixture: string, target: TargetName): Promise<strin
   return files!.map((f) => f.contents).join("\n");
 }
 
-const TARGETS: TargetName[] = ["react", "solid", "vue", "svelte"];
+const TARGETS: TargetName[] = ["react", "solid", "vue", "svelte", "angular", "qwik", "astro"];
 const CORE_FIXTURES = [
   "Counter",
   "Button",
@@ -146,5 +146,37 @@ describe("cross-target structural invariants", () => {
   it("Svelte uses lowercase events (onclick)", async () => {
     const code = await getOutput("Counter", "svelte");
     expect(code).toContain("onclick");
+  });
+
+  it("Angular output contains @Component decorator", async () => {
+    for (const fixture of CORE_FIXTURES) {
+      const code = await getOutput(fixture, "angular");
+      expect(code).toContain("@Component");
+    }
+  });
+
+  it("Angular output imports from @angular/core", async () => {
+    for (const fixture of CORE_FIXTURES) {
+      const code = await getOutput(fixture, "angular");
+      expect(code).toContain("@angular/core");
+      expect(code).not.toContain('from "react"');
+      expect(code).not.toContain('from "solid-js"');
+      expect(code).not.toContain('from "vue"');
+    }
+  });
+
+  it("Qwik output contains component$ from @builder.io/qwik", async () => {
+    for (const fixture of CORE_FIXTURES) {
+      const code = await getOutput(fixture, "qwik");
+      expect(code).toContain("component$");
+      expect(code).toContain("@builder.io/qwik");
+    }
+  });
+
+  it("Astro output contains --- frontmatter delimiters", async () => {
+    for (const fixture of CORE_FIXTURES) {
+      const code = await getOutput(fixture, "astro");
+      expect(code).toContain("---");
+    }
   });
 });
