@@ -14,6 +14,7 @@ import {
   cJsxText,
   cGroup,
 } from "../../code-ir/builders.ts";
+import * as ts from "typescript";
 import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
 import { assertNever } from "../../../core/assert.ts";
 
@@ -168,11 +169,44 @@ function buildTernary(
   return `${rewriteExpr(b.test.expr, rules)} ? ${inlineNode(b.body, rules)} : ${buildTernary(branches, idx + 1, fallback, rules)}`;
 }
 
+function inlineCode(code: Code): string {
+  switch (code.kind) {
+    case "CJsxText":
+      return code.text;
+    case "CExpr":
+      return code.text;
+    case "CJsxElement": {
+      const tag = code.tag || "";
+      const attrStr = code.attrs
+        .map((a) => {
+          if (a.kind !== "CJsxAttr") return "";
+          if (a.value.kind === "boolean") return ` ${a.name}`;
+          if (a.value.kind === "static") return ` ${a.name}="${a.value.text}"`;
+          return ` ${a.name}={${a.value.expr.text}}`;
+        })
+        .join("");
+      if (code.selfClose) return `<${tag}${attrStr} />`;
+      const childStr = code.children.map((c) => inlineCode(c)).join("");
+      return `<${tag}${attrStr}>${childStr}</${tag}>`;
+    }
+    case "CGroup":
+      return code.children.map((c) => inlineCode(c)).join("");
+    case "CRaw":
+      return code.text;
+    default:
+      return "";
+  }
+}
+
 function inlineNode(node: IRNode, rules: RewriteRules): string {
-  const code = emitNode(node, rules);
-  if (code.kind === "CJsxText") return `"${code.text}"`;
-  if (code.kind === "CExpr") return code.text;
-  return "(<>...</>)";
+  if (node.kind === "Expression") {
+    const expr = node.expr;
+    if (ts.isArrowFunction(expr) && !ts.isBlock(expr.body)) {
+      return rewriteExpr(expr.body, rules);
+    }
+    return rewriteExpr(expr, rules);
+  }
+  return inlineCode(emitNode(node, rules));
 }
 
 function depsList(deps: readonly { readonly name: string }[]): string {
