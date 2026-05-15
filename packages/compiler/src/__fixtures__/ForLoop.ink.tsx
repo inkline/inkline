@@ -1,18 +1,13 @@
 // @ts-nocheck
-/* eslint-disable */
-import { createSignal, defineComponent } from "@inkline/core";
+import { createSignal, defineComponent, For } from "@inkline/core";
 
-const ForLoop = defineComponent(() => {
-  const [items, setItems] = createSignal<Array<{ id: number; label: string; done: boolean }>>([]);
+export default defineComponent(() => {
+  const [items] = createSignal(["Apple", "Banana", "Cherry"]);
 
   return (
     <ul>
-      <For each={items()} fallback={<li>No items yet.</li>}>
-        {(item, index) => (
-          <li key={item.id}>
-            {index + 1}. {item.label}
-          </li>
-        )}
+      <For each={items()} key={(item) => item}>
+        {(item) => <li>{item}</li>}
       </For>
     </ul>
   );

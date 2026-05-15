@@ -1,11 +1,23 @@
 packages:
   - apps/*
   - packages/*
+  - ui/*
   - tools/*
 
 catalog:
+  "@angular-eslint/eslint-plugin": ^21.4.0
+  "@angular-eslint/template-parser": ^21.4.0
   "@types/node": ^24
+  "@typescript-eslint/parser": ^8.59.3
   "@vitest/coverage-v8": ^4.1.5
+  eslint: ^9.39.4
+  eslint-plugin-astro: ^1.7.0
+  eslint-plugin-qwik: ^1.19.2
+  eslint-plugin-solid: ^0.14.5
+  eslint-plugin-svelte: ^3.17.1
+  eslint-plugin-vue: ^10.9.1
+  oxlint: ^1.64.0
+  vue-eslint-parser: ^10.4.0
   typescript: ^5
   vite: npm:@voidzero-dev/vite-plus-core@latest
   vite-plus: latest

@@ -1,23 +1,701 @@
-# vite-plus-starter
+# @inkline/compiler
 
-A starter for creating a Vite Plus project.
+A write-once, compile-everywhere component compiler. Author UI components in `.ink.tsx` using a signal-based reactivity model, and compile them to native **React**, **Vue 3**, **Svelte 5**, and **Solid** components.
 
-## Development
-
-- Install dependencies:
-
-```bash
-vp install
+```
+Counter.ink.tsx  ──>  React/Counter.tsx
+                 ──>  Vue/Counter.vue
+                 ──>  Svelte/Counter.svelte
+                 ──>  Solid/Counter.tsx
 ```
 
-- Run the unit tests:
+## Installation
 
 ```bash
-vp test
+npm install @inkline/compiler
+# or
+pnpm add @inkline/compiler
 ```
 
-- Build the library:
+TypeScript >= 5.4 is required as a peer dependency.
+
+## Quick Start
+
+### 1. Create a Component
+
+```tsx
+// src/components/Counter.ink.tsx
+import { createSignal, createMemo, createEffect, defineComponent } from "@inkline/core";
+
+export default defineComponent(() => {
+  const [count, setCount] = createSignal(0);
+  const doubled = createMemo(() => count() * 2);
+
+  createEffect(() => {
+    console.log("count changed:", count());
+  });
+
+  return (
+    <div>
+      <p>{count()}</p>
+      <p>{doubled()}</p>
+      <button onClick={() => setCount(count() + 1)}>+1</button>
+    </div>
+  );
+});
+```
+
+### 2. Compile
 
 ```bash
-vp pack
+npx inkline build src/components/Counter.ink.tsx --target react,vue,svelte,solid --out-dir dist
 ```
+
+### 3. Use the Output
+
+```
+dist/
+  react/Counter.tsx       # React component using useState, useMemo, useEffect
+  vue/Counter.vue         # Vue 3 SFC with <script setup>, ref(), computed()
+  svelte/Counter.svelte   # Svelte 5 component with $state, $derived, $effect
+  solid/Counter.tsx       # Solid component with createSignal, createMemo
+```
+
+Each output is a standalone, idiomatic component for its target framework. No runtime dependency on `@inkline/core`.
+
+---
+
+## Component Authoring
+
+### Primitives
+
+Components are authored in `.ink.tsx` files using a signal-based API imported from `@inkline/core`:
+
+| Primitive                     | Description                                              |
+| ----------------------------- | -------------------------------------------------------- |
+| `createSignal(initial)`       | Reactive state. Returns `[getter, setter]`.              |
+| `createMemo(() => expr)`      | Derived value that recomputes when dependencies change.  |
+| `createEffect(() => { ... })` | Side effect that re-runs when dependencies change.       |
+| `createRef()`                 | Template reference to a DOM element.                     |
+| `onMount(() => { ... })`      | Runs once after the component mounts.                    |
+| `onCleanup(() => { ... })`    | Runs when the component unmounts.                        |
+| `untrack(() => expr)`         | Reads a signal without tracking it as a dependency.      |
+| `batch(() => { ... })`        | Batches multiple signal updates into one reaction cycle. |
+| `defineComponent(setup)`      | Wraps a setup function into a component definition.      |
+
+### Reactive Reads
+
+Signals are read by calling the getter as a function:
+
+```tsx
+const [count, setCount] = createSignal(0);
+const value = count(); // reactive read
+setCount(count() + 1); // update
+```
+
+The compiler tracks which signals each expression reads and maps them to the target's reactivity system:
+
+| Source        | React         | Solid         | Vue               | Svelte      |
+| ------------- | ------------- | ------------- | ----------------- | ----------- |
+| `count()`     | `count`       | `count()`     | `count`           | `count`     |
+| `setCount(x)` | `setCount(x)` | `setCount(x)` | `count.value = x` | `count = x` |
+
+### Props
+
+Props can be defined two ways:
+
+**TypeScript parameter type** (preferred):
+
+```tsx
+export default defineComponent((props: { label: string; disabled?: boolean }) => {
+  return <button disabled={props.disabled}>{props.label}</button>;
+});
+```
+
+**Options object** (for defaults and metadata):
+
+```tsx
+export default defineComponent(
+  {
+    props: {
+      color: "blue", // default value, optional
+      size: Number, // required, no default
+      count: { type: Number, required: true, default: 0 },
+    },
+    slots: {
+      default: {},
+      header: { scoped: true },
+    },
+    events: {
+      change: {},
+    },
+  },
+  (props) => {
+    return <div style={`color: ${props.color}`}>{props.size}</div>;
+  },
+);
+```
+
+### Control Flow
+
+Control flow uses JSX components that the compiler lowers to framework-native patterns:
+
+**Conditional rendering:**
+
+```tsx
+import { Show } from "@inkline/core";
+
+<Show when={visible()} fallback={<span>Hidden</span>}>
+  <span>Visible</span>
+</Show>;
+```
+
+| Target | Output                                                          |
+| ------ | --------------------------------------------------------------- |
+| React  | `{visible ? <span>Visible</span> : <span>Hidden</span>}`        |
+| Solid  | `<Show when={visible()} fallback={...}>`                        |
+| Vue    | `<span v-if="visible">Visible</span><span v-else>Hidden</span>` |
+| Svelte | `{#if visible}...{:else}...{/if}`                               |
+
+**Lists:**
+
+```tsx
+import { For } from "@inkline/core";
+
+<For each={items()} key={(item) => item.id}>
+  {(item, index) => (
+    <li>
+      {index}: {item.label}
+    </li>
+  )}
+</For>;
+```
+
+**Switch/Match:**
+
+```tsx
+import { Switch, Match } from "@inkline/core";
+
+<Switch>
+  <Match when={tab() === "a"}>
+    <p>Tab A</p>
+  </Match>
+  <Match when={tab() === "b"}>
+    <p>Tab B</p>
+  </Match>
+</Switch>;
+```
+
+### Lifecycle Hooks
+
+```tsx
+import { onMount, onCleanup, defineComponent } from "@inkline/core";
+
+export default defineComponent(() => {
+  onMount(() => {
+    console.log("mounted");
+  });
+
+  onCleanup(() => {
+    console.log("unmounted");
+  });
+
+  return <div>Hello</div>;
+});
+```
+
+### Template Refs
+
+```tsx
+import { createRef, onMount, defineComponent } from "@inkline/core";
+
+export default defineComponent(() => {
+  const inputRef = createRef();
+
+  onMount(() => {
+    inputRef.current?.focus();
+  });
+
+  return <input ref={inputRef} placeholder="auto-focus" />;
+});
+```
+
+### Multiple Components Per File
+
+```tsx
+const Label = defineComponent((props: { text: string }) => {
+  return <span>{props.text}</span>;
+});
+
+const Counter = defineComponent(() => {
+  const [count, setCount] = createSignal(0);
+  return (
+    <div>
+      <Label text={String(count())} />
+      <button onClick={() => setCount(count() + 1)}>+1</button>
+    </div>
+  );
+});
+
+export default Counter;
+```
+
+---
+
+## Configuration
+
+### Config File
+
+Create `inkline.config.ts` (or `.js` / `.mjs`) in your project root:
+
+```ts
+import { defineConfig } from "@inkline/compiler";
+
+export default defineConfig({
+  targets: ["react", "vue", "svelte", "solid"],
+  outDir: "dist/components",
+  sourceMap: "external",
+  verbose: false,
+});
+```
+
+### Options
+
+| Option          | Type                                          | Default      | Description                                                  |
+| --------------- | --------------------------------------------- | ------------ | ------------------------------------------------------------ |
+| `targets`       | `TargetName[]`                                | (required)   | Targets to compile for.                                      |
+| `outDir`        | `string`                                      | `"dist"`     | Output directory. Files are written to `<outDir>/<target>/`. |
+| `sourceMap`     | `"external" \| "inline" \| "none"`            | `"external"` | Source map generation mode.                                  |
+| `targetOptions` | `Record<TargetName, Record<string, unknown>>` | `{}`         | Per-target options. Unknown keys produce INK0080 warnings.   |
+| `plugins`       | `Plugin[]`                                    | `[]`         | Compiler plugins.                                            |
+| `verbose`       | `boolean`                                     | `false`      | Log detailed plugin errors.                                  |
+| `registry`      | `TargetRegistry`                              | built-in     | Custom target registry (advanced).                           |
+
+### Available Targets
+
+| Name     | Output    | Framework                                         |
+| -------- | --------- | ------------------------------------------------- |
+| `react`  | `.tsx`    | React 19 (hooks API)                              |
+| `solid`  | `.tsx`    | Solid.js 1.8+                                     |
+| `vue`    | `.vue`    | Vue 3 (Composition API, `<script setup>`)         |
+| `svelte` | `.svelte` | Svelte 5 (runes: `$state`, `$derived`, `$effect`) |
+
+---
+
+## CLI
+
+```
+inkline <command> [options]
+
+Commands:
+  build <glob>     Compile .ink.tsx files to target frameworks.
+  diagnose <file>  Check a file for diagnostics without writing output.
+  version          Print version.
+  help [command]   Show help.
+```
+
+### Build
+
+```bash
+# Single target
+inkline build src/Button.ink.tsx --target react
+
+# Multiple targets
+inkline build src/**/*.ink.tsx --target react,vue,svelte,solid --out-dir dist
+
+# With config file
+inkline build src/**/*.ink.tsx --config inkline.config.ts
+
+# Source maps
+inkline build src/**/*.ink.tsx --target react --source-map inline
+```
+
+CLI flags override config file values.
+
+### Diagnose
+
+Check for diagnostic issues without producing output:
+
+```bash
+inkline diagnose src/Counter.ink.tsx --target react
+```
+
+---
+
+## Programmatic API
+
+### Basic Compilation
+
+```ts
+import { compile } from "@inkline/compiler";
+
+const result = await compile(
+  { fileName: "Counter.ink.tsx", source: sourceCode },
+  { targets: ["react", "vue"] },
+);
+
+// result.files.react → GeneratedFile[]
+// result.files.vue   → GeneratedFile[]
+// result.diagnostics → Diagnostic[]
+// result.module      → AnalyzedModule (IR + reactivity graphs)
+```
+
+### CompileResult
+
+```ts
+interface CompileResult {
+  readonly module?: AnalyzedModule;
+  readonly files: Partial<Record<TargetName, readonly GeneratedFile[]>>;
+  readonly diagnostics: readonly Diagnostic[];
+}
+
+interface GeneratedFile {
+  readonly path: string; // e.g. "Counter.tsx"
+  readonly contents: string; // generated source code
+  readonly sourceMap?: string; // V3 source map JSON
+}
+```
+
+### Working with the IR
+
+The compiler exposes its full intermediate representation for advanced use cases:
+
+```ts
+import { compile, walkRenderTree } from "@inkline/compiler";
+
+const result = await compile({ fileName: "Counter.ink.tsx", source }, { targets: ["react"] });
+
+const module = result.module!;
+
+for (const component of module.module.components) {
+  console.log(`Component: ${component.name}`);
+  console.log(`  Props: ${component.props.map((p) => p.name).join(", ")}`);
+  console.log(`  Signals: ${component.state.map((s) => s.name).join(", ")}`);
+  console.log(`  Memos: ${component.memos.map((m) => m.name).join(", ")}`);
+  console.log(`  Effects: ${component.effects.length}`);
+
+  // Walk the render tree
+  walkRenderTree(component.render, {
+    enter(node) {
+      if (node.kind === "Element") console.log(`    <${node.tag}>`);
+    },
+  });
+}
+
+// Reactivity graphs
+for (const [componentId, graph] of module.graphs) {
+  console.log(`Graph for ${componentId}:`, graph.edges.size, "edges");
+  if (graph.cycles.length > 0) {
+    console.log("  Cycles detected:", graph.cycles);
+  }
+}
+```
+
+### Transforming the IR
+
+```ts
+import { transform, transformComponent, SKIP } from "@inkline/compiler";
+
+const transformed = transformComponent(component, {
+  enter(node) {
+    // Remove all <div> wrappers
+    if (node.kind === "Element" && node.tag === "div" && node.children.length === 1) {
+      return node.children[0]!;
+    }
+    return node;
+  },
+});
+```
+
+---
+
+## Plugin System
+
+Plugins can inspect the IR after analysis and modify generated output:
+
+```ts
+import { definePlugin } from "@inkline/compiler";
+
+const myPlugin = definePlugin({
+  name: "my-plugin",
+  hooks: {
+    // Inspect IR after analysis (read-only)
+    "ir:post": (analyzedModule, ctx) => {
+      for (const comp of analyzedModule.module.components) {
+        if (comp.props.length === 0) {
+          ctx.pushDiagnostic({
+            code: "INK0010",
+            severity: "warning",
+            title: `Component "${comp.name}" has no props`,
+            url: "",
+            loc: comp.loc,
+          });
+        }
+      }
+    },
+
+    // Transform generated output
+    "code:post": (target, files, ctx) => {
+      return files.map((f) => ({
+        ...f,
+        contents: `// Generated by @inkline/compiler\n${f.contents}`,
+      }));
+    },
+  },
+});
+```
+
+### Plugin Options
+
+| Field             | Type                             | Description                                                         |
+| ----------------- | -------------------------------- | ------------------------------------------------------------------- |
+| `name`            | `string`                         | Plugin name (appears in error messages).                            |
+| `targets`         | `TargetName[]`                   | Limit `code:post` to specific targets. Omit for all.                |
+| `hooks.ir:post`   | `(module, ctx) => void`          | Fires after P4 analyze. Cannot modify the module.                   |
+| `hooks.code:post` | `(target, files, ctx) => files?` | Fires after P6 print, per target. Return replacement files or void. |
+
+Throwing plugins are caught and reported as INK0090 diagnostics. The next plugin continues.
+
+### Using Plugins
+
+```ts
+// inkline.config.ts
+import { defineConfig } from "@inkline/compiler";
+import myPlugin from "./plugins/my-plugin.ts";
+
+export default defineConfig({
+  targets: ["react", "vue"],
+  plugins: [myPlugin],
+});
+```
+
+---
+
+## Creating a UI Library
+
+### Project Structure
+
+```
+my-ui-library/
+├── inkline.config.ts
+├── src/
+│   ├── Button.ink.tsx
+│   ├── Card.ink.tsx
+│   ├── Input.ink.tsx
+│   └── Modal.ink.tsx
+├── dist/
+│   ├── react/
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   └── ...
+│   ├── vue/
+│   │   ├── Button.vue
+│   │   └── ...
+│   ├── svelte/
+│   │   ├── Button.svelte
+│   │   └── ...
+│   └── solid/
+│       ├── Button.tsx
+│       └── ...
+└── package.json
+```
+
+### Config
+
+```ts
+// inkline.config.ts
+import { defineConfig } from "@inkline/compiler";
+
+export default defineConfig({
+  targets: ["react", "vue", "svelte", "solid"],
+  outDir: "dist",
+  sourceMap: "external",
+});
+```
+
+### Build Script
+
+```json
+{
+  "scripts": {
+    "build": "inkline build src/**/*.ink.tsx",
+    "check": "inkline diagnose src/**/*.ink.tsx"
+  }
+}
+```
+
+### Package Exports
+
+Publish each target as a separate entry point:
+
+```json
+{
+  "name": "my-ui-library",
+  "exports": {
+    "./react": "./dist/react/index.ts",
+    "./vue": "./dist/vue/index.ts",
+    "./svelte": "./dist/svelte/index.ts",
+    "./solid": "./dist/solid/index.ts"
+  }
+}
+```
+
+Consumers install your library and import from the entry point matching their framework:
+
+```ts
+// In a React app
+import { Button, Card } from "my-ui-library/react";
+
+// In a Vue app
+import { Button, Card } from "my-ui-library/vue";
+```
+
+### Programmatic Build
+
+For build tools and custom pipelines:
+
+```ts
+import { compile } from "@inkline/compiler";
+import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { resolve, dirname } from "node:path";
+import glob from "fast-glob";
+
+const files = glob.sync("src/**/*.ink.tsx");
+
+for (const file of files) {
+  const source = readFileSync(file, "utf-8");
+  const result = await compile(
+    { fileName: file, source },
+    { targets: ["react", "vue", "svelte", "solid"] },
+  );
+
+  for (const diagnostic of result.diagnostics) {
+    console.warn(`${diagnostic.code}: ${diagnostic.title}`);
+  }
+
+  for (const [target, generated] of Object.entries(result.files)) {
+    for (const out of generated ?? []) {
+      const outPath = resolve("dist", target, out.path);
+      mkdirSync(dirname(outPath), { recursive: true });
+      writeFileSync(outPath, out.contents);
+    }
+  }
+}
+```
+
+---
+
+## Custom Targets
+
+Register a custom target for frameworks not built in:
+
+```ts
+import { defineTarget, createRegistry, builtinRegistry } from "@inkline/compiler";
+import type { IRComponent, CodegenContext, CodeModule } from "@inkline/compiler";
+import { cFile, cStmt, cImport, cJsxElement } from "@inkline/compiler";
+
+const myTarget = defineTarget({
+  name: "react", // must be a valid TargetName
+  rewrites: {
+    reactiveRead: { kind: "strip-call" },
+    setterStyle: { kind: "function-call" },
+    refAccess: { kind: "field", field: "current" },
+    jsxAttrCasing: "react",
+    eventNameCase: "camel",
+  },
+  emit(component: IRComponent, ctx: CodegenContext): CodeModule {
+    // Build a Code IR tree and return it
+    const file = cFile({
+      flavor: "tsx",
+      children: [
+        cImport({ module: "my-framework", named: [{ imported: "component" }] }),
+        cStmt({ body: `export const ${component.name} = component(...)` }),
+      ],
+    });
+    return { componentName: component.name, root: file, fileName: `${component.name}.tsx` };
+  },
+});
+
+const registry = createRegistry();
+registry.register(myTarget);
+
+// Use with compile()
+const result = await compile(input, { targets: ["react"], registry });
+```
+
+See `docs/adding-a-target.md` for a complete walkthrough.
+
+---
+
+## Diagnostics
+
+The compiler produces diagnostics at each pipeline stage. Errors prevent output; warnings are informational.
+
+| Code    | Severity | Description                                                                                                                             |
+| ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| INK0001 | error    | Namespace import (`import * as`) of @inkline/core is not supported. Use named imports.                                                  |
+| INK0010 | warning  | Effect has no reactive dependencies and will only run once.                                                                             |
+| INK0011 | warning  | Memo has no reactive dependencies and will never recompute.                                                                             |
+| INK0020 | warning  | Dynamic reactive read (e.g., `obj[key()]`) prevents static dependency tracking. React targets fall back to recomputing on every render. |
+| INK0030 | error    | Circular dependency between memos detected.                                                                                             |
+| INK0040 | error    | `defineComponent` must receive a setup function.                                                                                        |
+| INK0050 | warning  | `<For>` loop is missing a `key` prop.                                                                                                   |
+| INK0060 | error    | `<Show>` requires a `when` prop.                                                                                                        |
+| INK0062 | error    | `<For>` requires an `each` prop.                                                                                                        |
+| INK0070 | error    | Component-ref forwarding is not yet supported (v1).                                                                                     |
+| INK0080 | warning  | Unknown key in `targetOptions`.                                                                                                         |
+| INK0090 | error    | A plugin threw an exception.                                                                                                            |
+| INK0100 | error    | Component failed during emit. Other components continue.                                                                                |
+
+Run `inkline diagnose <file>` to check without producing output.
+
+---
+
+## Testing Utilities
+
+The `@inkline/compiler/testing` entry point provides harnesses for validating emitted code:
+
+```ts
+import {
+  compileFixture,
+  typecheckEmittedForTarget,
+  lintEmittedForTarget,
+  mountForTarget,
+  runScenarioAcrossTargets,
+  runBenchSuite,
+  runConformanceInvariants,
+  expectMappingAt,
+  verifyIdentifierMappings,
+} from "@inkline/compiler/testing";
+```
+
+| Harness                                                   | Description                                                                                     |
+| --------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `compileFixture(name, targets)`                           | Compile a fixture from `__fixtures__/` by name.                                                 |
+| `typecheckEmittedForTarget(conformance, files)`           | Run `tsc` against emitted files using the target's tsconfig.                                    |
+| `lintEmittedForTarget(conformance, files)`                | Run ESLint against emitted files using the target's config.                                     |
+| `mountForTarget(target, file, props?)`                    | SSR-render a generated file using the target's framework runtime. Returns `{ html, warnings }`. |
+| `runScenarioAcrossTargets(fixture, targets, props?)`      | Compile + mount across all targets, normalize HTML, check equivalence.                          |
+| `runBenchSuite()`                                         | Run tinybench performance suite with baseline comparison.                                       |
+| `expectMappingAt(file, line, col)`                        | Assert a source-map mapping exists at a position.                                               |
+| `verifyIdentifierMappings(file, identifiers, tolerance?)` | Verify identifier positions round-trip through source maps.                                     |
+
+---
+
+## v0 Limitations
+
+The following features are deferred to v1:
+
+- **Component-ref forwarding** (element refs work; component refs emit INK0070)
+- **Scoped CSS / `<style>` blocks**
+- **Server/client component boundaries**
+- **Async components / Suspense / `createResource`**
+- **HMR / `--watch` mode** (use a Vite plugin wrapper)
+- **Angular, Qwik, Astro targets** (reserved in the type system)
+- **Sub-expression source-map granularity** (maps at statement/element level)
+
+See `docs/scope.md` for the full v1 roadmap.
+
+## License
+
+MIT

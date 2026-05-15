@@ -1,137 +1,173 @@
-// IR — types
-export type { Diagnostic, DiagnosticSeverity, SourceLocation, TargetName } from "./ir/types.ts";
-export { ALL_TARGETS, UNKNOWN_LOCATION } from "./ir/types.ts";
+// ============ TOP-LEVEL ENTRY POINT ============
+export { compile } from "./pipeline/compile.ts";
+export type { CompileInput, CompileResult, AnalyzedModule } from "./pipeline/compile.ts";
+export {
+  compileIncremental,
+  createIncrementalState,
+  type IncrementalState,
+  type IncrementalCompileResult,
+} from "./pipeline/incremental.ts";
 
-// IR — reactivity
-export type {
-  IRDependency,
-  IRDependencySet,
-  IRDepResolution,
-  IRReactiveKind,
-  IRReactiveSymbol,
-} from "./ir/reactivity.ts";
-export { DYNAMIC_DEPS, STATIC_RESOLUTION } from "./ir/reactivity.ts";
+// ============ CONFIGURATION ============
+export type { InklineConfig, ResolvedCompilerOptions, SourceMapMode } from "./core/options.ts";
+export { defineConfig } from "./core/config.ts";
 
-// IR — nodes & module
+// ============ PIPELINE PRIMITIVES (advanced users) ============
+export type { Pass, PassContext } from "./pipeline/types.ts";
+export { pipe } from "./pipeline/types.ts";
+
+// ============ DIAGNOSTICS ============
+export type { Diagnostic, DiagnosticSeverity, DiagnosticCode } from "./core/diagnostics/codes.ts";
+export { DIAGNOSTICS } from "./core/diagnostics/codes.ts";
+
+// ============ IR — RENDER TREE TYPES ============
 export type {
-  IRAttribute,
-  IRAttributeBinding,
-  IRComponent,
-  IRComponentInstance,
-  IREffectCleanup,
-  IREffectDeclaration,
+  IRNode,
   IRElement,
-  IREventBinding,
-  IREventDeclaration,
-  IRExpressionNode,
-  IRFor,
-  IRFragment,
+  IRComponentInstance,
+  IRText,
+  IRExprNode,
   IRIf,
   IRIfBranch,
-  IRLifecycle,
-  IRMemoDeclaration,
-  IRNode,
-  IRProp,
-  IRRefBinding,
-  IRRefCategory,
-  IRRefDeclaration,
-  IRSetupStatement,
-  IRSlotContent,
-  IRSlotDeclaration,
-  IRSlotPlaceholder,
-  IRStateDeclaration,
-  IRStaticValue,
+  IRFor,
   IRSwitch,
   IRSwitchCase,
+  IRSlotPlaceholder,
+  IRFragment,
+  IRAttribute,
+  IRAttributeBinding,
+  IRStaticValue,
+  IREventBinding,
+  IRRefBinding,
+  IRSlotContent,
+  IRProp,
+  IRSlotDeclaration,
+  IREventDeclaration,
+  IRStateDeclaration,
+  IRRefDeclaration,
+  IRMemoDeclaration,
+  IREffectDeclaration,
+  IRResourceDeclaration,
+  IRLifecycle,
+  IRSetupStatement,
+  IRRefCategory,
+  IREffectCleanup,
+  IRComponent,
+  IRRuntimeMode,
+  IRStyleBlock,
   IRTargetOverride,
-  IRText,
+  IRModule,
   PrimitiveName,
   PrimitiveUsage,
-} from "./ir/nodes.ts";
-export type { IRModule } from "./ir/module.ts";
+} from "./ir/render/nodes.ts";
+export { IR_VERSION } from "./ir/render/nodes.ts";
 
-// IR — builders
-export type {
-  AttributeInit,
-  ComponentSkeletonInit,
-  ElementInit,
-  ExpressionInit,
-  ForInit,
-  IfInit,
-  IRDeclaration,
-  SlotContentInit,
-  SwitchInit,
-} from "./ir/builders.ts";
+// ============ IR — MIGRATION ============
+export { migrate, registerMigration, type IRMigration } from "./ir/migration.ts";
+
+// ============ IR — SERIALIZATION ============
+export { serializeModule, deserializeModule } from "./ir/serialize.ts";
+
+// ============ IR — BUILDERS ============
 export {
-  createAttribute,
-  createComponentSkeleton,
-  createDynamicExpression,
   createElement,
-  createExpression,
-  createFor,
-  createFragment,
-  createIf,
-  createSlotContent,
-  createStaticValue,
-  createSwitch,
+  createComponentInstance,
   createText,
-} from "./ir/builders.ts";
+  createExpr,
+  createIf,
+  createFor,
+  createSwitch,
+  createSlotPlaceholder,
+  createFragment,
+  createAttribute,
+  createStaticValue,
+} from "./ir/render/builders.ts";
 
-// IR — visitor
-export type { IRVisitor } from "./ir/visit.ts";
-export { walkNode, walkRenderTree } from "./ir/visit.ts";
+// ============ IR — VISITORS ============
+export type { IRVisitor } from "./ir/render/visit.ts";
+export { walkRenderTree, walkNode } from "./ir/render/visit.ts";
+export type { IRTransformer } from "./ir/render/transform.ts";
+export { SKIP, transform, transformComponent } from "./ir/render/transform.ts";
 
-// Scope
-export { ReactiveScope } from "./scope.ts";
+// ============ IR — REACTIVITY ============
+export type {
+  SymbolId,
+  IRReactiveKind,
+  IRReactiveSymbol,
+  IRDependency,
+  IRDependencySet,
+} from "./ir/reactivity.ts";
+export { SymbolTable } from "./ir/reactivity.ts";
 
-// Primitives
-export type { ImportRecord } from "./primitives.ts";
+// ============ PLUGIN API ============
+export type { Plugin, PluginHooks, PluginContext } from "./plugin/types.ts";
+export { definePlugin } from "./plugin/types.ts";
+
+// ============ TARGET API ============
+export type {
+  Target,
+  TargetName,
+  TargetPlan,
+  TargetConformanceSpec,
+  ControlFlowImportSpec,
+  MemberRewriteRules,
+  RewriteRules,
+  TargetRegistry,
+  CodegenContext,
+  GeneratedFile,
+  CodeModule,
+} from "./codegen/context.ts";
+export { defineTarget, createRegistry, builtinRegistry } from "./codegen/registry.ts";
+
+// ============ CODE IR (target/plugin authors) ============
+export type {
+  Code,
+  CFile,
+  CScript,
+  CImport,
+  CStmt,
+  CExpr,
+  CRaw,
+  CJsxElement,
+  CJsxAttr,
+  CJsxText,
+  CTmplElement,
+  CTmplDirective,
+  CTmplAttr,
+  CTmplText,
+  CTmplMustache,
+  CGroup,
+  CIndent,
+  CStyle,
+} from "./codegen/code-ir/nodes.ts";
 export {
-  collectPrimitiveImports,
-  INKLINE_CORE_MODULE,
-  isPrimitiveName,
-  PRIMITIVE_SET,
-  REACTIVE_PRODUCING_PRIMITIVES,
-  TRACKING_SCOPE_PRIMITIVES,
-  UNTRACK_SCOPE_PRIMITIVES,
-} from "./primitives.ts";
+  cFile,
+  cScript,
+  cImport,
+  cStmt,
+  cExpr,
+  cRaw,
+  cJsxElement,
+  cJsxAttr,
+  cJsxText,
+  cTmplElement,
+  cTmplDirective,
+  cTmplAttr,
+  cTmplText,
+  cTmplMustache,
+  cGroup,
+  cIndent,
+  cStyle,
+} from "./codegen/code-ir/builders.ts";
 
-// Analyze
-export type { DepExtractionContext } from "./analyze/deps.ts";
-export { extractDeps, reactDepsArray } from "./analyze/deps.ts";
-export type { ReactivityGraph } from "./analyze/graph.ts";
-export { buildReactivityGraph } from "./analyze/graph.ts";
-export { validateComponent } from "./analyze/validate.ts";
+// ============ PRINTER ============
+export { print, type PrintOptions, type PrintResult } from "./codegen/print/printer.ts";
 
-// Parser
-export type { CreatedProgram, CreateProgramOptions } from "./parser/program.ts";
-export { createSingleFileProgram } from "./parser/program.ts";
-export { locOf } from "./parser/source-location.ts";
-export type { ComponentDefinitionSite } from "./parser/component.ts";
-export { findComponentDefinitions } from "./parser/component.ts";
-export { applyDefineComponentOptions } from "./parser/options.ts";
-export type { SetupParseContext, SetupParseResult } from "./parser/setup.ts";
-export { parseSetupBody } from "./parser/setup.ts";
-export type { JSXParseContext } from "./parser/jsx.ts";
-export { parseJSXExpression } from "./parser/jsx.ts";
-export type { ParseOptions } from "./parser/index.ts";
-export { parseModule } from "./parser/index.ts";
-
-// Plugin / Target API
-export type { GeneratedFile, GenerateContext, Plugin, PluginHooks, Target } from "./plugin.ts";
-export { definePlugin, defineTarget } from "./plugin.ts";
-
-// Top-level orchestration
-export type { CompileResult } from "./compile.ts";
-export { compile, diagnoseCycles } from "./compile.ts";
-
-// Targets
-export { reactTarget } from "./targets/react/index.ts";
-export { solidTarget } from "./targets/solid/index.ts";
-export type { CodegenScope, PrintExpressionOptions, ReadStyle } from "./targets/print.ts";
-export {
-  buildCodegenScope,
-  printAttrValue,
-  printExpression,
-  printStaticValue,
-} from "./targets/print.ts";
+// ============ BUILT-IN TARGETS ============
+export { react as reactTarget } from "./codegen/targets/react/index.ts";
+export { vue as vueTarget } from "./codegen/targets/vue/index.ts";
+export { svelte as svelteTarget } from "./codegen/targets/svelte/index.ts";
+export { solid as solidTarget } from "./codegen/targets/solid/index.ts";
+export { angular as angularTarget } from "./codegen/targets/angular/index.ts";
+export { qwik as qwikTarget } from "./codegen/targets/qwik/index.ts";
+export { astro as astroTarget } from "./codegen/targets/astro/index.ts";

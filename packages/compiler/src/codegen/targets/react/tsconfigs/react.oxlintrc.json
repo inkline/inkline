@@ -1,0 +1,12 @@
+{
+  "$schema": "../../../../../node_modules/oxlint/configuration_schema.json",
+  "plugins": ["react"],
+  "env": { "browser": true },
+  "categories": { "correctness": "error" },
+  "settings": { "react": { "version": "19" } },
+  "rules": {
+    "no-unused-vars": "off",
+    "react/jsx-no-undef": "off",
+    "react/exhaustive-deps": "off"
+  }
+}

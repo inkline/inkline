@@ -1,14 +1,15 @@
 // @ts-nocheck
-/* eslint-disable */
-import { createSignal, defineComponent } from "@inkline/core";
-
-const List = defineComponent(() => {
-  const [items, setItems] = createSignal<Array<{ id: number; name: string }>>([]);
+import { createSignal, defineComponent, For } from "@inkline/core";
+export default defineComponent(() => {
+  const [items, setItems] = createSignal(["A", "B"]);
   return (
-    <ul>
-      {items().map((item) => (
-        <li key={item.id}>{item.name}</li>
-      ))}
-    </ul>
+    <div>
+      <ul>
+        <For each={items()} key={(item) => item}>
+          {(item) => <li>{item}</li>}
+        </For>
+      </ul>
+      <button onClick={() => setItems([...items(), "C"])}>Add</button>
+    </div>
   );
 });

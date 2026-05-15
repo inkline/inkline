@@ -1,13 +1,14 @@
 // @ts-nocheck
-/* eslint-disable */
-import { createEffect, createMemo, createSignal, defineComponent } from "@inkline/core";
+import { createSignal, createMemo, createEffect, defineComponent } from "@inkline/core";
 
-const Counter = defineComponent(() => {
+export default defineComponent(() => {
   const [count, setCount] = createSignal(0);
   const doubled = createMemo(() => count() * 2);
+
   createEffect(() => {
-    console.log("count is", count());
+    console.log("count:", count());
   });
+
   return (
     <div>
       <p>{count()}</p>

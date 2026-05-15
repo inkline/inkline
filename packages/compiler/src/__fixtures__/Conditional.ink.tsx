@@ -1,22 +1,15 @@
 // @ts-nocheck
-/* eslint-disable */
-import { createSignal, defineComponent } from "@inkline/core";
+import { createSignal, defineComponent, Show } from "@inkline/core";
 
-const Conditional = defineComponent(() => {
-  const [isVisible, setIsVisible] = createSignal(false);
-  const [count, setCount] = createSignal(0);
+export default defineComponent(() => {
+  const [visible, setVisible] = createSignal(true);
 
   return (
     <div>
-      {isVisible() ? <p>Content is visible</p> : <p>Content is hidden</p>}
-
-      {count() > 0 && <span>Count: {count()}</span>}
-
-      <Show when={isVisible()} fallback={<button onClick={() => setIsVisible(true)}>Show</button>}>
-        <button onClick={() => setIsVisible(false)}>Hide</button>
+      <Show when={visible()} fallback={<span>Hidden</span>}>
+        <span>Visible</span>
       </Show>
-
-      <button onClick={() => setCount(count() + 1)}>Increment</button>
+      <button onClick={() => setVisible(!visible())}>Toggle</button>
     </div>
   );
 });
