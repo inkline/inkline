@@ -28,7 +28,7 @@ import { assertNever } from "../../../core/assert.ts";
 const REWRITES: RewriteRules = {
   reactiveRead: { kind: "field-access", field: "value" },
   setterStyle: { kind: "field-assignment", field: "value" },
-  refAccess: { kind: "bare" },
+  refAccess: { kind: "field", field: "value" },
   jsxAttrCasing: "html",
   eventNameCase: "kebab",
   members: {

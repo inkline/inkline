@@ -41,6 +41,15 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
   }
 
   if (ts.isPropertyAccessExpression(expr)) {
+    if (expr.name.text === "current") {
+      const base = walk(expr.expression, rules);
+      switch (rules.refAccess.kind) {
+        case "bare":
+          return base;
+        case "field":
+          return `${base}${expr.questionDotToken ? "?." : "."}${rules.refAccess.field}`;
+      }
+    }
     const dot = expr.questionDotToken ? "?." : ".";
     return `${walk(expr.expression, rules)}${dot}${expr.name.text}`;
   }
