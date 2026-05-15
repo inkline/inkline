@@ -3,11 +3,13 @@ import type {
   IRComponent,
   IRComponentInstance,
   IRExprNode,
+  IRFor,
   IRNode,
   IRSwitchCase,
 } from "../../../ir/render/nodes.ts";
 import { transformComponent } from "../../../ir/render/transform.ts";
 import type { PassContext } from "../../types.ts";
+import { parseExpression } from "../02-parse/jsx/index.ts";
 
 function getAttr(ci: IRComponentInstance, name: string): IRExprNode | undefined {
   const attr = ci.attrs.find((a) => a.name === name);
@@ -28,6 +30,29 @@ function getRefName(ci: IRComponentInstance): string | undefined {
   return undefined;
 }
 
+function unwrapParens(expr: ts.Expression): ts.Expression {
+  return ts.isParenthesizedExpression(expr) ? unwrapParens(expr.expression) : expr;
+}
+
+function isJsxLike(expr: ts.Expression): boolean {
+  const e = unwrapParens(expr);
+  return ts.isJsxElement(e) || ts.isJsxSelfClosingElement(e) || ts.isJsxFragment(e);
+}
+
+function resolveArrowBody(arrow: ts.ArrowFunction): ts.Expression | undefined {
+  if (!ts.isBlock(arrow.body)) return arrow.body;
+  const ret = arrow.body.statements.find(ts.isReturnStatement);
+  return (ret as ts.ReturnStatement | undefined)?.expression;
+}
+
+function tryDecomposeJsxExpr(node: IRNode): IRNode {
+  if (node.kind !== "Expression") return node;
+  const inner = unwrapParens(node.expr);
+  const sf = inner.getSourceFile();
+  if (sf && isJsxLike(inner)) return parseExpression(node.expr, sf);
+  return node;
+}
+
 function lowerShow(ci: IRComponentInstance, ctx: PassContext): IRNode | undefined {
   const when = getAttr(ci, "when");
   if (!when) {
@@ -38,12 +63,13 @@ function lowerShow(ci: IRComponentInstance, ctx: PassContext): IRNode | undefine
   const body = getDefaultSlotBody(ci);
   if (!body) return undefined;
 
-  const fallback = getNamedSlotBody(ci, "fallback") ?? getAttr(ci, "fallback");
+  const rawFallback = getNamedSlotBody(ci, "fallback") ?? getAttr(ci, "fallback");
+  const fallback = rawFallback ? tryDecomposeJsxExpr(rawFallback) : undefined;
 
   return {
     kind: "If",
     branches: [{ test: when, body }],
-    fallback: fallback as IRNode | undefined,
+    fallback,
     loc: ci.loc,
   };
 }
@@ -56,15 +82,30 @@ function lowerFor(ci: IRComponentInstance, ctx: PassContext): IRNode | undefined
   }
 
   const defaultSlot = ci.slots.find((s) => s.name === "default");
-  const body = defaultSlot?.body;
-  if (!body) return undefined;
+  if (!defaultSlot) return undefined;
+  let body: IRNode = defaultSlot.body;
 
-  const itemBinding = defaultSlot.scopedParams[0] ?? "item";
-  const indexBinding = defaultSlot.scopedParams[1];
+  let itemBinding = defaultSlot.scopedParams[0] ?? "item";
+  let indexBinding: string | undefined = defaultSlot.scopedParams[1];
+
+  if (body.kind === "Expression" && ts.isArrowFunction(body.expr)) {
+    const arrow = body.expr;
+    if (arrow.parameters.length >= 1) itemBinding = arrow.parameters[0]!.name.getText();
+    if (arrow.parameters.length >= 2) indexBinding = arrow.parameters[1]!.name.getText();
+    const arrowBody = resolveArrowBody(arrow);
+    if (arrowBody) {
+      const sf = arrowBody.getSourceFile();
+      if (sf) body = parseExpression(arrowBody, sf);
+    }
+  }
 
   const key = getAttr(ci, "key");
   const syntheticKey = !key;
-  const resolvedKey = key ?? each;
+  const resolvedKey = key ?? { ...each, expr: ts.factory.createIdentifier(itemBinding) };
+
+  if (!indexBinding && key && ts.isArrowFunction(key.expr) && key.expr.parameters.length >= 2) {
+    indexBinding = key.expr.parameters[1]!.name.getText();
+  }
 
   return {
     kind: "For",
@@ -117,6 +158,54 @@ export function controlFlow(component: IRComponent, ctx: PassContext): IRCompone
 
       if (node.kind === "Expression") {
         const expr = node.expr;
+
+        if (
+          ts.isCallExpression(expr) &&
+          ts.isPropertyAccessExpression(expr.expression) &&
+          expr.expression.name.text === "map" &&
+          expr.arguments.length === 1 &&
+          ts.isArrowFunction(expr.arguments[0]!)
+        ) {
+          const arrow = expr.arguments[0]! as ts.ArrowFunction;
+          const arrayExpr = expr.expression.expression;
+          const arrowBody = resolveArrowBody(arrow);
+          if (arrowBody && isJsxLike(arrowBody)) {
+            const sf = arrowBody.getSourceFile();
+            if (sf) {
+              const itemBinding =
+                arrow.parameters.length >= 1 ? arrow.parameters[0]!.name.getText() : "item";
+              const indexBinding =
+                arrow.parameters.length >= 2 ? arrow.parameters[1]!.name.getText() : undefined;
+              const parsedBody = parseExpression(arrowBody, sf);
+              const eachExpr: IRExprNode = { ...node, expr: arrayExpr };
+
+              let keyExpr: IRExprNode | undefined;
+              let bodyNode: IRNode = parsedBody;
+              if (parsedBody.kind === "Element") {
+                const keyAttr = parsedBody.attrs.find((a) => a.name === "key");
+                if (keyAttr && keyAttr.value.kind === "Expression") {
+                  keyExpr = keyAttr.value;
+                  bodyNode = {
+                    ...parsedBody,
+                    attrs: parsedBody.attrs.filter((a) => a.name !== "key"),
+                  };
+                }
+              }
+
+              return {
+                kind: "For",
+                each: eachExpr,
+                itemBinding,
+                indexBinding,
+                key: keyExpr ?? eachExpr,
+                syntheticKey: !keyExpr,
+                body: bodyNode,
+                loc: node.loc,
+              } satisfies IRFor;
+            }
+          }
+        }
+
         if (ts.isConditionalExpression(expr)) {
           const whenTrue = expr.whenTrue;
           const whenFalse = expr.whenFalse;

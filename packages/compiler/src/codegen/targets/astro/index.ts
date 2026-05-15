@@ -34,8 +34,11 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       return emitExprAsTemplate(node.expr, rules);
     case "If":
       return `{${node.branches.map((b) => `${rewriteExpr(b.test.expr, rules)} ? (${emitNode(b.body, rules)})`).join(" : ")} : ${node.fallback ? `(${emitNode(node.fallback, rules)})` : "null"}}`;
-    case "For":
-      return `{${rewriteExpr(node.each.expr, rules)}.map((${node.itemBinding}) => (${emitNode(node.body, rules)}))}`;
+    case "For": {
+      let body = emitNode(node.body, rules);
+      if (body.startsWith("{") && body.endsWith("}")) body = body.slice(1, -1);
+      return `{${rewriteExpr(node.each.expr, rules)}.map((${node.itemBinding}) => (${body}))}`;
+    }
     case "Switch":
       return `{${node.cases.map((c) => `${rewriteExpr(c.test.expr, rules)} ? (${emitNode(c.body, rules)})`).join(" : ")} : null}`;
     case "Fragment":
