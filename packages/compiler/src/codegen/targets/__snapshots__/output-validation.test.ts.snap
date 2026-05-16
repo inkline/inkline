@@ -1627,6 +1627,7 @@ exports[`full output snapshots > Lifecycle > svelte 1`] = `
 "<script lang="ts">
   let mounted = $state(false)
   $effect(() => { setMounted(true); })
+  $effect(() => { return () => { console.log("cleanup"); } })
 </script>
 <span>
   {mounted ? "mounted" : "pending"}

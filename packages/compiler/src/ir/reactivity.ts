@@ -106,7 +106,9 @@ export class SymbolTable {
   forComponent(componentId: string): readonly IRReactiveSymbol[] {
     const ids = this.componentMap.get(componentId);
     if (!ids) return [];
-    return ids.map((id) => this.symbols.get(id)!);
+    return ids
+      .map((id) => this.symbols.get(id))
+      .filter((s): s is IRReactiveSymbol => s !== undefined);
   }
 
   setterOf(getterId: SymbolId): SymbolId | undefined {

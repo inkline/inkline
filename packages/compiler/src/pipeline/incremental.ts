@@ -39,7 +39,10 @@ export async function compileIncremental(
   const allDiagnostics: Diagnostic[] = [];
 
   for (const input of inputs) {
-    const source = "source" in input ? input.source : "";
+    const source =
+      "source" in input
+        ? input.source
+        : (input.program.getSourceFile(input.fileName)?.getText() ?? "");
     const hash = hashSource(source);
     nextHashes.set(input.fileName, hash);
 

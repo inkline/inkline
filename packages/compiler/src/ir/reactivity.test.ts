@@ -254,4 +254,16 @@ describe("SymbolTable", () => {
     });
     expect(id1).not.toBe(id2);
   });
+
+  it("forComponent() returns empty array for orphaned symbol IDs", () => {
+    const table = new SymbolTable();
+    const id = table.mint({
+      componentId: "test.tsx#A",
+      kind: "signal",
+      name: "x",
+      loc,
+    });
+    (table as any).symbols.delete(id);
+    expect(table.forComponent("test.tsx#A")).toHaveLength(0);
+  });
 });

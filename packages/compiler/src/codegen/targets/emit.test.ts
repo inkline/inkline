@@ -427,3 +427,49 @@ describe("Astro target", () => {
     expect(result.code).toMatchSnapshot();
   });
 });
+
+describe("Svelte onCleanup lifecycle", () => {
+  it("emits $effect with cleanup return", () => {
+    const comp: IRComponent = {
+      ...makeComp("Cleanup", createElement({ tag: "div" })),
+      lifecycle: {
+        onMount: [],
+        onCleanup: [
+          {
+            body: mockExpr("() => unsubscribe()"),
+            deps: DYNAMIC_DEPS,
+            cleanup: "present",
+            isDynamic: false,
+            loc,
+          },
+        ],
+      },
+    };
+    const result = print(svelte.emit(comp, makeCtx(svelte)).root);
+    expect(result.code).toContain("$effect");
+    expect(result.code).toContain("return");
+    expect(result.code).toContain("unsubscribe");
+  });
+});
+
+describe("React Switch fallback (accumulator)", () => {
+  it("renders fallback without regex replacement", () => {
+    const switchNode = createSwitch({
+      cases: [{ test: createExpr({ expr: mockExpr("x()") }), body: createText({ value: "X" }) }],
+      fallback: createText({ value: "fallback" }),
+    });
+    const comp = makeComp("Sw", createElement({ tag: "div", children: [switchNode] }));
+    const result = print(react.emit(comp, makeCtx(react)).root);
+    expect(result.code).toContain("fallback");
+    expect(result.code).not.toMatch(/: null\}/);
+  });
+
+  it("renders null when no fallback", () => {
+    const switchNode = createSwitch({
+      cases: [{ test: createExpr({ expr: mockExpr("x()") }), body: createText({ value: "X" }) }],
+    });
+    const comp = makeComp("Sw", createElement({ tag: "div", children: [switchNode] }));
+    const result = print(react.emit(comp, makeCtx(react)).root);
+    expect(result.code).toContain(": null");
+  });
+});

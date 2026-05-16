@@ -140,7 +140,7 @@ export async function compile(
 
     const targetFiles: GeneratedFile[] = [];
 
-    for (const component of module.components) {
+    for (const component of analyzedModule.module.components) {
       try {
         targetFiles.push(...emitComponent(component, target, ctx));
       } catch (err) {

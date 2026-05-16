@@ -84,4 +84,55 @@ describe("deserializeModule", () => {
     expect(comp.state).toHaveLength(result.module!.module.components[0]!.state.length);
     expect(comp.memos).toHaveLength(result.module!.module.components[0]!.memos.length);
   });
+
+  it("handles empty raw expression without crashing", () => {
+    const json = JSON.stringify({
+      version: 1,
+      fileName: "test.ink.tsx",
+      components: [
+        {
+          kind: "Component",
+          id: "test",
+          name: "Test",
+          state: [
+            {
+              name: "val",
+              setterName: "setVal",
+              initial: {
+                kind: "Expression",
+                raw: "",
+                deps: [],
+                isReactive: false,
+                emissionContext: "setup",
+                isDynamic: false,
+                loc: { file: "", line: 1, column: 1, offset: 0, length: 0 },
+              },
+              symbolId: "t::signal::val@0",
+              setterSymbolId: "t::signal::setVal@10",
+              loc: { file: "", line: 1, column: 1, offset: 0, length: 0 },
+            },
+          ],
+          props: [],
+          slots: [],
+          events: [],
+          refs: [],
+          memos: [],
+          effects: [],
+          resources: [],
+          lifecycle: { onMount: [], onCleanup: [] },
+          setup: [],
+          render: {
+            kind: "Text",
+            value: "hi",
+            loc: { file: "", line: 1, column: 1, offset: 0, length: 0 },
+          },
+          primitives: [],
+          styles: [],
+          runtime: "iso",
+          targetOverrides: {},
+        },
+      ],
+    });
+    expect(() => deserializeModule(json)).not.toThrow();
+  });
 });
