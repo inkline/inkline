@@ -9,9 +9,13 @@
     "test": "vp run -r test",
     "build": "vp run -r build",
     "dev": "vp run website#dev",
-    "prepare": "vp config"
+    "prepare": "vp config",
+    "ci:version": "changeset version",
+    "ci:prepublish": "pnpm run build",
+    "ci:publish": "pnpm run ci:prepublish && changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.4",
     "vite-plus": "catalog:"
   },
   "engines": {
