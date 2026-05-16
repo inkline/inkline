@@ -26,7 +26,7 @@ exports[`full output snapshots > BatchUpdates > astro 1`] = `
 <span>
 {sum}
 </span>
-<button>
+<button onClick={() => batch(() => { setX(x + 1); setY(y + 1); })}>
 Both
 </button>
 </div>
@@ -245,10 +245,10 @@ exports[`full output snapshots > Composite > astro 1`] = `
 <span id="sum">
 {sum}
 </span>
-<button id="incX">
+<button id="incX" onClick={() => setX(x + 1)}>
 +X
 </button>
-<button id="incY">
+<button id="incY" onClick={() => setY(y + 1)}>
 +Y
 </button>
 </div>
@@ -407,7 +407,7 @@ Visible
 </span>) : (<span>
 Hidden
 </span>)}
-<button>
+<button onClick={() => setVisible(!visible)}>
 Toggle
 </button>
 </div>
@@ -527,7 +527,7 @@ exports[`full output snapshots > ConditionalClass > astro 1`] = `
 "---
 ---
 <div class={active ? "active" : "inactive"}>
-<button>
+<button onClick={() => setActive(!active)}>
 Toggle
 </button>
 </div>
@@ -632,7 +632,7 @@ value = signal("b")
 exports[`full output snapshots > ControlledSelect > astro 1`] = `
 "---
 ---
-<select value={value}>
+<select value={value} onChange={e => setValue(e.target.value)}>
 <option value="a">
 A
 </option>
@@ -771,7 +771,7 @@ exports[`full output snapshots > ControlledTextarea > astro 1`] = `
 "---
 ---
 <div>
-<textarea value={text} />
+<textarea value={text} onInput={e => setText(e.target.value)} />
 <p>
 {text.length}
 characters
@@ -897,7 +897,7 @@ exports[`full output snapshots > Counter > astro 1`] = `
 <p>
 {doubled}
 </p>
-<button>
+<button onClick={() => setCount(count + 1)}>
 +1
 </button>
 </div>
@@ -1046,12 +1046,12 @@ exports[`full output snapshots > DynamicList > astro 1`] = `
 "---
 ---
 <div>
-<input value={input} />
-<button>
+<input value={input} onInput={e => setInput(e.target.value)} />
+<button onClick={() => { setItems([...items, input]); setInput(""); }}>
 Add
 </button>
 <ul>
-{items.map((item) => (<li>
+{items.map((item, i) => (<li>
 {item}
 </li>))}
 </ul>
@@ -1185,7 +1185,7 @@ constructor() { effect(() => { if (active()) {
 exports[`full output snapshots > EffectCleanup > astro 1`] = `
 "---
 ---
-<button>
+<button onClick={() => setActive(!active)}>
 Toggle
 </button>
 "
@@ -1468,7 +1468,7 @@ exports[`full output snapshots > FormField > astro 1`] = `
 "---
 ---
 <div>
-<input value={value} />
+<input value={value} onInput={e => setValue(e.target.value)} />
 <p>
 {value}
 </p>
@@ -1676,7 +1676,7 @@ exports[`full output snapshots > MemoChain > astro 1`] = `
 <span>
 {label}
 </span>
-<button>
+<button onClick={() => setBase(base + 1)}>
 +1
 </button>
 </div>
@@ -1814,7 +1814,7 @@ exports[`full output snapshots > MixedControlFlow > astro 1`] = `
 "---
 ---
 <div>
-<input value={filter} />
+<input value={filter} onInput={e => setFilter(e.target.value)} />
 <ul>
 {items.map((item) => (item.includes(filter) ? (<li>
 {item}
@@ -2370,7 +2370,7 @@ Tab A
 </p>) : tab === "b" ? (<p>
 Tab B
 </p>) : null}
-<button>
+<button onClick={() => setTab(tab === "a" ? "b" : "a")}>
 Switch
 </button>
 </div>
@@ -2505,7 +2505,7 @@ Child
 
 ---
 ---
-<unknown client:load />
+<unknown />
 "
 `;
 
