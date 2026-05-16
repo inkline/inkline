@@ -57,6 +57,14 @@ function jsxAttrs(
       }),
     );
   }
+  for (const r of node.refs) {
+    out.push(
+      cJsxAttr({
+        name: "ref",
+        value: { kind: "expr", expr: cExpr({ text: rewriteExpr(r.ref.expr, rules) }) },
+      }),
+    );
+  }
   return out;
 }
 
@@ -70,7 +78,17 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? node.reference.getText();
       const attrs = jsxAttrs(node, rules);
-      return cJsxElement({ tag, attrs, children: [], selfClose: true });
+      const children = node.slots.map((s) =>
+        s.name === "default"
+          ? emitNode(s.body, rules)
+          : cJsxElement({
+              tag: `${tag}.${s.name}`,
+              attrs: [],
+              children: [emitNode(s.body, rules)],
+              selfClose: false,
+            }),
+      );
+      return cJsxElement({ tag, attrs, children, selfClose: children.length === 0 });
     }
     case "Text":
       return cJsxText({ text: node.value });
@@ -80,14 +98,20 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       return cExpr({
         text: `{${node.branches.map((b) => `${rewriteExpr(b.test.expr, rules)} ? (<>${emitNodeInline(b.body, rules)}</>)`).join(" : ")} : ${node.fallback ? `(<>${emitNodeInline(node.fallback, rules)}</>)` : "null"}}`,
       });
-    case "For":
+    case "For": {
+      const params = node.indexBinding
+        ? `(${node.itemBinding}, ${node.indexBinding})`
+        : `(${node.itemBinding})`;
       return cExpr({
-        text: `{${rewriteExpr(node.each.expr, rules)}.map((${node.itemBinding}) => (<>${emitNodeInline(node.body, rules)}</>))}`,
+        text: `{${rewriteExpr(node.each.expr, rules)}.map(${params} => (<>${emitNodeInline(node.body, rules)}</>))}`,
       });
-    case "Switch":
+    }
+    case "Switch": {
+      const fallback = node.fallback ? `(<>${emitNodeInline(node.fallback, rules)}</>)` : "null";
       return cExpr({
-        text: `{${node.cases.map((c) => `${rewriteExpr(c.test.expr, rules)} ? (<>${emitNodeInline(c.body, rules)}</>)`).join(" : ")} : null}`,
+        text: `{${node.cases.map((c) => `${rewriteExpr(c.test.expr, rules)} ? (<>${emitNodeInline(c.body, rules)}</>)`).join(" : ")} : ${fallback}}`,
       });
+    }
     case "SlotPlaceholder":
       return cExpr({ text: `{props.${node.name === "default" ? "children" : node.name}}` });
     case "Fragment":
@@ -132,6 +156,15 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   }
   for (const e of component.effects) {
     body.push(cStmt({ body: `useVisibleTask$(${rewriteExpr(e.body, rules)})`, span: e.loc }));
+  }
+  for (const res of component.resources) {
+    qwikImports.push("useResource$");
+    body.push(
+      cStmt({
+        body: `const ${res.name} = useResource$(${rewriteExpr(res.fetcher.expr, rules)})`,
+        span: res.loc,
+      }),
+    );
   }
 
   const renderTree = emitNode(component.render, rules);
