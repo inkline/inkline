@@ -107,7 +107,8 @@ jobs:
           path: |
             packages/compiler/dist
             packages/compiler/bin
-            ui/*/src/generated
+            packages/test-utils/dist
+            ui/*/generated
 
   ci-success:
     name: CI Success
