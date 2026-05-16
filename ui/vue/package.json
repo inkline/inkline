@@ -22,6 +22,7 @@
   "devDependencies": {
     "@inkline/core": "workspace:*",
     "@vitejs/plugin-vue": "catalog:",
+    "jsdom": "catalog:",
     "vue": "^3"
   },
   "peerDependencies": {

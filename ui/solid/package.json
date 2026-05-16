@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@inkline/core": "workspace:*",
+    "jsdom": "catalog:",
     "solid-js": "^1",
     "vite-plugin-solid": "catalog:"
   },

@@ -20,7 +20,8 @@
   },
   "devDependencies": {
     "@builder.io/qwik": "^1",
-    "@inkline/core": "workspace:*"
+    "@inkline/core": "workspace:*",
+    "jsdom": "catalog:"
   },
   "peerDependencies": {
     "@builder.io/qwik": ">=1"

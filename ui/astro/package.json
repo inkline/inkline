@@ -24,7 +24,8 @@
   },
   "devDependencies": {
     "@inkline/core": "workspace:*",
-    "astro": "^5"
+    "astro": "^5",
+    "jsdom": "catalog:"
   },
   "peerDependencies": {
     "astro": ">=4"

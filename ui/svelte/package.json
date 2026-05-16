@@ -22,6 +22,7 @@
   "devDependencies": {
     "@inkline/core": "workspace:*",
     "@sveltejs/vite-plugin-svelte": "catalog:",
+    "jsdom": "catalog:",
     "svelte": "^5"
   },
   "peerDependencies": {
