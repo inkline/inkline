@@ -193,7 +193,8 @@ return (
 
 exports[`props type generation > Svelte: $props destructuring 1`] = `
 "<script lang="ts">
-  let { label, disabled }: { label; disabled? } = $props()
+  interface Props { label; disabled? }
+  let { label, disabled }: Props = $props()
   let count = $state(0)
   let doubled = $derived(count * 2)
   $effect(() => { console.log("effect"); })
@@ -207,7 +208,7 @@ exports[`props type generation > Vue: defineProps with types 1`] = `
   import { ref, computed, watchEffect } from "vue";
   const props = defineProps<{ label; disabled? }>()
   const count = ref(0)
-  const doubled = computed(() => count * 2)
+  const doubled = computed(() => count.value * 2)
   watchEffect(() => { console.log("effect"); })
 </script>
 <template>
@@ -286,7 +287,7 @@ export default function Form(props: Record<string, never>)
 const [count, setCount] = createSignal(0)
 const doubled = createMemo(() => count() * 2)
 createEffect(() => { console.log("effect"); })
-let inputRef
+let inputRef: HTMLInputElement | undefined
 return (
 <div />
 )
@@ -298,7 +299,7 @@ exports[`ref emission > Vue: ref() for element ref 1`] = `
 "<script setup lang="ts">
   import { ref, computed, watchEffect } from "vue";
   const count = ref(0)
-  const doubled = computed(() => count * 2)
+  const doubled = computed(() => count.value * 2)
   watchEffect(() => { console.log("effect"); })
   const inputRef = ref<HTMLInputElement | null>(null)
 </script>
@@ -358,9 +359,9 @@ exports[`target emit + print (full output) > Svelte: Counter component 1`] = `
 </script>
 <div>
   <p>
-    {{ count }}
+    {count}
   </p>
-  <button onclick="() => setCount(count + 1)">
+  <button onclick={() => setCount(count + 1)}>
     +1
   </button>
 </div>
@@ -371,7 +372,7 @@ exports[`target emit + print (full output) > Vue: Counter component 1`] = `
 "<script setup lang="ts">
   import { ref, computed, watchEffect } from "vue";
   const count = ref(0)
-  const doubled = computed(() => count * 2)
+  const doubled = computed(() => count.value * 2)
   watchEffect(() => { console.log("effect"); })
 </script>
 <template>

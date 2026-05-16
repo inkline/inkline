@@ -7,10 +7,7 @@
   "type": "module",
   "sideEffects": false,
   "exports": {
-    ".": {
-      "types": "./dist/index.d.mts",
-      "default": "./dist/index.mjs"
-    },
+    ".": "./dist/index.js",
     "./css": "./dist/index.css",
     "./package.json": "./package.json"
   },
@@ -18,12 +15,13 @@
     "access": "public"
   },
   "scripts": {
-    "build": "vp pack",
+    "build": "vp build",
     "validate": "vp check",
-    "test": "vp test"
+    "test": "vp test --passWithNoTests"
   },
   "devDependencies": {
     "@inkline/core": "workspace:*",
+    "@sveltejs/vite-plugin-svelte": "catalog:",
     "svelte": "^5"
   },
   "peerDependencies": {
