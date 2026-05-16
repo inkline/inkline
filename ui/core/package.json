@@ -11,6 +11,7 @@
   "devDependencies": {
     "@inkline/compiler": "workspace:*",
     "@inkline/test-utils": "workspace:*",
+    "jsdom": "catalog:",
     "vite-plus": "catalog:",
     "vitest": "catalog:"
   }

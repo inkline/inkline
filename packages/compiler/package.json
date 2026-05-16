@@ -14,15 +14,19 @@
     "directory": "packages/compiler"
   },
   "bin": {
-    "inkline": "./dist/bin/inkline.mjs"
+    "inkline": "./bin/inkline.mjs"
   },
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
   "type": "module",
   "sideEffects": false,
   "exports": {
-    ".": "./dist/index.mjs",
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    },
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -61,6 +65,7 @@
     "solid-js": "^1.8",
     "svelte": "^5",
     "tinybench": "^2",
+    "tsx": "^4.8.1",
     "typescript": "^6.0.2",
     "vite-plus": "^0.1.14",
     "vitest": "catalog:",

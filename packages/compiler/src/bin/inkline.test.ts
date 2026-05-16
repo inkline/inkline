@@ -10,7 +10,7 @@ const FIXTURES_DIR = resolve(__dirname, "..", "__fixtures__");
 const TMP_OUT = resolve(__dirname, "..", "..", ".tmp-cli-test");
 
 function run(...args: string[]): { stdout: string; stderr: string; status: number } {
-  const result = spawnSync("npx", ["tsx", CLI_PATH, ...args], {
+  const result = spawnSync(process.execPath, ["--import", "tsx", CLI_PATH, ...args], {
     encoding: "utf-8",
     cwd: resolve(__dirname, "..", ".."),
     timeout: 30_000,

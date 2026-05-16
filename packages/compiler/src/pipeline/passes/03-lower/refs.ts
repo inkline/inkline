@@ -24,7 +24,7 @@ const TAG_TO_ELEMENT_TYPE: Record<string, string> = {
   video: "HTMLVideoElement",
 };
 
-export function refs(component: IRComponent, ctx: PassContext): IRComponent {
+export function refs(component: IRComponent, _ctx: PassContext): IRComponent {
   const updates = new Map<SymbolId, { category: IRRefCategory; elementType?: string }>();
 
   walkRenderTree(component.render, {
