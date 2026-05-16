@@ -2,7 +2,7 @@
 import { createSignal, createEffect, defineComponent, untrack } from "@inkline/core";
 export default defineComponent(() => {
   const [count, setCount] = createSignal(0);
-  const [log, setLog] = createSignal("");
+  const [log, _setLog] = createSignal("");
   createEffect(() => {
     const c = count();
     const l = untrack(() => log());

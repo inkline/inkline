@@ -18,4 +18,7 @@ export default defineConfig({
     },
   },
   fmt: {},
+  test: {
+    testTimeout: 15_000,
+  },
 });

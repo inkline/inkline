@@ -2,7 +2,7 @@
 import { createResource, defineComponent } from "@inkline/core";
 
 export default defineComponent(() => {
-  const [data, { loading, error }] = createResource(async () => {
+  const [data, { loading, error: _error }] = createResource(async () => {
     const res = await fetch("/api/items");
     return res.json();
   });

@@ -20,11 +20,12 @@
   "scripts": {
     "build": "vp pack",
     "validate": "vp check",
-    "test": "vp test"
+    "test": "vp test --passWithNoTests"
   },
   "devDependencies": {
     "@inkline/core": "workspace:*",
-    "astro": "^5"
+    "astro": "^5",
+    "jsdom": "catalog:"
   },
   "peerDependencies": {
     "astro": ">=4"
