@@ -81,10 +81,11 @@ return (
 }
 ",
   "svelte/Button.svelte": "<script lang="ts">
-  let { label, disabled }: { label: string; disabled?: boolean } = $props()
+  interface Props { label: string; disabled?: boolean }
+  let { label, disabled }: Props = $props()
 </script>
-<button disabled="props.disabled">
-  {{ props.label }}
+<button disabled={props.disabled}>
+  {props.label}
 </button>
 <style scoped>
   button {

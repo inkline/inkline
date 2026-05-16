@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "ready": "pnpm run check && pnpm run test && pnpm run build",
+    "ready": "pnpm run build && pnpm run check && pnpm run test",
     "check": "vp check",
     "test": "vp run -r test",
     "build": "vp run -r build",

@@ -169,7 +169,7 @@ async function loadConfig(explicitPath?: string): Promise<Partial<InklineConfig>
     return mod.default ?? {};
   } catch (err) {
     console.error(
-      `Failed to load config from ${configPath}: ${err instanceof Error ? err.message : err}`,
+      `Failed to load config from ${configPath}: ${err instanceof Error ? err.message : String(err)}`,
     );
     return {};
   }
