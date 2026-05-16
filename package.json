@@ -7,9 +7,12 @@
     "ready": "vp check && vp run -r test && vp run -r build",
     "build": "vp run -r build",
     "dev": "vp run website#dev",
-    "prepare": "vp config"
+    "prepare": "vp config",
+    "ci:version": "changeset version",
+    "ci:prepublish": "pnpm run build"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.4",
     "vite-plus": "catalog:"
   },
   "engines": {
