@@ -126,11 +126,37 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
   }
 }
 
+function inlineCode(code: Code): string {
+  switch (code.kind) {
+    case "CJsxText":
+      return code.text;
+    case "CExpr":
+      return code.text;
+    case "CJsxElement": {
+      const tag = code.tag || "";
+      const attrStr = code.attrs
+        .map((a) => {
+          if (a.kind !== "CJsxAttr") return "";
+          if (a.value.kind === "boolean") return ` ${a.name}`;
+          if (a.value.kind === "static") return ` ${a.name}="${a.value.text}"`;
+          return ` ${a.name}={${a.value.expr.text}}`;
+        })
+        .join("");
+      if (code.selfClose) return `<${tag}${attrStr} />`;
+      const childStr = code.children.map((c) => inlineCode(c)).join("");
+      return `<${tag}${attrStr}>${childStr}</${tag}>`;
+    }
+    case "CGroup":
+      return code.children.map((c) => inlineCode(c)).join("");
+    case "CRaw":
+      return code.text;
+    default:
+      return "";
+  }
+}
+
 function emitNodeInline(node: IRNode, rules: RewriteRules): string {
-  const code = emitNode(node, rules);
-  if (code.kind === "CJsxText") return code.text;
-  if (code.kind === "CExpr") return code.text;
-  return "";
+  return inlineCode(emitNode(node, rules));
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
@@ -166,13 +192,24 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       }),
     );
   }
+  for (const r of component.refs) {
+    body.push(
+      cStmt({
+        body: `const ${r.name} = useSignal${r.elementType ? `<${r.elementType} | null>` : ""}(null)`,
+        span: r.loc,
+      }),
+    );
+  }
 
   const renderTree = emitNode(component.render, rules);
 
   const file = cFile({
     flavor: "tsx",
     children: [
-      cImport({ module: "@builder.io/qwik", named: qwikImports.map((i) => ({ imported: i })) }),
+      cImport({
+        module: "@builder.io/qwik",
+        named: [...new Set(qwikImports)].map((i) => ({ imported: i })),
+      }),
       cRaw({ text: "" }),
       cStmt({ body: `export const ${component.name} = component$(() =>` }),
       cRaw({ text: "{" }),

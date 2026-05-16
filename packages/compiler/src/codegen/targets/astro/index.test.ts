@@ -6,6 +6,7 @@ import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import {
   createElement,
   createExpr,
+  createSwitch,
   createText,
   createComponentInstance,
 } from "../../../ir/render/builders.ts";
@@ -197,6 +198,27 @@ describe("Astro codegen fixes", () => {
       const code = emitCode(comp);
       expect(code).toContain("(item)");
       expect(code).not.toContain(", i)");
+    });
+  });
+
+  describe("Switch fallback", () => {
+    it("renders fallback node instead of null", () => {
+      const switchNode = createSwitch({
+        cases: [{ test: createExpr({ expr: mockExpr("x") }), body: createText({ value: "X" }) }],
+        fallback: createText({ value: "default case" }),
+      });
+      const comp = makeComp("Sw", createElement({ tag: "div", children: [switchNode] }));
+      const code = emitCode(comp);
+      expect(code).toContain("default case");
+    });
+
+    it("renders null when no fallback", () => {
+      const switchNode = createSwitch({
+        cases: [{ test: createExpr({ expr: mockExpr("x") }), body: createText({ value: "X" }) }],
+      });
+      const comp = makeComp("Sw", createElement({ tag: "div", children: [switchNode] }));
+      const code = emitCode(comp);
+      expect(code).toContain(": null");
     });
   });
 

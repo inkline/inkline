@@ -142,7 +142,7 @@ describe("Angular codegen fixes", () => {
   });
 
   describe("Element refs", () => {
-    it("emits template reference variable on elements", () => {
+    it("emits template reference variable and viewChild declaration", () => {
       const render = createElement({
         tag: "input",
         refs: [
@@ -153,14 +153,109 @@ describe("Angular codegen fixes", () => {
           },
         ],
       });
-      const comp = makeComp("Form", render);
+      const comp = makeComp("Form", render, {
+        refs: [
+          {
+            name: "inputRef",
+            symbolId: "t::ref::inputRef@0" as SymbolId,
+            category: "element",
+            elementType: "HTMLInputElement",
+            loc,
+          },
+        ],
+      });
       const code = emitCode(comp);
       expect(code).toContain("#inputRef");
+      expect(code).toContain("viewChild<ElementRef>('inputRef')");
+      expect(code).toContain("viewChild");
+    });
+  });
+
+  describe("multiple refs", () => {
+    it("does not duplicate viewChild/ElementRef imports", () => {
+      const render = createElement({
+        tag: "div",
+        children: [
+          createElement({
+            tag: "input",
+            refs: [
+              {
+                ref: createExpr({ expr: mockExpr("inputRef"), deps: DYNAMIC_DEPS }),
+                category: "element" as const,
+                loc,
+              },
+            ],
+          }),
+          createElement({
+            tag: "button",
+            refs: [
+              {
+                ref: createExpr({ expr: mockExpr("buttonRef"), deps: DYNAMIC_DEPS }),
+                category: "element" as const,
+                loc,
+              },
+            ],
+          }),
+        ],
+      });
+      const comp = makeComp("Form", render, {
+        refs: [
+          {
+            name: "inputRef",
+            symbolId: "t::ref::inputRef@0" as SymbolId,
+            category: "element",
+            elementType: "HTMLInputElement",
+            loc,
+          },
+          {
+            name: "buttonRef",
+            symbolId: "t::ref::buttonRef@0" as SymbolId,
+            category: "element",
+            elementType: "HTMLButtonElement",
+            loc,
+          },
+        ],
+      });
+      const code = emitCode(comp);
+      expect(code).not.toMatch(/viewChild.*viewChild.*viewChild/);
+      expect(code).toContain("viewChild<ElementRef>('inputRef')");
+      expect(code).toContain("viewChild<ElementRef>('buttonRef')");
+    });
+  });
+
+  describe("multiple resources", () => {
+    it("does not duplicate resource import", () => {
+      const comp = makeComp("Data", createElement({ tag: "div" }), {
+        resources: [
+          {
+            name: "users",
+            fetcher: createExpr({ expr: mockExpr("() => fetchUsers()") }),
+            symbolId: "t::signal::users@0" as SymbolId,
+            loadingName: "loading",
+            errorName: "error",
+            refetchName: "refetch",
+            loc,
+          },
+          {
+            name: "posts",
+            fetcher: createExpr({ expr: mockExpr("() => fetchPosts()") }),
+            symbolId: "t::signal::posts@0" as SymbolId,
+            loadingName: "loading",
+            errorName: "error",
+            refetchName: "refetch",
+            loc,
+          },
+        ],
+      });
+      const code = emitCode(comp);
+      const importLine = code.split("\n").find((l) => l.includes("@angular/core"))!;
+      const resourceCount = importLine.match(/resource/g);
+      expect(resourceCount).toHaveLength(1);
     });
   });
 
   describe("resource handling", () => {
-    it("emits signal for resources", () => {
+    it("emits resource with loader for resources", () => {
       const comp = makeComp("Data", createElement({ tag: "div" }), {
         resources: [
           {
@@ -175,7 +270,9 @@ describe("Angular codegen fixes", () => {
         ],
       });
       const code = emitCode(comp);
-      expect(code).toContain("data = signal(");
+      expect(code).toContain("resource({");
+      expect(code).toContain("loader:");
+      expect(code).toContain("fetchData");
     });
   });
 });

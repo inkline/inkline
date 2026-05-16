@@ -51,7 +51,7 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       return `{${rewriteExpr(node.each.expr, rules)}.map(${params} => (${body}))}`;
     }
     case "Switch":
-      return `{${node.cases.map((c) => `${rewriteExpr(c.test.expr, rules)} ? (${emitNode(c.body, rules)})`).join(" : ")} : null}`;
+      return `{${node.cases.map((c) => `${rewriteExpr(c.test.expr, rules)} ? (${emitNode(c.body, rules)})`).join(" : ")} : ${node.fallback ? `(${emitNode(node.fallback, rules)})` : "null"}}`;
     case "Fragment":
       return node.children.map((c) => emitNode(c, rules)).join("\n");
     case "ComponentInstance": {

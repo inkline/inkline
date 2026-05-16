@@ -62,8 +62,8 @@ function emitCode(comp: IRComponent): string {
 }
 
 describe("Qwik codegen fixes", () => {
-  describe("refs in jsxAttrs", () => {
-    it("emits ref attribute on elements", () => {
+  describe("refs", () => {
+    it("emits ref attribute and declaration", () => {
       const render = createElement({
         tag: "input",
         refs: [
@@ -86,8 +86,8 @@ describe("Qwik codegen fixes", () => {
         ],
       });
       const code = emitCode(comp);
-      expect(code).toContain("ref={");
-      expect(code).toContain("inputRef");
+      expect(code).toContain("ref={inputRef");
+      expect(code).toContain("const inputRef = useSignal<HTMLInputElement | null>(null)");
     });
   });
 
@@ -151,7 +151,7 @@ describe("Qwik codegen fixes", () => {
     });
   });
 
-  describe("For loop indexBinding", () => {
+  describe("For loop", () => {
     it("includes both item and index params", () => {
       const forNode: IRNode = {
         kind: "For",
@@ -183,6 +183,23 @@ describe("Qwik codegen fixes", () => {
       expect(code).toContain("(item)");
       expect(code).not.toContain("idx");
     });
+
+    it("renders element body inside For loop", () => {
+      const forNode: IRNode = {
+        kind: "For",
+        each: createExpr({ expr: mockExpr("items()") }),
+        itemBinding: "item",
+        key: createExpr({ expr: mockExpr("item") }),
+        syntheticKey: true,
+        body: createElement({ tag: "li", children: [createText({ value: "row" })] }),
+        loc,
+      };
+      const comp = makeComp("List", createElement({ tag: "ul", children: [forNode] }));
+      const code = emitCode(comp);
+      expect(code).toContain("<li>");
+      expect(code).toContain("row");
+      expect(code).toContain("</li>");
+    });
   });
 
   describe("Switch fallback", () => {
@@ -203,6 +220,37 @@ describe("Qwik codegen fixes", () => {
       const comp = makeComp("Sw", createElement({ tag: "div", children: [switchNode] }));
       const code = emitCode(comp);
       expect(code).toContain(": null");
+    });
+  });
+
+  describe("multiple resources", () => {
+    it("does not duplicate useResource$ import", () => {
+      const comp = makeComp("Data", createElement({ tag: "div" }), {
+        resources: [
+          {
+            name: "users",
+            fetcher: createExpr({ expr: mockExpr("() => fetchUsers()") }),
+            symbolId: "t::signal::users@0" as SymbolId,
+            loadingName: "loading",
+            errorName: "error",
+            refetchName: "refetch",
+            loc,
+          },
+          {
+            name: "posts",
+            fetcher: createExpr({ expr: mockExpr("() => fetchPosts()") }),
+            symbolId: "t::signal::posts@0" as SymbolId,
+            loadingName: "loading",
+            errorName: "error",
+            refetchName: "refetch",
+            loc,
+          },
+        ],
+      });
+      const code = emitCode(comp);
+      const importLine = code.split("\n").find((l) => l.includes("@builder.io/qwik"))!;
+      const resourceCount = importLine.match(/useResource\$/g);
+      expect(resourceCount).toHaveLength(1);
     });
   });
 

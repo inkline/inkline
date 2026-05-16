@@ -120,10 +120,20 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   }
   for (const res of component.resources) {
+    angularImports.push("resource");
     body.push(
       cStmt({
-        body: `${res.name} = signal(undefined)`,
+        body: `${res.name} = resource({ loader: ${rewriteExpr(res.fetcher.expr, rules)} })`,
         span: res.loc,
+      }),
+    );
+  }
+  for (const r of component.refs) {
+    angularImports.push("viewChild", "ElementRef");
+    body.push(
+      cStmt({
+        body: `${r.name} = viewChild<ElementRef>('${r.name}')`,
+        span: r.loc,
       }),
     );
   }
@@ -133,7 +143,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const file = cFile({
     flavor: "ts",
     children: [
-      cImport({ module: "@angular/core", named: angularImports.map((i) => ({ imported: i })) }),
+      cImport({
+        module: "@angular/core",
+        named: [...new Set(angularImports)].map((i) => ({ imported: i })),
+      }),
       cRaw({ text: "" }),
       cRaw({
         text: `@Component({ standalone: true, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
