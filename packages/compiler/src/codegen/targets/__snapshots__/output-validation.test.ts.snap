@@ -1278,7 +1278,7 @@ exports[`full output snapshots > EffectCleanup > vue 1`] = `
 
 exports[`full output snapshots > ElementRef > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<input placeholder="auto-focus" />\` })
+@Component({ standalone: true, template: \`<input placeholder="auto-focus" #inputRef />\` })
 export class ElementRefComponent
 {
 }
@@ -1921,8 +1921,8 @@ exports[`full output snapshots > MixedControlFlow > vue 1`] = `
 exports[`full output snapshots > MultiRefs > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, template: \`<div>
-<input placeholder="focus me" />
-<button>
+<input placeholder="focus me" #inputRef />
+<button #buttonRef>
 Click
 </button>
 </div>\` })
