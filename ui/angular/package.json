@@ -20,7 +20,8 @@
   },
   "devDependencies": {
     "@angular/core": "^19",
-    "@inkline/core": "workspace:*"
+    "@inkline/core": "workspace:*",
+    "jsdom": "catalog:"
   },
   "peerDependencies": {
     "@angular/core": ">=17"

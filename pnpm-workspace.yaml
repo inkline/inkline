@@ -18,6 +18,7 @@ catalog:
   "@vitejs/plugin-react": ^6.0.2
   "@vitejs/plugin-vue": ^6.0.7
   "@vitest/coverage-v8": ^4.1.5
+  jsdom: ^26.1.0
   eslint: ^9.39.4
   eslint-plugin-astro: ^1.7.0
   eslint-plugin-qwik: ^1.19.2

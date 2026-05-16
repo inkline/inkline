@@ -23,6 +23,7 @@
     "@inkline/core": "workspace:*",
     "@types/react": "^19",
     "@vitejs/plugin-react": "catalog:",
+    "jsdom": "catalog:",
     "react": "^19"
   },
   "peerDependencies": {
