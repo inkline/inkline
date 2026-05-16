@@ -5,10 +5,18 @@ packages:
   - tools/*
 
 catalog:
+  "@analogjs/vite-plugin-angular": ^2.5.1
   "@angular-eslint/eslint-plugin": ^21.4.0
   "@angular-eslint/template-parser": ^21.4.0
+  "@angular/build": ^21.2.11
+  "@angular/compiler": ^21.2.13
+  "@angular/compiler-cli": ^21.2.13
+  "@sveltejs/vite-plugin-svelte": ^7.1.2
+  "@tsdown/css": ^0.22.0
   "@types/node": ^24
   "@typescript-eslint/parser": ^8.59.3
+  "@vitejs/plugin-react": ^6.0.2
+  "@vitejs/plugin-vue": ^6.0.7
   "@vitest/coverage-v8": ^4.1.5
   eslint: ^9.39.4
   eslint-plugin-astro: ^1.7.0
@@ -17,11 +25,13 @@ catalog:
   eslint-plugin-svelte: ^3.17.1
   eslint-plugin-vue: ^10.9.1
   oxlint: ^1.64.0
-  vue-eslint-parser: ^10.4.0
+  rollup-plugin-svelte: ^7.2.3
   typescript: ^5
   vite: npm:@voidzero-dev/vite-plus-core@latest
+  vite-plugin-solid: ^2.11.12
   vite-plus: latest
   vitest: npm:@voidzero-dev/vite-plus-test@latest
+  vue-eslint-parser: ^10.4.0
 
 catalogMode: prefer
 overrides:

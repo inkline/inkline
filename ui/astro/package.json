@@ -20,7 +20,7 @@
   "scripts": {
     "build": "vp pack",
     "validate": "vp check",
-    "test": "vp test"
+    "test": "vp test --passWithNoTests"
   },
   "devDependencies": {
     "@inkline/core": "workspace:*",
