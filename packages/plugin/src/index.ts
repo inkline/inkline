@@ -61,7 +61,9 @@ export const unpluginFactory: UnpluginFactory<InklinePluginOptions | undefined> 
         const files = result.files[target];
         if (!files || files.length === 0) return null;
 
-        const mainFile = files.find((f: { path: string }) => !f.path.endsWith(".css"));
+        const mainFile = files.find(
+          (f: { path: string }) => !f.path.endsWith(".css") && !f.path.endsWith(".map"),
+        );
         if (!mainFile) return null;
 
         return {
