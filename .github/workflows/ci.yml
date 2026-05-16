@@ -39,6 +39,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+
       - name: Check
         run: pnpm run check
 
@@ -87,6 +92,16 @@ jobs:
 
       - name: Build
         run: pnpm run build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          retention-days: 1
+          path: |
+            packages/compiler/dist
+            packages/compiler/bin
+            ui/*/src/generated
 
   ci-success:
     name: CI Success
