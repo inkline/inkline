@@ -231,6 +231,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   for (const m of component.lifecycle.onMount)
     scriptBody.push(cStmt({ body: `$effect(${rewriteExpr(m.body, rules)})`, span: m.loc }));
+  for (const c of component.lifecycle.onCleanup)
+    scriptBody.push(
+      cStmt({ body: `$effect(() => { return ${rewriteExpr(c.body, rules)} })`, span: c.loc }),
+    );
   for (const r of component.refs)
     scriptBody.push(
       cStmt({

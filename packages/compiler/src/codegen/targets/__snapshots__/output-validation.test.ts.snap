@@ -26,7 +26,7 @@ exports[`full output snapshots > BatchUpdates > astro 1`] = `
 <span>
 {sum}
 </span>
-<button>
+<button onClick={() => batch(() => { setX(x + 1); setY(y + 1); })}>
 Both
 </button>
 </div>
@@ -245,10 +245,10 @@ exports[`full output snapshots > Composite > astro 1`] = `
 <span id="sum">
 {sum}
 </span>
-<button id="incX">
+<button id="incX" onClick={() => setX(x + 1)}>
 +X
 </button>
-<button id="incY">
+<button id="incY" onClick={() => setY(y + 1)}>
 +Y
 </button>
 </div>
@@ -407,7 +407,7 @@ Visible
 </span>) : (<span>
 Hidden
 </span>)}
-<button>
+<button onClick={() => setVisible(!visible)}>
 Toggle
 </button>
 </div>
@@ -421,7 +421,7 @@ export const Conditional = component$(() =>
 const visible = useSignal(true)
 return (
 <div>
-  {visible.value ? (<></>) : (<></>)}
+  {visible.value ? (<><span>Visible</span></>) : (<><span>Hidden</span></>)}
   <button onClick={$(() => () => setVisible(!visible.value))}>
     Toggle
   </button>
@@ -527,7 +527,7 @@ exports[`full output snapshots > ConditionalClass > astro 1`] = `
 "---
 ---
 <div class={active ? "active" : "inactive"}>
-<button>
+<button onClick={() => setActive(!active)}>
 Toggle
 </button>
 </div>
@@ -632,7 +632,7 @@ value = signal("b")
 exports[`full output snapshots > ControlledSelect > astro 1`] = `
 "---
 ---
-<select value={value}>
+<select value={value} onChange={e => setValue(e.target.value)}>
 <option value="a">
 A
 </option>
@@ -771,7 +771,7 @@ exports[`full output snapshots > ControlledTextarea > astro 1`] = `
 "---
 ---
 <div>
-<textarea value={text} />
+<textarea value={text} onInput={e => setText(e.target.value)} />
 <p>
 {text.length}
 characters
@@ -897,7 +897,7 @@ exports[`full output snapshots > Counter > astro 1`] = `
 <p>
 {doubled}
 </p>
-<button>
+<button onClick={() => setCount(count + 1)}>
 +1
 </button>
 </div>
@@ -1046,12 +1046,12 @@ exports[`full output snapshots > DynamicList > astro 1`] = `
 "---
 ---
 <div>
-<input value={input} />
-<button>
+<input value={input} onInput={e => setInput(e.target.value)} />
+<button onClick={() => { setItems([...items, input]); setInput(""); }}>
 Add
 </button>
 <ul>
-{items.map((item) => (<li>
+{items.map((item, i) => (<li>
 {item}
 </li>))}
 </ul>
@@ -1072,7 +1072,7 @@ return (
     Add
   </button>
   <ul>
-    {items.value.map((item) => (<></>))}
+    {items.value.map((item, i) => (<><li>{item}</li></>))}
   </ul>
 </div>
 )
@@ -1185,7 +1185,7 @@ constructor() { effect(() => { if (active()) {
 exports[`full output snapshots > EffectCleanup > astro 1`] = `
 "---
 ---
-<button>
+<button onClick={() => setActive(!active)}>
 Toggle
 </button>
 "
@@ -1277,10 +1277,11 @@ exports[`full output snapshots > EffectCleanup > vue 1`] = `
 `;
 
 exports[`full output snapshots > ElementRef > angular 1`] = `
-"import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<input placeholder="auto-focus" />\` })
+"import { Component, signal, computed, effect, viewChild, ElementRef } from "@angular/core";
+@Component({ standalone: true, template: \`<input placeholder="auto-focus" #inputRef />\` })
 export class ElementRefComponent
 {
+inputRef = viewChild<ElementRef>('inputRef')
 }
 "
 `;
@@ -1296,8 +1297,9 @@ exports[`full output snapshots > ElementRef > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
 export const ElementRef = component$(() =>
 {
+const inputRef = useSignal(null)
 return (
-<input placeholder="auto-focus" />
+<input placeholder="auto-focus" ref={inputRef} />
 )
 });
 "
@@ -1384,7 +1386,7 @@ export const ForLoop = component$(() =>
 const items = useSignal(["Apple", "Banana", "Cherry"])
 return (
 <ul>
-  {items.value.map((item) => (<></>))}
+  {items.value.map((item) => (<><li>{item}</li></>))}
 </ul>
 )
 });
@@ -1468,7 +1470,7 @@ exports[`full output snapshots > FormField > astro 1`] = `
 "---
 ---
 <div>
-<input value={value} />
+<input value={value} onInput={e => setValue(e.target.value)} />
 <p>
 {value}
 </p>
@@ -1627,6 +1629,7 @@ exports[`full output snapshots > Lifecycle > svelte 1`] = `
 "<script lang="ts">
   let mounted = $state(false)
   $effect(() => { setMounted(true); })
+  $effect(() => { return () => { console.log("cleanup"); } })
 </script>
 <span>
   {mounted ? "mounted" : "pending"}
@@ -1676,7 +1679,7 @@ exports[`full output snapshots > MemoChain > astro 1`] = `
 <span>
 {label}
 </span>
-<button>
+<button onClick={() => setBase(base + 1)}>
 +1
 </button>
 </div>
@@ -1814,7 +1817,7 @@ exports[`full output snapshots > MixedControlFlow > astro 1`] = `
 "---
 ---
 <div>
-<input value={filter} />
+<input value={filter} onInput={e => setFilter(e.target.value)} />
 <ul>
 {items.map((item) => (item.includes(filter) ? (<li>
 {item}
@@ -1834,7 +1837,7 @@ return (
 <div>
   <input value={filter.value} onInput={$(() => e => setFilter(e.target.value))} />
   <ul>
-    {items.value.map((item) => (<>{item.includes(filter.value) ? (<></>) : null}</>))}
+    {items.value.map((item) => (<>{item.includes(filter.value) ? (<><li>{item}</li></>) : null}</>))}
   </ul>
 </div>
 )
@@ -1919,15 +1922,17 @@ exports[`full output snapshots > MixedControlFlow > vue 1`] = `
 `;
 
 exports[`full output snapshots > MultiRefs > angular 1`] = `
-"import { Component, signal, computed, effect } from "@angular/core";
+"import { Component, signal, computed, effect, viewChild, ElementRef } from "@angular/core";
 @Component({ standalone: true, template: \`<div>
-<input placeholder="focus me" />
-<button>
+<input placeholder="focus me" #inputRef />
+<button #buttonRef>
 Click
 </button>
 </div>\` })
 export class MultiRefsComponent
 {
+inputRef = viewChild<ElementRef>('inputRef')
+buttonRef = viewChild<ElementRef>('buttonRef')
 }
 "
 `;
@@ -1948,10 +1953,12 @@ exports[`full output snapshots > MultiRefs > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
 export const MultiRefs = component$(() =>
 {
+const inputRef = useSignal(null)
+const buttonRef = useSignal(null)
 return (
 <div>
-  <input placeholder="focus me" />
-  <button>
+  <input placeholder="focus me" ref={inputRef} />
+  <button ref={buttonRef}>
     Click
   </button>
 </div>
@@ -2370,7 +2377,7 @@ Tab A
 </p>) : tab === "b" ? (<p>
 Tab B
 </p>) : null}
-<button>
+<button onClick={() => setTab(tab === "a" ? "b" : "a")}>
 Switch
 </button>
 </div>
@@ -2384,7 +2391,7 @@ export const SwitchTabs = component$(() =>
 const tab = useSignal("a")
 return (
 <div>
-  {tab.value === "a" ? (<></>) : tab.value === "b" ? (<></>) : null}
+  {tab.value === "a" ? (<><p>Tab A</p></>) : tab.value === "b" ? (<><p>Tab B</p></>) : null}
   <button onClick={$(() => () => setTab(tab.value === "a" ? "b" : "a"))}>
     Switch
   </button>
@@ -2488,10 +2495,11 @@ export class ChildComponent
 {
 }
 
-import { Component, signal, computed, effect } from "@angular/core";
+import { Component, signal, computed, effect, viewChild, ElementRef } from "@angular/core";
 @Component({ standalone: true, template: \`<unknown />\` })
 export class ComponentRefComponent
 {
+childRef = viewChild<ElementRef>('childRef')
 }
 "
 `;
@@ -2505,7 +2513,7 @@ Child
 
 ---
 ---
-<unknown client:load />
+<unknown />
 "
 `;
 
@@ -2523,8 +2531,9 @@ return (
 import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
 export const ComponentRef = component$(() =>
 {
+const childRef = useSignal(null)
 return (
-<Child />
+<Child ref={childRef} />
 )
 });
 "

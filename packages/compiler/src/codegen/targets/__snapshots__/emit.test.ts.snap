@@ -38,7 +38,7 @@ exports[`Astro target > Counter component 1`] = `
 <p>
 {count}
 </p>
-<button>
+<button onClick={() => setCount(count + 1)}>
 +1
 </button>
 </div>

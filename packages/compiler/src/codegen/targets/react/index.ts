@@ -126,12 +126,11 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       });
     }
     case "Switch": {
-      let result = "null";
+      let result = node.fallback ? inlineNode(node.fallback, rules) : "null";
       for (let i = node.cases.length - 1; i >= 0; i--) {
         const c = node.cases[i];
         result = `${rewriteExpr(c.test.expr, rules)} ? ${inlineNode(c.body, rules)} : ${result}`;
       }
-      if (node.fallback) result = result.replace(/null$/, inlineNode(node.fallback, rules));
       return cExpr({ text: `{${result}}`, span });
     }
     case "SlotPlaceholder": {

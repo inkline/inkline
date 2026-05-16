@@ -86,9 +86,10 @@ export function deserializeModule(json: string): IRModule {
         true,
         ts.ScriptKind.TSX,
       );
-      const stmt = cacheSf.statements[0] as ts.ExpressionStatement;
-      const paren = stmt.expression as ts.ParenthesizedExpression;
-      rec.expr = paren.expression;
+      const stmt = cacheSf.statements[0];
+      if (stmt && ts.isExpressionStatement(stmt) && ts.isParenthesizedExpression(stmt.expression)) {
+        rec.expr = stmt.expression.expression;
+      }
     }
 
     for (const value of Object.values(rec)) {

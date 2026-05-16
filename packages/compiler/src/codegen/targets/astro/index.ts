@@ -2,7 +2,12 @@ import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../con
 import { astroConformance } from "./conformance.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import { cFile, cStmt, cRaw } from "../../code-ir/builders.ts";
-import { rewriteExpr, rewriteAttrName, emitExprAsTemplate } from "../../shared/expr-rewrite.ts";
+import {
+  rewriteExpr,
+  rewriteAttrName,
+  rewriteEventName,
+  emitExprAsTemplate,
+} from "../../shared/expr-rewrite.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -17,16 +22,19 @@ const REWRITES: RewriteRules = {
 function emitNode(node: IRNode, rules: RewriteRules): string {
   switch (node.kind) {
     case "Element": {
-      const attrs = node.attrs
-        .map((a) => {
-          const name = rewriteAttrName(a.name, rules);
-          if (a.value.kind === "Static") return `${name}="${a.value.value}"`;
-          return `${name}={${rewriteExpr(a.value.expr, rules)}}`;
-        })
-        .join(" ");
+      const parts: string[] = [];
+      for (const a of node.attrs) {
+        const name = rewriteAttrName(a.name, rules);
+        if (a.value.kind === "Static") parts.push(`${name}="${a.value.value}"`);
+        else parts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
+      }
+      for (const e of node.events) {
+        parts.push(`${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`);
+      }
+      const attrStr = parts.join(" ");
       const children = node.children.map((c) => emitNode(c, rules)).join("\n");
-      if (node.children.length === 0) return `<${node.tag}${attrs ? " " + attrs : ""} />`;
-      return `<${node.tag}${attrs ? " " + attrs : ""}>\n${children}\n</${node.tag}>`;
+      if (node.children.length === 0) return `<${node.tag}${attrStr ? " " + attrStr : ""} />`;
+      return `<${node.tag}${attrStr ? " " + attrStr : ""}>\n${children}\n</${node.tag}>`;
     }
     case "Text":
       return node.value;
@@ -35,16 +43,41 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
     case "If":
       return `{${node.branches.map((b) => `${rewriteExpr(b.test.expr, rules)} ? (${emitNode(b.body, rules)})`).join(" : ")} : ${node.fallback ? `(${emitNode(node.fallback, rules)})` : "null"}}`;
     case "For": {
+      const params = node.indexBinding
+        ? `(${node.itemBinding}, ${node.indexBinding})`
+        : `(${node.itemBinding})`;
       let body = emitNode(node.body, rules);
       if (body.startsWith("{") && body.endsWith("}")) body = body.slice(1, -1);
-      return `{${rewriteExpr(node.each.expr, rules)}.map((${node.itemBinding}) => (${body}))}`;
+      return `{${rewriteExpr(node.each.expr, rules)}.map(${params} => (${body}))}`;
     }
     case "Switch":
-      return `{${node.cases.map((c) => `${rewriteExpr(c.test.expr, rules)} ? (${emitNode(c.body, rules)})`).join(" : ")} : null}`;
+      return `{${node.cases.map((c) => `${rewriteExpr(c.test.expr, rules)} ? (${emitNode(c.body, rules)})`).join(" : ")} : ${node.fallback ? `(${emitNode(node.fallback, rules)})` : "null"}}`;
     case "Fragment":
       return node.children.map((c) => emitNode(c, rules)).join("\n");
-    case "ComponentInstance":
-      return `<${node.resolved?.name ?? "unknown"} client:load />`;
+    case "ComponentInstance": {
+      const tag = node.resolved?.name ?? "unknown";
+      const ciParts: string[] = [];
+      for (const a of node.attrs) {
+        const name = rewriteAttrName(a.name, rules);
+        if (a.value.kind === "Static") ciParts.push(`${name}="${a.value.value}"`);
+        else ciParts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
+      }
+      for (const e of node.events) {
+        ciParts.push(`${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`);
+      }
+      if (node.slots.length === 0) {
+        const ciAttrStr = ciParts.join(" ");
+        return `<${tag}${ciAttrStr ? " " + ciAttrStr : ""} />`;
+      }
+      const ciAttrStr = ciParts.join(" ");
+      const slotContent = node.slots
+        .map((s) => {
+          if (s.name === "default") return emitNode(s.body, rules);
+          return `<Fragment slot="${s.name}">\n${emitNode(s.body, rules)}\n</Fragment>`;
+        })
+        .join("\n");
+      return `<${tag}${ciAttrStr ? " " + ciAttrStr : ""}>\n${slotContent}\n</${tag}>`;
+    }
     case "SlotPlaceholder":
       return `<slot${node.name !== "default" ? ` name="${node.name}"` : ""} />`;
     default:
@@ -66,12 +99,20 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ? `const { ${component.props.map((p) => p.name).join(", ")} } = Astro.props as Props;`
       : "";
 
+  const resourceDecls = component.resources.map((res) =>
+    cStmt({
+      body: `const ${res.name} = await (${rewriteExpr(res.fetcher.expr, rules)})()`,
+      span: res.loc,
+    }),
+  );
+
   const file = cFile({
     flavor: "tsx",
     children: [
       cRaw({ text: "---" }),
       ...(propsInterface ? [cRaw({ text: propsInterface })] : []),
       ...(propsDestructure ? [cStmt({ body: propsDestructure })] : []),
+      ...resourceDecls,
       cRaw({ text: "---" }),
       cRaw({ text: "" }),
       cRaw({ text: template }),

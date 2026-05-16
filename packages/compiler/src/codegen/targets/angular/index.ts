@@ -31,7 +31,8 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
             `(${rewriteEventName(e.name, rules).replace(/^on/, "").toLowerCase()})="${rewriteExpr(e.handler.expr, rules)}"`,
         )
         .join(" ");
-      const attrStr = [attrs, events].filter(Boolean).join(" ");
+      const refs = node.refs.map((r) => `#${rewriteExpr(r.ref.expr, rules)}`).join(" ");
+      const attrStr = [attrs, events, refs].filter(Boolean).join(" ");
       const children = node.children.map((c) => emitNode(c, rules)).join("\n");
       if (node.children.length === 0) return `<${node.tag}${attrStr ? " " + attrStr : ""} />`;
       return `<${node.tag}${attrStr ? " " + attrStr : ""}>\n${children}\n</${node.tag}>`;
@@ -63,8 +64,31 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
     }
     case "Fragment":
       return node.children.map((c) => emitNode(c, rules)).join("\n");
-    case "ComponentInstance":
-      return `<${node.resolved?.name ?? "unknown"} />`;
+    case "ComponentInstance": {
+      const tag = node.resolved?.name ?? "unknown";
+      const ciParts: string[] = [];
+      for (const a of node.attrs) {
+        const name = rewriteAttrName(a.name, rules);
+        if (a.value.kind === "Static") ciParts.push(`${name}="${a.value.value}"`);
+        else ciParts.push(`[${name}]="${rewriteExpr(a.value.expr, rules)}"`);
+      }
+      for (const e of node.events) {
+        ciParts.push(
+          `(${rewriteEventName(e.name, rules).replace(/^on/, "").toLowerCase()})="${rewriteExpr(e.handler.expr, rules)}"`,
+        );
+      }
+      const ciAttrStr = ciParts.join(" ");
+      if (node.slots.length === 0) {
+        return `<${tag}${ciAttrStr ? " " + ciAttrStr : ""} />`;
+      }
+      const slotContent = node.slots
+        .map((s) => {
+          if (s.name === "default") return emitNode(s.body, rules);
+          return `<ng-container slot="${s.name}">\n${emitNode(s.body, rules)}\n</ng-container>`;
+        })
+        .join("\n");
+      return `<${tag}${ciAttrStr ? " " + ciAttrStr : ""}>\n${slotContent}\n</${tag}>`;
+    }
     case "SlotPlaceholder":
       return `<ng-content${node.name !== "default" ? ` select="[slot=${node.name}]"` : ""} />`;
     default:
@@ -95,13 +119,34 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cStmt({ body: `constructor() { effect(${rewriteExpr(e.body, rules)}) }`, span: e.loc }),
     );
   }
+  for (const res of component.resources) {
+    angularImports.push("resource");
+    body.push(
+      cStmt({
+        body: `${res.name} = resource({ loader: ${rewriteExpr(res.fetcher.expr, rules)} })`,
+        span: res.loc,
+      }),
+    );
+  }
+  for (const r of component.refs) {
+    angularImports.push("viewChild", "ElementRef");
+    body.push(
+      cStmt({
+        body: `${r.name} = viewChild<ElementRef>('${r.name}')`,
+        span: r.loc,
+      }),
+    );
+  }
 
   const template = emitNode(component.render, rules);
 
   const file = cFile({
     flavor: "ts",
     children: [
-      cImport({ module: "@angular/core", named: angularImports.map((i) => ({ imported: i })) }),
+      cImport({
+        module: "@angular/core",
+        named: [...new Set(angularImports)].map((i) => ({ imported: i })),
+      }),
       cRaw({ text: "" }),
       cRaw({
         text: `@Component({ standalone: true, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
