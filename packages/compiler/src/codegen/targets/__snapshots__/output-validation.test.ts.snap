@@ -149,8 +149,8 @@ exports[`full output snapshots > Button > astro 1`] = `
 interface Props { label: string; disabled?: boolean }
 const { label, disabled } = Astro.props as Props;
 ---
-<button disabled={props.disabled}>
-{props.label}
+<button disabled={disabled}>
+{label}
 </button>
 "
 `;
@@ -172,8 +172,8 @@ exports[`full output snapshots > Button > react 1`] = `
 "export function Button(props: { label: string; disabled?: boolean })
 {
 return (
-<button disabled={props.disabled}>
-  {props.label}
+<button disabled={disabled}>
+  {label}
 </button>
 )
 }
@@ -197,8 +197,8 @@ exports[`full output snapshots > Button > svelte 1`] = `
   interface Props { label: string; disabled?: boolean }
   let { label, disabled }: Props = $props()
 </script>
-<button disabled={props.disabled}>
-  {props.label}
+<button disabled={disabled}>
+  {label}
 </button>
 "
 `;
@@ -208,8 +208,8 @@ exports[`full output snapshots > Button > vue 1`] = `
   const props = defineProps<{ label: string; disabled?: boolean }>()
 </script>
 <template>
-<button :disabled="props.disabled">
-  {{ props.label }}
+<button :disabled="disabled">
+  {{ label }}
 </button>
 </template>
 "
@@ -2055,7 +2055,7 @@ interface Props { text: string }
 const { text } = Astro.props as Props;
 ---
 <span>
-{props.text}
+{text}
 </span>
 "
 `;
@@ -2078,7 +2078,7 @@ exports[`full output snapshots > MultipleComponentsPerFile > react 1`] = `
 {
 return (
 <span>
-  {props.text}
+  {text}
 </span>
 )
 }
@@ -2103,7 +2103,7 @@ exports[`full output snapshots > MultipleComponentsPerFile > svelte 1`] = `
   let { text }: Props = $props()
 </script>
 <span>
-  {props.text}
+  {text}
 </span>
 "
 `;
@@ -2114,7 +2114,7 @@ exports[`full output snapshots > MultipleComponentsPerFile > vue 1`] = `
 </script>
 <template>
 <span>
-  {{ props.text }}
+  {{ text }}
 </span>
 </template>
 "
@@ -2136,8 +2136,8 @@ exports[`full output snapshots > PropDefaults > astro 1`] = `
 interface Props { color?: unknown; size: unknown }
 const { color, size } = Astro.props as Props;
 ---
-<div style={\`color: \${props.color}\`}>
-{props.size}
+<div style={\`color: \${color}\`}>
+{size}
 </div>
 "
 `;
@@ -2159,8 +2159,8 @@ exports[`full output snapshots > PropDefaults > react 1`] = `
 "export function PropDefaults(props: { color?; size })
 {
 return (
-<div style={\`color: \${props.color}\`}>
-  {props.size}
+<div style={\`color: \${color}\`}>
+  {size}
 </div>
 )
 }
@@ -2184,8 +2184,8 @@ exports[`full output snapshots > PropDefaults > svelte 1`] = `
   interface Props { color?; size }
   let { color, size }: Props = $props()
 </script>
-<div style={\`color: \${props.color}\`}>
-  {props.size}
+<div style={\`color: \${color}\`}>
+  {size}
 </div>
 "
 `;
@@ -2195,8 +2195,8 @@ exports[`full output snapshots > PropDefaults > vue 1`] = `
   const props = defineProps<{ color?; size }>()
 </script>
 <template>
-<div :style="\`color: \${props.color}\`">
-  {{ props.size }}
+<div :style="\`color: \${color}\`">
+  {{ size }}
 </div>
 </template>
 "

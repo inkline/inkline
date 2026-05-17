@@ -41,6 +41,14 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
   }
 
   if (ts.isPropertyAccessExpression(expr)) {
+    if (ts.isIdentifier(expr.expression)) {
+      if (expr.expression.text === "props" && rules.members?.props?.strip) {
+        return expr.name.text;
+      }
+      if (expr.expression.text === "slots" && rules.members?.slots?.strip) {
+        return rules.members.slots.rename?.[expr.name.text] ?? expr.name.text;
+      }
+    }
     if (expr.name.text === "current") {
       const base = walk(expr.expression, rules);
       switch (rules.refAccess.kind) {
