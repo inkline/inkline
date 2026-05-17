@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "concurrently -n react,vue,solid,astro,app \"pnpm run dev:react\" \"pnpm run dev:vue\" \"pnpm run dev:solid\" \"pnpm run dev:astro\" \"pnpm run storybook\"",
+    "dev": "concurrently -n react,vue,solid,astro \"pnpm run dev:react\" \"pnpm run dev:vue\" \"pnpm run dev:solid\" \"pnpm run dev:astro\"",
     "dev:react": "BROWSER=none pnpm --filter @inkline/react storybook",
     "dev:vue": "BROWSER=none pnpm --filter @inkline/vue storybook",
     "dev:svelte": "BROWSER=none pnpm --filter @inkline/svelte storybook",
