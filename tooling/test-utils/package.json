@@ -11,7 +11,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/inkline/inkline.git",
-    "directory": "core/test-utils"
+    "directory": "tooling/test-utils"
   },
   "files": [
     "dist"

@@ -107,7 +107,7 @@ jobs:
           path: |
             core/compiler/dist
             core/compiler/bin
-            core/test-utils/dist
+            tooling/test-utils/dist
             ui/*/generated
 
   ci-success:
