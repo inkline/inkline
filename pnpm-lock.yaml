@@ -344,6 +344,9 @@ importers:
       '@inkline/compiler':
         specifier: workspace:*
         version: link:../../packages/compiler
+      '@inkline/storybook':
+        specifier: workspace:*
+        version: link:../../packages/storybook
       '@inkline/test-utils':
         specifier: workspace:*
         version: link:../../packages/test-utils

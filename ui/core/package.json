@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@inkline/compiler": "workspace:*",
+    "@inkline/storybook": "workspace:*",
     "@inkline/test-utils": "workspace:*",
     "jsdom": "catalog:",
     "vite-plus": "catalog:",
