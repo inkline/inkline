@@ -126,9 +126,15 @@ importers:
       '@changesets/cli':
         specifier: ^2.29.4
         version: 2.31.0(@types/node@25.6.0)
+      concurrently:
+        specifier: 'catalog:'
+        version: 9.2.1
       vite-plus:
         specifier: 'catalog:'
         version: 0.1.21(@tsdown/css@0.22.0)(@types/node@25.6.0)(@vitest/coverage-v8@4.1.5)(esbuild@0.28.0)(happy-dom@15.11.7)(jiti@2.7.0)(jsdom@26.1.0)(less@4.4.2)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.7.0)(less@4.4.2)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(yaml@2.8.4))(yaml@2.8.4)
+      wait-on:
+        specifier: ^9
+        version: 9.0.10
 
   apps/storybook:
     devDependencies:
@@ -141,15 +147,9 @@ importers:
       '@storybook/react-vite':
         specifier: 'catalog:'
         version: 10.4.0(@types/react@19.2.14)(esbuild@0.28.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(rollup@4.60.3)(storybook@10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@2.8.8)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(vite-plus@0.1.21(@tsdown/css@0.22.0)(@types/node@25.6.0)(@vitest/coverage-v8@4.1.5)(esbuild@0.28.0)(happy-dom@15.11.7)(jiti@2.7.0)(jsdom@26.1.0)(less@4.4.2)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.7.0)(less@4.4.2)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(yaml@2.8.4))(yaml@2.8.4)))(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.7.0)(less@4.4.2)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(yaml@2.8.4))(webpack@5.106.2(esbuild@0.28.0)(postcss@8.5.14))
-      concurrently:
-        specifier: 'catalog:'
-        version: 9.2.1
       storybook:
         specifier: 'catalog:'
         version: 10.4.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.1)(@types/react@19.2.14)(prettier@2.8.8)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(vite-plus@0.1.21(@tsdown/css@0.22.0)(@types/node@25.6.0)(@vitest/coverage-v8@4.1.5)(esbuild@0.28.0)(happy-dom@15.11.7)(jiti@2.7.0)(jsdom@26.1.0)(less@4.4.2)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.7.0)(less@4.4.2)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(yaml@2.8.4))(yaml@2.8.4))
-      wait-on:
-        specifier: ^9
-        version: 9.0.10
 
   apps/website:
     devDependencies:
