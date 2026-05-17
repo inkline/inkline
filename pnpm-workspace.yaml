@@ -1,6 +1,6 @@
 packages:
   - apps/*
-  - packages/*
+  - core/*
   - ui/*
   - tools/*
 

@@ -105,9 +105,9 @@ jobs:
           name: build-artifacts
           retention-days: 1
           path: |
-            packages/compiler/dist
-            packages/compiler/bin
-            packages/test-utils/dist
+            core/compiler/dist
+            core/compiler/bin
+            core/test-utils/dist
             ui/*/generated
 
   ci-success:

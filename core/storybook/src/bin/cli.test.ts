@@ -22,7 +22,7 @@ function makeDeps(overrides: Partial<CliDeps> = {}): {
       generate: vi.fn(async () => result),
       watch: vi.fn() as unknown as typeof nodeWatch,
       io: { log, error },
-      cwd: "/repo/packages/storybook",
+      cwd: "/repo/core/storybook",
       ...overrides,
     },
   };
@@ -49,7 +49,7 @@ describe("parseArgs", () => {
 
 describe("resolveOptions", () => {
   it("falls back to the conventional monorepo paths", () => {
-    expect(resolveOptions({ watch: false }, "/repo/packages/storybook")).toEqual({
+    expect(resolveOptions({ watch: false }, "/repo/core/storybook")).toEqual({
       coreStoriesDir: "/repo/ui/core/stories",
       uiDir: "/repo/ui",
     });
@@ -121,8 +121,8 @@ describe("runCli", () => {
     const { deps, log } = makeDeps();
     expect(await runCli(["generate", "--core-dir", "d", "--ui-dir", "u"], deps)).toBe(0);
     expect(deps.generate).toHaveBeenCalledWith({
-      coreStoriesDir: "/repo/packages/storybook/d",
-      uiDir: "/repo/packages/storybook/u",
+      coreStoriesDir: "/repo/core/storybook/d",
+      uiDir: "/repo/core/storybook/u",
     });
     expect(log).toHaveBeenCalledWith("Generated 1 story file(s) for 1 component(s).");
   });

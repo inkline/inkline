@@ -12,7 +12,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/inkline/inkline.git",
-    "directory": "packages/storybook"
+    "directory": "core/storybook"
   },
   "bin": {
     "inkline-storybook": "./bin/inkline-storybook.mjs"
