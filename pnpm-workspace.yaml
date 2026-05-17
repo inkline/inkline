@@ -5,6 +5,7 @@ packages:
   - tools/*
 
 catalog:
+  concurrently: ^9
   "@analogjs/vite-plugin-angular": ^2.5.1
   "@angular-eslint/eslint-plugin": ^21.4.0
   "@angular-eslint/template-parser": ^21.4.0
