@@ -9,6 +9,7 @@
     "test": "vp run -r test",
     "build": "vp run -r build",
     "dev": "vp run website#dev",
+    "dev:storybook": "pnpm --filter @inkline/storybook-app dev",
     "prepare": "vp config",
     "ci:version": "changeset version",
     "ci:prepublish": "pnpm run build",
