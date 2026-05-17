@@ -47,7 +47,7 @@ describe("createStorybookConfig", () => {
     expect(out.resolve?.alias).toEqual({
       "@inkline/react": "/repo/ui/react/generated/index.ts",
     });
-    expect(out.server).toEqual({ cors: true });
+    expect(out.server).toEqual({ cors: { origin: true, credentials: true } });
   });
 
   it("does NOT alias to source or set CORS in production builds", async () => {

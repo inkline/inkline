@@ -66,7 +66,10 @@ export function createStorybookConfig(options: StorybookConfigOptions): Storyboo
           ...next.resolve,
           alias: { ...next.resolve?.alias, [componentPackage]: sourceEntry },
         };
-        next.server = { ...((next.server ?? {}) as Record<string, unknown>), cors: true };
+        next.server = {
+          ...((next.server ?? {}) as Record<string, unknown>),
+          cors: { origin: true, credentials: true },
+        };
       }
 
       if (vitePlugins.length > 0) {
