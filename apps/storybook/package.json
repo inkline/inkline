@@ -4,7 +4,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "concurrently -n react,vue,svelte,solid,angular,astro,app \"pnpm run dev:react\" \"pnpm run dev:vue\" \"pnpm run dev:svelte\" \"pnpm run dev:solid\" \"pnpm run dev:angular\" \"pnpm run dev:astro\" \"wait-on tcp:6006 tcp:6007 tcp:6009 tcp:6012 && pnpm run storybook\"",
+    "dev": "concurrently -n frameworks,app \"pnpm run dev:frameworks\" \"pnpm run dev:app\"",
+    "dev:frameworks": "concurrently -n react,vue,svelte,solid,angular,astro \"pnpm run dev:react\" \"pnpm run dev:vue\" \"pnpm run dev:svelte\" \"pnpm run dev:solid\" \"pnpm run dev:angular\" \"pnpm run dev:astro\"",
+    "dev:app": "wait-on tcp:6006 tcp:6007 tcp:6009 tcp:6012 && pnpm run storybook",
     "dev:react": "BROWSER=none pnpm --filter @inkline/react storybook",
     "dev:vue": "BROWSER=none pnpm --filter @inkline/vue storybook",
     "dev:svelte": "BROWSER=none pnpm --filter @inkline/svelte storybook",
