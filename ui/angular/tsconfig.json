@@ -3,5 +3,5 @@
   "compilerOptions": {
     "experimentalDecorators": true
   },
-  "include": ["src", "generated"]
+  "include": ["src", "generated", "stories"]
 }

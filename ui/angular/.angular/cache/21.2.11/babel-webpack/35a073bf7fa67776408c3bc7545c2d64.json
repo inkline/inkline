@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { mergeAll } from './mergeAll';\nexport function concatAll() {\n  return mergeAll(1);\n}\n//# sourceMappingURL=concatAll.js.map",
+  "map": {
+    "version": 3,
+    "names": ["mergeAll", "concatAll"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/concatAll.js"
+    ],
+    "sourcesContent": [
+      "import { mergeAll } from './mergeAll';\nexport function concatAll() {\n    return mergeAll(1);\n}\n//# sourceMappingURL=concatAll.js.map"
+    ],
+    "mappings": "AAAA,SAASA,QAAQ,QAAQ,YAAY;AACrC,OAAO,SAASC,SAASA,CAAA,EAAG;EACxB,OAAOD,QAAQ,CAAC,CAAC,CAAC;AACtB;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

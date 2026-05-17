@@ -1,0 +1,41 @@
+{
+  "ast": null,
+  "code": "import { map } from './map';\nimport { innerFrom } from '../observable/innerFrom';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function exhaustMap(project, resultSelector) {\n  if (resultSelector) {\n    return function (source) {\n      return source.pipe(exhaustMap(function (a, i) {\n        return innerFrom(project(a, i)).pipe(map(function (b, ii) {\n          return resultSelector(a, b, i, ii);\n        }));\n      }));\n    };\n  }\n  return operate(function (source, subscriber) {\n    var index = 0;\n    var innerSub = null;\n    var isComplete = false;\n    source.subscribe(createOperatorSubscriber(subscriber, function (outerValue) {\n      if (!innerSub) {\n        innerSub = createOperatorSubscriber(subscriber, undefined, function () {\n          innerSub = null;\n          isComplete && subscriber.complete();\n        });\n        innerFrom(project(outerValue, index++)).subscribe(innerSub);\n      }\n    }, function () {\n      isComplete = true;\n      !innerSub && subscriber.complete();\n    }));\n  });\n}\n//# sourceMappingURL=exhaustMap.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "map",
+      "innerFrom",
+      "operate",
+      "createOperatorSubscriber",
+      "exhaustMap",
+      "project",
+      "resultSelector",
+      "source",
+      "pipe",
+      "a",
+      "i",
+      "b",
+      "ii",
+      "subscriber",
+      "index",
+      "innerSub",
+      "isComplete",
+      "subscribe",
+      "outerValue",
+      "undefined",
+      "complete"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/exhaustMap.js"
+    ],
+    "sourcesContent": [
+      "import { map } from './map';\nimport { innerFrom } from '../observable/innerFrom';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function exhaustMap(project, resultSelector) {\n    if (resultSelector) {\n        return function (source) {\n            return source.pipe(exhaustMap(function (a, i) { return innerFrom(project(a, i)).pipe(map(function (b, ii) { return resultSelector(a, b, i, ii); })); }));\n        };\n    }\n    return operate(function (source, subscriber) {\n        var index = 0;\n        var innerSub = null;\n        var isComplete = false;\n        source.subscribe(createOperatorSubscriber(subscriber, function (outerValue) {\n            if (!innerSub) {\n                innerSub = createOperatorSubscriber(subscriber, undefined, function () {\n                    innerSub = null;\n                    isComplete && subscriber.complete();\n                });\n                innerFrom(project(outerValue, index++)).subscribe(innerSub);\n            }\n        }, function () {\n            isComplete = true;\n            !innerSub && subscriber.complete();\n        }));\n    });\n}\n//# sourceMappingURL=exhaustMap.js.map"
+    ],
+    "mappings": "AAAA,SAASA,GAAG,QAAQ,OAAO;AAC3B,SAASC,SAAS,QAAQ,yBAAyB;AACnD,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,OAAO,SAASC,UAAUA,CAACC,OAAO,EAAEC,cAAc,EAAE;EAChD,IAAIA,cAAc,EAAE;IAChB,OAAO,UAAUC,MAAM,EAAE;MACrB,OAAOA,MAAM,CAACC,IAAI,CAACJ,UAAU,CAAC,UAAUK,CAAC,EAAEC,CAAC,EAAE;QAAE,OAAOT,SAAS,CAACI,OAAO,CAACI,CAAC,EAAEC,CAAC,CAAC,CAAC,CAACF,IAAI,CAACR,GAAG,CAAC,UAAUW,CAAC,EAAEC,EAAE,EAAE;UAAE,OAAON,cAAc,CAACG,CAAC,EAAEE,CAAC,EAAED,CAAC,EAAEE,EAAE,CAAC;QAAE,CAAC,CAAC,CAAC;MAAE,CAAC,CAAC,CAAC;IAC5J,CAAC;EACL;EACA,OAAOV,OAAO,CAAC,UAAUK,MAAM,EAAEM,UAAU,EAAE;IACzC,IAAIC,KAAK,GAAG,CAAC;IACb,IAAIC,QAAQ,GAAG,IAAI;IACnB,IAAIC,UAAU,GAAG,KAAK;IACtBT,MAAM,CAACU,SAAS,CAACd,wBAAwB,CAACU,UAAU,EAAE,UAAUK,UAAU,EAAE;MACxE,IAAI,CAACH,QAAQ,EAAE;QACXA,QAAQ,GAAGZ,wBAAwB,CAACU,UAAU,EAAEM,SAAS,EAAE,YAAY;UACnEJ,QAAQ,GAAG,IAAI;UACfC,UAAU,IAAIH,UAAU,CAACO,QAAQ,CAAC,CAAC;QACvC,CAAC,CAAC;QACFnB,SAAS,CAACI,OAAO,CAACa,UAAU,EAAEJ,KAAK,EAAE,CAAC,CAAC,CAACG,SAAS,CAACF,QAAQ,CAAC;MAC/D;IACJ,CAAC,EAAE,YAAY;MACXC,UAAU,GAAG,IAAI;MACjB,CAACD,QAAQ,IAAIF,UAAU,CAACO,QAAQ,CAAC,CAAC;IACtC,CAAC,CAAC,CAAC;EACP,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

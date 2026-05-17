@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\nconst Range = require('../classes/range');\nconst intersects = (r1, r2, options) => {\n  r1 = new Range(r1, options);\n  r2 = new Range(r2, options);\n  return r1.intersects(r2, options);\n};\nmodule.exports = intersects;",
+  "map": {
+    "version": 3,
+    "names": ["Range", "require", "intersects", "r1", "r2", "options", "module", "exports"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/semver@7.7.4/node_modules/semver/ranges/intersects.js"
+    ],
+    "sourcesContent": [
+      "'use strict'\n\nconst Range = require('../classes/range')\nconst intersects = (r1, r2, options) => {\n  r1 = new Range(r1, options)\n  r2 = new Range(r2, options)\n  return r1.intersects(r2, options)\n}\nmodule.exports = intersects\n"
+    ],
+    "mappings": "AAAA,YAAY;;AAEZ,MAAMA,KAAK,GAAGC,OAAO,CAAC,kBAAkB,CAAC;AACzC,MAAMC,UAAU,GAAGA,CAACC,EAAE,EAAEC,EAAE,EAAEC,OAAO,KAAK;EACtCF,EAAE,GAAG,IAAIH,KAAK,CAACG,EAAE,EAAEE,OAAO,CAAC;EAC3BD,EAAE,GAAG,IAAIJ,KAAK,CAACI,EAAE,EAAEC,OAAO,CAAC;EAC3B,OAAOF,EAAE,CAACD,UAAU,CAACE,EAAE,EAAEC,OAAO,CAAC;AACnC,CAAC;AACDC,MAAM,CAACC,OAAO,GAAGL,UAAU",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

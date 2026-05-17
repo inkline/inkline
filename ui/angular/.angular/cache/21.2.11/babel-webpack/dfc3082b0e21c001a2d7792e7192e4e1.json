@@ -1,0 +1,44 @@
+{
+  "ast": null,
+  "code": "import { __extends } from \"tslib\";\nimport { Subject } from './Subject';\nvar BehaviorSubject = function (_super) {\n  __extends(BehaviorSubject, _super);\n  function BehaviorSubject(_value) {\n    var _this = _super.call(this) || this;\n    _this._value = _value;\n    return _this;\n  }\n  Object.defineProperty(BehaviorSubject.prototype, \"value\", {\n    get: function () {\n      return this.getValue();\n    },\n    enumerable: false,\n    configurable: true\n  });\n  BehaviorSubject.prototype._subscribe = function (subscriber) {\n    var subscription = _super.prototype._subscribe.call(this, subscriber);\n    !subscription.closed && subscriber.next(this._value);\n    return subscription;\n  };\n  BehaviorSubject.prototype.getValue = function () {\n    var _a = this,\n      hasError = _a.hasError,\n      thrownError = _a.thrownError,\n      _value = _a._value;\n    if (hasError) {\n      throw thrownError;\n    }\n    this._throwIfClosed();\n    return _value;\n  };\n  BehaviorSubject.prototype.next = function (value) {\n    _super.prototype.next.call(this, this._value = value);\n  };\n  return BehaviorSubject;\n}(Subject);\nexport { BehaviorSubject };\n//# sourceMappingURL=BehaviorSubject.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "__extends",
+      "Subject",
+      "BehaviorSubject",
+      "_super",
+      "_value",
+      "_this",
+      "call",
+      "Object",
+      "defineProperty",
+      "prototype",
+      "get",
+      "getValue",
+      "enumerable",
+      "configurable",
+      "_subscribe",
+      "subscriber",
+      "subscription",
+      "closed",
+      "next",
+      "_a",
+      "hasError",
+      "thrownError",
+      "_throwIfClosed",
+      "value"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/BehaviorSubject.js"
+    ],
+    "sourcesContent": [
+      "import { __extends } from \"tslib\";\nimport { Subject } from './Subject';\nvar BehaviorSubject = (function (_super) {\n    __extends(BehaviorSubject, _super);\n    function BehaviorSubject(_value) {\n        var _this = _super.call(this) || this;\n        _this._value = _value;\n        return _this;\n    }\n    Object.defineProperty(BehaviorSubject.prototype, \"value\", {\n        get: function () {\n            return this.getValue();\n        },\n        enumerable: false,\n        configurable: true\n    });\n    BehaviorSubject.prototype._subscribe = function (subscriber) {\n        var subscription = _super.prototype._subscribe.call(this, subscriber);\n        !subscription.closed && subscriber.next(this._value);\n        return subscription;\n    };\n    BehaviorSubject.prototype.getValue = function () {\n        var _a = this, hasError = _a.hasError, thrownError = _a.thrownError, _value = _a._value;\n        if (hasError) {\n            throw thrownError;\n        }\n        this._throwIfClosed();\n        return _value;\n    };\n    BehaviorSubject.prototype.next = function (value) {\n        _super.prototype.next.call(this, (this._value = value));\n    };\n    return BehaviorSubject;\n}(Subject));\nexport { BehaviorSubject };\n//# sourceMappingURL=BehaviorSubject.js.map"
+    ],
+    "mappings": "AAAA,SAASA,SAAS,QAAQ,OAAO;AACjC,SAASC,OAAO,QAAQ,WAAW;AACnC,IAAIC,eAAe,GAAI,UAAUC,MAAM,EAAE;EACrCH,SAAS,CAACE,eAAe,EAAEC,MAAM,CAAC;EAClC,SAASD,eAAeA,CAACE,MAAM,EAAE;IAC7B,IAAIC,KAAK,GAAGF,MAAM,CAACG,IAAI,CAAC,IAAI,CAAC,IAAI,IAAI;IACrCD,KAAK,CAACD,MAAM,GAAGA,MAAM;IACrB,OAAOC,KAAK;EAChB;EACAE,MAAM,CAACC,cAAc,CAACN,eAAe,CAACO,SAAS,EAAE,OAAO,EAAE;IACtDC,GAAG,EAAE,SAAAA,CAAA,EAAY;MACb,OAAO,IAAI,CAACC,QAAQ,CAAC,CAAC;IAC1B,CAAC;IACDC,UAAU,EAAE,KAAK;IACjBC,YAAY,EAAE;EAClB,CAAC,CAAC;EACFX,eAAe,CAACO,SAAS,CAACK,UAAU,GAAG,UAAUC,UAAU,EAAE;IACzD,IAAIC,YAAY,GAAGb,MAAM,CAACM,SAAS,CAACK,UAAU,CAACR,IAAI,CAAC,IAAI,EAAES,UAAU,CAAC;IACrE,CAACC,YAAY,CAACC,MAAM,IAAIF,UAAU,CAACG,IAAI,CAAC,IAAI,CAACd,MAAM,CAAC;IACpD,OAAOY,YAAY;EACvB,CAAC;EACDd,eAAe,CAACO,SAAS,CAACE,QAAQ,GAAG,YAAY;IAC7C,IAAIQ,EAAE,GAAG,IAAI;MAAEC,QAAQ,GAAGD,EAAE,CAACC,QAAQ;MAAEC,WAAW,GAAGF,EAAE,CAACE,WAAW;MAAEjB,MAAM,GAAGe,EAAE,CAACf,MAAM;IACvF,IAAIgB,QAAQ,EAAE;MACV,MAAMC,WAAW;IACrB;IACA,IAAI,CAACC,cAAc,CAAC,CAAC;IACrB,OAAOlB,MAAM;EACjB,CAAC;EACDF,eAAe,CAACO,SAAS,CAACS,IAAI,GAAG,UAAUK,KAAK,EAAE;IAC9CpB,MAAM,CAACM,SAAS,CAACS,IAAI,CAACZ,IAAI,CAAC,IAAI,EAAG,IAAI,CAACF,MAAM,GAAGmB,KAAM,CAAC;EAC3D,CAAC;EACD,OAAOrB,eAAe;AAC1B,CAAC,CAACD,OAAO,CAAE;AACX,SAASC,eAAe;AACxB",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

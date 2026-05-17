@@ -1,0 +1,50 @@
+{
+  "ast": null,
+  "code": "import { __read, __spreadArray } from \"tslib\";\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { innerFrom } from '../observable/innerFrom';\nimport { identity } from '../util/identity';\nimport { noop } from '../util/noop';\nimport { popResultSelector } from '../util/args';\nexport function withLatestFrom() {\n  var inputs = [];\n  for (var _i = 0; _i < arguments.length; _i++) {\n    inputs[_i] = arguments[_i];\n  }\n  var project = popResultSelector(inputs);\n  return operate(function (source, subscriber) {\n    var len = inputs.length;\n    var otherValues = new Array(len);\n    var hasValue = inputs.map(function () {\n      return false;\n    });\n    var ready = false;\n    var _loop_1 = function (i) {\n      innerFrom(inputs[i]).subscribe(createOperatorSubscriber(subscriber, function (value) {\n        otherValues[i] = value;\n        if (!ready && !hasValue[i]) {\n          hasValue[i] = true;\n          (ready = hasValue.every(identity)) && (hasValue = null);\n        }\n      }, noop));\n    };\n    for (var i = 0; i < len; i++) {\n      _loop_1(i);\n    }\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      if (ready) {\n        var values = __spreadArray([value], __read(otherValues));\n        subscriber.next(project ? project.apply(void 0, __spreadArray([], __read(values))) : values);\n      }\n    }));\n  });\n}\n//# sourceMappingURL=withLatestFrom.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "__read",
+      "__spreadArray",
+      "operate",
+      "createOperatorSubscriber",
+      "innerFrom",
+      "identity",
+      "noop",
+      "popResultSelector",
+      "withLatestFrom",
+      "inputs",
+      "_i",
+      "arguments",
+      "length",
+      "project",
+      "source",
+      "subscriber",
+      "len",
+      "otherValues",
+      "Array",
+      "hasValue",
+      "map",
+      "ready",
+      "_loop_1",
+      "i",
+      "subscribe",
+      "value",
+      "every",
+      "values",
+      "next",
+      "apply"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/withLatestFrom.js"
+    ],
+    "sourcesContent": [
+      "import { __read, __spreadArray } from \"tslib\";\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { innerFrom } from '../observable/innerFrom';\nimport { identity } from '../util/identity';\nimport { noop } from '../util/noop';\nimport { popResultSelector } from '../util/args';\nexport function withLatestFrom() {\n    var inputs = [];\n    for (var _i = 0; _i < arguments.length; _i++) {\n        inputs[_i] = arguments[_i];\n    }\n    var project = popResultSelector(inputs);\n    return operate(function (source, subscriber) {\n        var len = inputs.length;\n        var otherValues = new Array(len);\n        var hasValue = inputs.map(function () { return false; });\n        var ready = false;\n        var _loop_1 = function (i) {\n            innerFrom(inputs[i]).subscribe(createOperatorSubscriber(subscriber, function (value) {\n                otherValues[i] = value;\n                if (!ready && !hasValue[i]) {\n                    hasValue[i] = true;\n                    (ready = hasValue.every(identity)) && (hasValue = null);\n                }\n            }, noop));\n        };\n        for (var i = 0; i < len; i++) {\n            _loop_1(i);\n        }\n        source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n            if (ready) {\n                var values = __spreadArray([value], __read(otherValues));\n                subscriber.next(project ? project.apply(void 0, __spreadArray([], __read(values))) : values);\n            }\n        }));\n    });\n}\n//# sourceMappingURL=withLatestFrom.js.map"
+    ],
+    "mappings": "AAAA,SAASA,MAAM,EAAEC,aAAa,QAAQ,OAAO;AAC7C,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,SAASC,SAAS,QAAQ,yBAAyB;AACnD,SAASC,QAAQ,QAAQ,kBAAkB;AAC3C,SAASC,IAAI,QAAQ,cAAc;AACnC,SAASC,iBAAiB,QAAQ,cAAc;AAChD,OAAO,SAASC,cAAcA,CAAA,EAAG;EAC7B,IAAIC,MAAM,GAAG,EAAE;EACf,KAAK,IAAIC,EAAE,GAAG,CAAC,EAAEA,EAAE,GAAGC,SAAS,CAACC,MAAM,EAAEF,EAAE,EAAE,EAAE;IAC1CD,MAAM,CAACC,EAAE,CAAC,GAAGC,SAAS,CAACD,EAAE,CAAC;EAC9B;EACA,IAAIG,OAAO,GAAGN,iBAAiB,CAACE,MAAM,CAAC;EACvC,OAAOP,OAAO,CAAC,UAAUY,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,GAAG,GAAGP,MAAM,CAACG,MAAM;IACvB,IAAIK,WAAW,GAAG,IAAIC,KAAK,CAACF,GAAG,CAAC;IAChC,IAAIG,QAAQ,GAAGV,MAAM,CAACW,GAAG,CAAC,YAAY;MAAE,OAAO,KAAK;IAAE,CAAC,CAAC;IACxD,IAAIC,KAAK,GAAG,KAAK;IACjB,IAAIC,OAAO,GAAG,SAAAA,CAAUC,CAAC,EAAE;MACvBnB,SAAS,CAACK,MAAM,CAACc,CAAC,CAAC,CAAC,CAACC,SAAS,CAACrB,wBAAwB,CAACY,UAAU,EAAE,UAAUU,KAAK,EAAE;QACjFR,WAAW,CAACM,CAAC,CAAC,GAAGE,KAAK;QACtB,IAAI,CAACJ,KAAK,IAAI,CAACF,QAAQ,CAACI,CAAC,CAAC,EAAE;UACxBJ,QAAQ,CAACI,CAAC,CAAC,GAAG,IAAI;UAClB,CAACF,KAAK,GAAGF,QAAQ,CAACO,KAAK,CAACrB,QAAQ,CAAC,MAAMc,QAAQ,GAAG,IAAI,CAAC;QAC3D;MACJ,CAAC,EAAEb,IAAI,CAAC,CAAC;IACb,CAAC;IACD,KAAK,IAAIiB,CAAC,GAAG,CAAC,EAAEA,CAAC,GAAGP,GAAG,EAAEO,CAAC,EAAE,EAAE;MAC1BD,OAAO,CAACC,CAAC,CAAC;IACd;IACAT,MAAM,CAACU,SAAS,CAACrB,wBAAwB,CAACY,UAAU,EAAE,UAAUU,KAAK,EAAE;MACnE,IAAIJ,KAAK,EAAE;QACP,IAAIM,MAAM,GAAG1B,aAAa,CAAC,CAACwB,KAAK,CAAC,EAAEzB,MAAM,CAACiB,WAAW,CAAC,CAAC;QACxDF,UAAU,CAACa,IAAI,CAACf,OAAO,GAAGA,OAAO,CAACgB,KAAK,CAAC,KAAK,CAAC,EAAE5B,aAAa,CAAC,EAAE,EAAED,MAAM,CAAC2B,MAAM,CAAC,CAAC,CAAC,GAAGA,MAAM,CAAC;MAChG;IACJ,CAAC,CAAC,CAAC;EACP,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,36 @@
+{
+  "ast": null,
+  "code": "var isArray = Array.isArray;\nvar getPrototypeOf = Object.getPrototypeOf,\n  objectProto = Object.prototype,\n  getKeys = Object.keys;\nexport function argsArgArrayOrObject(args) {\n  if (args.length === 1) {\n    var first_1 = args[0];\n    if (isArray(first_1)) {\n      return {\n        args: first_1,\n        keys: null\n      };\n    }\n    if (isPOJO(first_1)) {\n      var keys = getKeys(first_1);\n      return {\n        args: keys.map(function (key) {\n          return first_1[key];\n        }),\n        keys: keys\n      };\n    }\n  }\n  return {\n    args: args,\n    keys: null\n  };\n}\nfunction isPOJO(obj) {\n  return obj && typeof obj === 'object' && getPrototypeOf(obj) === objectProto;\n}\n//# sourceMappingURL=argsArgArrayOrObject.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "isArray",
+      "Array",
+      "getPrototypeOf",
+      "Object",
+      "objectProto",
+      "prototype",
+      "getKeys",
+      "keys",
+      "argsArgArrayOrObject",
+      "args",
+      "length",
+      "first_1",
+      "isPOJO",
+      "map",
+      "key",
+      "obj"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/util/argsArgArrayOrObject.js"
+    ],
+    "sourcesContent": [
+      "var isArray = Array.isArray;\nvar getPrototypeOf = Object.getPrototypeOf, objectProto = Object.prototype, getKeys = Object.keys;\nexport function argsArgArrayOrObject(args) {\n    if (args.length === 1) {\n        var first_1 = args[0];\n        if (isArray(first_1)) {\n            return { args: first_1, keys: null };\n        }\n        if (isPOJO(first_1)) {\n            var keys = getKeys(first_1);\n            return {\n                args: keys.map(function (key) { return first_1[key]; }),\n                keys: keys,\n            };\n        }\n    }\n    return { args: args, keys: null };\n}\nfunction isPOJO(obj) {\n    return obj && typeof obj === 'object' && getPrototypeOf(obj) === objectProto;\n}\n//# sourceMappingURL=argsArgArrayOrObject.js.map"
+    ],
+    "mappings": "AAAA,IAAIA,OAAO,GAAGC,KAAK,CAACD,OAAO;AAC3B,IAAIE,cAAc,GAAGC,MAAM,CAACD,cAAc;EAAEE,WAAW,GAAGD,MAAM,CAACE,SAAS;EAAEC,OAAO,GAAGH,MAAM,CAACI,IAAI;AACjG,OAAO,SAASC,oBAAoBA,CAACC,IAAI,EAAE;EACvC,IAAIA,IAAI,CAACC,MAAM,KAAK,CAAC,EAAE;IACnB,IAAIC,OAAO,GAAGF,IAAI,CAAC,CAAC,CAAC;IACrB,IAAIT,OAAO,CAACW,OAAO,CAAC,EAAE;MAClB,OAAO;QAAEF,IAAI,EAAEE,OAAO;QAAEJ,IAAI,EAAE;MAAK,CAAC;IACxC;IACA,IAAIK,MAAM,CAACD,OAAO,CAAC,EAAE;MACjB,IAAIJ,IAAI,GAAGD,OAAO,CAACK,OAAO,CAAC;MAC3B,OAAO;QACHF,IAAI,EAAEF,IAAI,CAACM,GAAG,CAAC,UAAUC,GAAG,EAAE;UAAE,OAAOH,OAAO,CAACG,GAAG,CAAC;QAAE,CAAC,CAAC;QACvDP,IAAI,EAAEA;MACV,CAAC;IACL;EACJ;EACA,OAAO;IAAEE,IAAI,EAAEA,IAAI;IAAEF,IAAI,EAAE;EAAK,CAAC;AACrC;AACA,SAASK,MAAMA,CAACG,GAAG,EAAE;EACjB,OAAOA,GAAG,IAAI,OAAOA,GAAG,KAAK,QAAQ,IAAIb,cAAc,CAACa,GAAG,CAAC,KAAKX,WAAW;AAChF;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

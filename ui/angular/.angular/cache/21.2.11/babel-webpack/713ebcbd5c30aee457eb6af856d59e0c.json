@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "// src/client/preview-prod.ts\nimport { enableProdMode } from \"@angular/core\";\nenableProdMode();",
+  "map": {
+    "version": 3,
+    "names": ["enableProdMode"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_17cf74cc4e48de6f4001a19f757fd7ae/node_modules/@storybook/angular/dist/client/preview-prod.js"
+    ],
+    "sourcesContent": [
+      "// src/client/preview-prod.ts\nimport { enableProdMode } from \"@angular/core\";\nenableProdMode();\n"
+    ],
+    "mappings": "AAAA;AACA,SAASA,cAAc,QAAQ,eAAe;AAC9CA,cAAc,CAAC,CAAC",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

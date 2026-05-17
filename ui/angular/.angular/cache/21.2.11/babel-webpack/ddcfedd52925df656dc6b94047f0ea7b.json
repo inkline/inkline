@@ -1,0 +1,43 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\nconst parse = require('./parse.js');\nconst diff = (version1, version2) => {\n  const v1 = parse(version1, null, true);\n  const v2 = parse(version2, null, true);\n  const comparison = v1.compare(v2);\n  if (comparison === 0) {\n    return null;\n  }\n  const v1Higher = comparison > 0;\n  const highVersion = v1Higher ? v1 : v2;\n  const lowVersion = v1Higher ? v2 : v1;\n  const highHasPre = !!highVersion.prerelease.length;\n  const lowHasPre = !!lowVersion.prerelease.length;\n  if (lowHasPre && !highHasPre) {\n    // Going from prerelease -> no prerelease requires some special casing\n\n    // If the low version has only a major, then it will always be a major\n    // Some examples:\n    // 1.0.0-1 -> 1.0.0\n    // 1.0.0-1 -> 1.1.1\n    // 1.0.0-1 -> 2.0.0\n    if (!lowVersion.patch && !lowVersion.minor) {\n      return 'major';\n    }\n\n    // If the main part has no difference\n    if (lowVersion.compareMain(highVersion) === 0) {\n      if (lowVersion.minor && !lowVersion.patch) {\n        return 'minor';\n      }\n      return 'patch';\n    }\n  }\n\n  // add the `pre` prefix if we are going to a prerelease version\n  const prefix = highHasPre ? 'pre' : '';\n  if (v1.major !== v2.major) {\n    return prefix + 'major';\n  }\n  if (v1.minor !== v2.minor) {\n    return prefix + 'minor';\n  }\n  if (v1.patch !== v2.patch) {\n    return prefix + 'patch';\n  }\n\n  // high and low are prereleases\n  return 'prerelease';\n};\nmodule.exports = diff;",
+  "map": {
+    "version": 3,
+    "names": [
+      "parse",
+      "require",
+      "diff",
+      "version1",
+      "version2",
+      "v1",
+      "v2",
+      "comparison",
+      "compare",
+      "v1Higher",
+      "highVersion",
+      "lowVersion",
+      "highHasPre",
+      "prerelease",
+      "length",
+      "lowHasPre",
+      "patch",
+      "minor",
+      "compareMain",
+      "prefix",
+      "major",
+      "module",
+      "exports"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/semver@7.7.4/node_modules/semver/functions/diff.js"
+    ],
+    "sourcesContent": [
+      "'use strict'\n\nconst parse = require('./parse.js')\n\nconst diff = (version1, version2) => {\n  const v1 = parse(version1, null, true)\n  const v2 = parse(version2, null, true)\n  const comparison = v1.compare(v2)\n\n  if (comparison === 0) {\n    return null\n  }\n\n  const v1Higher = comparison > 0\n  const highVersion = v1Higher ? v1 : v2\n  const lowVersion = v1Higher ? v2 : v1\n  const highHasPre = !!highVersion.prerelease.length\n  const lowHasPre = !!lowVersion.prerelease.length\n\n  if (lowHasPre && !highHasPre) {\n    // Going from prerelease -> no prerelease requires some special casing\n\n    // If the low version has only a major, then it will always be a major\n    // Some examples:\n    // 1.0.0-1 -> 1.0.0\n    // 1.0.0-1 -> 1.1.1\n    // 1.0.0-1 -> 2.0.0\n    if (!lowVersion.patch && !lowVersion.minor) {\n      return 'major'\n    }\n\n    // If the main part has no difference\n    if (lowVersion.compareMain(highVersion) === 0) {\n      if (lowVersion.minor && !lowVersion.patch) {\n        return 'minor'\n      }\n      return 'patch'\n    }\n  }\n\n  // add the `pre` prefix if we are going to a prerelease version\n  const prefix = highHasPre ? 'pre' : ''\n\n  if (v1.major !== v2.major) {\n    return prefix + 'major'\n  }\n\n  if (v1.minor !== v2.minor) {\n    return prefix + 'minor'\n  }\n\n  if (v1.patch !== v2.patch) {\n    return prefix + 'patch'\n  }\n\n  // high and low are prereleases\n  return 'prerelease'\n}\n\nmodule.exports = diff\n"
+    ],
+    "mappings": "AAAA,YAAY;;AAEZ,MAAMA,KAAK,GAAGC,OAAO,CAAC,YAAY,CAAC;AAEnC,MAAMC,IAAI,GAAGA,CAACC,QAAQ,EAAEC,QAAQ,KAAK;EACnC,MAAMC,EAAE,GAAGL,KAAK,CAACG,QAAQ,EAAE,IAAI,EAAE,IAAI,CAAC;EACtC,MAAMG,EAAE,GAAGN,KAAK,CAACI,QAAQ,EAAE,IAAI,EAAE,IAAI,CAAC;EACtC,MAAMG,UAAU,GAAGF,EAAE,CAACG,OAAO,CAACF,EAAE,CAAC;EAEjC,IAAIC,UAAU,KAAK,CAAC,EAAE;IACpB,OAAO,IAAI;EACb;EAEA,MAAME,QAAQ,GAAGF,UAAU,GAAG,CAAC;EAC/B,MAAMG,WAAW,GAAGD,QAAQ,GAAGJ,EAAE,GAAGC,EAAE;EACtC,MAAMK,UAAU,GAAGF,QAAQ,GAAGH,EAAE,GAAGD,EAAE;EACrC,MAAMO,UAAU,GAAG,CAAC,CAACF,WAAW,CAACG,UAAU,CAACC,MAAM;EAClD,MAAMC,SAAS,GAAG,CAAC,CAACJ,UAAU,CAACE,UAAU,CAACC,MAAM;EAEhD,IAAIC,SAAS,IAAI,CAACH,UAAU,EAAE;IAC5B;;IAEA;IACA;IACA;IACA;IACA;IACA,IAAI,CAACD,UAAU,CAACK,KAAK,IAAI,CAACL,UAAU,CAACM,KAAK,EAAE;MAC1C,OAAO,OAAO;IAChB;;IAEA;IACA,IAAIN,UAAU,CAACO,WAAW,CAACR,WAAW,CAAC,KAAK,CAAC,EAAE;MAC7C,IAAIC,UAAU,CAACM,KAAK,IAAI,CAACN,UAAU,CAACK,KAAK,EAAE;QACzC,OAAO,OAAO;MAChB;MACA,OAAO,OAAO;IAChB;EACF;;EAEA;EACA,MAAMG,MAAM,GAAGP,UAAU,GAAG,KAAK,GAAG,EAAE;EAEtC,IAAIP,EAAE,CAACe,KAAK,KAAKd,EAAE,CAACc,KAAK,EAAE;IACzB,OAAOD,MAAM,GAAG,OAAO;EACzB;EAEA,IAAId,EAAE,CAACY,KAAK,KAAKX,EAAE,CAACW,KAAK,EAAE;IACzB,OAAOE,MAAM,GAAG,OAAO;EACzB;EAEA,IAAId,EAAE,CAACW,KAAK,KAAKV,EAAE,CAACU,KAAK,EAAE;IACzB,OAAOG,MAAM,GAAG,OAAO;EACzB;;EAEA;EACA,OAAO,YAAY;AACrB,CAAC;AAEDE,MAAM,CAACC,OAAO,GAAGpB,IAAI",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

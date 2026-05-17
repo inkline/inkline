@@ -1,3 +1,11 @@
-import { sharedParameters } from "@inkline/storybook/preset/parameters";
-
-export default { parameters: sharedParameters };
+export default {
+  parameters: {
+    layout: "centered",
+    controls: {
+      matchers: {
+        color: /(background|color)$/i,
+        date: /Date$/,
+      },
+    },
+  },
+};

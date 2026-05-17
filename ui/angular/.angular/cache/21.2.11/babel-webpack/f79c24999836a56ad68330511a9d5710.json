@@ -1,0 +1,57 @@
+{
+  "ast": null,
+  "code": "import { __extends } from \"tslib\";\nimport { Subject } from './Subject';\nimport { dateTimestampProvider } from './scheduler/dateTimestampProvider';\nvar ReplaySubject = function (_super) {\n  __extends(ReplaySubject, _super);\n  function ReplaySubject(_bufferSize, _windowTime, _timestampProvider) {\n    if (_bufferSize === void 0) {\n      _bufferSize = Infinity;\n    }\n    if (_windowTime === void 0) {\n      _windowTime = Infinity;\n    }\n    if (_timestampProvider === void 0) {\n      _timestampProvider = dateTimestampProvider;\n    }\n    var _this = _super.call(this) || this;\n    _this._bufferSize = _bufferSize;\n    _this._windowTime = _windowTime;\n    _this._timestampProvider = _timestampProvider;\n    _this._buffer = [];\n    _this._infiniteTimeWindow = true;\n    _this._infiniteTimeWindow = _windowTime === Infinity;\n    _this._bufferSize = Math.max(1, _bufferSize);\n    _this._windowTime = Math.max(1, _windowTime);\n    return _this;\n  }\n  ReplaySubject.prototype.next = function (value) {\n    var _a = this,\n      isStopped = _a.isStopped,\n      _buffer = _a._buffer,\n      _infiniteTimeWindow = _a._infiniteTimeWindow,\n      _timestampProvider = _a._timestampProvider,\n      _windowTime = _a._windowTime;\n    if (!isStopped) {\n      _buffer.push(value);\n      !_infiniteTimeWindow && _buffer.push(_timestampProvider.now() + _windowTime);\n    }\n    this._trimBuffer();\n    _super.prototype.next.call(this, value);\n  };\n  ReplaySubject.prototype._subscribe = function (subscriber) {\n    this._throwIfClosed();\n    this._trimBuffer();\n    var subscription = this._innerSubscribe(subscriber);\n    var _a = this,\n      _infiniteTimeWindow = _a._infiniteTimeWindow,\n      _buffer = _a._buffer;\n    var copy = _buffer.slice();\n    for (var i = 0; i < copy.length && !subscriber.closed; i += _infiniteTimeWindow ? 1 : 2) {\n      subscriber.next(copy[i]);\n    }\n    this._checkFinalizedStatuses(subscriber);\n    return subscription;\n  };\n  ReplaySubject.prototype._trimBuffer = function () {\n    var _a = this,\n      _bufferSize = _a._bufferSize,\n      _timestampProvider = _a._timestampProvider,\n      _buffer = _a._buffer,\n      _infiniteTimeWindow = _a._infiniteTimeWindow;\n    var adjustedBufferSize = (_infiniteTimeWindow ? 1 : 2) * _bufferSize;\n    _bufferSize < Infinity && adjustedBufferSize < _buffer.length && _buffer.splice(0, _buffer.length - adjustedBufferSize);\n    if (!_infiniteTimeWindow) {\n      var now = _timestampProvider.now();\n      var last = 0;\n      for (var i = 1; i < _buffer.length && _buffer[i] <= now; i += 2) {\n        last = i;\n      }\n      last && _buffer.splice(0, last + 1);\n    }\n  };\n  return ReplaySubject;\n}(Subject);\nexport { ReplaySubject };\n//# sourceMappingURL=ReplaySubject.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "__extends",
+      "Subject",
+      "dateTimestampProvider",
+      "ReplaySubject",
+      "_super",
+      "_bufferSize",
+      "_windowTime",
+      "_timestampProvider",
+      "Infinity",
+      "_this",
+      "call",
+      "_buffer",
+      "_infiniteTimeWindow",
+      "Math",
+      "max",
+      "prototype",
+      "next",
+      "value",
+      "_a",
+      "isStopped",
+      "push",
+      "now",
+      "_trimBuffer",
+      "_subscribe",
+      "subscriber",
+      "_throwIfClosed",
+      "subscription",
+      "_innerSubscribe",
+      "copy",
+      "slice",
+      "i",
+      "length",
+      "closed",
+      "_checkFinalizedStatuses",
+      "adjustedBufferSize",
+      "splice",
+      "last"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/ReplaySubject.js"
+    ],
+    "sourcesContent": [
+      "import { __extends } from \"tslib\";\nimport { Subject } from './Subject';\nimport { dateTimestampProvider } from './scheduler/dateTimestampProvider';\nvar ReplaySubject = (function (_super) {\n    __extends(ReplaySubject, _super);\n    function ReplaySubject(_bufferSize, _windowTime, _timestampProvider) {\n        if (_bufferSize === void 0) { _bufferSize = Infinity; }\n        if (_windowTime === void 0) { _windowTime = Infinity; }\n        if (_timestampProvider === void 0) { _timestampProvider = dateTimestampProvider; }\n        var _this = _super.call(this) || this;\n        _this._bufferSize = _bufferSize;\n        _this._windowTime = _windowTime;\n        _this._timestampProvider = _timestampProvider;\n        _this._buffer = [];\n        _this._infiniteTimeWindow = true;\n        _this._infiniteTimeWindow = _windowTime === Infinity;\n        _this._bufferSize = Math.max(1, _bufferSize);\n        _this._windowTime = Math.max(1, _windowTime);\n        return _this;\n    }\n    ReplaySubject.prototype.next = function (value) {\n        var _a = this, isStopped = _a.isStopped, _buffer = _a._buffer, _infiniteTimeWindow = _a._infiniteTimeWindow, _timestampProvider = _a._timestampProvider, _windowTime = _a._windowTime;\n        if (!isStopped) {\n            _buffer.push(value);\n            !_infiniteTimeWindow && _buffer.push(_timestampProvider.now() + _windowTime);\n        }\n        this._trimBuffer();\n        _super.prototype.next.call(this, value);\n    };\n    ReplaySubject.prototype._subscribe = function (subscriber) {\n        this._throwIfClosed();\n        this._trimBuffer();\n        var subscription = this._innerSubscribe(subscriber);\n        var _a = this, _infiniteTimeWindow = _a._infiniteTimeWindow, _buffer = _a._buffer;\n        var copy = _buffer.slice();\n        for (var i = 0; i < copy.length && !subscriber.closed; i += _infiniteTimeWindow ? 1 : 2) {\n            subscriber.next(copy[i]);\n        }\n        this._checkFinalizedStatuses(subscriber);\n        return subscription;\n    };\n    ReplaySubject.prototype._trimBuffer = function () {\n        var _a = this, _bufferSize = _a._bufferSize, _timestampProvider = _a._timestampProvider, _buffer = _a._buffer, _infiniteTimeWindow = _a._infiniteTimeWindow;\n        var adjustedBufferSize = (_infiniteTimeWindow ? 1 : 2) * _bufferSize;\n        _bufferSize < Infinity && adjustedBufferSize < _buffer.length && _buffer.splice(0, _buffer.length - adjustedBufferSize);\n        if (!_infiniteTimeWindow) {\n            var now = _timestampProvider.now();\n            var last = 0;\n            for (var i = 1; i < _buffer.length && _buffer[i] <= now; i += 2) {\n                last = i;\n            }\n            last && _buffer.splice(0, last + 1);\n        }\n    };\n    return ReplaySubject;\n}(Subject));\nexport { ReplaySubject };\n//# sourceMappingURL=ReplaySubject.js.map"
+    ],
+    "mappings": "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",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

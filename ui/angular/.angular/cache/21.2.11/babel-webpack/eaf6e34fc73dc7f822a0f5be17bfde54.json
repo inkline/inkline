@@ -1,0 +1,38 @@
+{
+  "ast": null,
+  "code": "import { Subject } from '../Subject';\nimport { Observable } from '../Observable';\nimport { defer } from './defer';\nvar DEFAULT_CONFIG = {\n  connector: function () {\n    return new Subject();\n  },\n  resetOnDisconnect: true\n};\nexport function connectable(source, config) {\n  if (config === void 0) {\n    config = DEFAULT_CONFIG;\n  }\n  var connection = null;\n  var connector = config.connector,\n    _a = config.resetOnDisconnect,\n    resetOnDisconnect = _a === void 0 ? true : _a;\n  var subject = connector();\n  var result = new Observable(function (subscriber) {\n    return subject.subscribe(subscriber);\n  });\n  result.connect = function () {\n    if (!connection || connection.closed) {\n      connection = defer(function () {\n        return source;\n      }).subscribe(subject);\n      if (resetOnDisconnect) {\n        connection.add(function () {\n          return subject = connector();\n        });\n      }\n    }\n    return connection;\n  };\n  return result;\n}\n//# sourceMappingURL=connectable.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "Subject",
+      "Observable",
+      "defer",
+      "DEFAULT_CONFIG",
+      "connector",
+      "resetOnDisconnect",
+      "connectable",
+      "source",
+      "config",
+      "connection",
+      "_a",
+      "subject",
+      "result",
+      "subscriber",
+      "subscribe",
+      "connect",
+      "closed",
+      "add"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/observable/connectable.js"
+    ],
+    "sourcesContent": [
+      "import { Subject } from '../Subject';\nimport { Observable } from '../Observable';\nimport { defer } from './defer';\nvar DEFAULT_CONFIG = {\n    connector: function () { return new Subject(); },\n    resetOnDisconnect: true,\n};\nexport function connectable(source, config) {\n    if (config === void 0) { config = DEFAULT_CONFIG; }\n    var connection = null;\n    var connector = config.connector, _a = config.resetOnDisconnect, resetOnDisconnect = _a === void 0 ? true : _a;\n    var subject = connector();\n    var result = new Observable(function (subscriber) {\n        return subject.subscribe(subscriber);\n    });\n    result.connect = function () {\n        if (!connection || connection.closed) {\n            connection = defer(function () { return source; }).subscribe(subject);\n            if (resetOnDisconnect) {\n                connection.add(function () { return (subject = connector()); });\n            }\n        }\n        return connection;\n    };\n    return result;\n}\n//# sourceMappingURL=connectable.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,YAAY;AACpC,SAASC,UAAU,QAAQ,eAAe;AAC1C,SAASC,KAAK,QAAQ,SAAS;AAC/B,IAAIC,cAAc,GAAG;EACjBC,SAAS,EAAE,SAAAA,CAAA,EAAY;IAAE,OAAO,IAAIJ,OAAO,CAAC,CAAC;EAAE,CAAC;EAChDK,iBAAiB,EAAE;AACvB,CAAC;AACD,OAAO,SAASC,WAAWA,CAACC,MAAM,EAAEC,MAAM,EAAE;EACxC,IAAIA,MAAM,KAAK,KAAK,CAAC,EAAE;IAAEA,MAAM,GAAGL,cAAc;EAAE;EAClD,IAAIM,UAAU,GAAG,IAAI;EACrB,IAAIL,SAAS,GAAGI,MAAM,CAACJ,SAAS;IAAEM,EAAE,GAAGF,MAAM,CAACH,iBAAiB;IAAEA,iBAAiB,GAAGK,EAAE,KAAK,KAAK,CAAC,GAAG,IAAI,GAAGA,EAAE;EAC9G,IAAIC,OAAO,GAAGP,SAAS,CAAC,CAAC;EACzB,IAAIQ,MAAM,GAAG,IAAIX,UAAU,CAAC,UAAUY,UAAU,EAAE;IAC9C,OAAOF,OAAO,CAACG,SAAS,CAACD,UAAU,CAAC;EACxC,CAAC,CAAC;EACFD,MAAM,CAACG,OAAO,GAAG,YAAY;IACzB,IAAI,CAACN,UAAU,IAAIA,UAAU,CAACO,MAAM,EAAE;MAClCP,UAAU,GAAGP,KAAK,CAAC,YAAY;QAAE,OAAOK,MAAM;MAAE,CAAC,CAAC,CAACO,SAAS,CAACH,OAAO,CAAC;MACrE,IAAIN,iBAAiB,EAAE;QACnBI,UAAU,CAACQ,GAAG,CAAC,YAAY;UAAE,OAAQN,OAAO,GAAGP,SAAS,CAAC,CAAC;QAAG,CAAC,CAAC;MACnE;IACJ;IACA,OAAOK,UAAU;EACrB,CAAC;EACD,OAAOG,MAAM;AACjB;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

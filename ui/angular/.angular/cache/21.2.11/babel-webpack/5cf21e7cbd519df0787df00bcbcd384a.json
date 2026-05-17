@@ -1,0 +1,38 @@
+{
+  "ast": null,
+  "code": "import { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function find(predicate, thisArg) {\n  return operate(createFind(predicate, thisArg, 'value'));\n}\nexport function createFind(predicate, thisArg, emit) {\n  var findIndex = emit === 'index';\n  return function (source, subscriber) {\n    var index = 0;\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      var i = index++;\n      if (predicate.call(thisArg, value, i, source)) {\n        subscriber.next(findIndex ? i : value);\n        subscriber.complete();\n      }\n    }, function () {\n      subscriber.next(findIndex ? -1 : undefined);\n      subscriber.complete();\n    }));\n  };\n}\n//# sourceMappingURL=find.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "operate",
+      "createOperatorSubscriber",
+      "find",
+      "predicate",
+      "thisArg",
+      "createFind",
+      "emit",
+      "findIndex",
+      "source",
+      "subscriber",
+      "index",
+      "subscribe",
+      "value",
+      "i",
+      "call",
+      "next",
+      "complete",
+      "undefined"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/find.js"
+    ],
+    "sourcesContent": [
+      "import { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function find(predicate, thisArg) {\n    return operate(createFind(predicate, thisArg, 'value'));\n}\nexport function createFind(predicate, thisArg, emit) {\n    var findIndex = emit === 'index';\n    return function (source, subscriber) {\n        var index = 0;\n        source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n            var i = index++;\n            if (predicate.call(thisArg, value, i, source)) {\n                subscriber.next(findIndex ? i : value);\n                subscriber.complete();\n            }\n        }, function () {\n            subscriber.next(findIndex ? -1 : undefined);\n            subscriber.complete();\n        }));\n    };\n}\n//# sourceMappingURL=find.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,OAAO,SAASC,IAAIA,CAACC,SAAS,EAAEC,OAAO,EAAE;EACrC,OAAOJ,OAAO,CAACK,UAAU,CAACF,SAAS,EAAEC,OAAO,EAAE,OAAO,CAAC,CAAC;AAC3D;AACA,OAAO,SAASC,UAAUA,CAACF,SAAS,EAAEC,OAAO,EAAEE,IAAI,EAAE;EACjD,IAAIC,SAAS,GAAGD,IAAI,KAAK,OAAO;EAChC,OAAO,UAAUE,MAAM,EAAEC,UAAU,EAAE;IACjC,IAAIC,KAAK,GAAG,CAAC;IACbF,MAAM,CAACG,SAAS,CAACV,wBAAwB,CAACQ,UAAU,EAAE,UAAUG,KAAK,EAAE;MACnE,IAAIC,CAAC,GAAGH,KAAK,EAAE;MACf,IAAIP,SAAS,CAACW,IAAI,CAACV,OAAO,EAAEQ,KAAK,EAAEC,CAAC,EAAEL,MAAM,CAAC,EAAE;QAC3CC,UAAU,CAACM,IAAI,CAACR,SAAS,GAAGM,CAAC,GAAGD,KAAK,CAAC;QACtCH,UAAU,CAACO,QAAQ,CAAC,CAAC;MACzB;IACJ,CAAC,EAAE,YAAY;MACXP,UAAU,CAACM,IAAI,CAACR,SAAS,GAAG,CAAC,CAAC,GAAGU,SAAS,CAAC;MAC3CR,UAAU,CAACO,QAAQ,CAAC,CAAC;IACzB,CAAC,CAAC,CAAC;EACP,CAAC;AACL;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

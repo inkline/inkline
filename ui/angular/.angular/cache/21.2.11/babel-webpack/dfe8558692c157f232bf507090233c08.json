@@ -1,0 +1,44 @@
+{
+  "ast": null,
+  "code": "import { __extends } from \"tslib\";\nimport { AsyncAction } from './AsyncAction';\nimport { immediateProvider } from './immediateProvider';\nvar AsapAction = function (_super) {\n  __extends(AsapAction, _super);\n  function AsapAction(scheduler, work) {\n    var _this = _super.call(this, scheduler, work) || this;\n    _this.scheduler = scheduler;\n    _this.work = work;\n    return _this;\n  }\n  AsapAction.prototype.requestAsyncId = function (scheduler, id, delay) {\n    if (delay === void 0) {\n      delay = 0;\n    }\n    if (delay !== null && delay > 0) {\n      return _super.prototype.requestAsyncId.call(this, scheduler, id, delay);\n    }\n    scheduler.actions.push(this);\n    return scheduler._scheduled || (scheduler._scheduled = immediateProvider.setImmediate(scheduler.flush.bind(scheduler, undefined)));\n  };\n  AsapAction.prototype.recycleAsyncId = function (scheduler, id, delay) {\n    var _a;\n    if (delay === void 0) {\n      delay = 0;\n    }\n    if (delay != null ? delay > 0 : this.delay > 0) {\n      return _super.prototype.recycleAsyncId.call(this, scheduler, id, delay);\n    }\n    var actions = scheduler.actions;\n    if (id != null && ((_a = actions[actions.length - 1]) === null || _a === void 0 ? void 0 : _a.id) !== id) {\n      immediateProvider.clearImmediate(id);\n      if (scheduler._scheduled === id) {\n        scheduler._scheduled = undefined;\n      }\n    }\n    return undefined;\n  };\n  return AsapAction;\n}(AsyncAction);\nexport { AsapAction };\n//# sourceMappingURL=AsapAction.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "__extends",
+      "AsyncAction",
+      "immediateProvider",
+      "AsapAction",
+      "_super",
+      "scheduler",
+      "work",
+      "_this",
+      "call",
+      "prototype",
+      "requestAsyncId",
+      "id",
+      "delay",
+      "actions",
+      "push",
+      "_scheduled",
+      "setImmediate",
+      "flush",
+      "bind",
+      "undefined",
+      "recycleAsyncId",
+      "_a",
+      "length",
+      "clearImmediate"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/scheduler/AsapAction.js"
+    ],
+    "sourcesContent": [
+      "import { __extends } from \"tslib\";\nimport { AsyncAction } from './AsyncAction';\nimport { immediateProvider } from './immediateProvider';\nvar AsapAction = (function (_super) {\n    __extends(AsapAction, _super);\n    function AsapAction(scheduler, work) {\n        var _this = _super.call(this, scheduler, work) || this;\n        _this.scheduler = scheduler;\n        _this.work = work;\n        return _this;\n    }\n    AsapAction.prototype.requestAsyncId = function (scheduler, id, delay) {\n        if (delay === void 0) { delay = 0; }\n        if (delay !== null && delay > 0) {\n            return _super.prototype.requestAsyncId.call(this, scheduler, id, delay);\n        }\n        scheduler.actions.push(this);\n        return scheduler._scheduled || (scheduler._scheduled = immediateProvider.setImmediate(scheduler.flush.bind(scheduler, undefined)));\n    };\n    AsapAction.prototype.recycleAsyncId = function (scheduler, id, delay) {\n        var _a;\n        if (delay === void 0) { delay = 0; }\n        if (delay != null ? delay > 0 : this.delay > 0) {\n            return _super.prototype.recycleAsyncId.call(this, scheduler, id, delay);\n        }\n        var actions = scheduler.actions;\n        if (id != null && ((_a = actions[actions.length - 1]) === null || _a === void 0 ? void 0 : _a.id) !== id) {\n            immediateProvider.clearImmediate(id);\n            if (scheduler._scheduled === id) {\n                scheduler._scheduled = undefined;\n            }\n        }\n        return undefined;\n    };\n    return AsapAction;\n}(AsyncAction));\nexport { AsapAction };\n//# sourceMappingURL=AsapAction.js.map"
+    ],
+    "mappings": "AAAA,SAASA,SAAS,QAAQ,OAAO;AACjC,SAASC,WAAW,QAAQ,eAAe;AAC3C,SAASC,iBAAiB,QAAQ,qBAAqB;AACvD,IAAIC,UAAU,GAAI,UAAUC,MAAM,EAAE;EAChCJ,SAAS,CAACG,UAAU,EAAEC,MAAM,CAAC;EAC7B,SAASD,UAAUA,CAACE,SAAS,EAAEC,IAAI,EAAE;IACjC,IAAIC,KAAK,GAAGH,MAAM,CAACI,IAAI,CAAC,IAAI,EAAEH,SAAS,EAAEC,IAAI,CAAC,IAAI,IAAI;IACtDC,KAAK,CAACF,SAAS,GAAGA,SAAS;IAC3BE,KAAK,CAACD,IAAI,GAAGA,IAAI;IACjB,OAAOC,KAAK;EAChB;EACAJ,UAAU,CAACM,SAAS,CAACC,cAAc,GAAG,UAAUL,SAAS,EAAEM,EAAE,EAAEC,KAAK,EAAE;IAClE,IAAIA,KAAK,KAAK,KAAK,CAAC,EAAE;MAAEA,KAAK,GAAG,CAAC;IAAE;IACnC,IAAIA,KAAK,KAAK,IAAI,IAAIA,KAAK,GAAG,CAAC,EAAE;MAC7B,OAAOR,MAAM,CAACK,SAAS,CAACC,cAAc,CAACF,IAAI,CAAC,IAAI,EAAEH,SAAS,EAAEM,EAAE,EAAEC,KAAK,CAAC;IAC3E;IACAP,SAAS,CAACQ,OAAO,CAACC,IAAI,CAAC,IAAI,CAAC;IAC5B,OAAOT,SAAS,CAACU,UAAU,KAAKV,SAAS,CAACU,UAAU,GAAGb,iBAAiB,CAACc,YAAY,CAACX,SAAS,CAACY,KAAK,CAACC,IAAI,CAACb,SAAS,EAAEc,SAAS,CAAC,CAAC,CAAC;EACtI,CAAC;EACDhB,UAAU,CAACM,SAAS,CAACW,cAAc,GAAG,UAAUf,SAAS,EAAEM,EAAE,EAAEC,KAAK,EAAE;IAClE,IAAIS,EAAE;IACN,IAAIT,KAAK,KAAK,KAAK,CAAC,EAAE;MAAEA,KAAK,GAAG,CAAC;IAAE;IACnC,IAAIA,KAAK,IAAI,IAAI,GAAGA,KAAK,GAAG,CAAC,GAAG,IAAI,CAACA,KAAK,GAAG,CAAC,EAAE;MAC5C,OAAOR,MAAM,CAACK,SAAS,CAACW,cAAc,CAACZ,IAAI,CAAC,IAAI,EAAEH,SAAS,EAAEM,EAAE,EAAEC,KAAK,CAAC;IAC3E;IACA,IAAIC,OAAO,GAAGR,SAAS,CAACQ,OAAO;IAC/B,IAAIF,EAAE,IAAI,IAAI,IAAI,CAAC,CAACU,EAAE,GAAGR,OAAO,CAACA,OAAO,CAACS,MAAM,GAAG,CAAC,CAAC,MAAM,IAAI,IAAID,EAAE,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,EAAE,CAACV,EAAE,MAAMA,EAAE,EAAE;MACtGT,iBAAiB,CAACqB,cAAc,CAACZ,EAAE,CAAC;MACpC,IAAIN,SAAS,CAACU,UAAU,KAAKJ,EAAE,EAAE;QAC7BN,SAAS,CAACU,UAAU,GAAGI,SAAS;MACpC;IACJ;IACA,OAAOA,SAAS;EACpB,CAAC;EACD,OAAOhB,UAAU;AACrB,CAAC,CAACF,WAAW,CAAE;AACf,SAASE,UAAU;AACnB",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

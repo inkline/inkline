@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { isFunction } from \"./isFunction\";\nexport function isPromise(value) {\n  return isFunction(value === null || value === void 0 ? void 0 : value.then);\n}\n//# sourceMappingURL=isPromise.js.map",
+  "map": {
+    "version": 3,
+    "names": ["isFunction", "isPromise", "value", "then"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/util/isPromise.js"
+    ],
+    "sourcesContent": [
+      "import { isFunction } from \"./isFunction\";\nexport function isPromise(value) {\n    return isFunction(value === null || value === void 0 ? void 0 : value.then);\n}\n//# sourceMappingURL=isPromise.js.map"
+    ],
+    "mappings": "AAAA,SAASA,UAAU,QAAQ,cAAc;AACzC,OAAO,SAASC,SAASA,CAACC,KAAK,EAAE;EAC7B,OAAOF,UAAU,CAACE,KAAK,KAAK,IAAI,IAAIA,KAAK,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,KAAK,CAACC,IAAI,CAAC;AAC/E;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

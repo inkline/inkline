@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { dateTimestampProvider } from '../scheduler/dateTimestampProvider';\nimport { map } from './map';\nexport function timestamp(timestampProvider) {\n  if (timestampProvider === void 0) {\n    timestampProvider = dateTimestampProvider;\n  }\n  return map(function (value) {\n    return {\n      value: value,\n      timestamp: timestampProvider.now()\n    };\n  });\n}\n//# sourceMappingURL=timestamp.js.map",
+  "map": {
+    "version": 3,
+    "names": ["dateTimestampProvider", "map", "timestamp", "timestampProvider", "value", "now"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/timestamp.js"
+    ],
+    "sourcesContent": [
+      "import { dateTimestampProvider } from '../scheduler/dateTimestampProvider';\nimport { map } from './map';\nexport function timestamp(timestampProvider) {\n    if (timestampProvider === void 0) { timestampProvider = dateTimestampProvider; }\n    return map(function (value) { return ({ value: value, timestamp: timestampProvider.now() }); });\n}\n//# sourceMappingURL=timestamp.js.map"
+    ],
+    "mappings": "AAAA,SAASA,qBAAqB,QAAQ,oCAAoC;AAC1E,SAASC,GAAG,QAAQ,OAAO;AAC3B,OAAO,SAASC,SAASA,CAACC,iBAAiB,EAAE;EACzC,IAAIA,iBAAiB,KAAK,KAAK,CAAC,EAAE;IAAEA,iBAAiB,GAAGH,qBAAqB;EAAE;EAC/E,OAAOC,GAAG,CAAC,UAAUG,KAAK,EAAE;IAAE,OAAQ;MAAEA,KAAK,EAAEA,KAAK;MAAEF,SAAS,EAAEC,iBAAiB,CAACE,GAAG,CAAC;IAAE,CAAC;EAAG,CAAC,CAAC;AACnG;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

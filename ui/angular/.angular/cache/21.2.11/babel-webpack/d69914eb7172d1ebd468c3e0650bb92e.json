@@ -1,0 +1,35 @@
+{
+  "ast": null,
+  "code": "import { ArgumentOutOfRangeError } from '../util/ArgumentOutOfRangeError';\nimport { filter } from './filter';\nimport { throwIfEmpty } from './throwIfEmpty';\nimport { defaultIfEmpty } from './defaultIfEmpty';\nimport { take } from './take';\nexport function elementAt(index, defaultValue) {\n  if (index < 0) {\n    throw new ArgumentOutOfRangeError();\n  }\n  var hasDefaultValue = arguments.length >= 2;\n  return function (source) {\n    return source.pipe(filter(function (v, i) {\n      return i === index;\n    }), take(1), hasDefaultValue ? defaultIfEmpty(defaultValue) : throwIfEmpty(function () {\n      return new ArgumentOutOfRangeError();\n    }));\n  };\n}\n//# sourceMappingURL=elementAt.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "ArgumentOutOfRangeError",
+      "filter",
+      "throwIfEmpty",
+      "defaultIfEmpty",
+      "take",
+      "elementAt",
+      "index",
+      "defaultValue",
+      "hasDefaultValue",
+      "arguments",
+      "length",
+      "source",
+      "pipe",
+      "v",
+      "i"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/elementAt.js"
+    ],
+    "sourcesContent": [
+      "import { ArgumentOutOfRangeError } from '../util/ArgumentOutOfRangeError';\nimport { filter } from './filter';\nimport { throwIfEmpty } from './throwIfEmpty';\nimport { defaultIfEmpty } from './defaultIfEmpty';\nimport { take } from './take';\nexport function elementAt(index, defaultValue) {\n    if (index < 0) {\n        throw new ArgumentOutOfRangeError();\n    }\n    var hasDefaultValue = arguments.length >= 2;\n    return function (source) {\n        return source.pipe(filter(function (v, i) { return i === index; }), take(1), hasDefaultValue ? defaultIfEmpty(defaultValue) : throwIfEmpty(function () { return new ArgumentOutOfRangeError(); }));\n    };\n}\n//# sourceMappingURL=elementAt.js.map"
+    ],
+    "mappings": "AAAA,SAASA,uBAAuB,QAAQ,iCAAiC;AACzE,SAASC,MAAM,QAAQ,UAAU;AACjC,SAASC,YAAY,QAAQ,gBAAgB;AAC7C,SAASC,cAAc,QAAQ,kBAAkB;AACjD,SAASC,IAAI,QAAQ,QAAQ;AAC7B,OAAO,SAASC,SAASA,CAACC,KAAK,EAAEC,YAAY,EAAE;EAC3C,IAAID,KAAK,GAAG,CAAC,EAAE;IACX,MAAM,IAAIN,uBAAuB,CAAC,CAAC;EACvC;EACA,IAAIQ,eAAe,GAAGC,SAAS,CAACC,MAAM,IAAI,CAAC;EAC3C,OAAO,UAAUC,MAAM,EAAE;IACrB,OAAOA,MAAM,CAACC,IAAI,CAACX,MAAM,CAAC,UAAUY,CAAC,EAAEC,CAAC,EAAE;MAAE,OAAOA,CAAC,KAAKR,KAAK;IAAE,CAAC,CAAC,EAAEF,IAAI,CAAC,CAAC,CAAC,EAAEI,eAAe,GAAGL,cAAc,CAACI,YAAY,CAAC,GAAGL,YAAY,CAAC,YAAY;MAAE,OAAO,IAAIF,uBAAuB,CAAC,CAAC;IAAE,CAAC,CAAC,CAAC;EACtM,CAAC;AACL;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

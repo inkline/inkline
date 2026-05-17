@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { isFunction } from './isFunction';\nexport function isAsyncIterable(obj) {\n  return Symbol.asyncIterator && isFunction(obj === null || obj === void 0 ? void 0 : obj[Symbol.asyncIterator]);\n}\n//# sourceMappingURL=isAsyncIterable.js.map",
+  "map": {
+    "version": 3,
+    "names": ["isFunction", "isAsyncIterable", "obj", "Symbol", "asyncIterator"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/util/isAsyncIterable.js"
+    ],
+    "sourcesContent": [
+      "import { isFunction } from './isFunction';\nexport function isAsyncIterable(obj) {\n    return Symbol.asyncIterator && isFunction(obj === null || obj === void 0 ? void 0 : obj[Symbol.asyncIterator]);\n}\n//# sourceMappingURL=isAsyncIterable.js.map"
+    ],
+    "mappings": "AAAA,SAASA,UAAU,QAAQ,cAAc;AACzC,OAAO,SAASC,eAAeA,CAACC,GAAG,EAAE;EACjC,OAAOC,MAAM,CAACC,aAAa,IAAIJ,UAAU,CAACE,GAAG,KAAK,IAAI,IAAIA,GAAG,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,GAAG,CAACC,MAAM,CAACC,aAAa,CAAC,CAAC;AAClH;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

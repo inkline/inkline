@@ -1,0 +1,34 @@
+{
+  "ast": null,
+  "code": "import { Subject } from '../Subject';\nimport { innerFrom } from '../observable/innerFrom';\nimport { operate } from '../util/lift';\nimport { fromSubscribable } from '../observable/fromSubscribable';\nvar DEFAULT_CONFIG = {\n  connector: function () {\n    return new Subject();\n  }\n};\nexport function connect(selector, config) {\n  if (config === void 0) {\n    config = DEFAULT_CONFIG;\n  }\n  var connector = config.connector;\n  return operate(function (source, subscriber) {\n    var subject = connector();\n    innerFrom(selector(fromSubscribable(subject))).subscribe(subscriber);\n    subscriber.add(source.subscribe(subject));\n  });\n}\n//# sourceMappingURL=connect.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "Subject",
+      "innerFrom",
+      "operate",
+      "fromSubscribable",
+      "DEFAULT_CONFIG",
+      "connector",
+      "connect",
+      "selector",
+      "config",
+      "source",
+      "subscriber",
+      "subject",
+      "subscribe",
+      "add"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/connect.js"
+    ],
+    "sourcesContent": [
+      "import { Subject } from '../Subject';\nimport { innerFrom } from '../observable/innerFrom';\nimport { operate } from '../util/lift';\nimport { fromSubscribable } from '../observable/fromSubscribable';\nvar DEFAULT_CONFIG = {\n    connector: function () { return new Subject(); },\n};\nexport function connect(selector, config) {\n    if (config === void 0) { config = DEFAULT_CONFIG; }\n    var connector = config.connector;\n    return operate(function (source, subscriber) {\n        var subject = connector();\n        innerFrom(selector(fromSubscribable(subject))).subscribe(subscriber);\n        subscriber.add(source.subscribe(subject));\n    });\n}\n//# sourceMappingURL=connect.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,YAAY;AACpC,SAASC,SAAS,QAAQ,yBAAyB;AACnD,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,gBAAgB,QAAQ,gCAAgC;AACjE,IAAIC,cAAc,GAAG;EACjBC,SAAS,EAAE,SAAAA,CAAA,EAAY;IAAE,OAAO,IAAIL,OAAO,CAAC,CAAC;EAAE;AACnD,CAAC;AACD,OAAO,SAASM,OAAOA,CAACC,QAAQ,EAAEC,MAAM,EAAE;EACtC,IAAIA,MAAM,KAAK,KAAK,CAAC,EAAE;IAAEA,MAAM,GAAGJ,cAAc;EAAE;EAClD,IAAIC,SAAS,GAAGG,MAAM,CAACH,SAAS;EAChC,OAAOH,OAAO,CAAC,UAAUO,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,OAAO,GAAGN,SAAS,CAAC,CAAC;IACzBJ,SAAS,CAACM,QAAQ,CAACJ,gBAAgB,CAACQ,OAAO,CAAC,CAAC,CAAC,CAACC,SAAS,CAACF,UAAU,CAAC;IACpEA,UAAU,CAACG,GAAG,CAACJ,MAAM,CAACG,SAAS,CAACD,OAAO,CAAC,CAAC;EAC7C,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

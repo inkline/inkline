@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { Observable } from '../Observable';\nimport { innerFrom } from './innerFrom';\nexport function defer(observableFactory) {\n  return new Observable(function (subscriber) {\n    innerFrom(observableFactory()).subscribe(subscriber);\n  });\n}\n//# sourceMappingURL=defer.js.map",
+  "map": {
+    "version": 3,
+    "names": ["Observable", "innerFrom", "defer", "observableFactory", "subscriber", "subscribe"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/observable/defer.js"
+    ],
+    "sourcesContent": [
+      "import { Observable } from '../Observable';\nimport { innerFrom } from './innerFrom';\nexport function defer(observableFactory) {\n    return new Observable(function (subscriber) {\n        innerFrom(observableFactory()).subscribe(subscriber);\n    });\n}\n//# sourceMappingURL=defer.js.map"
+    ],
+    "mappings": "AAAA,SAASA,UAAU,QAAQ,eAAe;AAC1C,SAASC,SAAS,QAAQ,aAAa;AACvC,OAAO,SAASC,KAAKA,CAACC,iBAAiB,EAAE;EACrC,OAAO,IAAIH,UAAU,CAAC,UAAUI,UAAU,EAAE;IACxCH,SAAS,CAACE,iBAAiB,CAAC,CAAC,CAAC,CAACE,SAAS,CAACD,UAAU,CAAC;EACxD,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

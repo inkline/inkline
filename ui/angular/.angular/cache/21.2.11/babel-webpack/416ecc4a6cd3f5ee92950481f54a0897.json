@@ -1,0 +1,31 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\nconst SemVer = require('../classes/semver');\nconst compareBuild = (a, b, loose) => {\n  const versionA = new SemVer(a, loose);\n  const versionB = new SemVer(b, loose);\n  return versionA.compare(versionB) || versionA.compareBuild(versionB);\n};\nmodule.exports = compareBuild;",
+  "map": {
+    "version": 3,
+    "names": [
+      "SemVer",
+      "require",
+      "compareBuild",
+      "a",
+      "b",
+      "loose",
+      "versionA",
+      "versionB",
+      "compare",
+      "module",
+      "exports"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/semver@7.7.4/node_modules/semver/functions/compare-build.js"
+    ],
+    "sourcesContent": [
+      "'use strict'\n\nconst SemVer = require('../classes/semver')\nconst compareBuild = (a, b, loose) => {\n  const versionA = new SemVer(a, loose)\n  const versionB = new SemVer(b, loose)\n  return versionA.compare(versionB) || versionA.compareBuild(versionB)\n}\nmodule.exports = compareBuild\n"
+    ],
+    "mappings": "AAAA,YAAY;;AAEZ,MAAMA,MAAM,GAAGC,OAAO,CAAC,mBAAmB,CAAC;AAC3C,MAAMC,YAAY,GAAGA,CAACC,CAAC,EAAEC,CAAC,EAAEC,KAAK,KAAK;EACpC,MAAMC,QAAQ,GAAG,IAAIN,MAAM,CAACG,CAAC,EAAEE,KAAK,CAAC;EACrC,MAAME,QAAQ,GAAG,IAAIP,MAAM,CAACI,CAAC,EAAEC,KAAK,CAAC;EACrC,OAAOC,QAAQ,CAACE,OAAO,CAACD,QAAQ,CAAC,IAAID,QAAQ,CAACJ,YAAY,CAACK,QAAQ,CAAC;AACtE,CAAC;AACDE,MAAM,CAACC,OAAO,GAAGR,YAAY",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

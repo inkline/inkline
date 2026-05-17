@@ -1,0 +1,34 @@
+{
+  "ast": null,
+  "code": "import { asyncScheduler } from '../scheduler/async';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function timeInterval(scheduler) {\n  if (scheduler === void 0) {\n    scheduler = asyncScheduler;\n  }\n  return operate(function (source, subscriber) {\n    var last = scheduler.now();\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      var now = scheduler.now();\n      var interval = now - last;\n      last = now;\n      subscriber.next(new TimeInterval(value, interval));\n    }));\n  });\n}\nvar TimeInterval = function () {\n  function TimeInterval(value, interval) {\n    this.value = value;\n    this.interval = interval;\n  }\n  return TimeInterval;\n}();\nexport { TimeInterval };\n//# sourceMappingURL=timeInterval.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "asyncScheduler",
+      "operate",
+      "createOperatorSubscriber",
+      "timeInterval",
+      "scheduler",
+      "source",
+      "subscriber",
+      "last",
+      "now",
+      "subscribe",
+      "value",
+      "interval",
+      "next",
+      "TimeInterval"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/timeInterval.js"
+    ],
+    "sourcesContent": [
+      "import { asyncScheduler } from '../scheduler/async';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function timeInterval(scheduler) {\n    if (scheduler === void 0) { scheduler = asyncScheduler; }\n    return operate(function (source, subscriber) {\n        var last = scheduler.now();\n        source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n            var now = scheduler.now();\n            var interval = now - last;\n            last = now;\n            subscriber.next(new TimeInterval(value, interval));\n        }));\n    });\n}\nvar TimeInterval = (function () {\n    function TimeInterval(value, interval) {\n        this.value = value;\n        this.interval = interval;\n    }\n    return TimeInterval;\n}());\nexport { TimeInterval };\n//# sourceMappingURL=timeInterval.js.map"
+    ],
+    "mappings": "AAAA,SAASA,cAAc,QAAQ,oBAAoB;AACnD,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,OAAO,SAASC,YAAYA,CAACC,SAAS,EAAE;EACpC,IAAIA,SAAS,KAAK,KAAK,CAAC,EAAE;IAAEA,SAAS,GAAGJ,cAAc;EAAE;EACxD,OAAOC,OAAO,CAAC,UAAUI,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,IAAI,GAAGH,SAAS,CAACI,GAAG,CAAC,CAAC;IAC1BH,MAAM,CAACI,SAAS,CAACP,wBAAwB,CAACI,UAAU,EAAE,UAAUI,KAAK,EAAE;MACnE,IAAIF,GAAG,GAAGJ,SAAS,CAACI,GAAG,CAAC,CAAC;MACzB,IAAIG,QAAQ,GAAGH,GAAG,GAAGD,IAAI;MACzBA,IAAI,GAAGC,GAAG;MACVF,UAAU,CAACM,IAAI,CAAC,IAAIC,YAAY,CAACH,KAAK,EAAEC,QAAQ,CAAC,CAAC;IACtD,CAAC,CAAC,CAAC;EACP,CAAC,CAAC;AACN;AACA,IAAIE,YAAY,GAAI,YAAY;EAC5B,SAASA,YAAYA,CAACH,KAAK,EAAEC,QAAQ,EAAE;IACnC,IAAI,CAACD,KAAK,GAAGA,KAAK;IAClB,IAAI,CAACC,QAAQ,GAAGA,QAAQ;EAC5B;EACA,OAAOE,YAAY;AACvB,CAAC,CAAC,CAAE;AACJ,SAASA,YAAY;AACrB",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

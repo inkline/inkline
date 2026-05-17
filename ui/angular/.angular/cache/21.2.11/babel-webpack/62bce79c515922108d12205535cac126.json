@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { switchMap } from './switchMap';\nimport { isFunction } from '../util/isFunction';\nexport function switchMapTo(innerObservable, resultSelector) {\n  return isFunction(resultSelector) ? switchMap(function () {\n    return innerObservable;\n  }, resultSelector) : switchMap(function () {\n    return innerObservable;\n  });\n}\n//# sourceMappingURL=switchMapTo.js.map",
+  "map": {
+    "version": 3,
+    "names": ["switchMap", "isFunction", "switchMapTo", "innerObservable", "resultSelector"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/switchMapTo.js"
+    ],
+    "sourcesContent": [
+      "import { switchMap } from './switchMap';\nimport { isFunction } from '../util/isFunction';\nexport function switchMapTo(innerObservable, resultSelector) {\n    return isFunction(resultSelector) ? switchMap(function () { return innerObservable; }, resultSelector) : switchMap(function () { return innerObservable; });\n}\n//# sourceMappingURL=switchMapTo.js.map"
+    ],
+    "mappings": "AAAA,SAASA,SAAS,QAAQ,aAAa;AACvC,SAASC,UAAU,QAAQ,oBAAoB;AAC/C,OAAO,SAASC,WAAWA,CAACC,eAAe,EAAEC,cAAc,EAAE;EACzD,OAAOH,UAAU,CAACG,cAAc,CAAC,GAAGJ,SAAS,CAAC,YAAY;IAAE,OAAOG,eAAe;EAAE,CAAC,EAAEC,cAAc,CAAC,GAAGJ,SAAS,CAAC,YAAY;IAAE,OAAOG,eAAe;EAAE,CAAC,CAAC;AAC/J;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

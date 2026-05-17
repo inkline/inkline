@@ -1,0 +1,38 @@
+{
+  "ast": null,
+  "code": "import { EmptyError } from '../util/EmptyError';\nimport { SequenceError } from '../util/SequenceError';\nimport { NotFoundError } from '../util/NotFoundError';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function single(predicate) {\n  return operate(function (source, subscriber) {\n    var hasValue = false;\n    var singleValue;\n    var seenValue = false;\n    var index = 0;\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      seenValue = true;\n      if (!predicate || predicate(value, index++, source)) {\n        hasValue && subscriber.error(new SequenceError('Too many matching values'));\n        hasValue = true;\n        singleValue = value;\n      }\n    }, function () {\n      if (hasValue) {\n        subscriber.next(singleValue);\n        subscriber.complete();\n      } else {\n        subscriber.error(seenValue ? new NotFoundError('No matching values') : new EmptyError());\n      }\n    }));\n  });\n}\n//# sourceMappingURL=single.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "EmptyError",
+      "SequenceError",
+      "NotFoundError",
+      "operate",
+      "createOperatorSubscriber",
+      "single",
+      "predicate",
+      "source",
+      "subscriber",
+      "hasValue",
+      "singleValue",
+      "seenValue",
+      "index",
+      "subscribe",
+      "value",
+      "error",
+      "next",
+      "complete"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/single.js"
+    ],
+    "sourcesContent": [
+      "import { EmptyError } from '../util/EmptyError';\nimport { SequenceError } from '../util/SequenceError';\nimport { NotFoundError } from '../util/NotFoundError';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function single(predicate) {\n    return operate(function (source, subscriber) {\n        var hasValue = false;\n        var singleValue;\n        var seenValue = false;\n        var index = 0;\n        source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n            seenValue = true;\n            if (!predicate || predicate(value, index++, source)) {\n                hasValue && subscriber.error(new SequenceError('Too many matching values'));\n                hasValue = true;\n                singleValue = value;\n            }\n        }, function () {\n            if (hasValue) {\n                subscriber.next(singleValue);\n                subscriber.complete();\n            }\n            else {\n                subscriber.error(seenValue ? new NotFoundError('No matching values') : new EmptyError());\n            }\n        }));\n    });\n}\n//# sourceMappingURL=single.js.map"
+    ],
+    "mappings": "AAAA,SAASA,UAAU,QAAQ,oBAAoB;AAC/C,SAASC,aAAa,QAAQ,uBAAuB;AACrD,SAASC,aAAa,QAAQ,uBAAuB;AACrD,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,OAAO,SAASC,MAAMA,CAACC,SAAS,EAAE;EAC9B,OAAOH,OAAO,CAAC,UAAUI,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,QAAQ,GAAG,KAAK;IACpB,IAAIC,WAAW;IACf,IAAIC,SAAS,GAAG,KAAK;IACrB,IAAIC,KAAK,GAAG,CAAC;IACbL,MAAM,CAACM,SAAS,CAACT,wBAAwB,CAACI,UAAU,EAAE,UAAUM,KAAK,EAAE;MACnEH,SAAS,GAAG,IAAI;MAChB,IAAI,CAACL,SAAS,IAAIA,SAAS,CAACQ,KAAK,EAAEF,KAAK,EAAE,EAAEL,MAAM,CAAC,EAAE;QACjDE,QAAQ,IAAID,UAAU,CAACO,KAAK,CAAC,IAAId,aAAa,CAAC,0BAA0B,CAAC,CAAC;QAC3EQ,QAAQ,GAAG,IAAI;QACfC,WAAW,GAAGI,KAAK;MACvB;IACJ,CAAC,EAAE,YAAY;MACX,IAAIL,QAAQ,EAAE;QACVD,UAAU,CAACQ,IAAI,CAACN,WAAW,CAAC;QAC5BF,UAAU,CAACS,QAAQ,CAAC,CAAC;MACzB,CAAC,MACI;QACDT,UAAU,CAACO,KAAK,CAACJ,SAAS,GAAG,IAAIT,aAAa,CAAC,oBAAoB,CAAC,GAAG,IAAIF,UAAU,CAAC,CAAC,CAAC;MAC5F;IACJ,CAAC,CAAC,CAAC;EACP,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

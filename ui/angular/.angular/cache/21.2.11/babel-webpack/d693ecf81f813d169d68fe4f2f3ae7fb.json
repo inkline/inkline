@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { iterator as Symbol_iterator } from '../symbol/iterator';\nimport { isFunction } from './isFunction';\nexport function isIterable(input) {\n  return isFunction(input === null || input === void 0 ? void 0 : input[Symbol_iterator]);\n}\n//# sourceMappingURL=isIterable.js.map",
+  "map": {
+    "version": 3,
+    "names": ["iterator", "Symbol_iterator", "isFunction", "isIterable", "input"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/util/isIterable.js"
+    ],
+    "sourcesContent": [
+      "import { iterator as Symbol_iterator } from '../symbol/iterator';\nimport { isFunction } from './isFunction';\nexport function isIterable(input) {\n    return isFunction(input === null || input === void 0 ? void 0 : input[Symbol_iterator]);\n}\n//# sourceMappingURL=isIterable.js.map"
+    ],
+    "mappings": "AAAA,SAASA,QAAQ,IAAIC,eAAe,QAAQ,oBAAoB;AAChE,SAASC,UAAU,QAAQ,cAAc;AACzC,OAAO,SAASC,UAAUA,CAACC,KAAK,EAAE;EAC9B,OAAOF,UAAU,CAACE,KAAK,KAAK,IAAI,IAAIA,KAAK,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,KAAK,CAACH,eAAe,CAAC,CAAC;AAC3F;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

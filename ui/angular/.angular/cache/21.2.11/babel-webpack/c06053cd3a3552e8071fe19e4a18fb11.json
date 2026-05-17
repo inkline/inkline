@@ -1,0 +1,28 @@
+{
+  "ast": null,
+  "code": "import { asyncScheduler } from '../scheduler/async';\nimport { throttle } from './throttle';\nimport { timer } from '../observable/timer';\nexport function throttleTime(duration, scheduler, config) {\n  if (scheduler === void 0) {\n    scheduler = asyncScheduler;\n  }\n  var duration$ = timer(duration, scheduler);\n  return throttle(function () {\n    return duration$;\n  }, config);\n}\n//# sourceMappingURL=throttleTime.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "asyncScheduler",
+      "throttle",
+      "timer",
+      "throttleTime",
+      "duration",
+      "scheduler",
+      "config",
+      "duration$"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/throttleTime.js"
+    ],
+    "sourcesContent": [
+      "import { asyncScheduler } from '../scheduler/async';\nimport { throttle } from './throttle';\nimport { timer } from '../observable/timer';\nexport function throttleTime(duration, scheduler, config) {\n    if (scheduler === void 0) { scheduler = asyncScheduler; }\n    var duration$ = timer(duration, scheduler);\n    return throttle(function () { return duration$; }, config);\n}\n//# sourceMappingURL=throttleTime.js.map"
+    ],
+    "mappings": "AAAA,SAASA,cAAc,QAAQ,oBAAoB;AACnD,SAASC,QAAQ,QAAQ,YAAY;AACrC,SAASC,KAAK,QAAQ,qBAAqB;AAC3C,OAAO,SAASC,YAAYA,CAACC,QAAQ,EAAEC,SAAS,EAAEC,MAAM,EAAE;EACtD,IAAID,SAAS,KAAK,KAAK,CAAC,EAAE;IAAEA,SAAS,GAAGL,cAAc;EAAE;EACxD,IAAIO,SAAS,GAAGL,KAAK,CAACE,QAAQ,EAAEC,SAAS,CAAC;EAC1C,OAAOJ,QAAQ,CAAC,YAAY;IAAE,OAAOM,SAAS;EAAE,CAAC,EAAED,MAAM,CAAC;AAC9D;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { popScheduler } from '../util/args';\nimport { from } from './from';\nexport function of() {\n  var args = [];\n  for (var _i = 0; _i < arguments.length; _i++) {\n    args[_i] = arguments[_i];\n  }\n  var scheduler = popScheduler(args);\n  return from(args, scheduler);\n}\n//# sourceMappingURL=of.js.map",
+  "map": {
+    "version": 3,
+    "names": ["popScheduler", "from", "of", "args", "_i", "arguments", "length", "scheduler"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/observable/of.js"
+    ],
+    "sourcesContent": [
+      "import { popScheduler } from '../util/args';\nimport { from } from './from';\nexport function of() {\n    var args = [];\n    for (var _i = 0; _i < arguments.length; _i++) {\n        args[_i] = arguments[_i];\n    }\n    var scheduler = popScheduler(args);\n    return from(args, scheduler);\n}\n//# sourceMappingURL=of.js.map"
+    ],
+    "mappings": "AAAA,SAASA,YAAY,QAAQ,cAAc;AAC3C,SAASC,IAAI,QAAQ,QAAQ;AAC7B,OAAO,SAASC,EAAEA,CAAA,EAAG;EACjB,IAAIC,IAAI,GAAG,EAAE;EACb,KAAK,IAAIC,EAAE,GAAG,CAAC,EAAEA,EAAE,GAAGC,SAAS,CAACC,MAAM,EAAEF,EAAE,EAAE,EAAE;IAC1CD,IAAI,CAACC,EAAE,CAAC,GAAGC,SAAS,CAACD,EAAE,CAAC;EAC5B;EACA,IAAIG,SAAS,GAAGP,YAAY,CAACG,IAAI,CAAC;EAClC,OAAOF,IAAI,CAACE,IAAI,EAAEI,SAAS,CAAC;AAChC;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

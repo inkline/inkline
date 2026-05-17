@@ -1,0 +1,31 @@
+{
+  "ast": null,
+  "code": "import { ReplaySubject } from '../ReplaySubject';\nimport { multicast } from './multicast';\nimport { isFunction } from '../util/isFunction';\nexport function publishReplay(bufferSize, windowTime, selectorOrScheduler, timestampProvider) {\n  if (selectorOrScheduler && !isFunction(selectorOrScheduler)) {\n    timestampProvider = selectorOrScheduler;\n  }\n  var selector = isFunction(selectorOrScheduler) ? selectorOrScheduler : undefined;\n  return function (source) {\n    return multicast(new ReplaySubject(bufferSize, windowTime, timestampProvider), selector)(source);\n  };\n}\n//# sourceMappingURL=publishReplay.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "ReplaySubject",
+      "multicast",
+      "isFunction",
+      "publishReplay",
+      "bufferSize",
+      "windowTime",
+      "selectorOrScheduler",
+      "timestampProvider",
+      "selector",
+      "undefined",
+      "source"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/publishReplay.js"
+    ],
+    "sourcesContent": [
+      "import { ReplaySubject } from '../ReplaySubject';\nimport { multicast } from './multicast';\nimport { isFunction } from '../util/isFunction';\nexport function publishReplay(bufferSize, windowTime, selectorOrScheduler, timestampProvider) {\n    if (selectorOrScheduler && !isFunction(selectorOrScheduler)) {\n        timestampProvider = selectorOrScheduler;\n    }\n    var selector = isFunction(selectorOrScheduler) ? selectorOrScheduler : undefined;\n    return function (source) { return multicast(new ReplaySubject(bufferSize, windowTime, timestampProvider), selector)(source); };\n}\n//# sourceMappingURL=publishReplay.js.map"
+    ],
+    "mappings": "AAAA,SAASA,aAAa,QAAQ,kBAAkB;AAChD,SAASC,SAAS,QAAQ,aAAa;AACvC,SAASC,UAAU,QAAQ,oBAAoB;AAC/C,OAAO,SAASC,aAAaA,CAACC,UAAU,EAAEC,UAAU,EAAEC,mBAAmB,EAAEC,iBAAiB,EAAE;EAC1F,IAAID,mBAAmB,IAAI,CAACJ,UAAU,CAACI,mBAAmB,CAAC,EAAE;IACzDC,iBAAiB,GAAGD,mBAAmB;EAC3C;EACA,IAAIE,QAAQ,GAAGN,UAAU,CAACI,mBAAmB,CAAC,GAAGA,mBAAmB,GAAGG,SAAS;EAChF,OAAO,UAAUC,MAAM,EAAE;IAAE,OAAOT,SAAS,CAAC,IAAID,aAAa,CAACI,UAAU,EAAEC,UAAU,EAAEE,iBAAiB,CAAC,EAAEC,QAAQ,CAAC,CAACE,MAAM,CAAC;EAAE,CAAC;AAClI;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,31 @@
+{
+  "ast": null,
+  "code": "import { config } from '../config';\nvar context = null;\nexport function errorContext(cb) {\n  if (config.useDeprecatedSynchronousErrorHandling) {\n    var isRoot = !context;\n    if (isRoot) {\n      context = {\n        errorThrown: false,\n        error: null\n      };\n    }\n    cb();\n    if (isRoot) {\n      var _a = context,\n        errorThrown = _a.errorThrown,\n        error = _a.error;\n      context = null;\n      if (errorThrown) {\n        throw error;\n      }\n    }\n  } else {\n    cb();\n  }\n}\nexport function captureError(err) {\n  if (config.useDeprecatedSynchronousErrorHandling && context) {\n    context.errorThrown = true;\n    context.error = err;\n  }\n}\n//# sourceMappingURL=errorContext.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "config",
+      "context",
+      "errorContext",
+      "cb",
+      "useDeprecatedSynchronousErrorHandling",
+      "isRoot",
+      "errorThrown",
+      "error",
+      "_a",
+      "captureError",
+      "err"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/util/errorContext.js"
+    ],
+    "sourcesContent": [
+      "import { config } from '../config';\nvar context = null;\nexport function errorContext(cb) {\n    if (config.useDeprecatedSynchronousErrorHandling) {\n        var isRoot = !context;\n        if (isRoot) {\n            context = { errorThrown: false, error: null };\n        }\n        cb();\n        if (isRoot) {\n            var _a = context, errorThrown = _a.errorThrown, error = _a.error;\n            context = null;\n            if (errorThrown) {\n                throw error;\n            }\n        }\n    }\n    else {\n        cb();\n    }\n}\nexport function captureError(err) {\n    if (config.useDeprecatedSynchronousErrorHandling && context) {\n        context.errorThrown = true;\n        context.error = err;\n    }\n}\n//# sourceMappingURL=errorContext.js.map"
+    ],
+    "mappings": "AAAA,SAASA,MAAM,QAAQ,WAAW;AAClC,IAAIC,OAAO,GAAG,IAAI;AAClB,OAAO,SAASC,YAAYA,CAACC,EAAE,EAAE;EAC7B,IAAIH,MAAM,CAACI,qCAAqC,EAAE;IAC9C,IAAIC,MAAM,GAAG,CAACJ,OAAO;IACrB,IAAII,MAAM,EAAE;MACRJ,OAAO,GAAG;QAAEK,WAAW,EAAE,KAAK;QAAEC,KAAK,EAAE;MAAK,CAAC;IACjD;IACAJ,EAAE,CAAC,CAAC;IACJ,IAAIE,MAAM,EAAE;MACR,IAAIG,EAAE,GAAGP,OAAO;QAAEK,WAAW,GAAGE,EAAE,CAACF,WAAW;QAAEC,KAAK,GAAGC,EAAE,CAACD,KAAK;MAChEN,OAAO,GAAG,IAAI;MACd,IAAIK,WAAW,EAAE;QACb,MAAMC,KAAK;MACf;IACJ;EACJ,CAAC,MACI;IACDJ,EAAE,CAAC,CAAC;EACR;AACJ;AACA,OAAO,SAASM,YAAYA,CAACC,GAAG,EAAE;EAC9B,IAAIV,MAAM,CAACI,qCAAqC,IAAIH,OAAO,EAAE;IACzDA,OAAO,CAACK,WAAW,GAAG,IAAI;IAC1BL,OAAO,CAACM,KAAK,GAAGG,GAAG;EACvB;AACJ;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

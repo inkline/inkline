@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "export function createInvalidObservableTypeError(input) {\n  return new TypeError(\"You provided \" + (input !== null && typeof input === 'object' ? 'an invalid object' : \"'\" + input + \"'\") + \" where a stream was expected. You can provide an Observable, Promise, ReadableStream, Array, AsyncIterable, or Iterable.\");\n}\n//# sourceMappingURL=throwUnobservableError.js.map",
+  "map": {
+    "version": 3,
+    "names": ["createInvalidObservableTypeError", "input", "TypeError"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/util/throwUnobservableError.js"
+    ],
+    "sourcesContent": [
+      "export function createInvalidObservableTypeError(input) {\n    return new TypeError(\"You provided \" + (input !== null && typeof input === 'object' ? 'an invalid object' : \"'\" + input + \"'\") + \" where a stream was expected. You can provide an Observable, Promise, ReadableStream, Array, AsyncIterable, or Iterable.\");\n}\n//# sourceMappingURL=throwUnobservableError.js.map"
+    ],
+    "mappings": "AAAA,OAAO,SAASA,gCAAgCA,CAACC,KAAK,EAAE;EACpD,OAAO,IAAIC,SAAS,CAAC,eAAe,IAAID,KAAK,KAAK,IAAI,IAAI,OAAOA,KAAK,KAAK,QAAQ,GAAG,mBAAmB,GAAG,GAAG,GAAGA,KAAK,GAAG,GAAG,CAAC,GAAG,0HAA0H,CAAC;AAChQ;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

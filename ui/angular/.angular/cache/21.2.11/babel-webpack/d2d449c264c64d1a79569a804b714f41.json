@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\nconst SemVer = require('../classes/semver');\nconst major = (a, loose) => new SemVer(a, loose).major;\nmodule.exports = major;",
+  "map": {
+    "version": 3,
+    "names": ["SemVer", "require", "major", "a", "loose", "module", "exports"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/semver@7.7.4/node_modules/semver/functions/major.js"
+    ],
+    "sourcesContent": [
+      "'use strict'\n\nconst SemVer = require('../classes/semver')\nconst major = (a, loose) => new SemVer(a, loose).major\nmodule.exports = major\n"
+    ],
+    "mappings": "AAAA,YAAY;;AAEZ,MAAMA,MAAM,GAAGC,OAAO,CAAC,mBAAmB,CAAC;AAC3C,MAAMC,KAAK,GAAGA,CAACC,CAAC,EAAEC,KAAK,KAAK,IAAIJ,MAAM,CAACG,CAAC,EAAEC,KAAK,CAAC,CAACF,KAAK;AACtDG,MAAM,CAACC,OAAO,GAAGJ,KAAK",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

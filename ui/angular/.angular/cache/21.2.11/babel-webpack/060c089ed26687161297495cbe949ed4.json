@@ -1,0 +1,31 @@
+{
+  "ast": null,
+  "code": "import { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function pairwise() {\n  return operate(function (source, subscriber) {\n    var prev;\n    var hasPrev = false;\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      var p = prev;\n      prev = value;\n      hasPrev && subscriber.next([p, value]);\n      hasPrev = true;\n    }));\n  });\n}\n//# sourceMappingURL=pairwise.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "operate",
+      "createOperatorSubscriber",
+      "pairwise",
+      "source",
+      "subscriber",
+      "prev",
+      "hasPrev",
+      "subscribe",
+      "value",
+      "p",
+      "next"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/pairwise.js"
+    ],
+    "sourcesContent": [
+      "import { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function pairwise() {\n    return operate(function (source, subscriber) {\n        var prev;\n        var hasPrev = false;\n        source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n            var p = prev;\n            prev = value;\n            hasPrev && subscriber.next([p, value]);\n            hasPrev = true;\n        }));\n    });\n}\n//# sourceMappingURL=pairwise.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,OAAO,SAASC,QAAQA,CAAA,EAAG;EACvB,OAAOF,OAAO,CAAC,UAAUG,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,IAAI;IACR,IAAIC,OAAO,GAAG,KAAK;IACnBH,MAAM,CAACI,SAAS,CAACN,wBAAwB,CAACG,UAAU,EAAE,UAAUI,KAAK,EAAE;MACnE,IAAIC,CAAC,GAAGJ,IAAI;MACZA,IAAI,GAAGG,KAAK;MACZF,OAAO,IAAIF,UAAU,CAACM,IAAI,CAAC,CAACD,CAAC,EAAED,KAAK,CAAC,CAAC;MACtCF,OAAO,GAAG,IAAI;IAClB,CAAC,CAAC,CAAC;EACP,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

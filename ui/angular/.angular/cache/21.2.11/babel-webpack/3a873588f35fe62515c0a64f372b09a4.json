@@ -1,0 +1,40 @@
+{
+  "ast": null,
+  "code": "import { __extends } from \"tslib\";\nimport { Scheduler } from '../Scheduler';\nvar AsyncScheduler = function (_super) {\n  __extends(AsyncScheduler, _super);\n  function AsyncScheduler(SchedulerAction, now) {\n    if (now === void 0) {\n      now = Scheduler.now;\n    }\n    var _this = _super.call(this, SchedulerAction, now) || this;\n    _this.actions = [];\n    _this._active = false;\n    return _this;\n  }\n  AsyncScheduler.prototype.flush = function (action) {\n    var actions = this.actions;\n    if (this._active) {\n      actions.push(action);\n      return;\n    }\n    var error;\n    this._active = true;\n    do {\n      if (error = action.execute(action.state, action.delay)) {\n        break;\n      }\n    } while (action = actions.shift());\n    this._active = false;\n    if (error) {\n      while (action = actions.shift()) {\n        action.unsubscribe();\n      }\n      throw error;\n    }\n  };\n  return AsyncScheduler;\n}(Scheduler);\nexport { AsyncScheduler };\n//# sourceMappingURL=AsyncScheduler.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "__extends",
+      "Scheduler",
+      "AsyncScheduler",
+      "_super",
+      "SchedulerAction",
+      "now",
+      "_this",
+      "call",
+      "actions",
+      "_active",
+      "prototype",
+      "flush",
+      "action",
+      "push",
+      "error",
+      "execute",
+      "state",
+      "delay",
+      "shift",
+      "unsubscribe"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/scheduler/AsyncScheduler.js"
+    ],
+    "sourcesContent": [
+      "import { __extends } from \"tslib\";\nimport { Scheduler } from '../Scheduler';\nvar AsyncScheduler = (function (_super) {\n    __extends(AsyncScheduler, _super);\n    function AsyncScheduler(SchedulerAction, now) {\n        if (now === void 0) { now = Scheduler.now; }\n        var _this = _super.call(this, SchedulerAction, now) || this;\n        _this.actions = [];\n        _this._active = false;\n        return _this;\n    }\n    AsyncScheduler.prototype.flush = function (action) {\n        var actions = this.actions;\n        if (this._active) {\n            actions.push(action);\n            return;\n        }\n        var error;\n        this._active = true;\n        do {\n            if ((error = action.execute(action.state, action.delay))) {\n                break;\n            }\n        } while ((action = actions.shift()));\n        this._active = false;\n        if (error) {\n            while ((action = actions.shift())) {\n                action.unsubscribe();\n            }\n            throw error;\n        }\n    };\n    return AsyncScheduler;\n}(Scheduler));\nexport { AsyncScheduler };\n//# sourceMappingURL=AsyncScheduler.js.map"
+    ],
+    "mappings": "AAAA,SAASA,SAAS,QAAQ,OAAO;AACjC,SAASC,SAAS,QAAQ,cAAc;AACxC,IAAIC,cAAc,GAAI,UAAUC,MAAM,EAAE;EACpCH,SAAS,CAACE,cAAc,EAAEC,MAAM,CAAC;EACjC,SAASD,cAAcA,CAACE,eAAe,EAAEC,GAAG,EAAE;IAC1C,IAAIA,GAAG,KAAK,KAAK,CAAC,EAAE;MAAEA,GAAG,GAAGJ,SAAS,CAACI,GAAG;IAAE;IAC3C,IAAIC,KAAK,GAAGH,MAAM,CAACI,IAAI,CAAC,IAAI,EAAEH,eAAe,EAAEC,GAAG,CAAC,IAAI,IAAI;IAC3DC,KAAK,CAACE,OAAO,GAAG,EAAE;IAClBF,KAAK,CAACG,OAAO,GAAG,KAAK;IACrB,OAAOH,KAAK;EAChB;EACAJ,cAAc,CAACQ,SAAS,CAACC,KAAK,GAAG,UAAUC,MAAM,EAAE;IAC/C,IAAIJ,OAAO,GAAG,IAAI,CAACA,OAAO;IAC1B,IAAI,IAAI,CAACC,OAAO,EAAE;MACdD,OAAO,CAACK,IAAI,CAACD,MAAM,CAAC;MACpB;IACJ;IACA,IAAIE,KAAK;IACT,IAAI,CAACL,OAAO,GAAG,IAAI;IACnB,GAAG;MACC,IAAKK,KAAK,GAAGF,MAAM,CAACG,OAAO,CAACH,MAAM,CAACI,KAAK,EAAEJ,MAAM,CAACK,KAAK,CAAC,EAAG;QACtD;MACJ;IACJ,CAAC,QAASL,MAAM,GAAGJ,OAAO,CAACU,KAAK,CAAC,CAAC;IAClC,IAAI,CAACT,OAAO,GAAG,KAAK;IACpB,IAAIK,KAAK,EAAE;MACP,OAAQF,MAAM,GAAGJ,OAAO,CAACU,KAAK,CAAC,CAAC,EAAG;QAC/BN,MAAM,CAACO,WAAW,CAAC,CAAC;MACxB;MACA,MAAML,KAAK;IACf;EACJ,CAAC;EACD,OAAOZ,cAAc;AACzB,CAAC,CAACD,SAAS,CAAE;AACb,SAASC,cAAc;AACvB",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

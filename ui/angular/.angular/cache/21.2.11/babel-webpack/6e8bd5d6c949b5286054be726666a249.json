@@ -1,0 +1,34 @@
+{
+  "ast": null,
+  "code": "import { EmptyError } from '../util/EmptyError';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function throwIfEmpty(errorFactory) {\n  if (errorFactory === void 0) {\n    errorFactory = defaultErrorFactory;\n  }\n  return operate(function (source, subscriber) {\n    var hasValue = false;\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      hasValue = true;\n      subscriber.next(value);\n    }, function () {\n      return hasValue ? subscriber.complete() : subscriber.error(errorFactory());\n    }));\n  });\n}\nfunction defaultErrorFactory() {\n  return new EmptyError();\n}\n//# sourceMappingURL=throwIfEmpty.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "EmptyError",
+      "operate",
+      "createOperatorSubscriber",
+      "throwIfEmpty",
+      "errorFactory",
+      "defaultErrorFactory",
+      "source",
+      "subscriber",
+      "hasValue",
+      "subscribe",
+      "value",
+      "next",
+      "complete",
+      "error"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/throwIfEmpty.js"
+    ],
+    "sourcesContent": [
+      "import { EmptyError } from '../util/EmptyError';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function throwIfEmpty(errorFactory) {\n    if (errorFactory === void 0) { errorFactory = defaultErrorFactory; }\n    return operate(function (source, subscriber) {\n        var hasValue = false;\n        source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n            hasValue = true;\n            subscriber.next(value);\n        }, function () { return (hasValue ? subscriber.complete() : subscriber.error(errorFactory())); }));\n    });\n}\nfunction defaultErrorFactory() {\n    return new EmptyError();\n}\n//# sourceMappingURL=throwIfEmpty.js.map"
+    ],
+    "mappings": "AAAA,SAASA,UAAU,QAAQ,oBAAoB;AAC/C,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,OAAO,SAASC,YAAYA,CAACC,YAAY,EAAE;EACvC,IAAIA,YAAY,KAAK,KAAK,CAAC,EAAE;IAAEA,YAAY,GAAGC,mBAAmB;EAAE;EACnE,OAAOJ,OAAO,CAAC,UAAUK,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,QAAQ,GAAG,KAAK;IACpBF,MAAM,CAACG,SAAS,CAACP,wBAAwB,CAACK,UAAU,EAAE,UAAUG,KAAK,EAAE;MACnEF,QAAQ,GAAG,IAAI;MACfD,UAAU,CAACI,IAAI,CAACD,KAAK,CAAC;IAC1B,CAAC,EAAE,YAAY;MAAE,OAAQF,QAAQ,GAAGD,UAAU,CAACK,QAAQ,CAAC,CAAC,GAAGL,UAAU,CAACM,KAAK,CAACT,YAAY,CAAC,CAAC,CAAC;IAAG,CAAC,CAAC,CAAC;EACtG,CAAC,CAAC;AACN;AACA,SAASC,mBAAmBA,CAAA,EAAG;EAC3B,OAAO,IAAIL,UAAU,CAAC,CAAC;AAC3B;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

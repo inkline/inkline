@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\nconst compare = require('./compare');\nconst lte = (a, b, loose) => compare(a, b, loose) <= 0;\nmodule.exports = lte;",
+  "map": {
+    "version": 3,
+    "names": ["compare", "require", "lte", "a", "b", "loose", "module", "exports"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/semver@7.7.4/node_modules/semver/functions/lte.js"
+    ],
+    "sourcesContent": [
+      "'use strict'\n\nconst compare = require('./compare')\nconst lte = (a, b, loose) => compare(a, b, loose) <= 0\nmodule.exports = lte\n"
+    ],
+    "mappings": "AAAA,YAAY;;AAEZ,MAAMA,OAAO,GAAGC,OAAO,CAAC,WAAW,CAAC;AACpC,MAAMC,GAAG,GAAGA,CAACC,CAAC,EAAEC,CAAC,EAAEC,KAAK,KAAKL,OAAO,CAACG,CAAC,EAAEC,CAAC,EAAEC,KAAK,CAAC,IAAI,CAAC;AACtDC,MAAM,CAACC,OAAO,GAAGL,GAAG",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

@@ -1,0 +1,27 @@
+{
+  "ast": null,
+  "code": "// src/highlight/constants.ts\nvar ADDON_ID = \"storybook/highlight\",\n  HIGHLIGHT = `${ADDON_ID}/add`,\n  REMOVE_HIGHLIGHT = `${ADDON_ID}/remove`,\n  RESET_HIGHLIGHT = `${ADDON_ID}/reset`,\n  SCROLL_INTO_VIEW = `${ADDON_ID}/scroll-into-view`,\n  MAX_Z_INDEX = 2147483647,\n  MIN_TOUCH_AREA_SIZE = 28;\nexport { HIGHLIGHT, REMOVE_HIGHLIGHT, RESET_HIGHLIGHT, SCROLL_INTO_VIEW, MAX_Z_INDEX, MIN_TOUCH_AREA_SIZE };",
+  "map": {
+    "version": 3,
+    "names": [
+      "ADDON_ID",
+      "HIGHLIGHT",
+      "REMOVE_HIGHLIGHT",
+      "RESET_HIGHLIGHT",
+      "SCROLL_INTO_VIEW",
+      "MAX_Z_INDEX",
+      "MIN_TOUCH_AREA_SIZE"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/storybook@10.4.0_@emnapi+core@1.10.0_@emnapi+runtime@1.10.0_@testing-library+dom@10.4.1_698ffd59787bff4c7efa752470741c90/node_modules/storybook/dist/_browser-chunks/chunk-KJHJLCBK.js"
+    ],
+    "sourcesContent": [
+      "// src/highlight/constants.ts\nvar ADDON_ID = \"storybook/highlight\", HIGHLIGHT = `${ADDON_ID}/add`, REMOVE_HIGHLIGHT = `${ADDON_ID}/remove`, RESET_HIGHLIGHT = `${ADDON_ID}/reset`, SCROLL_INTO_VIEW = `${ADDON_ID}/scroll-into-view`, MAX_Z_INDEX = 2147483647, MIN_TOUCH_AREA_SIZE = 28;\n\nexport {\n  HIGHLIGHT,\n  REMOVE_HIGHLIGHT,\n  RESET_HIGHLIGHT,\n  SCROLL_INTO_VIEW,\n  MAX_Z_INDEX,\n  MIN_TOUCH_AREA_SIZE\n};\n"
+    ],
+    "mappings": "AAAA;AACA,IAAIA,QAAQ,GAAG,qBAAqB;EAAEC,SAAS,GAAG,GAAGD,QAAQ,MAAM;EAAEE,gBAAgB,GAAG,GAAGF,QAAQ,SAAS;EAAEG,eAAe,GAAG,GAAGH,QAAQ,QAAQ;EAAEI,gBAAgB,GAAG,GAAGJ,QAAQ,mBAAmB;EAAEK,WAAW,GAAG,UAAU;EAAEC,mBAAmB,GAAG,EAAE;AAE1P,SACEL,SAAS,EACTC,gBAAgB,EAChBC,eAAe,EACfC,gBAAgB,EAChBC,WAAW,EACXC,mBAAmB",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

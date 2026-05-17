@@ -1,0 +1,48 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\nconst SemVer = require('../classes/semver');\nconst Range = require('../classes/range');\nconst gt = require('../functions/gt');\nconst minVersion = (range, loose) => {\n  range = new Range(range, loose);\n  let minver = new SemVer('0.0.0');\n  if (range.test(minver)) {\n    return minver;\n  }\n  minver = new SemVer('0.0.0-0');\n  if (range.test(minver)) {\n    return minver;\n  }\n  minver = null;\n  for (let i = 0; i < range.set.length; ++i) {\n    const comparators = range.set[i];\n    let setMin = null;\n    comparators.forEach(comparator => {\n      // Clone to avoid manipulating the comparator's semver object.\n      const compver = new SemVer(comparator.semver.version);\n      switch (comparator.operator) {\n        case '>':\n          if (compver.prerelease.length === 0) {\n            compver.patch++;\n          } else {\n            compver.prerelease.push(0);\n          }\n          compver.raw = compver.format();\n        /* fallthrough */\n        case '':\n        case '>=':\n          if (!setMin || gt(compver, setMin)) {\n            setMin = compver;\n          }\n          break;\n        case '<':\n        case '<=':\n          /* Ignore maximum versions */\n          break;\n        /* istanbul ignore next */\n        default:\n          throw new Error(`Unexpected operation: ${comparator.operator}`);\n      }\n    });\n    if (setMin && (!minver || gt(minver, setMin))) {\n      minver = setMin;\n    }\n  }\n  if (minver && range.test(minver)) {\n    return minver;\n  }\n  return null;\n};\nmodule.exports = minVersion;",
+  "map": {
+    "version": 3,
+    "names": [
+      "SemVer",
+      "require",
+      "Range",
+      "gt",
+      "minVersion",
+      "range",
+      "loose",
+      "minver",
+      "test",
+      "i",
+      "set",
+      "length",
+      "comparators",
+      "setMin",
+      "forEach",
+      "comparator",
+      "compver",
+      "semver",
+      "version",
+      "operator",
+      "prerelease",
+      "patch",
+      "push",
+      "raw",
+      "format",
+      "Error",
+      "module",
+      "exports"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/semver@7.7.4/node_modules/semver/ranges/min-version.js"
+    ],
+    "sourcesContent": [
+      "'use strict'\n\nconst SemVer = require('../classes/semver')\nconst Range = require('../classes/range')\nconst gt = require('../functions/gt')\n\nconst minVersion = (range, loose) => {\n  range = new Range(range, loose)\n\n  let minver = new SemVer('0.0.0')\n  if (range.test(minver)) {\n    return minver\n  }\n\n  minver = new SemVer('0.0.0-0')\n  if (range.test(minver)) {\n    return minver\n  }\n\n  minver = null\n  for (let i = 0; i < range.set.length; ++i) {\n    const comparators = range.set[i]\n\n    let setMin = null\n    comparators.forEach((comparator) => {\n      // Clone to avoid manipulating the comparator's semver object.\n      const compver = new SemVer(comparator.semver.version)\n      switch (comparator.operator) {\n        case '>':\n          if (compver.prerelease.length === 0) {\n            compver.patch++\n          } else {\n            compver.prerelease.push(0)\n          }\n          compver.raw = compver.format()\n          /* fallthrough */\n        case '':\n        case '>=':\n          if (!setMin || gt(compver, setMin)) {\n            setMin = compver\n          }\n          break\n        case '<':\n        case '<=':\n          /* Ignore maximum versions */\n          break\n        /* istanbul ignore next */\n        default:\n          throw new Error(`Unexpected operation: ${comparator.operator}`)\n      }\n    })\n    if (setMin && (!minver || gt(minver, setMin))) {\n      minver = setMin\n    }\n  }\n\n  if (minver && range.test(minver)) {\n    return minver\n  }\n\n  return null\n}\nmodule.exports = minVersion\n"
+    ],
+    "mappings": "AAAA,YAAY;;AAEZ,MAAMA,MAAM,GAAGC,OAAO,CAAC,mBAAmB,CAAC;AAC3C,MAAMC,KAAK,GAAGD,OAAO,CAAC,kBAAkB,CAAC;AACzC,MAAME,EAAE,GAAGF,OAAO,CAAC,iBAAiB,CAAC;AAErC,MAAMG,UAAU,GAAGA,CAACC,KAAK,EAAEC,KAAK,KAAK;EACnCD,KAAK,GAAG,IAAIH,KAAK,CAACG,KAAK,EAAEC,KAAK,CAAC;EAE/B,IAAIC,MAAM,GAAG,IAAIP,MAAM,CAAC,OAAO,CAAC;EAChC,IAAIK,KAAK,CAACG,IAAI,CAACD,MAAM,CAAC,EAAE;IACtB,OAAOA,MAAM;EACf;EAEAA,MAAM,GAAG,IAAIP,MAAM,CAAC,SAAS,CAAC;EAC9B,IAAIK,KAAK,CAACG,IAAI,CAACD,MAAM,CAAC,EAAE;IACtB,OAAOA,MAAM;EACf;EAEAA,MAAM,GAAG,IAAI;EACb,KAAK,IAAIE,CAAC,GAAG,CAAC,EAAEA,CAAC,GAAGJ,KAAK,CAACK,GAAG,CAACC,MAAM,EAAE,EAAEF,CAAC,EAAE;IACzC,MAAMG,WAAW,GAAGP,KAAK,CAACK,GAAG,CAACD,CAAC,CAAC;IAEhC,IAAII,MAAM,GAAG,IAAI;IACjBD,WAAW,CAACE,OAAO,CAAEC,UAAU,IAAK;MAClC;MACA,MAAMC,OAAO,GAAG,IAAIhB,MAAM,CAACe,UAAU,CAACE,MAAM,CAACC,OAAO,CAAC;MACrD,QAAQH,UAAU,CAACI,QAAQ;QACzB,KAAK,GAAG;UACN,IAAIH,OAAO,CAACI,UAAU,CAACT,MAAM,KAAK,CAAC,EAAE;YACnCK,OAAO,CAACK,KAAK,EAAE;UACjB,CAAC,MAAM;YACLL,OAAO,CAACI,UAAU,CAACE,IAAI,CAAC,CAAC,CAAC;UAC5B;UACAN,OAAO,CAACO,GAAG,GAAGP,OAAO,CAACQ,MAAM,CAAC,CAAC;QAC9B;QACF,KAAK,EAAE;QACP,KAAK,IAAI;UACP,IAAI,CAACX,MAAM,IAAIV,EAAE,CAACa,OAAO,EAAEH,MAAM,CAAC,EAAE;YAClCA,MAAM,GAAGG,OAAO;UAClB;UACA;QACF,KAAK,GAAG;QACR,KAAK,IAAI;UACP;UACA;QACF;QACA;UACE,MAAM,IAAIS,KAAK,CAAC,yBAAyBV,UAAU,CAACI,QAAQ,EAAE,CAAC;MACnE;IACF,CAAC,CAAC;IACF,IAAIN,MAAM,KAAK,CAACN,MAAM,IAAIJ,EAAE,CAACI,MAAM,EAAEM,MAAM,CAAC,CAAC,EAAE;MAC7CN,MAAM,GAAGM,MAAM;IACjB;EACF;EAEA,IAAIN,MAAM,IAAIF,KAAK,CAACG,IAAI,CAACD,MAAM,CAAC,EAAE;IAChC,OAAOA,MAAM;EACf;EAEA,OAAO,IAAI;AACb,CAAC;AACDmB,MAAM,CAACC,OAAO,GAAGvB,UAAU",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

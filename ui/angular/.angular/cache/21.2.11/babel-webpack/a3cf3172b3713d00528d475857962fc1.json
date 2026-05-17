@@ -1,0 +1,34 @@
+{
+  "ast": null,
+  "code": "/**\n * @license Angular v19.2.22\n * (c) 2010-2025 Google LLC. https://angular.io/\n * License: MIT\n */\n\n/**\n * Current injector value used by `inject`.\n * - `undefined`: it is an error to call `inject`\n * - `null`: `inject` can be called but there is no injector (limp-mode).\n * - Injector instance: Use the injector for resolution.\n */\nlet _currentInjector = undefined;\nfunction getCurrentInjector() {\n  return _currentInjector;\n}\nfunction setCurrentInjector(injector) {\n  const former = _currentInjector;\n  _currentInjector = injector;\n  return former;\n}\n\n/**\n * Value returned if the key-value pair couldn't be found in the context\n * hierarchy.\n */\nconst NOT_FOUND = Symbol('NotFound');\n/**\n * Error thrown when the key-value pair couldn't be found in the context\n * hierarchy. Context can be attached below.\n */\nclass NotFoundError extends Error {\n  constructor(message) {\n    super(message);\n  }\n}\n/**\n * Type guard for checking if an unknown value is a NotFound.\n */\nfunction isNotFound(e) {\n  return e === NOT_FOUND || e instanceof NotFoundError;\n}\nexport { NOT_FOUND, NotFoundError, getCurrentInjector, isNotFound, setCurrentInjector };\n//# sourceMappingURL=di.mjs.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "_currentInjector",
+      "undefined",
+      "getCurrentInjector",
+      "setCurrentInjector",
+      "injector",
+      "former",
+      "NOT_FOUND",
+      "Symbol",
+      "NotFoundError",
+      "Error",
+      "constructor",
+      "message",
+      "isNotFound",
+      "e"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@angular+core@19.2.22_rxjs@7.8.2_zone.js@0.15.1/node_modules/@angular/core/fesm2022/primitives/di.mjs"
+    ],
+    "sourcesContent": [
+      "/**\n * @license Angular v19.2.22\n * (c) 2010-2025 Google LLC. https://angular.io/\n * License: MIT\n */\n\n/**\n * Current injector value used by `inject`.\n * - `undefined`: it is an error to call `inject`\n * - `null`: `inject` can be called but there is no injector (limp-mode).\n * - Injector instance: Use the injector for resolution.\n */\nlet _currentInjector = undefined;\nfunction getCurrentInjector() {\n    return _currentInjector;\n}\nfunction setCurrentInjector(injector) {\n    const former = _currentInjector;\n    _currentInjector = injector;\n    return former;\n}\n\n/**\n * Value returned if the key-value pair couldn't be found in the context\n * hierarchy.\n */\nconst NOT_FOUND = Symbol('NotFound');\n/**\n * Error thrown when the key-value pair couldn't be found in the context\n * hierarchy. Context can be attached below.\n */\nclass NotFoundError extends Error {\n    constructor(message) {\n        super(message);\n    }\n}\n/**\n * Type guard for checking if an unknown value is a NotFound.\n */\nfunction isNotFound(e) {\n    return e === NOT_FOUND || e instanceof NotFoundError;\n}\n\nexport { NOT_FOUND, NotFoundError, getCurrentInjector, isNotFound, setCurrentInjector };\n//# sourceMappingURL=di.mjs.map\n"
+    ],
+    "mappings": "AAAA;AACA;AACA;AACA;AACA;;AAEA;AACA;AACA;AACA;AACA;AACA;AACA,IAAIA,gBAAgB,GAAGC,SAAS;AAChC,SAASC,kBAAkBA,CAAA,EAAG;EAC1B,OAAOF,gBAAgB;AAC3B;AACA,SAASG,kBAAkBA,CAACC,QAAQ,EAAE;EAClC,MAAMC,MAAM,GAAGL,gBAAgB;EAC/BA,gBAAgB,GAAGI,QAAQ;EAC3B,OAAOC,MAAM;AACjB;;AAEA;AACA;AACA;AACA;AACA,MAAMC,SAAS,GAAGC,MAAM,CAAC,UAAU,CAAC;AACpC;AACA;AACA;AACA;AACA,MAAMC,aAAa,SAASC,KAAK,CAAC;EAC9BC,WAAWA,CAACC,OAAO,EAAE;IACjB,KAAK,CAACA,OAAO,CAAC;EAClB;AACJ;AACA;AACA;AACA;AACA,SAASC,UAAUA,CAACC,CAAC,EAAE;EACnB,OAAOA,CAAC,KAAKP,SAAS,IAAIO,CAAC,YAAYL,aAAa;AACxD;AAEA,SAASF,SAAS,EAAEE,aAAa,EAAEN,kBAAkB,EAAEU,UAAU,EAAET,kBAAkB;AACrF",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

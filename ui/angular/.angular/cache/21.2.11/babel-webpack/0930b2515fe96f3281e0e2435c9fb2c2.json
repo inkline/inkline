@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { decorators, parameters } from \"../../_browser-chunks/chunk-KKFRD2ZH.js\";\nimport \"../../_browser-chunks/chunk-6PLRDPVY.js\";\nexport { decorators, parameters };",
+  "map": {
+    "version": 3,
+    "names": ["decorators", "parameters"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_17cf74cc4e48de6f4001a19f757fd7ae/node_modules/@storybook/angular/dist/client/docs/config.js"
+    ],
+    "sourcesContent": [
+      "import {\n  decorators,\n  parameters\n} from \"../../_browser-chunks/chunk-KKFRD2ZH.js\";\nimport \"../../_browser-chunks/chunk-6PLRDPVY.js\";\nexport {\n  decorators,\n  parameters\n};\n"
+    ],
+    "mappings": "AAAA,SACEA,UAAU,EACVC,UAAU,QACL,yCAAyC;AAChD,OAAO,yCAAyC;AAChD,SACED,UAAU,EACVC,UAAU",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

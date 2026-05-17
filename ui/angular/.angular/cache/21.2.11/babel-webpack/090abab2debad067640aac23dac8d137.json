@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { observable as Symbol_observable } from '../symbol/observable';\nimport { isFunction } from './isFunction';\nexport function isInteropObservable(input) {\n  return isFunction(input[Symbol_observable]);\n}\n//# sourceMappingURL=isInteropObservable.js.map",
+  "map": {
+    "version": 3,
+    "names": ["observable", "Symbol_observable", "isFunction", "isInteropObservable", "input"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/util/isInteropObservable.js"
+    ],
+    "sourcesContent": [
+      "import { observable as Symbol_observable } from '../symbol/observable';\nimport { isFunction } from './isFunction';\nexport function isInteropObservable(input) {\n    return isFunction(input[Symbol_observable]);\n}\n//# sourceMappingURL=isInteropObservable.js.map"
+    ],
+    "mappings": "AAAA,SAASA,UAAU,IAAIC,iBAAiB,QAAQ,sBAAsB;AACtE,SAASC,UAAU,QAAQ,cAAc;AACzC,OAAO,SAASC,mBAAmBA,CAACC,KAAK,EAAE;EACvC,OAAOF,UAAU,CAACE,KAAK,CAACH,iBAAiB,CAAC,CAAC;AAC/C;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,41 @@
+{
+  "ast": null,
+  "code": "/**\n * @license Angular v21.2.13\n * (c) 2010-2026 Google LLC. https://angular.dev/\n * License: MIT\n */\n\nimport * as i0 from '@angular/core';\nimport { InjectionToken, Injectable } from '@angular/core';\nconst PRECOMMIT_HANDLER_SUPPORTED = new InjectionToken('', {\n  factory: () => {\n    return typeof window !== 'undefined' && typeof window.NavigationPrecommitController !== 'undefined';\n  }\n});\nclass PlatformNavigation {\n  static ɵfac = function PlatformNavigation_Factory(__ngFactoryType__) {\n    return new (__ngFactoryType__ || PlatformNavigation)();\n  };\n  static ɵprov = /* @__PURE__ */i0.ɵɵdefineInjectable({\n    token: PlatformNavigation,\n    factory: () => (() => window.navigation)(),\n    providedIn: 'platform'\n  });\n}\n(() => {\n  (typeof ngDevMode === \"undefined\" || ngDevMode) && i0.ɵsetClassMetadata(PlatformNavigation, [{\n    type: Injectable,\n    args: [{\n      providedIn: 'platform',\n      useFactory: () => window.navigation\n    }]\n  }], null, null);\n})();\nexport { PRECOMMIT_HANDLER_SUPPORTED, PlatformNavigation };\n//# sourceMappingURL=_platform_navigation-chunk.mjs.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "i0",
+      "InjectionToken",
+      "Injectable",
+      "PRECOMMIT_HANDLER_SUPPORTED",
+      "factory",
+      "window",
+      "NavigationPrecommitController",
+      "PlatformNavigation",
+      "ɵfac",
+      "PlatformNavigation_Factory",
+      "__ngFactoryType__",
+      "ɵprov",
+      "ɵɵdefineInjectable",
+      "token",
+      "navigation",
+      "providedIn",
+      "ngDevMode",
+      "ɵsetClassMetadata",
+      "type",
+      "args",
+      "useFactory"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@angular+common@21.2.13_@angular+core@21.2.13_@angular+compiler@21.2.13_rxjs@7.8.2_zone.js@0.15.1__rxjs@7.8.2/node_modules/@angular/common/fesm2022/_platform_navigation-chunk.mjs"
+    ],
+    "sourcesContent": [
+      "/**\n * @license Angular v21.2.13\n * (c) 2010-2026 Google LLC. https://angular.dev/\n * License: MIT\n */\n\nimport * as i0 from '@angular/core';\nimport { InjectionToken, Injectable } from '@angular/core';\n\nconst PRECOMMIT_HANDLER_SUPPORTED = new InjectionToken('', {\n  factory: () => {\n    return typeof window !== 'undefined' && typeof window.NavigationPrecommitController !== 'undefined';\n  }\n});\nclass PlatformNavigation {\n  static ɵfac = i0.ɵɵngDeclareFactory({\n    minVersion: \"12.0.0\",\n    version: \"21.2.13\",\n    ngImport: i0,\n    type: PlatformNavigation,\n    deps: [],\n    target: i0.ɵɵFactoryTarget.Injectable\n  });\n  static ɵprov = i0.ɵɵngDeclareInjectable({\n    minVersion: \"12.0.0\",\n    version: \"21.2.13\",\n    ngImport: i0,\n    type: PlatformNavigation,\n    providedIn: 'platform',\n    useFactory: () => window.navigation\n  });\n}\ni0.ɵɵngDeclareClassMetadata({\n  minVersion: \"12.0.0\",\n  version: \"21.2.13\",\n  ngImport: i0,\n  type: PlatformNavigation,\n  decorators: [{\n    type: Injectable,\n    args: [{\n      providedIn: 'platform',\n      useFactory: () => window.navigation\n    }]\n  }]\n});\n\nexport { PRECOMMIT_HANDLER_SUPPORTED, PlatformNavigation };\n//# sourceMappingURL=_platform_navigation-chunk.mjs.map\n"
+    ],
+    "mappings": "AAAA;AACA;AACA;AACA;AACA;;AAEA,OAAO,KAAKA,EAAE,MAAM,eAAe;AACnC,SAASC,cAAc,EAAEC,UAAU,QAAQ,eAAe;AAE1D,MAAMC,2BAA2B,GAAG,IAAIF,cAAc,CAAC,EAAE,EAAE;EACzDG,OAAO,EAAEA,CAAA,KAAM;IACb,OAAO,OAAOC,MAAM,KAAK,WAAW,IAAI,OAAOA,MAAM,CAACC,6BAA6B,KAAK,WAAW;EACrG;AACF,CAAC,CAAC;AACF,MAAMC,kBAAkB,CAAC;EACvB,OAAOC,IAAI,YAAAC,2BAAAC,iBAAA;IAAA,YAAAA,iBAAA,IAIHH,kBAAkB;EAAA;EAI1B,OAAOI,KAAK,kBALAX,EAAE,CAAAY,kBAAA;IAAAC,KAAA,EASNN,kBAAkB;IAAAH,OAAA,EAAAA,CAAA,MAEZ,MAAMC,MAAM,CAACS,UAAU;IAAAC,UAAA,EADvB;EAAU;AAG1B;AACA;EAAA,QAAAC,SAAA,oBAAAA,SAAA,KAdchB,EAAE,CAAAiB,iBAAA,CAkBRV,kBAAkB,EACZ,CAAC;IACXW,IAAI,EAAEhB,UAAU;IAChBiB,IAAI,EAAE,CAAC;MACLJ,UAAU,EAAE,UAAU;MACtBK,UAAU,EAAEA,CAAA,KAAMf,MAAM,CAACS;IAC3B,CAAC;EACH,CAAC,CAAC;AAAA;AAGJ,SAASX,2BAA2B,EAAEI,kBAAkB;AACxD",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

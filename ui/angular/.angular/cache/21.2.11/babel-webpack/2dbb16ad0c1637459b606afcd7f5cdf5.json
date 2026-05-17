@@ -1,0 +1,37 @@
+{
+  "ast": null,
+  "code": "var nextHandle = 1;\nvar resolved;\nvar activeHandles = {};\nfunction findAndClearHandle(handle) {\n  if (handle in activeHandles) {\n    delete activeHandles[handle];\n    return true;\n  }\n  return false;\n}\nexport var Immediate = {\n  setImmediate: function (cb) {\n    var handle = nextHandle++;\n    activeHandles[handle] = true;\n    if (!resolved) {\n      resolved = Promise.resolve();\n    }\n    resolved.then(function () {\n      return findAndClearHandle(handle) && cb();\n    });\n    return handle;\n  },\n  clearImmediate: function (handle) {\n    findAndClearHandle(handle);\n  }\n};\nexport var TestTools = {\n  pending: function () {\n    return Object.keys(activeHandles).length;\n  }\n};\n//# sourceMappingURL=Immediate.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "nextHandle",
+      "resolved",
+      "activeHandles",
+      "findAndClearHandle",
+      "handle",
+      "Immediate",
+      "setImmediate",
+      "cb",
+      "Promise",
+      "resolve",
+      "then",
+      "clearImmediate",
+      "TestTools",
+      "pending",
+      "Object",
+      "keys",
+      "length"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/util/Immediate.js"
+    ],
+    "sourcesContent": [
+      "var nextHandle = 1;\nvar resolved;\nvar activeHandles = {};\nfunction findAndClearHandle(handle) {\n    if (handle in activeHandles) {\n        delete activeHandles[handle];\n        return true;\n    }\n    return false;\n}\nexport var Immediate = {\n    setImmediate: function (cb) {\n        var handle = nextHandle++;\n        activeHandles[handle] = true;\n        if (!resolved) {\n            resolved = Promise.resolve();\n        }\n        resolved.then(function () { return findAndClearHandle(handle) && cb(); });\n        return handle;\n    },\n    clearImmediate: function (handle) {\n        findAndClearHandle(handle);\n    },\n};\nexport var TestTools = {\n    pending: function () {\n        return Object.keys(activeHandles).length;\n    }\n};\n//# sourceMappingURL=Immediate.js.map"
+    ],
+    "mappings": "AAAA,IAAIA,UAAU,GAAG,CAAC;AAClB,IAAIC,QAAQ;AACZ,IAAIC,aAAa,GAAG,CAAC,CAAC;AACtB,SAASC,kBAAkBA,CAACC,MAAM,EAAE;EAChC,IAAIA,MAAM,IAAIF,aAAa,EAAE;IACzB,OAAOA,aAAa,CAACE,MAAM,CAAC;IAC5B,OAAO,IAAI;EACf;EACA,OAAO,KAAK;AAChB;AACA,OAAO,IAAIC,SAAS,GAAG;EACnBC,YAAY,EAAE,SAAAA,CAAUC,EAAE,EAAE;IACxB,IAAIH,MAAM,GAAGJ,UAAU,EAAE;IACzBE,aAAa,CAACE,MAAM,CAAC,GAAG,IAAI;IAC5B,IAAI,CAACH,QAAQ,EAAE;MACXA,QAAQ,GAAGO,OAAO,CAACC,OAAO,CAAC,CAAC;IAChC;IACAR,QAAQ,CAACS,IAAI,CAAC,YAAY;MAAE,OAAOP,kBAAkB,CAACC,MAAM,CAAC,IAAIG,EAAE,CAAC,CAAC;IAAE,CAAC,CAAC;IACzE,OAAOH,MAAM;EACjB,CAAC;EACDO,cAAc,EAAE,SAAAA,CAAUP,MAAM,EAAE;IAC9BD,kBAAkB,CAACC,MAAM,CAAC;EAC9B;AACJ,CAAC;AACD,OAAO,IAAIQ,SAAS,GAAG;EACnBC,OAAO,EAAE,SAAAA,CAAA,EAAY;IACjB,OAAOC,MAAM,CAACC,IAAI,CAACb,aAAa,CAAC,CAACc,MAAM;EAC5C;AACJ,CAAC;AACD",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

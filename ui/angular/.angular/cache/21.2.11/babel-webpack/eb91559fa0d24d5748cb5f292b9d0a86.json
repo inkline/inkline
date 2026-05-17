@@ -1,0 +1,43 @@
+{
+  "ast": null,
+  "code": "import { __extends } from \"tslib\";\nimport { AsyncAction } from './AsyncAction';\nimport { animationFrameProvider } from './animationFrameProvider';\nvar AnimationFrameAction = function (_super) {\n  __extends(AnimationFrameAction, _super);\n  function AnimationFrameAction(scheduler, work) {\n    var _this = _super.call(this, scheduler, work) || this;\n    _this.scheduler = scheduler;\n    _this.work = work;\n    return _this;\n  }\n  AnimationFrameAction.prototype.requestAsyncId = function (scheduler, id, delay) {\n    if (delay === void 0) {\n      delay = 0;\n    }\n    if (delay !== null && delay > 0) {\n      return _super.prototype.requestAsyncId.call(this, scheduler, id, delay);\n    }\n    scheduler.actions.push(this);\n    return scheduler._scheduled || (scheduler._scheduled = animationFrameProvider.requestAnimationFrame(function () {\n      return scheduler.flush(undefined);\n    }));\n  };\n  AnimationFrameAction.prototype.recycleAsyncId = function (scheduler, id, delay) {\n    var _a;\n    if (delay === void 0) {\n      delay = 0;\n    }\n    if (delay != null ? delay > 0 : this.delay > 0) {\n      return _super.prototype.recycleAsyncId.call(this, scheduler, id, delay);\n    }\n    var actions = scheduler.actions;\n    if (id != null && id === scheduler._scheduled && ((_a = actions[actions.length - 1]) === null || _a === void 0 ? void 0 : _a.id) !== id) {\n      animationFrameProvider.cancelAnimationFrame(id);\n      scheduler._scheduled = undefined;\n    }\n    return undefined;\n  };\n  return AnimationFrameAction;\n}(AsyncAction);\nexport { AnimationFrameAction };\n//# sourceMappingURL=AnimationFrameAction.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "__extends",
+      "AsyncAction",
+      "animationFrameProvider",
+      "AnimationFrameAction",
+      "_super",
+      "scheduler",
+      "work",
+      "_this",
+      "call",
+      "prototype",
+      "requestAsyncId",
+      "id",
+      "delay",
+      "actions",
+      "push",
+      "_scheduled",
+      "requestAnimationFrame",
+      "flush",
+      "undefined",
+      "recycleAsyncId",
+      "_a",
+      "length",
+      "cancelAnimationFrame"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/scheduler/AnimationFrameAction.js"
+    ],
+    "sourcesContent": [
+      "import { __extends } from \"tslib\";\nimport { AsyncAction } from './AsyncAction';\nimport { animationFrameProvider } from './animationFrameProvider';\nvar AnimationFrameAction = (function (_super) {\n    __extends(AnimationFrameAction, _super);\n    function AnimationFrameAction(scheduler, work) {\n        var _this = _super.call(this, scheduler, work) || this;\n        _this.scheduler = scheduler;\n        _this.work = work;\n        return _this;\n    }\n    AnimationFrameAction.prototype.requestAsyncId = function (scheduler, id, delay) {\n        if (delay === void 0) { delay = 0; }\n        if (delay !== null && delay > 0) {\n            return _super.prototype.requestAsyncId.call(this, scheduler, id, delay);\n        }\n        scheduler.actions.push(this);\n        return scheduler._scheduled || (scheduler._scheduled = animationFrameProvider.requestAnimationFrame(function () { return scheduler.flush(undefined); }));\n    };\n    AnimationFrameAction.prototype.recycleAsyncId = function (scheduler, id, delay) {\n        var _a;\n        if (delay === void 0) { delay = 0; }\n        if (delay != null ? delay > 0 : this.delay > 0) {\n            return _super.prototype.recycleAsyncId.call(this, scheduler, id, delay);\n        }\n        var actions = scheduler.actions;\n        if (id != null && id === scheduler._scheduled && ((_a = actions[actions.length - 1]) === null || _a === void 0 ? void 0 : _a.id) !== id) {\n            animationFrameProvider.cancelAnimationFrame(id);\n            scheduler._scheduled = undefined;\n        }\n        return undefined;\n    };\n    return AnimationFrameAction;\n}(AsyncAction));\nexport { AnimationFrameAction };\n//# sourceMappingURL=AnimationFrameAction.js.map"
+    ],
+    "mappings": "AAAA,SAASA,SAAS,QAAQ,OAAO;AACjC,SAASC,WAAW,QAAQ,eAAe;AAC3C,SAASC,sBAAsB,QAAQ,0BAA0B;AACjE,IAAIC,oBAAoB,GAAI,UAAUC,MAAM,EAAE;EAC1CJ,SAAS,CAACG,oBAAoB,EAAEC,MAAM,CAAC;EACvC,SAASD,oBAAoBA,CAACE,SAAS,EAAEC,IAAI,EAAE;IAC3C,IAAIC,KAAK,GAAGH,MAAM,CAACI,IAAI,CAAC,IAAI,EAAEH,SAAS,EAAEC,IAAI,CAAC,IAAI,IAAI;IACtDC,KAAK,CAACF,SAAS,GAAGA,SAAS;IAC3BE,KAAK,CAACD,IAAI,GAAGA,IAAI;IACjB,OAAOC,KAAK;EAChB;EACAJ,oBAAoB,CAACM,SAAS,CAACC,cAAc,GAAG,UAAUL,SAAS,EAAEM,EAAE,EAAEC,KAAK,EAAE;IAC5E,IAAIA,KAAK,KAAK,KAAK,CAAC,EAAE;MAAEA,KAAK,GAAG,CAAC;IAAE;IACnC,IAAIA,KAAK,KAAK,IAAI,IAAIA,KAAK,GAAG,CAAC,EAAE;MAC7B,OAAOR,MAAM,CAACK,SAAS,CAACC,cAAc,CAACF,IAAI,CAAC,IAAI,EAAEH,SAAS,EAAEM,EAAE,EAAEC,KAAK,CAAC;IAC3E;IACAP,SAAS,CAACQ,OAAO,CAACC,IAAI,CAAC,IAAI,CAAC;IAC5B,OAAOT,SAAS,CAACU,UAAU,KAAKV,SAAS,CAACU,UAAU,GAAGb,sBAAsB,CAACc,qBAAqB,CAAC,YAAY;MAAE,OAAOX,SAAS,CAACY,KAAK,CAACC,SAAS,CAAC;IAAE,CAAC,CAAC,CAAC;EAC5J,CAAC;EACDf,oBAAoB,CAACM,SAAS,CAACU,cAAc,GAAG,UAAUd,SAAS,EAAEM,EAAE,EAAEC,KAAK,EAAE;IAC5E,IAAIQ,EAAE;IACN,IAAIR,KAAK,KAAK,KAAK,CAAC,EAAE;MAAEA,KAAK,GAAG,CAAC;IAAE;IACnC,IAAIA,KAAK,IAAI,IAAI,GAAGA,KAAK,GAAG,CAAC,GAAG,IAAI,CAACA,KAAK,GAAG,CAAC,EAAE;MAC5C,OAAOR,MAAM,CAACK,SAAS,CAACU,cAAc,CAACX,IAAI,CAAC,IAAI,EAAEH,SAAS,EAAEM,EAAE,EAAEC,KAAK,CAAC;IAC3E;IACA,IAAIC,OAAO,GAAGR,SAAS,CAACQ,OAAO;IAC/B,IAAIF,EAAE,IAAI,IAAI,IAAIA,EAAE,KAAKN,SAAS,CAACU,UAAU,IAAI,CAAC,CAACK,EAAE,GAAGP,OAAO,CAACA,OAAO,CAACQ,MAAM,GAAG,CAAC,CAAC,MAAM,IAAI,IAAID,EAAE,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,EAAE,CAACT,EAAE,MAAMA,EAAE,EAAE;MACrIT,sBAAsB,CAACoB,oBAAoB,CAACX,EAAE,CAAC;MAC/CN,SAAS,CAACU,UAAU,GAAGG,SAAS;IACpC;IACA,OAAOA,SAAS;EACpB,CAAC;EACD,OAAOf,oBAAoB;AAC/B,CAAC,CAACF,WAAW,CAAE;AACf,SAASE,oBAAoB;AAC7B",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

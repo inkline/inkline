@@ -1,0 +1,17 @@
+{
+  "ast": null,
+  "code": "",
+  "map": {
+    "version": 3,
+    "names": [],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/ui/angular/.storybook/preview.ts"
+    ],
+    "sourcesContent": [""],
+    "mappings": "",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

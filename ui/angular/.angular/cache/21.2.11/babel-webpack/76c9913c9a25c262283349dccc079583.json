@@ -1,0 +1,31 @@
+{
+  "ast": null,
+  "code": "import { Observable } from '../Observable';\nexport function scheduleArray(input, scheduler) {\n  return new Observable(function (subscriber) {\n    var i = 0;\n    return scheduler.schedule(function () {\n      if (i === input.length) {\n        subscriber.complete();\n      } else {\n        subscriber.next(input[i++]);\n        if (!subscriber.closed) {\n          this.schedule();\n        }\n      }\n    });\n  });\n}\n//# sourceMappingURL=scheduleArray.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "Observable",
+      "scheduleArray",
+      "input",
+      "scheduler",
+      "subscriber",
+      "i",
+      "schedule",
+      "length",
+      "complete",
+      "next",
+      "closed"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/scheduled/scheduleArray.js"
+    ],
+    "sourcesContent": [
+      "import { Observable } from '../Observable';\nexport function scheduleArray(input, scheduler) {\n    return new Observable(function (subscriber) {\n        var i = 0;\n        return scheduler.schedule(function () {\n            if (i === input.length) {\n                subscriber.complete();\n            }\n            else {\n                subscriber.next(input[i++]);\n                if (!subscriber.closed) {\n                    this.schedule();\n                }\n            }\n        });\n    });\n}\n//# sourceMappingURL=scheduleArray.js.map"
+    ],
+    "mappings": "AAAA,SAASA,UAAU,QAAQ,eAAe;AAC1C,OAAO,SAASC,aAAaA,CAACC,KAAK,EAAEC,SAAS,EAAE;EAC5C,OAAO,IAAIH,UAAU,CAAC,UAAUI,UAAU,EAAE;IACxC,IAAIC,CAAC,GAAG,CAAC;IACT,OAAOF,SAAS,CAACG,QAAQ,CAAC,YAAY;MAClC,IAAID,CAAC,KAAKH,KAAK,CAACK,MAAM,EAAE;QACpBH,UAAU,CAACI,QAAQ,CAAC,CAAC;MACzB,CAAC,MACI;QACDJ,UAAU,CAACK,IAAI,CAACP,KAAK,CAACG,CAAC,EAAE,CAAC,CAAC;QAC3B,IAAI,CAACD,UAAU,CAACM,MAAM,EAAE;UACpB,IAAI,CAACJ,QAAQ,CAAC,CAAC;QACnB;MACJ;IACJ,CAAC,CAAC;EACN,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

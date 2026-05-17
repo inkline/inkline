@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { concatMap } from './concatMap';\nimport { isFunction } from '../util/isFunction';\nexport function concatMapTo(innerObservable, resultSelector) {\n  return isFunction(resultSelector) ? concatMap(function () {\n    return innerObservable;\n  }, resultSelector) : concatMap(function () {\n    return innerObservable;\n  });\n}\n//# sourceMappingURL=concatMapTo.js.map",
+  "map": {
+    "version": 3,
+    "names": ["concatMap", "isFunction", "concatMapTo", "innerObservable", "resultSelector"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/concatMapTo.js"
+    ],
+    "sourcesContent": [
+      "import { concatMap } from './concatMap';\nimport { isFunction } from '../util/isFunction';\nexport function concatMapTo(innerObservable, resultSelector) {\n    return isFunction(resultSelector) ? concatMap(function () { return innerObservable; }, resultSelector) : concatMap(function () { return innerObservable; });\n}\n//# sourceMappingURL=concatMapTo.js.map"
+    ],
+    "mappings": "AAAA,SAASA,SAAS,QAAQ,aAAa;AACvC,SAASC,UAAU,QAAQ,oBAAoB;AAC/C,OAAO,SAASC,WAAWA,CAACC,eAAe,EAAEC,cAAc,EAAE;EACzD,OAAOH,UAAU,CAACG,cAAc,CAAC,GAAGJ,SAAS,CAAC,YAAY;IAAE,OAAOG,eAAe;EAAE,CAAC,EAAEC,cAAc,CAAC,GAAGJ,SAAS,CAAC,YAAY;IAAE,OAAOG,eAAe;EAAE,CAAC,CAAC;AAC/J;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

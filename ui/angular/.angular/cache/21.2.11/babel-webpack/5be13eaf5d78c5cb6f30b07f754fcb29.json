@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { reduce } from './reduce';\nexport function count(predicate) {\n  return reduce(function (total, value, i) {\n    return !predicate || predicate(value, i) ? total + 1 : total;\n  }, 0);\n}\n//# sourceMappingURL=count.js.map",
+  "map": {
+    "version": 3,
+    "names": ["reduce", "count", "predicate", "total", "value", "i"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/count.js"
+    ],
+    "sourcesContent": [
+      "import { reduce } from './reduce';\nexport function count(predicate) {\n    return reduce(function (total, value, i) { return (!predicate || predicate(value, i) ? total + 1 : total); }, 0);\n}\n//# sourceMappingURL=count.js.map"
+    ],
+    "mappings": "AAAA,SAASA,MAAM,QAAQ,UAAU;AACjC,OAAO,SAASC,KAAKA,CAACC,SAAS,EAAE;EAC7B,OAAOF,MAAM,CAAC,UAAUG,KAAK,EAAEC,KAAK,EAAEC,CAAC,EAAE;IAAE,OAAQ,CAACH,SAAS,IAAIA,SAAS,CAACE,KAAK,EAAEC,CAAC,CAAC,GAAGF,KAAK,GAAG,CAAC,GAAGA,KAAK;EAAG,CAAC,EAAE,CAAC,CAAC;AACpH;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

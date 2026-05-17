@@ -1,0 +1,32 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\nconst SemVer = require('../classes/semver');\nconst inc = (version, release, options, identifier, identifierBase) => {\n  if (typeof options === 'string') {\n    identifierBase = identifier;\n    identifier = options;\n    options = undefined;\n  }\n  try {\n    return new SemVer(version instanceof SemVer ? version.version : version, options).inc(release, identifier, identifierBase).version;\n  } catch (er) {\n    return null;\n  }\n};\nmodule.exports = inc;",
+  "map": {
+    "version": 3,
+    "names": [
+      "SemVer",
+      "require",
+      "inc",
+      "version",
+      "release",
+      "options",
+      "identifier",
+      "identifierBase",
+      "undefined",
+      "er",
+      "module",
+      "exports"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/semver@7.7.4/node_modules/semver/functions/inc.js"
+    ],
+    "sourcesContent": [
+      "'use strict'\n\nconst SemVer = require('../classes/semver')\n\nconst inc = (version, release, options, identifier, identifierBase) => {\n  if (typeof (options) === 'string') {\n    identifierBase = identifier\n    identifier = options\n    options = undefined\n  }\n\n  try {\n    return new SemVer(\n      version instanceof SemVer ? version.version : version,\n      options\n    ).inc(release, identifier, identifierBase).version\n  } catch (er) {\n    return null\n  }\n}\nmodule.exports = inc\n"
+    ],
+    "mappings": "AAAA,YAAY;;AAEZ,MAAMA,MAAM,GAAGC,OAAO,CAAC,mBAAmB,CAAC;AAE3C,MAAMC,GAAG,GAAGA,CAACC,OAAO,EAAEC,OAAO,EAAEC,OAAO,EAAEC,UAAU,EAAEC,cAAc,KAAK;EACrE,IAAI,OAAQF,OAAQ,KAAK,QAAQ,EAAE;IACjCE,cAAc,GAAGD,UAAU;IAC3BA,UAAU,GAAGD,OAAO;IACpBA,OAAO,GAAGG,SAAS;EACrB;EAEA,IAAI;IACF,OAAO,IAAIR,MAAM,CACfG,OAAO,YAAYH,MAAM,GAAGG,OAAO,CAACA,OAAO,GAAGA,OAAO,EACrDE,OACF,CAAC,CAACH,GAAG,CAACE,OAAO,EAAEE,UAAU,EAAEC,cAAc,CAAC,CAACJ,OAAO;EACpD,CAAC,CAAC,OAAOM,EAAE,EAAE;IACX,OAAO,IAAI;EACb;AACF,CAAC;AACDC,MAAM,CAACC,OAAO,GAAGT,GAAG",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

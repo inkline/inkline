@@ -1,0 +1,41 @@
+{
+  "ast": null,
+  "code": "import { Observable } from '../Observable';\nimport { innerFrom } from './innerFrom';\nimport { argsOrArgArray } from '../util/argsOrArgArray';\nimport { createOperatorSubscriber } from '../operators/OperatorSubscriber';\nexport function race() {\n  var sources = [];\n  for (var _i = 0; _i < arguments.length; _i++) {\n    sources[_i] = arguments[_i];\n  }\n  sources = argsOrArgArray(sources);\n  return sources.length === 1 ? innerFrom(sources[0]) : new Observable(raceInit(sources));\n}\nexport function raceInit(sources) {\n  return function (subscriber) {\n    var subscriptions = [];\n    var _loop_1 = function (i) {\n      subscriptions.push(innerFrom(sources[i]).subscribe(createOperatorSubscriber(subscriber, function (value) {\n        if (subscriptions) {\n          for (var s = 0; s < subscriptions.length; s++) {\n            s !== i && subscriptions[s].unsubscribe();\n          }\n          subscriptions = null;\n        }\n        subscriber.next(value);\n      })));\n    };\n    for (var i = 0; subscriptions && !subscriber.closed && i < sources.length; i++) {\n      _loop_1(i);\n    }\n  };\n}\n//# sourceMappingURL=race.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "Observable",
+      "innerFrom",
+      "argsOrArgArray",
+      "createOperatorSubscriber",
+      "race",
+      "sources",
+      "_i",
+      "arguments",
+      "length",
+      "raceInit",
+      "subscriber",
+      "subscriptions",
+      "_loop_1",
+      "i",
+      "push",
+      "subscribe",
+      "value",
+      "s",
+      "unsubscribe",
+      "next",
+      "closed"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/observable/race.js"
+    ],
+    "sourcesContent": [
+      "import { Observable } from '../Observable';\nimport { innerFrom } from './innerFrom';\nimport { argsOrArgArray } from '../util/argsOrArgArray';\nimport { createOperatorSubscriber } from '../operators/OperatorSubscriber';\nexport function race() {\n    var sources = [];\n    for (var _i = 0; _i < arguments.length; _i++) {\n        sources[_i] = arguments[_i];\n    }\n    sources = argsOrArgArray(sources);\n    return sources.length === 1 ? innerFrom(sources[0]) : new Observable(raceInit(sources));\n}\nexport function raceInit(sources) {\n    return function (subscriber) {\n        var subscriptions = [];\n        var _loop_1 = function (i) {\n            subscriptions.push(innerFrom(sources[i]).subscribe(createOperatorSubscriber(subscriber, function (value) {\n                if (subscriptions) {\n                    for (var s = 0; s < subscriptions.length; s++) {\n                        s !== i && subscriptions[s].unsubscribe();\n                    }\n                    subscriptions = null;\n                }\n                subscriber.next(value);\n            })));\n        };\n        for (var i = 0; subscriptions && !subscriber.closed && i < sources.length; i++) {\n            _loop_1(i);\n        }\n    };\n}\n//# sourceMappingURL=race.js.map"
+    ],
+    "mappings": "AAAA,SAASA,UAAU,QAAQ,eAAe;AAC1C,SAASC,SAAS,QAAQ,aAAa;AACvC,SAASC,cAAc,QAAQ,wBAAwB;AACvD,SAASC,wBAAwB,QAAQ,iCAAiC;AAC1E,OAAO,SAASC,IAAIA,CAAA,EAAG;EACnB,IAAIC,OAAO,GAAG,EAAE;EAChB,KAAK,IAAIC,EAAE,GAAG,CAAC,EAAEA,EAAE,GAAGC,SAAS,CAACC,MAAM,EAAEF,EAAE,EAAE,EAAE;IAC1CD,OAAO,CAACC,EAAE,CAAC,GAAGC,SAAS,CAACD,EAAE,CAAC;EAC/B;EACAD,OAAO,GAAGH,cAAc,CAACG,OAAO,CAAC;EACjC,OAAOA,OAAO,CAACG,MAAM,KAAK,CAAC,GAAGP,SAAS,CAACI,OAAO,CAAC,CAAC,CAAC,CAAC,GAAG,IAAIL,UAAU,CAACS,QAAQ,CAACJ,OAAO,CAAC,CAAC;AAC3F;AACA,OAAO,SAASI,QAAQA,CAACJ,OAAO,EAAE;EAC9B,OAAO,UAAUK,UAAU,EAAE;IACzB,IAAIC,aAAa,GAAG,EAAE;IACtB,IAAIC,OAAO,GAAG,SAAAA,CAAUC,CAAC,EAAE;MACvBF,aAAa,CAACG,IAAI,CAACb,SAAS,CAACI,OAAO,CAACQ,CAAC,CAAC,CAAC,CAACE,SAAS,CAACZ,wBAAwB,CAACO,UAAU,EAAE,UAAUM,KAAK,EAAE;QACrG,IAAIL,aAAa,EAAE;UACf,KAAK,IAAIM,CAAC,GAAG,CAAC,EAAEA,CAAC,GAAGN,aAAa,CAACH,MAAM,EAAES,CAAC,EAAE,EAAE;YAC3CA,CAAC,KAAKJ,CAAC,IAAIF,aAAa,CAACM,CAAC,CAAC,CAACC,WAAW,CAAC,CAAC;UAC7C;UACAP,aAAa,GAAG,IAAI;QACxB;QACAD,UAAU,CAACS,IAAI,CAACH,KAAK,CAAC;MAC1B,CAAC,CAAC,CAAC,CAAC;IACR,CAAC;IACD,KAAK,IAAIH,CAAC,GAAG,CAAC,EAAEF,aAAa,IAAI,CAACD,UAAU,CAACU,MAAM,IAAIP,CAAC,GAAGR,OAAO,CAACG,MAAM,EAAEK,CAAC,EAAE,EAAE;MAC5ED,OAAO,CAACC,CAAC,CAAC;IACd;EACJ,CAAC;AACL;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

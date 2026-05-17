@@ -1,0 +1,30 @@
+{
+  "ast": null,
+  "code": "import { Observable } from '../Observable';\nimport { isFunction } from '../util/isFunction';\nexport function throwError(errorOrErrorFactory, scheduler) {\n  var errorFactory = isFunction(errorOrErrorFactory) ? errorOrErrorFactory : function () {\n    return errorOrErrorFactory;\n  };\n  var init = function (subscriber) {\n    return subscriber.error(errorFactory());\n  };\n  return new Observable(scheduler ? function (subscriber) {\n    return scheduler.schedule(init, 0, subscriber);\n  } : init);\n}\n//# sourceMappingURL=throwError.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "Observable",
+      "isFunction",
+      "throwError",
+      "errorOrErrorFactory",
+      "scheduler",
+      "errorFactory",
+      "init",
+      "subscriber",
+      "error",
+      "schedule"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/observable/throwError.js"
+    ],
+    "sourcesContent": [
+      "import { Observable } from '../Observable';\nimport { isFunction } from '../util/isFunction';\nexport function throwError(errorOrErrorFactory, scheduler) {\n    var errorFactory = isFunction(errorOrErrorFactory) ? errorOrErrorFactory : function () { return errorOrErrorFactory; };\n    var init = function (subscriber) { return subscriber.error(errorFactory()); };\n    return new Observable(scheduler ? function (subscriber) { return scheduler.schedule(init, 0, subscriber); } : init);\n}\n//# sourceMappingURL=throwError.js.map"
+    ],
+    "mappings": "AAAA,SAASA,UAAU,QAAQ,eAAe;AAC1C,SAASC,UAAU,QAAQ,oBAAoB;AAC/C,OAAO,SAASC,UAAUA,CAACC,mBAAmB,EAAEC,SAAS,EAAE;EACvD,IAAIC,YAAY,GAAGJ,UAAU,CAACE,mBAAmB,CAAC,GAAGA,mBAAmB,GAAG,YAAY;IAAE,OAAOA,mBAAmB;EAAE,CAAC;EACtH,IAAIG,IAAI,GAAG,SAAAA,CAAUC,UAAU,EAAE;IAAE,OAAOA,UAAU,CAACC,KAAK,CAACH,YAAY,CAAC,CAAC,CAAC;EAAE,CAAC;EAC7E,OAAO,IAAIL,UAAU,CAACI,SAAS,GAAG,UAAUG,UAAU,EAAE;IAAE,OAAOH,SAAS,CAACK,QAAQ,CAACH,IAAI,EAAE,CAAC,EAAEC,UAAU,CAAC;EAAE,CAAC,GAAGD,IAAI,CAAC;AACvH;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,29 @@
+{
+  "ast": null,
+  "code": "import { __read, __spreadArray } from \"tslib\";\nimport { concat } from './concat';\nexport function concatWith() {\n  var otherSources = [];\n  for (var _i = 0; _i < arguments.length; _i++) {\n    otherSources[_i] = arguments[_i];\n  }\n  return concat.apply(void 0, __spreadArray([], __read(otherSources)));\n}\n//# sourceMappingURL=concatWith.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "__read",
+      "__spreadArray",
+      "concat",
+      "concatWith",
+      "otherSources",
+      "_i",
+      "arguments",
+      "length",
+      "apply"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/concatWith.js"
+    ],
+    "sourcesContent": [
+      "import { __read, __spreadArray } from \"tslib\";\nimport { concat } from './concat';\nexport function concatWith() {\n    var otherSources = [];\n    for (var _i = 0; _i < arguments.length; _i++) {\n        otherSources[_i] = arguments[_i];\n    }\n    return concat.apply(void 0, __spreadArray([], __read(otherSources)));\n}\n//# sourceMappingURL=concatWith.js.map"
+    ],
+    "mappings": "AAAA,SAASA,MAAM,EAAEC,aAAa,QAAQ,OAAO;AAC7C,SAASC,MAAM,QAAQ,UAAU;AACjC,OAAO,SAASC,UAAUA,CAAA,EAAG;EACzB,IAAIC,YAAY,GAAG,EAAE;EACrB,KAAK,IAAIC,EAAE,GAAG,CAAC,EAAEA,EAAE,GAAGC,SAAS,CAACC,MAAM,EAAEF,EAAE,EAAE,EAAE;IAC1CD,YAAY,CAACC,EAAE,CAAC,GAAGC,SAAS,CAACD,EAAE,CAAC;EACpC;EACA,OAAOH,MAAM,CAACM,KAAK,CAAC,KAAK,CAAC,EAAEP,aAAa,CAAC,EAAE,EAAED,MAAM,CAACI,YAAY,CAAC,CAAC,CAAC;AACxE;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

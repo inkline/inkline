@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\nif (process.env.NODE_ENV === 'production') {\n  module.exports = require('./cjs/react-jsx-runtime.production.js');\n} else {\n  module.exports = require('./cjs/react-jsx-runtime.development.js');\n}",
+  "map": {
+    "version": 3,
+    "names": ["process", "env", "NODE_ENV", "module", "exports", "require"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/react@19.2.6/node_modules/react/jsx-runtime.js"
+    ],
+    "sourcesContent": [
+      "'use strict';\n\nif (process.env.NODE_ENV === 'production') {\n  module.exports = require('./cjs/react-jsx-runtime.production.js');\n} else {\n  module.exports = require('./cjs/react-jsx-runtime.development.js');\n}\n"
+    ],
+    "mappings": "AAAA,YAAY;;AAEZ,IAAIA,OAAO,CAACC,GAAG,CAACC,QAAQ,KAAK,YAAY,EAAE;EACzCC,MAAM,CAACC,OAAO,GAAGC,OAAO,CAAC,uCAAuC,CAAC;AACnE,CAAC,MAAM;EACLF,MAAM,CAACC,OAAO,GAAGC,OAAO,CAAC,wCAAwC,CAAC;AACpE",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

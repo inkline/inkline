@@ -1,0 +1,44 @@
+{
+  "ast": null,
+  "code": "import { EMPTY } from '../observable/empty';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { innerFrom } from '../observable/innerFrom';\nimport { timer } from '../observable/timer';\nexport function repeat(countOrConfig) {\n  var _a;\n  var count = Infinity;\n  var delay;\n  if (countOrConfig != null) {\n    if (typeof countOrConfig === 'object') {\n      _a = countOrConfig.count, count = _a === void 0 ? Infinity : _a, delay = countOrConfig.delay;\n    } else {\n      count = countOrConfig;\n    }\n  }\n  return count <= 0 ? function () {\n    return EMPTY;\n  } : operate(function (source, subscriber) {\n    var soFar = 0;\n    var sourceSub;\n    var resubscribe = function () {\n      sourceSub === null || sourceSub === void 0 ? void 0 : sourceSub.unsubscribe();\n      sourceSub = null;\n      if (delay != null) {\n        var notifier = typeof delay === 'number' ? timer(delay) : innerFrom(delay(soFar));\n        var notifierSubscriber_1 = createOperatorSubscriber(subscriber, function () {\n          notifierSubscriber_1.unsubscribe();\n          subscribeToSource();\n        });\n        notifier.subscribe(notifierSubscriber_1);\n      } else {\n        subscribeToSource();\n      }\n    };\n    var subscribeToSource = function () {\n      var syncUnsub = false;\n      sourceSub = source.subscribe(createOperatorSubscriber(subscriber, undefined, function () {\n        if (++soFar < count) {\n          if (sourceSub) {\n            resubscribe();\n          } else {\n            syncUnsub = true;\n          }\n        } else {\n          subscriber.complete();\n        }\n      }));\n      if (syncUnsub) {\n        resubscribe();\n      }\n    };\n    subscribeToSource();\n  });\n}\n//# sourceMappingURL=repeat.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "EMPTY",
+      "operate",
+      "createOperatorSubscriber",
+      "innerFrom",
+      "timer",
+      "repeat",
+      "countOrConfig",
+      "_a",
+      "count",
+      "Infinity",
+      "delay",
+      "source",
+      "subscriber",
+      "soFar",
+      "sourceSub",
+      "resubscribe",
+      "unsubscribe",
+      "notifier",
+      "notifierSubscriber_1",
+      "subscribeToSource",
+      "subscribe",
+      "syncUnsub",
+      "undefined",
+      "complete"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/repeat.js"
+    ],
+    "sourcesContent": [
+      "import { EMPTY } from '../observable/empty';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { innerFrom } from '../observable/innerFrom';\nimport { timer } from '../observable/timer';\nexport function repeat(countOrConfig) {\n    var _a;\n    var count = Infinity;\n    var delay;\n    if (countOrConfig != null) {\n        if (typeof countOrConfig === 'object') {\n            (_a = countOrConfig.count, count = _a === void 0 ? Infinity : _a, delay = countOrConfig.delay);\n        }\n        else {\n            count = countOrConfig;\n        }\n    }\n    return count <= 0\n        ? function () { return EMPTY; }\n        : operate(function (source, subscriber) {\n            var soFar = 0;\n            var sourceSub;\n            var resubscribe = function () {\n                sourceSub === null || sourceSub === void 0 ? void 0 : sourceSub.unsubscribe();\n                sourceSub = null;\n                if (delay != null) {\n                    var notifier = typeof delay === 'number' ? timer(delay) : innerFrom(delay(soFar));\n                    var notifierSubscriber_1 = createOperatorSubscriber(subscriber, function () {\n                        notifierSubscriber_1.unsubscribe();\n                        subscribeToSource();\n                    });\n                    notifier.subscribe(notifierSubscriber_1);\n                }\n                else {\n                    subscribeToSource();\n                }\n            };\n            var subscribeToSource = function () {\n                var syncUnsub = false;\n                sourceSub = source.subscribe(createOperatorSubscriber(subscriber, undefined, function () {\n                    if (++soFar < count) {\n                        if (sourceSub) {\n                            resubscribe();\n                        }\n                        else {\n                            syncUnsub = true;\n                        }\n                    }\n                    else {\n                        subscriber.complete();\n                    }\n                }));\n                if (syncUnsub) {\n                    resubscribe();\n                }\n            };\n            subscribeToSource();\n        });\n}\n//# sourceMappingURL=repeat.js.map"
+    ],
+    "mappings": "AAAA,SAASA,KAAK,QAAQ,qBAAqB;AAC3C,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,SAASC,SAAS,QAAQ,yBAAyB;AACnD,SAASC,KAAK,QAAQ,qBAAqB;AAC3C,OAAO,SAASC,MAAMA,CAACC,aAAa,EAAE;EAClC,IAAIC,EAAE;EACN,IAAIC,KAAK,GAAGC,QAAQ;EACpB,IAAIC,KAAK;EACT,IAAIJ,aAAa,IAAI,IAAI,EAAE;IACvB,IAAI,OAAOA,aAAa,KAAK,QAAQ,EAAE;MAClCC,EAAE,GAAGD,aAAa,CAACE,KAAK,EAAEA,KAAK,GAAGD,EAAE,KAAK,KAAK,CAAC,GAAGE,QAAQ,GAAGF,EAAE,EAAEG,KAAK,GAAGJ,aAAa,CAACI,KAAK;IACjG,CAAC,MACI;MACDF,KAAK,GAAGF,aAAa;IACzB;EACJ;EACA,OAAOE,KAAK,IAAI,CAAC,GACX,YAAY;IAAE,OAAOR,KAAK;EAAE,CAAC,GAC7BC,OAAO,CAAC,UAAUU,MAAM,EAAEC,UAAU,EAAE;IACpC,IAAIC,KAAK,GAAG,CAAC;IACb,IAAIC,SAAS;IACb,IAAIC,WAAW,GAAG,SAAAA,CAAA,EAAY;MAC1BD,SAAS,KAAK,IAAI,IAAIA,SAAS,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,SAAS,CAACE,WAAW,CAAC,CAAC;MAC7EF,SAAS,GAAG,IAAI;MAChB,IAAIJ,KAAK,IAAI,IAAI,EAAE;QACf,IAAIO,QAAQ,GAAG,OAAOP,KAAK,KAAK,QAAQ,GAAGN,KAAK,CAACM,KAAK,CAAC,GAAGP,SAAS,CAACO,KAAK,CAACG,KAAK,CAAC,CAAC;QACjF,IAAIK,oBAAoB,GAAGhB,wBAAwB,CAACU,UAAU,EAAE,YAAY;UACxEM,oBAAoB,CAACF,WAAW,CAAC,CAAC;UAClCG,iBAAiB,CAAC,CAAC;QACvB,CAAC,CAAC;QACFF,QAAQ,CAACG,SAAS,CAACF,oBAAoB,CAAC;MAC5C,CAAC,MACI;QACDC,iBAAiB,CAAC,CAAC;MACvB;IACJ,CAAC;IACD,IAAIA,iBAAiB,GAAG,SAAAA,CAAA,EAAY;MAChC,IAAIE,SAAS,GAAG,KAAK;MACrBP,SAAS,GAAGH,MAAM,CAACS,SAAS,CAAClB,wBAAwB,CAACU,UAAU,EAAEU,SAAS,EAAE,YAAY;QACrF,IAAI,EAAET,KAAK,GAAGL,KAAK,EAAE;UACjB,IAAIM,SAAS,EAAE;YACXC,WAAW,CAAC,CAAC;UACjB,CAAC,MACI;YACDM,SAAS,GAAG,IAAI;UACpB;QACJ,CAAC,MACI;UACDT,UAAU,CAACW,QAAQ,CAAC,CAAC;QACzB;MACJ,CAAC,CAAC,CAAC;MACH,IAAIF,SAAS,EAAE;QACXN,WAAW,CAAC,CAAC;MACjB;IACJ,CAAC;IACDI,iBAAiB,CAAC,CAAC;EACvB,CAAC,CAAC;AACV;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

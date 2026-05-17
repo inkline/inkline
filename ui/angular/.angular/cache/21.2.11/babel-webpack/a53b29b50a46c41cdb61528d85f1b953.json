@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\nconst parse = require('./parse');\nconst valid = (version, options) => {\n  const v = parse(version, options);\n  return v ? v.version : null;\n};\nmodule.exports = valid;",
+  "map": {
+    "version": 3,
+    "names": ["parse", "require", "valid", "version", "options", "v", "module", "exports"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/semver@7.7.4/node_modules/semver/functions/valid.js"
+    ],
+    "sourcesContent": [
+      "'use strict'\n\nconst parse = require('./parse')\nconst valid = (version, options) => {\n  const v = parse(version, options)\n  return v ? v.version : null\n}\nmodule.exports = valid\n"
+    ],
+    "mappings": "AAAA,YAAY;;AAEZ,MAAMA,KAAK,GAAGC,OAAO,CAAC,SAAS,CAAC;AAChC,MAAMC,KAAK,GAAGA,CAACC,OAAO,EAAEC,OAAO,KAAK;EAClC,MAAMC,CAAC,GAAGL,KAAK,CAACG,OAAO,EAAEC,OAAO,CAAC;EACjC,OAAOC,CAAC,GAAGA,CAAC,CAACF,OAAO,GAAG,IAAI;AAC7B,CAAC;AACDG,MAAM,CAACC,OAAO,GAAGL,KAAK",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

@@ -1,0 +1,37 @@
+{
+  "ast": null,
+  "code": "/**\n * @license Angular v21.2.13\n * (c) 2010-2026 Google LLC. https://angular.dev/\n * License: MIT\n */\n\nexport { NOT_FOUND, NotFoundError, getCurrentInjector, inject, isNotFound, setCurrentInjector } from './_not_found-chunk.mjs';\nfunction defineInjectable(opts) {\n  return {\n    token: opts.token,\n    providedIn: opts.providedIn || null,\n    factory: opts.factory,\n    value: undefined\n  };\n}\nfunction registerInjectable(ctor, declaration) {\n  ctor.ɵprov = declaration;\n  return ctor;\n}\nexport { defineInjectable, registerInjectable };\n//# sourceMappingURL=primitives-di.mjs.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "NOT_FOUND",
+      "NotFoundError",
+      "getCurrentInjector",
+      "inject",
+      "isNotFound",
+      "setCurrentInjector",
+      "defineInjectable",
+      "opts",
+      "token",
+      "providedIn",
+      "factory",
+      "value",
+      "undefined",
+      "registerInjectable",
+      "ctor",
+      "declaration",
+      "ɵprov"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@angular+core@21.2.13_@angular+compiler@21.2.13_rxjs@7.8.2_zone.js@0.15.1/node_modules/@angular/core/fesm2022/primitives-di.mjs"
+    ],
+    "sourcesContent": [
+      "/**\n * @license Angular v21.2.13\n * (c) 2010-2026 Google LLC. https://angular.dev/\n * License: MIT\n */\n\nexport { NOT_FOUND, NotFoundError, getCurrentInjector, inject, isNotFound, setCurrentInjector } from './_not_found-chunk.mjs';\n\nfunction defineInjectable(opts) {\n  return {\n    token: opts.token,\n    providedIn: opts.providedIn || null,\n    factory: opts.factory,\n    value: undefined\n  };\n}\nfunction registerInjectable(ctor, declaration) {\n  ctor.ɵprov = declaration;\n  return ctor;\n}\n\nexport { defineInjectable, registerInjectable };\n//# sourceMappingURL=primitives-di.mjs.map\n"
+    ],
+    "mappings": "AAAA;AACA;AACA;AACA;AACA;;AAEA,SAASA,SAAS,EAAEC,aAAa,EAAEC,kBAAkB,EAAEC,MAAM,EAAEC,UAAU,EAAEC,kBAAkB,QAAQ,wBAAwB;AAE7H,SAASC,gBAAgBA,CAACC,IAAI,EAAE;EAC9B,OAAO;IACLC,KAAK,EAAED,IAAI,CAACC,KAAK;IACjBC,UAAU,EAAEF,IAAI,CAACE,UAAU,IAAI,IAAI;IACnCC,OAAO,EAAEH,IAAI,CAACG,OAAO;IACrBC,KAAK,EAAEC;EACT,CAAC;AACH;AACA,SAASC,kBAAkBA,CAACC,IAAI,EAAEC,WAAW,EAAE;EAC7CD,IAAI,CAACE,KAAK,GAAGD,WAAW;EACxB,OAAOD,IAAI;AACb;AAEA,SAASR,gBAAgB,EAAEO,kBAAkB;AAC7C",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

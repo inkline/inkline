@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { Subject } from '../Subject';\nimport { multicast } from './multicast';\nimport { connect } from './connect';\nexport function publish(selector) {\n  return selector ? function (source) {\n    return connect(selector)(source);\n  } : function (source) {\n    return multicast(new Subject())(source);\n  };\n}\n//# sourceMappingURL=publish.js.map",
+  "map": {
+    "version": 3,
+    "names": ["Subject", "multicast", "connect", "publish", "selector", "source"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/publish.js"
+    ],
+    "sourcesContent": [
+      "import { Subject } from '../Subject';\nimport { multicast } from './multicast';\nimport { connect } from './connect';\nexport function publish(selector) {\n    return selector ? function (source) { return connect(selector)(source); } : function (source) { return multicast(new Subject())(source); };\n}\n//# sourceMappingURL=publish.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,YAAY;AACpC,SAASC,SAAS,QAAQ,aAAa;AACvC,SAASC,OAAO,QAAQ,WAAW;AACnC,OAAO,SAASC,OAAOA,CAACC,QAAQ,EAAE;EAC9B,OAAOA,QAAQ,GAAG,UAAUC,MAAM,EAAE;IAAE,OAAOH,OAAO,CAACE,QAAQ,CAAC,CAACC,MAAM,CAAC;EAAE,CAAC,GAAG,UAAUA,MAAM,EAAE;IAAE,OAAOJ,SAAS,CAAC,IAAID,OAAO,CAAC,CAAC,CAAC,CAACK,MAAM,CAAC;EAAE,CAAC;AAC9I;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

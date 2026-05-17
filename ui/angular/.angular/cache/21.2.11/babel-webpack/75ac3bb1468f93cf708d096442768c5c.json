@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\nconst compareBuild = require('./compare-build');\nconst sort = (list, loose) => list.sort((a, b) => compareBuild(a, b, loose));\nmodule.exports = sort;",
+  "map": {
+    "version": 3,
+    "names": ["compareBuild", "require", "sort", "list", "loose", "a", "b", "module", "exports"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/semver@7.7.4/node_modules/semver/functions/sort.js"
+    ],
+    "sourcesContent": [
+      "'use strict'\n\nconst compareBuild = require('./compare-build')\nconst sort = (list, loose) => list.sort((a, b) => compareBuild(a, b, loose))\nmodule.exports = sort\n"
+    ],
+    "mappings": "AAAA,YAAY;;AAEZ,MAAMA,YAAY,GAAGC,OAAO,CAAC,iBAAiB,CAAC;AAC/C,MAAMC,IAAI,GAAGA,CAACC,IAAI,EAAEC,KAAK,KAAKD,IAAI,CAACD,IAAI,CAAC,CAACG,CAAC,EAAEC,CAAC,KAAKN,YAAY,CAACK,CAAC,EAAEC,CAAC,EAAEF,KAAK,CAAC,CAAC;AAC5EG,MAAM,CAACC,OAAO,GAAGN,IAAI",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

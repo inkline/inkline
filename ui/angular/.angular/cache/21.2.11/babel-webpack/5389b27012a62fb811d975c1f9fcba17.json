@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { operate } from '../util/lift';\nexport function finalize(callback) {\n  return operate(function (source, subscriber) {\n    try {\n      source.subscribe(subscriber);\n    } finally {\n      subscriber.add(callback);\n    }\n  });\n}\n//# sourceMappingURL=finalize.js.map",
+  "map": {
+    "version": 3,
+    "names": ["operate", "finalize", "callback", "source", "subscriber", "subscribe", "add"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/finalize.js"
+    ],
+    "sourcesContent": [
+      "import { operate } from '../util/lift';\nexport function finalize(callback) {\n    return operate(function (source, subscriber) {\n        try {\n            source.subscribe(subscriber);\n        }\n        finally {\n            subscriber.add(callback);\n        }\n    });\n}\n//# sourceMappingURL=finalize.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,cAAc;AACtC,OAAO,SAASC,QAAQA,CAACC,QAAQ,EAAE;EAC/B,OAAOF,OAAO,CAAC,UAAUG,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAI;MACAD,MAAM,CAACE,SAAS,CAACD,UAAU,CAAC;IAChC,CAAC,SACO;MACJA,UAAU,CAACE,GAAG,CAACJ,QAAQ,CAAC;IAC5B;EACJ,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

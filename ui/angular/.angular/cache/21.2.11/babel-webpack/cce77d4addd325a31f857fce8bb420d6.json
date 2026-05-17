@@ -1,0 +1,38 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\nclass LRUCache {\n  constructor() {\n    this.max = 1000;\n    this.map = new Map();\n  }\n  get(key) {\n    const value = this.map.get(key);\n    if (value === undefined) {\n      return undefined;\n    } else {\n      // Remove the key from the map and add it to the end\n      this.map.delete(key);\n      this.map.set(key, value);\n      return value;\n    }\n  }\n  delete(key) {\n    return this.map.delete(key);\n  }\n  set(key, value) {\n    const deleted = this.delete(key);\n    if (!deleted && value !== undefined) {\n      // If cache is full, delete the least recently used item\n      if (this.map.size >= this.max) {\n        const firstKey = this.map.keys().next().value;\n        this.delete(firstKey);\n      }\n      this.map.set(key, value);\n    }\n    return this;\n  }\n}\nmodule.exports = LRUCache;",
+  "map": {
+    "version": 3,
+    "names": [
+      "LRUCache",
+      "constructor",
+      "max",
+      "map",
+      "Map",
+      "get",
+      "key",
+      "value",
+      "undefined",
+      "delete",
+      "set",
+      "deleted",
+      "size",
+      "firstKey",
+      "keys",
+      "next",
+      "module",
+      "exports"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/semver@7.7.4/node_modules/semver/internal/lrucache.js"
+    ],
+    "sourcesContent": [
+      "'use strict'\n\nclass LRUCache {\n  constructor () {\n    this.max = 1000\n    this.map = new Map()\n  }\n\n  get (key) {\n    const value = this.map.get(key)\n    if (value === undefined) {\n      return undefined\n    } else {\n      // Remove the key from the map and add it to the end\n      this.map.delete(key)\n      this.map.set(key, value)\n      return value\n    }\n  }\n\n  delete (key) {\n    return this.map.delete(key)\n  }\n\n  set (key, value) {\n    const deleted = this.delete(key)\n\n    if (!deleted && value !== undefined) {\n      // If cache is full, delete the least recently used item\n      if (this.map.size >= this.max) {\n        const firstKey = this.map.keys().next().value\n        this.delete(firstKey)\n      }\n\n      this.map.set(key, value)\n    }\n\n    return this\n  }\n}\n\nmodule.exports = LRUCache\n"
+    ],
+    "mappings": "AAAA,YAAY;;AAEZ,MAAMA,QAAQ,CAAC;EACbC,WAAWA,CAAA,EAAI;IACb,IAAI,CAACC,GAAG,GAAG,IAAI;IACf,IAAI,CAACC,GAAG,GAAG,IAAIC,GAAG,CAAC,CAAC;EACtB;EAEAC,GAAGA,CAAEC,GAAG,EAAE;IACR,MAAMC,KAAK,GAAG,IAAI,CAACJ,GAAG,CAACE,GAAG,CAACC,GAAG,CAAC;IAC/B,IAAIC,KAAK,KAAKC,SAAS,EAAE;MACvB,OAAOA,SAAS;IAClB,CAAC,MAAM;MACL;MACA,IAAI,CAACL,GAAG,CAACM,MAAM,CAACH,GAAG,CAAC;MACpB,IAAI,CAACH,GAAG,CAACO,GAAG,CAACJ,GAAG,EAAEC,KAAK,CAAC;MACxB,OAAOA,KAAK;IACd;EACF;EAEAE,MAAMA,CAAEH,GAAG,EAAE;IACX,OAAO,IAAI,CAACH,GAAG,CAACM,MAAM,CAACH,GAAG,CAAC;EAC7B;EAEAI,GAAGA,CAAEJ,GAAG,EAAEC,KAAK,EAAE;IACf,MAAMI,OAAO,GAAG,IAAI,CAACF,MAAM,CAACH,GAAG,CAAC;IAEhC,IAAI,CAACK,OAAO,IAAIJ,KAAK,KAAKC,SAAS,EAAE;MACnC;MACA,IAAI,IAAI,CAACL,GAAG,CAACS,IAAI,IAAI,IAAI,CAACV,GAAG,EAAE;QAC7B,MAAMW,QAAQ,GAAG,IAAI,CAACV,GAAG,CAACW,IAAI,CAAC,CAAC,CAACC,IAAI,CAAC,CAAC,CAACR,KAAK;QAC7C,IAAI,CAACE,MAAM,CAACI,QAAQ,CAAC;MACvB;MAEA,IAAI,CAACV,GAAG,CAACO,GAAG,CAACJ,GAAG,EAAEC,KAAK,CAAC;IAC1B;IAEA,OAAO,IAAI;EACb;AACF;AAEAS,MAAM,CAACC,OAAO,GAAGjB,QAAQ",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

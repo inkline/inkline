@@ -1,0 +1,39 @@
+{
+  "ast": null,
+  "code": "import { operate } from '../util/lift';\nimport { noop } from '../util/noop';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { innerFrom } from '../observable/innerFrom';\nexport function bufferWhen(closingSelector) {\n  return operate(function (source, subscriber) {\n    var buffer = null;\n    var closingSubscriber = null;\n    var openBuffer = function () {\n      closingSubscriber === null || closingSubscriber === void 0 ? void 0 : closingSubscriber.unsubscribe();\n      var b = buffer;\n      buffer = [];\n      b && subscriber.next(b);\n      innerFrom(closingSelector()).subscribe(closingSubscriber = createOperatorSubscriber(subscriber, openBuffer, noop));\n    };\n    openBuffer();\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      return buffer === null || buffer === void 0 ? void 0 : buffer.push(value);\n    }, function () {\n      buffer && subscriber.next(buffer);\n      subscriber.complete();\n    }, undefined, function () {\n      return buffer = closingSubscriber = null;\n    }));\n  });\n}\n//# sourceMappingURL=bufferWhen.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "operate",
+      "noop",
+      "createOperatorSubscriber",
+      "innerFrom",
+      "bufferWhen",
+      "closingSelector",
+      "source",
+      "subscriber",
+      "buffer",
+      "closingSubscriber",
+      "openBuffer",
+      "unsubscribe",
+      "b",
+      "next",
+      "subscribe",
+      "value",
+      "push",
+      "complete",
+      "undefined"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/bufferWhen.js"
+    ],
+    "sourcesContent": [
+      "import { operate } from '../util/lift';\nimport { noop } from '../util/noop';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { innerFrom } from '../observable/innerFrom';\nexport function bufferWhen(closingSelector) {\n    return operate(function (source, subscriber) {\n        var buffer = null;\n        var closingSubscriber = null;\n        var openBuffer = function () {\n            closingSubscriber === null || closingSubscriber === void 0 ? void 0 : closingSubscriber.unsubscribe();\n            var b = buffer;\n            buffer = [];\n            b && subscriber.next(b);\n            innerFrom(closingSelector()).subscribe((closingSubscriber = createOperatorSubscriber(subscriber, openBuffer, noop)));\n        };\n        openBuffer();\n        source.subscribe(createOperatorSubscriber(subscriber, function (value) { return buffer === null || buffer === void 0 ? void 0 : buffer.push(value); }, function () {\n            buffer && subscriber.next(buffer);\n            subscriber.complete();\n        }, undefined, function () { return (buffer = closingSubscriber = null); }));\n    });\n}\n//# sourceMappingURL=bufferWhen.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,cAAc;AACtC,SAASC,IAAI,QAAQ,cAAc;AACnC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,SAASC,SAAS,QAAQ,yBAAyB;AACnD,OAAO,SAASC,UAAUA,CAACC,eAAe,EAAE;EACxC,OAAOL,OAAO,CAAC,UAAUM,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,MAAM,GAAG,IAAI;IACjB,IAAIC,iBAAiB,GAAG,IAAI;IAC5B,IAAIC,UAAU,GAAG,SAAAA,CAAA,EAAY;MACzBD,iBAAiB,KAAK,IAAI,IAAIA,iBAAiB,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,iBAAiB,CAACE,WAAW,CAAC,CAAC;MACrG,IAAIC,CAAC,GAAGJ,MAAM;MACdA,MAAM,GAAG,EAAE;MACXI,CAAC,IAAIL,UAAU,CAACM,IAAI,CAACD,CAAC,CAAC;MACvBT,SAAS,CAACE,eAAe,CAAC,CAAC,CAAC,CAACS,SAAS,CAAEL,iBAAiB,GAAGP,wBAAwB,CAACK,UAAU,EAAEG,UAAU,EAAET,IAAI,CAAE,CAAC;IACxH,CAAC;IACDS,UAAU,CAAC,CAAC;IACZJ,MAAM,CAACQ,SAAS,CAACZ,wBAAwB,CAACK,UAAU,EAAE,UAAUQ,KAAK,EAAE;MAAE,OAAOP,MAAM,KAAK,IAAI,IAAIA,MAAM,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,MAAM,CAACQ,IAAI,CAACD,KAAK,CAAC;IAAE,CAAC,EAAE,YAAY;MAC/JP,MAAM,IAAID,UAAU,CAACM,IAAI,CAACL,MAAM,CAAC;MACjCD,UAAU,CAACU,QAAQ,CAAC,CAAC;IACzB,CAAC,EAAEC,SAAS,EAAE,YAAY;MAAE,OAAQV,MAAM,GAAGC,iBAAiB,GAAG,IAAI;IAAG,CAAC,CAAC,CAAC;EAC/E,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

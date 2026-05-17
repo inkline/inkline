@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { not } from '../util/not';\nimport { filter } from './filter';\nexport function partition(predicate, thisArg) {\n  return function (source) {\n    return [filter(predicate, thisArg)(source), filter(not(predicate, thisArg))(source)];\n  };\n}\n//# sourceMappingURL=partition.js.map",
+  "map": {
+    "version": 3,
+    "names": ["not", "filter", "partition", "predicate", "thisArg", "source"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/partition.js"
+    ],
+    "sourcesContent": [
+      "import { not } from '../util/not';\nimport { filter } from './filter';\nexport function partition(predicate, thisArg) {\n    return function (source) {\n        return [filter(predicate, thisArg)(source), filter(not(predicate, thisArg))(source)];\n    };\n}\n//# sourceMappingURL=partition.js.map"
+    ],
+    "mappings": "AAAA,SAASA,GAAG,QAAQ,aAAa;AACjC,SAASC,MAAM,QAAQ,UAAU;AACjC,OAAO,SAASC,SAASA,CAACC,SAAS,EAAEC,OAAO,EAAE;EAC1C,OAAO,UAAUC,MAAM,EAAE;IACrB,OAAO,CAACJ,MAAM,CAACE,SAAS,EAAEC,OAAO,CAAC,CAACC,MAAM,CAAC,EAAEJ,MAAM,CAACD,GAAG,CAACG,SAAS,EAAEC,OAAO,CAAC,CAAC,CAACC,MAAM,CAAC,CAAC;EACxF,CAAC;AACL;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,35 @@
+{
+  "ast": null,
+  "code": "import { __read, __spreadArray } from \"tslib\";\nimport { operate } from '../util/lift';\nimport { concatAll } from './concatAll';\nimport { popScheduler } from '../util/args';\nimport { from } from '../observable/from';\nexport function concat() {\n  var args = [];\n  for (var _i = 0; _i < arguments.length; _i++) {\n    args[_i] = arguments[_i];\n  }\n  var scheduler = popScheduler(args);\n  return operate(function (source, subscriber) {\n    concatAll()(from(__spreadArray([source], __read(args)), scheduler)).subscribe(subscriber);\n  });\n}\n//# sourceMappingURL=concat.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "__read",
+      "__spreadArray",
+      "operate",
+      "concatAll",
+      "popScheduler",
+      "from",
+      "concat",
+      "args",
+      "_i",
+      "arguments",
+      "length",
+      "scheduler",
+      "source",
+      "subscriber",
+      "subscribe"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/concat.js"
+    ],
+    "sourcesContent": [
+      "import { __read, __spreadArray } from \"tslib\";\nimport { operate } from '../util/lift';\nimport { concatAll } from './concatAll';\nimport { popScheduler } from '../util/args';\nimport { from } from '../observable/from';\nexport function concat() {\n    var args = [];\n    for (var _i = 0; _i < arguments.length; _i++) {\n        args[_i] = arguments[_i];\n    }\n    var scheduler = popScheduler(args);\n    return operate(function (source, subscriber) {\n        concatAll()(from(__spreadArray([source], __read(args)), scheduler)).subscribe(subscriber);\n    });\n}\n//# sourceMappingURL=concat.js.map"
+    ],
+    "mappings": "AAAA,SAASA,MAAM,EAAEC,aAAa,QAAQ,OAAO;AAC7C,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,SAAS,QAAQ,aAAa;AACvC,SAASC,YAAY,QAAQ,cAAc;AAC3C,SAASC,IAAI,QAAQ,oBAAoB;AACzC,OAAO,SAASC,MAAMA,CAAA,EAAG;EACrB,IAAIC,IAAI,GAAG,EAAE;EACb,KAAK,IAAIC,EAAE,GAAG,CAAC,EAAEA,EAAE,GAAGC,SAAS,CAACC,MAAM,EAAEF,EAAE,EAAE,EAAE;IAC1CD,IAAI,CAACC,EAAE,CAAC,GAAGC,SAAS,CAACD,EAAE,CAAC;EAC5B;EACA,IAAIG,SAAS,GAAGP,YAAY,CAACG,IAAI,CAAC;EAClC,OAAOL,OAAO,CAAC,UAAUU,MAAM,EAAEC,UAAU,EAAE;IACzCV,SAAS,CAAC,CAAC,CAACE,IAAI,CAACJ,aAAa,CAAC,CAACW,MAAM,CAAC,EAAEZ,MAAM,CAACO,IAAI,CAAC,CAAC,EAAEI,SAAS,CAAC,CAAC,CAACG,SAAS,CAACD,UAAU,CAAC;EAC7F,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

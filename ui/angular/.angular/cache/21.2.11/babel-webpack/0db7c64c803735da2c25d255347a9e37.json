@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "export function createObject(keys, values) {\n  return keys.reduce(function (result, key, i) {\n    return result[key] = values[i], result;\n  }, {});\n}\n//# sourceMappingURL=createObject.js.map",
+  "map": {
+    "version": 3,
+    "names": ["createObject", "keys", "values", "reduce", "result", "key", "i"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/util/createObject.js"
+    ],
+    "sourcesContent": [
+      "export function createObject(keys, values) {\n    return keys.reduce(function (result, key, i) { return ((result[key] = values[i]), result); }, {});\n}\n//# sourceMappingURL=createObject.js.map"
+    ],
+    "mappings": "AAAA,OAAO,SAASA,YAAYA,CAACC,IAAI,EAAEC,MAAM,EAAE;EACvC,OAAOD,IAAI,CAACE,MAAM,CAAC,UAAUC,MAAM,EAAEC,GAAG,EAAEC,CAAC,EAAE;IAAE,OAASF,MAAM,CAACC,GAAG,CAAC,GAAGH,MAAM,CAACI,CAAC,CAAC,EAAGF,MAAM;EAAG,CAAC,EAAE,CAAC,CAAC,CAAC;AACrG;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

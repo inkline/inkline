@@ -1,0 +1,54 @@
+{
+  "ast": null,
+  "code": "import { __export, computesTemplateSourceFromComponent } from \"./chunk-6PLRDPVY.js\";\n\n// src/client/docs/config.ts\nvar config_exports = {};\n__export(config_exports, {\n  decorators: () => decorators,\n  parameters: () => parameters\n});\nimport { SourceType as SourceType2 } from \"storybook/internal/docs-tools\";\n\n// src/client/docs/sourceDecorator.ts\nimport { SourceType } from \"storybook/internal/docs-tools\";\nimport { useRef, emitTransformCode, useEffect } from \"storybook/preview-api\";\nvar skipSourceRender = context => {\n    let sourceParams = context?.parameters.docs?.source;\n    return sourceParams?.type === SourceType.DYNAMIC ? !1 : sourceParams?.code || sourceParams?.type === SourceType.CODE;\n  },\n  sourceDecorator = (storyFn, context) => {\n    let story = storyFn(),\n      source = useRef(void 0);\n    return useEffect(() => {\n      if (skipSourceRender(context)) return;\n      let {\n          props,\n          userDefinedTemplate\n        } = story,\n        {\n          component,\n          argTypes,\n          parameters: parameters2\n        } = context,\n        template = parameters2.docs?.source?.excludeDecorators ? context.originalStoryFn(context.args, context).template : story.template;\n      if (component && !userDefinedTemplate) {\n        let newSource = computesTemplateSourceFromComponent(component, props, argTypes) || template;\n        newSource && newSource !== source.current && (emitTransformCode(newSource, context), source.current = newSource);\n      } else template && template !== source.current && (emitTransformCode(template, context), source.current = template);\n    }), story;\n  };\n\n// src/client/docs/config.ts\nvar parameters = {\n    docs: {\n      source: {\n        type: SourceType2.DYNAMIC,\n        language: \"html\"\n      }\n    }\n  },\n  decorators = [sourceDecorator];\nexport { parameters, decorators, config_exports };",
+  "map": {
+    "version": 3,
+    "names": [
+      "__export",
+      "computesTemplateSourceFromComponent",
+      "config_exports",
+      "decorators",
+      "parameters",
+      "SourceType",
+      "SourceType2",
+      "useRef",
+      "emitTransformCode",
+      "useEffect",
+      "skipSourceRender",
+      "context",
+      "sourceParams",
+      "docs",
+      "source",
+      "type",
+      "DYNAMIC",
+      "code",
+      "CODE",
+      "sourceDecorator",
+      "storyFn",
+      "story",
+      "props",
+      "userDefinedTemplate",
+      "component",
+      "argTypes",
+      "parameters2",
+      "template",
+      "excludeDecorators",
+      "originalStoryFn",
+      "args",
+      "newSource",
+      "current",
+      "language"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_37c2ee6ec83c797c29eabe44ced14645/node_modules/@storybook/angular/dist/_browser-chunks/chunk-KKFRD2ZH.js"
+    ],
+    "sourcesContent": [
+      "import {\n  __export,\n  computesTemplateSourceFromComponent\n} from \"./chunk-6PLRDPVY.js\";\n\n// src/client/docs/config.ts\nvar config_exports = {};\n__export(config_exports, {\n  decorators: () => decorators,\n  parameters: () => parameters\n});\nimport { SourceType as SourceType2 } from \"storybook/internal/docs-tools\";\n\n// src/client/docs/sourceDecorator.ts\nimport { SourceType } from \"storybook/internal/docs-tools\";\nimport { useRef, emitTransformCode, useEffect } from \"storybook/preview-api\";\nvar skipSourceRender = (context) => {\n  let sourceParams = context?.parameters.docs?.source;\n  return sourceParams?.type === SourceType.DYNAMIC ? !1 : sourceParams?.code || sourceParams?.type === SourceType.CODE;\n}, sourceDecorator = (storyFn, context) => {\n  let story = storyFn(), source = useRef(void 0);\n  return useEffect(() => {\n    if (skipSourceRender(context))\n      return;\n    let { props, userDefinedTemplate } = story, { component, argTypes, parameters: parameters2 } = context, template = parameters2.docs?.source?.excludeDecorators ? context.originalStoryFn(context.args, context).template : story.template;\n    if (component && !userDefinedTemplate) {\n      let newSource = computesTemplateSourceFromComponent(component, props, argTypes) || template;\n      newSource && newSource !== source.current && (emitTransformCode(newSource, context), source.current = newSource);\n    } else template && template !== source.current && (emitTransformCode(template, context), source.current = template);\n  }), story;\n};\n\n// src/client/docs/config.ts\nvar parameters = {\n  docs: {\n    source: {\n      type: SourceType2.DYNAMIC,\n      language: \"html\"\n    }\n  }\n}, decorators = [sourceDecorator];\n\nexport {\n  parameters,\n  decorators,\n  config_exports\n};\n"
+    ],
+    "mappings": "AAAA,SACEA,QAAQ,EACRC,mCAAmC,QAC9B,qBAAqB;;AAE5B;AACA,IAAIC,cAAc,GAAG,CAAC,CAAC;AACvBF,QAAQ,CAACE,cAAc,EAAE;EACvBC,UAAU,EAAEA,CAAA,KAAMA,UAAU;EAC5BC,UAAU,EAAEA,CAAA,KAAMA;AACpB,CAAC,CAAC;AACF,SAASC,UAAU,IAAIC,WAAW,QAAQ,+BAA+B;;AAEzE;AACA,SAASD,UAAU,QAAQ,+BAA+B;AAC1D,SAASE,MAAM,EAAEC,iBAAiB,EAAEC,SAAS,QAAQ,uBAAuB;AAC5E,IAAIC,gBAAgB,GAAIC,OAAO,IAAK;IAClC,IAAIC,YAAY,GAAGD,OAAO,EAAEP,UAAU,CAACS,IAAI,EAAEC,MAAM;IACnD,OAAOF,YAAY,EAAEG,IAAI,KAAKV,UAAU,CAACW,OAAO,GAAG,CAAC,CAAC,GAAGJ,YAAY,EAAEK,IAAI,IAAIL,YAAY,EAAEG,IAAI,KAAKV,UAAU,CAACa,IAAI;EACtH,CAAC;EAAEC,eAAe,GAAGA,CAACC,OAAO,EAAET,OAAO,KAAK;IACzC,IAAIU,KAAK,GAAGD,OAAO,CAAC,CAAC;MAAEN,MAAM,GAAGP,MAAM,CAAC,KAAK,CAAC,CAAC;IAC9C,OAAOE,SAAS,CAAC,MAAM;MACrB,IAAIC,gBAAgB,CAACC,OAAO,CAAC,EAC3B;MACF,IAAI;UAAEW,KAAK;UAAEC;QAAoB,CAAC,GAAGF,KAAK;QAAE;UAAEG,SAAS;UAAEC,QAAQ;UAAErB,UAAU,EAAEsB;QAAY,CAAC,GAAGf,OAAO;QAAEgB,QAAQ,GAAGD,WAAW,CAACb,IAAI,EAAEC,MAAM,EAAEc,iBAAiB,GAAGjB,OAAO,CAACkB,eAAe,CAAClB,OAAO,CAACmB,IAAI,EAAEnB,OAAO,CAAC,CAACgB,QAAQ,GAAGN,KAAK,CAACM,QAAQ;MACzO,IAAIH,SAAS,IAAI,CAACD,mBAAmB,EAAE;QACrC,IAAIQ,SAAS,GAAG9B,mCAAmC,CAACuB,SAAS,EAAEF,KAAK,EAAEG,QAAQ,CAAC,IAAIE,QAAQ;QAC3FI,SAAS,IAAIA,SAAS,KAAKjB,MAAM,CAACkB,OAAO,KAAKxB,iBAAiB,CAACuB,SAAS,EAAEpB,OAAO,CAAC,EAAEG,MAAM,CAACkB,OAAO,GAAGD,SAAS,CAAC;MAClH,CAAC,MAAMJ,QAAQ,IAAIA,QAAQ,KAAKb,MAAM,CAACkB,OAAO,KAAKxB,iBAAiB,CAACmB,QAAQ,EAAEhB,OAAO,CAAC,EAAEG,MAAM,CAACkB,OAAO,GAAGL,QAAQ,CAAC;IACrH,CAAC,CAAC,EAAEN,KAAK;EACX,CAAC;;AAED;AACA,IAAIjB,UAAU,GAAG;IACfS,IAAI,EAAE;MACJC,MAAM,EAAE;QACNC,IAAI,EAAET,WAAW,CAACU,OAAO;QACzBiB,QAAQ,EAAE;MACZ;IACF;EACF,CAAC;EAAE9B,UAAU,GAAG,CAACgB,eAAe,CAAC;AAEjC,SACEf,UAAU,EACVD,UAAU,EACVD,cAAc",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

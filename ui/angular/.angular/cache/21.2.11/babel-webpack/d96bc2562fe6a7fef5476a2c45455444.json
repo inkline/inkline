@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { QueueAction } from './QueueAction';\nimport { QueueScheduler } from './QueueScheduler';\nexport var queueScheduler = new QueueScheduler(QueueAction);\nexport var queue = queueScheduler;\n//# sourceMappingURL=queue.js.map",
+  "map": {
+    "version": 3,
+    "names": ["QueueAction", "QueueScheduler", "queueScheduler", "queue"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/scheduler/queue.js"
+    ],
+    "sourcesContent": [
+      "import { QueueAction } from './QueueAction';\nimport { QueueScheduler } from './QueueScheduler';\nexport var queueScheduler = new QueueScheduler(QueueAction);\nexport var queue = queueScheduler;\n//# sourceMappingURL=queue.js.map"
+    ],
+    "mappings": "AAAA,SAASA,WAAW,QAAQ,eAAe;AAC3C,SAASC,cAAc,QAAQ,kBAAkB;AACjD,OAAO,IAAIC,cAAc,GAAG,IAAID,cAAc,CAACD,WAAW,CAAC;AAC3D,OAAO,IAAIG,KAAK,GAAGD,cAAc;AACjC",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,30 @@
+{
+  "ast": null,
+  "code": "import { __read, __spreadArray } from \"tslib\";\nimport { map } from \"../operators/map\";\nvar isArray = Array.isArray;\nfunction callOrApply(fn, args) {\n  return isArray(args) ? fn.apply(void 0, __spreadArray([], __read(args))) : fn(args);\n}\nexport function mapOneOrManyArgs(fn) {\n  return map(function (args) {\n    return callOrApply(fn, args);\n  });\n}\n//# sourceMappingURL=mapOneOrManyArgs.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "__read",
+      "__spreadArray",
+      "map",
+      "isArray",
+      "Array",
+      "callOrApply",
+      "fn",
+      "args",
+      "apply",
+      "mapOneOrManyArgs"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/util/mapOneOrManyArgs.js"
+    ],
+    "sourcesContent": [
+      "import { __read, __spreadArray } from \"tslib\";\nimport { map } from \"../operators/map\";\nvar isArray = Array.isArray;\nfunction callOrApply(fn, args) {\n    return isArray(args) ? fn.apply(void 0, __spreadArray([], __read(args))) : fn(args);\n}\nexport function mapOneOrManyArgs(fn) {\n    return map(function (args) { return callOrApply(fn, args); });\n}\n//# sourceMappingURL=mapOneOrManyArgs.js.map"
+    ],
+    "mappings": "AAAA,SAASA,MAAM,EAAEC,aAAa,QAAQ,OAAO;AAC7C,SAASC,GAAG,QAAQ,kBAAkB;AACtC,IAAIC,OAAO,GAAGC,KAAK,CAACD,OAAO;AAC3B,SAASE,WAAWA,CAACC,EAAE,EAAEC,IAAI,EAAE;EAC3B,OAAOJ,OAAO,CAACI,IAAI,CAAC,GAAGD,EAAE,CAACE,KAAK,CAAC,KAAK,CAAC,EAAEP,aAAa,CAAC,EAAE,EAAED,MAAM,CAACO,IAAI,CAAC,CAAC,CAAC,GAAGD,EAAE,CAACC,IAAI,CAAC;AACvF;AACA,OAAO,SAASE,gBAAgBA,CAACH,EAAE,EAAE;EACjC,OAAOJ,GAAG,CAAC,UAAUK,IAAI,EAAE;IAAE,OAAOF,WAAW,CAACC,EAAE,EAAEC,IAAI,CAAC;EAAE,CAAC,CAAC;AACjE;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

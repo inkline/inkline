@@ -1,0 +1,37 @@
+{
+  "ast": null,
+  "code": "/**\n * @import {MDXComponents} from 'mdx/types.js'\n * @import {Component, ReactElement, ReactNode} from 'react'\n */\n\n/**\n * @callback MergeComponents\n *   Custom merge function.\n * @param {Readonly<MDXComponents>} currentComponents\n *   Current components from the context.\n * @returns {MDXComponents}\n *   Additional components.\n *\n * @typedef Props\n *   Configuration for `MDXProvider`.\n * @property {ReactNode | null | undefined} [children]\n *   Children (optional).\n * @property {Readonly<MDXComponents> | MergeComponents | null | undefined} [components]\n *   Additional components to use or a function that creates them (optional).\n * @property {boolean | null | undefined} [disableParentContext=false]\n *   Turn off outer component context (default: `false`).\n */\n\nimport React from 'react';\n\n/** @type {Readonly<MDXComponents>} */\nconst emptyComponents = {};\nconst MDXContext = React.createContext(emptyComponents);\n\n/**\n * Get current components from the MDX Context.\n *\n * @param {Readonly<MDXComponents> | MergeComponents | null | undefined} [components]\n *   Additional components to use or a function that creates them (optional).\n * @returns {MDXComponents}\n *   Current components.\n */\nexport function useMDXComponents(components) {\n  const contextComponents = React.useContext(MDXContext);\n\n  // Memoize to avoid unnecessary top-level context changes\n  return React.useMemo(function () {\n    // Custom merge via a function prop\n    if (typeof components === 'function') {\n      return components(contextComponents);\n    }\n    return {\n      ...contextComponents,\n      ...components\n    };\n  }, [contextComponents, components]);\n}\n\n/**\n * Provider for MDX context.\n *\n * @param {Readonly<Props>} properties\n *   Properties.\n * @returns {ReactElement}\n *   Element.\n * @satisfies {Component}\n */\nexport function MDXProvider(properties) {\n  /** @type {Readonly<MDXComponents>} */\n  let allComponents;\n  if (properties.disableParentContext) {\n    allComponents = typeof properties.components === 'function' ? properties.components(emptyComponents) : properties.components || emptyComponents;\n  } else {\n    allComponents = useMDXComponents(properties.components);\n  }\n  return React.createElement(MDXContext.Provider, {\n    value: allComponents\n  }, properties.children);\n}",
+  "map": {
+    "version": 3,
+    "names": [
+      "React",
+      "emptyComponents",
+      "MDXContext",
+      "createContext",
+      "useMDXComponents",
+      "components",
+      "contextComponents",
+      "useContext",
+      "useMemo",
+      "MDXProvider",
+      "properties",
+      "allComponents",
+      "disableParentContext",
+      "createElement",
+      "Provider",
+      "value",
+      "children"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@mdx-js+react@3.1.1_@types+react@19.2.14_react@19.2.6/node_modules/@mdx-js/react/lib/index.js"
+    ],
+    "sourcesContent": [
+      "/**\n * @import {MDXComponents} from 'mdx/types.js'\n * @import {Component, ReactElement, ReactNode} from 'react'\n */\n\n/**\n * @callback MergeComponents\n *   Custom merge function.\n * @param {Readonly<MDXComponents>} currentComponents\n *   Current components from the context.\n * @returns {MDXComponents}\n *   Additional components.\n *\n * @typedef Props\n *   Configuration for `MDXProvider`.\n * @property {ReactNode | null | undefined} [children]\n *   Children (optional).\n * @property {Readonly<MDXComponents> | MergeComponents | null | undefined} [components]\n *   Additional components to use or a function that creates them (optional).\n * @property {boolean | null | undefined} [disableParentContext=false]\n *   Turn off outer component context (default: `false`).\n */\n\nimport React from 'react'\n\n/** @type {Readonly<MDXComponents>} */\nconst emptyComponents = {}\n\nconst MDXContext = React.createContext(emptyComponents)\n\n/**\n * Get current components from the MDX Context.\n *\n * @param {Readonly<MDXComponents> | MergeComponents | null | undefined} [components]\n *   Additional components to use or a function that creates them (optional).\n * @returns {MDXComponents}\n *   Current components.\n */\nexport function useMDXComponents(components) {\n  const contextComponents = React.useContext(MDXContext)\n\n  // Memoize to avoid unnecessary top-level context changes\n  return React.useMemo(\n    function () {\n      // Custom merge via a function prop\n      if (typeof components === 'function') {\n        return components(contextComponents)\n      }\n\n      return {...contextComponents, ...components}\n    },\n    [contextComponents, components]\n  )\n}\n\n/**\n * Provider for MDX context.\n *\n * @param {Readonly<Props>} properties\n *   Properties.\n * @returns {ReactElement}\n *   Element.\n * @satisfies {Component}\n */\nexport function MDXProvider(properties) {\n  /** @type {Readonly<MDXComponents>} */\n  let allComponents\n\n  if (properties.disableParentContext) {\n    allComponents =\n      typeof properties.components === 'function'\n        ? properties.components(emptyComponents)\n        : properties.components || emptyComponents\n  } else {\n    allComponents = useMDXComponents(properties.components)\n  }\n\n  return React.createElement(\n    MDXContext.Provider,\n    {value: allComponents},\n    properties.children\n  )\n}\n"
+    ],
+    "mappings": "AAAA;AACA;AACA;AACA;;AAEA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;AAEA,OAAOA,KAAK,MAAM,OAAO;;AAEzB;AACA,MAAMC,eAAe,GAAG,CAAC,CAAC;AAE1B,MAAMC,UAAU,GAAGF,KAAK,CAACG,aAAa,CAACF,eAAe,CAAC;;AAEvD;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,OAAO,SAASG,gBAAgBA,CAACC,UAAU,EAAE;EAC3C,MAAMC,iBAAiB,GAAGN,KAAK,CAACO,UAAU,CAACL,UAAU,CAAC;;EAEtD;EACA,OAAOF,KAAK,CAACQ,OAAO,CAClB,YAAY;IACV;IACA,IAAI,OAAOH,UAAU,KAAK,UAAU,EAAE;MACpC,OAAOA,UAAU,CAACC,iBAAiB,CAAC;IACtC;IAEA,OAAO;MAAC,GAAGA,iBAAiB;MAAE,GAAGD;IAAU,CAAC;EAC9C,CAAC,EACD,CAACC,iBAAiB,EAAED,UAAU,CAChC,CAAC;AACH;;AAEA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,OAAO,SAASI,WAAWA,CAACC,UAAU,EAAE;EACtC;EACA,IAAIC,aAAa;EAEjB,IAAID,UAAU,CAACE,oBAAoB,EAAE;IACnCD,aAAa,GACX,OAAOD,UAAU,CAACL,UAAU,KAAK,UAAU,GACvCK,UAAU,CAACL,UAAU,CAACJ,eAAe,CAAC,GACtCS,UAAU,CAACL,UAAU,IAAIJ,eAAe;EAChD,CAAC,MAAM;IACLU,aAAa,GAAGP,gBAAgB,CAACM,UAAU,CAACL,UAAU,CAAC;EACzD;EAEA,OAAOL,KAAK,CAACa,aAAa,CACxBX,UAAU,CAACY,QAAQ,EACnB;IAACC,KAAK,EAAEJ;EAAa,CAAC,EACtBD,UAAU,CAACM,QACb,CAAC;AACH",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,34 @@
+{
+  "ast": null,
+  "code": "import { innerFrom } from '../observable/innerFrom';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { operate } from '../util/lift';\nexport function catchError(selector) {\n  return operate(function (source, subscriber) {\n    var innerSub = null;\n    var syncUnsub = false;\n    var handledResult;\n    innerSub = source.subscribe(createOperatorSubscriber(subscriber, undefined, undefined, function (err) {\n      handledResult = innerFrom(selector(err, catchError(selector)(source)));\n      if (innerSub) {\n        innerSub.unsubscribe();\n        innerSub = null;\n        handledResult.subscribe(subscriber);\n      } else {\n        syncUnsub = true;\n      }\n    }));\n    if (syncUnsub) {\n      innerSub.unsubscribe();\n      innerSub = null;\n      handledResult.subscribe(subscriber);\n    }\n  });\n}\n//# sourceMappingURL=catchError.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "innerFrom",
+      "createOperatorSubscriber",
+      "operate",
+      "catchError",
+      "selector",
+      "source",
+      "subscriber",
+      "innerSub",
+      "syncUnsub",
+      "handledResult",
+      "subscribe",
+      "undefined",
+      "err",
+      "unsubscribe"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/catchError.js"
+    ],
+    "sourcesContent": [
+      "import { innerFrom } from '../observable/innerFrom';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { operate } from '../util/lift';\nexport function catchError(selector) {\n    return operate(function (source, subscriber) {\n        var innerSub = null;\n        var syncUnsub = false;\n        var handledResult;\n        innerSub = source.subscribe(createOperatorSubscriber(subscriber, undefined, undefined, function (err) {\n            handledResult = innerFrom(selector(err, catchError(selector)(source)));\n            if (innerSub) {\n                innerSub.unsubscribe();\n                innerSub = null;\n                handledResult.subscribe(subscriber);\n            }\n            else {\n                syncUnsub = true;\n            }\n        }));\n        if (syncUnsub) {\n            innerSub.unsubscribe();\n            innerSub = null;\n            handledResult.subscribe(subscriber);\n        }\n    });\n}\n//# sourceMappingURL=catchError.js.map"
+    ],
+    "mappings": "AAAA,SAASA,SAAS,QAAQ,yBAAyB;AACnD,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,SAASC,OAAO,QAAQ,cAAc;AACtC,OAAO,SAASC,UAAUA,CAACC,QAAQ,EAAE;EACjC,OAAOF,OAAO,CAAC,UAAUG,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,QAAQ,GAAG,IAAI;IACnB,IAAIC,SAAS,GAAG,KAAK;IACrB,IAAIC,aAAa;IACjBF,QAAQ,GAAGF,MAAM,CAACK,SAAS,CAACT,wBAAwB,CAACK,UAAU,EAAEK,SAAS,EAAEA,SAAS,EAAE,UAAUC,GAAG,EAAE;MAClGH,aAAa,GAAGT,SAAS,CAACI,QAAQ,CAACQ,GAAG,EAAET,UAAU,CAACC,QAAQ,CAAC,CAACC,MAAM,CAAC,CAAC,CAAC;MACtE,IAAIE,QAAQ,EAAE;QACVA,QAAQ,CAACM,WAAW,CAAC,CAAC;QACtBN,QAAQ,GAAG,IAAI;QACfE,aAAa,CAACC,SAAS,CAACJ,UAAU,CAAC;MACvC,CAAC,MACI;QACDE,SAAS,GAAG,IAAI;MACpB;IACJ,CAAC,CAAC,CAAC;IACH,IAAIA,SAAS,EAAE;MACXD,QAAQ,CAACM,WAAW,CAAC,CAAC;MACtBN,QAAQ,GAAG,IAAI;MACfE,aAAa,CAACC,SAAS,CAACJ,UAAU,CAAC;IACvC;EACJ,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

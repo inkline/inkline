@@ -1,0 +1,33 @@
+{
+  "ast": null,
+  "code": "import { operate } from '../util/lift';\nimport { mergeInternals } from './mergeInternals';\nexport function mergeScan(accumulator, seed, concurrent) {\n  if (concurrent === void 0) {\n    concurrent = Infinity;\n  }\n  return operate(function (source, subscriber) {\n    var state = seed;\n    return mergeInternals(source, subscriber, function (value, index) {\n      return accumulator(state, value, index);\n    }, concurrent, function (value) {\n      state = value;\n    }, false, undefined, function () {\n      return state = null;\n    });\n  });\n}\n//# sourceMappingURL=mergeScan.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "operate",
+      "mergeInternals",
+      "mergeScan",
+      "accumulator",
+      "seed",
+      "concurrent",
+      "Infinity",
+      "source",
+      "subscriber",
+      "state",
+      "value",
+      "index",
+      "undefined"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/mergeScan.js"
+    ],
+    "sourcesContent": [
+      "import { operate } from '../util/lift';\nimport { mergeInternals } from './mergeInternals';\nexport function mergeScan(accumulator, seed, concurrent) {\n    if (concurrent === void 0) { concurrent = Infinity; }\n    return operate(function (source, subscriber) {\n        var state = seed;\n        return mergeInternals(source, subscriber, function (value, index) { return accumulator(state, value, index); }, concurrent, function (value) {\n            state = value;\n        }, false, undefined, function () { return (state = null); });\n    });\n}\n//# sourceMappingURL=mergeScan.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,cAAc;AACtC,SAASC,cAAc,QAAQ,kBAAkB;AACjD,OAAO,SAASC,SAASA,CAACC,WAAW,EAAEC,IAAI,EAAEC,UAAU,EAAE;EACrD,IAAIA,UAAU,KAAK,KAAK,CAAC,EAAE;IAAEA,UAAU,GAAGC,QAAQ;EAAE;EACpD,OAAON,OAAO,CAAC,UAAUO,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,KAAK,GAAGL,IAAI;IAChB,OAAOH,cAAc,CAACM,MAAM,EAAEC,UAAU,EAAE,UAAUE,KAAK,EAAEC,KAAK,EAAE;MAAE,OAAOR,WAAW,CAACM,KAAK,EAAEC,KAAK,EAAEC,KAAK,CAAC;IAAE,CAAC,EAAEN,UAAU,EAAE,UAAUK,KAAK,EAAE;MACzID,KAAK,GAAGC,KAAK;IACjB,CAAC,EAAE,KAAK,EAAEE,SAAS,EAAE,YAAY;MAAE,OAAQH,KAAK,GAAG,IAAI;IAAG,CAAC,CAAC;EAChE,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

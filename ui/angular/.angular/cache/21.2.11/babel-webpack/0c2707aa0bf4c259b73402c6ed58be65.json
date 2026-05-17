@@ -1,0 +1,30 @@
+{
+  "ast": null,
+  "code": "import { __read, __spreadArray } from \"tslib\";\nimport { argsOrArgArray } from '../util/argsOrArgArray';\nimport { raceWith } from './raceWith';\nexport function race() {\n  var args = [];\n  for (var _i = 0; _i < arguments.length; _i++) {\n    args[_i] = arguments[_i];\n  }\n  return raceWith.apply(void 0, __spreadArray([], __read(argsOrArgArray(args))));\n}\n//# sourceMappingURL=race.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "__read",
+      "__spreadArray",
+      "argsOrArgArray",
+      "raceWith",
+      "race",
+      "args",
+      "_i",
+      "arguments",
+      "length",
+      "apply"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/race.js"
+    ],
+    "sourcesContent": [
+      "import { __read, __spreadArray } from \"tslib\";\nimport { argsOrArgArray } from '../util/argsOrArgArray';\nimport { raceWith } from './raceWith';\nexport function race() {\n    var args = [];\n    for (var _i = 0; _i < arguments.length; _i++) {\n        args[_i] = arguments[_i];\n    }\n    return raceWith.apply(void 0, __spreadArray([], __read(argsOrArgArray(args))));\n}\n//# sourceMappingURL=race.js.map"
+    ],
+    "mappings": "AAAA,SAASA,MAAM,EAAEC,aAAa,QAAQ,OAAO;AAC7C,SAASC,cAAc,QAAQ,wBAAwB;AACvD,SAASC,QAAQ,QAAQ,YAAY;AACrC,OAAO,SAASC,IAAIA,CAAA,EAAG;EACnB,IAAIC,IAAI,GAAG,EAAE;EACb,KAAK,IAAIC,EAAE,GAAG,CAAC,EAAEA,EAAE,GAAGC,SAAS,CAACC,MAAM,EAAEF,EAAE,EAAE,EAAE;IAC1CD,IAAI,CAACC,EAAE,CAAC,GAAGC,SAAS,CAACD,EAAE,CAAC;EAC5B;EACA,OAAOH,QAAQ,CAACM,KAAK,CAAC,KAAK,CAAC,EAAER,aAAa,CAAC,EAAE,EAAED,MAAM,CAACE,cAAc,CAACG,IAAI,CAAC,CAAC,CAAC,CAAC;AAClF;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,24 @@
+{
+  "ast": null,
+  "code": "import { AnimationFrameAction } from './AnimationFrameAction';\nimport { AnimationFrameScheduler } from './AnimationFrameScheduler';\nexport var animationFrameScheduler = new AnimationFrameScheduler(AnimationFrameAction);\nexport var animationFrame = animationFrameScheduler;\n//# sourceMappingURL=animationFrame.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "AnimationFrameAction",
+      "AnimationFrameScheduler",
+      "animationFrameScheduler",
+      "animationFrame"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/scheduler/animationFrame.js"
+    ],
+    "sourcesContent": [
+      "import { AnimationFrameAction } from './AnimationFrameAction';\nimport { AnimationFrameScheduler } from './AnimationFrameScheduler';\nexport var animationFrameScheduler = new AnimationFrameScheduler(AnimationFrameAction);\nexport var animationFrame = animationFrameScheduler;\n//# sourceMappingURL=animationFrame.js.map"
+    ],
+    "mappings": "AAAA,SAASA,oBAAoB,QAAQ,wBAAwB;AAC7D,SAASC,uBAAuB,QAAQ,2BAA2B;AACnE,OAAO,IAAIC,uBAAuB,GAAG,IAAID,uBAAuB,CAACD,oBAAoB,CAAC;AACtF,OAAO,IAAIG,cAAc,GAAGD,uBAAuB;AACnD",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,26 @@
+{
+  "ast": null,
+  "code": "import { BehaviorSubject } from '../BehaviorSubject';\nimport { ConnectableObservable } from '../observable/ConnectableObservable';\nexport function publishBehavior(initialValue) {\n  return function (source) {\n    var subject = new BehaviorSubject(initialValue);\n    return new ConnectableObservable(source, function () {\n      return subject;\n    });\n  };\n}\n//# sourceMappingURL=publishBehavior.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "BehaviorSubject",
+      "ConnectableObservable",
+      "publishBehavior",
+      "initialValue",
+      "source",
+      "subject"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/publishBehavior.js"
+    ],
+    "sourcesContent": [
+      "import { BehaviorSubject } from '../BehaviorSubject';\nimport { ConnectableObservable } from '../observable/ConnectableObservable';\nexport function publishBehavior(initialValue) {\n    return function (source) {\n        var subject = new BehaviorSubject(initialValue);\n        return new ConnectableObservable(source, function () { return subject; });\n    };\n}\n//# sourceMappingURL=publishBehavior.js.map"
+    ],
+    "mappings": "AAAA,SAASA,eAAe,QAAQ,oBAAoB;AACpD,SAASC,qBAAqB,QAAQ,qCAAqC;AAC3E,OAAO,SAASC,eAAeA,CAACC,YAAY,EAAE;EAC1C,OAAO,UAAUC,MAAM,EAAE;IACrB,IAAIC,OAAO,GAAG,IAAIL,eAAe,CAACG,YAAY,CAAC;IAC/C,OAAO,IAAIF,qBAAqB,CAACG,MAAM,EAAE,YAAY;MAAE,OAAOC,OAAO;IAAE,CAAC,CAAC;EAC7E,CAAC;AACL;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

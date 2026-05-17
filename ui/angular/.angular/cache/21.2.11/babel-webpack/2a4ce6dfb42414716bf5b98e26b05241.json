@@ -1,0 +1,32 @@
+{
+  "ast": null,
+  "code": "import { map } from './map';\nexport function pluck() {\n  var properties = [];\n  for (var _i = 0; _i < arguments.length; _i++) {\n    properties[_i] = arguments[_i];\n  }\n  var length = properties.length;\n  if (length === 0) {\n    throw new Error('list of properties cannot be empty.');\n  }\n  return map(function (x) {\n    var currentProp = x;\n    for (var i = 0; i < length; i++) {\n      var p = currentProp === null || currentProp === void 0 ? void 0 : currentProp[properties[i]];\n      if (typeof p !== 'undefined') {\n        currentProp = p;\n      } else {\n        return undefined;\n      }\n    }\n    return currentProp;\n  });\n}\n//# sourceMappingURL=pluck.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "map",
+      "pluck",
+      "properties",
+      "_i",
+      "arguments",
+      "length",
+      "Error",
+      "x",
+      "currentProp",
+      "i",
+      "p",
+      "undefined"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/pluck.js"
+    ],
+    "sourcesContent": [
+      "import { map } from './map';\nexport function pluck() {\n    var properties = [];\n    for (var _i = 0; _i < arguments.length; _i++) {\n        properties[_i] = arguments[_i];\n    }\n    var length = properties.length;\n    if (length === 0) {\n        throw new Error('list of properties cannot be empty.');\n    }\n    return map(function (x) {\n        var currentProp = x;\n        for (var i = 0; i < length; i++) {\n            var p = currentProp === null || currentProp === void 0 ? void 0 : currentProp[properties[i]];\n            if (typeof p !== 'undefined') {\n                currentProp = p;\n            }\n            else {\n                return undefined;\n            }\n        }\n        return currentProp;\n    });\n}\n//# sourceMappingURL=pluck.js.map"
+    ],
+    "mappings": "AAAA,SAASA,GAAG,QAAQ,OAAO;AAC3B,OAAO,SAASC,KAAKA,CAAA,EAAG;EACpB,IAAIC,UAAU,GAAG,EAAE;EACnB,KAAK,IAAIC,EAAE,GAAG,CAAC,EAAEA,EAAE,GAAGC,SAAS,CAACC,MAAM,EAAEF,EAAE,EAAE,EAAE;IAC1CD,UAAU,CAACC,EAAE,CAAC,GAAGC,SAAS,CAACD,EAAE,CAAC;EAClC;EACA,IAAIE,MAAM,GAAGH,UAAU,CAACG,MAAM;EAC9B,IAAIA,MAAM,KAAK,CAAC,EAAE;IACd,MAAM,IAAIC,KAAK,CAAC,qCAAqC,CAAC;EAC1D;EACA,OAAON,GAAG,CAAC,UAAUO,CAAC,EAAE;IACpB,IAAIC,WAAW,GAAGD,CAAC;IACnB,KAAK,IAAIE,CAAC,GAAG,CAAC,EAAEA,CAAC,GAAGJ,MAAM,EAAEI,CAAC,EAAE,EAAE;MAC7B,IAAIC,CAAC,GAAGF,WAAW,KAAK,IAAI,IAAIA,WAAW,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,WAAW,CAACN,UAAU,CAACO,CAAC,CAAC,CAAC;MAC5F,IAAI,OAAOC,CAAC,KAAK,WAAW,EAAE;QAC1BF,WAAW,GAAGE,CAAC;MACnB,CAAC,MACI;QACD,OAAOC,SAAS;MACpB;IACJ;IACA,OAAOH,WAAW;EACtB,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

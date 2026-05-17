@@ -1,0 +1,33 @@
+{
+  "ast": null,
+  "code": "// ../../node_modules/@babel/runtime/helpers/esm/extends.js\nfunction _extends() {\n  return _extends = Object.assign ? Object.assign.bind() : function (n) {\n    for (var e = 1; e < arguments.length; e++) {\n      var t = arguments[e];\n      for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);\n    }\n    return n;\n  }, _extends.apply(null, arguments);\n}\nexport { _extends };",
+  "map": {
+    "version": 3,
+    "names": [
+      "_extends",
+      "Object",
+      "assign",
+      "bind",
+      "n",
+      "e",
+      "arguments",
+      "length",
+      "t",
+      "r",
+      "hasOwnProperty",
+      "call",
+      "apply"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/storybook@10.4.0_@emnapi+core@1.10.0_@emnapi+runtime@1.10.0_@testing-library+dom@10.4.1_698ffd59787bff4c7efa752470741c90/node_modules/storybook/dist/_browser-chunks/chunk-LE2LTDW3.js"
+    ],
+    "sourcesContent": [
+      "// ../../node_modules/@babel/runtime/helpers/esm/extends.js\nfunction _extends() {\n  return _extends = Object.assign ? Object.assign.bind() : function(n) {\n    for (var e = 1; e < arguments.length; e++) {\n      var t = arguments[e];\n      for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]);\n    }\n    return n;\n  }, _extends.apply(null, arguments);\n}\n\nexport {\n  _extends\n};\n"
+    ],
+    "mappings": "AAAA;AACA,SAASA,QAAQA,CAAA,EAAG;EAClB,OAAOA,QAAQ,GAAGC,MAAM,CAACC,MAAM,GAAGD,MAAM,CAACC,MAAM,CAACC,IAAI,CAAC,CAAC,GAAG,UAASC,CAAC,EAAE;IACnE,KAAK,IAAIC,CAAC,GAAG,CAAC,EAAEA,CAAC,GAAGC,SAAS,CAACC,MAAM,EAAEF,CAAC,EAAE,EAAE;MACzC,IAAIG,CAAC,GAAGF,SAAS,CAACD,CAAC,CAAC;MACpB,KAAK,IAAII,CAAC,IAAID,CAAC,EAAE,CAAC,CAAC,CAAC,EAAEE,cAAc,CAACC,IAAI,CAACH,CAAC,EAAEC,CAAC,CAAC,KAAKL,CAAC,CAACK,CAAC,CAAC,GAAGD,CAAC,CAACC,CAAC,CAAC,CAAC;IAClE;IACA,OAAOL,CAAC;EACV,CAAC,EAAEJ,QAAQ,CAACY,KAAK,CAAC,IAAI,EAAEN,SAAS,CAAC;AACpC;AAEA,SACEN,QAAQ",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "/**\n * @license Angular v21.2.13\n * (c) 2010-2026 Google LLC. https://angular.dev/\n * License: MIT\n */\n\nfunction setAlternateWeakRefImpl(impl) {}\nexport { setAlternateWeakRefImpl };\n//# sourceMappingURL=_weak_ref-chunk.mjs.map",
+  "map": {
+    "version": 3,
+    "names": ["setAlternateWeakRefImpl", "impl"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@angular+core@21.2.13_@angular+compiler@21.2.13_rxjs@7.8.2_zone.js@0.15.1/node_modules/@angular/core/fesm2022/_weak_ref-chunk.mjs"
+    ],
+    "sourcesContent": [
+      "/**\n * @license Angular v21.2.13\n * (c) 2010-2026 Google LLC. https://angular.dev/\n * License: MIT\n */\n\nfunction setAlternateWeakRefImpl(impl) {}\n\nexport { setAlternateWeakRefImpl };\n//# sourceMappingURL=_weak_ref-chunk.mjs.map\n"
+    ],
+    "mappings": "AAAA;AACA;AACA;AACA;AACA;;AAEA,SAASA,uBAAuBA,CAACC,IAAI,EAAE,CAAC;AAExC,SAASD,uBAAuB;AAChC",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,34 @@
+{
+  "ast": null,
+  "code": "import { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { innerFrom } from '../observable/innerFrom';\nimport { noop } from '../util/noop';\nexport function skipUntil(notifier) {\n  return operate(function (source, subscriber) {\n    var taking = false;\n    var skipSubscriber = createOperatorSubscriber(subscriber, function () {\n      skipSubscriber === null || skipSubscriber === void 0 ? void 0 : skipSubscriber.unsubscribe();\n      taking = true;\n    }, noop);\n    innerFrom(notifier).subscribe(skipSubscriber);\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      return taking && subscriber.next(value);\n    }));\n  });\n}\n//# sourceMappingURL=skipUntil.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "operate",
+      "createOperatorSubscriber",
+      "innerFrom",
+      "noop",
+      "skipUntil",
+      "notifier",
+      "source",
+      "subscriber",
+      "taking",
+      "skipSubscriber",
+      "unsubscribe",
+      "subscribe",
+      "value",
+      "next"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/skipUntil.js"
+    ],
+    "sourcesContent": [
+      "import { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { innerFrom } from '../observable/innerFrom';\nimport { noop } from '../util/noop';\nexport function skipUntil(notifier) {\n    return operate(function (source, subscriber) {\n        var taking = false;\n        var skipSubscriber = createOperatorSubscriber(subscriber, function () {\n            skipSubscriber === null || skipSubscriber === void 0 ? void 0 : skipSubscriber.unsubscribe();\n            taking = true;\n        }, noop);\n        innerFrom(notifier).subscribe(skipSubscriber);\n        source.subscribe(createOperatorSubscriber(subscriber, function (value) { return taking && subscriber.next(value); }));\n    });\n}\n//# sourceMappingURL=skipUntil.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,SAASC,SAAS,QAAQ,yBAAyB;AACnD,SAASC,IAAI,QAAQ,cAAc;AACnC,OAAO,SAASC,SAASA,CAACC,QAAQ,EAAE;EAChC,OAAOL,OAAO,CAAC,UAAUM,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,MAAM,GAAG,KAAK;IAClB,IAAIC,cAAc,GAAGR,wBAAwB,CAACM,UAAU,EAAE,YAAY;MAClEE,cAAc,KAAK,IAAI,IAAIA,cAAc,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,cAAc,CAACC,WAAW,CAAC,CAAC;MAC5FF,MAAM,GAAG,IAAI;IACjB,CAAC,EAAEL,IAAI,CAAC;IACRD,SAAS,CAACG,QAAQ,CAAC,CAACM,SAAS,CAACF,cAAc,CAAC;IAC7CH,MAAM,CAACK,SAAS,CAACV,wBAAwB,CAACM,UAAU,EAAE,UAAUK,KAAK,EAAE;MAAE,OAAOJ,MAAM,IAAID,UAAU,CAACM,IAAI,CAACD,KAAK,CAAC;IAAE,CAAC,CAAC,CAAC;EACzH,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

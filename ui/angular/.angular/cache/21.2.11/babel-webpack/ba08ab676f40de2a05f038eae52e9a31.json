@@ -1,0 +1,53 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\nconst SemVer = require('../classes/semver');\nconst Comparator = require('../classes/comparator');\nconst {\n  ANY\n} = Comparator;\nconst Range = require('../classes/range');\nconst satisfies = require('../functions/satisfies');\nconst gt = require('../functions/gt');\nconst lt = require('../functions/lt');\nconst lte = require('../functions/lte');\nconst gte = require('../functions/gte');\nconst outside = (version, range, hilo, options) => {\n  version = new SemVer(version, options);\n  range = new Range(range, options);\n  let gtfn, ltefn, ltfn, comp, ecomp;\n  switch (hilo) {\n    case '>':\n      gtfn = gt;\n      ltefn = lte;\n      ltfn = lt;\n      comp = '>';\n      ecomp = '>=';\n      break;\n    case '<':\n      gtfn = lt;\n      ltefn = gte;\n      ltfn = gt;\n      comp = '<';\n      ecomp = '<=';\n      break;\n    default:\n      throw new TypeError('Must provide a hilo val of \"<\" or \">\"');\n  }\n\n  // If it satisfies the range it is not outside\n  if (satisfies(version, range, options)) {\n    return false;\n  }\n\n  // From now on, variable terms are as if we're in \"gtr\" mode.\n  // but note that everything is flipped for the \"ltr\" function.\n\n  for (let i = 0; i < range.set.length; ++i) {\n    const comparators = range.set[i];\n    let high = null;\n    let low = null;\n    comparators.forEach(comparator => {\n      if (comparator.semver === ANY) {\n        comparator = new Comparator('>=0.0.0');\n      }\n      high = high || comparator;\n      low = low || comparator;\n      if (gtfn(comparator.semver, high.semver, options)) {\n        high = comparator;\n      } else if (ltfn(comparator.semver, low.semver, options)) {\n        low = comparator;\n      }\n    });\n\n    // If the edge version comparator has a operator then our version\n    // isn't outside it\n    if (high.operator === comp || high.operator === ecomp) {\n      return false;\n    }\n\n    // If the lowest version comparator has an operator and our version\n    // is less than it then it isn't higher than the range\n    if ((!low.operator || low.operator === comp) && ltefn(version, low.semver)) {\n      return false;\n    } else if (low.operator === ecomp && ltfn(version, low.semver)) {\n      return false;\n    }\n  }\n  return true;\n};\nmodule.exports = outside;",
+  "map": {
+    "version": 3,
+    "names": [
+      "SemVer",
+      "require",
+      "Comparator",
+      "ANY",
+      "Range",
+      "satisfies",
+      "gt",
+      "lt",
+      "lte",
+      "gte",
+      "outside",
+      "version",
+      "range",
+      "hilo",
+      "options",
+      "gtfn",
+      "ltefn",
+      "ltfn",
+      "comp",
+      "ecomp",
+      "TypeError",
+      "i",
+      "set",
+      "length",
+      "comparators",
+      "high",
+      "low",
+      "forEach",
+      "comparator",
+      "semver",
+      "operator",
+      "module",
+      "exports"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/semver@7.7.4/node_modules/semver/ranges/outside.js"
+    ],
+    "sourcesContent": [
+      "'use strict'\n\nconst SemVer = require('../classes/semver')\nconst Comparator = require('../classes/comparator')\nconst { ANY } = Comparator\nconst Range = require('../classes/range')\nconst satisfies = require('../functions/satisfies')\nconst gt = require('../functions/gt')\nconst lt = require('../functions/lt')\nconst lte = require('../functions/lte')\nconst gte = require('../functions/gte')\n\nconst outside = (version, range, hilo, options) => {\n  version = new SemVer(version, options)\n  range = new Range(range, options)\n\n  let gtfn, ltefn, ltfn, comp, ecomp\n  switch (hilo) {\n    case '>':\n      gtfn = gt\n      ltefn = lte\n      ltfn = lt\n      comp = '>'\n      ecomp = '>='\n      break\n    case '<':\n      gtfn = lt\n      ltefn = gte\n      ltfn = gt\n      comp = '<'\n      ecomp = '<='\n      break\n    default:\n      throw new TypeError('Must provide a hilo val of \"<\" or \">\"')\n  }\n\n  // If it satisfies the range it is not outside\n  if (satisfies(version, range, options)) {\n    return false\n  }\n\n  // From now on, variable terms are as if we're in \"gtr\" mode.\n  // but note that everything is flipped for the \"ltr\" function.\n\n  for (let i = 0; i < range.set.length; ++i) {\n    const comparators = range.set[i]\n\n    let high = null\n    let low = null\n\n    comparators.forEach((comparator) => {\n      if (comparator.semver === ANY) {\n        comparator = new Comparator('>=0.0.0')\n      }\n      high = high || comparator\n      low = low || comparator\n      if (gtfn(comparator.semver, high.semver, options)) {\n        high = comparator\n      } else if (ltfn(comparator.semver, low.semver, options)) {\n        low = comparator\n      }\n    })\n\n    // If the edge version comparator has a operator then our version\n    // isn't outside it\n    if (high.operator === comp || high.operator === ecomp) {\n      return false\n    }\n\n    // If the lowest version comparator has an operator and our version\n    // is less than it then it isn't higher than the range\n    if ((!low.operator || low.operator === comp) &&\n        ltefn(version, low.semver)) {\n      return false\n    } else if (low.operator === ecomp && ltfn(version, low.semver)) {\n      return false\n    }\n  }\n  return true\n}\n\nmodule.exports = outside\n"
+    ],
+    "mappings": "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",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

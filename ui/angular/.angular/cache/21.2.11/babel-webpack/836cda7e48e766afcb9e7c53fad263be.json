@@ -1,0 +1,50 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\nconst SemVer = require('../classes/semver');\nconst parse = require('./parse');\nconst {\n  safeRe: re,\n  t\n} = require('../internal/re');\nconst coerce = (version, options) => {\n  if (version instanceof SemVer) {\n    return version;\n  }\n  if (typeof version === 'number') {\n    version = String(version);\n  }\n  if (typeof version !== 'string') {\n    return null;\n  }\n  options = options || {};\n  let match = null;\n  if (!options.rtl) {\n    match = version.match(options.includePrerelease ? re[t.COERCEFULL] : re[t.COERCE]);\n  } else {\n    // Find the right-most coercible string that does not share\n    // a terminus with a more left-ward coercible string.\n    // Eg, '1.2.3.4' wants to coerce '2.3.4', not '3.4' or '4'\n    // With includePrerelease option set, '1.2.3.4-rc' wants to coerce '2.3.4-rc', not '2.3.4'\n    //\n    // Walk through the string checking with a /g regexp\n    // Manually set the index so as to pick up overlapping matches.\n    // Stop when we get a match that ends at the string end, since no\n    // coercible string can be more right-ward without the same terminus.\n    const coerceRtlRegex = options.includePrerelease ? re[t.COERCERTLFULL] : re[t.COERCERTL];\n    let next;\n    while ((next = coerceRtlRegex.exec(version)) && (!match || match.index + match[0].length !== version.length)) {\n      if (!match || next.index + next[0].length !== match.index + match[0].length) {\n        match = next;\n      }\n      coerceRtlRegex.lastIndex = next.index + next[1].length + next[2].length;\n    }\n    // leave it in a clean state\n    coerceRtlRegex.lastIndex = -1;\n  }\n  if (match === null) {\n    return null;\n  }\n  const major = match[2];\n  const minor = match[3] || '0';\n  const patch = match[4] || '0';\n  const prerelease = options.includePrerelease && match[5] ? `-${match[5]}` : '';\n  const build = options.includePrerelease && match[6] ? `+${match[6]}` : '';\n  return parse(`${major}.${minor}.${patch}${prerelease}${build}`, options);\n};\nmodule.exports = coerce;",
+  "map": {
+    "version": 3,
+    "names": [
+      "SemVer",
+      "require",
+      "parse",
+      "safeRe",
+      "re",
+      "t",
+      "coerce",
+      "version",
+      "options",
+      "String",
+      "match",
+      "rtl",
+      "includePrerelease",
+      "COERCEFULL",
+      "COERCE",
+      "coerceRtlRegex",
+      "COERCERTLFULL",
+      "COERCERTL",
+      "next",
+      "exec",
+      "index",
+      "length",
+      "lastIndex",
+      "major",
+      "minor",
+      "patch",
+      "prerelease",
+      "build",
+      "module",
+      "exports"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/semver@7.7.4/node_modules/semver/functions/coerce.js"
+    ],
+    "sourcesContent": [
+      "'use strict'\n\nconst SemVer = require('../classes/semver')\nconst parse = require('./parse')\nconst { safeRe: re, t } = require('../internal/re')\n\nconst coerce = (version, options) => {\n  if (version instanceof SemVer) {\n    return version\n  }\n\n  if (typeof version === 'number') {\n    version = String(version)\n  }\n\n  if (typeof version !== 'string') {\n    return null\n  }\n\n  options = options || {}\n\n  let match = null\n  if (!options.rtl) {\n    match = version.match(options.includePrerelease ? re[t.COERCEFULL] : re[t.COERCE])\n  } else {\n    // Find the right-most coercible string that does not share\n    // a terminus with a more left-ward coercible string.\n    // Eg, '1.2.3.4' wants to coerce '2.3.4', not '3.4' or '4'\n    // With includePrerelease option set, '1.2.3.4-rc' wants to coerce '2.3.4-rc', not '2.3.4'\n    //\n    // Walk through the string checking with a /g regexp\n    // Manually set the index so as to pick up overlapping matches.\n    // Stop when we get a match that ends at the string end, since no\n    // coercible string can be more right-ward without the same terminus.\n    const coerceRtlRegex = options.includePrerelease ? re[t.COERCERTLFULL] : re[t.COERCERTL]\n    let next\n    while ((next = coerceRtlRegex.exec(version)) &&\n        (!match || match.index + match[0].length !== version.length)\n    ) {\n      if (!match ||\n            next.index + next[0].length !== match.index + match[0].length) {\n        match = next\n      }\n      coerceRtlRegex.lastIndex = next.index + next[1].length + next[2].length\n    }\n    // leave it in a clean state\n    coerceRtlRegex.lastIndex = -1\n  }\n\n  if (match === null) {\n    return null\n  }\n\n  const major = match[2]\n  const minor = match[3] || '0'\n  const patch = match[4] || '0'\n  const prerelease = options.includePrerelease && match[5] ? `-${match[5]}` : ''\n  const build = options.includePrerelease && match[6] ? `+${match[6]}` : ''\n\n  return parse(`${major}.${minor}.${patch}${prerelease}${build}`, options)\n}\nmodule.exports = coerce\n"
+    ],
+    "mappings": "AAAA,YAAY;;AAEZ,MAAMA,MAAM,GAAGC,OAAO,CAAC,mBAAmB,CAAC;AAC3C,MAAMC,KAAK,GAAGD,OAAO,CAAC,SAAS,CAAC;AAChC,MAAM;EAAEE,MAAM,EAAEC,EAAE;EAAEC;AAAE,CAAC,GAAGJ,OAAO,CAAC,gBAAgB,CAAC;AAEnD,MAAMK,MAAM,GAAGA,CAACC,OAAO,EAAEC,OAAO,KAAK;EACnC,IAAID,OAAO,YAAYP,MAAM,EAAE;IAC7B,OAAOO,OAAO;EAChB;EAEA,IAAI,OAAOA,OAAO,KAAK,QAAQ,EAAE;IAC/BA,OAAO,GAAGE,MAAM,CAACF,OAAO,CAAC;EAC3B;EAEA,IAAI,OAAOA,OAAO,KAAK,QAAQ,EAAE;IAC/B,OAAO,IAAI;EACb;EAEAC,OAAO,GAAGA,OAAO,IAAI,CAAC,CAAC;EAEvB,IAAIE,KAAK,GAAG,IAAI;EAChB,IAAI,CAACF,OAAO,CAACG,GAAG,EAAE;IAChBD,KAAK,GAAGH,OAAO,CAACG,KAAK,CAACF,OAAO,CAACI,iBAAiB,GAAGR,EAAE,CAACC,CAAC,CAACQ,UAAU,CAAC,GAAGT,EAAE,CAACC,CAAC,CAACS,MAAM,CAAC,CAAC;EACpF,CAAC,MAAM;IACL;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA;IACA,MAAMC,cAAc,GAAGP,OAAO,CAACI,iBAAiB,GAAGR,EAAE,CAACC,CAAC,CAACW,aAAa,CAAC,GAAGZ,EAAE,CAACC,CAAC,CAACY,SAAS,CAAC;IACxF,IAAIC,IAAI;IACR,OAAO,CAACA,IAAI,GAAGH,cAAc,CAACI,IAAI,CAACZ,OAAO,CAAC,MACtC,CAACG,KAAK,IAAIA,KAAK,CAACU,KAAK,GAAGV,KAAK,CAAC,CAAC,CAAC,CAACW,MAAM,KAAKd,OAAO,CAACc,MAAM,CAAC,EAC9D;MACA,IAAI,CAACX,KAAK,IACJQ,IAAI,CAACE,KAAK,GAAGF,IAAI,CAAC,CAAC,CAAC,CAACG,MAAM,KAAKX,KAAK,CAACU,KAAK,GAAGV,KAAK,CAAC,CAAC,CAAC,CAACW,MAAM,EAAE;QACnEX,KAAK,GAAGQ,IAAI;MACd;MACAH,cAAc,CAACO,SAAS,GAAGJ,IAAI,CAACE,KAAK,GAAGF,IAAI,CAAC,CAAC,CAAC,CAACG,MAAM,GAAGH,IAAI,CAAC,CAAC,CAAC,CAACG,MAAM;IACzE;IACA;IACAN,cAAc,CAACO,SAAS,GAAG,CAAC,CAAC;EAC/B;EAEA,IAAIZ,KAAK,KAAK,IAAI,EAAE;IAClB,OAAO,IAAI;EACb;EAEA,MAAMa,KAAK,GAAGb,KAAK,CAAC,CAAC,CAAC;EACtB,MAAMc,KAAK,GAAGd,KAAK,CAAC,CAAC,CAAC,IAAI,GAAG;EAC7B,MAAMe,KAAK,GAAGf,KAAK,CAAC,CAAC,CAAC,IAAI,GAAG;EAC7B,MAAMgB,UAAU,GAAGlB,OAAO,CAACI,iBAAiB,IAAIF,KAAK,CAAC,CAAC,CAAC,GAAG,IAAIA,KAAK,CAAC,CAAC,CAAC,EAAE,GAAG,EAAE;EAC9E,MAAMiB,KAAK,GAAGnB,OAAO,CAACI,iBAAiB,IAAIF,KAAK,CAAC,CAAC,CAAC,GAAG,IAAIA,KAAK,CAAC,CAAC,CAAC,EAAE,GAAG,EAAE;EAEzE,OAAOR,KAAK,CAAC,GAAGqB,KAAK,IAAIC,KAAK,IAAIC,KAAK,GAAGC,UAAU,GAAGC,KAAK,EAAE,EAAEnB,OAAO,CAAC;AAC1E,CAAC;AACDoB,MAAM,CAACC,OAAO,GAAGvB,MAAM",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

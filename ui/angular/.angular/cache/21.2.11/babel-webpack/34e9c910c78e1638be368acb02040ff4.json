@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { asyncScheduler } from '../scheduler/async';\nimport { audit } from './audit';\nimport { timer } from '../observable/timer';\nexport function auditTime(duration, scheduler) {\n  if (scheduler === void 0) {\n    scheduler = asyncScheduler;\n  }\n  return audit(function () {\n    return timer(duration, scheduler);\n  });\n}\n//# sourceMappingURL=auditTime.js.map",
+  "map": {
+    "version": 3,
+    "names": ["asyncScheduler", "audit", "timer", "auditTime", "duration", "scheduler"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/auditTime.js"
+    ],
+    "sourcesContent": [
+      "import { asyncScheduler } from '../scheduler/async';\nimport { audit } from './audit';\nimport { timer } from '../observable/timer';\nexport function auditTime(duration, scheduler) {\n    if (scheduler === void 0) { scheduler = asyncScheduler; }\n    return audit(function () { return timer(duration, scheduler); });\n}\n//# sourceMappingURL=auditTime.js.map"
+    ],
+    "mappings": "AAAA,SAASA,cAAc,QAAQ,oBAAoB;AACnD,SAASC,KAAK,QAAQ,SAAS;AAC/B,SAASC,KAAK,QAAQ,qBAAqB;AAC3C,OAAO,SAASC,SAASA,CAACC,QAAQ,EAAEC,SAAS,EAAE;EAC3C,IAAIA,SAAS,KAAK,KAAK,CAAC,EAAE;IAAEA,SAAS,GAAGL,cAAc;EAAE;EACxD,OAAOC,KAAK,CAAC,YAAY;IAAE,OAAOC,KAAK,CAACE,QAAQ,EAAEC,SAAS,CAAC;EAAE,CAAC,CAAC;AACpE;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

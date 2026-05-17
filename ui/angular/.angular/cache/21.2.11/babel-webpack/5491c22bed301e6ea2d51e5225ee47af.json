@@ -1,0 +1,37 @@
+{
+  "ast": null,
+  "code": "import { Observable } from '../Observable';\nimport { iterator as Symbol_iterator } from '../symbol/iterator';\nimport { isFunction } from '../util/isFunction';\nimport { executeSchedule } from '../util/executeSchedule';\nexport function scheduleIterable(input, scheduler) {\n  return new Observable(function (subscriber) {\n    var iterator;\n    executeSchedule(subscriber, scheduler, function () {\n      iterator = input[Symbol_iterator]();\n      executeSchedule(subscriber, scheduler, function () {\n        var _a;\n        var value;\n        var done;\n        try {\n          _a = iterator.next(), value = _a.value, done = _a.done;\n        } catch (err) {\n          subscriber.error(err);\n          return;\n        }\n        if (done) {\n          subscriber.complete();\n        } else {\n          subscriber.next(value);\n        }\n      }, 0, true);\n    });\n    return function () {\n      return isFunction(iterator === null || iterator === void 0 ? void 0 : iterator.return) && iterator.return();\n    };\n  });\n}\n//# sourceMappingURL=scheduleIterable.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "Observable",
+      "iterator",
+      "Symbol_iterator",
+      "isFunction",
+      "executeSchedule",
+      "scheduleIterable",
+      "input",
+      "scheduler",
+      "subscriber",
+      "_a",
+      "value",
+      "done",
+      "next",
+      "err",
+      "error",
+      "complete",
+      "return"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/scheduled/scheduleIterable.js"
+    ],
+    "sourcesContent": [
+      "import { Observable } from '../Observable';\nimport { iterator as Symbol_iterator } from '../symbol/iterator';\nimport { isFunction } from '../util/isFunction';\nimport { executeSchedule } from '../util/executeSchedule';\nexport function scheduleIterable(input, scheduler) {\n    return new Observable(function (subscriber) {\n        var iterator;\n        executeSchedule(subscriber, scheduler, function () {\n            iterator = input[Symbol_iterator]();\n            executeSchedule(subscriber, scheduler, function () {\n                var _a;\n                var value;\n                var done;\n                try {\n                    (_a = iterator.next(), value = _a.value, done = _a.done);\n                }\n                catch (err) {\n                    subscriber.error(err);\n                    return;\n                }\n                if (done) {\n                    subscriber.complete();\n                }\n                else {\n                    subscriber.next(value);\n                }\n            }, 0, true);\n        });\n        return function () { return isFunction(iterator === null || iterator === void 0 ? void 0 : iterator.return) && iterator.return(); };\n    });\n}\n//# sourceMappingURL=scheduleIterable.js.map"
+    ],
+    "mappings": "AAAA,SAASA,UAAU,QAAQ,eAAe;AAC1C,SAASC,QAAQ,IAAIC,eAAe,QAAQ,oBAAoB;AAChE,SAASC,UAAU,QAAQ,oBAAoB;AAC/C,SAASC,eAAe,QAAQ,yBAAyB;AACzD,OAAO,SAASC,gBAAgBA,CAACC,KAAK,EAAEC,SAAS,EAAE;EAC/C,OAAO,IAAIP,UAAU,CAAC,UAAUQ,UAAU,EAAE;IACxC,IAAIP,QAAQ;IACZG,eAAe,CAACI,UAAU,EAAED,SAAS,EAAE,YAAY;MAC/CN,QAAQ,GAAGK,KAAK,CAACJ,eAAe,CAAC,CAAC,CAAC;MACnCE,eAAe,CAACI,UAAU,EAAED,SAAS,EAAE,YAAY;QAC/C,IAAIE,EAAE;QACN,IAAIC,KAAK;QACT,IAAIC,IAAI;QACR,IAAI;UACCF,EAAE,GAAGR,QAAQ,CAACW,IAAI,CAAC,CAAC,EAAEF,KAAK,GAAGD,EAAE,CAACC,KAAK,EAAEC,IAAI,GAAGF,EAAE,CAACE,IAAI;QAC3D,CAAC,CACD,OAAOE,GAAG,EAAE;UACRL,UAAU,CAACM,KAAK,CAACD,GAAG,CAAC;UACrB;QACJ;QACA,IAAIF,IAAI,EAAE;UACNH,UAAU,CAACO,QAAQ,CAAC,CAAC;QACzB,CAAC,MACI;UACDP,UAAU,CAACI,IAAI,CAACF,KAAK,CAAC;QAC1B;MACJ,CAAC,EAAE,CAAC,EAAE,IAAI,CAAC;IACf,CAAC,CAAC;IACF,OAAO,YAAY;MAAE,OAAOP,UAAU,CAACF,QAAQ,KAAK,IAAI,IAAIA,QAAQ,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,QAAQ,CAACe,MAAM,CAAC,IAAIf,QAAQ,CAACe,MAAM,CAAC,CAAC;IAAE,CAAC;EACvI,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

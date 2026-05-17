@@ -1,0 +1,36 @@
+{
+  "ast": null,
+  "code": "import { ReplaySubject } from '../ReplaySubject';\nimport { share } from './share';\nexport function shareReplay(configOrBufferSize, windowTime, scheduler) {\n  var _a, _b, _c;\n  var bufferSize;\n  var refCount = false;\n  if (configOrBufferSize && typeof configOrBufferSize === 'object') {\n    _a = configOrBufferSize.bufferSize, bufferSize = _a === void 0 ? Infinity : _a, _b = configOrBufferSize.windowTime, windowTime = _b === void 0 ? Infinity : _b, _c = configOrBufferSize.refCount, refCount = _c === void 0 ? false : _c, scheduler = configOrBufferSize.scheduler;\n  } else {\n    bufferSize = configOrBufferSize !== null && configOrBufferSize !== void 0 ? configOrBufferSize : Infinity;\n  }\n  return share({\n    connector: function () {\n      return new ReplaySubject(bufferSize, windowTime, scheduler);\n    },\n    resetOnError: true,\n    resetOnComplete: false,\n    resetOnRefCountZero: refCount\n  });\n}\n//# sourceMappingURL=shareReplay.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "ReplaySubject",
+      "share",
+      "shareReplay",
+      "configOrBufferSize",
+      "windowTime",
+      "scheduler",
+      "_a",
+      "_b",
+      "_c",
+      "bufferSize",
+      "refCount",
+      "Infinity",
+      "connector",
+      "resetOnError",
+      "resetOnComplete",
+      "resetOnRefCountZero"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/shareReplay.js"
+    ],
+    "sourcesContent": [
+      "import { ReplaySubject } from '../ReplaySubject';\nimport { share } from './share';\nexport function shareReplay(configOrBufferSize, windowTime, scheduler) {\n    var _a, _b, _c;\n    var bufferSize;\n    var refCount = false;\n    if (configOrBufferSize && typeof configOrBufferSize === 'object') {\n        (_a = configOrBufferSize.bufferSize, bufferSize = _a === void 0 ? Infinity : _a, _b = configOrBufferSize.windowTime, windowTime = _b === void 0 ? Infinity : _b, _c = configOrBufferSize.refCount, refCount = _c === void 0 ? false : _c, scheduler = configOrBufferSize.scheduler);\n    }\n    else {\n        bufferSize = (configOrBufferSize !== null && configOrBufferSize !== void 0 ? configOrBufferSize : Infinity);\n    }\n    return share({\n        connector: function () { return new ReplaySubject(bufferSize, windowTime, scheduler); },\n        resetOnError: true,\n        resetOnComplete: false,\n        resetOnRefCountZero: refCount,\n    });\n}\n//# sourceMappingURL=shareReplay.js.map"
+    ],
+    "mappings": "AAAA,SAASA,aAAa,QAAQ,kBAAkB;AAChD,SAASC,KAAK,QAAQ,SAAS;AAC/B,OAAO,SAASC,WAAWA,CAACC,kBAAkB,EAAEC,UAAU,EAAEC,SAAS,EAAE;EACnE,IAAIC,EAAE,EAAEC,EAAE,EAAEC,EAAE;EACd,IAAIC,UAAU;EACd,IAAIC,QAAQ,GAAG,KAAK;EACpB,IAAIP,kBAAkB,IAAI,OAAOA,kBAAkB,KAAK,QAAQ,EAAE;IAC7DG,EAAE,GAAGH,kBAAkB,CAACM,UAAU,EAAEA,UAAU,GAAGH,EAAE,KAAK,KAAK,CAAC,GAAGK,QAAQ,GAAGL,EAAE,EAAEC,EAAE,GAAGJ,kBAAkB,CAACC,UAAU,EAAEA,UAAU,GAAGG,EAAE,KAAK,KAAK,CAAC,GAAGI,QAAQ,GAAGJ,EAAE,EAAEC,EAAE,GAAGL,kBAAkB,CAACO,QAAQ,EAAEA,QAAQ,GAAGF,EAAE,KAAK,KAAK,CAAC,GAAG,KAAK,GAAGA,EAAE,EAAEH,SAAS,GAAGF,kBAAkB,CAACE,SAAS;EACtR,CAAC,MACI;IACDI,UAAU,GAAIN,kBAAkB,KAAK,IAAI,IAAIA,kBAAkB,KAAK,KAAK,CAAC,GAAGA,kBAAkB,GAAGQ,QAAS;EAC/G;EACA,OAAOV,KAAK,CAAC;IACTW,SAAS,EAAE,SAAAA,CAAA,EAAY;MAAE,OAAO,IAAIZ,aAAa,CAACS,UAAU,EAAEL,UAAU,EAAEC,SAAS,CAAC;IAAE,CAAC;IACvFQ,YAAY,EAAE,IAAI;IAClBC,eAAe,EAAE,KAAK;IACtBC,mBAAmB,EAAEL;EACzB,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

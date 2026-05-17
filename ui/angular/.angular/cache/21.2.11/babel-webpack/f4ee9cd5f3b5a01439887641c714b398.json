@@ -1,0 +1,31 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\n// Note: this is the semver.org version of the spec that it implements\n// Not necessarily the package version of this code.\nconst SEMVER_SPEC_VERSION = '2.0.0';\nconst MAX_LENGTH = 256;\nconst MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER || /* istanbul ignore next */9007199254740991;\n\n// Max safe segment length for coercion.\nconst MAX_SAFE_COMPONENT_LENGTH = 16;\n\n// Max safe length for a build identifier. The max length minus 6 characters for\n// the shortest version with a build 0.0.0+BUILD.\nconst MAX_SAFE_BUILD_LENGTH = MAX_LENGTH - 6;\nconst RELEASE_TYPES = ['major', 'premajor', 'minor', 'preminor', 'patch', 'prepatch', 'prerelease'];\nmodule.exports = {\n  MAX_LENGTH,\n  MAX_SAFE_COMPONENT_LENGTH,\n  MAX_SAFE_BUILD_LENGTH,\n  MAX_SAFE_INTEGER,\n  RELEASE_TYPES,\n  SEMVER_SPEC_VERSION,\n  FLAG_INCLUDE_PRERELEASE: 0b001,\n  FLAG_LOOSE: 0b010\n};",
+  "map": {
+    "version": 3,
+    "names": [
+      "SEMVER_SPEC_VERSION",
+      "MAX_LENGTH",
+      "MAX_SAFE_INTEGER",
+      "Number",
+      "MAX_SAFE_COMPONENT_LENGTH",
+      "MAX_SAFE_BUILD_LENGTH",
+      "RELEASE_TYPES",
+      "module",
+      "exports",
+      "FLAG_INCLUDE_PRERELEASE",
+      "FLAG_LOOSE"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/semver@7.7.4/node_modules/semver/internal/constants.js"
+    ],
+    "sourcesContent": [
+      "'use strict'\n\n// Note: this is the semver.org version of the spec that it implements\n// Not necessarily the package version of this code.\nconst SEMVER_SPEC_VERSION = '2.0.0'\n\nconst MAX_LENGTH = 256\nconst MAX_SAFE_INTEGER = Number.MAX_SAFE_INTEGER ||\n/* istanbul ignore next */ 9007199254740991\n\n// Max safe segment length for coercion.\nconst MAX_SAFE_COMPONENT_LENGTH = 16\n\n// Max safe length for a build identifier. The max length minus 6 characters for\n// the shortest version with a build 0.0.0+BUILD.\nconst MAX_SAFE_BUILD_LENGTH = MAX_LENGTH - 6\n\nconst RELEASE_TYPES = [\n  'major',\n  'premajor',\n  'minor',\n  'preminor',\n  'patch',\n  'prepatch',\n  'prerelease',\n]\n\nmodule.exports = {\n  MAX_LENGTH,\n  MAX_SAFE_COMPONENT_LENGTH,\n  MAX_SAFE_BUILD_LENGTH,\n  MAX_SAFE_INTEGER,\n  RELEASE_TYPES,\n  SEMVER_SPEC_VERSION,\n  FLAG_INCLUDE_PRERELEASE: 0b001,\n  FLAG_LOOSE: 0b010,\n}\n"
+    ],
+    "mappings": "AAAA,YAAY;;AAEZ;AACA;AACA,MAAMA,mBAAmB,GAAG,OAAO;AAEnC,MAAMC,UAAU,GAAG,GAAG;AACtB,MAAMC,gBAAgB,GAAGC,MAAM,CAACD,gBAAgB,IAChD,0BAA2B,gBAAgB;;AAE3C;AACA,MAAME,yBAAyB,GAAG,EAAE;;AAEpC;AACA;AACA,MAAMC,qBAAqB,GAAGJ,UAAU,GAAG,CAAC;AAE5C,MAAMK,aAAa,GAAG,CACpB,OAAO,EACP,UAAU,EACV,OAAO,EACP,UAAU,EACV,OAAO,EACP,UAAU,EACV,YAAY,CACb;AAEDC,MAAM,CAACC,OAAO,GAAG;EACfP,UAAU;EACVG,yBAAyB;EACzBC,qBAAqB;EACrBH,gBAAgB;EAChBI,aAAa;EACbN,mBAAmB;EACnBS,uBAAuB,EAAE,KAAK;EAC9BC,UAAU,EAAE;AACd,CAAC",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

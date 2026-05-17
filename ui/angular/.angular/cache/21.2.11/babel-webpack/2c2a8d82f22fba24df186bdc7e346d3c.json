@@ -1,0 +1,36 @@
+{
+  "ast": null,
+  "code": "import { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function refCount() {\n  return operate(function (source, subscriber) {\n    var connection = null;\n    source._refCount++;\n    var refCounter = createOperatorSubscriber(subscriber, undefined, undefined, undefined, function () {\n      if (!source || source._refCount <= 0 || 0 < --source._refCount) {\n        connection = null;\n        return;\n      }\n      var sharedConnection = source._connection;\n      var conn = connection;\n      connection = null;\n      if (sharedConnection && (!conn || sharedConnection === conn)) {\n        sharedConnection.unsubscribe();\n      }\n      subscriber.unsubscribe();\n    });\n    source.subscribe(refCounter);\n    if (!refCounter.closed) {\n      connection = source.connect();\n    }\n  });\n}\n//# sourceMappingURL=refCount.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "operate",
+      "createOperatorSubscriber",
+      "refCount",
+      "source",
+      "subscriber",
+      "connection",
+      "_refCount",
+      "refCounter",
+      "undefined",
+      "sharedConnection",
+      "_connection",
+      "conn",
+      "unsubscribe",
+      "subscribe",
+      "closed",
+      "connect"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/refCount.js"
+    ],
+    "sourcesContent": [
+      "import { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function refCount() {\n    return operate(function (source, subscriber) {\n        var connection = null;\n        source._refCount++;\n        var refCounter = createOperatorSubscriber(subscriber, undefined, undefined, undefined, function () {\n            if (!source || source._refCount <= 0 || 0 < --source._refCount) {\n                connection = null;\n                return;\n            }\n            var sharedConnection = source._connection;\n            var conn = connection;\n            connection = null;\n            if (sharedConnection && (!conn || sharedConnection === conn)) {\n                sharedConnection.unsubscribe();\n            }\n            subscriber.unsubscribe();\n        });\n        source.subscribe(refCounter);\n        if (!refCounter.closed) {\n            connection = source.connect();\n        }\n    });\n}\n//# sourceMappingURL=refCount.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,OAAO,SAASC,QAAQA,CAAA,EAAG;EACvB,OAAOF,OAAO,CAAC,UAAUG,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,UAAU,GAAG,IAAI;IACrBF,MAAM,CAACG,SAAS,EAAE;IAClB,IAAIC,UAAU,GAAGN,wBAAwB,CAACG,UAAU,EAAEI,SAAS,EAAEA,SAAS,EAAEA,SAAS,EAAE,YAAY;MAC/F,IAAI,CAACL,MAAM,IAAIA,MAAM,CAACG,SAAS,IAAI,CAAC,IAAI,CAAC,GAAG,EAAEH,MAAM,CAACG,SAAS,EAAE;QAC5DD,UAAU,GAAG,IAAI;QACjB;MACJ;MACA,IAAII,gBAAgB,GAAGN,MAAM,CAACO,WAAW;MACzC,IAAIC,IAAI,GAAGN,UAAU;MACrBA,UAAU,GAAG,IAAI;MACjB,IAAII,gBAAgB,KAAK,CAACE,IAAI,IAAIF,gBAAgB,KAAKE,IAAI,CAAC,EAAE;QAC1DF,gBAAgB,CAACG,WAAW,CAAC,CAAC;MAClC;MACAR,UAAU,CAACQ,WAAW,CAAC,CAAC;IAC5B,CAAC,CAAC;IACFT,MAAM,CAACU,SAAS,CAACN,UAAU,CAAC;IAC5B,IAAI,CAACA,UAAU,CAACO,MAAM,EAAE;MACpBT,UAAU,GAAGF,MAAM,CAACY,OAAO,CAAC,CAAC;IACjC;EACJ,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

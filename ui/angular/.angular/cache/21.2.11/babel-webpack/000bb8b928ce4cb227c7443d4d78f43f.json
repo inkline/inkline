@@ -1,0 +1,55 @@
+{
+  "ast": null,
+  "code": "import { __values } from \"tslib\";\nimport { Subscription } from '../Subscription';\nimport { operate } from '../util/lift';\nimport { innerFrom } from '../observable/innerFrom';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { noop } from '../util/noop';\nimport { arrRemove } from '../util/arrRemove';\nexport function bufferToggle(openings, closingSelector) {\n  return operate(function (source, subscriber) {\n    var buffers = [];\n    innerFrom(openings).subscribe(createOperatorSubscriber(subscriber, function (openValue) {\n      var buffer = [];\n      buffers.push(buffer);\n      var closingSubscription = new Subscription();\n      var emitBuffer = function () {\n        arrRemove(buffers, buffer);\n        subscriber.next(buffer);\n        closingSubscription.unsubscribe();\n      };\n      closingSubscription.add(innerFrom(closingSelector(openValue)).subscribe(createOperatorSubscriber(subscriber, emitBuffer, noop)));\n    }, noop));\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      var e_1, _a;\n      try {\n        for (var buffers_1 = __values(buffers), buffers_1_1 = buffers_1.next(); !buffers_1_1.done; buffers_1_1 = buffers_1.next()) {\n          var buffer = buffers_1_1.value;\n          buffer.push(value);\n        }\n      } catch (e_1_1) {\n        e_1 = {\n          error: e_1_1\n        };\n      } finally {\n        try {\n          if (buffers_1_1 && !buffers_1_1.done && (_a = buffers_1.return)) _a.call(buffers_1);\n        } finally {\n          if (e_1) throw e_1.error;\n        }\n      }\n    }, function () {\n      while (buffers.length > 0) {\n        subscriber.next(buffers.shift());\n      }\n      subscriber.complete();\n    }));\n  });\n}\n//# sourceMappingURL=bufferToggle.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "__values",
+      "Subscription",
+      "operate",
+      "innerFrom",
+      "createOperatorSubscriber",
+      "noop",
+      "arrRemove",
+      "bufferToggle",
+      "openings",
+      "closingSelector",
+      "source",
+      "subscriber",
+      "buffers",
+      "subscribe",
+      "openValue",
+      "buffer",
+      "push",
+      "closingSubscription",
+      "emitBuffer",
+      "next",
+      "unsubscribe",
+      "add",
+      "value",
+      "e_1",
+      "_a",
+      "buffers_1",
+      "buffers_1_1",
+      "done",
+      "e_1_1",
+      "error",
+      "return",
+      "call",
+      "length",
+      "shift",
+      "complete"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/bufferToggle.js"
+    ],
+    "sourcesContent": [
+      "import { __values } from \"tslib\";\nimport { Subscription } from '../Subscription';\nimport { operate } from '../util/lift';\nimport { innerFrom } from '../observable/innerFrom';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { noop } from '../util/noop';\nimport { arrRemove } from '../util/arrRemove';\nexport function bufferToggle(openings, closingSelector) {\n    return operate(function (source, subscriber) {\n        var buffers = [];\n        innerFrom(openings).subscribe(createOperatorSubscriber(subscriber, function (openValue) {\n            var buffer = [];\n            buffers.push(buffer);\n            var closingSubscription = new Subscription();\n            var emitBuffer = function () {\n                arrRemove(buffers, buffer);\n                subscriber.next(buffer);\n                closingSubscription.unsubscribe();\n            };\n            closingSubscription.add(innerFrom(closingSelector(openValue)).subscribe(createOperatorSubscriber(subscriber, emitBuffer, noop)));\n        }, noop));\n        source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n            var e_1, _a;\n            try {\n                for (var buffers_1 = __values(buffers), buffers_1_1 = buffers_1.next(); !buffers_1_1.done; buffers_1_1 = buffers_1.next()) {\n                    var buffer = buffers_1_1.value;\n                    buffer.push(value);\n                }\n            }\n            catch (e_1_1) { e_1 = { error: e_1_1 }; }\n            finally {\n                try {\n                    if (buffers_1_1 && !buffers_1_1.done && (_a = buffers_1.return)) _a.call(buffers_1);\n                }\n                finally { if (e_1) throw e_1.error; }\n            }\n        }, function () {\n            while (buffers.length > 0) {\n                subscriber.next(buffers.shift());\n            }\n            subscriber.complete();\n        }));\n    });\n}\n//# sourceMappingURL=bufferToggle.js.map"
+    ],
+    "mappings": "AAAA,SAASA,QAAQ,QAAQ,OAAO;AAChC,SAASC,YAAY,QAAQ,iBAAiB;AAC9C,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,SAAS,QAAQ,yBAAyB;AACnD,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,SAASC,IAAI,QAAQ,cAAc;AACnC,SAASC,SAAS,QAAQ,mBAAmB;AAC7C,OAAO,SAASC,YAAYA,CAACC,QAAQ,EAAEC,eAAe,EAAE;EACpD,OAAOP,OAAO,CAAC,UAAUQ,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,OAAO,GAAG,EAAE;IAChBT,SAAS,CAACK,QAAQ,CAAC,CAACK,SAAS,CAACT,wBAAwB,CAACO,UAAU,EAAE,UAAUG,SAAS,EAAE;MACpF,IAAIC,MAAM,GAAG,EAAE;MACfH,OAAO,CAACI,IAAI,CAACD,MAAM,CAAC;MACpB,IAAIE,mBAAmB,GAAG,IAAIhB,YAAY,CAAC,CAAC;MAC5C,IAAIiB,UAAU,GAAG,SAAAA,CAAA,EAAY;QACzBZ,SAAS,CAACM,OAAO,EAAEG,MAAM,CAAC;QAC1BJ,UAAU,CAACQ,IAAI,CAACJ,MAAM,CAAC;QACvBE,mBAAmB,CAACG,WAAW,CAAC,CAAC;MACrC,CAAC;MACDH,mBAAmB,CAACI,GAAG,CAAClB,SAAS,CAACM,eAAe,CAACK,SAAS,CAAC,CAAC,CAACD,SAAS,CAACT,wBAAwB,CAACO,UAAU,EAAEO,UAAU,EAAEb,IAAI,CAAC,CAAC,CAAC;IACpI,CAAC,EAAEA,IAAI,CAAC,CAAC;IACTK,MAAM,CAACG,SAAS,CAACT,wBAAwB,CAACO,UAAU,EAAE,UAAUW,KAAK,EAAE;MACnE,IAAIC,GAAG,EAAEC,EAAE;MACX,IAAI;QACA,KAAK,IAAIC,SAAS,GAAGzB,QAAQ,CAACY,OAAO,CAAC,EAAEc,WAAW,GAAGD,SAAS,CAACN,IAAI,CAAC,CAAC,EAAE,CAACO,WAAW,CAACC,IAAI,EAAED,WAAW,GAAGD,SAAS,CAACN,IAAI,CAAC,CAAC,EAAE;UACvH,IAAIJ,MAAM,GAAGW,WAAW,CAACJ,KAAK;UAC9BP,MAAM,CAACC,IAAI,CAACM,KAAK,CAAC;QACtB;MACJ,CAAC,CACD,OAAOM,KAAK,EAAE;QAAEL,GAAG,GAAG;UAAEM,KAAK,EAAED;QAAM,CAAC;MAAE,CAAC,SACjC;QACJ,IAAI;UACA,IAAIF,WAAW,IAAI,CAACA,WAAW,CAACC,IAAI,KAAKH,EAAE,GAAGC,SAAS,CAACK,MAAM,CAAC,EAAEN,EAAE,CAACO,IAAI,CAACN,SAAS,CAAC;QACvF,CAAC,SACO;UAAE,IAAIF,GAAG,EAAE,MAAMA,GAAG,CAACM,KAAK;QAAE;MACxC;IACJ,CAAC,EAAE,YAAY;MACX,OAAOjB,OAAO,CAACoB,MAAM,GAAG,CAAC,EAAE;QACvBrB,UAAU,CAACQ,IAAI,CAACP,OAAO,CAACqB,KAAK,CAAC,CAAC,CAAC;MACpC;MACAtB,UAAU,CAACuB,QAAQ,CAAC,CAAC;IACzB,CAAC,CAAC,CAAC;EACP,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

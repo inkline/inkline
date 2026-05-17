@@ -1,0 +1,37 @@
+{
+  "ast": null,
+  "code": "import { __read, __spreadArray } from \"tslib\";\nimport { combineLatestInit } from '../observable/combineLatest';\nimport { operate } from '../util/lift';\nimport { argsOrArgArray } from '../util/argsOrArgArray';\nimport { mapOneOrManyArgs } from '../util/mapOneOrManyArgs';\nimport { pipe } from '../util/pipe';\nimport { popResultSelector } from '../util/args';\nexport function combineLatest() {\n  var args = [];\n  for (var _i = 0; _i < arguments.length; _i++) {\n    args[_i] = arguments[_i];\n  }\n  var resultSelector = popResultSelector(args);\n  return resultSelector ? pipe(combineLatest.apply(void 0, __spreadArray([], __read(args))), mapOneOrManyArgs(resultSelector)) : operate(function (source, subscriber) {\n    combineLatestInit(__spreadArray([source], __read(argsOrArgArray(args))))(subscriber);\n  });\n}\n//# sourceMappingURL=combineLatest.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "__read",
+      "__spreadArray",
+      "combineLatestInit",
+      "operate",
+      "argsOrArgArray",
+      "mapOneOrManyArgs",
+      "pipe",
+      "popResultSelector",
+      "combineLatest",
+      "args",
+      "_i",
+      "arguments",
+      "length",
+      "resultSelector",
+      "apply",
+      "source",
+      "subscriber"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/combineLatest.js"
+    ],
+    "sourcesContent": [
+      "import { __read, __spreadArray } from \"tslib\";\nimport { combineLatestInit } from '../observable/combineLatest';\nimport { operate } from '../util/lift';\nimport { argsOrArgArray } from '../util/argsOrArgArray';\nimport { mapOneOrManyArgs } from '../util/mapOneOrManyArgs';\nimport { pipe } from '../util/pipe';\nimport { popResultSelector } from '../util/args';\nexport function combineLatest() {\n    var args = [];\n    for (var _i = 0; _i < arguments.length; _i++) {\n        args[_i] = arguments[_i];\n    }\n    var resultSelector = popResultSelector(args);\n    return resultSelector\n        ? pipe(combineLatest.apply(void 0, __spreadArray([], __read(args))), mapOneOrManyArgs(resultSelector))\n        : operate(function (source, subscriber) {\n            combineLatestInit(__spreadArray([source], __read(argsOrArgArray(args))))(subscriber);\n        });\n}\n//# sourceMappingURL=combineLatest.js.map"
+    ],
+    "mappings": "AAAA,SAASA,MAAM,EAAEC,aAAa,QAAQ,OAAO;AAC7C,SAASC,iBAAiB,QAAQ,6BAA6B;AAC/D,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,cAAc,QAAQ,wBAAwB;AACvD,SAASC,gBAAgB,QAAQ,0BAA0B;AAC3D,SAASC,IAAI,QAAQ,cAAc;AACnC,SAASC,iBAAiB,QAAQ,cAAc;AAChD,OAAO,SAASC,aAAaA,CAAA,EAAG;EAC5B,IAAIC,IAAI,GAAG,EAAE;EACb,KAAK,IAAIC,EAAE,GAAG,CAAC,EAAEA,EAAE,GAAGC,SAAS,CAACC,MAAM,EAAEF,EAAE,EAAE,EAAE;IAC1CD,IAAI,CAACC,EAAE,CAAC,GAAGC,SAAS,CAACD,EAAE,CAAC;EAC5B;EACA,IAAIG,cAAc,GAAGN,iBAAiB,CAACE,IAAI,CAAC;EAC5C,OAAOI,cAAc,GACfP,IAAI,CAACE,aAAa,CAACM,KAAK,CAAC,KAAK,CAAC,EAAEb,aAAa,CAAC,EAAE,EAAED,MAAM,CAACS,IAAI,CAAC,CAAC,CAAC,EAAEJ,gBAAgB,CAACQ,cAAc,CAAC,CAAC,GACpGV,OAAO,CAAC,UAAUY,MAAM,EAAEC,UAAU,EAAE;IACpCd,iBAAiB,CAACD,aAAa,CAAC,CAACc,MAAM,CAAC,EAAEf,MAAM,CAACI,cAAc,CAACK,IAAI,CAAC,CAAC,CAAC,CAAC,CAACO,UAAU,CAAC;EACxF,CAAC,CAAC;AACV;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

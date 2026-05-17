@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { parameters } from \"./_browser-chunks/chunk-S4QKU6I5.js\";\nimport \"./_browser-chunks/chunk-SL3VIQZ3.js\";\nexport { parameters };",
+  "map": {
+    "version": 3,
+    "names": ["parameters"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+addon-docs@10.4.0_@types+react@19.2.14_@voidzero-dev+vite-plus-core@0.1.21_@_a1fb8dc34bea9cd85bb722add9137c8c/node_modules/@storybook/addon-docs/dist/preview.js"
+    ],
+    "sourcesContent": [
+      "import { parameters } from \"./_browser-chunks/chunk-S4QKU6I5.js\";\nimport \"./_browser-chunks/chunk-SL3VIQZ3.js\";\nexport { parameters };"
+    ],
+    "mappings": "AAAA,SAASA,UAAU,QAAQ,qCAAqC;AAChE,OAAO,qCAAqC;AAC5C,SAASA,UAAU",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

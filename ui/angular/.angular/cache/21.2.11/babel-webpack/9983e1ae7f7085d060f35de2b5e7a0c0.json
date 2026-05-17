@@ -1,0 +1,41 @@
+{
+  "ast": null,
+  "code": "import { Observable } from '../Observable';\nimport { argsOrArgArray } from '../util/argsOrArgArray';\nimport { OperatorSubscriber } from '../operators/OperatorSubscriber';\nimport { noop } from '../util/noop';\nimport { innerFrom } from './innerFrom';\nexport function onErrorResumeNext() {\n  var sources = [];\n  for (var _i = 0; _i < arguments.length; _i++) {\n    sources[_i] = arguments[_i];\n  }\n  var nextSources = argsOrArgArray(sources);\n  return new Observable(function (subscriber) {\n    var sourceIndex = 0;\n    var subscribeNext = function () {\n      if (sourceIndex < nextSources.length) {\n        var nextSource = void 0;\n        try {\n          nextSource = innerFrom(nextSources[sourceIndex++]);\n        } catch (err) {\n          subscribeNext();\n          return;\n        }\n        var innerSubscriber = new OperatorSubscriber(subscriber, undefined, noop, noop);\n        nextSource.subscribe(innerSubscriber);\n        innerSubscriber.add(subscribeNext);\n      } else {\n        subscriber.complete();\n      }\n    };\n    subscribeNext();\n  });\n}\n//# sourceMappingURL=onErrorResumeNext.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "Observable",
+      "argsOrArgArray",
+      "OperatorSubscriber",
+      "noop",
+      "innerFrom",
+      "onErrorResumeNext",
+      "sources",
+      "_i",
+      "arguments",
+      "length",
+      "nextSources",
+      "subscriber",
+      "sourceIndex",
+      "subscribeNext",
+      "nextSource",
+      "err",
+      "innerSubscriber",
+      "undefined",
+      "subscribe",
+      "add",
+      "complete"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/observable/onErrorResumeNext.js"
+    ],
+    "sourcesContent": [
+      "import { Observable } from '../Observable';\nimport { argsOrArgArray } from '../util/argsOrArgArray';\nimport { OperatorSubscriber } from '../operators/OperatorSubscriber';\nimport { noop } from '../util/noop';\nimport { innerFrom } from './innerFrom';\nexport function onErrorResumeNext() {\n    var sources = [];\n    for (var _i = 0; _i < arguments.length; _i++) {\n        sources[_i] = arguments[_i];\n    }\n    var nextSources = argsOrArgArray(sources);\n    return new Observable(function (subscriber) {\n        var sourceIndex = 0;\n        var subscribeNext = function () {\n            if (sourceIndex < nextSources.length) {\n                var nextSource = void 0;\n                try {\n                    nextSource = innerFrom(nextSources[sourceIndex++]);\n                }\n                catch (err) {\n                    subscribeNext();\n                    return;\n                }\n                var innerSubscriber = new OperatorSubscriber(subscriber, undefined, noop, noop);\n                nextSource.subscribe(innerSubscriber);\n                innerSubscriber.add(subscribeNext);\n            }\n            else {\n                subscriber.complete();\n            }\n        };\n        subscribeNext();\n    });\n}\n//# sourceMappingURL=onErrorResumeNext.js.map"
+    ],
+    "mappings": "AAAA,SAASA,UAAU,QAAQ,eAAe;AAC1C,SAASC,cAAc,QAAQ,wBAAwB;AACvD,SAASC,kBAAkB,QAAQ,iCAAiC;AACpE,SAASC,IAAI,QAAQ,cAAc;AACnC,SAASC,SAAS,QAAQ,aAAa;AACvC,OAAO,SAASC,iBAAiBA,CAAA,EAAG;EAChC,IAAIC,OAAO,GAAG,EAAE;EAChB,KAAK,IAAIC,EAAE,GAAG,CAAC,EAAEA,EAAE,GAAGC,SAAS,CAACC,MAAM,EAAEF,EAAE,EAAE,EAAE;IAC1CD,OAAO,CAACC,EAAE,CAAC,GAAGC,SAAS,CAACD,EAAE,CAAC;EAC/B;EACA,IAAIG,WAAW,GAAGT,cAAc,CAACK,OAAO,CAAC;EACzC,OAAO,IAAIN,UAAU,CAAC,UAAUW,UAAU,EAAE;IACxC,IAAIC,WAAW,GAAG,CAAC;IACnB,IAAIC,aAAa,GAAG,SAAAA,CAAA,EAAY;MAC5B,IAAID,WAAW,GAAGF,WAAW,CAACD,MAAM,EAAE;QAClC,IAAIK,UAAU,GAAG,KAAK,CAAC;QACvB,IAAI;UACAA,UAAU,GAAGV,SAAS,CAACM,WAAW,CAACE,WAAW,EAAE,CAAC,CAAC;QACtD,CAAC,CACD,OAAOG,GAAG,EAAE;UACRF,aAAa,CAAC,CAAC;UACf;QACJ;QACA,IAAIG,eAAe,GAAG,IAAId,kBAAkB,CAACS,UAAU,EAAEM,SAAS,EAAEd,IAAI,EAAEA,IAAI,CAAC;QAC/EW,UAAU,CAACI,SAAS,CAACF,eAAe,CAAC;QACrCA,eAAe,CAACG,GAAG,CAACN,aAAa,CAAC;MACtC,CAAC,MACI;QACDF,UAAU,CAACS,QAAQ,CAAC,CAAC;MACzB;IACJ,CAAC;IACDP,aAAa,CAAC,CAAC;EACnB,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

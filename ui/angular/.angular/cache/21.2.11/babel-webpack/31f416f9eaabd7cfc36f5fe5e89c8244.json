@@ -1,0 +1,36 @@
+{
+  "ast": null,
+  "code": "import { identity } from '../util/identity';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function skipLast(skipCount) {\n  return skipCount <= 0 ? identity : operate(function (source, subscriber) {\n    var ring = new Array(skipCount);\n    var seen = 0;\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      var valueIndex = seen++;\n      if (valueIndex < skipCount) {\n        ring[valueIndex] = value;\n      } else {\n        var index = valueIndex % skipCount;\n        var oldValue = ring[index];\n        ring[index] = value;\n        subscriber.next(oldValue);\n      }\n    }));\n    return function () {\n      ring = null;\n    };\n  });\n}\n//# sourceMappingURL=skipLast.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "identity",
+      "operate",
+      "createOperatorSubscriber",
+      "skipLast",
+      "skipCount",
+      "source",
+      "subscriber",
+      "ring",
+      "Array",
+      "seen",
+      "subscribe",
+      "value",
+      "valueIndex",
+      "index",
+      "oldValue",
+      "next"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/skipLast.js"
+    ],
+    "sourcesContent": [
+      "import { identity } from '../util/identity';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function skipLast(skipCount) {\n    return skipCount <= 0\n        ?\n            identity\n        : operate(function (source, subscriber) {\n            var ring = new Array(skipCount);\n            var seen = 0;\n            source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n                var valueIndex = seen++;\n                if (valueIndex < skipCount) {\n                    ring[valueIndex] = value;\n                }\n                else {\n                    var index = valueIndex % skipCount;\n                    var oldValue = ring[index];\n                    ring[index] = value;\n                    subscriber.next(oldValue);\n                }\n            }));\n            return function () {\n                ring = null;\n            };\n        });\n}\n//# sourceMappingURL=skipLast.js.map"
+    ],
+    "mappings": "AAAA,SAASA,QAAQ,QAAQ,kBAAkB;AAC3C,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,OAAO,SAASC,QAAQA,CAACC,SAAS,EAAE;EAChC,OAAOA,SAAS,IAAI,CAAC,GAEbJ,QAAQ,GACVC,OAAO,CAAC,UAAUI,MAAM,EAAEC,UAAU,EAAE;IACpC,IAAIC,IAAI,GAAG,IAAIC,KAAK,CAACJ,SAAS,CAAC;IAC/B,IAAIK,IAAI,GAAG,CAAC;IACZJ,MAAM,CAACK,SAAS,CAACR,wBAAwB,CAACI,UAAU,EAAE,UAAUK,KAAK,EAAE;MACnE,IAAIC,UAAU,GAAGH,IAAI,EAAE;MACvB,IAAIG,UAAU,GAAGR,SAAS,EAAE;QACxBG,IAAI,CAACK,UAAU,CAAC,GAAGD,KAAK;MAC5B,CAAC,MACI;QACD,IAAIE,KAAK,GAAGD,UAAU,GAAGR,SAAS;QAClC,IAAIU,QAAQ,GAAGP,IAAI,CAACM,KAAK,CAAC;QAC1BN,IAAI,CAACM,KAAK,CAAC,GAAGF,KAAK;QACnBL,UAAU,CAACS,IAAI,CAACD,QAAQ,CAAC;MAC7B;IACJ,CAAC,CAAC,CAAC;IACH,OAAO,YAAY;MACfP,IAAI,GAAG,IAAI;IACf,CAAC;EACL,CAAC,CAAC;AACV;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

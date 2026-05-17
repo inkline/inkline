@@ -1,0 +1,37 @@
+{
+  "ast": null,
+  "code": "import { identity } from '../util/identity';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function distinctUntilChanged(comparator, keySelector) {\n  if (keySelector === void 0) {\n    keySelector = identity;\n  }\n  comparator = comparator !== null && comparator !== void 0 ? comparator : defaultCompare;\n  return operate(function (source, subscriber) {\n    var previousKey;\n    var first = true;\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      var currentKey = keySelector(value);\n      if (first || !comparator(previousKey, currentKey)) {\n        first = false;\n        previousKey = currentKey;\n        subscriber.next(value);\n      }\n    }));\n  });\n}\nfunction defaultCompare(a, b) {\n  return a === b;\n}\n//# sourceMappingURL=distinctUntilChanged.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "identity",
+      "operate",
+      "createOperatorSubscriber",
+      "distinctUntilChanged",
+      "comparator",
+      "keySelector",
+      "defaultCompare",
+      "source",
+      "subscriber",
+      "previousKey",
+      "first",
+      "subscribe",
+      "value",
+      "currentKey",
+      "next",
+      "a",
+      "b"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/distinctUntilChanged.js"
+    ],
+    "sourcesContent": [
+      "import { identity } from '../util/identity';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function distinctUntilChanged(comparator, keySelector) {\n    if (keySelector === void 0) { keySelector = identity; }\n    comparator = comparator !== null && comparator !== void 0 ? comparator : defaultCompare;\n    return operate(function (source, subscriber) {\n        var previousKey;\n        var first = true;\n        source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n            var currentKey = keySelector(value);\n            if (first || !comparator(previousKey, currentKey)) {\n                first = false;\n                previousKey = currentKey;\n                subscriber.next(value);\n            }\n        }));\n    });\n}\nfunction defaultCompare(a, b) {\n    return a === b;\n}\n//# sourceMappingURL=distinctUntilChanged.js.map"
+    ],
+    "mappings": "AAAA,SAASA,QAAQ,QAAQ,kBAAkB;AAC3C,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,OAAO,SAASC,oBAAoBA,CAACC,UAAU,EAAEC,WAAW,EAAE;EAC1D,IAAIA,WAAW,KAAK,KAAK,CAAC,EAAE;IAAEA,WAAW,GAAGL,QAAQ;EAAE;EACtDI,UAAU,GAAGA,UAAU,KAAK,IAAI,IAAIA,UAAU,KAAK,KAAK,CAAC,GAAGA,UAAU,GAAGE,cAAc;EACvF,OAAOL,OAAO,CAAC,UAAUM,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,WAAW;IACf,IAAIC,KAAK,GAAG,IAAI;IAChBH,MAAM,CAACI,SAAS,CAACT,wBAAwB,CAACM,UAAU,EAAE,UAAUI,KAAK,EAAE;MACnE,IAAIC,UAAU,GAAGR,WAAW,CAACO,KAAK,CAAC;MACnC,IAAIF,KAAK,IAAI,CAACN,UAAU,CAACK,WAAW,EAAEI,UAAU,CAAC,EAAE;QAC/CH,KAAK,GAAG,KAAK;QACbD,WAAW,GAAGI,UAAU;QACxBL,UAAU,CAACM,IAAI,CAACF,KAAK,CAAC;MAC1B;IACJ,CAAC,CAAC,CAAC;EACP,CAAC,CAAC;AACN;AACA,SAASN,cAAcA,CAACS,CAAC,EAAEC,CAAC,EAAE;EAC1B,OAAOD,CAAC,KAAKC,CAAC;AAClB;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

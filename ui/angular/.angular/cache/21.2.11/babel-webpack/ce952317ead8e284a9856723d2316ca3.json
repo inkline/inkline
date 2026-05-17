@@ -1,0 +1,33 @@
+{
+  "ast": null,
+  "code": "import { concat } from '../observable/concat';\nimport { take } from './take';\nimport { ignoreElements } from './ignoreElements';\nimport { mapTo } from './mapTo';\nimport { mergeMap } from './mergeMap';\nimport { innerFrom } from '../observable/innerFrom';\nexport function delayWhen(delayDurationSelector, subscriptionDelay) {\n  if (subscriptionDelay) {\n    return function (source) {\n      return concat(subscriptionDelay.pipe(take(1), ignoreElements()), source.pipe(delayWhen(delayDurationSelector)));\n    };\n  }\n  return mergeMap(function (value, index) {\n    return innerFrom(delayDurationSelector(value, index)).pipe(take(1), mapTo(value));\n  });\n}\n//# sourceMappingURL=delayWhen.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "concat",
+      "take",
+      "ignoreElements",
+      "mapTo",
+      "mergeMap",
+      "innerFrom",
+      "delayWhen",
+      "delayDurationSelector",
+      "subscriptionDelay",
+      "source",
+      "pipe",
+      "value",
+      "index"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/delayWhen.js"
+    ],
+    "sourcesContent": [
+      "import { concat } from '../observable/concat';\nimport { take } from './take';\nimport { ignoreElements } from './ignoreElements';\nimport { mapTo } from './mapTo';\nimport { mergeMap } from './mergeMap';\nimport { innerFrom } from '../observable/innerFrom';\nexport function delayWhen(delayDurationSelector, subscriptionDelay) {\n    if (subscriptionDelay) {\n        return function (source) {\n            return concat(subscriptionDelay.pipe(take(1), ignoreElements()), source.pipe(delayWhen(delayDurationSelector)));\n        };\n    }\n    return mergeMap(function (value, index) { return innerFrom(delayDurationSelector(value, index)).pipe(take(1), mapTo(value)); });\n}\n//# sourceMappingURL=delayWhen.js.map"
+    ],
+    "mappings": "AAAA,SAASA,MAAM,QAAQ,sBAAsB;AAC7C,SAASC,IAAI,QAAQ,QAAQ;AAC7B,SAASC,cAAc,QAAQ,kBAAkB;AACjD,SAASC,KAAK,QAAQ,SAAS;AAC/B,SAASC,QAAQ,QAAQ,YAAY;AACrC,SAASC,SAAS,QAAQ,yBAAyB;AACnD,OAAO,SAASC,SAASA,CAACC,qBAAqB,EAAEC,iBAAiB,EAAE;EAChE,IAAIA,iBAAiB,EAAE;IACnB,OAAO,UAAUC,MAAM,EAAE;MACrB,OAAOT,MAAM,CAACQ,iBAAiB,CAACE,IAAI,CAACT,IAAI,CAAC,CAAC,CAAC,EAAEC,cAAc,CAAC,CAAC,CAAC,EAAEO,MAAM,CAACC,IAAI,CAACJ,SAAS,CAACC,qBAAqB,CAAC,CAAC,CAAC;IACnH,CAAC;EACL;EACA,OAAOH,QAAQ,CAAC,UAAUO,KAAK,EAAEC,KAAK,EAAE;IAAE,OAAOP,SAAS,CAACE,qBAAqB,CAACI,KAAK,EAAEC,KAAK,CAAC,CAAC,CAACF,IAAI,CAACT,IAAI,CAAC,CAAC,CAAC,EAAEE,KAAK,CAACQ,KAAK,CAAC,CAAC;EAAE,CAAC,CAAC;AACnI;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

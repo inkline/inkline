@@ -1,0 +1,37 @@
+{
+  "ast": null,
+  "code": "import { innerFrom } from '../observable/innerFrom';\nimport { Subject } from '../Subject';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function retryWhen(notifier) {\n  return operate(function (source, subscriber) {\n    var innerSub;\n    var syncResub = false;\n    var errors$;\n    var subscribeForRetryWhen = function () {\n      innerSub = source.subscribe(createOperatorSubscriber(subscriber, undefined, undefined, function (err) {\n        if (!errors$) {\n          errors$ = new Subject();\n          innerFrom(notifier(errors$)).subscribe(createOperatorSubscriber(subscriber, function () {\n            return innerSub ? subscribeForRetryWhen() : syncResub = true;\n          }));\n        }\n        if (errors$) {\n          errors$.next(err);\n        }\n      }));\n      if (syncResub) {\n        innerSub.unsubscribe();\n        innerSub = null;\n        syncResub = false;\n        subscribeForRetryWhen();\n      }\n    };\n    subscribeForRetryWhen();\n  });\n}\n//# sourceMappingURL=retryWhen.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "innerFrom",
+      "Subject",
+      "operate",
+      "createOperatorSubscriber",
+      "retryWhen",
+      "notifier",
+      "source",
+      "subscriber",
+      "innerSub",
+      "syncResub",
+      "errors$",
+      "subscribeForRetryWhen",
+      "subscribe",
+      "undefined",
+      "err",
+      "next",
+      "unsubscribe"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/retryWhen.js"
+    ],
+    "sourcesContent": [
+      "import { innerFrom } from '../observable/innerFrom';\nimport { Subject } from '../Subject';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function retryWhen(notifier) {\n    return operate(function (source, subscriber) {\n        var innerSub;\n        var syncResub = false;\n        var errors$;\n        var subscribeForRetryWhen = function () {\n            innerSub = source.subscribe(createOperatorSubscriber(subscriber, undefined, undefined, function (err) {\n                if (!errors$) {\n                    errors$ = new Subject();\n                    innerFrom(notifier(errors$)).subscribe(createOperatorSubscriber(subscriber, function () {\n                        return innerSub ? subscribeForRetryWhen() : (syncResub = true);\n                    }));\n                }\n                if (errors$) {\n                    errors$.next(err);\n                }\n            }));\n            if (syncResub) {\n                innerSub.unsubscribe();\n                innerSub = null;\n                syncResub = false;\n                subscribeForRetryWhen();\n            }\n        };\n        subscribeForRetryWhen();\n    });\n}\n//# sourceMappingURL=retryWhen.js.map"
+    ],
+    "mappings": "AAAA,SAASA,SAAS,QAAQ,yBAAyB;AACnD,SAASC,OAAO,QAAQ,YAAY;AACpC,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,OAAO,SAASC,SAASA,CAACC,QAAQ,EAAE;EAChC,OAAOH,OAAO,CAAC,UAAUI,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,QAAQ;IACZ,IAAIC,SAAS,GAAG,KAAK;IACrB,IAAIC,OAAO;IACX,IAAIC,qBAAqB,GAAG,SAAAA,CAAA,EAAY;MACpCH,QAAQ,GAAGF,MAAM,CAACM,SAAS,CAACT,wBAAwB,CAACI,UAAU,EAAEM,SAAS,EAAEA,SAAS,EAAE,UAAUC,GAAG,EAAE;QAClG,IAAI,CAACJ,OAAO,EAAE;UACVA,OAAO,GAAG,IAAIT,OAAO,CAAC,CAAC;UACvBD,SAAS,CAACK,QAAQ,CAACK,OAAO,CAAC,CAAC,CAACE,SAAS,CAACT,wBAAwB,CAACI,UAAU,EAAE,YAAY;YACpF,OAAOC,QAAQ,GAAGG,qBAAqB,CAAC,CAAC,GAAIF,SAAS,GAAG,IAAK;UAClE,CAAC,CAAC,CAAC;QACP;QACA,IAAIC,OAAO,EAAE;UACTA,OAAO,CAACK,IAAI,CAACD,GAAG,CAAC;QACrB;MACJ,CAAC,CAAC,CAAC;MACH,IAAIL,SAAS,EAAE;QACXD,QAAQ,CAACQ,WAAW,CAAC,CAAC;QACtBR,QAAQ,GAAG,IAAI;QACfC,SAAS,GAAG,KAAK;QACjBE,qBAAqB,CAAC,CAAC;MAC3B;IACJ,CAAC;IACDA,qBAAqB,CAAC,CAAC;EAC3B,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

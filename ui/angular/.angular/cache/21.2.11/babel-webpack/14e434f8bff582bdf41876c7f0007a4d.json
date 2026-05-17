@@ -1,0 +1,51 @@
+{
+  "ast": null,
+  "code": "import { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { identity } from '../util/identity';\nimport { timer } from '../observable/timer';\nimport { innerFrom } from '../observable/innerFrom';\nexport function retry(configOrCount) {\n  if (configOrCount === void 0) {\n    configOrCount = Infinity;\n  }\n  var config;\n  if (configOrCount && typeof configOrCount === 'object') {\n    config = configOrCount;\n  } else {\n    config = {\n      count: configOrCount\n    };\n  }\n  var _a = config.count,\n    count = _a === void 0 ? Infinity : _a,\n    delay = config.delay,\n    _b = config.resetOnSuccess,\n    resetOnSuccess = _b === void 0 ? false : _b;\n  return count <= 0 ? identity : operate(function (source, subscriber) {\n    var soFar = 0;\n    var innerSub;\n    var subscribeForRetry = function () {\n      var syncUnsub = false;\n      innerSub = source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n        if (resetOnSuccess) {\n          soFar = 0;\n        }\n        subscriber.next(value);\n      }, undefined, function (err) {\n        if (soFar++ < count) {\n          var resub_1 = function () {\n            if (innerSub) {\n              innerSub.unsubscribe();\n              innerSub = null;\n              subscribeForRetry();\n            } else {\n              syncUnsub = true;\n            }\n          };\n          if (delay != null) {\n            var notifier = typeof delay === 'number' ? timer(delay) : innerFrom(delay(err, soFar));\n            var notifierSubscriber_1 = createOperatorSubscriber(subscriber, function () {\n              notifierSubscriber_1.unsubscribe();\n              resub_1();\n            }, function () {\n              subscriber.complete();\n            });\n            notifier.subscribe(notifierSubscriber_1);\n          } else {\n            resub_1();\n          }\n        } else {\n          subscriber.error(err);\n        }\n      }));\n      if (syncUnsub) {\n        innerSub.unsubscribe();\n        innerSub = null;\n        subscribeForRetry();\n      }\n    };\n    subscribeForRetry();\n  });\n}\n//# sourceMappingURL=retry.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "operate",
+      "createOperatorSubscriber",
+      "identity",
+      "timer",
+      "innerFrom",
+      "retry",
+      "configOrCount",
+      "Infinity",
+      "config",
+      "count",
+      "_a",
+      "delay",
+      "_b",
+      "resetOnSuccess",
+      "source",
+      "subscriber",
+      "soFar",
+      "innerSub",
+      "subscribeForRetry",
+      "syncUnsub",
+      "subscribe",
+      "value",
+      "next",
+      "undefined",
+      "err",
+      "resub_1",
+      "unsubscribe",
+      "notifier",
+      "notifierSubscriber_1",
+      "complete",
+      "error"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/retry.js"
+    ],
+    "sourcesContent": [
+      "import { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { identity } from '../util/identity';\nimport { timer } from '../observable/timer';\nimport { innerFrom } from '../observable/innerFrom';\nexport function retry(configOrCount) {\n    if (configOrCount === void 0) { configOrCount = Infinity; }\n    var config;\n    if (configOrCount && typeof configOrCount === 'object') {\n        config = configOrCount;\n    }\n    else {\n        config = {\n            count: configOrCount,\n        };\n    }\n    var _a = config.count, count = _a === void 0 ? Infinity : _a, delay = config.delay, _b = config.resetOnSuccess, resetOnSuccess = _b === void 0 ? false : _b;\n    return count <= 0\n        ? identity\n        : operate(function (source, subscriber) {\n            var soFar = 0;\n            var innerSub;\n            var subscribeForRetry = function () {\n                var syncUnsub = false;\n                innerSub = source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n                    if (resetOnSuccess) {\n                        soFar = 0;\n                    }\n                    subscriber.next(value);\n                }, undefined, function (err) {\n                    if (soFar++ < count) {\n                        var resub_1 = function () {\n                            if (innerSub) {\n                                innerSub.unsubscribe();\n                                innerSub = null;\n                                subscribeForRetry();\n                            }\n                            else {\n                                syncUnsub = true;\n                            }\n                        };\n                        if (delay != null) {\n                            var notifier = typeof delay === 'number' ? timer(delay) : innerFrom(delay(err, soFar));\n                            var notifierSubscriber_1 = createOperatorSubscriber(subscriber, function () {\n                                notifierSubscriber_1.unsubscribe();\n                                resub_1();\n                            }, function () {\n                                subscriber.complete();\n                            });\n                            notifier.subscribe(notifierSubscriber_1);\n                        }\n                        else {\n                            resub_1();\n                        }\n                    }\n                    else {\n                        subscriber.error(err);\n                    }\n                }));\n                if (syncUnsub) {\n                    innerSub.unsubscribe();\n                    innerSub = null;\n                    subscribeForRetry();\n                }\n            };\n            subscribeForRetry();\n        });\n}\n//# sourceMappingURL=retry.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,SAASC,QAAQ,QAAQ,kBAAkB;AAC3C,SAASC,KAAK,QAAQ,qBAAqB;AAC3C,SAASC,SAAS,QAAQ,yBAAyB;AACnD,OAAO,SAASC,KAAKA,CAACC,aAAa,EAAE;EACjC,IAAIA,aAAa,KAAK,KAAK,CAAC,EAAE;IAAEA,aAAa,GAAGC,QAAQ;EAAE;EAC1D,IAAIC,MAAM;EACV,IAAIF,aAAa,IAAI,OAAOA,aAAa,KAAK,QAAQ,EAAE;IACpDE,MAAM,GAAGF,aAAa;EAC1B,CAAC,MACI;IACDE,MAAM,GAAG;MACLC,KAAK,EAAEH;IACX,CAAC;EACL;EACA,IAAII,EAAE,GAAGF,MAAM,CAACC,KAAK;IAAEA,KAAK,GAAGC,EAAE,KAAK,KAAK,CAAC,GAAGH,QAAQ,GAAGG,EAAE;IAAEC,KAAK,GAAGH,MAAM,CAACG,KAAK;IAAEC,EAAE,GAAGJ,MAAM,CAACK,cAAc;IAAEA,cAAc,GAAGD,EAAE,KAAK,KAAK,CAAC,GAAG,KAAK,GAAGA,EAAE;EAC3J,OAAOH,KAAK,IAAI,CAAC,GACXP,QAAQ,GACRF,OAAO,CAAC,UAAUc,MAAM,EAAEC,UAAU,EAAE;IACpC,IAAIC,KAAK,GAAG,CAAC;IACb,IAAIC,QAAQ;IACZ,IAAIC,iBAAiB,GAAG,SAAAA,CAAA,EAAY;MAChC,IAAIC,SAAS,GAAG,KAAK;MACrBF,QAAQ,GAAGH,MAAM,CAACM,SAAS,CAACnB,wBAAwB,CAACc,UAAU,EAAE,UAAUM,KAAK,EAAE;QAC9E,IAAIR,cAAc,EAAE;UAChBG,KAAK,GAAG,CAAC;QACb;QACAD,UAAU,CAACO,IAAI,CAACD,KAAK,CAAC;MAC1B,CAAC,EAAEE,SAAS,EAAE,UAAUC,GAAG,EAAE;QACzB,IAAIR,KAAK,EAAE,GAAGP,KAAK,EAAE;UACjB,IAAIgB,OAAO,GAAG,SAAAA,CAAA,EAAY;YACtB,IAAIR,QAAQ,EAAE;cACVA,QAAQ,CAACS,WAAW,CAAC,CAAC;cACtBT,QAAQ,GAAG,IAAI;cACfC,iBAAiB,CAAC,CAAC;YACvB,CAAC,MACI;cACDC,SAAS,GAAG,IAAI;YACpB;UACJ,CAAC;UACD,IAAIR,KAAK,IAAI,IAAI,EAAE;YACf,IAAIgB,QAAQ,GAAG,OAAOhB,KAAK,KAAK,QAAQ,GAAGR,KAAK,CAACQ,KAAK,CAAC,GAAGP,SAAS,CAACO,KAAK,CAACa,GAAG,EAAER,KAAK,CAAC,CAAC;YACtF,IAAIY,oBAAoB,GAAG3B,wBAAwB,CAACc,UAAU,EAAE,YAAY;cACxEa,oBAAoB,CAACF,WAAW,CAAC,CAAC;cAClCD,OAAO,CAAC,CAAC;YACb,CAAC,EAAE,YAAY;cACXV,UAAU,CAACc,QAAQ,CAAC,CAAC;YACzB,CAAC,CAAC;YACFF,QAAQ,CAACP,SAAS,CAACQ,oBAAoB,CAAC;UAC5C,CAAC,MACI;YACDH,OAAO,CAAC,CAAC;UACb;QACJ,CAAC,MACI;UACDV,UAAU,CAACe,KAAK,CAACN,GAAG,CAAC;QACzB;MACJ,CAAC,CAAC,CAAC;MACH,IAAIL,SAAS,EAAE;QACXF,QAAQ,CAACS,WAAW,CAAC,CAAC;QACtBT,QAAQ,GAAG,IAAI;QACfC,iBAAiB,CAAC,CAAC;MACvB;IACJ,CAAC;IACDA,iBAAiB,CAAC,CAAC;EACvB,CAAC,CAAC;AACV;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

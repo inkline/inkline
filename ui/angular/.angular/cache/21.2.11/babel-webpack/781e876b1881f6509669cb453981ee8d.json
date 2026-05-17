@@ -1,0 +1,41 @@
+{
+  "ast": null,
+  "code": "import { Subject } from '../Subject';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { innerFrom } from '../observable/innerFrom';\nexport function windowWhen(closingSelector) {\n  return operate(function (source, subscriber) {\n    var window;\n    var closingSubscriber;\n    var handleError = function (err) {\n      window.error(err);\n      subscriber.error(err);\n    };\n    var openWindow = function () {\n      closingSubscriber === null || closingSubscriber === void 0 ? void 0 : closingSubscriber.unsubscribe();\n      window === null || window === void 0 ? void 0 : window.complete();\n      window = new Subject();\n      subscriber.next(window.asObservable());\n      var closingNotifier;\n      try {\n        closingNotifier = innerFrom(closingSelector());\n      } catch (err) {\n        handleError(err);\n        return;\n      }\n      closingNotifier.subscribe(closingSubscriber = createOperatorSubscriber(subscriber, openWindow, openWindow, handleError));\n    };\n    openWindow();\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      return window.next(value);\n    }, function () {\n      window.complete();\n      subscriber.complete();\n    }, handleError, function () {\n      closingSubscriber === null || closingSubscriber === void 0 ? void 0 : closingSubscriber.unsubscribe();\n      window = null;\n    }));\n  });\n}\n//# sourceMappingURL=windowWhen.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "Subject",
+      "operate",
+      "createOperatorSubscriber",
+      "innerFrom",
+      "windowWhen",
+      "closingSelector",
+      "source",
+      "subscriber",
+      "window",
+      "closingSubscriber",
+      "handleError",
+      "err",
+      "error",
+      "openWindow",
+      "unsubscribe",
+      "complete",
+      "next",
+      "asObservable",
+      "closingNotifier",
+      "subscribe",
+      "value"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/windowWhen.js"
+    ],
+    "sourcesContent": [
+      "import { Subject } from '../Subject';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { innerFrom } from '../observable/innerFrom';\nexport function windowWhen(closingSelector) {\n    return operate(function (source, subscriber) {\n        var window;\n        var closingSubscriber;\n        var handleError = function (err) {\n            window.error(err);\n            subscriber.error(err);\n        };\n        var openWindow = function () {\n            closingSubscriber === null || closingSubscriber === void 0 ? void 0 : closingSubscriber.unsubscribe();\n            window === null || window === void 0 ? void 0 : window.complete();\n            window = new Subject();\n            subscriber.next(window.asObservable());\n            var closingNotifier;\n            try {\n                closingNotifier = innerFrom(closingSelector());\n            }\n            catch (err) {\n                handleError(err);\n                return;\n            }\n            closingNotifier.subscribe((closingSubscriber = createOperatorSubscriber(subscriber, openWindow, openWindow, handleError)));\n        };\n        openWindow();\n        source.subscribe(createOperatorSubscriber(subscriber, function (value) { return window.next(value); }, function () {\n            window.complete();\n            subscriber.complete();\n        }, handleError, function () {\n            closingSubscriber === null || closingSubscriber === void 0 ? void 0 : closingSubscriber.unsubscribe();\n            window = null;\n        }));\n    });\n}\n//# sourceMappingURL=windowWhen.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,YAAY;AACpC,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,SAASC,SAAS,QAAQ,yBAAyB;AACnD,OAAO,SAASC,UAAUA,CAACC,eAAe,EAAE;EACxC,OAAOJ,OAAO,CAAC,UAAUK,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,MAAM;IACV,IAAIC,iBAAiB;IACrB,IAAIC,WAAW,GAAG,SAAAA,CAAUC,GAAG,EAAE;MAC7BH,MAAM,CAACI,KAAK,CAACD,GAAG,CAAC;MACjBJ,UAAU,CAACK,KAAK,CAACD,GAAG,CAAC;IACzB,CAAC;IACD,IAAIE,UAAU,GAAG,SAAAA,CAAA,EAAY;MACzBJ,iBAAiB,KAAK,IAAI,IAAIA,iBAAiB,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,iBAAiB,CAACK,WAAW,CAAC,CAAC;MACrGN,MAAM,KAAK,IAAI,IAAIA,MAAM,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,MAAM,CAACO,QAAQ,CAAC,CAAC;MACjEP,MAAM,GAAG,IAAIR,OAAO,CAAC,CAAC;MACtBO,UAAU,CAACS,IAAI,CAACR,MAAM,CAACS,YAAY,CAAC,CAAC,CAAC;MACtC,IAAIC,eAAe;MACnB,IAAI;QACAA,eAAe,GAAGf,SAAS,CAACE,eAAe,CAAC,CAAC,CAAC;MAClD,CAAC,CACD,OAAOM,GAAG,EAAE;QACRD,WAAW,CAACC,GAAG,CAAC;QAChB;MACJ;MACAO,eAAe,CAACC,SAAS,CAAEV,iBAAiB,GAAGP,wBAAwB,CAACK,UAAU,EAAEM,UAAU,EAAEA,UAAU,EAAEH,WAAW,CAAE,CAAC;IAC9H,CAAC;IACDG,UAAU,CAAC,CAAC;IACZP,MAAM,CAACa,SAAS,CAACjB,wBAAwB,CAACK,UAAU,EAAE,UAAUa,KAAK,EAAE;MAAE,OAAOZ,MAAM,CAACQ,IAAI,CAACI,KAAK,CAAC;IAAE,CAAC,EAAE,YAAY;MAC/GZ,MAAM,CAACO,QAAQ,CAAC,CAAC;MACjBR,UAAU,CAACQ,QAAQ,CAAC,CAAC;IACzB,CAAC,EAAEL,WAAW,EAAE,YAAY;MACxBD,iBAAiB,KAAK,IAAI,IAAIA,iBAAiB,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,iBAAiB,CAACK,WAAW,CAAC,CAAC;MACrGN,MAAM,GAAG,IAAI;IACjB,CAAC,CAAC,CAAC;EACP,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,56 @@
+{
+  "ast": null,
+  "code": "import { __extends } from \"tslib\";\nimport { Observable } from '../Observable';\nimport { Subscription } from '../Subscription';\nimport { refCount as higherOrderRefCount } from '../operators/refCount';\nimport { createOperatorSubscriber } from '../operators/OperatorSubscriber';\nimport { hasLift } from '../util/lift';\nvar ConnectableObservable = function (_super) {\n  __extends(ConnectableObservable, _super);\n  function ConnectableObservable(source, subjectFactory) {\n    var _this = _super.call(this) || this;\n    _this.source = source;\n    _this.subjectFactory = subjectFactory;\n    _this._subject = null;\n    _this._refCount = 0;\n    _this._connection = null;\n    if (hasLift(source)) {\n      _this.lift = source.lift;\n    }\n    return _this;\n  }\n  ConnectableObservable.prototype._subscribe = function (subscriber) {\n    return this.getSubject().subscribe(subscriber);\n  };\n  ConnectableObservable.prototype.getSubject = function () {\n    var subject = this._subject;\n    if (!subject || subject.isStopped) {\n      this._subject = this.subjectFactory();\n    }\n    return this._subject;\n  };\n  ConnectableObservable.prototype._teardown = function () {\n    this._refCount = 0;\n    var _connection = this._connection;\n    this._subject = this._connection = null;\n    _connection === null || _connection === void 0 ? void 0 : _connection.unsubscribe();\n  };\n  ConnectableObservable.prototype.connect = function () {\n    var _this = this;\n    var connection = this._connection;\n    if (!connection) {\n      connection = this._connection = new Subscription();\n      var subject_1 = this.getSubject();\n      connection.add(this.source.subscribe(createOperatorSubscriber(subject_1, undefined, function () {\n        _this._teardown();\n        subject_1.complete();\n      }, function (err) {\n        _this._teardown();\n        subject_1.error(err);\n      }, function () {\n        return _this._teardown();\n      })));\n      if (connection.closed) {\n        this._connection = null;\n        connection = Subscription.EMPTY;\n      }\n    }\n    return connection;\n  };\n  ConnectableObservable.prototype.refCount = function () {\n    return higherOrderRefCount()(this);\n  };\n  return ConnectableObservable;\n}(Observable);\nexport { ConnectableObservable };\n//# sourceMappingURL=ConnectableObservable.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "__extends",
+      "Observable",
+      "Subscription",
+      "refCount",
+      "higherOrderRefCount",
+      "createOperatorSubscriber",
+      "hasLift",
+      "ConnectableObservable",
+      "_super",
+      "source",
+      "subjectFactory",
+      "_this",
+      "call",
+      "_subject",
+      "_refCount",
+      "_connection",
+      "lift",
+      "prototype",
+      "_subscribe",
+      "subscriber",
+      "getSubject",
+      "subscribe",
+      "subject",
+      "isStopped",
+      "_teardown",
+      "unsubscribe",
+      "connect",
+      "connection",
+      "subject_1",
+      "add",
+      "undefined",
+      "complete",
+      "err",
+      "error",
+      "closed",
+      "EMPTY"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/observable/ConnectableObservable.js"
+    ],
+    "sourcesContent": [
+      "import { __extends } from \"tslib\";\nimport { Observable } from '../Observable';\nimport { Subscription } from '../Subscription';\nimport { refCount as higherOrderRefCount } from '../operators/refCount';\nimport { createOperatorSubscriber } from '../operators/OperatorSubscriber';\nimport { hasLift } from '../util/lift';\nvar ConnectableObservable = (function (_super) {\n    __extends(ConnectableObservable, _super);\n    function ConnectableObservable(source, subjectFactory) {\n        var _this = _super.call(this) || this;\n        _this.source = source;\n        _this.subjectFactory = subjectFactory;\n        _this._subject = null;\n        _this._refCount = 0;\n        _this._connection = null;\n        if (hasLift(source)) {\n            _this.lift = source.lift;\n        }\n        return _this;\n    }\n    ConnectableObservable.prototype._subscribe = function (subscriber) {\n        return this.getSubject().subscribe(subscriber);\n    };\n    ConnectableObservable.prototype.getSubject = function () {\n        var subject = this._subject;\n        if (!subject || subject.isStopped) {\n            this._subject = this.subjectFactory();\n        }\n        return this._subject;\n    };\n    ConnectableObservable.prototype._teardown = function () {\n        this._refCount = 0;\n        var _connection = this._connection;\n        this._subject = this._connection = null;\n        _connection === null || _connection === void 0 ? void 0 : _connection.unsubscribe();\n    };\n    ConnectableObservable.prototype.connect = function () {\n        var _this = this;\n        var connection = this._connection;\n        if (!connection) {\n            connection = this._connection = new Subscription();\n            var subject_1 = this.getSubject();\n            connection.add(this.source.subscribe(createOperatorSubscriber(subject_1, undefined, function () {\n                _this._teardown();\n                subject_1.complete();\n            }, function (err) {\n                _this._teardown();\n                subject_1.error(err);\n            }, function () { return _this._teardown(); })));\n            if (connection.closed) {\n                this._connection = null;\n                connection = Subscription.EMPTY;\n            }\n        }\n        return connection;\n    };\n    ConnectableObservable.prototype.refCount = function () {\n        return higherOrderRefCount()(this);\n    };\n    return ConnectableObservable;\n}(Observable));\nexport { ConnectableObservable };\n//# sourceMappingURL=ConnectableObservable.js.map"
+    ],
+    "mappings": "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",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

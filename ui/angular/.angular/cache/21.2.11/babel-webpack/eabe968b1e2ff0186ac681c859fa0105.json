@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { __extends } from \"tslib\";\nimport { AsyncScheduler } from './AsyncScheduler';\nvar QueueScheduler = function (_super) {\n  __extends(QueueScheduler, _super);\n  function QueueScheduler() {\n    return _super !== null && _super.apply(this, arguments) || this;\n  }\n  return QueueScheduler;\n}(AsyncScheduler);\nexport { QueueScheduler };\n//# sourceMappingURL=QueueScheduler.js.map",
+  "map": {
+    "version": 3,
+    "names": ["__extends", "AsyncScheduler", "QueueScheduler", "_super", "apply", "arguments"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/scheduler/QueueScheduler.js"
+    ],
+    "sourcesContent": [
+      "import { __extends } from \"tslib\";\nimport { AsyncScheduler } from './AsyncScheduler';\nvar QueueScheduler = (function (_super) {\n    __extends(QueueScheduler, _super);\n    function QueueScheduler() {\n        return _super !== null && _super.apply(this, arguments) || this;\n    }\n    return QueueScheduler;\n}(AsyncScheduler));\nexport { QueueScheduler };\n//# sourceMappingURL=QueueScheduler.js.map"
+    ],
+    "mappings": "AAAA,SAASA,SAAS,QAAQ,OAAO;AACjC,SAASC,cAAc,QAAQ,kBAAkB;AACjD,IAAIC,cAAc,GAAI,UAAUC,MAAM,EAAE;EACpCH,SAAS,CAACE,cAAc,EAAEC,MAAM,CAAC;EACjC,SAASD,cAAcA,CAAA,EAAG;IACtB,OAAOC,MAAM,KAAK,IAAI,IAAIA,MAAM,CAACC,KAAK,CAAC,IAAI,EAAEC,SAAS,CAAC,IAAI,IAAI;EACnE;EACA,OAAOH,cAAc;AACzB,CAAC,CAACD,cAAc,CAAE;AAClB,SAASC,cAAc;AACvB",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -10,8 +10,10 @@ catalog:
   "@angular-eslint/eslint-plugin": ^21.4.0
   "@angular-eslint/template-parser": ^21.4.0
   "@angular/build": ^21.2.11
+  "@angular/cli": ^21
   "@angular/compiler": ^21.2.13
   "@angular/compiler-cli": ^21.2.13
+  "@angular/core": ^21
   "@sveltejs/vite-plugin-svelte": ^7.1.2
   "@tsdown/css": ^0.22.0
   "@types/node": ^24

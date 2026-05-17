@@ -1,0 +1,30 @@
+{
+  "ast": null,
+  "code": "'use strict';\n\nconst debug = typeof process === 'object' && process.env && process.env.NODE_DEBUG && /\\bsemver\\b/i.test(process.env.NODE_DEBUG) ? (...args) => console.error('SEMVER', ...args) : () => {};\nmodule.exports = debug;",
+  "map": {
+    "version": 3,
+    "names": [
+      "debug",
+      "process",
+      "env",
+      "NODE_DEBUG",
+      "test",
+      "args",
+      "console",
+      "error",
+      "module",
+      "exports"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/semver@7.7.4/node_modules/semver/internal/debug.js"
+    ],
+    "sourcesContent": [
+      "'use strict'\n\nconst debug = (\n  typeof process === 'object' &&\n  process.env &&\n  process.env.NODE_DEBUG &&\n  /\\bsemver\\b/i.test(process.env.NODE_DEBUG)\n) ? (...args) => console.error('SEMVER', ...args)\n  : () => {}\n\nmodule.exports = debug\n"
+    ],
+    "mappings": "AAAA,YAAY;;AAEZ,MAAMA,KAAK,GACT,OAAOC,OAAO,KAAK,QAAQ,IAC3BA,OAAO,CAACC,GAAG,IACXD,OAAO,CAACC,GAAG,CAACC,UAAU,IACtB,aAAa,CAACC,IAAI,CAACH,OAAO,CAACC,GAAG,CAACC,UAAU,CAAC,GACxC,CAAC,GAAGE,IAAI,KAAKC,OAAO,CAACC,KAAK,CAAC,QAAQ,EAAE,GAAGF,IAAI,CAAC,GAC7C,MAAM,CAAC,CAAC;AAEZG,MAAM,CAACC,OAAO,GAAGT,KAAK",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

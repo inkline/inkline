@@ -1,0 +1,19 @@
+{
+  "ast": null,
+  "code": "import { scanInternals } from './scanInternals';\nimport { operate } from '../util/lift';\nexport function reduce(accumulator, seed) {\n  return operate(scanInternals(accumulator, seed, arguments.length >= 2, false, true));\n}\n//# sourceMappingURL=reduce.js.map",
+  "map": {
+    "version": 3,
+    "names": ["scanInternals", "operate", "reduce", "accumulator", "seed", "arguments", "length"],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/reduce.js"
+    ],
+    "sourcesContent": [
+      "import { scanInternals } from './scanInternals';\nimport { operate } from '../util/lift';\nexport function reduce(accumulator, seed) {\n    return operate(scanInternals(accumulator, seed, arguments.length >= 2, false, true));\n}\n//# sourceMappingURL=reduce.js.map"
+    ],
+    "mappings": "AAAA,SAASA,aAAa,QAAQ,iBAAiB;AAC/C,SAASC,OAAO,QAAQ,cAAc;AACtC,OAAO,SAASC,MAAMA,CAACC,WAAW,EAAEC,IAAI,EAAE;EACtC,OAAOH,OAAO,CAACD,aAAa,CAACG,WAAW,EAAEC,IAAI,EAAEC,SAAS,CAACC,MAAM,IAAI,CAAC,EAAE,KAAK,EAAE,IAAI,CAAC,CAAC;AACxF;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

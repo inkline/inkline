@@ -1,0 +1,29 @@
+{
+  "ast": null,
+  "code": "import { operate } from '../util/lift';\nexport function subscribeOn(scheduler, delay) {\n  if (delay === void 0) {\n    delay = 0;\n  }\n  return operate(function (source, subscriber) {\n    subscriber.add(scheduler.schedule(function () {\n      return source.subscribe(subscriber);\n    }, delay));\n  });\n}\n//# sourceMappingURL=subscribeOn.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "operate",
+      "subscribeOn",
+      "scheduler",
+      "delay",
+      "source",
+      "subscriber",
+      "add",
+      "schedule",
+      "subscribe"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/subscribeOn.js"
+    ],
+    "sourcesContent": [
+      "import { operate } from '../util/lift';\nexport function subscribeOn(scheduler, delay) {\n    if (delay === void 0) { delay = 0; }\n    return operate(function (source, subscriber) {\n        subscriber.add(scheduler.schedule(function () { return source.subscribe(subscriber); }, delay));\n    });\n}\n//# sourceMappingURL=subscribeOn.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,cAAc;AACtC,OAAO,SAASC,WAAWA,CAACC,SAAS,EAAEC,KAAK,EAAE;EAC1C,IAAIA,KAAK,KAAK,KAAK,CAAC,EAAE;IAAEA,KAAK,GAAG,CAAC;EAAE;EACnC,OAAOH,OAAO,CAAC,UAAUI,MAAM,EAAEC,UAAU,EAAE;IACzCA,UAAU,CAACC,GAAG,CAACJ,SAAS,CAACK,QAAQ,CAAC,YAAY;MAAE,OAAOH,MAAM,CAACI,SAAS,CAACH,UAAU,CAAC;IAAE,CAAC,EAAEF,KAAK,CAAC,CAAC;EACnG,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,39 @@
+{
+  "ast": null,
+  "code": "import { operate } from '../util/lift';\nimport { innerFrom } from '../observable/innerFrom';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function audit(durationSelector) {\n  return operate(function (source, subscriber) {\n    var hasValue = false;\n    var lastValue = null;\n    var durationSubscriber = null;\n    var isComplete = false;\n    var endDuration = function () {\n      durationSubscriber === null || durationSubscriber === void 0 ? void 0 : durationSubscriber.unsubscribe();\n      durationSubscriber = null;\n      if (hasValue) {\n        hasValue = false;\n        var value = lastValue;\n        lastValue = null;\n        subscriber.next(value);\n      }\n      isComplete && subscriber.complete();\n    };\n    var cleanupDuration = function () {\n      durationSubscriber = null;\n      isComplete && subscriber.complete();\n    };\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      hasValue = true;\n      lastValue = value;\n      if (!durationSubscriber) {\n        innerFrom(durationSelector(value)).subscribe(durationSubscriber = createOperatorSubscriber(subscriber, endDuration, cleanupDuration));\n      }\n    }, function () {\n      isComplete = true;\n      (!hasValue || !durationSubscriber || durationSubscriber.closed) && subscriber.complete();\n    }));\n  });\n}\n//# sourceMappingURL=audit.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "operate",
+      "innerFrom",
+      "createOperatorSubscriber",
+      "audit",
+      "durationSelector",
+      "source",
+      "subscriber",
+      "hasValue",
+      "lastValue",
+      "durationSubscriber",
+      "isComplete",
+      "endDuration",
+      "unsubscribe",
+      "value",
+      "next",
+      "complete",
+      "cleanupDuration",
+      "subscribe",
+      "closed"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/audit.js"
+    ],
+    "sourcesContent": [
+      "import { operate } from '../util/lift';\nimport { innerFrom } from '../observable/innerFrom';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function audit(durationSelector) {\n    return operate(function (source, subscriber) {\n        var hasValue = false;\n        var lastValue = null;\n        var durationSubscriber = null;\n        var isComplete = false;\n        var endDuration = function () {\n            durationSubscriber === null || durationSubscriber === void 0 ? void 0 : durationSubscriber.unsubscribe();\n            durationSubscriber = null;\n            if (hasValue) {\n                hasValue = false;\n                var value = lastValue;\n                lastValue = null;\n                subscriber.next(value);\n            }\n            isComplete && subscriber.complete();\n        };\n        var cleanupDuration = function () {\n            durationSubscriber = null;\n            isComplete && subscriber.complete();\n        };\n        source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n            hasValue = true;\n            lastValue = value;\n            if (!durationSubscriber) {\n                innerFrom(durationSelector(value)).subscribe((durationSubscriber = createOperatorSubscriber(subscriber, endDuration, cleanupDuration)));\n            }\n        }, function () {\n            isComplete = true;\n            (!hasValue || !durationSubscriber || durationSubscriber.closed) && subscriber.complete();\n        }));\n    });\n}\n//# sourceMappingURL=audit.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,cAAc;AACtC,SAASC,SAAS,QAAQ,yBAAyB;AACnD,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,OAAO,SAASC,KAAKA,CAACC,gBAAgB,EAAE;EACpC,OAAOJ,OAAO,CAAC,UAAUK,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,QAAQ,GAAG,KAAK;IACpB,IAAIC,SAAS,GAAG,IAAI;IACpB,IAAIC,kBAAkB,GAAG,IAAI;IAC7B,IAAIC,UAAU,GAAG,KAAK;IACtB,IAAIC,WAAW,GAAG,SAAAA,CAAA,EAAY;MAC1BF,kBAAkB,KAAK,IAAI,IAAIA,kBAAkB,KAAK,KAAK,CAAC,GAAG,KAAK,CAAC,GAAGA,kBAAkB,CAACG,WAAW,CAAC,CAAC;MACxGH,kBAAkB,GAAG,IAAI;MACzB,IAAIF,QAAQ,EAAE;QACVA,QAAQ,GAAG,KAAK;QAChB,IAAIM,KAAK,GAAGL,SAAS;QACrBA,SAAS,GAAG,IAAI;QAChBF,UAAU,CAACQ,IAAI,CAACD,KAAK,CAAC;MAC1B;MACAH,UAAU,IAAIJ,UAAU,CAACS,QAAQ,CAAC,CAAC;IACvC,CAAC;IACD,IAAIC,eAAe,GAAG,SAAAA,CAAA,EAAY;MAC9BP,kBAAkB,GAAG,IAAI;MACzBC,UAAU,IAAIJ,UAAU,CAACS,QAAQ,CAAC,CAAC;IACvC,CAAC;IACDV,MAAM,CAACY,SAAS,CAACf,wBAAwB,CAACI,UAAU,EAAE,UAAUO,KAAK,EAAE;MACnEN,QAAQ,GAAG,IAAI;MACfC,SAAS,GAAGK,KAAK;MACjB,IAAI,CAACJ,kBAAkB,EAAE;QACrBR,SAAS,CAACG,gBAAgB,CAACS,KAAK,CAAC,CAAC,CAACI,SAAS,CAAER,kBAAkB,GAAGP,wBAAwB,CAACI,UAAU,EAAEK,WAAW,EAAEK,eAAe,CAAE,CAAC;MAC3I;IACJ,CAAC,EAAE,YAAY;MACXN,UAAU,GAAG,IAAI;MACjB,CAAC,CAACH,QAAQ,IAAI,CAACE,kBAAkB,IAAIA,kBAAkB,CAACS,MAAM,KAAKZ,UAAU,CAACS,QAAQ,CAAC,CAAC;IAC5F,CAAC,CAAC,CAAC;EACP,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

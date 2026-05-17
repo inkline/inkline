@@ -1,0 +1,31 @@
+{
+  "ast": null,
+  "code": "import { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { innerFrom } from '../observable/innerFrom';\nimport { noop } from '../util/noop';\nexport function takeUntil(notifier) {\n  return operate(function (source, subscriber) {\n    innerFrom(notifier).subscribe(createOperatorSubscriber(subscriber, function () {\n      return subscriber.complete();\n    }, noop));\n    !subscriber.closed && source.subscribe(subscriber);\n  });\n}\n//# sourceMappingURL=takeUntil.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "operate",
+      "createOperatorSubscriber",
+      "innerFrom",
+      "noop",
+      "takeUntil",
+      "notifier",
+      "source",
+      "subscriber",
+      "subscribe",
+      "complete",
+      "closed"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/takeUntil.js"
+    ],
+    "sourcesContent": [
+      "import { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nimport { innerFrom } from '../observable/innerFrom';\nimport { noop } from '../util/noop';\nexport function takeUntil(notifier) {\n    return operate(function (source, subscriber) {\n        innerFrom(notifier).subscribe(createOperatorSubscriber(subscriber, function () { return subscriber.complete(); }, noop));\n        !subscriber.closed && source.subscribe(subscriber);\n    });\n}\n//# sourceMappingURL=takeUntil.js.map"
+    ],
+    "mappings": "AAAA,SAASA,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,SAASC,SAAS,QAAQ,yBAAyB;AACnD,SAASC,IAAI,QAAQ,cAAc;AACnC,OAAO,SAASC,SAASA,CAACC,QAAQ,EAAE;EAChC,OAAOL,OAAO,CAAC,UAAUM,MAAM,EAAEC,UAAU,EAAE;IACzCL,SAAS,CAACG,QAAQ,CAAC,CAACG,SAAS,CAACP,wBAAwB,CAACM,UAAU,EAAE,YAAY;MAAE,OAAOA,UAAU,CAACE,QAAQ,CAAC,CAAC;IAAE,CAAC,EAAEN,IAAI,CAAC,CAAC;IACxH,CAACI,UAAU,CAACG,MAAM,IAAIJ,MAAM,CAACE,SAAS,CAACD,UAAU,CAAC;EACtD,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

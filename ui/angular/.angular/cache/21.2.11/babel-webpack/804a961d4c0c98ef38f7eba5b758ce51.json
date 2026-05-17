@@ -1,0 +1,46 @@
+{
+  "ast": null,
+  "code": "import { StorybookError } from \"./chunk-2HVKLHKJ.js\";\n\n// src/manager-errors.ts\nvar Category = /* @__PURE__ */(Category2 => (Category2.MANAGER_UNCAUGHT = \"MANAGER_UNCAUGHT\", Category2.MANAGER_UI = \"MANAGER_UI\", Category2.MANAGER_API = \"MANAGER_API\", Category2.MANAGER_CLIENT_LOGGER = \"MANAGER_CLIENT-LOGGER\", Category2.MANAGER_CHANNELS = \"MANAGER_CHANNELS\", Category2.MANAGER_CORE_EVENTS = \"MANAGER_CORE-EVENTS\", Category2.MANAGER_ROUTER = \"MANAGER_ROUTER\", Category2.MANAGER_THEMING = \"MANAGER_THEMING\", Category2))(Category || {}),\n  ProviderDoesNotExtendBaseProviderError = class extends StorybookError {\n    constructor() {\n      super({\n        name: \"ProviderDoesNotExtendBaseProviderError\",\n        category: \"MANAGER_UI\" /* MANAGER_UI */,\n        code: 1,\n        message: \"The Provider passed into Storybook's UI is not extended from the base Provider. Please check your Provider implementation.\"\n      });\n    }\n  },\n  UncaughtManagerError = class extends StorybookError {\n    constructor(data) {\n      super({\n        name: \"UncaughtManagerError\",\n        category: \"MANAGER_UNCAUGHT\" /* MANAGER_UNCAUGHT */,\n        code: 1,\n        message: data.error.message\n      });\n      this.data = data;\n      this.stack = data.error.stack;\n    }\n  },\n  StatusTypeIdMismatchError = class extends StorybookError {\n    constructor(data) {\n      super({\n        name: \"StatusTypeIdMismatchError\",\n        category: \"MANAGER_API\" /* MANAGER_API */,\n        code: 1,\n        message: `Status has typeId \"${data.status.typeId}\" but was added to store with typeId \"${data.typeId}\". Full status: ${JSON.stringify(data.status, null, 2)}`\n      });\n      this.data = data;\n    }\n  };\nexport { Category, ProviderDoesNotExtendBaseProviderError, UncaughtManagerError, StatusTypeIdMismatchError };",
+  "map": {
+    "version": 3,
+    "names": [
+      "StorybookError",
+      "Category",
+      "Category2",
+      "MANAGER_UNCAUGHT",
+      "MANAGER_UI",
+      "MANAGER_API",
+      "MANAGER_CLIENT_LOGGER",
+      "MANAGER_CHANNELS",
+      "MANAGER_CORE_EVENTS",
+      "MANAGER_ROUTER",
+      "MANAGER_THEMING",
+      "ProviderDoesNotExtendBaseProviderError",
+      "constructor",
+      "name",
+      "category",
+      "code",
+      "message",
+      "UncaughtManagerError",
+      "data",
+      "error",
+      "stack",
+      "StatusTypeIdMismatchError",
+      "status",
+      "typeId",
+      "JSON",
+      "stringify"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/storybook@10.4.0_@emnapi+core@1.10.0_@emnapi+runtime@1.10.0_@testing-library+dom@10.4.1_698ffd59787bff4c7efa752470741c90/node_modules/storybook/dist/_browser-chunks/chunk-C3TKC4WX.js"
+    ],
+    "sourcesContent": [
+      "import {\n  StorybookError\n} from \"./chunk-2HVKLHKJ.js\";\n\n// src/manager-errors.ts\nvar Category = /* @__PURE__ */ ((Category2) => (Category2.MANAGER_UNCAUGHT = \"MANAGER_UNCAUGHT\", Category2.MANAGER_UI = \"MANAGER_UI\", Category2.MANAGER_API = \"MANAGER_API\", Category2.MANAGER_CLIENT_LOGGER = \"MANAGER_CLIENT-LOGGER\", Category2.MANAGER_CHANNELS = \"MANAGER_CHANNELS\", Category2.MANAGER_CORE_EVENTS = \"MANAGER_CORE-EVENTS\", Category2.MANAGER_ROUTER = \"MANAGER_ROUTER\", Category2.MANAGER_THEMING = \"MANAGER_THEMING\", Category2))(Category || {}), ProviderDoesNotExtendBaseProviderError = class extends StorybookError {\n  constructor() {\n    super({\n      name: \"ProviderDoesNotExtendBaseProviderError\",\n      category: \"MANAGER_UI\" /* MANAGER_UI */,\n      code: 1,\n      message: \"The Provider passed into Storybook's UI is not extended from the base Provider. Please check your Provider implementation.\"\n    });\n  }\n}, UncaughtManagerError = class extends StorybookError {\n  constructor(data) {\n    super({\n      name: \"UncaughtManagerError\",\n      category: \"MANAGER_UNCAUGHT\" /* MANAGER_UNCAUGHT */,\n      code: 1,\n      message: data.error.message\n    });\n    this.data = data;\n    this.stack = data.error.stack;\n  }\n}, StatusTypeIdMismatchError = class extends StorybookError {\n  constructor(data) {\n    super({\n      name: \"StatusTypeIdMismatchError\",\n      category: \"MANAGER_API\" /* MANAGER_API */,\n      code: 1,\n      message: `Status has typeId \"${data.status.typeId}\" but was added to store with typeId \"${data.typeId}\". Full status: ${JSON.stringify(\n        data.status,\n        null,\n        2\n      )}`\n    });\n    this.data = data;\n  }\n};\n\nexport {\n  Category,\n  ProviderDoesNotExtendBaseProviderError,\n  UncaughtManagerError,\n  StatusTypeIdMismatchError\n};\n"
+    ],
+    "mappings": "AAAA,SACEA,cAAc,QACT,qBAAqB;;AAE5B;AACA,IAAIC,QAAQ,GAAG,eAAgB,CAAEC,SAAS,KAAMA,SAAS,CAACC,gBAAgB,GAAG,kBAAkB,EAAED,SAAS,CAACE,UAAU,GAAG,YAAY,EAAEF,SAAS,CAACG,WAAW,GAAG,aAAa,EAAEH,SAAS,CAACI,qBAAqB,GAAG,uBAAuB,EAAEJ,SAAS,CAACK,gBAAgB,GAAG,kBAAkB,EAAEL,SAAS,CAACM,mBAAmB,GAAG,qBAAqB,EAAEN,SAAS,CAACO,cAAc,GAAG,gBAAgB,EAAEP,SAAS,CAACQ,eAAe,GAAG,iBAAiB,EAAER,SAAS,CAAC,EAAED,QAAQ,IAAI,CAAC,CAAC,CAAC;EAAEU,sCAAsC,GAAG,cAAcX,cAAc,CAAC;IAC7gBY,WAAWA,CAAA,EAAG;MACZ,KAAK,CAAC;QACJC,IAAI,EAAE,wCAAwC;QAC9CC,QAAQ,EAAE,YAAY,CAAC;QACvBC,IAAI,EAAE,CAAC;QACPC,OAAO,EAAE;MACX,CAAC,CAAC;IACJ;EACF,CAAC;EAAEC,oBAAoB,GAAG,cAAcjB,cAAc,CAAC;IACrDY,WAAWA,CAACM,IAAI,EAAE;MAChB,KAAK,CAAC;QACJL,IAAI,EAAE,sBAAsB;QAC5BC,QAAQ,EAAE,kBAAkB,CAAC;QAC7BC,IAAI,EAAE,CAAC;QACPC,OAAO,EAAEE,IAAI,CAACC,KAAK,CAACH;MACtB,CAAC,CAAC;MACF,IAAI,CAACE,IAAI,GAAGA,IAAI;MAChB,IAAI,CAACE,KAAK,GAAGF,IAAI,CAACC,KAAK,CAACC,KAAK;IAC/B;EACF,CAAC;EAAEC,yBAAyB,GAAG,cAAcrB,cAAc,CAAC;IAC1DY,WAAWA,CAACM,IAAI,EAAE;MAChB,KAAK,CAAC;QACJL,IAAI,EAAE,2BAA2B;QACjCC,QAAQ,EAAE,aAAa,CAAC;QACxBC,IAAI,EAAE,CAAC;QACPC,OAAO,EAAE,sBAAsBE,IAAI,CAACI,MAAM,CAACC,MAAM,yCAAyCL,IAAI,CAACK,MAAM,mBAAmBC,IAAI,CAACC,SAAS,CACpIP,IAAI,CAACI,MAAM,EACX,IAAI,EACJ,CACF,CAAC;MACH,CAAC,CAAC;MACF,IAAI,CAACJ,IAAI,GAAGA,IAAI;IAClB;EACF,CAAC;AAED,SACEjB,QAAQ,EACRU,sCAAsC,EACtCM,oBAAoB,EACpBI,yBAAyB",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

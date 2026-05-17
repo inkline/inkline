@@ -1,0 +1,55 @@
+{
+  "ast": null,
+  "code": "import { createBrowserChannel } from 'storybook/internal/channels';\nimport { STORY_HOT_UPDATED } from 'storybook/internal/core-events';\nimport { isPreview } from 'storybook/internal/csf';\nimport { global } from '@storybook/global';\nimport { PreviewWeb, addons, composeConfigs } from 'storybook/preview-api';\nimport { importFn } from './storybook-stories.js';\nconst getProjectAnnotations = () => {\n  const previewAnnotations = [require('/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_17cf74cc4e48de6f4001a19f757fd7ae/node_modules/@storybook/angular/dist/client/preview-prod.js'), require('/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_17cf74cc4e48de6f4001a19f757fd7ae/node_modules/@storybook/angular/dist/client/config.js'), require('/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_17cf74cc4e48de6f4001a19f757fd7ae/node_modules/@storybook/angular/dist/client/docs/config.js'), require('/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+addon-a11y@10.4.0_storybook@10.4.0_@emnapi+core@1.10.0_@emnapi+runtime@1.10._1115d8dca73f285cc02f5b3035ee8eef/node_modules/@storybook/addon-a11y/dist/preview.js'), require('/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+addon-docs@10.4.0_@types+react@19.2.14_@voidzero-dev+vite-plus-core@0.1.21_@_a1fb8dc34bea9cd85bb722add9137c8c/node_modules/@storybook/addon-docs/dist/preview.js'), require('/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/ui/angular/.storybook/preview.ts')];\n  // the last one in this array is the user preview\n  const userPreview = previewAnnotations[previewAnnotations.length - 1]?.default;\n  if (isPreview(userPreview)) {\n    return userPreview.composed;\n  }\n  return composeConfigs(previewAnnotations);\n};\nconst channel = createBrowserChannel({\n  page: 'preview'\n});\naddons.setChannel(channel);\nif (global.CONFIG_TYPE === 'DEVELOPMENT') {\n  window.__STORYBOOK_SERVER_CHANNEL__ = channel;\n}\nconst preview = new PreviewWeb(importFn, getProjectAnnotations);\nwindow.__STORYBOOK_PREVIEW__ = preview;\nwindow.__STORYBOOK_STORY_STORE__ = preview.storyStore;\nwindow.__STORYBOOK_ADDONS_CHANNEL__ = channel;\nif (import.meta.webpackHot) {\n  import.meta.webpackHot.addStatusHandler(status => {\n    if (status === 'idle') {\n      preview.channel.emit(STORY_HOT_UPDATED);\n    }\n  });\n  import.meta.webpackHot.accept('./storybook-stories.js', () => {\n    // importFn has changed so we need to patch the new one in\n    preview.onStoriesChanged({\n      importFn\n    });\n  });\n  import.meta.webpackHot.accept(['/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_17cf74cc4e48de6f4001a19f757fd7ae/node_modules/@storybook/angular/dist/client/preview-prod.js', '/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_17cf74cc4e48de6f4001a19f757fd7ae/node_modules/@storybook/angular/dist/client/config.js', '/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_17cf74cc4e48de6f4001a19f757fd7ae/node_modules/@storybook/angular/dist/client/docs/config.js', '/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+addon-a11y@10.4.0_storybook@10.4.0_@emnapi+core@1.10.0_@emnapi+runtime@1.10._1115d8dca73f285cc02f5b3035ee8eef/node_modules/@storybook/addon-a11y/dist/preview.js', '/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+addon-docs@10.4.0_@types+react@19.2.14_@voidzero-dev+vite-plus-core@0.1.21_@_a1fb8dc34bea9cd85bb722add9137c8c/node_modules/@storybook/addon-docs/dist/preview.js', '/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/ui/angular/.storybook/preview.ts'], () => {\n    // getProjectAnnotations has changed so we need to patch the new one in\n    preview.onGetProjectAnnotationsChanged({\n      getProjectAnnotations\n    });\n  });\n}",
+  "map": {
+    "version": 3,
+    "names": [
+      "createBrowserChannel",
+      "STORY_HOT_UPDATED",
+      "isPreview",
+      "global",
+      "PreviewWeb",
+      "addons",
+      "composeConfigs",
+      "importFn",
+      "getProjectAnnotations",
+      "previewAnnotations",
+      "require",
+      "userPreview",
+      "length",
+      "default",
+      "composed",
+      "channel",
+      "page",
+      "setChannel",
+      "CONFIG_TYPE",
+      "window",
+      "__STORYBOOK_SERVER_CHANNEL__",
+      "preview",
+      "__STORYBOOK_PREVIEW__",
+      "__STORYBOOK_STORY_STORE__",
+      "storyStore",
+      "__STORYBOOK_ADDONS_CHANNEL__",
+      "import",
+      "meta",
+      "webpackHot",
+      "addStatusHandler",
+      "status",
+      "emit",
+      "accept",
+      "onStoriesChanged",
+      "onGetProjectAnnotationsChanged"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/ui/angular/storybook-config-entry.js"
+    ],
+    "sourcesContent": [
+      "import { createBrowserChannel } from 'storybook/internal/channels';\nimport { STORY_HOT_UPDATED } from 'storybook/internal/core-events';\nimport { isPreview } from 'storybook/internal/csf';\n\nimport { global } from '@storybook/global';\n\nimport { PreviewWeb, addons, composeConfigs } from 'storybook/preview-api';\nimport { importFn } from './storybook-stories.js';\n\nconst getProjectAnnotations = () => {\n  const previewAnnotations = [require('/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_17cf74cc4e48de6f4001a19f757fd7ae/node_modules/@storybook/angular/dist/client/preview-prod.js'),require('/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_17cf74cc4e48de6f4001a19f757fd7ae/node_modules/@storybook/angular/dist/client/config.js'),require('/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_17cf74cc4e48de6f4001a19f757fd7ae/node_modules/@storybook/angular/dist/client/docs/config.js'),require('/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+addon-a11y@10.4.0_storybook@10.4.0_@emnapi+core@1.10.0_@emnapi+runtime@1.10._1115d8dca73f285cc02f5b3035ee8eef/node_modules/@storybook/addon-a11y/dist/preview.js'),require('/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+addon-docs@10.4.0_@types+react@19.2.14_@voidzero-dev+vite-plus-core@0.1.21_@_a1fb8dc34bea9cd85bb722add9137c8c/node_modules/@storybook/addon-docs/dist/preview.js'),require('/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/ui/angular/.storybook/preview.ts')];\n  // the last one in this array is the user preview\n  const userPreview = previewAnnotations[previewAnnotations.length - 1]?.default;\n\n  if (isPreview(userPreview)) {\n    return userPreview.composed;\n  }\n\n  return composeConfigs(previewAnnotations);\n};\n\nconst channel = createBrowserChannel({ page: 'preview' });\naddons.setChannel(channel);\n\nif (global.CONFIG_TYPE === 'DEVELOPMENT') {\n  window.__STORYBOOK_SERVER_CHANNEL__ = channel;\n}\n\nconst preview = new PreviewWeb(importFn, getProjectAnnotations);\n\nwindow.__STORYBOOK_PREVIEW__ = preview;\nwindow.__STORYBOOK_STORY_STORE__ = preview.storyStore;\nwindow.__STORYBOOK_ADDONS_CHANNEL__ = channel;\n\nif (import.meta.webpackHot) {\n  import.meta.webpackHot.addStatusHandler((status) => {\n    if (status === 'idle') {\n      preview.channel.emit(STORY_HOT_UPDATED);\n    }\n  });\n\n  import.meta.webpackHot.accept('./storybook-stories.js', () => {\n    // importFn has changed so we need to patch the new one in\n    preview.onStoriesChanged({ importFn });\n  });\n\n  import.meta.webpackHot.accept(['/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_17cf74cc4e48de6f4001a19f757fd7ae/node_modules/@storybook/angular/dist/client/preview-prod.js','/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_17cf74cc4e48de6f4001a19f757fd7ae/node_modules/@storybook/angular/dist/client/config.js','/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+angular@10.4.0_17cf74cc4e48de6f4001a19f757fd7ae/node_modules/@storybook/angular/dist/client/docs/config.js','/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+addon-a11y@10.4.0_storybook@10.4.0_@emnapi+core@1.10.0_@emnapi+runtime@1.10._1115d8dca73f285cc02f5b3035ee8eef/node_modules/@storybook/addon-a11y/dist/preview.js','/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/@storybook+addon-docs@10.4.0_@types+react@19.2.14_@voidzero-dev+vite-plus-core@0.1.21_@_a1fb8dc34bea9cd85bb722add9137c8c/node_modules/@storybook/addon-docs/dist/preview.js','/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/ui/angular/.storybook/preview.ts'], () => {\n    // getProjectAnnotations has changed so we need to patch the new one in\n    preview.onGetProjectAnnotationsChanged({ getProjectAnnotations });\n  });\n}\n"
+    ],
+    "mappings": "AAAA,SAASA,oBAAoB,QAAQ,6BAA6B;AAClE,SAASC,iBAAiB,QAAQ,gCAAgC;AAClE,SAASC,SAAS,QAAQ,wBAAwB;AAElD,SAASC,MAAM,QAAQ,mBAAmB;AAE1C,SAASC,UAAU,EAAEC,MAAM,EAAEC,cAAc,QAAQ,uBAAuB;AAC1E,SAASC,QAAQ,QAAQ,wBAAwB;AAEjD,MAAMC,qBAAqB,GAAGA,CAAA,KAAM;EAClC,MAAMC,kBAAkB,GAAG,CAACC,OAAO,CAAC,qMAAqM,CAAC,EAACA,OAAO,CAAC,+LAA+L,CAAC,EAACA,OAAO,CAAC,oMAAoM,CAAC,EAACA,OAAO,CAAC,0PAA0P,CAAC,EAACA,OAAO,CAAC,0PAA0P,CAAC,EAACA,OAAO,CAAC,4FAA4F,CAAC,CAAC;EAChvC;EACA,MAAMC,WAAW,GAAGF,kBAAkB,CAACA,kBAAkB,CAACG,MAAM,GAAG,CAAC,CAAC,EAAEC,OAAO;EAE9E,IAAIX,SAAS,CAACS,WAAW,CAAC,EAAE;IAC1B,OAAOA,WAAW,CAACG,QAAQ;EAC7B;EAEA,OAAOR,cAAc,CAACG,kBAAkB,CAAC;AAC3C,CAAC;AAED,MAAMM,OAAO,GAAGf,oBAAoB,CAAC;EAAEgB,IAAI,EAAE;AAAU,CAAC,CAAC;AACzDX,MAAM,CAACY,UAAU,CAACF,OAAO,CAAC;AAE1B,IAAIZ,MAAM,CAACe,WAAW,KAAK,aAAa,EAAE;EACxCC,MAAM,CAACC,4BAA4B,GAAGL,OAAO;AAC/C;AAEA,MAAMM,OAAO,GAAG,IAAIjB,UAAU,CAACG,QAAQ,EAAEC,qBAAqB,CAAC;AAE/DW,MAAM,CAACG,qBAAqB,GAAGD,OAAO;AACtCF,MAAM,CAACI,yBAAyB,GAAGF,OAAO,CAACG,UAAU;AACrDL,MAAM,CAACM,4BAA4B,GAAGV,OAAO;AAE7C,IAAIW,MAAM,CAACC,IAAI,CAACC,UAAU,EAAE;EAC1BF,MAAM,CAACC,IAAI,CAACC,UAAU,CAACC,gBAAgB,CAAEC,MAAM,IAAK;IAClD,IAAIA,MAAM,KAAK,MAAM,EAAE;MACrBT,OAAO,CAACN,OAAO,CAACgB,IAAI,CAAC9B,iBAAiB,CAAC;IACzC;EACF,CAAC,CAAC;EAEFyB,MAAM,CAACC,IAAI,CAACC,UAAU,CAACI,MAAM,CAAC,wBAAwB,EAAE,MAAM;IAC5D;IACAX,OAAO,CAACY,gBAAgB,CAAC;MAAE1B;IAAS,CAAC,CAAC;EACxC,CAAC,CAAC;EAEFmB,MAAM,CAACC,IAAI,CAACC,UAAU,CAACI,MAAM,CAAC,CAAC,qMAAqM,EAAC,+LAA+L,EAAC,oMAAoM,EAAC,0PAA0P,EAAC,0PAA0P,EAAC,4FAA4F,CAAC,EAAE,MAAM;IACnsC;IACAX,OAAO,CAACa,8BAA8B,CAAC;MAAE1B;IAAsB,CAAC,CAAC;EACnE,CAAC,CAAC;AACJ",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

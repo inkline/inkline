@@ -1,0 +1,33 @@
+{
+  "ast": null,
+  "code": "import { switchMap } from './switchMap';\nimport { operate } from '../util/lift';\nexport function switchScan(accumulator, seed) {\n  return operate(function (source, subscriber) {\n    var state = seed;\n    switchMap(function (value, index) {\n      return accumulator(state, value, index);\n    }, function (_, innerValue) {\n      return state = innerValue, innerValue;\n    })(source).subscribe(subscriber);\n    return function () {\n      state = null;\n    };\n  });\n}\n//# sourceMappingURL=switchScan.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "switchMap",
+      "operate",
+      "switchScan",
+      "accumulator",
+      "seed",
+      "source",
+      "subscriber",
+      "state",
+      "value",
+      "index",
+      "_",
+      "innerValue",
+      "subscribe"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/switchScan.js"
+    ],
+    "sourcesContent": [
+      "import { switchMap } from './switchMap';\nimport { operate } from '../util/lift';\nexport function switchScan(accumulator, seed) {\n    return operate(function (source, subscriber) {\n        var state = seed;\n        switchMap(function (value, index) { return accumulator(state, value, index); }, function (_, innerValue) { return ((state = innerValue), innerValue); })(source).subscribe(subscriber);\n        return function () {\n            state = null;\n        };\n    });\n}\n//# sourceMappingURL=switchScan.js.map"
+    ],
+    "mappings": "AAAA,SAASA,SAAS,QAAQ,aAAa;AACvC,SAASC,OAAO,QAAQ,cAAc;AACtC,OAAO,SAASC,UAAUA,CAACC,WAAW,EAAEC,IAAI,EAAE;EAC1C,OAAOH,OAAO,CAAC,UAAUI,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,KAAK,GAAGH,IAAI;IAChBJ,SAAS,CAAC,UAAUQ,KAAK,EAAEC,KAAK,EAAE;MAAE,OAAON,WAAW,CAACI,KAAK,EAAEC,KAAK,EAAEC,KAAK,CAAC;IAAE,CAAC,EAAE,UAAUC,CAAC,EAAEC,UAAU,EAAE;MAAE,OAASJ,KAAK,GAAGI,UAAU,EAAGA,UAAU;IAAG,CAAC,CAAC,CAACN,MAAM,CAAC,CAACO,SAAS,CAACN,UAAU,CAAC;IACtL,OAAO,YAAY;MACfC,KAAK,GAAG,IAAI;IAChB,CAAC;EACL,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

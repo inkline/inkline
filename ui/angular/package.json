@@ -17,19 +17,24 @@
     "build": "vp build",
     "validate": "vp check",
     "test": "vp test --passWithNoTests",
-    "storybook": "storybook dev -p 6010",
-    "storybook:build": "storybook build -o storybook-static",
+    "storybook": "ng run inkline-angular:storybook",
+    "storybook:build": "ng run inkline-angular:build-storybook",
     "prestorybook": "pnpm --filter @inkline/storybook run generate"
   },
   "devDependencies": {
-    "@angular/core": "^19",
+    "@angular/build": "catalog:",
+    "@angular/cli": "catalog:",
+    "@angular/compiler": "catalog:",
+    "@angular/compiler-cli": "catalog:",
+    "@angular/core": "catalog:",
     "@inkline/core": "workspace:*",
     "@inkline/storybook": "workspace:*",
     "@storybook/addon-a11y": "catalog:",
     "@storybook/addon-docs": "catalog:",
     "@storybook/angular": "catalog:",
     "jsdom": "catalog:",
-    "storybook": "catalog:"
+    "storybook": "catalog:",
+    "typescript": "catalog:"
   },
   "peerDependencies": {
     "@angular/core": ">=17"

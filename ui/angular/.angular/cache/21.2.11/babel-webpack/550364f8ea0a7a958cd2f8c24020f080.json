@@ -1,0 +1,46 @@
+{
+  "ast": null,
+  "code": "import { __values } from \"tslib\";\nimport { EMPTY } from '../observable/empty';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function takeLast(count) {\n  return count <= 0 ? function () {\n    return EMPTY;\n  } : operate(function (source, subscriber) {\n    var buffer = [];\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      buffer.push(value);\n      count < buffer.length && buffer.shift();\n    }, function () {\n      var e_1, _a;\n      try {\n        for (var buffer_1 = __values(buffer), buffer_1_1 = buffer_1.next(); !buffer_1_1.done; buffer_1_1 = buffer_1.next()) {\n          var value = buffer_1_1.value;\n          subscriber.next(value);\n        }\n      } catch (e_1_1) {\n        e_1 = {\n          error: e_1_1\n        };\n      } finally {\n        try {\n          if (buffer_1_1 && !buffer_1_1.done && (_a = buffer_1.return)) _a.call(buffer_1);\n        } finally {\n          if (e_1) throw e_1.error;\n        }\n      }\n      subscriber.complete();\n    }, undefined, function () {\n      buffer = null;\n    }));\n  });\n}\n//# sourceMappingURL=takeLast.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "__values",
+      "EMPTY",
+      "operate",
+      "createOperatorSubscriber",
+      "takeLast",
+      "count",
+      "source",
+      "subscriber",
+      "buffer",
+      "subscribe",
+      "value",
+      "push",
+      "length",
+      "shift",
+      "e_1",
+      "_a",
+      "buffer_1",
+      "buffer_1_1",
+      "next",
+      "done",
+      "e_1_1",
+      "error",
+      "return",
+      "call",
+      "complete",
+      "undefined"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/takeLast.js"
+    ],
+    "sourcesContent": [
+      "import { __values } from \"tslib\";\nimport { EMPTY } from '../observable/empty';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function takeLast(count) {\n    return count <= 0\n        ? function () { return EMPTY; }\n        : operate(function (source, subscriber) {\n            var buffer = [];\n            source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n                buffer.push(value);\n                count < buffer.length && buffer.shift();\n            }, function () {\n                var e_1, _a;\n                try {\n                    for (var buffer_1 = __values(buffer), buffer_1_1 = buffer_1.next(); !buffer_1_1.done; buffer_1_1 = buffer_1.next()) {\n                        var value = buffer_1_1.value;\n                        subscriber.next(value);\n                    }\n                }\n                catch (e_1_1) { e_1 = { error: e_1_1 }; }\n                finally {\n                    try {\n                        if (buffer_1_1 && !buffer_1_1.done && (_a = buffer_1.return)) _a.call(buffer_1);\n                    }\n                    finally { if (e_1) throw e_1.error; }\n                }\n                subscriber.complete();\n            }, undefined, function () {\n                buffer = null;\n            }));\n        });\n}\n//# sourceMappingURL=takeLast.js.map"
+    ],
+    "mappings": "AAAA,SAASA,QAAQ,QAAQ,OAAO;AAChC,SAASC,KAAK,QAAQ,qBAAqB;AAC3C,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,OAAO,SAASC,QAAQA,CAACC,KAAK,EAAE;EAC5B,OAAOA,KAAK,IAAI,CAAC,GACX,YAAY;IAAE,OAAOJ,KAAK;EAAE,CAAC,GAC7BC,OAAO,CAAC,UAAUI,MAAM,EAAEC,UAAU,EAAE;IACpC,IAAIC,MAAM,GAAG,EAAE;IACfF,MAAM,CAACG,SAAS,CAACN,wBAAwB,CAACI,UAAU,EAAE,UAAUG,KAAK,EAAE;MACnEF,MAAM,CAACG,IAAI,CAACD,KAAK,CAAC;MAClBL,KAAK,GAAGG,MAAM,CAACI,MAAM,IAAIJ,MAAM,CAACK,KAAK,CAAC,CAAC;IAC3C,CAAC,EAAE,YAAY;MACX,IAAIC,GAAG,EAAEC,EAAE;MACX,IAAI;QACA,KAAK,IAAIC,QAAQ,GAAGhB,QAAQ,CAACQ,MAAM,CAAC,EAAES,UAAU,GAAGD,QAAQ,CAACE,IAAI,CAAC,CAAC,EAAE,CAACD,UAAU,CAACE,IAAI,EAAEF,UAAU,GAAGD,QAAQ,CAACE,IAAI,CAAC,CAAC,EAAE;UAChH,IAAIR,KAAK,GAAGO,UAAU,CAACP,KAAK;UAC5BH,UAAU,CAACW,IAAI,CAACR,KAAK,CAAC;QAC1B;MACJ,CAAC,CACD,OAAOU,KAAK,EAAE;QAAEN,GAAG,GAAG;UAAEO,KAAK,EAAED;QAAM,CAAC;MAAE,CAAC,SACjC;QACJ,IAAI;UACA,IAAIH,UAAU,IAAI,CAACA,UAAU,CAACE,IAAI,KAAKJ,EAAE,GAAGC,QAAQ,CAACM,MAAM,CAAC,EAAEP,EAAE,CAACQ,IAAI,CAACP,QAAQ,CAAC;QACnF,CAAC,SACO;UAAE,IAAIF,GAAG,EAAE,MAAMA,GAAG,CAACO,KAAK;QAAE;MACxC;MACAd,UAAU,CAACiB,QAAQ,CAAC,CAAC;IACzB,CAAC,EAAEC,SAAS,EAAE,YAAY;MACtBjB,MAAM,GAAG,IAAI;IACjB,CAAC,CAAC,CAAC;EACP,CAAC,CAAC;AACV;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

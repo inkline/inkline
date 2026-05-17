@@ -1,0 +1,26 @@
+{
+  "ast": null,
+  "code": "import { createErrorClass } from './createErrorClass';\nexport var NotFoundError = createErrorClass(function (_super) {\n  return function NotFoundErrorImpl(message) {\n    _super(this);\n    this.name = 'NotFoundError';\n    this.message = message;\n  };\n});\n//# sourceMappingURL=NotFoundError.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "createErrorClass",
+      "NotFoundError",
+      "_super",
+      "NotFoundErrorImpl",
+      "message",
+      "name"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/util/NotFoundError.js"
+    ],
+    "sourcesContent": [
+      "import { createErrorClass } from './createErrorClass';\nexport var NotFoundError = createErrorClass(function (_super) {\n    return function NotFoundErrorImpl(message) {\n        _super(this);\n        this.name = 'NotFoundError';\n        this.message = message;\n    };\n});\n//# sourceMappingURL=NotFoundError.js.map"
+    ],
+    "mappings": "AAAA,SAASA,gBAAgB,QAAQ,oBAAoB;AACrD,OAAO,IAAIC,aAAa,GAAGD,gBAAgB,CAAC,UAAUE,MAAM,EAAE;EAC1D,OAAO,SAASC,iBAAiBA,CAACC,OAAO,EAAE;IACvCF,MAAM,CAAC,IAAI,CAAC;IACZ,IAAI,CAACG,IAAI,GAAG,eAAe;IAC3B,IAAI,CAACD,OAAO,GAAGA,OAAO;EAC1B,CAAC;AACL,CAAC,CAAC;AACF",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

@@ -1,0 +1,41 @@
+{
+  "ast": null,
+  "code": "import { innerFrom } from '../observable/innerFrom';\nimport { Subject } from '../Subject';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function repeatWhen(notifier) {\n  return operate(function (source, subscriber) {\n    var innerSub;\n    var syncResub = false;\n    var completions$;\n    var isNotifierComplete = false;\n    var isMainComplete = false;\n    var checkComplete = function () {\n      return isMainComplete && isNotifierComplete && (subscriber.complete(), true);\n    };\n    var getCompletionSubject = function () {\n      if (!completions$) {\n        completions$ = new Subject();\n        innerFrom(notifier(completions$)).subscribe(createOperatorSubscriber(subscriber, function () {\n          if (innerSub) {\n            subscribeForRepeatWhen();\n          } else {\n            syncResub = true;\n          }\n        }, function () {\n          isNotifierComplete = true;\n          checkComplete();\n        }));\n      }\n      return completions$;\n    };\n    var subscribeForRepeatWhen = function () {\n      isMainComplete = false;\n      innerSub = source.subscribe(createOperatorSubscriber(subscriber, undefined, function () {\n        isMainComplete = true;\n        !checkComplete() && getCompletionSubject().next();\n      }));\n      if (syncResub) {\n        innerSub.unsubscribe();\n        innerSub = null;\n        syncResub = false;\n        subscribeForRepeatWhen();\n      }\n    };\n    subscribeForRepeatWhen();\n  });\n}\n//# sourceMappingURL=repeatWhen.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "innerFrom",
+      "Subject",
+      "operate",
+      "createOperatorSubscriber",
+      "repeatWhen",
+      "notifier",
+      "source",
+      "subscriber",
+      "innerSub",
+      "syncResub",
+      "completions$",
+      "isNotifierComplete",
+      "isMainComplete",
+      "checkComplete",
+      "complete",
+      "getCompletionSubject",
+      "subscribe",
+      "subscribeForRepeatWhen",
+      "undefined",
+      "next",
+      "unsubscribe"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/repeatWhen.js"
+    ],
+    "sourcesContent": [
+      "import { innerFrom } from '../observable/innerFrom';\nimport { Subject } from '../Subject';\nimport { operate } from '../util/lift';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function repeatWhen(notifier) {\n    return operate(function (source, subscriber) {\n        var innerSub;\n        var syncResub = false;\n        var completions$;\n        var isNotifierComplete = false;\n        var isMainComplete = false;\n        var checkComplete = function () { return isMainComplete && isNotifierComplete && (subscriber.complete(), true); };\n        var getCompletionSubject = function () {\n            if (!completions$) {\n                completions$ = new Subject();\n                innerFrom(notifier(completions$)).subscribe(createOperatorSubscriber(subscriber, function () {\n                    if (innerSub) {\n                        subscribeForRepeatWhen();\n                    }\n                    else {\n                        syncResub = true;\n                    }\n                }, function () {\n                    isNotifierComplete = true;\n                    checkComplete();\n                }));\n            }\n            return completions$;\n        };\n        var subscribeForRepeatWhen = function () {\n            isMainComplete = false;\n            innerSub = source.subscribe(createOperatorSubscriber(subscriber, undefined, function () {\n                isMainComplete = true;\n                !checkComplete() && getCompletionSubject().next();\n            }));\n            if (syncResub) {\n                innerSub.unsubscribe();\n                innerSub = null;\n                syncResub = false;\n                subscribeForRepeatWhen();\n            }\n        };\n        subscribeForRepeatWhen();\n    });\n}\n//# sourceMappingURL=repeatWhen.js.map"
+    ],
+    "mappings": "AAAA,SAASA,SAAS,QAAQ,yBAAyB;AACnD,SAASC,OAAO,QAAQ,YAAY;AACpC,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,OAAO,SAASC,UAAUA,CAACC,QAAQ,EAAE;EACjC,OAAOH,OAAO,CAAC,UAAUI,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,QAAQ;IACZ,IAAIC,SAAS,GAAG,KAAK;IACrB,IAAIC,YAAY;IAChB,IAAIC,kBAAkB,GAAG,KAAK;IAC9B,IAAIC,cAAc,GAAG,KAAK;IAC1B,IAAIC,aAAa,GAAG,SAAAA,CAAA,EAAY;MAAE,OAAOD,cAAc,IAAID,kBAAkB,KAAKJ,UAAU,CAACO,QAAQ,CAAC,CAAC,EAAE,IAAI,CAAC;IAAE,CAAC;IACjH,IAAIC,oBAAoB,GAAG,SAAAA,CAAA,EAAY;MACnC,IAAI,CAACL,YAAY,EAAE;QACfA,YAAY,GAAG,IAAIT,OAAO,CAAC,CAAC;QAC5BD,SAAS,CAACK,QAAQ,CAACK,YAAY,CAAC,CAAC,CAACM,SAAS,CAACb,wBAAwB,CAACI,UAAU,EAAE,YAAY;UACzF,IAAIC,QAAQ,EAAE;YACVS,sBAAsB,CAAC,CAAC;UAC5B,CAAC,MACI;YACDR,SAAS,GAAG,IAAI;UACpB;QACJ,CAAC,EAAE,YAAY;UACXE,kBAAkB,GAAG,IAAI;UACzBE,aAAa,CAAC,CAAC;QACnB,CAAC,CAAC,CAAC;MACP;MACA,OAAOH,YAAY;IACvB,CAAC;IACD,IAAIO,sBAAsB,GAAG,SAAAA,CAAA,EAAY;MACrCL,cAAc,GAAG,KAAK;MACtBJ,QAAQ,GAAGF,MAAM,CAACU,SAAS,CAACb,wBAAwB,CAACI,UAAU,EAAEW,SAAS,EAAE,YAAY;QACpFN,cAAc,GAAG,IAAI;QACrB,CAACC,aAAa,CAAC,CAAC,IAAIE,oBAAoB,CAAC,CAAC,CAACI,IAAI,CAAC,CAAC;MACrD,CAAC,CAAC,CAAC;MACH,IAAIV,SAAS,EAAE;QACXD,QAAQ,CAACY,WAAW,CAAC,CAAC;QACtBZ,QAAQ,GAAG,IAAI;QACfC,SAAS,GAAG,KAAK;QACjBQ,sBAAsB,CAAC,CAAC;MAC5B;IACJ,CAAC;IACDA,sBAAsB,CAAC,CAAC;EAC5B,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}

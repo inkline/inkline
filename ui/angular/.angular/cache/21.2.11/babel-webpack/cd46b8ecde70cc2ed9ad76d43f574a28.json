@@ -1,0 +1,49 @@
+{
+  "ast": null,
+  "code": "/**\n * @license React\n * use-sync-external-store-shim.production.js\n *\n * Copyright (c) Meta Platforms, Inc. and affiliates.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE file in the root directory of this source tree.\n */\n\n\"use strict\";\n\nvar React = require(\"react\");\nfunction is(x, y) {\n  return x === y && (0 !== x || 1 / x === 1 / y) || x !== x && y !== y;\n}\nvar objectIs = \"function\" === typeof Object.is ? Object.is : is,\n  useState = React.useState,\n  useEffect = React.useEffect,\n  useLayoutEffect = React.useLayoutEffect,\n  useDebugValue = React.useDebugValue;\nfunction useSyncExternalStore$2(subscribe, getSnapshot) {\n  var value = getSnapshot(),\n    _useState = useState({\n      inst: {\n        value: value,\n        getSnapshot: getSnapshot\n      }\n    }),\n    inst = _useState[0].inst,\n    forceUpdate = _useState[1];\n  useLayoutEffect(function () {\n    inst.value = value;\n    inst.getSnapshot = getSnapshot;\n    checkIfSnapshotChanged(inst) && forceUpdate({\n      inst: inst\n    });\n  }, [subscribe, value, getSnapshot]);\n  useEffect(function () {\n    checkIfSnapshotChanged(inst) && forceUpdate({\n      inst: inst\n    });\n    return subscribe(function () {\n      checkIfSnapshotChanged(inst) && forceUpdate({\n        inst: inst\n      });\n    });\n  }, [subscribe]);\n  useDebugValue(value);\n  return value;\n}\nfunction checkIfSnapshotChanged(inst) {\n  var latestGetSnapshot = inst.getSnapshot;\n  inst = inst.value;\n  try {\n    var nextValue = latestGetSnapshot();\n    return !objectIs(inst, nextValue);\n  } catch (error) {\n    return !0;\n  }\n}\nfunction useSyncExternalStore$1(subscribe, getSnapshot) {\n  return getSnapshot();\n}\nvar shim = \"undefined\" === typeof window || \"undefined\" === typeof window.document || \"undefined\" === typeof window.document.createElement ? useSyncExternalStore$1 : useSyncExternalStore$2;\nexports.useSyncExternalStore = void 0 !== React.useSyncExternalStore ? React.useSyncExternalStore : shim;",
+  "map": {
+    "version": 3,
+    "names": [
+      "React",
+      "require",
+      "is",
+      "x",
+      "y",
+      "objectIs",
+      "Object",
+      "useState",
+      "useEffect",
+      "useLayoutEffect",
+      "useDebugValue",
+      "useSyncExternalStore$2",
+      "subscribe",
+      "getSnapshot",
+      "value",
+      "_useState",
+      "inst",
+      "forceUpdate",
+      "checkIfSnapshotChanged",
+      "latestGetSnapshot",
+      "nextValue",
+      "error",
+      "useSyncExternalStore$1",
+      "shim",
+      "window",
+      "document",
+      "createElement",
+      "exports",
+      "useSyncExternalStore"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/use-sync-external-store@1.6.0_react@19.2.6/node_modules/use-sync-external-store/cjs/use-sync-external-store-shim.production.js"
+    ],
+    "sourcesContent": [
+      "/**\n * @license React\n * use-sync-external-store-shim.production.js\n *\n * Copyright (c) Meta Platforms, Inc. and affiliates.\n *\n * This source code is licensed under the MIT license found in the\n * LICENSE file in the root directory of this source tree.\n */\n\n\"use strict\";\nvar React = require(\"react\");\nfunction is(x, y) {\n  return (x === y && (0 !== x || 1 / x === 1 / y)) || (x !== x && y !== y);\n}\nvar objectIs = \"function\" === typeof Object.is ? Object.is : is,\n  useState = React.useState,\n  useEffect = React.useEffect,\n  useLayoutEffect = React.useLayoutEffect,\n  useDebugValue = React.useDebugValue;\nfunction useSyncExternalStore$2(subscribe, getSnapshot) {\n  var value = getSnapshot(),\n    _useState = useState({ inst: { value: value, getSnapshot: getSnapshot } }),\n    inst = _useState[0].inst,\n    forceUpdate = _useState[1];\n  useLayoutEffect(\n    function () {\n      inst.value = value;\n      inst.getSnapshot = getSnapshot;\n      checkIfSnapshotChanged(inst) && forceUpdate({ inst: inst });\n    },\n    [subscribe, value, getSnapshot]\n  );\n  useEffect(\n    function () {\n      checkIfSnapshotChanged(inst) && forceUpdate({ inst: inst });\n      return subscribe(function () {\n        checkIfSnapshotChanged(inst) && forceUpdate({ inst: inst });\n      });\n    },\n    [subscribe]\n  );\n  useDebugValue(value);\n  return value;\n}\nfunction checkIfSnapshotChanged(inst) {\n  var latestGetSnapshot = inst.getSnapshot;\n  inst = inst.value;\n  try {\n    var nextValue = latestGetSnapshot();\n    return !objectIs(inst, nextValue);\n  } catch (error) {\n    return !0;\n  }\n}\nfunction useSyncExternalStore$1(subscribe, getSnapshot) {\n  return getSnapshot();\n}\nvar shim =\n  \"undefined\" === typeof window ||\n  \"undefined\" === typeof window.document ||\n  \"undefined\" === typeof window.document.createElement\n    ? useSyncExternalStore$1\n    : useSyncExternalStore$2;\nexports.useSyncExternalStore =\n  void 0 !== React.useSyncExternalStore ? React.useSyncExternalStore : shim;\n"
+    ],
+    "mappings": "AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;AAEA,YAAY;;AACZ,IAAIA,KAAK,GAAGC,OAAO,CAAC,OAAO,CAAC;AAC5B,SAASC,EAAEA,CAACC,CAAC,EAAEC,CAAC,EAAE;EAChB,OAAQD,CAAC,KAAKC,CAAC,KAAK,CAAC,KAAKD,CAAC,IAAI,CAAC,GAAGA,CAAC,KAAK,CAAC,GAAGC,CAAC,CAAC,IAAMD,CAAC,KAAKA,CAAC,IAAIC,CAAC,KAAKA,CAAE;AAC1E;AACA,IAAIC,QAAQ,GAAG,UAAU,KAAK,OAAOC,MAAM,CAACJ,EAAE,GAAGI,MAAM,CAACJ,EAAE,GAAGA,EAAE;EAC7DK,QAAQ,GAAGP,KAAK,CAACO,QAAQ;EACzBC,SAAS,GAAGR,KAAK,CAACQ,SAAS;EAC3BC,eAAe,GAAGT,KAAK,CAACS,eAAe;EACvCC,aAAa,GAAGV,KAAK,CAACU,aAAa;AACrC,SAASC,sBAAsBA,CAACC,SAAS,EAAEC,WAAW,EAAE;EACtD,IAAIC,KAAK,GAAGD,WAAW,CAAC,CAAC;IACvBE,SAAS,GAAGR,QAAQ,CAAC;MAAES,IAAI,EAAE;QAAEF,KAAK,EAAEA,KAAK;QAAED,WAAW,EAAEA;MAAY;IAAE,CAAC,CAAC;IAC1EG,IAAI,GAAGD,SAAS,CAAC,CAAC,CAAC,CAACC,IAAI;IACxBC,WAAW,GAAGF,SAAS,CAAC,CAAC,CAAC;EAC5BN,eAAe,CACb,YAAY;IACVO,IAAI,CAACF,KAAK,GAAGA,KAAK;IAClBE,IAAI,CAACH,WAAW,GAAGA,WAAW;IAC9BK,sBAAsB,CAACF,IAAI,CAAC,IAAIC,WAAW,CAAC;MAAED,IAAI,EAAEA;IAAK,CAAC,CAAC;EAC7D,CAAC,EACD,CAACJ,SAAS,EAAEE,KAAK,EAAED,WAAW,CAChC,CAAC;EACDL,SAAS,CACP,YAAY;IACVU,sBAAsB,CAACF,IAAI,CAAC,IAAIC,WAAW,CAAC;MAAED,IAAI,EAAEA;IAAK,CAAC,CAAC;IAC3D,OAAOJ,SAAS,CAAC,YAAY;MAC3BM,sBAAsB,CAACF,IAAI,CAAC,IAAIC,WAAW,CAAC;QAAED,IAAI,EAAEA;MAAK,CAAC,CAAC;IAC7D,CAAC,CAAC;EACJ,CAAC,EACD,CAACJ,SAAS,CACZ,CAAC;EACDF,aAAa,CAACI,KAAK,CAAC;EACpB,OAAOA,KAAK;AACd;AACA,SAASI,sBAAsBA,CAACF,IAAI,EAAE;EACpC,IAAIG,iBAAiB,GAAGH,IAAI,CAACH,WAAW;EACxCG,IAAI,GAAGA,IAAI,CAACF,KAAK;EACjB,IAAI;IACF,IAAIM,SAAS,GAAGD,iBAAiB,CAAC,CAAC;IACnC,OAAO,CAACd,QAAQ,CAACW,IAAI,EAAEI,SAAS,CAAC;EACnC,CAAC,CAAC,OAAOC,KAAK,EAAE;IACd,OAAO,CAAC,CAAC;EACX;AACF;AACA,SAASC,sBAAsBA,CAACV,SAAS,EAAEC,WAAW,EAAE;EACtD,OAAOA,WAAW,CAAC,CAAC;AACtB;AACA,IAAIU,IAAI,GACN,WAAW,KAAK,OAAOC,MAAM,IAC7B,WAAW,KAAK,OAAOA,MAAM,CAACC,QAAQ,IACtC,WAAW,KAAK,OAAOD,MAAM,CAACC,QAAQ,CAACC,aAAa,GAChDJ,sBAAsB,GACtBX,sBAAsB;AAC5BgB,OAAO,CAACC,oBAAoB,GAC1B,KAAK,CAAC,KAAK5B,KAAK,CAAC4B,oBAAoB,GAAG5B,KAAK,CAAC4B,oBAAoB,GAAGL,IAAI",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "script",
+  "externalDependencies": []
+}

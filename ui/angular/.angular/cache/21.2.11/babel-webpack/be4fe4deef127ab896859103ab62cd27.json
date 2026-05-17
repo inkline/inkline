@@ -1,0 +1,33 @@
+{
+  "ast": null,
+  "code": "import { innerFrom } from '../observable/innerFrom';\nimport { operate } from '../util/lift';\nimport { noop } from '../util/noop';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function sample(notifier) {\n  return operate(function (source, subscriber) {\n    var hasValue = false;\n    var lastValue = null;\n    source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n      hasValue = true;\n      lastValue = value;\n    }));\n    innerFrom(notifier).subscribe(createOperatorSubscriber(subscriber, function () {\n      if (hasValue) {\n        hasValue = false;\n        var value = lastValue;\n        lastValue = null;\n        subscriber.next(value);\n      }\n    }, noop));\n  });\n}\n//# sourceMappingURL=sample.js.map",
+  "map": {
+    "version": 3,
+    "names": [
+      "innerFrom",
+      "operate",
+      "noop",
+      "createOperatorSubscriber",
+      "sample",
+      "notifier",
+      "source",
+      "subscriber",
+      "hasValue",
+      "lastValue",
+      "subscribe",
+      "value",
+      "next"
+    ],
+    "sources": [
+      "/Users/alexgrozav/conductor/workspaces/inkline/phoenix-v1/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/esm5/internal/operators/sample.js"
+    ],
+    "sourcesContent": [
+      "import { innerFrom } from '../observable/innerFrom';\nimport { operate } from '../util/lift';\nimport { noop } from '../util/noop';\nimport { createOperatorSubscriber } from './OperatorSubscriber';\nexport function sample(notifier) {\n    return operate(function (source, subscriber) {\n        var hasValue = false;\n        var lastValue = null;\n        source.subscribe(createOperatorSubscriber(subscriber, function (value) {\n            hasValue = true;\n            lastValue = value;\n        }));\n        innerFrom(notifier).subscribe(createOperatorSubscriber(subscriber, function () {\n            if (hasValue) {\n                hasValue = false;\n                var value = lastValue;\n                lastValue = null;\n                subscriber.next(value);\n            }\n        }, noop));\n    });\n}\n//# sourceMappingURL=sample.js.map"
+    ],
+    "mappings": "AAAA,SAASA,SAAS,QAAQ,yBAAyB;AACnD,SAASC,OAAO,QAAQ,cAAc;AACtC,SAASC,IAAI,QAAQ,cAAc;AACnC,SAASC,wBAAwB,QAAQ,sBAAsB;AAC/D,OAAO,SAASC,MAAMA,CAACC,QAAQ,EAAE;EAC7B,OAAOJ,OAAO,CAAC,UAAUK,MAAM,EAAEC,UAAU,EAAE;IACzC,IAAIC,QAAQ,GAAG,KAAK;IACpB,IAAIC,SAAS,GAAG,IAAI;IACpBH,MAAM,CAACI,SAAS,CAACP,wBAAwB,CAACI,UAAU,EAAE,UAAUI,KAAK,EAAE;MACnEH,QAAQ,GAAG,IAAI;MACfC,SAAS,GAAGE,KAAK;IACrB,CAAC,CAAC,CAAC;IACHX,SAAS,CAACK,QAAQ,CAAC,CAACK,SAAS,CAACP,wBAAwB,CAACI,UAAU,EAAE,YAAY;MAC3E,IAAIC,QAAQ,EAAE;QACVA,QAAQ,GAAG,KAAK;QAChB,IAAIG,KAAK,GAAGF,SAAS;QACrBA,SAAS,GAAG,IAAI;QAChBF,UAAU,CAACK,IAAI,CAACD,KAAK,CAAC;MAC1B;IACJ,CAAC,EAAET,IAAI,CAAC,CAAC;EACb,CAAC,CAAC;AACN;AACA",
+    "ignoreList": []
+  },
+  "metadata": {},
+  "sourceType": "module",
+  "externalDependencies": []
+}
