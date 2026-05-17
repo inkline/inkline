@@ -215,6 +215,27 @@ importers:
         specifier: ^3.6.1
         version: 3.6.1(sass@1.97.3)(typescript@6.0.3)(vue@3.5.34(typescript@6.0.3))
 
+  packages/storybook:
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.12.4
+      '@vitest/coverage-v8':
+        specifier: 'catalog:'
+        version: 4.1.5(@voidzero-dev/vite-plus-test@0.1.21)
+      tsx:
+        specifier: ^4.8.1
+        version: 4.22.0
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+      vite-plus:
+        specifier: 'catalog:'
+        version: 0.1.21(@tsdown/css@0.22.0)(@types/node@24.12.4)(@vitest/coverage-v8@4.1.5)(esbuild@0.28.0)(happy-dom@15.11.7)(jiti@2.7.0)(jsdom@26.1.0)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(typescript@5.9.3)(vite@8.0.10(@types/node@24.12.4)(esbuild@0.28.0)(jiti@2.7.0)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(yaml@2.8.4))(yaml@2.8.4)
+      vitest:
+        specifier: npm:@voidzero-dev/vite-plus-test@latest
+        version: '@voidzero-dev/vite-plus-test@0.1.21(@tsdown/css@0.22.0)(@types/node@24.12.4)(@vitest/coverage-v8@4.1.5)(esbuild@0.28.0)(happy-dom@15.11.7)(jiti@2.7.0)(jsdom@26.1.0)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(typescript@5.9.3)(vite@8.0.10(@types/node@24.12.4)(esbuild@0.28.0)(jiti@2.7.0)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(yaml@2.8.4))(yaml@2.8.4)'
+
   packages/test-utils:
     dependencies:
       '@inkline/compiler':
@@ -9040,7 +9061,6 @@ snapshots:
       std-env: 4.1.0
       tinyrainbow: 3.1.0
       vitest: '@voidzero-dev/vite-plus-test@0.1.21(@tsdown/css@0.22.0)(@types/node@24.12.4)(@vitest/coverage-v8@4.1.5)(esbuild@0.28.0)(happy-dom@15.11.7)(jiti@2.7.0)(jsdom@26.1.0)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(typescript@5.9.3)(vite@8.0.10(@types/node@24.12.4)(esbuild@0.28.0)(jiti@2.7.0)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(yaml@2.8.4))(yaml@2.8.4)'
-    optional: true
 
   '@vitest/coverage-v8@4.1.5(vitest@4.1.5)':
     dependencies:
