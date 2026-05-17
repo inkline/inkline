@@ -2,7 +2,6 @@ import type { StoryDefinition } from "../define.ts";
 import type { FrameworkConfig } from "./config.ts";
 import { renderCsf3 } from "./templates/csf3.ts";
 import { renderAngular } from "./templates/angular.ts";
-import { renderAstro } from "./templates/astro.ts";
 
 /** Renders a story file for a framework by dispatching on its template kind. */
 export function renderStory(
@@ -14,7 +13,5 @@ export function renderStory(
       return renderCsf3(definition, framework);
     case "angular":
       return renderAngular(definition, framework);
-    case "astro":
-      return renderAstro(definition, framework);
   }
 }

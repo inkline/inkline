@@ -28,8 +28,10 @@ catalog:
   oxlint: ^1.64.0
   rollup-plugin-svelte: ^7.2.3
   storybook: ^10
+  storybook-framework-qwik: ^0.6.0
   storybook-solidjs-vite: ^10
   "@storybook/angular": ^10
+  "@storybook-astro/framework": ^1.2.0
   "@storybook/addon-a11y": ^10
   "@storybook/addon-docs": ^10
   "@storybook/react-vite": ^10

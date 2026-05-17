@@ -1,0 +1,9 @@
+// @ts-nocheck
+import { resolve } from "node:path";
+import { createStorybookConfig } from "@inkline/storybook/preset/main";
+
+export default createStorybookConfig({
+  framework: "@storybook-astro/framework",
+  componentPackage: "@inkline/astro",
+  sourceEntry: resolve(import.meta.dirname, "..", "generated", "index.ts"),
+});

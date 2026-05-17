@@ -25,16 +25,16 @@ describe("FRAMEWORKS", () => {
     }
   });
 
-  it("defers only Astro", () => {
-    const deferred = FRAMEWORKS.filter((f) => f.deferred).map((f) => f.target);
-    expect(deferred).toEqual(["astro"]);
+  it("has no deferred frameworks", () => {
+    const deferred = FRAMEWORKS.filter((f) => f.deferred);
+    expect(deferred).toHaveLength(0);
   });
 });
 
 describe("activeFrameworks", () => {
-  it("excludes deferred frameworks", () => {
+  it("includes all seven frameworks", () => {
     const targets = activeFrameworks().map((f) => f.target);
-    expect(targets).toEqual(["react", "vue", "svelte", "solid", "angular", "qwik"]);
+    expect(targets).toEqual(["react", "vue", "svelte", "solid", "angular", "qwik", "astro"]);
   });
 });
 

@@ -85,10 +85,9 @@ describe("generate", () => {
     expect(angularButton).toContain("const meta: Meta<Button> = {");
   });
 
-  it("defaults to the active (non-deferred) frameworks", async () => {
+  it("defaults to all seven active frameworks", async () => {
     const result = await generate({ coreStoriesDir: STORIES_DIR, uiDir: outDir });
-    // 6 active frameworks (Astro deferred) × 2 components.
-    expect(result.files).toHaveLength(6 * 2);
-    expect(result.files.some((f) => f.target === "astro")).toBe(false);
+    expect(result.files).toHaveLength(7 * 2);
+    expect(result.files.some((f) => f.target === "astro")).toBe(true);
   });
 });

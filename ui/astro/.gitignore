@@ -1,1 +1,4 @@
 generated/
+stories/
+storybook-static/
+storybook-server/

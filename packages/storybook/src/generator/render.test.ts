@@ -22,7 +22,9 @@ describe("renderStory", () => {
     );
   });
 
-  it("dispatches astro to the deferred Astro template (throws)", () => {
-    expect(() => renderStory(def, frameworkByTarget("astro")!)).toThrow(/not implemented yet/);
+  it("dispatches astro via the CSF3 template (same structure)", () => {
+    const out = renderStory(def, frameworkByTarget("astro")!);
+    expect(out).toContain('from "@storybook-astro/framework";');
+    expect(out).toContain('from "@inkline/astro";');
   });
 });

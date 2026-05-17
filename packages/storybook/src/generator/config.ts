@@ -1,5 +1,5 @@
 /** Which story template renders a given framework. */
-export type TemplateKind = "csf3" | "angular" | "astro";
+export type TemplateKind = "csf3" | "angular";
 
 export interface FrameworkConfig {
   /** Inkline target name; also the `ui/<target>` package directory. */
@@ -14,11 +14,7 @@ export interface FrameworkConfig {
   readonly port: number;
   /** Story template used for this framework. */
   readonly template: TemplateKind;
-  /**
-   * When true the generator skips this framework. Astro is deferred until a
-   * later phase: its renderer has a distinct authoring model that needs a
-   * dedicated template and a compatibility spike.
-   */
+  /** When true the generator skips this framework. */
   readonly deferred?: boolean;
 }
 
@@ -84,8 +80,7 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
     typeImport: "@storybook-astro/framework",
     frameworkPackage: "@storybook-astro/framework",
     port: 6012,
-    template: "astro",
-    deferred: true,
+    template: "csf3",
   },
 ];
 
