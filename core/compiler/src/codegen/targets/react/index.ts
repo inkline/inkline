@@ -25,7 +25,7 @@ const REWRITES: RewriteRules = {
   jsxAttrCasing: "react",
   eventNameCase: "camel",
   members: {
-    props: { strip: true },
+    props: { strip: false },
     slots: { strip: true, rename: { default: "children" } },
   },
 };

@@ -172,8 +172,8 @@ exports[`full output snapshots > Button > react 1`] = `
 "export function Button(props: { label: string; disabled?: boolean })
 {
 return (
-<button disabled={disabled}>
-  {label}
+<button disabled={props.disabled}>
+  {props.label}
 </button>
 )
 }
@@ -2078,7 +2078,7 @@ exports[`full output snapshots > MultipleComponentsPerFile > react 1`] = `
 {
 return (
 <span>
-  {text}
+  {props.text}
 </span>
 )
 }
@@ -2159,8 +2159,8 @@ exports[`full output snapshots > PropDefaults > react 1`] = `
 "export function PropDefaults(props: { color?; size })
 {
 return (
-<div style={\`color: \${color}\`}>
-  {size}
+<div style={\`color: \${props.color}\`}>
+  {props.size}
 </div>
 )
 }
