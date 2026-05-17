@@ -1,0 +1,12 @@
+@use '../../../css/mixins/components';
+
+/**
+ * Collapsible
+ */
+
+.collapsible {
+    @include components.font-size('collapsible');
+
+    position: relative;
+    display: block;
+}

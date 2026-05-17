@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > Header > should render correctly 1`] = `
+"<header class="header -light -md">
+  <div class="container">
+    <!-- @slot default Slot for default container content -->
+    <div class="row">
+      <!-- @slot default Slot for default row content -->
+      <div class="column">
+        <!-- @slot default Slot for default column content -->
+      </div>
+    </div>
+  </div>
+</header>"
+`;

@@ -1,0 +1,238 @@
+{
+    "default": {
+        "__type": "theme",
+        "__name": "default",
+        "__keys": {
+            "variables": [],
+            "variants": [
+                "button-group",
+                "button-group--block",
+                "button-group--block--child"
+            ],
+            "selectors": [
+                "e8yPLB7VcIJNpnfL_i8OS",
+                "RksaaDG3pl1LNEJxfDR3m",
+                "NtR1Uivku5YtIr4CXGNB2",
+                "R4MqujUomNRw-e4lUXTbX",
+                "5e5o3V5eqRjADXVeTyYKO",
+                "9FBuEsFaEQ7L1CDsfdhUw",
+                "Rq4QryzQICXATuG619bV8",
+                "B--zGwYgvWlLnXHd1bnXr",
+                "m87Yyo758cMowXEf2oZbY"
+            ],
+            "utilities": [
+                "default",
+                "border:0",
+                "padding:0",
+                "width:100",
+                "flex-basis:100"
+            ]
+        },
+        "variables": {},
+        "variants": {
+            "button-group": {
+                "__type": "variant",
+                "__name": "button-group",
+                "__value": {
+                    "extends": [
+                        "default",
+                        "box"
+                    ],
+                    "border": "0",
+                    "padding": "0"
+                }
+            },
+            "button-group--block": {
+                "__type": "variant",
+                "__name": "button-group--block",
+                "__value": {
+                    "width": "100"
+                }
+            },
+            "button-group--block--child": {
+                "__type": "variant",
+                "__name": "button-group--block--child",
+                "__value": {
+                    "flexBasis": "100"
+                }
+            }
+        },
+        "selectors": [
+            {
+                "__type": "selector",
+                "__name": ".button-group",
+                "__value": {
+                    "position": "relative",
+                    "display": "inline-flex",
+                    "verticalAlign": "middle",
+                    "boxSizing": "border-box"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".button-group .button, .button-group .button-group",
+                "__value": {
+                    "boxShadow": "none !important"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".button-group.-horizontal > .button:not(:last-child), .button-group.-horizontal > .button-group:has(+ .button-group) .button:last-child, .button-group.-horizontal > .button-group:has(+ .button) .button:last-child",
+                "__value": {
+                    "borderTopRightRadius": "0 !important",
+                    "borderBottomRightRadius": "0 !important",
+                    "borderRightWidth": "0 !important"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".button-group.-horizontal > .button:not(:first-child), .button-group.-horizontal > .button-group + .button-group .button:first-child, .button-group.-horizontal > .button + .button-group .button:first-child",
+                "__value": {
+                    "borderTopLeftRadius": "0 !important",
+                    "borderBottomLeftRadius": "0 !important"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".button-group.-vertical > .button:not(:last-child), .button-group.-vertical > .button-group:has(+ .button-group) .button:last-child, .button-group.-vertical > .button-group:has(+ .button) .button:last-child",
+                "__value": {
+                    "borderBottomRightRadius": "0 !important",
+                    "borderBottomLeftRadius": "0 !important",
+                    "borderBottomWidth": "0 !important"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".button-group.-vertical > .button:not(:first-child), .button-group.-vertical > .button-group + .button-group .button:first-child, .button-group.-vertical > .button + .button-group .button:first-child",
+                "__value": {
+                    "borderTopLeftRadius": "0 !important",
+                    "borderTopRightRadius": "0 !important"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".button-group.-block > .button",
+                "__value": {
+                    "flexBasis": "100%"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".button-group.-vertical",
+                "__value": {
+                    "flexDirection": "column",
+                    "alignItems": "flex-start",
+                    "justifyContent": "center"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".button-group.-vertical .button, .button-group.-vertical .button-group, .button-group.-vertical [class$=\"-wrapper\"]",
+                "__value": {
+                    "width": "100%"
+                }
+            }
+        ],
+        "utilities": [
+            {
+                "__type": "utility",
+                "__name": "default",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._default",
+                    "__value": {
+                        "default": "default"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "border:0",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._border\\:0",
+                    "__value": {
+                        "border": "0"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "border:0",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._border\\:0",
+                    "__value": {
+                        "border": "0"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "padding:0",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._padding\\:0",
+                    "__value": {
+                        "padding": "0"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "padding:0",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._padding\\:0",
+                    "__value": {
+                        "padding": "0"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "width:100",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._width\\:100",
+                    "__value": {
+                        "width": "100"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "width:100",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._width\\:100",
+                    "__value": {
+                        "width": "100"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "flex-basis:100",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._flex-basis\\:100",
+                    "__value": {
+                        "flexBasis": "100"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "flex-basis:100",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._flex-basis\\:100",
+                    "__value": {
+                        "flexBasis": "100"
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,6 @@
+#storybook-root {
+    > .button[data-popup-placement] {
+        display: flex;
+        margin: 80px auto;
+    }
+}

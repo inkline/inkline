@@ -1,0 +1,13 @@
+export { default as NumberInputBasicExample } from '@inkline/inkline/components/NumberInput/examples/basic.vue';
+export { default as NumberInputColorVariantsExample } from '@inkline/inkline/components/NumberInput/examples/color-variants.vue';
+export { default as NumberInputClearableExample } from '@inkline/inkline/components/NumberInput/examples/clearable.vue';
+export { default as NumberInputDisabledExample } from '@inkline/inkline/components/NumberInput/examples/disabled.vue';
+export { default as NumberInputMinMaxExample } from '@inkline/inkline/components/NumberInput/examples/minmax.vue';
+export { default as NumberInputPrecisionExample } from '@inkline/inkline/components/NumberInput/examples/precision.vue';
+export { default as NumberInputReadonlyExample } from '@inkline/inkline/components/NumberInput/examples/readonly.vue';
+export { default as NumberInputSizeVariantsExample } from '@inkline/inkline/components/NumberInput/examples/size-variants.vue';
+export { default as NumberInputStepSizeExample } from '@inkline/inkline/components/NumberInput/examples/step-size.vue';
+export { default as NumberInputPrependAppendTextExample } from '@inkline/inkline/components/NumberInput/examples/prepend-append-text.vue';
+export { default as NumberInputPrependAppendButtonExample } from '@inkline/inkline/components/NumberInput/examples/prepend-append-button.vue';
+export { default as NumberInputPrependAppendDropdownExample } from '@inkline/inkline/components/NumberInput/examples/prepend-append-dropdown.vue';
+export { default as NumberInputPrefixSuffixExample } from '@inkline/inkline/components/NumberInput/examples/prefix-suffix.vue';

@@ -1,0 +1,80 @@
+{
+    "name": "@inkline/cli",
+    "version": "1.0.0",
+    "type": "module",
+    "bin": {
+        "inkline": "dist/main.js"
+    },
+    "scripts": {
+        "dev": "devtools tsup watch",
+        "build": "devtools tsup build",
+        "lint": "devtools eslint",
+        "test": "devtools vitest",
+        "test:dev": "devtools vitest --watch"
+    },
+    "dependencies": {
+        "@inkline/loader": "workspace:*",
+        "@inkline/logger": "workspace:*",
+        "@inkline/utils": "workspace:*",
+        "chalk": "catalog:",
+        "commander": "catalog:",
+        "nodemon": "catalog:",
+        "prettier": "catalog:",
+        "shelljs": "catalog:"
+    },
+    "devDependencies": {
+        "@inkline/devtools": "workspace:*",
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/typescript-config": "workspace:*",
+        "@types/node": "catalog:",
+        "@types/shelljs": "catalog:",
+        "eslint": "catalog:",
+        "tsx": "catalog:",
+        "tsup": "catalog:",
+        "typescript": "catalog:",
+        "type-fest": "catalog:",
+        "vite": "catalog:",
+        "vitest": "catalog:"
+    },
+    "files": [
+        "dist",
+        "LICENSE"
+    ],
+    "types": "./dist/main.d.ts",
+    "main": "./dist/main.js",
+    "module": "./dist/main.cjs",
+    "exports": {
+        ".": {
+            "types": "./dist/main.d.ts",
+            "import": "./dist/main.js",
+            "require": "./dist/main.cjs"
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

@@ -1,0 +1,11 @@
+.breadcrumb {
+    display: flex;
+    gap: var(--breadcrumb--gap);
+}
+
+.breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    list-style: none;
+}

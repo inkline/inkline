@@ -1,0 +1,14 @@
+{
+    "extends": "@inkline/typescript-config/tsconfig.json",
+    "compilerOptions": {
+        "types": [
+            "vitest/globals"
+        ]
+    },
+    "include": [
+        "src/**/*.ts",
+        "scripts/**/*.ts",
+        "tsup.config.ts",
+        "vite.config.ts"
+    ]
+}

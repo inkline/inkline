@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > Popup > should render correctly 1`] = `
+"<div id="popup" class="popup-wrapper">
+  <!-- @slot default Slot for trigger element --><button data-test-id="trigger">Trigger</button>
+  <transition-stub name="zoom-in-top-transition" appear="false" persisted="false" css="true">
+    <div data-test-id="popup" style="display: none;">Popup</div>
+  </transition-stub>
+</div>"
+`;

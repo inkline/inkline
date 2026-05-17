@@ -1,0 +1,35 @@
+.button {
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    user-select: none;
+    cursor: pointer;
+    text-decoration: none;
+    outline: 0;
+}
+
+.button:hover, .button:focus, .button:active {
+    text-decoration: none;
+}
+
+.button[disabled], .button:disabled {
+    cursor: not-allowed;
+}
+
+.button[data-loading="true"] {
+    cursor: default;
+}
+
+.button-icon, button-content {
+    display: inline-flex;
+    align-items: center;
+}
+
+.button .loader {
+    width: var(--font-size);
+    height: var(--font-size);
+}
+
+a.button.-disabled, *:disabled a.button {
+    pointer-events: none;
+}

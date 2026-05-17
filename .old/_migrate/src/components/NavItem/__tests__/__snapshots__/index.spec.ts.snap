@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > NavItem > should render correctly 1`] = `
+"<div role="menuitem" tabindex="0" tag="div" class="nav-item">
+  <!-- @slot default Slot for default nav item content -->
+</div>"
+`;

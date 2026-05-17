@@ -1,0 +1,27 @@
+/**
+ * Expand Transition
+ */
+
+@use '../../../css/mixins/components';
+
+.expand-enter-active,
+.expand-leave-active {
+    @include components.transition('expand-transition');
+
+    overflow: hidden;
+}
+
+.expand-enter,
+.expand-leave-to {
+    height: 0;
+}
+
+.expand-enter-from,
+.expand-enter-active,
+.expand-leave-active,
+.expand-leave-to {
+    will-change: height;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}

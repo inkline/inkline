@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > Card > should render correctly 1`] = `
+"<div class="card -light -md">
+  <!--v-if-->
+  <!-- @slot body:before Slot for content between header and body  -->
+  <!--v-if-->
+  <!-- @slot body:after Slot for content between body and footer -->
+  <!--v-if-->
+</div>"
+`;

@@ -1,0 +1,64 @@
+/**
+ * Select option
+ */
+
+@use '../../../css/mixins/components';
+
+.select-option {
+    @include components.border-width('select', 'option', true);
+    @include components.border-style('select', 'option', true);
+    @include components.border-color('select', 'option', true);
+    @include components.background('select', 'option', true);
+    @include components.color('select', 'option', true);
+    @include components.padding('select', 'option', true);
+    @include components.transition('select', 'option', true);
+
+    display: block;
+    width: 100%;
+    clear: both;
+    margin-bottom: 0;
+    border: 0;
+    cursor: pointer;
+
+    mark {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    &:not(.-disabled, .-plaintext, .-active) {
+        &:hover,
+        &.-hover,
+        &:focus,
+        &.-focus {
+            outline: 0;
+            text-decoration: none;
+        }
+
+        &:hover,
+        &.-hover {
+            @include components.background('select' 'option', 'hover', true);
+            @include components.color('select' 'option', 'hover', true);
+        }
+
+        &:focus,
+        &.-focus {
+            @include components.background('select' 'option', 'focus', true);
+            @include components.color('select' 'option', 'focus', true);
+        }
+    }
+
+    &.-disabled {
+        @include components.color('select' 'option', 'disabled', true);
+        @include components.background('select' 'option', 'disabled', true);
+
+        pointer-events: none;
+        cursor: not-allowed;
+    }
+
+    &.-active {
+        @include components.background('select' 'option', 'active', true);
+        @include components.color('select' 'option', 'active', true);
+
+        font-weight: bold;
+    }
+}

@@ -1,0 +1,230 @@
+{
+    "default": {
+        "__type": "theme",
+        "__name": "default",
+        "__keys": {
+            "variables": [],
+            "variants": [
+                "alert--xs",
+                "alert--sm",
+                "alert--md",
+                "alert--lg",
+                "alert--xl",
+                "alert--info",
+                "alert--success",
+                "alert--warning",
+                "alert--danger",
+                "alert"
+            ],
+            "selectors": [
+                "K55Vw3qhfIU5HxDfrFYT7",
+                "rT7qjqsZAnOX09g3XgXo0",
+                "BOPEO2ji0c12l5AiV72M7",
+                "o_MZ0fOoOebr1DOfNwiCB",
+                "K1wN9NhsMfbnNBZ6WxLRO",
+                "mhSFAM7slDqPC5Fjmc-Zr",
+                "nc8bAFWkT3CiC9byDJl_K",
+                "EuWSkcrVBYLnWvnGbZ9bp"
+            ],
+            "utilities": [
+                "default",
+                "gap"
+            ]
+        },
+        "variables": {},
+        "variants": {
+            "alert--xs": {
+                "__type": "variant",
+                "__name": "alert--xs",
+                "__value": {
+                    "extends": [
+                        "box--xs"
+                    ]
+                }
+            },
+            "alert--sm": {
+                "__type": "variant",
+                "__name": "alert--sm",
+                "__value": {
+                    "extends": [
+                        "box--sm"
+                    ]
+                }
+            },
+            "alert--md": {
+                "__type": "variant",
+                "__name": "alert--md",
+                "__value": {
+                    "extends": [
+                        "box--md"
+                    ]
+                }
+            },
+            "alert--lg": {
+                "__type": "variant",
+                "__name": "alert--lg",
+                "__value": {
+                    "extends": [
+                        "box--lg"
+                    ]
+                }
+            },
+            "alert--xl": {
+                "__type": "variant",
+                "__name": "alert--xl",
+                "__value": {
+                    "extends": [
+                        "box--xl"
+                    ]
+                }
+            },
+            "alert--info": {
+                "__type": "variant",
+                "__name": "alert--info",
+                "__value": {
+                    "extends": [
+                        "info--tint"
+                    ]
+                }
+            },
+            "alert--success": {
+                "__type": "variant",
+                "__name": "alert--success",
+                "__value": {
+                    "extends": [
+                        "success--tint"
+                    ]
+                }
+            },
+            "alert--warning": {
+                "__type": "variant",
+                "__name": "alert--warning",
+                "__value": {
+                    "extends": [
+                        "warning--tint"
+                    ]
+                }
+            },
+            "alert--danger": {
+                "__type": "variant",
+                "__name": "alert--danger",
+                "__value": {
+                    "extends": [
+                        "danger--tint"
+                    ]
+                }
+            },
+            "alert": {
+                "__type": "variant",
+                "__name": "alert",
+                "__value": {
+                    "extends": [
+                        "alert--md",
+                        "alert--info"
+                    ],
+                    "gap": "default"
+                }
+            }
+        },
+        "selectors": [
+            {
+                "__type": "selector",
+                "__name": ".alert",
+                "__value": {
+                    "display": "flex",
+                    "flexDirection": "row",
+                    "alignItems": "center",
+                    "justifyContent": "flex-start"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".alert-content",
+                "__value": {
+                    "flexGrow": "1"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".alert-icon",
+                "__value": {
+                    "display": "inline-flex",
+                    "alignItems": "center"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".alert-dismiss",
+                "__value": {
+                    "cursor": "pointer",
+                    "display": "inline-flex",
+                    "alignItems": "center"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".alert a",
+                "__value": {
+                    "color": "inherit",
+                    "fontWeight": "600"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".alert-content *:first-child",
+                "__value": {
+                    "marginTop": 0
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".alert-content *:last-child",
+                "__value": {
+                    "marginBottom": 0
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": ".alert code",
+                "__value": {
+                    "background": "hsla(0, 0%, 0%, 0.05)"
+                }
+            }
+        ],
+        "utilities": [
+            {
+                "__type": "utility",
+                "__name": "default",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._default",
+                    "__value": {
+                        "default": "default"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "gap",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._gap",
+                    "__value": {
+                        "gap": "default"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "gap",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._gap",
+                    "__value": {
+                        "gap": "default"
+                    }
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,11 @@
+export { default as SidebarBasicExample } from '@inkline/inkline/components/Sidebar/examples/basic.vue';
+export { default as SidebarCollapseBreakpointExample } from '@inkline/inkline/components/Sidebar/examples/collapse-breakpoint.vue';
+export { default as SidebarCollapseTrueExample } from '@inkline/inkline/components/Sidebar/examples/collapse-true.vue';
+export { default as SidebarCollapseFalseExample } from '@inkline/inkline/components/Sidebar/examples/collapse-false.vue';
+export { default as SidebarColorVariantsExample } from '@inkline/inkline/components/Sidebar/examples/color-variants.vue';
+export { default as SidebarCollapsePositionExample } from '@inkline/inkline/components/Sidebar/examples/collapse-position.vue';
+export { default as SidebarCollapsibleExample } from '@inkline/inkline/components/Sidebar/examples/collapsible.vue';
+export { default as SidebarSizeVariantsExample } from '@inkline/inkline/components/Sidebar/examples/size-variants.vue';
+export { default as SidebarPlacementExample } from '@inkline/inkline/components/Sidebar/examples/placement.vue';
+export { default as SidebarRoutingExample } from '@inkline/inkline/components/Sidebar/examples/routing.vue';
+export { default as SidebarRoutingActiveExample } from '@inkline/inkline/components/Sidebar/examples/routing-active.vue';

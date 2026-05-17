@@ -1,0 +1,10 @@
+.badge {
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+a:hover .badge, a:focus .badge {
+    text-decoration: none;
+}

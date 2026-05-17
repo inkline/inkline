@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > Tooltip > should render correctly 1`] = `
+"<!-- @slot default Slot for tooltip trigger -->
+<div datapopupplacement="top" ariadescribedby="tooltip-tooltip" aria-disabled="false" aria-expanded="false" class="tooltip-trigger" role="button">
+  <div>Tooltip</div>
+</div>
+<transition-stub name="zoom-in-top-transition" appear="false" persisted="false" css="true">
+  <div datapopupplacement="top" id="tooltip-tooltip" class="tooltip -light -md" role="tooltip" aria-live="polite" aria-hidden="true" style="display: none;"><span class="tooltip-arrow"></span>
+    <div class="tooltip-content">
+      <!-- @slot content Slot for tooltip content -->
+      <p>Tooltip content</p>
+    </div>
+  </div>
+</transition-stub>"
+`;

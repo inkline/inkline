@@ -1,0 +1,301 @@
+.input {
+    display: block;
+    vertical-align: middle;
+    position: relative;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.input .input-field {
+    display: flex;
+    flex: 1 0 auto;
+    align-items: center;
+    flex-direction: row;
+    background-clip: padding-box;
+}
+
+.input .input-field > input, .input .input-field > select, .input .input-field > textarea {
+    position: relative;
+    flex: 1 0 auto;
+    width: 1%;
+    background: transparent;
+    border: 0;
+    margin: 0;
+    outline: 0;
+}
+
+.input .input-field > select::-ms-expand {
+    background-color: transparent;
+    border: 0;
+}
+
+.input .input-field > input::placeholder, .input .input-field > select::placeholder, .input .input-field > textarea::placeholder {
+    opacity: 1;
+}
+
+.input .input-field > input:disabled, .input .input-field > select:disabled, .input .input-field > textarea:disabled, .input .input-field > input[readonly], .input .input-field > select[readonly], .input .input-field > textarea[readonly] {
+    opacity: 1;
+    cursor: default;
+}
+
+.input .input-field > input:disabled, .input .input-field > select:disabled, .input .input-field > textarea:disabled {
+    cursor: not-allowed;
+}
+
+.input .input-field > input[readonly], .input .input-field > select[readonly], .input .input-field > textarea[readonly] {
+    outline: 0;
+}
+
+.input .input-field .input-prefix, .input .input-field .input-suffix {
+    display: inline-flex;
+    align-items: center;
+    z-index: 1;
+    font-style: normal;
+}
+
+.input .input-field .input-prefix > button:not(.button, .select-caret), .input .input-field .input-suffix > button:not(.button, .select-caret) {
+    background: transparent;
+    border: 0;
+    color: inherit;
+}
+
+.input .input-field .input-icon {
+    width: auto;
+    cursor: pointer;
+}
+
+.input .input-value-overlay {
+    position: absolute;
+    cursor: default;
+}
+
+.input.-prepended, .input.-appended {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: stretch;
+    padding: 0;
+}
+
+.input.-prepended, .input.-appended {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.input.-prepended .input-field, .input.-appended .input-field {
+    flex-shrink: 1;
+}
+
+.input .input-field {
+    background: var(--input--background);
+    border-style: var(--input--border-style, var(--input--border-top-style) var(--input--border-right-style) var(--input--border-bottom-style) var(--input--border-left-style));
+    border-color: var(--input--border-color, var(--input--border-top-color) var(--input--border-right-color) var(--input--border-bottom-color) var(--input--border-left-color));
+    border-width: var(--input--border-width, var(--input--border-top-width) var(--input--border-right-width) var(--input--border-bottom-width) var(--input--border-left-width));
+    border-radius: var(--input--border-radius, var(--input--border-top-left-radius) var(--input--border-top-right-radius) var(--input--border-bottom-right-radius) var(--input--border-bottom-left-radius));
+    box-shadow: var(--input--box-shadow, var(--input--box-shadow-offset-x) var(--input--box-shadow-offset-y) var(--input--box-shadow-blur-radius) var(--input--box-shadow-spread-radius) var(--input--box-shadow-color));
+    font-size: var(--input--font-size);
+    transition-property: var(--input--transition-property);
+    transition-duration: var(--input--transition-duration);
+    transition-timing-function: var(--input--transition-timing-function);
+}
+
+.input .input-field > input, .input .input-field > select, .input .input-field > textarea {
+    color: var(--input--color);
+    line-height: var(--input--line-height);
+    padding: var(--input--padding, var(--input--padding-top) var(--input--padding-right) var(--input--padding-bottom) var(--input--padding-left));
+}
+
+.input .input-field > input::placeholder, .input .input-field > select::placeholder, .input .input-field > textarea::placeholder {
+    color: var(--input--placeholder--color);
+}
+
+.input .input-field .input-prefix, .input .input-field .input-suffix {
+    border-color: var(--input--border-color, var(--input--border-top-color) var(--input--border-right-color) var(--input--border-bottom-color) var(--input--border-left-color));
+    padding-left: var(--input--padding-left);
+    padding-right: var(--input--padding-right);
+    transition-property: var(--input--transition-property);
+    transition-duration: var(--input--transition-duration);
+    transition-timing-function: var(--input--transition-timing-function);
+}
+
+.input .input-field .input-prefix {
+    border-right-width: var(--input--border-right-width);
+    border-right-style: var(--input--border-right-style);
+    color: var(--input--prefix--color);
+}
+
+.input .input-field .input-suffix {
+    border-left-width: var(--input--border-left-width);
+    border-left-style: var(--input--border-left-style);
+    color: var(--input--suffix--color);
+}
+
+.input .input-field .input-icon {
+    color: var(--input--icon--color);
+    width: var(--input--icon--width);
+    height: var(--input--icon--height);
+    transition-property: var(--input--transition-property);
+    transition-duration: var(--input--transition-duration);
+    transition-timing-function: var(--input--transition-timing-function);
+}
+
+.input.-hover .input-field, .input:hover .input-field {
+    border-top-color: var(--input--hover--border-top-color);
+    border-right-color: var(--input--hover--border-right-color);
+    border-bottom-color: var(--input--hover--border-bottom-color);
+    border-left-color: var(--input--hover--border-left-color);
+}
+
+.input.-focus .input-field, .input:focus-within .input-field {
+    border-top-color: var(--input--focus--border-top-color);
+    border-right-color: var(--input--focus--border-right-color);
+    border-bottom-color: var(--input--focus--border-bottom-color);
+    border-left-color: var(--input--focus--border-left-color);
+    outline: 0;
+}
+
+.input.-error .input-field {
+    border-top-color: var(--input--error--border-top-color);
+    border-right-color: var(--input--error--border-right-color);
+    border-bottom-color: var(--input--error--border-bottom-color);
+    border-left-color: var(--input--error--border-left-color);
+}
+
+.input.-readonly .input-field:focus-within {
+    border-top-color: var(--input--focus--border-top-color);
+    border-right-color: var(--input--focus--border-right-color);
+    border-bottom-color: var(--input--focus--border-bottom-color);
+    border-left-color: var(--input--focus--border-left-color);
+    outline: 0;
+}
+
+.input.-disabled .input-field {
+    background: var(--input--disabled--background);
+}
+
+.input.-readonly .input-field {
+    background: var(--input--readonly--background);
+}
+
+.input .input-prepend, .input .input-append {
+    background: var(--input--background);
+    border-style: var(--input--border-style, var(--input--border-top-style) var(--input--border-right-style) var(--input--border-bottom-style) var(--input--border-left-style));
+    border-top-color: var(--input--border-top-color);
+    border-right-color: var(--input--border-right-color);
+    border-bottom-color: var(--input--border-bottom-color);
+    border-left-color: var(--input--border-left-color);
+    border-width: var(--input--border-width, var(--input--border-top-width) var(--input--border-right-width) var(--input--border-bottom-width) var(--input--border-left-width));
+    font-size: var(--input--font-size);
+    line-height: var(--input--line-height);
+    transition-property: var(--input--transition-property);
+    transition-duration: var(--input--transition-duration);
+    transition-timing-function: var(--input--transition-timing-function);
+}
+
+.input .input-prepend {
+    border-right-width: 0;
+    border-top-left-radius: var(--input--border-top-left-radius);
+    border-bottom-left-radius: var(--input--border-bottom-left-radius);
+}
+
+.input .input-append {
+    border-left-width: 0;
+    border-top-right-radius: var(--input--border-top-right-radius);
+    border-bottom-right-radius: var(--input--border-bottom-right-radius);
+}
+
+.input.-sm {
+    --input--border-top-left-radius: var(--input--sm--border-top-left-radius);
+    --input--border-top-right-radius: var(--input--sm--border-top-right-radius);
+    --input--border-bottom-right-radius: var(--input--sm--border-bottom-right-radius);
+    --input--border-bottom-left-radius: var(--input--sm--border-bottom-left-radius);
+    --input--font-size: var(--input--sm--font-size);
+    --input--padding-top: var(--input--sm--padding-top);
+    --input--padding-right: var(--input--sm--padding-right);
+    --input--padding-bottom: var(--input--sm--padding-bottom);
+    --input--padding-left: var(--input--sm--padding-left);
+}
+
+.input.-md {
+    --input--border-top-left-radius: var(--input--md--border-top-left-radius);
+    --input--border-top-right-radius: var(--input--md--border-top-right-radius);
+    --input--border-bottom-right-radius: var(--input--md--border-bottom-right-radius);
+    --input--border-bottom-left-radius: var(--input--md--border-bottom-left-radius);
+    --input--font-size: var(--input--md--font-size);
+    --input--padding-top: var(--input--md--padding-top);
+    --input--padding-right: var(--input--md--padding-right);
+    --input--padding-bottom: var(--input--md--padding-bottom);
+    --input--padding-left: var(--input--md--padding-left);
+}
+
+.input.-lg {
+    --input--border-top-left-radius: var(--input--lg--border-top-left-radius);
+    --input--border-top-right-radius: var(--input--lg--border-top-right-radius);
+    --input--border-bottom-right-radius: var(--input--lg--border-bottom-right-radius);
+    --input--border-bottom-left-radius: var(--input--lg--border-bottom-left-radius);
+    --input--font-size: var(--input--lg--font-size);
+    --input--padding-top: var(--input--lg--padding-top);
+    --input--padding-right: var(--input--lg--padding-right);
+    --input--padding-bottom: var(--input--lg--padding-bottom);
+    --input--padding-left: var(--input--lg--padding-left);
+}
+
+.input.-light {
+    --input--background: var(--input--light--background);
+    --input--border-top-color: var(--input--light--border-top-color);
+    --input--border-right-color: var(--input--light--border-right-color);
+    --input--border-bottom-color: var(--input--light--border-bottom-color);
+    --input--border-left-color: var(--input--light--border-left-color);
+    --input--color: var(--input--light--color);
+    --input--hover--border-top-color: var(--input--light--hover--border-top-color);
+    --input--hover--border-right-color: var(--input--light--hover--border-right-color);
+    --input--hover--border-bottom-color: var(--input--light--hover--border-bottom-color);
+    --input--hover--border-left-color: var(--input--light--hover--border-left-color);
+    --input--focus--border-top-color: var(--input--light--focus--border-top-color);
+    --input--focus--border-right-color: var(--input--light--focus--border-right-color);
+    --input--focus--border-bottom-color: var(--input--light--focus--border-bottom-color);
+    --input--focus--border-left-color: var(--input--light--focus--border-left-color);
+    --input--disabled--background: var(--input--light--disabled--background);
+    --input--readonly--background: var(--input--light--readonly--background);
+}
+
+.input.-dark {
+    --input--background: var(--input--dark--background);
+    --input--border-top-color: var(--input--dark--border-top-color);
+    --input--border-right-color: var(--input--dark--border-right-color);
+    --input--border-bottom-color: var(--input--dark--border-bottom-color);
+    --input--border-left-color: var(--input--dark--border-left-color);
+    --input--color: var(--input--dark--color);
+    --input--hover--border-top-color: var(--input--dark--hover--border-top-color);
+    --input--hover--border-right-color: var(--input--dark--hover--border-right-color);
+    --input--hover--border-bottom-color: var(--input--dark--hover--border-bottom-color);
+    --input--hover--border-left-color: var(--input--dark--hover--border-left-color);
+    --input--focus--border-top-color: var(--input--dark--focus--border-top-color);
+    --input--focus--border-right-color: var(--input--dark--focus--border-right-color);
+    --input--focus--border-bottom-color: var(--input--dark--focus--border-bottom-color);
+    --input--focus--border-left-color: var(--input--dark--focus--border-left-color);
+    --input--disabled--background: var(--input--dark--disabled--background);
+    --input--readonly--background: var(--input--dark--readonly--background);
+}
+
+.input.-prepended .input-field {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.input.-appended .input-field {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input .input-prepend > *, .input .input-append > * {
+    display: flex;
+    flex: 1 1 auto ;
+    align-self: stretch !important;
+    align-items: center !important;
+    justify-self: stretch !important;
+    border-radius: 0 !important;
+    border: 0;
+    width: 100%;
+    height: 100%;
+}
