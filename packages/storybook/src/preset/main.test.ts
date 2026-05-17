@@ -41,18 +41,20 @@ describe("createStorybookConfig", () => {
     });
   });
 
-  it("adds the alias when no resolve config exists", async () => {
+  it("adds the alias and enables CORS when no resolve/server config exists", async () => {
     const config = createStorybookConfig(base);
     const out = await config.viteFinal({}, { configType: "DEVELOPMENT" });
     expect(out.resolve?.alias).toEqual({
       "@inkline/react": "/repo/ui/react/generated/index.ts",
     });
+    expect(out.server).toEqual({ cors: true });
   });
 
-  it("does NOT alias to source in production builds", async () => {
+  it("does NOT alias to source or set CORS in production builds", async () => {
     const config = createStorybookConfig(base);
     const out = await config.viteFinal({}, { configType: "PRODUCTION" });
     expect(out.resolve).toBeUndefined();
+    expect(out.server).toBeUndefined();
   });
 
   it("appends vite plugins, preserving existing ones", async () => {
