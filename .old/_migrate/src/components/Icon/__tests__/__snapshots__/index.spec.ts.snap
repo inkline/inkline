@@ -1,0 +1,3 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > Icon > should render correctly 1`] = `"<svg class="inkline-icon icon -md" icon="ink-plus"></svg>"`;

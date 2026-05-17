@@ -1,0 +1,21 @@
+.media {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+}
+
+.media > .media-body {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 auto;
+}
+
+.media > img, .media > .img, .media > .image {
+    align-self: flex-start;
+    height: auto;
+    flex: 0 0 auto;
+}
+
+.media > img, .media > .img, .media > .image {
+    margin-right: var(--media--image--margin-right, var(--spacing));
+}

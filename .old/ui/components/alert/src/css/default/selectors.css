@@ -1,0 +1,38 @@
+.alert {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.alert-content {
+    flex-grow: 1;
+}
+
+.alert-icon {
+    display: inline-flex;
+    align-items: center;
+}
+
+.alert-dismiss {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+}
+
+.alert a {
+    color: inherit;
+    font-weight: 600;
+}
+
+.alert-content *:first-child {
+    margin-top: 0;
+}
+
+.alert-content *:last-child {
+    margin-bottom: 0;
+}
+
+.alert code {
+    background: hsla(0, 0%, 0%, 0.05);
+}

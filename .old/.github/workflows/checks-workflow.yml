@@ -1,0 +1,84 @@
+name: Checks
+on: [ 'push' ]
+jobs:
+    build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Set up repository
+                uses: actions/checkout@v3
+            -   name: Set up node
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 18
+            -   uses: pnpm/action-setup@v4
+                with:
+                    version: 9.2.0
+            -   name: Cache node_modules
+                uses: actions/cache@v2
+                with:
+                    path: '**/node_modules'
+                    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            -   name: Install dependencies
+                if: steps.npm-cache.outputs.cache-hit != 'true'
+                run: pnpm install
+            -   name: Run build
+                run: pnpm run build
+
+    linting:
+        name: Lint
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Set up repository
+                uses: actions/checkout@v3
+            -   name: Set up node
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 18
+            -   uses: pnpm/action-setup@v4
+                with:
+                    version: 9.2.0
+            -   name: Cache node_modules
+                uses: actions/cache@v2
+                with:
+                    path: '**/node_modules'
+                    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            -   name: Install dependencies
+                if: steps.npm-cache.outputs.cache-hit != 'true'
+                run: pnpm install
+            -   name: Run build
+                run: pnpm run build
+            -   name: Run linting
+                run: pnpm run lint
+
+
+    testing:
+        name: Test
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Set up repository
+                uses: actions/checkout@v3
+            -   name: Set up node
+                uses: actions/setup-node@v1
+                with:
+                    node-version: 18
+            -   uses: pnpm/action-setup@v4
+                with:
+                    version: 9.2.0
+            -   name: Cache node_modules
+                uses: actions/cache@v2
+                with:
+                    path: '**/node_modules'
+                    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+            -   name: Install dependencies
+                if: steps.npm-cache.outputs.cache-hit != 'true'
+                run: pnpm install
+            -   name: Run build
+                run: pnpm run build
+            -   name: Run testing
+                run: pnpm run test
+            -   name: Coveralls
+                uses: coverallsapp/github-action@master
+                with:
+                    path-to-lcov: packages/inkline/coverage/lcov.info
+                    github-token: ${{ secrets.GITHUB_TOKEN }}

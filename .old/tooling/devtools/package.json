@@ -1,0 +1,75 @@
+{
+    "name": "@inkline/devtools",
+    "version": "1.0.0",
+    "type": "module",
+    "bin": {
+        "devtools": "bin/cli.js"
+    },
+    "scripts": {
+        "dev": "tsx src/main.ts tsup watch",
+        "build": "tsx src/main.ts tsup build",
+        "lint": "tsx src/main.ts eslint",
+        "test": "tsx src/main.ts"
+    },
+    "dependencies": {
+        "@npmcli/promise-spawn": "^8.0.2",
+        "chalk": "catalog:",
+        "chokidar": "catalog:",
+        "commander": "catalog:",
+        "fast-glob": "catalog:",
+        "shelljs": "catalog:"
+    },
+    "devDependencies": {
+        "@inkline/eslint-config": "workspace:*",
+        "@inkline/typescript-config": "workspace:*",
+        "@types/node": "catalog:",
+        "@types/shelljs": "catalog:",
+        "eslint": "catalog:",
+        "tsup": "catalog:",
+        "tsx": "catalog:",
+        "type-fest": "catalog:",
+        "typescript": "catalog:"
+    },
+    "files": [
+        "dist",
+        "bin",
+        "LICENSE"
+    ],
+    "types": "./dist/main.d.ts",
+    "main": "./dist/main.js",
+    "module": "./dist/main.cjs",
+    "exports": {
+        ".": {
+            "types": "./dist/main.d.ts",
+            "import": "./dist/main.js",
+            "require": "./dist/main.cjs"
+        },
+        "./*": "./*"
+    },
+    "funding": {
+        "type": "github",
+        "url": "https://github.com/sponsors/alexgrozav"
+    },
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://inkline.io",
+    "keywords": [
+        "inkline",
+        "ui",
+        "ux",
+        "dx",
+        "library",
+        "framework",
+        "typescript"
+    ],
+    "engines": {
+        "node": "*",
+        "pnpm": "*"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    }
+}

@@ -1,0 +1,11 @@
+<i-navbar>
+    <i-navbar-brand :to="{ path: '/' }">Navbar</i-navbar-brand>
+    <i-navbar-collapsible>
+        <i-nav>
+            <i-nav-item href="https://inkline.io" onclick="return false;"> Link </i-nav-item>
+            <i-nav-item :to="{ path: '/' }" onclick="return false;">
+                Router Link
+            </i-nav-item>
+        </i-nav>
+    </i-navbar-collapsible>
+</i-navbar>

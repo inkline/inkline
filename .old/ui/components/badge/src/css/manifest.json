@@ -1,0 +1,374 @@
+{
+    "default": {
+        "__type": "theme",
+        "__name": "default",
+        "__keys": {
+            "variables": [],
+            "variants": [
+                "badge--xs",
+                "badge--sm",
+                "badge--md",
+                "badge--lg",
+                "badge--xl",
+                "badge--light",
+                "badge--dark",
+                "badge--primary",
+                "badge--secondary",
+                "badge--success",
+                "badge--danger",
+                "badge--warning",
+                "badge--info",
+                "badge--inherit",
+                "badge--pill",
+                "badge"
+            ],
+            "selectors": [
+                "ZbY4IsHbbSELQzEQ3oYMR",
+                "saBKpF0hM2hc1dEluKBIu"
+            ],
+            "utilities": [
+                "default",
+                "font-size:2xs",
+                "font-size:xs",
+                "font-size:sm",
+                "font-size:md",
+                "font-size:lg",
+                "font-size:inherit",
+                "border-radius:full",
+                "font-weight:semibold"
+            ]
+        },
+        "variables": {},
+        "variants": {
+            "badge--xs": {
+                "__type": "variant",
+                "__name": "badge--xs",
+                "__value": {
+                    "extends": "box--wide--3xs",
+                    "fontSize": "2xs"
+                }
+            },
+            "badge--sm": {
+                "__type": "variant",
+                "__name": "badge--sm",
+                "__value": {
+                    "extends": "box--wide--2xs",
+                    "fontSize": "xs"
+                }
+            },
+            "badge--md": {
+                "__type": "variant",
+                "__name": "badge--md",
+                "__value": {
+                    "extends": "box--wide--xs",
+                    "fontSize": "sm"
+                }
+            },
+            "badge--lg": {
+                "__type": "variant",
+                "__name": "badge--lg",
+                "__value": {
+                    "extends": "box--wide--sm",
+                    "fontSize": "md"
+                }
+            },
+            "badge--xl": {
+                "__type": "variant",
+                "__name": "badge--xl",
+                "__value": {
+                    "extends": "box--wide--md",
+                    "fontSize": "lg"
+                }
+            },
+            "badge--light": {
+                "__type": "variant",
+                "__name": "badge--light",
+                "__value": {
+                    "extends": "light"
+                }
+            },
+            "badge--dark": {
+                "__type": "variant",
+                "__name": "badge--dark",
+                "__value": {
+                    "extends": "dark"
+                }
+            },
+            "badge--primary": {
+                "__type": "variant",
+                "__name": "badge--primary",
+                "__value": {
+                    "extends": "primary"
+                }
+            },
+            "badge--secondary": {
+                "__type": "variant",
+                "__name": "badge--secondary",
+                "__value": {
+                    "extends": "secondary"
+                }
+            },
+            "badge--success": {
+                "__type": "variant",
+                "__name": "badge--success",
+                "__value": {
+                    "extends": "success"
+                }
+            },
+            "badge--danger": {
+                "__type": "variant",
+                "__name": "badge--danger",
+                "__value": {
+                    "extends": "danger"
+                }
+            },
+            "badge--warning": {
+                "__type": "variant",
+                "__name": "badge--warning",
+                "__value": {
+                    "extends": "warning"
+                }
+            },
+            "badge--info": {
+                "__type": "variant",
+                "__name": "badge--info",
+                "__value": {
+                    "extends": "info"
+                }
+            },
+            "badge--inherit": {
+                "__type": "variant",
+                "__name": "badge--inherit",
+                "__value": {
+                    "fontSize": "inherit"
+                }
+            },
+            "badge--pill": {
+                "__type": "variant",
+                "__name": "badge--pill",
+                "__value": {
+                    "borderRadius": "full"
+                }
+            },
+            "badge": {
+                "__type": "variant",
+                "__name": "badge",
+                "__value": {
+                    "extends": [
+                        "default",
+                        "badge--md"
+                    ],
+                    "fontWeight": "semibold"
+                }
+            }
+        },
+        "selectors": [
+            {
+                "__type": "selector",
+                "__name": ".badge",
+                "__value": {
+                    "lineHeight": 1,
+                    "display": "inline-flex",
+                    "alignItems": "center",
+                    "justifyContent": "center"
+                }
+            },
+            {
+                "__type": "selector",
+                "__name": "a:hover .badge, a:focus .badge",
+                "__value": {
+                    "textDecoration": "none"
+                }
+            }
+        ],
+        "utilities": [
+            {
+                "__type": "utility",
+                "__name": "default",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._default",
+                    "__value": {
+                        "default": "default"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:2xs",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:2xs",
+                    "__value": {
+                        "fontSize": "2xs"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:2xs",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:2xs",
+                    "__value": {
+                        "fontSize": "2xs"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:xs",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:xs",
+                    "__value": {
+                        "fontSize": "xs"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:xs",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:xs",
+                    "__value": {
+                        "fontSize": "xs"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:sm",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:sm",
+                    "__value": {
+                        "fontSize": "sm"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:sm",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:sm",
+                    "__value": {
+                        "fontSize": "sm"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:md",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:md",
+                    "__value": {
+                        "fontSize": "md"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:md",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:md",
+                    "__value": {
+                        "fontSize": "md"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:lg",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:lg",
+                    "__value": {
+                        "fontSize": "lg"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:lg",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:lg",
+                    "__value": {
+                        "fontSize": "lg"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:inherit",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:inherit",
+                    "__value": {
+                        "fontSize": "inherit"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-size:inherit",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-size\\:inherit",
+                    "__value": {
+                        "fontSize": "inherit"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "border-radius:full",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._border-radius\\:full",
+                    "__value": {
+                        "borderRadius": "full"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "border-radius:full",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._border-radius\\:full",
+                    "__value": {
+                        "borderRadius": "full"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-weight:semibold",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-weight\\:semibold",
+                    "__value": {
+                        "fontWeight": "semibold"
+                    }
+                }
+            },
+            {
+                "__type": "utility",
+                "__name": "font-weight:semibold",
+                "__value": {
+                    "__type": "selector",
+                    "__name": "._font-weight\\:semibold",
+                    "__value": {
+                        "fontWeight": "semibold"
+                    }
+                }
+            }
+        ]
+    }
+}

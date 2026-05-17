@@ -1,0 +1,27 @@
+# Node Modules
+node_modules/
+
+# Ignored Files
+tmp/
+
+# Build Files
+lib/
+dist/
+storybook-static/
+.turbo/
+vite.config.ts.timestamp*
+
+# Test Files
+test-results/
+coverage/
+
+# E2E Generated Packages
+packages/e2e/nuxt
+packages/e2e/vite
+
+# OS Files
+.DS_Store
+
+# IDE
+.idea/
+.vscode/

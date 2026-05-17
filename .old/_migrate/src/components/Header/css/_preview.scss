@@ -1,0 +1,5 @@
+%header-preview {
+    > .header + .header {
+        margin-top: var(--margin-top);
+    }
+}

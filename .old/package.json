@@ -1,0 +1,39 @@
+{
+    "name": "inkline",
+    "version": "1.0.0",
+    "description": "Inkline monorepo",
+    "main": "index.js",
+    "scripts": {
+        "prebuild": "turbo run build --filter=@inkline/devtools",
+        "build": "turbo run build --filter='!./docs' --filter='!./e2e' --filter='!./storybook'",
+        "dev": "turbo run dev --filter='!./docs' --filter='!./e2e' --filter='!./storybook'",
+        "dev:docs": "turbo run dev --filter='./docs'",
+        "dev:storybook": "turbo run dev --filter='./storybook'",
+        "test": "turbo run test",
+        "lint": "turbo run lint"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/inkline/inkline.git"
+    },
+    "keywords": [
+        "inkline"
+    ],
+    "author": "Alex Grozav <alex@grozav.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/inkline/inkline/issues"
+    },
+    "homepage": "https://github.com/inkline/inkline#readme",
+    "devDependencies": {
+        "prettier": "catalog:",
+        "turbo": "catalog:"
+    },
+    "workspaces": [
+        "docs",
+        "e2e",
+        "packages/**/*",
+        "storybook"
+    ],
+    "packageManager": "pnpm@10.5.2"
+}

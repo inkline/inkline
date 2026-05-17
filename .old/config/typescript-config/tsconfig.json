@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+        "target": "es2020",
+        "useDefineForClassFields": true,
+        "module": "esnext",
+        "lib": [
+            "es2020",
+            "dom",
+            "dom.iterable",
+            "scripthost"
+        ],
+        "skipLibCheck": true,
+        "importHelpers": true,
+        "sourceMap": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "allowJs": true,
+        /* Bundler mode */
+        // "allowImportingTsExtensions": true,
+        "moduleResolution": "bundler",
+        "isolatedModules": true,
+        "moduleDetection": "force",
+        "noEmit": true,
+        /* Linting */
+        "strict": true,
+        "noUnusedLocals": false,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true
+    }
+}

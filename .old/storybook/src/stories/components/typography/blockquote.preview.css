@@ -1,0 +1,5 @@
+#storybook-root {
+    > .blockquote {
+        margin-bottom: var(--spacing);
+    }
+}

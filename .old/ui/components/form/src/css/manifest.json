@@ -1,0 +1,26 @@
+{
+    "default": {
+        "__type": "theme",
+        "__name": "default",
+        "__keys": {
+            "variables": [],
+            "variants": [],
+            "selectors": [
+                "6NtMPrIaMxBIMk7BFt81z"
+            ],
+            "utilities": []
+        },
+        "variables": {},
+        "variants": {},
+        "selectors": [
+            {
+                "__type": "selector",
+                "__name": ".form",
+                "__value": {
+                    "position": "relative"
+                }
+            }
+        ],
+        "utilities": []
+    }
+}

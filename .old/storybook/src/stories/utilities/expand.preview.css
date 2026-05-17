@@ -1,0 +1,5 @@
+#storybook-root {
+    > .expand {
+        margin-top: var(--spacing);
+    }
+}

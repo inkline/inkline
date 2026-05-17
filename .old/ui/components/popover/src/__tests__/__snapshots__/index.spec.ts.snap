@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > Popover > should render correctly 1`] = `
+"<!-- @slot default Slot for popover trigger -->
+<div datapopupplacement="top" ariadescribedby="popover-popover" aria-disabled="false" aria-expanded="false" class="popover-trigger" role="button">
+  <div>Popover</div>
+</div>
+<transition-stub name="zoom-in-top-transition" appear="false" persisted="false" css="true">
+  <div datapopupplacement="top" id="popover-popover" class="popover -light -md" role="popover" aria-live="polite" aria-hidden="true" style="display: none;"><span class="popover-arrow"></span>
+    <!--v-if-->
+    <!--v-if-->
+    <!--v-if-->
+  </div>
+</transition-stub>"
+`;

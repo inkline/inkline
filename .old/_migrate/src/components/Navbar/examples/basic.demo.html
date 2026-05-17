@@ -1,0 +1,19 @@
+<i-navbar>
+    <i-navbar-brand :to="{ path: '/' }"> Navbar </i-navbar-brand>
+    <i-navbar-collapsible>
+        <i-nav>
+            <i-nav-item :to="{ path: '/' }" active-class="-active">
+                Home
+            </i-nav-item>
+            <i-nav-item :to="{ path: '/' }"> About </i-nav-item>
+            <i-nav-item :to="{ path: '/' }"> Contact </i-nav-item>
+        </i-nav>
+        <i-input placeholder="Type something..">
+            <template #append>
+                <i-button color="primary">
+                    <i-icon name="ink-search" />
+                </i-button>
+            </template>
+        </i-input>
+    </i-navbar-collapsible>
+</i-navbar>

@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > LayoutHeader > should render correctly 1`] = `
+"<header class="layout-header">
+  <!-- @slot default Slot for default layout header content -->
+</header>"
+`;

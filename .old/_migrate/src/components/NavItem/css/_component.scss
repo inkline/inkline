@@ -1,0 +1,38 @@
+@use '../../../css/mixins/components';
+
+/**
+ * Nav Item
+ */
+
+.nav-item {
+    @include components.color('nav', 'item', true);
+    @include components.font-size('nav', 'item', true);
+    @include components.transition('nav', 'item', true);
+    @include components.padding('nav', 'item', true);
+
+    display: block;
+    margin-bottom: 0;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+        outline: 0;
+    }
+
+    &.-disabled {
+        @include components.color('nav', 'item' 'disabled', true);
+
+        pointer-events: none;
+        cursor: default;
+    }
+
+    &.-active {
+        @include components.color('nav', 'item' 'active', true);
+        @include components.font-weight('nav', 'item' 'active', true);
+    }
+
+    &[to],
+    &[href] {
+        cursor: pointer;
+    }
+}

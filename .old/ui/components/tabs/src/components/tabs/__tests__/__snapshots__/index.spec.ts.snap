@@ -1,0 +1,55 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > Tabs > should render correctly with header 1`] = `
+"<div class="tabs -light -md">
+  <!-- @slot default Slot for tab components -->
+  <div class="tab-list -light -md" role="tablist">
+    <!-- @slot default Slot for tab list items -->
+    <div class="tab -light -md" role="tab" id="tab-tab-1" aria-expanded="false" aria-controls="tab-panel-tab-1" aria-describedby="tab-panel-tab-1" tabindex="0">
+      <!-- @slot default Slot for tab content -->Tab 1
+    </div>
+    <div class="tab -light -md" role="tab" id="tab-tab-2" aria-expanded="false" aria-controls="tab-panel-tab-2" aria-describedby="tab-panel-tab-2" tabindex="0">
+      <!-- @slot default Slot for tab content -->Tab 2
+    </div>
+    <div class="tab -light -md" role="tab" id="tab-tab-3" aria-expanded="false" aria-controls="tab-panel-tab-3" aria-describedby="tab-panel-tab-3" tabindex="0">
+      <!-- @slot default Slot for tab content -->Tab 3
+    </div>
+  </div>
+  <div class="tab-panel -light -md" role="tabpanel" id="tab-panel-tab-1" aria-hidden="true" aria-labelledby="tab-tab-1" title="Tab 1">
+    <!-- @slot default Slot for tab content -->Tab 1 content
+  </div>
+  <div class="tab-panel -light -md" role="tabpanel" id="tab-panel-tab-2" aria-hidden="true" aria-labelledby="tab-tab-2" title="Tab 2">
+    <!-- @slot default Slot for tab content -->Tab 2 content
+  </div>
+  <div class="tab-panel -light -md" role="tabpanel" id="tab-panel-tab-3" aria-hidden="true" aria-labelledby="tab-tab-3" title="Tab 3">
+    <!-- @slot default Slot for tab content -->Tab 3 content
+  </div>
+</div>"
+`;
+
+exports[`Components > Tabs > should render correctly without header 1`] = `
+"<div class="tabs -light -md">
+  <!-- @slot default Slot for tab components -->
+  <div class="tab-list -light -md" role="tablist">
+    <!-- @slot default Slot for tab list items -->
+    <div class="tab -light -md" role="tab" id="tab-tab-1" aria-expanded="false" aria-controls="tab-panel-tab-1" aria-describedby="tab-panel-tab-1" tabindex="0">
+      <!-- @slot default Slot for tab content -->Tab 1
+    </div>
+    <div class="tab -light -md" role="tab" id="tab-tab-2" aria-expanded="false" aria-controls="tab-panel-tab-2" aria-describedby="tab-panel-tab-2" tabindex="0">
+      <!-- @slot default Slot for tab content -->Tab 2
+    </div>
+    <div class="tab -light -md" role="tab" id="tab-tab-3" aria-expanded="false" aria-controls="tab-panel-tab-3" aria-describedby="tab-panel-tab-3" tabindex="0">
+      <!-- @slot default Slot for tab content -->Tab 3
+    </div>
+  </div>
+  <div class="tab-panel -light -md" role="tabpanel" id="tab-panel-tab-1" aria-hidden="true" aria-labelledby="tab-tab-1" title="Tab 1">
+    <!-- @slot default Slot for tab content -->Tab 1 content
+  </div>
+  <div class="tab-panel -light -md" role="tabpanel" id="tab-panel-tab-2" aria-hidden="true" aria-labelledby="tab-tab-2" title="Tab 2">
+    <!-- @slot default Slot for tab content -->Tab 2 content
+  </div>
+  <div class="tab-panel -light -md" role="tabpanel" id="tab-panel-tab-3" aria-hidden="true" aria-labelledby="tab-tab-3" title="Tab 3">
+    <!-- @slot default Slot for tab content -->Tab 3 content
+  </div>
+</div>"
+`;

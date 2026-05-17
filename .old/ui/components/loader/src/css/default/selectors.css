@@ -1,0 +1,100 @@
+.loader {
+    display: inline-block;
+    position: relative;
+    width: var(--loader--width);
+    height: var(--loader--height);
+}
+
+.loader::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.loader-text, .loader > svg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: 0;
+    margin: auto;
+}
+
+.loader-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader.-auto {
+    width: 100%;
+    height: 100%;
+}
+
+.loader > svg {
+    animation-name: loader-rotate;
+    animation-duration: var(--loader--animation-duration);
+    animation-direction: var(--loader--animation-direction);
+    animation-iteration-count: var(--loader--animation-iteration-count);
+    transform-origin: center center;
+}
+
+.loader > svg > circle {
+    stroke: var(--loader--color);
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35px;
+    animation-name: loader-dash;
+    animation-duration: var(--loader--animation-duration);
+    animation-direction: var(--loader--animation-direction);
+    animation-iteration-count: var(--loader--animation-iteration-count);
+    stroke-linecap: round;
+}
+
+@keyframes loader-rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loader-dash {
+    0% {
+        stroke-dasharray: 1, 200;
+        stroke-dashoffset: 0;
+    }
+    
+    50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
+    }
+    
+    100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
+    }
+}
+
+.loader.-primary {
+    --loader--color: var(--loader--primary--color);
+}
+
+.loader.-light {
+    --loader--color: var(--loader--light--color);
+}
+
+.loader.-dark {
+    --loader--color: var(--loader--dark--color);
+}
+
+.loader.-sm {
+    --loader--width: var(--loader--sm--width);
+    --loader--height: var(--loader--sm--height);
+}
+
+.loader.-md {
+    --loader--width: var(--loader--md--width);
+    --loader--height: var(--loader--md--height);
+}
+
+.loader.-lg {
+    --loader--width: var(--loader--lg--width);
+    --loader--height: var(--loader--lg--height);
+}

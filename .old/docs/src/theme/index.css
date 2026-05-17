@@ -1,0 +1,6 @@
+@layer theme, base, components, utilities;
+@import "./normalize.css" layer(base);
+@import "./tailwind/theme.css" layer(theme);
+@import "./tailwind/utilities.css" layer(utilities);
+@import "./default/index.css";
+@import "./dark/index.css";

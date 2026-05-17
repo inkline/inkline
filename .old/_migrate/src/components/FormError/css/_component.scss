@@ -1,0 +1,19 @@
+/**
+ * Form Error
+ */
+
+@use '../../../css/mixins/components';
+
+.form-error {
+    @include components.color('form-error');
+    @include components.font-size('form-error');
+    @include components.margin('form-error');
+
+    position: relative;
+    padding: 0;
+    list-style: none;
+
+    li {
+        margin: 0;
+    }
+}

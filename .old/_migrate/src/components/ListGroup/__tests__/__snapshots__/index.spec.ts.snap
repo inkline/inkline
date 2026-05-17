@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Components > ListGroup > should render correctly 1`] = `
+"<div class="list-group -light -md -border" role="list">
+  <!-- @slot default Slot for list group items -->
+  <div role="listitem" tabindex="0" tag="div" class="list-group-item">
+    <!-- @slot default Slot for list group item content -->Item 1
+  </div>
+  <div role="listitem" tabindex="0" tag="div" class="list-group-item">
+    <!-- @slot default Slot for list group item content -->Item 2
+  </div>
+  <div role="listitem" tabindex="0" tag="div" class="list-group-item">
+    <!-- @slot default Slot for list group item content -->Item 3
+  </div>
+</div>"
+`;
