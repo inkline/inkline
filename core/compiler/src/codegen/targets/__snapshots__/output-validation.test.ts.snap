@@ -134,12 +134,14 @@ exports[`full output snapshots > BatchUpdates > vue 1`] = `
 `;
 
 exports[`full output snapshots > Button > angular 1`] = `
-"import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<button [disabled]="props.disabled">
-{{ props.label }}
+"import { Component, signal, computed, effect, Input } from "@angular/core";
+@Component({ standalone: true, template: \`<button [disabled]="disabled">
+{{ label }}
 </button>\` })
 export class ButtonComponent
 {
+@Input() label!: string
+@Input() disabled?: boolean
 }
 "
 `;
@@ -2039,12 +2041,13 @@ exports[`full output snapshots > MultiRefs > vue 1`] = `
 `;
 
 exports[`full output snapshots > MultipleComponentsPerFile > angular 1`] = `
-"import { Component, signal, computed, effect } from "@angular/core";
+"import { Component, signal, computed, effect, Input } from "@angular/core";
 @Component({ standalone: true, template: \`<span>
-{{ props.text }}
+{{ text }}
 </span>\` })
 export class LabelComponent
 {
+@Input() text!: string
 }
 "
 `;
@@ -2121,12 +2124,14 @@ exports[`full output snapshots > MultipleComponentsPerFile > vue 1`] = `
 `;
 
 exports[`full output snapshots > PropDefaults > angular 1`] = `
-"import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div [style]="\\\`color: \\\${props.color}\\\`">
-{{ props.size }}
+"import { Component, signal, computed, effect, Input } from "@angular/core";
+@Component({ standalone: true, template: \`<div [style]="\\\`color: \\\${color}\\\`">
+{{ size }}
 </div>\` })
 export class PropDefaultsComponent
 {
+@Input() color?
+@Input() size!
 }
 "
 `;

@@ -12,7 +12,7 @@ const REWRITES: RewriteRules = {
   refAccess: { kind: "bare" },
   jsxAttrCasing: "html",
   eventNameCase: "camel",
-  members: { props: { strip: false } },
+  members: { props: { strip: true } },
 };
 
 function emitNode(node: IRNode, rules: RewriteRules): string {
@@ -136,6 +136,14 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         span: r.loc,
       }),
     );
+  }
+  if (component.props.length > 0) {
+    angularImports.push("Input");
+    for (const p of component.props) {
+      const opt = p.required ? "!" : "?";
+      const type = p.typeNode ? `: ${p.typeNode.getText()}` : "";
+      body.push(cStmt({ body: `@Input() ${p.name}${opt}${type}`, span: p.loc }));
+    }
   }
 
   const template = emitNode(component.render, rules);
