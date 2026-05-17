@@ -5,12 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -n react,vue,solid,astro,app \"pnpm run dev:react\" \"pnpm run dev:vue\" \"pnpm run dev:solid\" \"pnpm run dev:astro\" \"pnpm run storybook\"",
-    "dev:react": "pnpm --filter @inkline/react storybook",
-    "dev:vue": "pnpm --filter @inkline/vue storybook",
-    "dev:svelte": "pnpm --filter @inkline/svelte storybook",
-    "dev:solid": "pnpm --filter @inkline/solid storybook",
-    "dev:angular": "pnpm --filter @inkline/angular storybook",
-    "dev:astro": "pnpm --filter @inkline/astro storybook",
+    "dev:react": "BROWSER=none pnpm --filter @inkline/react storybook",
+    "dev:vue": "BROWSER=none pnpm --filter @inkline/vue storybook",
+    "dev:svelte": "BROWSER=none pnpm --filter @inkline/svelte storybook",
+    "dev:solid": "BROWSER=none pnpm --filter @inkline/solid storybook",
+    "dev:angular": "BROWSER=none pnpm --filter @inkline/angular storybook",
+    "dev:astro": "BROWSER=none pnpm --filter @inkline/astro storybook",
     "storybook": "storybook dev -p 6100",
     "storybook:build": "storybook build -o dist"
   },
