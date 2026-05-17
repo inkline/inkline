@@ -55,7 +55,7 @@ const { label, disabled } = Astro.props as Props;
 `;
 
 exports[`Qwik target > Counter component 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const Counter = component$(() =>
 {
 const count = useSignal(0)
@@ -76,7 +76,7 @@ return (
 `;
 
 exports[`Qwik target > props type generation 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const Button = component$(() =>
 {
 const count = useSignal(0)

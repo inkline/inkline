@@ -79,7 +79,7 @@ describe("target conformance specs", () => {
     const c = qwik.conformance!;
     expect(c.lint.tool).toBe("oxlint");
     expect(c.lint.config).toContain("qwik.oxlintrc.json");
-    expect(c.typecheck.dtsImports).toContain("@builder.io/qwik");
+    expect(c.typecheck.dtsImports).toContain("@qwik.dev/core");
     expect(runInvariants(c, { path: "X.tsx", contents: "" })).toHaveLength(0);
     expect(runInvariants(c, { path: "X.ts", contents: "" })).toHaveLength(1);
   });

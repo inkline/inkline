@@ -10,7 +10,7 @@ export const qwikConformance: TargetConformanceSpec = {
   lint: { tool: "oxlint", config: resolve(__dirname, "tsconfigs", "qwik.oxlintrc.json") },
   typecheck: {
     tsconfig: "",
-    dtsImports: ["@builder.io/qwik"],
+    dtsImports: ["@qwik.dev/core"],
   },
   invariants: [requireFileExtension(".tsx")],
 };

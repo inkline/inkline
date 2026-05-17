@@ -248,7 +248,7 @@ describe("Qwik codegen fixes", () => {
         ],
       });
       const code = emitCode(comp);
-      const importLine = code.split("\n").find((l) => l.includes("@builder.io/qwik"))!;
+      const importLine = code.split("\n").find((l) => l.includes("@qwik.dev/core"))!;
       const resourceCount = importLine.match(/useResource\$/g);
       expect(resourceCount).toHaveLength(1);
     });

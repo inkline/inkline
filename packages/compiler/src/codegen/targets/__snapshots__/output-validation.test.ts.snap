@@ -34,7 +34,7 @@ Both
 `;
 
 exports[`full output snapshots > BatchUpdates > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const BatchUpdates = component$(() =>
 {
 const x = useSignal(0)
@@ -156,7 +156,7 @@ const { label, disabled } = Astro.props as Props;
 `;
 
 exports[`full output snapshots > Button > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const Button = component$(() =>
 {
 return (
@@ -256,7 +256,7 @@ exports[`full output snapshots > Composite > astro 1`] = `
 `;
 
 exports[`full output snapshots > Composite > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const Composite = component$(() =>
 {
 const x = useSignal(1)
@@ -415,7 +415,7 @@ Toggle
 `;
 
 exports[`full output snapshots > Conditional > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const Conditional = component$(() =>
 {
 const visible = useSignal(true)
@@ -535,7 +535,7 @@ Toggle
 `;
 
 exports[`full output snapshots > ConditionalClass > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ConditionalClass = component$(() =>
 {
 const active = useSignal(false)
@@ -647,7 +647,7 @@ C
 `;
 
 exports[`full output snapshots > ControlledSelect > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ControlledSelect = component$(() =>
 {
 const value = useSignal("b")
@@ -781,7 +781,7 @@ characters
 `;
 
 exports[`full output snapshots > ControlledTextarea > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ControlledTextarea = component$(() =>
 {
 const text = useSignal("")
@@ -905,7 +905,7 @@ exports[`full output snapshots > Counter > astro 1`] = `
 `;
 
 exports[`full output snapshots > Counter > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const Counter = component$(() =>
 {
 const count = useSignal(0)
@@ -1060,7 +1060,7 @@ Add
 `;
 
 exports[`full output snapshots > DynamicList > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const DynamicList = component$(() =>
 {
 const items = useSignal([])
@@ -1192,7 +1192,7 @@ Toggle
 `;
 
 exports[`full output snapshots > EffectCleanup > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const EffectCleanup = component$(() =>
 {
 const active = useSignal(true)
@@ -1294,7 +1294,7 @@ exports[`full output snapshots > ElementRef > astro 1`] = `
 `;
 
 exports[`full output snapshots > ElementRef > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ElementRef = component$(() =>
 {
 const inputRef = useSignal(null)
@@ -1380,7 +1380,7 @@ exports[`full output snapshots > ForLoop > astro 1`] = `
 `;
 
 exports[`full output snapshots > ForLoop > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ForLoop = component$(() =>
 {
 const items = useSignal(["Apple", "Banana", "Cherry"])
@@ -1479,7 +1479,7 @@ exports[`full output snapshots > FormField > astro 1`] = `
 `;
 
 exports[`full output snapshots > FormField > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const FormField = component$(() =>
 {
 const value = useSignal("")
@@ -1580,7 +1580,7 @@ exports[`full output snapshots > Lifecycle > astro 1`] = `
 `;
 
 exports[`full output snapshots > Lifecycle > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const Lifecycle = component$(() =>
 {
 const mounted = useSignal(false)
@@ -1687,7 +1687,7 @@ exports[`full output snapshots > MemoChain > astro 1`] = `
 `;
 
 exports[`full output snapshots > MemoChain > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const MemoChain = component$(() =>
 {
 const base = useSignal(1)
@@ -1828,7 +1828,7 @@ exports[`full output snapshots > MixedControlFlow > astro 1`] = `
 `;
 
 exports[`full output snapshots > MixedControlFlow > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const MixedControlFlow = component$(() =>
 {
 const items = useSignal(["a", "b", "c"])
@@ -1950,7 +1950,7 @@ Click
 `;
 
 exports[`full output snapshots > MultiRefs > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const MultiRefs = component$(() =>
 {
 const inputRef = useSignal(null)
@@ -2061,7 +2061,7 @@ const { text } = Astro.props as Props;
 `;
 
 exports[`full output snapshots > MultipleComponentsPerFile > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const Label = component$(() =>
 {
 return (
@@ -2143,7 +2143,7 @@ const { color, size } = Astro.props as Props;
 `;
 
 exports[`full output snapshots > PropDefaults > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const PropDefaults = component$(() =>
 {
 return (
@@ -2241,7 +2241,7 @@ Action area
 `;
 
 exports[`full output snapshots > SlotWithDefault > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const SlotWithDefault = component$(() =>
 {
 return (
@@ -2385,7 +2385,7 @@ Switch
 `;
 
 exports[`full output snapshots > SwitchTabs > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const SwitchTabs = component$(() =>
 {
 const tab = useSignal("a")
@@ -2518,7 +2518,7 @@ Child
 `;
 
 exports[`multi-component files > ComponentRef → qwik (all files) 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const Child = component$(() =>
 {
 return (
@@ -2528,7 +2528,7 @@ return (
 )
 });
 
-import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
+import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ComponentRef = component$(() =>
 {
 const childRef = useSignal(null)

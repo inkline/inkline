@@ -373,10 +373,10 @@ describe("Qwik target", () => {
     expect(result.code).toContain("component$");
   });
 
-  it("output imports from @builder.io/qwik", () => {
+  it("output imports from @qwik.dev/core", () => {
     const comp = makeComp("Counter", renderTree);
     const result = print(qwik.emit(comp, makeCtx(qwik)).root);
-    expect(result.code).toContain("@builder.io/qwik");
+    expect(result.code).toContain("@qwik.dev/core");
   });
 
   it("output uses useSignal and useComputed$", () => {

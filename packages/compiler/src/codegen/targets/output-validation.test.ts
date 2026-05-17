@@ -165,11 +165,11 @@ describe("cross-target structural invariants", () => {
     }
   });
 
-  it("Qwik output contains component$ from @builder.io/qwik", async () => {
+  it("Qwik output contains component$ from @qwik.dev/core", async () => {
     for (const fixture of CORE_FIXTURES) {
       const code = await getOutput(fixture, "qwik");
       expect(code).toContain("component$");
-      expect(code).toContain("@builder.io/qwik");
+      expect(code).toContain("@qwik.dev/core");
     }
   });
 

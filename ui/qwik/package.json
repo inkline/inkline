@@ -16,15 +16,23 @@
   "scripts": {
     "build": "vp build --mode lib",
     "validate": "vp check",
-    "test": "vp test --passWithNoTests"
+    "test": "vp test --passWithNoTests",
+    "storybook": "storybook dev -p 6011",
+    "storybook:build": "storybook build -o storybook-static",
+    "prestorybook": "pnpm --filter @inkline/storybook run generate"
   },
   "devDependencies": {
-    "@builder.io/qwik": "^1",
     "@inkline/core": "workspace:*",
-    "jsdom": "catalog:"
+    "@inkline/storybook": "workspace:*",
+    "@qwik.dev/core": "^2.0.0-beta.0",
+    "@storybook/addon-a11y": "catalog:",
+    "@storybook/addon-docs": "catalog:",
+    "jsdom": "catalog:",
+    "storybook": "catalog:",
+    "storybook-framework-qwik": "catalog:"
   },
   "peerDependencies": {
-    "@builder.io/qwik": ">=1"
+    "@qwik.dev/core": ">=2.0.0-beta.0"
   },
   "prepublishOnly": "vp run build",
   "qwik": "./dist/index.qwik.mjs"

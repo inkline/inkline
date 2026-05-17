@@ -207,7 +207,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     flavor: "tsx",
     children: [
       cImport({
-        module: "@builder.io/qwik",
+        module: "@qwik.dev/core",
         named: [...new Set(qwikImports)].map((i) => ({ imported: i })),
       }),
       cRaw({ text: "" }),
