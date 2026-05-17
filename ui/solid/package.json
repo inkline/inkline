@@ -17,12 +17,20 @@
   "scripts": {
     "build": "vp build",
     "validate": "vp check",
-    "test": "vp test --passWithNoTests"
+    "test": "vp test --passWithNoTests",
+    "storybook": "storybook dev -p 6009",
+    "storybook:build": "storybook build -o storybook-static",
+    "prestorybook": "pnpm --filter @inkline/storybook run generate"
   },
   "devDependencies": {
     "@inkline/core": "workspace:*",
+    "@inkline/storybook": "workspace:*",
+    "@storybook/addon-a11y": "catalog:",
+    "@storybook/addon-docs": "catalog:",
     "jsdom": "catalog:",
     "solid-js": "^1",
+    "storybook": "catalog:",
+    "storybook-solidjs-vite": "catalog:",
     "vite-plugin-solid": "catalog:"
   },
   "peerDependencies": {

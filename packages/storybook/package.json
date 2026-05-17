@@ -43,7 +43,7 @@
     "dev": "vp pack --watch",
     "test": "vp test",
     "check": "vp check",
-    "generate": "node bin/inkline-storybook.mjs generate"
+    "generate": "node --import tsx src/bin/generate.ts generate"
   },
   "devDependencies": {
     "@types/node": "catalog:",
