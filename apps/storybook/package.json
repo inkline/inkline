@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "concurrently -n react,vue,solid,astro \"pnpm run dev:react\" \"pnpm run dev:vue\" \"pnpm run dev:solid\" \"pnpm run dev:astro\"",
+    "dev": "concurrently -n react,vue,svelte,solid,angular,astro,app \"pnpm run dev:react\" \"pnpm run dev:vue\" \"pnpm run dev:svelte\" \"pnpm run dev:solid\" \"pnpm run dev:angular\" \"pnpm run dev:astro\" \"wait-on tcp:6006 tcp:6007 tcp:6009 tcp:6012 && pnpm run storybook\"",
     "dev:react": "BROWSER=none pnpm --filter @inkline/react storybook",
     "dev:vue": "BROWSER=none pnpm --filter @inkline/vue storybook",
     "dev:svelte": "BROWSER=none pnpm --filter @inkline/svelte storybook",
@@ -19,6 +19,7 @@
     "@storybook/addon-docs": "catalog:",
     "@storybook/react-vite": "catalog:",
     "concurrently": "catalog:",
-    "storybook": "catalog:"
+    "storybook": "catalog:",
+    "wait-on": "^9"
   }
 }
