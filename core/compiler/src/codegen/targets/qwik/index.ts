@@ -211,7 +211,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         named: [...new Set(qwikImports)].map((i) => ({ imported: i })),
       }),
       cRaw({ text: "" }),
-      cStmt({ body: `export const ${component.name} = component$(() =>` }),
+      cStmt({
+        body:
+          component.props.length > 0
+            ? `export const ${component.name} = component$((props) =>`
+            : `export const ${component.name} = component$(() =>`,
+      }),
       cRaw({ text: "{" }),
       cGroup({
         children: [

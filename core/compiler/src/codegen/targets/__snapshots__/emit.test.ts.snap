@@ -77,7 +77,7 @@ return (
 
 exports[`Qwik target > props type generation 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const Button = component$(() =>
+export const Button = component$((props) =>
 {
 const count = useSignal(0)
 const doubled = useComputed$(() => count.value * 2)

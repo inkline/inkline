@@ -157,7 +157,7 @@ const { label, disabled } = Astro.props as Props;
 
 exports[`full output snapshots > Button > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const Button = component$(() =>
+export const Button = component$((props) =>
 {
 return (
 <button disabled={props.disabled}>
@@ -2062,7 +2062,7 @@ const { text } = Astro.props as Props;
 
 exports[`full output snapshots > MultipleComponentsPerFile > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const Label = component$(() =>
+export const Label = component$((props) =>
 {
 return (
 <span>
@@ -2144,7 +2144,7 @@ const { color, size } = Astro.props as Props;
 
 exports[`full output snapshots > PropDefaults > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const PropDefaults = component$(() =>
+export const PropDefaults = component$((props) =>
 {
 return (
 <div style={\`color: \${props.color}\`}>
