@@ -107,6 +107,7 @@ jobs:
           path: |
             core/compiler/dist
             core/compiler/bin
+            tooling/storybook/dist
             tooling/test-utils/dist
             ui/*/generated
 
