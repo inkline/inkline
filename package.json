@@ -9,6 +9,18 @@
     "test": "vp run -r test",
     "build": "vp run -r build",
     "dev": "vp run website#dev",
+    "dev:storybook": "concurrently -n compiler,generate,frameworks,app \"pnpm run dev:storybook:compiler\" \"pnpm run dev:storybook:generate\" \"pnpm run dev:storybook:frameworks\" \"pnpm run dev:storybook:app\"",
+    "dev:storybook:compiler": "pnpm --filter @inkline/core dev",
+    "dev:storybook:generate": "pnpm --filter @inkline/storybook run generate -- --watch",
+    "dev:storybook:frameworks": "concurrently -n react,vue,svelte,solid,angular,qwik,astro \"pnpm run dev:storybook:react\" \"pnpm run dev:storybook:vue\" \"pnpm run dev:storybook:svelte\" \"pnpm run dev:storybook:solid\" \"pnpm run dev:storybook:angular\" \"pnpm run dev:storybook:qwik\" \"pnpm run dev:storybook:astro\"",
+    "dev:storybook:app": "wait-on tcp:6006 tcp:6007 tcp:6008 tcp:6009 tcp:6010 tcp:6011 tcp:6012 && pnpm --filter @inkline/storybook-app storybook",
+    "dev:storybook:react": "BROWSER=none pnpm --filter @inkline/react storybook",
+    "dev:storybook:vue": "BROWSER=none pnpm --filter @inkline/vue storybook",
+    "dev:storybook:svelte": "BROWSER=none pnpm --filter @inkline/svelte storybook",
+    "dev:storybook:solid": "BROWSER=none pnpm --filter @inkline/solid storybook",
+    "dev:storybook:angular": "BROWSER=none pnpm --filter @inkline/angular storybook",
+    "dev:storybook:qwik": "BROWSER=none pnpm --filter @inkline/qwik storybook",
+    "dev:storybook:astro": "BROWSER=none pnpm --filter @inkline/astro storybook",
     "prepare": "vp config",
     "ci:version": "changeset version",
     "ci:prepublish": "pnpm run build",
@@ -16,7 +28,9 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.4",
-    "vite-plus": "catalog:"
+    "concurrently": "catalog:",
+    "vite-plus": "catalog:",
+    "wait-on": "^9"
   },
   "engines": {
     "node": ">=22.12.0"

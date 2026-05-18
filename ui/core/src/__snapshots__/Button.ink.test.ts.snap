@@ -2,24 +2,26 @@
 
 exports[`Button > output matches snapshots 1`] = `
 {
-  "angular/Button.component.ts": "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<button [disabled]="props.disabled">
-{{ props.label }}
+  "angular/Button.component.ts": "import { Component, signal, computed, effect, Input } from "@angular/core";
+@Component({ standalone: true, template: \`<button [disabled]="disabled">
+{{ label }}
 </button>\` })
 export class ButtonComponent
 {
+@Input() label!: string
+@Input() disabled?: boolean
 }
 ",
   "astro/Button.astro": "---
 interface Props { label: string; disabled?: boolean }
 const { label, disabled } = Astro.props as Props;
 ---
-<button disabled={props.disabled}>
-{props.label}
+<button disabled={disabled}>
+{label}
 </button>
 ",
-  "qwik/Button.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@builder.io/qwik";
-export const Button = component$(() =>
+  "qwik/Button.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const Button = component$((props) =>
 {
 return (
 <button disabled={props.disabled}>
@@ -84,8 +86,8 @@ return (
   interface Props { label: string; disabled?: boolean }
   let { label, disabled }: Props = $props()
 </script>
-<button disabled={props.disabled}>
-  {props.label}
+<button disabled={disabled}>
+  {label}
 </button>
 <style scoped>
   button {
@@ -110,8 +112,8 @@ return (
   const props = defineProps<{ label: string; disabled?: boolean }>()
 </script>
 <template>
-<button :disabled="props.disabled">
-  {{ props.label }}
+<button :disabled="disabled">
+  {{ label }}
 </button>
 </template>
 <style scoped>

@@ -1,16 +1,20 @@
 packages:
   - apps/*
-  - packages/*
+  - core/*
+  - tooling/*
   - ui/*
   - tools/*
 
 catalog:
+  concurrently: ^9
   "@analogjs/vite-plugin-angular": ^2.5.1
   "@angular-eslint/eslint-plugin": ^21.4.0
   "@angular-eslint/template-parser": ^21.4.0
   "@angular/build": ^21.2.11
+  "@angular/cli": ^21
   "@angular/compiler": ^21.2.13
   "@angular/compiler-cli": ^21.2.13
+  "@angular/core": ^21
   "@sveltejs/vite-plugin-svelte": ^7.1.2
   "@tsdown/css": ^0.22.0
   "@types/node": ^24
@@ -27,6 +31,16 @@ catalog:
   eslint-plugin-vue: ^10.9.1
   oxlint: ^1.64.0
   rollup-plugin-svelte: ^7.2.3
+  storybook: ^10
+  storybook-framework-qwik: 0.6.2--canary.95.25602496384.0
+  storybook-solidjs-vite: ^10
+  "@storybook/angular": ^10
+  "@storybook-astro/framework": ^1.2.0
+  "@storybook/addon-a11y": ^10
+  "@storybook/addon-docs": ^10
+  "@storybook/react-vite": ^10
+  "@storybook/svelte-vite": ^10
+  "@storybook/vue3-vite": ^10
   typescript: ^5
   vite: npm:@voidzero-dev/vite-plus-core@latest
   vite-plugin-solid: ^2.11.12

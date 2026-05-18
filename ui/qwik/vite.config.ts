@@ -1,5 +1,5 @@
 import { defineConfig } from "vite-plus";
-import { qwikVite } from "@builder.io/qwik/optimizer";
+import { qwikVite } from "@qwik.dev/core/optimizer";
 
 export default defineConfig(() => {
   return {
@@ -13,7 +13,7 @@ export default defineConfig(() => {
         fileName: (format) => `index.qwik.${format === "es" ? "mjs" : "cjs"}`,
       },
       rollupOptions: {
-        external: [/^@builder\.io\/qwik/],
+        external: [/^@qwik\.dev\/core/],
       },
     },
   };
