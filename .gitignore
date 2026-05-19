@@ -26,3 +26,6 @@ coverage
 
 # AI agent worktrees
 .claude/worktrees/
+
+# Playwright MCP
+.playwright-mcp/

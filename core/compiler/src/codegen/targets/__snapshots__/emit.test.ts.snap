@@ -2,7 +2,7 @@
 
 exports[`Angular target > Counter component 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div>
+@Component({ standalone: true, selector: 'Counter', template: \`<div>
 <p>
 {{ count() }}
 </p>
@@ -21,7 +21,7 @@ constructor() { effect(() => { console.log("effect"); }) }
 
 exports[`Angular target > props type generation 1`] = `
 "import { Component, signal, computed, effect, Input } from "@angular/core";
-@Component({ standalone: true, template: \`<div />\` })
+@Component({ standalone: true, selector: 'Button', template: \`<div />\` })
 export class ButtonComponent
 {
 count = signal(0)

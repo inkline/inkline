@@ -222,6 +222,24 @@ describe("Astro codegen fixes", () => {
     });
   });
 
+  describe("style handling", () => {
+    it("emits scoped style block when styles are present", () => {
+      const comp = makeComp("Button", createElement({ tag: "button" }), {
+        styles: [{ css: "button { color: red; }", scoped: true, lang: "css" as const, loc }],
+      });
+      const code = emitCode(comp);
+      expect(code).toContain("<style scoped>");
+      expect(code).toContain("button { color: red; }");
+      expect(code).toContain("</style>");
+    });
+
+    it("omits style block when no styles", () => {
+      const comp = makeComp("Button", createElement({ tag: "button" }));
+      const code = emitCode(comp);
+      expect(code).not.toContain("<style");
+    });
+  });
+
   describe("resource handling", () => {
     it("emits top-level await in frontmatter", () => {
       const comp = makeComp("Page", createElement({ tag: "div" }), {

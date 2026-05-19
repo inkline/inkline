@@ -254,6 +254,23 @@ describe("Qwik codegen fixes", () => {
     });
   });
 
+  describe("style handling", () => {
+    it("emits side-effect CSS import when styles are present", () => {
+      const comp = makeComp("Button", createElement({ tag: "button" }), {
+        styles: [{ css: "button { color: red; }", scoped: true, lang: "css" as const, loc }],
+      });
+      const code = emitCode(comp);
+      expect(code).toContain('import "./Button.css";');
+      expect(code).not.toContain("module.css");
+    });
+
+    it("omits CSS import when no styles", () => {
+      const comp = makeComp("Button", createElement({ tag: "button" }));
+      const code = emitCode(comp);
+      expect(code).not.toContain(".css");
+    });
+  });
+
   describe("resource handling", () => {
     it("emits useResource$ for resources", () => {
       const comp = makeComp("Data", createElement({ tag: "div" }), {

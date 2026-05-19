@@ -2395,7 +2395,7 @@ Also update `package.json` for the public surface:
 
 J1: `bin/inkline.ts` with commands per §18; build config to emit `dist/bin/inkline.mjs`.
 
-- **Accept:** `bin/inkline.test.ts` green; manual smoke `inkline build src/Button.ink.tsx --target react`.
+- **Accept:** `bin/inkline.test.ts` green; manual smoke `inkline build src/IButton.ink.tsx --target react`.
 
 J2: Delete legacy files (all under old paths; new homes were established in earlier phases):
 

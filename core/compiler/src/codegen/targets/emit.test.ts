@@ -452,6 +452,63 @@ describe("Svelte onCleanup lifecycle", () => {
   });
 });
 
+describe("style emission", () => {
+  function makeCompWithStyles(name: string): IRComponent {
+    return {
+      ...makeComp(
+        name,
+        createElement({ tag: "button", children: [createText({ value: "click" })] }),
+      ),
+      styles: [{ css: "button { color: red; }", scoped: true, lang: "css" as const, loc }],
+    };
+  }
+
+  it("React: emits side-effect CSS import", () => {
+    const comp = makeCompWithStyles("Styled");
+    const result = print(react.emit(comp, makeCtx(react)).root);
+    expect(result.code).toContain('import "./Styled.css";');
+    expect(result.code).not.toContain("module.css");
+    expect(result.code).not.toContain("import styles");
+  });
+
+  it("Solid: emits side-effect CSS import", () => {
+    const comp = makeCompWithStyles("Styled");
+    const result = print(solid.emit(comp, makeCtx(solid)).root);
+    expect(result.code).toContain('import "./Styled.css";');
+    expect(result.code).not.toContain("module.css");
+    expect(result.code).not.toContain("import styles");
+  });
+
+  it("Qwik: emits side-effect CSS import", () => {
+    const comp = makeCompWithStyles("Styled");
+    const result = print(qwik.emit(comp, makeCtx(qwik)).root);
+    expect(result.code).toContain('import "./Styled.css";');
+    expect(result.code).not.toContain("module.css");
+  });
+
+  it("Astro: emits scoped style block", () => {
+    const comp = makeCompWithStyles("Styled");
+    const result = print(astro.emit(comp, makeCtx(astro)).root);
+    expect(result.code).toContain("<style scoped>");
+    expect(result.code).toContain("button { color: red; }");
+    expect(result.code).toContain("</style>");
+  });
+
+  it("Vue: emits scoped style block", () => {
+    const comp = makeCompWithStyles("Styled");
+    const result = print(vue.emit(comp, makeCtx(vue)).root);
+    expect(result.code).toContain("<style scoped>");
+    expect(result.code).toContain("button { color: red; }");
+  });
+
+  it("Svelte: emits scoped style block", () => {
+    const comp = makeCompWithStyles("Styled");
+    const result = print(svelte.emit(comp, makeCtx(svelte)).root);
+    expect(result.code).toContain("<style scoped>");
+    expect(result.code).toContain("button { color: red; }");
+  });
+});
+
 describe("React Switch fallback (accumulator)", () => {
   it("renders fallback without regex replacement", () => {
     const switchNode = createSwitch({

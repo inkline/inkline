@@ -147,6 +147,8 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   }
 
   const template = emitNode(component.render, rules);
+  const styleImport =
+    component.styles.length > 0 ? [cRaw({ text: `import "./${component.name}.css";` })] : [];
 
   const file = cFile({
     flavor: "ts",
@@ -155,9 +157,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         module: "@angular/core",
         named: [...new Set(angularImports)].map((i) => ({ imported: i })),
       }),
+      ...styleImport,
       cRaw({ text: "" }),
       cRaw({
-        text: `@Component({ standalone: true, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
+        text: `@Component({ standalone: true, selector: '${component.name}', template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
       }),
       cStmt({ body: `export class ${component.name}Component` }),
       cRaw({ text: "{" }),

@@ -325,9 +325,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     : `export function ${component.name}(props: ${propsType})`;
 
   const styleImport =
-    component.styles.length > 0
-      ? [cRaw({ text: `import styles from "./${component.name}.module.css";` })]
-      : [];
+    component.styles.length > 0 ? [cRaw({ text: `import "./${component.name}.css";` })] : [];
 
   const runtimeDirective =
     component.runtime === "client"

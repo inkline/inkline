@@ -30,7 +30,7 @@ async function getAllOutputs(fixture: string, target: TargetName): Promise<strin
 const TARGETS: TargetName[] = ["react", "solid", "vue", "svelte", "angular", "qwik", "astro"];
 const CORE_FIXTURES = [
   "Counter",
-  "Button",
+  "IButton",
   "Conditional",
   "ForLoop",
   "Lifecycle",

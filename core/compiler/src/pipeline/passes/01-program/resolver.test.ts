@@ -21,10 +21,10 @@ describe("resolveSiblings", () => {
   });
 
   it("finds sibling .ink.css file", () => {
-    const cssPath = join(tmp, "Button.ink.css");
+    const cssPath = join(tmp, "IButton.ink.css");
     writeFileSync(cssPath, ".btn { color: red; }", "utf-8");
 
-    const result = resolveSiblings(join(tmp, "Button.ink.tsx"));
+    const result = resolveSiblings(join(tmp, "IButton.ink.tsx"));
     expect(result.styles).toHaveLength(1);
     expect(result.styles[0]!.css).toBe(".btn { color: red; }");
     expect(result.styles[0]!.scoped).toBe(true);

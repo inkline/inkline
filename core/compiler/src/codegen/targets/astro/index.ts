@@ -1,7 +1,7 @@
 import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../context.ts";
 import { astroConformance } from "./conformance.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
-import { cFile, cStmt, cRaw } from "../../code-ir/builders.ts";
+import { cFile, cStmt, cRaw, cStyle } from "../../code-ir/builders.ts";
 import {
   rewriteExpr,
   rewriteAttrName,
@@ -116,6 +116,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cRaw({ text: "---" }),
       cRaw({ text: "" }),
       cRaw({ text: template }),
+      ...component.styles.map((s) => cStyle({ css: s.css, scoped: s.scoped })),
     ],
   });
 

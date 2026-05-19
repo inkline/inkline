@@ -28,7 +28,9 @@ export async function lintEmittedForTarget(
       writeFileSync(dest, file.contents, "utf-8");
     }
 
-    const filePaths = files.map((f) => join(tmp, f.path));
+    const filePaths = files
+      .filter((f) => /\.[cm]?[jt]sx?$/.test(f.path))
+      .map((f) => join(tmp, f.path));
 
     if (conformance.lint.tool === "oxlint") {
       return await lintWithOxlint(conformance.lint.config, filePaths);

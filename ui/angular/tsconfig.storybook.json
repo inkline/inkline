@@ -1,5 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "include": ["src", "generated", "stories", ".storybook/**/*"],
-  "compilerOptions": {}
+  "compilerOptions": {
+    "noEmit": false
+  }
 }

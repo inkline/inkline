@@ -122,7 +122,7 @@ describe("parsePass", () => {
       });
     `;
     const ctx = makeCtx();
-    const artifact = await programPass.run({ fileName: "Button.ink.tsx", source }, ctx);
+    const artifact = await programPass.run({ fileName: "IButton.ink.tsx", source }, ctx);
     const module = parsePass.run(artifact, ctx);
     const resolved = module instanceof Promise ? await module : module;
 

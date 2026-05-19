@@ -63,6 +63,14 @@ describe("createStorybookConfig", () => {
     expect(out.plugins).toEqual(["existing", "react-plugin"]);
   });
 
+  it("forwards frameworkOptions to framework.options", () => {
+    const config = createStorybookConfig({
+      ...base,
+      frameworkOptions: { tsConfig: "./tsconfig.storybook.json" },
+    });
+    expect(config.framework.options).toEqual({ tsConfig: "./tsconfig.storybook.json" });
+  });
+
   it("adds vite plugins when none exist and leaves plugins untouched when none given", async () => {
     const withPlugin = await createStorybookConfig({
       ...base,

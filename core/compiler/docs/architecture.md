@@ -276,7 +276,7 @@ for co-located style files alongside a `.ink.tsx` source:
 
 Resolved styles are appended to every component in the module as `IRStyleBlock`
 entries with `scoped: true`. The file must share the same base name as the
-`.ink.tsx` file (e.g., `Button.ink.tsx` + `Button.ink.css`).
+`.ink.tsx` file (e.g., `IButton.ink.tsx` + `IButton.ink.css`).
 
 ---
 

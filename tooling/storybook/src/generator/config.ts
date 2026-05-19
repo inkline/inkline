@@ -62,7 +62,7 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
     target: "angular",
     componentPackage: "@inkline/angular",
     typeImport: "@storybook/angular",
-    frameworkPackage: "@storybook/angular",
+    frameworkPackage: "@analogjs/storybook-angular",
     port: 6010,
     template: "angular",
   },

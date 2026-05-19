@@ -337,9 +337,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       : [];
 
   const styleImport =
-    component.styles.length > 0
-      ? [cRaw({ text: `import styles from "./${component.name}.module.css";` })]
-      : [];
+    component.styles.length > 0 ? [cRaw({ text: `import "./${component.name}.css";` })] : [];
 
   const renderTree = emitNode(component.render, rules);
   const file = cFile({

@@ -10,7 +10,7 @@ import {
   resolveComponent,
 } from "@inkline/test-utils";
 
-const BUTTON = resolveComponent(import.meta.url, "./Button.ink.tsx");
+const BUTTON = resolveComponent(import.meta.url, "./IButton.ink.tsx");
 
 describe("Button", () => {
   it("compiles to all 7 targets without errors", async () => {
