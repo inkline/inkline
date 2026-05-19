@@ -76,7 +76,7 @@ describe("compileIncremental", () => {
       state0,
       [
         { fileName: "Counter.ink.tsx", source: COUNTER_SOURCE },
-        { fileName: "Button.ink.tsx", source: BUTTON_SOURCE },
+        { fileName: "IButton.ink.tsx", source: BUTTON_SOURCE },
       ],
       { targets: ["react"] },
     );
@@ -87,12 +87,12 @@ describe("compileIncremental", () => {
       r1.nextState,
       [
         { fileName: "Counter.ink.tsx", source: COUNTER_SOURCE },
-        { fileName: "Button.ink.tsx", source: BUTTON_SOURCE.replace("label", "text") },
+        { fileName: "IButton.ink.tsx", source: BUTTON_SOURCE.replace("label", "text") },
       ],
       { targets: ["react"] },
     );
 
-    expect(r2.changed).toEqual(["Button.ink.tsx"]);
+    expect(r2.changed).toEqual(["IButton.ink.tsx"]);
     expect(r2.skipped).toEqual(["Counter.ink.tsx"]);
   });
 
@@ -102,7 +102,7 @@ describe("compileIncremental", () => {
       state,
       [
         { fileName: "Counter.ink.tsx", source: COUNTER_SOURCE },
-        { fileName: "Button.ink.tsx", source: BUTTON_SOURCE },
+        { fileName: "IButton.ink.tsx", source: BUTTON_SOURCE },
       ],
       { targets: ["react"] },
     );
@@ -117,7 +117,7 @@ describe("compileIncremental", () => {
       state0,
       [
         { fileName: "Counter.ink.tsx", source: COUNTER_SOURCE },
-        { fileName: "Button.ink.tsx", source: BUTTON_SOURCE },
+        { fileName: "IButton.ink.tsx", source: BUTTON_SOURCE },
       ],
       { targets: ["react"] },
     );

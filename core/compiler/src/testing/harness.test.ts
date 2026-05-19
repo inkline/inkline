@@ -15,7 +15,7 @@ describe("compileFixture", () => {
   });
 
   it("compiles Button fixture and extracts props from parameter type", async () => {
-    const result = await compileFixture("Button", ["react"]);
+    const result = await compileFixture("IButton", ["react"]);
     expect(result.diagnostics).toEqual([]);
     const comp = result.ir?.module.components[0];
     expect(comp).toBeDefined();

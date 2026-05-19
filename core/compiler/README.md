@@ -298,7 +298,7 @@ Commands:
 
 ```bash
 # Single target
-inkline build src/Button.ink.tsx --target react
+inkline build src/IButton.ink.tsx --target react
 
 # Multiple targets
 inkline build src/**/*.ink.tsx --target react,vue,svelte,solid --out-dir dist
@@ -479,7 +479,7 @@ export default defineConfig({
 my-ui-library/
 ├── inkline.config.ts
 ├── src/
-│   ├── Button.ink.tsx
+│   ├── IButton.ink.tsx
 │   ├── Card.ink.tsx
 │   ├── Input.ink.tsx
 │   └── Modal.ink.tsx

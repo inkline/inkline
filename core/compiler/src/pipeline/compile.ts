@@ -40,10 +40,14 @@ function emitComponent(component: IRComponent, target: Target, ctx: PassContext)
   ];
 
   for (const style of component.styles) {
-    const isCssModule = target.name === "react" || target.name === "solid";
-    if (isCssModule) {
+    const needsCompanionCss =
+      target.name === "react" ||
+      target.name === "solid" ||
+      target.name === "qwik" ||
+      target.name === "angular";
+    if (needsCompanionCss) {
       files.push({
-        path: `${component.name}.module.css`,
+        path: `${component.name}.css`,
         contents: style.css,
       });
     }

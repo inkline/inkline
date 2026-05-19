@@ -17,24 +17,31 @@
     "build": "vp build",
     "validate": "vp check",
     "test": "vp test --passWithNoTests",
-    "storybook": "ng run inkline-angular:storybook",
-    "storybook:build": "ng run inkline-angular:build-storybook",
+    "storybook": "storybook dev -p 6010",
+    "storybook:build": "storybook build -o storybook-static",
     "prestorybook": "pnpm --filter @inkline/storybook run generate"
   },
   "devDependencies": {
+    "@analogjs/storybook-angular": "catalog:",
+    "@analogjs/vite-plugin-angular": "catalog:",
     "@angular/build": "catalog:",
     "@angular/cli": "catalog:",
     "@angular/compiler": "catalog:",
     "@angular/compiler-cli": "catalog:",
     "@angular/core": "catalog:",
+    "@angular/platform-browser": "catalog:",
+    "@angular/platform-browser-dynamic": "catalog:",
     "@inkline/core": "workspace:*",
     "@inkline/storybook": "workspace:*",
     "@storybook/addon-a11y": "catalog:",
     "@storybook/addon-docs": "catalog:",
     "@storybook/angular": "catalog:",
     "jsdom": "catalog:",
+    "rxjs": "^7",
     "storybook": "catalog:",
-    "typescript": "catalog:"
+    "tslib": "^2",
+    "typescript": "catalog:",
+    "zone.js": "^0.15"
   },
   "peerDependencies": {
     "@angular/core": ">=17"

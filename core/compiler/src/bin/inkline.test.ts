@@ -207,7 +207,7 @@ describe("inkline CLI", () => {
       const { status } = run(
         "build",
         resolve(FIXTURES_DIR, "Counter.ink.tsx"),
-        resolve(FIXTURES_DIR, "Button.ink.tsx"),
+        resolve(FIXTURES_DIR, "IButton.ink.tsx"),
         "--config",
         configPath,
       );
@@ -216,8 +216,8 @@ describe("inkline CLI", () => {
       const barrel = readFileSync(resolve(reactDir, "index.ts"), "utf-8");
       const lines = barrel.trim().split("\n");
       expect(lines).toHaveLength(2);
-      expect(lines[0]).toContain("Button");
-      expect(lines[1]).toContain("Counter");
+      expect(lines[0]).toContain("Counter");
+      expect(lines[1]).toContain("IButton");
     } finally {
       if (existsSync(configDir)) rmSync(configDir, { recursive: true });
     }

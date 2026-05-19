@@ -30,6 +30,8 @@ export interface StorybookConfigOptions {
   readonly addons?: readonly string[];
   /** Framework Vite plugin(s), e.g. `@vitejs/plugin-react`. */
   readonly vitePlugins?: readonly unknown[];
+  /** Options forwarded to `framework.options` (e.g. Angular's `tsconfig`). */
+  readonly frameworkOptions?: Record<string, unknown>;
 }
 
 export interface StorybookMainConfig {
@@ -55,7 +57,7 @@ export function createStorybookConfig(options: StorybookConfigOptions): Storyboo
   const vitePlugins = options.vitePlugins ?? [];
 
   return {
-    framework: { name: framework, options: {} },
+    framework: { name: framework, options: options.frameworkOptions ?? {} },
     stories: options.stories ?? DEFAULT_STORIES,
     addons: [...DEFAULT_ADDONS, ...(options.addons ?? [])],
     async viteFinal(config, { configType }) {

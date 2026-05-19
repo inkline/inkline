@@ -42,7 +42,7 @@ describe("compileComponent", () => {
   it("compiles a file from disk", async () => {
     const filePath = resolveComponent(
       import.meta.url,
-      "../../../core/compiler/src/__fixtures__/Button.ink.tsx",
+      "../../../core/compiler/src/__fixtures__/IButton.ink.tsx",
     );
     const result = await compileComponent(filePath, { targets: ["react"] });
     expect(result.ok).toBe(true);

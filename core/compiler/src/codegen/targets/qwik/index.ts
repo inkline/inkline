@@ -203,6 +203,9 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
 
   const renderTree = emitNode(component.render, rules);
 
+  const styleImport =
+    component.styles.length > 0 ? [cRaw({ text: `import "./${component.name}.css";` })] : [];
+
   const file = cFile({
     flavor: "tsx",
     children: [
@@ -210,6 +213,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         module: "@qwik.dev/core",
         named: [...new Set(qwikImports)].map((i) => ({ imported: i })),
       }),
+      ...styleImport,
       cRaw({ text: "" }),
       cStmt({
         body:

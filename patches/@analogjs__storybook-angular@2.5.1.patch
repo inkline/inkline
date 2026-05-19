@@ -1,0 +1,13 @@
+diff --git a/src/lib/preset.js b/src/lib/preset.js
+index 5be2ffbfd0df55d75f68911f71c3cdd8ef471723..e77e93a21f85e6c040c2eedbdbd3da02fca4361c 100644
+--- a/src/lib/preset.js
++++ b/src/lib/preset.js
+@@ -18,7 +18,7 @@ export const previewAnnotations = async (entries = [], options) => {
+     return annotations;
+ };
+ export const core = async (config, options) => {
+-    const presetCore = await PresetCore(config, options);
++    const presetCore = typeof PresetCore === 'function' ? await PresetCore(config, options) : PresetCore;
+     return {
+         ...presetCore,
+         builder: {

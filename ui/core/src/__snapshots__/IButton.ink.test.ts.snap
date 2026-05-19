@@ -2,26 +2,78 @@
 
 exports[`Button > output matches snapshots 1`] = `
 {
-  "angular/Button.component.ts": "import { Component, signal, computed, effect, Input } from "@angular/core";
-@Component({ standalone: true, template: \`<button [disabled]="disabled">
+  "angular/IButton.component.ts": "import { Component, signal, computed, effect, Input } from "@angular/core";
+import "./IButton.css";
+@Component({ standalone: true, selector: 'IButton', template: \`<button [disabled]="disabled">
 {{ label }}
 </button>\` })
-export class ButtonComponent
+export class IButtonComponent
 {
 @Input() label!: string
 @Input() disabled?: boolean
 }
 ",
-  "astro/Button.astro": "---
+  "angular/IButton.css": "button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+",
+  "astro/IButton.astro": "---
 interface Props { label: string; disabled?: boolean }
 const { label, disabled } = Astro.props as Props;
 ---
 <button disabled={disabled}>
 {label}
 </button>
+<style scoped>
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+</style>
 ",
-  "qwik/Button.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const Button = component$((props) =>
+  "qwik/IButton.css": "button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+",
+  "qwik/IButton.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+import "./IButton.css";
+export const IButton = component$((props) =>
 {
 return (
 <button disabled={props.disabled}>
@@ -30,7 +82,7 @@ return (
 )
 });
 ",
-  "react/Button.module.css": "button {
+  "react/IButton.css": "button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -46,8 +98,8 @@ button:disabled {
   cursor: not-allowed;
 }
 ",
-  "react/Button.tsx": "import styles from "./Button.module.css";
-export function Button(props: { label: string; disabled?: boolean })
+  "react/IButton.tsx": "import "./IButton.css";
+export function IButton(props: { label: string; disabled?: boolean })
 {
 return (
 <button disabled={props.disabled}>
@@ -56,7 +108,7 @@ return (
 )
 }
 ",
-  "solid/Button.module.css": "button {
+  "solid/IButton.css": "button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -72,8 +124,8 @@ button:disabled {
   cursor: not-allowed;
 }
 ",
-  "solid/Button.tsx": "import styles from "./Button.module.css";
-export default function Button(props: { label: string; disabled?: boolean })
+  "solid/IButton.tsx": "import "./IButton.css";
+export default function IButton(props: { label: string; disabled?: boolean })
 {
 return (
 <button disabled={props.disabled}>
@@ -82,7 +134,7 @@ return (
 )
 }
 ",
-  "svelte/Button.svelte": "<script lang="ts">
+  "svelte/IButton.svelte": "<script lang="ts">
   interface Props { label: string; disabled?: boolean }
   let { label, disabled }: Props = $props()
 </script>
@@ -108,7 +160,7 @@ return (
   
 </style>
 ",
-  "vue/Button.vue": "<script setup lang="ts">
+  "vue/IButton.vue": "<script setup lang="ts">
   const props = defineProps<{ label: string; disabled?: boolean }>()
 </script>
 <template>

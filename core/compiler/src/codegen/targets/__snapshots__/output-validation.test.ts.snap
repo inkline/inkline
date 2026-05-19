@@ -2,7 +2,7 @@
 
 exports[`full output snapshots > BatchUpdates > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div>
+@Component({ standalone: true, selector: 'BatchUpdates', template: \`<div>
 <span>
 {{ sum() }}
 </span>
@@ -133,93 +133,9 @@ exports[`full output snapshots > BatchUpdates > vue 1`] = `
 "
 `;
 
-exports[`full output snapshots > Button > angular 1`] = `
-"import { Component, signal, computed, effect, Input } from "@angular/core";
-@Component({ standalone: true, template: \`<button [disabled]="disabled">
-{{ label }}
-</button>\` })
-export class ButtonComponent
-{
-@Input() label!: string
-@Input() disabled?: boolean
-}
-"
-`;
-
-exports[`full output snapshots > Button > astro 1`] = `
-"---
-interface Props { label: string; disabled?: boolean }
-const { label, disabled } = Astro.props as Props;
----
-<button disabled={disabled}>
-{label}
-</button>
-"
-`;
-
-exports[`full output snapshots > Button > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const Button = component$((props) =>
-{
-return (
-<button disabled={props.disabled}>
-  {props.label}
-</button>
-)
-});
-"
-`;
-
-exports[`full output snapshots > Button > react 1`] = `
-"export function Button(props: { label: string; disabled?: boolean })
-{
-return (
-<button disabled={props.disabled}>
-  {props.label}
-</button>
-)
-}
-"
-`;
-
-exports[`full output snapshots > Button > solid 1`] = `
-"export default function Button(props: { label: string; disabled?: boolean })
-{
-return (
-<button disabled={props.disabled}>
-  {props.label}
-</button>
-)
-}
-"
-`;
-
-exports[`full output snapshots > Button > svelte 1`] = `
-"<script lang="ts">
-  interface Props { label: string; disabled?: boolean }
-  let { label, disabled }: Props = $props()
-</script>
-<button disabled={disabled}>
-  {label}
-</button>
-"
-`;
-
-exports[`full output snapshots > Button > vue 1`] = `
-"<script setup lang="ts">
-  const props = defineProps<{ label: string; disabled?: boolean }>()
-</script>
-<template>
-<button :disabled="disabled">
-  {{ label }}
-</button>
-</template>
-"
-`;
-
 exports[`full output snapshots > Composite > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div>
+@Component({ standalone: true, selector: 'Composite', template: \`<div>
 <span id="sum">
 {{ sum() }}
 </span>
@@ -379,7 +295,7 @@ exports[`full output snapshots > Composite > vue 1`] = `
 
 exports[`full output snapshots > Conditional > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div>
+@Component({ standalone: true, selector: 'Conditional', template: \`<div>
 @if (visible()) {
 <span>
 Visible
@@ -513,7 +429,7 @@ exports[`full output snapshots > Conditional > vue 1`] = `
 
 exports[`full output snapshots > ConditionalClass > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div [class]="active() ? "active" : "inactive"">
+@Component({ standalone: true, selector: 'ConditionalClass', template: \`<div [class]="active() ? "active" : "inactive"">
 <button (click)="() => setActive(!active())">
 Toggle
 </button>
@@ -613,7 +529,7 @@ exports[`full output snapshots > ConditionalClass > vue 1`] = `
 
 exports[`full output snapshots > ControlledSelect > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<select [value]="value()" (change)="e => setValue(e.target.value)">
+@Component({ standalone: true, selector: 'ControlledSelect', template: \`<select [value]="value()" (change)="e => setValue(e.target.value)">
 <option value="a">
 A
 </option>
@@ -755,7 +671,7 @@ exports[`full output snapshots > ControlledSelect > vue 1`] = `
 
 exports[`full output snapshots > ControlledTextarea > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div>
+@Component({ standalone: true, selector: 'ControlledTextarea', template: \`<div>
 <textarea [value]="text()" (input)="e => setText(e.target.value)" />
 <p>
 {{ text().length }}
@@ -869,7 +785,7 @@ exports[`full output snapshots > ControlledTextarea > vue 1`] = `
 
 exports[`full output snapshots > Counter > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div>
+@Component({ standalone: true, selector: 'Counter', template: \`<div>
 <p>
 {{ count() }}
 </p>
@@ -1023,7 +939,7 @@ exports[`full output snapshots > Counter > vue 1`] = `
 
 exports[`full output snapshots > DynamicList > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div>
+@Component({ standalone: true, selector: 'DynamicList', template: \`<div>
 <input [value]="input()" (input)="e => setInput(e.target.value)" />
 <button (click)="() => { setItems([...items(), input()]); setInput(""); }">
 Add
@@ -1170,7 +1086,7 @@ exports[`full output snapshots > DynamicList > vue 1`] = `
 
 exports[`full output snapshots > EffectCleanup > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<button (click)="() => setActive(!active())">
+@Component({ standalone: true, selector: 'EffectCleanup', template: \`<button (click)="() => setActive(!active())">
 Toggle
 </button>\` })
 export class EffectCleanupComponent
@@ -1280,7 +1196,7 @@ exports[`full output snapshots > EffectCleanup > vue 1`] = `
 
 exports[`full output snapshots > ElementRef > angular 1`] = `
 "import { Component, signal, computed, effect, viewChild, ElementRef } from "@angular/core";
-@Component({ standalone: true, template: \`<input placeholder="auto-focus" #inputRef />\` })
+@Component({ standalone: true, selector: 'ElementRef', template: \`<input placeholder="auto-focus" #inputRef />\` })
 export class ElementRefComponent
 {
 inputRef = viewChild<ElementRef>('inputRef')
@@ -1356,7 +1272,7 @@ exports[`full output snapshots > ElementRef > vue 1`] = `
 
 exports[`full output snapshots > ForLoop > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<ul>
+@Component({ standalone: true, selector: 'ForLoop', template: \`<ul>
 @for (item of items(); track item => item) {
 <li>
 {{ item }}
@@ -1455,7 +1371,7 @@ exports[`full output snapshots > ForLoop > vue 1`] = `
 
 exports[`full output snapshots > FormField > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div>
+@Component({ standalone: true, selector: 'FormField', template: \`<div>
 <input [value]="value()" (input)="e => setValue(e.target.value)" />
 <p>
 {{ value() }}
@@ -1560,9 +1476,93 @@ exports[`full output snapshots > FormField > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > IButton > angular 1`] = `
+"import { Component, signal, computed, effect, Input } from "@angular/core";
+@Component({ standalone: true, selector: 'IButton', template: \`<button [disabled]="disabled">
+{{ label }}
+</button>\` })
+export class IButtonComponent
+{
+@Input() label!: string
+@Input() disabled?: boolean
+}
+"
+`;
+
+exports[`full output snapshots > IButton > astro 1`] = `
+"---
+interface Props { label: string; disabled?: boolean }
+const { label, disabled } = Astro.props as Props;
+---
+<button disabled={disabled}>
+{label}
+</button>
+"
+`;
+
+exports[`full output snapshots > IButton > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const IButton = component$((props) =>
+{
+return (
+<button disabled={props.disabled}>
+  {props.label}
+</button>
+)
+});
+"
+`;
+
+exports[`full output snapshots > IButton > react 1`] = `
+"export function IButton(props: { label: string; disabled?: boolean })
+{
+return (
+<button disabled={props.disabled}>
+  {props.label}
+</button>
+)
+}
+"
+`;
+
+exports[`full output snapshots > IButton > solid 1`] = `
+"export default function IButton(props: { label: string; disabled?: boolean })
+{
+return (
+<button disabled={props.disabled}>
+  {props.label}
+</button>
+)
+}
+"
+`;
+
+exports[`full output snapshots > IButton > svelte 1`] = `
+"<script lang="ts">
+  interface Props { label: string; disabled?: boolean }
+  let { label, disabled }: Props = $props()
+</script>
+<button disabled={disabled}>
+  {label}
+</button>
+"
+`;
+
+exports[`full output snapshots > IButton > vue 1`] = `
+"<script setup lang="ts">
+  const props = defineProps<{ label: string; disabled?: boolean }>()
+</script>
+<template>
+<button :disabled="disabled">
+  {{ label }}
+</button>
+</template>
+"
+`;
+
 exports[`full output snapshots > Lifecycle > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<span>
+@Component({ standalone: true, selector: 'Lifecycle', template: \`<span>
 {{ mounted() ? "mounted" : "pending" }}
 </span>\` })
 export class LifecycleComponent
@@ -1656,7 +1656,7 @@ exports[`full output snapshots > Lifecycle > vue 1`] = `
 
 exports[`full output snapshots > MemoChain > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div>
+@Component({ standalone: true, selector: 'MemoChain', template: \`<div>
 <span>
 {{ label() }}
 </span>
@@ -1795,7 +1795,7 @@ exports[`full output snapshots > MemoChain > vue 1`] = `
 
 exports[`full output snapshots > MixedControlFlow > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div>
+@Component({ standalone: true, selector: 'MixedControlFlow', template: \`<div>
 <input [value]="filter()" (input)="e => setFilter(e.target.value)" />
 <ul>
 @for (item of items(); track item => item) {
@@ -1925,7 +1925,7 @@ exports[`full output snapshots > MixedControlFlow > vue 1`] = `
 
 exports[`full output snapshots > MultiRefs > angular 1`] = `
 "import { Component, signal, computed, effect, viewChild, ElementRef } from "@angular/core";
-@Component({ standalone: true, template: \`<div>
+@Component({ standalone: true, selector: 'MultiRefs', template: \`<div>
 <input placeholder="focus me" #inputRef />
 <button #buttonRef>
 Click
@@ -2042,7 +2042,7 @@ exports[`full output snapshots > MultiRefs > vue 1`] = `
 
 exports[`full output snapshots > MultipleComponentsPerFile > angular 1`] = `
 "import { Component, signal, computed, effect, Input } from "@angular/core";
-@Component({ standalone: true, template: \`<span>
+@Component({ standalone: true, selector: 'Label', template: \`<span>
 {{ text }}
 </span>\` })
 export class LabelComponent
@@ -2125,7 +2125,7 @@ exports[`full output snapshots > MultipleComponentsPerFile > vue 1`] = `
 
 exports[`full output snapshots > PropDefaults > angular 1`] = `
 "import { Component, signal, computed, effect, Input } from "@angular/core";
-@Component({ standalone: true, template: \`<div [style]="\\\`color: \\\${color}\\\`">
+@Component({ standalone: true, selector: 'PropDefaults', template: \`<div [style]="\\\`color: \\\${color}\\\`">
 {{ size }}
 </div>\` })
 export class PropDefaultsComponent
@@ -2209,7 +2209,7 @@ exports[`full output snapshots > PropDefaults > vue 1`] = `
 
 exports[`full output snapshots > SlotWithDefault > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div>
+@Component({ standalone: true, selector: 'SlotWithDefault', template: \`<div>
 <main>
 <p>
 Default content
@@ -2349,7 +2349,7 @@ exports[`full output snapshots > SlotWithDefault > vue 1`] = `
 
 exports[`full output snapshots > SwitchTabs > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div>
+@Component({ standalone: true, selector: 'SwitchTabs', template: \`<div>
 @switch (true) {
   @case (tab() === "a") {
     <p>
@@ -2493,7 +2493,7 @@ exports[`full output snapshots > SwitchTabs > vue 1`] = `
 
 exports[`multi-component files > ComponentRef → angular (all files) 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, template: \`<div>
+@Component({ standalone: true, selector: 'Child', template: \`<div>
 Child
 </div>\` })
 export class ChildComponent
@@ -2501,7 +2501,7 @@ export class ChildComponent
 }
 
 import { Component, signal, computed, effect, viewChild, ElementRef } from "@angular/core";
-@Component({ standalone: true, template: \`<unknown />\` })
+@Component({ standalone: true, selector: 'ComponentRef', template: \`<unknown />\` })
 export class ComponentRefComponent
 {
 childRef = viewChild<ElementRef>('childRef')

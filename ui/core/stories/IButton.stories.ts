@@ -1,8 +1,8 @@
 import { defineStories } from "@inkline/storybook";
-import type { ButtonProps } from "../src/Button.ink.tsx";
+import type { ButtonProps } from "../src/IButton.ink.tsx";
 
 export default defineStories<ButtonProps>({
-  component: "Button",
+  component: "IButton",
   title: "Components/Button",
   args: {
     label: "Click me",
