@@ -1,0 +1,163 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Badge > output matches snapshots 1`] = `
+{
+  "angular/IBadge.component.ts": "import { Component, signal, computed, effect, Input } from "@angular/core";
+import "./IBadge.css";
+@Component({ standalone: true, selector: 'IBadge', template: \`<span [class]="variant ? \\\`badge badge--\\\${variant}\\\` : "badge"">
+{{ label }}
+</span>\` })
+export class IBadgeComponent
+{
+@Input() label!: string
+@Input() variant?: string
+}
+",
+  "angular/IBadge.css": ".badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+",
+  "astro/IBadge.astro": "---
+interface Props { label: string; variant?: string }
+const { label, variant } = Astro.props as Props;
+---
+<span class={variant ? \`badge badge--\${variant}\` : "badge"}>
+{label}
+</span>
+<style scoped>
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  
+</style>
+",
+  "qwik/IBadge.css": ".badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+",
+  "qwik/IBadge.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+import "./IBadge.css";
+export const IBadge = component$((props) =>
+{
+return (
+<span class={props.variant ? \`badge badge--\${props.variant}\` : "badge"}>
+  {props.label}
+</span>
+)
+});
+",
+  "react/IBadge.css": ".badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+",
+  "react/IBadge.tsx": "import "./IBadge.css";
+export function IBadge(props: { label: string; variant?: string })
+{
+return (
+<span className={props.variant ? \`badge badge--\${props.variant}\` : "badge"}>
+  {props.label}
+</span>
+)
+}
+",
+  "solid/IBadge.css": ".badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+",
+  "solid/IBadge.tsx": "import "./IBadge.css";
+export default function IBadge(props: { label: string; variant?: string })
+{
+return (
+<span class={props.variant ? \`badge badge--\${props.variant}\` : "badge"}>
+  {props.label}
+</span>
+)
+}
+",
+  "svelte/IBadge.svelte": "<script lang="ts">
+  interface Props { label: string; variant?: string }
+  let { label, variant }: Props = $props()
+</script>
+<span class={variant ? \`badge badge--\${variant}\` : "badge"}>
+  {label}
+</span>
+<style scoped>
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  
+</style>
+",
+  "vue/IBadge.vue": "<script setup lang="ts">
+  const props = defineProps<{ label: string; variant?: string }>()
+</script>
+<template>
+<span :class='variant ? \`badge badge--\${variant}\` : "badge"'>
+  {{ label }}
+</span>
+</template>
+<style scoped>
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  
+</style>
+",
+}
+`;
