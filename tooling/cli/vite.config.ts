@@ -4,13 +4,14 @@ export default defineConfig({
   pack: {
     entry: {
       index: "src/index.ts",
+      "bin/inkline": "src/bin/inkline.ts",
     },
     dts: {
       tsgo: true,
     },
   },
   lint: {
-    ignorePatterns: ["dist/**", "coverage/**", "src/__fixtures__/**"],
+    ignorePatterns: ["dist/**", "coverage/**"],
     options: {
       typeAware: true,
       typeCheck: true,
@@ -18,6 +19,6 @@ export default defineConfig({
   },
   fmt: {},
   test: {
-    testTimeout: 15_000,
+    testTimeout: 30_000,
   },
 });

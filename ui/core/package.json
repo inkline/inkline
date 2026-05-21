@@ -4,11 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "inkline build 'src/**/*.ink.tsx' --config inkline.config.ts",
-    "dev": "inkline build 'src/**/*.ink.tsx' --config inkline.config.ts --watch",
+    "build": "inkline compile components 'src/**/*.ink.tsx' --config inkline.config.ts",
+    "dev": "inkline compile components 'src/**/*.ink.tsx' --config inkline.config.ts --watch",
     "test": "vp test"
   },
   "devDependencies": {
+    "@inkline/cli": "workspace:*",
     "@inkline/compiler": "workspace:*",
     "@inkline/storybook": "workspace:*",
     "@inkline/test-utils": "workspace:*",

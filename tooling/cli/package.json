@@ -1,8 +1,7 @@
 {
-  "name": "@inkline/storybook",
+  "name": "@inkline/cli",
   "version": "0.0.0",
-  "private": true,
-  "description": "Single-source story definitions and shared Storybook configuration for Inkline's per-framework component packages.",
+  "description": "Unified CLI for the Inkline component framework.",
   "homepage": "https://github.com/inkline/inkline#readme",
   "bugs": {
     "url": "https://github.com/inkline/inkline/issues"
@@ -12,10 +11,14 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/inkline/inkline.git",
-    "directory": "tooling/storybook"
+    "directory": "tooling/cli"
+  },
+  "bin": {
+    "inkline": "./bin/inkline.mjs"
   },
   "files": [
-    "dist"
+    "dist",
+    "bin"
   ],
   "type": "module",
   "sideEffects": false,
@@ -24,29 +27,26 @@
       "types": "./dist/index.d.mts",
       "default": "./dist/index.mjs"
     },
-    "./preset/main": {
-      "types": "./dist/preset/main.d.mts",
-      "default": "./dist/preset/main.mjs"
-    },
-    "./preset/parameters": {
-      "types": "./dist/preset/parameters.d.mts",
-      "default": "./dist/preset/parameters.mjs"
-    },
-    "./generator": {
-      "types": "./dist/generator/index.d.mts",
-      "default": "./dist/generator/index.mjs"
-    },
     "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "vp pack",
     "dev": "vp pack --watch",
     "test": "vp test",
-    "check": "vp check"
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@inkline/compiler": "workspace:*",
+    "@inkline/config-loader": "workspace:*",
+    "@inkline/storybook": "workspace:*",
+    "citty": "^0.1.6"
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "@vitest/coverage-v8": "catalog:",
     "tsx": "^4.8.1",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
