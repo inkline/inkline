@@ -1,8 +1,7 @@
 {
-  "name": "@inkline/storybook",
+  "name": "@inkline/config-loader",
   "version": "0.0.0",
-  "private": true,
-  "description": "Single-source story definitions and shared Storybook configuration for Inkline's per-framework component packages.",
+  "description": "Configuration loader for Inkline, backed by c12.",
   "homepage": "https://github.com/inkline/inkline#readme",
   "bugs": {
     "url": "https://github.com/inkline/inkline/issues"
@@ -12,7 +11,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/inkline/inkline.git",
-    "directory": "tooling/storybook"
+    "directory": "core/config-loader"
   },
   "files": [
     "dist"
@@ -24,30 +23,23 @@
       "types": "./dist/index.d.mts",
       "default": "./dist/index.mjs"
     },
-    "./preset/main": {
-      "types": "./dist/preset/main.d.mts",
-      "default": "./dist/preset/main.mjs"
-    },
-    "./preset/parameters": {
-      "types": "./dist/preset/parameters.d.mts",
-      "default": "./dist/preset/parameters.mjs"
-    },
-    "./generator": {
-      "types": "./dist/generator/index.d.mts",
-      "default": "./dist/generator/index.mjs"
-    },
     "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "build": "vp pack",
     "dev": "vp pack --watch",
     "test": "vp test",
-    "check": "vp check"
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "c12": "^4.0.0-beta.5"
   },
   "devDependencies": {
     "@types/node": "catalog:",
-    "@vitest/coverage-v8": "catalog:",
-    "tsx": "^4.8.1",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
     "vitest": "catalog:"

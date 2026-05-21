@@ -10,7 +10,7 @@ export default defineConfig({
     },
   },
   lint: {
-    ignorePatterns: ["dist/**", "coverage/**", "src/__fixtures__/**"],
+    ignorePatterns: ["dist/**", "coverage/**"],
     options: {
       typeAware: true,
       typeCheck: true,
