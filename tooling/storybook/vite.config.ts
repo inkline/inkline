@@ -6,7 +6,7 @@ export default defineConfig({
       index: "src/index.ts",
       "preset/main": "src/preset/main.ts",
       "preset/parameters": "src/preset/parameters.ts",
-      "bin/generate": "src/bin/generate.ts",
+      "generator/index": "src/generator/index.ts",
     },
     dts: {
       tsgo: true,
@@ -24,12 +24,7 @@ export default defineConfig({
     coverage: {
       provider: "v8",
       include: ["src/**/*.ts"],
-      exclude: [
-        "src/**/*.test.ts",
-        "src/**/__fixtures__/**",
-        "src/index.ts",
-        "src/bin/generate.ts",
-      ],
+      exclude: ["src/**/*.test.ts", "src/**/__fixtures__/**", "src/index.ts"],
       thresholds: {
         lines: 100,
         branches: 100,

@@ -11,7 +11,7 @@
     "dev": "vp run website#dev",
     "storybook": "concurrently -n compiler,generate,frameworks,app \"pnpm run storybook:compiler\" \"pnpm run storybook:generate\" \"pnpm run storybook:frameworks\" \"pnpm run storybook:app\"",
     "storybook:compiler": "pnpm --filter @inkline/components dev",
-    "storybook:generate": "pnpm --filter @inkline/storybook run generate -- --watch",
+    "storybook:generate": "pnpm --filter @inkline/cli exec inkline compile stories --watch",
     "storybook:frameworks": "concurrently -n react,vue,svelte,solid,angular,qwik,astro \"pnpm run storybook:react\" \"pnpm run storybook:vue\" \"pnpm run storybook:svelte\" \"pnpm run storybook:solid\" \"pnpm run storybook:angular\" \"pnpm run storybook:qwik\" \"pnpm run storybook:astro\"",
     "storybook:app": "wait-on tcp:6006 tcp:6007 tcp:6008 tcp:6009 tcp:6010 tcp:6011 tcp:6012 && pnpm --filter @inkline/storybook-app storybook",
     "storybook:react": "BROWSER=none pnpm --filter @inkline/react storybook",

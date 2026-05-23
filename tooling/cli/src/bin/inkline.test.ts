@@ -3,57 +3,90 @@ import { spawnSync } from "node:child_process";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { existsSync, rmSync, writeFileSync, mkdirSync, readFileSync } from "node:fs";
-import { commonPrefix } from "./inkline.ts";
+import { renderUsage, defineCommand } from "citty";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const CLI_PATH = resolve(__dirname, "inkline.ts");
-const FIXTURES_DIR = resolve(__dirname, "..", "__fixtures__");
+const FIXTURES_DIR = resolve(
+  __dirname,
+  "..",
+  "..",
+  "..",
+  "..",
+  "core",
+  "compiler",
+  "src",
+  "__fixtures__",
+);
 const TMP_OUT = resolve(__dirname, "..", "..", ".tmp-cli-test");
 
-function run(...args: string[]): { stdout: string; stderr: string; status: number } {
+function run(...args: string[]): {
+  stdout: string;
+  stderr: string;
+  output: string;
+  status: number;
+} {
   const result = spawnSync(process.execPath, ["--import", "tsx", CLI_PATH, ...args], {
     encoding: "utf-8",
     cwd: resolve(__dirname, "..", ".."),
     timeout: 30_000,
   });
+  const stdout = result.stdout ?? "";
+  const stderr = result.stderr ?? "";
   return {
-    stdout: result.stdout ?? "",
-    stderr: result.stderr ?? "",
+    stdout,
+    stderr,
+    output: stdout + stderr,
     status: result.status ?? 1,
   };
 }
 
-describe("inkline CLI", () => {
-  it("version prints package version", () => {
-    const { stdout, status } = run("version");
-    expect(status).toBe(0);
-    expect(stdout).toContain("inkline v");
+describe("inkline CLI help", () => {
+  it("root help shows all commands", async () => {
+    const { default: root } = await import("../commands/compile.ts");
+    const main = defineCommand({
+      meta: { name: "inkline" },
+      subCommands: {
+        compile: () => Promise.resolve(root),
+        check: () => import("../commands/check.ts").then((m) => m.default),
+        init: () => import("../commands/init.ts").then((m) => m.default),
+        add: () => import("../commands/add.ts").then((m) => m.default),
+      },
+    });
+    const usage = await renderUsage(main);
+    expect(usage).toContain("compile");
+    expect(usage).toContain("check");
+    expect(usage).toContain("init");
+    expect(usage).toContain("add");
   });
 
-  it("help prints usage", () => {
-    const { stdout, status } = run("help");
-    expect(status).toBe(0);
-    expect(stdout).toContain("build");
-    expect(stdout).toContain("diagnose");
+  it("compile help shows subcommands", async () => {
+    const { default: compile } = await import("../commands/compile.ts");
+    const usage = await renderUsage(compile);
+    expect(usage).toContain("components");
+    expect(usage).toContain("stories");
   });
 
-  it("help build prints build options", () => {
-    const { stdout, status } = run("help", "build");
-    expect(status).toBe(0);
-    expect(stdout).toContain("--target");
-    expect(stdout).toContain("--out-dir");
+  it("compile components help shows options", async () => {
+    const { default: components } = await import("../commands/compile-components.ts");
+    const usage = await renderUsage(components);
+    expect(usage).toContain("--target");
+    expect(usage).toContain("--out-dir");
+    expect(usage).toContain("--config");
+  });
+});
+
+describe("compile components", () => {
+  it("exits non-zero without --target", () => {
+    const { status } = run("compile", "components", resolve(FIXTURES_DIR, "Counter.ink.tsx"));
+    expect(status).not.toBe(0);
   });
 
-  it("build without --target exits 2", () => {
-    const { status, stderr } = run("build", resolve(FIXTURES_DIR, "Counter.ink.tsx"));
-    expect(status).toBe(2);
-    expect(stderr).toContain("--target");
-  });
-
-  it("build with --target react exits 0", () => {
+  it("compiles with --target react", () => {
     try {
       const { status } = run(
-        "build",
+        "compile",
+        "components",
         resolve(FIXTURES_DIR, "Counter.ink.tsx"),
         "--target",
         "react",
@@ -61,32 +94,13 @@ describe("inkline CLI", () => {
         TMP_OUT,
       );
       expect(status).toBe(0);
+      expect(existsSync(resolve(TMP_OUT, "react", "Counter.tsx"))).toBe(true);
     } finally {
       if (existsSync(TMP_OUT)) rmSync(TMP_OUT, { recursive: true });
     }
   });
 
-  it("unknown command exits 2", () => {
-    const { status } = run("unknown-cmd");
-    expect(status).toBe(2);
-  });
-
-  it("diagnose runs without writing files", () => {
-    const { status } = run(
-      "diagnose",
-      resolve(FIXTURES_DIR, "Counter.ink.tsx"),
-      "--target",
-      "react",
-    );
-    expect(status).toBe(0);
-  });
-
-  it("help build mentions --config", () => {
-    const { stdout } = run("help", "build");
-    expect(stdout).toContain("--config");
-  });
-
-  it("build with --config loads targets from config file", () => {
+  it("loads targets from config file", () => {
     const configDir = resolve(TMP_OUT, "config-test");
     const configPath = resolve(configDir, "inkline.config.mjs");
     const outDir = resolve(configDir, "out");
@@ -98,7 +112,8 @@ describe("inkline CLI", () => {
         "utf-8",
       );
       const { status } = run(
-        "build",
+        "compile",
+        "components",
         resolve(FIXTURES_DIR, "Counter.ink.tsx"),
         "--config",
         configPath,
@@ -109,26 +124,7 @@ describe("inkline CLI", () => {
     }
   });
 
-  it("build with nonexistent --config prints error and falls back to CLI flags", () => {
-    const { status, stderr } = run(
-      "build",
-      resolve(FIXTURES_DIR, "Counter.ink.tsx"),
-      "--config",
-      "/nonexistent/inkline.config.ts",
-      "--target",
-      "react",
-      "--out-dir",
-      TMP_OUT,
-    );
-    try {
-      expect(stderr).toContain("Config file not found");
-      expect(status).toBe(0);
-    } finally {
-      if (existsSync(TMP_OUT)) rmSync(TMP_OUT, { recursive: true });
-    }
-  });
-
-  it("build with targetOutDir routes output to per-target directories", () => {
+  it("routes output with targetOutDir", () => {
     const configDir = resolve(TMP_OUT, "target-out-dir-test");
     const reactDir = resolve(configDir, "react-out");
     const vueDir = resolve(configDir, "vue-out");
@@ -147,7 +143,8 @@ describe("inkline CLI", () => {
         "utf-8",
       );
       const { status } = run(
-        "build",
+        "compile",
+        "components",
         resolve(FIXTURES_DIR, "Counter.ink.tsx"),
         "--config",
         configPath,
@@ -160,7 +157,7 @@ describe("inkline CLI", () => {
     }
   });
 
-  it("build generates barrel index.ts per target directory", () => {
+  it("generates barrel index.ts per target directory", () => {
     const configDir = resolve(TMP_OUT, "barrel-test");
     const reactDir = resolve(configDir, "react-out");
     const configPath = resolve(configDir, "inkline.config.mjs");
@@ -175,7 +172,8 @@ describe("inkline CLI", () => {
         "utf-8",
       );
       const { status } = run(
-        "build",
+        "compile",
+        "components",
         resolve(FIXTURES_DIR, "Counter.ink.tsx"),
         "--config",
         configPath,
@@ -191,7 +189,7 @@ describe("inkline CLI", () => {
     }
   });
 
-  it("build barrel includes multiple components sorted alphabetically", () => {
+  it("barrel includes multiple components sorted alphabetically", () => {
     const configDir = resolve(TMP_OUT, "barrel-multi-test");
     const reactDir = resolve(configDir, "react-out");
     const configPath = resolve(configDir, "inkline.config.mjs");
@@ -206,7 +204,8 @@ describe("inkline CLI", () => {
         "utf-8",
       );
       const { status } = run(
-        "build",
+        "compile",
+        "components",
         resolve(FIXTURES_DIR, "Counter.ink.tsx"),
         resolve(FIXTURES_DIR, "IButton.ink.tsx"),
         "--config",
@@ -224,7 +223,7 @@ describe("inkline CLI", () => {
     }
   });
 
-  it("build preserves directory structure from source to output", () => {
+  it("preserves directory structure from source to output", () => {
     const configDir = resolve(TMP_OUT, "dir-structure-test");
     const reactDir = resolve(configDir, "react-out");
     const configPath = resolve(configDir, "inkline.config.mjs");
@@ -253,7 +252,8 @@ describe("inkline CLI", () => {
         "utf-8",
       );
       const { status } = run(
-        "build",
+        "compile",
+        "components",
         resolve(srcDir, "components", "badge", "IBadge.ink.tsx"),
         resolve(srcDir, "components", "button", "IButton.ink.tsx"),
         "--config",
@@ -271,7 +271,7 @@ describe("inkline CLI", () => {
     }
   });
 
-  it("build falls back to outDir/target when targetOutDir not set for a target", () => {
+  it("falls back to outDir/target when targetOutDir not set for a target", () => {
     const configDir = resolve(TMP_OUT, "fallback-test");
     const outDir = resolve(configDir, "dist");
     const configPath = resolve(configDir, "inkline.config.mjs");
@@ -286,7 +286,8 @@ describe("inkline CLI", () => {
         "utf-8",
       );
       const { status } = run(
-        "build",
+        "compile",
+        "components",
         resolve(FIXTURES_DIR, "Counter.ink.tsx"),
         "--config",
         configPath,
@@ -299,24 +300,25 @@ describe("inkline CLI", () => {
   });
 });
 
-describe("commonPrefix", () => {
-  it("returns shared directory prefix", () => {
-    expect(commonPrefix(["src/a/b", "src/a/c", "src/a/d"])).toBe("src/a/");
+describe("check", () => {
+  it("runs diagnostics without writing files", () => {
+    const { status } = run("check", resolve(FIXTURES_DIR, "Counter.ink.tsx"), "--target", "react");
+    expect(status).toBe(0);
   });
+});
 
-  it("stops at divergence point", () => {
-    expect(commonPrefix(["src/styled/badge", "src/headless/badge"])).toBe("src/");
+describe("init", () => {
+  it("prints not yet implemented", () => {
+    const { stdout, status } = run("init");
+    expect(status).toBe(0);
+    expect(stdout).toContain("not yet implemented");
   });
+});
 
-  it("returns empty for no inputs", () => {
-    expect(commonPrefix([])).toBe("");
-  });
-
-  it("returns full dir for single input", () => {
-    expect(commonPrefix(["src/components/badge"])).toBe("src/components/badge/");
-  });
-
-  it("handles paths with no common prefix", () => {
-    expect(commonPrefix(["a/b", "c/d"])).toBe("");
+describe("add", () => {
+  it("prints not yet implemented", () => {
+    const { stdout, status } = run("add", "badge");
+    expect(status).toBe(0);
+    expect(stdout).toContain("not yet implemented");
   });
 });

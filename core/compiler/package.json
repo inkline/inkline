@@ -13,12 +13,8 @@
     "url": "git+https://github.com/inkline/inkline.git",
     "directory": "core/compiler"
   },
-  "bin": {
-    "inkline": "./bin/inkline.mjs"
-  },
   "files": [
-    "dist",
-    "bin"
+    "dist"
   ],
   "type": "module",
   "sideEffects": false,
