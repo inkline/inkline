@@ -54,6 +54,7 @@ function makeCtx(): CodegenContext {
     options: resolveOptions({ targets: ["qwik"] }),
     symbols: new SymbolTable(),
     rewrites: qwik.rewrites,
+    externalImports: [],
   };
 }
 

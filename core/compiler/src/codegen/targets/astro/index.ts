@@ -110,6 +110,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     flavor: "tsx",
     children: [
       cRaw({ text: "---" }),
+      ...ctx.externalImports,
       ...(propsInterface ? [cRaw({ text: propsInterface })] : []),
       ...(propsDestructure ? [cStmt({ body: propsDestructure })] : []),
       ...resourceDecls,

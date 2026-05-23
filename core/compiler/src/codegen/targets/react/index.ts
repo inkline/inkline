@@ -340,6 +340,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...runtimeDirective,
       ...(runtimeDirective.length > 0 ? [cRaw({ text: "" })] : []),
       ...updatedImports,
+      ...ctx.externalImports,
       ...styleImport,
       cRaw({ text: "" }),
       cStmt({ body: signature }),

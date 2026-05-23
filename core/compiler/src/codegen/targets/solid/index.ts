@@ -344,6 +344,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     flavor: "tsx",
     children: [
       ...imports,
+      ...ctx.externalImports,
       ...styleImport,
       cRaw({ text: "" }),
       cStmt({

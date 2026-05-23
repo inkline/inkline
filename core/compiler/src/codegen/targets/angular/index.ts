@@ -157,6 +157,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         module: "@angular/core",
         named: [...new Set(angularImports)].map((i) => ({ imported: i })),
       }),
+      ...ctx.externalImports,
       ...styleImport,
       cRaw({ text: "" }),
       cRaw({

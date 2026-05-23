@@ -252,7 +252,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const file = cFile({
     flavor: "sfc-svelte",
     children: [
-      cScript({ lang: "ts", setup: false, children: scriptBody }),
+      cScript({ lang: "ts", setup: false, children: [...ctx.externalImports, ...scriptBody] }),
       cRaw({ text: "" }),
       renderTree,
       ...component.styles.map((s) => cStyle({ css: s.css, scoped: true })),

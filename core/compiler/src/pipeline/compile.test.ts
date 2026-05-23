@@ -300,6 +300,7 @@ describe("compile error recovery (H3)", () => {
         options,
         symbols: new SymbolTable(),
         rewrites: failTarget.rewrites,
+        externalImports: [],
       });
     } catch (err) {
       diags.push("INK0100", component.loc, {
@@ -365,5 +366,95 @@ describe("compile end-to-end (M1)", () => {
     const code = result.files.vue![0]!.contents;
     expect(code).toContain("<script setup");
     expect(code).toContain("<template>");
+  });
+});
+
+const EXTERNAL_IMPORT_SOURCE = `
+import { defineComponent } from "@inkline/core";
+import { badge, type BadgeProps as BadgeStylingProps } from "virtual:styleframe";
+export default defineComponent((props) => {
+  return <div class={badge(props)}>hello</div>;
+});
+`;
+
+describe("external import forwarding", () => {
+  it("preserves virtual:styleframe import in react output", async () => {
+    const result = await compile(
+      { fileName: "Test.ink.tsx", source: EXTERNAL_IMPORT_SOURCE },
+      { targets: ["react"] },
+    );
+    const code = result.files.react![0]!.contents;
+    expect(code).toContain('from "virtual:styleframe"');
+    expect(code).toContain("badge");
+  });
+
+  it("preserves virtual:styleframe import in all 7 targets", async () => {
+    const result = await compile(
+      { fileName: "Test.ink.tsx", source: EXTERNAL_IMPORT_SOURCE },
+      { targets: ["react", "vue", "svelte", "solid", "angular", "qwik", "astro"] },
+    );
+    for (const target of ["react", "vue", "svelte", "solid", "angular", "qwik", "astro"] as const) {
+      const files = result.files[target]!;
+      const mainFile = files.find((f) => !f.path.endsWith(".css") && !f.path.endsWith(".map"));
+      expect(mainFile!.contents, `${target} should contain virtual:styleframe`).toContain(
+        "virtual:styleframe",
+      );
+    }
+  });
+
+  it("does NOT forward @inkline/core imports", async () => {
+    const result = await compile(
+      { fileName: "Test.ink.tsx", source: EXTERNAL_IMPORT_SOURCE },
+      { targets: ["react"] },
+    );
+    const code = result.files.react![0]!.contents;
+    expect(code).not.toContain("@inkline/core");
+    expect(code).not.toContain("defineComponent");
+  });
+
+  it("does NOT forward .ink sibling imports", async () => {
+    const result = await compile(
+      {
+        fileName: "Test.ink.tsx",
+        source: `
+          import { defineComponent } from "@inkline/core";
+          import Base from "./Base.ink";
+          import { util } from "some-package";
+          export default defineComponent(() => <div />);
+        `,
+      },
+      { targets: ["react"] },
+    );
+    const code = result.files.react![0]!.contents;
+    expect(code).not.toContain("./Base.ink");
+    expect(code).toContain("some-package");
+  });
+
+  it("forwards multiple external imports", async () => {
+    const result = await compile(
+      {
+        fileName: "Test.ink.tsx",
+        source: `
+          import { defineComponent } from "@inkline/core";
+          import { badge } from "virtual:styleframe";
+          import { clsx } from "clsx";
+          export default defineComponent(() => <div class={clsx(badge())} />);
+        `,
+      },
+      { targets: ["react"] },
+    );
+    const code = result.files.react![0]!.contents;
+    expect(code).toContain("virtual:styleframe");
+    expect(code).toContain("clsx");
+  });
+
+  it("handles source with no external imports", async () => {
+    const result = await compile(
+      { fileName: "Counter.ink.tsx", source: COUNTER_SOURCE },
+      { targets: ["react"] },
+    );
+    expect(result.files.react!.length).toBeGreaterThan(0);
+    const code = result.files.react![0]!.contents;
+    expect(code).not.toContain("virtual:styleframe");
   });
 });

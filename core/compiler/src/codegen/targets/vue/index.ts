@@ -291,7 +291,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cScript({
         lang: "ts",
         setup: true,
-        children: [...imports, cRaw({ text: "" }), ...scriptBody],
+        children: [...imports, ...ctx.externalImports, cRaw({ text: "" }), ...scriptBody],
       }),
       cRaw({ text: "" }),
       cRaw({ text: "<template>" }),

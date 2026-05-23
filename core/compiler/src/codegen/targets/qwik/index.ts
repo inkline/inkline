@@ -213,6 +213,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         module: "@qwik.dev/core",
         named: [...new Set(qwikImports)].map((i) => ({ imported: i })),
       }),
+      ...ctx.externalImports,
       ...styleImport,
       cRaw({ text: "" }),
       cStmt({
