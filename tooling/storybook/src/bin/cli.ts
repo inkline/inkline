@@ -22,11 +22,11 @@ export interface ParsedArgs {
 export const USAGE = `Usage: inkline-storybook <command> [options]
 
 Commands:
-  generate        Generate per-framework story files from ui/core/stories.
+  generate        Generate per-framework story files from ui/components/stories.
   help            Show this help.
 
 Options:
-  --core-dir <p>  Single-source story definitions dir. Default: ../../ui/core/stories
+  --core-dir <p>  Single-source story definitions dir. Default: ../../ui/components/stories
   --ui-dir <p>    Root of the ui/<target> packages.     Default: ../../ui
   --watch         Regenerate when a definition changes.`;
 
@@ -44,7 +44,7 @@ export function parseArgs(argv: readonly string[]): ParsedArgs {
 
 export function resolveOptions(flags: ParsedArgs["flags"], cwd: string): GenerateOptions {
   return {
-    coreStoriesDir: resolve(cwd, flags.coreDir ?? "../../ui/core/stories"),
+    coreStoriesDir: resolve(cwd, flags.coreDir ?? "../../ui/components/stories"),
     uiDir: resolve(cwd, flags.uiDir ?? "../../ui"),
   };
 }

@@ -50,7 +50,7 @@ describe("parseArgs", () => {
 describe("resolveOptions", () => {
   it("falls back to the conventional monorepo paths", () => {
     expect(resolveOptions({ watch: false }, "/repo/tooling/storybook")).toEqual({
-      coreStoriesDir: "/repo/ui/core/stories",
+      coreStoriesDir: "/repo/ui/components/stories",
       uiDir: "/repo/ui",
     });
   });
@@ -132,7 +132,7 @@ describe("runCli", () => {
     const { deps, log } = makeDeps({ watch });
     expect(await runCli(["generate", "--watch"], deps)).toBe(0);
     expect(watch).toHaveBeenCalledOnce();
-    expect(log).toHaveBeenCalledWith("Watching /repo/ui/core/stories for changes...");
+    expect(log).toHaveBeenCalledWith("Watching /repo/ui/components/stories for changes...");
   });
 
   it("returns 1 and reports the message when generation fails", async () => {
