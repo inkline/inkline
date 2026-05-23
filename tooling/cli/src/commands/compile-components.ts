@@ -37,7 +37,7 @@ export default defineCommand({
     }
 
     const targets = targetStr.split(",").map((t) => t.trim()) as TargetName[];
-    const outDir = args["out-dir"] ?? fileConfig.outDir ?? "dist";
+    const outDir = fileConfig.outDir ?? args["out-dir"] ?? "dist";
     const targetOutDir = fileConfig.targetOutDir ?? {};
     const sourceMap = (args["source-map"] ?? fileConfig.sourceMap ?? "external") as
       | "external"

@@ -105,6 +105,7 @@ jobs:
           name: build-artifacts
           retention-days: 1
           path: |
+            core/core/dist
             core/compiler/dist
             core/config-loader/dist
             tooling/cli/dist

@@ -5,7 +5,7 @@ import styleframe from "styleframe/plugin/vite";
 
 export default defineConfig({
   plugins: [
-    react(),
+    react() as any,
     styleframe({
       entry: resolve(__dirname, "../components/styleframe.config.ts"),
       include: [resolve(__dirname, "../components/src/**/*.styleframe.ts")],
