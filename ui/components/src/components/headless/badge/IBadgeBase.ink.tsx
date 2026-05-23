@@ -11,7 +11,7 @@ export default defineComponent(
   },
   (props: BadgeBaseProps) => {
     return (
-      <div class="badge">
+      <div class="badge" disabled={props.disabled}>
         <slot>{props.label}</slot>
       </div>
     );
