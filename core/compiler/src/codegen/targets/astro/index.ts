@@ -8,6 +8,7 @@ import {
   rewriteEventName,
   emitExprAsTemplate,
 } from "../../shared/expr-rewrite.ts";
+import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -110,6 +111,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     flavor: "tsx",
     children: [
       cRaw({ text: "---" }),
+      ...emitComponentImports(ctx.componentImports, ".astro", true),
       ...ctx.externalImports,
       ...(propsInterface ? [cRaw({ text: propsInterface })] : []),
       ...(propsDestructure ? [cStmt({ body: propsDestructure })] : []),

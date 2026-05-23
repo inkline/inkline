@@ -5,7 +5,6 @@ import type { DiagnosticCollector } from "../core/diagnostics/collector.ts";
 import type { ResolvedCompilerOptions } from "../core/options.ts";
 import type { SymbolTable } from "../ir/reactivity.ts";
 
-
 export type TargetName = "react" | "solid" | "vue" | "svelte" | "angular" | "qwik" | "astro";
 
 export const ALL_TARGETS: readonly TargetName[] = Object.freeze([
@@ -46,12 +45,19 @@ export interface RewriteRules {
   readonly members?: MemberRewriteRules;
 }
 
+export interface ComponentImport {
+  readonly localName: string;
+  readonly componentName: string;
+  readonly relativePath: string;
+}
+
 export interface CodegenContext {
   readonly diagnostics: DiagnosticCollector;
   readonly options: ResolvedCompilerOptions;
   readonly symbols: SymbolTable;
   readonly rewrites: RewriteRules;
   readonly externalImports: readonly Code[];
+  readonly componentImports: readonly ComponentImport[];
 }
 
 export interface CodeModule {

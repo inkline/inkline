@@ -16,6 +16,7 @@ import {
 } from "../../code-ir/builders.ts";
 import * as ts from "typescript";
 import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
+import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -340,6 +341,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...runtimeDirective,
       ...(runtimeDirective.length > 0 ? [cRaw({ text: "" })] : []),
       ...updatedImports,
+      ...emitComponentImports(ctx.componentImports, "", false),
       ...ctx.externalImports,
       ...styleImport,
       cRaw({ text: "" }),

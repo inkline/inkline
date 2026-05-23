@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync, watch, globSync } from "node:fs";
-import { resolve, dirname, basename, extname } from "node:path";
+import { resolve, dirname, basename, extname, join } from "node:path";
 import { compile } from "../pipeline/compile.ts";
 import {
   compileIncremental,
@@ -81,6 +81,18 @@ function resolveTargetDir(
   targetOutDir: Partial<Record<string, string>>,
 ): string {
   return resolve(targetOutDir[target] ?? `${outDir}/${target}`);
+}
+
+export function commonPrefix(dirs: string[]): string {
+  if (dirs.length === 0) return "";
+  const parts = dirs[0]!.split("/");
+  let prefix = "";
+  for (let i = 0; i < parts.length; i++) {
+    const candidate = parts.slice(0, i + 1).join("/") + "/";
+    if (dirs.every((d) => (d + "/").startsWith(candidate))) prefix = candidate;
+    else break;
+  }
+  return prefix;
 }
 
 interface BarrelEntry {
@@ -201,11 +213,13 @@ async function runBuild(files: string[], flags: Record<string, string>): Promise
 
   let hasError = false;
   const barrelEntries = new Map<string, BarrelEntry[]>();
+  const sourcePrefix = commonPrefix(resolvedFiles.map((f) => dirname(f)));
 
   for (const filePath of resolvedFiles) {
     const absPath = resolve(filePath);
     const source = readFileSync(absPath, "utf-8");
     const name = basename(absPath, extname(absPath)).replace(/\.ink$/, "");
+    const relDir = dirname(filePath).slice(sourcePrefix.length);
 
     const result = await compile(
       { fileName: absPath, source },
@@ -230,8 +244,7 @@ async function runBuild(files: string[], flags: Record<string, string>): Promise
       const targetDir = resolveTargetDir(target, outDir, targetOutDir);
 
       for (const file of targetFiles) {
-        const fileName = basename(file.path);
-        const outPath = resolve(targetDir, fileName);
+        const outPath = resolve(targetDir, relDir, file.path);
         mkdirSync(dirname(outPath), { recursive: true });
         writeFileSync(outPath, file.contents, "utf-8");
         if (file.sourceMap && sourceMap === "external") {
@@ -239,8 +252,13 @@ async function runBuild(files: string[], flags: Record<string, string>): Promise
         }
 
         if (!file.path.endsWith(".css")) {
+          const relFileName = relDir ? join(relDir, file.path) : file.path;
           const entries = barrelEntries.get(targetDir) ?? [];
-          entries.push({ componentName: name, fileName, target: target as TargetName });
+          entries.push({
+            componentName: name,
+            fileName: relFileName,
+            target: target as TargetName,
+          });
           barrelEntries.set(targetDir, entries);
         }
       }
@@ -271,6 +289,7 @@ function runWatch(
   console.log(`Watching ${files.length} file(s) for changes...\n`);
   let state: IncrementalState = createIncrementalState();
   let debounceTimer: ReturnType<typeof setTimeout> | undefined;
+  const sourcePrefix = commonPrefix(files.map((f) => dirname(f)));
 
   const rebuild = async () => {
     const inputs = files.map((f) => {
@@ -296,23 +315,28 @@ function runWatch(
 
     const barrelEntries = new Map<string, BarrelEntry[]>();
 
-    for (const [target, targetFiles] of Object.entries(result.files)) {
-      if (!targetFiles) continue;
-      const targetDir = resolveTargetDir(target, outDir, targetOutDir);
+    for (const [sourceFile, compileResult] of result.nextState.results) {
+      const relDir = dirname(sourceFile).slice(resolve(sourcePrefix).length + 1);
 
-      for (const file of targetFiles) {
-        const outPath = resolve(targetDir, file.path);
-        mkdirSync(dirname(outPath), { recursive: true });
-        writeFileSync(outPath, file.contents, "utf-8");
-        if (file.sourceMap && sourceMap === "external") {
-          writeFileSync(`${outPath}.map`, file.sourceMap, "utf-8");
-        }
+      for (const [target, targetFiles] of Object.entries(compileResult.files)) {
+        if (!targetFiles) continue;
+        const targetDir = resolveTargetDir(target, outDir, targetOutDir);
 
-        if (!file.path.endsWith(".css")) {
-          const componentName = basename(file.path).split(".")[0]!;
-          const entries = barrelEntries.get(targetDir) ?? [];
-          entries.push({ componentName, fileName: file.path, target: target as TargetName });
-          barrelEntries.set(targetDir, entries);
+        for (const file of targetFiles) {
+          const outPath = resolve(targetDir, relDir, file.path);
+          mkdirSync(dirname(outPath), { recursive: true });
+          writeFileSync(outPath, file.contents, "utf-8");
+          if (file.sourceMap && sourceMap === "external") {
+            writeFileSync(`${outPath}.map`, file.sourceMap, "utf-8");
+          }
+
+          if (!file.path.endsWith(".css")) {
+            const componentName = basename(file.path).split(".")[0]!;
+            const relFileName = relDir ? join(relDir, file.path) : file.path;
+            const entries = barrelEntries.get(targetDir) ?? [];
+            entries.push({ componentName, fileName: relFileName, target: target as TargetName });
+            barrelEntries.set(targetDir, entries);
+          }
         }
       }
     }

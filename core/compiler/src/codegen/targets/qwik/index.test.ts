@@ -55,6 +55,7 @@ function makeCtx(): CodegenContext {
     symbols: new SymbolTable(),
     rewrites: qwik.rewrites,
     externalImports: [],
+    componentImports: [],
   };
 }
 

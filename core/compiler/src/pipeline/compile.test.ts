@@ -301,6 +301,7 @@ describe("compile error recovery (H3)", () => {
         symbols: new SymbolTable(),
         rewrites: failTarget.rewrites,
         externalImports: [],
+        componentImports: [],
       });
     } catch (err) {
       diags.push("INK0100", component.loc, {
@@ -412,13 +413,14 @@ describe("external import forwarding", () => {
     expect(code).not.toContain("defineComponent");
   });
 
-  it("does NOT forward .ink sibling imports", async () => {
+  it("does NOT forward .ink imports as external (transforms them instead)", async () => {
     const result = await compile(
       {
         fileName: "Test.ink.tsx",
         source: `
           import { defineComponent } from "@inkline/core";
           import Base from "./Base.ink";
+          import Base2 from "./Base2.ink.tsx";
           import { util } from "some-package";
           export default defineComponent(() => <div />);
         `,
@@ -426,7 +428,7 @@ describe("external import forwarding", () => {
       { targets: ["react"] },
     );
     const code = result.files.react![0]!.contents;
-    expect(code).not.toContain("./Base.ink");
+    expect(code).not.toContain(".ink");
     expect(code).toContain("some-package");
   });
 
@@ -456,5 +458,212 @@ describe("external import forwarding", () => {
     expect(result.files.react!.length).toBeGreaterThan(0);
     const code = result.files.react![0]!.contents;
     expect(code).not.toContain("virtual:styleframe");
+  });
+});
+
+describe("component import extraction", () => {
+  it("extracts .ink.tsx imports as component imports", async () => {
+    const result = await compile(
+      {
+        fileName: "Test.ink.tsx",
+        source: `
+          import { defineComponent } from "@inkline/core";
+          import IBadgeBase from "./IBadgeBase.ink.tsx";
+          export default defineComponent(() => <IBadgeBase />);
+        `,
+      },
+      { targets: ["react"] },
+    );
+    const code = result.files.react![0]!.contents;
+    expect(code).toContain('import { IBadgeBase } from "./IBadgeBase"');
+    expect(code).not.toContain(".ink");
+  });
+
+  it("extracts .ink imports (without .tsx) as component imports", async () => {
+    const result = await compile(
+      {
+        fileName: "Test.ink.tsx",
+        source: `
+          import { defineComponent } from "@inkline/core";
+          import IBadgeBase from "./IBadgeBase.ink";
+          export default defineComponent(() => <IBadgeBase />);
+        `,
+      },
+      { targets: ["react"] },
+    );
+    const code = result.files.react![0]!.contents;
+    expect(code).toContain('import { IBadgeBase } from "./IBadgeBase"');
+    expect(code).not.toContain(".ink");
+  });
+
+  it("does NOT treat @inkline/core as a component import", async () => {
+    const result = await compile(
+      {
+        fileName: "Test.ink.tsx",
+        source: `
+          import { defineComponent } from "@inkline/core";
+          export default defineComponent(() => <div />);
+        `,
+      },
+      { targets: ["react"] },
+    );
+    const code = result.files.react![0]!.contents;
+    expect(code).not.toContain("@inkline/core");
+  });
+
+  it("does NOT treat external packages as component imports", async () => {
+    const result = await compile(
+      {
+        fileName: "Test.ink.tsx",
+        source: `
+          import { defineComponent } from "@inkline/core";
+          import { badge } from "virtual:styleframe";
+          export default defineComponent(() => <div />);
+        `,
+      },
+      { targets: ["react"] },
+    );
+    const code = result.files.react![0]!.contents;
+    expect(code).toContain("virtual:styleframe");
+    expect(code).not.toContain("@inkline/core");
+  });
+
+  it("handles both component and external imports in the same file", async () => {
+    const result = await compile(
+      {
+        fileName: "Test.ink.tsx",
+        source: `
+          import { defineComponent } from "@inkline/core";
+          import IBadgeBase from "./IBadgeBase.ink.tsx";
+          import { badge } from "virtual:styleframe";
+          export default defineComponent(() => <IBadgeBase />);
+        `,
+      },
+      { targets: ["react"] },
+    );
+    const code = result.files.react![0]!.contents;
+    expect(code).toContain('import { IBadgeBase } from "./IBadgeBase"');
+    expect(code).toContain("virtual:styleframe");
+    expect(code).not.toContain("@inkline/core");
+    expect(code).not.toContain(".ink");
+  });
+
+  it("handles multiple component imports", async () => {
+    const result = await compile(
+      {
+        fileName: "Test.ink.tsx",
+        source: `
+          import { defineComponent } from "@inkline/core";
+          import IBadgeBase from "./IBadgeBase.ink.tsx";
+          import IButton from "../button/IButton.ink.tsx";
+          export default defineComponent(() => <div><IBadgeBase /><IButton /></div>);
+        `,
+      },
+      { targets: ["react"] },
+    );
+    const code = result.files.react![0]!.contents;
+    expect(code).toContain('import { IBadgeBase } from "./IBadgeBase"');
+    expect(code).toContain('import { IButton } from "../button/IButton"');
+  });
+
+  it("preserves relative path depth in component imports", async () => {
+    const result = await compile(
+      {
+        fileName: "Test.ink.tsx",
+        source: `
+          import { defineComponent } from "@inkline/core";
+          import IBadgeBase from "../../headless/badge/IBadgeBase.ink.tsx";
+          export default defineComponent(() => <IBadgeBase />);
+        `,
+      },
+      { targets: ["react"] },
+    );
+    const code = result.files.react![0]!.contents;
+    expect(code).toContain('"../../headless/badge/IBadgeBase"');
+  });
+
+  it("compiles with no component imports without errors", async () => {
+    const result = await compile(
+      {
+        fileName: "Test.ink.tsx",
+        source: `
+          import { defineComponent } from "@inkline/core";
+          export default defineComponent(() => <div />);
+        `,
+      },
+      { targets: ["react"] },
+    );
+    expect(result.files.react!.length).toBeGreaterThan(0);
+  });
+});
+
+describe("component import target formats", () => {
+  const SOURCE = `
+    import { defineComponent } from "@inkline/core";
+    import IBadgeBase from "../../headless/badge/IBadgeBase.ink.tsx";
+    export default defineComponent(() => <IBadgeBase />);
+  `;
+
+  it("React: named import, no extension", async () => {
+    const result = await compile({ fileName: "T.ink.tsx", source: SOURCE }, { targets: ["react"] });
+    const code = result.files.react![0]!.contents;
+    expect(code).toContain('import { IBadgeBase } from "../../headless/badge/IBadgeBase"');
+  });
+
+  it("Solid: default import, no extension", async () => {
+    const result = await compile({ fileName: "T.ink.tsx", source: SOURCE }, { targets: ["solid"] });
+    const code = result.files.solid![0]!.contents;
+    expect(code).toContain('import IBadgeBase from "../../headless/badge/IBadgeBase"');
+  });
+
+  it("Vue: default import, .vue extension", async () => {
+    const result = await compile({ fileName: "T.ink.tsx", source: SOURCE }, { targets: ["vue"] });
+    const code = result.files.vue![0]!.contents;
+    expect(code).toContain('import IBadgeBase from "../../headless/badge/IBadgeBase.vue"');
+  });
+
+  it("Svelte: default import, .svelte extension", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: SOURCE },
+      { targets: ["svelte"] },
+    );
+    const code = result.files.svelte![0]!.contents;
+    expect(code).toContain('import IBadgeBase from "../../headless/badge/IBadgeBase.svelte"');
+  });
+
+  it("Angular: named import with Component suffix, .component extension", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: SOURCE },
+      { targets: ["angular"] },
+    );
+    const code = result.files.angular![0]!.contents;
+    expect(code).toContain(
+      'import { IBadgeBaseComponent as IBadgeBase } from "../../headless/badge/IBadgeBase.component"',
+    );
+  });
+
+  it("Qwik: named import, no extension", async () => {
+    const result = await compile({ fileName: "T.ink.tsx", source: SOURCE }, { targets: ["qwik"] });
+    const code = result.files.qwik![0]!.contents;
+    expect(code).toContain('import { IBadgeBase } from "../../headless/badge/IBadgeBase"');
+  });
+
+  it("Astro: default import, .astro extension", async () => {
+    const result = await compile({ fileName: "T.ink.tsx", source: SOURCE }, { targets: ["astro"] });
+    const code = result.files.astro![0]!.contents;
+    expect(code).toContain('import IBadgeBase from "../../headless/badge/IBadgeBase.astro"');
+  });
+
+  it("no .ink residue in any target output", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: SOURCE },
+      { targets: ["react", "vue", "svelte", "solid", "angular", "qwik", "astro"] },
+    );
+    for (const target of ["react", "vue", "svelte", "solid", "angular", "qwik", "astro"] as const) {
+      const main = result.files[target]!.find(
+        (f) => !f.path.endsWith(".css") && !f.path.endsWith(".map"),
+      );
+      expect(main!.contents, `${target} should not contain .ink`).not.toMatch(/\.ink[."']/);
+    }
   });
 });
