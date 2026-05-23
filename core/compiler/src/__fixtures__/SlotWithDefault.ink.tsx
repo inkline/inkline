@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { defineComponent } from "@inkline/core";
 export default defineComponent({ slots: { default: {}, actions: {} } }, () => {
   return (

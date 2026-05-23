@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createSignal, defineComponent } from "@inkline/core";
 const Label = defineComponent((props: { text: string }) => {
   return <span>{props.text}</span>;

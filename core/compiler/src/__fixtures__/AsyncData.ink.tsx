@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createResource, defineComponent } from "@inkline/core";
 
 export default defineComponent(() => {

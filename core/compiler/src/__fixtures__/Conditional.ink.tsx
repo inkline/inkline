@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createSignal, defineComponent, Show } from "@inkline/core";
 
 export default defineComponent(() => {

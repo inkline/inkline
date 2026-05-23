@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createMemo, defineComponent } from "@inkline/core";
 export default defineComponent(() => {
   const a = createMemo(() => b() + 1);
