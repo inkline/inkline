@@ -22,6 +22,9 @@
     "storybook:build": "storybook build -o storybook-static",
     "prestorybook": "pnpm --filter @inkline/storybook run generate"
   },
+  "dependencies": {
+    "@styleframe/runtime": "^3.1.0"
+  },
   "devDependencies": {
     "@inkline/components": "workspace:*",
     "@inkline/storybook": "workspace:*",
@@ -35,9 +38,6 @@
     "storybook-solidjs-vite": "catalog:",
     "styleframe": "^3.7.0",
     "vite-plugin-solid": "catalog:"
-  },
-  "dependencies": {
-    "@styleframe/runtime": "^3.1.0"
   },
   "peerDependencies": {
     "solid-js": ">=1"

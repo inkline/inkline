@@ -43,8 +43,8 @@
   },
   "devDependencies": {
     "@angular-eslint/eslint-plugin": "catalog:",
-    "@inkline/core": "workspace:*",
     "@angular-eslint/template-parser": "catalog:",
+    "@inkline/core": "workspace:*",
     "@jridgewell/trace-mapping": "^0.3",
     "@types/node": "^25.5.0",
     "@types/react": "^19",

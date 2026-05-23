@@ -8,6 +8,9 @@
     "dev": "inkline build 'src/**/*.ink.tsx' --config inkline.config.ts --watch",
     "test": "vp test"
   },
+  "dependencies": {
+    "@styleframe/runtime": "^3.1.0"
+  },
   "devDependencies": {
     "@inkline/compiler": "workspace:*",
     "@inkline/core": "workspace:*",
@@ -24,8 +27,5 @@
     "styleframe": "^3.7.0",
     "vite-plus": "catalog:",
     "vitest": "npm:@voidzero-dev/vite-plus-test@^0.1.22"
-  },
-  "dependencies": {
-    "@styleframe/runtime": "^3.1.0"
   }
 }

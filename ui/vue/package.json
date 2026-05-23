@@ -22,22 +22,22 @@
     "storybook:build": "storybook build -o storybook-static",
     "prestorybook": "pnpm --filter @inkline/storybook run generate"
   },
+  "dependencies": {
+    "@styleframe/runtime": "^3.1.0"
+  },
   "devDependencies": {
     "@inkline/components": "workspace:*",
     "@inkline/storybook": "workspace:*",
     "@storybook/addon-a11y": "catalog:",
     "@storybook/addon-docs": "catalog:",
     "@storybook/vue3-vite": "catalog:",
-    "@vitejs/plugin-vue": "catalog:",
     "@styleframe/plugin": "^3.3.0",
     "@styleframe/theme": "^3.7.0",
+    "@vitejs/plugin-vue": "catalog:",
     "jsdom": "catalog:",
     "storybook": "catalog:",
     "styleframe": "^3.7.0",
     "vue": "^3"
-  },
-  "dependencies": {
-    "@styleframe/runtime": "^3.1.0"
   },
   "peerDependencies": {
     "vue": ">=3"

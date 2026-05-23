@@ -1,11 +1,11 @@
 import {
-    useDesignTokensPreset,
-    useGlobalPreset,
-    useModifiersPreset,
-    useSanitizePreset,
-    useUtilitiesPreset,
-} from '@styleframe/theme';
-import { styleframe } from 'styleframe';
+  useDesignTokensPreset,
+  useGlobalPreset,
+  useModifiersPreset,
+  useSanitizePreset,
+  useUtilitiesPreset,
+} from "@styleframe/theme";
+import { styleframe } from "styleframe";
 
 const s = styleframe();
 

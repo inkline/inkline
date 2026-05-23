@@ -6,7 +6,12 @@ export default defineConfig({
   },
   fmt: { ignorePatterns: [".context/**", ".old/**"] },
   lint: {
-    ignorePatterns: [".context/**", ".old/**"],
+    ignorePatterns: [
+      ".context/**",
+      ".old/**",
+      "core/compiler/src/__fixtures__/**",
+      "ui/**/.styleframe/**",
+    ],
     options: { typeAware: true, typeCheck: true },
   },
   run: {

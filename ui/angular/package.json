@@ -21,6 +21,9 @@
     "storybook:build": "storybook build -o storybook-static",
     "prestorybook": "pnpm --filter @inkline/storybook run generate"
   },
+  "dependencies": {
+    "@styleframe/runtime": "^3.1.0"
+  },
   "devDependencies": {
     "@analogjs/storybook-angular": "catalog:",
     "@analogjs/vite-plugin-angular": "catalog:",
@@ -45,9 +48,6 @@
     "tslib": "^2",
     "typescript": "catalog:",
     "zone.js": "^0.15"
-  },
-  "dependencies": {
-    "@styleframe/runtime": "^3.1.0"
   },
   "peerDependencies": {
     "@angular/core": ">=17"
