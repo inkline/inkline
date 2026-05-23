@@ -37,6 +37,8 @@ function makeComp(name: string, render: IRNode, overrides?: Partial<IRComponent>
     memos: [],
     effects: [],
     resources: [],
+    provides: [],
+    consumes: [],
     lifecycle: { onMount: [], onCleanup: [] },
     setup: [],
     render,
@@ -54,6 +56,7 @@ function makeCtx(): CodegenContext {
     options: resolveOptions({ targets: ["qwik"] }),
     symbols: new SymbolTable(),
     rewrites: qwik.rewrites,
+    contexts: [],
   };
 }
 

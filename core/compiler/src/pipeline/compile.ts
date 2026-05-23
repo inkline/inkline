@@ -23,12 +23,18 @@ export interface CompileResult {
   readonly diagnostics: readonly Diagnostic[];
 }
 
-function emitComponent(component: IRComponent, target: Target, ctx: PassContext): GeneratedFile[] {
+function emitComponent(
+  component: IRComponent,
+  target: Target,
+  ctx: PassContext,
+  module: IRModule,
+): GeneratedFile[] {
   const codeModule = target.emit(component, {
     diagnostics: ctx.diagnostics,
     options: ctx.options,
     symbols: ctx.symbols,
     rewrites: target.rewrites,
+    contexts: module.contexts,
   });
   const result = print(codeModule.root, { sourceMap: ctx.options.sourceMap });
   const files: GeneratedFile[] = [
@@ -146,7 +152,7 @@ export async function compile(
 
     for (const component of analyzedModule.module.components) {
       try {
-        targetFiles.push(...emitComponent(component, target, ctx));
+        targetFiles.push(...emitComponent(component, target, ctx, analyzedModule.module));
       } catch (err) {
         diagnostics.push("INK0100", component.loc, {
           name: component.name,

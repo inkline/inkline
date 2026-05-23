@@ -46,6 +46,8 @@ function makeComp(render: IRElement, refDecls: IRRefDeclaration[] = []): IRCompo
     memos: [],
     effects: [],
     resources: [],
+    provides: [],
+    consumes: [],
     lifecycle: { onMount: [], onCleanup: [] },
     setup: [],
     render,

@@ -265,6 +265,28 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     scriptBody.push(cStmt({ body: `onUnmounted(${rewriteExpr(c.body, rules)})`, span: c.loc }));
   }
 
+  // ── Provide declarations ──────────────────────────────────────────
+  for (const p of component.provides) {
+    vueImports.push("provide");
+    scriptBody.push(
+      cStmt({
+        body: `provide(${p.contextName}.key, ${rewriteExpr(p.value.expr, rules)})`,
+        span: p.loc,
+      }),
+    );
+  }
+
+  // ── Consume declarations ──────────────────────────────────────────
+  for (const c of component.consumes) {
+    vueImports.push("inject");
+    scriptBody.push(
+      cStmt({
+        body: `const ${c.name} = inject(${c.contextName}.key, ${c.contextName}.defaultValue)!`,
+        span: c.loc,
+      }),
+    );
+  }
+
   if (component.expose && component.expose.length > 0) {
     scriptBody.push(cStmt({ body: `defineExpose({ ${component.expose.join(", ")} })` }));
   }
@@ -284,22 +306,49 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     scriptBody.unshift(cStmt({ body: `const props = defineProps<{ ${defs} }>()` }));
   }
 
+  // ── Module-level context definitions (non-setup <script>) ─────────
+  const contextScriptChildren: Code[] = [];
+  if (ctx.contexts.length > 0) {
+    contextScriptChildren.push(
+      cImport({ module: "vue", named: [{ imported: "InjectionKey" }], typeOnly: true }),
+    );
+    for (const ctxDef of ctx.contexts) {
+      const typeText = ctxDef.typeText ?? "unknown";
+      const defaultExpr = ctxDef.defaultValue
+        ? rewriteExpr(ctxDef.defaultValue.expr, rules)
+        : "undefined";
+      contextScriptChildren.push(
+        cStmt({
+          body: `export const ${ctxDef.name} = { key: Symbol("${ctxDef.name}") as InjectionKey<${typeText}>, defaultValue: ${defaultExpr} }`,
+          span: ctxDef.loc,
+        }),
+      );
+    }
+  }
+
   const renderTree = emitNode(component.render, TEMPLATE_RULES);
-  const file = cFile({
-    flavor: "sfc-vue",
-    children: [
-      cScript({
-        lang: "ts",
-        setup: true,
-        children: [...imports, cRaw({ text: "" }), ...scriptBody],
-      }),
-      cRaw({ text: "" }),
-      cRaw({ text: "<template>" }),
-      renderTree,
-      cRaw({ text: "</template>" }),
-      ...component.styles.map((s) => cStyle({ css: s.css, scoped: s.scoped })),
-    ],
-  });
+  const fileChildren: Code[] = [];
+
+  // Non-setup <script> block for context definitions (must come before <script setup>)
+  if (contextScriptChildren.length > 0) {
+    fileChildren.push(cScript({ lang: "ts", setup: false, children: contextScriptChildren }));
+    fileChildren.push(cRaw({ text: "" }));
+  }
+
+  fileChildren.push(
+    cScript({
+      lang: "ts",
+      setup: true,
+      children: [...imports, cRaw({ text: "" }), ...scriptBody],
+    }),
+    cRaw({ text: "" }),
+    cRaw({ text: "<template>" }),
+    renderTree,
+    cRaw({ text: "</template>" }),
+    ...component.styles.map((s) => cStyle({ css: s.css, scoped: s.scoped })),
+  );
+
+  const file = cFile({ flavor: "sfc-vue", children: fileChildren });
   return { componentName: component.name, root: file, fileName: `${component.name}.vue` };
 }
 

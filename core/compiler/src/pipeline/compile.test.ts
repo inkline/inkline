@@ -284,6 +284,8 @@ describe("compile error recovery (H3)", () => {
       memos: [],
       effects: [],
       resources: [],
+      provides: [],
+      consumes: [],
       lifecycle: { onMount: [] as const, onCleanup: [] as const },
       setup: [],
       render: { kind: "Text" as const, value: "", loc: UNKNOWN_LOCATION },
@@ -300,6 +302,7 @@ describe("compile error recovery (H3)", () => {
         options,
         symbols: new SymbolTable(),
         rewrites: failTarget.rewrites,
+        contexts: [],
       });
     } catch (err) {
       diags.push("INK0100", component.loc, {

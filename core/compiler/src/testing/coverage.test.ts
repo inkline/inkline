@@ -21,7 +21,14 @@ function mockExpr(code = "x"): ts.Expression {
 function makeModule(components: IRComponent[]): AnalyzedModule {
   const sf = ts.createSourceFile("t.tsx", "", ts.ScriptTarget.Latest, true);
   return {
-    module: { version: 1, fileName: "t.tsx", components, imports: [], sourceFile: sf },
+    module: {
+      version: 1,
+      fileName: "t.tsx",
+      components,
+      contexts: [],
+      imports: [],
+      sourceFile: sf,
+    },
     graphs: new Map(),
   };
 }
@@ -40,6 +47,8 @@ function makeComp(render: ReturnType<typeof createElement>): IRComponent {
     memos: [],
     effects: [],
     resources: [],
+    provides: [],
+    consumes: [],
     lifecycle: { onMount: [], onCleanup: [] },
     setup: [],
     render,
