@@ -23,15 +23,21 @@
     "prestorybook": "pnpm --filter @inkline/storybook run generate"
   },
   "devDependencies": {
-    "@inkline/core": "workspace:*",
+    "@inkline/components": "workspace:*",
     "@inkline/storybook": "workspace:*",
     "@storybook/addon-a11y": "catalog:",
     "@storybook/addon-docs": "catalog:",
+    "@styleframe/plugin": "^3.3.0",
+    "@styleframe/theme": "^3.7.0",
     "jsdom": "catalog:",
     "solid-js": "^1",
     "storybook": "catalog:",
     "storybook-solidjs-vite": "catalog:",
+    "styleframe": "^3.7.0",
     "vite-plugin-solid": "catalog:"
+  },
+  "dependencies": {
+    "@styleframe/runtime": "^3.1.0"
   },
   "peerDependencies": {
     "solid-js": ">=1"

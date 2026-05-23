@@ -31,17 +31,23 @@
     "@angular/core": "catalog:",
     "@angular/platform-browser": "catalog:",
     "@angular/platform-browser-dynamic": "catalog:",
-    "@inkline/core": "workspace:*",
+    "@inkline/components": "workspace:*",
     "@inkline/storybook": "workspace:*",
     "@storybook/addon-a11y": "catalog:",
     "@storybook/addon-docs": "catalog:",
     "@storybook/angular": "catalog:",
+    "@styleframe/plugin": "^3.3.0",
+    "@styleframe/theme": "^3.7.0",
     "jsdom": "catalog:",
     "rxjs": "^7",
     "storybook": "catalog:",
+    "styleframe": "^3.7.0",
     "tslib": "^2",
     "typescript": "catalog:",
     "zone.js": "^0.15"
+  },
+  "dependencies": {
+    "@styleframe/runtime": "^3.1.0"
   },
   "peerDependencies": {
     "@angular/core": ">=17"
