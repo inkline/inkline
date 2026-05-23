@@ -100,8 +100,15 @@ export function deserializeModule(json: string): IRModule {
 
   rehydrate(parsed);
 
+  const components = (parsed.components ?? []).map((c: Record<string, unknown>) => ({
+    ...c,
+    provides: c.provides ?? [],
+    consumes: c.consumes ?? [],
+  }));
+
   return {
     ...parsed,
+    components,
     contexts: parsed.contexts ?? [],
     sourceFile: sf,
     imports: [],
