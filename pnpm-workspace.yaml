@@ -38,7 +38,7 @@ catalog:
   eslint-plugin-solid: ^0.14.5
   eslint-plugin-svelte: ^3.17.1
   eslint-plugin-vue: ^10.9.1
-  jsdom: ^26.1.0
+  jsdom: ^29.1.1
   oxlint: ^1.64.0
   rollup-plugin-svelte: ^7.2.3
   storybook: ^10
@@ -47,7 +47,7 @@ catalog:
   typescript: ^5
   vite: npm:@voidzero-dev/vite-plus-core@latest
   vite-plugin-solid: ^2.11.12
-  vite-plus: latest
+  vite-plus: ^0.1.22
   vitest: npm:@voidzero-dev/vite-plus-test@latest
   vue-eslint-parser: ^10.4.0
 
