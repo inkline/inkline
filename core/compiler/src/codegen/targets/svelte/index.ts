@@ -5,6 +5,7 @@ import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import {
   cFile,
   cScript,
+  cImport,
   cStmt,
   cExpr,
   cRaw,
@@ -195,6 +196,18 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const rules = ctx.rewrites;
   const scriptBody: Code[] = [];
+  const svelteImports: string[] = [];
+
+  // ── Consume declarations ──────────────────────────────────────────
+  for (const c of component.consumes) {
+    svelteImports.push("getContext");
+    scriptBody.push(
+      cStmt({
+        body: `const ${c.name} = getContext(${c.contextName}.key)`,
+        span: c.loc,
+      }),
+    );
+  }
 
   if (component.props.length > 0) {
     const defs = component.props
@@ -251,23 +264,68 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     }
   }
 
+  // ── Provide declarations ──────────────────────────────────────────
+  for (const p of component.provides) {
+    svelteImports.push("setContext");
+    scriptBody.push(
+      cStmt({
+        body: `setContext(${p.contextName}.key, ${rewriteExpr(p.value.expr, rules)})`,
+        span: p.loc,
+      }),
+    );
+  }
+
+  // ── Svelte imports ────────────────────────────────────────────────
+  const uniqueSvelteImports = [...new Set(svelteImports)];
+  if (uniqueSvelteImports.length > 0) {
+    scriptBody.unshift(
+      cImport({
+        module: "svelte",
+        named: uniqueSvelteImports.map((i) => ({ imported: i })),
+      }),
+    );
+  }
+
+  // ── Module-level context definitions (<script module>) ────────────
+  const fileChildren: Code[] = [];
+  if (ctx.contexts.length > 0) {
+    const moduleChildren: Code[] = [];
+    for (const ctxDef of ctx.contexts) {
+      const defaultExpr = ctxDef.defaultValue
+        ? rewriteExpr(ctxDef.defaultValue.expr, rules)
+        : "undefined";
+      moduleChildren.push(
+        cStmt({
+          body: `export const ${ctxDef.name} = { key: "${ctxDef.name}", defaultValue: ${defaultExpr} }`,
+          span: ctxDef.loc,
+        }),
+      );
+    }
+    fileChildren.push(cRaw({ text: '<script module lang="ts">' }));
+    fileChildren.push(...moduleChildren);
+    fileChildren.push(cRaw({ text: "</script>" }));
+    fileChildren.push(cRaw({ text: "" }));
+  }
+
   const renderTree = emitNode(component.render, rules);
+  fileChildren.push(
+    cScript({
+      lang: "ts",
+      setup: false,
+      children: [
+        ...emitComponentImports(ctx.componentImports, ".svelte", true),
+        ...ctx.externalImports,
+        ...scriptBody,
+      ],
+    }),
+    cRaw({ text: "" }),
+    renderTree,
+    ...component.styles.map((s) => cStyle({ css: s.css, scoped: true })),
+  );
+
   const file = cFile({
     flavor: "sfc-svelte",
-    children: [
-      cScript({
-        lang: "ts",
-        setup: false,
-        children: [
-          ...emitComponentImports(ctx.componentImports, ".svelte", true),
-          ...ctx.externalImports,
-          ...scriptBody,
-        ],
-      }),
-      cRaw({ text: "" }),
-      renderTree,
-      ...component.styles.map((s) => cStyle({ css: s.css, scoped: true })),
-    ],
+    children: fileChildren,
   });
   return { componentName: component.name, root: file, fileName: `${component.name}.svelte` };
 }

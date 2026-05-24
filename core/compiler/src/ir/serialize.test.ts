@@ -119,6 +119,8 @@ describe("deserializeModule", () => {
           memos: [],
           effects: [],
           resources: [],
+          provides: [],
+          consumes: [],
           lifecycle: { onMount: [], onCleanup: [] },
           setup: [],
           render: {

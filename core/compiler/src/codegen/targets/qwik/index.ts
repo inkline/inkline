@@ -184,6 +184,18 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const body: Code[] = [];
   const qwikImports = ["component$", "useSignal", "useComputed$", "useVisibleTask$", "$"];
 
+  for (const p of component.provides) {
+    qwikImports.push("useContextProvider");
+    const valueExpr = rewriteExpr(p.value.expr, rules);
+    body.push(
+      cStmt({ body: `useContextProvider(${p.contextName}.id, ${valueExpr})`, span: p.loc }),
+    );
+  }
+  for (const c of component.consumes) {
+    qwikImports.push("useContext");
+    body.push(cStmt({ body: `const ${c.name} = useContext(${c.contextName}.id)`, span: c.loc }));
+  }
+
   for (const s of component.state) {
     body.push(
       cStmt({
@@ -226,6 +238,20 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const styleImport =
     component.styles.length > 0 ? [cRaw({ text: `import "./${component.name}.css";` })] : [];
 
+  const contextDefs: Code[] = [];
+  for (const ctxDef of ctx.contexts) {
+    qwikImports.push("createContextId");
+    const defaultText = ctxDef.defaultValue
+      ? rewriteExpr(ctxDef.defaultValue.expr, rules)
+      : "undefined";
+    const typeParam = ctxDef.typeText ? `<${ctxDef.typeText}>` : "";
+    contextDefs.push(
+      cStmt({
+        body: `export const ${ctxDef.name} = { id: createContextId${typeParam}("${ctxDef.name}"), defaultValue: ${defaultText} }`,
+      }),
+    );
+  }
+
   const file = cFile({
     flavor: "tsx",
     children: [
@@ -236,6 +262,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...emitComponentImports(ctx.componentImports, "", false),
       ...ctx.externalImports,
       ...styleImport,
+      ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       cRaw({ text: "" }),
       cStmt({
         body:
