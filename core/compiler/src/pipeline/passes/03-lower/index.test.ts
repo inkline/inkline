@@ -25,6 +25,7 @@ function makeModule(components: IRComponent[]): IRModule {
     version: 1,
     fileName: "t.tsx",
     components,
+    contexts: [],
     imports: [],
     sourceFile: sf,
   };
@@ -44,6 +45,8 @@ function makeComp(name: string, render: IRElement): IRComponent {
     memos: [],
     effects: [],
     resources: [],
+    provides: [],
+    consumes: [],
     lifecycle: { onMount: [], onCleanup: [] },
     setup: [],
     render,

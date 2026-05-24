@@ -9,6 +9,7 @@ function makeModule(version?: number): IRModule {
     version: version ?? 0,
     fileName: "t.tsx",
     components: [],
+    contexts: [],
     imports: [],
     sourceFile: sf,
   };
@@ -38,6 +39,7 @@ describe("migrate", () => {
       version: 0,
       fileName: "test.tsx",
       components: [],
+      contexts: [],
       imports: [],
       sourceFile: sf,
     };

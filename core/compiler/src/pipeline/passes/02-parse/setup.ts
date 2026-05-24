@@ -1,10 +1,12 @@
 import * as ts from "typescript";
 import { DYNAMIC_DEPS, type IRReactiveKind, type SymbolId } from "../../../ir/reactivity.ts";
 import type {
+  IRConsumeDeclaration,
   IREffectDeclaration,
   IRExprNode,
   IRLifecycle,
   IRMemoDeclaration,
+  IRProvideDeclaration,
   IRRefDeclaration,
   IRResourceDeclaration,
   IRSetupStatement,
@@ -51,6 +53,8 @@ export interface SetupResult {
   readonly refs: IRRefDeclaration[];
   readonly effects: IREffectDeclaration[];
   readonly resources: IRResourceDeclaration[];
+  readonly provides: IRProvideDeclaration[];
+  readonly consumes: IRConsumeDeclaration[];
   readonly lifecycle: IRLifecycle;
   readonly setup: IRSetupStatement[];
   readonly renderExpr: ts.Expression | undefined;
@@ -71,6 +75,8 @@ export function parseSetup(
   const refs: IRRefDeclaration[] = [];
   const effects: IREffectDeclaration[] = [];
   const resources: IRResourceDeclaration[] = [];
+  const provides: IRProvideDeclaration[] = [];
+  const consumes: IRConsumeDeclaration[] = [];
   const onMountDecls: IREffectDeclaration[] = [];
   const onCleanupDecls: IREffectDeclaration[] = [];
   const setup: IRSetupStatement[] = [];
@@ -81,6 +87,8 @@ export function parseSetup(
   const effectLocal = localFor(bindings, "createEffect");
   const refLocal = localFor(bindings, "createRef");
   const resourceLocal = localFor(bindings, "createResource");
+  const provideLocal = localFor(bindings, "provide");
+  const useContextLocal = localFor(bindings, "useContext");
   const mountLocal = localFor(bindings, "onMount");
   const cleanupLocal = localFor(bindings, "onCleanup");
 
@@ -93,6 +101,8 @@ export function parseSetup(
       refs,
       effects,
       resources,
+      provides,
+      consumes,
       lifecycle: { onMount: onMountDecls, onCleanup: onCleanupDecls },
       setup,
       renderExpr,
@@ -281,6 +291,33 @@ export function parseSetup(
           });
           continue;
         }
+
+        if (isCallTo(init, useContextLocal)) {
+          const contextArg = init.arguments[0];
+          if (!contextArg) continue;
+
+          const id = ctx.symbols.mint({
+            componentId,
+            kind: "context",
+            name: decl.name.text,
+            loc: toLoc(decl, sourceFile),
+          });
+
+          registerBinding(decl.name, id, "context");
+
+          const contextName = ts.isIdentifier(contextArg)
+            ? contextArg.text
+            : contextArg.getText(sourceFile);
+
+          consumes.push({
+            name: decl.name.text,
+            contextRef: contextArg,
+            contextName,
+            symbolId: id,
+            loc: toLoc(decl, sourceFile),
+          });
+          continue;
+        }
       }
 
       if (
@@ -290,7 +327,8 @@ export function parseSetup(
             (isCallTo(d.initializer, signalLocal) ||
               isCallTo(d.initializer, memoLocal) ||
               isCallTo(d.initializer, refLocal) ||
-              isCallTo(d.initializer, resourceLocal)),
+              isCallTo(d.initializer, resourceLocal) ||
+              isCallTo(d.initializer, useContextLocal)),
         )
       ) {
         setup.push({ stmt, defines: [], loc });
@@ -333,6 +371,22 @@ export function parseSetup(
         });
         continue;
       }
+
+      if (isCallTo(expr, provideLocal) && expr.arguments[0] && expr.arguments[1]) {
+        const contextArg = expr.arguments[0];
+        const valueArg = expr.arguments[1];
+        const contextName = ts.isIdentifier(contextArg)
+          ? contextArg.text
+          : contextArg.getText(sourceFile);
+
+        provides.push({
+          contextRef: contextArg,
+          contextName,
+          value: makeExprNode(valueArg, sourceFile),
+          loc,
+        });
+        continue;
+      }
     }
 
     setup.push({ stmt, defines: [], loc });
@@ -344,6 +398,8 @@ export function parseSetup(
     refs,
     effects,
     resources,
+    provides,
+    consumes,
     lifecycle: { onMount: onMountDecls, onCleanup: onCleanupDecls },
     setup,
     renderExpr,

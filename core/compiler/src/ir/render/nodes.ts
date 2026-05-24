@@ -11,6 +11,9 @@ export type PrimitiveName =
   | "createEffect"
   | "createRef"
   | "createResource"
+  | "createContext"
+  | "provide"
+  | "useContext"
   | "defineComponent"
   | "onMount"
   | "onCleanup"
@@ -262,6 +265,30 @@ export interface IRSetupStatement {
   readonly loc: SourceLocation;
 }
 
+// ── Context declarations ───────────────────────────────────────────
+
+export interface IRContextDefinition {
+  readonly name: string;
+  readonly typeText?: string;
+  readonly defaultValue?: IRExprNode;
+  readonly loc: SourceLocation;
+}
+
+export interface IRProvideDeclaration {
+  readonly contextRef: ts.Expression;
+  readonly contextName: string;
+  readonly value: IRExprNode;
+  readonly loc: SourceLocation;
+}
+
+export interface IRConsumeDeclaration {
+  readonly name: string;
+  readonly contextRef: ts.Expression;
+  readonly contextName: string;
+  readonly symbolId: SymbolId;
+  readonly loc: SourceLocation;
+}
+
 // ── IRComponent and IRModule ────────────────────────────────────────
 
 export interface IRStyleBlock {
@@ -297,6 +324,8 @@ export interface IRComponent {
   readonly memos: readonly IRMemoDeclaration[];
   readonly effects: readonly IREffectDeclaration[];
   readonly resources: readonly IRResourceDeclaration[];
+  readonly provides: readonly IRProvideDeclaration[];
+  readonly consumes: readonly IRConsumeDeclaration[];
   readonly lifecycle: IRLifecycle;
   readonly setup: readonly IRSetupStatement[];
   readonly render: IRNode;
@@ -318,6 +347,7 @@ export interface IRModule {
   readonly version: number;
   readonly fileName: string;
   readonly components: readonly IRComponent[];
+  readonly contexts: readonly IRContextDefinition[];
   readonly imports: readonly ts.ImportDeclaration[];
   readonly sourceFile: ts.SourceFile;
 }

@@ -45,6 +45,8 @@ function makeComponent(memos: IRMemoDeclaration[]): IRComponent {
     memos,
     effects: [],
     resources: [],
+    provides: [],
+    consumes: [],
     lifecycle: { onMount: [], onCleanup: [] },
     setup: [],
     render: { kind: "Text", value: "", loc: UNKNOWN_LOCATION },

@@ -312,6 +312,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const body: Code[] = [];
   const reactImports: string[] = [];
 
+  for (const c of component.consumes) {
+    reactImports.push("useContext");
+    body.push(cStmt({ body: `const ${c.name} = useContext(${c.contextName})`, span: c.loc }));
+  }
+
   for (const s of component.state) {
     reactImports.push("useState");
     body.push(
@@ -385,7 +390,34 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   }
 
   const propsType = buildPropsType(component, hasDefaultSlot);
-  const renderTree = emitNode(component.render, rules);
+  let renderTree = emitNode(component.render, rules);
+
+  for (const p of component.provides) {
+    const valueExpr = rewriteExpr(p.value.expr, rules);
+    renderTree = cJsxElement({
+      tag: `${p.contextName}.Provider`,
+      attrs: [
+        cJsxAttr({
+          name: "value",
+          value: { kind: "expr", expr: cExpr({ text: valueExpr }) },
+        }),
+      ],
+      children: [renderTree],
+      selfClose: false,
+    });
+  }
+
+  const contextDefs: Code[] = [];
+  for (const ctxDef of ctx.contexts) {
+    reactImports.push("createContext");
+    const defaultText = ctxDef.defaultValue
+      ? rewriteExpr(ctxDef.defaultValue.expr, rules)
+      : "undefined";
+    const typeParam = ctxDef.typeText ? `<${ctxDef.typeText}>` : "";
+    contextDefs.push(
+      cStmt({ body: `export const ${ctxDef.name} = createContext${typeParam}(${defaultText})` }),
+    );
+  }
 
   const updatedImports: Code[] =
     new Set(reactImports).size > 0
@@ -420,6 +452,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...emitComponentImports(ctx.componentImports, "", false),
       ...ctx.externalImports,
       ...styleImport,
+      ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       ...(needsTransition ? [cRaw({ text: "" }), cRaw({ text: REACT_TRANSITION_HELPER })] : []),
       cRaw({ text: "" }),
       cStmt({ body: signature }),

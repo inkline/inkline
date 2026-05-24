@@ -59,6 +59,7 @@ function emitComponent(
   component: IRComponent,
   target: Target,
   ctx: PassContext,
+  module: IRModule,
   externalImports: readonly Code[],
   componentImports: readonly ComponentImport[],
 ): GeneratedFile[] {
@@ -67,6 +68,7 @@ function emitComponent(
     options: ctx.options,
     symbols: ctx.symbols,
     rewrites: target.rewrites,
+    contexts: module.contexts,
     externalImports,
     componentImports,
   });
@@ -189,7 +191,14 @@ export async function compile(
     for (const component of analyzedModule.module.components) {
       try {
         targetFiles.push(
-          ...emitComponent(component, target, ctx, externalImports, componentImports),
+          ...emitComponent(
+            component,
+            target,
+            ctx,
+            analyzedModule.module,
+            externalImports,
+            componentImports,
+          ),
         );
       } catch (err) {
         diagnostics.push("INK0100", component.loc, {
