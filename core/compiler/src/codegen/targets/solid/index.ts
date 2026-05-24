@@ -200,6 +200,18 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         ? cExpr({ text: `{props.${node.name} ?? ${inlineNode(node.fallback, rules)}}` })
         : cExpr({ text: `{props.${node.name}}` });
     }
+    case "Transition": {
+      const attrs = [cJsxAttr({ name: "name", value: { kind: "static", text: node.name } })];
+      if (node.appear) {
+        attrs.push(cJsxAttr({ name: "appear", value: { kind: "boolean" } }));
+      }
+      return cJsxElement({
+        tag: "__InkTransition",
+        attrs,
+        children: [emitNode(node.child, rules)],
+        selfClose: false,
+      });
+    }
     case "Fragment":
       return cJsxElement({
         tag: "",
@@ -275,6 +287,9 @@ function collectCFImports(node: IRNode, out: string[]): void {
     case "ComponentInstance":
       node.slots.forEach((s) => collectCFImports(s.body, out));
       break;
+    case "Transition":
+      collectCFImports(node.child, out);
+      break;
     case "Text":
     case "Expression":
     case "SlotPlaceholder":
@@ -283,6 +298,64 @@ function collectCFImports(node: IRNode, out: string[]): void {
       assertNever(node);
   }
 }
+
+// ── Transition helper ──────────────────────────────────────────────
+
+function hasTransition(node: IRNode): boolean {
+  if (node.kind === "Transition") return true;
+  switch (node.kind) {
+    case "Element":
+    case "Fragment":
+      return node.children.some(hasTransition);
+    case "If":
+      return (
+        node.branches.some((b) => hasTransition(b.body)) ||
+        (node.fallback ? hasTransition(node.fallback) : false)
+      );
+    case "For":
+      return hasTransition(node.body);
+    case "Switch":
+      return (
+        node.cases.some((c) => hasTransition(c.body)) ||
+        (node.fallback ? hasTransition(node.fallback) : false)
+      );
+    case "ComponentInstance":
+      return node.slots.some((s) => hasTransition(s.body));
+    default:
+      return false;
+  }
+}
+
+const SOLID_TRANSITION_HELPER = `function __InkTransition(props: { name?: string; appear?: boolean; children?: any }) {
+  let ref: HTMLDivElement | undefined;
+  const name = () => props.name ?? "ink";
+  const [show, setShow] = createSignal(!!props.children);
+  let prevChildren = props.children;
+  let mounted = false;
+  createEffect(() => {
+    const active = !!props.children;
+    const el = ref;
+    if (!el) return;
+    if (active) {
+      prevChildren = props.children;
+      if (!show()) setShow(true);
+      if (!mounted && !props.appear) { mounted = true; return; }
+      mounted = true;
+      el.classList.add(name() + "-enter-from", name() + "-enter-active");
+      requestAnimationFrame(() => { el.classList.remove(name() + "-enter-from"); el.classList.add(name() + "-enter-to"); });
+      const done = () => { el.classList.remove(name() + "-enter-active", name() + "-enter-to"); el.removeEventListener("transitionend", done); };
+      el.addEventListener("transitionend", done, { once: true });
+    } else if (show()) {
+      el.classList.add(name() + "-leave-from", name() + "-leave-active");
+      requestAnimationFrame(() => { el.classList.remove(name() + "-leave-from"); el.classList.add(name() + "-leave-to"); });
+      const done = () => { el.classList.remove(name() + "-leave-active", name() + "-leave-to"); el.removeEventListener("transitionend", done); setShow(false); };
+      el.addEventListener("transitionend", done, { once: true });
+      const t = setTimeout(done, 1000);
+      onCleanup(() => { clearTimeout(t); el.removeEventListener("transitionend", done); });
+    }
+  });
+  return <Show when={show()}><div ref={(el) => ref = el} style={{ display: "contents" }}>{props.children ?? prevChildren}</div></Show>;
+}`;
 
 // ── Emit entry point ───────────────────────────────────────────────
 
@@ -359,6 +432,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   for (const r of component.refs)
     body.push(cStmt({ body: `let ${r.name}: ${r.elementType ?? "HTMLElement"} | undefined` }));
 
+  const needsTransition = hasTransition(component.render);
+  if (needsTransition) {
+    solidImports.push("createSignal", "createEffect", "onCleanup", "Show");
+  }
+
   collectCFImports(component.render, solidImports);
 
   const styleImport =
@@ -407,6 +485,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...ctx.externalImports,
       ...styleImport,
       ...contextDefs,
+      ...(needsTransition ? [cRaw({ text: "" }), cRaw({ text: SOLID_TRANSITION_HELPER })] : []),
       cRaw({ text: "" }),
       cStmt({
         body: `export default function ${component.name}(props: ${buildSolidPropsType(component)})`,

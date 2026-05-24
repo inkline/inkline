@@ -7,6 +7,7 @@ import type {
   IRNode,
   IRSlotPlaceholder,
   IRSwitchCase,
+  IRTransition,
 } from "../../../ir/render/nodes.ts";
 import { transformComponent } from "../../../ir/render/transform.ts";
 import type { PassContext } from "../../types.ts";
@@ -159,7 +160,7 @@ function lowerSlot(ci: IRComponentInstance, ctx: PassContext): IRSlotPlaceholder
     ) {
       name = rawNameAttr.value.expr.text;
     } else {
-      ctx.diagnostics.push("INK0063", ci.loc);
+      ctx.diagnostics.push("INK0067", ci.loc);
     }
   }
 
@@ -176,6 +177,41 @@ function lowerSlot(ci: IRComponentInstance, ctx: PassContext): IRSlotPlaceholder
   return { kind: "SlotPlaceholder", name, scopedArgs, fallback, loc: ci.loc };
 }
 
+function lowerTransition(ci: IRComponentInstance, ctx: PassContext): IRTransition | undefined {
+  const nameAttr = getAttr(ci, "name");
+  let name = "ink";
+  if (nameAttr && ts.isStringLiteral(nameAttr.expr)) {
+    name = nameAttr.expr.text;
+  }
+
+  const appear = getAttr(ci, "appear") !== undefined;
+
+  const body = getDefaultSlotBody(ci);
+  if (!body) return undefined;
+
+  if (body.kind === "Fragment" && body.children.length !== 1) {
+    ctx.diagnostics.push("INK0063", ci.loc);
+    return undefined;
+  }
+
+  const child = body.kind === "Fragment" ? body.children[0]! : body;
+
+  if (child.kind === "For" || (child.kind === "ComponentInstance" && getRefName(child) === "For")) {
+    ctx.diagnostics.push("INK0065", ci.loc);
+    return undefined;
+  }
+
+  if (
+    child.kind !== "If" &&
+    !(child.kind === "ComponentInstance" && getRefName(child) === "Show") &&
+    !appear
+  ) {
+    ctx.diagnostics.push("INK0064", ci.loc);
+  }
+
+  return { kind: "Transition", name, appear, child, loc: ci.loc };
+}
+
 export function controlFlow(component: IRComponent, ctx: PassContext): IRComponent {
   return transformComponent(component, {
     enter(node) {
@@ -185,6 +221,7 @@ export function controlFlow(component: IRComponent, ctx: PassContext): IRCompone
         if (name === "For") return lowerFor(node, ctx);
         if (name === "Switch") return lowerSwitch(node);
         if (name === "Slot") return lowerSlot(node, ctx);
+        if (name === "Transition") return lowerTransition(node, ctx);
       }
 
       if (node.kind === "Expression") {

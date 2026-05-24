@@ -611,7 +611,7 @@ describe("controlFlow", () => {
       controlFlow(makeComp(ci), ctx);
       const diags = ctx.diagnostics.freeze();
       expect(diags).toHaveLength(1);
-      expect(diags[0]!.code).toBe("INK0063");
+      expect(diags[0]!.code).toBe("INK0067");
     });
 
     it("falls back to 'default' name for non-string-literal", () => {

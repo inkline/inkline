@@ -9,6 +9,7 @@ import {
   createIf,
   createSwitch,
   createText,
+  createTransition,
 } from "../../ir/render/builders.ts";
 import { createDiagnosticCollector } from "../../core/diagnostics/collector.ts";
 import { resolveOptions } from "../../core/options.ts";
@@ -684,5 +685,103 @@ describe("component import placement", () => {
     const comp = makeComp("Test", createElement({ tag: "div" }));
     const result = print(react.emit(comp, makeCtx(react)).root);
     expect(result.code).not.toContain("IBadgeBase");
+  });
+});
+
+describe("transition emission", () => {
+  const transitionWithIf = createTransition({
+    name: "fade",
+    child: createIf({
+      branches: [
+        {
+          test: createExpr({ expr: mockExpr("visible()") }),
+          body: createElement({ tag: "p", children: [createText({ value: "Hello" })] }),
+        },
+      ],
+    }),
+  });
+
+  const transitionAppear = createTransition({
+    name: "slide",
+    appear: true,
+    child: createIf({
+      branches: [
+        {
+          test: createExpr({ expr: mockExpr("show()") }),
+          body: createElement({ tag: "div", children: [createText({ value: "Content" })] }),
+        },
+      ],
+      fallback: createText({ value: "Hidden" }),
+    }),
+  });
+
+  it("Vue: wraps child in <Transition>", () => {
+    const comp = makeComp("Fade", createElement({ tag: "div", children: [transitionWithIf] }));
+    const result = print(vue.emit(comp, makeCtx(vue)).root);
+    expect(result.code).toContain("<Transition");
+    expect(result.code).toContain('name="fade"');
+    expect(result.code).toMatchSnapshot();
+  });
+
+  it("Vue: appear prop emitted", () => {
+    const comp = makeComp("Slide", createElement({ tag: "div", children: [transitionAppear] }));
+    const result = print(vue.emit(comp, makeCtx(vue)).root);
+    expect(result.code).toContain("appear");
+    expect(result.code).toMatchSnapshot();
+  });
+
+  it("Svelte: pushes transition directive into child element", () => {
+    const comp = makeComp("Fade", createElement({ tag: "div", children: [transitionWithIf] }));
+    const result = print(svelte.emit(comp, makeCtx(svelte)).root);
+    expect(result.code).toContain("in:__inkTransitionIn");
+    expect(result.code).toContain("out:__inkTransitionOut");
+    expect(result.code).toContain("{#if");
+    expect(result.code).toMatchSnapshot();
+  });
+
+  it("React: emits __InkTransition wrapper + helper", () => {
+    const comp = makeComp("Fade", createElement({ tag: "div", children: [transitionWithIf] }));
+    const result = print(react.emit(comp, makeCtx(react)).root);
+    expect(result.code).toContain("__InkTransition");
+    expect(result.code).toContain("transitionend");
+    expect(result.code).toContain('name="fade"');
+    expect(result.code).toMatchSnapshot();
+  });
+
+  it("React: no helper when no transition", () => {
+    const comp = makeComp("Plain", createElement({ tag: "div" }));
+    const result = print(react.emit(comp, makeCtx(react)).root);
+    expect(result.code).not.toContain("__InkTransition");
+  });
+
+  it("Solid: emits __InkTransition wrapper + helper", () => {
+    const comp = makeComp("Fade", createElement({ tag: "div", children: [transitionWithIf] }));
+    const result = print(solid.emit(comp, makeCtx(solid)).root);
+    expect(result.code).toContain("__InkTransition");
+    expect(result.code).toContain("transitionend");
+    expect(result.code).toMatchSnapshot();
+  });
+
+  it("Qwik: emits __InkTransition wrapper + helper", () => {
+    const comp = makeComp("Fade", createElement({ tag: "div", children: [transitionWithIf] }));
+    const result = print(qwik.emit(comp, makeCtx(qwik)).root);
+    expect(result.code).toContain("__InkTransition");
+    expect(result.code).toContain("transitionend");
+    expect(result.code).toMatchSnapshot();
+  });
+
+  it("Angular: passes through to child", () => {
+    const comp = makeComp("Fade", createElement({ tag: "div", children: [transitionWithIf] }));
+    const result = print(angular.emit(comp, makeCtx(angular)).root);
+    expect(result.code).not.toContain("Transition");
+    expect(result.code).toContain("@if");
+    expect(result.code).toMatchSnapshot();
+  });
+
+  it("Astro: passes through to child", () => {
+    const comp = makeComp("Fade", createElement({ tag: "div", children: [transitionWithIf] }));
+    const result = print(astro.emit(comp, makeCtx(astro)).root);
+    expect(result.code).not.toContain("Transition");
+    expect(result.code).toMatchSnapshot();
   });
 });
