@@ -169,4 +169,16 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
 
   // ── Multi-file components ──
   MultiFile: [{ name: "component with sibling CSS", asserts: {} }],
+
+  // ── Transition ──
+  TransitionBasic: [{ name: "initial visible", asserts: { textOf: { p: "Hello" } } }],
+  TransitionAppear: [
+    { name: "renders with appear", asserts: { textOf: { p: "Animates in on mount" } } },
+  ],
+  Diag_TransitionMultipleChildren: [
+    { name: "triggers INK0063", asserts: { expectedDiagnostics: ["INK0063"] } },
+  ],
+  Diag_TransitionWithFor: [
+    { name: "triggers INK0065", asserts: { expectedDiagnostics: ["INK0065"] } },
+  ],
 };

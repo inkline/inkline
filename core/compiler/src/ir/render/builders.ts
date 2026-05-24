@@ -20,6 +20,7 @@ import type {
   IRSwitch,
   IRSwitchCase,
   IRText,
+  IRTransition,
 } from "./nodes.ts";
 
 export function createComponentInstance(init: {
@@ -131,6 +132,21 @@ export function createSwitch(init: {
     kind: "Switch",
     cases: init.cases,
     fallback: init.fallback,
+    loc: init.loc ?? UNKNOWN_LOCATION,
+  };
+}
+
+export function createTransition(init: {
+  name?: string;
+  appear?: boolean;
+  child: IRNode;
+  loc?: SourceLocation;
+}): IRTransition {
+  return {
+    kind: "Transition",
+    name: init.name ?? "ink",
+    appear: init.appear ?? false,
+    child: init.child,
     loc: init.loc ?? UNKNOWN_LOCATION,
   };
 }

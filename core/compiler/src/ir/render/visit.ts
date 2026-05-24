@@ -34,6 +34,9 @@ export function walkNode(node: IRNode, visitor: IRVisitor, parent?: IRNode): voi
       for (const c of node.cases) walkNode(c.body, visitor, node);
       if (node.fallback) walkNode(node.fallback, visitor, node);
       break;
+    case "Transition":
+      walkNode(node.child, visitor, node);
+      break;
     case "SlotPlaceholder":
       if (node.fallback) walkNode(node.fallback, visitor, node);
       break;

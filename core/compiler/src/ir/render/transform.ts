@@ -94,6 +94,13 @@ function transformNode(node: IRNode, t: IRTransformer, parent?: IRNode): IRNode 
       }
       break;
     }
+    case "Transition": {
+      const child = transformNode(current.child, t, current);
+      if (child !== current.child) {
+        current = { ...current, child };
+      }
+      break;
+    }
     case "SlotPlaceholder": {
       const fallback = current.fallback ? transformNode(current.fallback, t, current) : undefined;
       if (fallback !== current.fallback) {

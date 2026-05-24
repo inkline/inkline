@@ -82,3 +82,6 @@ export function Switch(_props: { children?: any; fallback?: any }): any {
 export function Match(_props: { when: boolean; children?: any }): any {
   return null;
 }
+export function Transition(_props: { name?: string; appear?: boolean; children?: any }): any {
+  return null;
+}

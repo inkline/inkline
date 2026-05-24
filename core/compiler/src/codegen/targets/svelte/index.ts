@@ -1,6 +1,6 @@
 import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../context.ts";
 import { svelteConformance } from "./conformance.ts";
-import type { Code } from "../../code-ir/nodes.ts";
+import type { Code, CTmplDirective } from "../../code-ir/nodes.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import {
   cFile,
@@ -72,6 +72,77 @@ function tmplAttrs(
   );
   return { attrs: [...attrs, ...evts], directives: refs };
 }
+
+// ── Transition helpers ─────────────────────────────────────────────
+
+function transitionDirectives(name: string): [CTmplDirective, CTmplDirective] {
+  const params = cExpr({ text: `{ name: "${name}" }` });
+  return [
+    cTmplDirective({ directive: "in", arg: "__inkTransitionIn", expr: params }),
+    cTmplDirective({ directive: "out", arg: "__inkTransitionOut", expr: params }),
+  ];
+}
+
+function applyTransitionDirective(code: Code, name: string): Code {
+  const [dIn, dOut] = transitionDirectives(name);
+  if (code.kind === "CTmplElement") {
+    return cTmplElement({
+      tag: code.tag,
+      directives: [dIn, dOut, ...code.directives],
+      attrs: code.attrs,
+      children: code.children,
+      selfClose: code.selfClose,
+    });
+  }
+  return cTmplElement({
+    tag: "div",
+    directives: [dIn, dOut],
+    attrs: [cTmplAttr({ name: "style", value: { kind: "static", text: "display:contents" } })],
+    children: [code],
+    selfClose: false,
+  });
+}
+
+function hasTransition(node: IRNode): boolean {
+  if (node.kind === "Transition") return true;
+  switch (node.kind) {
+    case "Element":
+    case "Fragment":
+      return node.children.some(hasTransition);
+    case "If":
+      return (
+        node.branches.some((b) => hasTransition(b.body)) ||
+        (node.fallback ? hasTransition(node.fallback) : false)
+      );
+    case "For":
+      return hasTransition(node.body);
+    case "Switch":
+      return (
+        node.cases.some((c) => hasTransition(c.body)) ||
+        (node.fallback ? hasTransition(node.fallback) : false)
+      );
+    case "ComponentInstance":
+      return node.slots.some((s) => hasTransition(s.body));
+    default:
+      return false;
+  }
+}
+
+function __inkTransitionFn(prefix: "enter" | "leave") {
+  return `function(node: HTMLElement, { name = "ink" }: { name: string }) {
+    node.classList.add(name + "-${prefix}-from", name + "-${prefix}-active");
+    requestAnimationFrame(() => {
+      node.classList.remove(name + "-${prefix}-from");
+      node.classList.add(name + "-${prefix}-to");
+    });
+    const cs = getComputedStyle(node);
+    const dur = (parseFloat(cs.transitionDuration) || 0.3) * 1000;
+    return { duration: dur, tick() {} };
+  }`;
+}
+
+const SVELTE_TRANSITION_HELPER = `const __inkTransitionIn = ${__inkTransitionFn("enter")};
+  const __inkTransitionOut = ${__inkTransitionFn("leave")};`;
 
 // ── Render-tree walker ─────────────────────────────────────────────
 
@@ -179,6 +250,26 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         selfClose: children.length === 0,
       });
     }
+    case "Transition": {
+      if (node.child.kind === "If") {
+        const [first, ...rest] = node.child.branches;
+        const children: Code[] = [
+          cRaw({ text: `{#if ${rewriteExpr(first.test.expr, rules)}}` }),
+          applyTransitionDirective(emitNode(first.body, rules), node.name),
+        ];
+        for (const b of rest) {
+          children.push(cRaw({ text: `{:else if ${rewriteExpr(b.test.expr, rules)}}` }));
+          children.push(applyTransitionDirective(emitNode(b.body, rules), node.name));
+        }
+        if (node.child.fallback) {
+          children.push(cRaw({ text: "{:else}" }));
+          children.push(applyTransitionDirective(emitNode(node.child.fallback, rules), node.name));
+        }
+        children.push(cRaw({ text: "{/if}" }));
+        return cGroup({ children });
+      }
+      return applyTransitionDirective(emitNode(node.child, rules), node.name);
+    }
     case "Fragment": {
       const children = node.children.map((c) => emitNode(c, rules));
       return children.length === 1 ? children[0] : cGroup({ children });
@@ -249,6 +340,8 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     }
   }
 
+  const needsTransition = hasTransition(component.render);
+
   const renderTree = emitNode(component.render, rules);
   const file = cFile({
     flavor: "sfc-svelte",
@@ -260,6 +353,9 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
           ...emitComponentImports(ctx.componentImports, ".svelte", true),
           ...ctx.externalImports,
           ...scriptBody,
+          ...(needsTransition
+            ? [cRaw({ text: "" }), cRaw({ text: SVELTE_TRANSITION_HELPER })]
+            : []),
         ],
       }),
       cRaw({ text: "" }),

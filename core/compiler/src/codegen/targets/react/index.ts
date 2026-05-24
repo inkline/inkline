@@ -145,6 +145,19 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         ? cExpr({ text: `{${prop}?.() ?? ${inlineNode(node.fallback, rules)}}`, span })
         : cExpr({ text: `{${prop}?.()}`, span });
     }
+    case "Transition": {
+      const attrs = [cJsxAttr({ name: "name", value: { kind: "static", text: node.name } })];
+      if (node.appear) {
+        attrs.push(cJsxAttr({ name: "appear", value: { kind: "boolean" } }));
+      }
+      return cJsxElement({
+        tag: "__InkTransition",
+        attrs,
+        children: [emitNode(node.child, rules)],
+        selfClose: false,
+        span,
+      });
+    }
     case "Fragment":
       return cJsxElement({
         tag: "",
@@ -234,6 +247,64 @@ function buildPropsType(component: IRComponent, hasDefaultSlot: boolean): string
   return parts.length > 0 ? parts.join(" & ") : "Record<string, never>";
 }
 
+// ── Transition helper ──────────────────────────────────────────────
+
+function hasTransition(node: IRNode): boolean {
+  if (node.kind === "Transition") return true;
+  switch (node.kind) {
+    case "Element":
+    case "Fragment":
+      return node.children.some(hasTransition);
+    case "If":
+      return (
+        node.branches.some((b) => hasTransition(b.body)) ||
+        (node.fallback ? hasTransition(node.fallback) : false)
+      );
+    case "For":
+      return hasTransition(node.body);
+    case "Switch":
+      return (
+        node.cases.some((c) => hasTransition(c.body)) ||
+        (node.fallback ? hasTransition(node.fallback) : false)
+      );
+    case "ComponentInstance":
+      return node.slots.some((s) => hasTransition(s.body));
+    default:
+      return false;
+  }
+}
+
+const REACT_TRANSITION_HELPER = `function __InkTransition({ name = "ink", appear, children }: { name?: string; appear?: boolean; children?: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(!!children);
+  const prevRef = useRef(children);
+  const mounted = useRef(false);
+  const active = children !== null && children !== undefined && children !== false;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (active) {
+      prevRef.current = children;
+      if (!show) setShow(true);
+      if (!mounted.current && !appear) { mounted.current = true; return; }
+      mounted.current = true;
+      el.classList.add(name + "-enter-from", name + "-enter-active");
+      requestAnimationFrame(() => { el.classList.remove(name + "-enter-from"); el.classList.add(name + "-enter-to"); });
+      const done = () => { el.classList.remove(name + "-enter-active", name + "-enter-to"); el.removeEventListener("transitionend", done); };
+      el.addEventListener("transitionend", done, { once: true });
+    } else if (show) {
+      el.classList.add(name + "-leave-from", name + "-leave-active");
+      requestAnimationFrame(() => { el.classList.remove(name + "-leave-from"); el.classList.add(name + "-leave-to"); });
+      const done = () => { el.classList.remove(name + "-leave-active", name + "-leave-to"); el.removeEventListener("transitionend", done); setShow(false); };
+      el.addEventListener("transitionend", done, { once: true });
+      const t = setTimeout(done, 1000);
+      return () => { clearTimeout(t); el.removeEventListener("transitionend", done); };
+    }
+  }, [active]);
+  if (!show) return null;
+  return <div ref={ref} style={{ display: "contents" }}>{active ? children : prevRef.current}</div>;
+}`;
+
 // ── Emit entry point ───────────────────────────────────────────────
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
@@ -308,6 +379,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     }
   }
 
+  const needsTransition = hasTransition(component.render);
+  if (needsTransition) {
+    reactImports.push("useState", "useEffect", "useRef");
+  }
+
   const propsType = buildPropsType(component, hasDefaultSlot);
   const renderTree = emitNode(component.render, rules);
 
@@ -344,6 +420,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...emitComponentImports(ctx.componentImports, "", false),
       ...ctx.externalImports,
       ...styleImport,
+      ...(needsTransition ? [cRaw({ text: "" }), cRaw({ text: REACT_TRANSITION_HELPER })] : []),
       cRaw({ text: "" }),
       cStmt({ body: signature }),
       cRaw({ text: "{" }),

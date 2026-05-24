@@ -1,6 +1,6 @@
 import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../context.ts";
 import { vueConformance } from "./conformance.ts";
-import type { Code } from "../../code-ir/nodes.ts";
+import type { Code, CTmplAttr } from "../../code-ir/nodes.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import {
   cFile,
@@ -200,6 +200,21 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         attrs: [...nameAttr, ...scopeAttrs],
         children,
         selfClose: children.length === 0,
+      });
+    }
+    case "Transition": {
+      const attrs: CTmplAttr[] = [];
+      if (node.name !== "v") {
+        attrs.push(cTmplAttr({ name: "name", value: { kind: "static", text: node.name } }));
+      }
+      if (node.appear) {
+        attrs.push(cTmplAttr({ name: "appear", value: { kind: "static", text: "" } }));
+      }
+      return cTmplElement({
+        tag: "Transition",
+        attrs,
+        children: [emitNode(node.child, rules)],
+        selfClose: false,
       });
     }
     case "Fragment": {

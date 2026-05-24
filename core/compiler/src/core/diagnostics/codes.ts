@@ -69,6 +69,32 @@ export const DIAGNOSTICS = {
     help: undefined,
     url: "https://docs.inkline.dev/diagnostics/INK0062" as const,
   },
+  INK0063: {
+    severity: "error" as const,
+    title: "<Transition> requires a single child element" as const,
+    help: "Wrap multiple children in a single container element" as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0063" as const,
+  },
+  INK0064: {
+    severity: "warning" as const,
+    title:
+      "<Transition> child is not conditional; use 'appear' prop for enter-only animations" as const,
+    help: "Wrap content in <Show when={...}> for enter/leave transitions" as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0064" as const,
+  },
+  INK0065: {
+    severity: "error" as const,
+    title: "<Transition> cannot wrap <For>; list transitions are not yet supported" as const,
+    help: undefined,
+    url: "https://docs.inkline.dev/diagnostics/INK0065" as const,
+  },
+  INK0066: {
+    severity: "info" as const,
+    title:
+      "<Transition> for Angular: CSS classes are emitted but animation requires manual @angular/animations setup" as const,
+    help: undefined,
+    url: "https://docs.inkline.dev/diagnostics/INK0066" as const,
+  },
   INK0070: {
     severity: "error" as const,
     title: "Component-ref forwarding is not yet supported" as const,
