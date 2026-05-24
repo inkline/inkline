@@ -113,6 +113,18 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         text: `{${node.cases.map((c) => `${rewriteExpr(c.test.expr, rules)} ? (<>${emitNodeInline(c.body, rules)}</>)`).join(" : ")} : ${fallback}}`,
       });
     }
+    case "Transition": {
+      const attrs = [cJsxAttr({ name: "name", value: { kind: "static", text: node.name } })];
+      if (node.appear) {
+        attrs.push(cJsxAttr({ name: "appear", value: { kind: "boolean" } }));
+      }
+      return cJsxElement({
+        tag: "__InkTransition",
+        attrs,
+        children: [emitNode(node.child, rules)],
+        selfClose: false,
+      });
+    }
     case "SlotPlaceholder":
       return cExpr({ text: `{props.${node.name === "default" ? "children" : node.name}}` });
     case "Fragment":
@@ -159,6 +171,57 @@ function inlineCode(code: Code): string {
 function emitNodeInline(node: IRNode, rules: RewriteRules): string {
   return inlineCode(emitNode(node, rules));
 }
+
+function hasTransition(node: IRNode): boolean {
+  if (node.kind === "Transition") return true;
+  switch (node.kind) {
+    case "Element":
+    case "Fragment":
+      return node.children.some(hasTransition);
+    case "If":
+      return (
+        node.branches.some((b) => hasTransition(b.body)) ||
+        (node.fallback ? hasTransition(node.fallback) : false)
+      );
+    case "For":
+      return hasTransition(node.body);
+    case "Switch":
+      return (
+        node.cases.some((c) => hasTransition(c.body)) ||
+        (node.fallback ? hasTransition(node.fallback) : false)
+      );
+    case "ComponentInstance":
+      return node.slots.some((s) => hasTransition(s.body));
+    default:
+      return false;
+  }
+}
+
+const QWIK_TRANSITION_HELPER = `const __InkTransition = component$((props: { name?: string; appear?: boolean; children?: any }) => {
+  const name = props.name ?? "ink";
+  const ref = useSignal<HTMLDivElement>();
+  const show = useSignal(true);
+  useVisibleTask$(({ track, cleanup }) => {
+    track(() => props.children);
+    const el = ref.value;
+    if (!el) return;
+    const active = !!props.children;
+    if (active) {
+      el.classList.add(name + "-enter-from", name + "-enter-active");
+      requestAnimationFrame(() => { el.classList.remove(name + "-enter-from"); el.classList.add(name + "-enter-to"); });
+      const done = () => { el.classList.remove(name + "-enter-active", name + "-enter-to"); };
+      el.addEventListener("transitionend", done, { once: true });
+    } else if (show.value) {
+      el.classList.add(name + "-leave-from", name + "-leave-active");
+      requestAnimationFrame(() => { el.classList.remove(name + "-leave-from"); el.classList.add(name + "-leave-to"); });
+      const done = () => { el.classList.remove(name + "-leave-active", name + "-leave-to"); show.value = false; };
+      el.addEventListener("transitionend", done, { once: true });
+      const t = setTimeout(done, 1000);
+      cleanup(() => { clearTimeout(t); el.removeEventListener("transitionend", done); });
+    }
+  });
+  return show.value ? <div ref={ref} style={{ display: "contents" }}>{props.children}</div> : null;
+});`;
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const rules = ctx.rewrites;
@@ -214,6 +277,8 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   }
 
+  const needsTransition = hasTransition(component.render);
+
   const renderTree = emitNode(component.render, rules);
 
   const styleImport =
@@ -244,6 +309,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...ctx.externalImports,
       ...styleImport,
       ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
+      ...(needsTransition ? [cRaw({ text: "" }), cRaw({ text: QWIK_TRANSITION_HELPER })] : []),
       cRaw({ text: "" }),
       cStmt({
         body:

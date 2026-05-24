@@ -79,6 +79,8 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
         .join("\n");
       return `<${tag}${ciAttrStr ? " " + ciAttrStr : ""}>\n${slotContent}\n</${tag}>`;
     }
+    case "Transition":
+      return emitNode(node.child, rules);
     case "SlotPlaceholder":
       return `<slot${node.name !== "default" ? ` name="${node.name}"` : ""} />`;
     default:

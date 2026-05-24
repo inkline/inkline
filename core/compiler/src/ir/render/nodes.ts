@@ -36,6 +36,7 @@ export type IRNode =
   | IRIf
   | IRFor
   | IRSwitch
+  | IRTransition
   | IRSlotPlaceholder
   | IRFragment;
 
@@ -122,6 +123,16 @@ export interface IRSwitch {
 export interface IRSwitchCase {
   readonly test: IRExprNode;
   readonly body: IRNode;
+}
+
+// ── Transition ─────────────────────────────────────────────────────
+
+export interface IRTransition {
+  readonly kind: "Transition";
+  readonly name: string;
+  readonly appear: boolean;
+  readonly child: IRNode;
+  readonly loc: SourceLocation;
 }
 
 // ── Slot placeholder and Fragment ───────────────────────────────────

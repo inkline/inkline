@@ -389,3 +389,251 @@ exports[`target emit + print (full output) > Vue: Counter component 1`] = `
 </template>
 "
 `;
+
+exports[`transition emission > Angular: passes through to child 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'Fade', template: \`<div>
+@if (visible()) {
+<p>
+Hello
+</p>
+}
+</div>\` })
+export class FadeComponent
+{
+count = signal(0)
+doubled = computed(() => count() * 2)
+constructor() { effect(() => { console.log("effect"); }) }
+}
+"
+`;
+
+exports[`transition emission > Astro: passes through to child 1`] = `
+"---
+---
+<div>
+{visible ? (<p>
+Hello
+</p>) : null}
+</div>
+"
+`;
+
+exports[`transition emission > Qwik: emits __InkTransition wrapper + helper 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+const __InkTransition = component$((props: { name?: string; appear?: boolean; children?: any }) => {
+  const name = props.name ?? "ink";
+  const ref = useSignal<HTMLDivElement>();
+  const show = useSignal(true);
+  useVisibleTask$(({ track, cleanup }) => {
+    track(() => props.children);
+    const el = ref.value;
+    if (!el) return;
+    const active = !!props.children;
+    if (active) {
+      el.classList.add(name + "-enter-from", name + "-enter-active");
+      requestAnimationFrame(() => { el.classList.remove(name + "-enter-from"); el.classList.add(name + "-enter-to"); });
+      const done = () => { el.classList.remove(name + "-enter-active", name + "-enter-to"); };
+      el.addEventListener("transitionend", done, { once: true });
+    } else if (show.value) {
+      el.classList.add(name + "-leave-from", name + "-leave-active");
+      requestAnimationFrame(() => { el.classList.remove(name + "-leave-from"); el.classList.add(name + "-leave-to"); });
+      const done = () => { el.classList.remove(name + "-leave-active", name + "-leave-to"); show.value = false; };
+      el.addEventListener("transitionend", done, { once: true });
+      const t = setTimeout(done, 1000);
+      cleanup(() => { clearTimeout(t); el.removeEventListener("transitionend", done); });
+    }
+  });
+  return show.value ? <div ref={ref} style={{ display: "contents" }}>{props.children}</div> : null;
+});
+export const Fade = component$(() =>
+{
+const count = useSignal(0)
+const doubled = useComputed$(() => count.value * 2)
+useVisibleTask$(() => { console.log("effect"); })
+return (
+<div>
+  <__InkTransition name="fade">
+    {visible.value ? (<><p>Hello</p></>) : null}
+  </__InkTransition>
+</div>
+)
+});
+"
+`;
+
+exports[`transition emission > React: emits __InkTransition wrapper + helper 1`] = `
+"import { useState, useMemo, useEffect, useRef } from "react";
+function __InkTransition({ name = "ink", appear, children }: { name?: string; appear?: boolean; children?: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(!!children);
+  const prevRef = useRef(children);
+  const mounted = useRef(false);
+  const active = children !== null && children !== undefined && children !== false;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (active) {
+      prevRef.current = children;
+      if (!show) setShow(true);
+      if (!mounted.current && !appear) { mounted.current = true; return; }
+      mounted.current = true;
+      el.classList.add(name + "-enter-from", name + "-enter-active");
+      requestAnimationFrame(() => { el.classList.remove(name + "-enter-from"); el.classList.add(name + "-enter-to"); });
+      const done = () => { el.classList.remove(name + "-enter-active", name + "-enter-to"); el.removeEventListener("transitionend", done); };
+      el.addEventListener("transitionend", done, { once: true });
+    } else if (show) {
+      el.classList.add(name + "-leave-from", name + "-leave-active");
+      requestAnimationFrame(() => { el.classList.remove(name + "-leave-from"); el.classList.add(name + "-leave-to"); });
+      const done = () => { el.classList.remove(name + "-leave-active", name + "-leave-to"); el.removeEventListener("transitionend", done); setShow(false); };
+      el.addEventListener("transitionend", done, { once: true });
+      const t = setTimeout(done, 1000);
+      return () => { clearTimeout(t); el.removeEventListener("transitionend", done); };
+    }
+  }, [active]);
+  if (!show) return null;
+  return <div ref={ref} style={{ display: "contents" }}>{active ? children : prevRef.current}</div>;
+}
+export function Fade(props: Record<string, never>)
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("effect"); }, [])
+return (
+<div>
+  <__InkTransition name="fade">
+    {visible ? <p>Hello</p> : null}
+  </__InkTransition>
+</div>
+)
+}
+"
+`;
+
+exports[`transition emission > Solid: emits __InkTransition wrapper + helper 1`] = `
+"import { createSignal, createMemo, createEffect, onCleanup, Show } from "solid-js";
+function __InkTransition(props: { name?: string; appear?: boolean; children?: any }) {
+  let ref: HTMLDivElement | undefined;
+  const name = () => props.name ?? "ink";
+  const [show, setShow] = createSignal(!!props.children);
+  let prevChildren = props.children;
+  let mounted = false;
+  createEffect(() => {
+    const active = !!props.children;
+    const el = ref;
+    if (!el) return;
+    if (active) {
+      prevChildren = props.children;
+      if (!show()) setShow(true);
+      if (!mounted && !props.appear) { mounted = true; return; }
+      mounted = true;
+      el.classList.add(name() + "-enter-from", name() + "-enter-active");
+      requestAnimationFrame(() => { el.classList.remove(name() + "-enter-from"); el.classList.add(name() + "-enter-to"); });
+      const done = () => { el.classList.remove(name() + "-enter-active", name() + "-enter-to"); el.removeEventListener("transitionend", done); };
+      el.addEventListener("transitionend", done, { once: true });
+    } else if (show()) {
+      el.classList.add(name() + "-leave-from", name() + "-leave-active");
+      requestAnimationFrame(() => { el.classList.remove(name() + "-leave-from"); el.classList.add(name() + "-leave-to"); });
+      const done = () => { el.classList.remove(name() + "-leave-active", name() + "-leave-to"); el.removeEventListener("transitionend", done); setShow(false); };
+      el.addEventListener("transitionend", done, { once: true });
+      const t = setTimeout(done, 1000);
+      onCleanup(() => { clearTimeout(t); el.removeEventListener("transitionend", done); });
+    }
+  });
+  return <Show when={show()}><div ref={(el) => ref = el} style={{ display: "contents" }}>{props.children ?? prevChildren}</div></Show>;
+}
+export default function Fade(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+return (
+<div>
+  <__InkTransition name="fade">
+    <Show when={visible()}>
+      <p>
+        Hello
+      </p>
+    </Show>
+  </__InkTransition>
+</div>
+)
+}
+"
+`;
+
+exports[`transition emission > Svelte: pushes transition directive into child element 1`] = `
+"<script lang="ts">
+  let count = $state(0)
+  let doubled = $derived(count * 2)
+  $effect(() => { console.log("effect"); })
+  const __inkTransitionIn = function(node: HTMLElement, { name = "ink" }: { name: string }) {
+      node.classList.add(name + "-enter-from", name + "-enter-active");
+      requestAnimationFrame(() => {
+        node.classList.remove(name + "-enter-from");
+        node.classList.add(name + "-enter-to");
+      });
+      const cs = getComputedStyle(node);
+      const dur = (parseFloat(cs.transitionDuration) || 0.3) * 1000;
+      return { duration: dur, tick() {} };
+    };
+    const __inkTransitionOut = function(node: HTMLElement, { name = "ink" }: { name: string }) {
+      node.classList.add(name + "-leave-from", name + "-leave-active");
+      requestAnimationFrame(() => {
+        node.classList.remove(name + "-leave-from");
+        node.classList.add(name + "-leave-to");
+      });
+      const cs = getComputedStyle(node);
+      const dur = (parseFloat(cs.transitionDuration) || 0.3) * 1000;
+      return { duration: dur, tick() {} };
+    };
+</script>
+<div>
+  {#if visible}<p in:__inkTransitionIn={{ name: "fade" }} out:__inkTransitionOut={{ name: "fade" }}>
+    Hello
+  </p>
+  {/if}
+</div>
+"
+`;
+
+exports[`transition emission > Vue: appear prop emitted 1`] = `
+"<script setup lang="ts">
+  import { ref, computed, watchEffect } from "vue";
+  const count = ref(0)
+  const doubled = computed(() => count.value * 2)
+  watchEffect(() => { console.log("effect"); })
+</script>
+<template>
+<div>
+  <Transition name="slide" appear="">
+    <div v-if="show">
+      Content
+    </div>
+    <template v-else>
+      Hidden
+    </template>
+  </Transition>
+</div>
+</template>
+"
+`;
+
+exports[`transition emission > Vue: wraps child in <Transition> 1`] = `
+"<script setup lang="ts">
+  import { ref, computed, watchEffect } from "vue";
+  const count = ref(0)
+  const doubled = computed(() => count.value * 2)
+  watchEffect(() => { console.log("effect"); })
+</script>
+<template>
+<div>
+  <Transition name="fade">
+    <p v-if="visible">
+      Hello
+    </p>
+  </Transition>
+</div>
+</template>
+"
+`;
