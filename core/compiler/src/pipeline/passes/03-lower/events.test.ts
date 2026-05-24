@@ -24,6 +24,8 @@ function makeComp(render: IRElement): IRComponent {
     memos: [],
     effects: [],
     resources: [],
+    provides: [],
+    consumes: [],
     lifecycle: { onMount: [], onCleanup: [] },
     setup: [],
     render,

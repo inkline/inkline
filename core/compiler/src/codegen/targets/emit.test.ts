@@ -80,6 +80,8 @@ function makeComp(name: string, render: IRNode): IRComponent {
       },
     ],
     resources: [],
+    provides: [],
+    consumes: [],
     lifecycle: { onMount: [], onCleanup: [] },
     setup: [],
     render,
@@ -96,6 +98,7 @@ function makeCtx(target: { rewrites: (typeof solid)["rewrites"] }): CodegenConte
     options: resolveOptions({ targets: ["react"] }),
     symbols: new SymbolTable(),
     rewrites: target.rewrites,
+    contexts: [],
     externalImports: [],
     componentImports: [],
   };

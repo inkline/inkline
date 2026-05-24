@@ -12,13 +12,14 @@ interface SerializedExpr {
   loc: SourceLocation;
 }
 
-const SKIP_KEYS = new Set(["sourceFile", "imports", "stmt", "typeNode", "reference"]);
+const SKIP_KEYS = new Set(["sourceFile", "imports", "stmt", "typeNode", "reference", "contextRef"]);
 
 export function serializeModule(module: IRModule): string {
   const serializable = {
     version: module.version,
     fileName: module.fileName,
     components: module.components,
+    contexts: module.contexts,
   };
 
   return JSON.stringify(serializable, (key, value) => {
@@ -99,8 +100,16 @@ export function deserializeModule(json: string): IRModule {
 
   rehydrate(parsed);
 
+  const components = (parsed.components ?? []).map((c: Record<string, unknown>) => ({
+    ...c,
+    provides: c.provides ?? [],
+    consumes: c.consumes ?? [],
+  }));
+
   return {
     ...parsed,
+    components,
+    contexts: parsed.contexts ?? [],
     sourceFile: sf,
     imports: [],
   } as IRModule;

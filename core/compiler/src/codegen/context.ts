@@ -1,5 +1,5 @@
 import type { Code } from "./code-ir/nodes.ts";
-import type { IRComponent } from "../ir/render/nodes.ts";
+import type { IRComponent, IRContextDefinition } from "../ir/render/nodes.ts";
 import type { Diagnostic } from "../core/diagnostics/codes.ts";
 import type { DiagnosticCollector } from "../core/diagnostics/collector.ts";
 import type { ResolvedCompilerOptions } from "../core/options.ts";
@@ -56,6 +56,7 @@ export interface CodegenContext {
   readonly options: ResolvedCompilerOptions;
   readonly symbols: SymbolTable;
   readonly rewrites: RewriteRules;
+  readonly contexts: readonly IRContextDefinition[];
   readonly externalImports: readonly Code[];
   readonly componentImports: readonly ComponentImport[];
 }
