@@ -55,7 +55,6 @@ function extractComponentImports(module: IRModule): readonly ComponentImport[] {
     });
 }
 
-
 function emitComponent(
   component: IRComponent,
   target: Target,
