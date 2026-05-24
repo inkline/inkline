@@ -47,6 +47,8 @@ function makeComp(
     primitives: [],
     styles: [],
     runtime: "iso",
+    provides: [],
+    consumes: [],
     targetOverrides: {},
   };
 }

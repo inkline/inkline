@@ -44,6 +44,8 @@ function makeComp(render: IRComponent["render"], slotBindings?: Map<string, stri
     primitives: [],
     styles: [],
     runtime: "iso",
+    provides: [],
+    consumes: [],
     targetOverrides: {},
     slotBindings,
   };
