@@ -8,9 +8,9 @@ import { type StoryKeys, assertStableStoryKeys, extractStoryKeys } from "./story
 
 export interface GenerateOptions {
   /** Directory holding the single-source `*.stories.ts` definitions. */
-  readonly coreStoriesDir: string;
+  readonly srcDir: string;
   /** Root of the per-framework `ui/<target>` packages. */
-  readonly uiDir: string;
+  readonly rootDir: string;
   /** Frameworks to emit. Defaults to {@link activeFrameworks}. */
   readonly frameworks?: readonly FrameworkConfig[];
 }
@@ -54,7 +54,9 @@ function validateDefinition(
 
 /** Imports a single-source definition file and validates its default export. */
 export async function loadDefinition(absPath: string): Promise<StoryDefinition<unknown>> {
-  const mod = (await import(pathToFileURL(absPath).href)) as { default?: unknown };
+  const url = pathToFileURL(absPath);
+  url.searchParams.set("t", Date.now().toString());
+  const mod = (await import(url.href)) as { default?: unknown };
   validateDefinition(mod.default, absPath);
   return mod.default;
 }
@@ -65,7 +67,7 @@ export async function loadDefinition(absPath: string): Promise<StoryDefinition<u
  */
 export async function generate(options: GenerateOptions): Promise<GenerateResult> {
   const frameworks = options.frameworks ?? activeFrameworks();
-  const definitionFiles = discoverDefinitionFiles(options.coreStoriesDir);
+  const definitionFiles = discoverDefinitionFiles(options.srcDir);
 
   const components: string[] = [];
   const files: GeneratedFile[] = [];
@@ -80,7 +82,7 @@ export async function generate(options: GenerateOptions): Promise<GenerateResult
       const source = renderStory(definition, framework);
       keysByTarget.set(framework.target, extractStoryKeys(source));
 
-      const outDir = join(options.uiDir, framework.target, "stories");
+      const outDir = join(options.rootDir, framework.target, "stories");
       const outPath = join(outDir, `${definition.component}.stories.ts`);
       mkdirSync(outDir, { recursive: true });
       writeFileSync(outPath, source, "utf-8");

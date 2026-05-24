@@ -53,4 +53,46 @@ describe("renderAngular", () => {
       /Invalid story name/,
     );
   });
+
+  it("emits argsToTemplate import and meta render when meta has slots", () => {
+    const def: StoryDefinition<unknown> = {
+      component: "IBadge",
+      title: "Components/Badge",
+      slots: { default: "Badge text" },
+      stories: { Default: {} },
+    };
+    const out = renderAngular(def, angular);
+    expect(out).toContain('import { argsToTemplate } from "@storybook/angular";');
+    expect(out).toContain("argsToTemplate(args)");
+    expect(out).toContain("<i-badge ");
+    expect(out).toContain("Badge text");
+    expect(out).toContain("</i-badge>");
+  });
+
+  it("emits named slots as ng-container with slot attribute", () => {
+    const def: StoryDefinition<unknown> = {
+      component: "ICard",
+      title: "Components/Card",
+      slots: { default: "Body", header: "Title" },
+      stories: { Default: {} },
+    };
+    const out = renderAngular(def, angular);
+    expect(out).toContain('<ng-container slot="header">Title</ng-container>');
+    expect(out).toContain("Body</i-card>");
+  });
+
+  it("emits story-level render when story overrides slots", () => {
+    const def: StoryDefinition<unknown> = {
+      component: "IBadge",
+      title: "Components/Badge",
+      slots: { default: "Default text" },
+      stories: {
+        Default: {},
+        Custom: { slots: { default: "Custom text" } },
+      },
+    };
+    const out = renderAngular(def, angular);
+    expect(out).toContain("export const Default: Story = {};");
+    expect(out).toContain("Custom text</i-badge>");
+  });
 });

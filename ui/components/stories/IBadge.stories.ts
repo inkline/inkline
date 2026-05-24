@@ -6,15 +6,12 @@ export default defineStories<BadgeProps>({
   title: "Components/Badge",
   args: {
     label: "Click me",
-    disabled: false,
   },
   argTypes: {
     label: { control: "text", description: "Badge text content" },
-    disabled: { control: "boolean", description: "Whether the Badge is disabled" },
   },
   stories: {
     Default: {},
-    Disabled: { args: { disabled: true } },
     CustomLabel: { args: { label: "Submit" } },
   },
 });

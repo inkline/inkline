@@ -70,4 +70,100 @@ describe("renderCsf3", () => {
       /Invalid story name/,
     );
   });
+
+  it("emits a createElement import and meta render when meta has slots", () => {
+    const def: StoryDefinition<unknown> = {
+      component: "Card",
+      title: "Components/Card",
+      slots: { default: "Card body" },
+      stories: { Default: {} },
+    };
+    const out = renderCsf3(def, react);
+    expect(out).toContain('import { createElement } from "react";');
+    expect(out).toContain('render: (args) => createElement(Card, args, "Card body"),');
+    expect(out).toContain("export const Default: Story = {};");
+  });
+
+  it("emits a story-level render when a story overrides slots", () => {
+    const def: StoryDefinition<unknown> = {
+      component: "Card",
+      title: "Components/Card",
+      slots: { default: "Default body" },
+      stories: {
+        Default: {},
+        Custom: { slots: { default: "Custom body" } },
+      },
+    };
+    const out = renderCsf3(def, react);
+    expect(out).toContain("export const Default: Story = {};");
+    expect(out).toContain(
+      'export const Custom: Story = { render: (args) => createElement(Card, args, "Custom body") };',
+    );
+  });
+
+  it("merges story slots with meta slots", () => {
+    const def: StoryDefinition<unknown> = {
+      component: "Card",
+      title: "Components/Card",
+      slots: { default: "Body", header: "Title" },
+      stories: {
+        Custom: { slots: { header: "Custom title" } },
+      },
+    };
+    const out = renderCsf3(def, react);
+    expect(out).toContain('renderHeader: () => "Custom title"');
+    expect(out).toContain('"Body"');
+  });
+
+  it("emits a story with both args and slot render", () => {
+    const def: StoryDefinition<unknown> = {
+      component: "Card",
+      title: "Components/Card",
+      stories: {
+        WithSlot: { args: { color: "red" }, slots: { default: "Content" } },
+      },
+    };
+    const out = renderCsf3(def, react);
+    expect(out).toContain('args: {"color":"red"}');
+    expect(out).toContain("render: (args) => createElement(Card,");
+  });
+
+  it("emits Vue h() render for slots", () => {
+    const def: StoryDefinition<unknown> = {
+      component: "Card",
+      title: "Components/Card",
+      slots: { default: "Body", header: "Title" },
+      stories: { Default: {} },
+    };
+    const out = renderCsf3(def, vue);
+    expect(out).toContain('import { h } from "vue";');
+    expect(out).toContain("render: (args) => h(Card, args, {");
+    expect(out).toContain('default: () => "Body"');
+    expect(out).toContain('header: () => "Title"');
+  });
+
+  it("emits scoped slot with destructured params for Vue", () => {
+    const def: StoryDefinition<unknown> = {
+      component: "List",
+      title: "Components/List",
+      slots: { item: { params: ["item", "index"], content: "item.label" } },
+      stories: { Default: {} },
+    };
+    const out = renderCsf3(def, vue);
+    expect(out).toContain("item: ({ item, index }) => item.label");
+  });
+
+  it("skips slot rendering for unsupported targets", () => {
+    const svelte = frameworkByTarget("svelte")!;
+    const def: StoryDefinition<unknown> = {
+      component: "Card",
+      title: "Components/Card",
+      slots: { default: "Body" },
+      stories: { Default: {} },
+    };
+    const out = renderCsf3(def, svelte);
+    expect(out).not.toContain("render:");
+    expect(out).not.toContain("createElement");
+    expect(out).not.toContain("import { h }");
+  });
 });
