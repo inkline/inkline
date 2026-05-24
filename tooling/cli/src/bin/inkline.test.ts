@@ -222,6 +222,82 @@ describe("compile components", () => {
       if (existsSync(configDir)) rmSync(configDir, { recursive: true });
     }
   });
+
+  it("preserves directory structure from source to output", () => {
+    const configDir = resolve(TMP_OUT, "dir-structure-test");
+    const reactDir = resolve(configDir, "react-out");
+    const configPath = resolve(configDir, "inkline.config.mjs");
+    const srcDir = resolve(configDir, "src");
+    const badgeDir = resolve(srcDir, "components", "badge");
+    const buttonDir = resolve(srcDir, "components", "button");
+    try {
+      mkdirSync(badgeDir, { recursive: true });
+      mkdirSync(buttonDir, { recursive: true });
+      writeFileSync(
+        resolve(badgeDir, "IBadge.ink.tsx"),
+        `import { defineComponent } from "@inkline/core";\nexport default defineComponent(() => <div />);\n`,
+        "utf-8",
+      );
+      writeFileSync(
+        resolve(buttonDir, "IButton.ink.tsx"),
+        `import { defineComponent } from "@inkline/core";\nexport default defineComponent(() => <button />);\n`,
+        "utf-8",
+      );
+      writeFileSync(
+        configPath,
+        `export default {
+          targets: ["react"],
+          targetOutDir: { react: ${JSON.stringify(reactDir)} },
+        };\n`,
+        "utf-8",
+      );
+      const { status } = run(
+        "compile",
+        "components",
+        resolve(srcDir, "components", "badge", "IBadge.ink.tsx"),
+        resolve(srcDir, "components", "button", "IButton.ink.tsx"),
+        "--config",
+        configPath,
+      );
+      expect(status).toBe(0);
+      expect(existsSync(resolve(reactDir, "badge", "IBadge.tsx"))).toBe(true);
+      expect(existsSync(resolve(reactDir, "button", "IButton.tsx"))).toBe(true);
+
+      const barrel = readFileSync(resolve(reactDir, "index.ts"), "utf-8");
+      expect(barrel).toContain("badge/IBadge");
+      expect(barrel).toContain("button/IButton");
+    } finally {
+      if (existsSync(configDir)) rmSync(configDir, { recursive: true });
+    }
+  });
+
+  it("falls back to outDir/target when targetOutDir not set for a target", () => {
+    const configDir = resolve(TMP_OUT, "fallback-test");
+    const outDir = resolve(configDir, "dist");
+    const configPath = resolve(configDir, "inkline.config.mjs");
+    try {
+      mkdirSync(configDir, { recursive: true });
+      writeFileSync(
+        configPath,
+        `export default {
+          targets: ["react"],
+          outDir: ${JSON.stringify(outDir)},
+        };\n`,
+        "utf-8",
+      );
+      const { status } = run(
+        "compile",
+        "components",
+        resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+        "--config",
+        configPath,
+      );
+      expect(status).toBe(0);
+      expect(existsSync(resolve(outDir, "react", "Counter.tsx"))).toBe(true);
+    } finally {
+      if (existsSync(configDir)) rmSync(configDir, { recursive: true });
+    }
+  });
 });
 
 describe("check", () => {

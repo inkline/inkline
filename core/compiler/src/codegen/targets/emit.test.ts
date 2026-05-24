@@ -13,6 +13,7 @@ import {
 import { createDiagnosticCollector } from "../../core/diagnostics/collector.ts";
 import { resolveOptions } from "../../core/options.ts";
 import type { CodegenContext } from "../context.ts";
+import { cRaw } from "../code-ir/builders.ts";
 import { print } from "../print/printer.ts";
 import { solid } from "./solid/index.ts";
 import { react } from "./react/index.ts";
@@ -98,6 +99,8 @@ function makeCtx(target: { rewrites: (typeof solid)["rewrites"] }): CodegenConte
     symbols: new SymbolTable(),
     rewrites: target.rewrites,
     contexts: [],
+    externalImports: [],
+    componentImports: [],
   };
 }
 
@@ -531,5 +534,155 @@ describe("React Switch fallback (accumulator)", () => {
     const comp = makeComp("Sw", createElement({ tag: "div", children: [switchNode] }));
     const result = print(react.emit(comp, makeCtx(react)).root);
     expect(result.code).toContain(": null");
+  });
+});
+
+describe("external import emission", () => {
+  function makeCtxWithImports(target: { rewrites: (typeof solid)["rewrites"] }): CodegenContext {
+    return {
+      ...makeCtx(target),
+      externalImports: [cRaw({ text: 'import { badge } from "virtual:styleframe";' })],
+    };
+  }
+
+  it("React: external import appears after framework imports", () => {
+    const comp = makeComp("Test", createElement({ tag: "div" }));
+    const ctx = makeCtxWithImports(react);
+    const result = print(react.emit(comp, ctx).root);
+    expect(result.code).toContain('import { badge } from "virtual:styleframe";');
+    const reactIdx = result.code.indexOf('"react"');
+    const sfIdx = result.code.indexOf("virtual:styleframe");
+    expect(reactIdx).toBeLessThan(sfIdx);
+  });
+
+  it("Solid: external import appears after framework imports", () => {
+    const comp = makeComp("Test", createElement({ tag: "div" }));
+    const ctx = makeCtxWithImports(solid);
+    const result = print(solid.emit(comp, ctx).root);
+    expect(result.code).toContain('import { badge } from "virtual:styleframe";');
+    const solidIdx = result.code.indexOf('"solid-js"');
+    const sfIdx = result.code.indexOf("virtual:styleframe");
+    expect(solidIdx).toBeLessThan(sfIdx);
+  });
+
+  it("Vue: external import appears inside <script setup>", () => {
+    const comp = makeComp("Test", createElement({ tag: "div" }));
+    const ctx = makeCtxWithImports(vue);
+    const result = print(vue.emit(comp, ctx).root);
+    expect(result.code).toContain('import { badge } from "virtual:styleframe";');
+    const scriptStart = result.code.indexOf("<script");
+    const importIdx = result.code.indexOf("virtual:styleframe");
+    const templateStart = result.code.indexOf("<template>");
+    expect(importIdx).toBeGreaterThan(scriptStart);
+    expect(importIdx).toBeLessThan(templateStart);
+  });
+
+  it("Svelte: external import appears inside <script>", () => {
+    const comp = makeComp("Test", createElement({ tag: "div" }));
+    const ctx = makeCtxWithImports(svelte);
+    const result = print(svelte.emit(comp, ctx).root);
+    expect(result.code).toContain('import { badge } from "virtual:styleframe";');
+    const scriptStart = result.code.indexOf("<script");
+    const importIdx = result.code.indexOf("virtual:styleframe");
+    expect(importIdx).toBeGreaterThan(scriptStart);
+  });
+
+  it("Angular: external import appears at top of file", () => {
+    const comp = makeComp("Test", createElement({ tag: "div" }));
+    const ctx = makeCtxWithImports(angular);
+    const result = print(angular.emit(comp, ctx).root);
+    expect(result.code).toContain('import { badge } from "virtual:styleframe";');
+    const angularIdx = result.code.indexOf('"@angular/core"');
+    const sfIdx = result.code.indexOf("virtual:styleframe");
+    expect(angularIdx).toBeLessThan(sfIdx);
+  });
+
+  it("Qwik: external import appears after framework imports", () => {
+    const comp = makeComp("Test", createElement({ tag: "div" }));
+    const ctx = makeCtxWithImports(qwik);
+    const result = print(qwik.emit(comp, ctx).root);
+    expect(result.code).toContain('import { badge } from "virtual:styleframe";');
+    const qwikIdx = result.code.indexOf('"@qwik.dev/core"');
+    const sfIdx = result.code.indexOf("virtual:styleframe");
+    expect(qwikIdx).toBeLessThan(sfIdx);
+  });
+
+  it("Astro: external import appears inside frontmatter", () => {
+    const comp = makeComp("Test", createElement({ tag: "div" }));
+    const ctx = makeCtxWithImports(astro);
+    const result = print(astro.emit(comp, ctx).root);
+    expect(result.code).toContain('import { badge } from "virtual:styleframe";');
+    const fences = [...result.code.matchAll(/---/g)];
+    const importIdx = result.code.indexOf("virtual:styleframe");
+    expect(importIdx).toBeGreaterThan(fences[0]!.index!);
+    expect(importIdx).toBeLessThan(fences[1]!.index!);
+  });
+
+  it("empty externalImports produces no extra output", () => {
+    const comp = makeComp("Test", createElement({ tag: "div" }));
+    const ctxEmpty = makeCtx(react);
+    const result = print(react.emit(comp, ctxEmpty).root);
+    expect(result.code).not.toContain("virtual:styleframe");
+  });
+});
+
+describe("component import placement", () => {
+  function makeCtxWithComponentImports(target: {
+    rewrites: (typeof solid)["rewrites"];
+  }): CodegenContext {
+    return {
+      ...makeCtx(target),
+      componentImports: [
+        { localName: "IBadgeBase", componentName: "IBadgeBase", relativePath: "../IBadgeBase" },
+      ],
+    };
+  }
+
+  it("React: component import appears before external imports", () => {
+    const comp = makeComp("Test", createElement({ tag: "div" }));
+    const ctx = {
+      ...makeCtxWithComponentImports(react),
+      externalImports: [cRaw({ text: 'import { x } from "pkg";' })],
+    };
+    const result = print(react.emit(comp, ctx).root);
+    const compIdx = result.code.indexOf("IBadgeBase");
+    const extIdx = result.code.indexOf("pkg");
+    expect(compIdx).toBeLessThan(extIdx);
+  });
+
+  it("Vue: component import inside <script setup>", () => {
+    const comp = makeComp("Test", createElement({ tag: "div" }));
+    const ctx = makeCtxWithComponentImports(vue);
+    const result = print(vue.emit(comp, ctx).root);
+    const scriptStart = result.code.indexOf("<script");
+    const importIdx = result.code.indexOf("IBadgeBase");
+    const templateStart = result.code.indexOf("<template>");
+    expect(importIdx).toBeGreaterThan(scriptStart);
+    expect(importIdx).toBeLessThan(templateStart);
+  });
+
+  it("Svelte: component import inside <script>", () => {
+    const comp = makeComp("Test", createElement({ tag: "div" }));
+    const ctx = makeCtxWithComponentImports(svelte);
+    const result = print(svelte.emit(comp, ctx).root);
+    const scriptIdx = result.code.indexOf("<script");
+    const importIdx = result.code.indexOf("IBadgeBase");
+    expect(importIdx).toBeGreaterThan(scriptIdx);
+  });
+
+  it("Astro: component import inside frontmatter", () => {
+    const comp = makeComp("Test", createElement({ tag: "div" }));
+    const ctx = makeCtxWithComponentImports(astro);
+    const result = print(astro.emit(comp, ctx).root);
+    const fences = [...result.code.matchAll(/---/g)];
+    const importIdx = result.code.indexOf("IBadgeBase");
+    expect(importIdx).toBeGreaterThan(fences[0]!.index!);
+    expect(importIdx).toBeLessThan(fences[1]!.index!);
+  });
+
+  it("empty componentImports produces no extra output", () => {
+    const comp = makeComp("Test", createElement({ tag: "div" }));
+    const result = print(react.emit(comp, makeCtx(react)).root);
+    expect(result.code).not.toContain("IBadgeBase");
   });
 });

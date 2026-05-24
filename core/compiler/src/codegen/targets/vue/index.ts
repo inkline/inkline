@@ -23,6 +23,7 @@ import {
   rewriteAttrName,
   extractKeyBody,
 } from "../../shared/expr-rewrite.ts";
+import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -339,7 +340,13 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     cScript({
       lang: "ts",
       setup: true,
-      children: [...imports, cRaw({ text: "" }), ...scriptBody],
+      children: [
+        ...imports,
+        ...emitComponentImports(ctx.componentImports, ".vue", true),
+        ...ctx.externalImports,
+        cRaw({ text: "" }),
+        ...scriptBody,
+      ],
     }),
     cRaw({ text: "" }),
     cRaw({ text: "<template>" }),

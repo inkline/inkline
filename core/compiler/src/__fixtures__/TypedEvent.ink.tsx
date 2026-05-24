@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createSignal, defineComponent } from "@inkline/core";
 export default defineComponent(() => {
   const [pos, setPos] = createSignal({ x: 0, y: 0 });

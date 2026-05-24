@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createSignal, defineComponent, Switch, Match } from "@inkline/core";
 export default defineComponent(() => {
   const [tab, setTab] = createSignal("a");

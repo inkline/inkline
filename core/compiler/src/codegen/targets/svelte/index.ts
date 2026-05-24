@@ -24,6 +24,7 @@ import {
   extractKeyBody,
   emitExprAsTemplate,
 } from "../../shared/expr-rewrite.ts";
+import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -306,7 +307,15 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
 
   const renderTree = emitNode(component.render, rules);
   fileChildren.push(
-    cScript({ lang: "ts", setup: false, children: scriptBody }),
+    cScript({
+      lang: "ts",
+      setup: false,
+      children: [
+        ...emitComponentImports(ctx.componentImports, ".svelte", true),
+        ...ctx.externalImports,
+        ...scriptBody,
+      ],
+    }),
     cRaw({ text: "" }),
     renderTree,
     ...component.styles.map((s) => cStyle({ css: s.css, scoped: true })),

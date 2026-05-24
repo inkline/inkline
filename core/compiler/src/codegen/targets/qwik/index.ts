@@ -14,6 +14,7 @@ import {
   cGroup,
 } from "../../code-ir/builders.ts";
 import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
+import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -239,6 +240,8 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         module: "@qwik.dev/core",
         named: [...new Set(qwikImports)].map((i) => ({ imported: i })),
       }),
+      ...emitComponentImports(ctx.componentImports, "", false),
+      ...ctx.externalImports,
       ...styleImport,
       ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       cRaw({ text: "" }),

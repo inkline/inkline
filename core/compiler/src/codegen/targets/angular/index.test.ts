@@ -56,6 +56,8 @@ function makeCtx(): CodegenContext {
     symbols: new SymbolTable(),
     rewrites: angular.rewrites,
     contexts: [],
+    externalImports: [],
+    componentImports: [],
   };
 }
 

@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createSignal, defineComponent, For, Show } from "@inkline/core";
 export default defineComponent(() => {
   const [items] = createSignal(["a", "b", "c"]);

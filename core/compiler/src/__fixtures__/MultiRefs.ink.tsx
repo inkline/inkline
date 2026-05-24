@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createRef, defineComponent, onMount } from "@inkline/core";
 export default defineComponent(() => {
   const inputRef = createRef();

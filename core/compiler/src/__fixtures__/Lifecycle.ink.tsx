@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createSignal, defineComponent, onMount, onCleanup } from "@inkline/core";
 export default defineComponent(() => {
   const [mounted, setMounted] = createSignal(false);

@@ -45,12 +45,20 @@ export interface RewriteRules {
   readonly members?: MemberRewriteRules;
 }
 
+export interface ComponentImport {
+  readonly localName: string;
+  readonly componentName: string;
+  readonly relativePath: string;
+}
+
 export interface CodegenContext {
   readonly diagnostics: DiagnosticCollector;
   readonly options: ResolvedCompilerOptions;
   readonly symbols: SymbolTable;
   readonly rewrites: RewriteRules;
   readonly contexts: readonly IRContextDefinition[];
+  readonly externalImports: readonly Code[];
+  readonly componentImports: readonly ComponentImport[];
 }
 
 export interface CodeModule {

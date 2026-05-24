@@ -1,0 +1,44 @@
+{
+  "name": "@inkline/core",
+  "version": "0.0.0",
+  "description": "Authoring API for Inkline .ink.tsx components — typed primitives, JSX runtime, and control-flow helpers.",
+  "homepage": "https://github.com/inkline/inkline#readme",
+  "bugs": {
+    "url": "https://github.com/inkline/inkline/issues"
+  },
+  "license": "MIT",
+  "author": "Inkline contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inkline/inkline.git",
+    "directory": "core/core"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    },
+    "./jsx-runtime": {
+      "types": "./dist/jsx-runtime.d.mts",
+      "default": "./dist/jsx-runtime.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "devDependencies": {
+    "typescript": "catalog:",
+    "vite-plus": "catalog:"
+  }
+}

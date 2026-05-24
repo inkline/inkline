@@ -1,6 +1,6 @@
 import { defineCommand } from "citty";
 import { readFileSync, writeFileSync, mkdirSync, watch } from "node:fs";
-import { resolve, basename, extname, dirname } from "node:path";
+import { resolve, basename, extname, dirname, join } from "node:path";
 import {
   compile,
   compileIncremental,
@@ -10,7 +10,8 @@ import {
 } from "@inkline/compiler";
 import { loadInklineConfig } from "../lib/config.ts";
 import { expandGlobs } from "../lib/glob.ts";
-import { generateBarrel, type BarrelEntry } from "../lib/barrel.ts";
+import { commonPrefix } from "../lib/common-prefix.ts";
+import { generateBarrel, resolveTargetDir, type BarrelEntry } from "../lib/barrel.ts";
 import { formatDiagnostic } from "../lib/diagnostics.ts";
 import { writeCompileOutput } from "../lib/writer.ts";
 
@@ -36,7 +37,7 @@ export default defineCommand({
     }
 
     const targets = targetStr.split(",").map((t) => t.trim()) as TargetName[];
-    const outDir = args["out-dir"] ?? fileConfig.outDir ?? "dist";
+    const outDir = fileConfig.outDir ?? args["out-dir"] ?? "dist";
     const targetOutDir = fileConfig.targetOutDir ?? {};
     const sourceMap = (args["source-map"] ?? fileConfig.sourceMap ?? "external") as
       | "external"
@@ -53,11 +54,13 @@ export default defineCommand({
 
     let hasError = false;
     const barrelEntries = new Map<string, BarrelEntry[]>();
+    const sourcePrefix = commonPrefix(resolvedFiles.map((f) => dirname(f)));
 
     for (const filePath of resolvedFiles) {
       const absPath = resolve(filePath);
       const source = readFileSync(absPath, "utf-8");
       const name = basename(absPath, extname(absPath)).replace(/\.ink$/, "");
+      const relDir = dirname(filePath).slice(sourcePrefix.length);
 
       const result = await compile(
         { fileName: absPath, source },
@@ -77,7 +80,7 @@ export default defineCommand({
         if (d.severity === "error") hasError = true;
       }
 
-      writeCompileOutput(result, name, outDir, targetOutDir, sourceMap, barrelEntries);
+      writeCompileOutput(result, name, outDir, targetOutDir, sourceMap, barrelEntries, relDir);
     }
 
     for (const [dir, entries] of barrelEntries) {
@@ -106,6 +109,7 @@ function runWatch(
   console.log(`Watching ${files.length} file(s) for changes...\n`);
   let state: IncrementalState = createIncrementalState();
   let debounceTimer: ReturnType<typeof setTimeout> | undefined;
+  const sourcePrefix = commonPrefix(files.map((f) => dirname(f)));
 
   const rebuild = async () => {
     const inputs = files.map((f) => {
@@ -131,23 +135,28 @@ function runWatch(
 
     const barrelEntries = new Map<string, BarrelEntry[]>();
 
-    for (const [target, targetFiles] of Object.entries(result.files)) {
-      if (!targetFiles) continue;
-      const targetDir = resolve(targetOutDir[target] ?? `${outDir}/${target}`);
+    for (const [sourceFile, compileResult] of result.nextState.results) {
+      const relDir = dirname(sourceFile).slice(resolve(sourcePrefix).length + 1);
 
-      for (const file of targetFiles) {
-        const outPath = resolve(targetDir, file.path);
-        mkdirSync(dirname(outPath), { recursive: true });
-        writeFileSync(outPath, file.contents, "utf-8");
-        if (file.sourceMap && sourceMap === "external") {
-          writeFileSync(`${outPath}.map`, file.sourceMap, "utf-8");
-        }
+      for (const [target, targetFiles] of Object.entries(compileResult.files)) {
+        if (!targetFiles) continue;
+        const targetDir = resolveTargetDir(target, outDir, targetOutDir);
 
-        if (!file.path.endsWith(".css")) {
-          const componentName = basename(file.path).split(".")[0]!;
-          const entries = barrelEntries.get(targetDir) ?? [];
-          entries.push({ componentName, fileName: file.path, target: target as TargetName });
-          barrelEntries.set(targetDir, entries);
+        for (const file of targetFiles) {
+          const outPath = resolve(targetDir, relDir, file.path);
+          mkdirSync(dirname(outPath), { recursive: true });
+          writeFileSync(outPath, file.contents, "utf-8");
+          if (file.sourceMap && sourceMap === "external") {
+            writeFileSync(`${outPath}.map`, file.sourceMap, "utf-8");
+          }
+
+          if (!file.path.endsWith(".css")) {
+            const componentName = basename(file.path).split(".")[0]!;
+            const relFileName = relDir ? join(relDir, file.path) : file.path;
+            const entries = barrelEntries.get(targetDir) ?? [];
+            entries.push({ componentName, fileName: relFileName, target: target as TargetName });
+            barrelEntries.set(targetDir, entries);
+          }
         }
       }
     }

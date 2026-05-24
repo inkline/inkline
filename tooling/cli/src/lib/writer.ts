@@ -1,5 +1,5 @@
 import { mkdirSync, writeFileSync } from "node:fs";
-import { resolve, dirname, basename } from "node:path";
+import { resolve, dirname, basename, join } from "node:path";
 import type { CompileResult, TargetName } from "@inkline/compiler";
 import { type BarrelEntry, resolveTargetDir } from "./barrel.ts";
 
@@ -10,6 +10,7 @@ export function writeCompileOutput(
   targetOutDir: Partial<Record<string, string>>,
   sourceMap: "external" | "inline" | "none",
   barrelEntries: Map<string, BarrelEntry[]>,
+  relDir = "",
 ): void {
   for (const [target, targetFiles] of Object.entries(result.files)) {
     if (!targetFiles) continue;
@@ -17,7 +18,7 @@ export function writeCompileOutput(
 
     for (const file of targetFiles) {
       const fileName = basename(file.path);
-      const outPath = resolve(targetDir, fileName);
+      const outPath = resolve(targetDir, relDir, fileName);
       mkdirSync(dirname(outPath), { recursive: true });
       writeFileSync(outPath, file.contents, "utf-8");
       if (file.sourceMap && sourceMap === "external") {
@@ -25,8 +26,9 @@ export function writeCompileOutput(
       }
 
       if (!file.path.endsWith(".css")) {
+        const relFileName = relDir ? join(relDir, fileName) : fileName;
         const entries = barrelEntries.get(targetDir) ?? [];
-        entries.push({ componentName, fileName, target: target as TargetName });
+        entries.push({ componentName, fileName: relFileName, target: target as TargetName });
         barrelEntries.set(targetDir, entries);
       }
     }

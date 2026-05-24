@@ -21,15 +21,21 @@
     "storybook:build": "storybook build -o storybook-static",
     "prestorybook": "pnpm --filter @inkline/storybook run generate"
   },
+  "dependencies": {
+    "@styleframe/runtime": "^3.1.0"
+  },
   "devDependencies": {
-    "@inkline/core": "workspace:*",
+    "@inkline/components": "workspace:*",
     "@inkline/storybook": "workspace:*",
     "@qwik.dev/core": "^2.0.0-beta.0",
     "@storybook/addon-a11y": "catalog:",
     "@storybook/addon-docs": "catalog:",
+    "@styleframe/plugin": "^3.3.0",
+    "@styleframe/theme": "^3.7.0",
     "jsdom": "catalog:",
     "storybook": "catalog:",
-    "storybook-framework-qwik": "catalog:"
+    "storybook-framework-qwik": "catalog:",
+    "styleframe": "^3.7.0"
   },
   "peerDependencies": {
     "@qwik.dev/core": ">=2.0.0-beta.0"
