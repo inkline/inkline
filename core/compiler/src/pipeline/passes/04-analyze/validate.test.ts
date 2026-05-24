@@ -51,6 +51,8 @@ function makeComp(overrides: Partial<IRComponent> = {}): IRComponent {
     memos: [],
     effects: [],
     resources: [],
+    provides: [],
+    consumes: [],
     lifecycle: { onMount: [], onCleanup: [] },
     setup: [],
     render: { kind: "Text", value: "", loc: UNKNOWN_LOCATION },

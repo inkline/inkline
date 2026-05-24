@@ -102,6 +102,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const body: Code[] = [];
   const angularImports = ["Component", "signal", "computed", "effect"];
 
+  for (const c of component.consumes) {
+    angularImports.push("inject");
+    body.push(cStmt({ body: `${c.name} = inject(${c.contextName}.key)`, span: c.loc }));
+  }
+
   for (const s of component.state) {
     body.push(
       cStmt({ body: `${s.name} = signal(${rewriteExpr(s.initial.expr, rules)})`, span: s.loc }),
@@ -151,6 +156,27 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const styleImport =
     component.styles.length > 0 ? [cRaw({ text: `import "./${component.name}.css";` })] : [];
 
+  const contextDefs: Code[] = [];
+  for (const ctxDef of ctx.contexts) {
+    angularImports.push("InjectionToken");
+    const defaultText = ctxDef.defaultValue
+      ? rewriteExpr(ctxDef.defaultValue.expr, rules)
+      : "undefined";
+    const typeParam = ctxDef.typeText ? `<${ctxDef.typeText}>` : "";
+    contextDefs.push(
+      cStmt({
+        body: `export const ${ctxDef.name} = { key: new InjectionToken${typeParam}("${ctxDef.name}"), defaultValue: ${defaultText} }`,
+      }),
+    );
+  }
+
+  const providers: string[] = [];
+  for (const p of component.provides) {
+    const valueExpr = rewriteExpr(p.value.expr, rules);
+    providers.push(`{ provide: ${p.contextName}.key, useValue: ${valueExpr} }`);
+  }
+  const providersStr = providers.length > 0 ? `, providers: [${providers.join(", ")}]` : "";
+
   const file = cFile({
     flavor: "ts",
     children: [
@@ -161,9 +187,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...emitComponentImports(ctx.componentImports, ".component", false, "Component"),
       ...ctx.externalImports,
       ...styleImport,
+      ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       cRaw({ text: "" }),
       cRaw({
-        text: `@Component({ standalone: true, selector: '${component.name}', template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
+        text: `@Component({ standalone: true, selector: '${component.name}'${providersStr}, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
       }),
       cStmt({ body: `export class ${component.name}Component` }),
       cRaw({ text: "{" }),

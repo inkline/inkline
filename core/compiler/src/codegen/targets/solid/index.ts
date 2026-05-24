@@ -288,6 +288,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const body: Code[] = [];
   const solidImports: string[] = [];
 
+  for (const c of component.consumes) {
+    solidImports.push("useContext");
+    body.push(cStmt({ body: `const ${c.name} = useContext(${c.contextName})`, span: c.loc }));
+  }
+
   for (const s of component.state) {
     solidImports.push("createSignal");
     body.push(
@@ -331,16 +336,45 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     body.push(cStmt({ body: `let ${r.name}: ${r.elementType ?? "HTMLElement"} | undefined` }));
 
   collectCFImports(component.render, solidImports);
+
+  const styleImport =
+    component.styles.length > 0 ? [cRaw({ text: `import "./${component.name}.css";` })] : [];
+
+  let renderTree = emitNode(component.render, rules);
+
+  for (const p of component.provides) {
+    const valueExpr = rewriteExpr(p.value.expr, rules);
+    renderTree = cJsxElement({
+      tag: `${p.contextName}.Provider`,
+      attrs: [
+        cJsxAttr({
+          name: "value",
+          value: { kind: "expr", expr: cExpr({ text: valueExpr }) },
+        }),
+      ],
+      children: [renderTree],
+      selfClose: false,
+    });
+  }
+
+  const contextDefs: Code[] = [];
+  for (const ctxDef of ctx.contexts) {
+    solidImports.push("createContext");
+    const defaultText = ctxDef.defaultValue
+      ? rewriteExpr(ctxDef.defaultValue.expr, rules)
+      : "undefined";
+    const typeParam = ctxDef.typeText ? `<${ctxDef.typeText}>` : "";
+    contextDefs.push(
+      cStmt({ body: `export const ${ctxDef.name} = createContext${typeParam}(${defaultText})` }),
+    );
+  }
+
   const unique = [...new Set(solidImports)];
   const imports: Code[] =
     unique.length > 0
       ? [cImport({ module: "solid-js", named: unique.map((i) => ({ imported: i })) })]
       : [];
 
-  const styleImport =
-    component.styles.length > 0 ? [cRaw({ text: `import "./${component.name}.css";` })] : [];
-
-  const renderTree = emitNode(component.render, rules);
   const file = cFile({
     flavor: "tsx",
     children: [
@@ -348,6 +382,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...emitComponentImports(ctx.componentImports, "", true),
       ...ctx.externalImports,
       ...styleImport,
+      ...contextDefs,
       cRaw({ text: "" }),
       cStmt({
         body: `export default function ${component.name}(props: ${buildSolidPropsType(component)})`,

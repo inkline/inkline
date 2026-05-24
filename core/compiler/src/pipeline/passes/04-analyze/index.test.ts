@@ -25,7 +25,7 @@ function makeCtx(): PassContext {
 
 function makeModule(components: IRComponent[]): IRModule {
   const sf = ts.createSourceFile("t.tsx", "", ts.ScriptTarget.Latest, true);
-  return { version: 1, fileName: "t.tsx", components, imports: [], sourceFile: sf };
+  return { version: 1, fileName: "t.tsx", components, contexts: [], imports: [], sourceFile: sf };
 }
 
 function makeComp(overrides: Partial<IRComponent> = {}): IRComponent {
@@ -42,6 +42,8 @@ function makeComp(overrides: Partial<IRComponent> = {}): IRComponent {
     memos: [],
     effects: [],
     resources: [],
+    provides: [],
+    consumes: [],
     lifecycle: { onMount: [], onCleanup: [] },
     setup: [],
     render: { kind: "Text", value: "", loc: UNKNOWN_LOCATION },

@@ -3,6 +3,7 @@ import { DYNAMIC_DEPS } from "../../../ir/reactivity.ts";
 import {
   IR_VERSION,
   type IRComponent,
+  type IRContextDefinition,
   type IREffectDeclaration,
   type IRExprNode,
   type IRModule,
@@ -12,8 +13,9 @@ import {
 import { walkRenderTree } from "../../../ir/render/visit.ts";
 import type { Pass } from "../../types.ts";
 import type { TsProgramArtifact } from "../01-program.ts";
-import { bindPrimitives } from "./bind-primitives.ts";
+import { bindPrimitives, type BindingTable } from "./bind-primitives.ts";
 import { extractDeps, extractDepsFromFunctionBody } from "./deps.ts";
+import { toLoc } from "./loc.ts";
 import { parseExpression } from "./jsx/index.ts";
 import { parseOptions, parsePropsFromParameterType } from "./options.ts";
 import { findSites } from "./sites.ts";
@@ -79,6 +81,8 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         memos: setupResult.memos,
         effects: setupResult.effects,
         resources: setupResult.resources,
+        provides: setupResult.provides,
+        consumes: setupResult.consumes,
         lifecycle: setupResult.lifecycle,
         setup: setupResult.setup,
         render,
@@ -95,11 +99,13 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
     }
 
     const importDecls = sourceFile.statements.filter(ts.isImportDeclaration);
+    const contexts = findContextDefinitions(sourceFile, bindings);
 
     return {
       version: IR_VERSION,
       fileName: sourceFile.fileName,
       components,
+      contexts,
       imports: [...importDecls],
       sourceFile,
     };
@@ -185,4 +191,62 @@ function registerPropsInScope(
     loc: { file: "", line: 0, column: 0, offset: 0, length: 0 },
   });
   scope.register(sym, id, "prop");
+}
+
+function localFor(bindings: BindingTable, prim: string): string | undefined {
+  for (const [local, name] of bindings) {
+    if (name === prim) return local;
+  }
+  return undefined;
+}
+
+function findContextDefinitions(
+  sourceFile: ts.SourceFile,
+  bindings: BindingTable,
+): IRContextDefinition[] {
+  const createContextLocal = localFor(bindings, "createContext");
+  if (!createContextLocal) return [];
+
+  const contexts: IRContextDefinition[] = [];
+
+  for (const stmt of sourceFile.statements) {
+    if (!ts.isVariableStatement(stmt)) continue;
+
+    for (const decl of stmt.declarationList.declarations) {
+      if (!decl.initializer || !ts.isIdentifier(decl.name)) continue;
+      if (
+        !ts.isCallExpression(decl.initializer) ||
+        !ts.isIdentifier(decl.initializer.expression) ||
+        decl.initializer.expression.text !== createContextLocal
+      )
+        continue;
+
+      const call = decl.initializer;
+      const defaultArg = call.arguments[0];
+      let typeText: string | undefined;
+      if (call.typeArguments && call.typeArguments.length > 0) {
+        typeText = call.typeArguments[0]!.getText(sourceFile);
+      }
+
+      contexts.push({
+        name: decl.name.text,
+        typeText,
+        defaultValue: defaultArg
+          ? {
+              kind: "Expression",
+              expr: defaultArg,
+              raw: defaultArg.getText(sourceFile),
+              deps: DYNAMIC_DEPS,
+              isReactive: false,
+              emissionContext: "setup",
+              isDynamic: false,
+              loc: toLoc(defaultArg, sourceFile),
+            }
+          : undefined,
+        loc: toLoc(decl, sourceFile),
+      });
+    }
+  }
+
+  return contexts;
 }

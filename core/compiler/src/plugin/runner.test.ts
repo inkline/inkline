@@ -12,6 +12,7 @@ const stubAnalyzed: AnalyzedModule = {
     version: 1,
     fileName: "stub.tsx",
     components: [],
+    contexts: [],
     imports: [],
     sourceFile: ts.createSourceFile("stub.tsx", "", ts.ScriptTarget.Latest, true),
   },
