@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { defineComponent, For } from "@inkline/core";
 export default defineComponent(() => {
   return (

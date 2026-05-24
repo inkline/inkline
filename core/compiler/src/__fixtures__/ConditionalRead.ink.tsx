@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createSignal, createMemo, defineComponent } from "@inkline/core";
 export default defineComponent(() => {
   const [flag, setFlag] = createSignal(true);

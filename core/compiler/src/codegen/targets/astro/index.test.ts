@@ -54,6 +54,8 @@ function makeCtx(): CodegenContext {
     options: resolveOptions({ targets: ["astro"] }),
     symbols: new SymbolTable(),
     rewrites: astro.rewrites,
+    externalImports: [],
+    componentImports: [],
   };
 }
 

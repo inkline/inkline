@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createSignal, createMemo, defineComponent, batch } from "@inkline/core";
 export default defineComponent(() => {
   const [x, setX] = createSignal(0);

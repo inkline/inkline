@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createSignal, createEffect, defineComponent, untrack } from "@inkline/core";
 export default defineComponent(() => {
   const [count, setCount] = createSignal(0);

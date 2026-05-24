@@ -1,0 +1,76 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Badge > output matches snapshots 1`] = `
+{
+  "angular/IBadgeBase.component.ts": "import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'IBadgeBase', template: \`<div class="badge" [disabled]="disabled">
+<slot>
+{{ label }}
+</slot>
+</div>\` })
+export class IBadgeBaseComponent
+{
+}
+",
+  "astro/IBadgeBase.astro": "---
+---
+<div class="badge" disabled={disabled}>
+<slot>
+{label}
+</slot>
+</div>
+",
+  "qwik/IBadgeBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const IBadgeBase = component$(() =>
+{
+return (
+<div class="badge" disabled={props.disabled}>
+  <slot>
+    {props.label}
+  </slot>
+</div>
+)
+});
+",
+  "react/IBadgeBase.tsx": "export function IBadgeBase(props: { children?: React.ReactNode })
+{
+return (
+<div className="badge" disabled={props.disabled}>
+  <slot>
+    {props.label}
+  </slot>
+</div>
+)
+}
+",
+  "solid/IBadgeBase.tsx": "export default function IBadgeBase(props: Record<string, never>)
+{
+return (
+<div class="badge" disabled={props.disabled}>
+  <slot>
+    {props.label}
+  </slot>
+</div>
+)
+}
+",
+  "svelte/IBadgeBase.svelte": "<script lang="ts">
+</script>
+<div class="badge" disabled={disabled}>
+  <slot>
+    {label}
+  </slot>
+</div>
+",
+  "vue/IBadgeBase.vue": "<script setup lang="ts">
+</script>
+<template>
+<div class="badge" :disabled="disabled">
+  <slot>
+    {{ label }}
+  </slot>
+</div>
+</template>
+",
+}
+`;

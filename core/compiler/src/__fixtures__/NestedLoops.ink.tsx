@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createSignal, defineComponent, For } from "@inkline/core";
 export default defineComponent(() => {
   const [grid] = createSignal([

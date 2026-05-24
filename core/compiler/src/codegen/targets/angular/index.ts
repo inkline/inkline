@@ -4,6 +4,7 @@ import type { Code } from "../../code-ir/nodes.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import { cFile, cImport, cStmt, cRaw, cGroup } from "../../code-ir/builders.ts";
 import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
+import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -157,6 +158,8 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         module: "@angular/core",
         named: [...new Set(angularImports)].map((i) => ({ imported: i })),
       }),
+      ...emitComponentImports(ctx.componentImports, ".component", false, "Component"),
+      ...ctx.externalImports,
       ...styleImport,
       cRaw({ text: "" }),
       cRaw({

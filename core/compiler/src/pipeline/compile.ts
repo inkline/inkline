@@ -3,7 +3,9 @@ import { createDiagnosticCollector } from "../core/diagnostics/collector.ts";
 import { resolveOptions, type InklineConfig } from "../core/options.ts";
 import { SymbolTable } from "../ir/reactivity.ts";
 import type { IRComponent, IRModule } from "../ir/render/nodes.ts";
-import type { GeneratedFile, Target, TargetName } from "../codegen/context.ts";
+import type { Code } from "../codegen/code-ir/nodes.ts";
+import type { ComponentImport, GeneratedFile, Target, TargetName } from "../codegen/context.ts";
+import { cRaw } from "../codegen/code-ir/builders.ts";
 import { print } from "../codegen/print/printer.ts";
 import { PluginRunner } from "../plugin/runner.ts";
 import type { PluginContext } from "../plugin/types.ts";
@@ -23,12 +25,50 @@ export interface CompileResult {
   readonly diagnostics: readonly Diagnostic[];
 }
 
-function emitComponent(component: IRComponent, target: Target, ctx: PassContext): GeneratedFile[] {
+function extractExternalImports(module: IRModule): readonly Code[] {
+  return module.imports
+    .filter((decl) => {
+      const spec = (decl.moduleSpecifier as import("typescript").StringLiteral).text;
+      return spec !== "@inkline/core" && !/\.ink(\.[jt]sx?)?$/.test(spec);
+    })
+    .map((decl) => cRaw({ text: decl.getText(module.sourceFile) }));
+}
+
+function extractComponentImports(module: IRModule): readonly ComponentImport[] {
+  return module.imports
+    .filter((decl) => {
+      const spec = (decl.moduleSpecifier as import("typescript").StringLiteral).text;
+      return /\.ink(\.[jt]sx?)?$/.test(spec);
+    })
+    .flatMap((decl) => {
+      const spec = (decl.moduleSpecifier as import("typescript").StringLiteral).text;
+      const relativePath = spec.replace(/\.ink(\.[jt]sx?)?$/, "");
+      const componentName = relativePath.split("/").pop()!;
+      const clause = decl.importClause;
+      const imports: ComponentImport[] = [];
+
+      if (clause?.name) {
+        imports.push({ localName: clause.name.text, componentName, relativePath });
+      }
+
+      return imports;
+    });
+}
+
+function emitComponent(
+  component: IRComponent,
+  target: Target,
+  ctx: PassContext,
+  externalImports: readonly Code[],
+  componentImports: readonly ComponentImport[],
+): GeneratedFile[] {
   const codeModule = target.emit(component, {
     diagnostics: ctx.diagnostics,
     options: ctx.options,
     symbols: ctx.symbols,
     rewrites: target.rewrites,
+    externalImports,
+    componentImports,
   });
   const result = print(codeModule.root, { sourceMap: ctx.options.sourceMap });
   const files: GeneratedFile[] = [
@@ -137,6 +177,8 @@ export async function compile(
 
   // P5 emit + P6 print per target, with H3 error recovery
   const files: Partial<Record<TargetName, GeneratedFile[]>> = {};
+  const externalImports = extractExternalImports(analyzedModule.module);
+  const componentImports = extractComponentImports(analyzedModule.module);
 
   for (const targetName of options.targets) {
     const target = options.registry.get(targetName);
@@ -146,7 +188,9 @@ export async function compile(
 
     for (const component of analyzedModule.module.components) {
       try {
-        targetFiles.push(...emitComponent(component, target, ctx));
+        targetFiles.push(
+          ...emitComponent(component, target, ctx, externalImports, componentImports),
+        );
       } catch (err) {
         diagnostics.push("INK0100", component.loc, {
           name: component.name,

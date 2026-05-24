@@ -9,7 +9,7 @@ definition, generate per-framework CSF.
 
 ## Authoring a story
 
-Add a definition under `ui/core/stories/`, next to the single source:
+Add a definition under `ui/components/stories/`, next to the single source:
 
 ```ts
 import { defineStories } from "@inkline/storybook";

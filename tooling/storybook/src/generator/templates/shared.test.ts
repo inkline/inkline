@@ -4,7 +4,7 @@ import { BANNER, assertIdentifier, serializeArgs } from "./shared.ts";
 describe("BANNER", () => {
   it("marks files as generated and points at the source", () => {
     expect(BANNER).toContain("AUTO-GENERATED");
-    expect(BANNER).toContain("ui/core/stories/");
+    expect(BANNER).toContain("ui/components/stories/");
   });
 });
 

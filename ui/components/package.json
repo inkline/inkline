@@ -1,5 +1,5 @@
 {
-  "name": "@inkline/core",
+  "name": "@inkline/components",
   "version": "0.0.0",
   "private": true,
   "type": "module",
@@ -8,13 +8,25 @@
     "dev": "inkline compile components 'src/**/*.ink.tsx' --config inkline.config.ts --watch",
     "test": "vp test"
   },
+  "dependencies": {
+    "@styleframe/runtime": "^3.1.0"
+  },
   "devDependencies": {
     "@inkline/cli": "workspace:*",
     "@inkline/compiler": "workspace:*",
+    "@inkline/core": "workspace:*",
     "@inkline/storybook": "workspace:*",
     "@inkline/test-utils": "workspace:*",
+    "@styleframe/cli": "^4.0.0",
+    "@styleframe/core": "^3.5.0",
+    "@styleframe/license": "^2.0.2",
+    "@styleframe/loader": "^3.0.1",
+    "@styleframe/plugin": "^3.3.0",
+    "@styleframe/theme": "^3.7.0",
+    "@styleframe/transpiler": "^3.3.0",
     "jsdom": "catalog:",
+    "styleframe": "^3.7.0",
     "vite-plus": "catalog:",
-    "vitest": "catalog:"
+    "vitest": "npm:@voidzero-dev/vite-plus-test@^0.1.22"
   }
 }

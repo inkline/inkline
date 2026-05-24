@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createSignal, createMemo, createEffect, defineComponent } from "@inkline/core";
 
 export default defineComponent(() => {

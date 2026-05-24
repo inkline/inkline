@@ -53,6 +53,8 @@ function makeCtx(): CodegenContext {
     options: resolveOptions({ targets: ["angular"] }),
     symbols: new SymbolTable(),
     rewrites: angular.rewrites,
+    externalImports: [],
+    componentImports: [],
   };
 }
 

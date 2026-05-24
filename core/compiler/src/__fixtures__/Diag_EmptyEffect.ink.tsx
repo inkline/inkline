@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createEffect, defineComponent } from "@inkline/core";
 export default defineComponent(() => {
   createEffect(() => {

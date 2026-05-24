@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { createSignal, defineComponent } from "@inkline/core";
 export default defineComponent(() => {
   const [value, setValue] = createSignal("b");
