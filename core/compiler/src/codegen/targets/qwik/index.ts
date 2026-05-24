@@ -113,6 +113,24 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         text: `{${node.cases.map((c) => `${rewriteExpr(c.test.expr, rules)} ? (<>${emitNodeInline(c.body, rules)}</>)`).join(" : ")} : ${fallback}}`,
       });
     }
+    case "SlotPlaceholder": {
+      const propName = node.name === "default" ? "children" : node.name;
+      const argsStr =
+        node.scopedArgs.length > 0
+          ? node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ")
+          : "";
+      if (node.scopedArgs.length > 0) {
+        return node.fallback
+          ? cExpr({
+              text: `{props.${propName}?.(${argsStr}) ?? ${emitNodeInline(node.fallback, rules)}}`,
+            })
+          : cExpr({ text: `{props.${propName}?.(${argsStr})}` });
+      }
+      if (node.fallback) {
+        return cExpr({ text: `{props.${propName} ?? ${emitNodeInline(node.fallback, rules)}}` });
+      }
+      return cExpr({ text: `{props.${propName}}` });
+    }
     case "Transition": {
       const attrs = [cJsxAttr({ name: "name", value: { kind: "static", text: node.name } })];
       if (node.appear) {
@@ -125,8 +143,6 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         selfClose: false,
       });
     }
-    case "SlotPlaceholder":
-      return cExpr({ text: `{props.${node.name === "default" ? "children" : node.name}}` });
     case "Fragment":
       return cJsxElement({
         tag: "",
@@ -169,6 +185,9 @@ function inlineCode(code: Code): string {
 }
 
 function emitNodeInline(node: IRNode, rules: RewriteRules): string {
+  if (node.kind === "Text") {
+    return `"${node.value}"`;
+  }
   return inlineCode(emitNode(node, rules));
 }
 
@@ -313,7 +332,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cRaw({ text: "" }),
       cStmt({
         body:
-          component.props.length > 0
+          component.props.length > 0 || component.slots.length > 0
             ? `export const ${component.name} = component$((props) =>`
             : `export const ${component.name} = component$(() =>`,
       }),

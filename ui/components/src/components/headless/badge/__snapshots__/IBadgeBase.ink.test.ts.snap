@@ -21,7 +21,7 @@ export class IBadgeBaseComponent
 </div>
 ",
   "qwik/IBadgeBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const IBadgeBase = component$(() =>
+export const IBadgeBase = component$((props) =>
 {
 return (
 <div class="badge" disabled={props.disabled}>
@@ -43,7 +43,7 @@ return (
 )
 }
 ",
-  "solid/IBadgeBase.tsx": "export default function IBadgeBase(props: Record<string, never>)
+  "solid/IBadgeBase.tsx": "export default function IBadgeBase(props: { default?: any })
 {
 return (
 <div class="badge" disabled={props.disabled}>

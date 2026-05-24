@@ -46,13 +46,14 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
       const props =
         optionsResult?.props ??
         parsePropsFromParameterType(site.setupFn, componentId, sourceFile, ctx);
-      const slots = optionsResult?.slots ?? [];
       const events = optionsResult?.events ?? [];
       const styles = optionsResult?.styles ?? [];
       const runtime = optionsResult?.runtime ?? "iso";
 
       // (d) setup
       const setupResult = parseSetup(site.setupFn, componentId, bindings, sourceFile, checker, ctx);
+
+      const slots = [...(optionsResult?.slots ?? []), ...setupResult.slotDeclarations];
 
       // Register props in the scope so `props.foo` resolves during dep extraction
       registerPropsInScope(site.setupFn, props, componentId, setupResult.scope, checker, ctx);
@@ -90,6 +91,7 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         styles,
         runtime,
         targetOverrides: {},
+        slotBindings: setupResult.slotBindings.size > 0 ? setupResult.slotBindings : undefined,
       };
 
       // (f) deps — walk all IRExprNodes and resolve deps

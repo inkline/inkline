@@ -52,6 +52,13 @@ const NEW_FIXTURES = [
   "DynamicList",
   "EffectCleanup",
   "SlotWithDefault",
+  "SlotBasic",
+  "SlotNamed",
+  "SlotWithFallback",
+  "SlotScoped",
+  "SlotScopedSingle",
+  "DefineSlotBasic",
+  "SlotInConditional",
 ];
 
 describe("full output snapshots", () => {

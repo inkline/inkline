@@ -1,12 +1,18 @@
 import { describe, it, expect } from "vitest";
 import * as ts from "typescript";
 import { UNKNOWN_LOCATION } from "../../../ir/types.ts";
-import { createComponentInstance, createExpr, createText } from "../../../ir/render/builders.ts";
+import {
+  createComponentInstance,
+  createExpr,
+  createStaticValue,
+  createText,
+} from "../../../ir/render/builders.ts";
 import type {
   IRComponent,
   IRComponentInstance,
   IRFor,
   IRIf,
+  IRSlotPlaceholder,
   IRSwitch,
 } from "../../../ir/render/nodes.ts";
 import { createDiagnosticCollector } from "../../../core/diagnostics/collector.ts";
@@ -428,6 +434,202 @@ describe("controlFlow", () => {
       const ctx = makeCtx();
       const result = controlFlow(comp, ctx);
       expect(result.render.kind).toBe("Expression");
+    });
+  });
+
+  describe("Slot lowering", () => {
+    it("lowers <Slot> to SlotPlaceholder with default name", () => {
+      const ci = createComponentInstance({
+        reference: ident("Slot"),
+        attrs: [],
+        slots: [],
+      });
+      const ctx = makeCtx();
+      const result = controlFlow(makeComp(ci), ctx);
+      expect(result.render.kind).toBe("SlotPlaceholder");
+      const sp = result.render as IRSlotPlaceholder;
+      expect(sp.name).toBe("default");
+      expect(sp.scopedArgs).toHaveLength(0);
+      expect(sp.fallback).toBeUndefined();
+    });
+
+    it('lowers <Slot name="header"> to SlotPlaceholder with explicit name', () => {
+      const ci = createComponentInstance({
+        reference: ident("Slot"),
+        attrs: [
+          {
+            name: "name",
+            value: createExpr({ expr: mockExpr("'header'") }),
+            binding: "normal",
+            loc: UNKNOWN_LOCATION,
+          },
+        ],
+        slots: [],
+      });
+      const ctx = makeCtx();
+      const result = controlFlow(makeComp(ci), ctx);
+      expect(result.render.kind).toBe("SlotPlaceholder");
+      expect((result.render as IRSlotPlaceholder).name).toBe("header");
+    });
+
+    it('handles static string name="header" attribute', () => {
+      const ci = createComponentInstance({
+        reference: ident("Slot"),
+        attrs: [
+          {
+            name: "name",
+            value: createStaticValue({ value: "header" }),
+            binding: "normal",
+            loc: UNKNOWN_LOCATION,
+          },
+        ],
+        slots: [],
+      });
+      const ctx = makeCtx();
+      const result = controlFlow(makeComp(ci), ctx);
+      expect(result.render.kind).toBe("SlotPlaceholder");
+      expect((result.render as IRSlotPlaceholder).name).toBe("header");
+    });
+
+    it("uses children as fallback content", () => {
+      const ci = createComponentInstance({
+        reference: ident("Slot"),
+        attrs: [],
+        slots: [
+          {
+            name: "default",
+            body: createText({ value: "fallback" }),
+            scopedParams: [],
+            loc: UNKNOWN_LOCATION,
+          },
+        ],
+      });
+      const ctx = makeCtx();
+      const result = controlFlow(makeComp(ci), ctx);
+      const sp = result.render as IRSlotPlaceholder;
+      expect(sp.fallback).toBeDefined();
+      expect(sp.fallback!.kind).toBe("Text");
+    });
+
+    it("extracts scoped args from args={[expr1, expr2]}", () => {
+      const ci = createComponentInstance({
+        reference: ident("Slot"),
+        attrs: [
+          {
+            name: "name",
+            value: createExpr({ expr: mockExpr("'item'") }),
+            binding: "normal",
+            loc: UNKNOWN_LOCATION,
+          },
+          {
+            name: "args",
+            value: createExpr({ expr: mockExpr("[item, index]") }),
+            binding: "normal",
+            loc: UNKNOWN_LOCATION,
+          },
+        ],
+        slots: [],
+      });
+      const ctx = makeCtx();
+      const result = controlFlow(makeComp(ci), ctx);
+      const sp = result.render as IRSlotPlaceholder;
+      expect(sp.name).toBe("item");
+      expect(sp.scopedArgs).toHaveLength(2);
+    });
+
+    it("handles empty args array", () => {
+      const ci = createComponentInstance({
+        reference: ident("Slot"),
+        attrs: [
+          {
+            name: "args",
+            value: createExpr({ expr: mockExpr("[]") }),
+            binding: "normal",
+            loc: UNKNOWN_LOCATION,
+          },
+        ],
+        slots: [],
+      });
+      const ctx = makeCtx();
+      const result = controlFlow(makeComp(ci), ctx);
+      const sp = result.render as IRSlotPlaceholder;
+      expect(sp.scopedArgs).toHaveLength(0);
+    });
+
+    it("handles <Slot> with no attrs and no children", () => {
+      const ci = createComponentInstance({
+        reference: ident("Slot"),
+        attrs: [],
+        slots: [],
+      });
+      const ctx = makeCtx();
+      const result = controlFlow(makeComp(ci), ctx);
+      const sp = result.render as IRSlotPlaceholder;
+      expect(sp.name).toBe("default");
+      expect(sp.scopedArgs).toHaveLength(0);
+      expect(sp.fallback).toBeUndefined();
+    });
+
+    it("handles <Slot> with fragment children as fallback", () => {
+      const ci = createComponentInstance({
+        reference: ident("Slot"),
+        attrs: [],
+        slots: [
+          {
+            name: "default",
+            body: {
+              kind: "Fragment",
+              children: [createText({ value: "a" }), createText({ value: "b" })],
+              loc: UNKNOWN_LOCATION,
+            },
+            scopedParams: [],
+            loc: UNKNOWN_LOCATION,
+          },
+        ],
+      });
+      const ctx = makeCtx();
+      const result = controlFlow(makeComp(ci), ctx);
+      const sp = result.render as IRSlotPlaceholder;
+      expect(sp.fallback).toBeDefined();
+      expect(sp.fallback!.kind).toBe("Fragment");
+    });
+
+    it("emits INK0063 for non-string-literal name attr", () => {
+      const ci = createComponentInstance({
+        reference: ident("Slot"),
+        attrs: [
+          {
+            name: "name",
+            value: createExpr({ expr: mockExpr("dynamicName") }),
+            binding: "normal",
+            loc: UNKNOWN_LOCATION,
+          },
+        ],
+        slots: [],
+      });
+      const ctx = makeCtx();
+      controlFlow(makeComp(ci), ctx);
+      const diags = ctx.diagnostics.freeze();
+      expect(diags).toHaveLength(1);
+      expect(diags[0]!.code).toBe("INK0067");
+    });
+
+    it("falls back to 'default' name for non-string-literal", () => {
+      const ci = createComponentInstance({
+        reference: ident("Slot"),
+        attrs: [
+          {
+            name: "name",
+            value: createExpr({ expr: mockExpr("dynamicName") }),
+            binding: "normal",
+            loc: UNKNOWN_LOCATION,
+          },
+        ],
+        slots: [],
+      });
+      const ctx = makeCtx();
+      const result = controlFlow(makeComp(ci), ctx);
+      expect((result.render as IRSlotPlaceholder).name).toBe("default");
     });
   });
 });

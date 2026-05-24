@@ -3,7 +3,7 @@ import type { SourceLocation } from "./types.ts";
 
 export type SymbolId = string & { readonly __brand: unique symbol };
 
-export type IRReactiveKind = "signal" | "memo" | "effect" | "prop" | "context" | "ref";
+export type IRReactiveKind = "signal" | "memo" | "effect" | "prop" | "context" | "ref" | "slot";
 
 export interface IRReactiveSymbol {
   readonly id: SymbolId;

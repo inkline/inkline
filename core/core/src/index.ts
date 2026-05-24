@@ -64,7 +64,13 @@ export function untrack<T>(fn: () => T): T {
   return fn();
 }
 
-export function defineSlot(_name?: string): void {}
+export function defineSlot(_name?: string): any {
+  return null;
+}
+
+export function Slot(_props: { name?: string; args?: any[]; children?: any }): any {
+  return null;
+}
 
 export function Show(_props: { when: boolean; fallback?: any; children?: any }): any {
   return null;

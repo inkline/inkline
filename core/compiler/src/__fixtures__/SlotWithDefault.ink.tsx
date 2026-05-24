@@ -1,12 +1,16 @@
-import { defineComponent } from "@inkline/core";
+import { defineComponent, Slot } from "@inkline/core";
 export default defineComponent({ slots: { default: {}, actions: {} } }, () => {
   return (
     <div>
       <main>
-        <p>Default content</p>
+        <Slot>
+          <p>Default content</p>
+        </Slot>
       </main>
       <footer>
-        <span>Action area</span>
+        <Slot name="actions">
+          <span>Action area</span>
+        </Slot>
       </footer>
     </div>
   );

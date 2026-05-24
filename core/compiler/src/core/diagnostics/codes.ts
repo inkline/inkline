@@ -95,6 +95,12 @@ export const DIAGNOSTICS = {
     help: undefined,
     url: "https://docs.inkline.dev/diagnostics/INK0066" as const,
   },
+  INK0067: {
+    severity: "warning" as const,
+    title: "<Slot> name must be a string literal" as const,
+    help: "Dynamic slot names are not supported. Use a static string." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0067" as const,
+  },
   INK0070: {
     severity: "error" as const,
     title: "Component-ref forwarding is not yet supported" as const,

@@ -334,6 +334,7 @@ export interface IRComponent {
   readonly styles: readonly IRStyleBlock[];
   readonly runtime: IRRuntimeMode;
   readonly targetOverrides: Readonly<Partial<Record<TargetName, IRTargetOverride>>>;
+  readonly slotBindings?: ReadonlyMap<string, string>;
 }
 
 export interface IRTargetOverride {

@@ -156,6 +156,20 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   ControlledTextarea: [{ name: "initial empty", asserts: { textOf: { p: "0 characters" } } }],
   DynamicList: [{ name: "initial empty list", asserts: {} }],
 
+  // ── Slot rendering ──
+  SlotBasic: [{ name: "renders empty div", asserts: {} }],
+  SlotNamed: [{ name: "renders structure", asserts: {} }],
+  SlotWithFallback: [{ name: "renders fallback", asserts: { textOf: { h1: "Default Header" } } }],
+  SlotScoped: [
+    {
+      name: "renders items",
+      asserts: { textOf: { "li:nth-of-type(1)": "0: One" } },
+    },
+  ],
+  SlotScopedSingle: [{ name: "renders value", asserts: { textOf: { span: "hello" } } }],
+  DefineSlotBasic: [{ name: "renders structure", asserts: {} }],
+  SlotInConditional: [{ name: "renders with conditional", asserts: {} }],
+
   // ── Scoped CSS ──
   ScopedStyle: [{ name: "renders with style", asserts: { textOf: { h1: "Hello" } } }],
 
