@@ -937,6 +937,118 @@ exports[`full output snapshots > Counter > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > DefineSlotBasic > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'DefineSlotBasic', template: \`<div>
+<header>
+<ng-content select="[slot=header]" />
+</header>
+<main>
+<ng-content />
+</main>
+</div>\` })
+export class DefineSlotBasicComponent
+{
+}
+"
+`;
+
+exports[`full output snapshots > DefineSlotBasic > astro 1`] = `
+"---
+---
+<div>
+<header>
+<slot name="header" />
+</header>
+<main>
+<slot />
+</main>
+</div>
+"
+`;
+
+exports[`full output snapshots > DefineSlotBasic > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const DefineSlotBasic = component$((props) =>
+{
+return (
+<div>
+  <header>
+    {props.header}
+  </header>
+  <main>
+    {props.children}
+  </main>
+</div>
+)
+});
+"
+`;
+
+exports[`full output snapshots > DefineSlotBasic > react 1`] = `
+"export function DefineSlotBasic(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode })
+{
+return (
+<div>
+  <header>
+    {props.renderHeader?.()}
+  </header>
+  <main>
+    {props.children}
+  </main>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > DefineSlotBasic > solid 1`] = `
+"export default function DefineSlotBasic(props: { header?: any; default?: any })
+{
+return (
+<div>
+  <header>
+    {props.header}
+  </header>
+  <main>
+    {props.default}
+  </main>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > DefineSlotBasic > svelte 1`] = `
+"<script lang="ts">
+</script>
+<div>
+  <header>
+    <slot name="header" />
+  </header>
+  <main>
+    <slot />
+  </main>
+</div>
+"
+`;
+
+exports[`full output snapshots > DefineSlotBasic > vue 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div>
+  <header>
+    <slot name="header" />
+  </header>
+  <main>
+    <slot />
+  </main>
+</div>
+</template>
+"
+`;
+
 exports[`full output snapshots > DynamicList > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'DynamicList', template: \`<div>
@@ -2207,18 +2319,523 @@ exports[`full output snapshots > PropDefaults > vue 1`] = `
 "
 `;
 
+exports[`full output snapshots > SlotBasic > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'SlotBasic', template: \`<div>
+<ng-content />
+</div>\` })
+export class SlotBasicComponent
+{
+}
+"
+`;
+
+exports[`full output snapshots > SlotBasic > astro 1`] = `
+"---
+---
+<div>
+<slot />
+</div>
+"
+`;
+
+exports[`full output snapshots > SlotBasic > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const SlotBasic = component$((props) =>
+{
+return (
+<div>
+  {props.children}
+</div>
+)
+});
+"
+`;
+
+exports[`full output snapshots > SlotBasic > react 1`] = `
+"export function SlotBasic(props: { children?: React.ReactNode })
+{
+return (
+<div>
+  {props.children}
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SlotBasic > solid 1`] = `
+"export default function SlotBasic(props: { default?: any })
+{
+return (
+<div>
+  {props.default}
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SlotBasic > svelte 1`] = `
+"<script lang="ts">
+</script>
+<div>
+  <slot />
+</div>
+"
+`;
+
+exports[`full output snapshots > SlotBasic > vue 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div>
+  <slot />
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > SlotInConditional > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'SlotInConditional', template: \`<div>
+<ng-content select="[slot=header]" />
+@if (expanded()) {
+<ng-content />
+}
+</div>\` })
+export class SlotInConditionalComponent
+{
+expanded = signal(true)
+}
+"
+`;
+
+exports[`full output snapshots > SlotInConditional > astro 1`] = `
+"---
+---
+<div>
+<slot name="header" />
+{expanded ? (<slot />) : null}
+</div>
+"
+`;
+
+exports[`full output snapshots > SlotInConditional > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const SlotInConditional = component$((props) =>
+{
+const expanded = useSignal(true)
+return (
+<div>
+  {props.header}
+  {expanded.value ? (<>{props.children}</>) : null}
+</div>
+)
+});
+"
+`;
+
+exports[`full output snapshots > SlotInConditional > react 1`] = `
+"import { useState } from "react";
+export function SlotInConditional(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode })
+{
+const [expanded, setExpanded] = useState(true)
+return (
+<div>
+  {props.renderHeader?.()}
+  {expanded ? props.children : null}
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SlotInConditional > solid 1`] = `
+"import { createSignal, Show } from "solid-js";
+export default function SlotInConditional(props: { header?: any; default?: any })
+{
+const [expanded, setExpanded] = createSignal(true)
+return (
+<div>
+  {props.header}
+  <Show when={expanded()}>
+    {props.default}
+  </Show>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SlotInConditional > svelte 1`] = `
+"<script lang="ts">
+  let expanded = $state(true)
+</script>
+<div>
+  <slot name="header" />
+  {#if expanded}<slot />
+  {/if}
+</div>
+"
+`;
+
+exports[`full output snapshots > SlotInConditional > vue 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const expanded = ref(true)
+</script>
+<template>
+<div>
+  <slot name="header" />
+  <slot v-if="expanded" />
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > SlotNamed > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'SlotNamed', template: \`<div>
+<header>
+<ng-content select="[slot=header]" />
+</header>
+<main>
+<ng-content />
+</main>
+<footer>
+<ng-content select="[slot=footer]" />
+</footer>
+</div>\` })
+export class SlotNamedComponent
+{
+}
+"
+`;
+
+exports[`full output snapshots > SlotNamed > astro 1`] = `
+"---
+---
+<div>
+<header>
+<slot name="header" />
+</header>
+<main>
+<slot />
+</main>
+<footer>
+<slot name="footer" />
+</footer>
+</div>
+"
+`;
+
+exports[`full output snapshots > SlotNamed > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const SlotNamed = component$((props) =>
+{
+return (
+<div>
+  <header>
+    {props.header}
+  </header>
+  <main>
+    {props.children}
+  </main>
+  <footer>
+    {props.footer}
+  </footer>
+</div>
+)
+});
+"
+`;
+
+exports[`full output snapshots > SlotNamed > react 1`] = `
+"export function SlotNamed(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode; renderFooter?: (...args: any[]) => React.ReactNode })
+{
+return (
+<div>
+  <header>
+    {props.renderHeader?.()}
+  </header>
+  <main>
+    {props.children}
+  </main>
+  <footer>
+    {props.renderFooter?.()}
+  </footer>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SlotNamed > solid 1`] = `
+"export default function SlotNamed(props: { header?: any; default?: any; footer?: any })
+{
+return (
+<div>
+  <header>
+    {props.header}
+  </header>
+  <main>
+    {props.default}
+  </main>
+  <footer>
+    {props.footer}
+  </footer>
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SlotNamed > svelte 1`] = `
+"<script lang="ts">
+</script>
+<div>
+  <header>
+    <slot name="header" />
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    <slot name="footer" />
+  </footer>
+</div>
+"
+`;
+
+exports[`full output snapshots > SlotNamed > vue 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div>
+  <header>
+    <slot name="header" />
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    <slot name="footer" />
+  </footer>
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > SlotScoped > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'SlotScoped', template: \`<ul>
+@for (item of items(); track item => item.id) {
+<li>
+<ng-content select="[slot=item]" />
+</li>
+}
+</ul>\` })
+export class SlotScopedComponent
+{
+items = signal([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+}
+"
+`;
+
+exports[`full output snapshots > SlotScoped > astro 1`] = `
+"---
+---
+<ul>
+{items.map((item, index) => (<li>
+<slot name="item" />
+</li>))}
+</ul>
+"
+`;
+
+exports[`full output snapshots > SlotScoped > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const SlotScoped = component$((props) =>
+{
+const items = useSignal([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+return (
+<ul>
+  {items.value.map((item, index) => (<><li>{props.item?.(item, index) ?? <>{index}:{item.label}</>}</li></>))}
+</ul>
+)
+});
+"
+`;
+
+exports[`full output snapshots > SlotScoped > react 1`] = `
+"import { useState } from "react";
+export function SlotScoped(props: { renderItem?: (...args: any[]) => React.ReactNode })
+{
+const [items, setItems] = useState([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+return (
+<ul>
+  {items.map((item, index) => (<React.Fragment key={item => item.id}><li>{props.renderItem?.(item, index) ?? <>{index}:{item.label}</>}</li></React.Fragment>))}
+</ul>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SlotScoped > solid 1`] = `
+"import { createSignal, For } from "solid-js";
+export default function SlotScoped(props: { item?: (...args: any[]) => any })
+{
+const [items, setItems] = createSignal([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+return (
+<ul>
+  <For each={items()}>
+    {(item, index) => <li>{props.item?.(item, index) ?? <>{index}:{item.label}</>}</li>}
+  </For>
+</ul>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SlotScoped > svelte 1`] = `
+"<script lang="ts">
+  let items = $state([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+</script>
+<ul>
+  {#each items as item, index (item.id)}<li>
+    <slot name="item" item={item} index={index}>
+      {index}:{item.label}
+    </slot>
+  </li>
+  {/each}
+</ul>
+"
+`;
+
+exports[`full output snapshots > SlotScoped > vue 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const items = ref([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+</script>
+<template>
+<ul>
+  <li v-for="(item, index) in items" :key="item.id">
+    <slot name="item" :item="item" :index="index">
+      <template>
+        {{ index }}
+        :
+        {{ item.label }}
+      </template>
+    </slot>
+  </li>
+</ul>
+</template>
+"
+`;
+
+exports[`full output snapshots > SlotScopedSingle > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'SlotScopedSingle', template: \`<div>
+<ng-content />
+</div>\` })
+export class SlotScopedSingleComponent
+{
+value = signal("hello")
+}
+"
+`;
+
+exports[`full output snapshots > SlotScopedSingle > astro 1`] = `
+"---
+---
+<div>
+<slot />
+</div>
+"
+`;
+
+exports[`full output snapshots > SlotScopedSingle > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const SlotScopedSingle = component$((props) =>
+{
+const value = useSignal("hello")
+return (
+<div>
+  {props.children?.(value.value) ?? <span>{value.value}</span>}
+</div>
+)
+});
+"
+`;
+
+exports[`full output snapshots > SlotScopedSingle > react 1`] = `
+"import { useState } from "react";
+export function SlotScopedSingle(props: { renderDefault?: (...args: any[]) => React.ReactNode })
+{
+const [value, setValue] = useState("hello")
+return (
+<div>
+  {props.renderDefault?.(value) ?? <span>{value}</span>}
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SlotScopedSingle > solid 1`] = `
+"import { createSignal } from "solid-js";
+export default function SlotScopedSingle(props: { default?: (...args: any[]) => any })
+{
+const [value, setValue] = createSignal("hello")
+return (
+<div>
+  {props.default?.(value()) ?? <span>{value()}</span>}
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SlotScopedSingle > svelte 1`] = `
+"<script lang="ts">
+  let value = $state("hello")
+</script>
+<div>
+  <slot prop0={value}>
+    <span>
+      {value}
+    </span>
+  </slot>
+</div>
+"
+`;
+
+exports[`full output snapshots > SlotScopedSingle > vue 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const value = ref("hello")
+</script>
+<template>
+<div>
+  <slot :prop0="value">
+    <span>
+      {{ value }}
+    </span>
+  </slot>
+</div>
+</template>
+"
+`;
+
 exports[`full output snapshots > SlotWithDefault > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotWithDefault', template: \`<div>
 <main>
-<p>
-Default content
-</p>
+<ng-content />
 </main>
 <footer>
-<span>
-Action area
-</span>
+<ng-content select="[slot=actions]" />
 </footer>
 </div>\` })
 export class SlotWithDefaultComponent
@@ -2232,14 +2849,10 @@ exports[`full output snapshots > SlotWithDefault > astro 1`] = `
 ---
 <div>
 <main>
-<p>
-Default content
-</p>
+<slot />
 </main>
 <footer>
-<span>
-Action area
-</span>
+<slot name="actions" />
 </footer>
 </div>
 "
@@ -2247,19 +2860,15 @@ Action area
 
 exports[`full output snapshots > SlotWithDefault > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const SlotWithDefault = component$(() =>
+export const SlotWithDefault = component$((props) =>
 {
 return (
 <div>
   <main>
-    <p>
-      Default content
-    </p>
+    {props.children ?? <p>Default content</p>}
   </main>
   <footer>
-    <span>
-      Action area
-    </span>
+    {props.actions ?? <span>Action area</span>}
   </footer>
 </div>
 )
@@ -2268,19 +2877,15 @@ return (
 `;
 
 exports[`full output snapshots > SlotWithDefault > react 1`] = `
-"export function SlotWithDefault(props: { children?: React.ReactNode })
+"export function SlotWithDefault(props: { children?: React.ReactNode; renderActions?: (...args: any[]) => React.ReactNode })
 {
 return (
 <div>
   <main>
-    <p>
-      Default content
-    </p>
+    {props.children ?? <p>Default content</p>}
   </main>
   <footer>
-    <span>
-      Action area
-    </span>
+    {props.renderActions?.() ?? <span>Action area</span>}
   </footer>
 </div>
 )
@@ -2289,19 +2894,15 @@ return (
 `;
 
 exports[`full output snapshots > SlotWithDefault > solid 1`] = `
-"export default function SlotWithDefault(props: Record<string, never>)
+"export default function SlotWithDefault(props: { default?: any; actions?: any })
 {
 return (
 <div>
   <main>
-    <p>
-      Default content
-    </p>
+    {props.default ?? <p>Default content</p>}
   </main>
   <footer>
-    <span>
-      Action area
-    </span>
+    {props.actions ?? <span>Action area</span>}
   </footer>
 </div>
 )
@@ -2314,14 +2915,18 @@ exports[`full output snapshots > SlotWithDefault > svelte 1`] = `
 </script>
 <div>
   <main>
-    <p>
-      Default content
-    </p>
+    <slot>
+      <p>
+        Default content
+      </p>
+    </slot>
   </main>
   <footer>
-    <span>
-      Action area
-    </span>
+    <slot name="actions">
+      <span>
+        Action area
+      </span>
+    </slot>
   </footer>
 </div>
 "
@@ -2333,15 +2938,115 @@ exports[`full output snapshots > SlotWithDefault > vue 1`] = `
 <template>
 <div>
   <main>
-    <p>
-      Default content
-    </p>
+    <slot>
+      <p>
+        Default content
+      </p>
+    </slot>
   </main>
   <footer>
-    <span>
-      Action area
-    </span>
+    <slot name="actions">
+      <span>
+        Action area
+      </span>
+    </slot>
   </footer>
+</div>
+</template>
+"
+`;
+
+exports[`full output snapshots > SlotWithFallback > angular 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'SlotWithFallback', template: \`<div>
+<ng-content select="[slot=header]" />
+<ng-content />
+</div>\` })
+export class SlotWithFallbackComponent
+{
+}
+"
+`;
+
+exports[`full output snapshots > SlotWithFallback > astro 1`] = `
+"---
+---
+<div>
+<slot name="header" />
+<slot />
+</div>
+"
+`;
+
+exports[`full output snapshots > SlotWithFallback > qwik 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const SlotWithFallback = component$((props) =>
+{
+return (
+<div>
+  {props.header ?? <h1>Default Header</h1>}
+  {props.children ?? "Default body content"}
+</div>
+)
+});
+"
+`;
+
+exports[`full output snapshots > SlotWithFallback > react 1`] = `
+"export function SlotWithFallback(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode })
+{
+return (
+<div>
+  {props.renderHeader?.() ?? <h1>Default Header</h1>}
+  {props.children ?? "Default body content"}
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SlotWithFallback > solid 1`] = `
+"export default function SlotWithFallback(props: { header?: any; default?: any })
+{
+return (
+<div>
+  {props.header ?? <h1>Default Header</h1>}
+  {props.default ?? "Default body content"}
+</div>
+)
+}
+"
+`;
+
+exports[`full output snapshots > SlotWithFallback > svelte 1`] = `
+"<script lang="ts">
+</script>
+<div>
+  <slot name="header">
+    <h1>
+      Default Header
+    </h1>
+  </slot>
+  <slot>
+    Default body content
+  </slot>
+</div>
+"
+`;
+
+exports[`full output snapshots > SlotWithFallback > vue 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div>
+  <slot name="header">
+    <h1>
+      Default Header
+    </h1>
+  </slot>
+  <slot>
+    Default body content
+  </slot>
 </div>
 </template>
 "

@@ -2,6 +2,8 @@ import type { IRComponent, IRModule } from "../../../ir/render/nodes.ts";
 import type { PassContext } from "../../types.ts";
 import { slots } from "./slots.ts";
 import { controlFlow } from "./control-flow.ts";
+import { defineSlotLowering } from "./define-slot.ts";
+import { slotDeclarations } from "./slot-declarations.ts";
 import { twoWayBinding } from "./two-way-binding.ts";
 import { events } from "./events.ts";
 import { refs } from "./refs.ts";
@@ -13,6 +15,8 @@ type Lowering = (component: IRComponent, ctx: PassContext) => IRComponent;
 const lowerings: readonly Lowering[] = [
   slots,
   controlFlow,
+  defineSlotLowering,
+  slotDeclarations,
   twoWayBinding,
   events,
   refs,

@@ -175,4 +175,104 @@ describe("parseSetup", () => {
     expect(ts.isArrowFunction(memoExpr)).toBe(false);
     expect(ts.isBinaryExpression(memoExpr)).toBe(true);
   });
+
+  describe("defineSlot", () => {
+    function parseWithSlot(code: string) {
+      const wrapped = `
+        import { defineComponent, defineSlot } from "@inkline/core";
+        const X = defineComponent(${code});
+      `;
+      const fileName = "test.tsx";
+      const sf = ts.createSourceFile(
+        fileName,
+        wrapped,
+        ts.ScriptTarget.Latest,
+        true,
+        ts.ScriptKind.TSX,
+      );
+      const host: ts.CompilerHost = {
+        getSourceFile: (name) => (name === fileName ? sf : undefined),
+        getDefaultLibFileName: () => "lib.d.ts",
+        writeFile: () => {},
+        getCurrentDirectory: () => "/",
+        getCanonicalFileName: (f) => f,
+        useCaseSensitiveFileNames: () => true,
+        getNewLine: () => "\n",
+        fileExists: (name) => name === fileName,
+        readFile: (name) => (name === fileName ? wrapped : undefined),
+      };
+      const program = ts.createProgram([fileName], { noEmit: true, strict: false }, host);
+      const checker = program.getTypeChecker();
+
+      const ctx = makeCtx();
+      const bindings = bindPrimitives(sf, ctx);
+
+      const varStmt = sf.statements[1] as ts.VariableStatement;
+      const init = varStmt.declarationList.declarations[0]!.initializer as ts.CallExpression;
+      const setupFn = init.arguments[0] as ts.ArrowFunction;
+
+      return { result: parseSetup(setupFn, "test.tsx#X", bindings, sf, checker, ctx), ctx };
+    }
+
+    it('parses defineSlot("header") into slotDeclarations', () => {
+      const { result } = parseWithSlot(`() => {
+        const header = defineSlot("header");
+        return <div/>;
+      }`);
+      expect(result.slotDeclarations).toHaveLength(1);
+      expect(result.slotDeclarations[0]!.name).toBe("header");
+    });
+
+    it('parses defineSlot() with no arg as "default"', () => {
+      const { result } = parseWithSlot(`() => {
+        const content = defineSlot();
+        return <div/>;
+      }`);
+      expect(result.slotDeclarations).toHaveLength(1);
+      expect(result.slotDeclarations[0]!.name).toBe("default");
+    });
+
+    it("registers slot binding in slotBindings map", () => {
+      const { result } = parseWithSlot(`() => {
+        const header = defineSlot("header");
+        return <div/>;
+      }`);
+      expect(result.slotBindings.get("header")).toBe("header");
+    });
+
+    it("creates IRSlotDeclaration with correct properties", () => {
+      const { result } = parseWithSlot(`() => {
+        const sidebar = defineSlot("sidebar");
+        return <div/>;
+      }`);
+      const decl = result.slotDeclarations[0]!;
+      expect(decl.name).toBe("sidebar");
+      expect(decl.isScoped).toBe(false);
+      expect(decl.required).toBe(false);
+    });
+
+    it("handles multiple defineSlot calls", () => {
+      const { result } = parseWithSlot(`() => {
+        const header = defineSlot("header");
+        const footer = defineSlot("footer");
+        const content = defineSlot();
+        return <div/>;
+      }`);
+      expect(result.slotDeclarations).toHaveLength(3);
+      expect(result.slotDeclarations.map((s) => s.name).sort()).toEqual([
+        "default",
+        "footer",
+        "header",
+      ]);
+      expect(result.slotBindings.size).toBe(3);
+    });
+
+    it("does not add defineSlot statement to setup[]", () => {
+      const { result } = parseWithSlot(`() => {
+        const header = defineSlot("header");
+        return <div/>;
+      }`);
+      expect(result.setup).toHaveLength(0);
+    });
+  });
 });

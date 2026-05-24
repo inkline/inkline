@@ -8,6 +8,7 @@ import type {
   IRRefDeclaration,
   IRResourceDeclaration,
   IRSetupStatement,
+  IRSlotDeclaration,
   IRStateDeclaration,
   PrimitiveName,
 } from "../../../ir/render/nodes.ts";
@@ -53,6 +54,8 @@ export interface SetupResult {
   readonly resources: IRResourceDeclaration[];
   readonly lifecycle: IRLifecycle;
   readonly setup: IRSetupStatement[];
+  readonly slotDeclarations: IRSlotDeclaration[];
+  readonly slotBindings: ReadonlyMap<string, string>;
   readonly renderExpr: ts.Expression | undefined;
   readonly scope: ParseBindingScope;
 }
@@ -74,6 +77,8 @@ export function parseSetup(
   const onMountDecls: IREffectDeclaration[] = [];
   const onCleanupDecls: IREffectDeclaration[] = [];
   const setup: IRSetupStatement[] = [];
+  const slotDeclarations: IRSlotDeclaration[] = [];
+  const slotBindings = new Map<string, string>();
   let renderExpr: ts.Expression | undefined;
 
   const signalLocal = localFor(bindings, "createSignal");
@@ -83,6 +88,7 @@ export function parseSetup(
   const resourceLocal = localFor(bindings, "createResource");
   const mountLocal = localFor(bindings, "onMount");
   const cleanupLocal = localFor(bindings, "onCleanup");
+  const slotLocal = localFor(bindings, "defineSlot");
 
   const body = ts.isBlock(setupFn.body) ? setupFn.body.statements : undefined;
   if (!body) {
@@ -95,6 +101,8 @@ export function parseSetup(
       resources,
       lifecycle: { onMount: onMountDecls, onCleanup: onCleanupDecls },
       setup,
+      slotDeclarations,
+      slotBindings,
       renderExpr,
       scope,
     };
@@ -281,6 +289,34 @@ export function parseSetup(
           });
           continue;
         }
+
+        if (isCallTo(init, slotLocal)) {
+          if (!ts.isIdentifier(decl.name)) continue;
+
+          let slotName = "default";
+          if (init.arguments[0] && ts.isStringLiteral(init.arguments[0])) {
+            slotName = init.arguments[0].text;
+          }
+
+          const id = ctx.symbols.mint({
+            componentId,
+            kind: "slot",
+            name: slotName,
+            loc: toLoc(decl, sourceFile),
+          });
+
+          registerBinding(decl.name, id, "slot");
+          slotBindings.set(decl.name.text, slotName);
+
+          slotDeclarations.push({
+            name: slotName,
+            isScoped: false,
+            scopedProps: [],
+            required: false,
+            loc: toLoc(decl, sourceFile),
+          });
+          continue;
+        }
       }
 
       if (
@@ -290,7 +326,8 @@ export function parseSetup(
             (isCallTo(d.initializer, signalLocal) ||
               isCallTo(d.initializer, memoLocal) ||
               isCallTo(d.initializer, refLocal) ||
-              isCallTo(d.initializer, resourceLocal)),
+              isCallTo(d.initializer, resourceLocal) ||
+              isCallTo(d.initializer, slotLocal)),
         )
       ) {
         setup.push({ stmt, defines: [], loc });
@@ -346,6 +383,8 @@ export function parseSetup(
     resources,
     lifecycle: { onMount: onMountDecls, onCleanup: onCleanupDecls },
     setup,
+    slotDeclarations,
+    slotBindings,
     renderExpr,
     scope,
   };

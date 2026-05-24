@@ -184,10 +184,22 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         : [];
       return cJsxElement({ tag: "Switch", attrs: switchAttrs, children, selfClose: false });
     }
-    case "SlotPlaceholder":
+    case "SlotPlaceholder": {
+      const argsStr =
+        node.scopedArgs.length > 0
+          ? node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ")
+          : "";
+      if (node.scopedArgs.length > 0) {
+        return node.fallback
+          ? cExpr({
+              text: `{props.${node.name}?.(${argsStr}) ?? ${inlineNode(node.fallback, rules)}}`,
+            })
+          : cExpr({ text: `{props.${node.name}?.(${argsStr})}` });
+      }
       return node.fallback
         ? cExpr({ text: `{props.${node.name} ?? ${inlineNode(node.fallback, rules)}}` })
         : cExpr({ text: `{props.${node.name}}` });
+    }
     case "Fragment":
       return cJsxElement({
         tag: "",
@@ -230,6 +242,9 @@ function inlineCode(code: Code): string {
 }
 
 function inlineNode(node: IRNode, rules: RewriteRules): string {
+  if (node.kind === "Text") {
+    return `"${node.value}"`;
+  }
   return inlineCode(emitNode(node, rules));
 }
 
@@ -272,15 +287,24 @@ function collectCFImports(node: IRNode, out: string[]): void {
 // ── Emit entry point ───────────────────────────────────────────────
 
 function buildSolidPropsType(component: IRComponent): string {
-  if (component.props.length === 0) return "Record<string, never>";
-  const defs = component.props
-    .map((p) => {
-      const opt = p.required ? "" : "?";
-      const type = p.typeNode ? `: ${p.typeNode.getText()}` : "";
-      return `${p.name}${opt}${type}`;
-    })
-    .join("; ");
-  return `{ ${defs} }`;
+  const fields: string[] = [];
+
+  for (const p of component.props) {
+    const opt = p.required ? "" : "?";
+    const type = p.typeNode ? `: ${p.typeNode.getText()}` : "";
+    fields.push(`${p.name}${opt}${type}`);
+  }
+
+  for (const slot of component.slots) {
+    if (slot.isScoped) {
+      fields.push(`${slot.name}?: (...args: any[]) => any`);
+    } else {
+      fields.push(`${slot.name}?: any`);
+    }
+  }
+
+  if (fields.length === 0) return "Record<string, never>";
+  return `{ ${fields.join("; ")} }`;
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {

@@ -135,15 +135,30 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       return cExpr({ text: `{${result}}`, span });
     }
     case "SlotPlaceholder": {
+      const argsStr =
+        node.scopedArgs.length > 0
+          ? node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ")
+          : "";
       if (node.name === "default") {
+        if (node.scopedArgs.length > 0) {
+          return node.fallback
+            ? cExpr({
+                text: `{props.renderDefault?.(${argsStr}) ?? ${inlineNode(node.fallback, rules)}}`,
+                span,
+              })
+            : cExpr({ text: `{props.renderDefault?.(${argsStr})}`, span });
+        }
         return node.fallback
-          ? cExpr({ text: `{children ?? ${inlineNode(node.fallback, rules)}}`, span })
-          : cExpr({ text: "{children}", span });
+          ? cExpr({ text: `{props.children ?? ${inlineNode(node.fallback, rules)}}`, span })
+          : cExpr({ text: "{props.children}", span });
       }
       const prop = `render${node.name.charAt(0).toUpperCase()}${node.name.slice(1)}`;
       return node.fallback
-        ? cExpr({ text: `{${prop}?.() ?? ${inlineNode(node.fallback, rules)}}`, span })
-        : cExpr({ text: `{${prop}?.()}`, span });
+        ? cExpr({
+            text: `{props.${prop}?.(${argsStr}) ?? ${inlineNode(node.fallback, rules)}}`,
+            span,
+          })
+        : cExpr({ text: `{props.${prop}?.(${argsStr})}`, span });
     }
     case "Fragment":
       return cJsxElement({
@@ -206,6 +221,29 @@ function inlineNode(node: IRNode, rules: RewriteRules): string {
     }
     return rewriteExpr(expr, rules);
   }
+  if (node.kind === "Text") {
+    return `"${node.value}"`;
+  }
+  if (node.kind === "SlotPlaceholder") {
+    const argsStr =
+      node.scopedArgs.length > 0
+        ? node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ")
+        : "";
+    if (node.name === "default") {
+      if (node.scopedArgs.length > 0) {
+        return node.fallback
+          ? `props.renderDefault?.(${argsStr}) ?? ${inlineNode(node.fallback, rules)}`
+          : `props.renderDefault?.(${argsStr})`;
+      }
+      return node.fallback
+        ? `props.children ?? ${inlineNode(node.fallback, rules)}`
+        : "props.children";
+    }
+    const prop = `render${node.name.charAt(0).toUpperCase()}${node.name.slice(1)}`;
+    return node.fallback
+      ? `props.${prop}?.(${argsStr}) ?? ${inlineNode(node.fallback, rules)}`
+      : `props.${prop}?.(${argsStr})`;
+  }
   return inlineCode(emitNode(node, rules));
 }
 
@@ -213,7 +251,7 @@ function depsList(deps: readonly { readonly name: string }[]): string {
   return deps.length === 0 ? "[]" : `[${deps.map((d) => d.name).join(", ")}]`;
 }
 
-function buildPropsType(component: IRComponent, hasDefaultSlot: boolean): string {
+function buildPropsType(component: IRComponent): string {
   const parts: string[] = [];
 
   if (component.props.length > 0) {
@@ -227,8 +265,21 @@ function buildPropsType(component: IRComponent, hasDefaultSlot: boolean): string
     parts.push(`{ ${defs} }`);
   }
 
-  if (hasDefaultSlot) {
-    parts.push("{ children?: React.ReactNode }");
+  const slotFields: string[] = [];
+  for (const slot of component.slots) {
+    if (slot.name === "default") {
+      if (slot.isScoped) {
+        slotFields.push("renderDefault?: (...args: any[]) => React.ReactNode");
+      } else {
+        slotFields.push("children?: React.ReactNode");
+      }
+    } else {
+      const prop = `render${slot.name.charAt(0).toUpperCase()}${slot.name.slice(1)}`;
+      slotFields.push(`${prop}?: (...args: any[]) => React.ReactNode`);
+    }
+  }
+  if (slotFields.length > 0) {
+    parts.push(`{ ${slotFields.join("; ")} }`);
   }
 
   return parts.length > 0 ? parts.join(" & ") : "Record<string, never>";
@@ -292,7 +343,6 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     body.push(cStmt({ body: `useEffect(() => ${rewriteExpr(c.body, rules)}, [])`, span: c.loc }));
   }
 
-  const hasDefaultSlot = component.slots.some((s) => s.name === "default");
   const hasComponentRefs = component.refs.some((r) => r.category === "component");
   const needsForwardRef = hasComponentRefs || (component.expose && component.expose.length > 0);
 
@@ -308,7 +358,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     }
   }
 
-  const propsType = buildPropsType(component, hasDefaultSlot);
+  const propsType = buildPropsType(component);
   const renderTree = emitNode(component.render, rules);
 
   const updatedImports: Code[] =

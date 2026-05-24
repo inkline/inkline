@@ -25,6 +25,7 @@ import {
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
+import * as ts from "typescript";
 
 const REWRITES: RewriteRules = {
   reactiveRead: { kind: "strip-call" },
@@ -161,12 +162,13 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       return cGroup({ children });
     }
     case "SlotPlaceholder": {
-      const scopeAttrs = node.scopedArgs.map((arg, i) =>
-        cTmplAttr({
-          name: `prop${i}`,
+      const scopeAttrs = node.scopedArgs.map((arg, i) => {
+        const argName = ts.isIdentifier(arg.expr) ? arg.expr.text : `prop${i}`;
+        return cTmplAttr({
+          name: argName,
           value: { kind: "expr", expr: cExpr({ text: rewriteExpr(arg.expr, rules) }) },
-        }),
-      );
+        });
+      });
       const children: Code[] = node.fallback ? [emitNode(node.fallback, rules)] : [];
       const nameAttr =
         node.name === "default"

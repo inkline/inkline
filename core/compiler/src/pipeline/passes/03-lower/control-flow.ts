@@ -5,6 +5,7 @@ import type {
   IRExprNode,
   IRFor,
   IRNode,
+  IRSlotPlaceholder,
   IRSwitchCase,
 } from "../../../ir/render/nodes.ts";
 import { transformComponent } from "../../../ir/render/transform.ts";
@@ -146,6 +147,35 @@ function lowerSwitch(ci: IRComponentInstance): IRNode | undefined {
   return { kind: "Switch", cases, fallback, loc: ci.loc };
 }
 
+function lowerSlot(ci: IRComponentInstance, ctx: PassContext): IRSlotPlaceholder {
+  let name = "default";
+  const rawNameAttr = ci.attrs.find((a) => a.name === "name");
+  if (rawNameAttr) {
+    if (rawNameAttr.value.kind === "Static" && typeof rawNameAttr.value.value === "string") {
+      name = rawNameAttr.value.value;
+    } else if (
+      rawNameAttr.value.kind === "Expression" &&
+      ts.isStringLiteral(rawNameAttr.value.expr)
+    ) {
+      name = rawNameAttr.value.expr.text;
+    } else {
+      ctx.diagnostics.push("INK0063", ci.loc);
+    }
+  }
+
+  const scopedArgs: IRExprNode[] = [];
+  const argsAttr = getAttr(ci, "args");
+  if (argsAttr && ts.isArrayLiteralExpression(argsAttr.expr)) {
+    for (const elem of argsAttr.expr.elements) {
+      scopedArgs.push({ ...argsAttr, expr: elem });
+    }
+  }
+
+  const fallback = getDefaultSlotBody(ci);
+
+  return { kind: "SlotPlaceholder", name, scopedArgs, fallback, loc: ci.loc };
+}
+
 export function controlFlow(component: IRComponent, ctx: PassContext): IRComponent {
   return transformComponent(component, {
     enter(node) {
@@ -154,6 +184,7 @@ export function controlFlow(component: IRComponent, ctx: PassContext): IRCompone
         if (name === "Show") return lowerShow(node, ctx);
         if (name === "For") return lowerFor(node, ctx);
         if (name === "Switch") return lowerSwitch(node);
+        if (name === "Slot") return lowerSlot(node, ctx);
       }
 
       if (node.kind === "Expression") {
