@@ -87,6 +87,24 @@ export async function loadStoryModule(absPath: string): Promise<LoadedStoryModul
   return { meta: mod.default, stories, sourcePath: absPath };
 }
 
+export function commonPrefix(dirs: string[]): string {
+  if (dirs.length === 0) return "";
+  const parts = dirs[0]!.split("/");
+  let prefix = "";
+  for (let i = 0; i < parts.length; i++) {
+    const candidate = parts.slice(0, i + 1).join("/") + "/";
+    if (dirs.every((d) => (d + "/").startsWith(candidate))) prefix = candidate;
+    else break;
+  }
+  return prefix;
+}
+
+export function computeCompilerRoot(srcDir: string): string {
+  const inkFiles = globSync(join(srcDir, "**/*.ink.tsx")).map((f) => resolve(f));
+  if (inkFiles.length === 0) return resolve(srcDir);
+  return commonPrefix(inkFiles.map((f) => dirname(f)));
+}
+
 export function resolveRenderImports(
   storyModule: LoadedStoryModule,
   srcDir: string,
@@ -94,14 +112,14 @@ export function resolveRenderImports(
 ): ResolvedRenderImport[] {
   const imports: ResolvedRenderImport[] = [];
   const storyDir = dirname(storyModule.sourcePath);
-  const resolvedSrcDir = resolve(srcDir);
+  const compilerRoot = computeCompilerRoot(srcDir);
 
   for (const [name, variant] of Object.entries(storyModule.stories)) {
     if (typeof variant.render !== "string") continue;
 
     const absRenderPath = resolve(storyDir, variant.render);
-    const relToSrc = relative(resolvedSrcDir, absRenderPath);
-    const withoutInkExt = relToSrc.replace(/\.ink\.tsx$/, "");
+    const relToCompilerRoot = relative(compilerRoot, absRenderPath);
+    const withoutInkExt = relToCompilerRoot.replace(/\.ink\.tsx$/, "");
     const compiledRel = withoutInkExt + framework.compiledExtension;
     const importPath = "../generated/" + compiledRel.split("/").join("/");
 

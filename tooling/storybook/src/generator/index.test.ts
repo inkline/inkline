@@ -3,6 +3,8 @@ import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
+  commonPrefix,
+  computeCompilerRoot,
   discoverDefinitionFiles,
   loadStoryModule,
   resolveRenderImports,
@@ -12,6 +14,36 @@ import { frameworkByTarget } from "./config.ts";
 
 const FIXTURES = join(import.meta.dirname, "__fixtures__");
 const STORIES_DIR = join(FIXTURES, "stories");
+
+describe("commonPrefix", () => {
+  it("returns the shared prefix of multiple directories", () => {
+    expect(commonPrefix(["/a/b/c", "/a/b/d", "/a/b/e"])).toBe("/a/b/");
+  });
+
+  it("returns the full path when all directories are identical", () => {
+    expect(commonPrefix(["/a/b", "/a/b"])).toBe("/a/b/");
+  });
+
+  it("returns empty string for an empty array", () => {
+    expect(commonPrefix([])).toBe("");
+  });
+
+  it("stops at the first divergence", () => {
+    expect(commonPrefix(["/a/b/c", "/a/x/y"])).toBe("/a/");
+  });
+});
+
+describe("computeCompilerRoot", () => {
+  it("returns the common prefix of .ink.tsx file directories", () => {
+    const root = computeCompilerRoot(STORIES_DIR);
+    expect(root).toBe(STORIES_DIR + "/");
+  });
+
+  it("falls back to srcDir when no .ink.tsx files exist", () => {
+    const root = computeCompilerRoot(join(FIXTURES, "bad", "empty"));
+    expect(root).toBe(join(FIXTURES, "bad", "empty"));
+  });
+});
 
 describe("discoverDefinitionFiles", () => {
   it("returns absolute, sorted definition paths (recursive)", () => {
