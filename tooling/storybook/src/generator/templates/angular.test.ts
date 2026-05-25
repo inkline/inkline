@@ -73,6 +73,25 @@ describe("renderAngular", () => {
     );
   });
 
+  it("emits default imports when framework.hasDefaultExport is true", () => {
+    const frameworkWithDefault: typeof angular = { ...angular, hasDefaultExport: true };
+    const mod: LoadedStoryModule = {
+      meta: { component: "IBadge", title: "Components/Badge" },
+      stories: { Colors: { render: "./colors.ink.tsx" } },
+      sourcePath: "/fake/IBadge.stories.ts",
+    };
+    const renderImports: ResolvedRenderImport[] = [
+      {
+        storyName: "Colors",
+        localName: "ColorsStory",
+        exportedName: "colorsComponent",
+        importPath: "../generated/badge/stories/colors.ts",
+      },
+    ];
+    const out = renderAngular(mod, frameworkWithDefault, renderImports);
+    expect(out).toContain('import ColorsStory from "../generated/badge/stories/colors.ts";');
+  });
+
   it("validates component and story identifiers", () => {
     const badComponent: LoadedStoryModule = {
       meta: { component: "x-y", title: "X" },
