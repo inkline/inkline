@@ -14,6 +14,8 @@ export interface FrameworkConfig {
   readonly template: TemplateKind;
   readonly compiledExtension: string;
   readonly renderStory: RenderStoryConfig;
+  readonly hasDefaultExport: boolean;
+  readonly exportedNameSuffix?: string;
   readonly deferred?: boolean;
 }
 
@@ -30,6 +32,7 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
       frameworkImport: 'import { createElement } from "react";',
       expression: "createElement({name})",
     },
+    hasDefaultExport: false,
   },
   {
     target: "vue",
@@ -43,6 +46,7 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
       frameworkImport: 'import { h } from "vue";',
       expression: "h({name})",
     },
+    hasDefaultExport: true,
   },
   {
     target: "svelte",
@@ -56,6 +60,7 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
       frameworkImport: 'import { createElement } from "svelte";',
       expression: "createElement({name})",
     },
+    hasDefaultExport: true,
   },
   {
     target: "solid",
@@ -69,6 +74,7 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
       frameworkImport: 'import { createComponent } from "solid-js";',
       expression: "createComponent({name}, {})",
     },
+    hasDefaultExport: true,
   },
   {
     target: "angular",
@@ -82,6 +88,8 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
       frameworkImport: "",
       expression: "({ component: {name} })",
     },
+    hasDefaultExport: false,
+    exportedNameSuffix: "Component",
   },
   {
     target: "qwik",
@@ -95,6 +103,7 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
       frameworkImport: 'import { createElement } from "qwik";',
       expression: "createElement({name})",
     },
+    hasDefaultExport: false,
   },
   {
     target: "astro",
@@ -108,6 +117,7 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
       frameworkImport: "",
       expression: "{name}()",
     },
+    hasDefaultExport: true,
   },
 ];
 

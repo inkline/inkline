@@ -77,12 +77,15 @@ describe("renderCsf3", () => {
       {
         storyName: "Colors",
         localName: "ColorsStory",
+        exportedName: "colors",
         importPath: "../generated/badge/stories/colors.tsx",
       },
     ];
     const out = renderCsf3(mod, react, renderImports);
     expect(out).toContain('import { createElement } from "react";');
-    expect(out).toContain('import ColorsStory from "../generated/badge/stories/colors.tsx";');
+    expect(out).toContain(
+      'import { colors as ColorsStory } from "../generated/badge/stories/colors.tsx";',
+    );
     expect(out).toContain(
       "export const Colors: Story = { render: () => createElement(ColorsStory) };",
     );
@@ -103,11 +106,13 @@ describe("renderCsf3", () => {
       {
         storyName: "Colors",
         localName: "ColorsStory",
+        exportedName: "colors",
         importPath: "../generated/badge/stories/colors.vue",
       },
     ];
     const out = renderCsf3(mod, vue, renderImports);
     expect(out).toContain('import { h } from "vue";');
+    expect(out).toContain('import ColorsStory from "../generated/badge/stories/colors.vue";');
     expect(out).toContain("export const Colors: Story = { render: () => h(ColorsStory) };");
   });
 

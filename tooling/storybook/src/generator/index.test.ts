@@ -104,11 +104,13 @@ describe("resolveRenderImports", () => {
     expect(imports).toHaveLength(2);
     expect(imports[0]!.storyName).toBe("Colors");
     expect(imports[0]!.localName).toBe("ColorsStory");
+    expect(imports[0]!.exportedName).toBe("colors");
     expect(imports[0]!.importPath).toContain("../generated/");
     expect(imports[0]!.importPath).toContain("colors.tsx");
 
     expect(imports[1]!.storyName).toBe("Sizes");
     expect(imports[1]!.localName).toBe("SizesStory");
+    expect(imports[1]!.exportedName).toBe("sizes");
     expect(imports[1]!.importPath).toContain("sizes.tsx");
   });
 
@@ -175,7 +177,7 @@ describe("generate", () => {
 
     const reactBadge = readFileSync(join(outDir, "react", "stories", "IBadge.stories.ts"), "utf-8");
     expect(reactBadge).toContain('import { createElement } from "react";');
-    expect(reactBadge).toContain("import ColorsStory from");
+    expect(reactBadge).toContain("import { colors as ColorsStory } from");
     expect(reactBadge).toContain(
       "export const Colors: Story = { render: () => createElement(ColorsStory) };",
     );

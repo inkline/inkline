@@ -60,11 +60,14 @@ describe("renderAngular", () => {
       {
         storyName: "Colors",
         localName: "ColorsStory",
+        exportedName: "colorsComponent",
         importPath: "../generated/badge/stories/colors.ts",
       },
     ];
     const out = renderAngular(mod, angular, renderImports);
-    expect(out).toContain('import ColorsStory from "../generated/badge/stories/colors.ts";');
+    expect(out).toContain(
+      'import { colorsComponent as ColorsStory } from "../generated/badge/stories/colors.ts";',
+    );
     expect(out).toContain(
       "export const Colors: Story = { render: () => ({ component: ColorsStory }) };",
     );

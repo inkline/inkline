@@ -25,7 +25,11 @@ export function renderCsf3(
 
   for (const ri of renderImports) {
     assertIdentifier(ri.localName, "render import");
-    lines.push(`import ${ri.localName} from "${ri.importPath}";`);
+    if (framework.hasDefaultExport) {
+      lines.push(`import ${ri.localName} from "${ri.importPath}";`);
+    } else {
+      lines.push(`import { ${ri.exportedName} as ${ri.localName} } from "${ri.importPath}";`);
+    }
   }
 
   lines.push(

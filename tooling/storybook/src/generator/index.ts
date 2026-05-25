@@ -33,6 +33,7 @@ export interface LoadedStoryModule {
 export interface ResolvedRenderImport {
   readonly storyName: string;
   readonly localName: string;
+  readonly exportedName: string;
   readonly importPath: string;
 }
 
@@ -124,9 +125,10 @@ export function resolveRenderImports(
     const importPath = "../generated/" + compiledRel.split("/").join("/");
 
     const baseName = withoutInkExt.split("/").pop()!;
+    const exportedName = baseName + (framework.exportedNameSuffix ?? "");
     const localName = baseName.charAt(0).toUpperCase() + baseName.slice(1) + "Story";
 
-    imports.push({ storyName: name, localName, importPath });
+    imports.push({ storyName: name, localName, exportedName, importPath });
   }
 
   return imports;
