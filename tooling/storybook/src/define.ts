@@ -10,17 +10,9 @@ export interface ArgType {
   readonly table?: Readonly<Record<string, unknown>>;
 }
 
-export interface ScopedSlotContent {
-  readonly params: readonly string[];
-  readonly content: string;
-}
-
-export type SlotValue = string | ScopedSlotContent;
-
 /** A single named story: argument overrides layered on the meta-level args. */
 export interface StoryVariant<TProps> {
   readonly args?: Partial<TProps>;
-  readonly slots?: Readonly<Record<string, SlotValue>>;
 }
 
 export interface StoryDefinition<TProps> {
@@ -39,8 +31,6 @@ export interface StoryDefinition<TProps> {
   readonly args?: Partial<TProps>;
   /** Controls/docs metadata, keyed by prop name. */
   readonly argTypes?: Partial<Record<keyof TProps & string, ArgType>>;
-  /** Default slot content applied to every story's render function. */
-  readonly slots?: Readonly<Record<string, SlotValue>>;
   /** Named story variants. Export names become part of each story ID. */
   readonly stories: Readonly<Record<string, StoryVariant<TProps>>>;
 }

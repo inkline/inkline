@@ -28,30 +28,6 @@ describe("defineStories", () => {
 
     expect(def.args).toBeUndefined();
     expect(def.argTypes).toBeUndefined();
-    expect(def.slots).toBeUndefined();
     expect(Object.keys(def.stories)).toEqual(["Default"]);
-  });
-
-  it("preserves slot definitions on meta and stories", () => {
-    const def = defineStories<ButtonProps>({
-      component: "Button",
-      title: "Components/Button",
-      slots: { default: "Click me" },
-      stories: {
-        Default: {},
-        WithHeader: { slots: { header: "Title" } },
-        Scoped: {
-          slots: {
-            item: { params: ["item", "index"], content: "item.label" },
-          },
-        },
-      },
-    });
-
-    expect(def.slots).toEqual({ default: "Click me" });
-    expect(def.stories["WithHeader"].slots).toEqual({ header: "Title" });
-    expect(def.stories["Scoped"].slots).toEqual({
-      item: { params: ["item", "index"], content: "item.label" },
-    });
   });
 });

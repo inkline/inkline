@@ -12,7 +12,6 @@ describe("discoverDefinitionFiles", () => {
   it("returns absolute, sorted definition paths", () => {
     const files = discoverDefinitionFiles(STORIES_DIR);
     expect(files.map((f) => f.replace(STORIES_DIR + "/", ""))).toEqual([
-      "Alert.stories.ts",
       "Button.stories.ts",
       "Card.stories.ts",
     ]);
@@ -69,8 +68,8 @@ describe("generate", () => {
     ];
     const result = await generate({ srcDir: STORIES_DIR, rootDir: outDir, frameworks });
 
-    expect(result.components).toEqual(["Alert", "Button", "Card"]);
-    expect(result.files).toHaveLength(3 * 3);
+    expect(result.components).toEqual(["Button", "Card"]);
+    expect(result.files).toHaveLength(2 * 3);
 
     const reactButton = readFileSync(
       join(outDir, "react", "stories", "Button.stories.ts"),
@@ -88,7 +87,7 @@ describe("generate", () => {
 
   it("defaults to all seven active frameworks", async () => {
     const result = await generate({ srcDir: STORIES_DIR, rootDir: outDir });
-    expect(result.files).toHaveLength(7 * 3);
+    expect(result.files).toHaveLength(7 * 2);
     expect(result.files.some((f) => f.target === "astro")).toBe(true);
   });
 });
