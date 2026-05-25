@@ -1,5 +1,4 @@
 generated/
 stories/
 storybook-static/
-.styleframe/*
-!.styleframe/styleframe.d.ts
+.styleframe/
