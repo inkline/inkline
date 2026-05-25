@@ -61,7 +61,6 @@ jobs:
             tooling/storybook/dist
             tooling/test-utils/dist
             ui/*/generated
-            ui/*/.styleframe
 
   build-storybook:
     name: Build Storybook
