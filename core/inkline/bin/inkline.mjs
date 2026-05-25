@@ -1,2 +1,3 @@
 #!/usr/bin/env node
-await import("../dist/cli.mjs");
+import { main } from "../dist/cli.mjs";
+await main();

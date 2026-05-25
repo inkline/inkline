@@ -1,3 +1,1 @@
-#!/usr/bin/env node
-import { main } from "@inkline/cli";
-void main();
+export { main } from "@inkline/cli";
