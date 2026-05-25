@@ -1,0 +1,176 @@
+{
+  "name": "inkline",
+  "version": "0.0.0",
+  "description": "The Inkline component framework — single install for authoring, compiling, and building .ink.tsx components.",
+  "homepage": "https://github.com/inkline/inkline#readme",
+  "bugs": {
+    "url": "https://github.com/inkline/inkline/issues"
+  },
+  "license": "MIT",
+  "author": "Inkline contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inkline/inkline.git",
+    "directory": "core/inkline"
+  },
+  "bin": {
+    "inkline": "./bin/inkline.mjs"
+  },
+  "files": [
+    "dist",
+    "bin"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./cli": {
+      "types": "./dist/cli.d.mts",
+      "import": "./dist/cli.mjs",
+      "require": "./dist/cli.cjs"
+    },
+    "./compiler": {
+      "types": "./dist/compiler.d.mts",
+      "import": "./dist/compiler.mjs",
+      "require": "./dist/compiler.cjs"
+    },
+    "./config-loader": {
+      "types": "./dist/config-loader.d.mts",
+      "import": "./dist/config-loader.mjs",
+      "require": "./dist/config-loader.cjs"
+    },
+    "./plugin/vite": {
+      "types": "./dist/plugin/vite.d.mts",
+      "import": "./dist/plugin/vite.mjs",
+      "require": "./dist/plugin/vite.cjs"
+    },
+    "./plugin/webpack": {
+      "types": "./dist/plugin/webpack.d.mts",
+      "import": "./dist/plugin/webpack.mjs",
+      "require": "./dist/plugin/webpack.cjs"
+    },
+    "./plugin/rollup": {
+      "types": "./dist/plugin/rollup.d.mts",
+      "import": "./dist/plugin/rollup.mjs",
+      "require": "./dist/plugin/rollup.cjs"
+    },
+    "./plugin/esbuild": {
+      "types": "./dist/plugin/esbuild.d.mts",
+      "import": "./dist/plugin/esbuild.mjs",
+      "require": "./dist/plugin/esbuild.cjs"
+    },
+    "./plugin/rspack": {
+      "types": "./dist/plugin/rspack.d.mts",
+      "import": "./dist/plugin/rspack.mjs",
+      "require": "./dist/plugin/rspack.cjs"
+    },
+    "./plugin/farm": {
+      "types": "./dist/plugin/farm.d.mts",
+      "import": "./dist/plugin/farm.mjs",
+      "require": "./dist/plugin/farm.cjs"
+    },
+    "./react": {
+      "types": "./dist/react.d.mts",
+      "import": "./dist/react.mjs",
+      "require": "./dist/react.cjs"
+    },
+    "./vue": {
+      "types": "./dist/vue.d.mts",
+      "import": "./dist/vue.mjs",
+      "require": "./dist/vue.cjs"
+    },
+    "./svelte": {
+      "types": "./dist/svelte.d.mts",
+      "import": "./dist/svelte.mjs",
+      "require": "./dist/svelte.cjs"
+    },
+    "./solid": {
+      "types": "./dist/solid.d.mts",
+      "import": "./dist/solid.mjs",
+      "require": "./dist/solid.cjs"
+    },
+    "./angular": {
+      "types": "./dist/angular.d.mts",
+      "import": "./dist/angular.mjs",
+      "require": "./dist/angular.cjs"
+    },
+    "./qwik": {
+      "types": "./dist/qwik.d.mts",
+      "import": "./dist/qwik.mjs",
+      "require": "./dist/qwik.cjs"
+    },
+    "./astro": {
+      "types": "./dist/astro.d.mts",
+      "import": "./dist/astro.mjs",
+      "require": "./dist/astro.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "vp pack",
+    "dev": "vp pack --watch",
+    "check": "vp check",
+    "prepublishOnly": "vp run build"
+  },
+  "dependencies": {
+    "@inkline/cli": "workspace:*"
+  },
+  "devDependencies": {
+    "@inkline/angular": "workspace:*",
+    "@inkline/astro": "workspace:*",
+    "@inkline/compiler": "workspace:*",
+    "@inkline/config-loader": "workspace:*",
+    "@inkline/core": "workspace:*",
+    "@inkline/plugin": "workspace:*",
+    "@inkline/qwik": "workspace:*",
+    "@inkline/react": "workspace:*",
+    "@inkline/solid": "workspace:*",
+    "@inkline/svelte": "workspace:*",
+    "@inkline/vue": "workspace:*",
+    "typescript": "catalog:",
+    "vite-plus": "catalog:"
+  },
+  "peerDependencies": {
+    "@inkline/angular": "workspace:*",
+    "@inkline/astro": "workspace:*",
+    "@inkline/compiler": "workspace:*",
+    "@inkline/config-loader": "workspace:*",
+    "@inkline/core": "workspace:*",
+    "@inkline/plugin": "workspace:*",
+    "@inkline/qwik": "workspace:*",
+    "@inkline/react": "workspace:*",
+    "@inkline/solid": "workspace:*",
+    "@inkline/svelte": "workspace:*",
+    "@inkline/vue": "workspace:*"
+  },
+  "peerDependenciesMeta": {
+    "@inkline/react": {
+      "optional": true
+    },
+    "@inkline/vue": {
+      "optional": true
+    },
+    "@inkline/svelte": {
+      "optional": true
+    },
+    "@inkline/solid": {
+      "optional": true
+    },
+    "@inkline/angular": {
+      "optional": true
+    },
+    "@inkline/qwik": {
+      "optional": true
+    },
+    "@inkline/astro": {
+      "optional": true
+    }
+  }
+}

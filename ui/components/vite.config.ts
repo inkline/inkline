@@ -5,9 +5,8 @@ export default defineConfig({
   plugins: [styleframe()],
   build: {
     lib: {
-      entry: "src/index.ts",
-      name: "InklineComponents",
-      fileName: (format) => `inkline.${format}.js`,
+      entry: "src/components/index.ts",
+      formats: ["es"],
     },
   },
 });

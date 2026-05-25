@@ -301,6 +301,52 @@ importers:
         specifier: 'catalog:'
         version: 0.1.22(@tsdown/css@0.22.0)(@types/node@25.6.0)(esbuild@0.28.0)(happy-dom@15.11.7)(jiti@2.7.0)(jsdom@29.1.1)(less@4.4.2)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(typescript@5.9.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.7.0)(less@4.4.2)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(yaml@2.8.4))(yaml@2.8.4)
 
+  core/inkline:
+    dependencies:
+      '@inkline/cli':
+        specifier: workspace:*
+        version: link:../../tooling/cli
+    devDependencies:
+      '@inkline/angular':
+        specifier: workspace:*
+        version: link:../../ui/angular
+      '@inkline/astro':
+        specifier: workspace:*
+        version: link:../../ui/astro
+      '@inkline/compiler':
+        specifier: workspace:*
+        version: link:../compiler
+      '@inkline/config-loader':
+        specifier: workspace:*
+        version: link:../config-loader
+      '@inkline/core':
+        specifier: workspace:*
+        version: link:../core
+      '@inkline/plugin':
+        specifier: workspace:*
+        version: link:../plugin
+      '@inkline/qwik':
+        specifier: workspace:*
+        version: link:../../ui/qwik
+      '@inkline/react':
+        specifier: workspace:*
+        version: link:../../ui/react
+      '@inkline/solid':
+        specifier: workspace:*
+        version: link:../../ui/solid
+      '@inkline/svelte':
+        specifier: workspace:*
+        version: link:../../ui/svelte
+      '@inkline/vue':
+        specifier: workspace:*
+        version: link:../../ui/vue
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.3
+      vite-plus:
+        specifier: 'catalog:'
+        version: 0.1.22(@tsdown/css@0.22.0)(@types/node@25.6.0)(esbuild@0.28.0)(happy-dom@15.11.7)(jiti@2.7.0)(jsdom@29.1.1)(less@4.4.2)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(typescript@5.9.3)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.28.0)(jiti@2.7.0)(less@4.4.2)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(yaml@2.8.4))(yaml@2.8.4)
+
   core/plugin:
     dependencies:
       '@farmfe/core':

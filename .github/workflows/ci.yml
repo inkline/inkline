@@ -57,6 +57,8 @@ jobs:
             core/core/dist
             core/compiler/dist
             core/config-loader/dist
+            core/inkline/dist
+            core/plugin/dist
             tooling/cli/dist
             tooling/storybook/dist
             tooling/test-utils/dist
