@@ -1,1 +1,2 @@
-.styleframe/
+.styleframe/*
+!.styleframe/styleframe.d.ts
