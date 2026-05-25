@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "inkline compile components 'src/**/*.ink.tsx' --config inkline.config.ts",
+    "build": "vp build && inkline compile components 'src/**/*.ink.tsx' --config inkline.config.ts",
     "dev": "inkline compile components 'src/**/*.ink.tsx' --config inkline.config.ts --watch",
     "test": "vp test"
   },
