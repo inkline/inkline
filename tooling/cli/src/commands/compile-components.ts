@@ -1,5 +1,5 @@
 import { defineCommand } from "citty";
-import { readFileSync, writeFileSync, mkdirSync, watch } from "node:fs";
+import { readFileSync, mkdirSync, watch } from "node:fs";
 import { resolve, basename, extname, dirname, join } from "node:path";
 import {
   compile,
@@ -13,6 +13,7 @@ import { expandGlobs } from "../lib/glob.ts";
 import { commonPrefix } from "../lib/common-prefix.ts";
 import { generateBarrel, resolveTargetDir, type BarrelEntry } from "../lib/barrel.ts";
 import { formatDiagnostic } from "../lib/diagnostics.ts";
+import { writeIfChanged } from "../lib/writer.ts";
 import { writeCompileOutput } from "../lib/writer.ts";
 
 export default defineCommand({
@@ -85,7 +86,7 @@ export default defineCommand({
 
     for (const [dir, entries] of barrelEntries) {
       const barrelPath = resolve(dir, "index.ts");
-      writeFileSync(barrelPath, generateBarrel(entries), "utf-8");
+      writeIfChanged(barrelPath, generateBarrel(entries));
     }
 
     if (args.watch) {
@@ -145,9 +146,9 @@ function runWatch(
         for (const file of targetFiles) {
           const outPath = resolve(targetDir, relDir, file.path);
           mkdirSync(dirname(outPath), { recursive: true });
-          writeFileSync(outPath, file.contents, "utf-8");
+          writeIfChanged(outPath, file.contents);
           if (file.sourceMap && sourceMap === "external") {
-            writeFileSync(`${outPath}.map`, file.sourceMap, "utf-8");
+            writeIfChanged(`${outPath}.map`, file.sourceMap);
           }
 
           if (!file.path.endsWith(".css")) {
@@ -162,7 +163,7 @@ function runWatch(
     }
 
     for (const [dir, entries] of barrelEntries) {
-      writeFileSync(resolve(dir, "index.ts"), generateBarrel(entries), "utf-8");
+      writeIfChanged(resolve(dir, "index.ts"), generateBarrel(entries));
     }
 
     if (result.changed.length > 0) {
