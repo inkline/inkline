@@ -5,10 +5,7 @@ export default defineConfig({
   plugins: [styleframe()],
   build: {
     lib: {
-      entry: {
-        index: "src/components/index.ts",
-        styleframe: "styleframe.config.ts",
-      },
+      entry: "src/components/index.ts",
       formats: ["es"],
     },
   },
