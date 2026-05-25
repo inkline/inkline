@@ -6,12 +6,12 @@ import { generate } from "@inkline/storybook/generator";
 export default defineCommand({
   meta: { name: "stories", description: "Generate per-framework story files" },
   args: {
-    "src-dir": { type: "string", description: "Single-source story definitions directory" },
+    "src-dir": { type: "string", description: "Root directory to discover story definitions" },
     "root-dir": { type: "string", description: "Root of the ui/<target> packages" },
     watch: { type: "boolean", description: "Regenerate on change", default: false },
   },
   async run({ args }) {
-    const srcDir = resolve(args["src-dir"] ?? "../../ui/components/stories");
+    const srcDir = resolve(args["src-dir"] ?? "../../ui/components/src/components");
     const rootDir = resolve(args["root-dir"] ?? "../../ui");
     const options = { srcDir, rootDir };
 

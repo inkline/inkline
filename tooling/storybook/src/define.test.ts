@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { defineStories, type StoryDefinition } from "./define.ts";
+import { defineStories, type StoryMeta } from "./define.ts";
 
 interface ButtonProps {
   label: string;
@@ -7,27 +7,24 @@ interface ButtonProps {
 }
 
 describe("defineStories", () => {
-  it("returns the definition unchanged (identity, zero runtime)", () => {
-    const def: StoryDefinition<ButtonProps> = {
+  it("returns the meta unchanged (identity, zero runtime)", () => {
+    const meta: StoryMeta<ButtonProps> = {
       component: "Button",
       title: "Components/Button",
       args: { label: "Click me", disabled: false },
       argTypes: { label: { control: "text" } },
-      stories: { Default: {}, Disabled: { args: { disabled: true } } },
     };
 
-    expect(defineStories(def)).toBe(def);
+    expect(defineStories(meta)).toBe(meta);
   });
 
   it("preserves optional fields when omitted", () => {
-    const def = defineStories<ButtonProps>({
+    const meta = defineStories<ButtonProps>({
       component: "Button",
       title: "Components/Button",
-      stories: { Default: {} },
     });
 
-    expect(def.args).toBeUndefined();
-    expect(def.argTypes).toBeUndefined();
-    expect(Object.keys(def.stories)).toEqual(["Default"]);
+    expect(meta.args).toBeUndefined();
+    expect(meta.argTypes).toBeUndefined();
   });
 });

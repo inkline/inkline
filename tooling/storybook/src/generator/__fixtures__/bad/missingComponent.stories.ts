@@ -1,1 +1,2 @@
-export default { title: "Components/X", stories: { Default: {} } };
+export default { title: "Components/X" };
+export const Default = {};

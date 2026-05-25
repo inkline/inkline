@@ -1,44 +1,50 @@
-import type { StoryDefinition } from "../../define.ts";
+import type { LoadedStoryModule, ResolvedRenderImport } from "../index.ts";
 import type { FrameworkConfig } from "../config.ts";
 import { BANNER, assertIdentifier, serializeArgs } from "./shared.ts";
 
-/**
- * Renders a CSF3 story file for Angular. Angular components are classes, so the
- * generics take the component type directly (`Meta<Button>`) rather than
- * `typeof`. `@inkline/angular` re-exports `<Name>Component as <Name>`, so the
- * import binding is still the bare component name.
- */
 export function renderAngular(
-  definition: StoryDefinition<unknown>,
+  storyModule: LoadedStoryModule,
   framework: FrameworkConfig,
+  renderImports: readonly ResolvedRenderImport[],
 ): string {
-  assertIdentifier(definition.component, "component");
+  const { meta, stories } = storyModule;
+  assertIdentifier(meta.component, "component");
+
+  const renderByStory = new Map(renderImports.map((r) => [r.storyName, r]));
 
   const lines: string[] = [
     BANNER,
     `import type { Meta, StoryObj } from "${framework.typeImport}";`,
-    `import { ${definition.component} } from "${framework.componentPackage}";`,
-    "",
-    `const meta: Meta<${definition.component}> = {`,
-    `  component: ${definition.component},`,
-    `  title: ${JSON.stringify(definition.title)},`,
+    `import { ${meta.component} } from "${framework.componentPackage}";`,
   ];
 
-  if (definition.args) lines.push(`  args: ${serializeArgs(definition.args)},`);
-  if (definition.argTypes) lines.push(`  argTypes: ${serializeArgs(definition.argTypes)},`);
+  for (const ri of renderImports) {
+    assertIdentifier(ri.localName, "render import");
+    lines.push(`import ${ri.localName} from "${ri.importPath}";`);
+  }
 
   lines.push(
-    "};",
-    "export default meta;",
     "",
-    `type Story = StoryObj<${definition.component}>;`,
-    "",
+    `const meta: Meta<${meta.component}> = {`,
+    `  component: ${meta.component},`,
+    `  title: ${JSON.stringify(meta.title)},`,
   );
 
-  for (const [name, variant] of Object.entries(definition.stories)) {
+  if (meta.args) lines.push(`  args: ${serializeArgs(meta.args)},`);
+  if (meta.argTypes) lines.push(`  argTypes: ${serializeArgs(meta.argTypes)},`);
+
+  lines.push("};", "export default meta;", "", `type Story = StoryObj<${meta.component}>;`, "");
+
+  for (const [name, variant] of Object.entries(stories)) {
     assertIdentifier(name, "story name");
-    const body = variant.args ? `{ args: ${serializeArgs(variant.args)} }` : "{}";
-    lines.push(`export const ${name}: Story = ${body};`);
+    const ri = renderByStory.get(name);
+    if (ri) {
+      const expr = framework.renderStory.expression.replace("{name}", ri.localName);
+      lines.push(`export const ${name}: Story = { render: () => ${expr} };`);
+    } else {
+      const body = variant.args ? `{ args: ${serializeArgs(variant.args)} }` : "{}";
+      lines.push(`export const ${name}: Story = ${body};`);
+    }
   }
 
   return lines.join("\n") + "\n";

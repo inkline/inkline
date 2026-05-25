@@ -14,7 +14,7 @@
     "access": "public"
   },
   "scripts": {
-    "build": "vp build --mode lib",
+    "build": "vp build",
     "validate": "vp check",
     "test": "vp test --passWithNoTests",
     "storybook": "storybook dev -p 6011",

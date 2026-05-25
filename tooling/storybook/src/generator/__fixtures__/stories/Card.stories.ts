@@ -1,5 +1,8 @@
-export default {
+const meta = {
   component: "Card",
   title: "Components/Card",
-  stories: { Default: {} },
 };
+
+export default meta;
+
+export const Default = {};

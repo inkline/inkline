@@ -1,1 +1,2 @@
-export default { component: "X", stories: { Default: {} } };
+export default { component: "X" };
+export const Default = {};

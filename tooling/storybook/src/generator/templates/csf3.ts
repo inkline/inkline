@@ -1,43 +1,61 @@
-import type { StoryDefinition } from "../../define.ts";
+import type { LoadedStoryModule, ResolvedRenderImport } from "../index.ts";
 import type { FrameworkConfig } from "../config.ts";
 import { BANNER, assertIdentifier, serializeArgs } from "./shared.ts";
 
-/**
- * Renders a CSF3 story file for renderers where a story is structurally
- * renderer-agnostic (React, Vue, Svelte, Solid, Qwik). Only the renderer type
- * import and the component package vary, both supplied by {@link FrameworkConfig}.
- */
 export function renderCsf3(
-  definition: StoryDefinition<unknown>,
+  storyModule: LoadedStoryModule,
   framework: FrameworkConfig,
+  renderImports: readonly ResolvedRenderImport[],
 ): string {
-  assertIdentifier(definition.component, "component");
+  const { meta, stories } = storyModule;
+  assertIdentifier(meta.component, "component");
+
+  const renderByStory = new Map(renderImports.map((r) => [r.storyName, r]));
 
   const lines: string[] = [
     BANNER,
     `import type { Meta, StoryObj } from "${framework.typeImport}";`,
-    `import { ${definition.component} } from "${framework.componentPackage}";`,
-    "",
-    "const meta = {",
-    `  component: ${definition.component},`,
-    `  title: ${JSON.stringify(definition.title)},`,
   ];
 
-  if (definition.args) lines.push(`  args: ${serializeArgs(definition.args)},`);
-  if (definition.argTypes) lines.push(`  argTypes: ${serializeArgs(definition.argTypes)},`);
+  if (renderImports.length > 0 && framework.renderStory.frameworkImport) {
+    lines.push(framework.renderStory.frameworkImport);
+  }
+
+  lines.push(`import { ${meta.component} } from "${framework.componentPackage}";`);
+
+  for (const ri of renderImports) {
+    assertIdentifier(ri.localName, "render import");
+    lines.push(`import ${ri.localName} from "${ri.importPath}";`);
+  }
 
   lines.push(
-    `} satisfies Meta<typeof ${definition.component}>;`,
+    "",
+    "const meta = {",
+    `  component: ${meta.component},`,
+    `  title: ${JSON.stringify(meta.title)},`,
+  );
+
+  if (meta.args) lines.push(`  args: ${serializeArgs(meta.args)},`);
+  if (meta.argTypes) lines.push(`  argTypes: ${serializeArgs(meta.argTypes)},`);
+
+  lines.push(
+    `} satisfies Meta<typeof ${meta.component}>;`,
     "export default meta;",
     "",
     "type Story = StoryObj<typeof meta>;",
     "",
   );
 
-  for (const [name, variant] of Object.entries(definition.stories)) {
+  for (const [name, variant] of Object.entries(stories)) {
     assertIdentifier(name, "story name");
-    const body = variant.args ? `{ args: ${serializeArgs(variant.args)} }` : "{}";
-    lines.push(`export const ${name}: Story = ${body};`);
+    const ri = renderByStory.get(name);
+    if (ri) {
+      const expr = framework.renderStory.expression.replace("{name}", ri.localName);
+      lines.push(`export const ${name}: Story = { render: () => ${expr} };`);
+    } else {
+      const body = variant.args ? `{ args: ${serializeArgs(variant.args)} }` : "{}";
+      lines.push(`export const ${name}: Story = ${body};`);
+    }
   }
 
   return lines.join("\n") + "\n";

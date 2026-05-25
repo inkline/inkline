@@ -3,17 +3,17 @@ import { extractStoryKeys, assertStableStoryKeys, type StoryKeys } from "./story
 import { renderCsf3 } from "./templates/csf3.ts";
 import { renderAngular } from "./templates/angular.ts";
 import { frameworkByTarget } from "./config.ts";
-import type { StoryDefinition } from "../define.ts";
+import type { LoadedStoryModule } from "./index.ts";
 
-const def: StoryDefinition<unknown> = {
-  component: "Button",
-  title: "Components/Button",
+const mod: LoadedStoryModule = {
+  meta: { component: "Button", title: "Components/Button" },
   stories: { Default: {}, Disabled: { args: { disabled: true } } },
+  sourcePath: "/fake/Button.stories.ts",
 };
 
 describe("extractStoryKeys", () => {
   it("reads the title and sorted story names from rendered output", () => {
-    const keys = extractStoryKeys(renderCsf3(def, frameworkByTarget("react")!));
+    const keys = extractStoryKeys(renderCsf3(mod, frameworkByTarget("react")!, []));
     expect(keys).toEqual({ title: "Components/Button", stories: ["Default", "Disabled"] });
   });
 
@@ -29,9 +29,9 @@ describe("extractStoryKeys", () => {
 describe("assertStableStoryKeys", () => {
   it("passes when every framework yields the same title and story names", () => {
     const perFramework = new Map<string, StoryKeys>([
-      ["react", extractStoryKeys(renderCsf3(def, frameworkByTarget("react")!))],
-      ["vue", extractStoryKeys(renderCsf3(def, frameworkByTarget("vue")!))],
-      ["angular", extractStoryKeys(renderAngular(def, frameworkByTarget("angular")!))],
+      ["react", extractStoryKeys(renderCsf3(mod, frameworkByTarget("react")!, []))],
+      ["vue", extractStoryKeys(renderCsf3(mod, frameworkByTarget("vue")!, []))],
+      ["angular", extractStoryKeys(renderAngular(mod, frameworkByTarget("angular")!, []))],
     ]);
     expect(() => assertStableStoryKeys("Button", perFramework)).not.toThrow();
   });
