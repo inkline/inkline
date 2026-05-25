@@ -52,6 +52,7 @@ jobs:
         with:
           name: build-artifacts
           retention-days: 1
+          include-hidden-files: true
           path: |
             core/core/dist
             core/compiler/dist
