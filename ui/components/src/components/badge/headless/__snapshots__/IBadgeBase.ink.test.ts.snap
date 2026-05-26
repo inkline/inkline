@@ -4,9 +4,7 @@ exports[`Badge > output matches snapshots 1`] = `
 {
   "angular/IBadgeBase.component.ts": "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'IBadgeBase', template: \`<div class="badge" [disabled]="disabled">
-<slot>
-{{ label }}
-</slot>
+<ng-content />
 </div>\` })
 export class IBadgeBaseComponent
 {
@@ -15,9 +13,7 @@ export class IBadgeBaseComponent
   "astro/IBadgeBase.astro": "---
 ---
 <div class="badge" disabled={disabled}>
-<slot>
-{label}
-</slot>
+<slot />
 </div>
 ",
   "qwik/IBadgeBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
@@ -25,9 +21,7 @@ export const IBadgeBase = component$((props) =>
 {
 return (
 <div class="badge" disabled={props.disabled}>
-  <slot>
-    {props.label}
-  </slot>
+  {props.children ?? props.label}
 </div>
 )
 });
@@ -36,9 +30,7 @@ return (
 {
 return (
 <div className="badge" disabled={props.disabled}>
-  <slot>
-    {props.label}
-  </slot>
+  {props.children ?? props.label}
 </div>
 )
 }
@@ -47,9 +39,7 @@ return (
 {
 return (
 <div class="badge" disabled={props.disabled}>
-  <slot>
-    {props.label}
-  </slot>
+  {props.default ?? props.label}
 </div>
 )
 }

@@ -122,12 +122,12 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       if (node.scopedArgs.length > 0) {
         return node.fallback
           ? cExpr({
-              text: `{props.${propName}?.(${argsStr}) ?? ${emitNodeInline(node.fallback, rules)}}`,
+              text: `{props.${propName}?.(${argsStr}) ?? ${emitFallback(node.fallback, rules)}}`,
             })
           : cExpr({ text: `{props.${propName}?.(${argsStr})}` });
       }
       if (node.fallback) {
-        return cExpr({ text: `{props.${propName} ?? ${emitNodeInline(node.fallback, rules)}}` });
+        return cExpr({ text: `{props.${propName} ?? ${emitFallback(node.fallback, rules)}}` });
       }
       return cExpr({ text: `{props.${propName}}` });
     }
@@ -188,6 +188,12 @@ function emitNodeInline(node: IRNode, rules: RewriteRules): string {
   if (node.kind === "Text") {
     return `"${node.value}"`;
   }
+  return inlineCode(emitNode(node, rules));
+}
+
+function emitFallback(node: IRNode, rules: RewriteRules): string {
+  if (node.kind === "Text") return `"${node.value}"`;
+  if (node.kind === "Expression") return rewriteExpr(node.expr, rules);
   return inlineCode(emitNode(node, rules));
 }
 

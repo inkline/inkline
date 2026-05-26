@@ -1,4 +1,4 @@
-import { defineComponent } from "@inkline/core";
+import { defineComponent, Slot } from "@inkline/core";
 
 export interface BadgeBaseProps {
   label?: string;
@@ -12,7 +12,7 @@ export default defineComponent(
   (props: BadgeBaseProps) => {
     return (
       <div class="badge" disabled={props.disabled}>
-        <slot>{props.label}</slot>
+        <Slot>{props.label}</Slot>
       </div>
     );
   },
