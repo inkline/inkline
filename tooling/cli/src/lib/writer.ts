@@ -1,7 +1,12 @@
-import { mkdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve, dirname, basename, join } from "node:path";
 import type { CompileResult, TargetName } from "@inkline/compiler";
 import { type BarrelEntry, resolveTargetDir } from "./barrel.ts";
+
+export function writeIfChanged(path: string, content: string): void {
+  if (existsSync(path) && readFileSync(path, "utf-8") === content) return;
+  writeFileSync(path, content, "utf-8");
+}
 
 export function writeCompileOutput(
   result: CompileResult,
@@ -20,9 +25,9 @@ export function writeCompileOutput(
       const fileName = basename(file.path);
       const outPath = resolve(targetDir, relDir, fileName);
       mkdirSync(dirname(outPath), { recursive: true });
-      writeFileSync(outPath, file.contents, "utf-8");
+      writeIfChanged(outPath, file.contents);
       if (file.sourceMap && sourceMap === "external") {
-        writeFileSync(`${outPath}.map`, file.sourceMap, "utf-8");
+        writeIfChanged(`${outPath}.map`, file.sourceMap);
       }
 
       if (!file.path.endsWith(".css")) {

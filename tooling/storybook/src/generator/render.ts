@@ -1,17 +1,17 @@
-import type { StoryDefinition } from "../define.ts";
+import type { LoadedStoryModule, ResolvedRenderImport } from "./index.ts";
 import type { FrameworkConfig } from "./config.ts";
 import { renderCsf3 } from "./templates/csf3.ts";
 import { renderAngular } from "./templates/angular.ts";
 
-/** Renders a story file for a framework by dispatching on its template kind. */
 export function renderStory(
-  definition: StoryDefinition<unknown>,
+  storyModule: LoadedStoryModule,
   framework: FrameworkConfig,
+  renderImports: readonly ResolvedRenderImport[],
 ): string {
   switch (framework.template) {
     case "csf3":
-      return renderCsf3(definition, framework);
+      return renderCsf3(storyModule, framework, renderImports);
     case "angular":
-      return renderAngular(definition, framework);
+      return renderAngular(storyModule, framework, renderImports);
   }
 }

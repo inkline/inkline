@@ -4,7 +4,7 @@ export default defineConfig({
   staged: {
     "*": "vp check --fix",
   },
-  fmt: { ignorePatterns: [".context/**", ".old/**"] },
+  fmt: { ignorePatterns: [".context/**", ".old/**", "ui/**/.styleframe/**"] },
   lint: {
     ignorePatterns: [
       ".context/**",

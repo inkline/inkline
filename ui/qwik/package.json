@@ -14,12 +14,12 @@
     "access": "public"
   },
   "scripts": {
-    "build": "vp build --mode lib",
+    "build": "vp build",
     "validate": "vp check",
     "test": "vp test --passWithNoTests",
     "storybook": "storybook dev -p 6011",
     "storybook:build": "storybook build -o storybook-static",
-    "prestorybook": "pnpm --filter @inkline/storybook run generate"
+    "prestorybook": "pnpm --filter @inkline/cli exec node ./bin/inkline.mjs compile stories"
   },
   "dependencies": {
     "@styleframe/runtime": "^3.1.0"

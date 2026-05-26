@@ -1,18 +1,17 @@
 import { globSync, mkdirSync, writeFileSync } from "node:fs";
-import { join, resolve } from "node:path";
+import { dirname, join, relative, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
-import type { StoryDefinition } from "../define.ts";
+import type { StoryMeta, StoryVariant } from "../define.ts";
 import { type FrameworkConfig, activeFrameworks } from "./config.ts";
 import { renderStory } from "./render.ts";
 import { type StoryKeys, assertStableStoryKeys, extractStoryKeys } from "./story-keys.ts";
 
 export interface GenerateOptions {
-  /** Directory holding the single-source `*.stories.ts` definitions. */
-  readonly coreStoriesDir: string;
-  /** Root of the per-framework `ui/<target>` packages. */
-  readonly uiDir: string;
-  /** Frameworks to emit. Defaults to {@link activeFrameworks}. */
+  readonly srcDir: string;
+  readonly rootDir: string;
   readonly frameworks?: readonly FrameworkConfig[];
+  readonly generatedDir?: string;
+  readonly storiesDir?: string;
 }
 
 export interface GeneratedFile {
@@ -25,69 +24,143 @@ export interface GenerateResult {
   readonly files: readonly GeneratedFile[];
 }
 
-/** Absolute, sorted paths of every single-source story definition file. */
-export function discoverDefinitionFiles(coreStoriesDir: string): string[] {
-  return globSync(join(coreStoriesDir, "*.stories.{ts,tsx}"))
+export interface LoadedStoryModule {
+  readonly meta: StoryMeta<unknown>;
+  readonly stories: Readonly<Record<string, StoryVariant<unknown>>>;
+  readonly sourcePath: string;
+}
+
+export interface ResolvedRenderImport {
+  readonly storyName: string;
+  readonly localName: string;
+  readonly exportedName: string;
+  readonly importPath: string;
+}
+
+export function discoverDefinitionFiles(rootDir: string): string[] {
+  return globSync(join(rootDir, "**/*.stories.{ts,tsx}"))
     .map((file) => resolve(file))
     .sort();
 }
 
-function validateDefinition(
-  value: unknown,
-  sourceLabel: string,
-): asserts value is StoryDefinition<unknown> {
+function validateMeta(value: unknown, sourceLabel: string): asserts value is StoryMeta<unknown> {
   const fail = (reason: string): never => {
     throw new Error(`Invalid story definition in ${sourceLabel}: ${reason}.`);
   };
   if (!value || typeof value !== "object") fail("default export must be an object");
-  const def = value as Partial<StoryDefinition<unknown>>;
-  if (typeof def.component !== "string" || def.component.length === 0) {
+  const meta = value as Partial<StoryMeta<unknown>>;
+  if (typeof meta.component !== "string" || meta.component.length === 0) {
     fail("`component` must be a non-empty string");
   }
-  if (typeof def.title !== "string" || def.title.length === 0) {
+  if (typeof meta.title !== "string" || meta.title.length === 0) {
     fail("`title` must be a non-empty string");
   }
-  if (!def.stories || typeof def.stories !== "object" || Object.keys(def.stories).length === 0) {
-    fail("`stories` must contain at least one story");
+}
+
+function collectStories(
+  mod: Record<string, unknown>,
+  sourceLabel: string,
+): Record<string, StoryVariant<unknown>> {
+  const stories: Record<string, StoryVariant<unknown>> = {};
+  for (const [key, value] of Object.entries(mod)) {
+    if (key === "default") continue;
+    if (!value || typeof value !== "object") {
+      throw new Error(
+        `Invalid story definition in ${sourceLabel}: export "${key}" must be an object.`,
+      );
+    }
+    stories[key] = value as StoryVariant<unknown>;
   }
+  if (Object.keys(stories).length === 0) {
+    throw new Error(
+      `Invalid story definition in ${sourceLabel}: must export at least one named story.`,
+    );
+  }
+  return stories;
 }
 
-/** Imports a single-source definition file and validates its default export. */
-export async function loadDefinition(absPath: string): Promise<StoryDefinition<unknown>> {
-  const mod = (await import(pathToFileURL(absPath).href)) as { default?: unknown };
-  validateDefinition(mod.default, absPath);
-  return mod.default;
+export async function loadStoryModule(absPath: string): Promise<LoadedStoryModule> {
+  const url = pathToFileURL(absPath);
+  url.searchParams.set("t", Date.now().toString());
+  const mod = (await import(url.href)) as Record<string, unknown>;
+  validateMeta(mod.default, absPath);
+  const stories = collectStories(mod, absPath);
+  return { meta: mod.default, stories, sourcePath: absPath };
 }
 
-/**
- * Generates per-framework CSF story files from every single-source definition,
- * asserting the derived story IDs are identical across frameworks.
- */
+export function commonPrefix(dirs: string[]): string {
+  if (dirs.length === 0) return "";
+  const parts = dirs[0]!.split("/");
+  let prefix = "";
+  for (let i = 0; i < parts.length; i++) {
+    const candidate = parts.slice(0, i + 1).join("/") + "/";
+    if (dirs.every((d) => (d + "/").startsWith(candidate))) prefix = candidate;
+    else break;
+  }
+  return prefix;
+}
+
+export function computeCompilerRoot(srcDir: string): string {
+  const inkFiles = globSync(join(srcDir, "**/*.ink.tsx")).map((f) => resolve(f));
+  if (inkFiles.length === 0) return resolve(srcDir);
+  return commonPrefix(inkFiles.map((f) => dirname(f)));
+}
+
+export function resolveRenderImports(
+  storyModule: LoadedStoryModule,
+  srcDir: string,
+  framework: FrameworkConfig,
+): ResolvedRenderImport[] {
+  const imports: ResolvedRenderImport[] = [];
+  const storyDir = dirname(storyModule.sourcePath);
+  const compilerRoot = computeCompilerRoot(srcDir);
+
+  for (const [name, variant] of Object.entries(storyModule.stories)) {
+    if (typeof variant.render !== "string") continue;
+
+    const absRenderPath = resolve(storyDir, variant.render);
+    const relToCompilerRoot = relative(compilerRoot, absRenderPath);
+    const withoutInkExt = relToCompilerRoot.replace(/\.ink\.tsx$/, "");
+    const compiledRel = withoutInkExt + framework.compiledExtension;
+    const importPath = "../generated/" + compiledRel.split("/").join("/");
+
+    const baseName = withoutInkExt.split("/").pop()!;
+    const exportedName = baseName + (framework.exportedNameSuffix ?? "");
+    const localName = baseName.charAt(0).toUpperCase() + baseName.slice(1) + "Story";
+
+    imports.push({ storyName: name, localName, exportedName, importPath });
+  }
+
+  return imports;
+}
+
 export async function generate(options: GenerateOptions): Promise<GenerateResult> {
   const frameworks = options.frameworks ?? activeFrameworks();
-  const definitionFiles = discoverDefinitionFiles(options.coreStoriesDir);
+  const definitionFiles = discoverDefinitionFiles(options.srcDir);
 
   const components: string[] = [];
   const files: GeneratedFile[] = [];
+  const storiesDir = options.storiesDir ?? "stories";
 
   for (const definitionFile of definitionFiles) {
-    const definition = await loadDefinition(definitionFile);
-    components.push(definition.component);
+    const storyModule = await loadStoryModule(definitionFile);
+    components.push(storyModule.meta.component);
 
     const keysByTarget = new Map<string, StoryKeys>();
 
     for (const framework of frameworks) {
-      const source = renderStory(definition, framework);
+      const renderImports = resolveRenderImports(storyModule, options.srcDir, framework);
+      const source = renderStory(storyModule, framework, renderImports);
       keysByTarget.set(framework.target, extractStoryKeys(source));
 
-      const outDir = join(options.uiDir, framework.target, "stories");
-      const outPath = join(outDir, `${definition.component}.stories.ts`);
+      const outDir = join(options.rootDir, framework.target, storiesDir);
+      const outPath = join(outDir, `${storyModule.meta.component}.stories.ts`);
       mkdirSync(outDir, { recursive: true });
       writeFileSync(outPath, source, "utf-8");
       files.push({ target: framework.target, path: outPath });
     }
 
-    assertStableStoryKeys(definition.component, keysByTarget);
+    assertStableStoryKeys(storyModule.meta.component, keysByTarget);
   }
 
   return { components, files };
