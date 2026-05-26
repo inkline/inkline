@@ -308,10 +308,10 @@ describe("check", () => {
 });
 
 describe("init", () => {
-  it("prints not yet implemented", () => {
+  it("shows framework prompt", () => {
     const { stdout, status } = run("init");
     expect(status).toBe(0);
-    expect(stdout).toContain("not yet implemented");
+    expect(stdout).toContain("Select a framework");
   });
 });
 
