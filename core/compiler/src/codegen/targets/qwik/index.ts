@@ -337,7 +337,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...(needsTransition ? [cRaw({ text: "" }), cRaw({ text: QWIK_TRANSITION_HELPER })] : []),
       cRaw({ text: "" }),
       cStmt({
-        body: `export const ${component.name} = component$((props) =>`,
+        body:
+          component.props.length > 0 || component.slots.length > 0
+            ? `export const ${component.name} = component$((props) =>`
+            : `export const ${component.name} = component$(() =>`,
       }),
       cRaw({ text: "{" }),
       cGroup({
