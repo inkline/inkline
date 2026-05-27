@@ -1,8 +1,8 @@
 {
-  "name": "@inkline/docs-check",
+  "name": "@inkline/agents-check",
   "version": "0.0.0",
   "private": true,
-  "description": "Internal: link-integrity check for AGENTS.md and docs/*.md across the repo.",
+  "description": "Internal: link-integrity check for the agent-facing doc surface (AGENTS.md, docs/*.md, .github/*.md).",
   "type": "module",
   "scripts": {
     "test": "vp test",
