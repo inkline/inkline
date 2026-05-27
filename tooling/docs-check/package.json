@@ -1,0 +1,17 @@
+{
+  "name": "@inkline/docs-check",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Internal: link-integrity check for AGENTS.md and docs/*.md across the repo.",
+  "type": "module",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
+  }
+}
