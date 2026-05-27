@@ -6,4 +6,5 @@ export default createStorybookConfig({
   framework: "storybook-framework-qwik",
   componentPackage: "@inkline/qwik",
   sourceEntry: resolve(import.meta.dirname, "..", "generated", "index.ts"),
+  stories: ["../generated/**/*.stories.ts"],
 });

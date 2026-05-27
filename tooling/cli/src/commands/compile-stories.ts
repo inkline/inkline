@@ -13,7 +13,7 @@ export default defineCommand({
   async run({ args }) {
     const srcDir = resolve(args["src-dir"] ?? "../../ui/components/src/components");
     const rootDir = resolve(args["root-dir"] ?? "../../ui");
-    const options = { srcDir, rootDir };
+    const options = { srcDir, rootDir, storiesDir: "generated" };
 
     if (!args.watch) {
       try {

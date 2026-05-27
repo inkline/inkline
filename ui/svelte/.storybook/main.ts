@@ -6,4 +6,5 @@ export default createStorybookConfig({
   framework: "@storybook/svelte-vite",
   componentPackage: "@inkline/svelte",
   sourceEntry: resolve(import.meta.dirname, "..", "generated", "index.ts"),
+  stories: ["../generated/**/*.stories.ts"],
 });

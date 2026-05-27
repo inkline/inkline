@@ -6,4 +6,5 @@ export default createStorybookConfig({
   framework: "@storybook-astro/framework",
   componentPackage: "@inkline/astro",
   sourceEntry: resolve(import.meta.dirname, "..", "generated", "index.ts"),
+  stories: ["../generated/**/*.stories.ts"],
 });

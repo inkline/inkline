@@ -129,6 +129,15 @@ describe("resolveRenderImports", () => {
 
     expect(imports).toEqual([]);
   });
+
+  it("produces relative imports when story output is co-located with generated", async () => {
+    const mod = await loadStoryModule(join(STORIES_DIR, "Badge.stories.ts"));
+    const react = frameworkByTarget("react")!;
+    const imports = resolveRenderImports(mod, STORIES_DIR, react, "generated", "generated");
+
+    expect(imports[0]!.importPath).toBe("./colors.tsx");
+    expect(imports[1]!.importPath).toBe("./sizes.tsx");
+  });
 });
 
 describe("generate", () => {
@@ -187,5 +196,17 @@ describe("generate", () => {
     const result = await generate({ srcDir: STORIES_DIR, rootDir: outDir });
     expect(result.files).toHaveLength(7 * 3);
     expect(result.files.some((f) => f.target === "astro")).toBe(true);
+  });
+
+  it("outputs into generated dir with relative imports when storiesDir is generated", async () => {
+    const frameworks = [frameworkByTarget("react")!];
+    await generate({ srcDir: STORIES_DIR, rootDir: outDir, frameworks, storiesDir: "generated" });
+
+    const reactBadge = readFileSync(
+      join(outDir, "react", "generated", "IBadge.stories.ts"),
+      "utf-8",
+    );
+    expect(reactBadge).toContain('from "./colors.tsx"');
+    expect(reactBadge).toContain('from "./sizes.tsx"');
   });
 });

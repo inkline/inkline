@@ -100,8 +100,8 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
     template: "csf3",
     compiledExtension: ".tsx",
     renderStory: {
-      frameworkImport: 'import { createElement } from "qwik";',
-      expression: "createElement({name})",
+      frameworkImport: 'import { jsx } from "@qwik.dev/core/jsx-runtime";',
+      expression: "jsx({name}, {})",
     },
     hasDefaultExport: false,
   },

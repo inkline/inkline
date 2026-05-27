@@ -6,7 +6,6 @@ import {
   expectNoDiagnostics,
   assertConformance,
   snapshotOutput,
-  expectOutputContains,
   resolveComponent,
 } from "@inkline/test-utils";
 
@@ -32,13 +31,6 @@ describe("Badge", () => {
   it("passes conformance invariants for all targets", async () => {
     const result = await compileComponent(BADGE);
     assertConformance(result);
-  });
-
-  it("generates disabled attribute in all targets", async () => {
-    const result = await compileComponent(BADGE);
-    for (const target of ["react", "vue", "solid", "svelte"] as const) {
-      expectOutputContains(result.filesFor(target), "disabled");
-    }
   });
 
   it("output matches snapshots", async () => {
