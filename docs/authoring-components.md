@@ -123,7 +123,7 @@ For compiler-level coverage (does the IR represent your construct correctly acro
 - **`<For>` without `key`** emits `INK0050` (warning). Always supply a key.
 - **`<Show>` without `when`** is a hard error (`INK0060`). Conditional rendering must specify its condition.
 - **`<Transition>` must wrap a single conditional element.** Multiple children or wrapping `<For>` is rejected (`INK0065`-style diagnostics) — see [architecture.md](./architecture.md) → "Where `<Slot>` and `<Transition>` live".
-- **Component refs are deferred to v1.** Element refs work; component refs emit `INK0070`.
+- **Component refs are deferred to v1.** Element refs work; component refs emit `INK0070`. See [scope.md](./scope.md) → "Deferred to v1".
 - **Dynamic reactive reads** (e.g. `obj[key()]`) prevent static dependency tracking and emit `INK0020`. Prefer destructuring or computed signals.
 
 The full diagnostic table is in [`core/compiler/src/core/diagnostics/codes.ts`](../core/compiler/src/core/diagnostics/codes.ts) — that's the canonical source if docs drift.
