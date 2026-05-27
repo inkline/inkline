@@ -29,8 +29,9 @@ function walkMarkdown(dir: string): string[] {
       continue;
     } else if (entry.name === "AGENTS.md") {
       out.push(full);
-    } else if (entry.name.endsWith(".md") && relative(REPO_ROOT, dir).startsWith("docs")) {
-      out.push(full);
+    } else if (entry.name.endsWith(".md")) {
+      const rel = relative(REPO_ROOT, dir);
+      if (rel.startsWith("docs") || rel.startsWith(".github")) out.push(full);
     }
   }
   return out;
