@@ -5,5 +5,6 @@ export default defineCommand({
   subCommands: {
     components: () => import("./compile-components.ts").then((m) => m.default),
     stories: () => import("./compile-stories.ts").then((m) => m.default),
+    init: () => import("./compile-init.ts").then((m) => m.default),
   },
 });

@@ -43,7 +43,9 @@
     "@inkline/compiler": "workspace:*",
     "@inkline/config-loader": "workspace:*",
     "@inkline/storybook": "workspace:*",
-    "citty": "^0.1.6"
+    "citty": "^0.1.6",
+    "consola": "^3.4.2",
+    "magicast": "^0.5.2"
   },
   "devDependencies": {
     "@types/node": "catalog:",
