@@ -23,9 +23,10 @@ ui/components/
 └── dist/                  # styleframe runtime output (NOT the compiled components)
 ```
 
-The compiled components do **not** land in `dist/` here. They land in `ui/<framework>/generated/` per the `targetOutDir` mapping in [`inkline.config.ts`](./inkline.config.ts):
+The compiled components do **not** land in `dist/` here. They land in `ui/<framework>/generated/` per the `targetOutDir` mapping in [`inkline.config.ts`](./inkline.config.ts). The `srcDir` option controls how much of the source path is preserved in the output — with `srcDir: "src"`, a source file at `src/components/badge/headless/IBadgeBase.ink.tsx` produces output at `generated/components/badge/headless/IBadgeBase.vue`:
 
 ```ts
+srcDir: "src",
 targetOutDir: {
   react:   "../react/generated",
   vue:     "../vue/generated",
