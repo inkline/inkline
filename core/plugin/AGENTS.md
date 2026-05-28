@@ -1,0 +1,54 @@
+# @inkline/plugin
+
+Build-tool integration for [`@inkline/compiler`](../compiler/). Wraps the compiler in [`unplugin`](https://unplugin.unjs.io/) so the same source can produce Vite, webpack, Rollup, esbuild, Rspack, and Farm plugins.
+
+## What it does
+
+The factory in [`src/index.ts`](./src/index.ts) (`unpluginFactory`) registers a single transform that matches `*.ink.tsx` files and runs them through the compiler's incremental mode (`compileIncremental` from `@inkline/compiler`). Each bundler subpath ([`src/vite.ts`](./src/vite.ts), [`src/webpack.ts`](./src/webpack.ts), …) re-exports the same factory through unplugin's per-bundler adapter.
+
+```ts
+import { defineConfig } from "vite";
+import inkline from "@inkline/plugin/vite";
+
+export default defineConfig({
+  plugins: [inkline({ target: "react" })],
+});
+```
+
+## Public API
+
+A single options shape ([`InklinePluginOptions`](./src/index.ts)):
+
+| Option      | Type                     | Default            | Notes                                                                                                                                                           |
+| ----------- | ------------------------ | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `target`    | `TargetName`             | —                  | **Required.** No auto-detection today; passing `undefined` triggers a build-time error.                                                                         |
+| `sourceMap` | `boolean`                | (compiler default) | Toggle V3 source-map emission.                                                                                                                                  |
+| `config`    | `Partial<InklineConfig>` | `{}`               | Inline compiler config, merged with defaults. The plugin does not load `inkline.config.ts` — pair with [`@inkline/config-loader`](../config-loader/) if needed. |
+
+Entry points (from [`package.json`](./package.json) `exports`):
+
+| Subpath       | Bundler                                       |
+| ------------- | --------------------------------------------- |
+| `.` (default) | Bundler-agnostic `unpluginFactory` (advanced) |
+| `./vite`      | Vite ≥5                                       |
+| `./webpack`   | webpack 4 / 5                                 |
+| `./rollup`    | Rollup 3 / 4                                  |
+| `./esbuild`   | esbuild                                       |
+| `./rspack`    | Rspack ≥1                                     |
+| `./farm`      | Farm ≥1                                       |
+
+All bundler peer deps are **optional** ([`package.json`](./package.json) `peerDependenciesMeta`) so you only install the bundler you use.
+
+## Build
+
+Builds with [`unbuild`](https://github.com/unjs/unbuild), not `vp pack`. `pnpm dev` watches; the production build is currently triggered indirectly via `pnpm run build` at the workspace root (`vp run -r build`). If the build shape changes (multiple dist entries per bundler), update both [`package.json`](./package.json) `exports` and any tsconfig path mapping in consumers.
+
+## Tests
+
+None today. Coverage comes from the [`@inkline/compiler`](../compiler/) fixture suite (compile is the same code path) and from real consumers (the apps + ui/components build). Add direct tests here if the plugin gains non-trivial bundler-specific logic.
+
+## See also
+
+- [`core/compiler/AGENTS.md`](../compiler/AGENTS.md) — what the plugin delegates to.
+- [`core/config-loader/AGENTS.md`](../config-loader/AGENTS.md) — for loading `inkline.config.ts` from a plugin consumer.
+- [docs/architecture.md](../../docs/architecture.md) → "Compilation pipeline" — what happens inside the `transform` hook.

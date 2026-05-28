@@ -1,0 +1,95 @@
+# @inkline/components
+
+The **single source of truth** for every Inkline component. All seven framework packages (`@inkline/react`, `@inkline/vue`, …) are populated by compiling files in this package's `src/`. This package itself is private (`"private": true` in [`package.json`](./package.json)) and is never published.
+
+If you are reading this because you wanted to change a React (or Vue, or …) component: stop. Edit a `.ink.tsx` file under `src/components/` here, then rebuild.
+
+For author-facing instructions, see [docs/authoring-components.md](../../docs/authoring-components.md).
+
+## Layout
+
+```
+ui/components/
+├── inkline.config.ts      # Compile targets + per-target output paths
+├── styleframe.config.ts   # styleframe (design tokens) config
+├── vite.config.ts         # Vite+ build + tests
+├── src/
+│   ├── index.ts           # Re-exports (intentionally minimal)
+│   └── components/
+│       └── <name>/
+│           ├── headless/<I<Name>Base>.ink.tsx   # behavior, no styling
+│           ├── styled/<I<Name>>.ink.tsx         # composes headless + styleframe class
+│           └── stories/<variant>.ink.tsx        # Storybook stories
+└── dist/                  # styleframe runtime output (NOT the compiled components)
+```
+
+The compiled components do **not** land in `dist/` here. They land in `ui/<framework>/generated/` per the `targetOutDir` mapping in [`inkline.config.ts`](./inkline.config.ts):
+
+```ts
+targetOutDir: {
+  react:   "../react/generated",
+  vue:     "../vue/generated",
+  svelte:  "../svelte/generated",
+  solid:   "../solid/generated",
+  angular: "../angular/generated",
+  qwik:    "../qwik/generated",
+  astro:   "../astro/generated",
+}
+```
+
+## Build
+
+```bash
+pnpm build   # vp build && inkline compile components 'src/**/*.ink.tsx' --config inkline.config.ts
+pnpm dev     # inkline compile components 'src/**/*.ink.tsx' --watch
+```
+
+`vp build` first compiles styleframe artifacts; `inkline compile components` then runs the [`@inkline/cli`](../../tooling/cli/) compile command for every target. The output is written directly into the framework packages' `generated/` directories, which their `src/index.ts` re-exports.
+
+## Headless / styled split
+
+Every component ships in two variants under its own directory:
+
+- **`headless/I<Name>Base.ink.tsx`** — structure, slots, props, events. No design tokens, no styleframe class names. Behavior + accessibility. This is what consumers swap in if they want to ship their own styling.
+- **`styled/I<Name>.ink.tsx`** — composes the headless component and applies styleframe-generated classes via `virtual:styleframe`.
+
+Example: [`src/components/badge/`](./src/components/badge/) — the canonical pattern to copy. The headless variant declares `slots: { default: {} }` so consumers can override content via slotting; the styled variant pulls `badge(props)` from `virtual:styleframe` to produce the class name.
+
+## Stories
+
+Stories are also authored as `.ink.tsx` under `src/components/<name>/stories/` and compiled per-framework via [`inkline compile stories`](../../tooling/cli/AGENTS.md). See [docs/authoring-components.md](../../docs/authoring-components.md) → "Stories".
+
+## Tests
+
+`vp test`. Tests live colocated next to source as `<name>.test.ts`. Component-level tests typically use [`@inkline/test-utils`](../../tooling/test-utils/) to mount the compiled output across multiple targets and assert HTML equivalence.
+
+For compiler-level coverage (you're exercising a new compiler feature), prefer adding a fixture under [`core/compiler/src/__fixtures__/`](../../core/compiler/src/__fixtures__/) instead — keep this package focused on UI behavior, not compiler regressions.
+
+## When you change a component
+
+1. Edit `src/components/<name>/{headless,styled,stories}/*.ink.tsx`.
+2. Rebuild: `pnpm build` (or rely on `pnpm dev --watch`).
+3. Verify it works across all seven targets: `pnpm run storybook` from the repo root (concurrently runs compile + per-framework Storybook + aggregator).
+4. Add a changeset for **each affected framework package** (`@inkline/react`, `@inkline/vue`, …) — the change ships through the per-framework packages, not through this private package.
+
+## When you add a new component
+
+1. Create `src/components/<name>/{headless,styled,stories}/`.
+2. Author the headless variant first; verify it compiles to all seven targets.
+3. Author the styled variant; rebuild.
+4. Add stories per variant.
+5. Re-export from `src/components/index.ts` (when present) — the per-framework `generated/index.ts` is generated automatically.
+6. Add a changeset for the seven framework packages (assuming a meaningful release).
+
+## Pitfalls
+
+- **Do not edit anything under `ui/<framework>/generated/` or `ui/<framework>/.styleframe/`.** Both are rebuilt on every compile; your edits will be lost.
+- **The `dist/` here is styleframe runtime output, not the component compile output.** Don't confuse the two.
+- **`virtual:styleframe` imports require the styleframe plugin in the consumer's Vite config.** The per-framework packages set this up. If a new build path skips it, styling will be missing at runtime.
+
+## See also
+
+- [docs/authoring-components.md](../../docs/authoring-components.md) — the contributor walkthrough.
+- [docs/architecture.md](../../docs/architecture.md) — what the compiler does with the `.ink.tsx` source.
+- The seven `ui/<framework>/AGENTS.md` files — what each output package re-exports.
+- [`tooling/cli/AGENTS.md`](../../tooling/cli/AGENTS.md) — the `compile components` and `compile stories` commands invoked by this package's scripts.

@@ -1,0 +1,17 @@
+{
+  "name": "@inkline/agents-check",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Internal: link-integrity check for the agent-facing doc surface (AGENTS.md, docs/*.md, .github/*.md).",
+  "type": "module",
+  "scripts": {
+    "test": "vp test",
+    "check": "vp check"
+  },
+  "devDependencies": {
+    "@types/node": "catalog:",
+    "typescript": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
+  }
+}
