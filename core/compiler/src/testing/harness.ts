@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Diagnostic } from "../core/diagnostics/codes.ts";
-import type { GeneratedFile, TargetName } from "../codegen/context.ts";
+import { ALL_TARGETS, type GeneratedFile, type TargetName } from "../codegen/context.ts";
 import { compile, type AnalyzedModule } from "../pipeline/compile.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -16,7 +16,7 @@ export interface CompiledFixture {
 
 export async function compileFixture(
   name: string,
-  targets: readonly TargetName[] = ["react", "solid", "vue", "svelte"],
+  targets: readonly TargetName[] = ALL_TARGETS,
 ): Promise<CompiledFixture> {
   const fileName = `${name}.ink.tsx`;
   const filePath = resolve(FIXTURES_DIR, fileName);

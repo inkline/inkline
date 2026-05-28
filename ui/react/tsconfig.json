@@ -3,5 +3,5 @@
   "compilerOptions": {
     "jsx": "react-jsx"
   },
-  "include": ["src", "generated"]
+  "include": ["src", "generated", ".storybook", "*.styleframe.ts", ".styleframe/**/*.d.ts"]
 }

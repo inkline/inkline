@@ -19,7 +19,7 @@ export interface StorybookConfigOptions {
   /** Component package the generated stories import, e.g. `"@inkline/react"`. */
   readonly componentPackage: string;
   /**
-   * Absolute path to `ui/<target>/generated/index.ts`. Aliased over
+   * Absolute path to `ui/<target>/.inkline/index.ts`. Aliased over
    * `componentPackage` in dev so component edits hot-reload without a `dist`
    * build; the real published entry is used for production/static builds.
    */

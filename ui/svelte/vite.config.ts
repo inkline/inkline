@@ -13,7 +13,7 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: "generated/index.ts",
+      entry: "./.inkline/index.ts",
       formats: ["es"],
       fileName: "index",
     },

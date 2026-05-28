@@ -92,8 +92,9 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const rules = ctx.rewrites;
   const template = emitNode(component.render, rules);
 
-  const propsInterface =
-    component.props.length > 0
+  const propsInterface = component.propsTypeText
+    ? `type Props = ${component.propsTypeText}`
+    : component.props.length > 0
       ? `interface Props { ${component.props.map((p) => `${p.name}${p.required ? "" : "?"}${p.typeNode ? `: ${p.typeNode.getText()}` : ": unknown"}`).join("; ")} }`
       : "";
 
@@ -115,6 +116,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cRaw({ text: "---" }),
       ...emitComponentImports(ctx.componentImports, ".astro", true),
       ...ctx.externalImports,
+      ...(ctx.typeDeclarations.length > 0 ? [...ctx.typeDeclarations] : []),
       ...(propsInterface ? [cRaw({ text: propsInterface })] : []),
       ...(propsDestructure ? [cStmt({ body: propsDestructure })] : []),
       ...resourceDecls,

@@ -1,4 +1,4 @@
-generated/
+.inkline/
 storybook-static/
 storybook-server/
 .styleframe/

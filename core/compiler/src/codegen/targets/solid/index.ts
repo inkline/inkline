@@ -363,24 +363,35 @@ const SOLID_TRANSITION_HELPER = `function __InkTransition(props: { name?: string
 // ── Emit entry point ───────────────────────────────────────────────
 
 function buildSolidPropsType(component: IRComponent): string {
-  const fields: string[] = [];
+  const parts: string[] = [];
 
-  for (const p of component.props) {
-    const opt = p.required ? "" : "?";
-    const type = p.typeNode ? `: ${p.typeNode.getText()}` : "";
-    fields.push(`${p.name}${opt}${type}`);
+  if (component.propsTypeText) {
+    parts.push(component.propsTypeText);
+  } else if (component.props.length > 0) {
+    const defs = component.props
+      .map((p) => {
+        const opt = p.required ? "" : "?";
+        const type = p.typeNode ? `: ${p.typeNode.getText()}` : "";
+        return `${p.name}${opt}${type}`;
+      })
+      .join("; ");
+    parts.push(`{ ${defs} }`);
   }
 
+  const slotFields: string[] = [];
   for (const slot of component.slots) {
     if (slot.isScoped) {
-      fields.push(`${slot.name}?: (...args: any[]) => any`);
+      slotFields.push(`${slot.name}?: (...args: any[]) => any`);
     } else {
-      fields.push(`${slot.name}?: any`);
+      slotFields.push(`${slot.name}?: any`);
     }
   }
+  if (slotFields.length > 0) {
+    parts.push(`{ ${slotFields.join("; ")} }`);
+  }
 
-  if (fields.length === 0) return "Record<string, never>";
-  return `{ ${fields.join("; ")} }`;
+  if (parts.length === 0) return "Record<string, never>";
+  return parts.join(" & ");
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
@@ -487,6 +498,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...emitComponentImports(ctx.componentImports, "", true),
       ...ctx.externalImports,
       ...styleImport,
+      ...(ctx.typeDeclarations.length > 0 ? [cRaw({ text: "" }), ...ctx.typeDeclarations] : []),
       ...contextDefs,
       ...(needsTransition ? [cRaw({ text: "" }), cRaw({ text: SOLID_TRANSITION_HELPER })] : []),
       cRaw({ text: "" }),

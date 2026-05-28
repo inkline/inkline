@@ -224,6 +224,53 @@ describe("parsePass", () => {
     expect(comp.props[0]!.required).toBe(false);
   });
 
+  it("sets propsTypeText for named type reference", async () => {
+    const source = `
+      import { defineComponent } from "@inkline/core";
+      export interface MyProps { label?: string; }
+      export default defineComponent(
+        { slots: { default: {} } },
+        (props: MyProps) => {
+          return <div />;
+        },
+      );
+    `;
+    const ctx = makeCtx();
+    const artifact = await programPass.run({ fileName: "Named.ink.tsx", source }, ctx);
+    const module = parsePass.run(artifact, ctx);
+    const resolved = module instanceof Promise ? await module : module;
+
+    expect(resolved.components[0]!.propsTypeText).toBe("MyProps");
+  });
+
+  it("does not set propsTypeText for inline type literal", async () => {
+    const source = `
+      import { defineComponent } from "@inkline/core";
+      export default defineComponent((props: { label: string }) => {
+        return <div />;
+      });
+    `;
+    const ctx = makeCtx();
+    const artifact = await programPass.run({ fileName: "Inline.ink.tsx", source }, ctx);
+    const module = parsePass.run(artifact, ctx);
+    const resolved = module instanceof Promise ? await module : module;
+
+    expect(resolved.components[0]!.propsTypeText).toBeUndefined();
+  });
+
+  it("does not set propsTypeText when no props parameter", async () => {
+    const source = `
+      import { defineComponent } from "@inkline/core";
+      export default defineComponent(() => <div />);
+    `;
+    const ctx = makeCtx();
+    const artifact = await programPass.run({ fileName: "NoProps.ink.tsx", source }, ctx);
+    const module = parsePass.run(artifact, ctx);
+    const resolved = module instanceof Promise ? await module : module;
+
+    expect(resolved.components[0]!.propsTypeText).toBeUndefined();
+  });
+
   it("has name 'parse'", () => {
     expect(parsePass.name).toBe("parse");
   });

@@ -4,5 +4,5 @@
     "jsx": "react-jsx",
     "jsxImportSource": "@qwik.dev/core"
   },
-  "include": ["src", "generated"]
+  "include": ["src", ".inkline", ".storybook", "*.styleframe.ts", ".styleframe/**/*.d.ts"]
 }

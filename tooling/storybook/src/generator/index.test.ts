@@ -3,8 +3,6 @@ import { mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
-  commonPrefix,
-  computeCompilerRoot,
   discoverDefinitionFiles,
   loadStoryModule,
   resolveRenderImports,
@@ -15,43 +13,13 @@ import { frameworkByTarget } from "./config.ts";
 const FIXTURES = join(import.meta.dirname, "__fixtures__");
 const STORIES_DIR = join(FIXTURES, "stories");
 
-describe("commonPrefix", () => {
-  it("returns the shared prefix of multiple directories", () => {
-    expect(commonPrefix(["/a/b/c", "/a/b/d", "/a/b/e"])).toBe("/a/b/");
-  });
-
-  it("returns the full path when all directories are identical", () => {
-    expect(commonPrefix(["/a/b", "/a/b"])).toBe("/a/b/");
-  });
-
-  it("returns empty string for an empty array", () => {
-    expect(commonPrefix([])).toBe("");
-  });
-
-  it("stops at the first divergence", () => {
-    expect(commonPrefix(["/a/b/c", "/a/x/y"])).toBe("/a/");
-  });
-});
-
-describe("computeCompilerRoot", () => {
-  it("returns the common prefix of .ink.tsx file directories", () => {
-    const root = computeCompilerRoot(STORIES_DIR);
-    expect(root).toBe(STORIES_DIR + "/");
-  });
-
-  it("falls back to srcDir when no .ink.tsx files exist", () => {
-    const root = computeCompilerRoot(join(FIXTURES, "bad", "empty"));
-    expect(root).toBe(join(FIXTURES, "bad", "empty"));
-  });
-});
-
 describe("discoverDefinitionFiles", () => {
   it("returns absolute, sorted definition paths (recursive)", () => {
     const files = discoverDefinitionFiles(STORIES_DIR);
     expect(files.map((f) => f.replace(STORIES_DIR + "/", ""))).toEqual([
-      "Badge.stories.ts",
-      "Button.stories.ts",
-      "Card.stories.ts",
+      "Badge.ink.stories.ts",
+      "Button.ink.stories.ts",
+      "Card.ink.stories.ts",
     ]);
     expect(files.every((f) => f.startsWith("/"))).toBe(true);
   });
@@ -63,20 +31,20 @@ describe("discoverDefinitionFiles", () => {
 
 describe("loadStoryModule", () => {
   it("loads a module authored with defineStories", async () => {
-    const mod = await loadStoryModule(join(STORIES_DIR, "Button.stories.ts"));
+    const mod = await loadStoryModule(join(STORIES_DIR, "Button.ink.stories.ts"));
     expect(mod.meta.component).toBe("Button");
     expect(mod.meta.title).toBe("Components/Button");
     expect(Object.keys(mod.stories)).toEqual(["Default", "Disabled"]);
   });
 
   it("loads a module authored as a plain object", async () => {
-    const mod = await loadStoryModule(join(STORIES_DIR, "Card.stories.ts"));
+    const mod = await loadStoryModule(join(STORIES_DIR, "Card.ink.stories.ts"));
     expect(mod.meta.component).toBe("Card");
     expect(Object.keys(mod.stories)).toEqual(["Default"]);
   });
 
   it("loads render story references as string paths", async () => {
-    const mod = await loadStoryModule(join(STORIES_DIR, "Badge.stories.ts"));
+    const mod = await loadStoryModule(join(STORIES_DIR, "Badge.ink.stories.ts"));
     expect(mod.stories.Colors).toEqual({ render: "./colors.ink.tsx" });
     expect(mod.stories.Sizes).toEqual({ render: "./sizes.ink.tsx" });
   });
@@ -97,7 +65,7 @@ describe("loadStoryModule", () => {
 
 describe("resolveRenderImports", () => {
   it("resolves render paths to framework-specific compiled imports", async () => {
-    const mod = await loadStoryModule(join(STORIES_DIR, "Badge.stories.ts"));
+    const mod = await loadStoryModule(join(STORIES_DIR, "Badge.ink.stories.ts"));
     const react = frameworkByTarget("react")!;
     const imports = resolveRenderImports(mod, STORIES_DIR, react);
 
@@ -105,7 +73,7 @@ describe("resolveRenderImports", () => {
     expect(imports[0]!.storyName).toBe("Colors");
     expect(imports[0]!.localName).toBe("ColorsStory");
     expect(imports[0]!.exportedName).toBe("colors");
-    expect(imports[0]!.importPath).toContain("../generated/");
+    expect(imports[0]!.importPath).toContain("../.inkline/");
     expect(imports[0]!.importPath).toContain("colors.tsx");
 
     expect(imports[1]!.storyName).toBe("Sizes");
@@ -115,7 +83,7 @@ describe("resolveRenderImports", () => {
   });
 
   it("uses framework-specific compiled extensions", async () => {
-    const mod = await loadStoryModule(join(STORIES_DIR, "Badge.stories.ts"));
+    const mod = await loadStoryModule(join(STORIES_DIR, "Badge.ink.stories.ts"));
     const vue = frameworkByTarget("vue")!;
     const imports = resolveRenderImports(mod, STORIES_DIR, vue);
 
@@ -123,17 +91,17 @@ describe("resolveRenderImports", () => {
   });
 
   it("returns empty array when no render stories exist", async () => {
-    const mod = await loadStoryModule(join(STORIES_DIR, "Button.stories.ts"));
+    const mod = await loadStoryModule(join(STORIES_DIR, "Button.ink.stories.ts"));
     const react = frameworkByTarget("react")!;
     const imports = resolveRenderImports(mod, STORIES_DIR, react);
 
     expect(imports).toEqual([]);
   });
 
-  it("produces relative imports when story output is co-located with generated", async () => {
-    const mod = await loadStoryModule(join(STORIES_DIR, "Badge.stories.ts"));
+  it("produces relative imports when story output is co-located with .inkline", async () => {
+    const mod = await loadStoryModule(join(STORIES_DIR, "Badge.ink.stories.ts"));
     const react = frameworkByTarget("react")!;
-    const imports = resolveRenderImports(mod, STORIES_DIR, react, "generated", "generated");
+    const imports = resolveRenderImports(mod, STORIES_DIR, react, ".inkline", ".inkline");
 
     expect(imports[0]!.importPath).toBe("./colors.tsx");
     expect(imports[1]!.importPath).toBe("./sizes.tsx");
@@ -198,12 +166,12 @@ describe("generate", () => {
     expect(result.files.some((f) => f.target === "astro")).toBe(true);
   });
 
-  it("outputs into generated dir with relative imports when storiesDir is generated", async () => {
+  it("outputs into .inkline dir with relative imports when storiesDir is .inkline", async () => {
     const frameworks = [frameworkByTarget("react")!];
-    await generate({ srcDir: STORIES_DIR, rootDir: outDir, frameworks, storiesDir: "generated" });
+    await generate({ srcDir: STORIES_DIR, rootDir: outDir, frameworks, storiesDir: ".inkline" });
 
     const reactBadge = readFileSync(
-      join(outDir, "react", "generated", "IBadge.stories.ts"),
+      join(outDir, "react", ".inkline", "IBadge.stories.ts"),
       "utf-8",
     );
     expect(reactBadge).toContain('from "./colors.tsx"');

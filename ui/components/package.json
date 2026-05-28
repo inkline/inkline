@@ -4,12 +4,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vp build && inkline compile components 'src/**/*.ink.tsx' --config inkline.config.ts",
-    "dev": "inkline compile components 'src/**/*.ink.tsx' --config inkline.config.ts --watch",
+    "build": "vp build && inkline compile 'src/**/*.ink.tsx' --config inkline.config.ts --no-clean",
+    "dev": "inkline compile 'src/**/*.ink.tsx' --config inkline.config.ts --watch",
     "test": "vp test"
   },
   "dependencies": {
-    "@styleframe/runtime": "^3.1.0"
+    "@styleframe/runtime": "catalog:"
   },
   "devDependencies": {
     "@inkline/cli": "workspace:*",
@@ -17,15 +17,15 @@
     "@inkline/core": "workspace:*",
     "@inkline/storybook": "workspace:*",
     "@inkline/test-utils": "workspace:*",
-    "@styleframe/cli": "^4.0.0",
-    "@styleframe/core": "^3.5.0",
-    "@styleframe/license": "^2.0.2",
-    "@styleframe/loader": "^3.0.1",
-    "@styleframe/plugin": "^3.3.0",
-    "@styleframe/theme": "^3.7.0",
-    "@styleframe/transpiler": "^3.3.0",
+    "@styleframe/cli": "catalog:",
+    "@styleframe/core": "catalog:",
+    "@styleframe/license": "catalog:",
+    "@styleframe/loader": "catalog:",
+    "@styleframe/plugin": "catalog:",
+    "@styleframe/theme": "catalog:",
+    "@styleframe/transpiler": "catalog:",
     "jsdom": "catalog:",
-    "styleframe": "^3.7.0",
+    "styleframe": "catalog:",
     "vite-plus": "catalog:",
     "vitest": "npm:@voidzero-dev/vite-plus-test@^0.1.22"
   }

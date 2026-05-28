@@ -317,6 +317,7 @@ export interface IRComponent {
   readonly name: string;
   readonly loc: SourceLocation;
   readonly props: readonly IRProp[];
+  readonly propsTypeText?: string;
   readonly slots: readonly IRSlotDeclaration[];
   readonly events: readonly IREventDeclaration[];
   readonly state: readonly IRStateDeclaration[];

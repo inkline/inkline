@@ -267,7 +267,9 @@ function depsList(deps: readonly { readonly name: string }[]): string {
 function buildPropsType(component: IRComponent): string {
   const parts: string[] = [];
 
-  if (component.props.length > 0) {
+  if (component.propsTypeText) {
+    parts.push(component.propsTypeText);
+  } else if (component.props.length > 0) {
     const defs = component.props
       .map((p) => {
         const opt = p.required ? "" : "?";
@@ -502,6 +504,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...emitComponentImports(ctx.componentImports, "", false),
       ...ctx.externalImports,
       ...styleImport,
+      ...(ctx.typeDeclarations.length > 0 ? [cRaw({ text: "" }), ...ctx.typeDeclarations] : []),
       ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       ...(needsTransition ? [cRaw({ text: "" }), cRaw({ text: REACT_TRANSITION_HELPER })] : []),
       cRaw({ text: "" }),

@@ -1,3 +1,4 @@
+import * as ts from "typescript";
 import type { Diagnostic } from "../core/diagnostics/codes.ts";
 import { createDiagnosticCollector } from "../core/diagnostics/collector.ts";
 import { resolveOptions, type InklineConfig } from "../core/options.ts";
@@ -47,12 +48,42 @@ function extractComponentImports(module: IRModule): readonly ComponentImport[] {
       const clause = decl.importClause;
       const imports: ComponentImport[] = [];
 
+      const namedTypeImports: string[] = [];
+      if (clause?.namedBindings && ts.isNamedImports(clause.namedBindings)) {
+        for (const el of clause.namedBindings.elements) {
+          if (!el.isTypeOnly) continue;
+          const imported = el.propertyName ? el.propertyName.text : el.name.text;
+          const local = el.name.text;
+          namedTypeImports.push(
+            imported === local ? `type ${local}` : `type ${imported} as ${local}`,
+          );
+        }
+      }
+
       if (clause?.name) {
-        imports.push({ localName: clause.name.text, componentName, relativePath });
+        imports.push({
+          localName: clause.name.text,
+          componentName,
+          relativePath,
+          namedTypeImports: namedTypeImports.length > 0 ? namedTypeImports : undefined,
+        });
+      } else if (namedTypeImports.length > 0) {
+        imports.push({
+          localName: "",
+          componentName,
+          relativePath,
+          namedTypeImports,
+        });
       }
 
       return imports;
     });
+}
+
+function extractTypeDeclarations(module: IRModule): readonly Code[] {
+  return module.sourceFile.statements
+    .filter((s) => ts.isInterfaceDeclaration(s) || ts.isTypeAliasDeclaration(s))
+    .map((s) => cRaw({ text: s.getText(module.sourceFile) }));
 }
 
 function emitComponent(
@@ -62,6 +93,7 @@ function emitComponent(
   module: IRModule,
   externalImports: readonly Code[],
   componentImports: readonly ComponentImport[],
+  typeDeclarations: readonly Code[],
 ): GeneratedFile[] {
   const codeModule = target.emit(component, {
     diagnostics: ctx.diagnostics,
@@ -71,6 +103,7 @@ function emitComponent(
     contexts: module.contexts,
     externalImports,
     componentImports,
+    typeDeclarations,
   });
   const result = print(codeModule.root, { sourceMap: ctx.options.sourceMap });
   const files: GeneratedFile[] = [
@@ -181,6 +214,7 @@ export async function compile(
   const files: Partial<Record<TargetName, GeneratedFile[]>> = {};
   const externalImports = extractExternalImports(analyzedModule.module);
   const componentImports = extractComponentImports(analyzedModule.module);
+  const typeDeclarations = extractTypeDeclarations(analyzedModule.module);
 
   for (const targetName of options.targets) {
     const target = options.registry.get(targetName);
@@ -198,6 +232,7 @@ export async function compile(
             analyzedModule.module,
             externalImports,
             componentImports,
+            typeDeclarations,
           ),
         );
       } catch (err) {

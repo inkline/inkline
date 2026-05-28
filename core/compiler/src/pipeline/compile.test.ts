@@ -305,6 +305,7 @@ describe("compile error recovery (H3)", () => {
         contexts: [],
         externalImports: [],
         componentImports: [],
+        typeDeclarations: [],
       });
     } catch (err) {
       diags.push("INK0100", component.loc, {
@@ -660,6 +661,198 @@ describe("component import target formats", () => {
   it("no .ink residue in any target output", async () => {
     const result = await compile(
       { fileName: "T.ink.tsx", source: SOURCE },
+      { targets: ["react", "vue", "svelte", "solid", "angular", "qwik", "astro"] },
+    );
+    for (const target of ["react", "vue", "svelte", "solid", "angular", "qwik", "astro"] as const) {
+      const main = result.files[target]!.find(
+        (f) => !f.path.endsWith(".css") && !f.path.endsWith(".map"),
+      );
+      expect(main!.contents, `${target} should not contain .ink`).not.toMatch(/\.ink[."']/);
+    }
+  });
+});
+
+const TYPE_PASSTHROUGH_SOURCE = `
+  import { defineComponent } from "@inkline/core";
+  export interface ButtonProps { label: string; disabled?: boolean }
+  export default defineComponent(
+    (props: ButtonProps) => <button disabled={props.disabled}>{props.label}</button>
+  );
+`;
+
+describe("type pass-through (propsTypeText)", () => {
+  it("Vue: emits defineProps with type name", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_PASSTHROUGH_SOURCE },
+      { targets: ["vue"] },
+    );
+    const code = result.files.vue![0]!.contents;
+    expect(code).toContain("defineProps<ButtonProps>()");
+    expect(code).toContain("export interface ButtonProps");
+  });
+
+  it("React: uses type name in function signature", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_PASSTHROUGH_SOURCE },
+      { targets: ["react"] },
+    );
+    const code = result.files.react![0]!.contents;
+    expect(code).toContain("props: ButtonProps");
+    expect(code).toContain("export interface ButtonProps");
+  });
+
+  it("Solid: uses type name in function signature", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_PASSTHROUGH_SOURCE },
+      { targets: ["solid"] },
+    );
+    const code = result.files.solid![0]!.contents;
+    expect(code).toContain("props: ButtonProps");
+    expect(code).toContain("export interface ButtonProps");
+  });
+
+  it("Svelte: uses type name in $props()", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_PASSTHROUGH_SOURCE },
+      { targets: ["svelte"] },
+    );
+    const code = result.files.svelte![0]!.contents;
+    expect(code).toContain("ButtonProps = $props()");
+    expect(code).toContain("export interface ButtonProps");
+  });
+
+  it("Astro: uses type alias for Props", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_PASSTHROUGH_SOURCE },
+      { targets: ["astro"] },
+    );
+    const code = result.files.astro![0]!.contents;
+    expect(code).toContain("type Props = ButtonProps");
+    expect(code).toContain("export interface ButtonProps");
+  });
+
+  it("Angular: emits type declaration", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_PASSTHROUGH_SOURCE },
+      { targets: ["angular"] },
+    );
+    const code = result.files.angular![0]!.contents;
+    expect(code).toContain("export interface ButtonProps");
+  });
+
+  it("Qwik: emits type declaration", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_PASSTHROUGH_SOURCE },
+      { targets: ["qwik"] },
+    );
+    const code = result.files.qwik![0]!.contents;
+    expect(code).toContain("export interface ButtonProps");
+  });
+
+  it("inline type literal does not set propsTypeText", async () => {
+    const source = `
+      import { defineComponent } from "@inkline/core";
+      export default defineComponent(
+        (props: { label: string }) => <div>{props.label}</div>
+      );
+    `;
+    const result = await compile({ fileName: "T.ink.tsx", source }, { targets: ["vue"] });
+    const code = result.files.vue![0]!.contents;
+    expect(code).toContain("defineProps<{ label: string }>()");
+    expect(code).not.toContain("export interface");
+  });
+
+  it("no props parameter produces no defineProps", async () => {
+    const source = `
+      import { defineComponent } from "@inkline/core";
+      export default defineComponent(() => <div />);
+    `;
+    const result = await compile({ fileName: "T.ink.tsx", source }, { targets: ["vue"] });
+    const code = result.files.vue![0]!.contents;
+    expect(code).not.toContain("defineProps");
+  });
+});
+
+const TYPE_IMPORT_SOURCE = `
+  import { defineComponent } from "@inkline/core";
+  import Base, { type BaseProps } from "./Base.ink.tsx";
+  export interface StyledProps extends BaseProps { size?: string }
+  export default defineComponent(
+    (props: StyledProps) => <Base label={props.label}>{props.size}</Base>
+  );
+`;
+
+describe("named type imports from .ink files", () => {
+  it("Vue: forwards type import with .vue extension", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_IMPORT_SOURCE },
+      { targets: ["vue"] },
+    );
+    const code = result.files.vue![0]!.contents;
+    expect(code).toContain('{ type BaseProps } from "./Base.vue"');
+    expect(code).toContain("export interface StyledProps extends BaseProps");
+    expect(code).toContain("defineProps<StyledProps>()");
+  });
+
+  it("React: forwards type import without extension", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_IMPORT_SOURCE },
+      { targets: ["react"] },
+    );
+    const code = result.files.react![0]!.contents;
+    expect(code).toContain('{ type BaseProps } from "./Base"');
+    expect(code).toContain("export interface StyledProps extends BaseProps");
+  });
+
+  it("Svelte: forwards type import with .svelte extension", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_IMPORT_SOURCE },
+      { targets: ["svelte"] },
+    );
+    const code = result.files.svelte![0]!.contents;
+    expect(code).toContain('{ type BaseProps } from "./Base.svelte"');
+    expect(code).toContain("export interface StyledProps extends BaseProps");
+  });
+
+  it("Solid: forwards type import without extension", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_IMPORT_SOURCE },
+      { targets: ["solid"] },
+    );
+    const code = result.files.solid![0]!.contents;
+    expect(code).toContain('{ type BaseProps } from "./Base"');
+  });
+
+  it("Angular: forwards type import with .component extension", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_IMPORT_SOURCE },
+      { targets: ["angular"] },
+    );
+    const code = result.files.angular![0]!.contents;
+    expect(code).toContain('{ type BaseProps } from "./Base.component"');
+  });
+
+  it("Qwik: forwards type import without extension", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_IMPORT_SOURCE },
+      { targets: ["qwik"] },
+    );
+    const code = result.files.qwik![0]!.contents;
+    expect(code).toContain('{ type BaseProps } from "./Base"');
+  });
+
+  it("Astro: forwards type import with .astro extension", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_IMPORT_SOURCE },
+      { targets: ["astro"] },
+    );
+    const code = result.files.astro![0]!.contents;
+    expect(code).toContain('{ type BaseProps } from "./Base.astro"');
+  });
+
+  it("no .ink residue in type imports across all targets", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: TYPE_IMPORT_SOURCE },
       { targets: ["react", "vue", "svelte", "solid", "angular", "qwik", "astro"] },
     );
     for (const target of ["react", "vue", "svelte", "solid", "angular", "qwik", "astro"] as const) {

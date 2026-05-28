@@ -6,7 +6,7 @@ export interface BadgeProps extends BadgeBaseProps, BadgeStylingProps {}
 
 export default defineComponent({ slots: { default: {} } }, (props: BadgeProps) => {
   return (
-    <IBadgeBase class={badge(props as BadgeStylingProps)} {...props}>
+    <IBadgeBase class={badge(props as BadgeStylingProps)}>
       <Slot>{props.label}</Slot>
     </IBadgeBase>
   );

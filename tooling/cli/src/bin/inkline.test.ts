@@ -60,25 +60,18 @@ describe("inkline CLI help", () => {
     expect(usage).toContain("add");
   });
 
-  it("compile help shows subcommands", async () => {
+  it("compile help shows options", async () => {
     const { default: compile } = await import("../commands/compile.ts");
     const usage = await renderUsage(compile);
-    expect(usage).toContain("components");
-    expect(usage).toContain("stories");
-  });
-
-  it("compile components help shows options", async () => {
-    const { default: components } = await import("../commands/compile-components.ts");
-    const usage = await renderUsage(components);
     expect(usage).toContain("--target");
     expect(usage).toContain("--out-dir");
     expect(usage).toContain("--config");
   });
 });
 
-describe("compile components", () => {
+describe("compile", () => {
   it("exits non-zero without --target", () => {
-    const { status } = run("compile", "components", resolve(FIXTURES_DIR, "Counter.ink.tsx"));
+    const { status } = run("compile", resolve(FIXTURES_DIR, "Counter.ink.tsx"));
     expect(status).not.toBe(0);
   });
 
@@ -86,7 +79,6 @@ describe("compile components", () => {
     try {
       const { status } = run(
         "compile",
-        "components",
         resolve(FIXTURES_DIR, "Counter.ink.tsx"),
         "--target",
         "react",
@@ -113,7 +105,6 @@ describe("compile components", () => {
       );
       const { status } = run(
         "compile",
-        "components",
         resolve(FIXTURES_DIR, "Counter.ink.tsx"),
         "--config",
         configPath,
@@ -144,7 +135,6 @@ describe("compile components", () => {
       );
       const { status } = run(
         "compile",
-        "components",
         resolve(FIXTURES_DIR, "Counter.ink.tsx"),
         "--config",
         configPath,
@@ -173,7 +163,6 @@ describe("compile components", () => {
       );
       const { status } = run(
         "compile",
-        "components",
         resolve(FIXTURES_DIR, "Counter.ink.tsx"),
         "--config",
         configPath,
@@ -205,7 +194,6 @@ describe("compile components", () => {
       );
       const { status } = run(
         "compile",
-        "components",
         resolve(FIXTURES_DIR, "Counter.ink.tsx"),
         resolve(FIXTURES_DIR, "IButton.ink.tsx"),
         "--config",
@@ -253,7 +241,6 @@ describe("compile components", () => {
       );
       const { status } = run(
         "compile",
-        "components",
         resolve(srcDir, "components", "badge", "IBadge.ink.tsx"),
         resolve(srcDir, "components", "button", "IButton.ink.tsx"),
         "--config",
@@ -287,7 +274,6 @@ describe("compile components", () => {
       );
       const { status } = run(
         "compile",
-        "components",
         resolve(FIXTURES_DIR, "Counter.ink.tsx"),
         "--config",
         configPath,

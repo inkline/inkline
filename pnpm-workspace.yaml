@@ -17,6 +17,15 @@ catalog:
   "@angular/core": ^21
   "@angular/platform-browser": ^21
   "@angular/platform-browser-dynamic": ^21
+  "@styleframe/cli": ^4.0.0
+  "@styleframe/core": ^3.5.0
+  "@styleframe/license": ^2.0.2
+  "@styleframe/loader": ^3.0.1
+  "@styleframe/plugin": ^3.3.0
+  "@styleframe/runtime": ^3.1.0
+  "@styleframe/theme": ^3.7.0
+  "@styleframe/transpiler": ^3.3.0
+  styleframe: ^3.7.0
   "@storybook-astro/framework": ^1.2.0
   "@storybook/addon-a11y": ^10
   "@storybook/addon-docs": ^10

@@ -58,6 +58,7 @@ function makeCtx(): CodegenContext {
     contexts: [],
     externalImports: [],
     componentImports: [],
+    typeDeclarations: [],
   };
 }
 

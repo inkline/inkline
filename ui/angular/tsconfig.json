@@ -3,5 +3,12 @@
   "compilerOptions": {
     "experimentalDecorators": true
   },
-  "include": ["src", "generated", "stories"]
+  "include": [
+    "src",
+    ".inkline",
+    ".storybook",
+    "stories",
+    "*.styleframe.ts",
+    ".styleframe/**/*.d.ts"
+  ]
 }

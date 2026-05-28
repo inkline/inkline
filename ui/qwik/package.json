@@ -19,10 +19,10 @@
     "test": "vp test --passWithNoTests",
     "storybook": "storybook dev -p 6011",
     "storybook:build": "storybook build -o storybook-static",
-    "prestorybook": "pnpm --filter @inkline/cli exec node ./bin/inkline.mjs compile stories"
+    "prestorybook": "pnpm --filter @inkline/components exec inkline compile 'src/**/*.ink.tsx' --config inkline.config.ts --target qwik"
   },
   "dependencies": {
-    "@styleframe/runtime": "^3.1.0"
+    "@styleframe/runtime": "catalog:"
   },
   "devDependencies": {
     "@inkline/components": "workspace:*",
@@ -30,12 +30,17 @@
     "@qwik.dev/core": "^2.0.0-beta.0",
     "@storybook/addon-a11y": "catalog:",
     "@storybook/addon-docs": "catalog:",
-    "@styleframe/plugin": "^3.3.0",
-    "@styleframe/theme": "^3.7.0",
+    "@styleframe/cli": "catalog:",
+    "@styleframe/core": "catalog:",
+    "@styleframe/license": "catalog:",
+    "@styleframe/loader": "catalog:",
+    "@styleframe/plugin": "catalog:",
+    "@styleframe/theme": "catalog:",
+    "@styleframe/transpiler": "catalog:",
     "jsdom": "catalog:",
     "storybook": "catalog:",
     "storybook-framework-qwik": "catalog:",
-    "styleframe": "^3.7.0"
+    "styleframe": "catalog:"
   },
   "peerDependencies": {
     "@qwik.dev/core": ">=2.0.0-beta.0"

@@ -49,6 +49,7 @@ export interface ComponentImport {
   readonly localName: string;
   readonly componentName: string;
   readonly relativePath: string;
+  readonly namedTypeImports?: readonly string[];
 }
 
 export interface CodegenContext {
@@ -59,6 +60,7 @@ export interface CodegenContext {
   readonly contexts: readonly IRContextDefinition[];
   readonly externalImports: readonly Code[];
   readonly componentImports: readonly ComponentImport[];
+  readonly typeDeclarations: readonly Code[];
 }
 
 export interface CodeModule {

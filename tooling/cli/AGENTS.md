@@ -11,14 +11,12 @@ The `inkline` command-line interface. Wraps [`@inkline/compiler`](../../core/com
 
 All commands live in [`src/commands/`](./src/commands/) and are wired into the root command via [citty](https://github.com/unjs/citty).
 
-| Command                      | Source                                                          | Purpose                                                                                                                                                                                                                   |
-| ---------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `inkline init`               | [`init.ts`](./src/commands/init.ts)                             | Scaffold a new project (config file, recommended structure).                                                                                                                                                              |
-| `inkline add`                | [`add.ts`](./src/commands/add.ts)                               | Add components or targets to an existing project.                                                                                                                                                                         |
-| `inkline compile`            | [`compile.ts`](./src/commands/compile.ts)                       | Compile arbitrary `.ink.tsx` globs to specified targets.                                                                                                                                                                  |
-| `inkline compile components` | [`compile-components.ts`](./src/commands/compile-components.ts) | Specialized entry used by [`ui/components/`](../../ui/components/) for the cross-framework component build. Accepts `--src-dir` to set the source root for output path resolution (also settable via `srcDir` in config). |
-| `inkline compile stories`    | [`compile-stories.ts`](./src/commands/compile-stories.ts)       | Compile Storybook stories authored in `.ink.tsx` to per-framework CSF (see [`@inkline/storybook`](../storybook/)).                                                                                                        |
-| `inkline check`              | [`check.ts`](./src/commands/check.ts)                           | Run diagnostics without writing output. Re-exposes the compiler's `diagnose` flow.                                                                                                                                        |
+| Command           | Source                                    | Purpose                                                                                                                                                                                       |
+| ----------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `inkline init`    | [`init.ts`](./src/commands/init.ts)       | Scaffold a new project (config file, recommended structure).                                                                                                                                  |
+| `inkline add`     | [`add.ts`](./src/commands/add.ts)         | Add components or targets to an existing project.                                                                                                                                             |
+| `inkline compile` | [`compile.ts`](./src/commands/compile.ts) | Compile `.ink.tsx` globs to target frameworks and generate per-target Storybook story files. Accepts `--src-dir` to set the source root for output path resolution (also `srcDir` in config). |
+| `inkline check`   | [`check.ts`](./src/commands/check.ts)     | Run diagnostics without writing output. Re-exposes the compiler's `diagnose` flow.                                                                                                            |
 
 When adding a command:
 
@@ -48,10 +46,10 @@ These are internal — no `exports` map entry. If you find yourself importing fr
 
 ## Tests
 
-Co-located `*.test.ts` (e.g. [`commands/compile-stories.test.ts`](./src/commands/), [`lib/barrel.test.ts`](./src/lib/)). Vitest. Run with `vp test` from this package.
+Co-located `*.test.ts` (e.g. [`commands/init.test.ts`](./src/commands/), [`lib/barrel.test.ts`](./src/lib/)). Vitest. Run with `vp test` from this package.
 
 ## See also
 
 - [`core/compiler/README.md`](../../core/compiler/README.md) "CLI" — user-facing command reference. Keep in sync.
 - [`core/compiler/AGENTS.md`](../../core/compiler/AGENTS.md) — the compiler that backs every command.
-- [`tooling/storybook/AGENTS.md`](../storybook/AGENTS.md) — `compile stories` consumer.
+- [`tooling/storybook/AGENTS.md`](../storybook/AGENTS.md) — story generator invoked by `inkline compile`.

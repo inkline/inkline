@@ -1,4 +1,4 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src", "generated"]
+  "include": ["src", ".inkline", ".storybook", "*.styleframe.ts", ".styleframe/**/*.d.ts"]
 }

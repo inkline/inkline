@@ -102,6 +102,7 @@ function makeCtx(target: { rewrites: (typeof solid)["rewrites"] }): CodegenConte
     contexts: [],
     externalImports: [],
     componentImports: [],
+    typeDeclarations: [],
   };
 }
 

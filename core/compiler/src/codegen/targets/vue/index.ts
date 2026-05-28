@@ -315,7 +315,9 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ? [cImport({ module: "vue", named: unique.map((i) => ({ imported: i })) })]
       : [];
 
-  if (component.props.length > 0) {
+  if (component.propsTypeText) {
+    scriptBody.unshift(cStmt({ body: `const props = defineProps<${component.propsTypeText}>()` }));
+  } else if (component.props.length > 0) {
     const defs = component.props
       .map(
         (p) => `${p.name}${p.required ? "" : "?"}${p.typeNode ? `: ${p.typeNode.getText()}` : ""}`,
@@ -361,6 +363,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         ...imports,
         ...emitComponentImports(ctx.componentImports, ".vue", true),
         ...ctx.externalImports,
+        ...(ctx.typeDeclarations.length > 0 ? [cRaw({ text: "" }), ...ctx.typeDeclarations] : []),
         cRaw({ text: "" }),
         ...scriptBody,
       ],

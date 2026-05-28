@@ -1,3 +1,5 @@
+import { existsSync, readFileSync } from "node:fs";
+import { dirname, isAbsolute } from "node:path";
 import * as ts from "typescript";
 import type { Pass } from "../types.ts";
 
@@ -11,19 +13,47 @@ export interface TsProgramArtifact {
   readonly checker: ts.TypeChecker;
 }
 
+const INK_FILE_RE = /\.ink\.[jt]sx?$/;
+
 function createSingleFileProgram(fileName: string, source: string): ts.Program {
   const sourceFile = ts.createSourceFile(fileName, source, ts.ScriptTarget.Latest, true);
+  const canResolveDisk = isAbsolute(fileName);
+  const sfCache = new Map<string, ts.SourceFile>([[fileName, sourceFile]]);
+
+  const tryReadDisk = (name: string): string | undefined => {
+    if (!canResolveDisk || !INK_FILE_RE.test(name)) return undefined;
+    try {
+      if (existsSync(name)) return readFileSync(name, "utf-8");
+    } catch {}
+    return undefined;
+  };
 
   const host: ts.CompilerHost = {
-    getSourceFile: (name) => (name === fileName ? sourceFile : undefined),
+    getSourceFile: (name, languageVersion) => {
+      const cached = sfCache.get(name);
+      if (cached) return cached;
+      const text = tryReadDisk(name);
+      if (text == null) return undefined;
+      const sf = ts.createSourceFile(name, text, languageVersion ?? ts.ScriptTarget.Latest, true);
+      sfCache.set(name, sf);
+      return sf;
+    },
     getDefaultLibFileName: () => "lib.d.ts",
     writeFile: () => {},
-    getCurrentDirectory: () => "/",
+    getCurrentDirectory: () => (canResolveDisk ? dirname(fileName) : "/"),
     getCanonicalFileName: (f) => f,
     useCaseSensitiveFileNames: () => true,
     getNewLine: () => "\n",
-    fileExists: (name) => name === fileName,
-    readFile: (name) => (name === fileName ? source : undefined),
+    fileExists: (name) => {
+      if (name === fileName) return true;
+      if (canResolveDisk && INK_FILE_RE.test(name)) return existsSync(name);
+      return false;
+    },
+    readFile: (name) => {
+      if (name === fileName) return source;
+      return tryReadDisk(name);
+    },
+    readDirectory: () => [],
   };
 
   return ts.createProgram(

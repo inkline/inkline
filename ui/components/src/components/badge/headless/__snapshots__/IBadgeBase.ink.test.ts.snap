@@ -3,6 +3,9 @@
 exports[`Badge > output matches snapshots 1`] = `
 {
   "angular/IBadgeBase.component.ts": "import { Component, signal, computed, effect, Input } from "@angular/core";
+export interface BadgeBaseProps {
+  label?: string;
+}
 @Component({ standalone: true, selector: 'IBadgeBase', template: \`<div class="badge">
 <ng-content />
 </div>\` })
@@ -12,7 +15,10 @@ export class IBadgeBaseComponent
 }
 ",
   "astro/IBadgeBase.astro": "---
-interface Props { label?: string }
+export interface BadgeBaseProps {
+  label?: string;
+}
+type Props = BadgeBaseProps
 const { label } = Astro.props as Props;
 ---
 <div class="badge">
@@ -20,6 +26,9 @@ const { label } = Astro.props as Props;
 </div>
 ",
   "qwik/IBadgeBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export interface BadgeBaseProps {
+  label?: string;
+}
 export const IBadgeBase = component$((props) =>
 {
 return (
@@ -29,7 +38,10 @@ return (
 )
 });
 ",
-  "react/IBadgeBase.tsx": "export function IBadgeBase(props: { label?: string } & { children?: React.ReactNode })
+  "react/IBadgeBase.tsx": "export interface BadgeBaseProps {
+  label?: string;
+}
+export function IBadgeBase(props: BadgeBaseProps & { children?: React.ReactNode })
 {
 return (
 <div className="badge">
@@ -38,7 +50,10 @@ return (
 )
 }
 ",
-  "solid/IBadgeBase.tsx": "export default function IBadgeBase(props: { label?: string; default?: any })
+  "solid/IBadgeBase.tsx": "export interface BadgeBaseProps {
+  label?: string;
+}
+export default function IBadgeBase(props: BadgeBaseProps & { default?: any })
 {
 return (
 <div class="badge">
@@ -48,8 +63,10 @@ return (
 }
 ",
   "svelte/IBadgeBase.svelte": "<script lang="ts">
-  interface Props { label?: string }
-  let { label }: Props = $props()
+  export interface BadgeBaseProps {
+    label?: string;
+  }
+  let { label }: BadgeBaseProps = $props()
 </script>
 <div class="badge">
   <slot>
@@ -58,7 +75,10 @@ return (
 </div>
 ",
   "vue/IBadgeBase.vue": "<script setup lang="ts">
-  const props = defineProps<{ label?: string }>()
+  export interface BadgeBaseProps {
+    label?: string;
+  }
+  const props = defineProps<BadgeBaseProps>()
 </script>
 <template>
 <div class="badge">

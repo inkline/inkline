@@ -1,6 +1,6 @@
 import { execSync } from "node:child_process";
-import { writeFileSync } from "node:fs";
-import { resolve } from "node:path";
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { resolve, dirname } from "node:path";
 import { defineCommand } from "citty";
 import consola from "consola";
 import { detectPackageManager, getPackageManagerRunner } from "../lib/detect-package-manager.ts";
@@ -8,6 +8,7 @@ import { type Framework, detectFrameworks } from "../lib/detect-framework.ts";
 import { detectBundler } from "../lib/detect-bundler.ts";
 import { addBuildPlugin, getManualPluginInstructions } from "../lib/add-build-plugin.ts";
 import { styleframeConfigTemplate } from "../lib/styleframe-config.ts";
+import { generateInklineConfig, exampleComponentTemplate } from "../lib/inkline-config-template.ts";
 
 const allFrameworks: { value: Framework; label: string }[] = [
   { value: "react", label: "React" },
@@ -25,6 +26,11 @@ export default defineCommand({
     framework: {
       type: "string",
       description: "Target framework (react, vue, svelte, solid, angular, qwik, astro)",
+    },
+    compiler: {
+      type: "boolean",
+      description: "Also scaffold inkline.config.ts, example component, and build scripts",
+      default: false,
     },
   },
   async run({ args }) {
@@ -104,6 +110,55 @@ export default defineCommand({
       consola.info(getManualPluginInstructions("vite", framework));
     }
 
+    if (args.compiler) {
+      await scaffoldCompiler(cwd, [framework]);
+    }
+
     consola.box(`Done! Import components from "inkline/${framework}".`);
   },
 });
+
+export async function scaffoldCompiler(cwd: string, targets: Framework[]): Promise<void> {
+  const configPath = resolve(cwd, "inkline.config.ts");
+  if (existsSync(configPath)) {
+    consola.warn("inkline.config.ts already exists — skipping.");
+  } else {
+    writeFileSync(configPath, generateInklineConfig(targets));
+    consola.success("Created inkline.config.ts");
+  }
+
+  const componentPath = resolve(cwd, "src/components/hello-world/HelloWorld.ink.tsx");
+  if (existsSync(componentPath)) {
+    consola.warn("Example component already exists — skipping.");
+  } else {
+    mkdirSync(dirname(componentPath), { recursive: true });
+    writeFileSync(componentPath, exampleComponentTemplate);
+    consola.success("Created src/components/hello-world/HelloWorld.ink.tsx");
+  }
+
+  const pkgPath = resolve(cwd, "package.json");
+  if (existsSync(pkgPath)) {
+    const pkg = JSON.parse(readFileSync(pkgPath, "utf-8"));
+    const scripts = pkg.scripts ?? {};
+    let added = false;
+
+    if (!scripts["inkline:build"]) {
+      scripts["inkline:build"] = "inkline compile 'src/**/*.ink.tsx'";
+      added = true;
+    }
+    if (!scripts["inkline:dev"]) {
+      scripts["inkline:dev"] = "inkline compile 'src/**/*.ink.tsx' --watch";
+      added = true;
+    }
+
+    if (added) {
+      pkg.scripts = scripts;
+      writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + "\n");
+      consola.success("Added inkline:build and inkline:dev scripts to package.json");
+    } else {
+      consola.warn("inkline:build and inkline:dev scripts already exist — skipping.");
+    }
+  }
+
+  consola.box(`Run "inkline compile 'src/**/*.ink.tsx'" to compile.`);
+}

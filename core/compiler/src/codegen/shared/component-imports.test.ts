@@ -69,4 +69,56 @@ describe("emitComponentImports", () => {
   it("returns empty array for no imports", () => {
     expect(emitComponentImports([], "", false)).toEqual([]);
   });
+
+  it("default export with named type imports", () => {
+    const withTypes: ComponentImport = {
+      ...imp,
+      namedTypeImports: ["type BadgeBaseProps"],
+    };
+    const result = emitComponentImports([withTypes], ".vue", true);
+    expect(result[0]!.text).toBe(
+      'import IBadgeBase, { type BadgeBaseProps } from "../../headless/badge/IBadgeBase.vue";',
+    );
+  });
+
+  it("default export with aliased type import", () => {
+    const withTypes: ComponentImport = {
+      ...imp,
+      namedTypeImports: ["type BadgeProps as BadgeStylingProps"],
+    };
+    const result = emitComponentImports([withTypes], ".vue", true);
+    expect(result[0]!.text).toBe(
+      'import IBadgeBase, { type BadgeProps as BadgeStylingProps } from "../../headless/badge/IBadgeBase.vue";',
+    );
+  });
+
+  it("default export with multiple named type imports", () => {
+    const withTypes: ComponentImport = {
+      ...imp,
+      namedTypeImports: ["type BadgeBaseProps", "type BadgeSlots"],
+    };
+    const result = emitComponentImports([withTypes], ".vue", true);
+    expect(result[0]!.text).toBe(
+      'import IBadgeBase, { type BadgeBaseProps, type BadgeSlots } from "../../headless/badge/IBadgeBase.vue";',
+    );
+  });
+
+  it("type-only import without default export", () => {
+    const typeOnly: ComponentImport = {
+      localName: "",
+      componentName: "IBadgeBase",
+      relativePath: "../../headless/badge/IBadgeBase",
+      namedTypeImports: ["type BadgeBaseProps"],
+    };
+    const result = emitComponentImports([typeOnly], ".vue", true);
+    expect(result[0]!.text).toBe(
+      'import { type BadgeBaseProps } from "../../headless/badge/IBadgeBase.vue";',
+    );
+  });
+
+  it("default export without named type imports is unchanged", () => {
+    const noTypes: ComponentImport = { ...imp, namedTypeImports: undefined };
+    const result = emitComponentImports([noTypes], ".vue", true);
+    expect(result[0]!.text).toBe('import IBadgeBase from "../../headless/badge/IBadgeBase.vue";');
+  });
 });

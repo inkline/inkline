@@ -300,7 +300,13 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   }
 
-  if (component.props.length > 0) {
+  if (component.propsTypeText) {
+    scriptBody.push(
+      cStmt({
+        body: `let { ${component.props.map((p) => p.name).join(", ")} }: ${component.propsTypeText} = $props()`,
+      }),
+    );
+  } else if (component.props.length > 0) {
     const defs = component.props
       .map(
         (p) => `${p.name}${p.required ? "" : "?"}${p.typeNode ? `: ${p.typeNode.getText()}` : ""}`,
@@ -408,6 +414,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       children: [
         ...emitComponentImports(ctx.componentImports, ".svelte", true),
         ...ctx.externalImports,
+        ...(ctx.typeDeclarations.length > 0 ? [cRaw({ text: "" }), ...ctx.typeDeclarations] : []),
         ...scriptBody,
         ...(needsTransition ? [cRaw({ text: "" }), cRaw({ text: SVELTE_TRANSITION_HELPER })] : []),
       ],
