@@ -110,6 +110,8 @@ export function resolveRenderImports(
   storyModule: LoadedStoryModule,
   srcDir: string,
   framework: FrameworkConfig,
+  storyOutputRelDir = "stories",
+  generatedDir = "generated",
 ): ResolvedRenderImport[] {
   const imports: ResolvedRenderImport[] = [];
   const storyDir = dirname(storyModule.sourcePath);
@@ -122,7 +124,9 @@ export function resolveRenderImports(
     const relToCompilerRoot = relative(compilerRoot, absRenderPath);
     const withoutInkExt = relToCompilerRoot.replace(/\.ink\.tsx$/, "");
     const compiledRel = withoutInkExt + framework.compiledExtension;
-    const importPath = "../generated/" + compiledRel.split("/").join("/");
+    const renderOutputPath = join(generatedDir, compiledRel);
+    const rel = relative(storyOutputRelDir, renderOutputPath);
+    const importPath = rel.startsWith(".") ? rel : "./" + rel;
 
     const baseName = withoutInkExt.split("/").pop()!;
     const exportedName = baseName + (framework.exportedNameSuffix ?? "");
@@ -137,23 +141,33 @@ export function resolveRenderImports(
 export async function generate(options: GenerateOptions): Promise<GenerateResult> {
   const frameworks = options.frameworks ?? activeFrameworks();
   const definitionFiles = discoverDefinitionFiles(options.srcDir);
+  const compilerRoot = computeCompilerRoot(options.srcDir);
 
   const components: string[] = [];
   const files: GeneratedFile[] = [];
   const storiesDir = options.storiesDir ?? "stories";
+  const generatedDir = options.generatedDir ?? "generated";
 
   for (const definitionFile of definitionFiles) {
     const storyModule = await loadStoryModule(definitionFile);
     components.push(storyModule.meta.component);
 
+    const relDir = relative(compilerRoot, dirname(definitionFile));
+    const storyOutputRelDir = join(storiesDir, relDir);
     const keysByTarget = new Map<string, StoryKeys>();
 
     for (const framework of frameworks) {
-      const renderImports = resolveRenderImports(storyModule, options.srcDir, framework);
+      const renderImports = resolveRenderImports(
+        storyModule,
+        options.srcDir,
+        framework,
+        storyOutputRelDir,
+        generatedDir,
+      );
       const source = renderStory(storyModule, framework, renderImports);
       keysByTarget.set(framework.target, extractStoryKeys(source));
 
-      const outDir = join(options.rootDir, framework.target, storiesDir);
+      const outDir = join(options.rootDir, framework.target, storiesDir, relDir);
       const outPath = join(outDir, `${storyModule.meta.component}.stories.ts`);
       mkdirSync(outDir, { recursive: true });
       writeFileSync(outPath, source, "utf-8");

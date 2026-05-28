@@ -48,6 +48,7 @@ describe("compile-stories", () => {
     expect(mockedGenerate).toHaveBeenCalledWith({
       srcDir: expect.any(String),
       rootDir: expect.any(String),
+      storiesDir: "generated",
     });
     expect(logSpy).toHaveBeenCalledWith("Generated 1 story file(s) for 1 component(s).");
   });
@@ -78,6 +79,7 @@ describe("compile-stories", () => {
     expect(mockedGenerate).toHaveBeenCalledWith({
       srcDir: resolve("/custom/src"),
       rootDir: resolve("/custom/root"),
+      storiesDir: "generated",
     });
   });
 

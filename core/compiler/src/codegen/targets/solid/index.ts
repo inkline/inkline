@@ -257,6 +257,9 @@ function inlineNode(node: IRNode, rules: RewriteRules): string {
   if (node.kind === "Text") {
     return `"${node.value}"`;
   }
+  if (node.kind === "Expression") {
+    return rewriteExpr(node.expr, rules);
+  }
   return inlineCode(emitNode(node, rules));
 }
 

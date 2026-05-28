@@ -6,4 +6,5 @@ export default createStorybookConfig({
   framework: "storybook-solidjs-vite",
   componentPackage: "@inkline/solid",
   sourceEntry: resolve(import.meta.dirname, "..", "generated", "index.ts"),
+  stories: ["../generated/**/*.stories.ts"],
 });
