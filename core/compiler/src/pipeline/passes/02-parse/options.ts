@@ -12,7 +12,7 @@ import type { PassContext } from "../../types.ts";
 import { toLoc } from "./loc.ts";
 
 export interface ParsedOptions {
-  readonly props: IRProp[];
+  readonly props?: IRProp[];
   readonly slots: IRSlotDeclaration[];
   readonly events: IREventDeclaration[];
   readonly styles: IRStyleBlock[];
@@ -38,7 +38,7 @@ export function parseOptions(
   sourceFile: ts.SourceFile,
   ctx: PassContext,
 ): ParsedOptions {
-  const props: IRProp[] = [];
+  let props: IRProp[] | undefined;
   const slots: IRSlotDeclaration[] = [];
   const events: IREventDeclaration[] = [];
   const styles: IRStyleBlock[] = [];
@@ -49,7 +49,7 @@ export function parseOptions(
 
     switch (prop.name.text) {
       case "props":
-        props.push(...parsePropsFromObject(prop.initializer, componentId, sourceFile, ctx));
+        props = parsePropsFromObject(prop.initializer, componentId, sourceFile, ctx);
         break;
       case "slots":
         slots.push(...parseSlotsFromObject(prop.initializer, sourceFile));
@@ -192,24 +192,44 @@ export function parsePropsFromParameterType(
   componentId: string,
   sourceFile: ts.SourceFile,
   ctx: PassContext,
+  checker: ts.TypeChecker,
 ): IRProp[] {
   const param = setupFn.parameters[0];
-  if (!param?.type || !ts.isTypeLiteralNode(param.type)) return [];
+  if (!param?.type) return [];
 
-  const props: IRProp[] = [];
+  if (ts.isTypeLiteralNode(param.type)) {
+    const props: IRProp[] = [];
 
-  for (const member of param.type.members) {
-    if (!ts.isPropertySignature(member) || !ts.isIdentifier(member.name)) continue;
+    for (const member of param.type.members) {
+      if (!ts.isPropertySignature(member) || !ts.isIdentifier(member.name)) continue;
 
-    const name = member.name.text;
-    const required = !member.questionToken;
-    const typeNode = member.type;
-    const loc = toLoc(member, sourceFile);
-    const id = ctx.symbols.mint({ componentId, kind: "prop", name, loc });
+      const name = member.name.text;
+      const required = !member.questionToken;
+      const typeNode = member.type;
+      const loc = toLoc(member, sourceFile);
+      const id = ctx.symbols.mint({ componentId, kind: "prop", name, loc });
 
-    props.push({ name, typeNode, required, symbolId: id, loc });
+      props.push({ name, typeNode, required, symbolId: id, loc });
+    }
+
+    return props;
   }
 
+  const type = checker.getTypeAtLocation(param);
+  if (type.flags & ts.TypeFlags.Any) return [];
+
+  const props: IRProp[] = [];
+  for (const symbol of type.getProperties()) {
+    const decl = symbol.declarations?.[0];
+    if (!decl || !ts.isPropertySignature(decl)) continue;
+
+    const name = symbol.getName();
+    const required = !decl.questionToken;
+    const typeNode = decl.type;
+    const loc = toLoc(param, sourceFile);
+    const id = ctx.symbols.mint({ componentId, kind: "prop", name, loc });
+    props.push({ name, typeNode, required, symbolId: id, loc });
+  }
   return props;
 }
 

@@ -33,12 +33,12 @@ describe("parseOptions", () => {
       const { obj, sf } = getObjectLiteral(`{ props: { title: String, count: Number } }`);
       const ctx = makeCtx();
       const result = parseOptions(obj, "test#X", sf, ctx);
-      expect(result.props).toHaveLength(2);
-      expect(result.props[0]!.name).toBe("title");
-      expect(result.props[0]!.required).toBe(true);
-      expect(result.props[0]!.symbolId).toBeDefined();
-      expect(result.props[1]!.name).toBe("count");
-      expect(result.props[1]!.required).toBe(true);
+      expect(result.props!).toHaveLength(2);
+      expect(result.props![0]!.name).toBe("title");
+      expect(result.props![0]!.required).toBe(true);
+      expect(result.props![0]!.symbolId).toBeDefined();
+      expect(result.props![1]!.name).toBe("count");
+      expect(result.props![1]!.required).toBe(true);
     });
 
     it("parses full prop shape with type, required, and default", () => {
@@ -47,8 +47,8 @@ describe("parseOptions", () => {
       );
       const ctx = makeCtx();
       const result = parseOptions(obj, "test#X", sf, ctx);
-      expect(result.props).toHaveLength(1);
-      const prop = result.props[0]!;
+      expect(result.props!).toHaveLength(1);
+      const prop = result.props![0]!;
       expect(prop.name).toBe("count");
       expect(prop.required).toBe(true);
       expect(prop.defaultValue).toBeDefined();
@@ -58,8 +58,8 @@ describe("parseOptions", () => {
       const { obj, sf } = getObjectLiteral(`{ props: { label: "hello" } }`);
       const ctx = makeCtx();
       const result = parseOptions(obj, "test#X", sf, ctx);
-      expect(result.props).toHaveLength(1);
-      const prop = result.props[0]!;
+      expect(result.props!).toHaveLength(1);
+      const prop = result.props![0]!;
       expect(prop.name).toBe("label");
       expect(prop.required).toBe(false);
       expect(prop.defaultValue).toBeDefined();
@@ -69,14 +69,14 @@ describe("parseOptions", () => {
       const { obj, sf } = getObjectLiteral(`{ props: someVar }`);
       const ctx = makeCtx();
       const result = parseOptions(obj, "test#X", sf, ctx);
-      expect(result.props).toHaveLength(0);
+      expect(result.props!).toHaveLength(0);
     });
 
     it("mints unique SymbolIds for each prop", () => {
       const { obj, sf } = getObjectLiteral(`{ props: { a: String, b: Number } }`);
       const ctx = makeCtx();
       const result = parseOptions(obj, "test#X", sf, ctx);
-      expect(result.props[0]!.symbolId).not.toBe(result.props[1]!.symbolId);
+      expect(result.props![0]!.symbolId).not.toBe(result.props![1]!.symbolId);
     });
   });
 
@@ -129,31 +129,54 @@ describe("parseOptions", () => {
     const { obj, sf } = getObjectLiteral(`{ name: "Comp", props: { x: String } }`);
     const ctx = makeCtx();
     const result = parseOptions(obj, "test#X", sf, ctx);
-    expect(result.props).toHaveLength(1);
+    expect(result.props!).toHaveLength(1);
   });
 
   it("handles empty options object", () => {
     const { obj, sf } = getObjectLiteral(`{}`);
     const ctx = makeCtx();
     const result = parseOptions(obj, "test#X", sf, ctx);
-    expect(result.props).toHaveLength(0);
+    expect(result.props).toBeUndefined();
     expect(result.slots).toHaveLength(0);
     expect(result.events).toHaveLength(0);
   });
 });
 
 describe("parsePropsFromParameterType", () => {
-  function getSetupFn(paramCode: string): { fn: ts.ArrowFunction; sf: ts.SourceFile } {
-    const sf = createSF(`const x = (${paramCode}) => {};`);
-    const stmt = sf.statements[0] as ts.VariableStatement;
-    const fn = stmt.declarationList.declarations[0]!.initializer as ts.ArrowFunction;
-    return { fn, sf };
+  function createProgramFromCode(code: string): {
+    fn: ts.ArrowFunction;
+    sf: ts.SourceFile;
+    checker: ts.TypeChecker;
+  } {
+    const fileName = "test.tsx";
+    const sf = ts.createSourceFile(fileName, code, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
+    const host: ts.CompilerHost = {
+      getSourceFile: (name) => (name === fileName ? sf : undefined),
+      getDefaultLibFileName: () => "lib.d.ts",
+      writeFile: () => {},
+      getCurrentDirectory: () => "/",
+      getCanonicalFileName: (f) => f,
+      useCaseSensitiveFileNames: () => true,
+      getNewLine: () => "\n",
+      fileExists: (name) => name === fileName,
+      readFile: (name) => (name === fileName ? code : undefined),
+    };
+    const program = ts.createProgram([fileName], { strict: false, noEmit: true }, host);
+    const checker = program.getTypeChecker();
+    const stmts = sf.statements;
+    const last = stmts[stmts.length - 1] as ts.VariableStatement;
+    const fn = last.declarationList.declarations[0]!.initializer as ts.ArrowFunction;
+    return { fn, sf, checker };
+  }
+
+  function getSetupFn(paramCode: string) {
+    return createProgramFromCode(`const x = (${paramCode}) => {};`);
   }
 
   it("extracts props from type literal annotation", () => {
-    const { fn, sf } = getSetupFn("props: { label: string; count: number }");
+    const { fn, sf, checker } = getSetupFn("props: { label: string; count: number }");
     const ctx = makeCtx();
-    const result = parsePropsFromParameterType(fn, "test#X", sf, ctx);
+    const result = parsePropsFromParameterType(fn, "test#X", sf, ctx, checker);
     expect(result).toHaveLength(2);
     expect(result[0]!.name).toBe("label");
     expect(result[0]!.required).toBe(true);
@@ -163,39 +186,66 @@ describe("parsePropsFromParameterType", () => {
   });
 
   it("marks optional props as not required", () => {
-    const { fn, sf } = getSetupFn("props: { disabled?: boolean }");
+    const { fn, sf, checker } = getSetupFn("props: { disabled?: boolean }");
     const ctx = makeCtx();
-    const result = parsePropsFromParameterType(fn, "test#X", sf, ctx);
+    const result = parsePropsFromParameterType(fn, "test#X", sf, ctx, checker);
     expect(result).toHaveLength(1);
     expect(result[0]!.name).toBe("disabled");
     expect(result[0]!.required).toBe(false);
   });
 
   it("returns empty array when no parameter", () => {
-    const { fn, sf } = getSetupFn("");
+    const { fn, sf, checker } = getSetupFn("");
     const ctx = makeCtx();
-    const result = parsePropsFromParameterType(fn, "test#X", sf, ctx);
+    const result = parsePropsFromParameterType(fn, "test#X", sf, ctx, checker);
     expect(result).toHaveLength(0);
   });
 
   it("returns empty array when parameter has no type annotation", () => {
-    const { fn, sf } = getSetupFn("props");
+    const { fn, sf, checker } = getSetupFn("props");
     const ctx = makeCtx();
-    const result = parsePropsFromParameterType(fn, "test#X", sf, ctx);
+    const result = parsePropsFromParameterType(fn, "test#X", sf, ctx, checker);
     expect(result).toHaveLength(0);
   });
 
-  it("returns empty array when type is not a type literal", () => {
-    const { fn, sf } = getSetupFn("props: SomeType");
+  it("returns empty array when type reference is unresolvable", () => {
+    const { fn, sf, checker } = getSetupFn("props: SomeType");
     const ctx = makeCtx();
-    const result = parsePropsFromParameterType(fn, "test#X", sf, ctx);
+    const result = parsePropsFromParameterType(fn, "test#X", sf, ctx, checker);
     expect(result).toHaveLength(0);
+  });
+
+  it("resolves props from type reference defined in same file", () => {
+    const { fn, sf, checker } = createProgramFromCode(
+      `interface MyProps { label?: string; count: number } const x = (props: MyProps) => {};`,
+    );
+    const ctx = makeCtx();
+    const result = parsePropsFromParameterType(fn, "test#X", sf, ctx, checker);
+    expect(result).toHaveLength(2);
+    expect(result[0]!.name).toBe("label");
+    expect(result[0]!.required).toBe(false);
+    expect(result[1]!.name).toBe("count");
+    expect(result[1]!.required).toBe(true);
+  });
+
+  it("resolves props from extended interface", () => {
+    const { fn, sf, checker } = createProgramFromCode(
+      `interface Base { a: string } interface Ext extends Base { b?: number } const x = (props: Ext) => {};`,
+    );
+    const ctx = makeCtx();
+    const result = parsePropsFromParameterType(fn, "test#X", sf, ctx, checker);
+    expect(result).toHaveLength(2);
+    const names = result.map((p) => p.name);
+    expect(names).toContain("a");
+    expect(names).toContain("b");
+    const bProp = result.find((p) => p.name === "b")!;
+    expect(bProp.required).toBe(false);
   });
 
   it("mints SymbolIds for each prop", () => {
-    const { fn, sf } = getSetupFn("props: { a: string; b: number }");
+    const { fn, sf, checker } = getSetupFn("props: { a: string; b: number }");
     const ctx = makeCtx();
-    const result = parsePropsFromParameterType(fn, "test#X", sf, ctx);
+    const result = parsePropsFromParameterType(fn, "test#X", sf, ctx, checker);
     expect(result[0]!.symbolId).toBeDefined();
     expect(result[1]!.symbolId).toBeDefined();
     expect(result[0]!.symbolId).not.toBe(result[1]!.symbolId);

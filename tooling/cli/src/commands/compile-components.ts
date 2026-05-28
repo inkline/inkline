@@ -21,6 +21,7 @@ export default defineCommand({
   args: {
     pattern: { type: "positional", description: "Glob pattern for .ink.tsx files", required: true },
     target: { type: "string", description: "Comma-separated targets" },
+    "src-dir": { type: "string", description: "Source root directory to strip from output paths" },
     "out-dir": { type: "string", description: "Default output directory", default: "dist" },
     "source-map": { type: "string", description: "external | inline | none", default: "external" },
     config: { type: "string", description: "Path to config file" },
@@ -55,7 +56,12 @@ export default defineCommand({
 
     let hasError = false;
     const barrelEntries = new Map<string, BarrelEntry[]>();
-    const sourcePrefix = commonPrefix(resolvedFiles.map((f) => dirname(f)));
+    const srcDir = args["src-dir"] ?? fileConfig.srcDir;
+    const sourcePrefix = srcDir
+      ? srcDir.endsWith("/")
+        ? srcDir
+        : srcDir + "/"
+      : commonPrefix(resolvedFiles.map((f) => dirname(f)));
 
     for (const filePath of resolvedFiles) {
       const absPath = resolve(filePath);
@@ -90,7 +96,16 @@ export default defineCommand({
     }
 
     if (args.watch) {
-      runWatch(resolvedFiles, targets, outDir, targetOutDir, sourceMap, verbose, fileConfig);
+      runWatch(
+        resolvedFiles,
+        targets,
+        outDir,
+        targetOutDir,
+        sourceMap,
+        verbose,
+        fileConfig,
+        sourcePrefix,
+      );
       return;
     }
 
@@ -106,11 +121,11 @@ function runWatch(
   sourceMap: "external" | "inline" | "none",
   verbose: boolean,
   fileConfig: Partial<import("@inkline/compiler").InklineConfig>,
+  sourcePrefix: string,
 ): void {
   console.log(`Watching ${files.length} file(s) for changes...\n`);
   let state: IncrementalState = createIncrementalState();
   let debounceTimer: ReturnType<typeof setTimeout> | undefined;
-  const sourcePrefix = commonPrefix(files.map((f) => dirname(f)));
 
   const rebuild = async () => {
     const inputs = files.map((f) => {

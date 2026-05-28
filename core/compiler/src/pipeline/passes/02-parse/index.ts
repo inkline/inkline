@@ -45,7 +45,7 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
 
       const props =
         optionsResult?.props ??
-        parsePropsFromParameterType(site.setupFn, componentId, sourceFile, ctx);
+        parsePropsFromParameterType(site.setupFn, componentId, sourceFile, ctx, checker);
       const events = optionsResult?.events ?? [];
       const styles = optionsResult?.styles ?? [];
       const runtime = optionsResult?.runtime ?? "iso";

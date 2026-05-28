@@ -202,6 +202,28 @@ describe("parsePass", () => {
     expect(comp.effects[0]!.deps[0]!.path).toEqual(["value"]);
   });
 
+  it("parses props from parameter type reference when options has no props key", async () => {
+    const source = `
+      import { defineComponent, Slot } from "@inkline/core";
+      export interface BadgeBaseProps { label?: string; }
+      export default defineComponent(
+        { slots: { default: {} } },
+        (props: BadgeBaseProps) => {
+          return <div><Slot>{props.label}</Slot></div>;
+        },
+      );
+    `;
+    const ctx = makeCtx();
+    const artifact = await programPass.run({ fileName: "Badge.ink.tsx", source }, ctx);
+    const module = parsePass.run(artifact, ctx);
+    const resolved = module instanceof Promise ? await module : module;
+
+    const comp = resolved.components[0]!;
+    expect(comp.props).toHaveLength(1);
+    expect(comp.props[0]!.name).toBe("label");
+    expect(comp.props[0]!.required).toBe(false);
+  });
+
   it("has name 'parse'", () => {
     expect(parsePass.name).toBe("parse");
   });

@@ -2,15 +2,18 @@
 
 exports[`Badge > output matches snapshots 1`] = `
 {
-  "angular/IBadgeBase.component.ts": "import { Component, signal, computed, effect } from "@angular/core";
+  "angular/IBadgeBase.component.ts": "import { Component, signal, computed, effect, Input } from "@angular/core";
 @Component({ standalone: true, selector: 'IBadgeBase', template: \`<div class="badge">
 <ng-content />
 </div>\` })
 export class IBadgeBaseComponent
 {
+@Input() label?: string
 }
 ",
   "astro/IBadgeBase.astro": "---
+interface Props { label?: string }
+const { label } = Astro.props as Props;
 ---
 <div class="badge">
 <slot />
@@ -26,7 +29,7 @@ return (
 )
 });
 ",
-  "react/IBadgeBase.tsx": "export function IBadgeBase(props: { children?: React.ReactNode })
+  "react/IBadgeBase.tsx": "export function IBadgeBase(props: { label?: string } & { children?: React.ReactNode })
 {
 return (
 <div className="badge">
@@ -35,7 +38,7 @@ return (
 )
 }
 ",
-  "solid/IBadgeBase.tsx": "export default function IBadgeBase(props: { default?: any })
+  "solid/IBadgeBase.tsx": "export default function IBadgeBase(props: { label?: string; default?: any })
 {
 return (
 <div class="badge">
@@ -45,6 +48,8 @@ return (
 }
 ",
   "svelte/IBadgeBase.svelte": "<script lang="ts">
+  interface Props { label?: string }
+  let { label }: Props = $props()
 </script>
 <div class="badge">
   <slot>
@@ -53,6 +58,7 @@ return (
 </div>
 ",
   "vue/IBadgeBase.vue": "<script setup lang="ts">
+  const props = defineProps<{ label?: string }>()
 </script>
 <template>
 <div class="badge">
