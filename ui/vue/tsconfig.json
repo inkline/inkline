@@ -3,7 +3,7 @@
   "include": ["src", ".inkline", ".storybook", "*.styleframe.ts", ".styleframe/**/*.d.ts"],
   "compilerOptions": {
     "paths": {
-      "virtual:styleframe": ["./.styleframe/virtual-styleframe.d.ts"]
+      "virtual:styleframe": ["./.styleframe/styleframe.d.ts"]
     }
   }
 }
