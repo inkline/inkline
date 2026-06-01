@@ -90,6 +90,16 @@ describe("resolveRenderImports", () => {
     expect(imports[0]!.importPath).toContain("colors.vue");
   });
 
+  it("resolves Angular render imports to the compiled .component.ts files", async () => {
+    const mod = await loadStoryModule(join(STORIES_DIR, "Badge.ink.stories.ts"));
+    const angular = frameworkByTarget("angular")!;
+    const imports = resolveRenderImports(mod, STORIES_DIR, angular);
+
+    // The Angular compiler emits `colors.component.ts`; a `.ts` import 404s at runtime.
+    expect(imports[0]!.importPath).toContain("colors.component.ts");
+    expect(imports[0]!.exportedName).toBe("colorsComponent");
+  });
+
   it("returns empty array when no render stories exist", async () => {
     const mod = await loadStoryModule(join(STORIES_DIR, "Button.ink.stories.ts"));
     const react = frameworkByTarget("react")!;

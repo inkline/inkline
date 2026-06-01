@@ -5,6 +5,18 @@ import type { LoadedStoryModule, ResolvedRenderImport } from "../index.ts";
 
 const react = frameworkByTarget("react")!;
 const vue = frameworkByTarget("vue")!;
+const svelte = frameworkByTarget("svelte")!;
+const astro = frameworkByTarget("astro")!;
+
+const badgeColorsModule: LoadedStoryModule = {
+  meta: { component: "IBadge", title: "Components/Badge" },
+  stories: { Colors: { render: "./colors.ink.tsx" } },
+  sourcePath: "/fake/IBadge.stories.ts",
+};
+
+const colorsImport = (importPath: string): ResolvedRenderImport[] => [
+  { storyName: "Colors", localName: "ColorsStory", exportedName: "colors", importPath },
+];
 
 const buttonModule: LoadedStoryModule = {
   meta: {
@@ -114,6 +126,25 @@ describe("renderCsf3", () => {
     expect(out).toContain('import { h } from "vue";');
     expect(out).toContain('import ColorsStory from "../generated/badge/stories/colors.vue";');
     expect(out).toContain("export const Colors: Story = { render: () => h(ColorsStory) };");
+  });
+
+  it("renders Svelte stories as a { Component } object with no framework import", () => {
+    const out = renderCsf3(badgeColorsModule, svelte, colorsImport("./colors.svelte"));
+    // Svelte exports no `createElement` — importing it would crash the whole module.
+    expect(out).not.toContain('from "svelte"');
+    expect(out).not.toContain("createElement");
+    expect(out).toContain('import ColorsStory from "./colors.svelte";');
+    expect(out).toContain(
+      "export const Colors: Story = { render: () => ({ Component: ColorsStory }) };",
+    );
+  });
+
+  it("renders Astro stories by returning the component factory, not invoking it", () => {
+    const out = renderCsf3(badgeColorsModule, astro, colorsImport("./colors.astro"));
+    // Calling the factory client-side throws ("rendered server-side"); it must be returned.
+    expect(out).not.toContain("ColorsStory()");
+    expect(out).toContain('import ColorsStory from "./colors.astro";');
+    expect(out).toContain("export const Colors: Story = { render: () => ColorsStory };");
   });
 
   it("rejects an invalid component identifier", () => {
