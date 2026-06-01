@@ -521,6 +521,28 @@ describe("Svelte onCleanup lifecycle", () => {
   });
 });
 
+describe("Svelte whole-props reconstruction", () => {
+  function makeStyledComp(): IRComponent {
+    return {
+      ...makeComp(
+        "Styled",
+        createElement({
+          tag: "div",
+          acceptsAttrFallthrough: true,
+          children: [createExpr({ expr: mockExpr("badge(props)") })],
+        }),
+      ),
+      props: [{ name: "label", required: false, symbolId: "t::prop::label@0" as SymbolId, loc }],
+    };
+  }
+
+  it("rewrites a bare `props` reference to the reconstructed destructured bindings", () => {
+    const result = print(svelte.emit(makeStyledComp(), makeCtx(svelte)).root);
+    expect(result.code).toContain("badge({ label, ...__attrs })");
+    expect(result.code).not.toMatch(/badge\(props\)/);
+  });
+});
+
 describe("style emission", () => {
   function makeCompWithStyles(name: string): IRComponent {
     return {

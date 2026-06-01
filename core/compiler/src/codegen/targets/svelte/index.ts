@@ -319,7 +319,23 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
 // ── Emit entry point ───────────────────────────────────────────────
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const rules = ctx.rewrites;
+  const propFallthrough = rootAcceptsFallthrough(component);
+  const restBinding = propFallthrough ? `...${FALLTHROUGH_REST}` : "";
+  const bindings = [...component.props.map((p) => p.name), restBinding].filter(Boolean).join(", ");
+
+  // Svelte destructures `$props()`, so there is no `props` binding for whole-object references
+  // (e.g. `badge(props)`). Reconstruct it from the destructured bindings instead.
+  const rules: RewriteRules =
+    bindings.length > 0
+      ? {
+          ...ctx.rewrites,
+          members: {
+            ...ctx.rewrites.members,
+            props: { ...ctx.rewrites.members?.props, strip: true, whole: `{ ${bindings} }` },
+          },
+        }
+      : ctx.rewrites;
+
   const scriptBody: Code[] = [];
   const svelteImports: string[] = [];
 
@@ -333,10 +349,6 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       }),
     );
   }
-
-  const propFallthrough = rootAcceptsFallthrough(component);
-  const restBinding = propFallthrough ? `...${FALLTHROUGH_REST}` : "";
-  const bindings = [...component.props.map((p) => p.name), restBinding].filter(Boolean).join(", ");
   if (component.propsTypeText) {
     const type = `${component.propsTypeText}${propFallthrough ? " & Record<string, any>" : ""}`;
     scriptBody.push(cStmt({ body: `let { ${bindings} }: ${type} = $props()` }));

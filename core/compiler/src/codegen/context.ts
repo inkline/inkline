@@ -32,7 +32,13 @@ export type RefAccessKind =
   | { readonly kind: "bare" };
 
 export interface MemberRewriteRules {
-  readonly props?: { readonly strip: boolean };
+  /**
+   * `strip` rewrites `props.x` → `x` (targets that destructure props). `whole`, when set,
+   * rewrites a bare `props` reference to this expression — used by targets that destructure
+   * `props` and therefore have no `props` binding for whole-object references (e.g. Svelte
+   * reconstructs `{ name, ...rest }`).
+   */
+  readonly props?: { readonly strip: boolean; readonly whole?: string };
   readonly slots?: { readonly strip: boolean; readonly rename?: Readonly<Record<string, string>> };
 }
 

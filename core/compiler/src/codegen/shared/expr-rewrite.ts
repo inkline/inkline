@@ -15,6 +15,12 @@ function verbatim(node: ts.Node): string {
 }
 
 function walk(expr: ts.Expression, rules: RewriteRules): string {
+  // A bare `props` reference in a target that destructures props (no `props` binding) is
+  // rewritten to the reconstruction of its destructured bindings.
+  if (ts.isIdentifier(expr) && expr.text === "props" && rules.members?.props?.whole !== undefined) {
+    return rules.members.props.whole;
+  }
+
   if (ts.isCallExpression(expr)) {
     const callee = expr.expression;
     if (ts.isIdentifier(callee) && expr.arguments.length === 0) {
