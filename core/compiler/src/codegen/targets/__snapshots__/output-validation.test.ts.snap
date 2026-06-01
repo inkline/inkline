@@ -56,13 +56,14 @@ return (
 
 exports[`full output snapshots > BatchUpdates > react 1`] = `
 "import { useState, useMemo } from "react";
-export function BatchUpdates(props: Record<string, never>)
+export function BatchUpdates(props: React.HTMLAttributes<HTMLElement>)
 {
 const [x, setX] = useState(0)
 const [y, setY] = useState(0)
 const sum = useMemo(() => x + y, [x, y])
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <span>
     {sum}
   </span>
@@ -200,14 +201,15 @@ return (
 
 exports[`full output snapshots > Composite > react 1`] = `
 "import { useState, useMemo, useEffect } from "react";
-export function Composite(props: Record<string, never>)
+export function Composite(props: React.HTMLAttributes<HTMLElement>)
 {
 const [x, setX] = useState(1)
 const [y, setY] = useState(2)
 const sum = useMemo(() => x + y, [x, y])
 useEffect(() => { console.log("sum:", sum); }, [sum])
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <span id="sum">
     {sum}
   </span>
@@ -351,11 +353,12 @@ return (
 
 exports[`full output snapshots > Conditional > react 1`] = `
 "import { useState } from "react";
-export function Conditional(props: Record<string, never>)
+export function Conditional(props: React.HTMLAttributes<HTMLElement>)
 {
 const [visible, setVisible] = useState(true)
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   {visible ? <span>Visible</span> : <span>Hidden</span>}
   <button onClick={() => setVisible(!visible)}>
     Toggle
@@ -470,11 +473,12 @@ return (
 
 exports[`full output snapshots > ConditionalClass > react 1`] = `
 "import { useState } from "react";
-export function ConditionalClass(props: Record<string, never>)
+export function ConditionalClass(props: React.HTMLAttributes<HTMLElement>)
 {
 const [active, setActive] = useState(false)
+const { ...__attrs } = props
 return (
-<div className={active ? "active" : "inactive"}>
+<div {...__attrs} className={[active ? "active" : "inactive", props.className].filter(Boolean).join(" ")}>
   <button onClick={() => setActive(!active)}>
     Toggle
   </button>
@@ -588,11 +592,12 @@ return (
 
 exports[`full output snapshots > ControlledSelect > react 1`] = `
 "import { useState } from "react";
-export function ControlledSelect(props: Record<string, never>)
+export function ControlledSelect(props: React.HTMLAttributes<HTMLElement>)
 {
 const [value, setValue] = useState("b")
+const { ...__attrs } = props
 return (
-<select value={value} onChange={e => setValue(e.target.value)}>
+<select {...__attrs} value={value} className={props.className} onChange={e => setValue(e.target.value)}>
   <option value="a">
     A
   </option>
@@ -718,11 +723,12 @@ return (
 
 exports[`full output snapshots > ControlledTextarea > react 1`] = `
 "import { useState } from "react";
-export function ControlledTextarea(props: Record<string, never>)
+export function ControlledTextarea(props: React.HTMLAttributes<HTMLElement>)
 {
 const [text, setText] = useState("")
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <textarea value={text} onInput={e => setText(e.target.value)} />
   <p>
     {text.length}
@@ -848,13 +854,14 @@ return (
 
 exports[`full output snapshots > Counter > react 1`] = `
 "import { useState, useMemo, useEffect } from "react";
-export function Counter(props: Record<string, never>)
+export function Counter(props: React.HTMLAttributes<HTMLElement>)
 {
 const [count, setCount] = useState(0)
 const doubled = useMemo(() => count * 2, [count])
 useEffect(() => { console.log("count:", count); }, [count])
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <p>
     {count}
   </p>
@@ -986,10 +993,11 @@ return (
 `;
 
 exports[`full output snapshots > DefineSlotBasic > react 1`] = `
-"export function DefineSlotBasic(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode })
+"export function DefineSlotBasic(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
+const { renderHeader, children, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <header>
     {props.renderHeader?.()}
   </header>
@@ -1112,12 +1120,13 @@ return (
 
 exports[`full output snapshots > DynamicList > react 1`] = `
 "import { useState } from "react";
-export function DynamicList(props: Record<string, never>)
+export function DynamicList(props: React.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = useState([])
 const [input, setInput] = useState("")
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <input value={input} onInput={e => setInput(e.target.value)} />
   <button onClick={() => { setItems([...items, input]); setInput(""); }}>
     Add
@@ -1241,15 +1250,16 @@ return (
 
 exports[`full output snapshots > EffectCleanup > react 1`] = `
 "import { useState, useEffect } from "react";
-export function EffectCleanup(props: Record<string, never>)
+export function EffectCleanup(props: React.HTMLAttributes<HTMLElement>)
 {
 const [active, setActive] = useState(true)
 useEffect(() => { if (active()) {
       const id = setInterval(() => console.log("tick"), 1000);
       return () => clearInterval(id);
     } }, [active])
+const { ...__attrs } = props
 return (
-<button onClick={() => setActive(!active)}>
+<button {...__attrs} className={props.className} onClick={() => setActive(!active)}>
   Toggle
 </button>
 )
@@ -1337,12 +1347,13 @@ return (
 
 exports[`full output snapshots > ElementRef > react 1`] = `
 "import { useRef, useEffect } from "react";
-export function ElementRef(props: Record<string, never>)
+export function ElementRef(props: React.HTMLAttributes<HTMLElement>)
 {
 const inputRef = useRef(null)
 useEffect(() => { inputRef.current?.focus(); }, [])
+const { ...__attrs } = props
 return (
-<input placeholder="auto-focus" ref={inputRef} />
+<input {...__attrs} placeholder="auto-focus" className={props.className} ref={inputRef} />
 )
 }
 "
@@ -1425,11 +1436,12 @@ return (
 
 exports[`full output snapshots > ForLoop > react 1`] = `
 "import { useState } from "react";
-export function ForLoop(props: Record<string, never>)
+export function ForLoop(props: React.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = useState(["Apple", "Banana", "Cherry"])
+const { ...__attrs } = props
 return (
-<ul>
+<ul {...__attrs} className={props.className}>
   {items.map((item) => (<React.Fragment key={item => item}><li>{item}</li></React.Fragment>))}
 </ul>
 )
@@ -1527,11 +1539,12 @@ return (
 
 exports[`full output snapshots > FormField > react 1`] = `
 "import { useState } from "react";
-export function FormField(props: Record<string, never>)
+export function FormField(props: React.HTMLAttributes<HTMLElement>)
 {
 const [value, setValue] = useState("")
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <input value={value} onInput={e => setValue(e.target.value)} />
   <p>
     {value}
@@ -1626,10 +1639,11 @@ return (
 `;
 
 exports[`full output snapshots > IButton > react 1`] = `
-"export function IButton(props: { label: string; disabled?: boolean })
+"export function IButton(props: { label: string; disabled?: boolean } & React.HTMLAttributes<HTMLElement>)
 {
+const { label, disabled, ...__attrs } = props
 return (
-<button disabled={props.disabled}>
+<button {...__attrs} disabled={props.disabled} className={props.className}>
   {props.label}
 </button>
 )
@@ -1709,13 +1723,14 @@ return (
 
 exports[`full output snapshots > Lifecycle > react 1`] = `
 "import { useState, useEffect } from "react";
-export function Lifecycle(props: Record<string, never>)
+export function Lifecycle(props: React.HTMLAttributes<HTMLElement>)
 {
 const [mounted, setMounted] = useState(false)
 useEffect(() => { setMounted(true); }, [])
 useEffect(() => () => { console.log("cleanup"); }, [])
+const { ...__attrs } = props
 return (
-<span>
+<span {...__attrs} className={props.className}>
   {mounted ? "mounted" : "pending"}
 </span>
 )
@@ -1824,14 +1839,15 @@ return (
 
 exports[`full output snapshots > MemoChain > react 1`] = `
 "import { useState, useMemo } from "react";
-export function MemoChain(props: Record<string, never>)
+export function MemoChain(props: React.HTMLAttributes<HTMLElement>)
 {
 const [base, setBase] = useState(1)
 const doubled = useMemo(() => base * 2, [base])
 const quadrupled = useMemo(() => doubled * 2, [doubled])
 const label = useMemo(() => \`Value: \${quadrupled}\`, [quadrupled])
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <span>
     {label}
   </span>
@@ -1961,12 +1977,13 @@ return (
 
 exports[`full output snapshots > MixedControlFlow > react 1`] = `
 "import { useState } from "react";
-export function MixedControlFlow(props: Record<string, never>)
+export function MixedControlFlow(props: React.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = useState(["a", "b", "c"])
 const [filter, setFilter] = useState("")
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <input value={filter} onInput={e => setFilter(e.target.value)} />
   <ul>
     {items.map((item) => (<React.Fragment key={item => item}>{item.includes(filter) ? <li>{item}</li> : null}</React.Fragment>))}
@@ -2083,13 +2100,14 @@ return (
 
 exports[`full output snapshots > MultiRefs > react 1`] = `
 "import { useRef, useEffect } from "react";
-export function MultiRefs(props: Record<string, never>)
+export function MultiRefs(props: React.HTMLAttributes<HTMLElement>)
 {
 const inputRef = useRef(null)
 const buttonRef = useRef(null)
 useEffect(() => { inputRef.current?.focus(); }, [])
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <input placeholder="focus me" ref={inputRef} />
   <button ref={buttonRef}>
     Click
@@ -2189,10 +2207,11 @@ return (
 `;
 
 exports[`full output snapshots > MultipleComponentsPerFile > react 1`] = `
-"export function Label(props: { text: string })
+"export function Label(props: { text: string } & React.HTMLAttributes<HTMLElement>)
 {
+const { text, ...__attrs } = props
 return (
-<span>
+<span {...__attrs} className={props.className}>
   {props.text}
 </span>
 )
@@ -2273,10 +2292,11 @@ return (
 `;
 
 exports[`full output snapshots > PropDefaults > react 1`] = `
-"export function PropDefaults(props: { color?; size })
+"export function PropDefaults(props: { color?; size } & React.HTMLAttributes<HTMLElement>)
 {
+const { color, size, ...__attrs } = props
 return (
-<div style={\`color: \${props.color}\`}>
+<div {...__attrs} style={\`color: \${props.color}\`} className={props.className}>
   {props.size}
 </div>
 )
@@ -2353,10 +2373,11 @@ return (
 `;
 
 exports[`full output snapshots > SlotBasic > react 1`] = `
-"export function SlotBasic(props: { children?: React.ReactNode })
+"export function SlotBasic(props: { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
+const { children, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   {props.children}
 </div>
 )
@@ -2438,11 +2459,12 @@ return (
 
 exports[`full output snapshots > SlotInConditional > react 1`] = `
 "import { useState } from "react";
-export function SlotInConditional(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode })
+export function SlotInConditional(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
 const [expanded, setExpanded] = useState(true)
+const { renderHeader, children, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   {props.renderHeader?.()}
   {expanded ? props.children : null}
 </div>
@@ -2552,10 +2574,11 @@ return (
 `;
 
 exports[`full output snapshots > SlotNamed > react 1`] = `
-"export function SlotNamed(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode; renderFooter?: (...args: any[]) => React.ReactNode })
+"export function SlotNamed(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode; renderFooter?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
+const { renderHeader, children, renderFooter, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <header>
     {props.renderHeader?.()}
   </header>
@@ -2670,11 +2693,12 @@ return (
 
 exports[`full output snapshots > SlotScoped > react 1`] = `
 "import { useState } from "react";
-export function SlotScoped(props: { renderItem?: (...args: any[]) => React.ReactNode })
+export function SlotScoped(props: { renderItem?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = useState([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+const { renderItem, ...__attrs } = props
 return (
-<ul>
+<ul {...__attrs} className={props.className}>
   {items.map((item, index) => (<React.Fragment key={item => item.id}><li>{props.renderItem?.(item, index) ?? <>{index}:{item.label}</>}</li></React.Fragment>))}
 </ul>
 )
@@ -2771,11 +2795,12 @@ return (
 
 exports[`full output snapshots > SlotScopedSingle > react 1`] = `
 "import { useState } from "react";
-export function SlotScopedSingle(props: { renderDefault?: (...args: any[]) => React.ReactNode })
+export function SlotScopedSingle(props: { renderDefault?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
 const [value, setValue] = useState("hello")
+const { renderDefault, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   {props.renderDefault?.(value) ?? <span>{value}</span>}
 </div>
 )
@@ -2877,10 +2902,11 @@ return (
 `;
 
 exports[`full output snapshots > SlotWithDefault > react 1`] = `
-"export function SlotWithDefault(props: { children?: React.ReactNode; renderActions?: (...args: any[]) => React.ReactNode })
+"export function SlotWithDefault(props: { children?: React.ReactNode; renderActions?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
+const { children, renderActions, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <main>
     {props.children ?? <p>Default content</p>}
   </main>
@@ -2993,10 +3019,11 @@ return (
 `;
 
 exports[`full output snapshots > SlotWithFallback > react 1`] = `
-"export function SlotWithFallback(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode })
+"export function SlotWithFallback(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
+const { renderHeader, children, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   {props.renderHeader?.() ?? <h1>Default Header</h1>}
   {props.children ?? "Default body content"}
 </div>
@@ -3113,11 +3140,12 @@ return (
 
 exports[`full output snapshots > SwitchTabs > react 1`] = `
 "import { useState } from "react";
-export function SwitchTabs(props: Record<string, never>)
+export function SwitchTabs(props: React.HTMLAttributes<HTMLElement>)
 {
 const [tab, setTab] = useState("a")
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   {tab === "a" ? <p>Tab A</p> : tab === "b" ? <p>Tab B</p> : null}
   <button onClick={() => setTab(tab === "a" ? "b" : "a")}>
     Switch
@@ -3250,22 +3278,24 @@ return (
 `;
 
 exports[`multi-component files > ComponentRef → react (all files) 1`] = `
-"export function Child(props: Record<string, never>)
+"export function Child(props: React.HTMLAttributes<HTMLElement>)
 {
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   Child
 </div>
 )
 }
 
 import { useRef, useEffect } from "react";
-export function ComponentRef(props: Record<string, never>)
+export function ComponentRef(props: React.HTMLAttributes<HTMLElement>)
 {
 const childRef = useRef(null)
 useEffect(() => { console.log(childRef.current); }, [])
+const { ...__attrs } = props
 return (
-<Child ref={childRef} />
+<Child {...__attrs} className={props.className} ref={childRef} />
 )
 }
 "

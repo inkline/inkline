@@ -31,6 +31,37 @@ const REWRITES: RewriteRules = {
   },
 };
 
+// ── Attribute fallthrough (Vue-style attribute inheritance) ─────────
+
+/** Identifier holding the rest of `props` (inherited attributes) on a fallthrough root. */
+const FALLTHROUGH_REST = "__attrs";
+
+function rootAcceptsFallthrough(component: IRComponent): boolean {
+  const r = component.render;
+  return (
+    (r.kind === "Element" || r.kind === "ComponentInstance") && r.acceptsAttrFallthrough === true
+  );
+}
+
+/** Props destructured out of the rest so they never leak onto the root DOM element. */
+function fallthroughRestBindings(component: IRComponent): string[] {
+  const names = new Set<string>();
+  for (const slot of component.slots) {
+    if (slot.name === "default") {
+      names.add(slot.isScoped ? "renderDefault" : "children");
+    } else {
+      names.add(`render${slot.name.charAt(0).toUpperCase()}${slot.name.slice(1)}`);
+    }
+  }
+  for (const p of component.props) names.add(p.name);
+  return [...names];
+}
+
+/** Merge an authored class (static text or rewritten expr) with the inherited `props.className`. */
+function classMergeExpr(authored: string | null): string {
+  return authored ? `[${authored}, props.className].filter(Boolean).join(" ")` : "props.className";
+}
+
 // ── Shared attr helpers ────────────────────────────────────────────
 
 function jsxAttrs(
@@ -38,22 +69,62 @@ function jsxAttrs(
     readonly attrs: readonly any[];
     readonly events: readonly any[];
     readonly refs: readonly any[];
+    readonly acceptsAttrFallthrough?: boolean;
   },
   rules: RewriteRules,
 ) {
-  const out = node.attrs.map((a: any) => {
+  const fallthrough = node.acceptsAttrFallthrough === true;
+  const out = [];
+
+  // Spread inherited attributes first so authored attributes below win on conflict.
+  if (fallthrough) {
+    out.push(cJsxAttr({ name: `{...${FALLTHROUGH_REST}}`, value: { kind: "boolean" } }));
+  }
+
+  let classMerged = false;
+  for (const a of node.attrs as any[]) {
+    if (fallthrough && a.binding === "class") {
+      const authored =
+        a.value.kind === "Static"
+          ? JSON.stringify(String(a.value.value))
+          : rewriteExpr(a.value.expr, rules);
+      out.push(
+        cJsxAttr({
+          name: "className",
+          value: { kind: "expr", expr: cExpr({ text: classMergeExpr(authored) }) },
+        }),
+      );
+      classMerged = true;
+      continue;
+    }
     const name = rewriteAttrName(a.name, rules);
     if (a.value.kind === "Static") {
       const v = a.value.value;
-      return typeof v === "boolean"
-        ? cJsxAttr({ name, value: { kind: "boolean" } })
-        : cJsxAttr({ name, value: { kind: "static", text: String(v) } });
+      out.push(
+        typeof v === "boolean"
+          ? cJsxAttr({ name, value: { kind: "boolean" } })
+          : cJsxAttr({ name, value: { kind: "static", text: String(v) } }),
+      );
+    } else {
+      out.push(
+        cJsxAttr({
+          name,
+          value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
+        }),
+      );
     }
-    return cJsxAttr({
-      name,
-      value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
-    });
-  });
+  }
+
+  // Root has no authored class but still inherits one — forward it.
+  if (fallthrough && !classMerged) {
+    out.push(
+      cJsxAttr({
+        name: "className",
+        value: { kind: "expr", expr: cExpr({ text: classMergeExpr(null) }) },
+      }),
+    );
+  }
+
   for (const e of node.events) {
     out.push(
       cJsxAttr({
@@ -297,6 +368,11 @@ function buildPropsType(component: IRComponent): string {
     parts.push(`{ ${slotFields.join("; ")} }`);
   }
 
+  // A fallthrough root accepts any host-element attribute the parent passes through.
+  if (rootAcceptsFallthrough(component)) {
+    parts.push("React.HTMLAttributes<HTMLElement>");
+  }
+
   return parts.length > 0 ? parts.join(" & ") : "Record<string, never>";
 }
 
@@ -434,6 +510,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         }),
       );
     }
+  }
+
+  if (rootAcceptsFallthrough(component)) {
+    const bindings = fallthroughRestBindings(component);
+    const prefix = bindings.length > 0 ? `${bindings.join(", ")}, ` : "";
+    body.push(cStmt({ body: `const { ${prefix}...${FALLTHROUGH_REST} } = props` }));
   }
 
   const needsTransition = hasTransition(component.render);

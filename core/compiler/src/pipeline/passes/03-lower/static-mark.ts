@@ -9,6 +9,7 @@ function isChildStatic(node: IRNode): boolean {
 }
 
 function computeStatic(el: IRElement): boolean {
+  if (el.acceptsAttrFallthrough) return false;
   if (el.events.length > 0) return false;
   if (el.refs.length > 0) return false;
   for (const attr of el.attrs) {

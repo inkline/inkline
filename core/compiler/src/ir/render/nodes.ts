@@ -50,6 +50,8 @@ export interface IRElement {
   readonly refs: readonly IRRefBinding[];
   readonly children: readonly IRNode[];
   readonly isStatic: boolean;
+  /** True when this is the component's root and inherits the parent's fallthrough attributes. */
+  readonly acceptsAttrFallthrough?: boolean;
   readonly loc: SourceLocation;
 }
 
@@ -66,6 +68,8 @@ export interface IRComponentInstance {
   readonly events: readonly IREventBinding[];
   readonly refs: readonly IRRefBinding[];
   readonly slots: readonly IRSlotContent[];
+  /** True when this is the component's root and inherits the parent's fallthrough attributes. */
+  readonly acceptsAttrFallthrough?: boolean;
   readonly loc: SourceLocation;
 }
 

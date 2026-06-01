@@ -41,10 +41,11 @@ return (
   "react/IBadgeBase.tsx": "export interface BadgeBaseProps {
   label?: string;
 }
-export function IBadgeBase(props: BadgeBaseProps & { children?: React.ReactNode })
+export function IBadgeBase(props: BadgeBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
+const { children, label, ...__attrs } = props
 return (
-<div className="badge">
+<div {...__attrs} className={["badge", props.className].filter(Boolean).join(" ")}>
   {props.children ?? props.label}
 </div>
 )

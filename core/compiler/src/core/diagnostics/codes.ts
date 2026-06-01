@@ -131,6 +131,12 @@ export const DIAGNOSTICS = {
     help: "Please file an issue with the source file attached." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0110" as const,
   },
+  INK0120: {
+    severity: "warning" as const,
+    title: "Attributes passed to <{name}> cannot be inherited" as const,
+    help: "Give the component a single host-element root so it can inherit class and other attributes." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0120" as const,
+  },
 } as const;
 
 export type DiagnosticCode = keyof typeof DIAGNOSTICS;

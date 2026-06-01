@@ -30,6 +30,7 @@ export function createComponentInstance(init: {
   events?: readonly IREventBinding[];
   refs?: readonly IRRefBinding[];
   slots?: readonly IRSlotContent[];
+  acceptsAttrFallthrough?: boolean;
   loc?: SourceLocation;
 }): IRComponentInstance {
   return {
@@ -40,6 +41,7 @@ export function createComponentInstance(init: {
     events: init.events ?? [],
     refs: init.refs ?? [],
     slots: init.slots ?? [],
+    acceptsAttrFallthrough: init.acceptsAttrFallthrough,
     loc: init.loc ?? UNKNOWN_LOCATION,
   };
 }
@@ -50,6 +52,7 @@ export function createElement(init: {
   events?: readonly IREventBinding[];
   refs?: readonly IRRefBinding[];
   children?: readonly IRNode[];
+  acceptsAttrFallthrough?: boolean;
   loc?: SourceLocation;
 }): IRElement {
   return {
@@ -60,6 +63,7 @@ export function createElement(init: {
     refs: init.refs ?? [],
     children: init.children ?? [],
     isStatic: false,
+    acceptsAttrFallthrough: init.acceptsAttrFallthrough,
     loc: init.loc ?? UNKNOWN_LOCATION,
   };
 }

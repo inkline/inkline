@@ -187,3 +187,26 @@ describe("cross-target structural invariants", () => {
     }
   });
 });
+
+describe("React attribute fallthrough", () => {
+  it("merges an inherited className onto a host-element root (CrossFileBase)", async () => {
+    const code = await getOutput("CrossFileBase", "react");
+    expect(code).toContain("const { children, label, ...__attrs } = props");
+    expect(code).toContain(
+      '<div {...__attrs} className={["base", props.className].filter(Boolean).join(" ")}>',
+    );
+    expect(code).toContain("React.HTMLAttributes<HTMLElement>");
+  });
+
+  it("chains fallthrough through a styled wrapper's component root (CrossFileStyled)", async () => {
+    const code = await getOutput("CrossFileStyled", "react");
+    expect(code).toContain("...__attrs } = props");
+    expect(code).toContain('className={[props.size, props.className].filter(Boolean).join(" ")}');
+  });
+
+  it("emits no fallthrough wiring for a fragment-root component (FragmentRoot)", async () => {
+    const code = await getOutput("FragmentRoot", "react");
+    expect(code).not.toContain("__attrs");
+    expect(code).not.toContain("React.HTMLAttributes");
+  });
+});

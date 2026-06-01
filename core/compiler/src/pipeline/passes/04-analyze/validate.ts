@@ -1,3 +1,4 @@
+import * as ts from "typescript";
 import type { IRComponent, IRExprNode } from "../../../ir/render/nodes.ts";
 import { walkRenderTree } from "../../../ir/render/visit.ts";
 import type { PassContext } from "../../types.ts";
@@ -49,6 +50,39 @@ export function validateComponent(component: IRComponent, ctx: PassContext): voi
       },
     });
   }
+}
+
+/**
+ * INK0120: a parent passes a `class` (a fallthrough attribute) to a child component whose root
+ * cannot inherit it (fragment / control-flow / multiple roots). Resolution is limited to components
+ * defined in the same module; cross-module children are skipped (their root kind is not known here).
+ */
+export function validateAttrFallthrough(
+  component: IRComponent,
+  localComponents: ReadonlyMap<string, IRComponent>,
+  ctx: PassContext,
+): void {
+  walkRenderTree(component.render, {
+    enter(node) {
+      if (node.kind !== "ComponentInstance") return;
+      const passesClass = node.attrs.some((a) => a.binding === "class");
+      if (!passesClass) return;
+
+      const name =
+        node.resolved?.name ?? (ts.isIdentifier(node.reference) ? node.reference.text : undefined);
+      if (!name) return;
+      const child = localComponents.get(name);
+      if (!child) return; // cross-module child — root kind unknown, skip
+
+      const root = child.render;
+      const rootAccepts =
+        (root.kind === "Element" || root.kind === "ComponentInstance") &&
+        root.acceptsAttrFallthrough === true;
+      if (!rootAccepts) {
+        ctx.diagnostics.push("INK0120", node.loc, { name });
+      }
+    },
+  });
 }
 
 export function diagnoseCycles(

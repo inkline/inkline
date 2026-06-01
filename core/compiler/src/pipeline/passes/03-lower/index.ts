@@ -8,6 +8,7 @@ import { twoWayBinding } from "./two-way-binding.ts";
 import { events } from "./events.ts";
 import { refs } from "./refs.ts";
 import { keyWarnings } from "./key-warnings.ts";
+import { markRootFallthrough } from "./mark-root-fallthrough.ts";
 import { staticMark } from "./static-mark.ts";
 
 type Lowering = (component: IRComponent, ctx: PassContext) => IRComponent;
@@ -21,6 +22,7 @@ const lowerings: readonly Lowering[] = [
   events,
   refs,
   keyWarnings,
+  markRootFallthrough,
   staticMark,
 ];
 
