@@ -717,7 +717,8 @@ describe("type pass-through (propsTypeText)", () => {
       { targets: ["svelte"] },
     );
     const code = result.files.svelte![0]!.contents;
-    expect(code).toContain("ButtonProps = $props()");
+    // The single-element root inherits attributes, so the props type is widened.
+    expect(code).toContain("ButtonProps & Record<string, any> = $props()");
     expect(code).toContain("export interface ButtonProps");
   });
 

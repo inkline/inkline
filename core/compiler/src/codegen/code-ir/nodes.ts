@@ -95,7 +95,8 @@ export interface CTmplAttr extends CNodeBase {
   readonly name: string;
   readonly value:
     | { readonly kind: "static"; readonly text: string }
-    | { readonly kind: "expr"; readonly expr: CExpr };
+    | { readonly kind: "expr"; readonly expr: CExpr }
+    | { readonly kind: "spread"; readonly expr: CExpr };
 }
 
 export interface CTmplText extends CNodeBase {

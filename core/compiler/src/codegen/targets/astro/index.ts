@@ -9,7 +9,37 @@ import {
   emitExprAsTemplate,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import {
+  FALLTHROUGH_REST,
+  classMergeExpr,
+  rootAcceptsFallthrough,
+} from "../../shared/fallthrough.ts";
 import { assertNever } from "../../../core/assert.ts";
+
+/** Build the attribute string for a fallthrough-capable root: spread rest first, then merge class. */
+function fallthroughAttrParts(node: any, rules: RewriteRules): string[] {
+  const parts: string[] = [`{...${FALLTHROUGH_REST}}`];
+  let classMerged = false;
+  for (const a of node.attrs) {
+    if (a.binding === "class") {
+      const authored =
+        a.value.kind === "Static"
+          ? JSON.stringify(String(a.value.value))
+          : rewriteExpr(a.value.expr, rules);
+      parts.push(`class={${classMergeExpr(authored, `${FALLTHROUGH_REST}.class`)}}`);
+      classMerged = true;
+      continue;
+    }
+    const name = rewriteAttrName(a.name, rules);
+    if (a.value.kind === "Static") parts.push(`${name}="${a.value.value}"`);
+    else parts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
+  }
+  for (const e of node.events) {
+    parts.push(`${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`);
+  }
+  if (!classMerged) parts.push(`class={${classMergeExpr(null, `${FALLTHROUGH_REST}.class`)}}`);
+  return parts;
+}
 
 const REWRITES: RewriteRules = {
   reactiveRead: { kind: "strip-call" },
@@ -23,14 +53,19 @@ const REWRITES: RewriteRules = {
 function emitNode(node: IRNode, rules: RewriteRules): string {
   switch (node.kind) {
     case "Element": {
-      const parts: string[] = [];
-      for (const a of node.attrs) {
-        const name = rewriteAttrName(a.name, rules);
-        if (a.value.kind === "Static") parts.push(`${name}="${a.value.value}"`);
-        else parts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
-      }
-      for (const e of node.events) {
-        parts.push(`${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`);
+      let parts: string[];
+      if (node.acceptsAttrFallthrough) {
+        parts = fallthroughAttrParts(node, rules);
+      } else {
+        parts = [];
+        for (const a of node.attrs) {
+          const name = rewriteAttrName(a.name, rules);
+          if (a.value.kind === "Static") parts.push(`${name}="${a.value.value}"`);
+          else parts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
+        }
+        for (const e of node.events) {
+          parts.push(`${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`);
+        }
       }
       const attrStr = parts.join(" ");
       const children = node.children.map((c) => emitNode(c, rules)).join("\n");
@@ -57,14 +92,21 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       return node.children.map((c) => emitNode(c, rules)).join("\n");
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? "unknown";
-      const ciParts: string[] = [];
-      for (const a of node.attrs) {
-        const name = rewriteAttrName(a.name, rules);
-        if (a.value.kind === "Static") ciParts.push(`${name}="${a.value.value}"`);
-        else ciParts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
-      }
-      for (const e of node.events) {
-        ciParts.push(`${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`);
+      let ciParts: string[];
+      if (node.acceptsAttrFallthrough) {
+        ciParts = fallthroughAttrParts(node, rules);
+      } else {
+        ciParts = [];
+        for (const a of node.attrs) {
+          const name = rewriteAttrName(a.name, rules);
+          if (a.value.kind === "Static") ciParts.push(`${name}="${a.value.value}"`);
+          else ciParts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
+        }
+        for (const e of node.events) {
+          ciParts.push(
+            `${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`,
+          );
+        }
       }
       if (node.slots.length === 0) {
         const ciAttrStr = ciParts.join(" ");
@@ -92,16 +134,30 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const rules = ctx.rewrites;
   const template = emitNode(component.render, rules);
 
-  const propsInterface = component.propsTypeText
-    ? `type Props = ${component.propsTypeText}`
-    : component.props.length > 0
-      ? `interface Props { ${component.props.map((p) => `${p.name}${p.required ? "" : "?"}${p.typeNode ? `: ${p.typeNode.getText()}` : ": unknown"}`).join("; ")} }`
+  const fallthrough = rootAcceptsFallthrough(component);
+  const inlineProps =
+    component.props.length > 0
+      ? `{ ${component.props.map((p) => `${p.name}${p.required ? "" : "?"}${p.typeNode ? `: ${p.typeNode.getText()}` : ": unknown"}`).join("; ")} }`
       : "";
 
+  let propsInterface: string;
+  if (fallthrough) {
+    const base = component.propsTypeText ?? inlineProps;
+    propsInterface = base
+      ? `type Props = ${base} & Record<string, any>`
+      : "type Props = Record<string, any>";
+  } else if (component.propsTypeText) {
+    propsInterface = `type Props = ${component.propsTypeText}`;
+  } else if (inlineProps) {
+    propsInterface = `interface Props ${inlineProps}`;
+  } else {
+    propsInterface = "";
+  }
+
+  const destructured = component.props.map((p) => p.name);
+  if (fallthrough) destructured.push(`...${FALLTHROUGH_REST}`);
   const propsDestructure =
-    component.props.length > 0
-      ? `const { ${component.props.map((p) => p.name).join(", ")} } = Astro.props as Props;`
-      : "";
+    destructured.length > 0 ? `const { ${destructured.join(", ")} } = Astro.props as Props;` : "";
 
   const resourceDecls = component.resources.map((res) =>
     cStmt({

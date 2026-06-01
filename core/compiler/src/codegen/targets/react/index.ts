@@ -17,6 +17,11 @@ import {
 import * as ts from "typescript";
 import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import {
+  FALLTHROUGH_REST,
+  classMergeExpr,
+  rootAcceptsFallthrough,
+} from "../../shared/fallthrough.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -33,16 +38,6 @@ const REWRITES: RewriteRules = {
 
 // ── Attribute fallthrough (Vue-style attribute inheritance) ─────────
 
-/** Identifier holding the rest of `props` (inherited attributes) on a fallthrough root. */
-const FALLTHROUGH_REST = "__attrs";
-
-function rootAcceptsFallthrough(component: IRComponent): boolean {
-  const r = component.render;
-  return (
-    (r.kind === "Element" || r.kind === "ComponentInstance") && r.acceptsAttrFallthrough === true
-  );
-}
-
 /** Props destructured out of the rest so they never leak onto the root DOM element. */
 function fallthroughRestBindings(component: IRComponent): string[] {
   const names = new Set<string>();
@@ -55,11 +50,6 @@ function fallthroughRestBindings(component: IRComponent): string[] {
   }
   for (const p of component.props) names.add(p.name);
   return [...names];
-}
-
-/** Merge an authored class (static text or rewritten expr) with the inherited `props.className`. */
-function classMergeExpr(authored: string | null): string {
-  return authored ? `[${authored}, props.className].filter(Boolean).join(" ")` : "props.className";
 }
 
 // ── Shared attr helpers ────────────────────────────────────────────
@@ -91,7 +81,10 @@ function jsxAttrs(
       out.push(
         cJsxAttr({
           name: "className",
-          value: { kind: "expr", expr: cExpr({ text: classMergeExpr(authored) }) },
+          value: {
+            kind: "expr",
+            expr: cExpr({ text: classMergeExpr(authored, "props.className") }),
+          },
         }),
       );
       classMerged = true;
@@ -120,7 +113,7 @@ function jsxAttrs(
     out.push(
       cJsxAttr({
         name: "className",
-        value: { kind: "expr", expr: cExpr({ text: classMergeExpr(null) }) },
+        value: { kind: "expr", expr: cExpr({ text: classMergeExpr(null, "props.className") }) },
       }),
     );
   }

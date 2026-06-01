@@ -16,6 +16,11 @@ import {
 import * as ts from "typescript";
 import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import {
+  FALLTHROUGH_REST,
+  classMergeExpr,
+  rootAcceptsFallthrough,
+} from "../../shared/fallthrough.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -34,22 +39,62 @@ function jsxAttrs(
     readonly attrs: readonly any[];
     readonly events: readonly any[];
     readonly refs: readonly any[];
+    readonly acceptsAttrFallthrough?: boolean;
   },
   rules: RewriteRules,
 ) {
-  const out = node.attrs.map((a: any) => {
+  const fallthrough = node.acceptsAttrFallthrough === true;
+  const out = [];
+
+  // Spread inherited attributes first so authored attributes below win on conflict.
+  if (fallthrough) {
+    out.push(cJsxAttr({ name: `{...${FALLTHROUGH_REST}}`, value: { kind: "boolean" } }));
+  }
+
+  let classMerged = false;
+  for (const a of node.attrs as any[]) {
+    if (fallthrough && a.binding === "class") {
+      const authored =
+        a.value.kind === "Static"
+          ? JSON.stringify(String(a.value.value))
+          : rewriteExpr(a.value.expr, rules);
+      out.push(
+        cJsxAttr({
+          name: "class",
+          value: { kind: "expr", expr: cExpr({ text: classMergeExpr(authored, "props.class") }) },
+        }),
+      );
+      classMerged = true;
+      continue;
+    }
     const name = rewriteAttrName(a.name, rules);
     if (a.value.kind === "Static") {
       const v = a.value.value;
-      return typeof v === "boolean"
-        ? cJsxAttr({ name, value: { kind: "boolean" } })
-        : cJsxAttr({ name, value: { kind: "static", text: String(v) } });
+      out.push(
+        typeof v === "boolean"
+          ? cJsxAttr({ name, value: { kind: "boolean" } })
+          : cJsxAttr({ name, value: { kind: "static", text: String(v) } }),
+      );
+    } else {
+      out.push(
+        cJsxAttr({
+          name,
+          value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
+        }),
+      );
     }
-    return cJsxAttr({
-      name,
-      value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
-    });
-  });
+  }
+
+  // Root has no authored class but still inherits one — forward it.
+  if (fallthrough && !classMerged) {
+    out.push(
+      cJsxAttr({
+        name: "class",
+        value: { kind: "expr", expr: cExpr({ text: classMergeExpr(null, "props.class") }) },
+      }),
+    );
+  }
+
   for (const e of node.events) {
     out.push(
       cJsxAttr({
@@ -390,8 +435,20 @@ function buildSolidPropsType(component: IRComponent): string {
     parts.push(`{ ${slotFields.join("; ")} }`);
   }
 
+  if (rootAcceptsFallthrough(component)) {
+    parts.push("JSX.HTMLAttributes<HTMLElement>");
+  }
+
   if (parts.length === 0) return "Record<string, never>";
   return parts.join(" & ");
+}
+
+/** Keys to keep out of the fallthrough rest (declared props + slot props). */
+function fallthroughRestKeys(component: IRComponent): string[] {
+  const names = new Set<string>();
+  for (const slot of component.slots) names.add(slot.name);
+  for (const p of component.props) names.add(p.name);
+  return [...names];
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
@@ -446,6 +503,15 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   for (const r of component.refs)
     body.push(cStmt({ body: `let ${r.name}: ${r.elementType ?? "HTMLElement"} | undefined` }));
 
+  const fallthrough = rootAcceptsFallthrough(component);
+  if (fallthrough) {
+    solidImports.push("splitProps");
+    const keys = fallthroughRestKeys(component)
+      .map((k) => JSON.stringify(k))
+      .join(", ");
+    body.push(cStmt({ body: `const [, ${FALLTHROUGH_REST}] = splitProps(props, [${keys}])` }));
+  }
+
   const needsTransition = hasTransition(component.render);
   if (needsTransition) {
     solidImports.push("createSignal", "createEffect", "onCleanup", "Show");
@@ -490,6 +556,9 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     unique.length > 0
       ? [cImport({ module: "solid-js", named: unique.map((i) => ({ imported: i })) })]
       : [];
+  if (fallthrough) {
+    imports.push(cImport({ module: "solid-js", named: [{ imported: "JSX" }], typeOnly: true }));
+  }
 
   const file = cFile({
     flavor: "tsx",

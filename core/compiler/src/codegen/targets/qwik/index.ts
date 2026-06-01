@@ -15,6 +15,11 @@ import {
 } from "../../code-ir/builders.ts";
 import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import {
+  FALLTHROUGH_REST,
+  classMergeExpr,
+  rootAcceptsFallthrough,
+} from "../../shared/fallthrough.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -31,22 +36,62 @@ function jsxAttrs(
     readonly attrs: readonly any[];
     readonly events: readonly any[];
     readonly refs: readonly any[];
+    readonly acceptsAttrFallthrough?: boolean;
   },
   rules: RewriteRules,
 ) {
-  const out = node.attrs.map((a: any) => {
+  const fallthrough = node.acceptsAttrFallthrough === true;
+  const out = [];
+
+  // Spread inherited attributes first so authored attributes below win on conflict.
+  if (fallthrough) {
+    out.push(cJsxAttr({ name: `{...${FALLTHROUGH_REST}}`, value: { kind: "boolean" } }));
+  }
+
+  let classMerged = false;
+  for (const a of node.attrs as any[]) {
+    if (fallthrough && a.binding === "class") {
+      const authored =
+        a.value.kind === "Static"
+          ? JSON.stringify(String(a.value.value))
+          : rewriteExpr(a.value.expr, rules);
+      out.push(
+        cJsxAttr({
+          name: "class",
+          value: { kind: "expr", expr: cExpr({ text: classMergeExpr(authored, "props.class") }) },
+        }),
+      );
+      classMerged = true;
+      continue;
+    }
     const name = rewriteAttrName(a.name, rules);
     if (a.value.kind === "Static") {
       const v = a.value.value;
-      return typeof v === "boolean"
-        ? cJsxAttr({ name, value: { kind: "boolean" } })
-        : cJsxAttr({ name, value: { kind: "static", text: String(v) } });
+      out.push(
+        typeof v === "boolean"
+          ? cJsxAttr({ name, value: { kind: "boolean" } })
+          : cJsxAttr({ name, value: { kind: "static", text: String(v) } }),
+      );
+    } else {
+      out.push(
+        cJsxAttr({
+          name,
+          value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
+        }),
+      );
     }
-    return cJsxAttr({
-      name,
-      value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
-    });
-  });
+  }
+
+  // Root has no authored class but still inherits one — forward it.
+  if (fallthrough && !classMerged) {
+    out.push(
+      cJsxAttr({
+        name: "class",
+        value: { kind: "expr", expr: cExpr({ text: classMergeExpr(null, "props.class") }) },
+      }),
+    );
+  }
+
   for (const e of node.events) {
     out.push(
       cJsxAttr({
@@ -302,6 +347,15 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   }
 
+  const fallthrough = rootAcceptsFallthrough(component);
+  if (fallthrough) {
+    const keys = new Set<string>();
+    for (const slot of component.slots) keys.add(slot.name === "default" ? "children" : slot.name);
+    for (const p of component.props) keys.add(p.name);
+    const prefix = keys.size > 0 ? `${[...keys].join(", ")}, ` : "";
+    body.push(cStmt({ body: `const { ${prefix}...${FALLTHROUGH_REST} } = props` }));
+  }
+
   const needsTransition = hasTransition(component.render);
 
   const renderTree = emitNode(component.render, rules);
@@ -339,7 +393,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cRaw({ text: "" }),
       cStmt({
         body:
-          component.props.length > 0 || component.slots.length > 0
+          component.props.length > 0 || component.slots.length > 0 || fallthrough
             ? `export const ${component.name} = component$((props) =>`
             : `export const ${component.name} = component$(() =>`,
       }),

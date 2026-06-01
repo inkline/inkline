@@ -25,6 +25,11 @@ import {
   emitExprAsTemplate,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import {
+  FALLTHROUGH_REST,
+  classMergeExpr,
+  rootAcceptsFallthrough,
+} from "../../shared/fallthrough.ts";
 import { assertNever } from "../../../core/assert.ts";
 import * as ts from "typescript";
 
@@ -47,10 +52,25 @@ function tmplAttrs(
     readonly attrs: readonly any[];
     readonly events: readonly any[];
     readonly refs: readonly any[];
+    readonly acceptsAttrFallthrough?: boolean;
   },
   rules: RewriteRules,
 ) {
+  const fallthrough = node.acceptsAttrFallthrough === true;
   const attrs = node.attrs.map((a: any) => {
+    if (fallthrough && a.binding === "class") {
+      const authored =
+        a.value.kind === "Static"
+          ? JSON.stringify(String(a.value.value))
+          : rewriteExpr(a.value.expr, rules);
+      return cTmplAttr({
+        name: "class",
+        value: {
+          kind: "expr",
+          expr: cExpr({ text: classMergeExpr(authored, `${FALLTHROUGH_REST}.class`) }),
+        },
+      });
+    }
     const name = rewriteAttrName(a.name, rules);
     if (a.value.kind === "Static")
       return cTmplAttr({ name, value: { kind: "static", text: String(a.value.value) } });
@@ -59,6 +79,20 @@ function tmplAttrs(
       value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
     });
   });
+  if (fallthrough) {
+    // Spread inherited attributes first so authored attributes win on conflict.
+    attrs.unshift(
+      cTmplAttr({ name: "", value: { kind: "spread", expr: cExpr({ text: FALLTHROUGH_REST }) } }),
+    );
+    if (!node.attrs.some((a: any) => a.binding === "class")) {
+      attrs.push(
+        cTmplAttr({
+          name: "class",
+          value: { kind: "expr", expr: cExpr({ text: `${FALLTHROUGH_REST}.class` }) },
+        }),
+      );
+    }
+  }
   const evts = node.events.map((e: any) =>
     cTmplAttr({
       name: rewriteEventName(e.name, rules),
@@ -300,12 +334,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   }
 
+  const propFallthrough = rootAcceptsFallthrough(component);
+  const restBinding = propFallthrough ? `...${FALLTHROUGH_REST}` : "";
+  const bindings = [...component.props.map((p) => p.name), restBinding].filter(Boolean).join(", ");
   if (component.propsTypeText) {
-    scriptBody.push(
-      cStmt({
-        body: `let { ${component.props.map((p) => p.name).join(", ")} }: ${component.propsTypeText} = $props()`,
-      }),
-    );
+    const type = `${component.propsTypeText}${propFallthrough ? " & Record<string, any>" : ""}`;
+    scriptBody.push(cStmt({ body: `let { ${bindings} }: ${type} = $props()` }));
   } else if (component.props.length > 0) {
     const defs = component.props
       .map(
@@ -313,11 +347,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       )
       .join("; ");
     scriptBody.push(cStmt({ body: `interface Props { ${defs} }` }));
-    scriptBody.push(
-      cStmt({
-        body: `let { ${component.props.map((p) => p.name).join(", ")} }: Props = $props()`,
-      }),
-    );
+    const type = `Props${propFallthrough ? " & Record<string, any>" : ""}`;
+    scriptBody.push(cStmt({ body: `let { ${bindings} }: ${type} = $props()` }));
+  } else if (propFallthrough) {
+    scriptBody.push(cStmt({ body: `let { ${bindings} }: Record<string, any> = $props()` }));
   }
   for (const s of component.state)
     scriptBody.push(

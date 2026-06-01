@@ -292,6 +292,11 @@ class Printer {
   }
 
   private emitTmplAttr(node: CTmplAttr): void {
+    // A spread carries no attribute name — e.g. Svelte `{...rest}`.
+    if (node.value.kind === "spread") {
+      this.write(`{...${node.value.expr.text}}`);
+      return;
+    }
     this.write(node.name);
     if (node.value.kind === "static") {
       this.write(`="${node.value.text}"`);

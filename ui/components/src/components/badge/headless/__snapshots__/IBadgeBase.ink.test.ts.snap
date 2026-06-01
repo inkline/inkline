@@ -18,10 +18,10 @@ export class IBadgeBaseComponent
 export interface BadgeBaseProps {
   label?: string;
 }
-type Props = BadgeBaseProps
-const { label } = Astro.props as Props;
+type Props = BadgeBaseProps & Record<string, any>
+const { label, ...__attrs } = Astro.props as Props;
 ---
-<div class="badge">
+<div {...__attrs} class={["badge", __attrs.class].filter(Boolean).join(" ")}>
 <slot />
 </div>
 ",
@@ -31,8 +31,9 @@ export interface BadgeBaseProps {
 }
 export const IBadgeBase = component$((props) =>
 {
+const { children, label, ...__attrs } = props
 return (
-<div class="badge">
+<div {...__attrs} class={["badge", props.class].filter(Boolean).join(" ")}>
   {props.children ?? props.label}
 </div>
 )
@@ -51,13 +52,16 @@ return (
 )
 }
 ",
-  "solid/IBadgeBase.tsx": "export interface BadgeBaseProps {
+  "solid/IBadgeBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface BadgeBaseProps {
   label?: string;
 }
-export default function IBadgeBase(props: BadgeBaseProps & { default?: any })
+export default function IBadgeBase(props: BadgeBaseProps & { default?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
+const [, __attrs] = splitProps(props, ["default", "label"])
 return (
-<div class="badge">
+<div {...__attrs} class={["badge", props.class].filter(Boolean).join(" ")}>
   {props.default ?? props.label}
 </div>
 )
@@ -67,9 +71,9 @@ return (
   export interface BadgeBaseProps {
     label?: string;
   }
-  let { label }: BadgeBaseProps = $props()
+  let { label, ...__attrs }: BadgeBaseProps & Record<string, any> = $props()
 </script>
-<div class="badge">
+<div {...__attrs} class={["badge", __attrs.class].filter(Boolean).join(" ")}>
   <slot>
     {label}
   </slot>
