@@ -2,7 +2,9 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "@inkline/core"
+    "jsxImportSource": "@inkline/core",
+    "module": "esnext",
+    "moduleResolution": "bundler"
   },
   "include": ["src", "stories", "styleframe.config.ts", "*.styleframe.ts", ".styleframe/**/*.d.ts"]
 }

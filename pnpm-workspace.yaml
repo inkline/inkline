@@ -12,6 +12,17 @@ allowBuilds:
   msgpackr-extract: true
   sharp: true
 
+# pnpm 11 enforces a default minimumReleaseAge (24h) supply-chain guard.
+# Exclude the styleframe first-party ecosystem (intentionally fresh, trusted),
+# and pin the exact versions of unrelated transitive deps caught as collateral
+# so the guard still applies to any future releases of those packages.
+minimumReleaseAgeExclude:
+  - "@styleframe/*"
+  - styleframe
+  - ansis@4.3.1
+  - js-yaml@4.2.0
+  - launch-editor@2.14.1
+
 catalog:
   "@analogjs/storybook-angular": ^2.5.1
   "@analogjs/vite-plugin-angular": ^2.5.1
@@ -60,7 +71,7 @@ catalog:
   storybook-framework-qwik: 0.6.2--canary.95.25602496384.0
   storybook-solidjs-vite: ^10
   styleframe: ^3.8.0
-  typescript: ^5
+  typescript: ^6.0.3
   vite: npm:@voidzero-dev/vite-plus-core@latest
   vite-plugin-solid: ^2.11.12
   vite-plus: ^0.1.23

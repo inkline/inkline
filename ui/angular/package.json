@@ -51,7 +51,7 @@
     "storybook": "catalog:",
     "styleframe": "catalog:",
     "tslib": "^2",
-    "typescript": "catalog:",
+    "typescript": "^5.9",
     "zone.js": "^0.15"
   },
   "peerDependencies": {

@@ -20,7 +20,7 @@
     "test": "vp test --passWithNoTests",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build -o storybook-static",
-    "prestorybook": "pnpm --filter @inkline/cli exec node ./bin/inkline.mjs compile stories"
+    "prestorybook": "pnpm --filter @inkline/components exec inkline compile 'src/**/*.ink.tsx' --config inkline.config.ts --target react"
   },
   "dependencies": {
     "@styleframe/runtime": "catalog:"

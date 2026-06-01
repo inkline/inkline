@@ -1,0 +1,10 @@
+/**
+ * Storybook preview styles shared by every framework's `.storybook/preview.ts`.
+ *
+ * Lays out the rendered story root as a flex row so multi-element variants
+ * sit side by side with consistent spacing.
+ */
+#storybook-root > div {
+  display: flex;
+  gap: var(--spacing);
+}
