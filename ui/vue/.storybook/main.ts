@@ -7,4 +7,13 @@ export default createStorybookConfig({
   componentPackage: "@inkline/vue",
   sourceEntry: resolve(import.meta.dirname, "..", ".inkline", "index.ts"),
   stories: ["../.inkline/**/*.stories.ts"],
+  // The default docgen (vue-docgen-api) resolves imported types with its own
+  // require.resolve-based resolver, which can't find the `virtual:styleframe`
+  // type import and crashes the story. vue-component-meta builds a real TS
+  // program, so it honors the `paths` mapping in ui/vue/tsconfig.json and
+  // resolves `virtual:styleframe` to .styleframe/styleframe.d.ts. The tsconfig
+  // path is relative to the repo root (Storybook's getProjectRoot finds .git).
+  frameworkOptions: {
+    docgen: { plugin: "vue-component-meta", tsconfig: "ui/vue/tsconfig.json" },
+  },
 });
