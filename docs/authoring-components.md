@@ -76,6 +76,18 @@ export default defineComponent((props: BadgeProps) => {
 
 `virtual:styleframe` is provided by the `styleframe` integration; the resolved classnames live in each framework's `.styleframe/` directory (auto-generated — never hand-edit).
 
+### Attribute fallthrough
+
+This composition relies on **attribute fallthrough** (Vue-style attribute inheritance): when a parent passes attributes to a component, the compiler forwards them onto that component's root element. `class` is **merged** with the root's own class; every other non-prop attribute (`id`, `aria-*`, `data-*`, event handlers) is spread onto the root. That is how the styled variant's `badge(props)` classes reach the headless `<div class="badge">`.
+
+Fallthrough requires a **single host-element (or component-instance) root**. A component whose root is a fragment, control-flow block, or multiple elements cannot inherit attributes — the compiler emits diagnostic `INK0120` if a parent passes a class to such a component.
+
+Per-target notes:
+
+- **React / Solid / Svelte / Qwik / Astro** — the inherited attributes are spread onto the rendered root element and `class` is merged there.
+- **Vue** — handled natively by Vue's default `inheritAttrs`.
+- **Angular** — handled natively: a `class`/`[class]` passed to a component is applied to its **host element** (the component selector), not the inner template root. Style Angular components accordingly (e.g. via `:host`).
+
 ## Authoring primitives
 
 The full primitive set is documented in [`core/compiler/README.md`](../core/compiler/README.md). Quick reference:

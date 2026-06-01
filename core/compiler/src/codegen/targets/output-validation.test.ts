@@ -243,6 +243,16 @@ describe("attribute fallthrough", () => {
     expect(code).toContain('class="base"');
   });
 
+  it("Angular relies on native host inheritance — class lands on the host element", async () => {
+    // The headless root keeps its own class; no rest-spread wiring is emitted.
+    const base = await getOutput("CrossFileBase", "angular");
+    expect(base).not.toContain("__attrs");
+    expect(base).toContain('<div class="base">');
+    // A parent's class is bound on the child selector; Angular applies it to that host element.
+    const styled = await getOutput("CrossFileStyled", "angular");
+    expect(styled).toContain('[class]="size"');
+  });
+
   it("emits no fallthrough wiring for a fragment-root component (FragmentRoot)", async () => {
     for (const target of ["react", "solid", "svelte", "qwik", "astro"] as const) {
       const code = await getOutput("FragmentRoot", target);
