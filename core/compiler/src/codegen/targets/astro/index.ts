@@ -91,7 +91,7 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
     case "Fragment":
       return node.children.map((c) => emitNode(c, rules)).join("\n");
     case "ComponentInstance": {
-      const tag = node.resolved?.name ?? "unknown";
+      const tag = node.resolved?.name ?? node.reference.getText();
       let ciParts: string[];
       if (node.acceptsAttrFallthrough) {
         ciParts = fallthroughAttrParts(node, rules);
@@ -156,8 +156,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
 
   const destructured = component.props.map((p) => p.name);
   if (fallthrough) destructured.push(`...${FALLTHROUGH_REST}`);
-  const propsDestructure =
-    destructured.length > 0 ? `const { ${destructured.join(", ")} } = Astro.props as Props;` : "";
+  // Bind `props` so whole-object references (e.g. styling recipes) resolve, then derive the
+  // named props and attribute-fallthrough rest from it — mirroring the other targets.
+  const propsStmts: string[] =
+    destructured.length > 0
+      ? ["const props = Astro.props as Props;", `const { ${destructured.join(", ")} } = props;`]
+      : [];
 
   const resourceDecls = component.resources.map((res) =>
     cStmt({
@@ -174,7 +178,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...ctx.externalImports,
       ...(ctx.typeDeclarations.length > 0 ? [...ctx.typeDeclarations] : []),
       ...(propsInterface ? [cRaw({ text: propsInterface })] : []),
-      ...(propsDestructure ? [cStmt({ body: propsDestructure })] : []),
+      ...propsStmts.map((s) => cStmt({ body: s })),
       ...resourceDecls,
       cRaw({ text: "---" }),
       cRaw({ text: "" }),

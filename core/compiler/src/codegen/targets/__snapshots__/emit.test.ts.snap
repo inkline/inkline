@@ -50,7 +50,8 @@ exports[`Astro target > Counter component 1`] = `
 exports[`Astro target > props use Astro.props 1`] = `
 "---
 interface Props { label: unknown; disabled?: unknown }
-const { label, disabled } = Astro.props as Props;
+const props = Astro.props as Props;
+const { label, disabled } = props;
 ---
 <div />
 "

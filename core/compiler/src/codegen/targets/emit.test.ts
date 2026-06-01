@@ -4,6 +4,7 @@ import { UNKNOWN_LOCATION } from "../../ir/types.ts";
 import { DYNAMIC_DEPS, SymbolTable, type SymbolId } from "../../ir/reactivity.ts";
 import type { IRComponent, IRNode } from "../../ir/render/nodes.ts";
 import {
+  createComponentInstance,
   createElement,
   createExpr,
   createIf,
@@ -470,6 +471,29 @@ describe("Astro target", () => {
     const result = print(astro.emit(comp, makeCtx(astro)).root);
     expect(result.code).toContain("Astro.props");
     expect(result.code).toMatchSnapshot();
+  });
+
+  it("resolves a component instance to its reference name, not 'unknown'", () => {
+    const comp = makeComp(
+      "Wrapper",
+      createElement({
+        tag: "div",
+        children: [createComponentInstance({ reference: mockExpr("Child") as ts.Identifier })],
+      }),
+    );
+    const result = print(astro.emit(comp, makeCtx(astro)).root);
+    expect(result.code).toContain("<Child");
+    expect(result.code).not.toContain("unknown");
+  });
+
+  it("binds `props` so whole-object references resolve", () => {
+    const comp: IRComponent = {
+      ...makeComp("Button", createElement({ tag: "div" })),
+      props: [{ name: "label", required: true, symbolId: "t::prop::label@0" as SymbolId, loc }],
+    };
+    const result = print(astro.emit(comp, makeCtx(astro)).root);
+    expect(result.code).toContain("const props = Astro.props as Props;");
+    expect(result.code).toContain("const { label } = props;");
   });
 });
 

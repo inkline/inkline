@@ -231,7 +231,8 @@ describe("attribute fallthrough", () => {
 
   it("Astro merges an inherited class onto the root (CrossFileBase)", async () => {
     const code = await getOutput("CrossFileBase", "astro");
-    expect(code).toContain(`...${"__attrs"} } = Astro.props`);
+    expect(code).toContain("const props = Astro.props as Props;");
+    expect(code).toContain(`...${"__attrs"} } = props`);
     expect(code).toContain(
       '<div {...__attrs} class={["base", __attrs.class].filter(Boolean).join(" ")}>',
     );

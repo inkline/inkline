@@ -22,7 +22,8 @@ sum = computed(() => x() + y())
 exports[`full output snapshots > BatchUpdates > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <span>
@@ -166,7 +167,8 @@ constructor() { effect(() => { console.log("sum:", sum()); }) }
 exports[`full output snapshots > Composite > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <span id="sum">
@@ -333,7 +335,8 @@ visible = signal(true)
 exports[`full output snapshots > Conditional > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 {visible ? (<span>
@@ -465,7 +468,8 @@ active = signal(false)
 exports[`full output snapshots > ConditionalClass > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={[active ? "active" : "inactive", __attrs.class].filter(Boolean).join(" ")}>
 <button onClick={() => setActive(!active)}>
@@ -578,7 +582,8 @@ value = signal("b")
 exports[`full output snapshots > ControlledSelect > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <select {...__attrs} value={value} onChange={e => setValue(e.target.value)} class={__attrs.class}>
 <option value="a">
@@ -723,7 +728,8 @@ text = signal("")
 exports[`full output snapshots > ControlledTextarea > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <textarea value={text} onInput={e => setText(e.target.value)} />
@@ -850,7 +856,8 @@ constructor() { effect(() => { console.log("count:", count()); }) }
 exports[`full output snapshots > Counter > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <p>
@@ -1005,7 +1012,8 @@ export class DefineSlotBasicComponent
 exports[`full output snapshots > DefineSlotBasic > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <header>
@@ -1132,7 +1140,8 @@ input = signal("")
 exports[`full output snapshots > DynamicList > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <input value={input} onInput={e => setInput(e.target.value)} />
@@ -1279,7 +1288,8 @@ constructor() { effect(() => { if (active()) {
 exports[`full output snapshots > EffectCleanup > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <button {...__attrs} onClick={() => setActive(!active)} class={__attrs.class}>
 Toggle
@@ -1390,7 +1400,8 @@ inputRef = viewChild<ElementRef>('inputRef')
 exports[`full output snapshots > ElementRef > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <input {...__attrs} placeholder="auto-focus" class={__attrs.class} />
 "
@@ -1479,7 +1490,8 @@ items = signal(["Apple", "Banana", "Cherry"])
 exports[`full output snapshots > ForLoop > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <ul {...__attrs} class={__attrs.class}>
 {items.map((item) => (<li>
@@ -1584,7 +1596,8 @@ value = signal("")
 exports[`full output snapshots > FormField > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <input value={value} onInput={e => setValue(e.target.value)} />
@@ -1696,7 +1709,8 @@ export class IButtonComponent
 exports[`full output snapshots > IButton > astro 1`] = `
 "---
 type Props = { label: string; disabled?: boolean } & Record<string, any>
-const { label, disabled, ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { label, disabled, ...__attrs } = props;
 ---
 <button {...__attrs} disabled={disabled} class={__attrs.class}>
 {label}
@@ -1784,7 +1798,8 @@ mounted = signal(false)
 exports[`full output snapshots > Lifecycle > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <span {...__attrs} class={__attrs.class}>
 {mounted ? "mounted" : "pending"}
@@ -1893,7 +1908,8 @@ label = computed(() => \`Value: \${quadrupled()}\`)
 exports[`full output snapshots > MemoChain > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <span>
@@ -2041,7 +2057,8 @@ filter = signal("")
 exports[`full output snapshots > MixedControlFlow > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <input value={filter} onInput={e => setFilter(e.target.value)} />
@@ -2172,7 +2189,8 @@ buttonRef = viewChild<ElementRef>('buttonRef')
 exports[`full output snapshots > MultiRefs > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <input placeholder="focus me" />
@@ -2292,7 +2310,8 @@ export class LabelComponent
 exports[`full output snapshots > MultipleComponentsPerFile > astro 1`] = `
 "---
 type Props = { text: string } & Record<string, any>
-const { text, ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { text, ...__attrs } = props;
 ---
 <span {...__attrs} class={__attrs.class}>
 {text}
@@ -2381,7 +2400,8 @@ export class PropDefaultsComponent
 exports[`full output snapshots > PropDefaults > astro 1`] = `
 "---
 type Props = { color?: unknown; size: unknown } & Record<string, any>
-const { color, size, ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { color, size, ...__attrs } = props;
 ---
 <div {...__attrs} style={\`color: \${color}\`} class={__attrs.class}>
 {size}
@@ -2468,7 +2488,8 @@ export class SlotBasicComponent
 exports[`full output snapshots > SlotBasic > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <slot />
@@ -2557,7 +2578,8 @@ expanded = signal(true)
 exports[`full output snapshots > SlotInConditional > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <slot name="header" />
@@ -2666,7 +2688,8 @@ export class SlotNamedComponent
 exports[`full output snapshots > SlotNamed > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <header>
@@ -2804,7 +2827,8 @@ items = signal([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
 exports[`full output snapshots > SlotScoped > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <ul {...__attrs} class={__attrs.class}>
 {items.map((item, index) => (<li>
@@ -2914,7 +2938,8 @@ value = signal("hello")
 exports[`full output snapshots > SlotScopedSingle > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <slot />
@@ -3019,7 +3044,8 @@ export class SlotWithDefaultComponent
 exports[`full output snapshots > SlotWithDefault > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <main>
@@ -3151,7 +3177,8 @@ export class SlotWithFallbackComponent
 exports[`full output snapshots > SlotWithFallback > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <slot name="header" />
@@ -3269,7 +3296,8 @@ tab = signal("a")
 exports[`full output snapshots > SwitchTabs > astro 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 {tab === "a" ? (<p>
@@ -3412,7 +3440,8 @@ childRef = viewChild<ElementRef>('childRef')
 exports[`multi-component files > ComponentRef → astro (all files) 1`] = `
 "---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 Child
@@ -3420,9 +3449,10 @@ Child
 
 ---
 type Props = Record<string, any>
-const { ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
-<unknown {...__attrs} class={__attrs.class} />
+<Child {...__attrs} class={__attrs.class} />
 "
 `;
 
