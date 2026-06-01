@@ -230,20 +230,19 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       return cJsxElement({ tag: "Switch", attrs: switchAttrs, children, selfClose: false });
     }
     case "SlotPlaceholder": {
-      const argsStr =
-        node.scopedArgs.length > 0
-          ? node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ")
-          : "";
       if (node.scopedArgs.length > 0) {
+        const argsStr = node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ");
         return node.fallback
           ? cExpr({
               text: `{props.${node.name}?.(${argsStr}) ?? ${inlineNode(node.fallback, rules)}}`,
             })
           : cExpr({ text: `{props.${node.name}?.(${argsStr})}` });
       }
+      // The unscoped default slot is delivered through Solid's native `children` prop.
+      const propName = node.name === "default" ? "children" : node.name;
       return node.fallback
-        ? cExpr({ text: `{props.${node.name} ?? ${inlineNode(node.fallback, rules)}}` })
-        : cExpr({ text: `{props.${node.name}}` });
+        ? cExpr({ text: `{props.${propName} ?? ${inlineNode(node.fallback, rules)}}` })
+        : cExpr({ text: `{props.${propName}}` });
     }
     case "Transition": {
       const attrs = [cJsxAttr({ name: "name", value: { kind: "static", text: node.name } })];
@@ -428,7 +427,8 @@ function buildSolidPropsType(component: IRComponent): string {
     if (slot.isScoped) {
       slotFields.push(`${slot.name}?: (...args: any[]) => any`);
     } else {
-      slotFields.push(`${slot.name}?: any`);
+      const fieldName = slot.name === "default" ? "children" : slot.name;
+      slotFields.push(`${fieldName}?: any`);
     }
   }
   if (slotFields.length > 0) {
@@ -446,7 +446,10 @@ function buildSolidPropsType(component: IRComponent): string {
 /** Keys to keep out of the fallthrough rest (declared props + slot props). */
 function fallthroughRestKeys(component: IRComponent): string[] {
   const names = new Set<string>();
-  for (const slot of component.slots) names.add(slot.name);
+  for (const slot of component.slots) {
+    // The unscoped default slot lives on `children`, not `default`.
+    names.add(slot.name === "default" && !slot.isScoped ? "children" : slot.name);
+  }
   for (const p of component.props) names.add(p.name);
   return [...names];
 }

@@ -1058,16 +1058,16 @@ return (
 exports[`full output snapshots > DefineSlotBasic > solid 1`] = `
 "import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
-export default function DefineSlotBasic(props: { header?: any; default?: any } & JSX.HTMLAttributes<HTMLElement>)
+export default function DefineSlotBasic(props: { header?: any; children?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
-const [, __attrs] = splitProps(props, ["header", "default"])
+const [, __attrs] = splitProps(props, ["header", "children"])
 return (
 <div {...__attrs} class={props.class}>
   <header>
     {props.header}
   </header>
   <main>
-    {props.default}
+    {props.children}
   </main>
 </div>
 )
@@ -2506,12 +2506,12 @@ return (
 exports[`full output snapshots > SlotBasic > solid 1`] = `
 "import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
-export default function SlotBasic(props: { default?: any } & JSX.HTMLAttributes<HTMLElement>)
+export default function SlotBasic(props: { children?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
-const [, __attrs] = splitProps(props, ["default"])
+const [, __attrs] = splitProps(props, ["children"])
 return (
 <div {...__attrs} class={props.class}>
-  {props.default}
+  {props.children}
 </div>
 )
 }
@@ -2601,15 +2601,15 @@ return (
 exports[`full output snapshots > SlotInConditional > solid 1`] = `
 "import { createSignal, splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
-export default function SlotInConditional(props: { header?: any; default?: any } & JSX.HTMLAttributes<HTMLElement>)
+export default function SlotInConditional(props: { header?: any; children?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
 const [expanded, setExpanded] = createSignal(true)
-const [, __attrs] = splitProps(props, ["header", "default"])
+const [, __attrs] = splitProps(props, ["header", "children"])
 return (
 <div {...__attrs} class={props.class}>
   {props.header}
   <Show when={expanded()}>
-    {props.default}
+    {props.children}
   </Show>
 </div>
 )
@@ -2728,16 +2728,16 @@ return (
 exports[`full output snapshots > SlotNamed > solid 1`] = `
 "import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
-export default function SlotNamed(props: { header?: any; default?: any; footer?: any } & JSX.HTMLAttributes<HTMLElement>)
+export default function SlotNamed(props: { header?: any; children?: any; footer?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
-const [, __attrs] = splitProps(props, ["header", "default", "footer"])
+const [, __attrs] = splitProps(props, ["header", "children", "footer"])
 return (
 <div {...__attrs} class={props.class}>
   <header>
     {props.header}
   </header>
   <main>
-    {props.default}
+    {props.children}
   </main>
   <footer>
     {props.footer}
@@ -3072,13 +3072,13 @@ return (
 exports[`full output snapshots > SlotWithDefault > solid 1`] = `
 "import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
-export default function SlotWithDefault(props: { default?: any; actions?: any } & JSX.HTMLAttributes<HTMLElement>)
+export default function SlotWithDefault(props: { children?: any; actions?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
-const [, __attrs] = splitProps(props, ["default", "actions"])
+const [, __attrs] = splitProps(props, ["children", "actions"])
 return (
 <div {...__attrs} class={props.class}>
   <main>
-    {props.default ?? <p>Default content</p>}
+    {props.children ?? <p>Default content</p>}
   </main>
   <footer>
     {props.actions ?? <span>Action area</span>}
@@ -3192,13 +3192,13 @@ return (
 exports[`full output snapshots > SlotWithFallback > solid 1`] = `
 "import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
-export default function SlotWithFallback(props: { header?: any; default?: any } & JSX.HTMLAttributes<HTMLElement>)
+export default function SlotWithFallback(props: { header?: any; children?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
-const [, __attrs] = splitProps(props, ["header", "default"])
+const [, __attrs] = splitProps(props, ["header", "children"])
 return (
 <div {...__attrs} class={props.class}>
   {props.header ?? <h1>Default Header</h1>}
-  {props.default ?? "Default body content"}
+  {props.children ?? "Default body content"}
 </div>
 )
 }

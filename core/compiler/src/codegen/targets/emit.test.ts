@@ -7,6 +7,7 @@ import {
   createElement,
   createExpr,
   createIf,
+  createSlotPlaceholder,
   createSwitch,
   createText,
   createTransition,
@@ -267,6 +268,42 @@ describe("props type generation", () => {
     const comp = makeCompWithProps("Button");
     const result = print(svelte.emit(comp, makeCtx(svelte)).root);
     expect(result.code).toMatchSnapshot();
+  });
+});
+
+describe("default slot emission", () => {
+  function makeSlottedComp(name: string, fallthrough = false): IRComponent {
+    return {
+      ...makeComp(
+        name,
+        createElement({
+          tag: "div",
+          acceptsAttrFallthrough: fallthrough,
+          children: [
+            createSlotPlaceholder({ fallback: createExpr({ expr: mockExpr("props.label") }) }),
+          ],
+        }),
+      ),
+      slots: [{ name: "default", isScoped: false, scopedProps: [], required: false, loc }],
+    };
+  }
+
+  it("Solid: reads the unscoped default slot from props.children, not props.default", () => {
+    const result = print(solid.emit(makeSlottedComp("Slotted"), makeCtx(solid)).root);
+    expect(result.code).toContain("props.children ?? props.label");
+    expect(result.code).not.toContain("props.default");
+    expect(result.code).toContain("children?: any");
+  });
+
+  it("Solid: keeps children out of the attribute fallthrough rest", () => {
+    const result = print(solid.emit(makeSlottedComp("Slotted", true), makeCtx(solid)).root);
+    expect(result.code).toContain('splitProps(props, ["children"])');
+    expect(result.code).not.toContain('"default"');
+  });
+
+  it("React: reads the unscoped default slot from props.children (parity reference)", () => {
+    const result = print(react.emit(makeSlottedComp("Slotted"), makeCtx(react)).root);
+    expect(result.code).toContain("props.children ?? props.label");
   });
 });
 
