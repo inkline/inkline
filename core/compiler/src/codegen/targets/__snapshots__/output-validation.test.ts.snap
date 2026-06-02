@@ -6,7 +6,7 @@ exports[`full output snapshots > BatchUpdates > angular 1`] = `
 <span>
 {{ sum() }}
 </span>
-<button (click)="batch(() => { x.set(x() + 1); y.set(y() + 1); })">
+<button (click)="x.set(x() + 1); y.set(y() + 1);">
 Both
 </button>
 </div>\` })
@@ -32,7 +32,7 @@ const sum = x + y
 <span>
 {sum}
 </span>
-<button onClick={() => batch(() => { x = x + 1; y = y + 1; })}>
+<button onClick={() => { x = x + 1; y = y + 1; }}>
 Both
 </button>
 </div>
@@ -52,7 +52,7 @@ return (
   <span>
     {sum.value}
   </span>
-  <button onClick={$(() => batch(() => { x.value = x.value + 1; y.value = y.value + 1; }))}>
+  <button onClick={$(() => { x.value = x.value + 1; y.value = y.value + 1; })}>
     Both
   </button>
 </div>
@@ -74,7 +74,7 @@ return (
   <span>
     {sum}
   </span>
-  <button onClick={() => batch(() => { setX(x + 1); setY(y + 1); })}>
+  <button onClick={() => { setX(x + 1); setY(y + 1); }}>
     Both
   </button>
 </div>
@@ -97,7 +97,7 @@ return (
   <span>
     {sum()}
   </span>
-  <button onclick={() => batch(() => { setX(x() + 1); setY(y() + 1); })}>
+  <button onclick={() => { setX(x() + 1); setY(y() + 1); }}>
     Both
   </button>
 </div>
@@ -117,7 +117,7 @@ exports[`full output snapshots > BatchUpdates > svelte 1`] = `
   <span>
     {sum}
   </span>
-  <button onclick={() => batch(() => { x = x + 1; y = y + 1; })}>
+  <button onclick={() => { x = x + 1; y = y + 1; }}>
     Both
   </button>
 </div>
@@ -136,7 +136,7 @@ exports[`full output snapshots > BatchUpdates > vue 1`] = `
   <span>
     {{ sum }}
   </span>
-  <button @click="() => batch(() => { x = x + 1; y = y + 1; })">
+  <button @click="() => { x = x + 1; y = y + 1; }">
     Both
   </button>
 </div>

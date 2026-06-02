@@ -33,10 +33,10 @@ describe("TransitionBasic: transition wrapper over toggled Show", () => {
 
   it("React: Transition wrapper passes the transition name through as a prop", async () => {
     const out = await code("TransitionBasic", "react");
-    // BUG: author wrote <Transition name="fade"> but the lowered name is always "ink" (the default);
-    // the string-literal `name` attr is dropped, so the wrong CSS class prefix is emitted everywhere.
-    expect(out).toContain('<__InkTransition name="ink">');
-    expect(out).not.toContain('name="fade"');
+    // Author wrote <Transition name="fade"> and the string-literal `name` attr is now captured,
+    // so the correct CSS class prefix is emitted at the call site.
+    expect(out).toContain('<__InkTransition name="fade">');
+    expect(out).not.toContain('name="ink">');
   });
 
   it("Solid: __InkTransition uses createEffect + onCleanup and gates the wrapper with <Show>", async () => {
@@ -50,12 +50,12 @@ describe("TransitionBasic: transition wrapper over toggled Show", () => {
     expect(out).toContain(
       'return <Show when={show()}><div ref={(el) => ref = el} style={{ display: "contents" }}>',
     );
-    expect(out).toContain('<__InkTransition name="ink">');
+    expect(out).toContain('<__InkTransition name="fade">');
   });
 
   it("Vue: maps to the native <Transition> wrapping a v-if child", async () => {
     const out = await code("TransitionBasic", "vue");
-    expect(out).toContain('<Transition name="ink">');
+    expect(out).toContain('<Transition name="fade">');
     expect(out).toContain('<p v-if="visible">');
   });
 
@@ -74,7 +74,7 @@ describe("TransitionBasic: transition wrapper over toggled Show", () => {
     expect(out).toContain("const __inkTransitionIn = function(node: HTMLElement");
     expect(out).toContain("const __inkTransitionOut = function(node: HTMLElement");
     expect(out).toContain(
-      'in:__inkTransitionIn={{ name: "ink" }} out:__inkTransitionOut={{ name: "ink" }}',
+      'in:__inkTransitionIn={{ name: "fade" }} out:__inkTransitionOut={{ name: "fade" }}',
     );
     expect(out).toContain("{#if visible}");
   });
@@ -86,7 +86,7 @@ describe("TransitionBasic: transition wrapper over toggled Show", () => {
     );
     expect(out).toContain("useVisibleTask$(({ track, cleanup }) => {");
     expect(out).toContain("track(() => props.children);");
-    expect(out).toContain('<__InkTransition name="ink">');
+    expect(out).toContain('<__InkTransition name="fade">');
   });
 
   it("Qwik: onClick is single-wrapped in $() and rewrites setVisible to a signal assignment", async () => {
@@ -129,35 +129,31 @@ describe("TransitionBasic: transition wrapper over toggled Show", () => {
 // TransitionAppear: <Transition name="slide" appear><Show …/></Transition>. Same machinery, but the
 // `appear` flag should make the enter animation run on mount.
 describe("TransitionAppear: appear flag on a transition", () => {
-  it("React: BUG — the `appear` attr is dropped, so mount animation never fires", async () => {
+  it("React: passes the `appear` attr so the mount animation fires", async () => {
     const out = await code("TransitionAppear", "react");
-    // Helper supports `appear`, but the call site omits it (and the name is wrong too).
-    expect(out).toContain('<__InkTransition name="ink">');
-    // Instance opening tag carries no `appear` attribute (helper param is `appear?: boolean`).
-    expect(out).not.toContain('<__InkTransition name="ink" appear');
-    expect(out).not.toContain('name="slide"');
+    // Helper supports `appear`, and the call site now carries the captured name + appear flag.
+    expect(out).toContain('<__InkTransition name="slide" appear>');
+    expect(out).not.toContain('name="ink"');
   });
 
-  it("Solid: BUG — appear flag dropped at the call site despite helper support", async () => {
+  it("Solid: passes the appear flag at the call site, matching helper support", async () => {
     const out = await code("TransitionAppear", "solid");
-    expect(out).toContain('<__InkTransition name="ink">');
-    expect(out).toContain("if (!mounted && !props.appear)"); // helper still reads props.appear
-    // …but the instance opening tag never passes `appear`:
-    expect(out).not.toContain('<__InkTransition name="ink" appear');
+    expect(out).toContain("if (!mounted && !props.appear)"); // helper reads props.appear
+    // The instance opening tag now passes both the captured name and the `appear` flag:
+    expect(out).toContain('<__InkTransition name="slide" appear>');
   });
 
-  it("Vue: native <Transition> with no appear attribute and the wrong name", async () => {
+  it("Vue: native <Transition> carries the captured name and the appear attribute", async () => {
     const out = await code("TransitionAppear", "vue");
-    // BUG: `name="slide"` becomes `name="ink"` and the `appear` flag is dropped.
-    expect(out).toContain('<Transition name="ink">');
-    expect(out).not.toContain("appear");
+    // `name="slide"` is preserved and the `appear` flag is emitted as a boolean attribute.
+    expect(out).toContain('<Transition name="slide" appear="">');
     expect(out).toContain('<p v-if="visible">');
   });
 
-  it("Svelte: appear-only transition still emits both in:/out: directives", async () => {
+  it("Svelte: appear transition emits both in:/out: directives with the captured name", async () => {
     const out = await code("TransitionAppear", "svelte");
     expect(out).toContain(
-      'in:__inkTransitionIn={{ name: "ink" }} out:__inkTransitionOut={{ name: "ink" }}',
+      'in:__inkTransitionIn={{ name: "slide" }} out:__inkTransitionOut={{ name: "slide" }}',
     );
     expect(out).toContain("{#if visible}");
   });

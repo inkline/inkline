@@ -18,6 +18,23 @@ function hasAsyncModifier(node: ts.ArrowFunction | ts.FunctionExpression): boole
   return node.modifiers?.some((m) => m.kind === ts.SyntaxKind.AsyncKeyword) ?? false;
 }
 
+/** If `body` is a `batch(() => …)` call, return the inner function so the wrapper can be dropped. */
+function unwrapBatchArrowBody(
+  body: ts.ConciseBody,
+): ts.ArrowFunction | ts.FunctionExpression | undefined {
+  if (ts.isBlock(body)) return undefined;
+  if (
+    ts.isCallExpression(body) &&
+    ts.isIdentifier(body.expression) &&
+    body.expression.text === "batch" &&
+    body.arguments.length === 1 &&
+    (ts.isArrowFunction(body.arguments[0]!) || ts.isFunctionExpression(body.arguments[0]!))
+  ) {
+    return body.arguments[0] as ts.ArrowFunction | ts.FunctionExpression;
+  }
+  return undefined;
+}
+
 function walk(expr: ts.Expression, rules: RewriteRules): string {
   if (ts.isIdentifier(expr)) {
     const renamed = rules.rename?.[expr.text];
@@ -44,6 +61,22 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
 
   if (ts.isCallExpression(expr)) {
     const callee = expr.expression;
+    // `batch(() => { … })` is a no-op grouping wrapper in the authoring model (`batch(fn) => fn()`),
+    // and every target framework already batches synchronous updates, so unwrap it to the inner
+    // body. A block body becomes a `;`-separated statement run (valid in an Angular event binding);
+    // an arrow body that is itself a `batch(...)` is collapsed at the arrow handler below.
+    if (
+      ts.isIdentifier(callee) &&
+      callee.text === "batch" &&
+      expr.arguments.length === 1 &&
+      (ts.isArrowFunction(expr.arguments[0]!) || ts.isFunctionExpression(expr.arguments[0]!))
+    ) {
+      const fn = expr.arguments[0] as ts.ArrowFunction | ts.FunctionExpression;
+      if (ts.isBlock(fn.body)) {
+        return fn.body.statements.map((s) => walkStatement(s, rules)).join(" ");
+      }
+      return walk(fn.body, rules);
+    }
     // A call to a known state setter: `setX(v)` → target-specific mutation.
     const setterName = ts.isIdentifier(callee) ? callee.text : undefined;
     const setterState = setterName !== undefined ? rules.setters?.[setterName] : undefined;
@@ -131,6 +164,15 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
     const params = expr.parameters.map((p) => verbatim(p)).join(", ");
     const paramStr =
       expr.parameters.length === 1 && !expr.parameters[0]!.type ? params : `(${params})`;
+    // `() => batch(() => { … })` collapses to `() => { … }` (batch is a no-op grouping wrapper),
+    // keeping the handler an arrow with a block body rather than a stray statement run.
+    const unwrappedBatch = unwrapBatchArrowBody(expr.body);
+    if (unwrappedBatch) {
+      const inner = ts.isBlock(unwrappedBatch.body)
+        ? walkBlock(unwrappedBatch.body, rules)
+        : walk(unwrappedBatch.body, rules);
+      return `${asyncKw}${paramStr} => ${inner}`;
+    }
     if (ts.isBlock(expr.body)) return `${asyncKw}${paramStr} => ${walkBlock(expr.body, rules)}`;
     return `${asyncKw}${paramStr} => ${walk(expr.body, rules)}`;
   }

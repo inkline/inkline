@@ -116,19 +116,25 @@ describe("DiamondMemo: two memos over one signal, joined by a third", () => {
 });
 
 describe("BatchUpdates: batch() helper inside an event handler", () => {
-  it("Solid: sum memo wires both signals; batch left intact in handler", async () => {
+  // `batch(() => { … })` is a no-op grouping wrapper in the authoring model (every framework batches
+  // synchronous updates), so it is unwrapped to the inner body — no undefined `batch` import.
+  it("Solid: sum memo wires both signals; the batch wrapper is unwrapped to its body", async () => {
     const out = await code("BatchUpdates", "solid");
     expect(out).toContain("const sum = createMemo(() => x() + y())");
-    expect(out).toContain("batch(() => { setX(x() + 1); setY(y() + 1); })");
+    expect(out).toContain("onclick={() => { setX(x() + 1); setY(y() + 1); }}");
+    expect(out).not.toContain("batch(");
   });
 
-  it("BUG: batch() is referenced but never imported in any target (react)", async () => {
+  it("React: the handler collapses to a block; no undefined `batch` reference", async () => {
     const out = await code("BatchUpdates", "react");
-    // BUG: the handler calls batch(...) but no import for `batch` is emitted, so it
-    // is an undefined reference at runtime.
-    expect(out).toContain("batch(() => { setX(x + 1); setY(y + 1); })");
-    expect(out).not.toContain("import { batch }");
-    expect(out).not.toContain("batch }");
+    expect(out).toContain("onClick={() => { setX(x + 1); setY(y + 1); }}");
+    expect(out).not.toContain("batch");
+  });
+
+  it("Angular: the handler unwraps to a `;`-separated statement binding", async () => {
+    const out = await code("BatchUpdates", "angular");
+    expect(out).toContain('(click)="x.set(x() + 1); y.set(y() + 1);"');
+    expect(out).not.toContain("batch");
   });
 });
 
