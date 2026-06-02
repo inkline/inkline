@@ -308,6 +308,57 @@ describe("default slot emission", () => {
   });
 });
 
+describe("React memo dependency arrays", () => {
+  it("emits granular, deduped dependency refs (props.x), not the base object", () => {
+    const comp: IRComponent = {
+      ...makeComp("Styled", createElement({ tag: "div" })),
+      props: [
+        { name: "color", required: false, symbolId: "t::prop::color@0" as SymbolId, loc },
+        { name: "size", required: false, symbolId: "t::prop::size@1" as SymbolId, loc },
+      ],
+      memos: [
+        {
+          name: "cls",
+          symbolId: "t::memo::cls@2" as SymbolId,
+          expr: createExpr({
+            expr: mockExpr("recipe({ color: props.color, size: props.size })"),
+            deps: [
+              {
+                symbolId: "p0" as SymbolId,
+                kind: "prop",
+                name: "props",
+                path: ["color"],
+                conditional: false,
+              },
+              {
+                symbolId: "p1" as SymbolId,
+                kind: "prop",
+                name: "props",
+                path: ["size"],
+                conditional: false,
+              },
+              {
+                symbolId: "p0" as SymbolId,
+                kind: "prop",
+                name: "props",
+                path: ["color"],
+                conditional: false,
+              },
+            ],
+            isReactive: true,
+          }),
+          loc,
+        },
+      ],
+    };
+    const result = print(react.emit(comp, makeCtx(react)).root);
+    expect(result.code).toContain(
+      "const cls = useMemo(() => recipe({ color: props.color, size: props.size }), [props.color, props.size])",
+    );
+    expect(result.code).not.toMatch(/\[props, props/);
+  });
+});
+
 describe("ref emission", () => {
   function makeCompWithRef(name: string): IRComponent {
     return {

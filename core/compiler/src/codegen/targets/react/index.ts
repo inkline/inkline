@@ -324,8 +324,16 @@ function inlineNode(node: IRNode, rules: RewriteRules): string {
   return inlineCode(emitNode(node, rules));
 }
 
-function depsList(deps: readonly { readonly name: string }[]): string {
-  return deps.length === 0 ? "[]" : `[${deps.map((d) => d.name).join(", ")}]`;
+function depRef(d: { readonly name: string; readonly path: readonly string[] }): string {
+  return d.path.length > 0 ? `${d.name}.${d.path.join(".")}` : d.name;
+}
+
+function depsList(
+  deps: readonly { readonly name: string; readonly path: readonly string[] }[],
+): string {
+  // Dedupe: the same reactive value may be read more than once in the body.
+  const refs = [...new Set(deps.map(depRef))];
+  return `[${refs.join(", ")}]`;
 }
 
 function buildPropsType(component: IRComponent): string {
@@ -452,7 +460,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     reactImports.push("useMemo");
     body.push(
       cStmt({
-        body: `const ${m.name} = useMemo(() => ${rewriteExpr(m.expr.expr, rules)}, [${m.expr.deps.map((d) => d.name).join(", ")}])`,
+        body: `const ${m.name} = useMemo(() => ${rewriteExpr(m.expr.expr, rules)}, ${depsList(m.expr.deps)})`,
         span: m.loc,
       }),
     );
