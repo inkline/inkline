@@ -120,24 +120,27 @@ describe("DynamicList: <For> driven by mutable state + event handlers", () => {
     expect(out).toContain("{#each items as item, i (i)}");
   });
 
-  it("Qwik: BUG — list-add handlers are double-wrapped in $()", async () => {
+  it("Qwik: list-add handler is single-wrapped in $() with setters rewritten to .value", async () => {
     const out = await code("DynamicList", "qwik");
     // The list maps over `.value` (fine):
     expect(out).toContain("{items.value.map((item, i) => (<><li>{item}</li></>))}");
-    // BUG: event handlers are wrapped as `$(() => <handler>)`, producing a QRL that *returns* the
-    // handler instead of *being* it. The button that mutates the list does nothing when clicked.
+    // Event handler is single-wrapped: `$(() => <handler>)` and the setters are rewritten to
+    // direct `.value` assignments for Qwik signals.
     expect(out).toContain(
-      'onClick={$(() => () => { setItems([...items.value, input.value]); setInput(""); })}',
+      'onClick={$(() => { items.value = [...items.value, input.value]; input.value = ""; })}',
     );
+    expect(out).toContain("onInput={$(e => input.value = e.target.value)}");
   });
 
-  it("Angular: BUG — @for track is the raw index extractor + setters are undefined", async () => {
+  it("Angular: BUG — @for track is the raw index extractor + unescaped quotes in the binding", async () => {
     const out = await code("DynamicList", "angular");
     // BUG: `(item, i) => i` leaks into Angular's track clause instead of `i`.
     expect(out).toContain("@for (item of items(); track (item, i) => i) {");
-    // BUG: the click handler in the template calls `setItems(...)`, but the class body only declares
-    // the `items`/`input` signals — no `setItems`/`setInput` members exist → runtime ReferenceError.
-    expect(out).toContain('(click)="() => { setItems([...items(), input()]); setInput(""); }"');
+    // Setters are now wired: the block handler becomes statements with the setter rewritten to
+    // `signal.set(...)` and the param mapped to `$event`.
+    // BUG: the inner string literal `""` is emitted unescaped inside the double-quoted Angular
+    // binding, so the attribute terminates early and the template is malformed.
+    expect(out).toContain('(click)="items.set([...items(), input()]); input.set("")"');
     const classBody = out.slice(out.indexOf("export class DynamicListComponent"));
     expect(classBody).toContain("items = signal([])");
     expect(classBody).not.toContain("setItems");
@@ -153,10 +156,10 @@ describe("List: <For> alongside a mutating button", () => {
 
   it("Angular: BUG — string literal in click handler breaks the double-quoted attribute", async () => {
     const out = await code("List", "angular");
-    // BUG: the handler `() => setItems([...items(), "C")` is placed inside a double-quoted Angular
-    // binding `(click)="..."`, but its `"C"` is not escaped, so the attribute terminates early and
-    // the template is malformed.
-    expect(out).toContain('(click)="() => setItems([...items(), "C"])"');
+    // The setter is now wired to `items.set(...)` as a statement binding (no arrow).
+    // BUG: the handler is placed inside a double-quoted Angular binding `(click)="..."`, but its
+    // `"C"` is not escaped, so the attribute terminates early and the template is malformed.
+    expect(out).toContain('(click)="items.set([...items(), "C"])"');
     expect(out).toContain("@for (item of items(); track item => item) {");
   });
 

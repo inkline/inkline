@@ -102,38 +102,38 @@ describe("ClientComponent: runtime: 'client' handling", () => {
     expect(out).toContain("onClick={() => setCount(count + 1)}");
   });
 
-  it("BUG: Vue keeps ref(0) but template calls undeclared setCount", async () => {
+  it("Vue: keeps ref(0) and rewrites the setter to an assignment in the template", async () => {
     const out = await code("ClientComponent", "vue");
-    // BUG: createSignal's setter is dropped from <script setup>; the click
-    // handler calls setCount(...), an undefined reference. Also no use-client.
+    // The setter call is rewritten to a plain assignment in the Vue template
+    // (Vue auto-unwraps the ref, so no .value here). No use-client directive.
     expect(out).toContain("const count = ref(0)");
-    expect(out).toContain('@click="() => setCount(count + 1)"');
+    expect(out).toContain('@click="() => count = count + 1"');
     expect(out).not.toContain("use client");
     expect(out).not.toContain("function setCount");
   });
 
-  it("BUG: Svelte template calls undeclared setCount", async () => {
+  it("Svelte: rewrites the setter call to a $state reassignment", async () => {
     const out = await code("ClientComponent", "svelte");
-    // BUG: $state(0) is emitted but the setter is dropped; onclick calls
-    // setCount(...) which does not exist in the module scope.
+    // $state(0) is emitted and the setter is rewritten to a plain assignment,
+    // which mutates the rune-backed state in place.
     expect(out).toContain("let count = $state(0)");
-    expect(out).toContain("onclick={() => setCount(count + 1)}");
-    expect(out).not.toContain("setCount =");
+    expect(out).toContain("onclick={() => count = count + 1}");
+    expect(out).not.toContain("setCount");
   });
 
-  it("BUG: Angular template calls undeclared setCount via (click)", async () => {
+  it("Angular: rewrites the setter to a signal .set() statement in (click)", async () => {
     const out = await code("ClientComponent", "angular");
-    // BUG: class has `count = signal(0)` but no setCount; the inline template
-    // calls a bare `setCount(...)` (not even `this.`), undefined at runtime.
+    // class has `count = signal(0)`; the setter is rewritten to `count.set(...)`
+    // as a statement binding (no arrow wrapper).
     expect(out).toContain("count = signal(0)");
-    expect(out).toContain('(click)="() => setCount(count() + 1)"');
+    expect(out).toContain('(click)="count.set(count() + 1)"');
   });
 
-  it("BUG: Qwik double-wraps the click handler and calls undeclared setCount", async () => {
+  it("Qwik: single-wraps the click handler and rewrites the setter to .value assignment", async () => {
     const out = await code("ClientComponent", "qwik");
-    // BUG: `$(() => () => ...)` returns a function on click instead of running
-    // the handler; setCount is also never declared in the qwik scope.
-    expect(out).toContain("onClick={$(() => () => setCount(count.value + 1))}");
+    // The handler is single-wrapped in `$(...)` and the setter is rewritten to
+    // a `.value` assignment against the useSignal-backed state.
+    expect(out).toContain("onClick={$(() => count.value = count.value + 1)}");
     expect(out).not.toContain("use client");
   });
 

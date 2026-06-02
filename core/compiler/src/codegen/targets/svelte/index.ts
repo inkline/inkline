@@ -323,18 +323,20 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const restBinding = propFallthrough ? `...${FALLTHROUGH_REST}` : "";
   const bindings = [...component.props.map((p) => p.name), restBinding].filter(Boolean).join(", ");
 
+  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
   // Svelte destructures `$props()`, so there is no `props` binding for whole-object references
   // (e.g. `badge(props)`). Reconstruct it from the destructured bindings instead.
   const rules: RewriteRules =
     bindings.length > 0
       ? {
           ...ctx.rewrites,
+          setters,
           members: {
             ...ctx.rewrites.members,
             props: { ...ctx.rewrites.members?.props, strip: true, whole: `{ ${bindings} }` },
           },
         }
-      : ctx.rewrites;
+      : { ...ctx.rewrites, setters };
 
   const scriptBody: Code[] = [];
   const svelteImports: string[] = [];

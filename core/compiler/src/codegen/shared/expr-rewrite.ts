@@ -15,14 +15,35 @@ function verbatim(node: ts.Node): string {
 }
 
 function walk(expr: ts.Expression, rules: RewriteRules): string {
-  // A bare `props` reference in a target that destructures props (no `props` binding) is
-  // rewritten to the reconstruction of its destructured bindings.
-  if (ts.isIdentifier(expr) && expr.text === "props" && rules.members?.props?.whole !== undefined) {
-    return rules.members.props.whole;
+  if (ts.isIdentifier(expr)) {
+    const renamed = rules.rename?.[expr.text];
+    if (renamed !== undefined) return renamed;
+    // A bare `props` reference in a target that destructures props (no `props` binding) is
+    // rewritten to the reconstruction of its destructured bindings.
+    if (expr.text === "props" && rules.members?.props?.whole !== undefined) {
+      return rules.members.props.whole;
+    }
   }
 
   if (ts.isCallExpression(expr)) {
     const callee = expr.expression;
+    // A call to a known state setter: `setX(v)` → target-specific mutation.
+    const setterName = ts.isIdentifier(callee) ? callee.text : undefined;
+    const setterState = setterName !== undefined ? rules.setters?.[setterName] : undefined;
+    if (setterName !== undefined && setterState !== undefined) {
+      const self = rules.selfPrefix ? "this." : "";
+      const value = expr.arguments.map((a) => walk(a, rules)).join(", ");
+      switch (rules.setterStyle.kind) {
+        case "function-call":
+          return `${self}${setterName}(${value})`;
+        case "field-assignment":
+          return `${self}${setterState}.${rules.setterStyle.field} = ${value}`;
+        case "direct-assignment":
+          return `${self}${setterState} = ${value}`;
+        case "method-call":
+          return `${self}${setterState}.${rules.setterStyle.method}(${value})`;
+      }
+    }
     if (ts.isIdentifier(callee) && expr.arguments.length === 0) {
       // A bare 0-arg call is a reactive read; in class-body contexts it is a member access.
       const self = rules.selfPrefix ? "this." : "";

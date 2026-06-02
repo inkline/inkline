@@ -202,11 +202,10 @@ describe("MixedControlFlow: For + Show nesting", () => {
     expect(out).toContain("<Show when={item.includes(filter())}><li>{item}</li></Show>");
   });
 
-  // BUG: Qwik wraps event handlers in a double arrow: `$(() => e => ...)`.
-  // The QRL's body is `() => (e => setFilter(...))`, so invoking the handler
-  // returns the real callback instead of running it — the input never updates.
-  it("BUG Qwik: event handler wrapped in a double arrow inside $()", async () => {
+  // Qwik wraps the event handler in a single arrow inside $() and rewrites the
+  // setter call to a direct signal assignment: `$(e => filter.value = ...)`.
+  it("Qwik: event handler single-wrapped in $() with direct signal assignment", async () => {
     const out = await code("MixedControlFlow", "qwik");
-    expect(out).toContain("onInput={$(() => e => setFilter(e.target.value))}");
+    expect(out).toContain("onInput={$(e => filter.value = e.target.value)}");
   });
 });

@@ -42,25 +42,22 @@ describe("Lifecycle: onMount/onCleanup with a signal", () => {
     expect(out).toContain('{mounted() ? "mounted" : "pending"}');
   });
 
-  it("Vue: onMounted/onUnmounted wired, but onMount body calls a nonexistent `setMounted`", async () => {
+  it("Vue: onMounted/onUnmounted wired; mount body assigns `mounted.value = true` via the setter rewrite", async () => {
     const out = await code("Lifecycle", "vue");
     expect(out).toContain('import { ref, onMounted, onUnmounted } from "vue";');
     expect(out).toContain("const mounted = ref(false)");
     expect(out).toContain('onUnmounted(() => { console.log("cleanup"); })');
-    // BUG: Vue destructures state into `ref`s, so there is no `setMounted` binding. The mount body
-    // should be `mounted.value = true`; instead it emits a call to an undefined `setMounted`,
-    // which throws ReferenceError on mount.
-    expect(out).toContain("onMounted(() => { setMounted(true); })");
+    // The `setMounted(true)` call is rewritten in <script> to a `.value` assignment on the ref.
+    expect(out).toContain("onMounted(() => { mounted.value = true; })");
   });
 
-  it("Svelte: $effect lifecycle, but mount body calls a nonexistent `setMounted`", async () => {
+  it("Svelte: $effect lifecycle; mount body assigns `mounted = true` via the setter rewrite", async () => {
     const out = await code("Lifecycle", "svelte");
     expect(out).toContain("let mounted = $state(false)");
     // onCleanup correctly becomes an $effect returning a teardown.
     expect(out).toContain('$effect(() => { return () => { console.log("cleanup"); } })');
-    // BUG: Svelte uses $state (no setter fn). Mount body should be `mounted = true`; instead it
-    // emits `setMounted(true)`, an undefined reference at runtime.
-    expect(out).toContain("$effect(() => { setMounted(true); })");
+    // Svelte uses $state (no setter fn); the `setMounted(true)` call is rewritten to `mounted = true`.
+    expect(out).toContain("$effect(() => { mounted = true; })");
   });
 
   it("Angular: onMount AND onCleanup are silently DROPPED; signal never updates", async () => {
@@ -120,34 +117,33 @@ describe("EffectCleanup: createEffect with a conditional cleanup return", () => 
     expect(out).toContain("useEffect(() => { if (active()) {");
   });
 
-  it("Vue: watchEffect body calls `active()` (a ref) and click calls undefined `setActive`", async () => {
+  it("Vue: watchEffect body still calls `active()` (a ref), but click assigns the ref via the setter rewrite", async () => {
     const out = await code("EffectCleanup", "vue");
     expect(out).toContain('import { ref, watchEffect } from "vue";');
     expect(out).toContain("const active = ref(true)");
-    // BUG: `active` is a ref; the body must read `active.value`, not call `active()`.
+    // BUG: `active` is a ref; the effect body must read `active.value`, not call `active()`.
     expect(out).toContain("watchEffect(() => { if (active()) {");
-    // BUG: no `setActive` binding exists for a Vue ref; the click handler references it undefined.
-    expect(out).toContain('@click="() => setActive(!active)"');
+    // The click handler's `setActive(!active)` is rewritten to a ref assignment (Vue template, no .value).
+    expect(out).toContain('@click="() => active = !active"');
   });
 
-  it("Angular: effect()/template reference bare `active`/`setActive` instead of `this.*`", async () => {
+  it("Angular: effect() body references bare `active` instead of `this.*`, but click binding sets the signal", async () => {
     const out = await code("EffectCleanup", "angular");
     expect(out).toContain("active = signal(true)");
     expect(out).toContain("constructor() { effect(() => { if (active()) {");
-    // BUG: inside the class, signals and setters must be accessed via `this.`; bare `active()` and
-    // `setActive(...)` are undefined. The effect references `active` (not `this.active`) and the
-    // template binds an undefined `setActive`.
+    // BUG: inside the class, the effect body must access signals via `this.`; bare `active()` is
+    // undefined. The effect references `active` (not `this.active`).
     expect(out).not.toContain("this.active");
-    expect(out).toContain('(click)="() => setActive(!active())"');
+    // The click binding is a statement that updates the signal via its setter (param mapped to $event-free body).
+    expect(out).toContain('(click)="active.set(!active())"');
   });
 
-  it("Qwik: useVisibleTask$ calls `active()` (a signal) and click double-wraps the handler", async () => {
+  it("Qwik: useVisibleTask$ body still calls `active()` (a signal), but click is single-wrapped and assigns `.value`", async () => {
     const out = await code("EffectCleanup", "qwik");
     expect(out).toContain("const active = useSignal(true)");
-    // BUG: `active` is a useSignal; body should read `active.value`, not call `active()`.
+    // BUG: `active` is a useSignal; the effect body should read `active.value`, not call `active()`.
     expect(out).toContain("useVisibleTask$(() => { if (active()) {");
-    // BUG: the click handler is double-arrowed — `$(() => () => setActive(...))` returns a function
-    // on click instead of running the toggle, and `setActive` is not a defined binding.
-    expect(out).toContain("onClick={$(() => () => setActive(!active.value))}");
+    // The click handler is single-wrapped now and the setter is rewritten to a `.value` assignment.
+    expect(out).toContain("onClick={$(() => active.value = !active.value)}");
   });
 });

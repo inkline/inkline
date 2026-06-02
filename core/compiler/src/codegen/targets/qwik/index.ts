@@ -98,7 +98,7 @@ function jsxAttrs(
         name: rewriteEventName(e.name, rules),
         value: {
           kind: "expr",
-          expr: cExpr({ text: `$(() => ${rewriteExpr(e.handler.expr, rules)})` }),
+          expr: cExpr({ text: `$(${rewriteExpr(e.handler.expr, rules)})` }),
         },
       }),
     );
@@ -294,7 +294,8 @@ const QWIK_TRANSITION_HELPER = `const __InkTransition = component$((props: { nam
 });`;
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const rules = ctx.rewrites;
+  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
+  const rules: RewriteRules = { ...ctx.rewrites, setters };
   const body: Code[] = [];
   const qwikImports = ["component$", "useSignal", "useComputed$", "useVisibleTask$", "$"];
 

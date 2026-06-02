@@ -59,14 +59,14 @@ describe("TransitionBasic: transition wrapper over toggled Show", () => {
     expect(out).toContain('<p v-if="visible">');
   });
 
-  it("Vue: BUG — toggle handler references setVisible but it is never defined in <script setup>", async () => {
+  it("Vue: toggle handler rewrites setVisible to a template assignment", async () => {
     const out = await code("TransitionBasic", "vue");
-    // Only `visible` is emitted in the script; the createSignal setter is never declared.
+    // `visible` is emitted in the script; the setter call is rewritten away.
     const script = out.slice(out.indexOf("<script"), out.indexOf("</script>"));
     expect(script).toContain("const visible = ref(true)");
     expect(script).not.toContain("setVisible");
-    // …yet the template still calls it — a ReferenceError at runtime.
-    expect(out).toContain('@click="() => setVisible(!visible)"');
+    // The template rewrites setVisible(!visible) → visible = !visible (Vue adds .value).
+    expect(out).toContain('@click="() => visible = !visible"');
   });
 
   it("Svelte: emits in:/out: transition directives instead of a wrapper component", async () => {
@@ -89,25 +89,25 @@ describe("TransitionBasic: transition wrapper over toggled Show", () => {
     expect(out).toContain('<__InkTransition name="ink">');
   });
 
-  it("Qwik: BUG — onClick emits a double-arrow handler and references undefined setVisible", async () => {
+  it("Qwik: onClick is single-wrapped in $() and rewrites setVisible to a signal assignment", async () => {
     const out = await code("TransitionBasic", "qwik");
-    // Double `() => () =>` wraps the handler in an extra closure that is never invoked, and
-    // `setVisible` is never declared (only `const visible = useSignal(true)`).
-    expect(out).toContain("onClick={$(() => () => setVisible(!visible.value))}");
+    // Single `$(() => …)` wrap (no extra closure), and setVisible(!visible) is rewritten to
+    // `visible.value = !visible.value`; `setVisible` is never declared.
+    expect(out).toContain("onClick={$(() => visible.value = !visible.value)}");
     expect(out).toContain("const visible = useSignal(true)");
     expect(out).not.toContain("const setVisible");
   });
 
-  it("Angular: BUG — Transition wrapper is dropped entirely and setVisible is never defined", async () => {
+  it("Angular: BUG — Transition wrapper is dropped entirely; setVisible rewrites to signal.set", async () => {
     const out = await code("TransitionBasic", "angular");
     // No __InkTransition / no transition machinery survives; the @if just renders bare.
     expect(out).not.toContain("InkTransition");
     expect(out).not.toContain("transition");
     expect(out).toContain("@if (visible()) {");
-    // Class only declares `visible`; the (click) handler calls a non-existent setVisible method.
-    expect(out).toContain('(click)="() => setVisible(!visible())"');
+    // The (click) binding is a statement (no arrow) that rewrites setVisible to signal.set.
+    expect(out).toContain('(click)="visible.set(!visible())"');
     expect(out).toContain("visible = signal(true)");
-    // The class body never declares setVisible — only the template references it.
+    // The class body never declares setVisible — the setter call was rewritten away.
     expect(out).not.toContain("setVisible = ");
     expect(out).not.toContain("setVisible(value");
   });

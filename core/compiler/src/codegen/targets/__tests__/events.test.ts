@@ -22,9 +22,10 @@ async function code(fixture: string, target: TargetName): Promise<string> {
 
 // ---------------------------------------------------------------------------
 // EventModifier: <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }}>
-// The handler body is preserved verbatim (incl. e.preventDefault()). The signal-setter call
-// inside the handler is the interesting part: React/Solid define `setSubmitted` (tuple model);
-// the destructure/`ref`/`$state` targets do NOT, so they emit a dangling identifier.
+// The handler body keeps e.preventDefault(); the signal-setter call is rewritten per target:
+// React/Solid keep `setSubmitted(true)` (tuple model); Vue template `submitted = true`;
+// Svelte `submitted = true`; Qwik `submitted.value = true`; Angular `submitted.set(true)`
+// (lowered to a statement with the handler param mapped to `$event`).
 // ---------------------------------------------------------------------------
 describe("EventModifier: onSubmit with e.preventDefault() + signal setter", () => {
   it("React: block-body onSubmit; setter exists via useState; preventDefault preserved", async () => {
@@ -42,43 +43,40 @@ describe("EventModifier: onSubmit with e.preventDefault() + signal setter", () =
     expect(out).toContain('{submitted() ? "Done" : "Pending"}');
   });
 
-  it("Vue: @submit handler references setSubmitted, which is never defined (ref model)", async () => {
+  it("Vue: @submit handler rewrites the setter to a template assignment (ref model)", async () => {
     const out = await code("EventModifier", "vue");
     // Vue tracks state with `ref`, so the only binding is `submitted` — there is no setter fn.
     expect(out).toContain("const submitted = ref(false)");
-    // BUG: handler calls setSubmitted(...) but `setSubmitted` is undefined in <script setup>;
-    // the correct Vue form would be `submitted.value = true`. This throws at runtime.
-    expect(out).toContain('@submit="e => { e.preventDefault(); setSubmitted(true); }"');
-    expect(out).not.toContain("setSubmitted ="); // setter is never declared anywhere
+    // The setter call is rewritten to a Vue template assignment `submitted = true` (Vue's
+    // template compiler unwraps the ref, so no `.value` is needed in the template binding).
+    expect(out).toContain('@submit="e => { e.preventDefault(); submitted = true; }"');
+    expect(out).not.toContain("setSubmitted"); // the setter identifier is gone entirely
   });
 
-  it("Svelte: onsubmit handler references setSubmitted, which is never defined ($state model)", async () => {
+  it("Svelte: onsubmit handler rewrites the setter to a plain $state assignment", async () => {
     const out = await code("EventModifier", "svelte");
     expect(out).toContain("let submitted = $state(false)");
-    // BUG: handler calls setSubmitted(...) but Svelte uses a plain `$state` let; the correct
-    // form is `submitted = true`. `setSubmitted` is undefined in the component scope.
-    expect(out).toContain("onsubmit={e => { e.preventDefault(); setSubmitted(true); }}");
-    expect(out).not.toContain("const setSubmitted");
+    // Svelte uses a plain `$state` let, so the setter call is rewritten to `submitted = true`.
+    expect(out).toContain("onsubmit={e => { e.preventDefault(); submitted = true; }}");
+    expect(out).not.toContain("setSubmitted");
   });
 
-  it("Angular: (submit) binds an arrow that calls setSubmitted, not a class member", async () => {
+  it("Angular: (submit) binds a statement that calls submitted.set, with $event mapped", async () => {
     const out = await code("EventModifier", "angular");
     expect(out).toContain("submitted = signal(false)");
-    // BUG: the template event binding is `(submit)="e => { ...; setSubmitted(true); }"`. Angular
-    // evaluates this expression against the component instance, where neither `setSubmitted` nor a
-    // bound `e` exists — it should be `(submit)="submitted.set(true)"` using $event. Broken.
-    expect(out).toContain('(submit)="e => { e.preventDefault(); setSubmitted(true); }"');
-    // The setter only appears inside the template binding; it is never declared on the class.
-    expect(out).not.toContain("setSubmitted =");
+    // The block-body handler is lowered to a statement expression: the handler param `e` is mapped
+    // to Angular's `$event`, and the setter call becomes the signal write `submitted.set(true)`.
+    expect(out).toContain('(submit)="$event.preventDefault(); submitted.set(true)"');
+    // The setter identifier never leaks into the output.
+    expect(out).not.toContain("setSubmitted");
   });
 
-  it("Qwik: onSubmit handler is double-wrapped by $() and calls an undefined setSubmitted", async () => {
+  it("Qwik: onSubmit handler is single-wrapped by $() and writes submitted.value", async () => {
     const out = await code("EventModifier", "qwik");
     expect(out).toContain("const submitted = useSignal(false)");
-    // BUG 1: $(() => e => ...) wraps the handler in an extra arrow, so onSubmit receives a fn that
-    // RETURNS the handler instead of being the handler — the body never runs on submit.
-    // BUG 2: setSubmitted is undefined under the useSignal model (should be submitted.value = true).
-    expect(out).toContain("onSubmit={$(() => e => { e.preventDefault(); setSubmitted(true); })}");
+    // The handler is single-wrapped in $() — `$(e => ...)` IS the handler (no extra arrow), and
+    // the setter call is rewritten to the signal write `submitted.value = true`.
+    expect(out).toContain("onSubmit={$(e => { e.preventDefault(); submitted.value = true; })}");
     expect(out).toContain('{submitted.value ? "Done" : "Pending"}');
   });
 
@@ -112,27 +110,30 @@ describe("TypedEvent: onMouseMove reading e.clientX / e.clientY into a signal", 
     expect(out).toContain("{pos().x}");
   });
 
-  it("Vue: onMouseMove maps to kebab @mouse-move; setPos is undefined under ref model", async () => {
+  it("Vue: setPos rewrites to a template assignment, but @mouse-move is still wrongly kebab-cased", async () => {
     const out = await code("TypedEvent", "vue");
     expect(out).toContain("const pos = ref({ x: 0, y: 0 })");
-    // BUG: @mouse-move is kebab-cased (native event is `mousemove`, so this binds the wrong
-    // event name), and setPos is undefined — should be `pos.value = { ... }`.
-    expect(out).toContain('@mouse-move="e => setPos({ x: e.clientX, y: e.clientY })"');
+    // The setter call is rewritten to the Vue template assignment `pos = { ... }` (ref unwrapped).
+    // BUG: @mouse-move is kebab-cased — the native DOM event is `mousemove`, so this binds the
+    // wrong event name and the handler never fires. Vue event-name kebab-casing is still broken.
+    expect(out).toContain('@mouse-move="e => pos = { x: e.clientX, y: e.clientY }"');
     expect(out).toContain("{{ pos.x }}");
   });
 
-  it("Qwik: onMouseMove double-wrapped in $() and setPos is undefined", async () => {
+  it("Qwik: onMouseMove single-wrapped in $() and setPos rewritten to pos.value", async () => {
     const out = await code("TypedEvent", "qwik");
     expect(out).toContain("const pos = useSignal({ x: 0, y: 0 })");
-    // BUG: same double-arrow $() wrapping + undefined setPos (should be pos.value = {...}).
-    expect(out).toContain("onMouseMove={$(() => e => setPos({ x: e.clientX, y: e.clientY }))}");
+    // Single-wrapped `$(e => ...)` IS the handler, and the setter call is rewritten to the signal
+    // write `pos.value = { ... }`.
+    expect(out).toContain("onMouseMove={$(e => pos.value = { x: e.clientX, y: e.clientY })}");
     expect(out).toContain("{pos.value.x}");
   });
 
-  it("Angular: (mousemove) binds an arrow calling setPos, which is not a class member", async () => {
+  it("Angular: (mousemove) binds a statement calling pos.set, with $event mapped into the payload", async () => {
     const out = await code("TypedEvent", "angular");
     expect(out).toContain("pos = signal({ x: 0, y: 0 })");
-    // BUG: setPos is referenced in the template event binding but never declared on the class.
-    expect(out).toContain('(mousemove)="e => setPos({ x: e.clientX, y: e.clientY })"');
+    // The handler is lowered to a statement: the setter becomes `pos.set(...)` and the handler
+    // param `e` is mapped to Angular's `$event` (so `e.clientX` → `$event.clientX`).
+    expect(out).toContain('(mousemove)="pos.set({ x: $event.clientX, y: $event.clientY })"');
   });
 });

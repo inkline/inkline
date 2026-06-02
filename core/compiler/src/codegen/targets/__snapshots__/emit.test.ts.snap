@@ -6,7 +6,7 @@ exports[`Angular target > Counter component 1`] = `
 <p>
 {{ count() }}
 </p>
-<button (click)="() => setCount(count() + 1)">
+<button (click)="count.set(count() + 1)">
 +1
 </button>
 </div>\` })
@@ -71,7 +71,7 @@ return (
   <p>
     {count.value}
   </p>
-  <button onClick={$(() => () => setCount(count.value + 1))}>
+  <button onClick={$(() => count.value = count.value + 1)}>
     +1
   </button>
 </div>
@@ -366,7 +366,7 @@ exports[`target emit + print (full output) > Svelte: Counter component 1`] = `
   <p>
     {count}
   </p>
-  <button onclick={() => setCount(count + 1)}>
+  <button onclick={() => count = count + 1}>
     +1
   </button>
 </div>
@@ -385,7 +385,7 @@ exports[`target emit + print (full output) > Vue: Counter component 1`] = `
   <p>
     {{ count }}
   </p>
-  <button @click="() => setCount(count + 1)">
+  <button @click="() => count = count + 1">
     +1
   </button>
 </div>

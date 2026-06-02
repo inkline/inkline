@@ -6,10 +6,32 @@ import { cFile, cImport, cStmt, cRaw, cGroup } from "../../code-ir/builders.ts";
 import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
+import * as ts from "typescript";
+
+/**
+ * Angular event bindings are statements, not function expressions. Unwrap an authored arrow
+ * handler `(e) => body` to its body, mapping the event param to `$event` (e.g.
+ * `(input)="value.set($event.target.value)"`). Block bodies become `;`-separated statements.
+ */
+function angularEventExpr(expr: ts.Expression, rules: RewriteRules): string {
+  if (!ts.isArrowFunction(expr)) return rewriteExpr(expr, rules);
+  const param = expr.parameters[0];
+  const r: RewriteRules =
+    param && ts.isIdentifier(param.name)
+      ? { ...rules, rename: { ...rules.rename, [param.name.text]: "$event" } }
+      : rules;
+  if (ts.isBlock(expr.body)) {
+    return expr.body.statements
+      .filter(ts.isExpressionStatement)
+      .map((s) => rewriteExpr(s.expression, r))
+      .join("; ");
+  }
+  return rewriteExpr(expr.body, r);
+}
 
 const REWRITES: RewriteRules = {
   reactiveRead: { kind: "preserve-call" },
-  setterStyle: { kind: "function-call" },
+  setterStyle: { kind: "method-call", method: "set" },
   refAccess: { kind: "bare" },
   jsxAttrCasing: "html",
   eventNameCase: "camel",
@@ -29,7 +51,7 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       const events = node.events
         .map(
           (e) =>
-            `(${rewriteEventName(e.name, rules).replace(/^on/, "").toLowerCase()})="${rewriteExpr(e.handler.expr, rules)}"`,
+            `(${rewriteEventName(e.name, rules).replace(/^on/, "").toLowerCase()})="${angularEventExpr(e.handler.expr, rules)}"`,
         )
         .join(" ");
       const refs = node.refs.map((r) => `#${rewriteExpr(r.ref.expr, rules)}`).join(" ");
@@ -75,7 +97,7 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       }
       for (const e of node.events) {
         ciParts.push(
-          `(${rewriteEventName(e.name, rules).replace(/^on/, "").toLowerCase()})="${rewriteExpr(e.handler.expr, rules)}"`,
+          `(${rewriteEventName(e.name, rules).replace(/^on/, "").toLowerCase()})="${angularEventExpr(e.handler.expr, rules)}"`,
         );
       }
       const ciAttrStr = ciParts.join(" ");
@@ -100,7 +122,8 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const rules = ctx.rewrites;
+  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
+  const rules: RewriteRules = { ...ctx.rewrites, setters };
   // Class-body expressions (memos, effects, state initializers) access component members via
   // `this.`, unlike the template which uses bare names. A whole-`props` reference reconstructs
   // the declared props as `{ name: this.name, … }`.

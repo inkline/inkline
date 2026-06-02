@@ -25,7 +25,8 @@ export type ReactiveReadKind =
 export type SetterStyleKind =
   | { readonly kind: "function-call" }
   | { readonly kind: "field-assignment"; readonly field: string }
-  | { readonly kind: "direct-assignment" };
+  | { readonly kind: "direct-assignment" }
+  | { readonly kind: "method-call"; readonly method: string };
 
 export type RefAccessKind =
   | { readonly kind: "field"; readonly field: string }
@@ -55,6 +56,13 @@ export interface RewriteRules {
    * (memos/effects), where members are accessed via `this`, unlike the template.
    */
   readonly selfPrefix?: boolean;
+  /**
+   * Map of setter name → state name (e.g. `setCount` → `count`). A call to a known setter
+   * is rewritten per {@link setterStyle} (e.g. `count.value = …`, `count = …`, `count.set(…)`).
+   */
+  readonly setters?: Readonly<Record<string, string>>;
+  /** Rename bare identifiers (e.g. an event-handler param `e` → `$event` for Angular bindings). */
+  readonly rename?: Readonly<Record<string, string>>;
 }
 
 export interface ComponentImport {

@@ -88,13 +88,12 @@ describe("MultipleComponentsPerFile: Counter renders sibling <Label>", () => {
     expect(out).not.toContain("imports: [Label");
   });
 
-  it("Svelte/Vue/Astro/Angular: setter `setCount` is undefined in the click handler", async () => {
-    // BUG: only the reader `count` is destructured/declared; `setCount` is never emitted in these
-    // targets' scope, so the inline `() => setCount(count + 1)` handler throws ReferenceError.
+  it("Svelte: setter `setCount` is rewritten to a direct assignment in the click handler", async () => {
+    // The setter call `setCount(count + 1)` is now rewritten per target — Svelte emits a direct
+    // assignment `count = count + 1`, so no undefined `setCount` reference remains.
     const svelte = await allFiles("MultipleComponentsPerFile", "svelte");
-    expect(svelte).toContain("onclick={() => setCount(count + 1)}");
-    expect(svelte).not.toContain("function setCount");
-    expect(svelte).not.toContain("const setCount");
+    expect(svelte).toContain("onclick={() => count = count + 1}");
+    expect(svelte).not.toContain("setCount");
   });
 });
 
@@ -105,20 +104,21 @@ describe("Composite: signal setters dropped from non-React event handlers", () =
     expect(out).toContain("onClick={() => setX(x + 1)}");
   });
 
-  it("Vue: handler references setX, but script only declares the reader ref (undefined setter)", async () => {
+  it("Vue: setter is rewritten to a direct assignment in the template handler", async () => {
     const out = await code("Composite", "vue");
     expect(out).toContain("const x = ref(1)");
-    // BUG: template emits `@click="() => setX(x + 1)"` but <script setup> never defines `setX`.
-    expect(out).toContain('@click="() => setX(x + 1)"');
-    expect(out).not.toContain("setX =");
-    expect(out).not.toContain("function setX");
+    // The setter call `setX(x + 1)` is rewritten to `x = x + 1` in the Vue template (Vue's
+    // compiler adds `.value`), so no undefined `setX` reference remains.
+    expect(out).toContain('@click="() => x = x + 1"');
+    expect(out).not.toContain("setX");
   });
 
-  it("Qwik: click handler is double-wrapped, returning a function instead of calling setX", async () => {
+  it("Qwik: click handler is single-wrapped and assigns the signal value directly", async () => {
     const out = await code("Composite", "qwik");
-    // BUG: `$(() => () => setX(...))` — clicking returns the inner arrow rather than invoking it,
-    // and `setX` is undefined in scope anyway.
-    expect(out).toContain("onClick={$(() => () => setX(x.value + 1))}");
+    // The handler is single-wrapped now: `$(() => x.value = x.value + 1)` — clicking assigns the
+    // signal directly instead of returning an inner arrow, and the setter is rewritten away.
+    expect(out).toContain("onClick={$(() => x.value = x.value + 1)}");
+    expect(out).not.toContain("setX");
   });
 });
 

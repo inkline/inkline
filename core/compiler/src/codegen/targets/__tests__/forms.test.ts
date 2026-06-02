@@ -71,79 +71,77 @@ describe("ControlledSelect / ControlledTextarea / FormField: value + change/inpu
 });
 
 // ---------------------------------------------------------------------------
-// BUG SURFACE: every non-React/Solid target drops the setter half of the
-// two-way binding. The emitted event handlers call setChecked/setValue/setText
-// which are never declared in the target's scope, so two-way binding is dead
-// at runtime across Vue, Svelte, Angular, Qwik and Astro.
+// State setters are now wired per target. The two-way binding mutation path is
+// rewritten into the idiomatic form for each framework: Vue template `x = v`
+// (with .value stripped in template), Svelte reassignment, Angular `x.set(v)`,
+// Qwik `x.value = v`. The handler no longer references an undefined setter.
 // ---------------------------------------------------------------------------
 
-describe("Vue: model setter is never emitted", () => {
-  it("BUG: <script setup> declares ref but no setter the handler calls", async () => {
+describe("Vue: model setter is rewritten to template assignment", () => {
+  it("<script setup> declares ref; @change mutates it via template assignment", async () => {
     const out = await code("TwoWayCheckbox", "vue");
     // ref is declared...
     expect(out).toContain("const checked = ref(false)");
-    // ...but the only mutation path is an undefined `setChecked`.
+    // ...and there is no undefined `setChecked` in scope.
     expect(out).not.toContain("setChecked =");
     expect(out).not.toContain("function setChecked");
-    // BUG: handler references undefined setChecked; @change never mutates the ref.
-    expect(out).toContain(`@change="() => setChecked(!checked)"`);
+    // Handler mutates the ref directly (template strips .value, Vue re-adds it).
+    expect(out).toContain(`@change="() => checked = !checked"`);
   });
 
-  it("BUG: number input handler calls undefined setValue", async () => {
+  it("number input handler mutates ref via template assignment", async () => {
     const out = await code("TwoWayNumber", "vue");
     expect(out).toContain("const value = ref(0)");
-    // BUG: setValue is never defined in the script block.
-    expect(out).toContain(`@input="e => setValue(Number(e.target.value))"`);
+    expect(out).toContain(`@input="e => value = Number(e.target.value)"`);
     expect(out).not.toContain("const setValue");
   });
 });
 
-describe("Svelte: $state has no setter, handler references undefined fn", () => {
-  it("BUG: onchange calls setChecked but only `let checked = $state(...)` exists", async () => {
+describe("Svelte: $state setter rewritten to reassignment", () => {
+  it("onchange mutates `let checked = $state(...)` via reassignment", async () => {
     const out = await code("TwoWayCheckbox", "svelte");
     expect(out).toContain("let checked = $state(false)");
-    // BUG: setChecked is never declared; Svelte would mutate via reassignment.
-    expect(out).toContain(`onchange={() => setChecked(!checked)}`);
-    expect(out).not.toContain("setChecked =");
+    // Svelte mutates via reassignment, not an undefined setter.
+    expect(out).toContain(`onchange={() => checked = !checked}`);
+    expect(out).not.toContain("setChecked");
   });
 
-  it("BUG: textarea oninput calls undefined setText", async () => {
+  it("textarea oninput mutates state via reassignment", async () => {
     const out = await code("ControlledTextarea", "svelte");
     expect(out).toContain(`let text = $state("")`);
-    expect(out).toContain(`oninput={e => setText(e.target.value)}`);
+    expect(out).toContain(`oninput={e => text = e.target.value}`);
     expect(out).not.toContain("function setText");
   });
 });
 
-describe("Angular: class body has signal but no setter method", () => {
-  it("BUG: (change) handler calls setChecked() absent from the component class", async () => {
+describe("Angular: signal setter rewritten to signal.set()", () => {
+  it("(change) handler calls the signal's .set() as a statement", async () => {
     const out = await code("TwoWayCheckbox", "angular");
     expect(out).toContain("checked = signal(false)");
-    // BUG: template calls setChecked() which is not a member of the class.
-    expect(out).toContain(`(change)="() => setChecked(!checked())"`);
-    // No setChecked declaration exists in the class body (only the signal).
-    expect(out).not.toContain("setChecked = ");
+    // Event binding is a statement that mutates the signal via .set().
+    expect(out).toContain(`(change)="checked.set(!checked())"`);
+    // No undefined setChecked declaration exists in the class body.
+    expect(out).not.toContain("setChecked");
   });
 
-  it("BUG: (input) handler calls undefined setValue", async () => {
+  it("(input) handler calls signal.set() with $event mapped from the param", async () => {
     const out = await code("FormField", "angular");
     expect(out).toContain(`value = signal("")`);
-    expect(out).toContain(`(input)="e => setValue(e.target.value)"`);
+    expect(out).toContain(`(input)="value.set($event.target.value)"`);
   });
 });
 
-describe("Qwik: handler double-wrapped + undefined setter", () => {
-  it("BUG: onInput wraps `() => e => ...` so the inner handler never fires", async () => {
+describe("Qwik: handler single-wrapped + signal.value setter", () => {
+  it("onInput is single-wrapped `$(e => value.value = ...)`", async () => {
     const out = await code("FormField", "qwik");
     expect(out).toContain('const value = useSignal("")');
-    // BUG: extra arrow layer — $(() => e => setValue(...)) returns a function
-    // instead of running it; also setValue is never defined.
-    expect(out).toContain(`onInput={$(() => e => setValue(e.target.value))}`);
+    // Single $() wrap, param preserved, mutation via signal.value.
+    expect(out).toContain(`onInput={$(e => value.value = e.target.value)}`);
   });
 
-  it("BUG: checkbox onChange double-wrapped to `$(() => () => setChecked(...))`", async () => {
+  it("checkbox onChange single-wrapped `$(() => checked.value = ...)`", async () => {
     const out = await code("TwoWayCheckbox", "qwik");
-    expect(out).toContain(`onChange={$(() => () => setChecked(!checked.value))}`);
+    expect(out).toContain(`onChange={$(() => checked.value = !checked.value)}`);
   });
 });
 

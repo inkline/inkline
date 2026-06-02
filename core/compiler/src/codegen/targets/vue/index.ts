@@ -42,9 +42,12 @@ const REWRITES: RewriteRules = {
   },
 };
 
+// In the template, Vue auto-unwraps refs: reads use the bare name (`count`, not `count.value`)
+// and writes are compiled to `.value` (so a setter mutates via `count = …`, not `count.value = …`).
 const TEMPLATE_RULES: RewriteRules = {
   ...REWRITES,
   reactiveRead: { kind: "strip-call" },
+  setterStyle: { kind: "direct-assignment" },
   members: { ...REWRITES.members, props: { strip: true } },
 };
 
@@ -240,7 +243,9 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
 // ── Emit entry point ───────────────────────────────────────────────
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const rules = ctx.rewrites;
+  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
+  const rules: RewriteRules = { ...ctx.rewrites, setters };
+  const templateRules: RewriteRules = { ...TEMPLATE_RULES, setters };
   const scriptBody: Code[] = [];
   const vueImports: string[] = [];
 
@@ -353,7 +358,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     }
   }
 
-  const renderTree = emitNode(component.render, TEMPLATE_RULES);
+  const renderTree = emitNode(component.render, templateRules);
   const fileChildren: Code[] = [];
 
   // Non-setup <script> block for context definitions (must come before <script setup>)

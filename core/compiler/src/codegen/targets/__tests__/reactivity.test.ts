@@ -44,20 +44,22 @@ describe("Counter: signal + memo + effect dependency wiring", () => {
     expect(out).toContain("let doubled = $derived(count * 2)");
   });
 
-  it("BUG: Vue handler references undeclared setter (setCount is never defined)", async () => {
+  it("Vue: handler rewrites setter to direct assignment in template", async () => {
     const out = await code("Counter", "vue");
-    // BUG: createSignal's setter is dropped from Vue <script setup>; the template
-    // calls setCount(...) which is an undefined reference at runtime.
-    expect(out).toContain('@click="() => setCount(count + 1)"');
+    // The setter call is rewritten to a direct ref assignment in the template
+    // (Vue auto-unwraps .value in templates), so no undefined setCount is emitted.
+    expect(out).toContain('@click="() => count = count + 1"');
     expect(out).not.toContain("function setCount");
-    expect(out).not.toContain("setCount =");
+    expect(out).not.toContain("setCount");
   });
 
-  it("BUG: Qwik double-wraps the click handler in a curried arrow", async () => {
+  it("Qwik: click handler is single-wrapped with the setter rewritten to .value assignment", async () => {
     const out = await code("Counter", "qwik");
-    // BUG: emits `$(() => () => ...)` so clicking returns a function instead of
-    // running the handler; setCount is also undefined in qwik scope.
-    expect(out).toContain("onClick={$(() => () => setCount(count.value + 1))}");
+    // Single $(...) wrap and the setter call is rewritten to a signal .value
+    // assignment, so clicking runs the handler instead of returning a function.
+    expect(out).toContain("onClick={$(() => count.value = count.value + 1)}");
+    expect(out).not.toContain("$(() => () =>");
+    expect(out).not.toContain("setCount");
   });
 
   it("BUG: Astro drops signal state, leaving memo + template with undefined reads", async () => {

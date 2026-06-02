@@ -6,7 +6,7 @@ exports[`full output snapshots > BatchUpdates > angular 1`] = `
 <span>
 {{ sum() }}
 </span>
-<button (click)="() => batch(() => { setX(x() + 1); setY(y() + 1); })">
+<button (click)="batch(() => { x.set(x() + 1); y.set(y() + 1); })">
 Both
 </button>
 </div>\` })
@@ -50,7 +50,7 @@ return (
   <span>
     {sum.value}
   </span>
-  <button onClick={$(() => () => batch(() => { setX(x.value + 1); setY(y.value + 1); }))}>
+  <button onClick={$(() => batch(() => { x.value = x.value + 1; y.value = y.value + 1; }))}>
     Both
   </button>
 </div>
@@ -115,7 +115,7 @@ exports[`full output snapshots > BatchUpdates > svelte 1`] = `
   <span>
     {sum}
   </span>
-  <button onclick={() => batch(() => { setX(x + 1); setY(y + 1); })}>
+  <button onclick={() => batch(() => { x = x + 1; y = y + 1; })}>
     Both
   </button>
 </div>
@@ -134,7 +134,7 @@ exports[`full output snapshots > BatchUpdates > vue 1`] = `
   <span>
     {{ sum }}
   </span>
-  <button @click="() => batch(() => { setX(x + 1); setY(y + 1); })">
+  <button @click="() => batch(() => { x = x + 1; y = y + 1; })">
     Both
   </button>
 </div>
@@ -148,10 +148,10 @@ exports[`full output snapshots > Composite > angular 1`] = `
 <span id="sum">
 {{ sum() }}
 </span>
-<button id="incX" (click)="() => setX(x() + 1)">
+<button id="incX" (click)="x.set(x() + 1)">
 +X
 </button>
-<button id="incY" (click)="() => setY(y() + 1)">
+<button id="incY" (click)="y.set(y() + 1)">
 +Y
 </button>
 </div>\` })
@@ -200,10 +200,10 @@ return (
   <span id="sum">
     {sum.value}
   </span>
-  <button id="incX" onClick={$(() => () => setX(x.value + 1))}>
+  <button id="incX" onClick={$(() => x.value = x.value + 1)}>
     +X
   </button>
-  <button id="incY" onClick={$(() => () => setY(y.value + 1))}>
+  <button id="incY" onClick={$(() => y.value = y.value + 1)}>
     +Y
   </button>
 </div>
@@ -277,10 +277,10 @@ exports[`full output snapshots > Composite > svelte 1`] = `
   <span id="sum">
     {sum}
   </span>
-  <button id="incX" onclick={() => setX(x + 1)}>
+  <button id="incX" onclick={() => x = x + 1}>
     +X
   </button>
-  <button id="incY" onclick={() => setY(y + 1)}>
+  <button id="incY" onclick={() => y = y + 1}>
     +Y
   </button>
 </div>
@@ -300,10 +300,10 @@ exports[`full output snapshots > Composite > vue 1`] = `
   <span id="sum">
     {{ sum }}
   </span>
-  <button id="incX" @click="() => setX(x + 1)">
+  <button id="incX" @click="() => x = x + 1">
     +X
   </button>
-  <button id="incY" @click="() => setY(y + 1)">
+  <button id="incY" @click="() => y = y + 1">
     +Y
   </button>
 </div>
@@ -323,7 +323,7 @@ Visible
 Hidden
 </span>
 }
-<button (click)="() => setVisible(!visible())">
+<button (click)="visible.set(!visible())">
 Toggle
 </button>
 </div>\` })
@@ -362,7 +362,7 @@ const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   {visible.value ? (<><span>Visible</span></>) : (<><span>Hidden</span></>)}
-  <button onClick={$(() => () => setVisible(!visible.value))}>
+  <button onClick={$(() => visible.value = !visible.value)}>
     Toggle
   </button>
 </div>
@@ -425,7 +425,7 @@ exports[`full output snapshots > Conditional > svelte 1`] = `
     Hidden
   </span>
   {/if}
-  <button onclick={() => setVisible(!visible)}>
+  <button onclick={() => visible = !visible}>
     Toggle
   </button>
 </div>
@@ -445,7 +445,7 @@ exports[`full output snapshots > Conditional > vue 1`] = `
   <span v-else>
     Hidden
   </span>
-  <button @click="() => setVisible(!visible)">
+  <button @click="() => visible = !visible">
     Toggle
   </button>
 </div>
@@ -456,7 +456,7 @@ exports[`full output snapshots > Conditional > vue 1`] = `
 exports[`full output snapshots > ConditionalClass > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'ConditionalClass', template: \`<div [class]="active() ? "active" : "inactive"">
-<button (click)="() => setActive(!active())">
+<button (click)="active.set(!active())">
 Toggle
 </button>
 </div>\` })
@@ -489,7 +489,7 @@ const active = useSignal(false)
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={[active.value ? "active" : "inactive", props.class].filter(Boolean).join(" ")}>
-  <button onClick={$(() => () => setActive(!active.value))}>
+  <button onClick={$(() => active.value = !active.value)}>
     Toggle
   </button>
 </div>
@@ -539,7 +539,7 @@ exports[`full output snapshots > ConditionalClass > svelte 1`] = `
   let active = $state(false)
 </script>
 <div {...__attrs} class={[active ? "active" : "inactive", __attrs.class].filter(Boolean).join(" ")}>
-  <button onclick={() => setActive(!active)}>
+  <button onclick={() => active = !active}>
     Toggle
   </button>
 </div>
@@ -553,7 +553,7 @@ exports[`full output snapshots > ConditionalClass > vue 1`] = `
 </script>
 <template>
 <div :class='active ? "active" : "inactive"'>
-  <button @click="() => setActive(!active)">
+  <button @click="() => active = !active">
     Toggle
   </button>
 </div>
@@ -563,7 +563,7 @@ exports[`full output snapshots > ConditionalClass > vue 1`] = `
 
 exports[`full output snapshots > ControlledSelect > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, selector: 'ControlledSelect', template: \`<select [value]="value()" (change)="e => setValue(e.target.value)">
+@Component({ standalone: true, selector: 'ControlledSelect', template: \`<select [value]="value()" (change)="value.set($event.target.value)">
 <option value="a">
 A
 </option>
@@ -608,7 +608,7 @@ export const ControlledSelect = component$((props) =>
 const value = useSignal("b")
 const { ...__attrs } = props
 return (
-<select {...__attrs} value={value.value} class={props.class} onChange={$(() => e => setValue(e.target.value))}>
+<select {...__attrs} value={value.value} class={props.class} onChange={$(e => value.value = e.target.value)}>
   <option value="a">
     A
   </option>
@@ -676,7 +676,7 @@ exports[`full output snapshots > ControlledSelect > svelte 1`] = `
   let { ...__attrs }: Record<string, any> = $props()
   let value = $state("b")
 </script>
-<select {...__attrs} value={value} class={__attrs.class} onchange={e => setValue(e.target.value)}>
+<select {...__attrs} value={value} class={__attrs.class} onchange={e => value = e.target.value}>
   <option value="a">
     A
   </option>
@@ -696,7 +696,7 @@ exports[`full output snapshots > ControlledSelect > vue 1`] = `
   const value = ref("b")
 </script>
 <template>
-<select :value="value" @change="e => setValue(e.target.value)">
+<select :value="value" @change="e => value = e.target.value">
   <option value="a">
     A
   </option>
@@ -714,7 +714,7 @@ exports[`full output snapshots > ControlledSelect > vue 1`] = `
 exports[`full output snapshots > ControlledTextarea > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'ControlledTextarea', template: \`<div>
-<textarea [value]="text()" (input)="e => setText(e.target.value)" />
+<textarea [value]="text()" (input)="text.set($event.target.value)" />
 <p>
 {{ text().length }}
 characters
@@ -751,7 +751,7 @@ const text = useSignal("")
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <textarea value={text.value} onInput={$(() => e => setText(e.target.value))} />
+  <textarea value={text.value} onInput={$(e => text.value = e.target.value)} />
   <p>
     {text.value.length}
     characters
@@ -807,7 +807,7 @@ exports[`full output snapshots > ControlledTextarea > svelte 1`] = `
   let text = $state("")
 </script>
 <div {...__attrs} class={__attrs.class}>
-  <textarea value={text} oninput={e => setText(e.target.value)} />
+  <textarea value={text} oninput={e => text = e.target.value} />
   <p>
     {text.length}
     characters
@@ -823,7 +823,7 @@ exports[`full output snapshots > ControlledTextarea > vue 1`] = `
 </script>
 <template>
 <div>
-  <textarea :value="text" @input="e => setText(e.target.value)" />
+  <textarea :value="text" @input="e => text = e.target.value" />
   <p>
     {{ text.length }}
     characters
@@ -842,7 +842,7 @@ exports[`full output snapshots > Counter > angular 1`] = `
 <p>
 {{ doubled() }}
 </p>
-<button (click)="() => setCount(count() + 1)">
+<button (click)="count.set(count() + 1)">
 +1
 </button>
 </div>\` })
@@ -892,7 +892,7 @@ return (
   <p>
     {doubled.value}
   </p>
-  <button onClick={$(() => () => setCount(count.value + 1))}>
+  <button onClick={$(() => count.value = count.value + 1)}>
     +1
   </button>
 </div>
@@ -966,7 +966,7 @@ exports[`full output snapshots > Counter > svelte 1`] = `
   <p>
     {doubled}
   </p>
-  <button onclick={() => setCount(count + 1)}>
+  <button onclick={() => count = count + 1}>
     +1
   </button>
 </div>
@@ -988,7 +988,7 @@ exports[`full output snapshots > Counter > vue 1`] = `
   <p>
     {{ doubled }}
   </p>
-  <button @click="() => setCount(count + 1)">
+  <button @click="() => count = count + 1">
     +1
   </button>
 </div>
@@ -1120,8 +1120,8 @@ exports[`full output snapshots > DefineSlotBasic > vue 1`] = `
 exports[`full output snapshots > DynamicList > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'DynamicList', template: \`<div>
-<input [value]="input()" (input)="e => setInput(e.target.value)" />
-<button (click)="() => { setItems([...items(), input()]); setInput(""); }">
+<input [value]="input()" (input)="input.set($event.target.value)" />
+<button (click)="items.set([...items(), input()]); input.set("")">
 Add
 </button>
 <ul>
@@ -1169,8 +1169,8 @@ const input = useSignal("")
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <input value={input.value} onInput={$(() => e => setInput(e.target.value))} />
-  <button onClick={$(() => () => { setItems([...items.value, input.value]); setInput(""); })}>
+  <input value={input.value} onInput={$(e => input.value = e.target.value)} />
+  <button onClick={$(() => { items.value = [...items.value, input.value]; input.value = ""; })}>
     Add
   </button>
   <ul>
@@ -1236,8 +1236,8 @@ exports[`full output snapshots > DynamicList > svelte 1`] = `
   let input = $state("")
 </script>
 <div {...__attrs} class={__attrs.class}>
-  <input value={input} oninput={e => setInput(e.target.value)} />
-  <button onclick={() => { setItems([...items, input]); setInput(""); }}>
+  <input value={input} oninput={e => input = e.target.value} />
+  <button onclick={() => { items = [...items, input]; input = ""; }}>
     Add
   </button>
   <ul>
@@ -1258,8 +1258,8 @@ exports[`full output snapshots > DynamicList > vue 1`] = `
 </script>
 <template>
 <div>
-  <input :value="input" @input="e => setInput(e.target.value)" />
-  <button @click='() => { setItems([...items, input]); setInput(""); }'>
+  <input :value="input" @input="e => input = e.target.value" />
+  <button @click='() => { items = [...items, input]; input = ""; }'>
     Add
   </button>
   <ul>
@@ -1274,7 +1274,7 @@ exports[`full output snapshots > DynamicList > vue 1`] = `
 
 exports[`full output snapshots > EffectCleanup > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, selector: 'EffectCleanup', template: \`<button (click)="() => setActive(!active())">
+@Component({ standalone: true, selector: 'EffectCleanup', template: \`<button (click)="active.set(!active())">
 Toggle
 </button>\` })
 export class EffectCleanupComponent
@@ -1311,7 +1311,7 @@ useVisibleTask$(() => { if (active()) {
     } })
 const { ...__attrs } = props
 return (
-<button {...__attrs} class={props.class} onClick={$(() => () => setActive(!active.value))}>
+<button {...__attrs} class={props.class} onClick={$(() => active.value = !active.value)}>
   Toggle
 </button>
 )
@@ -1367,7 +1367,7 @@ exports[`full output snapshots > EffectCleanup > svelte 1`] = `
       return () => clearInterval(id);
     } })
 </script>
-<button {...__attrs} class={__attrs.class} onclick={() => setActive(!active)}>
+<button {...__attrs} class={__attrs.class} onclick={() => active = !active}>
   Toggle
 </button>
 "
@@ -1383,7 +1383,7 @@ exports[`full output snapshots > EffectCleanup > vue 1`] = `
     } })
 </script>
 <template>
-<button @click="() => setActive(!active)">
+<button @click="() => active = !active">
   Toggle
 </button>
 </template>
@@ -1584,7 +1584,7 @@ exports[`full output snapshots > ForLoop > vue 1`] = `
 exports[`full output snapshots > FormField > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'FormField', template: \`<div>
-<input [value]="value()" (input)="e => setValue(e.target.value)" />
+<input [value]="value()" (input)="value.set($event.target.value)" />
 <p>
 {{ value() }}
 </p>
@@ -1619,7 +1619,7 @@ const value = useSignal("")
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <input value={value.value} onInput={$(() => e => setValue(e.target.value))} />
+  <input value={value.value} onInput={$(e => value.value = e.target.value)} />
   <p>
     {value.value}
   </p>
@@ -1672,7 +1672,7 @@ exports[`full output snapshots > FormField > svelte 1`] = `
   let value = $state("")
 </script>
 <div {...__attrs} class={__attrs.class}>
-  <input value={value} oninput={e => setValue(e.target.value)} />
+  <input value={value} oninput={e => value = e.target.value} />
   <p>
     {value}
   </p>
@@ -1687,7 +1687,7 @@ exports[`full output snapshots > FormField > vue 1`] = `
 </script>
 <template>
 <div>
-  <input :value="value" @input="e => setValue(e.target.value)" />
+  <input :value="value" @input="e => value = e.target.value" />
   <p>
     {{ value }}
   </p>
@@ -1864,7 +1864,7 @@ exports[`full output snapshots > Lifecycle > svelte 1`] = `
 "<script lang="ts">
   let { ...__attrs }: Record<string, any> = $props()
   let mounted = $state(false)
-  $effect(() => { setMounted(true); })
+  $effect(() => { mounted = true; })
   $effect(() => { return () => { console.log("cleanup"); } })
 </script>
 <span {...__attrs} class={__attrs.class}>
@@ -1877,7 +1877,7 @@ exports[`full output snapshots > Lifecycle > vue 1`] = `
 "<script setup lang="ts">
   import { ref, onMounted, onUnmounted } from "vue";
   const mounted = ref(false)
-  onMounted(() => { setMounted(true); })
+  onMounted(() => { mounted.value = true; })
   onUnmounted(() => { console.log("cleanup"); })
 </script>
 <template>
@@ -1894,7 +1894,7 @@ exports[`full output snapshots > MemoChain > angular 1`] = `
 <span>
 {{ label() }}
 </span>
-<button (click)="() => setBase(base() + 1)">
+<button (click)="base.set(base() + 1)">
 +1
 </button>
 </div>\` })
@@ -1942,7 +1942,7 @@ return (
   <span>
     {label.value}
   </span>
-  <button onClick={$(() => () => setBase(base.value + 1))}>
+  <button onClick={$(() => base.value = base.value + 1)}>
     +1
   </button>
 </div>
@@ -2010,7 +2010,7 @@ exports[`full output snapshots > MemoChain > svelte 1`] = `
   <span>
     {label}
   </span>
-  <button onclick={() => setBase(base + 1)}>
+  <button onclick={() => base = base + 1}>
     +1
   </button>
 </div>
@@ -2030,7 +2030,7 @@ exports[`full output snapshots > MemoChain > vue 1`] = `
   <span>
     {{ label }}
   </span>
-  <button @click="() => setBase(base + 1)">
+  <button @click="() => base = base + 1">
     +1
   </button>
 </div>
@@ -2041,7 +2041,7 @@ exports[`full output snapshots > MemoChain > vue 1`] = `
 exports[`full output snapshots > MixedControlFlow > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'MixedControlFlow', template: \`<div>
-<input [value]="filter()" (input)="e => setFilter(e.target.value)" />
+<input [value]="filter()" (input)="filter.set($event.target.value)" />
 <ul>
 @for (item of items(); track item => item) {
 @if (item.includes(filter())) {
@@ -2086,7 +2086,7 @@ const filter = useSignal("")
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <input value={filter.value} onInput={$(() => e => setFilter(e.target.value))} />
+  <input value={filter.value} onInput={$(e => filter.value = e.target.value)} />
   <ul>
     {items.value.map((item) => (<>{item.includes(filter.value) ? (<><li>{item}</li></>) : null}</>))}
   </ul>
@@ -2144,7 +2144,7 @@ exports[`full output snapshots > MixedControlFlow > svelte 1`] = `
   let filter = $state("")
 </script>
 <div {...__attrs} class={__attrs.class}>
-  <input value={filter} oninput={e => setFilter(e.target.value)} />
+  <input value={filter} oninput={e => filter = e.target.value} />
   <ul>
     {#each items as item (item)}{#if item.includes(filter)}<li>
       {item}
@@ -2163,7 +2163,7 @@ exports[`full output snapshots > MixedControlFlow > vue 1`] = `
 </script>
 <template>
 <div>
-  <input :value="filter" @input="e => setFilter(e.target.value)" />
+  <input :value="filter" @input="e => filter = e.target.value" />
   <ul>
     <template v-for="item in items" :key="item">
       <li v-if="item.includes(filter)">
@@ -3288,7 +3288,7 @@ Tab B
 </p>
   }
 }
-<button (click)="() => setTab(tab() === "a" ? "b" : "a")">
+<button (click)="tab.set(tab() === "a" ? "b" : "a")">
 Switch
 </button>
 </div>\` })
@@ -3327,7 +3327,7 @@ const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   {tab.value === "a" ? (<><p>Tab A</p></>) : tab.value === "b" ? (<><p>Tab B</p></>) : null}
-  <button onClick={$(() => () => setTab(tab.value === "a" ? "b" : "a"))}>
+  <button onClick={$(() => tab.value = tab.value === "a" ? "b" : "a")}>
     Switch
   </button>
 </div>
@@ -3397,7 +3397,7 @@ exports[`full output snapshots > SwitchTabs > svelte 1`] = `
     Tab B
   </p>
   {/if}
-  <button onclick={() => setTab(tab === "a" ? "b" : "a")}>
+  <button onclick={() => tab = tab === "a" ? "b" : "a"}>
     Switch
   </button>
 </div>
@@ -3417,7 +3417,7 @@ exports[`full output snapshots > SwitchTabs > vue 1`] = `
   <p v-else-if='tab === "b"'>
     Tab B
   </p>
-  <button @click='() => setTab(tab === "a" ? "b" : "a")'>
+  <button @click='() => tab = tab === "a" ? "b" : "a"'>
     Switch
   </button>
 </div>

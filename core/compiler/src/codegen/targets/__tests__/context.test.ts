@@ -44,10 +44,9 @@ describe("ContextProvider: createContext + provide per target", () => {
     expect(out).toContain('import { ref, provide } from "vue"');
     expect(out).toContain('provide(FormContext.key, { disabled: disabled.value, size: "md" })');
 
-    // BUG: the signal setter `setDisabled` is referenced in the template but never declared in
-    // <script setup> (Vue uses `ref`, so the setter does not exist). This is a ReferenceError at
-    // runtime: `setDisabled is not defined`.
-    expect(out).toContain('@click="() => setDisabled(!disabled)"');
+    // The setter is rewritten to a direct assignment in the template; Vue auto-unwraps the ref
+    // so the template uses the bare name (`disabled`, not `disabled.value`).
+    expect(out).toContain('@click="() => disabled = !disabled"');
     expect(out).not.toContain("function setDisabled");
   });
 
@@ -60,11 +59,10 @@ describe("ContextProvider: createContext + provide per target", () => {
     expect(out).toContain('setContext(FormContext.key, { disabled: disabled, size: "md" })');
     expect(out).toContain("let disabled = $state(false)");
 
-    // BUG: Svelte models signals as `$state` mutated by direct assignment, so there is no
-    // `setDisabled` binding — yet the click handler still calls `setDisabled(!disabled)`.
-    // Broken at runtime (`setDisabled is not defined`).
-    expect(out).toContain("onclick={() => setDisabled(!disabled)}");
-    expect(out).not.toContain("setDisabled =");
+    // Svelte models signals as `$state` mutated by direct assignment, so the setter is rewritten
+    // to `disabled = !disabled` in the click handler.
+    expect(out).toContain("onclick={() => disabled = !disabled}");
+    expect(out).not.toContain("setDisabled");
   });
 
   it("Angular: InjectionToken context + providers metadata", async () => {
@@ -81,10 +79,9 @@ describe("ContextProvider: createContext + provide per target", () => {
       'providers: [{ provide: FormContext.key, useValue: { disabled: disabled(), size: "md" } }]',
     );
 
-    // BUG: the click handler is arrow-wrapped (`(click)="() => setDisabled(...)"`) and references
-    // the nonexistent `setDisabled`. Angular template event bindings are expressions, not arrow
-    // factories, and there is no `setDisabled` member on the class.
-    expect(out).toContain('(click)="() => setDisabled(!disabled())"');
+    // The click handler is now a statement binding using the signal's `.set()` setter, with no
+    // arrow factory: `(click)="disabled.set(!disabled())"`.
+    expect(out).toContain('(click)="disabled.set(!disabled())"');
   });
 
   it("Qwik: useContextProvider but emitted before the signal it reads (TDZ bug)", async () => {
@@ -105,10 +102,9 @@ describe("ContextProvider: createContext + provide per target", () => {
     expect(declIdx).toBeGreaterThanOrEqual(0);
     expect(provideIdx).toBeLessThan(declIdx); // provide is (wrongly) before the declaration
 
-    // BUG: the event handler is double-arrow-wrapped and calls the nonexistent `setDisabled`:
-    // `onClick={$(() => () => setDisabled(!disabled.value))}` — the inner `() =>` is never
-    // invoked and `setDisabled` is undefined.
-    expect(out).toContain("onClick={$(() => () => setDisabled(!disabled.value))}");
+    // The event handler is now single-wrapped with `$(...)` and rewrites the setter to a direct
+    // `.value` assignment: `onClick={$(() => disabled.value = !disabled.value)}`.
+    expect(out).toContain("onClick={$(() => disabled.value = !disabled.value)}");
   });
 
   it("Astro: provider collapses to static frontmatter with no context provision", async () => {

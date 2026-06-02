@@ -12,6 +12,9 @@ export default [
     },
     rules: {
       "no-unused-vars": "off",
+      // Misfires on generated lifecycle code: `$state(false)` set once in an onMount `$effect`
+      // is not derivable from other reactive state.
+      "svelte/prefer-writable-derived": "off",
     },
   },
 ];
