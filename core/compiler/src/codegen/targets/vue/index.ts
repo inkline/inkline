@@ -252,7 +252,19 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
   const rules: RewriteRules = { ...ctx.rewrites, setters };
-  const templateRules: RewriteRules = { ...TEMPLATE_RULES, setters };
+  // The Vue template auto-unwraps refs, so resource data/loading/error are read by their bare names
+  // (reactiveRead strip-call). Only the template needs this — the <script setup> reads them via
+  // `.value`. Build the set of bound resource names and spread it into the template rules.
+  const resourceReads = new Set(
+    component.resources.flatMap((r) =>
+      [r.name, r.loadingName, r.errorName].filter((n): n is string => n !== undefined),
+    ),
+  );
+  const templateRules: RewriteRules = {
+    ...TEMPLATE_RULES,
+    setters,
+    reactiveBindings: resourceReads,
+  };
   const scriptBody: Code[] = [];
   const vueImports: string[] = [];
 
@@ -275,11 +287,24 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     vueImports.push("watchEffect");
     scriptBody.push(cStmt({ body: `watchEffect(${rewriteExpr(e.body, rules)})`, span: e.loc }));
   }
+  // Lower each resource to reactive refs (data/loading/error) plus a fire-and-forget loader that
+  // runs the fetcher and updates them — the universal "manual fetch with loading/error state"
+  // pattern in idiomatic Vue. The template auto-unwraps the refs (see reactiveBindings below).
   for (const res of component.resources) {
     vueImports.push("ref");
+    scriptBody.push(cStmt({ body: `const ${res.name} = ref(undefined)`, span: res.loc }));
+    if (res.loadingName) {
+      scriptBody.push(cStmt({ body: `const ${res.loadingName} = ref(true)`, span: res.loc }));
+    }
+    if (res.errorName) {
+      scriptBody.push(cStmt({ body: `const ${res.errorName} = ref(undefined)`, span: res.loc }));
+    }
+    const fetcher = rewriteExpr(res.fetcher.expr, rules);
+    const onError = res.errorName ? `.catch((e) => ${res.errorName}.value = e)` : "";
+    const onFinally = res.loadingName ? `.finally(() => ${res.loadingName}.value = false)` : "";
     scriptBody.push(
       cStmt({
-        body: `const ${res.name} = ref(await (${rewriteExpr(res.fetcher.expr, rules)})())`,
+        body: `;(${fetcher})().then((d) => ${res.name}.value = d)${onError}${onFinally}`,
         span: res.loc,
       }),
     );

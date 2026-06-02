@@ -486,25 +486,47 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     solidImports.push("createEffect");
     body.push(cStmt({ body: `createEffect(${rewriteExpr(e.body, rules)})`, span: e.loc }));
   }
+  // Lower each resource to reactive signals (data/loading/error) plus a fire-and-forget loader that
+  // runs the fetcher and updates them — the universal "manual fetch with loading/error state"
+  // pattern in idiomatic Solid. The template reads the signals as calls (see reactiveBindings below).
   for (const res of component.resources) {
-    solidImports.push("createResource");
-    // Solid's `createResource` returns `[data, { loading, error, refetch, … }]`. Destructure only
-    // the metas the author bound, mapping each to its local name, so unbound accessors don't become
-    // unused variables.
-    // Use object shorthand when the local name matches the meta (`{ loading }`), and an explicit
-    // rename only when the author aliased it (`{ error: _error }`) — a `loading: loading` rename
-    // to the same name is a lint error.
-    const meta = (prop: string, local: string) => (local === prop ? prop : `${prop}: ${local}`);
-    const metas: string[] = [];
-    if (res.loadingName) metas.push(meta("loading", res.loadingName));
-    if (res.errorName) metas.push(meta("error", res.errorName));
-    if (res.refetchName) metas.push(meta("refetch", res.refetchName));
-    const metaPart = metas.length > 0 ? `, { ${metas.join(", ")} }` : "";
+    solidImports.push("createSignal");
+    // Setter names are derived from each binding (`set${Capitalized}`, leading underscores from
+    // unused-marked names like `_error` stripped) so multiple resources never collide on `setData`.
+    const setterFor = (name: string) =>
+      `set${name.replace(/^_+/, "").replace(/^./, (c) => c.toUpperCase())}`;
+    const dataSetter = setterFor(res.name);
     body.push(
       cStmt({
-        body: `const [${res.name}${metaPart}] = createResource(${rewriteExpr(res.fetcher.expr, rules)})`,
+        body: `const [${res.name}, ${dataSetter}] = createSignal(undefined)`,
         span: res.loc,
       }),
+    );
+    let loadingSetter: string | undefined;
+    if (res.loadingName) {
+      loadingSetter = setterFor(res.loadingName);
+      body.push(
+        cStmt({
+          body: `const [${res.loadingName}, ${loadingSetter}] = createSignal(true)`,
+          span: res.loc,
+        }),
+      );
+    }
+    let errorSetter: string | undefined;
+    if (res.errorName) {
+      errorSetter = setterFor(res.errorName);
+      body.push(
+        cStmt({
+          body: `const [${res.errorName}, ${errorSetter}] = createSignal(undefined)`,
+          span: res.loc,
+        }),
+      );
+    }
+    const fetcher = rewriteExpr(res.fetcher.expr, rules);
+    const onError = errorSetter ? `.catch(${errorSetter})` : "";
+    const onFinally = loadingSetter ? `.finally(() => ${loadingSetter}(false))` : "";
+    body.push(
+      cStmt({ body: `;(${fetcher})().then(${dataSetter})${onError}${onFinally}`, span: res.loc }),
     );
   }
   for (const m of component.lifecycle.onMount) {
@@ -537,10 +559,20 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const styleImport =
     component.styles.length > 0 ? [cRaw({ text: `import "./${component.name}.css";` })] : [];
 
-  let renderTree = emitNode(component.render, rules);
+  // Solid signals are read as calls, so the render tree must read each resource binding as `data()`.
+  // Build the set of bound resource names and spread it into the render rules (reactiveRead is
+  // preserve-call). Only the render tree needs this — the body declarations above read nothing.
+  const resourceReads = new Set(
+    component.resources.flatMap((r) =>
+      [r.name, r.loadingName, r.errorName].filter((n): n is string => n !== undefined),
+    ),
+  );
+  const renderRules: RewriteRules = { ...rules, reactiveBindings: resourceReads };
+
+  let renderTree = emitNode(component.render, renderRules);
 
   for (const p of component.provides) {
-    const valueExpr = rewriteExpr(p.value.expr, rules);
+    const valueExpr = rewriteExpr(p.value.expr, renderRules);
     renderTree = cJsxElement({
       tag: `${p.contextName}.Provider`,
       attrs: [

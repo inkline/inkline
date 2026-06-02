@@ -12,81 +12,143 @@ async function code(fixture: string, target: TargetName): Promise<string> {
 // ---------------------------------------------------------------------------
 // AsyncData: createResource() async data fetching
 //
-// createResource returns `[data, { loading, error }]`. The template reads
-// `loading` and `data`. createResource is now part of the primitive table and
-// is emitted on every target (it is no longer dropped), with the `async`
-// keyword preserved on the fetcher. Solid maps it to its native createResource
-// and destructures the resource metas the author bound. React/Vue/Angular/Astro
-// each map it to their own async-data idiom; on those targets only `data` is
-// wired today, so the template's bare `loading` reference is still unresolved —
-// see the residual-bug notes below.
+// In the authoring model `createResource<T>(fn)` returns `[data: T | undefined,
+// { loading: boolean; error }]` — plain VALUES read by their bare names. Every
+// target lowers a resource to reactive state (data/loading/error) plus an async
+// loader that runs the fetcher and updates them (the universal "manual fetch with
+// loading/error state" pattern), expressed in each framework's idiom. The bare
+// template reads resolve per target (React/Vue/Svelte bare, Solid/Angular call
+// form, Qwik `.value`). The fixture aliases error to `_error` (unused).
 // ---------------------------------------------------------------------------
 describe("AsyncData: createResource async resource handling", () => {
-  it("React maps createResource to use(), wiring data (loading stays unresolved)", async () => {
+  it("React lowers the resource to useState + a useEffect loader", async () => {
     const out = await code("AsyncData", "react");
-    // React has no createResource; the fetcher is mapped to the `use` hook and
-    // bound to `data`. The `async` keyword on the fetcher is preserved.
-    expect(out).toContain('import { use } from "react";');
+    expect(out).toContain('import { useState, useEffect } from "react";');
+    expect(out).toContain("const [data, setData] = useState(undefined)");
+    expect(out).toContain("const [loading, setLoading] = useState(true)");
+    expect(out).toContain("const [_error, setError] = useState(undefined)");
     expect(out).toContain(
-      'const data = use(async () => { const res = await fetch("/api/items"); return res.json(); })',
+      'useEffect(() => { (async () => { const res = await fetch("/api/items"); return res.json(); })().then(setData).catch(setError).finally(() => setLoading(false)); }, [])',
     );
+    // React reactiveRead is strip-call, so the template reads stay bare.
     expect(out).toContain('{loading ? "Loading..." : JSON.stringify(data)}');
-    // RESIDUAL BUG: only `data` is wired; `loading` has no binding, so the JSX
-    // reference resolves to nothing at runtime.
-    expect(out).not.toContain("loading =");
-    expect(out).not.toContain("const [");
   });
 
-  it("Vue wires the resource as an awaited ref data (loading stays unresolved)", async () => {
+  it("Vue lowers the resource to refs + an async loader in <script setup>", async () => {
     const out = await code("AsyncData", "vue");
-    // The resource is emitted: <script setup> imports ref and awaits the fetcher
-    // into a `data` ref. The `async` keyword on the inner fetcher is preserved.
     expect(out).toContain('import { ref } from "vue";');
-    expect(out).toContain(
-      'const data = ref(await (async () => { const res = await fetch("/api/items"); return res.json(); })())',
-    );
-    expect(out).toContain('{{ loading ? "Loading..." : JSON.stringify(data) }}');
-    // RESIDUAL BUG: Vue wires only `data`; the template still reads a bare
-    // `loading` that is never declared in <script setup>.
     expect(out).not.toContain("createResource");
+    expect(out).toContain("const data = ref(undefined)");
+    expect(out).toContain("const loading = ref(true)");
+    expect(out).toContain("const _error = ref(undefined)");
+    expect(out).toContain(
+      ';(async () => { const res = await fetch("/api/items"); return res.json(); })().then((d) => data.value = d).catch((e) => _error.value = e).finally(() => loading.value = false)',
+    );
+    // Vue templates auto-unwrap refs, so the template reads stay bare.
+    expect(out).toContain('{{ loading ? "Loading..." : JSON.stringify(data) }}');
   });
 
-  it("Solid keeps native createResource and destructures the bound metas", async () => {
-    const out = await code("AsyncData", "solid");
-    // Solid has a native createResource: the call and its import are emitted, and only the metas
-    // the author bound are destructured (object-shorthand when the name matches, an explicit rename
-    // for aliases like `error: _error`) — `loading` and `data` are bound.
-    expect(out).toContain('import { createResource, splitProps } from "solid-js";');
+  it("Svelte lowers the resource to $state + an async loader", async () => {
+    const out = await code("AsyncData", "svelte");
+    expect(out).toContain("let data = $state(undefined)");
+    expect(out).toContain("let loading = $state(true)");
+    expect(out).toContain("let _error = $state(undefined)");
     expect(out).toContain(
-      'const [data, { loading, error: _error }] = createResource(async () => { const res = await fetch("/api/items"); return res.json(); })',
+      ';(async () => { const res = await fetch("/api/items"); return res.json(); })().then((d) => data = d).catch((e) => _error = e).finally(() => loading = false)',
     );
-    // BUG: in Solid `data` is an accessor function, so the template should read `data()`. The body
-    // currently reads it bare (`JSON.stringify(data)`), which stringifies the accessor, not the
-    // resolved value — tracked with the broader resource-read modeling gap.
     expect(out).toContain('{loading ? "Loading..." : JSON.stringify(data)}');
   });
 
-  it("Angular maps createResource to resource() with a data field (loading stays unresolved)", async () => {
-    const out = await code("AsyncData", "angular");
-    // The class now declares a `data` field via Angular's resource() loader,
-    // and the resource symbol is imported. The async fetcher is preserved.
+  it("Qwik lowers the resource to useSignal + a useTask$ loader", async () => {
+    const out = await code("AsyncData", "qwik");
+    expect(out).toContain("const data = useSignal(undefined)");
+    expect(out).toContain("const loading = useSignal(true)");
+    expect(out).toContain("const _error = useSignal(undefined)");
     expect(out).toContain(
-      'import { Component, signal, computed, effect, resource } from "@angular/core";',
+      'useTask$(() => { (async () => { const res = await fetch("/api/items"); return res.json(); })().then((d) => data.value = d).catch((e) => _error.value = e).finally(() => loading.value = false); })',
     );
+    // Qwik reactiveRead is field-access(value), so the template reads `.value`.
+    expect(out).toContain('{loading.value ? "Loading..." : JSON.stringify(data.value)}');
+  });
+
+  it("Solid lowers the resource to signals plus an async loader", async () => {
+    const out = await code("AsyncData", "solid");
+    // Solid lowers each resource to reactive signals (data/loading/error) plus a fire-and-forget
+    // loader that runs the fetcher and updates them — the universal "manual fetch with loading/error
+    // state" pattern. createResource is gone; only createSignal is imported.
+    expect(out).toContain('import { createSignal, splitProps } from "solid-js";');
+    expect(out).not.toContain("createResource");
+    expect(out).toContain("const [data, setData] = createSignal(undefined)");
+    expect(out).toContain("const [loading, setLoading] = createSignal(true)");
+    expect(out).toContain("const [_error, setError] = createSignal(undefined)");
     expect(out).toContain(
-      'data = resource({ loader: async () => { const res = await fetch("/api/items"); return res.json(); } })',
+      ';(async () => { const res = await fetch("/api/items"); return res.json(); })().then(setData).catch(setError).finally(() => setLoading(false))',
+    );
+    // Solid signals are read as calls, so the template reads `data()`/`loading()`.
+    expect(out).toContain('{loading() ? "Loading..." : JSON.stringify(data())}');
+  });
+
+  it("Angular lowers the resource to signal fields plus an async loader", async () => {
+    const out = await code("AsyncData", "angular");
+    // Angular lowers each resource to reactive signal fields (data/loading/error) plus an async
+    // loader that runs the fetcher and writes the results into those signals — the universal
+    // "manual fetch with loading/error state" pattern. The `resource` symbol is no longer imported.
+    expect(out).toContain('import { Component, signal, computed, effect } from "@angular/core";');
+    expect(out).not.toContain("resource");
+    expect(out).toContain("data = signal(undefined)");
+    expect(out).toContain("loading = signal(true)");
+    expect(out).toContain("_error = signal(undefined)");
+    // The loader runs from the consolidated constructor and updates each signal.
+    expect(out).toContain(
+      'constructor() { (async () => { const res = await fetch("/api/items"); return res.json(); })().then((d) => this.data.set(d)).catch((e) => this._error.set(e)).finally(() => this.loading.set(false)) }',
     );
     expect(out).toContain("export class AsyncDataComponent");
-    // String literals inside the binding are single-quoted so they survive the
-    // double-quoted Angular template.
-    expect(out).toContain("{{ loading ? 'Loading...' : JSON.stringify(data) }}");
-    // RESIDUAL BUG: the template reads `loading`/`data` without `this.` and
-    // `loading` has no field, so the binding is unresolved at runtime.
+    // Angular's reactiveRead is preserve-call, so the template reads the signals as `data()`/
+    // `loading()`. String literals are single-quoted to survive the double-quoted template.
+    expect(out).toContain("{{ loading() ? 'Loading...' : JSON.stringify(data()) }}");
+  });
+
+  it("Astro renders the resource server-side (best-effort): top-level await, loading resolved", async () => {
+    const out = await code("AsyncData", "astro");
+    // Astro is SSR-only, so the loader is a top-level await in the frontmatter; `loading` resolves
+    // to a constant `false` and any error is captured. (Documented best-effort — no client runtime.)
+    expect(out).toContain("let _error = undefined");
+    expect(out).toContain("let data");
+    expect(out).toContain(
+      'try { data = await (async () => { const res = await fetch("/api/items"); return res.json(); })() } catch (__e) { _error = __e }',
+    );
+    expect(out).toContain("const loading = false");
+    expect(out).toContain('{loading ? "Loading..." : JSON.stringify(data)}');
   });
 
   it("createResource produces no diagnostic on any target", async () => {
     const result = await compileFixture("AsyncData");
     expect(result.diagnostics).toEqual([]);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// TwoResources: two createResource calls in one component. Guards against the
+// setter/binding collision that hardcoded setter names would cause (a second
+// resource must not redeclare `setData`/`setLoading`).
+// ---------------------------------------------------------------------------
+describe("TwoResources: multiple resources get unique bindings and setters", () => {
+  it("React: each resource derives its own setters from the data name", async () => {
+    const out = await code("TwoResources", "react");
+    expect(out).toContain("const [users, setUsers] = useState(undefined)");
+    expect(out).toContain("const [usersLoading, setUsersLoading] = useState(true)");
+    expect(out).toContain("const [posts, setPosts] = useState(undefined)");
+    expect(out).toContain("const [postsLoading, setPostsLoading] = useState(true)");
+    expect(out).not.toContain("setData");
+  });
+
+  it("Solid: each resource derives its own signal setters (no setData collision)", async () => {
+    const out = await code("TwoResources", "solid");
+    expect(out).toContain("const [users, setUsers] = createSignal(undefined)");
+    expect(out).toContain("const [posts, setPosts] = createSignal(undefined)");
+    expect(out).not.toContain("setData");
+    // Solid reads signals as calls.
+    expect(out).toContain('{usersLoading() ? "..." : JSON.stringify(users())}');
   });
 });
 

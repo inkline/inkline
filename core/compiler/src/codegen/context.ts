@@ -64,6 +64,14 @@ export interface RewriteRules {
   /** Rename bare identifiers (e.g. an event-handler param `e` → `$event` for Angular bindings). */
   readonly rename?: Readonly<Record<string, string>>;
   /**
+   * Identifiers that hold a reactive *value* read by its bare name (e.g. a `createResource`
+   * `data`/`loading`/`error`, typed as a plain value, not an accessor). A bare read of one of
+   * these is rewritten per {@link reactiveRead} — `data` → `data` (React/Vue/Svelte), `data()`
+   * (Solid/Angular), or `data.value` (Qwik) — so each framework's read convention is honoured even
+   * though the authored read has no call syntax.
+   */
+  readonly reactiveBindings?: ReadonlySet<string>;
+  /**
    * Quote style for string literals in emitted expressions. Angular templates embed expressions
    * in double-quoted attributes, so string literals must use single quotes (`'a'`).
    */

@@ -382,13 +382,27 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   for (const e of component.effects)
     scriptBody.push(cStmt({ body: `$effect(${rewriteExpr(e.body, rules)})`, span: e.loc }));
-  for (const res of component.resources)
+  // Lower each resource to reactive $state (data/loading/error) plus a top-level loader that runs
+  // the fetcher and updates them — the universal "manual fetch with loading/error state" pattern in
+  // idiomatic Svelte. The template reads the state by its bare name (see reactiveBindings below).
+  for (const res of component.resources) {
+    scriptBody.push(cStmt({ body: `let ${res.name} = $state(undefined)`, span: res.loc }));
+    if (res.loadingName) {
+      scriptBody.push(cStmt({ body: `let ${res.loadingName} = $state(true)`, span: res.loc }));
+    }
+    if (res.errorName) {
+      scriptBody.push(cStmt({ body: `let ${res.errorName} = $state(undefined)`, span: res.loc }));
+    }
+    const fetcher = rewriteExpr(res.fetcher.expr, rules);
+    const onError = res.errorName ? `.catch((e) => ${res.errorName} = e)` : "";
+    const onFinally = res.loadingName ? `.finally(() => ${res.loadingName} = false)` : "";
     scriptBody.push(
       cStmt({
-        body: `let ${res.name} = $state(await (${rewriteExpr(res.fetcher.expr, rules)})())`,
+        body: `;(${fetcher})().then((d) => ${res.name} = d)${onError}${onFinally}`,
         span: res.loc,
       }),
     );
+  }
   for (const m of component.lifecycle.onMount)
     scriptBody.push(cStmt({ body: `$effect(${rewriteExpr(m.body, rules)})`, span: m.loc }));
   for (const c of component.lifecycle.onCleanup)
@@ -453,7 +467,13 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     fileChildren.push(cRaw({ text: "" }));
   }
 
-  const renderTree = emitNode(component.render, rules);
+  // The render tree reads resource bindings (`data`/`loading`/`error`) by their bare name; flag them
+  // as reactive so a bare read follows Svelte's `reactiveRead` (strip-call, so they stay verbatim).
+  const resourceReads = new Set(
+    component.resources.flatMap((r) => [r.name, r.loadingName, r.errorName].filter(Boolean)),
+  ) as Set<string>;
+  const renderRules: RewriteRules = { ...rules, reactiveBindings: resourceReads };
+  const renderTree = emitNode(component.render, renderRules);
   fileChildren.push(
     cScript({
       lang: "ts",

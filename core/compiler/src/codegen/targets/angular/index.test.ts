@@ -254,14 +254,16 @@ describe("Angular codegen fixes", () => {
         ],
       });
       const code = emitCode(comp);
+      // Resources lower to signal state + an async loader, so no `resource` symbol is imported.
       const importLine = code.split("\n").find((l) => l.includes("@angular/core"))!;
-      const resourceCount = importLine.match(/resource/g);
-      expect(resourceCount).toHaveLength(1);
+      expect(importLine).not.toContain("resource");
+      expect(code).toContain("users = signal(undefined)");
+      expect(code).toContain("posts = signal(undefined)");
     });
   });
 
   describe("resource handling", () => {
-    it("emits resource with loader for resources", () => {
+    it("lowers a resource to signal state plus an async loader", () => {
       const comp = makeComp("Data", createElement({ tag: "div" }), {
         resources: [
           {
@@ -276,9 +278,16 @@ describe("Angular codegen fixes", () => {
         ],
       });
       const code = emitCode(comp);
-      expect(code).toContain("resource({");
-      expect(code).toContain("loader:");
-      expect(code).toContain("fetchData");
+      // data/loading/error become reactive signal fields.
+      expect(code).toContain("data = signal(undefined)");
+      expect(code).toContain("loading = signal(true)");
+      expect(code).toContain("error = signal(undefined)");
+      // The async loader runs the fetcher and writes results into those signals.
+      expect(code).toContain("(() => this.fetchData())().then((d) => this.data.set(d))");
+      expect(code).toContain(".catch((e) => this.error.set(e))");
+      expect(code).toContain(".finally(() => this.loading.set(false))");
+      // No `resource` runtime symbol is imported anymore.
+      expect(code).not.toContain("resource({");
     });
   });
 });

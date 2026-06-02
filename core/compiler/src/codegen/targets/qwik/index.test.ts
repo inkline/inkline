@@ -230,7 +230,7 @@ describe("Qwik codegen fixes", () => {
   });
 
   describe("multiple resources", () => {
-    it("does not duplicate useResource$ import", () => {
+    it("does not duplicate useTask$ import", () => {
       const comp = makeComp("Data", createElement({ tag: "div" }), {
         resources: [
           {
@@ -255,7 +255,7 @@ describe("Qwik codegen fixes", () => {
       });
       const code = emitCode(comp);
       const importLine = code.split("\n").find((l) => l.includes("@qwik.dev/core"))!;
-      const resourceCount = importLine.match(/useResource\$/g);
+      const resourceCount = importLine.match(/useTask\$/g);
       expect(resourceCount).toHaveLength(1);
     });
   });
@@ -278,7 +278,7 @@ describe("Qwik codegen fixes", () => {
   });
 
   describe("resource handling", () => {
-    it("emits useResource$ for resources", () => {
+    it("lowers resources to signals plus an async useTask$ loader", () => {
       const comp = makeComp("Data", createElement({ tag: "div" }), {
         resources: [
           {
@@ -293,9 +293,14 @@ describe("Qwik codegen fixes", () => {
         ],
       });
       const code = emitCode(comp);
-      expect(code).toContain("useResource$");
-      expect(code).toContain("const data");
-      expect(code).toContain("fetchData");
+      expect(code).toContain("const data = useSignal(undefined)");
+      expect(code).toContain("const loading = useSignal(true)");
+      expect(code).toContain("const error = useSignal(undefined)");
+      expect(code).toContain("useTask$(() =>");
+      expect(code).toContain(".then((d) => data.value = d)");
+      expect(code).toContain(".catch((e) => error.value = e)");
+      expect(code).toContain(".finally(() => loading.value = false)");
+      expect(code).not.toContain("useResource$");
     });
   });
 });

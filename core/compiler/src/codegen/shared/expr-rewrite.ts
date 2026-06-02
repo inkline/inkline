@@ -22,6 +22,19 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
   if (ts.isIdentifier(expr)) {
     const renamed = rules.rename?.[expr.text];
     if (renamed !== undefined) return renamed;
+    // A bare reactive-value read (e.g. a resource `data`/`loading`) follows the target's reactive
+    // read convention even though the authored read has no call syntax.
+    if (rules.reactiveBindings?.has(expr.text)) {
+      const self = rules.selfPrefix ? "this." : "";
+      switch (rules.reactiveRead.kind) {
+        case "strip-call":
+          return `${self}${expr.text}`;
+        case "preserve-call":
+          return `${self}${expr.text}()`;
+        case "field-access":
+          return `${self}${expr.text}.${rules.reactiveRead.field}`;
+      }
+    }
     // A bare `props` reference in a target that destructures props (no `props` binding) is
     // rewritten to the reconstruction of its destructured bindings.
     if (expr.text === "props" && rules.members?.props?.whole !== undefined) {

@@ -179,17 +179,20 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     angularImports.push("inject", "DestroyRef");
     ctorStmts.push(`inject(DestroyRef).onDestroy(${rewriteExpr(c.body, bodyRules)})`);
   }
+  // Lower each resource to reactive signal state plus an async loader that runs the fetcher and
+  // writes the result into those signals — the universal "manual fetch with loading/error state"
+  // pattern, expressed with Angular signals. The loader runs from the consolidated constructor.
+  for (const res of component.resources) {
+    body.push(cStmt({ body: `${res.name} = signal(undefined)`, span: res.loc }));
+    if (res.loadingName) body.push(cStmt({ body: `${res.loadingName} = signal(true)` }));
+    if (res.errorName) body.push(cStmt({ body: `${res.errorName} = signal(undefined)` }));
+    let loader = `(${rewriteExpr(res.fetcher.expr, bodyRules)})().then((d) => this.${res.name}.set(d))`;
+    if (res.errorName) loader += `.catch((e) => this.${res.errorName}.set(e))`;
+    if (res.loadingName) loader += `.finally(() => this.${res.loadingName}.set(false))`;
+    ctorStmts.push(loader);
+  }
   if (ctorStmts.length > 0) {
     body.push(cStmt({ body: `constructor() { ${ctorStmts.join("; ")} }` }));
-  }
-  for (const res of component.resources) {
-    angularImports.push("resource");
-    body.push(
-      cStmt({
-        body: `${res.name} = resource({ loader: ${rewriteExpr(res.fetcher.expr, bodyRules)} })`,
-        span: res.loc,
-      }),
-    );
   }
   for (const r of component.refs) {
     angularImports.push("viewChild", "ElementRef");
@@ -209,7 +212,16 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     }
   }
 
-  const template = emitNode(component.render, rules);
+  // Bare template reads of a resource's data/loading/error follow Angular's reactiveRead
+  // (preserve-call) so they emit as `data()`/`loading()`. Only the template needs this — the
+  // class-body declaration rules above must keep emitting the bare field names.
+  const resourceReads = new Set(
+    component.resources.flatMap((r) =>
+      [r.name, r.loadingName, r.errorName].filter((n): n is string => n !== undefined),
+    ),
+  );
+  const templateRules: RewriteRules = { ...rules, reactiveBindings: resourceReads };
+  const template = emitNode(component.render, templateRules);
   const styleImport =
     component.styles.length > 0 ? [cRaw({ text: `import "./${component.name}.css";` })] : [];
 

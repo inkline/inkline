@@ -135,7 +135,15 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
   const rules: RewriteRules = { ...ctx.rewrites, setters };
-  const template = emitNode(component.render, rules);
+
+  // Resource data/loading/error are reactive bindings in the render tree: a bare read follows the
+  // target's reactiveRead (here `strip-call`, so they stay bare). Only the template needs this.
+  const resourceReads = new Set(
+    component.resources.flatMap((r) =>
+      [r.name, r.loadingName, r.errorName].filter((n): n is string => n !== undefined),
+    ),
+  );
+  const template = emitNode(component.render, { ...rules, reactiveBindings: resourceReads });
 
   const fallthrough = rootAcceptsFallthrough(component);
   const inlineProps =
@@ -177,12 +185,25 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     cStmt({ body: `const ${m.name} = ${rewriteExpr(m.expr.expr, rules)}`, span: m.loc }),
   );
 
-  const resourceDecls = component.resources.map((res) =>
-    cStmt({
-      body: `const ${res.name} = await (${rewriteExpr(res.fetcher.expr, rules)})()`,
-      span: res.loc,
-    }),
-  );
+  // Astro renders server-side, so each resource resolves once during the frontmatter: await the
+  // fetcher with top-level await, capturing the error when bound. `loading` is therefore always
+  // resolved (`false`) by the time the markup renders.
+  const resourceDecls = component.resources.flatMap((res) => {
+    const stmts: ReturnType<typeof cStmt>[] = [];
+    if (res.errorName)
+      stmts.push(cStmt({ body: `let ${res.errorName} = undefined`, span: res.loc }));
+    stmts.push(cStmt({ body: `let ${res.name}`, span: res.loc }));
+    const fetcher = rewriteExpr(res.fetcher.expr, rules);
+    const catchClause = res.errorName
+      ? ` catch (__e) { ${res.errorName} = __e }`
+      : " catch { /* server render: best-effort */ }";
+    stmts.push(
+      cStmt({ body: `try { ${res.name} = await (${fetcher})() }${catchClause}`, span: res.loc }),
+    );
+    if (res.loadingName)
+      stmts.push(cStmt({ body: `const ${res.loadingName} = false`, span: res.loc }));
+    return stmts;
+  });
 
   const file = cFile({
     flavor: "tsx",

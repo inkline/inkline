@@ -41,6 +41,11 @@ const REWRITES: RewriteRules = {
   },
 };
 
+/** Capitalize the first character (for deriving `useState` setter names: `data` → `setData`). */
+function capitalize(name: string): string {
+  return name.charAt(0).toUpperCase() + name.slice(1);
+}
+
 // ── Attribute fallthrough (Vue-style attribute inheritance) ─────────
 
 /** Props destructured out of the rest so they never leak onto the root DOM element. */
@@ -505,10 +510,42 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   }
   for (const res of component.resources) {
-    reactImports.push("use");
+    // Lower a resource to manual fetch-with-state: `data`/`loading`/`error` become `useState`,
+    // and a `useEffect` runs the fetcher once on mount, piping its result/error into the setters.
+    reactImports.push("useState", "useEffect");
+    const dataSetter = `set${capitalize(res.name)}`;
     body.push(
       cStmt({
-        body: `const ${res.name} = use(${rewriteExpr(res.fetcher.expr, rules)})`,
+        body: `const [${res.name}, ${dataSetter}] = useState(undefined)`,
+        span: res.loc,
+      }),
+    );
+    if (res.loadingName) {
+      body.push(
+        cStmt({
+          body: `const [${res.loadingName}, set${capitalize(res.loadingName)}] = useState(true)`,
+          span: res.loc,
+        }),
+      );
+    }
+    let errorSetter: string | undefined;
+    if (res.errorName) {
+      errorSetter = `set${capitalize(res.errorName.replace(/^_+/, ""))}`;
+      body.push(
+        cStmt({
+          body: `const [${res.errorName}, ${errorSetter}] = useState(undefined)`,
+          span: res.loc,
+        }),
+      );
+    }
+    const fetcher = rewriteExpr(res.fetcher.expr, rules);
+    const catchPart = errorSetter ? `.catch(${errorSetter})` : "";
+    const finallyPart = res.loadingName
+      ? `.finally(() => set${capitalize(res.loadingName)}(false))`
+      : "";
+    body.push(
+      cStmt({
+        body: `useEffect(() => { (${fetcher})().then(${dataSetter})${catchPart}${finallyPart}; }, [])`,
         span: res.loc,
       }),
     );
@@ -562,10 +599,21 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   }
 
   const propsType = buildPropsType(component);
-  let renderTree = emitNode(component.render, rules);
+
+  // The render tree reads resource bindings (`data`/`loading`/`error`) by their bare name; flag them
+  // as reactive so a bare read follows React's `reactiveRead` (strip-call, so they stay verbatim).
+  const resourceReads = new Set(
+    component.resources.flatMap((r) => [r.name, r.loadingName, r.errorName].filter(Boolean)),
+  ) as Set<string>;
+  const renderRules: RewriteRules = {
+    ...rules,
+    reactiveBindings: new Set([...(rules.reactiveBindings ?? []), ...resourceReads]),
+  };
+
+  let renderTree = emitNode(component.render, renderRules);
 
   for (const p of component.provides) {
-    const valueExpr = rewriteExpr(p.value.expr, rules);
+    const valueExpr = rewriteExpr(p.value.expr, renderRules);
     renderTree = cJsxElement({
       tag: `${p.contextName}.Provider`,
       attrs: [

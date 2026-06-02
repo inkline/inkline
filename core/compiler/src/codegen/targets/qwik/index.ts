@@ -335,10 +335,22 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   }
   for (const res of component.resources) {
-    qwikImports.push("useResource$");
+    qwikImports.push("useTask$");
+    // Lower the resource to reactive signals plus an async loader: `data`/`loading`/`error` become
+    // `useSignal`s, and a `useTask$` runs the fetcher and writes the result back through `.value`.
+    body.push(cStmt({ body: `const ${res.name} = useSignal(undefined)`, span: res.loc }));
+    if (res.loadingName) {
+      body.push(cStmt({ body: `const ${res.loadingName} = useSignal(true)`, span: res.loc }));
+    }
+    if (res.errorName) {
+      body.push(cStmt({ body: `const ${res.errorName} = useSignal(undefined)`, span: res.loc }));
+    }
+    const fetcher = rewriteExpr(res.fetcher.expr, rules);
+    const errorChain = res.errorName ? `.catch((e) => ${res.errorName}.value = e)` : "";
+    const finallyChain = res.loadingName ? `.finally(() => ${res.loadingName}.value = false)` : "";
     body.push(
       cStmt({
-        body: `const ${res.name} = useResource$(${rewriteExpr(res.fetcher.expr, rules)})`,
+        body: `useTask$(() => { (${fetcher})().then((d) => ${res.name}.value = d)${errorChain}${finallyChain}; })`,
         span: res.loc,
       }),
     );
@@ -372,7 +384,14 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
 
   const needsTransition = hasTransition(component.render);
 
-  const renderTree = emitNode(component.render, rules);
+  // Bare reads of a resource's `data`/`loading`/`error` in the template are reactive signal reads,
+  // so the render tree resolves them through the target's reactiveRead (`.value` for Qwik).
+  const resourceReads = new Set(
+    component.resources.flatMap((r) => [r.name, r.loadingName, r.errorName].filter(Boolean)),
+  ) as Set<string>;
+  const renderRules: RewriteRules = { ...rules, reactiveBindings: resourceReads };
+
+  const renderTree = emitNode(component.render, renderRules);
 
   const styleImport =
     component.styles.length > 0 ? [cRaw({ text: `import "./${component.name}.css";` })] : [];
