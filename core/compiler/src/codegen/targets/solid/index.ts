@@ -488,9 +488,21 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   }
   for (const res of component.resources) {
     solidImports.push("createResource");
+    // Solid's `createResource` returns `[data, { loading, error, refetch, … }]`. Destructure only
+    // the metas the author bound, mapping each to its local name, so unbound accessors don't become
+    // unused variables.
+    // Use object shorthand when the local name matches the meta (`{ loading }`), and an explicit
+    // rename only when the author aliased it (`{ error: _error }`) — a `loading: loading` rename
+    // to the same name is a lint error.
+    const meta = (prop: string, local: string) => (local === prop ? prop : `${prop}: ${local}`);
+    const metas: string[] = [];
+    if (res.loadingName) metas.push(meta("loading", res.loadingName));
+    if (res.errorName) metas.push(meta("error", res.errorName));
+    if (res.refetchName) metas.push(meta("refetch", res.refetchName));
+    const metaPart = metas.length > 0 ? `, { ${metas.join(", ")} }` : "";
     body.push(
       cStmt({
-        body: `const [${res.name}, { ${res.loadingName}: loading, ${res.errorName}: error, ${res.refetchName}: refetch }] = createResource(${rewriteExpr(res.fetcher.expr, rules)})`,
+        body: `const [${res.name}${metaPart}] = createResource(${rewriteExpr(res.fetcher.expr, rules)})`,
         span: res.loc,
       }),
     );

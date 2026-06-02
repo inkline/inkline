@@ -2,8 +2,8 @@
 // native `.map()` → compile through the full pipeline → assert the ACTUAL generated framework code.
 // Focus: list rendering, keys/track wiring, and nested iteration across all 7 targets.
 //
-// Several assertions below document CURRENTLY BROKEN output and are marked `// BUG:`. They assert the
-// real emitted text (so the suite stays green) while pinning the defect for follow-up.
+// Assertions pin the real emitted text verbatim, so they double as a regression guard on the
+// key/track lowering, setter wiring, and per-target quoting rules.
 
 import { describe, it, expect } from "vitest";
 import { compileFixture } from "../../../testing/harness.ts";
@@ -36,21 +36,21 @@ describe("ForLoop: <For each> with a string key extractor", () => {
     expect(out).toContain("{/each}");
   });
 
-  it("React: maps over the signal value, but the key is the raw key-extractor function", async () => {
+  it("React: maps over the signal value, key is the extracted value from the key extractor", async () => {
     const out = await code("ForLoop", "react");
     expect(out).toContain("{items.map((item) => (");
-    // BUG: the React <For> lowering emits the key *extractor* verbatim as the React `key`, so every
-    // row gets `key={item => item}` (a function) instead of `key={item}`. React keys must be the
-    // extracted value; a function key coerces to "item => item" for every row → duplicate keys.
-    expect(out).toContain("key={item => item}");
+    // The React <For> lowering applies the key extractor to produce the per-row key value, so the
+    // emitted React `key` is the extracted value `item` (wrapped in a keyed React.Fragment), not the
+    // raw extractor function.
+    expect(out).toContain("<React.Fragment key={item}>");
   });
 
-  it("Astro: BUG — `items` signal is dropped from frontmatter but referenced in the template", async () => {
+  it("Astro: declares the signal state as a plain `let` in the frontmatter and maps it in the template", async () => {
     const out = await code("ForLoop", "astro");
-    // BUG: the Astro target never emits the `createSignal(["Apple",...])` declaration, yet the
-    // template still does `items.map(...)`. `items` is undefined at SSR → ReferenceError.
+    // The Astro target now declares signal state as `let items = <initial>` in the frontmatter, so the
+    // `items.map(...)` reference in the template resolves at SSR instead of throwing a ReferenceError.
+    expect(out).toContain('let items = ["Apple", "Banana", "Cherry"]');
     expect(out).toContain("{items.map((item) => (");
-    expect(out).not.toContain("Apple"); // the signal initializer is entirely missing
   });
 });
 
@@ -67,7 +67,8 @@ describe("MapInExpression: native .map() with a literal `key` prop (no <For>)", 
   it("Angular: native .map becomes @for with `track t` (the extracted value, not a function)", async () => {
     const out = await code("MapInExpression", "angular");
     expect(out).toContain("@for (t of tags(); track t) {");
-    expect(out).toContain('tags = signal(["a", "b", "c"])');
+    // String literals in Angular state initializers are single-quoted.
+    expect(out).toContain("tags = signal(['a', 'b', 'c'])");
   });
 
   it("Qwik: maps over `.value` and wraps each row in a fragment", async () => {
@@ -95,21 +96,21 @@ describe("NestedLoops: <For> inside <For> with index key extractors", () => {
     expect(out).toContain("{#each row as cell, j (j)}");
   });
 
-  it("Angular: BUG — nested @for `track` is the raw arrow extractor, not the index", async () => {
+  it("Angular: nested @for `track` uses the extracted index with a `let i = $index` binding", async () => {
     const out = await code("NestedLoops", "angular");
-    // BUG: the index key extractor `(_, i) => i` is emitted verbatim into Angular's `track` clause.
-    // Angular `track` expects a tracking expression (e.g. `i`), not a function literal → template
-    // compile error.
-    expect(out).toContain("@for (row of grid(); track (_, i) => i) {");
-    expect(out).toContain("@for (cell of row; track (_, j) => j) {");
+    // The index key extractor `(_, i) => i` is reduced to the tracking expression `i`, and Angular's
+    // index binding `let i = $index` is added so `track i` resolves. Same at the inner level with `j`.
+    expect(out).toContain("@for (row of grid(); track i; let i = $index) {");
+    expect(out).toContain("@for (cell of row; track j; let j = $index) {");
   });
 
-  it("React: nested maps, both keys are raw extractor functions", async () => {
+  it("React: nested maps, both keys are the extracted index values", async () => {
     const out = await code("NestedLoops", "react");
-    // BUG: same <For> key defect as ForLoop, now at both nesting levels.
+    // The index key extractors `(_, i) => i` / `(_, j) => j` are reduced to the extracted values, so
+    // the keyed React.Fragments use `key={i}` and `key={j}` at both nesting levels.
     expect(out).toContain("{grid.map((row, i) => (");
-    expect(out).toContain("key={(_, i) => i}");
-    expect(out).toContain("key={(_, j) => j}");
+    expect(out).toContain("<React.Fragment key={i}>");
+    expect(out).toContain("<React.Fragment key={j}>");
   });
 });
 
@@ -132,15 +133,15 @@ describe("DynamicList: <For> driven by mutable state + event handlers", () => {
     expect(out).toContain("onInput={$(e => input.value = e.target.value)}");
   });
 
-  it("Angular: BUG — @for track is the raw index extractor + unescaped quotes in the binding", async () => {
+  it("Angular: @for tracks the extracted index, setters wired to signal.set with single-quoted literals", async () => {
     const out = await code("DynamicList", "angular");
-    // BUG: `(item, i) => i` leaks into Angular's track clause instead of `i`.
-    expect(out).toContain("@for (item of items(); track (item, i) => i) {");
-    // Setters are now wired: the block handler becomes statements with the setter rewritten to
-    // `signal.set(...)` and the param mapped to `$event`.
-    // BUG: the inner string literal `""` is emitted unescaped inside the double-quoted Angular
-    // binding, so the attribute terminates early and the template is malformed.
-    expect(out).toContain('(click)="items.set([...items(), input()]); input.set("")"');
+    // The index key extractor `(item, i) => i` is reduced to `i`, with the `let i = $index` binding.
+    expect(out).toContain("@for (item of items(); track i; let i = $index) {");
+    // Setters are wired: the block handler becomes statements with the setter rewritten to
+    // `signal.set(...)` and the param mapped to `$event`. The reset literal is single-quoted (`''`)
+    // so it no longer breaks out of the double-quoted Angular binding.
+    expect(out).toContain('(input)="input.set($event.target.value)"');
+    expect(out).toContain("(click)=\"items.set([...items(), input()]); input.set('')\"");
     const classBody = out.slice(out.indexOf("export class DynamicListComponent"));
     expect(classBody).toContain("items = signal([])");
     expect(classBody).not.toContain("setItems");
@@ -154,21 +155,21 @@ describe("List: <For> alongside a mutating button", () => {
     expect(out).toContain('onclick={() => setItems([...items(), "C"])}');
   });
 
-  it("Angular: BUG — string literal in click handler breaks the double-quoted attribute", async () => {
+  it("Angular: click handler wired to items.set with a single-quoted literal that survives the binding", async () => {
     const out = await code("List", "angular");
-    // The setter is now wired to `items.set(...)` as a statement binding (no arrow).
-    // BUG: the handler is placed inside a double-quoted Angular binding `(click)="..."`, but its
-    // `"C"` is not escaped, so the attribute terminates early and the template is malformed.
-    expect(out).toContain('(click)="items.set([...items(), "C"])"');
-    expect(out).toContain("@for (item of items(); track item => item) {");
+    // The setter is wired to `items.set(...)` as a statement binding (no arrow), and the appended
+    // string literal is single-quoted (`'C'`) so it stays inside the double-quoted Angular binding.
+    expect(out).toContain("(click)=\"items.set([...items(), 'C'])\"");
+    // `track` uses the extracted key expression `item` (not the raw `item => item` arrow).
+    expect(out).toContain("@for (item of items(); track item) {");
   });
 
-  it("Astro: BUG — `items` signal dropped from frontmatter; setters undefined too", async () => {
+  it("Astro: declares the list as a frontmatter `let` and rewrites the setter to a direct assignment", async () => {
     const out = await code("List", "astro");
-    // BUG: same Astro state-drop as ForLoop. Template references `items` and `setItems`, neither of
-    // which exists in the frontmatter.
+    // Signal state is declared as a plain frontmatter `let`, and the template maps over it at SSR.
+    expect(out).toContain('let items = ["A", "B"]');
     expect(out).toContain("{items.map((item) => (");
-    expect(out).not.toContain('$state(["A", "B"])');
-    expect(out).not.toContain("signal");
+    // The setter `setItems([...items, "C"])` is rewritten to a direct assignment for Astro.
+    expect(out).toContain('items = [...items, "C"]');
   });
 });

@@ -43,7 +43,9 @@ function fallthroughAttrParts(node: any, rules: RewriteRules): string[] {
 
 const REWRITES: RewriteRules = {
   reactiveRead: { kind: "strip-call" },
-  setterStyle: { kind: "function-call" },
+  // Astro renders once on the server: state is a plain `let`, so a setter call is a direct
+  // re-assignment (`count = …`). There is no client reactivity to thread through.
+  setterStyle: { kind: "direct-assignment" },
   refAccess: { kind: "bare" },
   jsxAttrCasing: "html",
   eventNameCase: "camel",
@@ -131,7 +133,8 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const rules = ctx.rewrites;
+  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
+  const rules: RewriteRules = { ...ctx.rewrites, setters };
   const template = emitNode(component.render, rules);
 
   const fallthrough = rootAcceptsFallthrough(component);
@@ -163,6 +166,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ? ["const props = Astro.props as Props;", `const { ${destructured.join(", ")} } = props;`]
       : [];
 
+  // Signal state renders once on the server. Declare each as a mutable `let` holding its
+  // initial value (no client reactivity); the template reads the bare name (`strip-call`).
+  const stateDecls = component.state.map((s) =>
+    cStmt({ body: `let ${s.name} = ${rewriteExpr(s.initial.expr, rules)}`, span: s.loc }),
+  );
+
   // Memos are computed once during server render (no reactivity), as plain consts.
   const memoDecls = component.memos.map((m) =>
     cStmt({ body: `const ${m.name} = ${rewriteExpr(m.expr.expr, rules)}`, span: m.loc }),
@@ -184,6 +193,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...(ctx.typeDeclarations.length > 0 ? [...ctx.typeDeclarations] : []),
       ...(propsInterface ? [cRaw({ text: propsInterface })] : []),
       ...propsStmts.map((s) => cStmt({ body: s })),
+      ...stateDecls,
       ...memoDecls,
       ...resourceDecls,
       cRaw({ text: "---" }),

@@ -3,7 +3,12 @@ import { angularConformance } from "./conformance.ts";
 import type { Code } from "../../code-ir/nodes.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import { cFile, cImport, cStmt, cRaw, cGroup } from "../../code-ir/builders.ts";
-import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
+import {
+  rewriteExpr,
+  rewriteEventName,
+  rewriteAttrName,
+  extractKeyBody,
+} from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 import * as ts from "typescript";
@@ -36,6 +41,8 @@ const REWRITES: RewriteRules = {
   jsxAttrCasing: "html",
   eventNameCase: "camel",
   members: { props: { strip: true } },
+  // Template expressions live inside double-quoted attribute bindings.
+  stringQuote: "single",
 };
 
 function emitNode(node: IRNode, rules: RewriteRules): string {
@@ -74,15 +81,19 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       if (node.fallback) result += ` @else {\n${emitNode(node.fallback, rules)}\n}`;
       return result;
     }
-    case "For":
-      return `@for (${node.itemBinding} of ${rewriteExpr(node.each.expr, rules)}; track ${rewriteExpr(node.key.expr, rules)}) {\n${emitNode(node.body, rules)}\n}`;
+    case "For": {
+      const idx = node.indexBinding ? `; let ${node.indexBinding} = $index` : "";
+      return `@for (${node.itemBinding} of ${rewriteExpr(node.each.expr, rules)}; track ${extractKeyBody(node.key.expr, rules)}${idx}) {\n${emitNode(node.body, rules)}\n}`;
+    }
     case "Switch": {
-      let result = "@switch (true) {\n";
-      for (const c of node.cases) {
-        result += `  @case (${rewriteExpr(c.test.expr, rules)}) {\n    ${emitNode(c.body, rules)}\n  }\n`;
-      }
-      if (node.fallback) result += `  @default {\n    ${emitNode(node.fallback, rules)}\n  }\n`;
-      result += "}";
+      // Angular @case matches by value against @switch; our cases are boolean conditions, so
+      // emit @if/@else-if chains instead.
+      let result = "";
+      node.cases.forEach((c, i) => {
+        const dir = i === 0 ? "@if" : "@else if";
+        result += `${dir} (${rewriteExpr(c.test.expr, rules)}) {\n${emitNode(c.body, rules)}\n}`;
+      });
+      if (node.fallback) result += ` @else {\n${emitNode(node.fallback, rules)}\n}`;
       return result;
     }
     case "Fragment":
@@ -157,10 +168,19 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       }),
     );
   }
-  for (const e of component.effects) {
-    body.push(
-      cStmt({ body: `constructor() { effect(${rewriteExpr(e.body, bodyRules)}) }`, span: e.loc }),
-    );
+  // Effects and lifecycle run from a single constructor (a class can only have one).
+  const ctorStmts: string[] = [];
+  for (const e of component.effects) ctorStmts.push(`effect(${rewriteExpr(e.body, bodyRules)})`);
+  for (const m of component.lifecycle.onMount) {
+    angularImports.push("afterNextRender");
+    ctorStmts.push(`afterNextRender(${rewriteExpr(m.body, bodyRules)})`);
+  }
+  for (const c of component.lifecycle.onCleanup) {
+    angularImports.push("inject", "DestroyRef");
+    ctorStmts.push(`inject(DestroyRef).onDestroy(${rewriteExpr(c.body, bodyRules)})`);
+  }
+  if (ctorStmts.length > 0) {
+    body.push(cStmt({ body: `constructor() { ${ctorStmts.join("; ")} }` }));
   }
   for (const res of component.resources) {
     angularImports.push("resource");

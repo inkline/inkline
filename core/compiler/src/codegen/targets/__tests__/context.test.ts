@@ -67,16 +67,20 @@ describe("ContextProvider: createContext + provide per target", () => {
 
   it("Angular: InjectionToken context + providers metadata", async () => {
     const out = await code("ContextProvider", "angular");
+    // String literals are single-quoted so they don't collide with the double-quoted
+    // template / decorator strings Angular wraps them in.
     expect(out).toContain(
-      'export const FormContext = { key: new InjectionToken<{ disabled: boolean; size: string }>("FormContext"), defaultValue: { disabled: false, size: "md" } }',
+      "export const FormContext = { key: new InjectionToken<{ disabled: boolean; size: string }>(\"FormContext\"), defaultValue: { disabled: false, size: 'md' } }",
     );
 
-    // BUG: the provided value is emitted directly into the @Component decorator's `providers`
-    // array as `useValue: { disabled: disabled(), size: "md" }`. `disabled()` is the signal
-    // *instance member*, which does not exist in decorator-evaluation scope (decorator runs at
-    // class definition time). This throws `disabled is not defined` when the module loads.
+    // RESIDUAL BUG: the provided value is emitted directly into the @Component decorator's
+    // `providers` array as `useValue: { disabled: disabled(), size: 'md' }`. `disabled()` is the
+    // signal *instance member*, which does not exist in decorator-evaluation scope (the decorator
+    // runs at class-definition time, before any instance exists). This throws `disabled is not
+    // defined` when the module loads. Note: unlike class-body expressions, decorator metadata is
+    // NOT prefixed with `this.`, so there is no valid lowering for an instance read here.
     expect(out).toContain(
-      'providers: [{ provide: FormContext.key, useValue: { disabled: disabled(), size: "md" } }]',
+      "providers: [{ provide: FormContext.key, useValue: { disabled: disabled(), size: 'md' } }]",
     );
 
     // The click handler is now a statement binding using the signal's `.set()` setter, with no
@@ -107,15 +111,21 @@ describe("ContextProvider: createContext + provide per target", () => {
     expect(out).toContain("onClick={$(() => disabled.value = !disabled.value)}");
   });
 
-  it("Astro: provider collapses to static frontmatter with no context provision", async () => {
+  it("Astro: provider collapses to static frontmatter; signal declared, setter wired", async () => {
     const out = await code("ContextProvider", "astro");
-    // Astro is SSR-only: the signal, its setter, and the provide() call are all dropped.
+    // Astro is SSR-only: the context object and the provide() call are dropped (no client runtime).
     expect(out).not.toContain("FormContext");
     expect(out).not.toContain("provide");
 
-    // BUG: the interactive handler is still emitted into static markup referencing both the
-    // missing `setDisabled` and the missing `disabled` binding.
-    expect(out).toContain("onClick={() => setDisabled(!disabled)}");
+    // The signal is now declared in the frontmatter as plain mutable state...
+    expect(out).toContain("let disabled = false");
+    // ...and the setter is rewritten to a direct assignment (no undefined `setDisabled`, and
+    // `disabled` resolves to the declared frontmatter binding).
+    expect(out).toContain("onClick={() => disabled = !disabled}");
+
+    // RESIDUAL (by design): Astro renders this `onClick` as a static markup attribute string, so
+    // the assignment never executes in the browser — Astro elements have no client reactivity.
+    // The emitted code is nonetheless self-consistent: every identifier it references is declared.
   });
 });
 

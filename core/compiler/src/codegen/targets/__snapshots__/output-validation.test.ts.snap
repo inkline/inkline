@@ -24,13 +24,15 @@ exports[`full output snapshots > BatchUpdates > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let x = 0
+let y = 0
 const sum = x + y
 ---
 <div {...__attrs} class={__attrs.class}>
 <span>
 {sum}
 </span>
-<button onClick={() => batch(() => { setX(x + 1); setY(y + 1); })}>
+<button onClick={() => batch(() => { x = x + 1; y = y + 1; })}>
 Both
 </button>
 </div>
@@ -160,7 +162,7 @@ export class CompositeComponent
 x = signal(1)
 y = signal(2)
 sum = computed(() => this.x() + this.y())
-constructor() { effect(() => { console.log("sum:", this.sum()); }) }
+constructor() { effect(() => { console.log('sum:', this.sum()); }) }
 }
 "
 `;
@@ -170,16 +172,18 @@ exports[`full output snapshots > Composite > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let x = 1
+let y = 2
 const sum = x + y
 ---
 <div {...__attrs} class={__attrs.class}>
 <span id="sum">
 {sum}
 </span>
-<button id="incX" onClick={() => setX(x + 1)}>
+<button id="incX" onClick={() => x = x + 1}>
 +X
 </button>
-<button id="incY" onClick={() => setY(y + 1)}>
+<button id="incY" onClick={() => y = y + 1}>
 +Y
 </button>
 </div>
@@ -339,6 +343,7 @@ exports[`full output snapshots > Conditional > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let visible = true
 ---
 <div {...__attrs} class={__attrs.class}>
 {visible ? (<span>
@@ -346,7 +351,7 @@ Visible
 </span>) : (<span>
 Hidden
 </span>)}
-<button onClick={() => setVisible(!visible)}>
+<button onClick={() => visible = !visible}>
 Toggle
 </button>
 </div>
@@ -455,7 +460,7 @@ exports[`full output snapshots > Conditional > vue 1`] = `
 
 exports[`full output snapshots > ConditionalClass > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, selector: 'ConditionalClass', template: \`<div [class]="active() ? "active" : "inactive"">
+@Component({ standalone: true, selector: 'ConditionalClass', template: \`<div [class]="active() ? 'active' : 'inactive'">
 <button (click)="active.set(!active())">
 Toggle
 </button>
@@ -472,9 +477,10 @@ exports[`full output snapshots > ConditionalClass > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let active = false
 ---
 <div {...__attrs} class={[active ? "active" : "inactive", __attrs.class].filter(Boolean).join(" ")}>
-<button onClick={() => setActive(!active)}>
+<button onClick={() => active = !active}>
 Toggle
 </button>
 </div>
@@ -576,7 +582,7 @@ C
 </select>\` })
 export class ControlledSelectComponent
 {
-value = signal("b")
+value = signal('b')
 }
 "
 `;
@@ -586,8 +592,9 @@ exports[`full output snapshots > ControlledSelect > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let value = "b"
 ---
-<select {...__attrs} value={value} onChange={e => setValue(e.target.value)} class={__attrs.class}>
+<select {...__attrs} value={value} onChange={e => value = e.target.value} class={__attrs.class}>
 <option value="a">
 A
 </option>
@@ -722,7 +729,7 @@ characters
 </div>\` })
 export class ControlledTextareaComponent
 {
-text = signal("")
+text = signal('')
 }
 "
 `;
@@ -732,9 +739,10 @@ exports[`full output snapshots > ControlledTextarea > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let text = ""
 ---
 <div {...__attrs} class={__attrs.class}>
-<textarea value={text} onInput={e => setText(e.target.value)} />
+<textarea value={text} onInput={e => text = e.target.value} />
 <p>
 {text.length}
 characters
@@ -850,7 +858,7 @@ export class CounterComponent
 {
 count = signal(0)
 doubled = computed(() => this.count() * 2)
-constructor() { effect(() => { console.log("count:", this.count()); }) }
+constructor() { effect(() => { console.log('count:', this.count()); }) }
 }
 "
 `;
@@ -860,6 +868,7 @@ exports[`full output snapshots > Counter > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let count = 0
 const doubled = count * 2
 ---
 <div {...__attrs} class={__attrs.class}>
@@ -869,7 +878,7 @@ const doubled = count * 2
 <p>
 {doubled}
 </p>
-<button onClick={() => setCount(count + 1)}>
+<button onClick={() => count = count + 1}>
 +1
 </button>
 </div>
@@ -1121,11 +1130,11 @@ exports[`full output snapshots > DynamicList > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'DynamicList', template: \`<div>
 <input [value]="input()" (input)="input.set($event.target.value)" />
-<button (click)="items.set([...items(), input()]); input.set("")">
+<button (click)="items.set([...items(), input()]); input.set('')">
 Add
 </button>
 <ul>
-@for (item of items(); track (item, i) => i) {
+@for (item of items(); track i; let i = $index) {
 <li>
 {{ item }}
 </li>
@@ -1135,7 +1144,7 @@ Add
 export class DynamicListComponent
 {
 items = signal([])
-input = signal("")
+input = signal('')
 }
 "
 `;
@@ -1145,10 +1154,12 @@ exports[`full output snapshots > DynamicList > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let items = []
+let input = ""
 ---
 <div {...__attrs} class={__attrs.class}>
-<input value={input} onInput={e => setInput(e.target.value)} />
-<button onClick={() => { setItems([...items, input]); setInput(""); }}>
+<input value={input} onInput={e => input = e.target.value} />
+<button onClick={() => { items = [...items, input]; input = ""; }}>
 Add
 </button>
 <ul>
@@ -1196,7 +1207,7 @@ return (
     Add
   </button>
   <ul>
-    {items.map((item, i) => (<React.Fragment key={(item, i) => i}><li>{item}</li></React.Fragment>))}
+    {items.map((item, i) => (<React.Fragment key={i}><li>{item}</li></React.Fragment>))}
   </ul>
 </div>
 )
@@ -1280,10 +1291,7 @@ Toggle
 export class EffectCleanupComponent
 {
 active = signal(true)
-constructor() { effect(() => { if (active()) {
-      const id = setInterval(() => console.log("tick"), 1000);
-      return () => clearInterval(id);
-    } }) }
+constructor() { effect(() => { if (this.active()) { const id = setInterval(() => console.log('tick'), 1000); return () => clearInterval(id); } }) }
 }
 "
 `;
@@ -1293,8 +1301,9 @@ exports[`full output snapshots > EffectCleanup > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let active = true
 ---
-<button {...__attrs} onClick={() => setActive(!active)} class={__attrs.class}>
+<button {...__attrs} onClick={() => active = !active} class={__attrs.class}>
 Toggle
 </button>
 "
@@ -1305,10 +1314,7 @@ exports[`full output snapshots > EffectCleanup > qwik 1`] = `
 export const EffectCleanup = component$((props) =>
 {
 const active = useSignal(true)
-useVisibleTask$(() => { if (active()) {
-      const id = setInterval(() => console.log("tick"), 1000);
-      return () => clearInterval(id);
-    } })
+useVisibleTask$(() => { if (active.value) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
 const { ...__attrs } = props
 return (
 <button {...__attrs} class={props.class} onClick={$(() => active.value = !active.value)}>
@@ -1324,10 +1330,7 @@ exports[`full output snapshots > EffectCleanup > react 1`] = `
 export function EffectCleanup(props: React.HTMLAttributes<HTMLElement>)
 {
 const [active, setActive] = useState(true)
-useEffect(() => { if (active()) {
-      const id = setInterval(() => console.log("tick"), 1000);
-      return () => clearInterval(id);
-    } }, [active])
+useEffect(() => { if (active) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } }, [active])
 const { ...__attrs } = props
 return (
 <button {...__attrs} className={props.className} onClick={() => setActive(!active)}>
@@ -1344,10 +1347,7 @@ import type { JSX } from "solid-js";
 export default function EffectCleanup(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [active, setActive] = createSignal(true)
-createEffect(() => { if (active()) {
-      const id = setInterval(() => console.log("tick"), 1000);
-      return () => clearInterval(id);
-    } })
+createEffect(() => { if (active()) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
 const [, __attrs] = splitProps(props, [])
 return (
 <button {...__attrs} class={props.class} onclick={() => setActive(!active())}>
@@ -1362,10 +1362,7 @@ exports[`full output snapshots > EffectCleanup > svelte 1`] = `
 "<script lang="ts">
   let { ...__attrs }: Record<string, any> = $props()
   let active = $state(true)
-  $effect(() => { if (active()) {
-      const id = setInterval(() => console.log("tick"), 1000);
-      return () => clearInterval(id);
-    } })
+  $effect(() => { if (active) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
 </script>
 <button {...__attrs} class={__attrs.class} onclick={() => active = !active}>
   Toggle
@@ -1377,10 +1374,7 @@ exports[`full output snapshots > EffectCleanup > vue 1`] = `
 "<script setup lang="ts">
   import { ref, watchEffect } from "vue";
   const active = ref(true)
-  watchEffect(() => { if (active()) {
-      const id = setInterval(() => console.log("tick"), 1000);
-      return () => clearInterval(id);
-    } })
+  watchEffect(() => { if (active.value) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
 </script>
 <template>
 <button @click="() => active = !active">
@@ -1391,10 +1385,11 @@ exports[`full output snapshots > EffectCleanup > vue 1`] = `
 `;
 
 exports[`full output snapshots > ElementRef > angular 1`] = `
-"import { Component, signal, computed, effect, viewChild, ElementRef } from "@angular/core";
+"import { Component, signal, computed, effect, afterNextRender, viewChild, ElementRef } from "@angular/core";
 @Component({ standalone: true, selector: 'ElementRef', template: \`<input placeholder="auto-focus" #inputRef />\` })
 export class ElementRefComponent
 {
+constructor() { afterNextRender(() => { inputRef?.focus(); }) }
 inputRef = viewChild<ElementRef>('inputRef')
 }
 "
@@ -1414,6 +1409,7 @@ exports[`full output snapshots > ElementRef > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ElementRef = component$((props) =>
 {
+useVisibleTask$(() => { inputRef.value?.focus(); })
 const inputRef = useSignal(null)
 const { ...__attrs } = props
 return (
@@ -1477,7 +1473,7 @@ exports[`full output snapshots > ElementRef > vue 1`] = `
 exports[`full output snapshots > ForLoop > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'ForLoop', template: \`<ul>
-@for (item of items(); track item => item) {
+@for (item of items(); track item) {
 <li>
 {{ item }}
 </li>
@@ -1485,7 +1481,7 @@ exports[`full output snapshots > ForLoop > angular 1`] = `
 </ul>\` })
 export class ForLoopComponent
 {
-items = signal(["Apple", "Banana", "Cherry"])
+items = signal(['Apple', 'Banana', 'Cherry'])
 }
 "
 `;
@@ -1495,6 +1491,7 @@ exports[`full output snapshots > ForLoop > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let items = ["Apple", "Banana", "Cherry"]
 ---
 <ul {...__attrs} class={__attrs.class}>
 {items.map((item) => (<li>
@@ -1527,7 +1524,7 @@ const [items, setItems] = useState(["Apple", "Banana", "Cherry"])
 const { ...__attrs } = props
 return (
 <ul {...__attrs} className={props.className}>
-  {items.map((item) => (<React.Fragment key={item => item}><li>{item}</li></React.Fragment>))}
+  {items.map((item) => (<React.Fragment key={item}><li>{item}</li></React.Fragment>))}
 </ul>
 )
 }
@@ -1591,7 +1588,7 @@ exports[`full output snapshots > FormField > angular 1`] = `
 </div>\` })
 export class FormFieldComponent
 {
-value = signal("")
+value = signal('')
 }
 "
 `;
@@ -1601,9 +1598,10 @@ exports[`full output snapshots > FormField > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let value = ""
 ---
 <div {...__attrs} class={__attrs.class}>
-<input value={value} onInput={e => setValue(e.target.value)} />
+<input value={value} onInput={e => value = e.target.value} />
 <p>
 {value}
 </p>
@@ -1787,13 +1785,14 @@ exports[`full output snapshots > IButton > vue 1`] = `
 `;
 
 exports[`full output snapshots > Lifecycle > angular 1`] = `
-"import { Component, signal, computed, effect } from "@angular/core";
+"import { Component, signal, computed, effect, afterNextRender, inject, DestroyRef } from "@angular/core";
 @Component({ standalone: true, selector: 'Lifecycle', template: \`<span>
-{{ mounted() ? "mounted" : "pending" }}
+{{ mounted() ? 'mounted' : 'pending' }}
 </span>\` })
 export class LifecycleComponent
 {
 mounted = signal(false)
+constructor() { afterNextRender(() => { this.mounted.set(true); }); inject(DestroyRef).onDestroy(() => { console.log('cleanup'); }) }
 }
 "
 `;
@@ -1803,6 +1802,7 @@ exports[`full output snapshots > Lifecycle > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let mounted = false
 ---
 <span {...__attrs} class={__attrs.class}>
 {mounted ? "mounted" : "pending"}
@@ -1815,6 +1815,8 @@ exports[`full output snapshots > Lifecycle > qwik 1`] = `
 export const Lifecycle = component$((props) =>
 {
 const mounted = useSignal(false)
+useVisibleTask$(() => { mounted.value = true; })
+useVisibleTask$(({ cleanup }) => cleanup(() => { console.log("cleanup"); }))
 const { ...__attrs } = props
 return (
 <span {...__attrs} class={props.class}>
@@ -1913,6 +1915,7 @@ exports[`full output snapshots > MemoChain > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let base = 1
 const doubled = base * 2
 const quadrupled = doubled * 2
 const label = \`Value: \${quadrupled}\`
@@ -1921,7 +1924,7 @@ const label = \`Value: \${quadrupled}\`
 <span>
 {label}
 </span>
-<button onClick={() => setBase(base + 1)}>
+<button onClick={() => base = base + 1}>
 +1
 </button>
 </div>
@@ -2043,7 +2046,7 @@ exports[`full output snapshots > MixedControlFlow > angular 1`] = `
 @Component({ standalone: true, selector: 'MixedControlFlow', template: \`<div>
 <input [value]="filter()" (input)="filter.set($event.target.value)" />
 <ul>
-@for (item of items(); track item => item) {
+@for (item of items(); track item) {
 @if (item.includes(filter())) {
 <li>
 {{ item }}
@@ -2054,8 +2057,8 @@ exports[`full output snapshots > MixedControlFlow > angular 1`] = `
 </div>\` })
 export class MixedControlFlowComponent
 {
-items = signal(["a", "b", "c"])
-filter = signal("")
+items = signal(['a', 'b', 'c'])
+filter = signal('')
 }
 "
 `;
@@ -2065,9 +2068,11 @@ exports[`full output snapshots > MixedControlFlow > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let items = ["a", "b", "c"]
+let filter = ""
 ---
 <div {...__attrs} class={__attrs.class}>
-<input value={filter} onInput={e => setFilter(e.target.value)} />
+<input value={filter} onInput={e => filter = e.target.value} />
 <ul>
 {items.map((item) => (item.includes(filter) ? (<li>
 {item}
@@ -2107,7 +2112,7 @@ return (
 <div {...__attrs} className={props.className}>
   <input value={filter} onInput={e => setFilter(e.target.value)} />
   <ul>
-    {items.map((item) => (<React.Fragment key={item => item}>{item.includes(filter) ? <li>{item}</li> : null}</React.Fragment>))}
+    {items.map((item) => (<React.Fragment key={item}>{item.includes(filter) ? <li>{item}</li> : null}</React.Fragment>))}
   </ul>
 </div>
 )
@@ -2177,7 +2182,7 @@ exports[`full output snapshots > MixedControlFlow > vue 1`] = `
 `;
 
 exports[`full output snapshots > MultiRefs > angular 1`] = `
-"import { Component, signal, computed, effect, viewChild, ElementRef } from "@angular/core";
+"import { Component, signal, computed, effect, afterNextRender, viewChild, ElementRef } from "@angular/core";
 @Component({ standalone: true, selector: 'MultiRefs', template: \`<div>
 <input placeholder="focus me" #inputRef />
 <button #buttonRef>
@@ -2186,6 +2191,7 @@ Click
 </div>\` })
 export class MultiRefsComponent
 {
+constructor() { afterNextRender(() => { inputRef?.focus(); }) }
 inputRef = viewChild<ElementRef>('inputRef')
 buttonRef = viewChild<ElementRef>('buttonRef')
 }
@@ -2211,6 +2217,7 @@ exports[`full output snapshots > MultiRefs > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const MultiRefs = component$((props) =>
 {
+useVisibleTask$(() => { inputRef.value?.focus(); })
 const inputRef = useSignal(null)
 const buttonRef = useSignal(null)
 const { ...__attrs } = props
@@ -2586,6 +2593,7 @@ exports[`full output snapshots > SlotInConditional > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let expanded = true
 ---
 <div {...__attrs} class={__attrs.class}>
 <slot name="header" />
@@ -2817,7 +2825,7 @@ exports[`full output snapshots > SlotNamed > vue 1`] = `
 exports[`full output snapshots > SlotScoped > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotScoped', template: \`<ul>
-@for (item of items(); track item => item.id) {
+@for (item of items(); track item.id; let index = $index) {
 <li>
 <ng-content select="[slot=item]" />
 </li>
@@ -2825,7 +2833,7 @@ exports[`full output snapshots > SlotScoped > angular 1`] = `
 </ul>\` })
 export class SlotScopedComponent
 {
-items = signal([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+items = signal([{ id: 1, label: 'One' }, { id: 2, label: 'Two' }])
 }
 "
 `;
@@ -2835,6 +2843,7 @@ exports[`full output snapshots > SlotScoped > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let items = [{ id: 1, label: "One" }, { id: 2, label: "Two" }]
 ---
 <ul {...__attrs} class={__attrs.class}>
 {items.map((item, index) => (<li>
@@ -2867,7 +2876,7 @@ const [items, setItems] = useState([{ id: 1, label: "One" }, { id: 2, label: "Tw
 const { renderItem, ...__attrs } = props
 return (
 <ul {...__attrs} className={props.className}>
-  {items.map((item, index) => (<React.Fragment key={item => item.id}><li>{props.renderItem?.(item, index) ?? <>{index}:{item.label}</>}</li></React.Fragment>))}
+  {items.map((item, index) => (<React.Fragment key={item.id}><li>{props.renderItem?.(item, index) ?? <>{index}:{item.label}</>}</li></React.Fragment>))}
 </ul>
 )
 }
@@ -2936,7 +2945,7 @@ exports[`full output snapshots > SlotScopedSingle > angular 1`] = `
 </div>\` })
 export class SlotScopedSingleComponent
 {
-value = signal("hello")
+value = signal('hello')
 }
 "
 `;
@@ -2946,6 +2955,7 @@ exports[`full output snapshots > SlotScopedSingle > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let value = "hello"
 ---
 <div {...__attrs} class={__attrs.class}>
 <slot />
@@ -3276,25 +3286,22 @@ exports[`full output snapshots > SlotWithFallback > vue 1`] = `
 exports[`full output snapshots > SwitchTabs > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SwitchTabs', template: \`<div>
-@switch (true) {
-  @case (tab() === "a") {
-    <p>
+@if (tab() === 'a') {
+<p>
 Tab A
 </p>
-  }
-  @case (tab() === "b") {
-    <p>
+}@else if (tab() === 'b') {
+<p>
 Tab B
 </p>
-  }
 }
-<button (click)="tab.set(tab() === "a" ? "b" : "a")">
+<button (click)="tab.set(tab() === 'a' ? 'b' : 'a')">
 Switch
 </button>
 </div>\` })
 export class SwitchTabsComponent
 {
-tab = signal("a")
+tab = signal('a')
 }
 "
 `;
@@ -3304,6 +3311,7 @@ exports[`full output snapshots > SwitchTabs > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+let tab = "a"
 ---
 <div {...__attrs} class={__attrs.class}>
 {tab === "a" ? (<p>
@@ -3311,7 +3319,7 @@ Tab A
 </p>) : tab === "b" ? (<p>
 Tab B
 </p>) : null}
-<button onClick={() => setTab(tab === "a" ? "b" : "a")}>
+<button onClick={() => tab = tab === "a" ? "b" : "a"}>
 Switch
 </button>
 </div>
@@ -3434,10 +3442,11 @@ export class ChildComponent
 {
 }
 
-import { Component, signal, computed, effect, viewChild, ElementRef } from "@angular/core";
+import { Component, signal, computed, effect, afterNextRender, viewChild, ElementRef } from "@angular/core";
 @Component({ standalone: true, selector: 'ComponentRef', template: \`<Child />\` })
 export class ComponentRefComponent
 {
+constructor() { afterNextRender(() => { console.log(childRef); }) }
 childRef = viewChild<ElementRef>('childRef')
 }
 "
@@ -3477,6 +3486,7 @@ return (
 import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ComponentRef = component$((props) =>
 {
+useVisibleTask$(() => { console.log(childRef.value); })
 const childRef = useSignal(null)
 const { ...__attrs } = props
 return (

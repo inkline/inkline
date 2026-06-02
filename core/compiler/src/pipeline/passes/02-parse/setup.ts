@@ -203,7 +203,12 @@ export function parseSetup(
 
         if (isCallTo(init, resourceLocal)) {
           let dataName = "data";
-          let metaNames = { loading: "loading", error: "error", refetch: "refetch" };
+          // Meta accessors are captured only when actually destructured. The source property
+          // (`loading`/`error`/`refetch`) selects the meta; the local binding name is what targets
+          // emit (honouring aliases like `{ error: err }` and unused-marking `{ error: _error }`).
+          let loadingName: string | undefined;
+          let errorName: string | undefined;
+          let refetchName: string | undefined;
 
           if (ts.isArrayBindingPattern(decl.name) && decl.name.elements.length >= 1) {
             const first = decl.name.elements[0]!;
@@ -215,10 +220,14 @@ export function parseSetup(
               if (ts.isBindingElement(second) && ts.isObjectBindingPattern(second.name)) {
                 for (const el of second.name.elements) {
                   if (ts.isBindingElement(el) && ts.isIdentifier(el.name)) {
-                    const n = el.name.text;
-                    if (n === "loading" || n === "error" || n === "refetch") {
-                      metaNames = { ...metaNames, [n]: n };
-                    }
+                    const sourceProp =
+                      el.propertyName && ts.isIdentifier(el.propertyName)
+                        ? el.propertyName.text
+                        : el.name.text;
+                    const localName = el.name.text;
+                    if (sourceProp === "loading") loadingName = localName;
+                    else if (sourceProp === "error") errorName = localName;
+                    else if (sourceProp === "refetch") refetchName = localName;
                   }
                 }
               }
@@ -241,9 +250,9 @@ export function parseSetup(
               fetcher: makeExprNode(fetcherArg, sourceFile),
               source: init.arguments[1] ? makeExprNode(init.arguments[1], sourceFile) : undefined,
               symbolId: resId,
-              loadingName: metaNames.loading,
-              errorName: metaNames.error,
-              refetchName: metaNames.refetch,
+              loadingName,
+              errorName,
+              refetchName,
               loc: toLoc(decl, sourceFile),
             });
           }

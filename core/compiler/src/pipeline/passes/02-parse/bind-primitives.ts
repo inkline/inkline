@@ -7,6 +7,7 @@ const KNOWN_PRIMITIVES: ReadonlySet<string> = new Set<PrimitiveName>([
   "createSignal",
   "createMemo",
   "createEffect",
+  "createResource",
   "createRef",
   "createContext",
   "provide",

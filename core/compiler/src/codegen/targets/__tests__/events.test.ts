@@ -80,13 +80,15 @@ describe("EventModifier: onSubmit with e.preventDefault() + signal setter", () =
     expect(out).toContain('{submitted.value ? "Done" : "Pending"}');
   });
 
-  it("Astro: static output emits handler + reads referencing undefined client identifiers", async () => {
+  it("Astro: declares signal state in frontmatter; handler rewrites the setter to a direct assignment", async () => {
     const out = await code("EventModifier", "astro");
-    // Astro is SSR/static with no client runtime here, so neither `submitted` nor `setSubmitted`
-    // is defined; the inline handler and the {submitted ? ...} read are dangling references.
-    expect(out).toContain("onSubmit={e => { e.preventDefault(); setSubmitted(true); }}");
+    // Astro declares the signal as a plain frontmatter `let`, so `submitted` is defined.
+    expect(out).toContain("let submitted = false");
+    // The setter call is rewritten to a direct assignment `submitted = true`; the read in the
+    // template resolves against the declared frontmatter binding.
+    expect(out).toContain("onSubmit={e => { e.preventDefault(); submitted = true; }}");
     expect(out).toContain('{submitted ? "Done" : "Pending"}');
-    expect(out).not.toContain("setSubmitted ="); // never declared in the frontmatter
+    expect(out).not.toContain("setSubmitted"); // the setter identifier is gone entirely
   });
 });
 
@@ -110,13 +112,13 @@ describe("TypedEvent: onMouseMove reading e.clientX / e.clientY into a signal", 
     expect(out).toContain("{pos().x}");
   });
 
-  it("Vue: setPos rewrites to a template assignment, but @mouse-move is still wrongly kebab-cased", async () => {
+  it("Vue: setPos rewrites to a template assignment; native @mousemove is correctly lowercased", async () => {
     const out = await code("TypedEvent", "vue");
     expect(out).toContain("const pos = ref({ x: 0, y: 0 })");
     // The setter call is rewritten to the Vue template assignment `pos = { ... }` (ref unwrapped).
-    // BUG: @mouse-move is kebab-cased — the native DOM event is `mousemove`, so this binds the
-    // wrong event name and the handler never fires. Vue event-name kebab-casing is still broken.
-    expect(out).toContain('@mouse-move="e => pos = { x: e.clientX, y: e.clientY }"');
+    // The native DOM event `mousemove` is emitted lowercase (kebab-case is reserved for component
+    // custom events), so `@mousemove` binds the correct event.
+    expect(out).toContain('@mousemove="e => pos = { x: e.clientX, y: e.clientY }"');
     expect(out).toContain("{{ pos.x }}");
   });
 

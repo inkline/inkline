@@ -14,6 +14,10 @@ function verbatim(node: ts.Node): string {
   return tsPrinter.printNode(ts.EmitHint.Unspecified, node, emptySF);
 }
 
+function hasAsyncModifier(node: ts.ArrowFunction | ts.FunctionExpression): boolean {
+  return node.modifiers?.some((m) => m.kind === ts.SyntaxKind.AsyncKeyword) ?? false;
+}
+
 function walk(expr: ts.Expression, rules: RewriteRules): string {
   if (ts.isIdentifier(expr)) {
     const renamed = rules.rename?.[expr.text];
@@ -98,17 +102,19 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
   }
 
   if (ts.isArrowFunction(expr)) {
+    const asyncKw = hasAsyncModifier(expr) ? "async " : "";
     const params = expr.parameters.map((p) => verbatim(p)).join(", ");
     const paramStr =
       expr.parameters.length === 1 && !expr.parameters[0]!.type ? params : `(${params})`;
-    if (ts.isBlock(expr.body)) return `${paramStr} => ${walkBlock(expr.body, rules)}`;
-    return `${paramStr} => ${walk(expr.body, rules)}`;
+    if (ts.isBlock(expr.body)) return `${asyncKw}${paramStr} => ${walkBlock(expr.body, rules)}`;
+    return `${asyncKw}${paramStr} => ${walk(expr.body, rules)}`;
   }
 
   if (ts.isFunctionExpression(expr)) {
+    const asyncKw = hasAsyncModifier(expr) ? "async " : "";
     const params = expr.parameters.map((p) => verbatim(p)).join(", ");
     const name = expr.name ? ` ${expr.name.text}` : "";
-    return `function${name}(${params}) ${walkBlock(expr.body, rules)}`;
+    return `${asyncKw}function${name}(${params}) ${walkBlock(expr.body, rules)}`;
   }
 
   if (ts.isParenthesizedExpression(expr)) return `(${walk(expr.expression, rules)})`;
@@ -126,6 +132,10 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
       out += span.literal.text;
     }
     return out + "`";
+  }
+
+  if (ts.isStringLiteral(expr) && rules.stringQuote === "single") {
+    return `'${expr.text.replace(/'/g, "\\'")}'`;
   }
 
   if (ts.isArrayLiteralExpression(expr))
@@ -149,24 +159,35 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
   return verbatim(expr);
 }
 
-function walkBlock(block: ts.Block, rules: RewriteRules): string {
-  const lines: string[] = [];
-  for (const stmt of block.statements) {
-    if (ts.isReturnStatement(stmt)) {
-      lines.push(stmt.expression ? `return ${walk(stmt.expression, rules)};` : "return;");
-    } else if (ts.isExpressionStatement(stmt)) {
-      lines.push(`${walk(stmt.expression, rules)};`);
-    } else if (ts.isVariableStatement(stmt)) {
-      const kw = stmt.declarationList.flags & ts.NodeFlags.Const ? "const" : "let";
-      const decls = stmt.declarationList.declarations.map((d) => {
-        const name = verbatim(d.name);
-        return d.initializer ? `${name} = ${walk(d.initializer, rules)}` : name;
-      });
-      lines.push(`${kw} ${decls.join(", ")};`);
-    } else {
-      lines.push(verbatim(stmt));
-    }
+function walkStatement(stmt: ts.Statement, rules: RewriteRules): string {
+  if (ts.isReturnStatement(stmt)) {
+    return stmt.expression ? `return ${walk(stmt.expression, rules)};` : "return;";
   }
+  if (ts.isExpressionStatement(stmt)) {
+    return `${walk(stmt.expression, rules)};`;
+  }
+  if (ts.isVariableStatement(stmt)) {
+    const kw = stmt.declarationList.flags & ts.NodeFlags.Const ? "const" : "let";
+    const decls = stmt.declarationList.declarations.map((d) => {
+      const name = verbatim(d.name);
+      return d.initializer ? `${name} = ${walk(d.initializer, rules)}` : name;
+    });
+    return `${kw} ${decls.join(", ")};`;
+  }
+  if (ts.isBlock(stmt)) return walkBlock(stmt, rules);
+  if (ts.isIfStatement(stmt)) {
+    let s = `if (${walk(stmt.expression, rules)}) ${walkStatement(stmt.thenStatement, rules)}`;
+    if (stmt.elseStatement) s += ` else ${walkStatement(stmt.elseStatement, rules)}`;
+    return s;
+  }
+  if (ts.isForOfStatement(stmt)) {
+    return `for (${verbatim(stmt.initializer)} of ${walk(stmt.expression, rules)}) ${walkStatement(stmt.statement, rules)}`;
+  }
+  return verbatim(stmt);
+}
+
+function walkBlock(block: ts.Block, rules: RewriteRules): string {
+  const lines = block.statements.map((stmt) => walkStatement(stmt, rules));
   if (lines.length === 0) return "{}";
   return `{ ${lines.join(" ")} }`;
 }

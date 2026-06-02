@@ -52,27 +52,29 @@ describe("ElementRef: single template ref bound + focused on mount", () => {
     expect(out).toContain("$effect(() => { inputRef?.focus(); })");
   });
 
-  it("Angular: viewChild + #inputRef marker, but onMount focus logic is DROPPED", async () => {
+  it("Angular: viewChild + #inputRef marker, onMount focus runs via afterNextRender in the constructor", async () => {
     const out = await code("ElementRef", "angular");
     expect(out).toContain("viewChild<ElementRef>('inputRef')");
     expect(out).toContain('template: `<input placeholder="auto-focus" #inputRef />`');
-    // BUG: onMount lifecycle is never emitted in Angular. The component declares
-    // the viewChild ref but never focuses it — the authored behavior is silently lost.
-    // `effect`/`viewChild` are imported but no constructor/effect/afterNextRender runs.
-    expect(out).not.toContain("focus()");
-    expect(out).not.toContain("afterNextRender");
+    // onMount is now wired: Angular emits `afterNextRender` inside a single constructor,
+    // and imports the lifecycle helper alongside viewChild/ElementRef.
+    expect(out).toContain("constructor() { afterNextRender(() => { inputRef?.focus(); }) }");
+    expect(out).toContain("afterNextRender");
+    // RESIDUAL BUG: the focus body references the bare `inputRef` instead of the
+    // idiomatic `this.inputRef()` — the viewChild is a member signal, so this code
+    // does not compile as-authored. See residualBugs.
   });
 
-  it("Qwik: useSignal ref + ref={inputRef}, but onMount focus logic is DROPPED", async () => {
+  it("Qwik: useSignal ref + ref={inputRef}, onMount focus runs via useVisibleTask$", async () => {
     const out = await code("ElementRef", "qwik");
     expect(out).toContain("const inputRef = useSignal(null)");
     expect(out).toContain("ref={inputRef}");
-    // BUG: onMount lifecycle is never emitted in Qwik. `useVisibleTask$` is imported
-    // but no task is generated for onMount, so .focus() never runs and the import is dead.
+    // onMount is now wired in Qwik: it becomes a useVisibleTask$ that reads the
+    // signal via .value, and the imported helper is now actually used.
     expect(out).toContain(
       'import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";',
     );
-    expect(out).not.toContain("focus()");
+    expect(out).toContain("useVisibleTask$(() => { inputRef.value?.focus(); })");
   });
 
   it("Astro: SSR output has no client ref and drops the onMount focus entirely", async () => {
@@ -120,8 +122,11 @@ describe("MultiRefs: two independent refs on sibling elements", () => {
     expect(out).toContain("buttonRef = viewChild<ElementRef>('buttonRef')");
     expect(out).toContain('<input placeholder="focus me" #inputRef />');
     expect(out).toContain("<button #buttonRef>");
-    // BUG: same as ElementRef — the onMount focus is dropped, so the refs are unused.
-    expect(out).not.toContain("focus()");
+    // onMount is now wired: the inputRef focus runs via afterNextRender in the
+    // constructor. buttonRef is declared but unread (as authored), which is fine.
+    expect(out).toContain("constructor() { afterNextRender(() => { inputRef?.focus(); }) }");
+    // RESIDUAL BUG: same as ElementRef — the focus body uses the bare `inputRef`
+    // rather than `this.inputRef()`, so it does not compile as-authored.
   });
 
   it("Astro: both ref bindings are stripped from the SSR markup", async () => {

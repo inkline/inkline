@@ -126,7 +126,7 @@ describe("Angular: signal setter rewritten to signal.set()", () => {
 
   it("(input) handler calls signal.set() with $event mapped from the param", async () => {
     const out = await code("FormField", "angular");
-    expect(out).toContain(`value = signal("")`);
+    expect(out).toContain(`value = signal('')`);
     expect(out).toContain(`(input)="value.set($event.target.value)"`);
   });
 });
@@ -145,22 +145,22 @@ describe("Qwik: handler single-wrapped + signal.value setter", () => {
   });
 });
 
-describe("Astro: signal state + handlers dropped entirely", () => {
-  it("BUG: template reads undeclared `value`; frontmatter only has __attrs", async () => {
+describe("Astro: signal state declared in frontmatter + setter rewritten to assignment", () => {
+  it('frontmatter declares `let value = ""`; handler reassigns it directly', async () => {
     const out = await code("FormField", "astro");
-    // Frontmatter declares props/__attrs but never the `value` signal.
+    // Frontmatter declares props/__attrs alongside the signal state as a `let` binding.
     expect(out).toContain("const { ...__attrs } = props;");
-    expect(out).not.toContain("const value");
-    // BUG: template references `value` and `setValue`, neither of which exists.
-    expect(out).toContain(`<input value={value} onInput={e => setValue(e.target.value)} />`);
+    expect(out).toContain(`let value = ""`);
+    // Setter is rewritten to a direct reassignment; the identifier is declared in scope.
+    expect(out).toContain(`<input value={value} onInput={e => value = e.target.value} />`);
     expect(out).toContain("{value}");
   });
 
-  it("BUG: checkbox template references undeclared `checked` and `setChecked`", async () => {
+  it("checkbox declares `let checked = false`; handler reassigns it directly", async () => {
     const out = await code("TwoWayCheckbox", "astro");
-    expect(out).not.toContain("const checked");
+    expect(out).toContain("let checked = false");
     expect(out).toContain(
-      `<input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} />`,
+      `<input type="checkbox" checked={checked} onChange={() => checked = !checked} />`,
     );
   });
 });

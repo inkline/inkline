@@ -17,12 +17,7 @@ import {
   cGroup,
   cStyle,
 } from "../../code-ir/builders.ts";
-import {
-  rewriteExpr,
-  rewriteEventName,
-  rewriteAttrName,
-  extractKeyBody,
-} from "../../shared/expr-rewrite.ts";
+import { rewriteExpr, rewriteAttrName, extractKeyBody } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 import * as ts from "typescript";
@@ -53,6 +48,17 @@ const TEMPLATE_RULES: RewriteRules = {
 
 // ── Shared template attr helpers ───────────────────────────────────
 
+// Vue native DOM event listeners must match the all-lowercase DOM event name (`@mousemove`,
+// `@submit`); a kebab-cased `@mouse-move` would never fire. Component custom events use kebab
+// case (`@mouse-move`), which Vue normalizes against the child's camelCase `emits`.
+function vueEventName(name: string, isComponent: boolean): string {
+  const base = name.startsWith("on") ? name.slice(2) : name;
+  if (isComponent) {
+    return `@${base.replace(/[A-Z]/g, (c, i) => (i === 0 ? c.toLowerCase() : `-${c.toLowerCase()}`))}`;
+  }
+  return `@${base.toLowerCase()}`;
+}
+
 function tmplAttrs(
   node: {
     readonly attrs: readonly any[];
@@ -60,6 +66,7 @@ function tmplAttrs(
     readonly refs: readonly any[];
   },
   rules: RewriteRules,
+  isComponent = false,
 ) {
   const attrs = node.attrs.map((a: any) => {
     const name = rewriteAttrName(a.name, rules);
@@ -72,7 +79,7 @@ function tmplAttrs(
   });
   const evts = node.events.map((e: any) =>
     cTmplAttr({
-      name: rewriteEventName(e.name, rules),
+      name: vueEventName(e.name, isComponent),
       value: { kind: "expr", expr: cExpr({ text: rewriteExpr(e.handler.expr, rules) }) },
     }),
   );
@@ -118,7 +125,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     }
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? node.reference.getText();
-      const attrs = tmplAttrs(node, rules);
+      const attrs = tmplAttrs(node, rules, true);
       const children: Code[] = [];
       for (const slot of node.slots) {
         if (slot.name === "default") {
@@ -358,7 +365,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     }
   }
 
-  const renderTree = emitNode(component.render, templateRules);
+  // A root fragment must emit its children as sibling root nodes (Vue 3 multi-root). Wrapping
+  // them in a directive-less `<template>` would render nothing, so spread them directly.
+  const renderTree: Code[] =
+    component.render.kind === "Fragment"
+      ? component.render.children.map((c) => emitNode(c, templateRules))
+      : [emitNode(component.render, templateRules)];
   const fileChildren: Code[] = [];
 
   // Non-setup <script> block for context definitions (must come before <script setup>)
@@ -382,7 +394,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     }),
     cRaw({ text: "" }),
     cRaw({ text: "<template>" }),
-    renderTree,
+    ...renderTree,
     cRaw({ text: "</template>" }),
     ...component.styles.map((s) => cStyle({ css: s.css, scoped: s.scoped })),
   );

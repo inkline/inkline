@@ -14,7 +14,7 @@ export class CounterComponent
 {
 count = signal(0)
 doubled = computed(() => this.count() * 2)
-constructor() { effect(() => { console.log("effect"); }) }
+constructor() { effect(() => { console.log('effect'); }) }
 }
 "
 `;
@@ -26,7 +26,7 @@ export class ButtonComponent
 {
 count = signal(0)
 doubled = computed(() => this.count() * 2)
-constructor() { effect(() => { console.log("effect"); }) }
+constructor() { effect(() => { console.log('effect'); }) }
 @Input() label!
 @Input() disabled?
 }
@@ -35,13 +35,14 @@ constructor() { effect(() => { console.log("effect"); }) }
 
 exports[`Astro target > Counter component 1`] = `
 "---
+let count = 0
 const doubled = count * 2
 ---
 <div>
 <p>
 {count}
 </p>
-<button onClick={() => setCount(count + 1)}>
+<button onClick={() => count = count + 1}>
 +1
 </button>
 </div>
@@ -53,6 +54,7 @@ exports[`Astro target > props use Astro.props 1`] = `
 interface Props { label: unknown; disabled?: unknown }
 const props = Astro.props as Props;
 const { label, disabled } = props;
+let count = 0
 const doubled = count * 2
 ---
 <div />
@@ -406,13 +408,14 @@ export class FadeComponent
 {
 count = signal(0)
 doubled = computed(() => this.count() * 2)
-constructor() { effect(() => { console.log("effect"); }) }
+constructor() { effect(() => { console.log('effect'); }) }
 }
 "
 `;
 
 exports[`transition emission > Astro: passes through to child 1`] = `
 "---
+let count = 0
 const doubled = count * 2
 ---
 <div>

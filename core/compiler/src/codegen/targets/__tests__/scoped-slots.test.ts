@@ -30,10 +30,9 @@ describe("ScopedSlot: For render-prop child inlined per target", () => {
     const out = await code("ScopedSlot", "react");
     expect(out).toContain("items.map((item, index) => (");
     expect(out).toContain("<li>{index}:{item.label}</li>");
-    // BUG: the `key` prop is emitted as the raw key *function* `item => item.id`, not the
-    // computed value `item.id`. React will coerce a function to a string key → identical keys
-    // for every row, breaking reconciliation.
-    expect(out).toContain("key={item => item.id}");
+    // The `key` prop is the EXTRACTED value `item.id` (on the per-row Fragment wrapper),
+    // not the raw key arrow — so reconciliation gets a stable per-row identity.
+    expect(out).toContain("<React.Fragment key={item.id}>");
   });
 
   it("Solid: render prop becomes a <For> child function reading item/index", async () => {
@@ -49,22 +48,21 @@ describe("ScopedSlot: For render-prop child inlined per target", () => {
     expect(out).toContain("{{ item.label }}");
   });
 
-  it("Angular: @for declares `item` but NOT `index`, and uses an arrow as track", async () => {
+  it("Angular: @for declares `item` AND `index`, tracking the extracted key expression", async () => {
     const out = await code("ScopedSlot", "angular");
-    // BUG: `index` is referenced in the template (`{{ index }}`) but the @for block never
-    // declares it (`let index = $index` is missing) → Angular template compile error.
-    expect(out).toContain("@for (item of items(); track item => item.id) {");
+    // `track` uses the EXTRACTED key expression `item.id` (not a raw arrow), and because the
+    // template references `index`, the block declares it via `let index = $index`.
+    expect(out).toContain("@for (item of items(); track item.id; let index = $index) {");
     expect(out).toContain("{{ index }}");
-    // BUG: `track item => item.id` is an arrow function; Angular's track expects an expression
-    // like `item.id`. An arrow here is an invalid track expression.
+    expect(out).toContain("{{ item.label }}");
   });
 
-  it("Astro: the `items` signal is DROPPED from the frontmatter but used in the body", async () => {
+  it("Astro: the `items` signal is declared as `let items` in the frontmatter and mapped in the body", async () => {
     const out = await code("ScopedSlot", "astro");
-    // BUG: the body maps over `items`, but the frontmatter only declares `__attrs` — `items`
-    // is never defined → ReferenceError at render time.
+    // State is now declared in the frontmatter as `let items = <initial>` (no signal runtime),
+    // so the body's `items.map(...)` resolves to a real binding instead of a ReferenceError.
+    expect(out).toContain('let items = [{ id: 1, label: "One" }, { id: 2, label: "Two" }]');
     expect(out).toContain("{items.map((item, index) => (<li>");
-    expect(out).not.toContain("const items");
   });
 });
 
@@ -111,13 +109,15 @@ describe("SlotScoped: named scoped slot with args={[item, index]}", () => {
     expect(out).not.toContain("item.label");
   });
 
-  it("Astro: scoped slot loses its args, and `items` is undeclared in the body", async () => {
+  it("Astro: scoped slot loses its args (residual bug), but `items` is now declared in the frontmatter", async () => {
     const out = await code("SlotScoped", "astro");
-    // BUG: args dropped — bare `<slot name="item" />`.
-    expect(out).toContain('<slot name="item" />');
-    // BUG: same dropped-signal problem as ScopedSlot — `items` is used but never declared.
+    // `items` is now declared as `let items = <initial>` in the frontmatter and used in the body.
+    expect(out).toContain('let items = [{ id: 1, label: "One" }, { id: 2, label: "Two" }]');
     expect(out).toContain("{items.map((item, index) => (<li>");
-    expect(out).not.toContain("const items");
+    // BUG (residual): Astro has no scoped-slot mechanism. The `[item, index]` slot args are
+    // dropped — only a bare `<slot name="item" />` projection point remains, with no way for a
+    // consumer to receive the per-row scope.
+    expect(out).toContain('<slot name="item" />');
   });
 });
 

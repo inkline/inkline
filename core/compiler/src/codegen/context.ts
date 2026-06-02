@@ -63,6 +63,11 @@ export interface RewriteRules {
   readonly setters?: Readonly<Record<string, string>>;
   /** Rename bare identifiers (e.g. an event-handler param `e` → `$event` for Angular bindings). */
   readonly rename?: Readonly<Record<string, string>>;
+  /**
+   * Quote style for string literals in emitted expressions. Angular templates embed expressions
+   * in double-quoted attributes, so string literals must use single quotes (`'a'`).
+   */
+  readonly stringQuote?: "single" | "double";
 }
 
 export interface ComponentImport {

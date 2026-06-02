@@ -15,7 +15,12 @@ import {
   cGroup,
 } from "../../code-ir/builders.ts";
 import * as ts from "typescript";
-import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
+import {
+  rewriteExpr,
+  rewriteEventName,
+  rewriteAttrName,
+  extractKeyBody,
+} from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import {
   FALLTHROUGH_REST,
@@ -184,7 +189,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       const params = node.indexBinding
         ? `(${node.itemBinding}, ${node.indexBinding})`
         : `(${node.itemBinding})`;
-      const key = rewriteExpr(node.key.expr, rules);
+      const key = extractKeyBody(node.key.expr, rules);
       return cExpr({
         text: `{${each}.map(${params} => (<React.Fragment key={${key}}>${inlineNode(node.body, rules)}</React.Fragment>))}`,
         span,

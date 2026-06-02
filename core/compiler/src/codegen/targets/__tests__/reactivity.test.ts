@@ -35,7 +35,11 @@ describe("Counter: signal + memo + effect dependency wiring", () => {
     expect(out).toContain("count = signal(0)");
     // class-body computed/effect must reach sibling signals through `this`
     expect(out).toContain("doubled = computed(() => this.count() * 2)");
-    expect(out).toContain('effect(() => { console.log("count:", this.count()); })');
+    // string literals inside the class body are single-quoted; the effect is
+    // consolidated into the constructor and reads the signal via `this`
+    expect(out).toContain(
+      "constructor() { effect(() => { console.log('count:', this.count()); }) }",
+    );
   });
 
   it("Svelte: $state/$derived rune wiring", async () => {
@@ -62,14 +66,16 @@ describe("Counter: signal + memo + effect dependency wiring", () => {
     expect(out).not.toContain("setCount");
   });
 
-  it("BUG: Astro drops signal state, leaving memo + template with undefined reads", async () => {
+  it("Astro: declares signal state in the frontmatter and rewrites the setter to a direct assignment", async () => {
     const out = await code("Counter", "astro");
-    // BUG: no `count` binding is emitted in the frontmatter; the derived value and
-    // the template both reference the undeclared `count`/`setCount`.
+    // signal state is declared as a plain `let` in the frontmatter, so the
+    // derived value and the template read a real binding (no undefined `count`).
+    expect(out).toContain("let count = 0");
     expect(out).toContain("const doubled = count * 2");
-    expect(out).not.toContain("const count");
     expect(out).toContain("{count}");
-    expect(out).toContain("setCount(count + 1)");
+    // the setter call is rewritten to a direct assignment; `setCount` is gone.
+    expect(out).toContain("count = count + 1");
+    expect(out).not.toContain("setCount");
   });
 });
 

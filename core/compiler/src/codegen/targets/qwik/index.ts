@@ -330,6 +330,17 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   for (const e of component.effects) {
     body.push(cStmt({ body: `useVisibleTask$(${rewriteExpr(e.body, rules)})`, span: e.loc }));
   }
+  for (const m of component.lifecycle.onMount) {
+    body.push(cStmt({ body: `useVisibleTask$(${rewriteExpr(m.body, rules)})`, span: m.loc }));
+  }
+  for (const c of component.lifecycle.onCleanup) {
+    body.push(
+      cStmt({
+        body: `useVisibleTask$(({ cleanup }) => cleanup(${rewriteExpr(c.body, rules)}))`,
+        span: c.loc,
+      }),
+    );
+  }
   for (const res of component.resources) {
     qwikImports.push("useResource$");
     body.push(

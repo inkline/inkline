@@ -42,15 +42,15 @@ describe("Conditional: Show/when/fallback control flow", () => {
     expect(out).toContain("{/if}");
   });
 
-  // BUG: Astro frontmatter only declares `__attrs`; `visible` is never
-  // declared, so `{visible ? ...}` is a ReferenceError at render time. The
-  // setter `setVisible` is likewise undefined. State was dropped for Astro.
-  it("BUG Astro: references undeclared `visible` state in the template", async () => {
+  // Astro declares signal state in the frontmatter as `let visible = <initial>`
+  // and rewrites the setter call to a direct assignment, so `visible` is in
+  // scope for the template ternary.
+  it("Astro: declares `visible` state in frontmatter and rewrites setter to direct assignment", async () => {
     const out = await code("Conditional", "astro");
     expect(out).toContain("const { ...__attrs } = props;");
-    expect(out).not.toContain("visible =");
+    expect(out).toContain("let visible = true");
     expect(out).toContain("{visible ? (<span>");
-    expect(out).toContain("onClick={() => setVisible(!visible)}");
+    expect(out).toContain("onClick={() => visible = !visible}");
   });
 });
 
@@ -82,17 +82,14 @@ describe("SwitchTabs: Switch/Match control flow", () => {
     expect(out).toContain('{:else if tab === "b"}');
   });
 
-  // BUG: Angular emits `@switch (true)` with `@case (<boolean expr>)`. Angular
-  // @case takes a value compared (===) against the @switch expression, NOT a
-  // boolean condition, so neither case ever matches `true`. Worse, the
-  // unescaped double quotes inside the backtick template literal
-  // (`@case (tab() === "a")`) terminate the attribute/string context and
-  // produce broken output.
-  it("BUG Angular: @switch(true)+@case(boolean) is invalid and unescaped quotes break the template", async () => {
+  // Angular now lowers the switch-on-true to an @if / @else if chain with
+  // single-quoted string literals so the bindings stay valid inside the
+  // double-quoted template, and the setter call becomes `tab.set(...)`.
+  it("Angular: @if / @else if chain with single-quoted bindings", async () => {
     const out = await code("SwitchTabs", "angular");
-    expect(out).toContain("@switch (true) {");
-    expect(out).toContain('@case (tab() === "a") {');
-    expect(out).toContain('@case (tab() === "b") {');
+    expect(out).toContain("@if (tab() === 'a') {");
+    expect(out).toContain("}@else if (tab() === 'b') {");
+    expect(out).toContain("(click)=\"tab.set(tab() === 'a' ? 'b' : 'a')\"");
   });
 });
 
@@ -126,13 +123,11 @@ describe("ConditionalClass: conditional class binding", () => {
     expect(out).toContain('<div :class=\'active ? "active" : "inactive"\'>');
   });
 
-  // BUG: Angular emits `[class]="active() ? "active" : "inactive""` — the inner
-  // double quotes are not escaped, so they close the `[class]="..."` attribute
-  // value prematurely AND are placed inside a backtick template literal,
-  // producing a template Angular cannot parse.
-  it("BUG Angular: unescaped double quotes break the [class] binding", async () => {
+  // Angular emits the conditional class as a single-quoted ternary so the inner
+  // string literals don't terminate the double-quoted `[class]="..."` binding.
+  it("Angular: single-quoted ternary inside the [class] binding", async () => {
     const out = await code("ConditionalClass", "angular");
-    expect(out).toContain('[class]="active() ? "active" : "inactive""');
+    expect(out).toContain("[class]=\"active() ? 'active' : 'inactive'\"");
   });
 });
 
@@ -170,13 +165,14 @@ describe("ConditionalRead: memoized conditional read", () => {
     expect(out).toContain("const value = useComputed$(() => (flag.value ? a.value : b.value))");
   });
 
-  // BUG: Astro hoists the memo into frontmatter as `const value = (flag ? a : b)`
-  // but `flag`, `a`, `b` are never declared there (only `__attrs` is), so the
-  // module throws a ReferenceError before render.
-  it("BUG Astro: memo references undeclared signal identifiers", async () => {
+  // Astro declares each signal as `let <name> = <initial>` in the frontmatter,
+  // so the hoisted memo `const value = (flag ? a : b)` resolves its reads.
+  it("Astro: memo reads frontmatter-declared signal identifiers", async () => {
     const out = await code("ConditionalRead", "astro");
+    expect(out).toContain("let flag = true");
+    expect(out).toContain("let a = 10");
+    expect(out).toContain("let b = 20");
     expect(out).toContain("const value = (flag ? a : b)");
-    expect(out).not.toContain("const flag");
   });
 });
 

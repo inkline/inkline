@@ -98,27 +98,31 @@ describe("TransitionBasic: transition wrapper over toggled Show", () => {
     expect(out).not.toContain("const setVisible");
   });
 
-  it("Angular: BUG — Transition wrapper is dropped entirely; setVisible rewrites to signal.set", async () => {
+  it("Angular: rewrites setVisible to signal.set, but BUG — the Transition wrapper is dropped entirely", async () => {
     const out = await code("TransitionBasic", "angular");
-    // No __InkTransition / no transition machinery survives; the @if just renders bare.
+    // RESIDUAL BUG: no __InkTransition / no transition machinery survives; the @if just renders bare,
+    // so the fade animation is silently lost on the Angular target.
     expect(out).not.toContain("InkTransition");
     expect(out).not.toContain("transition");
     expect(out).toContain("@if (visible()) {");
-    // The (click) binding is a statement (no arrow) that rewrites setVisible to signal.set.
+    // The (click) binding is a statement (no arrow) that rewrites setVisible to signal.set — correct.
     expect(out).toContain('(click)="visible.set(!visible())"');
     expect(out).toContain("visible = signal(true)");
     // The class body never declares setVisible — the setter call was rewritten away.
     expect(out).not.toContain("setVisible = ");
     expect(out).not.toContain("setVisible(value");
+    expect(out).not.toContain("setVisible");
   });
 
-  it("Astro: BUG — signal state is dropped, so visible/setVisible are undefined references", async () => {
+  it("Astro: declares signal state in the frontmatter and rewrites the setter to a direct assignment", async () => {
     const out = await code("TransitionBasic", "astro");
-    // Frontmatter only destructures __attrs; `visible` is never declared but used in the markup.
+    // Frontmatter declares the signal as a plain `let`, then destructures __attrs.
     expect(out).toContain("const { ...__attrs } = props;");
+    expect(out).toContain("let visible = true");
     expect(out).toContain("{visible ? (<p>");
-    expect(out).toContain("onClick={() => setVisible(!visible)}");
-    expect(out).not.toContain("const visible");
+    // setVisible(!visible) is rewritten to a direct assignment; `setVisible` is never declared.
+    expect(out).toContain("onClick={() => visible = !visible}");
+    expect(out).not.toContain("setVisible");
   });
 });
 

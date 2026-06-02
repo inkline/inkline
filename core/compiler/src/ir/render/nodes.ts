@@ -307,9 +307,15 @@ export interface IRResourceDeclaration {
   readonly fetcher: IRExprNode;
   readonly source?: IRExprNode;
   readonly symbolId: SymbolId;
-  readonly loadingName: string;
-  readonly errorName: string;
-  readonly refetchName: string;
+  /**
+   * Local binding names for the resource's meta accessors, present only when the author actually
+   * destructured them (e.g. `[data, { loading, error: err }]` → `loadingName: "loading"`,
+   * `errorName: "err"`, `refetchName: undefined`). Targets emit only the metas that are bound, so
+   * an undestructured `refetch` never becomes an unused variable.
+   */
+  readonly loadingName?: string;
+  readonly errorName?: string;
+  readonly refetchName?: string;
   readonly loc: SourceLocation;
 }
 

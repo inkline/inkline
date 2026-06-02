@@ -13,50 +13,79 @@ async function code(fixture: string, target: TargetName): Promise<string> {
 // AsyncData: createResource() async data fetching
 //
 // createResource returns `[data, { loading, error }]`. The template reads
-// `loading` and `data`. Across EVERY target the entire resource declaration
-// is dropped: no import, no binding for data/loading/error is emitted, yet
-// the template still references them. The compiler produces NO diagnostic for
-// this, so the broken output ships silently.
+// `loading` and `data`. createResource is now part of the primitive table and
+// is emitted on every target (it is no longer dropped), with the `async`
+// keyword preserved on the fetcher. Solid maps it to its native createResource
+// and destructures the resource metas the author bound. React/Vue/Angular/Astro
+// each map it to their own async-data idiom; on those targets only `data` is
+// wired today, so the template's bare `loading` reference is still unresolved —
+// see the residual-bug notes below.
 // ---------------------------------------------------------------------------
 describe("AsyncData: createResource async resource handling", () => {
-  it("BUG: React drops createResource — template reads undeclared loading/data", async () => {
+  it("React maps createResource to use(), wiring data (loading stays unresolved)", async () => {
     const out = await code("AsyncData", "react");
-    // BUG: the resource tuple is never emitted, so `loading` and `data` are
-    // undefined references inside the returned JSX.
+    // React has no createResource; the fetcher is mapped to the `use` hook and
+    // bound to `data`. The `async` keyword on the fetcher is preserved.
+    expect(out).toContain('import { use } from "react";');
+    expect(out).toContain(
+      'const data = use(async () => { const res = await fetch("/api/items"); return res.json(); })',
+    );
     expect(out).toContain('{loading ? "Loading..." : JSON.stringify(data)}');
-    expect(out).not.toContain("createResource");
-    expect(out).not.toContain("const [data");
+    // RESIDUAL BUG: only `data` is wired; `loading` has no binding, so the JSX
+    // reference resolves to nothing at runtime.
     expect(out).not.toContain("loading =");
+    expect(out).not.toContain("const [");
   });
 
-  it("BUG: Vue emits an empty <script setup> while template reads loading/data", async () => {
+  it("Vue wires the resource as an awaited ref data (loading stays unresolved)", async () => {
     const out = await code("AsyncData", "vue");
-    // BUG: <script setup> has no bindings at all; the template interpolation
-    // references loading/data which are never declared.
-    expect(out).toContain('<script setup lang="ts">\n</script>');
+    // The resource is emitted: <script setup> imports ref and awaits the fetcher
+    // into a `data` ref. The `async` keyword on the inner fetcher is preserved.
+    expect(out).toContain('import { ref } from "vue";');
+    expect(out).toContain(
+      'const data = ref(await (async () => { const res = await fetch("/api/items"); return res.json(); })())',
+    );
     expect(out).toContain('{{ loading ? "Loading..." : JSON.stringify(data) }}');
+    // RESIDUAL BUG: Vue wires only `data`; the template still reads a bare
+    // `loading` that is never declared in <script setup>.
     expect(out).not.toContain("createResource");
   });
 
-  it("BUG: Solid drops createResource — no resource signal emitted", async () => {
+  it("Solid keeps native createResource and destructures the bound metas", async () => {
     const out = await code("AsyncData", "solid");
-    // BUG: Solid has a native createResource, but the call (and its import) is
-    // dropped; the template reads `loading`/`data` non-call-style undeclared.
+    // Solid has a native createResource: the call and its import are emitted, and only the metas
+    // the author bound are destructured (object-shorthand when the name matches, an explicit rename
+    // for aliases like `error: _error`) — `loading` and `data` are bound.
+    expect(out).toContain('import { createResource, splitProps } from "solid-js";');
+    expect(out).toContain(
+      'const [data, { loading, error: _error }] = createResource(async () => { const res = await fetch("/api/items"); return res.json(); })',
+    );
+    // BUG: in Solid `data` is an accessor function, so the template should read `data()`. The body
+    // currently reads it bare (`JSON.stringify(data)`), which stringifies the accessor, not the
+    // resolved value — tracked with the broader resource-read modeling gap.
     expect(out).toContain('{loading ? "Loading..." : JSON.stringify(data)}');
-    expect(out).not.toContain("createResource");
   });
 
-  it("BUG: Angular class body is empty while template binds loading/data", async () => {
+  it("Angular maps createResource to resource() with a data field (loading stays unresolved)", async () => {
     const out = await code("AsyncData", "angular");
-    // BUG: the component class has no fields, but the inline template reads
-    // `loading`/`data` (no `this.` either) — undefined at runtime.
-    expect(out).toContain("export class AsyncDataComponent\n{\n}");
-    expect(out).toContain('{{ loading ? "Loading..." : JSON.stringify(data) }}');
+    // The class now declares a `data` field via Angular's resource() loader,
+    // and the resource symbol is imported. The async fetcher is preserved.
+    expect(out).toContain(
+      'import { Component, signal, computed, effect, resource } from "@angular/core";',
+    );
+    expect(out).toContain(
+      'data = resource({ loader: async () => { const res = await fetch("/api/items"); return res.json(); } })',
+    );
+    expect(out).toContain("export class AsyncDataComponent");
+    // String literals inside the binding are single-quoted so they survive the
+    // double-quoted Angular template.
+    expect(out).toContain("{{ loading ? 'Loading...' : JSON.stringify(data) }}");
+    // RESIDUAL BUG: the template reads `loading`/`data` without `this.` and
+    // `loading` has no field, so the binding is unresolved at runtime.
   });
 
-  it("BUG: createResource produces no diagnostic on any target", async () => {
+  it("createResource produces no diagnostic on any target", async () => {
     const result = await compileFixture("AsyncData");
-    // BUG: the dropped resource is a silent failure — nothing warns the author.
     expect(result.diagnostics).toEqual([]);
   });
 });
@@ -91,8 +120,10 @@ describe("ServerComponent: runtime: 'server' handling", () => {
 // ---------------------------------------------------------------------------
 // ClientComponent: defineComponent({ runtime: "client" }) with signal + setter
 //
-// Exercises the "use client" boundary plus the well-known setter-dropping bug
-// that surfaces when a createSignal setter is used inside an event handler.
+// Exercises the "use client" boundary plus setter wiring: a createSignal setter
+// used inside an event handler is now rewritten per target (function call on
+// React, assignment on Vue/Svelte/Astro, `.set()` on Angular, `.value`
+// assignment on Qwik).
 // ---------------------------------------------------------------------------
 describe("ClientComponent: runtime: 'client' handling", () => {
   it('React: emits "use client" and a working useState + onClick', async () => {
@@ -137,22 +168,26 @@ describe("ClientComponent: runtime: 'client' handling", () => {
     expect(out).not.toContain("use client");
   });
 
-  it("BUG: Astro drops signal state — template reads undeclared count/setCount", async () => {
+  it("Astro declares the signal state in the frontmatter and rewrites the setter to an assignment", async () => {
     const out = await code("ClientComponent", "astro");
-    // BUG: no `count` binding in the frontmatter; the template reads `count`
-    // and the click handler calls `setCount`, both undefined.
-    expect(out).not.toContain("const count");
+    // The signal is declared as `let count = 0` in the frontmatter, and the
+    // setter call is rewritten to a direct assignment in the handler.
+    expect(out).toContain("let count = 0");
     expect(out).toContain("{count}");
-    expect(out).toContain("setCount(count + 1)");
+    expect(out).toContain("onClick={() => count = count + 1}");
+    expect(out).not.toContain("setCount");
+    // RESIDUAL BUG: `onClick` in an Astro template is a server-side-inert HTML
+    // attribute — Astro frontmatter does not run in the browser, so this click
+    // handler will not actually reassign `count` at runtime.
   });
 });
 
 // ---------------------------------------------------------------------------
 // IsoComponent: defineComponent({ runtime: "iso" }) with a read-only signal
 //
-// The signal has no setter usage, so the cross-target setter bug does not bite
-// here — react/vue/solid/svelte/angular/qwik all wire `value` correctly. Astro
-// is the lone exception: it still drops the signal state.
+// The signal has no setter usage, so this purely exercises read-side wiring —
+// react/vue/solid/svelte/angular/qwik all bind `value` correctly, and Astro now
+// declares it as `let value = 0` in the frontmatter.
 // ---------------------------------------------------------------------------
 describe("IsoComponent: runtime: 'iso' handling", () => {
   it("React: iso emits no directive but wires useState/value correctly", async () => {
@@ -181,11 +216,11 @@ describe("IsoComponent: runtime: 'iso' handling", () => {
     expect(out).toContain("{{ value() }}");
   });
 
-  it("BUG: Astro drops iso signal — template reads undeclared value", async () => {
+  it("Astro declares the iso signal in the frontmatter and reads it in the template", async () => {
     const out = await code("IsoComponent", "astro");
-    // BUG: frontmatter only declares props; `value` is referenced in the
-    // template but never bound, so it is undefined at runtime.
-    expect(out).not.toContain("value =");
+    // The iso signal is declared as `let value = 0` in the frontmatter and read
+    // directly as `{value}` in the template.
+    expect(out).toContain("let value = 0");
     expect(out).toContain("{value}");
   });
 });

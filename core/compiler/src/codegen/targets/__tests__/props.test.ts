@@ -177,11 +177,13 @@ describe("FragmentRoot: `<>...</>` root with no props", () => {
     expect(astro).not.toContain("<>");
   });
 
-  it("BUG: Vue wraps the fragment in a NESTED `<template>` element inside the SFC template", async () => {
+  it("Vue: fragment root emits its children as sibling roots directly under the SFC <template> (no nested <template>)", async () => {
     const out = await code("FragmentRoot", "vue");
-    // BUG: SFC template plus a bare inner <template> with no v-if/v-for/#slot. A naked <template>
-    // element renders nothing in Vue, so the fragment's <h1>/<p> are dropped at runtime.
-    expect(out).toContain("<template>\n<template>");
+    // The fragment unwraps: the SFC <template> contains the <h1>/<p> siblings directly, with no
+    // extra nested <template> wrapper, so all fragment children render at runtime.
+    expect(out).toContain("<template>\n<h1>");
+    expect(out).toContain("</h1>\n<p>");
+    expect(out).not.toContain("<template>\n<template>");
     expect(out).not.toContain("v-if");
   });
 });
@@ -198,16 +200,16 @@ describe("TextWithSiblings: text nodes adjacent to an element + a signal read", 
 
   it("Angular: signal read uses call form name() between sibling text", async () => {
     const out = await code("TextWithSiblings", "angular");
-    expect(out).toContain('name = signal("world")');
+    // Angular string literals in the class body are single-quoted.
+    expect(out).toContain("name = signal('world')");
     expect(out).toContain("{{ name() }}");
   });
 
-  it("BUG: Astro references `{name}` in the template but never declares it in the frontmatter", async () => {
+  it('Astro declares the signal state as `let name = "world"` in the frontmatter and reads `{name}` in the template', async () => {
     const out = await code("TextWithSiblings", "astro");
-    // BUG: the createSignal `name` is dropped from the Astro frontmatter (only `__attrs` is set up),
-    // yet the template still reads `{name}` -> ReferenceError when the component renders.
+    // The signal state is declared in the frontmatter as a plain `let` binding, so the template's
+    // `{name}` reference resolves to a real value at render time.
+    expect(out).toContain('let name = "world"');
     expect(out).toContain("{name}");
-    expect(out).not.toContain("const name");
-    expect(out).not.toContain("name =");
   });
 });
