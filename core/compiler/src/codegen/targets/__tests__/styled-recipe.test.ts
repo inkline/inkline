@@ -6,8 +6,8 @@
 //   const r = await compileFixture("StyledRecipe"); console.log(r.files.svelte![0].contents);
 
 import { describe, it, expect } from "vitest";
-import { compileFixture } from "../../testing/harness.ts";
-import type { TargetName } from "../context.ts";
+import { compileFixture } from "../../../testing/harness.ts";
+import type { TargetName } from "../../context.ts";
 
 async function code(fixture: string, target: TargetName): Promise<string> {
   const result = await compileFixture(fixture, [target]);
