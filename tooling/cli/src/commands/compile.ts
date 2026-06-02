@@ -90,6 +90,7 @@ export default defineCommand({
           plugins: fileConfig.plugins,
           targetOptions: fileConfig.targetOptions,
           registry: fileConfig.registry,
+          tsconfig: fileConfig.tsconfig,
         },
       );
 
@@ -199,6 +200,7 @@ function runWatch(
       plugins: fileConfig.plugins,
       targetOptions: fileConfig.targetOptions,
       registry: fileConfig.registry,
+      tsconfig: fileConfig.tsconfig,
     });
 
     state = result.nextState;

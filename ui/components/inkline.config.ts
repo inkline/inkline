@@ -2,6 +2,7 @@ import { defineConfig } from "@inkline/compiler";
 
 export default defineConfig({
   srcDir: "src",
+  tsconfig: "./tsconfig.json",
   targets: ["react", "vue", "svelte", "solid", "angular", "qwik", "astro"],
   targetOutDir: {
     react: "../react/.inkline",
