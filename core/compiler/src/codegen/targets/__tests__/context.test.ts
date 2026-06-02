@@ -97,14 +97,13 @@ describe("ContextProvider: createContext + provide per target", () => {
       'import { component$, useSignal, useComputed$, useVisibleTask$, $, useContextProvider, createContextId } from "@qwik.dev/core"',
     );
 
-    // BUG: `useContextProvider(...)` reads `disabled.value` but is emitted ABOVE the
-    // `const disabled = useSignal(false)` declaration — a temporal-dead-zone reference
-    // (`Cannot access 'disabled' before initialization`). The provide call must come after.
+    // `useContextProvider(...)` reads `disabled.value`, so it is emitted AFTER the
+    // `const disabled = useSignal(false)` declaration (no temporal-dead-zone reference).
     const provideIdx = out.indexOf("useContextProvider(FormContext.id, { disabled: disabled.value");
     const declIdx = out.indexOf("const disabled = useSignal(false)");
     expect(provideIdx).toBeGreaterThanOrEqual(0);
     expect(declIdx).toBeGreaterThanOrEqual(0);
-    expect(provideIdx).toBeLessThan(declIdx); // provide is (wrongly) before the declaration
+    expect(declIdx).toBeLessThan(provideIdx); // declaration precedes the provide
 
     // The event handler is now single-wrapped with `$(...)` and rewrites the setter to a direct
     // `.value` assignment: `onClick={$(() => disabled.value = !disabled.value)}`.

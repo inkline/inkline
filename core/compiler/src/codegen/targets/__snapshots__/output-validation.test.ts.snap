@@ -1194,7 +1194,7 @@ return (
 `;
 
 exports[`full output snapshots > DynamicList > react 1`] = `
-"import { useState } from "react";
+"import { useState, Fragment } from "react";
 export function DynamicList(props: React.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = useState([])
@@ -1207,7 +1207,7 @@ return (
     Add
   </button>
   <ul>
-    {items.map((item, i) => (<React.Fragment key={i}><li>{item}</li></React.Fragment>))}
+    {items.map((item, i) => (<Fragment key={i}><li>{item}</li></Fragment>))}
   </ul>
 </div>
 )
@@ -1389,7 +1389,7 @@ exports[`full output snapshots > ElementRef > angular 1`] = `
 @Component({ standalone: true, selector: 'ElementRef', template: \`<input placeholder="auto-focus" #inputRef />\` })
 export class ElementRefComponent
 {
-constructor() { afterNextRender(() => { inputRef?.focus(); }) }
+constructor() { afterNextRender(() => { this.inputRef()?.focus(); }) }
 inputRef = viewChild<ElementRef>('inputRef')
 }
 "
@@ -1517,14 +1517,14 @@ return (
 `;
 
 exports[`full output snapshots > ForLoop > react 1`] = `
-"import { useState } from "react";
+"import { useState, Fragment } from "react";
 export function ForLoop(props: React.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = useState(["Apple", "Banana", "Cherry"])
 const { ...__attrs } = props
 return (
 <ul {...__attrs} className={props.className}>
-  {items.map((item) => (<React.Fragment key={item}><li>{item}</li></React.Fragment>))}
+  {items.map((item) => (<Fragment key={item}><li>{item}</li></Fragment>))}
 </ul>
 )
 }
@@ -2102,7 +2102,7 @@ return (
 `;
 
 exports[`full output snapshots > MixedControlFlow > react 1`] = `
-"import { useState } from "react";
+"import { useState, Fragment } from "react";
 export function MixedControlFlow(props: React.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = useState(["a", "b", "c"])
@@ -2112,7 +2112,7 @@ return (
 <div {...__attrs} className={props.className}>
   <input value={filter} onInput={e => setFilter(e.target.value)} />
   <ul>
-    {items.map((item) => (<React.Fragment key={item}>{item.includes(filter) ? <li>{item}</li> : null}</React.Fragment>))}
+    {items.map((item) => (<Fragment key={item}>{item.includes(filter) ? <li>{item}</li> : null}</Fragment>))}
   </ul>
 </div>
 )
@@ -2191,7 +2191,7 @@ Click
 </div>\` })
 export class MultiRefsComponent
 {
-constructor() { afterNextRender(() => { inputRef?.focus(); }) }
+constructor() { afterNextRender(() => { this.inputRef()?.focus(); }) }
 inputRef = viewChild<ElementRef>('inputRef')
 buttonRef = viewChild<ElementRef>('buttonRef')
 }
@@ -2869,14 +2869,14 @@ return (
 `;
 
 exports[`full output snapshots > SlotScoped > react 1`] = `
-"import { useState } from "react";
+"import { useState, Fragment } from "react";
 export function SlotScoped(props: { renderItem?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = useState([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
 const { renderItem, ...__attrs } = props
 return (
 <ul {...__attrs} className={props.className}>
-  {items.map((item, index) => (<React.Fragment key={item.id}><li>{props.renderItem?.(item, index) ?? <>{index}:{item.label}</>}</li></React.Fragment>))}
+  {items.map((item, index) => (<Fragment key={item.id}><li>{props.renderItem?.(item, index) ?? <>{index}:{item.label}</>}</li></Fragment>))}
 </ul>
 )
 }
@@ -3446,7 +3446,7 @@ import { Component, signal, computed, effect, afterNextRender, viewChild, Elemen
 @Component({ standalone: true, selector: 'ComponentRef', template: \`<Child />\` })
 export class ComponentRefComponent
 {
-constructor() { afterNextRender(() => { console.log(childRef); }) }
+constructor() { afterNextRender(() => { console.log(this.childRef()); }) }
 childRef = viewChild<ElementRef>('childRef')
 }
 "

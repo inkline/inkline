@@ -32,7 +32,7 @@ describe("ScopedSlot: For render-prop child inlined per target", () => {
     expect(out).toContain("<li>{index}:{item.label}</li>");
     // The `key` prop is the EXTRACTED value `item.id` (on the per-row Fragment wrapper),
     // not the raw key arrow — so reconciliation gets a stable per-row identity.
-    expect(out).toContain("<React.Fragment key={item.id}>");
+    expect(out).toContain("<Fragment key={item.id}>");
   });
 
   it("Solid: render prop becomes a <For> child function reading item/index", async () => {

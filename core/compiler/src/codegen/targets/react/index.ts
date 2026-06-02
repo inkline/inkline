@@ -191,7 +191,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         : `(${node.itemBinding})`;
       const key = extractKeyBody(node.key.expr, rules);
       return cExpr({
-        text: `{${each}.map(${params} => (<React.Fragment key={${key}}>${inlineNode(node.body, rules)}</React.Fragment>))}`,
+        text: `{${each}.map(${params} => (<Fragment key={${key}}>${inlineNode(node.body, rules)}</Fragment>))}`,
         span,
       });
     }
@@ -409,6 +409,34 @@ function hasTransition(node: IRNode): boolean {
   }
 }
 
+// A `<For>`/`.map()` lowering wraps each row in a keyed `<Fragment>` (a keyed list needs a real
+// Fragment, not the `<>` shorthand), so the named `Fragment` value must be imported from React.
+function containsForLoop(node: IRNode): boolean {
+  switch (node.kind) {
+    case "For":
+      return true;
+    case "Element":
+    case "Fragment":
+      return node.children.some(containsForLoop);
+    case "If":
+      return (
+        node.branches.some((b) => containsForLoop(b.body)) ||
+        (node.fallback ? containsForLoop(node.fallback) : false)
+      );
+    case "Switch":
+      return (
+        node.cases.some((c) => containsForLoop(c.body)) ||
+        (node.fallback ? containsForLoop(node.fallback) : false)
+      );
+    case "ComponentInstance":
+      return node.slots.some((s) => containsForLoop(s.body));
+    case "Transition":
+      return containsForLoop(node.child);
+    default:
+      return false;
+  }
+}
+
 const REACT_TRANSITION_HELPER = `function __InkTransition({ name = "ink", appear, children }: { name?: string; appear?: boolean; children?: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
   const [show, setShow] = useState(!!children);
@@ -527,6 +555,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const needsTransition = hasTransition(component.render);
   if (needsTransition) {
     reactImports.push("useState", "useEffect", "useRef");
+  }
+
+  if (containsForLoop(component.render)) {
+    reactImports.push("Fragment");
   }
 
   const propsType = buildPropsType(component);

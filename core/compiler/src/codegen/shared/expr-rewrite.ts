@@ -87,7 +87,9 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
       const base = walk(expr.expression, rules);
       switch (rules.refAccess.kind) {
         case "bare":
-          return base;
+          // In a class body (Angular), a ref is a `viewChild` signal member, so `inputRef.current`
+          // becomes `this.inputRef()`; in the template it stays the bare template-ref variable.
+          return rules.selfPrefix ? `this.${base}()` : base;
         case "field":
           return `${base}${expr.questionDotToken ? "?." : "."}${rules.refAccess.field}`;
       }

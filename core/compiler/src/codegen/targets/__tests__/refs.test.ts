@@ -56,13 +56,11 @@ describe("ElementRef: single template ref bound + focused on mount", () => {
     const out = await code("ElementRef", "angular");
     expect(out).toContain("viewChild<ElementRef>('inputRef')");
     expect(out).toContain('template: `<input placeholder="auto-focus" #inputRef />`');
-    // onMount is now wired: Angular emits `afterNextRender` inside a single constructor,
-    // and imports the lifecycle helper alongside viewChild/ElementRef.
-    expect(out).toContain("constructor() { afterNextRender(() => { inputRef?.focus(); }) }");
+    // onMount is wired: Angular emits `afterNextRender` inside a single constructor, and the focus
+    // body reads the viewChild signal member as `this.inputRef()` (imports the lifecycle helper
+    // alongside viewChild/ElementRef).
+    expect(out).toContain("constructor() { afterNextRender(() => { this.inputRef()?.focus(); }) }");
     expect(out).toContain("afterNextRender");
-    // RESIDUAL BUG: the focus body references the bare `inputRef` instead of the
-    // idiomatic `this.inputRef()` — the viewChild is a member signal, so this code
-    // does not compile as-authored. See residualBugs.
   });
 
   it("Qwik: useSignal ref + ref={inputRef}, onMount focus runs via useVisibleTask$", async () => {
@@ -122,11 +120,9 @@ describe("MultiRefs: two independent refs on sibling elements", () => {
     expect(out).toContain("buttonRef = viewChild<ElementRef>('buttonRef')");
     expect(out).toContain('<input placeholder="focus me" #inputRef />');
     expect(out).toContain("<button #buttonRef>");
-    // onMount is now wired: the inputRef focus runs via afterNextRender in the
-    // constructor. buttonRef is declared but unread (as authored), which is fine.
-    expect(out).toContain("constructor() { afterNextRender(() => { inputRef?.focus(); }) }");
-    // RESIDUAL BUG: same as ElementRef — the focus body uses the bare `inputRef`
-    // rather than `this.inputRef()`, so it does not compile as-authored.
+    // onMount is wired: the inputRef focus runs via afterNextRender in the constructor, reading the
+    // viewChild signal as `this.inputRef()`. buttonRef is declared but unread (as authored), fine.
+    expect(out).toContain("constructor() { afterNextRender(() => { this.inputRef()?.focus(); }) }");
   });
 
   it("Astro: both ref bindings are stripped from the SSR markup", async () => {

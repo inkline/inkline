@@ -299,13 +299,6 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const body: Code[] = [];
   const qwikImports = ["component$", "useSignal", "useComputed$", "useVisibleTask$", "$"];
 
-  for (const p of component.provides) {
-    qwikImports.push("useContextProvider");
-    const valueExpr = rewriteExpr(p.value.expr, rules);
-    body.push(
-      cStmt({ body: `useContextProvider(${p.contextName}.id, ${valueExpr})`, span: p.loc }),
-    );
-  }
   for (const c of component.consumes) {
     qwikImports.push("useContext");
     body.push(cStmt({ body: `const ${c.name} = useContext(${c.contextName}.id)`, span: c.loc }));
@@ -356,6 +349,15 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         body: `const ${r.name} = useSignal${r.elementType ? `<${r.elementType} | null>` : ""}(null)`,
         span: r.loc,
       }),
+    );
+  }
+  // Provide after the signals/memos it reads are declared — a context value referencing a
+  // `useSignal` above it would otherwise be a temporal-dead-zone access.
+  for (const p of component.provides) {
+    qwikImports.push("useContextProvider");
+    const valueExpr = rewriteExpr(p.value.expr, rules);
+    body.push(
+      cStmt({ body: `useContextProvider(${p.contextName}.id, ${valueExpr})`, span: p.loc }),
     );
   }
 
