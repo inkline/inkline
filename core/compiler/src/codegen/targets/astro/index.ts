@@ -185,6 +185,22 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     cStmt({ body: `const ${m.name} = ${rewriteExpr(m.expr.expr, rules)}`, span: m.loc }),
   );
 
+  // Astro has no client-side context runtime, so a consumed context can't resolve a provider at
+  // render time. Best-effort: fall back to the context's declared default value so the template
+  // read still resolves (rather than referencing an undefined binding).
+  const consumeDecls = component.consumes.map((c) =>
+    cStmt({ body: `const ${c.name} = ${c.contextName}.defaultValue`, span: c.loc }),
+  );
+
+  // Export the context definition (its default value) so consumer modules that import it can read
+  // `Ctx.defaultValue`. There is no DI key — Astro context is the SSR default-value fallback only.
+  const contextDefs = ctx.contexts.map((ctxDef) => {
+    const defaultText = ctxDef.defaultValue
+      ? rewriteExpr(ctxDef.defaultValue.expr, rules)
+      : "undefined";
+    return cStmt({ body: `export const ${ctxDef.name} = { defaultValue: ${defaultText} }` });
+  });
+
   // Astro renders server-side, so each resource resolves once during the frontmatter: await the
   // fetcher with top-level await, capturing the error when bound. `loading` is therefore always
   // resolved (`false`) by the time the markup renders.
@@ -213,7 +229,9 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...ctx.externalImports,
       ...(ctx.typeDeclarations.length > 0 ? [...ctx.typeDeclarations] : []),
       ...(propsInterface ? [cRaw({ text: propsInterface })] : []),
+      ...contextDefs,
       ...propsStmts.map((s) => cStmt({ body: s })),
+      ...consumeDecls,
       ...stateDecls,
       ...memoDecls,
       ...resourceDecls,

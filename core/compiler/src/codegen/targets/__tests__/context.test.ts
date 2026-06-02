@@ -73,19 +73,21 @@ describe("ContextProvider: createContext + provide per target", () => {
       "export const FormContext = { key: new InjectionToken<{ disabled: boolean; size: string }>(\"FormContext\"), defaultValue: { disabled: false, size: 'md' } }",
     );
 
-    // RESIDUAL BUG: the provided value is emitted directly into the @Component decorator's
-    // `providers` array as `useValue: { disabled: disabled(), size: 'md' }`. `disabled()` is the
-    // signal *instance member*, which does not exist in decorator-evaluation scope (the decorator
-    // runs at class-definition time, before any instance exists). This throws `disabled is not
-    // defined` when the module loads. Note: unlike class-body expressions, decorator metadata is
-    // NOT prefixed with `this.`, so there is no valid lowering for an instance read here.
+    // Angular cannot read instance state in `@Component` provider metadata, so a context value
+    // derived from a component signal (`{ disabled: disabled() }`) lifts that signal into the DI
+    // factory and exposes it via a reactive getter/setter. The factory runs once per component
+    // injector, so the signal is shared between the provider and any consumer of the token.
     expect(out).toContain(
-      "providers: [{ provide: FormContext.key, useValue: { disabled: disabled(), size: 'md' } }]",
+      "providers: [{ provide: FormContext.key, useFactory: () => { const disabled = signal(false); return { get disabled() { return disabled(); }, set disabled(v) { disabled.set(v); }, size: 'md' }; } }]",
     );
+    // The component injects the same object and reads/writes the signal through it; the original
+    // `disabled = signal(...)` class field is gone (the signal lives in the factory now).
+    expect(out).toContain("formContext = inject(FormContext.key)");
+    const classBody = out.slice(out.indexOf("export class ContextProviderComponent"));
+    expect(classBody).not.toContain("signal(");
 
-    // The click handler is now a statement binding using the signal's `.set()` setter, with no
-    // arrow factory: `(click)="disabled.set(!disabled())"`.
-    expect(out).toContain('(click)="disabled.set(!disabled())"');
+    // The click handler writes through the provided setter.
+    expect(out).toContain('(click)="formContext.disabled = !formContext.disabled"');
   });
 
   it("Qwik: useContextProvider but emitted before the signal it reads (TDZ bug)", async () => {
@@ -110,13 +112,16 @@ describe("ContextProvider: createContext + provide per target", () => {
     expect(out).toContain("onClick={$(() => disabled.value = !disabled.value)}");
   });
 
-  it("Astro: provider collapses to static frontmatter; signal declared, setter wired", async () => {
+  it("Astro: exports the context default; provide() collapses to static frontmatter state", async () => {
     const out = await code("ContextProvider", "astro");
-    // Astro is SSR-only: the context object and the provide() call are dropped (no client runtime).
-    expect(out).not.toContain("FormContext");
-    expect(out).not.toContain("provide");
+    // Astro has no client context runtime, so the context is exported as its default-value shape
+    // only (so consumer modules can import it); the reactive provide() call itself is dropped.
+    expect(out).toContain(
+      'export const FormContext = { defaultValue: { disabled: false, size: "md" } }',
+    );
+    expect(out).not.toContain("provide(");
 
-    // The signal is now declared in the frontmatter as plain mutable state...
+    // The signal is declared in the frontmatter as plain mutable state...
     expect(out).toContain("let disabled = false");
     // ...and the setter is rewritten to a direct assignment (no undefined `setDisabled`, and
     // `disabled` resolves to the declared frontmatter binding).
@@ -171,14 +176,13 @@ describe("ContextConsumer: useContext per target", () => {
     expect(out).toContain("{form.disabled}");
   });
 
-  it("Astro: consumer references `form` that is never defined in frontmatter (BUG)", async () => {
+  it("Astro: consumer falls back to the context default value (no client context runtime)", async () => {
     const out = await code("ContextConsumer", "astro");
-    // The import is preserved but no `useContext`/`inject` equivalent is emitted, so the
-    // template reads `form.disabled` while `form` is undefined in the frontmatter scope.
+    // Astro can't resolve a provider at render time, so the consumer binds the context's exported
+    // default value as a best-effort — the template read resolves instead of referencing undefined.
     expect(out).toContain('import { FormContext } from "./ContextProvider"');
     expect(out).not.toContain("useContext");
-    // BUG: `{form.disabled}` with no `const form = ...` declaration — undefined at render time.
+    expect(out).toContain("const form = FormContext.defaultValue");
     expect(out).toContain("{form.disabled}");
-    expect(out).not.toContain("const form");
   });
 });

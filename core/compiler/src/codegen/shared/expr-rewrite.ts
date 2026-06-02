@@ -50,6 +50,11 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
     if (setterName !== undefined && setterState !== undefined) {
       const self = rules.selfPrefix ? "this." : "";
       const value = expr.arguments.map((a) => walk(a, rules)).join(", ");
+      // A setter for a context-lifted signal writes through the provided getter/setter.
+      const providedSetter = rules.providedSignals?.get(setterState);
+      if (providedSetter) {
+        return `${self}${providedSetter.field}.${providedSetter.prop} = ${value}`;
+      }
       switch (rules.setterStyle.kind) {
         case "function-call":
           return `${self}${setterName}(${value})`;
@@ -64,6 +69,11 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
     if (ts.isIdentifier(callee) && expr.arguments.length === 0) {
       // A bare 0-arg call is a reactive read; in class-body contexts it is a member access.
       const self = rules.selfPrefix ? "this." : "";
+      // A read of a context-lifted signal goes through the provided getter.
+      const providedRead = rules.providedSignals?.get(callee.text);
+      if (providedRead) {
+        return `${self}${providedRead.field}.${providedRead.prop}`;
+      }
       switch (rules.reactiveRead.kind) {
         case "strip-call":
           return `${self}${callee.text}`;

@@ -72,6 +72,14 @@ export interface RewriteRules {
    */
   readonly reactiveBindings?: ReadonlySet<string>;
   /**
+   * Signals that have been lifted into a DI-provided context object (Angular). A read `disabled()`
+   * becomes `<field>.<prop>` and a setter call `setDisabled(v)` becomes `<field>.<prop> = v`, where
+   * the field is the injected context and the prop is a reactive getter/setter over the lifted
+   * signal. Lets a component provide a context value derived from its own state and still read/write
+   * that state, since Angular cannot evaluate instance state in `@Component` provider metadata.
+   */
+  readonly providedSignals?: ReadonlyMap<string, { readonly field: string; readonly prop: string }>;
+  /**
    * Quote style for string literals in emitted expressions. Angular templates embed expressions
    * in double-quoted attributes, so string literals must use single quotes (`'a'`).
    */

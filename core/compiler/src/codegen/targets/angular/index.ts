@@ -34,6 +34,52 @@ function angularEventExpr(expr: ts.Expression, rules: RewriteRules): string {
   return rewriteExpr(expr.body, r);
 }
 
+interface ReactiveProvideProp {
+  /** The key on the provided context object. */
+  readonly key: string;
+  /** The component signal lifted into the DI factory and exposed via a getter/setter for `key`. */
+  readonly signal: string;
+}
+
+/** Lowercase the first character (`FormContext` → `formContext`) for the injected provider field. */
+function lowerFirst(name: string): string {
+  return name.charAt(0).toLowerCase() + name.slice(1);
+}
+
+/**
+ * Inspect a `provide(Ctx, value)` object literal. A property whose value is a bare component-signal
+ * read (`{ disabled: disabled() }`) is reactive: its signal is lifted into the DI factory and
+ * exposed via a getter/setter so the value stays live. Every other property is emitted verbatim.
+ */
+function analyzeProvide(
+  valueExpr: ts.Expression,
+  stateSignals: ReadonlySet<string>,
+  rules: RewriteRules,
+): { reactiveProps: ReactiveProvideProp[]; staticParts: string[] } {
+  const reactiveProps: ReactiveProvideProp[] = [];
+  const staticParts: string[] = [];
+  if (ts.isObjectLiteralExpression(valueExpr)) {
+    for (const prop of valueExpr.properties) {
+      if (ts.isPropertyAssignment(prop) && ts.isIdentifier(prop.name)) {
+        const init = prop.initializer;
+        if (
+          ts.isCallExpression(init) &&
+          init.arguments.length === 0 &&
+          ts.isIdentifier(init.expression) &&
+          stateSignals.has(init.expression.text)
+        ) {
+          reactiveProps.push({ key: prop.name.text, signal: init.expression.text });
+          continue;
+        }
+        staticParts.push(`${prop.name.text}: ${rewriteExpr(init, rules)}`);
+      } else {
+        staticParts.push(prop.getText());
+      }
+    }
+  }
+  return { reactiveProps, staticParts };
+}
+
 const REWRITES: RewriteRules = {
   reactiveRead: { kind: "preserve-call" },
   setterStyle: { kind: "method-call", method: "set" },
@@ -134,7 +180,45 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
-  const rules: RewriteRules = { ...ctx.rewrites, setters };
+  const baseRules: RewriteRules = { ...ctx.rewrites, setters };
+  const stateSignals = new Set(component.state.map((s) => s.name));
+
+  // Resolve context provides up front: a value derived from a component signal lifts that signal
+  // into the DI factory (Angular can't read instance state in provider metadata). The lifted signal
+  // is reachable to the rest of the component as `<field>.<prop>` (see providedSignals below).
+  const providedSignals = new Map<string, { field: string; prop: string }>();
+  const providerEntries: string[] = [];
+  const providerInjectFields: string[] = [];
+  const initialOf = (signal: string): string => {
+    const s = component.state.find((st) => st.name === signal);
+    return s ? rewriteExpr(s.initial.expr, baseRules) : "undefined";
+  };
+  for (const p of component.provides) {
+    const { reactiveProps, staticParts } = analyzeProvide(p.value.expr, stateSignals, baseRules);
+    if (reactiveProps.length === 0) {
+      providerEntries.push(
+        `{ provide: ${p.contextName}.key, useValue: ${rewriteExpr(p.value.expr, baseRules)} }`,
+      );
+      continue;
+    }
+    const field = lowerFirst(p.contextName);
+    const signalDecls = reactiveProps
+      .map((r) => `const ${r.signal} = signal(${initialOf(r.signal)});`)
+      .join(" ");
+    const members = [
+      ...reactiveProps.map(
+        (r) => `get ${r.key}() { return ${r.signal}(); }, set ${r.key}(v) { ${r.signal}.set(v); }`,
+      ),
+      ...staticParts,
+    ];
+    providerEntries.push(
+      `{ provide: ${p.contextName}.key, useFactory: () => { ${signalDecls} return { ${members.join(", ")} }; } }`,
+    );
+    providerInjectFields.push(`${field} = inject(${p.contextName}.key)`);
+    for (const r of reactiveProps) providedSignals.set(r.signal, { field, prop: r.key });
+  }
+
+  const rules: RewriteRules = { ...baseRules, providedSignals };
   // Class-body expressions (memos, effects, state initializers) access component members via
   // `this.`, unlike the template which uses bare names. A whole-`props` reference reconstructs
   // the declared props as `{ name: this.name, … }`.
@@ -154,8 +238,13 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     angularImports.push("inject");
     body.push(cStmt({ body: `${c.name} = inject(${c.contextName}.key)`, span: c.loc }));
   }
+  for (const f of providerInjectFields) {
+    angularImports.push("inject");
+    body.push(cStmt({ body: f }));
+  }
 
   for (const s of component.state) {
+    if (providedSignals.has(s.name)) continue; // lifted into the DI factory above
     body.push(
       cStmt({ body: `${s.name} = signal(${rewriteExpr(s.initial.expr, bodyRules)})`, span: s.loc }),
     );
@@ -239,12 +328,8 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   }
 
-  const providers: string[] = [];
-  for (const p of component.provides) {
-    const valueExpr = rewriteExpr(p.value.expr, rules);
-    providers.push(`{ provide: ${p.contextName}.key, useValue: ${valueExpr} }`);
-  }
-  const providersStr = providers.length > 0 ? `, providers: [${providers.join(", ")}]` : "";
+  const providersStr =
+    providerEntries.length > 0 ? `, providers: [${providerEntries.join(", ")}]` : "";
 
   // Standalone components must declare the components they instantiate.
   const importNames = ctx.componentImports.map((i) => i.localName).filter(Boolean);
