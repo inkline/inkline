@@ -14,7 +14,7 @@ export class BatchUpdatesComponent
 {
 x = signal(0)
 y = signal(0)
-sum = computed(() => x() + y())
+sum = computed(() => this.x() + this.y())
 }
 "
 `;
@@ -24,6 +24,7 @@ exports[`full output snapshots > BatchUpdates > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+const sum = x + y
 ---
 <div {...__attrs} class={__attrs.class}>
 <span>
@@ -158,8 +159,8 @@ export class CompositeComponent
 {
 x = signal(1)
 y = signal(2)
-sum = computed(() => x() + y())
-constructor() { effect(() => { console.log("sum:", sum()); }) }
+sum = computed(() => this.x() + this.y())
+constructor() { effect(() => { console.log("sum:", this.sum()); }) }
 }
 "
 `;
@@ -169,6 +170,7 @@ exports[`full output snapshots > Composite > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+const sum = x + y
 ---
 <div {...__attrs} class={__attrs.class}>
 <span id="sum">
@@ -847,8 +849,8 @@ exports[`full output snapshots > Counter > angular 1`] = `
 export class CounterComponent
 {
 count = signal(0)
-doubled = computed(() => count() * 2)
-constructor() { effect(() => { console.log("count:", count()); }) }
+doubled = computed(() => this.count() * 2)
+constructor() { effect(() => { console.log("count:", this.count()); }) }
 }
 "
 `;
@@ -858,6 +860,7 @@ exports[`full output snapshots > Counter > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+const doubled = count * 2
 ---
 <div {...__attrs} class={__attrs.class}>
 <p>
@@ -1898,9 +1901,9 @@ exports[`full output snapshots > MemoChain > angular 1`] = `
 export class MemoChainComponent
 {
 base = signal(1)
-doubled = computed(() => base() * 2)
-quadrupled = computed(() => doubled() * 2)
-label = computed(() => \`Value: \${quadrupled()}\`)
+doubled = computed(() => this.base() * 2)
+quadrupled = computed(() => this.doubled() * 2)
+label = computed(() => \`Value: \${this.quadrupled()}\`)
 }
 "
 `;
@@ -1910,6 +1913,9 @@ exports[`full output snapshots > MemoChain > astro 1`] = `
 type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
+const doubled = base * 2
+const quadrupled = doubled * 2
+const label = \`Value: \${quadrupled}\`
 ---
 <div {...__attrs} class={__attrs.class}>
 <span>
@@ -3429,7 +3435,7 @@ export class ChildComponent
 }
 
 import { Component, signal, computed, effect, viewChild, ElementRef } from "@angular/core";
-@Component({ standalone: true, selector: 'ComponentRef', template: \`<unknown />\` })
+@Component({ standalone: true, selector: 'ComponentRef', template: \`<Child />\` })
 export class ComponentRefComponent
 {
 childRef = viewChild<ElementRef>('childRef')

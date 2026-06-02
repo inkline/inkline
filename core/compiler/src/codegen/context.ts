@@ -49,6 +49,12 @@ export interface RewriteRules {
   readonly jsxAttrCasing: "react" | "html";
   readonly eventNameCase: "camel" | "kebab" | "lower";
   readonly members?: MemberRewriteRules;
+  /**
+   * Prefix component-member references (`props.x`, reactive reads `x()`) with `this.`.
+   * Used by class-based targets (Angular) when emitting class-body expressions
+   * (memos/effects), where members are accessed via `this`, unlike the template.
+   */
+  readonly selfPrefix?: boolean;
 }
 
 export interface ComponentImport {

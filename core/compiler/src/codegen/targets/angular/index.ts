@@ -66,7 +66,7 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
     case "Fragment":
       return node.children.map((c) => emitNode(c, rules)).join("\n");
     case "ComponentInstance": {
-      const tag = node.resolved?.name ?? "unknown";
+      const tag = node.resolved?.name ?? node.reference.getText();
       const ciParts: string[] = [];
       for (const a of node.attrs) {
         const name = rewriteAttrName(a.name, rules);
@@ -101,6 +101,18 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const rules = ctx.rewrites;
+  // Class-body expressions (memos, effects, state initializers) access component members via
+  // `this.`, unlike the template which uses bare names. A whole-`props` reference reconstructs
+  // the declared props as `{ name: this.name, … }`.
+  const propsWhole = `{ ${component.props.map((p) => `${p.name}: this.${p.name}`).join(", ")} }`;
+  const bodyRules: RewriteRules = {
+    ...rules,
+    selfPrefix: true,
+    members: {
+      ...rules.members,
+      props: { strip: rules.members?.props?.strip ?? true, whole: propsWhole },
+    },
+  };
   const body: Code[] = [];
   const angularImports = ["Component", "signal", "computed", "effect"];
 
@@ -111,27 +123,27 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
 
   for (const s of component.state) {
     body.push(
-      cStmt({ body: `${s.name} = signal(${rewriteExpr(s.initial.expr, rules)})`, span: s.loc }),
+      cStmt({ body: `${s.name} = signal(${rewriteExpr(s.initial.expr, bodyRules)})`, span: s.loc }),
     );
   }
   for (const m of component.memos) {
     body.push(
       cStmt({
-        body: `${m.name} = computed(() => ${rewriteExpr(m.expr.expr, rules)})`,
+        body: `${m.name} = computed(() => ${rewriteExpr(m.expr.expr, bodyRules)})`,
         span: m.loc,
       }),
     );
   }
   for (const e of component.effects) {
     body.push(
-      cStmt({ body: `constructor() { effect(${rewriteExpr(e.body, rules)}) }`, span: e.loc }),
+      cStmt({ body: `constructor() { effect(${rewriteExpr(e.body, bodyRules)}) }`, span: e.loc }),
     );
   }
   for (const res of component.resources) {
     angularImports.push("resource");
     body.push(
       cStmt({
-        body: `${res.name} = resource({ loader: ${rewriteExpr(res.fetcher.expr, rules)} })`,
+        body: `${res.name} = resource({ loader: ${rewriteExpr(res.fetcher.expr, bodyRules)} })`,
         span: res.loc,
       }),
     );
@@ -179,6 +191,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   }
   const providersStr = providers.length > 0 ? `, providers: [${providers.join(", ")}]` : "";
 
+  // Standalone components must declare the components they instantiate.
+  const importNames = ctx.componentImports.map((i) => i.localName).filter(Boolean);
+  const importsStr = importNames.length > 0 ? `, imports: [${importNames.join(", ")}]` : "";
+
   const file = cFile({
     flavor: "ts",
     children: [
@@ -193,7 +209,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       cRaw({ text: "" }),
       cRaw({
-        text: `@Component({ standalone: true, selector: '${component.name}'${providersStr}, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
+        text: `@Component({ standalone: true, selector: '${component.name}'${importsStr}${providersStr}, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
       }),
       cStmt({ body: `export class ${component.name}Component` }),
       cRaw({ text: "{" }),

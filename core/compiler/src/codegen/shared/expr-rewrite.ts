@@ -24,13 +24,15 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
   if (ts.isCallExpression(expr)) {
     const callee = expr.expression;
     if (ts.isIdentifier(callee) && expr.arguments.length === 0) {
+      // A bare 0-arg call is a reactive read; in class-body contexts it is a member access.
+      const self = rules.selfPrefix ? "this." : "";
       switch (rules.reactiveRead.kind) {
         case "strip-call":
-          return callee.text;
+          return `${self}${callee.text}`;
         case "preserve-call":
-          return `${callee.text}()`;
+          return `${self}${callee.text}()`;
         case "field-access":
-          return `${callee.text}.${rules.reactiveRead.field}`;
+          return `${self}${callee.text}.${rules.reactiveRead.field}`;
       }
     }
     const args = expr.arguments.map((a) => walk(a, rules));
@@ -48,8 +50,9 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
 
   if (ts.isPropertyAccessExpression(expr)) {
     if (ts.isIdentifier(expr.expression)) {
-      if (expr.expression.text === "props" && rules.members?.props?.strip) {
-        return expr.name.text;
+      if (expr.expression.text === "props") {
+        if (rules.selfPrefix) return `this.${expr.name.text}`;
+        if (rules.members?.props?.strip) return expr.name.text;
       }
       if (expr.expression.text === "slots" && rules.members?.slots?.strip) {
         return rules.members.slots.rename?.[expr.name.text] ?? expr.name.text;
@@ -106,6 +109,15 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
 
   if (ts.isArrayLiteralExpression(expr))
     return `[${expr.elements.map((e) => walk(e, rules)).join(", ")}]`;
+
+  if (ts.isObjectLiteralExpression(expr)) {
+    const parts = expr.properties.map((p) => {
+      if (ts.isPropertyAssignment(p)) return `${p.name.getText()}: ${walk(p.initializer, rules)}`;
+      if (ts.isSpreadAssignment(p)) return `...${walk(p.expression, rules)}`;
+      return verbatim(p);
+    });
+    return `{ ${parts.join(", ")} }`;
+  }
 
   if (ts.isNonNullExpression(expr)) return `${walk(expr.expression, rules)}!`;
 

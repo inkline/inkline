@@ -163,6 +163,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ? ["const props = Astro.props as Props;", `const { ${destructured.join(", ")} } = props;`]
       : [];
 
+  // Memos are computed once during server render (no reactivity), as plain consts.
+  const memoDecls = component.memos.map((m) =>
+    cStmt({ body: `const ${m.name} = ${rewriteExpr(m.expr.expr, rules)}`, span: m.loc }),
+  );
+
   const resourceDecls = component.resources.map((res) =>
     cStmt({
       body: `const ${res.name} = await (${rewriteExpr(res.fetcher.expr, rules)})()`,
@@ -179,6 +184,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...(ctx.typeDeclarations.length > 0 ? [...ctx.typeDeclarations] : []),
       ...(propsInterface ? [cRaw({ text: propsInterface })] : []),
       ...propsStmts.map((s) => cStmt({ body: s })),
+      ...memoDecls,
       ...resourceDecls,
       cRaw({ text: "---" }),
       cRaw({ text: "" }),

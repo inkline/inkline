@@ -27,6 +27,9 @@ import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 import * as ts from "typescript";
 
+// Script context (`<script setup>`): props are accessed via the `defineProps()` result, so
+// `props.x` must be kept. The template resolves bare prop names against the component's props,
+// so it strips `props.x` → `x` (see TEMPLATE_RULES).
 const REWRITES: RewriteRules = {
   reactiveRead: { kind: "field-access", field: "value" },
   setterStyle: { kind: "field-assignment", field: "value" },
@@ -34,12 +37,16 @@ const REWRITES: RewriteRules = {
   jsxAttrCasing: "html",
   eventNameCase: "kebab",
   members: {
-    props: { strip: true },
+    props: { strip: false },
     slots: { strip: true },
   },
 };
 
-const TEMPLATE_RULES: RewriteRules = { ...REWRITES, reactiveRead: { kind: "strip-call" } };
+const TEMPLATE_RULES: RewriteRules = {
+  ...REWRITES,
+  reactiveRead: { kind: "strip-call" },
+  members: { ...REWRITES.members, props: { strip: true } },
+};
 
 // ── Shared template attr helpers ───────────────────────────────────
 
