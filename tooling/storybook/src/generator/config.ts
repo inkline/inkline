@@ -88,7 +88,12 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
     compiledExtension: ".component.ts",
     renderStory: {
       frameworkImport: "",
-      expression: "({ component: {name} })",
+      // `@storybook/angular`'s renderer (`prepareMain`) only honors a story's `template` +
+      // `context.component`; it ignores a `component` returned from `render()`. So a render
+      // wrapper must be instantiated via its own selector in a `template`, with the standalone
+      // wrapper supplied through `moduleMetadata.imports`.
+      expression:
+        "({ moduleMetadata: { imports: [{name}] }, template: `<{selector}></{selector}>` })",
     },
     hasDefaultExport: false,
     exportedNameSuffix: "Component",

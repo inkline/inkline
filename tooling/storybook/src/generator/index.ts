@@ -36,6 +36,12 @@ export interface ResolvedRenderImport {
   readonly localName: string;
   readonly exportedName: string;
   readonly importPath: string;
+  /**
+   * The render wrapper's element selector — its source basename. The Angular target compiles a
+   * render `.ink.tsx` to a standalone component whose `selector` is the file basename, so the
+   * Angular story can instantiate it via `<${selector}></${selector}>`. Other targets ignore this.
+   */
+  readonly selector: string;
 }
 
 export function discoverDefinitionFiles(rootDir: string): string[] {
@@ -115,7 +121,7 @@ export function resolveRenderImports(
     const exportedName = baseName + (framework.exportedNameSuffix ?? "");
     const localName = baseName.charAt(0).toUpperCase() + baseName.slice(1) + "Story";
 
-    imports.push({ storyName: name, localName, exportedName, importPath });
+    imports.push({ storyName: name, localName, exportedName, importPath, selector: baseName });
   }
 
   return imports;

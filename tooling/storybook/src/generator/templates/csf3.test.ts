@@ -15,7 +15,13 @@ const badgeColorsModule: LoadedStoryModule = {
 };
 
 const colorsImport = (importPath: string): ResolvedRenderImport[] => [
-  { storyName: "Colors", localName: "ColorsStory", exportedName: "colors", importPath },
+  {
+    storyName: "Colors",
+    localName: "ColorsStory",
+    exportedName: "colors",
+    importPath,
+    selector: "colors",
+  },
 ];
 
 const buttonModule: LoadedStoryModule = {
@@ -91,6 +97,7 @@ describe("renderCsf3", () => {
         localName: "ColorsStory",
         exportedName: "colors",
         importPath: "../generated/badge/stories/colors.tsx",
+        selector: "colors",
       },
     ];
     const out = renderCsf3(mod, react, renderImports);
@@ -120,6 +127,7 @@ describe("renderCsf3", () => {
         localName: "ColorsStory",
         exportedName: "colors",
         importPath: "../generated/badge/stories/colors.vue",
+        selector: "colors",
       },
     ];
     const out = renderCsf3(mod, vue, renderImports);
