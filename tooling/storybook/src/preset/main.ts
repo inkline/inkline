@@ -72,6 +72,19 @@ export function createStorybookConfig(options: StorybookConfigOptions): Storyboo
           ...((next.server ?? {}) as Record<string, unknown>),
           cors: { origin: true, credentials: true },
         };
+        // `@styleframe/runtime` is reached only through the `virtual:styleframe` module, so Vite's
+        // initial dependency scan never sees it. Without this, Vite discovers it on first story load,
+        // re-optimizes, and forces a full reload mid-import — surfacing as a transient
+        // "Importing a module script failed" that looks like the story failed to load. Pre-bundling
+        // it keeps the first load stable.
+        const optimizeDeps = (next.optimizeDeps ?? {}) as { include?: string[] } & Record<
+          string,
+          unknown
+        >;
+        next.optimizeDeps = {
+          ...optimizeDeps,
+          include: [...(optimizeDeps.include ?? []), "@styleframe/runtime"],
+        };
       }
 
       if (vitePlugins.length > 0) {
