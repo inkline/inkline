@@ -250,8 +250,9 @@ describe("attribute fallthrough", () => {
     expect(base).not.toContain("__attrs");
     expect(base).toContain('<div class="base">');
     // A parent's class is bound on the child selector; Angular applies it to that host element.
+    // `size` is a signal input, so the binding reads it in call form.
     const styled = await getOutput("CrossFileStyled", "angular");
-    expect(styled).toContain('[class]="size"');
+    expect(styled).toContain('[class]="size()"');
   });
 
   it("emits no fallthrough wiring for a fragment-root component (FragmentRoot)", async () => {

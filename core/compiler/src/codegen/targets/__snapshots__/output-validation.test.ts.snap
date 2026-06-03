@@ -1009,10 +1009,10 @@ exports[`full output snapshots > DefineSlotBasic > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'DefineSlotBasic', template: \`<div>
 <header>
-<ng-content select="[slot=header]" />
+<ng-content select="[slot=header]"></ng-content>
 </header>
 <main>
-<ng-content />
+<ng-content></ng-content>
 </main>
 </div>\` })
 export class DefineSlotBasicComponent
@@ -1695,14 +1695,14 @@ exports[`full output snapshots > FormField > vue 1`] = `
 `;
 
 exports[`full output snapshots > IButton > angular 1`] = `
-"import { Component, signal, computed, effect, Input } from "@angular/core";
-@Component({ standalone: true, selector: 'IButton', template: \`<button [disabled]="disabled">
-{{ label }}
+"import { Component, signal, computed, effect, input } from "@angular/core";
+@Component({ standalone: true, selector: 'IButton', template: \`<button [disabled]="disabled()">
+{{ label() }}
 </button>\` })
 export class IButtonComponent
 {
-@Input() label!: string
-@Input() disabled?: boolean
+label = input.required<string>()
+disabled = input<boolean>()
 }
 "
 `;
@@ -2309,13 +2309,13 @@ exports[`full output snapshots > MultiRefs > vue 1`] = `
 `;
 
 exports[`full output snapshots > MultipleComponentsPerFile > angular 1`] = `
-"import { Component, signal, computed, effect, Input } from "@angular/core";
+"import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'Label', template: \`<span>
-{{ text }}
+{{ text() }}
 </span>\` })
 export class LabelComponent
 {
-@Input() text!: string
+text = input.required<string>()
 }
 "
 `;
@@ -2398,14 +2398,14 @@ exports[`full output snapshots > MultipleComponentsPerFile > vue 1`] = `
 `;
 
 exports[`full output snapshots > PropDefaults > angular 1`] = `
-"import { Component, signal, computed, effect, Input } from "@angular/core";
-@Component({ standalone: true, selector: 'PropDefaults', template: \`<div [style]="\\\`color: \\\${color}\\\`">
-{{ size }}
+"import { Component, signal, computed, effect, input } from "@angular/core";
+@Component({ standalone: true, selector: 'PropDefaults', template: \`<div [style]="\\\`color: \\\${color()}\\\`">
+{{ size() }}
 </div>\` })
 export class PropDefaultsComponent
 {
-@Input() color: string = 'blue'
-@Input() size!: number
+color = input<string>('blue')
+size = input.required<number>()
 }
 "
 `;
@@ -2491,7 +2491,7 @@ exports[`full output snapshots > PropDefaults > vue 1`] = `
 exports[`full output snapshots > SlotBasic > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotBasic', template: \`<div>
-<ng-content />
+<ng-content></ng-content>
 </div>\` })
 export class SlotBasicComponent
 {
@@ -2577,9 +2577,9 @@ exports[`full output snapshots > SlotBasic > vue 1`] = `
 exports[`full output snapshots > SlotInConditional > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotInConditional', template: \`<div>
-<ng-content select="[slot=header]" />
+<ng-content select="[slot=header]"></ng-content>
 @if (expanded()) {
-<ng-content />
+<ng-content></ng-content>
 }
 </div>\` })
 export class SlotInConditionalComponent
@@ -2685,13 +2685,13 @@ exports[`full output snapshots > SlotNamed > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotNamed', template: \`<div>
 <header>
-<ng-content select="[slot=header]" />
+<ng-content select="[slot=header]"></ng-content>
 </header>
 <main>
-<ng-content />
+<ng-content></ng-content>
 </main>
 <footer>
-<ng-content select="[slot=footer]" />
+<ng-content select="[slot=footer]"></ng-content>
 </footer>
 </div>\` })
 export class SlotNamedComponent
@@ -3060,10 +3060,14 @@ exports[`full output snapshots > SlotWithDefault > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotWithDefault', template: \`<div>
 <main>
-<ng-content />
+<ng-content><p>
+Default content
+</p></ng-content>
 </main>
 <footer>
-<ng-content select="[slot=actions]" />
+<ng-content select="[slot=actions]"><span>
+Action area
+</span></ng-content>
 </footer>
 </div>\` })
 export class SlotWithDefaultComponent
@@ -3196,8 +3200,10 @@ exports[`full output snapshots > SlotWithDefault > vue 1`] = `
 exports[`full output snapshots > SlotWithFallback > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotWithFallback', template: \`<div>
-<ng-content select="[slot=header]" />
-<ng-content />
+<ng-content select="[slot=header]"><h1>
+Default Header
+</h1></ng-content>
+<ng-content>Default body content</ng-content>
 </div>\` })
 export class SlotWithFallbackComponent
 {
@@ -3458,7 +3464,7 @@ export class ChildComponent
 }
 
 import { Component, signal, computed, effect, afterNextRender, viewChild, ElementRef } from "@angular/core";
-@Component({ standalone: true, selector: 'ComponentRef', template: \`<Child />\` })
+@Component({ standalone: true, selector: 'ComponentRef', template: \`<Child></Child>\` })
 export class ComponentRefComponent
 {
 constructor() { afterNextRender(() => { console.log(this.childRef()); }) }

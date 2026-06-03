@@ -20,15 +20,15 @@ constructor() { effect(() => { console.log('effect'); }) }
 `;
 
 exports[`Angular target > props type generation 1`] = `
-"import { Component, signal, computed, effect, Input } from "@angular/core";
+"import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'Button', template: \`<div />\` })
 export class ButtonComponent
 {
 count = signal(0)
 doubled = computed(() => this.count() * 2)
 constructor() { effect(() => { console.log('effect'); }) }
-@Input() label!
-@Input() disabled?
+label = input.required()
+disabled = input()
 }
 "
 `;

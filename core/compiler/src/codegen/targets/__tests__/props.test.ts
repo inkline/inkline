@@ -55,11 +55,11 @@ describe("IButton: typed props (label/optional disabled) across targets", () => 
     expect(out).toContain("{label}");
   });
 
-  it("Angular: @Input fields with optional `?` modifier + [disabled] binding", async () => {
+  it("Angular: props are signal inputs; [disabled] reads the input in call form", async () => {
     const out = await code("IButton", "angular");
-    expect(out).toContain("@Input() label!: string");
-    expect(out).toContain("@Input() disabled?: boolean");
-    expect(out).toContain("selector: 'IButton', template: `<button [disabled]=\"disabled\">");
+    expect(out).toContain("label = input.required<string>()");
+    expect(out).toContain("disabled = input<boolean>()");
+    expect(out).toContain("selector: 'IButton', template: `<button [disabled]=\"disabled()\">");
   });
 
   it("Solid: splitProps lists the declared prop keys so __attrs is the remainder", async () => {
@@ -93,12 +93,12 @@ describe("PropDefaults: object form `{ props: { color: 'blue', size: Number } }`
     );
   });
 
-  it("Angular: @Input gets the resolved type and a field default initializer for color", async () => {
+  it("Angular: signal input seeds the default for color; required size is input.required", async () => {
     const out = await code("PropDefaults", "angular");
-    // The defaulted prop becomes a field with an initializer (and loses the optional marker); the
-    // required constructor-typed prop keeps definite-assignment with its resolved type.
-    expect(out).toContain("@Input() color: string = 'blue'");
-    expect(out).toContain("@Input() size!: number");
+    // The defaulted prop seeds the signal input's initial value; the required constructor-typed
+    // prop becomes `input.required<…>()`.
+    expect(out).toContain("color = input<string>('blue')");
+    expect(out).toContain("size = input.required<number>()");
   });
 
   it("Astro: resolves the prop types and applies the `color` default in the frontmatter", async () => {
@@ -111,10 +111,10 @@ describe("PropDefaults: object form `{ props: { color: 'blue', size: Number } }`
 });
 
 describe("RequiredProps: non-optional props (name/age)", () => {
-  it("Angular: required props get definite-assignment `!` with their types", async () => {
+  it("Angular: required props become input.required with their types", async () => {
     const out = await code("RequiredProps", "angular");
-    expect(out).toContain("@Input() name!: string");
-    expect(out).toContain("@Input() age!: number");
+    expect(out).toContain("name = input.required<string>()");
+    expect(out).toContain("age = input.required<number>()");
   });
 
   it("React/Solid: required props keep non-optional intersection-type members", async () => {
@@ -150,10 +150,11 @@ describe("Card: `children` prop + class merge", () => {
     expect(out).not.toContain("<slot");
   });
 
-  it("BUG: Angular interpolates `children` with no <ng-content> projection", async () => {
+  it("BUG: Angular interpolates the `children` input with no <ng-content> projection", async () => {
     const out = await code("Card", "angular");
-    // BUG: same as Vue — `{{ children }}` with no <ng-content>, so projected content is lost.
-    expect(out).toContain("{{ children }}");
+    // BUG: same as Vue — `{{ children() }}` (a signal-input read) with no <ng-content>, so projected
+    // content is lost. `children` here is a declared prop, not a slot.
+    expect(out).toContain("{{ children() }}");
     expect(out).not.toContain("<ng-content");
   });
 });

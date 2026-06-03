@@ -132,8 +132,10 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
   if (ts.isPropertyAccessExpression(expr)) {
     if (ts.isIdentifier(expr.expression)) {
       if (expr.expression.text === "props") {
-        if (rules.selfPrefix) return `this.${expr.name.text}`;
-        if (rules.members?.props?.strip) return expr.name.text;
+        // Angular signal inputs are read in call form (`this.color()` / `color()`).
+        const call = rules.propSignals ? "()" : "";
+        if (rules.selfPrefix) return `this.${expr.name.text}${call}`;
+        if (rules.members?.props?.strip) return `${expr.name.text}${call}`;
         // A prop destructured into a local with a default (React) reads as the bare local so the
         // default takes effect; otherwise `props.x` stays verbatim.
         if (rules.propLocals?.has(expr.name.text)) return expr.name.text;

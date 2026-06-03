@@ -89,6 +89,8 @@ const REWRITES: RewriteRules = {
   members: { props: { strip: true } },
   // Template expressions live inside double-quoted attribute bindings.
   stringQuote: "single",
+  // Props are signal inputs, so a `props.x` read uses the call form `x()` / `this.x()`.
+  propSignals: true,
 };
 
 function emitNode(node: IRNode, rules: RewriteRules): string {
@@ -159,7 +161,8 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       }
       const ciAttrStr = ciParts.join(" ");
       if (node.slots.length === 0) {
-        return `<${tag}${ciAttrStr ? " " + ciAttrStr : ""} />`;
+        // Non-self-closing: Angular's template parser mishandles self-closed component tags in JIT.
+        return `<${tag}${ciAttrStr ? " " + ciAttrStr : ""}></${tag}>`;
       }
       const slotContent = node.slots
         .map((s) => {
@@ -178,7 +181,14 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       if (node.scopedArgs.length > 0 && node.fallback) {
         return `<!-- scoped slot '${node.name}': args are not projectable in Angular; rendering default content -->\n${emitNode(node.fallback, rules)}`;
       }
-      return `<ng-content${node.name !== "default" ? ` select="[slot=${node.name}]"` : ""} />`;
+      {
+        // Non-self-closing `<ng-content>` (self-closing breaks JIT parsing of projected content and
+        // sibling elements). The authored fallback renders as Angular's content-projection default
+        // (supported from Angular 18), shown when nothing is projected.
+        const select = node.name !== "default" ? ` select="[slot=${node.name}]"` : "";
+        const fallback = node.fallback ? emitNode(node.fallback, rules) : "";
+        return `<ng-content${select}>${fallback}</ng-content>`;
+      }
     default:
       assertNever(node);
   }
@@ -227,8 +237,8 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const rules: RewriteRules = { ...baseRules, providedSignals };
   // Class-body expressions (memos, effects, state initializers) access component members via
   // `this.`, unlike the template which uses bare names. A whole-`props` reference reconstructs
-  // the declared props as `{ name: this.name, … }`.
-  const propsWhole = `{ ${component.props.map((p) => `${p.name}: this.${p.name}`).join(", ")} }`;
+  // the declared props as `{ name: this.name(), … }` (signal inputs read in call form).
+  const propsWhole = `{ ${component.props.map((p) => `${p.name}: this.${p.name}()`).join(", ")} }`;
   const bodyRules: RewriteRules = {
     ...rules,
     selfPrefix: true,
@@ -299,22 +309,24 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   }
   if (component.props.length > 0) {
-    angularImports.push("Input");
+    // Props are signal inputs so memos/effects/templates react to them. Reads use the call form
+    // (`this.color()` / `color()`), wired via the `propSignals` rewrite rule.
+    angularImports.push("input");
     for (const p of component.props) {
       const typeText = p.typeText ?? p.typeNode?.getText();
-      const type = typeText ? `: ${typeText}` : "";
+      const generic = typeText ? `<${typeText}>` : "";
       if (p.defaultValue) {
-        // A default makes the field always populated, so drop the optional/definite marker and
-        // initialize the field directly: `@Input() color: string = "blue"`.
+        // A default seeds the input's initial value: `color = input<string>('blue')`.
         body.push(
           cStmt({
-            body: `@Input() ${p.name}${type} = ${rewriteExpr(p.defaultValue.expr, bodyRules)}`,
+            body: `${p.name} = input${generic}(${rewriteExpr(p.defaultValue.expr, bodyRules)})`,
             span: p.loc,
           }),
         );
+      } else if (p.required) {
+        body.push(cStmt({ body: `${p.name} = input.required${generic}()`, span: p.loc }));
       } else {
-        const opt = p.required ? "!" : "?";
-        body.push(cStmt({ body: `@Input() ${p.name}${opt}${type}`, span: p.loc }));
+        body.push(cStmt({ body: `${p.name} = input${generic}()`, span: p.loc }));
       }
     }
   }

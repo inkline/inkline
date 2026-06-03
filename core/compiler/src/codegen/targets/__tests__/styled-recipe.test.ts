@@ -53,13 +53,14 @@ describe("StyledRecipe: recipe memo from props + default slot", () => {
     expect(out).toContain("<slot>");
   });
 
-  it("Angular: class-body computed uses this.x; styling props are @Input; bound via [class]", async () => {
+  it("Angular: styling props are signal inputs; computed reads this.x(); bound via [class]", async () => {
     const out = await code("StyledRecipe", "angular");
+    // Props are signal inputs, so the computed reads them in call form (`this.color()`) and reacts.
     expect(out).toContain(
-      "className = computed(() => badge({ color: this.color, size: this.size }))",
+      "className = computed(() => badge({ color: this.color(), size: this.size() }))",
     );
-    expect(out).toContain("@Input() color");
-    expect(out).toContain("@Input() size");
+    expect(out).toContain("color = input<");
+    expect(out).toContain("size = input<");
     expect(out).toContain('[class]="className()"');
     expect(out).not.toContain("badge({ color: props.color"); // never bare props in class body
   });

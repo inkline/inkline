@@ -34,9 +34,10 @@ describe("SlotBasic: default slot", () => {
     expect(out).toContain("{props.children}");
   });
 
-  it("Angular: default slot → <ng-content />", async () => {
+  it("Angular: default slot → non-self-closing <ng-content>", async () => {
     const out = await code("SlotBasic", "angular");
-    expect(out).toContain("<ng-content />");
+    // Non-self-closing: self-closed `<ng-content />` breaks Angular's JIT template parsing.
+    expect(out).toContain("<ng-content></ng-content>");
   });
 });
 
@@ -65,9 +66,9 @@ describe("SlotNamed: named slots alongside the default", () => {
 
   it("Angular: named slots project via select=[slot=name]", async () => {
     const out = await code("SlotNamed", "angular");
-    expect(out).toContain('<ng-content select="[slot=header]" />');
-    expect(out).toContain('<ng-content select="[slot=footer]" />');
-    expect(out).toContain("<ng-content />");
+    expect(out).toContain('<ng-content select="[slot=header]"></ng-content>');
+    expect(out).toContain('<ng-content select="[slot=footer]"></ng-content>');
+    expect(out).toContain("<ng-content></ng-content>");
   });
 });
 
@@ -93,15 +94,14 @@ describe("SlotWithFallback: slot fallback content", () => {
     expect(out).toContain("Default body content");
   });
 
-  it("Angular: fallback content is DROPPED (ng-content has no native fallback)", async () => {
-    // BUG: <ng-content> is emitted self-closing; the authored fallback (`<h1>Default Header</h1>`
-    // and "Default body content") is silently dropped, so consumers that omit the slot render
-    // nothing instead of the intended default.
+  it("Angular: fallback content renders as the <ng-content> projection default", async () => {
+    // The authored fallback (`<h1>Default Header</h1>`, "Default body content") is emitted as the
+    // content of a non-self-closing <ng-content>, shown when nothing is projected (Angular 18+).
     const out = await code("SlotWithFallback", "angular");
-    expect(out).toContain('<ng-content select="[slot=header]" />');
-    expect(out).toContain("<ng-content />");
-    expect(out).not.toContain("Default Header");
-    expect(out).not.toContain("Default body content");
+    expect(out).toContain('<ng-content select="[slot=header]">');
+    expect(out).toContain("Default Header");
+    expect(out).toContain("Default body content");
+    expect(out).not.toContain("<ng-content />");
   });
 
   it("Astro: fallback content is DROPPED even though Astro supports <slot> fallback", async () => {
@@ -156,8 +156,8 @@ describe("DefineSlotBasic: defineSlot() bindings", () => {
 
   it("Angular: defineSlot bindings resolve to ng-content projection", async () => {
     const out = await code("DefineSlotBasic", "angular");
-    expect(out).toContain('<ng-content select="[slot=header]" />');
-    expect(out).toContain("<ng-content />");
+    expect(out).toContain('<ng-content select="[slot=header]"></ng-content>');
+    expect(out).toContain("<ng-content></ng-content>");
   });
 });
 

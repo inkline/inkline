@@ -136,14 +136,15 @@ describe("Angular codegen fixes", () => {
       expect(code).toContain("</Card>");
     });
 
-    it("self-closes when no slots", () => {
+    it("emits a non-self-closing tag when no slots", () => {
       const ci = createComponentInstance({
         reference: mockExpr("Icon") as ts.Identifier,
         resolved: { module: null, name: "Icon" },
       });
       const comp = makeComp("Page", ci);
       const code = emitCode(comp);
-      expect(code).toContain("/>");
+      // Angular's JIT template parser mishandles self-closed component tags.
+      expect(code).toContain("<Icon></Icon>");
     });
   });
 

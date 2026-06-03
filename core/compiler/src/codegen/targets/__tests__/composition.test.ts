@@ -57,12 +57,12 @@ describe("ComponentRef: same-file child instance + forwarded ref", () => {
     expect(out).not.toContain("import Child");
   });
 
-  it("Angular: child instance resolves to <Child /> but is NOT declared in imports", async () => {
+  it("Angular: child instance resolves to <Child></Child> but is NOT declared in imports", async () => {
     const out = await allFiles("ComponentRef", "angular");
-    expect(out).toContain("template: `<Child />`");
-    // BUG: the ComponentRef @Component has no `imports: [...]`, yet its template uses <Child />.
+    expect(out).toContain("template: `<Child></Child>`");
+    // BUG: the ComponentRef @Component has no `imports: [...]`, yet its template uses <Child>.
     // Angular standalone components must list child components in `imports` or the tag is unknown.
-    expect(out).toContain("selector: 'ComponentRef', template: `<Child />`");
+    expect(out).toContain("selector: 'ComponentRef', template: `<Child></Child>`");
     expect(out).not.toContain("imports: [Child");
   });
 });
@@ -81,7 +81,7 @@ describe("MultipleComponentsPerFile: Counter renders sibling <Label>", () => {
 
   it("Angular: Label instance is emitted but missing from imports[]", async () => {
     const out = await allFiles("MultipleComponentsPerFile", "angular");
-    expect(out).toContain('<Label [text]="String(count())" />');
+    expect(out).toContain('<Label [text]="String(count())"></Label>');
     // BUG: Counter's @Component omits `imports: [Label]` even though the template instantiates
     // <Label>. Standalone Angular requires the child in imports for the tag to render.
     expect(out).toContain("selector: 'Counter', template: `<div>");
@@ -138,7 +138,8 @@ describe("CrossFileBase / CrossFileStyled: cross-file component composition", ()
       'import { CrossFileBaseComponent as CrossFileBase } from "./CrossFileBase.component";',
     );
     expect(out).toContain("imports: [CrossFileBase]");
-    expect(out).toContain('<CrossFileBase [class]="size" [label]="label">');
+    // Styling/label props are signal inputs, read in call form in the template bindings.
+    expect(out).toContain('<CrossFileBase [class]="size()" [label]="label()">');
   });
 
   it("Vue: cross-file import is rewritten to .vue and bound with :class / :label", async () => {
@@ -165,6 +166,7 @@ describe("CrossFileBase / CrossFileStyled: cross-file component composition", ()
     const vue = await code("CrossFileBase", "vue");
     expect(vue).toContain("<slot>");
     const angular = await code("CrossFileBase", "angular");
-    expect(angular).toContain("<ng-content />");
+    // Angular renders the fallback (the `label` signal input) as the <ng-content> projection default.
+    expect(angular).toContain("<ng-content>{{ label() }}</ng-content>");
   });
 });

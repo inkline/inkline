@@ -80,6 +80,12 @@ export interface RewriteRules {
    */
   readonly propLocals?: ReadonlySet<string>;
   /**
+   * Props are emitted as Angular signal inputs (`color = input<T>()`), so a `props.x` read must use
+   * the call form: `this.color()` in a class body, `color()` in the template. Without it `props.x`
+   * reads a plain field, which a `computed`/`effect` cannot track. Angular-only.
+   */
+  readonly propSignals?: boolean;
+  /**
    * Signals that have been lifted into a DI-provided context object (Angular). A read `disabled()`
    * becomes `<field>.<prop>` and a setter call `setDisabled(v)` becomes `<field>.<prop> = v`, where
    * the field is the injected context and the prop is a reactive getter/setter over the lifted
