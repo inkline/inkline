@@ -76,7 +76,9 @@ describe("StyledRecipe: recipe memo from props + default slot", () => {
   it("Astro: recipe computed once as a const in frontmatter (over destructured props)", async () => {
     const out = await code("StyledRecipe", "astro");
     expect(out).toContain("const className = badge({ color: color, size: size })");
-    expect(out).toContain("<slot />");
+    // Default slot falls back to the `label` prop, rendered as the <slot>'s default content.
+    expect(out).toContain("<slot>");
+    expect(out).toContain("{label}");
   });
 
   it("every target enumerates the styling props from the inline interface", async () => {

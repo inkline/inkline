@@ -159,19 +159,28 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       });
     }
     case "SlotPlaceholder": {
-      const propName = node.name === "default" ? "children" : node.name;
+      // Qwik projects content through its native `<Slot/>` component — NOT `props.children`, which
+      // Qwik never populates (so the old `{props.children ?? …}` lowering silently dropped every
+      // projected child). Authored fallback becomes the `<Slot>`'s children, shown when nothing is
+      // projected; named slots use `<Slot name="x"/>`.
+      const slotAttrs =
+        node.name === "default"
+          ? []
+          : [cJsxAttr({ name: "name", value: { kind: "static", text: node.name } })];
       if (node.scopedArgs.length > 0) {
-        // Qwik's Slot/`children` projects JSX and is NOT a callable render function, so scoped-slot
-        // args can't be passed. Best-effort: render the authored fallback (default content, with its
-        // scope vars in scope); otherwise project the children without the args.
+        // Qwik's `<Slot/>` can't receive scoped args. Best-effort: render the authored fallback
+        // (default content, with its scope vars in scope); otherwise project without the args.
         return node.fallback
           ? emitNode(node.fallback, rules)
-          : cExpr({ text: `{props.${propName}}` });
+          : cJsxElement({ tag: "Slot", attrs: slotAttrs, children: [], selfClose: true });
       }
-      if (node.fallback) {
-        return cExpr({ text: `{props.${propName} ?? ${emitFallback(node.fallback, rules)}}` });
-      }
-      return cExpr({ text: `{props.${propName}}` });
+      const fallbackChildren = node.fallback ? [emitNode(node.fallback, rules)] : [];
+      return cJsxElement({
+        tag: "Slot",
+        attrs: slotAttrs,
+        children: fallbackChildren,
+        selfClose: fallbackChildren.length === 0,
+      });
     }
     case "Transition": {
       const attrs = [cJsxAttr({ name: "name", value: { kind: "static", text: node.name } })];
@@ -233,10 +242,36 @@ function emitNodeInline(node: IRNode, rules: RewriteRules): string {
   return inlineCode(emitNode(node, rules));
 }
 
-function emitFallback(node: IRNode, rules: RewriteRules): string {
-  if (node.kind === "Text") return `"${node.value}"`;
-  if (node.kind === "Expression") return rewriteExpr(node.expr, rules);
-  return inlineCode(emitNode(node, rules));
+// Whether emitting `node` produces a Qwik `<Slot>` element (and therefore needs the `Slot` import).
+// Mirrors the SlotPlaceholder emit: every slot lowers to `<Slot>` EXCEPT a scoped slot that has
+// fallback, which renders that fallback inline instead (Qwik's `<Slot/>` can't carry scoped args).
+function emitsQwikSlot(node: IRNode): boolean {
+  switch (node.kind) {
+    case "SlotPlaceholder":
+      if (node.scopedArgs.length > 0 && node.fallback) return emitsQwikSlot(node.fallback);
+      return true;
+    case "Element":
+    case "Fragment":
+      return node.children.some(emitsQwikSlot);
+    case "If":
+      return (
+        node.branches.some((b) => emitsQwikSlot(b.body)) ||
+        (node.fallback ? emitsQwikSlot(node.fallback) : false)
+      );
+    case "For":
+      return emitsQwikSlot(node.body);
+    case "Switch":
+      return (
+        node.cases.some((c) => emitsQwikSlot(c.body)) ||
+        (node.fallback ? emitsQwikSlot(node.fallback) : false)
+      );
+    case "ComponentInstance":
+      return node.slots.some((s) => emitsQwikSlot(s.body));
+    case "Transition":
+      return emitsQwikSlot(node.child);
+    default:
+      return false;
+  }
 }
 
 function hasTransition(node: IRNode): boolean {
@@ -412,6 +447,8 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       .join(", ");
     body.push(cStmt({ body: `const { ${defs} } = props` }));
   }
+
+  if (emitsQwikSlot(component.render)) qwikImports.push("Slot");
 
   const needsTransition = hasTransition(component.render);
 

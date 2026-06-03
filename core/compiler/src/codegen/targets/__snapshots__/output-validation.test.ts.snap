@@ -1039,17 +1039,17 @@ const { ...__attrs } = props;
 `;
 
 exports[`full output snapshots > DefineSlotBasic > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export const DefineSlotBasic = component$((props) =>
 {
 const { header, children, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   <header>
-    {props.header}
+    <Slot name="header" />
   </header>
   <main>
-    {props.children}
+    <Slot />
   </main>
 </div>
 )
@@ -2512,13 +2512,13 @@ const { ...__attrs } = props;
 `;
 
 exports[`full output snapshots > SlotBasic > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export const SlotBasic = component$((props) =>
 {
 const { children, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  {props.children}
+  <Slot />
 </div>
 )
 });
@@ -2604,15 +2604,15 @@ let expanded = true
 `;
 
 exports[`full output snapshots > SlotInConditional > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export const SlotInConditional = component$((props) =>
 {
 const expanded = useSignal(true)
 const { header, children, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  {props.header}
-  {expanded.value ? (<>{props.children}</>) : null}
+  <Slot name="header" />
+  {expanded.value ? (<><Slot /></>) : null}
 </div>
 )
 });
@@ -2721,20 +2721,20 @@ const { ...__attrs } = props;
 `;
 
 exports[`full output snapshots > SlotNamed > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export const SlotNamed = component$((props) =>
 {
 const { header, children, footer, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   <header>
-    {props.header}
+    <Slot name="header" />
   </header>
   <main>
-    {props.children}
+    <Slot />
   </main>
   <footer>
-    {props.footer}
+    <Slot name="footer" />
   </footer>
 </div>
 )
@@ -3084,27 +3084,43 @@ const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
 <main>
-<slot />
+<slot>
+<p>
+Default content
+</p>
+</slot>
 </main>
 <footer>
-<slot name="actions" />
+<slot name="actions">
+<span>
+Action area
+</span>
+</slot>
 </footer>
 </div>
 "
 `;
 
 exports[`full output snapshots > SlotWithDefault > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export const SlotWithDefault = component$((props) =>
 {
 const { children, actions, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   <main>
-    {props.children ?? <p>Default content</p>}
+    <Slot>
+      <p>
+        Default content
+      </p>
+    </Slot>
   </main>
   <footer>
-    {props.actions ?? <span>Action area</span>}
+    <Slot name="actions">
+      <span>
+        Action area
+      </span>
+    </Slot>
   </footer>
 </div>
 )
@@ -3218,21 +3234,33 @@ const props = Astro.props as Props;
 const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
-<slot name="header" />
-<slot />
+<slot name="header">
+<h1>
+Default Header
+</h1>
+</slot>
+<slot>
+Default body content
+</slot>
 </div>
 "
 `;
 
 exports[`full output snapshots > SlotWithFallback > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export const SlotWithFallback = component$((props) =>
 {
 const { header, children, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  {props.header ?? <h1>Default Header</h1>}
-  {props.children ?? "Default body content"}
+  <Slot name="header">
+    <h1>
+      Default Header
+    </h1>
+  </Slot>
+  <Slot>
+    Default body content
+  </Slot>
 </div>
 )
 });

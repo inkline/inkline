@@ -104,14 +104,14 @@ describe("SlotWithFallback: slot fallback content", () => {
     expect(out).not.toContain("<ng-content />");
   });
 
-  it("Astro: fallback content is DROPPED even though Astro supports <slot> fallback", async () => {
-    // BUG: Astro natively supports fallback content between <slot>...</slot>, but codegen emits
-    // self-closing `<slot name="header" />` / `<slot />` and discards the authored defaults.
+  it("Astro: fallback content renders as the <slot> default (non-self-closing)", async () => {
+    // Astro natively supports fallback content between <slot>...</slot>; codegen emits the authored
+    // defaults as the slot's children, shown when nothing is projected (matching Vue/Svelte).
     const out = await code("SlotWithFallback", "astro");
-    expect(out).toContain('<slot name="header" />');
-    expect(out).toContain("<slot />");
-    expect(out).not.toContain("Default Header");
-    expect(out).not.toContain("Default body content");
+    expect(out).toContain('<slot name="header">');
+    expect(out).toContain("Default Header");
+    expect(out).toContain("Default body content");
+    expect(out).not.toContain('<slot name="header" />');
   });
 });
 
@@ -123,20 +123,26 @@ describe("SlotWithDefault: declared default slot + named actions slot", () => {
     expect(out).toContain("{props.actions ?? <span>Action area</span>}");
   });
 
-  it("Qwik: default slot → props.children fallback; named actions → props.actions", async () => {
+  it("Qwik: default slot → <Slot> with fallback; named actions → <Slot name='actions'>", async () => {
+    // Qwik projects through its native <Slot/> (props.children is never populated). The authored
+    // fallback becomes the <Slot>'s children, and `Slot` is added to the @qwik.dev/core import.
     const out = await code("SlotWithDefault", "qwik");
-    expect(out).toContain("{props.children ?? <p>Default content</p>}");
-    expect(out).toContain("{props.actions ?? <span>Action area</span>}");
+    expect(out).toContain("<Slot>");
+    expect(out).toContain("Default content");
+    expect(out).toContain('<Slot name="actions">');
+    expect(out).toContain("Action area");
+    expect(out).toContain('Slot } from "@qwik.dev/core"');
+    expect(out).not.toContain("props.children");
   });
 
-  it("Astro: named-slot fallback DROPPED (actions fallback span discarded)", async () => {
-    // BUG: same fallback-dropping bug as SlotWithFallback — `<span>Action area</span>` and
-    // `<p>Default content</p>` defaults are lost; only bare `<slot>` tags are emitted.
+  it("Astro: named-slot fallback renders (non-self-closing <slot> with default content)", async () => {
+    // Astro renders fallback between <slot>...</slot>; the `<span>Action area</span>` and
+    // `<p>Default content</p>` defaults are emitted as each slot's children.
     const out = await code("SlotWithDefault", "astro");
-    expect(out).toContain("<slot />");
-    expect(out).toContain('<slot name="actions" />');
-    expect(out).not.toContain("Action area");
-    expect(out).not.toContain("Default content");
+    expect(out).toContain('<slot name="actions">');
+    expect(out).toContain("Action area");
+    expect(out).toContain("Default content");
+    expect(out).not.toContain("<slot />");
   });
 });
 
