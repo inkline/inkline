@@ -134,6 +134,9 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
       if (expr.expression.text === "props") {
         if (rules.selfPrefix) return `this.${expr.name.text}`;
         if (rules.members?.props?.strip) return expr.name.text;
+        // A prop destructured into a local with a default (React) reads as the bare local so the
+        // default takes effect; otherwise `props.x` stays verbatim.
+        if (rules.propLocals?.has(expr.name.text)) return expr.name.text;
       }
       if (expr.expression.text === "slots" && rules.members?.slots?.strip) {
         return rules.members.slots.rename?.[expr.name.text] ?? expr.name.text;

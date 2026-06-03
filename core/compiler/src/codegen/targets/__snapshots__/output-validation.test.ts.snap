@@ -1721,7 +1721,7 @@ const { label, disabled, ...__attrs } = props;
 
 exports[`full output snapshots > IButton > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const IButton = component$((props) =>
+export const IButton = component$((props: { label: string; disabled?: boolean } & Record<string, any>) =>
 {
 const { label, disabled, ...__attrs } = props
 return (
@@ -2334,7 +2334,7 @@ const { text, ...__attrs } = props;
 
 exports[`full output snapshots > MultipleComponentsPerFile > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const Label = component$((props) =>
+export const Label = component$((props: { text: string } & Record<string, any>) =>
 {
 const { text, ...__attrs } = props
 return (
@@ -2404,17 +2404,17 @@ exports[`full output snapshots > PropDefaults > angular 1`] = `
 </div>\` })
 export class PropDefaultsComponent
 {
-@Input() color?
-@Input() size!
+@Input() color: string = 'blue'
+@Input() size!: number
 }
 "
 `;
 
 exports[`full output snapshots > PropDefaults > astro 1`] = `
 "---
-type Props = { color?: unknown; size: unknown } & Record<string, any>
+type Props = { color?: string; size: number } & Record<string, any>
 const props = Astro.props as Props;
-const { color, size, ...__attrs } = props;
+const { color = "blue", size, ...__attrs } = props;
 ---
 <div {...__attrs} style={\`color: \${color}\`} class={__attrs.class}>
 {size}
@@ -2424,11 +2424,11 @@ const { color, size, ...__attrs } = props;
 
 exports[`full output snapshots > PropDefaults > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const PropDefaults = component$((props) =>
+export const PropDefaults = component$((props: { color?: string; size: number } & Record<string, any>) =>
 {
-const { color, size, ...__attrs } = props
+const { color = "blue", size, ...__attrs } = props
 return (
-<div {...__attrs} style={\`color: \${props.color}\`} class={props.class}>
+<div {...__attrs} style={\`color: \${color}\`} class={props.class}>
   {props.size}
 </div>
 )
@@ -2437,11 +2437,11 @@ return (
 `;
 
 exports[`full output snapshots > PropDefaults > react 1`] = `
-"export function PropDefaults(props: { color?; size } & React.HTMLAttributes<HTMLElement>)
+"export function PropDefaults(props: { color?: string; size: number } & React.HTMLAttributes<HTMLElement>)
 {
-const { color, size, ...__attrs } = props
+const { color = "blue", size, ...__attrs } = props
 return (
-<div {...__attrs} style={\`color: \${props.color}\`} className={props.className}>
+<div {...__attrs} style={\`color: \${color}\`} className={props.className}>
   {props.size}
 </div>
 )
@@ -2450,10 +2450,11 @@ return (
 `;
 
 exports[`full output snapshots > PropDefaults > solid 1`] = `
-"import { splitProps } from "solid-js";
+"import { mergeProps, splitProps } from "solid-js";
 import type { JSX } from "solid-js";
-export default function PropDefaults(props: { color?; size } & JSX.HTMLAttributes<HTMLElement>)
+export default function PropDefaults(_props: { color?: string; size: number } & JSX.HTMLAttributes<HTMLElement>)
 {
+const props = mergeProps({ color: "blue" }, _props)
 const [, __attrs] = splitProps(props, ["color", "size"])
 return (
 <div {...__attrs} style={\`color: \${props.color}\`} class={props.class}>
@@ -2466,8 +2467,8 @@ return (
 
 exports[`full output snapshots > PropDefaults > svelte 1`] = `
 "<script lang="ts">
-  interface Props { color?; size }
-  let { color, size, ...__attrs }: Props & Record<string, any> = $props()
+  interface Props { color?: string; size: number }
+  let { color = "blue", size, ...__attrs }: Props & Record<string, any> = $props()
 </script>
 <div {...__attrs} style={\`color: \${color}\`} class={__attrs.class}>
   {size}
@@ -2477,7 +2478,7 @@ exports[`full output snapshots > PropDefaults > svelte 1`] = `
 
 exports[`full output snapshots > PropDefaults > vue 1`] = `
 "<script setup lang="ts">
-  const props = defineProps<{ color?; size }>()
+  const props = withDefaults(defineProps<{ color?: string; size: number }>(), { color: "blue" })
 </script>
 <template>
 <div :style="\`color: \${color}\`">

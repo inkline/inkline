@@ -415,7 +415,8 @@ function buildSolidPropsType(component: IRComponent): string {
     const defs = component.props
       .map((p) => {
         const opt = p.required ? "" : "?";
-        const type = p.typeNode ? `: ${p.typeNode.getText()}` : "";
+        const typeText = p.typeText ?? p.typeNode?.getText();
+        const type = typeText ? `: ${typeText}` : "";
         return `${p.name}${opt}${type}`;
       })
       .join("; ");
@@ -458,6 +459,18 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const rules = ctx.rewrites;
   const body: Code[] = [];
   const solidImports: string[] = [];
+
+  // Apply prop defaults via Solid's mergeProps so `props.x` resolves to the default when omitted.
+  // The merged result is bound to a fresh `const props` (the parameter is renamed `_props`) so the
+  // defaulted keys narrow to non-optional types, while the rest of the body keeps reading `props.x`.
+  const propDefaults = component.props.filter((p) => p.defaultValue !== undefined);
+  if (propDefaults.length > 0) {
+    solidImports.push("mergeProps");
+    const entries = propDefaults
+      .map((p) => `${p.name}: ${rewriteExpr(p.defaultValue!.expr, rules)}`)
+      .join(", ");
+    body.push(cStmt({ body: `const props = mergeProps({ ${entries} }, _props)` }));
+  }
 
   for (const c of component.consumes) {
     solidImports.push("useContext");
@@ -619,7 +632,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...(needsTransition ? [cRaw({ text: "" }), cRaw({ text: SOLID_TRANSITION_HELPER })] : []),
       cRaw({ text: "" }),
       cStmt({
-        body: `export default function ${component.name}(props: ${buildSolidPropsType(component)})`,
+        body: `export default function ${component.name}(${propDefaults.length > 0 ? "_props" : "props"}: ${buildSolidPropsType(component)})`,
       }),
       cRaw({ text: "{" }),
       cGroup({

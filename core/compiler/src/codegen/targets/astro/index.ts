@@ -148,7 +148,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const fallthrough = rootAcceptsFallthrough(component);
   const inlineProps =
     component.props.length > 0
-      ? `{ ${component.props.map((p) => `${p.name}${p.required ? "" : "?"}${p.typeNode ? `: ${p.typeNode.getText()}` : ": unknown"}`).join("; ")} }`
+      ? `{ ${component.props.map((p) => `${p.name}${p.required ? "" : "?"}${(p.typeText ?? p.typeNode?.getText()) ? `: ${p.typeText ?? p.typeNode?.getText()}` : ": unknown"}`).join("; ")} }`
       : "";
 
   let propsInterface: string;
@@ -165,7 +165,9 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     propsInterface = "";
   }
 
-  const destructured = component.props.map((p) => p.name);
+  const destructured = component.props.map((p) =>
+    p.defaultValue ? `${p.name} = ${rewriteExpr(p.defaultValue.expr, rules)}` : p.name,
+  );
   if (fallthrough) destructured.push(`...${FALLTHROUGH_REST}`);
   // Bind `props` so whole-object references (e.g. styling recipes) resolve, then derive the
   // named props and attribute-fallthrough rest from it — mirroring the other targets.

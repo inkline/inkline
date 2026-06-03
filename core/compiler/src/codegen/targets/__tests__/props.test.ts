@@ -72,38 +72,41 @@ describe("IButton: typed props (label/optional disabled) across targets", () => 
 describe("PropDefaults: object form `{ props: { color: 'blue', size: Number } }`", () => {
   // The author used the object/options form, which conveys a DEFAULT ("blue") for color and a
   // runtime constructor type (Number) for size.
-  it("BUG: React drops the default and emits a malformed prop type with no annotation", async () => {
+  it("React: resolves prop types and applies the `color` default via the destructure", async () => {
     const out = await code("PropDefaults", "react");
-    // BUG: `color: "blue"` default is gone (no `= "blue"` anywhere) and the prop type degrades to
-    // `{ color?; size }` — `color?` and `size` have NO type annotation, which is invalid TS.
+    // Resolved types: `color?: string`, `size: number` (no bare `color?` without an annotation).
     expect(out).toContain(
-      "export function PropDefaults(props: { color?; size } & React.HTMLAttributes<HTMLElement>)",
+      "export function PropDefaults(props: { color?: string; size: number } & React.HTMLAttributes<HTMLElement>)",
     );
-    expect(out).not.toContain('"blue"');
-    expect(out).not.toContain('= "blue"');
+    // The `"blue"` default is applied in the rest destructure, and the JSX reads the destructured
+    // local so an omitted `color` resolves to the default.
+    expect(out).toContain('const { color = "blue", size, ...__attrs } = props');
+    expect(out).toContain("style={`color: ${color}`}");
   });
 
-  it("BUG: Vue defineProps generic is invalid TS (`color?; size` with no types) and default is lost", async () => {
+  it("Vue: defineProps generic carries resolved types and withDefaults applies the `color` default", async () => {
     const out = await code("PropDefaults", "vue");
-    // BUG: `defineProps<{ color?; size }>()` — neither member has a type; `color` has no default.
-    expect(out).toContain("const props = defineProps<{ color?; size }>()");
-    expect(out).not.toContain('"blue"');
+    // Resolved types: `color?: string`, `size: number`; the `"blue"` default is seeded via
+    // withDefaults, which only lists props that declared a default.
+    expect(out).toContain(
+      'const props = withDefaults(defineProps<{ color?: string; size: number }>(), { color: "blue" })',
+    );
   });
 
-  it("BUG: Angular emits an @Input with no type and no default initializer for color", async () => {
+  it("Angular: @Input gets the resolved type and a field default initializer for color", async () => {
     const out = await code("PropDefaults", "angular");
-    // BUG: `@Input() color?` has no type and no `= "blue"` default; `@Input() size!` is untyped.
-    expect(out).toContain("@Input() color?");
-    expect(out).toContain("@Input() size!");
-    expect(out).not.toContain('"blue"');
+    // The defaulted prop becomes a field with an initializer (and loses the optional marker); the
+    // required constructor-typed prop keeps definite-assignment with its resolved type.
+    expect(out).toContain("@Input() color: string = 'blue'");
+    expect(out).toContain("@Input() size!: number");
   });
 
-  it("Astro recovers `unknown` annotations but still drops the default value", async () => {
+  it("Astro: resolves the prop types and applies the `color` default in the frontmatter", async () => {
     const out = await code("PropDefaults", "astro");
-    // BUG: type is reconstructed as `{ color?: unknown; size: unknown }` but the `"blue"` default is
-    // still dropped, so `color` is undefined at runtime.
-    expect(out).toContain("type Props = { color?: unknown; size: unknown } & Record<string, any>");
-    expect(out).not.toContain('"blue"');
+    // Types are resolved (`color?: string`, `size: number`), and the default is applied in the
+    // frontmatter destructure so an omitted `color` resolves to "blue".
+    expect(out).toContain("type Props = { color?: string; size: number } & Record<string, any>");
+    expect(out).toContain('const { color = "blue", size, ...__attrs } = props;');
   });
 });
 

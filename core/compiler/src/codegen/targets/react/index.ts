@@ -48,8 +48,13 @@ function capitalize(name: string): string {
 
 // ── Attribute fallthrough (Vue-style attribute inheritance) ─────────
 
-/** Props destructured out of the rest so they never leak onto the root DOM element. */
-function fallthroughRestBindings(component: IRComponent): string[] {
+/**
+ * Props destructured out of the rest so they never leak onto the root DOM element. A prop that
+ * declares a default gets `name = <default>` so an omitted prop resolves to the default; the
+ * destructured local is what the JSX reads (`props.color` is rewritten to the local), so the
+ * default takes effect.
+ */
+function fallthroughRestBindings(component: IRComponent, rules: RewriteRules): string[] {
   const names = new Set<string>();
   for (const slot of component.slots) {
     if (slot.name === "default") {
@@ -58,7 +63,9 @@ function fallthroughRestBindings(component: IRComponent): string[] {
       names.add(`render${slot.name.charAt(0).toUpperCase()}${slot.name.slice(1)}`);
     }
   }
-  for (const p of component.props) names.add(p.name);
+  for (const p of component.props) {
+    names.add(p.defaultValue ? `${p.name} = ${rewriteExpr(p.defaultValue.expr, rules)}` : p.name);
+  }
   return [...names];
 }
 
@@ -355,7 +362,8 @@ function buildPropsType(component: IRComponent): string {
     const defs = component.props
       .map((p) => {
         const opt = p.required ? "" : "?";
-        const type = p.typeNode ? `: ${p.typeNode.getText()}` : "";
+        const typeStr = p.typeText ?? p.typeNode?.getText();
+        const type = typeStr ? `: ${typeStr}` : "";
         return `${p.name}${opt}${type}`;
       })
       .join("; ");
@@ -583,10 +591,22 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     }
   }
 
+  // Props with a default destructure into a local with that default applied; the render tree then
+  // reads the local (via `propLocals`) so an omitted prop resolves to its default.
+  const propsWithDefaults = component.props.filter((p) => p.defaultValue !== undefined);
+  const propLocals = new Set(propsWithDefaults.map((p) => p.name));
+
   if (rootAcceptsFallthrough(component)) {
-    const bindings = fallthroughRestBindings(component);
+    const bindings = fallthroughRestBindings(component, rules);
     const prefix = bindings.length > 0 ? `${bindings.join(", ")}, ` : "";
     body.push(cStmt({ body: `const { ${prefix}...${FALLTHROUGH_REST} } = props` }));
+  } else if (propsWithDefaults.length > 0) {
+    // No fallthrough rest binding to carry the defaults — destructure the default-bearing props on
+    // their own so each local exists with its default applied.
+    const defs = propsWithDefaults
+      .map((p) => `${p.name} = ${rewriteExpr(p.defaultValue!.expr, rules)}`)
+      .join(", ");
+    body.push(cStmt({ body: `const { ${defs} } = props` }));
   }
 
   const needsTransition = hasTransition(component.render);
@@ -608,6 +628,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const renderRules: RewriteRules = {
     ...rules,
     reactiveBindings: new Set([...(rules.reactiveBindings ?? []), ...resourceReads]),
+    propLocals,
   };
 
   let renderTree = emitNode(component.render, renderRules);

@@ -202,6 +202,12 @@ export interface IRSlotContent {
 export interface IRProp {
   readonly name: string;
   readonly typeNode?: ts.TypeNode;
+  /**
+   * A resolved type string used when there is no `typeNode` to print — e.g. an object-form prop
+   * declaration (`{ size: Number }` → `"number"`, `{ color: "blue" }` → `"string"`) whose type is
+   * inferred from a constructor reference or a default-value literal.
+   */
+  readonly typeText?: string;
   readonly defaultValue?: IRExprNode;
   readonly required: boolean;
   readonly symbolId?: SymbolId;

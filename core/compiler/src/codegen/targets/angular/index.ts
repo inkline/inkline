@@ -295,9 +295,21 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   if (component.props.length > 0) {
     angularImports.push("Input");
     for (const p of component.props) {
-      const opt = p.required ? "!" : "?";
-      const type = p.typeNode ? `: ${p.typeNode.getText()}` : "";
-      body.push(cStmt({ body: `@Input() ${p.name}${opt}${type}`, span: p.loc }));
+      const typeText = p.typeText ?? p.typeNode?.getText();
+      const type = typeText ? `: ${typeText}` : "";
+      if (p.defaultValue) {
+        // A default makes the field always populated, so drop the optional/definite marker and
+        // initialize the field directly: `@Input() color: string = "blue"`.
+        body.push(
+          cStmt({
+            body: `@Input() ${p.name}${type} = ${rewriteExpr(p.defaultValue.expr, bodyRules)}`,
+            span: p.loc,
+          }),
+        );
+      } else {
+        const opt = p.required ? "!" : "?";
+        body.push(cStmt({ body: `@Input() ${p.name}${opt}${type}`, span: p.loc }));
+      }
     }
   }
 

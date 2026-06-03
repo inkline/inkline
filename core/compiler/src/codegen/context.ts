@@ -72,6 +72,14 @@ export interface RewriteRules {
    */
   readonly reactiveBindings?: ReadonlySet<string>;
   /**
+   * Prop names that are destructured into a local with a default applied (e.g. React's
+   * `const { color = "blue", ...__attrs } = props`). A read `props.color` is rewritten to the
+   * bare local `color` so the destructured default takes effect. Only set by targets that keep
+   * `props.x` reads (no global {@link MemberRewriteRules.props} strip) yet still want defaults
+   * applied via destructuring.
+   */
+  readonly propLocals?: ReadonlySet<string>;
+  /**
    * Signals that have been lifted into a DI-provided context object (Angular). A read `disabled()`
    * becomes `<field>.<prop>` and a setter call `setDisabled(v)` becomes `<field>.<prop> = v`, where
    * the field is the injected context and the prop is a reactive getter/setter over the lifted

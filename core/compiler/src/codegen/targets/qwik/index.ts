@@ -293,6 +293,24 @@ const QWIK_TRANSITION_HELPER = `const __InkTransition = component$((props: { nam
   return show.value ? <div ref={ref} style={{ display: "contents" }}>{props.children}</div> : null;
 });`;
 
+// The `props` parameter is typed so each declared prop carries its resolved type; the object-form
+// `{ color: "blue", size: Number }` resolves to `color?: string` / `size: number` via `typeText`,
+// falling back to the authored `typeNode` and finally `unknown`. Intersecting with `Record<string,
+// any>` keeps the spread `...__attrs` fallthrough valid.
+function buildPropsTypeAnnotation(component: IRComponent): string {
+  if (component.props.length === 0) return "";
+  if (component.propsTypeText) {
+    return `: ${component.propsTypeText} & Record<string, any>`;
+  }
+  const defs = component.props
+    .map((p) => {
+      const typeStr = p.typeText ?? p.typeNode?.getText() ?? "unknown";
+      return `${p.name}${p.required ? "" : "?"}: ${typeStr}`;
+    })
+    .join("; ");
+  return `: { ${defs} } & Record<string, any>`;
+}
+
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
   const rules: RewriteRules = { ...ctx.rewrites, setters };
@@ -373,13 +391,29 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   }
 
+  // Props with a default destructure into a local with that default applied; the render tree then
+  // reads the local (via `propLocals`) so an omitted prop resolves to its default. Qwik reads
+  // `props.x` by default, so the local read is the only place the default takes effect.
+  const propsWithDefaults = component.props.filter((p) => p.defaultValue !== undefined);
+  const propLocals = new Set(propsWithDefaults.map((p) => p.name));
+  const propsTypeAnnotation = buildPropsTypeAnnotation(component);
+
   const fallthrough = rootAcceptsFallthrough(component);
   if (fallthrough) {
     const keys = new Set<string>();
     for (const slot of component.slots) keys.add(slot.name === "default" ? "children" : slot.name);
-    for (const p of component.props) keys.add(p.name);
+    for (const p of component.props) {
+      keys.add(p.defaultValue ? `${p.name} = ${rewriteExpr(p.defaultValue.expr, rules)}` : p.name);
+    }
     const prefix = keys.size > 0 ? `${[...keys].join(", ")}, ` : "";
     body.push(cStmt({ body: `const { ${prefix}...${FALLTHROUGH_REST} } = props` }));
+  } else if (propsWithDefaults.length > 0) {
+    // No fallthrough rest binding to carry the defaults — destructure the default-bearing props on
+    // their own so each local exists with its default applied.
+    const defs = propsWithDefaults
+      .map((p) => `${p.name} = ${rewriteExpr(p.defaultValue!.expr, rules)}`)
+      .join(", ");
+    body.push(cStmt({ body: `const { ${defs} } = props` }));
   }
 
   const needsTransition = hasTransition(component.render);
@@ -389,7 +423,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const resourceReads = new Set(
     component.resources.flatMap((r) => [r.name, r.loadingName, r.errorName].filter(Boolean)),
   ) as Set<string>;
-  const renderRules: RewriteRules = { ...rules, reactiveBindings: resourceReads };
+  const renderRules: RewriteRules = { ...rules, reactiveBindings: resourceReads, propLocals };
 
   const renderTree = emitNode(component.render, renderRules);
 
@@ -427,7 +461,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cStmt({
         body:
           component.props.length > 0 || component.slots.length > 0 || fallthrough
-            ? `export const ${component.name} = component$((props) =>`
+            ? `export const ${component.name} = component$((props${propsTypeAnnotation}) =>`
             : `export const ${component.name} = component$(() =>`,
       }),
       cRaw({ text: "{" }),

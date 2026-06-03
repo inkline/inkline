@@ -363,11 +363,21 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     scriptBody.unshift(cStmt({ body: `const props = defineProps<${component.propsTypeText}>()` }));
   } else if (component.props.length > 0) {
     const defs = component.props
-      .map(
-        (p) => `${p.name}${p.required ? "" : "?"}${p.typeNode ? `: ${p.typeNode.getText()}` : ""}`,
-      )
+      .map((p) => {
+        const type = p.typeText ?? p.typeNode?.getText();
+        return `${p.name}${p.required ? "" : "?"}${type ? `: ${type}` : ""}`;
+      })
       .join("; ");
-    scriptBody.unshift(cStmt({ body: `const props = defineProps<{ ${defs} }>()` }));
+    // Object-form props carry defaults; wrap defineProps in withDefaults and seed only the props
+    // that declared one, keeping the `const props` binding the <script> reads via `props.x`.
+    const defaults = component.props
+      .filter((p) => p.defaultValue)
+      .map((p) => `${p.name}: ${rewriteExpr(p.defaultValue!.expr, rules)}`);
+    const body =
+      defaults.length > 0
+        ? `const props = withDefaults(defineProps<{ ${defs} }>(), { ${defaults.join(", ")} })`
+        : `const props = defineProps<{ ${defs} }>()`;
+    scriptBody.unshift(cStmt({ body }));
   }
 
   // ── Module-level context definitions (non-setup <script>) ─────────

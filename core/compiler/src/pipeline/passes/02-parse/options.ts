@@ -129,12 +129,14 @@ function parsePropsFromObject(
       props.push({ ...parsed, loc });
     } else {
       const id = ctx.symbols.mint({ componentId, kind: "prop", name, loc });
+      const typeText = inferPropType(init);
       if (isConstructorRef(init)) {
-        props.push({ name, required: true, symbolId: id, loc });
+        props.push({ name, required: true, typeText, symbolId: id, loc });
       } else {
         props.push({
           name,
           required: false,
+          typeText,
           defaultValue: makeExprNode(init, sourceFile),
           symbolId: id,
           loc,
@@ -185,6 +187,32 @@ function isConstructorRef(node: ts.Expression): boolean {
   return ["String", "Number", "Boolean", "Object", "Array", "Function", "Symbol"].includes(
     node.text,
   );
+}
+
+const CONSTRUCTOR_TYPES: Readonly<Record<string, string>> = {
+  String: "string",
+  Number: "number",
+  Boolean: "boolean",
+  Object: "Record<string, any>",
+  Array: "any[]",
+  Function: "(...args: any[]) => any",
+  Symbol: "symbol",
+  Date: "Date",
+};
+
+/**
+ * Infer a TypeScript type string for an object-form prop value: a constructor reference
+ * (`Number` → `number`) or the type of a default-value literal (`"blue"` → `string`).
+ */
+function inferPropType(init: ts.Expression): string | undefined {
+  if (ts.isIdentifier(init) && init.text in CONSTRUCTOR_TYPES) return CONSTRUCTOR_TYPES[init.text];
+  if (ts.isStringLiteral(init) || ts.isNoSubstitutionTemplateLiteral(init)) return "string";
+  if (ts.isNumericLiteral(init)) return "number";
+  if (init.kind === ts.SyntaxKind.TrueKeyword || init.kind === ts.SyntaxKind.FalseKeyword)
+    return "boolean";
+  if (ts.isArrayLiteralExpression(init)) return "any[]";
+  if (ts.isObjectLiteralExpression(init)) return "Record<string, any>";
+  return undefined;
 }
 
 export function parsePropsFromParameterType(

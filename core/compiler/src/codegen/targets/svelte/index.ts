@@ -321,22 +321,35 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const propFallthrough = rootAcceptsFallthrough(component);
   const restBinding = propFallthrough ? `...${FALLTHROUGH_REST}` : "";
-  const bindings = [...component.props.map((p) => p.name), restBinding].filter(Boolean).join(", ");
+  // Plain binding names (no defaults) used to reconstruct the whole `props` object below.
+  const nameBindings = [...component.props.map((p) => p.name), restBinding]
+    .filter(Boolean)
+    .join(", ");
 
   const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
   // Svelte destructures `$props()`, so there is no `props` binding for whole-object references
   // (e.g. `badge(props)`). Reconstruct it from the destructured bindings instead.
   const rules: RewriteRules =
-    bindings.length > 0
+    nameBindings.length > 0
       ? {
           ...ctx.rewrites,
           setters,
           members: {
             ...ctx.rewrites.members,
-            props: { ...ctx.rewrites.members?.props, strip: true, whole: `{ ${bindings} }` },
+            props: { ...ctx.rewrites.members?.props, strip: true, whole: `{ ${nameBindings} }` },
           },
         }
       : { ...ctx.rewrites, setters };
+
+  // Destructure bindings carry each prop's default (`color = "blue"`) so `$props()` applies it.
+  const bindings = [
+    ...component.props.map((p) =>
+      p.defaultValue ? `${p.name} = ${rewriteExpr(p.defaultValue.expr, rules)}` : p.name,
+    ),
+    restBinding,
+  ]
+    .filter(Boolean)
+    .join(", ");
 
   const scriptBody: Code[] = [];
   const svelteImports: string[] = [];
@@ -356,9 +369,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     scriptBody.push(cStmt({ body: `let { ${bindings} }: ${type} = $props()` }));
   } else if (component.props.length > 0) {
     const defs = component.props
-      .map(
-        (p) => `${p.name}${p.required ? "" : "?"}${p.typeNode ? `: ${p.typeNode.getText()}` : ""}`,
-      )
+      .map((p) => {
+        const type = p.typeText ?? p.typeNode?.getText();
+        return `${p.name}${p.required ? "" : "?"}${type ? `: ${type}` : ""}`;
+      })
       .join("; ");
     scriptBody.push(cStmt({ body: `interface Props { ${defs} }` }));
     const type = `Props${propFallthrough ? " & Record<string, any>" : ""}`;
