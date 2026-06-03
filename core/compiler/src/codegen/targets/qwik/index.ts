@@ -160,16 +160,13 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     }
     case "SlotPlaceholder": {
       const propName = node.name === "default" ? "children" : node.name;
-      const argsStr =
-        node.scopedArgs.length > 0
-          ? node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ")
-          : "";
       if (node.scopedArgs.length > 0) {
+        // Qwik's Slot/`children` projects JSX and is NOT a callable render function, so scoped-slot
+        // args can't be passed. Best-effort: render the authored fallback (default content, with its
+        // scope vars in scope); otherwise project the children without the args.
         return node.fallback
-          ? cExpr({
-              text: `{props.${propName}?.(${argsStr}) ?? ${emitFallback(node.fallback, rules)}}`,
-            })
-          : cExpr({ text: `{props.${propName}?.(${argsStr})}` });
+          ? emitNode(node.fallback, rules)
+          : cExpr({ text: `{props.${propName}}` });
       }
       if (node.fallback) {
         return cExpr({ text: `{props.${propName} ?? ${emitFallback(node.fallback, rules)}}` });

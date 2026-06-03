@@ -126,6 +126,11 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
     case "Transition":
       return emitNode(node.child, rules);
     case "SlotPlaceholder":
+      // Astro has no scoped-slot mechanism: a slot with `args` can't pass per-row data to a parent.
+      // Best-effort: render the authored fallback (default content, with its scope vars in scope).
+      if (node.scopedArgs.length > 0 && node.fallback) {
+        return `<!-- scoped slot '${node.name}': args are not projectable in Astro; rendering default content -->\n${emitNode(node.fallback, rules)}`;
+      }
       return `<slot${node.name !== "default" ? ` name="${node.name}"` : ""} />`;
     default:
       assertNever(node);

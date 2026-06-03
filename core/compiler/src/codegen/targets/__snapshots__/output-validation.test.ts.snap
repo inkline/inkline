@@ -2828,7 +2828,10 @@ exports[`full output snapshots > SlotScoped > angular 1`] = `
 @Component({ standalone: true, selector: 'SlotScoped', template: \`<ul>
 @for (item of items(); track item.id; let index = $index) {
 <li>
-<ng-content select="[slot=item]" />
+<!-- scoped slot 'item': args are not projectable in Angular; rendering default content -->
+{{ index }}
+:
+{{ item.label }}
 </li>
 }
 </ul>\` })
@@ -2848,7 +2851,10 @@ let items = [{ id: 1, label: "One" }, { id: 2, label: "Two" }]
 ---
 <ul {...__attrs} class={__attrs.class}>
 {items.map((item, index) => (<li>
-<slot name="item" />
+<!-- scoped slot 'item': args are not projectable in Astro; rendering default content -->
+{index}
+:
+{item.label}
 </li>))}
 </ul>
 "
@@ -2862,7 +2868,7 @@ const items = useSignal([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
 const { item, ...__attrs } = props
 return (
 <ul {...__attrs} class={props.class}>
-  {items.value.map((item, index) => (<><li>{props.item?.(item, index) ?? <>{index}:{item.label}</>}</li></>))}
+  {items.value.map((item, index) => (<><li><>{index}:{item.label}</></li></>))}
 </ul>
 )
 });
@@ -2942,7 +2948,10 @@ exports[`full output snapshots > SlotScoped > vue 1`] = `
 exports[`full output snapshots > SlotScopedSingle > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotScopedSingle', template: \`<div>
-<ng-content />
+<!-- scoped slot 'default': args are not projectable in Angular; rendering default content -->
+<span>
+{{ value() }}
+</span>
 </div>\` })
 export class SlotScopedSingleComponent
 {
@@ -2959,7 +2968,10 @@ const { ...__attrs } = props;
 let value = "hello"
 ---
 <div {...__attrs} class={__attrs.class}>
-<slot />
+<!-- scoped slot 'default': args are not projectable in Astro; rendering default content -->
+<span>
+{value}
+</span>
 </div>
 "
 `;
@@ -2972,7 +2984,9 @@ const value = useSignal("hello")
 const { children, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  {props.children?.(value.value) ?? <span>{value.value}</span>}
+  <span>
+    {value.value}
+  </span>
 </div>
 )
 });

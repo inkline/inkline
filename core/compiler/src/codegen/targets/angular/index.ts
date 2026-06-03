@@ -172,6 +172,12 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
     case "Transition":
       return emitNode(node.child, rules);
     case "SlotPlaceholder":
+      // Angular has no scoped-slot mechanism: a slot with `args` can't receive per-row data from a
+      // parent. Best-effort: render the authored fallback (the component's default content, whose
+      // loop/scope variables are in scope here) so the component still renders standalone.
+      if (node.scopedArgs.length > 0 && node.fallback) {
+        return `<!-- scoped slot '${node.name}': args are not projectable in Angular; rendering default content -->\n${emitNode(node.fallback, rules)}`;
+      }
       return `<ng-content${node.name !== "default" ? ` select="[slot=${node.name}]"` : ""} />`;
     default:
       assertNever(node);

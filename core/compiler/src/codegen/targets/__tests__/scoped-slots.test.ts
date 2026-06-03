@@ -101,23 +101,25 @@ describe("SlotScoped: named scoped slot with args={[item, index]}", () => {
     expect(out).toContain("{index}:{item.label}");
   });
 
-  it("Angular: scoped slot collapses to <ng-content> — args AND fallback are DROPPED", async () => {
+  it("Angular: scoped slot renders the default content best-effort (args not projectable)", async () => {
     const out = await code("SlotScoped", "angular");
-    // BUG: Angular has no scoped-slot equivalent. The `[item, index]` args and the fallback
-    // `{index}: {item.label}` are silently dropped; only a projection point remains.
-    expect(out).toContain('<ng-content select="[slot=item]" />');
-    expect(out).not.toContain("item.label");
+    // Angular has no scoped-slot mechanism, so the `[item, index]` args can't reach a parent
+    // override. Best-effort: the authored fallback renders inline — the `@for` loop vars `item`/
+    // `index` are in scope — so the component still renders standalone.
+    expect(out).toContain("{{ index }}");
+    expect(out).toContain("{{ item.label }}");
+    expect(out).toContain("args are not projectable in Angular");
   });
 
-  it("Astro: scoped slot loses its args (residual bug), but `items` is now declared in the frontmatter", async () => {
+  it("Astro: scoped slot renders the default content best-effort (args not projectable)", async () => {
     const out = await code("SlotScoped", "astro");
-    // `items` is now declared as `let items = <initial>` in the frontmatter and used in the body.
+    // `items` is declared as `let items = <initial>` in the frontmatter and used in the body.
     expect(out).toContain('let items = [{ id: 1, label: "One" }, { id: 2, label: "Two" }]');
     expect(out).toContain("{items.map((item, index) => (<li>");
-    // BUG (residual): Astro has no scoped-slot mechanism. The `[item, index]` slot args are
-    // dropped — only a bare `<slot name="item" />` projection point remains, with no way for a
-    // consumer to receive the per-row scope.
-    expect(out).toContain('<slot name="item" />');
+    // Astro has no scoped-slot mechanism, so the args can't be projected; the fallback renders.
+    expect(out).toContain("{index}");
+    expect(out).toContain("{item.label}");
+    expect(out).toContain("args are not projectable in Astro");
   });
 });
 
@@ -151,18 +153,20 @@ describe("SlotScopedSingle: default scoped slot with args={[value()]}", () => {
     expect(out).toContain("{value}");
   });
 
-  it("Angular: default scoped slot collapses to bare <ng-content /> — the `value` arg is dropped", async () => {
+  it("Angular: default scoped slot renders the fallback best-effort (arg not projectable)", async () => {
     const out = await code("SlotScopedSingle", "angular");
-    // BUG: the scoped arg `value` and the fallback `<span>{value}</span>` are both dropped.
-    expect(out).toContain("<ng-content />");
-    expect(out).not.toContain("value }}");
+    // Best-effort: the `value` arg can't be projected, so the fallback `<span>{{ value() }}</span>`
+    // renders (the signal read resolves to the component's own state).
+    expect(out).toContain("{{ value() }}");
+    expect(out).toContain("args are not projectable in Angular");
   });
 
-  it("Qwik: default scoped slot calls `props.children` as a function — children is JSX, not callable", async () => {
+  it("Qwik: default scoped slot renders the fallback (children is JSX, not callable)", async () => {
     const out = await code("SlotScopedSingle", "qwik");
-    // BUG: Qwik's `children`/`Slot` projects JSX; it is not a render function. Calling
-    // `props.children?.(value.value)` is broken at runtime for normal Qwik consumers.
+    // Qwik's `children`/`Slot` projects JSX and is not a render function, so the scoped arg can't be
+    // passed. Best-effort: the authored fallback `<span>{value.value}</span>` renders.
     expect(out).toContain("const { children, ...__attrs } = props");
-    expect(out).toContain("{props.children?.(value.value) ?? <span>{value.value}</span>}");
+    expect(out).toContain("{value.value}");
+    expect(out).not.toContain("props.children?.(");
   });
 });
