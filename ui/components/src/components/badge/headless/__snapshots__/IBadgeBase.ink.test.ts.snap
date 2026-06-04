@@ -2,16 +2,16 @@
 
 exports[`Badge > output matches snapshots 1`] = `
 {
-  "angular/IBadgeBase.component.ts": "import { Component, signal, computed, effect, Input } from "@angular/core";
+  "angular/IBadgeBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
 export interface BadgeBaseProps {
   label?: string;
 }
 @Component({ standalone: true, selector: 'IBadgeBase', template: \`<div class="badge">
-<ng-content />
+<ng-content>{{ label() }}</ng-content>
 </div>\` })
 export class IBadgeBaseComponent
 {
-@Input() label?: string
+label = input<string>()
 }
 ",
   "astro/IBadgeBase.astro": "---
@@ -19,22 +19,27 @@ export interface BadgeBaseProps {
   label?: string;
 }
 type Props = BadgeBaseProps & Record<string, any>
-const { label, ...__attrs } = Astro.props as Props;
+const props = Astro.props as Props;
+const { label, ...__attrs } = props;
 ---
 <div {...__attrs} class={["badge", __attrs.class].filter(Boolean).join(" ")}>
-<slot />
+<slot>
+{label}
+</slot>
 </div>
 ",
-  "qwik/IBadgeBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+  "qwik/IBadgeBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export interface BadgeBaseProps {
   label?: string;
 }
-export const IBadgeBase = component$((props) =>
+export const IBadgeBase = component$((props: BadgeBaseProps & Record<string, any>) =>
 {
 const { children, label, ...__attrs } = props
 return (
 <div {...__attrs} class={["badge", props.class].filter(Boolean).join(" ")}>
-  {props.children ?? props.label}
+  <Slot>
+    {props.label}
+  </Slot>
 </div>
 )
 });
@@ -57,12 +62,12 @@ import type { JSX } from "solid-js";
 export interface BadgeBaseProps {
   label?: string;
 }
-export default function IBadgeBase(props: BadgeBaseProps & { default?: any } & JSX.HTMLAttributes<HTMLElement>)
+export default function IBadgeBase(props: BadgeBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
-const [, __attrs] = splitProps(props, ["default", "label"])
+const [, __attrs] = splitProps(props, ["children", "label"])
 return (
 <div {...__attrs} class={["badge", props.class].filter(Boolean).join(" ")}>
-  {props.default ?? props.label}
+  {props.children ?? props.label}
 </div>
 )
 }
