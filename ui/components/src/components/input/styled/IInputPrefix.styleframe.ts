@@ -3,4 +3,4 @@ import { useInputPrefixRecipe } from "@styleframe/theme";
 
 const s = styleframe();
 
-export const inputPrefix = useInputPrefixRecipe(s);
+export const inputPrefixRecipe = useInputPrefixRecipe(s);

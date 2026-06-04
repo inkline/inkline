@@ -3,4 +3,4 @@ import { useBadgeRecipe } from "@styleframe/theme";
 
 const s = styleframe();
 
-export const badge = useBadgeRecipe(s);
+export const badgeRecipe = useBadgeRecipe(s);

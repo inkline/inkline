@@ -3,4 +3,4 @@ import { useInputAppendRecipe } from "@styleframe/theme";
 
 const s = styleframe();
 
-export const inputAppend = useInputAppendRecipe(s);
+export const inputAppendRecipe = useInputAppendRecipe(s);

@@ -3,4 +3,4 @@ import { useInputSuffixRecipe } from "@styleframe/theme";
 
 const s = styleframe();
 
-export const inputSuffix = useInputSuffixRecipe(s);
+export const inputSuffixRecipe = useInputSuffixRecipe(s);
