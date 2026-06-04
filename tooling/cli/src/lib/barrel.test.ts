@@ -1,6 +1,28 @@
 import { describe, it, expect } from "vitest";
 import { resolve } from "node:path";
-import { generateBarrel, resolveTargetDir, type BarrelEntry } from "./barrel.ts";
+import { generateBarrel, isStoryRelDir, resolveTargetDir, type BarrelEntry } from "./barrel.ts";
+
+describe("isStoryRelDir", () => {
+  it("matches a `stories` directory segment", () => {
+    expect(isStoryRelDir("components/input/stories")).toBe(true);
+    expect(isStoryRelDir("components/badge/stories")).toBe(true);
+    expect(isStoryRelDir("stories")).toBe(true);
+  });
+
+  it("matches regardless of path separator", () => {
+    expect(isStoryRelDir("components\\input\\stories")).toBe(true);
+  });
+
+  it("does not match non-story directories", () => {
+    expect(isStoryRelDir("components/input/styled")).toBe(false);
+    expect(isStoryRelDir("components/input/headless")).toBe(false);
+    expect(isStoryRelDir("")).toBe(false);
+  });
+
+  it("does not match `stories` as a substring of another segment", () => {
+    expect(isStoryRelDir("components/success-stories/styled")).toBe(false);
+  });
+});
 
 describe("resolveTargetDir", () => {
   it("uses targetOutDir when set for the target", () => {

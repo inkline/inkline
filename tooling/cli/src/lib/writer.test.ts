@@ -82,6 +82,25 @@ describe("writeCompileOutput", () => {
     expect(entries[0]!.componentName).toBe("Button");
   });
 
+  it("writes story files but excludes them from barrel entries", () => {
+    mkdirSync(TMP, { recursive: true });
+    const barrelEntries = new Map<string, BarrelEntry[]>();
+
+    writeCompileOutput(
+      makeResult("react", [{ path: "colors.tsx", contents: "code" }]),
+      "colors",
+      TMP,
+      {},
+      "none",
+      barrelEntries,
+      "components/input/stories",
+    );
+
+    const targetDir = resolve(TMP, "react");
+    expect(existsSync(resolve(targetDir, "components/input/stories/colors.tsx"))).toBe(true);
+    expect(barrelEntries.get(targetDir)).toBeUndefined();
+  });
+
   it("uses targetOutDir when set", () => {
     const customDir = resolve(TMP, "custom-react");
     mkdirSync(TMP, { recursive: true });

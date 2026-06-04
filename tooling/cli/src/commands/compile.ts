@@ -12,7 +12,12 @@ import { activeFrameworks, generate } from "@inkline/storybook/generator";
 import { loadInklineConfig } from "../lib/config.ts";
 import { expandGlobs } from "../lib/glob.ts";
 import { commonPrefix } from "../lib/common-prefix.ts";
-import { generateBarrel, resolveTargetDir, type BarrelEntry } from "../lib/barrel.ts";
+import {
+  generateBarrel,
+  isStoryRelDir,
+  resolveTargetDir,
+  type BarrelEntry,
+} from "../lib/barrel.ts";
 import { formatDiagnostic } from "../lib/diagnostics.ts";
 import { writeCompileOutput, writeIfChanged, writeOutput } from "../lib/writer.ts";
 
@@ -226,7 +231,7 @@ function runWatch(
             writeIfChanged(`${outPath}.map`, file.sourceMap);
           }
 
-          if (!file.path.endsWith(".css")) {
+          if (!file.path.endsWith(".css") && !isStoryRelDir(relDir)) {
             const componentName = basename(file.path).split(".")[0]!;
             const relFileName = relDir ? join(relDir, file.path) : file.path;
             const entries = barrelEntries.get(targetDir) ?? [];
