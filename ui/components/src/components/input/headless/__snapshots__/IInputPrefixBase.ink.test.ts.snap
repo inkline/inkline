@@ -1,0 +1,79 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InputPrefix > output matches snapshots 1`] = `
+{
+  "angular/IInputPrefixBase.component.ts": "import { Component, signal, computed, effect } from "@angular/core";
+export interface InputPrefixBaseProps {}
+@Component({ standalone: true, selector: 'IInputPrefixBase', template: \`<span class="input-prefix">
+<ng-content></ng-content>
+</span>\` })
+export class IInputPrefixBaseComponent
+{
+}
+",
+  "astro/IInputPrefixBase.astro": "---
+export interface InputPrefixBaseProps {}
+type Props = InputPrefixBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<span {...__attrs} class={["input-prefix", __attrs.class].filter(Boolean).join(" ")}>
+<slot />
+</span>
+",
+  "qwik/IInputPrefixBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface InputPrefixBaseProps {}
+export const IInputPrefixBase = component$((props) =>
+{
+const { children, ...__attrs } = props
+return (
+<span {...__attrs} class={["input-prefix", props.class].filter(Boolean).join(" ")}>
+  <Slot />
+</span>
+)
+});
+",
+  "react/IInputPrefixBase.tsx": "export interface InputPrefixBaseProps {}
+export function IInputPrefixBase(props: InputPrefixBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, ...__attrs } = props
+return (
+<span {...__attrs} className={["input-prefix", props.className].filter(Boolean).join(" ")}>
+  {props.children}
+</span>
+)
+}
+",
+  "solid/IInputPrefixBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface InputPrefixBaseProps {}
+export default function IInputPrefixBase(props: InputPrefixBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children"])
+return (
+<span {...__attrs} class={["input-prefix", props.class].filter(Boolean).join(" ")}>
+  {props.children}
+</span>
+)
+}
+",
+  "svelte/IInputPrefixBase.svelte": "<script lang="ts">
+  export interface InputPrefixBaseProps {}
+  let { ...__attrs }: InputPrefixBaseProps & Record<string, any> = $props()
+</script>
+<span {...__attrs} class={["input-prefix", __attrs.class].filter(Boolean).join(" ")}>
+  <slot />
+</span>
+",
+  "vue/IInputPrefixBase.vue": "<script setup lang="ts">
+  export interface InputPrefixBaseProps {}
+  const props = defineProps<InputPrefixBaseProps>()
+</script>
+<template>
+<span class="input-prefix">
+  <slot />
+</span>
+</template>
+",
+}
+`;

@@ -1,0 +1,79 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InputAppend > output matches snapshots 1`] = `
+{
+  "angular/IInputAppendBase.component.ts": "import { Component, signal, computed, effect } from "@angular/core";
+export interface InputAppendBaseProps {}
+@Component({ standalone: true, selector: 'IInputAppendBase', template: \`<div class="input-append">
+<ng-content></ng-content>
+</div>\` })
+export class IInputAppendBaseComponent
+{
+}
+",
+  "astro/IInputAppendBase.astro": "---
+export interface InputAppendBaseProps {}
+type Props = InputAppendBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<div {...__attrs} class={["input-append", __attrs.class].filter(Boolean).join(" ")}>
+<slot />
+</div>
+",
+  "qwik/IInputAppendBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface InputAppendBaseProps {}
+export const IInputAppendBase = component$((props) =>
+{
+const { children, ...__attrs } = props
+return (
+<div {...__attrs} class={["input-append", props.class].filter(Boolean).join(" ")}>
+  <Slot />
+</div>
+)
+});
+",
+  "react/IInputAppendBase.tsx": "export interface InputAppendBaseProps {}
+export function IInputAppendBase(props: InputAppendBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, ...__attrs } = props
+return (
+<div {...__attrs} className={["input-append", props.className].filter(Boolean).join(" ")}>
+  {props.children}
+</div>
+)
+}
+",
+  "solid/IInputAppendBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface InputAppendBaseProps {}
+export default function IInputAppendBase(props: InputAppendBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children"])
+return (
+<div {...__attrs} class={["input-append", props.class].filter(Boolean).join(" ")}>
+  {props.children}
+</div>
+)
+}
+",
+  "svelte/IInputAppendBase.svelte": "<script lang="ts">
+  export interface InputAppendBaseProps {}
+  let { ...__attrs }: InputAppendBaseProps & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={["input-append", __attrs.class].filter(Boolean).join(" ")}>
+  <slot />
+</div>
+",
+  "vue/IInputAppendBase.vue": "<script setup lang="ts">
+  export interface InputAppendBaseProps {}
+  const props = defineProps<InputAppendBaseProps>()
+</script>
+<template>
+<div class="input-append">
+  <slot />
+</div>
+</template>
+",
+}
+`;

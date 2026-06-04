@@ -1,0 +1,79 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InputSuffix > output matches snapshots 1`] = `
+{
+  "angular/IInputSuffixBase.component.ts": "import { Component, signal, computed, effect } from "@angular/core";
+export interface InputSuffixBaseProps {}
+@Component({ standalone: true, selector: 'IInputSuffixBase', template: \`<span class="input-suffix">
+<ng-content></ng-content>
+</span>\` })
+export class IInputSuffixBaseComponent
+{
+}
+",
+  "astro/IInputSuffixBase.astro": "---
+export interface InputSuffixBaseProps {}
+type Props = InputSuffixBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<span {...__attrs} class={["input-suffix", __attrs.class].filter(Boolean).join(" ")}>
+<slot />
+</span>
+",
+  "qwik/IInputSuffixBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface InputSuffixBaseProps {}
+export const IInputSuffixBase = component$((props) =>
+{
+const { children, ...__attrs } = props
+return (
+<span {...__attrs} class={["input-suffix", props.class].filter(Boolean).join(" ")}>
+  <Slot />
+</span>
+)
+});
+",
+  "react/IInputSuffixBase.tsx": "export interface InputSuffixBaseProps {}
+export function IInputSuffixBase(props: InputSuffixBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, ...__attrs } = props
+return (
+<span {...__attrs} className={["input-suffix", props.className].filter(Boolean).join(" ")}>
+  {props.children}
+</span>
+)
+}
+",
+  "solid/IInputSuffixBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface InputSuffixBaseProps {}
+export default function IInputSuffixBase(props: InputSuffixBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children"])
+return (
+<span {...__attrs} class={["input-suffix", props.class].filter(Boolean).join(" ")}>
+  {props.children}
+</span>
+)
+}
+",
+  "svelte/IInputSuffixBase.svelte": "<script lang="ts">
+  export interface InputSuffixBaseProps {}
+  let { ...__attrs }: InputSuffixBaseProps & Record<string, any> = $props()
+</script>
+<span {...__attrs} class={["input-suffix", __attrs.class].filter(Boolean).join(" ")}>
+  <slot />
+</span>
+",
+  "vue/IInputSuffixBase.vue": "<script setup lang="ts">
+  export interface InputSuffixBaseProps {}
+  const props = defineProps<InputSuffixBaseProps>()
+</script>
+<template>
+<span class="input-suffix">
+  <slot />
+</span>
+</template>
+",
+}
+`;

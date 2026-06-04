@@ -1,0 +1,79 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InputPrepend > output matches snapshots 1`] = `
+{
+  "angular/IInputPrependBase.component.ts": "import { Component, signal, computed, effect } from "@angular/core";
+export interface InputPrependBaseProps {}
+@Component({ standalone: true, selector: 'IInputPrependBase', template: \`<div class="input-prepend">
+<ng-content></ng-content>
+</div>\` })
+export class IInputPrependBaseComponent
+{
+}
+",
+  "astro/IInputPrependBase.astro": "---
+export interface InputPrependBaseProps {}
+type Props = InputPrependBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<div {...__attrs} class={["input-prepend", __attrs.class].filter(Boolean).join(" ")}>
+<slot />
+</div>
+",
+  "qwik/IInputPrependBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface InputPrependBaseProps {}
+export const IInputPrependBase = component$((props) =>
+{
+const { children, ...__attrs } = props
+return (
+<div {...__attrs} class={["input-prepend", props.class].filter(Boolean).join(" ")}>
+  <Slot />
+</div>
+)
+});
+",
+  "react/IInputPrependBase.tsx": "export interface InputPrependBaseProps {}
+export function IInputPrependBase(props: InputPrependBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, ...__attrs } = props
+return (
+<div {...__attrs} className={["input-prepend", props.className].filter(Boolean).join(" ")}>
+  {props.children}
+</div>
+)
+}
+",
+  "solid/IInputPrependBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface InputPrependBaseProps {}
+export default function IInputPrependBase(props: InputPrependBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children"])
+return (
+<div {...__attrs} class={["input-prepend", props.class].filter(Boolean).join(" ")}>
+  {props.children}
+</div>
+)
+}
+",
+  "svelte/IInputPrependBase.svelte": "<script lang="ts">
+  export interface InputPrependBaseProps {}
+  let { ...__attrs }: InputPrependBaseProps & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={["input-prepend", __attrs.class].filter(Boolean).join(" ")}>
+  <slot />
+</div>
+",
+  "vue/IInputPrependBase.vue": "<script setup lang="ts">
+  export interface InputPrependBaseProps {}
+  const props = defineProps<InputPrependBaseProps>()
+</script>
+<template>
+<div class="input-prepend">
+  <slot />
+</div>
+</template>
+",
+}
+`;

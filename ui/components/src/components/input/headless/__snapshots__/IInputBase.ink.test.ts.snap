@@ -1,0 +1,101 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Input > output matches snapshots 1`] = `
+{
+  "angular/IInputBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface InputBaseProps {
+  /** Id of the field shell element. */
+  id?: string;
+}
+@Component({ standalone: true, selector: 'IInputBase', template: \`<div class="input" [id]="id()">
+<ng-content></ng-content>
+</div>\` })
+export class IInputBaseComponent
+{
+id = input<string>()
+}
+",
+  "astro/IInputBase.astro": "---
+export interface InputBaseProps {
+  /** Id of the field shell element. */
+  id?: string;
+}
+type Props = InputBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { id, ...__attrs } = props;
+---
+<div {...__attrs} class={["input", __attrs.class].filter(Boolean).join(" ")} id={id}>
+<slot />
+</div>
+",
+  "qwik/IInputBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface InputBaseProps {
+  /** Id of the field shell element. */
+  id?: string;
+}
+export const IInputBase = component$((props: InputBaseProps & Record<string, any>) =>
+{
+const { children, id, ...__attrs } = props
+return (
+<div {...__attrs} class={["input", props.class].filter(Boolean).join(" ")} id={props.id}>
+  <Slot />
+</div>
+)
+});
+",
+  "react/IInputBase.tsx": "export interface InputBaseProps {
+  /** Id of the field shell element. */
+  id?: string;
+}
+export function IInputBase(props: InputBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, id, ...__attrs } = props
+return (
+<div {...__attrs} className={["input", props.className].filter(Boolean).join(" ")} id={props.id}>
+  {props.children}
+</div>
+)
+}
+",
+  "solid/IInputBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface InputBaseProps {
+  /** Id of the field shell element. */
+  id?: string;
+}
+export default function IInputBase(props: InputBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children", "id"])
+return (
+<div {...__attrs} class={["input", props.class].filter(Boolean).join(" ")} id={props.id}>
+  {props.children}
+</div>
+)
+}
+",
+  "svelte/IInputBase.svelte": "<script lang="ts">
+  export interface InputBaseProps {
+    /** Id of the field shell element. */
+    id?: string;
+  }
+  let { id, ...__attrs }: InputBaseProps & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={["input", __attrs.class].filter(Boolean).join(" ")} id={id}>
+  <slot />
+</div>
+",
+  "vue/IInputBase.vue": "<script setup lang="ts">
+  export interface InputBaseProps {
+    /** Id of the field shell element. */
+    id?: string;
+  }
+  const props = defineProps<InputBaseProps>()
+</script>
+<template>
+<div class="input" :id="id">
+  <slot />
+</div>
+</template>
+",
+}
+`;
