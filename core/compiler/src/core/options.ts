@@ -6,6 +6,7 @@ export type SourceMapMode = "external" | "inline" | "none";
 
 export interface InklineConfig {
   readonly targets: readonly TargetName[];
+  readonly srcDir?: string;
   readonly outDir?: string;
   readonly targetOutDir?: Partial<Record<TargetName, string>>;
   readonly sourceMap?: SourceMapMode;
@@ -13,10 +14,18 @@ export interface InklineConfig {
   readonly plugins?: readonly Plugin[];
   readonly verbose?: boolean;
   readonly registry?: TargetRegistry;
+  /**
+   * Path to a `tsconfig.json` whose ambient type declarations (e.g. generated
+   * `*.d.ts` augmenting virtual modules) are loaded into the per-file TypeScript
+   * program, so `import type` from those modules resolves during prop analysis.
+   * Inkline's own compiler options (jsx, jsxImportSource, …) are always forced on top.
+   */
+  readonly tsconfig?: string;
 }
 
 export interface ResolvedCompilerOptions {
   readonly targets: readonly TargetName[];
+  readonly srcDir?: string;
   readonly outDir: string;
   readonly targetOutDir: Readonly<Partial<Record<TargetName, string>>>;
   readonly sourceMap: SourceMapMode;
@@ -24,6 +33,7 @@ export interface ResolvedCompilerOptions {
   readonly plugins: readonly Plugin[];
   readonly verbose: boolean;
   readonly registry: TargetRegistry;
+  readonly tsconfig?: string;
 }
 
 export function resolveOptions(
@@ -46,6 +56,7 @@ export function resolveOptions(
 
   return {
     targets,
+    srcDir: config.srcDir,
     outDir: config.outDir ?? "dist",
     targetOutDir: config.targetOutDir ?? {},
     sourceMap: config.sourceMap ?? "external",
@@ -53,5 +64,6 @@ export function resolveOptions(
     plugins: config.plugins ?? [],
     verbose: config.verbose ?? false,
     registry,
+    tsconfig: config.tsconfig,
   };
 }

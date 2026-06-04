@@ -43,7 +43,9 @@ export function renderAngular(
     assertIdentifier(name, "story name");
     const ri = renderByStory.get(name);
     if (ri) {
-      const expr = framework.renderStory.expression.replace("{name}", ri.localName);
+      const expr = framework.renderStory.expression
+        .replaceAll("{name}", ri.localName)
+        .replaceAll("{selector}", ri.selector);
       lines.push(`export const ${name}: Story = { render: () => ${expr} };`);
     } else {
       const body = variant.args ? `{ args: ${serializeArgs(variant.args)} }` : "{}";

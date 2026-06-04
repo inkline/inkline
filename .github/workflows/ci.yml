@@ -62,7 +62,7 @@ jobs:
             tooling/cli/dist
             tooling/storybook/dist
             tooling/test-utils/dist
-            ui/*/generated
+            ui/*/.inkline
             ui/*/.styleframe
 
   build-storybook:

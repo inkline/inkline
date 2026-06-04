@@ -12,7 +12,7 @@ import type { PassContext } from "../../types.ts";
 import { toLoc } from "./loc.ts";
 
 export interface ParsedOptions {
-  readonly props: IRProp[];
+  readonly props?: IRProp[];
   readonly slots: IRSlotDeclaration[];
   readonly events: IREventDeclaration[];
   readonly styles: IRStyleBlock[];
@@ -38,7 +38,7 @@ export function parseOptions(
   sourceFile: ts.SourceFile,
   ctx: PassContext,
 ): ParsedOptions {
-  const props: IRProp[] = [];
+  let props: IRProp[] | undefined;
   const slots: IRSlotDeclaration[] = [];
   const events: IREventDeclaration[] = [];
   const styles: IRStyleBlock[] = [];
@@ -49,7 +49,7 @@ export function parseOptions(
 
     switch (prop.name.text) {
       case "props":
-        props.push(...parsePropsFromObject(prop.initializer, componentId, sourceFile, ctx));
+        props = parsePropsFromObject(prop.initializer, componentId, sourceFile, ctx);
         break;
       case "slots":
         slots.push(...parseSlotsFromObject(prop.initializer, sourceFile));
@@ -129,12 +129,14 @@ function parsePropsFromObject(
       props.push({ ...parsed, loc });
     } else {
       const id = ctx.symbols.mint({ componentId, kind: "prop", name, loc });
+      const typeText = inferPropType(init);
       if (isConstructorRef(init)) {
-        props.push({ name, required: true, symbolId: id, loc });
+        props.push({ name, required: true, typeText, symbolId: id, loc });
       } else {
         props.push({
           name,
           required: false,
+          typeText,
           defaultValue: makeExprNode(init, sourceFile),
           symbolId: id,
           loc,
@@ -187,29 +189,75 @@ function isConstructorRef(node: ts.Expression): boolean {
   );
 }
 
+const CONSTRUCTOR_TYPES: Readonly<Record<string, string>> = {
+  String: "string",
+  Number: "number",
+  Boolean: "boolean",
+  Object: "Record<string, any>",
+  Array: "any[]",
+  Function: "(...args: any[]) => any",
+  Symbol: "symbol",
+  Date: "Date",
+};
+
+/**
+ * Infer a TypeScript type string for an object-form prop value: a constructor reference
+ * (`Number` → `number`) or the type of a default-value literal (`"blue"` → `string`).
+ */
+function inferPropType(init: ts.Expression): string | undefined {
+  if (ts.isIdentifier(init) && init.text in CONSTRUCTOR_TYPES) return CONSTRUCTOR_TYPES[init.text];
+  if (ts.isStringLiteral(init) || ts.isNoSubstitutionTemplateLiteral(init)) return "string";
+  if (ts.isNumericLiteral(init)) return "number";
+  if (init.kind === ts.SyntaxKind.TrueKeyword || init.kind === ts.SyntaxKind.FalseKeyword)
+    return "boolean";
+  if (ts.isArrayLiteralExpression(init)) return "any[]";
+  if (ts.isObjectLiteralExpression(init)) return "Record<string, any>";
+  return undefined;
+}
+
 export function parsePropsFromParameterType(
   setupFn: ts.ArrowFunction | ts.FunctionExpression,
   componentId: string,
   sourceFile: ts.SourceFile,
   ctx: PassContext,
+  checker: ts.TypeChecker,
 ): IRProp[] {
   const param = setupFn.parameters[0];
-  if (!param?.type || !ts.isTypeLiteralNode(param.type)) return [];
+  if (!param?.type) return [];
 
-  const props: IRProp[] = [];
+  if (ts.isTypeLiteralNode(param.type)) {
+    const props: IRProp[] = [];
 
-  for (const member of param.type.members) {
-    if (!ts.isPropertySignature(member) || !ts.isIdentifier(member.name)) continue;
+    for (const member of param.type.members) {
+      if (!ts.isPropertySignature(member) || !ts.isIdentifier(member.name)) continue;
 
-    const name = member.name.text;
-    const required = !member.questionToken;
-    const typeNode = member.type;
-    const loc = toLoc(member, sourceFile);
-    const id = ctx.symbols.mint({ componentId, kind: "prop", name, loc });
+      const name = member.name.text;
+      const required = !member.questionToken;
+      const typeNode = member.type;
+      const loc = toLoc(member, sourceFile);
+      const id = ctx.symbols.mint({ componentId, kind: "prop", name, loc });
 
-    props.push({ name, typeNode, required, symbolId: id, loc });
+      props.push({ name, typeNode, required, symbolId: id, loc });
+    }
+
+    return props;
   }
 
+  const type = checker.getTypeAtLocation(param);
+  if (type.flags & ts.TypeFlags.Any) return [];
+
+  const props: IRProp[] = [];
+  for (const symbol of type.getProperties()) {
+    const decl = symbol.declarations?.[0];
+    if (!decl || !ts.isPropertySignature(decl)) continue;
+
+    const name = symbol.getName();
+    const required = !decl.questionToken;
+    const typeNode = decl.type;
+    const loc = toLoc(param, sourceFile);
+    const id = ctx.symbols.mint({ componentId, kind: "prop", name, loc });
+    props.push({ name, typeNode, required, symbolId: id, loc });
+  }
   return props;
 }
 

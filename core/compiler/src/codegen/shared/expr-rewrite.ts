@@ -14,17 +14,106 @@ function verbatim(node: ts.Node): string {
   return tsPrinter.printNode(ts.EmitHint.Unspecified, node, emptySF);
 }
 
+function hasAsyncModifier(node: ts.ArrowFunction | ts.FunctionExpression): boolean {
+  return node.modifiers?.some((m) => m.kind === ts.SyntaxKind.AsyncKeyword) ?? false;
+}
+
+/** If `body` is a `batch(() => …)` call, return the inner function so the wrapper can be dropped. */
+function unwrapBatchArrowBody(
+  body: ts.ConciseBody,
+): ts.ArrowFunction | ts.FunctionExpression | undefined {
+  if (ts.isBlock(body)) return undefined;
+  if (
+    ts.isCallExpression(body) &&
+    ts.isIdentifier(body.expression) &&
+    body.expression.text === "batch" &&
+    body.arguments.length === 1 &&
+    (ts.isArrowFunction(body.arguments[0]!) || ts.isFunctionExpression(body.arguments[0]!))
+  ) {
+    return body.arguments[0] as ts.ArrowFunction | ts.FunctionExpression;
+  }
+  return undefined;
+}
+
 function walk(expr: ts.Expression, rules: RewriteRules): string {
-  if (ts.isCallExpression(expr)) {
-    const callee = expr.expression;
-    if (ts.isIdentifier(callee) && expr.arguments.length === 0) {
+  if (ts.isIdentifier(expr)) {
+    const renamed = rules.rename?.[expr.text];
+    if (renamed !== undefined) return renamed;
+    // A bare reactive-value read (e.g. a resource `data`/`loading`) follows the target's reactive
+    // read convention even though the authored read has no call syntax.
+    if (rules.reactiveBindings?.has(expr.text)) {
+      const self = rules.selfPrefix ? "this." : "";
       switch (rules.reactiveRead.kind) {
         case "strip-call":
-          return callee.text;
+          return `${self}${expr.text}`;
         case "preserve-call":
-          return `${callee.text}()`;
+          return `${self}${expr.text}()`;
         case "field-access":
-          return `${callee.text}.${rules.reactiveRead.field}`;
+          return `${self}${expr.text}.${rules.reactiveRead.field}`;
+      }
+    }
+    // A bare `props` reference in a target that destructures props (no `props` binding) is
+    // rewritten to the reconstruction of its destructured bindings.
+    if (expr.text === "props" && rules.members?.props?.whole !== undefined) {
+      return rules.members.props.whole;
+    }
+  }
+
+  if (ts.isCallExpression(expr)) {
+    const callee = expr.expression;
+    // `batch(() => { … })` is a no-op grouping wrapper in the authoring model (`batch(fn) => fn()`),
+    // and every target framework already batches synchronous updates, so unwrap it to the inner
+    // body. A block body becomes a `;`-separated statement run (valid in an Angular event binding);
+    // an arrow body that is itself a `batch(...)` is collapsed at the arrow handler below.
+    if (
+      ts.isIdentifier(callee) &&
+      callee.text === "batch" &&
+      expr.arguments.length === 1 &&
+      (ts.isArrowFunction(expr.arguments[0]!) || ts.isFunctionExpression(expr.arguments[0]!))
+    ) {
+      const fn = expr.arguments[0] as ts.ArrowFunction | ts.FunctionExpression;
+      if (ts.isBlock(fn.body)) {
+        return fn.body.statements.map((s) => walkStatement(s, rules)).join(" ");
+      }
+      return walk(fn.body, rules);
+    }
+    // A call to a known state setter: `setX(v)` → target-specific mutation.
+    const setterName = ts.isIdentifier(callee) ? callee.text : undefined;
+    const setterState = setterName !== undefined ? rules.setters?.[setterName] : undefined;
+    if (setterName !== undefined && setterState !== undefined) {
+      const self = rules.selfPrefix ? "this." : "";
+      const value = expr.arguments.map((a) => walk(a, rules)).join(", ");
+      // A setter for a context-lifted signal writes through the provided getter/setter.
+      const providedSetter = rules.providedSignals?.get(setterState);
+      if (providedSetter) {
+        return `${self}${providedSetter.field}.${providedSetter.prop} = ${value}`;
+      }
+      switch (rules.setterStyle.kind) {
+        case "function-call":
+          return `${self}${setterName}(${value})`;
+        case "field-assignment":
+          return `${self}${setterState}.${rules.setterStyle.field} = ${value}`;
+        case "direct-assignment":
+          return `${self}${setterState} = ${value}`;
+        case "method-call":
+          return `${self}${setterState}.${rules.setterStyle.method}(${value})`;
+      }
+    }
+    if (ts.isIdentifier(callee) && expr.arguments.length === 0) {
+      // A bare 0-arg call is a reactive read; in class-body contexts it is a member access.
+      const self = rules.selfPrefix ? "this." : "";
+      // A read of a context-lifted signal goes through the provided getter.
+      const providedRead = rules.providedSignals?.get(callee.text);
+      if (providedRead) {
+        return `${self}${providedRead.field}.${providedRead.prop}`;
+      }
+      switch (rules.reactiveRead.kind) {
+        case "strip-call":
+          return `${self}${callee.text}`;
+        case "preserve-call":
+          return `${self}${callee.text}()`;
+        case "field-access":
+          return `${self}${callee.text}.${rules.reactiveRead.field}`;
       }
     }
     const args = expr.arguments.map((a) => walk(a, rules));
@@ -42,8 +131,14 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
 
   if (ts.isPropertyAccessExpression(expr)) {
     if (ts.isIdentifier(expr.expression)) {
-      if (expr.expression.text === "props" && rules.members?.props?.strip) {
-        return expr.name.text;
+      if (expr.expression.text === "props") {
+        // Angular signal inputs are read in call form (`this.color()` / `color()`).
+        const call = rules.propSignals ? "()" : "";
+        if (rules.selfPrefix) return `this.${expr.name.text}${call}`;
+        if (rules.members?.props?.strip) return `${expr.name.text}${call}`;
+        // A prop destructured into a local with a default (React) reads as the bare local so the
+        // default takes effect; otherwise `props.x` stays verbatim.
+        if (rules.propLocals?.has(expr.name.text)) return expr.name.text;
       }
       if (expr.expression.text === "slots" && rules.members?.slots?.strip) {
         return rules.members.slots.rename?.[expr.name.text] ?? expr.name.text;
@@ -53,7 +148,9 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
       const base = walk(expr.expression, rules);
       switch (rules.refAccess.kind) {
         case "bare":
-          return base;
+          // In a class body (Angular), a ref is a `viewChild` signal member, so `inputRef.current`
+          // becomes `this.inputRef()`; in the template it stays the bare template-ref variable.
+          return rules.selfPrefix ? `this.${base}()` : base;
         case "field":
           return `${base}${expr.questionDotToken ? "?." : "."}${rules.refAccess.field}`;
       }
@@ -68,17 +165,28 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
   }
 
   if (ts.isArrowFunction(expr)) {
+    const asyncKw = hasAsyncModifier(expr) ? "async " : "";
     const params = expr.parameters.map((p) => verbatim(p)).join(", ");
     const paramStr =
       expr.parameters.length === 1 && !expr.parameters[0]!.type ? params : `(${params})`;
-    if (ts.isBlock(expr.body)) return `${paramStr} => ${walkBlock(expr.body, rules)}`;
-    return `${paramStr} => ${walk(expr.body, rules)}`;
+    // `() => batch(() => { … })` collapses to `() => { … }` (batch is a no-op grouping wrapper),
+    // keeping the handler an arrow with a block body rather than a stray statement run.
+    const unwrappedBatch = unwrapBatchArrowBody(expr.body);
+    if (unwrappedBatch) {
+      const inner = ts.isBlock(unwrappedBatch.body)
+        ? walkBlock(unwrappedBatch.body, rules)
+        : walk(unwrappedBatch.body, rules);
+      return `${asyncKw}${paramStr} => ${inner}`;
+    }
+    if (ts.isBlock(expr.body)) return `${asyncKw}${paramStr} => ${walkBlock(expr.body, rules)}`;
+    return `${asyncKw}${paramStr} => ${walk(expr.body, rules)}`;
   }
 
   if (ts.isFunctionExpression(expr)) {
+    const asyncKw = hasAsyncModifier(expr) ? "async " : "";
     const params = expr.parameters.map((p) => verbatim(p)).join(", ");
     const name = expr.name ? ` ${expr.name.text}` : "";
-    return `function${name}(${params}) ${walkBlock(expr.body, rules)}`;
+    return `${asyncKw}function${name}(${params}) ${walkBlock(expr.body, rules)}`;
   }
 
   if (ts.isParenthesizedExpression(expr)) return `(${walk(expr.expression, rules)})`;
@@ -98,8 +206,21 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
     return out + "`";
   }
 
+  if (ts.isStringLiteral(expr) && rules.stringQuote === "single") {
+    return `'${expr.text.replace(/'/g, "\\'")}'`;
+  }
+
   if (ts.isArrayLiteralExpression(expr))
     return `[${expr.elements.map((e) => walk(e, rules)).join(", ")}]`;
+
+  if (ts.isObjectLiteralExpression(expr)) {
+    const parts = expr.properties.map((p) => {
+      if (ts.isPropertyAssignment(p)) return `${p.name.getText()}: ${walk(p.initializer, rules)}`;
+      if (ts.isSpreadAssignment(p)) return `...${walk(p.expression, rules)}`;
+      return verbatim(p);
+    });
+    return `{ ${parts.join(", ")} }`;
+  }
 
   if (ts.isNonNullExpression(expr)) return `${walk(expr.expression, rules)}!`;
 
@@ -110,24 +231,35 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
   return verbatim(expr);
 }
 
-function walkBlock(block: ts.Block, rules: RewriteRules): string {
-  const lines: string[] = [];
-  for (const stmt of block.statements) {
-    if (ts.isReturnStatement(stmt)) {
-      lines.push(stmt.expression ? `return ${walk(stmt.expression, rules)};` : "return;");
-    } else if (ts.isExpressionStatement(stmt)) {
-      lines.push(`${walk(stmt.expression, rules)};`);
-    } else if (ts.isVariableStatement(stmt)) {
-      const kw = stmt.declarationList.flags & ts.NodeFlags.Const ? "const" : "let";
-      const decls = stmt.declarationList.declarations.map((d) => {
-        const name = verbatim(d.name);
-        return d.initializer ? `${name} = ${walk(d.initializer, rules)}` : name;
-      });
-      lines.push(`${kw} ${decls.join(", ")};`);
-    } else {
-      lines.push(verbatim(stmt));
-    }
+function walkStatement(stmt: ts.Statement, rules: RewriteRules): string {
+  if (ts.isReturnStatement(stmt)) {
+    return stmt.expression ? `return ${walk(stmt.expression, rules)};` : "return;";
   }
+  if (ts.isExpressionStatement(stmt)) {
+    return `${walk(stmt.expression, rules)};`;
+  }
+  if (ts.isVariableStatement(stmt)) {
+    const kw = stmt.declarationList.flags & ts.NodeFlags.Const ? "const" : "let";
+    const decls = stmt.declarationList.declarations.map((d) => {
+      const name = verbatim(d.name);
+      return d.initializer ? `${name} = ${walk(d.initializer, rules)}` : name;
+    });
+    return `${kw} ${decls.join(", ")};`;
+  }
+  if (ts.isBlock(stmt)) return walkBlock(stmt, rules);
+  if (ts.isIfStatement(stmt)) {
+    let s = `if (${walk(stmt.expression, rules)}) ${walkStatement(stmt.thenStatement, rules)}`;
+    if (stmt.elseStatement) s += ` else ${walkStatement(stmt.elseStatement, rules)}`;
+    return s;
+  }
+  if (ts.isForOfStatement(stmt)) {
+    return `for (${verbatim(stmt.initializer)} of ${walk(stmt.expression, rules)}) ${walkStatement(stmt.statement, rules)}`;
+  }
+  return verbatim(stmt);
+}
+
+function walkBlock(block: ts.Block, rules: RewriteRules): string {
+  const lines = block.statements.map((stmt) => walkStatement(stmt, rules));
   if (lines.length === 0) return "{}";
   return `{ ${lines.join(" ")} }`;
 }

@@ -6,7 +6,7 @@ exports[`full output snapshots > BatchUpdates > angular 1`] = `
 <span>
 {{ sum() }}
 </span>
-<button (click)="() => batch(() => { setX(x() + 1); setY(y() + 1); })">
+<button (click)="x.set(x() + 1); y.set(y() + 1);">
 Both
 </button>
 </div>\` })
@@ -14,19 +14,25 @@ export class BatchUpdatesComponent
 {
 x = signal(0)
 y = signal(0)
-sum = computed(() => x() + y())
+sum = computed(() => this.x() + this.y())
 }
 "
 `;
 
 exports[`full output snapshots > BatchUpdates > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let x = 0
+let y = 0
+const sum = x + y
 ---
-<div>
+<div {...__attrs} class={__attrs.class}>
 <span>
 {sum}
 </span>
-<button onClick={() => batch(() => { setX(x + 1); setY(y + 1); })}>
+<button onClick={() => { x = x + 1; y = y + 1; }}>
 Both
 </button>
 </div>
@@ -35,17 +41,18 @@ Both
 
 exports[`full output snapshots > BatchUpdates > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const BatchUpdates = component$(() =>
+export const BatchUpdates = component$((props) =>
 {
 const x = useSignal(0)
 const y = useSignal(0)
 const sum = useComputed$(() => x.value + y.value)
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <span>
     {sum.value}
   </span>
-  <button onClick={$(() => () => batch(() => { setX(x.value + 1); setY(y.value + 1); }))}>
+  <button onClick={$(() => { x.value = x.value + 1; y.value = y.value + 1; })}>
     Both
   </button>
 </div>
@@ -56,17 +63,18 @@ return (
 
 exports[`full output snapshots > BatchUpdates > react 1`] = `
 "import { useState, useMemo } from "react";
-export function BatchUpdates(props: Record<string, never>)
+export function BatchUpdates(props: React.HTMLAttributes<HTMLElement>)
 {
 const [x, setX] = useState(0)
 const [y, setY] = useState(0)
 const sum = useMemo(() => x + y, [x, y])
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <span>
     {sum}
   </span>
-  <button onClick={() => batch(() => { setX(x + 1); setY(y + 1); })}>
+  <button onClick={() => { setX(x + 1); setY(y + 1); }}>
     Both
   </button>
 </div>
@@ -76,18 +84,20 @@ return (
 `;
 
 exports[`full output snapshots > BatchUpdates > solid 1`] = `
-"import { createSignal, createMemo } from "solid-js";
-export default function BatchUpdates(props: Record<string, never>)
+"import { createSignal, createMemo, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function BatchUpdates(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [x, setX] = createSignal(0)
 const [y, setY] = createSignal(0)
 const sum = createMemo(() => x() + y())
+const [, __attrs] = splitProps(props, [])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <span>
     {sum()}
   </span>
-  <button onclick={() => batch(() => { setX(x() + 1); setY(y() + 1); })}>
+  <button onclick={() => { setX(x() + 1); setY(y() + 1); }}>
     Both
   </button>
 </div>
@@ -98,15 +108,16 @@ return (
 
 exports[`full output snapshots > BatchUpdates > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let x = $state(0)
   let y = $state(0)
   let sum = $derived(x + y)
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   <span>
     {sum}
   </span>
-  <button onclick={() => batch(() => { setX(x + 1); setY(y + 1); })}>
+  <button onclick={() => { x = x + 1; y = y + 1; }}>
     Both
   </button>
 </div>
@@ -125,7 +136,7 @@ exports[`full output snapshots > BatchUpdates > vue 1`] = `
   <span>
     {{ sum }}
   </span>
-  <button @click="() => batch(() => { setX(x + 1); setY(y + 1); })">
+  <button @click="() => { x = x + 1; y = y + 1; }">
     Both
   </button>
 </div>
@@ -139,10 +150,10 @@ exports[`full output snapshots > Composite > angular 1`] = `
 <span id="sum">
 {{ sum() }}
 </span>
-<button id="incX" (click)="() => setX(x() + 1)">
+<button id="incX" (click)="x.set(x() + 1)">
 +X
 </button>
-<button id="incY" (click)="() => setY(y() + 1)">
+<button id="incY" (click)="y.set(y() + 1)">
 +Y
 </button>
 </div>\` })
@@ -150,23 +161,29 @@ export class CompositeComponent
 {
 x = signal(1)
 y = signal(2)
-sum = computed(() => x() + y())
-constructor() { effect(() => { console.log("sum:", sum()); }) }
+sum = computed(() => this.x() + this.y())
+constructor() { effect(() => { console.log('sum:', this.sum()); }) }
 }
 "
 `;
 
 exports[`full output snapshots > Composite > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let x = 1
+let y = 2
+const sum = x + y
 ---
-<div>
+<div {...__attrs} class={__attrs.class}>
 <span id="sum">
 {sum}
 </span>
-<button id="incX" onClick={() => setX(x + 1)}>
+<button id="incX" onClick={() => x = x + 1}>
 +X
 </button>
-<button id="incY" onClick={() => setY(y + 1)}>
+<button id="incY" onClick={() => y = y + 1}>
 +Y
 </button>
 </div>
@@ -175,21 +192,22 @@ exports[`full output snapshots > Composite > astro 1`] = `
 
 exports[`full output snapshots > Composite > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const Composite = component$(() =>
+export const Composite = component$((props) =>
 {
 const x = useSignal(1)
 const y = useSignal(2)
 const sum = useComputed$(() => x.value + y.value)
 useVisibleTask$(() => { console.log("sum:", sum.value); })
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <span id="sum">
     {sum.value}
   </span>
-  <button id="incX" onClick={$(() => () => setX(x.value + 1))}>
+  <button id="incX" onClick={$(() => x.value = x.value + 1)}>
     +X
   </button>
-  <button id="incY" onClick={$(() => () => setY(y.value + 1))}>
+  <button id="incY" onClick={$(() => y.value = y.value + 1)}>
     +Y
   </button>
 </div>
@@ -200,14 +218,15 @@ return (
 
 exports[`full output snapshots > Composite > react 1`] = `
 "import { useState, useMemo, useEffect } from "react";
-export function Composite(props: Record<string, never>)
+export function Composite(props: React.HTMLAttributes<HTMLElement>)
 {
 const [x, setX] = useState(1)
 const [y, setY] = useState(2)
 const sum = useMemo(() => x + y, [x, y])
 useEffect(() => { console.log("sum:", sum); }, [sum])
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <span id="sum">
     {sum}
   </span>
@@ -224,15 +243,17 @@ return (
 `;
 
 exports[`full output snapshots > Composite > solid 1`] = `
-"import { createSignal, createMemo, createEffect } from "solid-js";
-export default function Composite(props: Record<string, never>)
+"import { createSignal, createMemo, createEffect, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function Composite(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [x, setX] = createSignal(1)
 const [y, setY] = createSignal(2)
 const sum = createMemo(() => x() + y())
 createEffect(() => { console.log("sum:", sum()); })
+const [, __attrs] = splitProps(props, [])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <span id="sum">
     {sum()}
   </span>
@@ -250,19 +271,20 @@ return (
 
 exports[`full output snapshots > Composite > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let x = $state(1)
   let y = $state(2)
   let sum = $derived(x + y)
   $effect(() => { console.log("sum:", sum); })
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   <span id="sum">
     {sum}
   </span>
-  <button id="incX" onclick={() => setX(x + 1)}>
+  <button id="incX" onclick={() => x = x + 1}>
     +X
   </button>
-  <button id="incY" onclick={() => setY(y + 1)}>
+  <button id="incY" onclick={() => y = y + 1}>
     +Y
   </button>
 </div>
@@ -282,10 +304,10 @@ exports[`full output snapshots > Composite > vue 1`] = `
   <span id="sum">
     {{ sum }}
   </span>
-  <button id="incX" @click="() => setX(x + 1)">
+  <button id="incX" @click="() => x = x + 1">
     +X
   </button>
-  <button id="incY" @click="() => setY(y + 1)">
+  <button id="incY" @click="() => y = y + 1">
     +Y
   </button>
 </div>
@@ -305,7 +327,7 @@ Visible
 Hidden
 </span>
 }
-<button (click)="() => setVisible(!visible())">
+<button (click)="visible.set(!visible())">
 Toggle
 </button>
 </div>\` })
@@ -318,14 +340,18 @@ visible = signal(true)
 
 exports[`full output snapshots > Conditional > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let visible = true
 ---
-<div>
+<div {...__attrs} class={__attrs.class}>
 {visible ? (<span>
 Visible
 </span>) : (<span>
 Hidden
 </span>)}
-<button onClick={() => setVisible(!visible)}>
+<button onClick={() => visible = !visible}>
 Toggle
 </button>
 </div>
@@ -334,13 +360,14 @@ Toggle
 
 exports[`full output snapshots > Conditional > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const Conditional = component$(() =>
+export const Conditional = component$((props) =>
 {
 const visible = useSignal(true)
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} class={props.class}>
   {visible.value ? (<><span>Visible</span></>) : (<><span>Hidden</span></>)}
-  <button onClick={$(() => () => setVisible(!visible.value))}>
+  <button onClick={$(() => visible.value = !visible.value)}>
     Toggle
   </button>
 </div>
@@ -351,11 +378,12 @@ return (
 
 exports[`full output snapshots > Conditional > react 1`] = `
 "import { useState } from "react";
-export function Conditional(props: Record<string, never>)
+export function Conditional(props: React.HTMLAttributes<HTMLElement>)
 {
 const [visible, setVisible] = useState(true)
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   {visible ? <span>Visible</span> : <span>Hidden</span>}
   <button onClick={() => setVisible(!visible)}>
     Toggle
@@ -367,12 +395,14 @@ return (
 `;
 
 exports[`full output snapshots > Conditional > solid 1`] = `
-"import { createSignal, Show } from "solid-js";
-export default function Conditional(props: Record<string, never>)
+"import { createSignal, splitProps, Show } from "solid-js";
+import type { JSX } from "solid-js";
+export default function Conditional(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [visible, setVisible] = createSignal(true)
+const [, __attrs] = splitProps(props, [])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <Show when={visible()} fallback={<><span>Hidden</span></>}>
     <span>
       Visible
@@ -389,9 +419,10 @@ return (
 
 exports[`full output snapshots > Conditional > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let visible = $state(true)
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   {#if visible}<span>
     Visible
   </span>
@@ -399,7 +430,7 @@ exports[`full output snapshots > Conditional > svelte 1`] = `
     Hidden
   </span>
   {/if}
-  <button onclick={() => setVisible(!visible)}>
+  <button onclick={() => visible = !visible}>
     Toggle
   </button>
 </div>
@@ -419,7 +450,7 @@ exports[`full output snapshots > Conditional > vue 1`] = `
   <span v-else>
     Hidden
   </span>
-  <button @click="() => setVisible(!visible)">
+  <button @click="() => visible = !visible">
     Toggle
   </button>
 </div>
@@ -429,8 +460,8 @@ exports[`full output snapshots > Conditional > vue 1`] = `
 
 exports[`full output snapshots > ConditionalClass > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, selector: 'ConditionalClass', template: \`<div [class]="active() ? "active" : "inactive"">
-<button (click)="() => setActive(!active())">
+@Component({ standalone: true, selector: 'ConditionalClass', template: \`<div [class]="active() ? 'active' : 'inactive'">
+<button (click)="active.set(!active())">
 Toggle
 </button>
 </div>\` })
@@ -443,9 +474,13 @@ active = signal(false)
 
 exports[`full output snapshots > ConditionalClass > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let active = false
 ---
-<div class={active ? "active" : "inactive"}>
-<button onClick={() => setActive(!active)}>
+<div {...__attrs} class={[active ? "active" : "inactive", __attrs.class].filter(Boolean).join(" ")}>
+<button onClick={() => active = !active}>
 Toggle
 </button>
 </div>
@@ -454,12 +489,13 @@ Toggle
 
 exports[`full output snapshots > ConditionalClass > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const ConditionalClass = component$(() =>
+export const ConditionalClass = component$((props) =>
 {
 const active = useSignal(false)
+const { ...__attrs } = props
 return (
-<div class={active.value ? "active" : "inactive"}>
-  <button onClick={$(() => () => setActive(!active.value))}>
+<div {...__attrs} class={[active.value ? "active" : "inactive", props.class].filter(Boolean).join(" ")}>
+  <button onClick={$(() => active.value = !active.value)}>
     Toggle
   </button>
 </div>
@@ -470,11 +506,12 @@ return (
 
 exports[`full output snapshots > ConditionalClass > react 1`] = `
 "import { useState } from "react";
-export function ConditionalClass(props: Record<string, never>)
+export function ConditionalClass(props: React.HTMLAttributes<HTMLElement>)
 {
 const [active, setActive] = useState(false)
+const { ...__attrs } = props
 return (
-<div className={active ? "active" : "inactive"}>
+<div {...__attrs} className={[active ? "active" : "inactive", props.className].filter(Boolean).join(" ")}>
   <button onClick={() => setActive(!active)}>
     Toggle
   </button>
@@ -485,12 +522,14 @@ return (
 `;
 
 exports[`full output snapshots > ConditionalClass > solid 1`] = `
-"import { createSignal } from "solid-js";
-export default function ConditionalClass(props: Record<string, never>)
+"import { createSignal, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function ConditionalClass(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [active, setActive] = createSignal(false)
+const [, __attrs] = splitProps(props, [])
 return (
-<div class={active() ? "active" : "inactive"}>
+<div {...__attrs} class={[active() ? "active" : "inactive", props.class].filter(Boolean).join(" ")}>
   <button onclick={() => setActive(!active())}>
     Toggle
   </button>
@@ -502,10 +541,11 @@ return (
 
 exports[`full output snapshots > ConditionalClass > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let active = $state(false)
 </script>
-<div class={active ? "active" : "inactive"}>
-  <button onclick={() => setActive(!active)}>
+<div {...__attrs} class={[active ? "active" : "inactive", __attrs.class].filter(Boolean).join(" ")}>
+  <button onclick={() => active = !active}>
     Toggle
   </button>
 </div>
@@ -519,7 +559,7 @@ exports[`full output snapshots > ConditionalClass > vue 1`] = `
 </script>
 <template>
 <div :class='active ? "active" : "inactive"'>
-  <button @click="() => setActive(!active)">
+  <button @click="() => active = !active">
     Toggle
   </button>
 </div>
@@ -529,7 +569,7 @@ exports[`full output snapshots > ConditionalClass > vue 1`] = `
 
 exports[`full output snapshots > ControlledSelect > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, selector: 'ControlledSelect', template: \`<select [value]="value()" (change)="e => setValue(e.target.value)">
+@Component({ standalone: true, selector: 'ControlledSelect', template: \`<select [value]="value()" (change)="value.set($event.target.value)">
 <option value="a">
 A
 </option>
@@ -542,15 +582,19 @@ C
 </select>\` })
 export class ControlledSelectComponent
 {
-value = signal("b")
+value = signal('b')
 }
 "
 `;
 
 exports[`full output snapshots > ControlledSelect > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let value = "b"
 ---
-<select value={value} onChange={e => setValue(e.target.value)}>
+<select {...__attrs} value={value} onChange={e => value = e.target.value} class={__attrs.class}>
 <option value="a">
 A
 </option>
@@ -566,11 +610,12 @@ C
 
 exports[`full output snapshots > ControlledSelect > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const ControlledSelect = component$(() =>
+export const ControlledSelect = component$((props) =>
 {
 const value = useSignal("b")
+const { ...__attrs } = props
 return (
-<select value={value.value} onChange={$(() => e => setValue(e.target.value))}>
+<select {...__attrs} value={value.value} class={props.class} onChange={$(e => value.value = e.target.value)}>
   <option value="a">
     A
   </option>
@@ -588,11 +633,12 @@ return (
 
 exports[`full output snapshots > ControlledSelect > react 1`] = `
 "import { useState } from "react";
-export function ControlledSelect(props: Record<string, never>)
+export function ControlledSelect(props: React.HTMLAttributes<HTMLElement>)
 {
 const [value, setValue] = useState("b")
+const { ...__attrs } = props
 return (
-<select value={value} onChange={e => setValue(e.target.value)}>
+<select {...__attrs} value={value} className={props.className} onChange={e => setValue(e.target.value)}>
   <option value="a">
     A
   </option>
@@ -609,12 +655,14 @@ return (
 `;
 
 exports[`full output snapshots > ControlledSelect > solid 1`] = `
-"import { createSignal } from "solid-js";
-export default function ControlledSelect(props: Record<string, never>)
+"import { createSignal, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function ControlledSelect(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [value, setValue] = createSignal("b")
+const [, __attrs] = splitProps(props, [])
 return (
-<select value={value()} onchange={e => setValue(e.target.value)}>
+<select {...__attrs} value={value()} class={props.class} onchange={e => setValue(e.target.value)}>
   <option value="a">
     A
   </option>
@@ -632,9 +680,10 @@ return (
 
 exports[`full output snapshots > ControlledSelect > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let value = $state("b")
 </script>
-<select value={value} onchange={e => setValue(e.target.value)}>
+<select {...__attrs} value={value} class={__attrs.class} onchange={e => value = e.target.value}>
   <option value="a">
     A
   </option>
@@ -654,7 +703,7 @@ exports[`full output snapshots > ControlledSelect > vue 1`] = `
   const value = ref("b")
 </script>
 <template>
-<select :value="value" @change="e => setValue(e.target.value)">
+<select :value="value" @change="e => value = e.target.value">
   <option value="a">
     A
   </option>
@@ -672,7 +721,7 @@ exports[`full output snapshots > ControlledSelect > vue 1`] = `
 exports[`full output snapshots > ControlledTextarea > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'ControlledTextarea', template: \`<div>
-<textarea [value]="text()" (input)="e => setText(e.target.value)" />
+<textarea [value]="text()" (input)="text.set($event.target.value)" />
 <p>
 {{ text().length }}
 characters
@@ -680,16 +729,20 @@ characters
 </div>\` })
 export class ControlledTextareaComponent
 {
-text = signal("")
+text = signal('')
 }
 "
 `;
 
 exports[`full output snapshots > ControlledTextarea > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let text = ""
 ---
-<div>
-<textarea value={text} onInput={e => setText(e.target.value)} />
+<div {...__attrs} class={__attrs.class}>
+<textarea value={text} onInput={e => text = e.target.value} />
 <p>
 {text.length}
 characters
@@ -700,12 +753,13 @@ characters
 
 exports[`full output snapshots > ControlledTextarea > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const ControlledTextarea = component$(() =>
+export const ControlledTextarea = component$((props) =>
 {
 const text = useSignal("")
+const { ...__attrs } = props
 return (
-<div>
-  <textarea value={text.value} onInput={$(() => e => setText(e.target.value))} />
+<div {...__attrs} class={props.class}>
+  <textarea value={text.value} onInput={$(e => text.value = e.target.value)} />
   <p>
     {text.value.length}
     characters
@@ -718,11 +772,12 @@ return (
 
 exports[`full output snapshots > ControlledTextarea > react 1`] = `
 "import { useState } from "react";
-export function ControlledTextarea(props: Record<string, never>)
+export function ControlledTextarea(props: React.HTMLAttributes<HTMLElement>)
 {
 const [text, setText] = useState("")
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <textarea value={text} onInput={e => setText(e.target.value)} />
   <p>
     {text.length}
@@ -735,12 +790,14 @@ return (
 `;
 
 exports[`full output snapshots > ControlledTextarea > solid 1`] = `
-"import { createSignal } from "solid-js";
-export default function ControlledTextarea(props: Record<string, never>)
+"import { createSignal, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function ControlledTextarea(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [text, setText] = createSignal("")
+const [, __attrs] = splitProps(props, [])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <textarea value={text()} oninput={e => setText(e.target.value)} />
   <p>
     {text().length}
@@ -754,10 +811,11 @@ return (
 
 exports[`full output snapshots > ControlledTextarea > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let text = $state("")
 </script>
-<div>
-  <textarea value={text} oninput={e => setText(e.target.value)} />
+<div {...__attrs} class={__attrs.class}>
+  <textarea value={text} oninput={e => text = e.target.value} />
   <p>
     {text.length}
     characters
@@ -773,7 +831,7 @@ exports[`full output snapshots > ControlledTextarea > vue 1`] = `
 </script>
 <template>
 <div>
-  <textarea :value="text" @input="e => setText(e.target.value)" />
+  <textarea :value="text" @input="e => text = e.target.value" />
   <p>
     {{ text.length }}
     characters
@@ -792,30 +850,35 @@ exports[`full output snapshots > Counter > angular 1`] = `
 <p>
 {{ doubled() }}
 </p>
-<button (click)="() => setCount(count() + 1)">
+<button (click)="count.set(count() + 1)">
 +1
 </button>
 </div>\` })
 export class CounterComponent
 {
 count = signal(0)
-doubled = computed(() => count() * 2)
-constructor() { effect(() => { console.log("count:", count()); }) }
+doubled = computed(() => this.count() * 2)
+constructor() { effect(() => { console.log('count:', this.count()); }) }
 }
 "
 `;
 
 exports[`full output snapshots > Counter > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let count = 0
+const doubled = count * 2
 ---
-<div>
+<div {...__attrs} class={__attrs.class}>
 <p>
 {count}
 </p>
 <p>
 {doubled}
 </p>
-<button onClick={() => setCount(count + 1)}>
+<button onClick={() => count = count + 1}>
 +1
 </button>
 </div>
@@ -824,20 +887,21 @@ exports[`full output snapshots > Counter > astro 1`] = `
 
 exports[`full output snapshots > Counter > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const Counter = component$(() =>
+export const Counter = component$((props) =>
 {
 const count = useSignal(0)
 const doubled = useComputed$(() => count.value * 2)
 useVisibleTask$(() => { console.log("count:", count.value); })
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <p>
     {count.value}
   </p>
   <p>
     {doubled.value}
   </p>
-  <button onClick={$(() => () => setCount(count.value + 1))}>
+  <button onClick={$(() => count.value = count.value + 1)}>
     +1
   </button>
 </div>
@@ -848,13 +912,14 @@ return (
 
 exports[`full output snapshots > Counter > react 1`] = `
 "import { useState, useMemo, useEffect } from "react";
-export function Counter(props: Record<string, never>)
+export function Counter(props: React.HTMLAttributes<HTMLElement>)
 {
 const [count, setCount] = useState(0)
 const doubled = useMemo(() => count * 2, [count])
 useEffect(() => { console.log("count:", count); }, [count])
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <p>
     {count}
   </p>
@@ -871,14 +936,16 @@ return (
 `;
 
 exports[`full output snapshots > Counter > solid 1`] = `
-"import { createSignal, createMemo, createEffect } from "solid-js";
-export default function Counter(props: Record<string, never>)
+"import { createSignal, createMemo, createEffect, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function Counter(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [count, setCount] = createSignal(0)
 const doubled = createMemo(() => count() * 2)
 createEffect(() => { console.log("count:", count()); })
+const [, __attrs] = splitProps(props, [])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <p>
     {count()}
   </p>
@@ -896,18 +963,19 @@ return (
 
 exports[`full output snapshots > Counter > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let count = $state(0)
   let doubled = $derived(count * 2)
   $effect(() => { console.log("count:", count); })
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   <p>
     {count}
   </p>
   <p>
     {doubled}
   </p>
-  <button onclick={() => setCount(count + 1)}>
+  <button onclick={() => count = count + 1}>
     +1
   </button>
 </div>
@@ -929,7 +997,7 @@ exports[`full output snapshots > Counter > vue 1`] = `
   <p>
     {{ doubled }}
   </p>
-  <button @click="() => setCount(count + 1)">
+  <button @click="() => count = count + 1">
     +1
   </button>
 </div>
@@ -941,10 +1009,10 @@ exports[`full output snapshots > DefineSlotBasic > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'DefineSlotBasic', template: \`<div>
 <header>
-<ng-content select="[slot=header]" />
+<ng-content select="[slot=header]"></ng-content>
 </header>
 <main>
-<ng-content />
+<ng-content></ng-content>
 </main>
 </div>\` })
 export class DefineSlotBasicComponent
@@ -955,8 +1023,11 @@ export class DefineSlotBasicComponent
 
 exports[`full output snapshots > DefineSlotBasic > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
-<div>
+<div {...__attrs} class={__attrs.class}>
 <header>
 <slot name="header" />
 </header>
@@ -968,16 +1039,17 @@ exports[`full output snapshots > DefineSlotBasic > astro 1`] = `
 `;
 
 exports[`full output snapshots > DefineSlotBasic > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export const DefineSlotBasic = component$((props) =>
 {
+const { header, children, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <header>
-    {props.header}
+    <Slot name="header" />
   </header>
   <main>
-    {props.children}
+    <Slot />
   </main>
 </div>
 )
@@ -986,10 +1058,11 @@ return (
 `;
 
 exports[`full output snapshots > DefineSlotBasic > react 1`] = `
-"export function DefineSlotBasic(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode })
+"export function DefineSlotBasic(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
+const { renderHeader, children, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <header>
     {props.renderHeader?.()}
   </header>
@@ -1003,15 +1076,18 @@ return (
 `;
 
 exports[`full output snapshots > DefineSlotBasic > solid 1`] = `
-"export default function DefineSlotBasic(props: { header?: any; default?: any })
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function DefineSlotBasic(props: { header?: any; children?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
+const [, __attrs] = splitProps(props, ["header", "children"])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <header>
     {props.header}
   </header>
   <main>
-    {props.default}
+    {props.children}
   </main>
 </div>
 )
@@ -1021,8 +1097,9 @@ return (
 
 exports[`full output snapshots > DefineSlotBasic > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   <header>
     <slot name="header" />
   </header>
@@ -1052,12 +1129,12 @@ exports[`full output snapshots > DefineSlotBasic > vue 1`] = `
 exports[`full output snapshots > DynamicList > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'DynamicList', template: \`<div>
-<input [value]="input()" (input)="e => setInput(e.target.value)" />
-<button (click)="() => { setItems([...items(), input()]); setInput(""); }">
+<input [value]="input()" (input)="input.set($event.target.value)" />
+<button (click)="items.set([...items(), input()]); input.set('')">
 Add
 </button>
 <ul>
-@for (item of items(); track (item, i) => i) {
+@for (item of items(); track i; let i = $index) {
 <li>
 {{ item }}
 </li>
@@ -1067,17 +1144,22 @@ Add
 export class DynamicListComponent
 {
 items = signal([])
-input = signal("")
+input = signal('')
 }
 "
 `;
 
 exports[`full output snapshots > DynamicList > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let items = []
+let input = ""
 ---
-<div>
-<input value={input} onInput={e => setInput(e.target.value)} />
-<button onClick={() => { setItems([...items, input]); setInput(""); }}>
+<div {...__attrs} class={__attrs.class}>
+<input value={input} onInput={e => input = e.target.value} />
+<button onClick={() => { items = [...items, input]; input = ""; }}>
 Add
 </button>
 <ul>
@@ -1091,14 +1173,15 @@ Add
 
 exports[`full output snapshots > DynamicList > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const DynamicList = component$(() =>
+export const DynamicList = component$((props) =>
 {
 const items = useSignal([])
 const input = useSignal("")
+const { ...__attrs } = props
 return (
-<div>
-  <input value={input.value} onInput={$(() => e => setInput(e.target.value))} />
-  <button onClick={$(() => () => { setItems([...items.value, input.value]); setInput(""); })}>
+<div {...__attrs} class={props.class}>
+  <input value={input.value} onInput={$(e => input.value = e.target.value)} />
+  <button onClick={$(() => { items.value = [...items.value, input.value]; input.value = ""; })}>
     Add
   </button>
   <ul>
@@ -1111,19 +1194,20 @@ return (
 `;
 
 exports[`full output snapshots > DynamicList > react 1`] = `
-"import { useState } from "react";
-export function DynamicList(props: Record<string, never>)
+"import { useState, Fragment } from "react";
+export function DynamicList(props: React.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = useState([])
 const [input, setInput] = useState("")
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <input value={input} onInput={e => setInput(e.target.value)} />
   <button onClick={() => { setItems([...items, input]); setInput(""); }}>
     Add
   </button>
   <ul>
-    {items.map((item, i) => (<React.Fragment key={(item, i) => i}><li>{item}</li></React.Fragment>))}
+    {items.map((item, i) => (<Fragment key={i}><li>{item}</li></Fragment>))}
   </ul>
 </div>
 )
@@ -1132,13 +1216,15 @@ return (
 `;
 
 exports[`full output snapshots > DynamicList > solid 1`] = `
-"import { createSignal, For } from "solid-js";
-export default function DynamicList(props: Record<string, never>)
+"import { createSignal, splitProps, For } from "solid-js";
+import type { JSX } from "solid-js";
+export default function DynamicList(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = createSignal([])
 const [input, setInput] = createSignal("")
+const [, __attrs] = splitProps(props, [])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <input value={input()} oninput={e => setInput(e.target.value)} />
   <button onclick={() => { setItems([...items(), input()]); setInput(""); }}>
     Add
@@ -1156,12 +1242,13 @@ return (
 
 exports[`full output snapshots > DynamicList > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let items = $state([])
   let input = $state("")
 </script>
-<div>
-  <input value={input} oninput={e => setInput(e.target.value)} />
-  <button onclick={() => { setItems([...items, input]); setInput(""); }}>
+<div {...__attrs} class={__attrs.class}>
+  <input value={input} oninput={e => input = e.target.value} />
+  <button onclick={() => { items = [...items, input]; input = ""; }}>
     Add
   </button>
   <ul>
@@ -1182,8 +1269,8 @@ exports[`full output snapshots > DynamicList > vue 1`] = `
 </script>
 <template>
 <div>
-  <input :value="input" @input="e => setInput(e.target.value)" />
-  <button @click='() => { setItems([...items, input]); setInput(""); }'>
+  <input :value="input" @input="e => input = e.target.value" />
+  <button @click='() => { items = [...items, input]; input = ""; }'>
     Add
   </button>
   <ul>
@@ -1198,24 +1285,25 @@ exports[`full output snapshots > DynamicList > vue 1`] = `
 
 exports[`full output snapshots > EffectCleanup > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, selector: 'EffectCleanup', template: \`<button (click)="() => setActive(!active())">
+@Component({ standalone: true, selector: 'EffectCleanup', template: \`<button (click)="active.set(!active())">
 Toggle
 </button>\` })
 export class EffectCleanupComponent
 {
 active = signal(true)
-constructor() { effect(() => { if (active()) {
-      const id = setInterval(() => console.log("tick"), 1000);
-      return () => clearInterval(id);
-    } }) }
+constructor() { effect(() => { if (this.active()) { const id = setInterval(() => console.log('tick'), 1000); return () => clearInterval(id); } }) }
 }
 "
 `;
 
 exports[`full output snapshots > EffectCleanup > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let active = true
 ---
-<button onClick={() => setActive(!active)}>
+<button {...__attrs} onClick={() => active = !active} class={__attrs.class}>
 Toggle
 </button>
 "
@@ -1223,15 +1311,13 @@ Toggle
 
 exports[`full output snapshots > EffectCleanup > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const EffectCleanup = component$(() =>
+export const EffectCleanup = component$((props) =>
 {
 const active = useSignal(true)
-useVisibleTask$(() => { if (active()) {
-      const id = setInterval(() => console.log("tick"), 1000);
-      return () => clearInterval(id);
-    } })
+useVisibleTask$(() => { if (active.value) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
+const { ...__attrs } = props
 return (
-<button onClick={$(() => () => setActive(!active.value))}>
+<button {...__attrs} class={props.class} onClick={$(() => active.value = !active.value)}>
   Toggle
 </button>
 )
@@ -1241,15 +1327,13 @@ return (
 
 exports[`full output snapshots > EffectCleanup > react 1`] = `
 "import { useState, useEffect } from "react";
-export function EffectCleanup(props: Record<string, never>)
+export function EffectCleanup(props: React.HTMLAttributes<HTMLElement>)
 {
 const [active, setActive] = useState(true)
-useEffect(() => { if (active()) {
-      const id = setInterval(() => console.log("tick"), 1000);
-      return () => clearInterval(id);
-    } }, [active])
+useEffect(() => { if (active) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } }, [active])
+const { ...__attrs } = props
 return (
-<button onClick={() => setActive(!active)}>
+<button {...__attrs} className={props.className} onClick={() => setActive(!active)}>
   Toggle
 </button>
 )
@@ -1258,16 +1342,15 @@ return (
 `;
 
 exports[`full output snapshots > EffectCleanup > solid 1`] = `
-"import { createSignal, createEffect } from "solid-js";
-export default function EffectCleanup(props: Record<string, never>)
+"import { createSignal, createEffect, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function EffectCleanup(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [active, setActive] = createSignal(true)
-createEffect(() => { if (active()) {
-      const id = setInterval(() => console.log("tick"), 1000);
-      return () => clearInterval(id);
-    } })
+createEffect(() => { if (active()) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
+const [, __attrs] = splitProps(props, [])
 return (
-<button onclick={() => setActive(!active())}>
+<button {...__attrs} class={props.class} onclick={() => setActive(!active())}>
   Toggle
 </button>
 )
@@ -1277,13 +1360,11 @@ return (
 
 exports[`full output snapshots > EffectCleanup > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let active = $state(true)
-  $effect(() => { if (active()) {
-      const id = setInterval(() => console.log("tick"), 1000);
-      return () => clearInterval(id);
-    } })
+  $effect(() => { if (active) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
 </script>
-<button onclick={() => setActive(!active)}>
+<button {...__attrs} class={__attrs.class} onclick={() => active = !active}>
   Toggle
 </button>
 "
@@ -1293,13 +1374,10 @@ exports[`full output snapshots > EffectCleanup > vue 1`] = `
 "<script setup lang="ts">
   import { ref, watchEffect } from "vue";
   const active = ref(true)
-  watchEffect(() => { if (active()) {
-      const id = setInterval(() => console.log("tick"), 1000);
-      return () => clearInterval(id);
-    } })
+  watchEffect(() => { if (active.value) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
 </script>
 <template>
-<button @click="() => setActive(!active)">
+<button @click="() => active = !active">
   Toggle
 </button>
 </template>
@@ -1307,10 +1385,11 @@ exports[`full output snapshots > EffectCleanup > vue 1`] = `
 `;
 
 exports[`full output snapshots > ElementRef > angular 1`] = `
-"import { Component, signal, computed, effect, viewChild, ElementRef } from "@angular/core";
+"import { Component, signal, computed, effect, afterNextRender, viewChild, ElementRef } from "@angular/core";
 @Component({ standalone: true, selector: 'ElementRef', template: \`<input placeholder="auto-focus" #inputRef />\` })
 export class ElementRefComponent
 {
+constructor() { afterNextRender(() => { this.inputRef()?.focus(); }) }
 inputRef = viewChild<ElementRef>('inputRef')
 }
 "
@@ -1318,18 +1397,23 @@ inputRef = viewChild<ElementRef>('inputRef')
 
 exports[`full output snapshots > ElementRef > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
-<input placeholder="auto-focus" />
+<input {...__attrs} placeholder="auto-focus" class={__attrs.class} />
 "
 `;
 
 exports[`full output snapshots > ElementRef > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const ElementRef = component$(() =>
+export const ElementRef = component$((props) =>
 {
+useVisibleTask$(() => { inputRef.value?.focus(); })
 const inputRef = useSignal(null)
+const { ...__attrs } = props
 return (
-<input placeholder="auto-focus" ref={inputRef} />
+<input {...__attrs} placeholder="auto-focus" class={props.class} ref={inputRef} />
 )
 });
 "
@@ -1337,25 +1421,28 @@ return (
 
 exports[`full output snapshots > ElementRef > react 1`] = `
 "import { useRef, useEffect } from "react";
-export function ElementRef(props: Record<string, never>)
+export function ElementRef(props: React.HTMLAttributes<HTMLElement>)
 {
 const inputRef = useRef(null)
 useEffect(() => { inputRef.current?.focus(); }, [])
+const { ...__attrs } = props
 return (
-<input placeholder="auto-focus" ref={inputRef} />
+<input {...__attrs} placeholder="auto-focus" className={props.className} ref={inputRef} />
 )
 }
 "
 `;
 
 exports[`full output snapshots > ElementRef > solid 1`] = `
-"import { onMount } from "solid-js";
-export default function ElementRef(props: Record<string, never>)
+"import { onMount, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function ElementRef(props: JSX.HTMLAttributes<HTMLElement>)
 {
 onMount(() => { inputRef?.focus(); })
 let inputRef: HTMLElement | undefined
+const [, __attrs] = splitProps(props, [])
 return (
-<input placeholder="auto-focus" ref={(el) => inputRef = el} />
+<input {...__attrs} placeholder="auto-focus" class={props.class} ref={(el) => inputRef = el} />
 )
 }
 "
@@ -1363,10 +1450,11 @@ return (
 
 exports[`full output snapshots > ElementRef > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   $effect(() => { inputRef?.focus(); })
   let inputRef = $state<HTMLElement | null>(null)
 </script>
-<input bind:this={inputRef} placeholder="auto-focus" />
+<input bind:this={inputRef} {...__attrs} placeholder="auto-focus" class={__attrs.class} />
 "
 `;
 
@@ -1385,7 +1473,7 @@ exports[`full output snapshots > ElementRef > vue 1`] = `
 exports[`full output snapshots > ForLoop > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'ForLoop', template: \`<ul>
-@for (item of items(); track item => item) {
+@for (item of items(); track item) {
 <li>
 {{ item }}
 </li>
@@ -1393,15 +1481,19 @@ exports[`full output snapshots > ForLoop > angular 1`] = `
 </ul>\` })
 export class ForLoopComponent
 {
-items = signal(["Apple", "Banana", "Cherry"])
+items = signal(['Apple', 'Banana', 'Cherry'])
 }
 "
 `;
 
 exports[`full output snapshots > ForLoop > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let items = ["Apple", "Banana", "Cherry"]
 ---
-<ul>
+<ul {...__attrs} class={__attrs.class}>
 {items.map((item) => (<li>
 {item}
 </li>))}
@@ -1411,11 +1503,12 @@ exports[`full output snapshots > ForLoop > astro 1`] = `
 
 exports[`full output snapshots > ForLoop > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const ForLoop = component$(() =>
+export const ForLoop = component$((props) =>
 {
 const items = useSignal(["Apple", "Banana", "Cherry"])
+const { ...__attrs } = props
 return (
-<ul>
+<ul {...__attrs} class={props.class}>
   {items.value.map((item) => (<><li>{item}</li></>))}
 </ul>
 )
@@ -1424,13 +1517,14 @@ return (
 `;
 
 exports[`full output snapshots > ForLoop > react 1`] = `
-"import { useState } from "react";
-export function ForLoop(props: Record<string, never>)
+"import { useState, Fragment } from "react";
+export function ForLoop(props: React.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = useState(["Apple", "Banana", "Cherry"])
+const { ...__attrs } = props
 return (
-<ul>
-  {items.map((item) => (<React.Fragment key={item => item}><li>{item}</li></React.Fragment>))}
+<ul {...__attrs} className={props.className}>
+  {items.map((item) => (<Fragment key={item}><li>{item}</li></Fragment>))}
 </ul>
 )
 }
@@ -1438,12 +1532,14 @@ return (
 `;
 
 exports[`full output snapshots > ForLoop > solid 1`] = `
-"import { createSignal, For } from "solid-js";
-export default function ForLoop(props: Record<string, never>)
+"import { createSignal, splitProps, For } from "solid-js";
+import type { JSX } from "solid-js";
+export default function ForLoop(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = createSignal(["Apple", "Banana", "Cherry"])
+const [, __attrs] = splitProps(props, [])
 return (
-<ul>
+<ul {...__attrs} class={props.class}>
   <For each={items()}>
     {(item) => <li>{item}</li>}
   </For>
@@ -1455,9 +1551,10 @@ return (
 
 exports[`full output snapshots > ForLoop > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let items = $state(["Apple", "Banana", "Cherry"])
 </script>
-<ul>
+<ul {...__attrs} class={__attrs.class}>
   {#each items as item (item)}<li>
     {item}
   </li>
@@ -1484,23 +1581,27 @@ exports[`full output snapshots > ForLoop > vue 1`] = `
 exports[`full output snapshots > FormField > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'FormField', template: \`<div>
-<input [value]="value()" (input)="e => setValue(e.target.value)" />
+<input [value]="value()" (input)="value.set($event.target.value)" />
 <p>
 {{ value() }}
 </p>
 </div>\` })
 export class FormFieldComponent
 {
-value = signal("")
+value = signal('')
 }
 "
 `;
 
 exports[`full output snapshots > FormField > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let value = ""
 ---
-<div>
-<input value={value} onInput={e => setValue(e.target.value)} />
+<div {...__attrs} class={__attrs.class}>
+<input value={value} onInput={e => value = e.target.value} />
 <p>
 {value}
 </p>
@@ -1510,12 +1611,13 @@ exports[`full output snapshots > FormField > astro 1`] = `
 
 exports[`full output snapshots > FormField > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const FormField = component$(() =>
+export const FormField = component$((props) =>
 {
 const value = useSignal("")
+const { ...__attrs } = props
 return (
-<div>
-  <input value={value.value} onInput={$(() => e => setValue(e.target.value))} />
+<div {...__attrs} class={props.class}>
+  <input value={value.value} onInput={$(e => value.value = e.target.value)} />
   <p>
     {value.value}
   </p>
@@ -1527,11 +1629,12 @@ return (
 
 exports[`full output snapshots > FormField > react 1`] = `
 "import { useState } from "react";
-export function FormField(props: Record<string, never>)
+export function FormField(props: React.HTMLAttributes<HTMLElement>)
 {
 const [value, setValue] = useState("")
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <input value={value} onInput={e => setValue(e.target.value)} />
   <p>
     {value}
@@ -1543,12 +1646,14 @@ return (
 `;
 
 exports[`full output snapshots > FormField > solid 1`] = `
-"import { createSignal } from "solid-js";
-export default function FormField(props: Record<string, never>)
+"import { createSignal, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function FormField(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [value, setValue] = createSignal("")
+const [, __attrs] = splitProps(props, [])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <input value={value()} oninput={e => setValue(e.target.value)} />
   <p>
     {value()}
@@ -1561,10 +1666,11 @@ return (
 
 exports[`full output snapshots > FormField > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let value = $state("")
 </script>
-<div>
-  <input value={value} oninput={e => setValue(e.target.value)} />
+<div {...__attrs} class={__attrs.class}>
+  <input value={value} oninput={e => value = e.target.value} />
   <p>
     {value}
   </p>
@@ -1579,7 +1685,7 @@ exports[`full output snapshots > FormField > vue 1`] = `
 </script>
 <template>
 <div>
-  <input :value="value" @input="e => setValue(e.target.value)" />
+  <input :value="value" @input="e => value = e.target.value" />
   <p>
     {{ value }}
   </p>
@@ -1589,24 +1695,25 @@ exports[`full output snapshots > FormField > vue 1`] = `
 `;
 
 exports[`full output snapshots > IButton > angular 1`] = `
-"import { Component, signal, computed, effect, Input } from "@angular/core";
-@Component({ standalone: true, selector: 'IButton', template: \`<button [disabled]="disabled">
-{{ label }}
+"import { Component, signal, computed, effect, input } from "@angular/core";
+@Component({ standalone: true, selector: 'IButton', template: \`<button [disabled]="disabled()">
+{{ label() }}
 </button>\` })
 export class IButtonComponent
 {
-@Input() label!: string
-@Input() disabled?: boolean
+label = input.required<string>()
+disabled = input<boolean>()
 }
 "
 `;
 
 exports[`full output snapshots > IButton > astro 1`] = `
 "---
-interface Props { label: string; disabled?: boolean }
-const { label, disabled } = Astro.props as Props;
+type Props = { label: string; disabled?: boolean } & Record<string, any>
+const props = Astro.props as Props;
+const { label, disabled, ...__attrs } = props;
 ---
-<button disabled={disabled}>
+<button {...__attrs} disabled={disabled} class={__attrs.class}>
 {label}
 </button>
 "
@@ -1614,10 +1721,11 @@ const { label, disabled } = Astro.props as Props;
 
 exports[`full output snapshots > IButton > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const IButton = component$((props) =>
+export const IButton = component$((props: { label: string; disabled?: boolean } & Record<string, any>) =>
 {
+const { label, disabled, ...__attrs } = props
 return (
-<button disabled={props.disabled}>
+<button {...__attrs} disabled={props.disabled} class={props.class}>
   {props.label}
 </button>
 )
@@ -1626,10 +1734,11 @@ return (
 `;
 
 exports[`full output snapshots > IButton > react 1`] = `
-"export function IButton(props: { label: string; disabled?: boolean })
+"export function IButton(props: { label: string; disabled?: boolean } & React.HTMLAttributes<HTMLElement>)
 {
+const { label, disabled, ...__attrs } = props
 return (
-<button disabled={props.disabled}>
+<button {...__attrs} disabled={props.disabled} className={props.className}>
   {props.label}
 </button>
 )
@@ -1638,10 +1747,13 @@ return (
 `;
 
 exports[`full output snapshots > IButton > solid 1`] = `
-"export default function IButton(props: { label: string; disabled?: boolean })
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function IButton(props: { label: string; disabled?: boolean } & JSX.HTMLAttributes<HTMLElement>)
 {
+const [, __attrs] = splitProps(props, ["label", "disabled"])
 return (
-<button disabled={props.disabled}>
+<button {...__attrs} disabled={props.disabled} class={props.class}>
   {props.label}
 </button>
 )
@@ -1652,9 +1764,9 @@ return (
 exports[`full output snapshots > IButton > svelte 1`] = `
 "<script lang="ts">
   interface Props { label: string; disabled?: boolean }
-  let { label, disabled }: Props = $props()
+  let { label, disabled, ...__attrs }: Props & Record<string, any> = $props()
 </script>
-<button disabled={disabled}>
+<button {...__attrs} disabled={disabled} class={__attrs.class}>
   {label}
 </button>
 "
@@ -1673,21 +1785,26 @@ exports[`full output snapshots > IButton > vue 1`] = `
 `;
 
 exports[`full output snapshots > Lifecycle > angular 1`] = `
-"import { Component, signal, computed, effect } from "@angular/core";
+"import { Component, signal, computed, effect, afterNextRender, inject, DestroyRef } from "@angular/core";
 @Component({ standalone: true, selector: 'Lifecycle', template: \`<span>
-{{ mounted() ? "mounted" : "pending" }}
+{{ mounted() ? 'mounted' : 'pending' }}
 </span>\` })
 export class LifecycleComponent
 {
 mounted = signal(false)
+constructor() { afterNextRender(() => { this.mounted.set(true); }); inject(DestroyRef).onDestroy(() => { console.log('cleanup'); }) }
 }
 "
 `;
 
 exports[`full output snapshots > Lifecycle > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let mounted = false
 ---
-<span>
+<span {...__attrs} class={__attrs.class}>
 {mounted ? "mounted" : "pending"}
 </span>
 "
@@ -1695,11 +1812,14 @@ exports[`full output snapshots > Lifecycle > astro 1`] = `
 
 exports[`full output snapshots > Lifecycle > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const Lifecycle = component$(() =>
+export const Lifecycle = component$((props) =>
 {
 const mounted = useSignal(false)
+useVisibleTask$(() => { mounted.value = true; })
+useVisibleTask$(({ cleanup }) => cleanup(() => { console.log("cleanup"); }))
+const { ...__attrs } = props
 return (
-<span>
+<span {...__attrs} class={props.class}>
   {mounted.value ? "mounted" : "pending"}
 </span>
 )
@@ -1709,13 +1829,14 @@ return (
 
 exports[`full output snapshots > Lifecycle > react 1`] = `
 "import { useState, useEffect } from "react";
-export function Lifecycle(props: Record<string, never>)
+export function Lifecycle(props: React.HTMLAttributes<HTMLElement>)
 {
 const [mounted, setMounted] = useState(false)
 useEffect(() => { setMounted(true); }, [])
 useEffect(() => () => { console.log("cleanup"); }, [])
+const { ...__attrs } = props
 return (
-<span>
+<span {...__attrs} className={props.className}>
   {mounted ? "mounted" : "pending"}
 </span>
 )
@@ -1724,14 +1845,16 @@ return (
 `;
 
 exports[`full output snapshots > Lifecycle > solid 1`] = `
-"import { createSignal, onMount, onCleanup } from "solid-js";
-export default function Lifecycle(props: Record<string, never>)
+"import { createSignal, onMount, onCleanup, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function Lifecycle(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [mounted, setMounted] = createSignal(false)
 onMount(() => { setMounted(true); })
 onCleanup(() => { console.log("cleanup"); })
+const [, __attrs] = splitProps(props, [])
 return (
-<span>
+<span {...__attrs} class={props.class}>
   {mounted() ? "mounted" : "pending"}
 </span>
 )
@@ -1741,11 +1864,12 @@ return (
 
 exports[`full output snapshots > Lifecycle > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let mounted = $state(false)
-  $effect(() => { setMounted(true); })
+  $effect(() => { mounted = true; })
   $effect(() => { return () => { console.log("cleanup"); } })
 </script>
-<span>
+<span {...__attrs} class={__attrs.class}>
   {mounted ? "mounted" : "pending"}
 </span>
 "
@@ -1755,7 +1879,7 @@ exports[`full output snapshots > Lifecycle > vue 1`] = `
 "<script setup lang="ts">
   import { ref, onMounted, onUnmounted } from "vue";
   const mounted = ref(false)
-  onMounted(() => { setMounted(true); })
+  onMounted(() => { mounted.value = true; })
   onUnmounted(() => { console.log("cleanup"); })
 </script>
 <template>
@@ -1772,28 +1896,35 @@ exports[`full output snapshots > MemoChain > angular 1`] = `
 <span>
 {{ label() }}
 </span>
-<button (click)="() => setBase(base() + 1)">
+<button (click)="base.set(base() + 1)">
 +1
 </button>
 </div>\` })
 export class MemoChainComponent
 {
 base = signal(1)
-doubled = computed(() => base() * 2)
-quadrupled = computed(() => doubled() * 2)
-label = computed(() => \`Value: \${quadrupled()}\`)
+doubled = computed(() => this.base() * 2)
+quadrupled = computed(() => this.doubled() * 2)
+label = computed(() => \`Value: \${this.quadrupled()}\`)
 }
 "
 `;
 
 exports[`full output snapshots > MemoChain > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let base = 1
+const doubled = base * 2
+const quadrupled = doubled * 2
+const label = \`Value: \${quadrupled}\`
 ---
-<div>
+<div {...__attrs} class={__attrs.class}>
 <span>
 {label}
 </span>
-<button onClick={() => setBase(base + 1)}>
+<button onClick={() => base = base + 1}>
 +1
 </button>
 </div>
@@ -1802,18 +1933,19 @@ exports[`full output snapshots > MemoChain > astro 1`] = `
 
 exports[`full output snapshots > MemoChain > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const MemoChain = component$(() =>
+export const MemoChain = component$((props) =>
 {
 const base = useSignal(1)
 const doubled = useComputed$(() => base.value * 2)
 const quadrupled = useComputed$(() => doubled.value * 2)
 const label = useComputed$(() => \`Value: \${quadrupled.value}\`)
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <span>
     {label.value}
   </span>
-  <button onClick={$(() => () => setBase(base.value + 1))}>
+  <button onClick={$(() => base.value = base.value + 1)}>
     +1
   </button>
 </div>
@@ -1824,14 +1956,15 @@ return (
 
 exports[`full output snapshots > MemoChain > react 1`] = `
 "import { useState, useMemo } from "react";
-export function MemoChain(props: Record<string, never>)
+export function MemoChain(props: React.HTMLAttributes<HTMLElement>)
 {
 const [base, setBase] = useState(1)
 const doubled = useMemo(() => base * 2, [base])
 const quadrupled = useMemo(() => doubled * 2, [doubled])
 const label = useMemo(() => \`Value: \${quadrupled}\`, [quadrupled])
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <span>
     {label}
   </span>
@@ -1845,15 +1978,17 @@ return (
 `;
 
 exports[`full output snapshots > MemoChain > solid 1`] = `
-"import { createSignal, createMemo } from "solid-js";
-export default function MemoChain(props: Record<string, never>)
+"import { createSignal, createMemo, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function MemoChain(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [base, setBase] = createSignal(1)
 const doubled = createMemo(() => base() * 2)
 const quadrupled = createMemo(() => doubled() * 2)
 const label = createMemo(() => \`Value: \${quadrupled()}\`)
+const [, __attrs] = splitProps(props, [])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <span>
     {label()}
   </span>
@@ -1868,16 +2003,17 @@ return (
 
 exports[`full output snapshots > MemoChain > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let base = $state(1)
   let doubled = $derived(base * 2)
   let quadrupled = $derived(doubled * 2)
   let label = $derived(\`Value: \${quadrupled}\`)
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   <span>
     {label}
   </span>
-  <button onclick={() => setBase(base + 1)}>
+  <button onclick={() => base = base + 1}>
     +1
   </button>
 </div>
@@ -1897,7 +2033,7 @@ exports[`full output snapshots > MemoChain > vue 1`] = `
   <span>
     {{ label }}
   </span>
-  <button @click="() => setBase(base + 1)">
+  <button @click="() => base = base + 1">
     +1
   </button>
 </div>
@@ -1908,9 +2044,9 @@ exports[`full output snapshots > MemoChain > vue 1`] = `
 exports[`full output snapshots > MixedControlFlow > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'MixedControlFlow', template: \`<div>
-<input [value]="filter()" (input)="e => setFilter(e.target.value)" />
+<input [value]="filter()" (input)="filter.set($event.target.value)" />
 <ul>
-@for (item of items(); track item => item) {
+@for (item of items(); track item) {
 @if (item.includes(filter())) {
 <li>
 {{ item }}
@@ -1921,17 +2057,22 @@ exports[`full output snapshots > MixedControlFlow > angular 1`] = `
 </div>\` })
 export class MixedControlFlowComponent
 {
-items = signal(["a", "b", "c"])
-filter = signal("")
+items = signal(['a', 'b', 'c'])
+filter = signal('')
 }
 "
 `;
 
 exports[`full output snapshots > MixedControlFlow > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let items = ["a", "b", "c"]
+let filter = ""
 ---
-<div>
-<input value={filter} onInput={e => setFilter(e.target.value)} />
+<div {...__attrs} class={__attrs.class}>
+<input value={filter} onInput={e => filter = e.target.value} />
 <ul>
 {items.map((item) => (item.includes(filter) ? (<li>
 {item}
@@ -1943,13 +2084,14 @@ exports[`full output snapshots > MixedControlFlow > astro 1`] = `
 
 exports[`full output snapshots > MixedControlFlow > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const MixedControlFlow = component$(() =>
+export const MixedControlFlow = component$((props) =>
 {
 const items = useSignal(["a", "b", "c"])
 const filter = useSignal("")
+const { ...__attrs } = props
 return (
-<div>
-  <input value={filter.value} onInput={$(() => e => setFilter(e.target.value))} />
+<div {...__attrs} class={props.class}>
+  <input value={filter.value} onInput={$(e => filter.value = e.target.value)} />
   <ul>
     {items.value.map((item) => (<>{item.includes(filter.value) ? (<><li>{item}</li></>) : null}</>))}
   </ul>
@@ -1960,16 +2102,17 @@ return (
 `;
 
 exports[`full output snapshots > MixedControlFlow > react 1`] = `
-"import { useState } from "react";
-export function MixedControlFlow(props: Record<string, never>)
+"import { useState, Fragment } from "react";
+export function MixedControlFlow(props: React.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = useState(["a", "b", "c"])
 const [filter, setFilter] = useState("")
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <input value={filter} onInput={e => setFilter(e.target.value)} />
   <ul>
-    {items.map((item) => (<React.Fragment key={item => item}>{item.includes(filter) ? <li>{item}</li> : null}</React.Fragment>))}
+    {items.map((item) => (<Fragment key={item}>{item.includes(filter) ? <li>{item}</li> : null}</Fragment>))}
   </ul>
 </div>
 )
@@ -1978,13 +2121,15 @@ return (
 `;
 
 exports[`full output snapshots > MixedControlFlow > solid 1`] = `
-"import { createSignal, For, Show } from "solid-js";
-export default function MixedControlFlow(props: Record<string, never>)
+"import { createSignal, splitProps, For, Show } from "solid-js";
+import type { JSX } from "solid-js";
+export default function MixedControlFlow(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = createSignal(["a", "b", "c"])
 const [filter, setFilter] = createSignal("")
+const [, __attrs] = splitProps(props, [])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <input value={filter()} oninput={e => setFilter(e.target.value)} />
   <ul>
     <For each={items()}>
@@ -1999,11 +2144,12 @@ return (
 
 exports[`full output snapshots > MixedControlFlow > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let items = $state(["a", "b", "c"])
   let filter = $state("")
 </script>
-<div>
-  <input value={filter} oninput={e => setFilter(e.target.value)} />
+<div {...__attrs} class={__attrs.class}>
+  <input value={filter} oninput={e => filter = e.target.value} />
   <ul>
     {#each items as item (item)}{#if item.includes(filter)}<li>
       {item}
@@ -2022,7 +2168,7 @@ exports[`full output snapshots > MixedControlFlow > vue 1`] = `
 </script>
 <template>
 <div>
-  <input :value="filter" @input="e => setFilter(e.target.value)" />
+  <input :value="filter" @input="e => filter = e.target.value" />
   <ul>
     <template v-for="item in items" :key="item">
       <li v-if="item.includes(filter)">
@@ -2036,7 +2182,7 @@ exports[`full output snapshots > MixedControlFlow > vue 1`] = `
 `;
 
 exports[`full output snapshots > MultiRefs > angular 1`] = `
-"import { Component, signal, computed, effect, viewChild, ElementRef } from "@angular/core";
+"import { Component, signal, computed, effect, afterNextRender, viewChild, ElementRef } from "@angular/core";
 @Component({ standalone: true, selector: 'MultiRefs', template: \`<div>
 <input placeholder="focus me" #inputRef />
 <button #buttonRef>
@@ -2045,6 +2191,7 @@ Click
 </div>\` })
 export class MultiRefsComponent
 {
+constructor() { afterNextRender(() => { this.inputRef()?.focus(); }) }
 inputRef = viewChild<ElementRef>('inputRef')
 buttonRef = viewChild<ElementRef>('buttonRef')
 }
@@ -2053,8 +2200,11 @@ buttonRef = viewChild<ElementRef>('buttonRef')
 
 exports[`full output snapshots > MultiRefs > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
-<div>
+<div {...__attrs} class={__attrs.class}>
 <input placeholder="focus me" />
 <button>
 Click
@@ -2065,12 +2215,14 @@ Click
 
 exports[`full output snapshots > MultiRefs > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const MultiRefs = component$(() =>
+export const MultiRefs = component$((props) =>
 {
+useVisibleTask$(() => { inputRef.value?.focus(); })
 const inputRef = useSignal(null)
 const buttonRef = useSignal(null)
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <input placeholder="focus me" ref={inputRef} />
   <button ref={buttonRef}>
     Click
@@ -2083,13 +2235,14 @@ return (
 
 exports[`full output snapshots > MultiRefs > react 1`] = `
 "import { useRef, useEffect } from "react";
-export function MultiRefs(props: Record<string, never>)
+export function MultiRefs(props: React.HTMLAttributes<HTMLElement>)
 {
 const inputRef = useRef(null)
 const buttonRef = useRef(null)
 useEffect(() => { inputRef.current?.focus(); }, [])
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <input placeholder="focus me" ref={inputRef} />
   <button ref={buttonRef}>
     Click
@@ -2101,14 +2254,16 @@ return (
 `;
 
 exports[`full output snapshots > MultiRefs > solid 1`] = `
-"import { onMount } from "solid-js";
-export default function MultiRefs(props: Record<string, never>)
+"import { onMount, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function MultiRefs(props: JSX.HTMLAttributes<HTMLElement>)
 {
 onMount(() => { inputRef?.focus(); })
 let inputRef: HTMLElement | undefined
 let buttonRef: HTMLElement | undefined
+const [, __attrs] = splitProps(props, [])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <input placeholder="focus me" ref={(el) => inputRef = el} />
   <button ref={(el) => buttonRef = el}>
     Click
@@ -2121,11 +2276,12 @@ return (
 
 exports[`full output snapshots > MultiRefs > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   $effect(() => { inputRef?.focus(); })
   let inputRef = $state<HTMLElement | null>(null)
   let buttonRef = $state<HTMLElement | null>(null)
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   <input bind:this={inputRef} placeholder="focus me" />
   <button bind:this={buttonRef}>
     Click
@@ -2153,23 +2309,24 @@ exports[`full output snapshots > MultiRefs > vue 1`] = `
 `;
 
 exports[`full output snapshots > MultipleComponentsPerFile > angular 1`] = `
-"import { Component, signal, computed, effect, Input } from "@angular/core";
+"import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'Label', template: \`<span>
-{{ text }}
+{{ text() }}
 </span>\` })
 export class LabelComponent
 {
-@Input() text!: string
+text = input.required<string>()
 }
 "
 `;
 
 exports[`full output snapshots > MultipleComponentsPerFile > astro 1`] = `
 "---
-interface Props { text: string }
-const { text } = Astro.props as Props;
+type Props = { text: string } & Record<string, any>
+const props = Astro.props as Props;
+const { text, ...__attrs } = props;
 ---
-<span>
+<span {...__attrs} class={__attrs.class}>
 {text}
 </span>
 "
@@ -2177,10 +2334,11 @@ const { text } = Astro.props as Props;
 
 exports[`full output snapshots > MultipleComponentsPerFile > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const Label = component$((props) =>
+export const Label = component$((props: { text: string } & Record<string, any>) =>
 {
+const { text, ...__attrs } = props
 return (
-<span>
+<span {...__attrs} class={props.class}>
   {props.text}
 </span>
 )
@@ -2189,10 +2347,11 @@ return (
 `;
 
 exports[`full output snapshots > MultipleComponentsPerFile > react 1`] = `
-"export function Label(props: { text: string })
+"export function Label(props: { text: string } & React.HTMLAttributes<HTMLElement>)
 {
+const { text, ...__attrs } = props
 return (
-<span>
+<span {...__attrs} className={props.className}>
   {props.text}
 </span>
 )
@@ -2201,10 +2360,13 @@ return (
 `;
 
 exports[`full output snapshots > MultipleComponentsPerFile > solid 1`] = `
-"export default function Label(props: { text: string })
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function Label(props: { text: string } & JSX.HTMLAttributes<HTMLElement>)
 {
+const [, __attrs] = splitProps(props, ["text"])
 return (
-<span>
+<span {...__attrs} class={props.class}>
   {props.text}
 </span>
 )
@@ -2215,9 +2377,9 @@ return (
 exports[`full output snapshots > MultipleComponentsPerFile > svelte 1`] = `
 "<script lang="ts">
   interface Props { text: string }
-  let { text }: Props = $props()
+  let { text, ...__attrs }: Props & Record<string, any> = $props()
 </script>
-<span>
+<span {...__attrs} class={__attrs.class}>
   {text}
 </span>
 "
@@ -2236,24 +2398,25 @@ exports[`full output snapshots > MultipleComponentsPerFile > vue 1`] = `
 `;
 
 exports[`full output snapshots > PropDefaults > angular 1`] = `
-"import { Component, signal, computed, effect, Input } from "@angular/core";
-@Component({ standalone: true, selector: 'PropDefaults', template: \`<div [style]="\\\`color: \\\${color}\\\`">
-{{ size }}
+"import { Component, signal, computed, effect, input } from "@angular/core";
+@Component({ standalone: true, selector: 'PropDefaults', template: \`<div [style]="\\\`color: \\\${color()}\\\`">
+{{ size() }}
 </div>\` })
 export class PropDefaultsComponent
 {
-@Input() color?
-@Input() size!
+color = input<string>('blue')
+size = input.required<number>()
 }
 "
 `;
 
 exports[`full output snapshots > PropDefaults > astro 1`] = `
 "---
-interface Props { color?: unknown; size: unknown }
-const { color, size } = Astro.props as Props;
+type Props = { color?: string; size: number } & Record<string, any>
+const props = Astro.props as Props;
+const { color = "blue", size, ...__attrs } = props;
 ---
-<div style={\`color: \${color}\`}>
+<div {...__attrs} style={\`color: \${color}\`} class={__attrs.class}>
 {size}
 </div>
 "
@@ -2261,10 +2424,11 @@ const { color, size } = Astro.props as Props;
 
 exports[`full output snapshots > PropDefaults > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const PropDefaults = component$((props) =>
+export const PropDefaults = component$((props: { color?: string; size: number } & Record<string, any>) =>
 {
+const { color = "blue", size, ...__attrs } = props
 return (
-<div style={\`color: \${props.color}\`}>
+<div {...__attrs} style={\`color: \${color}\`} class={props.class}>
   {props.size}
 </div>
 )
@@ -2273,10 +2437,11 @@ return (
 `;
 
 exports[`full output snapshots > PropDefaults > react 1`] = `
-"export function PropDefaults(props: { color?; size })
+"export function PropDefaults(props: { color?: string; size: number } & React.HTMLAttributes<HTMLElement>)
 {
+const { color = "blue", size, ...__attrs } = props
 return (
-<div style={\`color: \${props.color}\`}>
+<div {...__attrs} style={\`color: \${color}\`} className={props.className}>
   {props.size}
 </div>
 )
@@ -2285,10 +2450,14 @@ return (
 `;
 
 exports[`full output snapshots > PropDefaults > solid 1`] = `
-"export default function PropDefaults(props: { color?; size })
+"import { mergeProps, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function PropDefaults(_props: { color?: string; size: number } & JSX.HTMLAttributes<HTMLElement>)
 {
+const props = mergeProps({ color: "blue" }, _props)
+const [, __attrs] = splitProps(props, ["color", "size"])
 return (
-<div style={\`color: \${props.color}\`}>
+<div {...__attrs} style={\`color: \${props.color}\`} class={props.class}>
   {props.size}
 </div>
 )
@@ -2298,10 +2467,10 @@ return (
 
 exports[`full output snapshots > PropDefaults > svelte 1`] = `
 "<script lang="ts">
-  interface Props { color?; size }
-  let { color, size }: Props = $props()
+  interface Props { color?: string; size: number }
+  let { color = "blue", size, ...__attrs }: Props & Record<string, any> = $props()
 </script>
-<div style={\`color: \${color}\`}>
+<div {...__attrs} style={\`color: \${color}\`} class={__attrs.class}>
   {size}
 </div>
 "
@@ -2309,7 +2478,7 @@ exports[`full output snapshots > PropDefaults > svelte 1`] = `
 
 exports[`full output snapshots > PropDefaults > vue 1`] = `
 "<script setup lang="ts">
-  const props = defineProps<{ color?; size }>()
+  const props = withDefaults(defineProps<{ color?: string; size: number }>(), { color: "blue" })
 </script>
 <template>
 <div :style="\`color: \${color}\`">
@@ -2322,7 +2491,7 @@ exports[`full output snapshots > PropDefaults > vue 1`] = `
 exports[`full output snapshots > SlotBasic > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotBasic', template: \`<div>
-<ng-content />
+<ng-content></ng-content>
 </div>\` })
 export class SlotBasicComponent
 {
@@ -2332,20 +2501,24 @@ export class SlotBasicComponent
 
 exports[`full output snapshots > SlotBasic > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
-<div>
+<div {...__attrs} class={__attrs.class}>
 <slot />
 </div>
 "
 `;
 
 exports[`full output snapshots > SlotBasic > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export const SlotBasic = component$((props) =>
 {
+const { children, ...__attrs } = props
 return (
-<div>
-  {props.children}
+<div {...__attrs} class={props.class}>
+  <Slot />
 </div>
 )
 });
@@ -2353,10 +2526,11 @@ return (
 `;
 
 exports[`full output snapshots > SlotBasic > react 1`] = `
-"export function SlotBasic(props: { children?: React.ReactNode })
+"export function SlotBasic(props: { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
+const { children, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   {props.children}
 </div>
 )
@@ -2365,11 +2539,14 @@ return (
 `;
 
 exports[`full output snapshots > SlotBasic > solid 1`] = `
-"export default function SlotBasic(props: { default?: any })
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SlotBasic(props: { children?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
+const [, __attrs] = splitProps(props, ["children"])
 return (
-<div>
-  {props.default}
+<div {...__attrs} class={props.class}>
+  {props.children}
 </div>
 )
 }
@@ -2378,8 +2555,9 @@ return (
 
 exports[`full output snapshots > SlotBasic > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   <slot />
 </div>
 "
@@ -2399,9 +2577,9 @@ exports[`full output snapshots > SlotBasic > vue 1`] = `
 exports[`full output snapshots > SlotInConditional > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotInConditional', template: \`<div>
-<ng-content select="[slot=header]" />
+<ng-content select="[slot=header]"></ng-content>
 @if (expanded()) {
-<ng-content />
+<ng-content></ng-content>
 }
 </div>\` })
 export class SlotInConditionalComponent
@@ -2413,8 +2591,12 @@ expanded = signal(true)
 
 exports[`full output snapshots > SlotInConditional > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let expanded = true
 ---
-<div>
+<div {...__attrs} class={__attrs.class}>
 <slot name="header" />
 {expanded ? (<slot />) : null}
 </div>
@@ -2422,14 +2604,15 @@ exports[`full output snapshots > SlotInConditional > astro 1`] = `
 `;
 
 exports[`full output snapshots > SlotInConditional > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export const SlotInConditional = component$((props) =>
 {
 const expanded = useSignal(true)
+const { header, children, ...__attrs } = props
 return (
-<div>
-  {props.header}
-  {expanded.value ? (<>{props.children}</>) : null}
+<div {...__attrs} class={props.class}>
+  <Slot name="header" />
+  {expanded.value ? (<><Slot /></>) : null}
 </div>
 )
 });
@@ -2438,11 +2621,12 @@ return (
 
 exports[`full output snapshots > SlotInConditional > react 1`] = `
 "import { useState } from "react";
-export function SlotInConditional(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode })
+export function SlotInConditional(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
 const [expanded, setExpanded] = useState(true)
+const { renderHeader, children, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   {props.renderHeader?.()}
   {expanded ? props.children : null}
 </div>
@@ -2452,15 +2636,17 @@ return (
 `;
 
 exports[`full output snapshots > SlotInConditional > solid 1`] = `
-"import { createSignal, Show } from "solid-js";
-export default function SlotInConditional(props: { header?: any; default?: any })
+"import { createSignal, splitProps, Show } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SlotInConditional(props: { header?: any; children?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
 const [expanded, setExpanded] = createSignal(true)
+const [, __attrs] = splitProps(props, ["header", "children"])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   {props.header}
   <Show when={expanded()}>
-    {props.default}
+    {props.children}
   </Show>
 </div>
 )
@@ -2470,9 +2656,10 @@ return (
 
 exports[`full output snapshots > SlotInConditional > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let expanded = $state(true)
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   <slot name="header" />
   {#if expanded}<slot />
   {/if}
@@ -2498,13 +2685,13 @@ exports[`full output snapshots > SlotNamed > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotNamed', template: \`<div>
 <header>
-<ng-content select="[slot=header]" />
+<ng-content select="[slot=header]"></ng-content>
 </header>
 <main>
-<ng-content />
+<ng-content></ng-content>
 </main>
 <footer>
-<ng-content select="[slot=footer]" />
+<ng-content select="[slot=footer]"></ng-content>
 </footer>
 </div>\` })
 export class SlotNamedComponent
@@ -2515,8 +2702,11 @@ export class SlotNamedComponent
 
 exports[`full output snapshots > SlotNamed > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
-<div>
+<div {...__attrs} class={__attrs.class}>
 <header>
 <slot name="header" />
 </header>
@@ -2531,19 +2721,20 @@ exports[`full output snapshots > SlotNamed > astro 1`] = `
 `;
 
 exports[`full output snapshots > SlotNamed > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export const SlotNamed = component$((props) =>
 {
+const { header, children, footer, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <header>
-    {props.header}
+    <Slot name="header" />
   </header>
   <main>
-    {props.children}
+    <Slot />
   </main>
   <footer>
-    {props.footer}
+    <Slot name="footer" />
   </footer>
 </div>
 )
@@ -2552,10 +2743,11 @@ return (
 `;
 
 exports[`full output snapshots > SlotNamed > react 1`] = `
-"export function SlotNamed(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode; renderFooter?: (...args: any[]) => React.ReactNode })
+"export function SlotNamed(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode; renderFooter?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
+const { renderHeader, children, renderFooter, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <header>
     {props.renderHeader?.()}
   </header>
@@ -2572,15 +2764,18 @@ return (
 `;
 
 exports[`full output snapshots > SlotNamed > solid 1`] = `
-"export default function SlotNamed(props: { header?: any; default?: any; footer?: any })
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SlotNamed(props: { header?: any; children?: any; footer?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
+const [, __attrs] = splitProps(props, ["header", "children", "footer"])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <header>
     {props.header}
   </header>
   <main>
-    {props.default}
+    {props.children}
   </main>
   <footer>
     {props.footer}
@@ -2593,8 +2788,9 @@ return (
 
 exports[`full output snapshots > SlotNamed > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   <header>
     <slot name="header" />
   </header>
@@ -2630,25 +2826,35 @@ exports[`full output snapshots > SlotNamed > vue 1`] = `
 exports[`full output snapshots > SlotScoped > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotScoped', template: \`<ul>
-@for (item of items(); track item => item.id) {
+@for (item of items(); track item.id; let index = $index) {
 <li>
-<ng-content select="[slot=item]" />
+<!-- scoped slot 'item': args are not projectable in Angular; rendering default content -->
+{{ index }}
+:
+{{ item.label }}
 </li>
 }
 </ul>\` })
 export class SlotScopedComponent
 {
-items = signal([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+items = signal([{ id: 1, label: 'One' }, { id: 2, label: 'Two' }])
 }
 "
 `;
 
 exports[`full output snapshots > SlotScoped > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let items = [{ id: 1, label: "One" }, { id: 2, label: "Two" }]
 ---
-<ul>
+<ul {...__attrs} class={__attrs.class}>
 {items.map((item, index) => (<li>
-<slot name="item" />
+<!-- scoped slot 'item': args are not projectable in Astro; rendering default content -->
+{index}
+:
+{item.label}
 </li>))}
 </ul>
 "
@@ -2659,9 +2865,10 @@ exports[`full output snapshots > SlotScoped > qwik 1`] = `
 export const SlotScoped = component$((props) =>
 {
 const items = useSignal([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+const { item, ...__attrs } = props
 return (
-<ul>
-  {items.value.map((item, index) => (<><li>{props.item?.(item, index) ?? <>{index}:{item.label}</>}</li></>))}
+<ul {...__attrs} class={props.class}>
+  {items.value.map((item, index) => (<><li><>{index}:{item.label}</></li></>))}
 </ul>
 )
 });
@@ -2669,13 +2876,14 @@ return (
 `;
 
 exports[`full output snapshots > SlotScoped > react 1`] = `
-"import { useState } from "react";
-export function SlotScoped(props: { renderItem?: (...args: any[]) => React.ReactNode })
+"import { useState, Fragment } from "react";
+export function SlotScoped(props: { renderItem?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = useState([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+const { renderItem, ...__attrs } = props
 return (
-<ul>
-  {items.map((item, index) => (<React.Fragment key={item => item.id}><li>{props.renderItem?.(item, index) ?? <>{index}:{item.label}</>}</li></React.Fragment>))}
+<ul {...__attrs} className={props.className}>
+  {items.map((item, index) => (<Fragment key={item.id}><li>{props.renderItem?.(item, index) ?? <>{index}:{item.label}</>}</li></Fragment>))}
 </ul>
 )
 }
@@ -2683,12 +2891,14 @@ return (
 `;
 
 exports[`full output snapshots > SlotScoped > solid 1`] = `
-"import { createSignal, For } from "solid-js";
-export default function SlotScoped(props: { item?: (...args: any[]) => any })
+"import { createSignal, splitProps, For } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SlotScoped(props: { item?: (...args: any[]) => any } & JSX.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = createSignal([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+const [, __attrs] = splitProps(props, ["item"])
 return (
-<ul>
+<ul {...__attrs} class={props.class}>
   <For each={items()}>
     {(item, index) => <li>{props.item?.(item, index) ?? <>{index}:{item.label}</>}</li>}
   </For>
@@ -2700,9 +2910,10 @@ return (
 
 exports[`full output snapshots > SlotScoped > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let items = $state([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
 </script>
-<ul>
+<ul {...__attrs} class={__attrs.class}>
   {#each items as item, index (item.id)}<li>
     <slot name="item" item={item} index={index}>
       {index}:{item.label}
@@ -2737,20 +2948,30 @@ exports[`full output snapshots > SlotScoped > vue 1`] = `
 exports[`full output snapshots > SlotScopedSingle > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotScopedSingle', template: \`<div>
-<ng-content />
+<!-- scoped slot 'default': args are not projectable in Angular; rendering default content -->
+<span>
+{{ value() }}
+</span>
 </div>\` })
 export class SlotScopedSingleComponent
 {
-value = signal("hello")
+value = signal('hello')
 }
 "
 `;
 
 exports[`full output snapshots > SlotScopedSingle > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let value = "hello"
 ---
-<div>
-<slot />
+<div {...__attrs} class={__attrs.class}>
+<!-- scoped slot 'default': args are not projectable in Astro; rendering default content -->
+<span>
+{value}
+</span>
 </div>
 "
 `;
@@ -2760,9 +2981,12 @@ exports[`full output snapshots > SlotScopedSingle > qwik 1`] = `
 export const SlotScopedSingle = component$((props) =>
 {
 const value = useSignal("hello")
+const { children, ...__attrs } = props
 return (
-<div>
-  {props.children?.(value.value) ?? <span>{value.value}</span>}
+<div {...__attrs} class={props.class}>
+  <span>
+    {value.value}
+  </span>
 </div>
 )
 });
@@ -2771,11 +2995,12 @@ return (
 
 exports[`full output snapshots > SlotScopedSingle > react 1`] = `
 "import { useState } from "react";
-export function SlotScopedSingle(props: { renderDefault?: (...args: any[]) => React.ReactNode })
+export function SlotScopedSingle(props: { renderDefault?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
 const [value, setValue] = useState("hello")
+const { renderDefault, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   {props.renderDefault?.(value) ?? <span>{value}</span>}
 </div>
 )
@@ -2784,12 +3009,14 @@ return (
 `;
 
 exports[`full output snapshots > SlotScopedSingle > solid 1`] = `
-"import { createSignal } from "solid-js";
-export default function SlotScopedSingle(props: { default?: (...args: any[]) => any })
+"import { createSignal, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SlotScopedSingle(props: { default?: (...args: any[]) => any } & JSX.HTMLAttributes<HTMLElement>)
 {
 const [value, setValue] = createSignal("hello")
+const [, __attrs] = splitProps(props, ["default"])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   {props.default?.(value()) ?? <span>{value()}</span>}
 </div>
 )
@@ -2799,9 +3026,10 @@ return (
 
 exports[`full output snapshots > SlotScopedSingle > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let value = $state("hello")
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   <slot prop0={value}>
     <span>
       {value}
@@ -2832,10 +3060,14 @@ exports[`full output snapshots > SlotWithDefault > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotWithDefault', template: \`<div>
 <main>
-<ng-content />
+<ng-content><p>
+Default content
+</p></ng-content>
 </main>
 <footer>
-<ng-content select="[slot=actions]" />
+<ng-content select="[slot=actions]"><span>
+Action area
+</span></ng-content>
 </footer>
 </div>\` })
 export class SlotWithDefaultComponent
@@ -2846,29 +3078,49 @@ export class SlotWithDefaultComponent
 
 exports[`full output snapshots > SlotWithDefault > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
-<div>
+<div {...__attrs} class={__attrs.class}>
 <main>
-<slot />
+<slot>
+<p>
+Default content
+</p>
+</slot>
 </main>
 <footer>
-<slot name="actions" />
+<slot name="actions">
+<span>
+Action area
+</span>
+</slot>
 </footer>
 </div>
 "
 `;
 
 exports[`full output snapshots > SlotWithDefault > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export const SlotWithDefault = component$((props) =>
 {
+const { children, actions, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <main>
-    {props.children ?? <p>Default content</p>}
+    <Slot>
+      <p>
+        Default content
+      </p>
+    </Slot>
   </main>
   <footer>
-    {props.actions ?? <span>Action area</span>}
+    <Slot name="actions">
+      <span>
+        Action area
+      </span>
+    </Slot>
   </footer>
 </div>
 )
@@ -2877,10 +3129,11 @@ return (
 `;
 
 exports[`full output snapshots > SlotWithDefault > react 1`] = `
-"export function SlotWithDefault(props: { children?: React.ReactNode; renderActions?: (...args: any[]) => React.ReactNode })
+"export function SlotWithDefault(props: { children?: React.ReactNode; renderActions?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
+const { children, renderActions, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   <main>
     {props.children ?? <p>Default content</p>}
   </main>
@@ -2894,12 +3147,15 @@ return (
 `;
 
 exports[`full output snapshots > SlotWithDefault > solid 1`] = `
-"export default function SlotWithDefault(props: { default?: any; actions?: any })
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SlotWithDefault(props: { children?: any; actions?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
+const [, __attrs] = splitProps(props, ["children", "actions"])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <main>
-    {props.default ?? <p>Default content</p>}
+    {props.children ?? <p>Default content</p>}
   </main>
   <footer>
     {props.actions ?? <span>Action area</span>}
@@ -2912,8 +3168,9 @@ return (
 
 exports[`full output snapshots > SlotWithDefault > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   <main>
     <slot>
       <p>
@@ -2959,8 +3216,10 @@ exports[`full output snapshots > SlotWithDefault > vue 1`] = `
 exports[`full output snapshots > SlotWithFallback > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SlotWithFallback', template: \`<div>
-<ng-content select="[slot=header]" />
-<ng-content />
+<ng-content select="[slot=header]"><h1>
+Default Header
+</h1></ng-content>
+<ng-content>Default body content</ng-content>
 </div>\` })
 export class SlotWithFallbackComponent
 {
@@ -2970,22 +3229,38 @@ export class SlotWithFallbackComponent
 
 exports[`full output snapshots > SlotWithFallback > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
-<div>
-<slot name="header" />
-<slot />
+<div {...__attrs} class={__attrs.class}>
+<slot name="header">
+<h1>
+Default Header
+</h1>
+</slot>
+<slot>
+Default body content
+</slot>
 </div>
 "
 `;
 
 exports[`full output snapshots > SlotWithFallback > qwik 1`] = `
-"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export const SlotWithFallback = component$((props) =>
 {
+const { header, children, ...__attrs } = props
 return (
-<div>
-  {props.header ?? <h1>Default Header</h1>}
-  {props.children ?? "Default body content"}
+<div {...__attrs} class={props.class}>
+  <Slot name="header">
+    <h1>
+      Default Header
+    </h1>
+  </Slot>
+  <Slot>
+    Default body content
+  </Slot>
 </div>
 )
 });
@@ -2993,10 +3268,11 @@ return (
 `;
 
 exports[`full output snapshots > SlotWithFallback > react 1`] = `
-"export function SlotWithFallback(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode })
+"export function SlotWithFallback(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
+const { renderHeader, children, ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   {props.renderHeader?.() ?? <h1>Default Header</h1>}
   {props.children ?? "Default body content"}
 </div>
@@ -3006,12 +3282,15 @@ return (
 `;
 
 exports[`full output snapshots > SlotWithFallback > solid 1`] = `
-"export default function SlotWithFallback(props: { header?: any; default?: any })
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SlotWithFallback(props: { header?: any; children?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
+const [, __attrs] = splitProps(props, ["header", "children"])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   {props.header ?? <h1>Default Header</h1>}
-  {props.default ?? "Default body content"}
+  {props.children ?? "Default body content"}
 </div>
 )
 }
@@ -3020,8 +3299,9 @@ return (
 
 exports[`full output snapshots > SlotWithFallback > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   <slot name="header">
     <h1>
       Default Header
@@ -3055,39 +3335,40 @@ exports[`full output snapshots > SlotWithFallback > vue 1`] = `
 exports[`full output snapshots > SwitchTabs > angular 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'SwitchTabs', template: \`<div>
-@switch (true) {
-  @case (tab() === "a") {
-    <p>
+@if (tab() === 'a') {
+<p>
 Tab A
 </p>
-  }
-  @case (tab() === "b") {
-    <p>
+}@else if (tab() === 'b') {
+<p>
 Tab B
 </p>
-  }
 }
-<button (click)="() => setTab(tab() === "a" ? "b" : "a")">
+<button (click)="tab.set(tab() === 'a' ? 'b' : 'a')">
 Switch
 </button>
 </div>\` })
 export class SwitchTabsComponent
 {
-tab = signal("a")
+tab = signal('a')
 }
 "
 `;
 
 exports[`full output snapshots > SwitchTabs > astro 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let tab = "a"
 ---
-<div>
+<div {...__attrs} class={__attrs.class}>
 {tab === "a" ? (<p>
 Tab A
 </p>) : tab === "b" ? (<p>
 Tab B
 </p>) : null}
-<button onClick={() => setTab(tab === "a" ? "b" : "a")}>
+<button onClick={() => tab = tab === "a" ? "b" : "a"}>
 Switch
 </button>
 </div>
@@ -3096,13 +3377,14 @@ Switch
 
 exports[`full output snapshots > SwitchTabs > qwik 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const SwitchTabs = component$(() =>
+export const SwitchTabs = component$((props) =>
 {
 const tab = useSignal("a")
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} class={props.class}>
   {tab.value === "a" ? (<><p>Tab A</p></>) : tab.value === "b" ? (<><p>Tab B</p></>) : null}
-  <button onClick={$(() => () => setTab(tab.value === "a" ? "b" : "a"))}>
+  <button onClick={$(() => tab.value = tab.value === "a" ? "b" : "a")}>
     Switch
   </button>
 </div>
@@ -3113,11 +3395,12 @@ return (
 
 exports[`full output snapshots > SwitchTabs > react 1`] = `
 "import { useState } from "react";
-export function SwitchTabs(props: Record<string, never>)
+export function SwitchTabs(props: React.HTMLAttributes<HTMLElement>)
 {
 const [tab, setTab] = useState("a")
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   {tab === "a" ? <p>Tab A</p> : tab === "b" ? <p>Tab B</p> : null}
   <button onClick={() => setTab(tab === "a" ? "b" : "a")}>
     Switch
@@ -3129,12 +3412,14 @@ return (
 `;
 
 exports[`full output snapshots > SwitchTabs > solid 1`] = `
-"import { createSignal, Switch, Match } from "solid-js";
-export default function SwitchTabs(props: Record<string, never>)
+"import { createSignal, splitProps, Switch, Match } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SwitchTabs(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [tab, setTab] = createSignal("a")
+const [, __attrs] = splitProps(props, [])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   <Switch>
     <Match when={tab() === "a"}>
       <p>
@@ -3158,9 +3443,10 @@ return (
 
 exports[`full output snapshots > SwitchTabs > svelte 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   let tab = $state("a")
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   {#if tab === "a"}<p>
     Tab A
   </p>
@@ -3168,7 +3454,7 @@ exports[`full output snapshots > SwitchTabs > svelte 1`] = `
     Tab B
   </p>
   {/if}
-  <button onclick={() => setTab(tab === "a" ? "b" : "a")}>
+  <button onclick={() => tab = tab === "a" ? "b" : "a"}>
     Switch
   </button>
 </div>
@@ -3188,7 +3474,7 @@ exports[`full output snapshots > SwitchTabs > vue 1`] = `
   <p v-else-if='tab === "b"'>
     Tab B
   </p>
-  <button @click='() => setTab(tab === "a" ? "b" : "a")'>
+  <button @click='() => tab = tab === "a" ? "b" : "a"'>
     Switch
   </button>
 </div>
@@ -3205,10 +3491,11 @@ export class ChildComponent
 {
 }
 
-import { Component, signal, computed, effect, viewChild, ElementRef } from "@angular/core";
-@Component({ standalone: true, selector: 'ComponentRef', template: \`<unknown />\` })
+import { Component, signal, computed, effect, afterNextRender, viewChild, ElementRef } from "@angular/core";
+@Component({ standalone: true, selector: 'ComponentRef', template: \`<Child></Child>\` })
 export class ComponentRefComponent
 {
+constructor() { afterNextRender(() => { console.log(this.childRef()); }) }
 childRef = viewChild<ElementRef>('childRef')
 }
 "
@@ -3216,78 +3503,94 @@ childRef = viewChild<ElementRef>('childRef')
 
 exports[`multi-component files > ComponentRef → astro (all files) 1`] = `
 "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
-<div>
+<div {...__attrs} class={__attrs.class}>
 Child
 </div>
 
 ---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
 ---
-<unknown />
+<Child {...__attrs} class={__attrs.class} />
 "
 `;
 
 exports[`multi-component files > ComponentRef → qwik (all files) 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const Child = component$(() =>
+export const Child = component$((props) =>
 {
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} class={props.class}>
   Child
 </div>
 )
 });
 
 import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const ComponentRef = component$(() =>
+export const ComponentRef = component$((props) =>
 {
+useVisibleTask$(() => { console.log(childRef.value); })
 const childRef = useSignal(null)
+const { ...__attrs } = props
 return (
-<Child ref={childRef} />
+<Child {...__attrs} class={props.class} ref={childRef} />
 )
 });
 "
 `;
 
 exports[`multi-component files > ComponentRef → react (all files) 1`] = `
-"export function Child(props: Record<string, never>)
+"export function Child(props: React.HTMLAttributes<HTMLElement>)
 {
+const { ...__attrs } = props
 return (
-<div>
+<div {...__attrs} className={props.className}>
   Child
 </div>
 )
 }
 
 import { useRef, useEffect } from "react";
-export function ComponentRef(props: Record<string, never>)
+export function ComponentRef(props: React.HTMLAttributes<HTMLElement>)
 {
 const childRef = useRef(null)
 useEffect(() => { console.log(childRef.current); }, [])
+const { ...__attrs } = props
 return (
-<Child ref={childRef} />
+<Child {...__attrs} className={props.className} ref={childRef} />
 )
 }
 "
 `;
 
 exports[`multi-component files > ComponentRef → solid (all files) 1`] = `
-"export default function Child(props: Record<string, never>)
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function Child(props: JSX.HTMLAttributes<HTMLElement>)
 {
+const [, __attrs] = splitProps(props, [])
 return (
-<div>
+<div {...__attrs} class={props.class}>
   Child
 </div>
 )
 }
 
-import { onMount } from "solid-js";
-export default function ComponentRef(props: Record<string, never>)
+import { onMount, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function ComponentRef(props: JSX.HTMLAttributes<HTMLElement>)
 {
 onMount(() => { console.log(childRef); })
 let childRef: HTMLElement | undefined
+const [, __attrs] = splitProps(props, [])
 return (
-<Child ref={(el) => childRef = el} />
+<Child {...__attrs} class={props.class} ref={(el) => childRef = el} />
 )
 }
 "
@@ -3295,16 +3598,18 @@ return (
 
 exports[`multi-component files > ComponentRef → svelte (all files) 1`] = `
 "<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
 </script>
-<div>
+<div {...__attrs} class={__attrs.class}>
   Child
 </div>
 
 <script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
   $effect(() => { console.log(childRef); })
   let childRef = $state<HTMLElement | null>(null)
 </script>
-<Child bind:this={childRef} />
+<Child bind:this={childRef} {...__attrs} class={__attrs.class} />
 "
 `;
 

@@ -4,16 +4,17 @@ Single-source story definitions + Storybook preset + per-framework story generat
 
 For story authoring conventions and the dev workflow, see [docs/authoring-components.md](../../docs/authoring-components.md) → "Stories".
 
-## Three entry points
+## Entry points
 
 Declared in [`package.json`](./package.json) `exports`:
 
-| Subpath               | Source                                                   | Purpose                                                                                                                                                                        |
-| --------------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `.`                   | [`src/index.ts`](./src/index.ts)                         | `defineStories` identity helper + `StoryMeta`, `StoryVariant`, `ArgType` types. Used inside `.ink.tsx` story files for type inference.                                         |
-| `./preset/main`       | [`src/preset/main.ts`](./src/preset/main.ts)             | Storybook `main.ts` preset — shared addons, story globs, framework-agnostic settings. Re-used by each `ui/<framework>/.storybook/`.                                            |
-| `./preset/parameters` | [`src/preset/parameters.ts`](./src/preset/parameters.ts) | Storybook `preview.ts` parameters (theming, controls, viewports).                                                                                                              |
-| `./generator`         | [`src/generator/index.ts`](./src/generator/index.ts)     | Compiler-adjacent: takes `defineStories` exports + the corresponding compiled component and emits per-framework CSF (`*.stories.ts`) into `ui/<framework>/generated/stories/`. |
+| Subpath                | Source                                                   | Purpose                                                                                                                                                                        |
+| ---------------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `.`                    | [`src/index.ts`](./src/index.ts)                         | `defineStories` identity helper + `StoryMeta`, `StoryVariant`, `ArgType` types. Used inside `.ink.tsx` story files for type inference.                                         |
+| `./preset/main`        | [`src/preset/main.ts`](./src/preset/main.ts)             | Storybook `main.ts` preset — shared addons, story globs, framework-agnostic settings. Re-used by each `ui/<framework>/.storybook/`.                                            |
+| `./preset/parameters`  | [`src/preset/parameters.ts`](./src/preset/parameters.ts) | Storybook `preview.ts` parameters (theming, controls, viewports).                                                                                                              |
+| `./preset/preview.css` | [`src/preset/preview.css`](./src/preset/preview.css)     | Storybook `preview.ts` styles — copied as-is to `dist` and imported (side-effect) by each `ui/<framework>/.storybook/preview.ts`.                                              |
+| `./generator`          | [`src/generator/index.ts`](./src/generator/index.ts)     | Compiler-adjacent: takes `defineStories` exports + the corresponding compiled component and emits per-framework CSF (`*.stories.ts`) into `ui/<framework>/generated/stories/`. |
 
 The generator is invoked by [`inkline compile stories`](../cli/AGENTS.md) — keep both packages in sync when the story format changes.
 
@@ -37,7 +38,8 @@ src/
 ├── define.ts               # The identity implementation
 ├── preset/
 │   ├── main.ts             # Storybook main preset
-│   └── parameters.ts       # Storybook preview parameters
+│   ├── parameters.ts       # Storybook preview parameters
+│   └── preview.css         # Storybook preview styles (copied to dist)
 └── generator/
     ├── index.ts            # Entry: takes (storiesModule, compiled, target) → CSF file
     ├── config.ts           # Per-target generator config

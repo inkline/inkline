@@ -1,15 +1,17 @@
 import { defineConfig } from "@inkline/compiler";
 
 export default defineConfig({
+  srcDir: "src",
+  tsconfig: "./tsconfig.json",
   targets: ["react", "vue", "svelte", "solid", "angular", "qwik", "astro"],
   targetOutDir: {
-    react: "../react/generated",
-    vue: "../vue/generated",
-    svelte: "../svelte/generated",
-    solid: "../solid/generated",
-    angular: "../angular/generated",
-    qwik: "../qwik/generated",
-    astro: "../astro/generated",
+    react: "../react/.inkline",
+    vue: "../vue/.inkline",
+    svelte: "../svelte/.inkline",
+    solid: "../solid/.inkline",
+    angular: "../angular/.inkline",
+    qwik: "../qwik/.inkline",
+    astro: "../astro/.inkline",
   },
   sourceMap: "external",
 });

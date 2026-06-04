@@ -4,9 +4,11 @@ import { UNKNOWN_LOCATION } from "../../ir/types.ts";
 import { DYNAMIC_DEPS, SymbolTable, type SymbolId } from "../../ir/reactivity.ts";
 import type { IRComponent, IRNode } from "../../ir/render/nodes.ts";
 import {
+  createComponentInstance,
   createElement,
   createExpr,
   createIf,
+  createSlotPlaceholder,
   createSwitch,
   createText,
   createTransition,
@@ -102,6 +104,7 @@ function makeCtx(target: { rewrites: (typeof solid)["rewrites"] }): CodegenConte
     contexts: [],
     externalImports: [],
     componentImports: [],
+    typeDeclarations: [],
   };
 }
 
@@ -269,6 +272,93 @@ describe("props type generation", () => {
   });
 });
 
+describe("default slot emission", () => {
+  function makeSlottedComp(name: string, fallthrough = false): IRComponent {
+    return {
+      ...makeComp(
+        name,
+        createElement({
+          tag: "div",
+          acceptsAttrFallthrough: fallthrough,
+          children: [
+            createSlotPlaceholder({ fallback: createExpr({ expr: mockExpr("props.label") }) }),
+          ],
+        }),
+      ),
+      slots: [{ name: "default", isScoped: false, scopedProps: [], required: false, loc }],
+    };
+  }
+
+  it("Solid: reads the unscoped default slot from props.children, not props.default", () => {
+    const result = print(solid.emit(makeSlottedComp("Slotted"), makeCtx(solid)).root);
+    expect(result.code).toContain("props.children ?? props.label");
+    expect(result.code).not.toContain("props.default");
+    expect(result.code).toContain("children?: any");
+  });
+
+  it("Solid: keeps children out of the attribute fallthrough rest", () => {
+    const result = print(solid.emit(makeSlottedComp("Slotted", true), makeCtx(solid)).root);
+    expect(result.code).toContain('splitProps(props, ["children"])');
+    expect(result.code).not.toContain('"default"');
+  });
+
+  it("React: reads the unscoped default slot from props.children (parity reference)", () => {
+    const result = print(react.emit(makeSlottedComp("Slotted"), makeCtx(react)).root);
+    expect(result.code).toContain("props.children ?? props.label");
+  });
+});
+
+describe("React memo dependency arrays", () => {
+  it("emits granular, deduped dependency refs (props.x), not the base object", () => {
+    const comp: IRComponent = {
+      ...makeComp("Styled", createElement({ tag: "div" })),
+      props: [
+        { name: "color", required: false, symbolId: "t::prop::color@0" as SymbolId, loc },
+        { name: "size", required: false, symbolId: "t::prop::size@1" as SymbolId, loc },
+      ],
+      memos: [
+        {
+          name: "cls",
+          symbolId: "t::memo::cls@2" as SymbolId,
+          expr: createExpr({
+            expr: mockExpr("recipe({ color: props.color, size: props.size })"),
+            deps: [
+              {
+                symbolId: "p0" as SymbolId,
+                kind: "prop",
+                name: "props",
+                path: ["color"],
+                conditional: false,
+              },
+              {
+                symbolId: "p1" as SymbolId,
+                kind: "prop",
+                name: "props",
+                path: ["size"],
+                conditional: false,
+              },
+              {
+                symbolId: "p0" as SymbolId,
+                kind: "prop",
+                name: "props",
+                path: ["color"],
+                conditional: false,
+              },
+            ],
+            isReactive: true,
+          }),
+          loc,
+        },
+      ],
+    };
+    const result = print(react.emit(comp, makeCtx(react)).root);
+    expect(result.code).toContain(
+      "const cls = useMemo(() => recipe({ color: props.color, size: props.size }), [props.color, props.size])",
+    );
+    expect(result.code).not.toMatch(/\[props, props/);
+  });
+});
+
 describe("ref emission", () => {
   function makeCompWithRef(name: string): IRComponent {
     return {
@@ -433,6 +523,29 @@ describe("Astro target", () => {
     expect(result.code).toContain("Astro.props");
     expect(result.code).toMatchSnapshot();
   });
+
+  it("resolves a component instance to its reference name, not 'unknown'", () => {
+    const comp = makeComp(
+      "Wrapper",
+      createElement({
+        tag: "div",
+        children: [createComponentInstance({ reference: mockExpr("Child") as ts.Identifier })],
+      }),
+    );
+    const result = print(astro.emit(comp, makeCtx(astro)).root);
+    expect(result.code).toContain("<Child");
+    expect(result.code).not.toContain("unknown");
+  });
+
+  it("binds `props` so whole-object references resolve", () => {
+    const comp: IRComponent = {
+      ...makeComp("Button", createElement({ tag: "div" })),
+      props: [{ name: "label", required: true, symbolId: "t::prop::label@0" as SymbolId, loc }],
+    };
+    const result = print(astro.emit(comp, makeCtx(astro)).root);
+    expect(result.code).toContain("const props = Astro.props as Props;");
+    expect(result.code).toContain("const { label } = props;");
+  });
 });
 
 describe("Svelte onCleanup lifecycle", () => {
@@ -456,6 +569,28 @@ describe("Svelte onCleanup lifecycle", () => {
     expect(result.code).toContain("$effect");
     expect(result.code).toContain("return");
     expect(result.code).toContain("unsubscribe");
+  });
+});
+
+describe("Svelte whole-props reconstruction", () => {
+  function makeStyledComp(): IRComponent {
+    return {
+      ...makeComp(
+        "Styled",
+        createElement({
+          tag: "div",
+          acceptsAttrFallthrough: true,
+          children: [createExpr({ expr: mockExpr("badge(props)") })],
+        }),
+      ),
+      props: [{ name: "label", required: false, symbolId: "t::prop::label@0" as SymbolId, loc }],
+    };
+  }
+
+  it("rewrites a bare `props` reference to the reconstructed destructured bindings", () => {
+    const result = print(svelte.emit(makeStyledComp(), makeCtx(svelte)).root);
+    expect(result.code).toContain("badge({ label, ...__attrs })");
+    expect(result.code).not.toMatch(/badge\(props\)/);
   });
 });
 

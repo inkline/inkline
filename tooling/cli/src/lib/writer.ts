@@ -3,9 +3,13 @@ import { resolve, dirname, basename, join } from "node:path";
 import type { CompileResult, TargetName } from "@inkline/compiler";
 import { type BarrelEntry, resolveTargetDir } from "./barrel.ts";
 
+export function writeOutput(path: string, content: string): void {
+  writeFileSync(path, content, "utf-8");
+}
+
 export function writeIfChanged(path: string, content: string): void {
   if (existsSync(path) && readFileSync(path, "utf-8") === content) return;
-  writeFileSync(path, content, "utf-8");
+  writeOutput(path, content);
 }
 
 export function writeCompileOutput(
@@ -16,6 +20,7 @@ export function writeCompileOutput(
   sourceMap: "external" | "inline" | "none",
   barrelEntries: Map<string, BarrelEntry[]>,
   relDir = "",
+  write: (path: string, content: string) => void = writeIfChanged,
 ): void {
   for (const [target, targetFiles] of Object.entries(result.files)) {
     if (!targetFiles) continue;
@@ -25,9 +30,9 @@ export function writeCompileOutput(
       const fileName = basename(file.path);
       const outPath = resolve(targetDir, relDir, fileName);
       mkdirSync(dirname(outPath), { recursive: true });
-      writeIfChanged(outPath, file.contents);
+      write(outPath, file.contents);
       if (file.sourceMap && sourceMap === "external") {
-        writeIfChanged(`${outPath}.map`, file.sourceMap);
+        write(`${outPath}.map`, file.sourceMap);
       }
 
       if (!file.path.endsWith(".css")) {

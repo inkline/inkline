@@ -3,6 +3,7 @@ import { dirname, join, relative, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import type { StoryMeta, StoryVariant } from "../define.ts";
 import { type FrameworkConfig, activeFrameworks } from "./config.ts";
+export { activeFrameworks } from "./config.ts";
 import { renderStory } from "./render.ts";
 import { type StoryKeys, assertStableStoryKeys, extractStoryKeys } from "./story-keys.ts";
 
@@ -35,10 +36,16 @@ export interface ResolvedRenderImport {
   readonly localName: string;
   readonly exportedName: string;
   readonly importPath: string;
+  /**
+   * The render wrapper's element selector — its source basename. The Angular target compiles a
+   * render `.ink.tsx` to a standalone component whose `selector` is the file basename, so the
+   * Angular story can instantiate it via `<${selector}></${selector}>`. Other targets ignore this.
+   */
+  readonly selector: string;
 }
 
 export function discoverDefinitionFiles(rootDir: string): string[] {
-  return globSync(join(rootDir, "**/*.stories.{ts,tsx}"))
+  return globSync(join(rootDir, "**/*.ink.stories.{ts,tsx}"))
     .map((file) => resolve(file))
     .sort();
 }
@@ -88,34 +95,16 @@ export async function loadStoryModule(absPath: string): Promise<LoadedStoryModul
   return { meta: mod.default, stories, sourcePath: absPath };
 }
 
-export function commonPrefix(dirs: string[]): string {
-  if (dirs.length === 0) return "";
-  const parts = dirs[0]!.split("/");
-  let prefix = "";
-  for (let i = 0; i < parts.length; i++) {
-    const candidate = parts.slice(0, i + 1).join("/") + "/";
-    if (dirs.every((d) => (d + "/").startsWith(candidate))) prefix = candidate;
-    else break;
-  }
-  return prefix;
-}
-
-export function computeCompilerRoot(srcDir: string): string {
-  const inkFiles = globSync(join(srcDir, "**/*.ink.tsx")).map((f) => resolve(f));
-  if (inkFiles.length === 0) return resolve(srcDir);
-  return commonPrefix(inkFiles.map((f) => dirname(f)));
-}
-
 export function resolveRenderImports(
   storyModule: LoadedStoryModule,
   srcDir: string,
   framework: FrameworkConfig,
   storyOutputRelDir = "stories",
-  generatedDir = "generated",
+  generatedDir = ".inkline",
 ): ResolvedRenderImport[] {
   const imports: ResolvedRenderImport[] = [];
   const storyDir = dirname(storyModule.sourcePath);
-  const compilerRoot = computeCompilerRoot(srcDir);
+  const compilerRoot = resolve(srcDir);
 
   for (const [name, variant] of Object.entries(storyModule.stories)) {
     if (typeof variant.render !== "string") continue;
@@ -132,7 +121,7 @@ export function resolveRenderImports(
     const exportedName = baseName + (framework.exportedNameSuffix ?? "");
     const localName = baseName.charAt(0).toUpperCase() + baseName.slice(1) + "Story";
 
-    imports.push({ storyName: name, localName, exportedName, importPath });
+    imports.push({ storyName: name, localName, exportedName, importPath, selector: baseName });
   }
 
   return imports;
@@ -141,12 +130,12 @@ export function resolveRenderImports(
 export async function generate(options: GenerateOptions): Promise<GenerateResult> {
   const frameworks = options.frameworks ?? activeFrameworks();
   const definitionFiles = discoverDefinitionFiles(options.srcDir);
-  const compilerRoot = computeCompilerRoot(options.srcDir);
+  const compilerRoot = resolve(options.srcDir);
 
   const components: string[] = [];
   const files: GeneratedFile[] = [];
   const storiesDir = options.storiesDir ?? "stories";
-  const generatedDir = options.generatedDir ?? "generated";
+  const generatedDir = options.generatedDir ?? ".inkline";
 
   for (const definitionFile of definitionFiles) {
     const storyModule = await loadStoryModule(definitionFile);

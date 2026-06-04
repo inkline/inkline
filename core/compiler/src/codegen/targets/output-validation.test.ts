@@ -187,3 +187,78 @@ describe("cross-target structural invariants", () => {
     }
   });
 });
+
+describe("attribute fallthrough", () => {
+  it("React merges an inherited className onto a host-element root (CrossFileBase)", async () => {
+    const code = await getOutput("CrossFileBase", "react");
+    expect(code).toContain("const { children, label, ...__attrs } = props");
+    expect(code).toContain(
+      '<div {...__attrs} className={["base", props.className].filter(Boolean).join(" ")}>',
+    );
+    expect(code).toContain("React.HTMLAttributes<HTMLElement>");
+  });
+
+  it("React chains fallthrough through a styled wrapper's component root (CrossFileStyled)", async () => {
+    const code = await getOutput("CrossFileStyled", "react");
+    expect(code).toContain("...__attrs } = props");
+    expect(code).toContain('className={[props.size, props.className].filter(Boolean).join(" ")}');
+  });
+
+  it("Solid merges an inherited class via splitProps (CrossFileBase)", async () => {
+    const code = await getOutput("CrossFileBase", "solid");
+    expect(code).toContain("splitProps");
+    expect(code).toContain(
+      '<div {...__attrs} class={["base", props.class].filter(Boolean).join(" ")}>',
+    );
+    expect(code).toContain("JSX.HTMLAttributes<HTMLElement>");
+  });
+
+  it("Svelte merges an inherited class via $props rest (CrossFileBase)", async () => {
+    const code = await getOutput("CrossFileBase", "svelte");
+    expect(code).toContain("...__attrs");
+    expect(code).toContain(
+      '<div {...__attrs} class={["base", __attrs.class].filter(Boolean).join(" ")}>',
+    );
+  });
+
+  it("Qwik merges an inherited class onto the root (CrossFileBase)", async () => {
+    const code = await getOutput("CrossFileBase", "qwik");
+    expect(code).toContain("const { children, label, ...__attrs } = props");
+    expect(code).toContain(
+      '<div {...__attrs} class={["base", props.class].filter(Boolean).join(" ")}>',
+    );
+  });
+
+  it("Astro merges an inherited class onto the root (CrossFileBase)", async () => {
+    const code = await getOutput("CrossFileBase", "astro");
+    expect(code).toContain("const props = Astro.props as Props;");
+    expect(code).toContain(`...${"__attrs"} } = props`);
+    expect(code).toContain(
+      '<div {...__attrs} class={["base", __attrs.class].filter(Boolean).join(" ")}>',
+    );
+  });
+
+  it("Vue relies on native attribute inheritance — no fallthrough wiring (CrossFileBase)", async () => {
+    const code = await getOutput("CrossFileBase", "vue");
+    expect(code).not.toContain("__attrs");
+    expect(code).toContain('class="base"');
+  });
+
+  it("Angular relies on native host inheritance — class lands on the host element", async () => {
+    // The headless root keeps its own class; no rest-spread wiring is emitted.
+    const base = await getOutput("CrossFileBase", "angular");
+    expect(base).not.toContain("__attrs");
+    expect(base).toContain('<div class="base">');
+    // A parent's class is bound on the child selector; Angular applies it to that host element.
+    // `size` is a signal input, so the binding reads it in call form.
+    const styled = await getOutput("CrossFileStyled", "angular");
+    expect(styled).toContain('[class]="size()"');
+  });
+
+  it("emits no fallthrough wiring for a fragment-root component (FragmentRoot)", async () => {
+    for (const target of ["react", "solid", "svelte", "qwik", "astro"] as const) {
+      const code = await getOutput("FragmentRoot", target);
+      expect(code, `${target} fragment root`).not.toContain("__attrs");
+    }
+  });
+});

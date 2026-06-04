@@ -32,6 +32,7 @@
       "types": "./dist/preset/parameters.d.mts",
       "default": "./dist/preset/parameters.mjs"
     },
+    "./preset/preview.css": "./dist/preset/preview.css",
     "./generator": {
       "types": "./dist/generator/index.d.mts",
       "default": "./dist/generator/index.mjs"

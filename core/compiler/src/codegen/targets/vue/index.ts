@@ -17,16 +17,14 @@ import {
   cGroup,
   cStyle,
 } from "../../code-ir/builders.ts";
-import {
-  rewriteExpr,
-  rewriteEventName,
-  rewriteAttrName,
-  extractKeyBody,
-} from "../../shared/expr-rewrite.ts";
+import { rewriteExpr, rewriteAttrName, extractKeyBody } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 import * as ts from "typescript";
 
+// Script context (`<script setup>`): props are accessed via the `defineProps()` result, so
+// `props.x` must be kept. The template resolves bare prop names against the component's props,
+// so it strips `props.x` → `x` (see TEMPLATE_RULES).
 const REWRITES: RewriteRules = {
   reactiveRead: { kind: "field-access", field: "value" },
   setterStyle: { kind: "field-assignment", field: "value" },
@@ -34,14 +32,32 @@ const REWRITES: RewriteRules = {
   jsxAttrCasing: "html",
   eventNameCase: "kebab",
   members: {
-    props: { strip: true },
+    props: { strip: false },
     slots: { strip: true },
   },
 };
 
-const TEMPLATE_RULES: RewriteRules = { ...REWRITES, reactiveRead: { kind: "strip-call" } };
+// In the template, Vue auto-unwraps refs: reads use the bare name (`count`, not `count.value`)
+// and writes are compiled to `.value` (so a setter mutates via `count = …`, not `count.value = …`).
+const TEMPLATE_RULES: RewriteRules = {
+  ...REWRITES,
+  reactiveRead: { kind: "strip-call" },
+  setterStyle: { kind: "direct-assignment" },
+  members: { ...REWRITES.members, props: { strip: true } },
+};
 
 // ── Shared template attr helpers ───────────────────────────────────
+
+// Vue native DOM event listeners must match the all-lowercase DOM event name (`@mousemove`,
+// `@submit`); a kebab-cased `@mouse-move` would never fire. Component custom events use kebab
+// case (`@mouse-move`), which Vue normalizes against the child's camelCase `emits`.
+function vueEventName(name: string, isComponent: boolean): string {
+  const base = name.startsWith("on") ? name.slice(2) : name;
+  if (isComponent) {
+    return `@${base.replace(/[A-Z]/g, (c, i) => (i === 0 ? c.toLowerCase() : `-${c.toLowerCase()}`))}`;
+  }
+  return `@${base.toLowerCase()}`;
+}
 
 function tmplAttrs(
   node: {
@@ -50,6 +66,7 @@ function tmplAttrs(
     readonly refs: readonly any[];
   },
   rules: RewriteRules,
+  isComponent = false,
 ) {
   const attrs = node.attrs.map((a: any) => {
     const name = rewriteAttrName(a.name, rules);
@@ -62,7 +79,7 @@ function tmplAttrs(
   });
   const evts = node.events.map((e: any) =>
     cTmplAttr({
-      name: rewriteEventName(e.name, rules),
+      name: vueEventName(e.name, isComponent),
       value: { kind: "expr", expr: cExpr({ text: rewriteExpr(e.handler.expr, rules) }) },
     }),
   );
@@ -108,7 +125,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     }
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? node.reference.getText();
-      const attrs = tmplAttrs(node, rules);
+      const attrs = tmplAttrs(node, rules, true);
       const children: Code[] = [];
       for (const slot of node.slots) {
         if (slot.name === "default") {
@@ -233,7 +250,21 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
 // ── Emit entry point ───────────────────────────────────────────────
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const rules = ctx.rewrites;
+  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
+  const rules: RewriteRules = { ...ctx.rewrites, setters };
+  // The Vue template auto-unwraps refs, so resource data/loading/error are read by their bare names
+  // (reactiveRead strip-call). Only the template needs this — the <script setup> reads them via
+  // `.value`. Build the set of bound resource names and spread it into the template rules.
+  const resourceReads = new Set(
+    component.resources.flatMap((r) =>
+      [r.name, r.loadingName, r.errorName].filter((n): n is string => n !== undefined),
+    ),
+  );
+  const templateRules: RewriteRules = {
+    ...TEMPLATE_RULES,
+    setters,
+    reactiveBindings: resourceReads,
+  };
   const scriptBody: Code[] = [];
   const vueImports: string[] = [];
 
@@ -256,11 +287,24 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     vueImports.push("watchEffect");
     scriptBody.push(cStmt({ body: `watchEffect(${rewriteExpr(e.body, rules)})`, span: e.loc }));
   }
+  // Lower each resource to reactive refs (data/loading/error) plus a fire-and-forget loader that
+  // runs the fetcher and updates them — the universal "manual fetch with loading/error state"
+  // pattern in idiomatic Vue. The template auto-unwraps the refs (see reactiveBindings below).
   for (const res of component.resources) {
     vueImports.push("ref");
+    scriptBody.push(cStmt({ body: `const ${res.name} = ref(undefined)`, span: res.loc }));
+    if (res.loadingName) {
+      scriptBody.push(cStmt({ body: `const ${res.loadingName} = ref(true)`, span: res.loc }));
+    }
+    if (res.errorName) {
+      scriptBody.push(cStmt({ body: `const ${res.errorName} = ref(undefined)`, span: res.loc }));
+    }
+    const fetcher = rewriteExpr(res.fetcher.expr, rules);
+    const onError = res.errorName ? `.catch((e) => ${res.errorName}.value = e)` : "";
+    const onFinally = res.loadingName ? `.finally(() => ${res.loadingName}.value = false)` : "";
     scriptBody.push(
       cStmt({
-        body: `const ${res.name} = ref(await (${rewriteExpr(res.fetcher.expr, rules)})())`,
+        body: `;(${fetcher})().then((d) => ${res.name}.value = d)${onError}${onFinally}`,
         span: res.loc,
       }),
     );
@@ -315,13 +359,25 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ? [cImport({ module: "vue", named: unique.map((i) => ({ imported: i })) })]
       : [];
 
-  if (component.props.length > 0) {
+  if (component.propsTypeText) {
+    scriptBody.unshift(cStmt({ body: `const props = defineProps<${component.propsTypeText}>()` }));
+  } else if (component.props.length > 0) {
     const defs = component.props
-      .map(
-        (p) => `${p.name}${p.required ? "" : "?"}${p.typeNode ? `: ${p.typeNode.getText()}` : ""}`,
-      )
+      .map((p) => {
+        const type = p.typeText ?? p.typeNode?.getText();
+        return `${p.name}${p.required ? "" : "?"}${type ? `: ${type}` : ""}`;
+      })
       .join("; ");
-    scriptBody.unshift(cStmt({ body: `const props = defineProps<{ ${defs} }>()` }));
+    // Object-form props carry defaults; wrap defineProps in withDefaults and seed only the props
+    // that declared one, keeping the `const props` binding the <script> reads via `props.x`.
+    const defaults = component.props
+      .filter((p) => p.defaultValue)
+      .map((p) => `${p.name}: ${rewriteExpr(p.defaultValue!.expr, rules)}`);
+    const body =
+      defaults.length > 0
+        ? `const props = withDefaults(defineProps<{ ${defs} }>(), { ${defaults.join(", ")} })`
+        : `const props = defineProps<{ ${defs} }>()`;
+    scriptBody.unshift(cStmt({ body }));
   }
 
   // ── Module-level context definitions (non-setup <script>) ─────────
@@ -344,7 +400,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     }
   }
 
-  const renderTree = emitNode(component.render, TEMPLATE_RULES);
+  // A root fragment must emit its children as sibling root nodes (Vue 3 multi-root). Wrapping
+  // them in a directive-less `<template>` would render nothing, so spread them directly.
+  const renderTree: Code[] =
+    component.render.kind === "Fragment"
+      ? component.render.children.map((c) => emitNode(c, templateRules))
+      : [emitNode(component.render, templateRules)];
   const fileChildren: Code[] = [];
 
   // Non-setup <script> block for context definitions (must come before <script setup>)
@@ -361,13 +422,14 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         ...imports,
         ...emitComponentImports(ctx.componentImports, ".vue", true),
         ...ctx.externalImports,
+        ...(ctx.typeDeclarations.length > 0 ? [cRaw({ text: "" }), ...ctx.typeDeclarations] : []),
         cRaw({ text: "" }),
         ...scriptBody,
       ],
     }),
     cRaw({ text: "" }),
     cRaw({ text: "<template>" }),
-    renderTree,
+    ...renderTree,
     cRaw({ text: "</template>" }),
     ...component.styles.map((s) => cStyle({ css: s.css, scoped: s.scoped })),
   );

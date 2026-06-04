@@ -261,15 +261,16 @@ export default defineConfig({
 
 ### Options
 
-| Option          | Type                                          | Default      | Description                                                  |
-| --------------- | --------------------------------------------- | ------------ | ------------------------------------------------------------ |
-| `targets`       | `TargetName[]`                                | (required)   | Targets to compile for.                                      |
-| `outDir`        | `string`                                      | `"dist"`     | Output directory. Files are written to `<outDir>/<target>/`. |
-| `sourceMap`     | `"external" \| "inline" \| "none"`            | `"external"` | Source map generation mode.                                  |
-| `targetOptions` | `Record<TargetName, Record<string, unknown>>` | `{}`         | Per-target options. Unknown keys produce INK0080 warnings.   |
-| `plugins`       | `Plugin[]`                                    | `[]`         | Compiler plugins.                                            |
-| `verbose`       | `boolean`                                     | `false`      | Log detailed plugin errors.                                  |
-| `registry`      | `TargetRegistry`                              | built-in     | Custom target registry (advanced).                           |
+| Option          | Type                                          | Default      | Description                                                                                                                                                                                                              |
+| --------------- | --------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `targets`       | `TargetName[]`                                | (required)   | Targets to compile for.                                                                                                                                                                                                  |
+| `srcDir`        | `string`                                      | —            | Source root to strip from output paths (e.g. `"src"`). When set, directory structure below `srcDir` is preserved in the output. Without it, the deepest common prefix is used. Also available as `--src-dir` on the CLI. |
+| `outDir`        | `string`                                      | `"dist"`     | Output directory. Files are written to `<outDir>/<target>/`.                                                                                                                                                             |
+| `sourceMap`     | `"external" \| "inline" \| "none"`            | `"external"` | Source map generation mode.                                                                                                                                                                                              |
+| `targetOptions` | `Record<TargetName, Record<string, unknown>>` | `{}`         | Per-target options. Unknown keys produce INK0080 warnings.                                                                                                                                                               |
+| `plugins`       | `Plugin[]`                                    | `[]`         | Compiler plugins.                                                                                                                                                                                                        |
+| `verbose`       | `boolean`                                     | `false`      | Log detailed plugin errors.                                                                                                                                                                                              |
+| `registry`      | `TargetRegistry`                              | built-in     | Custom target registry (advanced).                                                                                                                                                                                       |
 
 ### Available Targets
 

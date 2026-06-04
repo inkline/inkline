@@ -57,8 +57,10 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
     template: "csf3",
     compiledExtension: ".svelte",
     renderStory: {
-      frameworkImport: 'import { createElement } from "svelte";',
-      expression: "createElement({name})",
+      // Svelte has no `createElement`; the Storybook Svelte renderer mounts the
+      // component returned as `{ Component }` from the story's `render`.
+      frameworkImport: "",
+      expression: "({ Component: {name} })",
     },
     hasDefaultExport: true,
   },
@@ -83,10 +85,15 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
     frameworkPackage: "@analogjs/storybook-angular",
     port: 6010,
     template: "angular",
-    compiledExtension: ".ts",
+    compiledExtension: ".component.ts",
     renderStory: {
       frameworkImport: "",
-      expression: "({ component: {name} })",
+      // `@storybook/angular`'s renderer (`prepareMain`) only honors a story's `template` +
+      // `context.component`; it ignores a `component` returned from `render()`. So a render
+      // wrapper must be instantiated via its own selector in a `template`, with the standalone
+      // wrapper supplied through `moduleMetadata.imports`.
+      expression:
+        "({ moduleMetadata: { imports: [{name}] }, template: `<{selector}></{selector}>` })",
     },
     hasDefaultExport: false,
     exportedNameSuffix: "Component",
@@ -114,8 +121,10 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
     template: "csf3",
     compiledExtension: ".astro",
     renderStory: {
+      // The Storybook Astro renderer expects the `.astro` component factory to be
+      // returned (and routed to server-side rendering), not invoked client-side.
       frameworkImport: "",
-      expression: "{name}()",
+      expression: "{name}",
     },
     hasDefaultExport: true,
   },

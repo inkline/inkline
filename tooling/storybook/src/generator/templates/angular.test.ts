@@ -61,15 +61,18 @@ describe("renderAngular", () => {
         storyName: "Colors",
         localName: "ColorsStory",
         exportedName: "colorsComponent",
-        importPath: "../generated/badge/stories/colors.ts",
+        importPath: "../generated/badge/stories/colors.component.ts",
+        selector: "colors",
       },
     ];
     const out = renderAngular(mod, angular, renderImports);
     expect(out).toContain(
-      'import { colorsComponent as ColorsStory } from "../generated/badge/stories/colors.ts";',
+      'import { colorsComponent as ColorsStory } from "../generated/badge/stories/colors.component.ts";',
     );
+    // `@storybook/angular` ignores a `component` returned from `render()`, so the wrapper is
+    // instantiated via its selector in a `template`, with the standalone wrapper in moduleMetadata.
     expect(out).toContain(
-      "export const Colors: Story = { render: () => ({ component: ColorsStory }) };",
+      "export const Colors: Story = { render: () => ({ moduleMetadata: { imports: [ColorsStory] }, template: `<colors></colors>` }) };",
     );
   });
 
@@ -85,11 +88,14 @@ describe("renderAngular", () => {
         storyName: "Colors",
         localName: "ColorsStory",
         exportedName: "colorsComponent",
-        importPath: "../generated/badge/stories/colors.ts",
+        importPath: "../generated/badge/stories/colors.component.ts",
+        selector: "colors",
       },
     ];
     const out = renderAngular(mod, frameworkWithDefault, renderImports);
-    expect(out).toContain('import ColorsStory from "../generated/badge/stories/colors.ts";');
+    expect(out).toContain(
+      'import ColorsStory from "../generated/badge/stories/colors.component.ts";',
+    );
   });
 
   it("validates component and story identifiers", () => {

@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import * as ts from "typescript";
 import { UNKNOWN_LOCATION } from "../../../ir/types.ts";
-import { createElement, createText } from "../../../ir/render/builders.ts";
+import { createElement, createFragment, createText } from "../../../ir/render/builders.ts";
 import type { IRComponent, IRElement, IRModule } from "../../../ir/render/nodes.ts";
 import { createDiagnosticCollector } from "../../../core/diagnostics/collector.ts";
 import { resolveOptions } from "../../../core/options.ts";
@@ -31,7 +31,7 @@ function makeModule(components: IRComponent[]): IRModule {
   };
 }
 
-function makeComp(name: string, render: IRElement): IRComponent {
+function makeComp(name: string, render: IRComponent["render"]): IRComponent {
   return {
     kind: "Component",
     id: `t.tsx#${name}`,
@@ -69,7 +69,10 @@ describe("lower", () => {
     const result = lower(module, ctx);
 
     expect(result.components).toHaveLength(1);
-    expect((result.components[0]!.render as IRElement).isStatic).toBe(true);
+    // A single host-element root is marked for attribute fallthrough, which makes it non-static.
+    const root = result.components[0]!.render as IRElement;
+    expect(root.acceptsAttrFallthrough).toBe(true);
+    expect(root.isStatic).toBe(false);
   });
 
   it("handles multiple components", () => {
@@ -80,17 +83,19 @@ describe("lower", () => {
     const result = lower(module, ctx);
 
     expect(result.components).toHaveLength(2);
-    expect((result.components[0]!.render as IRElement).isStatic).toBe(true);
-    expect((result.components[1]!.render as IRElement).isStatic).toBe(true);
+    expect((result.components[0]!.render as IRElement).acceptsAttrFallthrough).toBe(true);
+    expect((result.components[1]!.render as IRElement).acceptsAttrFallthrough).toBe(true);
   });
 
-  it("preserves component render when already static", () => {
-    const el = createElement({ tag: "div" });
-    const comp = makeComp("T", el);
-    const compWithStatic: IRComponent = { ...comp, render: { ...el, isStatic: true } };
-    const module = makeModule([compWithStatic]);
+  it("does not mark a fragment root for attribute fallthrough", () => {
+    const frag = createFragment({ children: [createText({ value: "hello" })] });
+    const comp = makeComp("T", frag);
+    const module = makeModule([comp]);
     const ctx = makeCtx();
     const result = lower(module, ctx);
-    expect(result.components[0]!.render).toBe(compWithStatic.render);
+    expect(result.components[0]!.render.kind).toBe("Fragment");
+    expect(
+      (result.components[0]!.render as { acceptsAttrFallthrough?: boolean }).acceptsAttrFallthrough,
+    ).toBeUndefined();
   });
 });

@@ -4,6 +4,24 @@ packages:
   - tooling/*
   - ui/*
   - tools/*
+allowBuilds:
+  "@parcel/watcher": true
+  core-js: true
+  esbuild: true
+  lmdb: true
+  msgpackr-extract: true
+  sharp: true
+
+# pnpm 11 enforces a default minimumReleaseAge (24h) supply-chain guard.
+# Exclude the styleframe first-party ecosystem (intentionally fresh, trusted),
+# and pin the exact versions of unrelated transitive deps caught as collateral
+# so the guard still applies to any future releases of those packages.
+minimumReleaseAgeExclude:
+  - "@styleframe/*"
+  - styleframe
+  - ansis@4.3.1
+  - js-yaml@4.2.0
+  - launch-editor@2.14.1
 
 catalog:
   "@analogjs/storybook-angular": ^2.5.1
@@ -24,6 +42,14 @@ catalog:
   "@storybook/react-vite": ^10
   "@storybook/svelte-vite": ^10
   "@storybook/vue3-vite": ^10
+  "@styleframe/cli": ^4.1.0
+  "@styleframe/core": ^3.6.0
+  "@styleframe/license": ^2.0.2
+  "@styleframe/loader": ^3.0.2
+  "@styleframe/plugin": ^3.4.0
+  "@styleframe/runtime": ^3.2.0
+  "@styleframe/theme": ^3.7.1
+  "@styleframe/transpiler": ^3.4.0
   "@sveltejs/vite-plugin-svelte": ^7.1.2
   "@tsdown/css": ^0.22.0
   "@types/node": ^24
@@ -31,7 +57,7 @@ catalog:
   "@vitejs/plugin-react": ^6.0.2
   "@vitejs/plugin-vue": ^6.0.7
   "@vitest/coverage-v8": ^4.1.5
-  concurrently: ^9
+  concurrently: ^9.2.1
   eslint: ^9.39.4
   eslint-plugin-astro: ^1.7.0
   eslint-plugin-qwik: ^1.19.2
@@ -44,10 +70,11 @@ catalog:
   storybook: ^10
   storybook-framework-qwik: 0.6.2--canary.95.25602496384.0
   storybook-solidjs-vite: ^10
-  typescript: ^5
+  styleframe: ^3.8.0
+  typescript: ^6.0.3
   vite: npm:@voidzero-dev/vite-plus-core@latest
   vite-plugin-solid: ^2.11.12
-  vite-plus: ^0.1.22
+  vite-plus: ^0.1.23
   vitest: npm:@voidzero-dev/vite-plus-test@latest
   vue-eslint-parser: ^10.4.0
 

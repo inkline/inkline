@@ -25,14 +25,21 @@ export type ReactiveReadKind =
 export type SetterStyleKind =
   | { readonly kind: "function-call" }
   | { readonly kind: "field-assignment"; readonly field: string }
-  | { readonly kind: "direct-assignment" };
+  | { readonly kind: "direct-assignment" }
+  | { readonly kind: "method-call"; readonly method: string };
 
 export type RefAccessKind =
   | { readonly kind: "field"; readonly field: string }
   | { readonly kind: "bare" };
 
 export interface MemberRewriteRules {
-  readonly props?: { readonly strip: boolean };
+  /**
+   * `strip` rewrites `props.x` → `x` (targets that destructure props). `whole`, when set,
+   * rewrites a bare `props` reference to this expression — used by targets that destructure
+   * `props` and therefore have no `props` binding for whole-object references (e.g. Svelte
+   * reconstructs `{ name, ...rest }`).
+   */
+  readonly props?: { readonly strip: boolean; readonly whole?: string };
   readonly slots?: { readonly strip: boolean; readonly rename?: Readonly<Record<string, string>> };
 }
 
@@ -43,12 +50,61 @@ export interface RewriteRules {
   readonly jsxAttrCasing: "react" | "html";
   readonly eventNameCase: "camel" | "kebab" | "lower";
   readonly members?: MemberRewriteRules;
+  /**
+   * Prefix component-member references (`props.x`, reactive reads `x()`) with `this.`.
+   * Used by class-based targets (Angular) when emitting class-body expressions
+   * (memos/effects), where members are accessed via `this`, unlike the template.
+   */
+  readonly selfPrefix?: boolean;
+  /**
+   * Map of setter name → state name (e.g. `setCount` → `count`). A call to a known setter
+   * is rewritten per {@link setterStyle} (e.g. `count.value = …`, `count = …`, `count.set(…)`).
+   */
+  readonly setters?: Readonly<Record<string, string>>;
+  /** Rename bare identifiers (e.g. an event-handler param `e` → `$event` for Angular bindings). */
+  readonly rename?: Readonly<Record<string, string>>;
+  /**
+   * Identifiers that hold a reactive *value* read by its bare name (e.g. a `createResource`
+   * `data`/`loading`/`error`, typed as a plain value, not an accessor). A bare read of one of
+   * these is rewritten per {@link reactiveRead} — `data` → `data` (React/Vue/Svelte), `data()`
+   * (Solid/Angular), or `data.value` (Qwik) — so each framework's read convention is honoured even
+   * though the authored read has no call syntax.
+   */
+  readonly reactiveBindings?: ReadonlySet<string>;
+  /**
+   * Prop names that are destructured into a local with a default applied (e.g. React's
+   * `const { color = "blue", ...__attrs } = props`). A read `props.color` is rewritten to the
+   * bare local `color` so the destructured default takes effect. Only set by targets that keep
+   * `props.x` reads (no global {@link MemberRewriteRules.props} strip) yet still want defaults
+   * applied via destructuring.
+   */
+  readonly propLocals?: ReadonlySet<string>;
+  /**
+   * Props are emitted as Angular signal inputs (`color = input<T>()`), so a `props.x` read must use
+   * the call form: `this.color()` in a class body, `color()` in the template. Without it `props.x`
+   * reads a plain field, which a `computed`/`effect` cannot track. Angular-only.
+   */
+  readonly propSignals?: boolean;
+  /**
+   * Signals that have been lifted into a DI-provided context object (Angular). A read `disabled()`
+   * becomes `<field>.<prop>` and a setter call `setDisabled(v)` becomes `<field>.<prop> = v`, where
+   * the field is the injected context and the prop is a reactive getter/setter over the lifted
+   * signal. Lets a component provide a context value derived from its own state and still read/write
+   * that state, since Angular cannot evaluate instance state in `@Component` provider metadata.
+   */
+  readonly providedSignals?: ReadonlyMap<string, { readonly field: string; readonly prop: string }>;
+  /**
+   * Quote style for string literals in emitted expressions. Angular templates embed expressions
+   * in double-quoted attributes, so string literals must use single quotes (`'a'`).
+   */
+  readonly stringQuote?: "single" | "double";
 }
 
 export interface ComponentImport {
   readonly localName: string;
   readonly componentName: string;
   readonly relativePath: string;
+  readonly namedTypeImports?: readonly string[];
 }
 
 export interface CodegenContext {
@@ -59,6 +115,7 @@ export interface CodegenContext {
   readonly contexts: readonly IRContextDefinition[];
   readonly externalImports: readonly Code[];
   readonly componentImports: readonly ComponentImport[];
+  readonly typeDeclarations: readonly Code[];
 }
 
 export interface CodeModule {

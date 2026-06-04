@@ -20,10 +20,10 @@
     "test": "vp test --passWithNoTests",
     "storybook": "storybook dev -p 6006",
     "storybook:build": "storybook build -o storybook-static",
-    "prestorybook": "pnpm --filter @inkline/cli exec node ./bin/inkline.mjs compile stories"
+    "prestorybook": "pnpm --filter @inkline/components exec inkline compile 'src/**/*.ink.tsx' --config inkline.config.ts --target react"
   },
   "dependencies": {
-    "@styleframe/runtime": "^3.1.0"
+    "@styleframe/runtime": "catalog:"
   },
   "devDependencies": {
     "@inkline/components": "workspace:*",
@@ -31,14 +31,19 @@
     "@storybook/addon-a11y": "catalog:",
     "@storybook/addon-docs": "catalog:",
     "@storybook/react-vite": "catalog:",
-    "@styleframe/plugin": "^3.3.0",
-    "@styleframe/theme": "^3.7.0",
+    "@styleframe/cli": "catalog:",
+    "@styleframe/core": "catalog:",
+    "@styleframe/license": "catalog:",
+    "@styleframe/loader": "catalog:",
+    "@styleframe/plugin": "catalog:",
+    "@styleframe/theme": "catalog:",
+    "@styleframe/transpiler": "catalog:",
     "@types/react": "^19",
     "@vitejs/plugin-react": "catalog:",
     "jsdom": "catalog:",
     "react": "^19",
     "storybook": "catalog:",
-    "styleframe": "^3.7.0"
+    "styleframe": "catalog:"
   },
   "peerDependencies": {
     "react": ">=18"

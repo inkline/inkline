@@ -1,0 +1,160 @@
+// Real-world codegen assertions for the `transitions` feature area: author a `.ink.tsx` that wraps
+// a `<Show>` in a `<Transition>`, compile through the FULL pipeline, and assert the ACTUAL emitted
+// framework code. Each target lowers transitions very differently — React/Solid/Qwik inject an
+// `__InkTransition` helper component, Vue maps to the native `<Transition>`, Svelte emits `in:`/`out:`
+// directives, and Angular/Astro currently drop the wrapper entirely. These tests pin that behavior
+// and document several runtime-breaking bugs surfaced along the way.
+//
+// To inspect a fixture's real output while editing assertions, dump it:
+//   const r = await compileFixture("TransitionBasic"); console.log(r.files.svelte![0].contents);
+
+import { describe, it, expect } from "vitest";
+import { compileFixture } from "../../../testing/harness.ts";
+import type { TargetName } from "../../context.ts";
+
+async function code(fixture: string, target: TargetName): Promise<string> {
+  const result = await compileFixture(fixture, [target]);
+  const files = result.files[target];
+  expect(files, `${fixture} should produce ${target} output`).toBeDefined();
+  return files![0]!.contents;
+}
+
+// TransitionBasic: <Transition name="fade"><Show when={visible()}>…</Show></Transition> plus a
+// toggle button bound to setVisible. Exercises the transition wrapper AND the state plumbing.
+describe("TransitionBasic: transition wrapper over toggled Show", () => {
+  it("React: injects __InkTransition helper with display:contents wrapper + enter/leave classes", async () => {
+    const out = await code("TransitionBasic", "react");
+    expect(out).toContain('function __InkTransition({ name = "ink", appear, children }');
+    expect(out).toContain('style={{ display: "contents" }}');
+    expect(out).toContain('el.classList.add(name + "-enter-from", name + "-enter-active")');
+    // Show child lowers to a ternary fed into the helper as children
+    expect(out).toContain("{visible ? <p>Hello</p> : null}");
+  });
+
+  it("React: Transition wrapper passes the transition name through as a prop", async () => {
+    const out = await code("TransitionBasic", "react");
+    // Author wrote <Transition name="fade"> and the string-literal `name` attr is now captured,
+    // so the correct CSS class prefix is emitted at the call site.
+    expect(out).toContain('<__InkTransition name="fade">');
+    expect(out).not.toContain('name="ink">');
+  });
+
+  it("Solid: __InkTransition uses createEffect + onCleanup and gates the wrapper with <Show>", async () => {
+    const out = await code("TransitionBasic", "solid");
+    expect(out).toContain(
+      'import { createSignal, splitProps, createEffect, onCleanup, Show } from "solid-js"',
+    );
+    expect(out).toContain(
+      "function __InkTransition(props: { name?: string; appear?: boolean; children?: any })",
+    );
+    expect(out).toContain(
+      'return <Show when={show()}><div ref={(el) => ref = el} style={{ display: "contents" }}>',
+    );
+    expect(out).toContain('<__InkTransition name="fade">');
+  });
+
+  it("Vue: maps to the native <Transition> wrapping a v-if child", async () => {
+    const out = await code("TransitionBasic", "vue");
+    expect(out).toContain('<Transition name="fade">');
+    expect(out).toContain('<p v-if="visible">');
+  });
+
+  it("Vue: toggle handler rewrites setVisible to a template assignment", async () => {
+    const out = await code("TransitionBasic", "vue");
+    // `visible` is emitted in the script; the setter call is rewritten away.
+    const script = out.slice(out.indexOf("<script"), out.indexOf("</script>"));
+    expect(script).toContain("const visible = ref(true)");
+    expect(script).not.toContain("setVisible");
+    // The template rewrites setVisible(!visible) → visible = !visible (Vue adds .value).
+    expect(out).toContain('@click="() => visible = !visible"');
+  });
+
+  it("Svelte: emits in:/out: transition directives instead of a wrapper component", async () => {
+    const out = await code("TransitionBasic", "svelte");
+    expect(out).toContain("const __inkTransitionIn = function(node: HTMLElement");
+    expect(out).toContain("const __inkTransitionOut = function(node: HTMLElement");
+    expect(out).toContain(
+      'in:__inkTransitionIn={{ name: "fade" }} out:__inkTransitionOut={{ name: "fade" }}',
+    );
+    expect(out).toContain("{#if visible}");
+  });
+
+  it("Qwik: __InkTransition uses useVisibleTask$ tracking props.children", async () => {
+    const out = await code("TransitionBasic", "qwik");
+    expect(out).toContain(
+      "const __InkTransition = component$((props: { name?: string; appear?: boolean; children?: any })",
+    );
+    expect(out).toContain("useVisibleTask$(({ track, cleanup }) => {");
+    expect(out).toContain("track(() => props.children);");
+    expect(out).toContain('<__InkTransition name="fade">');
+  });
+
+  it("Qwik: onClick is single-wrapped in $() and rewrites setVisible to a signal assignment", async () => {
+    const out = await code("TransitionBasic", "qwik");
+    // Single `$(() => …)` wrap (no extra closure), and setVisible(!visible) is rewritten to
+    // `visible.value = !visible.value`; `setVisible` is never declared.
+    expect(out).toContain("onClick={$(() => visible.value = !visible.value)}");
+    expect(out).toContain("const visible = useSignal(true)");
+    expect(out).not.toContain("const setVisible");
+  });
+
+  it("Angular: rewrites setVisible to signal.set, but BUG — the Transition wrapper is dropped entirely", async () => {
+    const out = await code("TransitionBasic", "angular");
+    // RESIDUAL BUG: no __InkTransition / no transition machinery survives; the @if just renders bare,
+    // so the fade animation is silently lost on the Angular target.
+    expect(out).not.toContain("InkTransition");
+    expect(out).not.toContain("transition");
+    expect(out).toContain("@if (visible()) {");
+    // The (click) binding is a statement (no arrow) that rewrites setVisible to signal.set — correct.
+    expect(out).toContain('(click)="visible.set(!visible())"');
+    expect(out).toContain("visible = signal(true)");
+    // The class body never declares setVisible — the setter call was rewritten away.
+    expect(out).not.toContain("setVisible = ");
+    expect(out).not.toContain("setVisible(value");
+    expect(out).not.toContain("setVisible");
+  });
+
+  it("Astro: declares signal state in the frontmatter and rewrites the setter to a direct assignment", async () => {
+    const out = await code("TransitionBasic", "astro");
+    // Frontmatter declares the signal as a plain `let`, then destructures __attrs.
+    expect(out).toContain("const { ...__attrs } = props;");
+    expect(out).toContain("let visible = true");
+    expect(out).toContain("{visible ? (<p>");
+    // setVisible(!visible) is rewritten to a direct assignment; `setVisible` is never declared.
+    expect(out).toContain("onClick={() => visible = !visible}");
+    expect(out).not.toContain("setVisible");
+  });
+});
+
+// TransitionAppear: <Transition name="slide" appear><Show …/></Transition>. Same machinery, but the
+// `appear` flag should make the enter animation run on mount.
+describe("TransitionAppear: appear flag on a transition", () => {
+  it("React: passes the `appear` attr so the mount animation fires", async () => {
+    const out = await code("TransitionAppear", "react");
+    // Helper supports `appear`, and the call site now carries the captured name + appear flag.
+    expect(out).toContain('<__InkTransition name="slide" appear>');
+    expect(out).not.toContain('name="ink"');
+  });
+
+  it("Solid: passes the appear flag at the call site, matching helper support", async () => {
+    const out = await code("TransitionAppear", "solid");
+    expect(out).toContain("if (!mounted && !props.appear)"); // helper reads props.appear
+    // The instance opening tag now passes both the captured name and the `appear` flag:
+    expect(out).toContain('<__InkTransition name="slide" appear>');
+  });
+
+  it("Vue: native <Transition> carries the captured name and the appear attribute", async () => {
+    const out = await code("TransitionAppear", "vue");
+    // `name="slide"` is preserved and the `appear` flag is emitted as a boolean attribute.
+    expect(out).toContain('<Transition name="slide" appear="">');
+    expect(out).toContain('<p v-if="visible">');
+  });
+
+  it("Svelte: appear transition emits both in:/out: directives with the captured name", async () => {
+    const out = await code("TransitionAppear", "svelte");
+    expect(out).toContain(
+      'in:__inkTransitionIn={{ name: "slide" }} out:__inkTransitionOut={{ name: "slide" }}',
+    );
+    expect(out).toContain("{#if visible}");
+  });
+});

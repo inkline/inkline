@@ -1,0 +1,17 @@
+/**
+ * Storybook preview styles shared by every framework's `.storybook/preview.ts`.
+ *
+ * Lays out the rendered story root as a flex row so multi-element variants sit side by side with
+ * consistent spacing. The story's layout `<div>` is a direct child of #storybook-root in most
+ * frameworks (React/Vue/Svelte/Solid), but two renderers nest it deeper, so we scope those by the
+ * `data-framework` attribute each framework's preview sets on the document:
+ *   - Qwik mounts the story inside a wrapper element, so the layout `<div>` is one level deeper.
+ *   - Angular renders every component as a host element, nesting the layout `<div>` under the story
+ *     host and the wrapper component's host.
+ */
+#storybook-root > div,
+[data-framework="qwik"] #storybook-root > div > div,
+[data-framework="angular"] #storybook-root > * > * > div {
+  display: flex;
+  gap: var(--spacing);
+}

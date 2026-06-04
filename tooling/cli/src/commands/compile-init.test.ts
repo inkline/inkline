@@ -17,21 +17,9 @@ vi.mock("consola", () => {
 });
 
 import consola from "consola";
-import compileInitCommand from "./compile-init.ts";
+import { scaffoldCompiler } from "./init.ts";
 
-function mockPrompt(value: unknown) {
-  (consola.prompt as ReturnType<typeof vi.fn>).mockResolvedValue(value);
-}
-
-function runCompileInit(args: Record<string, unknown> = {}) {
-  return compileInitCommand.run!({
-    args: { _: [], ...args } as any,
-    rawArgs: [],
-    cmd: compileInitCommand,
-  });
-}
-
-describe("inkline compile init", () => {
+describe("scaffoldCompiler", () => {
   let dir: string;
   let originalCwd: string;
 
@@ -54,7 +42,7 @@ describe("inkline compile init", () => {
 
   it("creates inkline.config.ts with specified targets", async () => {
     writePkg();
-    await runCompileInit({ target: "react,vue" });
+    await scaffoldCompiler(dir, ["react", "vue"]);
 
     const config = readFileSync(join(dir, "inkline.config.ts"), "utf-8");
     expect(config).toContain('import { defineConfig } from "inkline/compiler"');
@@ -64,7 +52,7 @@ describe("inkline compile init", () => {
 
   it("creates example component file", async () => {
     writePkg();
-    await runCompileInit({ target: "react" });
+    await scaffoldCompiler(dir, ["react"]);
 
     const componentPath = join(dir, "src/components/hello-world/HelloWorld.ink.tsx");
     expect(existsSync(componentPath)).toBe(true);
@@ -76,10 +64,10 @@ describe("inkline compile init", () => {
 
   it("adds inkline:build and inkline:dev scripts to package.json", async () => {
     writePkg();
-    await runCompileInit({ target: "react" });
+    await scaffoldCompiler(dir, ["react"]);
 
     const pkg = JSON.parse(readFileSync(join(dir, "package.json"), "utf-8"));
-    expect(pkg.scripts["inkline:build"]).toContain("inkline compile components");
+    expect(pkg.scripts["inkline:build"]).toContain("inkline compile");
     expect(pkg.scripts["inkline:dev"]).toContain("--watch");
   });
 
@@ -87,7 +75,7 @@ describe("inkline compile init", () => {
     writePkg();
     writeFileSync(join(dir, "inkline.config.ts"), "existing content");
 
-    await runCompileInit({ target: "react" });
+    await scaffoldCompiler(dir, ["react"]);
 
     const config = readFileSync(join(dir, "inkline.config.ts"), "utf-8");
     expect(config).toBe("existing content");
@@ -100,7 +88,7 @@ describe("inkline compile init", () => {
     mkdirSync(componentDir, { recursive: true });
     writeFileSync(join(componentDir, "HelloWorld.ink.tsx"), "existing");
 
-    await runCompileInit({ target: "react" });
+    await scaffoldCompiler(dir, ["react"]);
 
     const content = readFileSync(join(componentDir, "HelloWorld.ink.tsx"), "utf-8");
     expect(content).toBe("existing");
@@ -112,7 +100,7 @@ describe("inkline compile init", () => {
   it("does not overwrite existing scripts", async () => {
     writePkg({ "inkline:build": "custom", "inkline:dev": "custom" });
 
-    await runCompileInit({ target: "react" });
+    await scaffoldCompiler(dir, ["react"]);
 
     const pkg = JSON.parse(readFileSync(join(dir, "package.json"), "utf-8"));
     expect(pkg.scripts["inkline:build"]).toBe("custom");
@@ -120,69 +108,10 @@ describe("inkline compile init", () => {
     expect(consola.warn).toHaveBeenCalledWith(expect.stringContaining("already exist"));
   });
 
-  it("uses multi-select prompt when no --target flag", async () => {
-    writePkg();
-    writeFileSync(join(dir, "package.json"), JSON.stringify({ dependencies: { react: "^19" } }));
-    mockPrompt(["react"]);
-
-    await runCompileInit();
-
-    expect(consola.prompt).toHaveBeenCalledWith(
-      "Select target framework(s):",
-      expect.objectContaining({ type: "multiselect" }),
-    );
-  });
-
-  it("pre-checks detected frameworks in prompt", async () => {
-    writeFileSync(
-      join(dir, "package.json"),
-      JSON.stringify({ dependencies: { vue: "^3" }, scripts: {} }),
-    );
-    mockPrompt(["vue"]);
-
-    await runCompileInit();
-
-    expect(consola.prompt).toHaveBeenCalledWith(
-      "Select target framework(s):",
-      expect.objectContaining({ initial: ["vue"] }),
-    );
-  });
-
-  it("exits gracefully on cancelled prompt", async () => {
-    writePkg();
-    mockPrompt(Symbol.for("cancel"));
-
-    await runCompileInit();
-
-    expect(consola.info).toHaveBeenCalledWith("Cancelled.");
-    expect(existsSync(join(dir, "inkline.config.ts"))).toBe(false);
-  });
-
-  it("rejects invalid --target value", async () => {
-    writePkg();
-    const exitSpy = vi.spyOn(process, "exit").mockImplementation(() => {
-      throw new Error("process.exit");
-    });
-
-    await expect(runCompileInit({ target: "invalid" })).rejects.toThrow("process.exit");
-
-    expect(consola.error).toHaveBeenCalledWith(expect.stringContaining("Invalid target"));
-    exitSpy.mockRestore();
-  });
-
-  it("supports single target", async () => {
-    writePkg();
-    await runCompileInit({ target: "svelte" });
-
-    const config = readFileSync(join(dir, "inkline.config.ts"), "utf-8");
-    expect(config).toContain('"svelte"');
-    expect(config).not.toContain('"react"');
-  });
-
   it("shows completion message", async () => {
     writePkg();
-    await runCompileInit({ target: "react" });
+    await scaffoldCompiler(dir, ["react"]);
 
-    expect(consola.box).toHaveBeenCalledWith(expect.stringContaining("inkline compile components"));
+    expect(consola.box).toHaveBeenCalledWith(expect.stringContaining("inkline compile"));
   });
 });

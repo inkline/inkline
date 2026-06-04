@@ -7,8 +7,16 @@ import { createDiagnosticCollector } from "../../../core/diagnostics/collector.t
 import { resolveOptions } from "../../../core/options.ts";
 import { builtinRegistry } from "../../../codegen/registry.ts";
 import type { PassContext } from "../../types.ts";
+import {
+  createAttribute,
+  createComponentInstance,
+  createElement,
+  createFragment,
+  createStaticValue,
+  createText,
+} from "../../../ir/render/builders.ts";
 import { buildReactivityGraph } from "./graph.ts";
-import { diagnoseCycles, validateComponent } from "./validate.ts";
+import { diagnoseCycles, validateAttrFallthrough, validateComponent } from "./validate.ts";
 
 function mockExpr(code = "x"): ts.Expression {
   const sf = ts.createSourceFile("t.ts", code, ts.ScriptTarget.Latest, true);
@@ -293,6 +301,63 @@ describe("validateComponent", () => {
     });
     validateComponent(comp, ctx);
     expect(ctx.diagnostics.freeze().filter((d) => d.code === "INK0020")).toHaveLength(2);
+  });
+});
+
+describe("validateAttrFallthrough", () => {
+  function classInstance(childName: string) {
+    return createComponentInstance({
+      reference: ts.factory.createIdentifier(childName),
+      attrs: [
+        createAttribute({
+          name: "class",
+          value: createStaticValue({ value: "x" }),
+          binding: "class",
+        }),
+      ],
+    });
+  }
+
+  function codesFor(parent: IRComponent, locals: IRComponent[]) {
+    const ctx = makeCtx();
+    const map = new Map(locals.map((c) => [c.name, c]));
+    validateAttrFallthrough(parent, map, ctx);
+    return ctx.diagnostics.freeze().map((d) => d.code);
+  }
+
+  it("warns when class is passed to a same-module child with a fragment root", () => {
+    const parent = makeComp({ name: "P", render: classInstance("Child") });
+    const child = makeComp({
+      name: "Child",
+      render: createFragment({ children: [createText({ value: "a" })] }),
+    });
+    expect(codesFor(parent, [parent, child])).toContain("INK0120");
+  });
+
+  it("does not warn when the child root accepts fallthrough", () => {
+    const parent = makeComp({ name: "P", render: classInstance("Child") });
+    const child = makeComp({
+      name: "Child",
+      render: createElement({ tag: "div", acceptsAttrFallthrough: true }),
+    });
+    expect(codesFor(parent, [parent, child])).not.toContain("INK0120");
+  });
+
+  it("does not warn for a cross-module child (not in the module)", () => {
+    const parent = makeComp({ name: "P", render: classInstance("External") });
+    expect(codesFor(parent, [parent])).not.toContain("INK0120");
+  });
+
+  it("does not warn when no class attribute is passed", () => {
+    const parent = makeComp({
+      name: "P",
+      render: createComponentInstance({ reference: ts.factory.createIdentifier("Child") }),
+    });
+    const child = makeComp({
+      name: "Child",
+      render: createFragment({ children: [createText({ value: "a" })] }),
+    });
+    expect(codesFor(parent, [parent, child])).not.toContain("INK0120");
   });
 });
 

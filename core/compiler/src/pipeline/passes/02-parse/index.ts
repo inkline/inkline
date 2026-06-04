@@ -45,7 +45,8 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
 
       const props =
         optionsResult?.props ??
-        parsePropsFromParameterType(site.setupFn, componentId, sourceFile, ctx);
+        parsePropsFromParameterType(site.setupFn, componentId, sourceFile, ctx, checker);
+      const propsTypeText = getPropsTypeText(site.setupFn, sourceFile);
       const events = optionsResult?.events ?? [];
       const styles = optionsResult?.styles ?? [];
       const runtime = optionsResult?.runtime ?? "iso";
@@ -75,6 +76,7 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         name: site.name,
         loc: site.loc,
         props,
+        propsTypeText,
         slots,
         events,
         state: setupResult.state,
@@ -193,6 +195,15 @@ function registerPropsInScope(
     loc: { file: "", line: 0, column: 0, offset: 0, length: 0 },
   });
   scope.register(sym, id, "prop");
+}
+
+function getPropsTypeText(
+  setupFn: ts.ArrowFunction | ts.FunctionExpression,
+  sourceFile: ts.SourceFile,
+): string | undefined {
+  const param = setupFn.parameters[0];
+  if (!param?.type || ts.isTypeLiteralNode(param.type)) return undefined;
+  return param.type.getText(sourceFile);
 }
 
 function localFor(bindings: BindingTable, prim: string): string | undefined {

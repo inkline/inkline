@@ -6,34 +6,35 @@
   "scripts": {
     "ready": "pnpm run build && pnpm run check && pnpm run test",
     "check": "vp check",
+    "validate": "vp validate",
     "test": "vp run -r test",
+    "clean": "pnpm -r exec rm -rf dist .inkline",
     "build": "vp run -r build",
     "dev": "vp run website#dev",
-    "storybook": "concurrently -n compiler,generate,frameworks,app \"pnpm run storybook:compiler\" \"pnpm run storybook:generate\" \"pnpm run storybook:frameworks\" \"pnpm run storybook:app\"",
+    "storybook": "concurrently -n compiler,frameworks,app \"pnpm run storybook:compiler\" \"pnpm run storybook:frameworks\" \"pnpm run storybook:app\"",
     "storybook:compiler": "pnpm --filter @inkline/components dev",
-    "storybook:generate": "pnpm --filter @inkline/cli exec node ./bin/inkline.mjs compile stories --watch",
     "storybook:frameworks": "concurrently -n react,vue,svelte,solid,angular,qwik,astro \"BROWSER=none pnpm --filter @inkline/react storybook\" \"BROWSER=none pnpm --filter @inkline/vue storybook\" \"BROWSER=none pnpm --filter @inkline/svelte storybook\" \"BROWSER=none pnpm --filter @inkline/solid storybook\" \"BROWSER=none pnpm --filter @inkline/angular storybook\" \"BROWSER=none pnpm --filter @inkline/qwik storybook\" \"BROWSER=none pnpm --filter @inkline/astro storybook\"",
     "storybook:app": "wait-on tcp:6006 tcp:6007 tcp:6008 tcp:6009 tcp:6010 tcp:6011 tcp:6012 && pnpm --filter @inkline/storybook-app storybook",
-    "storybook:react": "concurrently -n gen,react \"pnpm run storybook:generate\" \"BROWSER=none pnpm --filter @inkline/react storybook\"",
-    "storybook:vue": "concurrently -n gen,vue \"pnpm run storybook:generate\" \"BROWSER=none pnpm --filter @inkline/vue storybook\"",
-    "storybook:svelte": "concurrently -n gen,svelte \"pnpm run storybook:generate\" \"BROWSER=none pnpm --filter @inkline/svelte storybook\"",
-    "storybook:solid": "concurrently -n gen,solid \"pnpm run storybook:generate\" \"BROWSER=none pnpm --filter @inkline/solid storybook\"",
-    "storybook:angular": "concurrently -n gen,angular \"pnpm run storybook:generate\" \"BROWSER=none pnpm --filter @inkline/angular storybook\"",
-    "storybook:qwik": "concurrently -n gen,qwik \"pnpm run storybook:generate\" \"BROWSER=none pnpm --filter @inkline/qwik storybook\"",
-    "storybook:astro": "concurrently -n gen,astro \"pnpm run storybook:generate\" \"BROWSER=none pnpm --filter @inkline/astro storybook\"",
+    "storybook:react": "concurrently -n compiler,react \"pnpm run storybook:compiler\" \"BROWSER=none pnpm --filter @inkline/react storybook\"",
+    "storybook:vue": "concurrently -n compiler,vue \"pnpm run storybook:compiler\" \"BROWSER=none pnpm --filter @inkline/vue storybook\"",
+    "storybook:svelte": "concurrently -n compiler,svelte \"pnpm run storybook:compiler\" \"BROWSER=none pnpm --filter @inkline/svelte storybook\"",
+    "storybook:solid": "concurrently -n compiler,solid \"pnpm run storybook:compiler\" \"BROWSER=none pnpm --filter @inkline/solid storybook\"",
+    "storybook:angular": "concurrently -n compiler,angular \"pnpm run storybook:compiler\" \"BROWSER=none pnpm --filter @inkline/angular storybook\"",
+    "storybook:qwik": "concurrently -n compiler,qwik \"pnpm run storybook:compiler\" \"BROWSER=none pnpm --filter @inkline/qwik storybook\"",
+    "storybook:astro": "concurrently -n compiler,astro \"pnpm run storybook:compiler\" \"BROWSER=none pnpm --filter @inkline/astro storybook\"",
     "prepare": "vp config",
     "ci:version": "changeset version",
     "ci:prepublish": "pnpm run build",
     "ci:publish": "pnpm run ci:prepublish && changeset publish"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.29.4",
+    "@changesets/cli": "^2.31.0",
     "concurrently": "catalog:",
     "vite-plus": "catalog:",
-    "wait-on": "^9"
+    "wait-on": "^9.0.10"
   },
   "engines": {
     "node": ">=22.12.0"
   },
-  "packageManager": "pnpm@10.33.4"
+  "packageManager": "pnpm@11.5.0+sha512.dbfcc4f81cf48597afd4bc391ffdf12c11f1a9fb83a395bfa6b0a2d9cc2fd8ffebafdb1ccbd529632153f793904c2615b7f09fe1a345473fd1c35845172a8eb1"
 }

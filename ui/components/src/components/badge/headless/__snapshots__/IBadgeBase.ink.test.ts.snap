@@ -2,57 +2,93 @@
 
 exports[`Badge > output matches snapshots 1`] = `
 {
-  "angular/IBadgeBase.component.ts": "import { Component, signal, computed, effect } from "@angular/core";
+  "angular/IBadgeBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface BadgeBaseProps {
+  label?: string;
+}
 @Component({ standalone: true, selector: 'IBadgeBase', template: \`<div class="badge">
-<ng-content />
+<ng-content>{{ label() }}</ng-content>
 </div>\` })
 export class IBadgeBaseComponent
 {
+label = input<string>()
 }
 ",
   "astro/IBadgeBase.astro": "---
+export interface BadgeBaseProps {
+  label?: string;
+}
+type Props = BadgeBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { label, ...__attrs } = props;
 ---
-<div class="badge">
-<slot />
+<div {...__attrs} class={["badge", __attrs.class].filter(Boolean).join(" ")}>
+<slot>
+{label}
+</slot>
 </div>
 ",
-  "qwik/IBadgeBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const IBadgeBase = component$((props) =>
+  "qwik/IBadgeBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface BadgeBaseProps {
+  label?: string;
+}
+export const IBadgeBase = component$((props: BadgeBaseProps & Record<string, any>) =>
 {
+const { children, label, ...__attrs } = props
 return (
-<div class="badge">
-  {props.children ?? props.label}
+<div {...__attrs} class={["badge", props.class].filter(Boolean).join(" ")}>
+  <Slot>
+    {props.label}
+  </Slot>
 </div>
 )
 });
 ",
-  "react/IBadgeBase.tsx": "export function IBadgeBase(props: { children?: React.ReactNode })
+  "react/IBadgeBase.tsx": "export interface BadgeBaseProps {
+  label?: string;
+}
+export function IBadgeBase(props: BadgeBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
+const { children, label, ...__attrs } = props
 return (
-<div className="badge">
+<div {...__attrs} className={["badge", props.className].filter(Boolean).join(" ")}>
   {props.children ?? props.label}
 </div>
 )
 }
 ",
-  "solid/IBadgeBase.tsx": "export default function IBadgeBase(props: { default?: any })
+  "solid/IBadgeBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface BadgeBaseProps {
+  label?: string;
+}
+export default function IBadgeBase(props: BadgeBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
+const [, __attrs] = splitProps(props, ["children", "label"])
 return (
-<div class="badge">
-  {props.default ?? props.label}
+<div {...__attrs} class={["badge", props.class].filter(Boolean).join(" ")}>
+  {props.children ?? props.label}
 </div>
 )
 }
 ",
   "svelte/IBadgeBase.svelte": "<script lang="ts">
+  export interface BadgeBaseProps {
+    label?: string;
+  }
+  let { label, ...__attrs }: BadgeBaseProps & Record<string, any> = $props()
 </script>
-<div class="badge">
+<div {...__attrs} class={["badge", __attrs.class].filter(Boolean).join(" ")}>
   <slot>
     {label}
   </slot>
 </div>
 ",
   "vue/IBadgeBase.vue": "<script setup lang="ts">
+  export interface BadgeBaseProps {
+    label?: string;
+  }
+  const props = defineProps<BadgeBaseProps>()
 </script>
 <template>
 <div class="badge">

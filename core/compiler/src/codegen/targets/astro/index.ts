@@ -9,11 +9,43 @@ import {
   emitExprAsTemplate,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import {
+  FALLTHROUGH_REST,
+  classMergeExpr,
+  rootAcceptsFallthrough,
+} from "../../shared/fallthrough.ts";
 import { assertNever } from "../../../core/assert.ts";
+
+/** Build the attribute string for a fallthrough-capable root: spread rest first, then merge class. */
+function fallthroughAttrParts(node: any, rules: RewriteRules): string[] {
+  const parts: string[] = [`{...${FALLTHROUGH_REST}}`];
+  let classMerged = false;
+  for (const a of node.attrs) {
+    if (a.binding === "class") {
+      const authored =
+        a.value.kind === "Static"
+          ? JSON.stringify(String(a.value.value))
+          : rewriteExpr(a.value.expr, rules);
+      parts.push(`class={${classMergeExpr(authored, `${FALLTHROUGH_REST}.class`)}}`);
+      classMerged = true;
+      continue;
+    }
+    const name = rewriteAttrName(a.name, rules);
+    if (a.value.kind === "Static") parts.push(`${name}="${a.value.value}"`);
+    else parts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
+  }
+  for (const e of node.events) {
+    parts.push(`${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`);
+  }
+  if (!classMerged) parts.push(`class={${classMergeExpr(null, `${FALLTHROUGH_REST}.class`)}}`);
+  return parts;
+}
 
 const REWRITES: RewriteRules = {
   reactiveRead: { kind: "strip-call" },
-  setterStyle: { kind: "function-call" },
+  // Astro renders once on the server: state is a plain `let`, so a setter call is a direct
+  // re-assignment (`count = …`). There is no client reactivity to thread through.
+  setterStyle: { kind: "direct-assignment" },
   refAccess: { kind: "bare" },
   jsxAttrCasing: "html",
   eventNameCase: "camel",
@@ -23,14 +55,19 @@ const REWRITES: RewriteRules = {
 function emitNode(node: IRNode, rules: RewriteRules): string {
   switch (node.kind) {
     case "Element": {
-      const parts: string[] = [];
-      for (const a of node.attrs) {
-        const name = rewriteAttrName(a.name, rules);
-        if (a.value.kind === "Static") parts.push(`${name}="${a.value.value}"`);
-        else parts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
-      }
-      for (const e of node.events) {
-        parts.push(`${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`);
+      let parts: string[];
+      if (node.acceptsAttrFallthrough) {
+        parts = fallthroughAttrParts(node, rules);
+      } else {
+        parts = [];
+        for (const a of node.attrs) {
+          const name = rewriteAttrName(a.name, rules);
+          if (a.value.kind === "Static") parts.push(`${name}="${a.value.value}"`);
+          else parts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
+        }
+        for (const e of node.events) {
+          parts.push(`${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`);
+        }
       }
       const attrStr = parts.join(" ");
       const children = node.children.map((c) => emitNode(c, rules)).join("\n");
@@ -56,15 +93,22 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
     case "Fragment":
       return node.children.map((c) => emitNode(c, rules)).join("\n");
     case "ComponentInstance": {
-      const tag = node.resolved?.name ?? "unknown";
-      const ciParts: string[] = [];
-      for (const a of node.attrs) {
-        const name = rewriteAttrName(a.name, rules);
-        if (a.value.kind === "Static") ciParts.push(`${name}="${a.value.value}"`);
-        else ciParts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
-      }
-      for (const e of node.events) {
-        ciParts.push(`${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`);
+      const tag = node.resolved?.name ?? node.reference.getText();
+      let ciParts: string[];
+      if (node.acceptsAttrFallthrough) {
+        ciParts = fallthroughAttrParts(node, rules);
+      } else {
+        ciParts = [];
+        for (const a of node.attrs) {
+          const name = rewriteAttrName(a.name, rules);
+          if (a.value.kind === "Static") ciParts.push(`${name}="${a.value.value}"`);
+          else ciParts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
+        }
+        for (const e of node.events) {
+          ciParts.push(
+            `${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`,
+          );
+        }
       }
       if (node.slots.length === 0) {
         const ciAttrStr = ciParts.join(" ");
@@ -81,33 +125,116 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
     }
     case "Transition":
       return emitNode(node.child, rules);
-    case "SlotPlaceholder":
-      return `<slot${node.name !== "default" ? ` name="${node.name}"` : ""} />`;
+    case "SlotPlaceholder": {
+      // Astro has no scoped-slot mechanism: a slot with `args` can't pass per-row data to a parent.
+      // Best-effort: render the authored fallback (default content, with its scope vars in scope).
+      if (node.scopedArgs.length > 0 && node.fallback) {
+        return `<!-- scoped slot '${node.name}': args are not projectable in Astro; rendering default content -->\n${emitNode(node.fallback, rules)}`;
+      }
+      const name = node.name !== "default" ? ` name="${node.name}"` : "";
+      // Astro natively supports fallback content between `<slot>…</slot>`, shown when nothing is
+      // projected. Emit it non-self-closing with the authored fallback so a default-slot fallback
+      // (e.g. `<Slot>{label}</Slot>`) isn't dropped.
+      if (node.fallback) {
+        return `<slot${name}>\n${emitNode(node.fallback, rules)}\n</slot>`;
+      }
+      return `<slot${name} />`;
+    }
     default:
       assertNever(node);
   }
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const rules = ctx.rewrites;
-  const template = emitNode(component.render, rules);
+  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
+  const rules: RewriteRules = { ...ctx.rewrites, setters };
 
-  const propsInterface =
-    component.props.length > 0
-      ? `interface Props { ${component.props.map((p) => `${p.name}${p.required ? "" : "?"}${p.typeNode ? `: ${p.typeNode.getText()}` : ": unknown"}`).join("; ")} }`
-      : "";
-
-  const propsDestructure =
-    component.props.length > 0
-      ? `const { ${component.props.map((p) => p.name).join(", ")} } = Astro.props as Props;`
-      : "";
-
-  const resourceDecls = component.resources.map((res) =>
-    cStmt({
-      body: `const ${res.name} = await (${rewriteExpr(res.fetcher.expr, rules)})()`,
-      span: res.loc,
-    }),
+  // Resource data/loading/error are reactive bindings in the render tree: a bare read follows the
+  // target's reactiveRead (here `strip-call`, so they stay bare). Only the template needs this.
+  const resourceReads = new Set(
+    component.resources.flatMap((r) =>
+      [r.name, r.loadingName, r.errorName].filter((n): n is string => n !== undefined),
+    ),
   );
+  const template = emitNode(component.render, { ...rules, reactiveBindings: resourceReads });
+
+  const fallthrough = rootAcceptsFallthrough(component);
+  const inlineProps =
+    component.props.length > 0
+      ? `{ ${component.props.map((p) => `${p.name}${p.required ? "" : "?"}${(p.typeText ?? p.typeNode?.getText()) ? `: ${p.typeText ?? p.typeNode?.getText()}` : ": unknown"}`).join("; ")} }`
+      : "";
+
+  let propsInterface: string;
+  if (fallthrough) {
+    const base = component.propsTypeText ?? inlineProps;
+    propsInterface = base
+      ? `type Props = ${base} & Record<string, any>`
+      : "type Props = Record<string, any>";
+  } else if (component.propsTypeText) {
+    propsInterface = `type Props = ${component.propsTypeText}`;
+  } else if (inlineProps) {
+    propsInterface = `interface Props ${inlineProps}`;
+  } else {
+    propsInterface = "";
+  }
+
+  const destructured = component.props.map((p) =>
+    p.defaultValue ? `${p.name} = ${rewriteExpr(p.defaultValue.expr, rules)}` : p.name,
+  );
+  if (fallthrough) destructured.push(`...${FALLTHROUGH_REST}`);
+  // Bind `props` so whole-object references (e.g. styling recipes) resolve, then derive the
+  // named props and attribute-fallthrough rest from it — mirroring the other targets.
+  const propsStmts: string[] =
+    destructured.length > 0
+      ? ["const props = Astro.props as Props;", `const { ${destructured.join(", ")} } = props;`]
+      : [];
+
+  // Signal state renders once on the server. Declare each as a mutable `let` holding its
+  // initial value (no client reactivity); the template reads the bare name (`strip-call`).
+  const stateDecls = component.state.map((s) =>
+    cStmt({ body: `let ${s.name} = ${rewriteExpr(s.initial.expr, rules)}`, span: s.loc }),
+  );
+
+  // Memos are computed once during server render (no reactivity), as plain consts.
+  const memoDecls = component.memos.map((m) =>
+    cStmt({ body: `const ${m.name} = ${rewriteExpr(m.expr.expr, rules)}`, span: m.loc }),
+  );
+
+  // Astro has no client-side context runtime, so a consumed context can't resolve a provider at
+  // render time. Best-effort: fall back to the context's declared default value so the template
+  // read still resolves (rather than referencing an undefined binding).
+  const consumeDecls = component.consumes.map((c) =>
+    cStmt({ body: `const ${c.name} = ${c.contextName}.defaultValue`, span: c.loc }),
+  );
+
+  // Export the context definition (its default value) so consumer modules that import it can read
+  // `Ctx.defaultValue`. There is no DI key — Astro context is the SSR default-value fallback only.
+  const contextDefs = ctx.contexts.map((ctxDef) => {
+    const defaultText = ctxDef.defaultValue
+      ? rewriteExpr(ctxDef.defaultValue.expr, rules)
+      : "undefined";
+    return cStmt({ body: `export const ${ctxDef.name} = { defaultValue: ${defaultText} }` });
+  });
+
+  // Astro renders server-side, so each resource resolves once during the frontmatter: await the
+  // fetcher with top-level await, capturing the error when bound. `loading` is therefore always
+  // resolved (`false`) by the time the markup renders.
+  const resourceDecls = component.resources.flatMap((res) => {
+    const stmts: ReturnType<typeof cStmt>[] = [];
+    if (res.errorName)
+      stmts.push(cStmt({ body: `let ${res.errorName} = undefined`, span: res.loc }));
+    stmts.push(cStmt({ body: `let ${res.name}`, span: res.loc }));
+    const fetcher = rewriteExpr(res.fetcher.expr, rules);
+    const catchClause = res.errorName
+      ? ` catch (__e) { ${res.errorName} = __e }`
+      : " catch { /* server render: best-effort */ }";
+    stmts.push(
+      cStmt({ body: `try { ${res.name} = await (${fetcher})() }${catchClause}`, span: res.loc }),
+    );
+    if (res.loadingName)
+      stmts.push(cStmt({ body: `const ${res.loadingName} = false`, span: res.loc }));
+    return stmts;
+  });
 
   const file = cFile({
     flavor: "tsx",
@@ -115,8 +242,13 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cRaw({ text: "---" }),
       ...emitComponentImports(ctx.componentImports, ".astro", true),
       ...ctx.externalImports,
+      ...(ctx.typeDeclarations.length > 0 ? [...ctx.typeDeclarations] : []),
       ...(propsInterface ? [cRaw({ text: propsInterface })] : []),
-      ...(propsDestructure ? [cStmt({ body: propsDestructure })] : []),
+      ...contextDefs,
+      ...propsStmts.map((s) => cStmt({ body: s })),
+      ...consumeDecls,
+      ...stateDecls,
+      ...memoDecls,
       ...resourceDecls,
       cRaw({ text: "---" }),
       cRaw({ text: "" }),

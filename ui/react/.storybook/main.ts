@@ -5,6 +5,6 @@ import { createStorybookConfig } from "@inkline/storybook/preset/main";
 export default createStorybookConfig({
   framework: "@storybook/react-vite",
   componentPackage: "@inkline/react",
-  sourceEntry: resolve(import.meta.dirname, "..", "generated", "index.ts"),
-  stories: ["../generated/**/*.stories.ts"],
+  sourceEntry: resolve(import.meta.dirname, "..", ".inkline", "index.ts"),
+  stories: ["../.inkline/**/*.stories.ts"],
 });

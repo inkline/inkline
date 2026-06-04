@@ -178,13 +178,18 @@ function lowerSlot(ci: IRComponentInstance, ctx: PassContext): IRSlotPlaceholder
 }
 
 function lowerTransition(ci: IRComponentInstance, ctx: PassContext): IRTransition | undefined {
-  const nameAttr = getAttr(ci, "name");
+  // `name` is usually authored as a static string (`name="slide"`); fall back to a string-literal
+  // expression. Both are honoured here — `getAttr` only matches Expression attrs.
+  const nameAttr = ci.attrs.find((a) => a.name === "name");
   let name = "ink";
-  if (nameAttr && ts.isStringLiteral(nameAttr.expr)) {
-    name = nameAttr.expr.text;
+  if (nameAttr) {
+    if (nameAttr.value.kind === "Static") name = String(nameAttr.value.value);
+    else if (nameAttr.value.kind === "Expression" && ts.isStringLiteral(nameAttr.value.expr))
+      name = nameAttr.value.expr.text;
   }
 
-  const appear = getAttr(ci, "appear") !== undefined;
+  // `appear` is a boolean shorthand (`<Transition appear>`), a Static attr — its mere presence wins.
+  const appear = ci.attrs.some((a) => a.name === "appear");
 
   const body = getDefaultSlotBody(ci);
   if (!body) return undefined;

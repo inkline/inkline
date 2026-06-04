@@ -15,8 +15,18 @@ import {
   cGroup,
 } from "../../code-ir/builders.ts";
 import * as ts from "typescript";
-import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
+import {
+  rewriteExpr,
+  rewriteEventName,
+  rewriteAttrName,
+  extractKeyBody,
+} from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import {
+  FALLTHROUGH_REST,
+  classMergeExpr,
+  rootAcceptsFallthrough,
+} from "../../shared/fallthrough.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -31,6 +41,34 @@ const REWRITES: RewriteRules = {
   },
 };
 
+/** Capitalize the first character (for deriving `useState` setter names: `data` → `setData`). */
+function capitalize(name: string): string {
+  return name.charAt(0).toUpperCase() + name.slice(1);
+}
+
+// ── Attribute fallthrough (Vue-style attribute inheritance) ─────────
+
+/**
+ * Props destructured out of the rest so they never leak onto the root DOM element. A prop that
+ * declares a default gets `name = <default>` so an omitted prop resolves to the default; the
+ * destructured local is what the JSX reads (`props.color` is rewritten to the local), so the
+ * default takes effect.
+ */
+function fallthroughRestBindings(component: IRComponent, rules: RewriteRules): string[] {
+  const names = new Set<string>();
+  for (const slot of component.slots) {
+    if (slot.name === "default") {
+      names.add(slot.isScoped ? "renderDefault" : "children");
+    } else {
+      names.add(`render${slot.name.charAt(0).toUpperCase()}${slot.name.slice(1)}`);
+    }
+  }
+  for (const p of component.props) {
+    names.add(p.defaultValue ? `${p.name} = ${rewriteExpr(p.defaultValue.expr, rules)}` : p.name);
+  }
+  return [...names];
+}
+
 // ── Shared attr helpers ────────────────────────────────────────────
 
 function jsxAttrs(
@@ -38,22 +76,65 @@ function jsxAttrs(
     readonly attrs: readonly any[];
     readonly events: readonly any[];
     readonly refs: readonly any[];
+    readonly acceptsAttrFallthrough?: boolean;
   },
   rules: RewriteRules,
 ) {
-  const out = node.attrs.map((a: any) => {
+  const fallthrough = node.acceptsAttrFallthrough === true;
+  const out = [];
+
+  // Spread inherited attributes first so authored attributes below win on conflict.
+  if (fallthrough) {
+    out.push(cJsxAttr({ name: `{...${FALLTHROUGH_REST}}`, value: { kind: "boolean" } }));
+  }
+
+  let classMerged = false;
+  for (const a of node.attrs as any[]) {
+    if (fallthrough && a.binding === "class") {
+      const authored =
+        a.value.kind === "Static"
+          ? JSON.stringify(String(a.value.value))
+          : rewriteExpr(a.value.expr, rules);
+      out.push(
+        cJsxAttr({
+          name: "className",
+          value: {
+            kind: "expr",
+            expr: cExpr({ text: classMergeExpr(authored, "props.className") }),
+          },
+        }),
+      );
+      classMerged = true;
+      continue;
+    }
     const name = rewriteAttrName(a.name, rules);
     if (a.value.kind === "Static") {
       const v = a.value.value;
-      return typeof v === "boolean"
-        ? cJsxAttr({ name, value: { kind: "boolean" } })
-        : cJsxAttr({ name, value: { kind: "static", text: String(v) } });
+      out.push(
+        typeof v === "boolean"
+          ? cJsxAttr({ name, value: { kind: "boolean" } })
+          : cJsxAttr({ name, value: { kind: "static", text: String(v) } }),
+      );
+    } else {
+      out.push(
+        cJsxAttr({
+          name,
+          value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
+        }),
+      );
     }
-    return cJsxAttr({
-      name,
-      value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
-    });
-  });
+  }
+
+  // Root has no authored class but still inherits one — forward it.
+  if (fallthrough && !classMerged) {
+    out.push(
+      cJsxAttr({
+        name: "className",
+        value: { kind: "expr", expr: cExpr({ text: classMergeExpr(null, "props.className") }) },
+      }),
+    );
+  }
+
   for (const e of node.events) {
     out.push(
       cJsxAttr({
@@ -120,9 +201,9 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       const params = node.indexBinding
         ? `(${node.itemBinding}, ${node.indexBinding})`
         : `(${node.itemBinding})`;
-      const key = rewriteExpr(node.key.expr, rules);
+      const key = extractKeyBody(node.key.expr, rules);
       return cExpr({
-        text: `{${each}.map(${params} => (<React.Fragment key={${key}}>${inlineNode(node.body, rules)}</React.Fragment>))}`,
+        text: `{${each}.map(${params} => (<Fragment key={${key}}>${inlineNode(node.body, rules)}</Fragment>))}`,
         span,
       });
     }
@@ -260,18 +341,29 @@ function inlineNode(node: IRNode, rules: RewriteRules): string {
   return inlineCode(emitNode(node, rules));
 }
 
-function depsList(deps: readonly { readonly name: string }[]): string {
-  return deps.length === 0 ? "[]" : `[${deps.map((d) => d.name).join(", ")}]`;
+function depRef(d: { readonly name: string; readonly path: readonly string[] }): string {
+  return d.path.length > 0 ? `${d.name}.${d.path.join(".")}` : d.name;
+}
+
+function depsList(
+  deps: readonly { readonly name: string; readonly path: readonly string[] }[],
+): string {
+  // Dedupe: the same reactive value may be read more than once in the body.
+  const refs = [...new Set(deps.map(depRef))];
+  return `[${refs.join(", ")}]`;
 }
 
 function buildPropsType(component: IRComponent): string {
   const parts: string[] = [];
 
-  if (component.props.length > 0) {
+  if (component.propsTypeText) {
+    parts.push(component.propsTypeText);
+  } else if (component.props.length > 0) {
     const defs = component.props
       .map((p) => {
         const opt = p.required ? "" : "?";
-        const type = p.typeNode ? `: ${p.typeNode.getText()}` : "";
+        const typeStr = p.typeText ?? p.typeNode?.getText();
+        const type = typeStr ? `: ${typeStr}` : "";
         return `${p.name}${opt}${type}`;
       })
       .join("; ");
@@ -293,6 +385,11 @@ function buildPropsType(component: IRComponent): string {
   }
   if (slotFields.length > 0) {
     parts.push(`{ ${slotFields.join("; ")} }`);
+  }
+
+  // A fallthrough root accepts any host-element attribute the parent passes through.
+  if (rootAcceptsFallthrough(component)) {
+    parts.push("React.HTMLAttributes<HTMLElement>");
   }
 
   return parts.length > 0 ? parts.join(" & ") : "Record<string, never>";
@@ -320,6 +417,34 @@ function hasTransition(node: IRNode): boolean {
       );
     case "ComponentInstance":
       return node.slots.some((s) => hasTransition(s.body));
+    default:
+      return false;
+  }
+}
+
+// A `<For>`/`.map()` lowering wraps each row in a keyed `<Fragment>` (a keyed list needs a real
+// Fragment, not the `<>` shorthand), so the named `Fragment` value must be imported from React.
+function containsForLoop(node: IRNode): boolean {
+  switch (node.kind) {
+    case "For":
+      return true;
+    case "Element":
+    case "Fragment":
+      return node.children.some(containsForLoop);
+    case "If":
+      return (
+        node.branches.some((b) => containsForLoop(b.body)) ||
+        (node.fallback ? containsForLoop(node.fallback) : false)
+      );
+    case "Switch":
+      return (
+        node.cases.some((c) => containsForLoop(c.body)) ||
+        (node.fallback ? containsForLoop(node.fallback) : false)
+      );
+    case "ComponentInstance":
+      return node.slots.some((s) => containsForLoop(s.body));
+    case "Transition":
+      return containsForLoop(node.child);
     default:
       return false;
   }
@@ -381,7 +506,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     reactImports.push("useMemo");
     body.push(
       cStmt({
-        body: `const ${m.name} = useMemo(() => ${rewriteExpr(m.expr.expr, rules)}, [${m.expr.deps.map((d) => d.name).join(", ")}])`,
+        body: `const ${m.name} = useMemo(() => ${rewriteExpr(m.expr.expr, rules)}, ${depsList(m.expr.deps)})`,
         span: m.loc,
       }),
     );
@@ -393,10 +518,42 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   }
   for (const res of component.resources) {
-    reactImports.push("use");
+    // Lower a resource to manual fetch-with-state: `data`/`loading`/`error` become `useState`,
+    // and a `useEffect` runs the fetcher once on mount, piping its result/error into the setters.
+    reactImports.push("useState", "useEffect");
+    const dataSetter = `set${capitalize(res.name)}`;
     body.push(
       cStmt({
-        body: `const ${res.name} = use(${rewriteExpr(res.fetcher.expr, rules)})`,
+        body: `const [${res.name}, ${dataSetter}] = useState(undefined)`,
+        span: res.loc,
+      }),
+    );
+    if (res.loadingName) {
+      body.push(
+        cStmt({
+          body: `const [${res.loadingName}, set${capitalize(res.loadingName)}] = useState(true)`,
+          span: res.loc,
+        }),
+      );
+    }
+    let errorSetter: string | undefined;
+    if (res.errorName) {
+      errorSetter = `set${capitalize(res.errorName.replace(/^_+/, ""))}`;
+      body.push(
+        cStmt({
+          body: `const [${res.errorName}, ${errorSetter}] = useState(undefined)`,
+          span: res.loc,
+        }),
+      );
+    }
+    const fetcher = rewriteExpr(res.fetcher.expr, rules);
+    const catchPart = errorSetter ? `.catch(${errorSetter})` : "";
+    const finallyPart = res.loadingName
+      ? `.finally(() => set${capitalize(res.loadingName)}(false))`
+      : "";
+    body.push(
+      cStmt({
+        body: `useEffect(() => { (${fetcher})().then(${dataSetter})${catchPart}${finallyPart}; }, [])`,
         span: res.loc,
       }),
     );
@@ -434,16 +591,50 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     }
   }
 
+  // Props with a default destructure into a local with that default applied; the render tree then
+  // reads the local (via `propLocals`) so an omitted prop resolves to its default.
+  const propsWithDefaults = component.props.filter((p) => p.defaultValue !== undefined);
+  const propLocals = new Set(propsWithDefaults.map((p) => p.name));
+
+  if (rootAcceptsFallthrough(component)) {
+    const bindings = fallthroughRestBindings(component, rules);
+    const prefix = bindings.length > 0 ? `${bindings.join(", ")}, ` : "";
+    body.push(cStmt({ body: `const { ${prefix}...${FALLTHROUGH_REST} } = props` }));
+  } else if (propsWithDefaults.length > 0) {
+    // No fallthrough rest binding to carry the defaults — destructure the default-bearing props on
+    // their own so each local exists with its default applied.
+    const defs = propsWithDefaults
+      .map((p) => `${p.name} = ${rewriteExpr(p.defaultValue!.expr, rules)}`)
+      .join(", ");
+    body.push(cStmt({ body: `const { ${defs} } = props` }));
+  }
+
   const needsTransition = hasTransition(component.render);
   if (needsTransition) {
     reactImports.push("useState", "useEffect", "useRef");
   }
 
+  if (containsForLoop(component.render)) {
+    reactImports.push("Fragment");
+  }
+
   const propsType = buildPropsType(component);
-  let renderTree = emitNode(component.render, rules);
+
+  // The render tree reads resource bindings (`data`/`loading`/`error`) by their bare name; flag them
+  // as reactive so a bare read follows React's `reactiveRead` (strip-call, so they stay verbatim).
+  const resourceReads = new Set(
+    component.resources.flatMap((r) => [r.name, r.loadingName, r.errorName].filter(Boolean)),
+  ) as Set<string>;
+  const renderRules: RewriteRules = {
+    ...rules,
+    reactiveBindings: new Set([...(rules.reactiveBindings ?? []), ...resourceReads]),
+    propLocals,
+  };
+
+  let renderTree = emitNode(component.render, renderRules);
 
   for (const p of component.provides) {
-    const valueExpr = rewriteExpr(p.value.expr, rules);
+    const valueExpr = rewriteExpr(p.value.expr, renderRules);
     renderTree = cJsxElement({
       tag: `${p.contextName}.Provider`,
       attrs: [
@@ -502,6 +693,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...emitComponentImports(ctx.componentImports, "", false),
       ...ctx.externalImports,
       ...styleImport,
+      ...(ctx.typeDeclarations.length > 0 ? [cRaw({ text: "" }), ...ctx.typeDeclarations] : []),
       ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       ...(needsTransition ? [cRaw({ text: "" }), cRaw({ text: REACT_TRANSITION_HELPER })] : []),
       cRaw({ text: "" }),

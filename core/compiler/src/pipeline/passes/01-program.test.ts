@@ -1,19 +1,40 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, afterEach } from "vitest";
 import * as ts from "typescript";
+import { mkdtempSync, writeFileSync, rmSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import type { TsProgramArtifact } from "./01-program.ts";
 import { programPass } from "./01-program.ts";
 import { createDiagnosticCollector } from "../../core/diagnostics/collector.ts";
-import { resolveOptions } from "../../core/options.ts";
+import { resolveOptions, type InklineConfig } from "../../core/options.ts";
 import { SymbolTable } from "../../ir/reactivity.ts";
 import { builtinRegistry } from "../../codegen/registry.ts";
 import type { PassContext } from "../types.ts";
 
-function makeCtx(): PassContext {
+function makeCtx(config: Partial<InklineConfig> = { targets: ["react"] }): PassContext {
   return {
     diagnostics: createDiagnosticCollector(),
-    options: resolveOptions({ targets: ["react"] }),
+    options: resolveOptions(config),
     symbols: new SymbolTable(),
     registry: builtinRegistry,
   };
+}
+
+/** Property names of the first parameter type of `export const c = (props: T) => …`. */
+function firstParamPropNames(result: TsProgramArtifact): string[] {
+  let names: string[] = [];
+  result.sourceFile.forEachChild((node) => {
+    if (!ts.isVariableStatement(node)) return;
+    const init = node.declarationList.declarations[0]?.initializer;
+    if (init && ts.isArrowFunction(init) && init.parameters[0]) {
+      names = result.checker
+        .getTypeAtLocation(init.parameters[0])
+        .getProperties()
+        .map((s) => s.getName())
+        .sort();
+    }
+  });
+  return names;
 }
 
 describe("programPass", () => {
@@ -76,5 +97,42 @@ describe("programPass", () => {
 
   it("has name 'program'", () => {
     expect(programPass.name).toBe("program");
+  });
+
+  describe("tsconfig ambient type declarations", () => {
+    let dir: string | undefined;
+    afterEach(() => {
+      if (dir) rmSync(dir, { recursive: true, force: true });
+      dir = undefined;
+    });
+
+    function setup(): { fileName: string; source: string; tsconfig: string } {
+      dir = mkdtempSync(join(tmpdir(), "inkline-prog-"));
+      writeFileSync(
+        join(dir, "shims.d.ts"),
+        `declare module "virtual:test" { export type P = { a?: string; b?: number }; }`,
+      );
+      writeFileSync(join(dir, "tsconfig.json"), JSON.stringify({ include: ["**/*.d.ts"] }));
+      return {
+        fileName: join(dir, "comp.ink.tsx"),
+        source: `import type { P } from "virtual:test"; export const c = (props: P) => props;`,
+        tsconfig: join(dir, "tsconfig.json"),
+      };
+    }
+
+    it("resolves a virtual-module type when its declaration is in the configured tsconfig", async () => {
+      const { fileName, source, tsconfig } = setup();
+      const result = await programPass.run(
+        { fileName, source },
+        makeCtx({ targets: ["react"], tsconfig }),
+      );
+      expect(firstParamPropNames(result)).toEqual(["a", "b"]);
+    });
+
+    it("does not resolve the virtual-module type without a tsconfig", async () => {
+      const { fileName, source } = setup();
+      const result = await programPass.run({ fileName, source }, makeCtx());
+      expect(firstParamPropNames(result)).toEqual([]);
+    });
   });
 });

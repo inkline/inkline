@@ -7,9 +7,11 @@ vi.mock("node:child_process", () => ({
   execSync: vi.fn(),
 }));
 
+const promptMock = vi.hoisted(() => vi.fn());
+
 vi.mock("consola", () => {
   const consola = {
-    prompt: vi.fn(),
+    prompt: promptMock,
     info: vi.fn(),
     start: vi.fn(),
     success: vi.fn(),
@@ -25,7 +27,7 @@ import consola from "consola";
 import initCommand from "./init.ts";
 
 function mockPrompt(value: unknown) {
-  (consola.prompt as ReturnType<typeof vi.fn>).mockResolvedValue(value);
+  promptMock.mockResolvedValue(value);
 }
 
 function runInit(args: Record<string, unknown> = {}) {
@@ -74,7 +76,7 @@ export default defineConfig({ plugins: [] });
 
     await runInit({ framework: "react" });
 
-    expect(consola.prompt).not.toHaveBeenCalled();
+    expect(promptMock).not.toHaveBeenCalled();
     expect(execSync).toHaveBeenCalledWith("pnpx styleframe init", expect.anything());
     expect(execSync).toHaveBeenCalledWith(
       "pnpm add inkline @styleframe/runtime",
@@ -93,7 +95,7 @@ export default defineConfig({ plugins: [] });
 
     await runInit();
 
-    expect(consola.prompt).toHaveBeenCalledWith(
+    expect(promptMock).toHaveBeenCalledWith(
       "Select a framework:",
       expect.objectContaining({ type: "select" }),
     );
@@ -109,7 +111,7 @@ export default defineConfig({ plugins: [] });
 
     await runInit();
 
-    expect(consola.prompt).toHaveBeenCalledWith(
+    expect(promptMock).toHaveBeenCalledWith(
       "Select a framework:",
       expect.objectContaining({ initial: "vue" }),
     );

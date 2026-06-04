@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["src", "generated", "stories", ".storybook/**/*"],
+  "include": ["src", ".inkline/**/*.ts", ".storybook/**/*"],
   "compilerOptions": {
     "noEmit": false
   }

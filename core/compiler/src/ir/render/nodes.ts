@@ -50,6 +50,8 @@ export interface IRElement {
   readonly refs: readonly IRRefBinding[];
   readonly children: readonly IRNode[];
   readonly isStatic: boolean;
+  /** True when this is the component's root and inherits the parent's fallthrough attributes. */
+  readonly acceptsAttrFallthrough?: boolean;
   readonly loc: SourceLocation;
 }
 
@@ -66,6 +68,8 @@ export interface IRComponentInstance {
   readonly events: readonly IREventBinding[];
   readonly refs: readonly IRRefBinding[];
   readonly slots: readonly IRSlotContent[];
+  /** True when this is the component's root and inherits the parent's fallthrough attributes. */
+  readonly acceptsAttrFallthrough?: boolean;
   readonly loc: SourceLocation;
 }
 
@@ -198,6 +202,12 @@ export interface IRSlotContent {
 export interface IRProp {
   readonly name: string;
   readonly typeNode?: ts.TypeNode;
+  /**
+   * A resolved type string used when there is no `typeNode` to print — e.g. an object-form prop
+   * declaration (`{ size: Number }` → `"number"`, `{ color: "blue" }` → `"string"`) whose type is
+   * inferred from a constructor reference or a default-value literal.
+   */
+  readonly typeText?: string;
   readonly defaultValue?: IRExprNode;
   readonly required: boolean;
   readonly symbolId?: SymbolId;
@@ -303,9 +313,15 @@ export interface IRResourceDeclaration {
   readonly fetcher: IRExprNode;
   readonly source?: IRExprNode;
   readonly symbolId: SymbolId;
-  readonly loadingName: string;
-  readonly errorName: string;
-  readonly refetchName: string;
+  /**
+   * Local binding names for the resource's meta accessors, present only when the author actually
+   * destructured them (e.g. `[data, { loading, error: err }]` → `loadingName: "loading"`,
+   * `errorName: "err"`, `refetchName: undefined`). Targets emit only the metas that are bound, so
+   * an undestructured `refetch` never becomes an unused variable.
+   */
+  readonly loadingName?: string;
+  readonly errorName?: string;
+  readonly refetchName?: string;
   readonly loc: SourceLocation;
 }
 
@@ -317,6 +333,7 @@ export interface IRComponent {
   readonly name: string;
   readonly loc: SourceLocation;
   readonly props: readonly IRProp[];
+  readonly propsTypeText?: string;
   readonly slots: readonly IRSlotDeclaration[];
   readonly events: readonly IREventDeclaration[];
   readonly state: readonly IRStateDeclaration[];

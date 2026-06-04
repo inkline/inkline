@@ -8,16 +8,33 @@ export function emitComponentImports(
   defaultExport: boolean,
   componentSuffix?: string,
 ): CRaw[] {
-  return imports.map((imp) => {
+  return imports.flatMap((imp) => {
     const path = `${imp.relativePath}${extension}`;
     const exportedName = `${imp.componentName}${componentSuffix ?? ""}`;
+    const namedParts = imp.namedTypeImports ?? [];
+    const results: CRaw[] = [];
 
-    if (defaultExport) {
-      return cRaw({ text: `import ${imp.localName} from "${path}";` });
+    if (imp.localName) {
+      if (defaultExport) {
+        const namedClause = namedParts.length > 0 ? `, { ${namedParts.join(", ")} }` : "";
+        results.push(cRaw({ text: `import ${imp.localName}${namedClause} from "${path}";` }));
+      } else if (imp.localName === exportedName) {
+        results.push(cRaw({ text: `import { ${exportedName} } from "${path}";` }));
+      } else {
+        results.push(
+          cRaw({ text: `import { ${exportedName} as ${imp.localName} } from "${path}";` }),
+        );
+      }
     }
-    if (imp.localName === exportedName) {
-      return cRaw({ text: `import { ${exportedName} } from "${path}";` });
+
+    if (!defaultExport && namedParts.length > 0) {
+      results.push(cRaw({ text: `import { ${namedParts.join(", ")} } from "${path}";` }));
     }
-    return cRaw({ text: `import { ${exportedName} as ${imp.localName} } from "${path}";` });
+
+    if (!imp.localName && defaultExport && namedParts.length > 0) {
+      results.push(cRaw({ text: `import { ${namedParts.join(", ")} } from "${path}";` }));
+    }
+
+    return results;
   });
 }

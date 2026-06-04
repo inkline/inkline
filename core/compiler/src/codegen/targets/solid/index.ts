@@ -16,6 +16,11 @@ import {
 import * as ts from "typescript";
 import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import {
+  FALLTHROUGH_REST,
+  classMergeExpr,
+  rootAcceptsFallthrough,
+} from "../../shared/fallthrough.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -34,22 +39,62 @@ function jsxAttrs(
     readonly attrs: readonly any[];
     readonly events: readonly any[];
     readonly refs: readonly any[];
+    readonly acceptsAttrFallthrough?: boolean;
   },
   rules: RewriteRules,
 ) {
-  const out = node.attrs.map((a: any) => {
+  const fallthrough = node.acceptsAttrFallthrough === true;
+  const out = [];
+
+  // Spread inherited attributes first so authored attributes below win on conflict.
+  if (fallthrough) {
+    out.push(cJsxAttr({ name: `{...${FALLTHROUGH_REST}}`, value: { kind: "boolean" } }));
+  }
+
+  let classMerged = false;
+  for (const a of node.attrs as any[]) {
+    if (fallthrough && a.binding === "class") {
+      const authored =
+        a.value.kind === "Static"
+          ? JSON.stringify(String(a.value.value))
+          : rewriteExpr(a.value.expr, rules);
+      out.push(
+        cJsxAttr({
+          name: "class",
+          value: { kind: "expr", expr: cExpr({ text: classMergeExpr(authored, "props.class") }) },
+        }),
+      );
+      classMerged = true;
+      continue;
+    }
     const name = rewriteAttrName(a.name, rules);
     if (a.value.kind === "Static") {
       const v = a.value.value;
-      return typeof v === "boolean"
-        ? cJsxAttr({ name, value: { kind: "boolean" } })
-        : cJsxAttr({ name, value: { kind: "static", text: String(v) } });
+      out.push(
+        typeof v === "boolean"
+          ? cJsxAttr({ name, value: { kind: "boolean" } })
+          : cJsxAttr({ name, value: { kind: "static", text: String(v) } }),
+      );
+    } else {
+      out.push(
+        cJsxAttr({
+          name,
+          value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
+        }),
+      );
     }
-    return cJsxAttr({
-      name,
-      value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
-    });
-  });
+  }
+
+  // Root has no authored class but still inherits one — forward it.
+  if (fallthrough && !classMerged) {
+    out.push(
+      cJsxAttr({
+        name: "class",
+        value: { kind: "expr", expr: cExpr({ text: classMergeExpr(null, "props.class") }) },
+      }),
+    );
+  }
+
   for (const e of node.events) {
     out.push(
       cJsxAttr({
@@ -185,20 +230,19 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       return cJsxElement({ tag: "Switch", attrs: switchAttrs, children, selfClose: false });
     }
     case "SlotPlaceholder": {
-      const argsStr =
-        node.scopedArgs.length > 0
-          ? node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ")
-          : "";
       if (node.scopedArgs.length > 0) {
+        const argsStr = node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ");
         return node.fallback
           ? cExpr({
               text: `{props.${node.name}?.(${argsStr}) ?? ${inlineNode(node.fallback, rules)}}`,
             })
           : cExpr({ text: `{props.${node.name}?.(${argsStr})}` });
       }
+      // The unscoped default slot is delivered through Solid's native `children` prop.
+      const propName = node.name === "default" ? "children" : node.name;
       return node.fallback
-        ? cExpr({ text: `{props.${node.name} ?? ${inlineNode(node.fallback, rules)}}` })
-        : cExpr({ text: `{props.${node.name}}` });
+        ? cExpr({ text: `{props.${propName} ?? ${inlineNode(node.fallback, rules)}}` })
+        : cExpr({ text: `{props.${propName}}` });
     }
     case "Transition": {
       const attrs = [cJsxAttr({ name: "name", value: { kind: "static", text: node.name } })];
@@ -363,30 +407,70 @@ const SOLID_TRANSITION_HELPER = `function __InkTransition(props: { name?: string
 // ── Emit entry point ───────────────────────────────────────────────
 
 function buildSolidPropsType(component: IRComponent): string {
-  const fields: string[] = [];
+  const parts: string[] = [];
 
-  for (const p of component.props) {
-    const opt = p.required ? "" : "?";
-    const type = p.typeNode ? `: ${p.typeNode.getText()}` : "";
-    fields.push(`${p.name}${opt}${type}`);
+  if (component.propsTypeText) {
+    parts.push(component.propsTypeText);
+  } else if (component.props.length > 0) {
+    const defs = component.props
+      .map((p) => {
+        const opt = p.required ? "" : "?";
+        const typeText = p.typeText ?? p.typeNode?.getText();
+        const type = typeText ? `: ${typeText}` : "";
+        return `${p.name}${opt}${type}`;
+      })
+      .join("; ");
+    parts.push(`{ ${defs} }`);
   }
 
+  const slotFields: string[] = [];
   for (const slot of component.slots) {
     if (slot.isScoped) {
-      fields.push(`${slot.name}?: (...args: any[]) => any`);
+      slotFields.push(`${slot.name}?: (...args: any[]) => any`);
     } else {
-      fields.push(`${slot.name}?: any`);
+      const fieldName = slot.name === "default" ? "children" : slot.name;
+      slotFields.push(`${fieldName}?: any`);
     }
   }
+  if (slotFields.length > 0) {
+    parts.push(`{ ${slotFields.join("; ")} }`);
+  }
 
-  if (fields.length === 0) return "Record<string, never>";
-  return `{ ${fields.join("; ")} }`;
+  if (rootAcceptsFallthrough(component)) {
+    parts.push("JSX.HTMLAttributes<HTMLElement>");
+  }
+
+  if (parts.length === 0) return "Record<string, never>";
+  return parts.join(" & ");
+}
+
+/** Keys to keep out of the fallthrough rest (declared props + slot props). */
+function fallthroughRestKeys(component: IRComponent): string[] {
+  const names = new Set<string>();
+  for (const slot of component.slots) {
+    // The unscoped default slot lives on `children`, not `default`.
+    names.add(slot.name === "default" && !slot.isScoped ? "children" : slot.name);
+  }
+  for (const p of component.props) names.add(p.name);
+  return [...names];
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const rules = ctx.rewrites;
   const body: Code[] = [];
   const solidImports: string[] = [];
+
+  // Apply prop defaults via Solid's mergeProps so `props.x` resolves to the default when omitted.
+  // The merged result is bound to a fresh `const props` (the parameter is renamed `_props`) so the
+  // defaulted keys narrow to non-optional types, while the rest of the body keeps reading `props.x`.
+  const propDefaults = component.props.filter((p) => p.defaultValue !== undefined);
+  if (propDefaults.length > 0) {
+    solidImports.push("mergeProps");
+    const entries = propDefaults
+      .map((p) => `${p.name}: ${rewriteExpr(p.defaultValue!.expr, rules)}`)
+      .join(", ");
+    body.push(cStmt({ body: `const props = mergeProps({ ${entries} }, _props)` }));
+  }
 
   for (const c of component.consumes) {
     solidImports.push("useContext");
@@ -415,13 +499,47 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     solidImports.push("createEffect");
     body.push(cStmt({ body: `createEffect(${rewriteExpr(e.body, rules)})`, span: e.loc }));
   }
+  // Lower each resource to reactive signals (data/loading/error) plus a fire-and-forget loader that
+  // runs the fetcher and updates them — the universal "manual fetch with loading/error state"
+  // pattern in idiomatic Solid. The template reads the signals as calls (see reactiveBindings below).
   for (const res of component.resources) {
-    solidImports.push("createResource");
+    solidImports.push("createSignal");
+    // Setter names are derived from each binding (`set${Capitalized}`, leading underscores from
+    // unused-marked names like `_error` stripped) so multiple resources never collide on `setData`.
+    const setterFor = (name: string) =>
+      `set${name.replace(/^_+/, "").replace(/^./, (c) => c.toUpperCase())}`;
+    const dataSetter = setterFor(res.name);
     body.push(
       cStmt({
-        body: `const [${res.name}, { ${res.loadingName}: loading, ${res.errorName}: error, ${res.refetchName}: refetch }] = createResource(${rewriteExpr(res.fetcher.expr, rules)})`,
+        body: `const [${res.name}, ${dataSetter}] = createSignal(undefined)`,
         span: res.loc,
       }),
+    );
+    let loadingSetter: string | undefined;
+    if (res.loadingName) {
+      loadingSetter = setterFor(res.loadingName);
+      body.push(
+        cStmt({
+          body: `const [${res.loadingName}, ${loadingSetter}] = createSignal(true)`,
+          span: res.loc,
+        }),
+      );
+    }
+    let errorSetter: string | undefined;
+    if (res.errorName) {
+      errorSetter = setterFor(res.errorName);
+      body.push(
+        cStmt({
+          body: `const [${res.errorName}, ${errorSetter}] = createSignal(undefined)`,
+          span: res.loc,
+        }),
+      );
+    }
+    const fetcher = rewriteExpr(res.fetcher.expr, rules);
+    const onError = errorSetter ? `.catch(${errorSetter})` : "";
+    const onFinally = loadingSetter ? `.finally(() => ${loadingSetter}(false))` : "";
+    body.push(
+      cStmt({ body: `;(${fetcher})().then(${dataSetter})${onError}${onFinally}`, span: res.loc }),
     );
   }
   for (const m of component.lifecycle.onMount) {
@@ -435,6 +553,15 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   for (const r of component.refs)
     body.push(cStmt({ body: `let ${r.name}: ${r.elementType ?? "HTMLElement"} | undefined` }));
 
+  const fallthrough = rootAcceptsFallthrough(component);
+  if (fallthrough) {
+    solidImports.push("splitProps");
+    const keys = fallthroughRestKeys(component)
+      .map((k) => JSON.stringify(k))
+      .join(", ");
+    body.push(cStmt({ body: `const [, ${FALLTHROUGH_REST}] = splitProps(props, [${keys}])` }));
+  }
+
   const needsTransition = hasTransition(component.render);
   if (needsTransition) {
     solidImports.push("createSignal", "createEffect", "onCleanup", "Show");
@@ -445,10 +572,20 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const styleImport =
     component.styles.length > 0 ? [cRaw({ text: `import "./${component.name}.css";` })] : [];
 
-  let renderTree = emitNode(component.render, rules);
+  // Solid signals are read as calls, so the render tree must read each resource binding as `data()`.
+  // Build the set of bound resource names and spread it into the render rules (reactiveRead is
+  // preserve-call). Only the render tree needs this — the body declarations above read nothing.
+  const resourceReads = new Set(
+    component.resources.flatMap((r) =>
+      [r.name, r.loadingName, r.errorName].filter((n): n is string => n !== undefined),
+    ),
+  );
+  const renderRules: RewriteRules = { ...rules, reactiveBindings: resourceReads };
+
+  let renderTree = emitNode(component.render, renderRules);
 
   for (const p of component.provides) {
-    const valueExpr = rewriteExpr(p.value.expr, rules);
+    const valueExpr = rewriteExpr(p.value.expr, renderRules);
     renderTree = cJsxElement({
       tag: `${p.contextName}.Provider`,
       attrs: [
@@ -479,6 +616,9 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     unique.length > 0
       ? [cImport({ module: "solid-js", named: unique.map((i) => ({ imported: i })) })]
       : [];
+  if (fallthrough) {
+    imports.push(cImport({ module: "solid-js", named: [{ imported: "JSX" }], typeOnly: true }));
+  }
 
   const file = cFile({
     flavor: "tsx",
@@ -487,11 +627,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...emitComponentImports(ctx.componentImports, "", true),
       ...ctx.externalImports,
       ...styleImport,
+      ...(ctx.typeDeclarations.length > 0 ? [cRaw({ text: "" }), ...ctx.typeDeclarations] : []),
       ...contextDefs,
       ...(needsTransition ? [cRaw({ text: "" }), cRaw({ text: SOLID_TRANSITION_HELPER })] : []),
       cRaw({ text: "" }),
       cStmt({
-        body: `export default function ${component.name}(props: ${buildSolidPropsType(component)})`,
+        body: `export default function ${component.name}(${propDefaults.length > 0 ? "_props" : "props"}: ${buildSolidPropsType(component)})`,
       }),
       cRaw({ text: "{" }),
       cGroup({

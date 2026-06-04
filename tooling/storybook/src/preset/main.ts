@@ -19,7 +19,7 @@ export interface StorybookConfigOptions {
   /** Component package the generated stories import, e.g. `"@inkline/react"`. */
   readonly componentPackage: string;
   /**
-   * Absolute path to `ui/<target>/generated/index.ts`. Aliased over
+   * Absolute path to `ui/<target>/.inkline/index.ts`. Aliased over
    * `componentPackage` in dev so component edits hot-reload without a `dist`
    * build; the real published entry is used for production/static builds.
    */
@@ -71,6 +71,19 @@ export function createStorybookConfig(options: StorybookConfigOptions): Storyboo
         next.server = {
           ...((next.server ?? {}) as Record<string, unknown>),
           cors: { origin: true, credentials: true },
+        };
+        // `@styleframe/runtime` is reached only through the `virtual:styleframe` module, so Vite's
+        // initial dependency scan never sees it. Without this, Vite discovers it on first story load,
+        // re-optimizes, and forces a full reload mid-import — surfacing as a transient
+        // "Importing a module script failed" that looks like the story failed to load. Pre-bundling
+        // it keeps the first load stable.
+        const optimizeDeps = (next.optimizeDeps ?? {}) as { include?: string[] } & Record<
+          string,
+          unknown
+        >;
+        next.optimizeDeps = {
+          ...optimizeDeps,
+          include: [...(optimizeDeps.include ?? []), "@styleframe/runtime"],
         };
       }
 

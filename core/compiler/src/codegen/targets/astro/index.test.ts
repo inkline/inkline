@@ -59,6 +59,7 @@ function makeCtx(): CodegenContext {
     contexts: [],
     externalImports: [],
     componentImports: [],
+    typeDeclarations: [],
   };
 }
 
@@ -246,7 +247,7 @@ describe("Astro codegen fixes", () => {
   });
 
   describe("resource handling", () => {
-    it("emits top-level await in frontmatter", () => {
+    it("lowers a resource to a server-rendered loader in frontmatter", () => {
       const comp = makeComp("Page", createElement({ tag: "div" }), {
         resources: [
           {
@@ -261,8 +262,33 @@ describe("Astro codegen fixes", () => {
         ],
       });
       const code = emitCode(comp);
-      expect(code).toContain("const posts = await");
+      // Astro renders once on the server: data is a mutable `let`, awaited in a try/catch.
+      expect(code).toContain("let error = undefined");
+      expect(code).toContain("let posts");
+      expect(code).toContain("try { posts = await (");
+      expect(code).toContain("} catch (__e) { error = __e }");
       expect(code).toContain("fetchPosts");
+      // loading is always resolved during server render.
+      expect(code).toContain("const loading = false");
+    });
+
+    it("omits the catch binding and meta consts when only the data name is bound", () => {
+      const comp = makeComp("Page", createElement({ tag: "div" }), {
+        resources: [
+          {
+            name: "posts",
+            fetcher: createExpr({ expr: mockExpr("() => fetchPosts()") }),
+            symbolId: "t::signal::posts@0" as SymbolId,
+            loc,
+          },
+        ],
+      });
+      const code = emitCode(comp);
+      expect(code).toContain("let posts");
+      expect(code).toContain("try { posts = await (");
+      expect(code).not.toContain("let error");
+      expect(code).not.toContain("catch (__e)");
+      expect(code).not.toContain("const loading");
     });
   });
 });

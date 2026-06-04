@@ -10,8 +10,8 @@ export default defineConfig({
     }),
   ],
   pack: {
-    entry: { index: "generated/index.ts" },
+    entry: { index: "./.inkline/index.ts" },
     deps: { neverBundle: [/\.astro$/] },
-    copy: [{ from: "generated/*.astro", to: "dist/" }],
+    copy: [{ from: "./.inkline/*.astro", to: "dist/" }],
   },
 });

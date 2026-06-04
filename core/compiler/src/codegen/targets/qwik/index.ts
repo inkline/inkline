@@ -15,6 +15,11 @@ import {
 } from "../../code-ir/builders.ts";
 import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import {
+  FALLTHROUGH_REST,
+  classMergeExpr,
+  rootAcceptsFallthrough,
+} from "../../shared/fallthrough.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -31,29 +36,69 @@ function jsxAttrs(
     readonly attrs: readonly any[];
     readonly events: readonly any[];
     readonly refs: readonly any[];
+    readonly acceptsAttrFallthrough?: boolean;
   },
   rules: RewriteRules,
 ) {
-  const out = node.attrs.map((a: any) => {
+  const fallthrough = node.acceptsAttrFallthrough === true;
+  const out = [];
+
+  // Spread inherited attributes first so authored attributes below win on conflict.
+  if (fallthrough) {
+    out.push(cJsxAttr({ name: `{...${FALLTHROUGH_REST}}`, value: { kind: "boolean" } }));
+  }
+
+  let classMerged = false;
+  for (const a of node.attrs as any[]) {
+    if (fallthrough && a.binding === "class") {
+      const authored =
+        a.value.kind === "Static"
+          ? JSON.stringify(String(a.value.value))
+          : rewriteExpr(a.value.expr, rules);
+      out.push(
+        cJsxAttr({
+          name: "class",
+          value: { kind: "expr", expr: cExpr({ text: classMergeExpr(authored, "props.class") }) },
+        }),
+      );
+      classMerged = true;
+      continue;
+    }
     const name = rewriteAttrName(a.name, rules);
     if (a.value.kind === "Static") {
       const v = a.value.value;
-      return typeof v === "boolean"
-        ? cJsxAttr({ name, value: { kind: "boolean" } })
-        : cJsxAttr({ name, value: { kind: "static", text: String(v) } });
+      out.push(
+        typeof v === "boolean"
+          ? cJsxAttr({ name, value: { kind: "boolean" } })
+          : cJsxAttr({ name, value: { kind: "static", text: String(v) } }),
+      );
+    } else {
+      out.push(
+        cJsxAttr({
+          name,
+          value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
+        }),
+      );
     }
-    return cJsxAttr({
-      name,
-      value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
-    });
-  });
+  }
+
+  // Root has no authored class but still inherits one — forward it.
+  if (fallthrough && !classMerged) {
+    out.push(
+      cJsxAttr({
+        name: "class",
+        value: { kind: "expr", expr: cExpr({ text: classMergeExpr(null, "props.class") }) },
+      }),
+    );
+  }
+
   for (const e of node.events) {
     out.push(
       cJsxAttr({
         name: rewriteEventName(e.name, rules),
         value: {
           kind: "expr",
-          expr: cExpr({ text: `$(() => ${rewriteExpr(e.handler.expr, rules)})` }),
+          expr: cExpr({ text: `$(${rewriteExpr(e.handler.expr, rules)})` }),
         },
       }),
     );
@@ -114,22 +159,28 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       });
     }
     case "SlotPlaceholder": {
-      const propName = node.name === "default" ? "children" : node.name;
-      const argsStr =
-        node.scopedArgs.length > 0
-          ? node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ")
-          : "";
+      // Qwik projects content through its native `<Slot/>` component — NOT `props.children`, which
+      // Qwik never populates (so the old `{props.children ?? …}` lowering silently dropped every
+      // projected child). Authored fallback becomes the `<Slot>`'s children, shown when nothing is
+      // projected; named slots use `<Slot name="x"/>`.
+      const slotAttrs =
+        node.name === "default"
+          ? []
+          : [cJsxAttr({ name: "name", value: { kind: "static", text: node.name } })];
       if (node.scopedArgs.length > 0) {
+        // Qwik's `<Slot/>` can't receive scoped args. Best-effort: render the authored fallback
+        // (default content, with its scope vars in scope); otherwise project without the args.
         return node.fallback
-          ? cExpr({
-              text: `{props.${propName}?.(${argsStr}) ?? ${emitFallback(node.fallback, rules)}}`,
-            })
-          : cExpr({ text: `{props.${propName}?.(${argsStr})}` });
+          ? emitNode(node.fallback, rules)
+          : cJsxElement({ tag: "Slot", attrs: slotAttrs, children: [], selfClose: true });
       }
-      if (node.fallback) {
-        return cExpr({ text: `{props.${propName} ?? ${emitFallback(node.fallback, rules)}}` });
-      }
-      return cExpr({ text: `{props.${propName}}` });
+      const fallbackChildren = node.fallback ? [emitNode(node.fallback, rules)] : [];
+      return cJsxElement({
+        tag: "Slot",
+        attrs: slotAttrs,
+        children: fallbackChildren,
+        selfClose: fallbackChildren.length === 0,
+      });
     }
     case "Transition": {
       const attrs = [cJsxAttr({ name: "name", value: { kind: "static", text: node.name } })];
@@ -191,10 +242,36 @@ function emitNodeInline(node: IRNode, rules: RewriteRules): string {
   return inlineCode(emitNode(node, rules));
 }
 
-function emitFallback(node: IRNode, rules: RewriteRules): string {
-  if (node.kind === "Text") return `"${node.value}"`;
-  if (node.kind === "Expression") return rewriteExpr(node.expr, rules);
-  return inlineCode(emitNode(node, rules));
+// Whether emitting `node` produces a Qwik `<Slot>` element (and therefore needs the `Slot` import).
+// Mirrors the SlotPlaceholder emit: every slot lowers to `<Slot>` EXCEPT a scoped slot that has
+// fallback, which renders that fallback inline instead (Qwik's `<Slot/>` can't carry scoped args).
+function emitsQwikSlot(node: IRNode): boolean {
+  switch (node.kind) {
+    case "SlotPlaceholder":
+      if (node.scopedArgs.length > 0 && node.fallback) return emitsQwikSlot(node.fallback);
+      return true;
+    case "Element":
+    case "Fragment":
+      return node.children.some(emitsQwikSlot);
+    case "If":
+      return (
+        node.branches.some((b) => emitsQwikSlot(b.body)) ||
+        (node.fallback ? emitsQwikSlot(node.fallback) : false)
+      );
+    case "For":
+      return emitsQwikSlot(node.body);
+    case "Switch":
+      return (
+        node.cases.some((c) => emitsQwikSlot(c.body)) ||
+        (node.fallback ? emitsQwikSlot(node.fallback) : false)
+      );
+    case "ComponentInstance":
+      return node.slots.some((s) => emitsQwikSlot(s.body));
+    case "Transition":
+      return emitsQwikSlot(node.child);
+    default:
+      return false;
+  }
 }
 
 function hasTransition(node: IRNode): boolean {
@@ -248,18 +325,30 @@ const QWIK_TRANSITION_HELPER = `const __InkTransition = component$((props: { nam
   return show.value ? <div ref={ref} style={{ display: "contents" }}>{props.children}</div> : null;
 });`;
 
+// The `props` parameter is typed so each declared prop carries its resolved type; the object-form
+// `{ color: "blue", size: Number }` resolves to `color?: string` / `size: number` via `typeText`,
+// falling back to the authored `typeNode` and finally `unknown`. Intersecting with `Record<string,
+// any>` keeps the spread `...__attrs` fallthrough valid.
+function buildPropsTypeAnnotation(component: IRComponent): string {
+  if (component.props.length === 0) return "";
+  if (component.propsTypeText) {
+    return `: ${component.propsTypeText} & Record<string, any>`;
+  }
+  const defs = component.props
+    .map((p) => {
+      const typeStr = p.typeText ?? p.typeNode?.getText() ?? "unknown";
+      return `${p.name}${p.required ? "" : "?"}: ${typeStr}`;
+    })
+    .join("; ");
+  return `: { ${defs} } & Record<string, any>`;
+}
+
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const rules = ctx.rewrites;
+  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
+  const rules: RewriteRules = { ...ctx.rewrites, setters };
   const body: Code[] = [];
   const qwikImports = ["component$", "useSignal", "useComputed$", "useVisibleTask$", "$"];
 
-  for (const p of component.provides) {
-    qwikImports.push("useContextProvider");
-    const valueExpr = rewriteExpr(p.value.expr, rules);
-    body.push(
-      cStmt({ body: `useContextProvider(${p.contextName}.id, ${valueExpr})`, span: p.loc }),
-    );
-  }
   for (const c of component.consumes) {
     qwikImports.push("useContext");
     body.push(cStmt({ body: `const ${c.name} = useContext(${c.contextName}.id)`, span: c.loc }));
@@ -284,11 +373,34 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   for (const e of component.effects) {
     body.push(cStmt({ body: `useVisibleTask$(${rewriteExpr(e.body, rules)})`, span: e.loc }));
   }
-  for (const res of component.resources) {
-    qwikImports.push("useResource$");
+  for (const m of component.lifecycle.onMount) {
+    body.push(cStmt({ body: `useVisibleTask$(${rewriteExpr(m.body, rules)})`, span: m.loc }));
+  }
+  for (const c of component.lifecycle.onCleanup) {
     body.push(
       cStmt({
-        body: `const ${res.name} = useResource$(${rewriteExpr(res.fetcher.expr, rules)})`,
+        body: `useVisibleTask$(({ cleanup }) => cleanup(${rewriteExpr(c.body, rules)}))`,
+        span: c.loc,
+      }),
+    );
+  }
+  for (const res of component.resources) {
+    qwikImports.push("useTask$");
+    // Lower the resource to reactive signals plus an async loader: `data`/`loading`/`error` become
+    // `useSignal`s, and a `useTask$` runs the fetcher and writes the result back through `.value`.
+    body.push(cStmt({ body: `const ${res.name} = useSignal(undefined)`, span: res.loc }));
+    if (res.loadingName) {
+      body.push(cStmt({ body: `const ${res.loadingName} = useSignal(true)`, span: res.loc }));
+    }
+    if (res.errorName) {
+      body.push(cStmt({ body: `const ${res.errorName} = useSignal(undefined)`, span: res.loc }));
+    }
+    const fetcher = rewriteExpr(res.fetcher.expr, rules);
+    const errorChain = res.errorName ? `.catch((e) => ${res.errorName}.value = e)` : "";
+    const finallyChain = res.loadingName ? `.finally(() => ${res.loadingName}.value = false)` : "";
+    body.push(
+      cStmt({
+        body: `useTask$(() => { (${fetcher})().then((d) => ${res.name}.value = d)${errorChain}${finallyChain}; })`,
         span: res.loc,
       }),
     );
@@ -301,10 +413,53 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       }),
     );
   }
+  // Provide after the signals/memos it reads are declared — a context value referencing a
+  // `useSignal` above it would otherwise be a temporal-dead-zone access.
+  for (const p of component.provides) {
+    qwikImports.push("useContextProvider");
+    const valueExpr = rewriteExpr(p.value.expr, rules);
+    body.push(
+      cStmt({ body: `useContextProvider(${p.contextName}.id, ${valueExpr})`, span: p.loc }),
+    );
+  }
+
+  // Props with a default destructure into a local with that default applied; the render tree then
+  // reads the local (via `propLocals`) so an omitted prop resolves to its default. Qwik reads
+  // `props.x` by default, so the local read is the only place the default takes effect.
+  const propsWithDefaults = component.props.filter((p) => p.defaultValue !== undefined);
+  const propLocals = new Set(propsWithDefaults.map((p) => p.name));
+  const propsTypeAnnotation = buildPropsTypeAnnotation(component);
+
+  const fallthrough = rootAcceptsFallthrough(component);
+  if (fallthrough) {
+    const keys = new Set<string>();
+    for (const slot of component.slots) keys.add(slot.name === "default" ? "children" : slot.name);
+    for (const p of component.props) {
+      keys.add(p.defaultValue ? `${p.name} = ${rewriteExpr(p.defaultValue.expr, rules)}` : p.name);
+    }
+    const prefix = keys.size > 0 ? `${[...keys].join(", ")}, ` : "";
+    body.push(cStmt({ body: `const { ${prefix}...${FALLTHROUGH_REST} } = props` }));
+  } else if (propsWithDefaults.length > 0) {
+    // No fallthrough rest binding to carry the defaults — destructure the default-bearing props on
+    // their own so each local exists with its default applied.
+    const defs = propsWithDefaults
+      .map((p) => `${p.name} = ${rewriteExpr(p.defaultValue!.expr, rules)}`)
+      .join(", ");
+    body.push(cStmt({ body: `const { ${defs} } = props` }));
+  }
+
+  if (emitsQwikSlot(component.render)) qwikImports.push("Slot");
 
   const needsTransition = hasTransition(component.render);
 
-  const renderTree = emitNode(component.render, rules);
+  // Bare reads of a resource's `data`/`loading`/`error` in the template are reactive signal reads,
+  // so the render tree resolves them through the target's reactiveRead (`.value` for Qwik).
+  const resourceReads = new Set(
+    component.resources.flatMap((r) => [r.name, r.loadingName, r.errorName].filter(Boolean)),
+  ) as Set<string>;
+  const renderRules: RewriteRules = { ...rules, reactiveBindings: resourceReads, propLocals };
+
+  const renderTree = emitNode(component.render, renderRules);
 
   const styleImport =
     component.styles.length > 0 ? [cRaw({ text: `import "./${component.name}.css";` })] : [];
@@ -333,13 +488,14 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...emitComponentImports(ctx.componentImports, "", false),
       ...ctx.externalImports,
       ...styleImport,
+      ...(ctx.typeDeclarations.length > 0 ? [cRaw({ text: "" }), ...ctx.typeDeclarations] : []),
       ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       ...(needsTransition ? [cRaw({ text: "" }), cRaw({ text: QWIK_TRANSITION_HELPER })] : []),
       cRaw({ text: "" }),
       cStmt({
         body:
-          component.props.length > 0 || component.slots.length > 0
-            ? `export const ${component.name} = component$((props) =>`
+          component.props.length > 0 || component.slots.length > 0 || fallthrough
+            ? `export const ${component.name} = component$((props${propsTypeAnnotation}) =>`
             : `export const ${component.name} = component$(() =>`,
       }),
       cRaw({ text: "{" }),

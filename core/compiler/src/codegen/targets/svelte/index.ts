@@ -25,6 +25,11 @@ import {
   emitExprAsTemplate,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import {
+  FALLTHROUGH_REST,
+  classMergeExpr,
+  rootAcceptsFallthrough,
+} from "../../shared/fallthrough.ts";
 import { assertNever } from "../../../core/assert.ts";
 import * as ts from "typescript";
 
@@ -47,10 +52,25 @@ function tmplAttrs(
     readonly attrs: readonly any[];
     readonly events: readonly any[];
     readonly refs: readonly any[];
+    readonly acceptsAttrFallthrough?: boolean;
   },
   rules: RewriteRules,
 ) {
+  const fallthrough = node.acceptsAttrFallthrough === true;
   const attrs = node.attrs.map((a: any) => {
+    if (fallthrough && a.binding === "class") {
+      const authored =
+        a.value.kind === "Static"
+          ? JSON.stringify(String(a.value.value))
+          : rewriteExpr(a.value.expr, rules);
+      return cTmplAttr({
+        name: "class",
+        value: {
+          kind: "expr",
+          expr: cExpr({ text: classMergeExpr(authored, `${FALLTHROUGH_REST}.class`) }),
+        },
+      });
+    }
     const name = rewriteAttrName(a.name, rules);
     if (a.value.kind === "Static")
       return cTmplAttr({ name, value: { kind: "static", text: String(a.value.value) } });
@@ -59,6 +79,20 @@ function tmplAttrs(
       value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
     });
   });
+  if (fallthrough) {
+    // Spread inherited attributes first so authored attributes win on conflict.
+    attrs.unshift(
+      cTmplAttr({ name: "", value: { kind: "spread", expr: cExpr({ text: FALLTHROUGH_REST }) } }),
+    );
+    if (!node.attrs.some((a: any) => a.binding === "class")) {
+      attrs.push(
+        cTmplAttr({
+          name: "class",
+          value: { kind: "expr", expr: cExpr({ text: `${FALLTHROUGH_REST}.class` }) },
+        }),
+      );
+    }
+  }
   const evts = node.events.map((e: any) =>
     cTmplAttr({
       name: rewriteEventName(e.name, rules),
@@ -285,7 +319,38 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
 // ── Emit entry point ───────────────────────────────────────────────
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const rules = ctx.rewrites;
+  const propFallthrough = rootAcceptsFallthrough(component);
+  const restBinding = propFallthrough ? `...${FALLTHROUGH_REST}` : "";
+  // Plain binding names (no defaults) used to reconstruct the whole `props` object below.
+  const nameBindings = [...component.props.map((p) => p.name), restBinding]
+    .filter(Boolean)
+    .join(", ");
+
+  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
+  // Svelte destructures `$props()`, so there is no `props` binding for whole-object references
+  // (e.g. `badge(props)`). Reconstruct it from the destructured bindings instead.
+  const rules: RewriteRules =
+    nameBindings.length > 0
+      ? {
+          ...ctx.rewrites,
+          setters,
+          members: {
+            ...ctx.rewrites.members,
+            props: { ...ctx.rewrites.members?.props, strip: true, whole: `{ ${nameBindings} }` },
+          },
+        }
+      : { ...ctx.rewrites, setters };
+
+  // Destructure bindings carry each prop's default (`color = "blue"`) so `$props()` applies it.
+  const bindings = [
+    ...component.props.map((p) =>
+      p.defaultValue ? `${p.name} = ${rewriteExpr(p.defaultValue.expr, rules)}` : p.name,
+    ),
+    restBinding,
+  ]
+    .filter(Boolean)
+    .join(", ");
+
   const scriptBody: Code[] = [];
   const svelteImports: string[] = [];
 
@@ -299,19 +364,21 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       }),
     );
   }
-
-  if (component.props.length > 0) {
+  if (component.propsTypeText) {
+    const type = `${component.propsTypeText}${propFallthrough ? " & Record<string, any>" : ""}`;
+    scriptBody.push(cStmt({ body: `let { ${bindings} }: ${type} = $props()` }));
+  } else if (component.props.length > 0) {
     const defs = component.props
-      .map(
-        (p) => `${p.name}${p.required ? "" : "?"}${p.typeNode ? `: ${p.typeNode.getText()}` : ""}`,
-      )
+      .map((p) => {
+        const type = p.typeText ?? p.typeNode?.getText();
+        return `${p.name}${p.required ? "" : "?"}${type ? `: ${type}` : ""}`;
+      })
       .join("; ");
     scriptBody.push(cStmt({ body: `interface Props { ${defs} }` }));
-    scriptBody.push(
-      cStmt({
-        body: `let { ${component.props.map((p) => p.name).join(", ")} }: Props = $props()`,
-      }),
-    );
+    const type = `Props${propFallthrough ? " & Record<string, any>" : ""}`;
+    scriptBody.push(cStmt({ body: `let { ${bindings} }: ${type} = $props()` }));
+  } else if (propFallthrough) {
+    scriptBody.push(cStmt({ body: `let { ${bindings} }: Record<string, any> = $props()` }));
   }
   for (const s of component.state)
     scriptBody.push(
@@ -329,13 +396,27 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   for (const e of component.effects)
     scriptBody.push(cStmt({ body: `$effect(${rewriteExpr(e.body, rules)})`, span: e.loc }));
-  for (const res of component.resources)
+  // Lower each resource to reactive $state (data/loading/error) plus a top-level loader that runs
+  // the fetcher and updates them — the universal "manual fetch with loading/error state" pattern in
+  // idiomatic Svelte. The template reads the state by its bare name (see reactiveBindings below).
+  for (const res of component.resources) {
+    scriptBody.push(cStmt({ body: `let ${res.name} = $state(undefined)`, span: res.loc }));
+    if (res.loadingName) {
+      scriptBody.push(cStmt({ body: `let ${res.loadingName} = $state(true)`, span: res.loc }));
+    }
+    if (res.errorName) {
+      scriptBody.push(cStmt({ body: `let ${res.errorName} = $state(undefined)`, span: res.loc }));
+    }
+    const fetcher = rewriteExpr(res.fetcher.expr, rules);
+    const onError = res.errorName ? `.catch((e) => ${res.errorName} = e)` : "";
+    const onFinally = res.loadingName ? `.finally(() => ${res.loadingName} = false)` : "";
     scriptBody.push(
       cStmt({
-        body: `let ${res.name} = $state(await (${rewriteExpr(res.fetcher.expr, rules)})())`,
+        body: `;(${fetcher})().then((d) => ${res.name} = d)${onError}${onFinally}`,
         span: res.loc,
       }),
     );
+  }
   for (const m of component.lifecycle.onMount)
     scriptBody.push(cStmt({ body: `$effect(${rewriteExpr(m.body, rules)})`, span: m.loc }));
   for (const c of component.lifecycle.onCleanup)
@@ -400,7 +481,13 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     fileChildren.push(cRaw({ text: "" }));
   }
 
-  const renderTree = emitNode(component.render, rules);
+  // The render tree reads resource bindings (`data`/`loading`/`error`) by their bare name; flag them
+  // as reactive so a bare read follows Svelte's `reactiveRead` (strip-call, so they stay verbatim).
+  const resourceReads = new Set(
+    component.resources.flatMap((r) => [r.name, r.loadingName, r.errorName].filter(Boolean)),
+  ) as Set<string>;
+  const renderRules: RewriteRules = { ...rules, reactiveBindings: resourceReads };
+  const renderTree = emitNode(component.render, renderRules);
   fileChildren.push(
     cScript({
       lang: "ts",
@@ -408,6 +495,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       children: [
         ...emitComponentImports(ctx.componentImports, ".svelte", true),
         ...ctx.externalImports,
+        ...(ctx.typeDeclarations.length > 0 ? [cRaw({ text: "" }), ...ctx.typeDeclarations] : []),
         ...scriptBody,
         ...(needsTransition ? [cRaw({ text: "" }), cRaw({ text: SVELTE_TRANSITION_HELPER })] : []),
       ],

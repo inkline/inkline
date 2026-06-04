@@ -6,41 +6,43 @@ exports[`Angular target > Counter component 1`] = `
 <p>
 {{ count() }}
 </p>
-<button (click)="() => setCount(count() + 1)">
+<button (click)="count.set(count() + 1)">
 +1
 </button>
 </div>\` })
 export class CounterComponent
 {
 count = signal(0)
-doubled = computed(() => count() * 2)
-constructor() { effect(() => { console.log("effect"); }) }
+doubled = computed(() => this.count() * 2)
+constructor() { effect(() => { console.log('effect'); }) }
 }
 "
 `;
 
 exports[`Angular target > props type generation 1`] = `
-"import { Component, signal, computed, effect, Input } from "@angular/core";
+"import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'Button', template: \`<div />\` })
 export class ButtonComponent
 {
 count = signal(0)
-doubled = computed(() => count() * 2)
-constructor() { effect(() => { console.log("effect"); }) }
-@Input() label!
-@Input() disabled?
+doubled = computed(() => this.count() * 2)
+constructor() { effect(() => { console.log('effect'); }) }
+label = input.required()
+disabled = input()
 }
 "
 `;
 
 exports[`Astro target > Counter component 1`] = `
 "---
+let count = 0
+const doubled = count * 2
 ---
 <div>
 <p>
 {count}
 </p>
-<button onClick={() => setCount(count + 1)}>
+<button onClick={() => count = count + 1}>
 +1
 </button>
 </div>
@@ -50,7 +52,10 @@ exports[`Astro target > Counter component 1`] = `
 exports[`Astro target > props use Astro.props 1`] = `
 "---
 interface Props { label: unknown; disabled?: unknown }
-const { label, disabled } = Astro.props as Props;
+const props = Astro.props as Props;
+const { label, disabled } = props;
+let count = 0
+const doubled = count * 2
 ---
 <div />
 "
@@ -68,7 +73,7 @@ return (
   <p>
     {count.value}
   </p>
-  <button onClick={$(() => () => setCount(count.value + 1))}>
+  <button onClick={$(() => count.value = count.value + 1)}>
     +1
   </button>
 </div>
@@ -79,7 +84,7 @@ return (
 
 exports[`Qwik target > props type generation 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
-export const Button = component$((props) =>
+export const Button = component$((props: { label: unknown; disabled?: unknown } & Record<string, any>) =>
 {
 const count = useSignal(0)
 const doubled = useComputed$(() => count.value * 2)
@@ -363,7 +368,7 @@ exports[`target emit + print (full output) > Svelte: Counter component 1`] = `
   <p>
     {count}
   </p>
-  <button onclick={() => setCount(count + 1)}>
+  <button onclick={() => count = count + 1}>
     +1
   </button>
 </div>
@@ -382,7 +387,7 @@ exports[`target emit + print (full output) > Vue: Counter component 1`] = `
   <p>
     {{ count }}
   </p>
-  <button @click="() => setCount(count + 1)">
+  <button @click="() => count = count + 1">
     +1
   </button>
 </div>
@@ -402,14 +407,16 @@ Hello
 export class FadeComponent
 {
 count = signal(0)
-doubled = computed(() => count() * 2)
-constructor() { effect(() => { console.log("effect"); }) }
+doubled = computed(() => this.count() * 2)
+constructor() { effect(() => { console.log('effect'); }) }
 }
 "
 `;
 
 exports[`transition emission > Astro: passes through to child 1`] = `
 "---
+let count = 0
+const doubled = count * 2
 ---
 <div>
 {visible ? (<p>
