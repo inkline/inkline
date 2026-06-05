@@ -4,6 +4,27 @@ import type { Plugin } from "../plugin/types.ts";
 
 export type SourceMapMode = "external" | "inline" | "none";
 
+/**
+ * Declarative description of a generated re-export barrel. Components are routed to a barrel by
+ * matching a directory segment of their source path (`components/<name>/<match>/…`), so the same
+ * source can be split into multiple per-category entry points (e.g. styled vs headless vs stories).
+ */
+export interface BarrelGroup {
+  /** Output file written at each target's output root, relative to it (e.g. `"headless.ts"`). */
+  readonly file: string;
+  /**
+   * Path segment that assigns a compiled file to this barrel (e.g. `"styled"`, `"headless"`).
+   * The empty string `""` is the legacy sentinel: it matches any directory that is not a story dir.
+   */
+  readonly match: string;
+  /**
+   * Re-export shape:
+   * - `"named"` (default): per-component named/default export (target-aware), sourced from compiled components.
+   * - `"namespace"`: `export * as <Name>Stories from …`, sourced from the generated `*.stories.ts` modules.
+   */
+  readonly mode?: "named" | "namespace";
+}
+
 export interface InklineConfig {
   readonly targets: readonly TargetName[];
   readonly srcDir?: string;
@@ -14,6 +35,12 @@ export interface InklineConfig {
   readonly plugins?: readonly Plugin[];
   readonly verbose?: boolean;
   readonly registry?: TargetRegistry;
+  /**
+   * Per-category re-export barrels written for each target. Consumed by `@inkline/cli` only — the
+   * compiler pipeline ignores this field. When omitted, the CLI writes a single `index.ts` barrel
+   * containing every non-story component (the legacy default).
+   */
+  readonly barrels?: readonly BarrelGroup[];
   /**
    * Path to a `tsconfig.json` whose ambient type declarations (e.g. generated
    * `*.d.ts` augmenting virtual modules) are loaded into the per-file TypeScript

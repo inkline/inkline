@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { resolve, dirname, basename, join } from "node:path";
-import type { CompileResult, TargetName } from "@inkline/compiler";
-import { type BarrelEntry, isStoryRelDir, resolveTargetDir } from "./barrel.ts";
+import type { BarrelGroup, CompileResult, TargetName } from "@inkline/compiler";
+import { type BarrelMap, collectBarrelEntry, resolveTargetDir } from "./barrel.ts";
 
 export function writeOutput(path: string, content: string): void {
   writeFileSync(path, content, "utf-8");
@@ -18,7 +18,8 @@ export function writeCompileOutput(
   outDir: string,
   targetOutDir: Partial<Record<string, string>>,
   sourceMap: "external" | "inline" | "none",
-  barrelEntries: Map<string, BarrelEntry[]>,
+  barrelEntries: BarrelMap,
+  namedGroups: readonly BarrelGroup[],
   relDir = "",
   write: (path: string, content: string) => void = writeIfChanged,
 ): void {
@@ -35,12 +36,17 @@ export function writeCompileOutput(
         write(`${outPath}.map`, file.sourceMap);
       }
 
-      if (!file.path.endsWith(".css") && !isStoryRelDir(relDir)) {
-        const relFileName = relDir ? join(relDir, fileName) : fileName;
-        const entries = barrelEntries.get(targetDir) ?? [];
-        entries.push({ componentName, fileName: relFileName, target: target as TargetName });
-        barrelEntries.set(targetDir, entries);
-      }
+      const relFileName = relDir ? join(relDir, fileName) : fileName;
+      collectBarrelEntry(
+        barrelEntries,
+        targetDir,
+        relDir,
+        file.path,
+        relFileName,
+        componentName,
+        target as TargetName,
+        namedGroups,
+      );
     }
   }
 }

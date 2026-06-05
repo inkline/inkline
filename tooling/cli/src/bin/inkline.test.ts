@@ -211,6 +211,75 @@ describe("compile", () => {
     }
   });
 
+  it("splits configured barrels into styled / headless / stories per target", () => {
+    const configDir = resolve(TMP_OUT, "barrel-split-test");
+    const srcDir = resolve(configDir, "src");
+    // The output dir must be shaped `<root>/<target>/<storiesDir>` so the story generator
+    // (which derives root/storiesDir from the output dir) writes CSF files back into it.
+    const reactDir = resolve(configDir, "out", "react", ".inkline");
+    const configPath = resolve(configDir, "inkline.config.mjs");
+    const buttonDir = resolve(srcDir, "components", "button");
+    const styledDir = resolve(buttonDir, "styled");
+    const headlessDir = resolve(buttonDir, "headless");
+    const storiesDir = resolve(buttonDir, "stories");
+    try {
+      mkdirSync(styledDir, { recursive: true });
+      mkdirSync(headlessDir, { recursive: true });
+      mkdirSync(storiesDir, { recursive: true });
+      writeFileSync(
+        resolve(styledDir, "IButton.ink.tsx"),
+        `import { defineComponent } from "@inkline/core";\nexport default defineComponent(() => <button />);\n`,
+        "utf-8",
+      );
+      writeFileSync(
+        resolve(headlessDir, "IButtonBase.ink.tsx"),
+        `import { defineComponent } from "@inkline/core";\nexport default defineComponent(() => <button />);\n`,
+        "utf-8",
+      );
+      writeFileSync(
+        resolve(storiesDir, "IButton.ink.stories.ts"),
+        `export default { component: "IButton", title: "Components/Button" };\nexport const Default = {};\n`,
+        "utf-8",
+      );
+      writeFileSync(
+        configPath,
+        `export default {
+          srcDir: ${JSON.stringify(srcDir)},
+          targets: ["react"],
+          targetOutDir: { react: ${JSON.stringify(reactDir)} },
+          barrels: [
+            { file: "index.ts", match: "styled" },
+            { file: "headless.ts", match: "headless" },
+            { file: "stories.ts", match: "stories", mode: "namespace" },
+          ],
+        };\n`,
+        "utf-8",
+      );
+      const { status } = run(
+        "compile",
+        resolve(styledDir, "IButton.ink.tsx"),
+        resolve(headlessDir, "IButtonBase.ink.tsx"),
+        "--config",
+        configPath,
+      );
+      expect(status).toBe(0);
+
+      const styled = readFileSync(resolve(reactDir, "index.ts"), "utf-8");
+      expect(styled).toContain("export { IButton }");
+      expect(styled).not.toContain("IButtonBase");
+
+      const headless = readFileSync(resolve(reactDir, "headless.ts"), "utf-8");
+      expect(headless).toContain("export { IButtonBase }");
+
+      const stories = readFileSync(resolve(reactDir, "stories.ts"), "utf-8");
+      expect(stories).toContain(
+        "export * as IButtonStories from './components/button/stories/IButton.stories.ts';",
+      );
+    } finally {
+      if (existsSync(configDir)) rmSync(configDir, { recursive: true });
+    }
+  });
+
   it("preserves directory structure from source to output", () => {
     const configDir = resolve(TMP_OUT, "dir-structure-test");
     const reactDir = resolve(configDir, "react-out");
