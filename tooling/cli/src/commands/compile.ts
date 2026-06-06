@@ -1,5 +1,5 @@
 import { defineCommand } from "citty";
-import { readFileSync, mkdirSync, rmSync, watch } from "node:fs";
+import { readFileSync, mkdirSync, rmSync, watch, type FSWatcher } from "node:fs";
 import { resolve, basename, extname, dirname, join, relative, sep } from "node:path";
 import {
   compile,
@@ -31,10 +31,31 @@ import { writeCompileOutput, writeIfChanged, writeOutput } from "../lib/writer.t
 const DEFAULT_BARRELS: readonly BarrelGroup[] = [{ file: "index.ts", match: "" }];
 
 /** Ensure every configured named barrel exists for each target that produced output (empty if unmatched). */
-function seedNamedBarrels(barrelEntries: BarrelMap, namedGroups: readonly BarrelGroup[]): void {
+export function seedNamedBarrels(
+  barrelEntries: BarrelMap,
+  namedGroups: readonly BarrelGroup[],
+): void {
   for (const byFile of barrelEntries.values()) {
     for (const group of namedGroups) {
       if (!byFile.has(group.file)) byFile.set(group.file, []);
+    }
+  }
+}
+
+/**
+ * Seed the configured named barrels, then write each one. The one-shot build writes unconditionally
+ * (`writeOutput`); the watcher writes only on change (`writeIfChanged`). Sharing one implementation
+ * keeps the two paths from drifting on which barrels exist or how their entries are ordered.
+ */
+export function flushNamedBarrels(
+  barrelEntries: BarrelMap,
+  namedGroups: readonly BarrelGroup[],
+  write: (path: string, content: string) => void,
+): void {
+  seedNamedBarrels(barrelEntries, namedGroups);
+  for (const [dir, byFile] of barrelEntries) {
+    for (const [file, entries] of byFile) {
+      write(resolve(dir, file), generateNamedBarrel(entries));
     }
   }
 }
@@ -44,7 +65,7 @@ function seedNamedBarrels(barrelEntries: BarrelMap, namedGroups: readonly Barrel
  * module under a per-component alias. Targets are derived from the generator output; a barrel is
  * written per target (empty when that target produced no stories) so the build entry always resolves.
  */
-function writeNamespaceBarrels(
+export function writeNamespaceBarrels(
   files: readonly GeneratedFile[],
   targets: readonly string[],
   outDir: string,
@@ -168,17 +189,12 @@ export default defineCommand({
       );
     }
 
-    seedNamedBarrels(barrelEntries, namedGroups);
-    for (const [dir, byFile] of barrelEntries) {
-      for (const [file, entries] of byFile) {
-        writeOutput(resolve(dir, file), generateNamedBarrel(entries));
-      }
-    }
+    flushNamedBarrels(barrelEntries, namedGroups, writeOutput);
 
     await generateStories(targets, outDir, targetOutDir, srcDir ?? sourcePrefix, namespaceGroup);
 
     if (args.watch) {
-      runWatch(
+      return runWatch(
         resolvedFiles,
         targets,
         outDir,
@@ -191,7 +207,6 @@ export default defineCommand({
         namedGroups,
         namespaceGroup,
       );
-      return;
     }
 
     if (hasError) process.exitCode = 1;
@@ -256,7 +271,7 @@ function runWatch(
   srcDir: string | undefined,
   namedGroups: readonly BarrelGroup[],
   namespaceGroup: BarrelGroup | undefined,
-): void {
+): FSWatcher {
   console.log(`Watching ${files.length} file(s) for changes...\n`);
   let state: IncrementalState = createIncrementalState();
   let compileTimer: ReturnType<typeof setTimeout> | undefined;
@@ -318,12 +333,7 @@ function runWatch(
       }
     }
 
-    seedNamedBarrels(barrelEntries, namedGroups);
-    for (const [dir, byFile] of barrelEntries) {
-      for (const [file, entries] of byFile) {
-        writeIfChanged(resolve(dir, file), generateNamedBarrel(entries));
-      }
-    }
+    flushNamedBarrels(barrelEntries, namedGroups, writeIfChanged);
 
     if (result.changed.length > 0) {
       console.log(`Rebuilt ${result.changed.length} file(s), skipped ${result.skipped.length}`);
@@ -332,7 +342,7 @@ function runWatch(
 
   const resolvedSrcDir = resolve(srcDir ?? sourcePrefix);
 
-  watch(resolvedSrcDir, { recursive: true }, (_event, filename) => {
+  return watch(resolvedSrcDir, { recursive: true }, (_event, filename) => {
     if (!filename) return;
 
     if (filename.endsWith(".ink.stories.ts") || filename.endsWith(".ink.stories.tsx")) {
