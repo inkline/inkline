@@ -1,6 +1,9 @@
 export { default as IBadge } from "./badge/styled/IBadge.ink.tsx";
 export { default as IBadgeBase } from "./badge/headless/IBadgeBase.ink.tsx";
 
+export { default as IButton } from "./button/styled/IButton.ink.tsx";
+export { default as IButtonBase } from "./button/headless/IButtonBase.ink.tsx";
+
 export { default as IInput } from "./input/styled/IInput.ink.tsx";
 export { default as IInputBase } from "./input/headless/IInputBase.ink.tsx";
 export { default as IInputControl } from "./input/styled/IInputControl.ink.tsx";
