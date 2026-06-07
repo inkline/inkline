@@ -2,7 +2,7 @@
 
 ## Overview
 
-The compiler test suite contains 560 tests across 56 fixtures and 7 targets, using snapshot-based output validation to ensure correctness of emitted code for every target framework.
+The compiler test suite spans the `__fixtures__` components and all 7 targets, using snapshot-based output validation to ensure correctness of emitted code for every target framework.
 
 ## Running tests
 
@@ -23,13 +23,12 @@ vp test --update
 
 Co-located alongside source files as `<file>.test.ts`. Each module's tests live next to the implementation they cover.
 
-### Emit tests
+### Per-target codegen tests
 
-Located at `src/codegen/targets/emit.test.ts`. These tests construct synthetic IR nodes directly and snapshot the emitted output for each target. Useful for testing specific code generation patterns in isolation without running the full pipeline.
+Each target owns its tests under `src/codegen/targets/<name>/` — there is no iteration over a target list:
 
-### Output validation tests
-
-Located at `src/codegen/targets/output-validation.test.ts`. These tests compile real fixture components through the full 6-pass pipeline and snapshot the complete output for every target. Contains 106 snapshots covering all fixture and target combinations.
+- `<name>/index.test.ts` — **unit-emit tests**: construct synthetic IR nodes directly and snapshot the emitted output, for testing specific code-generation patterns in isolation without running the full pipeline. Shared helpers and canonical IR fixtures live in [`src/testing/codegen.ts`](../src/testing/codegen.ts) so every target emits identical IR and snapshots stay stable.
+- `<name>/__tests__/*.test.ts` — **fixture-integration tests**: compile real `.ink.tsx` fixtures through the full pipeline (`compileTo` from the shared harness) and assert the generated code. `output-snapshots.test.ts` snapshots the complete output of every fixture for that target; the remaining feature files (`control-flow`, `events`, `slots`, …) pin specific real-world patterns.
 
 ### Conformance tests
 
@@ -112,24 +111,24 @@ Conformance specs define structural requirements for emitted code per target:
 
 ## Snapshot testing
 
-### emit.test.ts
+### `<name>/index.test.ts`
 
-Contains 18 snapshots for synthetic IR emit tests. Each snapshot captures the output of a specific code generation pattern for a specific target.
+Synthetic-IR emit snapshots — each captures the output of a specific code-generation pattern for that target.
 
-### output-validation.test.ts
+### `<name>/__tests__/output-snapshots.test.ts`
 
-Contains 88 snapshots for real fixture output. Each snapshot captures the full emitted file content for a fixture compiled to a specific target.
+Full real-fixture output — each captures the complete emitted file content for a fixture compiled to that target.
 
 ### Updating snapshots
 
 When intentional changes to code generation cause snapshot failures:
 
 ```bash
-# Update snapshots for a specific test file
-vp test src/codegen/targets/emit.test.ts --update
+# Update snapshots for one target
+vp test src/codegen/targets/react --update
 
-# Update snapshots for output validation
-vp test src/codegen/targets/output-validation.test.ts --update
+# Update every target's snapshots
+vp test src/codegen/targets --update
 ```
 
 ## CI scripts

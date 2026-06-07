@@ -36,7 +36,7 @@ src/
 │   │   ├── {react,solid,qwik}/      # JSX emitters
 │   │   ├── {vue,svelte}/            # Template emitters
 │   │   ├── {angular,astro}/         # String-template emitters
-│   │   └── emit.test.ts             # Cross-target snapshot tests
+│   │   └── <name>/{index.test.ts, __tests__/}  # per-target unit-emit + fixture-integration tests
 │   ├── code-ir/            # Syntax-agnostic Code IR (CFile, CJsxElement, CTmplElement, …)
 │   ├── shared/             # Expression rewriting, component imports
 │   └── print/printer.ts    # Code IR → source text + V3 source maps
@@ -95,11 +95,11 @@ Hooks are listed in [`plugin/types.ts`](./src/plugin/types.ts) `PluginHooks`. Cu
 
 Co-located `*.test.ts` per [conventions](../../docs/conventions.md). Three layers:
 
-| Layer                   | Where                                                                | What it asserts                                                                     |
-| ----------------------- | -------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| Unit                    | next to the file under test                                          | Single-function behavior.                                                           |
-| Codegen snapshot        | [`codegen/targets/emit.test.ts`](./src/codegen/targets/emit.test.ts) | Per-target output stability for mock IR inputs.                                     |
-| Scenario (cross-target) | [`__fixtures__/scenarios.ts`](./src/__fixtures__/)                   | Compile a fixture across all 7 targets, mount each, assert equivalent DOM behavior. |
+| Layer                   | Where                                                        | What it asserts                                                                                                                                                                                                                                                        |
+| ----------------------- | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Unit                    | next to the file under test                                  | Single-function behavior.                                                                                                                                                                                                                                              |
+| Codegen (per target)    | `codegen/targets/<name>/index.test.ts` + `<name>/__tests__/` | Per-target output: hand-built-IR snapshots (`index.test.ts`) + real-fixture integration (`__tests__/`). Shared helpers in [`testing/codegen.ts`](./src/testing/codegen.ts) keep IR identical across targets so snapshots stay stable. No iteration over a target list. |
+| Scenario (cross-target) | [`__fixtures__/scenarios.ts`](./src/__fixtures__/)           | Compile a fixture across all 7 targets, mount each, assert equivalent DOM behavior.                                                                                                                                                                                    |
 
 Run from this package: `vp test`. Run the full repo: `vp run -r test`. The bench script ([`scripts/bench.ts`](./scripts/bench.ts)) drives `tinybench` and is invoked via `pnpm bench`.
 

@@ -113,7 +113,7 @@ Re-export it from [`core/compiler/src/index.ts`](../core/compiler/src/index.ts) 
 
 Three layers required:
 
-1. **Snapshot tests** in [`codegen/targets/emit.test.ts`](../core/compiler/src/codegen/targets/emit.test.ts) — add a few `IRComponent` inputs and snapshot the new target's output.
+1. **Per-target tests** under `codegen/targets/<name>/` — add unit-emit snapshots in [`<name>/index.test.ts`](../core/compiler/src/codegen/targets/) (hand-build a few `IRComponent` inputs with the shared helpers in [`testing/codegen.ts`](../core/compiler/src/testing/codegen.ts) and snapshot the output), plus real-fixture integration tests under `<name>/__tests__/`. Each test targets a single framework — no iteration over a target list.
 2. **Conformance tests** if you wrote a conformance spec — see [`@inkline/test-utils`](../tooling/test-utils/) → `assertConformance`.
 3. **Scenario tests** under [`core/compiler/src/__fixtures__/`](../core/compiler/src/__fixtures__/) — pick a handful of representative fixtures (counter, list, slot, transition) and add the new target to the per-fixture target list so cross-target HTML equivalence is asserted.
 
@@ -134,7 +134,7 @@ When the new target is built-in, add the consumer-facing UI package:
 - [ ] `TargetName` updated.
 - [ ] Registered in `builtinRegistry`.
 - [ ] Re-exported from `core/compiler/src/index.ts`.
-- [ ] Snapshot tests in `emit.test.ts`.
+- [ ] Per-target tests under `codegen/targets/<name>/` (`index.test.ts` + `__tests__/`).
 - [ ] Scenario coverage in `__fixtures__/scenarios.ts`.
 - [ ] (Optional) Conformance spec + `assertConformance` test.
 - [ ] (If publishing) `ui/<new-target>/` package created and wired.
