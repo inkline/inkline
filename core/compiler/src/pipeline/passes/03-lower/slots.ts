@@ -7,6 +7,7 @@ import type {
   IRSlotContent,
 } from "../../../ir/render/nodes.ts";
 import { transformComponent } from "../../../ir/render/transform.ts";
+import { parseExpression } from "../02-parse/jsx/index.ts";
 
 function isJsxExpression(expr: ts.Expression): boolean {
   return ts.isJsxElement(expr) || ts.isJsxSelfClosingElement(expr) || ts.isJsxFragment(expr);
@@ -25,9 +26,13 @@ export function slots(component: IRComponent): IRComponent {
       for (const attr of ci.attrs) {
         if (attr.value.kind === "Expression" && isJsxExpression(attr.value.expr)) {
           slotsChanged = true;
+          // Decompose the JSX into real render nodes so every target emits slot content
+          // structurally. Left as an opaque Expression, template targets (Vue/Svelte/Astro)
+          // wrap it in a text interpolation (`{{ <span/> }}`) instead of slot template content.
+          const sf = attr.value.expr.getSourceFile();
           newSlots.push({
             name: attr.name,
-            body: attr.value as IRNode,
+            body: sf ? parseExpression(attr.value.expr, sf) : (attr.value as IRNode),
             scopedParams: [],
             loc: attr.loc,
           });
