@@ -1,7 +1,7 @@
 // Solid async-runtime integration: createResource lowering, multi-resource
 // setter uniqueness, and iso-runtime signal wiring for the Solid target.
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToChecked } from "../../../../testing/codegen.ts";
 
 // ---------------------------------------------------------------------------
 // AsyncData: createResource() async data fetching
@@ -29,6 +29,10 @@ describe("AsyncData: createResource async resource handling", () => {
     );
     // Solid signals are read as calls, so the template reads `data()`/`loading()`.
     expect(out).toContain('{loading() ? "Loading..." : JSON.stringify(data())}');
+  });
+
+  it("createResource produces no diagnostic", async () => {
+    await compileToChecked("AsyncData", "solid");
   });
 });
 

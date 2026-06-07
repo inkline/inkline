@@ -1,6 +1,6 @@
 // Astro: async runtime — createResource SSR lowering and runtime: server/client/iso handling.
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToChecked } from "../../../../testing/codegen.ts";
 
 // ---------------------------------------------------------------------------
 // AsyncData: createResource() async data fetching
@@ -23,6 +23,10 @@ describe("AsyncData: createResource async resource handling", () => {
     );
     expect(out).toContain("const loading = false");
     expect(out).toContain('{loading ? "Loading..." : JSON.stringify(data)}');
+  });
+
+  it("createResource produces no diagnostic", async () => {
+    await compileToChecked("AsyncData", "astro");
   });
 });
 

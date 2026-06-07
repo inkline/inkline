@@ -2,7 +2,7 @@
 // and runtime: "client" setter rewriting to $state reassignment.
 
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToChecked } from "../../../../testing/codegen.ts";
 
 // ---------------------------------------------------------------------------
 // AsyncData: createResource() async data fetching
@@ -24,6 +24,10 @@ describe("AsyncData: createResource async resource handling", () => {
       ';(async () => { const res = await fetch("/api/items"); return res.json(); })().then((d) => data = d).catch((e) => _error = e).finally(() => loading = false)',
     );
     expect(out).toContain('{loading ? "Loading..." : JSON.stringify(data)}');
+  });
+
+  it("createResource produces no diagnostic", async () => {
+    await compileToChecked("AsyncData", "svelte");
   });
 });
 

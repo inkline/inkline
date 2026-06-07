@@ -1,6 +1,6 @@
 // Qwik async runtime codegen: createResource lowering and runtime-hint handling.
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToChecked } from "../../../../testing/codegen.ts";
 
 // ---------------------------------------------------------------------------
 // AsyncData: createResource() async data fetching
@@ -24,6 +24,10 @@ describe("AsyncData: createResource async resource handling", () => {
     );
     // Qwik reactiveRead is field-access(value), so the template reads `.value`.
     expect(out).toContain('{loading.value ? "Loading..." : JSON.stringify(data.value)}');
+  });
+
+  it("createResource produces no diagnostic", async () => {
+    await compileToChecked("AsyncData", "qwik");
   });
 });
 
