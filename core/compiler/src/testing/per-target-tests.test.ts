@@ -42,7 +42,13 @@ describe("per-target test convention", () => {
     const src = readFileSync(path, "utf-8");
 
     it(`${rel} exercises only the "${target}" target`, () => {
-      expect(TARGETS.has(target), `unexpected target directory: ${target}`).toBe(true);
+      // Every test under codegen/targets/ must live inside a per-target directory. A file directly
+      // under targets/ or in a non-target folder (e.g. a shared __tests__/) is a misplaced or
+      // shared multi-target test — no longer allowed; move it under codegen/targets/<target>/.
+      expect(
+        TARGETS.has(target),
+        `${rel} is not inside a codegen/targets/<target>/ directory — split it per target`,
+      ).toBe(true);
 
       // (A) never imports a sibling target's module.
       const foreignImports = [...src.matchAll(/from\s+["']\.\.\/([a-z]+)\/index(?:\.ts)?["']/g)]
@@ -52,7 +58,7 @@ describe("per-target test convention", () => {
 
       // (B) every compileTo*/emit* call names THIS target, never another.
       const named = [
-        ...[...src.matchAll(/compileTo(?:Checked|All)?\([^,]+,\s*["']([a-z]+)["']/g)].map(
+        ...[...src.matchAll(/compileTo(?:Checked|All|Files)?\([^,]+,\s*["']([a-z]+)["']/g)].map(
           (m) => m[1]!,
         ),
         ...[...src.matchAll(/\bemit(?:Code|WithCtx|WithFile)\(\s*([A-Za-z]\w*)\s*,/g)].map(

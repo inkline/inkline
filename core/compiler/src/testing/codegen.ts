@@ -77,6 +77,14 @@ export async function compileToAll(fixture: string, target: TargetName): Promise
   return files!.map((f) => f.contents).join("\n");
 }
 
+/** Compile `fixture` to `target` and return each generated file's contents (multi-file fixtures). */
+export async function compileToFiles(fixture: string, target: TargetName): Promise<string[]> {
+  const result = await compiled(fixture, target);
+  const files = result.files[target];
+  expect(files, `${fixture} should produce ${target} output`).toBeDefined();
+  return files!.map((f) => f.contents);
+}
+
 /** Fixtures snapshotted by every target's `output-snapshots.test.ts`. */
 export const CORE_FIXTURES = [
   "Counter",
