@@ -1,0 +1,146 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`react emit + print > Counter component 1`] = `
+"import { useState, useMemo, useEffect } from "react";
+export function Counter(props: Record<string, never>)
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("effect"); }, [])
+return (
+<div>
+  <p>
+    {count}
+  </p>
+  <button onClick={() => setCount(count + 1)}>
+    +1
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`react emit + print > emits an __InkTransition wrapper + helper 1`] = `
+"import { useState, useMemo, useEffect, useRef } from "react";
+function __InkTransition({ name = "ink", appear, children }: { name?: string; appear?: boolean; children?: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [show, setShow] = useState(!!children);
+  const prevRef = useRef(children);
+  const mounted = useRef(false);
+  const active = children !== null && children !== undefined && children !== false;
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (active) {
+      prevRef.current = children;
+      if (!show) setShow(true);
+      if (!mounted.current && !appear) { mounted.current = true; return; }
+      mounted.current = true;
+      el.classList.add(name + "-enter-from", name + "-enter-active");
+      requestAnimationFrame(() => { el.classList.remove(name + "-enter-from"); el.classList.add(name + "-enter-to"); });
+      const done = () => { el.classList.remove(name + "-enter-active", name + "-enter-to"); el.removeEventListener("transitionend", done); };
+      el.addEventListener("transitionend", done, { once: true });
+    } else if (show) {
+      el.classList.add(name + "-leave-from", name + "-leave-active");
+      requestAnimationFrame(() => { el.classList.remove(name + "-leave-from"); el.classList.add(name + "-leave-to"); });
+      const done = () => { el.classList.remove(name + "-leave-active", name + "-leave-to"); el.removeEventListener("transitionend", done); setShow(false); };
+      el.addEventListener("transitionend", done, { once: true });
+      const t = setTimeout(done, 1000);
+      return () => { clearTimeout(t); el.removeEventListener("transitionend", done); };
+    }
+  }, [active]);
+  if (!show) return null;
+  return <div ref={ref} style={{ display: "contents" }}>{active ? children : prevRef.current}</div>;
+}
+export function Fade(props: Record<string, never>)
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("effect"); }, [])
+return (
+<div>
+  <__InkTransition name="fade">
+    {visible ? <p>Hello</p> : null}
+  </__InkTransition>
+</div>
+)
+}
+"
+`;
+
+exports[`react emit + print > forwardRef: expose and props both present 1`] = `
+"import { useState, useMemo, useEffect, forwardRef, useImperativeHandle } from "react";
+export const Modal = forwardRef(function Modal(props: { title }, ref)
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("effect"); }, [])
+useImperativeHandle(ref, () => ({ open, close }))
+return (
+<div />
+)
+});
+"
+`;
+
+exports[`react emit + print > strips reactive calls in a compound expression 1`] = `
+"import { useState, useMemo, useEffect } from "react";
+export function Compound(props: Record<string, never>)
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("effect"); }, [])
+return (
+<p>
+  {count * 2 + other}
+</p>
+)
+}
+"
+`;
+
+exports[`react emit + print > strips reactive calls in a simple expression 1`] = `
+"import { useState, useMemo, useEffect } from "react";
+export function Simple(props: Record<string, never>)
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("effect"); }, [])
+return (
+<p>
+  {count}
+</p>
+)
+}
+"
+`;
+
+exports[`react emit + print > typed props 1`] = `
+"import { useState, useMemo, useEffect } from "react";
+export function Button(props: { label; disabled? })
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("effect"); }, [])
+return (
+<div />
+)
+}
+"
+`;
+
+exports[`react emit + print > useRef with element type 1`] = `
+"import { useState, useMemo, useEffect, useRef } from "react";
+export function Form(props: Record<string, never>)
+{
+const [count, setCount] = useState(0)
+const doubled = useMemo(() => count * 2, [count])
+useEffect(() => { console.log("effect"); }, [])
+const inputRef = useRef<HTMLInputElement>(null)
+return (
+<div />
+)
+}
+"
+`;
