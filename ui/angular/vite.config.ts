@@ -14,12 +14,16 @@ export default defineConfig({
   build: {
     target: "es2022",
     lib: {
-      entry: "src/index.ts",
+      entry: {
+        index: "src/index.ts",
+        headless: "src/headless.ts",
+        stories: "src/stories.ts",
+      },
       formats: ["es"],
-      fileName: "index",
+      fileName: (_format, entryName) => `${entryName}.js`,
     },
     rollupOptions: {
-      external: [/^@angular\//],
+      external: [/^@inkline\//, /^@angular\//],
     },
   },
 });

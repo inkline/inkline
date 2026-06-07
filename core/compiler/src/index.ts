@@ -9,7 +9,12 @@ export {
 } from "./pipeline/incremental.ts";
 
 // ============ CONFIGURATION ============
-export type { InklineConfig, ResolvedCompilerOptions, SourceMapMode } from "./core/options.ts";
+export type {
+  BarrelGroup,
+  InklineConfig,
+  ResolvedCompilerOptions,
+  SourceMapMode,
+} from "./core/options.ts";
 export { defineConfig } from "./core/config.ts";
 
 // ============ PIPELINE PRIMITIVES (advanced users) ============

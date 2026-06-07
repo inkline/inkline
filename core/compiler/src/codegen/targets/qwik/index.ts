@@ -20,6 +20,7 @@ import {
   classMergeExpr,
   rootAcceptsFallthrough,
 } from "../../shared/fallthrough.ts";
+import { unwrapRootExpr } from "../../shared/root-expr.ts";
 import { assertNever } from "../../../core/assert.ts";
 
 const REWRITES: RewriteRules = {
@@ -504,7 +505,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
           ...body,
           cRaw({ text: "" }),
           cStmt({ body: "return (" }),
-          renderTree,
+          unwrapRootExpr(renderTree),
           cStmt({ body: ")" }),
         ],
       }),

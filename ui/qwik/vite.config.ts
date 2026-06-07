@@ -16,12 +16,16 @@ export default defineConfig(() => {
       target: "es2020",
       outDir: "dist",
       lib: {
-        entry: "./src/index.ts",
+        entry: {
+          index: "./src/index.ts",
+          headless: "./src/headless.ts",
+          stories: "./src/stories.ts",
+        },
         formats: ["es"],
-        fileName: (format) => `index.qwik.${format === "es" ? "mjs" : "cjs"}`,
+        fileName: (format, entryName) => `${entryName}.qwik.${format === "es" ? "mjs" : "cjs"}`,
       },
       rollupOptions: {
-        external: [/^@qwik\.dev\/core/],
+        external: [/^@inkline\//, /^@qwik\.dev\/core/],
       },
     },
   };

@@ -8,6 +8,8 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.js",
+    "./headless": "./dist/headless.js",
+    "./stories": "./dist/stories.js",
     "./package.json": "./package.json"
   },
   "publishConfig": {

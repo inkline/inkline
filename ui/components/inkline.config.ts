@@ -14,4 +14,9 @@ export default defineConfig({
     astro: "../astro/.inkline",
   },
   sourceMap: "external",
+  barrels: [
+    { file: "index.ts", match: "styled" },
+    { file: "headless.ts", match: "headless" },
+    { file: "stories.ts", match: "stories", mode: "namespace" },
+  ],
 });

@@ -55,6 +55,27 @@ describe("Conditional: Show/when/fallback control flow", () => {
 });
 
 // ---------------------------------------------------------------------------
+// RootConditional: a <Show> that is the component's entire render
+// ---------------------------------------------------------------------------
+describe("RootConditional: conditional as the root render node", () => {
+  // A brace-wrapped ternary is a JSX expression *container* — valid only as a child of a JSX
+  // element. At the root of `return (…)` the braces would parse as an object literal, so JSX targets
+  // that lower <Show> to a ternary must emit it bare. Regression test for the input control's build
+  // failure ("Expected `,` or `}` but found `.`").
+  it("React: bare ternary inside return, not wrapped in {…}", async () => {
+    const out = await code("RootConditional", "react");
+    expect(out).toContain("return (\nprops.textarea ? <textarea /> : <input />)");
+    expect(out).not.toContain("return (\n{");
+  });
+
+  it("Qwik: bare ternary inside return, not wrapped in {…}", async () => {
+    const out = await code("RootConditional", "qwik");
+    expect(out).toContain("return (\nprops.textarea ? (<><textarea /></>) : (<><input /></>))");
+    expect(out).not.toContain("return (\n{");
+  });
+});
+
+// ---------------------------------------------------------------------------
 // SwitchTabs: <Switch>/<Match> control flow
 // ---------------------------------------------------------------------------
 describe("SwitchTabs: Switch/Match control flow", () => {

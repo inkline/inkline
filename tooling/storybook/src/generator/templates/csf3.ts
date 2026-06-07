@@ -1,6 +1,6 @@
 import type { LoadedStoryModule, ResolvedRenderImport } from "../index.ts";
 import type { FrameworkConfig } from "../config.ts";
-import { BANNER, assertIdentifier, serializeArgs } from "./shared.ts";
+import { BANNER, assertIdentifier, renderImportLines, serializeArgs } from "./shared.ts";
 
 export function renderCsf3(
   storyModule: LoadedStoryModule,
@@ -23,14 +23,7 @@ export function renderCsf3(
 
   lines.push(`import { ${meta.component} } from "${framework.componentPackage}";`);
 
-  for (const ri of renderImports) {
-    assertIdentifier(ri.localName, "render import");
-    if (framework.hasDefaultExport) {
-      lines.push(`import ${ri.localName} from "${ri.importPath}";`);
-    } else {
-      lines.push(`import { ${ri.exportedName} as ${ri.localName} } from "${ri.importPath}";`);
-    }
-  }
+  lines.push(...renderImportLines(renderImports, framework.hasDefaultExport));
 
   lines.push(
     "",

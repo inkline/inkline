@@ -8,6 +8,8 @@
   "sideEffects": false,
   "exports": {
     ".": "./dist/index.qwik.mjs",
+    "./headless": "./dist/headless.qwik.mjs",
+    "./stories": "./dist/stories.qwik.mjs",
     "./package.json": "./package.json"
   },
   "publishConfig": {

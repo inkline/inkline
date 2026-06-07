@@ -98,6 +98,32 @@ describe("renderAngular", () => {
     );
   });
 
+  it("deduplicates the import when two stories share one render source", () => {
+    const mod: LoadedStoryModule = {
+      meta: { component: "IInput", title: "Components/Input" },
+      stories: {
+        Default: { render: "./prefixSuffix.ink.tsx" },
+        PrefixSuffix: { render: "./prefixSuffix.ink.tsx" },
+      },
+      sourcePath: "/fake/IInput.stories.ts",
+    };
+    const shared: ResolvedRenderImport = {
+      localName: "PrefixSuffixStory",
+      exportedName: "prefixSuffixComponent",
+      importPath: "../generated/input/stories/prefixSuffix.component.ts",
+      selector: "prefixSuffix",
+      storyName: "Default",
+    };
+    const renderImports: ResolvedRenderImport[] = [
+      shared,
+      { ...shared, storyName: "PrefixSuffix" },
+    ];
+    const out = renderAngular(mod, angular, renderImports);
+    expect(out.match(/import { prefixSuffixComponent as PrefixSuffixStory }/g)).toHaveLength(1);
+    expect(out).toContain("export const Default: Story = { render: () =>");
+    expect(out).toContain("export const PrefixSuffix: Story = { render: () =>");
+  });
+
   it("validates component and story identifiers", () => {
     const badComponent: LoadedStoryModule = {
       meta: { component: "x-y", title: "X" },

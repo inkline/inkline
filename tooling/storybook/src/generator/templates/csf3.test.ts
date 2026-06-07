@@ -110,6 +110,39 @@ describe("renderCsf3", () => {
     );
   });
 
+  it("deduplicates the import when two stories share one render source", () => {
+    const mod: LoadedStoryModule = {
+      meta: { component: "IInput", title: "Components/Input" },
+      stories: {
+        Default: { render: "./prefixSuffix.ink.tsx" },
+        PrefixSuffix: { render: "./prefixSuffix.ink.tsx" },
+      },
+      sourcePath: "/fake/IInput.stories.ts",
+    };
+    const shared: ResolvedRenderImport = {
+      localName: "PrefixSuffixStory",
+      exportedName: "prefixSuffix",
+      importPath: "./prefixSuffix.tsx",
+      selector: "prefixSuffix",
+      storyName: "Default",
+    };
+    const renderImports: ResolvedRenderImport[] = [
+      shared,
+      { ...shared, storyName: "PrefixSuffix" },
+    ];
+    const out = renderCsf3(mod, react, renderImports);
+    const importCount = out.split("\n").filter((l) => l.includes("PrefixSuffixStory")).length;
+    // One import line + two render expressions reference the binding (3 lines total, not 4).
+    expect(out.match(/import { prefixSuffix as PrefixSuffixStory }/g)).toHaveLength(1);
+    expect(importCount).toBe(3);
+    expect(out).toContain(
+      "export const Default: Story = { render: () => createElement(PrefixSuffixStory) };",
+    );
+    expect(out).toContain(
+      "export const PrefixSuffix: Story = { render: () => createElement(PrefixSuffixStory) };",
+    );
+  });
+
   it("omits framework import when no render stories exist", () => {
     const out = renderCsf3(buttonModule, react, []);
     expect(out).not.toContain("createElement");

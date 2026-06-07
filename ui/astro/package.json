@@ -11,6 +11,14 @@
       "types": "./dist/index.d.mts",
       "default": "./dist/index.mjs"
     },
+    "./headless": {
+      "types": "./dist/headless.d.mts",
+      "default": "./dist/headless.mjs"
+    },
+    "./stories": {
+      "types": "./dist/stories.d.mts",
+      "default": "./dist/stories.mjs"
+    },
     "./css": "./dist/index.css",
     "./package.json": "./package.json"
   },

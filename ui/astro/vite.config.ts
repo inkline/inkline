@@ -10,8 +10,12 @@ export default defineConfig({
     }),
   ],
   pack: {
-    entry: { index: "./.inkline/index.ts" },
-    deps: { neverBundle: [/\.astro$/] },
+    entry: {
+      index: "./.inkline/index.ts",
+      headless: "./.inkline/headless.ts",
+      stories: "./.inkline/stories.ts",
+    },
+    deps: { neverBundle: [/\.astro$/, /^@inkline\//, /^@storybook-astro\//] },
     copy: [{ from: "./.inkline/*.astro", to: "dist/" }],
   },
 });

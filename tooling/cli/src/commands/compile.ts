@@ -1,20 +1,94 @@
 import { defineCommand } from "citty";
-import { readFileSync, mkdirSync, rmSync, watch } from "node:fs";
-import { resolve, basename, extname, dirname, join } from "node:path";
+import { readFileSync, mkdirSync, rmSync, watch, type FSWatcher } from "node:fs";
+import { resolve, basename, extname, dirname, join, relative, sep } from "node:path";
 import {
   compile,
   compileIncremental,
   createIncrementalState,
+  type BarrelGroup,
   type TargetName,
   type IncrementalState,
 } from "@inkline/compiler";
-import { activeFrameworks, generate } from "@inkline/storybook/generator";
+import { activeFrameworks, generate, type GeneratedFile } from "@inkline/storybook/generator";
 import { loadInklineConfig } from "../lib/config.ts";
 import { expandGlobs } from "../lib/glob.ts";
 import { commonPrefix } from "../lib/common-prefix.ts";
-import { generateBarrel, resolveTargetDir, type BarrelEntry } from "../lib/barrel.ts";
+import {
+  collectBarrelEntry,
+  generateNamedBarrel,
+  generateNamespaceBarrel,
+  resolveTargetDir,
+  type BarrelEntry,
+  type BarrelMap,
+} from "../lib/barrel.ts";
 import { formatDiagnostic } from "../lib/diagnostics.ts";
 import { writeCompileOutput, writeIfChanged, writeOutput } from "../lib/writer.ts";
+
+/**
+ * Legacy default when a config declares no `barrels`: a single `index.ts` re-exporting every
+ * non-story component. The empty-string `match` is the sentinel for "any non-story directory".
+ */
+const DEFAULT_BARRELS: readonly BarrelGroup[] = [{ file: "index.ts", match: "" }];
+
+/** Ensure every configured named barrel exists for each target that produced output (empty if unmatched). */
+export function seedNamedBarrels(
+  barrelEntries: BarrelMap,
+  namedGroups: readonly BarrelGroup[],
+): void {
+  for (const byFile of barrelEntries.values()) {
+    for (const group of namedGroups) {
+      if (!byFile.has(group.file)) byFile.set(group.file, []);
+    }
+  }
+}
+
+/**
+ * Seed the configured named barrels, then write each one. The one-shot build writes unconditionally
+ * (`writeOutput`); the watcher writes only on change (`writeIfChanged`). Sharing one implementation
+ * keeps the two paths from drifting on which barrels exist or how their entries are ordered.
+ */
+export function flushNamedBarrels(
+  barrelEntries: BarrelMap,
+  namedGroups: readonly BarrelGroup[],
+  write: (path: string, content: string) => void,
+): void {
+  seedNamedBarrels(barrelEntries, namedGroups);
+  for (const [dir, byFile] of barrelEntries) {
+    for (const [file, entries] of byFile) {
+      write(resolve(dir, file), generateNamedBarrel(entries));
+    }
+  }
+}
+
+/**
+ * Write the namespace stories barrel for each target, re-exporting every generated `*.stories.ts`
+ * module under a per-component alias. Targets are derived from the generator output; a barrel is
+ * written per target (empty when that target produced no stories) so the build entry always resolves.
+ */
+export function writeNamespaceBarrels(
+  files: readonly GeneratedFile[],
+  targets: readonly string[],
+  outDir: string,
+  targetOutDir: Partial<Record<string, string>>,
+  namespaceGroup: BarrelGroup,
+  write: (path: string, content: string) => void,
+): void {
+  const byTarget = new Map<string, BarrelEntry[]>();
+  for (const target of targets) {
+    byTarget.set(resolveTargetDir(target, outDir, targetOutDir), []);
+  }
+  for (const file of files) {
+    const targetDir = resolveTargetDir(file.target, outDir, targetOutDir);
+    const componentName = basename(file.path).replace(/\.stories\.ts$/, "");
+    const fileName = relative(targetDir, file.path).split(sep).join("/");
+    const entries = byTarget.get(targetDir) ?? [];
+    entries.push({ componentName, fileName, target: file.target as TargetName });
+    byTarget.set(targetDir, entries);
+  }
+  for (const [targetDir, entries] of byTarget) {
+    write(resolve(targetDir, namespaceGroup.file), generateNamespaceBarrel(entries));
+  }
+}
 
 export default defineCommand({
   meta: { name: "compile", description: "Compile .ink.tsx files and generate stories" },
@@ -46,6 +120,9 @@ export default defineCommand({
     const targets = targetStr.split(",").map((t) => t.trim()) as TargetName[];
     const outDir = fileConfig.outDir ?? args["out-dir"] ?? "dist";
     const targetOutDir = fileConfig.targetOutDir ?? {};
+    const barrels = fileConfig.barrels ?? DEFAULT_BARRELS;
+    const namedGroups = barrels.filter((g) => g.mode !== "namespace");
+    const namespaceGroup = barrels.find((g) => g.mode === "namespace");
     const sourceMap = (args["source-map"] ?? fileConfig.sourceMap ?? "external") as
       | "external"
       | "inline"
@@ -60,7 +137,7 @@ export default defineCommand({
     }
 
     let hasError = false;
-    const barrelEntries = new Map<string, BarrelEntry[]>();
+    const barrelEntries: BarrelMap = new Map();
     const srcDir = args["src-dir"] ?? fileConfig.srcDir;
     const sourcePrefix = srcDir
       ? srcDir.endsWith("/")
@@ -106,20 +183,18 @@ export default defineCommand({
         targetOutDir,
         sourceMap,
         barrelEntries,
+        namedGroups,
         relDir,
         writeOutput,
       );
     }
 
-    for (const [dir, entries] of barrelEntries) {
-      const barrelPath = resolve(dir, "index.ts");
-      writeOutput(barrelPath, generateBarrel(entries));
-    }
+    flushNamedBarrels(barrelEntries, namedGroups, writeOutput);
 
-    await generateStories(targets, targetOutDir, srcDir ?? sourcePrefix);
+    await generateStories(targets, outDir, targetOutDir, srcDir ?? sourcePrefix, namespaceGroup);
 
     if (args.watch) {
-      runWatch(
+      return runWatch(
         resolvedFiles,
         targets,
         outDir,
@@ -129,8 +204,9 @@ export default defineCommand({
         fileConfig,
         sourcePrefix,
         srcDir,
+        namedGroups,
+        namespaceGroup,
       );
-      return;
     }
 
     if (hasError) process.exitCode = 1;
@@ -139,8 +215,11 @@ export default defineCommand({
 
 async function generateStories(
   targets: TargetName[],
+  outDir: string,
   targetOutDir: Partial<Record<string, string>>,
   srcDir: string,
+  namespaceGroup: BarrelGroup | undefined,
+  write: (path: string, content: string) => void = writeOutput,
 ): Promise<void> {
   const targetKeys = Object.keys(targetOutDir);
   if (targetKeys.length === 0) return;
@@ -165,6 +244,16 @@ async function generateStories(
         `Generated ${result.files.length} story file(s) for ${result.components.length} component(s).`,
       );
     }
+    if (namespaceGroup) {
+      writeNamespaceBarrels(
+        result.files,
+        frameworks.map((fw) => fw.target),
+        outDir,
+        targetOutDir,
+        namespaceGroup,
+        write,
+      );
+    }
   } catch (err) {
     console.error(err instanceof Error ? err.message : String(err));
   }
@@ -180,7 +269,9 @@ function runWatch(
   fileConfig: Partial<import("@inkline/compiler").InklineConfig>,
   sourcePrefix: string,
   srcDir: string | undefined,
-): void {
+  namedGroups: readonly BarrelGroup[],
+  namespaceGroup: BarrelGroup | undefined,
+): FSWatcher {
   console.log(`Watching ${files.length} file(s) for changes...\n`);
   let state: IncrementalState = createIncrementalState();
   let compileTimer: ReturnType<typeof setTimeout> | undefined;
@@ -209,7 +300,7 @@ function runWatch(
       console.error(formatDiagnostic(d));
     }
 
-    const barrelEntries = new Map<string, BarrelEntry[]>();
+    const barrelEntries: BarrelMap = new Map();
 
     for (const [sourceFile, compileResult] of result.nextState.results) {
       const relDir = dirname(sourceFile).slice(resolve(sourcePrefix).length + 1);
@@ -226,20 +317,23 @@ function runWatch(
             writeIfChanged(`${outPath}.map`, file.sourceMap);
           }
 
-          if (!file.path.endsWith(".css")) {
-            const componentName = basename(file.path).split(".")[0]!;
-            const relFileName = relDir ? join(relDir, file.path) : file.path;
-            const entries = barrelEntries.get(targetDir) ?? [];
-            entries.push({ componentName, fileName: relFileName, target: target as TargetName });
-            barrelEntries.set(targetDir, entries);
-          }
+          const componentName = basename(file.path).split(".")[0]!;
+          const relFileName = relDir ? join(relDir, file.path) : file.path;
+          collectBarrelEntry(
+            barrelEntries,
+            targetDir,
+            relDir,
+            file.path,
+            relFileName,
+            componentName,
+            target as TargetName,
+            namedGroups,
+          );
         }
       }
     }
 
-    for (const [dir, entries] of barrelEntries) {
-      writeIfChanged(resolve(dir, "index.ts"), generateBarrel(entries));
-    }
+    flushNamedBarrels(barrelEntries, namedGroups, writeIfChanged);
 
     if (result.changed.length > 0) {
       console.log(`Rebuilt ${result.changed.length} file(s), skipped ${result.skipped.length}`);
@@ -248,15 +342,20 @@ function runWatch(
 
   const resolvedSrcDir = resolve(srcDir ?? sourcePrefix);
 
-  watch(resolvedSrcDir, { recursive: true }, (_event, filename) => {
+  return watch(resolvedSrcDir, { recursive: true }, (_event, filename) => {
     if (!filename) return;
 
     if (filename.endsWith(".ink.stories.ts") || filename.endsWith(".ink.stories.tsx")) {
       if (storyTimer) clearTimeout(storyTimer);
       storyTimer = setTimeout(() => {
-        generateStories(targets, targetOutDir, srcDir ?? sourcePrefix).catch((err) =>
-          console.error("Story generation error:", err),
-        );
+        generateStories(
+          targets,
+          outDir,
+          targetOutDir,
+          srcDir ?? sourcePrefix,
+          namespaceGroup,
+          writeIfChanged,
+        ).catch((err) => console.error("Story generation error:", err));
       }, 150);
     } else if (filename.endsWith(".ink.tsx")) {
       if (compileTimer) clearTimeout(compileTimer);
