@@ -1,0 +1,497 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`angular full output snapshots > BatchUpdates 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'BatchUpdates', template: \`<div>
+<span>
+{{ sum() }}
+</span>
+<button (click)="x.set(x() + 1); y.set(y() + 1);">
+Both
+</button>
+</div>\` })
+export class BatchUpdatesComponent
+{
+x = signal(0)
+y = signal(0)
+sum = computed(() => this.x() + this.y())
+}
+"
+`;
+
+exports[`angular full output snapshots > Composite 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'Composite', template: \`<div>
+<span id="sum">
+{{ sum() }}
+</span>
+<button id="incX" (click)="x.set(x() + 1)">
++X
+</button>
+<button id="incY" (click)="y.set(y() + 1)">
++Y
+</button>
+</div>\` })
+export class CompositeComponent
+{
+x = signal(1)
+y = signal(2)
+sum = computed(() => this.x() + this.y())
+constructor() { effect(() => { console.log('sum:', this.sum()); }) }
+}
+"
+`;
+
+exports[`angular full output snapshots > Conditional 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'Conditional', template: \`<div>
+@if (visible()) {
+<span>
+Visible
+</span>
+} @else {
+<span>
+Hidden
+</span>
+}
+<button (click)="visible.set(!visible())">
+Toggle
+</button>
+</div>\` })
+export class ConditionalComponent
+{
+visible = signal(true)
+}
+"
+`;
+
+exports[`angular full output snapshots > ConditionalClass 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'ConditionalClass', template: \`<div [class]="active() ? 'active' : 'inactive'">
+<button (click)="active.set(!active())">
+Toggle
+</button>
+</div>\` })
+export class ConditionalClassComponent
+{
+active = signal(false)
+}
+"
+`;
+
+exports[`angular full output snapshots > ControlledSelect 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'ControlledSelect', template: \`<select [value]="value()" (change)="value.set($event.target.value)">
+<option value="a">
+A
+</option>
+<option value="b">
+B
+</option>
+<option value="c">
+C
+</option>
+</select>\` })
+export class ControlledSelectComponent
+{
+value = signal('b')
+}
+"
+`;
+
+exports[`angular full output snapshots > ControlledTextarea 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'ControlledTextarea', template: \`<div>
+<textarea [value]="text()" (input)="text.set($event.target.value)" />
+<p>
+{{ text().length }}
+characters
+</p>
+</div>\` })
+export class ControlledTextareaComponent
+{
+text = signal('')
+}
+"
+`;
+
+exports[`angular full output snapshots > Counter 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'Counter', template: \`<div>
+<p>
+{{ count() }}
+</p>
+<p>
+{{ doubled() }}
+</p>
+<button (click)="count.set(count() + 1)">
++1
+</button>
+</div>\` })
+export class CounterComponent
+{
+count = signal(0)
+doubled = computed(() => this.count() * 2)
+constructor() { effect(() => { console.log('count:', this.count()); }) }
+}
+"
+`;
+
+exports[`angular full output snapshots > DefineSlotBasic 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'DefineSlotBasic', template: \`<div>
+<header>
+<ng-content select="[slot=header]"></ng-content>
+</header>
+<main>
+<ng-content></ng-content>
+</main>
+</div>\` })
+export class DefineSlotBasicComponent
+{
+}
+"
+`;
+
+exports[`angular full output snapshots > DynamicList 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'DynamicList', template: \`<div>
+<input [value]="input()" (input)="input.set($event.target.value)" />
+<button (click)="items.set([...items(), input()]); input.set('')">
+Add
+</button>
+<ul>
+@for (item of items(); track i; let i = $index) {
+<li>
+{{ item }}
+</li>
+}
+</ul>
+</div>\` })
+export class DynamicListComponent
+{
+items = signal([])
+input = signal('')
+}
+"
+`;
+
+exports[`angular full output snapshots > EffectCleanup 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'EffectCleanup', template: \`<button (click)="active.set(!active())">
+Toggle
+</button>\` })
+export class EffectCleanupComponent
+{
+active = signal(true)
+constructor() { effect(() => { if (this.active()) { const id = setInterval(() => console.log('tick'), 1000); return () => clearInterval(id); } }) }
+}
+"
+`;
+
+exports[`angular full output snapshots > ElementRef 1`] = `
+"import { Component, signal, computed, effect, afterNextRender, viewChild, ElementRef } from "@angular/core";
+@Component({ standalone: true, selector: 'ElementRef', template: \`<input placeholder="auto-focus" #inputRef />\` })
+export class ElementRefComponent
+{
+constructor() { afterNextRender(() => { this.inputRef()?.focus(); }) }
+inputRef = viewChild<ElementRef>('inputRef')
+}
+"
+`;
+
+exports[`angular full output snapshots > ForLoop 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'ForLoop', template: \`<ul>
+@for (item of items(); track item) {
+<li>
+{{ item }}
+</li>
+}
+</ul>\` })
+export class ForLoopComponent
+{
+items = signal(['Apple', 'Banana', 'Cherry'])
+}
+"
+`;
+
+exports[`angular full output snapshots > FormField 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'FormField', template: \`<div>
+<input [value]="value()" (input)="value.set($event.target.value)" />
+<p>
+{{ value() }}
+</p>
+</div>\` })
+export class FormFieldComponent
+{
+value = signal('')
+}
+"
+`;
+
+exports[`angular full output snapshots > IButton 1`] = `
+"import { Component, signal, computed, effect, input } from "@angular/core";
+@Component({ standalone: true, selector: 'IButton', template: \`<button [disabled]="disabled()">
+{{ label() }}
+</button>\` })
+export class IButtonComponent
+{
+label = input.required<string>()
+disabled = input<boolean>()
+}
+"
+`;
+
+exports[`angular full output snapshots > Lifecycle 1`] = `
+"import { Component, signal, computed, effect, afterNextRender, inject, DestroyRef } from "@angular/core";
+@Component({ standalone: true, selector: 'Lifecycle', template: \`<span>
+{{ mounted() ? 'mounted' : 'pending' }}
+</span>\` })
+export class LifecycleComponent
+{
+mounted = signal(false)
+constructor() { afterNextRender(() => { this.mounted.set(true); }); inject(DestroyRef).onDestroy(() => { console.log('cleanup'); }) }
+}
+"
+`;
+
+exports[`angular full output snapshots > MemoChain 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'MemoChain', template: \`<div>
+<span>
+{{ label() }}
+</span>
+<button (click)="base.set(base() + 1)">
++1
+</button>
+</div>\` })
+export class MemoChainComponent
+{
+base = signal(1)
+doubled = computed(() => this.base() * 2)
+quadrupled = computed(() => this.doubled() * 2)
+label = computed(() => \`Value: \${this.quadrupled()}\`)
+}
+"
+`;
+
+exports[`angular full output snapshots > MixedControlFlow 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'MixedControlFlow', template: \`<div>
+<input [value]="filter()" (input)="filter.set($event.target.value)" />
+<ul>
+@for (item of items(); track item) {
+@if (item.includes(filter())) {
+<li>
+{{ item }}
+</li>
+}
+}
+</ul>
+</div>\` })
+export class MixedControlFlowComponent
+{
+items = signal(['a', 'b', 'c'])
+filter = signal('')
+}
+"
+`;
+
+exports[`angular full output snapshots > MultiRefs 1`] = `
+"import { Component, signal, computed, effect, afterNextRender, viewChild, ElementRef } from "@angular/core";
+@Component({ standalone: true, selector: 'MultiRefs', template: \`<div>
+<input placeholder="focus me" #inputRef />
+<button #buttonRef>
+Click
+</button>
+</div>\` })
+export class MultiRefsComponent
+{
+constructor() { afterNextRender(() => { this.inputRef()?.focus(); }) }
+inputRef = viewChild<ElementRef>('inputRef')
+buttonRef = viewChild<ElementRef>('buttonRef')
+}
+"
+`;
+
+exports[`angular full output snapshots > MultipleComponentsPerFile 1`] = `
+"import { Component, signal, computed, effect, input } from "@angular/core";
+@Component({ standalone: true, selector: 'Label', template: \`<span>
+{{ text() }}
+</span>\` })
+export class LabelComponent
+{
+text = input.required<string>()
+}
+"
+`;
+
+exports[`angular full output snapshots > PropDefaults 1`] = `
+"import { Component, signal, computed, effect, input } from "@angular/core";
+@Component({ standalone: true, selector: 'PropDefaults', template: \`<div [style]="\\\`color: \\\${color()}\\\`">
+{{ size() }}
+</div>\` })
+export class PropDefaultsComponent
+{
+color = input<string>('blue')
+size = input.required<number>()
+}
+"
+`;
+
+exports[`angular full output snapshots > SlotBasic 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'SlotBasic', template: \`<div>
+<ng-content></ng-content>
+</div>\` })
+export class SlotBasicComponent
+{
+}
+"
+`;
+
+exports[`angular full output snapshots > SlotInConditional 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'SlotInConditional', template: \`<div>
+<ng-content select="[slot=header]"></ng-content>
+@if (expanded()) {
+<ng-content></ng-content>
+}
+</div>\` })
+export class SlotInConditionalComponent
+{
+expanded = signal(true)
+}
+"
+`;
+
+exports[`angular full output snapshots > SlotNamed 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'SlotNamed', template: \`<div>
+<header>
+<ng-content select="[slot=header]"></ng-content>
+</header>
+<main>
+<ng-content></ng-content>
+</main>
+<footer>
+<ng-content select="[slot=footer]"></ng-content>
+</footer>
+</div>\` })
+export class SlotNamedComponent
+{
+}
+"
+`;
+
+exports[`angular full output snapshots > SlotScoped 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'SlotScoped', template: \`<ul>
+@for (item of items(); track item.id; let index = $index) {
+<li>
+<!-- scoped slot 'item': args are not projectable in Angular; rendering default content -->
+{{ index }}
+:
+{{ item.label }}
+</li>
+}
+</ul>\` })
+export class SlotScopedComponent
+{
+items = signal([{ id: 1, label: 'One' }, { id: 2, label: 'Two' }])
+}
+"
+`;
+
+exports[`angular full output snapshots > SlotScopedSingle 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'SlotScopedSingle', template: \`<div>
+<!-- scoped slot 'default': args are not projectable in Angular; rendering default content -->
+<span>
+{{ value() }}
+</span>
+</div>\` })
+export class SlotScopedSingleComponent
+{
+value = signal('hello')
+}
+"
+`;
+
+exports[`angular full output snapshots > SlotWithDefault 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'SlotWithDefault', template: \`<div>
+<main>
+<ng-content><p>
+Default content
+</p></ng-content>
+</main>
+<footer>
+<ng-content select="[slot=actions]"><span>
+Action area
+</span></ng-content>
+</footer>
+</div>\` })
+export class SlotWithDefaultComponent
+{
+}
+"
+`;
+
+exports[`angular full output snapshots > SlotWithFallback 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'SlotWithFallback', template: \`<div>
+<ng-content select="[slot=header]"><h1>
+Default Header
+</h1></ng-content>
+<ng-content>Default body content</ng-content>
+</div>\` })
+export class SlotWithFallbackComponent
+{
+}
+"
+`;
+
+exports[`angular full output snapshots > SwitchTabs 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'SwitchTabs', template: \`<div>
+@if (tab() === 'a') {
+<p>
+Tab A
+</p>
+}@else if (tab() === 'b') {
+<p>
+Tab B
+</p>
+}
+<button (click)="tab.set(tab() === 'a' ? 'b' : 'a')">
+Switch
+</button>
+</div>\` })
+export class SwitchTabsComponent
+{
+tab = signal('a')
+}
+"
+`;
+
+exports[`angular multi-component files > ComponentRef (all files) 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'Child', template: \`<div>
+Child
+</div>\` })
+export class ChildComponent
+{
+}
+
+import { Component, signal, computed, effect, afterNextRender, viewChild, ElementRef } from "@angular/core";
+@Component({ standalone: true, selector: 'ComponentRef', template: \`<Child></Child>\` })
+export class ComponentRefComponent
+{
+constructor() { afterNextRender(() => { console.log(this.childRef()); }) }
+childRef = viewChild<ElementRef>('childRef')
+}
+"
+`;

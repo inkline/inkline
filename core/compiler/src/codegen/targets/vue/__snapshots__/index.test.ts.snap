@@ -1,0 +1,90 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`vue emit + print > Counter component 1`] = `
+"<script setup lang="ts">
+  import { ref, computed, watchEffect } from "vue";
+  const count = ref(0)
+  const doubled = computed(() => count.value * 2)
+  watchEffect(() => { console.log("effect"); })
+</script>
+<template>
+<div>
+  <p>
+    {{ count }}
+  </p>
+  <button @click="() => count = count + 1">
+    +1
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`vue emit + print > defineProps with types 1`] = `
+"<script setup lang="ts">
+  import { ref, computed, watchEffect } from "vue";
+  const props = defineProps<{ label; disabled? }>()
+  const count = ref(0)
+  const doubled = computed(() => count.value * 2)
+  watchEffect(() => { console.log("effect"); })
+</script>
+<template>
+<div />
+</template>
+"
+`;
+
+exports[`vue emit + print > emits the appear prop on a transition 1`] = `
+"<script setup lang="ts">
+  import { ref, computed, watchEffect } from "vue";
+  const count = ref(0)
+  const doubled = computed(() => count.value * 2)
+  watchEffect(() => { console.log("effect"); })
+</script>
+<template>
+<div>
+  <Transition name="slide" appear="">
+    <div v-if="show">
+      Content
+    </div>
+    <template v-else>
+      Hidden
+    </template>
+  </Transition>
+</div>
+</template>
+"
+`;
+
+exports[`vue emit + print > ref() for element ref 1`] = `
+"<script setup lang="ts">
+  import { ref, computed, watchEffect } from "vue";
+  const count = ref(0)
+  const doubled = computed(() => count.value * 2)
+  watchEffect(() => { console.log("effect"); })
+  const inputRef = ref<HTMLInputElement | null>(null)
+</script>
+<template>
+<div />
+</template>
+"
+`;
+
+exports[`vue emit + print > wraps a transition child in <Transition> 1`] = `
+"<script setup lang="ts">
+  import { ref, computed, watchEffect } from "vue";
+  const count = ref(0)
+  const doubled = computed(() => count.value * 2)
+  watchEffect(() => { console.log("effect"); })
+</script>
+<template>
+<div>
+  <Transition name="fade">
+    <p v-if="visible">
+      Hello
+    </p>
+  </Transition>
+</div>
+</template>
+"
+`;

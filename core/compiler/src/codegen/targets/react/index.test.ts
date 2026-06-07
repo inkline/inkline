@@ -13,7 +13,6 @@ import {
   createSwitch,
   createText,
 } from "../../../ir/render/builders.ts";
-import type { GeneratedFile, TargetConformanceSpec } from "../../context.ts";
 import { cRaw } from "../../code-ir/builders.ts";
 import {
   counterRender,
@@ -28,14 +27,11 @@ import {
   mockExpr,
   propsLabelDisabled,
   richComp,
+  runInvariants,
   scopedButtonStyle,
   transitionWithIf,
 } from "../../../testing/codegen.ts";
 import { react } from "./index.ts";
-
-function runInvariants(conformance: TargetConformanceSpec, file: GeneratedFile) {
-  return conformance.invariants.flatMap((inv) => inv(file));
-}
 
 describe("react conformance", () => {
   it("uses oxlint with the react plugin", () => {

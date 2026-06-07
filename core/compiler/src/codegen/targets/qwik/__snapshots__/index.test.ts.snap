@@ -1,0 +1,79 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`qwik emit + print > Counter component 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const Counter = component$(() =>
+{
+const count = useSignal(0)
+const doubled = useComputed$(() => count.value * 2)
+useVisibleTask$(() => { console.log("effect"); })
+return (
+<div>
+  <p>
+    {count.value}
+  </p>
+  <button onClick={$(() => count.value = count.value + 1)}>
+    +1
+  </button>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik emit + print > emits an __InkTransition wrapper + helper 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+const __InkTransition = component$((props: { name?: string; appear?: boolean; children?: any }) => {
+  const name = props.name ?? "ink";
+  const ref = useSignal<HTMLDivElement>();
+  const show = useSignal(true);
+  useVisibleTask$(({ track, cleanup }) => {
+    track(() => props.children);
+    const el = ref.value;
+    if (!el) return;
+    const active = !!props.children;
+    if (active) {
+      el.classList.add(name + "-enter-from", name + "-enter-active");
+      requestAnimationFrame(() => { el.classList.remove(name + "-enter-from"); el.classList.add(name + "-enter-to"); });
+      const done = () => { el.classList.remove(name + "-enter-active", name + "-enter-to"); };
+      el.addEventListener("transitionend", done, { once: true });
+    } else if (show.value) {
+      el.classList.add(name + "-leave-from", name + "-leave-active");
+      requestAnimationFrame(() => { el.classList.remove(name + "-leave-from"); el.classList.add(name + "-leave-to"); });
+      const done = () => { el.classList.remove(name + "-leave-active", name + "-leave-to"); show.value = false; };
+      el.addEventListener("transitionend", done, { once: true });
+      const t = setTimeout(done, 1000);
+      cleanup(() => { clearTimeout(t); el.removeEventListener("transitionend", done); });
+    }
+  });
+  return show.value ? <div ref={ref} style={{ display: "contents" }}>{props.children}</div> : null;
+});
+export const Fade = component$(() =>
+{
+const count = useSignal(0)
+const doubled = useComputed$(() => count.value * 2)
+useVisibleTask$(() => { console.log("effect"); })
+return (
+<div>
+  <__InkTransition name="fade">
+    {visible.value ? (<><p>Hello</p></>) : null}
+  </__InkTransition>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik emit + print > props type generation 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const Button = component$((props: { label: unknown; disabled?: unknown } & Record<string, any>) =>
+{
+const count = useSignal(0)
+const doubled = useComputed$(() => count.value * 2)
+useVisibleTask$(() => { console.log("effect"); })
+return (
+<div />
+)
+});
+"
+`;

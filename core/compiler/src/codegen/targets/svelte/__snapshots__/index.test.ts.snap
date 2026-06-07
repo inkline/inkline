@@ -1,0 +1,65 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`svelte emit + print > $props destructuring 1`] = `
+"<script lang="ts">
+  interface Props { label; disabled? }
+  let { label, disabled }: Props = $props()
+  let count = $state(0)
+  let doubled = $derived(count * 2)
+  $effect(() => { console.log("effect"); })
+</script>
+<div />
+"
+`;
+
+exports[`svelte emit + print > Counter component 1`] = `
+"<script lang="ts">
+  let count = $state(0)
+  let doubled = $derived(count * 2)
+  $effect(() => { console.log("effect"); })
+</script>
+<div>
+  <p>
+    {count}
+  </p>
+  <button onclick={() => count = count + 1}>
+    +1
+  </button>
+</div>
+"
+`;
+
+exports[`svelte emit + print > pushes the transition directive into the child element 1`] = `
+"<script lang="ts">
+  let count = $state(0)
+  let doubled = $derived(count * 2)
+  $effect(() => { console.log("effect"); })
+  const __inkTransitionIn = function(node: HTMLElement, { name = "ink" }: { name: string }) {
+      node.classList.add(name + "-enter-from", name + "-enter-active");
+      requestAnimationFrame(() => {
+        node.classList.remove(name + "-enter-from");
+        node.classList.add(name + "-enter-to");
+      });
+      const cs = getComputedStyle(node);
+      const dur = (parseFloat(cs.transitionDuration) || 0.3) * 1000;
+      return { duration: dur, tick() {} };
+    };
+    const __inkTransitionOut = function(node: HTMLElement, { name = "ink" }: { name: string }) {
+      node.classList.add(name + "-leave-from", name + "-leave-active");
+      requestAnimationFrame(() => {
+        node.classList.remove(name + "-leave-from");
+        node.classList.add(name + "-leave-to");
+      });
+      const cs = getComputedStyle(node);
+      const dur = (parseFloat(cs.transitionDuration) || 0.3) * 1000;
+      return { duration: dur, tick() {} };
+    };
+</script>
+<div>
+  {#if visible}<p in:__inkTransitionIn={{ name: "fade" }} out:__inkTransitionOut={{ name: "fade" }}>
+    Hello
+  </p>
+  {/if}
+</div>
+"
+`;

@@ -1,0 +1,178 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`solid emit + print > Counter component 1`] = `
+"import { createSignal, createMemo, createEffect } from "solid-js";
+export default function Counter(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+return (
+<div>
+  <p>
+    {count()}
+  </p>
+  <button onclick={() => setCount(count() + 1)}>
+    +1
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`solid emit + print > Switch with fallback 1`] = `
+"import { createSignal, createMemo, createEffect, Switch, Match } from "solid-js";
+export default function Sw(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+return (
+<div>
+  <Switch fallback={<>default</>}>
+    <Match when={x()}>
+      X
+    </Match>
+    <Match when={y()}>
+      Y
+    </Match>
+  </Switch>
+</div>
+)
+}
+"
+`;
+
+exports[`solid emit + print > emits an __InkTransition wrapper + helper 1`] = `
+"import { createSignal, createMemo, createEffect, onCleanup, Show } from "solid-js";
+function __InkTransition(props: { name?: string; appear?: boolean; children?: any }) {
+  let ref: HTMLDivElement | undefined;
+  const name = () => props.name ?? "ink";
+  const [show, setShow] = createSignal(!!props.children);
+  let prevChildren = props.children;
+  let mounted = false;
+  createEffect(() => {
+    const active = !!props.children;
+    const el = ref;
+    if (!el) return;
+    if (active) {
+      prevChildren = props.children;
+      if (!show()) setShow(true);
+      if (!mounted && !props.appear) { mounted = true; return; }
+      mounted = true;
+      el.classList.add(name() + "-enter-from", name() + "-enter-active");
+      requestAnimationFrame(() => { el.classList.remove(name() + "-enter-from"); el.classList.add(name() + "-enter-to"); });
+      const done = () => { el.classList.remove(name() + "-enter-active", name() + "-enter-to"); el.removeEventListener("transitionend", done); };
+      el.addEventListener("transitionend", done, { once: true });
+    } else if (show()) {
+      el.classList.add(name() + "-leave-from", name() + "-leave-active");
+      requestAnimationFrame(() => { el.classList.remove(name() + "-leave-from"); el.classList.add(name() + "-leave-to"); });
+      const done = () => { el.classList.remove(name() + "-leave-active", name() + "-leave-to"); el.removeEventListener("transitionend", done); setShow(false); };
+      el.addEventListener("transitionend", done, { once: true });
+      const t = setTimeout(done, 1000);
+      onCleanup(() => { clearTimeout(t); el.removeEventListener("transitionend", done); });
+    }
+  });
+  return <Show when={show()}><div ref={(el) => ref = el} style={{ display: "contents" }}>{props.children ?? prevChildren}</div></Show>;
+}
+export default function Fade(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+return (
+<div>
+  <__InkTransition name="fade">
+    <Show when={visible()}>
+      <p>
+        Hello
+      </p>
+    </Show>
+  </__InkTransition>
+</div>
+)
+}
+"
+`;
+
+exports[`solid emit + print > let declaration for ref 1`] = `
+"import { createSignal, createMemo, createEffect } from "solid-js";
+export default function Form(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+let inputRef: HTMLInputElement | undefined
+return (
+<div />
+)
+}
+"
+`;
+
+exports[`solid emit + print > multi-branch If emits nested Show 1`] = `
+"import { createSignal, createMemo, createEffect, Show } from "solid-js";
+export default function Multi(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+return (
+<div>
+  <Show when={a()} fallback={<><Show when={b()} fallback={<><Show when={c()} fallback={<>fallback</>}>C</Show></>}>B</Show></>}>
+    A
+  </Show>
+</div>
+)
+}
+"
+`;
+
+exports[`solid emit + print > preserves reactive calls in a compound expression 1`] = `
+"import { createSignal, createMemo, createEffect } from "solid-js";
+export default function Compound(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+return (
+<p>
+  {count() * 2}
+</p>
+)
+}
+"
+`;
+
+exports[`solid emit + print > single-branch If with fallback 1`] = `
+"import { createSignal, createMemo, createEffect, Show } from "solid-js";
+export default function Single(props: Record<string, never>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+return (
+<div>
+  <Show when={ok()} fallback={<>no</>}>
+    yes
+  </Show>
+</div>
+)
+}
+"
+`;
+
+exports[`solid emit + print > typed props 1`] = `
+"import { createSignal, createMemo, createEffect } from "solid-js";
+export default function Button(props: { label; disabled? })
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("effect"); })
+return (
+<div />
+)
+}
+"
+`;

@@ -1,0 +1,551 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`qwik full output snapshots > BatchUpdates 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const BatchUpdates = component$((props) =>
+{
+const x = useSignal(0)
+const y = useSignal(0)
+const sum = useComputed$(() => x.value + y.value)
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <span>
+    {sum.value}
+  </span>
+  <button onClick={$(() => { x.value = x.value + 1; y.value = y.value + 1; })}>
+    Both
+  </button>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > Composite 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const Composite = component$((props) =>
+{
+const x = useSignal(1)
+const y = useSignal(2)
+const sum = useComputed$(() => x.value + y.value)
+useVisibleTask$(() => { console.log("sum:", sum.value); })
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <span id="sum">
+    {sum.value}
+  </span>
+  <button id="incX" onClick={$(() => x.value = x.value + 1)}>
+    +X
+  </button>
+  <button id="incY" onClick={$(() => y.value = y.value + 1)}>
+    +Y
+  </button>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > Conditional 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const Conditional = component$((props) =>
+{
+const visible = useSignal(true)
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  {visible.value ? (<><span>Visible</span></>) : (<><span>Hidden</span></>)}
+  <button onClick={$(() => visible.value = !visible.value)}>
+    Toggle
+  </button>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > ConditionalClass 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const ConditionalClass = component$((props) =>
+{
+const active = useSignal(false)
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={[active.value ? "active" : "inactive", props.class].filter(Boolean).join(" ")}>
+  <button onClick={$(() => active.value = !active.value)}>
+    Toggle
+  </button>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > ControlledSelect 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const ControlledSelect = component$((props) =>
+{
+const value = useSignal("b")
+const { ...__attrs } = props
+return (
+<select {...__attrs} value={value.value} class={props.class} onChange={$(e => value.value = e.target.value)}>
+  <option value="a">
+    A
+  </option>
+  <option value="b">
+    B
+  </option>
+  <option value="c">
+    C
+  </option>
+</select>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > ControlledTextarea 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const ControlledTextarea = component$((props) =>
+{
+const text = useSignal("")
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <textarea value={text.value} onInput={$(e => text.value = e.target.value)} />
+  <p>
+    {text.value.length}
+    characters
+  </p>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > Counter 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const Counter = component$((props) =>
+{
+const count = useSignal(0)
+const doubled = useComputed$(() => count.value * 2)
+useVisibleTask$(() => { console.log("count:", count.value); })
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <p>
+    {count.value}
+  </p>
+  <p>
+    {doubled.value}
+  </p>
+  <button onClick={$(() => count.value = count.value + 1)}>
+    +1
+  </button>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > DefineSlotBasic 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export const DefineSlotBasic = component$((props) =>
+{
+const { header, children, ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <header>
+    <Slot name="header" />
+  </header>
+  <main>
+    <Slot />
+  </main>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > DynamicList 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const DynamicList = component$((props) =>
+{
+const items = useSignal([])
+const input = useSignal("")
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <input value={input.value} onInput={$(e => input.value = e.target.value)} />
+  <button onClick={$(() => { items.value = [...items.value, input.value]; input.value = ""; })}>
+    Add
+  </button>
+  <ul>
+    {items.value.map((item, i) => (<><li>{item}</li></>))}
+  </ul>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > EffectCleanup 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const EffectCleanup = component$((props) =>
+{
+const active = useSignal(true)
+useVisibleTask$(() => { if (active.value) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
+const { ...__attrs } = props
+return (
+<button {...__attrs} class={props.class} onClick={$(() => active.value = !active.value)}>
+  Toggle
+</button>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > ElementRef 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const ElementRef = component$((props) =>
+{
+useVisibleTask$(() => { inputRef.value?.focus(); })
+const inputRef = useSignal(null)
+const { ...__attrs } = props
+return (
+<input {...__attrs} placeholder="auto-focus" class={props.class} ref={inputRef} />
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > ForLoop 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const ForLoop = component$((props) =>
+{
+const items = useSignal(["Apple", "Banana", "Cherry"])
+const { ...__attrs } = props
+return (
+<ul {...__attrs} class={props.class}>
+  {items.value.map((item) => (<><li>{item}</li></>))}
+</ul>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > FormField 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const FormField = component$((props) =>
+{
+const value = useSignal("")
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <input value={value.value} onInput={$(e => value.value = e.target.value)} />
+  <p>
+    {value.value}
+  </p>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > IButton 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const IButton = component$((props: { label: string; disabled?: boolean } & Record<string, any>) =>
+{
+const { label, disabled, ...__attrs } = props
+return (
+<button {...__attrs} disabled={props.disabled} class={props.class}>
+  {props.label}
+</button>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > Lifecycle 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const Lifecycle = component$((props) =>
+{
+const mounted = useSignal(false)
+useVisibleTask$(() => { mounted.value = true; })
+useVisibleTask$(({ cleanup }) => cleanup(() => { console.log("cleanup"); }))
+const { ...__attrs } = props
+return (
+<span {...__attrs} class={props.class}>
+  {mounted.value ? "mounted" : "pending"}
+</span>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > MemoChain 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const MemoChain = component$((props) =>
+{
+const base = useSignal(1)
+const doubled = useComputed$(() => base.value * 2)
+const quadrupled = useComputed$(() => doubled.value * 2)
+const label = useComputed$(() => \`Value: \${quadrupled.value}\`)
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <span>
+    {label.value}
+  </span>
+  <button onClick={$(() => base.value = base.value + 1)}>
+    +1
+  </button>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > MixedControlFlow 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const MixedControlFlow = component$((props) =>
+{
+const items = useSignal(["a", "b", "c"])
+const filter = useSignal("")
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <input value={filter.value} onInput={$(e => filter.value = e.target.value)} />
+  <ul>
+    {items.value.map((item) => (<>{item.includes(filter.value) ? (<><li>{item}</li></>) : null}</>))}
+  </ul>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > MultiRefs 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const MultiRefs = component$((props) =>
+{
+useVisibleTask$(() => { inputRef.value?.focus(); })
+const inputRef = useSignal(null)
+const buttonRef = useSignal(null)
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <input placeholder="focus me" ref={inputRef} />
+  <button ref={buttonRef}>
+    Click
+  </button>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > MultipleComponentsPerFile 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const Label = component$((props: { text: string } & Record<string, any>) =>
+{
+const { text, ...__attrs } = props
+return (
+<span {...__attrs} class={props.class}>
+  {props.text}
+</span>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > PropDefaults 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const PropDefaults = component$((props: { color?: string; size: number } & Record<string, any>) =>
+{
+const { color = "blue", size, ...__attrs } = props
+return (
+<div {...__attrs} style={\`color: \${color}\`} class={props.class}>
+  {props.size}
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > SlotBasic 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export const SlotBasic = component$((props) =>
+{
+const { children, ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <Slot />
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > SlotInConditional 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export const SlotInConditional = component$((props) =>
+{
+const expanded = useSignal(true)
+const { header, children, ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <Slot name="header" />
+  {expanded.value ? (<><Slot /></>) : null}
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > SlotNamed 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export const SlotNamed = component$((props) =>
+{
+const { header, children, footer, ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <header>
+    <Slot name="header" />
+  </header>
+  <main>
+    <Slot />
+  </main>
+  <footer>
+    <Slot name="footer" />
+  </footer>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > SlotScoped 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const SlotScoped = component$((props) =>
+{
+const items = useSignal([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+const { item, ...__attrs } = props
+return (
+<ul {...__attrs} class={props.class}>
+  {items.value.map((item, index) => (<><li><>{index}:{item.label}</></li></>))}
+</ul>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > SlotScopedSingle 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const SlotScopedSingle = component$((props) =>
+{
+const value = useSignal("hello")
+const { children, ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <span>
+    {value.value}
+  </span>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > SlotWithDefault 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export const SlotWithDefault = component$((props) =>
+{
+const { children, actions, ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <main>
+    <Slot>
+      <p>
+        Default content
+      </p>
+    </Slot>
+  </main>
+  <footer>
+    <Slot name="actions">
+      <span>
+        Action area
+      </span>
+    </Slot>
+  </footer>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > SlotWithFallback 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export const SlotWithFallback = component$((props) =>
+{
+const { header, children, ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <Slot name="header">
+    <h1>
+      Default Header
+    </h1>
+  </Slot>
+  <Slot>
+    Default body content
+  </Slot>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > SwitchTabs 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const SwitchTabs = component$((props) =>
+{
+const tab = useSignal("a")
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  {tab.value === "a" ? (<><p>Tab A</p></>) : tab.value === "b" ? (<><p>Tab B</p></>) : null}
+  <button onClick={$(() => tab.value = tab.value === "a" ? "b" : "a")}>
+    Switch
+  </button>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik multi-component files > ComponentRef (all files) 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const Child = component$((props) =>
+{
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  Child
+</div>
+)
+});
+
+import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const ComponentRef = component$((props) =>
+{
+useVisibleTask$(() => { console.log(childRef.value); })
+const childRef = useSignal(null)
+const { ...__attrs } = props
+return (
+<Child {...__attrs} class={props.class} ref={childRef} />
+)
+});
+"
+`;

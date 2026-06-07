@@ -21,10 +21,21 @@ import {
 } from "../ir/render/builders.ts";
 import { createDiagnosticCollector } from "../core/diagnostics/collector.ts";
 import { resolveOptions } from "../core/options.ts";
-import type { CodegenContext, Target, TargetName } from "../codegen/context.ts";
+import type {
+  CodegenContext,
+  GeneratedFile,
+  Target,
+  TargetConformanceSpec,
+  TargetName,
+} from "../codegen/context.ts";
 import { cRaw } from "../codegen/code-ir/builders.ts";
 import { print } from "../codegen/print/printer.ts";
 import { compileFixture, type CompiledFixture } from "./harness.ts";
+
+/** Run a target conformance spec's invariants against a file, returning any diagnostics. */
+export function runInvariants(conformance: TargetConformanceSpec, file: GeneratedFile) {
+  return conformance.invariants.flatMap((inv) => inv(file));
+}
 
 // ── Integration: compile a fixture to a single target ────────────────────────
 

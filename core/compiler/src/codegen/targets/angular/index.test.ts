@@ -1,69 +1,32 @@
 import { describe, it, expect } from "vitest";
 import * as ts from "typescript";
-import { UNKNOWN_LOCATION } from "../../../ir/types.ts";
-import { DYNAMIC_DEPS, SymbolTable, type SymbolId } from "../../../ir/reactivity.ts";
-import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
+import { DYNAMIC_DEPS, type SymbolId } from "../../../ir/reactivity.ts";
+import type { IRComponent } from "../../../ir/render/nodes.ts";
 import {
+  createComponentInstance,
   createElement,
   createExpr,
+  createIf,
   createText,
-  createComponentInstance,
 } from "../../../ir/render/builders.ts";
-import { createDiagnosticCollector } from "../../../core/diagnostics/collector.ts";
-import { resolveOptions } from "../../../core/options.ts";
-import type { CodegenContext } from "../../context.ts";
-import { print } from "../../print/printer.ts";
+import {
+  counterRender,
+  emitCode as emitFor,
+  emitWithCtx,
+  emitWithFile,
+  loc,
+  makeComp,
+  makeCtxWithExternalImport,
+  mockExpr,
+  propsLabelDisabled,
+  richComp,
+  runInvariants,
+  transitionWithIf,
+} from "../../../testing/codegen.ts";
 import { angular } from "./index.ts";
 
-function mockExpr(code: string): ts.Expression {
-  const sf = ts.createSourceFile("t.ts", code, ts.ScriptTarget.Latest, true);
-  return (sf.statements[0] as ts.ExpressionStatement).expression;
-}
-
-const loc = UNKNOWN_LOCATION;
-
-function makeComp(name: string, render: IRNode, overrides?: Partial<IRComponent>): IRComponent {
-  return {
-    kind: "Component",
-    id: `t.tsx#${name}`,
-    name,
-    loc,
-    props: [],
-    slots: [],
-    events: [],
-    state: [],
-    refs: [],
-    memos: [],
-    effects: [],
-    resources: [],
-    provides: [],
-    consumes: [],
-    lifecycle: { onMount: [], onCleanup: [] },
-    setup: [],
-    render,
-    primitives: [],
-    styles: [],
-    runtime: "iso",
-    targetOverrides: {},
-    ...overrides,
-  };
-}
-
-function makeCtx(): CodegenContext {
-  return {
-    diagnostics: createDiagnosticCollector(),
-    options: resolveOptions({ targets: ["angular"] }),
-    symbols: new SymbolTable(),
-    rewrites: angular.rewrites,
-    contexts: [],
-    externalImports: [],
-    componentImports: [],
-    typeDeclarations: [],
-  };
-}
-
 function emitCode(comp: IRComponent): string {
-  return print(angular.emit(comp, makeCtx()).root).code;
+  return emitFor(angular, comp);
 }
 
 describe("Angular codegen fixes", () => {
@@ -290,5 +253,75 @@ describe("Angular codegen fixes", () => {
       // No `resource` runtime symbol is imported anymore.
       expect(code).not.toContain("resource({");
     });
+  });
+});
+
+describe("angular conformance", () => {
+  it("uses eslint with the angular plugin", () => {
+    expect(angular.conformance).toBeDefined();
+    const c = angular.conformance!;
+    expect(c.lint.tool).toBe("eslint");
+    expect(c.lint.config).toContain("angular.eslint.config.js");
+    expect(c.typecheck.dtsImports).toContain("@angular/core");
+    expect(runInvariants(c, { path: "X.ts", contents: "" })).toHaveLength(0);
+    expect(runInvariants(c, { path: "X.tsx", contents: "" })).toHaveLength(1);
+  });
+
+  it("declares no control-flow imports", () => {
+    expect(Object.keys(angular.conformance!.controlFlowImports)).toHaveLength(0);
+  });
+});
+
+describe("angular emit + print", () => {
+  it("Counter component", () => {
+    const { fileName, code } = emitWithFile(angular, richComp("Counter", counterRender));
+    expect(fileName).toBe("Counter.component.ts");
+    expect(code).toMatchSnapshot();
+  });
+
+  it("output contains the @Component decorator", () => {
+    expect(emitCode(richComp("Counter", counterRender))).toContain("@Component");
+  });
+
+  it("output imports from @angular/core", () => {
+    expect(emitCode(richComp("Counter", counterRender))).toContain("@angular/core");
+  });
+
+  it("props type generation", () => {
+    const comp = richComp("Button", createElement({ tag: "div" }), { props: propsLabelDisabled() });
+    expect(emitCode(comp)).toMatchSnapshot();
+  });
+
+  it("control flow: If emits @if/@else if", () => {
+    const ifNode = createIf({
+      branches: [
+        { test: createExpr({ expr: mockExpr("a()") }), body: createText({ value: "A" }) },
+        { test: createExpr({ expr: mockExpr("b()") }), body: createText({ value: "B" }) },
+      ],
+      fallback: createText({ value: "fallback" }),
+    });
+    const code = emitCode(richComp("IfTest", createElement({ tag: "div", children: [ifNode] })));
+    expect(code).toContain("@if");
+    expect(code).toContain("@else if");
+    expect(code).toContain("@else");
+  });
+
+  it("external import appears at the top of the file", () => {
+    const code = emitWithCtx(
+      angular,
+      richComp("Test", createElement({ tag: "div" })),
+      makeCtxWithExternalImport(angular),
+    );
+    expect(code).toContain('import { badge } from "virtual:styleframe";');
+    expect(code.indexOf('"@angular/core"')).toBeLessThan(code.indexOf("virtual:styleframe"));
+  });
+
+  it("transition passes through to the child", () => {
+    const code = emitCode(
+      richComp("Fade", createElement({ tag: "div", children: [transitionWithIf] })),
+    );
+    expect(code).not.toContain("Transition");
+    expect(code).toContain("@if");
+    expect(code).toMatchSnapshot();
   });
 });
