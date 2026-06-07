@@ -77,6 +77,46 @@ describe("slots", () => {
     expect(out.slots[1]!.name).toBe("fallback");
   });
 
+  it("decomposes a JSX-valued attr into structural render nodes (not an opaque Expression)", () => {
+    const ci = createComponentInstance({
+      reference: ident("IButton"),
+      attrs: [
+        {
+          name: "icon",
+          value: createExpr({ expr: mockExpr("<span>star</span>") }),
+          binding: "normal",
+          loc: UNKNOWN_LOCATION,
+        },
+      ],
+      slots: [],
+    });
+    const out = slots(makeComp(ci)).render as IRComponentInstance;
+    expect(out.slots).toHaveLength(1);
+    expect(out.slots[0]!.name).toBe("icon");
+    // Must be a real Element, not an `Expression` wrapping the JSX. An opaque Expression
+    // makes template targets emit a text interpolation (`{{ <span/> }}`). See UXF-12.
+    expect(out.slots[0]!.body.kind).toBe("Element");
+  });
+
+  it("decomposes a JSX component fill (`<Slot/>` re-projection) into a ComponentInstance", () => {
+    const ci = createComponentInstance({
+      reference: ident("IButton"),
+      attrs: [
+        {
+          name: "icon",
+          value: createExpr({ expr: mockExpr('<Slot name="icon" />') }),
+          binding: "normal",
+          loc: UNKNOWN_LOCATION,
+        },
+      ],
+      slots: [],
+    });
+    const out = slots(makeComp(ci)).render as IRComponentInstance;
+    // The control-flow pass (which runs after `slots`) lowers this `Slot` instance to a
+    // SlotPlaceholder; here we only assert `slots` decomposed it past an Expression.
+    expect(out.slots[0]!.body.kind).toBe("ComponentInstance");
+  });
+
   it("keeps non-JSX attrs unchanged", () => {
     const ci = createComponentInstance({
       reference: ident("Button"),
