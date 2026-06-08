@@ -80,6 +80,24 @@ describe("Angular codegen fixes", () => {
       expect(code).toContain("(click)=");
     });
 
+    it("preserves camelCase for multi-word component @Output events", () => {
+      const ci = createComponentInstance({
+        reference: mockExpr("Field") as ts.Identifier,
+        resolved: { module: null, name: "Field" },
+        events: [
+          {
+            name: "onValueChange",
+            handler: createExpr({ expr: mockExpr("(v) => handle(v)") }),
+            loc,
+          },
+        ],
+      });
+      const comp = makeComp("Page", ci);
+      const code = emitCode(comp);
+      expect(code).toContain("(valueChange)=");
+      expect(code).not.toContain("valuechange");
+    });
+
     it("renders slot content", () => {
       const ci = createComponentInstance({
         reference: mockExpr("Card") as ts.Identifier,

@@ -264,7 +264,10 @@ function walkBlock(block: ts.Block, rules: RewriteRules): string {
   return `{ ${lines.join(" ")} }`;
 }
 
-export function rewriteEventName(name: string, rules: RewriteRules): string {
+// `isComponent` distinguishes a callback prop on a component instance (e.g. `onValueChange`) from a
+// native DOM listener (e.g. `oninput`). Component callback props are case-sensitive identifiers, so a
+// `lower`-cased target must preserve their camelCase; only native listeners get lowercased.
+export function rewriteEventName(name: string, rules: RewriteRules, isComponent = false): string {
   const base = name.startsWith("on") ? name.slice(2) : name;
   switch (rules.eventNameCase) {
     case "camel":
@@ -273,7 +276,7 @@ export function rewriteEventName(name: string, rules: RewriteRules): string {
       return `@${base.replace(/[A-Z]/g, (c, i) => (i === 0 ? c.toLowerCase() : `-${c.toLowerCase()}`))}`;
 
     case "lower":
-      return `on${base.toLowerCase()}`;
+      return isComponent ? `on${base}` : `on${base.toLowerCase()}`;
   }
 }
 

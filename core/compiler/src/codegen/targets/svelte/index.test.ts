@@ -2,7 +2,13 @@
 // Real-world `.ink.tsx` → compile assertions live in ./__tests__/.
 
 import { describe, it, expect } from "vitest";
-import { createElement, createExpr, createText } from "../../../ir/render/builders.ts";
+import * as ts from "typescript";
+import {
+  createComponentInstance,
+  createElement,
+  createExpr,
+  createText,
+} from "../../../ir/render/builders.ts";
 import { DYNAMIC_DEPS, type SymbolId } from "../../../ir/reactivity.ts";
 import {
   counterRender,
@@ -10,6 +16,7 @@ import {
   emitWithCtx,
   emitWithFile,
   loc,
+  makeComp,
   makeCtxWithComponentImport,
   makeCtxWithExternalImport,
   mockExpr,
@@ -20,6 +27,34 @@ import {
   transitionWithIf,
 } from "../../../testing/codegen.ts";
 import { svelte } from "./index.ts";
+
+describe("ComponentInstance event casing", () => {
+  it("preserves camelCase callback-prop names on component instances", () => {
+    const ci = createComponentInstance({
+      reference: mockExpr("Field") as ts.Identifier,
+      resolved: { module: null, name: "Field" },
+      events: [
+        {
+          name: "onValueChange",
+          handler: createExpr({ expr: mockExpr("(v) => setValue(v)") }),
+          loc,
+        },
+      ],
+    });
+    const code = emitCode(svelte, makeComp("Page", ci));
+    expect(code).toContain("onValueChange={");
+    expect(code).not.toContain("onvaluechange");
+  });
+
+  it("keeps native DOM event names lowercase on elements", () => {
+    const el = createElement({
+      tag: "input",
+      events: [{ name: "onInput", handler: createExpr({ expr: mockExpr("(e) => setX(e)") }), loc }],
+    });
+    const code = emitCode(svelte, makeComp("Page", el));
+    expect(code).toContain("oninput={");
+  });
+});
 
 describe("svelte conformance", () => {
   it("uses eslint with the svelte plugin", () => {

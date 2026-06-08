@@ -55,6 +55,7 @@ function tmplAttrs(
     readonly acceptsAttrFallthrough?: boolean;
   },
   rules: RewriteRules,
+  isComponent = false,
 ) {
   const fallthrough = node.acceptsAttrFallthrough === true;
   const attrs = node.attrs.map((a: any) => {
@@ -95,7 +96,7 @@ function tmplAttrs(
   }
   const evts = node.events.map((e: any) =>
     cTmplAttr({
-      name: rewriteEventName(e.name, rules),
+      name: rewriteEventName(e.name, rules, isComponent),
       value: { kind: "expr", expr: cExpr({ text: rewriteExpr(e.handler.expr, rules) }) },
     }),
   );
@@ -197,7 +198,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     }
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? node.reference.getText();
-      const { attrs, directives } = tmplAttrs(node, rules);
+      const { attrs, directives } = tmplAttrs(node, rules, true);
       const children: Code[] = [];
       for (const slot of node.slots) {
         if (slot.name === "default") {

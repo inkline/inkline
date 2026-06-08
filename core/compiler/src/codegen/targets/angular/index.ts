@@ -155,9 +155,11 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
         else ciParts.push(`[${name}]="${rewriteExpr(a.value.expr, rules)}"`);
       }
       for (const e of node.events) {
-        ciParts.push(
-          `(${rewriteEventName(e.name, rules).replace(/^on/, "").toLowerCase()})="${angularEventExpr(e.handler.expr, rules)}"`,
-        );
+        // Component `@Output()` names are case-sensitive camelCase (e.g. `valueChange`); only the
+        // leading character is lowercased (`onValueChange` → `valueChange`), never the whole name.
+        const base = rewriteEventName(e.name, rules).replace(/^on/, "");
+        const evName = base.charAt(0).toLowerCase() + base.slice(1);
+        ciParts.push(`(${evName})="${angularEventExpr(e.handler.expr, rules)}"`);
       }
       const ciAttrStr = ciParts.join(" ");
       if (node.slots.length === 0) {

@@ -42,6 +42,7 @@ function jsxAttrs(
     readonly acceptsAttrFallthrough?: boolean;
   },
   rules: RewriteRules,
+  isComponent = false,
 ) {
   const fallthrough = node.acceptsAttrFallthrough === true;
   const out = [];
@@ -98,7 +99,7 @@ function jsxAttrs(
   for (const e of node.events) {
     out.push(
       cJsxAttr({
-        name: rewriteEventName(e.name, rules),
+        name: rewriteEventName(e.name, rules, isComponent),
         value: { kind: "expr", expr: cExpr({ text: rewriteExpr(e.handler.expr, rules) }) },
       }),
     );
@@ -126,7 +127,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     }
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? node.reference.getText();
-      const attrs = jsxAttrs(node, rules);
+      const attrs = jsxAttrs(node, rules, true);
       const children = node.slots.map((s) =>
         s.name === "default"
           ? emitNode(s.body, rules)
