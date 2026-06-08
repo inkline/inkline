@@ -41,17 +41,11 @@ describe("defineModel parsing", () => {
     expect(comp.models[0]!.propName).toBe("value");
   });
 
-  it("synthesizes a value prop and an `update:value` model event", async () => {
+  it("keeps the model out of props/events/state (component.models is the single source)", async () => {
     const comp = (await parse(MODEL_SOURCE)).components[0]!;
-    expect(comp.props.some((p) => p.name === "value")).toBe(true);
-    const ev = comp.events.find((e) => e.name === "update:value");
-    expect(ev).toBeDefined();
-    expect(ev!.kind).toBe("model");
-    expect(ev!.propName).toBe("value");
-  });
-
-  it("does not register the model as local state", async () => {
-    expect((await parse(MODEL_SOURCE)).components[0]!.state).toHaveLength(0);
+    expect(comp.state).toHaveLength(0);
+    expect(comp.props.some((p) => p.name === "value")).toBe(false);
+    expect(comp.events.some((e) => e.name === "update:value")).toBe(false);
   });
 
   it('defaults the prop name to "value" when no argument is given', async () => {
@@ -96,9 +90,7 @@ describe("defineEmits parsing", () => {
       `)
     ).components[0]!;
     expect(comp.emitName).toBe("emit");
-    const ev = comp.events.find((e) => e.name === "press");
-    expect(ev).toBeDefined();
-    expect(ev!.kind ?? "event").toBe("event");
+    expect(comp.events.some((e) => e.name === "press")).toBe(true);
   });
 
   it("records events from the array form", async () => {

@@ -186,6 +186,17 @@ exports[`svelte full output snapshots > ElementRef 1`] = `
 "
 `;
 
+exports[`svelte full output snapshots > EmitButton 1`] = `
+"<script lang="ts">
+  interface Props { onPress?: (...args: any[]) => void }
+  let { onPress, ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<button {...__attrs} class={__attrs.class} onclick={() => onPress?.(1)}>
+  Go
+</button>
+"
+`;
+
 exports[`svelte full output snapshots > ForLoop 1`] = `
 "<script lang="ts">
   let { ...__attrs }: Record<string, any> = $props()
@@ -271,6 +282,20 @@ exports[`svelte full output snapshots > MixedControlFlow 1`] = `
     </li>
     {/if}{/each}
   </ul>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > ModelInput 1`] = `
+"<script lang="ts">
+  interface Props { value?: string; onUpdateValue?: (value: string) => void }
+  let { value = $bindable(), onUpdateValue, ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <input value={value} oninput={e => value = e.target.value} />
+  <p>
+    {value}
+  </p>
 </div>
 "
 `;

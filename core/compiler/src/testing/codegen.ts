@@ -118,6 +118,8 @@ export const NEW_FIXTURES = [
   "SlotScopedSingle",
   "DefineSlotBasic",
   "SlotInConditional",
+  "ModelInput",
+  "EmitButton",
 ] as const;
 
 // ── Unit emit: hand-built IR → emitted source ────────────────────────────────

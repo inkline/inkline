@@ -238,6 +238,21 @@ return (
 "
 `;
 
+exports[`solid full output snapshots > EmitButton 1`] = `
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function EmitButton(props: { onPress?: (...args: any[]) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["onPress"])
+return (
+<button {...__attrs} class={props.class} onclick={() => props.onPress?.(1)}>
+  Go
+</button>
+)
+}
+"
+`;
+
 exports[`solid full output snapshots > ForLoop 1`] = `
 "import { createSignal, splitProps, For } from "solid-js";
 import type { JSX } from "solid-js";
@@ -348,6 +363,24 @@ return (
       {(item) => <Show when={item.includes(filter())}><li>{item}</li></Show>}
     </For>
   </ul>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > ModelInput 1`] = `
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function ModelInput(props: { value?: string; onUpdateValue?: (value: string) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["value", "onUpdateValue"])
+return (
+<div {...__attrs} class={props.class}>
+  <input value={props.value} oninput={e => props.onUpdateValue?.(e.target.value)} />
+  <p>
+    {props.value}
+  </p>
 </div>
 )
 }

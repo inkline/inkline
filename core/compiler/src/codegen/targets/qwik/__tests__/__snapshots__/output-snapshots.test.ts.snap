@@ -221,6 +221,20 @@ return (
 "
 `;
 
+exports[`qwik full output snapshots > EmitButton 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
+export const EmitButton = component$((props: { onPress$?: QRL<(...args: any[]) => void> } & Record<string, any>) =>
+{
+const { onPress$, ...__attrs } = props
+return (
+<button {...__attrs} class={props.class} onClick={$(() => props.onPress$?.(1))}>
+  Go
+</button>
+)
+});
+"
+`;
+
 exports[`qwik full output snapshots > ForLoop 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ForLoop = component$((props) =>
@@ -321,6 +335,23 @@ return (
   <ul>
     {items.value.map((item) => (<>{item.includes(filter.value) ? (<><li>{item}</li></>) : null}</>))}
   </ul>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > ModelInput 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
+export const ModelInput = component$((props: { value?: string; onUpdateValue$?: QRL<(value: string) => void> } & Record<string, any>) =>
+{
+const { value, onUpdateValue$, ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <input value={props.value} onInput={$(e => props.onUpdateValue$?.(e.target.value))} />
+  <p>
+    {props.value}
+  </p>
 </div>
 )
 });

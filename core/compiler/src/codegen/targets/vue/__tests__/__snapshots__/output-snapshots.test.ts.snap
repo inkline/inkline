@@ -205,6 +205,18 @@ exports[`vue full output snapshots > ElementRef 1`] = `
 "
 `;
 
+exports[`vue full output snapshots > EmitButton 1`] = `
+"<script setup lang="ts">
+  const emit = defineEmits(["press"])
+</script>
+<template>
+<button @click='() => emit("press", 1)'>
+  Go
+</button>
+</template>
+"
+`;
+
 exports[`vue full output snapshots > ForLoop 1`] = `
 "<script setup lang="ts">
   import { ref } from "vue";
@@ -300,6 +312,21 @@ exports[`vue full output snapshots > MixedControlFlow 1`] = `
       </li>
     </template>
   </ul>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > ModelInput 1`] = `
+"<script setup lang="ts">
+  const value = defineModel<string>("value")
+</script>
+<template>
+<div>
+  <input :value="value" @input="e => value = e.target.value" />
+  <p>
+    {{ value }}
+  </p>
 </div>
 </template>
 "

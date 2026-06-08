@@ -20,6 +20,8 @@ import {
   rewriteEventName,
   rewriteAttrName,
   extractKeyBody,
+  eventToCallbackProp,
+  callbackPropRules,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import {
@@ -66,6 +68,15 @@ function fallthroughRestBindings(component: IRComponent, rules: RewriteRules): s
   }
   for (const p of component.props) {
     names.add(p.defaultValue ? `${p.name} = ${rewriteExpr(p.defaultValue.expr, rules)}` : p.name);
+  }
+  // Models contribute a value prop + an update callback; emitted events contribute a callback prop.
+  // None may leak onto the root DOM element via the rest spread.
+  for (const m of component.models) {
+    names.add(m.propName);
+    names.add(eventToCallbackProp(`update:${m.propName}`));
+  }
+  for (const ev of component.events) {
+    names.add(eventToCallbackProp(ev.name));
   }
   return [...names];
 }
@@ -388,6 +399,21 @@ function buildPropsType(component: IRComponent): string {
     parts.push(`{ ${slotFields.join("; ")} }`);
   }
 
+  // Models surface a value prop + its update callback; emitted events surface a callback prop. Sourced
+  // from component.models/events so they appear even when props come from an interface (propsTypeText).
+  const emissionFields: string[] = [];
+  for (const m of component.models) {
+    const t = m.typeNode?.getText() ?? "unknown";
+    emissionFields.push(`${m.propName}?: ${t}`);
+    emissionFields.push(`${eventToCallbackProp(`update:${m.propName}`)}?: (value: ${t}) => void`);
+  }
+  for (const ev of component.events) {
+    emissionFields.push(`${eventToCallbackProp(ev.name)}?: (...args: any[]) => void`);
+  }
+  if (emissionFields.length > 0) {
+    parts.push(`{ ${emissionFields.join("; ")} }`);
+  }
+
   // A fallthrough root accepts any host-element attribute the parent passes through.
   if (rootAcceptsFallthrough(component)) {
     parts.push("React.HTMLAttributes<HTMLElement>");
@@ -485,7 +511,11 @@ const REACT_TRANSITION_HELPER = `function __InkTransition({ name = "ink", appear
 // ── Emit entry point ───────────────────────────────────────────────
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const rules = ctx.rewrites;
+  // Model getters read `props.<prop>`, model setters and `emit(…)` call `props.on…?.()` callbacks.
+  const rules: RewriteRules = {
+    ...ctx.rewrites,
+    ...callbackPropRules(component.models, component.emitName),
+  };
   const body: Code[] = [];
   const reactImports: string[] = [];
 

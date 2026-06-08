@@ -235,15 +235,6 @@ export interface IRSlotDeclaration {
 export interface IREventDeclaration {
   readonly name: string;
   readonly payloadType?: ts.TypeNode;
-  /**
-   * `"model"` marks the `update:<prop>` event a {@link IRModelDeclaration} generates (it backs a
-   * two-way-bindable prop). `"event"` (the default) is a plain custom event declared via the `events`
-   * option or `defineEmits`. Codegen handles the two differently (model events drive `v-model`/
-   * `$bindable`/`model()`; plain events become callback props / `defineEmits` / `@Output()`).
-   */
-  readonly kind?: "event" | "model";
-  /** For a model event, the bound prop name (the `update:` suffix). */
-  readonly propName?: string;
   readonly loc: SourceLocation;
 }
 

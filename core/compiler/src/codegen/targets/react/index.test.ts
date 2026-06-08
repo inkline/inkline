@@ -49,6 +49,65 @@ describe("react conformance", () => {
   });
 });
 
+describe("react models + emit", () => {
+  it("reads a model getter as props.<prop> and writes it via an update callback", () => {
+    const comp = makeComp(
+      "Field",
+      createElement({
+        tag: "input",
+        attrs: [
+          createAttribute({ name: "value", value: createExpr({ expr: mockExpr("value()") }) }),
+        ],
+        events: [
+          {
+            name: "onInput",
+            handler: createExpr({ expr: mockExpr("(e) => setValue(e.target.value)") }),
+            loc,
+          },
+        ],
+      }),
+      {
+        models: [
+          {
+            name: "value",
+            setterName: "setValue",
+            propName: "value",
+            getterSymbolId: "g" as SymbolId,
+            setterSymbolId: "s" as SymbolId,
+            loc,
+          },
+        ],
+      },
+    );
+    const code = emitCode(react, comp);
+    expect(code).toContain("value={props.value}");
+    expect(code).toContain("props.onUpdateValue?.(e.target.value)");
+    expect(code).toContain("value?: unknown");
+    expect(code).toContain("onUpdateValue?: (value: unknown) => void");
+    expect(code).not.toContain("useState"); // a model is not local state
+  });
+
+  it("rewrites emit(name, …) to a callback prop", () => {
+    const comp = makeComp(
+      "Btn",
+      createElement({
+        tag: "button",
+        events: [
+          {
+            name: "onClick",
+            handler: createExpr({ expr: mockExpr('() => emit("press", 1)') }),
+            loc,
+          },
+        ],
+      }),
+      { emitName: "emit", events: [{ name: "press", loc }] },
+    );
+    const code = emitCode(react, comp);
+    expect(code).toContain("props.onPress?.(1)");
+    expect(code).toContain("onPress?: (...args: any[]) => void");
+  });
+});
+
 describe("react emit + print", () => {
   it("Counter component", () => {
     const { fileName, code } = emitWithFile(react, richComp("Counter", counterRender));

@@ -98,6 +98,31 @@ export interface RewriteRules {
    * in double-quoted attributes, so string literals must use single quotes (`'a'`).
    */
   readonly stringQuote?: "single" | "double";
+  /**
+   * Model getter local → its read expression (e.g. `value` → `props.value`). A model getter read
+   * `value()` resolves to the bound prop rather than the target's generic reactive read. Set only by
+   * callback-prop targets (React/Solid/Qwik); native-two-way targets (Vue/Svelte/Angular/Astro) read a
+   * model exactly like a signal via {@link reactiveRead}.
+   */
+  readonly modelReads?: ReadonlyMap<string, string>;
+  /**
+   * Model setter local → its callback-prop name (e.g. `setValue` → `onUpdateValue`, with a `$` suffix
+   * for Qwik QRLs). A call `setValue(v)` becomes `props.<callback>?.(v)`. Callback-prop targets only;
+   * native-two-way targets route model setters through {@link setters}.
+   */
+  readonly modelSetters?: ReadonlyMap<string, string>;
+  /**
+   * How to rewrite an `emit(name, …args)` call. `callback-prop` emits
+   * `props.<on+Pascal(name)+suffix>?.(…)`, `angular-output` emits `<name>.emit(…)` (with `this.` in a
+   * class body), `noop` emits `undefined` (static targets). Vue keeps `emit(…)` verbatim and sets no rule.
+   */
+  readonly emit?: {
+    readonly local: string;
+    readonly style: "callback-prop" | "angular-output" | "noop";
+    readonly suffix?: string;
+    /** Access prefix for a callback-prop emit (`props.` for React/Solid/Qwik, `""` for Svelte). */
+    readonly propsAccess?: string;
+  };
 }
 
 export interface ComponentImport {

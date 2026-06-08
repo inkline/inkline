@@ -5,6 +5,39 @@ export function rewriteExpr(expr: ts.Expression, rules: RewriteRules): string {
   return walk(expr, rules);
 }
 
+/** Derive a callback-prop name from an event name: `change` → `onChange`, `update:value` → `onUpdateValue`. */
+export function eventToCallbackProp(name: string): string {
+  return `on${name
+    .split(":")
+    .map((s) => (s ? s[0]!.toUpperCase() + s.slice(1) : s))
+    .join("")}`;
+}
+
+interface ModelLike {
+  readonly name: string;
+  readonly setterName: string;
+  readonly propName: string;
+}
+
+/**
+ * Build the model/emit rewrite rules for a callback-prop target (React/Solid/Qwik): a model getter
+ * reads `props.<prop>`, a model setter and `emit(name, …)` both call a `props.on<Name>[$]?.(…)`
+ * callback. `suffix` is `"$"` for Qwik QRLs, `""` otherwise.
+ */
+export function callbackPropRules(
+  models: readonly ModelLike[],
+  emitName: string | undefined,
+  suffix = "",
+): Pick<RewriteRules, "modelReads" | "modelSetters" | "emit"> {
+  return {
+    modelReads: new Map(models.map((m) => [m.name, `props.${m.propName}`])),
+    modelSetters: new Map(
+      models.map((m) => [m.setterName, `${eventToCallbackProp(`update:${m.propName}`)}${suffix}`]),
+    ),
+    emit: emitName ? { local: emitName, style: "callback-prop", suffix } : undefined,
+  };
+}
+
 const tsPrinter = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
 const emptySF = ts.createSourceFile("_gen.tsx", "", ts.ScriptTarget.ESNext);
 
@@ -52,6 +85,9 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
           return `${self}${expr.text}.${rules.reactiveRead.field}`;
       }
     }
+    // A model getter read bare (no call) resolves to its bound prop on callback-prop targets.
+    const bareModelRead = rules.modelReads?.get(expr.text);
+    if (bareModelRead !== undefined) return bareModelRead;
     // A bare `props` reference in a target that destructures props (no `props` binding) is
     // rewritten to the reconstruction of its destructured bindings.
     if (expr.text === "props" && rules.members?.props?.whole !== undefined) {
@@ -77,6 +113,33 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
       }
       return walk(fn.body, rules);
     }
+    // `emit("name", …args)` → the target's event channel (callback prop / @Output / no-op).
+    if (rules.emit && ts.isIdentifier(callee) && callee.text === rules.emit.local) {
+      const nameArg = expr.arguments[0];
+      const eventName = nameArg && ts.isStringLiteral(nameArg) ? nameArg.text : "";
+      const payload = expr.arguments
+        .slice(1)
+        .map((a) => walk(a, rules))
+        .join(", ");
+      switch (rules.emit.style) {
+        case "noop":
+          return "undefined";
+        case "angular-output":
+          return `${rules.selfPrefix ? "this." : ""}${eventName}.emit(${payload})`;
+        case "callback-prop": {
+          const access = rules.emit.propsAccess ?? "props.";
+          return `${access}${eventToCallbackProp(eventName)}${rules.emit.suffix ?? ""}?.(${payload})`;
+        }
+      }
+    }
+    // A model setter on a callback-prop target: `setValue(v)` → `props.onUpdateValue?.(v)`.
+    const modelCallback = ts.isIdentifier(callee)
+      ? rules.modelSetters?.get(callee.text)
+      : undefined;
+    if (modelCallback !== undefined) {
+      const value = expr.arguments.map((a) => walk(a, rules)).join(", ");
+      return `props.${modelCallback}?.(${value})`;
+    }
     // A call to a known state setter: `setX(v)` → target-specific mutation.
     const setterName = ts.isIdentifier(callee) ? callee.text : undefined;
     const setterState = setterName !== undefined ? rules.setters?.[setterName] : undefined;
@@ -100,6 +163,9 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
       }
     }
     if (ts.isIdentifier(callee) && expr.arguments.length === 0) {
+      // A model getter read `value()` resolves to its bound prop on callback-prop targets.
+      const modelRead = rules.modelReads?.get(callee.text);
+      if (modelRead !== undefined) return modelRead;
       // A bare 0-arg call is a reactive read; in class-body contexts it is a member access.
       const self = rules.selfPrefix ? "this." : "";
       // A read of a context-lifted signal goes through the provided getter.

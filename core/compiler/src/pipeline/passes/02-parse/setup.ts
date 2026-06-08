@@ -294,7 +294,7 @@ export function parseSetup(
           // const emit = defineEmits(["change"]) / defineEmits<{ change: [v: string] }>()
           if (ts.isIdentifier(decl.name)) emitName = decl.name.text;
           for (const name of declaredEmitNames(init)) {
-            events.push({ name, kind: "event", loc: toLoc(decl, sourceFile) });
+            events.push({ name, loc: toLoc(decl, sourceFile) });
           }
           continue;
         }

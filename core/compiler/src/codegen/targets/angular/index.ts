@@ -197,8 +197,16 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
-  const baseRules: RewriteRules = { ...ctx.rewrites, setters };
+  // A model is a writable signal (`model()`); its setter `setValue(v)` → `value.set(v)`. `emit("x", …)`
+  // calls the matching `@Output()` emitter: `this.x.emit(…)` (class body) / `x.emit(…)` (template).
+  const setters = Object.fromEntries([
+    ...component.state.map((s) => [s.setterName, s.name]),
+    ...component.models.map((m) => [m.setterName, m.name]),
+  ]);
+  const emitRule = component.emitName
+    ? ({ local: component.emitName, style: "angular-output" } as const)
+    : undefined;
+  const baseRules: RewriteRules = { ...ctx.rewrites, setters, emit: emitRule };
   const stateSignals = new Set(component.state.map((s) => s.name));
 
   // Resolve context provides up front: a value derived from a component signal lifts that signal
@@ -330,6 +338,26 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       } else {
         body.push(cStmt({ body: `${p.name} = input${generic}()`, span: p.loc }));
       }
+    }
+  }
+
+  // Models are writable signals (an input + a `<prop>Change` output); the field reads in call form
+  // (`value()`) and writes via `value.set(v)`. An aliased name maps the field to its public prop.
+  if (component.models.length > 0) {
+    angularImports.push("model");
+    for (const m of component.models) {
+      const generic = m.typeNode ? `<${m.typeNode.getText()}>` : "";
+      const opts =
+        m.name !== m.propName ? `undefined, { alias: ${JSON.stringify(m.propName)} }` : "";
+      body.push(cStmt({ body: `${m.name} = model${generic}(${opts})`, span: m.loc }));
+    }
+  }
+  // Custom events become `@Output()` emitters; `emit("x", …)` → `this.x.emit(…)`.
+  if (component.events.length > 0) {
+    angularImports.push("output");
+    for (const ev of component.events) {
+      const generic = ev.payloadType ? `<${ev.payloadType.getText()}>` : "";
+      body.push(cStmt({ body: `${ev.name} = output${generic}()`, span: ev.loc }));
     }
   }
 

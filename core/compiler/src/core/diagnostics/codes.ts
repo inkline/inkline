@@ -33,6 +33,13 @@ export const DIAGNOSTICS = {
     help: "Remove the duplicate prop; defineModel already declares the prop and its update event." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0044" as const,
   },
+  INK0045: {
+    severity: "warning" as const,
+    title:
+      "Two-way binding and custom events are not interactive on the static Astro target" as const,
+    help: "An .astro component renders once on the server; the model value is read-only and emitted events never fire. Use a framework island for interactivity." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0045" as const,
+  },
   INK0010: {
     severity: "warning" as const,
     title: "Effect has no reactive dependencies; it runs once" as const,

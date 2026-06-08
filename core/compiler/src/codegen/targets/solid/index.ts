@@ -14,7 +14,13 @@ import {
   cGroup,
 } from "../../code-ir/builders.ts";
 import * as ts from "typescript";
-import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
+import {
+  rewriteExpr,
+  rewriteEventName,
+  rewriteAttrName,
+  eventToCallbackProp,
+  callbackPropRules,
+} from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import {
   FALLTHROUGH_REST,
@@ -437,6 +443,11 @@ function buildSolidPropsType(component: IRComponent): string {
     parts.push(`{ ${slotFields.join("; ")} }`);
   }
 
+  const emissionFields = modelEventTypeFields(component);
+  if (emissionFields.length > 0) {
+    parts.push(`{ ${emissionFields.join("; ")} }`);
+  }
+
   if (rootAcceptsFallthrough(component)) {
     parts.push("JSX.HTMLAttributes<HTMLElement>");
   }
@@ -445,7 +456,21 @@ function buildSolidPropsType(component: IRComponent): string {
   return parts.join(" & ");
 }
 
-/** Keys to keep out of the fallthrough rest (declared props + slot props). */
+/** Type fields for a component's models (value prop + update callback) and emitted-event callbacks. */
+function modelEventTypeFields(component: IRComponent): string[] {
+  const fields: string[] = [];
+  for (const m of component.models) {
+    const t = m.typeNode?.getText() ?? "unknown";
+    fields.push(`${m.propName}?: ${t}`);
+    fields.push(`${eventToCallbackProp(`update:${m.propName}`)}?: (value: ${t}) => void`);
+  }
+  for (const ev of component.events) {
+    fields.push(`${eventToCallbackProp(ev.name)}?: (...args: any[]) => void`);
+  }
+  return fields;
+}
+
+/** Keys to keep out of the fallthrough rest (declared props + slot props + model/callback names). */
 function fallthroughRestKeys(component: IRComponent): string[] {
   const names = new Set<string>();
   for (const slot of component.slots) {
@@ -453,11 +478,20 @@ function fallthroughRestKeys(component: IRComponent): string[] {
     names.add(slot.name === "default" && !slot.isScoped ? "children" : slot.name);
   }
   for (const p of component.props) names.add(p.name);
+  for (const m of component.models) {
+    names.add(m.propName);
+    names.add(eventToCallbackProp(`update:${m.propName}`));
+  }
+  for (const ev of component.events) names.add(eventToCallbackProp(ev.name));
   return [...names];
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const rules = ctx.rewrites;
+  // Model getters read `props.<prop>`, model setters and `emit(…)` call `props.on…?.()` callbacks.
+  const rules: RewriteRules = {
+    ...ctx.rewrites,
+    ...callbackPropRules(component.models, component.emitName),
+  };
   const body: Code[] = [];
   const solidImports: string[] = [];
 

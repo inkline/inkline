@@ -5,7 +5,6 @@ import {
   type IRComponent,
   type IRContextDefinition,
   type IREffectDeclaration,
-  type IREventDeclaration,
   type IRExprNode,
   type IRModule,
   type IRProp,
@@ -55,27 +54,17 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
       // (d) setup
       const setupResult = parseSetup(site.setupFn, componentId, bindings, sourceFile, checker, ctx);
 
-      // defineModel: each model adds a value prop + an `update:<prop>` model event. A prop the author
-      // also declared by hand is left as-is (warn — the model owns it) so it is never emitted twice.
+      // `component.models` is the single source of truth for two-way models — each target surfaces the
+      // value prop + `update:<prop>` callback from it directly. We only warn (INK0044) when a model
+      // collides with a hand-declared prop, since the model owns that prop name.
       const declaredPropNames = new Set(baseProps.map((p) => p.name));
-      const modelProps: IRProp[] = [];
-      const modelEvents: IREventDeclaration[] = [];
       for (const m of setupResult.models) {
         if (declaredPropNames.has(m.propName)) {
           ctx.diagnostics.push("INK0044", m.loc, { name: m.propName });
-        } else {
-          modelProps.push({ name: m.propName, typeNode: m.typeNode, required: false, loc: m.loc });
         }
-        modelEvents.push({
-          name: `update:${m.propName}`,
-          kind: "model",
-          propName: m.propName,
-          payloadType: m.typeNode,
-          loc: m.loc,
-        });
       }
-      const props = [...baseProps, ...modelProps];
-      const events = [...baseEvents, ...setupResult.events, ...modelEvents];
+      const props = baseProps;
+      const events = [...baseEvents, ...setupResult.events];
 
       const slots = [...(optionsResult?.slots ?? []), ...setupResult.slotDeclarations];
 

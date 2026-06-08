@@ -23,6 +23,7 @@ import {
   rewriteAttrName,
   extractKeyBody,
   emitExprAsTemplate,
+  eventToCallbackProp,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import {
@@ -322,12 +323,33 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const propFallthrough = rootAcceptsFallthrough(component);
   const restBinding = propFallthrough ? `...${FALLTHROUGH_REST}` : "";
+
+  // Models are `$bindable` props; their update callbacks and emitted-event callbacks are plain props.
+  const callbackNames = [
+    ...component.models.map((m) => eventToCallbackProp(`update:${m.propName}`)),
+    ...component.events.map((ev) => eventToCallbackProp(ev.name)),
+  ];
+  const modelNames = component.models.map((m) => m.propName);
+
   // Plain binding names (no defaults) used to reconstruct the whole `props` object below.
-  const nameBindings = [...component.props.map((p) => p.name), restBinding]
+  const nameBindings = [
+    ...component.props.map((p) => p.name),
+    ...modelNames,
+    ...callbackNames,
+    restBinding,
+  ]
     .filter(Boolean)
     .join(", ");
 
-  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
+  // Model setters reassign the `$bindable` prop (`setValue(v)` → `value = v`), which Svelte propagates
+  // back to the parent's `bind:`. `emit(…)` calls a bare callback prop.
+  const setters = Object.fromEntries([
+    ...component.state.map((s) => [s.setterName, s.name]),
+    ...component.models.map((m) => [m.setterName, m.name]),
+  ]);
+  const emitRule = component.emitName
+    ? ({ local: component.emitName, style: "callback-prop", propsAccess: "" } as const)
+    : undefined;
   // Svelte destructures `$props()`, so there is no `props` binding for whole-object references
   // (e.g. `badge(props)`). Reconstruct it from the destructured bindings instead.
   const rules: RewriteRules =
@@ -335,18 +357,22 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ? {
           ...ctx.rewrites,
           setters,
+          emit: emitRule,
           members: {
             ...ctx.rewrites.members,
             props: { ...ctx.rewrites.members?.props, strip: true, whole: `{ ${nameBindings} }` },
           },
         }
-      : { ...ctx.rewrites, setters };
+      : { ...ctx.rewrites, setters, emit: emitRule };
 
-  // Destructure bindings carry each prop's default (`color = "blue"`) so `$props()` applies it.
+  // Destructure bindings carry each prop's default (`color = "blue"`) so `$props()` applies it; each
+  // model becomes a `$bindable()` binding; each callback prop is a plain binding.
   const bindings = [
     ...component.props.map((p) =>
       p.defaultValue ? `${p.name} = ${rewriteExpr(p.defaultValue.expr, rules)}` : p.name,
     ),
+    ...component.models.map((m) => `${m.propName} = $bindable()`),
+    ...callbackNames,
     restBinding,
   ]
     .filter(Boolean)
@@ -365,16 +391,30 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       }),
     );
   }
+  // Type fields a model (value prop + update callback) and each emitted event contribute.
+  const emissionTypeFields = [
+    ...component.models.flatMap((m) => {
+      const t = m.typeNode?.getText() ?? "unknown";
+      return [
+        `${m.propName}?: ${t}`,
+        `${eventToCallbackProp(`update:${m.propName}`)}?: (value: ${t}) => void`,
+      ];
+    }),
+    ...component.events.map((ev) => `${eventToCallbackProp(ev.name)}?: (...args: any[]) => void`),
+  ];
+  const hasEmission = emissionTypeFields.length > 0;
   if (component.propsTypeText) {
-    const type = `${component.propsTypeText}${propFallthrough ? " & Record<string, any>" : ""}`;
+    const extra = hasEmission ? ` & { ${emissionTypeFields.join("; ")} }` : "";
+    const type = `${component.propsTypeText}${extra}${propFallthrough ? " & Record<string, any>" : ""}`;
     scriptBody.push(cStmt({ body: `let { ${bindings} }: ${type} = $props()` }));
-  } else if (component.props.length > 0) {
-    const defs = component.props
-      .map((p) => {
+  } else if (component.props.length > 0 || hasEmission) {
+    const defs = [
+      ...component.props.map((p) => {
         const type = p.typeText ?? p.typeNode?.getText();
         return `${p.name}${p.required ? "" : "?"}${type ? `: ${type}` : ""}`;
-      })
-      .join("; ");
+      }),
+      ...emissionTypeFields,
+    ].join("; ");
     scriptBody.push(cStmt({ body: `interface Props { ${defs} }` }));
     const type = `Props${propFallthrough ? " & Record<string, any>" : ""}`;
     scriptBody.push(cStmt({ body: `let { ${bindings} }: ${type} = $props()` }));

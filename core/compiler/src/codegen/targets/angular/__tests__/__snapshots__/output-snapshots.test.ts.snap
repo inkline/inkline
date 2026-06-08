@@ -200,6 +200,18 @@ inputRef = viewChild<ElementRef>('inputRef')
 "
 `;
 
+exports[`angular full output snapshots > EmitButton 1`] = `
+"import { Component, signal, computed, effect, output } from "@angular/core";
+@Component({ standalone: true, selector: 'EmitButton', template: \`<button (click)="press.emit(1)">
+Go
+</button>\` })
+export class EmitButtonComponent
+{
+press = output()
+}
+"
+`;
+
 exports[`angular full output snapshots > ForLoop 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'ForLoop', template: \`<ul>
@@ -295,6 +307,21 @@ export class MixedControlFlowComponent
 {
 items = signal(['a', 'b', 'c'])
 filter = signal('')
+}
+"
+`;
+
+exports[`angular full output snapshots > ModelInput 1`] = `
+"import { Component, signal, computed, effect, model } from "@angular/core";
+@Component({ standalone: true, selector: 'ModelInput', template: \`<div>
+<input [value]="value()" (input)="value.set($event.target.value)" />
+<p>
+{{ value() }}
+</p>
+</div>\` })
+export class ModelInputComponent
+{
+value = model<string>()
 }
 "
 `;

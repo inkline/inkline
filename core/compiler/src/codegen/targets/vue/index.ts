@@ -250,7 +250,12 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
 // ── Emit entry point ───────────────────────────────────────────────
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
+  // Model setters write through their getter (a `defineModel` ref): `setValue(v)` → `value.value = v`
+  // (script) / `value = v` (template), which Vue compiles to an `update:<prop>` emit.
+  const setters = Object.fromEntries([
+    ...component.state.map((s) => [s.setterName, s.name]),
+    ...component.models.map((m) => [m.setterName, m.name]),
+  ]);
   const rules: RewriteRules = { ...ctx.rewrites, setters };
   // The Vue template auto-unwraps refs, so resource data/loading/error are read by their bare names
   // (reactiveRead strip-call). Only the template needs this — the <script setup> reads them via
@@ -272,6 +277,16 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     vueImports.push("ref");
     scriptBody.push(
       cStmt({ body: `const ${s.name} = ref(${rewriteExpr(s.initial.expr, rules)})`, span: s.loc }),
+    );
+  }
+  // `defineModel` (a Vue macro, no import) declares the two-way-bindable prop + its update event.
+  for (const m of component.models) {
+    const type = m.typeNode?.getText();
+    scriptBody.push(
+      cStmt({
+        body: `const ${m.name} = defineModel${type ? `<${type}>` : ""}(${JSON.stringify(m.propName)})`,
+        span: m.loc,
+      }),
     );
   }
   for (const m of component.memos) {
@@ -378,6 +393,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         ? `const props = withDefaults(defineProps<{ ${defs} }>(), { ${defaults.join(", ")} })`
         : `const props = defineProps<{ ${defs} }>()`;
     scriptBody.unshift(cStmt({ body }));
+  }
+
+  // `defineEmits` (a Vue macro) declares the component's custom events; `emit(…)` calls pass through.
+  if (component.emitName) {
+    const names = component.events.map((e) => JSON.stringify(e.name)).join(", ");
+    scriptBody.unshift(cStmt({ body: `const ${component.emitName} = defineEmits([${names}])` }));
   }
 
   // ── Module-level context definitions (non-setup <script>) ─────────

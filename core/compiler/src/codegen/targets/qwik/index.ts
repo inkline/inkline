@@ -13,7 +13,13 @@ import {
   cJsxText,
   cGroup,
 } from "../../code-ir/builders.ts";
-import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
+import {
+  rewriteExpr,
+  rewriteEventName,
+  rewriteAttrName,
+  eventToCallbackProp,
+  callbackPropRules,
+} from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import {
   FALLTHROUGH_REST,
@@ -330,25 +336,50 @@ const QWIK_TRANSITION_HELPER = `const __InkTransition = component$((props: { nam
 // `{ color: "blue", size: Number }` resolves to `color?: string` / `size: number` via `typeText`,
 // falling back to the authored `typeNode` and finally `unknown`. Intersecting with `Record<string,
 // any>` keeps the spread `...__attrs` fallthrough valid.
-function buildPropsTypeAnnotation(component: IRComponent): string {
-  if (component.props.length === 0) return "";
-  if (component.propsTypeText) {
-    return `: ${component.propsTypeText} & Record<string, any>`;
+/** Type fields for models (value prop + `onUpdate<Prop>$` QRL) and emitted-event QRL callbacks. */
+function qwikModelEventTypeFields(component: IRComponent): string[] {
+  const fields: string[] = [];
+  for (const m of component.models) {
+    const t = m.typeNode?.getText() ?? "unknown";
+    fields.push(`${m.propName}?: ${t}`);
+    fields.push(`${eventToCallbackProp(`update:${m.propName}`)}$?: QRL<(value: ${t}) => void>`);
   }
-  const defs = component.props
-    .map((p) => {
-      const typeStr = p.typeText ?? p.typeNode?.getText() ?? "unknown";
-      return `${p.name}${p.required ? "" : "?"}: ${typeStr}`;
-    })
-    .join("; ");
-  return `: { ${defs} } & Record<string, any>`;
+  for (const ev of component.events) {
+    fields.push(`${eventToCallbackProp(ev.name)}$?: QRL<(...args: any[]) => void>`);
+  }
+  return fields;
+}
+
+function buildPropsTypeAnnotation(component: IRComponent): string {
+  const parts: string[] = [];
+  if (component.propsTypeText) {
+    parts.push(component.propsTypeText);
+  } else if (component.props.length > 0) {
+    const defs = component.props
+      .map((p) => {
+        const typeStr = p.typeText ?? p.typeNode?.getText() ?? "unknown";
+        return `${p.name}${p.required ? "" : "?"}: ${typeStr}`;
+      })
+      .join("; ");
+    parts.push(`{ ${defs} }`);
+  }
+  const emission = qwikModelEventTypeFields(component);
+  if (emission.length > 0) parts.push(`{ ${emission.join("; ")} }`);
+  if (parts.length === 0) return "";
+  return `: ${parts.join(" & ")} & Record<string, any>`;
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
-  const rules: RewriteRules = { ...ctx.rewrites, setters };
+  // Model getters read `props.<prop>`; model setters and `emit(…)` call `props.on…$?.()` QRL callbacks.
+  const rules: RewriteRules = {
+    ...ctx.rewrites,
+    setters,
+    ...callbackPropRules(component.models, component.emitName, "$"),
+  };
   const body: Code[] = [];
   const qwikImports = ["component$", "useSignal", "useComputed$", "useVisibleTask$", "$"];
+  if (component.models.length > 0 || component.events.length > 0) qwikImports.push("QRL");
 
   for (const c of component.consumes) {
     qwikImports.push("useContext");
@@ -438,6 +469,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     for (const p of component.props) {
       keys.add(p.defaultValue ? `${p.name} = ${rewriteExpr(p.defaultValue.expr, rules)}` : p.name);
     }
+    for (const m of component.models) {
+      keys.add(m.propName);
+      keys.add(`${eventToCallbackProp(`update:${m.propName}`)}$`);
+    }
+    for (const ev of component.events) keys.add(`${eventToCallbackProp(ev.name)}$`);
     const prefix = keys.size > 0 ? `${[...keys].join(", ")}, ` : "";
     body.push(cStmt({ body: `const { ${prefix}...${FALLTHROUGH_REST} } = props` }));
   } else if (propsWithDefaults.length > 0) {

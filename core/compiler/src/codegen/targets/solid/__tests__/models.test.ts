@@ -1,0 +1,21 @@
+// Solid two-way models (value prop + onUpdate callback) and custom-event callback props.
+import { describe, it, expect } from "vitest";
+import { compileTo } from "../../../../testing/codegen.ts";
+
+describe("ModelInput: defineModel → value prop + onUpdateValue callback", () => {
+  it("reads props.value and emits via the update callback", async () => {
+    const out = await compileTo("ModelInput", "solid");
+    expect(out).toContain("value={props.value}");
+    expect(out).toContain("oninput={e => props.onUpdateValue?.(e.target.value)}");
+    expect(out).toContain("onUpdateValue?: (value: string) => void");
+    // model + callback are kept out of the fallthrough rest
+    expect(out).toContain(`splitProps(props, ["value", "onUpdateValue"])`);
+  });
+});
+
+describe("EmitButton: defineEmits → callback prop", () => {
+  it("rewrites emit(name, …) to props.on<Name>?.()", async () => {
+    const out = await compileTo("EmitButton", "solid");
+    expect(out).toContain("props.onPress?.(1)");
+  });
+});

@@ -200,6 +200,18 @@ const { ...__attrs } = props;
 "
 `;
 
+exports[`astro full output snapshots > EmitButton 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<button {...__attrs} onClick={() => undefined} class={__attrs.class}>
+Go
+</button>
+"
+`;
+
 exports[`astro full output snapshots > ForLoop 1`] = `
 "---
 type Props = Record<string, any>
@@ -292,6 +304,22 @@ let filter = ""
 {item}
 </li>) : null))}
 </ul>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > ModelInput 1`] = `
+"---
+type Props = { value?: string } & Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let value = props.value
+---
+<div {...__attrs} class={__attrs.class}>
+<input value={value} onInput={e => value = e.target.value} />
+<p>
+{value}
+</p>
 </div>
 "
 `;

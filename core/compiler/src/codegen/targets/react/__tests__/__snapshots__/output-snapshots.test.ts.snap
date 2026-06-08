@@ -220,6 +220,19 @@ return (
 "
 `;
 
+exports[`react full output snapshots > EmitButton 1`] = `
+"export function EmitButton(props: { onPress?: (...args: any[]) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const { onPress, ...__attrs } = props
+return (
+<button {...__attrs} className={props.className} onClick={() => props.onPress?.(1)}>
+  Go
+</button>
+)
+}
+"
+`;
+
 exports[`react full output snapshots > ForLoop 1`] = `
 "import { useState, Fragment } from "react";
 export function ForLoop(props: React.HTMLAttributes<HTMLElement>)
@@ -319,6 +332,22 @@ return (
   <ul>
     {items.map((item) => (<Fragment key={item}>{item.includes(filter) ? <li>{item}</li> : null}</Fragment>))}
   </ul>
+</div>
+)
+}
+"
+`;
+
+exports[`react full output snapshots > ModelInput 1`] = `
+"export function ModelInput(props: { value?: string; onUpdateValue?: (value: string) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const { value, onUpdateValue, ...__attrs } = props
+return (
+<div {...__attrs} className={props.className}>
+  <input value={props.value} onInput={e => props.onUpdateValue?.(e.target.value)} />
+  <p>
+    {props.value}
+  </p>
 </div>
 )
 }
