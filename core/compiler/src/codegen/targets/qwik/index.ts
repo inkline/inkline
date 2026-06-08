@@ -354,6 +354,9 @@ function qwikModelEventTypeFields(component: IRComponent): string[] {
 }
 
 function buildPropsTypeAnnotation(component: IRComponent): string {
+  const emission = qwikModelEventTypeFields(component);
+  // A prop-less component (no props and no model/event emission) takes an untyped `(props)` param.
+  if (component.props.length === 0 && emission.length === 0) return "";
   const parts: string[] = [];
   if (component.propsTypeText) {
     parts.push(component.propsTypeText);
@@ -366,9 +369,7 @@ function buildPropsTypeAnnotation(component: IRComponent): string {
       .join("; ");
     parts.push(`{ ${defs} }`);
   }
-  const emission = qwikModelEventTypeFields(component);
   if (emission.length > 0) parts.push(`{ ${emission.join("; ")} }`);
-  if (parts.length === 0) return "";
   return `: ${parts.join(" & ")} & Record<string, any>`;
 }
 

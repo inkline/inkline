@@ -8,7 +8,6 @@ import type {
   IRElement,
   IREventBinding,
   IRExprNode,
-  IRStateDeclaration,
 } from "../../../ir/render/nodes.ts";
 import { transformComponent } from "../../../ir/render/transform.ts";
 import { walkRenderTree } from "../../../ir/render/visit.ts";
@@ -84,10 +83,16 @@ interface BindingResolution {
   readonly valueExpr: IRExprNode;
 }
 
+/** A bound target the parent can `$bind:` to — a local signal (`createSignal`) or model (`defineModel`). */
+interface Bindable {
+  readonly name: string;
+  readonly setterName: string;
+}
+
 function resolveBinding(
   value: IRExprNode,
-  stateByGetterName: ReadonlyMap<string, IRStateDeclaration>,
-  stateBySetterName: ReadonlyMap<string, IRStateDeclaration>,
+  stateByGetterName: ReadonlyMap<string, Bindable>,
+  stateBySetterName: ReadonlyMap<string, Bindable>,
 ): BindingResolution {
   if (ts.isIdentifier(value.expr)) {
     const ident = value.expr.text;
@@ -116,12 +121,11 @@ function resolveBinding(
 }
 
 export function twoWayBinding(component: IRComponent): IRComponent {
-  const stateBySetterName = new Map<string, IRStateDeclaration>(
-    component.state.map((s) => [s.setterName, s]),
-  );
-  const stateByGetterName = new Map<string, IRStateDeclaration>(
-    component.state.map((s) => [s.name, s]),
-  );
+  // A parent can bind to a local signal (`createSignal`) or a model (`defineModel`) — both expose a
+  // getter/setter pair, so a forwarded `$bind:value={value}` (value from `defineModel`) resolves too.
+  const bindables: readonly Bindable[] = [...component.state, ...component.models];
+  const stateBySetterName = new Map<string, Bindable>(bindables.map((s) => [s.setterName, s]));
+  const stateByGetterName = new Map<string, Bindable>(bindables.map((s) => [s.name, s]));
 
   const lowered = transformComponent(component, {
     enter(node) {
@@ -142,8 +146,8 @@ export function twoWayBinding(component: IRComponent): IRComponent {
 // forwards the emitted payload to the bound setter.
 function lowerTwoWayNode(
   node: IRElement | IRComponentInstance,
-  stateByGetterName: ReadonlyMap<string, IRStateDeclaration>,
-  stateBySetterName: ReadonlyMap<string, IRStateDeclaration>,
+  stateByGetterName: ReadonlyMap<string, Bindable>,
+  stateBySetterName: ReadonlyMap<string, Bindable>,
 ): IRElement | IRComponentInstance | undefined {
   if (!node.attrs.some((a) => a.binding === "twoWay")) return undefined;
 

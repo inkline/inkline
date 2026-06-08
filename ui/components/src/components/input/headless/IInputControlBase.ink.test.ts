@@ -3,7 +3,6 @@ import {
   compileComponent,
   expectCompilationSuccess,
   expectCorrectFileExtensions,
-  expectNoDiagnostics,
   assertConformance,
   snapshotOutput,
   resolveComponent,
@@ -18,9 +17,12 @@ describe("InputControl", () => {
     expect(Object.keys(result.files)).toHaveLength(7);
   });
 
-  it("produces zero diagnostics", async () => {
+  it("emits only the expected Astro two-way warning (INK0045)", async () => {
+    // The `defineModel` value is two-way; on the static Astro target that can't be interactive, so the
+    // compiler warns (INK0045). Every other target compiles cleanly.
     const result = await compileComponent(INPUT_CONTROL);
-    expectNoDiagnostics(result);
+    const unexpected = result.diagnostics.filter((d) => d.code !== "INK0045");
+    expect(unexpected.map((d) => `${d.code}: ${d.title}`)).toEqual([]);
   });
 
   it("produces correct file extensions per target", async () => {
