@@ -1,6 +1,13 @@
 // Solid two-way models (value prop + onUpdate callback) and custom-event callback props.
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToAll } from "../../../../testing/codegen.ts";
+
+describe("BoundField: $bind:value on a component (parent side)", () => {
+  it("passes the value down and the update callback up", async () => {
+    const out = await compileToAll("BoundField", "solid");
+    expect(out).toContain("<Field value={text()} onUpdateValue={v => setText(v)} />");
+  });
+});
 
 describe("ModelInput: defineModel → value prop + onUpdateValue callback", () => {
   it("reads props.value and emits via the update callback", async () => {

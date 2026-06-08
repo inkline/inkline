@@ -148,9 +148,12 @@ function jsxAttrs(
   }
 
   for (const e of node.events) {
+    // A `$bind:<prop>` on a component lowers to an `update:<prop>` event; emit it as the child's
+    // `onUpdate<Prop>` callback prop rather than a (colon-bearing) DOM event name.
+    const name = e.twoWayProp ? eventToCallbackProp(e.name) : rewriteEventName(e.name, rules);
     out.push(
       cJsxAttr({
-        name: rewriteEventName(e.name, rules),
+        name,
         value: { kind: "expr", expr: cExpr({ text: rewriteExpr(e.handler.expr, rules) }) },
       }),
     );

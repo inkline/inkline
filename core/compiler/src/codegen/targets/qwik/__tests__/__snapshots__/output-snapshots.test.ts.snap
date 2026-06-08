@@ -22,6 +22,18 @@ return (
 "
 `;
 
+exports[`qwik full output snapshots > BoundField 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
+export const Field = component$((props: { value?: string; onUpdateValue$?: QRL<(value: string) => void> } & Record<string, any>) =>
+{
+const { value, onUpdateValue$, ...__attrs } = props
+return (
+<input {...__attrs} value={props.value} class={props.class} onInput={$(e => props.onUpdateValue$?.(e.target.value))} />
+)
+});
+"
+`;
+
 exports[`qwik full output snapshots > Composite 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const Composite = component$((props) =>
@@ -387,6 +399,24 @@ return (
 <span {...__attrs} class={props.class}>
   {props.text}
 </span>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > NativeBind 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const NativeBind = component$((props) =>
+{
+const text = useSignal("")
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <input value={text.value} onInput={$(e => text.value = e.target.value)} />
+  <p>
+    {text.value}
+  </p>
+</div>
 )
 });
 "

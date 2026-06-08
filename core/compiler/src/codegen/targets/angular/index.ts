@@ -155,10 +155,16 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
         else ciParts.push(`[${name}]="${rewriteExpr(a.value.expr, rules)}"`);
       }
       for (const e of node.events) {
-        // Component `@Output()` names are case-sensitive camelCase (e.g. `valueChange`); only the
-        // leading character is lowercased (`onValueChange` → `valueChange`), never the whole name.
-        const base = rewriteEventName(e.name, rules).replace(/^on/, "");
-        const evName = base.charAt(0).toLowerCase() + base.slice(1);
+        // A `$bind:<prop>` lowers to `update:<prop>`; the child's `model()` exposes it as the
+        // `<prop>Change` output. Otherwise a component `@Output()` name is camelCase with only its
+        // leading character lowercased (`onValueChange` → `valueChange`), never the whole name.
+        let evName: string;
+        if (e.twoWayProp) {
+          evName = `${e.twoWayProp}Change`;
+        } else {
+          const base = rewriteEventName(e.name, rules).replace(/^on/, "");
+          evName = base.charAt(0).toLowerCase() + base.slice(1);
+        }
         ciParts.push(`(${evName})="${angularEventExpr(e.handler.expr, rules)}"`);
       }
       const ciAttrStr = ciParts.join(" ");

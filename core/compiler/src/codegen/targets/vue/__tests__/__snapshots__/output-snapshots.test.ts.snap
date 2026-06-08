@@ -20,6 +20,16 @@ exports[`vue full output snapshots > BatchUpdates 1`] = `
 "
 `;
 
+exports[`vue full output snapshots > BoundField 1`] = `
+"<script setup lang="ts">
+  const value = defineModel<string>("value")
+</script>
+<template>
+<input :value="value" @input="e => value = e.target.value" />
+</template>
+"
+`;
+
 exports[`vue full output snapshots > Composite 1`] = `
 "<script setup lang="ts">
   import { ref, computed, watchEffect } from "vue";
@@ -358,6 +368,22 @@ exports[`vue full output snapshots > MultipleComponentsPerFile 1`] = `
 <span>
   {{ text }}
 </span>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > NativeBind 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const text = ref("")
+</script>
+<template>
+<div>
+  <input :value="text" @input="e => text = e.target.value" />
+  <p>
+    {{ text }}
+  </p>
+</div>
 </template>
 "
 `;

@@ -35,6 +35,7 @@ function fallthroughAttrParts(node: any, rules: RewriteRules): string[] {
     else parts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
   }
   for (const e of node.events) {
+    if (e.twoWayProp) continue; // two-way update events can't fire on the static target
     parts.push(`${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`);
   }
   if (!classMerged) parts.push(`class={${classMergeExpr(null, `${FALLTHROUGH_REST}.class`)}}`);
@@ -105,6 +106,9 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
           else ciParts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
         }
         for (const e of node.events) {
+          // A two-way `update:<prop>` event can't fire on the static target; the value attr already
+          // carries the (one-way) binding, so drop the dead update handler.
+          if (e.twoWayProp) continue;
           ciParts.push(
             `${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`,
           );

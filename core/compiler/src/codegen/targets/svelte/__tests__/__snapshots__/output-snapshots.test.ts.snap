@@ -18,6 +18,15 @@ exports[`svelte full output snapshots > BatchUpdates 1`] = `
 "
 `;
 
+exports[`svelte full output snapshots > BoundField 1`] = `
+"<script lang="ts">
+  interface Props { value?: string }
+  let { value = $bindable(), ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<input {...__attrs} value={value} class={__attrs.class} oninput={e => value = e.target.value} />
+"
+`;
+
 exports[`svelte full output snapshots > Composite 1`] = `
 "<script lang="ts">
   let { ...__attrs }: Record<string, any> = $props()
@@ -288,8 +297,8 @@ exports[`svelte full output snapshots > MixedControlFlow 1`] = `
 
 exports[`svelte full output snapshots > ModelInput 1`] = `
 "<script lang="ts">
-  interface Props { value?: string; onUpdateValue?: (value: string) => void }
-  let { value = $bindable(), onUpdateValue, ...__attrs }: Props & Record<string, any> = $props()
+  interface Props { value?: string }
+  let { value = $bindable(), ...__attrs }: Props & Record<string, any> = $props()
 </script>
 <div {...__attrs} class={__attrs.class}>
   <input value={value} oninput={e => value = e.target.value} />
@@ -324,6 +333,20 @@ exports[`svelte full output snapshots > MultipleComponentsPerFile 1`] = `
 <span {...__attrs} class={__attrs.class}>
   {text}
 </span>
+"
+`;
+
+exports[`svelte full output snapshots > NativeBind 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let text = $state("")
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <input value={text} oninput={e => text = e.target.value} />
+  <p>
+    {text}
+  </p>
+</div>
 "
 `;
 

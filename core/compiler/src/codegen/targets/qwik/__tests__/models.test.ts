@@ -1,6 +1,13 @@
 // Qwik two-way models (value prop + onUpdate QRL) and custom-event QRL callback props.
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToAll } from "../../../../testing/codegen.ts";
+
+describe("BoundField: $bind:value on a component (parent side)", () => {
+  it("passes the value down and a QRL update callback up", async () => {
+    const out = await compileToAll("BoundField", "qwik");
+    expect(out).toContain("<Field value={text.value} onUpdateValue$={$(v => text.value = v)} />");
+  });
+});
 
 describe("ModelInput: defineModel → value prop + onUpdateValue$ QRL", () => {
   it("reads props.value and emits via a QRL callback", async () => {

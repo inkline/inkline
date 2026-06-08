@@ -120,6 +120,8 @@ export const NEW_FIXTURES = [
   "SlotInConditional",
   "ModelInput",
   "EmitButton",
+  "BoundField",
+  "NativeBind",
 ] as const;
 
 // ── Unit emit: hand-built IR → emitted source ────────────────────────────────

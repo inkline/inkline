@@ -23,6 +23,19 @@ return (
 "
 `;
 
+exports[`solid full output snapshots > BoundField 1`] = `
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function Field(props: { value?: string; onUpdateValue?: (value: string) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["value", "onUpdateValue"])
+return (
+<input {...__attrs} value={props.value} class={props.class} oninput={e => props.onUpdateValue?.(e.target.value)} />
+)
+}
+"
+`;
+
 exports[`solid full output snapshots > Composite 1`] = `
 "import { createSignal, createMemo, createEffect, splitProps } from "solid-js";
 import type { JSX } from "solid-js";
@@ -418,6 +431,25 @@ return (
 <span {...__attrs} class={props.class}>
   {props.text}
 </span>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > NativeBind 1`] = `
+"import { createSignal, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function NativeBind(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [text, setText] = createSignal("")
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={props.class}>
+  <input value={text()} oninput={e => setText(e.target.value)} />
+  <p>
+    {text()}
+  </p>
+</div>
 )
 }
 "

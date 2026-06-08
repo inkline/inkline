@@ -1,6 +1,13 @@
 // Vue two-way models (defineModel) and custom events (defineEmits).
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToAll } from "../../../../testing/codegen.ts";
+
+describe("BoundField: $bind:value on a component (parent side)", () => {
+  it("collapses to v-model:<prop>", async () => {
+    const out = await compileToAll("BoundField", "vue");
+    expect(out).toContain(`<Field v-model:value="text" />`);
+  });
+});
 
 describe("ModelInput: defineModel macro", () => {
   it("declares defineModel and writes through the ref", async () => {

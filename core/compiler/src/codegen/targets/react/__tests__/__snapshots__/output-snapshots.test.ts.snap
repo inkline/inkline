@@ -22,6 +22,17 @@ return (
 "
 `;
 
+exports[`react full output snapshots > BoundField 1`] = `
+"export function Field(props: { value?: string; onUpdateValue?: (value: string) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const { value, onUpdateValue, ...__attrs } = props
+return (
+<input {...__attrs} value={props.value} className={props.className} onInput={e => props.onUpdateValue?.(e.target.value)} />
+)
+}
+"
+`;
+
 exports[`react full output snapshots > Composite 1`] = `
 "import { useState, useMemo, useEffect } from "react";
 export function Composite(props: React.HTMLAttributes<HTMLElement>)
@@ -382,6 +393,24 @@ return (
 <span {...__attrs} className={props.className}>
   {props.text}
 </span>
+)
+}
+"
+`;
+
+exports[`react full output snapshots > NativeBind 1`] = `
+"import { useState } from "react";
+export function NativeBind(props: React.HTMLAttributes<HTMLElement>)
+{
+const [text, setText] = useState("")
+const { ...__attrs } = props
+return (
+<div {...__attrs} className={props.className}>
+  <input value={text} onInput={e => setText(e.target.value)} />
+  <p>
+    {text}
+  </p>
+</div>
 )
 }
 "

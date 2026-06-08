@@ -1,6 +1,13 @@
 // Svelte two-way models ($bindable) and custom-event callback props.
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToAll } from "../../../../testing/codegen.ts";
+
+describe("BoundField: $bind:value on a component (parent side)", () => {
+  it("collapses to bind:<prop>", async () => {
+    const out = await compileToAll("BoundField", "svelte");
+    expect(out).toContain("<Field bind:value={text} />");
+  });
+});
 
 describe("ModelInput: defineModel → $bindable", () => {
   it("destructures a $bindable prop and reassigns it on update", async () => {
@@ -8,7 +15,9 @@ describe("ModelInput: defineModel → $bindable", () => {
     expect(out).toContain("value = $bindable()");
     expect(out).toContain("value={value}");
     expect(out).toContain("oninput={e => value = e.target.value}");
-    expect(out).toContain("onUpdateValue?: (value: string) => void");
+    expect(out).toContain("value?: string");
+    // Svelte models are two-way via $bindable, so no update callback prop is declared.
+    expect(out).not.toContain("onUpdateValue");
   });
 });
 

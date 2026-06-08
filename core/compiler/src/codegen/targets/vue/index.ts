@@ -68,28 +68,46 @@ function tmplAttrs(
   rules: RewriteRules,
   isComponent = false,
 ) {
-  const attrs = node.attrs.map((a: any) => {
-    const name = rewriteAttrName(a.name, rules);
-    if (a.value.kind === "Static")
-      return cTmplAttr({ name, value: { kind: "static", text: String(a.value.value) } });
+  // A `$bind:<prop>` on a component lowers to a value attr + a synthesized `update:<prop>` event;
+  // collapse the pair back into Vue's native `v-model:<prop>` directive.
+  const twoWay = node.events.filter((e: any) => e.twoWayProp);
+  const twoWayProps = new Set<string>(twoWay.map((e: any) => e.twoWayProp));
+  const vModels = twoWay.map((e: any) => {
+    const attr = node.attrs.find((a: any) => a.name === e.twoWayProp);
+    const lvalue =
+      attr && attr.value.kind === "Expression" ? rewriteExpr(attr.value.expr, rules) : "";
     return cTmplAttr({
-      name: `:${name}`,
-      value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
+      name: `v-model:${e.twoWayProp}`,
+      value: { kind: "expr", expr: cExpr({ text: lvalue }) },
     });
   });
-  const evts = node.events.map((e: any) =>
-    cTmplAttr({
-      name: vueEventName(e.name, isComponent),
-      value: { kind: "expr", expr: cExpr({ text: rewriteExpr(e.handler.expr, rules) }) },
-    }),
-  );
+
+  const attrs = node.attrs
+    .filter((a: any) => !twoWayProps.has(a.name))
+    .map((a: any) => {
+      const name = rewriteAttrName(a.name, rules);
+      if (a.value.kind === "Static")
+        return cTmplAttr({ name, value: { kind: "static", text: String(a.value.value) } });
+      return cTmplAttr({
+        name: `:${name}`,
+        value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
+      });
+    });
+  const evts = node.events
+    .filter((e: any) => !e.twoWayProp)
+    .map((e: any) =>
+      cTmplAttr({
+        name: vueEventName(e.name, isComponent),
+        value: { kind: "expr", expr: cExpr({ text: rewriteExpr(e.handler.expr, rules) }) },
+      }),
+    );
   const refs = node.refs.map((r: any) =>
     cTmplAttr({
       name: "ref",
       value: { kind: "expr", expr: cExpr({ text: rewriteExpr(r.ref.expr, rules) }) },
     }),
   );
-  return [...attrs, ...evts, ...refs];
+  return [...vModels, ...attrs, ...evts, ...refs];
 }
 
 // ── Directive wrapping helper ──────────────────────────────────────

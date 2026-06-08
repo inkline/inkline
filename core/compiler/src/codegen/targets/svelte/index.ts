@@ -59,28 +59,40 @@ function tmplAttrs(
   isComponent = false,
 ) {
   const fallthrough = node.acceptsAttrFallthrough === true;
-  const attrs = node.attrs.map((a: any) => {
-    if (fallthrough && a.binding === "class") {
-      const authored =
-        a.value.kind === "Static"
-          ? JSON.stringify(String(a.value.value))
-          : rewriteExpr(a.value.expr, rules);
-      return cTmplAttr({
-        name: "class",
-        value: {
-          kind: "expr",
-          expr: cExpr({ text: classMergeExpr(authored, `${FALLTHROUGH_REST}.class`) }),
-        },
-      });
-    }
-    const name = rewriteAttrName(a.name, rules);
-    if (a.value.kind === "Static")
-      return cTmplAttr({ name, value: { kind: "static", text: String(a.value.value) } });
-    return cTmplAttr({
-      name,
-      value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
-    });
+  // A `$bind:<prop>` on a component lowers to a value attr + a synthesized `update:<prop>` event;
+  // collapse the pair into Svelte's `bind:<prop>` directive (the child prop is `$bindable`).
+  const twoWay = node.events.filter((e: any) => e.twoWayProp);
+  const twoWayProps = new Set<string>(twoWay.map((e: any) => e.twoWayProp));
+  const bindDirectives = twoWay.map((e: any) => {
+    const attr = node.attrs.find((a: any) => a.name === e.twoWayProp);
+    const lvalue =
+      attr && attr.value.kind === "Expression" ? rewriteExpr(attr.value.expr, rules) : "";
+    return cTmplDirective({ directive: "bind", arg: e.twoWayProp, expr: cExpr({ text: lvalue }) });
   });
+  const attrs = node.attrs
+    .filter((a: any) => !twoWayProps.has(a.name))
+    .map((a: any) => {
+      if (fallthrough && a.binding === "class") {
+        const authored =
+          a.value.kind === "Static"
+            ? JSON.stringify(String(a.value.value))
+            : rewriteExpr(a.value.expr, rules);
+        return cTmplAttr({
+          name: "class",
+          value: {
+            kind: "expr",
+            expr: cExpr({ text: classMergeExpr(authored, `${FALLTHROUGH_REST}.class`) }),
+          },
+        });
+      }
+      const name = rewriteAttrName(a.name, rules);
+      if (a.value.kind === "Static")
+        return cTmplAttr({ name, value: { kind: "static", text: String(a.value.value) } });
+      return cTmplAttr({
+        name,
+        value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
+      });
+    });
   if (fallthrough) {
     // Spread inherited attributes first so authored attributes win on conflict.
     attrs.unshift(
@@ -95,12 +107,14 @@ function tmplAttrs(
       );
     }
   }
-  const evts = node.events.map((e: any) =>
-    cTmplAttr({
-      name: rewriteEventName(e.name, rules, isComponent),
-      value: { kind: "expr", expr: cExpr({ text: rewriteExpr(e.handler.expr, rules) }) },
-    }),
-  );
+  const evts = node.events
+    .filter((e: any) => !e.twoWayProp)
+    .map((e: any) =>
+      cTmplAttr({
+        name: rewriteEventName(e.name, rules, isComponent),
+        value: { kind: "expr", expr: cExpr({ text: rewriteExpr(e.handler.expr, rules) }) },
+      }),
+    );
   const refs = node.refs.map((r: any) =>
     cTmplDirective({
       directive: "bind",
@@ -108,7 +122,7 @@ function tmplAttrs(
       expr: cExpr({ text: rewriteExpr(r.ref.expr, rules) }),
     }),
   );
-  return { attrs: [...attrs, ...evts], directives: refs };
+  return { attrs: [...attrs, ...evts], directives: [...bindDirectives, ...refs] };
 }
 
 // ── Transition helpers ─────────────────────────────────────────────
@@ -324,11 +338,9 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const propFallthrough = rootAcceptsFallthrough(component);
   const restBinding = propFallthrough ? `...${FALLTHROUGH_REST}` : "";
 
-  // Models are `$bindable` props; their update callbacks and emitted-event callbacks are plain props.
-  const callbackNames = [
-    ...component.models.map((m) => eventToCallbackProp(`update:${m.propName}`)),
-    ...component.events.map((ev) => eventToCallbackProp(ev.name)),
-  ];
+  // A model is two-way via `$bindable` (the parent uses `bind:`), so it needs no callback prop — only
+  // general emitted events become plain callback props.
+  const callbackNames = component.events.map((ev) => eventToCallbackProp(ev.name));
   const modelNames = component.models.map((m) => m.propName);
 
   // Plain binding names (no defaults) used to reconstruct the whole `props` object below.
@@ -392,14 +404,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   }
   // Type fields a model (value prop + update callback) and each emitted event contribute.
+  // A model contributes a `$bindable` value prop (two-way via `bind:`, no callback); each emitted
+  // event contributes a callback prop.
   const emissionTypeFields = [
-    ...component.models.flatMap((m) => {
-      const t = m.typeNode?.getText() ?? "unknown";
-      return [
-        `${m.propName}?: ${t}`,
-        `${eventToCallbackProp(`update:${m.propName}`)}?: (value: ${t}) => void`,
-      ];
-    }),
+    ...component.models.map((m) => `${m.propName}?: ${m.typeNode?.getText() ?? "unknown"}`),
     ...component.events.map((ev) => `${eventToCallbackProp(ev.name)}?: (...args: any[]) => void`),
   ];
   const hasEmission = emissionTypeFields.length > 0;

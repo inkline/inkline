@@ -20,6 +20,17 @@ Both
 "
 `;
 
+exports[`astro full output snapshots > BoundField 1`] = `
+"---
+type Props = { value?: string } & Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let value = props.value
+---
+<input {...__attrs} value={value} onInput={e => value = e.target.value} class={__attrs.class} />
+"
+`;
+
 exports[`astro full output snapshots > Composite 1`] = `
 "---
 type Props = Record<string, any>
@@ -348,6 +359,22 @@ const { text, ...__attrs } = props;
 <span {...__attrs} class={__attrs.class}>
 {text}
 </span>
+"
+`;
+
+exports[`astro full output snapshots > NativeBind 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let text = ""
+---
+<div {...__attrs} class={__attrs.class}>
+<input value={text} onInput={e => text = e.target.value} />
+<p>
+{text}
+</p>
+</div>
 "
 `;
 

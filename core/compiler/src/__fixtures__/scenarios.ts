@@ -107,6 +107,10 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   EventModifier: [{ name: "initial pending", asserts: { textOf: { span: "Pending" } } }],
   TwoWayCheckbox: [{ name: "initial off", asserts: { textOf: { span: "off" } } }],
   TwoWayNumber: [{ name: "initial zero", asserts: { textOf: { span: "0" } } }],
+  // Native-element `$bind:value` (getter convention) and component `$bind:value` both render their
+  // bound value into the sibling <p>; on mount it is the signal's initial empty string.
+  NativeBind: [{ name: "initial empty", asserts: { textOf: { p: "" } } }],
+  BoundField: [{ name: "initial empty", asserts: { textOf: { p: "" } } }],
 
   // ── 7E: Components 4 ──
   PropDefaults: [

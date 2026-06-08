@@ -1,7 +1,16 @@
 // Astro is static: a model is a read-only `let` seeded from its prop; emitted events are no-ops.
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToAll } from "../../../../testing/codegen.ts";
 import { compileFixture } from "../../../../testing/harness.ts";
+
+describe("BoundField: $bind:value on a component (parent side)", () => {
+  it("passes the value one-way and drops the (inert) update event", async () => {
+    const out = await compileToAll("BoundField", "astro");
+    expect(out).toContain("<Field value={text} />");
+    expect(out).not.toContain("update:value");
+    expect(out).not.toContain("onUpdate");
+  });
+});
 
 describe("ModelInput: defineModel → read-only let", () => {
   it("seeds a mutable let from the prop and renders the value (no two-way runtime)", async () => {
