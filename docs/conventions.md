@@ -47,7 +47,7 @@ See [`pnpm-workspace.yaml`](../pnpm-workspace.yaml) for the authoritative glob l
 Tests live next to their source as `<file>.test.ts`. Examples:
 
 - [`core/compiler/src/pipeline/passes/03-lower/control-flow.test.ts`](../core/compiler/src/pipeline/passes/03-lower/) is colocated with `control-flow.ts`.
-- [`core/compiler/src/codegen/targets/emit.test.ts`](../core/compiler/src/codegen/targets/) is colocated with `emit.ts`.
+- [`core/compiler/src/codegen/targets/react/index.test.ts`](../core/compiler/src/codegen/targets/react/) is colocated with the React target's `index.ts` (each target owns its tests; cross-target codegen fixtures live in per-target `__tests__/` folders).
 
 Run all tests with `vp run -r test` from the repo root; run a single package's tests with `vp test` inside that package. Coverage uses `@vitest/coverage-v8`.
 

@@ -1,0 +1,591 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`solid full output snapshots > BatchUpdates 1`] = `
+"import { createSignal, createMemo, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function BatchUpdates(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [x, setX] = createSignal(0)
+const [y, setY] = createSignal(0)
+const sum = createMemo(() => x() + y())
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={props.class}>
+  <span>
+    {sum()}
+  </span>
+  <button onclick={() => { setX(x() + 1); setY(y() + 1); }}>
+    Both
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > Composite 1`] = `
+"import { createSignal, createMemo, createEffect, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function Composite(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [x, setX] = createSignal(1)
+const [y, setY] = createSignal(2)
+const sum = createMemo(() => x() + y())
+createEffect(() => { console.log("sum:", sum()); })
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={props.class}>
+  <span id="sum">
+    {sum()}
+  </span>
+  <button id="incX" onclick={() => setX(x() + 1)}>
+    +X
+  </button>
+  <button id="incY" onclick={() => setY(y() + 1)}>
+    +Y
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > Conditional 1`] = `
+"import { createSignal, splitProps, Show } from "solid-js";
+import type { JSX } from "solid-js";
+export default function Conditional(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [visible, setVisible] = createSignal(true)
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={props.class}>
+  <Show when={visible()} fallback={<><span>Hidden</span></>}>
+    <span>
+      Visible
+    </span>
+  </Show>
+  <button onclick={() => setVisible(!visible())}>
+    Toggle
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > ConditionalClass 1`] = `
+"import { createSignal, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function ConditionalClass(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [active, setActive] = createSignal(false)
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={[active() ? "active" : "inactive", props.class].filter(Boolean).join(" ")}>
+  <button onclick={() => setActive(!active())}>
+    Toggle
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > ControlledSelect 1`] = `
+"import { createSignal, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function ControlledSelect(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [value, setValue] = createSignal("b")
+const [, __attrs] = splitProps(props, [])
+return (
+<select {...__attrs} value={value()} class={props.class} onchange={e => setValue(e.target.value)}>
+  <option value="a">
+    A
+  </option>
+  <option value="b">
+    B
+  </option>
+  <option value="c">
+    C
+  </option>
+</select>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > ControlledTextarea 1`] = `
+"import { createSignal, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function ControlledTextarea(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [text, setText] = createSignal("")
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={props.class}>
+  <textarea value={text()} oninput={e => setText(e.target.value)} />
+  <p>
+    {text().length}
+    characters
+  </p>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > Counter 1`] = `
+"import { createSignal, createMemo, createEffect, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function Counter(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [count, setCount] = createSignal(0)
+const doubled = createMemo(() => count() * 2)
+createEffect(() => { console.log("count:", count()); })
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={props.class}>
+  <p>
+    {count()}
+  </p>
+  <p>
+    {doubled()}
+  </p>
+  <button onclick={() => setCount(count() + 1)}>
+    +1
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > DefineSlotBasic 1`] = `
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function DefineSlotBasic(props: { header?: any; children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["header", "children"])
+return (
+<div {...__attrs} class={props.class}>
+  <header>
+    {props.header}
+  </header>
+  <main>
+    {props.children}
+  </main>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > DynamicList 1`] = `
+"import { createSignal, splitProps, For } from "solid-js";
+import type { JSX } from "solid-js";
+export default function DynamicList(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [items, setItems] = createSignal([])
+const [input, setInput] = createSignal("")
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={props.class}>
+  <input value={input()} oninput={e => setInput(e.target.value)} />
+  <button onclick={() => { setItems([...items(), input()]); setInput(""); }}>
+    Add
+  </button>
+  <ul>
+    <For each={items()}>
+      {(item, i) => <li>{item}</li>}
+    </For>
+  </ul>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > EffectCleanup 1`] = `
+"import { createSignal, createEffect, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function EffectCleanup(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [active, setActive] = createSignal(true)
+createEffect(() => { if (active()) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
+const [, __attrs] = splitProps(props, [])
+return (
+<button {...__attrs} class={props.class} onclick={() => setActive(!active())}>
+  Toggle
+</button>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > ElementRef 1`] = `
+"import { onMount, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function ElementRef(props: JSX.HTMLAttributes<HTMLElement>)
+{
+onMount(() => { inputRef?.focus(); })
+let inputRef: HTMLElement | undefined
+const [, __attrs] = splitProps(props, [])
+return (
+<input {...__attrs} placeholder="auto-focus" class={props.class} ref={(el) => inputRef = el} />
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > ForLoop 1`] = `
+"import { createSignal, splitProps, For } from "solid-js";
+import type { JSX } from "solid-js";
+export default function ForLoop(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [items, setItems] = createSignal(["Apple", "Banana", "Cherry"])
+const [, __attrs] = splitProps(props, [])
+return (
+<ul {...__attrs} class={props.class}>
+  <For each={items()}>
+    {(item) => <li>{item}</li>}
+  </For>
+</ul>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > FormField 1`] = `
+"import { createSignal, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function FormField(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [value, setValue] = createSignal("")
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={props.class}>
+  <input value={value()} oninput={e => setValue(e.target.value)} />
+  <p>
+    {value()}
+  </p>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > IButton 1`] = `
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function IButton(props: { label: string; disabled?: boolean } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["label", "disabled"])
+return (
+<button {...__attrs} disabled={props.disabled} class={props.class}>
+  {props.label}
+</button>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > Lifecycle 1`] = `
+"import { createSignal, onMount, onCleanup, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function Lifecycle(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [mounted, setMounted] = createSignal(false)
+onMount(() => { setMounted(true); })
+onCleanup(() => { console.log("cleanup"); })
+const [, __attrs] = splitProps(props, [])
+return (
+<span {...__attrs} class={props.class}>
+  {mounted() ? "mounted" : "pending"}
+</span>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > MemoChain 1`] = `
+"import { createSignal, createMemo, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function MemoChain(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [base, setBase] = createSignal(1)
+const doubled = createMemo(() => base() * 2)
+const quadrupled = createMemo(() => doubled() * 2)
+const label = createMemo(() => \`Value: \${quadrupled()}\`)
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={props.class}>
+  <span>
+    {label()}
+  </span>
+  <button onclick={() => setBase(base() + 1)}>
+    +1
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > MixedControlFlow 1`] = `
+"import { createSignal, splitProps, For, Show } from "solid-js";
+import type { JSX } from "solid-js";
+export default function MixedControlFlow(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [items, setItems] = createSignal(["a", "b", "c"])
+const [filter, setFilter] = createSignal("")
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={props.class}>
+  <input value={filter()} oninput={e => setFilter(e.target.value)} />
+  <ul>
+    <For each={items()}>
+      {(item) => <Show when={item.includes(filter())}><li>{item}</li></Show>}
+    </For>
+  </ul>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > MultiRefs 1`] = `
+"import { onMount, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function MultiRefs(props: JSX.HTMLAttributes<HTMLElement>)
+{
+onMount(() => { inputRef?.focus(); })
+let inputRef: HTMLElement | undefined
+let buttonRef: HTMLElement | undefined
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={props.class}>
+  <input placeholder="focus me" ref={(el) => inputRef = el} />
+  <button ref={(el) => buttonRef = el}>
+    Click
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > MultipleComponentsPerFile 1`] = `
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function Label(props: { text: string } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["text"])
+return (
+<span {...__attrs} class={props.class}>
+  {props.text}
+</span>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > PropDefaults 1`] = `
+"import { mergeProps, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function PropDefaults(_props: { color?: string; size: number } & JSX.HTMLAttributes<HTMLElement>)
+{
+const props = mergeProps({ color: "blue" }, _props)
+const [, __attrs] = splitProps(props, ["color", "size"])
+return (
+<div {...__attrs} style={\`color: \${props.color}\`} class={props.class}>
+  {props.size}
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > SlotBasic 1`] = `
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SlotBasic(props: { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children"])
+return (
+<div {...__attrs} class={props.class}>
+  {props.children}
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > SlotInConditional 1`] = `
+"import { createSignal, splitProps, Show } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SlotInConditional(props: { header?: any; children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [expanded, setExpanded] = createSignal(true)
+const [, __attrs] = splitProps(props, ["header", "children"])
+return (
+<div {...__attrs} class={props.class}>
+  {props.header}
+  <Show when={expanded()}>
+    {props.children}
+  </Show>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > SlotNamed 1`] = `
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SlotNamed(props: { header?: any; children?: any; footer?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["header", "children", "footer"])
+return (
+<div {...__attrs} class={props.class}>
+  <header>
+    {props.header}
+  </header>
+  <main>
+    {props.children}
+  </main>
+  <footer>
+    {props.footer}
+  </footer>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > SlotScoped 1`] = `
+"import { createSignal, splitProps, For } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SlotScoped(props: { item?: (...args: any[]) => any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [items, setItems] = createSignal([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+const [, __attrs] = splitProps(props, ["item"])
+return (
+<ul {...__attrs} class={props.class}>
+  <For each={items()}>
+    {(item, index) => <li>{props.item?.(item, index) ?? <>{index}:{item.label}</>}</li>}
+  </For>
+</ul>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > SlotScopedSingle 1`] = `
+"import { createSignal, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SlotScopedSingle(props: { default?: (...args: any[]) => any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [value, setValue] = createSignal("hello")
+const [, __attrs] = splitProps(props, ["default"])
+return (
+<div {...__attrs} class={props.class}>
+  {props.default?.(value()) ?? <span>{value()}</span>}
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > SlotWithDefault 1`] = `
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SlotWithDefault(props: { children?: any; actions?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children", "actions"])
+return (
+<div {...__attrs} class={props.class}>
+  <main>
+    {props.children ?? <p>Default content</p>}
+  </main>
+  <footer>
+    {props.actions ?? <span>Action area</span>}
+  </footer>
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > SlotWithFallback 1`] = `
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SlotWithFallback(props: { header?: any; children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["header", "children"])
+return (
+<div {...__attrs} class={props.class}>
+  {props.header ?? <h1>Default Header</h1>}
+  {props.children ?? "Default body content"}
+</div>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > SwitchTabs 1`] = `
+"import { createSignal, splitProps, Switch, Match } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SwitchTabs(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [tab, setTab] = createSignal("a")
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={props.class}>
+  <Switch>
+    <Match when={tab() === "a"}>
+      <p>
+        Tab A
+      </p>
+    </Match>
+    <Match when={tab() === "b"}>
+      <p>
+        Tab B
+      </p>
+    </Match>
+  </Switch>
+  <button onclick={() => setTab(tab() === "a" ? "b" : "a")}>
+    Switch
+  </button>
+</div>
+)
+}
+"
+`;
+
+exports[`solid multi-component files > ComponentRef (all files) 1`] = `
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function Child(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={props.class}>
+  Child
+</div>
+)
+}
+
+import { onMount, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function ComponentRef(props: JSX.HTMLAttributes<HTMLElement>)
+{
+onMount(() => { console.log(childRef); })
+let childRef: HTMLElement | undefined
+const [, __attrs] = splitProps(props, [])
+return (
+<Child {...__attrs} class={props.class} ref={(el) => childRef = el} />
+)
+}
+"
+`;

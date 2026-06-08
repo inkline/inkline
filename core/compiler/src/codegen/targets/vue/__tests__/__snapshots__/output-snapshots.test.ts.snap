@@ -1,0 +1,513 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`vue full output snapshots > BatchUpdates 1`] = `
+"<script setup lang="ts">
+  import { ref, computed } from "vue";
+  const x = ref(0)
+  const y = ref(0)
+  const sum = computed(() => x.value + y.value)
+</script>
+<template>
+<div>
+  <span>
+    {{ sum }}
+  </span>
+  <button @click="() => { x = x + 1; y = y + 1; }">
+    Both
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > Composite 1`] = `
+"<script setup lang="ts">
+  import { ref, computed, watchEffect } from "vue";
+  const x = ref(1)
+  const y = ref(2)
+  const sum = computed(() => x.value + y.value)
+  watchEffect(() => { console.log("sum:", sum.value); })
+</script>
+<template>
+<div>
+  <span id="sum">
+    {{ sum }}
+  </span>
+  <button id="incX" @click="() => x = x + 1">
+    +X
+  </button>
+  <button id="incY" @click="() => y = y + 1">
+    +Y
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > Conditional 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const visible = ref(true)
+</script>
+<template>
+<div>
+  <span v-if="visible">
+    Visible
+  </span>
+  <span v-else>
+    Hidden
+  </span>
+  <button @click="() => visible = !visible">
+    Toggle
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > ConditionalClass 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const active = ref(false)
+</script>
+<template>
+<div :class='active ? "active" : "inactive"'>
+  <button @click="() => active = !active">
+    Toggle
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > ControlledSelect 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const value = ref("b")
+</script>
+<template>
+<select :value="value" @change="e => value = e.target.value">
+  <option value="a">
+    A
+  </option>
+  <option value="b">
+    B
+  </option>
+  <option value="c">
+    C
+  </option>
+</select>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > ControlledTextarea 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const text = ref("")
+</script>
+<template>
+<div>
+  <textarea :value="text" @input="e => text = e.target.value" />
+  <p>
+    {{ text.length }}
+    characters
+  </p>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > Counter 1`] = `
+"<script setup lang="ts">
+  import { ref, computed, watchEffect } from "vue";
+  const count = ref(0)
+  const doubled = computed(() => count.value * 2)
+  watchEffect(() => { console.log("count:", count.value); })
+</script>
+<template>
+<div>
+  <p>
+    {{ count }}
+  </p>
+  <p>
+    {{ doubled }}
+  </p>
+  <button @click="() => count = count + 1">
+    +1
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > DefineSlotBasic 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div>
+  <header>
+    <slot name="header" />
+  </header>
+  <main>
+    <slot />
+  </main>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > DynamicList 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const items = ref([])
+  const input = ref("")
+</script>
+<template>
+<div>
+  <input :value="input" @input="e => input = e.target.value" />
+  <button @click='() => { items = [...items, input]; input = ""; }'>
+    Add
+  </button>
+  <ul>
+    <li v-for="(item, i) in items" :key="i">
+      {{ item }}
+    </li>
+  </ul>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > EffectCleanup 1`] = `
+"<script setup lang="ts">
+  import { ref, watchEffect } from "vue";
+  const active = ref(true)
+  watchEffect(() => { if (active.value) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
+</script>
+<template>
+<button @click="() => active = !active">
+  Toggle
+</button>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > ElementRef 1`] = `
+"<script setup lang="ts">
+  import { ref, onMounted } from "vue";
+  const inputRef = ref(null)
+  onMounted(() => { inputRef.value?.focus(); })
+</script>
+<template>
+<input placeholder="auto-focus" ref="inputRef" />
+</template>
+"
+`;
+
+exports[`vue full output snapshots > ForLoop 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const items = ref(["Apple", "Banana", "Cherry"])
+</script>
+<template>
+<ul>
+  <li v-for="item in items" :key="item">
+    {{ item }}
+  </li>
+</ul>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > FormField 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const value = ref("")
+</script>
+<template>
+<div>
+  <input :value="value" @input="e => value = e.target.value" />
+  <p>
+    {{ value }}
+  </p>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > IButton 1`] = `
+"<script setup lang="ts">
+  const props = defineProps<{ label: string; disabled?: boolean }>()
+</script>
+<template>
+<button :disabled="disabled">
+  {{ label }}
+</button>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > Lifecycle 1`] = `
+"<script setup lang="ts">
+  import { ref, onMounted, onUnmounted } from "vue";
+  const mounted = ref(false)
+  onMounted(() => { mounted.value = true; })
+  onUnmounted(() => { console.log("cleanup"); })
+</script>
+<template>
+<span>
+  {{ mounted ? "mounted" : "pending" }}
+</span>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > MemoChain 1`] = `
+"<script setup lang="ts">
+  import { ref, computed } from "vue";
+  const base = ref(1)
+  const doubled = computed(() => base.value * 2)
+  const quadrupled = computed(() => doubled.value * 2)
+  const label = computed(() => \`Value: \${quadrupled.value}\`)
+</script>
+<template>
+<div>
+  <span>
+    {{ label }}
+  </span>
+  <button @click="() => base = base + 1">
+    +1
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > MixedControlFlow 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const items = ref(["a", "b", "c"])
+  const filter = ref("")
+</script>
+<template>
+<div>
+  <input :value="filter" @input="e => filter = e.target.value" />
+  <ul>
+    <template v-for="item in items" :key="item">
+      <li v-if="item.includes(filter)">
+        {{ item }}
+      </li>
+    </template>
+  </ul>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > MultiRefs 1`] = `
+"<script setup lang="ts">
+  import { ref, onMounted } from "vue";
+  const inputRef = ref(null)
+  const buttonRef = ref(null)
+  onMounted(() => { inputRef.value?.focus(); })
+</script>
+<template>
+<div>
+  <input placeholder="focus me" ref="inputRef" />
+  <button ref="buttonRef">
+    Click
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > MultipleComponentsPerFile 1`] = `
+"<script setup lang="ts">
+  const props = defineProps<{ text: string }>()
+</script>
+<template>
+<span>
+  {{ text }}
+</span>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > PropDefaults 1`] = `
+"<script setup lang="ts">
+  const props = withDefaults(defineProps<{ color?: string; size: number }>(), { color: "blue" })
+</script>
+<template>
+<div :style="\`color: \${color}\`">
+  {{ size }}
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > SlotBasic 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div>
+  <slot />
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > SlotInConditional 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const expanded = ref(true)
+</script>
+<template>
+<div>
+  <slot name="header" />
+  <slot v-if="expanded" />
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > SlotNamed 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div>
+  <header>
+    <slot name="header" />
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    <slot name="footer" />
+  </footer>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > SlotScoped 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const items = ref([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+</script>
+<template>
+<ul>
+  <li v-for="(item, index) in items" :key="item.id">
+    <slot name="item" :item="item" :index="index">
+      <template>
+        {{ index }}
+        :
+        {{ item.label }}
+      </template>
+    </slot>
+  </li>
+</ul>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > SlotScopedSingle 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const value = ref("hello")
+</script>
+<template>
+<div>
+  <slot :prop0="value">
+    <span>
+      {{ value }}
+    </span>
+  </slot>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > SlotWithDefault 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div>
+  <main>
+    <slot>
+      <p>
+        Default content
+      </p>
+    </slot>
+  </main>
+  <footer>
+    <slot name="actions">
+      <span>
+        Action area
+      </span>
+    </slot>
+  </footer>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > SlotWithFallback 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div>
+  <slot name="header">
+    <h1>
+      Default Header
+    </h1>
+  </slot>
+  <slot>
+    Default body content
+  </slot>
+</div>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > SwitchTabs 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const tab = ref("a")
+</script>
+<template>
+<div>
+  <p v-if='tab === "a"'>
+    Tab A
+  </p>
+  <p v-else-if='tab === "b"'>
+    Tab B
+  </p>
+  <button @click='() => tab = tab === "a" ? "b" : "a"'>
+    Switch
+  </button>
+</div>
+</template>
+"
+`;
+
+exports[`vue multi-component files > ComponentRef (all files) 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div>
+  Child
+</div>
+</template>
+
+<script setup lang="ts">
+  import { ref, onMounted } from "vue";
+  const childRef = ref(null)
+  onMounted(() => { console.log(childRef.value); })
+</script>
+<template>
+<Child ref="childRef" />
+</template>
+"
+`;

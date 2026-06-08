@@ -1,0 +1,42 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`astro emit + print > Counter component 1`] = `
+"---
+let count = 0
+const doubled = count * 2
+---
+<div>
+<p>
+{count}
+</p>
+<button onClick={() => count = count + 1}>
++1
+</button>
+</div>
+"
+`;
+
+exports[`astro emit + print > props use Astro.props 1`] = `
+"---
+interface Props { label: unknown; disabled?: unknown }
+const props = Astro.props as Props;
+const { label, disabled } = props;
+let count = 0
+const doubled = count * 2
+---
+<div />
+"
+`;
+
+exports[`astro emit + print > transition passes through to the child 1`] = `
+"---
+let count = 0
+const doubled = count * 2
+---
+<div>
+{visible ? (<p>
+Hello
+</p>) : null}
+</div>
+"
+`;

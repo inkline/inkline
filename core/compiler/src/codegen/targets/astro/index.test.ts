@@ -1,70 +1,33 @@
 import { describe, it, expect } from "vitest";
 import * as ts from "typescript";
-import { UNKNOWN_LOCATION } from "../../../ir/types.ts";
-import { SymbolTable, type SymbolId } from "../../../ir/reactivity.ts";
+import { type SymbolId } from "../../../ir/reactivity.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import {
+  createComponentInstance,
   createElement,
   createExpr,
   createSwitch,
   createText,
-  createComponentInstance,
 } from "../../../ir/render/builders.ts";
-import { createDiagnosticCollector } from "../../../core/diagnostics/collector.ts";
-import { resolveOptions } from "../../../core/options.ts";
-import type { CodegenContext } from "../../context.ts";
-import { print } from "../../print/printer.ts";
+import {
+  counterRender,
+  emitCode as emitFor,
+  emitWithCtx,
+  emitWithFile,
+  loc,
+  makeComp,
+  makeCtxWithComponentImport,
+  makeCtxWithExternalImport,
+  mockExpr,
+  propsLabelDisabled,
+  richComp,
+  runInvariants,
+  transitionWithIf,
+} from "../../../testing/codegen.ts";
 import { astro } from "./index.ts";
 
-function mockExpr(code: string): ts.Expression {
-  const sf = ts.createSourceFile("t.ts", code, ts.ScriptTarget.Latest, true);
-  return (sf.statements[0] as ts.ExpressionStatement).expression;
-}
-
-const loc = UNKNOWN_LOCATION;
-
-function makeComp(name: string, render: IRNode, overrides?: Partial<IRComponent>): IRComponent {
-  return {
-    kind: "Component",
-    id: `t.tsx#${name}`,
-    name,
-    loc,
-    props: [],
-    slots: [],
-    events: [],
-    state: [],
-    refs: [],
-    memos: [],
-    effects: [],
-    resources: [],
-    provides: [],
-    consumes: [],
-    lifecycle: { onMount: [], onCleanup: [] },
-    setup: [],
-    render,
-    primitives: [],
-    styles: [],
-    runtime: "iso",
-    targetOverrides: {},
-    ...overrides,
-  };
-}
-
-function makeCtx(): CodegenContext {
-  return {
-    diagnostics: createDiagnosticCollector(),
-    options: resolveOptions({ targets: ["astro"] }),
-    symbols: new SymbolTable(),
-    rewrites: astro.rewrites,
-    contexts: [],
-    externalImports: [],
-    componentImports: [],
-    typeDeclarations: [],
-  };
-}
-
 function emitCode(comp: IRComponent): string {
-  return print(astro.emit(comp, makeCtx()).root).code;
+  return emitFor(astro, comp);
 }
 
 describe("Astro codegen fixes", () => {
@@ -290,5 +253,95 @@ describe("Astro codegen fixes", () => {
       expect(code).not.toContain("catch (__e)");
       expect(code).not.toContain("const loading");
     });
+  });
+});
+
+describe("astro conformance", () => {
+  it("uses eslint with the astro plugin", () => {
+    expect(astro.conformance).toBeDefined();
+    const c = astro.conformance!;
+    expect(c.lint.tool).toBe("eslint");
+    expect(c.lint.config).toContain("astro.eslint.config.js");
+    expect(c.typecheck.dtsImports).toContain("astro");
+    expect(runInvariants(c, { path: "X.astro", contents: "" })).toHaveLength(0);
+    expect(runInvariants(c, { path: "X.tsx", contents: "" })).toHaveLength(1);
+  });
+
+  it("declares no control-flow imports", () => {
+    expect(Object.keys(astro.conformance!.controlFlowImports)).toHaveLength(0);
+  });
+});
+
+describe("astro emit + print", () => {
+  it("Counter component", () => {
+    const { fileName, code } = emitWithFile(astro, richComp("Counter", counterRender));
+    expect(fileName).toBe("Counter.astro");
+    expect(code).toMatchSnapshot();
+  });
+
+  it("output contains --- frontmatter delimiters", () => {
+    expect(emitCode(richComp("Counter", counterRender))).toContain("---");
+  });
+
+  it("props use Astro.props", () => {
+    const comp = richComp("Button", createElement({ tag: "div" }), { props: propsLabelDisabled() });
+    const code = emitCode(comp);
+    expect(code).toContain("Astro.props");
+    expect(code).toMatchSnapshot();
+  });
+
+  it("resolves a component instance to its reference name, not 'unknown'", () => {
+    const comp = richComp(
+      "Wrapper",
+      createElement({
+        tag: "div",
+        children: [createComponentInstance({ reference: mockExpr("Child") as ts.Identifier })],
+      }),
+    );
+    const code = emitCode(comp);
+    expect(code).toContain("<Child");
+    expect(code).not.toContain("unknown");
+  });
+
+  it("binds `props` so whole-object references resolve", () => {
+    const comp = richComp("Button", createElement({ tag: "div" }), {
+      props: [{ name: "label", required: true, symbolId: "t::prop::label@0" as SymbolId, loc }],
+    });
+    const code = emitCode(comp);
+    expect(code).toContain("const props = Astro.props as Props;");
+    expect(code).toContain("const { label } = props;");
+  });
+
+  it("external import appears inside the frontmatter", () => {
+    const code = emitWithCtx(
+      astro,
+      richComp("Test", createElement({ tag: "div" })),
+      makeCtxWithExternalImport(astro),
+    );
+    expect(code).toContain('import { badge } from "virtual:styleframe";');
+    const fences = [...code.matchAll(/---/g)];
+    const importIdx = code.indexOf("virtual:styleframe");
+    expect(importIdx).toBeGreaterThan(fences[0]!.index!);
+    expect(importIdx).toBeLessThan(fences[1]!.index!);
+  });
+
+  it("component import appears inside the frontmatter", () => {
+    const code = emitWithCtx(
+      astro,
+      richComp("Test", createElement({ tag: "div" })),
+      makeCtxWithComponentImport(astro),
+    );
+    const fences = [...code.matchAll(/---/g)];
+    const importIdx = code.indexOf("IBadgeBase");
+    expect(importIdx).toBeGreaterThan(fences[0]!.index!);
+    expect(importIdx).toBeLessThan(fences[1]!.index!);
+  });
+
+  it("transition passes through to the child", () => {
+    const code = emitCode(
+      richComp("Fade", createElement({ tag: "div", children: [transitionWithIf] })),
+    );
+    expect(code).not.toContain("Transition");
+    expect(code).toMatchSnapshot();
   });
 });

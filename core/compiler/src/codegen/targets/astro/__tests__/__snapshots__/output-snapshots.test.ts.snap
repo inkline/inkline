@@ -1,0 +1,499 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`astro full output snapshots > BatchUpdates 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let x = 0
+let y = 0
+const sum = x + y
+---
+<div {...__attrs} class={__attrs.class}>
+<span>
+{sum}
+</span>
+<button onClick={() => { x = x + 1; y = y + 1; }}>
+Both
+</button>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > Composite 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let x = 1
+let y = 2
+const sum = x + y
+---
+<div {...__attrs} class={__attrs.class}>
+<span id="sum">
+{sum}
+</span>
+<button id="incX" onClick={() => x = x + 1}>
++X
+</button>
+<button id="incY" onClick={() => y = y + 1}>
++Y
+</button>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > Conditional 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let visible = true
+---
+<div {...__attrs} class={__attrs.class}>
+{visible ? (<span>
+Visible
+</span>) : (<span>
+Hidden
+</span>)}
+<button onClick={() => visible = !visible}>
+Toggle
+</button>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > ConditionalClass 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let active = false
+---
+<div {...__attrs} class={[active ? "active" : "inactive", __attrs.class].filter(Boolean).join(" ")}>
+<button onClick={() => active = !active}>
+Toggle
+</button>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > ControlledSelect 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let value = "b"
+---
+<select {...__attrs} value={value} onChange={e => value = e.target.value} class={__attrs.class}>
+<option value="a">
+A
+</option>
+<option value="b">
+B
+</option>
+<option value="c">
+C
+</option>
+</select>
+"
+`;
+
+exports[`astro full output snapshots > ControlledTextarea 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let text = ""
+---
+<div {...__attrs} class={__attrs.class}>
+<textarea value={text} onInput={e => text = e.target.value} />
+<p>
+{text.length}
+characters
+</p>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > Counter 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let count = 0
+const doubled = count * 2
+---
+<div {...__attrs} class={__attrs.class}>
+<p>
+{count}
+</p>
+<p>
+{doubled}
+</p>
+<button onClick={() => count = count + 1}>
++1
+</button>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > DefineSlotBasic 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<div {...__attrs} class={__attrs.class}>
+<header>
+<slot name="header" />
+</header>
+<main>
+<slot />
+</main>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > DynamicList 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let items = []
+let input = ""
+---
+<div {...__attrs} class={__attrs.class}>
+<input value={input} onInput={e => input = e.target.value} />
+<button onClick={() => { items = [...items, input]; input = ""; }}>
+Add
+</button>
+<ul>
+{items.map((item, i) => (<li>
+{item}
+</li>))}
+</ul>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > EffectCleanup 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let active = true
+---
+<button {...__attrs} onClick={() => active = !active} class={__attrs.class}>
+Toggle
+</button>
+"
+`;
+
+exports[`astro full output snapshots > ElementRef 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<input {...__attrs} placeholder="auto-focus" class={__attrs.class} />
+"
+`;
+
+exports[`astro full output snapshots > ForLoop 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let items = ["Apple", "Banana", "Cherry"]
+---
+<ul {...__attrs} class={__attrs.class}>
+{items.map((item) => (<li>
+{item}
+</li>))}
+</ul>
+"
+`;
+
+exports[`astro full output snapshots > FormField 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let value = ""
+---
+<div {...__attrs} class={__attrs.class}>
+<input value={value} onInput={e => value = e.target.value} />
+<p>
+{value}
+</p>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > IButton 1`] = `
+"---
+type Props = { label: string; disabled?: boolean } & Record<string, any>
+const props = Astro.props as Props;
+const { label, disabled, ...__attrs } = props;
+---
+<button {...__attrs} disabled={disabled} class={__attrs.class}>
+{label}
+</button>
+"
+`;
+
+exports[`astro full output snapshots > Lifecycle 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let mounted = false
+---
+<span {...__attrs} class={__attrs.class}>
+{mounted ? "mounted" : "pending"}
+</span>
+"
+`;
+
+exports[`astro full output snapshots > MemoChain 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let base = 1
+const doubled = base * 2
+const quadrupled = doubled * 2
+const label = \`Value: \${quadrupled}\`
+---
+<div {...__attrs} class={__attrs.class}>
+<span>
+{label}
+</span>
+<button onClick={() => base = base + 1}>
++1
+</button>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > MixedControlFlow 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let items = ["a", "b", "c"]
+let filter = ""
+---
+<div {...__attrs} class={__attrs.class}>
+<input value={filter} onInput={e => filter = e.target.value} />
+<ul>
+{items.map((item) => (item.includes(filter) ? (<li>
+{item}
+</li>) : null))}
+</ul>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > MultiRefs 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<div {...__attrs} class={__attrs.class}>
+<input placeholder="focus me" />
+<button>
+Click
+</button>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > MultipleComponentsPerFile 1`] = `
+"---
+type Props = { text: string } & Record<string, any>
+const props = Astro.props as Props;
+const { text, ...__attrs } = props;
+---
+<span {...__attrs} class={__attrs.class}>
+{text}
+</span>
+"
+`;
+
+exports[`astro full output snapshots > PropDefaults 1`] = `
+"---
+type Props = { color?: string; size: number } & Record<string, any>
+const props = Astro.props as Props;
+const { color = "blue", size, ...__attrs } = props;
+---
+<div {...__attrs} style={\`color: \${color}\`} class={__attrs.class}>
+{size}
+</div>
+"
+`;
+
+exports[`astro full output snapshots > SlotBasic 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<div {...__attrs} class={__attrs.class}>
+<slot />
+</div>
+"
+`;
+
+exports[`astro full output snapshots > SlotInConditional 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let expanded = true
+---
+<div {...__attrs} class={__attrs.class}>
+<slot name="header" />
+{expanded ? (<slot />) : null}
+</div>
+"
+`;
+
+exports[`astro full output snapshots > SlotNamed 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<div {...__attrs} class={__attrs.class}>
+<header>
+<slot name="header" />
+</header>
+<main>
+<slot />
+</main>
+<footer>
+<slot name="footer" />
+</footer>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > SlotScoped 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let items = [{ id: 1, label: "One" }, { id: 2, label: "Two" }]
+---
+<ul {...__attrs} class={__attrs.class}>
+{items.map((item, index) => (<li>
+<!-- scoped slot 'item': args are not projectable in Astro; rendering default content -->
+{index}
+:
+{item.label}
+</li>))}
+</ul>
+"
+`;
+
+exports[`astro full output snapshots > SlotScopedSingle 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let value = "hello"
+---
+<div {...__attrs} class={__attrs.class}>
+<!-- scoped slot 'default': args are not projectable in Astro; rendering default content -->
+<span>
+{value}
+</span>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > SlotWithDefault 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<div {...__attrs} class={__attrs.class}>
+<main>
+<slot>
+<p>
+Default content
+</p>
+</slot>
+</main>
+<footer>
+<slot name="actions">
+<span>
+Action area
+</span>
+</slot>
+</footer>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > SlotWithFallback 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<div {...__attrs} class={__attrs.class}>
+<slot name="header">
+<h1>
+Default Header
+</h1>
+</slot>
+<slot>
+Default body content
+</slot>
+</div>
+"
+`;
+
+exports[`astro full output snapshots > SwitchTabs 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let tab = "a"
+---
+<div {...__attrs} class={__attrs.class}>
+{tab === "a" ? (<p>
+Tab A
+</p>) : tab === "b" ? (<p>
+Tab B
+</p>) : null}
+<button onClick={() => tab = tab === "a" ? "b" : "a"}>
+Switch
+</button>
+</div>
+"
+`;
+
+exports[`astro multi-component files > ComponentRef (all files) 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<div {...__attrs} class={__attrs.class}>
+Child
+</div>
+
+---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<Child {...__attrs} class={__attrs.class} />
+"
+`;

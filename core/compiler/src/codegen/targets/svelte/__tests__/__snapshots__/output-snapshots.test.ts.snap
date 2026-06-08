@@ -1,0 +1,463 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`svelte full output snapshots > BatchUpdates 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let x = $state(0)
+  let y = $state(0)
+  let sum = $derived(x + y)
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <span>
+    {sum}
+  </span>
+  <button onclick={() => { x = x + 1; y = y + 1; }}>
+    Both
+  </button>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > Composite 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let x = $state(1)
+  let y = $state(2)
+  let sum = $derived(x + y)
+  $effect(() => { console.log("sum:", sum); })
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <span id="sum">
+    {sum}
+  </span>
+  <button id="incX" onclick={() => x = x + 1}>
+    +X
+  </button>
+  <button id="incY" onclick={() => y = y + 1}>
+    +Y
+  </button>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > Conditional 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let visible = $state(true)
+</script>
+<div {...__attrs} class={__attrs.class}>
+  {#if visible}<span>
+    Visible
+  </span>
+  {:else}<span>
+    Hidden
+  </span>
+  {/if}
+  <button onclick={() => visible = !visible}>
+    Toggle
+  </button>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > ConditionalClass 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let active = $state(false)
+</script>
+<div {...__attrs} class={[active ? "active" : "inactive", __attrs.class].filter(Boolean).join(" ")}>
+  <button onclick={() => active = !active}>
+    Toggle
+  </button>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > ControlledSelect 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let value = $state("b")
+</script>
+<select {...__attrs} value={value} class={__attrs.class} onchange={e => value = e.target.value}>
+  <option value="a">
+    A
+  </option>
+  <option value="b">
+    B
+  </option>
+  <option value="c">
+    C
+  </option>
+</select>
+"
+`;
+
+exports[`svelte full output snapshots > ControlledTextarea 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let text = $state("")
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <textarea value={text} oninput={e => text = e.target.value} />
+  <p>
+    {text.length}
+    characters
+  </p>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > Counter 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let count = $state(0)
+  let doubled = $derived(count * 2)
+  $effect(() => { console.log("count:", count); })
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <p>
+    {count}
+  </p>
+  <p>
+    {doubled}
+  </p>
+  <button onclick={() => count = count + 1}>
+    +1
+  </button>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > DefineSlotBasic 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <header>
+    <slot name="header" />
+  </header>
+  <main>
+    <slot />
+  </main>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > DynamicList 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let items = $state([])
+  let input = $state("")
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <input value={input} oninput={e => input = e.target.value} />
+  <button onclick={() => { items = [...items, input]; input = ""; }}>
+    Add
+  </button>
+  <ul>
+    {#each items as item, i (i)}<li>
+      {item}
+    </li>
+    {/each}
+  </ul>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > EffectCleanup 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let active = $state(true)
+  $effect(() => { if (active) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
+</script>
+<button {...__attrs} class={__attrs.class} onclick={() => active = !active}>
+  Toggle
+</button>
+"
+`;
+
+exports[`svelte full output snapshots > ElementRef 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  $effect(() => { inputRef?.focus(); })
+  let inputRef = $state<HTMLElement | null>(null)
+</script>
+<input bind:this={inputRef} {...__attrs} placeholder="auto-focus" class={__attrs.class} />
+"
+`;
+
+exports[`svelte full output snapshots > ForLoop 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let items = $state(["Apple", "Banana", "Cherry"])
+</script>
+<ul {...__attrs} class={__attrs.class}>
+  {#each items as item (item)}<li>
+    {item}
+  </li>
+  {/each}
+</ul>
+"
+`;
+
+exports[`svelte full output snapshots > FormField 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let value = $state("")
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <input value={value} oninput={e => value = e.target.value} />
+  <p>
+    {value}
+  </p>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > IButton 1`] = `
+"<script lang="ts">
+  interface Props { label: string; disabled?: boolean }
+  let { label, disabled, ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<button {...__attrs} disabled={disabled} class={__attrs.class}>
+  {label}
+</button>
+"
+`;
+
+exports[`svelte full output snapshots > Lifecycle 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let mounted = $state(false)
+  $effect(() => { mounted = true; })
+  $effect(() => { return () => { console.log("cleanup"); } })
+</script>
+<span {...__attrs} class={__attrs.class}>
+  {mounted ? "mounted" : "pending"}
+</span>
+"
+`;
+
+exports[`svelte full output snapshots > MemoChain 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let base = $state(1)
+  let doubled = $derived(base * 2)
+  let quadrupled = $derived(doubled * 2)
+  let label = $derived(\`Value: \${quadrupled}\`)
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <span>
+    {label}
+  </span>
+  <button onclick={() => base = base + 1}>
+    +1
+  </button>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > MixedControlFlow 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let items = $state(["a", "b", "c"])
+  let filter = $state("")
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <input value={filter} oninput={e => filter = e.target.value} />
+  <ul>
+    {#each items as item (item)}{#if item.includes(filter)}<li>
+      {item}
+    </li>
+    {/if}{/each}
+  </ul>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > MultiRefs 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  $effect(() => { inputRef?.focus(); })
+  let inputRef = $state<HTMLElement | null>(null)
+  let buttonRef = $state<HTMLElement | null>(null)
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <input bind:this={inputRef} placeholder="focus me" />
+  <button bind:this={buttonRef}>
+    Click
+  </button>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > MultipleComponentsPerFile 1`] = `
+"<script lang="ts">
+  interface Props { text: string }
+  let { text, ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<span {...__attrs} class={__attrs.class}>
+  {text}
+</span>
+"
+`;
+
+exports[`svelte full output snapshots > PropDefaults 1`] = `
+"<script lang="ts">
+  interface Props { color?: string; size: number }
+  let { color = "blue", size, ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<div {...__attrs} style={\`color: \${color}\`} class={__attrs.class}>
+  {size}
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > SlotBasic 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <slot />
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > SlotInConditional 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let expanded = $state(true)
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <slot name="header" />
+  {#if expanded}<slot />
+  {/if}
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > SlotNamed 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <header>
+    <slot name="header" />
+  </header>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    <slot name="footer" />
+  </footer>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > SlotScoped 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let items = $state([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
+</script>
+<ul {...__attrs} class={__attrs.class}>
+  {#each items as item, index (item.id)}<li>
+    <slot name="item" item={item} index={index}>
+      {index}:{item.label}
+    </slot>
+  </li>
+  {/each}
+</ul>
+"
+`;
+
+exports[`svelte full output snapshots > SlotScopedSingle 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let value = $state("hello")
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <slot prop0={value}>
+    <span>
+      {value}
+    </span>
+  </slot>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > SlotWithDefault 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <main>
+    <slot>
+      <p>
+        Default content
+      </p>
+    </slot>
+  </main>
+  <footer>
+    <slot name="actions">
+      <span>
+        Action area
+      </span>
+    </slot>
+  </footer>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > SlotWithFallback 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <slot name="header">
+    <h1>
+      Default Header
+    </h1>
+  </slot>
+  <slot>
+    Default body content
+  </slot>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > SwitchTabs 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let tab = $state("a")
+</script>
+<div {...__attrs} class={__attrs.class}>
+  {#if tab === "a"}<p>
+    Tab A
+  </p>
+  {:else if tab === "b"}<p>
+    Tab B
+  </p>
+  {/if}
+  <button onclick={() => tab = tab === "a" ? "b" : "a"}>
+    Switch
+  </button>
+</div>
+"
+`;
+
+exports[`svelte multi-component files > ComponentRef (all files) 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+</script>
+<div {...__attrs} class={__attrs.class}>
+  Child
+</div>
+
+<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  $effect(() => { console.log(childRef); })
+  let childRef = $state<HTMLElement | null>(null)
+</script>
+<Child bind:this={childRef} {...__attrs} class={__attrs.class} />
+"
+`;

@@ -1,70 +1,32 @@
 import { describe, it, expect } from "vitest";
 import * as ts from "typescript";
-import { UNKNOWN_LOCATION } from "../../../ir/types.ts";
-import { DYNAMIC_DEPS, SymbolTable, type SymbolId } from "../../../ir/reactivity.ts";
+import { DYNAMIC_DEPS, type SymbolId } from "../../../ir/reactivity.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import {
+  createComponentInstance,
   createElement,
   createExpr,
   createSwitch,
   createText,
-  createComponentInstance,
 } from "../../../ir/render/builders.ts";
-import { createDiagnosticCollector } from "../../../core/diagnostics/collector.ts";
-import { resolveOptions } from "../../../core/options.ts";
-import type { CodegenContext } from "../../context.ts";
-import { print } from "../../print/printer.ts";
+import {
+  counterRender,
+  emitCode as emitFor,
+  emitWithCtx,
+  emitWithFile,
+  loc,
+  makeComp,
+  makeCtxWithExternalImport,
+  mockExpr,
+  propsLabelDisabled,
+  richComp,
+  runInvariants,
+  transitionWithIf,
+} from "../../../testing/codegen.ts";
 import { qwik } from "./index.ts";
 
-function mockExpr(code: string): ts.Expression {
-  const sf = ts.createSourceFile("t.ts", code, ts.ScriptTarget.Latest, true);
-  return (sf.statements[0] as ts.ExpressionStatement).expression;
-}
-
-const loc = UNKNOWN_LOCATION;
-
-function makeComp(name: string, render: IRNode, overrides?: Partial<IRComponent>): IRComponent {
-  return {
-    kind: "Component",
-    id: `t.tsx#${name}`,
-    name,
-    loc,
-    props: [],
-    slots: [],
-    events: [],
-    state: [],
-    refs: [],
-    memos: [],
-    effects: [],
-    resources: [],
-    provides: [],
-    consumes: [],
-    lifecycle: { onMount: [], onCleanup: [] },
-    setup: [],
-    render,
-    primitives: [],
-    styles: [],
-    runtime: "iso",
-    targetOverrides: {},
-    ...overrides,
-  };
-}
-
-function makeCtx(): CodegenContext {
-  return {
-    diagnostics: createDiagnosticCollector(),
-    options: resolveOptions({ targets: ["qwik"] }),
-    symbols: new SymbolTable(),
-    rewrites: qwik.rewrites,
-    contexts: [],
-    externalImports: [],
-    componentImports: [],
-    typeDeclarations: [],
-  };
-}
-
 function emitCode(comp: IRComponent): string {
-  return print(qwik.emit(comp, makeCtx()).root).code;
+  return emitFor(qwik, comp);
 }
 
 describe("Qwik codegen fixes", () => {
@@ -302,5 +264,67 @@ describe("Qwik codegen fixes", () => {
       expect(code).toContain(".finally(() => loading.value = false)");
       expect(code).not.toContain("useResource$");
     });
+  });
+});
+
+describe("qwik conformance", () => {
+  it("uses oxlint with the qwik jsPlugin", () => {
+    expect(qwik.conformance).toBeDefined();
+    const c = qwik.conformance!;
+    expect(c.lint.tool).toBe("oxlint");
+    expect(c.lint.config).toContain("qwik.oxlintrc.json");
+    expect(c.typecheck.dtsImports).toContain("@qwik.dev/core");
+    expect(runInvariants(c, { path: "X.tsx", contents: "" })).toHaveLength(0);
+    expect(runInvariants(c, { path: "X.ts", contents: "" })).toHaveLength(1);
+  });
+
+  it("declares no control-flow imports", () => {
+    expect(Object.keys(qwik.conformance!.controlFlowImports)).toHaveLength(0);
+  });
+});
+
+describe("qwik emit + print", () => {
+  it("Counter component", () => {
+    const { fileName, code } = emitWithFile(qwik, richComp("Counter", counterRender));
+    expect(fileName).toBe("Counter.tsx");
+    expect(code).toMatchSnapshot();
+  });
+
+  it("output contains component$", () => {
+    expect(emitCode(richComp("Counter", counterRender))).toContain("component$");
+  });
+
+  it("output imports from @qwik.dev/core", () => {
+    expect(emitCode(richComp("Counter", counterRender))).toContain("@qwik.dev/core");
+  });
+
+  it("output uses useSignal and useComputed$", () => {
+    const code = emitCode(richComp("Counter", counterRender));
+    expect(code).toContain("useSignal");
+    expect(code).toContain("useComputed$");
+  });
+
+  it("props type generation", () => {
+    const comp = richComp("Button", createElement({ tag: "div" }), { props: propsLabelDisabled() });
+    expect(emitCode(comp)).toMatchSnapshot();
+  });
+
+  it("external import appears after framework imports", () => {
+    const code = emitWithCtx(
+      qwik,
+      richComp("Test", createElement({ tag: "div" })),
+      makeCtxWithExternalImport(qwik),
+    );
+    expect(code).toContain('import { badge } from "virtual:styleframe";');
+    expect(code.indexOf('"@qwik.dev/core"')).toBeLessThan(code.indexOf("virtual:styleframe"));
+  });
+
+  it("emits an __InkTransition wrapper + helper", () => {
+    const code = emitCode(
+      richComp("Fade", createElement({ tag: "div", children: [transitionWithIf] })),
+    );
+    expect(code).toContain("__InkTransition");
+    expect(code).toContain("transitionend");
+    expect(code).toMatchSnapshot();
   });
 });

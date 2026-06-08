@@ -1,0 +1,52 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`angular emit + print > Counter component 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'Counter', template: \`<div>
+<p>
+{{ count() }}
+</p>
+<button (click)="count.set(count() + 1)">
++1
+</button>
+</div>\` })
+export class CounterComponent
+{
+count = signal(0)
+doubled = computed(() => this.count() * 2)
+constructor() { effect(() => { console.log('effect'); }) }
+}
+"
+`;
+
+exports[`angular emit + print > props type generation 1`] = `
+"import { Component, signal, computed, effect, input } from "@angular/core";
+@Component({ standalone: true, selector: 'Button', template: \`<div />\` })
+export class ButtonComponent
+{
+count = signal(0)
+doubled = computed(() => this.count() * 2)
+constructor() { effect(() => { console.log('effect'); }) }
+label = input.required()
+disabled = input()
+}
+"
+`;
+
+exports[`angular emit + print > transition passes through to the child 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'Fade', template: \`<div>
+@if (visible()) {
+<p>
+Hello
+</p>
+}
+</div>\` })
+export class FadeComponent
+{
+count = signal(0)
+doubled = computed(() => this.count() * 2)
+constructor() { effect(() => { console.log('effect'); }) }
+}
+"
+`;
