@@ -33,6 +33,7 @@ function makeComp(render: IRComponent["render"], slotBindings?: Map<string, stri
     props: [],
     slots: [],
     events: [],
+    models: [],
     state: [],
     refs: [],
     memos: [],

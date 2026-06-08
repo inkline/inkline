@@ -18,6 +18,8 @@ const KNOWN_PRIMITIVES: ReadonlySet<string> = new Set<PrimitiveName>([
   "untrack",
   "batch",
   "defineSlot",
+  "defineModel",
+  "defineEmits",
 ]);
 
 export type BindingTable = ReadonlyMap<string, PrimitiveName>;

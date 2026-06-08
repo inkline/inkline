@@ -3,9 +3,11 @@ import { DYNAMIC_DEPS, type IRReactiveKind, type SymbolId } from "../../../ir/re
 import type {
   IRConsumeDeclaration,
   IREffectDeclaration,
+  IREventDeclaration,
   IRExprNode,
   IRLifecycle,
   IRMemoDeclaration,
+  IRModelDeclaration,
   IRProvideDeclaration,
   IRRefDeclaration,
   IRResourceDeclaration,
@@ -35,6 +37,26 @@ function isCallTo(expr: ts.Expression, name: string | undefined): expr is ts.Cal
   );
 }
 
+/** Event names declared by `defineEmits(["a","b"])` or `defineEmits<{ a: [...]; b: [...] }>()`. */
+function declaredEmitNames(call: ts.CallExpression): string[] {
+  const names: string[] = [];
+  const arg = call.arguments[0];
+  if (arg && ts.isArrayLiteralExpression(arg)) {
+    for (const el of arg.elements) {
+      if (ts.isStringLiteral(el)) names.push(el.text);
+    }
+  }
+  const typeArg = call.typeArguments?.[0];
+  if (typeArg && ts.isTypeLiteralNode(typeArg)) {
+    for (const member of typeArg.members) {
+      if (member.name && (ts.isIdentifier(member.name) || ts.isStringLiteral(member.name))) {
+        names.push(member.name.text);
+      }
+    }
+  }
+  return names;
+}
+
 function makeExprNode(expr: ts.Expression, sf: ts.SourceFile): IRExprNode {
   return {
     kind: "Expression",
@@ -50,6 +72,11 @@ function makeExprNode(expr: ts.Expression, sf: ts.SourceFile): IRExprNode {
 
 export interface SetupResult {
   readonly state: IRStateDeclaration[];
+  readonly models: IRModelDeclaration[];
+  /** Events declared via `defineEmits([...])` / `defineEmits<{…}>()`. */
+  readonly events: IREventDeclaration[];
+  /** Local name bound to the `defineEmits()` result, if any. */
+  readonly emitName: string | undefined;
   readonly memos: IRMemoDeclaration[];
   readonly refs: IRRefDeclaration[];
   readonly effects: IREffectDeclaration[];
@@ -74,6 +101,9 @@ export function parseSetup(
 ): SetupResult {
   const scope = new ParseBindingScope();
   const state: IRStateDeclaration[] = [];
+  const models: IRModelDeclaration[] = [];
+  const events: IREventDeclaration[] = [];
+  let emitName: string | undefined;
   const memos: IRMemoDeclaration[] = [];
   const refs: IRRefDeclaration[] = [];
   const effects: IREffectDeclaration[] = [];
@@ -88,6 +118,8 @@ export function parseSetup(
   let renderExpr: ts.Expression | undefined;
 
   const signalLocal = localFor(bindings, "createSignal");
+  const modelLocal = localFor(bindings, "defineModel");
+  const emitsLocal = localFor(bindings, "defineEmits");
   const memoLocal = localFor(bindings, "createMemo");
   const effectLocal = localFor(bindings, "createEffect");
   const refLocal = localFor(bindings, "createRef");
@@ -103,6 +135,9 @@ export function parseSetup(
     if (!ts.isBlock(setupFn.body)) renderExpr = setupFn.body;
     return {
       state,
+      models,
+      events,
+      emitName,
       memos,
       refs,
       effects,
@@ -198,6 +233,69 @@ export function parseSetup(
             setterSymbolId: setterId,
             loc: toLoc(decl, sourceFile),
           });
+          continue;
+        }
+
+        if (isCallTo(init, modelLocal)) {
+          // const [value, setValue] = defineModel("value") — a two-way-bindable prop + update event.
+          const elements = ts.isArrayBindingPattern(decl.name) ? decl.name.elements : undefined;
+          const first = elements?.[0];
+          const second = elements?.[1];
+          if (
+            !first ||
+            !second ||
+            !ts.isBindingElement(first) ||
+            !ts.isIdentifier(first.name) ||
+            !ts.isBindingElement(second) ||
+            !ts.isIdentifier(second.name)
+          ) {
+            ctx.diagnostics.push("INK0043", toLoc(decl, sourceFile));
+            continue;
+          }
+
+          const nameArg = init.arguments[0];
+          if (nameArg && !ts.isStringLiteral(nameArg)) {
+            ctx.diagnostics.push("INK0043", toLoc(nameArg, sourceFile));
+            continue;
+          }
+          const propName = nameArg && ts.isStringLiteral(nameArg) ? nameArg.text : "value";
+
+          const getterId = ctx.symbols.mint({
+            componentId,
+            kind: "signal",
+            name: first.name.text,
+            loc: toLoc(decl, sourceFile),
+          });
+          const setterId = ctx.symbols.mint({
+            componentId,
+            kind: "signal",
+            name: second.name.text,
+            loc: toLoc(decl, sourceFile),
+          });
+
+          ctx.symbols.linkSetter(getterId, setterId);
+          scope.markSetter(setterId);
+          registerBinding(first.name, getterId, "signal");
+          registerBinding(second.name, setterId, "signal");
+
+          models.push({
+            name: first.name.text,
+            setterName: second.name.text,
+            propName,
+            getterSymbolId: getterId,
+            setterSymbolId: setterId,
+            typeNode: init.typeArguments?.[0],
+            loc: toLoc(decl, sourceFile),
+          });
+          continue;
+        }
+
+        if (isCallTo(init, emitsLocal)) {
+          // const emit = defineEmits(["change"]) / defineEmits<{ change: [v: string] }>()
+          if (ts.isIdentifier(decl.name)) emitName = decl.name.text;
+          for (const name of declaredEmitNames(init)) {
+            events.push({ name, kind: "event", loc: toLoc(decl, sourceFile) });
+          }
           continue;
         }
 
@@ -370,6 +468,8 @@ export function parseSetup(
           (d) =>
             d.initializer &&
             (isCallTo(d.initializer, signalLocal) ||
+              isCallTo(d.initializer, modelLocal) ||
+              isCallTo(d.initializer, emitsLocal) ||
               isCallTo(d.initializer, memoLocal) ||
               isCallTo(d.initializer, refLocal) ||
               isCallTo(d.initializer, resourceLocal) ||
@@ -440,6 +540,9 @@ export function parseSetup(
 
   return {
     state,
+    models,
+    events,
+    emitName,
     memos,
     refs,
     effects,

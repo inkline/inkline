@@ -40,6 +40,7 @@ function makeComponent(memos: IRMemoDeclaration[]): IRComponent {
     props: [],
     slots: [],
     events: [],
+    models: [],
     state: [],
     refs: [],
     memos,

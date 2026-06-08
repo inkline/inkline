@@ -36,6 +36,32 @@ export function createSignal<T>(initial: T): [get: () => T, set: (value: T) => v
   ];
 }
 
+/**
+ * Declare a two-way-bindable model: a prop named `name` plus its paired `update:<name>` event.
+ * Returns a signal tuple `[get, set]` like {@link createSignal}, except the getter reads the incoming
+ * prop and the setter emits the update event so a parent can `$bind:<name>` to it.
+ */
+export function defineModel<T = any>(_name = "value"): [get: () => T, set: (value: T) => void] {
+  let value = undefined as T;
+  return [
+    () => value,
+    (v: T) => {
+      value = v;
+    },
+  ];
+}
+
+/**
+ * Declare the custom events a component can emit and return an `emit` function. Authoring stub only —
+ * the compiler reads the declaration at the call site and rewrites `emit(name, …)` to each target's
+ * idiomatic event channel (a callback prop, `defineEmits`/`emit`, an `@Output()`, etc.).
+ */
+export function defineEmits<E extends Record<string, any[]> = Record<string, any[]>>(
+  _events?: readonly (keyof E & string)[],
+): <K extends keyof E & string>(event: K, ...args: E[K]) => void {
+  return () => {};
+}
+
 export function createMemo<T>(fn: () => T): () => T {
   return fn;
 }

@@ -19,7 +19,9 @@ export type PrimitiveName =
   | "onCleanup"
   | "untrack"
   | "batch"
-  | "defineSlot";
+  | "defineSlot"
+  | "defineModel"
+  | "defineEmits";
 
 export interface PrimitiveUsage {
   readonly name: PrimitiveName;
@@ -178,6 +180,13 @@ export interface IREventBinding {
   readonly paramTypes?: readonly (ts.TypeNode | undefined)[];
   readonly loc: SourceLocation;
   readonly synthesized?: boolean;
+  /**
+   * Set on the synthesized `update:<prop>` event a `$bind:<prop>` on a component instance lowers to.
+   * Names the bound prop so native-two-way targets (Vue `v-model:<prop>`, Svelte `bind:<prop>`,
+   * Angular `[(<prop>)]`) can re-collapse this event with its paired value attribute, while
+   * callback-prop targets (React/Solid/Qwik) derive `onUpdate<Prop>` from it.
+   */
+  readonly twoWayProp?: string;
 }
 
 export interface IRRefBinding {
@@ -226,6 +235,34 @@ export interface IRSlotDeclaration {
 export interface IREventDeclaration {
   readonly name: string;
   readonly payloadType?: ts.TypeNode;
+  /**
+   * `"model"` marks the `update:<prop>` event a {@link IRModelDeclaration} generates (it backs a
+   * two-way-bindable prop). `"event"` (the default) is a plain custom event declared via the `events`
+   * option or `defineEmits`. Codegen handles the two differently (model events drive `v-model`/
+   * `$bindable`/`model()`; plain events become callback props / `defineEmits` / `@Output()`).
+   */
+  readonly kind?: "event" | "model";
+  /** For a model event, the bound prop name (the `update:` suffix). */
+  readonly propName?: string;
+  readonly loc: SourceLocation;
+}
+
+/**
+ * A two-way-bindable model declared with `defineModel(name)`. Mirrors {@link IRStateDeclaration}'s
+ * getter/setter shape, but the getter reads the `propName` prop and the setter emits `update:<propName>`
+ * — so a model never becomes local state. Each model also contributes a synthesized {@link IRProp}
+ * (the value) and a synthesized {@link IREventDeclaration} (`kind: "model"`).
+ */
+export interface IRModelDeclaration {
+  /** Getter local binding (e.g. `value` in `const [value, setValue] = defineModel("value")`). */
+  readonly name: string;
+  /** Setter local binding (e.g. `setValue`). */
+  readonly setterName: string;
+  /** The bound prop name + `update:` event suffix (the `defineModel` argument; defaults to `"value"`). */
+  readonly propName: string;
+  readonly getterSymbolId: SymbolId;
+  readonly setterSymbolId: SymbolId;
+  readonly typeNode?: ts.TypeNode;
   readonly loc: SourceLocation;
 }
 
@@ -336,6 +373,9 @@ export interface IRComponent {
   readonly propsTypeText?: string;
   readonly slots: readonly IRSlotDeclaration[];
   readonly events: readonly IREventDeclaration[];
+  readonly models: readonly IRModelDeclaration[];
+  /** Local name bound to the `defineEmits()` result, so codegen can rewrite `emit(name, …)` calls. */
+  readonly emitName?: string;
   readonly state: readonly IRStateDeclaration[];
   readonly refs: readonly IRRefDeclaration[];
   readonly memos: readonly IRMemoDeclaration[];
@@ -359,7 +399,7 @@ export interface IRTargetOverride {
   readonly render?: IRNode;
 }
 
-export const IR_VERSION = 1;
+export const IR_VERSION = 2;
 
 export interface IRModule {
   readonly version: number;

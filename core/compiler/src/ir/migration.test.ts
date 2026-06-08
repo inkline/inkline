@@ -50,7 +50,30 @@ describe("migrate", () => {
     expect(result.version).toBe(1);
   });
 
-  it("IR_VERSION is 1", () => {
-    expect(IR_VERSION).toBe(1);
+  it("IR_VERSION is 2", () => {
+    expect(IR_VERSION).toBe(2);
+  });
+
+  it("v1 → v2 defaults `models` to [] on each component", () => {
+    const sf = ts.createSourceFile("t.tsx", "", ts.ScriptTarget.Latest, true);
+    const legacyComponent = {
+      kind: "Component",
+      id: "t.tsx#T",
+      name: "T",
+      props: [],
+      events: [],
+      state: [],
+    } as unknown as IRModule["components"][number];
+    const v1: IRModule = {
+      version: 1,
+      fileName: "t.tsx",
+      components: [legacyComponent],
+      contexts: [],
+      imports: [],
+      sourceFile: sf,
+    };
+    const result = migrate(v1, 2);
+    expect(result.version).toBe(2);
+    expect(result.components[0]!.models).toEqual([]);
   });
 });

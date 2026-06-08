@@ -33,6 +33,7 @@ function makeComp(render: IRFor): IRComponent {
     props: [],
     slots: [],
     events: [],
+    models: [],
     state: [],
     refs: [],
     memos: [],

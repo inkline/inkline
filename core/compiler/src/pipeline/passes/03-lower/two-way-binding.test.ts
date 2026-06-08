@@ -3,12 +3,14 @@ import * as ts from "typescript";
 import { UNKNOWN_LOCATION } from "../../../ir/types.ts";
 import {
   createAttribute,
+  createComponentInstance,
   createElement,
   createExpr,
   createStaticValue,
 } from "../../../ir/render/builders.ts";
 import type {
   IRComponent,
+  IRComponentInstance,
   IRElement,
   IRExprNode,
   IRStateDeclaration,
@@ -41,6 +43,7 @@ function makeComp(render: IRElement): IRComponent {
     props: [],
     slots: [],
     events: [],
+    models: [],
     state: [],
     refs: [],
     memos: [],
@@ -222,5 +225,94 @@ describe("twoWayBinding", () => {
     expect(valueAttr.binding).toBe("normal");
     expect((valueAttr.value as IRExprNode).expr.getText()).toBe("setUnknown");
     expect(out.events[0]!.handler.expr.getText()).toBe("(e) => setUnknown(e.target.value)");
+  });
+
+  it("getter convention: $bind:value={getter} reads the getter and drives its linked setter", () => {
+    const el = createElement({
+      tag: "input",
+      attrs: [
+        createAttribute({
+          name: "value",
+          value: createExpr({ expr: mockExpr("count") }),
+          binding: "twoWay",
+        }),
+      ],
+    });
+    const comp: IRComponent = { ...makeComp(el), state: [makeState("count", "setCount")] };
+    const out = twoWayBinding(comp).render as IRElement;
+
+    expect((out.attrs[0]!.value as IRExprNode).expr.getText()).toBe("count()");
+    expect(out.events[0]!.handler.expr.getText()).toBe("(e) => setCount(e.target.value)");
+  });
+});
+
+describe("twoWayBinding on component instances", () => {
+  function child(attrs: IRComponentInstance["attrs"]): IRComponentInstance {
+    return createComponentInstance({
+      reference: mockExpr("Child") as ts.Identifier,
+      resolved: { module: null, name: "Child" },
+      attrs,
+    });
+  }
+
+  it("desugars $bind:value to a value attr + a synthesized update:value event", () => {
+    const ci = child([
+      createAttribute({
+        name: "value",
+        value: createExpr({ expr: mockExpr("count") }),
+        binding: "twoWay",
+      }),
+    ]);
+    const comp: IRComponent = {
+      ...makeComp(createElement({ tag: "div" })),
+      state: [makeState("count", "setCount")],
+    };
+    const out = twoWayBinding({ ...comp, render: ci }).render as IRComponentInstance;
+
+    const valueAttr = out.attrs[0]!;
+    expect(valueAttr.binding).toBe("normal");
+    expect((valueAttr.value as IRExprNode).expr.getText()).toBe("count()");
+
+    expect(out.events).toHaveLength(1);
+    const ev = out.events[0]!;
+    expect(ev.name).toBe("update:value");
+    expect(ev.twoWayProp).toBe("value");
+    expect(ev.synthesized).toBe(true);
+    // Components emit the unwrapped value, so the handler forwards `v` directly (not e.target.value).
+    expect(ev.handler.expr.getText()).toBe("(v) => setCount(v)");
+  });
+
+  it("derives the update event from the bound prop name", () => {
+    const ci = child([
+      createAttribute({
+        name: "open",
+        value: createExpr({ expr: mockExpr("isOpen") }),
+        binding: "twoWay",
+      }),
+    ]);
+    const comp: IRComponent = {
+      ...makeComp(createElement({ tag: "div" })),
+      state: [makeState("isOpen", "setIsOpen")],
+    };
+    const out = twoWayBinding({ ...comp, render: ci }).render as IRComponentInstance;
+
+    expect(out.events[0]!.name).toBe("update:open");
+    expect(out.events[0]!.twoWayProp).toBe("open");
+    expect(out.events[0]!.handler.expr.getText()).toBe("(v) => setIsOpen(v)");
+  });
+
+  it("demotes a static-valued $bind: to a normal attr without synthesizing an event", () => {
+    const ci = child([
+      createAttribute({
+        name: "value",
+        value: createStaticValue({ value: "x" }),
+        binding: "twoWay",
+      }),
+    ]);
+    const out = twoWayBinding({ ...makeComp(createElement({ tag: "div" })), render: ci })
+      .render as IRComponentInstance;
+
+    expect(out.attrs[0]!.binding).toBe("normal");
+    expect(out.events).toHaveLength(0);
   });
 });

@@ -144,6 +144,7 @@ export function makeComp(
     props: [],
     slots: [],
     events: [],
+    models: [],
     state: [],
     refs: [],
     memos: [],

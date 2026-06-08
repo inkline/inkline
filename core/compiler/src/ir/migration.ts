@@ -1,4 +1,4 @@
-import type { IRModule } from "./render/nodes.ts";
+import type { IRComponent, IRModule } from "./render/nodes.ts";
 import { IR_VERSION } from "./render/nodes.ts";
 
 export interface IRMigration {
@@ -13,6 +13,22 @@ const migrations: IRMigration[] = [
     to: 1,
     migrate(module) {
       return { ...module, version: 1 };
+    },
+  },
+  {
+    from: 1,
+    to: 2,
+    // IRComponent gained a required `models` array (and IREventDeclaration gained optional `kind`/
+    // `propName`). Default `models` to `[]` on v1 IR; existing events need no rewrite.
+    migrate(module) {
+      return {
+        ...module,
+        version: 2,
+        components: module.components.map((c) => {
+          const legacy = c as IRComponent & { models?: IRComponent["models"] };
+          return { ...legacy, models: legacy.models ?? [] };
+        }),
+      };
     },
   },
 ];

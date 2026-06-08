@@ -104,6 +104,7 @@ export function deserializeModule(json: string): IRModule {
     ...c,
     provides: c.provides ?? [],
     consumes: c.consumes ?? [],
+    models: c.models ?? [],
   }));
 
   return {

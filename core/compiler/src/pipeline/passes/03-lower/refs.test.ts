@@ -41,6 +41,7 @@ function makeComp(render: IRElement, refDecls: IRRefDeclaration[] = []): IRCompo
     props: [],
     slots: [],
     events: [],
+    models: [],
     state: [],
     refs: refDecls,
     memos: [],

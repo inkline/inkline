@@ -5,6 +5,7 @@ import {
   type IRComponent,
   type IRContextDefinition,
   type IREffectDeclaration,
+  type IREventDeclaration,
   type IRExprNode,
   type IRModule,
   type IRProp,
@@ -43,16 +44,38 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         ? parseOptions(site.options, componentId, sourceFile, ctx)
         : undefined;
 
-      const props =
+      const baseProps =
         optionsResult?.props ??
         parsePropsFromParameterType(site.setupFn, componentId, sourceFile, ctx, checker);
       const propsTypeText = getPropsTypeText(site.setupFn, sourceFile);
-      const events = optionsResult?.events ?? [];
+      const baseEvents = optionsResult?.events ?? [];
       const styles = optionsResult?.styles ?? [];
       const runtime = optionsResult?.runtime ?? "iso";
 
       // (d) setup
       const setupResult = parseSetup(site.setupFn, componentId, bindings, sourceFile, checker, ctx);
+
+      // defineModel: each model adds a value prop + an `update:<prop>` model event. A prop the author
+      // also declared by hand is left as-is (warn — the model owns it) so it is never emitted twice.
+      const declaredPropNames = new Set(baseProps.map((p) => p.name));
+      const modelProps: IRProp[] = [];
+      const modelEvents: IREventDeclaration[] = [];
+      for (const m of setupResult.models) {
+        if (declaredPropNames.has(m.propName)) {
+          ctx.diagnostics.push("INK0044", m.loc, { name: m.propName });
+        } else {
+          modelProps.push({ name: m.propName, typeNode: m.typeNode, required: false, loc: m.loc });
+        }
+        modelEvents.push({
+          name: `update:${m.propName}`,
+          kind: "model",
+          propName: m.propName,
+          payloadType: m.typeNode,
+          loc: m.loc,
+        });
+      }
+      const props = [...baseProps, ...modelProps];
+      const events = [...baseEvents, ...setupResult.events, ...modelEvents];
 
       const slots = [...(optionsResult?.slots ?? []), ...setupResult.slotDeclarations];
 
@@ -79,6 +102,8 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         propsTypeText,
         slots,
         events,
+        models: setupResult.models,
+        emitName: setupResult.emitName,
         state: setupResult.state,
         refs: setupResult.refs,
         memos: setupResult.memos,

@@ -40,6 +40,7 @@ function makeComp(name: string, render: IRComponent["render"]): IRComponent {
     props: [],
     slots: [],
     events: [],
+    models: [],
     state: [],
     refs: [],
     memos: [],
