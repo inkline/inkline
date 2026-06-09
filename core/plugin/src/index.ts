@@ -102,5 +102,3 @@ export const unpluginFactory: UnpluginFactory<InklinePluginOptions | undefined> 
 };
 
 export const unplugin = /* #__PURE__ */ createUnplugin(unpluginFactory);
-
-export default unplugin;
