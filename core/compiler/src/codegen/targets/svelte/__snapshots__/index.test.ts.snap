@@ -8,7 +8,7 @@ exports[`svelte emit + print > $props destructuring 1`] = `
   let doubled = $derived(count * 2)
   $effect(() => { console.log("effect"); })
 </script>
-<div />
+<div></div>
 "
 `;
 

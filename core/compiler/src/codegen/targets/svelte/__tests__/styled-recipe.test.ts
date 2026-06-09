@@ -13,7 +13,7 @@ describe("StyledRecipe: recipe memo from props + default slot", () => {
     const out = await compileToChecked("StyledRecipe", "svelte");
     expect(out).toContain("let className = $derived(badge({ color: color, size: size }))");
     expect(out).not.toMatch(/badge\(\{[^}]*props\./); // recipe args must not reference bare `props`
-    expect(out).toContain("<slot>");
+    expect(out).toContain("{#if children}{@render children()}{:else}{label}{/if}");
   });
 
   it("Svelte enumerates the styling props from the inline interface", async () => {

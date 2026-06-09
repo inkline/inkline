@@ -32,7 +32,6 @@ import {
   rootAcceptsFallthrough,
 } from "../../shared/fallthrough.ts";
 import { assertNever } from "../../../core/assert.ts";
-import * as ts from "typescript";
 
 const REWRITES: RewriteRules = {
   reactiveRead: { kind: "strip-call" },
@@ -45,6 +44,24 @@ const REWRITES: RewriteRules = {
     slots: { strip: true },
   },
 };
+
+// Non-void HTML elements must not self-close in Svelte 5 (element_invalid_self_closing_tag).
+const VOID_ELEMENTS = new Set([
+  "area",
+  "base",
+  "br",
+  "col",
+  "embed",
+  "hr",
+  "img",
+  "input",
+  "link",
+  "meta",
+  "param",
+  "source",
+  "track",
+  "wbr",
+]);
 
 // ── Shared template attr helpers ───────────────────────────────────
 
@@ -198,6 +215,30 @@ const SVELTE_TRANSITION_HELPER = `const __inkTransitionIn = ${__inkTransitionFn(
 
 // ── Render-tree walker ─────────────────────────────────────────────
 
+// Svelte 5 renders parent-provided content via {@render snippet(args)}; the default slot's snippet
+// prop is `children`, a named slot's is its own name. Optional chaining renders nothing when the
+// snippet is absent; fallback content (if any) wraps in {#if}/{:else} (inside the {#if} the snippet
+// is known present, so it is invoked without `?.`).
+function emitRenderSlot(
+  node: Extract<IRNode, { kind: "SlotPlaceholder" }>,
+  rules: RewriteRules,
+): Code {
+  const snippetName = node.name === "default" ? "children" : `${node.name}Snippet`;
+  const args = node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ");
+  if (!node.fallback) {
+    return cRaw({ text: `{@render ${snippetName}?.(${args})}` });
+  }
+  return cGroup({
+    children: [
+      cRaw({ text: `{#if ${snippetName}}` }),
+      cRaw({ text: `{@render ${snippetName}(${args})}` }),
+      cRaw({ text: "{:else}" }),
+      emitNode(node.fallback, rules),
+      cRaw({ text: "{/if}" }),
+    ],
+  });
+}
+
 function emitNode(node: IRNode, rules: RewriteRules): Code {
   switch (node.kind) {
     case "Element": {
@@ -208,7 +249,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         directives,
         attrs,
         children,
-        selfClose: children.length === 0,
+        selfClose: children.length === 0 && VOID_ELEMENTS.has(node.tag),
       });
     }
     case "ComponentInstance": {
@@ -283,26 +324,8 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       children.push(cRaw({ text: "{/if}" }));
       return cGroup({ children });
     }
-    case "SlotPlaceholder": {
-      const scopeAttrs = node.scopedArgs.map((arg, i) => {
-        const argName = ts.isIdentifier(arg.expr) ? arg.expr.text : `prop${i}`;
-        return cTmplAttr({
-          name: argName,
-          value: { kind: "expr", expr: cExpr({ text: rewriteExpr(arg.expr, rules) }) },
-        });
-      });
-      const children: Code[] = node.fallback ? [emitNode(node.fallback, rules)] : [];
-      const nameAttr =
-        node.name === "default"
-          ? []
-          : [cTmplAttr({ name: "name", value: { kind: "static", text: node.name } })];
-      return cTmplElement({
-        tag: "slot",
-        attrs: [...nameAttr, ...scopeAttrs],
-        children,
-        selfClose: children.length === 0,
-      });
-    }
+    case "SlotPlaceholder":
+      return emitRenderSlot(node, rules);
     case "Transition": {
       if (node.child.kind === "If") {
         const [first, ...rest] = node.child.branches;
@@ -343,11 +366,26 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const callbackNames = component.events.map((ev) => eventToCallbackProp(ev.name));
   const modelNames = component.models.map((m) => m.propName);
 
+  // Svelte 5 surfaces each slot as a `Snippet` prop (default → `children`, named → its name). Scoped
+  // slots take positional args, so `Snippet<any[]>`. Declared optional to match React/Solid output.
+  const slotPropFields = component.slots.map(
+    (s) =>
+      `${s.name === "default" ? "children" : s.name}?: ${s.isScoped ? "Snippet<any[]>" : "Snippet"}`,
+  );
+  // Bind a named slot's prop to a `<name>Snippet` local so `{@render}` never collides with an
+  // in-scope identifier of the same name (e.g. a `{#each items as item}` binding vs. an `item` slot).
+  // The public prop name is unchanged, so the parent's `{#snippet <name>}` still resolves.
+  const slotBindings = component.slots.map((s) =>
+    s.name === "default" ? "children" : `${s.name}: ${s.name}Snippet`,
+  );
+  const hasSlots = component.slots.length > 0;
+
   // Plain binding names (no defaults) used to reconstruct the whole `props` object below.
   const nameBindings = [
     ...component.props.map((p) => p.name),
     ...modelNames,
     ...callbackNames,
+    ...slotBindings,
     restBinding,
   ]
     .filter(Boolean)
@@ -385,6 +423,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     ),
     ...component.models.map((m) => `${m.propName} = $bindable()`),
     ...callbackNames,
+    ...slotBindings,
     restBinding,
   ]
     .filter(Boolean)
@@ -410,18 +449,20 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     ...component.models.map((m) => `${m.propName}?: ${m.typeNode?.getText() ?? "unknown"}`),
     ...component.events.map((ev) => `${eventToCallbackProp(ev.name)}?: (...args: any[]) => void`),
   ];
-  const hasEmission = emissionTypeFields.length > 0;
+  const extraTypeFields = [...emissionTypeFields, ...slotPropFields];
+  const hasExtra = extraTypeFields.length > 0;
   if (component.propsTypeText) {
-    const extra = hasEmission ? ` & { ${emissionTypeFields.join("; ")} }` : "";
+    const extra = hasExtra ? ` & { ${extraTypeFields.join("; ")} }` : "";
     const type = `${component.propsTypeText}${extra}${propFallthrough ? " & Record<string, any>" : ""}`;
     scriptBody.push(cStmt({ body: `let { ${bindings} }: ${type} = $props()` }));
-  } else if (component.props.length > 0 || hasEmission) {
+  } else if (component.props.length > 0 || hasExtra) {
     const defs = [
       ...component.props.map((p) => {
         const type = p.typeText ?? p.typeNode?.getText();
         return `${p.name}${p.required ? "" : "?"}${type ? `: ${type}` : ""}`;
       }),
       ...emissionTypeFields,
+      ...slotPropFields,
     ].join("; ");
     scriptBody.push(cStmt({ body: `interface Props { ${defs} }` }));
     const type = `Props${propFallthrough ? " & Record<string, any>" : ""}`;
@@ -506,6 +547,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         module: "svelte",
         named: uniqueSvelteImports.map((i) => ({ imported: i })),
       }),
+    );
+  }
+  if (hasSlots) {
+    scriptBody.unshift(
+      cImport({ module: "svelte", typeOnly: true, named: [{ imported: "Snippet" }] }),
     );
   }
 
