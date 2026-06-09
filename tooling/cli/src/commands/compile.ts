@@ -5,9 +5,11 @@ import {
   compile,
   compileIncremental,
   createIncrementalState,
+  meetsLevel,
   type BarrelGroup,
   type TargetName,
   type IncrementalState,
+  type DiagnosticSeverity,
 } from "@inkline/compiler";
 import { activeFrameworks, generate, type GeneratedFile } from "@inkline/storybook/generator";
 import { loadInklineConfig } from "../lib/config.ts";
@@ -29,6 +31,13 @@ import { writeCompileOutput, writeIfChanged, writeOutput } from "../lib/writer.t
  * non-story component. The empty-string `match` is the sentinel for "any non-story directory".
  */
 const DEFAULT_BARRELS: readonly BarrelGroup[] = [{ file: "index.ts", match: "" }];
+
+/**
+ * `--watch` is always a dev loop, so it reports only `warning` and above: `info` notices like
+ * INK0045 (Astro two-way binding) are build-time advisories that would be noise on every rebuild.
+ * A one-shot compile (a build) keeps the `info` floor and reports everything.
+ */
+const DEV_REPORT_LEVEL = "warning" as const;
 
 /** Ensure every configured named barrel exists for each target that produced output (empty if unmatched). */
 export function seedNamedBarrels(
@@ -137,6 +146,7 @@ export default defineCommand({
     }
 
     let hasError = false;
+    const reportLevel: DiagnosticSeverity = args.watch ? DEV_REPORT_LEVEL : "info";
     const barrelEntries: BarrelMap = new Map();
     const srcDir = args["src-dir"] ?? fileConfig.srcDir;
     const sourcePrefix = srcDir
@@ -172,6 +182,7 @@ export default defineCommand({
       );
 
       for (const d of result.diagnostics) {
+        if (!meetsLevel(d.severity, reportLevel)) continue;
         console.error(formatDiagnostic(d));
         if (d.severity === "error") hasError = true;
       }
@@ -297,6 +308,7 @@ function runWatch(
     state = result.nextState;
 
     for (const d of result.diagnostics) {
+      if (!meetsLevel(d.severity, DEV_REPORT_LEVEL)) continue;
       console.error(formatDiagnostic(d));
     }
 

@@ -34,7 +34,7 @@ export const DIAGNOSTICS = {
     url: "https://docs.inkline.dev/diagnostics/INK0044" as const,
   },
   INK0045: {
-    severity: "warning" as const,
+    severity: "info" as const,
     title:
       "Two-way binding and custom events are not interactive on the static Astro target" as const,
     help: "An .astro component renders once on the server; the model value is read-only and emitted events never fire. Use a framework island for interactivity." as const,

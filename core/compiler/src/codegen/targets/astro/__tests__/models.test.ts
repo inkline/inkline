@@ -29,8 +29,10 @@ describe("EmitButton: defineEmits → no-op", () => {
 });
 
 describe("Astro two-way diagnostic", () => {
-  it("warns (INK0045) that two-way binding is not interactive on the static target", async () => {
+  it("reports INK0045 as info (two-way binding is not interactive on the static target)", async () => {
     const { diagnostics } = await compileFixture("ModelInput", ["astro"]);
-    expect(diagnostics.some((d) => d.code === "INK0045")).toBe(true);
+    const d = diagnostics.find((x) => x.code === "INK0045");
+    expect(d).toBeDefined();
+    expect(d?.severity).toBe("info");
   });
 });

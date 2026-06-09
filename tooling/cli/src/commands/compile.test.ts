@@ -196,6 +196,20 @@ describe("compile command (in-process)", () => {
     expect(errs.length).toBeGreaterThan(0);
   });
 
+  it("reports the info-level INK0045 notice on a one-shot astro build", async () => {
+    const out = tmpDir("astro-info");
+    const { exitCode, errs } = await runCompile([
+      resolve(FIXTURES, "ModelInput.ink.tsx"),
+      "--target",
+      "astro",
+      "--out-dir",
+      out,
+    ]);
+    // INK0045 is info, not error — it prints but does not fail the build.
+    expect(exitCode).toBe(0);
+    expect(errs).toContain("INK0045");
+  });
+
   it("cleans target directories before compiling", async () => {
     const out = tmpDir("clean");
     mkdirSync(resolve(out, "react"), { recursive: true });
@@ -343,6 +357,70 @@ describe("compile command watch mode", () => {
     } finally {
       watcher.close();
       // Let any debounced rebuild/story timers fire before the temp dir is removed in afterEach.
+      await delay(300);
+    }
+  });
+});
+
+describe("compile command watch mode: dev reporting level", () => {
+  // Compiled to astro this emits both the info-level INK0045 notice (two-way binding) and a
+  // warning-level INK0010 (the effect has no reactive deps). The watch loop reports only warning+,
+  // so on the initial compile and every rebuild it must drop INK0045 but keep INK0010.
+  const MODEL = (tag: string) =>
+    `import { defineComponent, defineModel, createEffect } from "@inkline/core";
+export default defineComponent(() => {
+  const [value, setValue] = defineModel<string>("value");
+  createEffect(() => {
+    console.log("static");
+  });
+  return <${tag} value={value()} onInput={(e) => setValue(e.target.value)} />;
+});
+`;
+
+  it("drops info (INK0045) but keeps warnings (INK0010) across initial compile and rebuilds", async () => {
+    const configDir = tmpDir("watch-astro");
+    const srcDir = resolve(configDir, "src");
+    const astroDir = resolve(configDir, "out", "astro", ".inkline");
+    const fieldDir = resolve(srcDir, "components", "field", "styled");
+    mkdirSync(fieldDir, { recursive: true });
+    const componentFile = resolve(fieldDir, "IField.ink.tsx");
+    writeFileSync(componentFile, MODEL("input"));
+    const configPath = resolve(configDir, "inkline.config.mjs");
+    writeFileSync(
+      configPath,
+      `export default {
+        srcDir: ${JSON.stringify(srcDir)},
+        targets: ["astro"],
+        targetOutDir: { astro: ${JSON.stringify(astroDir)} },
+        barrels: [{ file: "index.ts", match: "styled" }],
+      };\n`,
+    );
+
+    const logs: string[] = [];
+    const errs: string[] = [];
+    vi.spyOn(console, "log").mockImplementation((...a: unknown[]) => void logs.push(a.join(" ")));
+    vi.spyOn(console, "error").mockImplementation((...a: unknown[]) => void errs.push(a.join(" ")));
+    process.exitCode = 0;
+
+    const { result } = await runCommand(compile, {
+      rawArgs: [componentFile, "--config", configPath, "--watch"],
+    });
+    const watcher = result as FSWatcher;
+
+    try {
+      // Initial compile already ran (in watch mode): the info notice is filtered, the warning shows.
+      expect(errs.join("\n")).not.toContain("INK0045");
+      expect(errs.join("\n")).toContain("INK0010");
+
+      // A rebuild re-emits both; INK0045 stays filtered while the warning still surfaces.
+      logs.length = 0;
+      errs.length = 0;
+      writeFileSync(componentFile, MODEL("textarea"));
+      await waitFor(() => logs.some((l) => l.includes("Rebuilt")));
+      expect(errs.join("\n")).not.toContain("INK0045");
+      expect(errs.join("\n")).toContain("INK0010");
+    } finally {
+      watcher.close();
       await delay(300);
     }
   });
