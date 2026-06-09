@@ -19,6 +19,7 @@ import {
   rewriteAttrName,
   eventToCallbackProp,
   callbackPropRules,
+  reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import {
@@ -380,6 +381,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     ...ctx.rewrites,
     setters,
     ...callbackPropRules(component.models, component.emitName, "$"),
+    reactiveReads: reactiveReadNames(component),
   };
   const body: Code[] = [];
   const qwikImports = ["component$", "useSignal", "useComputed$", "useVisibleTask$", "$"];

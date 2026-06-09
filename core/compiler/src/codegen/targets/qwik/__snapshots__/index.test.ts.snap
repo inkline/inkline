@@ -56,7 +56,7 @@ useVisibleTask$(() => { console.log("effect"); })
 return (
 <div>
   <__InkTransition name="fade">
-    {visible.value ? (<><p>Hello</p></>) : null}
+    {count.value ? (<><p>Hello</p></>) : null}
   </__InkTransition>
 </div>
 )

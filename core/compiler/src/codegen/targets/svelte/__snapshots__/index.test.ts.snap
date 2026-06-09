@@ -56,7 +56,7 @@ exports[`svelte emit + print > pushes the transition directive into the child el
     };
 </script>
 <div>
-  {#if visible}<p in:__inkTransitionIn={{ name: "fade" }} out:__inkTransitionOut={{ name: "fade" }}>
+  {#if count}<p in:__inkTransitionIn={{ name: "fade" }} out:__inkTransitionOut={{ name: "fade" }}>
     Hello
   </p>
   {/if}

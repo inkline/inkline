@@ -17,7 +17,12 @@ import {
   cGroup,
   cStyle,
 } from "../../code-ir/builders.ts";
-import { rewriteExpr, rewriteAttrName, extractKeyBody } from "../../shared/expr-rewrite.ts";
+import {
+  rewriteExpr,
+  rewriteAttrName,
+  extractKeyBody,
+  reactiveReadNames,
+} from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 import * as ts from "typescript";
@@ -275,7 +280,8 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     ...component.state.map((s) => [s.setterName, s.name]),
     ...component.models.map((m) => [m.setterName, m.name]),
   ]);
-  const rules: RewriteRules = { ...ctx.rewrites, setters };
+  const reads = reactiveReadNames(component);
+  const rules: RewriteRules = { ...ctx.rewrites, setters, reactiveReads: reads };
   // The Vue template auto-unwraps refs, so resource data/loading/error are read by their bare names
   // (reactiveRead strip-call). Only the template needs this — the <script setup> reads them via
   // `.value`. Build the set of bound resource names and spread it into the template rules.
@@ -287,6 +293,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const templateRules: RewriteRules = {
     ...TEMPLATE_RULES,
     setters,
+    reactiveReads: reads,
     reactiveBindings: resourceReads,
   };
   const scriptBody: Code[] = [];

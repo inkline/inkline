@@ -1,8 +1,23 @@
 import * as ts from "typescript";
 import type { RewriteRules } from "../context.ts";
+import type { IRComponent } from "../../ir/render/nodes.ts";
 
 export function rewriteExpr(expr: ts.Expression, rules: RewriteRules): string {
   return walk(expr, rules);
+}
+
+/**
+ * The identifiers that, read as a zero-arg call `foo()`, are reactive accessor reads: signal and
+ * model getters (`createSignal`/`defineModel`) and memos (`createMemo`). Spread into a target's
+ * {@link RewriteRules.reactiveReads} so the rewriter applies its reactive-read convention to these
+ * and emits every other zero-arg call (e.g. an imported recipe) as a plain function call.
+ */
+export function reactiveReadNames(component: IRComponent): Set<string> {
+  return new Set([
+    ...component.state.map((s) => s.name),
+    ...component.memos.map((m) => m.name),
+    ...component.models.map((m) => m.name),
+  ]);
 }
 
 /** Derive a callback-prop name from an event name: `change` → `onChange`, `update:value` → `onUpdateValue`. */
@@ -166,20 +181,25 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
       // A model getter read `value()` resolves to its bound prop on callback-prop targets.
       const modelRead = rules.modelReads?.get(callee.text);
       if (modelRead !== undefined) return modelRead;
-      // A bare 0-arg call is a reactive read; in class-body contexts it is a member access.
       const self = rules.selfPrefix ? "this." : "";
       // A read of a context-lifted signal goes through the provided getter.
       const providedRead = rules.providedSignals?.get(callee.text);
       if (providedRead) {
         return `${self}${providedRead.field}.${providedRead.prop}`;
       }
-      switch (rules.reactiveRead.kind) {
-        case "strip-call":
-          return `${self}${callee.text}`;
-        case "preserve-call":
-          return `${self}${callee.text}()`;
-        case "field-access":
-          return `${self}${callee.text}.${rules.reactiveRead.field}`;
+      // Only a known reactive accessor (signal/memo/model getter) follows the target's reactive-read
+      // convention; in class-body contexts it is a member access. Any other zero-arg call — e.g. an
+      // imported styleframe recipe `inputAppendRecipe()` — is a real function call and falls through
+      // to the generic call emission below, keeping its `()`.
+      if (rules.reactiveReads?.has(callee.text)) {
+        switch (rules.reactiveRead.kind) {
+          case "strip-call":
+            return `${self}${callee.text}`;
+          case "preserve-call":
+            return `${self}${callee.text}()`;
+          case "field-access":
+            return `${self}${callee.text}.${rules.reactiveRead.field}`;
+        }
       }
     }
     const args = expr.arguments.map((a) => walk(a, rules));

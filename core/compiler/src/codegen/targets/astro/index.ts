@@ -7,6 +7,7 @@ import {
   rewriteAttrName,
   rewriteEventName,
   emitExprAsTemplate,
+  reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import {
@@ -162,6 +163,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const rules: RewriteRules = {
     ...ctx.rewrites,
     setters,
+    reactiveReads: reactiveReadNames(component),
     emit: component.emitName ? { local: component.emitName, style: "noop" } : undefined,
   };
 

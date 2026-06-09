@@ -126,7 +126,7 @@ describe("react emit + print", () => {
   it("strips reactive calls in a compound expression", () => {
     const render = createElement({
       tag: "p",
-      children: [createExpr({ expr: mockExpr("count() * 2 + other()"), isReactive: true })],
+      children: [createExpr({ expr: mockExpr("count() * 2 + doubled()"), isReactive: true })],
     });
     expect(emitCode(react, richComp("Compound", render))).toMatchSnapshot();
   });

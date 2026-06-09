@@ -8,6 +8,7 @@ import {
   rewriteEventName,
   rewriteAttrName,
   extractKeyBody,
+  reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
@@ -212,7 +213,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const emitRule = component.emitName
     ? ({ local: component.emitName, style: "angular-output" } as const)
     : undefined;
-  const baseRules: RewriteRules = { ...ctx.rewrites, setters, emit: emitRule };
+  const baseRules: RewriteRules = {
+    ...ctx.rewrites,
+    setters,
+    emit: emitRule,
+    reactiveReads: reactiveReadNames(component),
+  };
   const stateSignals = new Set(component.state.map((s) => s.name));
 
   // Resolve context provides up front: a value derived from a component signal lifts that signal

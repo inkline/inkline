@@ -305,7 +305,7 @@ export const transitionWithIf: IRNode = createTransition({
   child: createIf({
     branches: [
       {
-        test: createExpr({ expr: mockExpr("visible()") }),
+        test: createExpr({ expr: mockExpr("count()") }),
         body: createElement({ tag: "p", children: [createText({ value: "Hello" })] }),
       },
     ],
@@ -319,7 +319,7 @@ export const transitionAppear: IRNode = createTransition({
   child: createIf({
     branches: [
       {
-        test: createExpr({ expr: mockExpr("show()") }),
+        test: createExpr({ expr: mockExpr("count()") }),
         body: createElement({ tag: "div", children: [createText({ value: "Content" })] }),
       },
     ],

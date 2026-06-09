@@ -72,6 +72,14 @@ export interface RewriteRules {
    */
   readonly reactiveBindings?: ReadonlySet<string>;
   /**
+   * Identifiers that, read as a zero-arg call `foo()`, are reactive accessor reads (signal / memo /
+   * model getters) and so follow {@link reactiveRead}. A zero-arg call to any name NOT in this set
+   * (e.g. an imported styleframe recipe `inputAppendRecipe()`) is a plain function call and keeps
+   * its call syntax. Built per-component from the IR's known reactive bindings; mirrors how
+   * {@link setters} gates the write side.
+   */
+  readonly reactiveReads?: ReadonlySet<string>;
+  /**
    * Prop names that are destructured into a local with a default applied (e.g. React's
    * `const { color = "blue", ...__attrs } = props`). A read `props.color` is rewritten to the
    * bare local `color` so the destructured default takes effect. Only set by targets that keep

@@ -22,6 +22,7 @@ import {
   extractKeyBody,
   eventToCallbackProp,
   callbackPropRules,
+  reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import {
@@ -518,6 +519,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const rules: RewriteRules = {
     ...ctx.rewrites,
     ...callbackPropRules(component.models, component.emitName),
+    reactiveReads: reactiveReadNames(component),
   };
   const body: Code[] = [];
   const reactImports: string[] = [];

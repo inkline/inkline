@@ -24,6 +24,7 @@ import {
   extractKeyBody,
   emitExprAsTemplate,
   eventToCallbackProp,
+  reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import {
@@ -402,18 +403,20 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     : undefined;
   // Svelte destructures `$props()`, so there is no `props` binding for whole-object references
   // (e.g. `badge(props)`). Reconstruct it from the destructured bindings instead.
+  const reactiveReads = reactiveReadNames(component);
   const rules: RewriteRules =
     nameBindings.length > 0
       ? {
           ...ctx.rewrites,
           setters,
+          reactiveReads,
           emit: emitRule,
           members: {
             ...ctx.rewrites.members,
             props: { ...ctx.rewrites.members?.props, strip: true, whole: `{ ${nameBindings} }` },
           },
         }
-      : { ...ctx.rewrites, setters, emit: emitRule };
+      : { ...ctx.rewrites, setters, reactiveReads, emit: emitRule };
 
   // Destructure bindings carry each prop's default (`color = "blue"`) so `$props()` applies it; each
   // model becomes a `$bindable()` binding; each callback prop is a plain binding.
