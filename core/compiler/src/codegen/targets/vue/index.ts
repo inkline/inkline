@@ -255,10 +255,11 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       });
     }
     case "Fragment": {
+      // Emit fragment children as bare siblings (a `cGroup`, like Svelte) — NOT a `<template>`
+      // wrapper. A directive-less `<template>` is an inert HTML element in Vue, so wrapping a
+      // component's multi-child default slot (or a multi-root render) in one drops every child.
       const children = node.children.map((c) => emitNode(c, rules));
-      return children.length === 1
-        ? children[0]
-        : cTmplElement({ tag: "template", attrs: [], children, selfClose: false });
+      return children.length === 1 ? children[0] : cGroup({ children });
     }
     default:
       assertNever(node);

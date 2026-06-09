@@ -336,6 +336,17 @@ value = model<string>()
 "
 `;
 
+exports[`angular full output snapshots > MultiChildSlot 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'Box', template: \`<div class="box">
+<ng-content></ng-content>
+</div>\` })
+export class BoxComponent
+{
+}
+"
+`;
+
 exports[`angular full output snapshots > MultiRefs 1`] = `
 "import { Component, signal, computed, effect, afterNextRender, viewChild, ElementRef } from "@angular/core";
 @Component({ standalone: true, selector: 'MultiRefs', template: \`<div>

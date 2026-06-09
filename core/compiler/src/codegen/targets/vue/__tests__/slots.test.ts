@@ -3,7 +3,20 @@
 // named/default slots, and conditional default slots become v-if on the <slot>.
 
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToAll } from "../../../../testing/codegen.ts";
+
+// --- MultiChildSlot: a component with multiple default-slot children -------------------------
+describe("MultiChildSlot: multiple default-slot children", () => {
+  it("Vue: children project as direct siblings (no inert <template> wrapper)", async () => {
+    const out = await compileToAll("MultiChildSlot", "vue");
+    // Both children project as direct siblings inside <Box> (not a wrapper element).
+    expect(out).toMatch(
+      /<Box>[\s\S]*<span>\s*a\s*<\/span>[\s\S]*<span>\s*b\s*<\/span>[\s\S]*<\/Box>/,
+    );
+    // The only <template> tags are the two SFC blocks (Box + parent) — no extra bare wrapper.
+    expect(out.match(/<template>/g)?.length).toBe(2);
+  });
+});
 
 // --- SlotBasic: a single default <Slot /> ----------------------------------------------------
 describe("SlotBasic: default slot", () => {

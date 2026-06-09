@@ -365,6 +365,19 @@ return (
 "
 `;
 
+exports[`react full output snapshots > MultiChildSlot 1`] = `
+"export function Box(props: { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, ...__attrs } = props
+return (
+<div {...__attrs} className={["box", props.className].filter(Boolean).join(" ")}>
+  {props.children}
+</div>
+)
+}
+"
+`;
+
 exports[`react full output snapshots > MultiRefs 1`] = `
 "import { useRef, useEffect } from "react";
 export function MultiRefs(props: React.HTMLAttributes<HTMLElement>)

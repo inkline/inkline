@@ -335,6 +335,18 @@ let value = props.value
 "
 `;
 
+exports[`astro full output snapshots > MultiChildSlot 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<div {...__attrs} class={["box", __attrs.class].filter(Boolean).join(" ")}>
+<slot />
+</div>
+"
+`;
+
 exports[`astro full output snapshots > MultiRefs 1`] = `
 "---
 type Props = Record<string, any>

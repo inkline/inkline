@@ -342,6 +342,17 @@ exports[`vue full output snapshots > ModelInput 1`] = `
 "
 `;
 
+exports[`vue full output snapshots > MultiChildSlot 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div class="box">
+  <slot />
+</div>
+</template>
+"
+`;
+
 exports[`vue full output snapshots > MultiRefs 1`] = `
 "<script setup lang="ts">
   import { ref, onMounted } from "vue";
@@ -453,11 +464,7 @@ exports[`vue full output snapshots > SlotScoped 1`] = `
 <ul>
   <li v-for="(item, index) in items" :key="item.id">
     <slot name="item" :item="item" :index="index">
-      <template>
-        {{ index }}
-        :
-        {{ item.label }}
-      </template>
+      {{ index }}:{{ item.label }}
     </slot>
   </li>
 </ul>

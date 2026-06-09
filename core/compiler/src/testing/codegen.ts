@@ -122,6 +122,7 @@ export const NEW_FIXTURES = [
   "EmitButton",
   "BoundField",
   "NativeBind",
+  "MultiChildSlot",
 ] as const;
 
 // ── Unit emit: hand-built IR → emitted source ────────────────────────────────

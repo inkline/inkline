@@ -311,6 +311,18 @@ exports[`svelte full output snapshots > ModelInput 1`] = `
 "
 `;
 
+exports[`svelte full output snapshots > MultiChildSlot 1`] = `
+"<script lang="ts">
+  import type { Snippet } from "svelte";
+  interface Props { children?: Snippet }
+  let { children, ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={["box", __attrs.class].filter(Boolean).join(" ")}>
+  {@render children?.()}
+</div>
+"
+`;
+
 exports[`svelte full output snapshots > MultiRefs 1`] = `
 "<script lang="ts">
   let { ...__attrs }: Record<string, any> = $props()

@@ -400,6 +400,21 @@ return (
 "
 `;
 
+exports[`solid full output snapshots > MultiChildSlot 1`] = `
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function Box(props: { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children"])
+return (
+<div {...__attrs} class={["box", props.class].filter(Boolean).join(" ")}>
+  {props.children}
+</div>
+)
+}
+"
+`;
+
 exports[`solid full output snapshots > MultiRefs 1`] = `
 "import { onMount, splitProps } from "solid-js";
 import type { JSX } from "solid-js";

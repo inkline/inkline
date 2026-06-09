@@ -370,6 +370,20 @@ return (
 "
 `;
 
+exports[`qwik full output snapshots > MultiChildSlot 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export const Box = component$((props) =>
+{
+const { children, ...__attrs } = props
+return (
+<div {...__attrs} class={["box", props.class].filter(Boolean).join(" ")}>
+  <Slot />
+</div>
+)
+});
+"
+`;
+
 exports[`qwik full output snapshots > MultiRefs 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const MultiRefs = component$((props) =>
