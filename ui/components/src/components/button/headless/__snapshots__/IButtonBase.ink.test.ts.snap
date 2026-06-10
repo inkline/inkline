@@ -106,14 +106,13 @@ return (
     disabled?: boolean;
     loading?: boolean;
   }
-  let { label, type, disabled, loading, ...__attrs }: ButtonBaseProps & Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  let { label, type, disabled, loading, children, ...__attrs }: ButtonBaseProps & { children?: Snippet } & Record<string, any> = $props()
 </script>
 <button {...__attrs} class={["button", __attrs.class].filter(Boolean).join(" ")} type={type ?? "button"} disabled={disabled || loading} aria-busy={loading ? "true" : "false"}>
-  {#if !!loading}<span class="button-spinner" aria-hidden="true" />
+  {#if !!loading}<span class="button-spinner" aria-hidden="true"></span>
   {/if}
-  <slot>
-    {label}
-  </slot>
+  {#if children}{@render children()}{:else}{label}{/if}
 </button>
 ",
   "vue/IButtonBase.vue": "<script setup lang="ts">

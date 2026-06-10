@@ -59,10 +59,11 @@ return (
 ",
   "svelte/IInputPrependBase.svelte": "<script lang="ts">
   export interface InputPrependBaseProps {}
-  let { ...__attrs }: InputPrependBaseProps & Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  let { children, ...__attrs }: InputPrependBaseProps & { children?: Snippet } & Record<string, any> = $props()
 </script>
 <div {...__attrs} class={["input-prepend", __attrs.class].filter(Boolean).join(" ")}>
-  <slot />
+  {@render children?.()}
 </div>
 ",
   "vue/IInputPrependBase.vue": "<script setup lang="ts">

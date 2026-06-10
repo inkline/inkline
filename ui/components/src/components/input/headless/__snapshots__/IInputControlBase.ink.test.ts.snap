@@ -137,7 +137,7 @@ return (
   }
   let { id, name, type, placeholder, disabled, readonly, value = $bindable() }: InputControlBaseProps & { value?: string } = $props()
 </script>
-{#if type === "textarea"}<textarea class="input-field" id={id} name={name} value={value} placeholder={placeholder} disabled={disabled} readonly={readonly} oninput={(e: { currentTarget: HTMLTextAreaElement }) => value = e.currentTarget.value} />
+{#if type === "textarea"}<textarea class="input-field" id={id} name={name} value={value} placeholder={placeholder} disabled={disabled} readonly={readonly} oninput={(e: { currentTarget: HTMLTextAreaElement }) => value = e.currentTarget.value}></textarea>
 {:else}<input class="input-field" id={id} name={name} type={type} value={value} placeholder={placeholder} disabled={disabled} readonly={readonly} oninput={(e: { currentTarget: HTMLInputElement }) => value = e.currentTarget.value} />
 {/if}
 ",

@@ -78,10 +78,11 @@ return (
     /** Id of the input group element. */
     id?: string;
   }
-  let { id, ...__attrs }: InputGroupBaseProps & Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  let { id, children, ...__attrs }: InputGroupBaseProps & { children?: Snippet } & Record<string, any> = $props()
 </script>
 <div {...__attrs} class={["input-group", __attrs.class].filter(Boolean).join(" ")} id={id}>
-  <slot />
+  {@render children?.()}
 </div>
 ",
   "vue/IInputGroupBase.vue": "<script setup lang="ts">
