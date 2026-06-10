@@ -6,6 +6,7 @@ import {
   createComponentInstance,
   createElement,
   createExpr,
+  createFragment,
   createSwitch,
   createText,
 } from "../../../ir/render/builders.ts";
@@ -307,6 +308,54 @@ describe("qwik emit + print", () => {
   it("props type generation", () => {
     const comp = richComp("Button", createElement({ tag: "div" }), { props: propsLabelDisabled() });
     expect(emitCode(comp)).toMatchSnapshot();
+  });
+
+  it("keeps the props param when a model-only component has a non-fallthrough root", () => {
+    // A model compiles reads to `props.value`; a Fragment root never gains attribute fallthrough, so
+    // without models in the signature condition the param is dropped and `props.value` is undefined.
+    const comp = makeComp(
+      "Model",
+      createFragment({ children: [createExpr({ expr: mockExpr("value()"), isReactive: true })] }),
+      {
+        models: [
+          {
+            name: "value",
+            setterName: "setValue",
+            propName: "value",
+            getterSymbolId: "t::model::value@0" as SymbolId,
+            setterSymbolId: "t::model::setValue@10" as SymbolId,
+            loc,
+          },
+        ],
+      },
+    );
+    const code = emitCode(comp);
+    expect(code).toContain("component$((props");
+    expect(code).not.toContain("component$(() =>");
+    expect(code).toContain("props.value");
+  });
+
+  it("keeps the props param when an event-only component has a non-fallthrough root", () => {
+    const comp = makeComp(
+      "Emitter",
+      createFragment({
+        children: [
+          createElement({
+            tag: "button",
+            events: [
+              { name: "onClick", handler: createExpr({ expr: mockExpr("() => emit('go')") }), loc },
+            ],
+          }),
+        ],
+      }),
+      {
+        events: [{ name: "go", loc }],
+        emitName: "emit",
+      },
+    );
+    const code = emitCode(comp);
+    expect(code).toContain("component$((props");
+    expect(code).not.toContain("component$(() =>");
   });
 
   it("external import appears after framework imports", () => {

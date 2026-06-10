@@ -537,7 +537,14 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cRaw({ text: "" }),
       cStmt({
         body:
-          component.props.length > 0 || component.slots.length > 0 || fallthrough
+          // Models and events compile to `props.<prop>` reads and `props.on<Name>$` callbacks, so a
+          // component declaring either needs the `props` param even with no plain props/slots/fallthrough
+          // (e.g. a Fragment root, which never gains attribute fallthrough).
+          component.props.length > 0 ||
+          component.slots.length > 0 ||
+          component.models.length > 0 ||
+          component.events.length > 0 ||
+          fallthrough
             ? `export const ${component.name} = component$((props${propsTypeAnnotation}) =>`
             : `export const ${component.name} = component$(() =>`,
       }),

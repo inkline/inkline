@@ -365,7 +365,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   // A model is two-way via `$bindable` (the parent uses `bind:`), so it needs no callback prop — only
   // general emitted events become plain callback props.
   const callbackNames = component.events.map((ev) => eventToCallbackProp(ev.name));
-  const modelNames = component.models.map((m) => m.propName);
+  // A model's reads/writes resolve to its getter local (`m.name`), but the binding is declared under
+  // the public prop (`m.propName`). When they differ (aliased model), rebuild `props` with the prop
+  // name as the key and the getter local as the value (`open: isOpen`); otherwise the shorthand.
+  const modelNames = component.models.map((m) =>
+    m.propName === m.name ? m.name : `${m.propName}: ${m.name}`,
+  );
 
   // Svelte 5 surfaces each slot as a `Snippet` prop (default → `children`, named → its name). Scoped
   // slots take positional args, so `Snippet<any[]>`. Declared optional to match React/Solid output.
@@ -424,7 +429,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     ...component.props.map((p) =>
       p.defaultValue ? `${p.name} = ${rewriteExpr(p.defaultValue.expr, rules)}` : p.name,
     ),
-    ...component.models.map((m) => `${m.propName} = $bindable()`),
+    ...component.models.map((m) =>
+      // An aliased model destructures the prop to its getter local (`open: isOpen = $bindable()`) so
+      // reads/writes that resolve to `m.name` reference a declared binding; otherwise the shorthand.
+      m.propName === m.name ? `${m.name} = $bindable()` : `${m.propName}: ${m.name} = $bindable()`,
+    ),
     ...callbackNames,
     ...slotBindings,
     restBinding,
