@@ -7,6 +7,7 @@ import {
   rewriteAttrName,
   rewriteEventName,
   emitExprAsTemplate,
+  reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import {
@@ -35,6 +36,7 @@ function fallthroughAttrParts(node: any, rules: RewriteRules): string[] {
     else parts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
   }
   for (const e of node.events) {
+    if (e.twoWayProp) continue; // two-way update events can't fire on the static target
     parts.push(`${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`);
   }
   if (!classMerged) parts.push(`class={${classMergeExpr(null, `${FALLTHROUGH_REST}.class`)}}`);
@@ -105,6 +107,9 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
           else ciParts.push(`${name}={${rewriteExpr(a.value.expr, rules)}}`);
         }
         for (const e of node.events) {
+          // A two-way `update:<prop>` event can't fire on the static target; the value attr already
+          // carries the (one-way) binding, so drop the dead update handler.
+          if (e.twoWayProp) continue;
           ciParts.push(
             `${rewriteEventName(e.name, rules)}={${rewriteExpr(e.handler.expr, rules)}}`,
           );
@@ -146,8 +151,21 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
-  const rules: RewriteRules = { ...ctx.rewrites, setters };
+  // Astro renders once on the server: a model is a read-only `let` seeded from its prop, its setter is
+  // inert (`value = v`), and `emit(…)` is a no-op. Warn that two-way binding / events aren't interactive.
+  if (component.models.length > 0 || component.emitName) {
+    ctx.diagnostics.push("INK0045", component.loc);
+  }
+  const setters = Object.fromEntries([
+    ...component.state.map((s) => [s.setterName, s.name]),
+    ...component.models.map((m) => [m.setterName, m.name]),
+  ]);
+  const rules: RewriteRules = {
+    ...ctx.rewrites,
+    setters,
+    reactiveReads: reactiveReadNames(component),
+    emit: component.emitName ? { local: component.emitName, style: "noop" } : undefined,
+  };
 
   // Resource data/loading/error are reactive bindings in the render tree: a bare read follows the
   // target's reactiveRead (here `strip-call`, so they stay bare). Only the template needs this.
@@ -159,10 +177,15 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const template = emitNode(component.render, { ...rules, reactiveBindings: resourceReads });
 
   const fallthrough = rootAcceptsFallthrough(component);
-  const inlineProps =
-    component.props.length > 0
-      ? `{ ${component.props.map((p) => `${p.name}${p.required ? "" : "?"}${(p.typeText ?? p.typeNode?.getText()) ? `: ${p.typeText ?? p.typeNode?.getText()}` : ": unknown"}`).join("; ")} }`
-      : "";
+  // A model contributes a read-only value prop to the type (the update callback can't fire on Astro).
+  const propFields = [
+    ...component.props.map(
+      (p) =>
+        `${p.name}${p.required ? "" : "?"}${(p.typeText ?? p.typeNode?.getText()) ? `: ${p.typeText ?? p.typeNode?.getText()}` : ": unknown"}`,
+    ),
+    ...component.models.map((m) => `${m.propName}?: ${m.typeNode?.getText() ?? "unknown"}`),
+  ];
+  const inlineProps = propFields.length > 0 ? `{ ${propFields.join("; ")} }` : "";
 
   let propsInterface: string;
   if (fallthrough) {
@@ -184,10 +207,19 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   if (fallthrough) destructured.push(`...${FALLTHROUGH_REST}`);
   // Bind `props` so whole-object references (e.g. styling recipes) resolve, then derive the
   // named props and attribute-fallthrough rest from it — mirroring the other targets.
-  const propsStmts: string[] =
-    destructured.length > 0
-      ? ["const props = Astro.props as Props;", `const { ${destructured.join(", ")} } = props;`]
-      : [];
+  const needsProps = destructured.length > 0 || component.models.length > 0;
+  const propsStmts: string[] = needsProps
+    ? [
+        "const props = Astro.props as Props;",
+        ...(destructured.length > 0 ? [`const { ${destructured.join(", ")} } = props;`] : []),
+      ]
+    : [];
+
+  // A model is a mutable `let` seeded once from its prop (read bare in the template; the inert setter
+  // reassigns it). No client reactivity, so the value never propagates back to the parent.
+  const modelDecls = component.models.map((m) =>
+    cStmt({ body: `let ${m.name} = props.${m.propName}`, span: m.loc }),
+  );
 
   // Signal state renders once on the server. Declare each as a mutable `let` holding its
   // initial value (no client reactivity); the template reads the bare name (`strip-call`).
@@ -247,6 +279,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...contextDefs,
       ...propsStmts.map((s) => cStmt({ body: s })),
       ...consumeDecls,
+      ...modelDecls,
       ...stateDecls,
       ...memoDecls,
       ...resourceDecls,

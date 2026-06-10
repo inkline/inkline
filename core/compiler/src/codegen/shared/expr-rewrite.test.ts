@@ -8,12 +8,32 @@ function mockExpr(code: string): ts.Expression {
   return (sf.statements[0] as ts.ExpressionStatement).expression;
 }
 
+// Every identifier these suites read as a zero-arg call is a reactive accessor (signal/memo), so
+// they are declared as known reads — exactly as a target's emit() does via `reactiveReadNames()`.
+// A name absent from this set (e.g. an imported recipe `recipe()`) is treated as a plain call.
+const READS = new Set([
+  "count",
+  "other",
+  "a",
+  "b",
+  "c",
+  "ok",
+  "yes",
+  "no",
+  "idx",
+  "x",
+  "name",
+  "items",
+  "val",
+]);
+
 const STRIP: RewriteRules = {
   reactiveRead: { kind: "strip-call" },
   setterStyle: { kind: "function-call" },
   refAccess: { kind: "bare" },
   jsxAttrCasing: "html",
   eventNameCase: "camel",
+  reactiveReads: READS,
 };
 
 const PRESERVE: RewriteRules = {
@@ -22,6 +42,7 @@ const PRESERVE: RewriteRules = {
   refAccess: { kind: "bare" },
   jsxAttrCasing: "html",
   eventNameCase: "camel",
+  reactiveReads: READS,
 };
 
 const FIELD: RewriteRules = {
@@ -30,6 +51,7 @@ const FIELD: RewriteRules = {
   refAccess: { kind: "bare" },
   jsxAttrCasing: "html",
   eventNameCase: "camel",
+  reactiveReads: READS,
 };
 
 describe("rewriteExpr", () => {
@@ -61,6 +83,24 @@ describe("rewriteExpr", () => {
     it("field-access: count() * 2 + other()", () => {
       const result = rewriteExpr(mockExpr("count() * 2 + other()"), FIELD);
       expect(result).toBe("count.value * 2 + other.value");
+    });
+  });
+
+  describe("zero-arg call gating — only known reactive accessors are reactive reads", () => {
+    it("strip-call: an unknown zero-arg call keeps its call (e.g. an imported recipe)", () => {
+      expect(rewriteExpr(mockExpr("recipe()"), STRIP)).toBe("recipe()");
+    });
+
+    it("preserve-call: an unknown zero-arg call keeps its call", () => {
+      expect(rewriteExpr(mockExpr("recipe()"), PRESERVE)).toBe("recipe()");
+    });
+
+    it("field-access: an unknown zero-arg call keeps its call (no .value)", () => {
+      expect(rewriteExpr(mockExpr("recipe()"), FIELD)).toBe("recipe()");
+    });
+
+    it("strip-call: a known accessor is stripped while an unknown call is preserved", () => {
+      expect(rewriteExpr(mockExpr("count() + recipe()"), STRIP)).toBe("count + recipe()");
     });
   });
 

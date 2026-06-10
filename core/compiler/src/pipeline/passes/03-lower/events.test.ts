@@ -19,6 +19,7 @@ function makeComp(render: IRElement): IRComponent {
     props: [],
     slots: [],
     events: [],
+    models: [],
     state: [],
     refs: [],
     memos: [],

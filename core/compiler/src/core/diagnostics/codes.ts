@@ -21,6 +21,25 @@ export const DIAGNOSTICS = {
     help: "Move dynamic options into the setup body" as const,
     url: "https://docs.inkline.dev/diagnostics/INK0041" as const,
   },
+  INK0043: {
+    severity: "error" as const,
+    title: "defineModel must be a [getter, setter] tuple with a static name" as const,
+    help: 'Write const [value, setValue] = defineModel("value"). Dynamic names and non-tuple bindings are not supported.' as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0043" as const,
+  },
+  INK0044: {
+    severity: "warning" as const,
+    title: "Model '{name}' collides with a declared prop of the same name" as const,
+    help: "Remove the duplicate prop; defineModel already declares the prop and its update event." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0044" as const,
+  },
+  INK0045: {
+    severity: "info" as const,
+    title:
+      "Two-way binding and custom events are not interactive on the static Astro target" as const,
+    help: "An .astro component renders once on the server; the model value is read-only and emitted events never fire. Use a framework island for interactivity." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0045" as const,
+  },
   INK0010: {
     severity: "warning" as const,
     title: "Effect has no reactive dependencies; it runs once" as const,

@@ -72,6 +72,14 @@ export interface RewriteRules {
    */
   readonly reactiveBindings?: ReadonlySet<string>;
   /**
+   * Identifiers that, read as a zero-arg call `foo()`, are reactive accessor reads (signal / memo /
+   * model getters) and so follow {@link reactiveRead}. A zero-arg call to any name NOT in this set
+   * (e.g. an imported styleframe recipe `inputAppendRecipe()`) is a plain function call and keeps
+   * its call syntax. Built per-component from the IR's known reactive bindings; mirrors how
+   * {@link setters} gates the write side.
+   */
+  readonly reactiveReads?: ReadonlySet<string>;
+  /**
    * Prop names that are destructured into a local with a default applied (e.g. React's
    * `const { color = "blue", ...__attrs } = props`). A read `props.color` is rewritten to the
    * bare local `color` so the destructured default takes effect. Only set by targets that keep
@@ -98,6 +106,31 @@ export interface RewriteRules {
    * in double-quoted attributes, so string literals must use single quotes (`'a'`).
    */
   readonly stringQuote?: "single" | "double";
+  /**
+   * Model getter local → its read expression (e.g. `value` → `props.value`). A model getter read
+   * `value()` resolves to the bound prop rather than the target's generic reactive read. Set only by
+   * callback-prop targets (React/Solid/Qwik); native-two-way targets (Vue/Svelte/Angular/Astro) read a
+   * model exactly like a signal via {@link reactiveRead}.
+   */
+  readonly modelReads?: ReadonlyMap<string, string>;
+  /**
+   * Model setter local → its callback-prop name (e.g. `setValue` → `onUpdateValue`, with a `$` suffix
+   * for Qwik QRLs). A call `setValue(v)` becomes `props.<callback>?.(v)`. Callback-prop targets only;
+   * native-two-way targets route model setters through {@link setters}.
+   */
+  readonly modelSetters?: ReadonlyMap<string, string>;
+  /**
+   * How to rewrite an `emit(name, …args)` call. `callback-prop` emits
+   * `props.<on+Pascal(name)+suffix>?.(…)`, `angular-output` emits `<name>.emit(…)` (with `this.` in a
+   * class body), `noop` emits `undefined` (static targets). Vue keeps `emit(…)` verbatim and sets no rule.
+   */
+  readonly emit?: {
+    readonly local: string;
+    readonly style: "callback-prop" | "angular-output" | "noop";
+    readonly suffix?: string;
+    /** Access prefix for a callback-prop emit (`props.` for React/Solid/Qwik, `""` for Svelte). */
+    readonly propsAccess?: string;
+  };
 }
 
 export interface ComponentImport {

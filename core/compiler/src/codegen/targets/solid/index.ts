@@ -14,7 +14,14 @@ import {
   cGroup,
 } from "../../code-ir/builders.ts";
 import * as ts from "typescript";
-import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
+import {
+  rewriteExpr,
+  rewriteEventName,
+  rewriteAttrName,
+  eventToCallbackProp,
+  callbackPropRules,
+  reactiveReadNames,
+} from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import {
   FALLTHROUGH_REST,
@@ -42,6 +49,7 @@ function jsxAttrs(
     readonly acceptsAttrFallthrough?: boolean;
   },
   rules: RewriteRules,
+  isComponent = false,
 ) {
   const fallthrough = node.acceptsAttrFallthrough === true;
   const out = [];
@@ -96,9 +104,14 @@ function jsxAttrs(
   }
 
   for (const e of node.events) {
+    // A `$bind:<prop>` on a component lowers to an `update:<prop>` event; emit it as the child's
+    // `onUpdate<Prop>` callback prop rather than a (colon-bearing) DOM event name.
+    const name = e.twoWayProp
+      ? eventToCallbackProp(e.name)
+      : rewriteEventName(e.name, rules, isComponent);
     out.push(
       cJsxAttr({
-        name: rewriteEventName(e.name, rules),
+        name,
         value: { kind: "expr", expr: cExpr({ text: rewriteExpr(e.handler.expr, rules) }) },
       }),
     );
@@ -126,7 +139,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     }
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? node.reference.getText();
-      const attrs = jsxAttrs(node, rules);
+      const attrs = jsxAttrs(node, rules, true);
       const children = node.slots.map((s) =>
         s.name === "default"
           ? emitNode(s.body, rules)
@@ -436,6 +449,11 @@ function buildSolidPropsType(component: IRComponent): string {
     parts.push(`{ ${slotFields.join("; ")} }`);
   }
 
+  const emissionFields = modelEventTypeFields(component);
+  if (emissionFields.length > 0) {
+    parts.push(`{ ${emissionFields.join("; ")} }`);
+  }
+
   if (rootAcceptsFallthrough(component)) {
     parts.push("JSX.HTMLAttributes<HTMLElement>");
   }
@@ -444,7 +462,21 @@ function buildSolidPropsType(component: IRComponent): string {
   return parts.join(" & ");
 }
 
-/** Keys to keep out of the fallthrough rest (declared props + slot props). */
+/** Type fields for a component's models (value prop + update callback) and emitted-event callbacks. */
+function modelEventTypeFields(component: IRComponent): string[] {
+  const fields: string[] = [];
+  for (const m of component.models) {
+    const t = m.typeNode?.getText() ?? "unknown";
+    fields.push(`${m.propName}?: ${t}`);
+    fields.push(`${eventToCallbackProp(`update:${m.propName}`)}?: (value: ${t}) => void`);
+  }
+  for (const ev of component.events) {
+    fields.push(`${eventToCallbackProp(ev.name)}?: (...args: any[]) => void`);
+  }
+  return fields;
+}
+
+/** Keys to keep out of the fallthrough rest (declared props + slot props + model/callback names). */
 function fallthroughRestKeys(component: IRComponent): string[] {
   const names = new Set<string>();
   for (const slot of component.slots) {
@@ -452,11 +484,21 @@ function fallthroughRestKeys(component: IRComponent): string[] {
     names.add(slot.name === "default" && !slot.isScoped ? "children" : slot.name);
   }
   for (const p of component.props) names.add(p.name);
+  for (const m of component.models) {
+    names.add(m.propName);
+    names.add(eventToCallbackProp(`update:${m.propName}`));
+  }
+  for (const ev of component.events) names.add(eventToCallbackProp(ev.name));
   return [...names];
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const rules = ctx.rewrites;
+  // Model getters read `props.<prop>`, model setters and `emit(…)` call `props.on…?.()` callbacks.
+  const rules: RewriteRules = {
+    ...ctx.rewrites,
+    ...callbackPropRules(component.models, component.emitName),
+    reactiveReads: reactiveReadNames(component),
+  };
   const body: Code[] = [];
   const solidImports: string[] = [];
 

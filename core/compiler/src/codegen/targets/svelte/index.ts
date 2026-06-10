@@ -23,6 +23,8 @@ import {
   rewriteAttrName,
   extractKeyBody,
   emitExprAsTemplate,
+  eventToCallbackProp,
+  reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import {
@@ -31,7 +33,6 @@ import {
   rootAcceptsFallthrough,
 } from "../../shared/fallthrough.ts";
 import { assertNever } from "../../../core/assert.ts";
-import * as ts from "typescript";
 
 const REWRITES: RewriteRules = {
   reactiveRead: { kind: "strip-call" },
@@ -45,6 +46,24 @@ const REWRITES: RewriteRules = {
   },
 };
 
+// Non-void HTML elements must not self-close in Svelte 5 (element_invalid_self_closing_tag).
+const VOID_ELEMENTS = new Set([
+  "area",
+  "base",
+  "br",
+  "col",
+  "embed",
+  "hr",
+  "img",
+  "input",
+  "link",
+  "meta",
+  "param",
+  "source",
+  "track",
+  "wbr",
+]);
+
 // ── Shared template attr helpers ───────────────────────────────────
 
 function tmplAttrs(
@@ -55,30 +74,43 @@ function tmplAttrs(
     readonly acceptsAttrFallthrough?: boolean;
   },
   rules: RewriteRules,
+  isComponent = false,
 ) {
   const fallthrough = node.acceptsAttrFallthrough === true;
-  const attrs = node.attrs.map((a: any) => {
-    if (fallthrough && a.binding === "class") {
-      const authored =
-        a.value.kind === "Static"
-          ? JSON.stringify(String(a.value.value))
-          : rewriteExpr(a.value.expr, rules);
-      return cTmplAttr({
-        name: "class",
-        value: {
-          kind: "expr",
-          expr: cExpr({ text: classMergeExpr(authored, `${FALLTHROUGH_REST}.class`) }),
-        },
-      });
-    }
-    const name = rewriteAttrName(a.name, rules);
-    if (a.value.kind === "Static")
-      return cTmplAttr({ name, value: { kind: "static", text: String(a.value.value) } });
-    return cTmplAttr({
-      name,
-      value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
-    });
+  // A `$bind:<prop>` on a component lowers to a value attr + a synthesized `update:<prop>` event;
+  // collapse the pair into Svelte's `bind:<prop>` directive (the child prop is `$bindable`).
+  const twoWay = node.events.filter((e: any) => e.twoWayProp);
+  const twoWayProps = new Set<string>(twoWay.map((e: any) => e.twoWayProp));
+  const bindDirectives = twoWay.map((e: any) => {
+    const attr = node.attrs.find((a: any) => a.name === e.twoWayProp);
+    const lvalue =
+      attr && attr.value.kind === "Expression" ? rewriteExpr(attr.value.expr, rules) : "";
+    return cTmplDirective({ directive: "bind", arg: e.twoWayProp, expr: cExpr({ text: lvalue }) });
   });
+  const attrs = node.attrs
+    .filter((a: any) => !twoWayProps.has(a.name))
+    .map((a: any) => {
+      if (fallthrough && a.binding === "class") {
+        const authored =
+          a.value.kind === "Static"
+            ? JSON.stringify(String(a.value.value))
+            : rewriteExpr(a.value.expr, rules);
+        return cTmplAttr({
+          name: "class",
+          value: {
+            kind: "expr",
+            expr: cExpr({ text: classMergeExpr(authored, `${FALLTHROUGH_REST}.class`) }),
+          },
+        });
+      }
+      const name = rewriteAttrName(a.name, rules);
+      if (a.value.kind === "Static")
+        return cTmplAttr({ name, value: { kind: "static", text: String(a.value.value) } });
+      return cTmplAttr({
+        name,
+        value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
+      });
+    });
   if (fallthrough) {
     // Spread inherited attributes first so authored attributes win on conflict.
     attrs.unshift(
@@ -93,12 +125,14 @@ function tmplAttrs(
       );
     }
   }
-  const evts = node.events.map((e: any) =>
-    cTmplAttr({
-      name: rewriteEventName(e.name, rules),
-      value: { kind: "expr", expr: cExpr({ text: rewriteExpr(e.handler.expr, rules) }) },
-    }),
-  );
+  const evts = node.events
+    .filter((e: any) => !e.twoWayProp)
+    .map((e: any) =>
+      cTmplAttr({
+        name: rewriteEventName(e.name, rules, isComponent),
+        value: { kind: "expr", expr: cExpr({ text: rewriteExpr(e.handler.expr, rules) }) },
+      }),
+    );
   const refs = node.refs.map((r: any) =>
     cTmplDirective({
       directive: "bind",
@@ -106,7 +140,7 @@ function tmplAttrs(
       expr: cExpr({ text: rewriteExpr(r.ref.expr, rules) }),
     }),
   );
-  return { attrs: [...attrs, ...evts], directives: refs };
+  return { attrs: [...attrs, ...evts], directives: [...bindDirectives, ...refs] };
 }
 
 // ── Transition helpers ─────────────────────────────────────────────
@@ -182,6 +216,30 @@ const SVELTE_TRANSITION_HELPER = `const __inkTransitionIn = ${__inkTransitionFn(
 
 // ── Render-tree walker ─────────────────────────────────────────────
 
+// Svelte 5 renders parent-provided content via {@render snippet(args)}; the default slot's snippet
+// prop is `children`, a named slot's is its own name. Optional chaining renders nothing when the
+// snippet is absent; fallback content (if any) wraps in {#if}/{:else} (inside the {#if} the snippet
+// is known present, so it is invoked without `?.`).
+function emitRenderSlot(
+  node: Extract<IRNode, { kind: "SlotPlaceholder" }>,
+  rules: RewriteRules,
+): Code {
+  const snippetName = node.name === "default" ? "children" : `${node.name}Snippet`;
+  const args = node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ");
+  if (!node.fallback) {
+    return cRaw({ text: `{@render ${snippetName}?.(${args})}` });
+  }
+  return cGroup({
+    children: [
+      cRaw({ text: `{#if ${snippetName}}` }),
+      cRaw({ text: `{@render ${snippetName}(${args})}` }),
+      cRaw({ text: "{:else}" }),
+      emitNode(node.fallback, rules),
+      cRaw({ text: "{/if}" }),
+    ],
+  });
+}
+
 function emitNode(node: IRNode, rules: RewriteRules): Code {
   switch (node.kind) {
     case "Element": {
@@ -192,12 +250,12 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         directives,
         attrs,
         children,
-        selfClose: children.length === 0,
+        selfClose: children.length === 0 && VOID_ELEMENTS.has(node.tag),
       });
     }
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? node.reference.getText();
-      const { attrs, directives } = tmplAttrs(node, rules);
+      const { attrs, directives } = tmplAttrs(node, rules, true);
       const children: Code[] = [];
       for (const slot of node.slots) {
         if (slot.name === "default") {
@@ -267,26 +325,8 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       children.push(cRaw({ text: "{/if}" }));
       return cGroup({ children });
     }
-    case "SlotPlaceholder": {
-      const scopeAttrs = node.scopedArgs.map((arg, i) => {
-        const argName = ts.isIdentifier(arg.expr) ? arg.expr.text : `prop${i}`;
-        return cTmplAttr({
-          name: argName,
-          value: { kind: "expr", expr: cExpr({ text: rewriteExpr(arg.expr, rules) }) },
-        });
-      });
-      const children: Code[] = node.fallback ? [emitNode(node.fallback, rules)] : [];
-      const nameAttr =
-        node.name === "default"
-          ? []
-          : [cTmplAttr({ name: "name", value: { kind: "static", text: node.name } })];
-      return cTmplElement({
-        tag: "slot",
-        attrs: [...nameAttr, ...scopeAttrs],
-        children,
-        selfClose: children.length === 0,
-      });
-    }
+    case "SlotPlaceholder":
+      return emitRenderSlot(node, rules);
     case "Transition": {
       if (node.child.kind === "If") {
         const [first, ...rest] = node.child.branches;
@@ -321,31 +361,81 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const propFallthrough = rootAcceptsFallthrough(component);
   const restBinding = propFallthrough ? `...${FALLTHROUGH_REST}` : "";
+
+  // A model is two-way via `$bindable` (the parent uses `bind:`), so it needs no callback prop — only
+  // general emitted events become plain callback props.
+  const callbackNames = component.events.map((ev) => eventToCallbackProp(ev.name));
+  // A model's reads/writes resolve to its getter local (`m.name`), but the binding is declared under
+  // the public prop (`m.propName`). When they differ (aliased model), rebuild `props` with the prop
+  // name as the key and the getter local as the value (`open: isOpen`); otherwise the shorthand.
+  const modelNames = component.models.map((m) =>
+    m.propName === m.name ? m.name : `${m.propName}: ${m.name}`,
+  );
+
+  // Svelte 5 surfaces each slot as a `Snippet` prop (default → `children`, named → its name). Scoped
+  // slots take positional args, so `Snippet<any[]>`. Declared optional to match React/Solid output.
+  const slotPropFields = component.slots.map(
+    (s) =>
+      `${s.name === "default" ? "children" : s.name}?: ${s.isScoped ? "Snippet<any[]>" : "Snippet"}`,
+  );
+  // Bind a named slot's prop to a `<name>Snippet` local so `{@render}` never collides with an
+  // in-scope identifier of the same name (e.g. a `{#each items as item}` binding vs. an `item` slot).
+  // The public prop name is unchanged, so the parent's `{#snippet <name>}` still resolves.
+  const slotBindings = component.slots.map((s) =>
+    s.name === "default" ? "children" : `${s.name}: ${s.name}Snippet`,
+  );
+  const hasSlots = component.slots.length > 0;
+
   // Plain binding names (no defaults) used to reconstruct the whole `props` object below.
-  const nameBindings = [...component.props.map((p) => p.name), restBinding]
+  const nameBindings = [
+    ...component.props.map((p) => p.name),
+    ...modelNames,
+    ...callbackNames,
+    ...slotBindings,
+    restBinding,
+  ]
     .filter(Boolean)
     .join(", ");
 
-  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
+  // Model setters reassign the `$bindable` prop (`setValue(v)` → `value = v`), which Svelte propagates
+  // back to the parent's `bind:`. `emit(…)` calls a bare callback prop.
+  const setters = Object.fromEntries([
+    ...component.state.map((s) => [s.setterName, s.name]),
+    ...component.models.map((m) => [m.setterName, m.name]),
+  ]);
+  const emitRule = component.emitName
+    ? ({ local: component.emitName, style: "callback-prop", propsAccess: "" } as const)
+    : undefined;
   // Svelte destructures `$props()`, so there is no `props` binding for whole-object references
   // (e.g. `badge(props)`). Reconstruct it from the destructured bindings instead.
+  const reactiveReads = reactiveReadNames(component);
   const rules: RewriteRules =
     nameBindings.length > 0
       ? {
           ...ctx.rewrites,
           setters,
+          reactiveReads,
+          emit: emitRule,
           members: {
             ...ctx.rewrites.members,
             props: { ...ctx.rewrites.members?.props, strip: true, whole: `{ ${nameBindings} }` },
           },
         }
-      : { ...ctx.rewrites, setters };
+      : { ...ctx.rewrites, setters, reactiveReads, emit: emitRule };
 
-  // Destructure bindings carry each prop's default (`color = "blue"`) so `$props()` applies it.
+  // Destructure bindings carry each prop's default (`color = "blue"`) so `$props()` applies it; each
+  // model becomes a `$bindable()` binding; each callback prop is a plain binding.
   const bindings = [
     ...component.props.map((p) =>
       p.defaultValue ? `${p.name} = ${rewriteExpr(p.defaultValue.expr, rules)}` : p.name,
     ),
+    ...component.models.map((m) =>
+      // An aliased model destructures the prop to its getter local (`open: isOpen = $bindable()`) so
+      // reads/writes that resolve to `m.name` reference a declared binding; otherwise the shorthand.
+      m.propName === m.name ? `${m.name} = $bindable()` : `${m.propName}: ${m.name} = $bindable()`,
+    ),
+    ...callbackNames,
+    ...slotBindings,
     restBinding,
   ]
     .filter(Boolean)
@@ -364,16 +454,28 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       }),
     );
   }
+  // Type fields a model (value prop + update callback) and each emitted event contribute.
+  // A model contributes a `$bindable` value prop (two-way via `bind:`, no callback); each emitted
+  // event contributes a callback prop.
+  const emissionTypeFields = [
+    ...component.models.map((m) => `${m.propName}?: ${m.typeNode?.getText() ?? "unknown"}`),
+    ...component.events.map((ev) => `${eventToCallbackProp(ev.name)}?: (...args: any[]) => void`),
+  ];
+  const extraTypeFields = [...emissionTypeFields, ...slotPropFields];
+  const hasExtra = extraTypeFields.length > 0;
   if (component.propsTypeText) {
-    const type = `${component.propsTypeText}${propFallthrough ? " & Record<string, any>" : ""}`;
+    const extra = hasExtra ? ` & { ${extraTypeFields.join("; ")} }` : "";
+    const type = `${component.propsTypeText}${extra}${propFallthrough ? " & Record<string, any>" : ""}`;
     scriptBody.push(cStmt({ body: `let { ${bindings} }: ${type} = $props()` }));
-  } else if (component.props.length > 0) {
-    const defs = component.props
-      .map((p) => {
+  } else if (component.props.length > 0 || hasExtra) {
+    const defs = [
+      ...component.props.map((p) => {
         const type = p.typeText ?? p.typeNode?.getText();
         return `${p.name}${p.required ? "" : "?"}${type ? `: ${type}` : ""}`;
-      })
-      .join("; ");
+      }),
+      ...emissionTypeFields,
+      ...slotPropFields,
+    ].join("; ");
     scriptBody.push(cStmt({ body: `interface Props { ${defs} }` }));
     const type = `Props${propFallthrough ? " & Record<string, any>" : ""}`;
     scriptBody.push(cStmt({ body: `let { ${bindings} }: ${type} = $props()` }));
@@ -457,6 +559,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         module: "svelte",
         named: uniqueSvelteImports.map((i) => ({ imported: i })),
       }),
+    );
+  }
+  if (hasSlots) {
+    scriptBody.unshift(
+      cImport({ module: "svelte", typeOnly: true, named: [{ imported: "Snippet" }] }),
     );
   }
 

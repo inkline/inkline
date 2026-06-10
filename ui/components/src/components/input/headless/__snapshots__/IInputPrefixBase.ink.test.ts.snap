@@ -59,10 +59,11 @@ return (
 ",
   "svelte/IInputPrefixBase.svelte": "<script lang="ts">
   export interface InputPrefixBaseProps {}
-  let { ...__attrs }: InputPrefixBaseProps & Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  let { children, ...__attrs }: InputPrefixBaseProps & { children?: Snippet } & Record<string, any> = $props()
 </script>
 <span {...__attrs} class={["input-prefix", __attrs.class].filter(Boolean).join(" ")}>
-  <slot />
+  {@render children?.()}
 </span>
 ",
   "vue/IInputPrefixBase.vue": "<script setup lang="ts">

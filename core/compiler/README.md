@@ -136,6 +136,57 @@ export default defineComponent(
 );
 ```
 
+### Two-way binding and custom events
+
+`defineModel(name = "value")` declares a two-way-bindable prop plus its paired `update:<name>` event,
+returning a signal tuple like `createSignal`. The getter reads the incoming prop; the setter emits the
+update:
+
+```tsx
+import { defineComponent, defineModel } from "@inkline/core";
+
+export default defineComponent(() => {
+  const [value, setValue] = defineModel("value");
+  return <input value={value()} onInput={(e) => setValue(e.currentTarget.value)} />;
+});
+```
+
+A parent binds it with `$bind:<prop>={state}` (pass the signal getter); the compiler wires both
+directions:
+
+```tsx
+const [text, setText] = createSignal("");
+<MyInput $bind:value={text} />;
+```
+
+Each target emits its native two-way idiom:
+
+| Target        | Child (declaration)                     | Parent (`$bind:value={text}`)              |
+| ------------- | --------------------------------------- | ------------------------------------------ |
+| Vue           | `defineModel<T>("value")`               | `v-model:value="text"`                     |
+| Svelte        | `value = $bindable()`                   | `bind:value={text}`                        |
+| Angular       | `value = model<T>()`                    | `[value]="text()" (valueChange)="…set(…)"` |
+| React / Solid | `value` prop + `onUpdateValue` callback | `value={text} onUpdateValue={…}`           |
+| Qwik          | `value` prop + `onUpdateValue$` QRL     | `value={text.value} onUpdateValue$={…}`    |
+| Astro         | render-only `value` prop                | `value={text}` (one-way; static SSR)       |
+
+`$bind:` also works on native elements (`<input $bind:value={text} />`).
+
+For arbitrary custom events, `defineEmits` returns an `emit` function:
+
+```tsx
+import { defineComponent, defineEmits } from "@inkline/core";
+
+export default defineComponent(() => {
+  const emit = defineEmits<{ change: [value: string] }>();
+  return <button onClick={() => emit("change", "hi")}>Go</button>;
+});
+```
+
+`emit("change", x)` becomes a callback prop (`props.onChange?.(x)`) in React/Solid, a QRL callback in
+Qwik, a `defineEmits`/`emit` pair in Vue, a callback prop in Svelte, and `this.change.emit(x)` from an
+`@Output()` in Angular. (Custom events are inert on the static Astro target — diagnostic `INK0045`.)
+
 ### Control Flow
 
 Control flow uses JSX components that the compiler lowers to framework-native patterns:

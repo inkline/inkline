@@ -279,6 +279,7 @@ describe("compile error recovery (H3)", () => {
       props: [],
       slots: [],
       events: [],
+      models: [],
       state: [],
       refs: [],
       memos: [],

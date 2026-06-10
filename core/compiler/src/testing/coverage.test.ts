@@ -42,6 +42,7 @@ function makeComp(render: ReturnType<typeof createElement>): IRComponent {
     props: [],
     slots: [],
     events: [],
+    models: [],
     state: [],
     refs: [],
     memos: [],

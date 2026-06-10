@@ -24,6 +24,7 @@ export { pipe } from "./pipeline/types.ts";
 // ============ DIAGNOSTICS ============
 export type { Diagnostic, DiagnosticSeverity, DiagnosticCode } from "./core/diagnostics/codes.ts";
 export { DIAGNOSTICS } from "./core/diagnostics/codes.ts";
+export { meetsLevel } from "./core/diagnostics/level.ts";
 
 // ============ IR — RENDER TREE TYPES ============
 export type {

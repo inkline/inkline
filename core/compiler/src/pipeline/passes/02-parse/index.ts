@@ -43,16 +43,28 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         ? parseOptions(site.options, componentId, sourceFile, ctx)
         : undefined;
 
-      const props =
+      const baseProps =
         optionsResult?.props ??
         parsePropsFromParameterType(site.setupFn, componentId, sourceFile, ctx, checker);
       const propsTypeText = getPropsTypeText(site.setupFn, sourceFile);
-      const events = optionsResult?.events ?? [];
+      const baseEvents = optionsResult?.events ?? [];
       const styles = optionsResult?.styles ?? [];
       const runtime = optionsResult?.runtime ?? "iso";
 
       // (d) setup
       const setupResult = parseSetup(site.setupFn, componentId, bindings, sourceFile, checker, ctx);
+
+      // `component.models` is the single source of truth for two-way models — each target surfaces the
+      // value prop + `update:<prop>` callback from it directly. We only warn (INK0044) when a model
+      // collides with a hand-declared prop, since the model owns that prop name.
+      const declaredPropNames = new Set(baseProps.map((p) => p.name));
+      for (const m of setupResult.models) {
+        if (declaredPropNames.has(m.propName)) {
+          ctx.diagnostics.push("INK0044", m.loc, { name: m.propName });
+        }
+      }
+      const props = baseProps;
+      const events = [...baseEvents, ...setupResult.events];
 
       const slots = [...(optionsResult?.slots ?? []), ...setupResult.slotDeclarations];
 
@@ -79,6 +91,8 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         propsTypeText,
         slots,
         events,
+        models: setupResult.models,
+        emitName: setupResult.emitName,
         state: setupResult.state,
         refs: setupResult.refs,
         memos: setupResult.memos,

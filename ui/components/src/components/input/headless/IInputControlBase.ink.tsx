@@ -1,4 +1,4 @@
-import { defineComponent, Show } from "@inkline/core";
+import { defineComponent, defineModel, Show } from "@inkline/core";
 
 export interface InputControlBaseProps {
   /** Id of the native control. */
@@ -7,8 +7,6 @@ export interface InputControlBaseProps {
   name?: string;
   /** Input type; `"textarea"` renders a `<textarea>`. */
   type?: string;
-  /** Controlled value. */
-  value?: string;
   /** Placeholder text. */
   placeholder?: string;
   /** Disables the control. */
@@ -18,6 +16,9 @@ export interface InputControlBaseProps {
 }
 
 export default defineComponent((props: InputControlBaseProps) => {
+  // Two-way-bindable value: a `value` prop + an `update:value` event, so a parent can `$bind:value`.
+  const [value, setValue] = defineModel<string>("value");
+
   return (
     <Show
       when={props.type === "textarea"}
@@ -27,10 +28,11 @@ export default defineComponent((props: InputControlBaseProps) => {
           id={props.id}
           name={props.name}
           type={props.type}
-          value={props.value}
+          value={value()}
           placeholder={props.placeholder}
           disabled={props.disabled}
           readonly={props.readonly}
+          onInput={(e: { currentTarget: HTMLInputElement }) => setValue(e.currentTarget.value)}
         />
       }
     >
@@ -38,10 +40,11 @@ export default defineComponent((props: InputControlBaseProps) => {
         class="input-field"
         id={props.id}
         name={props.name}
-        value={props.value}
+        value={value()}
         placeholder={props.placeholder}
         disabled={props.disabled}
         readonly={props.readonly}
+        onInput={(e: { currentTarget: HTMLTextAreaElement }) => setValue(e.currentTarget.value)}
       />
     </Show>
   );

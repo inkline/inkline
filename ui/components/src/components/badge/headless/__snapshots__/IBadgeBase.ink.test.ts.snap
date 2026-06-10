@@ -76,12 +76,11 @@ return (
   export interface BadgeBaseProps {
     label?: string;
   }
-  let { label, ...__attrs }: BadgeBaseProps & Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  let { label, children, ...__attrs }: BadgeBaseProps & { children?: Snippet } & Record<string, any> = $props()
 </script>
 <div {...__attrs} class={["badge", __attrs.class].filter(Boolean).join(" ")}>
-  <slot>
-    {label}
-  </slot>
+  {#if children}{@render children()}{:else}{label}{/if}
 </div>
 ",
   "vue/IBadgeBase.vue": "<script setup lang="ts">

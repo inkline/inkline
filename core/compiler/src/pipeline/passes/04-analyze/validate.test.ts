@@ -54,6 +54,7 @@ function makeComp(overrides: Partial<IRComponent> = {}): IRComponent {
     props: [],
     slots: [],
     events: [],
+    models: [],
     state: [],
     refs: [],
     memos: [],

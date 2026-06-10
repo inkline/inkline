@@ -19,6 +19,16 @@ sum = computed(() => this.x() + this.y())
 "
 `;
 
+exports[`angular full output snapshots > BoundField 1`] = `
+"import { Component, signal, computed, effect, model } from "@angular/core";
+@Component({ standalone: true, selector: 'Field', template: \`<input [value]="value()" (input)="value.set($event.target.value)" />\` })
+export class FieldComponent
+{
+value = model<string>()
+}
+"
+`;
+
 exports[`angular full output snapshots > Composite 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'Composite', template: \`<div>
@@ -200,6 +210,18 @@ inputRef = viewChild<ElementRef>('inputRef')
 "
 `;
 
+exports[`angular full output snapshots > EmitButton 1`] = `
+"import { Component, signal, computed, effect, output } from "@angular/core";
+@Component({ standalone: true, selector: 'EmitButton', template: \`<button (click)="press.emit(1)">
+Go
+</button>\` })
+export class EmitButtonComponent
+{
+press = output()
+}
+"
+`;
+
 exports[`angular full output snapshots > ForLoop 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'ForLoop', template: \`<ul>
@@ -299,6 +321,32 @@ filter = signal('')
 "
 `;
 
+exports[`angular full output snapshots > ModelInput 1`] = `
+"import { Component, signal, computed, effect, model } from "@angular/core";
+@Component({ standalone: true, selector: 'ModelInput', template: \`<div>
+<input [value]="value()" (input)="value.set($event.target.value)" />
+<p>
+{{ value() }}
+</p>
+</div>\` })
+export class ModelInputComponent
+{
+value = model<string>()
+}
+"
+`;
+
+exports[`angular full output snapshots > MultiChildSlot 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'Box', template: \`<div class="box">
+<ng-content></ng-content>
+</div>\` })
+export class BoxComponent
+{
+}
+"
+`;
+
 exports[`angular full output snapshots > MultiRefs 1`] = `
 "import { Component, signal, computed, effect, afterNextRender, viewChild, ElementRef } from "@angular/core";
 @Component({ standalone: true, selector: 'MultiRefs', template: \`<div>
@@ -324,6 +372,21 @@ exports[`angular full output snapshots > MultipleComponentsPerFile 1`] = `
 export class LabelComponent
 {
 text = input.required<string>()
+}
+"
+`;
+
+exports[`angular full output snapshots > NativeBind 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'NativeBind', template: \`<div>
+<input [value]="text()" (input)="text.set($event.target.value)" />
+<p>
+{{ text() }}
+</p>
+</div>\` })
+export class NativeBindComponent
+{
+text = signal('')
 }
 "
 `;

@@ -118,6 +118,11 @@ export const NEW_FIXTURES = [
   "SlotScopedSingle",
   "DefineSlotBasic",
   "SlotInConditional",
+  "ModelInput",
+  "EmitButton",
+  "BoundField",
+  "NativeBind",
+  "MultiChildSlot",
 ] as const;
 
 // ── Unit emit: hand-built IR → emitted source ────────────────────────────────
@@ -144,6 +149,7 @@ export function makeComp(
     props: [],
     slots: [],
     events: [],
+    models: [],
     state: [],
     refs: [],
     memos: [],
@@ -299,7 +305,7 @@ export const transitionWithIf: IRNode = createTransition({
   child: createIf({
     branches: [
       {
-        test: createExpr({ expr: mockExpr("visible()") }),
+        test: createExpr({ expr: mockExpr("count()") }),
         body: createElement({ tag: "p", children: [createText({ value: "Hello" })] }),
       },
     ],
@@ -313,7 +319,7 @@ export const transitionAppear: IRNode = createTransition({
   child: createIf({
     branches: [
       {
-        test: createExpr({ expr: mockExpr("show()") }),
+        test: createExpr({ expr: mockExpr("count()") }),
         body: createElement({ tag: "div", children: [createText({ value: "Content" })] }),
       },
     ],

@@ -8,7 +8,7 @@ exports[`svelte emit + print > $props destructuring 1`] = `
   let doubled = $derived(count * 2)
   $effect(() => { console.log("effect"); })
 </script>
-<div />
+<div></div>
 "
 `;
 
@@ -56,7 +56,7 @@ exports[`svelte emit + print > pushes the transition directive into the child el
     };
 </script>
 <div>
-  {#if visible}<p in:__inkTransitionIn={{ name: "fade" }} out:__inkTransitionOut={{ name: "fade" }}>
+  {#if count}<p in:__inkTransitionIn={{ name: "fade" }} out:__inkTransitionOut={{ name: "fade" }}>
     Hello
   </p>
   {/if}

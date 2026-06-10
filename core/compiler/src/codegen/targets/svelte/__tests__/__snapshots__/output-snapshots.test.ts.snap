@@ -18,6 +18,15 @@ exports[`svelte full output snapshots > BatchUpdates 1`] = `
 "
 `;
 
+exports[`svelte full output snapshots > BoundField 1`] = `
+"<script lang="ts">
+  interface Props { value?: string }
+  let { value = $bindable(), ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<input {...__attrs} value={value} class={__attrs.class} oninput={e => value = e.target.value} />
+"
+`;
+
 exports[`svelte full output snapshots > Composite 1`] = `
 "<script lang="ts">
   let { ...__attrs }: Record<string, any> = $props()
@@ -98,7 +107,7 @@ exports[`svelte full output snapshots > ControlledTextarea 1`] = `
   let text = $state("")
 </script>
 <div {...__attrs} class={__attrs.class}>
-  <textarea value={text} oninput={e => text = e.target.value} />
+  <textarea value={text} oninput={e => text = e.target.value}></textarea>
   <p>
     {text.length}
     characters
@@ -130,14 +139,16 @@ exports[`svelte full output snapshots > Counter 1`] = `
 
 exports[`svelte full output snapshots > DefineSlotBasic 1`] = `
 "<script lang="ts">
-  let { ...__attrs }: Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  interface Props { header?: Snippet; children?: Snippet }
+  let { header: headerSnippet, children, ...__attrs }: Props & Record<string, any> = $props()
 </script>
 <div {...__attrs} class={__attrs.class}>
   <header>
-    <slot name="header" />
+    {@render headerSnippet?.()}
   </header>
   <main>
-    <slot />
+    {@render children?.()}
   </main>
 </div>
 "
@@ -183,6 +194,17 @@ exports[`svelte full output snapshots > ElementRef 1`] = `
   let inputRef = $state<HTMLElement | null>(null)
 </script>
 <input bind:this={inputRef} {...__attrs} placeholder="auto-focus" class={__attrs.class} />
+"
+`;
+
+exports[`svelte full output snapshots > EmitButton 1`] = `
+"<script lang="ts">
+  interface Props { onPress?: (...args: any[]) => void }
+  let { onPress, ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<button {...__attrs} class={__attrs.class} onclick={() => onPress?.(1)}>
+  Go
+</button>
 "
 `;
 
@@ -275,6 +297,32 @@ exports[`svelte full output snapshots > MixedControlFlow 1`] = `
 "
 `;
 
+exports[`svelte full output snapshots > ModelInput 1`] = `
+"<script lang="ts">
+  interface Props { value?: string }
+  let { value = $bindable(), ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <input value={value} oninput={e => value = e.target.value} />
+  <p>
+    {value}
+  </p>
+</div>
+"
+`;
+
+exports[`svelte full output snapshots > MultiChildSlot 1`] = `
+"<script lang="ts">
+  import type { Snippet } from "svelte";
+  interface Props { children?: Snippet }
+  let { children, ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={["box", __attrs.class].filter(Boolean).join(" ")}>
+  {@render children?.()}
+</div>
+"
+`;
+
 exports[`svelte full output snapshots > MultiRefs 1`] = `
 "<script lang="ts">
   let { ...__attrs }: Record<string, any> = $props()
@@ -302,6 +350,20 @@ exports[`svelte full output snapshots > MultipleComponentsPerFile 1`] = `
 "
 `;
 
+exports[`svelte full output snapshots > NativeBind 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let text = $state("")
+</script>
+<div {...__attrs} class={__attrs.class}>
+  <input value={text} oninput={e => text = e.target.value} />
+  <p>
+    {text}
+  </p>
+</div>
+"
+`;
+
 exports[`svelte full output snapshots > PropDefaults 1`] = `
 "<script lang="ts">
   interface Props { color?: string; size: number }
@@ -315,40 +377,45 @@ exports[`svelte full output snapshots > PropDefaults 1`] = `
 
 exports[`svelte full output snapshots > SlotBasic 1`] = `
 "<script lang="ts">
-  let { ...__attrs }: Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  interface Props { children?: Snippet }
+  let { children, ...__attrs }: Props & Record<string, any> = $props()
 </script>
 <div {...__attrs} class={__attrs.class}>
-  <slot />
+  {@render children?.()}
 </div>
 "
 `;
 
 exports[`svelte full output snapshots > SlotInConditional 1`] = `
 "<script lang="ts">
-  let { ...__attrs }: Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  interface Props { header?: Snippet; children?: Snippet }
+  let { header: headerSnippet, children, ...__attrs }: Props & Record<string, any> = $props()
   let expanded = $state(true)
 </script>
 <div {...__attrs} class={__attrs.class}>
-  <slot name="header" />
-  {#if expanded}<slot />
-  {/if}
+  {@render headerSnippet?.()}
+  {#if expanded}{@render children?.()}{/if}
 </div>
 "
 `;
 
 exports[`svelte full output snapshots > SlotNamed 1`] = `
 "<script lang="ts">
-  let { ...__attrs }: Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  interface Props { header?: Snippet; children?: Snippet; footer?: Snippet }
+  let { header: headerSnippet, children, footer: footerSnippet, ...__attrs }: Props & Record<string, any> = $props()
 </script>
 <div {...__attrs} class={__attrs.class}>
   <header>
-    <slot name="header" />
+    {@render headerSnippet?.()}
   </header>
   <main>
-    <slot />
+    {@render children?.()}
   </main>
   <footer>
-    <slot name="footer" />
+    {@render footerSnippet?.()}
   </footer>
 </div>
 "
@@ -356,14 +423,14 @@ exports[`svelte full output snapshots > SlotNamed 1`] = `
 
 exports[`svelte full output snapshots > SlotScoped 1`] = `
 "<script lang="ts">
-  let { ...__attrs }: Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  interface Props { item?: Snippet<any[]> }
+  let { item: itemSnippet, ...__attrs }: Props & Record<string, any> = $props()
   let items = $state([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
 </script>
 <ul {...__attrs} class={__attrs.class}>
   {#each items as item, index (item.id)}<li>
-    <slot name="item" item={item} index={index}>
-      {index}:{item.label}
-    </slot>
+    {#if itemSnippet}{@render itemSnippet(item, index)}{:else}{index}:{item.label}{/if}
   </li>
   {/each}
 </ul>
@@ -372,37 +439,38 @@ exports[`svelte full output snapshots > SlotScoped 1`] = `
 
 exports[`svelte full output snapshots > SlotScopedSingle 1`] = `
 "<script lang="ts">
-  let { ...__attrs }: Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  interface Props { children?: Snippet<any[]> }
+  let { children, ...__attrs }: Props & Record<string, any> = $props()
   let value = $state("hello")
 </script>
 <div {...__attrs} class={__attrs.class}>
-  <slot prop0={value}>
-    <span>
-      {value}
-    </span>
-  </slot>
+  {#if children}{@render children(value)}{:else}<span>
+    {value}
+  </span>
+  {/if}
 </div>
 "
 `;
 
 exports[`svelte full output snapshots > SlotWithDefault 1`] = `
 "<script lang="ts">
-  let { ...__attrs }: Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  interface Props { children?: Snippet; actions?: Snippet }
+  let { children, actions: actionsSnippet, ...__attrs }: Props & Record<string, any> = $props()
 </script>
 <div {...__attrs} class={__attrs.class}>
   <main>
-    <slot>
-      <p>
-        Default content
-      </p>
-    </slot>
+    {#if children}{@render children()}{:else}<p>
+      Default content
+    </p>
+    {/if}
   </main>
   <footer>
-    <slot name="actions">
-      <span>
-        Action area
-      </span>
-    </slot>
+    {#if actionsSnippet}{@render actionsSnippet()}{:else}<span>
+      Action area
+    </span>
+    {/if}
   </footer>
 </div>
 "
@@ -410,17 +478,16 @@ exports[`svelte full output snapshots > SlotWithDefault 1`] = `
 
 exports[`svelte full output snapshots > SlotWithFallback 1`] = `
 "<script lang="ts">
-  let { ...__attrs }: Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  interface Props { header?: Snippet; children?: Snippet }
+  let { header: headerSnippet, children, ...__attrs }: Props & Record<string, any> = $props()
 </script>
 <div {...__attrs} class={__attrs.class}>
-  <slot name="header">
-    <h1>
-      Default Header
-    </h1>
-  </slot>
-  <slot>
-    Default body content
-  </slot>
+  {#if headerSnippet}{@render headerSnippet()}{:else}<h1>
+    Default Header
+  </h1>
+  {/if}
+  {#if children}{@render children()}{:else}Default body content{/if}
 </div>
 "
 `;

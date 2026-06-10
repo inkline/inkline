@@ -95,6 +95,8 @@ The full primitive set is documented in [`core/compiler/README.md`](../core/comp
 | Need                   | Primitive                       | From            |
 | ---------------------- | ------------------------------- | --------------- |
 | Reactive state         | `createSignal(initial)`         | `@inkline/core` |
+| Two-way model          | `defineModel("value")`          | `@inkline/core` |
+| Custom events          | `defineEmits([...]) → emit`     | `@inkline/core` |
 | Derived value          | `createMemo(() => expr)`        | `@inkline/core` |
 | Side effect            | `createEffect(() => { … })`     | `@inkline/core` |
 | Element ref            | `createRef()`                   | `@inkline/core` |

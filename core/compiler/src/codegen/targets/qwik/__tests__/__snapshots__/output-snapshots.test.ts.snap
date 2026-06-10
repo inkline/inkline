@@ -22,6 +22,18 @@ return (
 "
 `;
 
+exports[`qwik full output snapshots > BoundField 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
+export const Field = component$((props: { value?: string; onUpdateValue$?: QRL<(value: string) => void> } & Record<string, any>) =>
+{
+const { value, onUpdateValue$, ...__attrs } = props
+return (
+<input {...__attrs} value={props.value} class={props.class} onInput={$(e => props.onUpdateValue$?.(e.target.value))} />
+)
+});
+"
+`;
+
 exports[`qwik full output snapshots > Composite 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const Composite = component$((props) =>
@@ -221,6 +233,20 @@ return (
 "
 `;
 
+exports[`qwik full output snapshots > EmitButton 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
+export const EmitButton = component$((props: { onPress$?: QRL<(...args: any[]) => void> } & Record<string, any>) =>
+{
+const { onPress$, ...__attrs } = props
+return (
+<button {...__attrs} class={props.class} onClick={$(() => props.onPress$?.(1))}>
+  Go
+</button>
+)
+});
+"
+`;
+
 exports[`qwik full output snapshots > ForLoop 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ForLoop = component$((props) =>
@@ -327,6 +353,37 @@ return (
 "
 `;
 
+exports[`qwik full output snapshots > ModelInput 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
+export const ModelInput = component$((props: { value?: string; onUpdateValue$?: QRL<(value: string) => void> } & Record<string, any>) =>
+{
+const { value, onUpdateValue$, ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <input value={props.value} onInput={$(e => props.onUpdateValue$?.(e.target.value))} />
+  <p>
+    {props.value}
+  </p>
+</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > MultiChildSlot 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export const Box = component$((props) =>
+{
+const { children, ...__attrs } = props
+return (
+<div {...__attrs} class={["box", props.class].filter(Boolean).join(" ")}>
+  <Slot />
+</div>
+)
+});
+"
+`;
+
 exports[`qwik full output snapshots > MultiRefs 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const MultiRefs = component$((props) =>
@@ -356,6 +413,24 @@ return (
 <span {...__attrs} class={props.class}>
   {props.text}
 </span>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > NativeBind 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const NativeBind = component$((props) =>
+{
+const text = useSignal("")
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <input value={text.value} onInput={$(e => text.value = e.target.value)} />
+  <p>
+    {text.value}
+  </p>
+</div>
 )
 });
 "

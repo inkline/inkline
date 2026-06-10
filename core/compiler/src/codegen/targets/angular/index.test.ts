@@ -80,6 +80,24 @@ describe("Angular codegen fixes", () => {
       expect(code).toContain("(click)=");
     });
 
+    it("preserves camelCase for multi-word component @Output events", () => {
+      const ci = createComponentInstance({
+        reference: mockExpr("Field") as ts.Identifier,
+        resolved: { module: null, name: "Field" },
+        events: [
+          {
+            name: "onValueChange",
+            handler: createExpr({ expr: mockExpr("(v) => handle(v)") }),
+            loc,
+          },
+        ],
+      });
+      const comp = makeComp("Page", ci);
+      const code = emitCode(comp);
+      expect(code).toContain("(valueChange)=");
+      expect(code).not.toContain("valuechange");
+    });
+
     it("renders slot content", () => {
       const ci = createComponentInstance({
         reference: mockExpr("Card") as ts.Identifier,
@@ -247,7 +265,9 @@ describe("Angular codegen fixes", () => {
       expect(code).toContain("loading = signal(true)");
       expect(code).toContain("error = signal(undefined)");
       // The async loader runs the fetcher and writes results into those signals.
-      expect(code).toContain("(() => this.fetchData())().then((d) => this.data.set(d))");
+      // `fetchData` is the resource fetcher (an external function), not a class signal, so it is
+      // called plainly — no `this.` prefix (which would wrongly read it as a component member).
+      expect(code).toContain("(() => fetchData())().then((d) => this.data.set(d))");
       expect(code).toContain(".catch((e) => this.error.set(e))");
       expect(code).toContain(".finally(() => this.loading.set(false))");
       // No `resource` runtime symbol is imported anymore.

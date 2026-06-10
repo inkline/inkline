@@ -59,10 +59,11 @@ return (
 ",
   "svelte/IInputSuffixBase.svelte": "<script lang="ts">
   export interface InputSuffixBaseProps {}
-  let { ...__attrs }: InputSuffixBaseProps & Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  let { children, ...__attrs }: InputSuffixBaseProps & { children?: Snippet } & Record<string, any> = $props()
 </script>
 <span {...__attrs} class={["input-suffix", __attrs.class].filter(Boolean).join(" ")}>
-  <slot />
+  {@render children?.()}
 </span>
 ",
   "vue/IInputSuffixBase.vue": "<script setup lang="ts">

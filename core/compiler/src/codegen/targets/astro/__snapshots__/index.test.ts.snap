@@ -34,7 +34,7 @@ let count = 0
 const doubled = count * 2
 ---
 <div>
-{visible ? (<p>
+{count ? (<p>
 Hello
 </p>) : null}
 </div>

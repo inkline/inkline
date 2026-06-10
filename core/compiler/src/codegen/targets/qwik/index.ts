@@ -13,7 +13,14 @@ import {
   cJsxText,
   cGroup,
 } from "../../code-ir/builders.ts";
-import { rewriteExpr, rewriteEventName, rewriteAttrName } from "../../shared/expr-rewrite.ts";
+import {
+  rewriteExpr,
+  rewriteEventName,
+  rewriteAttrName,
+  eventToCallbackProp,
+  callbackPropRules,
+  reactiveReadNames,
+} from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import {
   FALLTHROUGH_REST,
@@ -94,9 +101,12 @@ function jsxAttrs(
   }
 
   for (const e of node.events) {
+    // A `$bind:<prop>` on a component lowers to an `update:<prop>` event; emit it as the child's
+    // `onUpdate<Prop>$` QRL callback prop rather than a (colon-bearing) DOM event name.
+    const name = e.twoWayProp ? `${eventToCallbackProp(e.name)}$` : rewriteEventName(e.name, rules);
     out.push(
       cJsxAttr({
-        name: rewriteEventName(e.name, rules),
+        name,
         value: {
           kind: "expr",
           expr: cExpr({ text: `$(${rewriteExpr(e.handler.expr, rules)})` }),
@@ -330,25 +340,52 @@ const QWIK_TRANSITION_HELPER = `const __InkTransition = component$((props: { nam
 // `{ color: "blue", size: Number }` resolves to `color?: string` / `size: number` via `typeText`,
 // falling back to the authored `typeNode` and finally `unknown`. Intersecting with `Record<string,
 // any>` keeps the spread `...__attrs` fallthrough valid.
-function buildPropsTypeAnnotation(component: IRComponent): string {
-  if (component.props.length === 0) return "";
-  if (component.propsTypeText) {
-    return `: ${component.propsTypeText} & Record<string, any>`;
+/** Type fields for models (value prop + `onUpdate<Prop>$` QRL) and emitted-event QRL callbacks. */
+function qwikModelEventTypeFields(component: IRComponent): string[] {
+  const fields: string[] = [];
+  for (const m of component.models) {
+    const t = m.typeNode?.getText() ?? "unknown";
+    fields.push(`${m.propName}?: ${t}`);
+    fields.push(`${eventToCallbackProp(`update:${m.propName}`)}$?: QRL<(value: ${t}) => void>`);
   }
-  const defs = component.props
-    .map((p) => {
-      const typeStr = p.typeText ?? p.typeNode?.getText() ?? "unknown";
-      return `${p.name}${p.required ? "" : "?"}: ${typeStr}`;
-    })
-    .join("; ");
-  return `: { ${defs} } & Record<string, any>`;
+  for (const ev of component.events) {
+    fields.push(`${eventToCallbackProp(ev.name)}$?: QRL<(...args: any[]) => void>`);
+  }
+  return fields;
+}
+
+function buildPropsTypeAnnotation(component: IRComponent): string {
+  const emission = qwikModelEventTypeFields(component);
+  // A prop-less component (no props and no model/event emission) takes an untyped `(props)` param.
+  if (component.props.length === 0 && emission.length === 0) return "";
+  const parts: string[] = [];
+  if (component.propsTypeText) {
+    parts.push(component.propsTypeText);
+  } else if (component.props.length > 0) {
+    const defs = component.props
+      .map((p) => {
+        const typeStr = p.typeText ?? p.typeNode?.getText() ?? "unknown";
+        return `${p.name}${p.required ? "" : "?"}: ${typeStr}`;
+      })
+      .join("; ");
+    parts.push(`{ ${defs} }`);
+  }
+  if (emission.length > 0) parts.push(`{ ${emission.join("; ")} }`);
+  return `: ${parts.join(" & ")} & Record<string, any>`;
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
-  const rules: RewriteRules = { ...ctx.rewrites, setters };
+  // Model getters read `props.<prop>`; model setters and `emit(…)` call `props.on…$?.()` QRL callbacks.
+  const rules: RewriteRules = {
+    ...ctx.rewrites,
+    setters,
+    ...callbackPropRules(component.models, component.emitName, "$"),
+    reactiveReads: reactiveReadNames(component),
+  };
   const body: Code[] = [];
   const qwikImports = ["component$", "useSignal", "useComputed$", "useVisibleTask$", "$"];
+  if (component.models.length > 0 || component.events.length > 0) qwikImports.push("QRL");
 
   for (const c of component.consumes) {
     qwikImports.push("useContext");
@@ -438,6 +475,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     for (const p of component.props) {
       keys.add(p.defaultValue ? `${p.name} = ${rewriteExpr(p.defaultValue.expr, rules)}` : p.name);
     }
+    for (const m of component.models) {
+      keys.add(m.propName);
+      keys.add(`${eventToCallbackProp(`update:${m.propName}`)}$`);
+    }
+    for (const ev of component.events) keys.add(`${eventToCallbackProp(ev.name)}$`);
     const prefix = keys.size > 0 ? `${[...keys].join(", ")}, ` : "";
     body.push(cStmt({ body: `const { ${prefix}...${FALLTHROUGH_REST} } = props` }));
   } else if (propsWithDefaults.length > 0) {
@@ -495,7 +537,14 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cRaw({ text: "" }),
       cStmt({
         body:
-          component.props.length > 0 || component.slots.length > 0 || fallthrough
+          // Models and events compile to `props.<prop>` reads and `props.on<Name>$` callbacks, so a
+          // component declaring either needs the `props` param even with no plain props/slots/fallthrough
+          // (e.g. a Fragment root, which never gains attribute fallthrough).
+          component.props.length > 0 ||
+          component.slots.length > 0 ||
+          component.models.length > 0 ||
+          component.events.length > 0 ||
+          fallthrough
             ? `export const ${component.name} = component$((props${propsTypeAnnotation}) =>`
             : `export const ${component.name} = component$(() =>`,
       }),

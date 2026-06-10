@@ -17,7 +17,12 @@ import {
   cGroup,
   cStyle,
 } from "../../code-ir/builders.ts";
-import { rewriteExpr, rewriteAttrName, extractKeyBody } from "../../shared/expr-rewrite.ts";
+import {
+  rewriteExpr,
+  rewriteAttrName,
+  extractKeyBody,
+  reactiveReadNames,
+} from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 import * as ts from "typescript";
@@ -68,28 +73,46 @@ function tmplAttrs(
   rules: RewriteRules,
   isComponent = false,
 ) {
-  const attrs = node.attrs.map((a: any) => {
-    const name = rewriteAttrName(a.name, rules);
-    if (a.value.kind === "Static")
-      return cTmplAttr({ name, value: { kind: "static", text: String(a.value.value) } });
+  // A `$bind:<prop>` on a component lowers to a value attr + a synthesized `update:<prop>` event;
+  // collapse the pair back into Vue's native `v-model:<prop>` directive.
+  const twoWay = node.events.filter((e: any) => e.twoWayProp);
+  const twoWayProps = new Set<string>(twoWay.map((e: any) => e.twoWayProp));
+  const vModels = twoWay.map((e: any) => {
+    const attr = node.attrs.find((a: any) => a.name === e.twoWayProp);
+    const lvalue =
+      attr && attr.value.kind === "Expression" ? rewriteExpr(attr.value.expr, rules) : "";
     return cTmplAttr({
-      name: `:${name}`,
-      value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
+      name: `v-model:${e.twoWayProp}`,
+      value: { kind: "expr", expr: cExpr({ text: lvalue }) },
     });
   });
-  const evts = node.events.map((e: any) =>
-    cTmplAttr({
-      name: vueEventName(e.name, isComponent),
-      value: { kind: "expr", expr: cExpr({ text: rewriteExpr(e.handler.expr, rules) }) },
-    }),
-  );
+
+  const attrs = node.attrs
+    .filter((a: any) => !twoWayProps.has(a.name))
+    .map((a: any) => {
+      const name = rewriteAttrName(a.name, rules);
+      if (a.value.kind === "Static")
+        return cTmplAttr({ name, value: { kind: "static", text: String(a.value.value) } });
+      return cTmplAttr({
+        name: `:${name}`,
+        value: { kind: "expr", expr: cExpr({ text: rewriteExpr(a.value.expr, rules) }) },
+      });
+    });
+  const evts = node.events
+    .filter((e: any) => !e.twoWayProp)
+    .map((e: any) =>
+      cTmplAttr({
+        name: vueEventName(e.name, isComponent),
+        value: { kind: "expr", expr: cExpr({ text: rewriteExpr(e.handler.expr, rules) }) },
+      }),
+    );
   const refs = node.refs.map((r: any) =>
     cTmplAttr({
       name: "ref",
       value: { kind: "expr", expr: cExpr({ text: rewriteExpr(r.ref.expr, rules) }) },
     }),
   );
-  return [...attrs, ...evts, ...refs];
+  return [...vModels, ...attrs, ...evts, ...refs];
 }
 
 // ── Directive wrapping helper ──────────────────────────────────────
@@ -237,10 +260,11 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       });
     }
     case "Fragment": {
+      // Emit fragment children as bare siblings (a `cGroup`, like Svelte) — NOT a `<template>`
+      // wrapper. A directive-less `<template>` is an inert HTML element in Vue, so wrapping a
+      // component's multi-child default slot (or a multi-root render) in one drops every child.
       const children = node.children.map((c) => emitNode(c, rules));
-      return children.length === 1
-        ? children[0]
-        : cTmplElement({ tag: "template", attrs: [], children, selfClose: false });
+      return children.length === 1 ? children[0] : cGroup({ children });
     }
     default:
       assertNever(node);
@@ -250,8 +274,14 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
 // ── Emit entry point ───────────────────────────────────────────────
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
-  const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
-  const rules: RewriteRules = { ...ctx.rewrites, setters };
+  // Model setters write through their getter (a `defineModel` ref): `setValue(v)` → `value.value = v`
+  // (script) / `value = v` (template), which Vue compiles to an `update:<prop>` emit.
+  const setters = Object.fromEntries([
+    ...component.state.map((s) => [s.setterName, s.name]),
+    ...component.models.map((m) => [m.setterName, m.name]),
+  ]);
+  const reads = reactiveReadNames(component);
+  const rules: RewriteRules = { ...ctx.rewrites, setters, reactiveReads: reads };
   // The Vue template auto-unwraps refs, so resource data/loading/error are read by their bare names
   // (reactiveRead strip-call). Only the template needs this — the <script setup> reads them via
   // `.value`. Build the set of bound resource names and spread it into the template rules.
@@ -263,6 +293,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const templateRules: RewriteRules = {
     ...TEMPLATE_RULES,
     setters,
+    reactiveReads: reads,
     reactiveBindings: resourceReads,
   };
   const scriptBody: Code[] = [];
@@ -272,6 +303,16 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     vueImports.push("ref");
     scriptBody.push(
       cStmt({ body: `const ${s.name} = ref(${rewriteExpr(s.initial.expr, rules)})`, span: s.loc }),
+    );
+  }
+  // `defineModel` (a Vue macro, no import) declares the two-way-bindable prop + its update event.
+  for (const m of component.models) {
+    const type = m.typeNode?.getText();
+    scriptBody.push(
+      cStmt({
+        body: `const ${m.name} = defineModel${type ? `<${type}>` : ""}(${JSON.stringify(m.propName)})`,
+        span: m.loc,
+      }),
     );
   }
   for (const m of component.memos) {
@@ -378,6 +419,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         ? `const props = withDefaults(defineProps<{ ${defs} }>(), { ${defaults.join(", ")} })`
         : `const props = defineProps<{ ${defs} }>()`;
     scriptBody.unshift(cStmt({ body }));
+  }
+
+  // `defineEmits` (a Vue macro) declares the component's custom events; `emit(…)` calls pass through.
+  if (component.emitName) {
+    const names = component.events.map((e) => JSON.stringify(e.name)).join(", ");
+    scriptBody.unshift(cStmt({ body: `const ${component.emitName} = defineEmits([${names}])` }));
   }
 
   // ── Module-level context definitions (non-setup <script>) ─────────

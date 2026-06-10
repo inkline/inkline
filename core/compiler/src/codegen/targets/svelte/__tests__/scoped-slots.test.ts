@@ -7,24 +7,25 @@ import { compileTo } from "../../../../testing/codegen.ts";
 
 // ---------------------------------------------------------------------------
 // SlotScoped: named scoped slot `<Slot name="item" args={[item, index]}>` in a For.
-// Svelte binds the scope args as named slot props.
+// Svelte renders it as `{@render itemSnippet(item, index)}` — the snippet prop is bound to a
+// `<name>Snippet` local so it never collides with the `{#each ... as item}` loop binding.
 // ---------------------------------------------------------------------------
 describe("SlotScoped: named scoped slot with args={[item, index]}", () => {
-  it("Svelte: named slot binds scope args as item={item} index={index} with fallback", async () => {
+  it("Svelte: scope args thread through {@render itemSnippet(item, index)} with fallback", async () => {
     const out = await compileTo("SlotScoped", "svelte");
-    expect(out).toContain('<slot name="item" item={item} index={index}>');
+    expect(out).toContain("{#if itemSnippet}{@render itemSnippet(item, index)}");
     expect(out).toContain("{index}:{item.label}");
   });
 });
 
 // ---------------------------------------------------------------------------
 // SlotScopedSingle: a DEFAULT scoped slot `<Slot args={[value()]}>` with fallback.
-// The single positional arg is synthesized as `prop0` for Svelte.
+// The positional arg threads through the default `children` snippet.
 // ---------------------------------------------------------------------------
 describe("SlotScopedSingle: default scoped slot with args={[value()]}", () => {
-  it("Svelte: default scoped slot binds the positional arg as prop0={value}", async () => {
+  it("Svelte: default scoped slot threads the positional arg via {@render children(value)}", async () => {
     const out = await compileTo("SlotScopedSingle", "svelte");
-    expect(out).toContain("<slot prop0={value}>");
+    expect(out).toContain("{#if children}{@render children(value)}");
     expect(out).toContain("{value}");
   });
 });

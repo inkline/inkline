@@ -44,7 +44,7 @@ exports[`vue emit + print > emits the appear prop on a transition 1`] = `
 <template>
 <div>
   <Transition name="slide" appear="">
-    <div v-if="show">
+    <div v-if="count">
       Content
     </div>
     <template v-else>
@@ -80,7 +80,7 @@ exports[`vue emit + print > wraps a transition child in <Transition> 1`] = `
 <template>
 <div>
   <Transition name="fade">
-    <p v-if="visible">
+    <p v-if="count">
       Hello
     </p>
   </Transition>

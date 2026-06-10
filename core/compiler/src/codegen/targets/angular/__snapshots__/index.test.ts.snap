@@ -36,7 +36,7 @@ disabled = input()
 exports[`angular emit + print > transition passes through to the child 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'Fade', template: \`<div>
-@if (visible()) {
+@if (count()) {
 <p>
 Hello
 </p>

@@ -61,7 +61,7 @@ useEffect(() => { console.log("effect"); }, [])
 return (
 <div>
   <__InkTransition name="fade">
-    {visible ? <p>Hello</p> : null}
+    {count ? <p>Hello</p> : null}
   </__InkTransition>
 </div>
 )
@@ -93,7 +93,7 @@ const doubled = useMemo(() => count * 2, [count])
 useEffect(() => { console.log("effect"); }, [])
 return (
 <p>
-  {count * 2 + other}
+  {count * 2 + doubled}
 </p>
 )
 }

@@ -36,6 +36,7 @@ function makeComp(
     props: [],
     slots: existingSlots,
     events: [],
+    models: [],
     state: [],
     refs: [],
     memos: [],

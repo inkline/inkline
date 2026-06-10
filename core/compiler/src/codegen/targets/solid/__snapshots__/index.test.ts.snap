@@ -84,7 +84,7 @@ createEffect(() => { console.log("effect"); })
 return (
 <div>
   <__InkTransition name="fade">
-    <Show when={visible()}>
+    <Show when={count()}>
       <p>
         Hello
       </p>

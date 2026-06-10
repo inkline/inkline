@@ -1,8 +1,56 @@
 import * as ts from "typescript";
 import type { RewriteRules } from "../context.ts";
+import type { IRComponent } from "../../ir/render/nodes.ts";
 
 export function rewriteExpr(expr: ts.Expression, rules: RewriteRules): string {
   return walk(expr, rules);
+}
+
+/**
+ * The identifiers that, read as a zero-arg call `foo()`, are reactive accessor reads: signal and
+ * model getters (`createSignal`/`defineModel`) and memos (`createMemo`). Spread into a target's
+ * {@link RewriteRules.reactiveReads} so the rewriter applies its reactive-read convention to these
+ * and emits every other zero-arg call (e.g. an imported recipe) as a plain function call.
+ */
+export function reactiveReadNames(component: IRComponent): Set<string> {
+  return new Set([
+    ...component.state.map((s) => s.name),
+    ...component.memos.map((m) => m.name),
+    ...component.models.map((m) => m.name),
+  ]);
+}
+
+/** Derive a callback-prop name from an event name: `change` → `onChange`, `update:value` → `onUpdateValue`. */
+export function eventToCallbackProp(name: string): string {
+  return `on${name
+    .split(":")
+    .map((s) => (s ? s[0]!.toUpperCase() + s.slice(1) : s))
+    .join("")}`;
+}
+
+interface ModelLike {
+  readonly name: string;
+  readonly setterName: string;
+  readonly propName: string;
+}
+
+/**
+ * Build the model/emit rewrite rules for a callback-prop target (React/Solid/Qwik): a model getter
+ * reads `props.<prop>`, a model setter and `emit(name, …)` both call a `props.on<Name>[$]?.(…)`
+ * callback. `suffix` is `"$"` for Qwik QRLs, `""` otherwise.
+ */
+export function callbackPropRules(
+  models: readonly ModelLike[],
+  emitName: string | undefined,
+  suffix = "",
+): Pick<RewriteRules, "modelReads" | "modelSetters" | "emit"> {
+  return {
+    modelReads: new Map(models.map((m) => [m.name, `props.${m.propName}`])),
+    modelSetters: new Map(
+      models.map((m) => [m.setterName, `${eventToCallbackProp(`update:${m.propName}`)}${suffix}`]),
+    ),
+    emit: emitName ? { local: emitName, style: "callback-prop", suffix } : undefined,
+  };
 }
 
 const tsPrinter = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
@@ -52,6 +100,9 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
           return `${self}${expr.text}.${rules.reactiveRead.field}`;
       }
     }
+    // A model getter read bare (no call) resolves to its bound prop on callback-prop targets.
+    const bareModelRead = rules.modelReads?.get(expr.text);
+    if (bareModelRead !== undefined) return bareModelRead;
     // A bare `props` reference in a target that destructures props (no `props` binding) is
     // rewritten to the reconstruction of its destructured bindings.
     if (expr.text === "props" && rules.members?.props?.whole !== undefined) {
@@ -77,6 +128,33 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
       }
       return walk(fn.body, rules);
     }
+    // `emit("name", …args)` → the target's event channel (callback prop / @Output / no-op).
+    if (rules.emit && ts.isIdentifier(callee) && callee.text === rules.emit.local) {
+      const nameArg = expr.arguments[0];
+      const eventName = nameArg && ts.isStringLiteral(nameArg) ? nameArg.text : "";
+      const payload = expr.arguments
+        .slice(1)
+        .map((a) => walk(a, rules))
+        .join(", ");
+      switch (rules.emit.style) {
+        case "noop":
+          return "undefined";
+        case "angular-output":
+          return `${rules.selfPrefix ? "this." : ""}${eventName}.emit(${payload})`;
+        case "callback-prop": {
+          const access = rules.emit.propsAccess ?? "props.";
+          return `${access}${eventToCallbackProp(eventName)}${rules.emit.suffix ?? ""}?.(${payload})`;
+        }
+      }
+    }
+    // A model setter on a callback-prop target: `setValue(v)` → `props.onUpdateValue?.(v)`.
+    const modelCallback = ts.isIdentifier(callee)
+      ? rules.modelSetters?.get(callee.text)
+      : undefined;
+    if (modelCallback !== undefined) {
+      const value = expr.arguments.map((a) => walk(a, rules)).join(", ");
+      return `props.${modelCallback}?.(${value})`;
+    }
     // A call to a known state setter: `setX(v)` → target-specific mutation.
     const setterName = ts.isIdentifier(callee) ? callee.text : undefined;
     const setterState = setterName !== undefined ? rules.setters?.[setterName] : undefined;
@@ -100,20 +178,28 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
       }
     }
     if (ts.isIdentifier(callee) && expr.arguments.length === 0) {
-      // A bare 0-arg call is a reactive read; in class-body contexts it is a member access.
+      // A model getter read `value()` resolves to its bound prop on callback-prop targets.
+      const modelRead = rules.modelReads?.get(callee.text);
+      if (modelRead !== undefined) return modelRead;
       const self = rules.selfPrefix ? "this." : "";
       // A read of a context-lifted signal goes through the provided getter.
       const providedRead = rules.providedSignals?.get(callee.text);
       if (providedRead) {
         return `${self}${providedRead.field}.${providedRead.prop}`;
       }
-      switch (rules.reactiveRead.kind) {
-        case "strip-call":
-          return `${self}${callee.text}`;
-        case "preserve-call":
-          return `${self}${callee.text}()`;
-        case "field-access":
-          return `${self}${callee.text}.${rules.reactiveRead.field}`;
+      // Only a known reactive accessor (signal/memo/model getter) follows the target's reactive-read
+      // convention; in class-body contexts it is a member access. Any other zero-arg call — e.g. an
+      // imported styleframe recipe `inputAppendRecipe()` — is a real function call and falls through
+      // to the generic call emission below, keeping its `()`.
+      if (rules.reactiveReads?.has(callee.text)) {
+        switch (rules.reactiveRead.kind) {
+          case "strip-call":
+            return `${self}${callee.text}`;
+          case "preserve-call":
+            return `${self}${callee.text}()`;
+          case "field-access":
+            return `${self}${callee.text}.${rules.reactiveRead.field}`;
+        }
       }
     }
     const args = expr.arguments.map((a) => walk(a, rules));
@@ -264,7 +350,10 @@ function walkBlock(block: ts.Block, rules: RewriteRules): string {
   return `{ ${lines.join(" ")} }`;
 }
 
-export function rewriteEventName(name: string, rules: RewriteRules): string {
+// `isComponent` distinguishes a callback prop on a component instance (e.g. `onValueChange`) from a
+// native DOM listener (e.g. `oninput`). Component callback props are case-sensitive identifiers, so a
+// `lower`-cased target must preserve their camelCase; only native listeners get lowercased.
+export function rewriteEventName(name: string, rules: RewriteRules, isComponent = false): string {
   const base = name.startsWith("on") ? name.slice(2) : name;
   switch (rules.eventNameCase) {
     case "camel":
@@ -273,7 +362,7 @@ export function rewriteEventName(name: string, rules: RewriteRules): string {
       return `@${base.replace(/[A-Z]/g, (c, i) => (i === 0 ? c.toLowerCase() : `-${c.toLowerCase()}`))}`;
 
     case "lower":
-      return `on${base.toLowerCase()}`;
+      return isComponent ? `on${base}` : `on${base.toLowerCase()}`;
   }
 }
 

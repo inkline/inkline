@@ -78,10 +78,11 @@ return (
     /** Id of the field shell element. */
     id?: string;
   }
-  let { id, ...__attrs }: InputBaseProps & Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  let { id, children, ...__attrs }: InputBaseProps & { children?: Snippet } & Record<string, any> = $props()
 </script>
 <div {...__attrs} class={["input", __attrs.class].filter(Boolean).join(" ")} id={id}>
-  <slot />
+  {@render children?.()}
 </div>
 ",
   "vue/IInputBase.vue": "<script setup lang="ts">

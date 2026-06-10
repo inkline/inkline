@@ -59,10 +59,11 @@ return (
 ",
   "svelte/IInputAppendBase.svelte": "<script lang="ts">
   export interface InputAppendBaseProps {}
-  let { ...__attrs }: InputAppendBaseProps & Record<string, any> = $props()
+  import type { Snippet } from "svelte";
+  let { children, ...__attrs }: InputAppendBaseProps & { children?: Snippet } & Record<string, any> = $props()
 </script>
 <div {...__attrs} class={["input-append", __attrs.class].filter(Boolean).join(" ")}>
-  <slot />
+  {@render children?.()}
 </div>
 ",
   "vue/IInputAppendBase.vue": "<script setup lang="ts">
