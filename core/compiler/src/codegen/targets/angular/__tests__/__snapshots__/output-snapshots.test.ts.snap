@@ -253,6 +253,23 @@ value = signal('')
 "
 `;
 
+exports[`angular full output snapshots > HasSlot 1`] = `
+"import { Component, signal, computed, effect } from "@angular/core";
+@Component({ standalone: true, selector: 'HasSlot', template: \`<div>
+<span class="prefix">
+<ng-content select="[slot=prefix]"></ng-content>
+</span>
+<main>
+<ng-content></ng-content>
+</main>
+
+</div>\` })
+export class HasSlotComponent
+{
+}
+"
+`;
+
 exports[`angular full output snapshots > IButton 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'IButton', template: \`<button [disabled]="disabled()">

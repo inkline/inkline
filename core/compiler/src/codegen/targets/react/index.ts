@@ -43,6 +43,10 @@ const REWRITES: RewriteRules = {
     props: { strip: false },
     slots: { strip: true, rename: { default: "children" } },
   },
+  // A named slot is a `renderX` prop; the default slot is `children`. Filled iff non-null.
+  // Parenthesized so it composes safely under `!`, `&&`, etc.
+  hasSlotCheck: (name) =>
+    name === "default" ? "(props.children != null)" : `(props.render${capitalize(name)} != null)`,
 };
 
 /** Capitalize the first character (for deriving `useState` setter names: `data` → `setData`). */

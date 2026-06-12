@@ -131,6 +131,14 @@ export interface RewriteRules {
     /** Access prefix for a callback-prop emit (`props.` for React/Solid/Qwik, `""` for Svelte). */
     readonly propsAccess?: string;
   };
+  /**
+   * Lowers a `hasSlot("name")` call to the target's slot-presence check. Each target maps the slot
+   * name to the runtime read it generates for that slot — `props.renderX != null` (React),
+   * `props.x != null` (Solid), `xSnippet != null` (Svelte), `!!$slots.x` (Vue),
+   * `Astro.slots.has("x")` (Astro) — or `true` where slot presence isn't observable at runtime
+   * (Qwik/Angular), so gated content always renders and CSS `:empty` collapses the empty wrapper.
+   */
+  readonly hasSlotCheck?: (slotName: string) => string;
 }
 
 export interface ComponentImport {

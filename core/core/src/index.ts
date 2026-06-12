@@ -94,6 +94,16 @@ export function defineSlot(_name?: string): any {
   return null;
 }
 
+/**
+ * Returns whether the named slot (default if omitted) was filled by the parent. Authoring-time stub;
+ * the compiler lowers it to each target's slot-presence check (e.g. `props.renderX != null` in React,
+ * `!!$slots.x` in Vue, `Astro.slots.has("x")` in Astro). Qwik and Angular have no runtime slot-presence
+ * API, so it lowers to `true` there (gated content always renders — pair it with CSS `:empty`).
+ */
+export function hasSlot(_name?: string): boolean {
+  return false;
+}
+
 export function Slot(_props: { name?: string; args?: any[]; children?: any }): any {
   return null;
 }

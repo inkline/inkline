@@ -303,6 +303,35 @@ return (
 "
 `;
 
+exports[`solid full output snapshots > HasSlot 1`] = `
+"import { splitProps, Show } from "solid-js";
+import type { JSX } from "solid-js";
+export default function HasSlot(props: { children?: any; prefix?: any; suffix?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children", "prefix", "suffix"])
+return (
+<div {...__attrs} class={props.class}>
+  <Show when={(props.prefix != null)}>
+    <span class="prefix">
+      {props.prefix}
+    </span>
+  </Show>
+  <Show when={(props.children != null)}>
+    <main>
+      {props.children}
+    </main>
+  </Show>
+  <Show when={!(props.suffix != null)}>
+    <span class="no-suffix">
+      none
+    </span>
+  </Show>
+</div>
+)
+}
+"
+`;
+
 exports[`solid full output snapshots > IButton 1`] = `
 "import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";

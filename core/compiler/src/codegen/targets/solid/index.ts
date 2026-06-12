@@ -37,6 +37,8 @@ const REWRITES: RewriteRules = {
   jsxAttrCasing: "html",
   eventNameCase: "lower",
   members: { props: { strip: false } },
+  // Slots are plain props (default → `children`); filled iff non-null. Parenthesized for safe composition.
+  hasSlotCheck: (name) => `(props.${name === "default" ? "children" : name} != null)`,
 };
 
 // ── Shared attr / event / ref helpers ──────────────────────────────

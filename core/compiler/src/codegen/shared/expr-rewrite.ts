@@ -128,6 +128,14 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
       }
       return walk(fn.body, rules);
     }
+    // `hasSlot("name")` → the target's slot-presence check (e.g. `props.renderName != null`,
+    // `!!$slots.name`, or `true` where slot presence isn't observable). A missing or non-literal
+    // argument names the default slot.
+    if (rules.hasSlotCheck && ts.isIdentifier(callee) && callee.text === "hasSlot") {
+      const nameArg = expr.arguments[0];
+      const slotName = nameArg && ts.isStringLiteral(nameArg) ? nameArg.text : "default";
+      return rules.hasSlotCheck(slotName);
+    }
     // `emit("name", …args)` → the target's event channel (callback prop / @Output / no-op).
     if (rules.emit && ts.isIdentifier(callee) && callee.text === rules.emit.local) {
       const nameArg = expr.arguments[0];
@@ -387,6 +395,18 @@ export function extractKeyBody(expr: ts.Expression, rules: RewriteRules): string
     return rewriteExpr(expr.body, rules);
   }
   return rewriteExpr(expr, rules);
+}
+
+/**
+ * If a rewritten conditional test is a boolean literal, return it so codegen can drop the dead branch
+ * instead of emitting a constant condition. This arises when `hasSlot("x")` lowers to `true` on targets
+ * with no runtime slot-presence API (Qwik/Angular): `<Show when={hasSlot(...)}>` then always renders and
+ * `<Show when={!hasSlot(...)}>` (`!true`) never does. Returns `undefined` for a dynamic test.
+ */
+export function foldConstTest(test: string): boolean | undefined {
+  if (test === "true") return true;
+  if (test === "false" || test === "!true") return false;
+  return undefined;
 }
 
 function unwrapParens(expr: ts.Expression): ts.Expression {

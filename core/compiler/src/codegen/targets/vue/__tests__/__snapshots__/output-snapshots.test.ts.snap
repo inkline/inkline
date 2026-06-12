@@ -258,6 +258,25 @@ exports[`vue full output snapshots > FormField 1`] = `
 "
 `;
 
+exports[`vue full output snapshots > HasSlot 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div>
+  <span v-if="!!$slots.prefix" class="prefix">
+    <slot name="prefix" />
+  </span>
+  <main v-if="!!$slots.default">
+    <slot />
+  </main>
+  <span v-if="!!!$slots.suffix" class="no-suffix">
+    none
+  </span>
+</div>
+</template>
+"
+`;
+
 exports[`vue full output snapshots > IButton 1`] = `
 "<script setup lang="ts">
   const props = defineProps<{ label: string; disabled?: boolean }>()

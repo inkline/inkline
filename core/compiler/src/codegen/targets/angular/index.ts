@@ -9,6 +9,7 @@ import {
   rewriteAttrName,
   extractKeyBody,
   reactiveReadNames,
+  foldConstTest,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
@@ -92,6 +93,8 @@ const REWRITES: RewriteRules = {
   stringQuote: "single",
   // Props are signal inputs, so a `props.x` read uses the call form `x()` / `this.x()`.
   propSignals: true,
+  // Angular has no runtime slot-presence API: always render and let CSS `:empty` collapse the wrapper.
+  hasSlotCheck: () => "true",
 };
 
 function emitNode(node: IRNode, rules: RewriteRules): string {
@@ -121,11 +124,21 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
     case "Expression":
       return `{{ ${rewriteExpr(node.expr, rules)} }}`;
     case "If": {
+      // Fold statically-true/false tests (e.g. `hasSlot` → `true` on Angular) so we never emit a
+      // constant `@if (true)`: a true branch renders unconditionally, false branches are dropped.
       let result = "";
-      for (let i = 0; i < node.branches.length; i++) {
-        const b = node.branches[i]!;
-        const dir = i === 0 ? "@if" : "@else if";
-        result += `${dir} (${rewriteExpr(b.test.expr, rules)}) {\n${emitNode(b.body, rules)}\n}`;
+      let started = false;
+      for (const b of node.branches) {
+        const test = rewriteExpr(b.test.expr, rules);
+        const folded = foldConstTest(test);
+        if (folded === false) continue;
+        if (folded === true) {
+          const body = emitNode(b.body, rules);
+          return started ? `${result} @else {\n${body}\n}` : body;
+        }
+        const dir = started ? "@else if" : "@if";
+        result += `${dir} (${test}) {\n${emitNode(b.body, rules)}\n}`;
+        started = true;
       }
       if (node.fallback) result += ` @else {\n${emitNode(node.fallback, rules)}\n}`;
       return result;
@@ -204,6 +217,11 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
+  // Angular has no runtime slot-presence API, so `hasSlot()` always returns true here (gated content
+  // renders unconditionally); flag it so authors pair it with a CSS `:empty` collapse.
+  if (component.primitives.some((p) => p.name === "hasSlot")) {
+    ctx.diagnostics.push("INK0068", component.loc);
+  }
   // A model is a writable signal (`model()`); its setter `setValue(v)` → `value.set(v)`. `emit("x", …)`
   // calls the matching `@Output()` emitter: `this.x.emit(…)` (class body) / `x.emit(…)` (template).
   const setters = Object.fromEntries([

@@ -277,6 +277,21 @@ return (
 "
 `;
 
+exports[`react full output snapshots > HasSlot 1`] = `
+"export function HasSlot(props: { children?: React.ReactNode; renderPrefix?: (...args: any[]) => React.ReactNode; renderSuffix?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, renderPrefix, renderSuffix, ...__attrs } = props
+return (
+<div {...__attrs} className={props.className}>
+  {(props.renderPrefix != null) ? <span className="prefix">{props.renderPrefix?.()}</span> : null}
+  {(props.children != null) ? <main>{props.children}</main> : null}
+  {!(props.renderSuffix != null) ? <span className="no-suffix">none</span> : null}
+</div>
+)
+}
+"
+`;
+
 exports[`react full output snapshots > IButton 1`] = `
 "export function IButton(props: { label: string; disabled?: boolean } & React.HTMLAttributes<HTMLElement>)
 {

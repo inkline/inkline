@@ -52,6 +52,8 @@ const REWRITES: RewriteRules = {
   jsxAttrCasing: "html",
   eventNameCase: "camel",
   members: { props: { strip: true } },
+  // Astro exposes filled slots via the `Astro.slots.has(name)` runtime API.
+  hasSlotCheck: (name) => `Astro.slots.has(${JSON.stringify(name)})`,
 };
 
 function emitNode(node: IRNode, rules: RewriteRules): string {

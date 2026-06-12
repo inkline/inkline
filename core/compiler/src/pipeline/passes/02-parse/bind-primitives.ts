@@ -20,6 +20,7 @@ const KNOWN_PRIMITIVES: ReadonlySet<string> = new Set<PrimitiveName>([
   "defineSlot",
   "defineModel",
   "defineEmits",
+  "hasSlot",
 ]);
 
 export type BindingTable = ReadonlyMap<string, PrimitiveName>;
