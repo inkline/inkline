@@ -277,6 +277,22 @@ exports[`vue full output snapshots > HasSlot 1`] = `
 "
 `;
 
+exports[`vue full output snapshots > HasSlotFallback 1`] = `
+"<script setup lang="ts">
+</script>
+<template>
+<div>
+  <span v-if="!!!$slots.suffix" class="no-suffix">
+    absent
+  </span>
+  <span v-else class="has-suffix">
+    present
+  </span>
+</div>
+</template>
+"
+`;
+
 exports[`vue full output snapshots > IButton 1`] = `
 "<script setup lang="ts">
   const props = defineProps<{ label: string; disabled?: boolean }>()

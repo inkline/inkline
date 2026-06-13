@@ -286,6 +286,20 @@ klass = input<string>()
 "
 `;
 
+exports[`angular full output snapshots > HasSlotFallback 1`] = `
+"import { Component, signal, computed, effect, input } from "@angular/core";
+@Component({ standalone: true, selector: 'ink-has-slot-fallback', template: \`<div [class]="klass()">
+<span class="has-suffix">
+present
+</span>
+</div>\` })
+export class HasSlotFallbackComponent
+{
+klass = input<string>()
+}
+"
+`;
+
 exports[`angular full output snapshots > IButton 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-button', template: \`<button [disabled]="disabled()" [class]="klass()">

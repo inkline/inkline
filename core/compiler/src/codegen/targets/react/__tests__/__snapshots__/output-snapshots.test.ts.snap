@@ -292,6 +292,19 @@ return (
 "
 `;
 
+exports[`react full output snapshots > HasSlotFallback 1`] = `
+"export function HasSlotFallback(props: { renderSuffix?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { renderSuffix, ...__attrs } = props
+return (
+<div {...__attrs} className={props.className}>
+  {!(props.renderSuffix != null) ? <span className="no-suffix">absent</span> : <span className="has-suffix">present</span>}
+</div>
+)
+}
+"
+`;
+
 exports[`react full output snapshots > IButton 1`] = `
 "export function IButton(props: { label: string; disabled?: boolean } & React.HTMLAttributes<HTMLElement>)
 {

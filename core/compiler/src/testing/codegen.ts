@@ -124,6 +124,7 @@ export const NEW_FIXTURES = [
   "NativeBind",
   "MultiChildSlot",
   "HasSlot",
+  "HasSlotFallback",
 ] as const;
 
 // ── Unit emit: hand-built IR → emitted source ────────────────────────────────

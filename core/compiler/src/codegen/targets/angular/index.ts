@@ -212,7 +212,13 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
         result += `${dir} (${test}) {\n${emitNode(b.body, rules)}\n}`;
         started = true;
       }
-      if (node.fallback) result += ` @else {\n${emitNode(node.fallback, rules)}\n}`;
+      // With at least one surviving `@if`, the fallback is the trailing `@else`; if every branch
+      // folded away it renders unconditionally (a bare `@else` would have no `@if` to attach to).
+      if (node.fallback) {
+        result += started
+          ? ` @else {\n${emitNode(node.fallback, rules)}\n}`
+          : emitNode(node.fallback, rules);
+      }
       return result;
     }
     case "For": {

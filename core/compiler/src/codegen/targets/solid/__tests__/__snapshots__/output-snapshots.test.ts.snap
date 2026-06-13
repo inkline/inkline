@@ -332,6 +332,25 @@ return (
 "
 `;
 
+exports[`solid full output snapshots > HasSlotFallback 1`] = `
+"import { splitProps, Show } from "solid-js";
+import type { JSX } from "solid-js";
+export default function HasSlotFallback(props: { suffix?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["suffix"])
+return (
+<div {...__attrs} class={props.class}>
+  <Show when={!(props.suffix != null)} fallback={<><span class="has-suffix">present</span></>}>
+    <span class="no-suffix">
+      absent
+    </span>
+  </Show>
+</div>
+)
+}
+"
+`;
+
 exports[`solid full output snapshots > IButton 1`] = `
 "import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";

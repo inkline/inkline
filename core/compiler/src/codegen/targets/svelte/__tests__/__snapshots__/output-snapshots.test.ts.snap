@@ -259,6 +259,24 @@ exports[`svelte full output snapshots > HasSlot 1`] = `
 "
 `;
 
+exports[`svelte full output snapshots > HasSlotFallback 1`] = `
+"<script lang="ts">
+  import type { Snippet } from "svelte";
+  interface Props { suffix?: Snippet }
+  let { suffix: suffixSnippet, ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={__attrs.class}>
+  {#if !(suffixSnippet != null)}<span class="no-suffix">
+    absent
+  </span>
+  {:else}<span class="has-suffix">
+    present
+  </span>
+  {/if}
+</div>
+"
+`;
+
 exports[`svelte full output snapshots > IButton 1`] = `
 "<script lang="ts">
   interface Props { label: string; disabled?: boolean }

@@ -296,6 +296,20 @@ return (
 "
 `;
 
+exports[`qwik full output snapshots > HasSlotFallback 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const HasSlotFallback = component$((props) =>
+{
+const { suffix, ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  {(<><span class="has-suffix">present</span></>)}
+</div>
+)
+});
+"
+`;
+
 exports[`qwik full output snapshots > IButton 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const IButton = component$((props: { label: string; disabled?: boolean } & Record<string, any>) =>

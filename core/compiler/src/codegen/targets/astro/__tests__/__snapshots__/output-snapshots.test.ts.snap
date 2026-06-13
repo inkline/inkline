@@ -274,6 +274,22 @@ none
 "
 `;
 
+exports[`astro full output snapshots > HasSlotFallback 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<div {...__attrs} class={__attrs.class}>
+{!Astro.slots.has("suffix") ? (<span class="no-suffix">
+absent
+</span>) : (<span class="has-suffix">
+present
+</span>)}
+</div>
+"
+`;
+
 exports[`astro full output snapshots > IButton 1`] = `
 "---
 type Props = { label: string; disabled?: boolean } & Record<string, any>

@@ -82,3 +82,35 @@ describe("hasSlot: targets without a runtime slot-presence API", () => {
     });
   }
 });
+
+// When `!hasSlot(...)` folds to constant-false on Angular/Qwik, the lone branch drops out; a
+// `<Show ... fallback>` must then render its fallback unconditionally — not orphan it behind a
+// dangling `@else`/ternary (HasSlotFallback exercises exactly this).
+describe("hasSlot: a fallback survives when every branch folds away", () => {
+  it("angular: renders the fallback unconditionally with no `@if`/`@else`", async () => {
+    const out = await compileTo("HasSlotFallback", "angular");
+    expect(out, "no bare `@else` (would be invalid without a preceding `@if`)").not.toContain(
+      "@else",
+    );
+    expect(out, "no `@if` either — the only branch folded away").not.toContain("@if");
+    expect(out, "the fallback renders").toContain('class="has-suffix"');
+    expect(out, "the folded-away branch is dropped").not.toContain('class="no-suffix"');
+    expect(out, "the hasSlot primitive is compiled away").not.toMatch(/\bhasSlot\b/);
+  });
+
+  it("qwik: renders the fallback unconditionally", async () => {
+    const out = await compileTo("HasSlotFallback", "qwik");
+    expect(out).toContain('class="has-suffix"');
+    expect(out, "the folded-away branch is dropped").not.toContain('class="no-suffix"');
+  });
+
+  it("react: keeps the real runtime conditional (fix is Angular/Qwik-local)", async () => {
+    const out = await compileTo("HasSlotFallback", "react");
+    expect(out).toContain("props.renderSuffix != null");
+    // React renders `class` as `className`; both branches survive (runtime presence check).
+    expect(out, "both branches survive on a runtime-presence target").toContain(
+      'className="no-suffix"',
+    );
+    expect(out).toContain('className="has-suffix"');
+  });
+});
