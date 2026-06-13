@@ -105,6 +105,7 @@ The full primitive set is documented in [`core/compiler/README.md`](../core/comp
 | List                   | `<For each={…} key={…}>`        | `@inkline/core` |
 | Switch / Match         | `<Switch>` + `<Match when={…}>` | `@inkline/core` |
 | Named / scoped slot    | `<Slot>` + `defineSlot`         | `@inkline/core` |
+| Slot-presence check    | `hasSlot("name")`               | `@inkline/core` |
 | Conditional transition | `<Transition name="…" appear?>` | `@inkline/core` |
 
 All primitives are authoring-time — the compiler removes them from emitted output. No `@inkline/core` runtime dependency is shipped to consumers.

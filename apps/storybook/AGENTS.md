@@ -59,22 +59,19 @@ pnpm --filter @inkline/storybook-app storybook
 
 ## Known rendering limitations
 
-As of 2026-06, five of the seven framework Storybooks render styled components (ones that
+As of 2026-06, six of the seven framework Storybooks render styled components (ones that
 compose other components and pull classes from a `virtual:styleframe` recipe) correctly:
-**React, Vue, Solid, Svelte, Astro**. Two have outstanding gaps:
+**React, Vue, Solid, Svelte, Astro, Angular**. One has an outstanding gap:
 
-- **Angular** — needs a focused compiler redesign before recipe-based styled components
-  render. Angular templates may only reference component-class members, but the styled
-  components call a module-level recipe (`badge(props)`) and read styling props (`color`, …)
-  that arrive as host attributes rather than `@Input`s. A complete fix requires the Angular
-  target to (a) resolve component instances to their selector and declare them in the
-  standalone `imports`, (b) expose the recipe to the template (it is otherwise tree-shaken
-  away, since templates are opaque strings to TS), and (c) reconstruct a `props` object from
-  `@Input`s + host attributes.
 - **Qwik** — the Qwik output is correct (components compile to resumable `componentQrl`s and
   their QRL segments serve over HTTP), but `storybook-framework-qwik` (a canary build) on
   Qwik 2.0-beta resumes an empty container. This is an upstream Storybook↔Qwik integration
   issue, not a codegen problem.
+
+Angular styled rendering was fixed by the Angular-target redesign — kebab-case `ink-*`
+selectors, a `klass` input that merges a forwarded class onto each component's own root, and
+full `imports` declaration. Styled components are verified by `@angular/platform-server` SSR
+tests in [`@inkline/test-utils`](../../tooling/test-utils/).
 
 ## See also
 

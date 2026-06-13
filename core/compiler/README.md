@@ -71,17 +71,18 @@ Each output is a standalone, idiomatic component for its target framework. No ru
 
 Components are authored in `.ink.tsx` files using a signal-based API imported from `@inkline/core`:
 
-| Primitive                     | Description                                              |
-| ----------------------------- | -------------------------------------------------------- |
-| `createSignal(initial)`       | Reactive state. Returns `[getter, setter]`.              |
-| `createMemo(() => expr)`      | Derived value that recomputes when dependencies change.  |
-| `createEffect(() => { ... })` | Side effect that re-runs when dependencies change.       |
-| `createRef()`                 | Template reference to a DOM element.                     |
-| `onMount(() => { ... })`      | Runs once after the component mounts.                    |
-| `onCleanup(() => { ... })`    | Runs when the component unmounts.                        |
-| `untrack(() => expr)`         | Reads a signal without tracking it as a dependency.      |
-| `batch(() => { ... })`        | Batches multiple signal updates into one reaction cycle. |
-| `defineComponent(setup)`      | Wraps a setup function into a component definition.      |
+| Primitive                     | Description                                                         |
+| ----------------------------- | ------------------------------------------------------------------- |
+| `createSignal(initial)`       | Reactive state. Returns `[getter, setter]`.                         |
+| `createMemo(() => expr)`      | Derived value that recomputes when dependencies change.             |
+| `createEffect(() => { ... })` | Side effect that re-runs when dependencies change.                  |
+| `createRef()`                 | Template reference to a DOM element.                                |
+| `onMount(() => { ... })`      | Runs once after the component mounts.                               |
+| `onCleanup(() => { ... })`    | Runs when the component unmounts.                                   |
+| `untrack(() => expr)`         | Reads a signal without tracking it as a dependency.                 |
+| `batch(() => { ... })`        | Batches multiple signal updates into one reaction cycle.            |
+| `hasSlot(name?)`              | Whether a (named, or default) slot was filled. See [Slots](#slots). |
+| `defineComponent(setup)`      | Wraps a setup function into a component definition.                 |
 
 ### Reactive Reads
 
@@ -186,6 +187,64 @@ export default defineComponent(() => {
 `emit("change", x)` becomes a callback prop (`props.onChange?.(x)`) in React/Solid, a QRL callback in
 Qwik, a `defineEmits`/`emit` pair in Vue, a callback prop in Svelte, and `this.change.emit(x)` from an
 `@Output()` in Angular. (Custom events are inert on the static Astro target — diagnostic `INK0045`.)
+
+### Slots
+
+A component declares its slots in the options object and renders them with the `<Slot>` component
+(the default slot is the lowercase `<slot>` JSX intrinsic). A `<Slot>` may wrap fallback content,
+shown when the slot is empty.
+
+```tsx
+import { defineComponent, Slot } from "@inkline/core";
+
+export default defineComponent({ slots: { default: {}, prefix: {} } }, () => {
+  return (
+    <div>
+      <span class="prefix">
+        <Slot name="prefix" />
+      </span>
+      <slot>Default content</slot>
+    </div>
+  );
+});
+```
+
+A consumer fills a named slot by passing JSX to a matching attribute (`<MyField prefix={<Icon />} />`);
+the compiler lowers it to each target's slot mechanism (a `render<Name>` prop on React/Solid, a
+`<template #name>` on Vue, a `{#snippet}` on Svelte, …).
+
+**`hasSlot(name?)`** reports whether a slot was filled, so a component can omit a wrapper when its
+slot is empty (`hasSlot()` checks the default slot):
+
+```tsx
+import { defineComponent, Show, Slot, hasSlot } from "@inkline/core";
+
+export default defineComponent({ slots: { prefix: {} } }, () => {
+  return (
+    <Show when={hasSlot("prefix")}>
+      <span class="prefix">
+        <Slot name="prefix" />
+      </span>
+    </Show>
+  );
+});
+```
+
+It lowers to each target's runtime slot-presence read:
+
+| Target  | `hasSlot("prefix")`          |
+| ------- | ---------------------------- |
+| React   | `props.renderPrefix != null` |
+| Solid   | `props.prefix != null`       |
+| Svelte  | `prefixSnippet != null`      |
+| Vue     | `!!$slots.prefix`            |
+| Astro   | `Astro.slots.has("prefix")`  |
+| Qwik    | `true`                       |
+| Angular | `true`                       |
+
+Qwik and Angular expose no runtime slot-presence API, so `hasSlot` is `true` there (the gated
+content always renders) and the compiler emits an info diagnostic (`INK0068`). Pair it with a CSS
+`:empty` rule so the wrapper collapses when its slot is empty on those targets.
 
 ### Control Flow
 
