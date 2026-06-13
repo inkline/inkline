@@ -13,7 +13,7 @@ describe("Lifecycle: onMount/onCleanup with a signal", () => {
     expect(out).toContain("mounted = signal(false)");
     // Lifecycle hooks are imported and wired into a single constructor.
     expect(out).toContain(
-      'import { Component, signal, computed, effect, afterNextRender, inject, DestroyRef } from "@angular/core";',
+      'import { Component, signal, computed, effect, input, afterNextRender, inject, DestroyRef } from "@angular/core";',
     );
     // onMount → afterNextRender; the setMounted(true) call becomes a `this.mounted.set(true)` signal write.
     expect(out).toContain(

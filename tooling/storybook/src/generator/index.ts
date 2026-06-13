@@ -1,6 +1,7 @@
 import { globSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
+import { angularSelector } from "@inkline/compiler";
 import type { StoryMeta, StoryVariant } from "../define.ts";
 import { type FrameworkConfig, activeFrameworks } from "./config.ts";
 export { activeFrameworks } from "./config.ts";
@@ -37,9 +38,10 @@ export interface ResolvedRenderImport {
   readonly exportedName: string;
   readonly importPath: string;
   /**
-   * The render wrapper's element selector — its source basename. The Angular target compiles a
-   * render `.ink.tsx` to a standalone component whose `selector` is the file basename, so the
-   * Angular story can instantiate it via `<${selector}></${selector}>`. Other targets ignore this.
+   * The render wrapper's element selector. The Angular target compiles a render `.ink.tsx` to a
+   * standalone component whose selector derives from the file basename via `angularSelector`
+   * (`colors` → `ink-colors`), so the Angular story instantiates it via
+   * `<${selector}></${selector}>`. Other targets ignore this.
    */
   readonly selector: string;
 }
@@ -121,7 +123,13 @@ export function resolveRenderImports(
     const exportedName = baseName + (framework.exportedNameSuffix ?? "");
     const localName = baseName.charAt(0).toUpperCase() + baseName.slice(1) + "Story";
 
-    imports.push({ storyName: name, localName, exportedName, importPath, selector: baseName });
+    imports.push({
+      storyName: name,
+      localName,
+      exportedName,
+      importPath,
+      selector: angularSelector(baseName),
+    });
   }
 
   return imports;

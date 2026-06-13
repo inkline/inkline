@@ -2,13 +2,14 @@
 
 exports[`InputPrepend > output matches snapshots 1`] = `
 {
-  "angular/IInputPrependBase.component.ts": "import { Component, signal, computed, effect } from "@angular/core";
+  "angular/IInputPrependBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
 export interface InputPrependBaseProps {}
-@Component({ standalone: true, selector: 'IInputPrependBase', template: \`<div class="input-prepend">
+@Component({ standalone: true, selector: 'ink-input-prepend-base', template: \`<div [class]="'input-prepend' + (klass() ? ' ' + klass() : '')">
 <ng-content></ng-content>
 </div>\` })
 export class IInputPrependBaseComponent
 {
+klass = input<string>()
 }
 ",
   "astro/IInputPrependBase.astro": "---

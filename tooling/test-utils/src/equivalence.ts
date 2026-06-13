@@ -40,7 +40,10 @@ export async function mountComponent(
   if (!mainFile) {
     throw new Error(`No main component file found for target "${target}"`);
   }
-  return mountForTarget(target, mainFile, props);
+  // Sibling generated files (e.g. the headless parts a styled component imports) ride along so
+  // relative imports resolve in the mount sandbox.
+  const supporting = files.filter((f) => f !== mainFile);
+  return mountForTarget(target, mainFile, props, supporting);
 }
 
 async function checkEquivalence(
@@ -48,7 +51,12 @@ async function checkEquivalence(
   options?: EquivalenceOptions,
 ): Promise<EquivalenceResult> {
   const normalize = options?.normalizeHtml ?? normalizeHtml;
-  const allTargets = (Object.keys(result.files) as TargetName[]).filter(isMountable);
+  // Angular is mountable but excluded from cross-target equivalence by default: every component
+  // renders inside its own host element (`<ink-badge>…</ink-badge>`), so its raw HTML can never
+  // textually equal the flat output of the other targets.
+  const allTargets = (Object.keys(result.files) as TargetName[])
+    .filter(isMountable)
+    .filter((t) => t !== "angular");
   const targets = options?.targets ?? allTargets;
 
   const htmlByTarget: Partial<Record<TargetName, string>> = {};
@@ -63,7 +71,8 @@ async function checkEquivalence(
     if (!mainFile) continue;
 
     try {
-      const mounted = await mountForTarget(target, mainFile, options?.props);
+      const supporting = files.filter((f) => f !== mainFile && !f.path.endsWith(".map"));
+      const mounted = await mountForTarget(target, mainFile, options?.props, supporting);
       htmlByTarget[target] = mounted.html;
       normalizedByTarget[target] = normalize(mounted.html);
       allWarnings.push(...mounted.warnings.map((w) => `[${target}] ${w}`));

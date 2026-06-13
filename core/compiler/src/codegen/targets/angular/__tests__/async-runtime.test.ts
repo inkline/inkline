@@ -18,7 +18,9 @@ describe("AsyncData: createResource async resource handling", () => {
     // Angular lowers each resource to reactive signal fields (data/loading/error) plus an async
     // loader that runs the fetcher and writes the results into those signals — the universal
     // "manual fetch with loading/error state" pattern. The `resource` symbol is no longer imported.
-    expect(out).toContain('import { Component, signal, computed, effect } from "@angular/core";');
+    expect(out).toContain(
+      'import { Component, signal, computed, effect, input } from "@angular/core";',
+    );
     expect(out).not.toContain("resource");
     expect(out).toContain("data = signal(undefined)");
     expect(out).toContain("loading = signal(true)");

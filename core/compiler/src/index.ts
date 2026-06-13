@@ -21,6 +21,11 @@ export { defineConfig } from "./core/config.ts";
 export type { Pass, PassContext } from "./pipeline/types.ts";
 export { pipe } from "./pipeline/types.ts";
 
+// ============ TARGET NAMING ============
+// The Angular element selector for a compiled component (`IBadge` → `ink-badge`). Exported for
+// tooling that instantiates compiled components by tag (e.g. the Storybook story generator).
+export { angularSelector } from "./codegen/targets/angular/selector.ts";
+
 // ============ DIAGNOSTICS ============
 export type { Diagnostic, DiagnosticSeverity, DiagnosticCode } from "./core/diagnostics/codes.ts";
 export { DIAGNOSTICS } from "./core/diagnostics/codes.ts";

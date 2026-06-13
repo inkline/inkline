@@ -11,6 +11,7 @@ import {
   type ComponentTestResult,
   type TargetName,
 } from "@inkline/test-utils";
+import { mountStyledOnAngular } from "../../angular-ssr-helper.ts";
 
 const IINPUT = resolveComponent(import.meta.url, "./IInput.ink.tsx");
 
@@ -97,5 +98,83 @@ describe("IInput (styled)", () => {
   it("output matches snapshots", async () => {
     const result = await compileComponent(IINPUT);
     expect(snapshotOutput(result)).toMatchSnapshot();
+  });
+});
+
+// Real-DOM verification on the Angular target (SSR via @angular/platform-server): the composed
+// field renders with recipe classes on the right elements, addons project, and unused addon
+// wrappers stay present-but-empty (collapsed by the CSS `:empty` layer, since Angular has no
+// runtime slot presence).
+describe("IInput (styled) on Angular SSR", () => {
+  const HEADLESS = [
+    "../headless/IInputGroupBase.ink.tsx",
+    "../headless/IInputBase.ink.tsx",
+    "../headless/IInputPrefixBase.ink.tsx",
+    "../headless/IInputSuffixBase.ink.tsx",
+    "../headless/IInputPrependBase.ink.tsx",
+    "../headless/IInputAppendBase.ink.tsx",
+    "../headless/IInputControlBase.ink.tsx",
+  ];
+
+  const mount = (props?: Record<string, unknown>) =>
+    mountStyledOnAngular(import.meta.url, "./IInput.ink.tsx", HEADLESS, props);
+
+  it("renders the composed field: group, shell with recipe classes, native control", async () => {
+    const { html } = await mount({
+      placeholder: "Amount",
+      name: "amount",
+      size: "md",
+      color: "light",
+    });
+
+    expect(html).toMatch(/<div[^>]*class="input-group input-group--size-md"/);
+    expect(html).toMatch(/<div[^>]*class="input input--color-light input--size-md"/);
+    expect(html).toMatch(/<input[^>]*class="input-field"/);
+    expect(html).toMatch(/<input[^>]*placeholder="Amount"/);
+    expect(html).toMatch(/<input[^>]*name="amount"/);
+  });
+
+  it("keeps unused addon wrappers present but empty (the CSS :empty contract)", async () => {
+    const { html } = await mount({ placeholder: "Plain" });
+
+    // Angular always renders the wrappers (hasSlot → true); they must be truly empty so the
+    // shipped `:empty` rules collapse them.
+    expect(html).toMatch(/<span[^>]*class="input-prefix[^"]*"><\/span>/);
+    expect(html).toMatch(/<span[^>]*class="input-suffix[^"]*"><\/span>/);
+    expect(html).toMatch(/<div[^>]*class="input-prepend"[^>]*><\/div>/);
+    expect(html).toMatch(/<div[^>]*class="input-append"[^>]*><\/div>/);
+  });
+
+  it("projects prefix/suffix addon content into the shell (currency field)", async () => {
+    const { html } = await mount({
+      placeholder: "0.00",
+      __slots: { prefix: "$", suffix: "USD" },
+    });
+
+    expect(html).toMatch(/<span[^>]*class="input-prefix[^"]*">\$<\/span>/);
+    expect(html).toMatch(/<span[^>]*class="input-suffix[^"]*">USD<\/span>/);
+  });
+
+  it("projects prepend/append addon content outside the shell (URL field)", async () => {
+    const { html } = await mount({
+      placeholder: "example",
+      __slots: { prepend: "https://", append: ".com" },
+    });
+
+    expect(html).toMatch(/<div[^>]*class="input-prepend"[^>]*>https:\/\/<\/div>/);
+    expect(html).toMatch(/<div[^>]*class="input-append"[^>]*>\.com<\/div>/);
+  });
+
+  it("renders a textarea control for type=textarea", async () => {
+    const { html } = await mount({ type: "textarea", placeholder: "Bio" });
+
+    expect(html).toMatch(/<textarea[^>]*class="input-field"/);
+    expect(html).not.toContain("<input");
+  });
+
+  it("reflects the disabled state onto the native control", async () => {
+    const { html } = await mount({ placeholder: "Off", disabled: true });
+
+    expect(html).toMatch(/<input[^>]*disabled/);
   });
 });

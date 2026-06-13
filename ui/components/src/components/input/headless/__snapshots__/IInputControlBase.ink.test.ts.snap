@@ -17,8 +17,8 @@ export interface InputControlBaseProps {
   /** Marks the control as read-only. */
   readonly?: boolean;
 }
-@Component({ standalone: true, selector: 'IInputControlBase', template: \`@if (type() === 'textarea') {
-<textarea class="input-field" [id]="id()" [name]="name()" [value]="value()" [placeholder]="placeholder()" [disabled]="disabled()" [readonly]="readonly()" (input)="value.set($event.currentTarget.value)" />
+@Component({ standalone: true, selector: 'ink-input-control-base', template: \`@if (type() === 'textarea') {
+<textarea class="input-field" [id]="id()" [name]="name()" [value]="value()" [placeholder]="placeholder()" [disabled]="disabled()" [readonly]="readonly()" (input)="value.set($event.currentTarget.value)"></textarea>
 } @else {
 <input class="input-field" [id]="id()" [name]="name()" [type]="type()" [value]="value()" [placeholder]="placeholder()" [disabled]="disabled()" [readonly]="readonly()" (input)="value.set($event.currentTarget.value)" />
 }\` })

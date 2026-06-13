@@ -34,10 +34,13 @@ describe("SwitchTabs: Switch/Match control flow", () => {
 // ---------------------------------------------------------------------------
 describe("ConditionalClass: conditional class binding", () => {
   // Angular emits the conditional class as a single-quoted ternary so the inner
-  // string literals don't terminate the double-quoted `[class]="..."` binding.
+  // string literals don't terminate the double-quoted `[class]="..."` binding. The fallthrough
+  // root additionally merges the parent-forwarded `klass()` input.
   it("Angular: single-quoted ternary inside the [class] binding", async () => {
     const out = await compileTo("ConditionalClass", "angular");
-    expect(out).toContain("[class]=\"active() ? 'active' : 'inactive'\"");
+    expect(out).toContain(
+      "[class]=\"(active() ? 'active' : 'inactive') + (klass() ? ' ' + klass() : '')\"",
+    );
   });
 });
 

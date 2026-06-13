@@ -26,7 +26,7 @@ export {
   type EquivalenceResult,
 } from "./equivalence.ts";
 
-export { isMountable, type MountResult } from "./mount.ts";
+export { isMountable, mountForTarget, type MountResult } from "./mount.ts";
 
 export { normalizeHtml } from "./normalize.ts";
 

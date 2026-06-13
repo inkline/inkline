@@ -45,6 +45,9 @@
     "test": "vp test",
     "check": "vp check"
   },
+  "dependencies": {
+    "@inkline/compiler": "workspace:*"
+  },
   "devDependencies": {
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:",

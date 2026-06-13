@@ -7,11 +7,12 @@ export interface InputBaseProps {
   /** Id of the field shell element. */
   id?: string;
 }
-@Component({ standalone: true, selector: 'IInputBase', template: \`<div class="input" [id]="id()">
+@Component({ standalone: true, selector: 'ink-input-base', template: \`<div [class]="'input' + (klass() ? ' ' + klass() : '')" [id]="id()">
 <ng-content></ng-content>
 </div>\` })
 export class IInputBaseComponent
 {
+klass = input<string>()
 id = input<string>()
 }
 ",

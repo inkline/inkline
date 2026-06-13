@@ -7,11 +7,12 @@ export interface InputGroupBaseProps {
   /** Id of the input group element. */
   id?: string;
 }
-@Component({ standalone: true, selector: 'IInputGroupBase', template: \`<div class="input-group" [id]="id()">
+@Component({ standalone: true, selector: 'ink-input-group-base', template: \`<div [class]="'input-group' + (klass() ? ' ' + klass() : '')" [id]="id()">
 <ng-content></ng-content>
 </div>\` })
 export class IInputGroupBaseComponent
 {
+klass = input<string>()
 id = input<string>()
 }
 ",

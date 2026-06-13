@@ -12,6 +12,10 @@
     "@styleframe/runtime": "catalog:"
   },
   "devDependencies": {
+    "@angular/compiler": "catalog:",
+    "@angular/core": "catalog:",
+    "@angular/platform-browser": "catalog:",
+    "@angular/platform-server": "catalog:",
     "@inkline/cli": "workspace:*",
     "@inkline/compiler": "workspace:*",
     "@inkline/core": "workspace:*",
@@ -25,6 +29,7 @@
     "@styleframe/theme": "catalog:",
     "@styleframe/transpiler": "catalog:",
     "jsdom": "catalog:",
+    "rxjs": "^7",
     "styleframe": "catalog:",
     "vite-plus": "catalog:",
     "vitest": "npm:@voidzero-dev/vite-plus-test@^0.1.22"

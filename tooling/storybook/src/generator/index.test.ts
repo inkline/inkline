@@ -98,8 +98,9 @@ describe("resolveRenderImports", () => {
     // The Angular compiler emits `colors.component.ts`; a `.ts` import 404s at runtime.
     expect(imports[0]!.importPath).toContain("colors.component.ts");
     expect(imports[0]!.exportedName).toBe("colorsComponent");
-    // The selector (file basename) lets the Angular story instantiate the wrapper via `<colors>`.
-    expect(imports[0]!.selector).toBe("colors");
+    // The selector is the compiled component's kebab-case ink-* form (matching angularSelector),
+    // so the Angular story instantiates the wrapper via `<ink-colors>`.
+    expect(imports[0]!.selector).toBe("ink-colors");
   });
 
   it("returns empty array when no render stories exist", async () => {

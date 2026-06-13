@@ -42,7 +42,7 @@ describe("ContextConsumer: useContext per target", () => {
   it("Angular: inject(FormContext.key) as a class member + {{ }} binding", async () => {
     const out = await compileTo("ContextConsumer", "angular");
     expect(out).toContain(
-      'import { Component, signal, computed, effect, inject } from "@angular/core"',
+      'import { Component, signal, computed, effect, input, inject } from "@angular/core"',
     );
     expect(out).toContain("form = inject(FormContext.key)");
     expect(out).toContain("{{ form.disabled }}");

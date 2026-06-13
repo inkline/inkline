@@ -13,8 +13,9 @@ describe("TransitionBasic: transition wrapper over toggled Show", () => {
     const out = await compileTo("TransitionBasic", "angular");
     // RESIDUAL BUG: no __InkTransition / no transition machinery survives; the @if just renders bare,
     // so the fade animation is silently lost on the Angular target.
+    // The ink-transition-basic selector contains the word, so check for the machinery forms.
     expect(out).not.toContain("InkTransition");
-    expect(out).not.toContain("transition");
+    expect(out).not.toContain("transition(");
     expect(out).toContain("@if (visible()) {");
     // The (click) binding is a statement (no arrow) that rewrites setVisible to signal.set — correct.
     expect(out).toContain('(click)="visible.set(!visible())"');

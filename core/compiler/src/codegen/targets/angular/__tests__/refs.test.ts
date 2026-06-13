@@ -13,7 +13,9 @@ describe("ElementRef: single template ref bound + focused on mount", () => {
   it("Angular: viewChild + #inputRef marker, onMount focus runs via afterNextRender in the constructor", async () => {
     const out = await compileTo("ElementRef", "angular");
     expect(out).toContain("viewChild<ElementRef>('inputRef')");
-    expect(out).toContain('template: `<input placeholder="auto-focus" #inputRef />`');
+    expect(out).toContain(
+      'template: `<input placeholder="auto-focus" [class]="klass()" #inputRef />`',
+    );
     // onMount is wired: Angular emits `afterNextRender` inside a single constructor, and the focus
     // body reads the viewChild signal member as `this.inputRef()` (imports the lifecycle helper
     // alongside viewChild/ElementRef).

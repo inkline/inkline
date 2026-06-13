@@ -28,25 +28,30 @@ export interface InputProps extends InputControlBaseProps {
   /** Invalid-state styling. */
   invalid?: InputStylingProps["invalid"];
 }
-@Component({ standalone: true, selector: 'IInput', imports: [IInputGroupBase, IInputBase, IInputPrefixBase, IInputSuffixBase, IInputPrependBase, IInputAppendBase, IInputControlBase], template: \`<IInputGroupBase [class]="groupClassName()">
-<IInputPrependBase>
+@Component({ standalone: true, selector: 'ink-input', imports: [IInputGroupBase, IInputBase, IInputPrefixBase, IInputSuffixBase, IInputPrependBase, IInputAppendBase, IInputControlBase], template: \`<ink-input-group-base [klass]="(groupClassName()) + (klass() ? ' ' + klass() : '')">
+<ink-input-prepend-base>
 <ng-content select="[slot=prepend]"></ng-content>
-</IInputPrependBase>
-<IInputBase [class]="shellClassName()">
-<IInputPrefixBase [class]="inputPrefixRecipe({ size: size() })">
+</ink-input-prepend-base>
+<ink-input-base [klass]="(shellClassName())">
+<ink-input-prefix-base [klass]="(inputPrefixRecipe({ size: size() }))">
 <ng-content select="[slot=prefix]"></ng-content>
-</IInputPrefixBase>
-<IInputControlBase [id]="id()" [name]="name()" [type]="type()" [value]="value()" [placeholder]="placeholder()" [disabled]="disabled()" [readonly]="readonly()" (valueChange)="value.set($event)"></IInputControlBase>
-<IInputSuffixBase [class]="inputSuffixRecipe({ size: size() })">
+</ink-input-prefix-base>
+<ink-input-control-base [id]="id()" [name]="name()" [type]="type()" [value]="value()" [placeholder]="placeholder()" [disabled]="disabled()" [readonly]="readonly()" (valueChange)="value.set($event)"></ink-input-control-base>
+<ink-input-suffix-base [klass]="(inputSuffixRecipe({ size: size() }))">
 <ng-content select="[slot=suffix]"></ng-content>
-</IInputSuffixBase>
-</IInputBase>
-<IInputAppendBase>
+</ink-input-suffix-base>
+</ink-input-base>
+<ink-input-append-base>
 <ng-content select="[slot=append]"></ng-content>
-</IInputAppendBase>
-</IInputGroupBase>\` })
+</ink-input-append-base>
+</ink-input-group-base>\` })
 export class IInputComponent
 {
+inputRecipe = inputRecipe
+inputGroupRecipe = inputGroupRecipe
+inputPrefixRecipe = inputPrefixRecipe
+inputSuffixRecipe = inputSuffixRecipe
+klass = input<string>()
 groupClassName = computed(() => inputGroupRecipe({ size: this.size() }))
 shellClassName = computed(() => inputRecipe({ color: this.color(), variant: this.variant(), size: this.size(), invalid: this.invalid(), disabled: this.disabled(), readonly: this.readonly() }))
 color = input<InputStylingProps["color"]>()
