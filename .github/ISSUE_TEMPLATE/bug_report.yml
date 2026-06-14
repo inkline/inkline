@@ -1,0 +1,120 @@
+name: 🐛 Bug report
+description: Report a defect in the compiler, a primitive, the tooling, or a generated framework output.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug report! Please fill in the fields below so we can reproduce and fix it quickly.
+
+        Have a "how do I…" question instead? Use [GitHub Discussions](https://github.com/inkline/inkline/discussions) — questions filed as issues will be closed.
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: Prerequisites
+      description: Please confirm the following before filing.
+      options:
+        - label: I searched [existing issues](https://github.com/inkline/inkline/issues) and this has not been reported.
+          required: true
+        - label: I reproduced this on the latest published version.
+          required: true
+        - label: I have included a minimal reproduction below.
+          required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A clear and concise description of the bug.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: >
+        The smallest input that triggers the bug. For compiler bugs, include the authored `.ink.tsx`
+        snippet and the steps to reproduce. A link to a repository or playground is ideal.
+      placeholder: |
+        Steps / repro link, plus the authored source:
+
+        ```tsx
+        // Button.ink.tsx
+        export const Button = component(() => {
+          // …
+        });
+        ```
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What actually happened? Include any compiler diagnostics or the problematic generated output.
+    validations:
+      required: true
+  - type: dropdown
+    id: frameworks
+    attributes:
+      label: Affected output framework(s)
+      description: Which generated framework output(s) does this affect? Select all that apply.
+      multiple: true
+      options:
+        - React
+        - Vue 3
+        - Svelte 5
+        - Solid
+        - Angular
+        - Qwik
+        - Astro
+        - All / framework-agnostic (compiler/core)
+        - Not applicable
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area / package
+      description: Which part of the toolchain is involved?
+      options:
+        - Compiler (@inkline/compiler)
+        - Authoring primitives (@inkline/core)
+        - Bundler plugin (@inkline/plugin)
+        - CLI (@inkline/cli)
+        - Config loader (@inkline/config-loader)
+        - Barrel package (inkline)
+        - Components (Badge / Button / Input)
+        - A framework output package (@inkline/react, vue, …)
+        - Storybook integration (@inkline/storybook)
+        - Test utils (@inkline/test-utils)
+        - Docs / website
+        - Other / not sure
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Run the commands below and paste the output. Include `vp env doctor` if the issue looks tooling-related.
+      value: |
+        - Inkline: # pnpm list inkline @inkline/compiler
+        - Node:    # node -v
+        - pnpm:    # pnpm -v
+        - OS:
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Anything else that might help — screenshots, related issues, or workarounds you found.
+    validations:
+      required: false

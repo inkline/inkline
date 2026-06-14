@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Documentation
+    url: https://github.com/inkline/inkline#readme
+    about: Read the architecture, authoring, and conventions docs first.
+  - name: 💬 Questions & ideas
+    url: https://github.com/inkline/inkline/discussions
+    about: Ask "how do I…", request help, or float ideas here — issues are for bugs and concrete proposals.
