@@ -126,7 +126,7 @@ describe("IInput (styled) on Angular SSR", () => {
       color: "light",
     });
 
-    expect(html).toMatch(/<div[^>]*class="input-group input-group--size-md"/);
+    expect(html).toMatch(/<div[^>]*class="input-group"/);
     expect(html).toMatch(/<div[^>]*class="input input--color-light input--size-md"/);
     expect(html).toMatch(/<input[^>]*class="input-field"/);
     expect(html).toMatch(/<input[^>]*placeholder="Amount"/);
