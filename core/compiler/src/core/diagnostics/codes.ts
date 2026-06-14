@@ -120,6 +120,13 @@ export const DIAGNOSTICS = {
     help: "Dynamic slot names are not supported. Use a static string." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0067" as const,
   },
+  INK0068: {
+    severity: "info" as const,
+    title:
+      "hasSlot() always returns true on the Qwik and Angular targets, which have no runtime slot-presence API" as const,
+    help: "Gated content always renders there. Pair hasSlot with a CSS `:empty` rule so the empty wrapper collapses." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0068" as const,
+  },
   INK0070: {
     severity: "error" as const,
     title: "Component-ref forwarding is not yet supported" as const,

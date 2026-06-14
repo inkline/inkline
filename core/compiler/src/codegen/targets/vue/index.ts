@@ -40,6 +40,8 @@ const REWRITES: RewriteRules = {
     props: { strip: false },
     slots: { strip: true },
   },
+  // Vue exposes filled slots on `$slots` in the template.
+  hasSlotCheck: (name) => `!!$slots.${name}`,
 };
 
 // In the template, Vue auto-unwraps refs: reads use the bare name (`count`, not `count.value`)

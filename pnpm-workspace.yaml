@@ -35,6 +35,7 @@ catalog:
   "@angular/core": ^21
   "@angular/platform-browser": ^21
   "@angular/platform-browser-dynamic": ^21
+  "@angular/platform-server": ^21
   "@storybook-astro/framework": ^1.2.0
   "@storybook/addon-a11y": ^10
   "@storybook/addon-docs": ^10

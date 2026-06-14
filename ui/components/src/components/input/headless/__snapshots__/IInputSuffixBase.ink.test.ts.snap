@@ -2,13 +2,14 @@
 
 exports[`InputSuffix > output matches snapshots 1`] = `
 {
-  "angular/IInputSuffixBase.component.ts": "import { Component, signal, computed, effect } from "@angular/core";
+  "angular/IInputSuffixBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
 export interface InputSuffixBaseProps {}
-@Component({ standalone: true, selector: 'IInputSuffixBase', template: \`<span class="input-suffix">
+@Component({ standalone: true, selector: 'ink-input-suffix-base', template: \`<span [class]="'input-suffix' + (klass() ? ' ' + klass() : '')">
 <ng-content></ng-content>
 </span>\` })
 export class IInputSuffixBaseComponent
 {
+klass = input<string>()
 }
 ",
   "astro/IInputSuffixBase.astro": "---

@@ -36,22 +36,31 @@
     "prepublishOnly": "vp run build"
   },
   "dependencies": {
-    "@inkline/compiler": "workspace:*"
+    "@inkline/compiler": "workspace:*",
+    "typescript": "catalog:"
   },
   "devDependencies": {
+    "@angular/compiler": "catalog:",
+    "@angular/core": "catalog:",
+    "@angular/platform-browser": "catalog:",
+    "@angular/platform-server": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "^19",
     "@vue/server-renderer": "^3.4",
     "react": "^19",
     "react-dom": "^19",
+    "rxjs": "^7",
     "solid-js": "^1.8",
     "svelte": "^5",
-    "typescript": "catalog:",
     "vite-plus": "catalog:",
     "vitest": "catalog:",
     "vue": "^3.4"
   },
   "peerDependencies": {
+    "@angular/compiler": ">=17",
+    "@angular/core": ">=17",
+    "@angular/platform-browser": ">=17",
+    "@angular/platform-server": ">=17",
     "@vue/server-renderer": ">=3.4",
     "react": ">=18",
     "react-dom": ">=18",
@@ -61,6 +70,18 @@
     "vue": ">=3.4"
   },
   "peerDependenciesMeta": {
+    "@angular/compiler": {
+      "optional": true
+    },
+    "@angular/core": {
+      "optional": true
+    },
+    "@angular/platform-browser": {
+      "optional": true
+    },
+    "@angular/platform-server": {
+      "optional": true
+    },
     "react": {
       "optional": true
     },

@@ -9,9 +9,12 @@ import {
   rewriteAttrName,
   extractKeyBody,
   reactiveReadNames,
+  foldConstTest,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
+import { walkRenderTree } from "../../../ir/render/visit.ts";
+import { angularSelector } from "./selector.ts";
 import * as ts from "typescript";
 
 /**
@@ -45,6 +48,22 @@ interface ReactiveProvideProp {
 /** Lowercase the first character (`FormContext` → `formContext`) for the injected provider field. */
 function lowerFirst(name: string): string {
   return name.charAt(0).toLowerCase() + name.slice(1);
+}
+
+/** The local value names bound by forwarded external imports (e.g. styleframe recipes). */
+function externalImportNames(externalImports: readonly Code[]): string[] {
+  const names: string[] = [];
+  for (const imp of externalImports) {
+    if (imp.kind !== "CRaw") continue;
+    const named = imp.text.match(/import\s*\{([^}]*)\}\s*from/);
+    if (!named) continue;
+    for (const entry of named[1]!.split(",")) {
+      const trimmed = entry.trim();
+      if (!trimmed || trimmed.startsWith("type ")) continue;
+      names.push(trimmed.includes(" as ") ? trimmed.split(/\s+as\s+/)[1]!.trim() : trimmed);
+    }
+  }
+  return names;
 }
 
 /**
@@ -92,18 +111,68 @@ const REWRITES: RewriteRules = {
   stringQuote: "single",
   // Props are signal inputs, so a `props.x` read uses the call form `x()` / `this.x()`.
   propSignals: true,
+  // Angular has no runtime slot-presence API: always render and let CSS `:empty` collapse the wrapper.
+  hasSlotCheck: () => "true",
 };
+
+// Angular's template parser only allows void (and custom/foreign) elements to self-close; a
+// childless non-void element must emit an explicit closing tag.
+const VOID_ELEMENTS = new Set([
+  "area",
+  "base",
+  "br",
+  "col",
+  "embed",
+  "hr",
+  "img",
+  "input",
+  "link",
+  "meta",
+  "param",
+  "source",
+  "track",
+  "wbr",
+]);
+
+/**
+ * The class expression for a fallthrough root: the node's own class plus the `klass` input a
+ * parent forwards (see the `klass` synthesis in `emit`). Angular template expressions cannot call
+ * helpers like `filter`, so the merge is plain string concatenation guarded by a ternary.
+ */
+function mergedClassExpr(own: string | undefined, rules: RewriteRules): string {
+  void rules;
+  if (own === undefined) return "klass()";
+  return `${own} + (klass() ? ' ' + klass() : '')`;
+}
+
+/** The node's own class attr as a template expression (`'badge'` for static, `(expr)` for dynamic). */
+function ownClassExpr(
+  a: { value: { kind: string; value?: unknown; expr?: ts.Expression } },
+  rules: RewriteRules,
+): string {
+  if (a.value.kind === "Static") return `'${String(a.value.value)}'`;
+  return `(${rewriteExpr(a.value.expr!, rules)})`;
+}
 
 function emitNode(node: IRNode, rules: RewriteRules): string {
   switch (node.kind) {
     case "Element": {
-      const attrs = node.attrs
-        .map((a) => {
-          const name = rewriteAttrName(a.name, rules);
-          if (a.value.kind === "Static") return `${name}="${a.value.value}"`;
-          return `[${name}]="${rewriteExpr(a.value.expr, rules)}"`;
-        })
-        .join(" ");
+      // A fallthrough root merges the parent-forwarded `klass()` into its own class.
+      const fallthrough = node.acceptsAttrFallthrough === true;
+      let classBound = false;
+      const attrParts = node.attrs.map((a) => {
+        const name = rewriteAttrName(a.name, rules);
+        if (fallthrough && name === "class") {
+          classBound = true;
+          return `[class]="${mergedClassExpr(ownClassExpr(a, rules), rules)}"`;
+        }
+        if (a.value.kind === "Static") return `${name}="${a.value.value}"`;
+        return `[${name}]="${rewriteExpr(a.value.expr, rules)}"`;
+      });
+      if (fallthrough && !classBound) {
+        attrParts.push(`[class]="${mergedClassExpr(undefined, rules)}"`);
+      }
+      const attrs = attrParts.join(" ");
       const events = node.events
         .map(
           (e) =>
@@ -113,7 +182,13 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       const refs = node.refs.map((r) => `#${rewriteExpr(r.ref.expr, rules)}`).join(" ");
       const attrStr = [attrs, events, refs].filter(Boolean).join(" ");
       const children = node.children.map((c) => emitNode(c, rules)).join("\n");
-      if (node.children.length === 0) return `<${node.tag}${attrStr ? " " + attrStr : ""} />`;
+      if (node.children.length === 0) {
+        // Only void elements may self-close in Angular templates; childless non-void elements
+        // need an explicit closing tag (JIT rejects e.g. `<span … />`).
+        return VOID_ELEMENTS.has(node.tag)
+          ? `<${node.tag}${attrStr ? " " + attrStr : ""} />`
+          : `<${node.tag}${attrStr ? " " + attrStr : ""}></${node.tag}>`;
+      }
       return `<${node.tag}${attrStr ? " " + attrStr : ""}>\n${children}\n</${node.tag}>`;
     }
     case "Text":
@@ -121,13 +196,29 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
     case "Expression":
       return `{{ ${rewriteExpr(node.expr, rules)} }}`;
     case "If": {
+      // Fold statically-true/false tests (e.g. `hasSlot` → `true` on Angular) so we never emit a
+      // constant `@if (true)`: a true branch renders unconditionally, false branches are dropped.
       let result = "";
-      for (let i = 0; i < node.branches.length; i++) {
-        const b = node.branches[i]!;
-        const dir = i === 0 ? "@if" : "@else if";
-        result += `${dir} (${rewriteExpr(b.test.expr, rules)}) {\n${emitNode(b.body, rules)}\n}`;
+      let started = false;
+      for (const b of node.branches) {
+        const test = rewriteExpr(b.test.expr, rules);
+        const folded = foldConstTest(test);
+        if (folded === false) continue;
+        if (folded === true) {
+          const body = emitNode(b.body, rules);
+          return started ? `${result} @else {\n${body}\n}` : body;
+        }
+        const dir = started ? "@else if" : "@if";
+        result += `${dir} (${test}) {\n${emitNode(b.body, rules)}\n}`;
+        started = true;
       }
-      if (node.fallback) result += ` @else {\n${emitNode(node.fallback, rules)}\n}`;
+      // With at least one surviving `@if`, the fallback is the trailing `@else`; if every branch
+      // folded away it renders unconditionally (a bare `@else` would have no `@if` to attach to).
+      if (node.fallback) {
+        result += started
+          ? ` @else {\n${emitNode(node.fallback, rules)}\n}`
+          : emitNode(node.fallback, rules);
+      }
       return result;
     }
     case "For": {
@@ -148,12 +239,27 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
     case "Fragment":
       return node.children.map((c) => emitNode(c, rules)).join("\n");
     case "ComponentInstance": {
-      const tag = node.resolved?.name ?? node.reference.getText();
+      const localName = node.resolved?.name ?? node.reference.getText();
+      const tag = angularSelector(localName);
+      // Ivy always treats a `[class]` binding as a host class — it never reaches an input — so a
+      // class passed to a compiled child travels through its synthesized `klass` input instead,
+      // and the child's root element merges it (see the Element case above).
+      const fallthrough = node.acceptsAttrFallthrough === true;
+      let classBound = false;
       const ciParts: string[] = [];
       for (const a of node.attrs) {
         const name = rewriteAttrName(a.name, rules);
+        if (name === "class") {
+          classBound = true;
+          const own = ownClassExpr(a, rules);
+          ciParts.push(`[klass]="${fallthrough ? mergedClassExpr(own, rules) : own}"`);
+          continue;
+        }
         if (a.value.kind === "Static") ciParts.push(`${name}="${a.value.value}"`);
         else ciParts.push(`[${name}]="${rewriteExpr(a.value.expr, rules)}"`);
+      }
+      if (fallthrough && !classBound) {
+        ciParts.push(`[klass]="${mergedClassExpr(undefined, rules)}"`);
       }
       for (const e of node.events) {
         // A `$bind:<prop>` lowers to `update:<prop>`; the child's `model()` exposes it as the
@@ -204,6 +310,11 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
+  // Angular has no runtime slot-presence API, so `hasSlot()` always returns true here (gated content
+  // renders unconditionally); flag it so authors pair it with a CSS `:empty` collapse.
+  if (component.primitives.some((p) => p.name === "hasSlot")) {
+    ctx.diagnostics.push("INK0068", component.loc);
+  }
   // A model is a writable signal (`model()`); its setter `setValue(v)` → `value.set(v)`. `emit("x", …)`
   // calls the matching `@Output()` emitter: `this.x.emit(…)` (class body) / `x.emit(…)` (template).
   const setters = Object.fromEntries([
@@ -271,6 +382,39 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   };
   const body: Code[] = [];
   const angularImports = ["Component", "signal", "computed", "effect"];
+
+  // Angular templates resolve identifiers against the component instance, so module-level imports
+  // referenced by the template (styleframe recipes called inline, e.g. `inputPrefixRecipe({…})`)
+  // must be re-exposed as class fields. The field initializer's RHS resolves to the module import.
+  for (const name of externalImportNames(ctx.externalImports)) {
+    body.push(cStmt({ body: `${name} = ${name}` }));
+  }
+
+  // Scan the render tree once: instances the standalone `imports` must declare, and whether any
+  // fallthrough root exists (which needs the synthesized `klass` input below).
+  const instanceNames = new Set<string>();
+  let hasFallthroughRoot = false;
+  walkRenderTree(component.render, {
+    enter(node) {
+      if (node.kind === "ComponentInstance") {
+        instanceNames.add(node.resolved?.name ?? node.reference.getText());
+      }
+      if (
+        (node.kind === "ComponentInstance" || node.kind === "Element") &&
+        node.acceptsAttrFallthrough === true
+      ) {
+        hasFallthroughRoot = true;
+      }
+    },
+  });
+
+  // The class a parent forwards (Vue-style attribute fallthrough). Ivy never routes `[class]`
+  // bindings to inputs, so the forwarded class travels through this dedicated input and the root
+  // element merges it with its own class.
+  if (hasFallthroughRoot) {
+    angularImports.push("input");
+    body.push(cStmt({ body: `klass = input<string>()` }));
+  }
 
   for (const c of component.consumes) {
     angularImports.push("inject");
@@ -403,9 +547,20 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const providersStr =
     providerEntries.length > 0 ? `, providers: [${providerEntries.join(", ")}]` : "";
 
-  // Standalone components must declare the components they instantiate.
-  const importNames = ctx.componentImports.map((i) => i.localName).filter(Boolean);
+  // Standalone components must declare every component they instantiate — both cross-file imports
+  // and same-file siblings (which compile to their own `.component.ts` modules and are imported
+  // here so the `imports: [...]` reference resolves).
+  const importedLocals = ctx.componentImports
+    .map((i) => i.localName)
+    .filter((n): n is string => Boolean(n));
+  const sameFileChildren = [...instanceNames].filter(
+    (n) => !importedLocals.includes(n) && n !== component.name,
+  );
+  const importNames = [...importedLocals, ...sameFileChildren];
   const importsStr = importNames.length > 0 ? `, imports: [${importNames.join(", ")}]` : "";
+  const sameFileImports = sameFileChildren.map((n) =>
+    cRaw({ text: `import { ${n}Component as ${n} } from "./${n}.component";` }),
+  );
 
   const file = cFile({
     flavor: "ts",
@@ -415,13 +570,14 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         named: [...new Set(angularImports)].map((i) => ({ imported: i })),
       }),
       ...emitComponentImports(ctx.componentImports, ".component", false, "Component"),
+      ...sameFileImports,
       ...ctx.externalImports,
       ...styleImport,
       ...(ctx.typeDeclarations.length > 0 ? [cRaw({ text: "" }), ...ctx.typeDeclarations] : []),
       ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       cRaw({ text: "" }),
       cRaw({
-        text: `@Component({ standalone: true, selector: '${component.name}'${importsStr}${providersStr}, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
+        text: `@Component({ standalone: true, selector: '${angularSelector(component.name)}'${importsStr}${providersStr}, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
       }),
       cStmt({ body: `export class ${component.name}Component` }),
       cRaw({ text: "{" }),

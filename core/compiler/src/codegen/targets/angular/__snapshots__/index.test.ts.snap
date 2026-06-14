@@ -2,7 +2,7 @@
 
 exports[`angular emit + print > Counter component 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, selector: 'Counter', template: \`<div>
+@Component({ standalone: true, selector: 'ink-counter', template: \`<div>
 <p>
 {{ count() }}
 </p>
@@ -21,7 +21,7 @@ constructor() { effect(() => { console.log('effect'); }) }
 
 exports[`angular emit + print > props type generation 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
-@Component({ standalone: true, selector: 'Button', template: \`<div />\` })
+@Component({ standalone: true, selector: 'ink-button', template: \`<div></div>\` })
 export class ButtonComponent
 {
 count = signal(0)
@@ -35,7 +35,7 @@ disabled = input()
 
 exports[`angular emit + print > transition passes through to the child 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
-@Component({ standalone: true, selector: 'Fade', template: \`<div>
+@Component({ standalone: true, selector: 'ink-fade', template: \`<div>
 @if (count()) {
 <p>
 Hello

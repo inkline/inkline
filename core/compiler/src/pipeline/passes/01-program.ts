@@ -16,7 +16,7 @@ function resolveTsconfigTypeFiles(tsconfigPath: string): readonly string[] {
 
   let files: readonly string[] = [];
   try {
-    const read = ts.readConfigFile(tsconfigPath, ts.sys.readFile);
+    const read = ts.readConfigFile(tsconfigPath, (path) => ts.sys.readFile(path));
     if (!read.error && read.config) {
       const parsed = ts.parseJsonConfigFileContent(read.config, ts.sys, dirname(tsconfigPath));
       files = parsed.fileNames.filter((f) => f.endsWith(".d.ts"));

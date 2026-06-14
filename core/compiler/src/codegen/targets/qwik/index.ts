@@ -20,6 +20,7 @@ import {
   eventToCallbackProp,
   callbackPropRules,
   reactiveReadNames,
+  foldConstTest,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import {
@@ -37,6 +38,8 @@ const REWRITES: RewriteRules = {
   jsxAttrCasing: "html",
   eventNameCase: "camel",
   members: { props: { strip: false } },
+  // Qwik has no runtime slot-presence API: always render and let CSS `:empty` collapse the wrapper.
+  hasSlotCheck: () => "true",
 };
 
 function jsxAttrs(
@@ -151,10 +154,29 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       return cJsxText({ text: node.value });
     case "Expression":
       return cExpr({ text: `{${rewriteExpr(node.expr, rules)}}` });
-    case "If":
+    case "If": {
+      // Fold statically-true/false tests (e.g. `hasSlot` → `true` on Qwik) so we never emit a
+      // constant-condition ternary: a true branch becomes the terminal, false branches are dropped.
+      const surviving: string[] = [];
+      let unconditional: string | undefined;
+      for (const b of node.branches) {
+        const test = rewriteExpr(b.test.expr, rules);
+        const folded = foldConstTest(test);
+        if (folded === false) continue;
+        const body = `(<>${emitNodeInline(b.body, rules)}</>)`;
+        if (folded === true) {
+          unconditional = body;
+          break;
+        }
+        surviving.push(`${test} ? ${body}`);
+      }
+      const tail =
+        unconditional ??
+        (node.fallback ? `(<>${emitNodeInline(node.fallback, rules)}</>)` : "null");
       return cExpr({
-        text: `{${node.branches.map((b) => `${rewriteExpr(b.test.expr, rules)} ? (<>${emitNodeInline(b.body, rules)}</>)`).join(" : ")} : ${node.fallback ? `(<>${emitNodeInline(node.fallback, rules)}</>)` : "null"}}`,
+        text: surviving.length > 0 ? `{${surviving.join(" : ")} : ${tail}}` : `{${tail}}`,
       });
+    }
     case "For": {
       const params = node.indexBinding
         ? `(${node.itemBinding}, ${node.indexBinding})`
@@ -375,6 +397,11 @@ function buildPropsTypeAnnotation(component: IRComponent): string {
 }
 
 function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
+  // Qwik has no runtime slot-presence API, so `hasSlot()` always returns true here (gated content
+  // renders unconditionally); flag it so authors pair it with a CSS `:empty` collapse.
+  if (component.primitives.some((p) => p.name === "hasSlot")) {
+    ctx.diagnostics.push("INK0068", component.loc);
+  }
   const setters = Object.fromEntries(component.state.map((s) => [s.setterName, s.name]));
   // Model getters read `props.<prop>`; model setters and `emit(…)` call `props.on…$?.()` QRL callbacks.
   const rules: RewriteRules = {

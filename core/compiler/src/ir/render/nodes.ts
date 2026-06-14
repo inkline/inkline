@@ -21,7 +21,8 @@ export type PrimitiveName =
   | "batch"
   | "defineSlot"
   | "defineModel"
-  | "defineEmits";
+  | "defineEmits"
+  | "hasSlot";
 
 export interface PrimitiveUsage {
   readonly name: PrimitiveName;

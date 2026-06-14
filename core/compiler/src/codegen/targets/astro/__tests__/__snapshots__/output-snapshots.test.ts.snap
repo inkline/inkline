@@ -254,6 +254,42 @@ let value = ""
 "
 `;
 
+exports[`astro full output snapshots > HasSlot 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<div {...__attrs} class={__attrs.class}>
+{Astro.slots.has("prefix") ? (<span class="prefix">
+<slot name="prefix" />
+</span>) : null}
+{Astro.slots.has("default") ? (<main>
+<slot />
+</main>) : null}
+{!Astro.slots.has("suffix") ? (<span class="no-suffix">
+none
+</span>) : null}
+</div>
+"
+`;
+
+exports[`astro full output snapshots > HasSlotFallback 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<div {...__attrs} class={__attrs.class}>
+{!Astro.slots.has("suffix") ? (<span class="no-suffix">
+absent
+</span>) : (<span class="has-suffix">
+present
+</span>)}
+</div>
+"
+`;
+
 exports[`astro full output snapshots > IButton 1`] = `
 "---
 type Props = { label: string; disabled?: boolean } & Record<string, any>

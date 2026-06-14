@@ -44,6 +44,9 @@ const REWRITES: RewriteRules = {
     props: { strip: true },
     slots: { strip: true },
   },
+  // Each slot is a `Snippet` prop: default → `children`, named → `<name>Snippet`. Filled iff non-null.
+  // Parenthesized for safe composition under `!`, `&&`, etc.
+  hasSlotCheck: (name) => `(${name === "default" ? "children" : `${name}Snippet`} != null)`,
 };
 
 // Non-void HTML elements must not self-close in Svelte 5 (element_invalid_self_closing_tag).

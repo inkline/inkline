@@ -9,14 +9,15 @@ export interface ButtonBaseProps {
   disabled?: boolean;
   loading?: boolean;
 }
-@Component({ standalone: true, selector: 'IButtonBase', template: \`<button class="button" [type]="type() ?? 'button'" [disabled]="disabled() || loading()" [aria-busy]="loading() ? 'true' : 'false'">
+@Component({ standalone: true, selector: 'ink-button-base', template: \`<button [class]="'button' + (klass() ? ' ' + klass() : '')" [type]="type() ?? 'button'" [disabled]="disabled() || loading()" [aria-busy]="loading() ? 'true' : 'false'">
 @if (!!loading()) {
-<span class="button-spinner" aria-hidden="true" />
+<span class="button-spinner" aria-hidden="true"></span>
 }
 <ng-content>{{ label() }}</ng-content>
 </button>\` })
 export class IButtonBaseComponent
 {
+klass = input<string>()
 label = input<string>()
 type = input<"button" | "submit" | "reset">()
 disabled = input<boolean>()

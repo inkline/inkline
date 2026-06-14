@@ -6,11 +6,12 @@ exports[`Badge > output matches snapshots 1`] = `
 export interface BadgeBaseProps {
   label?: string;
 }
-@Component({ standalone: true, selector: 'IBadgeBase', template: \`<div class="badge">
+@Component({ standalone: true, selector: 'ink-badge-base', template: \`<div [class]="'badge' + (klass() ? ' ' + klass() : '')">
 <ng-content>{{ label() }}</ng-content>
 </div>\` })
 export class IBadgeBaseComponent
 {
+klass = input<string>()
 label = input<string>()
 }
 ",

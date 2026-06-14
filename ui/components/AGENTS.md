@@ -51,10 +51,12 @@ pnpm dev     # inkline compile components 'src/**/*.ink.tsx' --watch
 
 Every component ships in two variants under its own directory:
 
-- **`headless/I<Name>Base.ink.tsx`** — structure, slots, props, events. No design tokens, no styleframe class names. Behavior + accessibility. This is what consumers swap in if they want to ship their own styling.
-- **`styled/I<Name>.ink.tsx`** — composes the headless component and applies styleframe-generated classes via `virtual:styleframe`.
+- **`headless/I<Name>Base.ink.tsx`** — structure, slots, props, events. No design tokens, no styleframe class names. Behavior + accessibility. One per part; this is what consumers swap in if they want to ship their own styling.
+- **`styled/I<Name>.ink.tsx`** — composes the headless part(s) and applies styleframe-generated classes via `virtual:styleframe`.
 
-Example: [`src/components/badge/`](./src/components/badge/) — the canonical pattern to copy. The headless variant declares `slots: { default: {} }` so consumers can override content via slotting; the styled variant pulls `badge(props)` from `virtual:styleframe` to produce the class name.
+Example: [`src/components/badge/`](./src/components/badge/) — the canonical single-part pattern to copy. The headless variant declares `slots: { default: {} }` so consumers can override content via slotting; the styled variant pulls `badge(props)` from `virtual:styleframe` to produce the class name.
+
+**A styled component may compose _all_ of a family's headless parts into one component** — there is one styled component per family, not one per part. [`src/components/input/`](./src/components/input/) is the model: the seven `headless/IInput*Base` parts (shell, control, group, prefix, suffix, prepend, append) are composed by a single [`styled/IInput.ink.tsx`](./src/components/input/styled/IInput.ink.tsx). Optional addon slots are gated with `<Show when={hasSlot("prefix")}>` so an unused addon emits nothing; on Qwik/Angular (no runtime slot presence) `hasSlot` is `true` and the empty wrapper is collapsed by `:empty` rules in [`IInput.styleframe.ts`](./src/components/input/styled/IInput.styleframe.ts). All recipes for the family are registered in that one `.styleframe.ts`.
 
 ## Stories
 

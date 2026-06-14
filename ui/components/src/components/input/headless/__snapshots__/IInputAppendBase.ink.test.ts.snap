@@ -2,13 +2,14 @@
 
 exports[`InputAppend > output matches snapshots 1`] = `
 {
-  "angular/IInputAppendBase.component.ts": "import { Component, signal, computed, effect } from "@angular/core";
+  "angular/IInputAppendBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
 export interface InputAppendBaseProps {}
-@Component({ standalone: true, selector: 'IInputAppendBase', template: \`<div class="input-append">
+@Component({ standalone: true, selector: 'ink-input-append-base', template: \`<div [class]="'input-append' + (klass() ? ' ' + klass() : '')">
 <ng-content></ng-content>
 </div>\` })
 export class IInputAppendBaseComponent
 {
+klass = input<string>()
 }
 ",
   "astro/IInputAppendBase.astro": "---

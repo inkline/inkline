@@ -37,7 +37,8 @@ describe("BatchUpdates: batch() helper inside an event handler", () => {
   it("Angular: the handler unwraps to a `;`-separated statement binding", async () => {
     const out = await compileTo("BatchUpdates", "angular");
     expect(out).toContain('(click)="x.set(x() + 1); y.set(y() + 1);"');
-    expect(out).not.toContain("batch");
+    // The batch() wrapper is compiled away (the ink-batch-updates selector still contains the word).
+    expect(out).not.toContain("batch(");
   });
 });
 

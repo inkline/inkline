@@ -7,24 +7,24 @@ import { describe, it, expect } from "vitest";
 import { compileTo, compileToAll } from "../../../../testing/codegen.ts";
 
 describe("ComponentRef: same-file child instance + forwarded ref", () => {
-  it("Angular: child instance resolves to <Child></Child> but is NOT declared in imports", async () => {
+  it("Angular: child renders via its ink-* selector and IS declared in imports", async () => {
     const out = await compileToAll("ComponentRef", "angular");
-    expect(out).toContain("template: `<Child></Child>`");
-    // BUG: the ComponentRef @Component has no `imports: [...]`, yet its template uses <Child>.
-    // Angular standalone components must list child components in `imports` or the tag is unknown.
-    expect(out).toContain("selector: 'ComponentRef', template: `<Child></Child>`");
-    expect(out).not.toContain("imports: [Child");
+    // The same-file sibling compiles to its own module; the parent imports it and lists it in the
+    // standalone `imports` (otherwise Angular treats the tag as an unknown element).
+    expect(out).toContain('import { ChildComponent as Child } from "./Child.component";');
+    expect(out).toContain("imports: [Child]");
+    expect(out).toContain("<ink-child");
+    expect(out).not.toContain("<Child></Child>");
   });
 });
 
 describe("MultipleComponentsPerFile: Counter renders sibling <Label>", () => {
-  it("Angular: Label instance is emitted but missing from imports[]", async () => {
+  it("Angular: Label is imported from its sibling module and declared in imports[]", async () => {
     const out = await compileToAll("MultipleComponentsPerFile", "angular");
-    expect(out).toContain('<Label [text]="String(count())"></Label>');
-    // BUG: Counter's @Component omits `imports: [Label]` even though the template instantiates
-    // <Label>. Standalone Angular requires the child in imports for the tag to render.
-    expect(out).toContain("selector: 'Counter', template: `<div>");
-    expect(out).not.toContain("imports: [Label");
+    expect(out).toContain('import { LabelComponent as Label } from "./Label.component";');
+    expect(out).toContain("imports: [Label]");
+    expect(out).toContain('<ink-label [text]="String(count())"></ink-label>');
+    expect(out).toContain("selector: 'ink-counter'");
   });
 });
 
@@ -35,13 +35,22 @@ describe("CrossFileBase / CrossFileStyled: cross-file component composition", ()
       'import { CrossFileBaseComponent as CrossFileBase } from "./CrossFileBase.component";',
     );
     expect(out).toContain("imports: [CrossFileBase]");
-    // Styling/label props are signal inputs, read in call form in the template bindings.
-    expect(out).toContain('<CrossFileBase [class]="size()" [label]="label()">');
+    // A class passed to a compiled child travels through its `klass` input (Ivy never routes
+    // `[class]` bindings to inputs), and the styled root merges the class it receives itself.
+    expect(out).toContain(
+      "<ink-cross-file-base [klass]=\"(size()) + (klass() ? ' ' + klass() : '')\" [label]=\"label()\">",
+    );
   });
 
   it("Base component default slot falls back to the label prop", async () => {
     const angular = await compileTo("CrossFileBase", "angular");
     // Angular renders the fallback (the `label` signal input) as the <ng-content> projection default.
     expect(angular).toContain("<ng-content>{{ label() }}</ng-content>");
+  });
+
+  it("Base component root merges the parent-forwarded klass with its own class", async () => {
+    const angular = await compileTo("CrossFileBase", "angular");
+    expect(angular).toContain("klass = input<string>()");
+    expect(angular).toMatch(/\[class\]="'[^']+' \+ \(klass\(\) \? ' ' \+ klass\(\) : ''\)"/);
   });
 });

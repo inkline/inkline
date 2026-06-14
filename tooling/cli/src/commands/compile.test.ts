@@ -85,6 +85,14 @@ function waitFor(predicate: () => boolean, timeoutMs = 8000): Promise<void> {
 
 const delay = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
+/**
+ * macOS recursive `fs.watch` arms asynchronously: a mutation issued in the same tick the watcher is
+ * created can land before the OS-level watch registers, dropping the change event so the rebuild
+ * never fires and `waitFor` times out. Let the watcher settle before the first write. (Only the first
+ * write races — once a `waitFor` poll loop has run, the watcher is long since armed.)
+ */
+const WATCHER_SETTLE_MS = 100;
+
 afterEach(() => {
   // A leaked non-zero exit code would fail the whole vitest process; always reset it.
   process.exitCode = 0;
@@ -336,6 +344,7 @@ describe("compile command watch mode", () => {
     const watcher = result as FSWatcher;
 
     try {
+      await delay(WATCHER_SETTLE_MS);
       // 1. A component edit triggers an incremental rebuild.
       logs.length = 0;
       writeFileSync(
@@ -412,6 +421,7 @@ export default defineComponent(() => {
       expect(errs.join("\n")).not.toContain("INK0045");
       expect(errs.join("\n")).toContain("INK0010");
 
+      await delay(WATCHER_SETTLE_MS);
       // A rebuild re-emits both; INK0045 stays filtered while the warning still surfaces.
       logs.length = 0;
       errs.length = 0;
