@@ -408,6 +408,9 @@ importers:
       unbuild:
         specifier: ^3.6.1
         version: 3.6.1(sass@1.97.3)(typescript@6.0.3)(vue@3.5.34(typescript@6.0.3))
+      vitest:
+        specifier: npm:@voidzero-dev/vite-plus-test@latest
+        version: '@voidzero-dev/vite-plus-test@0.1.24(@types/node@25.9.1)(esbuild@0.28.0)(happy-dom@15.11.7)(jiti@2.7.0)(jsdom@29.1.1)(less@4.4.2)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(typescript@6.0.3)(vite@8.0.10(@types/node@25.9.1)(esbuild@0.28.0)(jiti@2.7.0)(less@4.4.2)(sass@1.97.3)(terser@5.47.1)(tsx@4.22.0)(yaml@2.8.4))(yaml@2.8.4)'
 
   tooling/agents-check:
     devDependencies:
