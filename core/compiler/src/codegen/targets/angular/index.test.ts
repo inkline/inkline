@@ -29,6 +29,53 @@ function emitCode(comp: IRComponent): string {
   return emitFor(angular, comp);
 }
 
+describe("Angular nullish native-element attributes", () => {
+  it("binds a plain dynamic attr via [attr.name] with ?? null so a nullish value omits it", () => {
+    const el = createElement({
+      tag: "input",
+      attrs: [
+        { name: "id", value: createExpr({ expr: mockExpr("id()") }), binding: "normal", loc },
+      ],
+    });
+    const code = emitCode(makeComp("Field", el));
+    expect(code).toContain('[attr.id]="(id()) ?? null"');
+    expect(code).not.toContain('[id]="');
+  });
+
+  it("keeps boolean / value-semantic attrs as property bindings", () => {
+    const el = createElement({
+      tag: "input",
+      attrs: [
+        { name: "value", value: createExpr({ expr: mockExpr("value()") }), binding: "normal", loc },
+        {
+          name: "disabled",
+          value: createExpr({ expr: mockExpr("disabled()") }),
+          binding: "normal",
+          loc,
+        },
+      ],
+    });
+    const code = emitCode(makeComp("Field", el));
+    expect(code).toContain('[value]="value()"');
+    expect(code).toContain('[disabled]="disabled()"');
+    expect(code).not.toContain("[attr.value]");
+    expect(code).not.toContain("[attr.disabled]");
+  });
+
+  it("leaves component @Input bindings untouched (only native elements change)", () => {
+    const ci = createComponentInstance({
+      reference: mockExpr("Card") as ts.Identifier,
+      resolved: { module: null, name: "Card" },
+      attrs: [
+        { name: "id", value: createExpr({ expr: mockExpr("id()") }), binding: "normal", loc },
+      ],
+    });
+    const code = emitCode(makeComp("Page", ci));
+    expect(code).toContain('[id]="id()"');
+    expect(code).not.toContain("[attr.id]");
+  });
+});
+
 describe("Angular codegen fixes", () => {
   describe("ComponentInstance attrs, events, slots", () => {
     it("renders attrs on component instances", () => {
