@@ -170,7 +170,7 @@ const { header, children, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   <header>
-    <Slot name="header" />
+    {props.header}
   </header>
   <main>
     <Slot />
@@ -287,7 +287,7 @@ export const HasSlot = component$((props) =>
 const { children, prefix, suffix, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  {(<><span class="prefix"><Slot name="prefix" /></span></>)}
+  {(<><span class="prefix">{props.prefix}</span></>)}
   {(<><main><Slot /></main></>)}
   {null}
 </div>
@@ -502,7 +502,7 @@ const expanded = useSignal(true)
 const { header, children, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <Slot name="header" />
+  {props.header}
   {expanded.value ? (<><Slot /></>) : null}
 </div>
 )
@@ -518,13 +518,13 @@ const { header, children, footer, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   <header>
-    <Slot name="header" />
+    {props.header}
   </header>
   <main>
     <Slot />
   </main>
   <footer>
-    <Slot name="footer" />
+    {props.footer}
   </footer>
 </div>
 )
@@ -540,7 +540,7 @@ const items = useSignal([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
 const { item, ...__attrs } = props
 return (
 <ul {...__attrs} class={props.class}>
-  {items.value.map((item, index) => (<><li><>{index}:{item.label}</></li></>))}
+  {items.value.map((item, index) => (<><li>{props.item?.(item, index) ?? (<><>{index}:{item.label}</></>)}</li></>))}
 </ul>
 )
 });
@@ -579,11 +579,7 @@ return (
     </Slot>
   </main>
   <footer>
-    <Slot name="actions">
-      <span>
-        Action area
-      </span>
-    </Slot>
+    {props.actions ?? (<><span>Action area</span></>)}
   </footer>
 </div>
 )
@@ -598,11 +594,7 @@ export const SlotWithFallback = component$((props) =>
 const { header, children, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <Slot name="header">
-    <h1>
-      Default Header
-    </h1>
-  </Slot>
+  {props.header ?? (<><h1>Default Header</h1></>)}
   <Slot>
     Default body content
   </Slot>

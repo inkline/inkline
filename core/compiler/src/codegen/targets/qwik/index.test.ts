@@ -81,14 +81,14 @@ describe("Qwik codegen fixes", () => {
       expect(code).not.toContain("/>");
     });
 
-    it("renders named slots as sub-elements", () => {
+    it("renders an unscoped named slot fill as a node prop, not a <Tag.name> child", () => {
       const ci = createComponentInstance({
         reference: mockExpr("Card") as ts.Identifier,
         resolved: { module: null, name: "Card" },
         slots: [
           {
             name: "header",
-            body: createText({ value: "title" }),
+            body: createElement({ tag: "span", children: [createText({ value: "title" })] }),
             scopedParams: [],
             loc,
           },
@@ -96,8 +96,9 @@ describe("Qwik codegen fixes", () => {
       });
       const comp = makeComp("Parent", ci);
       const code = emitCode(comp);
-      expect(code).toContain("Card.header");
-      expect(code).toContain("title");
+      // Matches the consumption side: `{props.header}`.
+      expect(code).toContain("header={<span>title</span>}");
+      expect(code).not.toContain("Card.header");
     });
 
     it("self-closes when no slots", () => {

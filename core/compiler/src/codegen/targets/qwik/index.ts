@@ -138,16 +138,23 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? node.reference.getText();
       const attrs = jsxAttrs(node, rules);
-      const children = node.slots.map((s) =>
-        s.name === "default"
-          ? emitNode(s.body, rules)
-          : cJsxElement({
-              tag: `${tag}.${s.name}`,
-              attrs: [],
-              children: [emitNode(s.body, rules)],
-              selfClose: false,
-            }),
-      );
+      // The default slot projects through `<Slot/>` (children); a named slot is consumed as a prop
+      // (see the `SlotPlaceholder` case) — a node prop (`prefix={<>$</>}`) when unscoped, a function
+      // prop when it takes args. A `<Tag.name>` child would never reach the consumer.
+      const children: Code[] = [];
+      for (const s of node.slots) {
+        if (s.name === "default") {
+          children.push(emitNode(s.body, rules));
+        } else {
+          const value =
+            s.scopedParams.length > 0
+              ? `(${s.scopedParams.join(", ")}) => (${emitNodeInline(s.body, rules)})`
+              : emitNodeInline(s.body, rules);
+          attrs.push(
+            cJsxAttr({ name: s.name, value: { kind: "expr", expr: cExpr({ text: value }) } }),
+          );
+        }
+      }
       return cJsxElement({ tag, attrs, children, selfClose: children.length === 0 });
     }
     case "Text":
@@ -192,25 +199,30 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       });
     }
     case "SlotPlaceholder": {
-      // Qwik projects content through its native `<Slot/>` component — NOT `props.children`, which
-      // Qwik never populates (so the old `{props.children ?? …}` lowering silently dropped every
-      // projected child). Authored fallback becomes the `<Slot>`'s children, shown when nothing is
-      // projected; named slots use `<Slot name="x"/>`.
-      const slotAttrs =
-        node.name === "default"
-          ? []
-          : [cJsxAttr({ name: "name", value: { kind: "static", text: node.name } })];
+      // A named slot is consumed as a prop — a node prop (`{props.prefix}`) when unscoped, a function
+      // prop (`{props.prefix?.(args)}`) when scoped — mirroring the fill. The default slot still
+      // projects through Qwik's native `<Slot/>`: Qwik never populates `props.children`, so the old
+      // `{props.children ?? …}` lowering would silently drop every projected child.
+      if (node.name !== "default") {
+        const argsStr =
+          node.scopedArgs.length > 0
+            ? node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ")
+            : "";
+        const read = argsStr ? `props.${node.name}?.(${argsStr})` : `props.${node.name}`;
+        const fallback = node.fallback ? ` ?? (<>${emitNodeInline(node.fallback, rules)}</>)` : "";
+        return cExpr({ text: `{${read}${fallback}}` });
+      }
       if (node.scopedArgs.length > 0) {
         // Qwik's `<Slot/>` can't receive scoped args. Best-effort: render the authored fallback
         // (default content, with its scope vars in scope); otherwise project without the args.
         return node.fallback
           ? emitNode(node.fallback, rules)
-          : cJsxElement({ tag: "Slot", attrs: slotAttrs, children: [], selfClose: true });
+          : cJsxElement({ tag: "Slot", attrs: [], children: [], selfClose: true });
       }
       const fallbackChildren = node.fallback ? [emitNode(node.fallback, rules)] : [];
       return cJsxElement({
         tag: "Slot",
-        attrs: slotAttrs,
+        attrs: [],
         children: fallbackChildren,
         selfClose: fallbackChildren.length === 0,
       });
@@ -281,6 +293,8 @@ function emitNodeInline(node: IRNode, rules: RewriteRules): string {
 function emitsQwikSlot(node: IRNode): boolean {
   switch (node.kind) {
     case "SlotPlaceholder":
+      // Named slots are props now, not `<Slot>`; only the default slot projects through `<Slot/>`.
+      if (node.name !== "default") return node.fallback ? emitsQwikSlot(node.fallback) : false;
       if (node.scopedArgs.length > 0 && node.fallback) return emitsQwikSlot(node.fallback);
       return true;
     case "Element":
