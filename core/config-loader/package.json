@@ -42,6 +42,6 @@
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
-    "vitest": "npm:@voidzero-dev/vite-plus-test@^0.1.24"
+    "vitest": "catalog:"
   }
 }
