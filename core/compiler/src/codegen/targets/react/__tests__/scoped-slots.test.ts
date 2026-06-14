@@ -31,12 +31,12 @@ describe("ScopedSlot: For render-prop child inlined per target", () => {
 // Vue/Svelte bind named slot props, Angular/Astro drop them.
 // ---------------------------------------------------------------------------
 describe("SlotScoped: named scoped slot with args={[item, index]}", () => {
-  it("React: named slot → optional render prop `renderItem`, called with (item, index)", async () => {
+  it("React: named scoped slot → optional function prop `item`, called with (item, index)", async () => {
     const out = await compileTo("SlotScoped", "react");
-    expect(out).toContain("renderItem?: (...args: any[]) => React.ReactNode");
-    expect(out).toContain("const { renderItem, ...__attrs } = props");
-    // render prop is invoked with the scope args, falling back to the authored content
-    expect(out).toContain("{props.renderItem?.(item, index) ?? <>{index}:{item.label}</>}");
+    expect(out).toContain("item?: (...args: any[]) => React.ReactNode");
+    expect(out).toContain("const { item, ...__attrs } = props");
+    // a scoped slot is a function prop, invoked with the scope args, falling back to authored content
+    expect(out).toContain("{props.item?.(item, index) ?? <>{index}:{item.label}</>}");
   });
 });
 

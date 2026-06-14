@@ -279,6 +279,14 @@ describe("rewriteAttrName", () => {
     expect(rewriteAttrName("for", react)).toBe("htmlFor");
   });
 
+  it("react: readonly → readOnly", () => {
+    expect(rewriteAttrName("readonly", react)).toBe("readOnly");
+  });
+
+  it("html: readonly passes through", () => {
+    expect(rewriteAttrName("readonly", html)).toBe("readonly");
+  });
+
   it("react: unknown passes through", () => {
     expect(rewriteAttrName("id", react)).toBe("id");
   });

@@ -13,7 +13,7 @@ describe("foldConstTest", () => {
     expect(foldConstTest("true")).toBe(true);
     expect(foldConstTest("false")).toBe(false);
     expect(foldConstTest("!true")).toBe(false);
-    expect(foldConstTest("props.renderPrefix != null")).toBeUndefined();
+    expect(foldConstTest("props.prefix != null")).toBeUndefined();
     expect(foldConstTest("count() > 0")).toBeUndefined();
   });
 });
@@ -22,9 +22,9 @@ describe("foldConstTest", () => {
 // and the negated check (on "suffix") that must stay correct thanks to parenthesization.
 const RUNTIME_PRESENCE = {
   react: {
-    prefix: "(props.renderPrefix != null)",
+    prefix: "(props.prefix != null)",
     default: "(props.children != null)",
-    negSuffix: "!(props.renderSuffix != null)",
+    negSuffix: "!(props.suffix != null)",
   },
   solid: {
     prefix: "(props.prefix != null)",
@@ -106,7 +106,7 @@ describe("hasSlot: a fallback survives when every branch folds away", () => {
 
   it("react: keeps the real runtime conditional (fix is Angular/Qwik-local)", async () => {
     const out = await compileTo("HasSlotFallback", "react");
-    expect(out).toContain("props.renderSuffix != null");
+    expect(out).toContain("props.suffix != null");
     // React renders `class` as `className`; both branches survive (runtime presence check).
     expect(out, "both branches survive on a runtime-presence target").toContain(
       'className="no-suffix"',

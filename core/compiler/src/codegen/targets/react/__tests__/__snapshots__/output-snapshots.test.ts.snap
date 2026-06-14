@@ -162,13 +162,13 @@ return (
 `;
 
 exports[`react full output snapshots > DefineSlotBasic 1`] = `
-"export function DefineSlotBasic(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+"export function DefineSlotBasic(props: { header?: React.ReactNode; children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
-const { renderHeader, children, ...__attrs } = props
+const { header, children, ...__attrs } = props
 return (
 <div {...__attrs} className={props.className}>
   <header>
-    {props.renderHeader?.()}
+    {props.header}
   </header>
   <main>
     {props.children}
@@ -278,14 +278,14 @@ return (
 `;
 
 exports[`react full output snapshots > HasSlot 1`] = `
-"export function HasSlot(props: { children?: React.ReactNode; renderPrefix?: (...args: any[]) => React.ReactNode; renderSuffix?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+"export function HasSlot(props: { children?: React.ReactNode; prefix?: React.ReactNode; suffix?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
-const { children, renderPrefix, renderSuffix, ...__attrs } = props
+const { children, prefix, suffix, ...__attrs } = props
 return (
 <div {...__attrs} className={props.className}>
-  {(props.renderPrefix != null) ? <span className="prefix">{props.renderPrefix?.()}</span> : null}
+  {(props.prefix != null) ? <span className="prefix">{props.prefix}</span> : null}
   {(props.children != null) ? <main>{props.children}</main> : null}
-  {!(props.renderSuffix != null) ? <span className="no-suffix">none</span> : null}
+  {!(props.suffix != null) ? <span className="no-suffix">none</span> : null}
 </div>
 )
 }
@@ -293,12 +293,12 @@ return (
 `;
 
 exports[`react full output snapshots > HasSlotFallback 1`] = `
-"export function HasSlotFallback(props: { renderSuffix?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+"export function HasSlotFallback(props: { suffix?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
-const { renderSuffix, ...__attrs } = props
+const { suffix, ...__attrs } = props
 return (
 <div {...__attrs} className={props.className}>
-  {!(props.renderSuffix != null) ? <span className="no-suffix">absent</span> : <span className="has-suffix">present</span>}
+  {!(props.suffix != null) ? <span className="no-suffix">absent</span> : <span className="has-suffix">present</span>}
 </div>
 )
 }
@@ -485,13 +485,13 @@ return (
 
 exports[`react full output snapshots > SlotInConditional 1`] = `
 "import { useState } from "react";
-export function SlotInConditional(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+export function SlotInConditional(props: { header?: React.ReactNode; children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
 const [expanded, setExpanded] = useState(true)
-const { renderHeader, children, ...__attrs } = props
+const { header, children, ...__attrs } = props
 return (
 <div {...__attrs} className={props.className}>
-  {props.renderHeader?.()}
+  {props.header}
   {expanded ? props.children : null}
 </div>
 )
@@ -500,19 +500,19 @@ return (
 `;
 
 exports[`react full output snapshots > SlotNamed 1`] = `
-"export function SlotNamed(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode; renderFooter?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+"export function SlotNamed(props: { header?: React.ReactNode; children?: React.ReactNode; footer?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
-const { renderHeader, children, renderFooter, ...__attrs } = props
+const { header, children, footer, ...__attrs } = props
 return (
 <div {...__attrs} className={props.className}>
   <header>
-    {props.renderHeader?.()}
+    {props.header}
   </header>
   <main>
     {props.children}
   </main>
   <footer>
-    {props.renderFooter?.()}
+    {props.footer}
   </footer>
 </div>
 )
@@ -522,13 +522,13 @@ return (
 
 exports[`react full output snapshots > SlotScoped 1`] = `
 "import { useState, Fragment } from "react";
-export function SlotScoped(props: { renderItem?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+export function SlotScoped(props: { item?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
 const [items, setItems] = useState([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
-const { renderItem, ...__attrs } = props
+const { item, ...__attrs } = props
 return (
 <ul {...__attrs} className={props.className}>
-  {items.map((item, index) => (<Fragment key={item.id}><li>{props.renderItem?.(item, index) ?? <>{index}:{item.label}</>}</li></Fragment>))}
+  {items.map((item, index) => (<Fragment key={item.id}><li>{props.item?.(item, index) ?? <>{index}:{item.label}</>}</li></Fragment>))}
 </ul>
 )
 }
@@ -551,16 +551,16 @@ return (
 `;
 
 exports[`react full output snapshots > SlotWithDefault 1`] = `
-"export function SlotWithDefault(props: { children?: React.ReactNode; renderActions?: (...args: any[]) => React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+"export function SlotWithDefault(props: { children?: React.ReactNode; actions?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
-const { children, renderActions, ...__attrs } = props
+const { children, actions, ...__attrs } = props
 return (
 <div {...__attrs} className={props.className}>
   <main>
     {props.children ?? <p>Default content</p>}
   </main>
   <footer>
-    {props.renderActions?.() ?? <span>Action area</span>}
+    {props.actions ?? <span>Action area</span>}
   </footer>
 </div>
 )
@@ -569,12 +569,12 @@ return (
 `;
 
 exports[`react full output snapshots > SlotWithFallback 1`] = `
-"export function SlotWithFallback(props: { renderHeader?: (...args: any[]) => React.ReactNode; children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+"export function SlotWithFallback(props: { header?: React.ReactNode; children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
-const { renderHeader, children, ...__attrs } = props
+const { header, children, ...__attrs } = props
 return (
 <div {...__attrs} className={props.className}>
-  {props.renderHeader?.() ?? <h1>Default Header</h1>}
+  {props.header ?? <h1>Default Header</h1>}
   {props.children ?? "Default body content"}
 </div>
 )

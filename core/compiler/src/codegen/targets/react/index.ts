@@ -43,10 +43,9 @@ const REWRITES: RewriteRules = {
     props: { strip: false },
     slots: { strip: true, rename: { default: "children" } },
   },
-  // A named slot is a `renderX` prop; the default slot is `children`. Filled iff non-null.
+  // A named slot is a plain node/function prop (default → `children`); filled iff non-null.
   // Parenthesized so it composes safely under `!`, `&&`, etc.
-  hasSlotCheck: (name) =>
-    name === "default" ? "(props.children != null)" : `(props.render${capitalize(name)} != null)`,
+  hasSlotCheck: (name) => `(props.${name === "default" ? "children" : name} != null)`,
 };
 
 /** Capitalize the first character (for deriving `useState` setter names: `data` → `setData`). */
@@ -68,7 +67,7 @@ function fallthroughRestBindings(component: IRComponent, rules: RewriteRules): s
     if (slot.name === "default") {
       names.add(slot.isScoped ? "renderDefault" : "children");
     } else {
-      names.add(`render${slot.name.charAt(0).toUpperCase()}${slot.name.slice(1)}`);
+      names.add(slot.name);
     }
   }
   for (const p of component.props) {
@@ -194,17 +193,23 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? node.reference.getText();
       const attrs = jsxAttrs(node, rules);
-      const children = node.slots.map((s) =>
-        s.name === "default"
-          ? emitNode(s.body, rules)
-          : cJsxElement({
-              tag: `${tag}.${s.name}`,
-              attrs: [],
-              children: [emitNode(s.body, rules)],
-              selfClose: false,
-              span: s.loc,
-            }),
-      );
+      // The default slot is `children`; a named slot is consumed as a prop (see the `SlotPlaceholder`
+      // case) — a node prop (`prefix={<>$</>}`) when unscoped, a function prop (`item={(row) => …}`)
+      // when it takes args. A `<Tag.name>` child would never reach the consumer.
+      const children: Code[] = [];
+      for (const s of node.slots) {
+        if (s.name === "default") {
+          children.push(emitNode(s.body, rules));
+        } else {
+          const value =
+            s.scopedParams.length > 0
+              ? `(${s.scopedParams.join(", ")}) => (${inlineNode(s.body, rules)})`
+              : inlineNode(s.body, rules);
+          attrs.push(
+            cJsxAttr({ name: s.name, value: { kind: "expr", expr: cExpr({ text: value }) } }),
+          );
+        }
+      }
       return cJsxElement({ tag, attrs, children, selfClose: children.length === 0, span });
     }
     case "Text":
@@ -253,13 +258,18 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
           ? cExpr({ text: `{props.children ?? ${inlineNode(node.fallback, rules)}}`, span })
           : cExpr({ text: "{props.children}", span });
       }
-      const prop = `render${node.name.charAt(0).toUpperCase()}${node.name.slice(1)}`;
+      // A named slot is a node prop (unscoped) or a function prop (scoped), mirroring the fill.
+      if (node.scopedArgs.length > 0) {
+        return node.fallback
+          ? cExpr({
+              text: `{props.${node.name}?.(${argsStr}) ?? ${inlineNode(node.fallback, rules)}}`,
+              span,
+            })
+          : cExpr({ text: `{props.${node.name}?.(${argsStr})}`, span });
+      }
       return node.fallback
-        ? cExpr({
-            text: `{props.${prop}?.(${argsStr}) ?? ${inlineNode(node.fallback, rules)}}`,
-            span,
-          })
-        : cExpr({ text: `{props.${prop}?.(${argsStr})}`, span });
+        ? cExpr({ text: `{props.${node.name} ?? ${inlineNode(node.fallback, rules)}}`, span })
+        : cExpr({ text: `{props.${node.name}}`, span });
     }
     case "Transition": {
       const attrs = [cJsxAttr({ name: "name", value: { kind: "static", text: node.name } })];
@@ -353,10 +363,14 @@ function inlineNode(node: IRNode, rules: RewriteRules): string {
         ? `props.children ?? ${inlineNode(node.fallback, rules)}`
         : "props.children";
     }
-    const prop = `render${node.name.charAt(0).toUpperCase()}${node.name.slice(1)}`;
+    if (node.scopedArgs.length > 0) {
+      return node.fallback
+        ? `props.${node.name}?.(${argsStr}) ?? ${inlineNode(node.fallback, rules)}`
+        : `props.${node.name}?.(${argsStr})`;
+    }
     return node.fallback
-      ? `props.${prop}?.(${argsStr}) ?? ${inlineNode(node.fallback, rules)}`
-      : `props.${prop}?.(${argsStr})`;
+      ? `props.${node.name} ?? ${inlineNode(node.fallback, rules)}`
+      : `props.${node.name}`;
   }
   return inlineCode(emitNode(node, rules));
 }
@@ -399,8 +413,8 @@ function buildPropsType(component: IRComponent): string {
         slotFields.push("children?: React.ReactNode");
       }
     } else {
-      const prop = `render${slot.name.charAt(0).toUpperCase()}${slot.name.slice(1)}`;
-      slotFields.push(`${prop}?: (...args: any[]) => React.ReactNode`);
+      const type = slot.isScoped ? "(...args: any[]) => React.ReactNode" : "React.ReactNode";
+      slotFields.push(`${slot.name}?: ${type}`);
     }
   }
   if (slotFields.length > 0) {

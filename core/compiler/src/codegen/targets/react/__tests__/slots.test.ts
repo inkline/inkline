@@ -1,6 +1,7 @@
 // Real-world codegen assertions for the "slots" feature area (React target): author `.ink.tsx`
 // with `<Slot />` / `defineSlot()` → compile → assert the ACTUAL generated React code. Focus: the
-// default slot (→ `children`), named slots (→ render props), and slot fallback content.
+// default slot (→ `children`), named slots (→ node props, or function props when scoped), and slot
+// fallback content.
 
 import { describe, it, expect } from "vitest";
 import { compileTo } from "../../../../testing/codegen.ts";
@@ -16,28 +17,28 @@ describe("SlotBasic: default slot", () => {
 
 // --- SlotNamed: header (named) + default + footer (named) ------------------------------------
 describe("SlotNamed: named slots alongside the default", () => {
-  it("React: named slots become render props; default stays children", async () => {
+  it("React: named slots become node props; default stays children", async () => {
     const out = await compileTo("SlotNamed", "react");
-    expect(out).toContain("{props.renderHeader?.()}");
+    expect(out).toContain("{props.header}");
     expect(out).toContain("{props.children}");
-    expect(out).toContain("{props.renderFooter?.()}");
+    expect(out).toContain("{props.footer}");
   });
 });
 
 // --- SlotWithFallback: <Slot name="header"><h1/></Slot> + <Slot>text</Slot> ------------------
 describe("SlotWithFallback: slot fallback content", () => {
-  it("React: fallback emitted via ?? after the render prop / children", async () => {
+  it("React: fallback emitted via ?? after the node prop / children", async () => {
     const out = await compileTo("SlotWithFallback", "react");
-    expect(out).toContain("{props.renderHeader?.() ?? <h1>Default Header</h1>}");
+    expect(out).toContain("{props.header ?? <h1>Default Header</h1>}");
     expect(out).toContain('{props.children ?? "Default body content"}');
   });
 });
 
 // --- DefineSlotBasic: defineSlot("header") + defineSlot() rendered via {expr} -----------------
 describe("DefineSlotBasic: defineSlot() bindings", () => {
-  it("React: defineSlot('header') → renderHeader prop; defineSlot() → children", async () => {
+  it("React: defineSlot('header') → header node prop; defineSlot() → children", async () => {
     const out = await compileTo("DefineSlotBasic", "react");
-    expect(out).toContain("{props.renderHeader?.()}");
+    expect(out).toContain("{props.header}");
     expect(out).toContain("{props.children}");
   });
 });
@@ -46,7 +47,7 @@ describe("DefineSlotBasic: defineSlot() bindings", () => {
 describe("SlotInConditional: default slot inside a Show/conditional", () => {
   it("React: header slot + ternary-gated default slot", async () => {
     const out = await compileTo("SlotInConditional", "react");
-    expect(out).toContain("{props.renderHeader?.()}");
+    expect(out).toContain("{props.header}");
     expect(out).toContain("{expanded ? props.children : null}");
   });
 });
