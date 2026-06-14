@@ -144,6 +144,10 @@ const VOID_ELEMENTS = new Set([
 // as `[attr.name]="(expr) ?? null"` so a nullish value omits it instead of stringifying to
 // `"undefined"`/`"null"` (a property binding like `[id]="id()"` cannot omit — `el.id = undefined`
 // reflects as `id="undefined"`).
+//
+// CAVEAT: also add any presence-only boolean attribute that is NOT a reflected DOM property (e.g.
+// `autofocus`) if it's ever bound dynamically — `[attr.autofocus]="false ?? null"` renders
+// `autofocus="false"`, which the browser still treats as present. None are bound today.
 const KEEP_PROPERTY = new Set([
   "value",
   "checked",
