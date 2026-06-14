@@ -7,6 +7,7 @@ import {
   createElement,
   createExpr,
   createFragment,
+  createSlotPlaceholder,
   createSwitch,
   createText,
 } from "../../../ir/render/builders.ts";
@@ -99,6 +100,19 @@ describe("Qwik codegen fixes", () => {
       // Matches the consumption side: `{props.header}`.
       expect(code).toContain("header={<span>title</span>}");
       expect(code).not.toContain("Card.header");
+    });
+
+    it("inlines a re-projected slot fill to the bare prop read (no double braces)", () => {
+      const ci = createComponentInstance({
+        reference: mockExpr("IButton") as ts.Identifier,
+        resolved: { module: null, name: "IButton" },
+        slots: [
+          { name: "icon", body: createSlotPlaceholder({ name: "icon" }), scopedParams: [], loc },
+        ],
+      });
+      const code = emitCode(makeComp("Parent", ci));
+      expect(code).toContain("icon={props.icon}");
+      expect(code).not.toContain("icon={{");
     });
 
     it("self-closes when no slots", () => {

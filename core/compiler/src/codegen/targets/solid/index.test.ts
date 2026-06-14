@@ -120,6 +120,19 @@ describe("solid ComponentInstance slot fills", () => {
     const code = emitCode(solid, makeComp("Parent", ci));
     expect(code).toContain("card content");
   });
+
+  it("inlines a re-projected slot fill to the bare prop read (no double braces)", () => {
+    const ci = createComponentInstance({
+      reference: mockExpr("IButton") as ts.Identifier,
+      resolved: { module: null, name: "IButton" },
+      slots: [
+        { name: "icon", body: createSlotPlaceholder({ name: "icon" }), scopedParams: [], loc },
+      ],
+    });
+    const code = emitCode(solid, makeComp("Parent", ci));
+    expect(code).toContain("icon={props.icon}");
+    expect(code).not.toContain("icon={{");
+  });
 });
 
 describe("solid conformance", () => {

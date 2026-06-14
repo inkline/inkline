@@ -128,6 +128,22 @@ function jsxAttrs(
   return out;
 }
 
+// The bare prop read for a named slot (no surrounding `{…}`): a node prop when unscoped, a function
+// call when scoped, with the authored fallback via `?? <fallback>`. Used both as a JSX expression
+// (`{namedSlotRead(…)}`) and as an attr-value fill, where the `{…}` comes from `name={…}` instead.
+function namedSlotRead(
+  node: Extract<IRNode, { kind: "SlotPlaceholder" }>,
+  rules: RewriteRules,
+): string {
+  const argsStr =
+    node.scopedArgs.length > 0
+      ? node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ")
+      : "";
+  const read = argsStr ? `props.${node.name}?.(${argsStr})` : `props.${node.name}`;
+  const fallback = node.fallback ? ` ?? (<>${emitNodeInline(node.fallback, rules)}</>)` : "";
+  return `${read}${fallback}`;
+}
+
 function emitNode(node: IRNode, rules: RewriteRules): Code {
   switch (node.kind) {
     case "Element": {
@@ -146,10 +162,16 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         if (s.name === "default") {
           children.push(emitNode(s.body, rules));
         } else {
-          const value =
-            s.scopedParams.length > 0
-              ? `(${s.scopedParams.join(", ")}) => (${emitNodeInline(s.body, rules)})`
+          // A re-projected slot (`prefix={<Slot name="x"/>}`) inlines to the bare `props.x` read; any
+          // other body (an element/fragment) inlines as JSX. Either is a bare attr value — the `{…}`
+          // comes from `name={…}` — so a named-slot body must NOT go through `emitNodeInline` (which
+          // would brace it and double-wrap to `prefix={{props.x}}`).
+          const body =
+            s.body.kind === "SlotPlaceholder" && s.body.name !== "default"
+              ? namedSlotRead(s.body, rules)
               : emitNodeInline(s.body, rules);
+          const value =
+            s.scopedParams.length > 0 ? `(${s.scopedParams.join(", ")}) => (${body})` : body;
           attrs.push(
             cJsxAttr({ name: s.name, value: { kind: "expr", expr: cExpr({ text: value }) } }),
           );
@@ -204,13 +226,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
       // projects through Qwik's native `<Slot/>`: Qwik never populates `props.children`, so the old
       // `{props.children ?? …}` lowering would silently drop every projected child.
       if (node.name !== "default") {
-        const argsStr =
-          node.scopedArgs.length > 0
-            ? node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ")
-            : "";
-        const read = argsStr ? `props.${node.name}?.(${argsStr})` : `props.${node.name}`;
-        const fallback = node.fallback ? ` ?? (<>${emitNodeInline(node.fallback, rules)}</>)` : "";
-        return cExpr({ text: `{${read}${fallback}}` });
+        return cExpr({ text: `{${namedSlotRead(node, rules)}}` });
       }
       if (node.scopedArgs.length > 0) {
         // Qwik's `<Slot/>` can't receive scoped args. Best-effort: render the authored fallback

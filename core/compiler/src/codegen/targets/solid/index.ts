@@ -326,6 +326,21 @@ function inlineNode(node: IRNode, rules: RewriteRules): string {
   if (node.kind === "Expression") {
     return rewriteExpr(node.expr, rules);
   }
+  // A slot read as a BARE expression (no surrounding `{…}`) — for arrow bodies and attr values where
+  // the braces come from the caller. Without this, `inlineCode(emitNode())` returns `{props.x}` and a
+  // fill like `prefix={<Slot name="x"/>}` would double-wrap to `prefix={{props.x}}` (a parse error).
+  if (node.kind === "SlotPlaceholder") {
+    if (node.scopedArgs.length > 0) {
+      const argsStr = node.scopedArgs.map((a) => rewriteExpr(a.expr, rules)).join(", ");
+      return node.fallback
+        ? `props.${node.name}?.(${argsStr}) ?? ${inlineNode(node.fallback, rules)}`
+        : `props.${node.name}?.(${argsStr})`;
+    }
+    const propName = node.name === "default" ? "children" : node.name;
+    return node.fallback
+      ? `props.${propName} ?? ${inlineNode(node.fallback, rules)}`
+      : `props.${propName}`;
+  }
   return inlineCode(emitNode(node, rules));
 }
 
