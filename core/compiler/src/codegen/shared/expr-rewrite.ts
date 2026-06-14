@@ -382,6 +382,7 @@ const HTML_ATTR_MAP: Record<string, string> = {
 const REACT_ATTR_MAP: Record<string, string> = {
   class: "className",
   for: "htmlFor",
+  readonly: "readOnly",
 };
 
 export function rewriteAttrName(name: string, rules: RewriteRules): string {

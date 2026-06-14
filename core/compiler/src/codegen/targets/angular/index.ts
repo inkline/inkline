@@ -134,6 +134,38 @@ const VOID_ELEMENTS = new Set([
   "wbr",
 ]);
 
+// Native-element bindings that must stay Angular *property* bindings (`[name]="…"`). For these, a
+// property binding already does the right thing when the value is nullish (`el.disabled = undefined`
+// → not disabled; `el.value = undefined` → empty; `[style]="undefined"` → no inline style), and an
+// *attribute* binding would be wrong: `[attr.disabled]="false"` renders `disabled="false"` (still
+// disabled), `[attr.value]` sets the initial attribute not the live value, and `[attr.style]`
+// bypasses Angular's dedicated style binding. Two groups: boolean/value-semantic props, and
+// property-only/special bindings (`style`, `innerHTML`, …). Every OTHER dynamic attribute is emitted
+// as `[attr.name]="(expr) ?? null"` so a nullish value omits it instead of stringifying to
+// `"undefined"`/`"null"` (a property binding like `[id]="id()"` cannot omit — `el.id = undefined`
+// reflects as `id="undefined"`).
+//
+// CAVEAT: also add any presence-only boolean attribute that is NOT a reflected DOM property (e.g.
+// `autofocus`) if it's ever bound dynamically — `[attr.autofocus]="false ?? null"` renders
+// `autofocus="false"`, which the browser still treats as present. None are bound today.
+const KEEP_PROPERTY = new Set([
+  "value",
+  "checked",
+  "selected",
+  "disabled",
+  "readonly",
+  "required",
+  "multiple",
+  "hidden",
+  "indeterminate",
+  "open",
+  "muted",
+  "style",
+  "innerHTML",
+  "innerText",
+  "textContent",
+]);
+
 /**
  * The class expression for a fallthrough root: the node's own class plus the `klass` input a
  * parent forwards (see the `klass` synthesis in `emit`). Angular template expressions cannot call
@@ -167,7 +199,12 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
           return `[class]="${mergedClassExpr(ownClassExpr(a, rules), rules)}"`;
         }
         if (a.value.kind === "Static") return `${name}="${a.value.value}"`;
-        return `[${name}]="${rewriteExpr(a.value.expr, rules)}"`;
+        const expr = rewriteExpr(a.value.expr, rules);
+        // Boolean/value-semantic props stay property bindings; every other dynamic attribute binds
+        // via `[attr.name]` with `?? null` so a nullish value omits it (not `id="undefined"`).
+        return KEEP_PROPERTY.has(name)
+          ? `[${name}]="${expr}"`
+          : `[attr.${name}]="(${expr}) ?? null"`;
       });
       if (fallthrough && !classBound) {
         attrParts.push(`[class]="${mergedClassExpr(undefined, rules)}"`);

@@ -69,9 +69,9 @@ describe("IInput (styled)", () => {
 
   it("gates each addon by slot presence on targets with a runtime API", async () => {
     const result = await compileComponent(IINPUT);
-    // React: render-prop presence check.
-    expectOutputContains(out(result, "react"), "props.renderPrefix != null");
-    expectOutputContains(out(result, "react"), "props.renderAppend != null");
+    // React: node-prop presence check.
+    expectOutputContains(out(result, "react"), "props.prefix != null");
+    expectOutputContains(out(result, "react"), "props.append != null");
     // Vue: `$slots` presence check via v-if.
     expectOutputContains(out(result, "vue"), "!!$slots.prefix");
     expectOutputContains(out(result, "vue"), "!!$slots.append");
@@ -82,8 +82,8 @@ describe("IInput (styled)", () => {
   it("always renders the addon wrappers on Qwik/Angular (no runtime slot presence)", async () => {
     const result = await compileComponent(IINPUT);
     // No `true ?` / `@if (true)` constant condition — the wrapper is emitted unconditionally and
-    // collapses via CSS :empty.
-    expectOutputContains(out(result, "qwik"), '<Slot name="prefix" />');
+    // collapses via CSS :empty. The named slot is read from props (Qwik) / projected (Angular).
+    expectOutputContains(out(result, "qwik"), "{props.prefix}");
     expectOutputContains(out(result, "angular"), 'select="[slot=prefix]"');
   });
 

@@ -7,6 +7,7 @@ import {
   createElement,
   createExpr,
   createFragment,
+  createSlotPlaceholder,
   createSwitch,
   createText,
 } from "../../../ir/render/builders.ts";
@@ -81,14 +82,14 @@ describe("Qwik codegen fixes", () => {
       expect(code).not.toContain("/>");
     });
 
-    it("renders named slots as sub-elements", () => {
+    it("renders an unscoped named slot fill as a node prop, not a <Tag.name> child", () => {
       const ci = createComponentInstance({
         reference: mockExpr("Card") as ts.Identifier,
         resolved: { module: null, name: "Card" },
         slots: [
           {
             name: "header",
-            body: createText({ value: "title" }),
+            body: createElement({ tag: "span", children: [createText({ value: "title" })] }),
             scopedParams: [],
             loc,
           },
@@ -96,8 +97,43 @@ describe("Qwik codegen fixes", () => {
       });
       const comp = makeComp("Parent", ci);
       const code = emitCode(comp);
-      expect(code).toContain("Card.header");
-      expect(code).toContain("title");
+      // Matches the consumption side: `{props.header}`.
+      expect(code).toContain("header={<span>title</span>}");
+      expect(code).not.toContain("Card.header");
+    });
+
+    it("inlines a re-projected slot fill to the bare prop read (no double braces)", () => {
+      const ci = createComponentInstance({
+        reference: mockExpr("IButton") as ts.Identifier,
+        resolved: { module: null, name: "IButton" },
+        slots: [
+          { name: "icon", body: createSlotPlaceholder({ name: "icon" }), scopedParams: [], loc },
+        ],
+      });
+      const code = emitCode(makeComp("Parent", ci));
+      expect(code).toContain("icon={props.icon}");
+      expect(code).not.toContain("icon={{");
+    });
+
+    it("re-projects named slot variants (scoped, fallback) via the bare read", () => {
+      const reproject = (init: Parameters<typeof createSlotPlaceholder>[0]) =>
+        emitCode(
+          makeComp(
+            "Parent",
+            createComponentInstance({
+              reference: mockExpr("IChild") as ts.Identifier,
+              resolved: { module: null, name: "IChild" },
+              slots: [{ name: "icon", body: createSlotPlaceholder(init), scopedParams: [], loc }],
+            }),
+          ),
+        );
+      const args = [createExpr({ expr: mockExpr("row") })];
+      const fb = createElement({ tag: "span", children: [createText({ value: "·" })] });
+      expect(reproject({ name: "icon", fallback: fb })).toContain("icon={props.icon ??");
+      expect(reproject({ name: "icon", scopedArgs: args })).toContain("icon={props.icon?.(row)}");
+      expect(reproject({ name: "icon", scopedArgs: args, fallback: fb })).toContain(
+        "icon={props.icon?.(row) ??",
+      );
     });
 
     it("self-closes when no slots", () => {

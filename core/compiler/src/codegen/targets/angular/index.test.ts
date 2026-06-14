@@ -1,12 +1,15 @@
 import { describe, it, expect } from "vitest";
 import * as ts from "typescript";
 import { DYNAMIC_DEPS, type SymbolId } from "../../../ir/reactivity.ts";
-import type { IRComponent } from "../../../ir/render/nodes.ts";
+import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import {
+  createAttribute,
   createComponentInstance,
   createElement,
   createExpr,
   createIf,
+  createStaticValue,
+  createSwitch,
   createText,
 } from "../../../ir/render/builders.ts";
 import {
@@ -28,6 +31,53 @@ import { angular } from "./index.ts";
 function emitCode(comp: IRComponent): string {
   return emitFor(angular, comp);
 }
+
+describe("Angular nullish native-element attributes", () => {
+  it("binds a plain dynamic attr via [attr.name] with ?? null so a nullish value omits it", () => {
+    const el = createElement({
+      tag: "input",
+      attrs: [
+        { name: "id", value: createExpr({ expr: mockExpr("id()") }), binding: "normal", loc },
+      ],
+    });
+    const code = emitCode(makeComp("Field", el));
+    expect(code).toContain('[attr.id]="(id()) ?? null"');
+    expect(code).not.toContain('[id]="');
+  });
+
+  it("keeps boolean / value-semantic attrs as property bindings", () => {
+    const el = createElement({
+      tag: "input",
+      attrs: [
+        { name: "value", value: createExpr({ expr: mockExpr("value()") }), binding: "normal", loc },
+        {
+          name: "disabled",
+          value: createExpr({ expr: mockExpr("disabled()") }),
+          binding: "normal",
+          loc,
+        },
+      ],
+    });
+    const code = emitCode(makeComp("Field", el));
+    expect(code).toContain('[value]="value()"');
+    expect(code).toContain('[disabled]="disabled()"');
+    expect(code).not.toContain("[attr.value]");
+    expect(code).not.toContain("[attr.disabled]");
+  });
+
+  it("leaves component @Input bindings untouched (only native elements change)", () => {
+    const ci = createComponentInstance({
+      reference: mockExpr("Card") as ts.Identifier,
+      resolved: { module: null, name: "Card" },
+      attrs: [
+        { name: "id", value: createExpr({ expr: mockExpr("id()") }), binding: "normal", loc },
+      ],
+    });
+    const code = emitCode(makeComp("Page", ci));
+    expect(code).toContain('[id]="id()"');
+    expect(code).not.toContain("[attr.id]");
+  });
+});
 
 describe("Angular codegen fixes", () => {
   describe("ComponentInstance attrs, events, slots", () => {
@@ -343,5 +393,139 @@ describe("angular emit + print", () => {
     expect(code).not.toContain("Transition");
     expect(code).toContain("@if");
     expect(code).toMatchSnapshot();
+  });
+});
+
+describe("Angular additional branch coverage", () => {
+  it("Switch with a fallback emits a trailing @else", () => {
+    const sw = createSwitch({
+      cases: [{ test: createExpr({ expr: mockExpr("x()") }), body: createText({ value: "X" }) }],
+      fallback: createText({ value: "fallback" }),
+    });
+    const code = emitCode(makeComp("Sw", createElement({ tag: "div", children: [sw] })));
+    expect(code).toContain("@else {");
+    expect(code).toContain("fallback");
+  });
+
+  it("merges a class onto a component instance via [klass] under fallthrough", () => {
+    const ci = createComponentInstance({
+      reference: mockExpr("Card") as ts.Identifier,
+      resolved: { module: null, name: "Card" },
+      acceptsAttrFallthrough: true,
+      attrs: [
+        createAttribute({
+          name: "class",
+          value: createStaticValue({ value: "badge" }),
+          binding: "class",
+        }),
+      ],
+    });
+    const code = emitCode(makeComp("Page", ci));
+    expect(code).toContain("[klass]=");
+  });
+
+  it("emits a two-way model binding as a <prop>Change output", () => {
+    const ci = createComponentInstance({
+      reference: mockExpr("Field") as ts.Identifier,
+      resolved: { module: null, name: "Field" },
+      events: [
+        {
+          name: "update:value",
+          twoWayProp: "value",
+          handler: createExpr({ expr: mockExpr("(v) => set(v)") }),
+          loc,
+        },
+      ],
+    });
+    const code = emitCode(makeComp("Page", ci));
+    expect(code).toContain("(valueChange)=");
+  });
+
+  it("self-closes a void element that has no attributes", () => {
+    const code = emitCode(makeComp("V", createElement({ tag: "br" })));
+    expect(code).toContain("<br />");
+  });
+
+  it("a fallthrough root element merges its own class and forwards klass when it has none", () => {
+    const withClass = emitCode(
+      makeComp(
+        "C",
+        createElement({
+          tag: "div",
+          acceptsAttrFallthrough: true,
+          attrs: [
+            createAttribute({
+              name: "class",
+              value: createStaticValue({ value: "x" }),
+              binding: "class",
+            }),
+          ],
+          children: [createText({ value: "y" })],
+        }),
+      ),
+    );
+    expect(withClass).toContain("[class]=");
+    const noClass = emitCode(
+      makeComp(
+        "C",
+        createElement({
+          tag: "div",
+          acceptsAttrFallthrough: true,
+          children: [createText({ value: "y" })],
+        }),
+      ),
+    );
+    expect(noClass).toContain('[class]="klass()"');
+  });
+
+  it("binds [klass] from a component-instance class even without fallthrough", () => {
+    const ci = createComponentInstance({
+      reference: mockExpr("Card") as ts.Identifier,
+      resolved: { module: null, name: "Card" },
+      attrs: [
+        createAttribute({
+          name: "class",
+          value: createStaticValue({ value: "badge" }),
+          binding: "class",
+        }),
+      ],
+    });
+    expect(emitCode(makeComp("Page", ci))).toContain("[klass]=");
+  });
+
+  it("For with an index binding tracks via $index", () => {
+    const forNode: IRNode = {
+      kind: "For",
+      each: createExpr({ expr: mockExpr("items()") }),
+      itemBinding: "item",
+      indexBinding: "i",
+      key: createExpr({ expr: mockExpr("item.id") }),
+      syntheticKey: true,
+      body: createText({ value: "row" }),
+      loc,
+    };
+    const code = emitCode(makeComp("List", createElement({ tag: "ul", children: [forNode] })));
+    expect(code).toContain("@for");
+    expect(code).toContain("$index");
+  });
+
+  it("a real @if branch followed by a statically-true branch emits @else", () => {
+    const ifNode = createIf({
+      branches: [
+        { test: createExpr({ expr: mockExpr("x()") }), body: createText({ value: "A" }) },
+        { test: createExpr({ expr: mockExpr("true") }), body: createText({ value: "B" }) },
+      ],
+    });
+    const code = emitCode(makeComp("If", createElement({ tag: "div", children: [ifNode] })));
+    expect(code).toContain("@if (x())");
+    expect(code).toContain("@else {");
+  });
+
+  it("an element with no attributes emits a bare tag", () => {
+    const code = emitCode(
+      makeComp("D", createElement({ tag: "div", children: [createText({ value: "hi" })] })),
+    );
+    expect(code).toContain("<div>");
+    expect(code).not.toContain("<div ");
   });
 });
