@@ -142,16 +142,23 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? node.reference.getText();
       const attrs = jsxAttrs(node, rules, true);
-      const children = node.slots.map((s) =>
-        s.name === "default"
-          ? emitNode(s.body, rules)
-          : cJsxElement({
-              tag: `${tag}.${s.name}`,
-              attrs: [],
-              children: [emitNode(s.body, rules)],
-              selfClose: false,
-            }),
-      );
+      // The default slot is `children`; a named slot is consumed as a prop (see the `SlotPlaceholder`
+      // case) — a node prop (`prefix={<>$</>}`) when unscoped, a function prop (`item={(row) => …}`)
+      // when it takes args. A `<Tag.name>` child would never reach the consumer.
+      const children: Code[] = [];
+      for (const s of node.slots) {
+        if (s.name === "default") {
+          children.push(emitNode(s.body, rules));
+        } else {
+          const value =
+            s.scopedParams.length > 0
+              ? `(${s.scopedParams.join(", ")}) => (${inlineNode(s.body, rules)})`
+              : inlineNode(s.body, rules);
+          attrs.push(
+            cJsxAttr({ name: s.name, value: { kind: "expr", expr: cExpr({ text: value }) } }),
+          );
+        }
+      }
       return cJsxElement({ tag, attrs, children, selfClose: children.length === 0 });
     }
     case "Text":

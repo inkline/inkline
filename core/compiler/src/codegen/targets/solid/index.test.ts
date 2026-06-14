@@ -72,6 +72,56 @@ describe("ComponentInstance event casing", () => {
   });
 });
 
+describe("solid ComponentInstance slot fills", () => {
+  it("emits an unscoped named slot fill as a node prop, not a <Tag.name> child", () => {
+    const ci = createComponentInstance({
+      reference: mockExpr("IInput") as ts.Identifier,
+      resolved: { module: null, name: "IInput" },
+      slots: [
+        {
+          name: "prefix",
+          body: createElement({ tag: "span", children: [createText({ value: "$" })] }),
+          scopedParams: [],
+          loc,
+        },
+      ],
+    });
+    const code = emitCode(solid, makeComp("Parent", ci));
+    // Matches the consumption side: `{props.prefix}`.
+    expect(code).toContain("prefix={<span>$</span>}");
+    expect(code).not.toContain("IInput.prefix");
+  });
+
+  it("emits a scoped named slot fill as a function prop, threading scopedParams", () => {
+    const ci = createComponentInstance({
+      reference: mockExpr("IList") as ts.Identifier,
+      resolved: { module: null, name: "IList" },
+      slots: [
+        {
+          name: "item",
+          body: createElement({ tag: "span", children: [createText({ value: "row" })] }),
+          scopedParams: ["item"],
+          loc,
+        },
+      ],
+    });
+    const code = emitCode(solid, makeComp("Parent", ci));
+    expect(code).toContain("item={(item) => (<span>row</span>)}");
+  });
+
+  it("keeps the default slot as children", () => {
+    const ci = createComponentInstance({
+      reference: mockExpr("ICard") as ts.Identifier,
+      resolved: { module: null, name: "ICard" },
+      slots: [
+        { name: "default", body: createText({ value: "card content" }), scopedParams: [], loc },
+      ],
+    });
+    const code = emitCode(solid, makeComp("Parent", ci));
+    expect(code).toContain("card content");
+  });
+});
+
 describe("solid conformance", () => {
   it("uses oxlint with the solid jsPlugin and native control-flow imports", () => {
     expect(solid.conformance).toBeDefined();
