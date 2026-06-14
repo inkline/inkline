@@ -44,7 +44,7 @@
     "jsdom": "catalog:",
     "storybook": "catalog:",
     "styleframe": "catalog:",
-    "svelte": "^5"
+    "svelte": "^5.56.3"
   },
   "peerDependencies": {
     "svelte": ">=5"

@@ -60,7 +60,6 @@ describe("IInput (styled)", () => {
     for (const target of ["react", "vue", "solid"] as const) {
       expectImports(out(result, target), "virtual:styleframe", [
         "inputRecipe",
-        "inputGroupRecipe",
         "inputPrefixRecipe",
         "inputSuffixRecipe",
       ]);

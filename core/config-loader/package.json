@@ -36,12 +36,12 @@
     "prepublishOnly": "vp run build"
   },
   "dependencies": {
-    "c12": "^4.0.0-beta.5"
+    "c12": "4.0.0-beta.5"
   },
   "devDependencies": {
     "@types/node": "catalog:",
     "typescript": "catalog:",
     "vite-plus": "catalog:",
-    "vitest": "catalog:"
+    "vitest": "npm:@voidzero-dev/vite-plus-test@^0.1.24"
   }
 }
