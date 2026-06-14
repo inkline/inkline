@@ -68,18 +68,20 @@ Full release flow: [release-process.md](./release-process.md).
 
 ## Pull requests
 
-No PR template or CODEOWNERS today. Keep PRs scoped, include a changeset when applicable, ensure `vp run ready` passes locally, and write a commit message following [conventions.md](./conventions.md) → "Commit messages".
+Opening a PR fills in the [pull request template](../.github/pull_request_template.md); [`CODEOWNERS`](../.github/CODEOWNERS) auto-requests review. Keep PRs scoped, include a changeset when applicable, ensure `vp run ready` passes locally, and write a commit message following [conventions.md](./conventions.md) → "Commit messages".
 
 If your change touches public API, build flow, repo conventions, or directory structure, **also update the relevant `AGENTS.md` and/or `docs/*.md`**. See [maintenance.md](./maintenance.md) for what counts as a "doc-touching" change.
 
 ## Bug reports and issues
 
-Use GitHub issues. Include:
+Open an issue from the [issue chooser](https://github.com/inkline/inkline/issues/new/choose) — the **Bug report** and **Feature request** forms prompt for everything we need:
 
 - A minimal reproduction (a `.ink.tsx` snippet for compiler bugs).
 - Inkline version (`pnpm list inkline @inkline/compiler`).
 - `vp env doctor` output if the issue looks tooling-related.
 - Expected vs actual behavior.
+
+For "how do I…" questions and open-ended ideas, use [GitHub Discussions](https://github.com/inkline/inkline/discussions) instead.
 
 ## See also
 

@@ -1,0 +1,8 @@
+# CODEOWNERS — auto-requests review from the listed owners on matching paths.
+# Docs: https://docs.github.com/articles/about-code-owners
+#
+# Blocking enforcement additionally requires branch protection with
+# "Require review from Code Owners" enabled on the protected branch.
+
+# Global owner — every change requests review from @alexgrozav.
+* @alexgrozav

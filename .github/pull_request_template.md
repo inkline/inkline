@@ -2,12 +2,29 @@
 
 <!-- One or two sentences. What changed and why. -->
 
+## Related issues
+
+<!-- Link issues this PR closes or relates to. -->
+
+- Closes #
+
+## Type of change
+
+<!-- Check all that apply; this should match your commit's conventional type. -->
+
+- [ ] `feat` — new user-facing capability or public API
+- [ ] `fix` — bug fix
+- [ ] `refactor` — internal change, no behavior change
+- [ ] `docs` — documentation only
+- [ ] `test` — tests only
+- [ ] `chore` / `ci` — tooling, dependencies, or CI
+
 ## Test plan
 
 <!-- Bulleted checklist. Include vp run ready, manual checks, etc. -->
 
 - [ ] `vp run ready` passes locally
-- [ ]
+- [ ] <!-- add manual or framework-specific checks -->
 
 ## Checklist
 
