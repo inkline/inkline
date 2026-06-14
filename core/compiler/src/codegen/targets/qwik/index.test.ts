@@ -115,6 +115,27 @@ describe("Qwik codegen fixes", () => {
       expect(code).not.toContain("icon={{");
     });
 
+    it("re-projects named slot variants (scoped, fallback) via the bare read", () => {
+      const reproject = (init: Parameters<typeof createSlotPlaceholder>[0]) =>
+        emitCode(
+          makeComp(
+            "Parent",
+            createComponentInstance({
+              reference: mockExpr("IChild") as ts.Identifier,
+              resolved: { module: null, name: "IChild" },
+              slots: [{ name: "icon", body: createSlotPlaceholder(init), scopedParams: [], loc }],
+            }),
+          ),
+        );
+      const args = [createExpr({ expr: mockExpr("row") })];
+      const fb = createElement({ tag: "span", children: [createText({ value: "·" })] });
+      expect(reproject({ name: "icon", fallback: fb })).toContain("icon={props.icon ??");
+      expect(reproject({ name: "icon", scopedArgs: args })).toContain("icon={props.icon?.(row)}");
+      expect(reproject({ name: "icon", scopedArgs: args, fallback: fb })).toContain(
+        "icon={props.icon?.(row) ??",
+      );
+    });
+
     it("self-closes when no slots", () => {
       const ci = createComponentInstance({
         reference: mockExpr("Icon") as ts.Identifier,

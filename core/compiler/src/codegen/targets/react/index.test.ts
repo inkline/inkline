@@ -348,6 +348,43 @@ describe("react ComponentInstance slot fills", () => {
     expect(code).not.toContain("renderDefault");
     expect(code).not.toContain("/>");
   });
+
+  // A fill whose body is itself a <Slot/> (re-projection) inlines the slot read; cover every variant
+  // of that bare read (scoped/unscoped × named/default × with/without fallback).
+  const reproject = (init: Parameters<typeof createSlotPlaceholder>[0]) =>
+    emitCode(
+      react,
+      makeComp(
+        "Parent",
+        createComponentInstance({
+          reference: mockExpr("IChild") as ts.Identifier,
+          resolved: { module: null, name: "IChild" },
+          slots: [{ name: "icon", body: createSlotPlaceholder(init), scopedParams: [], loc }],
+        }),
+      ),
+    );
+
+  it("re-projects a named slot with fallback as `props.x ?? fallback`", () => {
+    expect(reproject({ name: "icon", fallback: createText({ value: "·" }) })).toContain(
+      'icon={props.icon ?? "·"}',
+    );
+  });
+
+  it("re-projects a scoped named slot as `props.x?.(args)` (with and without fallback)", () => {
+    const args = [createExpr({ expr: mockExpr("row") })];
+    expect(reproject({ name: "icon", scopedArgs: args })).toContain("icon={props.icon?.(row)}");
+    expect(
+      reproject({ name: "icon", scopedArgs: args, fallback: createText({ value: "·" }) }),
+    ).toContain('icon={props.icon?.(row) ?? "·"}');
+  });
+
+  it("re-projects the default slot as `props.children` / `renderDefault?.(args)`", () => {
+    expect(reproject({ fallback: createText({ value: "·" }) })).toContain(
+      'icon={props.children ?? "·"}',
+    );
+    const args = [createExpr({ expr: mockExpr("row") })];
+    expect(reproject({ scopedArgs: args })).toContain("icon={props.renderDefault?.(row)}");
+  });
 });
 
 // Merged from the former react/fallthrough.test.ts.

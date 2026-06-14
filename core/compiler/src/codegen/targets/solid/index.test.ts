@@ -3,6 +3,7 @@
 
 import { describe, it, expect } from "vitest";
 import * as ts from "typescript";
+import type { IRNode } from "../../../ir/render/nodes.ts";
 import {
   createComponentInstance,
   createElement,
@@ -133,6 +134,33 @@ describe("solid ComponentInstance slot fills", () => {
     expect(code).toContain("icon={props.icon}");
     expect(code).not.toContain("icon={{");
   });
+
+  const reproject = (init: Parameters<typeof createSlotPlaceholder>[0]) =>
+    emitCode(
+      solid,
+      makeComp(
+        "Parent",
+        createComponentInstance({
+          reference: mockExpr("IChild") as ts.Identifier,
+          resolved: { module: null, name: "IChild" },
+          slots: [{ name: "icon", body: createSlotPlaceholder(init), scopedParams: [], loc }],
+        }),
+      ),
+    );
+
+  it("re-projects slot variants (scoped/unscoped, named/default, fallback) as bare reads", () => {
+    const args = [createExpr({ expr: mockExpr("row") })];
+    expect(reproject({ name: "icon", fallback: createText({ value: "·" }) })).toContain(
+      'icon={props.icon ?? "·"}',
+    );
+    expect(reproject({ name: "icon", scopedArgs: args })).toContain("icon={props.icon?.(row)}");
+    expect(
+      reproject({ name: "icon", scopedArgs: args, fallback: createText({ value: "·" }) }),
+    ).toContain('icon={props.icon?.(row) ?? "·"}');
+    expect(reproject({ fallback: createText({ value: "·" }) })).toContain(
+      'icon={props.children ?? "·"}',
+    );
+  });
 });
 
 describe("solid conformance", () => {
@@ -256,5 +284,57 @@ describe("solid emit + print", () => {
     expect(code).toContain("__InkTransition");
     expect(code).toContain("transitionend");
     expect(code).toMatchSnapshot();
+  });
+});
+
+describe("solid additional branch coverage", () => {
+  const forNode = (body: IRNode): IRNode => ({
+    kind: "For",
+    each: createExpr({ expr: mockExpr("items()") }),
+    itemBinding: "item",
+    key: createExpr({ expr: mockExpr("item.id") }),
+    syntheticKey: true,
+    body,
+    loc,
+  });
+
+  it("For with a non-block arrow body inlines the returned expression", () => {
+    const code = emitCode(
+      solid,
+      makeComp(
+        "List",
+        createElement({
+          tag: "ul",
+          children: [forNode(createExpr({ expr: mockExpr("(item) => item.label") }))],
+        }),
+      ),
+    );
+    expect(code).toContain("<For");
+    expect(code).toContain("item.label");
+  });
+
+  it("For with a block arrow body keeps the block", () => {
+    const code = emitCode(
+      solid,
+      makeComp(
+        "List",
+        createElement({
+          tag: "ul",
+          children: [forNode(createExpr({ expr: mockExpr("(item) => { return item.label; }") }))],
+        }),
+      ),
+    );
+    expect(code).toContain("<For");
+  });
+
+  it("default slot without fallback reads props.children", () => {
+    const comp = richComp(
+      "Slotted",
+      createElement({ tag: "div", children: [createSlotPlaceholder({})] }),
+      {
+        slots: [{ name: "default", isScoped: false, scopedProps: [], required: false, loc }],
+      },
+    );
+    expect(emitCode(solid, comp)).toContain("{props.children}");
   });
 });

@@ -253,6 +253,14 @@ describe("rewriteEventName", () => {
   it("lower: onMouseDown → onmousedown", () => {
     expect(rewriteEventName("onMouseDown", lower)).toBe("onmousedown");
   });
+
+  it("a name without the `on` prefix is used as-is", () => {
+    expect(rewriteEventName("Click", camel)).toBe("onClick");
+  });
+
+  it("lower: a component callback keeps its camelCase (isComponent=true)", () => {
+    expect(rewriteEventName("onValueChange", lower, true)).toBe("onValueChange");
+  });
 });
 
 describe("rewriteAttrName", () => {
@@ -289,5 +297,49 @@ describe("rewriteAttrName", () => {
 
   it("react: unknown passes through", () => {
     expect(rewriteAttrName("id", react)).toBe("id");
+  });
+
+  it("no casing rule: passes through unchanged", () => {
+    const none = { ...STRIP, jsxAttrCasing: undefined } as unknown as RewriteRules;
+    expect(rewriteAttrName("className", none)).toBe("className");
+  });
+});
+
+describe("rewriteExpr — additional expression forms", () => {
+  it("object literal: property, spread, and shorthand members", () => {
+    const result = rewriteExpr(mockExpr("({ a: count(), ...other, b })"), STRIP);
+    expect(result).toContain("a: count");
+    expect(result).toContain("...other");
+    expect(result).toContain("b");
+  });
+
+  it("array literal with a spread element", () => {
+    expect(rewriteExpr(mockExpr("[count(), ...items()]"), STRIP)).toBe("[count, ...items]");
+  });
+
+  it("non-null assertion", () => {
+    expect(rewriteExpr(mockExpr("count()!"), STRIP)).toBe("count!");
+  });
+
+  it("`as` assertion unwraps to the inner expression", () => {
+    expect(rewriteExpr(mockExpr("count() as number"), STRIP)).toBe("count");
+  });
+
+  it("if/else statement inside an arrow block", () => {
+    const result = rewriteExpr(
+      mockExpr("() => { if (ok()) { setCount(count()); } else { setCount(other()); } }"),
+      STRIP,
+    );
+    expect(result).toContain("if (ok)");
+    expect(result).toContain("else");
+    expect(result).toContain("setCount(count)");
+  });
+
+  it("for-of statement inside an arrow block", () => {
+    const result = rewriteExpr(
+      mockExpr("() => { for (const i of items()) { setCount(i); } }"),
+      STRIP,
+    );
+    expect(result).toContain("for (const i of items)");
   });
 });
