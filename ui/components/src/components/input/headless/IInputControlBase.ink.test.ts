@@ -3,6 +3,7 @@ import {
   compileComponent,
   expectCompilationSuccess,
   expectCorrectFileExtensions,
+  expectOutputContains,
   assertConformance,
   snapshotOutput,
   resolveComponent,
@@ -39,5 +40,13 @@ describe("InputControl", () => {
     const result = await compileComponent(INPUT_CONTROL);
     const output = snapshotOutput(result);
     expect(output).toMatchSnapshot();
+  });
+
+  it('Solid coalesces the bound value so an unset model never renders the string "undefined"', async () => {
+    // Solid's client runtime does `node.value = props.value` with no nullish guard, so an unset model
+    // (value === undefined) surfaces as the literal "undefined" in the field. The binding coalesces to
+    // "" to render an empty control. (React/Vue drop nullish bindings; the coalesce is harmless there.)
+    const result = await compileComponent(INPUT_CONTROL);
+    expectOutputContains(result.files.solid ?? [], 'value={props.value ?? ""}');
   });
 });
