@@ -3,7 +3,7 @@ import IInput from "../styled/IInput.ink.tsx";
 
 export default defineComponent(() => {
   return (
-    <div>
+    <div id="story">
       <IInput color="light" placeholder="Light" />
       <IInput color="dark" placeholder="Dark" />
       <IInput color="neutral" placeholder="Neutral" />

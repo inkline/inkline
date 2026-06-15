@@ -17,6 +17,6 @@ const meta = defineStories<FieldGroupProps>({
 
 export default meta;
 
-export const Default = { render: "./horizontal.ink.tsx" };
-export const Horizontal = { render: "./horizontal.ink.tsx" };
-export const Vertical = { render: "./vertical.ink.tsx" };
+export const Default = { render: "./FieldGroupHorizontal.ink.tsx" };
+export const Horizontal = { render: "./FieldGroupHorizontal.ink.tsx" };
+export const Vertical = { render: "./FieldGroupVertical.ink.tsx" };

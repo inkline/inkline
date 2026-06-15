@@ -3,7 +3,7 @@ import IButton from "../styled/IButton.ink.tsx";
 
 export default defineComponent(() => {
   return (
-    <div>
+    <div id="story">
       <IButton>
         <span aria-hidden="true">★</span> Starred
       </IButton>

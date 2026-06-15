@@ -3,7 +3,7 @@ import IBadge from "../styled/IBadge.ink.tsx";
 
 export default defineComponent(() => {
   return (
-    <div>
+    <div id="story">
       <IBadge size="xs">Extra Small</IBadge>
       <IBadge size="sm">Small</IBadge>
       <IBadge size="md">Medium</IBadge>

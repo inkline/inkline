@@ -5,9 +5,9 @@ import IInput from "../styled/IInput.ink.tsx";
 export default defineComponent(() => {
   const [text, _setText] = createSignal("world");
   return (
-    <>
+    <div id="story">
       <IInput size="md" name="name" placeholder="Type your name" $bind:value={text} />
       <p>Hello, {text()}!</p>
-    </>
+    </div>
   );
 });

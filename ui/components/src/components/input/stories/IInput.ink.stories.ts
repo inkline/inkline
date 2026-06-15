@@ -25,11 +25,11 @@ const meta = defineStories<InputProps>({
 
 export default meta;
 
-export const Default = { render: "./prefixSuffix.ink.tsx" };
-export const Colors = { render: "./colors.ink.tsx" };
-export const Sizes = { render: "./sizes.ink.tsx" };
-export const Variants = { render: "./variants.ink.tsx" };
-export const States = { render: "./states.ink.tsx" };
-export const PrefixSuffix = { render: "./prefixSuffix.ink.tsx" };
-export const Textarea = { render: "./textarea.ink.tsx" };
-export const TwoWay = { render: "./twoWay.ink.tsx" };
+export const Default = { render: "./InputPrefixSuffix.ink.tsx" };
+export const Colors = { render: "./InputColors.ink.tsx" };
+export const Sizes = { render: "./InputSizes.ink.tsx" };
+export const Variants = { render: "./InputVariants.ink.tsx" };
+export const States = { render: "./InputStates.ink.tsx" };
+export const PrefixSuffix = { render: "./InputPrefixSuffix.ink.tsx" };
+export const Textarea = { render: "./InputTextarea.ink.tsx" };
+export const TwoWay = { render: "./InputTwoWay.ink.tsx" };

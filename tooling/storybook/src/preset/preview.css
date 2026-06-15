@@ -9,9 +9,7 @@
  *   - Angular renders every component as a host element, nesting the layout `<div>` under the story
  *     host and the wrapper component's host.
  */
-#storybook-root > div,
-[data-framework="qwik"] #storybook-root > div > div,
-[data-framework="angular"] #storybook-root > * > * > div {
+#story {
   display: flex;
   gap: var(--spacing);
 }
