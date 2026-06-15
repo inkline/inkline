@@ -44,14 +44,14 @@ describe("IInput (styled)", () => {
     assertConformance(result);
   });
 
-  it("composes every headless part (group, control, addon wrappers)", async () => {
+  it("composes every headless part (shell, control, prefix/suffix wrappers)", async () => {
     const result = await compileComponent(IINPUT);
     for (const target of ["react", "vue", "solid", "svelte", "qwik", "angular"] as const) {
       const files = out(result, target);
-      expectOutputContains(files, "IInputGroupBase");
+      expectOutputContains(files, "IInputBase");
       expectOutputContains(files, "IInputControlBase");
       expectOutputContains(files, "IInputPrefixBase");
-      expectOutputContains(files, "IInputAppendBase");
+      expectOutputContains(files, "IInputSuffixBase");
     }
   });
 
@@ -70,10 +70,10 @@ describe("IInput (styled)", () => {
     const result = await compileComponent(IINPUT);
     // React: node-prop presence check.
     expectOutputContains(out(result, "react"), "props.prefix != null");
-    expectOutputContains(out(result, "react"), "props.append != null");
+    expectOutputContains(out(result, "react"), "props.suffix != null");
     // Vue: `$slots` presence check via v-if.
     expectOutputContains(out(result, "vue"), "!!$slots.prefix");
-    expectOutputContains(out(result, "vue"), "!!$slots.append");
+    expectOutputContains(out(result, "vue"), "!!$slots.suffix");
     // Solid: slot-prop presence check.
     expectOutputContains(out(result, "solid"), "props.prefix != null");
   });
@@ -106,19 +106,16 @@ describe("IInput (styled)", () => {
 // runtime slot presence).
 describe("IInput (styled) on Angular SSR", () => {
   const HEADLESS = [
-    "../headless/IInputGroupBase.ink.tsx",
     "../headless/IInputBase.ink.tsx",
     "../headless/IInputPrefixBase.ink.tsx",
     "../headless/IInputSuffixBase.ink.tsx",
-    "../headless/IInputPrependBase.ink.tsx",
-    "../headless/IInputAppendBase.ink.tsx",
     "../headless/IInputControlBase.ink.tsx",
   ];
 
   const mount = (props?: Record<string, unknown>) =>
     mountStyledOnAngular(import.meta.url, "./IInput.ink.tsx", HEADLESS, props);
 
-  it("renders the composed field: group, shell with recipe classes, native control", async () => {
+  it("renders the composed field: shell with recipe classes, native control", async () => {
     const { html } = await mount({
       placeholder: "Amount",
       name: "amount",
@@ -126,7 +123,6 @@ describe("IInput (styled) on Angular SSR", () => {
       color: "light",
     });
 
-    expect(html).toMatch(/<div[^>]*class="input-group"/);
     expect(html).toMatch(/<div[^>]*class="input input--color-light input--size-md"/);
     expect(html).toMatch(/<input[^>]*class="input-field"/);
     expect(html).toMatch(/<input[^>]*placeholder="Amount"/);
@@ -140,8 +136,6 @@ describe("IInput (styled) on Angular SSR", () => {
     // shipped `:empty` rules collapse them.
     expect(html).toMatch(/<span[^>]*class="input-prefix[^"]*"><\/span>/);
     expect(html).toMatch(/<span[^>]*class="input-suffix[^"]*"><\/span>/);
-    expect(html).toMatch(/<div[^>]*class="input-prepend"[^>]*><\/div>/);
-    expect(html).toMatch(/<div[^>]*class="input-append"[^>]*><\/div>/);
   });
 
   it("projects prefix/suffix addon content into the shell (currency field)", async () => {
@@ -152,16 +146,6 @@ describe("IInput (styled) on Angular SSR", () => {
 
     expect(html).toMatch(/<span[^>]*class="input-prefix[^"]*">\$<\/span>/);
     expect(html).toMatch(/<span[^>]*class="input-suffix[^"]*">USD<\/span>/);
-  });
-
-  it("projects prepend/append addon content outside the shell (URL field)", async () => {
-    const { html } = await mount({
-      placeholder: "example",
-      __slots: { prepend: "https://", append: ".com" },
-    });
-
-    expect(html).toMatch(/<div[^>]*class="input-prepend"[^>]*>https:\/\/<\/div>/);
-    expect(html).toMatch(/<div[^>]*class="input-append"[^>]*>\.com<\/div>/);
   });
 
   it("renders a textarea control for type=textarea", async () => {

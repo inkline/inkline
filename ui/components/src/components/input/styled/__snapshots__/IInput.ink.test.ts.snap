@@ -3,12 +3,9 @@
 exports[`IInput (styled) > output matches snapshots 1`] = `
 {
   "angular/IInput.component.ts": "import { Component, signal, computed, effect, input, model } from "@angular/core";
-import { IInputGroupBaseComponent as IInputGroupBase } from "../headless/IInputGroupBase.component";
 import { IInputBaseComponent as IInputBase } from "../headless/IInputBase.component";
 import { IInputPrefixBaseComponent as IInputPrefixBase } from "../headless/IInputPrefixBase.component";
 import { IInputSuffixBaseComponent as IInputSuffixBase } from "../headless/IInputSuffixBase.component";
-import { IInputPrependBaseComponent as IInputPrependBase } from "../headless/IInputPrependBase.component";
-import { IInputAppendBaseComponent as IInputAppendBase } from "../headless/IInputAppendBase.component";
 import { IInputControlBaseComponent as IInputControlBase } from "../headless/IInputControlBase.component";
 import { type InputControlBaseProps } from "../headless/IInputControlBase.component";
 import {
@@ -27,11 +24,7 @@ export interface InputProps extends InputControlBaseProps {
   /** Invalid-state styling. */
   invalid?: InputStylingProps["invalid"];
 }
-@Component({ standalone: true, selector: 'ink-input', imports: [IInputGroupBase, IInputBase, IInputPrefixBase, IInputSuffixBase, IInputPrependBase, IInputAppendBase, IInputControlBase], template: \`<ink-input-group-base [klass]="klass()">
-<ink-input-prepend-base>
-<ng-content select="[slot=prepend]"></ng-content>
-</ink-input-prepend-base>
-<ink-input-base [klass]="(shellClassName())">
+@Component({ standalone: true, selector: 'ink-input', imports: [IInputBase, IInputPrefixBase, IInputSuffixBase, IInputControlBase], template: \`<ink-input-base [klass]="(shellClassName()) + (klass() ? ' ' + klass() : '')">
 <ink-input-prefix-base [klass]="(inputPrefixRecipe({ size: size() }))">
 <ng-content select="[slot=prefix]"></ng-content>
 </ink-input-prefix-base>
@@ -39,11 +32,7 @@ export interface InputProps extends InputControlBaseProps {
 <ink-input-suffix-base [klass]="(inputSuffixRecipe({ size: size() }))">
 <ng-content select="[slot=suffix]"></ng-content>
 </ink-input-suffix-base>
-</ink-input-base>
-<ink-input-append-base>
-<ng-content select="[slot=append]"></ng-content>
-</ink-input-append-base>
-</ink-input-group-base>\` })
+</ink-input-base>\` })
 export class IInputComponent
 {
 inputRecipe = inputRecipe
@@ -65,12 +54,9 @@ value = model<string>()
 }
 ",
   "astro/IInput.astro": "---
-import IInputGroupBase from "../headless/IInputGroupBase.astro";
 import IInputBase from "../headless/IInputBase.astro";
 import IInputPrefixBase from "../headless/IInputPrefixBase.astro";
 import IInputSuffixBase from "../headless/IInputSuffixBase.astro";
-import IInputPrependBase from "../headless/IInputPrependBase.astro";
-import IInputAppendBase from "../headless/IInputAppendBase.astro";
 import IInputControlBase, { type InputControlBaseProps } from "../headless/IInputControlBase.astro";
 import {
   inputRecipe,
@@ -94,11 +80,7 @@ const { color, variant, size, invalid, id, name, type, placeholder, disabled, re
 let value = props.value
 const shellClassName = inputRecipe({ color: color, variant: variant, size: size, invalid: invalid, disabled: disabled, readonly: readonly })
 ---
-<IInputGroupBase {...__attrs} class={__attrs.class}>
-{Astro.slots.has("prepend") ? (<IInputPrependBase>
-<slot name="prepend" />
-</IInputPrependBase>) : null}
-<IInputBase class={shellClassName}>
+<IInputBase {...__attrs} class={[shellClassName, __attrs.class].filter(Boolean).join(" ")}>
 {Astro.slots.has("prefix") ? (<IInputPrefixBase class={inputPrefixRecipe({ size: size })}>
 <slot name="prefix" />
 </IInputPrefixBase>) : null}
@@ -107,18 +89,11 @@ const shellClassName = inputRecipe({ color: color, variant: variant, size: size,
 <slot name="suffix" />
 </IInputSuffixBase>) : null}
 </IInputBase>
-{Astro.slots.has("append") ? (<IInputAppendBase>
-<slot name="append" />
-</IInputAppendBase>) : null}
-</IInputGroupBase>
 ",
   "qwik/IInput.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
-import { IInputGroupBase } from "../headless/IInputGroupBase";
 import { IInputBase } from "../headless/IInputBase";
 import { IInputPrefixBase } from "../headless/IInputPrefixBase";
 import { IInputSuffixBase } from "../headless/IInputSuffixBase";
-import { IInputPrependBase } from "../headless/IInputPrependBase";
-import { IInputAppendBase } from "../headless/IInputAppendBase";
 import { IInputControlBase } from "../headless/IInputControlBase";
 import { type InputControlBaseProps } from "../headless/IInputControlBase";
 import {
@@ -140,31 +115,22 @@ export interface InputProps extends InputControlBaseProps {
 export const IInput = component$((props: InputProps & { value?: string; onUpdateValue$?: QRL<(value: string) => void> } & Record<string, any>) =>
 {
 const shellClassName = useComputed$(() => inputRecipe({ color: props.color, variant: props.variant, size: props.size, invalid: props.invalid, disabled: props.disabled, readonly: props.readonly }))
-const { prefix, suffix, prepend, append, color, variant, size, invalid, id, name, type, placeholder, disabled, readonly, value, onUpdateValue$, ...__attrs } = props
+const { prefix, suffix, color, variant, size, invalid, id, name, type, placeholder, disabled, readonly, value, onUpdateValue$, ...__attrs } = props
 return (
-<IInputGroupBase {...__attrs} class={props.class}>
+<IInputBase {...__attrs} class={[shellClassName.value, props.class].filter(Boolean).join(" ")}>
   <>
-    {(<><IInputPrependBase>{props.prepend}</IInputPrependBase></>)}
-    <IInputBase class={shellClassName.value}>
-      <>
-        {(<><IInputPrefixBase class={inputPrefixRecipe({ size: props.size })}>{props.prefix}</IInputPrefixBase></>)}
-        <IInputControlBase id={props.id} name={props.name} type={props.type} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} onUpdateValue$={$(v => props.onUpdateValue$?.(v))} />
-        {(<><IInputSuffixBase class={inputSuffixRecipe({ size: props.size })}>{props.suffix}</IInputSuffixBase></>)}
-      </>
-    </IInputBase>
-    {(<><IInputAppendBase>{props.append}</IInputAppendBase></>)}
+    {(<><IInputPrefixBase class={inputPrefixRecipe({ size: props.size })}>{props.prefix}</IInputPrefixBase></>)}
+    <IInputControlBase id={props.id} name={props.name} type={props.type} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} onUpdateValue$={$(v => props.onUpdateValue$?.(v))} />
+    {(<><IInputSuffixBase class={inputSuffixRecipe({ size: props.size })}>{props.suffix}</IInputSuffixBase></>)}
   </>
-</IInputGroupBase>
+</IInputBase>
 )
 });
 ",
   "react/IInput.tsx": "import { useMemo } from "react";
-import { IInputGroupBase } from "../headless/IInputGroupBase";
 import { IInputBase } from "../headless/IInputBase";
 import { IInputPrefixBase } from "../headless/IInputPrefixBase";
 import { IInputSuffixBase } from "../headless/IInputSuffixBase";
-import { IInputPrependBase } from "../headless/IInputPrependBase";
-import { IInputAppendBase } from "../headless/IInputAppendBase";
 import { IInputControlBase } from "../headless/IInputControlBase";
 import { type InputControlBaseProps } from "../headless/IInputControlBase";
 import {
@@ -183,35 +149,26 @@ export interface InputProps extends InputControlBaseProps {
   /** Invalid-state styling. */
   invalid?: InputStylingProps["invalid"];
 }
-export function IInput(props: InputProps & { prefix?: React.ReactNode; suffix?: React.ReactNode; prepend?: React.ReactNode; append?: React.ReactNode } & { value?: string; onUpdateValue?: (value: string) => void } & React.HTMLAttributes<HTMLElement>)
+export function IInput(props: InputProps & { prefix?: React.ReactNode; suffix?: React.ReactNode } & { value?: string; onUpdateValue?: (value: string) => void } & React.HTMLAttributes<HTMLElement>)
 {
 const shellClassName = useMemo(() => inputRecipe({ color: props.color, variant: props.variant, size: props.size, invalid: props.invalid, disabled: props.disabled, readonly: props.readonly }), [props.color, props.variant, props.size, props.invalid, props.disabled, props.readonly])
-const { prefix, suffix, prepend, append, color, variant, size, invalid, id, name, type, placeholder, disabled, readonly, value, onUpdateValue, ...__attrs } = props
+const { prefix, suffix, color, variant, size, invalid, id, name, type, placeholder, disabled, readonly, value, onUpdateValue, ...__attrs } = props
 return (
-<IInputGroupBase {...__attrs} className={props.className}>
+<IInputBase {...__attrs} className={[shellClassName, props.className].filter(Boolean).join(" ")}>
   <>
-    {(props.prepend != null) ? <IInputPrependBase>{props.prepend}</IInputPrependBase> : null}
-    <IInputBase className={shellClassName}>
-      <>
-        {(props.prefix != null) ? <IInputPrefixBase className={inputPrefixRecipe({ size: props.size })}>{props.prefix}</IInputPrefixBase> : null}
-        <IInputControlBase id={props.id} name={props.name} type={props.type} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readOnly={props.readonly} onUpdateValue={v => props.onUpdateValue?.(v)} />
-        {(props.suffix != null) ? <IInputSuffixBase className={inputSuffixRecipe({ size: props.size })}>{props.suffix}</IInputSuffixBase> : null}
-      </>
-    </IInputBase>
-    {(props.append != null) ? <IInputAppendBase>{props.append}</IInputAppendBase> : null}
+    {(props.prefix != null) ? <IInputPrefixBase className={inputPrefixRecipe({ size: props.size })}>{props.prefix}</IInputPrefixBase> : null}
+    <IInputControlBase id={props.id} name={props.name} type={props.type} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readOnly={props.readonly} onUpdateValue={v => props.onUpdateValue?.(v)} />
+    {(props.suffix != null) ? <IInputSuffixBase className={inputSuffixRecipe({ size: props.size })}>{props.suffix}</IInputSuffixBase> : null}
   </>
-</IInputGroupBase>
+</IInputBase>
 )
 }
 ",
   "solid/IInput.tsx": "import { createMemo, splitProps, Show } from "solid-js";
 import type { JSX } from "solid-js";
-import IInputGroupBase from "../headless/IInputGroupBase";
 import IInputBase from "../headless/IInputBase";
 import IInputPrefixBase from "../headless/IInputPrefixBase";
 import IInputSuffixBase from "../headless/IInputSuffixBase";
-import IInputPrependBase from "../headless/IInputPrependBase";
-import IInputAppendBase from "../headless/IInputAppendBase";
 import IInputControlBase, { type InputControlBaseProps } from "../headless/IInputControlBase";
 import {
   inputRecipe,
@@ -229,50 +186,33 @@ export interface InputProps extends InputControlBaseProps {
   /** Invalid-state styling. */
   invalid?: InputStylingProps["invalid"];
 }
-export default function IInput(props: InputProps & { prefix?: any; suffix?: any; prepend?: any; append?: any } & { value?: string; onUpdateValue?: (value: string) => void } & JSX.HTMLAttributes<HTMLElement>)
+export default function IInput(props: InputProps & { prefix?: any; suffix?: any } & { value?: string; onUpdateValue?: (value: string) => void } & JSX.HTMLAttributes<HTMLElement>)
 {
 const shellClassName = createMemo(() => inputRecipe({ color: props.color, variant: props.variant, size: props.size, invalid: props.invalid, disabled: props.disabled, readonly: props.readonly }))
-const [, __attrs] = splitProps(props, ["prefix", "suffix", "prepend", "append", "color", "variant", "size", "invalid", "id", "name", "type", "placeholder", "disabled", "readonly", "value", "onUpdateValue"])
+const [, __attrs] = splitProps(props, ["prefix", "suffix", "color", "variant", "size", "invalid", "id", "name", "type", "placeholder", "disabled", "readonly", "value", "onUpdateValue"])
 return (
-<IInputGroupBase {...__attrs} class={props.class}>
+<IInputBase {...__attrs} class={[shellClassName(), props.class].filter(Boolean).join(" ")}>
   <>
-    <Show when={(props.prepend != null)}>
-      <IInputPrependBase>
-        {props.prepend}
-      </IInputPrependBase>
+    <Show when={(props.prefix != null)}>
+      <IInputPrefixBase class={inputPrefixRecipe({ size: props.size })}>
+        {props.prefix}
+      </IInputPrefixBase>
     </Show>
-    <IInputBase class={shellClassName()}>
-      <>
-        <Show when={(props.prefix != null)}>
-          <IInputPrefixBase class={inputPrefixRecipe({ size: props.size })}>
-            {props.prefix}
-          </IInputPrefixBase>
-        </Show>
-        <IInputControlBase id={props.id} name={props.name} type={props.type} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} onUpdateValue={v => props.onUpdateValue?.(v)} />
-        <Show when={(props.suffix != null)}>
-          <IInputSuffixBase class={inputSuffixRecipe({ size: props.size })}>
-            {props.suffix}
-          </IInputSuffixBase>
-        </Show>
-      </>
-    </IInputBase>
-    <Show when={(props.append != null)}>
-      <IInputAppendBase>
-        {props.append}
-      </IInputAppendBase>
+    <IInputControlBase id={props.id} name={props.name} type={props.type} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} onUpdateValue={v => props.onUpdateValue?.(v)} />
+    <Show when={(props.suffix != null)}>
+      <IInputSuffixBase class={inputSuffixRecipe({ size: props.size })}>
+        {props.suffix}
+      </IInputSuffixBase>
     </Show>
   </>
-</IInputGroupBase>
+</IInputBase>
 )
 }
 ",
   "svelte/IInput.svelte": "<script lang="ts">
-  import IInputGroupBase from "../headless/IInputGroupBase.svelte";
   import IInputBase from "../headless/IInputBase.svelte";
   import IInputPrefixBase from "../headless/IInputPrefixBase.svelte";
   import IInputSuffixBase from "../headless/IInputSuffixBase.svelte";
-  import IInputPrependBase from "../headless/IInputPrependBase.svelte";
-  import IInputAppendBase from "../headless/IInputAppendBase.svelte";
   import IInputControlBase, { type InputControlBaseProps } from "../headless/IInputControlBase.svelte";
   import {
     inputRecipe,
@@ -291,37 +231,25 @@ return (
     invalid?: InputStylingProps["invalid"];
   }
   import type { Snippet } from "svelte";
-  let { color, variant, size, invalid, id, name, type, placeholder, disabled, readonly, value = $bindable(), prefix: prefixSnippet, suffix: suffixSnippet, prepend: prependSnippet, append: appendSnippet, ...__attrs }: InputProps & { value?: string; prefix?: Snippet; suffix?: Snippet; prepend?: Snippet; append?: Snippet } & Record<string, any> = $props()
+  let { color, variant, size, invalid, id, name, type, placeholder, disabled, readonly, value = $bindable(), prefix: prefixSnippet, suffix: suffixSnippet, ...__attrs }: InputProps & { value?: string; prefix?: Snippet; suffix?: Snippet } & Record<string, any> = $props()
   let shellClassName = $derived(inputRecipe({ color: color, variant: variant, size: size, invalid: invalid, disabled: disabled, readonly: readonly }))
 </script>
-<IInputGroupBase {...__attrs} class={__attrs.class}>
-  {#if (prependSnippet != null)}<IInputPrependBase>
-    {@render prependSnippet?.()}
-  </IInputPrependBase>
-  {/if}<IInputBase class={shellClassName}>
-    {#if (prefixSnippet != null)}<IInputPrefixBase class={inputPrefixRecipe({ size: size })}>
-      {@render prefixSnippet?.()}
-    </IInputPrefixBase>
-    {/if}<IInputControlBase bind:value={value} id={id} name={name} type={type} placeholder={placeholder} disabled={disabled} readonly={readonly} />
-    {#if (suffixSnippet != null)}<IInputSuffixBase class={inputSuffixRecipe({ size: size })}>
-      {@render suffixSnippet?.()}
-    </IInputSuffixBase>
-    {/if}
-  </IInputBase>
-  {#if (appendSnippet != null)}<IInputAppendBase>
-    {@render appendSnippet?.()}
-  </IInputAppendBase>
+<IInputBase {...__attrs} class={[shellClassName, __attrs.class].filter(Boolean).join(" ")}>
+  {#if (prefixSnippet != null)}<IInputPrefixBase class={inputPrefixRecipe({ size: size })}>
+    {@render prefixSnippet?.()}
+  </IInputPrefixBase>
+  {/if}<IInputControlBase bind:value={value} id={id} name={name} type={type} placeholder={placeholder} disabled={disabled} readonly={readonly} />
+  {#if (suffixSnippet != null)}<IInputSuffixBase class={inputSuffixRecipe({ size: size })}>
+    {@render suffixSnippet?.()}
+  </IInputSuffixBase>
   {/if}
-</IInputGroupBase>
+</IInputBase>
 ",
   "vue/IInput.vue": "<script setup lang="ts">
   import { computed } from "vue";
-  import IInputGroupBase from "../headless/IInputGroupBase.vue";
   import IInputBase from "../headless/IInputBase.vue";
   import IInputPrefixBase from "../headless/IInputPrefixBase.vue";
   import IInputSuffixBase from "../headless/IInputSuffixBase.vue";
-  import IInputPrependBase from "../headless/IInputPrependBase.vue";
-  import IInputAppendBase from "../headless/IInputAppendBase.vue";
   import IInputControlBase, { type InputControlBaseProps } from "../headless/IInputControlBase.vue";
   import {
     inputRecipe,
@@ -344,23 +272,15 @@ return (
   const shellClassName = computed(() => inputRecipe({ color: props.color, variant: props.variant, size: props.size, invalid: props.invalid, disabled: props.disabled, readonly: props.readonly }))
 </script>
 <template>
-<IInputGroupBase>
-  <IInputPrependBase v-if="!!$slots.prepend">
-    <slot name="prepend" />
-  </IInputPrependBase>
-  <IInputBase :class="shellClassName">
-    <IInputPrefixBase v-if="!!$slots.prefix" :class="inputPrefixRecipe({ size: size })">
-      <slot name="prefix" />
-    </IInputPrefixBase>
-    <IInputControlBase v-model:value="value" :id="id" :name="name" :type="type" :placeholder="placeholder" :disabled="disabled" :readonly="readonly" />
-    <IInputSuffixBase v-if="!!$slots.suffix" :class="inputSuffixRecipe({ size: size })">
-      <slot name="suffix" />
-    </IInputSuffixBase>
-  </IInputBase>
-  <IInputAppendBase v-if="!!$slots.append">
-    <slot name="append" />
-  </IInputAppendBase>
-</IInputGroupBase>
+<IInputBase :class="shellClassName">
+  <IInputPrefixBase v-if="!!$slots.prefix" :class="inputPrefixRecipe({ size: size })">
+    <slot name="prefix" />
+  </IInputPrefixBase>
+  <IInputControlBase v-model:value="value" :id="id" :name="name" :type="type" :placeholder="placeholder" :disabled="disabled" :readonly="readonly" />
+  <IInputSuffixBase v-if="!!$slots.suffix" :class="inputSuffixRecipe({ size: size })">
+    <slot name="suffix" />
+  </IInputSuffixBase>
+</IInputBase>
 </template>
 ",
 }

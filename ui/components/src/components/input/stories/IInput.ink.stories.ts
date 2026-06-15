@@ -31,6 +31,5 @@ export const Sizes = { render: "./sizes.ink.tsx" };
 export const Variants = { render: "./variants.ink.tsx" };
 export const States = { render: "./states.ink.tsx" };
 export const PrefixSuffix = { render: "./prefixSuffix.ink.tsx" };
-export const PrependAppend = { render: "./prependAppend.ink.tsx" };
 export const Textarea = { render: "./textarea.ink.tsx" };
 export const TwoWay = { render: "./twoWay.ink.tsx" };

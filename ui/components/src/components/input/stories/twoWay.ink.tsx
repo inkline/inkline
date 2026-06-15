@@ -1,18 +1,12 @@
 import { createSignal, defineComponent } from "@inkline/core";
 import IInput from "../styled/IInput.ink.tsx";
 
-// Two-way binding: typing in the control updates `text`, and "Clear" resets it through the binding.
+// Two-way binding: typing in the control updates `text`, reflected live below.
 export default defineComponent(() => {
-  const [text, setText] = createSignal("world");
+  const [text, _setText] = createSignal("world");
   return (
     <>
-      <IInput
-        size="md"
-        name="name"
-        placeholder="Type your name"
-        $bind:value={text}
-        append={<button onClick={() => setText("")}>Clear</button>}
-      />
+      <IInput size="md" name="name" placeholder="Type your name" $bind:value={text} />
       <p>Hello, {text()}!</p>
     </>
   );
