@@ -49,7 +49,7 @@
     "@styleframe/plugin": "catalog:",
     "@styleframe/theme": "catalog:",
     "@styleframe/transpiler": "catalog:",
-    "astro": "^5",
+    "astro": "catalog:",
     "jsdom": "catalog:",
     "storybook": "catalog:",
     "styleframe": "catalog:"

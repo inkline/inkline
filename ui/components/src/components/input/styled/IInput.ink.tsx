@@ -10,7 +10,6 @@ import IInputControlBase, {
 } from "../headless/IInputControlBase.ink.tsx";
 import {
   inputRecipe,
-  inputGroupRecipe,
   inputPrefixRecipe,
   inputSuffixRecipe,
   type InputRecipeProps as InputStylingProps,
@@ -44,7 +43,6 @@ export default defineComponent(
   (props: InputProps) => {
     const [value, _setValue] = defineModel<string>("value");
 
-    const groupClassName = createMemo(() => inputGroupRecipe({ size: props.size }));
     const shellClassName = createMemo(() =>
       inputRecipe({
         color: props.color,
@@ -57,7 +55,7 @@ export default defineComponent(
     );
 
     return (
-      <IInputGroupBase class={groupClassName()}>
+      <IInputGroupBase>
         <Show when={hasSlot("prepend")}>
           <IInputPrependBase>
             <Slot name="prepend" />

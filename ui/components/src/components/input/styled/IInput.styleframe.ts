@@ -1,12 +1,5 @@
 import { styleframe } from "virtual:styleframe";
-import {
-  useInputRecipe,
-  useInputGroupRecipe,
-  useInputPrefixRecipe,
-  useInputSuffixRecipe,
-  useInputPrependRecipe,
-  useInputAppendRecipe,
-} from "@styleframe/theme";
+import { useInputRecipe, useInputPrefixRecipe, useInputSuffixRecipe } from "@styleframe/theme";
 
 const s = styleframe();
 
@@ -14,12 +7,8 @@ const s = styleframe();
 // `virtual:styleframe` still exports every recipe and emits every `.input-*` rule after the per-part
 // styled components were removed.
 export const inputRecipe = useInputRecipe(s);
-export const inputGroupRecipe = useInputGroupRecipe(s);
 export const inputPrefixRecipe = useInputPrefixRecipe(s);
 export const inputSuffixRecipe = useInputSuffixRecipe(s);
-// Prepend/append have no styling props; register them so their base `.input-*` CSS is still emitted.
-useInputPrependRecipe(s);
-useInputAppendRecipe(s);
 
 // IInput always renders its addon and group wrappers on Qwik/Angular (no runtime slot presence), so an
 // unused addon shows up as an empty wrapper. These rules make an empty wrapper invisible — collapsing it

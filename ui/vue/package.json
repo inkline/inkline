@@ -45,7 +45,7 @@
     "storybook": "catalog:",
     "styleframe": "catalog:",
     "typescript": "catalog:",
-    "vue": "^3"
+    "vue": "catalog:"
   },
   "peerDependencies": {
     "vue": ">=3"

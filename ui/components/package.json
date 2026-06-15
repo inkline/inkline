@@ -29,9 +29,9 @@
     "@styleframe/theme": "catalog:",
     "@styleframe/transpiler": "catalog:",
     "jsdom": "catalog:",
-    "rxjs": "^7",
+    "rxjs": "catalog:",
     "styleframe": "catalog:",
     "vite-plus": "catalog:",
-    "vitest": "npm:@voidzero-dev/vite-plus-test@^0.1.22"
+    "vitest": "catalog:"
   }
 }

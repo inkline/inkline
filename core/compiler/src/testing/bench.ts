@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { Bench } from "tinybench";
+import { Bench, type TaskResultWithStatistics } from "tinybench";
 import { compile } from "../pipeline/compile.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -39,12 +39,15 @@ export async function runBenchSuite(): Promise<BenchSuiteResult> {
 
   await bench.run();
 
-  const results: BenchResult[] = bench.tasks.map((task) => ({
-    name: task.name,
-    hz: task.result?.hz ?? 0,
-    meanMs: (task.result?.mean ?? 0) * 1000,
-    p99Ms: (task.result?.p99 ?? 0) * 1000,
-  }));
+  const results: BenchResult[] = bench.tasks.map((task) => {
+    const r = task.result as unknown as TaskResultWithStatistics | null;
+    return {
+      name: task.name,
+      hz: r?.throughput?.mean ?? 0,
+      meanMs: r?.latency?.mean ?? 0,
+      p99Ms: r?.latency?.p99 ?? 0,
+    };
+  });
 
   const baseline = loadBaseline();
   const regressions: string[] = [];

@@ -40,10 +40,10 @@
     "@styleframe/plugin": "catalog:",
     "@styleframe/theme": "catalog:",
     "@styleframe/transpiler": "catalog:",
-    "@types/react": "^19",
+    "@types/react": "catalog:",
     "@vitejs/plugin-react": "catalog:",
     "jsdom": "catalog:",
-    "react": "^19",
+    "react": "catalog:",
     "storybook": "catalog:",
     "styleframe": "catalog:"
   },

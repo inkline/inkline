@@ -36,7 +36,7 @@
     "prepublishOnly": "vp run build"
   },
   "dependencies": {
-    "c12": "^4.0.0-beta.5"
+    "c12": "4.0.0-beta.5"
   },
   "devDependencies": {
     "@types/node": "catalog:",

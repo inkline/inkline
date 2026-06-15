@@ -29,7 +29,7 @@
   "devDependencies": {
     "@inkline/components": "workspace:*",
     "@inkline/storybook": "workspace:*",
-    "@qwik.dev/core": "^2.0.0-beta.0",
+    "@qwik.dev/core": "2.0.0-beta.36",
     "@storybook/addon-a11y": "catalog:",
     "@storybook/addon-docs": "catalog:",
     "@styleframe/cli": "catalog:",

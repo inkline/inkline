@@ -13,7 +13,6 @@ import { IInputControlBaseComponent as IInputControlBase } from "../headless/IIn
 import { type InputControlBaseProps } from "../headless/IInputControlBase.component";
 import {
   inputRecipe,
-  inputGroupRecipe,
   inputPrefixRecipe,
   inputSuffixRecipe,
   type InputRecipeProps as InputStylingProps,
@@ -28,7 +27,7 @@ export interface InputProps extends InputControlBaseProps {
   /** Invalid-state styling. */
   invalid?: InputStylingProps["invalid"];
 }
-@Component({ standalone: true, selector: 'ink-input', imports: [IInputGroupBase, IInputBase, IInputPrefixBase, IInputSuffixBase, IInputPrependBase, IInputAppendBase, IInputControlBase], template: \`<ink-input-group-base [klass]="(groupClassName()) + (klass() ? ' ' + klass() : '')">
+@Component({ standalone: true, selector: 'ink-input', imports: [IInputGroupBase, IInputBase, IInputPrefixBase, IInputSuffixBase, IInputPrependBase, IInputAppendBase, IInputControlBase], template: \`<ink-input-group-base [klass]="klass()">
 <ink-input-prepend-base>
 <ng-content select="[slot=prepend]"></ng-content>
 </ink-input-prepend-base>
@@ -48,11 +47,9 @@ export interface InputProps extends InputControlBaseProps {
 export class IInputComponent
 {
 inputRecipe = inputRecipe
-inputGroupRecipe = inputGroupRecipe
 inputPrefixRecipe = inputPrefixRecipe
 inputSuffixRecipe = inputSuffixRecipe
 klass = input<string>()
-groupClassName = computed(() => inputGroupRecipe({ size: this.size() }))
 shellClassName = computed(() => inputRecipe({ color: this.color(), variant: this.variant(), size: this.size(), invalid: this.invalid(), disabled: this.disabled(), readonly: this.readonly() }))
 color = input<InputStylingProps["color"]>()
 variant = input<InputStylingProps["variant"]>()
@@ -77,7 +74,6 @@ import IInputAppendBase from "../headless/IInputAppendBase.astro";
 import IInputControlBase, { type InputControlBaseProps } from "../headless/IInputControlBase.astro";
 import {
   inputRecipe,
-  inputGroupRecipe,
   inputPrefixRecipe,
   inputSuffixRecipe,
   type InputRecipeProps as InputStylingProps,
@@ -96,10 +92,9 @@ type Props = InputProps & Record<string, any>
 const props = Astro.props as Props;
 const { color, variant, size, invalid, id, name, type, placeholder, disabled, readonly, ...__attrs } = props;
 let value = props.value
-const groupClassName = inputGroupRecipe({ size: size })
 const shellClassName = inputRecipe({ color: color, variant: variant, size: size, invalid: invalid, disabled: disabled, readonly: readonly })
 ---
-<IInputGroupBase {...__attrs} class={[groupClassName, __attrs.class].filter(Boolean).join(" ")}>
+<IInputGroupBase {...__attrs} class={__attrs.class}>
 {Astro.slots.has("prepend") ? (<IInputPrependBase>
 <slot name="prepend" />
 </IInputPrependBase>) : null}
@@ -128,7 +123,6 @@ import { IInputControlBase } from "../headless/IInputControlBase";
 import { type InputControlBaseProps } from "../headless/IInputControlBase";
 import {
   inputRecipe,
-  inputGroupRecipe,
   inputPrefixRecipe,
   inputSuffixRecipe,
   type InputRecipeProps as InputStylingProps,
@@ -145,11 +139,10 @@ export interface InputProps extends InputControlBaseProps {
 }
 export const IInput = component$((props: InputProps & { value?: string; onUpdateValue$?: QRL<(value: string) => void> } & Record<string, any>) =>
 {
-const groupClassName = useComputed$(() => inputGroupRecipe({ size: props.size }))
 const shellClassName = useComputed$(() => inputRecipe({ color: props.color, variant: props.variant, size: props.size, invalid: props.invalid, disabled: props.disabled, readonly: props.readonly }))
 const { prefix, suffix, prepend, append, color, variant, size, invalid, id, name, type, placeholder, disabled, readonly, value, onUpdateValue$, ...__attrs } = props
 return (
-<IInputGroupBase {...__attrs} class={[groupClassName.value, props.class].filter(Boolean).join(" ")}>
+<IInputGroupBase {...__attrs} class={props.class}>
   <>
     {(<><IInputPrependBase>{props.prepend}</IInputPrependBase></>)}
     <IInputBase class={shellClassName.value}>
@@ -176,7 +169,6 @@ import { IInputControlBase } from "../headless/IInputControlBase";
 import { type InputControlBaseProps } from "../headless/IInputControlBase";
 import {
   inputRecipe,
-  inputGroupRecipe,
   inputPrefixRecipe,
   inputSuffixRecipe,
   type InputRecipeProps as InputStylingProps,
@@ -193,11 +185,10 @@ export interface InputProps extends InputControlBaseProps {
 }
 export function IInput(props: InputProps & { prefix?: React.ReactNode; suffix?: React.ReactNode; prepend?: React.ReactNode; append?: React.ReactNode } & { value?: string; onUpdateValue?: (value: string) => void } & React.HTMLAttributes<HTMLElement>)
 {
-const groupClassName = useMemo(() => inputGroupRecipe({ size: props.size }), [props.size])
 const shellClassName = useMemo(() => inputRecipe({ color: props.color, variant: props.variant, size: props.size, invalid: props.invalid, disabled: props.disabled, readonly: props.readonly }), [props.color, props.variant, props.size, props.invalid, props.disabled, props.readonly])
 const { prefix, suffix, prepend, append, color, variant, size, invalid, id, name, type, placeholder, disabled, readonly, value, onUpdateValue, ...__attrs } = props
 return (
-<IInputGroupBase {...__attrs} className={[groupClassName, props.className].filter(Boolean).join(" ")}>
+<IInputGroupBase {...__attrs} className={props.className}>
   <>
     {(props.prepend != null) ? <IInputPrependBase>{props.prepend}</IInputPrependBase> : null}
     <IInputBase className={shellClassName}>
@@ -224,7 +215,6 @@ import IInputAppendBase from "../headless/IInputAppendBase";
 import IInputControlBase, { type InputControlBaseProps } from "../headless/IInputControlBase";
 import {
   inputRecipe,
-  inputGroupRecipe,
   inputPrefixRecipe,
   inputSuffixRecipe,
   type InputRecipeProps as InputStylingProps,
@@ -241,11 +231,10 @@ export interface InputProps extends InputControlBaseProps {
 }
 export default function IInput(props: InputProps & { prefix?: any; suffix?: any; prepend?: any; append?: any } & { value?: string; onUpdateValue?: (value: string) => void } & JSX.HTMLAttributes<HTMLElement>)
 {
-const groupClassName = createMemo(() => inputGroupRecipe({ size: props.size }))
 const shellClassName = createMemo(() => inputRecipe({ color: props.color, variant: props.variant, size: props.size, invalid: props.invalid, disabled: props.disabled, readonly: props.readonly }))
 const [, __attrs] = splitProps(props, ["prefix", "suffix", "prepend", "append", "color", "variant", "size", "invalid", "id", "name", "type", "placeholder", "disabled", "readonly", "value", "onUpdateValue"])
 return (
-<IInputGroupBase {...__attrs} class={[groupClassName(), props.class].filter(Boolean).join(" ")}>
+<IInputGroupBase {...__attrs} class={props.class}>
   <>
     <Show when={(props.prepend != null)}>
       <IInputPrependBase>
@@ -287,7 +276,6 @@ return (
   import IInputControlBase, { type InputControlBaseProps } from "../headless/IInputControlBase.svelte";
   import {
     inputRecipe,
-    inputGroupRecipe,
     inputPrefixRecipe,
     inputSuffixRecipe,
     type InputRecipeProps as InputStylingProps,
@@ -304,10 +292,9 @@ return (
   }
   import type { Snippet } from "svelte";
   let { color, variant, size, invalid, id, name, type, placeholder, disabled, readonly, value = $bindable(), prefix: prefixSnippet, suffix: suffixSnippet, prepend: prependSnippet, append: appendSnippet, ...__attrs }: InputProps & { value?: string; prefix?: Snippet; suffix?: Snippet; prepend?: Snippet; append?: Snippet } & Record<string, any> = $props()
-  let groupClassName = $derived(inputGroupRecipe({ size: size }))
   let shellClassName = $derived(inputRecipe({ color: color, variant: variant, size: size, invalid: invalid, disabled: disabled, readonly: readonly }))
 </script>
-<IInputGroupBase {...__attrs} class={[groupClassName, __attrs.class].filter(Boolean).join(" ")}>
+<IInputGroupBase {...__attrs} class={__attrs.class}>
   {#if (prependSnippet != null)}<IInputPrependBase>
     {@render prependSnippet?.()}
   </IInputPrependBase>
@@ -338,7 +325,6 @@ return (
   import IInputControlBase, { type InputControlBaseProps } from "../headless/IInputControlBase.vue";
   import {
     inputRecipe,
-    inputGroupRecipe,
     inputPrefixRecipe,
     inputSuffixRecipe,
     type InputRecipeProps as InputStylingProps,
@@ -355,11 +341,10 @@ return (
   }
   const props = defineProps<InputProps>()
   const value = defineModel<string>("value")
-  const groupClassName = computed(() => inputGroupRecipe({ size: props.size }))
   const shellClassName = computed(() => inputRecipe({ color: props.color, variant: props.variant, size: props.size, invalid: props.invalid, disabled: props.disabled, readonly: props.readonly }))
 </script>
 <template>
-<IInputGroupBase :class="groupClassName">
+<IInputGroupBase>
   <IInputPrependBase v-if="!!$slots.prepend">
     <slot name="prepend" />
   </IInputPrependBase>

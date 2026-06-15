@@ -40,7 +40,7 @@
     "@styleframe/theme": "catalog:",
     "@styleframe/transpiler": "catalog:",
     "jsdom": "catalog:",
-    "solid-js": "^1",
+    "solid-js": "catalog:",
     "storybook": "catalog:",
     "storybook-solidjs-vite": "catalog:",
     "styleframe": "catalog:",

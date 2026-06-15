@@ -49,12 +49,12 @@
     "@styleframe/theme": "catalog:",
     "@styleframe/transpiler": "catalog:",
     "jsdom": "catalog:",
-    "rxjs": "^7",
+    "rxjs": "catalog:",
     "storybook": "catalog:",
     "styleframe": "catalog:",
-    "tslib": "^2",
-    "typescript": "^5.9",
-    "zone.js": "^0.15"
+    "tslib": "catalog:",
+    "typescript": "catalog:",
+    "zone.js": "catalog:"
   },
   "peerDependencies": {
     "@angular/core": ">=17"

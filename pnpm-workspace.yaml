@@ -24,71 +24,89 @@ minimumReleaseAgeExclude:
   - launch-editor@2.14.1
 
 catalog:
-  "@analogjs/storybook-angular": ^2.5.1
-  "@analogjs/vite-plugin-angular": ^2.5.1
+  "@analogjs/storybook-angular": ^2.6.1
+  "@analogjs/vite-plugin-angular": ^2.6.1
   "@angular-eslint/eslint-plugin": ^21.4.0
   "@angular-eslint/template-parser": ^21.4.0
-  "@angular/build": ^21.2.11
-  "@angular/cli": ^21
-  "@angular/compiler": ^21.2.13
-  "@angular/compiler-cli": ^21.2.13
-  "@angular/core": ^21
-  "@angular/platform-browser": ^21
-  "@angular/platform-browser-dynamic": ^21
-  "@angular/platform-server": ^21
-  "@storybook-astro/framework": ^1.2.0
-  "@storybook/addon-a11y": ^10
-  "@storybook/addon-docs": ^10
-  "@storybook/angular": ^10
-  "@storybook/react-vite": ^10
-  "@storybook/svelte-vite": ^10
-  "@storybook/vue3-vite": ^10
-  "@styleframe/cli": ^4.1.0
-  "@styleframe/core": ^3.6.0
+  "@angular/build": ^21.2.15
+  "@angular/cli": ^21.2.15
+  "@angular/compiler": ^21.2.17
+  "@angular/compiler-cli": ^21.2.17
+  "@angular/core": ^21.2.17
+  "@angular/platform-browser": ^21.2.17
+  "@angular/platform-browser-dynamic": ^21.2.17
+  "@angular/platform-server": ^21.2.17
+  "@storybook-astro/framework": ^1.5.0
+  "@storybook/addon-a11y": ^10.4.4
+  "@storybook/addon-docs": ^10.4.4
+  "@storybook/angular": ^10.4.4
+  "@storybook/react-vite": ^10.4.4
+  "@storybook/svelte-vite": ^10.4.4
+  "@storybook/vue3-vite": ^10.4.4
+  "@styleframe/cli": ^4.1.1
+  "@styleframe/core": ^3.6.1
   "@styleframe/license": ^2.0.2
-  "@styleframe/loader": ^3.0.2
+  "@styleframe/loader": ^3.0.3
   "@styleframe/plugin": ^3.4.0
-  "@styleframe/runtime": ^3.2.0
-  "@styleframe/theme": ^3.7.1
-  "@styleframe/transpiler": ^3.4.0
+  "@styleframe/runtime": ^3.2.1
+  "@styleframe/theme": ^3.8.0
+  "@styleframe/transpiler": ^3.4.1
   "@sveltejs/vite-plugin-svelte": ^7.1.2
   "@tsdown/css": ^0.22.0
-  "@types/node": ^24
-  "@typescript-eslint/parser": ^8.59.3
+  "@types/node": ^24.13.2
+  "@types/react": ^19.2.17
+  "@typescript-eslint/parser": ^8.61.0
   "@vitejs/plugin-react": ^6.0.2
   "@vitejs/plugin-vue": ^6.0.7
-  "@vitest/coverage-v8": ^4.1.5
-  concurrently: ^9.2.1
+  "@vitest/coverage-v8": ^4.1.8
+  "@vue/server-renderer": ^3.5.38
+  astro: ^6.4.6
+  concurrently: ^10.0.3
   eslint: ^9.39.4
   eslint-plugin-astro: ^1.7.0
-  eslint-plugin-qwik: ^1.19.2
+  eslint-plugin-qwik: ^1.20.0
   eslint-plugin-solid: ^0.14.5
-  eslint-plugin-svelte: ^3.17.1
-  eslint-plugin-vue: ^10.9.1
+  eslint-plugin-svelte: ^3.19.0
+  eslint-plugin-vue: ^10.9.2
   jsdom: ^29.1.1
-  oxlint: ^1.64.0
+  oxlint: ^1.69.0
+  react: ^19.2.7
+  react-dom: ^19.2.7
   rollup-plugin-svelte: ^7.2.3
-  storybook: ^10
+  rxjs: ^7.8.2
+  solid-js: ^1.9.13
+  storybook: ^10.4.4
   storybook-framework-qwik: 0.6.2--canary.95.25602496384.0
-  storybook-solidjs-vite: ^10
-  styleframe: ^3.8.0
+  storybook-solidjs-vite: ^10.1.1
+  styleframe: ^3.9.0
+  svelte: ^5.56.3
+  tslib: ^2.8.1
+  tsx: ^4.22.4
   typescript: ^6.0.3
   vite: npm:@voidzero-dev/vite-plus-core@latest
   vite-plugin-solid: ^2.11.12
-  vite-plus: ^0.1.23
-  vitest: npm:@voidzero-dev/vite-plus-test@latest
-  vue-eslint-parser: ^10.4.0
+  vite-plus: ^0.1.24
+  vitest: npm:@voidzero-dev/vite-plus-test@^0.1.24
+  vue: ^3.5.38
+  vue-eslint-parser: ^10.4.1
+  zone.js: ^0.16.2
 
 catalogMode: prefer
 overrides:
   vite: "catalog:"
   vitest: "catalog:"
-patchedDependencies:
-  "@analogjs/storybook-angular@2.5.1": patches/@analogjs__storybook-angular@2.5.1.patch
 peerDependencyRules:
   allowAny:
     - vite
     - vitest
+    - "@angular-devkit/architect"
+    - "@angular-devkit/core"
+    - "@vitejs/plugin-react"
+    - typescript
   allowedVersions:
     vite: "*"
     vitest: "*"
+    "@angular-devkit/architect": "*"
+    "@angular-devkit/core": "*"
+    "@vitejs/plugin-react": "*"
+    typescript: "*"
