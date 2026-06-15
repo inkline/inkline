@@ -18,9 +18,9 @@ export interface InputControlBaseProps {
   readonly?: boolean;
 }
 @Component({ standalone: true, selector: 'ink-input-control-base', template: \`@if (type() === 'textarea') {
-<textarea class="input-field" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [value]="value()" [attr.placeholder]="(placeholder()) ?? null" [disabled]="disabled()" [readonly]="readonly()" (input)="value.set($event.currentTarget.value)"></textarea>
+<textarea class="input-field" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [value]="value() ?? ''" [attr.placeholder]="(placeholder()) ?? null" [disabled]="disabled()" [readonly]="readonly()" (input)="value.set($event.currentTarget.value)"></textarea>
 } @else {
-<input class="input-field" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [attr.type]="(type()) ?? null" [value]="value()" [attr.placeholder]="(placeholder()) ?? null" [disabled]="disabled()" [readonly]="readonly()" (input)="value.set($event.currentTarget.value)" />
+<input class="input-field" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [attr.type]="(type()) ?? null" [value]="value() ?? ''" [attr.placeholder]="(placeholder()) ?? null" [disabled]="disabled()" [readonly]="readonly()" (input)="value.set($event.currentTarget.value)" />
 }\` })
 export class IInputControlBaseComponent
 {
@@ -53,7 +53,7 @@ const props = Astro.props as Props;
 const { id, name, type, placeholder, disabled, readonly } = props;
 let value = props.value
 ---
-{type === "textarea" ? (<textarea class="input-field" id={id} name={name} value={value} placeholder={placeholder} disabled={disabled} readonly={readonly} onInput={(e: { currentTarget: HTMLTextAreaElement }) => value = e.currentTarget.value} />) : (<input class="input-field" id={id} name={name} type={type} value={value} placeholder={placeholder} disabled={disabled} readonly={readonly} onInput={(e: { currentTarget: HTMLInputElement }) => value = e.currentTarget.value} />)}
+{type === "textarea" ? (<textarea class="input-field" id={id} name={name} value={value ?? ""} placeholder={placeholder} disabled={disabled} readonly={readonly} onInput={(e: { currentTarget: HTMLTextAreaElement }) => value = e.currentTarget.value} />) : (<input class="input-field" id={id} name={name} type={type} value={value ?? ""} placeholder={placeholder} disabled={disabled} readonly={readonly} onInput={(e: { currentTarget: HTMLInputElement }) => value = e.currentTarget.value} />)}
 ",
   "qwik/IInputControlBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
 export interface InputControlBaseProps {
@@ -73,7 +73,7 @@ export interface InputControlBaseProps {
 export const IInputControlBase = component$((props: InputControlBaseProps & { value?: string; onUpdateValue$?: QRL<(value: string) => void> } & Record<string, any>) =>
 {
 return (
-props.type === "textarea" ? (<><textarea class="input-field" id={props.id} name={props.name} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} onInput={$((e: { currentTarget: HTMLTextAreaElement }) => props.onUpdateValue$?.(e.currentTarget.value))} /></>) : (<><input class="input-field" id={props.id} name={props.name} type={props.type} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} onInput={$((e: { currentTarget: HTMLInputElement }) => props.onUpdateValue$?.(e.currentTarget.value))} /></>))
+props.type === "textarea" ? (<><textarea class="input-field" id={props.id} name={props.name} value={props.value ?? ""} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} onInput={$((e: { currentTarget: HTMLTextAreaElement }) => props.onUpdateValue$?.(e.currentTarget.value))} /></>) : (<><input class="input-field" id={props.id} name={props.name} type={props.type} value={props.value ?? ""} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} onInput={$((e: { currentTarget: HTMLInputElement }) => props.onUpdateValue$?.(e.currentTarget.value))} /></>))
 });
 ",
   "react/IInputControlBase.tsx": "export interface InputControlBaseProps {
@@ -93,7 +93,7 @@ props.type === "textarea" ? (<><textarea class="input-field" id={props.id} name=
 export function IInputControlBase(props: InputControlBaseProps & { value?: string; onUpdateValue?: (value: string) => void })
 {
 return (
-props.type === "textarea" ? <textarea className="input-field" id={props.id} name={props.name} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readOnly={props.readonly} onInput={(e: { currentTarget: HTMLTextAreaElement }) => props.onUpdateValue?.(e.currentTarget.value)} /> : <input className="input-field" id={props.id} name={props.name} type={props.type} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readOnly={props.readonly} onInput={(e: { currentTarget: HTMLInputElement }) => props.onUpdateValue?.(e.currentTarget.value)} />)
+props.type === "textarea" ? <textarea className="input-field" id={props.id} name={props.name} value={props.value ?? ""} placeholder={props.placeholder} disabled={props.disabled} readOnly={props.readonly} onInput={(e: { currentTarget: HTMLTextAreaElement }) => props.onUpdateValue?.(e.currentTarget.value)} /> : <input className="input-field" id={props.id} name={props.name} type={props.type} value={props.value ?? ""} placeholder={props.placeholder} disabled={props.disabled} readOnly={props.readonly} onInput={(e: { currentTarget: HTMLInputElement }) => props.onUpdateValue?.(e.currentTarget.value)} />)
 }
 ",
   "solid/IInputControlBase.tsx": "import { Show } from "solid-js";
@@ -114,8 +114,8 @@ export interface InputControlBaseProps {
 export default function IInputControlBase(props: InputControlBaseProps & { value?: string; onUpdateValue?: (value: string) => void })
 {
 return (
-<Show when={props.type === "textarea"} fallback={<><input class="input-field" id={props.id} name={props.name} type={props.type} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} oninput={(e: { currentTarget: HTMLInputElement }) => props.onUpdateValue?.(e.currentTarget.value)} /></>}>
-  <textarea class="input-field" id={props.id} name={props.name} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} oninput={(e: { currentTarget: HTMLTextAreaElement }) => props.onUpdateValue?.(e.currentTarget.value)} />
+<Show when={props.type === "textarea"} fallback={<><input class="input-field" id={props.id} name={props.name} type={props.type} value={props.value ?? ""} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} oninput={(e: { currentTarget: HTMLInputElement }) => props.onUpdateValue?.(e.currentTarget.value)} /></>}>
+  <textarea class="input-field" id={props.id} name={props.name} value={props.value ?? ""} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} oninput={(e: { currentTarget: HTMLTextAreaElement }) => props.onUpdateValue?.(e.currentTarget.value)} />
 </Show>
 )
 }
@@ -137,8 +137,8 @@ return (
   }
   let { id, name, type, placeholder, disabled, readonly, value = $bindable() }: InputControlBaseProps & { value?: string } = $props()
 </script>
-{#if type === "textarea"}<textarea class="input-field" id={id} name={name} value={value} placeholder={placeholder} disabled={disabled} readonly={readonly} oninput={(e: { currentTarget: HTMLTextAreaElement }) => value = e.currentTarget.value}></textarea>
-{:else}<input class="input-field" id={id} name={name} type={type} value={value} placeholder={placeholder} disabled={disabled} readonly={readonly} oninput={(e: { currentTarget: HTMLInputElement }) => value = e.currentTarget.value} />
+{#if type === "textarea"}<textarea class="input-field" id={id} name={name} value={value ?? ""} placeholder={placeholder} disabled={disabled} readonly={readonly} oninput={(e: { currentTarget: HTMLTextAreaElement }) => value = e.currentTarget.value}></textarea>
+{:else}<input class="input-field" id={id} name={name} type={type} value={value ?? ""} placeholder={placeholder} disabled={disabled} readonly={readonly} oninput={(e: { currentTarget: HTMLInputElement }) => value = e.currentTarget.value} />
 {/if}
 ",
   "vue/IInputControlBase.vue": "<script setup lang="ts">
@@ -160,8 +160,8 @@ return (
   const value = defineModel<string>("value")
 </script>
 <template>
-<textarea v-if='type === "textarea"' class="input-field" :id="id" :name="name" :value="value" :placeholder="placeholder" :disabled="disabled" :readonly="readonly" @input="(e: { currentTarget: HTMLTextAreaElement }) => value = e.currentTarget.value" />
-<input v-else class="input-field" :id="id" :name="name" :type="type" :value="value" :placeholder="placeholder" :disabled="disabled" :readonly="readonly" @input="(e: { currentTarget: HTMLInputElement }) => value = e.currentTarget.value" />
+<textarea v-if='type === "textarea"' class="input-field" :id="id" :name="name" :value='value ?? ""' :placeholder="placeholder" :disabled="disabled" :readonly="readonly" @input="(e: { currentTarget: HTMLTextAreaElement }) => value = e.currentTarget.value" />
+<input v-else class="input-field" :id="id" :name="name" :type="type" :value='value ?? ""' :placeholder="placeholder" :disabled="disabled" :readonly="readonly" @input="(e: { currentTarget: HTMLInputElement }) => value = e.currentTarget.value" />
 </template>
 ",
 }
