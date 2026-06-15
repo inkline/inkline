@@ -1,0 +1,103 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`FieldGroupBase > output matches snapshots 1`] = `
+{
+  "angular/IFieldGroupBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface FieldGroupBaseProps {
+  /** Id of the field group element. */
+  id?: string;
+}
+@Component({ standalone: true, selector: 'ink-field-group-base', template: \`<div [class]="'field-group' + (klass() ? ' ' + klass() : '')" [attr.id]="(id()) ?? null">
+<ng-content></ng-content>
+</div>\` })
+export class IFieldGroupBaseComponent
+{
+klass = input<string>()
+id = input<string>()
+}
+",
+  "astro/IFieldGroupBase.astro": "---
+export interface FieldGroupBaseProps {
+  /** Id of the field group element. */
+  id?: string;
+}
+type Props = FieldGroupBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { id, ...__attrs } = props;
+---
+<div {...__attrs} class={["field-group", __attrs.class].filter(Boolean).join(" ")} id={id}>
+<slot />
+</div>
+",
+  "qwik/IFieldGroupBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface FieldGroupBaseProps {
+  /** Id of the field group element. */
+  id?: string;
+}
+export const IFieldGroupBase = component$((props: FieldGroupBaseProps & Record<string, any>) =>
+{
+const { children, id, ...__attrs } = props
+return (
+<div {...__attrs} class={["field-group", props.class].filter(Boolean).join(" ")} id={props.id}>
+  <Slot />
+</div>
+)
+});
+",
+  "react/IFieldGroupBase.tsx": "export interface FieldGroupBaseProps {
+  /** Id of the field group element. */
+  id?: string;
+}
+export function IFieldGroupBase(props: FieldGroupBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, id, ...__attrs } = props
+return (
+<div {...__attrs} className={["field-group", props.className].filter(Boolean).join(" ")} id={props.id}>
+  {props.children}
+</div>
+)
+}
+",
+  "solid/IFieldGroupBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface FieldGroupBaseProps {
+  /** Id of the field group element. */
+  id?: string;
+}
+export default function IFieldGroupBase(props: FieldGroupBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children", "id"])
+return (
+<div {...__attrs} class={["field-group", props.class].filter(Boolean).join(" ")} id={props.id}>
+  {props.children}
+</div>
+)
+}
+",
+  "svelte/IFieldGroupBase.svelte": "<script lang="ts">
+  export interface FieldGroupBaseProps {
+    /** Id of the field group element. */
+    id?: string;
+  }
+  import type { Snippet } from "svelte";
+  let { id, children, ...__attrs }: FieldGroupBaseProps & { children?: Snippet } & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={["field-group", __attrs.class].filter(Boolean).join(" ")} id={id}>
+  {@render children?.()}
+</div>
+",
+  "vue/IFieldGroupBase.vue": "<script setup lang="ts">
+  export interface FieldGroupBaseProps {
+    /** Id of the field group element. */
+    id?: string;
+  }
+  const props = defineProps<FieldGroupBaseProps>()
+</script>
+<template>
+<div class="field-group" :id="id">
+  <slot />
+</div>
+</template>
+",
+}
+`;

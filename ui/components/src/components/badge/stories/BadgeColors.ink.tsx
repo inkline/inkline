@@ -3,7 +3,7 @@ import IBadge from "../styled/IBadge.ink.tsx";
 
 export default defineComponent(() => {
   return (
-    <div>
+    <div id="story">
       <IBadge color="primary">Primary</IBadge>
       <IBadge color="secondary">Secondary</IBadge>
       <IBadge color="success">Success</IBadge>

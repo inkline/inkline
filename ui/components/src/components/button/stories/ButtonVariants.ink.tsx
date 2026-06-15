@@ -3,7 +3,7 @@ import IButton from "../styled/IButton.ink.tsx";
 
 export default defineComponent(() => {
   return (
-    <div>
+    <div id="story">
       <IButton variant="solid">Solid</IButton>
       <IButton variant="outline">Outline</IButton>
       <IButton variant="soft">Soft</IButton>

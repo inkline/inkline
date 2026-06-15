@@ -16,5 +16,5 @@ export default meta;
 
 export const Default = {};
 export const CustomLabel = { args: { label: "Submit" } };
-export const Colors = { render: "./colors.ink.tsx" };
-export const Sizes = { render: "./sizes.ink.tsx" };
+export const Colors = { render: "./BadgeColors.ink.tsx" };
+export const Sizes = { render: "./BadgeSizes.ink.tsx" };
