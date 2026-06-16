@@ -52,3 +52,15 @@ describe("LateSignal: memo declared before the signal it reads", () => {
     expect(out).toContain("const doubled = useMemo(() => count * 2, [count])");
   });
 });
+
+describe("MemoModel: memo reading a defineModel getter", () => {
+  it("React: useMemo deps reference props.<name>, not a temporal-dead-zone bare local", async () => {
+    const out = await compileTo("MemoModel", "react");
+    // Body and deps must agree on `props.open`; a bare `open` in the deps array references the
+    // props destructuring emitted *after* the memo → ReferenceError at runtime.
+    expect(out).toContain(
+      'const label = useMemo(() => (props.open ? "Open" : "Closed"), [props.open])',
+    );
+    expect(out).not.toContain(", [open])");
+  });
+});

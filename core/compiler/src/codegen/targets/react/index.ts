@@ -375,15 +375,24 @@ function inlineNode(node: IRNode, rules: RewriteRules): string {
   return inlineCode(emitNode(node, rules));
 }
 
-function depRef(d: { readonly name: string; readonly path: readonly string[] }): string {
-  return d.path.length > 0 ? `${d.name}.${d.path.join(".")}` : d.name;
+function depRef(
+  d: { readonly name: string; readonly path: readonly string[] },
+  modelReads?: ReadonlyMap<string, string>,
+): string {
+  // A model getter dep is `{ name: "<getter>", path: [] }` (models are minted as signals), so map it
+  // to the same prop read the body uses (`props.<prop>`); otherwise the deps array would reference a
+  // bare local declared by the later props destructuring — a temporal-dead-zone ReferenceError.
+  // Signals stay bare (they're `useState` locals) and props stay `props.x` (no modelReads entry).
+  const root = modelReads?.get(d.name) ?? d.name;
+  return d.path.length > 0 ? `${root}.${d.path.join(".")}` : root;
 }
 
 function depsList(
   deps: readonly { readonly name: string; readonly path: readonly string[] }[],
+  modelReads?: ReadonlyMap<string, string>,
 ): string {
   // Dedupe: the same reactive value may be read more than once in the body.
-  const refs = [...new Set(deps.map(depRef))];
+  const refs = [...new Set(deps.map((d) => depRef(d, modelReads)))];
   return `[${refs.join(", ")}]`;
 }
 
@@ -560,7 +569,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     reactImports.push("useMemo");
     body.push(
       cStmt({
-        body: `const ${m.name} = useMemo(() => ${rewriteExpr(m.expr.expr, rules)}, ${depsList(m.expr.deps)})`,
+        body: `const ${m.name} = useMemo(() => ${rewriteExpr(m.expr.expr, rules)}, ${depsList(m.expr.deps, rules.modelReads)})`,
         span: m.loc,
       }),
     );
@@ -568,7 +577,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   for (const e of component.effects) {
     reactImports.push("useEffect");
     body.push(
-      cStmt({ body: `useEffect(${rewriteExpr(e.body, rules)}, ${depsList(e.deps)})`, span: e.loc }),
+      cStmt({
+        body: `useEffect(${rewriteExpr(e.body, rules)}, ${depsList(e.deps, rules.modelReads)})`,
+        span: e.loc,
+      }),
     );
   }
   for (const res of component.resources) {
