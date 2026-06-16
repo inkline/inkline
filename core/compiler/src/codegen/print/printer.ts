@@ -39,6 +39,9 @@ class Printer {
   private line = 0;
   private col = 0;
   private atLineStart = true;
+  // When set, the current subtree is emitted with no formatting whitespace (newlines/indent) between
+  // or around children, so target frameworks render the text/markup exactly as the IR holds it.
+  private inline = false;
 
   constructor(private readonly opts: PrintOptions) {
     if (opts.sourceMap !== "none") {
@@ -208,23 +211,30 @@ class Printer {
     }
     if (node.selfClose) {
       this.write(" />");
-      this.writeLine();
+      if (!this.inline) this.writeLine();
       return;
     }
     this.write(">");
     if (node.children.length > 0) {
-      this.writeLine();
-      this.depth++;
-      for (const child of node.children) {
-        this.emit(child);
-        this.ensureNewline();
+      const prevInline = this.inline;
+      this.inline = this.inline || !!node.inline;
+      if (this.inline) {
+        for (const child of node.children) this.emit(child);
+      } else {
+        this.writeLine();
+        this.depth++;
+        for (const child of node.children) {
+          this.emit(child);
+          this.ensureNewline();
+        }
+        this.depth--;
       }
-      this.depth--;
       this.write(`</${node.tag}>`);
+      this.inline = prevInline;
     } else {
       this.write(`</${node.tag}>`);
     }
-    this.writeLine();
+    if (!this.inline) this.writeLine();
   }
 
   private emitJsxAttr(node: CJsxAttr): void {
@@ -255,23 +265,30 @@ class Printer {
     }
     if (node.selfClose) {
       this.write(" />");
-      this.writeLine();
+      if (!this.inline) this.writeLine();
       return;
     }
     this.write(">");
     if (node.children.length > 0) {
-      this.writeLine();
-      this.depth++;
-      for (const child of node.children) {
-        this.emit(child);
-        this.ensureNewline();
+      const prevInline = this.inline;
+      this.inline = this.inline || !!node.inline;
+      if (this.inline) {
+        for (const child of node.children) this.emit(child);
+      } else {
+        this.writeLine();
+        this.depth++;
+        for (const child of node.children) {
+          this.emit(child);
+          this.ensureNewline();
+        }
+        this.depth--;
       }
-      this.depth--;
       this.write(`</${node.tag}>`);
+      this.inline = prevInline;
     } else {
       this.write(`</${node.tag}>`);
     }
-    this.writeLine();
+    if (!this.inline) this.writeLine();
   }
 
   private emitTmplDirective(node: CTmplDirective): void {

@@ -10,12 +10,8 @@ const sum = useComputed$(() => x.value + y.value)
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <span>
-    {sum.value}
-  </span>
-  <button onClick={$(() => { x.value = x.value + 1; y.value = y.value + 1; })}>
-    Both
-  </button>
+  <span>{sum.value}</span>
+  <button onClick={$(() => { x.value = x.value + 1; y.value = y.value + 1; })}>Both</button>
 </div>
 )
 });
@@ -45,15 +41,9 @@ useVisibleTask$(() => { console.log("sum:", sum.value); })
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <span id="sum">
-    {sum.value}
-  </span>
-  <button id="incX" onClick={$(() => x.value = x.value + 1)}>
-    +X
-  </button>
-  <button id="incY" onClick={$(() => y.value = y.value + 1)}>
-    +Y
-  </button>
+  <span id="sum">{sum.value}</span>
+  <button id="incX" onClick={$(() => x.value = x.value + 1)}>+X</button>
+  <button id="incY" onClick={$(() => y.value = y.value + 1)}>+Y</button>
 </div>
 )
 });
@@ -69,9 +59,7 @@ const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   {visible.value ? (<><span>Visible</span></>) : (<><span>Hidden</span></>)}
-  <button onClick={$(() => visible.value = !visible.value)}>
-    Toggle
-  </button>
+  <button onClick={$(() => visible.value = !visible.value)}>Toggle</button>
 </div>
 )
 });
@@ -86,9 +74,7 @@ const active = useSignal(false)
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={[active.value ? "active" : "inactive", props.class].filter(Boolean).join(" ")}>
-  <button onClick={$(() => active.value = !active.value)}>
-    Toggle
-  </button>
+  <button onClick={$(() => active.value = !active.value)}>Toggle</button>
 </div>
 )
 });
@@ -103,15 +89,9 @@ const value = useSignal("b")
 const { ...__attrs } = props
 return (
 <select {...__attrs} value={value.value} class={props.class} onChange={$(e => value.value = e.target.value)}>
-  <option value="a">
-    A
-  </option>
-  <option value="b">
-    B
-  </option>
-  <option value="c">
-    C
-  </option>
+  <option value="a">A</option>
+  <option value="b">B</option>
+  <option value="c">C</option>
 </select>
 )
 });
@@ -127,10 +107,7 @@ const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   <textarea value={text.value} onInput={$(e => text.value = e.target.value)} />
-  <p>
-    {text.value.length}
-    characters
-  </p>
+  <p>{text.value.length} characters</p>
 </div>
 )
 });
@@ -147,15 +124,9 @@ useVisibleTask$(() => { console.log("count:", count.value); })
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <p>
-    {count.value}
-  </p>
-  <p>
-    {doubled.value}
-  </p>
-  <button onClick={$(() => count.value = count.value + 1)}>
-    +1
-  </button>
+  <p>{count.value}</p>
+  <p>{doubled.value}</p>
+  <button onClick={$(() => count.value = count.value + 1)}>+1</button>
 </div>
 )
 });
@@ -191,9 +162,7 @@ const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   <input value={input.value} onInput={$(e => input.value = e.target.value)} />
-  <button onClick={$(() => { items.value = [...items.value, input.value]; input.value = ""; })}>
-    Add
-  </button>
+  <button onClick={$(() => { items.value = [...items.value, input.value]; input.value = ""; })}>Add</button>
   <ul>
     {items.value.map((item, i) => (<><li>{item}</li></>))}
   </ul>
@@ -211,9 +180,7 @@ const active = useSignal(true)
 useVisibleTask$(() => { if (active.value) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
 const { ...__attrs } = props
 return (
-<button {...__attrs} class={props.class} onClick={$(() => active.value = !active.value)}>
-  Toggle
-</button>
+<button {...__attrs} class={props.class} onClick={$(() => active.value = !active.value)}>Toggle</button>
 )
 });
 "
@@ -239,9 +206,7 @@ export const EmitButton = component$((props: { onPress$?: QRL<(...args: any[]) =
 {
 const { onPress$, ...__attrs } = props
 return (
-<button {...__attrs} class={props.class} onClick={$(() => props.onPress$?.(1))}>
-  Go
-</button>
+<button {...__attrs} class={props.class} onClick={$(() => props.onPress$?.(1))}>Go</button>
 )
 });
 "
@@ -271,9 +236,7 @@ const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   <input value={value.value} onInput={$(e => value.value = e.target.value)} />
-  <p>
-    {value.value}
-  </p>
+  <p>{value.value}</p>
 </div>
 )
 });
@@ -316,9 +279,7 @@ export const IButton = component$((props: { label: string; disabled?: boolean } 
 {
 const { label, disabled, ...__attrs } = props
 return (
-<button {...__attrs} disabled={props.disabled} class={props.class}>
-  {props.label}
-</button>
+<button {...__attrs} disabled={props.disabled} class={props.class}>{props.label}</button>
 )
 });
 "
@@ -333,9 +294,7 @@ useVisibleTask$(() => { mounted.value = true; })
 useVisibleTask$(({ cleanup }) => cleanup(() => { console.log("cleanup"); }))
 const { ...__attrs } = props
 return (
-<span {...__attrs} class={props.class}>
-  {mounted.value ? "mounted" : "pending"}
-</span>
+<span {...__attrs} class={props.class}>{mounted.value ? "mounted" : "pending"}</span>
 )
 });
 "
@@ -352,12 +311,8 @@ const label = useComputed$(() => \`Value: \${quadrupled.value}\`)
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <span>
-    {label.value}
-  </span>
-  <button onClick={$(() => base.value = base.value + 1)}>
-    +1
-  </button>
+  <span>{label.value}</span>
+  <button onClick={$(() => base.value = base.value + 1)}>+1</button>
 </div>
 )
 });
@@ -391,9 +346,7 @@ const { value, onUpdateValue$, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   <input value={props.value} onInput={$(e => props.onUpdateValue$?.(e.target.value))} />
-  <p>
-    {props.value}
-  </p>
+  <p>{props.value}</p>
 </div>
 )
 });
@@ -425,9 +378,7 @@ const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   <input placeholder="focus me" ref={inputRef} />
-  <button ref={buttonRef}>
-    Click
-  </button>
+  <button ref={buttonRef}>Click</button>
 </div>
 )
 });
@@ -440,9 +391,7 @@ export const Label = component$((props: { text: string } & Record<string, any>) 
 {
 const { text, ...__attrs } = props
 return (
-<span {...__attrs} class={props.class}>
-  {props.text}
-</span>
+<span {...__attrs} class={props.class}>{props.text}</span>
 )
 });
 "
@@ -457,9 +406,7 @@ const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   <input value={text.value} onInput={$(e => text.value = e.target.value)} />
-  <p>
-    {text.value}
-  </p>
+  <p>{text.value}</p>
 </div>
 )
 });
@@ -472,9 +419,7 @@ export const PropDefaults = component$((props: { color?: string; size: number } 
 {
 const { color = "blue", size, ...__attrs } = props
 return (
-<div {...__attrs} style={\`color: \${color}\`} class={props.class}>
-  {props.size}
-</div>
+<div {...__attrs} style={\`color: \${color}\`} class={props.class}>{props.size}</div>
 )
 });
 "
@@ -540,7 +485,7 @@ const items = useSignal([{ id: 1, label: "One" }, { id: 2, label: "Two" }])
 const { item, ...__attrs } = props
 return (
 <ul {...__attrs} class={props.class}>
-  {items.value.map((item, index) => (<><li>{props.item?.(item, index) ?? (<><>{index}:{item.label}</></>)}</li></>))}
+  {items.value.map((item, index) => (<><li>{props.item?.(item, index) ?? (<><>{index}: {item.label}</></>)}</li></>))}
 </ul>
 )
 });
@@ -555,9 +500,7 @@ const value = useSignal("hello")
 const { children, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <span>
-    {value.value}
-  </span>
+  <span>{value.value}</span>
 </div>
 )
 });
@@ -573,9 +516,7 @@ return (
 <div {...__attrs} class={props.class}>
   <main>
     <Slot>
-      <p>
-        Default content
-      </p>
+      <p>Default content</p>
     </Slot>
   </main>
   <footer>
@@ -613,9 +554,7 @@ const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   {tab.value === "a" ? (<><p>Tab A</p></>) : tab.value === "b" ? (<><p>Tab B</p></>) : null}
-  <button onClick={$(() => tab.value = tab.value === "a" ? "b" : "a")}>
-    Switch
-  </button>
+  <button onClick={$(() => tab.value = tab.value === "a" ? "b" : "a")}>Switch</button>
 </div>
 )
 });
@@ -628,9 +567,7 @@ export const Child = component$((props) =>
 {
 const { ...__attrs } = props
 return (
-<div {...__attrs} class={props.class}>
-  Child
-</div>
+<div {...__attrs} class={props.class}>Child</div>
 )
 });
 

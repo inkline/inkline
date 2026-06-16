@@ -14,7 +14,7 @@ describe("SlotScoped: named scoped slot with args={[item, index]}", () => {
   it("Svelte: scope args thread through {@render itemSnippet(item, index)} with fallback", async () => {
     const out = await compileTo("SlotScoped", "svelte");
     expect(out).toContain("{#if itemSnippet}{@render itemSnippet(item, index)}");
-    expect(out).toContain("{index}:{item.label}");
+    expect(out).toContain("{index}: {item.label}");
   });
 });
 

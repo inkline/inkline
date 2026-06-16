@@ -35,11 +35,23 @@ describe("parseJsxElement", () => {
     }
   });
 
-  it("whitespace-only text nodes are trimmed", () => {
-    const node = parse("<div>   </div>");
+  it("newline-only formatting whitespace is dropped", () => {
+    const node = parse("<div>\n      </div>");
     expect(node.kind).toBe("Element");
     if (node.kind === "Element") {
       expect(node.children).toHaveLength(0);
+    }
+  });
+
+  it("meaningful same-line whitespace in text is preserved", () => {
+    // `<p>Hello, {x()}!</p>` keeps the space after the comma so the rendered text matches the source.
+    const node = parse("<p>Hello, {x()}!</p>");
+    expect(node.kind).toBe("Element");
+    if (node.kind === "Element") {
+      expect(node.children).toHaveLength(3);
+      expect(node.children[0]).toMatchObject({ kind: "Text", value: "Hello, " });
+      expect(node.children[1]!.kind).toBe("Expression");
+      expect(node.children[2]).toMatchObject({ kind: "Text", value: "!" });
     }
   });
 

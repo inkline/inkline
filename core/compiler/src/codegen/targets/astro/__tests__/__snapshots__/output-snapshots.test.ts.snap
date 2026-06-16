@@ -9,14 +9,7 @@ let x = 0
 let y = 0
 const sum = x + y
 ---
-<div {...__attrs} class={__attrs.class}>
-<span>
-{sum}
-</span>
-<button onClick={() => { x = x + 1; y = y + 1; }}>
-Both
-</button>
-</div>
+<div {...__attrs} class={__attrs.class}><span>{sum}</span><button onClick={() => { x = x + 1; y = y + 1; }}>Both</button></div>
 "
 `;
 
@@ -40,17 +33,7 @@ let x = 1
 let y = 2
 const sum = x + y
 ---
-<div {...__attrs} class={__attrs.class}>
-<span id="sum">
-{sum}
-</span>
-<button id="incX" onClick={() => x = x + 1}>
-+X
-</button>
-<button id="incY" onClick={() => y = y + 1}>
-+Y
-</button>
-</div>
+<div {...__attrs} class={__attrs.class}><span id="sum">{sum}</span><button id="incX" onClick={() => x = x + 1}>+X</button><button id="incY" onClick={() => y = y + 1}>+Y</button></div>
 "
 `;
 
@@ -61,16 +44,7 @@ const props = Astro.props as Props;
 const { ...__attrs } = props;
 let visible = true
 ---
-<div {...__attrs} class={__attrs.class}>
-{visible ? (<span>
-Visible
-</span>) : (<span>
-Hidden
-</span>)}
-<button onClick={() => visible = !visible}>
-Toggle
-</button>
-</div>
+<div {...__attrs} class={__attrs.class}>{visible ? (<span>Visible</span>) : (<span>Hidden</span>)}<button onClick={() => visible = !visible}>Toggle</button></div>
 "
 `;
 
@@ -82,9 +56,7 @@ const { ...__attrs } = props;
 let active = false
 ---
 <div {...__attrs} class={[active ? "active" : "inactive", __attrs.class].filter(Boolean).join(" ")}>
-<button onClick={() => active = !active}>
-Toggle
-</button>
+<button onClick={() => active = !active}>Toggle</button>
 </div>
 "
 `;
@@ -96,17 +68,7 @@ const props = Astro.props as Props;
 const { ...__attrs } = props;
 let value = "b"
 ---
-<select {...__attrs} value={value} onChange={e => value = e.target.value} class={__attrs.class}>
-<option value="a">
-A
-</option>
-<option value="b">
-B
-</option>
-<option value="c">
-C
-</option>
-</select>
+<select {...__attrs} value={value} onChange={e => value = e.target.value} class={__attrs.class}><option value="a">A</option><option value="b">B</option><option value="c">C</option></select>
 "
 `;
 
@@ -117,13 +79,7 @@ const props = Astro.props as Props;
 const { ...__attrs } = props;
 let text = ""
 ---
-<div {...__attrs} class={__attrs.class}>
-<textarea value={text} onInput={e => text = e.target.value} />
-<p>
-{text.length}
-characters
-</p>
-</div>
+<div {...__attrs} class={__attrs.class}><textarea value={text} onInput={e => text = e.target.value} /><p>{text.length} characters</p></div>
 "
 `;
 
@@ -135,17 +91,7 @@ const { ...__attrs } = props;
 let count = 0
 const doubled = count * 2
 ---
-<div {...__attrs} class={__attrs.class}>
-<p>
-{count}
-</p>
-<p>
-{doubled}
-</p>
-<button onClick={() => count = count + 1}>
-+1
-</button>
-</div>
+<div {...__attrs} class={__attrs.class}><p>{count}</p><p>{doubled}</p><button onClick={() => count = count + 1}>+1</button></div>
 "
 `;
 
@@ -155,14 +101,11 @@ type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
 ---
-<div {...__attrs} class={__attrs.class}>
-<header>
+<div {...__attrs} class={__attrs.class}><header>
 <slot name="header" />
-</header>
-<main>
+</header><main>
 <slot />
-</main>
-</div>
+</main></div>
 "
 `;
 
@@ -174,17 +117,9 @@ const { ...__attrs } = props;
 let items = []
 let input = ""
 ---
-<div {...__attrs} class={__attrs.class}>
-<input value={input} onInput={e => input = e.target.value} />
-<button onClick={() => { items = [...items, input]; input = ""; }}>
-Add
-</button>
-<ul>
-{items.map((item, i) => (<li>
-{item}
-</li>))}
-</ul>
-</div>
+<div {...__attrs} class={__attrs.class}><input value={input} onInput={e => input = e.target.value} /><button onClick={() => { items = [...items, input]; input = ""; }}>Add</button><ul>
+{items.map((item, i) => (<li>{item}</li>))}
+</ul></div>
 "
 `;
 
@@ -195,9 +130,7 @@ const props = Astro.props as Props;
 const { ...__attrs } = props;
 let active = true
 ---
-<button {...__attrs} onClick={() => active = !active} class={__attrs.class}>
-Toggle
-</button>
+<button {...__attrs} onClick={() => active = !active} class={__attrs.class}>Toggle</button>
 "
 `;
 
@@ -217,9 +150,7 @@ type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
 ---
-<button {...__attrs} onClick={() => undefined} class={__attrs.class}>
-Go
-</button>
+<button {...__attrs} onClick={() => undefined} class={__attrs.class}>Go</button>
 "
 `;
 
@@ -231,9 +162,7 @@ const { ...__attrs } = props;
 let items = ["Apple", "Banana", "Cherry"]
 ---
 <ul {...__attrs} class={__attrs.class}>
-{items.map((item) => (<li>
-{item}
-</li>))}
+{items.map((item) => (<li>{item}</li>))}
 </ul>
 "
 `;
@@ -245,12 +174,7 @@ const props = Astro.props as Props;
 const { ...__attrs } = props;
 let value = ""
 ---
-<div {...__attrs} class={__attrs.class}>
-<input value={value} onInput={e => value = e.target.value} />
-<p>
-{value}
-</p>
-</div>
+<div {...__attrs} class={__attrs.class}><input value={value} onInput={e => value = e.target.value} /><p>{value}</p></div>
 "
 `;
 
@@ -260,17 +184,11 @@ type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
 ---
-<div {...__attrs} class={__attrs.class}>
-{Astro.slots.has("prefix") ? (<span class="prefix">
+<div {...__attrs} class={__attrs.class}>{Astro.slots.has("prefix") ? (<span class="prefix">
 <slot name="prefix" />
-</span>) : null}
-{Astro.slots.has("default") ? (<main>
+</span>) : null}{Astro.slots.has("default") ? (<main>
 <slot />
-</main>) : null}
-{!Astro.slots.has("suffix") ? (<span class="no-suffix">
-none
-</span>) : null}
-</div>
+</main>) : null}{!Astro.slots.has("suffix") ? (<span class="no-suffix">none</span>) : null}</div>
 "
 `;
 
@@ -281,11 +199,7 @@ const props = Astro.props as Props;
 const { ...__attrs } = props;
 ---
 <div {...__attrs} class={__attrs.class}>
-{!Astro.slots.has("suffix") ? (<span class="no-suffix">
-absent
-</span>) : (<span class="has-suffix">
-present
-</span>)}
+{!Astro.slots.has("suffix") ? (<span class="no-suffix">absent</span>) : (<span class="has-suffix">present</span>)}
 </div>
 "
 `;
@@ -296,9 +210,7 @@ type Props = { label: string; disabled?: boolean } & Record<string, any>
 const props = Astro.props as Props;
 const { label, disabled, ...__attrs } = props;
 ---
-<button {...__attrs} disabled={disabled} class={__attrs.class}>
-{label}
-</button>
+<button {...__attrs} disabled={disabled} class={__attrs.class}>{label}</button>
 "
 `;
 
@@ -309,9 +221,7 @@ const props = Astro.props as Props;
 const { ...__attrs } = props;
 let mounted = false
 ---
-<span {...__attrs} class={__attrs.class}>
-{mounted ? "mounted" : "pending"}
-</span>
+<span {...__attrs} class={__attrs.class}>{mounted ? "mounted" : "pending"}</span>
 "
 `;
 
@@ -325,14 +235,7 @@ const doubled = base * 2
 const quadrupled = doubled * 2
 const label = \`Value: \${quadrupled}\`
 ---
-<div {...__attrs} class={__attrs.class}>
-<span>
-{label}
-</span>
-<button onClick={() => base = base + 1}>
-+1
-</button>
-</div>
+<div {...__attrs} class={__attrs.class}><span>{label}</span><button onClick={() => base = base + 1}>+1</button></div>
 "
 `;
 
@@ -344,14 +247,9 @@ const { ...__attrs } = props;
 let items = ["a", "b", "c"]
 let filter = ""
 ---
-<div {...__attrs} class={__attrs.class}>
-<input value={filter} onInput={e => filter = e.target.value} />
-<ul>
-{items.map((item) => (item.includes(filter) ? (<li>
-{item}
-</li>) : null))}
-</ul>
-</div>
+<div {...__attrs} class={__attrs.class}><input value={filter} onInput={e => filter = e.target.value} /><ul>
+{items.map((item) => (item.includes(filter) ? (<li>{item}</li>) : null))}
+</ul></div>
 "
 `;
 
@@ -362,12 +260,7 @@ const props = Astro.props as Props;
 const { ...__attrs } = props;
 let value = props.value
 ---
-<div {...__attrs} class={__attrs.class}>
-<input value={value} onInput={e => value = e.target.value} />
-<p>
-{value}
-</p>
-</div>
+<div {...__attrs} class={__attrs.class}><input value={value} onInput={e => value = e.target.value} /><p>{value}</p></div>
 "
 `;
 
@@ -389,12 +282,7 @@ type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
 ---
-<div {...__attrs} class={__attrs.class}>
-<input placeholder="focus me" />
-<button>
-Click
-</button>
-</div>
+<div {...__attrs} class={__attrs.class}><input placeholder="focus me" /><button>Click</button></div>
 "
 `;
 
@@ -404,9 +292,7 @@ type Props = { text: string } & Record<string, any>
 const props = Astro.props as Props;
 const { text, ...__attrs } = props;
 ---
-<span {...__attrs} class={__attrs.class}>
-{text}
-</span>
+<span {...__attrs} class={__attrs.class}>{text}</span>
 "
 `;
 
@@ -417,12 +303,7 @@ const props = Astro.props as Props;
 const { ...__attrs } = props;
 let text = ""
 ---
-<div {...__attrs} class={__attrs.class}>
-<input value={text} onInput={e => text = e.target.value} />
-<p>
-{text}
-</p>
-</div>
+<div {...__attrs} class={__attrs.class}><input value={text} onInput={e => text = e.target.value} /><p>{text}</p></div>
 "
 `;
 
@@ -432,9 +313,7 @@ type Props = { color?: string; size: number } & Record<string, any>
 const props = Astro.props as Props;
 const { color = "blue", size, ...__attrs } = props;
 ---
-<div {...__attrs} style={\`color: \${color}\`} class={__attrs.class}>
-{size}
-</div>
+<div {...__attrs} style={\`color: \${color}\`} class={__attrs.class}>{size}</div>
 "
 `;
 
@@ -457,10 +336,7 @@ const props = Astro.props as Props;
 const { ...__attrs } = props;
 let expanded = true
 ---
-<div {...__attrs} class={__attrs.class}>
-<slot name="header" />
-{expanded ? (<slot />) : null}
-</div>
+<div {...__attrs} class={__attrs.class}><slot name="header" />{expanded ? (<slot />) : null}</div>
 "
 `;
 
@@ -470,17 +346,13 @@ type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
 ---
-<div {...__attrs} class={__attrs.class}>
-<header>
+<div {...__attrs} class={__attrs.class}><header>
 <slot name="header" />
-</header>
-<main>
+</header><main>
 <slot />
-</main>
-<footer>
+</main><footer>
 <slot name="footer" />
-</footer>
-</div>
+</footer></div>
 "
 `;
 
@@ -495,7 +367,7 @@ let items = [{ id: 1, label: "One" }, { id: 2, label: "Two" }]
 {items.map((item, index) => (<li>
 <!-- scoped slot 'item': args are not projectable in Astro; rendering default content -->
 {index}
-:
+: 
 {item.label}
 </li>))}
 </ul>
@@ -511,9 +383,7 @@ let value = "hello"
 ---
 <div {...__attrs} class={__attrs.class}>
 <!-- scoped slot 'default': args are not projectable in Astro; rendering default content -->
-<span>
-{value}
-</span>
+<span>{value}</span>
 </div>
 "
 `;
@@ -524,22 +394,15 @@ type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
 ---
-<div {...__attrs} class={__attrs.class}>
-<main>
+<div {...__attrs} class={__attrs.class}><main>
 <slot>
-<p>
-Default content
-</p>
+<p>Default content</p>
 </slot>
-</main>
-<footer>
+</main><footer>
 <slot name="actions">
-<span>
-Action area
-</span>
+<span>Action area</span>
 </slot>
-</footer>
-</div>
+</footer></div>
 "
 `;
 
@@ -549,16 +412,11 @@ type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
 ---
-<div {...__attrs} class={__attrs.class}>
-<slot name="header">
-<h1>
-Default Header
-</h1>
-</slot>
-<slot>
+<div {...__attrs} class={__attrs.class}><slot name="header">
+<h1>Default Header</h1>
+</slot><slot>
 Default body content
-</slot>
-</div>
+</slot></div>
 "
 `;
 
@@ -569,16 +427,7 @@ const props = Astro.props as Props;
 const { ...__attrs } = props;
 let tab = "a"
 ---
-<div {...__attrs} class={__attrs.class}>
-{tab === "a" ? (<p>
-Tab A
-</p>) : tab === "b" ? (<p>
-Tab B
-</p>) : null}
-<button onClick={() => tab = tab === "a" ? "b" : "a"}>
-Switch
-</button>
-</div>
+<div {...__attrs} class={__attrs.class}>{tab === "a" ? (<p>Tab A</p>) : tab === "b" ? (<p>Tab B</p>) : null}<button onClick={() => tab = tab === "a" ? "b" : "a"}>Switch</button></div>
 "
 `;
 
@@ -588,9 +437,7 @@ type Props = Record<string, any>
 const props = Astro.props as Props;
 const { ...__attrs } = props;
 ---
-<div {...__attrs} class={__attrs.class}>
-Child
-</div>
+<div {...__attrs} class={__attrs.class}>Child</div>
 
 ---
 type Props = Record<string, any>

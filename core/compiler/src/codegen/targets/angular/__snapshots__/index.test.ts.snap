@@ -3,12 +3,8 @@
 exports[`angular emit + print > Counter component 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-counter', host: { style: 'display: contents' }, template: \`<div>
-<p>
-{{ count() }}
-</p>
-<button (click)="count.set(count() + 1)">
-+1
-</button>
+<p>{{ count() }}</p>
+<button (click)="count.set(count() + 1)">+1</button>
 </div>\` })
 export class CounterComponent
 {
@@ -37,9 +33,7 @@ exports[`angular emit + print > transition passes through to the child 1`] = `
 "import { Component, signal, computed, effect } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-fade', host: { style: 'display: contents' }, template: \`<div>
 @if (count()) {
-<p>
-Hello
-</p>
+<p>Hello</p>
 }
 </div>\` })
 export class FadeComponent

@@ -13,7 +13,7 @@ describe("ScopedSlot: For render-prop child inlined per target", () => {
   it("Solid: render prop becomes a <For> child function reading item/index", async () => {
     const out = await compileTo("ScopedSlot", "solid");
     expect(out).toContain("<For each={items()}>");
-    expect(out).toContain("{(item, index) => <li>{index}:{item.label}</li>}");
+    expect(out).toContain("{(item, index) => <li>{index}: {item.label}</li>}");
   });
 });
 
@@ -27,7 +27,7 @@ describe("SlotScoped: named scoped slot with args={[item, index]}", () => {
     const out = await compileTo("SlotScoped", "solid");
     expect(out).toContain("item?: (...args: any[]) => any");
     expect(out).toContain('splitProps(props, ["item"])');
-    expect(out).toContain("{props.item?.(item, index) ?? <>{index}:{item.label}</>}");
+    expect(out).toContain("{props.item?.(item, index) ?? <>{index}: {item.label}</>}");
   });
 });
 

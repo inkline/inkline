@@ -55,6 +55,8 @@ export interface CJsxElement extends CNodeBase {
   readonly attrs: readonly CJsxAttr[];
   readonly children: readonly Code[];
   readonly selfClose: boolean;
+  /** Emit children with no formatting whitespace (newlines/indent) so the result renders verbatim. */
+  readonly inline?: boolean;
 }
 
 export interface CJsxAttr extends CNodeBase {
@@ -80,6 +82,8 @@ export interface CTmplElement extends CNodeBase {
   readonly attrs: readonly CTmplAttr[];
   readonly children: readonly Code[];
   readonly selfClose: boolean;
+  /** Emit children with no formatting whitespace (newlines/indent) so the result renders verbatim. */
+  readonly inline?: boolean;
 }
 
 export interface CTmplDirective extends CNodeBase {

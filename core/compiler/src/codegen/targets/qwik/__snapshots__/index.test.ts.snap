@@ -9,12 +9,8 @@ const doubled = useComputed$(() => count.value * 2)
 useVisibleTask$(() => { console.log("effect"); })
 return (
 <div>
-  <p>
-    {count.value}
-  </p>
-  <button onClick={$(() => count.value = count.value + 1)}>
-    +1
-  </button>
+  <p>{count.value}</p>
+  <button onClick={$(() => count.value = count.value + 1)}>+1</button>
 </div>
 )
 });

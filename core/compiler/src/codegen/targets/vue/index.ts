@@ -24,6 +24,7 @@ import {
   reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import { childrenArePhrasing } from "../../shared/phrasing.ts";
 import { assertNever } from "../../../core/assert.ts";
 import * as ts from "typescript";
 
@@ -146,7 +147,13 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     case "Element": {
       const attrs = tmplAttrs(node, rules);
       const children = node.children.map((c) => emitNode(c, rules));
-      return cTmplElement({ tag: node.tag, attrs, children, selfClose: children.length === 0 });
+      return cTmplElement({
+        tag: node.tag,
+        attrs,
+        children,
+        selfClose: children.length === 0,
+        inline: childrenArePhrasing(node.children),
+      });
     }
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? node.reference.getText();

@@ -9,12 +9,8 @@ exports[`vue full output snapshots > BatchUpdates 1`] = `
 </script>
 <template>
 <div>
-  <span>
-    {{ sum }}
-  </span>
-  <button @click="() => { x = x + 1; y = y + 1; }">
-    Both
-  </button>
+  <span>{{ sum }}</span>
+  <button @click="() => { x = x + 1; y = y + 1; }">Both</button>
 </div>
 </template>
 "
@@ -40,15 +36,9 @@ exports[`vue full output snapshots > Composite 1`] = `
 </script>
 <template>
 <div>
-  <span id="sum">
-    {{ sum }}
-  </span>
-  <button id="incX" @click="() => x = x + 1">
-    +X
-  </button>
-  <button id="incY" @click="() => y = y + 1">
-    +Y
-  </button>
+  <span id="sum">{{ sum }}</span>
+  <button id="incX" @click="() => x = x + 1">+X</button>
+  <button id="incY" @click="() => y = y + 1">+Y</button>
 </div>
 </template>
 "
@@ -67,9 +57,7 @@ exports[`vue full output snapshots > Conditional 1`] = `
   <span v-else>
     Hidden
   </span>
-  <button @click="() => visible = !visible">
-    Toggle
-  </button>
+  <button @click="() => visible = !visible">Toggle</button>
 </div>
 </template>
 "
@@ -82,9 +70,7 @@ exports[`vue full output snapshots > ConditionalClass 1`] = `
 </script>
 <template>
 <div :class='active ? "active" : "inactive"'>
-  <button @click="() => active = !active">
-    Toggle
-  </button>
+  <button @click="() => active = !active">Toggle</button>
 </div>
 </template>
 "
@@ -97,15 +83,9 @@ exports[`vue full output snapshots > ControlledSelect 1`] = `
 </script>
 <template>
 <select :value="value" @change="e => value = e.target.value">
-  <option value="a">
-    A
-  </option>
-  <option value="b">
-    B
-  </option>
-  <option value="c">
-    C
-  </option>
+  <option value="a">A</option>
+  <option value="b">B</option>
+  <option value="c">C</option>
 </select>
 </template>
 "
@@ -119,10 +99,7 @@ exports[`vue full output snapshots > ControlledTextarea 1`] = `
 <template>
 <div>
   <textarea :value="text" @input="e => text = e.target.value" />
-  <p>
-    {{ text.length }}
-    characters
-  </p>
+  <p>{{ text.length }} characters</p>
 </div>
 </template>
 "
@@ -137,15 +114,9 @@ exports[`vue full output snapshots > Counter 1`] = `
 </script>
 <template>
 <div>
-  <p>
-    {{ count }}
-  </p>
-  <p>
-    {{ doubled }}
-  </p>
-  <button @click="() => count = count + 1">
-    +1
-  </button>
+  <p>{{ count }}</p>
+  <p>{{ doubled }}</p>
+  <button @click="() => count = count + 1">+1</button>
 </div>
 </template>
 "
@@ -176,9 +147,7 @@ exports[`vue full output snapshots > DynamicList 1`] = `
 <template>
 <div>
   <input :value="input" @input="e => input = e.target.value" />
-  <button @click='() => { items = [...items, input]; input = ""; }'>
-    Add
-  </button>
+  <button @click='() => { items = [...items, input]; input = ""; }'>Add</button>
   <ul>
     <li v-for="(item, i) in items" :key="i">
       {{ item }}
@@ -196,9 +165,7 @@ exports[`vue full output snapshots > EffectCleanup 1`] = `
   watchEffect(() => { if (active.value) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
 </script>
 <template>
-<button @click="() => active = !active">
-  Toggle
-</button>
+<button @click="() => active = !active">Toggle</button>
 </template>
 "
 `;
@@ -220,9 +187,7 @@ exports[`vue full output snapshots > EmitButton 1`] = `
   const emit = defineEmits(["press"])
 </script>
 <template>
-<button @click='() => emit("press", 1)'>
-  Go
-</button>
+<button @click='() => emit("press", 1)'>Go</button>
 </template>
 "
 `;
@@ -250,9 +215,7 @@ exports[`vue full output snapshots > FormField 1`] = `
 <template>
 <div>
   <input :value="value" @input="e => value = e.target.value" />
-  <p>
-    {{ value }}
-  </p>
+  <p>{{ value }}</p>
 </div>
 </template>
 "
@@ -298,9 +261,7 @@ exports[`vue full output snapshots > IButton 1`] = `
   const props = defineProps<{ label: string; disabled?: boolean }>()
 </script>
 <template>
-<button :disabled="disabled">
-  {{ label }}
-</button>
+<button :disabled="disabled">{{ label }}</button>
 </template>
 "
 `;
@@ -313,9 +274,7 @@ exports[`vue full output snapshots > Lifecycle 1`] = `
   onUnmounted(() => { console.log("cleanup"); })
 </script>
 <template>
-<span>
-  {{ mounted ? "mounted" : "pending" }}
-</span>
+<span>{{ mounted ? "mounted" : "pending" }}</span>
 </template>
 "
 `;
@@ -330,12 +289,8 @@ exports[`vue full output snapshots > MemoChain 1`] = `
 </script>
 <template>
 <div>
-  <span>
-    {{ label }}
-  </span>
-  <button @click="() => base = base + 1">
-    +1
-  </button>
+  <span>{{ label }}</span>
+  <button @click="() => base = base + 1">+1</button>
 </div>
 </template>
 "
@@ -369,9 +324,7 @@ exports[`vue full output snapshots > ModelInput 1`] = `
 <template>
 <div>
   <input :value="value" @input="e => value = e.target.value" />
-  <p>
-    {{ value }}
-  </p>
+  <p>{{ value }}</p>
 </div>
 </template>
 "
@@ -398,9 +351,7 @@ exports[`vue full output snapshots > MultiRefs 1`] = `
 <template>
 <div>
   <input placeholder="focus me" ref="inputRef" />
-  <button ref="buttonRef">
-    Click
-  </button>
+  <button ref="buttonRef">Click</button>
 </div>
 </template>
 "
@@ -411,9 +362,7 @@ exports[`vue full output snapshots > MultipleComponentsPerFile 1`] = `
   const props = defineProps<{ text: string }>()
 </script>
 <template>
-<span>
-  {{ text }}
-</span>
+<span>{{ text }}</span>
 </template>
 "
 `;
@@ -426,9 +375,7 @@ exports[`vue full output snapshots > NativeBind 1`] = `
 <template>
 <div>
   <input :value="text" @input="e => text = e.target.value" />
-  <p>
-    {{ text }}
-  </p>
+  <p>{{ text }}</p>
 </div>
 </template>
 "
@@ -439,9 +386,7 @@ exports[`vue full output snapshots > PropDefaults 1`] = `
   const props = withDefaults(defineProps<{ color?: string; size: number }>(), { color: "blue" })
 </script>
 <template>
-<div :style="\`color: \${color}\`">
-  {{ size }}
-</div>
+<div :style="\`color: \${color}\`">{{ size }}</div>
 </template>
 "
 `;
@@ -499,7 +444,7 @@ exports[`vue full output snapshots > SlotScoped 1`] = `
 <ul>
   <li v-for="(item, index) in items" :key="item.id">
     <slot name="item" :item="item" :index="index">
-      {{ index }}:{{ item.label }}
+      {{ index }}: {{ item.label }}
     </slot>
   </li>
 </ul>
@@ -515,9 +460,7 @@ exports[`vue full output snapshots > SlotScopedSingle 1`] = `
 <template>
 <div>
   <slot :prop0="value">
-    <span>
-      {{ value }}
-    </span>
+    <span>{{ value }}</span>
   </slot>
 </div>
 </template>
@@ -531,16 +474,12 @@ exports[`vue full output snapshots > SlotWithDefault 1`] = `
 <div>
   <main>
     <slot>
-      <p>
-        Default content
-      </p>
+      <p>Default content</p>
     </slot>
   </main>
   <footer>
     <slot name="actions">
-      <span>
-        Action area
-      </span>
+      <span>Action area</span>
     </slot>
   </footer>
 </div>
@@ -554,9 +493,7 @@ exports[`vue full output snapshots > SlotWithFallback 1`] = `
 <template>
 <div>
   <slot name="header">
-    <h1>
-      Default Header
-    </h1>
+    <h1>Default Header</h1>
   </slot>
   <slot>
     Default body content
@@ -579,9 +516,7 @@ exports[`vue full output snapshots > SwitchTabs 1`] = `
   <p v-else-if='tab === "b"'>
     Tab B
   </p>
-  <button @click='() => tab = tab === "a" ? "b" : "a"'>
-    Switch
-  </button>
+  <button @click='() => tab = tab === "a" ? "b" : "a"'>Switch</button>
 </div>
 </template>
 "
@@ -591,9 +526,7 @@ exports[`vue multi-component files > ComponentRef (all files) 1`] = `
 "<script setup lang="ts">
 </script>
 <template>
-<div>
-  Child
-</div>
+<div>Child</div>
 </template>
 
 <script setup lang="ts">

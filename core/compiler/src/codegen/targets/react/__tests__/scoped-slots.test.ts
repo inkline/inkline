@@ -18,7 +18,7 @@ describe("ScopedSlot: For render-prop child inlined per target", () => {
   it("React: render prop becomes .map((item, index) => ...) inlining the <li>", async () => {
     const out = await compileTo("ScopedSlot", "react");
     expect(out).toContain("items.map((item, index) => (");
-    expect(out).toContain("<li>{index}:{item.label}</li>");
+    expect(out).toContain("<li>{index}: {item.label}</li>");
     // The `key` prop is the EXTRACTED value `item.id` (on the per-row Fragment wrapper),
     // not the raw key arrow — so reconciliation gets a stable per-row identity.
     expect(out).toContain("<Fragment key={item.id}>");
@@ -36,7 +36,7 @@ describe("SlotScoped: named scoped slot with args={[item, index]}", () => {
     expect(out).toContain("item?: (...args: any[]) => React.ReactNode");
     expect(out).toContain("const { item, ...__attrs } = props");
     // a scoped slot is a function prop, invoked with the scope args, falling back to authored content
-    expect(out).toContain("{props.item?.(item, index) ?? <>{index}:{item.label}</>}");
+    expect(out).toContain("{props.item?.(item, index) ?? <>{index}: {item.label}</>}");
   });
 });
 

@@ -3,12 +3,8 @@
 exports[`angular full output snapshots > BatchUpdates 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-batch-updates', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
-<span>
-{{ sum() }}
-</span>
-<button (click)="x.set(x() + 1); y.set(y() + 1);">
-Both
-</button>
+<span>{{ sum() }}</span>
+<button (click)="x.set(x() + 1); y.set(y() + 1);">Both</button>
 </div>\` })
 export class BatchUpdatesComponent
 {
@@ -34,15 +30,9 @@ value = model<string>()
 exports[`angular full output snapshots > Composite 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-composite', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
-<span id="sum">
-{{ sum() }}
-</span>
-<button id="incX" (click)="x.set(x() + 1)">
-+X
-</button>
-<button id="incY" (click)="y.set(y() + 1)">
-+Y
-</button>
+<span id="sum">{{ sum() }}</span>
+<button id="incX" (click)="x.set(x() + 1)">+X</button>
+<button id="incY" (click)="y.set(y() + 1)">+Y</button>
 </div>\` })
 export class CompositeComponent
 {
@@ -59,17 +49,11 @@ exports[`angular full output snapshots > Conditional 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-conditional', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
 @if (visible()) {
-<span>
-Visible
-</span>
+<span>Visible</span>
 } @else {
-<span>
-Hidden
-</span>
+<span>Hidden</span>
 }
-<button (click)="visible.set(!visible())">
-Toggle
-</button>
+<button (click)="visible.set(!visible())">Toggle</button>
 </div>\` })
 export class ConditionalComponent
 {
@@ -82,9 +66,7 @@ visible = signal(true)
 exports[`angular full output snapshots > ConditionalClass 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-conditional-class', host: { style: 'display: contents' }, template: \`<div [class]="(active() ? 'active' : 'inactive') + (klass() ? ' ' + klass() : '')">
-<button (click)="active.set(!active())">
-Toggle
-</button>
+<button (click)="active.set(!active())">Toggle</button>
 </div>\` })
 export class ConditionalClassComponent
 {
@@ -97,15 +79,9 @@ active = signal(false)
 exports[`angular full output snapshots > ControlledSelect 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-controlled-select', host: { style: 'display: contents' }, template: \`<select [value]="value()" [class]="klass()" (change)="value.set($event.target.value)">
-<option value="a">
-A
-</option>
-<option value="b">
-B
-</option>
-<option value="c">
-C
-</option>
+<option value="a">A</option>
+<option value="b">B</option>
+<option value="c">C</option>
 </select>\` })
 export class ControlledSelectComponent
 {
@@ -119,10 +95,7 @@ exports[`angular full output snapshots > ControlledTextarea 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-controlled-textarea', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
 <textarea [value]="text()" (input)="text.set($event.target.value)"></textarea>
-<p>
-{{ text().length }}
-characters
-</p>
+<p>{{ text().length }} characters</p>
 </div>\` })
 export class ControlledTextareaComponent
 {
@@ -135,15 +108,9 @@ text = signal('')
 exports[`angular full output snapshots > Counter 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-counter', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
-<p>
-{{ count() }}
-</p>
-<p>
-{{ doubled() }}
-</p>
-<button (click)="count.set(count() + 1)">
-+1
-</button>
+<p>{{ count() }}</p>
+<p>{{ doubled() }}</p>
+<button (click)="count.set(count() + 1)">+1</button>
 </div>\` })
 export class CounterComponent
 {
@@ -176,14 +143,10 @@ exports[`angular full output snapshots > DynamicList 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-dynamic-list', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
 <input [value]="input()" (input)="input.set($event.target.value)" />
-<button (click)="items.set([...items(), input()]); input.set('')">
-Add
-</button>
+<button (click)="items.set([...items(), input()]); input.set('')">Add</button>
 <ul>
 @for (item of items(); track i; let i = $index) {
-<li>
-{{ item }}
-</li>
+<li>{{ item }}</li>
 }
 </ul>
 </div>\` })
@@ -198,9 +161,7 @@ input = signal('')
 
 exports[`angular full output snapshots > EffectCleanup 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
-@Component({ standalone: true, selector: 'ink-effect-cleanup', host: { style: 'display: contents' }, template: \`<button [class]="klass()" (click)="active.set(!active())">
-Toggle
-</button>\` })
+@Component({ standalone: true, selector: 'ink-effect-cleanup', host: { style: 'display: contents' }, template: \`<button [class]="klass()" (click)="active.set(!active())">Toggle</button>\` })
 export class EffectCleanupComponent
 {
 klass = input<string>()
@@ -224,9 +185,7 @@ inputRef = viewChild<ElementRef>('inputRef')
 
 exports[`angular full output snapshots > EmitButton 1`] = `
 "import { Component, signal, computed, effect, input, output } from "@angular/core";
-@Component({ standalone: true, selector: 'ink-emit-button', host: { style: 'display: contents' }, template: \`<button [class]="klass()" (click)="press.emit(1)">
-Go
-</button>\` })
+@Component({ standalone: true, selector: 'ink-emit-button', host: { style: 'display: contents' }, template: \`<button [class]="klass()" (click)="press.emit(1)">Go</button>\` })
 export class EmitButtonComponent
 {
 klass = input<string>()
@@ -239,9 +198,7 @@ exports[`angular full output snapshots > ForLoop 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-for-loop', host: { style: 'display: contents' }, template: \`<ul [class]="klass()">
 @for (item of items(); track item) {
-<li>
-{{ item }}
-</li>
+<li>{{ item }}</li>
 }
 </ul>\` })
 export class ForLoopComponent
@@ -256,9 +213,7 @@ exports[`angular full output snapshots > FormField 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-form-field', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
 <input [value]="value()" (input)="value.set($event.target.value)" />
-<p>
-{{ value() }}
-</p>
+<p>{{ value() }}</p>
 </div>\` })
 export class FormFieldComponent
 {
@@ -289,9 +244,7 @@ klass = input<string>()
 exports[`angular full output snapshots > HasSlotFallback 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-has-slot-fallback', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
-<span class="has-suffix">
-present
-</span>
+<span class="has-suffix">present</span>
 </div>\` })
 export class HasSlotFallbackComponent
 {
@@ -302,9 +255,7 @@ klass = input<string>()
 
 exports[`angular full output snapshots > IButton 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
-@Component({ standalone: true, selector: 'ink-button', host: { style: 'display: contents' }, template: \`<button [disabled]="disabled()" [class]="klass()">
-{{ label() }}
-</button>\` })
+@Component({ standalone: true, selector: 'ink-button', host: { style: 'display: contents' }, template: \`<button [disabled]="disabled()" [class]="klass()">{{ label() }}</button>\` })
 export class IButtonComponent
 {
 klass = input<string>()
@@ -316,9 +267,7 @@ disabled = input<boolean>()
 
 exports[`angular full output snapshots > Lifecycle 1`] = `
 "import { Component, signal, computed, effect, input, afterNextRender, inject, DestroyRef } from "@angular/core";
-@Component({ standalone: true, selector: 'ink-lifecycle', host: { style: 'display: contents' }, template: \`<span [class]="klass()">
-{{ mounted() ? 'mounted' : 'pending' }}
-</span>\` })
+@Component({ standalone: true, selector: 'ink-lifecycle', host: { style: 'display: contents' }, template: \`<span [class]="klass()">{{ mounted() ? 'mounted' : 'pending' }}</span>\` })
 export class LifecycleComponent
 {
 klass = input<string>()
@@ -331,12 +280,8 @@ constructor() { afterNextRender(() => { this.mounted.set(true); }); inject(Destr
 exports[`angular full output snapshots > MemoChain 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-memo-chain', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
-<span>
-{{ label() }}
-</span>
-<button (click)="base.set(base() + 1)">
-+1
-</button>
+<span>{{ label() }}</span>
+<button (click)="base.set(base() + 1)">+1</button>
 </div>\` })
 export class MemoChainComponent
 {
@@ -356,9 +301,7 @@ exports[`angular full output snapshots > MixedControlFlow 1`] = `
 <ul>
 @for (item of items(); track item) {
 @if (item.includes(filter())) {
-<li>
-{{ item }}
-</li>
+<li>{{ item }}</li>
 }
 }
 </ul>
@@ -376,9 +319,7 @@ exports[`angular full output snapshots > ModelInput 1`] = `
 "import { Component, signal, computed, effect, input, model } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-model-input', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
 <input [value]="value()" (input)="value.set($event.target.value)" />
-<p>
-{{ value() }}
-</p>
+<p>{{ value() }}</p>
 </div>\` })
 export class ModelInputComponent
 {
@@ -404,9 +345,7 @@ exports[`angular full output snapshots > MultiRefs 1`] = `
 "import { Component, signal, computed, effect, input, afterNextRender, viewChild, ElementRef } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-multi-refs', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
 <input placeholder="focus me" #inputRef />
-<button #buttonRef>
-Click
-</button>
+<button #buttonRef>Click</button>
 </div>\` })
 export class MultiRefsComponent
 {
@@ -420,9 +359,7 @@ buttonRef = viewChild<ElementRef>('buttonRef')
 
 exports[`angular full output snapshots > MultipleComponentsPerFile 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
-@Component({ standalone: true, selector: 'ink-label', host: { style: 'display: contents' }, template: \`<span [class]="klass()">
-{{ text() }}
-</span>\` })
+@Component({ standalone: true, selector: 'ink-label', host: { style: 'display: contents' }, template: \`<span [class]="klass()">{{ text() }}</span>\` })
 export class LabelComponent
 {
 klass = input<string>()
@@ -435,9 +372,7 @@ exports[`angular full output snapshots > NativeBind 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-native-bind', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
 <input [value]="text()" (input)="text.set($event.target.value)" />
-<p>
-{{ text() }}
-</p>
+<p>{{ text() }}</p>
 </div>\` })
 export class NativeBindComponent
 {
@@ -449,9 +384,7 @@ text = signal('')
 
 exports[`angular full output snapshots > PropDefaults 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
-@Component({ standalone: true, selector: 'ink-prop-defaults', host: { style: 'display: contents' }, template: \`<div [style]="\\\`color: \\\${color()}\\\`" [class]="klass()">
-{{ size() }}
-</div>\` })
+@Component({ standalone: true, selector: 'ink-prop-defaults', host: { style: 'display: contents' }, template: \`<div [style]="\\\`color: \\\${color()}\\\`" [class]="klass()">{{ size() }}</div>\` })
 export class PropDefaultsComponent
 {
 klass = input<string>()
@@ -516,7 +449,7 @@ exports[`angular full output snapshots > SlotScoped 1`] = `
 <li>
 <!-- scoped slot 'item': args are not projectable in Angular; rendering default content -->
 {{ index }}
-:
+: 
 {{ item.label }}
 </li>
 }
@@ -533,9 +466,7 @@ exports[`angular full output snapshots > SlotScopedSingle 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-slot-scoped-single', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
 <!-- scoped slot 'default': args are not projectable in Angular; rendering default content -->
-<span>
-{{ value() }}
-</span>
+<span>{{ value() }}</span>
 </div>\` })
 export class SlotScopedSingleComponent
 {
@@ -549,14 +480,10 @@ exports[`angular full output snapshots > SlotWithDefault 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-slot-with-default', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
 <main>
-<ng-content><p>
-Default content
-</p></ng-content>
+<ng-content><p>Default content</p></ng-content>
 </main>
 <footer>
-<ng-content select="[slot=actions]"><span>
-Action area
-</span></ng-content>
+<ng-content select="[slot=actions]"><span>Action area</span></ng-content>
 </footer>
 </div>\` })
 export class SlotWithDefaultComponent
@@ -569,9 +496,7 @@ klass = input<string>()
 exports[`angular full output snapshots > SlotWithFallback 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-slot-with-fallback', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
-<ng-content select="[slot=header]"><h1>
-Default Header
-</h1></ng-content>
+<ng-content select="[slot=header]"><h1>Default Header</h1></ng-content>
 <ng-content>Default body content</ng-content>
 </div>\` })
 export class SlotWithFallbackComponent
@@ -585,17 +510,11 @@ exports[`angular full output snapshots > SwitchTabs 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-switch-tabs', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
 @if (tab() === 'a') {
-<p>
-Tab A
-</p>
+<p>Tab A</p>
 }@else if (tab() === 'b') {
-<p>
-Tab B
-</p>
+<p>Tab B</p>
 }
-<button (click)="tab.set(tab() === 'a' ? 'b' : 'a')">
-Switch
-</button>
+<button (click)="tab.set(tab() === 'a' ? 'b' : 'a')">Switch</button>
 </div>\` })
 export class SwitchTabsComponent
 {
@@ -607,9 +526,7 @@ tab = signal('a')
 
 exports[`angular multi-component files > ComponentRef (all files) 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
-@Component({ standalone: true, selector: 'ink-child', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
-Child
-</div>\` })
+@Component({ standalone: true, selector: 'ink-child', host: { style: 'display: contents' }, template: \`<div [class]="klass()">Child</div>\` })
 export class ChildComponent
 {
 klass = input<string>()

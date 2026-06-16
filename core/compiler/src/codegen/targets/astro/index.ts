@@ -10,6 +10,7 @@ import {
   reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import { childrenArePhrasing } from "../../shared/phrasing.ts";
 import {
   FALLTHROUGH_REST,
   classMergeExpr,
@@ -74,9 +75,13 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
         }
       }
       const attrStr = parts.join(" ");
-      const children = node.children.map((c) => emitNode(c, rules)).join("\n");
+      // Astro renders the template literally, so any formatting whitespace shows. Inline phrasing
+      // (text + expressions) and multi-child elements so the output matches the other targets.
+      const inline = childrenArePhrasing(node.children) || node.children.length >= 2;
+      const children = node.children.map((c) => emitNode(c, rules)).join(inline ? "" : "\n");
       if (node.children.length === 0) return `<${node.tag}${attrStr ? " " + attrStr : ""} />`;
-      return `<${node.tag}${attrStr ? " " + attrStr : ""}>\n${children}\n</${node.tag}>`;
+      const body = inline ? children : `\n${children}\n`;
+      return `<${node.tag}${attrStr ? " " + attrStr : ""}>${body}</${node.tag}>`;
     }
     case "Text":
       return node.value;
