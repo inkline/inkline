@@ -125,6 +125,8 @@ All primitives are authoring-time — the compiler removes them from emitted out
 
 Stories are also authored in `.ink.tsx` and compiled per-framework into [`ui/<framework>/generated/stories/`](../ui/) by the CLI's story generator. Use the `defineStories` helper from [`@inkline/storybook`](../tooling/storybook/) to keep types tight.
 
+Set `title` to `Components/<Category>/<Component>` — the `title` is the Storybook sidebar path, and the category segment groups the component in the sidebar. Current buckets: `Actions`, `Feedback`, `Forms` (add a new one when no existing category fits). Don't fall back to a flat `Components/<Component>`, or the component lands ungrouped.
+
 Each story file represents a single variant (colors, sizes, states). See [`ui/components/src/components/badge/stories/`](../ui/components/src/components/badge/stories/) for the canonical layout. The unified Storybook aggregator ([`apps/storybook/`](../apps/storybook/)) consumes the compiled output and displays variants for every framework side-by-side.
 
 ## Testing

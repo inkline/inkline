@@ -3,7 +3,7 @@ import type { BadgeProps } from "../styled/IBadge.ink.tsx";
 
 const meta = defineStories<BadgeProps>({
   component: "IBadge",
-  title: "Components/Badge",
+  title: "Components/Feedback/Badge",
   args: {
     label: "Badge",
   },
