@@ -7,7 +7,7 @@ export interface FieldGroupBaseProps {
   /** Id of the field group element. */
   id?: string;
 }
-@Component({ standalone: true, selector: 'ink-field-group-base', template: \`<div [class]="'field-group' + (klass() ? ' ' + klass() : '')" [attr.id]="(id()) ?? null">
+@Component({ standalone: true, selector: 'ink-field-group-base', host: { style: 'display: contents' }, template: \`<div [class]="'field-group' + (klass() ? ' ' + klass() : '')" [attr.id]="(id()) ?? null">
 <ng-content></ng-content>
 </div>\` })
 export class IFieldGroupBaseComponent

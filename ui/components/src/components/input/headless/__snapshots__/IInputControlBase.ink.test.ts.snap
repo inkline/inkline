@@ -17,7 +17,7 @@ export interface InputControlBaseProps {
   /** Marks the control as read-only. */
   readonly?: boolean;
 }
-@Component({ standalone: true, selector: 'ink-input-control-base', template: \`@if (type() === 'textarea') {
+@Component({ standalone: true, selector: 'ink-input-control-base', host: { style: 'display: contents' }, template: \`@if (type() === 'textarea') {
 <textarea class="input-field" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [value]="value() ?? ''" [attr.placeholder]="(placeholder()) ?? null" [disabled]="disabled()" [readonly]="readonly()" (input)="value.set($event.currentTarget.value)"></textarea>
 } @else {
 <input class="input-field" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [attr.type]="(type()) ?? null" [value]="value() ?? ''" [attr.placeholder]="(placeholder()) ?? null" [disabled]="disabled()" [readonly]="readonly()" (input)="value.set($event.currentTarget.value)" />

@@ -614,7 +614,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       cRaw({ text: "" }),
       cRaw({
-        text: `@Component({ standalone: true, selector: '${angularSelector(component.name)}'${importsStr}${providersStr}, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
+        text: `@Component({ standalone: true, selector: '${angularSelector(component.name)}', host: { style: 'display: contents' }${importsStr}${providersStr}, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
       }),
       cStmt({ body: `export class ${component.name}Component` }),
       cRaw({ text: "{" }),

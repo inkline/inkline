@@ -9,7 +9,7 @@ export interface ButtonBaseProps {
   disabled?: boolean;
   loading?: boolean;
 }
-@Component({ standalone: true, selector: 'ink-button-base', template: \`<button [class]="'button' + (klass() ? ' ' + klass() : '')" [attr.type]="(type() ?? 'button') ?? null" [disabled]="disabled() || loading()" [attr.aria-busy]="(loading() ? 'true' : 'false') ?? null">
+@Component({ standalone: true, selector: 'ink-button-base', host: { style: 'display: contents' }, template: \`<button [class]="'button' + (klass() ? ' ' + klass() : '')" [attr.type]="(type() ?? 'button') ?? null" [disabled]="disabled() || loading()" [attr.aria-busy]="(loading() ? 'true' : 'false') ?? null">
 @if (!!loading()) {
 <span class="button-spinner" aria-hidden="true"></span>
 }

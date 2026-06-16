@@ -4,7 +4,7 @@ exports[`InputPrefix > output matches snapshots 1`] = `
 {
   "angular/IInputPrefixBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
 export interface InputPrefixBaseProps {}
-@Component({ standalone: true, selector: 'ink-input-prefix-base', template: \`<span [class]="'input-prefix' + (klass() ? ' ' + klass() : '')">
+@Component({ standalone: true, selector: 'ink-input-prefix-base', host: { style: 'display: contents' }, template: \`<span [class]="'input-prefix' + (klass() ? ' ' + klass() : '')">
 <ng-content></ng-content>
 </span>\` })
 export class IInputPrefixBaseComponent
