@@ -3,7 +3,7 @@ import type { ButtonProps } from "../styled/IButton.ink.tsx";
 
 const meta = defineStories<ButtonProps>({
   component: "IButton",
-  title: "Components/Button",
+  title: "Components/Actions/Button",
   args: {
     label: "Button",
     disabled: false,

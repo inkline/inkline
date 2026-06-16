@@ -3,7 +3,7 @@ import type { FieldGroupProps } from "../styled/IFieldGroup.ink.tsx";
 
 const meta = defineStories<FieldGroupProps>({
   component: "IFieldGroup",
-  title: "Components/FieldGroup",
+  title: "Components/Forms/FieldGroup",
   args: {},
   argTypes: {
     orientation: {
