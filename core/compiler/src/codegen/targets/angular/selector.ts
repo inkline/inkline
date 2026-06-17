@@ -20,3 +20,22 @@ export function angularSelector(componentName: string): string {
     .toLowerCase();
   return `ink-${kebab}`;
 }
+
+/**
+ * The camelCase attribute selector for a compiled component used as an attribute-selector
+ * directive/host-element (the Angular Material pattern, e.g. `<button mat-button>`). The leading
+ * `I` folds into the `ink` prefix, mirroring {@link angularSelector}:
+ *
+ * - `IButtonBase` → `inkButtonBase`
+ * - `IBadge` → `inkBadge`
+ * - `Label` → `inkLabel`
+ */
+export function angularAttrSelector(componentName: string): string {
+  const base = componentName.replace(/^I(?=[A-Z])/, "");
+  return "ink" + base.charAt(0).toUpperCase() + base.slice(1);
+}
+
+/** An element-plus-attribute selector for an attribute-selector component (`button[inkButtonBase]`). */
+export function angularElementSelector(tag: string, attr: string): string {
+  return `${tag}[${attr}]`;
+}

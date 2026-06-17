@@ -1,4 +1,5 @@
 import type { Code } from "./code-ir/nodes.ts";
+import type { AngularRegistry } from "./targets/angular/registry.ts";
 import type { IRComponent, IRContextDefinition } from "../ir/render/nodes.ts";
 import type { Diagnostic } from "../core/diagnostics/codes.ts";
 import type { DiagnosticCollector } from "../core/diagnostics/collector.ts";
@@ -157,6 +158,12 @@ export interface CodegenContext {
   readonly externalImports: readonly Code[];
   readonly componentImports: readonly ComponentImport[];
   readonly typeDeclarations: readonly Code[];
+  /**
+   * Angular-only: the whole-program component registry (host tag / kind / attribute chain per
+   * component), used to emit attribute-selector host elements and stacked directives. Absent for
+   * every other target and for direct `emit()` unit tests, which fall back to `ink-*` wrapper output.
+   */
+  readonly angularRegistry?: AngularRegistry;
 }
 
 export interface CodeModule {

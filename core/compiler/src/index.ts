@@ -1,5 +1,5 @@
 // ============ TOP-LEVEL ENTRY POINT ============
-export { compile } from "./pipeline/compile.ts";
+export { compile, analyzeOnly, buildAngularRegistry } from "./pipeline/compile.ts";
 export type { CompileInput, CompileResult, AnalyzedModule } from "./pipeline/compile.ts";
 export {
   compileIncremental,
@@ -24,7 +24,18 @@ export { pipe } from "./pipeline/types.ts";
 // ============ TARGET NAMING ============
 // The Angular element selector for a compiled component (`IBadge` → `ink-badge`). Exported for
 // tooling that instantiates compiled components by tag (e.g. the Storybook story generator).
-export { angularSelector } from "./codegen/targets/angular/selector.ts";
+export {
+  angularSelector,
+  angularAttrSelector,
+  angularElementSelector,
+} from "./codegen/targets/angular/selector.ts";
+// The Angular attribute-selector registry (component name → host tag / kind / attribute chain),
+// built by `buildAngularRegistry` over `analyzeOnly` modules and threaded back in via config.
+export type {
+  AngularRegistry,
+  AngularComponentEntry,
+  AngularKind,
+} from "./codegen/targets/angular/registry.ts";
 
 // ============ DIAGNOSTICS ============
 export type { Diagnostic, DiagnosticSeverity, DiagnosticCode } from "./core/diagnostics/codes.ts";

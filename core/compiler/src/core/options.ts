@@ -1,5 +1,6 @@
 import { ALL_TARGETS, type TargetName, type TargetRegistry } from "../codegen/context.ts";
 import { builtinRegistry } from "../codegen/registry.ts";
+import type { AngularRegistry } from "../codegen/targets/angular/registry.ts";
 import type { Plugin } from "../plugin/types.ts";
 
 export type SourceMapMode = "external" | "inline" | "none";
@@ -48,6 +49,12 @@ export interface InklineConfig {
    * Inkline's own compiler options (jsx, jsxImportSource, …) are always forced on top.
    */
   readonly tsconfig?: string;
+  /**
+   * Angular-only whole-program component registry (component name → host tag / kind / attribute
+   * chain), built by a pre-pass over all components and consumed by the Angular target's
+   * attribute-selector codegen. Ignored by every other target. Built via `buildAngularRegistry`.
+   */
+  readonly angularRegistry?: AngularRegistry;
 }
 
 export interface ResolvedCompilerOptions {
@@ -61,6 +68,7 @@ export interface ResolvedCompilerOptions {
   readonly verbose: boolean;
   readonly registry: TargetRegistry;
   readonly tsconfig?: string;
+  readonly angularRegistry?: AngularRegistry;
 }
 
 export function resolveOptions(
@@ -92,5 +100,6 @@ export function resolveOptions(
     verbose: config.verbose ?? false,
     registry,
     tsconfig: config.tsconfig,
+    angularRegistry: config.angularRegistry,
   };
 }
