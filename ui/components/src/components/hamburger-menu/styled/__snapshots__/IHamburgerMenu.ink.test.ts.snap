@@ -1,0 +1,172 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`IHamburgerMenu (styled) > output matches snapshots 1`] = `
+{
+  "angular/IHamburgerMenu.component.ts": "import { Component, signal, computed, effect, input, model } from "@angular/core";
+import { IHamburgerMenuBaseComponent as IHamburgerMenuBase } from "../headless/IHamburgerMenuBase.component";
+import { type HamburgerMenuBaseProps } from "../headless/IHamburgerMenuBase.component";
+import {
+  hamburgerMenuRecipe,
+  type HamburgerMenuRecipeProps as HamburgerMenuStylingProps,
+} from "virtual:styleframe";
+export interface HamburgerMenuProps extends HamburgerMenuBaseProps {
+  /** Color variant. */
+  color?: HamburgerMenuStylingProps["color"];
+  /** Size variant. */
+  size?: HamburgerMenuStylingProps["size"];
+  /** Shape the bars morph into while open. */
+  animation?: HamburgerMenuStylingProps["animation"];
+}
+@Component({ standalone: true, selector: 'ink-hamburger-menu', host: { style: 'display: contents' }, imports: [IHamburgerMenuBase], template: \`<ink-hamburger-menu-base [klass]="(className()) + (klass() ? ' ' + klass() : '')" [open]="open()" [ariaLabel]="ariaLabel()" [ariaControls]="ariaControls()" [disabled]="disabled()" (openChange)="open.set($event)"></ink-hamburger-menu-base>\` })
+export class IHamburgerMenuComponent
+{
+hamburgerMenuRecipe = hamburgerMenuRecipe
+klass = input<string>()
+className = computed(() => hamburgerMenuRecipe({ color: this.color(), size: this.size(), animation: this.animation(), active: this.open() ? 'true' : 'false' }))
+color = input<HamburgerMenuStylingProps["color"]>()
+size = input<HamburgerMenuStylingProps["size"]>()
+animation = input<HamburgerMenuStylingProps["animation"]>()
+ariaLabel = input<string>()
+ariaControls = input<string>()
+disabled = input<boolean>()
+open = model<boolean>()
+}
+",
+  "astro/IHamburgerMenu.astro": "---
+import IHamburgerMenuBase, { type HamburgerMenuBaseProps } from "../headless/IHamburgerMenuBase.astro";
+import {
+  hamburgerMenuRecipe,
+  type HamburgerMenuRecipeProps as HamburgerMenuStylingProps,
+} from "virtual:styleframe";
+export interface HamburgerMenuProps extends HamburgerMenuBaseProps {
+  /** Color variant. */
+  color?: HamburgerMenuStylingProps["color"];
+  /** Size variant. */
+  size?: HamburgerMenuStylingProps["size"];
+  /** Shape the bars morph into while open. */
+  animation?: HamburgerMenuStylingProps["animation"];
+}
+type Props = HamburgerMenuProps & Record<string, any>
+const props = Astro.props as Props;
+const { color, size, animation, ariaLabel, ariaControls, disabled, ...__attrs } = props;
+let open = props.open
+const className = hamburgerMenuRecipe({ color: color, size: size, animation: animation, active: open ? "true" : "false" })
+---
+<IHamburgerMenuBase {...__attrs} class={[className, __attrs.class].filter(Boolean).join(" ")} open={open} ariaLabel={ariaLabel} ariaControls={ariaControls} disabled={disabled} />
+",
+  "qwik/IHamburgerMenu.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
+import { IHamburgerMenuBase } from "../headless/IHamburgerMenuBase";
+import { type HamburgerMenuBaseProps } from "../headless/IHamburgerMenuBase";
+import {
+  hamburgerMenuRecipe,
+  type HamburgerMenuRecipeProps as HamburgerMenuStylingProps,
+} from "virtual:styleframe";
+export interface HamburgerMenuProps extends HamburgerMenuBaseProps {
+  /** Color variant. */
+  color?: HamburgerMenuStylingProps["color"];
+  /** Size variant. */
+  size?: HamburgerMenuStylingProps["size"];
+  /** Shape the bars morph into while open. */
+  animation?: HamburgerMenuStylingProps["animation"];
+}
+export const IHamburgerMenu = component$((props: HamburgerMenuProps & { open?: boolean; onUpdateOpen$?: QRL<(value: boolean) => void> } & Record<string, any>) =>
+{
+const className = useComputed$(() => hamburgerMenuRecipe({ color: props.color, size: props.size, animation: props.animation, active: props.open ? "true" : "false" }))
+const { color, size, animation, ariaLabel, ariaControls, disabled, open, onUpdateOpen$, ...__attrs } = props
+return (
+<IHamburgerMenuBase {...__attrs} class={[className.value, props.class].filter(Boolean).join(" ")} open={props.open} ariaLabel={props.ariaLabel} ariaControls={props.ariaControls} disabled={props.disabled} onUpdateOpen$={$(v => props.onUpdateOpen$?.(v))} />
+)
+});
+",
+  "react/IHamburgerMenu.tsx": "import { useMemo } from "react";
+import { IHamburgerMenuBase } from "../headless/IHamburgerMenuBase";
+import { type HamburgerMenuBaseProps } from "../headless/IHamburgerMenuBase";
+import {
+  hamburgerMenuRecipe,
+  type HamburgerMenuRecipeProps as HamburgerMenuStylingProps,
+} from "virtual:styleframe";
+export interface HamburgerMenuProps extends HamburgerMenuBaseProps {
+  /** Color variant. */
+  color?: HamburgerMenuStylingProps["color"];
+  /** Size variant. */
+  size?: HamburgerMenuStylingProps["size"];
+  /** Shape the bars morph into while open. */
+  animation?: HamburgerMenuStylingProps["animation"];
+}
+export function IHamburgerMenu(props: HamburgerMenuProps & { open?: boolean; onUpdateOpen?: (value: boolean) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const className = useMemo(() => hamburgerMenuRecipe({ color: props.color, size: props.size, animation: props.animation, active: props.open ? "true" : "false" }), [props.color, props.size, props.animation, props.open])
+const { color, size, animation, ariaLabel, ariaControls, disabled, open, onUpdateOpen, ...__attrs } = props
+return (
+<IHamburgerMenuBase {...__attrs} className={[className, props.className].filter(Boolean).join(" ")} open={props.open} ariaLabel={props.ariaLabel} ariaControls={props.ariaControls} disabled={props.disabled} onUpdateOpen={v => props.onUpdateOpen?.(v)} />
+)
+}
+",
+  "solid/IHamburgerMenu.tsx": "import { createMemo, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+import IHamburgerMenuBase, { type HamburgerMenuBaseProps } from "../headless/IHamburgerMenuBase";
+import {
+  hamburgerMenuRecipe,
+  type HamburgerMenuRecipeProps as HamburgerMenuStylingProps,
+} from "virtual:styleframe";
+export interface HamburgerMenuProps extends HamburgerMenuBaseProps {
+  /** Color variant. */
+  color?: HamburgerMenuStylingProps["color"];
+  /** Size variant. */
+  size?: HamburgerMenuStylingProps["size"];
+  /** Shape the bars morph into while open. */
+  animation?: HamburgerMenuStylingProps["animation"];
+}
+export default function IHamburgerMenu(props: HamburgerMenuProps & { open?: boolean; onUpdateOpen?: (value: boolean) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const className = createMemo(() => hamburgerMenuRecipe({ color: props.color, size: props.size, animation: props.animation, active: props.open ? "true" : "false" }))
+const [, __attrs] = splitProps(props, ["color", "size", "animation", "ariaLabel", "ariaControls", "disabled", "open", "onUpdateOpen"])
+return (
+<IHamburgerMenuBase {...__attrs} class={[className(), props.class].filter(Boolean).join(" ")} open={props.open} ariaLabel={props.ariaLabel} ariaControls={props.ariaControls} disabled={props.disabled} onUpdateOpen={v => props.onUpdateOpen?.(v)} />
+)
+}
+",
+  "svelte/IHamburgerMenu.svelte": "<script lang="ts">
+  import IHamburgerMenuBase, { type HamburgerMenuBaseProps } from "../headless/IHamburgerMenuBase.svelte";
+  import {
+    hamburgerMenuRecipe,
+    type HamburgerMenuRecipeProps as HamburgerMenuStylingProps,
+  } from "virtual:styleframe";
+  export interface HamburgerMenuProps extends HamburgerMenuBaseProps {
+    /** Color variant. */
+    color?: HamburgerMenuStylingProps["color"];
+    /** Size variant. */
+    size?: HamburgerMenuStylingProps["size"];
+    /** Shape the bars morph into while open. */
+    animation?: HamburgerMenuStylingProps["animation"];
+  }
+  let { color, size, animation, ariaLabel, ariaControls, disabled, open = $bindable(), ...__attrs }: HamburgerMenuProps & { open?: boolean } & Record<string, any> = $props()
+  let className = $derived(hamburgerMenuRecipe({ color: color, size: size, animation: animation, active: open ? "true" : "false" }))
+</script>
+<IHamburgerMenuBase bind:open={open} {...__attrs} class={[className, __attrs.class].filter(Boolean).join(" ")} ariaLabel={ariaLabel} ariaControls={ariaControls} disabled={disabled} />
+",
+  "vue/IHamburgerMenu.vue": "<script setup lang="ts">
+  import { computed } from "vue";
+  import IHamburgerMenuBase, { type HamburgerMenuBaseProps } from "../headless/IHamburgerMenuBase.vue";
+  import {
+    hamburgerMenuRecipe,
+    type HamburgerMenuRecipeProps as HamburgerMenuStylingProps,
+  } from "virtual:styleframe";
+  export interface HamburgerMenuProps extends HamburgerMenuBaseProps {
+    /** Color variant. */
+    color?: HamburgerMenuStylingProps["color"];
+    /** Size variant. */
+    size?: HamburgerMenuStylingProps["size"];
+    /** Shape the bars morph into while open. */
+    animation?: HamburgerMenuStylingProps["animation"];
+  }
+  const props = defineProps<HamburgerMenuProps>()
+  const open = defineModel<boolean>("open")
+  const className = computed(() => hamburgerMenuRecipe({ color: props.color, size: props.size, animation: props.animation, active: open.value ? "true" : "false" }))
+</script>
+<template>
+<IHamburgerMenuBase v-model:open="open" :class="className" :ariaLabel="ariaLabel" :ariaControls="ariaControls" :disabled="disabled" />
+</template>
+",
+}
+`;
