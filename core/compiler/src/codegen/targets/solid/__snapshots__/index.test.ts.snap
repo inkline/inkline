@@ -9,12 +9,8 @@ const doubled = createMemo(() => count() * 2)
 createEffect(() => { console.log("effect"); })
 return (
 <div>
-  <p>
-    {count()}
-  </p>
-  <button onclick={() => setCount(count() + 1)}>
-    +1
-  </button>
+  <p>{count()}</p>
+  <button onclick={() => setCount(count() + 1)}>+1</button>
 </div>
 )
 }
@@ -85,9 +81,7 @@ return (
 <div>
   <__InkTransition name="fade">
     <Show when={count()}>
-      <p>
-        Hello
-      </p>
+      <p>Hello</p>
     </Show>
   </__InkTransition>
 </div>
@@ -137,9 +131,7 @@ const [count, setCount] = createSignal(0)
 const doubled = createMemo(() => count() * 2)
 createEffect(() => { console.log("effect"); })
 return (
-<p>
-  {count() * 2}
-</p>
+<p>{count() * 2}</p>
 )
 }
 "

@@ -11,12 +11,8 @@ const sum = createMemo(() => x() + y())
 const [, __attrs] = splitProps(props, [])
 return (
 <div {...__attrs} class={props.class}>
-  <span>
-    {sum()}
-  </span>
-  <button onclick={() => { setX(x() + 1); setY(y() + 1); }}>
-    Both
-  </button>
+  <span>{sum()}</span>
+  <button onclick={() => { setX(x() + 1); setY(y() + 1); }}>Both</button>
 </div>
 )
 }
@@ -48,15 +44,9 @@ createEffect(() => { console.log("sum:", sum()); })
 const [, __attrs] = splitProps(props, [])
 return (
 <div {...__attrs} class={props.class}>
-  <span id="sum">
-    {sum()}
-  </span>
-  <button id="incX" onclick={() => setX(x() + 1)}>
-    +X
-  </button>
-  <button id="incY" onclick={() => setY(y() + 1)}>
-    +Y
-  </button>
+  <span id="sum">{sum()}</span>
+  <button id="incX" onclick={() => setX(x() + 1)}>+X</button>
+  <button id="incY" onclick={() => setY(y() + 1)}>+Y</button>
 </div>
 )
 }
@@ -73,13 +63,9 @@ const [, __attrs] = splitProps(props, [])
 return (
 <div {...__attrs} class={props.class}>
   <Show when={visible()} fallback={<><span>Hidden</span></>}>
-    <span>
-      Visible
-    </span>
+    <span>Visible</span>
   </Show>
-  <button onclick={() => setVisible(!visible())}>
-    Toggle
-  </button>
+  <button onclick={() => setVisible(!visible())}>Toggle</button>
 </div>
 )
 }
@@ -95,9 +81,7 @@ const [active, setActive] = createSignal(false)
 const [, __attrs] = splitProps(props, [])
 return (
 <div {...__attrs} class={[active() ? "active" : "inactive", props.class].filter(Boolean).join(" ")}>
-  <button onclick={() => setActive(!active())}>
-    Toggle
-  </button>
+  <button onclick={() => setActive(!active())}>Toggle</button>
 </div>
 )
 }
@@ -113,15 +97,9 @@ const [value, setValue] = createSignal("b")
 const [, __attrs] = splitProps(props, [])
 return (
 <select {...__attrs} value={value()} class={props.class} onchange={e => setValue(e.target.value)}>
-  <option value="a">
-    A
-  </option>
-  <option value="b">
-    B
-  </option>
-  <option value="c">
-    C
-  </option>
+  <option value="a">A</option>
+  <option value="b">B</option>
+  <option value="c">C</option>
 </select>
 )
 }
@@ -138,10 +116,7 @@ const [, __attrs] = splitProps(props, [])
 return (
 <div {...__attrs} class={props.class}>
   <textarea value={text()} oninput={e => setText(e.target.value)} />
-  <p>
-    {text().length}
-    characters
-  </p>
+  <p>{text().length} characters</p>
 </div>
 )
 }
@@ -159,15 +134,9 @@ createEffect(() => { console.log("count:", count()); })
 const [, __attrs] = splitProps(props, [])
 return (
 <div {...__attrs} class={props.class}>
-  <p>
-    {count()}
-  </p>
-  <p>
-    {doubled()}
-  </p>
-  <button onclick={() => setCount(count() + 1)}>
-    +1
-  </button>
+  <p>{count()}</p>
+  <p>{doubled()}</p>
+  <button onclick={() => setCount(count() + 1)}>+1</button>
 </div>
 )
 }
@@ -205,9 +174,7 @@ const [, __attrs] = splitProps(props, [])
 return (
 <div {...__attrs} class={props.class}>
   <input value={input()} oninput={e => setInput(e.target.value)} />
-  <button onclick={() => { setItems([...items(), input()]); setInput(""); }}>
-    Add
-  </button>
+  <button onclick={() => { setItems([...items(), input()]); setInput(""); }}>Add</button>
   <ul>
     <For each={items()}>
       {(item, i) => <li>{item}</li>}
@@ -228,9 +195,7 @@ const [active, setActive] = createSignal(true)
 createEffect(() => { if (active()) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
 const [, __attrs] = splitProps(props, [])
 return (
-<button {...__attrs} class={props.class} onclick={() => setActive(!active())}>
-  Toggle
-</button>
+<button {...__attrs} class={props.class} onclick={() => setActive(!active())}>Toggle</button>
 )
 }
 "
@@ -258,9 +223,7 @@ export default function EmitButton(props: { onPress?: (...args: any[]) => void }
 {
 const [, __attrs] = splitProps(props, ["onPress"])
 return (
-<button {...__attrs} class={props.class} onclick={() => props.onPress?.(1)}>
-  Go
-</button>
+<button {...__attrs} class={props.class} onclick={() => props.onPress?.(1)}>Go</button>
 )
 }
 "
@@ -294,9 +257,7 @@ const [, __attrs] = splitProps(props, [])
 return (
 <div {...__attrs} class={props.class}>
   <input value={value()} oninput={e => setValue(e.target.value)} />
-  <p>
-    {value()}
-  </p>
+  <p>{value()}</p>
 </div>
 )
 }
@@ -322,9 +283,7 @@ return (
     </main>
   </Show>
   <Show when={!(props.suffix != null)}>
-    <span class="no-suffix">
-      none
-    </span>
+    <span class="no-suffix">none</span>
   </Show>
 </div>
 )
@@ -341,9 +300,7 @@ const [, __attrs] = splitProps(props, ["suffix"])
 return (
 <div {...__attrs} class={props.class}>
   <Show when={!(props.suffix != null)} fallback={<><span class="has-suffix">present</span></>}>
-    <span class="no-suffix">
-      absent
-    </span>
+    <span class="no-suffix">absent</span>
   </Show>
 </div>
 )
@@ -358,9 +315,7 @@ export default function IButton(props: { label: string; disabled?: boolean } & J
 {
 const [, __attrs] = splitProps(props, ["label", "disabled"])
 return (
-<button {...__attrs} disabled={props.disabled} class={props.class}>
-  {props.label}
-</button>
+<button {...__attrs} disabled={props.disabled} class={props.class}>{props.label}</button>
 )
 }
 "
@@ -376,9 +331,7 @@ onMount(() => { setMounted(true); })
 onCleanup(() => { console.log("cleanup"); })
 const [, __attrs] = splitProps(props, [])
 return (
-<span {...__attrs} class={props.class}>
-  {mounted() ? "mounted" : "pending"}
-</span>
+<span {...__attrs} class={props.class}>{mounted() ? "mounted" : "pending"}</span>
 )
 }
 "
@@ -396,12 +349,8 @@ const label = createMemo(() => \`Value: \${quadrupled()}\`)
 const [, __attrs] = splitProps(props, [])
 return (
 <div {...__attrs} class={props.class}>
-  <span>
-    {label()}
-  </span>
-  <button onclick={() => setBase(base() + 1)}>
-    +1
-  </button>
+  <span>{label()}</span>
+  <button onclick={() => setBase(base() + 1)}>+1</button>
 </div>
 )
 }
@@ -439,9 +388,7 @@ const [, __attrs] = splitProps(props, ["value", "onUpdateValue"])
 return (
 <div {...__attrs} class={props.class}>
   <input value={props.value} oninput={e => props.onUpdateValue?.(e.target.value)} />
-  <p>
-    {props.value}
-  </p>
+  <p>{props.value}</p>
 </div>
 )
 }
@@ -475,9 +422,7 @@ const [, __attrs] = splitProps(props, [])
 return (
 <div {...__attrs} class={props.class}>
   <input placeholder="focus me" ref={(el) => inputRef = el} />
-  <button ref={(el) => buttonRef = el}>
-    Click
-  </button>
+  <button ref={(el) => buttonRef = el}>Click</button>
 </div>
 )
 }
@@ -491,9 +436,7 @@ export default function Label(props: { text: string } & JSX.HTMLAttributes<HTMLE
 {
 const [, __attrs] = splitProps(props, ["text"])
 return (
-<span {...__attrs} class={props.class}>
-  {props.text}
-</span>
+<span {...__attrs} class={props.class}>{props.text}</span>
 )
 }
 "
@@ -509,9 +452,7 @@ const [, __attrs] = splitProps(props, [])
 return (
 <div {...__attrs} class={props.class}>
   <input value={text()} oninput={e => setText(e.target.value)} />
-  <p>
-    {text()}
-  </p>
+  <p>{text()}</p>
 </div>
 )
 }
@@ -526,9 +467,7 @@ export default function PropDefaults(_props: { color?: string; size: number } & 
 const props = mergeProps({ color: "blue" }, _props)
 const [, __attrs] = splitProps(props, ["color", "size"])
 return (
-<div {...__attrs} style={\`color: \${props.color}\`} class={props.class}>
-  {props.size}
-</div>
+<div {...__attrs} style={\`color: \${props.color}\`} class={props.class}>{props.size}</div>
 )
 }
 "
@@ -601,7 +540,7 @@ const [, __attrs] = splitProps(props, ["item"])
 return (
 <ul {...__attrs} class={props.class}>
   <For each={items()}>
-    {(item, index) => <li>{props.item?.(item, index) ?? <>{index}:{item.label}</>}</li>}
+    {(item, index) => <li>{props.item?.(item, index) ?? <>{index}: {item.label}</>}</li>}
   </For>
 </ul>
 )
@@ -672,19 +611,13 @@ return (
 <div {...__attrs} class={props.class}>
   <Switch>
     <Match when={tab() === "a"}>
-      <p>
-        Tab A
-      </p>
+      <p>Tab A</p>
     </Match>
     <Match when={tab() === "b"}>
-      <p>
-        Tab B
-      </p>
+      <p>Tab B</p>
     </Match>
   </Switch>
-  <button onclick={() => setTab(tab() === "a" ? "b" : "a")}>
-    Switch
-  </button>
+  <button onclick={() => setTab(tab() === "a" ? "b" : "a")}>Switch</button>
 </div>
 )
 }
@@ -698,9 +631,7 @@ export default function Child(props: JSX.HTMLAttributes<HTMLElement>)
 {
 const [, __attrs] = splitProps(props, [])
 return (
-<div {...__attrs} class={props.class}>
-  Child
-</div>
+<div {...__attrs} class={props.class}>Child</div>
 )
 }
 

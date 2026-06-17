@@ -10,7 +10,7 @@ import {
   type FieldGroupRecipeProps as FieldGroupStylingProps,
 } from "virtual:styleframe";
 export interface FieldGroupProps extends FieldGroupBaseProps, FieldGroupStylingProps {}
-@Component({ standalone: true, selector: 'ink-field-group', imports: [IFieldGroupBase], template: \`<ink-field-group-base [id]="id()" [klass]="(className()) + (klass() ? ' ' + klass() : '')">
+@Component({ standalone: true, selector: 'ink-field-group', host: { style: 'display: contents' }, imports: [IFieldGroupBase], template: \`<ink-field-group-base [id]="id()" [klass]="(className()) + (klass() ? ' ' + klass() : '')">
 <ng-content></ng-content>
 </ink-field-group-base>\` })
 export class IFieldGroupComponent

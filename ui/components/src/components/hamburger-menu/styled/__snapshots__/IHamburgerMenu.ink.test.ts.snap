@@ -17,7 +17,7 @@ export interface HamburgerMenuProps extends HamburgerMenuBaseProps {
   /** Shape the bars morph into while open. */
   animation?: HamburgerMenuStylingProps["animation"];
 }
-@Component({ standalone: true, selector: 'ink-hamburger-menu', imports: [IHamburgerMenuBase], template: \`<ink-hamburger-menu-base [klass]="(className()) + (klass() ? ' ' + klass() : '')" [open]="open()" [ariaLabel]="ariaLabel()" [ariaControls]="ariaControls()" [disabled]="disabled()" (openChange)="open.set($event)"></ink-hamburger-menu-base>\` })
+@Component({ standalone: true, selector: 'ink-hamburger-menu', host: { style: 'display: contents' }, imports: [IHamburgerMenuBase], template: \`<ink-hamburger-menu-base [klass]="(className()) + (klass() ? ' ' + klass() : '')" [open]="open()" [ariaLabel]="ariaLabel()" [ariaControls]="ariaControls()" [disabled]="disabled()" (openChange)="open.set($event)"></ink-hamburger-menu-base>\` })
 export class IHamburgerMenuComponent
 {
 hamburgerMenuRecipe = hamburgerMenuRecipe

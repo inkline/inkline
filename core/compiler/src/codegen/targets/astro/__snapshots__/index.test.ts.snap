@@ -5,14 +5,7 @@ exports[`astro emit + print > Counter component 1`] = `
 let count = 0
 const doubled = count * 2
 ---
-<div>
-<p>
-{count}
-</p>
-<button onClick={() => count = count + 1}>
-+1
-</button>
-</div>
+<div><p>{count}</p><button onClick={() => count = count + 1}>+1</button></div>
 "
 `;
 
@@ -34,9 +27,7 @@ let count = 0
 const doubled = count * 2
 ---
 <div>
-{count ? (<p>
-Hello
-</p>) : null}
+{count ? (<p>Hello</p>) : null}
 </div>
 "
 `;

@@ -18,14 +18,7 @@ exports[`svelte emit + print > Counter component 1`] = `
   let doubled = $derived(count * 2)
   $effect(() => { console.log("effect"); })
 </script>
-<div>
-  <p>
-    {count}
-  </p>
-  <button onclick={() => count = count + 1}>
-    +1
-  </button>
-</div>
+<div><p>{count}</p><button onclick={() => count = count + 1}>+1</button></div>
 "
 `;
 

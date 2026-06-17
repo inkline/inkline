@@ -7,14 +7,7 @@ exports[`svelte full output snapshots > BatchUpdates 1`] = `
   let y = $state(0)
   let sum = $derived(x + y)
 </script>
-<div {...__attrs} class={__attrs.class}>
-  <span>
-    {sum}
-  </span>
-  <button onclick={() => { x = x + 1; y = y + 1; }}>
-    Both
-  </button>
-</div>
+<div {...__attrs} class={__attrs.class}><span>{sum}</span><button onclick={() => { x = x + 1; y = y + 1; }}>Both</button></div>
 "
 `;
 
@@ -35,17 +28,7 @@ exports[`svelte full output snapshots > Composite 1`] = `
   let sum = $derived(x + y)
   $effect(() => { console.log("sum:", sum); })
 </script>
-<div {...__attrs} class={__attrs.class}>
-  <span id="sum">
-    {sum}
-  </span>
-  <button id="incX" onclick={() => x = x + 1}>
-    +X
-  </button>
-  <button id="incY" onclick={() => y = y + 1}>
-    +Y
-  </button>
-</div>
+<div {...__attrs} class={__attrs.class}><span id="sum">{sum}</span><button id="incX" onclick={() => x = x + 1}>+X</button><button id="incY" onclick={() => y = y + 1}>+Y</button></div>
 "
 `;
 
@@ -54,18 +37,7 @@ exports[`svelte full output snapshots > Conditional 1`] = `
   let { ...__attrs }: Record<string, any> = $props()
   let visible = $state(true)
 </script>
-<div {...__attrs} class={__attrs.class}>
-  {#if visible}<span>
-    Visible
-  </span>
-  {:else}<span>
-    Hidden
-  </span>
-  {/if}
-  <button onclick={() => visible = !visible}>
-    Toggle
-  </button>
-</div>
+<div {...__attrs} class={__attrs.class}>{#if visible}<span>Visible</span>{:else}<span>Hidden</span>{/if}<button onclick={() => visible = !visible}>Toggle</button></div>
 "
 `;
 
@@ -75,9 +47,7 @@ exports[`svelte full output snapshots > ConditionalClass 1`] = `
   let active = $state(false)
 </script>
 <div {...__attrs} class={[active ? "active" : "inactive", __attrs.class].filter(Boolean).join(" ")}>
-  <button onclick={() => active = !active}>
-    Toggle
-  </button>
+  <button onclick={() => active = !active}>Toggle</button>
 </div>
 "
 `;
@@ -87,17 +57,7 @@ exports[`svelte full output snapshots > ControlledSelect 1`] = `
   let { ...__attrs }: Record<string, any> = $props()
   let value = $state("b")
 </script>
-<select {...__attrs} value={value} class={__attrs.class} onchange={e => value = e.target.value}>
-  <option value="a">
-    A
-  </option>
-  <option value="b">
-    B
-  </option>
-  <option value="c">
-    C
-  </option>
-</select>
+<select {...__attrs} value={value} class={__attrs.class} onchange={e => value = e.target.value}><option value="a">A</option><option value="b">B</option><option value="c">C</option></select>
 "
 `;
 
@@ -106,13 +66,7 @@ exports[`svelte full output snapshots > ControlledTextarea 1`] = `
   let { ...__attrs }: Record<string, any> = $props()
   let text = $state("")
 </script>
-<div {...__attrs} class={__attrs.class}>
-  <textarea value={text} oninput={e => text = e.target.value}></textarea>
-  <p>
-    {text.length}
-    characters
-  </p>
-</div>
+<div {...__attrs} class={__attrs.class}><textarea value={text} oninput={e => text = e.target.value}></textarea><p>{text.length} characters</p></div>
 "
 `;
 
@@ -123,17 +77,7 @@ exports[`svelte full output snapshots > Counter 1`] = `
   let doubled = $derived(count * 2)
   $effect(() => { console.log("count:", count); })
 </script>
-<div {...__attrs} class={__attrs.class}>
-  <p>
-    {count}
-  </p>
-  <p>
-    {doubled}
-  </p>
-  <button onclick={() => count = count + 1}>
-    +1
-  </button>
-</div>
+<div {...__attrs} class={__attrs.class}><p>{count}</p><p>{doubled}</p><button onclick={() => count = count + 1}>+1</button></div>
 "
 `;
 
@@ -143,14 +87,7 @@ exports[`svelte full output snapshots > DefineSlotBasic 1`] = `
   interface Props { header?: Snippet; children?: Snippet }
   let { header: headerSnippet, children, ...__attrs }: Props & Record<string, any> = $props()
 </script>
-<div {...__attrs} class={__attrs.class}>
-  <header>
-    {@render headerSnippet?.()}
-  </header>
-  <main>
-    {@render children?.()}
-  </main>
-</div>
+<div {...__attrs} class={__attrs.class}><header>{@render headerSnippet?.()}</header><main>{@render children?.()}</main></div>
 "
 `;
 
@@ -160,18 +97,7 @@ exports[`svelte full output snapshots > DynamicList 1`] = `
   let items = $state([])
   let input = $state("")
 </script>
-<div {...__attrs} class={__attrs.class}>
-  <input value={input} oninput={e => input = e.target.value} />
-  <button onclick={() => { items = [...items, input]; input = ""; }}>
-    Add
-  </button>
-  <ul>
-    {#each items as item, i (i)}<li>
-      {item}
-    </li>
-    {/each}
-  </ul>
-</div>
+<div {...__attrs} class={__attrs.class}><input value={input} oninput={e => input = e.target.value} /><button onclick={() => { items = [...items, input]; input = ""; }}>Add</button><ul>{#each items as item, i (i)}<li>{item}</li>{/each}</ul></div>
 "
 `;
 
@@ -181,9 +107,7 @@ exports[`svelte full output snapshots > EffectCleanup 1`] = `
   let active = $state(true)
   $effect(() => { if (active) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
 </script>
-<button {...__attrs} class={__attrs.class} onclick={() => active = !active}>
-  Toggle
-</button>
+<button {...__attrs} class={__attrs.class} onclick={() => active = !active}>Toggle</button>
 "
 `;
 
@@ -202,9 +126,7 @@ exports[`svelte full output snapshots > EmitButton 1`] = `
   interface Props { onPress?: (...args: any[]) => void }
   let { onPress, ...__attrs }: Props & Record<string, any> = $props()
 </script>
-<button {...__attrs} class={__attrs.class} onclick={() => onPress?.(1)}>
-  Go
-</button>
+<button {...__attrs} class={__attrs.class} onclick={() => onPress?.(1)}>Go</button>
 "
 `;
 
@@ -214,9 +136,7 @@ exports[`svelte full output snapshots > ForLoop 1`] = `
   let items = $state(["Apple", "Banana", "Cherry"])
 </script>
 <ul {...__attrs} class={__attrs.class}>
-  {#each items as item (item)}<li>
-    {item}
-  </li>
+  {#each items as item (item)}<li>{item}</li>
   {/each}
 </ul>
 "
@@ -227,12 +147,7 @@ exports[`svelte full output snapshots > FormField 1`] = `
   let { ...__attrs }: Record<string, any> = $props()
   let value = $state("")
 </script>
-<div {...__attrs} class={__attrs.class}>
-  <input value={value} oninput={e => value = e.target.value} />
-  <p>
-    {value}
-  </p>
-</div>
+<div {...__attrs} class={__attrs.class}><input value={value} oninput={e => value = e.target.value} /><p>{value}</p></div>
 "
 `;
 
@@ -242,20 +157,7 @@ exports[`svelte full output snapshots > HasSlot 1`] = `
   interface Props { children?: Snippet; prefix?: Snippet; suffix?: Snippet }
   let { children, prefix: prefixSnippet, suffix: suffixSnippet, ...__attrs }: Props & Record<string, any> = $props()
 </script>
-<div {...__attrs} class={__attrs.class}>
-  {#if (prefixSnippet != null)}<span class="prefix">
-    {@render prefixSnippet?.()}
-  </span>
-  {/if}
-  {#if (children != null)}<main>
-    {@render children?.()}
-  </main>
-  {/if}
-  {#if !(suffixSnippet != null)}<span class="no-suffix">
-    none
-  </span>
-  {/if}
-</div>
+<div {...__attrs} class={__attrs.class}>{#if (prefixSnippet != null)}<span class="prefix">{@render prefixSnippet?.()}</span>{/if}{#if (children != null)}<main>{@render children?.()}</main>{/if}{#if !(suffixSnippet != null)}<span class="no-suffix">none</span>{/if}</div>
 "
 `;
 
@@ -266,12 +168,8 @@ exports[`svelte full output snapshots > HasSlotFallback 1`] = `
   let { suffix: suffixSnippet, ...__attrs }: Props & Record<string, any> = $props()
 </script>
 <div {...__attrs} class={__attrs.class}>
-  {#if !(suffixSnippet != null)}<span class="no-suffix">
-    absent
-  </span>
-  {:else}<span class="has-suffix">
-    present
-  </span>
+  {#if !(suffixSnippet != null)}<span class="no-suffix">absent</span>
+  {:else}<span class="has-suffix">present</span>
   {/if}
 </div>
 "
@@ -282,9 +180,7 @@ exports[`svelte full output snapshots > IButton 1`] = `
   interface Props { label: string; disabled?: boolean }
   let { label, disabled, ...__attrs }: Props & Record<string, any> = $props()
 </script>
-<button {...__attrs} disabled={disabled} class={__attrs.class}>
-  {label}
-</button>
+<button {...__attrs} disabled={disabled} class={__attrs.class}>{label}</button>
 "
 `;
 
@@ -295,9 +191,7 @@ exports[`svelte full output snapshots > Lifecycle 1`] = `
   $effect(() => { mounted = true; })
   $effect(() => { return () => { console.log("cleanup"); } })
 </script>
-<span {...__attrs} class={__attrs.class}>
-  {mounted ? "mounted" : "pending"}
-</span>
+<span {...__attrs} class={__attrs.class}>{mounted ? "mounted" : "pending"}</span>
 "
 `;
 
@@ -309,14 +203,7 @@ exports[`svelte full output snapshots > MemoChain 1`] = `
   let quadrupled = $derived(doubled * 2)
   let label = $derived(\`Value: \${quadrupled}\`)
 </script>
-<div {...__attrs} class={__attrs.class}>
-  <span>
-    {label}
-  </span>
-  <button onclick={() => base = base + 1}>
-    +1
-  </button>
-</div>
+<div {...__attrs} class={__attrs.class}><span>{label}</span><button onclick={() => base = base + 1}>+1</button></div>
 "
 `;
 
@@ -326,15 +213,7 @@ exports[`svelte full output snapshots > MixedControlFlow 1`] = `
   let items = $state(["a", "b", "c"])
   let filter = $state("")
 </script>
-<div {...__attrs} class={__attrs.class}>
-  <input value={filter} oninput={e => filter = e.target.value} />
-  <ul>
-    {#each items as item (item)}{#if item.includes(filter)}<li>
-      {item}
-    </li>
-    {/if}{/each}
-  </ul>
-</div>
+<div {...__attrs} class={__attrs.class}><input value={filter} oninput={e => filter = e.target.value} /><ul>{#each items as item (item)}{#if item.includes(filter)}<li>{item}</li>{/if}{/each}</ul></div>
 "
 `;
 
@@ -343,12 +222,7 @@ exports[`svelte full output snapshots > ModelInput 1`] = `
   interface Props { value?: string }
   let { value = $bindable(), ...__attrs }: Props & Record<string, any> = $props()
 </script>
-<div {...__attrs} class={__attrs.class}>
-  <input value={value} oninput={e => value = e.target.value} />
-  <p>
-    {value}
-  </p>
-</div>
+<div {...__attrs} class={__attrs.class}><input value={value} oninput={e => value = e.target.value} /><p>{value}</p></div>
 "
 `;
 
@@ -371,12 +245,7 @@ exports[`svelte full output snapshots > MultiRefs 1`] = `
   let inputRef = $state<HTMLElement | null>(null)
   let buttonRef = $state<HTMLElement | null>(null)
 </script>
-<div {...__attrs} class={__attrs.class}>
-  <input bind:this={inputRef} placeholder="focus me" />
-  <button bind:this={buttonRef}>
-    Click
-  </button>
-</div>
+<div {...__attrs} class={__attrs.class}><input bind:this={inputRef} placeholder="focus me" /><button bind:this={buttonRef}>Click</button></div>
 "
 `;
 
@@ -385,9 +254,7 @@ exports[`svelte full output snapshots > MultipleComponentsPerFile 1`] = `
   interface Props { text: string }
   let { text, ...__attrs }: Props & Record<string, any> = $props()
 </script>
-<span {...__attrs} class={__attrs.class}>
-  {text}
-</span>
+<span {...__attrs} class={__attrs.class}>{text}</span>
 "
 `;
 
@@ -396,12 +263,7 @@ exports[`svelte full output snapshots > NativeBind 1`] = `
   let { ...__attrs }: Record<string, any> = $props()
   let text = $state("")
 </script>
-<div {...__attrs} class={__attrs.class}>
-  <input value={text} oninput={e => text = e.target.value} />
-  <p>
-    {text}
-  </p>
-</div>
+<div {...__attrs} class={__attrs.class}><input value={text} oninput={e => text = e.target.value} /><p>{text}</p></div>
 "
 `;
 
@@ -410,9 +272,7 @@ exports[`svelte full output snapshots > PropDefaults 1`] = `
   interface Props { color?: string; size: number }
   let { color = "blue", size, ...__attrs }: Props & Record<string, any> = $props()
 </script>
-<div {...__attrs} style={\`color: \${color}\`} class={__attrs.class}>
-  {size}
-</div>
+<div {...__attrs} style={\`color: \${color}\`} class={__attrs.class}>{size}</div>
 "
 `;
 
@@ -435,10 +295,7 @@ exports[`svelte full output snapshots > SlotInConditional 1`] = `
   let { header: headerSnippet, children, ...__attrs }: Props & Record<string, any> = $props()
   let expanded = $state(true)
 </script>
-<div {...__attrs} class={__attrs.class}>
-  {@render headerSnippet?.()}
-  {#if expanded}{@render children?.()}{/if}
-</div>
+<div {...__attrs} class={__attrs.class}>{@render headerSnippet?.()}{#if expanded}{@render children?.()}{/if}</div>
 "
 `;
 
@@ -448,17 +305,7 @@ exports[`svelte full output snapshots > SlotNamed 1`] = `
   interface Props { header?: Snippet; children?: Snippet; footer?: Snippet }
   let { header: headerSnippet, children, footer: footerSnippet, ...__attrs }: Props & Record<string, any> = $props()
 </script>
-<div {...__attrs} class={__attrs.class}>
-  <header>
-    {@render headerSnippet?.()}
-  </header>
-  <main>
-    {@render children?.()}
-  </main>
-  <footer>
-    {@render footerSnippet?.()}
-  </footer>
-</div>
+<div {...__attrs} class={__attrs.class}><header>{@render headerSnippet?.()}</header><main>{@render children?.()}</main><footer>{@render footerSnippet?.()}</footer></div>
 "
 `;
 
@@ -471,7 +318,7 @@ exports[`svelte full output snapshots > SlotScoped 1`] = `
 </script>
 <ul {...__attrs} class={__attrs.class}>
   {#each items as item, index (item.id)}<li>
-    {#if itemSnippet}{@render itemSnippet(item, index)}{:else}{index}:{item.label}{/if}
+    {#if itemSnippet}{@render itemSnippet(item, index)}{:else}{index}: {item.label}{/if}
   </li>
   {/each}
 </ul>
@@ -486,9 +333,7 @@ exports[`svelte full output snapshots > SlotScopedSingle 1`] = `
   let value = $state("hello")
 </script>
 <div {...__attrs} class={__attrs.class}>
-  {#if children}{@render children(value)}{:else}<span>
-    {value}
-  </span>
+  {#if children}{@render children(value)}{:else}<span>{value}</span>
   {/if}
 </div>
 "
@@ -500,20 +345,7 @@ exports[`svelte full output snapshots > SlotWithDefault 1`] = `
   interface Props { children?: Snippet; actions?: Snippet }
   let { children, actions: actionsSnippet, ...__attrs }: Props & Record<string, any> = $props()
 </script>
-<div {...__attrs} class={__attrs.class}>
-  <main>
-    {#if children}{@render children()}{:else}<p>
-      Default content
-    </p>
-    {/if}
-  </main>
-  <footer>
-    {#if actionsSnippet}{@render actionsSnippet()}{:else}<span>
-      Action area
-    </span>
-    {/if}
-  </footer>
-</div>
+<div {...__attrs} class={__attrs.class}><main>{#if children}{@render children()}{:else}<p>Default content</p>{/if}</main><footer>{#if actionsSnippet}{@render actionsSnippet()}{:else}<span>Action area</span>{/if}</footer></div>
 "
 `;
 
@@ -523,13 +355,7 @@ exports[`svelte full output snapshots > SlotWithFallback 1`] = `
   interface Props { header?: Snippet; children?: Snippet }
   let { header: headerSnippet, children, ...__attrs }: Props & Record<string, any> = $props()
 </script>
-<div {...__attrs} class={__attrs.class}>
-  {#if headerSnippet}{@render headerSnippet()}{:else}<h1>
-    Default Header
-  </h1>
-  {/if}
-  {#if children}{@render children()}{:else}Default body content{/if}
-</div>
+<div {...__attrs} class={__attrs.class}>{#if headerSnippet}{@render headerSnippet()}{:else}<h1>Default Header</h1>{/if}{#if children}{@render children()}{:else}Default body content{/if}</div>
 "
 `;
 
@@ -538,18 +364,7 @@ exports[`svelte full output snapshots > SwitchTabs 1`] = `
   let { ...__attrs }: Record<string, any> = $props()
   let tab = $state("a")
 </script>
-<div {...__attrs} class={__attrs.class}>
-  {#if tab === "a"}<p>
-    Tab A
-  </p>
-  {:else if tab === "b"}<p>
-    Tab B
-  </p>
-  {/if}
-  <button onclick={() => tab = tab === "a" ? "b" : "a"}>
-    Switch
-  </button>
-</div>
+<div {...__attrs} class={__attrs.class}>{#if tab === "a"}<p>Tab A</p>{:else if tab === "b"}<p>Tab B</p>{/if}<button onclick={() => tab = tab === "a" ? "b" : "a"}>Switch</button></div>
 "
 `;
 
@@ -557,9 +372,7 @@ exports[`svelte multi-component files > ComponentRef (all files) 1`] = `
 "<script lang="ts">
   let { ...__attrs }: Record<string, any> = $props()
 </script>
-<div {...__attrs} class={__attrs.class}>
-  Child
-</div>
+<div {...__attrs} class={__attrs.class}>Child</div>
 
 <script lang="ts">
   let { ...__attrs }: Record<string, any> = $props()

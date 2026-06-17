@@ -11,9 +11,10 @@ describe("IButton: typed props (label/optional disabled)", () => {
     const out = await compileTo("IButton", "angular");
     expect(out).toContain("label = input.required<string>()");
     expect(out).toContain("disabled = input<boolean>()");
-    // The selector is the kebab-case ink-* form; the fallthrough root carries the klass merge.
+    // The selector is the kebab-case ink-* form; `host` collapses the custom-element box
+    // (display: contents) and the fallthrough root carries the klass merge.
     expect(out).toContain(
-      'selector: \'ink-button\', template: `<button [disabled]="disabled()" [class]="klass()">',
+      "selector: 'ink-button', host: { style: 'display: contents' }, template: `<button [disabled]=\"disabled()\" [class]=\"klass()\">",
     );
   });
 });

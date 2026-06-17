@@ -21,6 +21,7 @@ Run `vp env doctor` if anything about the toolchain looks wrong, and `vp help` f
 core/        @inkline/core (authoring primitives), @inkline/compiler,
              @inkline/plugin (unplugin), @inkline/config-loader, inkline (barrel)
 tooling/     @inkline/cli, @inkline/storybook, @inkline/test-utils
+testing/     @inkline/e2e (Playwright cross-framework visual-parity tests)
 ui/          @inkline/components (single source of truth) + 7 framework output packages
 apps/        website (docs site), storybook (unified aggregator for all 7 frameworks)
 docs/        architecture, conventions, contributing, release-process, authoring, maintenance
@@ -48,6 +49,7 @@ Per package — descend to the `AGENTS.md` nearest the file you're editing (LLM 
 | [`ui/components/AGENTS.md`](./ui/components/AGENTS.md)                                                         | **Where you author components** — the single source for all 7 frameworks |
 | [`ui/react/AGENTS.md`](./ui/react/AGENTS.md) and the six siblings                                              | Per-framework output packages — generated, do not hand-edit              |
 | [`apps/storybook/AGENTS.md`](./apps/storybook/AGENTS.md), [`apps/website/AGENTS.md`](./apps/website/AGENTS.md) | The two consumer apps                                                    |
+| [`testing/e2e/AGENTS.md`](./testing/e2e/AGENTS.md)                                                             | Playwright cross-framework visual-parity tests                           |
 
 Per topic — read the relevant `docs/`:
 

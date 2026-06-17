@@ -27,6 +27,7 @@ import {
   reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import { childrenArePhrasing } from "../../shared/phrasing.ts";
 import {
   FALLTHROUGH_REST,
   classMergeExpr,
@@ -254,6 +255,9 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         attrs,
         children,
         selfClose: children.length === 0 && VOID_ELEMENTS.has(node.tag),
+        // Svelte renders inter-element formatting whitespace, so inline phrasing AND multi-child
+        // elements (e.g. a row of buttons) to drop the newlines the printer would otherwise add.
+        inline: childrenArePhrasing(node.children) || node.children.length >= 2,
       });
     }
     case "ComponentInstance": {

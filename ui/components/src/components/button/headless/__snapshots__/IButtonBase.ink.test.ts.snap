@@ -9,7 +9,7 @@ export interface ButtonBaseProps {
   disabled?: boolean;
   loading?: boolean;
 }
-@Component({ standalone: true, selector: 'ink-button-base', template: \`<button [class]="'button' + (klass() ? ' ' + klass() : '')" [attr.type]="(type() ?? 'button') ?? null" [disabled]="disabled() || loading()" [attr.aria-busy]="(loading() ? 'true' : 'false') ?? null">
+@Component({ standalone: true, selector: 'ink-button-base', host: { style: 'display: contents' }, template: \`<button [class]="'button' + (klass() ? ' ' + klass() : '')" [attr.type]="(type() ?? 'button') ?? null" [disabled]="disabled() || loading()" [attr.aria-busy]="(loading() ? 'true' : 'false') ?? null">
 @if (!!loading()) {
 <span class="button-spinner" aria-hidden="true"></span>
 }
@@ -35,12 +35,9 @@ type Props = ButtonBaseProps & Record<string, any>
 const props = Astro.props as Props;
 const { label, type, disabled, loading, ...__attrs } = props;
 ---
-<button {...__attrs} class={["button", __attrs.class].filter(Boolean).join(" ")} type={type ?? "button"} disabled={disabled || loading} aria-busy={loading ? "true" : "false"}>
-{!!loading ? (<span class="button-spinner" aria-hidden="true" />) : null}
-<slot>
+<button {...__attrs} class={["button", __attrs.class].filter(Boolean).join(" ")} type={type ?? "button"} disabled={disabled || loading} aria-busy={loading ? "true" : "false"}>{!!loading ? (<span class="button-spinner" aria-hidden="true" />) : null}<slot>
 {label}
-</slot>
-</button>
+</slot></button>
 ",
   "qwik/IButtonBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export interface ButtonBaseProps {
@@ -110,11 +107,7 @@ return (
   import type { Snippet } from "svelte";
   let { label, type, disabled, loading, children, ...__attrs }: ButtonBaseProps & { children?: Snippet } & Record<string, any> = $props()
 </script>
-<button {...__attrs} class={["button", __attrs.class].filter(Boolean).join(" ")} type={type ?? "button"} disabled={disabled || loading} aria-busy={loading ? "true" : "false"}>
-  {#if !!loading}<span class="button-spinner" aria-hidden="true"></span>
-  {/if}
-  {#if children}{@render children()}{:else}{label}{/if}
-</button>
+<button {...__attrs} class={["button", __attrs.class].filter(Boolean).join(" ")} type={type ?? "button"} disabled={disabled || loading} aria-busy={loading ? "true" : "false"}>{#if !!loading}<span class="button-spinner" aria-hidden="true"></span>{/if}{#if children}{@render children()}{:else}{label}{/if}</button>
 ",
   "vue/IButtonBase.vue": "<script setup lang="ts">
   export interface ButtonBaseProps {

@@ -9,12 +9,8 @@ exports[`vue emit + print > Counter component 1`] = `
 </script>
 <template>
 <div>
-  <p>
-    {{ count }}
-  </p>
-  <button @click="() => count = count + 1">
-    +1
-  </button>
+  <p>{{ count }}</p>
+  <button @click="() => count = count + 1">+1</button>
 </div>
 </template>
 "

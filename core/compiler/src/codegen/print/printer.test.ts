@@ -186,6 +186,45 @@ describe("print", () => {
     expect(code).toBe('<div v-if="show" class="container">\n  Hello\n</div>\n');
   });
 
+  it("prints inline CJsxElement children with no formatting whitespace", () => {
+    // `<p>Hello, {name}!</p>` — phrasing stays on one line so the rendered text is exact.
+    const el = cJsxElement({
+      tag: "p",
+      children: [cJsxText({ text: "Hello, " }), cExpr({ text: "{name}" }), cJsxText({ text: "!" })],
+      inline: true,
+    });
+    const { code } = print(el);
+    expect(code).toBe("<p>Hello, {name}!</p>\n");
+  });
+
+  it("prints inline CTmplElement children with no formatting whitespace", () => {
+    const el = cTmplElement({
+      tag: "p",
+      children: [
+        cTmplText({ text: "Hello, " }),
+        cTmplMustache({ expr: cExpr({ text: "name" }) }),
+        cTmplText({ text: "!" }),
+      ],
+      inline: true,
+    });
+    const { code } = print(el);
+    expect(code).toBe("<p>Hello, {{ name }}!</p>\n");
+  });
+
+  it("inline cascades through nested elements, dropping inter-element whitespace", () => {
+    // A row of elements (e.g. buttons) — no rendered whitespace between siblings.
+    const el = cTmplElement({
+      tag: "div",
+      children: [
+        cTmplElement({ tag: "button", children: [cTmplText({ text: "a" })] }),
+        cTmplElement({ tag: "button", children: [cTmplText({ text: "b" })] }),
+      ],
+      inline: true,
+    });
+    const { code } = print(el);
+    expect(code).toBe("<div><button>a</button><button>b</button></div>\n");
+  });
+
   it("prints CTmplMustache", () => {
     const m = cTmplMustache({ expr: cExpr({ text: "count" }) });
     const { code } = print(m);

@@ -24,7 +24,7 @@ export interface InputProps extends InputControlBaseProps {
   /** Invalid-state styling. */
   invalid?: InputStylingProps["invalid"];
 }
-@Component({ standalone: true, selector: 'ink-input', imports: [IInputBase, IInputPrefixBase, IInputSuffixBase, IInputControlBase], template: \`<ink-input-base [klass]="(shellClassName()) + (klass() ? ' ' + klass() : '')">
+@Component({ standalone: true, selector: 'ink-input', host: { style: 'display: contents' }, imports: [IInputBase, IInputPrefixBase, IInputSuffixBase, IInputControlBase], template: \`<ink-input-base [klass]="(shellClassName()) + (klass() ? ' ' + klass() : '')">
 <ink-input-prefix-base [klass]="(inputPrefixRecipe({ size: size() }))">
 <ng-content select="[slot=prefix]"></ng-content>
 </ink-input-prefix-base>

@@ -25,6 +25,7 @@ import {
   reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import { childrenArePhrasing } from "../../shared/phrasing.ts";
 import {
   FALLTHROUGH_REST,
   classMergeExpr,
@@ -187,6 +188,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
         attrs,
         children,
         selfClose: children.length === 0,
+        inline: childrenArePhrasing(node.children),
         span,
       });
     }

@@ -11,7 +11,7 @@ export interface HamburgerMenuBaseProps {
   /** Disables the toggle. */
   disabled?: boolean;
 }
-@Component({ standalone: true, selector: 'ink-hamburger-menu-base', template: \`<button [class]="'hamburger-menu' + (klass() ? ' ' + klass() : '')" type="button" [attr.aria-expanded]="(open() ? 'true' : 'false') ?? null" [attr.aria-controls]="(ariaControls() ?? '') ?? null" [attr.aria-label]="(ariaLabel() ?? 'Toggle menu') ?? null" [disabled]="disabled()" (click)="open.set(!open())">
+@Component({ standalone: true, selector: 'ink-hamburger-menu-base', host: { style: 'display: contents' }, template: \`<button [class]="'hamburger-menu' + (klass() ? ' ' + klass() : '')" type="button" [attr.aria-expanded]="(open() ? 'true' : 'false') ?? null" [attr.aria-controls]="(ariaControls() ?? '') ?? null" [attr.aria-label]="(ariaLabel() ?? 'Toggle menu') ?? null" [disabled]="disabled()" (click)="open.set(!open())">
 <span class="hamburger-menu-inner" aria-hidden="true"></span>
 </button>\` })
 export class IHamburgerMenuBaseComponent

@@ -262,6 +262,64 @@ jobs:
           fail_ci_if_error: false
           flags: shard-${{ matrix.shard }}
 
+  visual-parity:
+    name: Visual Parity (shard ${{ matrix.shard }})
+    runs-on: ubuntu-latest
+    needs: build
+    # Non-blocking on purpose: deliberately NOT listed in `ci-success.needs` below. The suite currently
+    # surfaces real cross-framework rendering differences that aren't all resolved yet (see
+    # testing/e2e/AGENTS.md), so this job reports them via its uploaded artifacts without gating the
+    # pipeline. To make it blocking, add `visual-parity` to `ci-success.needs`.
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      # The composition Storybook runs in dev mode, where each framework package is aliased to its
+      # generated `.inkline` source (tooling/storybook preset) — so the build artifact's `ui/*/.inkline`
+      # + `.styleframe` is all that's needed; `ui/*/dist` is not.
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifacts
+
+      - name: Install Playwright Chromium
+        run: pnpm --filter @inkline/e2e exec playwright install --with-deps chromium
+
+      # No NODE_ENV=production: the per-framework dev servers must keep the source alias active.
+      - name: Run visual parity tests
+        run: pnpm --filter @inkline/e2e run test:e2e
+        env:
+          STORY_SHARD: ${{ matrix.shard }}/2
+
+      - name: Upload Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-parity-report-shard-${{ matrix.shard }}
+          path: |
+            testing/e2e/playwright-report
+            testing/e2e/test-results
+          retention-days: 7
+
   ci-success:
     name: CI Success
     runs-on: ubuntu-latest

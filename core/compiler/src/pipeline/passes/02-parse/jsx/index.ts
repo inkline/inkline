@@ -3,6 +3,7 @@ import { DYNAMIC_DEPS } from "../../../../ir/reactivity.ts";
 import type { IRExprNode, IRNode, IRSlotContent } from "../../../../ir/render/nodes.ts";
 import { toLoc } from "../loc.ts";
 import { parseAttributes } from "./attributes.ts";
+import { cleanJsxText, WHITESPACE_SENSITIVE_TAGS } from "./whitespace.ts";
 
 function makeExpr(expr: ts.Expression, sf: ts.SourceFile): IRExprNode {
   return {
@@ -35,20 +36,29 @@ function getTagName(tagName: ts.JsxTagNameExpression): {
   return { text: tagName.getText(), isComponent: false, node: tagName };
 }
 
-function parseChildren(children: ts.NodeArray<ts.JsxChild>, sf: ts.SourceFile): IRNode[] {
+function parseChildren(
+  children: ts.NodeArray<ts.JsxChild>,
+  sf: ts.SourceFile,
+  preserveWhitespace = false,
+): IRNode[] {
   const nodes: IRNode[] = [];
   for (const child of children) {
-    const parsed = parseJsxChild(child, sf);
+    const parsed = parseJsxChild(child, sf, preserveWhitespace);
     if (parsed) nodes.push(parsed);
   }
   return nodes;
 }
 
-function parseJsxChild(node: ts.JsxChild, sf: ts.SourceFile): IRNode | undefined {
+function parseJsxChild(
+  node: ts.JsxChild,
+  sf: ts.SourceFile,
+  preserveWhitespace = false,
+): IRNode | undefined {
   if (ts.isJsxText(node)) {
-    const text = node.text.trim();
-    if (text.length === 0) return undefined;
-    return { kind: "Text", value: text, loc: toLoc(node, sf) };
+    // Normalize JSX whitespace once, here in the IR, so every target emits identical rendered text.
+    const value = preserveWhitespace ? node.text : cleanJsxText(node.text);
+    if (value.length === 0) return undefined;
+    return { kind: "Text", value, loc: toLoc(node, sf) };
   }
 
   if (ts.isJsxExpression(node)) {
@@ -63,7 +73,7 @@ function parseJsxChild(node: ts.JsxChild, sf: ts.SourceFile): IRNode | undefined
   if (ts.isJsxFragment(node)) {
     return {
       kind: "Fragment",
-      children: parseChildren(node.children, sf),
+      children: parseChildren(node.children, sf, preserveWhitespace),
       loc: toLoc(node, sf),
     };
   }
@@ -79,7 +89,8 @@ function parseJsxElement(
   const openingTag = isSelfClosing ? node : node.openingElement;
   const tag = getTagName(openingTag.tagName);
   const { attrs, events, refs } = parseAttributes(openingTag.attributes, sf);
-  const children = isSelfClosing ? [] : parseChildren(node.children, sf);
+  const preserveWhitespace = WHITESPACE_SENSITIVE_TAGS.has(tag.text);
+  const children = isSelfClosing ? [] : parseChildren(node.children, sf, preserveWhitespace);
   const loc = toLoc(node, sf);
 
   if (tag.isComponent) {

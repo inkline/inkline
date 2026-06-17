@@ -7,7 +7,7 @@ export interface InputBaseProps {
   /** Id of the field shell element. */
   id?: string;
 }
-@Component({ standalone: true, selector: 'ink-input-base', template: \`<div [class]="'input' + (klass() ? ' ' + klass() : '')" [attr.id]="(id()) ?? null">
+@Component({ standalone: true, selector: 'ink-input-base', host: { style: 'display: contents' }, template: \`<div [class]="'input' + (klass() ? ' ' + klass() : '')" [attr.id]="(id()) ?? null">
 <ng-content></ng-content>
 </div>\` })
 export class IInputBaseComponent

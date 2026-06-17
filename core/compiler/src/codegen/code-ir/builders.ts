@@ -70,6 +70,7 @@ export function cJsxElement(init: {
   attrs?: readonly CJsxAttr[];
   children?: readonly Code[];
   selfClose?: boolean;
+  inline?: boolean;
   span?: SourceLocation;
 }): CJsxElement {
   return {
@@ -78,6 +79,7 @@ export function cJsxElement(init: {
     attrs: init.attrs ?? [],
     children: init.children ?? [],
     selfClose: init.selfClose ?? false,
+    inline: init.inline,
     span: init.span,
   };
 }
@@ -100,6 +102,7 @@ export function cTmplElement(init: {
   attrs?: readonly CTmplAttr[];
   children?: readonly Code[];
   selfClose?: boolean;
+  inline?: boolean;
   span?: SourceLocation;
 }): CTmplElement {
   return {
@@ -109,6 +112,7 @@ export function cTmplElement(init: {
     attrs: init.attrs ?? [],
     children: init.children ?? [],
     selfClose: init.selfClose ?? false,
+    inline: init.inline,
     span: init.span,
   };
 }

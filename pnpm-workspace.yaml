@@ -1,6 +1,7 @@
 packages:
   - apps/*
   - core/*
+  - testing/*
   - tooling/*
   - ui/*
   - tools/*

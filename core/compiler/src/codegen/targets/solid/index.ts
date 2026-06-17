@@ -23,6 +23,7 @@ import {
   reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import { childrenArePhrasing } from "../../shared/phrasing.ts";
 import {
   FALLTHROUGH_REST,
   classMergeExpr,
@@ -137,7 +138,13 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     case "Element": {
       const attrs = jsxAttrs(node, rules);
       const children = node.children.map((c) => emitNode(c, rules));
-      return cJsxElement({ tag: node.tag, attrs, children, selfClose: children.length === 0 });
+      return cJsxElement({
+        tag: node.tag,
+        attrs,
+        children,
+        selfClose: children.length === 0,
+        inline: childrenArePhrasing(node.children),
+      });
     }
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? node.reference.getText();

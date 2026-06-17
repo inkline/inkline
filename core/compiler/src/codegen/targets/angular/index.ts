@@ -3,6 +3,7 @@ import { angularConformance } from "./conformance.ts";
 import type { Code } from "../../code-ir/nodes.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
 import { cFile, cImport, cStmt, cRaw, cGroup } from "../../code-ir/builders.ts";
+import { childrenArePhrasing } from "../../shared/phrasing.ts";
 import {
   rewriteExpr,
   rewriteEventName,
@@ -218,7 +219,11 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
         .join(" ");
       const refs = node.refs.map((r) => `#${rewriteExpr(r.ref.expr, rules)}`).join(" ");
       const attrStr = [attrs, events, refs].filter(Boolean).join(" ");
-      const children = node.children.map((c) => emitNode(c, rules)).join("\n");
+      // Phrasing (text + interpolation) is whitespace-significant; emit it inline so Angular's
+      // whitespace collapsing can't alter the rendered text. Element children are collapsed by Angular
+      // regardless, so they keep the readable multi-line formatting.
+      const inline = childrenArePhrasing(node.children);
+      const children = node.children.map((c) => emitNode(c, rules)).join(inline ? "" : "\n");
       if (node.children.length === 0) {
         // Only void elements may self-close in Angular templates; childless non-void elements
         // need an explicit closing tag (JIT rejects e.g. `<span … />`).
@@ -226,7 +231,8 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
           ? `<${node.tag}${attrStr ? " " + attrStr : ""} />`
           : `<${node.tag}${attrStr ? " " + attrStr : ""}></${node.tag}>`;
       }
-      return `<${node.tag}${attrStr ? " " + attrStr : ""}>\n${children}\n</${node.tag}>`;
+      const body = inline ? children : `\n${children}\n`;
+      return `<${node.tag}${attrStr ? " " + attrStr : ""}>${body}</${node.tag}>`;
     }
     case "Text":
       return node.value;
@@ -614,7 +620,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       cRaw({ text: "" }),
       cRaw({
-        text: `@Component({ standalone: true, selector: '${angularSelector(component.name)}'${importsStr}${providersStr}, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
+        text: `@Component({ standalone: true, selector: '${angularSelector(component.name)}', host: { style: 'display: contents' }${importsStr}${providersStr}, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
       }),
       cStmt({ body: `export class ${component.name}Component` }),
       cRaw({ text: "{" }),
