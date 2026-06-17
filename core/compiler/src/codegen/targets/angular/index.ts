@@ -2,6 +2,7 @@ import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../con
 import { angularConformance } from "./conformance.ts";
 import type { Code } from "../../code-ir/nodes.ts";
 import type {
+  IRAttribute,
   IRComponent,
   IRComponentInstance,
   IRElement,
@@ -205,14 +206,10 @@ function unwrapTransition(node: IRNode): IRNode {
   return root;
 }
 
-/**
- * The Angular shape this component emits as. Phase 1 emits `element` (native host element) and
- * `directive` (styling directive stacked onto it); `structural` (the `IInput` flatten) lands in
- * Phase 2 and falls back to the `wrapper` shape until then.
- */
+/** The Angular shape this component emits as; an unresolved/absent entry is a `wrapper` (today's
+ *  `ink-*` element output). */
 function emitKind(entry: AngularComponentEntry | undefined): AngularKind {
-  const kind = entry?.kind ?? "wrapper";
-  return kind === "structural" ? "wrapper" : kind;
+  return entry?.kind ?? "wrapper";
 }
 
 /**
@@ -256,6 +253,49 @@ function emitElementHostEntries(node: IRElement, rules: RewriteRules): string[] 
 function directiveHostEntries(root: IRComponentInstance, rules: RewriteRules): string[] {
   const classAttr = root.attrs.find((a) => rewriteAttrName(a.name, rules) === "class");
   return classAttr ? [`'[class]': ${JSON.stringify(ownClassExpr(classAttr, rules))}`] : [];
+}
+
+/**
+ * Host bindings for a flattened structural component (`IInput` → `div[inkInput]`): the inlined base's
+ * static attrs (its static `class` + any static root attrs) PLUS the styled root instance's own attrs
+ * (its recipe `class` → `[class]`, others via the element rules). The base's *dynamic* root attrs are
+ * pure prop-passthroughs (guaranteed by the registry's flattenability check): the styled instance
+ * fills the ones it forwards (handled below) and omits the rest — matching the base's own `?? null`.
+ */
+function structuralHostEntries(
+  root: IRComponentInstance,
+  baseClass: string | undefined,
+  baseRootAttrs: readonly IRAttribute[],
+  rules: RewriteRules,
+): string[] {
+  const entries: string[] = [];
+  if (baseClass !== undefined) entries.push(`'class': ${JSON.stringify(baseClass)}`);
+  for (const a of baseRootAttrs) {
+    if (a.value.kind !== "Static") continue; // dynamic passthroughs come from the styled instance below
+    entries.push(`'${rewriteAttrName(a.name, rules)}': ${JSON.stringify(String(a.value.value))}`);
+  }
+  for (const a of root.attrs) {
+    const name = rewriteAttrName(a.name, rules);
+    if (name === "class") {
+      entries.push(`'[class]': ${JSON.stringify(ownClassExpr(a, rules))}`);
+      continue;
+    }
+    if (a.value.kind === "Static") {
+      entries.push(`'${name}': ${JSON.stringify(String(a.value.value))}`);
+      continue;
+    }
+    const expr = rewriteExpr(a.value.expr, rules);
+    entries.push(
+      KEEP_PROPERTY.has(name)
+        ? `'[${name}]': ${JSON.stringify(expr)}`
+        : `'[attr.${name}]': ${JSON.stringify(`(${expr}) ?? null`)}`,
+    );
+  }
+  for (const e of root.events) {
+    const evName = rewriteEventName(e.name, rules).replace(/^on/, "").toLowerCase();
+    entries.push(`'(${evName})': ${JSON.stringify(angularEventExpr(e.handler.expr, rules))}`);
+  }
+  return entries;
 }
 
 function emitNode(node: IRNode, rules: RewriteRules): string {
@@ -359,7 +399,9 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       // (wrapper/structural/unresolved) keeps today's `ink-*` element form.
       const entry = rules.angularResolve?.(localName);
       const kind = emitKind(entry);
-      const stacked = kind === "element" || kind === "directive";
+      // element/directive stack the resolved chain; a flattened structural component is self-contained
+      // (its base is inlined) so it stacks just its own selector (`<div inkInput>`).
+      const stacked = kind === "element" || kind === "directive" || kind === "structural";
       const fallthrough = node.acceptsAttrFallthrough === true;
       let classBound = false;
       const ciParts: string[] = [];
@@ -521,6 +563,17 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const selfKind = emitKind(selfEntry);
   const renderRoot = unwrapTransition(component.render);
 
+  // A structural component (e.g. IInput) flattens its base into itself: the base is inlined (so it is
+  // NOT imported), and the component's template + imports come from the base instance's slot body —
+  // the injected structure — not the dropped base wrapper.
+  const structuralRoot =
+    selfKind === "structural" && renderRoot.kind === "ComponentInstance" ? renderRoot : undefined;
+  const inlinedBase = structuralRoot
+    ? (ctx.componentImports.find((ci) => ci.localName === structuralRoot.reference.getText())
+        ?.componentName ?? structuralRoot.reference.getText())
+    : undefined;
+  const structuralSlotBody = structuralRoot?.slots.find((s) => s.name === "default")?.body;
+
   const body: Code[] = [];
   const angularImports = [
     selfKind === "directive" ? "Directive" : "Component",
@@ -537,13 +590,14 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   }
 
   // Scan the render tree once: instances the standalone `imports` must declare, and whether any
-  // fallthrough root exists (which needs the synthesized `klass` input below).
+  // fallthrough root exists (which needs the synthesized `klass` input below). A structural component
+  // scans its inlined base's slot body instead — so the base itself never enters the imports.
   const instanceNames = new Set<string>();
   // Chain bases a stacked instance needs imported from the styled component's module (which
   // re-exports them): componentName → import path.
   const chainBaseImports = new Map<string, string>();
   let hasFallthroughRoot = false;
-  walkRenderTree(component.render, {
+  walkRenderTree(structuralSlotBody ?? component.render, {
     enter(node) {
       if (node.kind === "ComponentInstance") {
         const local = node.resolved?.name ?? node.reference.getText();
@@ -716,6 +770,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   // same-file siblings (compiled to their own `.component.ts`), and the bases of any stacked
   // attribute-selector chain (re-exported by the styled component, so imported from its module).
   const importedLocals = ctx.componentImports
+    .filter((i) => i.componentName !== inlinedBase)
     .map((i) => i.localName)
     .filter((n): n is string => Boolean(n));
   const sameFileChildren = [...instanceNames].filter(
@@ -740,9 +795,9 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const reExportBases = new Set(
     selfKind === "directive" && selfEntry ? selfEntry.chainComponents.slice(0, -1) : [],
   );
-  const ownComponentImports = ctx.componentImports.map((ci) =>
-    reExportBases.has(ci.componentName) ? { ...ci, localName: "" } : ci,
-  );
+  const ownComponentImports = ctx.componentImports
+    .filter((ci) => ci.componentName !== inlinedBase)
+    .map((ci) => (reExportBases.has(ci.componentName) ? { ...ci, localName: "" } : ci));
   const reExports = [...reExportBases].map((base) => {
     const imp = ctx.componentImports.find((ci) => ci.componentName === base);
     return cRaw({
@@ -767,6 +822,23 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     const hostEntries = directiveHostEntries(renderRoot as IRComponentInstance, templateRules);
     const hostStr = hostEntries.length > 0 ? `, host: { ${hostEntries.join(", ")} }` : "";
     decoratorText = `@Directive({ standalone: true, selector: '[${angularAttrSelector(component.name)}]'${hostStr}${providersStr} })`;
+  } else if (selfKind === "structural") {
+    // Flatten: the styled component IS the (inlined) base's native element; its template is the
+    // injected structure (the base instance's default slot body), the base wrapper dropped.
+    const root = renderRoot as IRComponentInstance;
+    const selector = angularElementSelector(
+      selfEntry!.hostTag!,
+      angularAttrSelector(component.name),
+    );
+    const hostEntries = structuralHostEntries(
+      root,
+      selfEntry!.baseClass,
+      selfEntry!.rootAttrs ?? [],
+      templateRules,
+    );
+    const hostStr = hostEntries.length > 0 ? `, host: { ${hostEntries.join(", ")} }` : "";
+    const childTemplate = structuralSlotBody ? emitNode(structuralSlotBody, templateRules) : "";
+    decoratorText = `@Component({ standalone: true, selector: '${selector}'${hostStr}${importsStr}${providersStr}, template: \`${escapeTemplate(childTemplate)}\` })`;
   } else {
     const template = emitNode(component.render, templateRules);
     decoratorText = `@Component({ standalone: true, selector: '${angularSelector(component.name)}', host: { style: 'display: contents' }${importsStr}${providersStr}, template: \`${escapeTemplate(template)}\` })`;

@@ -84,3 +84,73 @@ describe("angular attribute-selector codegen (Phase 1)", () => {
     expect(app).toContain(`import { IBadgeBaseComponent as IBadgeBase } from "./IBadge.component"`);
   });
 });
+
+const STRUCTURAL_SOURCE = `
+import { defineComponent, Slot, createMemo } from "@inkline/core";
+
+const IShellBase = defineComponent({ slots: { default: {} } }, (props: { id?: string }) => (
+  <div class="shell" id={props.id}><Slot /></div>
+));
+
+const IPartBase = defineComponent({ slots: { default: {} } }, () => (
+  <span class="part"><Slot /></span>
+));
+
+const IField = defineComponent({ slots: { default: {} } }, (props: { color?: string }) => {
+  const cls = createMemo(() => "shell--" + (props.color ?? "default"));
+  return (
+    <IShellBase class={cls()}>
+      <IPartBase><Slot /></IPartBase>
+    </IShellBase>
+  );
+});
+
+const App = defineComponent(() => (
+  <section><IField color="primary" /></section>
+));
+
+export { IShellBase, IPartBase, IField, App };
+`;
+
+describe("angular structural flatten (Phase 2)", () => {
+  async function compileStructural() {
+    const input = { fileName: "Field.ink.tsx", source: STRUCTURAL_SOURCE };
+    const analyzed = await analyzeOnly(input, { targets: ["angular"] });
+    const registry = buildAngularRegistry([analyzed.module]);
+    const result = await compile(input, { targets: ["angular"], angularRegistry: registry });
+    const files = result.files.angular ?? [];
+    return {
+      errors: result.diagnostics.filter((d) => d.severity === "error"),
+      byName: (name: string) => files.find((f) => f.path === name)?.contents ?? "",
+    };
+  }
+
+  it("flattens a structure-injecting styled component into its base's native element", async () => {
+    const { byName, errors } = await compileStructural();
+    const field = byName("IField.component.ts");
+
+    expect(errors).toEqual([]);
+    // IField IS the base's <div> (base inlined): selector div[inkField], base class + recipe merged,
+    // no display:contents, no <ink-*> wrapper.
+    expect(field).toContain("selector: 'div[inkField]'");
+    expect(field).toContain(`host: { 'class': "shell", '[class]': "(cls())" }`);
+    expect(field).not.toContain("display: contents");
+    // Template is the INJECTED structure (the IPartBase span), not a wrapping <div>.
+    expect(field).toContain("<span inkPartBase");
+    // The inlined base is neither imported nor instantiated; the injected part IS imported.
+    expect(field).not.toContain("IShellBase");
+    expect(field).toMatch(/imports: \[[^\]]*\bIPartBase\b/);
+  });
+
+  it("lets a consumer stack the flattened component as a self-contained native element", async () => {
+    const { byName } = await compileStructural();
+    const app = byName("App.component.ts");
+
+    // IField is self-contained (base inlined) → the consumer stacks just its own selector and imports
+    // only it (not the base, not the injected parts).
+    expect(app).toContain("<div inkField");
+    expect(app).not.toContain("<ink-field");
+    expect(app).toMatch(/imports: \[\s*IField\s*\]/);
+    expect(app).not.toContain("IShellBase");
+  });
+});

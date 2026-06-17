@@ -12,6 +12,7 @@
 // and the attribute chain a consumer must stack. Both are pure; the orchestration that feeds them
 // real modules lives in `buildAngularRegistry` (pipeline/compile.ts).
 
+import * as ts from "typescript";
 import type { IRAttribute, IRComponent, IRSlotContent } from "../../../ir/render/nodes.ts";
 import { walkRenderTree } from "../../../ir/render/visit.ts";
 import { angularAttrSelector } from "./selector.ts";
@@ -101,6 +102,25 @@ function slotsInjectStructure(slots: readonly IRSlotContent[]): boolean {
   return injects;
 }
 
+/**
+ * Whether an element base can be flattened into a structural component: its non-class root attrs are
+ * all static or pure prop-passthroughs (`<div id={props.id}>`). A transforming attr
+ * (`id={props.id ?? "x"}`) is NOT flattenable — dropping it (when the styled component doesn't pass
+ * it) would lose the transform — so such a base keeps the wrapper form.
+ */
+function isFlattenableBase(rootAttrs: readonly IRAttribute[]): boolean {
+  return rootAttrs.every((a) => {
+    if (a.value.kind === "Static") return true;
+    const expr = a.value.expr;
+    return (
+      ts.isPropertyAccessExpression(expr) &&
+      ts.isIdentifier(expr.expression) &&
+      expr.expression.text === "props" &&
+      expr.name.text === a.name
+    );
+  });
+}
+
 export interface RawEntry {
   readonly classification: RawClassification;
   /** Resolve a render-root instance's LOCAL import name to the referenced component's name. */
@@ -150,8 +170,10 @@ export function resolveAngularKinds(entries: ReadonlyMap<string, RawEntry>): Ang
       };
     }
     // structural: flatten the trivial element base into a self-contained @Component, so a consumer
-    // stacks only this component's own selector. Only an `element` base is a flattenable slot-wrapper.
-    if (target.kind !== "element") return WRAPPER;
+    // stacks only this component's own selector. The base must be an `element` whose non-class root
+    // attrs are all static or pure prop-passthroughs (`id={props.id}`) — then the styled component
+    // simply omits any it doesn't pass, matching the base's own `?? null`, with no lost transform.
+    if (target.kind !== "element" || !isFlattenableBase(target.rootAttrs ?? [])) return WRAPPER;
     return {
       kind: "structural",
       hostTag: target.hostTag,
