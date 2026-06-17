@@ -1,0 +1,135 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`HamburgerMenuBase > output matches snapshots 1`] = `
+{
+  "angular/IHamburgerMenuBase.component.ts": "import { Component, signal, computed, effect, input, model } from "@angular/core";
+export interface HamburgerMenuBaseProps {
+  /** Accessible name for the icon-only toggle; sets \`aria-label\`. */
+  ariaLabel?: string;
+  /** Id of the region the toggle shows/hides; sets \`aria-controls\`. */
+  ariaControls?: string;
+  /** Disables the toggle. */
+  disabled?: boolean;
+}
+@Component({ standalone: true, selector: 'ink-hamburger-menu-base', template: \`<button [class]="'hamburger-menu' + (klass() ? ' ' + klass() : '')" type="button" [attr.aria-expanded]="(open() ? 'true' : 'false') ?? null" [attr.aria-controls]="(ariaControls() ?? '') ?? null" [attr.aria-label]="(ariaLabel() ?? 'Toggle menu') ?? null" [disabled]="disabled()" (click)="open.set(!open())">
+<span class="hamburger-menu-inner" aria-hidden="true"></span>
+</button>\` })
+export class IHamburgerMenuBaseComponent
+{
+klass = input<string>()
+ariaLabel = input<string>()
+ariaControls = input<string>()
+disabled = input<boolean>()
+open = model<boolean>()
+}
+",
+  "astro/IHamburgerMenuBase.astro": "---
+export interface HamburgerMenuBaseProps {
+  /** Accessible name for the icon-only toggle; sets \`aria-label\`. */
+  ariaLabel?: string;
+  /** Id of the region the toggle shows/hides; sets \`aria-controls\`. */
+  ariaControls?: string;
+  /** Disables the toggle. */
+  disabled?: boolean;
+}
+type Props = HamburgerMenuBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { ariaLabel, ariaControls, disabled, ...__attrs } = props;
+let open = props.open
+---
+<button {...__attrs} class={["hamburger-menu", __attrs.class].filter(Boolean).join(" ")} type="button" aria-expanded={open ? "true" : "false"} aria-controls={ariaControls ?? ""} aria-label={ariaLabel ?? "Toggle menu"} disabled={disabled} onClick={() => open = !open}>
+<span class="hamburger-menu-inner" aria-hidden="true" />
+</button>
+",
+  "qwik/IHamburgerMenuBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
+export interface HamburgerMenuBaseProps {
+  /** Accessible name for the icon-only toggle; sets \`aria-label\`. */
+  ariaLabel?: string;
+  /** Id of the region the toggle shows/hides; sets \`aria-controls\`. */
+  ariaControls?: string;
+  /** Disables the toggle. */
+  disabled?: boolean;
+}
+export const IHamburgerMenuBase = component$((props: HamburgerMenuBaseProps & { open?: boolean; onUpdateOpen$?: QRL<(value: boolean) => void> } & Record<string, any>) =>
+{
+const { ariaLabel, ariaControls, disabled, open, onUpdateOpen$, ...__attrs } = props
+return (
+<button {...__attrs} class={["hamburger-menu", props.class].filter(Boolean).join(" ")} type="button" aria-expanded={props.open ? "true" : "false"} aria-controls={props.ariaControls ?? ""} aria-label={props.ariaLabel ?? "Toggle menu"} disabled={props.disabled} onClick={$(() => props.onUpdateOpen$?.(!props.open))}>
+  <span class="hamburger-menu-inner" aria-hidden="true" />
+</button>
+)
+});
+",
+  "react/IHamburgerMenuBase.tsx": "export interface HamburgerMenuBaseProps {
+  /** Accessible name for the icon-only toggle; sets \`aria-label\`. */
+  ariaLabel?: string;
+  /** Id of the region the toggle shows/hides; sets \`aria-controls\`. */
+  ariaControls?: string;
+  /** Disables the toggle. */
+  disabled?: boolean;
+}
+export function IHamburgerMenuBase(props: HamburgerMenuBaseProps & { open?: boolean; onUpdateOpen?: (value: boolean) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const { ariaLabel, ariaControls, disabled, open, onUpdateOpen, ...__attrs } = props
+return (
+<button {...__attrs} className={["hamburger-menu", props.className].filter(Boolean).join(" ")} type="button" aria-expanded={props.open ? "true" : "false"} aria-controls={props.ariaControls ?? ""} aria-label={props.ariaLabel ?? "Toggle menu"} disabled={props.disabled} onClick={() => props.onUpdateOpen?.(!props.open)}>
+  <span className="hamburger-menu-inner" aria-hidden="true" />
+</button>
+)
+}
+",
+  "solid/IHamburgerMenuBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface HamburgerMenuBaseProps {
+  /** Accessible name for the icon-only toggle; sets \`aria-label\`. */
+  ariaLabel?: string;
+  /** Id of the region the toggle shows/hides; sets \`aria-controls\`. */
+  ariaControls?: string;
+  /** Disables the toggle. */
+  disabled?: boolean;
+}
+export default function IHamburgerMenuBase(props: HamburgerMenuBaseProps & { open?: boolean; onUpdateOpen?: (value: boolean) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["ariaLabel", "ariaControls", "disabled", "open", "onUpdateOpen"])
+return (
+<button {...__attrs} class={["hamburger-menu", props.class].filter(Boolean).join(" ")} type="button" aria-expanded={props.open ? "true" : "false"} aria-controls={props.ariaControls ?? ""} aria-label={props.ariaLabel ?? "Toggle menu"} disabled={props.disabled} onclick={() => props.onUpdateOpen?.(!props.open)}>
+  <span class="hamburger-menu-inner" aria-hidden="true" />
+</button>
+)
+}
+",
+  "svelte/IHamburgerMenuBase.svelte": "<script lang="ts">
+  export interface HamburgerMenuBaseProps {
+    /** Accessible name for the icon-only toggle; sets \`aria-label\`. */
+    ariaLabel?: string;
+    /** Id of the region the toggle shows/hides; sets \`aria-controls\`. */
+    ariaControls?: string;
+    /** Disables the toggle. */
+    disabled?: boolean;
+  }
+  let { ariaLabel, ariaControls, disabled, open = $bindable(), ...__attrs }: HamburgerMenuBaseProps & { open?: boolean } & Record<string, any> = $props()
+</script>
+<button {...__attrs} class={["hamburger-menu", __attrs.class].filter(Boolean).join(" ")} type="button" aria-expanded={open ? "true" : "false"} aria-controls={ariaControls ?? ""} aria-label={ariaLabel ?? "Toggle menu"} disabled={disabled} onclick={() => open = !open}>
+  <span class="hamburger-menu-inner" aria-hidden="true"></span>
+</button>
+",
+  "vue/IHamburgerMenuBase.vue": "<script setup lang="ts">
+  export interface HamburgerMenuBaseProps {
+    /** Accessible name for the icon-only toggle; sets \`aria-label\`. */
+    ariaLabel?: string;
+    /** Id of the region the toggle shows/hides; sets \`aria-controls\`. */
+    ariaControls?: string;
+    /** Disables the toggle. */
+    disabled?: boolean;
+  }
+  const props = defineProps<HamburgerMenuBaseProps>()
+  const open = defineModel<boolean>("open")
+</script>
+<template>
+<button class="hamburger-menu" type="button" :aria-expanded='open ? "true" : "false"' :aria-controls='ariaControls ?? ""' :aria-label='ariaLabel ?? "Toggle menu"' :disabled="disabled" @click="() => open = !open">
+  <span class="hamburger-menu-inner" aria-hidden="true" />
+</button>
+</template>
+",
+}
+`;
