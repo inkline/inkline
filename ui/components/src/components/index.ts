@@ -7,6 +7,9 @@ export { default as IButtonBase } from "./button/headless/IButtonBase.ink.tsx";
 export { default as IFieldGroup } from "./field-group/styled/IFieldGroup.ink.tsx";
 export { default as IFieldGroupBase } from "./field-group/headless/IFieldGroupBase.ink.tsx";
 
+export { default as IHamburgerMenu } from "./hamburger-menu/styled/IHamburgerMenu.ink.tsx";
+export { default as IHamburgerMenuBase } from "./hamburger-menu/headless/IHamburgerMenuBase.ink.tsx";
+
 // Input ships as a single styled component (IInput) that composes every headless part. The headless
 // parts remain individually exported for advanced/custom composition.
 export { default as IInput } from "./input/styled/IInput.ink.tsx";

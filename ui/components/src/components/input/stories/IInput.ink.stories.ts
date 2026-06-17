@@ -3,7 +3,7 @@ import type { InputProps } from "../styled/IInput.ink.tsx";
 
 const meta = defineStories<InputProps>({
   component: "IInput",
-  title: "Components/Input",
+  title: "Components/Forms/Input",
   args: {},
   argTypes: {
     color: {
