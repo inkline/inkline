@@ -35,9 +35,10 @@ export interface CovParentProps extends CovChildProps {
   active?: boolean;
 }
 
-export default defineComponent({ slots: { default: {} } }, (props: CovParentProps) => {
+export default defineComponent({ slots: { default: {}, extra: {} } }, (props: CovParentProps) => {
   return (
     <CovChild class={props.active ? "cov-on" : "cov-off"}>
+      <Slot name="extra" />
       <Slot>{props.label}</Slot>
     </CovChild>
   );
@@ -140,6 +141,15 @@ describe("renderForCoverage (ungated core)", () => {
     });
     expect(r.warnings).toEqual([]);
     expect(r.html).toContain("cov-child");
+  });
+
+  it("forwards named slots as props so slot-gated branches render", async () => {
+    const r = await renderForCoverage(FIXTURES_URL, PARENT, [CHILD], {
+      label: "L",
+      __slots: { extra: "extra-slot-content" },
+    });
+    expect(r.warnings).toEqual([]);
+    expect(r.html).toContain("extra-slot-content");
   });
 
   it("reports a warning instead of throwing when the component cannot be resolved", async () => {

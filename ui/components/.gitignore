@@ -1,1 +1,3 @@
 .styleframe/
+.coverage-artifacts/
+coverage/

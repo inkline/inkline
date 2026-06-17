@@ -795,9 +795,18 @@ importers:
       '@styleframe/transpiler':
         specifier: 'catalog:'
         version: 3.4.1(@styleframe/core@3.6.1(@styleframe/license@2.0.2))(@styleframe/license@2.0.2)
+      '@vitest/coverage-v8':
+        specifier: 'catalog:'
+        version: 4.1.8(@voidzero-dev/vite-plus-test@0.1.24)
       jsdom:
         specifier: 'catalog:'
         version: 29.1.1
+      react:
+        specifier: 'catalog:'
+        version: 19.2.7
+      react-dom:
+        specifier: 'catalog:'
+        version: 19.2.7(react@19.2.7)
       rxjs:
         specifier: 'catalog:'
         version: 7.8.2

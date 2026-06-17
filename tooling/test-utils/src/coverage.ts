@@ -179,9 +179,17 @@ export async function renderForCoverage(
     const { createElement } = await import("react");
     const { renderToStaticMarkup } = await import("react-dom/server");
     const { __slots, ...rest } = props as { __slots?: Record<string, string> };
-    const children = __slots?.default;
+    // React consumes the default slot as `children` and every named slot as a node prop
+    // (`props.prefix`, `props.suffix`, …) — the same presence the codegen gates `hasSlot(...)` on.
+    // Forwarding all of them mirrors how `mountStyledOnAngular` projects each `__slots` entry, so
+    // the React render exercises the same slot-gated branches the behavioral test does.
+    const { default: children, ...namedSlots } = __slots ?? {};
     const html = renderToStaticMarkup(
-      createElement(component as never, rest as Record<string, unknown>, children),
+      createElement(
+        component as never,
+        { ...rest, ...namedSlots } as Record<string, unknown>,
+        children,
+      ),
     );
     return { html, warnings };
   } catch (err) {

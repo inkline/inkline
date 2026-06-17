@@ -68,6 +68,12 @@ Stories are also authored as `.ink.tsx` under `src/components/<name>/stories/` a
 
 For compiler-level coverage (you're exercising a new compiler feature), prefer adding a fixture under [`core/compiler/src/__fixtures__/`](../../core/compiler/src/__fixtures__/) instead — keep this package focused on UI behavior, not compiler regressions.
 
+### `.ink.tsx` coverage
+
+`vp test --coverage` reports real line/branch coverage on the authored `.ink.tsx`. The Angular SSR helper ([`src/components/angular-ssr-helper.ts`](./src/components/angular-ssr-helper.ts)) drives each mounted component through the React target via `coverInkViaReact`; V8 instruments the generated JS and inlined source maps remap that execution back onto the `.ink.tsx`. It is wired into `mountStyledOnAngular`, so any test that SSR-mounts a styled component contributes coverage automatically — no per-test setup, and it is a no-op when coverage is off.
+
+The config in [`vite.config.ts`](./vite.config.ts) deliberately leaves `coverage.include` **unset**: `.ink.tsx` is not a real module, so listing it would make the v8 provider's "uncovered files" pass parse it and throw `PARSE_ERROR`. Only components that actually render appear — the remap introduces them. Branch/statement precision is coarse today (a whole expression compiles to one source span), so a fully-exercised component can still read below 100%.
+
 ## When you change a component
 
 1. Edit `src/components/<name>/{headless,styled,stories}/*.ink.tsx`.
