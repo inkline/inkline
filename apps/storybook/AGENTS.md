@@ -49,6 +49,10 @@ pnpm --filter @inkline/storybook-app storybook
 
 `pnpm storybook:build` runs `storybook build -o dist`. CI invokes this via [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml) `build-storybook` job and uploads the `dist/` directory as an artifact.
 
+## End-to-end visual tests
+
+Cross-framework visual-parity tests (Playwright) live in their own package, [`testing/e2e`](../../testing/e2e/AGENTS.md). They boot this composition Storybook (`pnpm run storybook:test`) and pixel-diff every story across all seven frameworks against the React render. Run them with `pnpm --filter @inkline/e2e test:e2e`.
+
 ## When you change something here
 
 - New welcome / landing story → add it under `stories/`. The aggregator only globs `stories/**/*.stories.ts`.
@@ -75,6 +79,7 @@ tests in [`@inkline/test-utils`](../../tooling/test-utils/).
 
 ## See also
 
+- [`testing/e2e/AGENTS.md`](../../testing/e2e/AGENTS.md) — the Playwright visual-parity suite that drives this aggregator.
 - [`tooling/storybook/AGENTS.md`](../../tooling/storybook/AGENTS.md) — the cross-framework story generator that produces the CSF files each composed Storybook reads.
 - The seven `ui/<framework>/AGENTS.md` files — each notes its assigned port.
 - [docs/contributing.md](../../docs/contributing.md) → "Dev loops" — the canonical command surface.

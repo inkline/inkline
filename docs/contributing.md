@@ -22,12 +22,13 @@ If anything looks wrong with the toolchain (Node version, lockfile, package mana
 
 ## Dev loops
 
-| Goal                                          | Command                                                                                      | Notes                                                                                                                        |
-| --------------------------------------------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| Run the docs website                          | `vp run dev` (alias for `vp run website#dev`)                                                | Live-reloading website at the default Vite port.                                                                             |
-| Develop components against all 7 frameworks   | `pnpm run storybook`                                                                         | Runs four concurrent processes: compile, story-generate, framework Storybooks (ports 6006–6012), aggregator app (port 6100). |
-| Develop components against a single framework | `pnpm run storybook:react` (also `:vue`, `:svelte`, `:solid`, `:angular`, `:qwik`, `:astro`) | Story generator + single Storybook.                                                                                          |
-| Work inside one package                       | `cd <pkg> && vp dev` (if applicable)                                                         | Most packages expose `vp build` / `vp test` / `vp check`.                                                                    |
+| Goal                                          | Command                                                                                      | Notes                                                                                                                                           |
+| --------------------------------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| Run the docs website                          | `vp run dev` (alias for `vp run website#dev`)                                                | Live-reloading website at the default Vite port.                                                                                                |
+| Develop components against all 7 frameworks   | `pnpm run storybook`                                                                         | Runs four concurrent processes: compile, story-generate, framework Storybooks (ports 6006–6012), aggregator app (port 6100).                    |
+| Visually compare all 7 frameworks             | `pnpm run test:e2e`                                                                          | Playwright cross-framework visual-parity suite (boots/reuses the composition Storybook). See [testing/e2e/AGENTS.md](../testing/e2e/AGENTS.md). |
+| Develop components against a single framework | `pnpm run storybook:react` (also `:vue`, `:svelte`, `:solid`, `:angular`, `:qwik`, `:astro`) | Story generator + single Storybook.                                                                                                             |
+| Work inside one package                       | `cd <pkg> && vp dev` (if applicable)                                                         | Most packages expose `vp build` / `vp test` / `vp check`.                                                                                       |
 
 The full command surface for the root is in [`package.json`](../package.json) `scripts`. Vite+ specifics live at [viteplus.dev/guide/](https://viteplus.dev/guide/).
 
@@ -47,7 +48,7 @@ If you only need part of the gate while iterating, use `vp check`, `vp lint`, `v
 
 Two workflows live under [`.github/workflows/`](../.github/workflows/):
 
-- [`ci.yml`](../.github/workflows/ci.yml) — runs on every push to `main` and every PR. Granular parallel jobs: `build`, `build-storybook`, `build-website`, `lint`, `typecheck`, `test`. Each downstream job depends only on `build` and reuses its artifacts. A final `ci-success` job aggregates the status. PR runs are cancelled when a new push arrives on the same ref; main runs are not.
+- [`ci.yml`](../.github/workflows/ci.yml) — runs on every push to `main` and every PR. Granular parallel jobs: `build`, `build-storybook`, `build-website`, `lint`, `typecheck`, `test`, and a non-blocking `visual-parity` (Playwright cross-framework screenshot diffing, sharded ×2 — deliberately not part of `ci-success`). Each downstream job depends only on `build` and reuses its artifacts. A final `ci-success` job aggregates the status. PR runs are cancelled when a new push arrives on the same ref; main runs are not.
 - [`changesets.yml`](../.github/workflows/changesets.yml) — runs on push to `main`. Uses `changesets/action` to maintain a "chore: update versions" PR. See [release-process.md](./release-process.md).
 
 CI uses Node 22. If you see local-only test passes / CI failures, first compare your local Node version against the workflow's `NODE_VERSION`.

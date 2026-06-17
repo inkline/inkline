@@ -24,6 +24,7 @@ ESLint and Prettier are **not** used. Their config schemas appear in the catalog
 ```
 core/      authoring primitives, compiler, plugin, config loader, barrel
 tooling/   CLI, Storybook integration, test utilities
+testing/   end-to-end test packages (Playwright cross-framework visual parity)
 ui/        single-source components + 7 generated framework packages
 apps/      docs website + unified Storybook aggregator
 ```
@@ -36,6 +37,7 @@ See [`pnpm-workspace.yaml`](../pnpm-workspace.yaml) for the authoritative glob l
 | ---------------- | --------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `*.ink.tsx`      | `ui/components/src/components/**` | Authored Inkline component. Compiles to all framework targets.                                                      |
 | `*.test.ts`      | colocated next to source          | Vitest test for the adjacent module. Tests never live in a separate `tests/` directory.                             |
+| `*.spec.ts`      | `testing/e2e/`                    | Playwright e2e specs (cross-framework visual parity). Not Vitest; run via `test:e2e`.                               |
 | `__fixtures__/`  | `core/compiler/src/__fixtures__/` | Compiler fixtures (`.ink.tsx`) used by scenario tests. Excluded from lint by [`vite.config.ts`](../vite.config.ts). |
 | `__snapshots__/` | colocated                         | Vitest snapshot files.                                                                                              |
 | `generated/`     | `ui/<framework>/generated/`       | **Auto-generated** by the compiler. Never hand-edit.                                                                |
@@ -50,6 +52,8 @@ Tests live next to their source as `<file>.test.ts`. Examples:
 - [`core/compiler/src/codegen/targets/react/index.test.ts`](../core/compiler/src/codegen/targets/react/) is colocated with the React target's `index.ts` (each target owns its tests; cross-target codegen fixtures live in per-target `__tests__/` folders).
 
 Run all tests with `vp run -r test` from the repo root; run a single package's tests with `vp test` inside that package. Coverage uses `@vitest/coverage-v8`.
+
+**Exception — Playwright e2e.** The cross-framework visual-parity suite uses Playwright, not Vitest, and lives in its own package [`testing/e2e`](../testing/e2e/) (`*.spec.ts`). Run it with `pnpm --filter @inkline/e2e test:e2e` (a `test:e2e` script, deliberately not `test`), so the Vitest gate never collects it. See [`testing/e2e/AGENTS.md`](../testing/e2e/AGENTS.md).
 
 ## Code style
 
