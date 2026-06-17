@@ -28,6 +28,8 @@ export {
 
 export { isMountable, mountForTarget, type MountResult } from "./mount.ts";
 
+export { coverInkViaReact, type CoverResult } from "./coverage.ts";
+
 export { normalizeHtml } from "./normalize.ts";
 
 export { resolveComponent } from "./resolve.ts";
