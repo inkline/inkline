@@ -763,13 +763,15 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       ...(needsTransition ? [cRaw({ text: "" }), cRaw({ text: REACT_TRANSITION_HELPER })] : []),
       cRaw({ text: "" }),
-      cStmt({ body: signature }),
+      // Span the function signature + return so coverage tools attribute the component function and
+      // its render statement to their authored positions (not the lone render-expression mapping).
+      cStmt({ body: signature, span: component.loc }),
       cRaw({ text: "{" }),
       cGroup({
         children: [
           ...body,
           cRaw({ text: "" }),
-          cStmt({ body: "return (" }),
+          cStmt({ body: "return (", span: component.render.loc }),
           unwrapRootExpr(renderTree),
           cStmt({ body: ")" }),
         ],
