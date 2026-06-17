@@ -8,6 +8,18 @@ export interface MountResult {
   readonly warnings: readonly string[];
 }
 
+/**
+ * How to mount an Angular attribute-selector entry. A styling directive (`[inkButton]`) can't be
+ * reflected for a host tag and isn't a standalone element, so the caller (which knows the registry)
+ * supplies the native host tag, the stacked attribute selectors, and the chain's exported class
+ * names to import from the entry module. Omit for `ink-*` element/wrapper entries (auto-reflected).
+ */
+export interface AngularMountHost {
+  readonly tag: string;
+  readonly attrs: readonly string[];
+  readonly imports: readonly string[];
+}
+
 const MOUNTABLE_TARGETS: ReadonlySet<TargetName> = new Set([
   "react",
   "vue",
@@ -35,6 +47,7 @@ export async function mountForTarget(
   file: GeneratedFile,
   props?: Record<string, unknown>,
   supportingFiles?: readonly GeneratedFile[],
+  angularHost?: AngularMountHost,
 ): Promise<MountResult> {
   if (!isMountable(target)) {
     throw new Error(
@@ -47,7 +60,13 @@ export async function mountForTarget(
   console.warn = (...args: unknown[]) => warnings.push(args.map(String).join(" "));
 
   try {
-    const { html, stderr } = await mountViaTempFile(target, file, props, supportingFiles ?? []);
+    const { html, stderr } = await mountViaTempFile(
+      target,
+      file,
+      props,
+      supportingFiles ?? [],
+      angularHost,
+    );
     // The sandbox routes runtime logging to stderr; surface it as warnings for debuggability.
     if (stderr.trim()) warnings.push(...stderr.trim().split("\n"));
     return { html, warnings };
@@ -61,6 +80,7 @@ async function mountViaTempFile(
   file: GeneratedFile,
   props: Record<string, unknown> | undefined,
   supportingFiles: readonly GeneratedFile[],
+  angularHost: AngularMountHost | undefined,
 ): Promise<{ html: string; stderr: string }> {
   const tmp = mkdtempSync(join(tmpdir(), "ink-mount-"));
 
@@ -85,7 +105,7 @@ async function mountViaTempFile(
       symlinkSync(nodeModulesSource, nodeModulesDest, "dir");
     }
 
-    const mountScript = buildMountScript(target, `./${entryPath}`, props);
+    const mountScript = buildMountScript(target, `./${entryPath}`, props, angularHost);
     const mountPath = join(tmp, "__mount__.mjs");
     writeFileSync(mountPath, mountScript, "utf-8");
 
@@ -259,6 +279,7 @@ function buildMountScript(
   target: TargetName,
   componentPath: string,
   props?: Record<string, unknown>,
+  angularHost?: AngularMountHost,
 ): string {
   const propsJson = JSON.stringify(props ?? {});
 
@@ -299,7 +320,10 @@ process.stdout.write(result.body);
 `;
     case "angular":
       // JIT-compile (via the @angular/compiler import) and SSR the component inside a generated
-      // host whose template binds each prop and projects `__slots` entries as slot content.
+      // host whose template binds each prop and projects `__slots` entries as slot content. An
+      // attribute-selector entry renders on its native host tag with the selector attributes
+      // present: either auto-derived from a reflected `tag[attr]` element selector, or — for a
+      // styling directive (not reflectable, not a standalone element) — from an explicit host spec.
       return `
 import "@angular/compiler";
 import { Component, provideZonelessChangeDetection, reflectComponentType } from "@angular/core";
@@ -312,11 +336,23 @@ import * as mod from "${componentPath}";
 console.log = (...args) => console.error(...args);
 console.info = (...args) => console.error(...args);
 
-const candidates = Object.values(mod).filter((v) => typeof v === "function");
-const C = mod.default ?? candidates.find((v) => reflectComponentType(v) != null);
-const mirror = reflectComponentType(C);
-if (!mirror) throw new Error("No Angular component found in module");
-const selector = mirror.selector.split(",")[0].trim();
+const hostSpec = ${JSON.stringify(angularHost ?? null)};
+let imports, tag, attrs;
+if (hostSpec) {
+  imports = hostSpec.imports.map((n) => mod[n]);
+  tag = hostSpec.tag;
+  attrs = hostSpec.attrs;
+} else {
+  const candidates = Object.values(mod).filter((v) => typeof v === "function");
+  const C = mod.default ?? candidates.find((v) => reflectComponentType(v) != null);
+  const mirror = reflectComponentType(C);
+  if (!mirror) throw new Error("No Angular component found in module");
+  const selector = mirror.selector.split(",")[0].trim();
+  // Parse \`tag[attrA][attrB]\` → native host tag + the attribute selectors present on it.
+  tag = (selector.match(/^[a-zA-Z][\\w-]*/) || ["div"])[0];
+  attrs = [...selector.matchAll(/\\[([\\w-]+)\\]/g)].map((m) => m[1]);
+  imports = [C];
+}
 
 const allProps = ${propsJson};
 const { __slots = {}, ...props } = allProps;
@@ -324,13 +360,14 @@ const bindings = Object.keys(props).map((k) => \`[\${k}]="props['\${k}']"\`).joi
 const slotContent = Object.entries(__slots)
   .map(([name, html]) => name === "default" ? html : \`<ng-container ngProjectAs="[slot=\${name}]">\${html}</ng-container>\`)
   .join("");
+const attrStr = attrs.length ? " " + attrs.join(" ") : "";
 
 class HostBase { props = props; }
 const Host = Component({
   standalone: true,
   selector: "mount-host",
-  imports: [C],
-  template: \`<\${selector} \${bindings}>\${slotContent}</\${selector}>\`,
+  imports,
+  template: \`<\${tag}\${attrStr} \${bindings}>\${slotContent}</\${tag}>\`,
 })(HostBase) ?? HostBase;
 
 const providers = [provideZonelessChangeDetection()];

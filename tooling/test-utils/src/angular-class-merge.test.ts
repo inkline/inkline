@@ -60,6 +60,37 @@ export default SpikeHostComponent;
     );
   });
 
+  it("unions an element's own template [class] binding with stacked host [class] bindings", async () => {
+    // The consumer of a styled component passes `class` as a TEMPLATE `[class]` on the host element
+    // (`<button inkButtonBase inkButton [class]="'extra'">`). It must union with the component's and
+    // directives' host `[class]` bindings — this lets element/directive kinds drop the `klass` input
+    // entirely and route the consumer class straight onto the element.
+    const entry = hostEntry(`
+import { Component, Directive } from "@angular/core";
+
+@Component({ standalone: true, selector: "button[inkBase]", host: { "[class]": "'cmp-base'" }, template: "" })
+class InkBaseComponent {}
+
+@Directive({ standalone: true, selector: "[inkStyled]", host: { "[class]": "'dir-recipe'" } })
+class InkStyledDirective {}
+
+@Component({
+  standalone: true,
+  selector: "spike-host",
+  imports: [InkBaseComponent, InkStyledDirective],
+  template: \`<button inkBase inkStyled [class]="'consumer-extra'"></button>\`,
+})
+class SpikeHostComponent {}
+
+export default SpikeHostComponent;
+`);
+
+    const { html } = await mountForTarget("angular", entry);
+    expect(buttonClass(html).split(/\s+/).filter(Boolean).sort()).toEqual(
+      ["cmp-base", "consumer-extra", "dir-recipe"].sort(),
+    );
+  });
+
   it("routes a directive's property host binding ([disabled]) onto the shared element", async () => {
     const entry = hostEntry(`
 import { Component, Directive } from "@angular/core";

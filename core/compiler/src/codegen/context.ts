@@ -1,5 +1,5 @@
 import type { Code } from "./code-ir/nodes.ts";
-import type { AngularRegistry } from "./targets/angular/registry.ts";
+import type { AngularComponentEntry, AngularRegistry } from "./targets/angular/registry.ts";
 import type { IRComponent, IRContextDefinition } from "../ir/render/nodes.ts";
 import type { Diagnostic } from "../core/diagnostics/codes.ts";
 import type { DiagnosticCollector } from "../core/diagnostics/collector.ts";
@@ -140,6 +140,14 @@ export interface RewriteRules {
    * (Qwik/Angular), so gated content always renders and CSS `:empty` collapses the empty wrapper.
    */
   readonly hasSlotCheck?: (slotName: string) => string;
+  /**
+   * Angular-only: resolve a component-instance's local name to its attribute-selector registry entry
+   * (host tag, attribute chain, kind) so an instance emits as a native host element with stacked
+   * directives (`<button inkButtonBase inkButton>`) instead of an `ink-*` wrapper. Returns undefined
+   * for unresolved/wrapper components, which keep the `ink-*` element form. Set only by the Angular
+   * target when a registry is threaded in.
+   */
+  readonly angularResolve?: (localName: string) => AngularComponentEntry | undefined;
 }
 
 export interface ComponentImport {

@@ -1,7 +1,12 @@
 import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../context.ts";
 import { angularConformance } from "./conformance.ts";
 import type { Code } from "../../code-ir/nodes.ts";
-import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
+import type {
+  IRComponent,
+  IRComponentInstance,
+  IRElement,
+  IRNode,
+} from "../../../ir/render/nodes.ts";
 import { cFile, cImport, cStmt, cRaw, cGroup } from "../../code-ir/builders.ts";
 import { childrenArePhrasing } from "../../shared/phrasing.ts";
 import {
@@ -15,7 +20,8 @@ import {
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 import { walkRenderTree } from "../../../ir/render/visit.ts";
-import { angularSelector } from "./selector.ts";
+import { angularSelector, angularAttrSelector, angularElementSelector } from "./selector.ts";
+import type { AngularComponentEntry, AngularKind } from "./registry.ts";
 import * as ts from "typescript";
 
 /**
@@ -187,6 +193,71 @@ function ownClassExpr(
   return `(${rewriteExpr(a.value.expr!, rules)})`;
 }
 
+/** Escape a string for embedding inside a template literal (backticks and `${`). */
+function escapeTemplate(s: string): string {
+  return s.replace(/`/g, "\\`").replace(/\$\{/g, "\\${");
+}
+
+/** Unwrap Transition wrappers to the underlying render root (for root classification/emit). */
+function unwrapTransition(node: IRNode): IRNode {
+  let root = node;
+  while (root.kind === "Transition") root = root.child;
+  return root;
+}
+
+/**
+ * The Angular shape this component emits as. Phase 1 emits `element` (native host element) and
+ * `directive` (styling directive stacked onto it); `structural` (the `IInput` flatten) lands in
+ * Phase 2 and falls back to the `wrapper` shape until then.
+ */
+function emitKind(entry: AngularComponentEntry | undefined): AngularKind {
+  const kind = entry?.kind ?? "wrapper";
+  return kind === "structural" ? "wrapper" : kind;
+}
+
+/**
+ * Host bindings for an element-component's root element (the element IS the host): its attrs — class
+ * as `[class]`, boolean/value-semantic props as `[name]`, every other dynamic attr as
+ * `[attr.name]="(…) ?? null"` — and its events. There is no `klass` merge: a consumer's/forwarded
+ * class arrives as a template `[class]` at the call site and Ivy unions it with these host bindings.
+ */
+function emitElementHostEntries(node: IRElement, rules: RewriteRules): string[] {
+  const entries: string[] = [];
+  for (const a of node.attrs) {
+    const name = rewriteAttrName(a.name, rules);
+    if (name === "class") {
+      entries.push(`'[class]': ${JSON.stringify(ownClassExpr(a, rules))}`);
+      continue;
+    }
+    if (a.value.kind === "Static") {
+      entries.push(`'${name}': ${JSON.stringify(String(a.value.value))}`);
+      continue;
+    }
+    const expr = rewriteExpr(a.value.expr, rules);
+    entries.push(
+      KEEP_PROPERTY.has(name)
+        ? `'[${name}]': ${JSON.stringify(expr)}`
+        : `'[attr.${name}]': ${JSON.stringify(`(${expr}) ?? null`)}`,
+    );
+  }
+  for (const e of node.events) {
+    const evName = rewriteEventName(e.name, rules).replace(/^on/, "").toLowerCase();
+    entries.push(`'(${evName})': ${JSON.stringify(angularEventExpr(e.handler.expr, rules))}`);
+  }
+  return entries;
+}
+
+/**
+ * Host binding for a styling directive: just the recipe `[class]` from the styled root's class attr.
+ * Forwarded props (type/disabled/…) are NOT re-host-bound — they are pure pass-throughs that Angular
+ * routes to the base component on the same element, which host-binds them; re-binding here would
+ * double-write (and the base may transform them, e.g. `disabled || loading`).
+ */
+function directiveHostEntries(root: IRComponentInstance, rules: RewriteRules): string[] {
+  const classAttr = root.attrs.find((a) => rewriteAttrName(a.name, rules) === "class");
+  return classAttr ? [`'[class]': ${JSON.stringify(ownClassExpr(classAttr, rules))}`] : [];
+}
+
 function emitNode(node: IRNode, rules: RewriteRules): string {
   switch (node.kind) {
     case "Element": {
@@ -283,10 +354,12 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       return node.children.map((c) => emitNode(c, rules)).join("\n");
     case "ComponentInstance": {
       const localName = node.resolved?.name ?? node.reference.getText();
-      const tag = angularSelector(localName);
-      // Ivy always treats a `[class]` binding as a host class — it never reaches an input — so a
-      // class passed to a compiled child travels through its synthesized `klass` input instead,
-      // and the child's root element merges it (see the Element case above).
+      // A registered element/directive component renders as its native host element with the resolved
+      // attribute-selector chain stacked on it (`<button inkButtonBase inkButton>`); anything else
+      // (wrapper/structural/unresolved) keeps today's `ink-*` element form.
+      const entry = rules.angularResolve?.(localName);
+      const kind = emitKind(entry);
+      const stacked = kind === "element" || kind === "directive";
       const fallthrough = node.acceptsAttrFallthrough === true;
       let classBound = false;
       const ciParts: string[] = [];
@@ -294,15 +367,21 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
         const name = rewriteAttrName(a.name, rules);
         if (name === "class") {
           classBound = true;
-          const own = ownClassExpr(a, rules);
-          ciParts.push(`[klass]="${fallthrough ? mergedClassExpr(own, rules) : own}"`);
+          const merged = fallthrough
+            ? mergedClassExpr(ownClassExpr(a, rules), rules)
+            : ownClassExpr(a, rules);
+          // A stacked host element binds `[class]` directly — Ivy unions it with the stacked
+          // directives' host `[class]` bindings. A wrapper component never receives `[class]` as an
+          // input (Ivy treats it as a host class), so its forwarded class travels via `[klass]`.
+          ciParts.push(stacked ? `[class]="${merged}"` : `[klass]="${merged}"`);
           continue;
         }
         if (a.value.kind === "Static") ciParts.push(`${name}="${a.value.value}"`);
         else ciParts.push(`[${name}]="${rewriteExpr(a.value.expr, rules)}"`);
       }
       if (fallthrough && !classBound) {
-        ciParts.push(`[klass]="${mergedClassExpr(undefined, rules)}"`);
+        const merged = mergedClassExpr(undefined, rules);
+        ciParts.push(stacked ? `[class]="${merged}"` : `[klass]="${merged}"`);
       }
       for (const e of node.events) {
         // A `$bind:<prop>` lowers to `update:<prop>`; the child's `model()` exposes it as the
@@ -318,9 +397,15 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
         ciParts.push(`(${evName})="${angularEventExpr(e.handler.expr, rules)}"`);
       }
       const ciAttrStr = ciParts.join(" ");
+      const tag = stacked ? entry!.hostTag! : angularSelector(localName);
+      const chain = stacked ? " " + entry!.attrChain.join(" ") : "";
+      const attrPart = ciAttrStr ? " " + ciAttrStr : "";
       if (node.slots.length === 0) {
-        // Non-self-closing: Angular's template parser mishandles self-closed component tags in JIT.
-        return `<${tag}${ciAttrStr ? " " + ciAttrStr : ""}></${tag}>`;
+        // A void host element (e.g. `<input>`) self-closes; every other childless tag needs an
+        // explicit close (Angular's JIT parser mishandles self-closed component/non-void tags).
+        return stacked && VOID_ELEMENTS.has(tag)
+          ? `<${tag}${chain}${attrPart} />`
+          : `<${tag}${chain}${attrPart}></${tag}>`;
       }
       const slotContent = node.slots
         .map((s) => {
@@ -328,7 +413,7 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
           return `<ng-container slot="${s.name}">\n${emitNode(s.body, rules)}\n</ng-container>`;
         })
         .join("\n");
-      return `<${tag}${ciAttrStr ? " " + ciAttrStr : ""}>\n${slotContent}\n</${tag}>`;
+      return `<${tag}${chain}${attrPart}>\n${slotContent}\n</${tag}>`;
     }
     case "Transition":
       return emitNode(node.child, rules);
@@ -423,8 +508,26 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       props: { strip: rules.members?.props?.strip ?? true, whole: propsWhole },
     },
   };
+  // Angular attribute-selector codegen: this component's own emitted shape, plus a resolver for the
+  // shapes of the components it instantiates. No registry (other call paths / direct emit() unit
+  // tests) ⇒ every component is a `wrapper`, i.e. today's `ink-*` element output, unchanged.
+  const localToEntry = (local: string): AngularComponentEntry | undefined => {
+    if (!ctx.angularRegistry) return undefined;
+    const compName =
+      ctx.componentImports.find((ci) => ci.localName === local)?.componentName ?? local;
+    return ctx.angularRegistry.get(compName);
+  };
+  const selfEntry = ctx.angularRegistry?.get(component.name);
+  const selfKind = emitKind(selfEntry);
+  const renderRoot = unwrapTransition(component.render);
+
   const body: Code[] = [];
-  const angularImports = ["Component", "signal", "computed", "effect"];
+  const angularImports = [
+    selfKind === "directive" ? "Directive" : "Component",
+    "signal",
+    "computed",
+    "effect",
+  ];
 
   // Angular templates resolve identifiers against the component instance, so module-level imports
   // referenced by the template (styleframe recipes called inline, e.g. `inputPrefixRecipe({…})`)
@@ -436,11 +539,26 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   // Scan the render tree once: instances the standalone `imports` must declare, and whether any
   // fallthrough root exists (which needs the synthesized `klass` input below).
   const instanceNames = new Set<string>();
+  // Chain bases a stacked instance needs imported from the styled component's module (which
+  // re-exports them): componentName → import path.
+  const chainBaseImports = new Map<string, string>();
   let hasFallthroughRoot = false;
   walkRenderTree(component.render, {
     enter(node) {
       if (node.kind === "ComponentInstance") {
-        instanceNames.add(node.resolved?.name ?? node.reference.getText());
+        const local = node.resolved?.name ?? node.reference.getText();
+        instanceNames.add(local);
+        const entry = localToEntry(local);
+        if ((emitKind(entry) === "element" || emitKind(entry) === "directive") && entry) {
+          // The instance renders as the whole stacked chain (`<button inkButtonBase inkButton>`), so
+          // the standalone component must import every link. The styled component (last in the chain)
+          // is imported via the consumer's own import; its bases are re-exported by it.
+          const selfImport = ctx.componentImports.find((ci) => ci.localName === local);
+          const fromPath = `${selfImport ? selfImport.relativePath : `./${local}`}.component`;
+          for (const base of entry.chainComponents.slice(0, -1)) {
+            chainBaseImports.set(base, fromPath);
+          }
+        }
       }
       if (
         (node.kind === "ComponentInstance" || node.kind === "Element") &&
@@ -452,9 +570,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   });
 
   // The class a parent forwards (Vue-style attribute fallthrough). Ivy never routes `[class]`
-  // bindings to inputs, so the forwarded class travels through this dedicated input and the root
-  // element merges it with its own class.
-  if (hasFallthroughRoot) {
+  // bindings to inputs, so a wrapper component receives the forwarded class through this dedicated
+  // input and the root element merges it. Element/directive components don't need it: the element IS
+  // the host, so a forwarded class arrives as a template `[class]` at the call site and Ivy unions it.
+  if (hasFallthroughRoot && selfKind === "wrapper") {
     angularImports.push("input");
     body.push(cStmt({ body: `klass = input<string>()` }));
   }
@@ -568,8 +687,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       [r.name, r.loadingName, r.errorName].filter((n): n is string => n !== undefined),
     ),
   );
-  const templateRules: RewriteRules = { ...rules, reactiveBindings: resourceReads };
-  const template = emitNode(component.render, templateRules);
+  const templateRules: RewriteRules = {
+    ...rules,
+    reactiveBindings: resourceReads,
+    angularResolve: localToEntry,
+  };
   const styleImport =
     component.styles.length > 0 ? [cRaw({ text: `import "./${component.name}.css";` })] : [];
 
@@ -590,20 +712,65 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const providersStr =
     providerEntries.length > 0 ? `, providers: [${providerEntries.join(", ")}]` : "";
 
-  // Standalone components must declare every component they instantiate — both cross-file imports
-  // and same-file siblings (which compile to their own `.component.ts` modules and are imported
-  // here so the `imports: [...]` reference resolves).
+  // Standalone components must declare every component they instantiate — cross-file imports,
+  // same-file siblings (compiled to their own `.component.ts`), and the bases of any stacked
+  // attribute-selector chain (re-exported by the styled component, so imported from its module).
   const importedLocals = ctx.componentImports
     .map((i) => i.localName)
     .filter((n): n is string => Boolean(n));
   const sameFileChildren = [...instanceNames].filter(
-    (n) => !importedLocals.includes(n) && n !== component.name,
+    (n) => !importedLocals.includes(n) && n !== component.name && !chainBaseImports.has(n),
   );
-  const importNames = [...importedLocals, ...sameFileChildren];
+  const chainBaseEntries = [...chainBaseImports].filter(
+    ([name]) => !importedLocals.includes(name) && name !== component.name,
+  );
+  const importNames = [...importedLocals, ...sameFileChildren, ...chainBaseEntries.map(([n]) => n)];
   const importsStr = importNames.length > 0 ? `, imports: [${importNames.join(", ")}]` : "";
   const sameFileImports = sameFileChildren.map((n) =>
     cRaw({ text: `import { ${n}Component as ${n} } from "./${n}.component";` }),
   );
+  const chainBaseImportStmts = chainBaseEntries.map(([name, path]) =>
+    cRaw({ text: `import { ${name}Component as ${name} } from "${path}";` }),
+  );
+
+  // A styling directive does not instantiate its base (it has no template), so it must NOT import
+  // the base component (that would be an unused import) — but it DOES re-export it, so a consumer
+  // can declare the whole stacked chain from the styled component's module. Drop the base's value
+  // import (keep its type imports) and emit the re-export.
+  const reExportBases = new Set(
+    selfKind === "directive" && selfEntry ? selfEntry.chainComponents.slice(0, -1) : [],
+  );
+  const ownComponentImports = ctx.componentImports.map((ci) =>
+    reExportBases.has(ci.componentName) ? { ...ci, localName: "" } : ci,
+  );
+  const reExports = [...reExportBases].map((base) => {
+    const imp = ctx.componentImports.find((ci) => ci.componentName === base);
+    return cRaw({
+      text: `export { ${base}Component } from "${imp ? imp.relativePath : `./${base}`}.component";`,
+    });
+  });
+
+  // Branch the decorator on this component's emitted shape: a native host element (`element`), a
+  // styling directive stacked onto one (`directive`), or today's `ink-*` display:contents wrapper.
+  let decoratorText: string;
+  if (selfKind === "element") {
+    const root = renderRoot as IRElement;
+    const selector = angularElementSelector(root.tag, angularAttrSelector(component.name));
+    const hostEntries = emitElementHostEntries(root, templateRules);
+    const hostStr = hostEntries.length > 0 ? `, host: { ${hostEntries.join(", ")} }` : "";
+    const inline = childrenArePhrasing(root.children);
+    const childTemplate = root.children
+      .map((c) => emitNode(c, templateRules))
+      .join(inline ? "" : "\n");
+    decoratorText = `@Component({ standalone: true, selector: '${selector}'${hostStr}${importsStr}${providersStr}, template: \`${escapeTemplate(childTemplate)}\` })`;
+  } else if (selfKind === "directive") {
+    const hostEntries = directiveHostEntries(renderRoot as IRComponentInstance, templateRules);
+    const hostStr = hostEntries.length > 0 ? `, host: { ${hostEntries.join(", ")} }` : "";
+    decoratorText = `@Directive({ standalone: true, selector: '[${angularAttrSelector(component.name)}]'${hostStr}${providersStr} })`;
+  } else {
+    const template = emitNode(component.render, templateRules);
+    decoratorText = `@Component({ standalone: true, selector: '${angularSelector(component.name)}', host: { style: 'display: contents' }${importsStr}${providersStr}, template: \`${escapeTemplate(template)}\` })`;
+  }
 
   const file = cFile({
     flavor: "ts",
@@ -612,16 +779,16 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         module: "@angular/core",
         named: [...new Set(angularImports)].map((i) => ({ imported: i })),
       }),
-      ...emitComponentImports(ctx.componentImports, ".component", false, "Component"),
+      ...emitComponentImports(ownComponentImports, ".component", false, "Component"),
       ...sameFileImports,
+      ...chainBaseImportStmts,
+      ...reExports,
       ...ctx.externalImports,
       ...styleImport,
       ...(ctx.typeDeclarations.length > 0 ? [cRaw({ text: "" }), ...ctx.typeDeclarations] : []),
       ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       cRaw({ text: "" }),
-      cRaw({
-        text: `@Component({ standalone: true, selector: '${angularSelector(component.name)}', host: { style: 'display: contents' }${importsStr}${providersStr}, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
-      }),
+      cRaw({ text: decoratorText }),
       cStmt({ body: `export class ${component.name}Component` }),
       cRaw({ text: "{" }),
       cGroup({ children: body }),
