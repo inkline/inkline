@@ -10,6 +10,7 @@ export interface ButtonBaseProps {
 export default defineComponent(
   {
     slots: { default: {} },
+    element: "button",
   },
   (props: ButtonBaseProps) => {
     return (

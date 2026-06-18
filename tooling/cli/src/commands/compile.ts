@@ -5,7 +5,10 @@ import {
   compile,
   compileIncremental,
   createIncrementalState,
+  analyzeOnly,
+  buildAngularRegistry,
   meetsLevel,
+  type AngularRegistry,
   type BarrelGroup,
   type TargetName,
   type IncrementalState,
@@ -161,6 +164,28 @@ export default defineCommand({
       }
     }
 
+    // Pass 1 (Angular only): infer each component's attribute-selector shape from its render root so
+    // a styled component emits as a native host element with stacked directives instead of an `ink-*`
+    // wrapper. A cheap pre-pass — program→parse→lower→analyze, no emit — over every file, before the
+    // real per-file compile below threads the resulting registry into codegen.
+    let angularRegistry: AngularRegistry | undefined;
+    if (targets.includes("angular")) {
+      // Attribute-selector classification is opt-in via the `element` flag (see registry.ts), so
+      // story render components and unflagged app components resolve to `wrapper` on their own — we
+      // scan every file with no story-path special-casing, and styled components resolve their bases.
+      const modules = await Promise.all(
+        resolvedFiles.map(async (filePath) => {
+          const absPath = resolve(filePath);
+          const analyzed = await analyzeOnly(
+            { fileName: absPath, source: readFileSync(absPath, "utf-8") },
+            { targets, tsconfig: fileConfig.tsconfig },
+          );
+          return analyzed.module;
+        }),
+      );
+      angularRegistry = buildAngularRegistry(modules);
+    }
+
     for (const filePath of resolvedFiles) {
       const absPath = resolve(filePath);
       const source = readFileSync(absPath, "utf-8");
@@ -178,6 +203,7 @@ export default defineCommand({
           targetOptions: fileConfig.targetOptions,
           registry: fileConfig.registry,
           tsconfig: fileConfig.tsconfig,
+          angularRegistry,
         },
       );
 
@@ -202,7 +228,14 @@ export default defineCommand({
 
     flushNamedBarrels(barrelEntries, namedGroups, writeOutput);
 
-    await generateStories(targets, outDir, targetOutDir, srcDir ?? sourcePrefix, namespaceGroup);
+    await generateStories(
+      targets,
+      outDir,
+      targetOutDir,
+      srcDir ?? sourcePrefix,
+      namespaceGroup,
+      angularRegistry,
+    );
 
     if (args.watch) {
       return runWatch(
@@ -230,6 +263,7 @@ async function generateStories(
   targetOutDir: Partial<Record<string, string>>,
   srcDir: string,
   namespaceGroup: BarrelGroup | undefined,
+  angularRegistry?: AngularRegistry,
   write: (path: string, content: string) => void = writeOutput,
 ): Promise<void> {
   const targetKeys = Object.keys(targetOutDir);
@@ -249,6 +283,7 @@ async function generateStories(
       storiesDir,
       generatedDir: storiesDir,
       frameworks,
+      angularRegistry,
     });
     if (result.files.length > 0) {
       console.log(
@@ -366,6 +401,9 @@ function runWatch(
           targetOutDir,
           srcDir ?? sourcePrefix,
           namespaceGroup,
+          // Watch mode compiles incrementally without a registry — every component emits as a wrapper
+          // (its `ink-*` selector), so bare stories on `meta.component` render fine without it.
+          undefined,
           writeIfChanged,
         ).catch((err) => console.error("Story generation error:", err));
       }, 150);

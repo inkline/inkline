@@ -163,6 +163,12 @@ export const DIAGNOSTICS = {
     help: "Give the component a single host-element root so it can inherit class and other attributes." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0120" as const,
   },
+  INK0130: {
+    severity: "error" as const,
+    title: '{name}: element="{element}" but the root is not a single native <{element}>' as const,
+    help: "Set `element` to the component's actual native root tag, or remove it to keep the ink-* element wrapper." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0130" as const,
+  },
 } as const;
 
 export type DiagnosticCode = keyof typeof DIAGNOSTICS;

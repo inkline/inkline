@@ -6,7 +6,7 @@
 import { describe, it, expect } from "vitest";
 import { compileSource } from "./compile.ts";
 import { mountForTarget } from "./mount.ts";
-import type { GeneratedFile } from "@inkline/compiler";
+import { analyzeOnly, buildAngularRegistry, type GeneratedFile } from "@inkline/compiler";
 
 // A same-file styled + headless pair mirroring the Badge pattern (headless root carries the base
 // class; the styled wrapper computes a recipe class and forwards it via the `class` attribute).
@@ -74,6 +74,34 @@ describe("angular SSR mount", () => {
     expect(html).toContain("Hi");
     // Components render inside their kebab-case ink-* host elements.
     expect(html).toContain("<ink-badge-base");
+  });
+
+  it("mounts an attribute-selector element-component on its native host (parsed tag[attr] selector)", async () => {
+    // With a registry, a single static-element root compiles to a `button[inkBtn]` @Component (the
+    // element IS the host). Mounted WITHOUT a host spec, mount.ts reflects that selector and parses
+    // it into a real `<button inkBtn …>` — proving element-components are mountable standalone.
+    const ELEMENT = `
+import { defineComponent, Slot } from "@inkline/core";
+export default defineComponent({ slots: { default: {} }, element: "button" }, (props: { label?: string }) => (
+  <button class="btn"><Slot>{props.label}</Slot></button>
+));
+`;
+    const analyzed = await analyzeOnly(
+      { fileName: "Btn.ink.tsx", source: ELEMENT },
+      { targets: ["angular"] },
+    );
+    const registry = buildAngularRegistry([analyzed.module]);
+    const result = await compileSource(ELEMENT, {
+      targets: ["angular"],
+      fileName: "Btn.ink.tsx",
+      config: { angularRegistry: registry },
+    });
+    expect(result.errors).toEqual([]);
+    const [entry, ...supporting] = result.filesFor("angular");
+    const { html } = await mountForTarget("angular", entry!, { label: "Hi" }, supporting);
+
+    expect(html).toMatch(/<button[^>]*class="btn"[^>]*>Hi<\/button>/);
+    expect(html).not.toContain("ink-btn");
   });
 
   it("renders without the recipe modifier when the styling prop is absent", async () => {

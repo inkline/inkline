@@ -53,6 +53,25 @@ export function validateComponent(component: IRComponent, ctx: PassContext): voi
 }
 
 /**
+ * INK0130: a component declares `element: "<tag>"` (opting into Angular attribute-selector codegen)
+ * but its render root is not a single native `<tag>` element — so it can't be emitted as that host
+ * element (the Angular target falls back to the `ink-*` wrapper). Mirrors the classifier's
+ * element-acceptance condition so the two never silently disagree.
+ */
+export function validateElementFlag(component: IRComponent, ctx: PassContext): void {
+  if (component.element === undefined) return;
+  let root = component.render;
+  while (root.kind === "Transition") root = root.child;
+  const ok = root.kind === "Element" && root.tag === component.element && root.refs.length === 0;
+  if (!ok) {
+    ctx.diagnostics.push("INK0130", component.loc, {
+      name: component.name,
+      element: component.element,
+    });
+  }
+}
+
+/**
  * INK0120: a parent passes a `class` (a fallthrough attribute) to a child component whose root
  * cannot inherit it (fragment / control-flow / multiple roots). Resolution is limited to components
  * defined in the same module; cross-module children are skipped (their root kind is not known here).

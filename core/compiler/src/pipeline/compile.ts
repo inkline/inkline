@@ -6,6 +6,12 @@ import { SymbolTable } from "../ir/reactivity.ts";
 import type { IRComponent, IRModule } from "../ir/render/nodes.ts";
 import type { Code } from "../codegen/code-ir/nodes.ts";
 import type { ComponentImport, GeneratedFile, Target, TargetName } from "../codegen/context.ts";
+import {
+  classifyOne,
+  resolveAngularKinds,
+  type AngularRegistry,
+  type RawEntry,
+} from "../codegen/targets/angular/registry.ts";
 import { cRaw } from "../codegen/code-ir/builders.ts";
 import { print } from "../codegen/print/printer.ts";
 import { PluginRunner } from "../plugin/runner.ts";
@@ -35,7 +41,7 @@ function extractExternalImports(module: IRModule): readonly Code[] {
     .map((decl) => cRaw({ text: decl.getText(module.sourceFile) }));
 }
 
-function extractComponentImports(module: IRModule): readonly ComponentImport[] {
+export function extractComponentImports(module: IRModule): readonly ComponentImport[] {
   return module.imports
     .filter((decl) => {
       const spec = (decl.moduleSpecifier as import("typescript").StringLiteral).text;
@@ -104,6 +110,7 @@ function emitComponent(
     externalImports,
     componentImports,
     typeDeclarations,
+    angularRegistry: ctx.options.angularRegistry,
   });
   const result = print(codeModule.root, { sourceMap: ctx.options.sourceMap });
   const files: GeneratedFile[] = [
@@ -129,6 +136,77 @@ function emitComponent(
   }
 
   return files;
+}
+
+/** Run the front-end passes (program → parse → lower → analyze) for a single file, no emit. */
+async function runFrontendPasses(input: CompileInput, ctx: PassContext): Promise<AnalyzedModule> {
+  // P1: create TS program
+  const artifact = await programPass.run(input, ctx);
+
+  // P2: parse .ink.tsx → IRModule
+  const rawModule = await parsePass.run(artifact, ctx);
+
+  // P2.5: resolve sibling files (.ink.css, .ink.scss) and merge styles
+  const siblings = resolveSiblings(input.fileName);
+  const moduleWithSiblings: IRModule =
+    siblings.styles.length > 0
+      ? {
+          ...rawModule,
+          components: rawModule.components.map((c) => ({
+            ...c,
+            styles: [...c.styles, ...siblings.styles],
+          })),
+        }
+      : rawModule;
+
+  // P3: lower (normalize control flow, slots, bindings, static marks)
+  const module = lower(moduleWithSiblings, ctx);
+
+  // P4: analyze (reactivity graph + validation + cycle detection)
+  return analyzePass.run(module, ctx);
+}
+
+/**
+ * Run the front-end passes for a single file and return the analyzed module WITHOUT emitting. Used
+ * to build whole-program metadata (the Angular attribute-selector registry) in a cheap pre-pass
+ * before the real per-file compile. Diagnostics are discarded — the subsequent `compile()` re-runs
+ * the passes and surfaces them.
+ */
+export async function analyzeOnly(
+  input: CompileInput,
+  config?: Partial<InklineConfig>,
+): Promise<AnalyzedModule> {
+  const options = resolveOptions(config);
+  const ctx: PassContext = {
+    diagnostics: createDiagnosticCollector(),
+    options,
+    symbols: new SymbolTable(),
+    registry: options.registry,
+  };
+  return runFrontendPasses(input, ctx);
+}
+
+/**
+ * Build the Angular attribute-selector registry from a set of analyzed modules: classify each
+ * component by its render root, then resolve `forwarding`/`structural` candidates transitively to
+ * their (possibly cross-file) base. A component instance references its target by LOCAL import name,
+ * so each module contributes a resolver mapping local → component name (cross-file via
+ * `extractComponentImports`, same-file via the module's own component names).
+ */
+export function buildAngularRegistry(modules: readonly IRModule[]): AngularRegistry {
+  const entries = new Map<string, RawEntry>();
+  for (const module of modules) {
+    const localMap = new Map<string, string>();
+    for (const ci of extractComponentImports(module)) {
+      if (ci.localName) localMap.set(ci.localName, ci.componentName);
+    }
+    for (const c of module.components) localMap.set(c.name, c.name);
+    const resolveLocal = (local: string): string | undefined => localMap.get(local);
+    for (const c of module.components) {
+      entries.set(c.name, { classification: classifyOne(c), resolveLocal });
+    }
+  }
+  return resolveAngularKinds(entries);
 }
 
 export async function compile(
@@ -175,30 +253,8 @@ export async function compile(
     }
   }
 
-  // P1: create TS program
-  const artifact = await programPass.run(input, ctx);
-
-  // P2: parse .ink.tsx → IRModule
-  const rawModule = await parsePass.run(artifact, ctx);
-
-  // P2.5: resolve sibling files (.ink.css, .ink.scss) and merge styles
-  const siblings = resolveSiblings(input.fileName);
-  const moduleWithSiblings: IRModule =
-    siblings.styles.length > 0
-      ? {
-          ...rawModule,
-          components: rawModule.components.map((c) => ({
-            ...c,
-            styles: [...c.styles, ...siblings.styles],
-          })),
-        }
-      : rawModule;
-
-  // P3: lower (normalize control flow, slots, bindings, static marks)
-  const module = lower(moduleWithSiblings, ctx);
-
-  // P4: analyze (reactivity graph + validation + cycle detection)
-  const analyzedModule = await analyzePass.run(module, ctx);
+  // P1–P4: program → parse → lower → analyze
+  const analyzedModule = await runFrontendPasses(input, ctx);
 
   // Plugin runner
   const runner = new PluginRunner(options.plugins);

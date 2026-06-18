@@ -382,6 +382,13 @@ export interface IRComponent {
   readonly expose?: readonly string[];
   readonly styles: readonly IRStyleBlock[];
   readonly runtime: IRRuntimeMode;
+  /**
+   * Angular-only authoring opt-in: the native host tag this component's root renders (`"button"`,
+   * `"div"`, `"span"`). When set, the Angular target emits the component as an attribute-selector
+   * host element / directive (`button[inkButtonBase]`) instead of an `ink-*` element wrapper. Set
+   * via `defineComponent({ element: "button" }, …)`; validated against the actual root (INK0130).
+   */
+  readonly element?: string;
   readonly targetOverrides: Readonly<Partial<Record<TargetName, IRTargetOverride>>>;
   readonly slotBindings?: ReadonlyMap<string, string>;
 }

@@ -7,6 +7,12 @@ interface ComponentOptions {
   events?: Record<string, Record<string, never>>;
   runtime?: "client" | "server" | "iso";
   name?: string;
+  /**
+   * Angular-only: the native host tag this component's root renders (`"button"`, `"div"`, `"span"`).
+   * Opts the component into best-practice attribute-selector codegen (`button[inkButtonBase]`)
+   * instead of an `ink-*` element wrapper. Ignored by every other target.
+   */
+  element?: string;
 }
 
 export type InkComponent<P = {}> = (

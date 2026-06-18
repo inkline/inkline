@@ -12,11 +12,12 @@ describe("IBadge (styled) on Angular SSR", () => {
       { label: "New", color: "primary", size: "md" },
     );
 
-    // The recipe classes land on the headless root <div class="badge">, merged — not stranded on
-    // the <ink-badge-base> host element.
+    // The badge IS the native <div> (an element-component host) with the styling directive stacked
+    // on it; Ivy unions the base class and the recipe class. No <ink-badge-base> wrapper, no
+    // display:contents — so the badge is a real element in the consumer's DOM.
     expect(html).toMatch(/<div[^>]*class="badge badge--color-primary badge--size-md"/);
     expect(html).toContain("New");
-    expect(html).toContain("<ink-badge-base");
+    expect(html).not.toContain("ink-badge-base");
   });
 
   it("renders the base class alone when no styling props are set", async () => {

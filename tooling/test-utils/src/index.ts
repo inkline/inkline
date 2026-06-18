@@ -26,10 +26,22 @@ export {
   type EquivalenceResult,
 } from "./equivalence.ts";
 
-export { isMountable, mountForTarget, type MountResult } from "./mount.ts";
+export { isMountable, mountForTarget, type MountResult, type AngularMountHost } from "./mount.ts";
+
+export { prepareStyledAngularChain, type StyledAngularChain } from "./angular-chain.ts";
 
 export { normalizeHtml } from "./normalize.ts";
 
 export { resolveComponent } from "./resolve.ts";
 
-export type { TargetName, GeneratedFile, Diagnostic } from "@inkline/compiler";
+// The Angular attribute-selector registry: built over a styled component + the headless parts it
+// composes so they classify as directives/elements (instead of silently reverting to `ink-*`
+// wrappers when compiled in isolation). Re-exported so SSR helpers have a single import source.
+export { analyzeOnly, buildAngularRegistry } from "@inkline/compiler";
+export type {
+  TargetName,
+  GeneratedFile,
+  Diagnostic,
+  AngularRegistry,
+  AngularComponentEntry,
+} from "@inkline/compiler";

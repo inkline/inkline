@@ -106,6 +106,7 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         primitives,
         styles,
         runtime,
+        element: optionsResult?.element,
         targetOverrides: {},
         slotBindings: setupResult.slotBindings.size > 0 ? setupResult.slotBindings : undefined,
       };

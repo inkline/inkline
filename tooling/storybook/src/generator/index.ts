@@ -1,7 +1,7 @@
 import { globSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
-import { angularSelector } from "@inkline/compiler";
+import { angularSelector, type AngularRegistry } from "@inkline/compiler";
 import type { StoryMeta, StoryVariant } from "../define.ts";
 import { type FrameworkConfig, activeFrameworks } from "./config.ts";
 export { activeFrameworks } from "./config.ts";
@@ -14,6 +14,12 @@ export interface GenerateOptions {
   readonly frameworks?: readonly FrameworkConfig[];
   readonly generatedDir?: string;
   readonly storiesDir?: string;
+  /**
+   * Angular attribute-selector registry. Lets the Angular story emitter render a directive-kind
+   * component (which has no standalone element) on its native host element with the stacked chain.
+   * Absent → bare stories fall back to `meta.component` (correct for wrapper/element components).
+   */
+  readonly angularRegistry?: AngularRegistry;
 }
 
 export interface GeneratedFile {
@@ -161,7 +167,7 @@ export async function generate(options: GenerateOptions): Promise<GenerateResult
         storyOutputRelDir,
         generatedDir,
       );
-      const source = renderStory(storyModule, framework, renderImports);
+      const source = renderStory(storyModule, framework, renderImports, options.angularRegistry);
       keysByTarget.set(framework.target, extractStoryKeys(source));
 
       const outDir = join(options.rootDir, framework.target, storiesDir, relDir);

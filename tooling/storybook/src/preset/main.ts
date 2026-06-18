@@ -66,7 +66,18 @@ export function createStorybookConfig(options: StorybookConfigOptions): Storyboo
       if (configType !== "PRODUCTION") {
         next.resolve = {
           ...next.resolve,
-          alias: { ...next.resolve?.alias, [componentPackage]: sourceEntry },
+          alias: {
+            ...next.resolve?.alias,
+            // Both the styled barrel (main) and the headless barrel alias to their `.inkline` source,
+            // so a generated story can import either — e.g. an Angular directive bare-story pulls its
+            // headless base from `@inkline/<fw>/headless`. The subpath alias is listed first so it
+            // wins over the bare-package alias.
+            [`${componentPackage}/headless`]: sourceEntry.replace(
+              /index\.([cm]?[jt]s)$/,
+              "headless.$1",
+            ),
+            [componentPackage]: sourceEntry,
+          },
         };
         next.server = {
           ...((next.server ?? {}) as Record<string, unknown>),
