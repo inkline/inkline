@@ -26,10 +26,8 @@ describe("analyzeOnly", () => {
     const analyzed = await analyzeOnly({ fileName, source }, { targets: ["angular"] });
     const registry = buildAngularRegistry([analyzed.module]);
 
-    // The fixture's `<button>` root → an element-component host tag, inferred (no authoring flag).
-    expect(registry.get(analyzed.module.components[0]!.name)).toMatchObject({
-      kind: "element",
-      hostTag: "button",
-    });
+    // The fixture's `<button>` root has no `element` flag, so attribute-selector codegen is opt-out:
+    // it resolves to a `wrapper` (the integration still works — analyzeOnly → IR → classify).
+    expect(registry.get(analyzed.module.components[0]!.name)).toMatchObject({ kind: "wrapper" });
   });
 });

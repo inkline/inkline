@@ -1,4 +1,5 @@
 ---
+"@inkline/core": minor
 "@inkline/compiler": minor
 "@inkline/angular": minor
 "@inkline/test-utils": minor
@@ -23,6 +24,11 @@ Consumers therefore render each control as a real **direct child**, so direct-ch
 this fixes the field-group seam (a doubled +2px border on Angular), letting the field-group recipe's
 direct-child seam rules apply uniformly — the interim CSS reach-through workaround is removed.
 
-The authored `.ink.tsx` API is unchanged and the other six targets emit byte-identical output. A
-build-time pre-pass infers each component's host tag from its render root (new `analyzeOnly` /
-`buildAngularRegistry` APIs, threaded via the `angularRegistry` compiler option).
+Attribute-selector codegen is an explicit opt-in: a headless leaf declares its native host tag via
+`defineComponent({ element: "button" }, …)` (a new, Angular-only `ComponentOptions.element` field;
+ignored by every other target and validated against the actual root — `INK0130`). Styled and
+structural components are inferred from their marked base, so app authors' and story components are
+untouched (they stay `ink-*` element wrappers) and the other six targets emit byte-identical output.
+A build-time pre-pass builds the registry from these declarations (new `analyzeOnly` /
+`buildAngularRegistry` APIs, threaded via the `angularRegistry` compiler option), which also lets the
+Storybook story generator mount a directive on its native host element.

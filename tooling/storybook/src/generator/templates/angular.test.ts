@@ -1,7 +1,11 @@
 import { describe, it, expect } from "vitest";
+import type { AngularComponentEntry, AngularRegistry } from "@inkline/compiler";
 import { renderAngular } from "./angular.ts";
 import { frameworkByTarget } from "../config.ts";
 import type { LoadedStoryModule, ResolvedRenderImport } from "../index.ts";
+
+const registryOf = (name: string, entry: AngularComponentEntry): AngularRegistry =>
+  new Map([[name, entry]]);
 
 const angular = frameworkByTarget("angular")!;
 
@@ -122,6 +126,40 @@ describe("renderAngular", () => {
     expect(out.match(/import { prefixSuffixComponent as PrefixSuffixStory }/g)).toHaveLength(1);
     expect(out).toContain("export const Default: Story = { render: () =>");
     expect(out).toContain("export const PrefixSuffix: Story = { render: () =>");
+  });
+
+  it("mounts a directive-kind component's bare stories on its native host with the stacked chain", () => {
+    const registry = registryOf("Button", {
+      kind: "directive",
+      hostTag: "button",
+      attrChain: ["inkButtonBase", "inkButton"],
+      chainComponents: ["IButtonBase", "Button"],
+    });
+    const out = renderAngular(buttonModule, angular, [], registry);
+
+    // The styled self is imported from the main package; the headless base from `/headless`.
+    expect(out).toContain('import { IButtonBase } from "@inkline/angular/headless";');
+    // Bare stories render the chain on the host element and bind args (from argTypes) to its inputs.
+    expect(out).toContain(
+      'export const Default: Story = { render: (args) => ({ props: args, moduleMetadata: { imports: [IButtonBase, Button] }, template: `<button inkButtonBase inkButton [label]="label"></button>` }) };',
+    );
+    expect(out).toContain(
+      'export const Disabled: Story = { args: {"disabled":true}, render: (args) => ({ props: args, moduleMetadata: { imports: [IButtonBase, Button] }, template: `<button inkButtonBase inkButton [label]="label"></button>` }) };',
+    );
+  });
+
+  it("leaves a non-directive (element/wrapper) component's bare stories on meta.component", () => {
+    const registry = registryOf("Button", {
+      kind: "element",
+      hostTag: "button",
+      attrChain: ["inkButton"],
+      chainComponents: ["Button"],
+    });
+    const out = renderAngular(buttonModule, angular, [], registry);
+
+    expect(out).toContain("export const Default: Story = {};");
+    expect(out).not.toContain("/headless");
+    expect(out).not.toContain("render: (args) =>");
   });
 
   it("validates component and story identifiers", () => {

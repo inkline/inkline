@@ -7,6 +7,7 @@ export interface BadgeBaseProps {
 export default defineComponent(
   {
     slots: { default: {} },
+    element: "div",
   },
   (props: BadgeBaseProps) => {
     return (

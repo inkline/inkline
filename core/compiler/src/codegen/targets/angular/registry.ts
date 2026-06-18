@@ -63,9 +63,14 @@ export function classifyOne(component: IRComponent): RawClassification {
   while (root.kind === "Transition") root = root.child;
 
   if (root.kind === "Element") {
-    // A `#ref` on the root has no host-binding form (a template ref lives in a template, and the
-    // host element is reached via ElementRef injection, not `#ref`) → keep the wrapper.
-    if (root.refs.length > 0) return { kind: "wrapper" };
+    // Attribute-selector element-components are an explicit opt-in: the author declares the native
+    // host tag via `element: "<tag>"`. An unmarked element root (story scaffolding, app components)
+    // stays a wrapper, so classification never silently changes a component's selector style. A
+    // declared tag that doesn't match the actual root, or a root `#ref` (which has no host-binding
+    // form), also falls back to wrapper — the tag mismatch is surfaced as INK0130 during analyze.
+    if (component.element === undefined || component.element !== root.tag || root.refs.length > 0) {
+      return { kind: "wrapper" };
+    }
     const classAttr = root.attrs.find((a) => a.name === "class");
     const baseClass =
       classAttr && classAttr.value.kind === "Static" ? String(classAttr.value.value) : undefined;
@@ -159,9 +164,12 @@ export function resolveAngularKinds(entries: ReadonlyMap<string, RawEntry>): Ang
     if (!target) return WRAPPER;
 
     if (c.kind === "forwarding") {
-      // A styling directive stacks onto any host-bearing base — an element, another directive, or a
-      // flattened structural component: `<tag …baseChain inkSelf>`. Only a wrapper base can't stack.
-      if (target.kind === "wrapper") return WRAPPER;
+      // A styling directive decorates a native ELEMENT host (`<button inkButtonBase inkButton>`), so
+      // it stacks only onto an `element` base. This is also what distinguishes a library styled
+      // component (forwards into an element leaf → directive) from a story/app wrapper that composes a
+      // styled component (forwards into a directive/structural → stays an `ink-*` wrapper, which the
+      // Storybook generator instantiates by element selector). No story-path heuristic needed.
+      if (target.kind !== "element") return WRAPPER;
       return {
         kind: "directive",
         hostTag: target.hostTag,

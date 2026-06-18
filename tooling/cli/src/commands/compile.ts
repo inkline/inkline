@@ -170,6 +170,9 @@ export default defineCommand({
     // real per-file compile below threads the resulting registry into codegen.
     let angularRegistry: AngularRegistry | undefined;
     if (targets.includes("angular")) {
+      // Attribute-selector classification is opt-in via the `element` flag (see registry.ts), so
+      // story render components and unflagged app components resolve to `wrapper` on their own — we
+      // scan every file with no story-path special-casing, and styled components resolve their bases.
       const modules = await Promise.all(
         resolvedFiles.map(async (filePath) => {
           const absPath = resolve(filePath);
@@ -225,7 +228,14 @@ export default defineCommand({
 
     flushNamedBarrels(barrelEntries, namedGroups, writeOutput);
 
-    await generateStories(targets, outDir, targetOutDir, srcDir ?? sourcePrefix, namespaceGroup);
+    await generateStories(
+      targets,
+      outDir,
+      targetOutDir,
+      srcDir ?? sourcePrefix,
+      namespaceGroup,
+      angularRegistry,
+    );
 
     if (args.watch) {
       return runWatch(
@@ -253,6 +263,7 @@ async function generateStories(
   targetOutDir: Partial<Record<string, string>>,
   srcDir: string,
   namespaceGroup: BarrelGroup | undefined,
+  angularRegistry?: AngularRegistry,
   write: (path: string, content: string) => void = writeOutput,
 ): Promise<void> {
   const targetKeys = Object.keys(targetOutDir);
@@ -272,6 +283,7 @@ async function generateStories(
       storiesDir,
       generatedDir: storiesDir,
       frameworks,
+      angularRegistry,
     });
     if (result.files.length > 0) {
       console.log(
@@ -389,6 +401,9 @@ function runWatch(
           targetOutDir,
           srcDir ?? sourcePrefix,
           namespaceGroup,
+          // Watch mode compiles incrementally without a registry — every component emits as a wrapper
+          // (its `ink-*` selector), so bare stories on `meta.component` render fine without it.
+          undefined,
           writeIfChanged,
         ).catch((err) => console.error("Story generation error:", err));
       }, 150);

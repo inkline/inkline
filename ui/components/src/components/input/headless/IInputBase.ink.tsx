@@ -8,6 +8,7 @@ export interface InputBaseProps {
 export default defineComponent(
   {
     slots: { default: {} },
+    element: "div",
   },
   (props: InputBaseProps) => {
     return (

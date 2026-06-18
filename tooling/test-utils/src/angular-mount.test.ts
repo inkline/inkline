@@ -82,7 +82,7 @@ describe("angular SSR mount", () => {
     // it into a real `<button inkBtn …>` — proving element-components are mountable standalone.
     const ELEMENT = `
 import { defineComponent, Slot } from "@inkline/core";
-export default defineComponent({ slots: { default: {} } }, (props: { label?: string }) => (
+export default defineComponent({ slots: { default: {} }, element: "button" }, (props: { label?: string }) => (
   <button class="btn"><Slot>{props.label}</Slot></button>
 ));
 `;

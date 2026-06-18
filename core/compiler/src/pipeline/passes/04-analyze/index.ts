@@ -1,7 +1,12 @@
 import type { IRModule } from "../../../ir/render/nodes.ts";
 import type { Pass } from "../../types.ts";
 import { buildReactivityGraph, type ReactivityGraph } from "./graph.ts";
-import { diagnoseCycles, validateAttrFallthrough, validateComponent } from "./validate.ts";
+import {
+  diagnoseCycles,
+  validateAttrFallthrough,
+  validateComponent,
+  validateElementFlag,
+} from "./validate.ts";
 
 export interface AnalyzedModule {
   readonly module: IRModule;
@@ -19,6 +24,7 @@ export const analyzePass: Pass<IRModule, AnalyzedModule> = {
       graphs.set(component.id, graph);
 
       validateComponent(component, ctx);
+      validateElementFlag(component, ctx);
       validateAttrFallthrough(component, localComponents, ctx);
       diagnoseCycles(component, graph, ctx);
     }
@@ -28,4 +34,9 @@ export const analyzePass: Pass<IRModule, AnalyzedModule> = {
 };
 
 export { buildReactivityGraph, type ReactivityGraph } from "./graph.ts";
-export { validateComponent, validateAttrFallthrough, diagnoseCycles } from "./validate.ts";
+export {
+  validateComponent,
+  validateElementFlag,
+  validateAttrFallthrough,
+  diagnoseCycles,
+} from "./validate.ts";

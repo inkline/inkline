@@ -17,6 +17,7 @@ export interface ParsedOptions {
   readonly events: IREventDeclaration[];
   readonly styles: IRStyleBlock[];
   readonly runtime: IRRuntimeMode;
+  readonly element?: string;
 }
 
 function makeExprNode(expr: ts.Expression, sf: ts.SourceFile): IRExprNode {
@@ -43,6 +44,7 @@ export function parseOptions(
   const events: IREventDeclaration[] = [];
   const styles: IRStyleBlock[] = [];
   let runtime: IRRuntimeMode = "iso";
+  let element: string | undefined;
 
   for (const prop of options.properties) {
     if (!ts.isPropertyAssignment(prop) || !ts.isIdentifier(prop.name)) continue;
@@ -71,10 +73,16 @@ export function parseOptions(
         }
         break;
       }
+      // Angular-only: the native host tag this component's root renders. Opts the component into
+      // attribute-selector codegen; validated against the actual root tag in analyze (INK0130).
+      case "element": {
+        if (ts.isStringLiteral(prop.initializer)) element = prop.initializer.text;
+        break;
+      }
     }
   }
 
-  return { props, slots, events, styles, runtime };
+  return { props, slots, events, styles, runtime, element };
 }
 
 function parseStyleFromValue(

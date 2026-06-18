@@ -5,10 +5,13 @@ export interface FieldGroupBaseProps {
   id?: string;
 }
 
-export default defineComponent({ slots: { default: {} } }, (props: FieldGroupBaseProps) => {
-  return (
-    <div class="field-group" id={props.id}>
-      <Slot />
-    </div>
-  );
-});
+export default defineComponent(
+  { slots: { default: {} }, element: "div" },
+  (props: FieldGroupBaseProps) => {
+    return (
+      <div class="field-group" id={props.id}>
+        <Slot />
+      </div>
+    );
+  },
+);

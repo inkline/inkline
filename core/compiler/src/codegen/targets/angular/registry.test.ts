@@ -35,7 +35,7 @@ const slot = (body: IRNode = createSlotPlaceholder({})) => ({
 });
 
 describe("classifyOne", () => {
-  it("classifies a single static native element root as `element`, capturing host tag + base class", () => {
+  it("classifies a flagged single static native element root as `element`, capturing host tag + base class", () => {
     const c = classifyOne(
       makeComp(
         "IButtonBase",
@@ -47,6 +47,7 @@ describe("classifyOne", () => {
           ],
           children: [createSlotPlaceholder({})],
         }),
+        { element: "button" },
       ),
     );
     expect(c).toMatchObject({ kind: "element", hostTag: "button", baseClass: "button" });
@@ -54,21 +55,34 @@ describe("classifyOne", () => {
     if (c.kind === "element") expect(c.rootAttrs.map((a) => a.name)).toEqual(["type"]);
   });
 
-  it("classifies an element root with no static class as `element` with undefined baseClass", () => {
+  it("classifies a flagged element root with no static class as `element` with undefined baseClass", () => {
     const c = classifyOne(
-      makeComp("IBadgeBase", createElement({ tag: "div", children: [createSlotPlaceholder({})] })),
+      makeComp("IBadgeBase", createElement({ tag: "div", children: [createSlotPlaceholder({})] }), {
+        element: "div",
+      }),
     );
     expect(c).toEqual({ kind: "element", hostTag: "div", baseClass: undefined, rootAttrs: [] });
   });
 
-  it("unwraps a Transition root to classify the underlying element", () => {
+  it("unwraps a Transition root to classify the underlying (flagged) element", () => {
     const c = classifyOne(
-      makeComp("X", createTransition({ child: createElement({ tag: "div" }) })),
+      makeComp("X", createTransition({ child: createElement({ tag: "div" }) }), { element: "div" }),
     );
     expect(c).toMatchObject({ kind: "element", hostTag: "div" });
   });
 
-  it("falls back to `wrapper` when the element root carries a #ref", () => {
+  it("falls back to `wrapper` for an UNMARKED element root, or a declared tag that mismatches the root", () => {
+    // No `element` flag → wrapper (the opt-in: story scaffolding / app components never auto-convert).
+    expect(classifyOne(makeComp("Unmarked", createElement({ tag: "div" })))).toEqual({
+      kind: "wrapper",
+    });
+    // Flag set but the root tag doesn't match → wrapper (INK0130 reports the mismatch in analyze).
+    expect(
+      classifyOne(makeComp("Mismatch", createElement({ tag: "a" }), { element: "button" })),
+    ).toEqual({ kind: "wrapper" });
+  });
+
+  it("falls back to `wrapper` when a flagged element root carries a #ref", () => {
     const c = classifyOne(
       makeComp(
         "X",
@@ -76,6 +90,7 @@ describe("classifyOne", () => {
           tag: "input",
           refs: [{ ref: createExpr({ expr: mockExpr("r") }), category: "element", loc }],
         }),
+        { element: "input" },
       ),
     );
     expect(c).toEqual({ kind: "wrapper" });
@@ -203,7 +218,7 @@ describe("resolveAngularKinds", () => {
     });
   });
 
-  it("stacks a multi-level chain (element ← directive ← directive) root-first", () => {
+  it("stacks a directive over an element base, but stays a wrapper over a non-element base", () => {
     const reg = resolveAngularKinds(
       new Map([
         ["E", raw({ kind: "element", hostTag: "button", rootAttrs: [] })],
@@ -214,12 +229,17 @@ describe("resolveAngularKinds", () => {
         ],
       ]),
     );
-    expect(reg.get("D2")).toMatchObject({
+    // A styling directive decorates a native element host, so it stacks onto the `element` base.
+    expect(reg.get("D1")).toMatchObject({
       kind: "directive",
       hostTag: "button",
-      attrChain: ["inkE", "inkD1", "inkD2"],
-      chainComponents: ["E", "D1", "D2"],
+      attrChain: ["inkE", "inkD1"],
+      chainComponents: ["E", "D1"],
     });
+    // Forwarding over a (non-element) directive base — e.g. a story/app wrapper composing a styled
+    // component — stays a wrapper, not a deep directive stack. This is exactly what keeps story
+    // render components (which wrap a single styled component) as `ink-*` element wrappers.
+    expect(reg.get("D2")!.kind).toBe("wrapper");
   });
 
   it("falls back to `wrapper` when the base resolves to a wrapper, is unknown, or forms a cycle", () => {
@@ -305,6 +325,7 @@ describe("buildAngularRegistry", () => {
       attrs: [createAttribute({ name: "class", value: createStaticValue({ value: "badge" }) })],
       children: [createSlotPlaceholder({})],
     }),
+    { element: "div" },
   );
   const badge = makeComp(
     "IBadge",

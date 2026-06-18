@@ -10,7 +10,7 @@ import { analyzeOnly, buildAngularRegistry, compile } from "../../../pipeline/co
 const SOURCE = `
 import { defineComponent, Slot, createMemo } from "@inkline/core";
 
-const IBadgeBase = defineComponent({ slots: { default: {} } }, (props: { label?: string }) => (
+const IBadgeBase = defineComponent({ slots: { default: {} }, element: "div" }, (props: { label?: string }) => (
   <div class="badge"><Slot>{props.label}</Slot></div>
 ));
 
@@ -88,11 +88,11 @@ describe("angular attribute-selector codegen (Phase 1)", () => {
 const STRUCTURAL_SOURCE = `
 import { defineComponent, Slot, createMemo } from "@inkline/core";
 
-const IShellBase = defineComponent({ slots: { default: {} } }, (props: { id?: string }) => (
+const IShellBase = defineComponent({ slots: { default: {} }, element: "div" }, (props: { id?: string }) => (
   <div class="shell" id={props.id}><Slot /></div>
 ));
 
-const IPartBase = defineComponent({ slots: { default: {} } }, () => (
+const IPartBase = defineComponent({ slots: { default: {} }, element: "span" }, () => (
   <span class="part"><Slot /></span>
 ));
 
@@ -152,5 +152,24 @@ describe("angular structural flatten (Phase 2)", () => {
     expect(app).not.toContain("<ink-field");
     expect(app).toMatch(/imports: \[\s*IField\s*\]/);
     expect(app).not.toContain("IShellBase");
+  });
+});
+
+describe("element flag validation (INK0130)", () => {
+  it("errors when the declared element does not match the static root, and stays a wrapper", async () => {
+    const SOURCE = `
+import { defineComponent } from "@inkline/core";
+const Mismatch = defineComponent({ element: "button" }, () => <div class="x">y</div>);
+export { Mismatch };
+`;
+    const input = { fileName: "Mismatch.ink.tsx", source: SOURCE };
+    const analyzed = await analyzeOnly(input, { targets: ["angular"] });
+    const registry = buildAngularRegistry([analyzed.module]);
+    const result = await compile(input, { targets: ["angular"], angularRegistry: registry });
+
+    expect(result.diagnostics.map((d) => d.code)).toContain("INK0130");
+    // The mismatch falls back to the ink-* wrapper rather than emitting a broken host element.
+    expect(registry.get("Mismatch")!.kind).toBe("wrapper");
+    expect(result.files.angular?.[0]?.contents).toContain("selector: 'ink-mismatch'");
   });
 });

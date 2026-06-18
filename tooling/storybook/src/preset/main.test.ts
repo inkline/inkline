@@ -37,6 +37,7 @@ describe("createStorybookConfig", () => {
     );
     expect(out.resolve?.alias).toEqual({
       foo: "bar",
+      "@inkline/react/headless": "/repo/ui/react/generated/headless.ts",
       "@inkline/react": "/repo/ui/react/generated/index.ts",
     });
   });
@@ -45,6 +46,7 @@ describe("createStorybookConfig", () => {
     const config = createStorybookConfig(base);
     const out = await config.viteFinal({}, { configType: "DEVELOPMENT" });
     expect(out.resolve?.alias).toEqual({
+      "@inkline/react/headless": "/repo/ui/react/generated/headless.ts",
       "@inkline/react": "/repo/ui/react/generated/index.ts",
     });
     expect(out.server).toEqual({ cors: { origin: true, credentials: true } });
