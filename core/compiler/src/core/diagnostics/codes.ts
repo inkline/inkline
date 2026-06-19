@@ -157,6 +157,13 @@ export const DIAGNOSTICS = {
     help: "Please file an issue with the source file attached." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0110" as const,
   },
+  INK0111: {
+    severity: "warning" as const,
+    title:
+      "Headless component '{name}' root must be a single static element to extract a host selector" as const,
+    help: "Give the headless component a single static-tag root element (e.g. <button>, <div>). A conditional or fragment root keeps the element-selector wrapper and no attribute-selector variant is emitted." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0111" as const,
+  },
   INK0120: {
     severity: "warning" as const,
     title: "Attributes passed to <{name}> cannot be inherited" as const,

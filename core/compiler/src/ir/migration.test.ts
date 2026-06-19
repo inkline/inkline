@@ -50,8 +50,8 @@ describe("migrate", () => {
     expect(result.version).toBe(1);
   });
 
-  it("IR_VERSION is 2", () => {
-    expect(IR_VERSION).toBe(2);
+  it("IR_VERSION is 3", () => {
+    expect(IR_VERSION).toBe(3);
   });
 
   it("v1 → v2 defaults `models` to [] on each component", () => {
@@ -75,5 +75,30 @@ describe("migrate", () => {
     const result = migrate(v1, 2);
     expect(result.version).toBe(2);
     expect(result.components[0]!.models).toEqual([]);
+  });
+
+  it("v2 → v3 is a pure version bump (meta is optional)", () => {
+    const sf = ts.createSourceFile("t.tsx", "", ts.ScriptTarget.Latest, true);
+    const v2Component = {
+      kind: "Component",
+      id: "t.tsx#T",
+      name: "T",
+      props: [],
+      events: [],
+      state: [],
+      models: [],
+    } as unknown as IRModule["components"][number];
+    const v2: IRModule = {
+      version: 2,
+      fileName: "t.tsx",
+      components: [v2Component],
+      contexts: [],
+      imports: [],
+      sourceFile: sf,
+    };
+    const result = migrate(v2, 3);
+    expect(result.version).toBe(3);
+    expect(result.components[0]).toBe(v2Component);
+    expect(result.components[0]!.meta).toBeUndefined();
   });
 });

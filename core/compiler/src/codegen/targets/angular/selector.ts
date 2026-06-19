@@ -20,3 +20,15 @@ export function angularSelector(componentName: string): string {
     .toLowerCase();
   return `ink-${kebab}`;
 }
+
+/**
+ * The attribute-selector form for a headless component, binding the directive to a native element
+ * via an attribute (the Angular Material `button[mat-button]` pattern). The element tag is the
+ * headless component's static root tag and the attribute token reuses {@link angularSelector}:
+ *
+ * - `IButtonBase` on `<button>` → `button[ink-button-base]`
+ * - `IBadgeBase` on `<div>` → `div[ink-badge-base]`
+ */
+export function angularAttrSelector(componentName: string, tag: string): string {
+  return `${tag}[${angularSelector(componentName)}]`;
+}

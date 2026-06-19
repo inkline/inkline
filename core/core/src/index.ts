@@ -7,6 +7,13 @@ interface ComponentOptions {
   events?: Record<string, Record<string, never>>;
   runtime?: "client" | "server" | "iso";
   name?: string;
+  /**
+   * Component-level metadata read by the compiler. `headless: true` marks a behavior-only component
+   * (no styling) whose single static-element root the Angular target extracts as the host — emitting
+   * an attribute-selector component (`button[ink-x]`) alongside the element-selector one, so the
+   * native element carries the behavior with no wrapper.
+   */
+  meta?: { headless?: boolean };
 }
 
 export type InkComponent<P = {}> = (

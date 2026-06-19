@@ -17,6 +17,7 @@ export interface ParsedOptions {
   readonly events: IREventDeclaration[];
   readonly styles: IRStyleBlock[];
   readonly runtime: IRRuntimeMode;
+  readonly headless?: boolean;
 }
 
 function makeExprNode(expr: ts.Expression, sf: ts.SourceFile): IRExprNode {
@@ -43,6 +44,7 @@ export function parseOptions(
   const events: IREventDeclaration[] = [];
   const styles: IRStyleBlock[] = [];
   let runtime: IRRuntimeMode = "iso";
+  let headless = false;
 
   for (const prop of options.properties) {
     if (!ts.isPropertyAssignment(prop) || !ts.isIdentifier(prop.name)) continue;
@@ -71,10 +73,21 @@ export function parseOptions(
         }
         break;
       }
+      case "meta": {
+        if (ts.isObjectLiteralExpression(prop.initializer)) {
+          for (const m of prop.initializer.properties) {
+            if (!ts.isPropertyAssignment(m) || !ts.isIdentifier(m.name)) continue;
+            if (m.name.text === "headless") {
+              headless = m.initializer.kind === ts.SyntaxKind.TrueKeyword;
+            }
+          }
+        }
+        break;
+      }
     }
   }
 
-  return { props, slots, events, styles, runtime };
+  return { props, slots, events, styles, runtime, headless };
 }
 
 function parseStyleFromValue(

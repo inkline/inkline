@@ -1,7 +1,7 @@
 import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../context.ts";
 import { angularConformance } from "./conformance.ts";
 import type { Code } from "../../code-ir/nodes.ts";
-import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
+import type { IRComponent, IRElement, IRNode } from "../../../ir/render/nodes.ts";
 import { cFile, cImport, cStmt, cRaw, cGroup } from "../../code-ir/builders.ts";
 import { childrenArePhrasing } from "../../shared/phrasing.ts";
 import {
@@ -15,7 +15,7 @@ import {
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 import { walkRenderTree } from "../../../ir/render/visit.ts";
-import { angularSelector } from "./selector.ts";
+import { angularSelector, angularAttrSelector } from "./selector.ts";
 import * as ts from "typescript";
 
 /**
@@ -185,6 +185,55 @@ function ownClassExpr(
 ): string {
   if (a.value.kind === "Static") return `'${String(a.value.value)}'`;
   return `(${rewriteExpr(a.value.expr!, rules)})`;
+}
+
+/**
+ * Map a headless component's root element to Angular `host: { … }` binding entries. Reuses the exact
+ * attribute classification of `emitNode`'s Element case, rendered as host-binding keys so the native
+ * host element (the attribute-selector variant) carries them directly with no wrapper: the class
+ * merges with the parent-forwarded `klass()`, KEEP_PROPERTY attrs stay property bindings, every other
+ * dynamic attr binds via `[attr.name]` (`?? null` so a nullish value omits it), statics become literal
+ * host attributes, and root events become host event bindings.
+ */
+function headlessHostBindings(root: IRElement, rules: RewriteRules): string[] {
+  // The render root is always a fallthrough root (markRootFallthrough marks every Element root), so
+  // the class always merges the parent-forwarded `klass()`.
+  const entries: string[] = [];
+  let classBound = false;
+  for (const a of root.attrs) {
+    const name = rewriteAttrName(a.name, rules);
+    if (name === "class") {
+      classBound = true;
+      entries.push(`'[class]': "${mergedClassExpr(ownClassExpr(a, rules), rules)}"`);
+      continue;
+    }
+    if (a.value.kind === "Static") {
+      entries.push(`'${name}': '${a.value.value}'`);
+      continue;
+    }
+    const expr = rewriteExpr(a.value.expr, rules);
+    entries.push(
+      KEEP_PROPERTY.has(name) ? `'[${name}]': "${expr}"` : `'[attr.${name}]': "(${expr}) ?? null"`,
+    );
+  }
+  if (!classBound) {
+    entries.push(`'[class]': "${mergedClassExpr(undefined, rules)}"`);
+  }
+  for (const e of root.events) {
+    const evName = rewriteEventName(e.name, rules).replace(/^on/, "").toLowerCase();
+    entries.push(`'(${evName})': "${angularEventExpr(e.handler.expr, rules)}"`);
+  }
+  return entries;
+}
+
+/**
+ * The children-only template for a headless host variant: the root element's children emitted with
+ * the same inline/whitespace decision as the Element case, so the body matches the wrapper variant's
+ * exactly — only the surrounding root tag is gone (it became the host).
+ */
+function headlessTemplate(root: IRElement, rules: RewriteRules): string {
+  const inline = childrenArePhrasing(root.children);
+  return root.children.map((c) => emitNode(c, rules)).join(inline ? "" : "\n");
 }
 
 function emitNode(node: IRNode, rules: RewriteRules): string {
@@ -605,6 +654,40 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     cRaw({ text: `import { ${n}Component as ${n} } from "./${n}.component";` }),
   );
 
+  // Escape a template body for embedding in the `@Component({ template: `…` })` backticks.
+  const escTemplate = (t: string) => t.replace(/`/g, "\\`").replace(/\$\{/g, "\\${");
+  const classBody = () => [cRaw({ text: "{" }), cGroup({ children: body }), cRaw({ text: "}" })];
+
+  // The element-selector component (`<ink-x>`, a `display: contents` wrapper). Unchanged for every
+  // component — the backward-compatible form.
+  const classBlocks: Code[] = [
+    cRaw({
+      text: `@Component({ standalone: true, selector: '${angularSelector(component.name)}', host: { style: 'display: contents' }${importsStr}${providersStr}, template: \`${escTemplate(template)}\` })`,
+    }),
+    cStmt({ body: `export class ${component.name}Component` }),
+    ...classBody(),
+  ];
+
+  // A headless component additionally emits an attribute-selector variant whose single static-element
+  // root IS the Angular host (`<button ink-button-base>`, zero wrapper). A non-element root (fragment/
+  // conditional) can't be host-extracted — warn and keep only the element-selector variant.
+  if (component.meta?.headless) {
+    if (component.render.kind === "Element") {
+      const root = component.render;
+      const hostStr = `host: { ${headlessHostBindings(root, templateRules).join(", ")} }`;
+      classBlocks.push(
+        cRaw({ text: "" }),
+        cRaw({
+          text: `@Component({ standalone: true, selector: '${angularAttrSelector(component.name, root.tag)}', ${hostStr}${importsStr}${providersStr}, template: \`${escTemplate(headlessTemplate(root, templateRules))}\` })`,
+        }),
+        cStmt({ body: `export class ${component.name}HostComponent` }),
+        ...classBody(),
+      );
+    } else {
+      ctx.diagnostics.push("INK0111", component.loc, { name: component.name });
+    }
+  }
+
   const file = cFile({
     flavor: "ts",
     children: [
@@ -619,13 +702,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...(ctx.typeDeclarations.length > 0 ? [cRaw({ text: "" }), ...ctx.typeDeclarations] : []),
       ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       cRaw({ text: "" }),
-      cRaw({
-        text: `@Component({ standalone: true, selector: '${angularSelector(component.name)}', host: { style: 'display: contents' }${importsStr}${providersStr}, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
-      }),
-      cStmt({ body: `export class ${component.name}Component` }),
-      cRaw({ text: "{" }),
-      cGroup({ children: body }),
-      cRaw({ text: "}" }),
+      ...classBlocks,
     ],
   });
 
