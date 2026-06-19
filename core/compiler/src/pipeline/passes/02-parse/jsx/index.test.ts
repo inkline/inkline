@@ -123,6 +123,68 @@ describe("parseJsxElement", () => {
   });
 });
 
+describe("whitespace preservation", () => {
+  it("preserves raw whitespace in text directly under a sensitive tag", () => {
+    const node = parse("<pre>  x\n  y</pre>");
+    expect(node.kind).toBe("Element");
+    if (node.kind !== "Element") return;
+    expect(node.preserveWhitespace).toBe(true);
+    expect(node.children).toHaveLength(1);
+    expect(node.children[0]).toMatchObject({
+      kind: "Text",
+      value: "  x\n  y",
+      preserveWhitespace: true,
+    });
+  });
+
+  it("inherits the flag into a nested element (the <pre><code> case)", () => {
+    // `<code>` is not itself sensitive, but parsed under `<pre>` it preserves text verbatim.
+    const node = parse("<pre><code>  x\n  y</code></pre>");
+    expect(node.kind).toBe("Element");
+    if (node.kind !== "Element") return;
+    expect(node.preserveWhitespace).toBe(true);
+    expect(node.children).toHaveLength(1);
+    const code = node.children[0]!;
+    expect(code.kind).toBe("Element");
+    if (code.kind !== "Element") return;
+    expect(code.tag).toBe("code");
+    expect(code.preserveWhitespace).toBe(true);
+    expect(code.children[0]).toMatchObject({
+      kind: "Text",
+      value: "  x\n  y",
+      preserveWhitespace: true,
+    });
+  });
+
+  it("keeps whitespace-only text between elements when preserving", () => {
+    const node = parse("<pre>\n  <code>x</code></pre>");
+    expect(node.kind).toBe("Element");
+    if (node.kind !== "Element") return;
+    expect(node.children).toHaveLength(2);
+    expect(node.children[0]).toMatchObject({
+      kind: "Text",
+      value: "\n  ",
+      preserveWhitespace: true,
+    });
+    expect(node.children[1]!.kind).toBe("Element");
+  });
+
+  it("leaves ordinary elements without the flag and still collapses their text", () => {
+    const node = parse("<div><span>  x\n  y</span></div>");
+    expect(node.kind).toBe("Element");
+    if (node.kind !== "Element") return;
+    expect(node.preserveWhitespace).toBeUndefined();
+    const span = node.children[0]!;
+    if (span.kind !== "Element") return;
+    expect(span.preserveWhitespace).toBeUndefined();
+    const text = span.children[0]!;
+    expect(text.kind).toBe("Text");
+    if (text.kind !== "Text") return;
+    expect(text.value).toBe("  x y");
+    expect(text.preserveWhitespace).toBeUndefined();
+  });
+});
+
 describe("parseExpression", () => {
   it("parenthesized expression unwraps", () => {
     const node = parse("(<div />)");

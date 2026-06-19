@@ -55,6 +55,12 @@ export interface IRElement {
   readonly isStatic: boolean;
   /** True when this is the component's root and inherits the parent's fallthrough attributes. */
   readonly acceptsAttrFallthrough?: boolean;
+  /**
+   * True for a whitespace-sensitive element (`pre`/`textarea`/`script`/`style`) and every descendant
+   * element parsed under one. Drives codegen's `inline` decision so no formatting whitespace is
+   * injected inside the element's rendered content.
+   */
+  readonly preserveWhitespace?: boolean;
   readonly loc: SourceLocation;
 }
 
@@ -81,6 +87,12 @@ export interface IRComponentInstance {
 export interface IRText {
   readonly kind: "Text";
   readonly value: string;
+  /**
+   * True for text parsed under a whitespace-sensitive element. Drives codegen to emit the raw value
+   * as a string-literal expression (`{"…"}` / `{{ "…" }}`) so each framework's own JSX/template
+   * whitespace cleaner can't re-collapse it.
+   */
+  readonly preserveWhitespace?: boolean;
   readonly loc: SourceLocation;
 }
 

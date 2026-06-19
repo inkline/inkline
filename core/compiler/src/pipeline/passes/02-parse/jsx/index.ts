@@ -58,7 +58,12 @@ function parseJsxChild(
     // Normalize JSX whitespace once, here in the IR, so every target emits identical rendered text.
     const value = preserveWhitespace ? node.text : cleanJsxText(node.text);
     if (value.length === 0) return undefined;
-    return { kind: "Text", value, loc: toLoc(node, sf) };
+    return {
+      kind: "Text",
+      value,
+      preserveWhitespace: preserveWhitespace || undefined,
+      loc: toLoc(node, sf),
+    };
   }
 
   if (ts.isJsxExpression(node)) {
@@ -67,7 +72,7 @@ function parseJsxChild(
   }
 
   if (ts.isJsxElement(node) || ts.isJsxSelfClosingElement(node)) {
-    return parseJsxElement(node, sf);
+    return parseJsxElement(node, sf, preserveWhitespace);
   }
 
   if (ts.isJsxFragment(node)) {
@@ -84,13 +89,15 @@ function parseJsxChild(
 function parseJsxElement(
   node: ts.JsxElement | ts.JsxSelfClosingElement,
   sf: ts.SourceFile,
+  preserveWhitespace = false,
 ): IRNode {
   const isSelfClosing = ts.isJsxSelfClosingElement(node);
   const openingTag = isSelfClosing ? node : node.openingElement;
   const tag = getTagName(openingTag.tagName);
   const { attrs, events, refs } = parseAttributes(openingTag.attributes, sf);
-  const preserveWhitespace = WHITESPACE_SENSITIVE_TAGS.has(tag.text);
-  const children = isSelfClosing ? [] : parseChildren(node.children, sf, preserveWhitespace);
+  // Whitespace-sensitivity is inherited: once inside a `pre` (etc.) every descendant preserves too.
+  const preserve = preserveWhitespace || WHITESPACE_SENSITIVE_TAGS.has(tag.text);
+  const children = isSelfClosing ? [] : parseChildren(node.children, sf, preserve);
   const loc = toLoc(node, sf);
 
   if (tag.isComponent) {
@@ -122,6 +129,7 @@ function parseJsxElement(
     refs,
     children,
     isStatic: false,
+    preserveWhitespace: preserve || undefined,
     loc,
   };
 }
