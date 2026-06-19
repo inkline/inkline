@@ -23,6 +23,18 @@ type = input<"button" | "submit" | "reset">()
 disabled = input<boolean>()
 loading = input<boolean>()
 }
+@Component({ standalone: true, selector: 'button[ink-button-base]', host: { '[class]': "'button' + (klass() ? ' ' + klass() : '')", '[attr.type]': "(type() ?? 'button') ?? null", '[disabled]': "disabled() || loading()", '[attr.aria-busy]': "(loading() ? 'true' : 'false') ?? null" }, template: \`@if (!!loading()) {
+<span class="button-spinner" aria-hidden="true"></span>
+}
+<ng-content>{{ label() }}</ng-content>\` })
+export class IButtonBaseHostComponent
+{
+klass = input<string>()
+label = input<string>()
+type = input<"button" | "submit" | "reset">()
+disabled = input<boolean>()
+loading = input<boolean>()
+}
 ",
   "astro/IButtonBase.astro": "---
 export interface ButtonBaseProps {

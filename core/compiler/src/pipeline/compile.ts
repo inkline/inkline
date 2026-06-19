@@ -1,7 +1,11 @@
 import * as ts from "typescript";
 import type { Diagnostic } from "../core/diagnostics/codes.ts";
 import { createDiagnosticCollector } from "../core/diagnostics/collector.ts";
-import { resolveOptions, type InklineConfig } from "../core/options.ts";
+import {
+  resolveOptions,
+  type InklineConfig,
+  type ResolvedCompilerOptions,
+} from "../core/options.ts";
 import { SymbolTable } from "../ir/reactivity.ts";
 import type { IRComponent, IRModule } from "../ir/render/nodes.ts";
 import type { Code } from "../codegen/code-ir/nodes.ts";
@@ -11,7 +15,7 @@ import { print } from "../codegen/print/printer.ts";
 import { PluginRunner } from "../plugin/runner.ts";
 import type { PluginContext } from "../plugin/types.ts";
 import { analyzePass, type AnalyzedModule } from "./passes/04-analyze/index.ts";
-import { programPass, type CompileInput } from "./passes/01-program.ts";
+import { programPass, type CompileInput, type TsProgramArtifact } from "./passes/01-program.ts";
 import { parsePass } from "./passes/02-parse/index.ts";
 import { lower } from "./passes/03-lower/index.ts";
 import { resolveSiblings } from "./passes/01-program/resolver.ts";
@@ -86,6 +90,47 @@ function extractTypeDeclarations(module: IRModule): readonly Code[] {
     .map((s) => cRaw({ text: s.getText(module.sourceFile) }));
 }
 
+/**
+ * The Angular target inlines a headless child's root host bindings + template when a styled component
+ * collapses onto it (zero-wrapper) — which needs that child's lowered IR, but `compile` only parses
+ * the entry file. Re-parse + lower each imported `.ink` sibling (their source files are already in the
+ * TS program) with a throwaway context (own SymbolTable + discarded diagnostics — the sibling reports
+ * its own when compiled as an entry), and index the headless ones by name. Resolution is one level
+ * deep: a styled root is a single headless instance whose own root is an element, so no recursion is
+ * needed and no import cycle can form.
+ */
+async function buildHeadlessRegistry(
+  module: IRModule,
+  artifact: TsProgramArtifact,
+  options: ResolvedCompilerOptions,
+): Promise<ReadonlyMap<string, IRComponent>> {
+  const registry = new Map<string, IRComponent>();
+  const { checker, program } = artifact;
+  for (const decl of module.imports) {
+    const spec = (decl.moduleSpecifier as ts.StringLiteral).text;
+    if (!/\.ink(\.[jt]sx?)?$/.test(spec)) continue;
+    const sf = checker
+      .getSymbolAtLocation(decl.moduleSpecifier)
+      ?.declarations?.find(ts.isSourceFile);
+    if (!sf) continue;
+    const subCtx: PassContext = {
+      diagnostics: createDiagnosticCollector(),
+      options,
+      symbols: new SymbolTable(),
+      registry: options.registry,
+    };
+    try {
+      const parsed = await parsePass.run({ program, sourceFile: sf, checker }, subCtx);
+      for (const c of lower(parsed, subCtx).components) {
+        if (c.meta?.headless) registry.set(c.name, c);
+      }
+    } catch {
+      // A sibling we can't parse simply doesn't collapse — codegen falls back to the wrapper variant.
+    }
+  }
+  return registry;
+}
+
 function emitComponent(
   component: IRComponent,
   target: Target,
@@ -94,6 +139,7 @@ function emitComponent(
   externalImports: readonly Code[],
   componentImports: readonly ComponentImport[],
   typeDeclarations: readonly Code[],
+  headlessRegistry: ReadonlyMap<string, IRComponent> | undefined,
 ): GeneratedFile[] {
   const codeModule = target.emit(component, {
     diagnostics: ctx.diagnostics,
@@ -104,6 +150,7 @@ function emitComponent(
     externalImports,
     componentImports,
     typeDeclarations,
+    headlessRegistry,
   });
   const result = print(codeModule.root, { sourceMap: ctx.options.sourceMap });
   const files: GeneratedFile[] = [
@@ -216,6 +263,15 @@ export async function compile(
   const componentImports = extractComponentImports(analyzedModule.module);
   const typeDeclarations = extractTypeDeclarations(analyzedModule.module);
 
+  // Only a headless component whose root is another component (a styled wrapper collapsing onto its
+  // headless child) needs the cross-file registry; building it re-parses imported siblings.
+  const needsHeadlessRegistry = analyzedModule.module.components.some(
+    (c) => c.meta?.headless && c.render.kind === "ComponentInstance",
+  );
+  const headlessRegistry = needsHeadlessRegistry
+    ? await buildHeadlessRegistry(analyzedModule.module, artifact, options)
+    : undefined;
+
   for (const targetName of options.targets) {
     const target = options.registry.get(targetName);
     if (!target) continue;
@@ -233,6 +289,7 @@ export async function compile(
             externalImports,
             componentImports,
             typeDeclarations,
+            headlessRegistry,
           ),
         );
       } catch (err) {

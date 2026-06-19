@@ -36,6 +36,7 @@ export async function mountStyledOnAngular(
   styledRel: string,
   headlessRels: readonly string[],
   props?: Record<string, unknown>,
+  componentName?: string,
 ): Promise<MountResult> {
   // Drive the same component (same props) through the React target so V8 coverage attributes the
   // executed `.ink.tsx` logic back to its authored source. A no-op unless a coverage run is active,
@@ -55,7 +56,7 @@ export async function mountStyledOnAngular(
     supporting.push(...files.map((f) => ({ ...f, path: `headless/${f.path}` })));
   }
 
-  const result = await mountForTarget("angular", entry, props, supporting);
+  const result = await mountForTarget("angular", entry, props, supporting, { componentName });
   const { warnings } = await coverage;
   return warnings.length > 0 ? { ...result, warnings: [...result.warnings, ...warnings] } : result;
 }

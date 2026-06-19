@@ -157,6 +157,13 @@ export interface CodegenContext {
   readonly externalImports: readonly Code[];
   readonly componentImports: readonly ComponentImport[];
   readonly typeDeclarations: readonly Code[];
+  /**
+   * Lowered IR of imported `meta.headless` siblings, indexed by component name. Lets the Angular
+   * target inline a headless child's root host bindings + template when a styled component collapses
+   * onto it (zero-wrapper). Empty unless a component in the module is headless with a
+   * `ComponentInstance` root, since building it re-parses the imported sibling files.
+   */
+  readonly headlessRegistry?: ReadonlyMap<string, IRComponent>;
 }
 
 export interface CodeModule {

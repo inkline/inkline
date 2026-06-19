@@ -187,6 +187,11 @@ function ownClassExpr(
   return `(${rewriteExpr(a.value.expr!, rules)})`;
 }
 
+/** Append a conditional class fragment: `base + (extra ? ' ' + extra : '')`, or just `base` if absent. */
+function appendClass(base: string, extra: string | undefined): string {
+  return extra === undefined ? base : `${base} + (${extra} ? ' ' + ${extra} : '')`;
+}
+
 /**
  * Map a headless component's root element to Angular `host: { … }` binding entries. Reuses the exact
  * attribute classification of `emitNode`'s Element case, rendered as host-binding keys so the native
@@ -194,8 +199,11 @@ function ownClassExpr(
  * merges with the parent-forwarded `klass()`, KEEP_PROPERTY attrs stay property bindings, every other
  * dynamic attr binds via `[attr.name]` (`?? null` so a nullish value omits it), statics become literal
  * host attributes, and root events become host event bindings.
+ *
+ * `recipeExpr` (set when a styled component collapses onto this root) is the styled's forwarded class
+ * expression, merged between the root's own class and the inherited `klass()`.
  */
-function headlessHostBindings(root: IRElement, rules: RewriteRules): string[] {
+function headlessHostBindings(root: IRElement, rules: RewriteRules, recipeExpr?: string): string[] {
   // The render root is always a fallthrough root (markRootFallthrough marks every Element root), so
   // the class always merges the parent-forwarded `klass()`.
   const entries: string[] = [];
@@ -204,7 +212,8 @@ function headlessHostBindings(root: IRElement, rules: RewriteRules): string[] {
     const name = rewriteAttrName(a.name, rules);
     if (name === "class") {
       classBound = true;
-      entries.push(`'[class]': "${mergedClassExpr(ownClassExpr(a, rules), rules)}"`);
+      const own = appendClass(ownClassExpr(a, rules), recipeExpr);
+      entries.push(`'[class]': "${mergedClassExpr(own, rules)}"`);
       continue;
     }
     if (a.value.kind === "Static") {
@@ -217,7 +226,7 @@ function headlessHostBindings(root: IRElement, rules: RewriteRules): string[] {
     );
   }
   if (!classBound) {
-    entries.push(`'[class]': "${mergedClassExpr(undefined, rules)}"`);
+    entries.push(`'[class]': "${mergedClassExpr(recipeExpr, rules)}"`);
   }
   for (const e of root.events) {
     const evName = rewriteEventName(e.name, rules).replace(/^on/, "").toLowerCase();
@@ -669,20 +678,60 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   ];
 
   // A headless component additionally emits an attribute-selector variant whose single static-element
-  // root IS the Angular host (`<button ink-button-base>`, zero wrapper). A non-element root (fragment/
-  // conditional) can't be host-extracted — warn and keep only the element-selector variant.
+  // root IS the Angular host (`<button ink-button>`, zero wrapper). The element-selector wrapper above
+  // is kept (dual selector). `imports` is passed through only for direct extraction — a collapsed host
+  // inlines its child and instantiates nothing.
+  const pushHostVariant = (
+    selector: string,
+    hostStr: string,
+    tmpl: string,
+    imports: string,
+  ): void => {
+    classBlocks.push(
+      cRaw({ text: "" }),
+      cRaw({
+        text: `@Component({ standalone: true, selector: '${selector}', ${hostStr}${imports}${providersStr}, template: \`${escTemplate(tmpl)}\` })`,
+      }),
+      cStmt({ body: `export class ${component.name}HostComponent` }),
+      ...classBody(),
+    );
+  };
+
   if (component.meta?.headless) {
-    if (component.render.kind === "Element") {
-      const root = component.render;
-      const hostStr = `host: { ${headlessHostBindings(root, templateRules).join(", ")} }`;
-      classBlocks.push(
-        cRaw({ text: "" }),
-        cRaw({
-          text: `@Component({ standalone: true, selector: '${angularAttrSelector(component.name, root.tag)}', ${hostStr}${importsStr}${providersStr}, template: \`${escTemplate(headlessTemplate(root, templateRules))}\` })`,
-        }),
-        cStmt({ body: `export class ${component.name}HostComponent` }),
-        ...classBody(),
+    const root = component.render;
+    if (root.kind === "Element") {
+      // Direct extraction: the root element becomes the host; its children become the template.
+      pushHostVariant(
+        angularAttrSelector(component.name, root.tag),
+        `host: { ${headlessHostBindings(root, templateRules).join(", ")} }`,
+        headlessTemplate(root, templateRules),
+        importsStr,
       );
+    } else if (root.kind === "ComponentInstance") {
+      // Collapse: the styled root renders a single headless child (resolved from the registry). Inline
+      // that child's root as the host — its host bindings with the styled's recipe class merged in,
+      // plus the child's own selector as a static host attribute (`ink-button-base`) — and use the
+      // child's children as the template (assumes pass-through slot content; richer styled content is
+      // not yet inlined). The child is not instantiated, so the host variant declares no imports.
+      const childName = root.resolved?.name ?? root.reference.getText();
+      const child = ctx.headlessRegistry?.get(childName);
+      if (child && child.render.kind === "Element") {
+        const childRoot = child.render;
+        const classAttr = root.attrs.find(
+          (a) => rewriteAttrName(a.name, templateRules) === "class",
+        );
+        const recipeExpr = classAttr ? ownClassExpr(classAttr, templateRules) : undefined;
+        const hostEntries = headlessHostBindings(childRoot, templateRules, recipeExpr);
+        hostEntries.push(`'${angularSelector(child.name)}': ''`);
+        pushHostVariant(
+          angularAttrSelector(component.name, childRoot.tag),
+          `host: { ${hostEntries.join(", ")} }`,
+          headlessTemplate(childRoot, templateRules),
+          "",
+        );
+      } else {
+        ctx.diagnostics.push("INK0111", component.loc, { name: component.name });
+      }
     } else {
       ctx.diagnostics.push("INK0111", component.loc, { name: component.name });
     }

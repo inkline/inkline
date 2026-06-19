@@ -37,4 +37,22 @@ describe("IButton (styled) on Angular SSR", () => {
 
     expect(html).toMatch(/<button[^>]*disabled/);
   });
+
+  // The attribute-selector host variant collapses both the styled and headless layers onto the real
+  // <button>: zero wrapper elements, both ink-* attributes present, recipe classes merged directly.
+  it("host variant renders a zero-wrapper <button ink-button ink-button-base>", async () => {
+    const { html } = await mountStyledOnAngular(
+      import.meta.url,
+      "./IButton.ink.tsx",
+      ["../headless/IButtonBase.ink.tsx"],
+      { label: "Save", color: "primary", size: "md" },
+      "IButtonHostComponent",
+    );
+
+    expect(html).toMatch(/<button[^>]*class="button button--color-primary button--size-md"/);
+    expect(html).toContain('ink-button=""');
+    expect(html).toContain('ink-button-base=""');
+    expect(html).not.toContain("<ink-button"); // no display:contents wrapper element
+    expect(html).toContain("Save");
+  });
 });

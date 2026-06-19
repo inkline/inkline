@@ -73,6 +73,64 @@ describe("headless host-extraction (HeadlessBox: no class, inline child)", () =>
   });
 });
 
+describe("styled inline-collapse (CollapseStyled → CollapseBase)", () => {
+  it("collapses onto the headless child's host element via an attribute selector", async () => {
+    const out = await compileTo("CollapseStyled", "angular");
+    expect(out).toContain("selector: 'button[ink-collapse-styled]'");
+    expect(out).toContain("export class CollapseStyledHostComponent");
+  });
+
+  it("merges base + recipe + klass into the host class and forwards props as host bindings", async () => {
+    const out = await compileTo("CollapseStyled", "angular");
+    expect(out).toContain(
+      `host: { '[class]': "'cb' + ((className()) ? ' ' + (className()) : '') + (klass() ? ' ' + klass() : '')", '[disabled]': "disabled()", 'ink-collapse-base': '' }`,
+    );
+  });
+
+  it("uses the child's children as the template and declares no imports on the collapsed variant", async () => {
+    const out = await compileTo("CollapseStyled", "angular");
+    // host object is immediately followed by `template:` — the inlined child is not instantiated, so
+    // the collapsed @Component has no `imports: [...]`.
+    expect(out).toContain(
+      "'ink-collapse-base': '' }, template: `<ng-content>{{ label() }}</ng-content>`",
+    );
+  });
+
+  it("keeps the element-selector wrapper variant (which still instantiates the child)", async () => {
+    const out = await compileTo("CollapseStyled", "angular");
+    expect(out).toContain("selector: 'ink-collapse-styled', host: { style: 'display: contents' }");
+    expect(out).toContain("imports: [CollapseBase]");
+    expect(out).toContain("<ink-collapse-base");
+  });
+
+  it("emits the headless child's own attribute-selector variant when compiled standalone", async () => {
+    const out = await compileTo("CollapseBase", "angular");
+    expect(out).toContain("selector: 'button[ink-collapse-base]'");
+    expect(out).toContain("export class CollapseBaseHostComponent");
+  });
+
+  it("merges only recipe + klass when the headless child root has no base class", async () => {
+    const out = await compileTo("CollapseNoClassStyled", "angular");
+    expect(out).toContain(
+      `selector: 'div[ink-collapse-no-class-styled]', host: { '[class]': "(cls()) + (klass() ? ' ' + klass() : '')", 'ink-headless-box': '' }`,
+    );
+  });
+
+  it("warns (INK0111) and skips the collapse when the child root is not a single element", async () => {
+    const result = await compileFixture("CollapseInvalid", ["angular"]);
+    expect(result.diagnostics.some((d) => d.code === "INK0111")).toBe(true);
+    const out = result.files.angular![0]!.contents;
+    expect(out).not.toContain("CollapseInvalidHostComponent");
+  });
+
+  it("collapses with only the child base class + klass when the wrapper adds no recipe", async () => {
+    const out = await compileTo("CollapseNoRecipe", "angular");
+    expect(out).toContain(
+      `selector: 'button[ink-collapse-no-recipe]', host: { '[class]': "'cb' + (klass() ? ' ' + klass() : '')", '[disabled]': "disabled()", 'ink-collapse-base': '' }`,
+    );
+  });
+});
+
 describe("headless host-extraction guard (HeadlessFragmentRoot)", () => {
   it("warns (INK0111) and emits only the element-selector wrapper for a non-element root", async () => {
     const result = await compileFixture("HeadlessFragmentRoot", ["angular"]);
