@@ -717,16 +717,24 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       const child = ctx.headlessRegistry?.get(childName);
       if (child && child.render.kind === "Element") {
         const childRoot = child.render;
+        // The child's host bindings/events reference the child's own model setters (e.g.
+        // `setOpen(...)` from `defineModel("open")`); map those names onto the same model so they
+        // emit against the merged component, which declares that model under the styled binding.
+        const childSetters = Object.fromEntries(child.models.map((m) => [m.setterName, m.name]));
+        const collapseRules: RewriteRules = {
+          ...templateRules,
+          setters: { ...templateRules.setters, ...childSetters },
+        };
         const classAttr = root.attrs.find(
-          (a) => rewriteAttrName(a.name, templateRules) === "class",
+          (a) => rewriteAttrName(a.name, collapseRules) === "class",
         );
-        const recipeExpr = classAttr ? ownClassExpr(classAttr, templateRules) : undefined;
-        const hostEntries = headlessHostBindings(childRoot, templateRules, recipeExpr);
+        const recipeExpr = classAttr ? ownClassExpr(classAttr, collapseRules) : undefined;
+        const hostEntries = headlessHostBindings(childRoot, collapseRules, recipeExpr);
         hostEntries.push(`'${angularSelector(child.name)}': ''`);
         pushHostVariant(
           angularAttrSelector(component.name, childRoot.tag),
           `host: { ${hostEntries.join(", ")} }`,
-          headlessTemplate(childRoot, templateRules),
+          headlessTemplate(childRoot, collapseRules),
           "",
         );
       } else {

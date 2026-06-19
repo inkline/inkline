@@ -125,4 +125,22 @@ describe("IHamburgerMenu (styled) on Angular SSR", () => {
     expect(html).toMatch(/<button[^>]*aria-label="Toggle menu"/);
     expect(html).toMatch(/<button[^>]*aria-controls=""/);
   });
+
+  // The collapsed host variant carries the model-driven behavior (aria-expanded, the click that
+  // toggles `open`) directly on the native button — zero wrappers, both ink-* attributes.
+  it("host variant renders a zero-wrapper <button ink-hamburger-menu ink-hamburger-menu-base>", async () => {
+    const { html } = await mountStyledOnAngular(
+      import.meta.url,
+      "./IHamburgerMenu.ink.tsx",
+      HEADLESS,
+      { open: true, color: "dark", size: "md", ariaLabel: "Open navigation", ariaControls: "nav" },
+      "IHamburgerMenuHostComponent",
+    );
+    expect(html).toMatch(/<button[^>]*class="hamburger-menu[^"]*hamburger-menu--active-true[^"]*"/);
+    expect(html).toContain('ink-hamburger-menu=""');
+    expect(html).toContain('ink-hamburger-menu-base=""');
+    expect(html).toMatch(/<button[^>]*aria-expanded="true"/);
+    expect(html).not.toContain("<ink-hamburger-menu"); // no wrapper element
+    expect(html).toContain('class="hamburger-menu-inner"');
+  });
 });

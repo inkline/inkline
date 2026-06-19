@@ -19,7 +19,7 @@ export interface HamburgerMenuProps extends HamburgerMenuBaseProps {
   animation?: HamburgerMenuStylingProps["animation"];
 }
 
-export default defineComponent((props: HamburgerMenuProps) => {
+export default defineComponent({ meta: { headless: true } }, (props: HamburgerMenuProps) => {
   const [open, _setOpen] = defineModel<boolean>("open");
 
   const className = createMemo(() =>

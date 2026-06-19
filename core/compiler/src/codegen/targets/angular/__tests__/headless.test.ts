@@ -129,6 +129,16 @@ describe("styled inline-collapse (CollapseStyled → CollapseBase)", () => {
       `selector: 'button[ink-collapse-no-recipe]', host: { '[class]': "'cb' + (klass() ? ' ' + klass() : '')", '[disabled]': "disabled()", 'ink-collapse-base': '' }`,
     );
   });
+
+  it("hoists the model + maps the child's setter onto the merged host (open.set) for the collapse", async () => {
+    const out = await compileTo("CollapseModelStyled", "angular");
+    expect(out).toContain("selector: 'button[ink-collapse-model-styled]'");
+    // The child's `onClick={() => setOpen(!open())}` becomes a host event writing the shared model.
+    expect(out).toContain(`'(click)': "open.set(!open())"`);
+    expect(out).toContain(`'[attr.aria-expanded]': "(open() ? 'true' : 'false') ?? null"`);
+    // Both variants share the model declaration.
+    expect(out.match(/open = model<boolean>\(\)/g)).toHaveLength(2);
+  });
 });
 
 describe("headless host-extraction guard (HeadlessFragmentRoot)", () => {

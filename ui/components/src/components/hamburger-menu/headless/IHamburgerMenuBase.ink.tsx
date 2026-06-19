@@ -9,7 +9,7 @@ export interface HamburgerMenuBaseProps {
   disabled?: boolean;
 }
 
-export default defineComponent((props: HamburgerMenuBaseProps) => {
+export default defineComponent({ meta: { headless: true } }, (props: HamburgerMenuBaseProps) => {
   // Two-way disclosure state: an `open` prop + paired `update:open` event, so a parent can `$bind:open`.
   const [open, setOpen] = defineModel<boolean>("open");
 

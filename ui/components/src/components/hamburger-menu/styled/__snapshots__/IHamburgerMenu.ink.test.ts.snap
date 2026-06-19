@@ -31,6 +31,20 @@ ariaControls = input<string>()
 disabled = input<boolean>()
 open = model<boolean>()
 }
+@Component({ standalone: true, selector: 'button[ink-hamburger-menu]', host: { '[class]': "'hamburger-menu' + ((className()) ? ' ' + (className()) : '') + (klass() ? ' ' + klass() : '')", 'type': 'button', '[attr.aria-expanded]': "(open() ? 'true' : 'false') ?? null", '[attr.aria-controls]': "(ariaControls() ?? '') ?? null", '[attr.aria-label]': "(ariaLabel() ?? 'Toggle menu') ?? null", '[disabled]': "disabled()", '(click)': "open.set(!open())", 'ink-hamburger-menu-base': '' }, template: \`<span class="hamburger-menu-inner" aria-hidden="true"></span>\` })
+export class IHamburgerMenuHostComponent
+{
+hamburgerMenuRecipe = hamburgerMenuRecipe
+klass = input<string>()
+className = computed(() => hamburgerMenuRecipe({ color: this.color(), size: this.size(), animation: this.animation(), active: this.open() ? 'true' : 'false' }))
+color = input<HamburgerMenuStylingProps["color"]>()
+size = input<HamburgerMenuStylingProps["size"]>()
+animation = input<HamburgerMenuStylingProps["animation"]>()
+ariaLabel = input<string>()
+ariaControls = input<string>()
+disabled = input<boolean>()
+open = model<boolean>()
+}
 ",
   "astro/IHamburgerMenu.astro": "---
 import IHamburgerMenuBase, { type HamburgerMenuBaseProps } from "../headless/IHamburgerMenuBase.astro";
