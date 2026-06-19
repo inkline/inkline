@@ -384,7 +384,12 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       }
       const ciAttrStr = ciParts.join(" ");
       if (node.slots.length === 0) {
-        // Non-self-closing: Angular's template parser mishandles self-closed component tags in JIT.
+        // A collapsed attribute-child on a void element (`<input ink-x>`) must self-close — Angular
+        // rejects `</input>`. Otherwise non-self-closing: Angular's JIT mishandles self-closed
+        // component (element-selector) tags.
+        if (childRoot && VOID_ELEMENTS.has(childRoot.tag)) {
+          return `<${openTag}${ciAttrStr ? " " + ciAttrStr : ""} />`;
+        }
         return `<${openTag}${ciAttrStr ? " " + ciAttrStr : ""}></${closeTag}>`;
       }
       const slotContent = node.slots

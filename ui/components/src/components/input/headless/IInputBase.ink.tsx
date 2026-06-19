@@ -7,6 +7,7 @@ export interface InputBaseProps {
 
 export default defineComponent(
   {
+    meta: { headless: true },
     slots: { default: {} },
   },
   (props: InputBaseProps) => {

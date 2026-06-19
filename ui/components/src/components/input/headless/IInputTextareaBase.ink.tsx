@@ -1,12 +1,10 @@
 import { defineComponent, defineModel } from "@inkline/core";
 
-export interface InputControlBaseProps {
+export interface InputTextareaBaseProps {
   /** Id of the native control. */
   id?: string;
   /** Name of the native control. */
   name?: string;
-  /** Input type (e.g. `"text"`, `"email"`). Use `IInputTextareaBase` for a `<textarea>`. */
-  type?: string;
   /** Placeholder text. */
   placeholder?: string;
   /** Disables the control. */
@@ -15,24 +13,23 @@ export interface InputControlBaseProps {
   readonly?: boolean;
 }
 
-// The native `<input>` control: a single static root, so it host-extracts to
-// `input[ink-input-control-base]`. The `<textarea>` variant is a sibling component
-// (`IInputTextareaBase`); the styled Input picks between them by `type`.
-export default defineComponent({ meta: { headless: true } }, (props: InputControlBaseProps) => {
+// The native `<textarea>` control: a single static root, so it host-extracts to
+// `textarea[ink-input-textarea-base]`. The styled Input renders this instead of IInputControlBase
+// when `type === "textarea"`.
+export default defineComponent({ meta: { headless: true } }, (props: InputTextareaBaseProps) => {
   // Two-way-bindable value: a `value` prop + an `update:value` event, so a parent can `$bind:value`.
   const [value, setValue] = defineModel<string>("value");
 
   return (
-    <input
+    <textarea
       class="input-field"
       id={props.id}
       name={props.name}
-      type={props.type}
       value={value() ?? ""}
       placeholder={props.placeholder}
       disabled={props.disabled}
       readonly={props.readonly}
-      onInput={(e: { currentTarget: HTMLInputElement }) => setValue(e.currentTarget.value)}
+      onInput={(e: { currentTarget: HTMLTextAreaElement }) => setValue(e.currentTarget.value)}
     />
   );
 });

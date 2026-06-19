@@ -140,18 +140,20 @@ describe("styled inline-collapse (CollapseStyled → CollapseBase)", () => {
     expect(out.match(/open = model<boolean>\(\)/g)).toHaveLength(2);
   });
 
-  it("collapses a composite: substitutes the shell slot + renders the nested child as an attribute directive", async () => {
+  it("collapses a composite: substitutes the shell slot + renders the nested children as attribute directives", async () => {
     const out = await compileTo("CollapseNested", "angular");
-    // The shell is the host; its slot is replaced by the styled's content (the leaf), which renders
-    // as an attribute-selector child (zero wrapper) and pulls in its HostComponent import.
+    // The shell is the host; its slot is replaced by the styled's content (a span leaf + a void input
+    // leaf), which render as attribute-selector children (zero wrapper) and pull in HostComponent imports.
     expect(out).toContain(
-      `selector: 'div[ink-collapse-nested]', host: { '[class]': "'shell' + ((shellCls()) ? ' ' + (shellCls()) : '') + (klass() ? ' ' + klass() : '')", '[attr.id]': "(id()) ?? null", 'ink-collapse-nested-shell': '' }, imports: [CollapseNestedLeafHostComponent]`,
+      `selector: 'div[ink-collapse-nested]', host: { '[class]': "'shell' + ((shellCls()) ? ' ' + (shellCls()) : '') + (klass() ? ' ' + klass() : '')", '[attr.id]': "(id()) ?? null", 'ink-collapse-nested-shell': '' }, imports: [CollapseNestedLeafHostComponent, CollapseNestedInputHostComponent]`,
     );
     expect(out).toContain(
       'import { CollapseNestedLeafHostComponent } from "./CollapseNestedLeaf.component";',
     );
     expect(out).toContain('<span ink-collapse-nested-leaf [klass]="(leafCls())">');
     expect(out).toContain("<ng-content></ng-content>");
+    // A void element attribute-child self-closes (`<input … />`) — Angular rejects `</input>`.
+    expect(out).toContain('<input ink-collapse-nested-input [disabled]="disabled()" />');
   });
 });
 
