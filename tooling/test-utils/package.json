@@ -40,12 +40,15 @@
     "typescript": "catalog:"
   },
   "devDependencies": {
+    "@ampproject/remapping": "catalog:",
     "@angular/compiler": "catalog:",
     "@angular/core": "catalog:",
     "@angular/platform-browser": "catalog:",
     "@angular/platform-server": "catalog:",
+    "@jridgewell/trace-mapping": "catalog:",
     "@types/node": "catalog:",
     "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
     "@vue/server-renderer": "catalog:",
     "react": "catalog:",
     "react-dom": "catalog:",

@@ -5,6 +5,7 @@
 
 import {
   compileComponent,
+  coverInkViaReact,
   mountForTarget,
   resolveComponent,
   type GeneratedFile,
@@ -36,6 +37,14 @@ export async function mountStyledOnAngular(
   headlessRels: readonly string[],
   props?: Record<string, unknown>,
 ): Promise<MountResult> {
+  // Drive the same component (same props) through the React target so V8 coverage attributes the
+  // executed `.ink.tsx` logic back to its authored source. A no-op unless a coverage run is active,
+  // so a normal `vp test` pays nothing; when active it runs concurrently with the Angular SSR mount
+  // that performs the behavioral assertions, and can never fail it (render errors are warnings).
+  const coverage = coverInkViaReact(importMetaUrl, styledRel, headlessRels, props ?? {}, {
+    tsconfig: TSCONFIG,
+  });
+
   const styledFiles = await angularFilesFor(resolveComponent(importMetaUrl, styledRel));
   const [entryFile, ...styledRest] = styledFiles;
   const entry = { ...entryFile!, path: `styled/${entryFile!.path}` };
@@ -46,5 +55,7 @@ export async function mountStyledOnAngular(
     supporting.push(...files.map((f) => ({ ...f, path: `headless/${f.path}` })));
   }
 
-  return mountForTarget("angular", entry, props, supporting);
+  const result = await mountForTarget("angular", entry, props, supporting);
+  const { warnings } = await coverage;
+  return warnings.length > 0 ? { ...result, warnings: [...result.warnings, ...warnings] } : result;
 }
