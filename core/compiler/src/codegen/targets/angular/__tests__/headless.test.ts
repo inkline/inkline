@@ -139,6 +139,20 @@ describe("styled inline-collapse (CollapseStyled → CollapseBase)", () => {
     // Both variants share the model declaration.
     expect(out.match(/open = model<boolean>\(\)/g)).toHaveLength(2);
   });
+
+  it("collapses a composite: substitutes the shell slot + renders the nested child as an attribute directive", async () => {
+    const out = await compileTo("CollapseNested", "angular");
+    // The shell is the host; its slot is replaced by the styled's content (the leaf), which renders
+    // as an attribute-selector child (zero wrapper) and pulls in its HostComponent import.
+    expect(out).toContain(
+      `selector: 'div[ink-collapse-nested]', host: { '[class]': "'shell' + ((shellCls()) ? ' ' + (shellCls()) : '') + (klass() ? ' ' + klass() : '')", '[attr.id]': "(id()) ?? null", 'ink-collapse-nested-shell': '' }, imports: [CollapseNestedLeafHostComponent]`,
+    );
+    expect(out).toContain(
+      'import { CollapseNestedLeafHostComponent } from "./CollapseNestedLeaf.component";',
+    );
+    expect(out).toContain('<span ink-collapse-nested-leaf [klass]="(leafCls())">');
+    expect(out).toContain("<ng-content></ng-content>");
+  });
 });
 
 describe("headless host-extraction guard (HeadlessFragmentRoot)", () => {

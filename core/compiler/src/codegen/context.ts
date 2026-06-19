@@ -1,5 +1,5 @@
 import type { Code } from "./code-ir/nodes.ts";
-import type { IRComponent, IRContextDefinition } from "../ir/render/nodes.ts";
+import type { IRComponent, IRContextDefinition, IRNode } from "../ir/render/nodes.ts";
 import type { Diagnostic } from "../core/diagnostics/codes.ts";
 import type { DiagnosticCollector } from "../core/diagnostics/collector.ts";
 import type { ResolvedCompilerOptions } from "../core/options.ts";
@@ -139,6 +139,19 @@ export interface RewriteRules {
    * (Qwik/Angular), so gated content always renders and CSS `:empty` collapses the empty wrapper.
    */
   readonly hasSlotCheck?: (slotName: string) => string;
+  /**
+   * Angular collapse only: slot content (by name) the inlined headless root's `<Slot>` should render
+   * instead of an `<ng-content>`. Set while emitting a collapsed styled component's template so the
+   * styled's own slot bodies project into the headless child's slots; cleared when emitting that
+   * substituted content so its inner slots still become `<ng-content>` for the consumer.
+   */
+  readonly slotBodies?: ReadonlyMap<string, IRNode>;
+  /**
+   * Angular collapse only: the `meta.headless` siblings (by local name) a collapsed template renders
+   * as attribute-selector children — `<span ink-input-prefix-base>` rather than `<ink-input-prefix-base>`
+   * — so nested parts are zero-wrapper too. Their root tag comes from the resolved component.
+   */
+  readonly collapseChildren?: ReadonlyMap<string, IRComponent>;
 }
 
 export interface ComponentImport {
