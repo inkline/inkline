@@ -140,18 +140,41 @@ export interface RewriteRules {
    */
   readonly hasSlotCheck?: (slotName: string) => string;
   /**
-   * Angular collapse only: slot content (by name) the inlined headless root's `<Slot>` should render
-   * instead of an `<ng-content>`. Set while emitting a collapsed styled component's template so the
-   * styled's own slot bodies project into the headless child's slots; cleared when emitting that
+   * Angular collapse only: when a styled `meta.headless` component inlines its headless child's root
+   * as the host, this carries the data to bind that inlined root against the styled wrapper (forwarded
+   * prop args, projected slot bodies, nested headless siblings) — see {@link CollapseContext}. Absent
+   * for every other target and for non-collapsed emission.
+   */
+  readonly collapse?: CollapseContext;
+}
+
+/**
+ * Angular collapse only: the data for inlining a `meta.headless` child's render as the host of the
+ * styled component collapsing onto it. The styled wrapper and its single headless child are merged
+ * into one `@Component`; this binds the child's root against the wrapper's actual arguments rather
+ * than the wrapper's same-named props.
+ */
+export interface CollapseContext {
+  /**
+   * Nested `meta.headless` siblings (by local name → resolved component) the collapsed template
+   * renders as attribute-selector children — `<span ink-input-prefix-base>` rather than
+   * `<ink-input-prefix-base>` — so nested parts are zero-wrapper too. Their root tag comes from the
+   * resolved component.
+   */
+  readonly children?: ReadonlyMap<string, IRComponent>;
+  /**
+   * Slot content (by name) the inlined headless root's `<Slot>` renders instead of an `<ng-content>`
+   * (the styled wrapper's own slot body). One level of projection: cleared while emitting that
    * substituted content so its inner slots still become `<ng-content>` for the consumer.
    */
   readonly slotBodies?: ReadonlyMap<string, IRNode>;
   /**
-   * Angular collapse only: the `meta.headless` siblings (by local name) a collapsed template renders
-   * as attribute-selector children — `<span ink-input-prefix-base>` rather than `<ink-input-prefix-base>`
-   * — so nested parts are zero-wrapper too. Their root tag comes from the resolved component.
+   * Set only on the ruleset used for the inlined host's OWN bindings: the child's prop name → the
+   * already-rewritten expression the styled wrapper passed for it, or `null` when the wrapper forwards
+   * nothing (the binding is omitted, or degrades to `undefined` inside a larger expression). Absent on
+   * the template ruleset so projected slot content keeps rewriting in the styled namespace.
    */
-  readonly collapseChildren?: ReadonlyMap<string, IRComponent>;
+  readonly propArgs?: ReadonlyMap<string, string | null>;
 }
 
 export interface ComponentImport {

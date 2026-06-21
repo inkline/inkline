@@ -61,7 +61,7 @@ disabled = input<boolean>()
 readonly = input<boolean>()
 value = model<string>()
 }
-@Component({ standalone: true, selector: 'div[ink-input]', host: { '[class]': "'input' + ((shellClassName()) ? ' ' + (shellClassName()) : '') + (klass() ? ' ' + klass() : '')", '[attr.id]': "(id()) ?? null", 'ink-input-base': '' }, imports: [IInputPrefixBaseHostComponent, IInputTextareaBaseHostComponent, IInputControlBaseHostComponent, IInputSuffixBaseHostComponent], template: \`<span ink-input-prefix-base [klass]="(inputPrefixRecipe({ size: size() }))">
+@Component({ standalone: true, selector: 'div[ink-input]', host: { '[class]': "'input' + ((shellClassName()) ? ' ' + (shellClassName()) : '') + (klass() ? ' ' + klass() : '')", 'ink-input-base': '' }, imports: [IInputPrefixBaseHostComponent, IInputTextareaBaseHostComponent, IInputControlBaseHostComponent, IInputSuffixBaseHostComponent], template: \`<span ink-input-prefix-base [klass]="(inputPrefixRecipe({ size: size() }))">
 <ng-content select="[slot=prefix]"></ng-content>
 </span>
 @if (type() === 'textarea') {

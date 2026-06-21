@@ -192,4 +192,19 @@ describe("IInput (styled) on Angular SSR", () => {
     expect(html).toMatch(/<textarea ink-input-textarea-base[^>]*class="input-field"/);
     expect(html).not.toContain("<ink-input");
   });
+
+  // IInput forwards `id` to the control, not to the shell. The collapsed host must keep that split:
+  // putting `id` on both the shell <div> and the inner <input> would be a duplicate id (invalid HTML,
+  // and label[for]/getElementById would resolve to the non-focusable shell).
+  it("host variant puts id on the control only, not the shell", async () => {
+    const { html } = await mountStyledOnAngular(
+      import.meta.url,
+      "./IInput.ink.tsx",
+      HEADLESS,
+      { id: "email", placeholder: "Email", color: "primary", size: "md" },
+      "IInputHostComponent",
+    );
+    expect(html).toMatch(/<input[^>]*id="email"/);
+    expect(html).not.toMatch(/<div[^>]*id="email"/);
+  });
 });

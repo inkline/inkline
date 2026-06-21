@@ -1,7 +1,13 @@
-import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../context.ts";
+import type {
+  Target,
+  CodegenContext,
+  CodeModule,
+  RewriteRules,
+  CollapseContext,
+} from "../../context.ts";
 import { angularConformance } from "./conformance.ts";
 import type { Code } from "../../code-ir/nodes.ts";
-import type { IRComponent, IRElement, IRNode } from "../../../ir/render/nodes.ts";
+import type { IRAttribute, IRComponent, IRElement, IRNode } from "../../../ir/render/nodes.ts";
 import { cFile, cImport, cStmt, cRaw, cGroup } from "../../code-ir/builders.ts";
 import { childrenArePhrasing } from "../../shared/phrasing.ts";
 import {
@@ -193,6 +199,25 @@ function appendClass(base: string, extra: string | undefined): string {
 }
 
 /**
+ * Collapse: true when `value` is solely a `props.X` read the styled wrapper didn't forward (its
+ * `propArgs` entry is `null`), so the inlined host binding is omitted rather than bound to the
+ * styled's same-named prop.
+ */
+function isUnforwardedProp(
+  value: IRAttribute["value"],
+  collapse: CollapseContext | undefined,
+): boolean {
+  if (!collapse?.propArgs || value.kind !== "Expression") return false;
+  const e = value.expr;
+  return (
+    ts.isPropertyAccessExpression(e) &&
+    ts.isIdentifier(e.expression) &&
+    e.expression.text === "props" &&
+    collapse.propArgs.get(e.name.text) === null
+  );
+}
+
+/**
  * Map a headless component's root element to Angular `host: { … }` binding entries. Reuses the exact
  * attribute classification of `emitNode`'s Element case, rendered as host-binding keys so the native
  * host element (the attribute-selector variant) carries them directly with no wrapper: the class
@@ -220,6 +245,9 @@ function headlessHostBindings(root: IRElement, rules: RewriteRules, recipeExpr?:
       entries.push(`'${name}': '${a.value.value}'`);
       continue;
     }
+    // Collapse: omit a binding that is solely a child prop the styled wrapper didn't forward, so it
+    // doesn't leak onto the inlined host (see `CollapseContext.propArgs`).
+    if (isUnforwardedProp(a.value, rules.collapse)) continue;
     const expr = rewriteExpr(a.value.expr, rules);
     entries.push(
       KEEP_PROPERTY.has(name) ? `'[${name}]': "${expr}"` : `'[attr.${name}]': "(${expr}) ?? null"`,
@@ -343,7 +371,7 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       const localName = node.resolved?.name ?? node.reference.getText();
       // In a collapsed template a headless child renders as an attribute selector on its own root tag
       // (`<span ink-input-prefix-base>`, zero wrapper); otherwise as its element selector (`<ink-x>`).
-      const collapseChild = rules.collapseChildren?.get(localName);
+      const collapseChild = rules.collapse?.children?.get(localName);
       const childRoot = collapseChild?.render.kind === "Element" ? collapseChild.render : undefined;
       const openTag = childRoot
         ? `${childRoot.tag} ${angularSelector(localName)}`
@@ -406,8 +434,11 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       // Collapse: project the styled component's own slot body into the inlined headless root's slot.
       // Clear slotBodies for the substituted content so ITS slots still become `<ng-content>` for the
       // consumer (one level of projection, not infinite).
-      if (rules.slotBodies?.has(node.name)) {
-        return emitNode(rules.slotBodies.get(node.name)!, { ...rules, slotBodies: undefined });
+      if (rules.collapse?.slotBodies?.has(node.name)) {
+        return emitNode(rules.collapse.slotBodies.get(node.name)!, {
+          ...rules,
+          collapse: { ...rules.collapse, slotBodies: undefined },
+        });
       }
       // Angular has no scoped-slot mechanism: a slot with `args` can't receive per-row data from a
       // parent. Best-effort: render the authored fallback (the component's default content, whose
@@ -743,17 +774,45 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         // `setOpen(...)` from `defineModel("open")`); map those names onto the same model so they
         // emit against the merged component, which declares that model under the styled binding.
         const childSetters = Object.fromEntries(child.models.map((m) => [m.setterName, m.name]));
+        const collapse: CollapseContext = {
+          children: ctx.headlessRegistry,
+          slotBodies: new Map(root.slots.map((s) => [s.name, s.body] as const)),
+        };
         const collapseRules: RewriteRules = {
           ...templateRules,
           setters: { ...templateRules.setters, ...childSetters },
-          slotBodies: new Map(root.slots.map((s) => [s.name, s.body] as const)),
-          collapseChildren: ctx.headlessRegistry,
+          collapse,
         };
         const classAttr = root.attrs.find(
           (a) => rewriteAttrName(a.name, collapseRules) === "class",
         );
         const recipeExpr = classAttr ? ownClassExpr(classAttr, collapseRules) : undefined;
-        const hostEntries = headlessHostBindings(childRoot, collapseRules, recipeExpr);
+        // Bind the inlined host's own attrs against the styled instance's actual arguments: map each
+        // of the child's props to what the wrapper forwarded (or the child's default), or `null` when
+        // the wrapper passed nothing — so an unforwarded child-root prop is omitted rather than
+        // resolving to the styled component's same-named prop. `class`/two-way args are handled
+        // separately (recipeExpr / childSetters), and `propArgs` lives only on the host ruleset; the
+        // projected slot content keeps rewriting in the styled namespace via `collapseRules`.
+        const propArgs = new Map<string, string | null>();
+        for (const a of root.attrs) {
+          if (a.binding === "class" || a.binding === "twoWay") continue;
+          const argExpr =
+            a.value.kind === "Static"
+              ? typeof a.value.value === "string"
+                ? `'${a.value.value}'`
+                : String(a.value.value)
+              : rewriteExpr(a.value.expr, collapseRules);
+          propArgs.set(a.name, argExpr);
+        }
+        for (const p of child.props) {
+          if (propArgs.has(p.name)) continue;
+          propArgs.set(
+            p.name,
+            p.defaultValue ? rewriteExpr(p.defaultValue.expr, collapseRules) : null,
+          );
+        }
+        const hostRules: RewriteRules = { ...collapseRules, collapse: { ...collapse, propArgs } };
+        const hostEntries = headlessHostBindings(childRoot, hostRules, recipeExpr);
         hostEntries.push(`'${angularSelector(child.name)}': ''`);
 
         // The collapsed template instantiates the styled's slot-content headless siblings as

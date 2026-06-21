@@ -155,6 +155,17 @@ describe("styled inline-collapse (CollapseStyled → CollapseBase)", () => {
     // A void element attribute-child self-closes (`<input … />`) — Angular rejects `</input>`.
     expect(out).toContain('<input ink-collapse-nested-input [disabled]="disabled()" />');
   });
+
+  it("omits a child-root prop the styled wrapper does not forward (no leaked [attr.id])", async () => {
+    const out = await compileTo("CollapseUnforwardedStyled", "angular");
+    // The collapse merges the recipe class but, because the wrapper never forwards `id` to the base,
+    // the inlined host must NOT bind `[attr.id]` — otherwise it would leak the wrapper's own `id`.
+    expect(out).toContain("export class CollapseUnforwardedStyledHostComponent");
+    expect(out).toContain(
+      `'[class]': "'cu' + ((className()) ? ' ' + (className()) : '') + (klass() ? ' ' + klass() : '')"`,
+    );
+    expect(out).not.toMatch(/\[attr\.id\]/);
+  });
 });
 
 describe("headless host-extraction guard (HeadlessFragmentRoot)", () => {
