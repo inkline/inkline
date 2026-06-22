@@ -263,11 +263,14 @@ export async function compile(
   const componentImports = extractComponentImports(analyzedModule.module);
   const typeDeclarations = extractTypeDeclarations(analyzedModule.module);
 
-  // Only a headless component whose root is another component (a styled wrapper collapsing onto its
-  // headless child) needs the cross-file registry; building it re-parses imported siblings.
-  const needsHeadlessRegistry = analyzedModule.module.components.some(
-    (c) => c.meta?.headless && c.render.kind === "ComponentInstance",
-  );
+  // Only the Angular target consumes the cross-file headless registry, and building it re-parses +
+  // lowers imported `.ink` siblings — so build it only when Angular is requested AND a headless
+  // component's root is another component (a styled wrapper collapsing onto its headless child).
+  const needsHeadlessRegistry =
+    options.targets.includes("angular") &&
+    analyzedModule.module.components.some(
+      (c) => c.meta?.headless && c.render.kind === "ComponentInstance",
+    );
   const headlessRegistry = needsHeadlessRegistry
     ? await buildHeadlessRegistry(analyzedModule.module, artifact, options)
     : undefined;
