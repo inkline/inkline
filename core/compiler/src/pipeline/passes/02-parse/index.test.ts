@@ -59,6 +59,23 @@ describe("parsePass", () => {
     expect(ctx.diagnostics.freeze()).toHaveLength(0);
   });
 
+  it("populates component.meta from meta.headless and leaves it undefined otherwise", async () => {
+    const source = `
+      import { defineComponent } from "@inkline/core";
+      export const Headless = defineComponent({ meta: { headless: true } }, () => <button>x</button>);
+      export const Plain = defineComponent(() => <button>y</button>);
+    `;
+    const ctx = makeCtx();
+    const artifact = await programPass.run({ fileName: "Meta.ink.tsx", source }, ctx);
+    const module = parsePass.run(artifact, ctx);
+    const resolved = module instanceof Promise ? await module : module;
+
+    const headless = resolved.components.find((c) => c.name === "Headless")!;
+    const plain = resolved.components.find((c) => c.name === "Plain")!;
+    expect(headless.meta?.headless).toBe(true);
+    expect(plain.meta).toBeUndefined();
+  });
+
   it("parses JSX elements and text", async () => {
     const source = `
       import { defineComponent } from "@inkline/core";

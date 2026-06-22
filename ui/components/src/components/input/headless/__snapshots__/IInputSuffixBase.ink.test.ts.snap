@@ -11,6 +11,11 @@ export class IInputSuffixBaseComponent
 {
 klass = input<string>()
 }
+@Component({ standalone: true, selector: 'span[ink-input-suffix-base]', host: { '[class]': "'input-suffix' + (klass() ? ' ' + klass() : '')" }, template: \`<ng-content></ng-content>\` })
+export class IInputSuffixBaseHostComponent
+{
+klass = input<string>()
+}
 ",
   "astro/IInputSuffixBase.astro": "---
 export interface InputSuffixBaseProps {}

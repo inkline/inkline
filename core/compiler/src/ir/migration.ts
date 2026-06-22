@@ -31,6 +31,15 @@ const migrations: IRMigration[] = [
       };
     },
   },
+  {
+    from: 2,
+    to: 3,
+    // IRComponent gained an optional `meta` ({ headless? }). It is optional, so absent `meta` already
+    // means "not headless" — no component rewrite is needed, only a version bump.
+    migrate(module) {
+      return { ...module, version: 3 };
+    },
+  },
 ];
 
 export function migrate(module: IRModule, target: number = IR_VERSION): IRModule {

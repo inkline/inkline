@@ -110,6 +110,7 @@ describe("IInput (styled) on Angular SSR", () => {
     "../headless/IInputPrefixBase.ink.tsx",
     "../headless/IInputSuffixBase.ink.tsx",
     "../headless/IInputControlBase.ink.tsx",
+    "../headless/IInputTextareaBase.ink.tsx",
   ];
 
   const mount = (props?: Record<string, unknown>) =>
@@ -159,5 +160,51 @@ describe("IInput (styled) on Angular SSR", () => {
     const { html } = await mount({ placeholder: "Off", disabled: true });
 
     expect(html).toMatch(/<input[^>]*disabled/);
+  });
+
+  // The collapsed host variant inlines the whole composite onto native elements: the shell is the
+  // <div> host, the addons are <span ink-input-prefix-base>, and the control is a bare native
+  // <input ink-input-control-base> — zero wrapper elements around any of them.
+  it("host variant renders a fully zero-wrapper field (div > span / input / span)", async () => {
+    const { html } = await mountStyledOnAngular(
+      import.meta.url,
+      "./IInput.ink.tsx",
+      HEADLESS,
+      { value: "hi", placeholder: "Name", color: "primary", size: "md" },
+      "IInputHostComponent",
+    );
+    expect(html).toMatch(
+      /<div[^>]*ink-input[^>]*class="input input--color-primary input--size-md"/,
+    );
+    expect(html).toMatch(/<input ink-input-control-base[^>]*value="hi"[^>]*class="input-field"/);
+    expect(html).toMatch(/<span ink-input-prefix-base[^>]*class="input-prefix/);
+    expect(html).not.toContain("<ink-input"); // no display:contents wrapper elements anywhere
+  });
+
+  it("host variant renders a native <textarea> for type=textarea, still zero-wrapper", async () => {
+    const { html } = await mountStyledOnAngular(
+      import.meta.url,
+      "./IInput.ink.tsx",
+      HEADLESS,
+      { type: "textarea", placeholder: "Bio" },
+      "IInputHostComponent",
+    );
+    expect(html).toMatch(/<textarea ink-input-textarea-base[^>]*class="input-field"/);
+    expect(html).not.toContain("<ink-input");
+  });
+
+  // IInput forwards `id` to the control, not to the shell. The collapsed host must keep that split:
+  // putting `id` on both the shell <div> and the inner <input> would be a duplicate id (invalid HTML,
+  // and label[for]/getElementById would resolve to the non-focusable shell).
+  it("host variant puts id on the control only, not the shell", async () => {
+    const { html } = await mountStyledOnAngular(
+      import.meta.url,
+      "./IInput.ink.tsx",
+      HEADLESS,
+      { id: "email", placeholder: "Email", color: "primary", size: "md" },
+      "IInputHostComponent",
+    );
+    expect(html).toMatch(/<input[^>]*id="email"/);
+    expect(html).not.toMatch(/<div[^>]*id="email"/);
   });
 });

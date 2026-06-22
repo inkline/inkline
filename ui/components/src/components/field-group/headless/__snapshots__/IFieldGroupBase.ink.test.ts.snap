@@ -15,6 +15,12 @@ export class IFieldGroupBaseComponent
 klass = input<string>()
 id = input<string>()
 }
+@Component({ standalone: true, selector: 'div[ink-field-group-base]', host: { '[class]': "'field-group' + (klass() ? ' ' + klass() : '')", '[attr.id]': "(id()) ?? null" }, template: \`<ng-content></ng-content>\` })
+export class IFieldGroupBaseHostComponent
+{
+klass = input<string>()
+id = input<string>()
+}
 ",
   "astro/IFieldGroupBase.astro": "---
 export interface FieldGroupBaseProps {

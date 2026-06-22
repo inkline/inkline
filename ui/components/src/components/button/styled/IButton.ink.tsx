@@ -6,23 +6,26 @@ export interface ButtonProps extends ButtonBaseProps, ButtonStylingProps {
   block?: boolean;
 }
 
-export default defineComponent({ slots: { default: {} } }, (props: ButtonProps) => {
-  const className = createMemo(() =>
-    [
-      buttonRecipe({ color: props.color, variant: props.variant, size: props.size }),
-      props.block && "button--block",
-    ]
-      .filter(Boolean)
-      .join(" "),
-  );
-  return (
-    <IButtonBase
-      class={className()}
-      type={props.type}
-      disabled={props.disabled}
-      loading={props.loading}
-    >
-      <Slot>{props.label}</Slot>
-    </IButtonBase>
-  );
-});
+export default defineComponent(
+  { meta: { headless: true }, slots: { default: {} } },
+  (props: ButtonProps) => {
+    const className = createMemo(() =>
+      [
+        buttonRecipe({ color: props.color, variant: props.variant, size: props.size }),
+        props.block && "button--block",
+      ]
+        .filter(Boolean)
+        .join(" "),
+    );
+    return (
+      <IButtonBase
+        class={className()}
+        type={props.type}
+        disabled={props.disabled}
+        loading={props.loading}
+      >
+        <Slot>{props.label}</Slot>
+      </IButtonBase>
+    );
+  },
+);

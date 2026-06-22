@@ -125,6 +125,50 @@ describe("parseOptions", () => {
     });
   });
 
+  describe("meta parsing", () => {
+    it("parses meta.headless: true", () => {
+      const { obj, sf } = getObjectLiteral(`{ meta: { headless: true } }`);
+      const ctx = makeCtx();
+      const result = parseOptions(obj, "test#X", sf, ctx);
+      expect(result.headless).toBe(true);
+    });
+
+    it("treats meta.headless: false (or absent) as not headless", () => {
+      const falseForm = parseOptions(
+        getObjectLiteral(`{ meta: { headless: false } }`).obj,
+        "test#X",
+        getObjectLiteral(`{ meta: { headless: false } }`).sf,
+        makeCtx(),
+      );
+      expect(falseForm.headless).toBe(false);
+      const absentForm = parseOptions(
+        getObjectLiteral(`{ meta: {} }`).obj,
+        "test#X",
+        getObjectLiteral(`{ meta: {} }`).sf,
+        makeCtx(),
+      );
+      expect(absentForm.headless).toBe(false);
+    });
+
+    it("ignores a non-object meta value", () => {
+      const { obj, sf } = getObjectLiteral(`{ meta: someVar }`);
+      const result = parseOptions(obj, "test#X", sf, makeCtx());
+      expect(result.headless).toBe(false);
+    });
+
+    it("reads headless among other meta keys and ignores non-headless keys", () => {
+      const { obj, sf } = getObjectLiteral(`{ meta: { variant: "x", headless: true } }`);
+      const result = parseOptions(obj, "test#X", sf, makeCtx());
+      expect(result.headless).toBe(true);
+    });
+
+    it("skips a shorthand meta property (not a static name/value assignment)", () => {
+      const { obj, sf } = getObjectLiteral(`{ meta: { headless } }`);
+      const result = parseOptions(obj, "test#X", sf, makeCtx());
+      expect(result.headless).toBe(false);
+    });
+  });
+
   it("ignores unknown option keys", () => {
     const { obj, sf } = getObjectLiteral(`{ name: "Comp", props: { x: String } }`);
     const ctx = makeCtx();
@@ -139,6 +183,7 @@ describe("parseOptions", () => {
     expect(result.props).toBeUndefined();
     expect(result.slots).toHaveLength(0);
     expect(result.events).toHaveLength(0);
+    expect(result.headless).toBe(false);
   });
 });
 

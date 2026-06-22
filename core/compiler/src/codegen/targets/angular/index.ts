@@ -1,7 +1,13 @@
-import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../context.ts";
+import type {
+  Target,
+  CodegenContext,
+  CodeModule,
+  RewriteRules,
+  CollapseContext,
+} from "../../context.ts";
 import { angularConformance } from "./conformance.ts";
 import type { Code } from "../../code-ir/nodes.ts";
-import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
+import type { IRAttribute, IRComponent, IRElement, IRNode } from "../../../ir/render/nodes.ts";
 import { cFile, cImport, cStmt, cRaw, cGroup } from "../../code-ir/builders.ts";
 import { childrenArePhrasing } from "../../shared/phrasing.ts";
 import {
@@ -15,7 +21,7 @@ import {
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { assertNever } from "../../../core/assert.ts";
 import { walkRenderTree } from "../../../ir/render/visit.ts";
-import { angularSelector } from "./selector.ts";
+import { angularSelector, angularAttrSelector } from "./selector.ts";
 import * as ts from "typescript";
 
 /**
@@ -187,6 +193,86 @@ function ownClassExpr(
   return `(${rewriteExpr(a.value.expr!, rules)})`;
 }
 
+/** Append a conditional class fragment: `base + (extra ? ' ' + extra : '')`, or just `base` if absent. */
+function appendClass(base: string, extra: string | undefined): string {
+  return extra === undefined ? base : `${base} + (${extra} ? ' ' + ${extra} : '')`;
+}
+
+/**
+ * Collapse: true when `value` is solely a `props.X` read the styled wrapper didn't forward (its
+ * `propArgs` entry is `null`), so the inlined host binding is omitted rather than bound to the
+ * styled's same-named prop.
+ */
+function isUnforwardedProp(
+  value: IRAttribute["value"],
+  collapse: CollapseContext | undefined,
+): boolean {
+  if (!collapse?.propArgs || value.kind !== "Expression") return false;
+  const e = value.expr;
+  return (
+    ts.isPropertyAccessExpression(e) &&
+    ts.isIdentifier(e.expression) &&
+    e.expression.text === "props" &&
+    collapse.propArgs.get(e.name.text) === null
+  );
+}
+
+/**
+ * Map a headless component's root element to Angular `host: { … }` binding entries. Reuses the exact
+ * attribute classification of `emitNode`'s Element case, rendered as host-binding keys so the native
+ * host element (the attribute-selector variant) carries them directly with no wrapper: the class
+ * merges with the parent-forwarded `klass()`, KEEP_PROPERTY attrs stay property bindings, every other
+ * dynamic attr binds via `[attr.name]` (`?? null` so a nullish value omits it), statics become literal
+ * host attributes, and root events become host event bindings.
+ *
+ * `recipeExpr` (set when a styled component collapses onto this root) is the styled's forwarded class
+ * expression, merged between the root's own class and the inherited `klass()`.
+ */
+function headlessHostBindings(root: IRElement, rules: RewriteRules, recipeExpr?: string): string[] {
+  // The render root is always a fallthrough root (markRootFallthrough marks every Element root), so
+  // the class always merges the parent-forwarded `klass()`.
+  const entries: string[] = [];
+  let classBound = false;
+  for (const a of root.attrs) {
+    const name = rewriteAttrName(a.name, rules);
+    if (name === "class") {
+      classBound = true;
+      const own = appendClass(ownClassExpr(a, rules), recipeExpr);
+      entries.push(`'[class]': "${mergedClassExpr(own, rules)}"`);
+      continue;
+    }
+    if (a.value.kind === "Static") {
+      entries.push(`'${name}': '${a.value.value}'`);
+      continue;
+    }
+    // Collapse: omit a binding that is solely a child prop the styled wrapper didn't forward, so it
+    // doesn't leak onto the inlined host (see `CollapseContext.propArgs`).
+    if (isUnforwardedProp(a.value, rules.collapse)) continue;
+    const expr = rewriteExpr(a.value.expr, rules);
+    entries.push(
+      KEEP_PROPERTY.has(name) ? `'[${name}]': "${expr}"` : `'[attr.${name}]': "(${expr}) ?? null"`,
+    );
+  }
+  if (!classBound) {
+    entries.push(`'[class]': "${mergedClassExpr(recipeExpr, rules)}"`);
+  }
+  for (const e of root.events) {
+    const evName = rewriteEventName(e.name, rules).replace(/^on/, "").toLowerCase();
+    entries.push(`'(${evName})': "${angularEventExpr(e.handler.expr, rules)}"`);
+  }
+  return entries;
+}
+
+/**
+ * The children-only template for a headless host variant: the root element's children emitted with
+ * the same inline/whitespace decision as the Element case, so the body matches the wrapper variant's
+ * exactly — only the surrounding root tag is gone (it became the host).
+ */
+function headlessTemplate(root: IRElement, rules: RewriteRules): string {
+  const inline = childrenArePhrasing(root.children);
+  return root.children.map((c) => emitNode(c, rules)).join(inline ? "" : "\n");
+}
+
 function emitNode(node: IRNode, rules: RewriteRules): string {
   switch (node.kind) {
     case "Element": {
@@ -283,7 +369,14 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       return node.children.map((c) => emitNode(c, rules)).join("\n");
     case "ComponentInstance": {
       const localName = node.resolved?.name ?? node.reference.getText();
-      const tag = angularSelector(localName);
+      // In a collapsed template a headless child renders as an attribute selector on its own root tag
+      // (`<span ink-input-prefix-base>`, zero wrapper); otherwise as its element selector (`<ink-x>`).
+      const collapseChild = rules.collapse?.children?.get(localName);
+      const childRoot = collapseChild?.render.kind === "Element" ? collapseChild.render : undefined;
+      const openTag = childRoot
+        ? `${childRoot.tag} ${angularSelector(localName)}`
+        : angularSelector(localName);
+      const closeTag = childRoot ? childRoot.tag : angularSelector(localName);
       // Ivy always treats a `[class]` binding as a host class — it never reaches an input — so a
       // class passed to a compiled child travels through its synthesized `klass` input instead,
       // and the child's root element merges it (see the Element case above).
@@ -319,8 +412,13 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
       }
       const ciAttrStr = ciParts.join(" ");
       if (node.slots.length === 0) {
-        // Non-self-closing: Angular's template parser mishandles self-closed component tags in JIT.
-        return `<${tag}${ciAttrStr ? " " + ciAttrStr : ""}></${tag}>`;
+        // A collapsed attribute-child on a void element (`<input ink-x>`) must self-close — Angular
+        // rejects `</input>`. Otherwise non-self-closing: Angular's JIT mishandles self-closed
+        // component (element-selector) tags.
+        if (childRoot && VOID_ELEMENTS.has(childRoot.tag)) {
+          return `<${openTag}${ciAttrStr ? " " + ciAttrStr : ""} />`;
+        }
+        return `<${openTag}${ciAttrStr ? " " + ciAttrStr : ""}></${closeTag}>`;
       }
       const slotContent = node.slots
         .map((s) => {
@@ -328,11 +426,20 @@ function emitNode(node: IRNode, rules: RewriteRules): string {
           return `<ng-container slot="${s.name}">\n${emitNode(s.body, rules)}\n</ng-container>`;
         })
         .join("\n");
-      return `<${tag}${ciAttrStr ? " " + ciAttrStr : ""}>\n${slotContent}\n</${tag}>`;
+      return `<${openTag}${ciAttrStr ? " " + ciAttrStr : ""}>\n${slotContent}\n</${closeTag}>`;
     }
     case "Transition":
       return emitNode(node.child, rules);
     case "SlotPlaceholder":
+      // Collapse: project the styled component's own slot body into the inlined headless root's slot.
+      // Clear slotBodies for the substituted content so ITS slots still become `<ng-content>` for the
+      // consumer (one level of projection, not infinite).
+      if (rules.collapse?.slotBodies?.has(node.name)) {
+        return emitNode(rules.collapse.slotBodies.get(node.name)!, {
+          ...rules,
+          collapse: { ...rules.collapse, slotBodies: undefined },
+        });
+      }
       // Angular has no scoped-slot mechanism: a slot with `args` can't receive per-row data from a
       // parent. Best-effort: render the authored fallback (the component's default content, whose
       // loop/scope variables are in scope here) so the component still renders standalone.
@@ -605,6 +712,144 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     cRaw({ text: `import { ${n}Component as ${n} } from "./${n}.component";` }),
   );
 
+  // Escape a template body for embedding in the `@Component({ template: `…` })` backticks.
+  const escTemplate = (t: string) => t.replace(/`/g, "\\`").replace(/\$\{/g, "\\${");
+  const classBody = () => [cRaw({ text: "{" }), cGroup({ children: body }), cRaw({ text: "}" })];
+
+  // The element-selector component (`<ink-x>`, a `display: contents` wrapper). Unchanged for every
+  // component — the backward-compatible form.
+  const classBlocks: Code[] = [
+    cRaw({
+      text: `@Component({ standalone: true, selector: '${angularSelector(component.name)}', host: { style: 'display: contents' }${importsStr}${providersStr}, template: \`${escTemplate(template)}\` })`,
+    }),
+    cStmt({ body: `export class ${component.name}Component` }),
+    ...classBody(),
+  ];
+
+  // A headless component additionally emits an attribute-selector variant whose single static-element
+  // root IS the Angular host (`<button ink-button>`, zero wrapper). The element-selector wrapper above
+  // is kept (dual selector). `imports` is passed through only for direct extraction — a collapsed host
+  // inlines its child and instantiates nothing.
+  const pushHostVariant = (
+    selector: string,
+    hostStr: string,
+    tmpl: string,
+    imports: string,
+  ): void => {
+    classBlocks.push(
+      cRaw({ text: "" }),
+      cRaw({
+        text: `@Component({ standalone: true, selector: '${selector}', ${hostStr}${imports}${providersStr}, template: \`${escTemplate(tmpl)}\` })`,
+      }),
+      cStmt({ body: `export class ${component.name}HostComponent` }),
+      ...classBody(),
+    );
+  };
+
+  // Extra imports a collapsed host variant needs for the nested headless children it instantiates as
+  // attribute-selector directives (their `HostComponent` variants).
+  const extraImports: Code[] = [];
+
+  if (component.meta?.headless) {
+    const root = component.render;
+    if (root.kind === "Element") {
+      // Direct extraction: the root element becomes the host; its children become the template.
+      pushHostVariant(
+        angularAttrSelector(component.name, root.tag),
+        `host: { ${headlessHostBindings(root, templateRules).join(", ")} }`,
+        headlessTemplate(root, templateRules),
+        importsStr,
+      );
+    } else if (root.kind === "ComponentInstance") {
+      // Collapse: the styled root renders a single headless child (resolved from the registry). Inline
+      // that child's root as the host — its host bindings with the styled's recipe class merged in,
+      // plus the child's own selector as a static host attribute (`ink-button-base`). The styled's slot
+      // bodies project into the inlined child's slots, and nested headless siblings in that content
+      // render as attribute-selector children (zero wrapper), each importing its `HostComponent`.
+      const childName = root.resolved?.name ?? root.reference.getText();
+      const child = ctx.headlessRegistry?.get(childName);
+      if (child && child.render.kind === "Element") {
+        const childRoot = child.render;
+        // The child's host bindings/events reference the child's own model setters (e.g.
+        // `setOpen(...)` from `defineModel("open")`); map those names onto the same model so they
+        // emit against the merged component, which declares that model under the styled binding.
+        const childSetters = Object.fromEntries(child.models.map((m) => [m.setterName, m.name]));
+        const collapse: CollapseContext = {
+          children: ctx.headlessRegistry,
+          slotBodies: new Map(root.slots.map((s) => [s.name, s.body] as const)),
+        };
+        const collapseRules: RewriteRules = {
+          ...templateRules,
+          setters: { ...templateRules.setters, ...childSetters },
+          collapse,
+        };
+        const classAttr = root.attrs.find(
+          (a) => rewriteAttrName(a.name, collapseRules) === "class",
+        );
+        const recipeExpr = classAttr ? ownClassExpr(classAttr, collapseRules) : undefined;
+        // Bind the inlined host's own attrs against the styled instance's actual arguments: map each
+        // of the child's props to what the wrapper forwarded (or the child's default), or `null` when
+        // the wrapper passed nothing — so an unforwarded child-root prop is omitted rather than
+        // resolving to the styled component's same-named prop. `class`/two-way args are handled
+        // separately (recipeExpr / childSetters), and `propArgs` lives only on the host ruleset; the
+        // projected slot content keeps rewriting in the styled namespace via `collapseRules`.
+        const propArgs = new Map<string, string | null>();
+        for (const a of root.attrs) {
+          if (a.binding === "class" || a.binding === "twoWay") continue;
+          const argExpr =
+            a.value.kind === "Static"
+              ? typeof a.value.value === "string"
+                ? `'${a.value.value}'`
+                : String(a.value.value)
+              : rewriteExpr(a.value.expr, collapseRules);
+          propArgs.set(a.name, argExpr);
+        }
+        for (const p of child.props) {
+          if (propArgs.has(p.name)) continue;
+          propArgs.set(
+            p.name,
+            p.defaultValue ? rewriteExpr(p.defaultValue.expr, collapseRules) : null,
+          );
+        }
+        const hostRules: RewriteRules = { ...collapseRules, collapse: { ...collapse, propArgs } };
+        const hostEntries = headlessHostBindings(childRoot, hostRules, recipeExpr);
+        hostEntries.push(`'${angularSelector(child.name)}': ''`);
+
+        // The collapsed template instantiates the styled's slot-content headless siblings as
+        // attribute directives; declare + import their `HostComponent` variants.
+        const nested = new Set<string>();
+        for (const s of root.slots) {
+          walkRenderTree(s.body, {
+            enter(n) {
+              if (n.kind !== "ComponentInstance") return;
+              const nm = n.resolved?.name ?? n.reference.getText();
+              if (ctx.headlessRegistry?.get(nm)?.render.kind === "Element") nested.add(nm);
+            },
+          });
+        }
+        for (const nm of nested) {
+          const imp = ctx.componentImports.find((i) => i.localName === nm);
+          const path = imp ? `${imp.relativePath}.component` : `./${nm}.component`;
+          extraImports.push(cRaw({ text: `import { ${nm}HostComponent } from "${path}";` }));
+        }
+        const nestedImports =
+          nested.size > 0
+            ? `, imports: [${[...nested].map((n) => `${n}HostComponent`).join(", ")}]`
+            : "";
+        pushHostVariant(
+          angularAttrSelector(component.name, childRoot.tag),
+          `host: { ${hostEntries.join(", ")} }`,
+          headlessTemplate(childRoot, collapseRules),
+          nestedImports,
+        );
+      } else {
+        ctx.diagnostics.push("INK0111", component.loc, { name: component.name });
+      }
+    } else {
+      ctx.diagnostics.push("INK0111", component.loc, { name: component.name });
+    }
+  }
+
   const file = cFile({
     flavor: "ts",
     children: [
@@ -614,18 +859,13 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       }),
       ...emitComponentImports(ctx.componentImports, ".component", false, "Component"),
       ...sameFileImports,
+      ...extraImports,
       ...ctx.externalImports,
       ...styleImport,
       ...(ctx.typeDeclarations.length > 0 ? [cRaw({ text: "" }), ...ctx.typeDeclarations] : []),
       ...(contextDefs.length > 0 ? [cRaw({ text: "" }), ...contextDefs] : []),
       cRaw({ text: "" }),
-      cRaw({
-        text: `@Component({ standalone: true, selector: '${angularSelector(component.name)}', host: { style: 'display: contents' }${importsStr}${providersStr}, template: \`${template.replace(/`/g, "\\`").replace(/\$\{/g, "\\${")}\` })`,
-      }),
-      cStmt({ body: `export class ${component.name}Component` }),
-      cRaw({ text: "{" }),
-      cGroup({ children: body }),
-      cRaw({ text: "}" }),
+      ...classBlocks,
     ],
   });
 

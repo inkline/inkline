@@ -226,6 +226,14 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
   if (ts.isPropertyAccessExpression(expr)) {
     if (ts.isIdentifier(expr.expression)) {
       if (expr.expression.text === "props") {
+        // Angular collapse: a headless child's root reads its OWN props; substitute each with the
+        // expression the styled wrapper passed for it, so the inlined host binds against the styled's
+        // real arguments instead of its same-named props. `null`/absent (the wrapper forwarded
+        // nothing) becomes `undefined` so it stays safe inside a larger expression (`x ?? 'y'`).
+        if (rules.collapse?.propArgs) {
+          const arg = rules.collapse.propArgs.get(expr.name.text);
+          return arg == null ? "undefined" : arg;
+        }
         // Angular signal inputs are read in call form (`this.color()` / `color()`).
         const call = rules.propSignals ? "()" : "";
         if (rules.selfPrefix) return `this.${expr.name.text}${call}`;

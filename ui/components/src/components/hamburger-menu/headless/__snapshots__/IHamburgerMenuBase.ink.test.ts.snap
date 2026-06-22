@@ -22,6 +22,15 @@ ariaControls = input<string>()
 disabled = input<boolean>()
 open = model<boolean>()
 }
+@Component({ standalone: true, selector: 'button[ink-hamburger-menu-base]', host: { '[class]': "'hamburger-menu' + (klass() ? ' ' + klass() : '')", 'type': 'button', '[attr.aria-expanded]': "(open() ? 'true' : 'false') ?? null", '[attr.aria-controls]': "(ariaControls() ?? '') ?? null", '[attr.aria-label]': "(ariaLabel() ?? 'Toggle menu') ?? null", '[disabled]': "disabled()", '(click)': "open.set(!open())" }, template: \`<span class="hamburger-menu-inner" aria-hidden="true"></span>\` })
+export class IHamburgerMenuBaseHostComponent
+{
+klass = input<string>()
+ariaLabel = input<string>()
+ariaControls = input<string>()
+disabled = input<boolean>()
+open = model<boolean>()
+}
 ",
   "astro/IHamburgerMenuBase.astro": "---
 export interface HamburgerMenuBaseProps {

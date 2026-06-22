@@ -9,6 +9,7 @@ export interface ButtonBaseProps {
 
 export default defineComponent(
   {
+    meta: { headless: true },
     slots: { default: {} },
   },
   (props: ButtonBaseProps) => {

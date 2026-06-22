@@ -4,6 +4,7 @@ import type { Plugin } from "../plugin/types.ts";
 import type { GeneratedFile, Target } from "../codegen/context.ts";
 import { createRegistry } from "../codegen/registry.ts";
 import { UNKNOWN_LOCATION } from "../ir/types.ts";
+import { compileFixture } from "../testing/harness.ts";
 
 describe("compile", () => {
   it("returns a CompileResult with empty files for a non-component source", async () => {
@@ -35,6 +36,16 @@ describe("compile", () => {
     );
     expect("react" in result.files).toBe(true);
     expect("vue" in result.files).toBe(true);
+  });
+
+  it("skips the Angular-only headless registry for a non-Angular target but still emits", async () => {
+    // CollapseStyled is a headless component whose root is a ComponentInstance — the only shape that
+    // would build the cross-file registry. Only Angular consumes it, so a React-only compile must not
+    // re-parse siblings to build it, yet must still produce correct React output.
+    const result = await compileFixture("CollapseStyled", ["react"]);
+    expect(result.diagnostics.filter((d) => d.severity === "error")).toEqual([]);
+    expect(result.files.react?.length).toBeGreaterThan(0);
+    expect(result.files.angular).toBeUndefined();
   });
 
   it("throws when registry does not support a requested target", async () => {

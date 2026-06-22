@@ -394,6 +394,12 @@ export interface IRComponent {
   readonly expose?: readonly string[];
   readonly styles: readonly IRStyleBlock[];
   readonly runtime: IRRuntimeMode;
+  /**
+   * Author-supplied component metadata (`defineComponent({ meta: … })`). `headless` marks a
+   * behavior-only component whose single static-element root the Angular target extracts as the
+   * host (attribute-selector emission). Absent === not headless.
+   */
+  readonly meta?: { readonly headless?: boolean };
   readonly targetOverrides: Readonly<Partial<Record<TargetName, IRTargetOverride>>>;
   readonly slotBindings?: ReadonlyMap<string, string>;
 }
@@ -403,7 +409,7 @@ export interface IRTargetOverride {
   readonly render?: IRNode;
 }
 
-export const IR_VERSION = 2;
+export const IR_VERSION = 3;
 
 export interface IRModule {
   readonly version: number;

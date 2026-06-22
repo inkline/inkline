@@ -15,6 +15,12 @@ export class IInputBaseComponent
 klass = input<string>()
 id = input<string>()
 }
+@Component({ standalone: true, selector: 'div[ink-input-base]', host: { '[class]': "'input' + (klass() ? ' ' + klass() : '')", '[attr.id]': "(id()) ?? null" }, template: \`<ng-content></ng-content>\` })
+export class IInputBaseHostComponent
+{
+klass = input<string>()
+id = input<string>()
+}
 ",
   "astro/IInputBase.astro": "---
 export interface InputBaseProps {

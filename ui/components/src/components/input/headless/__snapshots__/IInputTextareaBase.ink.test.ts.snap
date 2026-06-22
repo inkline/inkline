@@ -1,0 +1,162 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`InputTextarea > output matches snapshots 1`] = `
+{
+  "angular/IInputTextareaBase.component.ts": "import { Component, signal, computed, effect, input, model } from "@angular/core";
+export interface InputTextareaBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Name of the native control. */
+  name?: string;
+  /** Placeholder text. */
+  placeholder?: string;
+  /** Disables the control. */
+  disabled?: boolean;
+  /** Marks the control as read-only. */
+  readonly?: boolean;
+}
+@Component({ standalone: true, selector: 'ink-input-textarea-base', host: { style: 'display: contents' }, template: \`<textarea [class]="'input-field' + (klass() ? ' ' + klass() : '')" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [value]="value() ?? ''" [attr.placeholder]="(placeholder()) ?? null" [disabled]="disabled()" [readonly]="readonly()" (input)="value.set($event.currentTarget.value)"></textarea>\` })
+export class IInputTextareaBaseComponent
+{
+klass = input<string>()
+id = input<string>()
+name = input<string>()
+placeholder = input<string>()
+disabled = input<boolean>()
+readonly = input<boolean>()
+value = model<string>()
+}
+@Component({ standalone: true, selector: 'textarea[ink-input-textarea-base]', host: { '[class]': "'input-field' + (klass() ? ' ' + klass() : '')", '[attr.id]': "(id()) ?? null", '[attr.name]': "(name()) ?? null", '[value]': "value() ?? ''", '[attr.placeholder]': "(placeholder()) ?? null", '[disabled]': "disabled()", '[readonly]': "readonly()", '(input)': "value.set($event.currentTarget.value)" }, template: \`\` })
+export class IInputTextareaBaseHostComponent
+{
+klass = input<string>()
+id = input<string>()
+name = input<string>()
+placeholder = input<string>()
+disabled = input<boolean>()
+readonly = input<boolean>()
+value = model<string>()
+}
+",
+  "astro/IInputTextareaBase.astro": "---
+export interface InputTextareaBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Name of the native control. */
+  name?: string;
+  /** Placeholder text. */
+  placeholder?: string;
+  /** Disables the control. */
+  disabled?: boolean;
+  /** Marks the control as read-only. */
+  readonly?: boolean;
+}
+type Props = InputTextareaBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { id, name, placeholder, disabled, readonly, ...__attrs } = props;
+let value = props.value
+---
+<textarea {...__attrs} class={["input-field", __attrs.class].filter(Boolean).join(" ")} id={id} name={name} value={value ?? ""} placeholder={placeholder} disabled={disabled} readonly={readonly} onInput={(e: { currentTarget: HTMLTextAreaElement }) => value = e.currentTarget.value} />
+",
+  "qwik/IInputTextareaBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
+export interface InputTextareaBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Name of the native control. */
+  name?: string;
+  /** Placeholder text. */
+  placeholder?: string;
+  /** Disables the control. */
+  disabled?: boolean;
+  /** Marks the control as read-only. */
+  readonly?: boolean;
+}
+export const IInputTextareaBase = component$((props: InputTextareaBaseProps & { value?: string; onUpdateValue$?: QRL<(value: string) => void> } & Record<string, any>) =>
+{
+const { id, name, placeholder, disabled, readonly, value, onUpdateValue$, ...__attrs } = props
+return (
+<textarea {...__attrs} class={["input-field", props.class].filter(Boolean).join(" ")} id={props.id} name={props.name} value={props.value ?? ""} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} onInput={$((e: { currentTarget: HTMLTextAreaElement }) => props.onUpdateValue$?.(e.currentTarget.value))} />
+)
+});
+",
+  "react/IInputTextareaBase.tsx": "export interface InputTextareaBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Name of the native control. */
+  name?: string;
+  /** Placeholder text. */
+  placeholder?: string;
+  /** Disables the control. */
+  disabled?: boolean;
+  /** Marks the control as read-only. */
+  readonly?: boolean;
+}
+export function IInputTextareaBase(props: InputTextareaBaseProps & { value?: string; onUpdateValue?: (value: string) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const { id, name, placeholder, disabled, readonly, value, onUpdateValue, ...__attrs } = props
+return (
+<textarea {...__attrs} className={["input-field", props.className].filter(Boolean).join(" ")} id={props.id} name={props.name} value={props.value ?? ""} placeholder={props.placeholder} disabled={props.disabled} readOnly={props.readonly} onInput={(e: { currentTarget: HTMLTextAreaElement }) => props.onUpdateValue?.(e.currentTarget.value)} />
+)
+}
+",
+  "solid/IInputTextareaBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface InputTextareaBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Name of the native control. */
+  name?: string;
+  /** Placeholder text. */
+  placeholder?: string;
+  /** Disables the control. */
+  disabled?: boolean;
+  /** Marks the control as read-only. */
+  readonly?: boolean;
+}
+export default function IInputTextareaBase(props: InputTextareaBaseProps & { value?: string; onUpdateValue?: (value: string) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["id", "name", "placeholder", "disabled", "readonly", "value", "onUpdateValue"])
+return (
+<textarea {...__attrs} class={["input-field", props.class].filter(Boolean).join(" ")} id={props.id} name={props.name} value={props.value ?? ""} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} oninput={(e: { currentTarget: HTMLTextAreaElement }) => props.onUpdateValue?.(e.currentTarget.value)} />
+)
+}
+",
+  "svelte/IInputTextareaBase.svelte": "<script lang="ts">
+  export interface InputTextareaBaseProps {
+    /** Id of the native control. */
+    id?: string;
+    /** Name of the native control. */
+    name?: string;
+    /** Placeholder text. */
+    placeholder?: string;
+    /** Disables the control. */
+    disabled?: boolean;
+    /** Marks the control as read-only. */
+    readonly?: boolean;
+  }
+  let { id, name, placeholder, disabled, readonly, value = $bindable(), ...__attrs }: InputTextareaBaseProps & { value?: string } & Record<string, any> = $props()
+</script>
+<textarea {...__attrs} class={["input-field", __attrs.class].filter(Boolean).join(" ")} id={id} name={name} value={value ?? ""} placeholder={placeholder} disabled={disabled} readonly={readonly} oninput={(e: { currentTarget: HTMLTextAreaElement }) => value = e.currentTarget.value}></textarea>
+",
+  "vue/IInputTextareaBase.vue": "<script setup lang="ts">
+  export interface InputTextareaBaseProps {
+    /** Id of the native control. */
+    id?: string;
+    /** Name of the native control. */
+    name?: string;
+    /** Placeholder text. */
+    placeholder?: string;
+    /** Disables the control. */
+    disabled?: boolean;
+    /** Marks the control as read-only. */
+    readonly?: boolean;
+  }
+  const props = defineProps<InputTextareaBaseProps>()
+  const value = defineModel<string>("value")
+</script>
+<template>
+<textarea class="input-field" :id="id" :name="name" :value='value ?? ""' :placeholder="placeholder" :disabled="disabled" :readonly="readonly" @input="(e: { currentTarget: HTMLTextAreaElement }) => value = e.currentTarget.value" />
+</template>
+",
+}
+`;

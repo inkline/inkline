@@ -14,14 +14,17 @@ export interface FieldGroupProps extends FieldGroupBaseProps, FieldGroupStylingP
  * `prepend`/`append` addons used to serve). `orientation` and `block` map to the recipe's styling
  * axes.
  */
-export default defineComponent({ slots: { default: {} } }, (props: FieldGroupProps) => {
-  const className = createMemo(() =>
-    fieldGroupRecipe({ orientation: props.orientation, block: props.block }),
-  );
+export default defineComponent(
+  { meta: { headless: true }, slots: { default: {} } },
+  (props: FieldGroupProps) => {
+    const className = createMemo(() =>
+      fieldGroupRecipe({ orientation: props.orientation, block: props.block }),
+    );
 
-  return (
-    <IFieldGroupBase id={props.id} class={className()}>
-      <Slot />
-    </IFieldGroupBase>
-  );
-});
+    return (
+      <IFieldGroupBase id={props.id} class={className()}>
+        <Slot />
+      </IFieldGroupBase>
+    );
+  },
+);

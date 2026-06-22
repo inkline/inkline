@@ -36,6 +36,7 @@ export async function mountForTarget(
   file: GeneratedFile,
   props?: Record<string, unknown>,
   supportingFiles?: readonly GeneratedFile[],
+  options?: { readonly componentName?: string },
 ): Promise<MountResult> {
   if (!isMountable(target)) {
     throw new Error(
@@ -48,7 +49,13 @@ export async function mountForTarget(
   console.warn = (...args: unknown[]) => warnings.push(args.map(String).join(" "));
 
   try {
-    const { html, stderr } = await mountViaTempFile(target, file, props, supportingFiles ?? []);
+    const { html, stderr } = await mountViaTempFile(
+      target,
+      file,
+      props,
+      supportingFiles ?? [],
+      options?.componentName,
+    );
     // The sandbox routes runtime logging to stderr; surface it as warnings for debuggability.
     if (stderr.trim()) warnings.push(...stderr.trim().split("\n"));
     return { html, warnings };
@@ -62,6 +69,7 @@ async function mountViaTempFile(
   file: GeneratedFile,
   props: Record<string, unknown> | undefined,
   supportingFiles: readonly GeneratedFile[],
+  componentName: string | undefined,
 ): Promise<{ html: string; stderr: string }> {
   const tmp = mkdtempSync(join(tmpdir(), "ink-mount-"));
 
@@ -86,7 +94,7 @@ async function mountViaTempFile(
       symlinkSync(nodeModulesSource, nodeModulesDest, "dir");
     }
 
-    const mountScript = buildMountScript(target, `./${entryPath}`, props);
+    const mountScript = buildMountScript(target, `./${entryPath}`, props, componentName);
     const mountPath = join(tmp, "__mount__.mjs");
     writeFileSync(mountPath, mountScript, "utf-8");
 
@@ -116,38 +124,47 @@ async function mountViaTempFile(
  * harness by emitting the equivalent runtime decorator calls for the shapes our codegen produces.
  */
 function jitSignalMetadata(source: string): string {
-  const className = source.match(/export class (\w+)/)?.[1];
-  if (!className) return "";
+  // A file may declare more than one component class (a headless component emits both an
+  // element-selector wrapper and an attribute-selector host variant). Register each class's signal
+  // members against that class, scoping by source region so members aren't cross-registered.
+  const classMatches = [...source.matchAll(/export class (\w+)/g)];
+  if (classMatches.length === 0) return "";
 
   const lines: string[] = [];
   const memberRe = /^(\w+) = (input\.required|input|model|output|viewChild)(?:<.*?>)?\((.*)\)$/gm;
-  for (const m of source.matchAll(memberRe)) {
-    const [, field, kind, args] = m as unknown as [string, string, string, string];
-    const proto = `${className}.prototype, ${JSON.stringify(field)}`;
-    switch (kind) {
-      case "input":
-      case "input.required":
-        lines.push(
-          `__NgInput({ isSignal: true, alias: ${JSON.stringify(field)}, required: ${kind === "input.required"} })(${proto});`,
-        );
-        break;
-      case "model": {
-        const alias = args.match(/alias:\s*["']([^"']+)["']/)?.[1] ?? field;
-        lines.push(
-          `__NgInput({ isSignal: true, alias: ${JSON.stringify(alias)}, required: false })(${proto});`,
-          `__NgOutput(${JSON.stringify(`${alias}Change`)})(${proto});`,
-        );
-        break;
-      }
-      case "output":
-        lines.push(`__NgOutput()(${proto});`);
-        break;
-      case "viewChild": {
-        const marker = args.match(/["']([^"']+)["']/)?.[1];
-        if (marker) {
-          lines.push(`__NgViewChild(${JSON.stringify(marker)}, { isSignal: true })(${proto});`);
+  for (let i = 0; i < classMatches.length; i++) {
+    const className = classMatches[i]![1]!;
+    const start = classMatches[i]!.index!;
+    const end = i + 1 < classMatches.length ? classMatches[i + 1]!.index! : source.length;
+    const region = source.slice(start, end);
+    for (const m of region.matchAll(memberRe)) {
+      const [, field, kind, args] = m as unknown as [string, string, string, string];
+      const proto = `${className}.prototype, ${JSON.stringify(field)}`;
+      switch (kind) {
+        case "input":
+        case "input.required":
+          lines.push(
+            `__NgInput({ isSignal: true, alias: ${JSON.stringify(field)}, required: ${kind === "input.required"} })(${proto});`,
+          );
+          break;
+        case "model": {
+          const alias = args.match(/alias:\s*["']([^"']+)["']/)?.[1] ?? field;
+          lines.push(
+            `__NgInput({ isSignal: true, alias: ${JSON.stringify(alias)}, required: false })(${proto});`,
+            `__NgOutput(${JSON.stringify(`${alias}Change`)})(${proto});`,
+          );
+          break;
         }
-        break;
+        case "output":
+          lines.push(`__NgOutput()(${proto});`);
+          break;
+        case "viewChild": {
+          const marker = args.match(/["']([^"']+)["']/)?.[1];
+          if (marker) {
+            lines.push(`__NgViewChild(${JSON.stringify(marker)}, { isSignal: true })(${proto});`);
+          }
+          break;
+        }
       }
     }
   }
@@ -208,8 +225,12 @@ function buildMountScript(
   target: TargetName,
   componentPath: string,
   props?: Record<string, unknown>,
+  componentName?: string,
 ): string {
   const propsJson = JSON.stringify(props ?? {});
+  // When a file exports more than one component (a headless component's element-selector wrapper +
+  // its attribute-selector host variant), pick the requested export by name; otherwise fall back.
+  const pick = componentName ? `mod[${JSON.stringify(componentName)}] ?? ` : "";
 
   switch (target) {
     case "react":
@@ -262,10 +283,15 @@ console.log = (...args) => console.error(...args);
 console.info = (...args) => console.error(...args);
 
 const candidates = Object.values(mod).filter((v) => typeof v === "function");
-const C = mod.default ?? candidates.find((v) => reflectComponentType(v) != null);
+const C = ${pick}mod.default ?? candidates.find((v) => reflectComponentType(v) != null);
 const mirror = reflectComponentType(C);
 if (!mirror) throw new Error("No Angular component found in module");
-const selector = mirror.selector.split(",")[0].trim();
+// A selector may be an element (\`ink-button\`) or an attribute on a native element
+// (\`button[ink-button]\`); split the latter into its tag + attribute for the host template.
+const selectorRaw = mirror.selector.split(",")[0].trim();
+const br = selectorRaw.indexOf("[");
+const hostTag = br === -1 ? selectorRaw : selectorRaw.slice(0, br);
+const hostAttr = br === -1 ? "" : " " + selectorRaw.slice(br + 1, -1);
 
 const allProps = ${propsJson};
 const { __slots = {}, ...props } = allProps;
@@ -279,7 +305,7 @@ const Host = Component({
   standalone: true,
   selector: "mount-host",
   imports: [C],
-  template: \`<\${selector} \${bindings}>\${slotContent}</\${selector}>\`,
+  template: \`<\${hostTag}\${hostAttr} \${bindings}>\${slotContent}</\${hostTag}>\`,
 })(HostBase) ?? HostBase;
 
 const providers = [provideZonelessChangeDetection()];

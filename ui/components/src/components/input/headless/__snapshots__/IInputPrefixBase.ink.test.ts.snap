@@ -11,6 +11,11 @@ export class IInputPrefixBaseComponent
 {
 klass = input<string>()
 }
+@Component({ standalone: true, selector: 'span[ink-input-prefix-base]', host: { '[class]': "'input-prefix' + (klass() ? ' ' + klass() : '')" }, template: \`<ng-content></ng-content>\` })
+export class IInputPrefixBaseHostComponent
+{
+klass = input<string>()
+}
 ",
   "astro/IInputPrefixBase.astro": "---
 export interface InputPrefixBaseProps {}

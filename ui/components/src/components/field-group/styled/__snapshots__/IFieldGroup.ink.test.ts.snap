@@ -20,6 +20,14 @@ klass = input<string>()
 className = computed(() => fieldGroupRecipe({ orientation: this.orientation(), block: this.block() }))
 id = input<string>()
 }
+@Component({ standalone: true, selector: 'div[ink-field-group]', host: { '[class]': "'field-group' + ((className()) ? ' ' + (className()) : '') + (klass() ? ' ' + klass() : '')", '[attr.id]': "(id()) ?? null", 'ink-field-group-base': '' }, template: \`<ng-content></ng-content>\` })
+export class IFieldGroupHostComponent
+{
+fieldGroupRecipe = fieldGroupRecipe
+klass = input<string>()
+className = computed(() => fieldGroupRecipe({ orientation: this.orientation(), block: this.block() }))
+id = input<string>()
+}
 ",
   "astro/IFieldGroup.astro": "---
 import IFieldGroupBase, { type FieldGroupBaseProps } from "../headless/IFieldGroupBase.astro";

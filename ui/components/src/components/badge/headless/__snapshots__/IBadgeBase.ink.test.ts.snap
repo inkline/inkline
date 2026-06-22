@@ -14,6 +14,12 @@ export class IBadgeBaseComponent
 klass = input<string>()
 label = input<string>()
 }
+@Component({ standalone: true, selector: 'div[ink-badge-base]', host: { '[class]': "'badge' + (klass() ? ' ' + klass() : '')" }, template: \`<ng-content>{{ label() }}</ng-content>\` })
+export class IBadgeBaseHostComponent
+{
+klass = input<string>()
+label = input<string>()
+}
 ",
   "astro/IBadgeBase.astro": "---
 export interface BadgeBaseProps {

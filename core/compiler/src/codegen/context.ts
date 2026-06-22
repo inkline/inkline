@@ -1,5 +1,5 @@
 import type { Code } from "./code-ir/nodes.ts";
-import type { IRComponent, IRContextDefinition } from "../ir/render/nodes.ts";
+import type { IRComponent, IRContextDefinition, IRNode } from "../ir/render/nodes.ts";
 import type { Diagnostic } from "../core/diagnostics/codes.ts";
 import type { DiagnosticCollector } from "../core/diagnostics/collector.ts";
 import type { ResolvedCompilerOptions } from "../core/options.ts";
@@ -139,6 +139,42 @@ export interface RewriteRules {
    * (Qwik/Angular), so gated content always renders and CSS `:empty` collapses the empty wrapper.
    */
   readonly hasSlotCheck?: (slotName: string) => string;
+  /**
+   * Angular collapse only: when a styled `meta.headless` component inlines its headless child's root
+   * as the host, this carries the data to bind that inlined root against the styled wrapper (forwarded
+   * prop args, projected slot bodies, nested headless siblings) — see {@link CollapseContext}. Absent
+   * for every other target and for non-collapsed emission.
+   */
+  readonly collapse?: CollapseContext;
+}
+
+/**
+ * Angular collapse only: the data for inlining a `meta.headless` child's render as the host of the
+ * styled component collapsing onto it. The styled wrapper and its single headless child are merged
+ * into one `@Component`; this binds the child's root against the wrapper's actual arguments rather
+ * than the wrapper's same-named props.
+ */
+export interface CollapseContext {
+  /**
+   * Nested `meta.headless` siblings (by local name → resolved component) the collapsed template
+   * renders as attribute-selector children — `<span ink-input-prefix-base>` rather than
+   * `<ink-input-prefix-base>` — so nested parts are zero-wrapper too. Their root tag comes from the
+   * resolved component.
+   */
+  readonly children?: ReadonlyMap<string, IRComponent>;
+  /**
+   * Slot content (by name) the inlined headless root's `<Slot>` renders instead of an `<ng-content>`
+   * (the styled wrapper's own slot body). One level of projection: cleared while emitting that
+   * substituted content so its inner slots still become `<ng-content>` for the consumer.
+   */
+  readonly slotBodies?: ReadonlyMap<string, IRNode>;
+  /**
+   * Set only on the ruleset used for the inlined host's OWN bindings: the child's prop name → the
+   * already-rewritten expression the styled wrapper passed for it, or `null` when the wrapper forwards
+   * nothing (the binding is omitted, or degrades to `undefined` inside a larger expression). Absent on
+   * the template ruleset so projected slot content keeps rewriting in the styled namespace.
+   */
+  readonly propArgs?: ReadonlyMap<string, string | null>;
 }
 
 export interface ComponentImport {
@@ -157,6 +193,13 @@ export interface CodegenContext {
   readonly externalImports: readonly Code[];
   readonly componentImports: readonly ComponentImport[];
   readonly typeDeclarations: readonly Code[];
+  /**
+   * Lowered IR of imported `meta.headless` siblings, indexed by component name. Lets the Angular
+   * target inline a headless child's root host bindings + template when a styled component collapses
+   * onto it (zero-wrapper). Empty unless a component in the module is headless with a
+   * `ComponentInstance` root, since building it re-parses the imported sibling files.
+   */
+  readonly headlessRegistry?: ReadonlyMap<string, IRComponent>;
 }
 
 export interface CodeModule {
