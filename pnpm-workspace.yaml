@@ -46,14 +46,14 @@ catalog:
   "@storybook/react-vite": ^10.4.4
   "@storybook/svelte-vite": ^10.4.4
   "@storybook/vue3-vite": ^10.4.4
-  "@styleframe/cli": ^4.1.1
-  "@styleframe/core": ^3.6.1
+  "@styleframe/cli": ^4.1.2
+  "@styleframe/core": ^3.6.2
   "@styleframe/license": ^2.0.2
-  "@styleframe/loader": ^3.0.3
-  "@styleframe/plugin": ^3.4.0
-  "@styleframe/runtime": ^3.2.1
-  "@styleframe/theme": ^3.8.0
-  "@styleframe/transpiler": ^3.4.1
+  "@styleframe/loader": ^3.0.4
+  "@styleframe/plugin": ^3.4.1
+  "@styleframe/runtime": ^3.2.2
+  "@styleframe/theme": ^3.8.1
+  "@styleframe/transpiler": ^3.4.2
   "@sveltejs/vite-plugin-svelte": ^7.1.2
   "@tsdown/css": ^0.22.0
   "@types/node": ^24.13.2
@@ -82,7 +82,7 @@ catalog:
   storybook: ^10.4.4
   storybook-framework-qwik: 0.6.2--canary.95.25602496384.0
   storybook-solidjs-vite: ^10.1.1
-  styleframe: ^3.9.0
+  styleframe: ^3.9.1
   svelte: ^5.56.3
   tslib: ^2.8.1
   tsx: ^4.22.4
