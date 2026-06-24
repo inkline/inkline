@@ -36,7 +36,7 @@ Everything here is **authoring-time only** — the compiler removes it from emit
 - **Astro is static SSR** — two-way binding (`defineModel` / `$bind`) lowers to a one-way value and emits the info notice **`INK0045`** (one per two-way binding). This is expected, not an error.
 - **Qwik & Angular have no runtime slot-presence API** — `hasSlot("x")` is `true` there, so a `<Show when={hasSlot("x")}>` wrapper is emitted unconditionally and must be collapsed with a CSS `:empty` rule in the `.styleframe.ts`. The compiler emits the info notice **`INK0068`** once per such target (so a single gated component → **2** `INK0068` notices: Qwik + Angular).
 
-These three notices (`INK0045`, `INK0068`) are **expected** for components that use two-way binding or `hasSlot` gating. Tests assert them explicitly rather than treating them as failures (see the `component-test` skill).
+These three notices (`INK0045`, `INK0068`) are **expected** for components that use two-way binding or `hasSlot` gating. Tests assert them explicitly rather than treating them as failures (see the `test-component` skill).
 
 ## How bindings & slots lower per target (useful for test assertions)
 

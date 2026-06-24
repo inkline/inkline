@@ -1,5 +1,5 @@
 ---
-name: component-test
+name: test-component
 description: Phase 4 of building an Inkline component — write colocated cross-target tests. Assert compilation to all 7 targets, expected diagnostics, conformance, output composition/imports/bindings, snapshots, and real-DOM behavior via Angular SSR. Targets ~100% line+branch coverage. Use when adding or strengthening a component's tests.
 triggers:
   - test a component

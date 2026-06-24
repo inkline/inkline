@@ -1,5 +1,5 @@
 ---
-name: component-document
+name: document-component
 description: Phase 5 of building an Inkline component — finalize docs and the release. Complete TSDoc on the prop interfaces, add a changeset for the affected framework packages, confirm exports/freshness, and stage the future docs-site page (the docs website is not built yet — TBD). Use when wrapping up a component for release.
 triggers:
   - document a component
