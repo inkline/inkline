@@ -1,5 +1,5 @@
 ---
-name: component-implement
+name: implement-component
 description: Phase 2 of building an Inkline component — write the .ink.tsx source. Author the headless part(s) (behavior + accessibility, no styling), then one styled component that composes them and applies a styleframe recipe, then the .styleframe.ts, then register the export. Compiles to all 7 frameworks. Use when implementing a component from a spec, or adding/fixing component source.
 triggers:
   - implement a component
@@ -20,7 +20,7 @@ Author the `.ink.tsx` source so it compiles cleanly to all 7 targets. Mirror the
 
 ## Read first
 
-1. The spec at `.context/component-<name>-spec.md` (from `component-research`). If it's missing and you're working standalone, read the existing source and infer the contract before changing it.
+1. The spec at `.context/component-<name>-spec.md` (from `research-component`). If it's missing and you're working standalone, read the existing source and infer the contract before changing it.
 2. `.claude/skills/create-component/reference/conventions.md` and `.../reference/primitives.md` — the split, the fallthrough rule, the primitives, and the **per-target gotchas**.
 3. The matching exemplar source: `badge/` (single part), `button/` (stateful + custom styles), `input/` (multi-part family with slots + two-way).
 
@@ -155,4 +155,4 @@ export { default as IBadgeBase } from "./badge/headless/IBadgeBase.ink.tsx";
 
 ## Exit criteria
 
-`pnpm build` is clean (only expected notices), the export is registered, every prop has TSDoc, and the source mirrors the exemplar's structure. Hand off to `component-stories` and `component-test`.
+`pnpm build` is clean (only expected notices), the export is registered, every prop has TSDoc, and the source mirrors the exemplar's structure. Hand off to `stories-component` and `test-component`.

@@ -1,5 +1,5 @@
 ---
-name: component-research
+name: research-component
 description: Phase 1 of building an Inkline component — design the API. Survey the WAI-ARIA pattern and prior art, then write a complete component spec (props, slots, events, variants, accessibility, styling plan) to .context/ for sign-off before any code. Use when starting a new component or redesigning an existing one's API.
 triggers:
   - research a component
@@ -18,7 +18,7 @@ allowed-tools:
 
 # Component research — design the API before any code
 
-The goal of this phase is a **spec good enough that implementation is mechanical**. A great component is decided here: the right anatomy, the best prop names, the exact accessibility contract. Produce a written spec, get it signed off, then hand it to `component-implement`.
+The goal of this phase is a **spec good enough that implementation is mechanical**. A great component is decided here: the right anatomy, the best prop names, the exact accessibility contract. Produce a written spec, get it signed off, then hand it to `implement-component`.
 
 ## Read first
 

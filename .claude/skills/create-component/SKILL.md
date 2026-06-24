@@ -23,7 +23,7 @@ allowed-tools:
 
 Take a component from idea to release-ready across all 7 Inkline frameworks. This skill **orchestrates** five focused phase skills; it does not duplicate their detail. For each phase you **Read that phase's `SKILL.md` and execute its steps at full depth**, then stop at the gate.
 
-Each phase skill is also invocable on its own (e.g. `/component-stories` to add stories to an existing component). This orchestrator is for building a new one start-to-finish.
+Each phase skill is also invocable on its own (e.g. `/stories-component` to add stories to an existing component). This orchestrator is for building a new one start-to-finish.
 
 ## Working agreement (applies to every phase)
 
@@ -38,11 +38,11 @@ Each phase skill is also invocable on its own (e.g. `/component-stories` to add 
 
 | #   | Phase     | Skill file                                    | Output                                        | Commit on pass                          |
 | --- | --------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------- |
-| 1   | Research  | `.claude/skills/component-research/SKILL.md`  | `.context/component-<name>-spec.md`           | — (spec is gitignored)                  |
-| 2   | Implement | `.claude/skills/component-implement/SKILL.md` | headless + styled + `.styleframe.ts` + export | `feat(components): add I<Name>`         |
-| 3   | Stories   | `.claude/skills/component-stories/SKILL.md`   | `defineStories` meta + render helpers         | `feat(components): add I<Name> stories` |
-| 4   | Test      | `.claude/skills/component-test/SKILL.md`      | colocated `.ink.test.ts` (+ Angular SSR)      | `test(components): cover I<Name>`       |
-| 5   | Document  | `.claude/skills/component-document/SKILL.md`  | TSDoc pass + changeset + freshness            | `docs(components): document I<Name>`    |
+| 1   | Research  | `.claude/skills/research-component/SKILL.md`  | `.context/component-<name>-spec.md`           | — (spec is gitignored)                  |
+| 2   | Implement | `.claude/skills/implement-component/SKILL.md` | headless + styled + `.styleframe.ts` + export | `feat(components): add I<Name>`         |
+| 3   | Stories   | `.claude/skills/stories-component/SKILL.md`   | `defineStories` meta + render helpers         | `feat(components): add I<Name> stories` |
+| 4   | Test      | `.claude/skills/test-component/SKILL.md`      | colocated `.ink.test.ts` (+ Angular SSR)      | `test(components): cover I<Name>`       |
+| 5   | Document  | `.claude/skills/document-component/SKILL.md`  | TSDoc pass + changeset + freshness            | `docs(components): document I<Name>`    |
 
 Shared reference (each phase skill points into these; read them when a phase tells you to):
 `create-component/reference/{conventions,primitives,verification}.md`.

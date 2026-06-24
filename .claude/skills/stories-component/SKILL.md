@@ -1,5 +1,5 @@
 ---
-name: component-stories
+name: stories-component
 description: Phase 3 of building an Inkline component — author single-source Storybook stories. Write a defineStories meta with typed args/argTypes and per-variant render helpers as .ink.tsx; these compile to CSF3 for all 7 frameworks. Use when adding or improving the stories for a component.
 triggers:
   - add stories for a component
