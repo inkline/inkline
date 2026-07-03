@@ -11,12 +11,12 @@ The `inkline` command-line interface. Wraps [`@inkline/compiler`](../../core/com
 
 All commands live in [`src/commands/`](./src/commands/) and are wired into the root command via [citty](https://github.com/unjs/citty).
 
-| Command           | Source                                    | Purpose                                                                                                                                                                                       |
-| ----------------- | ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `inkline init`    | [`init.ts`](./src/commands/init.ts)       | Scaffold a new project (config file, recommended structure).                                                                                                                                  |
-| `inkline add`     | [`add.ts`](./src/commands/add.ts)         | Add components or targets to an existing project.                                                                                                                                             |
-| `inkline compile` | [`compile.ts`](./src/commands/compile.ts) | Compile `.ink.tsx` globs to target frameworks and generate per-target Storybook story files. Accepts `--src-dir` to set the source root for output path resolution (also `srcDir` in config). |
-| `inkline check`   | [`check.ts`](./src/commands/check.ts)     | Run diagnostics without writing output. Re-exposes the compiler's `diagnose` flow.                                                                                                            |
+| Command           | Source                                    | Purpose                                                                                                                                                                                                                                                  |
+| ----------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `inkline init`    | [`init.ts`](./src/commands/init.ts)       | Set up Inkline in an existing app: detect package manager/framework/bundler, run `styleframe init` + seed `styleframe.config.ts`, install deps, wire the build plugin. `--compiler` additionally scaffolds `inkline.config.ts` and an example component. |
+| `inkline add`     | [`add.ts`](./src/commands/add.ts)         | Add a component to an existing project. Currently a stub — prints "not yet implemented".                                                                                                                                                                 |
+| `inkline compile` | [`compile.ts`](./src/commands/compile.ts) | Compile `.ink.tsx` globs to target frameworks and generate per-target Storybook story files. Accepts `--src-dir` to set the source root for output path resolution (also `srcDir` in config).                                                            |
+| `inkline check`   | [`check.ts`](./src/commands/check.ts)     | Run diagnostics without writing output: compiles with `sourceMap: "none"`, prints formatted diagnostics, exits non-zero on any error.                                                                                                                    |
 
 When adding a command:
 
@@ -27,16 +27,22 @@ When adding a command:
 
 ## Library utilities
 
-[`src/lib/`](./src/lib/) holds reusable, non-command code shared across commands. Each module has co-located tests.
+[`src/lib/`](./src/lib/) holds reusable, non-command code shared across commands. Each module has co-located tests (except the two pure template modules).
 
-| Module                                           | Purpose                                                                              |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| [`barrel.ts`](./src/lib/barrel.ts)               | Generate framework-specific barrel files (re-export `index.ts`) for compiled output. |
-| [`common-prefix.ts`](./src/lib/common-prefix.ts) | Longest-common-prefix helper for input glob → output path resolution.                |
-| [`config.ts`](./src/lib/config.ts)               | Bridge to [`@inkline/config-loader`](../../core/config-loader/) with CLI defaults.   |
-| [`diagnostics.ts`](./src/lib/diagnostics.ts)     | Format compiler diagnostics for terminal output (TTY-aware, color, code links).      |
-| [`glob.ts`](./src/lib/glob.ts)                   | Input-file globbing.                                                                 |
-| [`writer.ts`](./src/lib/writer.ts)               | Atomic file writes with source-map sidecar support.                                  |
+| Module                                                               | Purpose                                                                              |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [`add-build-plugin.ts`](./src/lib/add-build-plugin.ts)               | Wire the inkline plugin into a bundler config via magicast (used by `init`).         |
+| [`barrel.ts`](./src/lib/barrel.ts)                                   | Generate framework-specific barrel files (re-export `index.ts`) for compiled output. |
+| [`common-prefix.ts`](./src/lib/common-prefix.ts)                     | Longest-common-prefix helper for input glob → output path resolution.                |
+| [`config.ts`](./src/lib/config.ts)                                   | Bridge to [`@inkline/config-loader`](../../core/config-loader/) with CLI defaults.   |
+| [`detect-bundler.ts`](./src/lib/detect-bundler.ts)                   | Detect the project's bundler config file (used by `init`).                           |
+| [`detect-framework.ts`](./src/lib/detect-framework.ts)               | Detect the project's framework(s) from its dependencies (used by `init`).            |
+| [`detect-package-manager.ts`](./src/lib/detect-package-manager.ts)   | Detect the package manager from lockfiles (used by `init`).                          |
+| [`diagnostics.ts`](./src/lib/diagnostics.ts)                         | Format compiler diagnostics for terminal output (TTY-aware, color, code links).      |
+| [`glob.ts`](./src/lib/glob.ts)                                       | Input-file globbing.                                                                 |
+| [`inkline-config-template.ts`](./src/lib/inkline-config-template.ts) | `inkline.config.ts` + example-component templates for `init --compiler`.             |
+| [`styleframe-config.ts`](./src/lib/styleframe-config.ts)             | The `styleframe.config.ts` template seeded by `init`.                                |
+| [`writer.ts`](./src/lib/writer.ts)                                   | Atomic file writes with source-map sidecar support.                                  |
 
 These are internal — no `exports` map entry. If you find yourself importing from `lib/` outside the CLI, lift the utility into a more appropriate package first.
 

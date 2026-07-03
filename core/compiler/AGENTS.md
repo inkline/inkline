@@ -38,12 +38,12 @@ src/
 │   │   ├── {angular,astro}/         # String-template emitters
 │   │   └── <name>/{index.test.ts, __tests__/}  # per-target unit-emit + fixture-integration tests
 │   ├── code-ir/            # Syntax-agnostic Code IR (CFile, CJsxElement, CTmplElement, …)
-│   ├── shared/             # Expression rewriting, component imports
+│   ├── shared/             # Expression rewriting, component imports, phrasing-content whitespace
 │   └── print/printer.ts    # Code IR → source text + V3 source maps
 ├── core/
 │   ├── options.ts          # InklineConfig, ResolvedCompilerOptions
 │   ├── config.ts           # defineConfig
-│   └── diagnostics/codes.ts  # Canonical diagnostic registry (INK0001–INK0100)
+│   └── diagnostics/codes.ts  # Canonical diagnostic registry (INK0001–INK0120)
 ├── plugin/types.ts         # Plugin, PluginHooks, definePlugin
 ├── testing/index.ts        # Reusable test harnesses (compileFixture, mountForTarget, …)
 └── __fixtures__/           # .ink.tsx fixtures + scenarios.ts (DOM assertions)
@@ -55,10 +55,12 @@ src/
 - **`SymbolTable` is frozen after P4.** No new symbols can be minted after analysis completes ([`ir/reactivity.ts`](./src/ir/reactivity.ts)). Diagnostics and codegen rely on this — do not mint inside emit functions.
 - **Per-pass purity.** Passes are pure on their inputs; mutable state lives only on the `PassContext`. Do not stash data on IR nodes between passes.
 - **Diagnostics never throw.** Errors surface as `Diagnostic` records via `ctx.pushDiagnostic`. The only allowed throw is `assert`-style invariant violations (which indicate compiler bugs, not user errors).
+- **`meta.headless` and the headless registry are Angular-only.** `defineComponent({ meta: { headless: true } })` flows through parse into `IRComponent.meta` (IR_VERSION 3, with a 2→3 migration). [`pipeline/compile.ts`](./src/pipeline/compile.ts) builds `CodegenContext.headlessRegistry` (lowered IR of imported headless siblings) **only when `angular` is a requested target**; the Angular emitter uses it to emit a second attribute-selector host `@Component` (dual selector) and collapse styled-over-headless components to zero wrappers. A headless root that isn't a single static element warns `INK0111` and keeps only the element-selector wrapper. The other six targets must stay byte-identical — never read `meta` or the registry outside [`codegen/targets/angular/`](./src/codegen/targets/angular/).
+- **`preserveWhitespace` is marked but not yet consumed.** Parse threads it through every element nested under a whitespace-sensitive tag (`pre`/`textarea`/`script`/`style`); `IRElement`/`IRText` carry the optional flag, but no target reads it yet, so emitted output is unchanged until codegen opts in.
 
 ## Diagnostics
 
-The canonical registry is in [`src/core/diagnostics/codes.ts`](./src/core/diagnostics/codes.ts). The current range is INK0001–INK0100 grouped by category (imports, reactivity, control flow, refs, plugins, emit). When adding a new diagnostic:
+The canonical registry is in [`src/core/diagnostics/codes.ts`](./src/core/diagnostics/codes.ts). The current range is INK0001–INK0120 grouped by category (imports, reactivity, control flow, refs, plugins, parse/internal, emit). When adding a new diagnostic:
 
 1. Pick the next code in the correct category band.
 2. Add an entry to `DIAGNOSTICS` with title, severity, and a documentation URL placeholder.
@@ -77,7 +79,7 @@ See "Diagnostics" above.
 
 ### Add a new target
 
-Read [`codegen/targets/react/index.ts`](./src/codegen/targets/react/index.ts) as the template. Build a `Target` with `RewriteRules` + `emit(component, ctx)`. Register it in [`codegen/registry.ts`](./src/codegen/registry.ts) `builtinRegistry`. Add `__fixtures__`-driven scenario coverage. (A dedicated `docs/adding-a-target.md` walkthrough is referenced from [README.md](./README.md) "Custom Targets" but not yet written.)
+Read [`codegen/targets/react/index.ts`](./src/codegen/targets/react/index.ts) as the template. Build a `Target` with `RewriteRules` + `emit(component, ctx)`. Register it in [`codegen/registry.ts`](./src/codegen/registry.ts) `builtinRegistry`. Add `__fixtures__`-driven scenario coverage. The full walkthrough is [docs/adding-a-target.md](../../docs/adding-a-target.md).
 
 ### Add a new IR node
 

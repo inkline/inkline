@@ -2,23 +2,25 @@
 
 The Astro output of Inkline's component compilation.
 
-## STOP — do not edit `src/` or `generated/` here
+## STOP — do not edit `src/` or `.inkline/` here
 
 This package is **auto-generated**. To change a component, edit the corresponding `.ink.tsx` file in [`ui/components/src/components/`](../components/) and rebuild. See [`ui/components/AGENTS.md`](../components/AGENTS.md).
 
-- `generated/` — compiled `.astro` components written by [`inkline compile components`](../../tooling/cli/AGENTS.md). Never hand-edit.
-- `src/index.ts` — re-exports `generated/index.ts`.
+- `.inkline/` — compiled `.astro` components + `index.ts`/`headless.ts`/`stories.ts` barrels written by [`inkline compile`](../../tooling/cli/AGENTS.md). Never hand-edit.
+- `src/index.ts` — re-exports `.inkline/index.ts`.
 - `.styleframe/` — auto-generated styleframe artifacts. Never hand-edit.
 
 ## Public surface
 
 From [`package.json`](./package.json) `exports`:
 
-| Subpath          | Contents                 |
-| ---------------- | ------------------------ |
-| `.`              | All compiled components. |
-| `./css`          | Compiled CSS bundle.     |
-| `./package.json` | The manifest.            |
+| Subpath          | Contents                                     |
+| ---------------- | -------------------------------------------- |
+| `.`              | All compiled styled components (with types). |
+| `./headless`     | The headless parts barrel.                   |
+| `./stories`      | The compiled stories barrel.                 |
+| `./css`          | Compiled CSS bundle.                         |
+| `./package.json` | The manifest.                                |
 
 Peer dep: `astro >= 4`.
 

@@ -5,14 +5,14 @@ How to develop, validate, and submit changes to Inkline.
 ## Prerequisites
 
 - Node ≥ 22.12.0 (enforced via [`package.json`](../package.json) `engines.node`)
-- pnpm 10.x (`packageManager` in [`package.json`](../package.json))
+- pnpm 11.x (`packageManager` in [`package.json`](../package.json))
 - A POSIX-ish shell
 
 ## Setup
 
 ```bash
 git clone <repo>
-cd nairobi
+cd inkline
 vp install
 ```
 

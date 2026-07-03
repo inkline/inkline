@@ -21,15 +21,17 @@ apps/storybook/
 [`.storybook/main.ts`](./.storybook/main.ts) declares one `refs` entry per framework:
 
 ```ts
+const ref = (port: number, path: string) => (DEV ? `http://localhost:${port}` : path);
+
 refs: {
-  react:   { title: "React",   url: DEV ? "http://localhost:6006" : "./react" },
-  vue:     { title: "Vue",     url: DEV ? "http://localhost:6007" : "./vue" },
+  react: { title: "React", url: ref(6006, "./react") },
+  vue:   { title: "Vue",   url: ref(6007, "./vue") },
   // … svelte (6008), solid (6009), angular (6010), qwik (6011), astro (6012)
 }
 ```
 
 - **In dev** (`pnpm storybook` here, or `pnpm run storybook` from the repo root), each `url` points to the corresponding framework's live Storybook on `localhost:<port>`.
-- **In production** (built by `pnpm storybook:build`), each `url` is a relative path — the deployment is expected to host each framework's built `storybook-static` under that path. CI uploads them as separate artifacts; the deploy step (out of scope here) stitches them together.
+- **In production** (built by `pnpm storybook:build`), each `url` is a relative path — the deployment is expected to host each framework's built `storybook-static` under that path. CI builds and uploads only this aggregator's `dist/` (the `build-storybook` job); building and hosting the per-framework `storybook-static` outputs under those paths is the deploy step's job (out of scope here).
 
 ## Running
 
@@ -37,7 +39,7 @@ refs: {
 pnpm run storybook    # from the repo root — runs all 7 frameworks + this aggregator
 ```
 
-That root script orchestrates four concurrent processes (compile, story-generate, framework Storybooks, this aggregator) via `concurrently` and `wait-on tcp:6006 tcp:6007 …`. The aggregator only starts once all framework ports are listening.
+That root script orchestrates three concurrent processes (the `.ink.tsx` compiler in watch mode, the seven framework Storybooks, this aggregator) via `concurrently` and `wait-on tcp:6006 tcp:6007 …`. The aggregator only starts once all framework ports are listening.
 
 To run just the aggregator (assuming framework Storybooks are already up):
 

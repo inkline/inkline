@@ -13,13 +13,13 @@ When writing or reviewing docs, ask: _if I removed this paragraph and replaced i
 
 ## Five defenses in depth
 
-| #   | Defense                                   | Where it lives                                          |
-| --- | ----------------------------------------- | ------------------------------------------------------- |
-| 1   | Pointers, not duplicates                  | This principle, in every doc                            |
-| 2   | Automated link/path integrity check       | Vitest test (Phase 6 of the docs rollout — wire-up TBD) |
-| 3   | PR template with "docs touched?" reminder | `.github/pull_request_template.md` (Phase 7 — TBD)      |
-| 4   | Selective generation for stable lists     | Deferred; revisit when a specific drift bites           |
-| 5   | Quarterly audit                           | Calendar event; see "Audit checklist" below             |
+| #   | Defense                                   | Where it lives                                                                             |
+| --- | ----------------------------------------- | ------------------------------------------------------------------------------------------ |
+| 1   | Pointers, not duplicates                  | This principle, in every doc                                                               |
+| 2   | Automated link/path integrity check       | [`tooling/agents-check`](../tooling/agents-check/) — Vitest, runs in the standard test job |
+| 3   | PR template with "docs touched?" reminder | [`.github/pull_request_template.md`](../.github/pull_request_template.md)                  |
+| 4   | Selective generation for stable lists     | Deferred; revisit when a specific drift bites                                              |
+| 5   | Quarterly audit                           | Calendar event; see "Audit checklist" below                                                |
 
 ## Cross-references: if you change X, update Y
 
@@ -37,19 +37,19 @@ Use this table when reviewing your own PR. If the left column changed, check the
 | `.changeset/config.json`                                                                                                  | [release-process.md](./release-process.md)                                                                                                             |
 | Storybook port assignments or topology                                                                                    | [contributing.md](./contributing.md), [`apps/storybook/AGENTS.md`](../apps/storybook/AGENTS.md), the per-framework UI AGENTS.md files                  |
 | Adding/removing a workspace package                                                                                       | [AGENTS.md](../AGENTS.md), [architecture.md](./architecture.md) "Dependency layering", create a new `AGENTS.md` for the package                        |
-| Adding a new compilation target                                                                                           | [architecture.md](./architecture.md), [`core/compiler/AGENTS.md`](../core/compiler/AGENTS.md), the (planned) `docs/adding-a-target.md`                 |
+| Adding a new compilation target                                                                                           | [architecture.md](./architecture.md), [`core/compiler/AGENTS.md`](../core/compiler/AGENTS.md), [adding-a-target.md](./adding-a-target.md)              |
 
 This list itself is a duplication risk — keep it short, prefer adding `[[link]]`s in docs over expanding the table.
 
 ## Automated link integrity check
 
-Planned: a single Vitest test that globs every `AGENTS.md` and `docs/*.md`, parses relative markdown links + `path:line` references, and asserts each target exists. The test fails the standard CI test job on any miss. Catches the dominant failure mode (renames and deletes) automatically.
+Implemented as [`tooling/agents-check/src/link-integrity.test.ts`](../tooling/agents-check/src/link-integrity.test.ts): a single Vitest test that walks every `AGENTS.md` (repo-wide) plus `docs/*.md` and `.github/*.md`, extracts relative markdown links (code fences stripped, fragments dropped), and asserts each target exists on disk. The test fails the standard CI test job on any miss. Catches the dominant failure mode (renames and deletes) automatically.
 
 This check does **not** verify semantic accuracy. A doc that says "the lint config uses `typeAware`" still passes if `typeAware` is gone from the source — the _link_ still resolves. Semantic drift is the audit's job (below).
 
 ## PR template
 
-Planned: `.github/pull_request_template.md` with a small checklist. The key item asks whether the PR changes public API, build flow, conventions, or repo structure, and if so, whether the relevant `AGENTS.md` / `docs/` files were updated. Soft enforcement; the goal is to raise the question on every PR.
+[`.github/pull_request_template.md`](../.github/pull_request_template.md) carries a small checklist. The key item asks whether the PR changes public API, build flow, conventions, or repo structure, and if so, whether the relevant `AGENTS.md` / `docs/` files were updated. Soft enforcement; the goal is to raise the question on every PR.
 
 ## Audit checklist (quarterly)
 
