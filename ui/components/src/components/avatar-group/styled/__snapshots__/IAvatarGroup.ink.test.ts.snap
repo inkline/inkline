@@ -1,0 +1,159 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`IAvatarGroup (styled) > output matches snapshots 1`] = `
+{
+  "angular/IAvatarGroup.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+import { IAvatarGroupBaseComponent as IAvatarGroupBase } from "../headless/IAvatarGroupBase.component";
+import { type AvatarGroupBaseProps } from "../headless/IAvatarGroupBase.component";
+import {
+  avatarGroupRecipe,
+  type AvatarGroupRecipeProps as AvatarGroupStylingProps,
+} from "virtual:styleframe";
+export interface AvatarGroupProps extends AvatarGroupBaseProps {
+  /** Overlap spacing between avatars; does not cascade to the children — set each avatar's own size. */
+  size?: AvatarGroupStylingProps["size"];
+}
+@Component({ standalone: true, selector: 'ink-avatar-group', host: { style: 'display: contents' }, imports: [IAvatarGroupBase], template: \`<ink-avatar-group-base [klass]="(className()) + (klass() ? ' ' + klass() : '')">
+<ng-content></ng-content>
+</ink-avatar-group-base>\` })
+export class IAvatarGroupComponent
+{
+avatarGroupRecipe = avatarGroupRecipe
+klass = input<string>()
+className = computed(() => avatarGroupRecipe({ size: this.size() }))
+size = input<AvatarGroupStylingProps["size"]>()
+}
+@Component({ standalone: true, selector: 'div[ink-avatar-group]', host: { '[class]': "'avatar-group' + ((className()) ? ' ' + (className()) : '') + (klass() ? ' ' + klass() : '')", 'ink-avatar-group-base': '' }, template: \`<ng-content></ng-content>\` })
+export class IAvatarGroupHostComponent
+{
+avatarGroupRecipe = avatarGroupRecipe
+klass = input<string>()
+className = computed(() => avatarGroupRecipe({ size: this.size() }))
+size = input<AvatarGroupStylingProps["size"]>()
+}
+",
+  "astro/IAvatarGroup.astro": "---
+import IAvatarGroupBase, { type AvatarGroupBaseProps } from "../headless/IAvatarGroupBase.astro";
+import {
+  avatarGroupRecipe,
+  type AvatarGroupRecipeProps as AvatarGroupStylingProps,
+} from "virtual:styleframe";
+export interface AvatarGroupProps extends AvatarGroupBaseProps {
+  /** Overlap spacing between avatars; does not cascade to the children — set each avatar's own size. */
+  size?: AvatarGroupStylingProps["size"];
+}
+type Props = AvatarGroupProps & Record<string, any>
+const props = Astro.props as Props;
+const { size, ...__attrs } = props;
+const className = avatarGroupRecipe({ size: size })
+---
+<IAvatarGroupBase {...__attrs} class={[className, __attrs.class].filter(Boolean).join(" ")}>
+<slot />
+</IAvatarGroupBase>
+",
+  "qwik/IAvatarGroup.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+import { IAvatarGroupBase } from "../headless/IAvatarGroupBase";
+import { type AvatarGroupBaseProps } from "../headless/IAvatarGroupBase";
+import {
+  avatarGroupRecipe,
+  type AvatarGroupRecipeProps as AvatarGroupStylingProps,
+} from "virtual:styleframe";
+export interface AvatarGroupProps extends AvatarGroupBaseProps {
+  /** Overlap spacing between avatars; does not cascade to the children — set each avatar's own size. */
+  size?: AvatarGroupStylingProps["size"];
+}
+export const IAvatarGroup = component$((props: AvatarGroupProps & Record<string, any>) =>
+{
+const className = useComputed$(() => avatarGroupRecipe({ size: props.size }))
+const { children, size, ...__attrs } = props
+return (
+<IAvatarGroupBase {...__attrs} class={[className.value, props.class].filter(Boolean).join(" ")}>
+  <Slot />
+</IAvatarGroupBase>
+)
+});
+",
+  "react/IAvatarGroup.tsx": "import { useMemo } from "react";
+import { IAvatarGroupBase } from "../headless/IAvatarGroupBase";
+import { type AvatarGroupBaseProps } from "../headless/IAvatarGroupBase";
+import {
+  avatarGroupRecipe,
+  type AvatarGroupRecipeProps as AvatarGroupStylingProps,
+} from "virtual:styleframe";
+export interface AvatarGroupProps extends AvatarGroupBaseProps {
+  /** Overlap spacing between avatars; does not cascade to the children — set each avatar's own size. */
+  size?: AvatarGroupStylingProps["size"];
+}
+export function IAvatarGroup(props: AvatarGroupProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const className = useMemo(() => avatarGroupRecipe({ size: props.size }), [props.size])
+const { children, size, ...__attrs } = props
+return (
+<IAvatarGroupBase {...__attrs} className={[className, props.className].filter(Boolean).join(" ")}>
+  {props.children}
+</IAvatarGroupBase>
+)
+}
+",
+  "solid/IAvatarGroup.tsx": "import { createMemo, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+import IAvatarGroupBase, { type AvatarGroupBaseProps } from "../headless/IAvatarGroupBase";
+import {
+  avatarGroupRecipe,
+  type AvatarGroupRecipeProps as AvatarGroupStylingProps,
+} from "virtual:styleframe";
+export interface AvatarGroupProps extends AvatarGroupBaseProps {
+  /** Overlap spacing between avatars; does not cascade to the children — set each avatar's own size. */
+  size?: AvatarGroupStylingProps["size"];
+}
+export default function IAvatarGroup(props: AvatarGroupProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const className = createMemo(() => avatarGroupRecipe({ size: props.size }))
+const [, __attrs] = splitProps(props, ["children", "size"])
+return (
+<IAvatarGroupBase {...__attrs} class={[className(), props.class].filter(Boolean).join(" ")}>
+  {props.children}
+</IAvatarGroupBase>
+)
+}
+",
+  "svelte/IAvatarGroup.svelte": "<script lang="ts">
+  import IAvatarGroupBase, { type AvatarGroupBaseProps } from "../headless/IAvatarGroupBase.svelte";
+  import {
+    avatarGroupRecipe,
+    type AvatarGroupRecipeProps as AvatarGroupStylingProps,
+  } from "virtual:styleframe";
+  export interface AvatarGroupProps extends AvatarGroupBaseProps {
+    /** Overlap spacing between avatars; does not cascade to the children — set each avatar's own size. */
+    size?: AvatarGroupStylingProps["size"];
+  }
+  import type { Snippet } from "svelte";
+  let { size, children, ...__attrs }: AvatarGroupProps & { children?: Snippet } & Record<string, any> = $props()
+  let className = $derived(avatarGroupRecipe({ size: size }))
+</script>
+<IAvatarGroupBase {...__attrs} class={[className, __attrs.class].filter(Boolean).join(" ")}>
+  {@render children?.()}
+</IAvatarGroupBase>
+",
+  "vue/IAvatarGroup.vue": "<script setup lang="ts">
+  import { computed } from "vue";
+  import IAvatarGroupBase, { type AvatarGroupBaseProps } from "../headless/IAvatarGroupBase.vue";
+  import {
+    avatarGroupRecipe,
+    type AvatarGroupRecipeProps as AvatarGroupStylingProps,
+  } from "virtual:styleframe";
+  export interface AvatarGroupProps extends AvatarGroupBaseProps {
+    /** Overlap spacing between avatars; does not cascade to the children — set each avatar's own size. */
+    size?: AvatarGroupStylingProps["size"];
+  }
+  const props = defineProps<AvatarGroupProps>()
+  const className = computed(() => avatarGroupRecipe({ size: props.size }))
+</script>
+<template>
+<IAvatarGroupBase :class="className">
+  <slot />
+</IAvatarGroupBase>
+</template>
+",
+}
+`;

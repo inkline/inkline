@@ -1,0 +1,86 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AvatarBadgeBase > output matches snapshots 1`] = `
+{
+  "angular/IAvatarBadgeBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface AvatarBadgeBaseProps {}
+@Component({ standalone: true, selector: 'ink-avatar-badge-base', host: { style: 'display: contents' }, template: \`<span [class]="'avatar-badge' + (klass() ? ' ' + klass() : '')">
+<ng-content></ng-content>
+</span>\` })
+export class IAvatarBadgeBaseComponent
+{
+klass = input<string>()
+}
+@Component({ standalone: true, selector: 'span[ink-avatar-badge-base]', host: { '[class]': "'avatar-badge' + (klass() ? ' ' + klass() : '')" }, template: \`<ng-content></ng-content>\` })
+export class IAvatarBadgeBaseHostComponent
+{
+klass = input<string>()
+}
+",
+  "astro/IAvatarBadgeBase.astro": "---
+export interface AvatarBadgeBaseProps {}
+type Props = AvatarBadgeBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<span {...__attrs} class={["avatar-badge", __attrs.class].filter(Boolean).join(" ")}>
+<slot />
+</span>
+",
+  "qwik/IAvatarBadgeBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface AvatarBadgeBaseProps {}
+export const IAvatarBadgeBase = component$((props) =>
+{
+const { children, ...__attrs } = props
+return (
+<span {...__attrs} class={["avatar-badge", props.class].filter(Boolean).join(" ")}>
+  <Slot />
+</span>
+)
+});
+",
+  "react/IAvatarBadgeBase.tsx": "export interface AvatarBadgeBaseProps {}
+export function IAvatarBadgeBase(props: AvatarBadgeBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, ...__attrs } = props
+return (
+<span {...__attrs} className={["avatar-badge", props.className].filter(Boolean).join(" ")}>
+  {props.children}
+</span>
+)
+}
+",
+  "solid/IAvatarBadgeBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface AvatarBadgeBaseProps {}
+export default function IAvatarBadgeBase(props: AvatarBadgeBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children"])
+return (
+<span {...__attrs} class={["avatar-badge", props.class].filter(Boolean).join(" ")}>
+  {props.children}
+</span>
+)
+}
+",
+  "svelte/IAvatarBadgeBase.svelte": "<script lang="ts">
+  export interface AvatarBadgeBaseProps {}
+  import type { Snippet } from "svelte";
+  let { children, ...__attrs }: AvatarBadgeBaseProps & { children?: Snippet } & Record<string, any> = $props()
+</script>
+<span {...__attrs} class={["avatar-badge", __attrs.class].filter(Boolean).join(" ")}>
+  {@render children?.()}
+</span>
+",
+  "vue/IAvatarBadgeBase.vue": "<script setup lang="ts">
+  export interface AvatarBadgeBaseProps {}
+  const props = defineProps<AvatarBadgeBaseProps>()
+</script>
+<template>
+<span class="avatar-badge">
+  <slot />
+</span>
+</template>
+",
+}
+`;

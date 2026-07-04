@@ -23,7 +23,8 @@ export default defineComponent(
     return (
       <div class="avatar">
         <Show when={!!props.src} fallback={<Slot>{props.label}</Slot>}>
-          <img src={props.src ?? ""} alt={props.alt ?? ""} />
+          {/* `src` is guarded truthy by the Show; `alt` is independent, so coalesce it for Solid. */}
+          <img src={props.src} alt={props.alt ?? ""} />
         </Show>
         <Show when={!!props.showBadge}>
           <Slot name="badge" />

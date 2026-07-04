@@ -5,7 +5,13 @@ import {
   type AvatarGroupRecipeProps as AvatarGroupStylingProps,
 } from "virtual:styleframe";
 
-export interface AvatarGroupProps extends AvatarGroupBaseProps, AvatarGroupStylingProps {}
+// `size` is declared directly (indexed off the recipe's type) rather than via `extends
+// AvatarGroupStylingProps`: the compiler only enumerates members of a directly-named interface, so a
+// single inherited styling prop would otherwise not be tracked (its memo would report INK0011).
+export interface AvatarGroupProps extends AvatarGroupBaseProps {
+  /** Overlap spacing between avatars; does not cascade to the children — set each avatar's own size. */
+  size?: AvatarGroupStylingProps["size"];
+}
 
 /**
  * The styled Avatar group: lays out its child avatars in an overlapping stack. `size` tunes the
