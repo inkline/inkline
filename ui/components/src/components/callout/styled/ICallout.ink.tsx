@@ -40,8 +40,15 @@ export interface CalloutProps {
  * The styled Callout: a contextual feedback message that composes the shell, an optional leading
  * icon, the content, and an optional dismiss button — styled together. The icon wrapper is gated
  * by `hasSlot` so it isn't emitted when unused (and collapses via CSS `:empty` on Qwik/Angular,
- * which lack runtime slot presence). Visibility is two-way bindable via `$bind:visible`; when
- * unbound, dismissal is tracked internally and the callout stays mounted but `hidden`.
+ * which lack runtime slot presence).
+ *
+ * Visibility is two-way bindable via the `visible` model (`$bind:visible`, emitting `update:visible`);
+ * when unbound, dismissal is tracked internally and the callout stays mounted but `hidden`.
+ *
+ * Slots:
+ * - `default` — the message content (overrides the `label` prop).
+ * - `icon` — a leading, decorative icon; the wrapper is omitted when this slot is empty.
+ * - `dismiss` — custom dismiss-button content; defaults to a `×` glyph.
  */
 export default defineComponent(
   { meta: { headless: true }, slots: { default: {}, icon: {}, dismiss: {} } },
