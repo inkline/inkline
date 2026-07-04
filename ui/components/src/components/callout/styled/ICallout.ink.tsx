@@ -13,7 +13,13 @@ import ICalloutContentBase from "../headless/ICalloutContentBase.ink.tsx";
 import ICalloutDismissBase from "../headless/ICalloutDismissBase.ink.tsx";
 import { calloutRecipe, type CalloutRecipeProps as CalloutStylingProps } from "virtual:styleframe";
 
-export interface CalloutProps extends CalloutBaseProps {
+// `hidden` is intentionally omitted from the public props: the styled component derives it from the
+// `visible` model / internal dismissal below and forwards it to the base, so inheriting the base's
+// `hidden` would collide with the local `hidden` memo. The remaining base member (`role`) is
+// referenced explicitly (the compiler only enumerates members of this directly-named interface).
+export interface CalloutProps {
+  /** ARIA role of the container; override with `"alert"`/`"status"` for dynamically-inserted messages. */
+  role?: CalloutBaseProps["role"];
   /** Text content; overridden by the default slot. */
   label?: string;
   /** Color variant. */
