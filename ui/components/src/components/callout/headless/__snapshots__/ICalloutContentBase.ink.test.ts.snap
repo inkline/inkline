@@ -1,0 +1,115 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CalloutContentBase > output matches snapshots 1`] = `
+{
+  "angular/ICalloutContentBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface CalloutContentBaseProps {
+  /** Text content; overridden by the default slot. */
+  label?: string;
+}
+@Component({ standalone: true, selector: 'ink-callout-content-base', host: { style: 'display: contents' }, template: \`<div [class]="'callout-content' + (klass() ? ' ' + klass() : '')">
+<ng-content>{{ label() }}</ng-content>
+</div>\` })
+export class ICalloutContentBaseComponent
+{
+klass = input<string>()
+label = input<string>()
+}
+@Component({ standalone: true, selector: 'div[ink-callout-content-base]', host: { '[class]': "'callout-content' + (klass() ? ' ' + klass() : '')" }, template: \`<ng-content>{{ label() }}</ng-content>\` })
+export class ICalloutContentBaseHostComponent
+{
+klass = input<string>()
+label = input<string>()
+}
+",
+  "astro/ICalloutContentBase.astro": "---
+export interface CalloutContentBaseProps {
+  /** Text content; overridden by the default slot. */
+  label?: string;
+}
+type Props = CalloutContentBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { label, ...__attrs } = props;
+---
+<div {...__attrs} class={["callout-content", __attrs.class].filter(Boolean).join(" ")}>
+<slot>
+{label}
+</slot>
+</div>
+",
+  "qwik/ICalloutContentBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface CalloutContentBaseProps {
+  /** Text content; overridden by the default slot. */
+  label?: string;
+}
+export const ICalloutContentBase = component$((props: CalloutContentBaseProps & Record<string, any>) =>
+{
+const { children, label, ...__attrs } = props
+return (
+<div {...__attrs} class={["callout-content", props.class].filter(Boolean).join(" ")}>
+  <Slot>
+    {props.label}
+  </Slot>
+</div>
+)
+});
+",
+  "react/ICalloutContentBase.tsx": "export interface CalloutContentBaseProps {
+  /** Text content; overridden by the default slot. */
+  label?: string;
+}
+export function ICalloutContentBase(props: CalloutContentBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, label, ...__attrs } = props
+return (
+<div {...__attrs} className={["callout-content", props.className].filter(Boolean).join(" ")}>
+  {props.children ?? props.label}
+</div>
+)
+}
+",
+  "solid/ICalloutContentBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface CalloutContentBaseProps {
+  /** Text content; overridden by the default slot. */
+  label?: string;
+}
+export default function ICalloutContentBase(props: CalloutContentBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children", "label"])
+return (
+<div {...__attrs} class={["callout-content", props.class].filter(Boolean).join(" ")}>
+  {props.children ?? props.label}
+</div>
+)
+}
+",
+  "svelte/ICalloutContentBase.svelte": "<script lang="ts">
+  export interface CalloutContentBaseProps {
+    /** Text content; overridden by the default slot. */
+    label?: string;
+  }
+  import type { Snippet } from "svelte";
+  let { label, children, ...__attrs }: CalloutContentBaseProps & { children?: Snippet } & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={["callout-content", __attrs.class].filter(Boolean).join(" ")}>
+  {#if children}{@render children()}{:else}{label}{/if}
+</div>
+",
+  "vue/ICalloutContentBase.vue": "<script setup lang="ts">
+  export interface CalloutContentBaseProps {
+    /** Text content; overridden by the default slot. */
+    label?: string;
+  }
+  const props = defineProps<CalloutContentBaseProps>()
+</script>
+<template>
+<div class="callout-content">
+  <slot>
+    {{ label }}
+  </slot>
+</div>
+</template>
+",
+}
+`;

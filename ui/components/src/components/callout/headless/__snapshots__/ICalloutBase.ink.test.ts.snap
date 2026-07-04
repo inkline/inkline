@@ -1,0 +1,125 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CalloutBase > output matches snapshots 1`] = `
+{
+  "angular/ICalloutBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface CalloutBaseProps {
+  /** ARIA role of the container; override with \`"alert"\`/\`"status"\` for dynamically-inserted messages. */
+  role?: string;
+  /** Hides the container (kept mounted) — mirrors the native \`hidden\` attribute. */
+  hidden?: boolean;
+}
+@Component({ standalone: true, selector: 'ink-callout-base', host: { style: 'display: contents' }, template: \`<div [class]="'callout' + (klass() ? ' ' + klass() : '')" [attr.role]="(role() ?? 'note') ?? null" [hidden]="hidden()">
+<ng-content></ng-content>
+</div>\` })
+export class ICalloutBaseComponent
+{
+klass = input<string>()
+role = input<string>()
+hidden = input<boolean>()
+}
+@Component({ standalone: true, selector: 'div[ink-callout-base]', host: { '[class]': "'callout' + (klass() ? ' ' + klass() : '')", '[attr.role]': "(role() ?? 'note') ?? null", '[hidden]': "hidden()" }, template: \`<ng-content></ng-content>\` })
+export class ICalloutBaseHostComponent
+{
+klass = input<string>()
+role = input<string>()
+hidden = input<boolean>()
+}
+",
+  "astro/ICalloutBase.astro": "---
+export interface CalloutBaseProps {
+  /** ARIA role of the container; override with \`"alert"\`/\`"status"\` for dynamically-inserted messages. */
+  role?: string;
+  /** Hides the container (kept mounted) — mirrors the native \`hidden\` attribute. */
+  hidden?: boolean;
+}
+type Props = CalloutBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { role, hidden, ...__attrs } = props;
+---
+<div {...__attrs} class={["callout", __attrs.class].filter(Boolean).join(" ")} role={role ?? "note"} hidden={hidden}>
+<slot />
+</div>
+",
+  "qwik/ICalloutBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface CalloutBaseProps {
+  /** ARIA role of the container; override with \`"alert"\`/\`"status"\` for dynamically-inserted messages. */
+  role?: string;
+  /** Hides the container (kept mounted) — mirrors the native \`hidden\` attribute. */
+  hidden?: boolean;
+}
+export const ICalloutBase = component$((props: CalloutBaseProps & Record<string, any>) =>
+{
+const { children, role, hidden, ...__attrs } = props
+return (
+<div {...__attrs} class={["callout", props.class].filter(Boolean).join(" ")} role={props.role ?? "note"} hidden={props.hidden}>
+  <Slot />
+</div>
+)
+});
+",
+  "react/ICalloutBase.tsx": "export interface CalloutBaseProps {
+  /** ARIA role of the container; override with \`"alert"\`/\`"status"\` for dynamically-inserted messages. */
+  role?: string;
+  /** Hides the container (kept mounted) — mirrors the native \`hidden\` attribute. */
+  hidden?: boolean;
+}
+export function ICalloutBase(props: CalloutBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, role, hidden, ...__attrs } = props
+return (
+<div {...__attrs} className={["callout", props.className].filter(Boolean).join(" ")} role={props.role ?? "note"} hidden={props.hidden}>
+  {props.children}
+</div>
+)
+}
+",
+  "solid/ICalloutBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface CalloutBaseProps {
+  /** ARIA role of the container; override with \`"alert"\`/\`"status"\` for dynamically-inserted messages. */
+  role?: string;
+  /** Hides the container (kept mounted) — mirrors the native \`hidden\` attribute. */
+  hidden?: boolean;
+}
+export default function ICalloutBase(props: CalloutBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children", "role", "hidden"])
+return (
+<div {...__attrs} class={["callout", props.class].filter(Boolean).join(" ")} role={props.role ?? "note"} hidden={props.hidden}>
+  {props.children}
+</div>
+)
+}
+",
+  "svelte/ICalloutBase.svelte": "<script lang="ts">
+  export interface CalloutBaseProps {
+    /** ARIA role of the container; override with \`"alert"\`/\`"status"\` for dynamically-inserted messages. */
+    role?: string;
+    /** Hides the container (kept mounted) — mirrors the native \`hidden\` attribute. */
+    hidden?: boolean;
+  }
+  import type { Snippet } from "svelte";
+  let { role, hidden, children, ...__attrs }: CalloutBaseProps & { children?: Snippet } & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={["callout", __attrs.class].filter(Boolean).join(" ")} role={role ?? "note"} hidden={hidden}>
+  {@render children?.()}
+</div>
+",
+  "vue/ICalloutBase.vue": "<script setup lang="ts">
+  export interface CalloutBaseProps {
+    /** ARIA role of the container; override with \`"alert"\`/\`"status"\` for dynamically-inserted messages. */
+    role?: string;
+    /** Hides the container (kept mounted) — mirrors the native \`hidden\` attribute. */
+    hidden?: boolean;
+  }
+  const props = defineProps<CalloutBaseProps>()
+</script>
+<template>
+<div class="callout" :role='role ?? "note"' :hidden="hidden">
+  <slot />
+</div>
+</template>
+",
+}
+`;

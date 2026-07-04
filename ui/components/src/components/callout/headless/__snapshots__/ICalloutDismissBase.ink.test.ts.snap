@@ -1,0 +1,109 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CalloutDismissBase > output matches snapshots 1`] = `
+{
+  "angular/ICalloutDismissBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface CalloutDismissBaseProps {
+  /** Accessible name for the icon-only dismiss button; sets \`aria-label\`. */
+  ariaLabel?: string;
+}
+@Component({ standalone: true, selector: 'ink-callout-dismiss-base', host: { style: 'display: contents' }, template: \`<button [class]="'callout-dismiss' + (klass() ? ' ' + klass() : '')" type="button" [attr.aria-label]="(ariaLabel() ?? 'Dismiss') ?? null">
+<ng-content></ng-content>
+</button>\` })
+export class ICalloutDismissBaseComponent
+{
+klass = input<string>()
+ariaLabel = input<string>()
+}
+@Component({ standalone: true, selector: 'button[ink-callout-dismiss-base]', host: { '[class]': "'callout-dismiss' + (klass() ? ' ' + klass() : '')", 'type': 'button', '[attr.aria-label]': "(ariaLabel() ?? 'Dismiss') ?? null" }, template: \`<ng-content></ng-content>\` })
+export class ICalloutDismissBaseHostComponent
+{
+klass = input<string>()
+ariaLabel = input<string>()
+}
+",
+  "astro/ICalloutDismissBase.astro": "---
+export interface CalloutDismissBaseProps {
+  /** Accessible name for the icon-only dismiss button; sets \`aria-label\`. */
+  ariaLabel?: string;
+}
+type Props = CalloutDismissBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { ariaLabel, ...__attrs } = props;
+---
+<button {...__attrs} class={["callout-dismiss", __attrs.class].filter(Boolean).join(" ")} type="button" aria-label={ariaLabel ?? "Dismiss"}>
+<slot />
+</button>
+",
+  "qwik/ICalloutDismissBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface CalloutDismissBaseProps {
+  /** Accessible name for the icon-only dismiss button; sets \`aria-label\`. */
+  ariaLabel?: string;
+}
+export const ICalloutDismissBase = component$((props: CalloutDismissBaseProps & Record<string, any>) =>
+{
+const { children, ariaLabel, ...__attrs } = props
+return (
+<button {...__attrs} class={["callout-dismiss", props.class].filter(Boolean).join(" ")} type="button" aria-label={props.ariaLabel ?? "Dismiss"}>
+  <Slot />
+</button>
+)
+});
+",
+  "react/ICalloutDismissBase.tsx": "export interface CalloutDismissBaseProps {
+  /** Accessible name for the icon-only dismiss button; sets \`aria-label\`. */
+  ariaLabel?: string;
+}
+export function ICalloutDismissBase(props: CalloutDismissBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, ariaLabel, ...__attrs } = props
+return (
+<button {...__attrs} className={["callout-dismiss", props.className].filter(Boolean).join(" ")} type="button" aria-label={props.ariaLabel ?? "Dismiss"}>
+  {props.children}
+</button>
+)
+}
+",
+  "solid/ICalloutDismissBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface CalloutDismissBaseProps {
+  /** Accessible name for the icon-only dismiss button; sets \`aria-label\`. */
+  ariaLabel?: string;
+}
+export default function ICalloutDismissBase(props: CalloutDismissBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children", "ariaLabel"])
+return (
+<button {...__attrs} class={["callout-dismiss", props.class].filter(Boolean).join(" ")} type="button" aria-label={props.ariaLabel ?? "Dismiss"}>
+  {props.children}
+</button>
+)
+}
+",
+  "svelte/ICalloutDismissBase.svelte": "<script lang="ts">
+  export interface CalloutDismissBaseProps {
+    /** Accessible name for the icon-only dismiss button; sets \`aria-label\`. */
+    ariaLabel?: string;
+  }
+  import type { Snippet } from "svelte";
+  let { ariaLabel, children, ...__attrs }: CalloutDismissBaseProps & { children?: Snippet } & Record<string, any> = $props()
+</script>
+<button {...__attrs} class={["callout-dismiss", __attrs.class].filter(Boolean).join(" ")} type="button" aria-label={ariaLabel ?? "Dismiss"}>
+  {@render children?.()}
+</button>
+",
+  "vue/ICalloutDismissBase.vue": "<script setup lang="ts">
+  export interface CalloutDismissBaseProps {
+    /** Accessible name for the icon-only dismiss button; sets \`aria-label\`. */
+    ariaLabel?: string;
+  }
+  const props = defineProps<CalloutDismissBaseProps>()
+</script>
+<template>
+<button class="callout-dismiss" type="button" :aria-label='ariaLabel ?? "Dismiss"'>
+  <slot />
+</button>
+</template>
+",
+}
+`;
