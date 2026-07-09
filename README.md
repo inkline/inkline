@@ -30,4 +30,4 @@ vp run dev
 
 ## About
 
-This repository is managed via the Multica platform.
+This repository is managed via the Multica platform. It is being tested with Multica for automated agent-driven development workflows.
