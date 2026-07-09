@@ -27,3 +27,7 @@ vp run -r build
 ```bash
 vp run dev
 ```
+
+## About
+
+This repository is managed via the Multica platform.
