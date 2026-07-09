@@ -2,6 +2,8 @@
 
 A starter for creating a Vite+ monorepo.
 
+> **Note:** This repository is being tested with Multica agent workflows.
+
 ## Development
 
 - Check everything is ready:
