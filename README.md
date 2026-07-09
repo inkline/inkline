@@ -29,3 +29,7 @@ vp run -r build
 ```bash
 vp run dev
 ```
+
+## Multica Test
+
+This line was added as a dummy change to test Multica's PR integration.
