@@ -1,0 +1,177 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`RadioField > output matches snapshots 1`] = `
+{
+  "angular/IRadioFieldBase.component.ts": "import { Component, signal, computed, effect, input, output } from "@angular/core";
+export interface RadioFieldBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Shared control name — radios with the same name are mutually exclusive. */
+  name?: string;
+  /** The value submitted when this radio is selected. */
+  value?: string;
+  /** Whether this radio is selected. */
+  checked?: boolean;
+  /** Disables the control. */
+  disabled?: boolean;
+  /** Marks the control as required. */
+  required?: boolean;
+}
+@Component({ standalone: true, selector: 'ink-radio-field-base', host: { style: 'display: contents' }, template: \`<input [class]="'radio-field' + (klass() ? ' ' + klass() : '')" type="radio" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [value]="value() ?? ''" [checked]="checked()" [disabled]="disabled()" [required]="required()" (change)="change.emit(value() ?? '')" />\` })
+export class IRadioFieldBaseComponent
+{
+klass = input<string>()
+id = input<string>()
+name = input<string>()
+value = input<string>()
+checked = input<boolean>()
+disabled = input<boolean>()
+required = input<boolean>()
+change = output()
+}
+@Component({ standalone: true, selector: 'input[ink-radio-field-base]', host: { '[class]': "'radio-field' + (klass() ? ' ' + klass() : '')", 'type': 'radio', '[attr.id]': "(id()) ?? null", '[attr.name]': "(name()) ?? null", '[value]': "value() ?? ''", '[checked]': "checked()", '[disabled]': "disabled()", '[required]': "required()", '(change)': "change.emit(value() ?? '')" }, template: \`\` })
+export class IRadioFieldBaseHostComponent
+{
+klass = input<string>()
+id = input<string>()
+name = input<string>()
+value = input<string>()
+checked = input<boolean>()
+disabled = input<boolean>()
+required = input<boolean>()
+change = output()
+}
+",
+  "astro/IRadioFieldBase.astro": "---
+export interface RadioFieldBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Shared control name — radios with the same name are mutually exclusive. */
+  name?: string;
+  /** The value submitted when this radio is selected. */
+  value?: string;
+  /** Whether this radio is selected. */
+  checked?: boolean;
+  /** Disables the control. */
+  disabled?: boolean;
+  /** Marks the control as required. */
+  required?: boolean;
+}
+type Props = RadioFieldBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { id, name, value, checked, disabled, required, ...__attrs } = props;
+---
+<input {...__attrs} class={["radio-field", __attrs.class].filter(Boolean).join(" ")} type="radio" id={id} name={name} value={value ?? ""} checked={checked} disabled={disabled} required={required} onChange={() => undefined} />
+",
+  "qwik/IRadioFieldBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
+export interface RadioFieldBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Shared control name — radios with the same name are mutually exclusive. */
+  name?: string;
+  /** The value submitted when this radio is selected. */
+  value?: string;
+  /** Whether this radio is selected. */
+  checked?: boolean;
+  /** Disables the control. */
+  disabled?: boolean;
+  /** Marks the control as required. */
+  required?: boolean;
+}
+export const IRadioFieldBase = component$((props: RadioFieldBaseProps & { onChange$?: QRL<(...args: any[]) => void> } & Record<string, any>) =>
+{
+const { id, name, value, checked, disabled, required, onChange$, ...__attrs } = props
+return (
+<input {...__attrs} class={["radio-field", props.class].filter(Boolean).join(" ")} type="radio" id={props.id} name={props.name} value={props.value ?? ""} checked={props.checked} disabled={props.disabled} required={props.required} onChange={$(() => props.onChange$?.(props.value ?? ""))} />
+)
+});
+",
+  "react/IRadioFieldBase.tsx": "export interface RadioFieldBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Shared control name — radios with the same name are mutually exclusive. */
+  name?: string;
+  /** The value submitted when this radio is selected. */
+  value?: string;
+  /** Whether this radio is selected. */
+  checked?: boolean;
+  /** Disables the control. */
+  disabled?: boolean;
+  /** Marks the control as required. */
+  required?: boolean;
+}
+export function IRadioFieldBase(props: RadioFieldBaseProps & { onChange?: (...args: any[]) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const { id, name, value, checked, disabled, required, onChange, ...__attrs } = props
+return (
+<input {...__attrs} className={["radio-field", props.className].filter(Boolean).join(" ")} type="radio" id={props.id} name={props.name} value={props.value ?? ""} checked={props.checked} disabled={props.disabled} required={props.required} onChange={() => props.onChange?.(props.value ?? "")} />
+)
+}
+",
+  "solid/IRadioFieldBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface RadioFieldBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Shared control name — radios with the same name are mutually exclusive. */
+  name?: string;
+  /** The value submitted when this radio is selected. */
+  value?: string;
+  /** Whether this radio is selected. */
+  checked?: boolean;
+  /** Disables the control. */
+  disabled?: boolean;
+  /** Marks the control as required. */
+  required?: boolean;
+}
+export default function IRadioFieldBase(props: RadioFieldBaseProps & { onChange?: (...args: any[]) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["id", "name", "value", "checked", "disabled", "required", "onChange"])
+return (
+<input {...__attrs} class={["radio-field", props.class].filter(Boolean).join(" ")} type="radio" id={props.id} name={props.name} value={props.value ?? ""} checked={props.checked} disabled={props.disabled} required={props.required} onchange={() => props.onChange?.(props.value ?? "")} />
+)
+}
+",
+  "svelte/IRadioFieldBase.svelte": "<script lang="ts">
+  export interface RadioFieldBaseProps {
+    /** Id of the native control. */
+    id?: string;
+    /** Shared control name — radios with the same name are mutually exclusive. */
+    name?: string;
+    /** The value submitted when this radio is selected. */
+    value?: string;
+    /** Whether this radio is selected. */
+    checked?: boolean;
+    /** Disables the control. */
+    disabled?: boolean;
+    /** Marks the control as required. */
+    required?: boolean;
+  }
+  let { id, name, value, checked, disabled, required, onChange, ...__attrs }: RadioFieldBaseProps & { onChange?: (...args: any[]) => void } & Record<string, any> = $props()
+</script>
+<input {...__attrs} class={["radio-field", __attrs.class].filter(Boolean).join(" ")} type="radio" id={id} name={name} value={value ?? ""} checked={checked} disabled={disabled} required={required} onchange={() => onChange?.(value ?? "")} />
+",
+  "vue/IRadioFieldBase.vue": "<script setup lang="ts">
+  export interface RadioFieldBaseProps {
+    /** Id of the native control. */
+    id?: string;
+    /** Shared control name — radios with the same name are mutually exclusive. */
+    name?: string;
+    /** The value submitted when this radio is selected. */
+    value?: string;
+    /** Whether this radio is selected. */
+    checked?: boolean;
+    /** Disables the control. */
+    disabled?: boolean;
+    /** Marks the control as required. */
+    required?: boolean;
+  }
+  const emit = defineEmits(["change"])
+  const props = defineProps<RadioFieldBaseProps>()
+</script>
+<template>
+<input class="radio-field" type="radio" :id="id" :name="name" :value='value ?? ""' :checked="checked" :disabled="disabled" :required="required" @change='() => emit("change", value ?? "")' />
+</template>
+",
+}
+`;

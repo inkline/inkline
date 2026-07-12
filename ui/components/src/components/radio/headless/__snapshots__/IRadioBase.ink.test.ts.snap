@@ -1,0 +1,109 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Radio > output matches snapshots 1`] = `
+{
+  "angular/IRadioBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface RadioBaseProps {
+  /** Id of the label element. */
+  id?: string;
+}
+@Component({ standalone: true, selector: 'ink-radio-base', host: { style: 'display: contents' }, template: \`<label [class]="'radio' + (klass() ? ' ' + klass() : '')" [attr.id]="(id()) ?? null">
+<ng-content></ng-content>
+</label>\` })
+export class IRadioBaseComponent
+{
+klass = input<string>()
+id = input<string>()
+}
+@Component({ standalone: true, selector: 'label[ink-radio-base]', host: { '[class]': "'radio' + (klass() ? ' ' + klass() : '')", '[attr.id]': "(id()) ?? null" }, template: \`<ng-content></ng-content>\` })
+export class IRadioBaseHostComponent
+{
+klass = input<string>()
+id = input<string>()
+}
+",
+  "astro/IRadioBase.astro": "---
+export interface RadioBaseProps {
+  /** Id of the label element. */
+  id?: string;
+}
+type Props = RadioBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { id, ...__attrs } = props;
+---
+<label {...__attrs} class={["radio", __attrs.class].filter(Boolean).join(" ")} id={id}>
+<slot />
+</label>
+",
+  "qwik/IRadioBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface RadioBaseProps {
+  /** Id of the label element. */
+  id?: string;
+}
+export const IRadioBase = component$((props: RadioBaseProps & Record<string, any>) =>
+{
+const { children, id, ...__attrs } = props
+return (
+<label {...__attrs} class={["radio", props.class].filter(Boolean).join(" ")} id={props.id}>
+  <Slot />
+</label>
+)
+});
+",
+  "react/IRadioBase.tsx": "export interface RadioBaseProps {
+  /** Id of the label element. */
+  id?: string;
+}
+export function IRadioBase(props: RadioBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, id, ...__attrs } = props
+return (
+<label {...__attrs} className={["radio", props.className].filter(Boolean).join(" ")} id={props.id}>
+  {props.children}
+</label>
+)
+}
+",
+  "solid/IRadioBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface RadioBaseProps {
+  /** Id of the label element. */
+  id?: string;
+}
+export default function IRadioBase(props: RadioBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children", "id"])
+return (
+<label {...__attrs} class={["radio", props.class].filter(Boolean).join(" ")} id={props.id}>
+  {props.children}
+</label>
+)
+}
+",
+  "svelte/IRadioBase.svelte": "<script lang="ts">
+  export interface RadioBaseProps {
+    /** Id of the label element. */
+    id?: string;
+  }
+  import type { Snippet } from "svelte";
+  let { id, children, ...__attrs }: RadioBaseProps & { children?: Snippet } & Record<string, any> = $props()
+</script>
+<label {...__attrs} class={["radio", __attrs.class].filter(Boolean).join(" ")} id={id}>
+  {@render children?.()}
+</label>
+",
+  "vue/IRadioBase.vue": "<script setup lang="ts">
+  export interface RadioBaseProps {
+    /** Id of the label element. */
+    id?: string;
+  }
+  const props = defineProps<RadioBaseProps>()
+</script>
+<template>
+<label class="radio" :id="id">
+  <slot />
+</label>
+</template>
+",
+}
+`;

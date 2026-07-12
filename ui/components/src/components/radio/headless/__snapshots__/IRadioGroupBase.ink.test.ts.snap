@@ -1,0 +1,125 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`RadioGroup > output matches snapshots 1`] = `
+{
+  "angular/IRadioGroupBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface RadioGroupBaseProps {
+  /** Id of the group element. */
+  id?: string;
+  /** Accessible name for the group, exposed as \`aria-label\`. */
+  label?: string;
+}
+@Component({ standalone: true, selector: 'ink-radio-group-base', host: { style: 'display: contents' }, template: \`<div [class]="'radio-group' + (klass() ? ' ' + klass() : '')" role="radiogroup" [attr.id]="(id()) ?? null" [attr.aria-label]="(label()) ?? null">
+<ng-content></ng-content>
+</div>\` })
+export class IRadioGroupBaseComponent
+{
+klass = input<string>()
+id = input<string>()
+label = input<string>()
+}
+@Component({ standalone: true, selector: 'div[ink-radio-group-base]', host: { '[class]': "'radio-group' + (klass() ? ' ' + klass() : '')", 'role': 'radiogroup', '[attr.id]': "(id()) ?? null", '[attr.aria-label]': "(label()) ?? null" }, template: \`<ng-content></ng-content>\` })
+export class IRadioGroupBaseHostComponent
+{
+klass = input<string>()
+id = input<string>()
+label = input<string>()
+}
+",
+  "astro/IRadioGroupBase.astro": "---
+export interface RadioGroupBaseProps {
+  /** Id of the group element. */
+  id?: string;
+  /** Accessible name for the group, exposed as \`aria-label\`. */
+  label?: string;
+}
+type Props = RadioGroupBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { id, label, ...__attrs } = props;
+---
+<div {...__attrs} class={["radio-group", __attrs.class].filter(Boolean).join(" ")} role="radiogroup" id={id} aria-label={label}>
+<slot />
+</div>
+",
+  "qwik/IRadioGroupBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface RadioGroupBaseProps {
+  /** Id of the group element. */
+  id?: string;
+  /** Accessible name for the group, exposed as \`aria-label\`. */
+  label?: string;
+}
+export const IRadioGroupBase = component$((props: RadioGroupBaseProps & Record<string, any>) =>
+{
+const { children, id, label, ...__attrs } = props
+return (
+<div {...__attrs} class={["radio-group", props.class].filter(Boolean).join(" ")} role="radiogroup" id={props.id} aria-label={props.label}>
+  <Slot />
+</div>
+)
+});
+",
+  "react/IRadioGroupBase.tsx": "export interface RadioGroupBaseProps {
+  /** Id of the group element. */
+  id?: string;
+  /** Accessible name for the group, exposed as \`aria-label\`. */
+  label?: string;
+}
+export function IRadioGroupBase(props: RadioGroupBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, id, label, ...__attrs } = props
+return (
+<div {...__attrs} className={["radio-group", props.className].filter(Boolean).join(" ")} role="radiogroup" id={props.id} aria-label={props.label}>
+  {props.children}
+</div>
+)
+}
+",
+  "solid/IRadioGroupBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface RadioGroupBaseProps {
+  /** Id of the group element. */
+  id?: string;
+  /** Accessible name for the group, exposed as \`aria-label\`. */
+  label?: string;
+}
+export default function IRadioGroupBase(props: RadioGroupBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children", "id", "label"])
+return (
+<div {...__attrs} class={["radio-group", props.class].filter(Boolean).join(" ")} role="radiogroup" id={props.id} aria-label={props.label}>
+  {props.children}
+</div>
+)
+}
+",
+  "svelte/IRadioGroupBase.svelte": "<script lang="ts">
+  export interface RadioGroupBaseProps {
+    /** Id of the group element. */
+    id?: string;
+    /** Accessible name for the group, exposed as \`aria-label\`. */
+    label?: string;
+  }
+  import type { Snippet } from "svelte";
+  let { id, label, children, ...__attrs }: RadioGroupBaseProps & { children?: Snippet } & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={["radio-group", __attrs.class].filter(Boolean).join(" ")} role="radiogroup" id={id} aria-label={label}>
+  {@render children?.()}
+</div>
+",
+  "vue/IRadioGroupBase.vue": "<script setup lang="ts">
+  export interface RadioGroupBaseProps {
+    /** Id of the group element. */
+    id?: string;
+    /** Accessible name for the group, exposed as \`aria-label\`. */
+    label?: string;
+  }
+  const props = defineProps<RadioGroupBaseProps>()
+</script>
+<template>
+<div class="radio-group" role="radiogroup" :id="id" :aria-label="label">
+  <slot />
+</div>
+</template>
+",
+}
+`;
