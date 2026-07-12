@@ -1,49 +1,46 @@
 ---
 name: bundler-matrix-verification
-description: How to verify @styleframe/plugin changes across all 9 bundler adapters, including the HMR test scenarios, dts checks, and error-path tests. Use for any tooling/plugin change and for QA of plugin claims.
+description: How to verify @inkline/plugin and @inkline/cli changes across the 6 bundler adapters and the two compile paths, including watch-mode scenarios and error-path checks. Use for any core/plugin or tooling/cli change and for QA of tooling claims.
 ---
 
 # Bundler matrix verification
 
 ## The matrix
 
-`@styleframe/plugin` is one unplugin factory with **9 adapters**: `vite`, `webpack`, `rollup`, `esbuild`, `rspack`, `farm`, `nuxt`, `astro`, `bun` (yes, bun — older docs omit it). Consumers import `styleframe/plugin/<bundler>` (default exports). Nuxt and Astro are wrappers with extra integration (Nuxt writes tsconfig `paths` for Vue).
+`@inkline/plugin` is one unplugin factory with **6 adapters**: `vite`, `webpack`, `rollup`, `esbuild`, `rspack`, `farm` — consumed as `@inkline/plugin/<bundler>` (or `inkline/plugin/<bundler>` via the barrel). All bundler peer deps are optional; consumers install only theirs. The factory registers a single transform matching `*.ink.tsx` that runs `compileIncremental` from `@inkline/compiler`.
 
-**"Works in Vite" is not done.** Rule of thumb per change class:
+Plugin options (`InklinePluginOptions`): `target` (**required**, no auto-detection — `undefined` is a build-time error), `sourceMap`, `config` (inline partial config; the plugin does **not** load `inkline.config.ts` — pair with `@inkline/config-loader`). It builds with **unbuild**, not `vp pack` — exports-map changes touch both `package.json` and consumer tsconfigs.
 
-| Change                                                              | Minimum verification                                                                                                                            |
-| ------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| unplugin factory core (`plugin/index.ts`, loaders, virtual modules) | Vite + Webpack + one of Rspack/Rollup, plus Nuxt (wrapper)                                                                                      |
-| HMR / dev-server logic                                              | Vite dev + Nuxt dev (different server models)                                                                                                   |
-| scanner wiring                                                      | Vite with `scanner.content` globs + incremental file-change test                                                                                |
-| dts generation                                                      | fresh app: check `.styleframe/styleframe.d.ts` + `shims.d.ts`; Vue app specifically (needs tsconfig `paths`); non-Vue resolves from shims alone |
-| adapter-specific file                                               | that adapter + Vite as control                                                                                                                  |
+**Reality check: the plugin has ZERO direct tests today.** Its coverage rides the compiler fixture suite (same compile path) and repo consumers. Any plugin change should leave tests behind; building the matrix harness is a standing mission.
 
-## HMR scenarios to exercise (the strategy table is code, test it as behavior)
+## "Works in Vite" is not done
 
-1. Edit `styleframe.config.ts` → full reload, graph rebuild, styles correct.
-2. Edit a `*.styleframe.ts` → selective invalidation; dependent files reload; unrelated cached.
-3. Edit a content file (template with `_utility:value` classes) → CSS-only incremental update; new utility appears.
-4. Edit a shared non-styleframe composable imported by styleframe files → BFS invalidation reaches dependents.
-5. Add / delete a `*.styleframe.ts` → graph rebuild; export appears/disappears from `virtual:styleframe`.
-6. Introduce an error then fix it → rollback kept the server alive; recovery is clean.
+| Change class                                     | Minimum verification                                                                   |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| Factory core (transform wiring, filter, options) | Vite + webpack + one of Rollup/Rspack, fresh app builds per target                     |
+| Incremental/cache behavior                       | Repeated builds + file edits; confirm `compileIncremental` reuses state, output stable |
+| Source-map flag                                  | V3 map emitted/omitted per flag; mappings hit the `.ink.tsx` source                    |
+| Adapter-specific subpath                         | That adapter + Vite as control                                                         |
+| CLI compile / barrels / story generation         | `pnpm --filter @inkline/components build` + inspect `ui/*/.inkline/` + generated CSF   |
+| `inkline init` / `add`                           | Fresh temp dir AND a messy existing project; re-run must be idempotent                 |
+
+## The two paths (test the right one)
+
+- **CLI path** — `inkline compile 'src/**/*.ink.tsx' --config inkline.config.ts`: config-loader → glob → compile per target → write `targetOutDir` (`.inkline/`) → barrels (`index`/`headless`/`stories` per config `barrels`) → story CSF via `@inkline/storybook/generator`. `--watch` recompiles on change; `--no-clean` preserves outputs; `--src-dir` controls path preservation; `--target` filters targets.
+- **Plugin path** — bundler transform, in-memory, one target, no barrels/stories/config file.
+
+Divergence is by design; a bug report must say which path. `inkline check` re-exposes compiler diagnostics without writing output — the cheap first probe.
 
 ## Error paths (must stay loud and typed)
 
-- Two files exporting the same name → `ExportCollisionError`.
-- Circular imports between styleframe files → `CircularDependencyError` (fix: share via non-styleframe module).
-- Extension face requested outside a `*.styleframe.ts` → consumer face returned (by design, verify no instance leak).
-- Unmatched utility classes → warning listing them (typos aren't silent).
+- Missing `target` on the plugin → clear build-time error, not a silent no-op.
+- Compiler diagnostics must surface through the bundler with file/loc (a swallowed INK error is a p1).
+- CLI: unknown glob → helpful message; diagnostics formatted TTY-aware (`lib/diagnostics.ts`); writes atomic with source-map sidecars (`lib/writer.ts`).
+- Config discovery is deliberately narrow: `inkline.config.{ts,js,mjs}` only — no rc files, no package.json field, no dotenv (`core/config-loader` disables them). Widening discovery is a decision, not a patch.
 
-## Tree-shaking & minification checks (build mode)
+## Harnesses & consumers
 
-- Recipe tree-shake: import one recipe → CSS contains only its utilities; namespace/dynamic import → ALL recipes + warning.
-- Minify: `ShorteningMap` consistency — shortened class in emitted CSS === shortened class in transformed app source === runtime output. Snapshot one recipe end-to-end.
-- CLI vs plugin divergence is by design (CLI: no scan/treeshake). Don't chase phantom bugs across paths.
-
-## Harnesses
-
-- `tooling/plugin` colocated unit tests.
-- `apps/playground` — live dev sandbox (`pnpm dev:playground`).
-- `testing/integration` — the real gate: builds all packages → packs `.tgz` → scaffolds a fresh Vite+Vue+TS app → `styleframe init` with tarball overrides → `vite build` → Playwright asserts computed styles (see `adversarial-qa`).
-- `styleframe init` must stay idempotent (re-run on existing project = no-op) — magicast patches Vite/Nuxt configs; verify both detection paths when touching init.
+- Compiler-side: `@inkline/compiler/testing` + `@inkline/test-utils` (compile/mount/conformance) — plugin transforms should get colocated tests that call the factory's transform directly.
+- Live consumers that double as smoke tests: `ui/components` build (CLI path), per-framework Storybooks (consume `.inkline/` output), the e2e visual-parity suite.
+- Remember stale dist: `vp pack` in `core/compiler` before verifying CLI/plugin behavior after compiler edits.
+- Watch-mode scenarios once plugin HMR lands (v1 frontier): edit component → only affected module recompiles; edit `inkline.config.ts` → full reload; introduce a diagnostic then fix → dev server survives with correct output. Design tests for these now; don't let HMR ship untested.
