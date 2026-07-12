@@ -43,7 +43,7 @@ Per package — descend to the `AGENTS.md` nearest the file you're editing (LLM 
 | [`core/plugin/AGENTS.md`](./core/plugin/AGENTS.md)                                                             | Bundler integration (Vite, webpack, Rollup, esbuild, Rspack, Farm)       |
 | [`core/config-loader/AGENTS.md`](./core/config-loader/AGENTS.md)                                               | `inkline.config.ts` loading                                              |
 | [`core/inkline/AGENTS.md`](./core/inkline/AGENTS.md)                                                           | The public `inkline` barrel package                                      |
-| [`tooling/cli/AGENTS.md`](./tooling/cli/AGENTS.md)                                                             | `inkline build`, `inkline compile`, `inkline diagnose`                   |
+| [`tooling/cli/AGENTS.md`](./tooling/cli/AGENTS.md)                                                             | `inkline compile`, `inkline check`, `inkline init`, `inkline add`        |
 | [`tooling/storybook/AGENTS.md`](./tooling/storybook/AGENTS.md)                                                 | Story authoring + per-target story generation                            |
 | [`tooling/test-utils/AGENTS.md`](./tooling/test-utils/AGENTS.md)                                               | Cross-target test harnesses                                              |
 | [`ui/components/AGENTS.md`](./ui/components/AGENTS.md)                                                         | **Where you author components** — the single source for all 7 frameworks |
@@ -72,7 +72,7 @@ These apply everywhere. Package-level `AGENTS.md` files repeat them only when co
 - **Tests**: colocated as `<file>.test.ts`. Vitest. Never in a separate `tests/` folder.
 - **Commits**: conventional commits with package scope — `feat(compiler): …`, `fix(ci): …`. See [docs/conventions.md](./docs/conventions.md) → "Commit messages".
 - **Changesets**: every change to a published package needs one (`pnpm changeset`). See [docs/release-process.md](./docs/release-process.md).
-- **Generated directories — never hand-edit**: `ui/<framework>/generated/`, `ui/<framework>/.styleframe/`, all `dist/`, `coverage/`, `storybook-static/`.
+- **Generated directories — never hand-edit**: `ui/<framework>/.inkline/`, `ui/<framework>/.styleframe/`, all `dist/`, `coverage/`, `storybook-static/`.
 - **Archived directory — never touch**: `.old/` is the v0 codebase, kept for reference only.
 - **Doc freshness**: if your change touches public API, build flow, conventions, or the directory shape, update the relevant `AGENTS.md` / `docs/*.md`. See [docs/maintenance.md](./docs/maintenance.md).
 

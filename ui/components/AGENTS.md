@@ -23,18 +23,18 @@ ui/components/
 └── dist/                  # styleframe runtime output (NOT the compiled components)
 ```
 
-The compiled components do **not** land in `dist/` here. They land in `ui/<framework>/generated/` per the `targetOutDir` mapping in [`inkline.config.ts`](./inkline.config.ts). The `srcDir` option controls how much of the source path is preserved in the output — with `srcDir: "src"`, a source file at `src/components/badge/headless/IBadgeBase.ink.tsx` produces output at `generated/components/badge/headless/IBadgeBase.vue`:
+The compiled components do **not** land in `dist/` here. They land in `ui/<framework>/.inkline/` per the `targetOutDir` mapping in [`inkline.config.ts`](./inkline.config.ts). The `srcDir` option controls how much of the source path is preserved in the output — with `srcDir: "src"`, a source file at `src/components/badge/headless/IBadgeBase.ink.tsx` produces output at `.inkline/components/badge/headless/IBadgeBase.vue`:
 
 ```ts
 srcDir: "src",
 targetOutDir: {
-  react:   "../react/generated",
-  vue:     "../vue/generated",
-  svelte:  "../svelte/generated",
-  solid:   "../solid/generated",
-  angular: "../angular/generated",
-  qwik:    "../qwik/generated",
-  astro:   "../astro/generated",
+  react:   "../react/.inkline",
+  vue:     "../vue/.inkline",
+  svelte:  "../svelte/.inkline",
+  solid:   "../solid/.inkline",
+  angular: "../angular/.inkline",
+  qwik:    "../qwik/.inkline",
+  astro:   "../astro/.inkline",
 }
 ```
 
@@ -45,7 +45,7 @@ pnpm build   # vp build && inkline compile components 'src/**/*.ink.tsx' --confi
 pnpm dev     # inkline compile components 'src/**/*.ink.tsx' --watch
 ```
 
-`vp build` first compiles styleframe artifacts; `inkline compile components` then runs the [`@inkline/cli`](../../tooling/cli/) compile command for every target. The output is written directly into the framework packages' `generated/` directories, which their `src/index.ts` re-exports.
+`vp build` first compiles styleframe artifacts; `inkline compile components` then runs the [`@inkline/cli`](../../tooling/cli/) compile command for every target. The output is written directly into the framework packages' `.inkline/` directories, which their `src/index.ts` re-exports.
 
 ## Headless / styled split
 
@@ -54,7 +54,7 @@ Every component ships in two variants under its own directory:
 - **`headless/I<Name>Base.ink.tsx`** — structure, slots, props, events. No design tokens, no styleframe class names. Behavior + accessibility. One per part; this is what consumers swap in if they want to ship their own styling.
 - **`styled/I<Name>.ink.tsx`** — composes the headless part(s) and applies styleframe-generated classes via `virtual:styleframe`.
 
-Example: [`src/components/badge/`](./src/components/badge/) — the canonical single-part pattern to copy. The headless variant declares `slots: { default: {} }` so consumers can override content via slotting; the styled variant pulls `badge(props)` from `virtual:styleframe` to produce the class name.
+Example: [`src/components/badge/`](./src/components/badge/) — the canonical single-part pattern to copy. The headless variant declares `slots: { default: {} }` so consumers can override content via slotting; the styled variant pulls `badgeRecipe(props)` from `virtual:styleframe` to produce the class name.
 
 **A styled component may compose _all_ of a family's headless parts into one component** — there is one styled component per family, not one per part. [`src/components/input/`](./src/components/input/) is the model: the four `headless/IInput*Base` parts (shell, control, prefix, suffix) are composed by a single [`styled/IInput.ink.tsx`](./src/components/input/styled/IInput.ink.tsx). Optional addon slots are gated with `<Show when={hasSlot("prefix")}>` so an unused addon emits nothing; on Qwik/Angular (no runtime slot presence) `hasSlot` is `true` and the empty wrapper is collapsed by `:empty` rules in [`IInput.styleframe.ts`](./src/components/input/styled/IInput.styleframe.ts). All recipes for the family are registered in that one `.styleframe.ts`.
 
@@ -87,12 +87,12 @@ The config in [`vite.config.ts`](./vite.config.ts) deliberately leaves `coverage
 2. Author the headless variant first; verify it compiles to all seven targets.
 3. Author the styled variant; rebuild.
 4. Add stories per variant.
-5. Re-export from `src/components/index.ts` (when present) — the per-framework `generated/index.ts` is generated automatically.
+5. Re-export from `src/components/index.ts` (when present) — the per-framework `.inkline/index.ts` is generated automatically.
 6. Add a changeset for the seven framework packages (assuming a meaningful release).
 
 ## Pitfalls
 
-- **Do not edit anything under `ui/<framework>/generated/` or `ui/<framework>/.styleframe/`.** Both are rebuilt on every compile; your edits will be lost.
+- **Do not edit anything under `ui/<framework>/.inkline/` or `ui/<framework>/.styleframe/`.** Both are rebuilt on every compile; your edits will be lost.
 - **The `dist/` here is styleframe runtime output, not the component compile output.** Don't confuse the two.
 - **`virtual:styleframe` imports require the styleframe plugin in the consumer's Vite config.** The per-framework packages set this up. If a new build path skips it, styling will be missing at runtime.
 

@@ -2,12 +2,12 @@
 
 The Vue 3 output of Inkline's component compilation.
 
-## STOP — do not edit `src/` or `generated/` here
+## STOP — do not edit `src/` or `.inkline/` here
 
 This package is **auto-generated**. To change a component, edit the corresponding `.ink.tsx` file in [`ui/components/src/components/`](../components/) and rebuild. See [`ui/components/AGENTS.md`](../components/AGENTS.md).
 
-- `generated/` — compiled Vue SFCs (`<script setup>` + Composition API) written by [`inkline compile components`](../../tooling/cli/AGENTS.md). Never hand-edit.
-- `src/index.ts` — re-exports `generated/index.ts`. Do not extend with hand-written code.
+- `.inkline/` — compiled Vue SFCs (`<script setup>` + Composition API) written by [`inkline compile components`](../../tooling/cli/AGENTS.md). Never hand-edit.
+- `src/index.ts` — re-exports `.inkline/index.ts`. Do not extend with hand-written code.
 - `.styleframe/` — auto-generated styleframe artifacts. Never hand-edit.
 
 ## Public surface

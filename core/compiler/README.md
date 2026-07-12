@@ -1,12 +1,15 @@
 # @inkline/compiler
 
-A write-once, compile-everywhere component compiler. Author UI components in `.ink.tsx` using a signal-based reactivity model, and compile them to native **React**, **Vue 3**, **Svelte 5**, and **Solid** components.
+A write-once, compile-everywhere component compiler. Author UI components in `.ink.tsx` using a signal-based reactivity model, and compile them to native **React**, **Vue 3**, **Svelte 5**, **Solid**, **Angular**, **Qwik**, and **Astro** components.
 
 ```
-Counter.ink.tsx  ──>  React/Counter.tsx
-                 ──>  Vue/Counter.vue
-                 ──>  Svelte/Counter.svelte
-                 ──>  Solid/Counter.tsx
+Counter.ink.tsx  ──>  react/Counter.tsx
+                 ──>  vue/Counter.vue
+                 ──>  svelte/Counter.svelte
+                 ──>  solid/Counter.tsx
+                 ──>  angular/Counter.component.ts
+                 ──>  qwik/Counter.tsx
+                 ──>  astro/Counter.astro
 ```
 
 ## Installation
@@ -48,17 +51,20 @@ export default defineComponent(() => {
 ### 2. Compile
 
 ```bash
-npx inkline build src/components/Counter.ink.tsx --target react,vue,svelte,solid --out-dir dist
+npx inkline compile src/components/Counter.ink.tsx --target react,vue,svelte,solid --out-dir dist
 ```
 
 ### 3. Use the Output
 
 ```
 dist/
-  react/Counter.tsx       # React component using useState, useMemo, useEffect
-  vue/Counter.vue         # Vue 3 SFC with <script setup>, ref(), computed()
-  svelte/Counter.svelte   # Svelte 5 component with $state, $derived, $effect
-  solid/Counter.tsx       # Solid component with createSignal, createMemo
+  react/Counter.tsx           # React component using useState, useMemo, useEffect
+  vue/Counter.vue             # Vue 3 SFC with <script setup>, ref(), computed()
+  svelte/Counter.svelte       # Svelte 5 component with $state, $derived, $effect
+  solid/Counter.tsx           # Solid component with createSignal, createMemo
+  angular/Counter.component.ts # Angular standalone component with signals
+  qwik/Counter.tsx            # Qwik component with useSignal / useComputed$
+  astro/Counter.astro         # Astro component (static render)
 ```
 
 Each output is a standalone, idiomatic component for its target framework. No runtime dependency on `@inkline/core`.
@@ -384,52 +390,78 @@ export default defineConfig({
 
 ### Available Targets
 
-| Name     | Output    | Framework                                         |
-| -------- | --------- | ------------------------------------------------- |
-| `react`  | `.tsx`    | React 19 (hooks API)                              |
-| `solid`  | `.tsx`    | Solid.js 1.8+                                     |
-| `vue`    | `.vue`    | Vue 3 (Composition API, `<script setup>`)         |
-| `svelte` | `.svelte` | Svelte 5 (runes: `$state`, `$derived`, `$effect`) |
+| Name      | Output          | Framework                                         |
+| --------- | --------------- | ------------------------------------------------- |
+| `react`   | `.tsx`          | React 19 (hooks API)                              |
+| `solid`   | `.tsx`          | Solid.js 1.8+                                     |
+| `vue`     | `.vue`          | Vue 3 (Composition API, `<script setup>`)         |
+| `svelte`  | `.svelte`       | Svelte 5 (runes: `$state`, `$derived`, `$effect`) |
+| `angular` | `.component.ts` | Angular standalone components (signals)           |
+| `qwik`    | `.tsx`          | Qwik (resumable, `useSignal` / `useComputed$`)    |
+| `astro`   | `.astro`        | Astro (static render)                             |
+
+All seven are registered in the built-in registry ([`src/codegen/registry.ts`](./src/codegen/registry.ts)).
 
 ---
 
 ## CLI
 
+The `inkline` CLI ships in [`@inkline/cli`](../../tooling/cli/). It exposes four commands:
+
 ```
 inkline <command> [options]
 
 Commands:
-  build <glob>     Compile .ink.tsx files to target frameworks.
-  diagnose <file>  Check a file for diagnostics without writing output.
-  version          Print version.
-  help [command]   Show help.
+  compile <glob>   Compile .ink.tsx files and generate stories.
+  check <file>     Run diagnostics on a file without writing output.
+  init             Initialize an Inkline project.
+  add <component>  Add a component to your project.
 ```
 
-### Build
+### Compile
 
 ```bash
 # Single target
-inkline build src/IButton.ink.tsx --target react
+inkline compile src/IButton.ink.tsx --target react
 
 # Multiple targets
-inkline build src/**/*.ink.tsx --target react,vue,svelte,solid --out-dir dist
+inkline compile "src/**/*.ink.tsx" --target react,vue,svelte,solid,angular,qwik,astro --out-dir dist
 
-# With config file
-inkline build src/**/*.ink.tsx --config inkline.config.ts
+# With config file (targets come from inkline.config.ts)
+inkline compile "src/**/*.ink.tsx" --config inkline.config.ts
 
 # Source maps
-inkline build src/**/*.ink.tsx --target react --source-map inline
+inkline compile src/IButton.ink.tsx --target react --source-map inline
+
+# Watch and recompile on change
+inkline compile "src/**/*.ink.tsx" --config inkline.config.ts --watch
 ```
 
-CLI flags override config file values.
+Flags: `--target`, `--src-dir`, `--out-dir` (default `dist`), `--source-map` (`external` | `inline` | `none`, default `external`), `--config`, `--clean` (default `true`), `--watch`, `--verbose`. `--target` is required unless the config file sets `targets`. CLI flags override config file values.
 
-### Diagnose
+### Check
 
-Check for diagnostic issues without producing output:
+Report diagnostics without producing output:
 
 ```bash
-inkline diagnose src/Counter.ink.tsx --target react
+inkline check src/Counter.ink.tsx --target react
 ```
+
+### Init
+
+Scaffold Inkline into the current project. Pass `--compiler` to also generate `inkline.config.ts`, an example component, and build scripts:
+
+```bash
+inkline init --framework react --compiler
+```
+
+### Add
+
+```bash
+inkline add IButton
+```
+
+`add` is registered but not yet implemented — it currently prints a notice.
 
 ---
 
@@ -629,8 +661,8 @@ export default defineConfig({
 ```json
 {
   "scripts": {
-    "build": "inkline build src/**/*.ink.tsx",
-    "check": "inkline diagnose src/**/*.ink.tsx"
+    "build": "inkline compile \"src/**/*.ink.tsx\"",
+    "check": "inkline check \"src/**/*.ink.tsx\""
   }
 }
 ```
@@ -758,7 +790,7 @@ The compiler produces diagnostics at each pipeline stage. Errors prevent output;
 | INK0090 | error    | A plugin threw an exception.                                                                                                            |
 | INK0100 | error    | Component failed during emit. Other components continue.                                                                                |
 
-Run `inkline diagnose <file>` to check without producing output.
+Run `inkline check <file>` to check without producing output.
 
 ---
 
@@ -801,8 +833,7 @@ The following features are deferred to v1:
 - **Scoped CSS / `<style>` blocks**
 - **Server/client component boundaries**
 - **Async components / Suspense / `createResource`**
-- **HMR / `--watch` mode** (use a Vite plugin wrapper)
-- **Angular, Qwik, Astro targets** (reserved in the type system)
+- **HMR** (the CLI's `--watch` recompiles on change; in-place hot module replacement still needs a Vite plugin wrapper)
 - **Sub-expression source-map granularity** (maps at statement/element level)
 
 See `docs/scope.md` for the full v1 roadmap.

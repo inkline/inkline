@@ -40,7 +40,7 @@ See [`pnpm-workspace.yaml`](../pnpm-workspace.yaml) for the authoritative glob l
 | `*.spec.ts`      | `testing/e2e/`                    | Playwright e2e specs (cross-framework visual parity). Not Vitest; run via `test:e2e`.                               |
 | `__fixtures__/`  | `core/compiler/src/__fixtures__/` | Compiler fixtures (`.ink.tsx`) used by scenario tests. Excluded from lint by [`vite.config.ts`](../vite.config.ts). |
 | `__snapshots__/` | colocated                         | Vitest snapshot files.                                                                                              |
-| `generated/`     | `ui/<framework>/generated/`       | **Auto-generated** by the compiler. Never hand-edit.                                                                |
+| `.inkline/`      | `ui/<framework>/.inkline/`        | **Auto-generated** by the compiler. Never hand-edit.                                                                |
 | `.styleframe/`   | `ui/<framework>/.styleframe/`     | **Auto-generated** style artifacts. Never hand-edit.                                                                |
 | `dist/`          | per-package                       | Build output. Never hand-edit.                                                                                      |
 
