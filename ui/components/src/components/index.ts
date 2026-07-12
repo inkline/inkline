@@ -4,6 +4,12 @@ export { default as IBadgeBase } from "./badge/headless/IBadgeBase.ink.tsx";
 export { default as IButton } from "./button/styled/IButton.ink.tsx";
 export { default as IButtonBase } from "./button/headless/IButtonBase.ink.tsx";
 
+// Checkbox ships as a single styled component (ICheckbox) composing the label wrapper and the native
+// control. The headless parts remain individually exported for advanced/custom composition.
+export { default as ICheckbox } from "./checkbox/styled/ICheckbox.ink.tsx";
+export { default as ICheckboxBase } from "./checkbox/headless/ICheckboxBase.ink.tsx";
+export { default as ICheckboxControlBase } from "./checkbox/headless/ICheckboxControlBase.ink.tsx";
+
 export { default as IFieldGroup } from "./field-group/styled/IFieldGroup.ink.tsx";
 export { default as IFieldGroupBase } from "./field-group/headless/IFieldGroupBase.ink.tsx";
 
