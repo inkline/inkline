@@ -34,7 +34,10 @@ interface TransformContext {
   warn: (message: string) => void;
 }
 interface PluginShape {
+  name: string;
+  enforce?: string;
   transform: {
+    filter: { id: RegExp };
     handler: (
       this: TransformContext,
       code: string,
@@ -326,6 +329,22 @@ describe("vite.handleHotUpdate", () => {
 
     await plugin.transform.handler.call(makeCtx(), "SRC", ID);
     expect(compileIncrementalMock.mock.calls[1]![0]).toBe(afterHmr);
+  });
+});
+
+describe("plugin contract", () => {
+  it('enforces "pre" so .ink.tsx compiles before framework transforms', () => {
+    const plugin = build({ target: "react" });
+    expect(plugin.name).toBe("@inkline/plugin");
+    expect(plugin.enforce).toBe("pre");
+  });
+
+  it("filters transform to .ink.tsx files only", () => {
+    const { id } = build({ target: "react" }).transform.filter;
+    expect(id.test("/project/Button.ink.tsx")).toBe(true);
+    expect(id.test("/project/Button.tsx")).toBe(false);
+    expect(id.test("/project/app.ts")).toBe(false);
+    expect(id.test("/project/ink.tsx")).toBe(false);
   });
 });
 
