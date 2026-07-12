@@ -1,0 +1,270 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ISwitch (styled) > output matches snapshots 1`] = `
+{
+  "angular/ISwitch.component.ts": "import { Component, signal, computed, effect, input, model } from "@angular/core";
+import { ISwitchBaseComponent as ISwitchBase } from "../headless/ISwitchBase.component";
+import { ISwitchControlBaseComponent as ISwitchControlBase } from "../headless/ISwitchControlBase.component";
+import { type SwitchControlBaseProps } from "../headless/ISwitchControlBase.component";
+import { ISwitchLabelBaseComponent as ISwitchLabelBase } from "../headless/ISwitchLabelBase.component";
+import { ISwitchControlBaseHostComponent } from "../headless/ISwitchControlBase.component";
+import { ISwitchLabelBaseHostComponent } from "../headless/ISwitchLabelBase.component";
+import {
+  switchRecipe,
+  switchFieldRecipe,
+  type SwitchFieldRecipeProps as SwitchFieldStylingProps,
+} from "virtual:styleframe";
+export interface SwitchProps extends SwitchControlBaseProps {
+  /** Off-state track colour. */
+  color?: SwitchFieldStylingProps["color"];
+  /** Size variant. */
+  size?: SwitchFieldStylingProps["size"];
+  /** Label text; overridden by the default slot. */
+  label?: string;
+}
+@Component({ standalone: true, selector: 'ink-switch', host: { style: 'display: contents' }, imports: [ISwitchBase, ISwitchControlBase, ISwitchLabelBase], template: \`<ink-switch-base [klass]="(shellClassName()) + (klass() ? ' ' + klass() : '')">
+<ink-switch-control-base [klass]="(fieldClassName())" [id]="id()" [name]="name()" [checked]="checked()" [disabled]="disabled()" (checkedChange)="checked.set($event)"></ink-switch-control-base>
+<ink-switch-label-base>
+<ng-content>{{ label() }}</ng-content>
+</ink-switch-label-base>
+</ink-switch-base>\` })
+export class ISwitchComponent
+{
+switchRecipe = switchRecipe
+switchFieldRecipe = switchFieldRecipe
+klass = input<string>()
+shellClassName = computed(() => switchRecipe({ size: this.size() }))
+fieldClassName = computed(() => switchFieldRecipe({ color: this.color(), size: this.size() }))
+color = input<SwitchFieldStylingProps["color"]>()
+size = input<SwitchFieldStylingProps["size"]>()
+label = input<string>()
+id = input<string>()
+name = input<string>()
+disabled = input<boolean>()
+checked = model<boolean>()
+}
+@Component({ standalone: true, selector: 'label[ink-switch]', host: { '[class]': "'switch' + ((shellClassName()) ? ' ' + (shellClassName()) : '') + (klass() ? ' ' + klass() : '')", 'ink-switch-base': '' }, imports: [ISwitchControlBaseHostComponent, ISwitchLabelBaseHostComponent], template: \`<input ink-switch-control-base [klass]="(fieldClassName())" [id]="id()" [name]="name()" [checked]="checked()" [disabled]="disabled()" (checkedChange)="checked.set($event)" />
+<span ink-switch-label-base>
+<ng-content>{{ label() }}</ng-content>
+</span>\` })
+export class ISwitchHostComponent
+{
+switchRecipe = switchRecipe
+switchFieldRecipe = switchFieldRecipe
+klass = input<string>()
+shellClassName = computed(() => switchRecipe({ size: this.size() }))
+fieldClassName = computed(() => switchFieldRecipe({ color: this.color(), size: this.size() }))
+color = input<SwitchFieldStylingProps["color"]>()
+size = input<SwitchFieldStylingProps["size"]>()
+label = input<string>()
+id = input<string>()
+name = input<string>()
+disabled = input<boolean>()
+checked = model<boolean>()
+}
+",
+  "astro/ISwitch.astro": "---
+import ISwitchBase from "../headless/ISwitchBase.astro";
+import ISwitchControlBase, { type SwitchControlBaseProps } from "../headless/ISwitchControlBase.astro";
+import ISwitchLabelBase from "../headless/ISwitchLabelBase.astro";
+import {
+  switchRecipe,
+  switchFieldRecipe,
+  type SwitchFieldRecipeProps as SwitchFieldStylingProps,
+} from "virtual:styleframe";
+export interface SwitchProps extends SwitchControlBaseProps {
+  /** Off-state track colour. */
+  color?: SwitchFieldStylingProps["color"];
+  /** Size variant. */
+  size?: SwitchFieldStylingProps["size"];
+  /** Label text; overridden by the default slot. */
+  label?: string;
+}
+type Props = SwitchProps & Record<string, any>
+const props = Astro.props as Props;
+const { color, size, label, id, name, disabled, ...__attrs } = props;
+let checked = props.checked
+const shellClassName = switchRecipe({ size: size })
+const fieldClassName = switchFieldRecipe({ color: color, size: size })
+---
+<ISwitchBase {...__attrs} class={[shellClassName, __attrs.class].filter(Boolean).join(" ")}>
+<ISwitchControlBase class={fieldClassName} id={id} name={name} checked={checked} disabled={disabled} />
+<ISwitchLabelBase>
+<slot>
+{label}
+</slot>
+</ISwitchLabelBase>
+</ISwitchBase>
+",
+  "qwik/ISwitch.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL, Slot } from "@qwik.dev/core";
+import { ISwitchBase } from "../headless/ISwitchBase";
+import { ISwitchControlBase } from "../headless/ISwitchControlBase";
+import { type SwitchControlBaseProps } from "../headless/ISwitchControlBase";
+import { ISwitchLabelBase } from "../headless/ISwitchLabelBase";
+import {
+  switchRecipe,
+  switchFieldRecipe,
+  type SwitchFieldRecipeProps as SwitchFieldStylingProps,
+} from "virtual:styleframe";
+export interface SwitchProps extends SwitchControlBaseProps {
+  /** Off-state track colour. */
+  color?: SwitchFieldStylingProps["color"];
+  /** Size variant. */
+  size?: SwitchFieldStylingProps["size"];
+  /** Label text; overridden by the default slot. */
+  label?: string;
+}
+export const ISwitch = component$((props: SwitchProps & { checked?: boolean; onUpdateChecked$?: QRL<(value: boolean) => void> } & Record<string, any>) =>
+{
+const shellClassName = useComputed$(() => switchRecipe({ size: props.size }))
+const fieldClassName = useComputed$(() => switchFieldRecipe({ color: props.color, size: props.size }))
+const { children, color, size, label, id, name, disabled, checked, onUpdateChecked$, ...__attrs } = props
+return (
+<ISwitchBase {...__attrs} class={[shellClassName.value, props.class].filter(Boolean).join(" ")}>
+  <>
+    <ISwitchControlBase class={fieldClassName.value} id={props.id} name={props.name} checked={props.checked} disabled={props.disabled} onUpdateChecked$={$(v => props.onUpdateChecked$?.(v))} />
+    <ISwitchLabelBase>
+      <Slot>
+        {props.label}
+      </Slot>
+    </ISwitchLabelBase>
+  </>
+</ISwitchBase>
+)
+});
+",
+  "react/ISwitch.tsx": "import { useMemo } from "react";
+import { ISwitchBase } from "../headless/ISwitchBase";
+import { ISwitchControlBase } from "../headless/ISwitchControlBase";
+import { type SwitchControlBaseProps } from "../headless/ISwitchControlBase";
+import { ISwitchLabelBase } from "../headless/ISwitchLabelBase";
+import {
+  switchRecipe,
+  switchFieldRecipe,
+  type SwitchFieldRecipeProps as SwitchFieldStylingProps,
+} from "virtual:styleframe";
+export interface SwitchProps extends SwitchControlBaseProps {
+  /** Off-state track colour. */
+  color?: SwitchFieldStylingProps["color"];
+  /** Size variant. */
+  size?: SwitchFieldStylingProps["size"];
+  /** Label text; overridden by the default slot. */
+  label?: string;
+}
+export function ISwitch(props: SwitchProps & { children?: React.ReactNode } & { checked?: boolean; onUpdateChecked?: (value: boolean) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const shellClassName = useMemo(() => switchRecipe({ size: props.size }), [props.size])
+const fieldClassName = useMemo(() => switchFieldRecipe({ color: props.color, size: props.size }), [props.color, props.size])
+const { children, color, size, label, id, name, disabled, checked, onUpdateChecked, ...__attrs } = props
+return (
+<ISwitchBase {...__attrs} className={[shellClassName, props.className].filter(Boolean).join(" ")}>
+  <>
+    <ISwitchControlBase className={fieldClassName} id={props.id} name={props.name} checked={props.checked} disabled={props.disabled} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
+    <ISwitchLabelBase>
+      {props.children ?? props.label}
+    </ISwitchLabelBase>
+  </>
+</ISwitchBase>
+)
+}
+",
+  "solid/ISwitch.tsx": "import { createMemo, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+import ISwitchBase from "../headless/ISwitchBase";
+import ISwitchControlBase, { type SwitchControlBaseProps } from "../headless/ISwitchControlBase";
+import ISwitchLabelBase from "../headless/ISwitchLabelBase";
+import {
+  switchRecipe,
+  switchFieldRecipe,
+  type SwitchFieldRecipeProps as SwitchFieldStylingProps,
+} from "virtual:styleframe";
+export interface SwitchProps extends SwitchControlBaseProps {
+  /** Off-state track colour. */
+  color?: SwitchFieldStylingProps["color"];
+  /** Size variant. */
+  size?: SwitchFieldStylingProps["size"];
+  /** Label text; overridden by the default slot. */
+  label?: string;
+}
+export default function ISwitch(props: SwitchProps & { children?: any } & { checked?: boolean; onUpdateChecked?: (value: boolean) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const shellClassName = createMemo(() => switchRecipe({ size: props.size }))
+const fieldClassName = createMemo(() => switchFieldRecipe({ color: props.color, size: props.size }))
+const [, __attrs] = splitProps(props, ["children", "color", "size", "label", "id", "name", "disabled", "checked", "onUpdateChecked"])
+return (
+<ISwitchBase {...__attrs} class={[shellClassName(), props.class].filter(Boolean).join(" ")}>
+  <>
+    <ISwitchControlBase class={fieldClassName()} id={props.id} name={props.name} checked={props.checked} disabled={props.disabled} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
+    <ISwitchLabelBase>
+      {props.children ?? props.label}
+    </ISwitchLabelBase>
+  </>
+</ISwitchBase>
+)
+}
+",
+  "svelte/ISwitch.svelte": "<script lang="ts">
+  import ISwitchBase from "../headless/ISwitchBase.svelte";
+  import ISwitchControlBase, { type SwitchControlBaseProps } from "../headless/ISwitchControlBase.svelte";
+  import ISwitchLabelBase from "../headless/ISwitchLabelBase.svelte";
+  import {
+    switchRecipe,
+    switchFieldRecipe,
+    type SwitchFieldRecipeProps as SwitchFieldStylingProps,
+  } from "virtual:styleframe";
+  export interface SwitchProps extends SwitchControlBaseProps {
+    /** Off-state track colour. */
+    color?: SwitchFieldStylingProps["color"];
+    /** Size variant. */
+    size?: SwitchFieldStylingProps["size"];
+    /** Label text; overridden by the default slot. */
+    label?: string;
+  }
+  import type { Snippet } from "svelte";
+  let { color, size, label, id, name, disabled, checked = $bindable(), children, ...__attrs }: SwitchProps & { checked?: boolean; children?: Snippet } & Record<string, any> = $props()
+  let shellClassName = $derived(switchRecipe({ size: size }))
+  let fieldClassName = $derived(switchFieldRecipe({ color: color, size: size }))
+</script>
+<ISwitchBase {...__attrs} class={[shellClassName, __attrs.class].filter(Boolean).join(" ")}>
+  <ISwitchControlBase bind:checked={checked} class={fieldClassName} id={id} name={name} disabled={disabled} />
+  <ISwitchLabelBase>
+    {#if children}{@render children()}{:else}{label}{/if}
+  </ISwitchLabelBase>
+</ISwitchBase>
+",
+  "vue/ISwitch.vue": "<script setup lang="ts">
+  import { computed } from "vue";
+  import ISwitchBase from "../headless/ISwitchBase.vue";
+  import ISwitchControlBase, { type SwitchControlBaseProps } from "../headless/ISwitchControlBase.vue";
+  import ISwitchLabelBase from "../headless/ISwitchLabelBase.vue";
+  import {
+    switchRecipe,
+    switchFieldRecipe,
+    type SwitchFieldRecipeProps as SwitchFieldStylingProps,
+  } from "virtual:styleframe";
+  export interface SwitchProps extends SwitchControlBaseProps {
+    /** Off-state track colour. */
+    color?: SwitchFieldStylingProps["color"];
+    /** Size variant. */
+    size?: SwitchFieldStylingProps["size"];
+    /** Label text; overridden by the default slot. */
+    label?: string;
+  }
+  const props = defineProps<SwitchProps>()
+  const checked = defineModel<boolean>("checked")
+  const shellClassName = computed(() => switchRecipe({ size: props.size }))
+  const fieldClassName = computed(() => switchFieldRecipe({ color: props.color, size: props.size }))
+</script>
+<template>
+<ISwitchBase :class="shellClassName">
+  <ISwitchControlBase v-model:checked="checked" :class="fieldClassName" :id="id" :name="name" :disabled="disabled" />
+  <ISwitchLabelBase>
+    <slot>
+      {{ label }}
+    </slot>
+  </ISwitchLabelBase>
+</ISwitchBase>
+</template>
+",
+}
+`;

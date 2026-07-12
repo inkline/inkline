@@ -1,0 +1,86 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SwitchLabelBase > output matches snapshots 1`] = `
+{
+  "angular/ISwitchLabelBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface SwitchLabelBaseProps {}
+@Component({ standalone: true, selector: 'ink-switch-label-base', host: { style: 'display: contents' }, template: \`<span [class]="'switch-label' + (klass() ? ' ' + klass() : '')">
+<ng-content></ng-content>
+</span>\` })
+export class ISwitchLabelBaseComponent
+{
+klass = input<string>()
+}
+@Component({ standalone: true, selector: 'span[ink-switch-label-base]', host: { '[class]': "'switch-label' + (klass() ? ' ' + klass() : '')" }, template: \`<ng-content></ng-content>\` })
+export class ISwitchLabelBaseHostComponent
+{
+klass = input<string>()
+}
+",
+  "astro/ISwitchLabelBase.astro": "---
+export interface SwitchLabelBaseProps {}
+type Props = SwitchLabelBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<span {...__attrs} class={["switch-label", __attrs.class].filter(Boolean).join(" ")}>
+<slot />
+</span>
+",
+  "qwik/ISwitchLabelBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface SwitchLabelBaseProps {}
+export const ISwitchLabelBase = component$((props) =>
+{
+const { children, ...__attrs } = props
+return (
+<span {...__attrs} class={["switch-label", props.class].filter(Boolean).join(" ")}>
+  <Slot />
+</span>
+)
+});
+",
+  "react/ISwitchLabelBase.tsx": "export interface SwitchLabelBaseProps {}
+export function ISwitchLabelBase(props: SwitchLabelBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, ...__attrs } = props
+return (
+<span {...__attrs} className={["switch-label", props.className].filter(Boolean).join(" ")}>
+  {props.children}
+</span>
+)
+}
+",
+  "solid/ISwitchLabelBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface SwitchLabelBaseProps {}
+export default function ISwitchLabelBase(props: SwitchLabelBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children"])
+return (
+<span {...__attrs} class={["switch-label", props.class].filter(Boolean).join(" ")}>
+  {props.children}
+</span>
+)
+}
+",
+  "svelte/ISwitchLabelBase.svelte": "<script lang="ts">
+  export interface SwitchLabelBaseProps {}
+  import type { Snippet } from "svelte";
+  let { children, ...__attrs }: SwitchLabelBaseProps & { children?: Snippet } & Record<string, any> = $props()
+</script>
+<span {...__attrs} class={["switch-label", __attrs.class].filter(Boolean).join(" ")}>
+  {@render children?.()}
+</span>
+",
+  "vue/ISwitchLabelBase.vue": "<script setup lang="ts">
+  export interface SwitchLabelBaseProps {}
+  const props = defineProps<SwitchLabelBaseProps>()
+</script>
+<template>
+<span class="switch-label">
+  <slot />
+</span>
+</template>
+",
+}
+`;

@@ -1,0 +1,130 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SwitchControlBase > output matches snapshots 1`] = `
+{
+  "angular/ISwitchControlBase.component.ts": "import { Component, signal, computed, effect, input, model } from "@angular/core";
+export interface SwitchControlBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Name of the native control (form submission). */
+  name?: string;
+  /** Disables the control. */
+  disabled?: boolean;
+}
+@Component({ standalone: true, selector: 'ink-switch-control-base', host: { style: 'display: contents' }, template: \`<input [class]="'switch-field' + (klass() ? ' ' + klass() : '')" type="checkbox" role="switch" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [checked]="checked() ?? false" [attr.aria-checked]="(checked() ? 'true' : 'false') ?? null" [disabled]="disabled()" (change)="checked.set($event.currentTarget.checked)" (keydown)="$event.key === 'Enter' && $event.currentTarget.click()" />\` })
+export class ISwitchControlBaseComponent
+{
+klass = input<string>()
+id = input<string>()
+name = input<string>()
+disabled = input<boolean>()
+checked = model<boolean>()
+}
+@Component({ standalone: true, selector: 'input[ink-switch-control-base]', host: { '[class]': "'switch-field' + (klass() ? ' ' + klass() : '')", 'type': 'checkbox', 'role': 'switch', '[attr.id]': "(id()) ?? null", '[attr.name]': "(name()) ?? null", '[checked]': "checked() ?? false", '[attr.aria-checked]': "(checked() ? 'true' : 'false') ?? null", '[disabled]': "disabled()", '(change)': "checked.set($event.currentTarget.checked)", '(keydown)': "$event.key === 'Enter' && $event.currentTarget.click()" }, template: \`\` })
+export class ISwitchControlBaseHostComponent
+{
+klass = input<string>()
+id = input<string>()
+name = input<string>()
+disabled = input<boolean>()
+checked = model<boolean>()
+}
+",
+  "astro/ISwitchControlBase.astro": "---
+export interface SwitchControlBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Name of the native control (form submission). */
+  name?: string;
+  /** Disables the control. */
+  disabled?: boolean;
+}
+type Props = SwitchControlBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { id, name, disabled, ...__attrs } = props;
+let checked = props.checked
+---
+<input {...__attrs} class={["switch-field", __attrs.class].filter(Boolean).join(" ")} type="checkbox" role="switch" id={id} name={name} checked={checked ?? false} aria-checked={checked ? "true" : "false"} disabled={disabled} onChange={(e: { currentTarget: HTMLInputElement }) => checked = e.currentTarget.checked} onKeyDown={(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()} />
+",
+  "qwik/ISwitchControlBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
+export interface SwitchControlBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Name of the native control (form submission). */
+  name?: string;
+  /** Disables the control. */
+  disabled?: boolean;
+}
+export const ISwitchControlBase = component$((props: SwitchControlBaseProps & { checked?: boolean; onUpdateChecked$?: QRL<(value: boolean) => void> } & Record<string, any>) =>
+{
+const { id, name, disabled, checked, onUpdateChecked$, ...__attrs } = props
+return (
+<input {...__attrs} class={["switch-field", props.class].filter(Boolean).join(" ")} type="checkbox" role="switch" id={props.id} name={props.name} checked={props.checked ?? false} aria-checked={props.checked ? "true" : "false"} disabled={props.disabled} onChange={$((e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked$?.(e.currentTarget.checked))} onKeyDown={$((e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click())} />
+)
+});
+",
+  "react/ISwitchControlBase.tsx": "export interface SwitchControlBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Name of the native control (form submission). */
+  name?: string;
+  /** Disables the control. */
+  disabled?: boolean;
+}
+export function ISwitchControlBase(props: SwitchControlBaseProps & { checked?: boolean; onUpdateChecked?: (value: boolean) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const { id, name, disabled, checked, onUpdateChecked, ...__attrs } = props
+return (
+<input {...__attrs} className={["switch-field", props.className].filter(Boolean).join(" ")} type="checkbox" role="switch" id={props.id} name={props.name} checked={props.checked ?? false} aria-checked={props.checked ? "true" : "false"} disabled={props.disabled} onChange={(e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked?.(e.currentTarget.checked)} onKeyDown={(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()} />
+)
+}
+",
+  "solid/ISwitchControlBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface SwitchControlBaseProps {
+  /** Id of the native control. */
+  id?: string;
+  /** Name of the native control (form submission). */
+  name?: string;
+  /** Disables the control. */
+  disabled?: boolean;
+}
+export default function ISwitchControlBase(props: SwitchControlBaseProps & { checked?: boolean; onUpdateChecked?: (value: boolean) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["id", "name", "disabled", "checked", "onUpdateChecked"])
+return (
+<input {...__attrs} class={["switch-field", props.class].filter(Boolean).join(" ")} type="checkbox" role="switch" id={props.id} name={props.name} checked={props.checked ?? false} aria-checked={props.checked ? "true" : "false"} disabled={props.disabled} onchange={(e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked?.(e.currentTarget.checked)} onkeydown={(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()} />
+)
+}
+",
+  "svelte/ISwitchControlBase.svelte": "<script lang="ts">
+  export interface SwitchControlBaseProps {
+    /** Id of the native control. */
+    id?: string;
+    /** Name of the native control (form submission). */
+    name?: string;
+    /** Disables the control. */
+    disabled?: boolean;
+  }
+  let { id, name, disabled, checked = $bindable(), ...__attrs }: SwitchControlBaseProps & { checked?: boolean } & Record<string, any> = $props()
+</script>
+<input {...__attrs} class={["switch-field", __attrs.class].filter(Boolean).join(" ")} type="checkbox" role="switch" id={id} name={name} checked={checked ?? false} aria-checked={checked ? "true" : "false"} disabled={disabled} onchange={(e: { currentTarget: HTMLInputElement }) => checked = e.currentTarget.checked} onkeydown={(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()} />
+",
+  "vue/ISwitchControlBase.vue": "<script setup lang="ts">
+  export interface SwitchControlBaseProps {
+    /** Id of the native control. */
+    id?: string;
+    /** Name of the native control (form submission). */
+    name?: string;
+    /** Disables the control. */
+    disabled?: boolean;
+  }
+  const props = defineProps<SwitchControlBaseProps>()
+  const checked = defineModel<boolean>("checked")
+</script>
+<template>
+<input class="switch-field" type="checkbox" role="switch" :id="id" :name="name" :checked="checked ?? false" :aria-checked='checked ? "true" : "false"' :disabled="disabled" @change="(e: { currentTarget: HTMLInputElement }) => checked = e.currentTarget.checked" @keydown='(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()' />
+</template>
+",
+}
+`;
