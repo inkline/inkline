@@ -14,7 +14,7 @@ Declared in [`package.json`](./package.json) `exports`:
 | `./preset/main`        | [`src/preset/main.ts`](./src/preset/main.ts)             | Storybook `main.ts` preset — shared addons, story globs, framework-agnostic settings. Re-used by each `ui/<framework>/.storybook/`.                                            |
 | `./preset/parameters`  | [`src/preset/parameters.ts`](./src/preset/parameters.ts) | Storybook `preview.ts` parameters (theming, controls, viewports).                                                                                                              |
 | `./preset/preview.css` | [`src/preset/preview.css`](./src/preset/preview.css)     | Storybook `preview.ts` styles — copied as-is to `dist` and imported (side-effect) by each `ui/<framework>/.storybook/preview.ts`.                                              |
-| `./generator`          | [`src/generator/index.ts`](./src/generator/index.ts)     | Compiler-adjacent: takes `defineStories` exports + the corresponding compiled component and emits per-framework CSF (`*.stories.ts`) into `ui/<framework>/generated/stories/`. |
+| `./generator`          | [`src/generator/index.ts`](./src/generator/index.ts)     | Compiler-adjacent: takes `defineStories` exports + the corresponding compiled component and emits per-framework CSF (`*.stories.ts`) co-located in `ui/<framework>/.inkline/`. |
 
 The generator is invoked by [`inkline compile stories`](../cli/AGENTS.md) — keep both packages in sync when the story format changes.
 
@@ -23,7 +23,7 @@ The generator is invoked by [`inkline compile stories`](../cli/AGENTS.md) — ke
 ```
 ui/components/src/components/<name>/stories/<variant>.ink.tsx
   ↓ inkline compile stories  (CLI → @inkline/storybook/generator)
-ui/<framework>/generated/stories/<name>/<variant>.stories.ts
+ui/<framework>/.inkline/<name>/<variant>.stories.ts
   ↓ Storybook reads it via the framework-specific .storybook/main.ts
 Storybook UI on port 6006..6012
 ```

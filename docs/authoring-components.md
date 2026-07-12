@@ -33,48 +33,59 @@ Consumers of `@inkline/{react,vue,…}` import the styled variant by default. Th
 From [`ui/components/src/components/badge/headless/IBadgeBase.ink.tsx`](../ui/components/src/components/badge/headless/IBadgeBase.ink.tsx):
 
 ```tsx
-import { defineComponent } from "@inkline/core";
+import { defineComponent, Slot } from "@inkline/core";
 
 export interface BadgeBaseProps {
   label?: string;
-  disabled?: boolean;
 }
 
 export default defineComponent(
   {
+    meta: { headless: true },
     slots: { default: {} },
   },
   (props: BadgeBaseProps) => {
     return (
-      <div class="badge" disabled={props.disabled}>
-        <slot>{props.label}</slot>
+      <div class="badge">
+        <Slot>{props.label}</Slot>
       </div>
     );
   },
 );
 ```
 
-Three things to notice:
+Four things to notice:
 
-1. **`defineComponent` is the sole entry point.** It accepts either `(setup)` or `(options, setup)`. Use the options form when you need to declare slots, events, or prop metadata.
+1. **`defineComponent` is the sole entry point.** It accepts either `(setup)` or `(options, setup)`. Use the options form when you need to declare slots, events, or metadata.
 2. **Props are typed as a TypeScript parameter type** (`props: BadgeBaseProps`). The compiler reads the type to generate per-framework prop declarations.
-3. **`<slot>` (lowercase) is the JSX intrinsic** the parser recognizes as the default slot. For typed / named / scoped slots, use the `<Slot>` JSX component from `@inkline/core` together with `defineSlot` — see [`core/compiler/README.md`](../core/compiler/README.md) and the compiler's slot fixtures.
+3. **`<Slot>` (imported from `@inkline/core`) renders a declared slot.** An unnamed `<Slot>` renders the default slot (the lowercase `<slot>` JSX intrinsic works too); `<Slot name="prefix" />` renders a named one. Declare each slot in the options object first. See [`core/compiler/README.md`](../core/compiler/README.md) → "Slots".
+4. **`meta: { headless: true }` marks a behavior-only component.** Its single static-element root becomes the Angular host (attribute-selector emission); it must have exactly one host-element root — a fragment or conditional root emits `INK0120`.
 
 The styled variant ([`IBadge.ink.tsx`](../ui/components/src/components/badge/styled/IBadge.ink.tsx)) composes the headless one:
 
 ```tsx
-import { defineComponent } from "@inkline/core";
+import { defineComponent, Slot, createMemo } from "@inkline/core";
 import IBadgeBase, { type BadgeBaseProps } from "../headless/IBadgeBase.ink.tsx";
-import { badge, type BadgeProps as BadgeStylingProps } from "virtual:styleframe";
+import { badgeRecipe, type BadgeRecipeProps as BadgeStylingProps } from "virtual:styleframe";
 
 export interface BadgeProps extends BadgeBaseProps, BadgeStylingProps {}
 
-export default defineComponent((props: BadgeProps) => {
-  return <IBadgeBase class={badge(props as BadgeStylingProps)}>{props.label}</IBadgeBase>;
-});
+export default defineComponent(
+  { meta: { headless: true }, slots: { default: {} } },
+  (props: BadgeProps) => {
+    const className = createMemo(() =>
+      badgeRecipe({ color: props.color, variant: props.variant, size: props.size }),
+    );
+    return (
+      <IBadgeBase class={className()}>
+        <Slot>{props.label}</Slot>
+      </IBadgeBase>
+    );
+  },
+);
 ```
 
-`virtual:styleframe` is provided by the `styleframe` integration; the resolved classnames live in each framework's `.styleframe/` directory (auto-generated — never hand-edit).
+`badgeRecipe` is imported from `virtual:styleframe`; it maps the styling props (`color`, `variant`, `size`) to a class name. The recipe is registered in [`IBadge.styleframe.ts`](../ui/components/src/components/badge/styled/IBadge.styleframe.ts). `virtual:styleframe` is provided by the `styleframe` integration; the resolved classnames live in each framework's `.styleframe/` directory (auto-generated — never hand-edit).
 
 ### Attribute fallthrough
 
@@ -123,7 +134,7 @@ All primitives are authoring-time — the compiler removes them from emitted out
 
 ## Stories
 
-Stories are also authored in `.ink.tsx` and compiled per-framework into [`ui/<framework>/generated/stories/`](../ui/) by the CLI's story generator. Use the `defineStories` helper from [`@inkline/storybook`](../tooling/storybook/) to keep types tight.
+Stories are also authored in `.ink.tsx` and compiled per-framework into [`ui/<framework>/.inkline/`](../ui/) by the CLI's story generator. Use the `defineStories` helper from [`@inkline/storybook`](../tooling/storybook/) to keep types tight.
 
 Set `title` to `Components/<Category>/<Component>` — the `title` is the Storybook sidebar path, and the category segment groups the component in the sidebar. Current buckets: `Actions`, `Feedback`, `Forms` (add a new one when no existing category fits). Don't fall back to a flat `Components/<Component>`, or the component lands ungrouped.
 
