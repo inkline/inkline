@@ -1,0 +1,86 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SwitchBase > output matches snapshots 1`] = `
+{
+  "angular/ISwitchBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface SwitchBaseProps {}
+@Component({ standalone: true, selector: 'ink-switch-base', host: { style: 'display: contents' }, template: \`<label [class]="'switch' + (klass() ? ' ' + klass() : '')">
+<ng-content></ng-content>
+</label>\` })
+export class ISwitchBaseComponent
+{
+klass = input<string>()
+}
+@Component({ standalone: true, selector: 'label[ink-switch-base]', host: { '[class]': "'switch' + (klass() ? ' ' + klass() : '')" }, template: \`<ng-content></ng-content>\` })
+export class ISwitchBaseHostComponent
+{
+klass = input<string>()
+}
+",
+  "astro/ISwitchBase.astro": "---
+export interface SwitchBaseProps {}
+type Props = SwitchBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<label {...__attrs} class={["switch", __attrs.class].filter(Boolean).join(" ")}>
+<slot />
+</label>
+",
+  "qwik/ISwitchBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface SwitchBaseProps {}
+export const ISwitchBase = component$((props) =>
+{
+const { children, ...__attrs } = props
+return (
+<label {...__attrs} class={["switch", props.class].filter(Boolean).join(" ")}>
+  <Slot />
+</label>
+)
+});
+",
+  "react/ISwitchBase.tsx": "export interface SwitchBaseProps {}
+export function ISwitchBase(props: SwitchBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, ...__attrs } = props
+return (
+<label {...__attrs} className={["switch", props.className].filter(Boolean).join(" ")}>
+  {props.children}
+</label>
+)
+}
+",
+  "solid/ISwitchBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface SwitchBaseProps {}
+export default function ISwitchBase(props: SwitchBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children"])
+return (
+<label {...__attrs} class={["switch", props.class].filter(Boolean).join(" ")}>
+  {props.children}
+</label>
+)
+}
+",
+  "svelte/ISwitchBase.svelte": "<script lang="ts">
+  export interface SwitchBaseProps {}
+  import type { Snippet } from "svelte";
+  let { children, ...__attrs }: SwitchBaseProps & { children?: Snippet } & Record<string, any> = $props()
+</script>
+<label {...__attrs} class={["switch", __attrs.class].filter(Boolean).join(" ")}>
+  {@render children?.()}
+</label>
+",
+  "vue/ISwitchBase.vue": "<script setup lang="ts">
+  export interface SwitchBaseProps {}
+  const props = defineProps<SwitchBaseProps>()
+</script>
+<template>
+<label class="switch">
+  <slot />
+</label>
+</template>
+",
+}
+`;

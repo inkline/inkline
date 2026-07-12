@@ -17,3 +17,10 @@ export { default as IInputBase } from "./input/headless/IInputBase.ink.tsx";
 export { default as IInputControlBase } from "./input/headless/IInputControlBase.ink.tsx";
 export { default as IInputPrefixBase } from "./input/headless/IInputPrefixBase.ink.tsx";
 export { default as IInputSuffixBase } from "./input/headless/IInputSuffixBase.ink.tsx";
+
+// Switch ships as a single styled component (ISwitch) that composes every headless part. The
+// headless parts remain individually exported for advanced/custom composition.
+export { default as ISwitch } from "./switch/styled/ISwitch.ink.tsx";
+export { default as ISwitchBase } from "./switch/headless/ISwitchBase.ink.tsx";
+export { default as ISwitchControlBase } from "./switch/headless/ISwitchControlBase.ink.tsx";
+export { default as ISwitchLabelBase } from "./switch/headless/ISwitchLabelBase.ink.tsx";
