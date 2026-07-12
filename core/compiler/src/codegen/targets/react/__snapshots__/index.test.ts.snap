@@ -123,13 +123,13 @@ return (
 `;
 
 exports[`react emit + print > useRef with element type 1`] = `
-"import { useState, useMemo, useEffect, useRef } from "react";
+"import { useState, useRef, useMemo, useEffect } from "react";
 export function Form(props: Record<string, never>)
 {
 const [count, setCount] = useState(0)
+const inputRef = useRef<HTMLInputElement>(null)
 const doubled = useMemo(() => count * 2, [count])
 useEffect(() => { console.log("effect"); }, [])
-const inputRef = useRef<HTMLInputElement>(null)
 return (
 <div />
 )

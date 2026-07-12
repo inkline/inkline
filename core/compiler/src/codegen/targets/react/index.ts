@@ -567,6 +567,19 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       }),
     );
   }
+  // Refs are inert `null` declarations that depend on nothing, so they must precede any memo or
+  // effect that reads them: React deps arrays (`[ref.current, …]`) are evaluated synchronously at
+  // the `useMemo`/`useEffect` call site, so a ref referenced before its `const` declaration is a
+  // temporal-dead-zone ReferenceError (INK-12).
+  for (const r of component.refs) {
+    reactImports.push("useRef");
+    body.push(
+      cStmt({
+        body: `const ${r.name} = useRef${r.elementType ? `<${r.elementType}>` : ""}(null)`,
+        span: r.loc,
+      }),
+    );
+  }
   for (const m of component.memos) {
     reactImports.push("useMemo");
     body.push(
@@ -623,15 +636,6 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cStmt({
         body: `useEffect(() => { (${fetcher})().then(${dataSetter})${catchPart}${finallyPart}; }, [])`,
         span: res.loc,
-      }),
-    );
-  }
-  for (const r of component.refs) {
-    reactImports.push("useRef");
-    body.push(
-      cStmt({
-        body: `const ${r.name} = useRef${r.elementType ? `<${r.elementType}>` : ""}(null)`,
-        span: r.loc,
       }),
     );
   }
