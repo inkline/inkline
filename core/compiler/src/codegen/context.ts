@@ -30,7 +30,11 @@ export type SetterStyleKind =
 
 export type RefAccessKind =
   | { readonly kind: "field"; readonly field: string }
-  | { readonly kind: "bare" };
+  // `bare` reads the ref variable directly. `unwrap`, when set, appends `?.<unwrap>` to a class-body
+  // (`selfPrefix`) read of an *element* ref — Angular's `viewChild<ElementRef>` signal returns the
+  // ElementRef wrapper, so `ref.current` must unwrap to `this.ref()?.nativeElement` to reach the DOM
+  // node. Gated by {@link RewriteRules.elementRefs} so component refs keep the raw wrapper.
+  | { readonly kind: "bare"; readonly unwrap?: string };
 
 export interface MemberRewriteRules {
   /**
@@ -79,6 +83,13 @@ export interface RewriteRules {
    * {@link setters} gates the write side.
    */
   readonly reactiveReads?: ReadonlySet<string>;
+  /**
+   * Names of refs bound to a DOM element (`<input ref={x}>`). A class-body read of one of these
+   * (`ref.current`) is unwrapped per {@link RefAccessKind} `unwrap` (Angular:
+   * `this.ref()?.nativeElement`); a ref on a component instance (absent here) keeps the raw signal
+   * read. Angular-only.
+   */
+  readonly elementRefs?: ReadonlySet<string>;
   /**
    * Prop names that are destructured into a local with a default applied (e.g. React's
    * `const { color = "blue", ...__attrs } = props`). A read `props.color` is rewritten to the

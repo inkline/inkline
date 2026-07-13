@@ -17,9 +17,11 @@ describe("ElementRef: single template ref bound + focused on mount", () => {
       'template: `<input placeholder="auto-focus" [class]="klass()" #inputRef />`',
     );
     // onMount is wired: Angular emits `afterNextRender` inside a single constructor, and the focus
-    // body reads the viewChild signal member as `this.inputRef()` (imports the lifecycle helper
-    // alongside viewChild/ElementRef).
-    expect(out).toContain("constructor() { afterNextRender(() => { this.inputRef()?.focus(); }) }");
+    // body reads the viewChild signal member unwrapped to its DOM node —
+    // `this.inputRef()?.nativeElement` (imports the lifecycle helper alongside viewChild/ElementRef).
+    expect(out).toContain(
+      "constructor() { afterNextRender(() => { this.inputRef()?.nativeElement?.focus(); }) }",
+    );
     expect(out).toContain("afterNextRender");
   });
 });
@@ -37,7 +39,10 @@ describe("MultiRefs: two independent refs on sibling elements", () => {
     expect(out).toContain('<input placeholder="focus me" #inputRef />');
     expect(out).toContain("<button #buttonRef>");
     // onMount is wired: the inputRef focus runs via afterNextRender in the constructor, reading the
-    // viewChild signal as `this.inputRef()`. buttonRef is declared but unread (as authored), fine.
-    expect(out).toContain("constructor() { afterNextRender(() => { this.inputRef()?.focus(); }) }");
+    // viewChild signal unwrapped as `this.inputRef()?.nativeElement`. buttonRef is declared but
+    // unread (as authored), fine.
+    expect(out).toContain(
+      "constructor() { afterNextRender(() => { this.inputRef()?.nativeElement?.focus(); }) }",
+    );
   });
 });

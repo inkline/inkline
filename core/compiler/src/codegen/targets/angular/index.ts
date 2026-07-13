@@ -110,7 +110,9 @@ function analyzeProvide(
 const REWRITES: RewriteRules = {
   reactiveRead: { kind: "preserve-call" },
   setterStyle: { kind: "method-call", method: "set" },
-  refAccess: { kind: "bare" },
+  // A ref is a `viewChild<ElementRef>` signal; a class-body read of an element ref unwraps to
+  // `this.ref()?.nativeElement` (see `elementRefs` below) so imperative DOM writes land on the node.
+  refAccess: { kind: "bare", unwrap: "nativeElement" },
   jsxAttrCasing: "html",
   eventNameCase: "camel",
   members: { props: { strip: true } },
@@ -474,11 +476,25 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const emitRule = component.emitName
     ? ({ local: component.emitName, style: "angular-output" } as const)
     : undefined;
+  // Refs bound to a DOM element (`<input ref={x}>`) must unwrap to `this.x()?.nativeElement` in
+  // class-body reads (see REWRITES.refAccess); a ref on a component instance keeps the raw `viewChild`
+  // signal read. The render tree is the authoritative element-vs-component signal here — the ref
+  // declaration's `category` is populated by an earlier pass that misses component-instance refs.
+  const elementRefNames = new Set<string>();
+  walkRenderTree(component.render, {
+    enter(node) {
+      if (node.kind === "Element") {
+        for (const r of node.refs) elementRefNames.add(r.ref.expr.getText());
+      }
+    },
+  });
+
   const baseRules: RewriteRules = {
     ...ctx.rewrites,
     setters,
     emit: emitRule,
     reactiveReads: reactiveReadNames(component),
+    elementRefs: elementRefNames,
   };
   const stateSignals = new Set(component.state.map((s) => s.name));
 
