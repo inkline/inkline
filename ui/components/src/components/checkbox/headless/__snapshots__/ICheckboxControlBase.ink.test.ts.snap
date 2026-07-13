@@ -2,7 +2,7 @@
 
 exports[`CheckboxControl > output matches snapshots 1`] = `
 {
-  "angular/ICheckboxControlBase.component.ts": "import { Component, signal, computed, effect, input, model } from "@angular/core";
+  "angular/ICheckboxControlBase.component.ts": "import { Component, signal, computed, effect, input, viewChild, ElementRef, model } from "@angular/core";
 export interface CheckboxControlBaseProps {
   /** Id of the native control. */
   id?: string;
@@ -15,10 +15,12 @@ export interface CheckboxControlBaseProps {
   /** Renders the partially-checked ("mixed") state. */
   indeterminate?: boolean;
 }
-@Component({ standalone: true, selector: 'ink-checkbox-control-base', host: { style: 'display: contents' }, template: \`<input [class]="'checkbox-field' + (klass() ? ' ' + klass() : '')" type="checkbox" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [checked]="checked() ?? false" [indeterminate]="indeterminate() ?? false" [disabled]="disabled()" [required]="required()" (change)="checked.set($event.currentTarget.checked)" />\` })
+@Component({ standalone: true, selector: 'ink-checkbox-control-base', host: { style: 'display: contents' }, template: \`<input [class]="'checkbox-field' + (klass() ? ' ' + klass() : '')" type="checkbox" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [checked]="checked() ?? false" [indeterminate]="indeterminate() ?? false" [disabled]="disabled()" [required]="required()" (change)="checked.set($event.currentTarget.checked)" #controlRef />\` })
 export class ICheckboxControlBaseComponent
 {
 klass = input<string>()
+constructor() { effect(() => { const el = this.controlRef()?.nativeElement; if (el) { el.indeterminate = this.indeterminate() ?? false; } }) }
+controlRef = viewChild<ElementRef>('controlRef')
 id = input<string>()
 name = input<string>()
 disabled = input<boolean>()
@@ -30,6 +32,8 @@ checked = model<boolean>()
 export class ICheckboxControlBaseHostComponent
 {
 klass = input<string>()
+constructor() { effect(() => { const el = this.controlRef()?.nativeElement; if (el) { el.indeterminate = this.indeterminate() ?? false; } }) }
+controlRef = viewChild<ElementRef>('controlRef')
 id = input<string>()
 name = input<string>()
 disabled = input<boolean>()
@@ -73,13 +77,16 @@ export interface CheckboxControlBaseProps {
 }
 export const ICheckboxControlBase = component$((props: CheckboxControlBaseProps & { checked?: boolean; onUpdateChecked$?: QRL<(value: boolean) => void> } & Record<string, any>) =>
 {
+useVisibleTask$(() => { const el = controlRef.value; if (el) { el.indeterminate = props.indeterminate ?? false; } })
+const controlRef = useSignal(null)
 const { id, name, disabled, required, indeterminate, checked, onUpdateChecked$, ...__attrs } = props
 return (
-<input {...__attrs} class={["checkbox-field", props.class].filter(Boolean).join(" ")} type="checkbox" id={props.id} name={props.name} checked={props.checked ?? false} indeterminate={props.indeterminate ?? false} disabled={props.disabled} required={props.required} onChange={$((e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked$?.(e.currentTarget.checked))} />
+<input {...__attrs} class={["checkbox-field", props.class].filter(Boolean).join(" ")} type="checkbox" id={props.id} name={props.name} checked={props.checked ?? false} indeterminate={props.indeterminate ?? false} disabled={props.disabled} required={props.required} onChange={$((e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked$?.(e.currentTarget.checked))} ref={controlRef} />
 )
 });
 ",
-  "react/ICheckboxControlBase.tsx": "export interface CheckboxControlBaseProps {
+  "react/ICheckboxControlBase.tsx": "import { useRef, useEffect } from "react";
+export interface CheckboxControlBaseProps {
   /** Id of the native control. */
   id?: string;
   /** Name of the native control. */
@@ -93,13 +100,15 @@ return (
 }
 export function ICheckboxControlBase(props: CheckboxControlBaseProps & { checked?: boolean; onUpdateChecked?: (value: boolean) => void } & React.HTMLAttributes<HTMLElement>)
 {
+const controlRef = useRef(null)
+useEffect(() => { const el = controlRef.current; if (el) { el.indeterminate = props.indeterminate ?? false; } }, [controlRef.current, props.indeterminate])
 const { id, name, disabled, required, indeterminate, checked, onUpdateChecked, ...__attrs } = props
 return (
-<input {...__attrs} className={["checkbox-field", props.className].filter(Boolean).join(" ")} type="checkbox" id={props.id} name={props.name} checked={props.checked ?? false} indeterminate={props.indeterminate ?? false} disabled={props.disabled} required={props.required} onChange={(e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked?.(e.currentTarget.checked)} />
+<input {...__attrs} className={["checkbox-field", props.className].filter(Boolean).join(" ")} type="checkbox" id={props.id} name={props.name} checked={props.checked ?? false} indeterminate={props.indeterminate ?? false} disabled={props.disabled} required={props.required} onChange={(e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked?.(e.currentTarget.checked)} ref={controlRef} />
 )
 }
 ",
-  "solid/ICheckboxControlBase.tsx": "import { splitProps } from "solid-js";
+  "solid/ICheckboxControlBase.tsx": "import { createEffect, splitProps } from "solid-js";
 import type { JSX } from "solid-js";
 export interface CheckboxControlBaseProps {
   /** Id of the native control. */
@@ -115,9 +124,11 @@ export interface CheckboxControlBaseProps {
 }
 export default function ICheckboxControlBase(props: CheckboxControlBaseProps & { checked?: boolean; onUpdateChecked?: (value: boolean) => void } & JSX.HTMLAttributes<HTMLElement>)
 {
+createEffect(() => { const el = controlRef; if (el) { el.indeterminate = props.indeterminate ?? false; } })
+let controlRef: HTMLElement | undefined
 const [, __attrs] = splitProps(props, ["id", "name", "disabled", "required", "indeterminate", "checked", "onUpdateChecked"])
 return (
-<input {...__attrs} class={["checkbox-field", props.class].filter(Boolean).join(" ")} type="checkbox" id={props.id} name={props.name} checked={props.checked ?? false} indeterminate={props.indeterminate ?? false} disabled={props.disabled} required={props.required} onchange={(e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked?.(e.currentTarget.checked)} />
+<input {...__attrs} class={["checkbox-field", props.class].filter(Boolean).join(" ")} type="checkbox" id={props.id} name={props.name} checked={props.checked ?? false} indeterminate={props.indeterminate ?? false} disabled={props.disabled} required={props.required} onchange={(e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked?.(e.currentTarget.checked)} ref={(el) => controlRef = el} />
 )
 }
 ",
@@ -135,10 +146,13 @@ return (
     indeterminate?: boolean;
   }
   let { id, name, disabled, required, indeterminate, checked = $bindable(), ...__attrs }: CheckboxControlBaseProps & { checked?: boolean } & Record<string, any> = $props()
+  $effect(() => { const el = controlRef; if (el) { el.indeterminate = indeterminate ?? false; } })
+  let controlRef = $state<HTMLElement | null>(null)
 </script>
-<input {...__attrs} class={["checkbox-field", __attrs.class].filter(Boolean).join(" ")} type="checkbox" id={id} name={name} checked={checked ?? false} indeterminate={indeterminate ?? false} disabled={disabled} required={required} onchange={(e: { currentTarget: HTMLInputElement }) => checked = e.currentTarget.checked} />
+<input bind:this={controlRef} {...__attrs} class={["checkbox-field", __attrs.class].filter(Boolean).join(" ")} type="checkbox" id={id} name={name} checked={checked ?? false} indeterminate={indeterminate ?? false} disabled={disabled} required={required} onchange={(e: { currentTarget: HTMLInputElement }) => checked = e.currentTarget.checked} />
 ",
   "vue/ICheckboxControlBase.vue": "<script setup lang="ts">
+  import { ref, watchEffect } from "vue";
   export interface CheckboxControlBaseProps {
     /** Id of the native control. */
     id?: string;
@@ -153,9 +167,11 @@ return (
   }
   const props = defineProps<CheckboxControlBaseProps>()
   const checked = defineModel<boolean>("checked")
+  const controlRef = ref(null)
+  watchEffect(() => { const el = controlRef.value; if (el) { el.indeterminate = props.indeterminate ?? false; } })
 </script>
 <template>
-<input class="checkbox-field" type="checkbox" :id="id" :name="name" :checked="checked ?? false" :indeterminate="indeterminate ?? false" :disabled="disabled" :required="required" @change="(e: { currentTarget: HTMLInputElement }) => checked = e.currentTarget.checked" />
+<input class="checkbox-field" type="checkbox" :id="id" :name="name" :checked="checked ?? false" :indeterminate="indeterminate ?? false" :disabled="disabled" :required="required" @change="(e: { currentTarget: HTMLInputElement }) => checked = e.currentTarget.checked" ref="controlRef" />
 </template>
 ",
 }

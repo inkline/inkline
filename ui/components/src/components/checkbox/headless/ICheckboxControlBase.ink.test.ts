@@ -54,6 +54,19 @@ describe("CheckboxControl", () => {
     expectOutputContains(result.files.vue ?? [], ':indeterminate="indeterminate ?? false"');
   });
 
+  it("patches indeterminate imperatively via a ref effect for the React IDL path", async () => {
+    // React renders the `indeterminate` attribute inert, so a `createRef` + `createEffect` assigns
+    // `el.indeterminate` imperatively — making the mixed state correct on all seven targets. The
+    // effect reads the ref into a local first so React's dependency array never dereferences a null
+    // ref during the first render.
+    const result = await compileComponent(CHECKBOX_CONTROL);
+    expectOutputContains(
+      result.files.react ?? [],
+      "el.indeterminate = props.indeterminate ?? false",
+    );
+    expectOutputContains(result.files.vue ?? [], "el.indeterminate = props.indeterminate ?? false");
+  });
+
   it("emits the change setter reading currentTarget.checked per target", async () => {
     const result = await compileComponent(CHECKBOX_CONTROL);
     expectOutputContains(result.files.react ?? [], "e.currentTarget.checked");

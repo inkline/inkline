@@ -1,4 +1,4 @@
-import { defineComponent, defineModel } from "@inkline/core";
+import { defineComponent, defineModel, createRef, createEffect } from "@inkline/core";
 
 export interface CheckboxControlBaseProps {
   /** Id of the native control. */
@@ -17,18 +17,29 @@ export interface CheckboxControlBaseProps {
 // `input[ink-checkbox-control-base]`. `checked` is two-way (a `checked` prop + an `update:checked`
 // event, so a parent can `$bind:checked`); its setter reads the event's `currentTarget.checked`.
 //
-// `indeterminate` is bound as an attribute: Vue/Solid/Svelte/Qwik/Angular resolve it to the DOM IDL
-// property (`el.indeterminate`), which drives the recipe's `:indeterminate` box and auto-exposes
-// `aria-checked="mixed"`. React alone renders it as an inert HTML attribute — the IDL property needs
-// a ref there — so the indeterminate visual/mixed-state does not surface on the React target yet.
-// The ideal fix (a `createRef` + `createEffect` that assigns `el.indeterminate`) is blocked by a
-// compiler ref/effect ordering defect (filed to @atlas); until it lands, the attribute binding is
-// the crash-free path that is correct on the other six targets.
+// `indeterminate` is an IDL-only DOM property (there is no reflecting HTML attribute), and it drives
+// the recipe's native `:indeterminate` box plus the element's implicit `aria-checked="mixed"`. Two
+// binding surfaces together cover every target:
+//   - The `indeterminate={…}` prop compiles to a *property* binding on Vue/Solid/Svelte/Qwik/Angular
+//     (`el.indeterminate = …`), which is exactly right there. React alone renders it inert.
+//   - The `createRef` + `createEffect` assigns `el.indeterminate` imperatively, patching React (where
+//     the prop is inert). It is redundant-but-harmless on the property-binding targets, and a no-op
+//     on Angular — its element ref is an `ElementRef` the compiler does not yet unwrap to
+//     `.nativeElement`, tracked upstream — where the property binding already does the job.
 export default defineComponent({ meta: { headless: true } }, (props: CheckboxControlBaseProps) => {
   const [checked, setChecked] = defineModel<boolean>("checked");
+  const controlRef = createRef<HTMLInputElement>();
+
+  createEffect(() => {
+    const el = controlRef.current;
+    if (el) {
+      el.indeterminate = props.indeterminate ?? false;
+    }
+  });
 
   return (
     <input
+      ref={controlRef}
       class="checkbox-field"
       type="checkbox"
       id={props.id}
