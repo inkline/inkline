@@ -53,6 +53,24 @@ describe("vue emit + print", () => {
     expect(emitCode(vue, comp)).toMatchSnapshot();
   });
 
+  it("declares refs before the computed and watchEffect that read them (INK-12 TDZ)", () => {
+    // richComp carries a `doubled` computed and a `watchEffect`; the ref declaration must sit above
+    // them, or `watchEffect` (which runs synchronously at setup) would read `inputRef.value` before
+    // its `const inputRef = ref(null)` declaration — a temporal-dead-zone error.
+    const code = emitCode(
+      vue,
+      richComp("Form", createElement({ tag: "div" }), { refs: elementRef() }),
+    );
+    const refIdx = code.indexOf("const inputRef = ref");
+    const computedIdx = code.indexOf("computed(");
+    const effectIdx = code.indexOf("watchEffect(");
+    expect(refIdx).toBeGreaterThanOrEqual(0);
+    expect(computedIdx).toBeGreaterThanOrEqual(0);
+    expect(effectIdx).toBeGreaterThanOrEqual(0);
+    expect(refIdx).toBeLessThan(computedIdx);
+    expect(refIdx).toBeLessThan(effectIdx);
+  });
+
   it("emits a scoped style block", () => {
     const comp = richComp(
       "Styled",

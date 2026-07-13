@@ -324,6 +324,18 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       }),
     );
   }
+  // Refs are inert `null` declarations that depend on nothing, so they must precede any memo or
+  // effect that reads them: `watchEffect` runs its callback synchronously at setup, so a ref
+  // referenced before its `const ref(null)` declaration is a temporal-dead-zone error (INK-12).
+  for (const r of component.refs) {
+    vueImports.push("ref");
+    scriptBody.push(
+      cStmt({
+        body: `const ${r.name} = ref${r.elementType ? `<${r.elementType} | null>` : ""}(null)`,
+        span: r.loc,
+      }),
+    );
+  }
   for (const m of component.memos) {
     vueImports.push("computed");
     scriptBody.push(
@@ -356,15 +368,6 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cStmt({
         body: `;(${fetcher})().then((d) => ${res.name}.value = d)${onError}${onFinally}`,
         span: res.loc,
-      }),
-    );
-  }
-  for (const r of component.refs) {
-    vueImports.push("ref");
-    scriptBody.push(
-      cStmt({
-        body: `const ${r.name} = ref${r.elementType ? `<${r.elementType} | null>` : ""}(null)`,
-        span: r.loc,
       }),
     );
   }
