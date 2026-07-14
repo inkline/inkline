@@ -6,7 +6,9 @@ export default defineConfig({
       index: "src/index.ts",
       "jsx-runtime": "src/jsx-runtime.ts",
     },
-    dts: true,
+    dts: {
+      tsgo: true,
+    },
   },
   test: {
     coverage: {
