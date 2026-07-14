@@ -4,7 +4,7 @@ Build-tool integration for [`@inkline/compiler`](../compiler/). Wraps the compil
 
 ## What it does
 
-The factory in [`src/index.ts`](./src/index.ts) (`unpluginFactory`) registers a single transform that matches `*.ink.tsx` files and runs them through the compiler's incremental mode (`compileIncremental` from `@inkline/compiler`). Each bundler subpath ([`src/vite.ts`](./src/vite.ts), [`src/webpack.ts`](./src/webpack.ts), …) re-exports the same factory through unplugin's per-bundler adapter.
+The factory in [`src/index.ts`](./src/index.ts) (`unpluginFactory`) registers a single transform that matches `*.ink.tsx` files and runs them through the compiler's incremental mode (`compileIncremental` from `@inkline/compiler`). Each bundler subpath ([`src/vite.ts`](./src/vite.ts), [`src/webpack.ts`](./src/webpack.ts), …) re-exports the same factory through unplugin's per-bundler adapter. The factory also carries two Vite-specific hooks: `configResolved` auto-detects the target from a co-installed framework plugin, and `handleHotUpdate` recompiles `.ink.tsx` files on HMR.
 
 ```ts
 import { defineConfig } from "vite";
@@ -19,11 +19,11 @@ export default defineConfig({
 
 A single options shape ([`InklinePluginOptions`](./src/index.ts)):
 
-| Option      | Type                     | Default            | Notes                                                                                                                                                           |
-| ----------- | ------------------------ | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `target`    | `TargetName`             | —                  | **Required.** No auto-detection today; passing `undefined` triggers a build-time error.                                                                         |
-| `sourceMap` | `boolean`                | (compiler default) | Toggle V3 source-map emission.                                                                                                                                  |
-| `config`    | `Partial<InklineConfig>` | `{}`               | Inline compiler config, merged with defaults. The plugin does not load `inkline.config.ts` — pair with [`@inkline/config-loader`](../config-loader/) if needed. |
+| Option      | Type                     | Default | Notes                                                                                                                                                                                                            |
+| ----------- | ------------------------ | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `target`    | `TargetName`             | —       | **Required on every bundler except Vite**, where it is auto-detected from a co-installed framework plugin (react/solid/vue/svelte; falls back to `react`). Missing target elsewhere triggers a build-time error. |
+| `sourceMap` | `boolean`                | `true`  | Inline V3 maps by default; `false` disables emission (`sourceMap: "none"`).                                                                                                                                      |
+| `config`    | `Partial<InklineConfig>` | `{}`    | Inline compiler config, merged with defaults. The plugin does not load `inkline.config.ts` — pair with [`@inkline/config-loader`](../config-loader/) if needed.                                                  |
 
 Entry points (from [`package.json`](./package.json) `exports`):
 

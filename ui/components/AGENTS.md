@@ -19,7 +19,7 @@ ui/components/
 │       └── <name>/
 │           ├── headless/<I<Name>Base>.ink.tsx   # behavior, no styling
 │           ├── styled/<I<Name>>.ink.tsx         # composes headless + styleframe class
-│           └── stories/<variant>.ink.tsx        # Storybook stories
+│           └── stories/                         # I<Name>.ink.stories.ts meta + <Variant>.ink.tsx stories
 └── dist/                  # styleframe runtime output (NOT the compiled components)
 ```
 
@@ -38,14 +38,16 @@ targetOutDir: {
 }
 ```
 
+The config's `barrels` option also writes three barrel files into each target's `.inkline/`: `index.ts` (styled components), `headless.ts` (headless parts), and `stories.ts` (namespace re-exports of the generated stories). The framework packages' `src/` and build entries point at these.
+
 ## Build
 
 ```bash
-pnpm build   # vp build && inkline compile components 'src/**/*.ink.tsx' --config inkline.config.ts
-pnpm dev     # inkline compile components 'src/**/*.ink.tsx' --watch
+pnpm build   # vp build && inkline compile 'src/**/*.ink.tsx' --config inkline.config.ts --no-clean
+pnpm dev     # inkline compile 'src/**/*.ink.tsx' --config inkline.config.ts --watch
 ```
 
-`vp build` first compiles styleframe artifacts; `inkline compile components` then runs the [`@inkline/cli`](../../tooling/cli/) compile command for every target. The output is written directly into the framework packages' `.inkline/` directories, which their `src/index.ts` re-exports.
+`vp build` first compiles styleframe artifacts; `inkline compile` then runs the [`@inkline/cli`](../../tooling/cli/) compile command for every target. The output is written directly into the framework packages' `.inkline/` directories, which their `src/index.ts` re-exports.
 
 ## Headless / styled split
 
@@ -56,11 +58,13 @@ Every component ships in two variants under its own directory:
 
 Example: [`src/components/badge/`](./src/components/badge/) — the canonical single-part pattern to copy. The headless variant declares `slots: { default: {} }` so consumers can override content via slotting; the styled variant pulls `badgeRecipe(props)` from `virtual:styleframe` to produce the class name.
 
-**A styled component may compose _all_ of a family's headless parts into one component** — there is one styled component per family, not one per part. [`src/components/input/`](./src/components/input/) is the model: the four `headless/IInput*Base` parts (shell, control, prefix, suffix) are composed by a single [`styled/IInput.ink.tsx`](./src/components/input/styled/IInput.ink.tsx). Optional addon slots are gated with `<Show when={hasSlot("prefix")}>` so an unused addon emits nothing; on Qwik/Angular (no runtime slot presence) `hasSlot` is `true` and the empty wrapper is collapsed by `:empty` rules in [`IInput.styleframe.ts`](./src/components/input/styled/IInput.styleframe.ts). All recipes for the family are registered in that one `.styleframe.ts`.
+All current components (headless and styled sources alike) declare `meta: { headless: true }`. On Angular this opts into attribute-selector emission: the headless root element becomes the Angular host (e.g. `button[ink-button-base]`), and a styled component whose root is a single headless part collapses onto that host with the recipe class merged — zero wrapper element. The element-selector `<ink-*>` wrapper is still emitted alongside (dual selector). See [`ui/angular/AGENTS.md`](../angular/AGENTS.md).
+
+**A styled component may compose _all_ of a family's headless parts into one component** — there is one styled component per family, not one per part. [`src/components/input/`](./src/components/input/) is the model: the five `headless/IInput*Base` parts (shell, control, textarea, prefix, suffix) are composed by a single [`styled/IInput.ink.tsx`](./src/components/input/styled/IInput.ink.tsx). Optional addon slots are gated with `<Show when={hasSlot("prefix")}>` so an unused addon emits nothing; on Qwik/Angular (no runtime slot presence) `hasSlot` is `true` and the empty wrapper is collapsed by `:empty` rules in [`IInput.styleframe.ts`](./src/components/input/styled/IInput.styleframe.ts). All recipes for the family are registered in that one `.styleframe.ts`.
 
 ## Stories
 
-Stories are also authored as `.ink.tsx` under `src/components/<name>/stories/` and compiled per-framework via [`inkline compile stories`](../../tooling/cli/AGENTS.md). See [docs/authoring-components.md](../../docs/authoring-components.md) → "Stories".
+Stories live under `src/components/<name>/stories/` — an `I<Name>.ink.stories.ts` meta plus `.ink.tsx` render helpers — and are compiled per-framework by the same [`inkline compile`](../../tooling/cli/AGENTS.md) run, which writes generated CSF stories (and the `stories.ts` barrel) into each target's `.inkline/`. See [docs/authoring-components.md](../../docs/authoring-components.md) → "Stories".
 
 ## Tests
 
@@ -87,7 +91,7 @@ The config in [`vite.config.ts`](./vite.config.ts) deliberately leaves `coverage
 2. Author the headless variant first; verify it compiles to all seven targets.
 3. Author the styled variant; rebuild.
 4. Add stories per variant.
-5. Re-export from `src/components/index.ts` (when present) — the per-framework `.inkline/index.ts` is generated automatically.
+5. Re-export from [`src/components/index.ts`](./src/components/index.ts) — the per-framework `.inkline/` barrels (`index.ts`, `headless.ts`, `stories.ts`) are generated automatically.
 6. Add a changeset for the seven framework packages (assuming a meaningful release).
 
 ## Pitfalls
@@ -101,4 +105,4 @@ The config in [`vite.config.ts`](./vite.config.ts) deliberately leaves `coverage
 - [docs/authoring-components.md](../../docs/authoring-components.md) — the contributor walkthrough.
 - [docs/architecture.md](../../docs/architecture.md) — what the compiler does with the `.ink.tsx` source.
 - The seven `ui/<framework>/AGENTS.md` files — what each output package re-exports.
-- [`tooling/cli/AGENTS.md`](../../tooling/cli/AGENTS.md) — the `compile components` and `compile stories` commands invoked by this package's scripts.
+- [`tooling/cli/AGENTS.md`](../../tooling/cli/AGENTS.md) — the `compile` command (components + stories) invoked by this package's scripts.

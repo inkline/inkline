@@ -13,7 +13,7 @@ All exports from [`src/index.ts`](./src/index.ts):
 | Conformance | `assertConformance` ([`conformance.ts`](./src/conformance.ts))                                                                                                                                                     | Run the per-target conformance specs (typecheck + lint the emitted code) declared in [`@inkline/compiler`](../../core/compiler/) targets.            |
 | Snapshot    | `snapshotOutput` ([`snapshot.ts`](./src/snapshot.ts))                                                                                                                                                              | Vitest snapshot wrapper that normalizes generated output (line endings, trailing whitespace).                                                        |
 | Equivalence | `assertHtmlEquivalence`, `mountComponent`, `EquivalenceOptions`, `EquivalenceResult` ([`equivalence.ts`](./src/equivalence.ts))                                                                                    | Mount the compiled component across multiple targets and assert that the rendered HTML matches.                                                      |
-| Mount       | `isMountable`, `MountResult` ([`mount.ts`](./src/mount.ts))                                                                                                                                                        | Per-target SSR/CSR mount entry.                                                                                                                      |
+| Mount       | `isMountable`, `mountForTarget`, `MountResult` ([`mount.ts`](./src/mount.ts))                                                                                                                                      | Per-target SSR/CSR mount entry.                                                                                                                      |
 | Coverage    | `coverInkViaReact`, `CoverResult` ([`coverage.ts`](./src/coverage.ts))                                                                                                                                             | Drive a component through the React target so V8 coverage remaps execution back onto the authored `.ink.tsx`. No-op unless a coverage run is active. |
 | Normalize   | `normalizeHtml` ([`normalize.ts`](./src/normalize.ts))                                                                                                                                                             | Whitespace-and-attribute-order-insensitive HTML comparison.                                                                                          |
 | Resolve     | `resolveComponent` ([`resolve.ts`](./src/resolve.ts))                                                                                                                                                              | Locate a compiled component on disk by name.                                                                                                         |
@@ -23,7 +23,7 @@ When changing the API surface, update [conventions.md](../../docs/conventions.md
 
 ## Peer-dependency story
 
-All framework runtimes (`react`, `react-dom`, `vue`, `@vue/server-renderer`, `solid-js`, `svelte`) are **optional** peer deps ([`package.json`](./package.json) `peerDependenciesMeta`). Tests that exercise a specific framework will fail to mount if its runtime isn't installed — that's intentional. Consumers install only the framework they test.
+All framework runtimes (`react`, `react-dom`, `vue`, `@vue/server-renderer`, `solid-js`, `svelte`, and the four `@angular/*` packages — `compiler`, `core`, `platform-browser`, `platform-server`) are **optional** peer deps ([`package.json`](./package.json) `peerDependenciesMeta`). Tests that exercise a specific framework will fail to mount if its runtime isn't installed — that's intentional. Consumers install only the framework they test.
 
 `vitest` is a non-optional peer dep — `assertHtmlEquivalence` and friends are written against Vitest matchers.
 
@@ -39,8 +39,10 @@ This package's own coverage:
 - [`assertions.test.ts`](./src/assertions.test.ts)
 - [`conformance.test.ts`](./src/conformance.test.ts)
 - [`snapshot.test.ts`](./src/snapshot.test.ts)
+- [`coverage.test.ts`](./src/coverage.test.ts)
+- [`angular-mount.test.ts`](./src/angular-mount.test.ts) — real-DOM Angular SSR verification of the mount path
 
-Together they protect the harnesses from drift. Equivalence/mount paths are exercised indirectly via consumers (compiler scenario suite, component tests in `ui/components/`).
+Together they protect the harnesses from drift. Equivalence paths and the non-Angular mounts are exercised indirectly via consumers (compiler scenario suite, component tests in `ui/components/`).
 
 ## Real `.ink.tsx` coverage
 

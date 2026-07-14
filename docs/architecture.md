@@ -37,7 +37,7 @@ The IR is the bridge between framework-agnostic semantics and per-framework synt
 Key types:
 
 - `IRModule` — a parsed file: `{ components, contexts, imports, sourceFile }`.
-- `IRComponent` — a single component definition: props, slots, events, state, render tree, styles, runtime mode, target overrides.
+- `IRComponent` — a single component definition: props, slots, events, state, render tree, styles, authoring meta (`meta.headless` drives Angular attribute-selector emission), runtime mode, target overrides.
 - `IRNode` — the render-tree discriminated union: `IRElement | IRComponentInstance | IRText | IRExprNode | IRIf | IRFor | IRSwitch | IRSlotPlaceholder | IRFragment | IRTransition`.
 - `IRExprNode` — a single TypeScript expression plus its computed reactive `IRDependencySet`. The expression is preserved verbatim; codegen rewrites it per-target.
 - `IR_VERSION` — schema version. Bumped on breaking IR changes; backed by [`ir/migration.ts`](../core/compiler/src/ir/migration.ts) for serialized IR upgrades.
@@ -66,6 +66,8 @@ The built-in targets are registered in [`codegen/registry.ts`](../core/compiler/
 - Svelte: direct variable access (no wrapping), runes for state.
 
 A new framework target = a new `Target` + an `emit` function. Parsing, analysis, and the IR are reused unchanged.
+
+Angular gets one extra mechanism: a component marked `meta: { headless: true }` whose root is a single static element emits a **second attribute-selector `@Component`** (e.g. `button[ink-button-base]`) whose host _is_ the root element, and a styled component over such a headless child **collapses** onto that host — recipe classes merge onto the real root element with zero wrapper. Remaining `ink-*` element-selector hosts render with `host: { style: 'display: contents' }` so they lay out transparently. The other six targets are unaffected.
 
 ### Code IR
 
@@ -141,6 +143,8 @@ The compiler is tested at three levels, all using Vitest with co-located `*.test
 - **Unit** — per-pass tests next to the pass source (e.g. [`pipeline/passes/03-lower/control-flow.test.ts`](../core/compiler/src/pipeline/passes/03-lower/)).
 - **Codegen** — per-target snapshot and conformance tests under [`codegen/targets/`](../core/compiler/src/codegen/targets/).
 - **Scenarios** — fixture-driven cross-target equivalence. Fixtures live in [`core/compiler/src/__fixtures__/`](../core/compiler/src/__fixtures__/); scenarios assert DOM equivalence across all 7 targets after compile + mount.
+
+Above the compiler sits a fourth level: **visual parity (e2e)** — [`testing/e2e`](../testing/e2e/) is a Playwright suite that boots the composition Storybook and pixel-diffs every story across all 7 frameworks against the React baseline (`pnpm run test:e2e`; a non-blocking, sharded CI job). See [`testing/e2e/AGENTS.md`](../testing/e2e/AGENTS.md).
 
 The reusable harnesses (`compileFixture`, `mountForTarget`, `runScenarioAcrossTargets`, `typecheckEmittedForTarget`, `lintEmittedForTarget`, …) are exposed from [`@inkline/compiler/testing`](../core/compiler/src/testing/index.ts) and from [`@inkline/test-utils`](../tooling/test-utils/) for use in other packages.
 

@@ -20,13 +20,14 @@ Run `vp env doctor` if anything about the toolchain looks wrong, and `vp help` f
 ```
 core/        @inkline/core (authoring primitives), @inkline/compiler,
              @inkline/plugin (unplugin), @inkline/config-loader, inkline (barrel)
-tooling/     @inkline/cli, @inkline/storybook, @inkline/test-utils
+tooling/     @inkline/cli, @inkline/storybook, @inkline/test-utils,
+             @inkline/agents-check (docs link-integrity test)
 testing/     @inkline/e2e (Playwright cross-framework visual-parity tests)
 ui/          @inkline/components (single source of truth) + 7 framework output packages
 apps/        website (docs site), storybook (unified aggregator for all 7 frameworks)
 docs/        architecture, conventions, contributing, release-process, authoring, maintenance
 .changeset/  pending changesets — one markdown file per upcoming change
-.github/     CI + changesets workflows
+.github/     CI + changesets workflows, issue/PR templates, community health files
 .old/        archived v0 codebase — read-only reference, do not edit or link into
 ```
 
@@ -68,7 +69,7 @@ For the user-facing language reference (primitives, control flow, options), the 
 
 These apply everywhere. Package-level `AGENTS.md` files repeat them only when consequential.
 
-- **Tooling**: pnpm 10, Node ≥22.12, Vite+ (`vp` CLI). OXLint via `vp lint`; Oxfmt via `vp fmt`. **Not ESLint, not Prettier.**
+- **Tooling**: pnpm 11, Node ≥22.12, Vite+ (`vp` CLI). OXLint via `vp lint`; Oxfmt via `vp fmt`. **Not ESLint, not Prettier.**
 - **Tests**: colocated as `<file>.test.ts`. Vitest. Never in a separate `tests/` folder.
 - **Commits**: conventional commits with package scope — `feat(compiler): …`, `fix(ci): …`. See [docs/conventions.md](./docs/conventions.md) → "Commit messages".
 - **Changesets**: every change to a published package needs one (`pnpm changeset`). See [docs/release-process.md](./docs/release-process.md).

@@ -6,18 +6,20 @@ The Qwik output of Inkline's component compilation.
 
 This package is **auto-generated**. To change a component, edit the corresponding `.ink.tsx` file in [`ui/components/src/components/`](../components/) and rebuild. See [`ui/components/AGENTS.md`](../components/AGENTS.md).
 
-- `.inkline/` — compiled Qwik components written by [`inkline compile components`](../../tooling/cli/AGENTS.md). Never hand-edit.
-- `src/index.ts` — re-exports `.inkline/index.ts`.
+- `.inkline/` — compiled Qwik components + `index.ts`/`headless.ts`/`stories.ts` barrels written by [`inkline compile`](../../tooling/cli/AGENTS.md). Never hand-edit.
+- `src/index.ts` — re-exports `.inkline/index.ts` (with sibling `src/headless.ts` and `src/stories.ts`).
 - `.styleframe/` — auto-generated styleframe artifacts. Never hand-edit.
 
 ## Public surface
 
 From [`package.json`](./package.json) `exports`:
 
-| Subpath          | Contents                                                 |
-| ---------------- | -------------------------------------------------------- |
-| `.`              | All compiled components. Entry is `dist/index.qwik.mjs`. |
-| `./package.json` | The manifest.                                            |
+| Subpath          | Contents                                                        |
+| ---------------- | --------------------------------------------------------------- |
+| `.`              | All compiled styled components. Entry is `dist/index.qwik.mjs`. |
+| `./headless`     | The headless parts barrel (`dist/headless.qwik.mjs`).           |
+| `./stories`      | The compiled stories barrel (`dist/stories.qwik.mjs`).          |
+| `./package.json` | The manifest.                                                   |
 
 [`package.json`](./package.json) also declares a top-level `"qwik": "./dist/index.qwik.mjs"` field, picked up by Qwik tooling for lazy resumability.
 
@@ -29,7 +31,7 @@ Runs on **port 6011**. `pnpm storybook` here or `pnpm run storybook:qwik` from t
 
 ## Build
 
-`vp build`. Output goes to `dist/index.qwik.mjs`.
+`vp build`. Output goes to `dist/` (`index.qwik.mjs`, `headless.qwik.mjs`, `stories.qwik.mjs`).
 
 ## See also
 

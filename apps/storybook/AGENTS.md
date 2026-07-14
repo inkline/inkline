@@ -21,9 +21,11 @@ apps/storybook/
 [`.storybook/main.ts`](./.storybook/main.ts) declares one `refs` entry per framework:
 
 ```ts
+const ref = (port: number, path: string) => (DEV ? `http://localhost:${port}` : path);
+
 refs: {
-  react:   { title: "React",   url: DEV ? "http://localhost:6006" : "./react" },
-  vue:     { title: "Vue",     url: DEV ? "http://localhost:6007" : "./vue" },
+  react: { title: "React", url: ref(6006, "./react") },
+  vue:   { title: "Vue",   url: ref(6007, "./vue") },
   // … svelte (6008), solid (6009), angular (6010), qwik (6011), astro (6012)
 }
 ```
@@ -57,7 +59,7 @@ Dev URLs (`localhost:<port>`) are unaffected by these variables.
 pnpm run storybook    # from the repo root — runs all 7 frameworks + this aggregator
 ```
 
-That root script orchestrates four concurrent processes (compile, story-generate, framework Storybooks, this aggregator) via `concurrently` and `wait-on tcp:6006 tcp:6007 …`. The aggregator only starts once all framework ports are listening.
+That root script orchestrates three concurrent processes (the `.ink.tsx` compiler in watch mode, the seven framework Storybooks, this aggregator) via `concurrently` and `wait-on tcp:6006 tcp:6007 …`. The aggregator only starts once all framework ports are listening.
 
 To run just the aggregator (assuming framework Storybooks are already up):
 

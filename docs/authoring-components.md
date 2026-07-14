@@ -11,12 +11,15 @@ For the compiler's internals, see [architecture.md](./architecture.md).
 ```
 ui/components/src/components/<name>/
 ├── headless/
-│   └── I<Name>Base.ink.tsx        ← behavior only, no styling
+│   ├── I<Name>Base.ink.tsx        ← behavior only, no styling
+│   └── I<Name>Base.ink.test.ts    ← colocated cross-target tests
 ├── styled/
-│   └── I<Name>.ink.tsx            ← composes headless + styleframe class
+│   ├── I<Name>.ink.tsx            ← composes headless + styleframe recipe class
+│   ├── I<Name>.styleframe.ts      ← registers the component's styleframe recipe
+│   └── I<Name>.ink.test.ts
 └── stories/
-    ├── <variant-1>.ink.tsx        ← Storybook stories, authored in .ink.tsx
-    └── <variant-2>.ink.tsx
+    ├── I<Name>.ink.stories.ts     ← defineStories meta (title, args, story exports)
+    └── <Variant>.ink.tsx          ← per-variant render helpers, authored in .ink.tsx
 ```
 
 Example: [`ui/components/src/components/badge/`](../ui/components/src/components/badge/) — the canonical pattern to copy.
@@ -56,10 +59,10 @@ export default defineComponent(
 
 Four things to notice:
 
-1. **`defineComponent` is the sole entry point.** It accepts either `(setup)` or `(options, setup)`. Use the options form when you need to declare slots, events, or metadata.
+1. **`defineComponent` is the sole entry point.** It accepts either `(setup)` or `(options, setup)`. Use the options form when you need to declare slots, events, meta, or prop metadata.
 2. **Props are typed as a TypeScript parameter type** (`props: BadgeBaseProps`). The compiler reads the type to generate per-framework prop declarations.
 3. **`<Slot>` (imported from `@inkline/core`) renders a declared slot.** An unnamed `<Slot>` renders the default slot (the lowercase `<slot>` JSX intrinsic works too); `<Slot name="prefix" />` renders a named one. Declare each slot in the options object first. See [`core/compiler/README.md`](../core/compiler/README.md) → "Slots".
-4. **`meta: { headless: true }` marks a behavior-only component.** Its single static-element root becomes the Angular host (attribute-selector emission); it must have exactly one host-element root — a fragment or conditional root emits `INK0120`.
+4. **`meta: { headless: true }` marks a behavior-only component.** On Angular this makes the compiler emit an attribute-selector host component (and lets a styled wrapper collapse onto it) so no wrapper element ships — see [architecture.md](./architecture.md) → "Cross-framework strategy". The other six targets are unaffected. The headless root must be a single static element; a fragment or conditional root keeps the element-selector wrapper and emits `INK0111`.
 
 The styled variant ([`IBadge.ink.tsx`](../ui/components/src/components/badge/styled/IBadge.ink.tsx)) composes the headless one:
 
@@ -97,7 +100,7 @@ Per-target notes:
 
 - **React / Solid / Svelte / Qwik / Astro** — the inherited attributes are spread onto the rendered root element and `class` is merged there.
 - **Vue** — handled natively by Vue's default `inheritAttrs`.
-- **Angular** — handled natively: a `class`/`[class]` passed to a component is applied to its **host element** (the component selector), not the inner template root. Style Angular components accordingly (e.g. via `:host`).
+- **Angular** — a `class`/`[class]` passed to a plain component is applied natively to its **host element** (the component selector), which the compiler renders with `display: contents` so it lays out transparently. For `meta: { headless: true }` components the compiler instead emits attribute-selector hosts and collapses the styled-over-headless pair, so classes merge onto the real root element with zero wrapper — see [architecture.md](./architecture.md) → "Cross-framework strategy".
 
 ## Authoring primitives
 
@@ -130,19 +133,20 @@ All primitives are authoring-time — the compiler removes them from emitted out
 5. Add at least one story per variant under `stories/` (see "Stories" below).
 6. Add fixture-based scenarios under [`core/compiler/src/__fixtures__/`](../core/compiler/src/__fixtures__/) if the component exercises a compiler feature not already covered (rarely needed for normal components).
 7. Run `pnpm run storybook` and verify the component works across all seven targets.
-8. Add a changeset (`pnpm changeset`) before opening a PR — see [release-process.md](./release-process.md).
+8. Every story is automatically pixel-diffed across the 7 frameworks by the visual-parity suite ([`testing/e2e/`](../testing/e2e/), `pnpm run test:e2e`). If the component has stateful visuals (hover, press, typing), add interaction steps in [`testing/e2e/scenarios.ts`](../testing/e2e/scenarios.ts).
+9. Add a changeset (`pnpm changeset`) before opening a PR — see [release-process.md](./release-process.md).
 
 ## Stories
 
 Stories are also authored in `.ink.tsx` and compiled per-framework into [`ui/<framework>/.inkline/`](../ui/) by the CLI's story generator. Use the `defineStories` helper from [`@inkline/storybook`](../tooling/storybook/) to keep types tight.
 
-Set `title` to `Components/<Category>/<Component>` — the `title` is the Storybook sidebar path, and the category segment groups the component in the sidebar. Current buckets: `Actions`, `Feedback`, `Forms` (add a new one when no existing category fits). Don't fall back to a flat `Components/<Component>`, or the component lands ungrouped.
+Set `title` to `Components/<Category>/<Component>` — the `title` is the Storybook sidebar path, and the category segment groups the component in the sidebar. Current buckets: `Actions`, `Feedback`, `Forms`, `Navigation` (add a new one when no existing category fits). Don't fall back to a flat `Components/<Component>`, or the component lands ungrouped.
 
 Each story file represents a single variant (colors, sizes, states). See [`ui/components/src/components/badge/stories/`](../ui/components/src/components/badge/stories/) for the canonical layout. The unified Storybook aggregator ([`apps/storybook/`](../apps/storybook/)) consumes the compiled output and displays variants for every framework side-by-side.
 
 ## Testing
 
-Component-level tests use [`@inkline/test-utils`](../tooling/test-utils/) and Vitest. Mount the compiled output across multiple targets and assert DOM-level behavior with `runScenarioAcrossTargets`. Place tests next to the source as `<name>.test.ts` per [conventions.md](./conventions.md).
+Component-level tests use [`@inkline/test-utils`](../tooling/test-utils/) and Vitest, colocated as `I<Name>.ink.test.ts` per [conventions.md](./conventions.md). They assert compilation to all 7 targets (`compileComponent`, `expectCompilationSuccess`, `assertConformance`, `snapshotOutput`, …) and real-DOM behavior via Angular SSR — `mountStyledOnAngular` from the shared [`angular-ssr-helper.ts`](../ui/components/src/components/angular-ssr-helper.ts). During coverage runs, the SSR helper also drives the component through the React target (`coverInkViaReact`), so V8 line/branch coverage is remapped back onto the authored `.ink.tsx`.
 
 For compiler-level coverage (does the IR represent your construct correctly across all targets?), add a fixture under [`core/compiler/src/__fixtures__/`](../core/compiler/src/__fixtures__/) and extend [`scenarios.ts`](../core/compiler/src/__fixtures__/) with DOM assertions. This is rare in normal component work — only needed when you exercise an untested compiler path.
 
