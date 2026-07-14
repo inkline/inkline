@@ -21,7 +21,9 @@ export default defineConfig({
       "plugin/rspack": "src/plugin/rspack.ts",
       "plugin/farm": "src/plugin/farm.ts",
     },
-    dts: true,
+    dts: {
+      tsgo: true,
+    },
     format: ["esm", "cjs"],
   },
 });
