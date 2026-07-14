@@ -177,7 +177,7 @@ exports[`angular full output snapshots > ElementRef 1`] = `
 export class ElementRefComponent
 {
 klass = input<string>()
-constructor() { afterNextRender(() => { this.inputRef()?.focus(); }) }
+constructor() { afterNextRender(() => { this.inputRef()?.nativeElement?.focus(); }) }
 inputRef = viewChild<ElementRef>('inputRef')
 }
 "
@@ -350,7 +350,7 @@ exports[`angular full output snapshots > MultiRefs 1`] = `
 export class MultiRefsComponent
 {
 klass = input<string>()
-constructor() { afterNextRender(() => { this.inputRef()?.focus(); }) }
+constructor() { afterNextRender(() => { this.inputRef()?.nativeElement?.focus(); }) }
 inputRef = viewChild<ElementRef>('inputRef')
 buttonRef = viewChild<ElementRef>('buttonRef')
 }
