@@ -31,7 +31,27 @@ refs: {
 ```
 
 - **In dev** (`pnpm storybook` here, or `pnpm run storybook` from the repo root), each `url` points to the corresponding framework's live Storybook on `localhost:<port>`.
-- **In production** (built by `pnpm storybook:build`), each `url` is a relative path — the deployment is expected to host each framework's built `storybook-static` under that path. CI builds and uploads only this aggregator's `dist/` (the `build-storybook` job); building and hosting the per-framework `storybook-static` outputs under those paths is the deploy step's job (out of scope here).
+- **In production** (built by `pnpm storybook:build`), each `url` resolves through the config surface below. By default it is a relative path — the deployment is expected to host each framework's built `storybook-static` under that path. CI uploads them as separate artifacts; the deploy step (out of scope here) stitches them together.
+
+## Configuring production ref domains
+
+The seven production ref URLs are configurable via environment variables read at **build time** (`pnpm storybook:build`). Resolution is per-framework, in precedence order:
+
+1. `STORYBOOK_REF_<FRAMEWORK>` — a full per-framework override URL. `<FRAMEWORK>` is the upper-cased key: `STORYBOOK_REF_REACT`, `STORYBOOK_REF_VUE`, `STORYBOOK_REF_SVELTE`, `STORYBOOK_REF_SOLID`, `STORYBOOK_REF_ANGULAR`, `STORYBOOK_REF_QWIK`, `STORYBOOK_REF_ASTRO`.
+2. `STORYBOOK_REF_BASE_URL` — a template with a `{framework}` placeholder applied to every framework at once.
+3. **Default** — the framework's relative path (`./react`, `./vue`, …). This is today's behavior, unchanged when no env var is set.
+
+```bash
+# Point every framework at its own subdomain in one shot:
+STORYBOOK_REF_BASE_URL="https://{framework}.storybook.inkline.io" pnpm storybook:build
+#   → react → https://react.storybook.inkline.io, vue → https://vue.storybook.inkline.io, …
+
+# Override a single framework (takes precedence over the template):
+STORYBOOK_REF_BASE_URL="https://{framework}.storybook.inkline.io" \
+STORYBOOK_REF_QWIK="https://qwik-canary.storybook.inkline.io" pnpm storybook:build
+```
+
+Dev URLs (`localhost:<port>`) are unaffected by these variables.
 
 ## Running
 
@@ -58,7 +78,7 @@ Cross-framework visual-parity tests (Playwright) live in their own package, [`te
 ## When you change something here
 
 - New welcome / landing story → add it under `stories/`. The aggregator only globs `stories/**/*.stories.ts`.
-- New framework target → add a `refs` entry in [`.storybook/main.ts`](./.storybook/main.ts), pick a fresh port, and wire it into:
+- New framework target → add an entry to the `frameworks` table in [`.storybook/main.ts`](./.storybook/main.ts) (key, title, a fresh port, and default relative `path`), and wire it into:
   - The root `package.json` `storybook:frameworks` and `storybook:app` scripts (in the `wait-on tcp:` list).
   - [`docs/contributing.md`](../../docs/contributing.md) → "Dev loops".
   - [`ui/<new-framework>/AGENTS.md`](../../ui/) (port assignment).

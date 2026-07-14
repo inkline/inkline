@@ -115,6 +115,23 @@ async function waitForStoryReady(page: Page): Promise<void> {
   } catch {
     // Capture whatever rendered (e.g. an empty container) rather than hanging.
   }
+  // Qwik renders in two phases: the SSR container mounts "paused" (collapsed), then resumes and
+  // hydrates asynchronously. Storybook's render phase settles at mount — before resume — so a capture
+  // taken then intermittently catches the pre-resume container (a tiny placeholder) and reports a
+  // spurious dimension mismatch against the already-painted React reference. Wait for the container to
+  // reach `q:container="resumed"` when one is present; a no-op for every other framework. Bounded and
+  // non-fatal so a genuinely stuck resume still fails fast via screenshotRoot rather than hanging.
+  try {
+    await page.waitForFunction(
+      () => {
+        const container = document.querySelector("#storybook-root [q\\:container]");
+        return !container || container.getAttribute("q:container") === "resumed";
+      },
+      { timeout: 8_000 },
+    );
+  } catch {
+    // Resume never completed — capture whatever is there and let the diff surface it.
+  }
   await page.evaluate(() => document.fonts.ready).catch(() => undefined);
   await page.waitForTimeout(120);
 }

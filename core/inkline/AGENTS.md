@@ -21,7 +21,7 @@ The root entry (`src/index.ts`) is literally `export * from "@inkline/core";` �
 
 ## CLI binary
 
-`bin/inkline.mjs` is shipped via [`package.json`](./package.json) `bin`. It is a thin re-export of `@inkline/cli`'s binary so end users can run `npx inkline build …` directly. Keep this file behavior in sync with [`tooling/cli/bin/inkline.mjs`](../../tooling/cli/) — see [`tooling/cli/AGENTS.md`](../../tooling/cli/AGENTS.md).
+`bin/inkline.mjs` is shipped via [`package.json`](./package.json) `bin`. It is a thin re-export of `@inkline/cli`'s binary so end users can run `npx inkline compile …` directly. Keep this file behavior in sync with [`tooling/cli/bin/inkline.mjs`](../../tooling/cli/) — see [`tooling/cli/AGENTS.md`](../../tooling/cli/AGENTS.md).
 
 ## Build
 

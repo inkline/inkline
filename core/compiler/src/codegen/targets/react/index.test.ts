@@ -205,6 +205,24 @@ describe("react emit + print", () => {
     expect(emitCode(react, comp)).toMatchSnapshot();
   });
 
+  it("declares refs before the memos and effects that read them (INK-12 TDZ)", () => {
+    // richComp carries a `doubled` memo and a `console.log` effect; adding a ref must not leave the
+    // `const inputRef = useRef(...)` declaration below the `useMemo`/`useEffect` calls, or a deps
+    // array referencing `inputRef.current` would be a temporal-dead-zone ReferenceError.
+    const code = emitCode(
+      react,
+      richComp("Form", createElement({ tag: "div" }), { refs: elementRef() }),
+    );
+    const refIdx = code.indexOf("const inputRef = useRef");
+    const memoIdx = code.indexOf("useMemo(");
+    const effectIdx = code.indexOf("useEffect(");
+    expect(refIdx).toBeGreaterThanOrEqual(0);
+    expect(memoIdx).toBeGreaterThanOrEqual(0);
+    expect(effectIdx).toBeGreaterThanOrEqual(0);
+    expect(refIdx).toBeLessThan(memoIdx);
+    expect(refIdx).toBeLessThan(effectIdx);
+  });
+
   it("forwardRef: expose and props both present", () => {
     const comp = richComp("Modal", createElement({ tag: "div" }), {
       props: [{ name: "title", required: true, symbolId: "t::prop::title@0" as SymbolId, loc }],

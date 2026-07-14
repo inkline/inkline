@@ -61,8 +61,8 @@ Four things to notice:
 
 1. **`defineComponent` is the sole entry point.** It accepts either `(setup)` or `(options, setup)`. Use the options form when you need to declare slots, events, meta, or prop metadata.
 2. **Props are typed as a TypeScript parameter type** (`props: BadgeBaseProps`). The compiler reads the type to generate per-framework prop declarations.
-3. **`<Slot>` renders the declared default slot** (children are its fallback content). The lowercase `<slot>` JSX intrinsic is also recognized as the default slot; for typed / named / scoped slots, use `<Slot>` together with `defineSlot` — see [`core/compiler/README.md`](../core/compiler/README.md) and the compiler's slot fixtures.
-4. **`meta: { headless: true }` marks a behavior-only component.** On Angular this makes the compiler emit an attribute-selector host component (and lets a styled wrapper collapse onto it) so no wrapper element ships — see [architecture.md](./architecture.md) → "Cross-framework strategy". The other six targets are unaffected.
+3. **`<Slot>` (imported from `@inkline/core`) renders a declared slot.** An unnamed `<Slot>` renders the default slot (the lowercase `<slot>` JSX intrinsic works too); `<Slot name="prefix" />` renders a named one. Declare each slot in the options object first. See [`core/compiler/README.md`](../core/compiler/README.md) → "Slots".
+4. **`meta: { headless: true }` marks a behavior-only component.** On Angular this makes the compiler emit an attribute-selector host component (and lets a styled wrapper collapse onto it) so no wrapper element ships — see [architecture.md](./architecture.md) → "Cross-framework strategy". The other six targets are unaffected. The headless root must be a single static element; a fragment or conditional root keeps the element-selector wrapper and emits `INK0111`.
 
 The styled variant ([`IBadge.ink.tsx`](../ui/components/src/components/badge/styled/IBadge.ink.tsx)) composes the headless one:
 
@@ -88,7 +88,7 @@ export default defineComponent(
 );
 ```
 
-`virtual:styleframe` is provided by the `styleframe` integration; the recipe itself is registered in the sibling `I<Name>.styleframe.ts`, and the resolved classnames live in each framework's `.styleframe/` directory (auto-generated — never hand-edit).
+`badgeRecipe` is imported from `virtual:styleframe`; it maps the styling props (`color`, `variant`, `size`) to a class name. The recipe is registered in [`IBadge.styleframe.ts`](../ui/components/src/components/badge/styled/IBadge.styleframe.ts). `virtual:styleframe` is provided by the `styleframe` integration; the resolved classnames live in each framework's `.styleframe/` directory (auto-generated — never hand-edit).
 
 ### Attribute fallthrough
 
@@ -138,7 +138,7 @@ All primitives are authoring-time — the compiler removes them from emitted out
 
 ## Stories
 
-Stories are also authored in `.ink.tsx` and compiled per-framework into [`ui/<framework>/generated/stories/`](../ui/) by the CLI's story generator. Use the `defineStories` helper from [`@inkline/storybook`](../tooling/storybook/) to keep types tight.
+Stories are also authored in `.ink.tsx` and compiled per-framework into [`ui/<framework>/.inkline/`](../ui/) by the CLI's story generator. Use the `defineStories` helper from [`@inkline/storybook`](../tooling/storybook/) to keep types tight.
 
 Set `title` to `Components/<Category>/<Component>` — the `title` is the Storybook sidebar path, and the category segment groups the component in the sidebar. Current buckets: `Actions`, `Feedback`, `Forms`, `Navigation` (add a new one when no existing category fits). Don't fall back to a flat `Components/<Component>`, or the component lands ungrouped.
 

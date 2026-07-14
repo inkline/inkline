@@ -45,7 +45,9 @@ Builds with [`unbuild`](https://github.com/unjs/unbuild), not `vp pack`. `pnpm d
 
 ## Tests
 
-[`src/index.test.ts`](./src/index.test.ts) unit-tests the factory with a mocked compiler: transform filtering, target resolution (including the Vite auto-detect), diagnostic forwarding, and all six bundler adapters. End-to-end coverage still comes from the [`@inkline/compiler`](../compiler/) fixture suite (compile is the same code path) and from real consumers (the apps + ui/components build).
+Direct unit coverage lives in [`src/index.test.ts`](./src/index.test.ts) — `vp test` runs it, and [`vite.config.ts`](./vite.config.ts) enforces 100% line/branch/function/statement thresholds. The suite mocks `@inkline/compiler` and drives the factory directly: the transform handler (target resolution, source-map mode, main-file selection, diagnostic forwarding, incremental state threading), Vite `configResolved` target auto-detection and `handleHotUpdate`, the `enforce: "pre"` ordering guarantee, the `.ink.tsx`-only transform filter, and the six bundler adapter re-exports.
+
+Because the compiler is mocked, the plugin↔compiler seam (real `GeneratedFile` / `files[target]` shape) is covered instead by the [`@inkline/compiler`](../compiler/) fixture suite (compile is the same code path) and by real consumers (the apps + ui/components build). Keep the mock boundary; add cases here for any new bundler-specific logic.
 
 ## See also
 

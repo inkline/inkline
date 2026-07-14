@@ -134,7 +134,7 @@ The build is driven by Vite+ (see the per-package `vite.config.ts`). Type defini
        └────────────────────────────────────────────────┘
 ```
 
-The framework output packages (`@inkline/react` etc.) hold **generated code** in `ui/<framework>/generated/`. Source-of-truth changes happen in `ui/components/` and propagate to all targets on rebuild.
+The framework output packages (`@inkline/react` etc.) hold **generated code** in `ui/<framework>/.inkline/`. Source-of-truth changes happen in `ui/components/` and propagate to all targets on rebuild.
 
 ## Testing
 

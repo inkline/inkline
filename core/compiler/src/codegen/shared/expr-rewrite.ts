@@ -249,10 +249,18 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
     if (expr.name.text === "current") {
       const base = walk(expr.expression, rules);
       switch (rules.refAccess.kind) {
-        case "bare":
-          // In a class body (Angular), a ref is a `viewChild` signal member, so `inputRef.current`
-          // becomes `this.inputRef()`; in the template it stays the bare template-ref variable.
-          return rules.selfPrefix ? `this.${base}()` : base;
+        case "bare": {
+          // In the template a ref stays the bare template-ref variable (already the DOM node).
+          if (!rules.selfPrefix) return base;
+          // In a class body (Angular) a ref is a `viewChild` signal member, so `inputRef.current`
+          // becomes `this.inputRef()`. For an *element* ref that call returns an `ElementRef`
+          // wrapper, so unwrap to `this.inputRef()?.nativeElement` to reach the real DOM node;
+          // component refs (not in `elementRefs`) keep the raw signal read.
+          const read = `this.${base}()`;
+          return rules.refAccess.unwrap && rules.elementRefs?.has(base)
+            ? `${read}?.${rules.refAccess.unwrap}`
+            : read;
+        }
         case "field":
           return `${base}${expr.questionDotToken ? "?." : "."}${rules.refAccess.field}`;
       }

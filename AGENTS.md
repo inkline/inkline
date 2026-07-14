@@ -44,7 +44,7 @@ Per package — descend to the `AGENTS.md` nearest the file you're editing (LLM 
 | [`core/plugin/AGENTS.md`](./core/plugin/AGENTS.md)                                                             | Bundler integration (Vite, webpack, Rollup, esbuild, Rspack, Farm)       |
 | [`core/config-loader/AGENTS.md`](./core/config-loader/AGENTS.md)                                               | `inkline.config.ts` loading                                              |
 | [`core/inkline/AGENTS.md`](./core/inkline/AGENTS.md)                                                           | The public `inkline` barrel package                                      |
-| [`tooling/cli/AGENTS.md`](./tooling/cli/AGENTS.md)                                                             | `inkline compile`, `inkline check`, `inkline init`                       |
+| [`tooling/cli/AGENTS.md`](./tooling/cli/AGENTS.md)                                                             | `inkline compile`, `inkline check`, `inkline init`, `inkline add`        |
 | [`tooling/storybook/AGENTS.md`](./tooling/storybook/AGENTS.md)                                                 | Story authoring + per-target story generation                            |
 | [`tooling/test-utils/AGENTS.md`](./tooling/test-utils/AGENTS.md)                                               | Cross-target test harnesses                                              |
 | [`ui/components/AGENTS.md`](./ui/components/AGENTS.md)                                                         | **Where you author components** — the single source for all 7 frameworks |

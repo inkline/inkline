@@ -207,6 +207,73 @@ describe("Angular codegen fixes", () => {
       expect(code).toContain("viewChild<ElementRef>('inputRef')");
       expect(code).toContain("viewChild");
     });
+
+    it("unwraps an element ref read in an effect to `.nativeElement` for imperative DOM writes", () => {
+      // The `viewChild<ElementRef>` signal returns the ElementRef wrapper; a `.current` read must
+      // unwrap to `this.inputRef()?.nativeElement` so `el.indeterminate = …` lands on the real node
+      // (the bug this change fixes — previously it mutated the wrapper, a silent no-op).
+      const render = createElement({
+        tag: "input",
+        refs: [
+          {
+            ref: createExpr({ expr: mockExpr("inputRef"), deps: DYNAMIC_DEPS }),
+            category: "element",
+            loc,
+          },
+        ],
+      });
+      const comp = makeComp("Form", render, {
+        refs: [
+          {
+            name: "inputRef",
+            symbolId: "t::ref::inputRef@0" as SymbolId,
+            category: "element",
+            elementType: "HTMLInputElement",
+            loc,
+          },
+        ],
+        effects: [
+          {
+            body: mockExpr(
+              "() => { const el = inputRef.current; if (el) { el.indeterminate = true; } }",
+            ),
+            deps: DYNAMIC_DEPS,
+            cleanup: "absent",
+            isDynamic: false,
+            loc,
+          },
+        ],
+      });
+      const code = emitCode(comp);
+      expect(code).toContain("const el = this.inputRef()?.nativeElement;");
+    });
+
+    it("does not unwrap a component ref (keeps the raw viewChild signal read)", () => {
+      // A component ref (`category: "component"`) is not an ElementRef-wrapped DOM node, so its
+      // `.current` read stays `this.childRef()` — no `.nativeElement` unwrap.
+      const comp = makeComp("Wrapper", createElement({ tag: "div" }), {
+        refs: [
+          {
+            name: "childRef",
+            symbolId: "t::ref::childRef@0" as SymbolId,
+            category: "component",
+            loc,
+          },
+        ],
+        effects: [
+          {
+            body: mockExpr("() => { console.log(childRef.current); }"),
+            deps: DYNAMIC_DEPS,
+            cleanup: "absent",
+            isDynamic: false,
+            loc,
+          },
+        ],
+      });
+      const code = emitCode(comp);
+      expect(code).toContain("console.log(this.childRef())");
+      expect(code).not.toContain("nativeElement");
+    });
   });
 
   describe("multiple refs", () => {

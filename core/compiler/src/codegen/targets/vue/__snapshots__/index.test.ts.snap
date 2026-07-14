@@ -56,9 +56,9 @@ exports[`vue emit + print > ref() for element ref 1`] = `
 "<script setup lang="ts">
   import { ref, computed, watchEffect } from "vue";
   const count = ref(0)
+  const inputRef = ref<HTMLInputElement | null>(null)
   const doubled = computed(() => count.value * 2)
   watchEffect(() => { console.log("effect"); })
-  const inputRef = ref<HTMLInputElement | null>(null)
 </script>
 <template>
 <div />
