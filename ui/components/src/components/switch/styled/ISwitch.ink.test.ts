@@ -129,6 +129,22 @@ describe("ISwitch (styled) on Angular SSR", () => {
     expect(html).toMatch(/<input[^>]*disabled/);
   });
 
+  it("reflects read-only as aria-readonly on the control without disabling it", async () => {
+    const { html } = await mount({ label: "Locked", readonly: true });
+
+    // Read-only announces via aria-readonly and stays enabled — focusable and form-submittable,
+    // unlike disabled. (The toggle-suppression itself is a client-side click guard, not observable in
+    // SSR markup; it's asserted at the headless compile-output layer.)
+    expect(html).toMatch(/<input[^>]*aria-readonly="true"/);
+    expect(html).not.toMatch(/<input[^>]*disabled/);
+  });
+
+  it("omits aria-readonly when the control is not read-only", async () => {
+    const { html } = await mount({ label: "Editable" });
+
+    expect(html).not.toMatch(/aria-readonly/);
+  });
+
   it("forwards id to the control only, not the shell label", async () => {
     const { html } = await mount({ id: "wifi", label: "Wi-Fi" });
 
