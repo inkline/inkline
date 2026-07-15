@@ -23,7 +23,7 @@ export interface SwitchProps extends SwitchControlBaseProps {
   label?: string;
 }
 @Component({ standalone: true, selector: 'ink-switch', host: { style: 'display: contents' }, imports: [ISwitchBase, ISwitchControlBase, ISwitchLabelBase], template: \`<ink-switch-base [klass]="(shellClassName()) + (klass() ? ' ' + klass() : '')">
-<ink-switch-control-base [klass]="(fieldClassName())" [id]="id()" [name]="name()" [checked]="checked()" [disabled]="disabled()" (checkedChange)="checked.set($event)"></ink-switch-control-base>
+<ink-switch-control-base [klass]="(fieldClassName())" [id]="id()" [name]="name()" [checked]="checked()" [disabled]="disabled()" [readonly]="readonly()" (checkedChange)="checked.set($event)"></ink-switch-control-base>
 <ink-switch-label-base>
 <ng-content>{{ label() }}</ng-content>
 </ink-switch-label-base>
@@ -41,9 +41,10 @@ label = input<string>()
 id = input<string>()
 name = input<string>()
 disabled = input<boolean>()
+readonly = input<boolean>()
 checked = model<boolean>()
 }
-@Component({ standalone: true, selector: 'label[ink-switch]', host: { '[class]': "'switch' + ((shellClassName()) ? ' ' + (shellClassName()) : '') + (klass() ? ' ' + klass() : '')", 'ink-switch-base': '' }, imports: [ISwitchControlBaseHostComponent, ISwitchLabelBaseHostComponent], template: \`<input ink-switch-control-base [klass]="(fieldClassName())" [id]="id()" [name]="name()" [checked]="checked()" [disabled]="disabled()" (checkedChange)="checked.set($event)" />
+@Component({ standalone: true, selector: 'label[ink-switch]', host: { '[class]': "'switch' + ((shellClassName()) ? ' ' + (shellClassName()) : '') + (klass() ? ' ' + klass() : '')", 'ink-switch-base': '' }, imports: [ISwitchControlBaseHostComponent, ISwitchLabelBaseHostComponent], template: \`<input ink-switch-control-base [klass]="(fieldClassName())" [id]="id()" [name]="name()" [checked]="checked()" [disabled]="disabled()" [readonly]="readonly()" (checkedChange)="checked.set($event)" />
 <span ink-switch-label-base>
 <ng-content>{{ label() }}</ng-content>
 </span>\` })
@@ -60,6 +61,7 @@ label = input<string>()
 id = input<string>()
 name = input<string>()
 disabled = input<boolean>()
+readonly = input<boolean>()
 checked = model<boolean>()
 }
 ",
@@ -82,13 +84,13 @@ export interface SwitchProps extends SwitchControlBaseProps {
 }
 type Props = SwitchProps & Record<string, any>
 const props = Astro.props as Props;
-const { color, size, label, id, name, disabled, ...__attrs } = props;
+const { color, size, label, id, name, disabled, readonly, ...__attrs } = props;
 let checked = props.checked
 const shellClassName = switchRecipe({ size: size })
 const fieldClassName = switchFieldRecipe({ color: color, size: size })
 ---
 <ISwitchBase {...__attrs} class={[shellClassName, __attrs.class].filter(Boolean).join(" ")}>
-<ISwitchControlBase class={fieldClassName} id={id} name={name} checked={checked} disabled={disabled} />
+<ISwitchControlBase class={fieldClassName} id={id} name={name} checked={checked} disabled={disabled} readonly={readonly} />
 <ISwitchLabelBase>
 <slot>
 {label}
@@ -118,11 +120,11 @@ export const ISwitch = component$((props: SwitchProps & { checked?: boolean; onU
 {
 const shellClassName = useComputed$(() => switchRecipe({ size: props.size }))
 const fieldClassName = useComputed$(() => switchFieldRecipe({ color: props.color, size: props.size }))
-const { children, color, size, label, id, name, disabled, checked, onUpdateChecked$, ...__attrs } = props
+const { children, color, size, label, id, name, disabled, readonly, checked, onUpdateChecked$, ...__attrs } = props
 return (
 <ISwitchBase {...__attrs} class={[shellClassName.value, props.class].filter(Boolean).join(" ")}>
   <>
-    <ISwitchControlBase class={fieldClassName.value} id={props.id} name={props.name} checked={props.checked} disabled={props.disabled} onUpdateChecked$={$(v => props.onUpdateChecked$?.(v))} />
+    <ISwitchControlBase class={fieldClassName.value} id={props.id} name={props.name} checked={props.checked} disabled={props.disabled} readonly={props.readonly} onUpdateChecked$={$(v => props.onUpdateChecked$?.(v))} />
     <ISwitchLabelBase>
       <Slot>
         {props.label}
@@ -155,11 +157,11 @@ export function ISwitch(props: SwitchProps & { children?: React.ReactNode } & { 
 {
 const shellClassName = useMemo(() => switchRecipe({ size: props.size }), [props.size])
 const fieldClassName = useMemo(() => switchFieldRecipe({ color: props.color, size: props.size }), [props.color, props.size])
-const { children, color, size, label, id, name, disabled, checked, onUpdateChecked, ...__attrs } = props
+const { children, color, size, label, id, name, disabled, readonly, checked, onUpdateChecked, ...__attrs } = props
 return (
 <ISwitchBase {...__attrs} className={[shellClassName, props.className].filter(Boolean).join(" ")}>
   <>
-    <ISwitchControlBase className={fieldClassName} id={props.id} name={props.name} checked={props.checked} disabled={props.disabled} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
+    <ISwitchControlBase className={fieldClassName} id={props.id} name={props.name} checked={props.checked} disabled={props.disabled} readOnly={props.readonly} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
     <ISwitchLabelBase>
       {props.children ?? props.label}
     </ISwitchLabelBase>
@@ -190,11 +192,11 @@ export default function ISwitch(props: SwitchProps & { children?: any } & { chec
 {
 const shellClassName = createMemo(() => switchRecipe({ size: props.size }))
 const fieldClassName = createMemo(() => switchFieldRecipe({ color: props.color, size: props.size }))
-const [, __attrs] = splitProps(props, ["children", "color", "size", "label", "id", "name", "disabled", "checked", "onUpdateChecked"])
+const [, __attrs] = splitProps(props, ["children", "color", "size", "label", "id", "name", "disabled", "readonly", "checked", "onUpdateChecked"])
 return (
 <ISwitchBase {...__attrs} class={[shellClassName(), props.class].filter(Boolean).join(" ")}>
   <>
-    <ISwitchControlBase class={fieldClassName()} id={props.id} name={props.name} checked={props.checked} disabled={props.disabled} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
+    <ISwitchControlBase class={fieldClassName()} id={props.id} name={props.name} checked={props.checked} disabled={props.disabled} readonly={props.readonly} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
     <ISwitchLabelBase>
       {props.children ?? props.label}
     </ISwitchLabelBase>
@@ -221,12 +223,12 @@ return (
     label?: string;
   }
   import type { Snippet } from "svelte";
-  let { color, size, label, id, name, disabled, checked = $bindable(), children, ...__attrs }: SwitchProps & { checked?: boolean; children?: Snippet } & Record<string, any> = $props()
+  let { color, size, label, id, name, disabled, readonly, checked = $bindable(), children, ...__attrs }: SwitchProps & { checked?: boolean; children?: Snippet } & Record<string, any> = $props()
   let shellClassName = $derived(switchRecipe({ size: size }))
   let fieldClassName = $derived(switchFieldRecipe({ color: color, size: size }))
 </script>
 <ISwitchBase {...__attrs} class={[shellClassName, __attrs.class].filter(Boolean).join(" ")}>
-  <ISwitchControlBase bind:checked={checked} class={fieldClassName} id={id} name={name} disabled={disabled} />
+  <ISwitchControlBase bind:checked={checked} class={fieldClassName} id={id} name={name} disabled={disabled} readonly={readonly} />
   <ISwitchLabelBase>
     {#if children}{@render children()}{:else}{label}{/if}
   </ISwitchLabelBase>
@@ -257,7 +259,7 @@ return (
 </script>
 <template>
 <ISwitchBase :class="shellClassName">
-  <ISwitchControlBase v-model:checked="checked" :class="fieldClassName" :id="id" :name="name" :disabled="disabled" />
+  <ISwitchControlBase v-model:checked="checked" :class="fieldClassName" :id="id" :name="name" :disabled="disabled" :readonly="readonly" />
   <ISwitchLabelBase>
     <slot>
       {{ label }}

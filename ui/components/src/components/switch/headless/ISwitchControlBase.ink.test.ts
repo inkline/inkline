@@ -80,6 +80,39 @@ describe("SwitchControlBase", () => {
     expectOutputContains(out(result, "solid"), "checked={props.checked ?? false}");
   });
 
+  it("announces read-only via a conditional aria-readonly across targets", async () => {
+    // `aria-readonly` is emitted for the switch role; it's gated on the `readonly` prop so it drops off
+    // entirely when unset (Angular via `?? null`, JSX targets via the `undefined` branch).
+    const result = await compileComponent(SWITCH_CONTROL);
+    for (const target of ["react", "vue", "solid", "svelte", "qwik", "angular"] as const) {
+      expectOutputContains(out(result, target), "aria-readonly");
+    }
+    expectOutputContains(out(result, "angular"), "[attr.aria-readonly]=");
+  });
+
+  it("enforces read-only by cancelling the click, never disabling or guarding the change handler", async () => {
+    // A native checkbox ignores HTML `readonly`, so the toggle is suppressed behaviourally: the click's
+    // default action is cancelled when `readonly` is set. Mouse click, Space (the browser fires a
+    // click), and Enter (synthesised as a click) all funnel through this one guard, so the bound model
+    // never changes — while the control stays focusable and form-submittable (never `disabled`). The
+    // change handler is deliberately left unguarded: an `&&` guard there would collide with the
+    // Vue/Svelte model-set lowering (`checked = …`).
+    const result = await compileComponent(SWITCH_CONTROL);
+
+    // Angular: a readonly-gated click binding that cancels the default action.
+    expectOutputContains(out(result, "angular"), "(click)=");
+    expectOutputContains(out(result, "angular"), "readonly() && $event.preventDefault()");
+
+    // Every other interactive target guards preventDefault on readonly.
+    for (const target of ["vue", "svelte", "react", "solid", "qwik"] as const) {
+      expectOutputContains(out(result, target), "e.preventDefault()");
+    }
+
+    // Regression: the change handler still forwards the toggle to the two-way model (not readonly-gated).
+    expectOutputContains(out(result, "vue"), "checked = e.currentTarget.checked");
+    expectOutputContains(out(result, "svelte"), "checked = e.currentTarget.checked");
+  });
+
   it("output matches snapshots", async () => {
     expect(snapshotOutput(await compileComponent(SWITCH_CONTROL))).toMatchSnapshot();
   });
