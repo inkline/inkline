@@ -20,9 +20,27 @@ Scan the fully drafted title **and** body. If either matches, **stop and fix** �
 
 ```bash
 # Draft title+body into files first, then:
-grep -nE '@[A-Za-z0-9_-]+|mention://' pr-title.txt pr-body.md && {
-  echo "LEAK: @handle or mention:// found in PR — strip before creating."; exit 1
+LEAK='mention://|@[A-Za-z0-9_-]+([^/A-Za-z0-9_-]|$)'
+grep -nE "$LEAK" pr-title.txt pr-body.md && {
+  echo "LEAK: agent @handle or mention:// found in PR — strip before creating."; exit 1
 } || echo "clean"
+```
+
+The pattern rejects `mention://` unconditionally and any bare `@handle`, while the
+`([^/A-Za-z0-9_-]|$)` tail lets scoped npm packages through: an agent handle is
+`@name` followed by a non-word char or end-of-line (`@warden`, `[@warden](…)`),
+whereas a package is `@scope/pkg` where `/` follows the scope — so `@inkline/react`,
+`@inkline/components`, `@inkline/<framework>` all pass. Those scoped names are the
+most common legitimate `@`-token in this repo and belong in Changes/changeset lines;
+a check that cried wolf on them would train authors to ignore it.
+
+**Self-check — the pattern must satisfy all three before you trust it:**
+
+```bash
+LEAK='mention://|@[A-Za-z0-9_-]+([^/A-Za-z0-9_-]|$)'
+printf 'changeset for @inkline/react and @inkline/components\n' | grep -qE "$LEAK" && echo FAIL || echo "ok: scoped pkg passes"
+printf 'Reviewed by [@warden](mention://agent/123).\n'          | grep -qE "$LEAK" && echo "ok: mention link rejected" || echo FAIL
+printf 'thanks @warden\n'                                       | grep -qE "$LEAK" && echo "ok: bare handle rejected"  || echo FAIL
 ```
 
 A hit is a hard reject, not a warning. The most common source is copy-pasting a Multica comment (which *does* carry mentions) into the PR body — rewrite it, don't paste it.
