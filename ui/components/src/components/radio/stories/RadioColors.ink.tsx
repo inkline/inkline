@@ -1,13 +1,18 @@
-import { defineComponent } from "@inkline/core";
+import { createSignal, defineComponent } from "@inkline/core";
 import IRadioGroup from "../styled/IRadioGroup.ink.tsx";
 
+// Each group owns a writable signal for `value`, two-way bound via `$bind:value`, so a click actually
+// moves the selection. Distinct `name`s keep the groups mutually independent.
 export default defineComponent(() => {
+  const [light, _setLight] = createSignal("apple");
+  const [dark, _setDark] = createSignal("apple");
+  const [neutral, _setNeutral] = createSignal("apple");
   return (
     <div id="story">
       <IRadioGroup
         color="light"
         name="color-light"
-        value="apple"
+        $bind:value={light}
         options={[
           { value: "apple", label: "Apple" },
           { value: "banana", label: "Banana" },
@@ -17,7 +22,7 @@ export default defineComponent(() => {
       <IRadioGroup
         color="dark"
         name="color-dark"
-        value="apple"
+        $bind:value={dark}
         options={[
           { value: "apple", label: "Apple" },
           { value: "banana", label: "Banana" },
@@ -27,7 +32,7 @@ export default defineComponent(() => {
       <IRadioGroup
         color="neutral"
         name="color-neutral"
-        value="apple"
+        $bind:value={neutral}
         options={[
           { value: "apple", label: "Apple" },
           { value: "banana", label: "Banana" },
