@@ -266,10 +266,9 @@ jobs:
     name: Visual Parity (shard ${{ matrix.shard }})
     runs-on: ubuntu-latest
     needs: build
-    # Non-blocking on purpose: deliberately NOT listed in `ci-success.needs` below. The suite currently
-    # surfaces real cross-framework rendering differences that aren't all resolved yet (see
-    # testing/e2e/AGENTS.md), so this job reports them via its uploaded artifacts without gating the
-    # pipeline. To make it blocking, add `visual-parity` to `ci-success.needs`.
+    # Blocking: listed in `ci-success.needs` below. Parity is green and deterministic across all seven
+    # targets, so a diff here is a real regression and fails the pipeline. The uploaded Playwright report
+    # + diff images remain available as artifacts for triage.
     timeout-minutes: 30
     strategy:
       fail-fast: false
@@ -323,7 +322,7 @@ jobs:
   ci-success:
     name: CI Success
     runs-on: ubuntu-latest
-    needs: [build, build-storybook, build-website, lint, typecheck, test]
+    needs: [build, build-storybook, build-website, lint, typecheck, test, visual-parity]
     if: always()
     steps:
       - name: Check job status
