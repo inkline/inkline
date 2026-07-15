@@ -16,8 +16,14 @@ export interface RadioFieldBaseProps {
   disabled?: boolean;
   /** Marks the control as required. */
   required?: boolean;
+  /**
+   * Prevents the selection from changing while still showing (and keeping focusable) the current
+   * state. Native radios ignore the HTML \`readonly\` attribute, so this is enforced behaviorally:
+   * the click is cancelled and the \`change\` event is suppressed.
+   */
+  readonly?: boolean;
 }
-@Component({ standalone: true, selector: 'ink-radio-field-base', host: { style: 'display: contents' }, template: \`<input [class]="'radio-field' + (klass() ? ' ' + klass() : '')" type="radio" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [value]="value() ?? ''" [checked]="checked()" [disabled]="disabled()" [required]="required()" (change)="change.emit(value() ?? '')" />\` })
+@Component({ standalone: true, selector: 'ink-radio-field-base', host: { style: 'display: contents' }, template: \`<input [class]="'radio-field' + (klass() ? ' ' + klass() : '')" type="radio" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [value]="value() ?? ''" [checked]="checked()" [disabled]="disabled()" [required]="required()" (click)="readonly() && $event.preventDefault()" (change)="!readonly() && change.emit(value() ?? '')" />\` })
 export class IRadioFieldBaseComponent
 {
 klass = input<string>()
@@ -27,9 +33,10 @@ value = input<string>()
 checked = input<boolean>()
 disabled = input<boolean>()
 required = input<boolean>()
+readonly = input<boolean>()
 change = output()
 }
-@Component({ standalone: true, selector: 'input[ink-radio-field-base]', host: { '[class]': "'radio-field' + (klass() ? ' ' + klass() : '')", 'type': 'radio', '[attr.id]': "(id()) ?? null", '[attr.name]': "(name()) ?? null", '[value]': "value() ?? ''", '[checked]': "checked()", '[disabled]': "disabled()", '[required]': "required()", '(change)': "change.emit(value() ?? '')" }, template: \`\` })
+@Component({ standalone: true, selector: 'input[ink-radio-field-base]', host: { '[class]': "'radio-field' + (klass() ? ' ' + klass() : '')", 'type': 'radio', '[attr.id]': "(id()) ?? null", '[attr.name]': "(name()) ?? null", '[value]': "value() ?? ''", '[checked]': "checked()", '[disabled]': "disabled()", '[required]': "required()", '(click)': "readonly() && $event.preventDefault()", '(change)': "!readonly() && change.emit(value() ?? '')" }, template: \`\` })
 export class IRadioFieldBaseHostComponent
 {
 klass = input<string>()
@@ -39,6 +46,7 @@ value = input<string>()
 checked = input<boolean>()
 disabled = input<boolean>()
 required = input<boolean>()
+readonly = input<boolean>()
 change = output()
 }
 ",
@@ -56,12 +64,18 @@ export interface RadioFieldBaseProps {
   disabled?: boolean;
   /** Marks the control as required. */
   required?: boolean;
+  /**
+   * Prevents the selection from changing while still showing (and keeping focusable) the current
+   * state. Native radios ignore the HTML \`readonly\` attribute, so this is enforced behaviorally:
+   * the click is cancelled and the \`change\` event is suppressed.
+   */
+  readonly?: boolean;
 }
 type Props = RadioFieldBaseProps & Record<string, any>
 const props = Astro.props as Props;
-const { id, name, value, checked, disabled, required, ...__attrs } = props;
+const { id, name, value, checked, disabled, required, readonly, ...__attrs } = props;
 ---
-<input {...__attrs} class={["radio-field", __attrs.class].filter(Boolean).join(" ")} type="radio" id={id} name={name} value={value ?? ""} checked={checked} disabled={disabled} required={required} onChange={() => undefined} />
+<input {...__attrs} class={["radio-field", __attrs.class].filter(Boolean).join(" ")} type="radio" id={id} name={name} value={value ?? ""} checked={checked} disabled={disabled} required={required} onClick={(e: { preventDefault: () => void }) => readonly && e.preventDefault()} onChange={() => !readonly && undefined} />
 ",
   "qwik/IRadioFieldBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
 export interface RadioFieldBaseProps {
@@ -77,12 +91,18 @@ export interface RadioFieldBaseProps {
   disabled?: boolean;
   /** Marks the control as required. */
   required?: boolean;
+  /**
+   * Prevents the selection from changing while still showing (and keeping focusable) the current
+   * state. Native radios ignore the HTML \`readonly\` attribute, so this is enforced behaviorally:
+   * the click is cancelled and the \`change\` event is suppressed.
+   */
+  readonly?: boolean;
 }
 export const IRadioFieldBase = component$((props: RadioFieldBaseProps & { onChange$?: QRL<(...args: any[]) => void> } & Record<string, any>) =>
 {
-const { id, name, value, checked, disabled, required, onChange$, ...__attrs } = props
+const { id, name, value, checked, disabled, required, readonly, onChange$, ...__attrs } = props
 return (
-<input {...__attrs} class={["radio-field", props.class].filter(Boolean).join(" ")} type="radio" id={props.id} name={props.name} value={props.value ?? ""} checked={props.checked} disabled={props.disabled} required={props.required} onChange={$(() => props.onChange$?.(props.value ?? ""))} />
+<input {...__attrs} class={["radio-field", props.class].filter(Boolean).join(" ")} type="radio" id={props.id} name={props.name} value={props.value ?? ""} checked={props.checked} disabled={props.disabled} required={props.required} onClick={$((e: { preventDefault: () => void }) => props.readonly && e.preventDefault())} onChange={$(() => !props.readonly && props.onChange$?.(props.value ?? ""))} />
 )
 });
 ",
@@ -99,12 +119,18 @@ return (
   disabled?: boolean;
   /** Marks the control as required. */
   required?: boolean;
+  /**
+   * Prevents the selection from changing while still showing (and keeping focusable) the current
+   * state. Native radios ignore the HTML \`readonly\` attribute, so this is enforced behaviorally:
+   * the click is cancelled and the \`change\` event is suppressed.
+   */
+  readonly?: boolean;
 }
 export function IRadioFieldBase(props: RadioFieldBaseProps & { onChange?: (...args: any[]) => void } & React.HTMLAttributes<HTMLElement>)
 {
-const { id, name, value, checked, disabled, required, onChange, ...__attrs } = props
+const { id, name, value, checked, disabled, required, readonly, onChange, ...__attrs } = props
 return (
-<input {...__attrs} className={["radio-field", props.className].filter(Boolean).join(" ")} type="radio" id={props.id} name={props.name} value={props.value ?? ""} checked={props.checked} disabled={props.disabled} required={props.required} onChange={() => props.onChange?.(props.value ?? "")} />
+<input {...__attrs} className={["radio-field", props.className].filter(Boolean).join(" ")} type="radio" id={props.id} name={props.name} value={props.value ?? ""} checked={props.checked} disabled={props.disabled} required={props.required} onClick={(e: { preventDefault: () => void }) => props.readonly && e.preventDefault()} onChange={() => !props.readonly && props.onChange?.(props.value ?? "")} />
 )
 }
 ",
@@ -123,12 +149,18 @@ export interface RadioFieldBaseProps {
   disabled?: boolean;
   /** Marks the control as required. */
   required?: boolean;
+  /**
+   * Prevents the selection from changing while still showing (and keeping focusable) the current
+   * state. Native radios ignore the HTML \`readonly\` attribute, so this is enforced behaviorally:
+   * the click is cancelled and the \`change\` event is suppressed.
+   */
+  readonly?: boolean;
 }
 export default function IRadioFieldBase(props: RadioFieldBaseProps & { onChange?: (...args: any[]) => void } & JSX.HTMLAttributes<HTMLElement>)
 {
-const [, __attrs] = splitProps(props, ["id", "name", "value", "checked", "disabled", "required", "onChange"])
+const [, __attrs] = splitProps(props, ["id", "name", "value", "checked", "disabled", "required", "readonly", "onChange"])
 return (
-<input {...__attrs} class={["radio-field", props.class].filter(Boolean).join(" ")} type="radio" id={props.id} name={props.name} value={props.value ?? ""} checked={props.checked} disabled={props.disabled} required={props.required} onchange={() => props.onChange?.(props.value ?? "")} />
+<input {...__attrs} class={["radio-field", props.class].filter(Boolean).join(" ")} type="radio" id={props.id} name={props.name} value={props.value ?? ""} checked={props.checked} disabled={props.disabled} required={props.required} onclick={(e: { preventDefault: () => void }) => props.readonly && e.preventDefault()} onchange={() => !props.readonly && props.onChange?.(props.value ?? "")} />
 )
 }
 ",
@@ -146,10 +178,16 @@ return (
     disabled?: boolean;
     /** Marks the control as required. */
     required?: boolean;
+    /**
+     * Prevents the selection from changing while still showing (and keeping focusable) the current
+     * state. Native radios ignore the HTML \`readonly\` attribute, so this is enforced behaviorally:
+     * the click is cancelled and the \`change\` event is suppressed.
+     */
+    readonly?: boolean;
   }
-  let { id, name, value, checked, disabled, required, onChange, ...__attrs }: RadioFieldBaseProps & { onChange?: (...args: any[]) => void } & Record<string, any> = $props()
+  let { id, name, value, checked, disabled, required, readonly, onChange, ...__attrs }: RadioFieldBaseProps & { onChange?: (...args: any[]) => void } & Record<string, any> = $props()
 </script>
-<input {...__attrs} class={["radio-field", __attrs.class].filter(Boolean).join(" ")} type="radio" id={id} name={name} value={value ?? ""} checked={checked} disabled={disabled} required={required} onchange={() => onChange?.(value ?? "")} />
+<input {...__attrs} class={["radio-field", __attrs.class].filter(Boolean).join(" ")} type="radio" id={id} name={name} value={value ?? ""} checked={checked} disabled={disabled} required={required} onclick={(e: { preventDefault: () => void }) => readonly && e.preventDefault()} onchange={() => !readonly && onChange?.(value ?? "")} />
 ",
   "vue/IRadioFieldBase.vue": "<script setup lang="ts">
   export interface RadioFieldBaseProps {
@@ -165,12 +203,18 @@ return (
     disabled?: boolean;
     /** Marks the control as required. */
     required?: boolean;
+    /**
+     * Prevents the selection from changing while still showing (and keeping focusable) the current
+     * state. Native radios ignore the HTML \`readonly\` attribute, so this is enforced behaviorally:
+     * the click is cancelled and the \`change\` event is suppressed.
+     */
+    readonly?: boolean;
   }
   const emit = defineEmits(["change"])
   const props = defineProps<RadioFieldBaseProps>()
 </script>
 <template>
-<input class="radio-field" type="radio" :id="id" :name="name" :value='value ?? ""' :checked="checked" :disabled="disabled" :required="required" @change='() => emit("change", value ?? "")' />
+<input class="radio-field" type="radio" :id="id" :name="name" :value='value ?? ""' :checked="checked" :disabled="disabled" :required="required" @click="(e: { preventDefault: () => void }) => readonly && e.preventDefault()" @change='() => !readonly && emit("change", value ?? "")' />
 </template>
 ",
 }

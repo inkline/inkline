@@ -43,6 +43,13 @@ describe("RadioGroup", () => {
     expectOutputContains(result.files.angular ?? [], "'role': 'radiogroup'");
   });
 
+  it("surfaces read-only as aria-readonly on the radiogroup", async () => {
+    const result = await compileComponent(RADIO_GROUP);
+    // `radiogroup` is one of the roles that supports `aria-readonly`; the interaction guard itself
+    // lives on each radio field.
+    expectOutputContains(result.files.react ?? [], "aria-readonly=");
+  });
+
   it("output matches snapshots", async () => {
     const result = await compileComponent(RADIO_GROUP);
     expect(snapshotOutput(result)).toMatchSnapshot();

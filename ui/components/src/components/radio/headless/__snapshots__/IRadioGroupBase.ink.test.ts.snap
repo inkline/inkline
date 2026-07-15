@@ -8,8 +8,10 @@ export interface RadioGroupBaseProps {
   id?: string;
   /** Accessible name for the group, exposed as \`aria-label\`. */
   label?: string;
+  /** Marks the whole group read-only — exposed as \`aria-readonly\` on the radiogroup. */
+  readonly?: boolean;
 }
-@Component({ standalone: true, selector: 'ink-radio-group-base', host: { style: 'display: contents' }, template: \`<div [class]="'radio-group' + (klass() ? ' ' + klass() : '')" role="radiogroup" [attr.id]="(id()) ?? null" [attr.aria-label]="(label()) ?? null">
+@Component({ standalone: true, selector: 'ink-radio-group-base', host: { style: 'display: contents' }, template: \`<div [class]="'radio-group' + (klass() ? ' ' + klass() : '')" role="radiogroup" [attr.id]="(id()) ?? null" [attr.aria-label]="(label()) ?? null" [attr.aria-readonly]="(readonly() ? 'true' : undefined) ?? null">
 <ng-content></ng-content>
 </div>\` })
 export class IRadioGroupBaseComponent
@@ -17,13 +19,15 @@ export class IRadioGroupBaseComponent
 klass = input<string>()
 id = input<string>()
 label = input<string>()
+readonly = input<boolean>()
 }
-@Component({ standalone: true, selector: 'div[ink-radio-group-base]', host: { '[class]': "'radio-group' + (klass() ? ' ' + klass() : '')", 'role': 'radiogroup', '[attr.id]': "(id()) ?? null", '[attr.aria-label]': "(label()) ?? null" }, template: \`<ng-content></ng-content>\` })
+@Component({ standalone: true, selector: 'div[ink-radio-group-base]', host: { '[class]': "'radio-group' + (klass() ? ' ' + klass() : '')", 'role': 'radiogroup', '[attr.id]': "(id()) ?? null", '[attr.aria-label]': "(label()) ?? null", '[attr.aria-readonly]': "(readonly() ? 'true' : undefined) ?? null" }, template: \`<ng-content></ng-content>\` })
 export class IRadioGroupBaseHostComponent
 {
 klass = input<string>()
 id = input<string>()
 label = input<string>()
+readonly = input<boolean>()
 }
 ",
   "astro/IRadioGroupBase.astro": "---
@@ -32,12 +36,14 @@ export interface RadioGroupBaseProps {
   id?: string;
   /** Accessible name for the group, exposed as \`aria-label\`. */
   label?: string;
+  /** Marks the whole group read-only — exposed as \`aria-readonly\` on the radiogroup. */
+  readonly?: boolean;
 }
 type Props = RadioGroupBaseProps & Record<string, any>
 const props = Astro.props as Props;
-const { id, label, ...__attrs } = props;
+const { id, label, readonly, ...__attrs } = props;
 ---
-<div {...__attrs} class={["radio-group", __attrs.class].filter(Boolean).join(" ")} role="radiogroup" id={id} aria-label={label}>
+<div {...__attrs} class={["radio-group", __attrs.class].filter(Boolean).join(" ")} role="radiogroup" id={id} aria-label={label} aria-readonly={readonly ? "true" : undefined}>
 <slot />
 </div>
 ",
@@ -47,12 +53,14 @@ export interface RadioGroupBaseProps {
   id?: string;
   /** Accessible name for the group, exposed as \`aria-label\`. */
   label?: string;
+  /** Marks the whole group read-only — exposed as \`aria-readonly\` on the radiogroup. */
+  readonly?: boolean;
 }
 export const IRadioGroupBase = component$((props: RadioGroupBaseProps & Record<string, any>) =>
 {
-const { children, id, label, ...__attrs } = props
+const { children, id, label, readonly, ...__attrs } = props
 return (
-<div {...__attrs} class={["radio-group", props.class].filter(Boolean).join(" ")} role="radiogroup" id={props.id} aria-label={props.label}>
+<div {...__attrs} class={["radio-group", props.class].filter(Boolean).join(" ")} role="radiogroup" id={props.id} aria-label={props.label} aria-readonly={props.readonly ? "true" : undefined}>
   <Slot />
 </div>
 )
@@ -63,12 +71,14 @@ return (
   id?: string;
   /** Accessible name for the group, exposed as \`aria-label\`. */
   label?: string;
+  /** Marks the whole group read-only — exposed as \`aria-readonly\` on the radiogroup. */
+  readonly?: boolean;
 }
 export function IRadioGroupBase(props: RadioGroupBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {
-const { children, id, label, ...__attrs } = props
+const { children, id, label, readonly, ...__attrs } = props
 return (
-<div {...__attrs} className={["radio-group", props.className].filter(Boolean).join(" ")} role="radiogroup" id={props.id} aria-label={props.label}>
+<div {...__attrs} className={["radio-group", props.className].filter(Boolean).join(" ")} role="radiogroup" id={props.id} aria-label={props.label} aria-readonly={props.readonly ? "true" : undefined}>
   {props.children}
 </div>
 )
@@ -81,12 +91,14 @@ export interface RadioGroupBaseProps {
   id?: string;
   /** Accessible name for the group, exposed as \`aria-label\`. */
   label?: string;
+  /** Marks the whole group read-only — exposed as \`aria-readonly\` on the radiogroup. */
+  readonly?: boolean;
 }
 export default function IRadioGroupBase(props: RadioGroupBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
 {
-const [, __attrs] = splitProps(props, ["children", "id", "label"])
+const [, __attrs] = splitProps(props, ["children", "id", "label", "readonly"])
 return (
-<div {...__attrs} class={["radio-group", props.class].filter(Boolean).join(" ")} role="radiogroup" id={props.id} aria-label={props.label}>
+<div {...__attrs} class={["radio-group", props.class].filter(Boolean).join(" ")} role="radiogroup" id={props.id} aria-label={props.label} aria-readonly={props.readonly ? "true" : undefined}>
   {props.children}
 </div>
 )
@@ -98,11 +110,13 @@ return (
     id?: string;
     /** Accessible name for the group, exposed as \`aria-label\`. */
     label?: string;
+    /** Marks the whole group read-only — exposed as \`aria-readonly\` on the radiogroup. */
+    readonly?: boolean;
   }
   import type { Snippet } from "svelte";
-  let { id, label, children, ...__attrs }: RadioGroupBaseProps & { children?: Snippet } & Record<string, any> = $props()
+  let { id, label, readonly, children, ...__attrs }: RadioGroupBaseProps & { children?: Snippet } & Record<string, any> = $props()
 </script>
-<div {...__attrs} class={["radio-group", __attrs.class].filter(Boolean).join(" ")} role="radiogroup" id={id} aria-label={label}>
+<div {...__attrs} class={["radio-group", __attrs.class].filter(Boolean).join(" ")} role="radiogroup" id={id} aria-label={label} aria-readonly={readonly ? "true" : undefined}>
   {@render children?.()}
 </div>
 ",
@@ -112,11 +126,13 @@ return (
     id?: string;
     /** Accessible name for the group, exposed as \`aria-label\`. */
     label?: string;
+    /** Marks the whole group read-only — exposed as \`aria-readonly\` on the radiogroup. */
+    readonly?: boolean;
   }
   const props = defineProps<RadioGroupBaseProps>()
 </script>
 <template>
-<div class="radio-group" role="radiogroup" :id="id" :aria-label="label">
+<div class="radio-group" role="radiogroup" :id="id" :aria-label="label" :aria-readonly='readonly ? "true" : undefined'>
   <slot />
 </div>
 </template>

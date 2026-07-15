@@ -98,6 +98,13 @@ describe("IRadioGroup (styled)", () => {
     expectOutputContains(out(result, "angular"), '[name]="name()"');
   });
 
+  it("forwards readonly to the group container and every field", async () => {
+    const result = await compileComponent(IRADIOGROUP);
+    // The group gets aria-readonly via IRadioGroupBase; each field gets the interaction guard.
+    expectOutputContains(out(result, "vue"), ':readonly="readonly"');
+    expectOutputContains(out(result, "angular"), '[readonly]="readonly()"');
+  });
+
   it("output matches snapshots", async () => {
     const result = await compileComponent(IRADIOGROUP);
     expect(snapshotOutput(result)).toMatchSnapshot();
@@ -171,6 +178,15 @@ describe("IRadioGroup (styled) on Angular SSR", () => {
     const { html } = await mount({ options: OPTIONS, disabled: true });
 
     expect(html.match(/<input[^>]*disabled/g) ?? []).toHaveLength(2);
+  });
+
+  it("exposes aria-readonly on the radiogroup when read-only", async () => {
+    const { html } = await mount({ options: OPTIONS, value: "apple", readonly: true });
+
+    // Read-only keeps the controls focusable (no `disabled`) but marks the set aria-readonly.
+    expect(html).toMatch(/<div[^>]*role="radiogroup"/);
+    expect(html).toContain('aria-readonly="true"');
+    expect(html.match(/<input[^>]*disabled/g) ?? []).toHaveLength(0);
   });
 
   // The collapsed host variant inlines the composite onto native elements: the group is the <div>
