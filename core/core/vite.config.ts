@@ -7,7 +7,7 @@ export default defineConfig({
       "jsx-runtime": "src/jsx-runtime.ts",
     },
     dts: {
-      tsgo: true,
+      oxc: true,
     },
   },
   test: {

@@ -86,7 +86,7 @@ catalog:
   svelte: ^5.56.3
   tslib: ^2.8.1
   tsx: ^4.22.4
-  typescript: ^6.0.3
+  typescript: ^7.0.2
   vite: npm:@voidzero-dev/vite-plus-core@latest
   vite-plugin-solid: ^2.11.12
   vite-plus: ^0.1.24
@@ -94,6 +94,24 @@ catalog:
   vue: ^3.5.38
   vue-eslint-parser: ^10.4.1
   zone.js: ^0.16.2
+
+# TS6 holdout catalog. TypeScript 7's native compiler drops the classic
+# programmatic JS API (`ts.createProgram`/`factory`/`printer` now live under
+# the reshaped `typescript/unstable/*` surface). Packages that consume that
+# API — directly or through a toolchain that does — stay on the aliased TS6
+# release via `catalog:ts6` until their dependency ports to TS7:
+#   - core/compiler       — the compile pipeline calls the programmatic API.
+#   - tooling/test-utils  — the coverage reader uses the value-side TS API.
+#   - tooling/storybook   — rolldown-plugin-dts' default (tsc) dts emit needs
+#                           the classic API; storybook's `as const` RegExp
+#                           parameters can't go through the oxc path.
+#   - ui/vue              — @vue/compiler-sfc resolves tsconfig `paths` (the
+#                           `virtual:styleframe` alias behind `defineProps`
+#                           `extends`) through TS's classic config API, which
+#                           TS7 no longer exposes; SFC compile fails on TS7.
+catalogs:
+  ts6:
+    typescript: npm:@typescript/typescript6@^6.0.2
 
 catalogMode: prefer
 overrides:
