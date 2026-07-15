@@ -37,11 +37,14 @@ export interface RadioGroupProps extends RadioGroupBaseProps {
   orientation?: RadioGroupStylingProps["orientation"];
   /** Disables every option in the group. */
   disabled?: boolean;
+  /** Marks the group read-only: the selection is shown but can't be changed (unlike \`disabled\`,
+   * the controls stay focusable). */
+  readonly?: boolean;
 }
-@Component({ standalone: true, selector: 'ink-radio-group', host: { style: 'display: contents' }, imports: [IRadioGroupBase, IRadioBase, IRadioFieldBase], template: \`<ink-radio-group-base [id]="id()" [label]="label()" [klass]="(groupClassName()) + (klass() ? ' ' + klass() : '')">
+@Component({ standalone: true, selector: 'ink-radio-group', host: { style: 'display: contents' }, imports: [IRadioGroupBase, IRadioBase, IRadioFieldBase], template: \`<ink-radio-group-base [id]="id()" [label]="label()" [readonly]="readonly()" [klass]="(groupClassName()) + (klass() ? ' ' + klass() : '')">
 @for (option of items(); track option.value) {
 <ink-radio-base [klass]="(radioClassName())">
-<ink-radio-field-base [klass]="(fieldClassName())" [name]="name()" [value]="option.value" [checked]="value() === option.value" [disabled]="disabled() || option.disabled" (change)="value.set(option.value)"></ink-radio-field-base>
+<ink-radio-field-base [klass]="(fieldClassName())" [name]="name()" [value]="option.value" [checked]="value() === option.value" [disabled]="disabled() || option.disabled" [readonly]="readonly()" (change)="value.set(option.value)"></ink-radio-field-base>
 <span class="radio-label">{{ option.label ?? option.value }}</span>
 </ink-radio-base>
 }
@@ -62,13 +65,14 @@ color = input<RadioFieldStylingProps["color"]>()
 size = input<RadioGroupStylingProps["size"]>()
 orientation = input<RadioGroupStylingProps["orientation"]>()
 disabled = input<boolean>()
+readonly = input<boolean>()
 id = input<string>()
 label = input<string>()
 value = model<string>()
 }
-@Component({ standalone: true, selector: 'div[ink-radio-group]', host: { '[class]': "'radio-group' + ((groupClassName()) ? ' ' + (groupClassName()) : '') + (klass() ? ' ' + klass() : '')", 'role': 'radiogroup', '[attr.id]': "(id()) ?? null", '[attr.aria-label]': "(label()) ?? null", 'ink-radio-group-base': '' }, imports: [IRadioBaseHostComponent, IRadioFieldBaseHostComponent], template: \`@for (option of items(); track option.value) {
+@Component({ standalone: true, selector: 'div[ink-radio-group]', host: { '[class]': "'radio-group' + ((groupClassName()) ? ' ' + (groupClassName()) : '') + (klass() ? ' ' + klass() : '')", 'role': 'radiogroup', '[attr.id]': "(id()) ?? null", '[attr.aria-label]': "(label()) ?? null", '[attr.aria-readonly]': "(readonly() ? 'true' : undefined) ?? null", 'ink-radio-group-base': '' }, imports: [IRadioBaseHostComponent, IRadioFieldBaseHostComponent], template: \`@for (option of items(); track option.value) {
 <label ink-radio-base [klass]="(radioClassName())">
-<input ink-radio-field-base [klass]="(fieldClassName())" [name]="name()" [value]="option.value" [checked]="value() === option.value" [disabled]="disabled() || option.disabled" (change)="value.set(option.value)" />
+<input ink-radio-field-base [klass]="(fieldClassName())" [name]="name()" [value]="option.value" [checked]="value() === option.value" [disabled]="disabled() || option.disabled" [readonly]="readonly()" (change)="value.set(option.value)" />
 <span class="radio-label">{{ option.label ?? option.value }}</span>
 </label>
 }\` })
@@ -88,6 +92,7 @@ color = input<RadioFieldStylingProps["color"]>()
 size = input<RadioGroupStylingProps["size"]>()
 orientation = input<RadioGroupStylingProps["orientation"]>()
 disabled = input<boolean>()
+readonly = input<boolean>()
 id = input<string>()
 label = input<string>()
 value = model<string>()
@@ -125,19 +130,22 @@ export interface RadioGroupProps extends RadioGroupBaseProps {
   orientation?: RadioGroupStylingProps["orientation"];
   /** Disables every option in the group. */
   disabled?: boolean;
+  /** Marks the group read-only: the selection is shown but can't be changed (unlike \`disabled\`,
+   * the controls stay focusable). */
+  readonly?: boolean;
 }
 type Props = RadioGroupProps & Record<string, any>
 const props = Astro.props as Props;
-const { options, name, color, size, orientation, disabled, id, label, ...__attrs } = props;
+const { options, name, color, size, orientation, disabled, readonly, id, label, ...__attrs } = props;
 let value = props.value
 const items = options ?? []
 const groupClassName = radioGroupRecipe({ orientation: orientation, size: size })
 const radioClassName = radioRecipe({ size: size })
 const fieldClassName = radioFieldRecipe({ color: color, size: size })
 ---
-<IRadioGroupBase {...__attrs} id={id} label={label} class={[groupClassName, __attrs.class].filter(Boolean).join(" ")}>
+<IRadioGroupBase {...__attrs} id={id} label={label} readonly={readonly} class={[groupClassName, __attrs.class].filter(Boolean).join(" ")}>
 {items.map((option) => (<IRadioBase class={radioClassName}>
-<IRadioFieldBase class={fieldClassName} name={name} value={option.value} checked={value === option.value} disabled={disabled || option.disabled} onChange={() => value = option.value} />
+<IRadioFieldBase class={fieldClassName} name={name} value={option.value} checked={value === option.value} disabled={disabled || option.disabled} readonly={readonly} onChange={() => value = option.value} />
 <span class="radio-label">{option.label ?? option.value}</span>
 </IRadioBase>))}
 </IRadioGroupBase>
@@ -175,6 +183,9 @@ export interface RadioGroupProps extends RadioGroupBaseProps {
   orientation?: RadioGroupStylingProps["orientation"];
   /** Disables every option in the group. */
   disabled?: boolean;
+  /** Marks the group read-only: the selection is shown but can't be changed (unlike \`disabled\`,
+   * the controls stay focusable). */
+  readonly?: boolean;
 }
 export const IRadioGroup = component$((props: RadioGroupProps & { value?: string; onUpdateValue$?: QRL<(value: string) => void> } & Record<string, any>) =>
 {
@@ -182,10 +193,10 @@ const items = useComputed$(() => props.options ?? [])
 const groupClassName = useComputed$(() => radioGroupRecipe({ orientation: props.orientation, size: props.size }))
 const radioClassName = useComputed$(() => radioRecipe({ size: props.size }))
 const fieldClassName = useComputed$(() => radioFieldRecipe({ color: props.color, size: props.size }))
-const { options, name, color, size, orientation, disabled, id, label, value, onUpdateValue$, ...__attrs } = props
+const { options, name, color, size, orientation, disabled, readonly, id, label, value, onUpdateValue$, ...__attrs } = props
 return (
-<IRadioGroupBase {...__attrs} id={props.id} label={props.label} class={[groupClassName.value, props.class].filter(Boolean).join(" ")}>
-  {items.value.map((option) => (<><IRadioBase class={radioClassName.value}><><IRadioFieldBase class={fieldClassName.value} name={props.name} value={option.value} checked={props.value === option.value} disabled={props.disabled || option.disabled} onChange={$(() => props.onUpdateValue$?.(option.value))} /><span class="radio-label">{option.label ?? option.value}</span></></IRadioBase></>))}
+<IRadioGroupBase {...__attrs} id={props.id} label={props.label} readonly={props.readonly} class={[groupClassName.value, props.class].filter(Boolean).join(" ")}>
+  {items.value.map((option) => (<><IRadioBase class={radioClassName.value}><><IRadioFieldBase class={fieldClassName.value} name={props.name} value={option.value} checked={props.value === option.value} disabled={props.disabled || option.disabled} readonly={props.readonly} onChange={$(() => props.onUpdateValue$?.(option.value))} /><span class="radio-label">{option.label ?? option.value}</span></></IRadioBase></>))}
 </IRadioGroupBase>
 )
 });
@@ -223,6 +234,9 @@ export interface RadioGroupProps extends RadioGroupBaseProps {
   orientation?: RadioGroupStylingProps["orientation"];
   /** Disables every option in the group. */
   disabled?: boolean;
+  /** Marks the group read-only: the selection is shown but can't be changed (unlike \`disabled\`,
+   * the controls stay focusable). */
+  readonly?: boolean;
 }
 export function IRadioGroup(props: RadioGroupProps & { value?: string; onUpdateValue?: (value: string) => void } & React.HTMLAttributes<HTMLElement>)
 {
@@ -230,10 +244,10 @@ const items = useMemo(() => props.options ?? [], [props.options])
 const groupClassName = useMemo(() => radioGroupRecipe({ orientation: props.orientation, size: props.size }), [props.orientation, props.size])
 const radioClassName = useMemo(() => radioRecipe({ size: props.size }), [props.size])
 const fieldClassName = useMemo(() => radioFieldRecipe({ color: props.color, size: props.size }), [props.color, props.size])
-const { options, name, color, size, orientation, disabled, id, label, value, onUpdateValue, ...__attrs } = props
+const { options, name, color, size, orientation, disabled, readonly, id, label, value, onUpdateValue, ...__attrs } = props
 return (
-<IRadioGroupBase {...__attrs} id={props.id} label={props.label} className={[groupClassName, props.className].filter(Boolean).join(" ")}>
-  {items.map((option) => (<Fragment key={option.value}><IRadioBase className={radioClassName}><><IRadioFieldBase className={fieldClassName} name={props.name} value={option.value} checked={props.value === option.value} disabled={props.disabled || option.disabled} onChange={() => props.onUpdateValue?.(option.value)} /><span className="radio-label">{option.label ?? option.value}</span></></IRadioBase></Fragment>))}
+<IRadioGroupBase {...__attrs} id={props.id} label={props.label} readOnly={props.readonly} className={[groupClassName, props.className].filter(Boolean).join(" ")}>
+  {items.map((option) => (<Fragment key={option.value}><IRadioBase className={radioClassName}><><IRadioFieldBase className={fieldClassName} name={props.name} value={option.value} checked={props.value === option.value} disabled={props.disabled || option.disabled} readOnly={props.readonly} onChange={() => props.onUpdateValue?.(option.value)} /><span className="radio-label">{option.label ?? option.value}</span></></IRadioBase></Fragment>))}
 </IRadioGroupBase>
 )
 }
@@ -271,6 +285,9 @@ export interface RadioGroupProps extends RadioGroupBaseProps {
   orientation?: RadioGroupStylingProps["orientation"];
   /** Disables every option in the group. */
   disabled?: boolean;
+  /** Marks the group read-only: the selection is shown but can't be changed (unlike \`disabled\`,
+   * the controls stay focusable). */
+  readonly?: boolean;
 }
 export default function IRadioGroup(props: RadioGroupProps & { value?: string; onUpdateValue?: (value: string) => void } & JSX.HTMLAttributes<HTMLElement>)
 {
@@ -278,11 +295,11 @@ const items = createMemo(() => props.options ?? [])
 const groupClassName = createMemo(() => radioGroupRecipe({ orientation: props.orientation, size: props.size }))
 const radioClassName = createMemo(() => radioRecipe({ size: props.size }))
 const fieldClassName = createMemo(() => radioFieldRecipe({ color: props.color, size: props.size }))
-const [, __attrs] = splitProps(props, ["options", "name", "color", "size", "orientation", "disabled", "id", "label", "value", "onUpdateValue"])
+const [, __attrs] = splitProps(props, ["options", "name", "color", "size", "orientation", "disabled", "readonly", "id", "label", "value", "onUpdateValue"])
 return (
-<IRadioGroupBase {...__attrs} id={props.id} label={props.label} class={[groupClassName(), props.class].filter(Boolean).join(" ")}>
+<IRadioGroupBase {...__attrs} id={props.id} label={props.label} readonly={props.readonly} class={[groupClassName(), props.class].filter(Boolean).join(" ")}>
   <For each={items()}>
-    {(option) => <IRadioBase class={radioClassName()}><><IRadioFieldBase class={fieldClassName()} name={props.name} value={option.value} checked={props.value === option.value} disabled={props.disabled || option.disabled} onChange={() => props.onUpdateValue?.(option.value)} /><span class="radio-label">{option.label ?? option.value}</span></></IRadioBase>}
+    {(option) => <IRadioBase class={radioClassName()}><><IRadioFieldBase class={fieldClassName()} name={props.name} value={option.value} checked={props.value === option.value} disabled={props.disabled || option.disabled} readonly={props.readonly} onChange={() => props.onUpdateValue?.(option.value)} /><span class="radio-label">{option.label ?? option.value}</span></></IRadioBase>}
   </For>
 </IRadioGroupBase>
 )
@@ -320,16 +337,19 @@ return (
     orientation?: RadioGroupStylingProps["orientation"];
     /** Disables every option in the group. */
     disabled?: boolean;
+    /** Marks the group read-only: the selection is shown but can't be changed (unlike \`disabled\`,
+     * the controls stay focusable). */
+    readonly?: boolean;
   }
-  let { options, name, color, size, orientation, disabled, id, label, value = $bindable(), ...__attrs }: RadioGroupProps & { value?: string } & Record<string, any> = $props()
+  let { options, name, color, size, orientation, disabled, readonly, id, label, value = $bindable(), ...__attrs }: RadioGroupProps & { value?: string } & Record<string, any> = $props()
   let items = $derived(options ?? [])
   let groupClassName = $derived(radioGroupRecipe({ orientation: orientation, size: size }))
   let radioClassName = $derived(radioRecipe({ size: size }))
   let fieldClassName = $derived(radioFieldRecipe({ color: color, size: size }))
 </script>
-<IRadioGroupBase {...__attrs} id={id} label={label} class={[groupClassName, __attrs.class].filter(Boolean).join(" ")}>
+<IRadioGroupBase {...__attrs} id={id} label={label} readonly={readonly} class={[groupClassName, __attrs.class].filter(Boolean).join(" ")}>
   {#each items as option (option.value)}<IRadioBase class={radioClassName}>
-    <IRadioFieldBase class={fieldClassName} name={name} value={option.value} checked={value === option.value} disabled={disabled || option.disabled} onChange={() => value = option.value} />
+    <IRadioFieldBase class={fieldClassName} name={name} value={option.value} checked={value === option.value} disabled={disabled || option.disabled} readonly={readonly} onChange={() => value = option.value} />
     <span class="radio-label">{option.label ?? option.value}</span>
   </IRadioBase>
   {/each}
@@ -368,6 +388,9 @@ return (
     orientation?: RadioGroupStylingProps["orientation"];
     /** Disables every option in the group. */
     disabled?: boolean;
+    /** Marks the group read-only: the selection is shown but can't be changed (unlike \`disabled\`,
+     * the controls stay focusable). */
+    readonly?: boolean;
   }
   const props = defineProps<RadioGroupProps>()
   const value = defineModel<string>("value")
@@ -377,9 +400,9 @@ return (
   const fieldClassName = computed(() => radioFieldRecipe({ color: props.color, size: props.size }))
 </script>
 <template>
-<IRadioGroupBase :id="id" :label="label" :class="groupClassName">
+<IRadioGroupBase :id="id" :label="label" :readonly="readonly" :class="groupClassName">
   <IRadioBase v-for="option in items" :key="option.value" :class="radioClassName">
-    <IRadioFieldBase :class="fieldClassName" :name="name" :value="option.value" :checked="value === option.value" :disabled="disabled || option.disabled" @change="() => value = option.value" />
+    <IRadioFieldBase :class="fieldClassName" :name="name" :value="option.value" :checked="value === option.value" :disabled="disabled || option.disabled" :readonly="readonly" @change="() => value = option.value" />
     <span class="radio-label">{{ option.label ?? option.value }}</span>
   </IRadioBase>
 </IRadioGroupBase>

@@ -13,6 +13,12 @@ export interface RadioFieldBaseProps {
   disabled?: boolean;
   /** Marks the control as required. */
   required?: boolean;
+  /**
+   * Prevents the selection from changing while still showing (and keeping focusable) the current
+   * state. Native radios ignore the HTML `readonly` attribute, so this is enforced behaviorally:
+   * the click is cancelled and the `change` event is suppressed.
+   */
+  readonly?: boolean;
 }
 
 // The native `<input type="radio">` control: a single static root, so it host-extracts to
@@ -34,7 +40,8 @@ export default defineComponent({ meta: { headless: true } }, (props: RadioFieldB
       checked={props.checked}
       disabled={props.disabled}
       required={props.required}
-      onChange={() => emit("change", props.value ?? "")}
+      onClick={(e: { preventDefault: () => void }) => props.readonly && e.preventDefault()}
+      onChange={() => !props.readonly && emit("change", props.value ?? "")}
     />
   );
 });

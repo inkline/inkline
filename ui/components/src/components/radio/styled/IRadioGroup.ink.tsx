@@ -37,6 +37,9 @@ export interface RadioGroupProps extends RadioGroupBaseProps {
   orientation?: RadioGroupStylingProps["orientation"];
   /** Disables every option in the group. */
   disabled?: boolean;
+  /** Marks the group read-only: the selection is shown but can't be changed (unlike `disabled`,
+   * the controls stay focusable). */
+  readonly?: boolean;
 }
 
 /**
@@ -59,7 +62,12 @@ export default defineComponent({ meta: { headless: true } }, (props: RadioGroupP
   );
 
   return (
-    <IRadioGroupBase id={props.id} label={props.label} class={groupClassName()}>
+    <IRadioGroupBase
+      id={props.id}
+      label={props.label}
+      readonly={props.readonly}
+      class={groupClassName()}
+    >
       <For each={items()} key={(option) => option.value}>
         {(option) => (
           <IRadioBase class={radioClassName()}>
@@ -69,6 +77,7 @@ export default defineComponent({ meta: { headless: true } }, (props: RadioGroupP
               value={option.value}
               checked={value() === option.value}
               disabled={props.disabled || option.disabled}
+              readonly={props.readonly}
               onChange={() => setValue(option.value)}
             />
             <span class="radio-label">{option.label ?? option.value}</span>

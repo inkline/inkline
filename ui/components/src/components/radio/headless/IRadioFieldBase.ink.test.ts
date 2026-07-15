@@ -60,6 +60,15 @@ describe("RadioField", () => {
     expectOutputContains(result.files.vue ?? [], 'emit("change", value ?? "")');
   });
 
+  it("guards selection when read-only (cancels the click, suppresses the change)", async () => {
+    const result = await compileComponent(RADIO_FIELD);
+    // Native radios ignore `readonly`, so read-only is enforced behaviorally: the pointer toggle is
+    // cancelled and the change event is gated on `!readonly`.
+    expectOutputContains(result.files.react ?? [], "props.readonly");
+    expectOutputContains(result.files.react ?? [], "preventDefault()");
+    expectOutputContains(result.files.angular ?? [], "readonly()");
+  });
+
   it("output matches snapshots", async () => {
     const result = await compileComponent(RADIO_FIELD);
     expect(snapshotOutput(result)).toMatchSnapshot();
