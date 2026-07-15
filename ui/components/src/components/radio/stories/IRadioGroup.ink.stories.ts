@@ -31,6 +31,10 @@ const meta = defineStories<RadioGroupProps>({
       description: "Layout orientation",
     },
     disabled: { control: "boolean", description: "Disables every option in the group" },
+    readonly: {
+      control: "boolean",
+      description: "Freezes the selection (stays focusable, unlike disabled)",
+    },
   },
 });
 
@@ -39,6 +43,7 @@ export default meta;
 export const Default = {};
 export const Horizontal = { args: { orientation: "horizontal" } };
 export const Disabled = { args: { disabled: true } };
+export const Readonly = { args: { readonly: true, value: "banana" } };
 export const WithDisabledOption = {
   args: {
     options: [
