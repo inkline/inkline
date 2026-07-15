@@ -65,19 +65,19 @@ of them. Example: `STORY_SHARD=1/2 pnpm --filter @inkline/e2e test:e2e`. CI runs
 exercised at a time. React references are captured once in `beforeAll` and reused across the
 per-framework tests.
 
-## Expect some red
+## Green means green
 
-The suite surfaces **real** cross-framework differences. As of this writing: the Input `two-way` width
-differs ~10px and a Button `sizes` story ~18px between some frameworks, plus a few ±2px rounding diffs;
-Solid matches React exactly; Qwik renders (the suite waits for its container to resume) and shows only
-small `fieldgroup` diffs. These are genuine findings, not test flakiness — the suite is wired
-**non-blocking** in CI (not part of `ci-success`) while they're triaged.
+The suite surfaces **real** cross-framework differences, and it is now green and deterministic across
+all seven targets — Solid, Qwik (the suite waits for its container to resume), and the rest all match
+the React reference. A diff here is a real regression, so the check is **blocking** in CI. Any new red
+is a genuine finding to fix, not test flakiness or an expected residual — read the uploaded Playwright
+report + diff images to triage it.
 
 ## CI
 
-A non-blocking `visual-parity` job in [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)
+A blocking `visual-parity` job in [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)
 (`needs: build`) runs both shards and uploads the Playwright report + diff images as artifacts. It is
-deliberately not in `ci-success.needs`; add it there to make it blocking.
+listed in `ci-success.needs`, so a parity failure fails the pipeline.
 
 ## See also
 
