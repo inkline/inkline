@@ -9,6 +9,8 @@ export interface CheckboxControlBaseProps {
   disabled?: boolean;
   /** Marks the control as required (must be checked to submit). */
   required?: boolean;
+  /** Marks the control as read-only: it stays focusable but the value cannot be toggled. */
+  readonly?: boolean;
   /** Renders the partially-checked ("mixed") state. */
   indeterminate?: boolean;
 }
@@ -23,9 +25,16 @@ export interface CheckboxControlBaseProps {
 //   - The `indeterminate={…}` prop compiles to a *property* binding on Vue/Solid/Svelte/Qwik/Angular
 //     (`el.indeterminate = …`), which is exactly right there. React alone renders it inert.
 //   - The `createRef` + `createEffect` assigns `el.indeterminate` imperatively, patching React (where
-//     the prop is inert). It is redundant-but-harmless on the property-binding targets, and a no-op
-//     on Angular — its element ref is an `ElementRef` the compiler does not yet unwrap to
-//     `.nativeElement`, tracked upstream — where the property binding already does the job.
+//     the prop is inert). It is redundant-but-harmless on the property-binding targets, including
+//     Angular, where the compiler unwraps the element ref to `.nativeElement`.
+//
+// `readonly` has no native effect on a checkbox (the HTML `readonly` attribute is ignored for the
+// checkbox type), so read-only is expressed with `aria-readonly` and enforced by cancelling the click
+// default — which stops both the toggle and the `change` that would follow. The guard is written as a
+// single expression (`props.readonly && e.preventDefault()`) so Angular's template codegen can inline
+// it; a block body collapses to an empty `(click)=""` there. Correct on six targets; on React the
+// styled→headless forward renames the `readonly` prop to `readOnly`, so the value never reaches this
+// control (aria + guard stay inert) — a compiler gap tracked upstream as INK-26.
 export default defineComponent({ meta: { headless: true } }, (props: CheckboxControlBaseProps) => {
   const [checked, setChecked] = defineModel<boolean>("checked");
   const controlRef = createRef<HTMLInputElement>();
@@ -48,6 +57,8 @@ export default defineComponent({ meta: { headless: true } }, (props: CheckboxCon
       indeterminate={props.indeterminate ?? false}
       disabled={props.disabled}
       required={props.required}
+      aria-readonly={props.readonly ? "true" : undefined}
+      onClick={(e: { preventDefault: () => void }) => props.readonly && e.preventDefault()}
       onChange={(e: { currentTarget: HTMLInputElement }) => setChecked(e.currentTarget.checked)}
     />
   );

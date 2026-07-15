@@ -21,7 +21,7 @@ export interface CheckboxProps extends CheckboxControlBaseProps {
   label?: string;
 }
 @Component({ standalone: true, selector: 'ink-checkbox', host: { style: 'display: contents' }, imports: [ICheckboxBase, ICheckboxControlBase], template: \`<ink-checkbox-base [klass]="(wrapperClassName()) + (klass() ? ' ' + klass() : '')">
-<ink-checkbox-control-base [klass]="(fieldClassName())" [id]="id()" [name]="name()" [disabled]="disabled()" [required]="required()" [indeterminate]="indeterminate()" [checked]="checked()" (checkedChange)="checked.set($event)"></ink-checkbox-control-base>
+<ink-checkbox-control-base [klass]="(fieldClassName())" [id]="id()" [name]="name()" [disabled]="disabled()" [required]="required()" [readonly]="readonly()" [indeterminate]="indeterminate()" [checked]="checked()" (checkedChange)="checked.set($event)"></ink-checkbox-control-base>
 <ng-content>{{ label() }}</ng-content>
 </ink-checkbox-base>\` })
 export class ICheckboxComponent
@@ -38,10 +38,11 @@ id = input<string>()
 name = input<string>()
 disabled = input<boolean>()
 required = input<boolean>()
+readonly = input<boolean>()
 indeterminate = input<boolean>()
 checked = model<boolean>()
 }
-@Component({ standalone: true, selector: 'label[ink-checkbox]', host: { '[class]': "'checkbox' + ((wrapperClassName()) ? ' ' + (wrapperClassName()) : '') + (klass() ? ' ' + klass() : '')", 'ink-checkbox-base': '' }, imports: [ICheckboxControlBaseHostComponent], template: \`<input ink-checkbox-control-base [klass]="(fieldClassName())" [id]="id()" [name]="name()" [disabled]="disabled()" [required]="required()" [indeterminate]="indeterminate()" [checked]="checked()" (checkedChange)="checked.set($event)" />
+@Component({ standalone: true, selector: 'label[ink-checkbox]', host: { '[class]': "'checkbox' + ((wrapperClassName()) ? ' ' + (wrapperClassName()) : '') + (klass() ? ' ' + klass() : '')", 'ink-checkbox-base': '' }, imports: [ICheckboxControlBaseHostComponent], template: \`<input ink-checkbox-control-base [klass]="(fieldClassName())" [id]="id()" [name]="name()" [disabled]="disabled()" [required]="required()" [readonly]="readonly()" [indeterminate]="indeterminate()" [checked]="checked()" (checkedChange)="checked.set($event)" />
 <ng-content>{{ label() }}</ng-content>\` })
 export class ICheckboxHostComponent
 {
@@ -57,6 +58,7 @@ id = input<string>()
 name = input<string>()
 disabled = input<boolean>()
 required = input<boolean>()
+readonly = input<boolean>()
 indeterminate = input<boolean>()
 checked = model<boolean>()
 }
@@ -79,13 +81,13 @@ export interface CheckboxProps extends CheckboxControlBaseProps {
 }
 type Props = CheckboxProps & Record<string, any>
 const props = Astro.props as Props;
-const { color, size, label, id, name, disabled, required, indeterminate, ...__attrs } = props;
+const { color, size, label, id, name, disabled, required, readonly, indeterminate, ...__attrs } = props;
 let checked = props.checked
 const wrapperClassName = checkboxRecipe({ size: size })
 const fieldClassName = checkboxFieldRecipe({ color: color, size: size })
 ---
 <ICheckboxBase {...__attrs} class={[wrapperClassName, __attrs.class].filter(Boolean).join(" ")}>
-<ICheckboxControlBase class={fieldClassName} id={id} name={name} disabled={disabled} required={required} indeterminate={indeterminate} checked={checked} />
+<ICheckboxControlBase class={fieldClassName} id={id} name={name} disabled={disabled} required={required} readonly={readonly} indeterminate={indeterminate} checked={checked} />
 <slot>
 {label}
 </slot>
@@ -112,11 +114,11 @@ export const ICheckbox = component$((props: CheckboxProps & { checked?: boolean;
 {
 const wrapperClassName = useComputed$(() => checkboxRecipe({ size: props.size }))
 const fieldClassName = useComputed$(() => checkboxFieldRecipe({ color: props.color, size: props.size }))
-const { children, color, size, label, id, name, disabled, required, indeterminate, checked, onUpdateChecked$, ...__attrs } = props
+const { children, color, size, label, id, name, disabled, required, readonly, indeterminate, checked, onUpdateChecked$, ...__attrs } = props
 return (
 <ICheckboxBase {...__attrs} class={[wrapperClassName.value, props.class].filter(Boolean).join(" ")}>
   <>
-    <ICheckboxControlBase class={fieldClassName.value} id={props.id} name={props.name} disabled={props.disabled} required={props.required} indeterminate={props.indeterminate} checked={props.checked} onUpdateChecked$={$(v => props.onUpdateChecked$?.(v))} />
+    <ICheckboxControlBase class={fieldClassName.value} id={props.id} name={props.name} disabled={props.disabled} required={props.required} readonly={props.readonly} indeterminate={props.indeterminate} checked={props.checked} onUpdateChecked$={$(v => props.onUpdateChecked$?.(v))} />
     <Slot>
       {props.label}
     </Slot>
@@ -146,11 +148,11 @@ export function ICheckbox(props: CheckboxProps & { children?: React.ReactNode } 
 {
 const wrapperClassName = useMemo(() => checkboxRecipe({ size: props.size }), [props.size])
 const fieldClassName = useMemo(() => checkboxFieldRecipe({ color: props.color, size: props.size }), [props.color, props.size])
-const { children, color, size, label, id, name, disabled, required, indeterminate, checked, onUpdateChecked, ...__attrs } = props
+const { children, color, size, label, id, name, disabled, required, readonly, indeterminate, checked, onUpdateChecked, ...__attrs } = props
 return (
 <ICheckboxBase {...__attrs} className={[wrapperClassName, props.className].filter(Boolean).join(" ")}>
   <>
-    <ICheckboxControlBase className={fieldClassName} id={props.id} name={props.name} disabled={props.disabled} required={props.required} indeterminate={props.indeterminate} checked={props.checked} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
+    <ICheckboxControlBase className={fieldClassName} id={props.id} name={props.name} disabled={props.disabled} required={props.required} readOnly={props.readonly} indeterminate={props.indeterminate} checked={props.checked} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
     {props.children ?? props.label}
   </>
 </ICheckboxBase>
@@ -178,11 +180,11 @@ export default function ICheckbox(props: CheckboxProps & { children?: any } & { 
 {
 const wrapperClassName = createMemo(() => checkboxRecipe({ size: props.size }))
 const fieldClassName = createMemo(() => checkboxFieldRecipe({ color: props.color, size: props.size }))
-const [, __attrs] = splitProps(props, ["children", "color", "size", "label", "id", "name", "disabled", "required", "indeterminate", "checked", "onUpdateChecked"])
+const [, __attrs] = splitProps(props, ["children", "color", "size", "label", "id", "name", "disabled", "required", "readonly", "indeterminate", "checked", "onUpdateChecked"])
 return (
 <ICheckboxBase {...__attrs} class={[wrapperClassName(), props.class].filter(Boolean).join(" ")}>
   <>
-    <ICheckboxControlBase class={fieldClassName()} id={props.id} name={props.name} disabled={props.disabled} required={props.required} indeterminate={props.indeterminate} checked={props.checked} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
+    <ICheckboxControlBase class={fieldClassName()} id={props.id} name={props.name} disabled={props.disabled} required={props.required} readonly={props.readonly} indeterminate={props.indeterminate} checked={props.checked} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
     {props.children ?? props.label}
   </>
 </ICheckboxBase>
@@ -206,12 +208,12 @@ return (
     label?: string;
   }
   import type { Snippet } from "svelte";
-  let { color, size, label, id, name, disabled, required, indeterminate, checked = $bindable(), children, ...__attrs }: CheckboxProps & { checked?: boolean; children?: Snippet } & Record<string, any> = $props()
+  let { color, size, label, id, name, disabled, required, readonly, indeterminate, checked = $bindable(), children, ...__attrs }: CheckboxProps & { checked?: boolean; children?: Snippet } & Record<string, any> = $props()
   let wrapperClassName = $derived(checkboxRecipe({ size: size }))
   let fieldClassName = $derived(checkboxFieldRecipe({ color: color, size: size }))
 </script>
 <ICheckboxBase {...__attrs} class={[wrapperClassName, __attrs.class].filter(Boolean).join(" ")}>
-  <ICheckboxControlBase bind:checked={checked} class={fieldClassName} id={id} name={name} disabled={disabled} required={required} indeterminate={indeterminate} />
+  <ICheckboxControlBase bind:checked={checked} class={fieldClassName} id={id} name={name} disabled={disabled} required={required} readonly={readonly} indeterminate={indeterminate} />
   {#if children}{@render children()}{:else}{label}{/if}
 </ICheckboxBase>
 ",
@@ -239,7 +241,7 @@ return (
 </script>
 <template>
 <ICheckboxBase :class="wrapperClassName">
-  <ICheckboxControlBase v-model:checked="checked" :class="fieldClassName" :id="id" :name="name" :disabled="disabled" :required="required" :indeterminate="indeterminate" />
+  <ICheckboxControlBase v-model:checked="checked" :class="fieldClassName" :id="id" :name="name" :disabled="disabled" :required="required" :readonly="readonly" :indeterminate="indeterminate" />
   <slot>
     {{ label }}
   </slot>

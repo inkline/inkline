@@ -73,6 +73,20 @@ describe("CheckboxControl", () => {
     expectOutputContains(result.files.vue ?? [], "e.currentTarget.checked");
   });
 
+  it("exposes read-only via aria-readonly and enforces it by cancelling the click default", async () => {
+    // A native checkbox ignores the HTML `readonly` attribute, so read-only is announced with
+    // `aria-readonly` and enforced by preventing the click default (which also stops the change).
+    // The single-expression guard is used so Angular's template codegen can express it inline
+    // (a block-bodied handler collapses to an empty `(click)=""` binding there).
+    const result = await compileComponent(CHECKBOX_CONTROL);
+    expectOutputContains(
+      result.files.react ?? [],
+      'aria-readonly={props.readonly ? "true" : undefined}',
+    );
+    expectOutputContains(result.files.react ?? [], "props.readonly && e.preventDefault()");
+    expectOutputContains(result.files.angular ?? [], "readonly() && $event.preventDefault()");
+  });
+
   it("output matches snapshots", async () => {
     const result = await compileComponent(CHECKBOX_CONTROL);
     expect(snapshotOutput(result)).toMatchSnapshot();

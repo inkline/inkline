@@ -8,12 +8,14 @@ const meta = defineStories<CheckboxProps>({
     label: "Accept terms",
     indeterminate: false,
     disabled: false,
+    readonly: false,
     required: false,
   },
   argTypes: {
     label: { control: "text", description: "Label text; overridden by the default slot" },
     indeterminate: { control: "boolean", description: 'Partially-checked ("mixed") state' },
     disabled: { control: "boolean", description: "Disabled state" },
+    readonly: { control: "boolean", description: "Read-only: focusable but not toggleable" },
     required: { control: "boolean", description: "Required for form submission" },
     color: {
       control: "select",
@@ -29,6 +31,7 @@ export default meta;
 export const Default = {};
 export const Indeterminate = { args: { indeterminate: true } };
 export const Disabled = { args: { disabled: true } };
+export const ReadOnly = { render: "./CheckboxReadOnly.ink.tsx" };
 export const Colors = { render: "./CheckboxColors.ink.tsx" };
 export const Sizes = { render: "./CheckboxSizes.ink.tsx" };
 export const States = { render: "./CheckboxStates.ink.tsx" };

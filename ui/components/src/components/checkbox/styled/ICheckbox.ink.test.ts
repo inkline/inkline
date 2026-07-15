@@ -76,6 +76,27 @@ describe("ICheckbox (styled)", () => {
     expectOutputContains(out(result, "vue"), ':indeterminate="indeterminate"');
   });
 
+  it("forwards readonly to the control on the six non-React targets", async () => {
+    // The prop name crosses the component boundary verbatim on every target except React.
+    const result = await compileComponent(ICHECKBOX);
+    expectOutputContains(out(result, "vue"), ':readonly="readonly"');
+    expectOutputContains(out(result, "svelte"), "readonly={readonly}");
+    expectOutputContains(out(result, "solid"), "readonly={props.readonly}");
+    expectOutputContains(out(result, "qwik"), "readonly={props.readonly}");
+    expectOutputContains(out(result, "angular"), '[readonly]="readonly()"');
+  });
+
+  it("documents the React readonly→readOnly component-prop rename gap (INK-26)", async () => {
+    // React canonicalises the `readonly` HTML attribute to `readOnly` even at a custom-component
+    // boundary, so the styled forward emits `readOnly={props.readonly}` while the headless control
+    // reads `props.readonly` — the value never arrives on React (aria-readonly unset, click guard
+    // dead). Broken identically for IInput. Tracked upstream as INK-26; correct on the other six
+    // targets. This assertion pins the current (buggy) output so it flips when the compiler stops
+    // renaming component props and we can drop the caveat.
+    const result = await compileComponent(ICHECKBOX);
+    expectOutputContains(out(result, "react"), "readOnly={props.readonly}");
+  });
+
   it("output matches snapshots", async () => {
     const result = await compileComponent(ICHECKBOX);
     expect(snapshotOutput(result)).toMatchSnapshot();
@@ -119,6 +140,14 @@ describe("ICheckbox (styled) on Angular SSR", () => {
     const { html } = await mount({ label: "Off", disabled: true });
 
     expect(html).toMatch(/<input[^>]*disabled/);
+  });
+
+  it("announces read-only via aria-readonly on the native control", async () => {
+    // A native checkbox ignores the HTML `readonly` attribute, so read-only is surfaced to assistive
+    // tech through `aria-readonly="true"` (the click-cancel guard enforces it interactively).
+    const { html } = await mount({ label: "Locked", readonly: true, checked: true });
+
+    expect(html).toMatch(/<input[^>]*aria-readonly="true"/);
   });
 
   // The collapsed host variant inlines the composite onto native elements: the wrapper is the

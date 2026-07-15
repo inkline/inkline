@@ -26,7 +26,8 @@ export interface CheckboxProps extends CheckboxControlBaseProps {
  * `<input type="checkbox">`, styled together. The wrapper recipe class lands on the `<label>` and the
  * field recipe class on the `<input>` (each via attribute fallthrough onto its single root). The
  * two-way `checked` is forwarded to the control via `$bind:checked`; `indeterminate` is forwarded as
- * a prop (the control applies it as a DOM property). The checked accent is the theme primary.
+ * a prop (the control applies it as a DOM property), as is `readonly` (the control expresses it with
+ * `aria-readonly` and a click guard). The checked accent is the theme primary.
  */
 export default defineComponent(
   { meta: { headless: true }, slots: { default: {} } },
@@ -46,6 +47,7 @@ export default defineComponent(
           name={props.name}
           disabled={props.disabled}
           required={props.required}
+          readonly={props.readonly}
           indeterminate={props.indeterminate}
           $bind:checked={checked}
         />
