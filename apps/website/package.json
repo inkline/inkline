@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vp dev",
-    "build": "tsc && vp build",
+    "build": "tsgo && vp build",
     "preview": "vp preview"
   },
   "devDependencies": {
+    "@typescript/native-preview": "7.0.0-dev.20260613.1",
     "typescript": "catalog:",
     "vite": "npm:@voidzero-dev/vite-plus-core@^0.1.24",
     "vite-plus": "catalog:"
