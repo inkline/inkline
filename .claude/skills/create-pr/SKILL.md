@@ -5,13 +5,13 @@ description: Author a pull request in the Guild's standard shape — a fixed Sum
 
 # Create a PR
 
-This is the **author-side mirror of `review-gate`**. The reviewer's manual defines what a good PR carries; this skill builds one that satisfies it *by construction*, so review is a confirmation, not a repair. Do not invent a second standard — when in doubt, defer to `review-gate` and `multica-teamwork`'s PR rule (title = conventional commit; body = what/why, evidence, risk, docs).
+This is the **author-side mirror of `review-gate`**. The reviewer's manual defines what a good PR carries; this skill builds one that satisfies it _by construction_, so review is a confirmation, not a repair. Do not invent a second standard — when in doubt, defer to `review-gate` and `multica-teamwork`'s PR rule (title = conventional commit; body = what/why, evidence, risk, docs).
 
 ## Hard rule — PRs are public, agent handles must not leak
 
 **A PR title or body must never contain an agent `@mention` or a `mention://` link.** PRs are public artifacts; internal agent handles and Multica mention URLs do not belong in them. This is load-bearing (`platform-trust`), not a style nit.
 
-- Routing another agent for review/sign-off happens **on the Multica issue** (`multica issue comment add … [@warden](mention://agent/…)`), never in the PR. The PR references *work* (issue identifiers like `INK-23`, commit SHAs, file paths) — never *people by handle*.
+- Routing another agent for review/sign-off happens **on the Multica issue** (`multica issue comment add … [@warden](mention://agent/…)`), never in the PR. The PR references _work_ (issue identifiers like `INK-23`, commit SHAs, file paths) — never _people by handle_.
 - Plain GitHub `@username` handles for real humans that GitHub itself expands are a separate thing, but **do not add them speculatively** — and never an agent handle dressed as one.
 
 ### Pre-post check (mandatory — run before `gh pr create`)
@@ -43,11 +43,11 @@ printf 'Reviewed by [@warden](mention://agent/123).\n'          | grep -qE "$LEA
 printf 'thanks @warden\n'                                       | grep -qE "$LEAK" && echo "ok: bare handle rejected"  || echo FAIL
 ```
 
-A hit is a hard reject, not a warning. The most common source is copy-pasting a Multica comment (which *does* carry mentions) into the PR body — rewrite it, don't paste it.
+A hit is a hard reject, not a warning. The most common source is copy-pasting a Multica comment (which _does_ carry mentions) into the PR body — rewrite it, don't paste it.
 
 ## Before you draft — the gate the PR must already pass
 
-Author these into the branch *first*; the PR only describes them:
+Author these into the branch _first_; the PR only describes them:
 
 1. **Surgical diff.** Every changed line traces to the issue. No drive-by reformatting, no adjacent "improvements", no unrelated dead-code deletion. Orphans your change creates ARE cleaned up.
 2. **Changeset.** Present for every affected **published** package, at the correct bump level (`pnpm changeset`). Ignore-listed: `website`, `@inkline/components` — but a component change ships through the framework packages, so it needs a changeset for **each affected `@inkline/<framework>`**. Semver: new API = minor; observable output/type change ≠ patch; breaking (removed exports/subpaths, IR schema, prop/axis renames) = major + migration note + Alex sign-off.
@@ -61,16 +61,20 @@ Every PR body uses exactly these four sections, in this order:
 
 ```markdown
 ## Summary
+
 One or two sentences: what changed and why. Reference the issue by identifier (e.g. INK-23) — not by any agent handle.
 
 ## Changes
+
 - Bulleted, per-area. Each bullet traces to the issue.
 - Note the changeset(s) added and their bump level, or state why none is required (ignore-listed package).
 
 ## Verification
+
 Paste the actual command output (test/build), not a claim. Note which paths were exercised (CLI vs plugin, per-target) when relevant.
 
 ## Notes
+
 Risk, blast radius, breaking-change migration note (if any), and anything deferred as out of scope. "None." is a valid body.
 ```
 
@@ -88,23 +92,27 @@ Body:
 
 ```markdown
 ## Summary
+
 Button dropped `aria-label` on the emitted root, breaking icon-only buttons for
 screen readers (INK-118). Forward it through to the root element.
 
 ## Changes
+
 - ui/components: pass `aria-label` from props to the root node in `button.ink.tsx`.
 - Added `button.ink.test.ts` case asserting the attribute reaches the DOM (fails without the fix).
 - Changesets: minor for each affected @inkline/<framework> (react, vue, svelte, …) —
   emitted output changed, so this ships through every framework package at a consistent bump.
 
 ## Verification
+
 $ vp test --filter @inkline/components button
-  ✓ forwards aria-label to root (real-DOM mount)
-  32 passed
+✓ forwards aria-label to root (real-DOM mount)
+32 passed
 $ vp check
-  clean (baseline TS17004 fixture noise only)
+clean (baseline TS17004 fixture noise only)
 
 ## Notes
+
 No API surface change; additive behavior. No migration needed.
 ```
 
