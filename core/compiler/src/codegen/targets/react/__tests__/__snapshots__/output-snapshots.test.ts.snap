@@ -552,8 +552,8 @@ return (
 )
 }
 
-import { useRef, useEffect } from "react";
-export function ComponentRef(props: React.HTMLAttributes<HTMLElement>)
+import { useRef, useEffect, forwardRef } from "react";
+export const ComponentRef = forwardRef(function ComponentRef(props: React.HTMLAttributes<HTMLElement>, ref)
 {
 const childRef = useRef(null)
 useEffect(() => { console.log(childRef.current); }, [])
@@ -561,6 +561,6 @@ const { ...__attrs } = props
 return (
 <Child {...__attrs} className={props.className} ref={childRef} />
 )
-}
+});
 "
 `;
