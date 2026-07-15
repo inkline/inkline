@@ -225,7 +225,12 @@ rules. For example, a zero-argument call like `count()` becomes:
 - **field-access(.value)**: `count.value` (Qwik)
 
 `rewriteAttrName` maps between React casing (`className`, `htmlFor`) and HTML
-casing (`class`, `for`). `rewriteEventName` handles prefix and case conversion.
+casing (`class`, `for`). The React DOM canonicalisation (`for` → `htmlFor`,
+`readonly` → `readOnly`, …) applies only to **native host elements**; on a custom
+component instance (`isComponent`) prop names cross the boundary verbatim so they
+still match the child's HTML-native lowercase prop interface, with `class` →
+`className` kept as the one deliberate exception. `rewriteEventName` handles prefix
+and case conversion (and the same host-vs-component distinction).
 
 ---
 

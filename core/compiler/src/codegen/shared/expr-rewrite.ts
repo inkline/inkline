@@ -401,9 +401,23 @@ const REACT_ATTR_MAP: Record<string, string> = {
   readonly: "readOnly",
 };
 
-export function rewriteAttrName(name: string, rules: RewriteRules): string {
+// React canonicalisation (`for` → `htmlFor`, `readonly` → `readOnly`, …) is a *host DOM* concern; it
+// must not touch props of a custom Inkline component, whose prop interfaces use the HTML-native
+// lowercase names and would otherwise stop receiving the forwarded value (the key no longer matches
+// what the child reads). Component prop names cross the boundary verbatim, matching the other six
+// targets. `class` → `className` is the one deliberate exception: Inkline React components expose
+// `className`, so it is preserved on components too.
+const REACT_COMPONENT_ATTR_MAP: Record<string, string> = {
+  class: "className",
+};
+
+// `isComponent` distinguishes an attribute on a custom component instance from one on a native host
+// element (mirrors `rewriteEventName`). Only host attributes get the full React canonicalisation.
+export function rewriteAttrName(name: string, rules: RewriteRules, isComponent = false): string {
   if (rules.jsxAttrCasing === "html") return HTML_ATTR_MAP[name] ?? name;
-  if (rules.jsxAttrCasing === "react") return REACT_ATTR_MAP[name] ?? name;
+  if (rules.jsxAttrCasing === "react") {
+    return (isComponent ? REACT_COMPONENT_ATTR_MAP : REACT_ATTR_MAP)[name] ?? name;
+  }
   return name;
 }
 
