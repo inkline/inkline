@@ -87,6 +87,9 @@ catalog:
   tslib: ^2.8.1
   tsx: ^4.22.4
   typescript: ^6.0.3
+  # Deliberately de-floated from `@latest`: a floating tag re-resolves on every
+  # install and silently drags in vite-plus-core upgrades. Pinned to the exact
+  # version — bump this line manually to move vite forward.
   vite: npm:@voidzero-dev/vite-plus-core@0.2.1
   vite-plugin-solid: ^2.11.12
   vite-plus: ^0.1.24
