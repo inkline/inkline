@@ -246,8 +246,8 @@ const radioClassName = useMemo(() => radioRecipe({ size: props.size }), [props.s
 const fieldClassName = useMemo(() => radioFieldRecipe({ color: props.color, size: props.size }), [props.color, props.size])
 const { options, name, color, size, orientation, disabled, readonly, id, label, value, onUpdateValue, ...__attrs } = props
 return (
-<IRadioGroupBase {...__attrs} id={props.id} label={props.label} readOnly={props.readonly} className={[groupClassName, props.className].filter(Boolean).join(" ")}>
-  {items.map((option) => (<Fragment key={option.value}><IRadioBase className={radioClassName}><><IRadioFieldBase className={fieldClassName} name={props.name} value={option.value} checked={props.value === option.value} disabled={props.disabled || option.disabled} readOnly={props.readonly} onChange={() => props.onUpdateValue?.(option.value)} /><span className="radio-label">{option.label ?? option.value}</span></></IRadioBase></Fragment>))}
+<IRadioGroupBase {...__attrs} id={props.id} label={props.label} readonly={props.readonly} className={[groupClassName, props.className].filter(Boolean).join(" ")}>
+  {items.map((option) => (<Fragment key={option.value}><IRadioBase className={radioClassName}><><IRadioFieldBase className={fieldClassName} name={props.name} value={option.value} checked={props.value === option.value} disabled={props.disabled || option.disabled} readonly={props.readonly} onChange={() => props.onUpdateValue?.(option.value)} /><span className="radio-label">{option.label ?? option.value}</span></></IRadioBase></Fragment>))}
 </IRadioGroupBase>
 )
 }
