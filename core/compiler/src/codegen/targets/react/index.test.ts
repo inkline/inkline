@@ -405,6 +405,57 @@ describe("react ComponentInstance slot fills", () => {
   });
 });
 
+// React canonicalises host attrs (readonly→readOnly, for→htmlFor) but must leave custom-component prop
+// keys verbatim — the child's prop interface uses the HTML-native lowercase name (INK-26). `class` is
+// the one exception both sides: Inkline React components expose `className`.
+describe("react attribute canonicalisation across the component boundary", () => {
+  it("renames readonly→readOnly / for→htmlFor on a native host element", () => {
+    const el = createElement({
+      tag: "input",
+      attrs: [
+        createAttribute({
+          name: "readonly",
+          value: createExpr({ expr: mockExpr("props.readonly") }),
+        }),
+        createAttribute({ name: "for", value: createStaticValue({ value: "x" }) }),
+      ],
+    });
+    const code = emitCode(react, makeComp("Parent", el));
+    expect(code).toContain("readOnly={props.readonly}");
+    expect(code).toContain('htmlFor="x"');
+  });
+
+  it("keeps readonly / for verbatim when forwarded to a custom component", () => {
+    const ci = createComponentInstance({
+      reference: mockExpr("ICheckboxControlBase") as ts.Identifier,
+      resolved: { module: null, name: "ICheckboxControlBase" },
+      attrs: [
+        createAttribute({
+          name: "readonly",
+          value: createExpr({ expr: mockExpr("props.readonly") }),
+        }),
+        createAttribute({ name: "for", value: createStaticValue({ value: "x" }) }),
+      ],
+    });
+    const code = emitCode(react, makeComp("Parent", ci));
+    expect(code).toContain("readonly={props.readonly}");
+    expect(code).not.toContain("readOnly");
+    expect(code).toContain('for="x"');
+    expect(code).not.toContain("htmlFor");
+  });
+
+  it("keeps class→className on a custom component (deliberate exception)", () => {
+    const ci = createComponentInstance({
+      reference: mockExpr("ICheckboxControlBase") as ts.Identifier,
+      resolved: { module: null, name: "ICheckboxControlBase" },
+      attrs: [createAttribute({ name: "class", value: createStaticValue({ value: "ck" }) })],
+    });
+    const code = emitCode(react, makeComp("Parent", ci));
+    expect(code).toContain('className="ck"');
+    expect(code).not.toContain('class="ck"');
+  });
+});
+
 // Merged from the former react/fallthrough.test.ts.
 describe("react attribute fallthrough", () => {
   function prop(name: string) {

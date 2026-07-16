@@ -96,6 +96,7 @@ function jsxAttrs(
     readonly acceptsAttrFallthrough?: boolean;
   },
   rules: RewriteRules,
+  isComponent = false,
 ) {
   const fallthrough = node.acceptsAttrFallthrough === true;
   const out = [];
@@ -124,7 +125,7 @@ function jsxAttrs(
       classMerged = true;
       continue;
     }
-    const name = rewriteAttrName(a.name, rules);
+    const name = rewriteAttrName(a.name, rules, isComponent);
     if (a.value.kind === "Static") {
       const v = a.value.value;
       out.push(
@@ -194,7 +195,7 @@ function emitNode(node: IRNode, rules: RewriteRules): Code {
     }
     case "ComponentInstance": {
       const tag = node.resolved?.name ?? node.reference.getText();
-      const attrs = jsxAttrs(node, rules);
+      const attrs = jsxAttrs(node, rules, true);
       // The default slot is `children`; a named slot is consumed as a prop (see the `SlotPlaceholder`
       // case) — a node prop (`prefix={<>$</>}`) when unscoped, a function prop (`item={(row) => …}`)
       // when it takes args. A `<Tag.name>` child would never reach the consumer.
