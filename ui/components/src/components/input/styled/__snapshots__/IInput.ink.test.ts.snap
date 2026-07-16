@@ -199,7 +199,7 @@ return (
 <IInputBase {...__attrs} className={[shellClassName, props.className].filter(Boolean).join(" ")}>
   <>
     {(props.prefix != null) ? <IInputPrefixBase className={inputPrefixRecipe({ size: props.size })}>{props.prefix}</IInputPrefixBase> : null}
-    {props.type === "textarea" ? <IInputTextareaBase id={props.id} name={props.name} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readOnly={props.readonly} onUpdateValue={v => props.onUpdateValue?.(v)} /> : <IInputControlBase id={props.id} name={props.name} type={props.type} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readOnly={props.readonly} onUpdateValue={v => props.onUpdateValue?.(v)} />}
+    {props.type === "textarea" ? <IInputTextareaBase id={props.id} name={props.name} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} onUpdateValue={v => props.onUpdateValue?.(v)} /> : <IInputControlBase id={props.id} name={props.name} type={props.type} value={props.value} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} onUpdateValue={v => props.onUpdateValue?.(v)} />}
     {(props.suffix != null) ? <IInputSuffixBase className={inputSuffixRecipe({ size: props.size })}>{props.suffix}</IInputSuffixBase> : null}
   </>
 </IInputBase>

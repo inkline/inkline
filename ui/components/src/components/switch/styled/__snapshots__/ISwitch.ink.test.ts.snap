@@ -161,7 +161,7 @@ const { children, color, size, label, id, name, disabled, readonly, checked, onU
 return (
 <ISwitchBase {...__attrs} className={[shellClassName, props.className].filter(Boolean).join(" ")}>
   <>
-    <ISwitchControlBase className={fieldClassName} id={props.id} name={props.name} checked={props.checked} disabled={props.disabled} readOnly={props.readonly} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
+    <ISwitchControlBase className={fieldClassName} id={props.id} name={props.name} checked={props.checked} disabled={props.disabled} readonly={props.readonly} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
     <ISwitchLabelBase>
       {props.children ?? props.label}
     </ISwitchLabelBase>
