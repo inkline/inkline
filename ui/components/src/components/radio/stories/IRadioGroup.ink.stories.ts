@@ -40,19 +40,14 @@ const meta = defineStories<RadioGroupProps>({
 
 export default meta;
 
-export const Default = {};
-export const Horizontal = { args: { orientation: "horizontal" } };
-export const Disabled = { args: { disabled: true } };
-export const Readonly = { args: { readonly: true, value: "banana" } };
-export const WithDisabledOption = {
-  args: {
-    options: [
-      { value: "apple", label: "Apple" },
-      { value: "banana", label: "Banana", disabled: true },
-      { value: "cherry", label: "Cherry" },
-    ],
-  },
-};
+// `value` is a two-way `defineModel`, so it can't be a Storybook argType. These stories therefore use
+// render helpers that own a local `createSignal` bound via `$bind:value` — the same pattern as the
+// showcases below — so each has a default selection and clicks actually move it.
+export const Default = { render: "./RadioDefault.ink.tsx" };
+export const Horizontal = { render: "./RadioHorizontal.ink.tsx" };
+export const Disabled = { render: "./RadioDisabled.ink.tsx" };
+export const Readonly = { render: "./RadioReadonly.ink.tsx" };
+export const WithDisabledOption = { render: "./RadioWithDisabledOption.ink.tsx" };
 export const Sizes = { render: "./RadioSizes.ink.tsx" };
 export const Colors = { render: "./RadioColors.ink.tsx" };
 export const Orientations = { render: "./RadioOrientations.ink.tsx" };
