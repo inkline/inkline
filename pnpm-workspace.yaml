@@ -118,6 +118,10 @@ catalog:
 #                           "typescript"`, so it needs a peer to honor this pin.)
 #   - ui/qwik             — @storybook/addon-docs pulls react-docgen-typescript,
 #                           which reads the classic `ts.*` API at module load.
+#   - ui/solid            — @joshwooding/vite-plugin-react-docgen-typescript (via
+#                           storybook-solidjs-vite) pulls react-docgen-typescript,
+#                           which calls `ts.sys.fileExists` at story-transform time,
+#                           undefined on TS7's reshaped entry.
 catalogs:
   ts6:
     typescript: npm:@typescript/typescript6@^6.0.2
