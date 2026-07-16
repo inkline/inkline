@@ -47,6 +47,7 @@ export default defineComponent(
           name={props.name}
           $bind:checked={checked}
           disabled={props.disabled}
+          readonly={props.readonly}
         />
         <ISwitchLabelBase>
           <Slot>{props.label}</Slot>

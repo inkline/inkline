@@ -42,7 +42,8 @@
     "jsdom": "catalog:",
     "storybook": "catalog:",
     "storybook-framework-qwik": "catalog:",
-    "styleframe": "catalog:"
+    "styleframe": "catalog:",
+    "typescript": "catalog:ts6"
   },
   "peerDependencies": {
     "@qwik.dev/core": ">=2.0.0-beta.0"

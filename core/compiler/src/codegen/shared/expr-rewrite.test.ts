@@ -303,6 +303,24 @@ describe("rewriteAttrName", () => {
     const none = { ...STRIP, jsxAttrCasing: undefined } as unknown as RewriteRules;
     expect(rewriteAttrName("className", none)).toBe("className");
   });
+
+  // On a custom component instance the React DOM canonicalisation must not fire — the child's prop
+  // interface uses the HTML-native lowercase name, so a renamed key would silently never arrive.
+  it("react component: readonly stays readonly", () => {
+    expect(rewriteAttrName("readonly", react, true)).toBe("readonly");
+  });
+
+  it("react component: for stays for", () => {
+    expect(rewriteAttrName("for", react, true)).toBe("for");
+  });
+
+  it("react component: class → className is preserved (deliberate exception)", () => {
+    expect(rewriteAttrName("class", react, true)).toBe("className");
+  });
+
+  it("react component: unknown passes through", () => {
+    expect(rewriteAttrName("id", react, true)).toBe("id");
+  });
 });
 
 describe("rewriteExpr — additional expression forms", () => {

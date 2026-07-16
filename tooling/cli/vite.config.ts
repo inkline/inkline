@@ -7,7 +7,7 @@ export default defineConfig({
       "bin/inkline": "src/bin/inkline.ts",
     },
     dts: {
-      tsgo: true,
+      oxc: true,
     },
   },
   lint: {

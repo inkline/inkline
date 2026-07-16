@@ -52,7 +52,7 @@
     "@types/node": "catalog:",
     "@vitest/coverage-v8": "catalog:",
     "tsx": "catalog:",
-    "typescript": "catalog:",
+    "typescript": "catalog:ts6",
     "vite-plus": "catalog:",
     "vitest": "catalog:"
   }

@@ -6,7 +6,7 @@ export default defineConfig({
       index: "src/index.ts",
     },
     dts: {
-      tsgo: true,
+      oxc: true,
     },
   },
   lint: {

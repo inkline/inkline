@@ -10,23 +10,31 @@ export interface SwitchControlBaseProps {
   name?: string;
   /** Disables the control. */
   disabled?: boolean;
+  /**
+   * Marks the control read-only: announces \`aria-readonly\` and suppresses the toggle while keeping
+   * the switch focusable and form-submittable (unlike \`disabled\`). A native checkbox ignores the
+   * HTML \`readonly\` attribute, so this is enforced behaviourally.
+   */
+  readonly?: boolean;
 }
-@Component({ standalone: true, selector: 'ink-switch-control-base', host: { style: 'display: contents' }, template: \`<input [class]="'switch-field' + (klass() ? ' ' + klass() : '')" type="checkbox" role="switch" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [checked]="checked() ?? false" [attr.aria-checked]="(checked() ? 'true' : 'false') ?? null" [disabled]="disabled()" (change)="checked.set($event.currentTarget.checked)" (keydown)="$event.key === 'Enter' && $event.currentTarget.click()" />\` })
+@Component({ standalone: true, selector: 'ink-switch-control-base', host: { style: 'display: contents' }, template: \`<input [class]="'switch-field' + (klass() ? ' ' + klass() : '')" type="checkbox" role="switch" [attr.id]="(id()) ?? null" [attr.name]="(name()) ?? null" [checked]="checked() ?? false" [attr.aria-checked]="(checked() ? 'true' : 'false') ?? null" [attr.aria-readonly]="(readonly() ? 'true' : undefined) ?? null" [disabled]="disabled()" (change)="checked.set($event.currentTarget.checked)" (click)="readonly() && $event.preventDefault()" (keydown)="$event.key === 'Enter' && $event.currentTarget.click()" />\` })
 export class ISwitchControlBaseComponent
 {
 klass = input<string>()
 id = input<string>()
 name = input<string>()
 disabled = input<boolean>()
+readonly = input<boolean>()
 checked = model<boolean>()
 }
-@Component({ standalone: true, selector: 'input[ink-switch-control-base]', host: { '[class]': "'switch-field' + (klass() ? ' ' + klass() : '')", 'type': 'checkbox', 'role': 'switch', '[attr.id]': "(id()) ?? null", '[attr.name]': "(name()) ?? null", '[checked]': "checked() ?? false", '[attr.aria-checked]': "(checked() ? 'true' : 'false') ?? null", '[disabled]': "disabled()", '(change)': "checked.set($event.currentTarget.checked)", '(keydown)': "$event.key === 'Enter' && $event.currentTarget.click()" }, template: \`\` })
+@Component({ standalone: true, selector: 'input[ink-switch-control-base]', host: { '[class]': "'switch-field' + (klass() ? ' ' + klass() : '')", 'type': 'checkbox', 'role': 'switch', '[attr.id]': "(id()) ?? null", '[attr.name]': "(name()) ?? null", '[checked]': "checked() ?? false", '[attr.aria-checked]': "(checked() ? 'true' : 'false') ?? null", '[attr.aria-readonly]': "(readonly() ? 'true' : undefined) ?? null", '[disabled]': "disabled()", '(change)': "checked.set($event.currentTarget.checked)", '(click)': "readonly() && $event.preventDefault()", '(keydown)': "$event.key === 'Enter' && $event.currentTarget.click()" }, template: \`\` })
 export class ISwitchControlBaseHostComponent
 {
 klass = input<string>()
 id = input<string>()
 name = input<string>()
 disabled = input<boolean>()
+readonly = input<boolean>()
 checked = model<boolean>()
 }
 ",
@@ -38,13 +46,19 @@ export interface SwitchControlBaseProps {
   name?: string;
   /** Disables the control. */
   disabled?: boolean;
+  /**
+   * Marks the control read-only: announces \`aria-readonly\` and suppresses the toggle while keeping
+   * the switch focusable and form-submittable (unlike \`disabled\`). A native checkbox ignores the
+   * HTML \`readonly\` attribute, so this is enforced behaviourally.
+   */
+  readonly?: boolean;
 }
 type Props = SwitchControlBaseProps & Record<string, any>
 const props = Astro.props as Props;
-const { id, name, disabled, ...__attrs } = props;
+const { id, name, disabled, readonly, ...__attrs } = props;
 let checked = props.checked
 ---
-<input {...__attrs} class={["switch-field", __attrs.class].filter(Boolean).join(" ")} type="checkbox" role="switch" id={id} name={name} checked={checked ?? false} aria-checked={checked ? "true" : "false"} disabled={disabled} onChange={(e: { currentTarget: HTMLInputElement }) => checked = e.currentTarget.checked} onKeyDown={(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()} />
+<input {...__attrs} class={["switch-field", __attrs.class].filter(Boolean).join(" ")} type="checkbox" role="switch" id={id} name={name} checked={checked ?? false} aria-checked={checked ? "true" : "false"} aria-readonly={readonly ? "true" : undefined} disabled={disabled} onChange={(e: { currentTarget: HTMLInputElement }) => checked = e.currentTarget.checked} onClick={(e: { preventDefault: () => void }) => readonly && e.preventDefault()} onKeyDown={(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()} />
 ",
   "qwik/ISwitchControlBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
 export interface SwitchControlBaseProps {
@@ -54,12 +68,18 @@ export interface SwitchControlBaseProps {
   name?: string;
   /** Disables the control. */
   disabled?: boolean;
+  /**
+   * Marks the control read-only: announces \`aria-readonly\` and suppresses the toggle while keeping
+   * the switch focusable and form-submittable (unlike \`disabled\`). A native checkbox ignores the
+   * HTML \`readonly\` attribute, so this is enforced behaviourally.
+   */
+  readonly?: boolean;
 }
 export const ISwitchControlBase = component$((props: SwitchControlBaseProps & { checked?: boolean; onUpdateChecked$?: QRL<(value: boolean) => void> } & Record<string, any>) =>
 {
-const { id, name, disabled, checked, onUpdateChecked$, ...__attrs } = props
+const { id, name, disabled, readonly, checked, onUpdateChecked$, ...__attrs } = props
 return (
-<input {...__attrs} class={["switch-field", props.class].filter(Boolean).join(" ")} type="checkbox" role="switch" id={props.id} name={props.name} checked={props.checked ?? false} aria-checked={props.checked ? "true" : "false"} disabled={props.disabled} onChange={$((e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked$?.(e.currentTarget.checked))} onKeyDown={$((e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click())} />
+<input {...__attrs} class={["switch-field", props.class].filter(Boolean).join(" ")} type="checkbox" role="switch" id={props.id} name={props.name} checked={props.checked ?? false} aria-checked={props.checked ? "true" : "false"} aria-readonly={props.readonly ? "true" : undefined} disabled={props.disabled} onChange={$((e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked$?.(e.currentTarget.checked))} onClick={$((e: { preventDefault: () => void }) => props.readonly && e.preventDefault())} onKeyDown={$((e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click())} />
 )
 });
 ",
@@ -70,12 +90,18 @@ return (
   name?: string;
   /** Disables the control. */
   disabled?: boolean;
+  /**
+   * Marks the control read-only: announces \`aria-readonly\` and suppresses the toggle while keeping
+   * the switch focusable and form-submittable (unlike \`disabled\`). A native checkbox ignores the
+   * HTML \`readonly\` attribute, so this is enforced behaviourally.
+   */
+  readonly?: boolean;
 }
 export function ISwitchControlBase(props: SwitchControlBaseProps & { checked?: boolean; onUpdateChecked?: (value: boolean) => void } & React.HTMLAttributes<HTMLElement>)
 {
-const { id, name, disabled, checked, onUpdateChecked, ...__attrs } = props
+const { id, name, disabled, readonly, checked, onUpdateChecked, ...__attrs } = props
 return (
-<input {...__attrs} className={["switch-field", props.className].filter(Boolean).join(" ")} type="checkbox" role="switch" id={props.id} name={props.name} checked={props.checked ?? false} aria-checked={props.checked ? "true" : "false"} disabled={props.disabled} onChange={(e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked?.(e.currentTarget.checked)} onKeyDown={(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()} />
+<input {...__attrs} className={["switch-field", props.className].filter(Boolean).join(" ")} type="checkbox" role="switch" id={props.id} name={props.name} checked={props.checked ?? false} aria-checked={props.checked ? "true" : "false"} aria-readonly={props.readonly ? "true" : undefined} disabled={props.disabled} onChange={(e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked?.(e.currentTarget.checked)} onClick={(e: { preventDefault: () => void }) => props.readonly && e.preventDefault()} onKeyDown={(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()} />
 )
 }
 ",
@@ -88,12 +114,18 @@ export interface SwitchControlBaseProps {
   name?: string;
   /** Disables the control. */
   disabled?: boolean;
+  /**
+   * Marks the control read-only: announces \`aria-readonly\` and suppresses the toggle while keeping
+   * the switch focusable and form-submittable (unlike \`disabled\`). A native checkbox ignores the
+   * HTML \`readonly\` attribute, so this is enforced behaviourally.
+   */
+  readonly?: boolean;
 }
 export default function ISwitchControlBase(props: SwitchControlBaseProps & { checked?: boolean; onUpdateChecked?: (value: boolean) => void } & JSX.HTMLAttributes<HTMLElement>)
 {
-const [, __attrs] = splitProps(props, ["id", "name", "disabled", "checked", "onUpdateChecked"])
+const [, __attrs] = splitProps(props, ["id", "name", "disabled", "readonly", "checked", "onUpdateChecked"])
 return (
-<input {...__attrs} class={["switch-field", props.class].filter(Boolean).join(" ")} type="checkbox" role="switch" id={props.id} name={props.name} checked={props.checked ?? false} aria-checked={props.checked ? "true" : "false"} disabled={props.disabled} onchange={(e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked?.(e.currentTarget.checked)} onkeydown={(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()} />
+<input {...__attrs} class={["switch-field", props.class].filter(Boolean).join(" ")} type="checkbox" role="switch" id={props.id} name={props.name} checked={props.checked ?? false} aria-checked={props.checked ? "true" : "false"} aria-readonly={props.readonly ? "true" : undefined} disabled={props.disabled} onchange={(e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked?.(e.currentTarget.checked)} onclick={(e: { preventDefault: () => void }) => props.readonly && e.preventDefault()} onkeydown={(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()} />
 )
 }
 ",
@@ -105,10 +137,16 @@ return (
     name?: string;
     /** Disables the control. */
     disabled?: boolean;
+    /**
+     * Marks the control read-only: announces \`aria-readonly\` and suppresses the toggle while keeping
+     * the switch focusable and form-submittable (unlike \`disabled\`). A native checkbox ignores the
+     * HTML \`readonly\` attribute, so this is enforced behaviourally.
+     */
+    readonly?: boolean;
   }
-  let { id, name, disabled, checked = $bindable(), ...__attrs }: SwitchControlBaseProps & { checked?: boolean } & Record<string, any> = $props()
+  let { id, name, disabled, readonly, checked = $bindable(), ...__attrs }: SwitchControlBaseProps & { checked?: boolean } & Record<string, any> = $props()
 </script>
-<input {...__attrs} class={["switch-field", __attrs.class].filter(Boolean).join(" ")} type="checkbox" role="switch" id={id} name={name} checked={checked ?? false} aria-checked={checked ? "true" : "false"} disabled={disabled} onchange={(e: { currentTarget: HTMLInputElement }) => checked = e.currentTarget.checked} onkeydown={(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()} />
+<input {...__attrs} class={["switch-field", __attrs.class].filter(Boolean).join(" ")} type="checkbox" role="switch" id={id} name={name} checked={checked ?? false} aria-checked={checked ? "true" : "false"} aria-readonly={readonly ? "true" : undefined} disabled={disabled} onchange={(e: { currentTarget: HTMLInputElement }) => checked = e.currentTarget.checked} onclick={(e: { preventDefault: () => void }) => readonly && e.preventDefault()} onkeydown={(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()} />
 ",
   "vue/ISwitchControlBase.vue": "<script setup lang="ts">
   export interface SwitchControlBaseProps {
@@ -118,12 +156,18 @@ return (
     name?: string;
     /** Disables the control. */
     disabled?: boolean;
+    /**
+     * Marks the control read-only: announces \`aria-readonly\` and suppresses the toggle while keeping
+     * the switch focusable and form-submittable (unlike \`disabled\`). A native checkbox ignores the
+     * HTML \`readonly\` attribute, so this is enforced behaviourally.
+     */
+    readonly?: boolean;
   }
   const props = defineProps<SwitchControlBaseProps>()
   const checked = defineModel<boolean>("checked")
 </script>
 <template>
-<input class="switch-field" type="checkbox" role="switch" :id="id" :name="name" :checked="checked ?? false" :aria-checked='checked ? "true" : "false"' :disabled="disabled" @change="(e: { currentTarget: HTMLInputElement }) => checked = e.currentTarget.checked" @keydown='(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()' />
+<input class="switch-field" type="checkbox" role="switch" :id="id" :name="name" :checked="checked ?? false" :aria-checked='checked ? "true" : "false"' :aria-readonly='readonly ? "true" : undefined' :disabled="disabled" @change="(e: { currentTarget: HTMLInputElement }) => checked = e.currentTarget.checked" @click="(e: { preventDefault: () => void }) => readonly && e.preventDefault()" @keydown='(e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click()' />
 </template>
 ",
 }
