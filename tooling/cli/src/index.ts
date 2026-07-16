@@ -10,6 +10,6 @@ const command = defineCommand({
   },
 });
 
-export function main() {
+export function main(): Promise<void> {
   return runMain(command);
 }
