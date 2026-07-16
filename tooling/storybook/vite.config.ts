@@ -9,9 +9,7 @@ export default defineConfig({
       "generator/index": "src/generator/index.ts",
     },
     copy: [{ from: "src/preset/preview.css", to: "dist/preset" }],
-    dts: {
-      tsgo: true,
-    },
+    dts: {},
   },
   lint: {
     ignorePatterns: ["dist/**", "coverage/**", "src/**/__fixtures__/**"],

@@ -86,7 +86,7 @@ catalog:
   svelte: ^5.56.3
   tslib: ^2.8.1
   tsx: ^4.22.4
-  typescript: ^6.0.3
+  typescript: ^7.0.2
   vite: npm:@voidzero-dev/vite-plus-core@latest
   vite-plugin-solid: ^2.11.12
   vite-plus: ^0.1.24
@@ -95,7 +95,46 @@ catalog:
   vue-eslint-parser: ^10.4.1
   zone.js: ^0.16.2
 
+# TS6 holdout catalog. TypeScript 7's native compiler drops the classic
+# programmatic JS API (`ts.createProgram`/`factory`/`printer` now live under
+# the reshaped `typescript/unstable/*` surface). Packages that consume that
+# API — directly or through a toolchain that does — stay on the aliased TS6
+# release via `catalog:ts6` until their dependency ports to TS7:
+#   - core/compiler       — the compile pipeline calls the programmatic API.
+#   - tooling/test-utils  — the coverage reader uses the value-side TS API.
+#   - core/plugin         — its unbuild/rollup-plugin-dts dts emit reads
+#                           `ts.sys`, undefined on TS7's reshaped entry.
+#   - tooling/storybook   — rolldown-plugin-dts' default (tsc) dts emit needs
+#                           the classic API; storybook's `as const` RegExp
+#                           parameters can't go through the oxc path.
+#   - ui/vue              — @vue/compiler-sfc resolves tsconfig `paths` (the
+#                           `virtual:styleframe` alias behind `defineProps`
+#                           `extends`) through TS's classic config API, which
+#                           TS7 no longer exposes; SFC compile fails on TS7.
+#   - ui/angular          — @analogjs/vite-plugin-angular's js-emitter calls
+#                           `ts.createPrinter`; @storybook/angular's docgen needs
+#                           the classic API. (See packageExtensions below — the
+#                           analog plugin does a bare undeclared `import
+#                           "typescript"`, so it needs a peer to honor this pin.)
+#   - ui/qwik             — @storybook/addon-docs pulls react-docgen-typescript,
+#                           which reads the classic `ts.*` API at module load.
+#   - ui/solid            — @joshwooding/vite-plugin-react-docgen-typescript (via
+#                           storybook-solidjs-vite) pulls react-docgen-typescript,
+#                           which calls `ts.sys.fileExists` at story-transform time,
+#                           undefined on TS7's reshaped entry.
+catalogs:
+  ts6:
+    typescript: npm:@typescript/typescript6@^6.0.2
+
 catalogMode: prefer
+# @analogjs/vite-plugin-angular consumes `typescript` via a bare, undeclared
+# `import "typescript"` (no dep/peer entry of its own), so pnpm can't route
+# ui/angular's `catalog:ts6` pin to it and its js-emitter resolves the default
+# TS7 — where `ts.createPrinter` is gone. Declaring the peer lets the pin flow.
+packageExtensions:
+  "@analogjs/vite-plugin-angular":
+    peerDependencies:
+      typescript: "*"
 overrides:
   vite: "catalog:"
   vitest: "catalog:"

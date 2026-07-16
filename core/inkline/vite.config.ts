@@ -22,7 +22,7 @@ export default defineConfig({
       "plugin/farm": "src/plugin/farm.ts",
     },
     dts: {
-      tsgo: true,
+      oxc: true,
     },
     format: ["esm", "cjs"],
   },
