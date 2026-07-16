@@ -102,6 +102,8 @@ catalog:
 # release via `catalog:ts6` until their dependency ports to TS7:
 #   - core/compiler       — the compile pipeline calls the programmatic API.
 #   - tooling/test-utils  — the coverage reader uses the value-side TS API.
+#   - core/plugin         — its unbuild/rollup-plugin-dts dts emit reads
+#                           `ts.sys`, undefined on TS7's reshaped entry.
 #   - tooling/storybook   — rolldown-plugin-dts' default (tsc) dts emit needs
 #                           the classic API; storybook's `as const` RegExp
 #                           parameters can't go through the oxc path.

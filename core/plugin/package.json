@@ -62,6 +62,7 @@
     "unplugin": "^3.0.0"
   },
   "devDependencies": {
+    "typescript": "catalog:ts6",
     "unbuild": "^3.6.1",
     "vitest": "catalog:"
   },
