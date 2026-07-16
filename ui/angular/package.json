@@ -53,7 +53,7 @@
     "storybook": "catalog:",
     "styleframe": "catalog:",
     "tslib": "catalog:",
-    "typescript": "catalog:",
+    "typescript": "catalog:ts6",
     "zone.js": "catalog:"
   },
   "peerDependencies": {

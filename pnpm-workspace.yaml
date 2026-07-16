@@ -111,11 +111,26 @@ catalog:
 #                           `virtual:styleframe` alias behind `defineProps`
 #                           `extends`) through TS's classic config API, which
 #                           TS7 no longer exposes; SFC compile fails on TS7.
+#   - ui/angular          — @analogjs/vite-plugin-angular's js-emitter calls
+#                           `ts.createPrinter`; @storybook/angular's docgen needs
+#                           the classic API. (See packageExtensions below — the
+#                           analog plugin does a bare undeclared `import
+#                           "typescript"`, so it needs a peer to honor this pin.)
+#   - ui/qwik             — @storybook/addon-docs pulls react-docgen-typescript,
+#                           which reads the classic `ts.*` API at module load.
 catalogs:
   ts6:
     typescript: npm:@typescript/typescript6@^6.0.2
 
 catalogMode: prefer
+# @analogjs/vite-plugin-angular consumes `typescript` via a bare, undeclared
+# `import "typescript"` (no dep/peer entry of its own), so pnpm can't route
+# ui/angular's `catalog:ts6` pin to it and its js-emitter resolves the default
+# TS7 — where `ts.createPrinter` is gone. Declaring the peer lets the pin flow.
+packageExtensions:
+  "@analogjs/vite-plugin-angular":
+    peerDependencies:
+      typescript: "*"
 overrides:
   vite: "catalog:"
   vitest: "catalog:"
