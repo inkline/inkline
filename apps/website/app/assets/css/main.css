@@ -1,0 +1,31 @@
+@import "@uxfront/docs-theme/app/assets/css/main.css";
+
+/*
+ * Inkline brand palette. The docs-theme package ships neutral (palette-free);
+ * this consumer supplies the purple scale and maps it onto Nuxt UI's
+ * --ui-primary. The base hue is derived from the committed brand mark
+ * (public/favicon.svg, #863bff), with saturation and lightness eased for
+ * comfortable UI legibility across the full scale.
+ *
+ * Pairs with `ui.colors.primary: "purple"` in app.config.ts — the scale name
+ * below (`--color-purple`) must match that string for Nuxt UI to resolve
+ * component variants onto this scale.
+ */
+@theme static {
+  --color-purple: hsl(263, 90%, 60%);
+  --color-purple-50: hsl(from var(--color-purple) h s 5%);
+  --color-purple-100: hsl(from var(--color-purple) h s 10%);
+  --color-purple-200: hsl(from var(--color-purple) h s 20%);
+  --color-purple-300: hsl(from var(--color-purple) h s 30%);
+  --color-purple-400: hsl(from var(--color-purple) h s 40%);
+  --color-purple-500: hsl(from var(--color-purple) h s 60%);
+  --color-purple-600: hsl(from var(--color-purple) h s 60%);
+  --color-purple-700: hsl(from var(--color-purple) h s 70%);
+  --color-purple-800: hsl(from var(--color-purple) h s 80%);
+  --color-purple-900: hsl(from var(--color-purple) h s 90%);
+  --color-purple-950: hsl(from var(--color-purple) h s 95%);
+}
+
+:root {
+  --ui-primary: var(--color-purple);
+}
