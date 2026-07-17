@@ -12,20 +12,20 @@
  * component variants onto this scale.
  */
 @theme static {
-	--color-purple: hsl(263, 90%, 60%);
-	--color-purple-50: hsl(from var(--color-purple) h s 5%);
-	--color-purple-100: hsl(from var(--color-purple) h s 10%);
-	--color-purple-200: hsl(from var(--color-purple) h s 20%);
-	--color-purple-300: hsl(from var(--color-purple) h s 30%);
-	--color-purple-400: hsl(from var(--color-purple) h s 40%);
-	--color-purple-500: hsl(from var(--color-purple) h s 60%);
-	--color-purple-600: hsl(from var(--color-purple) h s 60%);
-	--color-purple-700: hsl(from var(--color-purple) h s 70%);
-	--color-purple-800: hsl(from var(--color-purple) h s 80%);
-	--color-purple-900: hsl(from var(--color-purple) h s 90%);
-	--color-purple-950: hsl(from var(--color-purple) h s 95%);
+  --color-purple: hsl(263, 90%, 60%);
+  --color-purple-50: hsl(from var(--color-purple) h s 5%);
+  --color-purple-100: hsl(from var(--color-purple) h s 10%);
+  --color-purple-200: hsl(from var(--color-purple) h s 20%);
+  --color-purple-300: hsl(from var(--color-purple) h s 30%);
+  --color-purple-400: hsl(from var(--color-purple) h s 40%);
+  --color-purple-500: hsl(from var(--color-purple) h s 60%);
+  --color-purple-600: hsl(from var(--color-purple) h s 60%);
+  --color-purple-700: hsl(from var(--color-purple) h s 70%);
+  --color-purple-800: hsl(from var(--color-purple) h s 80%);
+  --color-purple-900: hsl(from var(--color-purple) h s 90%);
+  --color-purple-950: hsl(from var(--color-purple) h s 95%);
 }
 
 :root {
-	--ui-primary: var(--color-purple);
+  --ui-primary: var(--color-purple);
 }
