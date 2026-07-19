@@ -1,0 +1,86 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CalloutIconBase > output matches snapshots 1`] = `
+{
+  "angular/ICalloutIconBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface CalloutIconBaseProps {}
+@Component({ standalone: true, selector: 'ink-callout-icon-base', host: { style: 'display: contents' }, template: \`<span [class]="'callout-icon' + (klass() ? ' ' + klass() : '')" aria-hidden="true">
+<ng-content></ng-content>
+</span>\` })
+export class ICalloutIconBaseComponent
+{
+klass = input<string>()
+}
+@Component({ standalone: true, selector: 'span[ink-callout-icon-base]', host: { '[class]': "'callout-icon' + (klass() ? ' ' + klass() : '')", 'aria-hidden': 'true' }, template: \`<ng-content></ng-content>\` })
+export class ICalloutIconBaseHostComponent
+{
+klass = input<string>()
+}
+",
+  "astro/ICalloutIconBase.astro": "---
+export interface CalloutIconBaseProps {}
+type Props = CalloutIconBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<span {...__attrs} class={["callout-icon", __attrs.class].filter(Boolean).join(" ")} aria-hidden="true">
+<slot />
+</span>
+",
+  "qwik/ICalloutIconBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface CalloutIconBaseProps {}
+export const ICalloutIconBase = component$((props) =>
+{
+const { children, ...__attrs } = props
+return (
+<span {...__attrs} class={["callout-icon", props.class].filter(Boolean).join(" ")} aria-hidden="true">
+  <Slot />
+</span>
+)
+});
+",
+  "react/ICalloutIconBase.tsx": "export interface CalloutIconBaseProps {}
+export function ICalloutIconBase(props: CalloutIconBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, ...__attrs } = props
+return (
+<span {...__attrs} className={["callout-icon", props.className].filter(Boolean).join(" ")} aria-hidden="true">
+  {props.children}
+</span>
+)
+}
+",
+  "solid/ICalloutIconBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface CalloutIconBaseProps {}
+export default function ICalloutIconBase(props: CalloutIconBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children"])
+return (
+<span {...__attrs} class={["callout-icon", props.class].filter(Boolean).join(" ")} aria-hidden="true">
+  {props.children}
+</span>
+)
+}
+",
+  "svelte/ICalloutIconBase.svelte": "<script lang="ts">
+  export interface CalloutIconBaseProps {}
+  import type { Snippet } from "svelte";
+  let { children, ...__attrs }: CalloutIconBaseProps & { children?: Snippet } & Record<string, any> = $props()
+</script>
+<span {...__attrs} class={["callout-icon", __attrs.class].filter(Boolean).join(" ")} aria-hidden="true">
+  {@render children?.()}
+</span>
+",
+  "vue/ICalloutIconBase.vue": "<script setup lang="ts">
+  export interface CalloutIconBaseProps {}
+  const props = defineProps<CalloutIconBaseProps>()
+</script>
+<template>
+<span class="callout-icon" aria-hidden="true">
+  <slot />
+</span>
+</template>
+",
+}
+`;

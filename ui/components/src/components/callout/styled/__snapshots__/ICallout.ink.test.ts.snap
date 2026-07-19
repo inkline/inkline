@@ -1,0 +1,375 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ICallout (styled) > output matches snapshots 1`] = `
+{
+  "angular/ICallout.component.ts": "import { Component, signal, computed, effect, input, model } from "@angular/core";
+import { ICalloutBaseComponent as ICalloutBase } from "../headless/ICalloutBase.component";
+import { type CalloutBaseProps } from "../headless/ICalloutBase.component";
+import { ICalloutIconBaseComponent as ICalloutIconBase } from "../headless/ICalloutIconBase.component";
+import { ICalloutContentBaseComponent as ICalloutContentBase } from "../headless/ICalloutContentBase.component";
+import { ICalloutDismissBaseComponent as ICalloutDismissBase } from "../headless/ICalloutDismissBase.component";
+import { ICalloutIconBaseHostComponent } from "../headless/ICalloutIconBase.component";
+import { ICalloutContentBaseHostComponent } from "../headless/ICalloutContentBase.component";
+import { ICalloutDismissBaseHostComponent } from "../headless/ICalloutDismissBase.component";
+import { calloutRecipe, type CalloutRecipeProps as CalloutStylingProps } from "virtual:styleframe";
+export interface CalloutProps {
+  /** ARIA role of the container; override with \`"alert"\`/\`"status"\` for dynamically-inserted messages. */
+  role?: CalloutBaseProps["role"];
+  /** Text content; overridden by the default slot. */
+  label?: string;
+  /** Color variant. */
+  color?: CalloutStylingProps["color"];
+  /** Style variant. */
+  variant?: CalloutStylingProps["variant"];
+  /** Size variant. */
+  size?: CalloutStylingProps["size"];
+  /** Stacking direction of the icon and content. */
+  orientation?: CalloutStylingProps["orientation"];
+  /** Shows a dismiss button that hides the callout. */
+  dismissible?: boolean;
+  /** Accessible name for the icon-only dismiss button. */
+  dismissAriaLabel?: string;
+}
+@Component({ standalone: true, selector: 'ink-callout', host: { style: 'display: contents' }, imports: [ICalloutBase, ICalloutIconBase, ICalloutContentBase, ICalloutDismissBase], template: \`<ink-callout-base [klass]="(className()) + (klass() ? ' ' + klass() : '')" [role]="role()" [hidden]="hidden()">
+<ink-callout-icon-base>
+<ng-content select="[slot=icon]"></ng-content>
+</ink-callout-icon-base>
+<ink-callout-content-base>
+<ng-content>{{ label() }}</ng-content>
+</ink-callout-content-base>
+@if (!!dismissible()) {
+<ink-callout-dismiss-base [ariaLabel]="dismissAriaLabel()" (click)="dismissed.set(true); visible.set(false)">
+<ng-content select="[slot=dismiss]">{{ '×' }}</ng-content>
+</ink-callout-dismiss-base>
+}
+</ink-callout-base>\` })
+export class ICalloutComponent
+{
+calloutRecipe = calloutRecipe
+klass = input<string>()
+dismissed = signal(false)
+className = computed(() => calloutRecipe({ color: this.color(), variant: this.variant(), size: this.size(), orientation: this.orientation() }))
+hidden = computed(() => (this.visible() === undefined ? this.dismissed() : this.visible() === false))
+role = input<CalloutBaseProps["role"]>()
+label = input<string>()
+color = input<CalloutStylingProps["color"]>()
+variant = input<CalloutStylingProps["variant"]>()
+size = input<CalloutStylingProps["size"]>()
+orientation = input<CalloutStylingProps["orientation"]>()
+dismissible = input<boolean>()
+dismissAriaLabel = input<string>()
+visible = model<boolean>()
+}
+@Component({ standalone: true, selector: 'div[ink-callout]', host: { '[class]': "'callout' + ((className()) ? ' ' + (className()) : '') + (klass() ? ' ' + klass() : '')", '[attr.role]': "(role() ?? 'note') ?? null", '[hidden]': "hidden()", 'ink-callout-base': '' }, imports: [ICalloutIconBaseHostComponent, ICalloutContentBaseHostComponent, ICalloutDismissBaseHostComponent], template: \`<span ink-callout-icon-base>
+<ng-content select="[slot=icon]"></ng-content>
+</span>
+<div ink-callout-content-base>
+<ng-content>{{ label() }}</ng-content>
+</div>
+@if (!!dismissible()) {
+<button ink-callout-dismiss-base [ariaLabel]="dismissAriaLabel()" (click)="dismissed.set(true); visible.set(false)">
+<ng-content select="[slot=dismiss]">{{ '×' }}</ng-content>
+</button>
+}\` })
+export class ICalloutHostComponent
+{
+calloutRecipe = calloutRecipe
+klass = input<string>()
+dismissed = signal(false)
+className = computed(() => calloutRecipe({ color: this.color(), variant: this.variant(), size: this.size(), orientation: this.orientation() }))
+hidden = computed(() => (this.visible() === undefined ? this.dismissed() : this.visible() === false))
+role = input<CalloutBaseProps["role"]>()
+label = input<string>()
+color = input<CalloutStylingProps["color"]>()
+variant = input<CalloutStylingProps["variant"]>()
+size = input<CalloutStylingProps["size"]>()
+orientation = input<CalloutStylingProps["orientation"]>()
+dismissible = input<boolean>()
+dismissAriaLabel = input<string>()
+visible = model<boolean>()
+}
+",
+  "astro/ICallout.astro": "---
+import ICalloutBase, { type CalloutBaseProps } from "../headless/ICalloutBase.astro";
+import ICalloutIconBase from "../headless/ICalloutIconBase.astro";
+import ICalloutContentBase from "../headless/ICalloutContentBase.astro";
+import ICalloutDismissBase from "../headless/ICalloutDismissBase.astro";
+import { calloutRecipe, type CalloutRecipeProps as CalloutStylingProps } from "virtual:styleframe";
+export interface CalloutProps {
+  /** ARIA role of the container; override with \`"alert"\`/\`"status"\` for dynamically-inserted messages. */
+  role?: CalloutBaseProps["role"];
+  /** Text content; overridden by the default slot. */
+  label?: string;
+  /** Color variant. */
+  color?: CalloutStylingProps["color"];
+  /** Style variant. */
+  variant?: CalloutStylingProps["variant"];
+  /** Size variant. */
+  size?: CalloutStylingProps["size"];
+  /** Stacking direction of the icon and content. */
+  orientation?: CalloutStylingProps["orientation"];
+  /** Shows a dismiss button that hides the callout. */
+  dismissible?: boolean;
+  /** Accessible name for the icon-only dismiss button. */
+  dismissAriaLabel?: string;
+}
+type Props = CalloutProps & Record<string, any>
+const props = Astro.props as Props;
+const { role, label, color, variant, size, orientation, dismissible, dismissAriaLabel, ...__attrs } = props;
+let visible = props.visible
+let dismissed = false
+const className = calloutRecipe({ color: color, variant: variant, size: size, orientation: orientation })
+const hidden = (visible === undefined ? dismissed : visible === false)
+---
+<ICalloutBase {...__attrs} class={[className, __attrs.class].filter(Boolean).join(" ")} role={role} hidden={hidden}>
+{Astro.slots.has("icon") ? (<ICalloutIconBase>
+<slot name="icon" />
+</ICalloutIconBase>) : null}
+<ICalloutContentBase>
+<slot>
+{label}
+</slot>
+</ICalloutContentBase>
+{!!dismissible ? (<ICalloutDismissBase ariaLabel={dismissAriaLabel} onClick={() => { dismissed = true; visible = false; }}>
+<slot name="dismiss">
+{"×"}
+</slot>
+</ICalloutDismissBase>) : null}
+</ICalloutBase>
+",
+  "qwik/ICallout.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL, Slot } from "@qwik.dev/core";
+import { ICalloutBase } from "../headless/ICalloutBase";
+import { type CalloutBaseProps } from "../headless/ICalloutBase";
+import { ICalloutIconBase } from "../headless/ICalloutIconBase";
+import { ICalloutContentBase } from "../headless/ICalloutContentBase";
+import { ICalloutDismissBase } from "../headless/ICalloutDismissBase";
+import { calloutRecipe, type CalloutRecipeProps as CalloutStylingProps } from "virtual:styleframe";
+export interface CalloutProps {
+  /** ARIA role of the container; override with \`"alert"\`/\`"status"\` for dynamically-inserted messages. */
+  role?: CalloutBaseProps["role"];
+  /** Text content; overridden by the default slot. */
+  label?: string;
+  /** Color variant. */
+  color?: CalloutStylingProps["color"];
+  /** Style variant. */
+  variant?: CalloutStylingProps["variant"];
+  /** Size variant. */
+  size?: CalloutStylingProps["size"];
+  /** Stacking direction of the icon and content. */
+  orientation?: CalloutStylingProps["orientation"];
+  /** Shows a dismiss button that hides the callout. */
+  dismissible?: boolean;
+  /** Accessible name for the icon-only dismiss button. */
+  dismissAriaLabel?: string;
+}
+export const ICallout = component$((props: CalloutProps & { visible?: boolean; onUpdateVisible$?: QRL<(value: boolean) => void> } & Record<string, any>) =>
+{
+const dismissed = useSignal(false)
+const className = useComputed$(() => calloutRecipe({ color: props.color, variant: props.variant, size: props.size, orientation: props.orientation }))
+const hidden = useComputed$(() => (props.visible === undefined ? dismissed.value : props.visible === false))
+const { children, icon, dismiss, role, label, color, variant, size, orientation, dismissible, dismissAriaLabel, visible, onUpdateVisible$, ...__attrs } = props
+return (
+<ICalloutBase {...__attrs} class={[className.value, props.class].filter(Boolean).join(" ")} role={props.role} hidden={hidden.value}>
+  <>
+    {(<><ICalloutIconBase>{props.icon}</ICalloutIconBase></>)}
+    <ICalloutContentBase>
+      <Slot>
+        {props.label}
+      </Slot>
+    </ICalloutContentBase>
+    {!!props.dismissible ? (<><ICalloutDismissBase ariaLabel={props.dismissAriaLabel} onClick={$(() => { dismissed.value = true; props.onUpdateVisible$?.(false); })}>{props.dismiss ?? (<>{"×"}</>)}</ICalloutDismissBase></>) : null}
+  </>
+</ICalloutBase>
+)
+});
+",
+  "react/ICallout.tsx": "import { useState, useMemo } from "react";
+import { ICalloutBase } from "../headless/ICalloutBase";
+import { type CalloutBaseProps } from "../headless/ICalloutBase";
+import { ICalloutIconBase } from "../headless/ICalloutIconBase";
+import { ICalloutContentBase } from "../headless/ICalloutContentBase";
+import { ICalloutDismissBase } from "../headless/ICalloutDismissBase";
+import { calloutRecipe, type CalloutRecipeProps as CalloutStylingProps } from "virtual:styleframe";
+export interface CalloutProps {
+  /** ARIA role of the container; override with \`"alert"\`/\`"status"\` for dynamically-inserted messages. */
+  role?: CalloutBaseProps["role"];
+  /** Text content; overridden by the default slot. */
+  label?: string;
+  /** Color variant. */
+  color?: CalloutStylingProps["color"];
+  /** Style variant. */
+  variant?: CalloutStylingProps["variant"];
+  /** Size variant. */
+  size?: CalloutStylingProps["size"];
+  /** Stacking direction of the icon and content. */
+  orientation?: CalloutStylingProps["orientation"];
+  /** Shows a dismiss button that hides the callout. */
+  dismissible?: boolean;
+  /** Accessible name for the icon-only dismiss button. */
+  dismissAriaLabel?: string;
+}
+export function ICallout(props: CalloutProps & { children?: React.ReactNode; icon?: React.ReactNode; dismiss?: React.ReactNode } & { visible?: boolean; onUpdateVisible?: (value: boolean) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const [dismissed, setDismissed] = useState(false)
+const className = useMemo(() => calloutRecipe({ color: props.color, variant: props.variant, size: props.size, orientation: props.orientation }), [props.color, props.variant, props.size, props.orientation])
+const hidden = useMemo(() => (props.visible === undefined ? dismissed : props.visible === false), [props.visible, dismissed])
+const { children, icon, dismiss, role, label, color, variant, size, orientation, dismissible, dismissAriaLabel, visible, onUpdateVisible, ...__attrs } = props
+return (
+<ICalloutBase {...__attrs} className={[className, props.className].filter(Boolean).join(" ")} role={props.role} hidden={hidden}>
+  <>
+    {(props.icon != null) ? <ICalloutIconBase>{props.icon}</ICalloutIconBase> : null}
+    <ICalloutContentBase>
+      {props.children ?? props.label}
+    </ICalloutContentBase>
+    {!!props.dismissible ? <ICalloutDismissBase ariaLabel={props.dismissAriaLabel} onClick={() => { setDismissed(true); props.onUpdateVisible?.(false); }}>{props.dismiss ?? "×"}</ICalloutDismissBase> : null}
+  </>
+</ICalloutBase>
+)
+}
+",
+  "solid/ICallout.tsx": "import { createSignal, createMemo, splitProps, Show } from "solid-js";
+import type { JSX } from "solid-js";
+import ICalloutBase, { type CalloutBaseProps } from "../headless/ICalloutBase";
+import ICalloutIconBase from "../headless/ICalloutIconBase";
+import ICalloutContentBase from "../headless/ICalloutContentBase";
+import ICalloutDismissBase from "../headless/ICalloutDismissBase";
+import { calloutRecipe, type CalloutRecipeProps as CalloutStylingProps } from "virtual:styleframe";
+export interface CalloutProps {
+  /** ARIA role of the container; override with \`"alert"\`/\`"status"\` for dynamically-inserted messages. */
+  role?: CalloutBaseProps["role"];
+  /** Text content; overridden by the default slot. */
+  label?: string;
+  /** Color variant. */
+  color?: CalloutStylingProps["color"];
+  /** Style variant. */
+  variant?: CalloutStylingProps["variant"];
+  /** Size variant. */
+  size?: CalloutStylingProps["size"];
+  /** Stacking direction of the icon and content. */
+  orientation?: CalloutStylingProps["orientation"];
+  /** Shows a dismiss button that hides the callout. */
+  dismissible?: boolean;
+  /** Accessible name for the icon-only dismiss button. */
+  dismissAriaLabel?: string;
+}
+export default function ICallout(props: CalloutProps & { children?: any; icon?: any; dismiss?: any } & { visible?: boolean; onUpdateVisible?: (value: boolean) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [dismissed, setDismissed] = createSignal(false)
+const className = createMemo(() => calloutRecipe({ color: props.color, variant: props.variant, size: props.size, orientation: props.orientation }))
+const hidden = createMemo(() => (props.visible === undefined ? dismissed() : props.visible === false))
+const [, __attrs] = splitProps(props, ["children", "icon", "dismiss", "role", "label", "color", "variant", "size", "orientation", "dismissible", "dismissAriaLabel", "visible", "onUpdateVisible"])
+return (
+<ICalloutBase {...__attrs} class={[className(), props.class].filter(Boolean).join(" ")} role={props.role} hidden={hidden()}>
+  <>
+    <Show when={(props.icon != null)}>
+      <ICalloutIconBase>
+        {props.icon}
+      </ICalloutIconBase>
+    </Show>
+    <ICalloutContentBase>
+      {props.children ?? props.label}
+    </ICalloutContentBase>
+    <Show when={!!props.dismissible}>
+      <ICalloutDismissBase ariaLabel={props.dismissAriaLabel} onClick={() => { setDismissed(true); props.onUpdateVisible?.(false); }}>
+        {props.dismiss ?? "×"}
+      </ICalloutDismissBase>
+    </Show>
+  </>
+</ICalloutBase>
+)
+}
+",
+  "svelte/ICallout.svelte": "<script lang="ts">
+  import ICalloutBase, { type CalloutBaseProps } from "../headless/ICalloutBase.svelte";
+  import ICalloutIconBase from "../headless/ICalloutIconBase.svelte";
+  import ICalloutContentBase from "../headless/ICalloutContentBase.svelte";
+  import ICalloutDismissBase from "../headless/ICalloutDismissBase.svelte";
+  import { calloutRecipe, type CalloutRecipeProps as CalloutStylingProps } from "virtual:styleframe";
+  export interface CalloutProps {
+    /** ARIA role of the container; override with \`"alert"\`/\`"status"\` for dynamically-inserted messages. */
+    role?: CalloutBaseProps["role"];
+    /** Text content; overridden by the default slot. */
+    label?: string;
+    /** Color variant. */
+    color?: CalloutStylingProps["color"];
+    /** Style variant. */
+    variant?: CalloutStylingProps["variant"];
+    /** Size variant. */
+    size?: CalloutStylingProps["size"];
+    /** Stacking direction of the icon and content. */
+    orientation?: CalloutStylingProps["orientation"];
+    /** Shows a dismiss button that hides the callout. */
+    dismissible?: boolean;
+    /** Accessible name for the icon-only dismiss button. */
+    dismissAriaLabel?: string;
+  }
+  import type { Snippet } from "svelte";
+  let { role, label, color, variant, size, orientation, dismissible, dismissAriaLabel, visible = $bindable(), children, icon: iconSnippet, dismiss: dismissSnippet, ...__attrs }: CalloutProps & { visible?: boolean; children?: Snippet; icon?: Snippet; dismiss?: Snippet } & Record<string, any> = $props()
+  let dismissed = $state(false)
+  let className = $derived(calloutRecipe({ color: color, variant: variant, size: size, orientation: orientation }))
+  let hidden = $derived((visible === undefined ? dismissed : visible === false))
+</script>
+<ICalloutBase {...__attrs} class={[className, __attrs.class].filter(Boolean).join(" ")} role={role} hidden={hidden}>
+  {#if (iconSnippet != null)}<ICalloutIconBase>
+    {@render iconSnippet?.()}
+  </ICalloutIconBase>
+  {/if}<ICalloutContentBase>
+    {#if children}{@render children()}{:else}{label}{/if}
+  </ICalloutContentBase>
+  {#if !!dismissible}<ICalloutDismissBase ariaLabel={dismissAriaLabel} onClick={() => { dismissed = true; visible = false; }}>
+    {#if dismissSnippet}{@render dismissSnippet()}{:else}{"×"}{/if}
+  </ICalloutDismissBase>
+  {/if}
+</ICalloutBase>
+",
+  "vue/ICallout.vue": "<script setup lang="ts">
+  import { ref, computed } from "vue";
+  import ICalloutBase, { type CalloutBaseProps } from "../headless/ICalloutBase.vue";
+  import ICalloutIconBase from "../headless/ICalloutIconBase.vue";
+  import ICalloutContentBase from "../headless/ICalloutContentBase.vue";
+  import ICalloutDismissBase from "../headless/ICalloutDismissBase.vue";
+  import { calloutRecipe, type CalloutRecipeProps as CalloutStylingProps } from "virtual:styleframe";
+  export interface CalloutProps {
+    /** ARIA role of the container; override with \`"alert"\`/\`"status"\` for dynamically-inserted messages. */
+    role?: CalloutBaseProps["role"];
+    /** Text content; overridden by the default slot. */
+    label?: string;
+    /** Color variant. */
+    color?: CalloutStylingProps["color"];
+    /** Style variant. */
+    variant?: CalloutStylingProps["variant"];
+    /** Size variant. */
+    size?: CalloutStylingProps["size"];
+    /** Stacking direction of the icon and content. */
+    orientation?: CalloutStylingProps["orientation"];
+    /** Shows a dismiss button that hides the callout. */
+    dismissible?: boolean;
+    /** Accessible name for the icon-only dismiss button. */
+    dismissAriaLabel?: string;
+  }
+  const props = defineProps<CalloutProps>()
+  const dismissed = ref(false)
+  const visible = defineModel<boolean>("visible")
+  const className = computed(() => calloutRecipe({ color: props.color, variant: props.variant, size: props.size, orientation: props.orientation }))
+  const hidden = computed(() => (visible.value === undefined ? dismissed.value : visible.value === false))
+</script>
+<template>
+<ICalloutBase :class="className" :role="role" :hidden="hidden">
+  <ICalloutIconBase v-if="!!$slots.icon">
+    <slot name="icon" />
+  </ICalloutIconBase>
+  <ICalloutContentBase>
+    <slot>
+      {{ label }}
+    </slot>
+  </ICalloutContentBase>
+  <ICalloutDismissBase v-if="!!dismissible" :ariaLabel="dismissAriaLabel" @click="() => { dismissed = true; visible = false; }">
+    <slot name="dismiss">
+      {{ "×" }}
+    </slot>
+  </ICalloutDismissBase>
+</ICalloutBase>
+</template>
+",
+}
+`;

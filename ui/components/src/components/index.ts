@@ -4,6 +4,14 @@ export { default as IBadgeBase } from "./badge/headless/IBadgeBase.ink.tsx";
 export { default as IButton } from "./button/styled/IButton.ink.tsx";
 export { default as IButtonBase } from "./button/headless/IButtonBase.ink.tsx";
 
+// Callout ships as a single styled component (ICallout) that composes every headless part. The
+// headless parts remain individually exported for advanced/custom composition.
+export { default as ICallout } from "./callout/styled/ICallout.ink.tsx";
+export { default as ICalloutBase } from "./callout/headless/ICalloutBase.ink.tsx";
+export { default as ICalloutContentBase } from "./callout/headless/ICalloutContentBase.ink.tsx";
+export { default as ICalloutDismissBase } from "./callout/headless/ICalloutDismissBase.ink.tsx";
+export { default as ICalloutIconBase } from "./callout/headless/ICalloutIconBase.ink.tsx";
+
 export { default as IFieldGroup } from "./field-group/styled/IFieldGroup.ink.tsx";
 export { default as IFieldGroupBase } from "./field-group/headless/IFieldGroupBase.ink.tsx";
 
