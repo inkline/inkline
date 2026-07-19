@@ -18,7 +18,7 @@
     "@nuxt/ui": "^4.8.2",
     "@nuxtjs/robots": "^6.1.1",
     "@nuxtjs/sitemap": "^8.2.1",
-    "@uxfront/docs-theme": "^0.1.0",
+    "@uxfront/docs-theme": "catalog:",
     "better-sqlite3": "^12.10.1",
     "nuxt": "^4.4.8",
     "nuxt-llms": "^0.2.0",
