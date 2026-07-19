@@ -101,11 +101,12 @@ describe("refs", () => {
     expect(result.refs[0]!.elementType).toBe("HTMLElement");
   });
 
-  it("classifies refs on ComponentInstance as component category", () => {
-    const refExpr = createExpr({
-      expr: mockExpr("myRef"),
-      deps: [{ symbolId: refSymbolId, kind: "ref", name: "myRef", path: [], conditional: false }],
-    });
+  it("classifies refs on ComponentInstance as component category (without resolved deps)", () => {
+    // A component-instance ref binding carries an empty `deps` array in the real pipeline, so the
+    // link to its declaration must resolve through the binding's identifier text — not
+    // `deps[0].symbolId` (INK-15). Build the binding with no deps to pin that behavior directly.
+    const refExpr = createExpr({ expr: mockExpr("myRef") });
+    expect(refExpr.deps).toHaveLength(0);
     const ci = createComponentInstance({
       reference: ident("Button"),
       refs: [{ ref: refExpr, category: "element", loc: UNKNOWN_LOCATION }],
