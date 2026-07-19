@@ -141,9 +141,18 @@ packageExtensions:
   "@analogjs/vite-plugin-angular":
     peerDependencies:
       typescript: "*"
+# The monorepo-wide `vite: catalog:` override routes every package's vite to the
+# vite-plus (rolldown) alias. The Nuxt website is the one exception: its
+# @nuxt/content client DB ships a @sqlite.org/sqlite-wasm web worker whose
+# `import.meta.url` worker-entry bundling crashes under vite-plus (reproduced on
+# 0.2.4 and 0.2.5 alike — a rolldown worker-bundling gap, not a version
+# regression). Scope the Nuxt vite builder back to upstream vite so the docs
+# site prerenders; the @vitejs/plugin-vue* plugins take vite as a peer and
+# resolve to this same real vite. Everything else keeps vite-plus.
 overrides:
   vite: "catalog:"
   vitest: "catalog:"
+  "@nuxt/vite-builder>vite": "^7.3.3"
 peerDependencyRules:
   allowAny:
     - vite

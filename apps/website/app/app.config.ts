@@ -52,7 +52,9 @@ export default defineAppConfig({
     frameworks: [
       { value: "react", label: "React", icon: "i-mdi-react" },
       { value: "vue", label: "Vue", icon: "i-mdi-vuejs" },
-      { value: "svelte", label: "Svelte", icon: "i-mdi-svelte" },
+      // MDI has no Svelte brand glyph; use the simple-icons set (both resolve
+      // via the Iconify API — no local @iconify-json/* collection is installed).
+      { value: "svelte", label: "Svelte", icon: "i-simple-icons-svelte" },
       { value: "solid", label: "Solid", icon: "i-mdi-atom" },
       { value: "angular", label: "Angular", icon: "i-mdi-angular" },
       { value: "qwik", label: "Qwik", icon: "i-mdi-lightning-bolt" },

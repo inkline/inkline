@@ -22,7 +22,12 @@ export interface DocsSection extends DocsSectionDescriptor {
 
 export const DOCS_SECTIONS: readonly DocsSection[] = [
   {
-    key: "getting-started",
+    // Collection key must be a valid JS identifier — @nuxt/content builds
+    // `docs_<key>` and silently drops collections whose name isn't
+    // `/^[a-z_]\w*$/i` (a hyphen here → the whole section 404s). The URL still
+    // reads `getting-started` via `slug`; only the internal collection name
+    // changes.
+    key: "getting_started",
     slug: "getting-started",
     label: "Getting Started",
     icon: "i-lucide-rocket",
