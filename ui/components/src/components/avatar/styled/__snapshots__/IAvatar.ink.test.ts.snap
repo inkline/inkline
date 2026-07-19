@@ -1,0 +1,320 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`IAvatar (styled) > output matches snapshots 1`] = `
+{
+  "angular/IAvatar.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+import { IAvatarBaseComponent as IAvatarBase } from "../headless/IAvatarBase.component";
+import { type AvatarBaseProps } from "../headless/IAvatarBase.component";
+import { IAvatarBadgeBaseComponent as IAvatarBadgeBase } from "../headless/IAvatarBadgeBase.component";
+import { IAvatarBadgeBaseHostComponent } from "../headless/IAvatarBadgeBase.component";
+import {
+  avatarRecipe,
+  avatarBadgeRecipe,
+  type AvatarRecipeProps as AvatarStylingProps,
+  type AvatarBadgeRecipeProps as AvatarBadgeStylingProps,
+} from "virtual:styleframe";
+export interface AvatarProps extends AvatarBaseProps {
+  /** Color variant. */
+  color?: AvatarStylingProps["color"];
+  /** Style variant. */
+  variant?: AvatarStylingProps["variant"];
+  /** Shape variant. */
+  shape?: AvatarStylingProps["shape"];
+  /** Size variant; also sizes the status badge. */
+  size?: AvatarStylingProps["size"];
+  /** Shows a status-indicator dot overlaid on the avatar. */
+  badge?: boolean;
+  /** Color of the status badge. */
+  badgeColor?: AvatarBadgeStylingProps["color"];
+  /** Corner the status badge sits in. */
+  badgePosition?: AvatarBadgeStylingProps["position"];
+}
+@Component({ standalone: true, selector: 'ink-avatar', host: { style: 'display: contents' }, imports: [IAvatarBase, IAvatarBadgeBase], template: \`<ink-avatar-base [klass]="(className()) + (klass() ? ' ' + klass() : '')" [src]="src()" [alt]="alt()" [showBadge]="badge()">
+<ng-content>{{ label() }}</ng-content>
+<ng-container slot="badge">
+<ink-avatar-badge-base [klass]="(badgeClassName())" aria-hidden="true"></ink-avatar-badge-base>
+</ng-container>
+</ink-avatar-base>\` })
+export class IAvatarComponent
+{
+avatarRecipe = avatarRecipe
+avatarBadgeRecipe = avatarBadgeRecipe
+klass = input<string>()
+className = computed(() => avatarRecipe({ color: this.color(), variant: this.variant(), shape: this.shape(), size: this.size() }))
+badgeClassName = computed(() => avatarBadgeRecipe({ color: this.badgeColor(), position: this.badgePosition(), size: this.size() }))
+color = input<AvatarStylingProps["color"]>()
+variant = input<AvatarStylingProps["variant"]>()
+shape = input<AvatarStylingProps["shape"]>()
+size = input<AvatarStylingProps["size"]>()
+badge = input<boolean>()
+badgeColor = input<AvatarBadgeStylingProps["color"]>()
+badgePosition = input<AvatarBadgeStylingProps["position"]>()
+src = input<string>()
+alt = input<string>()
+label = input<string>()
+showBadge = input<boolean>()
+}
+@Component({ standalone: true, selector: 'div[ink-avatar]', host: { '[class]': "'avatar' + ((className()) ? ' ' + (className()) : '') + (klass() ? ' ' + klass() : '')", 'ink-avatar-base': '' }, imports: [IAvatarBadgeBaseHostComponent], template: \`@if (!!src()) {
+<img [attr.src]="(src()) ?? null" [attr.alt]="(alt() ?? '') ?? null" />
+} @else {
+<ng-content>{{ label() }}</ng-content>
+}
+@if (!!showBadge()) {
+<span ink-avatar-badge-base [klass]="(badgeClassName())" aria-hidden="true"></span>
+}\` })
+export class IAvatarHostComponent
+{
+avatarRecipe = avatarRecipe
+avatarBadgeRecipe = avatarBadgeRecipe
+klass = input<string>()
+className = computed(() => avatarRecipe({ color: this.color(), variant: this.variant(), shape: this.shape(), size: this.size() }))
+badgeClassName = computed(() => avatarBadgeRecipe({ color: this.badgeColor(), position: this.badgePosition(), size: this.size() }))
+color = input<AvatarStylingProps["color"]>()
+variant = input<AvatarStylingProps["variant"]>()
+shape = input<AvatarStylingProps["shape"]>()
+size = input<AvatarStylingProps["size"]>()
+badge = input<boolean>()
+badgeColor = input<AvatarBadgeStylingProps["color"]>()
+badgePosition = input<AvatarBadgeStylingProps["position"]>()
+src = input<string>()
+alt = input<string>()
+label = input<string>()
+showBadge = input<boolean>()
+}
+",
+  "astro/IAvatar.astro": "---
+import IAvatarBase, { type AvatarBaseProps } from "../headless/IAvatarBase.astro";
+import IAvatarBadgeBase from "../headless/IAvatarBadgeBase.astro";
+import {
+  avatarRecipe,
+  avatarBadgeRecipe,
+  type AvatarRecipeProps as AvatarStylingProps,
+  type AvatarBadgeRecipeProps as AvatarBadgeStylingProps,
+} from "virtual:styleframe";
+export interface AvatarProps extends AvatarBaseProps {
+  /** Color variant. */
+  color?: AvatarStylingProps["color"];
+  /** Style variant. */
+  variant?: AvatarStylingProps["variant"];
+  /** Shape variant. */
+  shape?: AvatarStylingProps["shape"];
+  /** Size variant; also sizes the status badge. */
+  size?: AvatarStylingProps["size"];
+  /** Shows a status-indicator dot overlaid on the avatar. */
+  badge?: boolean;
+  /** Color of the status badge. */
+  badgeColor?: AvatarBadgeStylingProps["color"];
+  /** Corner the status badge sits in. */
+  badgePosition?: AvatarBadgeStylingProps["position"];
+}
+type Props = AvatarProps & Record<string, any>
+const props = Astro.props as Props;
+const { color, variant, shape, size, badge, badgeColor, badgePosition, src, alt, label, showBadge, ...__attrs } = props;
+const className = avatarRecipe({ color: color, variant: variant, shape: shape, size: size })
+const badgeClassName = avatarBadgeRecipe({ color: badgeColor, position: badgePosition, size: size })
+---
+<IAvatarBase {...__attrs} class={[className, __attrs.class].filter(Boolean).join(" ")} src={src} alt={alt} showBadge={badge}>
+<slot>
+{label}
+</slot>
+<Fragment slot="badge">
+<IAvatarBadgeBase class={badgeClassName} aria-hidden="true" />
+</Fragment>
+</IAvatarBase>
+",
+  "qwik/IAvatar.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+import { IAvatarBase } from "../headless/IAvatarBase";
+import { type AvatarBaseProps } from "../headless/IAvatarBase";
+import { IAvatarBadgeBase } from "../headless/IAvatarBadgeBase";
+import {
+  avatarRecipe,
+  avatarBadgeRecipe,
+  type AvatarRecipeProps as AvatarStylingProps,
+  type AvatarBadgeRecipeProps as AvatarBadgeStylingProps,
+} from "virtual:styleframe";
+export interface AvatarProps extends AvatarBaseProps {
+  /** Color variant. */
+  color?: AvatarStylingProps["color"];
+  /** Style variant. */
+  variant?: AvatarStylingProps["variant"];
+  /** Shape variant. */
+  shape?: AvatarStylingProps["shape"];
+  /** Size variant; also sizes the status badge. */
+  size?: AvatarStylingProps["size"];
+  /** Shows a status-indicator dot overlaid on the avatar. */
+  badge?: boolean;
+  /** Color of the status badge. */
+  badgeColor?: AvatarBadgeStylingProps["color"];
+  /** Corner the status badge sits in. */
+  badgePosition?: AvatarBadgeStylingProps["position"];
+}
+export const IAvatar = component$((props: AvatarProps & Record<string, any>) =>
+{
+const className = useComputed$(() => avatarRecipe({ color: props.color, variant: props.variant, shape: props.shape, size: props.size }))
+const badgeClassName = useComputed$(() => avatarBadgeRecipe({ color: props.badgeColor, position: props.badgePosition, size: props.size }))
+const { children, color, variant, shape, size, badge, badgeColor, badgePosition, src, alt, label, showBadge, ...__attrs } = props
+return (
+<IAvatarBase {...__attrs} class={[className.value, props.class].filter(Boolean).join(" ")} src={props.src} alt={props.alt} showBadge={props.badge} badge={<IAvatarBadgeBase class={badgeClassName.value} aria-hidden="true" />}>
+  <Slot>
+    {props.label}
+  </Slot>
+</IAvatarBase>
+)
+});
+",
+  "react/IAvatar.tsx": "import { useMemo } from "react";
+import { IAvatarBase } from "../headless/IAvatarBase";
+import { type AvatarBaseProps } from "../headless/IAvatarBase";
+import { IAvatarBadgeBase } from "../headless/IAvatarBadgeBase";
+import {
+  avatarRecipe,
+  avatarBadgeRecipe,
+  type AvatarRecipeProps as AvatarStylingProps,
+  type AvatarBadgeRecipeProps as AvatarBadgeStylingProps,
+} from "virtual:styleframe";
+export interface AvatarProps extends AvatarBaseProps {
+  /** Color variant. */
+  color?: AvatarStylingProps["color"];
+  /** Style variant. */
+  variant?: AvatarStylingProps["variant"];
+  /** Shape variant. */
+  shape?: AvatarStylingProps["shape"];
+  /** Size variant; also sizes the status badge. */
+  size?: AvatarStylingProps["size"];
+  /** Shows a status-indicator dot overlaid on the avatar. */
+  badge?: boolean;
+  /** Color of the status badge. */
+  badgeColor?: AvatarBadgeStylingProps["color"];
+  /** Corner the status badge sits in. */
+  badgePosition?: AvatarBadgeStylingProps["position"];
+}
+export function IAvatar(props: AvatarProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const className = useMemo(() => avatarRecipe({ color: props.color, variant: props.variant, shape: props.shape, size: props.size }), [props.color, props.variant, props.shape, props.size])
+const badgeClassName = useMemo(() => avatarBadgeRecipe({ color: props.badgeColor, position: props.badgePosition, size: props.size }), [props.badgeColor, props.badgePosition, props.size])
+const { children, color, variant, shape, size, badge, badgeColor, badgePosition, src, alt, label, showBadge, ...__attrs } = props
+return (
+<IAvatarBase {...__attrs} className={[className, props.className].filter(Boolean).join(" ")} src={props.src} alt={props.alt} showBadge={props.badge} badge={<IAvatarBadgeBase className={badgeClassName} aria-hidden="true" />}>
+  {props.children ?? props.label}
+</IAvatarBase>
+)
+}
+",
+  "solid/IAvatar.tsx": "import { createMemo, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+import IAvatarBase, { type AvatarBaseProps } from "../headless/IAvatarBase";
+import IAvatarBadgeBase from "../headless/IAvatarBadgeBase";
+import {
+  avatarRecipe,
+  avatarBadgeRecipe,
+  type AvatarRecipeProps as AvatarStylingProps,
+  type AvatarBadgeRecipeProps as AvatarBadgeStylingProps,
+} from "virtual:styleframe";
+export interface AvatarProps extends AvatarBaseProps {
+  /** Color variant. */
+  color?: AvatarStylingProps["color"];
+  /** Style variant. */
+  variant?: AvatarStylingProps["variant"];
+  /** Shape variant. */
+  shape?: AvatarStylingProps["shape"];
+  /** Size variant; also sizes the status badge. */
+  size?: AvatarStylingProps["size"];
+  /** Shows a status-indicator dot overlaid on the avatar. */
+  badge?: boolean;
+  /** Color of the status badge. */
+  badgeColor?: AvatarBadgeStylingProps["color"];
+  /** Corner the status badge sits in. */
+  badgePosition?: AvatarBadgeStylingProps["position"];
+}
+export default function IAvatar(props: AvatarProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const className = createMemo(() => avatarRecipe({ color: props.color, variant: props.variant, shape: props.shape, size: props.size }))
+const badgeClassName = createMemo(() => avatarBadgeRecipe({ color: props.badgeColor, position: props.badgePosition, size: props.size }))
+const [, __attrs] = splitProps(props, ["children", "color", "variant", "shape", "size", "badge", "badgeColor", "badgePosition", "src", "alt", "label", "showBadge"])
+return (
+<IAvatarBase {...__attrs} class={[className(), props.class].filter(Boolean).join(" ")} src={props.src} alt={props.alt} showBadge={props.badge} badge={<IAvatarBadgeBase class={badgeClassName()} aria-hidden="true" />}>
+  {props.children ?? props.label}
+</IAvatarBase>
+)
+}
+",
+  "svelte/IAvatar.svelte": "<script lang="ts">
+  import IAvatarBase, { type AvatarBaseProps } from "../headless/IAvatarBase.svelte";
+  import IAvatarBadgeBase from "../headless/IAvatarBadgeBase.svelte";
+  import {
+    avatarRecipe,
+    avatarBadgeRecipe,
+    type AvatarRecipeProps as AvatarStylingProps,
+    type AvatarBadgeRecipeProps as AvatarBadgeStylingProps,
+  } from "virtual:styleframe";
+  export interface AvatarProps extends AvatarBaseProps {
+    /** Color variant. */
+    color?: AvatarStylingProps["color"];
+    /** Style variant. */
+    variant?: AvatarStylingProps["variant"];
+    /** Shape variant. */
+    shape?: AvatarStylingProps["shape"];
+    /** Size variant; also sizes the status badge. */
+    size?: AvatarStylingProps["size"];
+    /** Shows a status-indicator dot overlaid on the avatar. */
+    badge?: boolean;
+    /** Color of the status badge. */
+    badgeColor?: AvatarBadgeStylingProps["color"];
+    /** Corner the status badge sits in. */
+    badgePosition?: AvatarBadgeStylingProps["position"];
+  }
+  import type { Snippet } from "svelte";
+  let { color, variant, shape, size, badge, badgeColor, badgePosition, src, alt, label, showBadge, children, ...__attrs }: AvatarProps & { children?: Snippet } & Record<string, any> = $props()
+  let className = $derived(avatarRecipe({ color: color, variant: variant, shape: shape, size: size }))
+  let badgeClassName = $derived(avatarBadgeRecipe({ color: badgeColor, position: badgePosition, size: size }))
+</script>
+<IAvatarBase {...__attrs} class={[className, __attrs.class].filter(Boolean).join(" ")} src={src} alt={alt} showBadge={badge}>
+  {#if children}{@render children()}{:else}{label}{/if}
+  {#snippet badge()}
+  <IAvatarBadgeBase class={badgeClassName} aria-hidden="true" />
+  {/snippet}
+</IAvatarBase>
+",
+  "vue/IAvatar.vue": "<script setup lang="ts">
+  import { computed } from "vue";
+  import IAvatarBase, { type AvatarBaseProps } from "../headless/IAvatarBase.vue";
+  import IAvatarBadgeBase from "../headless/IAvatarBadgeBase.vue";
+  import {
+    avatarRecipe,
+    avatarBadgeRecipe,
+    type AvatarRecipeProps as AvatarStylingProps,
+    type AvatarBadgeRecipeProps as AvatarBadgeStylingProps,
+  } from "virtual:styleframe";
+  export interface AvatarProps extends AvatarBaseProps {
+    /** Color variant. */
+    color?: AvatarStylingProps["color"];
+    /** Style variant. */
+    variant?: AvatarStylingProps["variant"];
+    /** Shape variant. */
+    shape?: AvatarStylingProps["shape"];
+    /** Size variant; also sizes the status badge. */
+    size?: AvatarStylingProps["size"];
+    /** Shows a status-indicator dot overlaid on the avatar. */
+    badge?: boolean;
+    /** Color of the status badge. */
+    badgeColor?: AvatarBadgeStylingProps["color"];
+    /** Corner the status badge sits in. */
+    badgePosition?: AvatarBadgeStylingProps["position"];
+  }
+  const props = defineProps<AvatarProps>()
+  const className = computed(() => avatarRecipe({ color: props.color, variant: props.variant, shape: props.shape, size: props.size }))
+  const badgeClassName = computed(() => avatarBadgeRecipe({ color: props.badgeColor, position: props.badgePosition, size: props.size }))
+</script>
+<template>
+<IAvatarBase :class="className" :src="src" :alt="alt" :showBadge="badge">
+  <slot>
+    {{ label }}
+  </slot>
+  <template #badge>
+  <IAvatarBadgeBase :class="badgeClassName" aria-hidden="true" />
+  </template>
+</IAvatarBase>
+</template>
+",
+}
+`;
