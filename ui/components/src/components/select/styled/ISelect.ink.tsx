@@ -122,6 +122,7 @@ export default defineComponent(
           activeDescendant={activeDescendant()}
           expanded={open()}
           invalid={props.invalid}
+          readonly={props.readonly}
           disabled={props.disabled}
           placeholder={isPlaceholder()}
           onToggle={() => {

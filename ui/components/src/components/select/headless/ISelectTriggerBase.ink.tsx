@@ -7,7 +7,7 @@ export interface SelectTriggerBaseProps {
   label?: string;
   /** Id of an external visible label, exposed as `aria-labelledby`. */
   labelledBy?: string;
-  /** Id of the controlled listbox, exposed as `aria-controls`. */
+  /** Id of the controlled listbox, exposed as `aria-controls` only while `expanded` (the listbox is not in the DOM when collapsed). */
   controls?: string;
   /** Id of the active (virtually-focused) option, exposed as `aria-activedescendant`. */
   activeDescendant?: string;
@@ -15,6 +15,8 @@ export interface SelectTriggerBaseProps {
   expanded?: boolean;
   /** Marks the control invalid, exposed as `aria-invalid`. */
   invalid?: boolean;
+  /** Marks the control read-only, exposed as `aria-readonly`. */
+  readonly?: boolean;
   /** Disables the control (non-focusable, guarded), exposed as `aria-disabled`. */
   disabled?: boolean;
   /** Whether the displayed value is the placeholder (adds the `-placeholder` value modifier). */
@@ -45,11 +47,12 @@ export default defineComponent(
         tabindex={props.disabled ? -1 : 0}
         aria-haspopup="listbox"
         aria-expanded={props.expanded ? "true" : "false"}
-        aria-controls={props.controls}
+        aria-controls={props.expanded ? props.controls : undefined}
         aria-activedescendant={props.activeDescendant}
         aria-label={props.label}
         aria-labelledby={props.labelledBy}
         aria-invalid={props.invalid ? "true" : undefined}
+        aria-readonly={props.readonly ? "true" : undefined}
         aria-disabled={props.disabled ? "true" : undefined}
         data-open={props.expanded ? "true" : "false"}
         onClick={() => !props.disabled && emit("toggle")}

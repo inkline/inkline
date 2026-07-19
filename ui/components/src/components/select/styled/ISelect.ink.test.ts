@@ -200,12 +200,13 @@ describe("ISelect (styled) on Angular SSR", () => {
     expect(html).toMatch(/<span[^>]*class="select-value -placeholder"/);
   });
 
-  it("exposes aria-controls / aria-haspopup and the accessible name", async () => {
+  it("exposes aria-haspopup and the accessible name, and omits aria-controls while collapsed", async () => {
     const { html } = await mount({ options: OPTIONS, value: "apple", label: "Fruit" });
 
     expect(html).toMatch(/aria-haspopup="listbox"/);
-    expect(html).toMatch(/aria-controls="[^"]*-listbox"/);
     expect(html).toMatch(/aria-label="Fruit"/);
+    // The listbox is not in the DOM when collapsed, so aria-controls must not be a dangling idref.
+    expect(html).not.toContain("aria-controls");
   });
 
   it("marks the trigger invalid and disabled from the matching props", async () => {
@@ -221,6 +222,17 @@ describe("ISelect (styled) on Angular SSR", () => {
     expect(html).toMatch(/aria-disabled="true"/);
     // Disabled removes the tab stop.
     expect(html).toMatch(/tabindex="-1"/);
+  });
+
+  it("exposes aria-readonly when read-only", async () => {
+    const { html } = await mount({
+      options: OPTIONS,
+      value: "apple",
+      label: "Fruit",
+      readonly: true,
+    });
+
+    expect(html).toMatch(/aria-readonly="true"/);
   });
 
   // The collapsed host variant inlines the composite onto native elements: the container is the
