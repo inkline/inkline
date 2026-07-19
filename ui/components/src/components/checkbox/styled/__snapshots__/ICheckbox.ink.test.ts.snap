@@ -152,7 +152,7 @@ const { children, color, size, label, id, name, disabled, required, readonly, in
 return (
 <ICheckboxBase {...__attrs} className={[wrapperClassName, props.className].filter(Boolean).join(" ")}>
   <>
-    <ICheckboxControlBase className={fieldClassName} id={props.id} name={props.name} disabled={props.disabled} required={props.required} readOnly={props.readonly} indeterminate={props.indeterminate} checked={props.checked} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
+    <ICheckboxControlBase className={fieldClassName} id={props.id} name={props.name} disabled={props.disabled} required={props.required} readonly={props.readonly} indeterminate={props.indeterminate} checked={props.checked} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
     {props.children ?? props.label}
   </>
 </ICheckboxBase>

@@ -76,25 +76,17 @@ describe("ICheckbox (styled)", () => {
     expectOutputContains(out(result, "vue"), ':indeterminate="indeterminate"');
   });
 
-  it("forwards readonly to the control on the six non-React targets", async () => {
-    // The prop name crosses the component boundary verbatim on every target except React.
+  it("forwards readonly to the control on all seven targets", async () => {
+    // The prop name crosses the component boundary verbatim on every target — including React, whose
+    // host-only attribute canonicalisation (INK-26 / #515) no longer renames `readonly` → `readOnly`
+    // on a custom-component instance, so the forwarded key matches the control's lowercase prop.
     const result = await compileComponent(ICHECKBOX);
+    expectOutputContains(out(result, "react"), "readonly={props.readonly}");
     expectOutputContains(out(result, "vue"), ':readonly="readonly"');
     expectOutputContains(out(result, "svelte"), "readonly={readonly}");
     expectOutputContains(out(result, "solid"), "readonly={props.readonly}");
     expectOutputContains(out(result, "qwik"), "readonly={props.readonly}");
     expectOutputContains(out(result, "angular"), '[readonly]="readonly()"');
-  });
-
-  it("documents the React readonly→readOnly component-prop rename gap (INK-26)", async () => {
-    // React canonicalises the `readonly` HTML attribute to `readOnly` even at a custom-component
-    // boundary, so the styled forward emits `readOnly={props.readonly}` while the headless control
-    // reads `props.readonly` — the value never arrives on React (aria-readonly unset, click guard
-    // dead). Broken identically for IInput. Tracked upstream as INK-26; correct on the other six
-    // targets. This assertion pins the current (buggy) output so it flips when the compiler stops
-    // renaming component props and we can drop the caveat.
-    const result = await compileComponent(ICHECKBOX);
-    expectOutputContains(out(result, "react"), "readOnly={props.readonly}");
   });
 
   it("output matches snapshots", async () => {

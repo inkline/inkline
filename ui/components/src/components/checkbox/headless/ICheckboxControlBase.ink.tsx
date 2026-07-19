@@ -32,9 +32,9 @@ export interface CheckboxControlBaseProps {
 // checkbox type), so read-only is expressed with `aria-readonly` and enforced by cancelling the click
 // default — which stops both the toggle and the `change` that would follow. The guard is written as a
 // single expression (`props.readonly && e.preventDefault()`) so Angular's template codegen can inline
-// it; a block body collapses to an empty `(click)=""` there. Correct on six targets; on React the
-// styled→headless forward renames the `readonly` prop to `readOnly`, so the value never reaches this
-// control (aria + guard stay inert) — a compiler gap tracked upstream as INK-26.
+// it; a block body collapses to an empty `(click)=""` there. Correct on all seven targets: React's
+// host-only attribute canonicalisation (INK-26 / #515) forwards the `readonly` prop verbatim across
+// the styled→headless boundary, so the value reaches this control everywhere.
 export default defineComponent({ meta: { headless: true } }, (props: CheckboxControlBaseProps) => {
   const [checked, setChecked] = defineModel<boolean>("checked");
   const controlRef = createRef<HTMLInputElement>();
