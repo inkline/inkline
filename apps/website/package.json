@@ -4,13 +4,29 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vp dev",
-    "build": "tsc && vp build",
-    "preview": "vp preview"
+    "dev": "nuxt dev",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/content": "^3.14.0",
+    "@nuxt/image": "^1.11.0",
+    "@nuxt/kit": "^4.4.8",
+    "@nuxt/scripts": "^0.11.13",
+    "@nuxt/ui": "^4.8.2",
+    "@nuxtjs/robots": "^6.1.1",
+    "@nuxtjs/sitemap": "^8.2.1",
+    "@uxfront/docs-theme": "catalog:",
+    "better-sqlite3": "^12.10.1",
+    "nuxt": "^4.4.8",
+    "nuxt-llms": "^0.2.0",
+    "tailwindcss": "^4.3.1",
+    "vue": "catalog:",
+    "vue-router": "^5.1.0"
   },
   "devDependencies": {
-    "typescript": "catalog:",
-    "vite": "npm:@voidzero-dev/vite-plus-core@^0.1.24",
-    "vite-plus": "catalog:"
+    "typescript": "catalog:ts6"
   }
 }
