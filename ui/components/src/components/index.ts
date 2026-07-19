@@ -18,6 +18,13 @@ export { default as IInputControlBase } from "./input/headless/IInputControlBase
 export { default as IInputPrefixBase } from "./input/headless/IInputPrefixBase.ink.tsx";
 export { default as IInputSuffixBase } from "./input/headless/IInputSuffixBase.ink.tsx";
 
+// Radio ships as a single styled component (IRadioGroup) that composes every headless part. The
+// headless parts remain individually exported for advanced/custom composition.
+export { default as IRadioGroup } from "./radio/styled/IRadioGroup.ink.tsx";
+export { default as IRadioGroupBase } from "./radio/headless/IRadioGroupBase.ink.tsx";
+export { default as IRadioBase } from "./radio/headless/IRadioBase.ink.tsx";
+export { default as IRadioFieldBase } from "./radio/headless/IRadioFieldBase.ink.tsx";
+
 // Switch ships as a single styled component (ISwitch) that composes every headless part. The
 // headless parts remain individually exported for advanced/custom composition.
 export { default as ISwitch } from "./switch/styled/ISwitch.ink.tsx";
