@@ -20,4 +20,15 @@ describe("ElementRef: single template ref bound + focused on mount", () => {
     );
     expect(out).toContain("useVisibleTask$(() => { inputRef.value?.focus(); })");
   });
+
+  it("Qwik: the ref signal is declared before the task that reads it", async () => {
+    const out = await compileTo("ElementRef", "qwik");
+    // Qwik extracts each `useVisibleTask$` into its own QRL and captures lexical scope textually, so a
+    // task emitted above the `const ref = useSignal(null)` it reads throws `ReferenceError` at runtime.
+    // The ref declaration must precede the task.
+    const refIndex = out.indexOf("const inputRef = useSignal(null)");
+    const taskIndex = out.indexOf("useVisibleTask$(() => { inputRef.value?.focus(); })");
+    expect(refIndex).toBeGreaterThanOrEqual(0);
+    expect(taskIndex).toBeGreaterThan(refIndex);
+  });
 });

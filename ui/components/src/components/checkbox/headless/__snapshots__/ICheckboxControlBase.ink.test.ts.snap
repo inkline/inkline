@@ -85,8 +85,8 @@ export interface CheckboxControlBaseProps {
 }
 export const ICheckboxControlBase = component$((props: CheckboxControlBaseProps & { checked?: boolean; onUpdateChecked$?: QRL<(value: boolean) => void> } & Record<string, any>) =>
 {
-useVisibleTask$(() => { const el = controlRef.value; if (el) { el.indeterminate = props.indeterminate ?? false; } })
 const controlRef = useSignal(null)
+useVisibleTask$(() => { const el = controlRef.value; if (el) { el.indeterminate = props.indeterminate ?? false; } })
 const { id, name, disabled, required, readonly, indeterminate, checked, onUpdateChecked$, ...__attrs } = props
 return (
 <input {...__attrs} class={["checkbox-field", props.class].filter(Boolean).join(" ")} type="checkbox" id={props.id} name={props.name} checked={props.checked ?? false} indeterminate={props.indeterminate ?? false} disabled={props.disabled} required={props.required} aria-readonly={props.readonly ? "true" : undefined} onClick={$((e: { preventDefault: () => void }) => props.readonly && e.preventDefault())} onChange={$((e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked$?.(e.currentTarget.checked))} ref={controlRef} />
