@@ -1,0 +1,141 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SelectListbox > output matches snapshots 1`] = `
+{
+  "angular/ISelectListboxBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface SelectListboxBaseProps {
+  /** Id of the listbox element (referenced by the trigger's \`aria-controls\`). */
+  id?: string;
+  /** Id of the labelling element, exposed as \`aria-labelledby\`. */
+  labelledBy?: string;
+  /** Accessible name, exposed as \`aria-label\` (use when there is no labelling element). */
+  label?: string;
+}
+@Component({ standalone: true, selector: 'ink-select-listbox-base', host: { style: 'display: contents' }, template: \`<ul [class]="'select-panel' + (klass() ? ' ' + klass() : '')" role="listbox" [attr.id]="(id()) ?? null" [attr.aria-labelledby]="(labelledBy()) ?? null" [attr.aria-label]="(label()) ?? null">
+<ng-content></ng-content>
+</ul>\` })
+export class ISelectListboxBaseComponent
+{
+klass = input<string>()
+id = input<string>()
+labelledBy = input<string>()
+label = input<string>()
+}
+@Component({ standalone: true, selector: 'ul[ink-select-listbox-base]', host: { '[class]': "'select-panel' + (klass() ? ' ' + klass() : '')", 'role': 'listbox', '[attr.id]': "(id()) ?? null", '[attr.aria-labelledby]': "(labelledBy()) ?? null", '[attr.aria-label]': "(label()) ?? null" }, template: \`<ng-content></ng-content>\` })
+export class ISelectListboxBaseHostComponent
+{
+klass = input<string>()
+id = input<string>()
+labelledBy = input<string>()
+label = input<string>()
+}
+",
+  "astro/ISelectListboxBase.astro": "---
+export interface SelectListboxBaseProps {
+  /** Id of the listbox element (referenced by the trigger's \`aria-controls\`). */
+  id?: string;
+  /** Id of the labelling element, exposed as \`aria-labelledby\`. */
+  labelledBy?: string;
+  /** Accessible name, exposed as \`aria-label\` (use when there is no labelling element). */
+  label?: string;
+}
+type Props = SelectListboxBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { id, labelledBy, label, ...__attrs } = props;
+---
+<ul {...__attrs} class={["select-panel", __attrs.class].filter(Boolean).join(" ")} role="listbox" id={id} aria-labelledby={labelledBy} aria-label={label}>
+<slot />
+</ul>
+",
+  "qwik/ISelectListboxBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface SelectListboxBaseProps {
+  /** Id of the listbox element (referenced by the trigger's \`aria-controls\`). */
+  id?: string;
+  /** Id of the labelling element, exposed as \`aria-labelledby\`. */
+  labelledBy?: string;
+  /** Accessible name, exposed as \`aria-label\` (use when there is no labelling element). */
+  label?: string;
+}
+export const ISelectListboxBase = component$((props: SelectListboxBaseProps & Record<string, any>) =>
+{
+const { children, id, labelledBy, label, ...__attrs } = props
+return (
+<ul {...__attrs} class={["select-panel", props.class].filter(Boolean).join(" ")} role="listbox" id={props.id} aria-labelledby={props.labelledBy} aria-label={props.label}>
+  <Slot />
+</ul>
+)
+});
+",
+  "react/ISelectListboxBase.tsx": "export interface SelectListboxBaseProps {
+  /** Id of the listbox element (referenced by the trigger's \`aria-controls\`). */
+  id?: string;
+  /** Id of the labelling element, exposed as \`aria-labelledby\`. */
+  labelledBy?: string;
+  /** Accessible name, exposed as \`aria-label\` (use when there is no labelling element). */
+  label?: string;
+}
+export function ISelectListboxBase(props: SelectListboxBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, id, labelledBy, label, ...__attrs } = props
+return (
+<ul {...__attrs} className={["select-panel", props.className].filter(Boolean).join(" ")} role="listbox" id={props.id} aria-labelledby={props.labelledBy} aria-label={props.label}>
+  {props.children}
+</ul>
+)
+}
+",
+  "solid/ISelectListboxBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface SelectListboxBaseProps {
+  /** Id of the listbox element (referenced by the trigger's \`aria-controls\`). */
+  id?: string;
+  /** Id of the labelling element, exposed as \`aria-labelledby\`. */
+  labelledBy?: string;
+  /** Accessible name, exposed as \`aria-label\` (use when there is no labelling element). */
+  label?: string;
+}
+export default function ISelectListboxBase(props: SelectListboxBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children", "id", "labelledBy", "label"])
+return (
+<ul {...__attrs} class={["select-panel", props.class].filter(Boolean).join(" ")} role="listbox" id={props.id} aria-labelledby={props.labelledBy} aria-label={props.label}>
+  {props.children}
+</ul>
+)
+}
+",
+  "svelte/ISelectListboxBase.svelte": "<script lang="ts">
+  export interface SelectListboxBaseProps {
+    /** Id of the listbox element (referenced by the trigger's \`aria-controls\`). */
+    id?: string;
+    /** Id of the labelling element, exposed as \`aria-labelledby\`. */
+    labelledBy?: string;
+    /** Accessible name, exposed as \`aria-label\` (use when there is no labelling element). */
+    label?: string;
+  }
+  import type { Snippet } from "svelte";
+  let { id, labelledBy, label, children, ...__attrs }: SelectListboxBaseProps & { children?: Snippet } & Record<string, any> = $props()
+</script>
+<ul {...__attrs} class={["select-panel", __attrs.class].filter(Boolean).join(" ")} role="listbox" id={id} aria-labelledby={labelledBy} aria-label={label}>
+  {@render children?.()}
+</ul>
+",
+  "vue/ISelectListboxBase.vue": "<script setup lang="ts">
+  export interface SelectListboxBaseProps {
+    /** Id of the listbox element (referenced by the trigger's \`aria-controls\`). */
+    id?: string;
+    /** Id of the labelling element, exposed as \`aria-labelledby\`. */
+    labelledBy?: string;
+    /** Accessible name, exposed as \`aria-label\` (use when there is no labelling element). */
+    label?: string;
+  }
+  const props = defineProps<SelectListboxBaseProps>()
+</script>
+<template>
+<ul class="select-panel" role="listbox" :id="id" :aria-labelledby="labelledBy" :aria-label="label">
+  <slot />
+</ul>
+</template>
+",
+}
+`;
