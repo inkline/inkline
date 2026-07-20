@@ -472,6 +472,18 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       }),
     );
   }
+  // Declare refs before effects/lifecycle tasks. A `useVisibleTask$` that reads `ref.value` is
+  // extracted into its own QRL, and Qwik's optimizer captures lexical scope textually — an effect
+  // emitted above the `const ref = useSignal(null)` it reads would resolve to an undeclared name at
+  // runtime (`ReferenceError`). Refs init to `null` with no dependencies, so they hoist safely here.
+  for (const r of component.refs) {
+    body.push(
+      cStmt({
+        body: `const ${r.name} = useSignal${r.elementType ? `<${r.elementType} | null>` : ""}(null)`,
+        span: r.loc,
+      }),
+    );
+  }
   for (const e of component.effects) {
     body.push(cStmt({ body: `useVisibleTask$(${rewriteExpr(e.body, rules)})`, span: e.loc }));
   }
@@ -504,14 +516,6 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       cStmt({
         body: `useTask$(() => { (${fetcher})().then((d) => ${res.name}.value = d)${errorChain}${finallyChain}; })`,
         span: res.loc,
-      }),
-    );
-  }
-  for (const r of component.refs) {
-    body.push(
-      cStmt({
-        body: `const ${r.name} = useSignal${r.elementType ? `<${r.elementType} | null>` : ""}(null)`,
-        span: r.loc,
       }),
     );
   }

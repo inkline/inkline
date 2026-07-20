@@ -1,0 +1,79 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CheckboxBase > output matches snapshots 1`] = `
+{
+  "angular/ICheckboxBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+@Component({ standalone: true, selector: 'ink-checkbox-base', host: { style: 'display: contents' }, template: \`<label [class]="'checkbox' + (klass() ? ' ' + klass() : '')">
+<ng-content></ng-content>
+</label>\` })
+export class ICheckboxBaseComponent
+{
+klass = input<string>()
+}
+@Component({ standalone: true, selector: 'label[ink-checkbox-base]', host: { '[class]': "'checkbox' + (klass() ? ' ' + klass() : '')" }, template: \`<ng-content></ng-content>\` })
+export class ICheckboxBaseHostComponent
+{
+klass = input<string>()
+}
+",
+  "astro/ICheckboxBase.astro": "---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<label {...__attrs} class={["checkbox", __attrs.class].filter(Boolean).join(" ")}>
+<slot />
+</label>
+",
+  "qwik/ICheckboxBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export const ICheckboxBase = component$((props) =>
+{
+const { children, ...__attrs } = props
+return (
+<label {...__attrs} class={["checkbox", props.class].filter(Boolean).join(" ")}>
+  <Slot />
+</label>
+)
+});
+",
+  "react/ICheckboxBase.tsx": "export function ICheckboxBase(props: { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, ...__attrs } = props
+return (
+<label {...__attrs} className={["checkbox", props.className].filter(Boolean).join(" ")}>
+  {props.children}
+</label>
+)
+}
+",
+  "solid/ICheckboxBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function ICheckboxBase(props: { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children"])
+return (
+<label {...__attrs} class={["checkbox", props.class].filter(Boolean).join(" ")}>
+  {props.children}
+</label>
+)
+}
+",
+  "svelte/ICheckboxBase.svelte": "<script lang="ts">
+  import type { Snippet } from "svelte";
+  interface Props { children?: Snippet }
+  let { children, ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<label {...__attrs} class={["checkbox", __attrs.class].filter(Boolean).join(" ")}>
+  {@render children?.()}
+</label>
+",
+  "vue/ICheckboxBase.vue": "<script setup lang="ts">
+</script>
+<template>
+<label class="checkbox">
+  <slot />
+</label>
+</template>
+",
+}
+`;

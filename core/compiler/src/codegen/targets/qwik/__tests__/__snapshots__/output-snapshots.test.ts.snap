@@ -190,8 +190,8 @@ exports[`qwik full output snapshots > ElementRef 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ElementRef = component$((props) =>
 {
-useVisibleTask$(() => { inputRef.value?.focus(); })
 const inputRef = useSignal(null)
+useVisibleTask$(() => { inputRef.value?.focus(); })
 const { ...__attrs } = props
 return (
 <input {...__attrs} placeholder="auto-focus" class={props.class} ref={inputRef} />
@@ -371,9 +371,9 @@ exports[`qwik full output snapshots > MultiRefs 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const MultiRefs = component$((props) =>
 {
-useVisibleTask$(() => { inputRef.value?.focus(); })
 const inputRef = useSignal(null)
 const buttonRef = useSignal(null)
+useVisibleTask$(() => { inputRef.value?.focus(); })
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
@@ -574,8 +574,8 @@ return (
 import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ComponentRef = component$((props) =>
 {
-useVisibleTask$(() => { console.log(childRef.value); })
 const childRef = useSignal(null)
+useVisibleTask$(() => { console.log(childRef.value); })
 const { ...__attrs } = props
 return (
 <Child {...__attrs} class={props.class} ref={childRef} />

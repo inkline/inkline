@@ -1,0 +1,252 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ICheckbox (styled) > output matches snapshots 1`] = `
+{
+  "angular/ICheckbox.component.ts": "import { Component, signal, computed, effect, input, model } from "@angular/core";
+import { ICheckboxBaseComponent as ICheckboxBase } from "../headless/ICheckboxBase.component";
+import { ICheckboxControlBaseComponent as ICheckboxControlBase } from "../headless/ICheckboxControlBase.component";
+import { type CheckboxControlBaseProps } from "../headless/ICheckboxControlBase.component";
+import { ICheckboxControlBaseHostComponent } from "../headless/ICheckboxControlBase.component";
+import {
+  checkboxRecipe,
+  checkboxFieldRecipe,
+  type CheckboxFieldRecipeProps as CheckboxFieldStylingProps,
+} from "virtual:styleframe";
+export interface CheckboxProps extends CheckboxControlBaseProps {
+  /** Box color variant. */
+  color?: CheckboxFieldStylingProps["color"];
+  /** Size variant (applied to both the wrapper and the box). */
+  size?: CheckboxFieldStylingProps["size"];
+  /** Label text; overridden by the default slot. */
+  label?: string;
+}
+@Component({ standalone: true, selector: 'ink-checkbox', host: { style: 'display: contents' }, imports: [ICheckboxBase, ICheckboxControlBase], template: \`<ink-checkbox-base [klass]="(wrapperClassName()) + (klass() ? ' ' + klass() : '')">
+<ink-checkbox-control-base [klass]="(fieldClassName())" [id]="id()" [name]="name()" [disabled]="disabled()" [required]="required()" [readonly]="readonly()" [indeterminate]="indeterminate()" [checked]="checked()" (checkedChange)="checked.set($event)"></ink-checkbox-control-base>
+<ng-content>{{ label() }}</ng-content>
+</ink-checkbox-base>\` })
+export class ICheckboxComponent
+{
+checkboxRecipe = checkboxRecipe
+checkboxFieldRecipe = checkboxFieldRecipe
+klass = input<string>()
+wrapperClassName = computed(() => checkboxRecipe({ size: this.size() }))
+fieldClassName = computed(() => checkboxFieldRecipe({ color: this.color(), size: this.size() }))
+color = input<CheckboxFieldStylingProps["color"]>()
+size = input<CheckboxFieldStylingProps["size"]>()
+label = input<string>()
+id = input<string>()
+name = input<string>()
+disabled = input<boolean>()
+required = input<boolean>()
+readonly = input<boolean>()
+indeterminate = input<boolean>()
+checked = model<boolean>()
+}
+@Component({ standalone: true, selector: 'label[ink-checkbox]', host: { '[class]': "'checkbox' + ((wrapperClassName()) ? ' ' + (wrapperClassName()) : '') + (klass() ? ' ' + klass() : '')", 'ink-checkbox-base': '' }, imports: [ICheckboxControlBaseHostComponent], template: \`<input ink-checkbox-control-base [klass]="(fieldClassName())" [id]="id()" [name]="name()" [disabled]="disabled()" [required]="required()" [readonly]="readonly()" [indeterminate]="indeterminate()" [checked]="checked()" (checkedChange)="checked.set($event)" />
+<ng-content>{{ label() }}</ng-content>\` })
+export class ICheckboxHostComponent
+{
+checkboxRecipe = checkboxRecipe
+checkboxFieldRecipe = checkboxFieldRecipe
+klass = input<string>()
+wrapperClassName = computed(() => checkboxRecipe({ size: this.size() }))
+fieldClassName = computed(() => checkboxFieldRecipe({ color: this.color(), size: this.size() }))
+color = input<CheckboxFieldStylingProps["color"]>()
+size = input<CheckboxFieldStylingProps["size"]>()
+label = input<string>()
+id = input<string>()
+name = input<string>()
+disabled = input<boolean>()
+required = input<boolean>()
+readonly = input<boolean>()
+indeterminate = input<boolean>()
+checked = model<boolean>()
+}
+",
+  "astro/ICheckbox.astro": "---
+import ICheckboxBase from "../headless/ICheckboxBase.astro";
+import ICheckboxControlBase, { type CheckboxControlBaseProps } from "../headless/ICheckboxControlBase.astro";
+import {
+  checkboxRecipe,
+  checkboxFieldRecipe,
+  type CheckboxFieldRecipeProps as CheckboxFieldStylingProps,
+} from "virtual:styleframe";
+export interface CheckboxProps extends CheckboxControlBaseProps {
+  /** Box color variant. */
+  color?: CheckboxFieldStylingProps["color"];
+  /** Size variant (applied to both the wrapper and the box). */
+  size?: CheckboxFieldStylingProps["size"];
+  /** Label text; overridden by the default slot. */
+  label?: string;
+}
+type Props = CheckboxProps & Record<string, any>
+const props = Astro.props as Props;
+const { color, size, label, id, name, disabled, required, readonly, indeterminate, ...__attrs } = props;
+let checked = props.checked
+const wrapperClassName = checkboxRecipe({ size: size })
+const fieldClassName = checkboxFieldRecipe({ color: color, size: size })
+---
+<ICheckboxBase {...__attrs} class={[wrapperClassName, __attrs.class].filter(Boolean).join(" ")}>
+<ICheckboxControlBase class={fieldClassName} id={id} name={name} disabled={disabled} required={required} readonly={readonly} indeterminate={indeterminate} checked={checked} />
+<slot>
+{label}
+</slot>
+</ICheckboxBase>
+",
+  "qwik/ICheckbox.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL, Slot } from "@qwik.dev/core";
+import { ICheckboxBase } from "../headless/ICheckboxBase";
+import { ICheckboxControlBase } from "../headless/ICheckboxControlBase";
+import { type CheckboxControlBaseProps } from "../headless/ICheckboxControlBase";
+import {
+  checkboxRecipe,
+  checkboxFieldRecipe,
+  type CheckboxFieldRecipeProps as CheckboxFieldStylingProps,
+} from "virtual:styleframe";
+export interface CheckboxProps extends CheckboxControlBaseProps {
+  /** Box color variant. */
+  color?: CheckboxFieldStylingProps["color"];
+  /** Size variant (applied to both the wrapper and the box). */
+  size?: CheckboxFieldStylingProps["size"];
+  /** Label text; overridden by the default slot. */
+  label?: string;
+}
+export const ICheckbox = component$((props: CheckboxProps & { checked?: boolean; onUpdateChecked$?: QRL<(value: boolean) => void> } & Record<string, any>) =>
+{
+const wrapperClassName = useComputed$(() => checkboxRecipe({ size: props.size }))
+const fieldClassName = useComputed$(() => checkboxFieldRecipe({ color: props.color, size: props.size }))
+const { children, color, size, label, id, name, disabled, required, readonly, indeterminate, checked, onUpdateChecked$, ...__attrs } = props
+return (
+<ICheckboxBase {...__attrs} class={[wrapperClassName.value, props.class].filter(Boolean).join(" ")}>
+  <>
+    <ICheckboxControlBase class={fieldClassName.value} id={props.id} name={props.name} disabled={props.disabled} required={props.required} readonly={props.readonly} indeterminate={props.indeterminate} checked={props.checked} onUpdateChecked$={$(v => props.onUpdateChecked$?.(v))} />
+    <Slot>
+      {props.label}
+    </Slot>
+  </>
+</ICheckboxBase>
+)
+});
+",
+  "react/ICheckbox.tsx": "import { useMemo } from "react";
+import { ICheckboxBase } from "../headless/ICheckboxBase";
+import { ICheckboxControlBase } from "../headless/ICheckboxControlBase";
+import { type CheckboxControlBaseProps } from "../headless/ICheckboxControlBase";
+import {
+  checkboxRecipe,
+  checkboxFieldRecipe,
+  type CheckboxFieldRecipeProps as CheckboxFieldStylingProps,
+} from "virtual:styleframe";
+export interface CheckboxProps extends CheckboxControlBaseProps {
+  /** Box color variant. */
+  color?: CheckboxFieldStylingProps["color"];
+  /** Size variant (applied to both the wrapper and the box). */
+  size?: CheckboxFieldStylingProps["size"];
+  /** Label text; overridden by the default slot. */
+  label?: string;
+}
+export function ICheckbox(props: CheckboxProps & { children?: React.ReactNode } & { checked?: boolean; onUpdateChecked?: (value: boolean) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const wrapperClassName = useMemo(() => checkboxRecipe({ size: props.size }), [props.size])
+const fieldClassName = useMemo(() => checkboxFieldRecipe({ color: props.color, size: props.size }), [props.color, props.size])
+const { children, color, size, label, id, name, disabled, required, readonly, indeterminate, checked, onUpdateChecked, ...__attrs } = props
+return (
+<ICheckboxBase {...__attrs} className={[wrapperClassName, props.className].filter(Boolean).join(" ")}>
+  <>
+    <ICheckboxControlBase className={fieldClassName} id={props.id} name={props.name} disabled={props.disabled} required={props.required} readonly={props.readonly} indeterminate={props.indeterminate} checked={props.checked} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
+    {props.children ?? props.label}
+  </>
+</ICheckboxBase>
+)
+}
+",
+  "solid/ICheckbox.tsx": "import { createMemo, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+import ICheckboxBase from "../headless/ICheckboxBase";
+import ICheckboxControlBase, { type CheckboxControlBaseProps } from "../headless/ICheckboxControlBase";
+import {
+  checkboxRecipe,
+  checkboxFieldRecipe,
+  type CheckboxFieldRecipeProps as CheckboxFieldStylingProps,
+} from "virtual:styleframe";
+export interface CheckboxProps extends CheckboxControlBaseProps {
+  /** Box color variant. */
+  color?: CheckboxFieldStylingProps["color"];
+  /** Size variant (applied to both the wrapper and the box). */
+  size?: CheckboxFieldStylingProps["size"];
+  /** Label text; overridden by the default slot. */
+  label?: string;
+}
+export default function ICheckbox(props: CheckboxProps & { children?: any } & { checked?: boolean; onUpdateChecked?: (value: boolean) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const wrapperClassName = createMemo(() => checkboxRecipe({ size: props.size }))
+const fieldClassName = createMemo(() => checkboxFieldRecipe({ color: props.color, size: props.size }))
+const [, __attrs] = splitProps(props, ["children", "color", "size", "label", "id", "name", "disabled", "required", "readonly", "indeterminate", "checked", "onUpdateChecked"])
+return (
+<ICheckboxBase {...__attrs} class={[wrapperClassName(), props.class].filter(Boolean).join(" ")}>
+  <>
+    <ICheckboxControlBase class={fieldClassName()} id={props.id} name={props.name} disabled={props.disabled} required={props.required} readonly={props.readonly} indeterminate={props.indeterminate} checked={props.checked} onUpdateChecked={v => props.onUpdateChecked?.(v)} />
+    {props.children ?? props.label}
+  </>
+</ICheckboxBase>
+)
+}
+",
+  "svelte/ICheckbox.svelte": "<script lang="ts">
+  import ICheckboxBase from "../headless/ICheckboxBase.svelte";
+  import ICheckboxControlBase, { type CheckboxControlBaseProps } from "../headless/ICheckboxControlBase.svelte";
+  import {
+    checkboxRecipe,
+    checkboxFieldRecipe,
+    type CheckboxFieldRecipeProps as CheckboxFieldStylingProps,
+  } from "virtual:styleframe";
+  export interface CheckboxProps extends CheckboxControlBaseProps {
+    /** Box color variant. */
+    color?: CheckboxFieldStylingProps["color"];
+    /** Size variant (applied to both the wrapper and the box). */
+    size?: CheckboxFieldStylingProps["size"];
+    /** Label text; overridden by the default slot. */
+    label?: string;
+  }
+  import type { Snippet } from "svelte";
+  let { color, size, label, id, name, disabled, required, readonly, indeterminate, checked = $bindable(), children, ...__attrs }: CheckboxProps & { checked?: boolean; children?: Snippet } & Record<string, any> = $props()
+  let wrapperClassName = $derived(checkboxRecipe({ size: size }))
+  let fieldClassName = $derived(checkboxFieldRecipe({ color: color, size: size }))
+</script>
+<ICheckboxBase {...__attrs} class={[wrapperClassName, __attrs.class].filter(Boolean).join(" ")}>
+  <ICheckboxControlBase bind:checked={checked} class={fieldClassName} id={id} name={name} disabled={disabled} required={required} readonly={readonly} indeterminate={indeterminate} />
+  {#if children}{@render children()}{:else}{label}{/if}
+</ICheckboxBase>
+",
+  "vue/ICheckbox.vue": "<script setup lang="ts">
+  import { computed } from "vue";
+  import ICheckboxBase from "../headless/ICheckboxBase.vue";
+  import ICheckboxControlBase, { type CheckboxControlBaseProps } from "../headless/ICheckboxControlBase.vue";
+  import {
+    checkboxRecipe,
+    checkboxFieldRecipe,
+    type CheckboxFieldRecipeProps as CheckboxFieldStylingProps,
+  } from "virtual:styleframe";
+  export interface CheckboxProps extends CheckboxControlBaseProps {
+    /** Box color variant. */
+    color?: CheckboxFieldStylingProps["color"];
+    /** Size variant (applied to both the wrapper and the box). */
+    size?: CheckboxFieldStylingProps["size"];
+    /** Label text; overridden by the default slot. */
+    label?: string;
+  }
+  const props = defineProps<CheckboxProps>()
+  const checked = defineModel<boolean>("checked")
+  const wrapperClassName = computed(() => checkboxRecipe({ size: props.size }))
+  const fieldClassName = computed(() => checkboxFieldRecipe({ color: props.color, size: props.size }))
+</script>
+<template>
+<ICheckboxBase :class="wrapperClassName">
+  <ICheckboxControlBase v-model:checked="checked" :class="fieldClassName" :id="id" :name="name" :disabled="disabled" :required="required" :readonly="readonly" :indeterminate="indeterminate" />
+  <slot>
+    {{ label }}
+  </slot>
+</ICheckboxBase>
+</template>
+",
+}
+`;
