@@ -34,12 +34,24 @@ selector(".select-panel", {
   zIndex: "20",
 });
 
-// Keyboard/pointer active row: the recipe styles `aria-selected` (the committed value) but not the
+// Keyboard virtual-focus row: the recipe styles `aria-selected` (the committed value) but not the
 // virtually-focused row. Mark it with the same primary outline the open trigger uses (mode-aware via
-// the `@color.primary` token); hovering sets the same `data-active`, so this covers the mouse too.
-selector('.select-option[data-active="true"]', {
+// the `@color.primary` token). Pointer hover also sets `data-active` (the mouse drives the same
+// virtual focus), so exclude `:hover` here — an outline on a hovered row reads as a stuck focus ring.
+// The hovered row gets a subtle background affordance below instead.
+selector('.select-option[data-active="true"]:not(:hover)', {
   outlineWidth: "2px",
   outlineStyle: "solid",
   outlineColor: "@color.primary",
   outlineOffset: "-2px",
+});
+
+// Pointer hover affordance: the option recipe ships no `:hover` styling upstream, so once the
+// outline is suppressed for the mouse the hovered row would have zero feedback. Give it a subtle
+// surface. A translucent `currentColor` overlay is mode-agnostic by construction — the option's
+// text colour already flips with the theme (dark in light mode, light in dark mode), so an 8%
+// tint reads as a soft neutral highlight in both without hand-rolling a dark variant. Disabled
+// options set `pointer-events: none`, so they never receive hover.
+selector(".select-option:hover", {
+  background: "color-mix(in srgb, currentColor 8%, transparent)",
 });
