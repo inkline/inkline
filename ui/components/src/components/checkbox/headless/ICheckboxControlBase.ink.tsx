@@ -29,12 +29,17 @@ export interface CheckboxControlBaseProps {
 //     Angular, where the compiler unwraps the element ref to `.nativeElement`.
 //
 // `readonly` has no native effect on a checkbox (the HTML `readonly` attribute is ignored for the
-// checkbox type), so read-only is expressed with `aria-readonly` and enforced by cancelling the click
-// default — which stops both the toggle and the `change` that would follow. The guard is written as a
-// single expression (`props.readonly && e.preventDefault()`) so Angular's template codegen can inline
-// it; a block body collapses to an empty `(click)=""` there. Correct on all seven targets: React's
-// host-only attribute canonicalisation (INK-26 / #515) forwards the `readonly` prop verbatim across
-// the styled→headless boundary, so the value reaches this control everywhere.
+// checkbox type), so read-only is expressed with `aria-readonly` and enforced in two layers:
+//   1. Cancel the click default (`props.readonly && e.preventDefault()`) — synchronous on React, Vue,
+//      Solid, Svelte and Angular, so the toggle (and the `change` that would follow) never happens.
+//   2. On `change`, when read-only, restore the control's checked state from the model instead of
+//      writing to it. Qwik's event handlers are QRLs that resume and run *after* the browser's default
+//      action, so `preventDefault()` there is a no-op and the box does toggle; the change handler still
+//      fires, so re-asserting `el.checked = checked()` snaps it back and the model is never mutated.
+// Both handlers are single expressions so Angular's template codegen can inline them (a block body
+// collapses to an empty binding there). Correct on all seven targets: React's host-only attribute
+// canonicalisation (INK-26 / #515) forwards the `readonly` prop verbatim across the styled→headless
+// boundary, so the value reaches this control everywhere.
 export default defineComponent({ meta: { headless: true } }, (props: CheckboxControlBaseProps) => {
   const [checked, setChecked] = defineModel<boolean>("checked");
   const controlRef = createRef<HTMLInputElement>();
@@ -59,7 +64,11 @@ export default defineComponent({ meta: { headless: true } }, (props: CheckboxCon
       required={props.required}
       aria-readonly={props.readonly ? "true" : undefined}
       onClick={(e: { preventDefault: () => void }) => props.readonly && e.preventDefault()}
-      onChange={(e: { currentTarget: HTMLInputElement }) => setChecked(e.currentTarget.checked)}
+      onChange={(e: { currentTarget: HTMLInputElement }) =>
+        props.readonly
+          ? (e.currentTarget.checked = checked() ?? false)
+          : setChecked(e.currentTarget.checked)
+      }
     />
   );
 });

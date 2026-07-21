@@ -87,6 +87,27 @@ describe("CheckboxControl", () => {
     expectOutputContains(result.files.angular ?? [], "readonly() && $event.preventDefault()");
   });
 
+  it("re-asserts the checked state on change when read-only so Qwik cannot toggle it", async () => {
+    // The click guard is a no-op on Qwik, whose event handlers are QRLs that resume *after* the
+    // browser's default action, so `preventDefault()` there cannot stop the toggle. The change
+    // handler therefore restores the control from the model (`el.checked = checked()`) instead of
+    // writing to it when read-only — snapping the box back and leaving the model untouched. It is a
+    // single expression so Angular's template codegen can inline it.
+    const result = await compileComponent(CHECKBOX_CONTROL);
+    expectOutputContains(
+      result.files.react ?? [],
+      "props.readonly ? (e.currentTarget.checked = props.checked ?? false)",
+    );
+    expectOutputContains(
+      result.files.qwik ?? [],
+      "props.readonly ? (e.currentTarget.checked = props.checked ?? false)",
+    );
+    expectOutputContains(
+      result.files.angular ?? [],
+      "readonly() ? ($event.currentTarget.checked = checked() ?? false)",
+    );
+  });
+
   it("output matches snapshots", async () => {
     const result = await compileComponent(CHECKBOX_CONTROL);
     expect(snapshotOutput(result)).toMatchSnapshot();
