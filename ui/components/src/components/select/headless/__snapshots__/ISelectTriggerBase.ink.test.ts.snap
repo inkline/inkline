@@ -1,0 +1,290 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SelectTrigger > output matches snapshots 1`] = `
+{
+  "angular/ISelectTriggerBase.component.ts": "import { Component, signal, computed, effect, input, output } from "@angular/core";
+export interface SelectTriggerBaseProps {
+  /** Id of the trigger element. */
+  id?: string;
+  /** Accessible name, exposed as \`aria-label\` (use when there is no visible external label). */
+  label?: string;
+  /** Id of an external visible label, exposed as \`aria-labelledby\`. */
+  labelledBy?: string;
+  /** Id of the controlled listbox, exposed as \`aria-controls\` only while \`expanded\` (the listbox is not in the DOM when collapsed). */
+  controls?: string;
+  /** Id of the active (virtually-focused) option, exposed as \`aria-activedescendant\`. */
+  activeDescendant?: string;
+  /** Whether the listbox is open, exposed as \`aria-expanded\` and \`data-open\`. */
+  expanded?: boolean;
+  /** Marks the control invalid, exposed as \`aria-invalid\`. */
+  invalid?: boolean;
+  /** Marks the control read-only, exposed as \`aria-readonly\`. */
+  readonly?: boolean;
+  /** Disables the control (non-focusable, guarded), exposed as \`aria-disabled\`. */
+  disabled?: boolean;
+  /** Whether the displayed value is the placeholder (adds the \`-placeholder\` value modifier). */
+  placeholder?: boolean;
+  /** Class applied to the arrow indicator (defaults to the base \`select-arrow\`). */
+  arrowClass?: string;
+}
+@Component({ standalone: true, selector: 'ink-select-trigger-base', host: { style: 'display: contents' }, template: \`<div [class]="'select' + (klass() ? ' ' + klass() : '')" [attr.id]="(id()) ?? null" role="combobox" [attr.tabindex]="(disabled() ? -1 : 0) ?? null" aria-haspopup="listbox" [attr.aria-expanded]="(expanded() ? 'true' : 'false') ?? null" [attr.aria-controls]="(expanded() ? controls() : undefined) ?? null" [attr.aria-activedescendant]="(activeDescendant()) ?? null" [attr.aria-label]="(label()) ?? null" [attr.aria-labelledby]="(labelledBy()) ?? null" [attr.aria-invalid]="(invalid() ? 'true' : undefined) ?? null" [attr.aria-readonly]="(readonly() ? 'true' : undefined) ?? null" [attr.aria-disabled]="(disabled() ? 'true' : undefined) ?? null" [attr.data-open]="(expanded() ? 'true' : 'false') ?? null" (click)="!disabled() && toggle.emit()" (keydown)="!disabled() && ($event.key === 'ArrowDown' || $event.key === 'ArrowUp' || $event.key === 'Home' || $event.key === 'End' || $event.key === 'Enter' || $event.key === ' ' || $event.key === 'Escape') && $event.preventDefault(); !disabled() && navigate.emit($event.key)">
+<span [attr.class]="(placeholder() ? 'select-value -placeholder' : 'select-value') ?? null">
+<ng-content></ng-content>
+</span>
+<span [attr.class]="(arrowClass() ?? 'select-arrow') ?? null" aria-hidden="true" [attr.data-open]="(expanded() ? 'true' : 'false') ?? null"></span>
+</div>\` })
+export class ISelectTriggerBaseComponent
+{
+klass = input<string>()
+id = input<string>()
+label = input<string>()
+labelledBy = input<string>()
+controls = input<string>()
+activeDescendant = input<string>()
+expanded = input<boolean>()
+invalid = input<boolean>()
+readonly = input<boolean>()
+disabled = input<boolean>()
+placeholder = input<boolean>()
+arrowClass = input<string>()
+toggle = output()
+navigate = output()
+}
+@Component({ standalone: true, selector: 'div[ink-select-trigger-base]', host: { '[class]': "'select' + (klass() ? ' ' + klass() : '')", '[attr.id]': "(id()) ?? null", 'role': 'combobox', '[attr.tabindex]': "(disabled() ? -1 : 0) ?? null", 'aria-haspopup': 'listbox', '[attr.aria-expanded]': "(expanded() ? 'true' : 'false') ?? null", '[attr.aria-controls]': "(expanded() ? controls() : undefined) ?? null", '[attr.aria-activedescendant]': "(activeDescendant()) ?? null", '[attr.aria-label]': "(label()) ?? null", '[attr.aria-labelledby]': "(labelledBy()) ?? null", '[attr.aria-invalid]': "(invalid() ? 'true' : undefined) ?? null", '[attr.aria-readonly]': "(readonly() ? 'true' : undefined) ?? null", '[attr.aria-disabled]': "(disabled() ? 'true' : undefined) ?? null", '[attr.data-open]': "(expanded() ? 'true' : 'false') ?? null", '(click)': "!disabled() && toggle.emit()", '(keydown)': "!disabled() && ($event.key === 'ArrowDown' || $event.key === 'ArrowUp' || $event.key === 'Home' || $event.key === 'End' || $event.key === 'Enter' || $event.key === ' ' || $event.key === 'Escape') && $event.preventDefault(); !disabled() && navigate.emit($event.key)" }, template: \`<span [attr.class]="(placeholder() ? 'select-value -placeholder' : 'select-value') ?? null">
+<ng-content></ng-content>
+</span>
+<span [attr.class]="(arrowClass() ?? 'select-arrow') ?? null" aria-hidden="true" [attr.data-open]="(expanded() ? 'true' : 'false') ?? null"></span>\` })
+export class ISelectTriggerBaseHostComponent
+{
+klass = input<string>()
+id = input<string>()
+label = input<string>()
+labelledBy = input<string>()
+controls = input<string>()
+activeDescendant = input<string>()
+expanded = input<boolean>()
+invalid = input<boolean>()
+readonly = input<boolean>()
+disabled = input<boolean>()
+placeholder = input<boolean>()
+arrowClass = input<string>()
+toggle = output()
+navigate = output()
+}
+",
+  "astro/ISelectTriggerBase.astro": "---
+export interface SelectTriggerBaseProps {
+  /** Id of the trigger element. */
+  id?: string;
+  /** Accessible name, exposed as \`aria-label\` (use when there is no visible external label). */
+  label?: string;
+  /** Id of an external visible label, exposed as \`aria-labelledby\`. */
+  labelledBy?: string;
+  /** Id of the controlled listbox, exposed as \`aria-controls\` only while \`expanded\` (the listbox is not in the DOM when collapsed). */
+  controls?: string;
+  /** Id of the active (virtually-focused) option, exposed as \`aria-activedescendant\`. */
+  activeDescendant?: string;
+  /** Whether the listbox is open, exposed as \`aria-expanded\` and \`data-open\`. */
+  expanded?: boolean;
+  /** Marks the control invalid, exposed as \`aria-invalid\`. */
+  invalid?: boolean;
+  /** Marks the control read-only, exposed as \`aria-readonly\`. */
+  readonly?: boolean;
+  /** Disables the control (non-focusable, guarded), exposed as \`aria-disabled\`. */
+  disabled?: boolean;
+  /** Whether the displayed value is the placeholder (adds the \`-placeholder\` value modifier). */
+  placeholder?: boolean;
+  /** Class applied to the arrow indicator (defaults to the base \`select-arrow\`). */
+  arrowClass?: string;
+}
+type Props = SelectTriggerBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { id, label, labelledBy, controls, activeDescendant, expanded, invalid, readonly, disabled, placeholder, arrowClass, ...__attrs } = props;
+---
+<div {...__attrs} class={["select", __attrs.class].filter(Boolean).join(" ")} id={id} role="combobox" tabindex={disabled ? -1 : 0} aria-haspopup="listbox" aria-expanded={expanded ? "true" : "false"} aria-controls={expanded ? controls : undefined} aria-activedescendant={activeDescendant} aria-label={label} aria-labelledby={labelledBy} aria-invalid={invalid ? "true" : undefined} aria-readonly={readonly ? "true" : undefined} aria-disabled={disabled ? "true" : undefined} data-open={expanded ? "true" : "false"} onClick={() => !disabled && undefined} onKeyDown={(e: { key: string; preventDefault: () => void }) => { !disabled && (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "Home" || e.key === "End" || e.key === "Enter" || e.key === " " || e.key === "Escape") && e.preventDefault(); !disabled && undefined; }}><span class={placeholder ? "select-value -placeholder" : "select-value"}>
+<slot />
+</span><span class={arrowClass ?? "select-arrow"} aria-hidden="true" data-open={expanded ? "true" : "false"} /></div>
+",
+  "qwik/ISelectTriggerBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL, Slot } from "@qwik.dev/core";
+export interface SelectTriggerBaseProps {
+  /** Id of the trigger element. */
+  id?: string;
+  /** Accessible name, exposed as \`aria-label\` (use when there is no visible external label). */
+  label?: string;
+  /** Id of an external visible label, exposed as \`aria-labelledby\`. */
+  labelledBy?: string;
+  /** Id of the controlled listbox, exposed as \`aria-controls\` only while \`expanded\` (the listbox is not in the DOM when collapsed). */
+  controls?: string;
+  /** Id of the active (virtually-focused) option, exposed as \`aria-activedescendant\`. */
+  activeDescendant?: string;
+  /** Whether the listbox is open, exposed as \`aria-expanded\` and \`data-open\`. */
+  expanded?: boolean;
+  /** Marks the control invalid, exposed as \`aria-invalid\`. */
+  invalid?: boolean;
+  /** Marks the control read-only, exposed as \`aria-readonly\`. */
+  readonly?: boolean;
+  /** Disables the control (non-focusable, guarded), exposed as \`aria-disabled\`. */
+  disabled?: boolean;
+  /** Whether the displayed value is the placeholder (adds the \`-placeholder\` value modifier). */
+  placeholder?: boolean;
+  /** Class applied to the arrow indicator (defaults to the base \`select-arrow\`). */
+  arrowClass?: string;
+}
+export const ISelectTriggerBase = component$((props: SelectTriggerBaseProps & { onToggle$?: QRL<(...args: any[]) => void>; onNavigate$?: QRL<(...args: any[]) => void> } & Record<string, any>) =>
+{
+const { children, id, label, labelledBy, controls, activeDescendant, expanded, invalid, readonly, disabled, placeholder, arrowClass, onToggle$, onNavigate$, ...__attrs } = props
+return (
+<div {...__attrs} class={["select", props.class].filter(Boolean).join(" ")} id={props.id} role="combobox" tabindex={props.disabled ? -1 : 0} aria-haspopup="listbox" aria-expanded={props.expanded ? "true" : "false"} aria-controls={props.expanded ? props.controls : undefined} aria-activedescendant={props.activeDescendant} aria-label={props.label} aria-labelledby={props.labelledBy} aria-invalid={props.invalid ? "true" : undefined} aria-readonly={props.readonly ? "true" : undefined} aria-disabled={props.disabled ? "true" : undefined} data-open={props.expanded ? "true" : "false"} onClick={$(() => !props.disabled && props.onToggle$?.())} onKeyDown={$((e: { key: string; preventDefault: () => void }) => { !props.disabled && (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "Home" || e.key === "End" || e.key === "Enter" || e.key === " " || e.key === "Escape") && e.preventDefault(); !props.disabled && props.onNavigate$?.(e.key); })}>
+  <span class={props.placeholder ? "select-value -placeholder" : "select-value"}>
+    <Slot />
+  </span>
+  <span class={props.arrowClass ?? "select-arrow"} aria-hidden="true" data-open={props.expanded ? "true" : "false"} />
+</div>
+)
+});
+",
+  "react/ISelectTriggerBase.tsx": "export interface SelectTriggerBaseProps {
+  /** Id of the trigger element. */
+  id?: string;
+  /** Accessible name, exposed as \`aria-label\` (use when there is no visible external label). */
+  label?: string;
+  /** Id of an external visible label, exposed as \`aria-labelledby\`. */
+  labelledBy?: string;
+  /** Id of the controlled listbox, exposed as \`aria-controls\` only while \`expanded\` (the listbox is not in the DOM when collapsed). */
+  controls?: string;
+  /** Id of the active (virtually-focused) option, exposed as \`aria-activedescendant\`. */
+  activeDescendant?: string;
+  /** Whether the listbox is open, exposed as \`aria-expanded\` and \`data-open\`. */
+  expanded?: boolean;
+  /** Marks the control invalid, exposed as \`aria-invalid\`. */
+  invalid?: boolean;
+  /** Marks the control read-only, exposed as \`aria-readonly\`. */
+  readonly?: boolean;
+  /** Disables the control (non-focusable, guarded), exposed as \`aria-disabled\`. */
+  disabled?: boolean;
+  /** Whether the displayed value is the placeholder (adds the \`-placeholder\` value modifier). */
+  placeholder?: boolean;
+  /** Class applied to the arrow indicator (defaults to the base \`select-arrow\`). */
+  arrowClass?: string;
+}
+export function ISelectTriggerBase(props: SelectTriggerBaseProps & { children?: React.ReactNode } & { onToggle?: (...args: any[]) => void; onNavigate?: (...args: any[]) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, id, label, labelledBy, controls, activeDescendant, expanded, invalid, readonly, disabled, placeholder, arrowClass, onToggle, onNavigate, ...__attrs } = props
+return (
+<div {...__attrs} className={["select", props.className].filter(Boolean).join(" ")} id={props.id} role="combobox" tabindex={props.disabled ? -1 : 0} aria-haspopup="listbox" aria-expanded={props.expanded ? "true" : "false"} aria-controls={props.expanded ? props.controls : undefined} aria-activedescendant={props.activeDescendant} aria-label={props.label} aria-labelledby={props.labelledBy} aria-invalid={props.invalid ? "true" : undefined} aria-readonly={props.readonly ? "true" : undefined} aria-disabled={props.disabled ? "true" : undefined} data-open={props.expanded ? "true" : "false"} onClick={() => !props.disabled && props.onToggle?.()} onKeyDown={(e: { key: string; preventDefault: () => void }) => { !props.disabled && (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "Home" || e.key === "End" || e.key === "Enter" || e.key === " " || e.key === "Escape") && e.preventDefault(); !props.disabled && props.onNavigate?.(e.key); }}>
+  <span className={props.placeholder ? "select-value -placeholder" : "select-value"}>
+    {props.children}
+  </span>
+  <span className={props.arrowClass ?? "select-arrow"} aria-hidden="true" data-open={props.expanded ? "true" : "false"} />
+</div>
+)
+}
+",
+  "solid/ISelectTriggerBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface SelectTriggerBaseProps {
+  /** Id of the trigger element. */
+  id?: string;
+  /** Accessible name, exposed as \`aria-label\` (use when there is no visible external label). */
+  label?: string;
+  /** Id of an external visible label, exposed as \`aria-labelledby\`. */
+  labelledBy?: string;
+  /** Id of the controlled listbox, exposed as \`aria-controls\` only while \`expanded\` (the listbox is not in the DOM when collapsed). */
+  controls?: string;
+  /** Id of the active (virtually-focused) option, exposed as \`aria-activedescendant\`. */
+  activeDescendant?: string;
+  /** Whether the listbox is open, exposed as \`aria-expanded\` and \`data-open\`. */
+  expanded?: boolean;
+  /** Marks the control invalid, exposed as \`aria-invalid\`. */
+  invalid?: boolean;
+  /** Marks the control read-only, exposed as \`aria-readonly\`. */
+  readonly?: boolean;
+  /** Disables the control (non-focusable, guarded), exposed as \`aria-disabled\`. */
+  disabled?: boolean;
+  /** Whether the displayed value is the placeholder (adds the \`-placeholder\` value modifier). */
+  placeholder?: boolean;
+  /** Class applied to the arrow indicator (defaults to the base \`select-arrow\`). */
+  arrowClass?: string;
+}
+export default function ISelectTriggerBase(props: SelectTriggerBaseProps & { children?: any } & { onToggle?: (...args: any[]) => void; onNavigate?: (...args: any[]) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children", "id", "label", "labelledBy", "controls", "activeDescendant", "expanded", "invalid", "readonly", "disabled", "placeholder", "arrowClass", "onToggle", "onNavigate"])
+return (
+<div {...__attrs} class={["select", props.class].filter(Boolean).join(" ")} id={props.id} role="combobox" tabindex={props.disabled ? -1 : 0} aria-haspopup="listbox" aria-expanded={props.expanded ? "true" : "false"} aria-controls={props.expanded ? props.controls : undefined} aria-activedescendant={props.activeDescendant} aria-label={props.label} aria-labelledby={props.labelledBy} aria-invalid={props.invalid ? "true" : undefined} aria-readonly={props.readonly ? "true" : undefined} aria-disabled={props.disabled ? "true" : undefined} data-open={props.expanded ? "true" : "false"} onclick={() => !props.disabled && props.onToggle?.()} onkeydown={(e: { key: string; preventDefault: () => void }) => { !props.disabled && (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "Home" || e.key === "End" || e.key === "Enter" || e.key === " " || e.key === "Escape") && e.preventDefault(); !props.disabled && props.onNavigate?.(e.key); }}>
+  <span class={props.placeholder ? "select-value -placeholder" : "select-value"}>
+    {props.children}
+  </span>
+  <span class={props.arrowClass ?? "select-arrow"} aria-hidden="true" data-open={props.expanded ? "true" : "false"} />
+</div>
+)
+}
+",
+  "svelte/ISelectTriggerBase.svelte": "<script lang="ts">
+  export interface SelectTriggerBaseProps {
+    /** Id of the trigger element. */
+    id?: string;
+    /** Accessible name, exposed as \`aria-label\` (use when there is no visible external label). */
+    label?: string;
+    /** Id of an external visible label, exposed as \`aria-labelledby\`. */
+    labelledBy?: string;
+    /** Id of the controlled listbox, exposed as \`aria-controls\` only while \`expanded\` (the listbox is not in the DOM when collapsed). */
+    controls?: string;
+    /** Id of the active (virtually-focused) option, exposed as \`aria-activedescendant\`. */
+    activeDescendant?: string;
+    /** Whether the listbox is open, exposed as \`aria-expanded\` and \`data-open\`. */
+    expanded?: boolean;
+    /** Marks the control invalid, exposed as \`aria-invalid\`. */
+    invalid?: boolean;
+    /** Marks the control read-only, exposed as \`aria-readonly\`. */
+    readonly?: boolean;
+    /** Disables the control (non-focusable, guarded), exposed as \`aria-disabled\`. */
+    disabled?: boolean;
+    /** Whether the displayed value is the placeholder (adds the \`-placeholder\` value modifier). */
+    placeholder?: boolean;
+    /** Class applied to the arrow indicator (defaults to the base \`select-arrow\`). */
+    arrowClass?: string;
+  }
+  import type { Snippet } from "svelte";
+  let { id, label, labelledBy, controls, activeDescendant, expanded, invalid, readonly, disabled, placeholder, arrowClass, onToggle, onNavigate, children, ...__attrs }: SelectTriggerBaseProps & { onToggle?: (...args: any[]) => void; onNavigate?: (...args: any[]) => void; children?: Snippet } & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={["select", __attrs.class].filter(Boolean).join(" ")} id={id} role="combobox" tabindex={disabled ? -1 : 0} aria-haspopup="listbox" aria-expanded={expanded ? "true" : "false"} aria-controls={expanded ? controls : undefined} aria-activedescendant={activeDescendant} aria-label={label} aria-labelledby={labelledBy} aria-invalid={invalid ? "true" : undefined} aria-readonly={readonly ? "true" : undefined} aria-disabled={disabled ? "true" : undefined} data-open={expanded ? "true" : "false"} onclick={() => !disabled && onToggle?.()} onkeydown={(e: { key: string; preventDefault: () => void }) => { !disabled && (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "Home" || e.key === "End" || e.key === "Enter" || e.key === " " || e.key === "Escape") && e.preventDefault(); !disabled && onNavigate?.(e.key); }}><span class={placeholder ? "select-value -placeholder" : "select-value"}>{@render children?.()}</span><span class={arrowClass ?? "select-arrow"} aria-hidden="true" data-open={expanded ? "true" : "false"}></span></div>
+",
+  "vue/ISelectTriggerBase.vue": "<script setup lang="ts">
+  export interface SelectTriggerBaseProps {
+    /** Id of the trigger element. */
+    id?: string;
+    /** Accessible name, exposed as \`aria-label\` (use when there is no visible external label). */
+    label?: string;
+    /** Id of an external visible label, exposed as \`aria-labelledby\`. */
+    labelledBy?: string;
+    /** Id of the controlled listbox, exposed as \`aria-controls\` only while \`expanded\` (the listbox is not in the DOM when collapsed). */
+    controls?: string;
+    /** Id of the active (virtually-focused) option, exposed as \`aria-activedescendant\`. */
+    activeDescendant?: string;
+    /** Whether the listbox is open, exposed as \`aria-expanded\` and \`data-open\`. */
+    expanded?: boolean;
+    /** Marks the control invalid, exposed as \`aria-invalid\`. */
+    invalid?: boolean;
+    /** Marks the control read-only, exposed as \`aria-readonly\`. */
+    readonly?: boolean;
+    /** Disables the control (non-focusable, guarded), exposed as \`aria-disabled\`. */
+    disabled?: boolean;
+    /** Whether the displayed value is the placeholder (adds the \`-placeholder\` value modifier). */
+    placeholder?: boolean;
+    /** Class applied to the arrow indicator (defaults to the base \`select-arrow\`). */
+    arrowClass?: string;
+  }
+  const emit = defineEmits(["toggle", "navigate"])
+  const props = defineProps<SelectTriggerBaseProps>()
+</script>
+<template>
+<div class="select" :id="id" role="combobox" :tabindex="disabled ? -1 : 0" aria-haspopup="listbox" :aria-expanded='expanded ? "true" : "false"' :aria-controls="expanded ? controls : undefined" :aria-activedescendant="activeDescendant" :aria-label="label" :aria-labelledby="labelledBy" :aria-invalid='invalid ? "true" : undefined' :aria-readonly='readonly ? "true" : undefined' :aria-disabled='disabled ? "true" : undefined' :data-open='expanded ? "true" : "false"' @click='() => !disabled && emit("toggle")' @keydown='(e: { key: string; preventDefault: () => void }) => { !disabled && (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "Home" || e.key === "End" || e.key === "Enter" || e.key === " " || e.key === "Escape") && e.preventDefault(); !disabled && emit("navigate", e.key); }'>
+  <span :class='placeholder ? "select-value -placeholder" : "select-value"'>
+    <slot />
+  </span>
+  <span :class='arrowClass ?? "select-arrow"' aria-hidden="true" :data-open='expanded ? "true" : "false"' />
+</div>
+</template>
+",
+}
+`;

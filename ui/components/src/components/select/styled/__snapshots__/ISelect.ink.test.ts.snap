@@ -1,0 +1,589 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`ISelect (styled) > output matches snapshots 1`] = `
+{
+  "angular/ISelect.component.ts": "import { Component, signal, computed, effect, input, model } from "@angular/core";
+import { ISelectBaseComponent as ISelectBase } from "../headless/ISelectBase.component";
+import { ISelectTriggerBaseComponent as ISelectTriggerBase } from "../headless/ISelectTriggerBase.component";
+import { ISelectListboxBaseComponent as ISelectListboxBase } from "../headless/ISelectListboxBase.component";
+import { ISelectOptionBaseComponent as ISelectOptionBase } from "../headless/ISelectOptionBase.component";
+import { ISelectTriggerBaseHostComponent } from "../headless/ISelectTriggerBase.component";
+import { ISelectListboxBaseHostComponent } from "../headless/ISelectListboxBase.component";
+import { ISelectOptionBaseHostComponent } from "../headless/ISelectOptionBase.component";
+import {
+  selectRecipe,
+  selectPanelRecipe,
+  selectOptionRecipe,
+  selectArrowRecipe,
+  type SelectRecipeProps as SelectStylingProps,
+} from "virtual:styleframe";
+export interface SelectOption {
+  /** The value committed when this option is selected. */
+  value: string;
+  /** Visible label; falls back to the value. */
+  label?: string;
+  /** Disables just this option. */
+  disabled?: boolean;
+}
+export interface SelectProps {
+  /** Id of the select; option and listbox ids are derived from it. */
+  id?: string;
+  /** The options rendered in the listbox. */
+  options?: SelectOption[];
+  /** Placeholder shown (with the \`-placeholder\` modifier) when nothing is selected. */
+  placeholder?: string;
+  /** Accessible name for the trigger and listbox. */
+  label?: string;
+  /** Color variant. */
+  color?: SelectStylingProps["color"];
+  /** Style variant. */
+  variant?: SelectStylingProps["variant"];
+  /** Size variant. */
+  size?: SelectStylingProps["size"];
+  /** Invalid-state styling and \`aria-invalid\`. */
+  invalid?: boolean;
+  /** Disables the whole control. */
+  disabled?: boolean;
+  /** Shows the value but blocks opening/changing it. */
+  readonly?: boolean;
+}
+@Component({ standalone: true, selector: 'ink-select', host: { style: 'display: contents' }, imports: [ISelectBase, ISelectTriggerBase, ISelectListboxBase, ISelectOptionBase], template: \`<ink-select-base [id]="id()" [klass]="klass()">
+<ink-select-trigger-base [klass]="(triggerClass())" [arrowClass]="arrowClass()" [label]="label()" [controls]="listboxId()" [activeDescendant]="activeDescendant()" [expanded]="open()" [invalid]="invalid()" [readonly]="readonly()" [disabled]="disabled()" [placeholder]="isPlaceholder()" (toggle)="activeIndex.set(!disabled() && !readonly() && !open() ? selectedIndex() : activeIndex()); open.set(!disabled() && !readonly() ? !open() : open())" (navigate)="value.set(open() && ($event === 'Enter' || $event === ' ') && activeOption() && !activeOption()?.disabled ? (activeOption()?.value ?? '') : value()); activeIndex.set(disabled() || readonly() ? activeIndex() : !open() ? $event === 'ArrowDown' || $event === 'ArrowUp' || $event === 'Enter' || $event === ' ' ? selectedIndex() : activeIndex() : $event === 'ArrowDown' ? activeIndex() + 1 > enriched().length - 1 ? enriched().length - 1 : activeIndex() + 1 : $event === 'ArrowUp' ? activeIndex() - 1 < 0 ? 0 : activeIndex() - 1 : $event === 'Home' ? 0 : $event === 'End' ? enriched().length - 1 : activeIndex()); open.set(disabled() || readonly() ? open() : !open() ? $event === 'ArrowDown' || $event === 'ArrowUp' || $event === 'Enter' || $event === ' ' ? true : open() : ($event === 'Enter' || $event === ' ') && activeOption() && !activeOption()?.disabled ? false : $event === 'Escape' ? false : open())">
+{{ displayLabel() }}
+</ink-select-trigger-base>
+@if (open()) {
+<ink-select-listbox-base [klass]="(panelClass())" [id]="listboxId()" [label]="label()">
+@for (option of enriched(); track option.value) {
+<ink-select-option-base [klass]="(optionClass())" [id]="option.id" [selected]="value() === option.value" [active]="activeIndex() === option.index" [disabled]="option.disabled" (select)="value.set(option.value); open.set(false)" (activate)="activeIndex.set(option.index)">
+{{ option.label }}
+</ink-select-option-base>
+}
+</ink-select-listbox-base>
+}
+</ink-select-base>\` })
+export class ISelectComponent
+{
+selectRecipe = selectRecipe
+selectPanelRecipe = selectPanelRecipe
+selectOptionRecipe = selectOptionRecipe
+selectArrowRecipe = selectArrowRecipe
+klass = input<string>()
+open = signal(false)
+activeIndex = signal(-1)
+rootId = computed(() => this.id() ?? 'select')
+listboxId = computed(() => \`\${this.rootId()}-listbox\`)
+enriched = computed(() => (this.options() ?? []).map((option, index) => ({ value: option.value, label: option.label ?? option.value, disabled: option.disabled ?? false, index, id: \`\${this.rootId()}-option-\${index}\` })))
+selectedIndex = computed(() => this.enriched().findIndex(o => o.value === this.value()))
+selectedOption = computed(() => this.enriched().find(o => o.value === this.value()))
+activeOption = computed(() => this.activeIndex() < 0 ? undefined : this.enriched().at(this.activeIndex()))
+displayLabel = computed(() => this.selectedOption()?.label ?? this.placeholder() ?? '')
+isPlaceholder = computed(() => !this.selectedOption())
+activeDescendant = computed(() => (this.open() ? this.activeOption()?.id : undefined))
+triggerClass = computed(() => selectRecipe({ color: this.color(), variant: this.variant(), size: this.size(), invalid: this.invalid(), disabled: this.disabled(), readonly: this.readonly() }) + (this.open() ? ' -open' : ''))
+panelClass = computed(() => selectPanelRecipe({ color: this.color(), size: this.size() }))
+optionClass = computed(() => selectOptionRecipe({ color: this.color(), size: this.size() }))
+arrowClass = computed(() => selectArrowRecipe({ size: this.size() }))
+id = input<string>()
+options = input<SelectOption[]>()
+placeholder = input<string>()
+label = input<string>()
+color = input<SelectStylingProps["color"]>()
+variant = input<SelectStylingProps["variant"]>()
+size = input<SelectStylingProps["size"]>()
+invalid = input<boolean>()
+disabled = input<boolean>()
+readonly = input<boolean>()
+value = model<string>()
+}
+@Component({ standalone: true, selector: 'div[ink-select]', host: { '[class]': "'select-container' + (klass() ? ' ' + klass() : '')", '[attr.id]': "(id()) ?? null", 'ink-select-base': '' }, imports: [ISelectTriggerBaseHostComponent, ISelectListboxBaseHostComponent, ISelectOptionBaseHostComponent], template: \`<div ink-select-trigger-base [klass]="(triggerClass())" [arrowClass]="arrowClass()" [label]="label()" [controls]="listboxId()" [activeDescendant]="activeDescendant()" [expanded]="open()" [invalid]="invalid()" [readonly]="readonly()" [disabled]="disabled()" [placeholder]="isPlaceholder()" (toggle)="activeIndex.set(!disabled() && !readonly() && !open() ? selectedIndex() : activeIndex()); open.set(!disabled() && !readonly() ? !open() : open())" (navigate)="value.set(open() && ($event === 'Enter' || $event === ' ') && activeOption() && !activeOption()?.disabled ? (activeOption()?.value ?? '') : value()); activeIndex.set(disabled() || readonly() ? activeIndex() : !open() ? $event === 'ArrowDown' || $event === 'ArrowUp' || $event === 'Enter' || $event === ' ' ? selectedIndex() : activeIndex() : $event === 'ArrowDown' ? activeIndex() + 1 > enriched().length - 1 ? enriched().length - 1 : activeIndex() + 1 : $event === 'ArrowUp' ? activeIndex() - 1 < 0 ? 0 : activeIndex() - 1 : $event === 'Home' ? 0 : $event === 'End' ? enriched().length - 1 : activeIndex()); open.set(disabled() || readonly() ? open() : !open() ? $event === 'ArrowDown' || $event === 'ArrowUp' || $event === 'Enter' || $event === ' ' ? true : open() : ($event === 'Enter' || $event === ' ') && activeOption() && !activeOption()?.disabled ? false : $event === 'Escape' ? false : open())">
+{{ displayLabel() }}
+</div>
+@if (open()) {
+<ul ink-select-listbox-base [klass]="(panelClass())" [id]="listboxId()" [label]="label()">
+@for (option of enriched(); track option.value) {
+<li ink-select-option-base [klass]="(optionClass())" [id]="option.id" [selected]="value() === option.value" [active]="activeIndex() === option.index" [disabled]="option.disabled" (select)="value.set(option.value); open.set(false)" (activate)="activeIndex.set(option.index)">
+{{ option.label }}
+</li>
+}
+</ul>
+}\` })
+export class ISelectHostComponent
+{
+selectRecipe = selectRecipe
+selectPanelRecipe = selectPanelRecipe
+selectOptionRecipe = selectOptionRecipe
+selectArrowRecipe = selectArrowRecipe
+klass = input<string>()
+open = signal(false)
+activeIndex = signal(-1)
+rootId = computed(() => this.id() ?? 'select')
+listboxId = computed(() => \`\${this.rootId()}-listbox\`)
+enriched = computed(() => (this.options() ?? []).map((option, index) => ({ value: option.value, label: option.label ?? option.value, disabled: option.disabled ?? false, index, id: \`\${this.rootId()}-option-\${index}\` })))
+selectedIndex = computed(() => this.enriched().findIndex(o => o.value === this.value()))
+selectedOption = computed(() => this.enriched().find(o => o.value === this.value()))
+activeOption = computed(() => this.activeIndex() < 0 ? undefined : this.enriched().at(this.activeIndex()))
+displayLabel = computed(() => this.selectedOption()?.label ?? this.placeholder() ?? '')
+isPlaceholder = computed(() => !this.selectedOption())
+activeDescendant = computed(() => (this.open() ? this.activeOption()?.id : undefined))
+triggerClass = computed(() => selectRecipe({ color: this.color(), variant: this.variant(), size: this.size(), invalid: this.invalid(), disabled: this.disabled(), readonly: this.readonly() }) + (this.open() ? ' -open' : ''))
+panelClass = computed(() => selectPanelRecipe({ color: this.color(), size: this.size() }))
+optionClass = computed(() => selectOptionRecipe({ color: this.color(), size: this.size() }))
+arrowClass = computed(() => selectArrowRecipe({ size: this.size() }))
+id = input<string>()
+options = input<SelectOption[]>()
+placeholder = input<string>()
+label = input<string>()
+color = input<SelectStylingProps["color"]>()
+variant = input<SelectStylingProps["variant"]>()
+size = input<SelectStylingProps["size"]>()
+invalid = input<boolean>()
+disabled = input<boolean>()
+readonly = input<boolean>()
+value = model<string>()
+}
+",
+  "astro/ISelect.astro": "---
+import ISelectBase from "../headless/ISelectBase.astro";
+import ISelectTriggerBase from "../headless/ISelectTriggerBase.astro";
+import ISelectListboxBase from "../headless/ISelectListboxBase.astro";
+import ISelectOptionBase from "../headless/ISelectOptionBase.astro";
+import {
+  selectRecipe,
+  selectPanelRecipe,
+  selectOptionRecipe,
+  selectArrowRecipe,
+  type SelectRecipeProps as SelectStylingProps,
+} from "virtual:styleframe";
+export interface SelectOption {
+  /** The value committed when this option is selected. */
+  value: string;
+  /** Visible label; falls back to the value. */
+  label?: string;
+  /** Disables just this option. */
+  disabled?: boolean;
+}
+export interface SelectProps {
+  /** Id of the select; option and listbox ids are derived from it. */
+  id?: string;
+  /** The options rendered in the listbox. */
+  options?: SelectOption[];
+  /** Placeholder shown (with the \`-placeholder\` modifier) when nothing is selected. */
+  placeholder?: string;
+  /** Accessible name for the trigger and listbox. */
+  label?: string;
+  /** Color variant. */
+  color?: SelectStylingProps["color"];
+  /** Style variant. */
+  variant?: SelectStylingProps["variant"];
+  /** Size variant. */
+  size?: SelectStylingProps["size"];
+  /** Invalid-state styling and \`aria-invalid\`. */
+  invalid?: boolean;
+  /** Disables the whole control. */
+  disabled?: boolean;
+  /** Shows the value but blocks opening/changing it. */
+  readonly?: boolean;
+}
+type Props = SelectProps & Record<string, any>
+const props = Astro.props as Props;
+const { id, options, placeholder, label, color, variant, size, invalid, disabled, readonly, ...__attrs } = props;
+let value = props.value
+let open = false
+let activeIndex = -1
+const rootId = id ?? "select"
+const listboxId = \`\${rootId}-listbox\`
+const enriched = (options ?? []).map((option, index) => ({ value: option.value, label: option.label ?? option.value, disabled: option.disabled ?? false, index, id: \`\${rootId}-option-\${index}\` }))
+const selectedIndex = enriched.findIndex(o => o.value === value)
+const selectedOption = enriched.find(o => o.value === value)
+const activeOption = activeIndex < 0 ? undefined : enriched.at(activeIndex)
+const displayLabel = selectedOption?.label ?? placeholder ?? ""
+const isPlaceholder = !selectedOption
+const activeDescendant = (open ? activeOption?.id : undefined)
+const triggerClass = selectRecipe({ color: color, variant: variant, size: size, invalid: invalid, disabled: disabled, readonly: readonly }) + (open ? " -open" : "")
+const panelClass = selectPanelRecipe({ color: color, size: size })
+const optionClass = selectOptionRecipe({ color: color, size: size })
+const arrowClass = selectArrowRecipe({ size: size })
+---
+<ISelectBase {...__attrs} id={id} class={__attrs.class}>
+<ISelectTriggerBase class={triggerClass} arrowClass={arrowClass} label={label} controls={listboxId} activeDescendant={activeDescendant} expanded={open} invalid={invalid} readonly={readonly} disabled={disabled} placeholder={isPlaceholder} onToggle={() => { activeIndex = !disabled && !readonly && !open ? selectedIndex : activeIndex; open = !disabled && !readonly ? !open : open; }} onNavigate={(key: string) => { value = open && (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? (activeOption?.value ?? "") : value; activeIndex = disabled || readonly ? activeIndex : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex : activeIndex : key === "ArrowDown" ? activeIndex + 1 > enriched.length - 1 ? enriched.length - 1 : activeIndex + 1 : key === "ArrowUp" ? activeIndex - 1 < 0 ? 0 : activeIndex - 1 : key === "Home" ? 0 : key === "End" ? enriched.length - 1 : activeIndex; open = disabled || readonly ? open : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open : (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? false : key === "Escape" ? false : open; }}>
+{displayLabel}
+</ISelectTriggerBase>
+{open ? (<ISelectListboxBase class={panelClass} id={listboxId} label={label}>
+{enriched.map((option) => (<ISelectOptionBase class={optionClass} id={option.id} selected={value === option.value} active={activeIndex === option.index} disabled={option.disabled} onSelect={() => { value = option.value; open = false; }} onActivate={() => activeIndex = option.index}>
+{option.label}
+</ISelectOptionBase>))}
+</ISelectListboxBase>) : null}
+</ISelectBase>
+",
+  "qwik/ISelect.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
+import { ISelectBase } from "../headless/ISelectBase";
+import { ISelectTriggerBase } from "../headless/ISelectTriggerBase";
+import { ISelectListboxBase } from "../headless/ISelectListboxBase";
+import { ISelectOptionBase } from "../headless/ISelectOptionBase";
+import {
+  selectRecipe,
+  selectPanelRecipe,
+  selectOptionRecipe,
+  selectArrowRecipe,
+  type SelectRecipeProps as SelectStylingProps,
+} from "virtual:styleframe";
+export interface SelectOption {
+  /** The value committed when this option is selected. */
+  value: string;
+  /** Visible label; falls back to the value. */
+  label?: string;
+  /** Disables just this option. */
+  disabled?: boolean;
+}
+export interface SelectProps {
+  /** Id of the select; option and listbox ids are derived from it. */
+  id?: string;
+  /** The options rendered in the listbox. */
+  options?: SelectOption[];
+  /** Placeholder shown (with the \`-placeholder\` modifier) when nothing is selected. */
+  placeholder?: string;
+  /** Accessible name for the trigger and listbox. */
+  label?: string;
+  /** Color variant. */
+  color?: SelectStylingProps["color"];
+  /** Style variant. */
+  variant?: SelectStylingProps["variant"];
+  /** Size variant. */
+  size?: SelectStylingProps["size"];
+  /** Invalid-state styling and \`aria-invalid\`. */
+  invalid?: boolean;
+  /** Disables the whole control. */
+  disabled?: boolean;
+  /** Shows the value but blocks opening/changing it. */
+  readonly?: boolean;
+}
+export const ISelect = component$((props: SelectProps & { value?: string; onUpdateValue$?: QRL<(value: string) => void> } & Record<string, any>) =>
+{
+const open = useSignal(false)
+const activeIndex = useSignal(-1)
+const rootId = useComputed$(() => props.id ?? "select")
+const listboxId = useComputed$(() => \`\${rootId.value}-listbox\`)
+const enriched = useComputed$(() => (props.options ?? []).map((option, index) => ({ value: option.value, label: option.label ?? option.value, disabled: option.disabled ?? false, index, id: \`\${rootId.value}-option-\${index}\` })))
+const selectedIndex = useComputed$(() => enriched.value.findIndex(o => o.value === props.value))
+const selectedOption = useComputed$(() => enriched.value.find(o => o.value === props.value))
+const activeOption = useComputed$(() => activeIndex.value < 0 ? undefined : enriched.value.at(activeIndex.value))
+const displayLabel = useComputed$(() => selectedOption.value?.label ?? props.placeholder ?? "")
+const isPlaceholder = useComputed$(() => !selectedOption.value)
+const activeDescendant = useComputed$(() => (open.value ? activeOption.value?.id : undefined))
+const triggerClass = useComputed$(() => selectRecipe({ color: props.color, variant: props.variant, size: props.size, invalid: props.invalid, disabled: props.disabled, readonly: props.readonly }) + (open.value ? " -open" : ""))
+const panelClass = useComputed$(() => selectPanelRecipe({ color: props.color, size: props.size }))
+const optionClass = useComputed$(() => selectOptionRecipe({ color: props.color, size: props.size }))
+const arrowClass = useComputed$(() => selectArrowRecipe({ size: props.size }))
+const { children, id, options, placeholder, label, color, variant, size, invalid, disabled, readonly, value, onUpdateValue$, ...__attrs } = props
+return (
+<ISelectBase {...__attrs} id={props.id} class={props.class}>
+  <>
+    <ISelectTriggerBase class={triggerClass.value} arrowClass={arrowClass.value} label={props.label} controls={listboxId.value} activeDescendant={activeDescendant.value} expanded={open.value} invalid={props.invalid} readonly={props.readonly} disabled={props.disabled} placeholder={isPlaceholder.value} onToggle={$(() => { activeIndex.value = !props.disabled && !props.readonly && !open.value ? selectedIndex.value : activeIndex.value; open.value = !props.disabled && !props.readonly ? !open.value : open.value; })} onNavigate={$((key: string) => { props.onUpdateValue$?.(open.value && (key === "Enter" || key === " ") && activeOption.value && !activeOption.value?.disabled ? (activeOption.value?.value ?? "") : props.value); activeIndex.value = props.disabled || props.readonly ? activeIndex.value : !open.value ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex.value : activeIndex.value : key === "ArrowDown" ? activeIndex.value + 1 > enriched.value.length - 1 ? enriched.value.length - 1 : activeIndex.value + 1 : key === "ArrowUp" ? activeIndex.value - 1 < 0 ? 0 : activeIndex.value - 1 : key === "Home" ? 0 : key === "End" ? enriched.value.length - 1 : activeIndex.value; open.value = props.disabled || props.readonly ? open.value : !open.value ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open.value : (key === "Enter" || key === " ") && activeOption.value && !activeOption.value?.disabled ? false : key === "Escape" ? false : open.value; })}>
+      {displayLabel.value}
+    </ISelectTriggerBase>
+    {open.value ? (<><ISelectListboxBase class={panelClass.value} id={listboxId.value} label={props.label}>{enriched.value.map((option) => (<><ISelectOptionBase class={optionClass.value} id={option.id} selected={props.value === option.value} active={activeIndex.value === option.index} disabled={option.disabled} onSelect={$(() => { props.onUpdateValue$?.(option.value); open.value = false; })} onActivate={$(() => activeIndex.value = option.index)}>{option.label}</ISelectOptionBase></>))}</ISelectListboxBase></>) : null}
+  </>
+</ISelectBase>
+)
+});
+",
+  "react/ISelect.tsx": "import { useState, useMemo, Fragment } from "react";
+import { ISelectBase } from "../headless/ISelectBase";
+import { ISelectTriggerBase } from "../headless/ISelectTriggerBase";
+import { ISelectListboxBase } from "../headless/ISelectListboxBase";
+import { ISelectOptionBase } from "../headless/ISelectOptionBase";
+import {
+  selectRecipe,
+  selectPanelRecipe,
+  selectOptionRecipe,
+  selectArrowRecipe,
+  type SelectRecipeProps as SelectStylingProps,
+} from "virtual:styleframe";
+export interface SelectOption {
+  /** The value committed when this option is selected. */
+  value: string;
+  /** Visible label; falls back to the value. */
+  label?: string;
+  /** Disables just this option. */
+  disabled?: boolean;
+}
+export interface SelectProps {
+  /** Id of the select; option and listbox ids are derived from it. */
+  id?: string;
+  /** The options rendered in the listbox. */
+  options?: SelectOption[];
+  /** Placeholder shown (with the \`-placeholder\` modifier) when nothing is selected. */
+  placeholder?: string;
+  /** Accessible name for the trigger and listbox. */
+  label?: string;
+  /** Color variant. */
+  color?: SelectStylingProps["color"];
+  /** Style variant. */
+  variant?: SelectStylingProps["variant"];
+  /** Size variant. */
+  size?: SelectStylingProps["size"];
+  /** Invalid-state styling and \`aria-invalid\`. */
+  invalid?: boolean;
+  /** Disables the whole control. */
+  disabled?: boolean;
+  /** Shows the value but blocks opening/changing it. */
+  readonly?: boolean;
+}
+export function ISelect(props: SelectProps & { children?: React.ReactNode } & { value?: string; onUpdateValue?: (value: string) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const [open, setOpen] = useState(false)
+const [activeIndex, setActiveIndex] = useState(-1)
+const rootId = useMemo(() => props.id ?? "select", [props.id])
+const listboxId = useMemo(() => \`\${rootId}-listbox\`, [rootId])
+const enriched = useMemo(() => (props.options ?? []).map((option, index) => ({ value: option.value, label: option.label ?? option.value, disabled: option.disabled ?? false, index, id: \`\${rootId}-option-\${index}\` })), [props.options])
+const selectedIndex = useMemo(() => enriched.findIndex(o => o.value === props.value), [enriched])
+const selectedOption = useMemo(() => enriched.find(o => o.value === props.value), [enriched])
+const activeOption = useMemo(() => activeIndex < 0 ? undefined : enriched.at(activeIndex), [activeIndex, enriched])
+const displayLabel = useMemo(() => selectedOption?.label ?? props.placeholder ?? "", [selectedOption, props.placeholder])
+const isPlaceholder = useMemo(() => !selectedOption, [selectedOption])
+const activeDescendant = useMemo(() => (open ? activeOption?.id : undefined), [open, activeOption])
+const triggerClass = useMemo(() => selectRecipe({ color: props.color, variant: props.variant, size: props.size, invalid: props.invalid, disabled: props.disabled, readonly: props.readonly }) + (open ? " -open" : ""), [props.color, props.variant, props.size, props.invalid, props.disabled, props.readonly, open])
+const panelClass = useMemo(() => selectPanelRecipe({ color: props.color, size: props.size }), [props.color, props.size])
+const optionClass = useMemo(() => selectOptionRecipe({ color: props.color, size: props.size }), [props.color, props.size])
+const arrowClass = useMemo(() => selectArrowRecipe({ size: props.size }), [props.size])
+const { children, id, options, placeholder, label, color, variant, size, invalid, disabled, readonly, value, onUpdateValue, ...__attrs } = props
+return (
+<ISelectBase {...__attrs} id={props.id} className={props.className}>
+  <>
+    <ISelectTriggerBase className={triggerClass} arrowClass={arrowClass} label={props.label} controls={listboxId} activeDescendant={activeDescendant} expanded={open} invalid={props.invalid} readonly={props.readonly} disabled={props.disabled} placeholder={isPlaceholder} onToggle={() => { setActiveIndex(!props.disabled && !props.readonly && !open ? selectedIndex : activeIndex); setOpen(!props.disabled && !props.readonly ? !open : open); }} onNavigate={(key: string) => { props.onUpdateValue?.(open && (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? (activeOption?.value ?? "") : props.value); setActiveIndex(props.disabled || props.readonly ? activeIndex : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex : activeIndex : key === "ArrowDown" ? activeIndex + 1 > enriched.length - 1 ? enriched.length - 1 : activeIndex + 1 : key === "ArrowUp" ? activeIndex - 1 < 0 ? 0 : activeIndex - 1 : key === "Home" ? 0 : key === "End" ? enriched.length - 1 : activeIndex); setOpen(props.disabled || props.readonly ? open : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open : (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? false : key === "Escape" ? false : open); }}>
+      {displayLabel}
+    </ISelectTriggerBase>
+    {open ? <ISelectListboxBase className={panelClass} id={listboxId} label={props.label}>{enriched.map((option) => (<Fragment key={option.value}><ISelectOptionBase className={optionClass} id={option.id} selected={props.value === option.value} active={activeIndex === option.index} disabled={option.disabled} onSelect={() => { props.onUpdateValue?.(option.value); setOpen(false); }} onActivate={() => setActiveIndex(option.index)}>{option.label}</ISelectOptionBase></Fragment>))}</ISelectListboxBase> : null}
+  </>
+</ISelectBase>
+)
+}
+",
+  "solid/ISelect.tsx": "import { createSignal, createMemo, splitProps, Show, For } from "solid-js";
+import type { JSX } from "solid-js";
+import ISelectBase from "../headless/ISelectBase";
+import ISelectTriggerBase from "../headless/ISelectTriggerBase";
+import ISelectListboxBase from "../headless/ISelectListboxBase";
+import ISelectOptionBase from "../headless/ISelectOptionBase";
+import {
+  selectRecipe,
+  selectPanelRecipe,
+  selectOptionRecipe,
+  selectArrowRecipe,
+  type SelectRecipeProps as SelectStylingProps,
+} from "virtual:styleframe";
+export interface SelectOption {
+  /** The value committed when this option is selected. */
+  value: string;
+  /** Visible label; falls back to the value. */
+  label?: string;
+  /** Disables just this option. */
+  disabled?: boolean;
+}
+export interface SelectProps {
+  /** Id of the select; option and listbox ids are derived from it. */
+  id?: string;
+  /** The options rendered in the listbox. */
+  options?: SelectOption[];
+  /** Placeholder shown (with the \`-placeholder\` modifier) when nothing is selected. */
+  placeholder?: string;
+  /** Accessible name for the trigger and listbox. */
+  label?: string;
+  /** Color variant. */
+  color?: SelectStylingProps["color"];
+  /** Style variant. */
+  variant?: SelectStylingProps["variant"];
+  /** Size variant. */
+  size?: SelectStylingProps["size"];
+  /** Invalid-state styling and \`aria-invalid\`. */
+  invalid?: boolean;
+  /** Disables the whole control. */
+  disabled?: boolean;
+  /** Shows the value but blocks opening/changing it. */
+  readonly?: boolean;
+}
+export default function ISelect(props: SelectProps & { children?: any } & { value?: string; onUpdateValue?: (value: string) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [open, setOpen] = createSignal(false)
+const [activeIndex, setActiveIndex] = createSignal(-1)
+const rootId = createMemo(() => props.id ?? "select")
+const listboxId = createMemo(() => \`\${rootId()}-listbox\`)
+const enriched = createMemo(() => (props.options ?? []).map((option, index) => ({ value: option.value, label: option.label ?? option.value, disabled: option.disabled ?? false, index, id: \`\${rootId()}-option-\${index}\` })))
+const selectedIndex = createMemo(() => enriched().findIndex(o => o.value === props.value))
+const selectedOption = createMemo(() => enriched().find(o => o.value === props.value))
+const activeOption = createMemo(() => activeIndex() < 0 ? undefined : enriched().at(activeIndex()))
+const displayLabel = createMemo(() => selectedOption()?.label ?? props.placeholder ?? "")
+const isPlaceholder = createMemo(() => !selectedOption())
+const activeDescendant = createMemo(() => (open() ? activeOption()?.id : undefined))
+const triggerClass = createMemo(() => selectRecipe({ color: props.color, variant: props.variant, size: props.size, invalid: props.invalid, disabled: props.disabled, readonly: props.readonly }) + (open() ? " -open" : ""))
+const panelClass = createMemo(() => selectPanelRecipe({ color: props.color, size: props.size }))
+const optionClass = createMemo(() => selectOptionRecipe({ color: props.color, size: props.size }))
+const arrowClass = createMemo(() => selectArrowRecipe({ size: props.size }))
+const [, __attrs] = splitProps(props, ["children", "id", "options", "placeholder", "label", "color", "variant", "size", "invalid", "disabled", "readonly", "value", "onUpdateValue"])
+return (
+<ISelectBase {...__attrs} id={props.id} class={props.class}>
+  <>
+    <ISelectTriggerBase class={triggerClass()} arrowClass={arrowClass()} label={props.label} controls={listboxId()} activeDescendant={activeDescendant()} expanded={open()} invalid={props.invalid} readonly={props.readonly} disabled={props.disabled} placeholder={isPlaceholder()} onToggle={() => { setActiveIndex(!props.disabled && !props.readonly && !open() ? selectedIndex() : activeIndex()); setOpen(!props.disabled && !props.readonly ? !open() : open()); }} onNavigate={(key: string) => { props.onUpdateValue?.(open() && (key === "Enter" || key === " ") && activeOption() && !activeOption()?.disabled ? (activeOption()?.value ?? "") : props.value); setActiveIndex(props.disabled || props.readonly ? activeIndex() : !open() ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex() : activeIndex() : key === "ArrowDown" ? activeIndex() + 1 > enriched().length - 1 ? enriched().length - 1 : activeIndex() + 1 : key === "ArrowUp" ? activeIndex() - 1 < 0 ? 0 : activeIndex() - 1 : key === "Home" ? 0 : key === "End" ? enriched().length - 1 : activeIndex()); setOpen(props.disabled || props.readonly ? open() : !open() ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open() : (key === "Enter" || key === " ") && activeOption() && !activeOption()?.disabled ? false : key === "Escape" ? false : open()); }}>
+      {displayLabel()}
+    </ISelectTriggerBase>
+    <Show when={open()}>
+      <ISelectListboxBase class={panelClass()} id={listboxId()} label={props.label}>
+        <For each={enriched()}>
+          {(option) => <ISelectOptionBase class={optionClass()} id={option.id} selected={props.value === option.value} active={activeIndex() === option.index} disabled={option.disabled} onSelect={() => { props.onUpdateValue?.(option.value); setOpen(false); }} onActivate={() => setActiveIndex(option.index)}>{option.label}</ISelectOptionBase>}
+        </For>
+      </ISelectListboxBase>
+    </Show>
+  </>
+</ISelectBase>
+)
+}
+",
+  "svelte/ISelect.svelte": "<script lang="ts">
+  import ISelectBase from "../headless/ISelectBase.svelte";
+  import ISelectTriggerBase from "../headless/ISelectTriggerBase.svelte";
+  import ISelectListboxBase from "../headless/ISelectListboxBase.svelte";
+  import ISelectOptionBase from "../headless/ISelectOptionBase.svelte";
+  import {
+    selectRecipe,
+    selectPanelRecipe,
+    selectOptionRecipe,
+    selectArrowRecipe,
+    type SelectRecipeProps as SelectStylingProps,
+  } from "virtual:styleframe";
+  export interface SelectOption {
+    /** The value committed when this option is selected. */
+    value: string;
+    /** Visible label; falls back to the value. */
+    label?: string;
+    /** Disables just this option. */
+    disabled?: boolean;
+  }
+  export interface SelectProps {
+    /** Id of the select; option and listbox ids are derived from it. */
+    id?: string;
+    /** The options rendered in the listbox. */
+    options?: SelectOption[];
+    /** Placeholder shown (with the \`-placeholder\` modifier) when nothing is selected. */
+    placeholder?: string;
+    /** Accessible name for the trigger and listbox. */
+    label?: string;
+    /** Color variant. */
+    color?: SelectStylingProps["color"];
+    /** Style variant. */
+    variant?: SelectStylingProps["variant"];
+    /** Size variant. */
+    size?: SelectStylingProps["size"];
+    /** Invalid-state styling and \`aria-invalid\`. */
+    invalid?: boolean;
+    /** Disables the whole control. */
+    disabled?: boolean;
+    /** Shows the value but blocks opening/changing it. */
+    readonly?: boolean;
+  }
+  import type { Snippet } from "svelte";
+  let { id, options, placeholder, label, color, variant, size, invalid, disabled, readonly, value = $bindable(), children, ...__attrs }: SelectProps & { value?: string; children?: Snippet } & Record<string, any> = $props()
+  let open = $state(false)
+  let activeIndex = $state(-1)
+  let rootId = $derived(id ?? "select")
+  let listboxId = $derived(\`\${rootId}-listbox\`)
+  let enriched = $derived((options ?? []).map((option, index) => ({ value: option.value, label: option.label ?? option.value, disabled: option.disabled ?? false, index, id: \`\${rootId}-option-\${index}\` })))
+  let selectedIndex = $derived(enriched.findIndex(o => o.value === value))
+  let selectedOption = $derived(enriched.find(o => o.value === value))
+  let activeOption = $derived(activeIndex < 0 ? undefined : enriched.at(activeIndex))
+  let displayLabel = $derived(selectedOption?.label ?? placeholder ?? "")
+  let isPlaceholder = $derived(!selectedOption)
+  let activeDescendant = $derived((open ? activeOption?.id : undefined))
+  let triggerClass = $derived(selectRecipe({ color: color, variant: variant, size: size, invalid: invalid, disabled: disabled, readonly: readonly }) + (open ? " -open" : ""))
+  let panelClass = $derived(selectPanelRecipe({ color: color, size: size }))
+  let optionClass = $derived(selectOptionRecipe({ color: color, size: size }))
+  let arrowClass = $derived(selectArrowRecipe({ size: size }))
+</script>
+<ISelectBase {...__attrs} id={id} class={__attrs.class}>
+  <ISelectTriggerBase class={triggerClass} arrowClass={arrowClass} label={label} controls={listboxId} activeDescendant={activeDescendant} expanded={open} invalid={invalid} readonly={readonly} disabled={disabled} placeholder={isPlaceholder} onToggle={() => { activeIndex = !disabled && !readonly && !open ? selectedIndex : activeIndex; open = !disabled && !readonly ? !open : open; }} onNavigate={(key: string) => { value = open && (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? (activeOption?.value ?? "") : value; activeIndex = disabled || readonly ? activeIndex : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex : activeIndex : key === "ArrowDown" ? activeIndex + 1 > enriched.length - 1 ? enriched.length - 1 : activeIndex + 1 : key === "ArrowUp" ? activeIndex - 1 < 0 ? 0 : activeIndex - 1 : key === "Home" ? 0 : key === "End" ? enriched.length - 1 : activeIndex; open = disabled || readonly ? open : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open : (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? false : key === "Escape" ? false : open; }}>
+    {displayLabel}
+  </ISelectTriggerBase>
+  {#if open}<ISelectListboxBase class={panelClass} id={listboxId} label={label}>
+    {#each enriched as option (option.value)}<ISelectOptionBase class={optionClass} id={option.id} selected={value === option.value} active={activeIndex === option.index} disabled={option.disabled} onSelect={() => { value = option.value; open = false; }} onActivate={() => activeIndex = option.index}>
+      {option.label}
+    </ISelectOptionBase>
+    {/each}
+  </ISelectListboxBase>
+  {/if}
+</ISelectBase>
+",
+  "vue/ISelect.vue": "<script setup lang="ts">
+  import { ref, computed } from "vue";
+  import ISelectBase from "../headless/ISelectBase.vue";
+  import ISelectTriggerBase from "../headless/ISelectTriggerBase.vue";
+  import ISelectListboxBase from "../headless/ISelectListboxBase.vue";
+  import ISelectOptionBase from "../headless/ISelectOptionBase.vue";
+  import {
+    selectRecipe,
+    selectPanelRecipe,
+    selectOptionRecipe,
+    selectArrowRecipe,
+    type SelectRecipeProps as SelectStylingProps,
+  } from "virtual:styleframe";
+  export interface SelectOption {
+    /** The value committed when this option is selected. */
+    value: string;
+    /** Visible label; falls back to the value. */
+    label?: string;
+    /** Disables just this option. */
+    disabled?: boolean;
+  }
+  export interface SelectProps {
+    /** Id of the select; option and listbox ids are derived from it. */
+    id?: string;
+    /** The options rendered in the listbox. */
+    options?: SelectOption[];
+    /** Placeholder shown (with the \`-placeholder\` modifier) when nothing is selected. */
+    placeholder?: string;
+    /** Accessible name for the trigger and listbox. */
+    label?: string;
+    /** Color variant. */
+    color?: SelectStylingProps["color"];
+    /** Style variant. */
+    variant?: SelectStylingProps["variant"];
+    /** Size variant. */
+    size?: SelectStylingProps["size"];
+    /** Invalid-state styling and \`aria-invalid\`. */
+    invalid?: boolean;
+    /** Disables the whole control. */
+    disabled?: boolean;
+    /** Shows the value but blocks opening/changing it. */
+    readonly?: boolean;
+  }
+  const props = defineProps<SelectProps>()
+  const open = ref(false)
+  const activeIndex = ref(-1)
+  const value = defineModel<string>("value")
+  const rootId = computed(() => props.id ?? "select")
+  const listboxId = computed(() => \`\${rootId.value}-listbox\`)
+  const enriched = computed(() => (props.options ?? []).map((option, index) => ({ value: option.value, label: option.label ?? option.value, disabled: option.disabled ?? false, index, id: \`\${rootId.value}-option-\${index}\` })))
+  const selectedIndex = computed(() => enriched.value.findIndex(o => o.value === value.value))
+  const selectedOption = computed(() => enriched.value.find(o => o.value === value.value))
+  const activeOption = computed(() => activeIndex.value < 0 ? undefined : enriched.value.at(activeIndex.value))
+  const displayLabel = computed(() => selectedOption.value?.label ?? props.placeholder ?? "")
+  const isPlaceholder = computed(() => !selectedOption.value)
+  const activeDescendant = computed(() => (open.value ? activeOption.value?.id : undefined))
+  const triggerClass = computed(() => selectRecipe({ color: props.color, variant: props.variant, size: props.size, invalid: props.invalid, disabled: props.disabled, readonly: props.readonly }) + (open.value ? " -open" : ""))
+  const panelClass = computed(() => selectPanelRecipe({ color: props.color, size: props.size }))
+  const optionClass = computed(() => selectOptionRecipe({ color: props.color, size: props.size }))
+  const arrowClass = computed(() => selectArrowRecipe({ size: props.size }))
+</script>
+<template>
+<ISelectBase :id="id">
+  <ISelectTriggerBase :class="triggerClass" :arrowClass="arrowClass" :label="label" :controls="listboxId" :activeDescendant="activeDescendant" :expanded="open" :invalid="invalid" :readonly="readonly" :disabled="disabled" :placeholder="isPlaceholder" @toggle="() => { activeIndex = !disabled && !readonly && !open ? selectedIndex : activeIndex; open = !disabled && !readonly ? !open : open; }" @navigate='(key: string) => { value = open && (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? (activeOption?.value ?? "") : value; activeIndex = disabled || readonly ? activeIndex : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex : activeIndex : key === "ArrowDown" ? activeIndex + 1 > enriched.length - 1 ? enriched.length - 1 : activeIndex + 1 : key === "ArrowUp" ? activeIndex - 1 < 0 ? 0 : activeIndex - 1 : key === "Home" ? 0 : key === "End" ? enriched.length - 1 : activeIndex; open = disabled || readonly ? open : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open : (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? false : key === "Escape" ? false : open; }'>
+    {{ displayLabel }}
+  </ISelectTriggerBase>
+  <ISelectListboxBase v-if="open" :class="panelClass" :id="listboxId" :label="label">
+    <ISelectOptionBase v-for="option in enriched" :key="option.value" :class="optionClass" :id="option.id" :selected="value === option.value" :active="activeIndex === option.index" :disabled="option.disabled" @select="() => { value = option.value; open = false; }" @activate="() => activeIndex = option.index">
+      {{ option.label }}
+    </ISelectOptionBase>
+  </ISelectListboxBase>
+</ISelectBase>
+</template>
+",
+}
+`;

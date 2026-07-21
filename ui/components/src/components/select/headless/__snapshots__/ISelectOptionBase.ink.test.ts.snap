@@ -1,0 +1,164 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SelectOption > output matches snapshots 1`] = `
+{
+  "angular/ISelectOptionBase.component.ts": "import { Component, signal, computed, effect, input, output } from "@angular/core";
+export interface SelectOptionBaseProps {
+  /** Id of the option element (referenced by the trigger's \`aria-activedescendant\`). */
+  id?: string;
+  /** Whether this option is the selected value, exposed as \`aria-selected\`. */
+  selected?: boolean;
+  /** Whether this option is virtually focused, exposed as \`data-active\`. */
+  active?: boolean;
+  /** Disables this option, exposed as \`aria-disabled\` (selection guarded). */
+  disabled?: boolean;
+}
+@Component({ standalone: true, selector: 'ink-select-option-base', host: { style: 'display: contents' }, template: \`<li [class]="'select-option' + (klass() ? ' ' + klass() : '')" role="option" [attr.id]="(id()) ?? null" [attr.aria-selected]="(selected() ? 'true' : 'false') ?? null" [attr.aria-disabled]="(disabled() ? 'true' : undefined) ?? null" [attr.data-active]="(active() ? 'true' : 'false') ?? null" (click)="!disabled() && select.emit()" (mouseenter)="!disabled() && activate.emit()">
+<ng-content></ng-content>
+<span class="select-option-check" aria-hidden="true"></span>
+</li>\` })
+export class ISelectOptionBaseComponent
+{
+klass = input<string>()
+id = input<string>()
+selected = input<boolean>()
+active = input<boolean>()
+disabled = input<boolean>()
+select = output()
+activate = output()
+}
+@Component({ standalone: true, selector: 'li[ink-select-option-base]', host: { '[class]': "'select-option' + (klass() ? ' ' + klass() : '')", 'role': 'option', '[attr.id]': "(id()) ?? null", '[attr.aria-selected]': "(selected() ? 'true' : 'false') ?? null", '[attr.aria-disabled]': "(disabled() ? 'true' : undefined) ?? null", '[attr.data-active]': "(active() ? 'true' : 'false') ?? null", '(click)': "!disabled() && select.emit()", '(mouseenter)': "!disabled() && activate.emit()" }, template: \`<ng-content></ng-content>
+<span class="select-option-check" aria-hidden="true"></span>\` })
+export class ISelectOptionBaseHostComponent
+{
+klass = input<string>()
+id = input<string>()
+selected = input<boolean>()
+active = input<boolean>()
+disabled = input<boolean>()
+select = output()
+activate = output()
+}
+",
+  "astro/ISelectOptionBase.astro": "---
+export interface SelectOptionBaseProps {
+  /** Id of the option element (referenced by the trigger's \`aria-activedescendant\`). */
+  id?: string;
+  /** Whether this option is the selected value, exposed as \`aria-selected\`. */
+  selected?: boolean;
+  /** Whether this option is virtually focused, exposed as \`data-active\`. */
+  active?: boolean;
+  /** Disables this option, exposed as \`aria-disabled\` (selection guarded). */
+  disabled?: boolean;
+}
+type Props = SelectOptionBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { id, selected, active, disabled, ...__attrs } = props;
+---
+<li {...__attrs} class={["select-option", __attrs.class].filter(Boolean).join(" ")} role="option" id={id} aria-selected={selected ? "true" : "false"} aria-disabled={disabled ? "true" : undefined} data-active={active ? "true" : "false"} onClick={() => !disabled && undefined} onMouseEnter={() => !disabled && undefined}><slot /><span class="select-option-check" aria-hidden="true" /></li>
+",
+  "qwik/ISelectOptionBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL, Slot } from "@qwik.dev/core";
+export interface SelectOptionBaseProps {
+  /** Id of the option element (referenced by the trigger's \`aria-activedescendant\`). */
+  id?: string;
+  /** Whether this option is the selected value, exposed as \`aria-selected\`. */
+  selected?: boolean;
+  /** Whether this option is virtually focused, exposed as \`data-active\`. */
+  active?: boolean;
+  /** Disables this option, exposed as \`aria-disabled\` (selection guarded). */
+  disabled?: boolean;
+}
+export const ISelectOptionBase = component$((props: SelectOptionBaseProps & { onSelect$?: QRL<(...args: any[]) => void>; onActivate$?: QRL<(...args: any[]) => void> } & Record<string, any>) =>
+{
+const { children, id, selected, active, disabled, onSelect$, onActivate$, ...__attrs } = props
+return (
+<li {...__attrs} class={["select-option", props.class].filter(Boolean).join(" ")} role="option" id={props.id} aria-selected={props.selected ? "true" : "false"} aria-disabled={props.disabled ? "true" : undefined} data-active={props.active ? "true" : "false"} onClick={$(() => !props.disabled && props.onSelect$?.())} onMouseEnter={$(() => !props.disabled && props.onActivate$?.())}>
+  <Slot />
+  <span class="select-option-check" aria-hidden="true" />
+</li>
+)
+});
+",
+  "react/ISelectOptionBase.tsx": "export interface SelectOptionBaseProps {
+  /** Id of the option element (referenced by the trigger's \`aria-activedescendant\`). */
+  id?: string;
+  /** Whether this option is the selected value, exposed as \`aria-selected\`. */
+  selected?: boolean;
+  /** Whether this option is virtually focused, exposed as \`data-active\`. */
+  active?: boolean;
+  /** Disables this option, exposed as \`aria-disabled\` (selection guarded). */
+  disabled?: boolean;
+}
+export function ISelectOptionBase(props: SelectOptionBaseProps & { children?: React.ReactNode } & { onSelect?: (...args: any[]) => void; onActivate?: (...args: any[]) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, id, selected, active, disabled, onSelect, onActivate, ...__attrs } = props
+return (
+<li {...__attrs} className={["select-option", props.className].filter(Boolean).join(" ")} role="option" id={props.id} aria-selected={props.selected ? "true" : "false"} aria-disabled={props.disabled ? "true" : undefined} data-active={props.active ? "true" : "false"} onClick={() => !props.disabled && props.onSelect?.()} onMouseEnter={() => !props.disabled && props.onActivate?.()}>
+  {props.children}
+  <span className="select-option-check" aria-hidden="true" />
+</li>
+)
+}
+",
+  "solid/ISelectOptionBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface SelectOptionBaseProps {
+  /** Id of the option element (referenced by the trigger's \`aria-activedescendant\`). */
+  id?: string;
+  /** Whether this option is the selected value, exposed as \`aria-selected\`. */
+  selected?: boolean;
+  /** Whether this option is virtually focused, exposed as \`data-active\`. */
+  active?: boolean;
+  /** Disables this option, exposed as \`aria-disabled\` (selection guarded). */
+  disabled?: boolean;
+}
+export default function ISelectOptionBase(props: SelectOptionBaseProps & { children?: any } & { onSelect?: (...args: any[]) => void; onActivate?: (...args: any[]) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children", "id", "selected", "active", "disabled", "onSelect", "onActivate"])
+return (
+<li {...__attrs} class={["select-option", props.class].filter(Boolean).join(" ")} role="option" id={props.id} aria-selected={props.selected ? "true" : "false"} aria-disabled={props.disabled ? "true" : undefined} data-active={props.active ? "true" : "false"} onclick={() => !props.disabled && props.onSelect?.()} onmouseenter={() => !props.disabled && props.onActivate?.()}>
+  {props.children}
+  <span class="select-option-check" aria-hidden="true" />
+</li>
+)
+}
+",
+  "svelte/ISelectOptionBase.svelte": "<script lang="ts">
+  export interface SelectOptionBaseProps {
+    /** Id of the option element (referenced by the trigger's \`aria-activedescendant\`). */
+    id?: string;
+    /** Whether this option is the selected value, exposed as \`aria-selected\`. */
+    selected?: boolean;
+    /** Whether this option is virtually focused, exposed as \`data-active\`. */
+    active?: boolean;
+    /** Disables this option, exposed as \`aria-disabled\` (selection guarded). */
+    disabled?: boolean;
+  }
+  import type { Snippet } from "svelte";
+  let { id, selected, active, disabled, onSelect, onActivate, children, ...__attrs }: SelectOptionBaseProps & { onSelect?: (...args: any[]) => void; onActivate?: (...args: any[]) => void; children?: Snippet } & Record<string, any> = $props()
+</script>
+<li {...__attrs} class={["select-option", __attrs.class].filter(Boolean).join(" ")} role="option" id={id} aria-selected={selected ? "true" : "false"} aria-disabled={disabled ? "true" : undefined} data-active={active ? "true" : "false"} onclick={() => !disabled && onSelect?.()} onmouseenter={() => !disabled && onActivate?.()}>{@render children?.()}<span class="select-option-check" aria-hidden="true"></span></li>
+",
+  "vue/ISelectOptionBase.vue": "<script setup lang="ts">
+  export interface SelectOptionBaseProps {
+    /** Id of the option element (referenced by the trigger's \`aria-activedescendant\`). */
+    id?: string;
+    /** Whether this option is the selected value, exposed as \`aria-selected\`. */
+    selected?: boolean;
+    /** Whether this option is virtually focused, exposed as \`data-active\`. */
+    active?: boolean;
+    /** Disables this option, exposed as \`aria-disabled\` (selection guarded). */
+    disabled?: boolean;
+  }
+  const emit = defineEmits(["select", "activate"])
+  const props = defineProps<SelectOptionBaseProps>()
+</script>
+<template>
+<li class="select-option" role="option" :id="id" :aria-selected='selected ? "true" : "false"' :aria-disabled='disabled ? "true" : undefined' :data-active='active ? "true" : "false"' @click='() => !disabled && emit("select")' @mouseenter='() => !disabled && emit("activate")'>
+  <slot />
+  <span class="select-option-check" aria-hidden="true" />
+</li>
+</template>
+",
+}
+`;
