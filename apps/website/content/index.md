@@ -13,7 +13,7 @@ source using a signal-based reactivity model, and the Inkline compiler emits
 idiomatic **React, Vue 3, Svelte 5, Solid, Angular, Qwik, and Astro** output —
 with no runtime dependency on Inkline in the generated components.
 
-This site is built on the `@uxfront/docs-theme` Nuxt layer; Inkline supplies
+This site is built on the `@uxfront/layer-docs` Nuxt layer; Inkline supplies
 only its branding, section topology and content.
 
 ## ::u-button

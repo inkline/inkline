@@ -108,9 +108,9 @@ catalogs:
     '@typescript-eslint/parser':
       specifier: ^8.61.0
       version: 8.61.0
-    '@uxfront/docs-theme':
-      specifier: ^0.1.1
-      version: 0.1.1
+    '@uxfront/layer-docs':
+      specifier: ^0.1.0
+      version: 0.1.0
     '@vitejs/plugin-react':
       specifier: ^6.0.2
       version: 6.0.2
@@ -271,9 +271,9 @@ importers:
       '@nuxtjs/sitemap':
         specifier: ^8.2.1
         version: 8.2.2(@nuxt/schema@4.4.8)(magicast@0.5.3)(nuxt@4.4.8(2c0e20ee74a4760945f21ada5dbe6054))(vite@8.0.10(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.2)(sass@1.99.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))(vue@3.5.38(@typescript/typescript6@6.0.2))(zod@3.25.76)
-      '@uxfront/docs-theme':
+      '@uxfront/layer-docs':
         specifier: 'catalog:'
-        version: 0.1.1(0537599299aaaf779500bd5c0cedd1c4)
+        version: 0.1.0(0537599299aaaf779500bd5c0cedd1c4)
       better-sqlite3:
         specifier: ^12.10.1
         version: 12.11.1
@@ -7177,8 +7177,8 @@ packages:
     peerDependencies:
       vue: '>=3.5.18'
 
-  '@uxfront/docs-theme@0.1.1':
-    resolution: {integrity: sha512-NnQmsIo2jROfQAdJAPqnv/YUDXL6Zd0pagFe5rM1nLZ5Y8pg1xreQRLuZyAeqZe3Lbo1rCLTkOXPbarRrqpbUA==}
+  '@uxfront/layer-docs@0.1.0':
+    resolution: {integrity: sha512-UTWvToIFLPqmwmnAZoiXET2+om6EFHi9FpsIt20z5XLNZ1BlLMeO/hT0VyFGhN8hXJoG3rX3G/w/2B0zZlY0zQ==}
     peerDependencies:
       '@nuxt/content': ^3.14.0
       '@nuxt/image': ^1.11.0
@@ -21588,7 +21588,7 @@ snapshots:
       unhead: 2.1.15
       vue: 3.5.38(@typescript/typescript6@6.0.2)
 
-  '@uxfront/docs-theme@0.1.1(0537599299aaaf779500bd5c0cedd1c4)':
+  '@uxfront/layer-docs@0.1.0(0537599299aaaf779500bd5c0cedd1c4)':
     dependencies:
       '@nuxt/content': 3.15.0(@farmfe/core@1.7.11(@types/node@26.1.1))(@rspack/core@2.0.8(@swc/helpers@0.5.23))(better-sqlite3@12.11.1)(esbuild@0.28.1)(magicast@0.5.3)(rolldown@1.0.0-rc.17)(rollup@4.62.0)(valibot@1.4.1(@typescript/typescript6@6.0.2))(vite@8.0.10(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.2)(sass@1.99.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))(webpack@5.107.2(esbuild@0.28.1)(lightningcss@1.32.0)(postcss@8.5.19))
       '@nuxt/image': 1.11.0(db0@0.3.4(better-sqlite3@12.11.1))(ioredis@5.11.1)(magicast@0.5.3)
