@@ -29,6 +29,10 @@ Peer dep: `@qwik.dev/core >= 2.0.0-beta.0`.
 
 Runs on **port 6011**. `pnpm storybook` here or `pnpm run storybook:qwik` from the repo root. Uses [`storybook-framework-qwik`](https://www.npmjs.com/package/storybook-framework-qwik) (a canary build pinned via the catalog in [`pnpm-workspace.yaml`](../../pnpm-workspace.yaml)).
 
+## Interactive-behaviour verification boundary
+
+Qwik event handlers (`$()` QRLs) do not run in any of our harnesses while the upstream `storybook-framework-qwik` resume is broken — so Qwik interactive behaviour is verified at the **codegen layer only** (codegen assertions + documented QRL semantics). See [`apps/storybook/AGENTS.md`](../../apps/storybook/AGENTS.md) → "Qwik interactive-behaviour verification boundary (INK-31)" for the root cause and what would close it.
+
 ## Build
 
 `vp build`. Output goes to `dist/` (`index.qwik.mjs`, `headless.qwik.mjs`, `stories.qwik.mjs`).

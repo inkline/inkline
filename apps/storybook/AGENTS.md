@@ -94,6 +94,36 @@ compose other components and pull classes from a `virtual:styleframe` recipe) co
   Qwik 2.0-beta resumes an empty container. This is an upstream Storybook↔Qwik integration
   issue, not a codegen problem.
 
+### Qwik interactive-behaviour verification boundary (INK-31)
+
+The empty-container resume failure above has a second consequence: **Qwik event handlers do
+not run in any of our harnesses.** An emitted `$()` handler that closes over local scope
+(e.g. a control's `checked()` / `setChecked` / `props`) must be extracted by the Qwik
+optimizer into a lazy-loadable chunk and wired up on resume — Qwik forbids inlining a QRL
+whose captured values are not importable, `const`, and serialisable, so `sync$` is not an
+option for these handlers. When resume fails, the handler QRL is never bound to a served
+chunk and Qwik falls back to writing the raw closure into an inline `onchange` attribute,
+which an anonymous scope-capturing arrow cannot legally be — the parser rejects it with
+`Function statements require a function name`, and no handler fires.
+
+Neither runtime harness closes this gap today:
+
+- **Unit SSR mount** ([`tooling/test-utils/src/mount.ts`](../../tooling/test-utils/src/mount.ts))
+  deliberately omits Qwik from its mountable targets — there is no stable Qwik-SSR-in-Node
+  path.
+- **Visual-parity e2e** ([`testing/e2e`](../../testing/e2e/AGENTS.md)) hits the same port-6011
+  canary and only _tolerates_ the broken resume (`storybook.ts` `waitForStoryReady` waits for
+  `q:container="resumed"`, then captures whatever is there). It is also the wrong oracle for
+  behaviour: it pixel-diffs against React, and a correct read-only _reject_ produces zero
+  visual delta — indistinguishable from "no handler ran." Only an observable _toggle_ would
+  register, and only if resume fired.
+
+**Standing boundary: Qwik interactive behaviour is verified at the codegen layer only —
+codegen assertions plus documented QRL semantics — until upstream Storybook↔Qwik resume
+lands.** Closing it requires a _behaviour_-asserting e2e (role locator +
+`await expect(checkbox).toBeChecked()` after a click, not a screenshot), which still gates on
+that same upstream fix. The other six targets are runtime-verified via the SSR mount harness.
+
 Angular styled rendering was fixed by the Angular-target redesign — kebab-case `ink-*`
 selectors, a `klass` input that merges a forwarded class onto each component's own root, and
 full `imports` declaration. Styled components are verified by `@angular/platform-server` SSR

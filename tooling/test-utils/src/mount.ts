@@ -9,6 +9,9 @@ export interface MountResult {
   readonly warnings: readonly string[];
 }
 
+// Qwik is intentionally absent: there is no stable Qwik-SSR-in-Node path, so its interactive
+// behaviour ($() QRL handlers) is verified at the codegen layer only. See INK-31 and
+// apps/storybook/AGENTS.md → "Qwik interactive-behaviour verification boundary".
 const MOUNTABLE_TARGETS: ReadonlySet<TargetName> = new Set([
   "react",
   "vue",
