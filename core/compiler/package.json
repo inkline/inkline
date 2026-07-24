@@ -1,6 +1,6 @@
 {
   "name": "@inkline/compiler",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Inkline compiler: TSX with signal primitives to per-target component output via a typed IR.",
   "homepage": "https://github.com/inkline/inkline#readme",
   "bugs": {

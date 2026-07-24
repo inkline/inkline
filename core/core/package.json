@@ -1,6 +1,6 @@
 {
   "name": "@inkline/core",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Authoring API for Inkline .ink.tsx components — typed primitives, JSX runtime, and control-flow helpers.",
   "homepage": "https://github.com/inkline/inkline#readme",
   "bugs": {
