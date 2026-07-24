@@ -7,7 +7,7 @@ packages:
   - tools/*
 allowBuilds:
   "@parcel/watcher": true
-  "@uxfront/docs-theme": false
+  "@uxfront/layer-docs": false
   better-sqlite3: true
   core-js: true
   esbuild: true
@@ -18,7 +18,7 @@ allowBuilds:
 
 # pnpm 11 enforces a default minimumReleaseAge (24h) supply-chain guard.
 # Exclude the styleframe first-party ecosystem (intentionally fresh, trusted),
-# the uxfront docs-theme layer the website extends (freshly published,
+# the uxfront layer-docs layer the website extends (freshly published,
 # first-party), and pin the exact versions of unrelated transitive deps caught
 # as collateral so the guard still applies to any future releases of those.
 minimumReleaseAgeExclude:
@@ -65,7 +65,7 @@ catalog:
   "@types/react": ^19.2.17
   "@types/react-dom": ^19.2.3
   "@typescript-eslint/parser": ^8.61.0
-  "@uxfront/docs-theme": ^0.1.1
+  "@uxfront/layer-docs": ^0.1.0
   "@vitejs/plugin-react": ^6.0.2
   "@vitejs/plugin-vue": ^6.0.7
   "@vitest/coverage-v8": ^4.1.8
