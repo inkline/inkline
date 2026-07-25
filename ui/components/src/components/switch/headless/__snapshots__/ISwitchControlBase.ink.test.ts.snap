@@ -79,7 +79,7 @@ export const ISwitchControlBase = component$((props: SwitchControlBaseProps & { 
 {
 const { id, name, disabled, readonly, checked, onUpdateChecked$, ...__attrs } = props
 return (
-<input {...__attrs} class={["switch-field", props.class].filter(Boolean).join(" ")} type="checkbox" role="switch" id={props.id} name={props.name} checked={props.checked ?? false} aria-checked={props.checked ? "true" : "false"} aria-readonly={props.readonly ? "true" : undefined} disabled={props.disabled} onChange={$((e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked$?.(e.currentTarget.checked))} onClick={$((e: { preventDefault: () => void }) => props.readonly && e.preventDefault())} onKeyDown={$((e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click())} />
+<input {...__attrs} class={["switch-field", props.class].filter(Boolean).join(" ")} type="checkbox" role="switch" id={props.id} name={props.name} checked={props.checked ?? false} aria-checked={props.checked ? "true" : "false"} aria-readonly={props.readonly ? "true" : undefined} disabled={props.disabled} onChange$={$((e: { currentTarget: HTMLInputElement }) => props.onUpdateChecked$?.(e.currentTarget.checked))} onClick$={$((e: { preventDefault: () => void }) => props.readonly && e.preventDefault())} onKeyDown$={$((e: { key: string; currentTarget: HTMLInputElement }) => e.key === "Enter" && e.currentTarget.click())} />
 )
 });
 ",

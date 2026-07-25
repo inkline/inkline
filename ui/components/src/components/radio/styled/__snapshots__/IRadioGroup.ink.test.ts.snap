@@ -196,7 +196,7 @@ const fieldClassName = useComputed$(() => radioFieldRecipe({ color: props.color,
 const { options, name, color, size, orientation, disabled, readonly, id, label, value, onUpdateValue$, ...__attrs } = props
 return (
 <IRadioGroupBase {...__attrs} id={props.id} label={props.label} readonly={props.readonly} class={[groupClassName.value, props.class].filter(Boolean).join(" ")}>
-  {items.value.map((option) => (<><IRadioBase class={radioClassName.value}><><IRadioFieldBase class={fieldClassName.value} name={props.name} value={option.value} checked={props.value === option.value} disabled={props.disabled || option.disabled} readonly={props.readonly} onChange={$(() => props.onUpdateValue$?.(option.value))} /><span class="radio-label">{option.label ?? option.value}</span></></IRadioBase></>))}
+  {items.value.map((option) => (<><IRadioBase class={radioClassName.value}><><IRadioFieldBase class={fieldClassName.value} name={props.name} value={option.value} checked={props.value === option.value} disabled={props.disabled || option.disabled} readonly={props.readonly} onChange$={$(() => props.onUpdateValue$?.(option.value))} /><span class="radio-label">{option.label ?? option.value}</span></></IRadioBase></>))}
 </IRadioGroupBase>
 )
 });
