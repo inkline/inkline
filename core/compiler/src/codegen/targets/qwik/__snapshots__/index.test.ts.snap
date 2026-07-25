@@ -10,7 +10,7 @@ useVisibleTask$(() => { console.log("effect"); })
 return (
 <div>
   <p>{count.value}</p>
-  <button onClick={$(() => count.value = count.value + 1)}>+1</button>
+  <button onClick$={$(() => count.value = count.value + 1)}>+1</button>
 </div>
 )
 });

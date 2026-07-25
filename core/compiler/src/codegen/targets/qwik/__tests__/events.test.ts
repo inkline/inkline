@@ -15,7 +15,7 @@ describe("EventModifier: onSubmit with e.preventDefault() + signal setter", () =
     expect(out).toContain("const submitted = useSignal(false)");
     // The handler is single-wrapped in $() — `$(e => ...)` IS the handler (no extra arrow), and
     // the setter call is rewritten to the signal write `submitted.value = true`.
-    expect(out).toContain("onSubmit={$(e => { e.preventDefault(); submitted.value = true; })}");
+    expect(out).toContain("onSubmit$={$(e => { e.preventDefault(); submitted.value = true; })}");
     expect(out).toContain('{submitted.value ? "Done" : "Pending"}');
   });
 });
@@ -31,7 +31,7 @@ describe("TypedEvent: onMouseMove reading e.clientX / e.clientY into a signal", 
     expect(out).toContain("const pos = useSignal({ x: 0, y: 0 })");
     // Single-wrapped `$(e => ...)` IS the handler, and the setter call is rewritten to the signal
     // write `pos.value = { ... }`.
-    expect(out).toContain("onMouseMove={$(e => pos.value = { x: e.clientX, y: e.clientY })}");
+    expect(out).toContain("onMouseMove$={$(e => pos.value = { x: e.clientX, y: e.clientY })}");
     expect(out).toContain("{pos.value.x}");
   });
 });
