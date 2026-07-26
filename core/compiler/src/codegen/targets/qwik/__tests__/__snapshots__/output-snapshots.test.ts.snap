@@ -438,9 +438,9 @@ const onSelect = (option: string) => { value.value = option; open.value = false;
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <button id="toggle" onClick={$(onToggle)}>{value.value}</button>
-  <button id="reset" onClick={$(onReset)}>Reset</button>
-  {options.value.map((option) => (<><div class="option" onClick={$(() => onSelect(option))}>{option}</div></>))}
+  <button id="toggle" onClick$={$(onToggle)}>{value.value}</button>
+  <button id="reset" onClick$={$(onReset)}>Reset</button>
+  {options.value.map((option) => (<><div class="option" onClick$={$(() => onSelect(option))}>{option}</div></>))}
 </div>
 )
 });
