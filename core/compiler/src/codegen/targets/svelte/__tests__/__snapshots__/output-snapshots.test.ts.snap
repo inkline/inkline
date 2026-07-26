@@ -276,6 +276,20 @@ exports[`svelte full output snapshots > PropDefaults 1`] = `
 "
 `;
 
+exports[`svelte full output snapshots > SetupHandlers 1`] = `
+"<script lang="ts">
+  let { ...__attrs }: Record<string, any> = $props()
+  let options = $state(["a", "b", "c"])
+  let value = $state("b")
+  let open = $state(false)
+  const onToggle = () => open = !open
+  const onReset = function onReset() { value = "a"; }
+  const onSelect = (option: string) => { value = option; open = false; }
+</script>
+<div {...__attrs} class={__attrs.class}><button id="toggle" onclick={onToggle}>{value}</button><button id="reset" onclick={onReset}>Reset</button>{#each options as option (option)}<div class="option" onclick={() => onSelect(option)}>{option}</div>{/each}</div>
+"
+`;
+
 exports[`svelte full output snapshots > SlotBasic 1`] = `
 "<script lang="ts">
   import type { Snippet } from "svelte";

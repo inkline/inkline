@@ -1,6 +1,6 @@
 export default defineAppConfig({
   /**
-   * Inkline branding for the docs site. The @uxfront/docs-theme layer ships
+   * Inkline branding for the docs site. The @uxfront/layer-docs layer ships
    * neutral defaults; these values are merged over them by Nuxt's `defu` layer
    * merge (consumer wins). `modules/config.ts` also fills `seo`/`header`/`github`
    * from the consumer's `package.json` + git as fallbacks.

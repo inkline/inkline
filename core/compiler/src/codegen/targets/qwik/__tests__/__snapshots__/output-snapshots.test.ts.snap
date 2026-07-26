@@ -11,7 +11,7 @@ const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   <span>{sum.value}</span>
-  <button onClick={$(() => { x.value = x.value + 1; y.value = y.value + 1; })}>Both</button>
+  <button onClick$={$(() => { x.value = x.value + 1; y.value = y.value + 1; })}>Both</button>
 </div>
 )
 });
@@ -24,7 +24,7 @@ export const Field = component$((props: { value?: string; onUpdateValue$?: QRL<(
 {
 const { value, onUpdateValue$, ...__attrs } = props
 return (
-<input {...__attrs} value={props.value} class={props.class} onInput={$(e => props.onUpdateValue$?.(e.target.value))} />
+<input {...__attrs} value={props.value} class={props.class} onInput$={$(e => props.onUpdateValue$?.(e.target.value))} />
 )
 });
 "
@@ -42,8 +42,8 @@ const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   <span id="sum">{sum.value}</span>
-  <button id="incX" onClick={$(() => x.value = x.value + 1)}>+X</button>
-  <button id="incY" onClick={$(() => y.value = y.value + 1)}>+Y</button>
+  <button id="incX" onClick$={$(() => x.value = x.value + 1)}>+X</button>
+  <button id="incY" onClick$={$(() => y.value = y.value + 1)}>+Y</button>
 </div>
 )
 });
@@ -59,7 +59,7 @@ const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   {visible.value ? (<><span>Visible</span></>) : (<><span>Hidden</span></>)}
-  <button onClick={$(() => visible.value = !visible.value)}>Toggle</button>
+  <button onClick$={$(() => visible.value = !visible.value)}>Toggle</button>
 </div>
 )
 });
@@ -74,7 +74,7 @@ const active = useSignal(false)
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={[active.value ? "active" : "inactive", props.class].filter(Boolean).join(" ")}>
-  <button onClick={$(() => active.value = !active.value)}>Toggle</button>
+  <button onClick$={$(() => active.value = !active.value)}>Toggle</button>
 </div>
 )
 });
@@ -88,7 +88,7 @@ export const ControlledSelect = component$((props) =>
 const value = useSignal("b")
 const { ...__attrs } = props
 return (
-<select {...__attrs} value={value.value} class={props.class} onChange={$(e => value.value = e.target.value)}>
+<select {...__attrs} value={value.value} class={props.class} onChange$={$(e => value.value = e.target.value)}>
   <option value="a">A</option>
   <option value="b">B</option>
   <option value="c">C</option>
@@ -106,7 +106,7 @@ const text = useSignal("")
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <textarea value={text.value} onInput={$(e => text.value = e.target.value)} />
+  <textarea value={text.value} onInput$={$(e => text.value = e.target.value)} />
   <p>{text.value.length} characters</p>
 </div>
 )
@@ -126,7 +126,7 @@ return (
 <div {...__attrs} class={props.class}>
   <p>{count.value}</p>
   <p>{doubled.value}</p>
-  <button onClick={$(() => count.value = count.value + 1)}>+1</button>
+  <button onClick$={$(() => count.value = count.value + 1)}>+1</button>
 </div>
 )
 });
@@ -161,8 +161,8 @@ const input = useSignal("")
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <input value={input.value} onInput={$(e => input.value = e.target.value)} />
-  <button onClick={$(() => { items.value = [...items.value, input.value]; input.value = ""; })}>Add</button>
+  <input value={input.value} onInput$={$(e => input.value = e.target.value)} />
+  <button onClick$={$(() => { items.value = [...items.value, input.value]; input.value = ""; })}>Add</button>
   <ul>
     {items.value.map((item, i) => (<><li>{item}</li></>))}
   </ul>
@@ -180,7 +180,7 @@ const active = useSignal(true)
 useVisibleTask$(() => { if (active.value) { const id = setInterval(() => console.log("tick"), 1000); return () => clearInterval(id); } })
 const { ...__attrs } = props
 return (
-<button {...__attrs} class={props.class} onClick={$(() => active.value = !active.value)}>Toggle</button>
+<button {...__attrs} class={props.class} onClick$={$(() => active.value = !active.value)}>Toggle</button>
 )
 });
 "
@@ -190,8 +190,8 @@ exports[`qwik full output snapshots > ElementRef 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ElementRef = component$((props) =>
 {
-useVisibleTask$(() => { inputRef.value?.focus(); })
 const inputRef = useSignal(null)
+useVisibleTask$(() => { inputRef.value?.focus(); })
 const { ...__attrs } = props
 return (
 <input {...__attrs} placeholder="auto-focus" class={props.class} ref={inputRef} />
@@ -206,7 +206,7 @@ export const EmitButton = component$((props: { onPress$?: QRL<(...args: any[]) =
 {
 const { onPress$, ...__attrs } = props
 return (
-<button {...__attrs} class={props.class} onClick={$(() => props.onPress$?.(1))}>Go</button>
+<button {...__attrs} class={props.class} onClick$={$(() => props.onPress$?.(1))}>Go</button>
 )
 });
 "
@@ -235,7 +235,7 @@ const value = useSignal("")
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <input value={value.value} onInput={$(e => value.value = e.target.value)} />
+  <input value={value.value} onInput$={$(e => value.value = e.target.value)} />
   <p>{value.value}</p>
 </div>
 )
@@ -312,7 +312,7 @@ const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   <span>{label.value}</span>
-  <button onClick={$(() => base.value = base.value + 1)}>+1</button>
+  <button onClick$={$(() => base.value = base.value + 1)}>+1</button>
 </div>
 )
 });
@@ -328,7 +328,7 @@ const filter = useSignal("")
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <input value={filter.value} onInput={$(e => filter.value = e.target.value)} />
+  <input value={filter.value} onInput$={$(e => filter.value = e.target.value)} />
   <ul>
     {items.value.map((item) => (<>{item.includes(filter.value) ? (<><li>{item}</li></>) : null}</>))}
   </ul>
@@ -345,7 +345,7 @@ export const ModelInput = component$((props: { value?: string; onUpdateValue$?: 
 const { value, onUpdateValue$, ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <input value={props.value} onInput={$(e => props.onUpdateValue$?.(e.target.value))} />
+  <input value={props.value} onInput$={$(e => props.onUpdateValue$?.(e.target.value))} />
   <p>{props.value}</p>
 </div>
 )
@@ -371,9 +371,9 @@ exports[`qwik full output snapshots > MultiRefs 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const MultiRefs = component$((props) =>
 {
-useVisibleTask$(() => { inputRef.value?.focus(); })
 const inputRef = useSignal(null)
 const buttonRef = useSignal(null)
+useVisibleTask$(() => { inputRef.value?.focus(); })
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
@@ -405,7 +405,7 @@ const text = useSignal("")
 const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
-  <input value={text.value} onInput={$(e => text.value = e.target.value)} />
+  <input value={text.value} onInput$={$(e => text.value = e.target.value)} />
   <p>{text.value}</p>
 </div>
 )
@@ -420,6 +420,28 @@ export const PropDefaults = component$((props: { color?: string; size: number } 
 const { color = "blue", size, ...__attrs } = props
 return (
 <div {...__attrs} style={\`color: \${color}\`} class={props.class}>{props.size}</div>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > SetupHandlers 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const SetupHandlers = component$((props) =>
+{
+const options = useSignal(["a", "b", "c"])
+const value = useSignal("b")
+const open = useSignal(false)
+const onToggle = () => open.value = !open.value
+const onReset = function onReset() { value.value = "a"; }
+const onSelect = (option: string) => { value.value = option; open.value = false; }
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <button id="toggle" onClick$={$(onToggle)}>{value.value}</button>
+  <button id="reset" onClick$={$(onReset)}>Reset</button>
+  {options.value.map((option) => (<><div class="option" onClick$={$(() => onSelect(option))}>{option}</div></>))}
+</div>
 )
 });
 "
@@ -554,7 +576,7 @@ const { ...__attrs } = props
 return (
 <div {...__attrs} class={props.class}>
   {tab.value === "a" ? (<><p>Tab A</p></>) : tab.value === "b" ? (<><p>Tab B</p></>) : null}
-  <button onClick={$(() => tab.value = tab.value === "a" ? "b" : "a")}>Switch</button>
+  <button onClick$={$(() => tab.value = tab.value === "a" ? "b" : "a")}>Switch</button>
 </div>
 )
 });
@@ -574,8 +596,8 @@ return (
 import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ComponentRef = component$((props) =>
 {
-useVisibleTask$(() => { console.log(childRef.value); })
 const childRef = useSignal(null)
+useVisibleTask$(() => { console.log(childRef.value); })
 const { ...__attrs } = props
 return (
 <Child {...__attrs} class={props.class} ref={childRef} />

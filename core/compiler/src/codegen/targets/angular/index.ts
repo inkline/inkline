@@ -19,6 +19,7 @@ import {
   foldConstTest,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import { setupLocalEmits } from "../../shared/setup-locals.ts";
 import { assertNever } from "../../../core/assert.ts";
 import { walkRenderTree } from "../../../ir/render/visit.ts";
 import { angularSelector, angularAttrSelector } from "./selector.ts";
@@ -28,9 +29,25 @@ import * as ts from "typescript";
  * Angular event bindings are statements, not function expressions. Unwrap an authored arrow
  * handler `(e) => body` to its body, mapping the event param to `$event` (e.g.
  * `(input)="value.set($event.target.value)"`). Block bodies become `;`-separated statements.
+ *
+ * A handler that is a bare callable *reference* (an identifier or member access, e.g. a hoisted
+ * setup-local `onToggle` or `props.onClick`) must be emitted as an *invocation* `onToggle($event)`.
+ * Angular evaluates the binding expression as a statement, so a bare reference is read and
+ * discarded and the handler never fires. Call expressions (`onSelect(option)`) are already
+ * effectful and emit verbatim.
  */
 function angularEventExpr(expr: ts.Expression, rules: RewriteRules): string {
-  if (!ts.isArrowFunction(expr)) return rewriteExpr(expr, rules);
+  if (!ts.isArrowFunction(expr)) {
+    const rewritten = rewriteExpr(expr, rules);
+    if (
+      ts.isIdentifier(expr) ||
+      ts.isPropertyAccessExpression(expr) ||
+      ts.isElementAccessExpression(expr)
+    ) {
+      return `${rewritten}($event)`;
+    }
+    return rewritten;
+  }
   const param = expr.parameters[0];
   const r: RewriteRules =
     param && ts.isIdentifier(param.name)
@@ -604,6 +621,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         span: m.loc,
       }),
     );
+  }
+  // Setup-body handlers/helpers become class fields (`onToggle = () => …`), so the template reads
+  // them bare and they close over the instance via the arrow's lexical `this`. Body-rewritten so
+  // reactive reads/writes resolve to `this.<signal>()` / `this.<signal>.set(…)`.
+  for (const local of setupLocalEmits(component, bodyRules)) {
+    body.push(cStmt({ body: `${local.name} = ${local.expr}`, span: local.span }));
   }
   // Effects and lifecycle run from a single constructor (a class can only have one).
   const ctorStmts: string[] = [];

@@ -1,4 +1,4 @@
-import { defineDocsCollections } from "@uxfront/docs-theme/content";
+import { defineDocsCollections } from "@uxfront/layer-docs/content";
 import { DOCS_SECTIONS } from "./app/constants/sections.js";
 
 // One-liner content config: the section topology lives in app/constants and the

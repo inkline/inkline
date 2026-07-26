@@ -1,8 +1,8 @@
-import type { DocsSectionDescriptor } from "@uxfront/docs-theme/content";
+import type { DocsSectionDescriptor } from "@uxfront/layer-docs/content";
 
 /**
  * Documentation section topology for the Inkline docs site. This descriptor is
- * the single source of truth the `@uxfront/docs-theme` layer reads (via global
+ * the single source of truth the `@uxfront/layer-docs` layer reads (via global
  * auto-import — see `imports.dirs` in nuxt.config) to build the content
  * collections, the nav tree and the sub-header. Add a section here + a matching
  * `content/docs/<folder>/` subtree and it appears everywhere automatically.

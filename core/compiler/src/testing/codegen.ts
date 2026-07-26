@@ -102,6 +102,7 @@ export const CORE_FIXTURES = [
 
 export const NEW_FIXTURES = [
   "ControlledSelect",
+  "SetupHandlers",
   "ConditionalClass",
   "MemoChain",
   "MixedControlFlow",

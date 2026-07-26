@@ -391,6 +391,28 @@ exports[`vue full output snapshots > PropDefaults 1`] = `
 "
 `;
 
+exports[`vue full output snapshots > SetupHandlers 1`] = `
+"<script setup lang="ts">
+  import { ref } from "vue";
+  const options = ref(["a", "b", "c"])
+  const value = ref("b")
+  const open = ref(false)
+  const onToggle = () => open.value = !open.value
+  const onReset = function onReset() { value.value = "a"; }
+  const onSelect = (option: string) => { value.value = option; open.value = false; }
+</script>
+<template>
+<div>
+  <button id="toggle" @click="onToggle">{{ value }}</button>
+  <button id="reset" @click="onReset">Reset</button>
+  <div v-for="option in options" :key="option" class="option" @click="() => onSelect(option)">
+    {{ option }}
+  </div>
+</div>
+</template>
+"
+`;
+
 exports[`vue full output snapshots > SlotBasic 1`] = `
 "<script setup lang="ts">
 </script>

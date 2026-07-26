@@ -25,9 +25,9 @@ describe("ContextProvider: createContext + provide per target", () => {
     expect(declIdx).toBeGreaterThanOrEqual(0);
     expect(declIdx).toBeLessThan(provideIdx); // declaration precedes the provide
 
-    // The event handler is now single-wrapped with `$(...)` and rewrites the setter to a direct
-    // `.value` assignment: `onClick={$(() => disabled.value = !disabled.value)}`.
-    expect(out).toContain("onClick={$(() => disabled.value = !disabled.value)}");
+    // The event handler is single-wrapped with `$(...)` on a `$`-suffixed prop and rewrites the
+    // setter to a direct `.value` assignment: `onClick$={$(() => disabled.value = !disabled.value)}`.
+    expect(out).toContain("onClick$={$(() => disabled.value = !disabled.value)}");
   });
 });
 

@@ -9,11 +9,11 @@ describe("Qwik: handler single-wrapped + signal.value setter", () => {
     const out = await compileTo("FormField", "qwik");
     expect(out).toContain('const value = useSignal("")');
     // Single $() wrap, param preserved, mutation via signal.value.
-    expect(out).toContain(`onInput={$(e => value.value = e.target.value)}`);
+    expect(out).toContain(`onInput$={$(e => value.value = e.target.value)}`);
   });
 
   it("checkbox onChange single-wrapped `$(() => checked.value = ...)`", async () => {
     const out = await compileTo("TwoWayCheckbox", "qwik");
-    expect(out).toContain(`onChange={$(() => checked.value = !checked.value)}`);
+    expect(out).toContain(`onChange$={$(() => checked.value = !checked.value)}`);
   });
 });
