@@ -29,9 +29,25 @@ import * as ts from "typescript";
  * Angular event bindings are statements, not function expressions. Unwrap an authored arrow
  * handler `(e) => body` to its body, mapping the event param to `$event` (e.g.
  * `(input)="value.set($event.target.value)"`). Block bodies become `;`-separated statements.
+ *
+ * A handler that is a bare callable *reference* (an identifier or member access, e.g. a hoisted
+ * setup-local `onToggle` or `props.onClick`) must be emitted as an *invocation* `onToggle($event)`.
+ * Angular evaluates the binding expression as a statement, so a bare reference is read and
+ * discarded and the handler never fires. Call expressions (`onSelect(option)`) are already
+ * effectful and emit verbatim.
  */
 function angularEventExpr(expr: ts.Expression, rules: RewriteRules): string {
-  if (!ts.isArrowFunction(expr)) return rewriteExpr(expr, rules);
+  if (!ts.isArrowFunction(expr)) {
+    const rewritten = rewriteExpr(expr, rules);
+    if (
+      ts.isIdentifier(expr) ||
+      ts.isPropertyAccessExpression(expr) ||
+      ts.isElementAccessExpression(expr)
+    ) {
+      return `${rewritten}($event)`;
+    }
+    return rewritten;
+  }
   const param = expr.parameters[0];
   const r: RewriteRules =
     param && ts.isIdentifier(param.name)
