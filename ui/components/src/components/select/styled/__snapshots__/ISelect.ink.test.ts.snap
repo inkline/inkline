@@ -48,13 +48,13 @@ export interface SelectProps {
   readonly?: boolean;
 }
 @Component({ standalone: true, selector: 'ink-select', host: { style: 'display: contents' }, imports: [ISelectBase, ISelectTriggerBase, ISelectListboxBase, ISelectOptionBase], template: \`<ink-select-base [id]="id()" [klass]="klass()">
-<ink-select-trigger-base [klass]="(triggerClass())" [arrowClass]="arrowClass()" [label]="label()" [controls]="listboxId()" [activeDescendant]="activeDescendant()" [expanded]="open()" [invalid]="invalid()" [readonly]="readonly()" [disabled]="disabled()" [placeholder]="isPlaceholder()" (toggle)="activeIndex.set(!disabled() && !readonly() && !open() ? selectedIndex() : activeIndex()); open.set(!disabled() && !readonly() ? !open() : open())" (navigate)="value.set(open() && ($event === 'Enter' || $event === ' ') && activeOption() && !activeOption()?.disabled ? (activeOption()?.value ?? '') : value()); activeIndex.set(disabled() || readonly() ? activeIndex() : !open() ? $event === 'ArrowDown' || $event === 'ArrowUp' || $event === 'Enter' || $event === ' ' ? selectedIndex() : activeIndex() : $event === 'ArrowDown' ? activeIndex() + 1 > enriched().length - 1 ? enriched().length - 1 : activeIndex() + 1 : $event === 'ArrowUp' ? activeIndex() - 1 < 0 ? 0 : activeIndex() - 1 : $event === 'Home' ? 0 : $event === 'End' ? enriched().length - 1 : activeIndex()); open.set(disabled() || readonly() ? open() : !open() ? $event === 'ArrowDown' || $event === 'ArrowUp' || $event === 'Enter' || $event === ' ' ? true : open() : ($event === 'Enter' || $event === ' ') && activeOption() && !activeOption()?.disabled ? false : $event === 'Escape' ? false : open())">
+<ink-select-trigger-base [klass]="(triggerClass())" [arrowClass]="arrowClass()" [label]="label()" [controls]="listboxId()" [activeDescendant]="activeDescendant()" [expanded]="open()" [invalid]="invalid()" [readonly]="readonly()" [disabled]="disabled()" [placeholder]="isPlaceholder()" (toggle)="onToggle($event)" (navigate)="onNavigate($event)">
 {{ displayLabel() }}
 </ink-select-trigger-base>
 @if (open()) {
 <ink-select-listbox-base [klass]="(panelClass())" [id]="listboxId()" [label]="label()">
 @for (option of enriched(); track option.value) {
-<ink-select-option-base [klass]="(optionClass())" [id]="option.id" [selected]="value() === option.value" [active]="activeIndex() === option.index" [disabled]="option.disabled" (select)="value.set(option.value); open.set(false)" (activate)="activeIndex.set(option.index)">
+<ink-select-option-base [klass]="(optionClass())" [id]="option.id" [selected]="value() === option.value" [active]="activeIndex() === option.index" [disabled]="option.disabled" (select)="onSelect(option)" (activate)="onActivate(option)">
 {{ option.label }}
 </ink-select-option-base>
 }
@@ -83,6 +83,10 @@ triggerClass = computed(() => selectRecipe({ color: this.color(), variant: this.
 panelClass = computed(() => selectPanelRecipe({ color: this.color(), size: this.size() }))
 optionClass = computed(() => selectOptionRecipe({ color: this.color(), size: this.size() }))
 arrowClass = computed(() => selectArrowRecipe({ size: this.size() }))
+onToggle = () => { this.activeIndex.set(!this.disabled() && !this.readonly() && !this.open() ? this.selectedIndex() : this.activeIndex()); this.open.set(!this.disabled() && !this.readonly() ? !this.open() : this.open()); }
+onNavigate = (key: string) => { this.value.set(this.open() && (key === 'Enter' || key === ' ') && this.activeOption() && !this.activeOption()?.disabled ? (this.activeOption()?.value ?? '') : this.value()); this.activeIndex.set(this.disabled() || this.readonly() ? this.activeIndex() : !this.open() ? key === 'ArrowDown' || key === 'ArrowUp' || key === 'Enter' || key === ' ' ? this.selectedIndex() : this.activeIndex() : key === 'ArrowDown' ? this.activeIndex() + 1 > this.enriched().length - 1 ? this.enriched().length - 1 : this.activeIndex() + 1 : key === 'ArrowUp' ? this.activeIndex() - 1 < 0 ? 0 : this.activeIndex() - 1 : key === 'Home' ? 0 : key === 'End' ? this.enriched().length - 1 : this.activeIndex()); this.open.set(this.disabled() || this.readonly() ? this.open() : !this.open() ? key === 'ArrowDown' || key === 'ArrowUp' || key === 'Enter' || key === ' ' ? true : this.open() : (key === 'Enter' || key === ' ') && this.activeOption() && !this.activeOption()?.disabled ? false : key === 'Escape' ? false : this.open()); }
+onSelect = (option: ReturnType<typeof enriched>[number]) => { this.value.set(option.value); this.open.set(false); }
+onActivate = (option: ReturnType<typeof enriched>[number]) => { this.activeIndex.set(option.index); }
 id = input<string>()
 options = input<SelectOption[]>()
 placeholder = input<string>()
@@ -95,13 +99,13 @@ disabled = input<boolean>()
 readonly = input<boolean>()
 value = model<string>()
 }
-@Component({ standalone: true, selector: 'div[ink-select]', host: { '[class]': "'select-container' + (klass() ? ' ' + klass() : '')", '[attr.id]': "(id()) ?? null", 'ink-select-base': '' }, imports: [ISelectTriggerBaseHostComponent, ISelectListboxBaseHostComponent, ISelectOptionBaseHostComponent], template: \`<div ink-select-trigger-base [klass]="(triggerClass())" [arrowClass]="arrowClass()" [label]="label()" [controls]="listboxId()" [activeDescendant]="activeDescendant()" [expanded]="open()" [invalid]="invalid()" [readonly]="readonly()" [disabled]="disabled()" [placeholder]="isPlaceholder()" (toggle)="activeIndex.set(!disabled() && !readonly() && !open() ? selectedIndex() : activeIndex()); open.set(!disabled() && !readonly() ? !open() : open())" (navigate)="value.set(open() && ($event === 'Enter' || $event === ' ') && activeOption() && !activeOption()?.disabled ? (activeOption()?.value ?? '') : value()); activeIndex.set(disabled() || readonly() ? activeIndex() : !open() ? $event === 'ArrowDown' || $event === 'ArrowUp' || $event === 'Enter' || $event === ' ' ? selectedIndex() : activeIndex() : $event === 'ArrowDown' ? activeIndex() + 1 > enriched().length - 1 ? enriched().length - 1 : activeIndex() + 1 : $event === 'ArrowUp' ? activeIndex() - 1 < 0 ? 0 : activeIndex() - 1 : $event === 'Home' ? 0 : $event === 'End' ? enriched().length - 1 : activeIndex()); open.set(disabled() || readonly() ? open() : !open() ? $event === 'ArrowDown' || $event === 'ArrowUp' || $event === 'Enter' || $event === ' ' ? true : open() : ($event === 'Enter' || $event === ' ') && activeOption() && !activeOption()?.disabled ? false : $event === 'Escape' ? false : open())">
+@Component({ standalone: true, selector: 'div[ink-select]', host: { '[class]': "'select-container' + (klass() ? ' ' + klass() : '')", '[attr.id]': "(id()) ?? null", 'ink-select-base': '' }, imports: [ISelectTriggerBaseHostComponent, ISelectListboxBaseHostComponent, ISelectOptionBaseHostComponent], template: \`<div ink-select-trigger-base [klass]="(triggerClass())" [arrowClass]="arrowClass()" [label]="label()" [controls]="listboxId()" [activeDescendant]="activeDescendant()" [expanded]="open()" [invalid]="invalid()" [readonly]="readonly()" [disabled]="disabled()" [placeholder]="isPlaceholder()" (toggle)="onToggle($event)" (navigate)="onNavigate($event)">
 {{ displayLabel() }}
 </div>
 @if (open()) {
 <ul ink-select-listbox-base [klass]="(panelClass())" [id]="listboxId()" [label]="label()">
 @for (option of enriched(); track option.value) {
-<li ink-select-option-base [klass]="(optionClass())" [id]="option.id" [selected]="value() === option.value" [active]="activeIndex() === option.index" [disabled]="option.disabled" (select)="value.set(option.value); open.set(false)" (activate)="activeIndex.set(option.index)">
+<li ink-select-option-base [klass]="(optionClass())" [id]="option.id" [selected]="value() === option.value" [active]="activeIndex() === option.index" [disabled]="option.disabled" (select)="onSelect(option)" (activate)="onActivate(option)">
 {{ option.label }}
 </li>
 }
@@ -129,6 +133,10 @@ triggerClass = computed(() => selectRecipe({ color: this.color(), variant: this.
 panelClass = computed(() => selectPanelRecipe({ color: this.color(), size: this.size() }))
 optionClass = computed(() => selectOptionRecipe({ color: this.color(), size: this.size() }))
 arrowClass = computed(() => selectArrowRecipe({ size: this.size() }))
+onToggle = () => { this.activeIndex.set(!this.disabled() && !this.readonly() && !this.open() ? this.selectedIndex() : this.activeIndex()); this.open.set(!this.disabled() && !this.readonly() ? !this.open() : this.open()); }
+onNavigate = (key: string) => { this.value.set(this.open() && (key === 'Enter' || key === ' ') && this.activeOption() && !this.activeOption()?.disabled ? (this.activeOption()?.value ?? '') : this.value()); this.activeIndex.set(this.disabled() || this.readonly() ? this.activeIndex() : !this.open() ? key === 'ArrowDown' || key === 'ArrowUp' || key === 'Enter' || key === ' ' ? this.selectedIndex() : this.activeIndex() : key === 'ArrowDown' ? this.activeIndex() + 1 > this.enriched().length - 1 ? this.enriched().length - 1 : this.activeIndex() + 1 : key === 'ArrowUp' ? this.activeIndex() - 1 < 0 ? 0 : this.activeIndex() - 1 : key === 'Home' ? 0 : key === 'End' ? this.enriched().length - 1 : this.activeIndex()); this.open.set(this.disabled() || this.readonly() ? this.open() : !this.open() ? key === 'ArrowDown' || key === 'ArrowUp' || key === 'Enter' || key === ' ' ? true : this.open() : (key === 'Enter' || key === ' ') && this.activeOption() && !this.activeOption()?.disabled ? false : key === 'Escape' ? false : this.open()); }
+onSelect = (option: ReturnType<typeof enriched>[number]) => { this.value.set(option.value); this.open.set(false); }
+onActivate = (option: ReturnType<typeof enriched>[number]) => { this.activeIndex.set(option.index); }
 id = input<string>()
 options = input<SelectOption[]>()
 placeholder = input<string>()
@@ -203,13 +211,17 @@ const triggerClass = selectRecipe({ color: color, variant: variant, size: size, 
 const panelClass = selectPanelRecipe({ color: color, size: size })
 const optionClass = selectOptionRecipe({ color: color, size: size })
 const arrowClass = selectArrowRecipe({ size: size })
+const onToggle = () => { activeIndex = !disabled && !readonly && !open ? selectedIndex : activeIndex; open = !disabled && !readonly ? !open : open; }
+const onNavigate = (key: string) => { value = open && (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? (activeOption?.value ?? "") : value; activeIndex = disabled || readonly ? activeIndex : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex : activeIndex : key === "ArrowDown" ? activeIndex + 1 > enriched.length - 1 ? enriched.length - 1 : activeIndex + 1 : key === "ArrowUp" ? activeIndex - 1 < 0 ? 0 : activeIndex - 1 : key === "Home" ? 0 : key === "End" ? enriched.length - 1 : activeIndex; open = disabled || readonly ? open : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open : (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? false : key === "Escape" ? false : open; }
+const onSelect = (option: ReturnType<typeof enriched>[number]) => { value = option.value; open = false; }
+const onActivate = (option: ReturnType<typeof enriched>[number]) => { activeIndex = option.index; }
 ---
 <ISelectBase {...__attrs} id={id} class={__attrs.class}>
-<ISelectTriggerBase class={triggerClass} arrowClass={arrowClass} label={label} controls={listboxId} activeDescendant={activeDescendant} expanded={open} invalid={invalid} readonly={readonly} disabled={disabled} placeholder={isPlaceholder} onToggle={() => { activeIndex = !disabled && !readonly && !open ? selectedIndex : activeIndex; open = !disabled && !readonly ? !open : open; }} onNavigate={(key: string) => { value = open && (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? (activeOption?.value ?? "") : value; activeIndex = disabled || readonly ? activeIndex : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex : activeIndex : key === "ArrowDown" ? activeIndex + 1 > enriched.length - 1 ? enriched.length - 1 : activeIndex + 1 : key === "ArrowUp" ? activeIndex - 1 < 0 ? 0 : activeIndex - 1 : key === "Home" ? 0 : key === "End" ? enriched.length - 1 : activeIndex; open = disabled || readonly ? open : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open : (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? false : key === "Escape" ? false : open; }}>
+<ISelectTriggerBase class={triggerClass} arrowClass={arrowClass} label={label} controls={listboxId} activeDescendant={activeDescendant} expanded={open} invalid={invalid} readonly={readonly} disabled={disabled} placeholder={isPlaceholder} onToggle={onToggle} onNavigate={onNavigate}>
 {displayLabel}
 </ISelectTriggerBase>
 {open ? (<ISelectListboxBase class={panelClass} id={listboxId} label={label}>
-{enriched.map((option) => (<ISelectOptionBase class={optionClass} id={option.id} selected={value === option.value} active={activeIndex === option.index} disabled={option.disabled} onSelect={() => { value = option.value; open = false; }} onActivate={() => activeIndex = option.index}>
+{enriched.map((option) => (<ISelectOptionBase class={optionClass} id={option.id} selected={value === option.value} active={activeIndex === option.index} disabled={option.disabled} onSelect={() => onSelect(option)} onActivate={() => onActivate(option)}>
 {option.label}
 </ISelectOptionBase>))}
 </ISelectListboxBase>) : null}
@@ -274,14 +286,18 @@ const triggerClass = useComputed$(() => selectRecipe({ color: props.color, varia
 const panelClass = useComputed$(() => selectPanelRecipe({ color: props.color, size: props.size }))
 const optionClass = useComputed$(() => selectOptionRecipe({ color: props.color, size: props.size }))
 const arrowClass = useComputed$(() => selectArrowRecipe({ size: props.size }))
+const onToggle = () => { activeIndex.value = !props.disabled && !props.readonly && !open.value ? selectedIndex.value : activeIndex.value; open.value = !props.disabled && !props.readonly ? !open.value : open.value; }
+const onNavigate = (key: string) => { props.onUpdateValue$?.(open.value && (key === "Enter" || key === " ") && activeOption.value && !activeOption.value?.disabled ? (activeOption.value?.value ?? "") : props.value); activeIndex.value = props.disabled || props.readonly ? activeIndex.value : !open.value ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex.value : activeIndex.value : key === "ArrowDown" ? activeIndex.value + 1 > enriched.value.length - 1 ? enriched.value.length - 1 : activeIndex.value + 1 : key === "ArrowUp" ? activeIndex.value - 1 < 0 ? 0 : activeIndex.value - 1 : key === "Home" ? 0 : key === "End" ? enriched.value.length - 1 : activeIndex.value; open.value = props.disabled || props.readonly ? open.value : !open.value ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open.value : (key === "Enter" || key === " ") && activeOption.value && !activeOption.value?.disabled ? false : key === "Escape" ? false : open.value; }
+const onSelect = (option: ReturnType<typeof enriched>[number]) => { props.onUpdateValue$?.(option.value); open.value = false; }
+const onActivate = (option: ReturnType<typeof enriched>[number]) => { activeIndex.value = option.index; }
 const { children, id, options, placeholder, label, color, variant, size, invalid, disabled, readonly, value, onUpdateValue$, ...__attrs } = props
 return (
 <ISelectBase {...__attrs} id={props.id} class={props.class}>
   <>
-    <ISelectTriggerBase class={triggerClass.value} arrowClass={arrowClass.value} label={props.label} controls={listboxId.value} activeDescendant={activeDescendant.value} expanded={open.value} invalid={props.invalid} readonly={props.readonly} disabled={props.disabled} placeholder={isPlaceholder.value} onToggle={$(() => { activeIndex.value = !props.disabled && !props.readonly && !open.value ? selectedIndex.value : activeIndex.value; open.value = !props.disabled && !props.readonly ? !open.value : open.value; })} onNavigate={$((key: string) => { props.onUpdateValue$?.(open.value && (key === "Enter" || key === " ") && activeOption.value && !activeOption.value?.disabled ? (activeOption.value?.value ?? "") : props.value); activeIndex.value = props.disabled || props.readonly ? activeIndex.value : !open.value ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex.value : activeIndex.value : key === "ArrowDown" ? activeIndex.value + 1 > enriched.value.length - 1 ? enriched.value.length - 1 : activeIndex.value + 1 : key === "ArrowUp" ? activeIndex.value - 1 < 0 ? 0 : activeIndex.value - 1 : key === "Home" ? 0 : key === "End" ? enriched.value.length - 1 : activeIndex.value; open.value = props.disabled || props.readonly ? open.value : !open.value ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open.value : (key === "Enter" || key === " ") && activeOption.value && !activeOption.value?.disabled ? false : key === "Escape" ? false : open.value; })}>
+    <ISelectTriggerBase class={triggerClass.value} arrowClass={arrowClass.value} label={props.label} controls={listboxId.value} activeDescendant={activeDescendant.value} expanded={open.value} invalid={props.invalid} readonly={props.readonly} disabled={props.disabled} placeholder={isPlaceholder.value} onToggle$={$(onToggle)} onNavigate$={$(onNavigate)}>
       {displayLabel.value}
     </ISelectTriggerBase>
-    {open.value ? (<><ISelectListboxBase class={panelClass.value} id={listboxId.value} label={props.label}>{enriched.value.map((option) => (<><ISelectOptionBase class={optionClass.value} id={option.id} selected={props.value === option.value} active={activeIndex.value === option.index} disabled={option.disabled} onSelect={$(() => { props.onUpdateValue$?.(option.value); open.value = false; })} onActivate={$(() => activeIndex.value = option.index)}>{option.label}</ISelectOptionBase></>))}</ISelectListboxBase></>) : null}
+    {open.value ? (<><ISelectListboxBase class={panelClass.value} id={listboxId.value} label={props.label}>{enriched.value.map((option) => (<><ISelectOptionBase class={optionClass.value} id={option.id} selected={props.value === option.value} active={activeIndex.value === option.index} disabled={option.disabled} onSelect$={$(() => onSelect(option))} onActivate$={$(() => onActivate(option))}>{option.label}</ISelectOptionBase></>))}</ISelectListboxBase></>) : null}
   </>
 </ISelectBase>
 )
@@ -346,14 +362,18 @@ const triggerClass = useMemo(() => selectRecipe({ color: props.color, variant: p
 const panelClass = useMemo(() => selectPanelRecipe({ color: props.color, size: props.size }), [props.color, props.size])
 const optionClass = useMemo(() => selectOptionRecipe({ color: props.color, size: props.size }), [props.color, props.size])
 const arrowClass = useMemo(() => selectArrowRecipe({ size: props.size }), [props.size])
+const onToggle = () => { setActiveIndex(!props.disabled && !props.readonly && !open ? selectedIndex : activeIndex); setOpen(!props.disabled && !props.readonly ? !open : open); }
+const onNavigate = (key: string) => { props.onUpdateValue?.(open && (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? (activeOption?.value ?? "") : props.value); setActiveIndex(props.disabled || props.readonly ? activeIndex : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex : activeIndex : key === "ArrowDown" ? activeIndex + 1 > enriched.length - 1 ? enriched.length - 1 : activeIndex + 1 : key === "ArrowUp" ? activeIndex - 1 < 0 ? 0 : activeIndex - 1 : key === "Home" ? 0 : key === "End" ? enriched.length - 1 : activeIndex); setOpen(props.disabled || props.readonly ? open : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open : (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? false : key === "Escape" ? false : open); }
+const onSelect = (option: ReturnType<typeof enriched>[number]) => { props.onUpdateValue?.(option.value); setOpen(false); }
+const onActivate = (option: ReturnType<typeof enriched>[number]) => { setActiveIndex(option.index); }
 const { children, id, options, placeholder, label, color, variant, size, invalid, disabled, readonly, value, onUpdateValue, ...__attrs } = props
 return (
 <ISelectBase {...__attrs} id={props.id} className={props.className}>
   <>
-    <ISelectTriggerBase className={triggerClass} arrowClass={arrowClass} label={props.label} controls={listboxId} activeDescendant={activeDescendant} expanded={open} invalid={props.invalid} readonly={props.readonly} disabled={props.disabled} placeholder={isPlaceholder} onToggle={() => { setActiveIndex(!props.disabled && !props.readonly && !open ? selectedIndex : activeIndex); setOpen(!props.disabled && !props.readonly ? !open : open); }} onNavigate={(key: string) => { props.onUpdateValue?.(open && (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? (activeOption?.value ?? "") : props.value); setActiveIndex(props.disabled || props.readonly ? activeIndex : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex : activeIndex : key === "ArrowDown" ? activeIndex + 1 > enriched.length - 1 ? enriched.length - 1 : activeIndex + 1 : key === "ArrowUp" ? activeIndex - 1 < 0 ? 0 : activeIndex - 1 : key === "Home" ? 0 : key === "End" ? enriched.length - 1 : activeIndex); setOpen(props.disabled || props.readonly ? open : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open : (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? false : key === "Escape" ? false : open); }}>
+    <ISelectTriggerBase className={triggerClass} arrowClass={arrowClass} label={props.label} controls={listboxId} activeDescendant={activeDescendant} expanded={open} invalid={props.invalid} readonly={props.readonly} disabled={props.disabled} placeholder={isPlaceholder} onToggle={onToggle} onNavigate={onNavigate}>
       {displayLabel}
     </ISelectTriggerBase>
-    {open ? <ISelectListboxBase className={panelClass} id={listboxId} label={props.label}>{enriched.map((option) => (<Fragment key={option.value}><ISelectOptionBase className={optionClass} id={option.id} selected={props.value === option.value} active={activeIndex === option.index} disabled={option.disabled} onSelect={() => { props.onUpdateValue?.(option.value); setOpen(false); }} onActivate={() => setActiveIndex(option.index)}>{option.label}</ISelectOptionBase></Fragment>))}</ISelectListboxBase> : null}
+    {open ? <ISelectListboxBase className={panelClass} id={listboxId} label={props.label}>{enriched.map((option) => (<Fragment key={option.value}><ISelectOptionBase className={optionClass} id={option.id} selected={props.value === option.value} active={activeIndex === option.index} disabled={option.disabled} onSelect={() => onSelect(option)} onActivate={() => onActivate(option)}>{option.label}</ISelectOptionBase></Fragment>))}</ISelectListboxBase> : null}
   </>
 </ISelectBase>
 )
@@ -419,17 +439,21 @@ const triggerClass = createMemo(() => selectRecipe({ color: props.color, variant
 const panelClass = createMemo(() => selectPanelRecipe({ color: props.color, size: props.size }))
 const optionClass = createMemo(() => selectOptionRecipe({ color: props.color, size: props.size }))
 const arrowClass = createMemo(() => selectArrowRecipe({ size: props.size }))
+const onToggle = () => { setActiveIndex(!props.disabled && !props.readonly && !open() ? selectedIndex() : activeIndex()); setOpen(!props.disabled && !props.readonly ? !open() : open()); }
+const onNavigate = (key: string) => { props.onUpdateValue?.(open() && (key === "Enter" || key === " ") && activeOption() && !activeOption()?.disabled ? (activeOption()?.value ?? "") : props.value); setActiveIndex(props.disabled || props.readonly ? activeIndex() : !open() ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex() : activeIndex() : key === "ArrowDown" ? activeIndex() + 1 > enriched().length - 1 ? enriched().length - 1 : activeIndex() + 1 : key === "ArrowUp" ? activeIndex() - 1 < 0 ? 0 : activeIndex() - 1 : key === "Home" ? 0 : key === "End" ? enriched().length - 1 : activeIndex()); setOpen(props.disabled || props.readonly ? open() : !open() ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open() : (key === "Enter" || key === " ") && activeOption() && !activeOption()?.disabled ? false : key === "Escape" ? false : open()); }
+const onSelect = (option: ReturnType<typeof enriched>[number]) => { props.onUpdateValue?.(option.value); setOpen(false); }
+const onActivate = (option: ReturnType<typeof enriched>[number]) => { setActiveIndex(option.index); }
 const [, __attrs] = splitProps(props, ["children", "id", "options", "placeholder", "label", "color", "variant", "size", "invalid", "disabled", "readonly", "value", "onUpdateValue"])
 return (
 <ISelectBase {...__attrs} id={props.id} class={props.class}>
   <>
-    <ISelectTriggerBase class={triggerClass()} arrowClass={arrowClass()} label={props.label} controls={listboxId()} activeDescendant={activeDescendant()} expanded={open()} invalid={props.invalid} readonly={props.readonly} disabled={props.disabled} placeholder={isPlaceholder()} onToggle={() => { setActiveIndex(!props.disabled && !props.readonly && !open() ? selectedIndex() : activeIndex()); setOpen(!props.disabled && !props.readonly ? !open() : open()); }} onNavigate={(key: string) => { props.onUpdateValue?.(open() && (key === "Enter" || key === " ") && activeOption() && !activeOption()?.disabled ? (activeOption()?.value ?? "") : props.value); setActiveIndex(props.disabled || props.readonly ? activeIndex() : !open() ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex() : activeIndex() : key === "ArrowDown" ? activeIndex() + 1 > enriched().length - 1 ? enriched().length - 1 : activeIndex() + 1 : key === "ArrowUp" ? activeIndex() - 1 < 0 ? 0 : activeIndex() - 1 : key === "Home" ? 0 : key === "End" ? enriched().length - 1 : activeIndex()); setOpen(props.disabled || props.readonly ? open() : !open() ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open() : (key === "Enter" || key === " ") && activeOption() && !activeOption()?.disabled ? false : key === "Escape" ? false : open()); }}>
+    <ISelectTriggerBase class={triggerClass()} arrowClass={arrowClass()} label={props.label} controls={listboxId()} activeDescendant={activeDescendant()} expanded={open()} invalid={props.invalid} readonly={props.readonly} disabled={props.disabled} placeholder={isPlaceholder()} onToggle={onToggle} onNavigate={onNavigate}>
       {displayLabel()}
     </ISelectTriggerBase>
     <Show when={open()}>
       <ISelectListboxBase class={panelClass()} id={listboxId()} label={props.label}>
         <For each={enriched()}>
-          {(option) => <ISelectOptionBase class={optionClass()} id={option.id} selected={props.value === option.value} active={activeIndex() === option.index} disabled={option.disabled} onSelect={() => { props.onUpdateValue?.(option.value); setOpen(false); }} onActivate={() => setActiveIndex(option.index)}>{option.label}</ISelectOptionBase>}
+          {(option) => <ISelectOptionBase class={optionClass()} id={option.id} selected={props.value === option.value} active={activeIndex() === option.index} disabled={option.disabled} onSelect={() => onSelect(option)} onActivate={() => onActivate(option)}>{option.label}</ISelectOptionBase>}
         </For>
       </ISelectListboxBase>
     </Show>
@@ -497,13 +521,17 @@ return (
   let panelClass = $derived(selectPanelRecipe({ color: color, size: size }))
   let optionClass = $derived(selectOptionRecipe({ color: color, size: size }))
   let arrowClass = $derived(selectArrowRecipe({ size: size }))
+  const onToggle = () => { activeIndex = !disabled && !readonly && !open ? selectedIndex : activeIndex; open = !disabled && !readonly ? !open : open; }
+  const onNavigate = (key: string) => { value = open && (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? (activeOption?.value ?? "") : value; activeIndex = disabled || readonly ? activeIndex : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex : activeIndex : key === "ArrowDown" ? activeIndex + 1 > enriched.length - 1 ? enriched.length - 1 : activeIndex + 1 : key === "ArrowUp" ? activeIndex - 1 < 0 ? 0 : activeIndex - 1 : key === "Home" ? 0 : key === "End" ? enriched.length - 1 : activeIndex; open = disabled || readonly ? open : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open : (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? false : key === "Escape" ? false : open; }
+  const onSelect = (option: ReturnType<typeof enriched>[number]) => { value = option.value; open = false; }
+  const onActivate = (option: ReturnType<typeof enriched>[number]) => { activeIndex = option.index; }
 </script>
 <ISelectBase {...__attrs} id={id} class={__attrs.class}>
-  <ISelectTriggerBase class={triggerClass} arrowClass={arrowClass} label={label} controls={listboxId} activeDescendant={activeDescendant} expanded={open} invalid={invalid} readonly={readonly} disabled={disabled} placeholder={isPlaceholder} onToggle={() => { activeIndex = !disabled && !readonly && !open ? selectedIndex : activeIndex; open = !disabled && !readonly ? !open : open; }} onNavigate={(key: string) => { value = open && (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? (activeOption?.value ?? "") : value; activeIndex = disabled || readonly ? activeIndex : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex : activeIndex : key === "ArrowDown" ? activeIndex + 1 > enriched.length - 1 ? enriched.length - 1 : activeIndex + 1 : key === "ArrowUp" ? activeIndex - 1 < 0 ? 0 : activeIndex - 1 : key === "Home" ? 0 : key === "End" ? enriched.length - 1 : activeIndex; open = disabled || readonly ? open : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open : (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? false : key === "Escape" ? false : open; }}>
+  <ISelectTriggerBase class={triggerClass} arrowClass={arrowClass} label={label} controls={listboxId} activeDescendant={activeDescendant} expanded={open} invalid={invalid} readonly={readonly} disabled={disabled} placeholder={isPlaceholder} onToggle={onToggle} onNavigate={onNavigate}>
     {displayLabel}
   </ISelectTriggerBase>
   {#if open}<ISelectListboxBase class={panelClass} id={listboxId} label={label}>
-    {#each enriched as option (option.value)}<ISelectOptionBase class={optionClass} id={option.id} selected={value === option.value} active={activeIndex === option.index} disabled={option.disabled} onSelect={() => { value = option.value; open = false; }} onActivate={() => activeIndex = option.index}>
+    {#each enriched as option (option.value)}<ISelectOptionBase class={optionClass} id={option.id} selected={value === option.value} active={activeIndex === option.index} disabled={option.disabled} onSelect={() => onSelect(option)} onActivate={() => onActivate(option)}>
       {option.label}
     </ISelectOptionBase>
     {/each}
@@ -571,14 +599,18 @@ return (
   const panelClass = computed(() => selectPanelRecipe({ color: props.color, size: props.size }))
   const optionClass = computed(() => selectOptionRecipe({ color: props.color, size: props.size }))
   const arrowClass = computed(() => selectArrowRecipe({ size: props.size }))
+  const onToggle = () => { activeIndex.value = !props.disabled && !props.readonly && !open.value ? selectedIndex.value : activeIndex.value; open.value = !props.disabled && !props.readonly ? !open.value : open.value; }
+  const onNavigate = (key: string) => { value.value = open.value && (key === "Enter" || key === " ") && activeOption.value && !activeOption.value?.disabled ? (activeOption.value?.value ?? "") : value.value; activeIndex.value = props.disabled || props.readonly ? activeIndex.value : !open.value ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex.value : activeIndex.value : key === "ArrowDown" ? activeIndex.value + 1 > enriched.value.length - 1 ? enriched.value.length - 1 : activeIndex.value + 1 : key === "ArrowUp" ? activeIndex.value - 1 < 0 ? 0 : activeIndex.value - 1 : key === "Home" ? 0 : key === "End" ? enriched.value.length - 1 : activeIndex.value; open.value = props.disabled || props.readonly ? open.value : !open.value ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open.value : (key === "Enter" || key === " ") && activeOption.value && !activeOption.value?.disabled ? false : key === "Escape" ? false : open.value; }
+  const onSelect = (option: ReturnType<typeof enriched>[number]) => { value.value = option.value; open.value = false; }
+  const onActivate = (option: ReturnType<typeof enriched>[number]) => { activeIndex.value = option.index; }
 </script>
 <template>
 <ISelectBase :id="id">
-  <ISelectTriggerBase :class="triggerClass" :arrowClass="arrowClass" :label="label" :controls="listboxId" :activeDescendant="activeDescendant" :expanded="open" :invalid="invalid" :readonly="readonly" :disabled="disabled" :placeholder="isPlaceholder" @toggle="() => { activeIndex = !disabled && !readonly && !open ? selectedIndex : activeIndex; open = !disabled && !readonly ? !open : open; }" @navigate='(key: string) => { value = open && (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? (activeOption?.value ?? "") : value; activeIndex = disabled || readonly ? activeIndex : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? selectedIndex : activeIndex : key === "ArrowDown" ? activeIndex + 1 > enriched.length - 1 ? enriched.length - 1 : activeIndex + 1 : key === "ArrowUp" ? activeIndex - 1 < 0 ? 0 : activeIndex - 1 : key === "Home" ? 0 : key === "End" ? enriched.length - 1 : activeIndex; open = disabled || readonly ? open : !open ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " " ? true : open : (key === "Enter" || key === " ") && activeOption && !activeOption?.disabled ? false : key === "Escape" ? false : open; }'>
+  <ISelectTriggerBase :class="triggerClass" :arrowClass="arrowClass" :label="label" :controls="listboxId" :activeDescendant="activeDescendant" :expanded="open" :invalid="invalid" :readonly="readonly" :disabled="disabled" :placeholder="isPlaceholder" @toggle="onToggle" @navigate="onNavigate">
     {{ displayLabel }}
   </ISelectTriggerBase>
   <ISelectListboxBase v-if="open" :class="panelClass" :id="listboxId" :label="label">
-    <ISelectOptionBase v-for="option in enriched" :key="option.value" :class="optionClass" :id="option.id" :selected="value === option.value" :active="activeIndex === option.index" :disabled="option.disabled" @select="() => { value = option.value; open = false; }" @activate="() => activeIndex = option.index">
+    <ISelectOptionBase v-for="option in enriched" :key="option.value" :class="optionClass" :id="option.id" :selected="value === option.value" :active="activeIndex === option.index" :disabled="option.disabled" @select="() => onSelect(option)" @activate="() => onActivate(option)">
       {{ option.label }}
     </ISelectOptionBase>
   </ISelectListboxBase>

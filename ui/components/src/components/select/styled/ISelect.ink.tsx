@@ -112,6 +112,78 @@ export default defineComponent(
     );
     const arrowClass = createMemo(() => selectArrowRecipe({ size: props.size }));
 
+    // Handlers are hoisted out of the JSX so the template stays declarative; the compiler emits these
+    // setup-body locals across all targets (#527). onToggle/onNavigate carry the trigger's keyboard
+    // model; onSelect/onActivate take the enriched row so the `For` callback binds them with the
+    // row item (`() => onSelect(option)`) instead of recomputing the index.
+    const onToggle = () => {
+      // Each signal is written exactly once with the guard folded into a ternary RHS: a bare
+      // `cond && setX(v)` would be a valid call on React/Solid/Angular but lowers to a bare
+      // assignment (`x = v`) on Vue/Svelte/Qwik, where `a && b && x = v` is a syntax error.
+      // A single unconditional write per signal is also the only form React honours when the
+      // same signal is touched by several branches (last-write-wins on captured state).
+      // `setOpen` runs last so the reads above still observe the pre-toggle `open()` — seeding
+      // the active row from the current selection when we are about to open.
+      setActiveIndex(
+        !props.disabled && !props.readonly && !open() ? selectedIndex() : activeIndex(),
+      );
+      setOpen(!props.disabled && !props.readonly ? !open() : open());
+    };
+
+    const onNavigate = (key: string) => {
+      // Same single-write-per-signal rule as `onToggle`. `setOpen` is last so `setValue` and
+      // `setActiveIndex` read the pre-navigation `open()`; the active-row math clamps with
+      // ternaries (Angular templates cannot reference `Math`).
+      setValue(
+        open() && (key === "Enter" || key === " ") && activeOption() && !activeOption()?.disabled
+          ? (activeOption()?.value ?? "")
+          : value(),
+      );
+      setActiveIndex(
+        props.disabled || props.readonly
+          ? activeIndex()
+          : !open()
+            ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " "
+              ? selectedIndex()
+              : activeIndex()
+            : key === "ArrowDown"
+              ? activeIndex() + 1 > enriched().length - 1
+                ? enriched().length - 1
+                : activeIndex() + 1
+              : key === "ArrowUp"
+                ? activeIndex() - 1 < 0
+                  ? 0
+                  : activeIndex() - 1
+                : key === "Home"
+                  ? 0
+                  : key === "End"
+                    ? enriched().length - 1
+                    : activeIndex(),
+      );
+      setOpen(
+        props.disabled || props.readonly
+          ? open()
+          : !open()
+            ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " "
+              ? true
+              : open()
+            : (key === "Enter" || key === " ") && activeOption() && !activeOption()?.disabled
+              ? false
+              : key === "Escape"
+                ? false
+                : open(),
+      );
+    };
+
+    const onSelect = (option: ReturnType<typeof enriched>[number]) => {
+      setValue(option.value);
+      setOpen(false);
+    };
+
+    const onActivate = (option: ReturnType<typeof enriched>[number]) => {
+      setActiveIndex(option.index);
+    };
+
     return (
       <ISelectBase id={props.id}>
         <ISelectTriggerBase
@@ -125,66 +197,8 @@ export default defineComponent(
           readonly={props.readonly}
           disabled={props.disabled}
           placeholder={isPlaceholder()}
-          onToggle={() => {
-            // Each signal is written exactly once with the guard folded into a ternary RHS: a bare
-            // `cond && setX(v)` would be a valid call on React/Solid/Angular but lowers to a bare
-            // assignment (`x = v`) on Vue/Svelte/Qwik, where `a && b && x = v` is a syntax error.
-            // A single unconditional write per signal is also the only form React honours when the
-            // same signal is touched by several branches (last-write-wins on captured state).
-            // `setOpen` runs last so the reads above still observe the pre-toggle `open()` — seeding
-            // the active row from the current selection when we are about to open.
-            setActiveIndex(
-              !props.disabled && !props.readonly && !open() ? selectedIndex() : activeIndex(),
-            );
-            setOpen(!props.disabled && !props.readonly ? !open() : open());
-          }}
-          onNavigate={(key: string) => {
-            // Same single-write-per-signal rule as `onToggle`. `setOpen` is last so `setValue` and
-            // `setActiveIndex` read the pre-navigation `open()`; the active-row math clamps with
-            // ternaries (Angular templates cannot reference `Math`).
-            setValue(
-              open() &&
-                (key === "Enter" || key === " ") &&
-                activeOption() &&
-                !activeOption()?.disabled
-                ? (activeOption()?.value ?? "")
-                : value(),
-            );
-            setActiveIndex(
-              props.disabled || props.readonly
-                ? activeIndex()
-                : !open()
-                  ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " "
-                    ? selectedIndex()
-                    : activeIndex()
-                  : key === "ArrowDown"
-                    ? activeIndex() + 1 > enriched().length - 1
-                      ? enriched().length - 1
-                      : activeIndex() + 1
-                    : key === "ArrowUp"
-                      ? activeIndex() - 1 < 0
-                        ? 0
-                        : activeIndex() - 1
-                      : key === "Home"
-                        ? 0
-                        : key === "End"
-                          ? enriched().length - 1
-                          : activeIndex(),
-            );
-            setOpen(
-              props.disabled || props.readonly
-                ? open()
-                : !open()
-                  ? key === "ArrowDown" || key === "ArrowUp" || key === "Enter" || key === " "
-                    ? true
-                    : open()
-                  : (key === "Enter" || key === " ") && activeOption() && !activeOption()?.disabled
-                    ? false
-                    : key === "Escape"
-                      ? false
-                      : open(),
-            );
-          }}
+          onToggle={onToggle}
+          onNavigate={onNavigate}
         >
           {displayLabel()}
         </ISelectTriggerBase>
@@ -198,11 +212,8 @@ export default defineComponent(
                   selected={value() === option.value}
                   active={activeIndex() === option.index}
                   disabled={option.disabled}
-                  onSelect={() => {
-                    setValue(option.value);
-                    setOpen(false);
-                  }}
-                  onActivate={() => setActiveIndex(option.index)}
+                  onSelect={() => onSelect(option)}
+                  onActivate={() => onActivate(option)}
                 >
                   {option.label}
                 </ISelectOptionBase>
