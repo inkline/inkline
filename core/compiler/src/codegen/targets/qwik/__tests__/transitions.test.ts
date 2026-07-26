@@ -22,7 +22,7 @@ describe("TransitionBasic: transition wrapper over toggled Show", () => {
     const out = await compileTo("TransitionBasic", "qwik");
     // Single `$(() => …)` wrap (no extra closure), and setVisible(!visible) is rewritten to
     // `visible.value = !visible.value`; `setVisible` is never declared.
-    expect(out).toContain("onClick={$(() => visible.value = !visible.value)}");
+    expect(out).toContain("onClick$={$(() => visible.value = !visible.value)}");
     expect(out).toContain("const visible = useSignal(true)");
     expect(out).not.toContain("const setVisible");
   });

@@ -43,7 +43,7 @@ describe("ClientComponent: runtime: 'client' handling", () => {
     const out = await compileTo("ClientComponent", "qwik");
     // The handler is single-wrapped in `$(...)` and the setter is rewritten to
     // a `.value` assignment against the useSignal-backed state.
-    expect(out).toContain("onClick={$(() => count.value = count.value + 1)}");
+    expect(out).toContain("onClick$={$(() => count.value = count.value + 1)}");
     expect(out).not.toContain("use client");
   });
 });

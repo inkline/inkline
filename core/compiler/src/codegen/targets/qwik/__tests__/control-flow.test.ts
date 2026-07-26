@@ -32,6 +32,6 @@ describe("MixedControlFlow: For + Show nesting", () => {
   // setter call to a direct signal assignment: `$(e => filter.value = ...)`.
   it("Qwik: event handler single-wrapped in $() with direct signal assignment", async () => {
     const out = await compileTo("MixedControlFlow", "qwik");
-    expect(out).toContain("onInput={$(e => filter.value = e.target.value)}");
+    expect(out).toContain("onInput$={$(e => filter.value = e.target.value)}");
   });
 });

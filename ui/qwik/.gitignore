@@ -1,3 +1,4 @@
 .inkline/
 storybook-static/
 .styleframe/
+test/__generated__/
