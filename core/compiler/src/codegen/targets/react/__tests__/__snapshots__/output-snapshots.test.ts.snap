@@ -415,6 +415,28 @@ return (
 "
 `;
 
+exports[`react full output snapshots > SetupHandlers 1`] = `
+"import { useState, Fragment } from "react";
+export function SetupHandlers(props: React.HTMLAttributes<HTMLElement>)
+{
+const [options, setOptions] = useState(["a", "b", "c"])
+const [value, setValue] = useState("b")
+const [open, setOpen] = useState(false)
+const onToggle = () => setOpen(!open)
+const onReset = function onReset() { setValue("a"); }
+const onSelect = (option: string) => { setValue(option); setOpen(false); }
+const { ...__attrs } = props
+return (
+<div {...__attrs} className={props.className}>
+  <button id="toggle" onClick={onToggle}>{value}</button>
+  <button id="reset" onClick={onReset}>Reset</button>
+  {options.map((option) => (<Fragment key={option}><div className="option" onClick={() => onSelect(option)}>{option}</div></Fragment>))}
+</div>
+)
+}
+"
+`;
+
 exports[`react full output snapshots > SlotBasic 1`] = `
 "export function SlotBasic(props: { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
 {

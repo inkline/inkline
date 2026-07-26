@@ -23,6 +23,7 @@ import {
   foldConstTest,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import { setupLocalEmits } from "../../shared/setup-locals.ts";
 import { childrenArePhrasing } from "../../shared/phrasing.ts";
 import {
   FALLTHROUGH_REST,
@@ -483,6 +484,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         span: r.loc,
       }),
     );
+  }
+  // Setup-body handlers/helpers close over the `useSignal`/`useComputed$` values above; emit them
+  // after the reactive declarations and before the effects/render that reference them.
+  for (const local of setupLocalEmits(component, rules)) {
+    body.push(cStmt({ body: `const ${local.name} = ${local.expr}`, span: local.span }));
   }
   for (const e of component.effects) {
     body.push(cStmt({ body: `useVisibleTask$(${rewriteExpr(e.body, rules)})`, span: e.loc }));

@@ -394,6 +394,28 @@ size = input.required<number>()
 "
 `;
 
+exports[`angular full output snapshots > SetupHandlers 1`] = `
+"import { Component, signal, computed, effect, input } from "@angular/core";
+@Component({ standalone: true, selector: 'ink-setup-handlers', host: { style: 'display: contents' }, template: \`<div [class]="klass()">
+<button id="toggle" (click)="onToggle">{{ value() }}</button>
+<button id="reset" (click)="onReset">Reset</button>
+@for (option of options(); track option) {
+<div class="option" (click)="onSelect(option)">{{ option }}</div>
+}
+</div>\` })
+export class SetupHandlersComponent
+{
+klass = input<string>()
+options = signal(['a', 'b', 'c'])
+value = signal('b')
+open = signal(false)
+onToggle = () => this.open.set(!this.open())
+onReset = function onReset() { this.value.set('a'); }
+onSelect = (option: string) => { this.value.set(option); this.open.set(false); }
+}
+"
+`;
+
 exports[`angular full output snapshots > SlotBasic 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-slot-basic', host: { style: 'display: contents' }, template: \`<div [class]="klass()">

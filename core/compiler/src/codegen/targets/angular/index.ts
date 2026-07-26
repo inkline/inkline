@@ -19,6 +19,7 @@ import {
   foldConstTest,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import { setupLocalEmits } from "../../shared/setup-locals.ts";
 import { assertNever } from "../../../core/assert.ts";
 import { walkRenderTree } from "../../../ir/render/visit.ts";
 import { angularSelector, angularAttrSelector } from "./selector.ts";
@@ -604,6 +605,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         span: m.loc,
       }),
     );
+  }
+  // Setup-body handlers/helpers become class fields (`onToggle = () => …`), so the template reads
+  // them bare and they close over the instance via the arrow's lexical `this`. Body-rewritten so
+  // reactive reads/writes resolve to `this.<signal>()` / `this.<signal>.set(…)`.
+  for (const local of setupLocalEmits(component, bodyRules)) {
+    body.push(cStmt({ body: `${local.name} = ${local.expr}`, span: local.span }));
   }
   // Effects and lifecycle run from a single constructor (a class can only have one).
   const ctorStmts: string[] = [];

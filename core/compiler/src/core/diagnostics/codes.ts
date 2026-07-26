@@ -170,6 +170,12 @@ export const DIAGNOSTICS = {
     help: "Give the component a single host-element root so it can inherit class and other attributes." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0120" as const,
   },
+  INK0121: {
+    severity: "error" as const,
+    title: "Setup-body local '{name}' is referenced but its definition cannot be emitted" as const,
+    help: "Only const/let arrow or function expressions and function declarations are emitted as setup-body locals. Rewrite '{name}' as a `const {name} = (…) => …` handler or a `function {name}(…) {…}` declaration so the compiler can emit its definition." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0121" as const,
+  },
 } as const;
 
 export type DiagnosticCode = keyof typeof DIAGNOSTICS;

@@ -312,7 +312,8 @@ export interface IRLifecycle {
 
 export interface IRSetupStatement {
   readonly stmt: ts.Statement;
-  readonly defines: readonly SymbolId[];
+  /** Identifier names this statement declares (const/let/var declarators or a function name). */
+  readonly defines: readonly string[];
   readonly loc: SourceLocation;
 }
 

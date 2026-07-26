@@ -24,6 +24,7 @@ import {
   reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import { setupLocalEmits } from "../../shared/setup-locals.ts";
 import { childrenArePhrasing } from "../../shared/phrasing.ts";
 import { assertNever } from "../../../core/assert.ts";
 import * as ts from "typescript";
@@ -344,6 +345,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         span: m.loc,
       }),
     );
+  }
+  // Setup-body handlers/helpers close over the refs declared above; the <script setup> reads them
+  // via `.value` (script `rules`). Emit after the reactive declarations, before effects/render.
+  for (const local of setupLocalEmits(component, rules)) {
+    scriptBody.push(cStmt({ body: `const ${local.name} = ${local.expr}`, span: local.span }));
   }
   for (const e of component.effects) {
     vueImports.push("watchEffect");

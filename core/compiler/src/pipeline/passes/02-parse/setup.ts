@@ -16,6 +16,7 @@ import type {
   IRStateDeclaration,
   PrimitiveName,
 } from "../../../ir/render/nodes.ts";
+import { setupDeclaredNames } from "../../../ir/setup.ts";
 import type { PassContext } from "../../types.ts";
 import type { BindingTable } from "./bind-primitives.ts";
 import { toLoc } from "./loc.ts";
@@ -477,7 +478,7 @@ export function parseSetup(
               isCallTo(d.initializer, useContextLocal)),
         )
       ) {
-        setup.push({ stmt, defines: [], loc });
+        setup.push({ stmt, defines: setupDeclaredNames(stmt), loc });
       }
       continue;
     }
@@ -535,7 +536,7 @@ export function parseSetup(
       }
     }
 
-    setup.push({ stmt, defines: [], loc });
+    setup.push({ stmt, defines: setupDeclaredNames(stmt), loc });
   }
 
   return {
