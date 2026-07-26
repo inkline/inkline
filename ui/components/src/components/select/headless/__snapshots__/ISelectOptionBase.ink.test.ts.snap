@@ -72,7 +72,7 @@ export const ISelectOptionBase = component$((props: SelectOptionBaseProps & { on
 {
 const { children, id, selected, active, disabled, onSelect$, onActivate$, ...__attrs } = props
 return (
-<li {...__attrs} class={["select-option", props.class].filter(Boolean).join(" ")} role="option" id={props.id} aria-selected={props.selected ? "true" : "false"} aria-disabled={props.disabled ? "true" : undefined} data-active={props.active ? "true" : "false"} onClick={$(() => !props.disabled && props.onSelect$?.())} onMouseEnter={$(() => !props.disabled && props.onActivate$?.())}>
+<li {...__attrs} class={["select-option", props.class].filter(Boolean).join(" ")} role="option" id={props.id} aria-selected={props.selected ? "true" : "false"} aria-disabled={props.disabled ? "true" : undefined} data-active={props.active ? "true" : "false"} onClick$={$(() => !props.disabled && props.onSelect$?.())} onMouseEnter$={$(() => !props.disabled && props.onActivate$?.())}>
   <Slot />
   <span class="select-option-check" aria-hidden="true" />
 </li>
