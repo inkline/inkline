@@ -35,3 +35,26 @@ describe("TypedEvent: onMouseMove reading e.clientX / e.clientY into a signal", 
     expect(out).toContain('(mousemove)="pos.set({ x: $event.clientX, y: $event.clientY })"');
   });
 });
+
+// ---------------------------------------------------------------------------
+// SetupHandlers: a no-arg setup-local handler bound by reference — onClick={onToggle}.
+// Angular event bindings are statements, so a bare reference `(click)="onToggle"` is evaluated
+// and discarded — the handler never fires. The binding MUST be emitted as an invocation
+// `(click)="onToggle($event)"`. Regression guard for the S2 blocker.
+// ---------------------------------------------------------------------------
+describe("SetupHandlers: no-arg setup-local handler bound by reference", () => {
+  it("Angular: (click) invokes the hoisted handler instead of binding a bare reference", async () => {
+    const out = await compileTo("SetupHandlers", "angular");
+    // The handler definition is emitted as a class field.
+    expect(out).toContain("onToggle = () => this.open.set(!this.open())");
+    // The DOM binding invokes it — a statement that actually fires the handler.
+    expect(out).toContain('(click)="onToggle($event)"');
+    // A bare, un-invoked reference (the bug) must never appear.
+    expect(out).not.toContain('(click)="onToggle"');
+    expect(out).not.toContain('(click)="onReset"');
+    // The function-declaration handler is likewise invoked.
+    expect(out).toContain('(click)="onReset($event)"');
+    // The already-parametrized For-row handler stays a call expression (not double-invoked).
+    expect(out).toContain('(click)="onSelect(option)"');
+  });
+});

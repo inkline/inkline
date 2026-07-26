@@ -473,6 +473,31 @@ return (
 "
 `;
 
+exports[`solid full output snapshots > SetupHandlers 1`] = `
+"import { createSignal, splitProps, For } from "solid-js";
+import type { JSX } from "solid-js";
+export default function SetupHandlers(props: JSX.HTMLAttributes<HTMLElement>)
+{
+const [options, setOptions] = createSignal(["a", "b", "c"])
+const [value, setValue] = createSignal("b")
+const [open, setOpen] = createSignal(false)
+const onToggle = () => setOpen(!open())
+const onReset = function onReset() { setValue("a"); }
+const onSelect = (option: string) => { setValue(option); setOpen(false); }
+const [, __attrs] = splitProps(props, [])
+return (
+<div {...__attrs} class={props.class}>
+  <button id="toggle" onclick={onToggle}>{value()}</button>
+  <button id="reset" onclick={onReset}>Reset</button>
+  <For each={options()}>
+    {(option) => <div class="option" onclick={() => onSelect(option)}>{option}</div>}
+  </For>
+</div>
+)
+}
+"
+`;
+
 exports[`solid full output snapshots > SlotBasic 1`] = `
 "import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";

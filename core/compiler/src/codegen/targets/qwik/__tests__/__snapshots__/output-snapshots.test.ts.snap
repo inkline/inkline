@@ -425,6 +425,28 @@ return (
 "
 `;
 
+exports[`qwik full output snapshots > SetupHandlers 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const SetupHandlers = component$((props) =>
+{
+const options = useSignal(["a", "b", "c"])
+const value = useSignal("b")
+const open = useSignal(false)
+const onToggle = () => open.value = !open.value
+const onReset = function onReset() { value.value = "a"; }
+const onSelect = (option: string) => { value.value = option; open.value = false; }
+const { ...__attrs } = props
+return (
+<div {...__attrs} class={props.class}>
+  <button id="toggle" onClick$={$(onToggle)}>{value.value}</button>
+  <button id="reset" onClick$={$(onReset)}>Reset</button>
+  {options.value.map((option) => (<><div class="option" onClick$={$(() => onSelect(option))}>{option}</div></>))}
+</div>
+)
+});
+"
+`;
+
 exports[`qwik full output snapshots > SlotBasic 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
 export const SlotBasic = component$((props) =>

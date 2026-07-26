@@ -27,6 +27,7 @@ import {
   reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import { setupLocalEmits } from "../../shared/setup-locals.ts";
 import { childrenArePhrasing } from "../../shared/phrasing.ts";
 import {
   FALLTHROUGH_REST,
@@ -503,6 +504,10 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         span: m.loc,
       }),
     );
+  // Setup-body handlers/helpers close over the `$state`/`$derived` runes above; emit them after the
+  // reactive declarations and before the effects/render that reference them.
+  for (const local of setupLocalEmits(component, rules))
+    scriptBody.push(cStmt({ body: `const ${local.name} = ${local.expr}`, span: local.span }));
   for (const e of component.effects)
     scriptBody.push(cStmt({ body: `$effect(${rewriteExpr(e.body, rules)})`, span: e.loc }));
   // Lower each resource to reactive $state (data/loading/error) plus a top-level loader that runs

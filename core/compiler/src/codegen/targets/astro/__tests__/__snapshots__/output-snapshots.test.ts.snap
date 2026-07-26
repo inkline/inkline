@@ -317,6 +317,22 @@ const { color = "blue", size, ...__attrs } = props;
 "
 `;
 
+exports[`astro full output snapshots > SetupHandlers 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+let options = ["a", "b", "c"]
+let value = "b"
+let open = false
+const onToggle = () => open = !open
+const onReset = function onReset() { value = "a"; }
+const onSelect = (option: string) => { value = option; open = false; }
+---
+<div {...__attrs} class={__attrs.class}><button id="toggle" onClick={onToggle}>{value}</button><button id="reset" onClick={onReset}>Reset</button>{options.map((option) => (<div class="option" onClick={() => onSelect(option)}>{option}</div>))}</div>
+"
+`;
+
 exports[`astro full output snapshots > SlotBasic 1`] = `
 "---
 type Props = Record<string, any>

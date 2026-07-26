@@ -10,6 +10,7 @@ import {
   reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
+import { setupLocalEmits } from "../../shared/setup-locals.ts";
 import { childrenArePhrasing } from "../../shared/phrasing.ts";
 import {
   FALLTHROUGH_REST,
@@ -239,6 +240,13 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     cStmt({ body: `const ${m.name} = ${rewriteExpr(m.expr.expr, rules)}`, span: m.loc }),
   );
 
+  // Setup-body handlers/helpers render in the frontmatter as plain consts after the reactive
+  // declarations they close over. On Astro they never fire on the client (SSR only), but must exist
+  // so template references resolve at render time.
+  const setupDecls = setupLocalEmits(component, rules).map((local) =>
+    cStmt({ body: `const ${local.name} = ${local.expr}`, span: local.span }),
+  );
+
   // Astro has no client-side context runtime, so a consumed context can't resolve a provider at
   // render time. Best-effort: fall back to the context's declared default value so the template
   // read still resolves (rather than referencing an undefined binding).
@@ -289,6 +297,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ...modelDecls,
       ...stateDecls,
       ...memoDecls,
+      ...setupDecls,
       ...resourceDecls,
       cRaw({ text: "---" }),
       cRaw({ text: "" }),
