@@ -4,5 +4,6 @@
     "jsx": "react-jsx",
     "jsxImportSource": "@qwik.dev/core"
   },
-  "include": ["src", ".inkline", ".storybook", "*.styleframe.ts", ".styleframe/**/*.d.ts"]
+  "include": ["src", "test", ".inkline", ".storybook", "*.styleframe.ts", ".styleframe/**/*.d.ts"],
+  "exclude": ["test/generate-fixtures.ts"]
 }

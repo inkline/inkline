@@ -63,7 +63,7 @@ export const IHamburgerMenuBase = component$((props: HamburgerMenuBaseProps & { 
 {
 const { ariaLabel, ariaControls, disabled, open, onUpdateOpen$, ...__attrs } = props
 return (
-<button {...__attrs} class={["hamburger-menu", props.class].filter(Boolean).join(" ")} type="button" aria-expanded={props.open ? "true" : "false"} aria-controls={props.ariaControls ?? ""} aria-label={props.ariaLabel ?? "Toggle menu"} disabled={props.disabled} onClick={$(() => props.onUpdateOpen$?.(!props.open))}>
+<button {...__attrs} class={["hamburger-menu", props.class].filter(Boolean).join(" ")} type="button" aria-expanded={props.open ? "true" : "false"} aria-controls={props.ariaControls ?? ""} aria-label={props.ariaLabel ?? "Toggle menu"} disabled={props.disabled} onClick$={$(() => props.onUpdateOpen$?.(!props.open))}>
   <span class="hamburger-menu-inner" aria-hidden="true" />
 </button>
 )

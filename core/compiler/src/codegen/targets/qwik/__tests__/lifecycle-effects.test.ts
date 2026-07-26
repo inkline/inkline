@@ -32,6 +32,6 @@ describe("EffectCleanup: createEffect with a conditional cleanup return", () => 
     // `active` is a useSignal, so the effect body reads `active.value`.
     expect(out).toContain("useVisibleTask$(() => { if (active.value) {");
     // The click handler is single-wrapped and the setter is rewritten to a `.value` assignment.
-    expect(out).toContain("onClick={$(() => active.value = !active.value)}");
+    expect(out).toContain("onClick$={$(() => active.value = !active.value)}");
   });
 });

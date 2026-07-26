@@ -8,7 +8,7 @@ describe("Counter: signal + memo + effect dependency wiring", () => {
     const out = await compileTo("Counter", "qwik");
     // Single $(...) wrap and the setter call is rewritten to a signal .value
     // assignment, so clicking runs the handler instead of returning a function.
-    expect(out).toContain("onClick={$(() => count.value = count.value + 1)}");
+    expect(out).toContain("onClick$={$(() => count.value = count.value + 1)}");
     expect(out).not.toContain("$(() => () =>");
     expect(out).not.toContain("setCount");
   });

@@ -83,7 +83,7 @@ export const IInputControlBase = component$((props: InputControlBaseProps & { va
 {
 const { id, name, type, placeholder, disabled, readonly, value, onUpdateValue$, ...__attrs } = props
 return (
-<input {...__attrs} class={["input-field", props.class].filter(Boolean).join(" ")} id={props.id} name={props.name} type={props.type} value={props.value ?? ""} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} onInput={$((e: { currentTarget: HTMLInputElement }) => props.onUpdateValue$?.(e.currentTarget.value))} />
+<input {...__attrs} class={["input-field", props.class].filter(Boolean).join(" ")} id={props.id} name={props.name} type={props.type} value={props.value ?? ""} placeholder={props.placeholder} disabled={props.disabled} readonly={props.readonly} onInput$={$((e: { currentTarget: HTMLInputElement }) => props.onUpdateValue$?.(e.currentTarget.value))} />
 )
 });
 ",

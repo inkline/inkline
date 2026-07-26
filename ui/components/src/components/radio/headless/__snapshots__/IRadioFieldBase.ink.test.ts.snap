@@ -102,7 +102,7 @@ export const IRadioFieldBase = component$((props: RadioFieldBaseProps & { onChan
 {
 const { id, name, value, checked, disabled, required, readonly, onChange$, ...__attrs } = props
 return (
-<input {...__attrs} class={["radio-field", props.class].filter(Boolean).join(" ")} type="radio" id={props.id} name={props.name} value={props.value ?? ""} checked={props.checked} disabled={props.disabled} required={props.required} onClick={$((e: { preventDefault: () => void }) => props.readonly && e.preventDefault())} onChange={$(() => !props.readonly && props.onChange$?.(props.value ?? ""))} />
+<input {...__attrs} class={["radio-field", props.class].filter(Boolean).join(" ")} type="radio" id={props.id} name={props.name} value={props.value ?? ""} checked={props.checked} disabled={props.disabled} required={props.required} onClick$={$((e: { preventDefault: () => void }) => props.readonly && e.preventDefault())} onChange$={$(() => !props.readonly && props.onChange$?.(props.value ?? ""))} />
 )
 });
 ",

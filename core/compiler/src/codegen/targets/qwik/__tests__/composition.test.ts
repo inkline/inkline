@@ -10,7 +10,7 @@ describe("Composite: signal setters dropped from non-React event handlers", () =
     const out = await compileTo("Composite", "qwik");
     // The handler is single-wrapped now: `$(() => x.value = x.value + 1)` — clicking assigns the
     // signal directly instead of returning an inner arrow, and the setter is rewritten away.
-    expect(out).toContain("onClick={$(() => x.value = x.value + 1)}");
+    expect(out).toContain("onClick$={$(() => x.value = x.value + 1)}");
     expect(out).not.toContain("setX");
   });
 });

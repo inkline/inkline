@@ -20,8 +20,8 @@ describe("DynamicList: <For> driven by mutable state + event handlers", () => {
     // Event handler is single-wrapped: `$(() => <handler>)` and the setters are rewritten to
     // direct `.value` assignments for Qwik signals.
     expect(out).toContain(
-      'onClick={$(() => { items.value = [...items.value, input.value]; input.value = ""; })}',
+      'onClick$={$(() => { items.value = [...items.value, input.value]; input.value = ""; })}',
     );
-    expect(out).toContain("onInput={$(e => input.value = e.target.value)}");
+    expect(out).toContain("onInput$={$(e => input.value = e.target.value)}");
   });
 });

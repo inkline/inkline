@@ -108,7 +108,14 @@ function jsxAttrs(
   for (const e of node.events) {
     // A `$bind:<prop>` on a component lowers to an `update:<prop>` event; emit it as the child's
     // `onUpdate<Prop>$` QRL callback prop rather than a (colon-bearing) DOM event name.
-    const name = e.twoWayProp ? `${eventToCallbackProp(e.name)}$` : rewriteEventName(e.name, rules);
+    //
+    // Both branches end in `$`: Qwik's optimizer only extracts a handler into a lazy-loadable QRL
+    // when the prop name carries the `$` suffix. A bare `onChange={$(…)}` is treated as a plain DOM
+    // attribute, so the QRL is stringified inline (`onchange="async function…"`) and never binds on
+    // resume — the handler silently never fires (INK-31). The `$` suffix makes the extraction happen.
+    const name = e.twoWayProp
+      ? `${eventToCallbackProp(e.name)}$`
+      : `${rewriteEventName(e.name, rules)}$`;
     out.push(
       cJsxAttr({
         name,
