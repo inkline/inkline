@@ -105,7 +105,9 @@ export default defineCommand({
     pattern: { type: "positional", description: "Glob pattern for .ink.tsx files", required: true },
     target: { type: "string", description: "Comma-separated targets" },
     "src-dir": { type: "string", description: "Source root directory to strip from output paths" },
-    "out-dir": { type: "string", description: "Default output directory", default: "dist" },
+    // No citty `default` here: it would make `args["out-dir"]` always defined, so the resolution
+    // chain below could never fall through to the config file. The `"dist"` fallback lives there.
+    "out-dir": { type: "string", description: "Default output directory (default: dist)" },
     "source-map": { type: "string", description: "external | inline | none", default: "external" },
     config: { type: "string", description: "Path to config file" },
     verbose: { type: "boolean", description: "Verbose plugin error logs", default: false },
@@ -127,7 +129,10 @@ export default defineCommand({
     }
 
     const targets = targetStr.split(",").map((t) => t.trim()) as TargetName[];
-    const outDir = fileConfig.outDir ?? args["out-dir"] ?? "dist";
+    // Flag > config > default, matching `--target`, `--src-dir` and `--source-map`. Note that a
+    // config `targetOutDir` entry is a per-target absolute override and still wins for that target
+    // (see `resolveTargetDir`): the more specific setting beats the general one either way.
+    const outDir = args["out-dir"] ?? fileConfig.outDir ?? "dist";
     const targetOutDir = fileConfig.targetOutDir ?? {};
     const barrels = fileConfig.barrels ?? DEFAULT_BARRELS;
     const namedGroups = barrels.filter((g) => g.mode !== "namespace");
