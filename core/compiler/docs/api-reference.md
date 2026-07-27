@@ -1376,6 +1376,7 @@ Constant map of all diagnostic codes to their metadata:
 | `INK0061` | info     | Nullish-coalescing (??) in JSX is ambiguous             |
 | `INK0062` | error    | `<For>` requires an 'each' prop                         |
 | `INK0070` | error    | Component-ref forwarding is not yet supported           |
+| `INK0071` | error    | JSX spread attributes are not supported                 |
 | `INK0080` | warning  | Unknown target option: {key}                            |
 | `INK0090` | error    | Plugin '{name}' threw: {message}                        |
 | `INK0100` | error    | Parse failure in component '{name}': {message}          |

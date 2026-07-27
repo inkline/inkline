@@ -133,6 +133,12 @@ export const DIAGNOSTICS = {
     help: "Element refs are supported. Component refs are planned for v1." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0070" as const,
   },
+  INK0071: {
+    severity: "error" as const,
+    title: "JSX spread attributes are not supported" as const,
+    help: "The spread is discarded. Enumerate the attributes explicitly on the element instead of spreading an object — the compiler must know every attribute name at build time." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0071" as const,
+  },
   INK0080: {
     severity: "warning" as const,
     title: "Unknown target option: {key}" as const,
