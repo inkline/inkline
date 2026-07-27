@@ -38,6 +38,7 @@ Use this table when reviewing your own PR. If the left column changed, check the
 | Storybook port assignments or topology                                                                                    | [contributing.md](./contributing.md), [`apps/storybook/AGENTS.md`](../apps/storybook/AGENTS.md), the per-framework UI AGENTS.md files                  |
 | Adding/removing a workspace package                                                                                       | [AGENTS.md](../AGENTS.md), [architecture.md](./architecture.md) "Dependency layering", create a new `AGENTS.md` for the package                        |
 | Adding a new compilation target                                                                                           | [architecture.md](./architecture.md), [`core/compiler/AGENTS.md`](../core/compiler/AGENTS.md), [adding-a-target.md](./adding-a-target.md)              |
+| Making a decision that is hard to reverse, was genuinely contested, or that others will build on                          | File an ADR in [`docs/adrs/`](./adrs/) and add it to the [index](./adrs/README.md)                                                                     |
 
 This list itself is a duplication risk — keep it short, prefer adding `[[link]]`s in docs over expanding the table.
 
@@ -77,3 +78,4 @@ If a section is starting to feel like a duplicate-prone list (e.g. a registry, a
 - [conventions.md](./conventions.md) — what conventions these docs enforce.
 - [contributing.md](./contributing.md) → "Pull requests" — the soft expectation that docs travel with code.
 - [AGENTS.md](../AGENTS.md) — the entry point this maintenance protects.
+- [adrs/README.md](./adrs/README.md) — decision records. Unlike the docs above, ADRs are immutable: they are never updated to match new reality, only superseded.
