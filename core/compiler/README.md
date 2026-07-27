@@ -186,7 +186,7 @@ export default defineComponent(
 > `TS2339: Property 'color' does not exist on type '{}'`. Until the authoring types catch up, use
 > the typed-parameter form above.
 
-Everything that is *not* a prop also goes in the options object — `slots`, `events`, `runtime`,
+Everything that is _not_ a prop also goes in the options object — `slots`, `events`, `runtime`,
 `name`, and `meta`. Those keys are declared on `ComponentOptions` and type-check today, so they can
 be combined with a typed setup parameter:
 
@@ -438,7 +438,7 @@ export default defineConfig({
 | `targets`       | `TargetName[]`                                | (required)   | Targets to compile for.                                                                                                                                                                                                  |
 | `srcDir`        | `string`                                      | —            | Source root to strip from output paths (e.g. `"src"`). When set, directory structure below `srcDir` is preserved in the output. Without it, the deepest common prefix is used. Also available as `--src-dir` on the CLI. |
 | `outDir`        | `string`                                      | `"dist"`     | Output directory. Files are written to `<outDir>/<target>/`.                                                                                                                                                             |
-| `targetOutDir`  | `Partial<Record<TargetName, string>>`         | `{}`         | Per-target output directory override, replacing `<outDir>/<target>/` for the targets it names.                                                                                                                          |
+| `targetOutDir`  | `Partial<Record<TargetName, string>>`         | `{}`         | Per-target output directory override, replacing `<outDir>/<target>/` for the targets it names.                                                                                                                           |
 | `tsconfig`      | `string`                                      | —            | Path to a `tsconfig.json` whose ambient declarations (e.g. generated `*.d.ts` for virtual modules) are loaded into the per-file program, so `import type` from those modules resolves during prop analysis.              |
 | `barrels`       | `BarrelGroup[]`                               | (see note)   | Per-category re-export barrels written for each target. Read by `@inkline/cli` only — the compiler pipeline ignores it. Omitted, the CLI writes one `index.ts` per target containing every non-story component.          |
 | `sourceMap`     | `"external" \| "inline" \| "none"`            | `"external"` | Source map generation mode.                                                                                                                                                                                              |
