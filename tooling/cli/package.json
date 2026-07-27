@@ -45,7 +45,8 @@
     "@inkline/storybook": "workspace:*",
     "citty": "^0.2.2",
     "consola": "^3.4.2",
-    "magicast": "^0.5.3"
+    "magicast": "^0.5.3",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",

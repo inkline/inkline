@@ -49,6 +49,25 @@ describe("loadInklineConfig", () => {
     spy.mockRestore();
   });
 
+  it("warns on a wrong value type, keeps the config, and does not throw", async () => {
+    mkdirSync(TMP, { recursive: true });
+    const configPath = resolve(TMP, "inkline.config.mjs");
+    writeFileSync(configPath, `export default { targets: ["react"], verbose: "yes" };\n`, "utf-8");
+    const spy = vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    const config = await loadInklineConfig(configPath);
+
+    expect(config.verbose).toBe("yes");
+    expect(spy).toHaveBeenCalledTimes(1);
+    const message = spy.mock.calls[0]![0] as string;
+    expect(message).toContain("INK0083");
+    expect(message).toContain("warning");
+    expect(message).toContain("verbose");
+    expect(process.exitCode).toBeFalsy();
+
+    spy.mockRestore();
+  });
+
   it("warns nothing for a valid config", async () => {
     mkdirSync(TMP, { recursive: true });
     const configPath = resolve(TMP, "inkline.config.mjs");

@@ -15,8 +15,7 @@ export type {
   ResolvedCompilerOptions,
   SourceMapMode,
 } from "./core/options.ts";
-export { INKLINE_CONFIG_KEYS } from "./core/options.ts";
-export { defineConfig, validateConfigKeys } from "./core/config.ts";
+export { defineConfig } from "./core/config.ts";
 
 // ============ PIPELINE PRIMITIVES (advanced users) ============
 export type { Pass, PassContext } from "./pipeline/types.ts";
@@ -31,6 +30,12 @@ export { angularSelector } from "./codegen/targets/angular/selector.ts";
 export type { Diagnostic, DiagnosticSeverity, DiagnosticCode } from "./core/diagnostics/codes.ts";
 export { DIAGNOSTICS } from "./core/diagnostics/codes.ts";
 export { meetsLevel } from "./core/diagnostics/level.ts";
+// Exported so tooling that reports its own diagnostics (e.g. the CLI's config validation) emits
+// the same catalog-resolved shape the compiler does, instead of hand-building Diagnostic objects.
+export {
+  createDiagnosticCollector,
+  type DiagnosticCollector,
+} from "./core/diagnostics/collector.ts";
 
 // ============ IR — RENDER TREE TYPES ============
 export type {
@@ -130,6 +135,7 @@ export type {
   CodeModule,
 } from "./codegen/context.ts";
 export { defineTarget, createRegistry, builtinRegistry } from "./codegen/registry.ts";
+export { ALL_TARGETS } from "./codegen/context.ts";
 
 // ============ CODE IR (target/plugin authors) ============
 export type {

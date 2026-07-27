@@ -1,5 +1,6 @@
 import { loadConfig } from "@inkline/config-loader";
-import { validateConfigKeys, type InklineConfig } from "@inkline/compiler";
+import type { InklineConfig } from "@inkline/compiler";
+import { validateConfig } from "./config-schema.ts";
 import { formatDiagnostic } from "./diagnostics.ts";
 
 export async function loadInklineConfig(configFile?: string): Promise<Partial<InklineConfig>> {
@@ -8,7 +9,7 @@ export async function loadInklineConfig(configFile?: string): Promise<Partial<In
       configFile,
     });
 
-    for (const d of validateConfigKeys(config, resolvedFile)) {
+    for (const d of validateConfig(config, resolvedFile)) {
       console.warn(formatDiagnostic(d));
     }
 
