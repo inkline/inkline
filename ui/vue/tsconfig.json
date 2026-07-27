@@ -2,8 +2,11 @@
   "extends": "../../tsconfig.json",
   "include": ["src", ".inkline/**/*", ".storybook", "*.styleframe.ts", ".styleframe/**/*.d.ts"],
   "compilerOptions": {
+    // Restated because a child `paths` replaces the inherited one wholesale. The first entry that
+    // exists on disk wins, so the generated types are preferred and the checked-in fallback only
+    // applies on an unbuilt tree.
     "paths": {
-      "virtual:styleframe": ["./.styleframe/styleframe.d.ts"]
+      "virtual:styleframe": ["./.styleframe/styleframe.d.ts", "../../types/virtual-styleframe.d.ts"]
     }
   }
 }

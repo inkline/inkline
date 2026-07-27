@@ -4,6 +4,15 @@
     "module": "nodenext",
     "moduleResolution": "nodenext",
     "allowImportingTsExtensions": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    // `virtual:styleframe` only exists once the styleframe Vite plugin has run and written
+    // `<package>/.styleframe/shims.d.ts`. That ambient declaration takes precedence over `paths`,
+    // so this mapping only kicks in on an unbuilt tree — it keeps a fresh clone type-checking
+    // instead of collapsing into a TS2307/TS2339 cascade. Packages that override `paths` must
+    // re-declare this entry: `compilerOptions` merge key by key, so a child `paths` replaces this
+    // one wholesale.
+    "paths": {
+      "virtual:styleframe": ["./types/virtual-styleframe.d.ts"]
+    }
   }
 }

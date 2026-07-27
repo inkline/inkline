@@ -20,6 +20,22 @@ vp install
 
 If anything looks wrong with the toolchain (Node version, lockfile, package manager), run `vp env doctor` and include the output when asking for help.
 
+### Build once before you rely on editor types
+
+A fair amount of Inkline's type surface is generated: workspace packages resolve each other through
+their built `dist/*.d.ts`, and the styleframe Vite plugin writes each package's `.styleframe/`
+declarations. Neither exists straight after install, so run a build once before judging what your
+editor is showing you:
+
+```bash
+pnpm run build
+```
+
+`virtual:styleframe` is the exception that does not need it — [`types/virtual-styleframe.d.ts`](../types/virtual-styleframe.d.ts)
+is a checked-in fallback that keeps the module resolving on an unbuilt tree. It carries the recipe
+names but not their variant unions, so recipe props are only precisely typed once `.styleframe/` has
+been generated.
+
 ## Dev loops
 
 | Goal                                          | Command                                                                                      | Notes                                                                                                                                           |
