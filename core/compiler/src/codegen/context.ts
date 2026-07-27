@@ -99,6 +99,13 @@ export interface RewriteRules {
    */
   readonly propLocals?: ReadonlySet<string>;
   /**
+   * Setup-body local functions emitted as Qwik QRLs (`const onToggle = $(() => …)`) because a render
+   * handler binds them. A handler that is a bare reference to one of these is passed through
+   * un-wrapped (`onToggle$={onToggle}`) rather than re-wrapped in `$()` — `$()` needs a function
+   * literal, not an identifier. Qwik-only; other targets pass plain function references directly.
+   */
+  readonly qrlLocals?: ReadonlySet<string>;
+  /**
    * Props are emitted as Angular signal inputs (`color = input<T>()`), so a `props.x` read must use
    * the call form: `this.color()` in a class body, `color()` in the template. Without it `props.x`
    * reads a plain field, which a `computed`/`effect` cannot track. Angular-only.

@@ -12,14 +12,37 @@ import { compile } from "@inkline/compiler";
 
 const here = dirname(fileURLToPath(import.meta.url));
 
-/** One headless `.ink.tsx` source → its generated Qwik `.tsx` on disk. */
+const componentsSrc = (rel: string) => resolve(here, "../../components/src/components", rel);
+
+/** One `.ink.tsx` source → its generated Qwik `.tsx` on disk. */
 const FIXTURES = [
   {
-    source: resolve(
-      here,
-      "../../components/src/components/checkbox/headless/ICheckboxControlBase.ink.tsx",
-    ),
+    source: componentsSrc("checkbox/headless/ICheckboxControlBase.ink.tsx"),
     out: resolve(here, "__generated__/ICheckboxControlBase.tsx"),
+  },
+  // The full Select tree (styled root + its four headless parts), mirrored so the styled component's
+  // relative imports (`../headless/ISelect*`) resolve. The SSR test (INK-35) imports the styled root
+  // and renders it through qwikVite to prove the codegen'd QRL handlers survive extraction instead of
+  // throwing `[object Promise]` at SSR.
+  {
+    source: componentsSrc("select/styled/ISelect.ink.tsx"),
+    out: resolve(here, "__generated__/select/styled/ISelect.tsx"),
+  },
+  {
+    source: componentsSrc("select/headless/ISelectBase.ink.tsx"),
+    out: resolve(here, "__generated__/select/headless/ISelectBase.tsx"),
+  },
+  {
+    source: componentsSrc("select/headless/ISelectTriggerBase.ink.tsx"),
+    out: resolve(here, "__generated__/select/headless/ISelectTriggerBase.tsx"),
+  },
+  {
+    source: componentsSrc("select/headless/ISelectListboxBase.ink.tsx"),
+    out: resolve(here, "__generated__/select/headless/ISelectListboxBase.tsx"),
+  },
+  {
+    source: componentsSrc("select/headless/ISelectOptionBase.ink.tsx"),
+    out: resolve(here, "__generated__/select/headless/ISelectOptionBase.tsx"),
   },
 ] as const;
 

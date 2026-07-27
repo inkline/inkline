@@ -1,7 +1,9 @@
+import * as ts from "typescript";
 import type { Target, CodegenContext, CodeModule, RewriteRules } from "../../context.ts";
 import { qwikConformance } from "./conformance.ts";
 import type { Code } from "../../code-ir/nodes.ts";
 import type { IRComponent, IRNode } from "../../../ir/render/nodes.ts";
+import { setupLocalDefs } from "../../../ir/setup.ts";
 import {
   cFile,
   cImport,
@@ -116,13 +118,19 @@ function jsxAttrs(
     const name = e.twoWayProp
       ? `${eventToCallbackProp(e.name)}$`
       : `${rewriteEventName(e.name, rules)}$`;
+    // A handler that is a bare reference to a QRL-emitted setup local is already a QRL — pass it
+    // straight through. Wrapping it (`$(onToggle)`) would hand `$()` an identifier instead of a
+    // function literal, which the optimizer rejects (and SSR surfaces as a thrown `[object Promise]`).
+    const handler = e.handler.expr;
+    const isDirectQrlLocal =
+      ts.isIdentifier(handler) && rules.qrlLocals?.has(handler.text) === true;
+    const text = isDirectQrlLocal
+      ? rewriteExpr(handler, rules)
+      : `$(${rewriteExpr(handler, rules)})`;
     out.push(
       cJsxAttr({
         name,
-        value: {
-          kind: "expr",
-          expr: cExpr({ text: `$(${rewriteExpr(e.handler.expr, rules)})` }),
-        },
+        value: { kind: "expr", expr: cExpr({ text }) },
       }),
     );
   }
@@ -377,6 +385,102 @@ function hasTransition(node: IRNode): boolean {
   }
 }
 
+// Every event-handler expression bound in the render tree (element and component-instance events).
+// A Qwik `$()` boundary is opened around each of these, so any setup-body local a handler references
+// (directly, `onToggle$={onToggle}`, or captured inside an inline handler, `$(() => onSelect(row))`)
+// crosses into a QRL scope and must itself be a QRL — a plain local function cannot be serialized
+// into a QRL's lexical scope (the optimizer rejects it: "scope is not a function, but it's capturing
+// local identifiers"), and at SSR the failed extraction surfaces as a thrown `[object Promise]`.
+function collectEventHandlerExprs(node: IRNode, out: ts.Expression[]): void {
+  switch (node.kind) {
+    case "Element":
+      for (const e of node.events) out.push(e.handler.expr);
+      node.children.forEach((c) => collectEventHandlerExprs(c, out));
+      return;
+    case "ComponentInstance":
+      for (const e of node.events) out.push(e.handler.expr);
+      node.slots.forEach((s) => collectEventHandlerExprs(s.body, out));
+      return;
+    case "Fragment":
+      node.children.forEach((c) => collectEventHandlerExprs(c, out));
+      return;
+    case "If":
+      node.branches.forEach((b) => collectEventHandlerExprs(b.body, out));
+      if (node.fallback) collectEventHandlerExprs(node.fallback, out);
+      return;
+    case "For":
+      collectEventHandlerExprs(node.body, out);
+      return;
+    case "Switch":
+      node.cases.forEach((c) => collectEventHandlerExprs(c.body, out));
+      if (node.fallback) collectEventHandlerExprs(node.fallback, out);
+      return;
+    case "Transition":
+      collectEventHandlerExprs(node.child, out);
+      return;
+    default:
+      return;
+  }
+}
+
+// Free identifier names referenced by an expression, ignoring the member side of a property access
+// (`props.onToggle` reads `props`, not a local `onToggle`). Used to intersect handler/local bodies
+// with the set of setup-local names, so a coincidentally-named object member is not a false hit.
+function collectReferencedNames(expr: ts.Expression, out: Set<string>): void {
+  const visit = (n: ts.Node): void => {
+    if (ts.isPropertyAccessExpression(n)) {
+      visit(n.expression);
+      return;
+    }
+    if (ts.isIdentifier(n)) {
+      out.add(n.text);
+      return;
+    }
+    ts.forEachChild(n, visit);
+  };
+  visit(expr);
+}
+
+// The setup-body local functions that must be emitted as QRLs (`const f = $(() => …)`) for Qwik: any
+// local reachable from an event handler, followed transitively through other locals it references.
+// A local used only synchronously (a render/memo helper) is absent — QRL-wrapping it would make a
+// bare `f(x)` render call return a Promise (`[object Promise]`).
+function qwikQrlLocalNames(component: IRComponent): Set<string> {
+  const localInit = new Map<string, ts.Expression>();
+  for (const s of component.setup) {
+    for (const def of setupLocalDefs(s.stmt)) localInit.set(def.name, def.initializer);
+  }
+  if (localInit.size === 0) return new Set();
+
+  const handlerExprs: ts.Expression[] = [];
+  collectEventHandlerExprs(component.render, handlerExprs);
+
+  const seed = new Set<string>();
+  for (const expr of handlerExprs) collectReferencedNames(expr, seed);
+
+  const qrl = new Set<string>();
+  const worklist: string[] = [];
+  for (const name of seed) {
+    if (localInit.has(name)) {
+      qrl.add(name);
+      worklist.push(name);
+    }
+  }
+  // Transitive closure: a QRL local's body captures every local it references, so those become QRLs
+  // too (e.g. a handler that delegates to another hoisted handler).
+  while (worklist.length > 0) {
+    const refs = new Set<string>();
+    collectReferencedNames(localInit.get(worklist.pop()!)!, refs);
+    for (const name of refs) {
+      if (localInit.has(name) && !qrl.has(name)) {
+        qrl.add(name);
+        worklist.push(name);
+      }
+    }
+  }
+  return qrl;
+}
+
 const QWIK_TRANSITION_HELPER = `const __InkTransition = component$((props: { name?: string; appear?: boolean; children?: any }) => {
   const name = props.name ?? "ink";
   const ref = useSignal<HTMLDivElement>();
@@ -493,9 +597,13 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     );
   }
   // Setup-body handlers/helpers close over the `useSignal`/`useComputed$` values above; emit them
-  // after the reactive declarations and before the effects/render that reference them.
+  // after the reactive declarations and before the effects/render that reference them. A local a
+  // render handler binds (`onToggle$={onToggle}`) is emitted as a QRL so Qwik can extract and resume
+  // it; a synchronous helper stays a plain function so a render-time call is not a Promise.
+  const qrlLocals = qwikQrlLocalNames(component);
   for (const local of setupLocalEmits(component, rules)) {
-    body.push(cStmt({ body: `const ${local.name} = ${local.expr}`, span: local.span }));
+    const init = qrlLocals.has(local.name) ? `$(${local.expr})` : local.expr;
+    body.push(cStmt({ body: `const ${local.name} = ${init}`, span: local.span }));
   }
   for (const e of component.effects) {
     body.push(cStmt({ body: `useVisibleTask$(${rewriteExpr(e.body, rules)})`, span: e.loc }));
@@ -581,7 +689,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   const resourceReads = new Set(
     component.resources.flatMap((r) => [r.name, r.loadingName, r.errorName].filter(Boolean)),
   ) as Set<string>;
-  const renderRules: RewriteRules = { ...rules, reactiveBindings: resourceReads, propLocals };
+  const renderRules: RewriteRules = {
+    ...rules,
+    reactiveBindings: resourceReads,
+    propLocals,
+    qrlLocals,
+  };
 
   const renderTree = emitNode(component.render, renderRules);
 
