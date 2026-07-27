@@ -20,21 +20,31 @@ vp install
 
 If anything looks wrong with the toolchain (Node version, lockfile, package manager), run `vp env doctor` and include the output when asking for help.
 
-### Build once before you rely on editor types
+### Build once before you trust your editor
 
-A fair amount of Inkline's type surface is generated: workspace packages resolve each other through
-their built `dist/*.d.ts`, and the styleframe Vite plugin writes each package's `.styleframe/`
-declarations. Neither exists straight after install, so run a build once before judging what your
-editor is showing you:
+Run a build immediately after installing, before you open anything:
 
 ```bash
 pnpm run build
 ```
 
-`virtual:styleframe` is the exception that does not need it — [`types/virtual-styleframe.d.ts`](../types/virtual-styleframe.d.ts)
-is a checked-in fallback that keeps the module resolving on an unbuilt tree. It carries the recipe
-names but not their variant unions, so recipe props are only precisely typed once `.styleframe/` has
-been generated.
+Skip it and the editor will be solid red on a freshly cloned tree — several hundred errors, led by:
+
+```
+error TS2307: Cannot find module 'virtual:styleframe' or its corresponding type declarations.
+error TS2307: Cannot find module '@inkline/core' or its corresponding type declarations.
+```
+
+followed by a long cascade of `TS2339` and `TS7026` on the props of every styled component.
+
+This is expected, and it is not a broken install. Much of Inkline's type surface is generated rather
+than checked in: workspace packages resolve each other through their built `dist/*.d.ts`, and the
+styleframe Vite plugin writes each package's `.styleframe/` declarations (including the
+`virtual:styleframe` module that every styled component imports its recipe props from). Neither
+exists until a build has produced it, and both are gitignored. One `pnpm run build` clears all of it.
+
+The same applies after `pnpm run clean`, and after switching to a branch that adds a package or a
+recipe.
 
 ## Dev loops
 

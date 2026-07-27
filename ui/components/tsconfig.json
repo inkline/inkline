@@ -4,10 +4,7 @@
     "jsx": "react-jsx",
     "jsxImportSource": "@inkline/core",
     "module": "esnext",
-    "moduleResolution": "bundler",
-    // Needed by src/virtual-styleframe-fallback.test.ts, which reads the checked-in
-    // `virtual:styleframe` fallback and the `*.styleframe.ts` sources off disk.
-    "types": ["node"]
+    "moduleResolution": "bundler"
   },
   "include": ["src", "stories", "styleframe.config.ts", "*.styleframe.ts", ".styleframe/**/*.d.ts"]
 }
