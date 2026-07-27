@@ -50,6 +50,27 @@ export interface InklineConfig {
   readonly tsconfig?: string;
 }
 
+/**
+ * Runtime mirror of the {@link InklineConfig} key set. The record is typed by `keyof InklineConfig`,
+ * so adding a field to the interface without adding it here — or listing a key that no longer exists
+ * — is a compile error. This is the single source of truth for config-key validation.
+ */
+const INKLINE_CONFIG_KEY_SET: Readonly<Record<keyof InklineConfig, true>> = {
+  targets: true,
+  srcDir: true,
+  outDir: true,
+  targetOutDir: true,
+  sourceMap: true,
+  targetOptions: true,
+  plugins: true,
+  verbose: true,
+  registry: true,
+  barrels: true,
+  tsconfig: true,
+};
+
+export const INKLINE_CONFIG_KEYS: readonly string[] = Object.keys(INKLINE_CONFIG_KEY_SET);
+
 export interface ResolvedCompilerOptions {
   readonly targets: readonly TargetName[];
   readonly srcDir?: string;

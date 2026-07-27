@@ -388,6 +388,9 @@ export default defineConfig({
 | `verbose`       | `boolean`                                     | `false`      | Log detailed plugin errors.                                                                                                                                                                                              |
 | `registry`      | `TargetRegistry`                              | built-in     | Custom target registry (advanced).                                                                                                                                                                                       |
 
+Keys outside this set are ignored, and the CLI reports them as INK0081 / INK0082 warnings (with a
+suggested spelling when the key is close to a real one). Unknown keys never fail the build.
+
 ### Available Targets
 
 | Name      | Output          | Framework                                         |
@@ -787,6 +790,8 @@ The compiler produces diagnostics at each pipeline stage. Errors prevent output;
 | INK0062 | error    | `<For>` requires an `each` prop.                                                                                                        |
 | INK0070 | error    | Component-ref forwarding is not yet supported (v1).                                                                                     |
 | INK0080 | warning  | Unknown key in `targetOptions`.                                                                                                         |
+| INK0081 | warning  | Unknown key in `inkline.config.*`. The key is ignored.                                                                                  |
+| INK0082 | warning  | Unknown key in `inkline.config.*` that looks like a typo, with the suggested spelling.                                                  |
 | INK0090 | error    | A plugin threw an exception.                                                                                                            |
 | INK0100 | error    | Component failed during emit. Other components continue.                                                                                |
 

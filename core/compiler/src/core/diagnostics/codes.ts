@@ -139,6 +139,18 @@ export const DIAGNOSTICS = {
     help: undefined,
     url: "https://docs.inkline.dev/diagnostics/INK0080" as const,
   },
+  INK0081: {
+    severity: "warning" as const,
+    title: "Unknown config key: {key}" as const,
+    help: "The key is ignored. Remove it, or check the configuration reference for supported keys." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0081" as const,
+  },
+  INK0082: {
+    severity: "warning" as const,
+    title: "Unknown config key: {key}. Did you mean {suggestion}?" as const,
+    help: "The key is ignored. Fix the spelling or remove it." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0082" as const,
+  },
   INK0090: {
     severity: "error" as const,
     title: "Plugin '{name}' threw: {message}" as const,

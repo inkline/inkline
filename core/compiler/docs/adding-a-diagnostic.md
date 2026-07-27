@@ -69,6 +69,8 @@ The catalog test in `src/core/diagnostics/codes.test.ts` verifies:
 | INK0062 | error    | lower    | `<For>` requires an 'each' prop                         |
 | INK0070 | error    | lower    | Component-ref forwarding not yet supported              |
 | INK0080 | warning  | config   | Unknown target option                                   |
+| INK0081 | warning  | config   | Unknown config key                                      |
+| INK0082 | warning  | config   | Unknown config key, with a suggested spelling           |
 | INK0090 | error    | plugin   | Plugin threw                                            |
 | INK0100 | error    | pipeline | Parse failure in component                              |
 | INK0110 | error    | pipeline | Internal compiler error                                 |

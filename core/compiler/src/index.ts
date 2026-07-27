@@ -15,7 +15,8 @@ export type {
   ResolvedCompilerOptions,
   SourceMapMode,
 } from "./core/options.ts";
-export { defineConfig } from "./core/config.ts";
+export { INKLINE_CONFIG_KEYS } from "./core/options.ts";
+export { defineConfig, validateConfigKeys } from "./core/config.ts";
 
 // ============ PIPELINE PRIMITIVES (advanced users) ============
 export type { Pass, PassContext } from "./pipeline/types.ts";
