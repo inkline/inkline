@@ -786,6 +786,7 @@ The compiler produces diagnostics at each pipeline stage. Errors prevent output;
 | INK0060 | error    | `<Show>` requires a `when` prop.                                                                                                        |
 | INK0062 | error    | `<For>` requires an `each` prop.                                                                                                        |
 | INK0070 | error    | Component-ref forwarding is not yet supported (v1).                                                                                     |
+| INK0071 | error    | JSX spread attributes (`{...props}`) are not supported. Enumerate the attributes explicitly.                                            |
 | INK0080 | warning  | Unknown key in `targetOptions`.                                                                                                         |
 | INK0090 | error    | A plugin threw an exception.                                                                                                            |
 | INK0100 | error    | Component failed during emit. Other components continue.                                                                                |
@@ -830,6 +831,7 @@ import {
 The following features are deferred to v1:
 
 - **Component-ref forwarding** (element refs work; component refs emit INK0070)
+- **JSX spread attributes** (`<button {...props} />` is discarded and emits INK0071; enumerate the attributes explicitly)
 - **Scoped CSS / `<style>` blocks**
 - **Server/client component boundaries**
 - **Async components / Suspense / `createResource`**

@@ -27,6 +27,7 @@ describe("DIAGNOSTICS catalog", () => {
       "INK0067",
       "INK0068",
       "INK0070",
+      "INK0071",
       "INK0080",
       "INK0090",
       "INK0100",

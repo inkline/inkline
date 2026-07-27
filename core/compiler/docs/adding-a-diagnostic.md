@@ -68,6 +68,7 @@ The catalog test in `src/core/diagnostics/codes.test.ts` verifies:
 | INK0061 | info     | lower    | Nullish-coalescing (??) in JSX is ambiguous             |
 | INK0062 | error    | lower    | `<For>` requires an 'each' prop                         |
 | INK0070 | error    | lower    | Component-ref forwarding not yet supported              |
+| INK0071 | error    | parse    | JSX spread attributes are not supported                 |
 | INK0080 | warning  | config   | Unknown target option                                   |
 | INK0090 | error    | plugin   | Plugin threw                                            |
 | INK0100 | error    | pipeline | Parse failure in component                              |
