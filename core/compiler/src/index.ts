@@ -16,6 +16,9 @@ export type {
   SourceMapMode,
 } from "./core/options.ts";
 export { defineConfig } from "./core/config.ts";
+// Validate a config up front — `compile` resolves options itself, but tooling that acts on the
+// config before compiling (creating or cleaning output directories) needs to fail first.
+export { resolveOptions } from "./core/options.ts";
 
 // ============ PIPELINE PRIMITIVES (advanced users) ============
 export type { Pass, PassContext } from "./pipeline/types.ts";
@@ -30,6 +33,7 @@ export { angularSelector } from "./codegen/targets/angular/selector.ts";
 export type { Diagnostic, DiagnosticSeverity, DiagnosticCode } from "./core/diagnostics/codes.ts";
 export { DIAGNOSTICS } from "./core/diagnostics/codes.ts";
 export { meetsLevel } from "./core/diagnostics/level.ts";
+export { InklineConfigError, isInklineConfigError } from "./core/diagnostics/error.ts";
 
 // ============ IR — RENDER TREE TYPES ============
 export type {

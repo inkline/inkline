@@ -3,6 +3,7 @@ import { compile } from "./compile.ts";
 import type { Plugin } from "../plugin/types.ts";
 import type { GeneratedFile, Target } from "../codegen/context.ts";
 import { createRegistry } from "../codegen/registry.ts";
+import { InklineConfigError } from "../core/diagnostics/error.ts";
 import { UNKNOWN_LOCATION } from "../ir/types.ts";
 import { compileFixture } from "../testing/harness.ts";
 
@@ -17,15 +18,15 @@ describe("compile", () => {
     expect(result.module).toBeDefined();
   });
 
-  it("throws on unknown target", async () => {
+  it("throws a config error on unknown target", async () => {
     await expect(
       compile({ fileName: "test.tsx", source: "" }, { targets: ["unknown" as "react"] }),
-    ).rejects.toThrow('Unknown target: "unknown"');
+    ).rejects.toThrow(InklineConfigError);
   });
 
-  it("throws on empty targets", async () => {
+  it("throws a config error on empty targets", async () => {
     await expect(compile({ fileName: "test.tsx", source: "" }, { targets: [] })).rejects.toThrow(
-      "At least one target is required",
+      InklineConfigError,
     );
   });
 
@@ -48,14 +49,14 @@ describe("compile", () => {
     expect(result.files.angular).toBeUndefined();
   });
 
-  it("throws when registry does not support a requested target", async () => {
+  it("throws a config error when registry does not support a requested target", async () => {
     const reg = createRegistry();
     await expect(
       compile(
         { fileName: "test.tsx", source: "const x = 1;" },
         { targets: ["angular"], registry: reg },
       ),
-    ).rejects.toThrow('Registry does not support target "angular"');
+    ).rejects.toThrow('Target "angular" is not present in the configured registry');
   });
 
   it("warns on unknown target option keys (INK0080)", async () => {

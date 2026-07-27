@@ -133,6 +133,14 @@ interface ResolvedCompilerOptions {
 }
 ```
 
+### `resolveOptions(userConfig)`
+
+Validate a user config and apply defaults. `compile` calls this itself; call it directly when tooling needs to reject a bad config before acting on it (creating or cleaning output directories). Throws `InklineConfigError` on an unusable config.
+
+```ts
+function resolveOptions(userConfig: Partial<InklineConfig> | undefined): ResolvedCompilerOptions;
+```
+
 ### `SourceMapMode`
 
 ```ts
@@ -1377,8 +1385,23 @@ Constant map of all diagnostic codes to their metadata:
 | `INK0062` | error    | `<For>` requires an 'each' prop                         |
 | `INK0070` | error    | Component-ref forwarding is not yet supported           |
 | `INK0080` | warning  | Unknown target option: {key}                            |
+| `INK0081` | error    | No compilation target specified                         |
+| `INK0082` | error    | Unknown target "{target}"                               |
+| `INK0083` | error    | Target "{target}" is not present in the registry        |
 | `INK0090` | error    | Plugin '{name}' threw: {message}                        |
 | `INK0100` | error    | Parse failure in component '{name}': {message}          |
 | `INK0110` | error    | Internal compiler error: {message}                      |
 
-Each entry provides `severity`, `title`, `help` (optional), and `url` linking to full documentation.
+Each entry provides `severity`, `title`, `help` (optional), and `url` linking to full documentation. Placeholders in both `title` and `help` are interpolated when the diagnostic is created.
+
+### `InklineConfigError`
+
+Thrown by `resolveOptions` (and therefore by `compile`) when the config itself is unusable — no target, an unknown target, a target the registry cannot serve. It carries a fully formed `Diagnostic` so callers can render it through the same formatter as pipeline diagnostics instead of printing a stack trace through compiler internals.
+
+```ts
+class InklineConfigError extends Error {
+  readonly diagnostic: Diagnostic;
+}
+
+function isInklineConfigError(error: unknown): error is InklineConfigError;
+```

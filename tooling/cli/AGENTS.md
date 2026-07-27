@@ -39,12 +39,25 @@ When adding a command:
 | [`detect-framework.ts`](./src/lib/detect-framework.ts)               | Detect the project's framework(s) from its dependencies (used by `init`).            |
 | [`detect-package-manager.ts`](./src/lib/detect-package-manager.ts)   | Detect the package manager from lockfiles (used by `init`).                          |
 | [`diagnostics.ts`](./src/lib/diagnostics.ts)                         | Format compiler diagnostics for terminal output (TTY-aware, color, code links).      |
+| [`errors.ts`](./src/lib/errors.ts)                                   | Exit-code constants and config-error reporting (see "Exit codes" below).             |
 | [`glob.ts`](./src/lib/glob.ts)                                       | Input-file globbing.                                                                 |
 | [`inkline-config-template.ts`](./src/lib/inkline-config-template.ts) | `inkline.config.ts` + example-component templates for `init --compiler`.             |
 | [`styleframe-config.ts`](./src/lib/styleframe-config.ts)             | The `styleframe.config.ts` template seeded by `init`.                                |
 | [`writer.ts`](./src/lib/writer.ts)                                   | Atomic file writes with source-map sidecar support.                                  |
 
 These are internal — no `exports` map entry. If you find yourself importing from `lib/` outside the CLI, lift the utility into a more appropriate package first.
+
+## Exit codes
+
+Defined once in [`lib/errors.ts`](./src/lib/errors.ts); never write a bare number.
+
+| Constant             | Code | Meaning                                                                        |
+| -------------------- | ---- | ------------------------------------------------------------------------------ |
+| —                    | `0`  | Success.                                                                       |
+| `EXIT_COMPILE_ERROR` | `1`  | The compile ran and reported at least one `error` diagnostic.                  |
+| `EXIT_USAGE_ERROR`   | `2`  | The CLI never got that far: unusable config, or no files matched the patterns. |
+
+User-input failures must never surface a stack trace. `resolveOptions` throws `InklineConfigError` carrying a catalog `Diagnostic`; commands validate up front (before `--clean` deletes anything) and hand the error to `reportConfigError`, which formats it and sets `EXIT_USAGE_ERROR`. The stack is printed only under `--verbose`. Anything `reportConfigError` returns `false` for is a real crash — rethrow it.
 
 ## Build
 

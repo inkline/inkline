@@ -139,6 +139,24 @@ export const DIAGNOSTICS = {
     help: undefined,
     url: "https://docs.inkline.dev/diagnostics/INK0080" as const,
   },
+  INK0081: {
+    severity: "error" as const,
+    title: "No compilation target specified" as const,
+    help: "Pass --target <name> to the CLI or set `targets` in inkline.config.ts. Available targets: {targets}." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0081" as const,
+  },
+  INK0082: {
+    severity: "error" as const,
+    title: 'Unknown target "{target}"' as const,
+    help: "{suggestion}Available targets: {targets}." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0082" as const,
+  },
+  INK0083: {
+    severity: "error" as const,
+    title: 'Target "{target}" is not present in the configured registry' as const,
+    help: "The registry provides: {available}. Register the target with `createRegistry` + `defineTarget`, or drop it from `targets`." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0083" as const,
+  },
   INK0090: {
     severity: "error" as const,
     title: "Plugin '{name}' threw: {message}" as const,
@@ -180,14 +198,43 @@ export const DIAGNOSTICS = {
 
 export type DiagnosticCode = keyof typeof DIAGNOSTICS;
 
+// prettier-ignore
+type WordChar =
+  | "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m"
+  | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
+  | "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M"
+  | "N" | "O" | "P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
+  | "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "_";
+
+/**
+ * Mirrors the runtime `\{(\w+)\}` interpolation. Help text legitimately contains braces that are not
+ * placeholders — code samples like `import { createSignal }` or `key={item.id}` — and those must not
+ * become required params.
+ */
+type IsWord<S extends string> = S extends `${infer H}${infer T}`
+  ? H extends WordChar
+    ? T extends ""
+      ? true
+      : IsWord<T>
+    : false
+  : false;
+
 type ExtractPlaceholders<S extends string> = S extends `${string}{${infer K}}${infer Rest}`
-  ? Record<K, string> & ExtractPlaceholders<Rest>
+  ? (IsWord<K> extends true ? Record<K, string> : {}) & ExtractPlaceholders<Rest>
   : {};
 
 type Simplify<T> = { [K in keyof T]: T[K] };
 
+/** `help` is optional in the catalog; entries without one contribute no placeholders. */
+type HelpText<C extends DiagnosticCode> = (typeof DIAGNOSTICS)[C]["help"] extends infer H
+  ? H extends string
+    ? H
+    : ""
+  : "";
+
+/** Placeholders come from both the title and the help text — both are interpolated at push time. */
 export type DiagnosticParams<C extends DiagnosticCode> = Simplify<
-  ExtractPlaceholders<(typeof DIAGNOSTICS)[C]["title"]>
+  ExtractPlaceholders<(typeof DIAGNOSTICS)[C]["title"]> & ExtractPlaceholders<HelpText<C>>
 >;
 
 export interface Diagnostic {

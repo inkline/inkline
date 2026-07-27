@@ -1,11 +1,6 @@
 import type { SourceLocation } from "../../ir/types.ts";
-import {
-  DIAGNOSTICS,
-  type Diagnostic,
-  type DiagnosticCode,
-  type DiagnosticParams,
-  type DiagnosticSeverity,
-} from "./codes.ts";
+import type { Diagnostic, DiagnosticCode, DiagnosticParams } from "./codes.ts";
+import { createDiagnostic } from "./create.ts";
 
 export interface DiagnosticCollector {
   push<C extends DiagnosticCode>(
@@ -19,10 +14,6 @@ export interface DiagnosticCollector {
   freeze(): readonly Diagnostic[];
 }
 
-function resolvePlaceholders(template: string, params: Record<string, string>): string {
-  return template.replace(/\{(\w+)\}/g, (_, k: string) => params[k] ?? `{${k}}`);
-}
-
 export function createDiagnosticCollector(): DiagnosticCollector {
   const diagnostics: Diagnostic[] = [];
   let frozen = false;
@@ -31,17 +22,15 @@ export function createDiagnosticCollector(): DiagnosticCollector {
     push(code: DiagnosticCode, loc: SourceLocation, ...args: unknown[]) {
       if (frozen) throw new Error("DiagnosticCollector is frozen");
 
-      const def = DIAGNOSTICS[code];
-      const params = (args[0] ?? {}) as Record<string, string>;
+      // The public `push` overload above already enforces the per-code params; erase the generic
+      // here so the untyped rest args can be forwarded.
+      const create = createDiagnostic as (
+        code: DiagnosticCode,
+        loc: SourceLocation,
+        params?: Record<string, string>,
+      ) => Diagnostic;
 
-      diagnostics.push({
-        code,
-        severity: def.severity as DiagnosticSeverity,
-        title: resolvePlaceholders(def.title, params),
-        help: def.help ?? undefined,
-        url: def.url,
-        loc,
-      });
+      diagnostics.push(create(code, loc, args[0] as Record<string, string> | undefined));
     },
 
     pushFrom(diags: readonly Diagnostic[]) {

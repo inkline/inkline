@@ -23,7 +23,7 @@ export const DIAGNOSTICS = {
 
 - **Code ranges**: 00xx = parse, 01xx = analyze, 05xx = lower, 06xx-08xx = options/config, 09xx = plugin, 10xx = pipeline.
 - **Severity**: `"error"` (blocks compilation), `"warning"` (informational), `"info"` (hint).
-- **Placeholders**: use `{name}` syntax in the title. The type system extracts these via `DiagnosticParams<C>` and enforces callers supply them.
+- **Placeholders**: use `{name}` syntax in the title and/or the help text; both are interpolated. The type system extracts them from both via `DiagnosticParams<C>` and enforces callers supply them.
 - **Help text**: one sentence explaining what to do. Set to `undefined` if not applicable.
 - **URL**: link to `https://docs.inkline.dev/diagnostics/INKxxxx`.
 
@@ -69,6 +69,9 @@ The catalog test in `src/core/diagnostics/codes.test.ts` verifies:
 | INK0062 | error    | lower    | `<For>` requires an 'each' prop                         |
 | INK0070 | error    | lower    | Component-ref forwarding not yet supported              |
 | INK0080 | warning  | config   | Unknown target option                                   |
+| INK0081 | error    | config   | No compilation target specified                         |
+| INK0082 | error    | config   | Unknown target                                          |
+| INK0083 | error    | config   | Target not present in the configured registry           |
 | INK0090 | error    | plugin   | Plugin threw                                            |
 | INK0100 | error    | pipeline | Parse failure in component                              |
 | INK0110 | error    | pipeline | Internal compiler error                                 |

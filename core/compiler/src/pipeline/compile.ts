@@ -193,16 +193,6 @@ export async function compile(
     registry: options.registry,
   };
 
-  // Validate: registry supports all requested targets
-  for (const targetName of options.targets) {
-    if (!options.registry.has(targetName)) {
-      throw new Error(
-        `Registry does not support target "${targetName}". ` +
-          `Available: ${options.registry.list().join(", ") || "(none)"}`,
-      );
-    }
-  }
-
   // Validate: warn on unknown target option keys
   for (const [targetName, userOpts] of Object.entries(options.targetOptions)) {
     if (!userOpts) continue;

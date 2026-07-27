@@ -6,6 +6,7 @@ import {
   compileIncremental,
   createIncrementalState,
   meetsLevel,
+  resolveOptions,
   type BarrelGroup,
   type TargetName,
   type IncrementalState,
@@ -24,6 +25,7 @@ import {
   type BarrelMap,
 } from "../lib/barrel.ts";
 import { formatDiagnostic } from "../lib/diagnostics.ts";
+import { EXIT_COMPILE_ERROR, EXIT_USAGE_ERROR, reportConfigError } from "../lib/errors.ts";
 import { writeCompileOutput, writeIfChanged, writeOutput } from "../lib/writer.ts";
 
 /**
@@ -118,15 +120,23 @@ export default defineCommand({
   },
   async run({ args }) {
     const fileConfig = await loadInklineConfig(args.config);
+    const verbose = args.verbose || fileConfig.verbose === true;
 
     const targetStr = args.target ?? fileConfig.targets?.join(",");
-    if (!targetStr) {
-      console.error("Error: --target is required (or set targets in config file).");
-      process.exitCode = 2;
-      return;
+    const targets = (targetStr
+      ?.split(",")
+      .map((t) => t.trim())
+      .filter(Boolean) ?? []) as TargetName[];
+
+    // Resolve up front so a missing or misspelled target is reported before `--clean` deletes
+    // output directories. `compile` resolves the same options again; this only fails earlier.
+    try {
+      resolveOptions({ targets, registry: fileConfig.registry });
+    } catch (err) {
+      if (reportConfigError(err, verbose)) return;
+      throw err;
     }
 
-    const targets = targetStr.split(",").map((t) => t.trim()) as TargetName[];
     const outDir = fileConfig.outDir ?? args["out-dir"] ?? "dist";
     const targetOutDir = fileConfig.targetOutDir ?? {};
     const barrels = fileConfig.barrels ?? DEFAULT_BARRELS;
@@ -136,12 +146,11 @@ export default defineCommand({
       | "external"
       | "inline"
       | "none";
-    const verbose = args.verbose || fileConfig.verbose === true;
 
     const resolvedFiles = expandGlobs([...args._]);
     if (resolvedFiles.length === 0) {
       console.error("Error: no files matched the given patterns.");
-      process.exitCode = 2;
+      process.exitCode = EXIT_USAGE_ERROR;
       return;
     }
 
@@ -220,7 +229,7 @@ export default defineCommand({
       );
     }
 
-    if (hasError) process.exitCode = 1;
+    if (hasError) process.exitCode = EXIT_COMPILE_ERROR;
   },
 });
 

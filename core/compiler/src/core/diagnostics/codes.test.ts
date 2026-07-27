@@ -28,6 +28,9 @@ describe("DIAGNOSTICS catalog", () => {
       "INK0068",
       "INK0070",
       "INK0080",
+      "INK0081",
+      "INK0082",
+      "INK0083",
       "INK0090",
       "INK0100",
       "INK0110",
@@ -57,21 +60,24 @@ describe("DIAGNOSTICS catalog", () => {
     }
   });
 
-  it("placeholder syntax is consistent ({word})", () => {
+  it("placeholder syntax is consistent ({word}) in titles and help text", () => {
     for (const code of codes) {
-      const matches = DIAGNOSTICS[code].title.match(/\{(\w+)\}/g) ?? [];
+      const entry = DIAGNOSTICS[code];
+      const matches = `${entry.title} ${entry.help ?? ""}`.match(/\{(\w+)\}/g) ?? [];
       for (const m of matches) {
         expect(m).toMatch(/^\{\w+\}$/);
       }
     }
   });
 
-  it("codes with placeholders: INK0030, INK0044, INK0080, INK0090, INK0100, INK0110, INK0111, INK0120, INK0121", () => {
+  it("codes with title placeholders: INK0030, INK0044, INK0082, INK0083, INK0080, INK0090, INK0100, INK0110, INK0111, INK0120, INK0121", () => {
     const withPlaceholders = codes.filter((c) => /\{\w+\}/.test(DIAGNOSTICS[c].title));
     expect(withPlaceholders.sort()).toEqual([
       "INK0030",
       "INK0044",
       "INK0080",
+      "INK0082",
+      "INK0083",
       "INK0090",
       "INK0100",
       "INK0110",

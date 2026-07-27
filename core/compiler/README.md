@@ -447,6 +447,23 @@ Report diagnostics without producing output:
 inkline check src/Counter.ink.tsx --target react
 ```
 
+### Exit codes
+
+| Code | Meaning                                                                                           |
+| ---- | ------------------------------------------------------------------------------------------------- |
+| `0`  | Success. No error diagnostics.                                                                    |
+| `1`  | The compile ran and reported at least one `error` diagnostic.                                     |
+| `2`  | The CLI never got that far: unusable config (missing or unknown `--target`), or no files matched. |
+
+Configuration failures print as a formatted diagnostic with a code, help text, and docs link rather than a stack trace through compiler internals. Pass `--verbose` to also print the underlying stack.
+
+```
+$ inkline compile "src/**/*.ink.tsx" --target reakt
+error  INK0082  Unknown target "reakt"
+    help: Did you mean "react"? Available targets: react, solid, vue, svelte, angular, qwik, astro.
+    docs: https://docs.inkline.dev/diagnostics/INK0082
+```
+
 ### Init
 
 Scaffold Inkline into the current project. Pass `--compiler` to also generate `inkline.config.ts`, an example component, and build scripts:
@@ -787,6 +804,9 @@ The compiler produces diagnostics at each pipeline stage. Errors prevent output;
 | INK0062 | error    | `<For>` requires an `each` prop.                                                                                                        |
 | INK0070 | error    | Component-ref forwarding is not yet supported (v1).                                                                                     |
 | INK0080 | warning  | Unknown key in `targetOptions`.                                                                                                         |
+| INK0081 | error    | No compilation target specified.                                                                                                        |
+| INK0082 | error    | Unknown target. Lists the valid targets and suggests the closest match.                                                                 |
+| INK0083 | error    | Target is not present in the configured registry.                                                                                       |
 | INK0090 | error    | A plugin threw an exception.                                                                                                            |
 | INK0100 | error    | Component failed during emit. Other components continue.                                                                                |
 
