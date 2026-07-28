@@ -6,7 +6,12 @@ import { loadInklineConfig } from "../lib/config.ts";
 import { buildCompileOptions, resolveOutDir, resolveTargets } from "../lib/compile-options.ts";
 import { expandGlobs } from "../lib/glob.ts";
 import { formatDiagnostic } from "../lib/diagnostics.ts";
-import { EXIT_COMPILE_ERROR, EXIT_USAGE_ERROR, reportConfigError } from "../lib/errors.ts";
+import {
+  EXIT_COMPILE_ERROR,
+  EXIT_USAGE_ERROR,
+  reportConfigError,
+  reportUnusableConfig,
+} from "../lib/errors.ts";
 
 export default defineCommand({
   meta: { name: "check", description: "Run diagnostics without writing output" },
@@ -21,7 +26,12 @@ export default defineCommand({
     },
   },
   async run({ args }) {
-    const fileConfig = await loadInklineConfig(args.config);
+    const { config: fileConfig, valid } = await loadInklineConfig(args.config);
+    if (!valid) {
+      reportUnusableConfig();
+      return;
+    }
+
     // Same chain as `compile`: `??` so an omitted flag defers to the config and `--no-verbose` wins.
     const verbose = args.verbose ?? fileConfig.verbose === true;
     const targets = resolveTargets(args.target, fileConfig);

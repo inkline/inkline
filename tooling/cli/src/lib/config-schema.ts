@@ -116,9 +116,15 @@ function formatPath(path: readonly PropertyKey[]): string {
  * Validates a loaded config against {@link inklineConfigSchema} and reports the failures as
  * diagnostics.
  *
- * Nothing here is fatal and nothing is rewritten: an unknown key or a wrong value type is reported
- * and the config is used as loaded. Configs in the wild carry keys we do not know about, and
- * silently swallowing a typo is the failure mode this guards against — not the typo itself.
+ * Nothing is rewritten — the config is reported on, never repaired — but the two failure kinds carry
+ * different severities because they have different consequences downstream:
+ *
+ * - An **unknown key** (INK0081/INK0082) is a `warning`. Configs in the wild carry keys we do not
+ *   know about; the key is ignored and the run continues. Silently swallowing a typo is the failure
+ *   mode this guards against, not the typo itself.
+ * - A **wrong value type** on a recognised key (INK0083) is an `error`. Every recognised key is
+ *   consumed by the commands, and consuming a value of the wrong type means calling a method that
+ *   does not exist (`targets.join`, `barrels.filter`, `srcDir.endsWith`). The caller stops instead.
  */
 export function validateConfig(config: object, file = "<unknown>"): readonly Diagnostic[] {
   const diagnostics = createDiagnosticCollector();
@@ -133,15 +139,17 @@ export function validateConfig(config: object, file = "<unknown>"): readonly Dia
   if (result.success) return diagnostics.freeze();
 
   for (const issue of result.error.issues) {
-    // Only top-level unrecognised keys are config keys; a stray key inside `barrels[0]` is a value
-    // problem and is reported as one.
-    if (issue.code === "unrecognized_keys" && issue.path.length === 0) {
+    // An unrecognised key is never fatal, at any depth — it is ignored and reported. Only a
+    // top-level key can be matched against the known config keys, so a nested one (`barrels[0].mod`)
+    // is reported by its full path without a suggestion.
+    if (issue.code === "unrecognized_keys") {
       for (const key of issue.keys) {
-        const suggestion = suggestConfigKey(key);
+        const path = formatPath([...issue.path, key]);
+        const suggestion = issue.path.length === 0 ? suggestConfigKey(key) : undefined;
         if (suggestion) {
-          diagnostics.push("INK0082", loc, { key, suggestion });
+          diagnostics.push("INK0082", loc, { key: path, suggestion });
         } else {
-          diagnostics.push("INK0081", loc, { key });
+          diagnostics.push("INK0081", loc, { key: path });
         }
       }
       continue;

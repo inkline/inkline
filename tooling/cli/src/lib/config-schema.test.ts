@@ -85,7 +85,9 @@ describe("validateConfig — value types", () => {
 
     expect(rest).toEqual([]);
     expect(diag?.code).toBe("INK0083");
-    expect(diag?.severity).toBe("warning");
+    // A recognised key holding a wrong-typed value is an error: the commands consume every
+    // recognised key, so there is nothing safe to do but stop. Unknown keys stay warnings.
+    expect(diag?.severity).toBe("error");
     expect(diag?.title).toContain("Invalid config value at srcDir");
     expect(diag?.title).toContain("expected string");
   });
@@ -104,11 +106,23 @@ describe("validateConfig — value types", () => {
     expect(diag?.title).toContain("targets[1]");
   });
 
-  it("reports a nested key inside an array element by path, not as a config key", () => {
-    const [diag] = validateConfig({ barrels: [{ file: "a.ts", match: "", extra: true }] });
+  it("reports a nested unknown key by path, as a non-fatal unknown key", () => {
+    const [diag, ...rest] = validateConfig({ barrels: [{ file: "a.ts", match: "", extra: true }] });
+
+    // Still an unknown key, just a nested one: reported by full path, no suggestion (only top-level
+    // names can be matched against the schema), and non-fatal like every other unknown key.
+    expect(rest).toEqual([]);
+    expect(diag?.code).toBe("INK0081");
+    expect(diag?.severity).toBe("warning");
+    expect(diag?.title).toBe("Unknown config key: barrels[0].extra");
+  });
+
+  it("reports a wrong-typed value inside an array element as an error", () => {
+    const [diag] = validateConfig({ barrels: [{ file: 42, match: "" }] });
 
     expect(diag?.code).toBe("INK0083");
-    expect(diag?.title).toContain("barrels[0]");
+    expect(diag?.severity).toBe("error");
+    expect(diag?.title).toContain("barrels[0].file");
   });
 
   it("reports both an unknown key and a bad value in one pass", () => {
