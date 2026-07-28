@@ -14,6 +14,7 @@ import {
 } from "@inkline/compiler";
 import { activeFrameworks, generate, type GeneratedFile } from "@inkline/storybook/generator";
 import { loadInklineConfig } from "../lib/config.ts";
+import { buildCompileOptions, resolveOutDir, resolveTargets } from "../lib/compile-options.ts";
 import { expandGlobs } from "../lib/glob.ts";
 import { commonPrefix } from "../lib/common-prefix.ts";
 import {
@@ -124,11 +125,7 @@ export default defineCommand({
     const fileConfig = await loadInklineConfig(args.config);
     const verbose = args.verbose || fileConfig.verbose === true;
 
-    const targetStr = args.target ?? fileConfig.targets?.join(",");
-    const targets = (targetStr
-      ?.split(",")
-      .map((t) => t.trim())
-      .filter(Boolean) ?? []) as TargetName[];
+    const targets = resolveTargets(args.target, fileConfig);
 
     // Resolve up front so a missing or misspelled target is reported before `--clean` deletes
     // output directories. `compile` resolves the same options again; this only fails earlier.
@@ -142,7 +139,7 @@ export default defineCommand({
     // Flag > config > default, matching `--target`, `--src-dir` and `--source-map`. Note that a
     // config `targetOutDir` entry is a per-target absolute override and still wins for that target
     // (see `resolveTargetDir`): the more specific setting beats the general one either way.
-    const outDir = args["out-dir"] ?? fileConfig.outDir ?? "dist";
+    const outDir = resolveOutDir(args["out-dir"], fileConfig);
     const targetOutDir = fileConfig.targetOutDir ?? {};
     const barrels = fileConfig.barrels ?? DEFAULT_BARRELS;
     const namedGroups = barrels.filter((g) => g.mode !== "namespace");
@@ -169,6 +166,16 @@ export default defineCommand({
         : srcDir + "/"
       : commonPrefix(resolvedFiles.map((f) => dirname(f)));
 
+    // Built once and reused by the one-shot loop and the watcher, so a rebuild can never compile
+    // with different options than the initial build. `check` builds its bag from the same mapper.
+    const compileOptions = buildCompileOptions(fileConfig, {
+      targets,
+      outDir,
+      sourceMap,
+      verbose,
+      srcDir,
+    });
+
     if (args.clean) {
       for (const target of targets) {
         rmSync(resolveTargetDir(target, outDir, targetOutDir), { recursive: true, force: true });
@@ -181,19 +188,7 @@ export default defineCommand({
       const name = basename(absPath, extname(absPath)).replace(/\.ink(\.stories)?$/, "");
       const relDir = dirname(filePath).slice(sourcePrefix.length);
 
-      const result = await compile(
-        { fileName: absPath, source },
-        {
-          targets,
-          outDir,
-          sourceMap,
-          verbose,
-          plugins: fileConfig.plugins,
-          targetOptions: fileConfig.targetOptions,
-          registry: fileConfig.registry,
-          tsconfig: fileConfig.tsconfig,
-        },
-      );
+      const result = await compile({ fileName: absPath, source }, compileOptions);
 
       for (const d of result.diagnostics) {
         if (!meetsLevel(d.severity, reportLevel)) continue;
@@ -225,8 +220,7 @@ export default defineCommand({
         outDir,
         targetOutDir,
         sourceMap,
-        verbose,
-        fileConfig,
+        compileOptions,
         sourcePrefix,
         srcDir,
         namedGroups,
@@ -290,8 +284,7 @@ function runWatch(
   outDir: string,
   targetOutDir: Partial<Record<string, string>>,
   sourceMap: "external" | "inline" | "none",
-  verbose: boolean,
-  fileConfig: Partial<import("@inkline/compiler").InklineConfig>,
+  compileOptions: Partial<import("@inkline/compiler").InklineConfig>,
   sourcePrefix: string,
   srcDir: string | undefined,
   namedGroups: readonly BarrelGroup[],
@@ -308,16 +301,7 @@ function runWatch(
       return { fileName: absPath, source: readFileSync(absPath, "utf-8") };
     });
 
-    const result = await compileIncremental(state, inputs, {
-      targets,
-      outDir,
-      sourceMap,
-      verbose,
-      plugins: fileConfig.plugins,
-      targetOptions: fileConfig.targetOptions,
-      registry: fileConfig.registry,
-      tsconfig: fileConfig.tsconfig,
-    });
+    const result = await compileIncremental(state, inputs, compileOptions);
 
     state = result.nextState;
 
