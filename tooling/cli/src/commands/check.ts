@@ -1,15 +1,17 @@
 import { defineCommand } from "citty";
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
-import { compile, resolveOptions, type TargetName } from "@inkline/compiler";
+import { compile, resolveOptions } from "@inkline/compiler";
 import { loadInklineConfig } from "../lib/config.ts";
+import { buildCompileOptions, resolveOutDir, resolveTargets } from "../lib/compile-options.ts";
+import { expandGlobs } from "../lib/glob.ts";
 import { formatDiagnostic } from "../lib/diagnostics.ts";
-import { EXIT_COMPILE_ERROR, reportConfigError } from "../lib/errors.ts";
+import { EXIT_COMPILE_ERROR, EXIT_USAGE_ERROR, reportConfigError } from "../lib/errors.ts";
 
 export default defineCommand({
   meta: { name: "check", description: "Run diagnostics without writing output" },
   args: {
-    file: { type: "positional", description: "File to check", required: true },
+    pattern: { type: "positional", description: "Glob pattern for .ink.tsx files", required: true },
     target: { type: "string", description: "Comma-separated targets" },
     config: { type: "string", description: "Path to config file" },
     verbose: {
@@ -21,11 +23,7 @@ export default defineCommand({
   async run({ args }) {
     const fileConfig = await loadInklineConfig(args.config);
     const verbose = args.verbose || fileConfig.verbose === true;
-    const targetStr = args.target ?? fileConfig.targets?.join(",") ?? "react,solid,vue,svelte";
-    const targets = targetStr
-      .split(",")
-      .map((t) => t.trim())
-      .filter(Boolean) as TargetName[];
+    const targets = resolveTargets(args.target, fileConfig);
 
     try {
       resolveOptions({ targets, registry: fileConfig.registry });
@@ -34,19 +32,32 @@ export default defineCommand({
       throw err;
     }
 
+    const resolvedFiles = expandGlobs([...args._]);
+    if (resolvedFiles.length === 0) {
+      console.error("Error: no files matched the given patterns.");
+      process.exitCode = EXIT_USAGE_ERROR;
+      return;
+    }
+
+    // `check` writes nothing, so generating source maps would be pure waste — this is the one option
+    // it is allowed to resolve differently from `compile`. Everything else comes from the shared
+    // mapper so the diagnostics reported here are exactly the ones the build would report.
+    const options = buildCompileOptions(fileConfig, {
+      targets,
+      outDir: resolveOutDir(undefined, fileConfig),
+      sourceMap: "none",
+      verbose,
+    });
+
     let hasError = false;
 
-    const files = [...args._];
-    for (const filePath of files) {
+    for (const filePath of resolvedFiles) {
       const absPath = resolve(filePath);
       const source = readFileSync(absPath, "utf-8");
-      const result = await compile(
-        { fileName: absPath, source },
-        { targets, sourceMap: "none", plugins: fileConfig.plugins, registry: fileConfig.registry },
-      );
+      const result = await compile({ fileName: absPath, source }, options);
 
       for (const d of result.diagnostics) {
-        console.error(formatDiagnostic(d));
+        console.error(formatDiagnostic(d, { source: d.loc.file === absPath ? source : undefined }));
         if (d.severity === "error") hasError = true;
       }
     }

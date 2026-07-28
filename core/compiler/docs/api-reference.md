@@ -1396,7 +1396,7 @@ Constant map of all diagnostic codes to their metadata:
 | `INK0100` | error    | Parse failure in component '{name}': {message}          |
 | `INK0110` | error    | Internal compiler error: {message}                      |
 
-Each entry provides `severity`, `title`, `help` (optional), and `url` linking to full documentation. Placeholders in both `title` and `help` are interpolated when the diagnostic is created.
+Each entry provides `severity`, `title`, `help`, and `url` linking to full documentation. Every code carries help text — the catalog test asserts it over `Object.keys(DIAGNOSTICS)`. Placeholders in both `title` and `help` are interpolated when the diagnostic is created.
 
 ### `InklineConfigError`
 

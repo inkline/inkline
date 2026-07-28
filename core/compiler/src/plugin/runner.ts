@@ -1,19 +1,14 @@
-import { DIAGNOSTICS, type Diagnostic } from "../core/diagnostics/codes.ts";
+import type { Diagnostic } from "../core/diagnostics/codes.ts";
+import { createDiagnostic } from "../core/diagnostics/create.ts";
 import type { GeneratedFile, TargetName } from "../codegen/context.ts";
 import { UNKNOWN_LOCATION } from "../ir/types.ts";
 import type { AnalyzedModule } from "../pipeline/passes/04-analyze/index.ts";
 import type { Plugin, PluginContext } from "./types.ts";
 
+/** Built through the catalog so the plugin error carries its `help` and docs URL like any other. */
 function makeErrorDiagnostic(pluginName: string, err: unknown): Diagnostic {
-  const def = DIAGNOSTICS.INK0090;
   const message = err instanceof Error ? err.message : String(err);
-  return {
-    code: "INK0090",
-    severity: def.severity,
-    title: `Plugin '${pluginName}' threw: ${message}`,
-    url: def.url,
-    loc: UNKNOWN_LOCATION,
-  };
+  return createDiagnostic("INK0090", UNKNOWN_LOCATION, { name: pluginName, message });
 }
 
 export class PluginRunner {

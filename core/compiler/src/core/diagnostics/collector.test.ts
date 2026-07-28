@@ -56,12 +56,12 @@ describe("DiagnosticCollector", () => {
     expect(diags[0]!.help).not.toContain("{name}");
   });
 
-  it("push() sets help to undefined when absent", () => {
+  it("push() carries the catalog help through for every code", () => {
     const c = createDiagnosticCollector();
     c.push("INK0060", loc);
     const diags = c.freeze();
 
-    expect(diags[0]!.help).toBeUndefined();
+    expect(diags[0]!.help).toContain("<Show when={visible()}>");
   });
 
   it("push() includes url", () => {

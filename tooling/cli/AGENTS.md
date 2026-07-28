@@ -16,7 +16,9 @@ All commands live in [`src/commands/`](./src/commands/) and are wired into the r
 | `inkline init`    | [`init.ts`](./src/commands/init.ts)       | Set up Inkline in an existing app: detect package manager/framework/bundler, run `styleframe init` + seed `styleframe.config.ts`, install deps, wire the build plugin. `--compiler` additionally scaffolds `inkline.config.ts` and an example component. |
 | `inkline add`     | [`add.ts`](./src/commands/add.ts)         | Add a component to an existing project. Currently a stub — prints "not yet implemented".                                                                                                                                                                 |
 | `inkline compile` | [`compile.ts`](./src/commands/compile.ts) | Compile `.ink.tsx` globs to target frameworks and generate per-target Storybook story files. Accepts `--src-dir` to set the source root for output path resolution (also `srcDir` in config).                                                            |
-| `inkline check`   | [`check.ts`](./src/commands/check.ts)     | Run diagnostics without writing output: compiles with `sourceMap: "none"`, prints formatted diagnostics, exits non-zero on any error.                                                                                                                    |
+| `inkline check`   | [`check.ts`](./src/commands/check.ts)     | Run diagnostics without writing output: same globs and same config as `compile`, compiles with `sourceMap: "none"`, prints formatted diagnostics, exits non-zero on any error.                                                                           |
+
+`check` is the correctness gate for `compile`, so it must compile against the same program. Both build their option bag through [`buildCompileOptions`](./src/lib/compile-options.ts) and nowhere else — `sourceMap` is the single sanctioned divergence (`check` writes no output, so maps would be waste). A new `InklineConfig` field goes into that mapper, not into a command; [`commands/check.test.ts`](./src/commands/check.test.ts) fails if the two bags stop matching.
 
 When adding a command:
 
@@ -34,6 +36,7 @@ When adding a command:
 | [`add-build-plugin.ts`](./src/lib/add-build-plugin.ts)               | Wire the inkline plugin into a bundler config via magicast (used by `init`).         |
 | [`barrel.ts`](./src/lib/barrel.ts)                                   | Generate framework-specific barrel files (re-export `index.ts`) for compiled output. |
 | [`common-prefix.ts`](./src/lib/common-prefix.ts)                     | Longest-common-prefix helper for input glob → output path resolution.                |
+| [`compile-options.ts`](./src/lib/compile-options.ts)                 | The one config → `compile()` options mapping, shared by `compile` and `check`.       |
 | [`config.ts`](./src/lib/config.ts)                                   | Bridge to [`@inkline/config-loader`](../../core/config-loader/) with CLI defaults.   |
 | [`detect-bundler.ts`](./src/lib/detect-bundler.ts)                   | Detect the project's bundler config file (used by `init`).                           |
 | [`detect-framework.ts`](./src/lib/detect-framework.ts)               | Detect the project's framework(s) from its dependencies (used by `init`).            |

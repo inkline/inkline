@@ -477,7 +477,7 @@ inkline <command> [options]
 
 Commands:
   compile <glob>   Compile .ink.tsx files and generate stories.
-  check <file>     Run diagnostics on a file without writing output.
+  check <glob>     Run diagnostics without writing output.
   init             Initialize an Inkline project.
   add <component>  Add a component to your project.
 ```
@@ -509,7 +509,14 @@ Report diagnostics without producing output:
 
 ```bash
 inkline check src/Counter.ink.tsx --target react
+
+# Globs, same as compile
+inkline check "src/**/*.ink.tsx" --config inkline.config.ts
 ```
+
+Flags: `--target`, `--config`, `--verbose`. `check` accepts the same patterns as `compile` and reads
+the same config file, so it reports exactly the diagnostics the build would report — the only
+difference is that it writes nothing and skips source maps.
 
 ### Exit codes
 
