@@ -48,7 +48,15 @@ function formatLocation(loc: Diagnostic["loc"], cwd: string): string {
  * `offset`/`length` from {@link SourceLocation} are the authority for the span; the line number is
  * derived from `offset` too so the gutter can never disagree with the slice it labels. A span that
  * crosses a line boundary is clamped to the end of its first line — the head of a multi-line span is
- * what identifies it, and printing the whole body buries the message.
+ * what identifies it, and printing the whole body buries the message. Such a span gets a `...`
+ * continuation marker under the carets, following `rustc`, so a clamped run is never mistaken for a
+ * span that genuinely ends where the carets stop:
+ *
+ * ```
+ *   10 |       <Show>
+ *      |       ^^^^^^
+ *      |       ...
+ * ```
  */
 function renderFrame(loc: Diagnostic["loc"], source: string): string {
   const { offset, length } = loc;
@@ -71,7 +79,14 @@ function renderFrame(loc: Diagnostic["loc"], source: string): string {
     text.slice(0, column).replace(/[^\t]/g, " ") + " ".repeat(Math.max(0, column - text.length));
   const carets = "^".repeat(Math.max(1, Math.min(length, text.length - column)));
 
-  return `\n  ${gutter} | ${text}\n  ${blank} | ${prefix}${carets}`;
+  const frame = `\n  ${gutter} | ${text}\n  ${blank} | ${prefix}${carets}`;
+
+  // The span was clamped only if it reaches past this line's newline. A span ending exactly at the
+  // boundary is complete, and a length overrunning the last line of the file has nothing to continue
+  // into, so neither gets a marker.
+  const clamped = newline !== -1 && offset + length > lineEnd;
+
+  return clamped ? `${frame}\n  ${blank} | ${prefix}...` : frame;
 }
 
 export function formatDiagnostic(d: Diagnostic, options: FormatDiagnosticOptions = {}): string {
