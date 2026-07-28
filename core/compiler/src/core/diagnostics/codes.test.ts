@@ -58,6 +58,14 @@ describe("DIAGNOSTICS catalog", () => {
     }
   });
 
+  // Asserted over the live key set, never a hard-coded count: the catalog grew from 28 to 35 codes
+  // in a single stage, and a counted assertion would have gone stale instead of catching the gap.
+  it("every entry has a non-empty help", () => {
+    for (const code of codes) {
+      expect(DIAGNOSTICS[code].help, `${code} is missing help text`).toBeTruthy();
+    }
+  });
+
   it("every entry has a url", () => {
     for (const code of codes) {
       expect(DIAGNOSTICS[code].url).toMatch(/^https:\/\/docs\.inkline\.dev/);
