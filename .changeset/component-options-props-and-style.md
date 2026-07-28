@@ -19,5 +19,9 @@ optionality each target emits:
 - the full shape (`count: { type: Number, required: true, default: 0 }`) → required, `number`.
 
 The constructor-to-type table matches the compiler's (`String`/`Number`/`Boolean`/`Object`/`Array`/
-`Function`/`Symbol`/`Date`). Leave the setup parameter unannotated to use the inference; annotating
-it selects the existing overload unchanged, so every current call site keeps its behaviour.
+`Function`/`Symbol`/`Date`). Leave the setup parameter unannotated to use the inference.
+
+The parser prefers `options.props` over the setup parameter's annotation, so declaring both would
+compile clean while emitting the options props and ignoring the annotation. The annotated-parameter
+overload now carries `props?: never`, rejecting that pairing at the type level. Options objects
+without a `props` map — the only form in use today — keep a typed setup parameter unchanged.

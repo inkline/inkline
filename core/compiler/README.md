@@ -180,8 +180,9 @@ export default defineComponent(
 
 `defineComponent` infers the setup parameter's type from the `props` map, so **leave the setup
 parameter unannotated** with this form — `props.color` is `string | undefined` (optional, defaulted)
-and `props.size` is `number` (required), matching what each target emits. Annotating the parameter
-opts back out of the inference.
+and `props.size` is `number` (required), matching what each target emits. A `props` map wins over a
+setup-parameter annotation in the parser, so annotating the parameter alongside one is rejected at the
+type level rather than silently ignored — declare props in one place or the other, never both.
 
 Everything that is _not_ a prop also goes in the options object — `slots`, `events`, `style`,
 `runtime`, `name`, and `meta`. Those keys do not drive prop inference, so they can be combined with a

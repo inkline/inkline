@@ -42,8 +42,9 @@ describe("defineComponent", () => {
   // `PropDefaults.ink.tsx` fixture authors exactly this shape, but every fixture is excluded from
   // the type-check pass, so the form compiled correctly to all seven targets while `tsc` rejected
   // the source. This block is the authoring-surface check that fixture could not be: keep it in
-  // sync with the fixture, and note that the annotated locals below — not the runtime expectation —
-  // are what fails when the inference regresses.
+  // sync with the fixture. Both halves are type-level assertions: the annotated locals pin each
+  // prop's type, and the call below pins their optionality — omitting `color`/`when` fails if they
+  // stop being optional, and passing only `size`/`count` fails if either stops being required.
   it("infers the setup props type from the options object's props map", () => {
     const Component = defineComponent(
       {

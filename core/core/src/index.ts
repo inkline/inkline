@@ -77,7 +77,12 @@ type PropValue<D> = D extends PropConstructor
       : unknown
     : D extends { default: infer V }
       ? V
-      : D;
+      : // A full shape carrying neither `type` nor `default` (`{ required: true }`) declares no type
+        // at all — the compiler emits the prop untyped. Without this arm the declaration object
+        // itself would fall through as the prop's type.
+        D extends { required: boolean }
+        ? unknown
+        : D;
 
 type Simplify<T> = { [K in keyof T]: T[K] } & {};
 
@@ -129,8 +134,13 @@ export function defineComponent<O extends ComponentOptionsWithProps>(
   options: O,
   setup: (props: InferProps<O["props"]>) => any,
 ): InkComponent<InferProps<O["props"]>>;
+/**
+ * `props?: never` keeps this overload off any options object carrying a `props` map. The parser
+ * prefers `options.props` over the setup parameter's annotation, so an options-object `props` map
+ * paired with a mismatched annotation would compile clean and emit props the body never reads.
+ */
 export function defineComponent<P = {}>(
-  options: ComponentOptions,
+  options: ComponentOptions & { props?: never },
   setup: (props: P) => any,
 ): InkComponent<P>;
 export function defineComponent<P = {}>(
