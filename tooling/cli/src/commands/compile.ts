@@ -26,6 +26,7 @@ import {
   type BarrelMap,
 } from "../lib/barrel.ts";
 import { formatDiagnostic } from "../lib/diagnostics.ts";
+import { createBuildReporter, formatBuildSummary } from "../lib/report.ts";
 import { EXIT_COMPILE_ERROR, EXIT_USAGE_ERROR, reportConfigError } from "../lib/errors.ts";
 import { writeCompileOutput, writeIfChanged, writeOutput } from "../lib/writer.ts";
 
@@ -156,8 +157,8 @@ export default defineCommand({
       return;
     }
 
-    let hasError = false;
     const reportLevel: DiagnosticSeverity = args.watch ? DEV_REPORT_LEVEL : "info";
+    const reporter = createBuildReporter(reportLevel);
     const barrelEntries: BarrelMap = new Map();
     const srcDir = args["src-dir"] ?? fileConfig.srcDir;
     const sourcePrefix = srcDir
@@ -176,6 +177,8 @@ export default defineCommand({
       srcDir,
     });
 
+    const startedAt = performance.now();
+
     if (args.clean) {
       for (const target of targets) {
         rmSync(resolveTargetDir(target, outDir, targetOutDir), { recursive: true, force: true });
@@ -190,11 +193,9 @@ export default defineCommand({
 
       const result = await compile({ fileName: absPath, source }, compileOptions);
 
-      for (const d of result.diagnostics) {
-        if (!meetsLevel(d.severity, reportLevel)) continue;
-        console.error(formatDiagnostic(d, { source: d.loc.file === absPath ? source : undefined }));
-        if (d.severity === "error") hasError = true;
-      }
+      // The reporter renders through `formatDiagnostic`, so it needs the same source text the
+      // inline loop used to hand it: a diagnostic pointing anywhere but this file gets no frame.
+      reporter.report(result.diagnostics, new Map([[absPath, source]]));
 
       writeCompileOutput(
         result,
@@ -228,7 +229,12 @@ export default defineCommand({
       );
     }
 
-    if (hasError) process.exitCode = EXIT_COMPILE_ERROR;
+    // A build closes with one line stating what it did; the watch loop reports per rebuild instead.
+    console.log(
+      formatBuildSummary(resolvedFiles.length, performance.now() - startedAt, reporter.counts),
+    );
+
+    if (reporter.hasError) process.exitCode = EXIT_COMPILE_ERROR;
   },
 });
 
