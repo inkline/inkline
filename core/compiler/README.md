@@ -511,6 +511,23 @@ Report diagnostics without producing output:
 inkline check src/Counter.ink.tsx --target react
 ```
 
+### Exit codes
+
+| Code | Meaning                                                                                           |
+| ---- | ------------------------------------------------------------------------------------------------- |
+| `0`  | Success. No error diagnostics.                                                                    |
+| `1`  | The compile ran and reported at least one `error` diagnostic.                                     |
+| `2`  | The CLI never got that far: unusable config (missing or unknown `--target`), or no files matched. |
+
+Configuration failures print as a formatted diagnostic with a code, help text, and docs link rather than a stack trace through compiler internals. Pass `--verbose` to also print the underlying stack.
+
+```
+$ inkline compile "src/**/*.ink.tsx" --target reakt
+error  INK0085  Unknown target "reakt"
+    help: Did you mean "react"? Available targets: react, solid, vue, svelte, angular, qwik, astro.
+    docs: https://docs.inkline.dev/diagnostics/INK0085
+```
+
 ### Init
 
 Scaffold Inkline into the current project. Pass `--compiler` to also generate `inkline.config.ts`, an example component, and build scripts:
@@ -859,6 +876,9 @@ The codes below are the ones most authors hit. For the complete, always-current 
 | INK0081 | warning  | Unknown key in `inkline.config.*`. The key is ignored.                                                                                  |
 | INK0082 | warning  | Unknown key in `inkline.config.*` that looks like a typo, with the suggested spelling.                                                  |
 | INK0083 | warning  | Value in `inkline.config.*` has the wrong type. The value is passed through unchanged.                                                  |
+| INK0084 | error    | No compilation target specified.                                                                                                        |
+| INK0085 | error    | Unknown target. Lists the valid targets and suggests the closest match.                                                                 |
+| INK0086 | error    | Target is not present in the configured registry.                                                                                       |
 | INK0090 | error    | A plugin threw an exception.                                                                                                            |
 | INK0100 | error    | Parse failure in a component. That component is skipped; the others in the module still compile.                                        |
 

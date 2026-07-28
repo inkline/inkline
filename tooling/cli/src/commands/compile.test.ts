@@ -178,7 +178,19 @@ describe("compile command (in-process)", () => {
   it("exits 2 when no target is given via flag or config", async () => {
     const { exitCode, errs } = await runCompile([resolve(FIXTURES, "Counter.ink.tsx")]);
     expect(exitCode).toBe(2);
-    expect(errs).toContain("--target is required");
+    expect(errs).toContain("INK0084");
+    expect(errs).toContain("No compilation target specified");
+  });
+
+  it("exits 2 with a suggestion when the target is misspelled", async () => {
+    const { exitCode, errs } = await runCompile([
+      resolve(FIXTURES, "Counter.ink.tsx"),
+      "--target",
+      "reakt",
+    ]);
+    expect(exitCode).toBe(2);
+    expect(errs).toContain("INK0085");
+    expect(errs).toContain('Did you mean "react"?');
   });
 
   it("exits 2 when the pattern matches no files", async () => {

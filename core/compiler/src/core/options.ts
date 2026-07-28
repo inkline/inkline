@@ -1,5 +1,9 @@
 import { ALL_TARGETS, type TargetName, type TargetRegistry } from "../codegen/context.ts";
 import { builtinRegistry } from "../codegen/registry.ts";
+import { UNKNOWN_LOCATION } from "../ir/types.ts";
+import { createDiagnostic } from "./diagnostics/create.ts";
+import { InklineConfigError } from "./diagnostics/error.ts";
+import { suggestClosest } from "./suggest.ts";
 import type { Plugin } from "../plugin/types.ts";
 
 export type SourceMapMode = "external" | "inline" | "none";
@@ -63,23 +67,48 @@ export interface ResolvedCompilerOptions {
   readonly tsconfig?: string;
 }
 
+/**
+ * Validate and default a user config. Config-time failures are user input, not compiler bugs, so
+ * they throw {@link InklineConfigError} carrying a catalog diagnostic (code, help, docs URL) that
+ * the CLI formats like any other diagnostic. There is no source position to point at, hence
+ * {@link UNKNOWN_LOCATION}.
+ */
 export function resolveOptions(
   userConfig: Partial<InklineConfig> | undefined,
 ): ResolvedCompilerOptions {
   const config = userConfig ?? {};
+  const availableTargets = ALL_TARGETS.join(", ");
 
   const targets = config.targets ?? [];
   if (targets.length === 0) {
-    throw new Error("At least one target is required");
+    throw new InklineConfigError(
+      createDiagnostic("INK0084", UNKNOWN_LOCATION, { targets: availableTargets }),
+    );
   }
 
-  for (const t of targets) {
-    if (!ALL_TARGETS.includes(t)) {
-      throw new Error(`Unknown target: "${t}"`);
-    }
+  for (const target of targets) {
+    if (ALL_TARGETS.includes(target)) continue;
+    const closest = suggestClosest(target, ALL_TARGETS);
+    throw new InklineConfigError(
+      createDiagnostic("INK0085", UNKNOWN_LOCATION, {
+        target,
+        targets: availableTargets,
+        suggestion: closest ? `Did you mean "${closest}"? ` : "",
+      }),
+    );
   }
 
   const registry = config.registry ?? builtinRegistry;
+
+  for (const target of targets) {
+    if (registry.has(target)) continue;
+    throw new InklineConfigError(
+      createDiagnostic("INK0086", UNKNOWN_LOCATION, {
+        target,
+        available: registry.list().join(", ") || "(none)",
+      }),
+    );
+  }
 
   return {
     targets,

@@ -30,10 +30,17 @@ describe("formatDiagnostic", () => {
     expect(msg).toContain("\n    docs: https://docs.example.com/INK001");
   });
 
-  it("uses <unknown> for unknown file locations", () => {
+  it("drops the location prefix for unknown file locations", () => {
     const msg = formatDiagnostic(
       makeDiag({ loc: { file: "<unknown>", line: 0, column: 0, offset: 0, length: 0 } }),
     );
-    expect(msg.startsWith("<unknown>  error")).toBe(true);
+    expect(msg.startsWith("error  INK001  Something went wrong")).toBe(true);
+  });
+
+  it("drops the location prefix for an empty file", () => {
+    const msg = formatDiagnostic(
+      makeDiag({ loc: { file: "", line: 0, column: 0, offset: 0, length: 0 } }),
+    );
+    expect(msg.startsWith("error  INK001  Something went wrong")).toBe(true);
   });
 });

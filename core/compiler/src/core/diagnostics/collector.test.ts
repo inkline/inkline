@@ -47,6 +47,15 @@ describe("DiagnosticCollector", () => {
     expect(diags[0]!.help).toBe("Use named imports: import { createSignal } from '@inkline/core'");
   });
 
+  it("push() resolves placeholders in help text", () => {
+    const c = createDiagnosticCollector();
+    c.push("INK0121", loc, { name: "handleClick" });
+    const diags = c.freeze();
+
+    expect(diags[0]!.help).toContain("const handleClick = (…) => …");
+    expect(diags[0]!.help).not.toContain("{name}");
+  });
+
   it("push() sets help to undefined when absent", () => {
     const c = createDiagnosticCollector();
     c.push("INK0060", loc);

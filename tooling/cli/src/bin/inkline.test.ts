@@ -70,9 +70,78 @@ describe("inkline CLI help", () => {
 });
 
 describe("compile", () => {
-  it("exits non-zero without --target", () => {
-    const { status } = run("compile", resolve(FIXTURES_DIR, "Counter.ink.tsx"));
-    expect(status).not.toBe(0);
+  it("reports a missing target as a diagnostic", () => {
+    const { output, status } = run("compile", resolve(FIXTURES_DIR, "Counter.ink.tsx"));
+    expect(status).toBe(2);
+    expect(output).toContain("INK0084");
+    expect(output).toContain("No compilation target specified");
+    expect(output).toContain("react, solid, vue, svelte, angular, qwik, astro");
+    expect(output).not.toMatch(/\n\s+at /);
+  });
+
+  it("reports an unknown target as a diagnostic with a suggestion", () => {
+    const { output, status } = run(
+      "compile",
+      resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+      "--target",
+      "reakt",
+    );
+    expect(status).toBe(2);
+    expect(output).toContain("INK0085");
+    expect(output).toContain('Unknown target "reakt"');
+    expect(output).toContain('Did you mean "react"?');
+    expect(output).toContain("react, solid, vue, svelte, angular, qwik, astro");
+    expect(output).not.toContain("dist/index.mjs");
+    expect(output).not.toMatch(/\n\s+at /);
+  });
+
+  it("omits the suggestion when nothing is close", () => {
+    const { output, status } = run(
+      "compile",
+      resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+      "--target",
+      "nuxt",
+    );
+    expect(status).toBe(2);
+    expect(output).toContain('Unknown target "nuxt"');
+    expect(output).not.toContain("Did you mean");
+  });
+
+  it("surfaces the underlying stack under --verbose", () => {
+    const { output, status } = run(
+      "compile",
+      resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+      "--target",
+      "reakt",
+      "--verbose",
+    );
+    expect(status).toBe(2);
+    expect(output).toContain("INK0085");
+    expect(output).toContain("InklineConfigError");
+    expect(output).toMatch(/\n\s+at /);
+  });
+
+  it("rejects a bad target before --clean touches the output directory", () => {
+    const outDir = resolve(TMP_OUT, "clean-guard-test");
+    const canary = resolve(outDir, "react", "keep-me.txt");
+    try {
+      mkdirSync(resolve(outDir, "react"), { recursive: true });
+      writeFileSync(canary, "canary", "utf-8");
+
+      const { status } = run(
+        "compile",
+        resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+        "--target",
+        "react,reakt",
+        "--out-dir",
+        outDir,
+        "--clean",
+      );
+      expect(status).toBe(2);
+      expect(existsSync(canary)).toBe(true);
+    } finally {
+      if (existsSync(TMP_OUT)) rmSync(TMP_OUT, { recursive: true });
+    }
   });
 
   it("compiles with --target react", () => {
