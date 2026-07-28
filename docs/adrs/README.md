@@ -6,9 +6,9 @@ pays for the same lesson twice.
 
 ## Index
 
-| #                                                            | Title                                                       | Date       | Status   | Tags                     |
-| ------------------------------------------------------------ | ----------------------------------------------------------- | ---------- | -------- | ------------------------ |
-| [001](./001-compiler-dx-invests-in-diagnostics.md)           | Invest compiler DX in diagnostics, ordered coverage → rendering → prose | 2026-07-27 | Accepted | compiler, cli, dx        |
+| #                                                  | Title                                                                   | Date       | Status   | Tags              |
+| -------------------------------------------------- | ----------------------------------------------------------------------- | ---------- | -------- | ----------------- |
+| [001](./001-compiler-dx-invests-in-diagnostics.md) | Invest compiler DX in diagnostics, ordered coverage → rendering → prose | 2026-07-27 | Accepted | compiler, cli, dx |
 
 ## Rules
 

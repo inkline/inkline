@@ -10,7 +10,7 @@ The goal set for this round of work was that reading and writing `.ink.tsx` shou
 experience. Two investigations ran in parallel and independently: a survey of prior art in
 compiler and toolchain developer experience, and a hands-on friction audit of this repository.
 
-**Scope note.** The compiler in `core/compiler` is a *component* compiler — `.ink.tsx` with signal
+**Scope note.** The compiler in `core/compiler` is a _component_ compiler — `.ink.tsx` with signal
 primitives to per-target component output via a typed IR ([`core/compiler/package.json`](../../core/compiler/package.json)).
 It is not a styling engine. Styling belongs to the upstream `styleframe` project, so
 token-authoring prior art (Tailwind v4 `@theme`, UnoCSS) was routed there and is out of scope here.
@@ -33,7 +33,7 @@ pipeline and discarded at the last step. The survey and the audit reached this c
 separately and cited the same file.
 
 **The survey under-weighted one class of problem.** The audit's highest-ranked findings were not bad
-diagnostics — they were *absent* ones: JSX spread attributes discarded with no diagnostic and exit
+diagnostics — they were _absent_ ones: JSX spread attributes discarded with no diagnostic and exit
 code 0; nothing type-checking `.ink.tsx`; unknown configuration keys ignored; a documented API that
 does not exist. Every exemplar in the survey (rustc, Elm, Biome, Vite, Sass) improves diagnostics
 that already fire. None of them has a story for a compiler that stays quiet. A code frame drawn on
@@ -48,14 +48,14 @@ three times in one sentence.
 
 **Options that were live and were not chosen this round:**
 
-- *Build-architecture work* (Vite's model: dev cost proportional to the modules on the page, not the
+- _Build-architecture work_ (Vite's model: dev cost proportional to the modules on the page, not the
   project). Declined because the measurement above says there is nothing to fix yet.
-- *Structured autofix suggestions* (rustc `Applicability`, Biome `CodeSuggestion` with safe/unsafe
+- _Structured autofix suggestions_ (rustc `Applicability`, Biome `CodeSuggestion` with safe/unsafe
   fixes). Deferred, not rejected — see the Decision.
-- *A dev-time inspector* (UnoCSS `/__unocss`: per-token, per-file attribution of what the tool did
+- _A dev-time inspector_ (UnoCSS `/__unocss`: per-token, per-file attribution of what the tool did
   and why). Strong option, genuinely useful, but it explains correct output; it does not help the
   case where the output is silently wrong.
-- *Library-author diagnostics* (Sass `@error`/`@warn`, where a library's error message points its
+- _Library-author diagnostics_ (Sass `@error`/`@warn`, where a library's error message points its
   caret at the consumer's call site). Valuable once there is a third-party component ecosystem;
   premature before one exists.
 
@@ -93,7 +93,7 @@ machine-readable confidence level ships in the same release as the first suggest
 - **The strongest evidence available argues this may not work.** Santos & Becker (UKICER 2024,
   arXiv:2409.18661, n=106) found that error-message enhancement has shown "weak to insignificant
   results", that handwritten explanations beat both LLM-generated and conventional messages, and —
-  most damaging — that preference and performance *dissociate*: users rate verbose messages higher
+  most damaging — that preference and performance _dissociate_: users rate verbose messages higher
   while fixing bugs no faster. We are accepting this risk with one mitigation: acceptance criteria
   measure time-to-fix on a fixed scenario set, never satisfaction. A slice that ships and cannot show
   a time-to-fix improvement has failed, regardless of how it feels.
