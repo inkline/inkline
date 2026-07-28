@@ -192,6 +192,11 @@ accepts. Anything else is reported as `INK0042` rather than dropped; for a type 
 express, use the typed-parameter form above. When `type` is omitted, the type is inferred from
 `default`; when both are present, `type` wins.
 
+An object literal is read as that full shape only when **every** key is one the shape reads (`type`,
+`required`, `default`). Anything else is an object _default value_, exactly like an array or string
+literal in the same position — `cfg: { a: 1 }` declares an optional `Record<string, any>` defaulting
+to `{ a: 1 }`. Write `cfg: { default: { a: 1 } }` to be explicit.
+
 Everything that is _not_ a prop also goes in the options object — `slots`, `events`, `runtime`,
 `name`, and `meta`. Those keys are declared on `ComponentOptions` and type-check today, so they can
 be combined with a typed setup parameter:

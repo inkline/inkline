@@ -7,13 +7,18 @@ import { describe, it, expect } from "vitest";
 import { compileTo, compileToChecked } from "../../../../testing/codegen.ts";
 
 // The full object form used to read `type:` through `ts.isTypeNode`, which a constructor
-// `Identifier` never satisfies — so the key was dropped and every prop below emitted untyped.
-describe("PropTypeShapes: full object form `{ type: X, required, default }`", () => {
-  it("Vue: the defineProps generic carries the constructor-declared types", async () => {
+// `Identifier` never satisfies — so the key was dropped and every prop below emitted untyped. `cfg`
+// covers the other half: an object literal is only a shape when every key is one the shape reads,
+// otherwise it is a default value, and routing it into the shape dropped its type AND its default.
+describe("PropTypeShapes: full object form vs. an object literal default", () => {
+  it("Vue: the defineProps generic carries the declared types and withDefaults seeds the object default", async () => {
     const out = await compileToChecked("PropTypeShapes", "vue");
     expect(out).toContain(
-      "const props = withDefaults(defineProps<{ size?: number; label: string; when?: Date; count: number }>(), { count: 0 })",
+      "const props = withDefaults(defineProps<{ size?: number; label: string; when?: Date; count: number; cfg?: Record<string, any> }>(), { count: 0, cfg: () => ({ a: 1 }) })",
     );
+    // Vue shares one `withDefaults` value across every instance, so a bare object literal would
+    // alias the same mutable object everywhere — the default has to be a factory.
+    expect(out).not.toContain("cfg: { a: 1 }");
   });
 });
 

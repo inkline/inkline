@@ -137,7 +137,7 @@ function parsePropsFromObject(
     const init = member.initializer;
     const loc = toLoc(member, sourceFile);
 
-    if (ts.isObjectLiteralExpression(init)) {
+    if (ts.isObjectLiteralExpression(init) && isFullPropShape(init)) {
       const parsed = parseFullPropShape(name, init, componentId, sourceFile, ctx);
       props.push({ ...parsed, loc });
     } else {
@@ -159,6 +159,24 @@ function parsePropsFromObject(
   }
 
   return props;
+}
+
+/** The only keys the full prop shape reads. */
+const FULL_SHAPE_KEYS: ReadonlySet<string> = new Set(["type", "required", "default"]);
+
+/**
+ * Distinguish a full prop shape (`{ type: Number, default: 0 }`) from an object literal used as a
+ * *default value* (`cfg: { a: 1 }`), which `PropDefaultValue` in `@inkline/core` accepts. Both are
+ * object literals in the same position, so the shape only wins when every key is one it reads —
+ * otherwise the object is a default, like an array or string literal in the same position. Reading
+ * every object as a shape is what dropped `cfg`'s type *and* its default silently.
+ */
+function isFullPropShape(obj: ts.ObjectLiteralExpression): boolean {
+  if (obj.properties.length === 0) return false;
+  return obj.properties.every(
+    (p) =>
+      ts.isPropertyAssignment(p) && ts.isIdentifier(p.name) && FULL_SHAPE_KEYS.has(p.name.text),
+  );
 }
 
 function parseFullPropShape(

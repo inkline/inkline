@@ -100,6 +100,26 @@ describe("parseOptions", () => {
       expect(result.props![1]!.typeText).toBe("number");
     });
 
+    // Every object literal used to be read as a full shape, so `cfg: { a: 1 }` lost its type AND
+    // its default while `tags: [1]` in the same position kept both.
+    it("reads an object literal as a default value unless every key belongs to the shape", () => {
+      const { obj, sf } = getObjectLiteral(
+        `{ props: { cfg: { a: 1 }, empty: {}, mixed: { a: 1, type: Number }, shape: { type: Number } } }`,
+      );
+      const ctx = makeCtx();
+      const props = parseOptions(obj, "test#X", sf, ctx).props!;
+
+      for (const p of props.slice(0, 3)) {
+        expect(p.typeText).toBe("Record<string, any>");
+        expect(p.required).toBe(false);
+        expect(p.defaultValue, `${p.name} should keep its object default`).toBeDefined();
+      }
+      // Only the all-shape-keys object is read as a declaration rather than a value.
+      expect(props[3]!.typeText).toBe("number");
+      expect(props[3]!.defaultValue).toBeUndefined();
+      expect(ctx.diagnostics.freeze()).toHaveLength(0);
+    });
+
     it("parses default-value prop as not required", () => {
       const { obj, sf } = getObjectLiteral(`{ props: { label: "hello" } }`);
       const ctx = makeCtx();

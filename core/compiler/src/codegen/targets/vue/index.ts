@@ -431,7 +431,15 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     // that declared one, keeping the `const props` binding the <script> reads via `props.x`.
     const defaults = component.props
       .filter((p) => p.defaultValue)
-      .map((p) => `${p.name}: ${rewriteExpr(p.defaultValue!.expr, rules)}`);
+      .map((p) => {
+        const expr = p.defaultValue!.expr;
+        const value = rewriteExpr(expr, rules);
+        // Vue shares a `withDefaults` value across every instance, so object and array defaults must
+        // be factories or all instances alias one mutable object (`vue/require-valid-default-prop`).
+        if (ts.isObjectLiteralExpression(expr)) return `${p.name}: () => (${value})`;
+        if (ts.isArrayLiteralExpression(expr)) return `${p.name}: () => ${value}`;
+        return `${p.name}: ${value}`;
+      });
     const body =
       defaults.length > 0
         ? `const props = withDefaults(defineProps<{ ${defs} }>(), { ${defaults.join(", ")} })`

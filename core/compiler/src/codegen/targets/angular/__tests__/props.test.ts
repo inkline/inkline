@@ -7,14 +7,17 @@ import { describe, it, expect } from "vitest";
 import { compileTo, compileToChecked } from "../../../../testing/codegen.ts";
 
 // The full object form used to read `type:` through `ts.isTypeNode`, which a constructor
-// `Identifier` never satisfies — so the key was dropped and every input below emitted untyped.
-describe("PropTypeShapes: full object form `{ type: X, required, default }`", () => {
-  it("Angular: signal inputs carry the constructor-declared type parameter", async () => {
+// `Identifier` never satisfies — so the key was dropped and every input below emitted untyped. `cfg`
+// covers the other half: an object literal is only a shape when every key is one the shape reads,
+// otherwise it is a default value, and routing it into the shape dropped its type AND its default.
+describe("PropTypeShapes: full object form vs. an object literal default", () => {
+  it("Angular: signal inputs carry the declared type parameter and the object default as the initial value", async () => {
     const out = await compileToChecked("PropTypeShapes", "angular");
     expect(out).toContain("size = input<number>()");
     expect(out).toContain("label = input.required<string>()");
     expect(out).toContain("when = input<Date>()");
     expect(out).toContain("count = input<number>(0)");
+    expect(out).toContain("cfg = input<Record<string, any>>({ a: 1 })");
   });
 });
 

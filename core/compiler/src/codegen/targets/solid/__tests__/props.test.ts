@@ -7,14 +7,16 @@ import { describe, it, expect } from "vitest";
 import { compileTo, compileToChecked } from "../../../../testing/codegen.ts";
 
 // The full object form used to read `type:` through `ts.isTypeNode`, which a constructor
-// `Identifier` never satisfies — so the key was dropped and every prop below emitted untyped.
-describe("PropTypeShapes: full object form `{ type: X, required, default }`", () => {
-  it("Solid: the props parameter carries the constructor-declared types", async () => {
+// `Identifier` never satisfies — so the key was dropped and every prop below emitted untyped. `cfg`
+// covers the other half: an object literal is only a shape when every key is one the shape reads,
+// otherwise it is a default value, and routing it into the shape dropped its type AND its default.
+describe("PropTypeShapes: full object form vs. an object literal default", () => {
+  it("Solid: the props parameter carries the declared types and mergeProps seeds the object default", async () => {
     const out = await compileToChecked("PropTypeShapes", "solid");
     expect(out).toContain(
-      "function PropTypeShapes(_props: { size?: number; label: string; when?: Date; count: number } & JSX.HTMLAttributes<HTMLElement>)",
+      "function PropTypeShapes(_props: { size?: number; label: string; when?: Date; count: number; cfg?: Record<string, any> } & JSX.HTMLAttributes<HTMLElement>)",
     );
-    expect(out).toContain("const props = mergeProps({ count: 0 }, _props)");
+    expect(out).toContain("const props = mergeProps({ count: 0, cfg: { a: 1 } }, _props)");
   });
 });
 

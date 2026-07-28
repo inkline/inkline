@@ -6,6 +6,8 @@ export default defineComponent(
       label: { type: String, required: true },
       when: { type: Date },
       count: { type: Number, required: true, default: 0 },
+      // Not a shape — an object literal used as a default, alongside the shapes above.
+      cfg: { a: 1 },
     },
   },
   (props) => {
