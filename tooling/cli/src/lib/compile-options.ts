@@ -15,6 +15,18 @@ export interface CompileOptionOverrides {
 }
 
 /**
+ * What {@link buildCompileOptions} actually returns: a `Partial<InklineConfig>` in which the four
+ * fields it always takes from {@link CompileOptionOverrides} are known to be present.
+ *
+ * The narrowing is read off the function body, not assumed — those four are assigned unconditionally
+ * from a required override. Stating it in the type is what lets a consumer read `options.outDir`
+ * directly instead of re-deriving it with a second `?? fallback` that could disagree with the value
+ * the compiler was handed.
+ */
+export type CompileOptions = Partial<InklineConfig> &
+  Pick<CompileOptionOverrides, "targets" | "outDir" | "sourceMap" | "verbose">;
+
+/**
  * Single source of truth for the config → `compile()` options mapping.
  *
  * `check` and `compile` must hand the compiler the same program, plugins and target options, or the
@@ -28,7 +40,7 @@ export interface CompileOptionOverrides {
 export function buildCompileOptions(
   fileConfig: Partial<InklineConfig>,
   overrides: CompileOptionOverrides,
-): Partial<InklineConfig> {
+): CompileOptions {
   return {
     targets: overrides.targets,
     srcDir: overrides.srcDir ?? fileConfig.srcDir,

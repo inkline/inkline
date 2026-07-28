@@ -4,17 +4,23 @@ import { resolve, basename, extname, dirname, join, relative, sep } from "node:p
 import {
   compile,
   compileIncremental,
-  createIncrementalState,
   meetsLevel,
   resolveOptions,
+  seedIncrementalState,
   type BarrelGroup,
   type TargetName,
+  type IncrementalSeed,
   type IncrementalState,
   type DiagnosticSeverity,
 } from "@inkline/compiler";
 import { activeFrameworks, generate, type GeneratedFile } from "@inkline/storybook/generator";
 import { loadInklineConfig } from "../lib/config.ts";
-import { buildCompileOptions, resolveOutDir, resolveTargets } from "../lib/compile-options.ts";
+import {
+  buildCompileOptions,
+  resolveOutDir,
+  resolveTargets,
+  type CompileOptions,
+} from "../lib/compile-options.ts";
 import { expandGlobs } from "../lib/glob.ts";
 import { commonPrefix } from "../lib/common-prefix.ts";
 import {
@@ -158,6 +164,9 @@ export default defineCommand({
 
     let hasError = false;
     const reportLevel: DiagnosticSeverity = args.watch ? DEV_REPORT_LEVEL : "info";
+    // Under `--watch`, the initial pass below seeds the watcher's incremental state so the author's
+    // first save is incremental rather than a second full build. Empty (and unused) otherwise.
+    const seeds: IncrementalSeed[] = [];
     const barrelEntries: BarrelMap = new Map();
     const srcDir = args["src-dir"] ?? fileConfig.srcDir;
     const sourcePrefix = srcDir
@@ -190,6 +199,8 @@ export default defineCommand({
 
       const result = await compile({ fileName: absPath, source }, compileOptions);
 
+      if (args.watch) seeds.push({ fileName: absPath, source, result });
+
       for (const d of result.diagnostics) {
         if (!meetsLevel(d.severity, reportLevel)) continue;
         console.error(formatDiagnostic(d, { source: d.loc.file === absPath ? source : undefined }));
@@ -216,15 +227,13 @@ export default defineCommand({
     if (args.watch) {
       return runWatch(
         resolvedFiles,
-        targets,
-        outDir,
-        targetOutDir,
-        sourceMap,
         compileOptions,
+        targetOutDir,
         sourcePrefix,
         srcDir,
         namedGroups,
         namespaceGroup,
+        seedIncrementalState(seeds),
       );
     }
 
@@ -233,7 +242,7 @@ export default defineCommand({
 });
 
 async function generateStories(
-  targets: TargetName[],
+  targets: readonly TargetName[],
   outDir: string,
   targetOutDir: Partial<Record<string, string>>,
   srcDir: string,
@@ -280,22 +289,26 @@ async function generateStories(
 
 function runWatch(
   files: string[],
-  targets: TargetName[],
-  outDir: string,
+  // The bag the initial pass compiled with. `targets`, `outDir` and `sourceMap` used to arrive as
+  // loose siblings of this object; reading them off it instead means the watcher cannot be handed a
+  // value that disagrees with what the compiler was configured with.
+  compileOptions: CompileOptions,
   targetOutDir: Partial<Record<string, string>>,
-  sourceMap: "external" | "inline" | "none",
-  compileOptions: Partial<import("@inkline/compiler").InklineConfig>,
   sourcePrefix: string,
   srcDir: string | undefined,
   namedGroups: readonly BarrelGroup[],
   namespaceGroup: BarrelGroup | undefined,
+  // Seeded from the initial pass in `run`, not created empty here: an empty state makes the first
+  // save after startup a full rebuild of every file, which is the work the caller just finished.
+  initialState: IncrementalState,
 ): FSWatcher {
   console.log(`Watching ${files.length} file(s) for changes...\n`);
-  let state: IncrementalState = createIncrementalState();
+  let state: IncrementalState = initialState;
   let compileTimer: ReturnType<typeof setTimeout> | undefined;
   let storyTimer: ReturnType<typeof setTimeout> | undefined;
 
   const rebuild = async () => {
+    const startedAt = performance.now();
     const inputs = files.map((f) => {
       const absPath = resolve(f);
       return { fileName: absPath, source: readFileSync(absPath, "utf-8") };
@@ -318,13 +331,13 @@ function runWatch(
 
       for (const [target, targetFiles] of Object.entries(compileResult.files)) {
         if (!targetFiles) continue;
-        const targetDir = resolveTargetDir(target, outDir, targetOutDir);
+        const targetDir = resolveTargetDir(target, compileOptions.outDir, targetOutDir);
 
         for (const file of targetFiles) {
           const outPath = resolve(targetDir, relDir, file.path);
           mkdirSync(dirname(outPath), { recursive: true });
           writeIfChanged(outPath, file.contents);
-          if (file.sourceMap && sourceMap === "external") {
+          if (file.sourceMap && compileOptions.sourceMap === "external") {
             writeIfChanged(`${outPath}.map`, file.sourceMap);
           }
 
@@ -346,9 +359,15 @@ function runWatch(
 
     flushNamedBarrels(barrelEntries, namedGroups, writeIfChanged);
 
-    if (result.changed.length > 0) {
-      console.log(`Rebuilt ${result.changed.length} file(s), skipped ${result.skipped.length}`);
-    }
+    // Always print, including the no-change case: an editor that saves without changing bytes is
+    // indistinguishable from a dead watcher otherwise. The duration is the whole rebuild — compile
+    // plus writes, excluding the debounce — so a slow loop is visible without external timing.
+    const elapsedMs = Math.round(performance.now() - startedAt);
+    const summary =
+      result.changed.length > 0
+        ? `Rebuilt ${result.changed.length} file(s), skipped ${result.skipped.length}`
+        : `No changes, ${result.skipped.length} file(s) up to date`;
+    console.log(`${summary} in ${elapsedMs}ms`);
   };
 
   const resolvedSrcDir = resolve(srcDir ?? sourcePrefix);
@@ -360,8 +379,8 @@ function runWatch(
       if (storyTimer) clearTimeout(storyTimer);
       storyTimer = setTimeout(() => {
         generateStories(
-          targets,
-          outDir,
+          compileOptions.targets,
+          compileOptions.outDir,
           targetOutDir,
           srcDir ?? sourcePrefix,
           namespaceGroup,
