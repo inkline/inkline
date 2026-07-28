@@ -145,6 +145,26 @@ describe("check / compile option parity", () => {
     expect(checkOptions?.targetOptions).toEqual({ react: { forwardRef: true } });
   });
 
+  // The assertion above only ever exercises an omitted `--verbose`, and that is exactly the input
+  // where `||` and `??` agree — so it cannot see `check` losing the `??` half of the resolution.
+  // Passing the flag is what separates them: under `||` a config `verbose: true` survives
+  // `--no-verbose`, which is the defect this pair of commands was just fixed for.
+  it("lets --no-verbose override a config verbose: true, matching compile", async () => {
+    const dir = resolve(TMP, "verbose-parity");
+    const configPath = writeFixture(dir);
+    process.chdir(dir);
+
+    await run(compileCommand, ["src/A.ink.tsx", "--config", configPath, "--no-verbose"]);
+    const compileOptions = compileCalls.at(-1);
+    compileCalls.length = 0;
+
+    await run(checkCommand, ["src/A.ink.tsx", "--config", configPath, "--no-verbose"]);
+    const checkOptions = compileCalls.at(-1);
+
+    expect(compileOptions?.verbose).toBe(false);
+    expect(checkOptions?.verbose).toBe(false);
+  });
+
   it("reports missing targets as a diagnostic rather than inventing a target set", async () => {
     const dir = resolve(TMP, "no-targets");
     mkdirSync(dir, { recursive: true });
