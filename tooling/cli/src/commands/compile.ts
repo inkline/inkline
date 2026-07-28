@@ -11,6 +11,8 @@ import {
   type TargetName,
   type IncrementalSeed,
   type IncrementalState,
+  type InklineConfig,
+  type SourceMapMode,
   type DiagnosticSeverity,
 } from "@inkline/compiler";
 import { activeFrameworks, generate, type GeneratedFile } from "@inkline/storybook/generator";
@@ -41,6 +43,17 @@ const DEFAULT_BARRELS: readonly BarrelGroup[] = [{ file: "index.ts", match: "" }
  * A one-shot compile (a build) keeps the `info` floor and reports everything.
  */
 const DEV_REPORT_LEVEL = "warning" as const;
+
+/**
+ * The compiler config the CLI hands to both compile paths, with `outDir` and `sourceMap` narrowed to
+ * required: they are optional on `InklineConfig` because the compiler defaults them, but the CLI has
+ * already resolved both from flag > config > default, so the watcher can read them without a second
+ * fallback that could disagree with the one the initial pass used.
+ */
+type CompilerConfig = InklineConfig & {
+  readonly outDir: string;
+  readonly sourceMap: SourceMapMode;
+};
 
 /** Ensure every configured named barrel exists for each target that produced output (empty if unmatched). */
 export function seedNamedBarrels(
@@ -148,10 +161,7 @@ export default defineCommand({
     const barrels = fileConfig.barrels ?? DEFAULT_BARRELS;
     const namedGroups = barrels.filter((g) => g.mode !== "namespace");
     const namespaceGroup = barrels.find((g) => g.mode === "namespace");
-    const sourceMap = (args["source-map"] ?? fileConfig.sourceMap ?? "external") as
-      | "external"
-      | "inline"
-      | "none";
+    const sourceMap = (args["source-map"] ?? fileConfig.sourceMap ?? "external") as SourceMapMode;
 
     const resolvedFiles = expandGlobs([...args._]);
     if (resolvedFiles.length === 0) {
@@ -159,6 +169,22 @@ export default defineCommand({
       process.exitCode = EXIT_USAGE_ERROR;
       return;
     }
+
+    // Built once and handed to both compile paths. The one-shot pass below and the watcher's
+    // `compileIncremental` MUST run with byte-identical config: the incremental state is a
+    // content-keyed cache that does not hash the config, so a field that differs between the two
+    // means every file the watcher skips serves output compiled under settings that no longer
+    // apply — wrong output, no error, no diagnostic. One object makes that unrepresentable.
+    const compilerConfig: CompilerConfig = {
+      targets,
+      outDir,
+      sourceMap,
+      verbose,
+      plugins: fileConfig.plugins,
+      targetOptions: fileConfig.targetOptions,
+      registry: fileConfig.registry,
+      tsconfig: fileConfig.tsconfig,
+    };
 
     let hasError = false;
     const reportLevel: DiagnosticSeverity = args.watch ? DEV_REPORT_LEVEL : "info";
@@ -185,19 +211,7 @@ export default defineCommand({
       const name = basename(absPath, extname(absPath)).replace(/\.ink(\.stories)?$/, "");
       const relDir = dirname(filePath).slice(sourcePrefix.length);
 
-      const result = await compile(
-        { fileName: absPath, source },
-        {
-          targets,
-          outDir,
-          sourceMap,
-          verbose,
-          plugins: fileConfig.plugins,
-          targetOptions: fileConfig.targetOptions,
-          registry: fileConfig.registry,
-          tsconfig: fileConfig.tsconfig,
-        },
-      );
+      const result = await compile({ fileName: absPath, source }, compilerConfig);
 
       if (args.watch) seeds.push({ fileName: absPath, source, result });
 
@@ -227,12 +241,8 @@ export default defineCommand({
     if (args.watch) {
       return runWatch(
         resolvedFiles,
-        targets,
-        outDir,
+        compilerConfig,
         targetOutDir,
-        sourceMap,
-        verbose,
-        fileConfig,
         sourcePrefix,
         srcDir,
         namedGroups,
@@ -246,7 +256,7 @@ export default defineCommand({
 });
 
 async function generateStories(
-  targets: TargetName[],
+  targets: readonly TargetName[],
   outDir: string,
   targetOutDir: Partial<Record<string, string>>,
   srcDir: string,
@@ -293,12 +303,10 @@ async function generateStories(
 
 function runWatch(
   files: string[],
-  targets: TargetName[],
-  outDir: string,
+  // The same object the initial pass compiled with — passed whole rather than as loose fields the
+  // watcher would have to reassemble, so the two paths cannot drift.
+  config: CompilerConfig,
   targetOutDir: Partial<Record<string, string>>,
-  sourceMap: "external" | "inline" | "none",
-  verbose: boolean,
-  fileConfig: Partial<import("@inkline/compiler").InklineConfig>,
   sourcePrefix: string,
   srcDir: string | undefined,
   namedGroups: readonly BarrelGroup[],
@@ -319,16 +327,7 @@ function runWatch(
       return { fileName: absPath, source: readFileSync(absPath, "utf-8") };
     });
 
-    const result = await compileIncremental(state, inputs, {
-      targets,
-      outDir,
-      sourceMap,
-      verbose,
-      plugins: fileConfig.plugins,
-      targetOptions: fileConfig.targetOptions,
-      registry: fileConfig.registry,
-      tsconfig: fileConfig.tsconfig,
-    });
+    const result = await compileIncremental(state, inputs, config);
 
     state = result.nextState;
 
@@ -344,13 +343,13 @@ function runWatch(
 
       for (const [target, targetFiles] of Object.entries(compileResult.files)) {
         if (!targetFiles) continue;
-        const targetDir = resolveTargetDir(target, outDir, targetOutDir);
+        const targetDir = resolveTargetDir(target, config.outDir, targetOutDir);
 
         for (const file of targetFiles) {
           const outPath = resolve(targetDir, relDir, file.path);
           mkdirSync(dirname(outPath), { recursive: true });
           writeIfChanged(outPath, file.contents);
-          if (file.sourceMap && sourceMap === "external") {
+          if (file.sourceMap && config.sourceMap === "external") {
             writeIfChanged(`${outPath}.map`, file.sourceMap);
           }
 
@@ -392,8 +391,8 @@ function runWatch(
       if (storyTimer) clearTimeout(storyTimer);
       storyTimer = setTimeout(() => {
         generateStories(
-          targets,
-          outDir,
+          config.targets,
+          config.outDir,
           targetOutDir,
           srcDir ?? sourcePrefix,
           namespaceGroup,
