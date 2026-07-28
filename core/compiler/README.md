@@ -810,10 +810,15 @@ for (const file of files) {
 
 ## Custom Targets
 
-Register a custom target for frameworks not built in:
+`name` must be one of the seven built-in `TargetName` values, and `resolveOptions` rejects anything
+outside `ALL_TARGETS` before it consults your registry — so this **overrides the implementation
+behind a built-in name**, it does not add a target for a framework that isn't built in. Adding a new
+framework is an in-repo contribution; see [`docs/adding-a-target.md`](../../docs/adding-a-target.md).
+
+Override a built-in target's rewrites or emit:
 
 ```ts
-import { defineTarget, createRegistry, builtinRegistry } from "@inkline/compiler";
+import { defineTarget, createRegistry } from "@inkline/compiler";
 import type { IRComponent, CodegenContext, CodeModule } from "@inkline/compiler";
 import { cFile, cStmt, cImport, cJsxElement } from "@inkline/compiler";
 
@@ -846,7 +851,9 @@ registry.register(myTarget);
 const result = await compile(input, { targets: ["react"], registry });
 ```
 
-See `docs/adding-a-target.md` for a complete walkthrough.
+`createRegistry()` starts empty, so every name in `targets` must be registered in it or `compile`
+throws INK0086. Spread a built-in (`{ ...reactTarget, rewrites: … }`) when you only want to change
+part of it.
 
 ---
 

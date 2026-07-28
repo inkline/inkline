@@ -20,7 +20,7 @@ The seven built-in targets are registered in [`core/compiler/src/codegen/registr
 | `qwik`    | Qwik components                                    | First-class.                                                                            |
 | `astro`   | `.astro`                                           | Static-first. `<Transition>` is unwrapped (no runtime animation).                       |
 
-The compiler also exposes `defineTarget` + `createRegistry` so consumers can register custom targets — see [adding-a-target.md](./adding-a-target.md).
+Those seven names are the whole set: `TargetName` is a closed union and `resolveOptions` rejects anything outside `ALL_TARGETS`, so a new target is an in-repo contribution, not an extension point. The exported `defineTarget` + `createRegistry` let consumers **replace the implementation behind a built-in name** (custom `rewrites`/`emit` for `react`, say) — they do not add new ones. See [adding-a-target.md](./adding-a-target.md).
 
 ### Authoring features
 
