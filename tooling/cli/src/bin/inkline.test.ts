@@ -3,7 +3,7 @@ import { spawnSync } from "node:child_process";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { existsSync, rmSync, writeFileSync, mkdirSync, readFileSync } from "node:fs";
-import { renderUsage, defineCommand } from "citty";
+import { renderUsage } from "citty";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const CLI_PATH = resolve(__dirname, "inkline.ts");
@@ -42,22 +42,15 @@ function run(...args: string[]): {
 }
 
 describe("inkline CLI help", () => {
-  it("root help shows all commands", async () => {
-    const { default: root } = await import("../commands/compile.ts");
-    const main = defineCommand({
-      meta: { name: "inkline" },
-      subCommands: {
-        compile: () => Promise.resolve(root),
-        check: () => import("../commands/check.ts").then((m) => m.default),
-        init: () => import("../commands/init.ts").then((m) => m.default),
-        add: () => import("../commands/add.ts").then((m) => m.default),
-      },
-    });
-    const usage = await renderUsage(main);
-    expect(usage).toContain("compile");
-    expect(usage).toContain("check");
-    expect(usage).toContain("init");
-    expect(usage).toContain("add");
+  // Spawns the real binary rather than re-declaring the subcommand map, so the assertion is
+  // about what users see and cannot drift from `src/index.ts`.
+  it("root help shows the wired commands and nothing that is unimplemented", () => {
+    const { output, status } = run("--help");
+    expect(status).toBe(0);
+    expect(output).toContain("compile");
+    expect(output).toContain("check");
+    expect(output).toContain("init");
+    expect(output).not.toMatch(/\badd\b/);
   });
 
   it("compile help shows options", async () => {
@@ -440,9 +433,12 @@ describe("init", () => {
 });
 
 describe("add", () => {
-  it("prints not yet implemented", () => {
-    const { stdout, status } = run("add", "badge");
-    expect(status).toBe(0);
-    expect(stdout).toContain("not yet implemented");
+  // `add` was a no-op that printed "not yet implemented" and exited 0, so no script could
+  // detect it had done nothing. It is unregistered until the real feature lands.
+  it("is rejected as an unknown command with a non-zero exit", () => {
+    const { output, status } = run("add", "badge");
+    expect(status).not.toBe(0);
+    expect(output).toContain("Unknown command");
+    expect(output).not.toContain("not yet implemented");
   });
 });

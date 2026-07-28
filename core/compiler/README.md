@@ -536,14 +536,6 @@ Scaffold Inkline into the current project. Pass `--compiler` to also generate `i
 inkline init --framework react --compiler
 ```
 
-### Add
-
-```bash
-inkline add IButton
-```
-
-`add` is registered but not yet implemented — it currently prints a notice.
-
 ---
 
 ## Programmatic API
