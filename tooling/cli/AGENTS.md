@@ -44,6 +44,7 @@ When adding a command:
 | [`errors.ts`](./src/lib/errors.ts)                                   | Exit-code constants and config-error reporting (see "Exit codes" below).             |
 | [`glob.ts`](./src/lib/glob.ts)                                       | Input-file globbing.                                                                 |
 | [`inkline-config-template.ts`](./src/lib/inkline-config-template.ts) | `inkline.config.ts` + example-component templates for `init --compiler`.             |
+| [`report.ts`](./src/lib/report.ts)                                   | Per-build diagnostic reporting: level filter, deduplication, counts, summary line.   |
 | [`styleframe-config.ts`](./src/lib/styleframe-config.ts)             | The `styleframe.config.ts` template seeded by `init`.                                |
 | [`writer.ts`](./src/lib/writer.ts)                                   | Atomic file writes with source-map sidecar support.                                  |
 
@@ -58,6 +59,8 @@ Defined once in [`lib/errors.ts`](./src/lib/errors.ts); never write a bare numbe
 | —                    | `0`  | Success.                                                                       |
 | `EXIT_COMPILE_ERROR` | `1`  | The compile ran and reported at least one `error` diagnostic.                  |
 | `EXIT_USAGE_ERROR`   | `2`  | The CLI never got that far: unusable config, or no files matched the patterns. |
+
+`EXIT_COMPILE_ERROR` is decided from every diagnostic the compile produced, before the reporting level filters any out and before [`report.ts`](./src/lib/report.ts) collapses duplicates — what a build prints may change; what it returns must not.
 
 User-input failures must never surface a stack trace. `resolveOptions` throws `InklineConfigError` carrying a catalog `Diagnostic`; commands validate up front (before `--clean` deletes anything) and hand the error to `reportConfigError`, which formats it and sets `EXIT_USAGE_ERROR`. The stack is printed only under `--verbose`. Anything `reportConfigError` returns `false` for is a real crash — rethrow it.
 
