@@ -922,6 +922,13 @@ import {
 | `expectMappingAt(file, line, col)`                        | Assert a source-map mapping exists at a position.                                               |
 | `verifyIdentifierMappings(file, identifiers, tolerance?)` | Verify identifier positions round-trip through source maps.                                     |
 
+The framework runtimes and lint tools these harnesses drive — `react`, `react-dom`, `vue`,
+`@vue/server-renderer`, `solid-js`, `svelte`, `eslint`, `oxlint`, `tinybench` — are **optional peer
+dependencies**, loaded on demand. Install only the ones the harnesses you call actually need.
+
+Fixture _names_ are not part of the semver contract: they exist to serve this compiler's own test
+suite and may be added, renamed or removed in any release.
+
 ---
 
 ## v0 Limitations

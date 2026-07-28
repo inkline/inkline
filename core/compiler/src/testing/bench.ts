@@ -1,11 +1,10 @@
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import { resolve, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-import { Bench, type TaskResultWithStatistics } from "tinybench";
+import { resolve } from "node:path";
+import type { TaskResultWithStatistics } from "tinybench";
 import { compile } from "../pipeline/compile.ts";
+import { FIXTURES_DIR, PACKAGE_ROOT } from "./harness.ts";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const BASELINE_PATH = resolve(__dirname, "..", "..", ".bench-baseline.json");
+const BASELINE_PATH = resolve(PACKAGE_ROOT, ".bench-baseline.json");
 
 export interface BenchResult {
   readonly name: string;
@@ -21,9 +20,10 @@ export interface BenchSuiteResult {
 }
 
 export async function runBenchSuite(): Promise<BenchSuiteResult> {
-  const fixturePath = resolve(__dirname, "..", "__fixtures__", "Counter.ink.tsx");
+  const fixturePath = resolve(FIXTURES_DIR, "Counter.ink.tsx");
   const source = readFileSync(fixturePath, "utf-8");
 
+  const { Bench } = await import("tinybench");
   const bench = new Bench({ warmupIterations: 3, iterations: 20 });
 
   bench.add("compile Counter (react)", async () => {
