@@ -440,6 +440,70 @@ describe("compile command watch mode", () => {
   });
 });
 
+describe("compile command watch mode: incremental seeding and rebuild reporting", () => {
+  /**
+   * Two components, one edited. Without the initial pass seeding the watcher's incremental state the
+   * first save recompiles both; seeded, it recompiles one and skips the other. The assertion is on
+   * the skip count precisely because that is the number the old code got wrong.
+   */
+  it("rebuilds only the edited file on the first save, reports no-op saves, and times both", async () => {
+    const configDir = tmpDir("watch-seed");
+    const srcDir = resolve(configDir, "src");
+    const reactDir = resolve(configDir, "out", "react", ".inkline");
+    const styledDir = resolve(srcDir, "components", "pair", "styled");
+    mkdirSync(styledDir, { recursive: true });
+    const editedFile = resolve(styledDir, "IEdited.ink.tsx");
+    const untouchedFile = resolve(styledDir, "IUntouched.ink.tsx");
+    writeFileSync(editedFile, COMPONENT);
+    writeFileSync(untouchedFile, COMPONENT);
+    const configPath = resolve(configDir, "inkline.config.mjs");
+    writeFileSync(
+      configPath,
+      `export default {
+        srcDir: ${JSON.stringify(srcDir)},
+        targets: ["react"],
+        targetOutDir: { react: ${JSON.stringify(reactDir)} },
+        barrels: [{ file: "index.ts", match: "styled" }],
+      };\n`,
+    );
+
+    const logs: string[] = [];
+    vi.spyOn(console, "log").mockImplementation((...a: unknown[]) => void logs.push(a.join(" ")));
+    vi.spyOn(console, "error").mockImplementation(() => {});
+    process.exitCode = 0;
+
+    const { result } = await runCommand(compile, {
+      rawArgs: [editedFile, untouchedFile, "--config", configPath, "--watch"],
+    });
+    const watcher = result as FSWatcher;
+
+    const EDITED = `import { defineComponent } from "@inkline/core";\nexport default defineComponent(() => <section />);\n`;
+
+    try {
+      await delay(WATCHER_SETTLE_MS);
+
+      // 1. First save after startup: one file changed, the other inherited from the initial build.
+      logs.length = 0;
+      writeFileSync(editedFile, EDITED);
+      await waitFor(() => logs.some((l) => l.includes("Rebuilt")));
+      const rebuilt = logs.find((l) => l.includes("Rebuilt"))!;
+      expect(rebuilt).toContain("Rebuilt 1 file(s), skipped 1");
+      expect(rebuilt).toMatch(/ in \d+ms$/);
+
+      // 2. A save that does not change the bytes still reports, so the watcher is visibly alive.
+      logs.length = 0;
+      writeFileSync(editedFile, EDITED);
+      await waitFor(() => logs.some((l) => l.includes("No changes")));
+      const noChange = logs.find((l) => l.includes("No changes"))!;
+      expect(noChange).toContain("No changes, 2 file(s) up to date");
+      expect(noChange).toMatch(/ in \d+ms$/);
+    } finally {
+      watcher.close();
+      await delay(300);
+    }
+  });
+});
+
 describe("compile command watch mode: dev reporting level", () => {
   // Compiled to astro this emits both the info-level INK0045 notice (two-way binding) and a
   // warning-level INK0010 (the effect has no reactive deps). The watch loop reports only warning+,
