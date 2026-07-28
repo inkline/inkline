@@ -14,15 +14,16 @@ export default defineCommand({
     pattern: { type: "positional", description: "Glob pattern for .ink.tsx files", required: true },
     target: { type: "string", description: "Comma-separated targets" },
     config: { type: "string", description: "Path to config file" },
+    /** Chain arg (config `verbose`); no default — see the args note in `compile.ts` for why. */
     verbose: {
       type: "boolean",
       description: "Include the stack trace in error output",
-      default: false,
     },
   },
   async run({ args }) {
     const fileConfig = await loadInklineConfig(args.config);
-    const verbose = args.verbose || fileConfig.verbose === true;
+    // Same chain as `compile`: `??` so an omitted flag defers to the config and `--no-verbose` wins.
+    const verbose = args.verbose ?? fileConfig.verbose === true;
     const targets = resolveTargets(args.target, fileConfig);
 
     try {
