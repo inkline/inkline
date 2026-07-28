@@ -4,7 +4,19 @@
 // and root shapes become React output.
 
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToChecked } from "../../../../testing/codegen.ts";
+
+// The full object form used to read `type:` through `ts.isTypeNode`, which a constructor
+// `Identifier` never satisfies — so the key was dropped and every prop below emitted untyped.
+describe("PropTypeShapes: full object form `{ type: X, required, default }`", () => {
+  it("React: constructor `type:` resolves, and the default only supplies the type when `type:` is absent", async () => {
+    const out = await compileToChecked("PropTypeShapes", "react");
+    expect(out).toContain(
+      "export function PropTypeShapes(props: { size?: number; label: string; when?: Date; count: number } & React.HTMLAttributes<HTMLElement>)",
+    );
+    expect(out).toContain("const { size, label, when, count = 0, ...__attrs } = props");
+  });
+});
 
 describe("IButton: typed props (label/optional disabled)", () => {
   it("React: destructures into __attrs, keeps an intersection type, binds disabled via props.x", async () => {

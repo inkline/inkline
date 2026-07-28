@@ -4,7 +4,19 @@
 // shapes become Angular output (signal inputs, call-form reads, ng-content projection).
 
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToChecked } from "../../../../testing/codegen.ts";
+
+// The full object form used to read `type:` through `ts.isTypeNode`, which a constructor
+// `Identifier` never satisfies — so the key was dropped and every input below emitted untyped.
+describe("PropTypeShapes: full object form `{ type: X, required, default }`", () => {
+  it("Angular: signal inputs carry the constructor-declared type parameter", async () => {
+    const out = await compileToChecked("PropTypeShapes", "angular");
+    expect(out).toContain("size = input<number>()");
+    expect(out).toContain("label = input.required<string>()");
+    expect(out).toContain("when = input<Date>()");
+    expect(out).toContain("count = input<number>(0)");
+  });
+});
 
 describe("IButton: typed props (label/optional disabled)", () => {
   it("Angular: props are signal inputs; [disabled] reads the input in call form", async () => {

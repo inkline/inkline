@@ -137,6 +137,9 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   Diag_NamespaceImport: [
     { name: "triggers INK0001", asserts: { expectedDiagnostics: ["INK0001"] } },
   ],
+  Diag_PropTypeUnsupported: [
+    { name: "triggers INK0042", asserts: { expectedDiagnostics: ["INK0042"] } },
+  ],
   Diag_EmptyEffect: [{ name: "triggers INK0010", asserts: { expectedDiagnostics: ["INK0010"] } }],
   Diag_EmptyMemo: [{ name: "triggers INK0011", asserts: { expectedDiagnostics: ["INK0011"] } }],
   Diag_Cycle: [{ name: "triggers INK0030", asserts: { expectedDiagnostics: ["INK0030"] } }],

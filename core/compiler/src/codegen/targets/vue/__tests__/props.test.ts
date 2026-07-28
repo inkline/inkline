@@ -4,7 +4,18 @@
 // in how authored props and root shapes become Vue SFC output.
 
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToChecked } from "../../../../testing/codegen.ts";
+
+// The full object form used to read `type:` through `ts.isTypeNode`, which a constructor
+// `Identifier` never satisfies — so the key was dropped and every prop below emitted untyped.
+describe("PropTypeShapes: full object form `{ type: X, required, default }`", () => {
+  it("Vue: the defineProps generic carries the constructor-declared types", async () => {
+    const out = await compileToChecked("PropTypeShapes", "vue");
+    expect(out).toContain(
+      "const props = withDefaults(defineProps<{ size?: number; label: string; when?: Date; count: number }>(), { count: 0 })",
+    );
+  });
+});
 
 describe("IButton: typed props (label/optional disabled)", () => {
   it("Vue: defineProps generic + template reads the destructured prop name (not props.x)", async () => {

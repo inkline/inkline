@@ -3,7 +3,19 @@
 // roots, and text siblings around an element.
 
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToChecked } from "../../../../testing/codegen.ts";
+
+// The full object form used to read `type:` through `ts.isTypeNode`, which a constructor
+// `Identifier` never satisfies — so the key was dropped and every prop below emitted `unknown`.
+describe("PropTypeShapes: full object form `{ type: X, required, default }`", () => {
+  it("Astro: the frontmatter Props type carries the constructor-declared types", async () => {
+    const out = await compileToChecked("PropTypeShapes", "astro");
+    expect(out).toContain(
+      "type Props = { size?: number; label: string; when?: Date; count: number } & Record<string, any>",
+    );
+    expect(out).toContain("const { size, label, when, count = 0, ...__attrs } = props;");
+  });
+});
 
 describe("PropDefaults: object form `{ props: { color: 'blue', size: Number } }`", () => {
   // The author used the object/options form, which conveys a DEFAULT ("blue") for color and a

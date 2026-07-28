@@ -186,6 +186,12 @@ export default defineComponent(
 > `TS2339: Property 'color' does not exist on type '{}'`. Until the authoring types catch up, use
 > the typed-parameter form above.
 
+The full shape's `type` key takes a **constructor reference**, one of `String`, `Number`, `Boolean`,
+`Object`, `Array`, `Function`, `Symbol`, or `Date` — the same set the bare form (`size: Number`)
+accepts. Anything else is reported as `INK0042` rather than dropped; for a type that table cannot
+express, use the typed-parameter form above. When `type` is omitted, the type is inferred from
+`default`; when both are present, `type` wins.
+
 Everything that is _not_ a prop also goes in the options object — `slots`, `events`, `runtime`,
 `name`, and `meta`. Those keys are declared on `ComponentOptions` and type-check today, so they can
 be combined with a typed setup parameter:

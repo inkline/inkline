@@ -3,7 +3,19 @@
 // output. These exercise the FULL pipeline (parse -> lower -> analyze -> codegen).
 
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToChecked } from "../../../../testing/codegen.ts";
+
+// The full object form used to read `type:` through `ts.isTypeNode`, which a constructor
+// `Identifier` never satisfies — so the key was dropped and every prop below emitted untyped.
+describe("PropTypeShapes: full object form `{ type: X, required, default }`", () => {
+  it("Svelte: the Props interface carries the constructor-declared types", async () => {
+    const out = await compileToChecked("PropTypeShapes", "svelte");
+    expect(out).toContain(
+      "interface Props { size?: number; label: string; when?: Date; count: number }",
+    );
+    expect(out).toContain("let { size, label, when, count = 0, ...__attrs }");
+  });
+});
 
 describe("IButton: typed props (label/optional disabled)", () => {
   it("Svelte: $props() destructure + bare identifier access (no props. prefix)", async () => {

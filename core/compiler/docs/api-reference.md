@@ -1379,6 +1379,7 @@ Constant map of all diagnostic codes to their metadata:
 | `INK0030` | error    | createMemo cycle detected: {cycle}                      |
 | `INK0040` | error    | defineComponent must have a setup function              |
 | `INK0041` | error    | defineComponent options must be a static object literal |
+| `INK0042` | error    | Prop '{name}' declares an unsupported type '{value}'    |
 | `INK0050` | warning  | Missing key in iteration                                |
 | `INK0060` | error    | `<Show>` requires a 'when' prop                         |
 | `INK0061` | info     | Nullish-coalescing (??) in JSX is ambiguous             |

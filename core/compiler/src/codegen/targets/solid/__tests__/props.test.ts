@@ -4,7 +4,19 @@
 // shapes become Solid output.
 
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToChecked } from "../../../../testing/codegen.ts";
+
+// The full object form used to read `type:` through `ts.isTypeNode`, which a constructor
+// `Identifier` never satisfies — so the key was dropped and every prop below emitted untyped.
+describe("PropTypeShapes: full object form `{ type: X, required, default }`", () => {
+  it("Solid: the props parameter carries the constructor-declared types", async () => {
+    const out = await compileToChecked("PropTypeShapes", "solid");
+    expect(out).toContain(
+      "function PropTypeShapes(_props: { size?: number; label: string; when?: Date; count: number } & JSX.HTMLAttributes<HTMLElement>)",
+    );
+    expect(out).toContain("const props = mergeProps({ count: 0 }, _props)");
+  });
+});
 
 describe("IButton: typed props (label/optional disabled)", () => {
   it("Solid: splitProps lists the declared prop keys so __attrs is the remainder", async () => {
