@@ -329,6 +329,12 @@ import { Show } from "@inkline/core";
 | Vue    | `<span v-if="visible">Visible</span><span v-else>Hidden</span>` |
 | Svelte | `{#if visible}...{:else}...{/if}`                               |
 
+`when` is typed `Condition` (`boolean | null | undefined`) on both `Show` and `Match`, so an optional
+flag forwards straight through — `<Show when={props.textarea}>` — with no `!!` at the call site. Every
+target lowers it to a native truthiness test, where nullish behaves as `false`. Non-boolean values are
+deliberately not accepted: signals are functions here, so `when={visible}` must stay a type error, and
+`0` / `""` are the author's to narrow rather than the framework's to guess at.
+
 **Lists:**
 
 ```tsx

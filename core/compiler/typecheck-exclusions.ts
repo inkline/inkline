@@ -50,9 +50,6 @@ export const fixtureTypecheckExclusions = [
   // Delete these two entries when that lands — they are the fixtures this gate exists for.
   "PropDefaults.ink.tsx", // TS2353/TS2339 — options-object `props`
   "ScopedStyle.ink.tsx", // TS2353 — options-object `style`
-
-  // ── Authoring-type gap in `@inkline/core`, tracked separately. ──
-  "RootConditional.ink.tsx", // TS2322 — `<Show when>` is `boolean`, so an optional prop cannot be passed
 ];
 
 /**
