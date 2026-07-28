@@ -3,6 +3,7 @@ import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync } 
 import { createRequire } from "node:module";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import * as ts from "typescript";
 import { describe, it, expect } from "vitest";
 
 const packageDir = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
@@ -10,6 +11,7 @@ const packageDir = resolve(dirname(fileURLToPath(import.meta.url)), "..", "..");
 interface PackageManifest {
   readonly files: readonly string[];
   readonly exports: Readonly<Record<string, unknown>>;
+  readonly peerDependenciesMeta?: Readonly<Record<string, { readonly optional?: boolean }>>;
 }
 
 const manifest = JSON.parse(
@@ -40,6 +42,51 @@ describe("@inkline/compiler/testing subpath", () => {
   it("ships the fixtures compileFixture and scenarios read at runtime", () => {
     expect(manifest.files).toContain("src/__fixtures__");
   });
+
+  // A statically imported optional peer throws at import time and kills the whole
+  // subpath for anyone who has not installed it. Nothing else catches this: the peer is
+  // declared, so it is externalised rather than inlined (the tarball does not grow), and
+  // the packing test below resolves inside this package's own node_modules, where every
+  // optional peer is also a devDependency. Checked against the emitted bundles rather
+  // than the sources so a transitively bundled static import counts too, and derived
+  // from `peerDependenciesMeta` so a newly declared peer is covered without edits here.
+  it.skipIf(!existsSync(join(packageDir, "dist")))(
+    "never statically imports an optional peer in an emitted bundle",
+    () => {
+      const optionalPeers = Object.entries(manifest.peerDependenciesMeta ?? {})
+        .filter(([, meta]) => meta.optional)
+        .map(([name]) => name);
+      expect(optionalPeers.length).toBeGreaterThan(0);
+
+      const distDir = join(packageDir, "dist");
+      const offenders: string[] = [];
+
+      for (const file of readdirSync(distDir).filter((f) => f.endsWith(".mjs"))) {
+        const source = ts.createSourceFile(
+          file,
+          readFileSync(join(distDir, file), "utf-8"),
+          ts.ScriptTarget.ESNext,
+          false,
+          ts.ScriptKind.JS,
+        );
+
+        for (const statement of source.statements) {
+          // Only declarations count: `await import(...)` is an expression, never a statement here.
+          if (!ts.isImportDeclaration(statement) && !ts.isExportDeclaration(statement)) continue;
+          const specifier = statement.moduleSpecifier;
+          if (!specifier || !ts.isStringLiteral(specifier)) continue;
+
+          const segments = specifier.text.split("/");
+          const pkg = specifier.text.startsWith("@") ? segments.slice(0, 2).join("/") : segments[0];
+          if (optionalPeers.includes(pkg)) {
+            offenders.push(`dist/${file} statically imports "${specifier.text}"`);
+          }
+        }
+      }
+
+      expect(offenders, "optional peers must be loaded with `await import(...)`").toEqual([]);
+    },
+  );
 
   // Packaging can only be checked against a build. CI always builds before testing
   // (the `test` job downloads the `build` job's artifacts); an unbuilt local tree skips.

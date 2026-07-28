@@ -1,12 +1,10 @@
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
-import { resolve, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
+import { resolve } from "node:path";
 import type { TaskResultWithStatistics } from "tinybench";
 import { compile } from "../pipeline/compile.ts";
-import { FIXTURES_DIR } from "./harness.ts";
+import { FIXTURES_DIR, PACKAGE_ROOT } from "./harness.ts";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const BASELINE_PATH = resolve(__dirname, "..", "..", ".bench-baseline.json");
+const BASELINE_PATH = resolve(PACKAGE_ROOT, ".bench-baseline.json");
 
 export interface BenchResult {
   readonly name: string;

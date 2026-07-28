@@ -19,4 +19,6 @@ it is not installed. Install only the peers for the harnesses you actually call.
 
 No source file imported the subpath, so the gap was invisible in CI. A packaging test now packs a
 tarball, resolves `@inkline/compiler/testing` through Node's exports algorithm and compiles a
-fixture through it, failing if the build entry or the export condition goes missing.
+fixture through it, failing if the build entry or the export condition goes missing. It also parses
+the emitted bundles and fails on any static import of a package listed in `peerDependenciesMeta`,
+since a declared peer is externalised rather than inlined and would otherwise regress silently.
