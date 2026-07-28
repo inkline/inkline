@@ -21,6 +21,12 @@ export const DIAGNOSTICS = {
     help: "Move dynamic options into the setup body" as const,
     url: "https://docs.inkline.dev/diagnostics/INK0041" as const,
   },
+  INK0042: {
+    severity: "error" as const,
+    title: "Prop '{name}' declares an unsupported type '{value}'" as const,
+    help: "The object form's `type` key takes a constructor reference — one of: {supported}. Use `type: Number`. For a type none of those express, drop the object form and annotate the setup parameter instead: defineComponent((props: MyProps) => …)." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0042" as const,
+  },
   INK0043: {
     severity: "error" as const,
     title: "defineModel must be a [getter, setter] tuple with a static name" as const,

@@ -3,7 +3,23 @@
 // roots, and text siblings around an element.
 
 import { describe, it, expect } from "vitest";
-import { compileTo } from "../../../../testing/codegen.ts";
+import { compileTo, compileToChecked } from "../../../../testing/codegen.ts";
+
+// The full object form used to read `type:` through `ts.isTypeNode`, which a constructor
+// `Identifier` never satisfies — so the key was dropped and every prop below emitted `unknown`. `cfg`
+// covers the other half: an object literal is only a shape when every key is one the shape reads,
+// otherwise it is a default value, and routing it into the shape dropped its type AND its default.
+describe("PropTypeShapes: full object form vs. an object literal default", () => {
+  it("Astro: the frontmatter Props type carries the declared types and applies the object default", async () => {
+    const out = await compileToChecked("PropTypeShapes", "astro");
+    expect(out).toContain(
+      "type Props = { size?: number; label: string; when?: Date; count: number; cfg?: Record<string, any> } & Record<string, any>",
+    );
+    expect(out).toContain(
+      "const { size, label, when, count = 0, cfg = { a: 1 }, ...__attrs } = props;",
+    );
+  });
+});
 
 describe("PropDefaults: object form `{ props: { color: 'blue', size: Number } }`", () => {
   // The author used the object/options form, which conveys a DEFAULT ("blue") for color and a

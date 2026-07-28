@@ -52,6 +52,72 @@ describe("parseOptions", () => {
       expect(prop.name).toBe("count");
       expect(prop.required).toBe(true);
       expect(prop.defaultValue).toBeDefined();
+      expect(prop.typeText).toBe("number");
+    });
+
+    // The accepted set is the compiler's `CONSTRUCTOR_TYPES` table, which `PropConstructor` in
+    // `@inkline/core` mirrors. Pinned here so the two cannot drift apart unnoticed.
+    it.each([
+      ["String", "string"],
+      ["Number", "number"],
+      ["Boolean", "boolean"],
+      ["Object", "Record<string, any>"],
+      ["Array", "any[]"],
+      ["Function", "(...args: any[]) => any"],
+      ["Symbol", "symbol"],
+      ["Date", "Date"],
+    ])("resolves `type: %s` to `%s` with no default", (ctor, expected) => {
+      const { obj, sf } = getObjectLiteral(`{ props: { value: { type: ${ctor} } } }`);
+      const ctx = makeCtx();
+      const result = parseOptions(obj, "test#X", sf, ctx);
+      expect(result.props![0]!.typeText).toBe(expected);
+      expect(ctx.diagnostics.freeze()).toHaveLength(0);
+    });
+
+    it("reports INK0042 for an unrecognised `type:` instead of dropping it", () => {
+      const { obj, sf } = getObjectLiteral(`{ props: { entries: { type: Map } } }`);
+      const ctx = makeCtx();
+      const result = parseOptions(obj, "test#X", sf, ctx);
+      expect(result.props![0]!.typeText).toBeUndefined();
+
+      const diags = ctx.diagnostics.freeze();
+      expect(diags).toHaveLength(1);
+      expect(diags[0]!.code).toBe("INK0042");
+      expect(diags[0]!.severity).toBe("error");
+      expect(diags[0]!.title).toBe("Prop 'entries' declares an unsupported type 'Map'");
+      // The help lists the accepted set from the table itself, not from a hand-written copy.
+      expect(diags[0]!.help).toContain("String, Number, Boolean, Object, Array, Function, Symbol");
+    });
+
+    it("prefers `type:` over the default's inferred type, whatever order the keys appear in", () => {
+      // Deliberately contradictory: `type: String` must win over the numeric default's `number`.
+      const { obj, sf } = getObjectLiteral(
+        `{ props: { a: { default: 0, type: String }, b: { default: 0 } } }`,
+      );
+      const ctx = makeCtx();
+      const result = parseOptions(obj, "test#X", sf, ctx);
+      expect(result.props![0]!.typeText).toBe("string");
+      expect(result.props![1]!.typeText).toBe("number");
+    });
+
+    // Every object literal used to be read as a full shape, so `cfg: { a: 1 }` lost its type AND
+    // its default while `tags: [1]` in the same position kept both.
+    it("reads an object literal as a default value unless every key belongs to the shape", () => {
+      const { obj, sf } = getObjectLiteral(
+        `{ props: { cfg: { a: 1 }, empty: {}, mixed: { a: 1, type: Number }, shape: { type: Number } } }`,
+      );
+      const ctx = makeCtx();
+      const props = parseOptions(obj, "test#X", sf, ctx).props!;
+
+      for (const p of props.slice(0, 3)) {
+        expect(p.typeText).toBe("Record<string, any>");
+        expect(p.required).toBe(false);
+        expect(p.defaultValue, `${p.name} should keep its object default`).toBeDefined();
+      }
+      // Only the all-shape-keys object is read as a declaration rather than a value.
+      expect(props[3]!.typeText).toBe("number");
+      expect(props[3]!.defaultValue).toBeUndefined();
+      expect(ctx.diagnostics.freeze()).toHaveLength(0);
     });
 
     it("parses default-value prop as not required", () => {

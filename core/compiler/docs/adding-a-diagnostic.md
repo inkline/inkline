@@ -64,6 +64,7 @@ The catalog test in `src/core/diagnostics/codes.test.ts` verifies:
 | INK0030 | error    | analyze  | createMemo cycle detected                               |
 | INK0040 | error    | parse    | defineComponent must have a setup function              |
 | INK0041 | error    | parse    | defineComponent options must be a static object literal |
+| INK0042 | error    | parse    | Prop declares an unsupported `type:` constructor        |
 | INK0050 | warning  | lower    | Missing key in iteration                                |
 | INK0060 | error    | lower    | `<Show>` requires a 'when' prop                         |
 | INK0061 | info     | lower    | Nullish-coalescing (??) in JSX is ambiguous             |
