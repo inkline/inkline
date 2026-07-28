@@ -388,6 +388,11 @@ export default defineConfig({
 | `verbose`       | `boolean`                                     | `false`      | Log detailed plugin errors.                                                                                                                                                                                              |
 | `registry`      | `TargetRegistry`                              | built-in     | Custom target registry (advanced).                                                                                                                                                                                       |
 
+`@inkline/cli` validates the loaded config against a zod schema. Keys outside this set are ignored
+and reported as INK0081 / INK0082 warnings (with a suggested spelling when the key is close to a
+real one); values of the wrong type are reported as INK0083 and passed through unchanged. None of
+these fail the build.
+
 ### Available Targets
 
 | Name      | Output          | Framework                                         |
@@ -788,6 +793,9 @@ The compiler produces diagnostics at each pipeline stage. Errors prevent output;
 | INK0070 | error    | Component-ref forwarding is not yet supported (v1).                                                                                     |
 | INK0071 | error    | JSX spread attributes (`{...props}`) are not supported. Enumerate the attributes explicitly.                                            |
 | INK0080 | warning  | Unknown key in `targetOptions`.                                                                                                         |
+| INK0081 | warning  | Unknown key in `inkline.config.*`. The key is ignored.                                                                                  |
+| INK0082 | warning  | Unknown key in `inkline.config.*` that looks like a typo, with the suggested spelling.                                                  |
+| INK0083 | warning  | Value in `inkline.config.*` has the wrong type. The value is passed through unchanged.                                                  |
 | INK0090 | error    | A plugin threw an exception.                                                                                                            |
 | INK0100 | error    | Component failed during emit. Other components continue.                                                                                |
 

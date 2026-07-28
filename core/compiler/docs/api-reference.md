@@ -1378,6 +1378,9 @@ Constant map of all diagnostic codes to their metadata:
 | `INK0070` | error    | Component-ref forwarding is not yet supported           |
 | `INK0071` | error    | JSX spread attributes are not supported                 |
 | `INK0080` | warning  | Unknown target option: {key}                            |
+| `INK0081` | warning  | Unknown config key: {key}                               |
+| `INK0082` | warning  | Unknown config key: {key}. Did you mean {suggestion}?   |
+| `INK0083` | warning  | Invalid config value at {path}: {message}               |
 | `INK0090` | error    | Plugin '{name}' threw: {message}                        |
 | `INK0100` | error    | Parse failure in component '{name}': {message}          |
 | `INK0110` | error    | Internal compiler error: {message}                      |
