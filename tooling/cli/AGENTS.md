@@ -44,11 +44,13 @@ When adding a command:
 | [`errors.ts`](./src/lib/errors.ts)                                   | Exit-code constants and config-error reporting (see "Exit codes" below).             |
 | [`glob.ts`](./src/lib/glob.ts)                                       | Input-file globbing.                                                                 |
 | [`inkline-config-template.ts`](./src/lib/inkline-config-template.ts) | `inkline.config.ts` + example-component templates for `init --compiler`.             |
-| [`report.ts`](./src/lib/report.ts)                                   | Per-build diagnostic reporting: level filter, deduplication, counts, summary line.   |
+| [`report.ts`](./src/lib/report.ts)                                   | Per-build diagnostic policy: level filter, deduplication, counts, summary line.      |
 | [`styleframe-config.ts`](./src/lib/styleframe-config.ts)             | The `styleframe.config.ts` template seeded by `init`.                                |
 | [`writer.ts`](./src/lib/writer.ts)                                   | Atomic file writes with source-map sidecar support.                                  |
 
 These are internal — no `exports` map entry. If you find yourself importing from `lib/` outside the CLI, lift the utility into a more appropriate package first.
+
+`report.ts` decides _which_ diagnostics are printed; `diagnostics.ts` decides _how_ one is rendered. The reporter must never build a message itself — it calls `formatDiagnostic` and passes the caller's source text through, so a change to the rendering (code frames, relative paths, color) reaches every path that prints a diagnostic.
 
 ## Exit codes
 
