@@ -371,6 +371,117 @@ describe("compile command --out-dir precedence", () => {
   });
 });
 
+describe("compile command --source-map precedence", () => {
+  const SOURCE = () => resolve(FIXTURES, "Counter.ink.tsx");
+  const INLINE_MARKER = "//# sourceMappingURL=data:application/json;base64,";
+
+  /**
+   * Compile into a fresh output directory and report the two observable outcomes: an inline map is
+   * appended to the emitted file, an external one is written beside it as `.map`, and `none` leaves
+   * neither. Reading the artifacts keeps this a black-box check of what the user actually gets.
+   */
+  async function compileWith(
+    name: string,
+    extraArgs: string[],
+    configSourceMap?: string,
+  ): Promise<{ contents: string; hasExternalMap: boolean }> {
+    const base = tmpDir(name);
+    const outDir = resolve(base, "out");
+    const args = [SOURCE(), "--target", "react", "--out-dir", outDir, ...extraArgs];
+
+    if (configSourceMap !== undefined) {
+      const configPath = resolve(base, "inkline.config.mjs");
+      writeFileSync(
+        configPath,
+        `export default { sourceMap: ${JSON.stringify(configSourceMap)} };\n`,
+      );
+      args.push("--config", configPath);
+    }
+
+    const { exitCode } = await runCompile(args);
+    expect(exitCode).toBe(0);
+
+    const outFile = resolve(outDir, "react", "Counter.tsx");
+    return {
+      contents: readFileSync(outFile, "utf-8"),
+      hasExternalMap: existsSync(`${outFile}.map`),
+    };
+  }
+
+  // The citty `default: "external"` used to make `args["source-map"]` permanently defined, so this
+  // branch of the chain was unreachable and a config `sourceMap` was silently ignored.
+  it("uses the config file's sourceMap when no flag is passed", async () => {
+    const { contents, hasExternalMap } = await compileWith("source-map-config", [], "inline");
+    expect(contents).toContain(INLINE_MARKER);
+    expect(hasExternalMap).toBe(false);
+  });
+
+  it("prefers --source-map over the config file's sourceMap", async () => {
+    const { contents, hasExternalMap } = await compileWith(
+      "source-map-flag",
+      ["--source-map", "none"],
+      "inline",
+    );
+    expect(contents).not.toContain(INLINE_MARKER);
+    expect(hasExternalMap).toBe(false);
+  });
+
+  it("falls back to external when neither the flag nor the config sets sourceMap", async () => {
+    const { contents, hasExternalMap } = await compileWith("source-map-default", []);
+    expect(hasExternalMap).toBe(true);
+    expect(contents).not.toContain(INLINE_MARKER);
+  });
+
+  it("honours --source-map when the config is silent", async () => {
+    const { contents } = await compileWith("source-map-flag-only", ["--source-map", "inline"]);
+    expect(contents).toContain(INLINE_MARKER);
+  });
+});
+
+describe("compile command --verbose precedence", () => {
+  const SOURCE = () => resolve(FIXTURES, "Counter.ink.tsx");
+  /** `reportConfigError` prints the error stack only when `verbose` resolved true. */
+  const STACK_FRAME = "\n    at ";
+
+  /**
+   * Resolve `verbose` observably: a misspelled `--target` routes through `reportConfigError`, which
+   * appends the stack trace only under verbose. A config `verbose: true` is present in every case so
+   * the flag's ability to override it is what is under test.
+   */
+  async function stackShown(name: string, extraArgs: string[]): Promise<boolean> {
+    const base = tmpDir(name);
+    const configPath = resolve(base, "inkline.config.mjs");
+    writeFileSync(configPath, `export default { verbose: true };\n`);
+
+    const { exitCode, errs } = await runCompile([
+      SOURCE(),
+      "--target",
+      "reakt",
+      "--config",
+      configPath,
+      ...extraArgs,
+    ]);
+
+    expect(exitCode).toBe(2);
+    expect(errs).toContain("INK0085");
+    return errs.includes(STACK_FRAME);
+  }
+
+  it("uses the config file's verbose when no flag is passed", async () => {
+    expect(await stackShown("verbose-config", [])).toBe(true);
+  });
+
+  // With the old citty `default: false`, `--no-verbose` was indistinguishable from an omitted flag,
+  // so a config `verbose: true` could never be switched off from the command line.
+  it("lets --no-verbose override a config verbose: true", async () => {
+    expect(await stackShown("verbose-no-flag", ["--no-verbose"])).toBe(false);
+  });
+
+  it("honours --verbose", async () => {
+    expect(await stackShown("verbose-flag", ["--verbose"])).toBe(true);
+  });
+});
+
 describe("compile command watch mode", () => {
   it("rebuilds on a component change and regenerates stories on a story change", async () => {
     const configDir = tmpDir("watch");

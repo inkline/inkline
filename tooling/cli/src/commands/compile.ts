@@ -104,26 +104,44 @@ export function writeNamespaceBarrels(
 
 export default defineCommand({
   meta: { name: "compile", description: "Compile .ink.tsx files and generate stories" },
+  /**
+   * A citty `default` makes an arg permanently defined, which destroys the flag > config > default
+   * chain in `run` below: for a string the config branch becomes unreachable, and for a boolean
+   * `--no-x` becomes indistinguishable from omitting the flag. So any arg with a config counterpart
+   * declares no `default` and puts its fallback in the chain instead. A citty `default` is correct
+   * only where there is no config counterpart and the default *is* the whole resolution. Each arg
+   * below states which of the two it is; do not add a `default` without re-reading this.
+   */
   args: {
+    /** No config counterpart: the positional inputs are the invocation itself. */
     pattern: { type: "positional", description: "Glob pattern for .ink.tsx files", required: true },
+    /** Chain arg (config `targets`); no default — `resolveTargets` deliberately leaves it empty. */
     target: { type: "string", description: "Comma-separated targets" },
+    /** Chain arg (config `srcDir`); no default — falls back to the sources' common prefix. */
     "src-dir": { type: "string", description: "Source root directory to strip from output paths" },
-    // No citty `default` here: it would make `args["out-dir"]` always defined, so the resolution
-    // chain below could never fall through to the config file. The `"dist"` fallback lives there.
+    /** Chain arg (config `outDir`); no default — the `"dist"` fallback lives in the chain. */
     "out-dir": { type: "string", description: "Default output directory (default: dist)" },
-    "source-map": { type: "string", description: "external | inline | none", default: "external" },
+    /** Chain arg (config `sourceMap`); no default — the `"external"` fallback lives in the chain. */
+    "source-map": { type: "string", description: "external | inline | none (default: external)" },
+    /** No config counterpart by construction: this flag names the config file the chain reads. */
     config: { type: "string", description: "Path to config file" },
-    verbose: { type: "boolean", description: "Verbose plugin error logs", default: false },
+    /** Chain arg (config `verbose`); no default — so `--no-verbose` can beat a config `true`. */
+    verbose: { type: "boolean", description: "Verbose plugin error logs" },
+    /** Deliberate default: no config counterpart, so this is the whole resolution. `--no-clean` opts out. */
     clean: {
       type: "boolean",
       description: "Clean output directories before compilation",
       default: true,
     },
+    /** Deliberate default: no config counterpart — watching is a per-invocation mode, not a setting. */
     watch: { type: "boolean", description: "Watch and recompile on change", default: false },
   },
   async run({ args }) {
     const fileConfig = await loadInklineConfig(args.config);
-    const verbose = args.verbose || fileConfig.verbose === true;
+    // `??`, not `||`: with the citty default gone, an omitted `--verbose` is `undefined` and only
+    // then does the config apply. `||` would let a config `true` survive an explicit `--no-verbose`.
+    // The `=== true` keeps a non-boolean config value (reported by the schema, not rewritten) falsy.
+    const verbose = args.verbose ?? fileConfig.verbose === true;
 
     const targets = resolveTargets(args.target, fileConfig);
 
