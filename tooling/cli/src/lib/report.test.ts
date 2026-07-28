@@ -29,6 +29,29 @@ describe("createBuildReporter", () => {
     expect(reporter.counts).toEqual({ error: 0, warning: 0, info: 1 });
   });
 
+  it("renders through formatDiagnostic, so a source frame still reaches the output", () => {
+    const { printed, reporter } = collectingReporter();
+    const source = "const a = 1;\nconst b = 2;\n";
+
+    reporter.report(
+      [makeDiag({ loc: { file: "a.ink.tsx", line: 2, column: 6, offset: 19, length: 1 } })],
+      new Map([["a.ink.tsx", source]]),
+    );
+
+    // Rendering lives in `diagnostics.ts`; a reporter that formatted its own message would drop the
+    // code frame and silently revert it.
+    expect(printed[0]).toContain("2 | const b = 2;");
+    expect(printed[0]).toContain("^");
+  });
+
+  it("omits the frame when no source is supplied for the diagnostic's file", () => {
+    const { printed, reporter } = collectingReporter();
+
+    reporter.report([makeDiag()], new Map([["other.ink.tsx", "const a = 1;\n"]]));
+
+    expect(printed[0]).not.toContain("|");
+  });
+
   it("deduplicates across compiled files, not just within one", () => {
     const { printed, reporter } = collectingReporter();
 
