@@ -34,6 +34,12 @@ export type { Diagnostic, DiagnosticSeverity, DiagnosticCode } from "./core/diag
 export { DIAGNOSTICS } from "./core/diagnostics/codes.ts";
 export { meetsLevel } from "./core/diagnostics/level.ts";
 export { InklineConfigError, isInklineConfigError } from "./core/diagnostics/error.ts";
+// Exported so tooling that reports its own diagnostics (e.g. the CLI's config validation) emits
+// the same catalog-resolved shape the compiler does, instead of hand-building Diagnostic objects.
+export {
+  createDiagnosticCollector,
+  type DiagnosticCollector,
+} from "./core/diagnostics/collector.ts";
 
 // ============ IR — RENDER TREE TYPES ============
 export type {
@@ -133,6 +139,7 @@ export type {
   CodeModule,
 } from "./codegen/context.ts";
 export { defineTarget, createRegistry, builtinRegistry } from "./codegen/registry.ts";
+export { ALL_TARGETS } from "./codegen/context.ts";
 
 // ============ CODE IR (target/plugin authors) ============
 export type {

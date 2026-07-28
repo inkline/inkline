@@ -82,7 +82,7 @@ export function resolveOptions(
   const targets = config.targets ?? [];
   if (targets.length === 0) {
     throw new InklineConfigError(
-      createDiagnostic("INK0081", UNKNOWN_LOCATION, { targets: availableTargets }),
+      createDiagnostic("INK0084", UNKNOWN_LOCATION, { targets: availableTargets }),
     );
   }
 
@@ -90,7 +90,7 @@ export function resolveOptions(
     if (ALL_TARGETS.includes(target)) continue;
     const closest = suggestClosest(target, ALL_TARGETS);
     throw new InklineConfigError(
-      createDiagnostic("INK0082", UNKNOWN_LOCATION, {
+      createDiagnostic("INK0085", UNKNOWN_LOCATION, {
         target,
         targets: availableTargets,
         suggestion: closest ? `Did you mean "${closest}"? ` : "",
@@ -103,7 +103,7 @@ export function resolveOptions(
   for (const target of targets) {
     if (registry.has(target)) continue;
     throw new InklineConfigError(
-      createDiagnostic("INK0083", UNKNOWN_LOCATION, {
+      createDiagnostic("INK0086", UNKNOWN_LOCATION, {
         target,
         available: registry.list().join(", ") || "(none)",
       }),

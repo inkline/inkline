@@ -1384,10 +1384,14 @@ Constant map of all diagnostic codes to their metadata:
 | `INK0061` | info     | Nullish-coalescing (??) in JSX is ambiguous             |
 | `INK0062` | error    | `<For>` requires an 'each' prop                         |
 | `INK0070` | error    | Component-ref forwarding is not yet supported           |
+| `INK0071` | error    | JSX spread attributes are not supported                 |
 | `INK0080` | warning  | Unknown target option: {key}                            |
-| `INK0081` | error    | No compilation target specified                         |
-| `INK0082` | error    | Unknown target "{target}"                               |
-| `INK0083` | error    | Target "{target}" is not present in the registry        |
+| `INK0081` | warning  | Unknown config key: {key}                               |
+| `INK0082` | warning  | Unknown config key: {key}. Did you mean {suggestion}?   |
+| `INK0083` | warning  | Invalid config value at {path}: {message}               |
+| `INK0084` | error    | No compilation target specified                         |
+| `INK0085` | error    | Unknown target "{target}"                               |
+| `INK0086` | error    | Target "{target}" is not present in the registry        |
 | `INK0090` | error    | Plugin '{name}' threw: {message}                        |
 | `INK0100` | error    | Parse failure in component '{name}': {message}          |
 | `INK0110` | error    | Internal compiler error: {message}                      |

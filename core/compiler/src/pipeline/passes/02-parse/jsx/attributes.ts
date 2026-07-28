@@ -42,6 +42,7 @@ export function parseAttributes(
   const refs: IRRefBinding[] = [];
 
   for (const prop of attributes.properties) {
+    // Spread is unsupported and dropped here; `reportSpreadAttributes` raises INK0071 for it.
     if (ts.isJsxSpreadAttribute(prop)) continue;
     if (!ts.isJsxAttribute(prop)) continue;
 

@@ -73,7 +73,7 @@ describe("compile", () => {
   it("reports a missing target as a diagnostic", () => {
     const { output, status } = run("compile", resolve(FIXTURES_DIR, "Counter.ink.tsx"));
     expect(status).toBe(2);
-    expect(output).toContain("INK0081");
+    expect(output).toContain("INK0084");
     expect(output).toContain("No compilation target specified");
     expect(output).toContain("react, solid, vue, svelte, angular, qwik, astro");
     expect(output).not.toMatch(/\n\s+at /);
@@ -87,7 +87,7 @@ describe("compile", () => {
       "reakt",
     );
     expect(status).toBe(2);
-    expect(output).toContain("INK0082");
+    expect(output).toContain("INK0085");
     expect(output).toContain('Unknown target "reakt"');
     expect(output).toContain('Did you mean "react"?');
     expect(output).toContain("react, solid, vue, svelte, angular, qwik, astro");
@@ -116,7 +116,7 @@ describe("compile", () => {
       "--verbose",
     );
     expect(status).toBe(2);
-    expect(output).toContain("INK0082");
+    expect(output).toContain("INK0085");
     expect(output).toContain("InklineConfigError");
     expect(output).toMatch(/\n\s+at /);
   });

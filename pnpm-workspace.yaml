@@ -99,6 +99,7 @@ catalog:
   vitest: npm:@voidzero-dev/vite-plus-test@^0.1.24
   vue: ^3.5.38
   vue-eslint-parser: ^10.4.1
+  zod: ^4.4.3
   zone.js: ^0.16.2
 
 # TS6 holdout catalog. TypeScript 7's native compiler drops the classic

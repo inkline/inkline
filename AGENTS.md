@@ -26,6 +26,7 @@ testing/     @inkline/e2e (Playwright cross-framework visual-parity tests)
 ui/          @inkline/components (single source of truth) + 7 framework output packages
 apps/        website (docs site), storybook (unified aggregator for all 7 frameworks)
 docs/        architecture, conventions, contributing, release-process, authoring, maintenance
+docs/adrs/   architecture decision records — why the codebase is the way it is
 .changeset/  pending changesets — one markdown file per upcoming change
 .github/     CI + changesets workflows, issue/PR templates, community health files
 .old/        archived v0 codebase — read-only reference, do not edit or link into
@@ -62,6 +63,7 @@ Per topic — read the relevant `docs/`:
 | [docs/contributing.md](./docs/contributing.md)                 | Dev workflow, before-PR checklist, CI gate                         |
 | [docs/release-process.md](./docs/release-process.md)           | Changesets + npm publish flow                                      |
 | [docs/maintenance.md](./docs/maintenance.md)                   | How we keep docs from drifting                                     |
+| [docs/adrs/README.md](./docs/adrs/README.md)                   | Why the codebase is the way it is — decision records               |
 
 For the user-facing language reference (primitives, control flow, options), the canonical source is [`core/compiler/README.md`](./core/compiler/README.md).
 

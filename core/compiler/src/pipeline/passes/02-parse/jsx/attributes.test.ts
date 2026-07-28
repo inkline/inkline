@@ -120,6 +120,7 @@ describe("parseAttributes", () => {
     });
   });
 
+  // The INK0071 diagnostic raised for these drops is asserted in `spread.test.ts`.
   describe("spread attributes", () => {
     it("spread attribute is skipped without crash", () => {
       const { attrs, events, refs } = parseJsxAttrs("<div {...props} />");

@@ -178,7 +178,7 @@ describe("compile command (in-process)", () => {
   it("exits 2 when no target is given via flag or config", async () => {
     const { exitCode, errs } = await runCompile([resolve(FIXTURES, "Counter.ink.tsx")]);
     expect(exitCode).toBe(2);
-    expect(errs).toContain("INK0081");
+    expect(errs).toContain("INK0084");
     expect(errs).toContain("No compilation target specified");
   });
 
@@ -189,7 +189,7 @@ describe("compile command (in-process)", () => {
       "reakt",
     ]);
     expect(exitCode).toBe(2);
-    expect(errs).toContain("INK0082");
+    expect(errs).toContain("INK0085");
     expect(errs).toContain('Did you mean "react"?');
   });
 
@@ -311,6 +311,63 @@ describe("compile command (in-process)", () => {
     expect(readFileSync(resolve(reactDir, "stories.ts"), "utf-8")).toContain(
       "export * as IButtonStories from './components/button/stories/IButton.stories.ts';",
     );
+  });
+});
+
+describe("compile command --out-dir precedence", () => {
+  const SOURCE = () => resolve(FIXTURES, "Counter.ink.tsx");
+
+  function writeOutDirConfig(dir: string, outDir: string): string {
+    const configPath = resolve(dir, "inkline.config.mjs");
+    writeFileSync(configPath, `export default { outDir: ${JSON.stringify(outDir)} };\n`);
+    return configPath;
+  }
+
+  it("prefers the --out-dir flag over the config file's outDir", async () => {
+    const base = tmpDir("out-dir-flag");
+    const fromConfig = resolve(base, "a");
+    const fromFlag = resolve(base, "b");
+    const configPath = writeOutDirConfig(base, fromConfig);
+
+    const { exitCode } = await runCompile([
+      SOURCE(),
+      "--target",
+      "react",
+      "--config",
+      configPath,
+      "--out-dir",
+      fromFlag,
+    ]);
+
+    expect(exitCode).toBe(0);
+    expect(existsSync(resolve(fromFlag, "react", "Counter.tsx"))).toBe(true);
+    expect(existsSync(fromConfig)).toBe(false);
+  });
+
+  it("falls back to the config file's outDir when the flag is absent", async () => {
+    const base = tmpDir("out-dir-config");
+    const fromConfig = resolve(base, "a");
+    const configPath = writeOutDirConfig(base, fromConfig);
+
+    const { exitCode } = await runCompile([SOURCE(), "--target", "react", "--config", configPath]);
+
+    expect(exitCode).toBe(0);
+    expect(existsSync(resolve(fromConfig, "react", "Counter.tsx"))).toBe(true);
+  });
+
+  it("falls back to dist when neither the flag nor the config sets an output directory", async () => {
+    // `dist` resolves against the process cwd, so run from an empty temp dir that also has no
+    // discoverable inkline.config.* — otherwise the repo's own config/dist would be in play.
+    const base = tmpDir("out-dir-default");
+    const cwd = process.cwd();
+    process.chdir(base);
+    try {
+      const { exitCode } = await runCompile([SOURCE(), "--target", "react"]);
+      expect(exitCode).toBe(0);
+      expect(existsSync(resolve(base, "dist", "react", "Counter.tsx"))).toBe(true);
+    } finally {
+      process.chdir(cwd);
+    }
   });
 });
 

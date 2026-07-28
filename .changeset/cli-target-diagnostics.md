@@ -10,16 +10,16 @@ trace through bundled compiler internals, which told the author nothing about th
 class of failure had three separate raw throws — two in `resolveOptions`, one in `compile` for a
 target the registry cannot serve.
 
-All three now go through the diagnostic catalog as `INK0081` (no target specified), `INK0082`
-(unknown target) and `INK0083` (target absent from the registry), thrown as a new
+All three now go through the diagnostic catalog as `INK0084` (no target specified), `INK0085`
+(unknown target) and `INK0086` (target absent from the registry), thrown as a new
 `InklineConfigError` that carries a fully formed `Diagnostic`. The registry check moved into
 `resolveOptions`, so there is one validation point for every entry path.
 
 ```
 $ inkline compile "src/**/*.ink.tsx" --target reakt
-error  INK0082  Unknown target "reakt"
+error  INK0085  Unknown target "reakt"
     help: Did you mean "react"? Available targets: react, solid, vue, svelte, angular, qwik, astro.
-    docs: https://docs.inkline.dev/diagnostics/INK0082
+    docs: https://docs.inkline.dev/diagnostics/INK0085
 ```
 
 The CLI exits `2` for unusable input (`1` remains "the compile ran and reported errors") and prints

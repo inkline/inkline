@@ -67,24 +67,24 @@ describe("resolveOptions", () => {
     expect(opts.plugins).toEqual([plugin]);
   });
 
-  it("throws INK0081 on empty targets, listing the valid targets", () => {
+  it("throws INK0084 on empty targets, listing the valid targets", () => {
     const diagnostic = configErrorFrom(() => resolveOptions({ targets: [] }));
 
-    expect(diagnostic.code).toBe("INK0081");
+    expect(diagnostic.code).toBe("INK0084");
     expect(diagnostic.severity).toBe("error");
     expect(diagnostic.title).toBe("No compilation target specified");
     expect(diagnostic.help).toContain("react, solid, vue, svelte, angular, qwik, astro");
-    expect(diagnostic.url).toBe("https://docs.inkline.dev/diagnostics/INK0081");
+    expect(diagnostic.url).toBe("https://docs.inkline.dev/diagnostics/INK0084");
   });
 
-  it("throws INK0081 on undefined config with no targets", () => {
-    expect(configErrorFrom(() => resolveOptions(undefined)).code).toBe("INK0081");
+  it("throws INK0084 on undefined config with no targets", () => {
+    expect(configErrorFrom(() => resolveOptions(undefined)).code).toBe("INK0084");
   });
 
-  it("throws INK0082 on unknown target, listing the valid targets", () => {
+  it("throws INK0085 on unknown target, listing the valid targets", () => {
     const diagnostic = configErrorFrom(() => resolveOptions({ targets: ["unknown" as "react"] }));
 
-    expect(diagnostic.code).toBe("INK0082");
+    expect(diagnostic.code).toBe("INK0085");
     expect(diagnostic.title).toBe('Unknown target "unknown"');
     expect(diagnostic.help).toContain("react, solid, vue, svelte, angular, qwik, astro");
   });
@@ -101,14 +101,14 @@ describe("resolveOptions", () => {
     ).not.toContain("Did you mean");
   });
 
-  it("throws INK0083 when the registry does not provide a requested target", () => {
+  it("throws INK0086 when the registry does not provide a requested target", () => {
     const registry = createRegistry();
     registry.register(reactTarget);
     const diagnostic = configErrorFrom(() =>
       resolveOptions({ targets: ["react", "vue"], registry }),
     );
 
-    expect(diagnostic.code).toBe("INK0083");
+    expect(diagnostic.code).toBe("INK0086");
     expect(diagnostic.title).toBe('Target "vue" is not present in the configured registry');
     expect(diagnostic.help).toContain("react");
   });

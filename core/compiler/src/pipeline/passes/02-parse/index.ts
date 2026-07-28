@@ -17,6 +17,7 @@ import { bindPrimitives, type BindingTable } from "./bind-primitives.ts";
 import { extractDeps, extractDepsFromFunctionBody } from "./deps.ts";
 import { toLoc } from "./loc.ts";
 import { parseExpression } from "./jsx/index.ts";
+import { reportSpreadAttributes } from "./jsx/spread.ts";
 import { parseOptions, parsePropsFromParameterType } from "./options.ts";
 import { findSites } from "./sites.ts";
 import { parseSetup } from "./setup.ts";
@@ -72,6 +73,7 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
       registerPropsInScope(site.setupFn, props, componentId, setupResult.scope, checker, ctx);
 
       // (e) jsx
+      reportSpreadAttributes(site.setupFn, sourceFile, ctx);
       const render = setupResult.renderExpr
         ? parseExpression(setupResult.renderExpr, sourceFile)
         : { kind: "Fragment" as const, children: [], loc: site.loc };

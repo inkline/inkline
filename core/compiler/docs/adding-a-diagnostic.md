@@ -68,10 +68,14 @@ The catalog test in `src/core/diagnostics/codes.test.ts` verifies:
 | INK0061 | info     | lower    | Nullish-coalescing (??) in JSX is ambiguous             |
 | INK0062 | error    | lower    | `<For>` requires an 'each' prop                         |
 | INK0070 | error    | lower    | Component-ref forwarding not yet supported              |
+| INK0071 | error    | parse    | JSX spread attributes are not supported                 |
 | INK0080 | warning  | config   | Unknown target option                                   |
-| INK0081 | error    | config   | No compilation target specified                         |
-| INK0082 | error    | config   | Unknown target                                          |
-| INK0083 | error    | config   | Target not present in the configured registry           |
+| INK0081 | warning  | config   | Unknown config key                                      |
+| INK0082 | warning  | config   | Unknown config key, with a suggested spelling           |
+| INK0083 | warning  | config   | Config value has the wrong type                         |
+| INK0084 | error    | config   | No compilation target specified                         |
+| INK0085 | error    | config   | Unknown target                                          |
+| INK0086 | error    | config   | Target not present in the configured registry           |
 | INK0090 | error    | plugin   | Plugin threw                                            |
 | INK0100 | error    | pipeline | Parse failure in component                              |
 | INK0110 | error    | pipeline | Internal compiler error                                 |

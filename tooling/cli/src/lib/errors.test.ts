@@ -3,11 +3,11 @@ import { InklineConfigError, type Diagnostic } from "@inkline/compiler";
 import { EXIT_USAGE_ERROR, reportConfigError } from "./errors.ts";
 
 const diagnostic: Diagnostic = {
-  code: "INK0082",
+  code: "INK0085",
   severity: "error",
   title: 'Unknown target "reakt"',
   help: 'Did you mean "react"? Available targets: react, vue.',
-  url: "https://docs.inkline.dev/diagnostics/INK0082",
+  url: "https://docs.inkline.dev/diagnostics/INK0085",
   loc: { file: "<unknown>", line: 0, column: 0, offset: 0, length: 0 },
 };
 
@@ -32,7 +32,7 @@ describe("reportConfigError", () => {
     expect(errorSpy).toHaveBeenCalledTimes(1);
 
     const output = errorSpy.mock.calls[0]![0] as string;
-    expect(output).toContain("INK0082");
+    expect(output).toContain("INK0085");
     expect(output).toContain('Unknown target "reakt"');
     expect(output).toContain('Did you mean "react"?');
     expect(output).not.toContain("<unknown>");

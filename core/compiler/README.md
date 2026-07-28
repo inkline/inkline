@@ -109,9 +109,10 @@ The compiler tracks which signals each expression reads and maps them to the tar
 
 ### Props
 
-Props can be defined two ways:
-
-**TypeScript parameter type** (preferred):
+Props are declared by annotating the setup function's first parameter. The compiler reads that
+annotation — an inline type literal, or an `interface` / `type` in scope — and emits each target's
+native props declaration. Properties marked optional (`?`) are optional in the output; the rest are
+required.
 
 ```tsx
 export default defineComponent((props: { label: string; disabled?: boolean }) => {
@@ -119,7 +120,41 @@ export default defineComponent((props: { label: string; disabled?: boolean }) =>
 });
 ```
 
-**Options object** (for defaults and metadata):
+Beyond one or two props, declare a named and exported interface so consumers can import the type and
+other components can extend it:
+
+```tsx
+export interface ButtonProps {
+  label?: string;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+}
+
+export default defineComponent((props: ButtonProps) => {
+  return (
+    <button type={props.type ?? "button"} disabled={props.disabled}>
+      {props.label}
+    </button>
+  );
+});
+```
+
+This form has no default-value declaration. Apply the default where the prop is read
+(`props.type ?? "button"` above) — one expression that compiles to every target. This is the form
+every component in [`ui/components`](../../ui/components/) uses.
+
+**Never destructure the props object when authoring.** Reads must stay `props.x`: Solid passes props
+as a reactive proxy, so destructuring it in your setup body snapshots the value once and freezes it.
+The Solid target enforces this on its output with the `requirePropsNotDestructured` conformance
+invariant.
+
+**Options object** (for declared defaults):
+
+An options object passed as the first argument declares props with per-prop types, defaults, and a
+required flag. Types are inferred from a constructor reference (`Number` → `number`) or from the
+default value's literal type (`"blue"` → `string`). Each target applies the default in its own
+idiom — `withDefaults(defineProps<…>(), …)` on Vue, `mergeProps` on Solid, a destructured default on
+React/Svelte/Qwik/Astro, a seeded signal input (`input<string>('blue')`) on Angular.
 
 ```tsx
 export default defineComponent(
@@ -139,6 +174,27 @@ export default defineComponent(
   },
   (props) => {
     return <div style={`color: ${props.color}`}>{props.size}</div>;
+  },
+);
+```
+
+> **Known limitation — this form does not type-check yet.**
+> `ComponentOptions` in [`@inkline/core`](../core/src/index.ts) does not declare a `props` key, and
+> `defineComponent` cannot infer the setup parameter's type from the options object. The compiler
+> handles the form correctly (see the `PropDefaults` fixture and the per-target `props.test.ts`
+> suites), but `tsc` reports `TS2353: 'props' does not exist in type 'ComponentOptions'` and
+> `TS2339: Property 'color' does not exist on type '{}'`. Until the authoring types catch up, use
+> the typed-parameter form above.
+
+Everything that is _not_ a prop also goes in the options object — `slots`, `events`, `runtime`,
+`name`, and `meta`. Those keys are declared on `ComponentOptions` and type-check today, so they can
+be combined with a typed setup parameter:
+
+```tsx
+export default defineComponent(
+  { slots: { default: {} }, meta: { headless: true } },
+  (props: ButtonProps) => {
+    return <button disabled={props.disabled}>{props.label}</button>;
   },
 );
 ```
@@ -382,11 +438,19 @@ export default defineConfig({
 | `targets`       | `TargetName[]`                                | (required)   | Targets to compile for.                                                                                                                                                                                                  |
 | `srcDir`        | `string`                                      | —            | Source root to strip from output paths (e.g. `"src"`). When set, directory structure below `srcDir` is preserved in the output. Without it, the deepest common prefix is used. Also available as `--src-dir` on the CLI. |
 | `outDir`        | `string`                                      | `"dist"`     | Output directory. Files are written to `<outDir>/<target>/`.                                                                                                                                                             |
+| `targetOutDir`  | `Partial<Record<TargetName, string>>`         | `{}`         | Per-target output directory override, replacing `<outDir>/<target>/` for the targets it names.                                                                                                                           |
+| `tsconfig`      | `string`                                      | —            | Path to a `tsconfig.json` whose ambient declarations (e.g. generated `*.d.ts` for virtual modules) are loaded into the per-file program, so `import type` from those modules resolves during prop analysis.              |
+| `barrels`       | `BarrelGroup[]`                               | (see note)   | Per-category re-export barrels written for each target. Read by `@inkline/cli` only — the compiler pipeline ignores it. Omitted, the CLI writes one `index.ts` per target containing every non-story component.          |
 | `sourceMap`     | `"external" \| "inline" \| "none"`            | `"external"` | Source map generation mode.                                                                                                                                                                                              |
 | `targetOptions` | `Record<TargetName, Record<string, unknown>>` | `{}`         | Per-target options. Unknown keys produce INK0080 warnings.                                                                                                                                                               |
 | `plugins`       | `Plugin[]`                                    | `[]`         | Compiler plugins.                                                                                                                                                                                                        |
 | `verbose`       | `boolean`                                     | `false`      | Log detailed plugin errors.                                                                                                                                                                                              |
 | `registry`      | `TargetRegistry`                              | built-in     | Custom target registry (advanced).                                                                                                                                                                                       |
+
+`@inkline/cli` validates the loaded config against a zod schema. Keys outside this set are ignored
+and reported as INK0081 / INK0082 warnings (with a suggested spelling when the key is close to a
+real one); values of the wrong type are reported as INK0083 and passed through unchanged. None of
+these fail the build.
 
 ### Available Targets
 
@@ -459,9 +523,9 @@ Configuration failures print as a formatted diagnostic with a code, help text, a
 
 ```
 $ inkline compile "src/**/*.ink.tsx" --target reakt
-error  INK0082  Unknown target "reakt"
+error  INK0085  Unknown target "reakt"
     help: Did you mean "react"? Available targets: react, solid, vue, svelte, angular, qwik, astro.
-    docs: https://docs.inkline.dev/diagnostics/INK0082
+    docs: https://docs.inkline.dev/diagnostics/INK0085
 ```
 
 ### Init
@@ -791,6 +855,10 @@ See `docs/adding-a-target.md` for a complete walkthrough.
 
 The compiler produces diagnostics at each pipeline stage. Errors prevent output; warnings are informational.
 
+The codes below are the ones most authors hit. For the complete, always-current list, run
+`pnpm docs:diagnostics` in `core/compiler` — it prints a reference table generated from
+[`src/core/diagnostics/codes.ts`](./src/core/diagnostics/codes.ts), the single source of truth.
+
 | Code    | Severity | Description                                                                                                                             |
 | ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | INK0001 | error    | Namespace import (`import * as`) of @inkline/core is not supported. Use named imports.                                                  |
@@ -803,12 +871,16 @@ The compiler produces diagnostics at each pipeline stage. Errors prevent output;
 | INK0060 | error    | `<Show>` requires a `when` prop.                                                                                                        |
 | INK0062 | error    | `<For>` requires an `each` prop.                                                                                                        |
 | INK0070 | error    | Component-ref forwarding is not yet supported (v1).                                                                                     |
+| INK0071 | error    | JSX spread attributes (`{...props}`) are not supported. Enumerate the attributes explicitly.                                            |
 | INK0080 | warning  | Unknown key in `targetOptions`.                                                                                                         |
-| INK0081 | error    | No compilation target specified.                                                                                                        |
-| INK0082 | error    | Unknown target. Lists the valid targets and suggests the closest match.                                                                 |
-| INK0083 | error    | Target is not present in the configured registry.                                                                                       |
+| INK0081 | warning  | Unknown key in `inkline.config.*`. The key is ignored.                                                                                  |
+| INK0082 | warning  | Unknown key in `inkline.config.*` that looks like a typo, with the suggested spelling.                                                  |
+| INK0083 | warning  | Value in `inkline.config.*` has the wrong type. The value is passed through unchanged.                                                  |
+| INK0084 | error    | No compilation target specified.                                                                                                        |
+| INK0085 | error    | Unknown target. Lists the valid targets and suggests the closest match.                                                                 |
+| INK0086 | error    | Target is not present in the configured registry.                                                                                       |
 | INK0090 | error    | A plugin threw an exception.                                                                                                            |
-| INK0100 | error    | Component failed during emit. Other components continue.                                                                                |
+| INK0100 | error    | Parse failure in a component. That component is skipped; the others in the module still compile.                                        |
 
 Run `inkline check <file>` to check without producing output.
 
@@ -850,6 +922,7 @@ import {
 The following features are deferred to v1:
 
 - **Component-ref forwarding** (element refs work; component refs emit INK0070)
+- **JSX spread attributes** (`<button {...props} />` is discarded and emits INK0071; enumerate the attributes explicitly)
 - **Scoped CSS / `<style>` blocks**
 - **Server/client component boundaries**
 - **Async components / Suspense / `createResource`**
