@@ -6,7 +6,6 @@ const command = defineCommand({
     compile: () => import("./commands/compile.ts").then((m) => m.default),
     check: () => import("./commands/check.ts").then((m) => m.default),
     init: () => import("./commands/init.ts").then((m) => m.default),
-    add: () => import("./commands/add.ts").then((m) => m.default),
   },
 });
 

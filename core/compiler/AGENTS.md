@@ -117,7 +117,11 @@ Run from this package: `vp test`. Run the full repo: `vp run -r test`. The bench
 
 ## Build
 
-`vp pack` produces a single ESM bundle (`dist/index.mjs`) + types (`dist/index.d.mts`). `vp pack --watch` for incremental rebuild during development.
+`vp pack` produces two ESM bundles + types: `dist/index.mjs` (the `.` export) and `dist/testing.mjs` (the `@inkline/compiler/testing` subpath). `vp pack --watch` for incremental rebuild during development.
+
+Two things keep the `testing` subpath honest, and both must move together — a `pack.entry` in [`vite.config.ts`](./vite.config.ts) and an `exports["./testing"]` condition in `package.json`. [`testing/subpath-export.test.ts`](./src/testing/subpath-export.test.ts) packs a tarball and imports it as a consumer would, so drift between the two fails CI instead of shipping.
+
+The framework runtimes and lint tools the harnesses reach for (`react`, `vue`, `svelte`, `solid-js`, `eslint`, `oxlint`, `tinybench`, …) are **optional peer dependencies**. Load them with `await import(…)`, never a static import: a static one both inlines the whole runtime into the published bundle and breaks the subpath for anyone who has not installed it. `src/__fixtures__/` ships in `files` because `compileFixture` and `scenarios` read it at runtime.
 
 The compiler ships **no runtime code** for components — it is library code consumed by the CLI ([`@inkline/cli`](../../tooling/cli/)), the build plugin ([`@inkline/plugin`](../plugin/)), and end users calling `compile()` programmatically.
 
