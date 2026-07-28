@@ -17,7 +17,7 @@ Every one-shot compile now ends with a summary of what it did:
 ```
 $ inkline compile "src/**/*.ink.tsx" --config inkline.config.ts
 …
-Compiled 67 files in 0.34s — 0 errors, 0 warnings, 12 notes
+Compiled 67 files in 0.32s — 0 errors, 0 warnings, 12 notes
 ```
 
 Exit codes are unchanged: `0` clean, `1` when the compile reported errors, `2` for unusable input
