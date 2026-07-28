@@ -46,7 +46,7 @@ export default defineCommand({
       );
 
       for (const d of result.diagnostics) {
-        console.error(formatDiagnostic(d));
+        console.error(formatDiagnostic(d, { source: d.loc.file === absPath ? source : undefined }));
         if (d.severity === "error") hasError = true;
       }
     }

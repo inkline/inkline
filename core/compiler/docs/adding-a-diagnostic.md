@@ -1,6 +1,6 @@
 # Adding a Diagnostic
 
-Diagnostics are typed compiler messages with a stable code (`INKxxxx`), severity, location, and optional help text.
+Diagnostics are typed compiler messages with a stable code (`INKxxxx`), severity, location, and help text.
 
 ## 1. Add the code to the catalog
 
@@ -24,7 +24,7 @@ export const DIAGNOSTICS = {
 - **Code ranges**: 00xx = parse, 01xx = analyze, 05xx = lower, 06xx-08xx = options/config, 09xx = plugin, 10xx = pipeline.
 - **Severity**: `"error"` (blocks compilation), `"warning"` (informational), `"info"` (hint).
 - **Placeholders**: use `{name}` syntax in the title and/or the help text; both are interpolated. The type system extracts them from both via `DiagnosticParams<C>` and enforces callers supply them.
-- **Help text**: one sentence explaining what to do. Set to `undefined` if not applicable.
+- **Help text**: required — the catalog test asserts a non-empty `help` on every code. Give the fix, not a restatement of the title: a corrected example the author can copy.
 - **URL**: link to `https://docs.inkline.dev/diagnostics/INKxxxx`.
 
 ## 2. Push the diagnostic
@@ -49,6 +49,7 @@ Every diagnostic code must be exercised by at least one test. Source-level codes
 The catalog test in `src/core/diagnostics/codes.test.ts` verifies:
 
 - Every code has a valid severity.
+- Every code has a non-empty title, `help`, and docs URL — asserted over `Object.keys(DIAGNOSTICS)`, so a new code with no help fails the suite.
 - Every title's placeholder count matches `DiagnosticParams<C>`.
 - The placeholder list is complete.
 

@@ -197,7 +197,7 @@ export default defineCommand({
 
       for (const d of result.diagnostics) {
         if (!meetsLevel(d.severity, reportLevel)) continue;
-        console.error(formatDiagnostic(d));
+        console.error(formatDiagnostic(d, { source: d.loc.file === absPath ? source : undefined }));
         if (d.severity === "error") hasError = true;
       }
 
@@ -321,9 +321,10 @@ function runWatch(
 
     state = result.nextState;
 
+    const sources = new Map(inputs.map((i) => [i.fileName, i.source]));
     for (const d of result.diagnostics) {
       if (!meetsLevel(d.severity, DEV_REPORT_LEVEL)) continue;
-      console.error(formatDiagnostic(d));
+      console.error(formatDiagnostic(d, { source: sources.get(d.loc.file) }));
     }
 
     const barrelEntries: BarrelMap = new Map();
