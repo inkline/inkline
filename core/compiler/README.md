@@ -178,17 +178,14 @@ export default defineComponent(
 );
 ```
 
-> **Known limitation — this form does not type-check yet.**
-> `ComponentOptions` in [`@inkline/core`](../core/src/index.ts) does not declare a `props` key, and
-> `defineComponent` cannot infer the setup parameter's type from the options object. The compiler
-> handles the form correctly (see the `PropDefaults` fixture and the per-target `props.test.ts`
-> suites), but `tsc` reports `TS2353: 'props' does not exist in type 'ComponentOptions'` and
-> `TS2339: Property 'color' does not exist on type '{}'`. Until the authoring types catch up, use
-> the typed-parameter form above.
+`defineComponent` infers the setup parameter's type from the `props` map, so **leave the setup
+parameter unannotated** with this form — `props.color` is `string | undefined` (optional, defaulted)
+and `props.size` is `number` (required), matching what each target emits. Annotating the parameter
+opts back out of the inference.
 
-Everything that is _not_ a prop also goes in the options object — `slots`, `events`, `runtime`,
-`name`, and `meta`. Those keys are declared on `ComponentOptions` and type-check today, so they can
-be combined with a typed setup parameter:
+Everything that is _not_ a prop also goes in the options object — `slots`, `events`, `style`,
+`runtime`, `name`, and `meta`. Those keys do not drive prop inference, so they can be combined with a
+typed setup parameter:
 
 ```tsx
 export default defineComponent(

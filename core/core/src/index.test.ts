@@ -37,6 +37,39 @@ describe("defineComponent", () => {
     Component({ value: 7 });
     expect(setup).toHaveBeenCalledWith({ value: 7 });
   });
+
+  // Type-level regression guard for the options-object `props` form (UXF-97). The compiler's
+  // `PropDefaults.ink.tsx` fixture authors exactly this shape, but every fixture is excluded from
+  // the type-check pass, so the form compiled correctly to all seven targets while `tsc` rejected
+  // the source. This block is the authoring-surface check that fixture could not be: keep it in
+  // sync with the fixture, and note that the annotated locals below — not the runtime expectation —
+  // are what fails when the inference regresses.
+  it("infers the setup props type from the options object's props map", () => {
+    const Component = defineComponent(
+      {
+        props: {
+          color: "blue",
+          size: Number,
+          count: { type: Number, required: true, default: 0 },
+          when: Date,
+        },
+        slots: { default: {} },
+        style: ".x { color: red }",
+      },
+      (props) => {
+        // Optional — the generated component applies the declared default.
+        const color: string | undefined = props.color;
+        // Required — a bare constructor reference declares a required prop.
+        const size: number = props.size;
+        // Required — the full shape with `required: true`.
+        const count: number = props.count;
+        // `Date` maps to a type but is not one of the required-making constructor references.
+        const when: Date | undefined = props.when;
+        return [color, size, count, when];
+      },
+    );
+    expect(Component({ size: 2, count: 1 })).toEqual([undefined, 2, 1, undefined]);
+  });
 });
 
 describe("createSignal", () => {
