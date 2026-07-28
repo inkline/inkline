@@ -175,3 +175,31 @@ describe("control-flow components", () => {
     expect(Transition({ name: "fade", appear: true })).toBeNull();
   });
 });
+
+// These assert the *type* surface of `when`; the gate is `vp check` over this file, not the runtime
+// expectations. Every `@ts-expect-error` below fails the build the moment the error stops happening.
+describe("control-flow conditions", () => {
+  it("take an optional boolean prop with no `!!` at the call site", () => {
+    const props: { textarea?: boolean } = {};
+
+    expect(Show({ when: props.textarea })).toBeNull();
+    expect(Match({ when: props.textarea })).toBeNull();
+    expect(Show({ when: null })).toBeNull();
+  });
+
+  it("still reject an uncalled signal", () => {
+    const [visible] = createSignal(true);
+
+    // @ts-expect-error — the missing `()`: a signal is a function, only its read is a condition.
+    expect(Show({ when: visible })).toBeNull();
+    // @ts-expect-error — same for `Match`.
+    expect(Match({ when: visible })).toBeNull();
+  });
+
+  it("still require `when` to be present", () => {
+    // @ts-expect-error — omitting `when` is INK0060 / the `Diag_ShowNoWhen` fixture.
+    expect(Show({})).toBeNull();
+    // @ts-expect-error — same for `Match`.
+    expect(Match({})).toBeNull();
+  });
+});

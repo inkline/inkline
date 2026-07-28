@@ -115,7 +115,21 @@ export function Slot(_props: { name?: string; args?: any[]; children?: any }): a
   return null;
 }
 
-export function Show(_props: { when: boolean; fallback?: any; children?: any }): any {
+/**
+ * The value a control-flow condition accepts. `boolean` alone rejects the ordinary authoring
+ * pattern of forwarding an optional flag — `props.open` is `boolean | undefined` — straight into
+ * `when`, which forced a `!!` at every call site. Nullish is admitted because every target lowers
+ * `when` to a native truthiness test (a ternary on React/Astro/Qwik, `v-if`, `{#if}`, `@if`, or
+ * Solid's own `<Show when>`), where `undefined` and `null` behave exactly as `false`. Runtime
+ * semantics are therefore unchanged — this only widens what the type surface admits.
+ *
+ * Deliberately not `unknown`: signals are functions here, so `when={open}` — the missing `()` —
+ * must stay a type error. Truthy-by-accident values (`0`, `""`, `[]`) stay the author's call to
+ * narrow, so a target that renders a bare `0` can never be reached by omission.
+ */
+export type Condition = boolean | null | undefined;
+
+export function Show(_props: { when: Condition; fallback?: any; children?: any }): any {
   return null;
 }
 export function For<T>(_props: {
@@ -128,7 +142,7 @@ export function For<T>(_props: {
 export function Switch(_props: { children?: any; fallback?: any }): any {
   return null;
 }
-export function Match(_props: { when: boolean; children?: any }): any {
+export function Match(_props: { when: Condition; children?: any }): any {
   return null;
 }
 export function Transition(_props: { name?: string; appear?: boolean; children?: any }): any {
