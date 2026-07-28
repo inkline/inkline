@@ -51,6 +51,50 @@ describe("createBuildReporter", () => {
     expect(reporter.counts.info).toBe(3);
   });
 
+  it("keeps two plugin failures, which share INK0090's unknown location", () => {
+    const { printed, reporter } = collectingReporter();
+
+    // `runPlugins` builds INK0090 at UNKNOWN_LOCATION and puts the payload in the title, so position
+    // cannot separate one failing plugin from another.
+    const unknown = { file: "<unknown>", line: 0, column: 0, offset: 0, length: 0 };
+    reporter.report([
+      makeDiag({
+        code: "INK0090" as Diagnostic["code"],
+        severity: "error",
+        title: "Plugin 'tailwind' threw: Cannot read properties of undefined",
+        loc: unknown,
+      }),
+      makeDiag({
+        code: "INK0090" as Diagnostic["code"],
+        severity: "error",
+        title: "Plugin 'icons' threw: ENOENT: no such file or directory",
+        loc: unknown,
+      }),
+    ]);
+
+    expect(printed).toHaveLength(2);
+  });
+
+  it("keeps two targets failing differently on the same component", () => {
+    const { printed, reporter } = collectingReporter();
+
+    // The per-target emit loop pushes INK0100 at the component's own location, once per target.
+    reporter.report([
+      makeDiag({
+        code: "INK0100" as Diagnostic["code"],
+        severity: "error",
+        title: "Parse failure in component 'IInput': angular: unsupported directive",
+      }),
+      makeDiag({
+        code: "INK0100" as Diagnostic["code"],
+        severity: "error",
+        title: "Parse failure in component 'IInput': qwik: unsupported serialization",
+      }),
+    ]);
+
+    expect(printed).toHaveLength(2);
+  });
+
   it("keeps different codes at the same location", () => {
     const { printed, reporter } = collectingReporter();
 

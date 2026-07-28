@@ -5,15 +5,20 @@ import { formatDiagnostic } from "./diagnostics.ts";
 export type SeverityCounts = Record<DiagnosticSeverity, number>;
 
 /**
- * Identity of a finding: the same code at the same source position is one thing to fix, however many
- * codegen targets noticed it. Build-invariant advisories are pushed once per target with the
- * component's own location — INK0068 from both the Angular and the Qwik emitter, for instance — so a
- * component compiled for both prints the byte-identical line twice today. The author has a single
- * call site to change, so they get a single line. The same code at a different position is a
- * different finding and still prints.
+ * Identity of a finding: the same code saying the same thing at the same source position is one thing
+ * to fix, however many codegen targets noticed it. Build-invariant advisories are pushed once per
+ * target with the component's own location — INK0068 from both the Angular and the Qwik emitter, for
+ * instance — so a component compiled for both prints the byte-identical line twice today. The author
+ * has a single call site to change, so they get a single line.
+ *
+ * The title is part of the key because some codes carry their payload there rather than in the
+ * position: INK0090 reports every plugin failure at `<unknown>:0:0`, and INK0100 reports a per-target
+ * emit failure at the component's location once per target. Two plugins crashing, or two targets
+ * failing differently on one component, are distinct findings sharing a code and a position — the
+ * title is the only thing that tells them apart.
  */
 function identity(d: Diagnostic): string {
-  return [d.code, d.loc.file, d.loc.line, d.loc.column].join("\u0000");
+  return [d.code, d.loc.file, d.loc.line, d.loc.column, d.title].join("\u0000");
 }
 
 /** Source text by absolute file name, for the code frame `formatDiagnostic` renders. */
