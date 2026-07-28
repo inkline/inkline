@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { Diagnostic } from "../core/diagnostics/codes.ts";
@@ -6,7 +6,15 @@ import { ALL_TARGETS, type GeneratedFile, type TargetName } from "../codegen/con
 import { compile, type AnalyzedModule } from "../pipeline/compile.ts";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const FIXTURES_DIR = resolve(__dirname, "..", "__fixtures__");
+
+// This module lives at `src/testing/` in the repo but at `dist/` once packed,
+// while the fixtures ship under `src/__fixtures__` in both layouts.
+const REPO_FIXTURES_DIR = resolve(__dirname, "..", "__fixtures__");
+const PACKED_FIXTURES_DIR = resolve(__dirname, "..", "src", "__fixtures__");
+
+export const FIXTURES_DIR: string = existsSync(REPO_FIXTURES_DIR)
+  ? REPO_FIXTURES_DIR
+  : PACKED_FIXTURES_DIR;
 
 export interface CompiledFixture {
   readonly ir?: AnalyzedModule;
