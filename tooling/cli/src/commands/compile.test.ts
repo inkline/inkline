@@ -251,6 +251,28 @@ describe("compile command (in-process)", () => {
     expect(existsSync(resolve(out, "qwik", "HasSlot.tsx"))).toBe(true);
   });
 
+  // UXF-85's source frames reach the one-shot build only if `run()` hands the reporter the source
+  // text for the file it just compiled. `report.test.ts` pins the reporter→formatter seam; this pins
+  // the caller→reporter one. Dropping the source map at the call site is what silently reverted
+  // UXF-85 during the #541 rebase, and it reverted it with every unit test still green.
+  it("prints a source frame for a diagnostic in a real one-shot build", async () => {
+    const out = tmpDir("source-frame");
+    const { exitCode, errs } = await runCompile([
+      resolve(FIXTURES, "HasSlot.ink.tsx"),
+      "--target",
+      "angular",
+      "--out-dir",
+      out,
+    ]);
+
+    expect(exitCode).toBe(0);
+    expect(errs).toContain("INK0068");
+    // INK0068 is raised at the component's own location: the `defineComponent` call on line 5.
+    expect(errs).toMatch(/^\s*5 \| export default defineComponent\(/m);
+    // The caret row that underlines the frame — present only when the formatter got source text.
+    expect(errs).toMatch(/^\s*\| \^+$/m);
+  });
+
   it("ends a clean build with a file count, elapsed time, and zero counts", async () => {
     const out = tmpDir("summary-clean");
     const { exitCode, logs } = await runCompile([
