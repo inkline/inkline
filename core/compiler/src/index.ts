@@ -4,6 +4,8 @@ export type { CompileInput, CompileResult, AnalyzedModule } from "./pipeline/com
 export {
   compileIncremental,
   createIncrementalState,
+  seedIncrementalState,
+  type IncrementalSeed,
   type IncrementalState,
   type IncrementalCompileResult,
 } from "./pipeline/incremental.ts";
