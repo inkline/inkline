@@ -99,6 +99,27 @@ function suggestConfigKey(key: string): string | undefined {
   return best;
 }
 
+/**
+ * The paths of the keys an issue reports as unrecognised, or `undefined` if it is not about keys.
+ *
+ * Zod says "this key is not one we know" under two codes, and they carry the key in different
+ * places:
+ *
+ * - `unrecognized_keys`, from a `strictObject`, puts the offending names in `issue.keys` and the
+ *   container in `issue.path` — so a root-level typo arrives as `path: []`, `keys: ["sourceMaps"]`.
+ * - `invalid_key`, from a `partialRecord` whose key enum rejected the name, has already appended the
+ *   name to `issue.path` — `targetOutDir: { preact: … }` arrives as `path: ["targetOutDir", "preact"]`.
+ *
+ * Both are unknown keys and neither is fatal. Matching only the first is what made a leftover
+ * `targetOutDir`/`targetOptions` entry for a target you no longer build fall through to INK0083 and
+ * stop the run over a key the commands never read.
+ */
+function unknownKeyPaths(issue: z.core.$ZodIssue): readonly (readonly PropertyKey[])[] | undefined {
+  if (issue.code === "unrecognized_keys") return issue.keys.map((key) => [...issue.path, key]);
+  if (issue.code === "invalid_key") return [issue.path];
+  return undefined;
+}
+
 function formatPath(path: readonly PropertyKey[]): string {
   if (path.length === 0) return "<root>";
   return path.reduce<string>(
@@ -139,17 +160,18 @@ export function validateConfig(config: object, file = "<unknown>"): readonly Dia
   if (result.success) return diagnostics.freeze();
 
   for (const issue of result.error.issues) {
-    // An unrecognised key is never fatal, at any depth — it is ignored and reported. Only a
-    // top-level key can be matched against the known config keys, so a nested one (`barrels[0].mod`)
-    // is reported by its full path without a suggestion.
-    if (issue.code === "unrecognized_keys") {
-      for (const key of issue.keys) {
-        const path = formatPath([...issue.path, key]);
-        const suggestion = issue.path.length === 0 ? suggestConfigKey(key) : undefined;
+    const unknownKeys = unknownKeyPaths(issue);
+
+    if (unknownKeys) {
+      for (const path of unknownKeys) {
+        const key = formatPath(path);
+        // Only a top-level name can be matched against the schema's key set; anything deeper
+        // (`barrels[0].mod`, `targetOutDir.preact`) is reported by its full path without a guess.
+        const suggestion = path.length === 1 ? suggestConfigKey(String(path[0])) : undefined;
         if (suggestion) {
-          diagnostics.push("INK0082", loc, { key: path, suggestion });
+          diagnostics.push("INK0082", loc, { key, suggestion });
         } else {
-          diagnostics.push("INK0081", loc, { key: path });
+          diagnostics.push("INK0081", loc, { key });
         }
       }
       continue;

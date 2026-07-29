@@ -20,9 +20,8 @@ and `srcDir.endsWith` were three instances of the same assumption — that a val
 hold their declared types — and hardening them one at a time would have left the next field to be
 found by a user.
 
-Unknown _keys_ remain non-fatal, and now consistently so: an unrecognised key nested inside a value
-(`barrels[0].extra`) is reported as `INK0081` by its full path rather than as an invalid value, so
-it no longer inherits the new fatal severity. `INK0081`/`INK0082` are unchanged.
-
-Breaking for direct importers of `@inkline/cli`'s `loadInklineConfig`, which now returns
-`{ config, valid }` rather than the config itself.
+Unknown _keys_ remain non-fatal, and now consistently so, at every depth and under either shape
+zod reports them in: a key nested inside a value (`barrels[0].extra`) and a key of a record-typed
+field (`targetOutDir.preact`, `targetOptions.preact`) are both reported as `INK0081` by their full
+path rather than as an invalid value, so neither inherits the new fatal severity. A leftover entry
+for a target you no longer build is still ignored. `INK0081`/`INK0082` are otherwise unchanged.

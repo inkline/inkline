@@ -181,6 +181,23 @@ describe("wrong-typed config values", () => {
     expect(exitCode).toBe(0);
     expect(compileCalls).toHaveLength(1);
   });
+
+  // `targetOutDir` and `targetOptions` are records, so zod rejects an unknown target under
+  // `invalid_key` rather than `unrecognized_keys`. Same meaning, same non-fatal treatment: a
+  // leftover entry for a target that is no longer built is ignored, not a reason to stop.
+  it.each([
+    ["targetOutDir", `{ targets: ["react"], targetOutDir: { preact: "out/preact" } }`],
+    ["targetOptions", `{ targets: ["react"], targetOptions: { preact: { jsx: true } } }`],
+  ])("keeps an unknown %s target non-fatal", async (field, body) => {
+    const configPath = writeBadConfig(`unknown-${field}-key`, body);
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    const { exitCode } = await run(checkCommand, ["A.ink.tsx", "--config", configPath]);
+
+    expect(exitCode).toBe(0);
+    expect(compileCalls).toHaveLength(1);
+    expect(warn.mock.calls.flat().join("\n")).toContain(`Unknown config key: ${field}.preact`);
+  });
 });
 
 describe("check / compile option parity", () => {

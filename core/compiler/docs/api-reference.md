@@ -1388,7 +1388,7 @@ Constant map of all diagnostic codes to their metadata:
 | `INK0080` | warning  | Unknown target option: {key}                            |
 | `INK0081` | warning  | Unknown config key: {key}                               |
 | `INK0082` | warning  | Unknown config key: {key}. Did you mean {suggestion}?   |
-| `INK0083` | warning  | Invalid config value at {path}: {message}               |
+| `INK0083` | error    | Invalid config value at {path}: {message}               |
 | `INK0084` | error    | No compilation target specified                         |
 | `INK0085` | error    | Unknown target "{target}"                               |
 | `INK0086` | error    | Target "{target}" is not present in the registry        |
