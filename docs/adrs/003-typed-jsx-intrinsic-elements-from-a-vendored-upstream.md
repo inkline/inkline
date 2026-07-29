@@ -1,4 +1,4 @@
-# ADR-002: Type `JSX.IntrinsicElements` by deriving it from a vendored upstream, behind an Inkline-owned alias
+# ADR-003: Type `JSX.IntrinsicElements` by deriving it from a vendored upstream, behind an Inkline-owned alias
 
 Date: 2026-07-29 · Status: Accepted
 Deciders: Project owner · Informed by: internal tracker UXF-71 (friction audit), UXF-90 (RFC + measurements), UXF-133 (implementation)

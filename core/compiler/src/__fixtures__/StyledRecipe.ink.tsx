@@ -1,5 +1,5 @@
 import { defineComponent, Slot, createMemo } from "@inkline/core";
-import { badge } from "./recipe.ts";
+import { badge } from "./recipe";
 
 export interface BadgeProps {
   label?: string;

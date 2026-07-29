@@ -61,7 +61,7 @@ type Inklinified<T> = { [K in keyof T]: Omit<T[K], InklineOwnedKeys> & InklineOw
 ```
 
 Read that alias before touching this file — it is the whole contract, and the reasoning is
-[ADR-002](../../docs/adrs/002-typed-jsx-intrinsic-elements-from-a-vendored-upstream.md).
+[ADR-003](../../docs/adrs/003-typed-jsx-intrinsic-elements-from-a-vendored-upstream.md).
 
 - **The alias is the seam.** The public shape is "upstream element attributes, minus the keys Inkline redefines, plus `InklineOwned`". The vendored copy is today's source, not the contract. Replacing it with a generated surface is one `extends` clause — measured, not asserted: swapping the `solid-js` package for the vendored copy cost exactly that one line.
 - **Never hand-edit `src/vendor/`.** It is byte-identical to upstream below its header, which is what makes a re-sync a plain `diff`. Corrections belong in `InklineOwned`. [`src/vendor/README.md`](./src/vendor/README.md) has the re-sync procedure.
@@ -85,7 +85,7 @@ Output: `dist/index.{mjs,d.mts}` + `dist/jsx-runtime.{mjs,d.mts}`.
 
 [`src/index.test.ts`](./src/index.test.ts) and [`src/jsx-runtime.test.ts`](./src/jsx-runtime.test.ts) pin the stub contracts (identity/no-op shapes, tuple returns). Behavioral coverage lives in [`@inkline/compiler`](../compiler/) (compile + scenario tests assert what the _compiled_ output does). Keep tests here shallow — the runtime is intentionally inert.
 
-[`src/jsx-runtime.probes.test.ts`](./src/jsx-runtime.probes.test.ts) is the exception: it spawns `tsc` over twelve deliberate authoring mistakes and asserts which eight are caught **and** which four are not. Both halves are the contract — a change that starts catching one of the four fails too, so the documented blind spots can never go stale. Update the table only alongside the reasoning in ADR-002.
+[`src/jsx-runtime.probes.test.ts`](./src/jsx-runtime.probes.test.ts) is the exception: it spawns `tsc` over twelve deliberate authoring mistakes and asserts which eight are caught **and** which four are not. Both halves are the contract — a change that starts catching one of the four fails too, so the documented blind spots can never go stale. Update the table only alongside the reasoning in ADR-003.
 
 ## See also
 

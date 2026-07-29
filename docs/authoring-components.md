@@ -113,7 +113,7 @@ Four things it deliberately does **not** catch, so you know where you are on you
 - Invalid members of open string unions (`<input type="nonsense" />`).
 - Unknown `$`-prefixed directives — those are the compiler's vocabulary, and the compiler diagnoses them.
 
-The full rationale, including why the surface is borrowed rather than written by hand and why it is vendored rather than depended on, is [ADR-002](./adrs/002-typed-jsx-intrinsic-elements-from-a-vendored-upstream.md).
+The full rationale, including why the surface is borrowed rather than written by hand and why it is vendored rather than depended on, is [ADR-003](./adrs/003-typed-jsx-intrinsic-elements-from-a-vendored-upstream.md).
 
 ## Authoring primitives
 
