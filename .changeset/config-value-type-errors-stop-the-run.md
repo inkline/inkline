@@ -13,7 +13,9 @@ just arrived before the crash rather than instead of it.
 `INK0083` (invalid config value) is now an `error`, and `loadInklineConfig` returns
 `{ config, valid }`. `check` and `compile` stop at the boundary with exit code `2` when `valid` is
 `false`, before any consumer reads a field — in `compile`, notably before `--clean` removes output
-directories named by a `targets`/`targetOutDir` that failed validation.
+directories named by a `targetOutDir` that failed validation. A wrong-typed `targets` never reached
+the delete (`resolveTargets` threw first); a wrong-typed `targetOutDir` did, cleaning the targets
+ahead of the bad entry before throwing on it.
 
 Fixing this at the load boundary covers every consumer at once. `targets.join`, `barrels.filter`
 and `srcDir.endsWith` were three instances of the same assumption — that a validated config's fields
