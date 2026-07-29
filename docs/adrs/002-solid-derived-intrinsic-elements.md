@@ -28,10 +28,10 @@ repository — 67 files in `ui/components` (checked in CI today) and 101 compile
 from `core/compiler/tsconfig.json` today), 168 files in total. Fixture numbers are deltas against
 their own 9-error pre-existing baseline; the `ui/components` baseline is 0.
 
-| Candidate                   | First-pass errors, `ui/components` | Final shim | Final errors, all 168 files |
-| --------------------------- | ---------------------------------- | ---------- | --------------------------- |
-| React (`@types/react` 19.2.17) | 20                              | 56 lines   | 0                           |
-| Solid (`solid-js` 1.9.13)      | 1                               | 34 lines   | 0                           |
+| Candidate                      | First-pass errors, `ui/components` | Final shim | Final errors, all 168 files |
+| ------------------------------ | ---------------------------------- | ---------- | --------------------------- |
+| React (`@types/react` 19.2.17) | 20                                 | 56 lines   | 0                           |
+| Solid (`solid-js` 1.9.13)      | 1                                  | 34 lines   | 0                           |
 
 **The React number is a lower bound, not a count.** TypeScript reports only the first offending
 property per JSX element, so `IInputControlBase.ink.tsx:27` reported `class` while silently sitting
@@ -82,7 +82,7 @@ was filed. The decision does not wait on the implementation.
   does not write and does not maintain, for the cost of an `extends`.
 - 8 of 12 seeded authoring mistakes are caught that the `any` surface caught 1 of (see the RFC's
   §2.3 probe table, which ships as the regression suite).
-- Escape hatches ship in the same release as the constraint: `$bind:*` and the `` [K in `$${string}`] ``
+- Escape hatches ship in the same release as the constraint: `$bind:*` and the ``[K in `$${string}`]``
   index signature are permanently unconstrained, `data-*` remains free, and a one-line
   `declare module` augmentation reopens the surface for anyone who needs it.
 
@@ -100,12 +100,12 @@ was filed. The decision does not wait on the implementation.
   twelve probes are still missed, and nobody reading this in six months should overestimate what
   shipped:
 
-  | Miss                                             | Why types cannot reach it                                            |
-  | ------------------------------------------------ | -------------------------------------------------------------------- |
-  | `<div aria-hiddenn="true" />`                     | TypeScript does not validate JSX attribute names that aren't valid JS identifiers. `notARealAttribute` errors; `aria-hiddenn` does not. There are 11 `aria-*` uses in `ui/components` and this change buys zero safety on any of them. |
-  | `<IButtonBase colr="light" />`                    | `InkComponent<P>` still carries `[attr: string]: any` ([`core/core/src/index.ts:20`](../../core/core/src/index.ts)). `ui/components` authors far more component elements than native ones, so this is arguably the larger hole. |
-  | `<input type="definitely-not-a-type" />`          | `HTMLInputTypeAttribute` includes `(string & {})` by design.          |
-  | `<div $bind:totalNonsense={1} />`                 | `$bind:*` is an escape hatch by construction; no TS mechanism constrains it against a per-element attribute set. |
+  | Miss                                     | Why types cannot reach it                                                                                                                                                                                                              |
+  | ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | `<div aria-hiddenn="true" />`            | TypeScript does not validate JSX attribute names that aren't valid JS identifiers. `notARealAttribute` errors; `aria-hiddenn` does not. There are 11 `aria-*` uses in `ui/components` and this change buys zero safety on any of them. |
+  | `<IButtonBase colr="light" />`           | `InkComponent<P>` still carries `[attr: string]: any` ([`core/core/src/index.ts:20`](../../core/core/src/index.ts)). `ui/components` authors far more component elements than native ones, so this is arguably the larger hole.        |
+  | `<input type="definitely-not-a-type" />` | `HTMLInputTypeAttribute` includes `(string & {})` by design.                                                                                                                                                                           |
+  | `<div $bind:totalNonsense={1} />`        | `$bind:*` is an escape hatch by construction; no TS mechanism constrains it against a per-element attribute set.                                                                                                                       |
 
   The first and last belong to the INK diagnostic catalogue (internal tracker UXF-136); the second
   needs its own measurement and its own RFC (internal tracker UXF-135).

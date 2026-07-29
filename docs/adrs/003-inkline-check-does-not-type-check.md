@@ -8,7 +8,7 @@ Supersedes: — · Superseded by: —
 
 This is the second half of the decision recorded in
 [ADR-002](./002-solid-derived-intrinsic-elements.md), and it is separated because it is separately
-revisitable: typing JSX is what gives a checker something worth checking, but *who* runs that check
+revisitable: typing JSX is what gives a checker something worth checking, but _who_ runs that check
 is its own one-way commitment to a maintenance surface.
 
 **`inkline check` has never type-checked. Not partially — not at all.** `getSemanticDiagnostics`
@@ -68,7 +68,7 @@ the mistake happens rather than in a document nobody opened.
 **Good.**
 
 - Inkline never ships a checker that is 95% of `tsc`. That is the worst available position: authors
-  get *different* answers from two tools and cannot tell which is right.
+  get _different_ answers from two tools and cannot tell which is right.
 - The author's own `tsconfig.json` stays authoritative. Inkline does not get an opinion on `strict`.
 - The INK catalogue keeps a coherent identity — every code answers a lowering question — which is
   what makes its `help` prose and docs URLs writable at all (see
@@ -85,7 +85,7 @@ the mistake happens rather than in a document nobody opened.
   documentation is bad at. Every tutorial, template, and CI example has to carry both commands or it
   teaches the wrong habit.
 - **The silent-omission complaint stays unanswered by `check`.** UXF-72's most transferable finding
-  was an adopter asking why a style was *silently dropped*; static extraction's characteristic
+  was an adopter asking why a style was _silently dropped_; static extraction's characteristic
   failure mode is silent omission. This decision routes types away from `check` but does not add the
   coverage that would answer that complaint — that remains ADR-001's step 1.
 - The four probe misses in ADR-002 that belong to the catalogue (`aria-*` spelling, `$bind:` target
