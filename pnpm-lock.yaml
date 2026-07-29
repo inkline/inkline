@@ -129,6 +129,9 @@ catalogs:
     concurrently:
       specifier: ^10.0.3
       version: 10.0.3
+    csstype:
+      specifier: ^3.2.3
+      version: 3.2.3
     eslint:
       specifier: ^9.39.4
       version: 9.39.4
@@ -411,9 +414,9 @@ importers:
 
   core/core:
     dependencies:
-      solid-js:
+      csstype:
         specifier: 'catalog:'
-        version: 1.9.13
+        version: 3.2.3
     devDependencies:
       '@types/node':
         specifier: 'catalog:'

@@ -39,7 +39,7 @@
     "test": "vp test"
   },
   "dependencies": {
-    "solid-js": "catalog:"
+    "csstype": "catalog:"
   },
   "devDependencies": {
     "@types/node": "catalog:",

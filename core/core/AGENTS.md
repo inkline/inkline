@@ -23,7 +23,7 @@ This package exists so authoring code type-checks and produces predictable IR. T
 
 Implication: do not add real reactive behavior, real DOM rendering, or expensive logic to these stubs. Any "real" behavior must come from the per-framework code the compiler emits.
 
-The same applies to the `solid-js` dependency: it is imported `import type` only, for the JSX element types below. Nothing from it reaches the output.
+The same applies to the dependency list. It has exactly one entry, `csstype`, which is types-only by construction — the published package contains `index.d.ts` and no JavaScript. The JSX element types below come from a vendored `.d.ts` in [`src/vendor/`](./src/vendor/), not from a package. Nothing from either reaches the output. **Do not add a runtime package to this package's `dependencies`**, for types or otherwise — that is what the vendored copy exists to avoid.
 
 ## Exports
 
@@ -54,16 +54,17 @@ Two entry points, declared in [`package.json`](./package.json) `exports`:
 
 ### JSX surface (from `src/jsx-runtime.ts`)
 
-`JSX.IntrinsicElements` is **not** `any`. It is derived from `solid-js`'s through one alias:
+`JSX.IntrinsicElements` is **not** `any`. It is derived from a vendored upstream — [`src/vendor/solid-jsx.d.ts`](./src/vendor/solid-jsx.d.ts), a verbatim MIT-licensed copy of Solid's element types — through one alias:
 
 ```ts
 type Inklinified<T> = { [K in keyof T]: Omit<T[K], InklineOwnedKeys> & InklineOwned };
 ```
 
 Read that alias before touching this file — it is the whole contract, and the reasoning is
-[ADR-002](../../docs/adrs/002-typed-jsx-intrinsic-elements-derived-from-solid.md).
+[ADR-002](../../docs/adrs/002-typed-jsx-intrinsic-elements-from-a-vendored-upstream.md).
 
-- **The alias is the seam.** The public shape is "upstream element attributes, minus the keys Inkline redefines, plus `InklineOwned`". Solid is today's source, not the contract. Replacing it with a generated surface is one `extends` clause.
+- **The alias is the seam.** The public shape is "upstream element attributes, minus the keys Inkline redefines, plus `InklineOwned`". The vendored copy is today's source, not the contract. Replacing it with a generated surface is one `extends` clause — measured, not asserted: swapping the `solid-js` package for the vendored copy cost exactly that one line.
+- **Never hand-edit `src/vendor/`.** It is byte-identical to upstream below its header, which is what makes a re-sync a plain `diff`. Corrections belong in `InklineOwned`. [`src/vendor/README.md`](./src/vendor/README.md) has the re-sync procedure.
 - **`InklineOwned` is the only place Inkline overrides upstream.** `ref` is Inkline's `{ current }` object; `children` and `key` are compiler-opaque; `indeterminate` is a DOM property with no HTML attribute; every `` `$${string}` `` key is open so directives (`$bind:value`, `$if`, …) are unconstrained by construction. Directive _names_ are validated by compiler diagnostics, not by types.
 - **Component props are deliberately untyped.** `InkComponent` keeps `[attr: string]: any`, so a misspelled prop on an Inkline component still type-checks. Changing that is its own decision.
 

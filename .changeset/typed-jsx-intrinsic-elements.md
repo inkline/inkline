@@ -7,9 +7,14 @@ feat(core): type `JSX.IntrinsicElements` instead of `any`
 `.ink.tsx` authoring had no type safety in markup: `JSX.IntrinsicElements` was
 `[elemName: string]: any`, so a misspelled attribute, a React-ism like `className`, or a typo'd event
 handler compiled silently and surfaced only when you ran the output. `IntrinsicElements` is now
-derived from an upstream JSX surface (Solid's) through an Inkline-owned alias, which adds `solid-js`
-as a dependency of `@inkline/core` — for types only; the package still ships no runtime, and the
-compiler still erases every `@inkline/core` reference from the output.
+derived from an upstream JSX surface — a vendored, MIT-licensed copy of Solid's element types,
+carried in-tree rather than depended on — reshaped through an Inkline-owned alias. `@inkline/core`
+gains no runtime dependency from this: its only dependency is `csstype`, which ships no JavaScript.
+The package still ships no runtime, and the compiler still erases every `@inkline/core` reference
+from the output.
+
+The declarations do get bigger: `dist/jsx-runtime.d.mts` goes from ~1.7 kB to ~163 kB (21.5 kB
+gzipped), since the element surface is inlined rather than referenced. That is types-only weight.
 
 Elements now carry real attribute types and typed event objects (`e.currentTarget` is the element you
 clicked, not `any`). `ref` stays Inkline's `{ current }` object, `children` and `key` stay

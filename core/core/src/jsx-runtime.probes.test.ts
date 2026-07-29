@@ -3,10 +3,10 @@
  *
  * `jsx-runtime.test.ts` covers the runtime stubs; this file covers the types, which is the whole
  * point of the surface. Twelve deliberate authoring mistakes: eight the surface must catch, four it
- * structurally cannot. Both halves are assertions. A future `solid-js` bump that stops catching one
- * of the eight fails here instead of silently downgrading every author's editor, and one that starts
- * catching one of the four fails too — telling us to update the table rather than leaving the
- * documented blind spots stale.
+ * structurally cannot. Both halves are assertions. A re-sync of `./vendor/solid-jsx.d.ts` that stops
+ * catching one of the eight fails here instead of silently downgrading every author's editor, and
+ * one that starts catching one of the four fails too — telling us to update the table rather than
+ * leaving the documented blind spots stale.
  *
  * Kept separate from `jsx-runtime.test.ts` because it spawns `tsc`; the unit tests stay instant.
  */
@@ -104,8 +104,8 @@ const PROBES: readonly Probe[] = [
     mistake: "invalid member of an open string union",
     codes: [],
     blindSpot:
-      "Solid types `input.type` as the enumerated union plus `(string & {})` — the autocomplete " +
-      "idiom, which keeps suggestions while accepting any string. Inherited from upstream by design.",
+      "The vendored upstream types `input.type` as the enumerated union plus `(string & {})` — the " +
+      "autocomplete idiom, which keeps suggestions while accepting any string. Inherited by design.",
     source: `export const el = <input type="definitely-not-a-type" />;\n`,
   },
   {
@@ -156,7 +156,7 @@ describe("JSX.IntrinsicElements safety level (RFC §2.3)", () => {
   let diagnostics: Map<string, string[]>;
 
   beforeAll(() => {
-    // Created inside the package so `solid-js` resolves through the normal `node_modules` walk-up;
+    // Created inside the package so `csstype` resolves through the normal `node_modules` walk-up;
     // the `.jsx-probe-*` prefix is git-ignored, which also keeps oxlint away from files that are
     // broken on purpose.
     probeDir = mkdtempSync(join(packageRoot, ".jsx-probe-"));
