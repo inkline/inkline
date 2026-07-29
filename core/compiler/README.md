@@ -581,10 +581,11 @@ interface GeneratedFile {
 
 ### Working with the IR
 
-The compiler exposes its full intermediate representation for advanced use cases:
+The compiler exposes its full intermediate representation at `@inkline/compiler/ir`:
 
 ```ts
-import { compile, walkRenderTree } from "@inkline/compiler";
+import { compile } from "@inkline/compiler";
+import { walkRenderTree } from "@inkline/compiler/ir";
 
 const result = await compile({ fileName: "Counter.ink.tsx", source }, { targets: ["react"] });
 
@@ -617,7 +618,7 @@ for (const [componentId, graph] of module.graphs) {
 ### Transforming the IR
 
 ```ts
-import { transform, transformComponent, SKIP } from "@inkline/compiler";
+import { transform, transformComponent, SKIP } from "@inkline/compiler/ir";
 
 const transformed = transformComponent(component, {
   enter(node) {
@@ -813,9 +814,10 @@ for (const file of files) {
 Register a custom target for frameworks not built in:
 
 ```ts
-import { defineTarget, createRegistry, builtinRegistry } from "@inkline/compiler";
-import type { IRComponent, CodegenContext, CodeModule } from "@inkline/compiler";
-import { cFile, cStmt, cImport, cJsxElement } from "@inkline/compiler";
+import { defineTarget, createRegistry, builtinRegistry } from "@inkline/compiler/codegen";
+import type { CodegenContext, CodeModule } from "@inkline/compiler/codegen";
+import { cFile, cStmt, cImport, cJsxElement } from "@inkline/compiler/codegen";
+import type { IRComponent } from "@inkline/compiler/ir";
 
 const myTarget = defineTarget({
   name: "react", // must be a valid TargetName
