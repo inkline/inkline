@@ -3,8 +3,16 @@ export interface Ref<T = any> {
 }
 
 interface ComponentOptions {
+  /**
+   * Declared props and their defaults, parsed by compiler pass P2 (`parseOptions` → `props`). Values
+   * are constructors (`Number`), literal defaults, or `{ type, default }` descriptors. Deliberately
+   * *not* used to infer the setup function's `props` parameter — annotate that yourself.
+   */
+  props?: Record<string, unknown>;
   slots?: Record<string, { scoped?: boolean; required?: boolean }>;
   events?: Record<string, Record<string, never>>;
+  /** Component-scoped CSS, emitted into each target's style channel. */
+  style?: string;
   runtime?: "client" | "server" | "iso";
   name?: string;
   /**
@@ -115,7 +123,8 @@ export function Slot(_props: { name?: string; args?: any[]; children?: any }): a
   return null;
 }
 
-export function Show(_props: { when: boolean; fallback?: any; children?: any }): any {
+/** `when` is a truthiness test in every target, so it is `unknown` — required, but not `boolean`. */
+export function Show(_props: { when: unknown; fallback?: any; children?: any }): any {
   return null;
 }
 export function For<T>(_props: {
@@ -128,7 +137,7 @@ export function For<T>(_props: {
 export function Switch(_props: { children?: any; fallback?: any }): any {
   return null;
 }
-export function Match(_props: { when: boolean; children?: any }): any {
+export function Match(_props: { when: unknown; children?: any }): any {
   return null;
 }
 export function Transition(_props: { name?: string; appear?: boolean; children?: any }): any {

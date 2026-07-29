@@ -1,6 +1,6 @@
 import { createSignal, defineComponent, For } from "@inkline/core";
 export default defineComponent(() => {
-  const [items, setItems] = createSignal([]);
+  const [items, setItems] = createSignal<string[]>([]);
   const [input, setInput] = createSignal("");
   return (
     <div>

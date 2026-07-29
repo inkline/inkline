@@ -23,6 +23,8 @@ This package exists so authoring code type-checks and produces predictable IR. T
 
 Implication: do not add real reactive behavior, real DOM rendering, or expensive logic to these stubs. Any "real" behavior must come from the per-framework code the compiler emits.
 
+The same applies to the `solid-js` dependency: it is imported `import type` only, for the JSX element types below. Nothing from it reaches the output.
+
 ## Exports
 
 Two entry points, declared in [`package.json`](./package.json) `exports`:
@@ -50,6 +52,23 @@ Two entry points, declared in [`package.json`](./package.json) `exports`:
 | `hasSlot`                                              | `(name?) → boolean`                   | Whether a (named, or default) slot was filled; compiles to a per-target presence check.                                                                                                                                                             |
 | `Slot`, `Show`, `For`, `Switch`, `Match`, `Transition` | JSX components                        | Control-flow + slotting + transition. Lowered to IR nodes in compiler pass P3.                                                                                                                                                                      |
 
+### JSX surface (from `src/jsx-runtime.ts`)
+
+`JSX.IntrinsicElements` is **not** `any`. It is derived from `solid-js`'s through one alias:
+
+```ts
+type Inklinified<T> = { [K in keyof T]: Omit<T[K], InklineOwnedKeys> & InklineOwned };
+```
+
+Read that alias before touching this file — it is the whole contract, and the reasoning is
+[ADR-002](../../docs/adrs/002-typed-jsx-intrinsic-elements-derived-from-solid.md).
+
+- **The alias is the seam.** The public shape is "upstream element attributes, minus the keys Inkline redefines, plus `InklineOwned`". Solid is today's source, not the contract. Replacing it with a generated surface is one `extends` clause.
+- **`InklineOwned` is the only place Inkline overrides upstream.** `ref` is Inkline's `{ current }` object; `children` and `key` are compiler-opaque; `indeterminate` is a DOM property with no HTML attribute; every `` `$${string}` `` key is open so directives (`$bind:value`, `$if`, …) are unconstrained by construction. Directive _names_ are validated by compiler diagnostics, not by types.
+- **Component props are deliberately untyped.** `InkComponent` keeps `[attr: string]: any`, so a misspelled prop on an Inkline component still type-checks. Changing that is its own decision.
+
+`vp check` type-checks the 101 `.ink.tsx` fixtures in [`core/compiler/src/__fixtures__/`](../compiler/src/__fixtures__/) — they are the control that catches an upstream regression here. Neither `core/compiler/tsconfig.json` nor the root `vite.config.ts` `lint.ignorePatterns` may exclude them again; that list gates the type-check path too, so excluding them looks green while checking nothing.
+
 When you add a new primitive, **add the corresponding compiler binding** in [`core/compiler/src/pipeline/passes/02-parse/`](../compiler/src/pipeline/passes/02-parse/) (parse → IR) and [`core/compiler/src/pipeline/passes/03-lower/`](../compiler/src/pipeline/passes/03-lower/) (if it lowers to a different IR shape). A primitive without a compiler binding will be left as-is in output and likely break consumers.
 
 ## Build
@@ -64,6 +83,8 @@ Output: `dist/index.{mjs,d.mts}` + `dist/jsx-runtime.{mjs,d.mts}`.
 ## Tests
 
 [`src/index.test.ts`](./src/index.test.ts) and [`src/jsx-runtime.test.ts`](./src/jsx-runtime.test.ts) pin the stub contracts (identity/no-op shapes, tuple returns). Behavioral coverage lives in [`@inkline/compiler`](../compiler/) (compile + scenario tests assert what the _compiled_ output does). Keep tests here shallow — the runtime is intentionally inert.
+
+[`src/jsx-runtime.probes.test.ts`](./src/jsx-runtime.probes.test.ts) is the exception: it spawns `tsc` over twelve deliberate authoring mistakes and asserts which eight are caught **and** which four are not. Both halves are the contract — a change that starts catching one of the four fails too, so the documented blind spots can never go stale. Update the table only alongside the reasoning in ADR-002.
 
 ## See also
 

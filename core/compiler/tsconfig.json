@@ -15,7 +15,10 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
-    "skipLibCheck": true
-  },
-  "exclude": ["src/__fixtures__/**"]
+    "skipLibCheck": true,
+    // `src/__fixtures__/**` is no longer excluded, so the 101 authored `.ink.tsx` fixtures need the
+    // authoring JSX settings — the same pair `ui/components/tsconfig.json` uses.
+    "jsx": "react-jsx",
+    "jsxImportSource": "@inkline/core"
+  }
 }

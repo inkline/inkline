@@ -6,9 +6,10 @@ pays for the same lesson twice.
 
 ## Index
 
-| #                                                  | Title                                                                   | Date       | Status   | Tags              |
-| -------------------------------------------------- | ----------------------------------------------------------------------- | ---------- | -------- | ----------------- |
-| [001](./001-compiler-dx-invests-in-diagnostics.md) | Invest compiler DX in diagnostics, ordered coverage → rendering → prose | 2026-07-27 | Accepted | compiler, cli, dx |
+| #                                                               | Title                                                                     | Date       | Status   | Tags                |
+| --------------------------------------------------------------- | ------------------------------------------------------------------------- | ---------- | -------- | ------------------- |
+| [001](./001-compiler-dx-invests-in-diagnostics.md)              | Invest compiler DX in diagnostics, ordered coverage → rendering → prose   | 2026-07-27 | Accepted | compiler, cli, dx   |
+| [002](./002-typed-jsx-intrinsic-elements-derived-from-solid.md) | Type `JSX.IntrinsicElements` by deriving it from Solid's, behind an alias | 2026-07-29 | Accepted | core, authoring, dx |
 
 ## Rules
 
