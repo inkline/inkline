@@ -1,4 +1,4 @@
-# ADR-002: Adopt Solid-derived `JSX.IntrinsicElements` behind an Inkline-owned alias
+# ADR-003: Adopt Solid-derived `JSX.IntrinsicElements` behind an Inkline-owned alias
 
 Date: 2026-07-28 · Status: Accepted
 Deciders: Project owner · Informed by: internal tracker UXF-90 (RFC), UXF-71 (friction audit), UXF-72 (prior-art survey)

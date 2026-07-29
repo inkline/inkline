@@ -15,7 +15,14 @@
     "esModuleInterop": true,
     "isolatedModules": true,
     "verbatimModuleSyntax": true,
-    "skipLibCheck": true
-  },
-  "exclude": ["src/__fixtures__/**"]
+    "skipLibCheck": true,
+    // `src/__fixtures__/**` is `.ink.tsx` — authoring source, so it needs the same JSX setup a
+    // consumer gets. See `ui/components/tsconfig.json`.
+    "jsx": "react-jsx",
+    "jsxImportSource": "@inkline/core"
+  }
+  // No `exclude` for the fixtures. This file supplies the compilerOptions tsgolint applies, and
+  // tsgolint type-checks a file whether or not this config excludes it — excluding here does not
+  // remove a fixture from the gate, it only strips it of these options (JSX included), which
+  // turns 21 honest errors into 152 spurious ones. Opt-outs live in `typecheck-exclusions.ts`.
 }

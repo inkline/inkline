@@ -1,4 +1,4 @@
-# ADR-003: `inkline check` does not type-check; `tsc` owns types
+# ADR-004: `inkline check` does not type-check; `tsc` owns types
 
 Date: 2026-07-28 · Status: Accepted
 Deciders: Project owner · Informed by: internal tracker UXF-90 (RFC), UXF-71 (friction audit), UXF-72 (prior-art survey)
@@ -7,7 +7,7 @@ Supersedes: — · Superseded by: —
 ## Context
 
 This is the second half of the decision recorded in
-[ADR-002](./002-solid-derived-intrinsic-elements.md), and it is separated because it is separately
+[ADR-003](./003-solid-derived-intrinsic-elements.md), and it is separated because it is separately
 revisitable: typing JSX is what gives a checker something worth checking, but _who_ runs that check
 is its own one-way commitment to a maintenance surface.
 
@@ -25,7 +25,7 @@ $ inkline check 'src/__probe__/Broken.ink.tsx' --config inkline.config.ts
 inkline check EXIT=0
 ```
 
-`tsc` with the ADR-002 candidate types catches 4 of those 4.
+`tsc` with the ADR-003 candidate types catches 4 of those 4.
 
 **What `check` is good at is a different question.** Add one line — `const n: number = "not a number"`
 — and it does exit 1, with a code, a caret, a `help` line, and a docs URL:
@@ -88,7 +88,7 @@ the mistake happens rather than in a document nobody opened.
   was an adopter asking why a style was _silently dropped_; static extraction's characteristic
   failure mode is silent omission. This decision routes types away from `check` but does not add the
   coverage that would answer that complaint — that remains ADR-001's step 1.
-- The four probe misses in ADR-002 that belong to the catalogue (`aria-*` spelling, `$bind:` target
+- The four probe misses in ADR-003 that belong to the catalogue (`aria-*` spelling, `$bind:` target
   validation) are now unambiguously `check`'s to build. Declining the type-checking work does not
   make `check` cheaper; it re-points the same budget.
 
