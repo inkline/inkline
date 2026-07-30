@@ -13,6 +13,7 @@ import { runCommand } from "citty";
 import type { GeneratedFile } from "@inkline/storybook/generator";
 import type { BarrelGroup } from "@inkline/compiler";
 import compile, { flushNamedBarrels, seedNamedBarrels, writeNamespaceBarrels } from "./compile.ts";
+import { EXIT_COMPILE_ERROR, EXIT_USAGE_ERROR } from "../lib/errors.ts";
 import type { BarrelMap, BarrelEntry } from "../lib/barrel.ts";
 
 // compile.ts is exercised in-process here (not via a subprocess like inkline.test.ts) so that the
@@ -230,6 +231,77 @@ describe("compile command (in-process)", () => {
     expect(errs).toContain("INK0045");
   });
 
+  it("prints a target-invariant advisory once when several targets raise it", async () => {
+    const out = tmpDir("dedupe");
+    // `hasSlot()` has no runtime equivalent on either Angular or Qwik, so both emitters push
+    // INK0068 at the component's location. One call site to fix, one line of output.
+    const { exitCode, errs } = await runCompile([
+      resolve(FIXTURES, "HasSlot.ink.tsx"),
+      "--target",
+      "angular,qwik",
+      "--out-dir",
+      out,
+    ]);
+
+    expect(exitCode).toBe(0);
+    expect(errs.match(/info {2}INK0068/g)?.length).toBe(1);
+    expect(errs).toContain("HasSlot.ink.tsx");
+    // Both targets still compiled — deduplication is a reporting concern, not a codegen one.
+    expect(existsSync(resolve(out, "angular", "HasSlot.component.ts"))).toBe(true);
+    expect(existsSync(resolve(out, "qwik", "HasSlot.tsx"))).toBe(true);
+  });
+
+  // UXF-85's source frames reach the one-shot build only if `run()` hands the reporter the source
+  // text for the file it just compiled. `report.test.ts` pins the reporter→formatter seam; this pins
+  // the caller→reporter one. Dropping the source map at the call site is what silently reverted
+  // UXF-85 during the #541 rebase, and it reverted it with every unit test still green.
+  it("prints a source frame for a diagnostic in a real one-shot build", async () => {
+    const out = tmpDir("source-frame");
+    const { exitCode, errs } = await runCompile([
+      resolve(FIXTURES, "HasSlot.ink.tsx"),
+      "--target",
+      "angular",
+      "--out-dir",
+      out,
+    ]);
+
+    expect(exitCode).toBe(0);
+    expect(errs).toContain("INK0068");
+    // INK0068 is raised at the component's own location: the `defineComponent` call on line 5.
+    expect(errs).toMatch(/^\s*5 \| export default defineComponent\(/m);
+    // The caret row that underlines the frame — present only when the formatter got source text.
+    expect(errs).toMatch(/^\s*\| \^+$/m);
+  });
+
+  it("ends a clean build with a file count, elapsed time, and zero counts", async () => {
+    const out = tmpDir("summary-clean");
+    const { exitCode, logs } = await runCompile([
+      resolve(FIXTURES, "Counter.ink.tsx"),
+      "--target",
+      "react",
+      "--out-dir",
+      out,
+    ]);
+
+    expect(exitCode).toBe(0);
+    expect(logs).toMatch(/^Compiled 1 file in \d+\.\d\ds — 0 errors, 0 warnings, 0 notes$/m);
+  });
+
+  it("counts reported diagnostics in the summary, after deduplication", async () => {
+    const out = tmpDir("summary-counts");
+    const { logs, errs } = await runCompile([
+      resolve(FIXTURES, "HasSlot.ink.tsx"),
+      "--target",
+      "angular,qwik",
+      "--out-dir",
+      out,
+    ]);
+
+    expect(errs.match(/info {2}INK0068/g)?.length).toBe(1);
+    // The summary agrees with what was printed: one note, not one per target.
+    expect(logs).toMatch(/^Compiled 1 file in \d+\.\d\ds — 0 errors, 0 warnings, 1 note$/m);
+  });
+
   it("cleans target directories before compiling", async () => {
     const out = tmpDir("clean");
     mkdirSync(resolve(out, "react"), { recursive: true });
@@ -311,6 +383,71 @@ describe("compile command (in-process)", () => {
     expect(readFileSync(resolve(reactDir, "stories.ts"), "utf-8")).toContain(
       "export * as IButtonStories from './components/button/stories/IButton.stories.ts';",
     );
+  });
+});
+
+// Deduplication and the summary line changed how diagnostics are counted, so pin the exit status of
+// every path against that: what the build *says* moved, what it *returns* did not.
+describe("compile command exit codes", () => {
+  it("exits 0 on a clean build", async () => {
+    const out = tmpDir("exit-clean");
+    const { exitCode } = await runCompile([
+      resolve(FIXTURES, "Counter.ink.tsx"),
+      "--target",
+      "react",
+      "--out-dir",
+      out,
+    ]);
+    expect(exitCode).toBe(0);
+  });
+
+  it("exits 0 when the build only produced notes", async () => {
+    const out = tmpDir("exit-info");
+    const { exitCode, logs } = await runCompile([
+      resolve(FIXTURES, "ModelInput.ink.tsx"),
+      "--target",
+      "astro",
+      "--out-dir",
+      out,
+    ]);
+    expect(exitCode).toBe(0);
+    expect(logs).toContain("0 errors");
+  });
+
+  it("exits 1 when a diagnostic is an error, and the summary counts it", async () => {
+    const out = tmpDir("exit-error");
+    const { exitCode, logs } = await runCompile([
+      resolve(FIXTURES, "Diag_ShowNoWhen.ink.tsx"),
+      "--target",
+      "react",
+      "--out-dir",
+      out,
+    ]);
+    expect(exitCode).toBe(EXIT_COMPILE_ERROR);
+    expect(logs).toMatch(/— [1-9]\d* errors?,/);
+  });
+
+  it("exits 1 once, not per duplicate, when the same error is raised by two targets", async () => {
+    const out = tmpDir("exit-error-dedupe");
+    const { exitCode } = await runCompile([
+      resolve(FIXTURES, "Diag_ShowNoWhen.ink.tsx"),
+      "--target",
+      "angular,qwik",
+      "--out-dir",
+      out,
+    ]);
+    expect(exitCode).toBe(EXIT_COMPILE_ERROR);
+  });
+
+  it("exits 2 without a summary when the input is unusable", async () => {
+    const { exitCode, logs } = await runCompile([
+      resolve(TMP, "does-not-exist", "*.ink.tsx"),
+      "--target",
+      "react",
+    ]);
+    // The build never ran, so there is nothing to summarize.
+    expect(exitCode).toBe(EXIT_USAGE_ERROR);
+    expect(logs).not.toContain("Compiled");
   });
 });
 
