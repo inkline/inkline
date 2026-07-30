@@ -1,4 +1,13 @@
-import type { InklineConfig, SourceMapMode, TargetName } from "@inkline/compiler";
+import {
+  ALL_SEVERITIES,
+  createDiagnosticCollector,
+  InklineConfigError,
+  isDiagnosticSeverity,
+  type DiagnosticSeverity,
+  type InklineConfig,
+  type SourceMapMode,
+  type TargetName,
+} from "@inkline/compiler";
 
 /**
  * Values a command resolves from its own flags before the config file is consulted. Everything else
@@ -77,4 +86,45 @@ export function resolveOutDir(
   fileConfig: Partial<InklineConfig>,
 ): string {
   return flag ?? fileConfig.outDir ?? "dist";
+}
+
+/**
+ * Config-time failures carry no source position. `formatDiagnostic` drops the location prefix for
+ * `<unknown>` rather than printing `<unknown>:0:0`, which is what the config validator relies on too.
+ */
+const CONFIG_LOCATION = { file: "<unknown>", line: 0, column: 0, offset: 0, length: 0 };
+
+/**
+ * Built through the public collector rather than a hand-written `Diagnostic`, so the code, help text
+ * and docs URL come from the catalog — the same reason `validateConfig` uses it.
+ */
+function invalidReportLevel(level: string): InklineConfigError {
+  const diagnostics = createDiagnosticCollector();
+  diagnostics.push("INK0087", CONFIG_LOCATION, { level, levels: ALL_SEVERITIES.join(", ") });
+
+  return new InklineConfigError(diagnostics.freeze()[0]!);
+}
+
+/**
+ * Flag > config > the caller's per-mode default, matching `--target`, `--out-dir` and `--source-map`.
+ *
+ * The default is a parameter rather than a constant here because it is the one thing about a
+ * reporting level that is not a user setting: `compile` reports from a different floor in `--watch`
+ * than in a one-shot build, and only the command knows which it is.
+ *
+ * Whichever value is used is validated first. An unrecognised level must not reach `meetsLevel`,
+ * which ranks it as `undefined` and therefore suppresses every diagnostic — a silent, total loss of
+ * output. It throws {@link InklineConfigError} so the caller reports it through `reportConfigError`
+ * like an unknown `--target`, rather than a stack trace through compiler internals.
+ */
+export function resolveReportLevel(
+  flag: string | undefined,
+  fileConfig: Partial<InklineConfig>,
+  fallback: DiagnosticSeverity,
+): DiagnosticSeverity {
+  const raw = flag ?? fileConfig.reportLevel;
+  if (raw === undefined) return fallback;
+  if (!isDiagnosticSeverity(raw)) throw invalidReportLevel(String(raw));
+
+  return raw;
 }

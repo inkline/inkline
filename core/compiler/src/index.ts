@@ -46,7 +46,11 @@ export { angularSelector } from "./codegen/targets/angular/selector.ts";
 // ============ DIAGNOSTICS ============
 export type { Diagnostic, DiagnosticSeverity, DiagnosticCode } from "./core/diagnostics/codes.ts";
 export { DIAGNOSTICS } from "./core/diagnostics/codes.ts";
-export { meetsLevel } from "./core/diagnostics/level.ts";
+// `ALL_SEVERITIES` and `isDiagnosticSeverity` are the runtime side of `DiagnosticSeverity`, needed by
+// any tool that takes a reporting level from a user: the CLI validates `--report-level` and config
+// `reportLevel` with them before the value can reach `meetsLevel`, which would rank an unrecognised
+// level as `undefined` and suppress everything.
+export { ALL_SEVERITIES, isDiagnosticSeverity, meetsLevel } from "./core/diagnostics/level.ts";
 export { InklineConfigError, isInklineConfigError } from "./core/diagnostics/error.ts";
 // Exported so tooling that reports its own diagnostics (e.g. the CLI's config validation) emits
 // the same catalog-resolved shape the compiler does, instead of hand-building Diagnostic objects.

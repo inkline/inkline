@@ -1,4 +1,5 @@
 import {
+  ALL_SEVERITIES,
   ALL_TARGETS,
   createDiagnosticCollector,
   type Diagnostic,
@@ -7,6 +8,7 @@ import {
 import { z } from "zod";
 
 const targetName = z.enum(ALL_TARGETS as readonly string[] as [string, ...string[]]);
+const severity = z.enum(ALL_SEVERITIES as readonly string[] as [string, ...string[]]);
 
 const barrelGroup = z.strictObject({
   file: z.string(),
@@ -42,6 +44,10 @@ export const inklineConfigSchema = z.strictObject({
   // that can be checked without calling it.
   registry: z.custom<object>((v) => typeof v === "object" && v !== null).optional(),
   barrels: z.array(barrelGroup).optional(),
+  // Reported as INK0083 when it is the wrong type or an unknown level, but the value is passed
+  // through unchanged like every other schema failure — so `resolveReportLevel` validates it again
+  // and refuses to hand an unrecognised level to the filter.
+  reportLevel: severity.optional(),
   tsconfig: z.string().optional(),
 });
 

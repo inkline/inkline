@@ -181,6 +181,12 @@ export const DIAGNOSTICS = {
     help: "The registry provides: {available}. Register the target with `createRegistry` + `defineTarget`, or drop it from `targets`." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0086" as const,
   },
+  INK0087: {
+    severity: "error" as const,
+    title: 'Invalid report level "{level}"' as const,
+    help: "Pass --report-level <level>, or set `reportLevel` in inkline.config.ts, to one of: {levels}." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0087" as const,
+  },
   INK0090: {
     severity: "error" as const,
     title: "Plugin '{name}' threw: {message}" as const,

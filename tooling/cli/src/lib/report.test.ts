@@ -150,6 +150,53 @@ describe("createBuildReporter", () => {
     expect(reporter.counts).toEqual({ error: 0, warning: 1, info: 0 });
   });
 
+  it("counts what the level withheld, so the summary can say it was withheld", () => {
+    const { reporter } = collectingReporter("warning");
+
+    reporter.report([makeDiag({ severity: "info" })]);
+
+    expect(reporter.counts.info).toBe(0);
+    expect(reporter.suppressed).toEqual({ error: 0, warning: 0, info: 1 });
+  });
+
+  it("deduplicates withheld findings too, so suppressed counts things to fix not lines", () => {
+    const { reporter } = collectingReporter("warning");
+
+    // The same advisory from two targets is one thing to fix, whether it is printed or withheld.
+    reporter.report([makeDiag({ severity: "info" }), makeDiag({ severity: "info" })]);
+
+    expect(reporter.suppressed.info).toBe(1);
+  });
+
+  it("suppresses nothing at the info floor", () => {
+    const { reporter } = collectingReporter("info");
+
+    reporter.report([makeDiag({ severity: "info" })]);
+
+    expect(reporter.suppressed).toEqual({ error: 0, warning: 0, info: 0 });
+  });
+
+  it("reports per batch whether that batch had an error, for the summary's file count", () => {
+    const { reporter } = collectingReporter();
+
+    expect(reporter.report([makeDiag({ severity: "info" })])).toBe(false);
+    expect(
+      reporter.report([makeDiag({ severity: "error", code: "INK0001" as Diagnostic["code"] })]),
+    ).toBe(true);
+    // Per batch, not cumulative: a later clean file must not inherit an earlier file's failure.
+    expect(reporter.report([makeDiag({ code: "INK0045" as Diagnostic["code"] })])).toBe(false);
+    expect(reporter.hasError).toBe(true);
+  });
+
+  it("counts a duplicate error's batch as failed even though the line is not reprinted", () => {
+    const { reporter } = collectingReporter();
+    const error = makeDiag({ severity: "error", code: "INK0001" as Diagnostic["code"] });
+
+    expect(reporter.report([error])).toBe(true);
+    // Deduplication is about output, not about which files failed.
+    expect(reporter.report([error])).toBe(true);
+  });
+
   it("has no error before anything is reported", () => {
     const { reporter } = collectingReporter();
     expect(reporter.hasError).toBe(false);
@@ -169,16 +216,73 @@ describe("createBuildReporter", () => {
   });
 });
 
+const NONE = { error: 0, warning: 0, info: 0 } as const;
+
+function summary(overrides: Partial<Parameters<typeof formatBuildSummary>[0]> = {}) {
+  return formatBuildSummary({
+    matched: 67,
+    compiled: 67,
+    elapsedMs: 450,
+    counts: NONE,
+    suppressed: NONE,
+    ...overrides,
+  });
+}
+
 describe("formatBuildSummary", () => {
   it("reports file count, elapsed seconds, and counts by severity", () => {
-    expect(formatBuildSummary(67, 450, { error: 0, warning: 0, info: 4 })).toBe(
+    expect(summary({ counts: { error: 0, warning: 0, info: 4 } })).toBe(
       "Compiled 67 files in 0.45s — 0 errors, 0 warnings, 4 notes",
     );
   });
 
   it("singularizes counts of one", () => {
-    expect(formatBuildSummary(1, 1000, { error: 1, warning: 1, info: 1 })).toBe(
-      "Compiled 1 file in 1.00s — 1 error, 1 warning, 1 note",
+    expect(
+      summary({
+        matched: 1,
+        compiled: 1,
+        elapsedMs: 1000,
+        counts: { error: 1, warning: 1, info: 1 },
+      }),
+    ).toBe("Compiled 1 file in 1.00s — 1 error, 1 warning, 1 note");
+  });
+
+  it("says how many of the matched files compiled when some failed", () => {
+    // `Compiled 67 files` alongside `2 errors` overstates what the build delivered: the loop attempts
+    // every matched file, so reaching the end is not the same as producing usable output for each.
+    expect(summary({ compiled: 65, counts: { error: 2, warning: 0, info: 0 } })).toBe(
+      "Compiled 65 of 67 files in 0.45s — 2 errors, 0 warnings, 0 notes",
     );
+  });
+
+  it("omits the of-N form when every file compiled, so a clean build reads the same as before", () => {
+    expect(summary()).toBe("Compiled 67 files in 0.45s — 0 errors, 0 warnings, 0 notes");
+  });
+
+  it("discloses withheld findings and the level that lists them", () => {
+    // The point of the suffix: `0 notes` on its own is indistinguishable from a build that found
+    // nothing, so a reporting level would quietly turn 12 findings into a clean-looking summary.
+    expect(summary({ suppressed: { error: 0, warning: 0, info: 12 } })).toBe(
+      "Compiled 67 files in 0.45s — 0 errors, 0 warnings, 0 notes" +
+        " (12 notes hidden; run with --report-level info to list)",
+    );
+  });
+
+  it("names the lowest withheld severity, which is the least the reader must ask for", () => {
+    expect(summary({ suppressed: { error: 0, warning: 3, info: 12 } })).toBe(
+      "Compiled 67 files in 0.45s — 0 errors, 0 warnings, 0 notes" +
+        " (12 notes, 3 warnings hidden; run with --report-level info to list)",
+    );
+  });
+
+  it("asks for warning, not info, when only warnings were withheld", () => {
+    expect(summary({ suppressed: { error: 0, warning: 3, info: 0 } })).toBe(
+      "Compiled 67 files in 0.45s — 0 errors, 0 warnings, 0 notes" +
+        " (3 warnings hidden; run with --report-level warning to list)",
+    );
+  });
+
+  it("adds no suffix when the level withheld nothing", () => {
+    expect(summary({ counts: { error: 0, warning: 0, info: 4 } })).not.toContain("hidden");
   });
 });

@@ -189,12 +189,17 @@ interface InklineConfig {
   readonly verbose?: boolean; // default: false
   readonly registry?: TargetRegistry; // default: builtinRegistry
   readonly barrels?: readonly BarrelGroup[];
+  readonly reportLevel?: DiagnosticSeverity;
   readonly tsconfig?: string;
 }
 ```
 
 - `barrels` is consumed by `@inkline/cli` only; the compiler pipeline ignores it. When omitted, the
   CLI writes a single `index.ts` barrel containing every non-story component.
+- `reportLevel` is consumed by `@inkline/cli` only, as the minimum severity a diagnostic must reach
+  to be printed. The pipeline always produces every diagnostic and never filters, so this changes
+  what a build reports, never what it finds or what it exits with. Omitted, the CLI reports from
+  `info` for a one-shot `compile` and from `warning` under `--watch`; `--report-level` overrides it.
 - `tsconfig` points at a `tsconfig.json` whose ambient declarations are loaded into the per-file
   TypeScript program, so `import type` from generated modules resolves during prop analysis.
   Inkline's own compiler options (`jsx`, `jsxImportSource`, …) are always forced on top.
@@ -451,6 +456,26 @@ True when `severity` is at or above the minimum reporting `level`, using the ord
 
 ```ts
 function meetsLevel(severity: DiagnosticSeverity, level: DiagnosticSeverity): boolean;
+```
+
+### `ALL_SEVERITIES`
+
+Every severity, ordered low → high — the runtime counterpart of the `DiagnosticSeverity` union, in
+reporting-level order. Use it to enumerate the levels a tool accepts (`--report-level error |
+warning | info`) instead of restating the set.
+
+```ts
+const ALL_SEVERITIES: readonly DiagnosticSeverity[]; // ["info", "warning", "error"]
+```
+
+### `isDiagnosticSeverity(value)`
+
+Whether `value` names a severity. A reporting level arriving from a CLI flag or a config file must be
+checked with this **before** it reaches `meetsLevel`, which would rank an unrecognised level as
+`undefined` and therefore suppress every diagnostic.
+
+```ts
+function isDiagnosticSeverity(value: unknown): value is DiagnosticSeverity;
 ```
 
 ### `createDiagnosticCollector()`

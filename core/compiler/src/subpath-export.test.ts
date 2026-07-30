@@ -33,6 +33,7 @@ const manifest = JSON.parse(
  * `index.ts` is what governs those.
  */
 const ROOT_RUNTIME_EXPORTS = [
+  "ALL_SEVERITIES",
   "ALL_TARGETS",
   "DIAGNOSTICS",
   "InklineConfigError",
@@ -44,6 +45,7 @@ const ROOT_RUNTIME_EXPORTS = [
   "createIncrementalState",
   "defineConfig",
   "definePlugin",
+  "isDiagnosticSeverity",
   "isInklineConfigError",
   "meetsLevel",
   "resolveOptions",

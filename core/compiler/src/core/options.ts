@@ -4,6 +4,7 @@ import { UNKNOWN_LOCATION } from "../ir/types.ts";
 import { createDiagnostic } from "./diagnostics/create.ts";
 import { InklineConfigError } from "./diagnostics/error.ts";
 import { suggestClosest } from "./suggest.ts";
+import type { DiagnosticSeverity } from "./diagnostics/codes.ts";
 import type { Plugin } from "../plugin/types.ts";
 
 export type SourceMapMode = "external" | "inline" | "none";
@@ -45,6 +46,14 @@ export interface InklineConfig {
    * containing every non-story component (the legacy default).
    */
   readonly barrels?: readonly BarrelGroup[];
+  /**
+   * Minimum severity a diagnostic must reach to be printed. Consumed by `@inkline/cli` only — the
+   * compiler pipeline always produces every diagnostic and never filters, so this changes what a
+   * build *reports*, never what it *finds*: the exit status is decided before the level applies.
+   *
+   * Omitted, the CLI keeps its own per-mode defaults; `--report-level` overrides this.
+   */
+  readonly reportLevel?: DiagnosticSeverity;
   /**
    * Path to a `tsconfig.json` whose ambient type declarations (e.g. generated
    * `*.d.ts` augmenting virtual modules) are loaded into the per-file TypeScript

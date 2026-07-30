@@ -25,6 +25,7 @@ describe("validateConfig — unknown keys", () => {
       verbose: true,
       registry: { get: () => undefined, has: () => false, list: () => [] },
       barrels: [{ file: "headless.ts", match: "headless", mode: "named" }],
+      reportLevel: "warning",
       tsconfig: "tsconfig.json",
     });
 
@@ -95,6 +96,13 @@ describe("validateConfig — value types", () => {
 
     expect(diag?.code).toBe("INK0083");
     expect(diag?.title).toContain("Invalid config value at sourceMap");
+  });
+
+  it("reports an unknown reportLevel, which resolveReportLevel then refuses to use", () => {
+    const [diag] = validateConfig({ reportLevel: "loud" });
+
+    expect(diag?.code).toBe("INK0083");
+    expect(diag?.title).toContain("Invalid config value at reportLevel");
   });
 
   it("reports an unknown target name", () => {
