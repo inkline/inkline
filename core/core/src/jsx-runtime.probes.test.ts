@@ -3,8 +3,9 @@
  *
  * `jsx-runtime.test.ts` covers the runtime stubs; this file covers the types, which is the whole
  * point of the surface. Twelve deliberate authoring mistakes: eight the surface must catch, four it
- * structurally cannot. Both halves are assertions. A re-sync of `./vendor/solid-jsx.d.ts` that stops
- * catching one of the eight fails here instead of silently downgrading every author's editor, and
+ * structurally cannot. Both halves are assertions. A re-sync of `./vendor/jsx-intrinsics.d.ts` that
+ * stops catching one of the eight fails here instead of silently downgrading every author's editor,
+ * and
  * one that starts catching one of the four fails too — telling us to update the table rather than
  * leaving the documented blind spots stale.
  *

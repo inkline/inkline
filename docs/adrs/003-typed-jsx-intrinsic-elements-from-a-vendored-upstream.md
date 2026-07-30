@@ -49,7 +49,8 @@ declares as `… | (string & {})`, and unknown `$`-prefixed compiler directives.
 ## Decision
 
 Derive `JSX.IntrinsicElements` from a **vendored verbatim copy** of Solid's element types —
-[`core/core/src/vendor/solid-jsx.d.ts`](../../core/core/src/vendor/solid-jsx.d.ts), a single `.d.ts`
+[`core/core/src/vendor/jsx-intrinsics.d.ts`](../../core/core/src/vendor/jsx-intrinsics.d.ts), a single
+`.d.ts`
 whose only import is `csstype` — reshaped through a single Inkline-owned alias in
 [`core/core/src/jsx-runtime.ts`](../../core/core/src/jsx-runtime.ts):
 

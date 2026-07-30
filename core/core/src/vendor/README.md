@@ -1,7 +1,7 @@
 # Vendored JSX element types
 
-`solid-jsx.d.ts` is a verbatim copy of the JSX element type definitions published in the `solid-js`
-npm package. It is the upstream that `JSX.IntrinsicElements` is derived from, via the
+`jsx-intrinsics.d.ts` is a verbatim copy of the JSX element type definitions published in the
+`solid-js` npm package. It is the upstream that `JSX.IntrinsicElements` is derived from, via the
 `Inklinified<T>` alias in `../jsx-runtime.ts`.
 
 | | |
@@ -44,10 +44,10 @@ npm pack solid-js@<version>
 tar -xzf solid-js-<version>.tgz
 
 # 2. Diff it against the vendored copy, ignoring our header.
-diff <(tail -n +29 core/core/src/vendor/solid-jsx.d.ts) package/types/jsx.d.ts
+diff <(tail -n +29 core/core/src/vendor/jsx-intrinsics.d.ts) package/types/jsx.d.ts
 
 # 3. If you accept the change, replace the body below the header and refresh the LICENSE.
-#    Then update the version in the header of solid-jsx.d.ts and in the table above.
+#    Then update the version in the header of jsx-intrinsics.d.ts and in the table above.
 cp package/LICENSE core/core/src/vendor/LICENSE.solid-js
 
 # 4. The gate that tells you whether the new surface is safe:

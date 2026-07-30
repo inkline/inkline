@@ -22,7 +22,7 @@
  * `lint.ignorePatterns` would also stop it being type-checked — and it is the surface under test.
  *
  * Re-sync diff:
- *   diff <(tail -n +29 core/core/src/vendor/solid-jsx.d.ts) package/types/jsx.d.ts
+ *   diff <(tail -n +29 core/core/src/vendor/jsx-intrinsics.d.ts) package/types/jsx.d.ts
  *
  * This header is exactly 28 lines; the `tail -n +29` above depends on that.
  */
