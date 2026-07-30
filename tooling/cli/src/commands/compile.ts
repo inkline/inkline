@@ -43,15 +43,16 @@ import { writeCompileOutput, writeIfChanged, writeOutput } from "../lib/writer.t
 const DEFAULT_BARRELS: readonly BarrelGroup[] = [{ file: "index.ts", match: "" }];
 
 /**
- * Fallbacks for the reporting level, reached only when neither `--report-level` nor the config sets
- * one. Both are *defaults*, not ceilings: either can be overridden in either direction.
+ * Fallback reporting level, reached only when neither `--report-level` nor the config sets one. A
+ * *default*, not a ceiling — `--report-level info` reports everything, in either mode.
  *
- * `--watch` is always a dev loop, so it reports only `warning` and above by default: `info` notices
- * like INK0045 (Astro two-way binding) are build-time advisories that would be noise on every
- * rebuild. A one-shot compile (a build) keeps the `info` floor and reports everything.
+ * `info` notices are target-invariant advisories: INK0045 (Astro two-way binding) tells you a fact
+ * about the Astro target, not about the edit you just made. On this repo's own `ui/components` build
+ * that is 12 distinct notes on a build with 0 errors and 0 warnings — in `--watch` they repeat on
+ * every save, and in CI they fill a log nobody reads line by line. Neither reading is the one that
+ * makes a note useful, so both modes take the same floor and neither pays for the other's noise.
  */
-const DEV_REPORT_LEVEL = "warning" as const;
-const BUILD_REPORT_LEVEL = "info" as const;
+const DEFAULT_REPORT_LEVEL = "warning" as const;
 
 /** Ensure every configured named barrel exists for each target that produced output (empty if unmatched). */
 export function seedNamedBarrels(
@@ -134,14 +135,11 @@ export default defineCommand({
     "out-dir": { type: "string", description: "Default output directory (default: dist)" },
     /** Chain arg (config `sourceMap`); no default — the `"external"` fallback lives in the chain. */
     "source-map": { type: "string", description: "external | inline | none (default: external)" },
-    /**
-     * Chain arg (config `reportLevel`); no default — and it could not have one even if the chain
-     * allowed it, because the fallback depends on `--watch`. See `DEV_REPORT_LEVEL`.
-     */
+    /** Chain arg (config `reportLevel`); no default — the `warning` fallback lives in the chain. */
     "report-level": {
       type: "string",
       description:
-        "Lowest diagnostic severity to report: error | warning | info (default: info, warning under --watch)",
+        "Lowest diagnostic severity to report: error | warning | info (default: warning)",
     },
     /** No config counterpart by construction: this flag names the config file the chain reads. */
     config: { type: "string", description: "Path to config file" },
@@ -172,11 +170,7 @@ export default defineCommand({
     let reportLevel: DiagnosticSeverity;
     try {
       resolveOptions({ targets, registry: fileConfig.registry });
-      reportLevel = resolveReportLevel(
-        args["report-level"],
-        fileConfig,
-        args.watch ? DEV_REPORT_LEVEL : BUILD_REPORT_LEVEL,
-      );
+      reportLevel = resolveReportLevel(args["report-level"], fileConfig, DEFAULT_REPORT_LEVEL);
     } catch (err) {
       if (reportConfigError(err, verbose)) return;
       throw err;
@@ -359,9 +353,9 @@ function runWatch(
   // Seeded from the initial pass in `run`, not created empty here: an empty state makes the first
   // save after startup a full rebuild of every file, which is the work the caller just finished.
   initialState: IncrementalState,
-  // Passed in rather than re-derived from `DEV_REPORT_LEVEL`: the watcher used to read that constant
-  // directly, which made `--report-level` a one-shot-only flag and left two filter sites that could
-  // disagree. There is one resolved level per invocation and both paths read it.
+  // Passed in rather than re-derived: the watcher used to read a `warning` constant directly, which
+  // made `--report-level` a one-shot-only flag and left two filter sites that could disagree. There
+  // is one resolved level per invocation and both paths read it.
   reportLevel: DiagnosticSeverity,
 ): FSWatcher {
   console.log(`Watching ${files.length} file(s) for changes...\n`);
