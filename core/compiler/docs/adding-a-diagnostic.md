@@ -77,6 +77,7 @@ The catalog test in `src/core/diagnostics/codes.test.ts` verifies:
 | INK0084 | error    | config   | No compilation target specified                         |
 | INK0085 | error    | config   | Unknown target                                          |
 | INK0086 | error    | config   | Target not present in the configured registry           |
+| INK0087 | error    | config   | Invalid diagnostic report level                         |
 | INK0090 | error    | plugin   | Plugin threw                                            |
 | INK0100 | error    | pipeline | Parse failure in component                              |
 | INK0110 | error    | pipeline | Internal compiler error                                 |
