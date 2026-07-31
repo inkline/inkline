@@ -1,16 +1,53 @@
 # API Reference
 
-Comprehensive type reference for the public API exported from `@inkline/compiler`.
+Type reference for `@inkline/compiler`.
 
-All types and functions below are importable from the package root:
+The package ships **three entry points, and the import path is the support tier.** There is no
+separate stability annotation to look up — if you know where a symbol imports from, you know what it
+promises.
 
-```ts
-import { compile, defineConfig, ... } from "@inkline/compiler";
-```
+| Import path                 | What lives there                                                                         | Stability                                                                         |
+| --------------------------- | ---------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `@inkline/compiler`         | Compiling, configuring, selecting targets, reading diagnostics, authoring plugins.       | **Stable.** Follows semver.                                                       |
+| `@inkline/compiler/ir`      | The render IR a plugin inspects: node types, builders, visitors, transforms, reactivity. | **Supported, scoped to plugin authoring.** Tracks `IR_VERSION`.                   |
+| `@inkline/compiler/codegen` | Code IR, the `Target` contract, the printer, the built-in targets.                       | **Unstable. No semver guarantee** — may change in any release, including a patch. |
+
+Every section below opens with the path its symbols import from. Sections are grouped so that the
+tier never changes mid-section.
+
+The rationale for the split is recorded in [ADR-002](../../../docs/adrs/002-compiler-export-surface-tiers.md).
+
+## Sections by tier
+
+**`@inkline/compiler` — stable**
+[1. Compilation](#1-compilation) ·
+[2. Configuration](#2-configuration) ·
+[3. Target selection](#3-target-selection) ·
+[4. Plugin API](#4-plugin-api) ·
+[5. Diagnostics](#5-diagnostics)
+
+**`@inkline/compiler/ir` — plugin-author API**
+[6. IR types](#6-ir-types) ·
+[7. IR migration and serialization](#7-ir-migration-and-serialization) ·
+[8. IR builders](#8-ir-builders) ·
+[9. IR visitors and transforms](#9-ir-visitors-and-transforms) ·
+[10. Reactivity](#10-reactivity) ·
+[11. Pipeline primitives](#11-pipeline-primitives)
+
+**`@inkline/compiler/codegen` — unstable**
+[12. Target API](#12-target-api) ·
+[13. Code IR](#13-code-ir) ·
+[14. Printer](#14-printer) ·
+[15. Built-in targets](#15-built-in-targets)
+
+**Appendix**
+[A. Types referenced but not exported](#a-types-referenced-but-not-exported)
 
 ---
 
 ## 1. Compilation
+
+> **Import from `@inkline/compiler`.** Stable.
 
 ### `compile(input, config?)`
 
@@ -40,6 +77,21 @@ Create an empty incremental compilation state to pass to `compileIncremental`.
 function createIncrementalState(): IncrementalState;
 ```
 
+### `seedIncrementalState(seeds)`
+
+Adopt work already done by plain `compile()` calls into an `IncrementalState`, so the first
+`compileIncremental` pass can skip those files instead of recompiling them.
+
+```ts
+function seedIncrementalState(seeds: readonly IncrementalSeed[]): IncrementalState;
+
+interface IncrementalSeed {
+  readonly fileName: string;
+  readonly source: string;
+  readonly result: CompileResult;
+}
+```
+
 ### `CompileInput`
 
 ```ts
@@ -59,6 +111,21 @@ interface CompileResult {
   readonly diagnostics: readonly Diagnostic[];
 }
 ```
+
+### `AnalyzedModule`
+
+The IR after analysis (pipeline pass P4), paired with the per-component reactivity graphs built
+during that pass. This is what the `ir:post` plugin hook receives — see [§4](#4-plugin-api).
+
+```ts
+interface AnalyzedModule {
+  readonly module: IRModule;
+  readonly graphs: ReadonlyMap<string, ReactivityGraph>; // keyed by IRComponent.id
+}
+```
+
+`IRModule` and `ReactivityGraph` import from `@inkline/compiler/ir` — see [§6](#6-ir-types) and
+[§10](#10-reactivity).
 
 ### `IncrementalState`
 
@@ -91,9 +158,14 @@ interface GeneratedFile {
 }
 ```
 
+Also re-exported from `@inkline/compiler/codegen`, so a target implementation needs one import
+rather than two.
+
 ---
 
 ## 2. Configuration
+
+> **Import from `@inkline/compiler`.** Stable.
 
 ### `defineConfig(c)`
 
@@ -108,28 +180,58 @@ function defineConfig(c: InklineConfig): InklineConfig;
 ```ts
 interface InklineConfig {
   readonly targets: readonly TargetName[];
+  readonly srcDir?: string;
   readonly outDir?: string; // default: "dist"
+  readonly targetOutDir?: Partial<Record<TargetName, string>>;
   readonly sourceMap?: SourceMapMode; // default: "external"
   readonly targetOptions?: Partial<Record<TargetName, Record<string, unknown>>>;
   readonly plugins?: readonly Plugin[];
   readonly verbose?: boolean; // default: false
   readonly registry?: TargetRegistry; // default: builtinRegistry
+  readonly barrels?: readonly BarrelGroup[];
+  readonly tsconfig?: string;
+}
+```
+
+- `barrels` is consumed by `@inkline/cli` only; the compiler pipeline ignores it. When omitted, the
+  CLI writes a single `index.ts` barrel containing every non-story component.
+- `tsconfig` points at a `tsconfig.json` whose ambient declarations are loaded into the per-file
+  TypeScript program, so `import type` from generated modules resolves during prop analysis.
+  Inkline's own compiler options (`jsx`, `jsxImportSource`, …) are always forced on top.
+- `registry` is typed as `TargetRegistry`, which imports from `@inkline/compiler/codegen`
+  ([§12](#12-target-api)). You only need to name that type if you are building a registry; passing
+  `builtinRegistry` needs no import beyond the root.
+
+### `BarrelGroup`
+
+Declarative description of a generated re-export barrel. Components are routed to a barrel by
+matching a directory segment of their source path (`components/<name>/<match>/…`), so the same
+source can be split into multiple per-category entry points.
+
+```ts
+interface BarrelGroup {
+  readonly file: string; // output file, relative to each target's output root (e.g. "headless.ts")
+  readonly match: string; // path segment that assigns a file to this barrel; "" matches any non-story dir
+  readonly mode?: "named" | "namespace"; // default: "named"
 }
 ```
 
 ### `ResolvedCompilerOptions`
 
-All fields are required with defaults applied:
+The config after validation and defaulting.
 
 ```ts
 interface ResolvedCompilerOptions {
   readonly targets: readonly TargetName[];
+  readonly srcDir?: string;
   readonly outDir: string;
+  readonly targetOutDir: Readonly<Partial<Record<TargetName, string>>>;
   readonly sourceMap: SourceMapMode;
   readonly targetOptions: Readonly<Partial<Record<TargetName, Readonly<Record<string, unknown>>>>>;
   readonly plugins: readonly Plugin[];
   readonly verbose: boolean;
   readonly registry: TargetRegistry;
+  readonly tsconfig?: string;
 }
 ```
 
@@ -149,11 +251,268 @@ type SourceMapMode = "external" | "inline" | "none";
 
 ---
 
-## 3. IR Types
+## 3. Target selection
 
-The Intermediate Representation (IR) is the core data model that sits between parsing and code generation. All IR types are deeply readonly.
+> **Import from `@inkline/compiler`.** Stable.
 
-### Render Nodes
+_Naming and selecting_ a target is stable. _Implementing_ one is not — the `Target` contract and the
+Code IR you write it against live at `@inkline/compiler/codegen` and are unstable
+([§12](#12-target-api)).
+
+### `TargetName`
+
+A closed union. Custom target names do not typecheck, and `resolveOptions` rejects any name outside
+`ALL_TARGETS` (diagnostic `INK0085`) before consulting a registry.
+
+```ts
+type TargetName = "react" | "solid" | "vue" | "svelte" | "angular" | "qwik" | "astro";
+```
+
+### `ALL_TARGETS`
+
+```ts
+const ALL_TARGETS: readonly TargetName[];
+```
+
+### `builtinRegistry`
+
+The registry holding all seven built-in targets. Used as the default for `InklineConfig.registry`.
+
+```ts
+const builtinRegistry: TargetRegistry;
+```
+
+`TargetName`, `ALL_TARGETS`, and `builtinRegistry` are also re-exported from
+`@inkline/compiler/codegen`, so a target implementation needs one import rather than two.
+
+### `angularSelector(componentName)`
+
+The Angular element selector for a compiled component. Exported for tooling that instantiates
+compiled components by tag (e.g. the Storybook story generator).
+
+```ts
+function angularSelector(componentName: string): string;
+```
+
+`IBadge` → `ink-badge` · `IInputControlBase` → `ink-input-control-base` · `Label` → `ink-label`.
+
+---
+
+## 4. Plugin API
+
+> **Import from `@inkline/compiler`.** Stable.
+
+Plugins are a genuinely open extension point: `config.plugins` is honoured and `Plugin.name` is a
+free string. The IR types a plugin inspects import from `@inkline/compiler/ir`
+([§6](#6-ir-types)–[§11](#11-pipeline-primitives)).
+
+### `Plugin`
+
+```ts
+interface Plugin {
+  readonly name: string;
+  readonly targets?: readonly TargetName[];
+  readonly hooks: PluginHooks;
+}
+```
+
+### `PluginHooks`
+
+```ts
+interface PluginHooks {
+  "ir:post"?: (module: AnalyzedModule, ctx: PluginContext) => void | Promise<void>;
+  "code:post"?: (
+    target: TargetName,
+    files: readonly GeneratedFile[],
+    ctx: PluginContext,
+  ) => void | readonly GeneratedFile[] | Promise<void | readonly GeneratedFile[]>;
+}
+```
+
+- `ir:post` runs after analysis (P4), before codegen. Use it to inspect the analyzed IR module.
+- `code:post` runs after codegen and printing for each target. Return a modified `GeneratedFile[]` to replace the output.
+
+### `PluginContext`
+
+```ts
+interface PluginContext {
+  readonly pushDiagnostic: (d: Diagnostic) => void;
+  readonly options: ResolvedCompilerOptions;
+}
+```
+
+### `definePlugin(p)`
+
+Identity helper for type-safe plugin definitions.
+
+```ts
+function definePlugin(p: Plugin): Plugin;
+```
+
+### Writing an `ir:post` hook
+
+The hook is handed an `AnalyzedModule` whose `.graphs` is a `ReadonlyMap<string, ReactivityGraph>`.
+`ReactivityGraph` imports from `@inkline/compiler/ir` — this is the type that closes the gap the
+`/ir` tier exists for. Before the tier split it was not exported at all, so the parameter below could
+only be typed `unknown` or left to inference.
+
+```ts
+import { definePlugin } from "@inkline/compiler";
+import type { ReactivityGraph, SymbolId } from "@inkline/compiler/ir";
+
+/** Report the widest fan-out in each component: the symbol the most things depend on. */
+const reportFanOut = definePlugin({
+  name: "report-fan-out",
+  hooks: {
+    "ir:post"(analyzed, ctx) {
+      if (!ctx.options.verbose) return;
+
+      for (const component of analyzed.module.components) {
+        // Nameable: `graphs` is keyed by `IRComponent.id`.
+        const graph: ReactivityGraph | undefined = analyzed.graphs.get(component.id);
+        if (!graph) continue;
+
+        let widest: SymbolId | undefined;
+        let widestCount = 0;
+        for (const [symbol, dependents] of graph.dependents) {
+          if (dependents.size <= widestCount) continue;
+          widest = symbol;
+          widestCount = dependents.size;
+        }
+
+        if (widest) {
+          console.log(`${component.name}: ${widest} has ${widestCount} dependent(s)`);
+        }
+      }
+    },
+  },
+});
+```
+
+Two things to know before you write one of these:
+
+- **`SymbolId` is fully qualified**, not the author's variable name — it looks like
+  `src/Counter.ink.tsx#Counter::memo::doubled@108`. Print it for debugging; do not put it in a
+  user-facing message unshortened.
+- **`DiagnosticCode` is a closed union** of the built-in catalog (see
+  [§5](#5-diagnostics)). A plugin cannot invent a code — `ctx.pushDiagnostic` requires an existing
+  one, so pick the catalog entry that matches your condition rather than minting `INK9999`.
+
+---
+
+## 5. Diagnostics
+
+> **Import from `@inkline/compiler`.** Stable.
+
+### `Diagnostic`
+
+```ts
+interface Diagnostic {
+  readonly code: DiagnosticCode;
+  readonly severity: DiagnosticSeverity;
+  readonly title: string;
+  readonly help?: string;
+  readonly url: string;
+  readonly loc: SourceLocation;
+}
+```
+
+### `DiagnosticSeverity`
+
+```ts
+type DiagnosticSeverity = "error" | "warning" | "info";
+```
+
+### `DiagnosticCode`
+
+```ts
+type DiagnosticCode = keyof typeof DIAGNOSTICS;
+```
+
+### `DIAGNOSTICS`
+
+Constant map of every diagnostic code to its `severity`, `title`, `help`, and `url`. Every code
+carries help text — the catalog test asserts it over `Object.keys(DIAGNOSTICS)`. Placeholders in
+both `title` and `help` are interpolated when the diagnostic is created.
+
+```ts
+const DIAGNOSTICS: Readonly<Record<string, { severity; title; help; url }>>;
+```
+
+For the full, always-current table of codes, run `pnpm docs:diagnostics` in `core/compiler`. It
+generates the table from [`src/core/diagnostics/codes.ts`](../src/core/diagnostics/codes.ts), the
+single source of truth. The [README's Diagnostics section](../README.md#diagnostics) lists the codes
+authors hit most often.
+
+### `meetsLevel(severity, level)`
+
+True when `severity` is at or above the minimum reporting `level`, using the ordering
+`info < warning < error`. Use it to filter a diagnostic list to a configured reporting threshold.
+
+```ts
+function meetsLevel(severity: DiagnosticSeverity, level: DiagnosticSeverity): boolean;
+```
+
+### `createDiagnosticCollector()`
+
+Exported so tooling that reports its own diagnostics (e.g. the CLI's config validation) emits the
+same catalog-resolved shape the compiler does, instead of hand-building `Diagnostic` objects.
+`push` is typed per code: a code with no placeholders takes no params, and a code with placeholders
+requires exactly its own.
+
+```ts
+function createDiagnosticCollector(): DiagnosticCollector;
+
+interface DiagnosticCollector {
+  push<C extends DiagnosticCode>(code: C, loc: SourceLocation, ...params): void;
+  pushFrom(diags: readonly Diagnostic[]): void;
+  freeze(): readonly Diagnostic[]; // further pushes throw
+}
+```
+
+### `SourceLocation`
+
+Every `Diagnostic` and every IR node carries one.
+
+```ts
+interface SourceLocation {
+  readonly file: string;
+  readonly line: number;
+  readonly column: number;
+  readonly offset: number;
+  readonly length: number;
+}
+```
+
+Also re-exported from `@inkline/compiler/ir`, so an IR consumer annotating `node.loc` needs one
+import rather than two.
+
+### `InklineConfigError`
+
+Thrown by `resolveOptions` (and therefore by `compile`) when the config itself is unusable — no target, an unknown target, a target the registry cannot serve. It carries a fully formed `Diagnostic` so callers can render it through the same formatter as pipeline diagnostics instead of printing a stack trace through compiler internals.
+
+```ts
+class InklineConfigError extends Error {
+  readonly diagnostic: Diagnostic;
+}
+
+function isInklineConfigError(error: unknown): error is InklineConfigError;
+```
+
+---
+
+## 6. IR types
+
+> **Import from `@inkline/compiler/ir`.** Supported, scoped to plugin authoring.
+
+The Intermediate Representation is the data model between parsing and code generation. All IR types
+are deeply readonly.
+
+This tier is supported, but it tracks the IR rather than the package: `IR_VERSION` and the migration
+registry ([§7](#7-ir-migration-and-serialization)) exist because the IR shape does change between
+versions.
+
+### Render nodes
 
 Discriminated union on the `kind` field:
 
@@ -166,9 +525,14 @@ type IRNode =
   | IRIf
   | IRFor
   | IRSwitch
+  | IRTransition
   | IRSlotPlaceholder
   | IRFragment;
 ```
+
+> `IRTransition` is a member of the union but is **not currently exported** from any entry point —
+> see [Appendix A](#a-types-referenced-but-not-exported). Its shape is documented below so a `kind:
+"Transition"` case in your visitor is not a mystery.
 
 #### `IRElement`
 
@@ -181,9 +545,14 @@ interface IRElement {
   readonly refs: readonly IRRefBinding[];
   readonly children: readonly IRNode[];
   readonly isStatic: boolean;
+  readonly acceptsAttrFallthrough?: boolean;
+  readonly preserveWhitespace?: boolean;
   readonly loc: SourceLocation;
 }
 ```
+
+- `acceptsAttrFallthrough` — true when this is the component's root and inherits the parent's fallthrough attributes.
+- `preserveWhitespace` — true for a whitespace-sensitive element (`pre`/`textarea`/`script`/`style`) and every descendant element parsed under one.
 
 #### `IRComponentInstance`
 
@@ -196,6 +565,7 @@ interface IRComponentInstance {
   readonly events: readonly IREventBinding[];
   readonly refs: readonly IRRefBinding[];
   readonly slots: readonly IRSlotContent[];
+  readonly acceptsAttrFallthrough?: boolean;
   readonly loc: SourceLocation;
 }
 ```
@@ -206,6 +576,7 @@ interface IRComponentInstance {
 interface IRText {
   readonly kind: "Text";
   readonly value: string;
+  readonly preserveWhitespace?: boolean;
   readonly loc: SourceLocation;
 }
 ```
@@ -272,6 +643,20 @@ interface IRSwitchCase {
 }
 ```
 
+#### `IRTransition`
+
+Not exported — see [Appendix A](#a-types-referenced-but-not-exported).
+
+```ts
+interface IRTransition {
+  readonly kind: "Transition";
+  readonly name: string; // default: "ink"
+  readonly appear: boolean;
+  readonly child: IRNode;
+  readonly loc: SourceLocation;
+}
+```
+
 #### `IRSlotPlaceholder`
 
 ```ts
@@ -294,7 +679,7 @@ interface IRFragment {
 }
 ```
 
-### Attributes
+### Attributes, events, refs
 
 #### `IRAttribute`
 
@@ -326,10 +711,16 @@ interface IREventBinding {
   readonly name: string;
   readonly handler: IRExprNode;
   readonly paramTypes?: readonly (ts.TypeNode | undefined)[];
-  readonly loc: SourceLocation;
   readonly synthesized?: boolean;
+  readonly twoWayProp?: string;
+  readonly loc: SourceLocation;
 }
 ```
+
+`twoWayProp` is set on the synthesized `update:<prop>` event a `$bind:<prop>` on a component
+instance lowers to. It names the bound prop so native-two-way targets (Vue `v-model:<prop>`, Svelte
+`bind:<prop>`, Angular `[(<prop>)]`) can re-collapse the event with its paired value attribute,
+while callback-prop targets derive `onUpdate<Prop>` from it.
 
 #### `IRRefBinding`
 
@@ -362,12 +753,17 @@ interface IRSlotContent {
 interface IRProp {
   readonly name: string;
   readonly typeNode?: ts.TypeNode;
+  readonly typeText?: string;
   readonly defaultValue?: IRExprNode;
   readonly required: boolean;
   readonly symbolId?: SymbolId;
   readonly loc: SourceLocation;
 }
 ```
+
+`typeText` is a resolved type string used when there is no `typeNode` to print — e.g. an
+object-form prop declaration (`{ size: Number }` → `"number"`) whose type is inferred from a
+constructor reference or a default-value literal.
 
 #### `IRSlotDeclaration`
 
@@ -451,43 +847,17 @@ interface IRResourceDeclaration {
   readonly fetcher: IRExprNode;
   readonly source?: IRExprNode;
   readonly symbolId: SymbolId;
-  readonly loadingName: string;
-  readonly errorName: string;
-  readonly refetchName: string;
+  readonly loadingName?: string;
+  readonly errorName?: string;
+  readonly refetchName?: string;
   readonly loc: SourceLocation;
 }
 ```
 
-### Component
-
-#### `IRComponent`
-
-The top-level component node produced by the parser and consumed by code generators.
-
-```ts
-interface IRComponent {
-  readonly kind: "Component";
-  readonly id: string;
-  readonly name: string;
-  readonly loc: SourceLocation;
-  readonly props: readonly IRProp[];
-  readonly slots: readonly IRSlotDeclaration[];
-  readonly events: readonly IREventDeclaration[];
-  readonly state: readonly IRStateDeclaration[];
-  readonly refs: readonly IRRefDeclaration[];
-  readonly memos: readonly IRMemoDeclaration[];
-  readonly effects: readonly IREffectDeclaration[];
-  readonly resources: readonly IRResourceDeclaration[];
-  readonly lifecycle: IRLifecycle;
-  readonly setup: readonly IRSetupStatement[];
-  readonly render: IRNode;
-  readonly primitives: readonly PrimitiveUsage[];
-  readonly expose?: readonly string[];
-  readonly styles: readonly IRStyleBlock[];
-  readonly runtime: IRRuntimeMode;
-  readonly targetOverrides: Readonly<Partial<Record<TargetName, IRTargetOverride>>>;
-}
-```
+The meta accessor names are present only when the author actually destructured them
+(`[data, { loading, error: err }]` → `loadingName: "loading"`, `errorName: "err"`,
+`refetchName: undefined`). Targets emit only the metas that are bound, so an undestructured
+`refetch` never becomes an unused variable.
 
 #### `IRLifecycle`
 
@@ -503,7 +873,7 @@ interface IRLifecycle {
 ```ts
 interface IRSetupStatement {
   readonly stmt: ts.Statement;
-  readonly defines: readonly SymbolId[];
+  readonly defines: readonly string[]; // identifier names this statement declares
   readonly loc: SourceLocation;
 }
 ```
@@ -519,12 +889,6 @@ interface IRStyleBlock {
 }
 ```
 
-#### `IRRuntimeMode`
-
-```ts
-type IRRuntimeMode = "client" | "server" | "iso";
-```
-
 #### `IRTargetOverride`
 
 ```ts
@@ -533,6 +897,55 @@ interface IRTargetOverride {
   readonly render?: IRNode;
 }
 ```
+
+#### `IRRuntimeMode`
+
+```ts
+type IRRuntimeMode = "client" | "server" | "iso";
+```
+
+### Component
+
+#### `IRComponent`
+
+The top-level component node produced by the parser and consumed by code generators.
+
+```ts
+interface IRComponent {
+  readonly kind: "Component";
+  readonly id: string;
+  readonly name: string;
+  readonly loc: SourceLocation;
+  readonly props: readonly IRProp[];
+  readonly propsTypeText?: string;
+  readonly slots: readonly IRSlotDeclaration[];
+  readonly events: readonly IREventDeclaration[];
+  readonly models: readonly IRModelDeclaration[];
+  readonly emitName?: string;
+  readonly state: readonly IRStateDeclaration[];
+  readonly refs: readonly IRRefDeclaration[];
+  readonly memos: readonly IRMemoDeclaration[];
+  readonly effects: readonly IREffectDeclaration[];
+  readonly resources: readonly IRResourceDeclaration[];
+  readonly provides: readonly IRProvideDeclaration[];
+  readonly consumes: readonly IRConsumeDeclaration[];
+  readonly lifecycle: IRLifecycle;
+  readonly setup: readonly IRSetupStatement[];
+  readonly render: IRNode;
+  readonly primitives: readonly PrimitiveUsage[];
+  readonly expose?: readonly string[];
+  readonly styles: readonly IRStyleBlock[];
+  readonly runtime: IRRuntimeMode;
+  readonly meta?: { readonly headless?: boolean };
+  readonly targetOverrides: Readonly<Partial<Record<TargetName, IRTargetOverride>>>;
+  readonly slotBindings?: ReadonlyMap<string, string>;
+}
+```
+
+- `emitName` is the local name bound to the `defineEmits()` result, so codegen can rewrite `emit(name, …)` calls.
+- `meta.headless` marks a behavior-only component whose single static-element root the Angular target extracts as the host. Absent means not headless.
+- `TargetName` imports from `@inkline/compiler`.
+- `IRModelDeclaration`, `IRProvideDeclaration`, and `IRConsumeDeclaration` are **not currently exported** — see [Appendix A](#a-types-referenced-but-not-exported).
 
 ### Module
 
@@ -543,15 +956,18 @@ interface IRModule {
   readonly version: number;
   readonly fileName: string;
   readonly components: readonly IRComponent[];
+  readonly contexts: readonly IRContextDefinition[];
   readonly imports: readonly ts.ImportDeclaration[];
   readonly sourceFile: ts.SourceFile;
 }
 ```
 
+`IRContextDefinition` is **not currently exported** — see [Appendix A](#a-types-referenced-but-not-exported).
+
 ### Constants
 
 ```ts
-const IR_VERSION = 1;
+const IR_VERSION = 3;
 
 type PrimitiveName =
   | "createSignal"
@@ -559,12 +975,18 @@ type PrimitiveName =
   | "createEffect"
   | "createRef"
   | "createResource"
+  | "createContext"
+  | "provide"
+  | "useContext"
   | "defineComponent"
   | "onMount"
   | "onCleanup"
   | "untrack"
   | "batch"
-  | "defineSlot";
+  | "defineSlot"
+  | "defineModel"
+  | "defineEmits"
+  | "hasSlot";
 
 interface PrimitiveUsage {
   readonly name: PrimitiveName;
@@ -574,7 +996,9 @@ interface PrimitiveUsage {
 
 ---
 
-## 4. IR Utilities
+## 7. IR migration and serialization
+
+> **Import from `@inkline/compiler/ir`.** Supported, scoped to plugin authoring.
 
 ### `migrate(module, target?)`
 
@@ -616,9 +1040,12 @@ function deserializeModule(json: string): IRModule;
 
 ---
 
-## 5. IR Builders
+## 8. IR builders
 
-Convenience factory functions that create IR render nodes with sensible defaults. All accept an `init` object and return a readonly IR node.
+> **Import from `@inkline/compiler/ir`.** Supported, scoped to plugin authoring.
+
+Factory functions that create IR render nodes with sensible defaults. All accept an `init` object,
+default `loc` to `UNKNOWN_LOCATION`, and return a readonly IR node.
 
 ```ts
 function createElement(init: {
@@ -627,6 +1054,7 @@ function createElement(init: {
   events?: readonly IREventBinding[];
   refs?: readonly IRRefBinding[];
   children?: readonly IRNode[];
+  acceptsAttrFallthrough?: boolean;
   loc?: SourceLocation;
 }): IRElement;
 
@@ -637,6 +1065,7 @@ function createComponentInstance(init: {
   events?: readonly IREventBinding[];
   refs?: readonly IRRefBinding[];
   slots?: readonly IRSlotContent[];
+  acceptsAttrFallthrough?: boolean;
   loc?: SourceLocation;
 }): IRComponentInstance;
 
@@ -645,9 +1074,9 @@ function createText(init: { value: string; loc?: SourceLocation }): IRText;
 function createExpr(init: {
   expr: ts.Expression;
   deps?: IRDependencySet;
-  isReactive?: boolean;
-  emissionContext?: "template" | "setup";
-  isDynamic?: boolean;
+  isReactive?: boolean; // default: false
+  emissionContext?: "template" | "setup"; // default: "template"
+  isDynamic?: boolean; // default: false
   loc?: SourceLocation;
 }): IRExprNode;
 
@@ -694,9 +1123,14 @@ function createStaticValue(init: {
 }): IRStaticValue;
 ```
 
+There is no exported builder for `IRTransition`; `createTransition` exists in the source but is not
+re-exported — see [Appendix A](#a-types-referenced-but-not-exported).
+
 ---
 
-## 6. IR Visitors
+## 9. IR visitors and transforms
+
+> **Import from `@inkline/compiler/ir`.** Supported, scoped to plugin authoring.
 
 ### `walkRenderTree(root, visitor)`
 
@@ -732,7 +1166,9 @@ const SKIP: unique symbol;
 
 ---
 
-## 7. Reactivity
+## 10. Reactivity
+
+> **Import from `@inkline/compiler/ir`.** Supported, scoped to plugin authoring.
 
 ### `SymbolId`
 
@@ -745,7 +1181,7 @@ type SymbolId = string & { readonly __brand: unique symbol };
 ### `IRReactiveKind`
 
 ```ts
-type IRReactiveKind = "signal" | "memo" | "effect" | "prop" | "context" | "ref";
+type IRReactiveKind = "signal" | "memo" | "effect" | "prop" | "context" | "ref" | "slot";
 ```
 
 ### `IRReactiveSymbol`
@@ -801,9 +1237,70 @@ class SymbolTable {
 }
 ```
 
+`mint` throws on a frozen table or a duplicate id.
+
+### `ReactivityGraph`
+
+The memo dependency graph built for one component during analysis, in topological order, with any
+cycles it found. `AnalyzedModule.graphs` is a `ReadonlyMap<string, ReactivityGraph>` keyed by
+`IRComponent.id` — this is the type an `ir:post` plugin hook is handed. See
+[§4](#writing-an-irpost-hook) for a worked example.
+
+```ts
+interface ReactivityGraph {
+  readonly dependencies: ReadonlyMap<SymbolId, ReadonlySet<SymbolId>>;
+  readonly dependents: ReadonlyMap<SymbolId, ReadonlySet<SymbolId>>;
+  readonly topo: readonly SymbolId[];
+  readonly cycles: readonly (readonly SymbolId[])[];
+}
+```
+
 ---
 
-## 8. Target API
+## 11. Pipeline primitives
+
+> **Import from `@inkline/compiler/ir`.** Supported, scoped to plugin authoring.
+
+A `Pass` is a step over the IR, so the pass primitives sit with the IR rather than at the root,
+where they were indistinguishable from the entry points.
+
+```ts
+interface Pass<I, O> {
+  readonly name: string;
+  run(input: I, ctx: PassContext): O | Promise<O>;
+}
+
+interface PassContext {
+  readonly diagnostics: DiagnosticCollector;
+  readonly options: ResolvedCompilerOptions;
+  readonly symbols: SymbolTable;
+  readonly registry: Readonly<TargetRegistry>;
+}
+
+// Overloaded for 1–8 passes; each pass's output type must match the next one's input.
+function pipe<A, B>(p1: Pass<A, B>): Pass<A, B>;
+```
+
+`DiagnosticCollector` and `ResolvedCompilerOptions` import from `@inkline/compiler`;
+`TargetRegistry` imports from `@inkline/compiler/codegen`.
+
+---
+
+## 12. Target API
+
+> **Import from `@inkline/compiler/codegen`.**
+>
+> ⚠️ **Unstable. No semver guarantee — this surface may change in any release, including a patch.**
+>
+> Why: `TargetName` is a closed union of the seven built-in targets and `Target.name` is a
+> `TargetName`, so an external `defineTarget({ name: "lit" })` cannot typecheck. It also cannot run
+> — `resolveOptions` rejects any target outside `ALL_TARGETS` (diagnostic `INK0085`) before it
+> consults a custom registry. These names are usable today only from inside this repository. They
+> ship at a subpath so in-repo target work has a real import path, and so the root entry point is
+> not filled with an API no external author can call. The tier is marked in `package.json` under
+> `inkline.unstableExports`. Opening the extension point is a separate design decision.
+
+For a walkthrough of writing a target, see [`adding-a-target.md`](./adding-a-target.md).
 
 ### `Target`
 
@@ -817,15 +1314,12 @@ interface Target {
 }
 ```
 
-### `TargetName`
-
-```ts
-type TargetName = "react" | "solid" | "vue" | "svelte" | "angular" | "qwik" | "astro";
-```
+`IRComponent` imports from `@inkline/compiler/ir`; `TargetName` from `@inkline/compiler` (also
+re-exported here).
 
 ### `TargetPlan`
 
-A lightweight subset of `Target` used during planning (before full codegen is needed).
+A lightweight subset of `Target` used during planning, before full codegen is needed.
 
 ```ts
 type TargetPlan = Pick<Target, "name" | "rewrites"> & {
@@ -835,7 +1329,8 @@ type TargetPlan = Pick<Target, "name" | "rewrites"> & {
 
 ### `RewriteRules`
 
-Controls how the shared expression rewriter transforms reactive reads, setters, refs, attribute casing, and event naming for each target.
+Controls how the shared expression rewriter transforms reactive reads, setters, refs, attribute
+casing, and event naming for each target.
 
 ```ts
 interface RewriteRules {
@@ -845,33 +1340,33 @@ interface RewriteRules {
   readonly jsxAttrCasing: "react" | "html";
   readonly eventNameCase: "camel" | "kebab" | "lower";
   readonly members?: MemberRewriteRules;
+  // …plus roughly a dozen optional, target-specific fields.
 }
 ```
 
-Where:
+Those five required fields plus `members` are the stable core. The optional fields — `selfPrefix`,
+`setters`, `rename`, `reactiveBindings`, `reactiveReads`, `elementRefs`, `propLocals`,
+`propSignals`, `providedSignals`, `stringQuote`, `modelReads`, `modelSetters`, `emit`,
+`hasSlotCheck`, `collapse` — are added and reshaped as individual targets need them, which is the
+main reason this tier is unstable. Each is documented at its declaration in
+[`src/codegen/context.ts`](../src/codegen/context.ts); read that rather than a copy that will drift.
 
-```ts
-type ReactiveReadKind =
-  | { readonly kind: "strip-call" }
-  | { readonly kind: "preserve-call" }
-  | { readonly kind: "field-access"; readonly field: string };
-
-type SetterStyleKind =
-  | { readonly kind: "function-call" }
-  | { readonly kind: "field-assignment"; readonly field: string }
-  | { readonly kind: "direct-assignment" };
-
-type RefAccessKind = { readonly kind: "field"; readonly field: string } | { readonly kind: "bare" };
-```
+`ReactiveReadKind`, `SetterStyleKind`, and `RefAccessKind` are **not exported** — see
+[Appendix A](#a-types-referenced-but-not-exported).
 
 ### `MemberRewriteRules`
 
 ```ts
 interface MemberRewriteRules {
-  readonly props?: { readonly strip: boolean };
+  readonly props?: { readonly strip: boolean; readonly whole?: string };
   readonly slots?: { readonly strip: boolean; readonly rename?: Readonly<Record<string, string>> };
 }
 ```
+
+`props.strip` rewrites `props.x` → `x` (targets that destructure props). `props.whole`, when set,
+rewrites a bare `props` reference to this expression — used by targets that destructure `props` and
+therefore have no `props` binding for whole-object references (e.g. Svelte reconstructs
+`{ name, ...rest }`).
 
 ### `TargetConformanceSpec`
 
@@ -882,10 +1377,9 @@ interface TargetConformanceSpec {
     readonly for?: ControlFlowImportSpec;
     readonly switch?: ControlFlowImportSpec;
   };
-  readonly lint: {
-    readonly eslintConfig: string;
-    readonly requiredPlugins: readonly string[];
-  };
+  readonly lint:
+    | { readonly tool: "oxlint"; readonly config: string }
+    | { readonly tool: "eslint"; readonly config: string };
   readonly typecheck: {
     readonly tsconfig: string;
     readonly dtsImports: readonly string[];
@@ -911,7 +1405,7 @@ interface TargetRegistry {
 
 ### `CodegenContext`
 
-Passed to `Target.emit()` with the resolved options, diagnostics collector, symbol table, and rewrite rules for the current target.
+Passed to `Target.emit()` with everything a target needs to emit one component.
 
 ```ts
 interface CodegenContext {
@@ -919,8 +1413,20 @@ interface CodegenContext {
   readonly options: ResolvedCompilerOptions;
   readonly symbols: SymbolTable;
   readonly rewrites: RewriteRules;
+  readonly contexts: readonly IRContextDefinition[];
+  readonly externalImports: readonly Code[];
+  readonly componentImports: readonly ComponentImport[];
+  readonly typeDeclarations: readonly Code[];
+  readonly headlessRegistry?: ReadonlyMap<string, IRComponent>;
 }
 ```
+
+`headlessRegistry` carries the lowered IR of imported `meta.headless` siblings, indexed by component
+name, so the Angular target can inline a headless child's root when a styled component collapses
+onto it. It is empty unless a component in the module is headless with a `ComponentInstance` root.
+
+`ComponentImport` and `IRContextDefinition` are **not exported** — see
+[Appendix A](#a-types-referenced-but-not-exported).
 
 ### `CodeModule`
 
@@ -937,80 +1443,19 @@ interface CodeModule {
 ```ts
 function defineTarget(t: Target): Target;
 function createRegistry(): MutableTargetRegistry;
-
-interface MutableTargetRegistry extends TargetRegistry {
-  register(target: Target): void;
-}
-
-const builtinRegistry: TargetRegistry;
 ```
 
-### Built-in targets
-
-Seven targets ship with the compiler:
-
-| Export          | Target  | Style          |
-| --------------- | ------- | -------------- |
-| `reactTarget`   | React   | JSX            |
-| `solidTarget`   | Solid   | JSX            |
-| `qwikTarget`    | Qwik    | JSX            |
-| `vueTarget`     | Vue     | SFC (template) |
-| `svelteTarget`  | Svelte  | SFC (template) |
-| `angularTarget` | Angular | Template-based |
-| `astroTarget`   | Astro   | Meta-target    |
+`MutableTargetRegistry` (the return type of `createRegistry`, adding `register(target: Target): void`
+to `TargetRegistry`) is **not exported** — see [Appendix A](#a-types-referenced-but-not-exported).
 
 ---
 
-## 9. Plugin API
+## 13. Code IR
 
-### `Plugin`
+> **Import from `@inkline/compiler/codegen`.** ⚠️ Unstable — see the warning in [§12](#12-target-api).
 
-```ts
-interface Plugin {
-  readonly name: string;
-  readonly targets?: readonly TargetName[];
-  readonly hooks: PluginHooks;
-}
-```
-
-### `PluginHooks`
-
-```ts
-interface PluginHooks {
-  "ir:post"?: (module: AnalyzedModule, ctx: PluginContext) => void | Promise<void>;
-  "code:post"?: (
-    target: TargetName,
-    files: readonly GeneratedFile[],
-    ctx: PluginContext,
-  ) => void | readonly GeneratedFile[] | Promise<void | readonly GeneratedFile[]>;
-}
-```
-
-- `ir:post` runs after analysis (P4), before codegen. Use it to inspect or mutate the analyzed IR module.
-- `code:post` runs after codegen and printing for each target. Return a modified `GeneratedFile[]` to replace the output.
-
-### `PluginContext`
-
-```ts
-interface PluginContext {
-  readonly pushDiagnostic: (d: Diagnostic) => void;
-  readonly options: ResolvedCompilerOptions;
-}
-```
-
-### `definePlugin(p)`
-
-Identity helper for type-safe plugin definitions.
-
-```ts
-function definePlugin(p: Plugin): Plugin;
-```
-
----
-
-## 10. Code IR
-
-The Code IR is the output-side intermediate representation that target `emit()` functions produce. The printer converts Code IR trees into final source text.
+The Code IR is the output-side intermediate representation that target `emit()` functions produce.
+The printer converts Code IR trees into final source text.
 
 ### `Code` (discriminated union)
 
@@ -1035,7 +1480,8 @@ type Code =
   | CStyle;
 ```
 
-All Code IR nodes extend `CNodeBase`:
+All Code IR nodes extend a common base (**not exported** — see
+[Appendix A](#a-types-referenced-but-not-exported)):
 
 ```ts
 interface CNodeBase {
@@ -1124,6 +1570,7 @@ interface CJsxElement extends CNodeBase {
   readonly attrs: readonly CJsxAttr[];
   readonly children: readonly Code[];
   readonly selfClose: boolean;
+  readonly inline?: boolean; // emit children with no formatting whitespace
 }
 ```
 
@@ -1161,6 +1608,7 @@ interface CTmplElement extends CNodeBase {
   readonly attrs: readonly CTmplAttr[];
   readonly children: readonly Code[];
   readonly selfClose: boolean;
+  readonly inline?: boolean; // emit children with no formatting whitespace
 }
 ```
 
@@ -1184,7 +1632,8 @@ interface CTmplAttr extends CNodeBase {
   readonly name: string;
   readonly value:
     | { readonly kind: "static"; readonly text: string }
-    | { readonly kind: "expr"; readonly expr: CExpr };
+    | { readonly kind: "expr"; readonly expr: CExpr }
+    | { readonly kind: "spread"; readonly expr: CExpr };
 }
 ```
 
@@ -1239,7 +1688,7 @@ interface CStyle extends CNodeBase {
 }
 ```
 
-### Code IR Builders
+### Code IR builders
 
 Factory functions that create Code IR nodes. All accept an `init` object.
 
@@ -1250,8 +1699,8 @@ function cFile(init: {
   span?: SourceLocation;
 }): CFile;
 function cScript(init: {
-  lang?: "ts" | "js";
-  setup?: boolean;
+  lang?: "ts" | "js"; // default: "ts"
+  setup?: boolean; // default: false
   children: readonly Code[];
   span?: SourceLocation;
 }): CScript;
@@ -1270,6 +1719,7 @@ function cJsxElement(init: {
   attrs?: readonly CJsxAttr[];
   children?: readonly Code[];
   selfClose?: boolean;
+  inline?: boolean;
   span?: SourceLocation;
 }): CJsxElement;
 function cJsxAttr(init: {
@@ -1284,6 +1734,7 @@ function cTmplElement(init: {
   attrs?: readonly CTmplAttr[];
   children?: readonly Code[];
   selfClose?: boolean;
+  inline?: boolean;
   span?: SourceLocation;
 }): CTmplElement;
 function cTmplDirective(init: {
@@ -1307,7 +1758,9 @@ function cStyle(init: { css: string; scoped: boolean; span?: SourceLocation }): 
 
 ---
 
-## 11. Printer
+## 14. Printer
+
+> **Import from `@inkline/compiler/codegen`.** ⚠️ Unstable — see the warning in [§12](#12-target-api).
 
 ### `print(root, opts?)`
 
@@ -1339,73 +1792,46 @@ interface PrintResult {
 
 ---
 
-## 12. Diagnostics
+## 15. Built-in targets
 
-### `Diagnostic`
+> **Import from `@inkline/compiler/codegen`.** ⚠️ Unstable — see the warning in [§12](#12-target-api).
 
-```ts
-interface Diagnostic {
-  readonly code: DiagnosticCode;
-  readonly severity: DiagnosticSeverity;
-  readonly title: string;
-  readonly help?: string;
-  readonly url: string;
-  readonly loc: SourceLocation;
-}
-```
+Seven `Target` values ship with the compiler. To _select_ a target you do not need these — pass a
+`TargetName` in `InklineConfig.targets` and let `builtinRegistry` resolve it ([§3](#3-target-selection)).
+Import the values themselves only to build a custom registry.
 
-### `DiagnosticSeverity`
+| Export          | Target  | Style          |
+| --------------- | ------- | -------------- |
+| `reactTarget`   | React   | JSX            |
+| `solidTarget`   | Solid   | JSX            |
+| `qwikTarget`    | Qwik    | JSX            |
+| `vueTarget`     | Vue     | SFC (template) |
+| `svelteTarget`  | Svelte  | SFC (template) |
+| `angularTarget` | Angular | Template-based |
+| `astroTarget`   | Astro   | Meta-target    |
 
-```ts
-type DiagnosticSeverity = "error" | "warning" | "info";
-```
+---
 
-### `DiagnosticCode`
+## A. Types referenced but not exported
 
-```ts
-type DiagnosticCode = keyof typeof DIAGNOSTICS;
-```
+The types below appear in the signatures of exported symbols but are **not importable from any entry
+point**. They are documented above so the exported types they appear in are readable; you cannot
+name them in your own code, and TypeScript's structural typing is the only way to satisfy them.
 
-### `DIAGNOSTICS`
+None of these were exported before the tier split either — this is pre-existing, not a regression
+from it. It is the same class of gap that `ReactivityGraph` was exported to close
+([§10](#10-reactivity)), and tracked as follow-up work.
 
-Constant map of all diagnostic codes to their metadata:
+| Type                                                   | Declared in                    | Reachable through                                          |
+| ------------------------------------------------------ | ------------------------------ | ---------------------------------------------------------- |
+| `IRTransition`                                         | `src/ir/render/nodes.ts`       | the `IRNode` union                                         |
+| `IRModelDeclaration`                                   | `src/ir/render/nodes.ts`       | `IRComponent.models`                                       |
+| `IRProvideDeclaration`, `IRConsumeDeclaration`         | `src/ir/render/nodes.ts`       | `IRComponent.provides` / `.consumes`                       |
+| `IRContextDefinition`                                  | `src/ir/render/nodes.ts`       | `IRModule.contexts`, `CodegenContext.contexts`             |
+| `ReactiveReadKind`, `SetterStyleKind`, `RefAccessKind` | `src/codegen/context.ts`       | `RewriteRules`                                             |
+| `ComponentImport`, `CollapseContext`                   | `src/codegen/context.ts`       | `CodegenContext.componentImports`, `RewriteRules.collapse` |
+| `MutableTargetRegistry`                                | `src/codegen/registry.ts`      | the return type of `createRegistry()`                      |
+| `CNodeBase`                                            | `src/codegen/code-ir/nodes.ts` | every Code IR node                                         |
 
-| Code      | Severity | Title                                                   |
-| --------- | -------- | ------------------------------------------------------- |
-| `INK0001` | error    | Namespace import of @inkline/core is not supported      |
-| `INK0010` | warning  | Effect has no reactive dependencies; it runs once       |
-| `INK0011` | warning  | Memo has no reactive dependencies; it never recomputes  |
-| `INK0020` | warning  | Dynamic reactive read prevents static dep tracking      |
-| `INK0030` | error    | createMemo cycle detected: {cycle}                      |
-| `INK0040` | error    | defineComponent must have a setup function              |
-| `INK0041` | error    | defineComponent options must be a static object literal |
-| `INK0050` | warning  | Missing key in iteration                                |
-| `INK0060` | error    | `<Show>` requires a 'when' prop                         |
-| `INK0061` | info     | Nullish-coalescing (??) in JSX is ambiguous             |
-| `INK0062` | error    | `<For>` requires an 'each' prop                         |
-| `INK0070` | error    | Component-ref forwarding is not yet supported           |
-| `INK0071` | error    | JSX spread attributes are not supported                 |
-| `INK0080` | warning  | Unknown target option: {key}                            |
-| `INK0081` | warning  | Unknown config key: {key}                               |
-| `INK0082` | warning  | Unknown config key: {key}. Did you mean {suggestion}?   |
-| `INK0083` | error    | Invalid config value at {path}: {message}               |
-| `INK0084` | error    | No compilation target specified                         |
-| `INK0085` | error    | Unknown target "{target}"                               |
-| `INK0086` | error    | Target "{target}" is not present in the registry        |
-| `INK0090` | error    | Plugin '{name}' threw: {message}                        |
-| `INK0100` | error    | Parse failure in component '{name}': {message}          |
-| `INK0110` | error    | Internal compiler error: {message}                      |
-
-Each entry provides `severity`, `title`, `help`, and `url` linking to full documentation. Every code carries help text — the catalog test asserts it over `Object.keys(DIAGNOSTICS)`. Placeholders in both `title` and `help` are interpolated when the diagnostic is created.
-
-### `InklineConfigError`
-
-Thrown by `resolveOptions` (and therefore by `compile`) when the config itself is unusable — no target, an unknown target, a target the registry cannot serve. It carries a fully formed `Diagnostic` so callers can render it through the same formatter as pipeline diagnostics instead of printing a stack trace through compiler internals.
-
-```ts
-class InklineConfigError extends Error {
-  readonly diagnostic: Diagnostic;
-}
-
-function isInklineConfigError(error: unknown): error is InklineConfigError;
-```
+`createTransition`, the builder for `IRTransition`, is likewise declared in
+`src/ir/render/builders.ts` but not re-exported from `@inkline/compiler/ir`.

@@ -25,6 +25,7 @@ describe("validateConfig — unknown keys", () => {
       verbose: true,
       registry: { get: () => undefined, has: () => false, list: () => [] },
       barrels: [{ file: "headless.ts", match: "headless", mode: "named" }],
+      reportLevel: "warning",
       tsconfig: "tsconfig.json",
     });
 
@@ -97,6 +98,16 @@ describe("validateConfig — value types", () => {
 
     expect(diag?.code).toBe("INK0083");
     expect(diag?.title).toContain("Invalid config value at sourceMap");
+  });
+
+  // Non-fatal here by design, so `resolveReportLevel` reports the same value again as INK0087 and
+  // refuses to build; this only says the config key is wrong, not that the build stopped.
+  it("reports a reportLevel outside the accepted severities", () => {
+    const [diag, ...rest] = validateConfig({ reportLevel: "verbose" });
+
+    expect(rest).toEqual([]);
+    expect(diag?.code).toBe("INK0083");
+    expect(diag?.title).toContain("Invalid config value at reportLevel");
   });
 
   it("reports an unknown target name", () => {
