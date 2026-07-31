@@ -894,10 +894,17 @@ export default defineComponent(() => {
 });
 `;
 
-  /** Start a watch build over a single astro component, capturing output as it arrives. */
+  /**
+   * Start a watch build over a single astro component, capturing output as it arrives. The level can
+   * be set through either branch of the resolution chain — `extraArgs` for the flag,
+   * `configReportLevel` for the config key — because under `--watch` they are separately reachable:
+   * the flag and the config key are read at the same site, but only a test that goes through the
+   * config proves the watcher gets the *resolved* level rather than the flag it could have re-read.
+   */
   async function startWatch(
     name: string,
     extraArgs: string[],
+    configReportLevel?: string,
   ): Promise<{
     watcher: FSWatcher;
     logs: string[];
@@ -919,6 +926,7 @@ export default defineComponent(() => {
         targets: ["astro"],
         targetOutDir: { astro: ${JSON.stringify(astroDir)} },
         barrels: [{ file: "index.ts", match: "styled" }],
+        ${configReportLevel === undefined ? "" : `reportLevel: ${JSON.stringify(configReportLevel)},`}
       };\n`,
     );
 
@@ -974,6 +982,57 @@ export default defineComponent(() => {
       writeFileSync(componentFile, MODEL("textarea"));
       await waitFor(() => logs.some((l) => l.includes("Rebuilt")));
       // Both filter sites read the one resolved level, so a rebuild reports what the build did.
+      expect(errs.join("\n")).toContain("INK0045");
+    } finally {
+      watcher.close();
+      await delay(300);
+    }
+  });
+
+  // The mirror of the test above, and the half a constant-reading watcher would still pass: raising
+  // the level past a constant is visible, lowering *below* it is not. At `error` the loop must drop
+  // INK0010 too — a watcher reading `warning` directly would keep printing it on every save.
+  it("withholds the warning (INK0010) under --report-level error, on the initial compile and on rebuilds", async () => {
+    const { watcher, logs, errs, componentFile } = await startWatch("watch-astro-error", [
+      "--report-level",
+      "error",
+    ]);
+
+    try {
+      expect(errs.join("\n")).not.toContain("INK0010");
+
+      await delay(WATCHER_SETTLE_MS);
+      logs.length = 0;
+      errs.length = 0;
+      writeFileSync(componentFile, MODEL("textarea"));
+      // `Rebuilt` only prints when the loop actually recompiled a file, so it is what makes the
+      // absence below evidence of filtering rather than evidence of a rebuild that never ran.
+      await waitFor(() => logs.some((l) => l.includes("Rebuilt")));
+      expect(errs.join("\n")).not.toContain("INK0010");
+    } finally {
+      watcher.close();
+      await delay(300);
+    }
+  });
+
+  // `--report-level` reaches the watcher; nothing yet says the *config key* does. It is the branch a
+  // citty `default:` would have stranded, and the one a project actually sets — a flag has to be
+  // retyped on every `inkline compile --watch`, so this is how a real watch session gets its level.
+  it("surfaces the note (INK0045) from a config reportLevel, on the initial compile and on rebuilds", async () => {
+    const { watcher, logs, errs, componentFile } = await startWatch(
+      "watch-astro-config-info",
+      [],
+      "info",
+    );
+
+    try {
+      expect(errs.join("\n")).toContain("INK0045");
+
+      await delay(WATCHER_SETTLE_MS);
+      logs.length = 0;
+      errs.length = 0;
+      writeFileSync(componentFile, MODEL("textarea"));
+      await waitFor(() => logs.some((l) => l.includes("Rebuilt")));
       expect(errs.join("\n")).toContain("INK0045");
     } finally {
       watcher.close();
