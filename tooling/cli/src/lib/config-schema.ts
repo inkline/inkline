@@ -44,10 +44,10 @@ export const inklineConfigSchema = z.strictObject({
   // that can be checked without calling it.
   registry: z.custom<object>((v) => typeof v === "object" && v !== null).optional(),
   barrels: z.array(barrelGroup).optional(),
-  // Reported twice on purpose when wrong: INK0083 from here says the config value is invalid, and
-  // INK0087 from `resolveReportLevel` says the build will not guess which level was meant. This
-  // validation is non-fatal by design (see `validateConfig`), so it cannot be the only guard on a
-  // value the build goes on to read.
+  // Guarded twice, but only one fires per path. A bad `reportLevel` in the config file stops here
+  // on INK0083, which is fatal (see `validateConfig`) and returns before `resolveReportLevel` runs;
+  // INK0087 is what `--report-level` hits, since a flag never passes through this schema. Both name
+  // the accepted levels, so neither path leaves the author guessing.
   reportLevel: reportLevel.optional(),
   tsconfig: z.string().optional(),
 });
