@@ -218,7 +218,8 @@ describe("formatBuildSummary", () => {
 
   function summary(overrides: Partial<Parameters<typeof formatBuildSummary>[0]> = {}) {
     return formatBuildSummary({
-      compiledCount: 67,
+      verb: "Compiled",
+      fileCount: 67,
       elapsedMs: 450,
       level: "info",
       counts: none,
@@ -235,7 +236,7 @@ describe("formatBuildSummary", () => {
 
   it("singularizes counts of one", () => {
     expect(
-      summary({ compiledCount: 1, elapsedMs: 1000, counts: { error: 1, warning: 1, info: 1 } }),
+      summary({ fileCount: 1, elapsedMs: 1000, counts: { error: 1, warning: 1, info: 1 } }),
     ).toBe("Compiled 1 file in 1.00s — 1 error, 1 warning, 1 note");
   });
 
@@ -260,11 +261,22 @@ describe("formatBuildSummary", () => {
     );
   });
 
-  it("counts files that compiled, which is the caller's job to supply", () => {
+  it("counts what the verb is true of, which is the caller's job to supply", () => {
     // The line used to report the size of the glob, so a build with one failing file out of five
     // claimed to have compiled all five while printing the error just above.
-    expect(summary({ compiledCount: 4, counts: { error: 1, warning: 0, info: 0 } })).toBe(
+    expect(summary({ fileCount: 4, counts: { error: 1, warning: 0, info: 0 } })).toBe(
       "Compiled 4 files in 0.45s — 1 error, 0 warnings, 0 notes",
+    );
+  });
+
+  it("opens with the caller's verb, so `check` does not claim to have compiled anything", () => {
+    // `check` writes no output. Reusing this line with `Compiled` would make the summary lie about
+    // what the command does in order to reuse the withheld suffix underneath it.
+    expect(
+      summary({ verb: "Checked", level: "warning", withheld: { error: 0, warning: 0, info: 3 } }),
+    ).toBe(
+      "Checked 67 files in 0.45s — 0 errors, 0 warnings, 0 notes" +
+        " (3 notes withheld at --report-level warning; re-run with --report-level info to list)",
     );
   });
 });

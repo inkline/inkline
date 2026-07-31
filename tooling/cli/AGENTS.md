@@ -15,9 +15,14 @@ All commands live in [`src/commands/`](./src/commands/) and are wired into the r
 | ----------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `inkline init`    | [`init.ts`](./src/commands/init.ts)       | Set up Inkline in an existing app: detect package manager/framework/bundler, run `styleframe init` + seed `styleframe.config.ts`, install deps, wire the build plugin. `--compiler` additionally scaffolds `inkline.config.ts` and an example component. |
 | `inkline compile` | [`compile.ts`](./src/commands/compile.ts) | Compile `.ink.tsx` globs to target frameworks and generate per-target Storybook story files. Accepts `--src-dir` to set the source root for output path resolution (also `srcDir` in config).                                                            |
-| `inkline check`   | [`check.ts`](./src/commands/check.ts)     | Run diagnostics without writing output: same globs and same config as `compile`, compiles with `sourceMap: "none"`, prints formatted diagnostics, exits non-zero on any error.                                                                           |
+| `inkline check`   | [`check.ts`](./src/commands/check.ts)     | Run diagnostics without writing output: same globs and same config as `compile`, compiles with `sourceMap: "none"`, reports through the same [`report.ts`](./src/lib/report.ts) path, exits non-zero on any error.                                       |
 
-`check` is the correctness gate for `compile`, so it must compile against the same program. Both build their option bag through [`buildCompileOptions`](./src/lib/compile-options.ts) and nowhere else — `sourceMap` is the single sanctioned divergence (`check` writes no output, so maps would be waste). A new `InklineConfig` field goes into that mapper, not into a command; [`commands/check.test.ts`](./src/commands/check.test.ts) fails if the two bags stop matching.
+`check` is the correctness gate for `compile`, so it must compile against the same program **and report the same findings from it**. Two pairings enforce that, and both have drifted before:
+
+- **The option bag.** Both commands build theirs through [`buildCompileOptions`](./src/lib/compile-options.ts) and nowhere else — `sourceMap` is the single sanctioned divergence (`check` writes no output, so maps would be waste). A new `InklineConfig` field goes into that mapper, not into a command.
+- **The reporting path.** Both print through [`createBuildReporter`](./src/lib/report.ts), at a level resolved by `resolveReportLevel` against the shared `DEFAULT_REPORT_LEVEL`, and close with `formatBuildSummary`. Anything that changes what reaches the terminal — a filter, a dedup rule, a summary field — goes into that module, never into a command's own loop. `check` printed `result.diagnostics` directly for two releases and silently fell behind `compile` on both dedup and reporting level.
+
+[`commands/check.test.ts`](./src/commands/check.test.ts) fails if either pairing stops matching.
 
 When adding a command:
 

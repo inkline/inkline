@@ -32,7 +32,12 @@ import {
   type BarrelMap,
 } from "../lib/barrel.ts";
 import { formatDiagnostic } from "../lib/diagnostics.ts";
-import { createBuildReporter, formatBuildSummary, resolveReportLevel } from "../lib/report.ts";
+import {
+  DEFAULT_REPORT_LEVEL,
+  createBuildReporter,
+  formatBuildSummary,
+  resolveReportLevel,
+} from "../lib/report.ts";
 import { EXIT_COMPILE_ERROR, EXIT_USAGE_ERROR, reportConfigError } from "../lib/errors.ts";
 import { writeCompileOutput, writeIfChanged, writeOutput } from "../lib/writer.ts";
 
@@ -41,18 +46,6 @@ import { writeCompileOutput, writeIfChanged, writeOutput } from "../lib/writer.t
  * non-story component. The empty-string `match` is the sentinel for "any non-story directory".
  */
 const DEFAULT_BARRELS: readonly BarrelGroup[] = [{ file: "index.ts", match: "" }];
-
-/**
- * Fallback reporting level, reached only when neither `--report-level` nor the config sets one. A
- * *default*, not a ceiling — `--report-level info` reports everything, in either mode.
- *
- * `info` notices are target-invariant advisories: INK0045 (Astro two-way binding) tells you a fact
- * about the Astro target, not about the edit you just made. On this repo's own `ui/components` build
- * that is 12 distinct notes on a build with 0 errors and 0 warnings — in `--watch` they repeat on
- * every save, and in CI they fill a log nobody reads line by line. Neither reading is the one that
- * makes a note useful, so both modes take the same floor and neither pays for the other's noise.
- */
-const DEFAULT_REPORT_LEVEL = "warning" as const;
 
 /** Ensure every configured named barrel exists for each target that produced output (empty if unmatched). */
 export function seedNamedBarrels(
@@ -281,7 +274,8 @@ export default defineCommand({
     // A build closes with one line stating what it did; the watch loop reports per rebuild instead.
     console.log(
       formatBuildSummary({
-        compiledCount,
+        verb: "Compiled",
+        fileCount: compiledCount,
         elapsedMs: performance.now() - startedAt,
         level: reportLevel,
         counts: reporter.counts,

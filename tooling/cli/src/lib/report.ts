@@ -28,6 +28,22 @@ const SEVERITY_NOUN: Record<DiagnosticSeverity, string> = {
  */
 export const REPORT_LEVELS = Object.keys(SEVERITY_NOUN) as readonly DiagnosticSeverity[];
 
+/**
+ * Fallback reporting level, reached only when neither `--report-level` nor the config sets one. A
+ * *default*, not a ceiling — `--report-level info` reports everything.
+ *
+ * `info` notices are target-invariant advisories: INK0045 (Astro two-way binding) tells you a fact
+ * about the Astro target, not about the edit you just made. On this repo's own `ui/components` build
+ * that is 12 distinct notes on a build with 0 errors and 0 warnings — in `--watch` they repeat on
+ * every save, and in CI they fill a log nobody reads line by line. Neither reading is the one that
+ * makes a note useful.
+ *
+ * It lives here rather than in a command because `compile`, its watch loop and `check` all resolve
+ * against it: a second literal in a second file is how the three surfaces start disagreeing about
+ * what a project that configures nothing gets.
+ */
+export const DEFAULT_REPORT_LEVEL = "warning" as const;
+
 /** A config-time failure has no source position to point at; `formatDiagnostic` drops the prefix. */
 const NO_LOCATION: SourceLocation = { file: "<unknown>", line: 0, column: 0, offset: 0, length: 0 };
 
@@ -167,8 +183,10 @@ function describeCounts(counts: SeverityCounts, only: (count: number) => boolean
 }
 
 export interface BuildSummary {
-  /** Files that compiled without an error, not files the glob matched. See {@link formatBuildSummary}. */
-  readonly compiledCount: number;
+  /** What the run did to those files: `Compiled` for a build, `Checked` for `check`. Opens the line. */
+  readonly verb: string;
+  /** What {@link verb} is true of — a count the caller defines. See {@link formatBuildSummary}. */
+  readonly fileCount: number;
   readonly elapsedMs: number;
   /** The level the build resolved to, named in the suffix so the reader knows what to raise. */
   readonly level: DiagnosticSeverity;
@@ -177,20 +195,25 @@ export interface BuildSummary {
 }
 
 /**
- * One closing line per build, e.g. `Compiled 67 files in 0.45s — 0 errors, 0 warnings, 4 notes`.
+ * One closing line per run, e.g. `Compiled 67 files in 0.45s — 0 errors, 0 warnings, 4 notes`.
  *
- * `compiledCount` is files that compiled, not files matched. The line used to report the size of the
- * glob, which meant a build with a failing file said it had compiled it; a count that disagrees with
- * the errors printed directly above it teaches the reader to ignore the line.
+ * `fileCount` is what the verb is true of, and the two commands mean different things by it because
+ * they do different things. `compile` counts files that compiled, not files matched: the line used
+ * to report the size of the glob, which meant a build with a failing file said it had compiled it,
+ * and a count that disagrees with the errors printed directly above it teaches the reader to ignore
+ * the line. `check` writes nothing and so fails at nothing — it inspects every file it matched, and
+ * counts them all whatever their diagnostics say.
  *
  * When the resolved level withheld anything, the counts alone are a half-truth — `0 notes` reads as
  * "clean" when it can equally mean "not looked at" — so the withheld findings are named along with
- * the level that hid them and the flag that reveals them.
+ * the level that hid them and the flag that reveals them. That disclosure is why `check` prints this
+ * line at all: it filters now, so a silent `check` would carry exactly the ambiguity this suffix
+ * exists to remove.
  */
 export function formatBuildSummary(summary: BuildSummary): string {
   const bySeverity = describeCounts(summary.counts, () => true);
   const elapsed = (summary.elapsedMs / 1000).toFixed(2);
-  const line = `Compiled ${pluralize(summary.compiledCount, "file")} in ${elapsed}s — ${bySeverity}`;
+  const line = `${summary.verb} ${pluralize(summary.fileCount, "file")} in ${elapsed}s — ${bySeverity}`;
 
   const hidden = describeCounts(summary.withheld, (count) => count > 0);
   if (!hidden) return line;
