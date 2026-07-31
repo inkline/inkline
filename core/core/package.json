@@ -35,6 +35,8 @@
   "scripts": {
     "build": "vp pack",
     "check": "vp check",
+    "generate:jsx": "node scripts/generate-jsx.mjs",
+    "generate:jsx:check": "node scripts/generate-jsx.mjs --check",
     "prepublishOnly": "vp run build",
     "test": "vp test"
   },

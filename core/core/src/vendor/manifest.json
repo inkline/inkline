@@ -1,0 +1,18 @@
+{
+  "package": "solid-js",
+  "version": "1.9.13",
+  "repository": "https://github.com/solidjs/solid",
+  "license": "MIT",
+  "source": {
+    "types": "types/jsx.d.ts",
+    "license": "LICENSE"
+  },
+  "output": {
+    "types": "solid-jsx.d.ts",
+    "license": "LICENSE.solid-js"
+  },
+  "integrity": {
+    "types": "d35504a35868edaa3f43c244b397177f7ce6a6ab872347b7271473299c2e5d27",
+    "license": "59a76ed2f4a3ebe8d20a58869ef9c09420f796aa179420c8fb916f5557defc9b"
+  }
+}
