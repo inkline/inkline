@@ -5,9 +5,33 @@
  * Source:  solid-js@1.9.13 — types/jsx.d.ts, as published on npm
  * Project: https://github.com/solidjs/solid
  * License: MIT — Copyright (c) 2016-2025 Ryan Carniato
- *          Full text in ./LICENSE.solid-js
  *
- * This header is generated and everything from line 36 onward is byte-identical to the
+ * The upstream licence, in full. It is reproduced here rather than in a separate file because MIT
+ * binds the notice to the copy, and the copy is this file:
+ *
+ *   MIT License
+ *
+ *   Copyright (c) 2016-2025 Ryan Carniato
+ *
+ *   Permission is hereby granted, free of charge, to any person obtaining a copy
+ *   of this software and associated documentation files (the "Software"), to deal
+ *   in the Software without restriction, including without limitation the rights
+ *   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ *   copies of the Software, and to permit persons to whom the Software is
+ *   furnished to do so, subject to the following conditions:
+ *
+ *   The above copyright notice and this permission notice shall be included in all
+ *   copies or substantial portions of the Software.
+ *
+ *   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ *   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ *   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ *   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ *   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ *   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ *   SOFTWARE.
+ *
+ * This header is generated and everything from line 60 onward is byte-identical to the
  * upstream file. Both halves are produced and verified by:
  *
  *   pnpm --filter @inkline/core generate:jsx          # re-sync from npm

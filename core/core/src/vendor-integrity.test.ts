@@ -45,7 +45,7 @@ describe("vendored JSX types", () => {
 
   it("fails the check when the upstream body is edited", () => {
     const dir = tamperedCopy(
-      "solid-jsx.d.ts",
+      "jsx-intrinsics.d.ts",
       (contents) => `${contents}\nexport type Sneaky = 1;\n`,
     );
     const { status, output } = check(dir);
@@ -55,7 +55,7 @@ describe("vendored JSX types", () => {
   });
 
   it("fails the check when the generated header is edited", () => {
-    const dir = tamperedCopy("solid-jsx.d.ts", (contents) =>
+    const dir = tamperedCopy("jsx-intrinsics.d.ts", (contents) =>
       contents.replace("VENDORED — DO NOT EDIT BY HAND.", "VENDORED — lightly edited by hand."),
     );
     const { status, output } = check(dir);
@@ -65,7 +65,7 @@ describe("vendored JSX types", () => {
   });
 
   it("fails the check when the version is edited anywhere but the manifest", () => {
-    const dir = tamperedCopy("solid-jsx.d.ts", (contents) =>
+    const dir = tamperedCopy("jsx-intrinsics.d.ts", (contents) =>
       contents.replace("solid-js@", "solid-js@9.9.9 — was "),
     );
 
@@ -82,13 +82,21 @@ describe("vendored JSX types", () => {
     expect(status).toBe(1);
   });
 
-  it("fails the check when the vendored licence is edited", () => {
-    const dir = tamperedCopy("LICENSE.solid-js", (contents) =>
-      contents.replace("MIT License", "MIT-ish"),
+  it("fails the check when the MIT notice is weakened in the manifest", () => {
+    const dir = tamperedCopy("manifest.json", (contents) =>
+      contents.replace("MIT License", "MIT-ish License"),
     );
     const { status, output } = check(dir);
 
-    expect(output).toContain("does not match the manifest");
+    expect(output).toContain("licence notice in the manifest is not the one it records");
     expect(status).toBe(1);
+  });
+
+  it("fails the check when the MIT notice is stripped from the generated header", () => {
+    const dir = tamperedCopy("jsx-intrinsics.d.ts", (contents) =>
+      contents.replace('THE SOFTWARE IS PROVIDED "AS IS"', "THE SOFTWARE IS PROVIDED"),
+    );
+
+    expect(check(dir).status).toBe(1);
   });
 });

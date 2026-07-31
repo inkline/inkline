@@ -54,7 +54,7 @@ Two entry points, declared in [`package.json`](./package.json) `exports`:
 
 ### JSX surface (from `src/jsx-runtime.ts`)
 
-`JSX.IntrinsicElements` is **not** `any`. It is derived from a vendored upstream — [`src/vendor/solid-jsx.d.ts`](./src/vendor/solid-jsx.d.ts), a verbatim MIT-licensed copy of Solid's element types — through one alias:
+`JSX.IntrinsicElements` is **not** `any`. It is derived from a vendored upstream — [`src/vendor/jsx-intrinsics.d.ts`](./src/vendor/jsx-intrinsics.d.ts), a verbatim MIT-licensed copy of Solid's element types — through one alias:
 
 ```ts
 type Inklinified<T> = { [K in keyof T]: Omit<T[K], InklineOwnedKeys> & InklineOwned };

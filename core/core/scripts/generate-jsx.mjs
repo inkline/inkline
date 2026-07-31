@@ -47,9 +47,9 @@ function read(path) {
 }
 
 /**
- * Pulls the copyright line out of the upstream licence so it is never transcribed by hand into the
- * header. If upstream restructures its licence this throws rather than silently emitting a header
- * with a missing attribution.
+ * Pulls the copyright line out of the upstream licence so it is never transcribed by hand. If
+ * upstream restructures its licence this throws rather than silently emitting a header with a
+ * missing attribution.
  */
 function copyrightFrom(licence) {
   const line = licence
@@ -61,6 +61,19 @@ function copyrightFrom(licence) {
   return line.trim();
 }
 
+/**
+ * Indents the upstream licence into the JSDoc header. MIT requires the copyright notice and the
+ * permission notice to travel with every substantial copy of the Software; carrying them inside the
+ * file that *is* the copy satisfies that without a second file to keep in sync or lose.
+ */
+function renderNotice(licence) {
+  return licence
+    .trimEnd()
+    .split("\n")
+    .map((line) => (line.trim() === "" ? " *" : ` *   ${line}`))
+    .join("\n");
+}
+
 function renderHeader(manifest, copyright) {
   const template = `// oxlint-disable typescript/no-redundant-type-constituents -- see the note below.
 /**
@@ -68,8 +81,12 @@ function renderHeader(manifest, copyright) {
  *
  * Source:  ${manifest.package}@${manifest.version} — ${manifest.source.types}, as published on npm
  * Project: ${manifest.repository}
- * License: ${manifest.license} — ${copyright}
- *          Full text in ./${manifest.output.license}
+ * License: ${manifest.license.spdx} — ${copyright}
+ *
+ * The upstream licence, in full. It is reproduced here rather than in a separate file because MIT
+ * binds the notice to the copy, and the copy is this file:
+ *
+${renderNotice(manifest.license.notice)}
  *
  * This header is generated and everything from line ${BODY_START} onward is byte-identical to the
  * upstream file. Both halves are produced and verified by:
@@ -113,7 +130,7 @@ function renderReadmeBlock(manifest, copyright) {
     "|---|---|",
     `| Source | \`${manifest.package}@${manifest.version}\`, file \`${manifest.source.types}\`, as published on npm |`,
     `| Upstream project | ${manifest.repository} |`,
-    `| License | ${manifest.license} — ${copyright}, full text in [\`${manifest.output.license}\`](./${manifest.output.license}) |`,
+    `| License | ${manifest.license.spdx} — ${copyright}, reproduced in full in the header of [\`${manifest.output.types}\`](./${manifest.output.types}) |`,
     `| Local changes | **None.** Everything below the generated header is byte-identical to upstream. |`,
     `| Body checksum | \`sha256:${manifest.integrity.types}\` |`,
     "",
@@ -147,7 +164,7 @@ function fetchUpstream(manifest) {
     execFileSync("tar", ["-xzf", tarball, "-C", workdir]);
     return {
       types: read(join(workdir, "package", manifest.source.types)),
-      licence: read(join(workdir, "package", manifest.source.license)),
+      licence: read(join(workdir, "package", manifest.license.source)),
     };
   } finally {
     rmSync(workdir, { recursive: true, force: true });
@@ -162,10 +179,10 @@ export function sync(vendorDir = DEFAULT_VENDOR_DIR, log = console.log) {
   const copyright = copyrightFrom(upstream.licence);
   const next = {
     ...manifest,
+    license: { ...manifest.license, notice: upstream.licence },
     integrity: { types: sha256(upstream.types), license: sha256(upstream.licence) },
   };
 
-  writeFileSync(join(vendorDir, next.output.license), upstream.licence);
   writeFileSync(join(vendorDir, next.output.types), renderHeader(next, copyright) + upstream.types);
   writeFileSync(join(vendorDir, "manifest.json"), `${JSON.stringify(next, null, 2)}\n`);
   writeFileSync(
@@ -187,11 +204,11 @@ export function check(vendorDir = DEFAULT_VENDOR_DIR, { fetch = false } = {}) {
   const problems = [];
   const manifest = JSON.parse(read(join(vendorDir, "manifest.json")));
 
-  const licence = read(join(vendorDir, manifest.output.license));
+  const licence = manifest.license.notice;
   const licenceHash = sha256(licence);
   if (licenceHash !== manifest.integrity.license) {
     problems.push(
-      `${manifest.output.license} does not match the manifest (sha256:${licenceHash}, expected sha256:${manifest.integrity.license})`,
+      `the licence notice in the manifest is not the one it records (sha256:${licenceHash}, expected sha256:${manifest.integrity.license})`,
     );
   }
 

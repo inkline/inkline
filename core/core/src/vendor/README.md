@@ -1,6 +1,6 @@
 # Vendored JSX element types
 
-`solid-jsx.d.ts` is a generated file: a short Inkline header followed by a byte-identical copy of
+`jsx-intrinsics.d.ts` is a generated file: an Inkline header followed by a byte-identical copy of
 the JSX element type definitions published in the `solid-js` npm package. It is the upstream that
 `JSX.IntrinsicElements` is derived from, via the `Inklinified<T>` alias in `../jsx-runtime.ts`.
 
@@ -13,7 +13,7 @@ Nothing in this directory is hand-edited. `manifest.json` is the single input, a
 |---|---|
 | Source | `solid-js@1.9.13`, file `types/jsx.d.ts`, as published on npm |
 | Upstream project | https://github.com/solidjs/solid |
-| License | MIT — Copyright (c) 2016-2025 Ryan Carniato, full text in [`LICENSE.solid-js`](./LICENSE.solid-js) |
+| License | MIT — Copyright (c) 2016-2025 Ryan Carniato, reproduced in full in the header of [`jsx-intrinsics.d.ts`](./jsx-intrinsics.d.ts) |
 | Local changes | **None.** Everything below the generated header is byte-identical to upstream. |
 | Body checksum | `sha256:d35504a35868edaa3f43c244b397177f7ce6a6ab872347b7271473299c2e5d27` |
 
@@ -35,7 +35,17 @@ Only `csstype` remains as a real dependency. It is types-only by construction �
 package contains `index.d.ts` and no JavaScript at all — and is the same package `@types/react` and
 most of the ecosystem use for CSS property types.
 
-## Do not run the banner at the top of `solid-jsx.d.ts`
+## Where the licence lives
+
+MIT requires the copyright notice and the permission notice to be included with every substantial
+copy of the software. This directory carries a 4,253-line verbatim copy, so the notice is
+reproduced **in full inside the header of `jsx-intrinsics.d.ts`** — in the file that *is* the copy,
+rather than in a sibling file that can be moved or deleted independently of it.
+
+The notice text lives in `manifest.json` and is written into the header by the generator, so it is
+covered by the drift check below like everything else here.
+
+## Do not run the banner at the top of `jsx-intrinsics.d.ts`
 
 The first lines of the vendored body read:
 
@@ -56,13 +66,14 @@ exist here, and running them is not how this copy is maintained. The command for
 #    "version": "1.9.13"  ->  "version": "<new>"
 $EDITOR core/core/src/vendor/manifest.json
 
-# 2. Regenerate. This fetches the tarball from npm, rewrites solid-jsx.d.ts and
-#    LICENSE.solid-js, refreshes the checksums in the manifest, and updates the
-#    provenance table above.
+# 2. Regenerate. This fetches the tarball from npm, rewrites jsx-intrinsics.d.ts,
+#    refreshes the licence notice and the checksums in the manifest, and updates
+#    the provenance table above.
 pnpm --filter @inkline/core generate:jsx
 
-# 3. Read the diff. `git diff` on solid-jsx.d.ts is exactly the upstream change,
-#    because the header is regenerated identically unless the version moved.
+# 3. Read the diff. `git diff` on jsx-intrinsics.d.ts is exactly the upstream
+#    change, because the header is regenerated identically unless the version or
+#    the licence moved.
 git diff core/core/src/vendor/
 
 # 4. The gate that tells you whether the new surface is safe:
@@ -82,13 +93,13 @@ pnpm --filter @inkline/core generate:jsx:check --fetch  # ...and re-verify again
 ```
 
 The offline check re-renders the header and the provenance table from `manifest.json` and compares
-them byte-for-byte, then hashes the body and compares that to the manifest. A hand-edit to any of
-the three fails it. `--fetch` adds the one question local state cannot answer: whether npm still
-publishes what the manifest records for that version.
+them byte-for-byte, then hashes the body and compares that to the manifest. A hand-edit to the
+header, the body, the licence notice or the table fails it. `--fetch` adds the one question local
+state cannot answer: whether npm still publishes what the manifest records for that version.
 
 This check also runs as a normal unit test (`../vendor-integrity.test.ts`), so drift cannot land
-without CI saying so. That test additionally proves the check *bites*, by running it against a
-tampered copy and requiring a failure.
+without CI saying so. That test additionally proves the check *bites*, by running it against
+tampered copies and requiring a failure.
 
 ## Formatting and linting
 

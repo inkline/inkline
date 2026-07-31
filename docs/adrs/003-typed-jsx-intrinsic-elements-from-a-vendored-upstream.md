@@ -49,7 +49,8 @@ declares as `… | (string & {})`, and unknown `$`-prefixed compiler directives.
 ## Decision
 
 Derive `JSX.IntrinsicElements` from a **vendored verbatim copy** of Solid's element types —
-[`core/core/src/vendor/solid-jsx.d.ts`](../../core/core/src/vendor/solid-jsx.d.ts), a single `.d.ts`
+[`core/core/src/vendor/jsx-intrinsics.d.ts`](../../core/core/src/vendor/jsx-intrinsics.d.ts), a single
+`.d.ts`
 whose only import is `csstype` — reshaped through a single Inkline-owned alias in
 [`core/core/src/jsx-runtime.ts`](../../core/core/src/jsx-runtime.ts):
 
@@ -68,7 +69,8 @@ Four commitments come with it:
    no longer theoretical — moving from the `solid-js` package to the vendored copy cost exactly that
    one line and zero author-file edits.
 2. **The vendored copy is never edited.** MIT attribution travels with it
-   ([`LICENSE.solid-js`](../../core/core/src/vendor/LICENSE.solid-js)), the source version is pinned
+   (in full in the header of
+   [`jsx-intrinsics.d.ts`](../../core/core/src/vendor/jsx-intrinsics.d.ts)), the source version is pinned
    in its header, and [`core/core/src/vendor/README.md`](../../core/core/src/vendor/README.md) states
    the re-sync procedure. It is excluded from `vp fmt` so the body stays byte-identical and re-syncing
    stays a plain `diff`. It is _not_ excluded from lint, because that list also gates type-checking

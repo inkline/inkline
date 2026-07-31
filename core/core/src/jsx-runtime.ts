@@ -1,4 +1,4 @@
-import type { JSX as UpstreamJSX } from "./vendor/solid-jsx.js";
+import type { JSX as UpstreamJSX } from "./vendor/jsx-intrinsics.js";
 
 /**
  * Attributes Inkline owns on every intrinsic element, whatever the borrowed
@@ -26,8 +26,8 @@ type InklineOwnedKeys = "ref" | "children" | "key";
  * The seam — load-bearing, do not inline.
  *
  * `IntrinsicElements` is derived from an upstream JSX surface — today a
- * vendored copy of Solid's element types (`./vendor/solid-jsx.d.ts`) — and this
- * alias is the only place that upstream is reshaped. The *shape* is the
+ * vendored copy of Solid's element types (`./vendor/jsx-intrinsics.d.ts`) — and
+ * this alias is the only place that upstream is reshaped. The *shape* is the
  * contract — upstream element attributes, minus the keys Inkline redefines,
  * plus `InklineOwned` — not its current source. Swapping the vendored copy for
  * a generated Inkline-owned surface later is one line changed in the `extends`
