@@ -6,9 +6,10 @@ export default defineConfig({
     "*": "vp check --fix",
   },
   fmt: {
-    // `core/core/src/vendor/**` is a verbatim copy of an upstream file. Formatting it would make
-    // every re-sync diff unreadable; keeping it byte-identical is what makes re-syncing a plain
-    // `diff`. See core/core/src/vendor/README.md.
+    // `core/core/src/vendor/**` is generated: a verbatim copy of an upstream file below a rendered
+    // header. Formatting it would make every re-sync diff unreadable and fail the integrity check;
+    // keeping it byte-identical is what makes re-syncing a plain `diff`. The provenance and the
+    // procedure are in that file's own header — see core/core/scripts/generate-jsx.mjs.
     ignorePatterns: [".context/**", ".old/**", "ui/**/.styleframe/**", "core/core/src/vendor/**"],
   },
   lint: {

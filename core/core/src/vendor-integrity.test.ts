@@ -72,13 +72,28 @@ describe("vendored JSX types", () => {
     expect(check(dir).status).toBe(1);
   });
 
-  it("fails the check when the generated provenance table goes stale", () => {
-    const dir = tamperedCopy("README.md", (contents) =>
-      contents.replace("| Local changes | **None.**", "| Local changes | **Some.**"),
+  it("fails the check when the body checksum in the header is edited", () => {
+    const dir = tamperedCopy("jsx-intrinsics.d.ts", (contents) =>
+      contents.replace(" — no local changes", " — lightly patched"),
     );
     const { status, output } = check(dir);
 
-    expect(output).toContain("provenance table is stale");
+    expect(output).toContain("header that is not the one the manifest generates");
+    expect(status).toBe(1);
+  });
+
+  /**
+   * The manifest is the input the header is rendered from, so the two are a pair: moving either one
+   * alone desynchronises them. This is what stops someone editing the body and "fixing" the manifest
+   * checksum to match — the header still carries the old one and the comparison fails.
+   */
+  it("fails the check when the checksum recorded in the manifest is edited", () => {
+    const dir = tamperedCopy("manifest.json", (contents) =>
+      contents.replace(/"types": "d35504a3/, '"types": "0000000a'),
+    );
+    const { status, output } = check(dir);
+
+    expect(output).toContain("header that is not the one the manifest generates");
     expect(status).toBe(1);
   });
 
