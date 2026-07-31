@@ -56,7 +56,7 @@ Per-package: `vp test` / `vp check` / `vp pack` (library builds) / `vp build` (a
 4. **Two compile paths diverge by design**: the CLI `inkline compile` path (writes files into `.inkline/`, generates barrels + per-framework story CSF) vs the `@inkline/plugin` path (in-memory `compileIncremental` transform; no barrels, no stories). "Works via CLI" ≠ "works via plugin" — and the plugin has **zero direct tests** today.
 5. **Per-target test isolation is enforced**: one test file per target under `codegen/targets/<name>/`, never a loop over a target list (`testing/per-target-tests.test.ts` fails CI on violations). Only the scenario layer compiles across all targets at once.
 6. **e2e boot is picky**: use `pnpm run storybook:test` (no compile watcher — it races cold boots with `ENOTEMPTY`), kill stale processes on ports 6006–6012/6100 first, wait for :6100. React is the live reference — no committed baselines.
-7. **Expected compiler notices are part of the contract**: `INK0045` (Astro two-way) and `INK0068` (Qwik/Angular `hasSlot`) are asserted by tests. Anything else in diagnostics is a real defect. Full registry: `core/compiler/src/core/diagnostics/codes.ts` (INK0001–INK0120).
+7. **Expected compiler notices are part of the contract**: `INK0045` (Astro two-way) and `INK0068` (Qwik/Angular `hasSlot`) are asserted by tests. Both are `info` and the default `warning` floor withholds them, so **`pnpm build` does not print them** — the summary line only names them as withheld. Add `--report-level info` when you need to read them; `vp test` reads `result.diagnostics` directly and is unaffected. Anything else in diagnostics is a real defect. Full registry: `core/compiler/src/core/diagnostics/codes.ts` (INK0001–INK0120).
 
 ## The styleframe ecosystem
 
