@@ -219,12 +219,16 @@ describe("compile command (in-process)", () => {
 
   it("reports the info-level INK0045 notice on a one-shot astro build", async () => {
     const out = tmpDir("astro-info");
+    // `--report-level info` because the default floor is `warning`; the precedence suite below owns
+    // that default. What this pins is the severity's *consequence*, which the level cannot change.
     const { exitCode, errs } = await runCompile([
       resolve(FIXTURES, "ModelInput.ink.tsx"),
       "--target",
       "astro",
       "--out-dir",
       out,
+      "--report-level",
+      "info",
     ]);
     // INK0045 is info, not error — it prints but does not fail the build.
     expect(exitCode).toBe(0);
@@ -241,6 +245,9 @@ describe("compile command (in-process)", () => {
       "angular,qwik",
       "--out-dir",
       out,
+      // Dedup happens below the reporting level, so the note has to be let through to be counted.
+      "--report-level",
+      "info",
     ]);
 
     expect(exitCode).toBe(0);
@@ -263,6 +270,10 @@ describe("compile command (in-process)", () => {
       "angular",
       "--out-dir",
       out,
+      // The only diagnostic this fixture raises is info, so it needs the floor lowered to print a
+      // frame at all. Source frames themselves are severity-independent.
+      "--report-level",
+      "info",
     ]);
 
     expect(exitCode).toBe(0);
@@ -295,6 +306,8 @@ describe("compile command (in-process)", () => {
       "angular,qwik",
       "--out-dir",
       out,
+      "--report-level",
+      "info",
     ]);
 
     expect(errs.match(/info {2}INK0068/g)?.length).toBe(1);
@@ -619,6 +632,120 @@ describe("compile command --verbose precedence", () => {
   });
 });
 
+describe("compile command --report-level precedence", () => {
+  // Compiled to astro this raises the info-level INK0045 two-way-binding notice and nothing above
+  // it, so whether that note reaches the output is exactly what the reporting level decides.
+  const SOURCE = () => resolve(FIXTURES, "ModelInput.ink.tsx");
+
+  function compileWith(
+    name: string,
+    extraArgs: string[],
+    configReportLevel?: string,
+  ): Promise<{ logs: string; errs: string; exitCode: number }> {
+    const base = tmpDir(name);
+    const args = [SOURCE(), "--target", "astro", "--out-dir", resolve(base, "out"), ...extraArgs];
+
+    if (configReportLevel !== undefined) {
+      const configPath = resolve(base, "inkline.config.mjs");
+      writeFileSync(
+        configPath,
+        `export default { reportLevel: ${JSON.stringify(configReportLevel)} };\n`,
+      );
+      args.push("--config", configPath);
+    }
+
+    return runCompile(args);
+  }
+
+  it("withholds the note when --report-level is warning", async () => {
+    const { exitCode, errs } = await compileWith("report-level-flag", [
+      "--report-level",
+      "warning",
+    ]);
+
+    expect(exitCode).toBe(0);
+    expect(errs).not.toContain("INK0045");
+  });
+
+  // A citty `default:` on the flag would make this branch of the chain unreachable, exactly as it did
+  // for `sourceMap` and `verbose` above.
+  it("uses the config file's reportLevel when no flag is passed", async () => {
+    const { exitCode, errs } = await compileWith("report-level-config", [], "warning");
+
+    expect(exitCode).toBe(0);
+    expect(errs).not.toContain("INK0045");
+  });
+
+  it("prefers --report-level over the config file's reportLevel", async () => {
+    const { exitCode, errs } = await compileWith(
+      "report-level-flag-over-config",
+      ["--report-level", "info"],
+      "warning",
+    );
+
+    expect(exitCode).toBe(0);
+    expect(errs).toContain("INK0045");
+  });
+
+  it("reports from warning when neither the flag nor the config sets a level", async () => {
+    const { exitCode, errs, logs } = await compileWith("report-level-default", []);
+
+    // One floor for both modes: a one-shot build no longer prints notes either. The summary still
+    // accounts for the note, so the default hides output without hiding the fact that it did.
+    expect(exitCode).toBe(0);
+    expect(errs).not.toContain("INK0045");
+    expect(logs).toMatch(
+      /^Compiled 1 file in \d+\.\d\ds — 0 errors, 0 warnings, 0 notes \(1 note withheld at --report-level warning; re-run with --report-level info to list\)$/m,
+    );
+  });
+
+  // The escape hatch the default is only acceptable because of: what the build printed before this
+  // became the default is still one flag away, byte for byte.
+  it("restores the pre-default output under --report-level info", async () => {
+    const { exitCode, errs, logs } = await compileWith("report-level-default-opt-in", [
+      "--report-level",
+      "info",
+    ]);
+
+    expect(exitCode).toBe(0);
+    expect(errs).toContain("INK0045");
+    expect(logs).toMatch(/^Compiled 1 file in \d+\.\d\ds — 0 errors, 0 warnings, 1 note$/m);
+  });
+
+  it("names the withheld note in the summary instead of reporting a bare 0 notes", async () => {
+    const { logs } = await compileWith("report-level-withheld", ["--report-level", "warning"]);
+
+    expect(logs).toMatch(
+      /^Compiled 1 file in \d+\.\d\ds — 0 errors, 0 warnings, 0 notes \(1 note withheld at --report-level warning; re-run with --report-level info to list\)$/m,
+    );
+  });
+
+  it("exits 2 with INK0087 on an unusable level, before anything is deleted", async () => {
+    const out = resolve(tmpDir("report-level-invalid"), "out");
+    mkdirSync(resolve(out, "astro"), { recursive: true });
+    writeFileSync(resolve(out, "astro", "stale.ts"), "// stale");
+
+    const { exitCode, errs, logs } = await runCompile([
+      SOURCE(),
+      "--target",
+      "astro",
+      "--out-dir",
+      out,
+      "--report-level",
+      "waring",
+    ]);
+
+    // A formatted diagnostic on the same path as a misspelled `--target`, not a raw throw.
+    expect(exitCode).toBe(EXIT_USAGE_ERROR);
+    expect(errs).toContain("INK0087");
+    expect(errs).toContain("waring");
+    expect(errs).toContain("error, warning, info");
+    expect(logs).not.toContain("Compiled");
+    // Resolved alongside `--target`, which is before `--clean` runs: a typo deletes no output.
+    expect(existsSync(resolve(out, "astro", "stale.ts"))).toBe(true);
+  });
+});
+
 describe("compile command watch mode", () => {
   it("rebuilds on a component change and regenerates stories on a story change", async () => {
     const configDir = tmpDir("watch");
@@ -752,10 +879,10 @@ describe("compile command watch mode: incremental seeding and rebuild reporting"
   });
 });
 
-describe("compile command watch mode: dev reporting level", () => {
+describe("compile command watch mode: reporting level", () => {
   // Compiled to astro this emits both the info-level INK0045 notice (two-way binding) and a
-  // warning-level INK0010 (the effect has no reactive deps). The watch loop reports only warning+,
-  // so on the initial compile and every rebuild it must drop INK0045 but keep INK0010.
+  // warning-level INK0010 (the effect has no reactive deps). The default floor is `warning`, so on
+  // the initial compile and every rebuild the loop must drop INK0045 but keep INK0010.
   const MODEL = (tag: string) =>
     `import { defineComponent, defineModel, createEffect } from "@inkline/core";
 export default defineComponent(() => {
@@ -767,8 +894,17 @@ export default defineComponent(() => {
 });
 `;
 
-  it("drops info (INK0045) but keeps warnings (INK0010) across initial compile and rebuilds", async () => {
-    const configDir = tmpDir("watch-astro");
+  /** Start a watch build over a single astro component, capturing output as it arrives. */
+  async function startWatch(
+    name: string,
+    extraArgs: string[],
+  ): Promise<{
+    watcher: FSWatcher;
+    logs: string[];
+    errs: string[];
+    componentFile: string;
+  }> {
+    const configDir = tmpDir(name);
     const srcDir = resolve(configDir, "src");
     const astroDir = resolve(configDir, "out", "astro", ".inkline");
     const fieldDir = resolve(srcDir, "components", "field", "styled");
@@ -793,9 +929,14 @@ export default defineComponent(() => {
     process.exitCode = 0;
 
     const { result } = await runCommand(compile, {
-      rawArgs: [componentFile, "--config", configPath, "--watch"],
+      rawArgs: [componentFile, "--config", configPath, "--watch", ...extraArgs],
     });
-    const watcher = result as FSWatcher;
+
+    return { watcher: result as FSWatcher, logs, errs, componentFile };
+  }
+
+  it("drops info (INK0045) but keeps warnings (INK0010) across initial compile and rebuilds", async () => {
+    const { watcher, logs, errs, componentFile } = await startWatch("watch-astro", []);
 
     try {
       // Initial compile already ran (in watch mode): the info notice is filtered, the warning shows.
@@ -810,6 +951,30 @@ export default defineComponent(() => {
       await waitFor(() => logs.some((l) => l.includes("Rebuilt")));
       expect(errs.join("\n")).not.toContain("INK0045");
       expect(errs.join("\n")).toContain("INK0010");
+    } finally {
+      watcher.close();
+      await delay(300);
+    }
+  });
+
+  // The watcher used to read the `warning` constant directly, which made `--report-level` a
+  // one-shot-only flag: raising the level had no effect on the loop that reports on every save.
+  it("lets --report-level info surface the notice the default withholds", async () => {
+    const { watcher, logs, errs, componentFile } = await startWatch("watch-astro-info", [
+      "--report-level",
+      "info",
+    ]);
+
+    try {
+      expect(errs.join("\n")).toContain("INK0045");
+
+      await delay(WATCHER_SETTLE_MS);
+      logs.length = 0;
+      errs.length = 0;
+      writeFileSync(componentFile, MODEL("textarea"));
+      await waitFor(() => logs.some((l) => l.includes("Rebuilt")));
+      // Both filter sites read the one resolved level, so a rebuild reports what the build did.
+      expect(errs.join("\n")).toContain("INK0045");
     } finally {
       watcher.close();
       await delay(300);

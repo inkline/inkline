@@ -5,8 +5,10 @@ import {
   type InklineConfig,
 } from "@inkline/compiler";
 import { z } from "zod";
+import { REPORT_LEVELS } from "./report.ts";
 
 const targetName = z.enum(ALL_TARGETS as readonly string[] as [string, ...string[]]);
+const reportLevel = z.enum(REPORT_LEVELS as readonly string[] as [string, ...string[]]);
 
 const barrelGroup = z.strictObject({
   file: z.string(),
@@ -42,6 +44,11 @@ export const inklineConfigSchema = z.strictObject({
   // that can be checked without calling it.
   registry: z.custom<object>((v) => typeof v === "object" && v !== null).optional(),
   barrels: z.array(barrelGroup).optional(),
+  // Reported twice on purpose when wrong: INK0083 from here says the config value is invalid, and
+  // INK0087 from `resolveReportLevel` says the build will not guess which level was meant. This
+  // validation is non-fatal by design (see `validateConfig`), so it cannot be the only guard on a
+  // value the build goes on to read.
+  reportLevel: reportLevel.optional(),
   tsconfig: z.string().optional(),
 });
 

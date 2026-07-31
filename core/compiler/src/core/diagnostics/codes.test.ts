@@ -35,6 +35,7 @@ describe("DIAGNOSTICS catalog", () => {
       "INK0084",
       "INK0085",
       "INK0086",
+      "INK0087",
       "INK0090",
       "INK0100",
       "INK0110",
@@ -82,7 +83,7 @@ describe("DIAGNOSTICS catalog", () => {
     }
   });
 
-  it("codes with title placeholders: INK0030, INK0044, INK0080, INK0081, INK0082, INK0083, INK0085, INK0086, INK0090, INK0100, INK0110, INK0111, INK0120, INK0121", () => {
+  it("codes with title placeholders: INK0030, INK0044, INK0080, INK0081, INK0082, INK0083, INK0085, INK0086, INK0087, INK0090, INK0100, INK0110, INK0111, INK0120, INK0121", () => {
     const withPlaceholders = codes.filter((c) => /\{\w+\}/.test(DIAGNOSTICS[c].title));
     expect(withPlaceholders.sort()).toEqual([
       "INK0030",
@@ -93,6 +94,7 @@ describe("DIAGNOSTICS catalog", () => {
       "INK0083",
       "INK0085",
       "INK0086",
+      "INK0087",
       "INK0090",
       "INK0100",
       "INK0110",

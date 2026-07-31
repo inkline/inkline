@@ -1,6 +1,17 @@
 import { describe, it, expect } from "vitest";
-import type { Diagnostic } from "@inkline/compiler";
-import { createBuildReporter, formatBuildSummary } from "./report.ts";
+import {
+  InklineConfigError,
+  isInklineConfigError,
+  type Diagnostic,
+  type DiagnosticSeverity,
+} from "@inkline/compiler";
+import {
+  REPORT_LEVELS,
+  createBuildReporter,
+  formatBuildSummary,
+  resolveReportLevel,
+  type SeverityCounts,
+} from "./report.ts";
 
 function makeDiag(overrides: Partial<Diagnostic> = {}): Diagnostic {
   return {
@@ -150,6 +161,39 @@ describe("createBuildReporter", () => {
     expect(reporter.counts).toEqual({ error: 0, warning: 1, info: 0 });
   });
 
+  it("counts what the level withheld, so the summary can say the notes exist", () => {
+    const { printed, reporter } = collectingReporter("warning");
+
+    reporter.report([
+      makeDiag({ severity: "info" }),
+      makeDiag({ severity: "info", code: "INK0045" as Diagnostic["code"] }),
+      makeDiag({ severity: "warning", code: "INK0010" as Diagnostic["code"] }),
+    ]);
+
+    expect(printed).toHaveLength(1);
+    expect(reporter.counts).toEqual({ error: 0, warning: 1, info: 0 });
+    expect(reporter.withheld).toEqual({ error: 0, warning: 0, info: 2 });
+  });
+
+  it("counts a withheld finding once however many targets raised it", () => {
+    // The dedupe runs before the level filter for exactly this: `withheld` has to be comparable with
+    // `counts`, and both are counts of findings, not of how many emitters mentioned them.
+    const { reporter } = collectingReporter("warning");
+
+    reporter.report([makeDiag({ severity: "info" }), makeDiag({ severity: "info" })]);
+
+    expect(reporter.withheld.info).toBe(1);
+  });
+
+  it("withholds nothing at the info floor", () => {
+    const { printed, reporter } = collectingReporter("info");
+
+    reporter.report([makeDiag({ severity: "info" })]);
+
+    expect(printed).toHaveLength(1);
+    expect(reporter.withheld).toEqual({ error: 0, warning: 0, info: 0 });
+  });
+
   it("has no error before anything is reported", () => {
     const { reporter } = collectingReporter();
     expect(reporter.hasError).toBe(false);
@@ -170,15 +214,106 @@ describe("createBuildReporter", () => {
 });
 
 describe("formatBuildSummary", () => {
+  const none: SeverityCounts = { error: 0, warning: 0, info: 0 };
+
+  function summary(overrides: Partial<Parameters<typeof formatBuildSummary>[0]> = {}) {
+    return formatBuildSummary({
+      compiledCount: 67,
+      elapsedMs: 450,
+      level: "info",
+      counts: none,
+      withheld: none,
+      ...overrides,
+    });
+  }
+
   it("reports file count, elapsed seconds, and counts by severity", () => {
-    expect(formatBuildSummary(67, 450, { error: 0, warning: 0, info: 4 })).toBe(
+    expect(summary({ counts: { error: 0, warning: 0, info: 4 } })).toBe(
       "Compiled 67 files in 0.45s — 0 errors, 0 warnings, 4 notes",
     );
   });
 
   it("singularizes counts of one", () => {
-    expect(formatBuildSummary(1, 1000, { error: 1, warning: 1, info: 1 })).toBe(
-      "Compiled 1 file in 1.00s — 1 error, 1 warning, 1 note",
+    expect(
+      summary({ compiledCount: 1, elapsedMs: 1000, counts: { error: 1, warning: 1, info: 1 } }),
+    ).toBe("Compiled 1 file in 1.00s — 1 error, 1 warning, 1 note");
+  });
+
+  it("says so when the level withheld findings, rather than printing a bare 0 notes", () => {
+    // The whole point: `0 notes` on its own cannot be told apart from "there were none".
+    expect(summary({ level: "warning", withheld: { error: 0, warning: 0, info: 3 } })).toBe(
+      "Compiled 67 files in 0.45s — 0 errors, 0 warnings, 0 notes" +
+        " (3 notes withheld at --report-level warning; re-run with --report-level info to list)",
     );
+  });
+
+  it("names every withheld severity and omits the ones with nothing to report", () => {
+    expect(summary({ level: "error", withheld: { error: 0, warning: 2, info: 1 } })).toBe(
+      "Compiled 67 files in 0.45s — 0 errors, 0 warnings, 0 notes" +
+        " (2 warnings, 1 note withheld at --report-level error; re-run with --report-level info to list)",
+    );
+  });
+
+  it("adds no suffix when nothing was withheld, so a clean build reads exactly as before", () => {
+    expect(summary({ counts: { error: 0, warning: 1, info: 0 } })).toBe(
+      "Compiled 67 files in 0.45s — 0 errors, 1 warning, 0 notes",
+    );
+  });
+
+  it("counts files that compiled, which is the caller's job to supply", () => {
+    // The line used to report the size of the glob, so a build with one failing file out of five
+    // claimed to have compiled all five while printing the error just above.
+    expect(summary({ compiledCount: 4, counts: { error: 1, warning: 0, info: 0 } })).toBe(
+      "Compiled 4 files in 0.45s — 1 error, 0 warnings, 0 notes",
+    );
+  });
+});
+
+describe("resolveReportLevel", () => {
+  it("takes the flag over the config", () => {
+    expect(resolveReportLevel("error", { reportLevel: "warning" }, "info")).toBe("error");
+  });
+
+  it("takes the config when the flag is absent", () => {
+    expect(resolveReportLevel(undefined, { reportLevel: "warning" }, "info")).toBe("warning");
+  });
+
+  it("falls back when neither is set, and the fallback is the caller's", () => {
+    expect(resolveReportLevel(undefined, {}, "info")).toBe("info");
+    expect(resolveReportLevel(undefined, {}, "warning")).toBe("warning");
+  });
+
+  it("reports an invalid flag as INK0087 rather than throwing something raw", () => {
+    let error: unknown;
+    try {
+      resolveReportLevel("waring", {}, "info");
+    } catch (err) {
+      error = err;
+    }
+
+    expect(isInklineConfigError(error)).toBe(true);
+    const { diagnostic } = error as InklineConfigError;
+    expect(diagnostic.code).toBe("INK0087");
+    expect(diagnostic.title).toContain("waring");
+    expect(diagnostic.help).toContain("error, warning, info");
+    expect(diagnostic.url).toBe("https://docs.inkline.dev/diagnostics/INK0087");
+  });
+
+  it("rejects an invalid config value instead of coercing it to the default", () => {
+    // The schema reports this too, but non-fatally: the config is used as loaded, so the build has
+    // to refuse the value itself rather than quietly compiling at a level nobody asked for.
+    expect(() =>
+      resolveReportLevel(undefined, { reportLevel: "verbose" as DiagnosticSeverity }, "info"),
+    ).toThrow(InklineConfigError);
+  });
+
+  it("rejects a non-string config value, which the loader can hand it", () => {
+    expect(() =>
+      resolveReportLevel(undefined, { reportLevel: 2 as unknown as DiagnosticSeverity }, "info"),
+    ).toThrow(InklineConfigError);
+  });
+
+  it("offers exactly the severities the formatter can name", () => {
+    expect([...REPORT_LEVELS]).toEqual(["error", "warning", "info"]);
   });
 });
