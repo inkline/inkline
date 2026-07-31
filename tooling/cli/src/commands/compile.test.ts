@@ -219,12 +219,16 @@ describe("compile command (in-process)", () => {
 
   it("reports the info-level INK0045 notice on a one-shot astro build", async () => {
     const out = tmpDir("astro-info");
+    // `--report-level info` because the default floor is `warning`; the precedence suite below owns
+    // that default. What this pins is the severity's *consequence*, which the level cannot change.
     const { exitCode, errs } = await runCompile([
       resolve(FIXTURES, "ModelInput.ink.tsx"),
       "--target",
       "astro",
       "--out-dir",
       out,
+      "--report-level",
+      "info",
     ]);
     // INK0045 is info, not error — it prints but does not fail the build.
     expect(exitCode).toBe(0);
@@ -241,6 +245,9 @@ describe("compile command (in-process)", () => {
       "angular,qwik",
       "--out-dir",
       out,
+      // Dedup happens below the reporting level, so the note has to be let through to be counted.
+      "--report-level",
+      "info",
     ]);
 
     expect(exitCode).toBe(0);
@@ -263,6 +270,10 @@ describe("compile command (in-process)", () => {
       "angular",
       "--out-dir",
       out,
+      // The only diagnostic this fixture raises is info, so it needs the floor lowered to print a
+      // frame at all. Source frames themselves are severity-independent.
+      "--report-level",
+      "info",
     ]);
 
     expect(exitCode).toBe(0);
@@ -295,6 +306,8 @@ describe("compile command (in-process)", () => {
       "angular,qwik",
       "--out-dir",
       out,
+      "--report-level",
+      "info",
     ]);
 
     expect(errs.match(/info {2}INK0068/g)?.length).toBe(1);
@@ -674,10 +687,26 @@ describe("compile command --report-level precedence", () => {
     expect(errs).toContain("INK0045");
   });
 
-  it("reports from info when neither the flag nor the config sets a level", async () => {
+  it("reports from warning when neither the flag nor the config sets a level", async () => {
     const { exitCode, errs, logs } = await compileWith("report-level-default", []);
 
-    // Pre-change one-shot behaviour, summary line included: adding the flag changed no default.
+    // One floor for both modes: a one-shot build no longer prints notes either. The summary still
+    // accounts for the note, so the default hides output without hiding the fact that it did.
+    expect(exitCode).toBe(0);
+    expect(errs).not.toContain("INK0045");
+    expect(logs).toMatch(
+      /^Compiled 1 file in \d+\.\d\ds — 0 errors, 0 warnings, 0 notes \(1 note withheld at --report-level warning; re-run with --report-level info to list\)$/m,
+    );
+  });
+
+  // The escape hatch the default is only acceptable because of: what the build printed before this
+  // became the default is still one flag away, byte for byte.
+  it("restores the pre-default output under --report-level info", async () => {
+    const { exitCode, errs, logs } = await compileWith("report-level-default-opt-in", [
+      "--report-level",
+      "info",
+    ]);
+
     expect(exitCode).toBe(0);
     expect(errs).toContain("INK0045");
     expect(logs).toMatch(/^Compiled 1 file in \d+\.\d\ds — 0 errors, 0 warnings, 1 note$/m);
@@ -850,10 +879,10 @@ describe("compile command watch mode: incremental seeding and rebuild reporting"
   });
 });
 
-describe("compile command watch mode: dev reporting level", () => {
+describe("compile command watch mode: reporting level", () => {
   // Compiled to astro this emits both the info-level INK0045 notice (two-way binding) and a
-  // warning-level INK0010 (the effect has no reactive deps). The watch loop reports only warning+,
-  // so on the initial compile and every rebuild it must drop INK0045 but keep INK0010.
+  // warning-level INK0010 (the effect has no reactive deps). The default floor is `warning`, so on
+  // the initial compile and every rebuild the loop must drop INK0045 but keep INK0010.
   const MODEL = (tag: string) =>
     `import { defineComponent, defineModel, createEffect } from "@inkline/core";
 export default defineComponent(() => {
@@ -930,7 +959,7 @@ export default defineComponent(() => {
 
   // The watcher used to read the `warning` constant directly, which made `--report-level` a
   // one-shot-only flag: raising the level had no effect on the loop that reports on every save.
-  it("lets --report-level info surface the notice the watch default withholds", async () => {
+  it("lets --report-level info surface the notice the default withholds", async () => {
     const { watcher, logs, errs, componentFile } = await startWatch("watch-astro-info", [
       "--report-level",
       "info",

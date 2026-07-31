@@ -37,8 +37,8 @@ function isReportLevel(value: string): value is DiagnosticSeverity {
 
 /**
  * Flag > config > default, matching `--target`, `--src-dir` and `--out-dir`. The default is the
- * caller's, not this function's: a one-shot build reports from `info` and `--watch` from `warning`
- * (`info` notices like INK0045 are build-time advisories, not something to re-read on every save).
+ * caller's, not this function's: an omitted level is a question about what the command should do by
+ * default, which belongs where that decision is documented rather than here.
  *
  * An unusable value throws {@link InklineConfigError} carrying INK0087, so a mistyped level lands on
  * the same path as a mistyped `--target` — a formatted diagnostic with help and a docs URL, not a
