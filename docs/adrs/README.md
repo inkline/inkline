@@ -6,10 +6,11 @@ pays for the same lesson twice.
 
 ## Index
 
-| #                                                  | Title                                                                   | Date       | Status   | Tags                      |
-| -------------------------------------------------- | ----------------------------------------------------------------------- | ---------- | -------- | ------------------------- |
-| [001](./001-compiler-dx-invests-in-diagnostics.md) | Invest compiler DX in diagnostics, ordered coverage → rendering → prose | 2026-07-27 | Accepted | compiler, cli, dx         |
-| [002](./002-compiler-export-surface-tiers.md)      | Tier the `@inkline/compiler` export surface via subpath exports         | 2026-07-29 | Accepted | compiler, api, semver, dx |
+| #                                                                     | Title                                                                   | Date       | Status   | Tags                      |
+| --------------------------------------------------------------------- | ----------------------------------------------------------------------- | ---------- | -------- | ------------------------- |
+| [001](./001-compiler-dx-invests-in-diagnostics.md)                    | Invest compiler DX in diagnostics, ordered coverage → rendering → prose | 2026-07-27 | Accepted | compiler, cli, dx         |
+| [002](./002-compiler-export-surface-tiers.md)                         | Tier the `@inkline/compiler` export surface via subpath exports         | 2026-07-29 | Accepted | compiler, api, semver, dx |
+| [003](./003-typed-jsx-intrinsic-elements-from-a-vendored-upstream.md) | Type `JSX.IntrinsicElements` from a vendored upstream, behind an alias  | 2026-07-29 | Accepted | core, authoring, dx       |
 
 ## Rules
 

@@ -1,0 +1,20 @@
+{
+  "package": "solid-js",
+  "version": "1.9.13",
+  "repository": "https://github.com/solidjs/solid",
+  "source": {
+    "types": "types/jsx.d.ts"
+  },
+  "output": {
+    "types": "jsx-intrinsics.d.ts"
+  },
+  "license": {
+    "spdx": "MIT",
+    "source": "LICENSE",
+    "notice": "MIT License\n\nCopyright (c) 2016-2025 Ryan Carniato\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+  },
+  "integrity": {
+    "types": "d35504a35868edaa3f43c244b397177f7ce6a6ab872347b7271473299c2e5d27",
+    "license": "59a76ed2f4a3ebe8d20a58869ef9c09420f796aa179420c8fb916f5557defc9b"
+  }
+}

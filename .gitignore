@@ -31,3 +31,6 @@ coverage
 
 # Playwright MCP
 .playwright-mcp/
+
+# JSX probe scratch dirs (created by core/core/src/jsx-runtime.probes.test.ts)
+core/core/.jsx-probe-*/
