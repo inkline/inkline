@@ -450,8 +450,9 @@ export default defineConfig({
 
 `@inkline/cli` validates the loaded config against a zod schema. Keys outside this set are ignored
 and reported as INK0081 / INK0082 warnings (with a suggested spelling when the key is close to a
-real one); values of the wrong type are reported as INK0083 and passed through unchanged. None of
-these fail the build.
+real one); these do not fail the build, at any depth. A value of the wrong type is reported as an
+INK0083 error and stops the command with exit code `2` before it reads any field — a value that is
+not the declared type cannot be consumed, and passing it through only moved the failure later.
 
 ### Available Targets
 
@@ -899,7 +900,7 @@ The codes below are the ones most authors hit. For the complete, always-current 
 | INK0080 | warning  | Unknown key in `targetOptions`.                                                                                                         |
 | INK0081 | warning  | Unknown key in `inkline.config.*`. The key is ignored.                                                                                  |
 | INK0082 | warning  | Unknown key in `inkline.config.*` that looks like a typo, with the suggested spelling.                                                  |
-| INK0083 | warning  | Value in `inkline.config.*` has the wrong type. The value is passed through unchanged.                                                  |
+| INK0083 | error    | Value in `inkline.config.*` has the wrong type. The command stops before consuming it.                                                  |
 | INK0084 | error    | No compilation target specified.                                                                                                        |
 | INK0085 | error    | Unknown target. Lists the valid targets and suggests the closest match.                                                                 |
 | INK0086 | error    | Target is not present in the configured registry.                                                                                       |

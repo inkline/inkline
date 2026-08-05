@@ -137,6 +137,53 @@ describe("compile", () => {
     }
   });
 
+  /**
+   * The bad-target canary above guards the `resolveOptions` stop, which a wrong-typed config value
+   * never reaches. Before the config check moved ahead of `--clean`, `targetOutDir: { react: 42 }`
+   * validated as a warning, cleaned `vue` on the way past, and only then threw on `resolve(42)` —
+   * so a config that failed validation had already deleted a directory. Reordering the stop is the
+   * whole fix, and nothing else in the suite fails if it moves back: the command never compiles in
+   * either arrangement.
+   */
+  it("rejects a wrong-typed targetOutDir before --clean touches any output directory", () => {
+    const dir = resolve(TMP_OUT, "clean-guard-config");
+    const outDir = resolve(dir, "out");
+    const configPath = resolve(dir, "inkline.config.mjs");
+    const canaries = [
+      resolve(outDir, "react", "keep-me.txt"),
+      resolve(outDir, "vue", "keep-me.txt"),
+    ];
+    try {
+      for (const canary of canaries) {
+        mkdirSync(dirname(canary), { recursive: true });
+        writeFileSync(canary, "canary", "utf-8");
+      }
+      // `vue` is listed first so it would be cleaned before `react` throws on `resolve(42)`.
+      writeFileSync(
+        configPath,
+        'export default { targets: ["vue", "react"], targetOutDir: { react: 42 } };\n',
+        "utf-8",
+      );
+
+      const { output, status } = run(
+        "compile",
+        resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+        "--config",
+        configPath,
+        "--out-dir",
+        outDir,
+        "--clean",
+      );
+
+      expect(status).toBe(2);
+      expect(output).toContain("INK0083");
+      expect(output).not.toContain("TypeError");
+      for (const canary of canaries) expect(existsSync(canary)).toBe(true);
+    } finally {
+      if (existsSync(TMP_OUT)) rmSync(TMP_OUT, { recursive: true });
+    }
+  });
+
   it("compiles with --target react", () => {
     try {
       const { status } = run(

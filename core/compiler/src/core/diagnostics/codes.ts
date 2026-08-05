@@ -158,9 +158,9 @@ export const DIAGNOSTICS = {
     url: "https://docs.inkline.dev/diagnostics/INK0082" as const,
   },
   INK0083: {
-    severity: "warning" as const,
+    severity: "error" as const,
     title: "Invalid config value at {path}: {message}" as const,
-    help: "The value is passed through unchanged. Correct it to the documented type." as const,
+    help: "The command stops here: a value of the wrong type cannot be consumed. Correct it to the documented type." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0083" as const,
   },
   INK0084: {

@@ -145,6 +145,83 @@ describe("check command inputs", () => {
   });
 });
 
+/**
+ * A config value of the wrong type used to reach the consumers as its declared type and blow up on
+ * the first method call — `targets.join`, `barrels.filter`, `srcDir.endsWith` — after the validator
+ * had already reported the problem. The commands stop at the boundary instead, so these cases are
+ * about the exit being clean, not about any one consumer being hardened.
+ */
+describe("wrong-typed config values", () => {
+  function writeBadConfig(name: string, body: string): string {
+    const dir = resolve(TMP, name);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(resolve(dir, "A.ink.tsx"), COMPONENT);
+    const configPath = resolve(dir, "inkline.config.mjs");
+    writeFileSync(configPath, `export default ${body};\n`);
+    process.chdir(dir);
+    return configPath;
+  }
+
+  it("exits with a diagnostic instead of a TypeError on a string targets", async () => {
+    const configPath = writeBadConfig("bad-targets", `{ targets: "react" }`);
+
+    const { errs, exitCode } = await run(checkCommand, ["A.ink.tsx", "--config", configPath]);
+
+    expect(exitCode).toBe(2);
+    expect(errs).toContain("INK0083");
+    expect(errs).toContain("Invalid config value at targets");
+    expect(errs).toContain("the configuration is unusable");
+    expect(errs).not.toContain("TypeError");
+    expect(compileCalls).toHaveLength(0);
+  });
+
+  it.each([
+    ["barrels", `{ targets: ["react"], barrels: "index.ts" }`],
+    ["srcDir", `{ targets: ["react"], srcDir: 42 }`],
+    ["targetOutDir", `{ targets: ["react"], targetOutDir: "out/react" }`],
+  ])("stops compile on a wrong-typed %s before it consumes it", async (field, body) => {
+    const configPath = writeBadConfig(`bad-${field}`, body);
+
+    const { errs, exitCode } = await run(compileCommand, ["A.ink.tsx", "--config", configPath]);
+
+    expect(exitCode).toBe(2);
+    expect(errs).toContain("INK0083");
+    expect(errs).toContain(`Invalid config value at ${field}`);
+    expect(errs).not.toContain("TypeError");
+    expect(compileCalls).toHaveLength(0);
+  });
+
+  it("keeps an unknown key non-fatal", async () => {
+    const configPath = writeBadConfig(
+      "unknown-key",
+      `{ targets: ["react"], sourceMaps: "inline" }`,
+    );
+    vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    const { exitCode } = await run(checkCommand, ["A.ink.tsx", "--config", configPath]);
+
+    expect(exitCode).toBe(0);
+    expect(compileCalls).toHaveLength(1);
+  });
+
+  // `targetOutDir` and `targetOptions` are records, so zod rejects an unknown target under
+  // `invalid_key` rather than `unrecognized_keys`. Same meaning, same non-fatal treatment: a
+  // leftover entry for a target that is no longer built is ignored, not a reason to stop.
+  it.each([
+    ["targetOutDir", `{ targets: ["react"], targetOutDir: { preact: "out/preact" } }`],
+    ["targetOptions", `{ targets: ["react"], targetOptions: { preact: { jsx: true } } }`],
+  ])("keeps an unknown %s target non-fatal", async (field, body) => {
+    const configPath = writeBadConfig(`unknown-${field}-key`, body);
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    const { exitCode } = await run(checkCommand, ["A.ink.tsx", "--config", configPath]);
+
+    expect(exitCode).toBe(0);
+    expect(compileCalls).toHaveLength(1);
+    expect(warn.mock.calls.flat().join("\n")).toContain(`Unknown config key: ${field}.preact`);
+  });
+});
+
 describe("check / compile option parity", () => {
   it("builds identical compile options from the same config file", async () => {
     const dir = resolve(TMP, "parity");

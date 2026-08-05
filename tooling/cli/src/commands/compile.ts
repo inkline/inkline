@@ -38,7 +38,12 @@ import {
   formatBuildSummary,
   resolveReportLevel,
 } from "../lib/report.ts";
-import { EXIT_COMPILE_ERROR, EXIT_USAGE_ERROR, reportConfigError } from "../lib/errors.ts";
+import {
+  EXIT_COMPILE_ERROR,
+  EXIT_USAGE_ERROR,
+  reportConfigError,
+  reportUnusableConfig,
+} from "../lib/errors.ts";
 import { writeCompileOutput, writeIfChanged, writeOutput } from "../lib/writer.ts";
 
 /**
@@ -148,10 +153,18 @@ export default defineCommand({
     watch: { type: "boolean", description: "Watch and recompile on change", default: false },
   },
   async run({ args }) {
-    const fileConfig = await loadInklineConfig(args.config);
+    // Before anything else, and in particular before `--clean` starts removing output directories:
+    // a config whose `targets` or `targetOutDir` failed validation cannot be trusted to name the
+    // paths this command deletes.
+    const { config: fileConfig, valid } = await loadInklineConfig(args.config);
+    if (!valid) {
+      reportUnusableConfig();
+      return;
+    }
+
     // `??`, not `||`: with the citty default gone, an omitted `--verbose` is `undefined` and only
     // then does the config apply. `||` would let a config `true` survive an explicit `--no-verbose`.
-    // The `=== true` keeps a non-boolean config value (reported by the schema, not rewritten) falsy.
+    // The `=== true` is belt-and-braces — a non-boolean `verbose` never gets this far now.
     const verbose = args.verbose ?? fileConfig.verbose === true;
 
     const targets = resolveTargets(args.target, fileConfig);
