@@ -7,7 +7,7 @@ Supersedes: — · Superseded by: —
 ## Context
 
 This is the second half of the decision recorded in
-[ADR-003](./003-solid-derived-intrinsic-elements.md), and it is separated because it is separately
+[ADR-003](./003-typed-jsx-intrinsic-elements-from-a-vendored-upstream.md), and it is separated because it is separately
 revisitable: typing JSX is what gives a checker something worth checking, but _who_ runs that check
 is its own one-way commitment to a maintenance surface.
 

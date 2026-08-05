@@ -44,7 +44,7 @@ Reuse `use<Name>Recipe` from `@styleframe/theme` when it exists; author locally 
 
 ## Definition of done (a component ships as a set)
 
-Source + stories (meta with typed args/argTypes + per-axis render helpers) + colocated tests (~100% on its executable code; Angular SSR real-DOM checks via `mountStyledOnAngular`) + TSDoc + **changesets for each affected framework package** (`@inkline/components` itself is ignore-listed). Compile must be clean across all 7 targets with only the expected notices (INK0045 Astro two-way, INK0068 Qwik/Angular `hasSlot`). Partial deliveries create the doc-drift disease this team was built to cure.
+Source + stories (meta with typed args/argTypes + per-axis render helpers) + colocated tests (~100% on its executable code; Angular SSR real-DOM checks via `mountStyledOnAngular`) + TSDoc + **changesets for each affected framework package** (`@inkline/components` itself is ignore-listed). Compile must be clean across all 7 targets with only the expected notices (INK0045 Astro two-way, INK0068 Qwik/Angular `hasSlot`) — read them with `pnpm build --report-level info`, because both are `info` and the default `warning` floor withholds them, so a quiet build proves nothing about which notices you got. Partial deliveries create the doc-drift disease this team was built to cure.
 
 ## Catalog snapshot (5 families — verify with `ls ui/components/src/components`)
 

@@ -25,6 +25,7 @@ describe("validateConfig — unknown keys", () => {
       verbose: true,
       registry: { get: () => undefined, has: () => false, list: () => [] },
       barrels: [{ file: "headless.ts", match: "headless", mode: "named" }],
+      reportLevel: "warning",
       tsconfig: "tsconfig.json",
     });
 
@@ -85,7 +86,9 @@ describe("validateConfig — value types", () => {
 
     expect(rest).toEqual([]);
     expect(diag?.code).toBe("INK0083");
-    expect(diag?.severity).toBe("warning");
+    // A recognised key holding a wrong-typed value is an error: the commands consume every
+    // recognised key, so there is nothing safe to do but stop. Unknown keys stay warnings.
+    expect(diag?.severity).toBe("error");
     expect(diag?.title).toContain("Invalid config value at srcDir");
     expect(diag?.title).toContain("expected string");
   });
@@ -97,6 +100,16 @@ describe("validateConfig — value types", () => {
     expect(diag?.title).toContain("Invalid config value at sourceMap");
   });
 
+  // Non-fatal here by design, so `resolveReportLevel` reports the same value again as INK0087 and
+  // refuses to build; this only says the config key is wrong, not that the build stopped.
+  it("reports a reportLevel outside the accepted severities", () => {
+    const [diag, ...rest] = validateConfig({ reportLevel: "verbose" });
+
+    expect(rest).toEqual([]);
+    expect(diag?.code).toBe("INK0083");
+    expect(diag?.title).toContain("Invalid config value at reportLevel");
+  });
+
   it("reports an unknown target name", () => {
     const [diag] = validateConfig({ targets: ["react", "reakt"] });
 
@@ -104,11 +117,48 @@ describe("validateConfig — value types", () => {
     expect(diag?.title).toContain("targets[1]");
   });
 
-  it("reports a nested key inside an array element by path, not as a config key", () => {
-    const [diag] = validateConfig({ barrels: [{ file: "a.ts", match: "", extra: true }] });
+  it("reports a nested unknown key by path, as a non-fatal unknown key", () => {
+    const [diag, ...rest] = validateConfig({ barrels: [{ file: "a.ts", match: "", extra: true }] });
+
+    // Still an unknown key, just a nested one: reported by full path, no suggestion (only top-level
+    // names can be matched against the schema), and non-fatal like every other unknown key.
+    expect(rest).toEqual([]);
+    expect(diag?.code).toBe("INK0081");
+    expect(diag?.severity).toBe("warning");
+    expect(diag?.title).toBe("Unknown config key: barrels[0].extra");
+  });
+
+  // Record-keyed fields report an unknown key under a different zod code (`invalid_key`, with the
+  // key already on the path) than objects do (`unrecognized_keys`). Both are unknown keys and both
+  // must stay non-fatal, or a leftover entry for a target you no longer build stops the run.
+  it.each(["targetOutDir", "targetOptions"] as const)(
+    "reports an unknown %s target as a non-fatal unknown key",
+    (key) => {
+      const value = key === "targetOutDir" ? "out" : { jsx: true };
+      const [diag, ...rest] = validateConfig({ [key]: { preact: value } });
+
+      expect(rest).toEqual([]);
+      expect(diag?.code).toBe("INK0081");
+      expect(diag?.severity).toBe("warning");
+      expect(diag?.title).toBe(`Unknown config key: ${key}.preact`);
+    },
+  );
+
+  it("still reports a wrong-typed value under a known target key as an error", () => {
+    const [diag, ...rest] = validateConfig({ targetOutDir: { react: 42 } });
+
+    expect(rest).toEqual([]);
+    expect(diag?.code).toBe("INK0083");
+    expect(diag?.severity).toBe("error");
+    expect(diag?.title).toContain("targetOutDir.react");
+  });
+
+  it("reports a wrong-typed value inside an array element as an error", () => {
+    const [diag] = validateConfig({ barrels: [{ file: 42, match: "" }] });
 
     expect(diag?.code).toBe("INK0083");
-    expect(diag?.title).toContain("barrels[0]");
+    expect(diag?.severity).toBe("error");
+    expect(diag?.title).toContain("barrels[0].file");
   });
 
   it("reports both an unknown key and a bad value in one pass", () => {

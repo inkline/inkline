@@ -102,6 +102,19 @@ Per-target notes:
 - **Vue** — handled natively by Vue's default `inheritAttrs`.
 - **Angular** — a `class`/`[class]` passed to a plain component is applied natively to its **host element** (the component selector), which the compiler renders with `display: contents` so it lays out transparently. For `meta: { headless: true }` components the compiler instead emits attribute-selector hosts and collapses the styled-over-headless pair, so classes merge onto the real root element with zero wrapper — see [architecture.md](./architecture.md) → "Cross-framework strategy".
 
+### Markup is type-checked
+
+Intrinsic elements carry real attribute types, so `<div className="x">`, `<button onClik={…}>`, `<input disabled="yes-please">` and `<notatag />` are all compile errors, and event handlers get real event objects (`e.currentTarget` is the element, not `any`). Write HTML attribute names — `class`, `for` — not React's DOM-property names.
+
+Four things it deliberately does **not** catch, so you know where you are on your own:
+
+- Misspelled props on Inkline components (`<IButton colr="light" />`) — component props are untyped.
+- Misspelled hyphenated attributes (`aria-hiddenn`) — TypeScript exempts every non-identifier JSX attribute name, which is also what makes `data-*` work.
+- Invalid members of open string unions (`<input type="nonsense" />`).
+- Unknown `$`-prefixed directives — those are the compiler's vocabulary, and the compiler diagnoses them.
+
+The full rationale, including why the surface is borrowed rather than written by hand and why it is vendored rather than depended on, is [ADR-003](./adrs/003-typed-jsx-intrinsic-elements-from-a-vendored-upstream.md).
+
 ## Authoring primitives
 
 The full primitive set is documented in [`core/compiler/README.md`](../core/compiler/README.md). Quick reference:

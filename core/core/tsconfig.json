@@ -1,6 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    // `jsx-runtime.probes.test.ts` spawns `tsc` and writes a scratch project, so this package needs
+    // the Node builtins the rest of the tooling packages already declare.
+    "types": ["node"],
     "jsx": "react-jsx",
     "jsxImportSource": "."
   },

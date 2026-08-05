@@ -32,7 +32,18 @@ import {
   type BarrelMap,
 } from "../lib/barrel.ts";
 import { formatDiagnostic } from "../lib/diagnostics.ts";
-import { EXIT_COMPILE_ERROR, EXIT_USAGE_ERROR, reportConfigError } from "../lib/errors.ts";
+import {
+  DEFAULT_REPORT_LEVEL,
+  createBuildReporter,
+  formatBuildSummary,
+  resolveReportLevel,
+} from "../lib/report.ts";
+import {
+  EXIT_COMPILE_ERROR,
+  EXIT_USAGE_ERROR,
+  reportConfigError,
+  reportUnusableConfig,
+} from "../lib/errors.ts";
 import { writeCompileOutput, writeIfChanged, writeOutput } from "../lib/writer.ts";
 
 /**
@@ -40,13 +51,6 @@ import { writeCompileOutput, writeIfChanged, writeOutput } from "../lib/writer.t
  * non-story component. The empty-string `match` is the sentinel for "any non-story directory".
  */
 const DEFAULT_BARRELS: readonly BarrelGroup[] = [{ file: "index.ts", match: "" }];
-
-/**
- * `--watch` is always a dev loop, so it reports only `warning` and above: `info` notices like
- * INK0045 (Astro two-way binding) are build-time advisories that would be noise on every rebuild.
- * A one-shot compile (a build) keeps the `info` floor and reports everything.
- */
-const DEV_REPORT_LEVEL = "warning" as const;
 
 /** Ensure every configured named barrel exists for each target that produced output (empty if unmatched). */
 export function seedNamedBarrels(
@@ -129,6 +133,12 @@ export default defineCommand({
     "out-dir": { type: "string", description: "Default output directory (default: dist)" },
     /** Chain arg (config `sourceMap`); no default — the `"external"` fallback lives in the chain. */
     "source-map": { type: "string", description: "external | inline | none (default: external)" },
+    /** Chain arg (config `reportLevel`); no default — the `warning` fallback lives in the chain. */
+    "report-level": {
+      type: "string",
+      description:
+        "Lowest diagnostic severity to report: error | warning | info (default: warning)",
+    },
     /** No config counterpart by construction: this flag names the config file the chain reads. */
     config: { type: "string", description: "Path to config file" },
     /** Chain arg (config `verbose`); no default — so `--no-verbose` can beat a config `true`. */
@@ -143,18 +153,30 @@ export default defineCommand({
     watch: { type: "boolean", description: "Watch and recompile on change", default: false },
   },
   async run({ args }) {
-    const fileConfig = await loadInklineConfig(args.config);
+    // Before anything else, and in particular before `--clean` starts removing output directories:
+    // a config whose `targets` or `targetOutDir` failed validation cannot be trusted to name the
+    // paths this command deletes.
+    const { config: fileConfig, valid } = await loadInklineConfig(args.config);
+    if (!valid) {
+      reportUnusableConfig();
+      return;
+    }
+
     // `??`, not `||`: with the citty default gone, an omitted `--verbose` is `undefined` and only
     // then does the config apply. `||` would let a config `true` survive an explicit `--no-verbose`.
-    // The `=== true` keeps a non-boolean config value (reported by the schema, not rewritten) falsy.
+    // The `=== true` is belt-and-braces — a non-boolean `verbose` never gets this far now.
     const verbose = args.verbose ?? fileConfig.verbose === true;
 
     const targets = resolveTargets(args.target, fileConfig);
 
-    // Resolve up front so a missing or misspelled target is reported before `--clean` deletes
-    // output directories. `compile` resolves the same options again; this only fails earlier.
+    // Resolve up front so a missing or misspelled target — or report level — is reported before
+    // `--clean` deletes output directories. `compile` resolves the same options again; this only
+    // fails earlier. Both throw `InklineConfigError`, which `reportConfigError` renders as a
+    // diagnostic rather than a stack trace through bundled compiler internals.
+    let reportLevel: DiagnosticSeverity;
     try {
       resolveOptions({ targets, registry: fileConfig.registry });
+      reportLevel = resolveReportLevel(args["report-level"], fileConfig, DEFAULT_REPORT_LEVEL);
     } catch (err) {
       if (reportConfigError(err, verbose)) return;
       throw err;
@@ -180,8 +202,10 @@ export default defineCommand({
       return;
     }
 
-    let hasError = false;
-    const reportLevel: DiagnosticSeverity = args.watch ? DEV_REPORT_LEVEL : "info";
+    const reporter = createBuildReporter(reportLevel);
+    // Files the loop below got through without an error, which is what the summary reports. The
+    // count of files *matched* is `resolvedFiles.length` and is not the same number.
+    let compiledCount = 0;
     // Under `--watch`, the initial pass below seeds the watcher's incremental state so the author's
     // first save is incremental rather than a second full build. Empty (and unused) otherwise.
     const seeds: IncrementalSeed[] = [];
@@ -203,6 +227,8 @@ export default defineCommand({
       srcDir,
     });
 
+    const startedAt = performance.now();
+
     if (args.clean) {
       for (const target of targets) {
         rmSync(resolveTargetDir(target, outDir, targetOutDir), { recursive: true, force: true });
@@ -219,11 +245,13 @@ export default defineCommand({
 
       if (args.watch) seeds.push({ fileName: absPath, source, result });
 
-      for (const d of result.diagnostics) {
-        if (!meetsLevel(d.severity, reportLevel)) continue;
-        console.error(formatDiagnostic(d, { source: d.loc.file === absPath ? source : undefined }));
-        if (d.severity === "error") hasError = true;
-      }
+      // The reporter renders through `formatDiagnostic`, so it needs the same source text the
+      // inline loop used to hand it: a diagnostic pointing anywhere but this file gets no frame.
+      reporter.report(result.diagnostics, new Map([[absPath, source]]));
+
+      // Read off this file's own diagnostics rather than `reporter.hasError`, which is the whole
+      // build's: the reporter cannot say *which* file failed, and this loop can.
+      if (!result.diagnostics.some((d) => d.severity === "error")) compiledCount++;
 
       writeCompileOutput(
         result,
@@ -252,10 +280,23 @@ export default defineCommand({
         namedGroups,
         namespaceGroup,
         seedIncrementalState(seeds),
+        reportLevel,
       );
     }
 
-    if (hasError) process.exitCode = EXIT_COMPILE_ERROR;
+    // A build closes with one line stating what it did; the watch loop reports per rebuild instead.
+    console.log(
+      formatBuildSummary({
+        verb: "Compiled",
+        fileCount: compiledCount,
+        elapsedMs: performance.now() - startedAt,
+        level: reportLevel,
+        counts: reporter.counts,
+        withheld: reporter.withheld,
+      }),
+    );
+
+    if (reporter.hasError) process.exitCode = EXIT_COMPILE_ERROR;
   },
 });
 
@@ -319,6 +360,10 @@ function runWatch(
   // Seeded from the initial pass in `run`, not created empty here: an empty state makes the first
   // save after startup a full rebuild of every file, which is the work the caller just finished.
   initialState: IncrementalState,
+  // Passed in rather than re-derived: the watcher used to read a `warning` constant directly, which
+  // made `--report-level` a one-shot-only flag and left two filter sites that could disagree. There
+  // is one resolved level per invocation and both paths read it.
+  reportLevel: DiagnosticSeverity,
 ): FSWatcher {
   console.log(`Watching ${files.length} file(s) for changes...\n`);
   let state: IncrementalState = initialState;
@@ -338,7 +383,7 @@ function runWatch(
 
     const sources = new Map(inputs.map((i) => [i.fileName, i.source]));
     for (const d of result.diagnostics) {
-      if (!meetsLevel(d.severity, DEV_REPORT_LEVEL)) continue;
+      if (!meetsLevel(d.severity, reportLevel)) continue;
       console.error(formatDiagnostic(d, { source: sources.get(d.loc.file) }));
     }
 

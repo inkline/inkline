@@ -15,9 +15,14 @@ All commands live in [`src/commands/`](./src/commands/) and are wired into the r
 | ----------------- | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `inkline init`    | [`init.ts`](./src/commands/init.ts)       | Set up Inkline in an existing app: detect package manager/framework/bundler, run `styleframe init` + seed `styleframe.config.ts`, install deps, wire the build plugin. `--compiler` additionally scaffolds `inkline.config.ts` and an example component. |
 | `inkline compile` | [`compile.ts`](./src/commands/compile.ts) | Compile `.ink.tsx` globs to target frameworks and generate per-target Storybook story files. Accepts `--src-dir` to set the source root for output path resolution (also `srcDir` in config).                                                            |
-| `inkline check`   | [`check.ts`](./src/commands/check.ts)     | Run diagnostics without writing output: same globs and same config as `compile`, compiles with `sourceMap: "none"`, prints formatted diagnostics, exits non-zero on any error.                                                                           |
+| `inkline check`   | [`check.ts`](./src/commands/check.ts)     | Run diagnostics without writing output: same globs and same config as `compile`, compiles with `sourceMap: "none"`, reports through the same [`report.ts`](./src/lib/report.ts) path, exits non-zero on any error.                                       |
 
-`check` is the correctness gate for `compile`, so it must compile against the same program. Both build their option bag through [`buildCompileOptions`](./src/lib/compile-options.ts) and nowhere else — `sourceMap` is the single sanctioned divergence (`check` writes no output, so maps would be waste). A new `InklineConfig` field goes into that mapper, not into a command; [`commands/check.test.ts`](./src/commands/check.test.ts) fails if the two bags stop matching.
+`check` is the correctness gate for `compile`, so it must compile against the same program **and report the same findings from it**. Two pairings enforce that, and both have drifted before:
+
+- **The option bag.** Both commands build theirs through [`buildCompileOptions`](./src/lib/compile-options.ts) and nowhere else — `sourceMap` is the single sanctioned divergence (`check` writes no output, so maps would be waste). A new `InklineConfig` field goes into that mapper, not into a command.
+- **The reporting path.** Both print through [`createBuildReporter`](./src/lib/report.ts), at a level resolved by `resolveReportLevel` against the shared `DEFAULT_REPORT_LEVEL`, and close with `formatBuildSummary`. Anything that changes what reaches the terminal — a filter, a dedup rule, a summary field — goes into that module, never into a command's own loop. `check` printed `result.diagnostics` directly for two releases and silently fell behind `compile` on both dedup and reporting level.
+
+[`commands/check.test.ts`](./src/commands/check.test.ts) fails if either pairing stops matching.
 
 When adding a command:
 
@@ -44,10 +49,13 @@ When adding a command:
 | [`errors.ts`](./src/lib/errors.ts)                                   | Exit-code constants and config-error reporting (see "Exit codes" below).             |
 | [`glob.ts`](./src/lib/glob.ts)                                       | Input-file globbing.                                                                 |
 | [`inkline-config-template.ts`](./src/lib/inkline-config-template.ts) | `inkline.config.ts` + example-component templates for `init --compiler`.             |
+| [`report.ts`](./src/lib/report.ts)                                   | Per-build diagnostic policy: level filter, deduplication, counts, summary line.      |
 | [`styleframe-config.ts`](./src/lib/styleframe-config.ts)             | The `styleframe.config.ts` template seeded by `init`.                                |
 | [`writer.ts`](./src/lib/writer.ts)                                   | Atomic file writes with source-map sidecar support.                                  |
 
 These are internal — no `exports` map entry. If you find yourself importing from `lib/` outside the CLI, lift the utility into a more appropriate package first.
+
+`report.ts` decides _which_ diagnostics are printed; `diagnostics.ts` decides _how_ one is rendered. The reporter must never build a message itself — it calls `formatDiagnostic` and passes the caller's source text through, so a change to the rendering (code frames, relative paths, color) reaches every path that prints a diagnostic.
 
 ## Exit codes
 
@@ -58,6 +66,8 @@ Defined once in [`lib/errors.ts`](./src/lib/errors.ts); never write a bare numbe
 | —                    | `0`  | Success.                                                                       |
 | `EXIT_COMPILE_ERROR` | `1`  | The compile ran and reported at least one `error` diagnostic.                  |
 | `EXIT_USAGE_ERROR`   | `2`  | The CLI never got that far: unusable config, or no files matched the patterns. |
+
+`EXIT_COMPILE_ERROR` is decided from every diagnostic the compile produced, before the reporting level filters any out and before [`report.ts`](./src/lib/report.ts) collapses duplicates — what a build prints may change; what it returns must not.
 
 User-input failures must never surface a stack trace. `resolveOptions` throws `InklineConfigError` carrying a catalog `Diagnostic`; commands validate up front (before `--clean` deletes anything) and hand the error to `reportConfigError`, which formats it and sets `EXIT_USAGE_ERROR`. The stack is printed only under `--verbose`. Anything `reportConfigError` returns `false` for is a real crash — rethrow it.
 
