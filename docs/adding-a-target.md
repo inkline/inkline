@@ -49,7 +49,8 @@ Both constraints live in the compiler, so both have to change in a PR here. Whet
 A custom registry lets you **replace the implementation of a built-in target**. The name still has to be one of the seven, but the `rewrites` and `emit` behind it are yours:
 
 ```ts
-import { compile, createRegistry, defineTarget, reactTarget } from "@inkline/compiler";
+import { compile } from "@inkline/compiler";
+import { createRegistry, defineTarget, reactTarget } from "@inkline/compiler/codegen";
 
 const registry = createRegistry();
 registry.register(
@@ -139,9 +140,9 @@ Strategy per target syntax flavor:
 - **Template-emitting (Vue, Svelte)** — use `cTmplElement`, `cTmplDirective`, `cTmplAttr`, `cTmplMustache`. Vue's `<script setup>` body is built with `cScript` blocks.
 - **String-template (Angular, Astro)** — use `cRaw` for the template and `cStmt` for the class or frontmatter. Less expressive but simpler.
 
-Walk the IR with `walkRenderTree` (exported from `@inkline/compiler`) or recurse on `IRNode` directly. Apply the rewrite rules to every expression via the helpers in [`codegen/shared/expr-rewrite.ts`](../core/compiler/src/codegen/shared/expr-rewrite.ts) — `rewriteExpr`, `rewriteAttrName`, `rewriteEventName`, and friends.
+Walk the IR with `walkRenderTree` (exported from `@inkline/compiler/ir`) or recurse on `IRNode` directly. Apply the rewrite rules to every expression via the helpers in [`codegen/shared/expr-rewrite.ts`](../core/compiler/src/codegen/shared/expr-rewrite.ts) — `rewriteExpr`, `rewriteAttrName`, `rewriteEventName`, and friends.
 
-> **Repo-internal, not package imports.** Everything under [`codegen/shared/`](../core/compiler/src/codegen/shared/) and [`src/testing/codegen.ts`](../core/compiler/src/testing/codegen.ts) is referenced above by repository path because that is the only way to reach it. None of it is exported from `@inkline/compiler` — see [`src/index.ts`](../core/compiler/src/index.ts) for what is. Inside the repo, import them by relative path (`../../shared/expr-rewrite.ts`) the way the built-in targets do. The `Code` builders (`cFile`, `cJsxElement`, …), `walkRenderTree`, and the `Target`/`RewriteRules` types _are_ public exports.
+> **Repo-internal, not package imports.** Everything under [`codegen/shared/`](../core/compiler/src/codegen/shared/) and [`src/testing/codegen.ts`](../core/compiler/src/testing/codegen.ts) is referenced above by repository path because that is the only way to reach it. None of it is exported from `@inkline/compiler` or any of its subpaths — see [`src/index.ts`](../core/compiler/src/index.ts), [`src/codegen/index.ts`](../core/compiler/src/codegen/index.ts), and [`src/ir/index.ts`](../core/compiler/src/ir/index.ts) for what is. Inside the repo, import them by relative path (`../../shared/expr-rewrite.ts`) the way the built-in targets do. The `Code` builders (`cFile`, `cJsxElement`, …) and the `Target`/`RewriteRules` types _are_ exported, from `@inkline/compiler/codegen`; `walkRenderTree` from `@inkline/compiler/ir`. Note that `@inkline/compiler/codegen` is published as an explicitly **unstable** surface precisely because of the two constraints above — it exists so in-repo target work has a real import path, not as a supported extension point.
 
 When the IR has a case your target cannot express, push a diagnostic via `ctx.diagnostics.push(code, loc, params)` rather than throwing. The compiler reports compile-time failures gracefully; it crashes on uncaught throws.
 
@@ -192,7 +193,7 @@ Once the new target is built-in, add the consumer-facing UI package:
 - [ ] `RewriteRules` reviewed against [`context.ts`](../core/compiler/src/codegen/context.ts).
 - [ ] `TargetName` union **and** `ALL_TARGETS` updated.
 - [ ] Registered in `builtinRegistry`.
-- [ ] Re-exported from `core/compiler/src/index.ts`.
+- [ ] Re-exported from `core/compiler/src/codegen/index.ts` (targets live on the `@inkline/compiler/codegen` subpath, not the root entry point).
 - [ ] Per-target tests under `codegen/targets/<name>/` (`index.test.ts` + `__tests__/`).
 - [ ] Scenario coverage in `__fixtures__/scenarios.ts`.
 - [ ] (Optional) Conformance spec + `assertConformance` test.

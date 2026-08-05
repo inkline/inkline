@@ -1,6 +1,7 @@
 import { ALL_TARGETS, type TargetName, type TargetRegistry } from "../codegen/context.ts";
 import { builtinRegistry } from "../codegen/registry.ts";
 import { UNKNOWN_LOCATION } from "../ir/types.ts";
+import type { DiagnosticSeverity } from "./diagnostics/codes.ts";
 import { createDiagnostic } from "./diagnostics/create.ts";
 import { InklineConfigError } from "./diagnostics/error.ts";
 import { suggestClosest } from "./suggest.ts";
@@ -45,6 +46,14 @@ export interface InklineConfig {
    * containing every non-story component (the legacy default).
    */
   readonly barrels?: readonly BarrelGroup[];
+  /**
+   * Lowest diagnostic severity a build reports. Consumed by `@inkline/cli` only — the compiler
+   * pipeline ignores this field and always produces every diagnostic it finds; this only decides
+   * which of them are printed. A level reports itself and everything above it, so `"warning"`
+   * withholds `info` notes. Omitted, the CLI reports from `"info"` for a one-shot build and from
+   * `"warning"` under `--watch`, and `--report-level` overrides either.
+   */
+  readonly reportLevel?: DiagnosticSeverity;
   /**
    * Path to a `tsconfig.json` whose ambient type declarations (e.g. generated
    * `*.d.ts` augmenting virtual modules) are loaded into the per-file TypeScript

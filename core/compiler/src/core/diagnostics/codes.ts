@@ -158,9 +158,9 @@ export const DIAGNOSTICS = {
     url: "https://docs.inkline.dev/diagnostics/INK0082" as const,
   },
   INK0083: {
-    severity: "warning" as const,
+    severity: "error" as const,
     title: "Invalid config value at {path}: {message}" as const,
-    help: "The value is passed through unchanged. Correct it to the documented type." as const,
+    help: "The command stops here: a value of the wrong type cannot be consumed. Correct it to the documented type." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0083" as const,
   },
   INK0084: {
@@ -180,6 +180,12 @@ export const DIAGNOSTICS = {
     title: 'Target "{target}" is not present in the configured registry' as const,
     help: "The registry provides: {available}. Register the target with `createRegistry` + `defineTarget`, or drop it from `targets`." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0086" as const,
+  },
+  INK0087: {
+    severity: "error" as const,
+    title: 'Invalid report level "{level}"' as const,
+    help: "Reporting levels, high to low: {levels}. A level reports itself and everything above it, so `warning` withholds notes. Set it with --report-level <level> or `reportLevel` in inkline.config.ts." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0087" as const,
   },
   INK0090: {
     severity: "error" as const,

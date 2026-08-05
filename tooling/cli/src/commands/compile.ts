@@ -4,17 +4,23 @@ import { resolve, basename, extname, dirname, join, relative, sep } from "node:p
 import {
   compile,
   compileIncremental,
-  createIncrementalState,
   meetsLevel,
   resolveOptions,
+  seedIncrementalState,
   type BarrelGroup,
   type TargetName,
+  type IncrementalSeed,
   type IncrementalState,
   type DiagnosticSeverity,
 } from "@inkline/compiler";
 import { activeFrameworks, generate, type GeneratedFile } from "@inkline/storybook/generator";
 import { loadInklineConfig } from "../lib/config.ts";
-import { buildCompileOptions, resolveOutDir, resolveTargets } from "../lib/compile-options.ts";
+import {
+  buildCompileOptions,
+  resolveOutDir,
+  resolveTargets,
+  type CompileOptions,
+} from "../lib/compile-options.ts";
 import { expandGlobs } from "../lib/glob.ts";
 import { commonPrefix } from "../lib/common-prefix.ts";
 import {
@@ -26,7 +32,18 @@ import {
   type BarrelMap,
 } from "../lib/barrel.ts";
 import { formatDiagnostic } from "../lib/diagnostics.ts";
-import { EXIT_COMPILE_ERROR, EXIT_USAGE_ERROR, reportConfigError } from "../lib/errors.ts";
+import {
+  DEFAULT_REPORT_LEVEL,
+  createBuildReporter,
+  formatBuildSummary,
+  resolveReportLevel,
+} from "../lib/report.ts";
+import {
+  EXIT_COMPILE_ERROR,
+  EXIT_USAGE_ERROR,
+  reportConfigError,
+  reportUnusableConfig,
+} from "../lib/errors.ts";
 import { writeCompileOutput, writeIfChanged, writeOutput } from "../lib/writer.ts";
 
 /**
@@ -34,13 +51,6 @@ import { writeCompileOutput, writeIfChanged, writeOutput } from "../lib/writer.t
  * non-story component. The empty-string `match` is the sentinel for "any non-story directory".
  */
 const DEFAULT_BARRELS: readonly BarrelGroup[] = [{ file: "index.ts", match: "" }];
-
-/**
- * `--watch` is always a dev loop, so it reports only `warning` and above: `info` notices like
- * INK0045 (Astro two-way binding) are build-time advisories that would be noise on every rebuild.
- * A one-shot compile (a build) keeps the `info` floor and reports everything.
- */
-const DEV_REPORT_LEVEL = "warning" as const;
 
 /** Ensure every configured named barrel exists for each target that produced output (empty if unmatched). */
 export function seedNamedBarrels(
@@ -104,33 +114,69 @@ export function writeNamespaceBarrels(
 
 export default defineCommand({
   meta: { name: "compile", description: "Compile .ink.tsx files and generate stories" },
+  /**
+   * A citty `default` makes an arg permanently defined, which destroys the flag > config > default
+   * chain in `run` below: for a string the config branch becomes unreachable, and for a boolean
+   * `--no-x` becomes indistinguishable from omitting the flag. So any arg with a config counterpart
+   * declares no `default` and puts its fallback in the chain instead. A citty `default` is correct
+   * only where there is no config counterpart and the default *is* the whole resolution. Each arg
+   * below states which of the two it is; do not add a `default` without re-reading this.
+   */
   args: {
+    /** No config counterpart: the positional inputs are the invocation itself. */
     pattern: { type: "positional", description: "Glob pattern for .ink.tsx files", required: true },
+    /** Chain arg (config `targets`); no default — `resolveTargets` deliberately leaves it empty. */
     target: { type: "string", description: "Comma-separated targets" },
+    /** Chain arg (config `srcDir`); no default — falls back to the sources' common prefix. */
     "src-dir": { type: "string", description: "Source root directory to strip from output paths" },
-    // No citty `default` here: it would make `args["out-dir"]` always defined, so the resolution
-    // chain below could never fall through to the config file. The `"dist"` fallback lives there.
+    /** Chain arg (config `outDir`); no default — the `"dist"` fallback lives in the chain. */
     "out-dir": { type: "string", description: "Default output directory (default: dist)" },
-    "source-map": { type: "string", description: "external | inline | none", default: "external" },
+    /** Chain arg (config `sourceMap`); no default — the `"external"` fallback lives in the chain. */
+    "source-map": { type: "string", description: "external | inline | none (default: external)" },
+    /** Chain arg (config `reportLevel`); no default — the `warning` fallback lives in the chain. */
+    "report-level": {
+      type: "string",
+      description:
+        "Lowest diagnostic severity to report: error | warning | info (default: warning)",
+    },
+    /** No config counterpart by construction: this flag names the config file the chain reads. */
     config: { type: "string", description: "Path to config file" },
-    verbose: { type: "boolean", description: "Verbose plugin error logs", default: false },
+    /** Chain arg (config `verbose`); no default — so `--no-verbose` can beat a config `true`. */
+    verbose: { type: "boolean", description: "Verbose plugin error logs" },
+    /** Deliberate default: no config counterpart, so this is the whole resolution. `--no-clean` opts out. */
     clean: {
       type: "boolean",
       description: "Clean output directories before compilation",
       default: true,
     },
+    /** Deliberate default: no config counterpart — watching is a per-invocation mode, not a setting. */
     watch: { type: "boolean", description: "Watch and recompile on change", default: false },
   },
   async run({ args }) {
-    const fileConfig = await loadInklineConfig(args.config);
-    const verbose = args.verbose || fileConfig.verbose === true;
+    // Before anything else, and in particular before `--clean` starts removing output directories:
+    // a config whose `targets` or `targetOutDir` failed validation cannot be trusted to name the
+    // paths this command deletes.
+    const { config: fileConfig, valid } = await loadInklineConfig(args.config);
+    if (!valid) {
+      reportUnusableConfig();
+      return;
+    }
+
+    // `??`, not `||`: with the citty default gone, an omitted `--verbose` is `undefined` and only
+    // then does the config apply. `||` would let a config `true` survive an explicit `--no-verbose`.
+    // The `=== true` is belt-and-braces — a non-boolean `verbose` never gets this far now.
+    const verbose = args.verbose ?? fileConfig.verbose === true;
 
     const targets = resolveTargets(args.target, fileConfig);
 
-    // Resolve up front so a missing or misspelled target is reported before `--clean` deletes
-    // output directories. `compile` resolves the same options again; this only fails earlier.
+    // Resolve up front so a missing or misspelled target — or report level — is reported before
+    // `--clean` deletes output directories. `compile` resolves the same options again; this only
+    // fails earlier. Both throw `InklineConfigError`, which `reportConfigError` renders as a
+    // diagnostic rather than a stack trace through bundled compiler internals.
+    let reportLevel: DiagnosticSeverity;
     try {
       resolveOptions({ targets, registry: fileConfig.registry });
+      reportLevel = resolveReportLevel(args["report-level"], fileConfig, DEFAULT_REPORT_LEVEL);
     } catch (err) {
       if (reportConfigError(err, verbose)) return;
       throw err;
@@ -156,8 +202,13 @@ export default defineCommand({
       return;
     }
 
-    let hasError = false;
-    const reportLevel: DiagnosticSeverity = args.watch ? DEV_REPORT_LEVEL : "info";
+    const reporter = createBuildReporter(reportLevel);
+    // Files the loop below got through without an error, which is what the summary reports. The
+    // count of files *matched* is `resolvedFiles.length` and is not the same number.
+    let compiledCount = 0;
+    // Under `--watch`, the initial pass below seeds the watcher's incremental state so the author's
+    // first save is incremental rather than a second full build. Empty (and unused) otherwise.
+    const seeds: IncrementalSeed[] = [];
     const barrelEntries: BarrelMap = new Map();
     const srcDir = args["src-dir"] ?? fileConfig.srcDir;
     const sourcePrefix = srcDir
@@ -176,6 +227,8 @@ export default defineCommand({
       srcDir,
     });
 
+    const startedAt = performance.now();
+
     if (args.clean) {
       for (const target of targets) {
         rmSync(resolveTargetDir(target, outDir, targetOutDir), { recursive: true, force: true });
@@ -190,11 +243,15 @@ export default defineCommand({
 
       const result = await compile({ fileName: absPath, source }, compileOptions);
 
-      for (const d of result.diagnostics) {
-        if (!meetsLevel(d.severity, reportLevel)) continue;
-        console.error(formatDiagnostic(d, { source: d.loc.file === absPath ? source : undefined }));
-        if (d.severity === "error") hasError = true;
-      }
+      if (args.watch) seeds.push({ fileName: absPath, source, result });
+
+      // The reporter renders through `formatDiagnostic`, so it needs the same source text the
+      // inline loop used to hand it: a diagnostic pointing anywhere but this file gets no frame.
+      reporter.report(result.diagnostics, new Map([[absPath, source]]));
+
+      // Read off this file's own diagnostics rather than `reporter.hasError`, which is the whole
+      // build's: the reporter cannot say *which* file failed, and this loop can.
+      if (!result.diagnostics.some((d) => d.severity === "error")) compiledCount++;
 
       writeCompileOutput(
         result,
@@ -216,24 +273,35 @@ export default defineCommand({
     if (args.watch) {
       return runWatch(
         resolvedFiles,
-        targets,
-        outDir,
-        targetOutDir,
-        sourceMap,
         compileOptions,
+        targetOutDir,
         sourcePrefix,
         srcDir,
         namedGroups,
         namespaceGroup,
+        seedIncrementalState(seeds),
+        reportLevel,
       );
     }
 
-    if (hasError) process.exitCode = EXIT_COMPILE_ERROR;
+    // A build closes with one line stating what it did; the watch loop reports per rebuild instead.
+    console.log(
+      formatBuildSummary({
+        verb: "Compiled",
+        fileCount: compiledCount,
+        elapsedMs: performance.now() - startedAt,
+        level: reportLevel,
+        counts: reporter.counts,
+        withheld: reporter.withheld,
+      }),
+    );
+
+    if (reporter.hasError) process.exitCode = EXIT_COMPILE_ERROR;
   },
 });
 
 async function generateStories(
-  targets: TargetName[],
+  targets: readonly TargetName[],
   outDir: string,
   targetOutDir: Partial<Record<string, string>>,
   srcDir: string,
@@ -280,22 +348,30 @@ async function generateStories(
 
 function runWatch(
   files: string[],
-  targets: TargetName[],
-  outDir: string,
+  // The bag the initial pass compiled with. `targets`, `outDir` and `sourceMap` used to arrive as
+  // loose siblings of this object; reading them off it instead means the watcher cannot be handed a
+  // value that disagrees with what the compiler was configured with.
+  compileOptions: CompileOptions,
   targetOutDir: Partial<Record<string, string>>,
-  sourceMap: "external" | "inline" | "none",
-  compileOptions: Partial<import("@inkline/compiler").InklineConfig>,
   sourcePrefix: string,
   srcDir: string | undefined,
   namedGroups: readonly BarrelGroup[],
   namespaceGroup: BarrelGroup | undefined,
+  // Seeded from the initial pass in `run`, not created empty here: an empty state makes the first
+  // save after startup a full rebuild of every file, which is the work the caller just finished.
+  initialState: IncrementalState,
+  // Passed in rather than re-derived: the watcher used to read a `warning` constant directly, which
+  // made `--report-level` a one-shot-only flag and left two filter sites that could disagree. There
+  // is one resolved level per invocation and both paths read it.
+  reportLevel: DiagnosticSeverity,
 ): FSWatcher {
   console.log(`Watching ${files.length} file(s) for changes...\n`);
-  let state: IncrementalState = createIncrementalState();
+  let state: IncrementalState = initialState;
   let compileTimer: ReturnType<typeof setTimeout> | undefined;
   let storyTimer: ReturnType<typeof setTimeout> | undefined;
 
   const rebuild = async () => {
+    const startedAt = performance.now();
     const inputs = files.map((f) => {
       const absPath = resolve(f);
       return { fileName: absPath, source: readFileSync(absPath, "utf-8") };
@@ -307,7 +383,7 @@ function runWatch(
 
     const sources = new Map(inputs.map((i) => [i.fileName, i.source]));
     for (const d of result.diagnostics) {
-      if (!meetsLevel(d.severity, DEV_REPORT_LEVEL)) continue;
+      if (!meetsLevel(d.severity, reportLevel)) continue;
       console.error(formatDiagnostic(d, { source: sources.get(d.loc.file) }));
     }
 
@@ -318,13 +394,13 @@ function runWatch(
 
       for (const [target, targetFiles] of Object.entries(compileResult.files)) {
         if (!targetFiles) continue;
-        const targetDir = resolveTargetDir(target, outDir, targetOutDir);
+        const targetDir = resolveTargetDir(target, compileOptions.outDir, targetOutDir);
 
         for (const file of targetFiles) {
           const outPath = resolve(targetDir, relDir, file.path);
           mkdirSync(dirname(outPath), { recursive: true });
           writeIfChanged(outPath, file.contents);
-          if (file.sourceMap && sourceMap === "external") {
+          if (file.sourceMap && compileOptions.sourceMap === "external") {
             writeIfChanged(`${outPath}.map`, file.sourceMap);
           }
 
@@ -346,9 +422,15 @@ function runWatch(
 
     flushNamedBarrels(barrelEntries, namedGroups, writeIfChanged);
 
-    if (result.changed.length > 0) {
-      console.log(`Rebuilt ${result.changed.length} file(s), skipped ${result.skipped.length}`);
-    }
+    // Always print, including the no-change case: an editor that saves without changing bytes is
+    // indistinguishable from a dead watcher otherwise. The duration is the whole rebuild — compile
+    // plus writes, excluding the debounce — so a slow loop is visible without external timing.
+    const elapsedMs = Math.round(performance.now() - startedAt);
+    const summary =
+      result.changed.length > 0
+        ? `Rebuilt ${result.changed.length} file(s), skipped ${result.skipped.length}`
+        : `No changes, ${result.skipped.length} file(s) up to date`;
+    console.log(`${summary} in ${elapsedMs}ms`);
   };
 
   const resolvedSrcDir = resolve(srcDir ?? sourcePrefix);
@@ -360,8 +442,8 @@ function runWatch(
       if (storyTimer) clearTimeout(storyTimer);
       storyTimer = setTimeout(() => {
         generateStories(
-          targets,
-          outDir,
+          compileOptions.targets,
+          compileOptions.outDir,
           targetOutDir,
           srcDir ?? sourcePrefix,
           namespaceGroup,

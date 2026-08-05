@@ -17,8 +17,33 @@ export interface IncrementalCompileResult {
   readonly skipped: readonly string[];
 }
 
+export interface IncrementalSeed {
+  readonly fileName: string;
+  readonly source: string;
+  readonly result: CompileResult;
+}
+
 export function createIncrementalState(): IncrementalState {
   return { sourceHashes: new Map(), results: new Map() };
+}
+
+/**
+ * Adopt work already done by a plain `compile()` pass into an `IncrementalState`.
+ *
+ * A watcher starting from `createIncrementalState()` holds no hashes, so its first rebuild misses on
+ * every file and repeats the full build the caller just paid for. Seeding costs one hash per file
+ * and makes the author's first save incremental. The caller must pass the same source text it
+ * compiled, with the same compiler config: this state is a content-keyed cache, and a mismatch here
+ * serves stale output rather than recompiling.
+ */
+export function seedIncrementalState(seeds: readonly IncrementalSeed[]): IncrementalState {
+  const sourceHashes = new Map<string, string>();
+  const results = new Map<string, CompileResult>();
+  for (const seed of seeds) {
+    sourceHashes.set(seed.fileName, hashSource(seed.source));
+    results.set(seed.fileName, seed.result);
+  }
+  return { sourceHashes, results };
 }
 
 function hashSource(source: string): string {
