@@ -141,6 +141,12 @@ export interface RewriteRules {
     readonly suffix?: string;
     /** Access prefix for a callback-prop emit (`props.` for React/Solid/Qwik, `""` for Svelte). */
     readonly propsAccess?: string;
+    /**
+     * Angular only: the names of events declaring more than one payload value. An Angular
+     * `output<T>` carries a single value, so those emits pack their arguments into an array
+     * (`emit("x", a, b)` → `this.x.emit([a, b])`) to match the tuple type argument on the output.
+     */
+    readonly packedPayloads?: ReadonlySet<string>;
   };
   /**
    * Lowers a `hasSlot("name")` call to the target's slot-presence check. Each target maps the slot

@@ -56,7 +56,8 @@ export function callbackPropRules(
 const tsPrinter = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
 const emptySF = ts.createSourceFile("_gen.tsx", "", ts.ScriptTarget.ESNext);
 
-function verbatim(node: ts.Node): string {
+/** A node's source text — verbatim when it came from a real file, printed when synthesized. */
+export function nodeText(node: ts.Node): string {
   const sf = node.getSourceFile?.();
   if (sf) return node.getText(sf);
   return tsPrinter.printNode(ts.EmitHint.Unspecified, node, emptySF);
@@ -147,8 +148,12 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
       switch (rules.emit.style) {
         case "noop":
           return "undefined";
-        case "angular-output":
-          return `${rules.selfPrefix ? "this." : ""}${eventName}.emit(${payload})`;
+        case "angular-output": {
+          // An Angular output carries one value, so a multi-value event emits its arguments packed
+          // into an array — matching the tuple type argument the declaration was given.
+          const value = rules.emit.packedPayloads?.has(eventName) ? `[${payload}]` : payload;
+          return `${rules.selfPrefix ? "this." : ""}${eventName}.emit(${value})`;
+        }
         case "callback-prop": {
           const access = rules.emit.propsAccess ?? "props.";
           return `${access}${eventToCallbackProp(eventName)}${rules.emit.suffix ?? ""}?.(${payload})`;
@@ -276,7 +281,7 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
 
   if (ts.isArrowFunction(expr)) {
     const asyncKw = hasAsyncModifier(expr) ? "async " : "";
-    const params = expr.parameters.map((p) => verbatim(p)).join(", ");
+    const params = expr.parameters.map((p) => nodeText(p)).join(", ");
     const paramStr =
       expr.parameters.length === 1 && !expr.parameters[0]!.type ? params : `(${params})`;
     // `() => batch(() => { … })` collapses to `() => { … }` (batch is a no-op grouping wrapper),
@@ -294,7 +299,7 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
 
   if (ts.isFunctionExpression(expr)) {
     const asyncKw = hasAsyncModifier(expr) ? "async " : "";
-    const params = expr.parameters.map((p) => verbatim(p)).join(", ");
+    const params = expr.parameters.map((p) => nodeText(p)).join(", ");
     const name = expr.name ? ` ${expr.name.text}` : "";
     return `${asyncKw}function${name}(${params}) ${walkBlock(expr.body, rules)}`;
   }
@@ -327,7 +332,7 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
     const parts = expr.properties.map((p) => {
       if (ts.isPropertyAssignment(p)) return `${p.name.getText()}: ${walk(p.initializer, rules)}`;
       if (ts.isSpreadAssignment(p)) return `...${walk(p.expression, rules)}`;
-      return verbatim(p);
+      return nodeText(p);
     });
     return `{ ${parts.join(", ")} }`;
   }
@@ -338,7 +343,7 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
 
   if (ts.isAsExpression(expr)) return walk(expr.expression, rules);
 
-  return verbatim(expr);
+  return nodeText(expr);
 }
 
 function walkStatement(stmt: ts.Statement, rules: RewriteRules): string {
@@ -351,7 +356,7 @@ function walkStatement(stmt: ts.Statement, rules: RewriteRules): string {
   if (ts.isVariableStatement(stmt)) {
     const kw = stmt.declarationList.flags & ts.NodeFlags.Const ? "const" : "let";
     const decls = stmt.declarationList.declarations.map((d) => {
-      const name = verbatim(d.name);
+      const name = nodeText(d.name);
       return d.initializer ? `${name} = ${walk(d.initializer, rules)}` : name;
     });
     return `${kw} ${decls.join(", ")};`;
@@ -363,9 +368,9 @@ function walkStatement(stmt: ts.Statement, rules: RewriteRules): string {
     return s;
   }
   if (ts.isForOfStatement(stmt)) {
-    return `for (${verbatim(stmt.initializer)} of ${walk(stmt.expression, rules)}) ${walkStatement(stmt.statement, rules)}`;
+    return `for (${nodeText(stmt.initializer)} of ${walk(stmt.expression, rules)}) ${walkStatement(stmt.statement, rules)}`;
   }
-  return verbatim(stmt);
+  return nodeText(stmt);
 }
 
 function walkBlock(block: ts.Block, rules: RewriteRules): string {
@@ -455,6 +460,6 @@ export function emitExprAsTemplate(expr: ts.Expression, rules: RewriteRules): st
   if (ts.isArrowFunction(inner) && !ts.isBlock(inner.body)) {
     return emitExprAsTemplate(inner.body, rules);
   }
-  if (isJsxLike(inner)) return verbatim(inner);
+  if (isJsxLike(inner)) return nodeText(inner);
   return `{${rewriteExpr(expr, rules)}}`;
 }

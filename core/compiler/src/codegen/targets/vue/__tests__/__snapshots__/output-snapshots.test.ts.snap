@@ -184,7 +184,7 @@ exports[`vue full output snapshots > ElementRef 1`] = `
 
 exports[`vue full output snapshots > EmitButton 1`] = `
 "<script setup lang="ts">
-  const emit = defineEmits(["press"])
+  const emit = defineEmits<{ press: [count: number] }>()
 </script>
 <template>
 <button @click='() => emit("press", 1)'>Go</button>

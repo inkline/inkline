@@ -93,6 +93,36 @@ describe("defineEmits parsing", () => {
     expect(comp.events.some((e) => e.name === "press")).toBe(true);
   });
 
+  // `payloadType` is what every target types its event channel from. It was written nowhere for a
+  // release, which left Angular emitting a bare `output()`; assert the propagation so a silent
+  // regression fails here rather than in the emitted output.
+  it("carries the declared payload tuple onto the event", async () => {
+    const comp = (
+      await parse(`
+        import { defineComponent, defineEmits } from "@inkline/core";
+        export default defineComponent(() => {
+          const emit = defineEmits<{ press: [count: number]; submit: [] }>();
+          return <button onClick={() => emit("press", 1)}>Go</button>;
+        });
+      `)
+    ).components[0]!;
+    const payloads = Object.fromEntries(comp.events.map((e) => [e.name, e.payloadType?.getText()]));
+    expect(payloads).toEqual({ press: "[count: number]", submit: "[]" });
+  });
+
+  it("leaves the array form's events untyped", async () => {
+    const comp = (
+      await parse(`
+        import { defineComponent, defineEmits } from "@inkline/core";
+        export default defineComponent(() => {
+          const emit = defineEmits(["change"]);
+          return <button onClick={() => emit("change")}>Go</button>;
+        });
+      `)
+    ).components[0]!;
+    expect(comp.events[0]!.payloadType).toBeUndefined();
+  });
+
   it("records events from the array form", async () => {
     const comp = (
       await parse(`

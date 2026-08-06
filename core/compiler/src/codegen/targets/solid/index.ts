@@ -22,6 +22,7 @@ import {
   callbackPropRules,
   reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
+import { eventCallbackType } from "../../shared/event-payload.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { setupLocalEmits } from "../../shared/setup-locals.ts";
 import { childrenArePhrasing } from "../../shared/phrasing.ts";
@@ -503,7 +504,7 @@ function modelEventTypeFields(component: IRComponent): string[] {
     fields.push(`${eventToCallbackProp(`update:${m.propName}`)}?: (value: ${t}) => void`);
   }
   for (const ev of component.events) {
-    fields.push(`${eventToCallbackProp(ev.name)}?: (...args: any[]) => void`);
+    fields.push(`${eventToCallbackProp(ev.name)}?: ${eventCallbackType(ev)}`);
   }
   return fields;
 }

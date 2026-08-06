@@ -25,6 +25,6 @@ describe("EmitButton: defineEmits → QRL callback prop", () => {
   it("rewrites emit(name, …) to props.on<Name>$?.()", async () => {
     const out = await compileTo("EmitButton", "qwik");
     expect(out).toContain("onClick$={$(() => props.onPress$?.(1))}");
-    expect(out).toContain("onPress$?: QRL<(...args: any[]) => void>");
+    expect(out).toContain("onPress$?: QRL<(count: number) => void>");
   });
 });

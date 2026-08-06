@@ -25,6 +25,6 @@ describe("EmitButton: defineEmits → callback prop", () => {
   it("rewrites emit(name, …) to a bare on<Name>?.() callback", async () => {
     const out = await compileTo("EmitButton", "svelte");
     expect(out).toContain("onclick={() => onPress?.(1)}");
-    expect(out).toContain("onPress?: (...args: any[]) => void");
+    expect(out).toContain("onPress?: (count: number) => void");
   });
 });

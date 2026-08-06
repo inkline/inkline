@@ -123,7 +123,7 @@ exports[`svelte full output snapshots > ElementRef 1`] = `
 
 exports[`svelte full output snapshots > EmitButton 1`] = `
 "<script lang="ts">
-  interface Props { onPress?: (...args: any[]) => void }
+  interface Props { onPress?: (count: number) => void }
   let { onPress, ...__attrs }: Props & Record<string, any> = $props()
 </script>
 <button {...__attrs} class={__attrs.class} onclick={() => onPress?.(1)}>Go</button>
