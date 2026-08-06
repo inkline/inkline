@@ -139,6 +139,28 @@ export const DIAGNOSTICS = {
     help: "The spread is discarded. Enumerate the attributes explicitly on the element instead of spreading an object — the compiler must know every attribute name at build time." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0071" as const,
   },
+  // Severity: warning, not error. The valid set is a *snapshot* of a spec Inkline does not own —
+  // `ARIA_ATTRIBUTES` is derived from the vendored JSX types — so a genuinely-new ARIA attribute the
+  // snapshot predates would fail the build of an author who did nothing wrong. Same one-way door as
+  // INK0081. The emitted output is unharmed either way: an unknown `aria-*` renders as written and
+  // is ignored by assistive technology, which costs accessibility, not correctness.
+  INK0072: {
+    severity: "warning" as const,
+    title: 'Unknown ARIA attribute "{name}"' as const,
+    help: "{suggestion}The attribute is emitted as written, so assistive technology ignores it. ARIA attribute names are a closed set — correct the spelling or remove it." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0072" as const,
+  },
+  // Severity: error, unlike its neighbour INK0072. `$bind:` is Inkline's own vocabulary, defined by
+  // this compiler's lowering and nothing else — there is no external spec to lag, so the valid set
+  // is known exactly and a false positive is a bug rather than a risk to price in. The failure is
+  // not cosmetic either: `<div $bind:nonsense={1} />` emits `onInput={(e) => 1(e.target.value)}`,
+  // which throws on the first input event. Emitting code known to be broken is worse than refusing.
+  INK0073: {
+    severity: "error" as const,
+    title: 'Cannot two-way bind "$bind:{name}" on <{tag}>' as const,
+    help: '$bind: lowers to a value attribute plus a writer, and <{tag}> has nothing to write "{name}" to — the generated handler would call the bound expression as a setter and throw at runtime. {suggestion}' as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0073" as const,
+  },
   INK0080: {
     severity: "warning" as const,
     title: "Unknown target option: {key}" as const,

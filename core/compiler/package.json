@@ -47,6 +47,8 @@
     "test": "vp test",
     "check": "vp check",
     "bench": "node --experimental-strip-types --experimental-transform-types scripts/bench.ts",
+    "generate:aria": "node --experimental-strip-types --experimental-transform-types scripts/gen-aria-attributes.ts",
+    "generate:aria:check": "node --experimental-strip-types --experimental-transform-types scripts/gen-aria-attributes.ts --check",
     "docs:diagnostics": "node --experimental-strip-types --experimental-transform-types scripts/gen-diagnostics.ts",
     "prepublishOnly": "vp run build"
   },

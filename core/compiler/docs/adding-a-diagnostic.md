@@ -70,6 +70,8 @@ The catalog test in `src/core/diagnostics/codes.test.ts` verifies:
 | INK0062 | error    | lower    | `<For>` requires an 'each' prop                         |
 | INK0070 | error    | lower    | Component-ref forwarding not yet supported              |
 | INK0071 | error    | parse    | JSX spread attributes are not supported                 |
+| INK0072 | warning  | lower    | Unknown ARIA attribute                                  |
+| INK0073 | error    | lower    | Cannot two-way bind `$bind:<name>` on an element        |
 | INK0080 | warning  | config   | Unknown target option                                   |
 | INK0081 | warning  | config   | Unknown config key                                      |
 | INK0082 | warning  | config   | Unknown config key, with a suggested spelling           |
