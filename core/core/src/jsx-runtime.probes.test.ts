@@ -2,12 +2,20 @@
  * Pins the *safety level* of `JSX.IntrinsicElements` — the RFC §2.3 probe table.
  *
  * `jsx-runtime.test.ts` covers the runtime stubs; this file covers the types, which is the whole
- * point of the surface. Twelve deliberate authoring mistakes: eight the surface must catch, four it
- * structurally cannot. Both halves are assertions. A re-sync of `./vendor/jsx-intrinsics.d.ts` that
- * stops catching one of the eight fails here instead of silently downgrading every author's editor,
- * and
- * one that starts catching one of the four fails too — telling us to update the table rather than
- * leaving the documented blind spots stale.
+ * point of the surface. Twelve deliberate authoring mistakes: eight the type surface must catch, two
+ * the *compiler* catches instead, two nothing catches. All three groups are assertions. A re-sync of
+ * `./vendor/jsx-intrinsics.d.ts` that stops catching one of the eight fails here instead of silently
+ * downgrading every author's editor, and one that starts catching a row this table says it does not
+ * fails too — telling us to update the table rather than leaving a documented gap stale.
+ *
+ * Rows 9 and 12 are the compiler-covered pair (UXF-136). TypeScript still cannot see them — a
+ * hyphenated attribute name is exempt from unknown-property checking, and `` [K in `$${string}`] ``
+ * is open by construction — so their `codes` stay empty *and always will*. What changed is that the
+ * mistake no longer reaches the author's output: `@inkline/compiler` reports INK0072 and INK0073 for
+ * exactly these sources. This package cannot import the compiler to prove that (the compiler
+ * devDepends on this one; the reverse is a cycle), so the proof lives in
+ * `core/compiler/src/pipeline/passes/03-lower/attribute-checks.test.ts`, which compiles the same two
+ * mistakes and asserts the codes. `inkCode` below is the join between the two files.
  *
  * Kept separate from `jsx-runtime.test.ts` because it spawns `tsc`; the unit tests stay instant.
  */
@@ -24,7 +32,12 @@ interface Probe {
   readonly mistake: string;
   /** Diagnostic codes the surface must emit for this file, in source order. Empty means none. */
   readonly codes: readonly string[];
-  /** Why `codes` is empty. Required for every blind spot, so none of them is ever a mystery. */
+  /**
+   * The `@inkline/compiler` code that catches this mistake when the type surface cannot. Set on rows
+   * TypeScript is structurally unable to see but the compiler still refuses to let through.
+   */
+  readonly inkCode?: string;
+  /** Why nothing catches it. Required for every remaining blind spot, so none is ever a mystery. */
   readonly blindSpot?: string;
   readonly source: string;
 }
@@ -82,10 +95,7 @@ const PROBES: readonly Probe[] = [
     row: 9,
     mistake: "misspelled ARIA attribute",
     codes: [],
-    blindSpot:
-      "TypeScript exempts JSX attribute names that are not valid identifiers from unknown-property " +
-      "checking, so every hyphenated name is accepted whatever the element type says. Not fixable " +
-      "from a type definition — `data-*` authoring depends on the same exemption.",
+    inkCode: "INK0072",
     source: `export const el = <div aria-hiddenn="true" />;\n`,
   },
   {
@@ -113,10 +123,7 @@ const PROBES: readonly Probe[] = [
     row: 12,
     mistake: "nonsense compiler directive",
     codes: [],
-    blindSpot:
-      "`InklineOwned` declares `` [K in `$${string}`]?: any ``, so every `$`-prefixed key is open. " +
-      "Directive names are the compiler's vocabulary, not the type system's; validating them belongs " +
-      "in the compiler's diagnostics.",
+    inkCode: "INK0073",
     source: `export const el = <div $bind:totalNonsense={1} />;\n`,
   },
 ];
@@ -193,8 +200,30 @@ describe("JSX.IntrinsicElements safety level (RFC §2.3)", () => {
     expect(diagnostics.get(fileFor(row))).toEqual(codes);
   });
 
-  it("documents why each uncaught case is uncaught", () => {
-    const undocumented = PROBES.filter((probe) => probe.codes.length === 0 && !probe.blindSpot);
-    expect(undocumented).toEqual([]);
+  it("accounts for every case the type surface does not catch", () => {
+    // Either the compiler covers it (`inkCode`) or we say out loud why nothing does (`blindSpot`).
+    // "Neither" is how a gap becomes invisible.
+    const unaccounted = PROBES.filter(
+      (probe) => probe.codes.length === 0 && !probe.inkCode && !probe.blindSpot,
+    );
+    expect(unaccounted).toEqual([]);
+  });
+
+  it("does not claim compiler cover for a case the type surface already catches", () => {
+    const bothColumns = PROBES.filter((probe) => probe.codes.length > 0 && probe.inkCode);
+    expect(bothColumns).toEqual([]);
+  });
+
+  it("moves rows 9 and 12 to the caught column (UXF-136)", () => {
+    // Named explicitly so deleting the compiler check cannot quietly restore the blind spots: the
+    // codes are asserted end-to-end in the compiler's `attribute-checks.test.ts`.
+    const covered = PROBES.filter((probe) => probe.inkCode).map((probe) => [
+      probe.row,
+      probe.inkCode,
+    ]);
+    expect(covered).toEqual([
+      [9, "INK0072"],
+      [12, "INK0073"],
+    ]);
   });
 });
