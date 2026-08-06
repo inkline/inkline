@@ -37,6 +37,70 @@ describe("defineComponent", () => {
     Component({ value: 7 });
     expect(setup).toHaveBeenCalledWith({ value: 7 });
   });
+
+  // Type-level regression guard for the options-object `props` form (UXF-97). The compiler's
+  // `PropDefaults.ink.tsx` fixture authors exactly this shape, but every fixture is excluded from
+  // the type-check pass, so the form compiled correctly to all seven targets while `tsc` rejected
+  // the source. This block is the authoring-surface check that fixture could not be: keep it in
+  // sync with the fixture. Both halves are type-level assertions: the annotated locals pin each
+  // prop's type, and the call below pins their optionality — omitting `color`/`when` fails if they
+  // stop being optional, and passing only `size`/`count` fails if either stops being required.
+  it("infers the setup props type from the options object's props map", () => {
+    const Component = defineComponent(
+      {
+        props: {
+          color: "blue",
+          size: Number,
+          count: { type: Number, required: true, default: 0 },
+          when: Date,
+        },
+        slots: { default: {} },
+        style: ".x { color: red }",
+      },
+      (props) => {
+        // Optional — the generated component applies the declared default.
+        const color: string | undefined = props.color;
+        // Required — a bare constructor reference declares a required prop.
+        const size: number = props.size;
+        // Required — the full shape with `required: true`.
+        const count: number = props.count;
+        // `Date` maps to a type but is not one of the required-making constructor references.
+        const when: Date | undefined = props.when;
+        return [color, size, count, when];
+      },
+    );
+    expect(Component({ size: 2, count: 1 })).toEqual([undefined, 2, 1, undefined]);
+  });
+
+  // Negative guards for the two type-level rules this file's positive block cannot express.
+  // `@ts-expect-error` is itself the assertion: if either rule is widened away, the directive stops
+  // suppressing anything and `tsc` reports TS2578 ("unused '@ts-expect-error' directive"), so the
+  // regression turns CI red instead of passing silently. Each directive must sit immediately before
+  // the *argument* it covers — on the call line it does not span where the error is reported.
+  it("rejects a props map paired with a mismatched setup annotation", () => {
+    // The parser prefers `options.props` over the setup parameter's annotation, so this pairing
+    // would emit `color`/`size` while the body reads `totallyUnrelated`. `props?: never` on the
+    // annotated-parameter overload is what forbids it.
+    const Mismatch = defineComponent(
+      // @ts-expect-error - an options `props` map must not be paired with an annotated setup parameter
+      { props: { color: "blue", size: Number } },
+      (props: { totallyUnrelated: boolean }) => props.totallyUnrelated,
+    );
+    // Type-level only: with the error suppressed, resolution falls through to the inferring
+    // overload, so `Mismatch` is typed from the `props` map rather than the annotation.
+    expect(typeof Mismatch).toBe("function");
+  });
+
+  it("types a full shape carrying neither `type` nor `default` as `unknown`", () => {
+    const Component = defineComponent({ props: { x: { required: true } } }, (props) => {
+      // The compiler emits `x` untyped, so `unknown` is the honest authoring type. Without the
+      // narrowed arm in `PropValue`, `props.x` would be the declaration object `{ required: true }`.
+      // @ts-expect-error - `unknown` must not be assignable to a concrete type
+      const wrong: { required: true } = props.x;
+      return wrong;
+    });
+    expect(Component({ x: 1 })).toBe(1);
+  });
 });
 
 describe("createSignal", () => {
