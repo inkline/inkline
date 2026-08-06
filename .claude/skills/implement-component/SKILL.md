@@ -151,8 +151,10 @@ export { default as IBadgeBase } from "./badge/headless/IBadgeBase.ink.tsx";
 
 ### 6. Verify
 
-`cd ui/components && pnpm build`. The component must compile to **all 7 targets** with only the expected notices: `INK0045` (Astro two-way, if any) and `INK0068` (Qwik + Angular, if `hasSlot` is used). Anything else (`INK0120` fallthrough, `INK0060`, `INK0050`, conformance failures) is a real defect — fix it. See `.../reference/verification.md` for the noise baseline.
+`cd ui/components && pnpm build --report-level info`. The component must compile to **all 7 targets** with only the expected notices: `INK0045` (Astro two-way, if any) and `INK0068` (Qwik + Angular, if `hasSlot` is used). Anything else (`INK0120` fallthrough, `INK0060`, `INK0050`, conformance failures) is a real defect — fix it. See `.../reference/verification.md` for the noise baseline.
+
+`--report-level info` is not optional here: `compile` reports from the `warning` floor by default, so both expected notices are **withheld** and the summary line only names the count (`… 0 notes (12 notes withheld at --report-level warning; …)`). A quiet `pnpm build` therefore does not tell you the notices you got are the expected ones.
 
 ## Exit criteria
 
-`pnpm build` is clean (only expected notices), the export is registered, every prop has TSDoc, and the source mirrors the exemplar's structure. Hand off to `stories-component` and `test-component`.
+`pnpm build --report-level info` is clean (only expected notices), the export is registered, every prop has TSDoc, and the source mirrors the exemplar's structure. Hand off to `stories-component` and `test-component`.

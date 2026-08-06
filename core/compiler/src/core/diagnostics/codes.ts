@@ -73,19 +73,19 @@ export const DIAGNOSTICS = {
   INK0060: {
     severity: "error" as const,
     title: "<Show> requires a 'when' prop" as const,
-    help: undefined,
+    help: "Pass the condition as a prop: <Show when={visible()}>…</Show>. Without 'when' there is nothing to test, so the block and its children are dropped from the output." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0060" as const,
   },
   INK0061: {
     severity: "info" as const,
     title: "Nullish-coalescing (??) in JSX is ambiguous" as const,
-    help: undefined,
+    help: "?? falls back only on null and undefined, so count() ?? <Empty /> still renders a literal 0. State the condition instead: <Show when={count() > 0} fallback={<Empty />}>…</Show>." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0061" as const,
   },
   INK0062: {
     severity: "error" as const,
     title: "<For> requires an 'each' prop" as const,
-    help: undefined,
+    help: "Pass the collection as a prop: <For each={items()} key={(item) => item.id}>{(item) => <li>{item.name}</li>}</For>. Without 'each' there is nothing to iterate, so the block is dropped from the output." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0062" as const,
   },
   INK0063: {
@@ -104,14 +104,14 @@ export const DIAGNOSTICS = {
   INK0065: {
     severity: "error" as const,
     title: "<Transition> cannot wrap <For>; list transitions are not yet supported" as const,
-    help: undefined,
+    help: 'Move the transition inside the row so each item animates on its own: <For each={items()} key={(item) => item.id}>{(item) => <Transition name="fade"><li>{item.name}</li></Transition>}</For>. Wrapping the list needs a list-transition primitive, which does not exist yet.' as const,
     url: "https://docs.inkline.dev/diagnostics/INK0065" as const,
   },
   INK0066: {
     severity: "info" as const,
     title:
       "<Transition> for Angular: CSS classes are emitted but animation requires manual @angular/animations setup" as const,
-    help: undefined,
+    help: "The compiler emits the name-prefixed classes and nothing else. Define them in a stylesheet — .fade-enter-active, .fade-leave-active { transition: opacity 150ms } — or drive the same states from @angular/animations on the host component." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0066" as const,
   },
   INK0067: {
@@ -142,7 +142,7 @@ export const DIAGNOSTICS = {
   INK0080: {
     severity: "warning" as const,
     title: "Unknown target option: {key}" as const,
-    help: undefined,
+    help: "The option is ignored. Check it against the target's defaultOptions, then fix or remove it: targetOptions: { vue: { sfc: true } } in inkline.config.ts." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0080" as const,
   },
   INK0081: {
@@ -158,9 +158,9 @@ export const DIAGNOSTICS = {
     url: "https://docs.inkline.dev/diagnostics/INK0082" as const,
   },
   INK0083: {
-    severity: "warning" as const,
+    severity: "error" as const,
     title: "Invalid config value at {path}: {message}" as const,
-    help: "The value is passed through unchanged. Correct it to the documented type." as const,
+    help: "The command stops here: a value of the wrong type cannot be consumed. Correct it to the documented type." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0083" as const,
   },
   INK0084: {
@@ -181,10 +181,16 @@ export const DIAGNOSTICS = {
     help: "The registry provides: {available}. Register the target with `createRegistry` + `defineTarget`, or drop it from `targets`." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0086" as const,
   },
+  INK0087: {
+    severity: "error" as const,
+    title: 'Invalid report level "{level}"' as const,
+    help: "Reporting levels, high to low: {levels}. A level reports itself and everything above it, so `warning` withholds notes. Set it with --report-level <level> or `reportLevel` in inkline.config.ts." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0087" as const,
+  },
   INK0090: {
     severity: "error" as const,
     title: "Plugin '{name}' threw: {message}" as const,
-    help: undefined,
+    help: "The hook is skipped and compilation continues without its contribution. Re-run with --verbose for the stack trace; a plugin should report recoverable problems with ctx.pushDiagnostic(diagnostic) rather than throwing." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0090" as const,
   },
   INK0100: {

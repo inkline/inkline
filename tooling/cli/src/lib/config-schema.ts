@@ -5,8 +5,10 @@ import {
   type InklineConfig,
 } from "@inkline/compiler";
 import { z } from "zod";
+import { REPORT_LEVELS } from "./report.ts";
 
 const targetName = z.enum(ALL_TARGETS as readonly string[] as [string, ...string[]]);
+const reportLevel = z.enum(REPORT_LEVELS as readonly string[] as [string, ...string[]]);
 
 const barrelGroup = z.strictObject({
   file: z.string(),
@@ -42,6 +44,11 @@ export const inklineConfigSchema = z.strictObject({
   // that can be checked without calling it.
   registry: z.custom<object>((v) => typeof v === "object" && v !== null).optional(),
   barrels: z.array(barrelGroup).optional(),
+  // Guarded twice, but only one fires per path. A bad `reportLevel` in the config file stops here
+  // on INK0083, which is fatal (see `validateConfig`) and returns before `resolveReportLevel` runs;
+  // INK0087 is what `--report-level` hits, since a flag never passes through this schema. Both name
+  // the accepted levels, so neither path leaves the author guessing.
+  reportLevel: reportLevel.optional(),
   tsconfig: z.string().optional(),
 });
 
@@ -99,6 +106,27 @@ function suggestConfigKey(key: string): string | undefined {
   return best;
 }
 
+/**
+ * The paths of the keys an issue reports as unrecognised, or `undefined` if it is not about keys.
+ *
+ * Zod says "this key is not one we know" under two codes, and they carry the key in different
+ * places:
+ *
+ * - `unrecognized_keys`, from a `strictObject`, puts the offending names in `issue.keys` and the
+ *   container in `issue.path` — so a root-level typo arrives as `path: []`, `keys: ["sourceMaps"]`.
+ * - `invalid_key`, from a `partialRecord` whose key enum rejected the name, has already appended the
+ *   name to `issue.path` — `targetOutDir: { preact: … }` arrives as `path: ["targetOutDir", "preact"]`.
+ *
+ * Both are unknown keys and neither is fatal. Matching only the first is what made a leftover
+ * `targetOutDir`/`targetOptions` entry for a target you no longer build fall through to INK0083 and
+ * stop the run over a key the commands never read.
+ */
+function unknownKeyPaths(issue: z.core.$ZodIssue): readonly (readonly PropertyKey[])[] | undefined {
+  if (issue.code === "unrecognized_keys") return issue.keys.map((key) => [...issue.path, key]);
+  if (issue.code === "invalid_key") return [issue.path];
+  return undefined;
+}
+
 function formatPath(path: readonly PropertyKey[]): string {
   if (path.length === 0) return "<root>";
   return path.reduce<string>(
@@ -116,9 +144,15 @@ function formatPath(path: readonly PropertyKey[]): string {
  * Validates a loaded config against {@link inklineConfigSchema} and reports the failures as
  * diagnostics.
  *
- * Nothing here is fatal and nothing is rewritten: an unknown key or a wrong value type is reported
- * and the config is used as loaded. Configs in the wild carry keys we do not know about, and
- * silently swallowing a typo is the failure mode this guards against — not the typo itself.
+ * Nothing is rewritten — the config is reported on, never repaired — but the two failure kinds carry
+ * different severities because they have different consequences downstream:
+ *
+ * - An **unknown key** (INK0081/INK0082) is a `warning`. Configs in the wild carry keys we do not
+ *   know about; the key is ignored and the run continues. Silently swallowing a typo is the failure
+ *   mode this guards against, not the typo itself.
+ * - A **wrong value type** on a recognised key (INK0083) is an `error`. Every recognised key is
+ *   consumed by the commands, and consuming a value of the wrong type means calling a method that
+ *   does not exist (`targets.join`, `barrels.filter`, `srcDir.endsWith`). The caller stops instead.
  */
 export function validateConfig(config: object, file = "<unknown>"): readonly Diagnostic[] {
   const diagnostics = createDiagnosticCollector();
@@ -133,11 +167,14 @@ export function validateConfig(config: object, file = "<unknown>"): readonly Dia
   if (result.success) return diagnostics.freeze();
 
   for (const issue of result.error.issues) {
-    // Only top-level unrecognised keys are config keys; a stray key inside `barrels[0]` is a value
-    // problem and is reported as one.
-    if (issue.code === "unrecognized_keys" && issue.path.length === 0) {
-      for (const key of issue.keys) {
-        const suggestion = suggestConfigKey(key);
+    const unknownKeys = unknownKeyPaths(issue);
+
+    if (unknownKeys) {
+      for (const path of unknownKeys) {
+        const key = formatPath(path);
+        // Only a top-level name can be matched against the schema's key set; anything deeper
+        // (`barrels[0].mod`, `targetOutDir.preact`) is reported by its full path without a guess.
+        const suggestion = path.length === 1 ? suggestConfigKey(String(path[0])) : undefined;
         if (suggestion) {
           diagnostics.push("INK0082", loc, { key, suggestion });
         } else {

@@ -233,7 +233,8 @@ export function Slot(_props: { name?: string; args?: any[]; children?: any }): a
   return null;
 }
 
-export function Show(_props: { when: boolean; fallback?: any; children?: any }): any {
+/** `when` is a truthiness test in every target, so it is `unknown` — required, but not `boolean`. */
+export function Show(_props: { when: unknown; fallback?: any; children?: any }): any {
   return null;
 }
 export function For<T>(_props: {
@@ -246,7 +247,7 @@ export function For<T>(_props: {
 export function Switch(_props: { children?: any; fallback?: any }): any {
   return null;
 }
-export function Match(_props: { when: boolean; children?: any }): any {
+export function Match(_props: { when: unknown; children?: any }): any {
   return null;
 }
 export function Transition(_props: { name?: string; appear?: boolean; children?: any }): any {

@@ -56,6 +56,7 @@ src/
 - **Per-pass purity.** Passes are pure on their inputs; mutable state lives only on the `PassContext`. Do not stash data on IR nodes between passes.
 - **Diagnostics never throw.** Errors surface as `Diagnostic` records via `ctx.pushDiagnostic`. The only allowed throw is `assert`-style invariant violations (which indicate compiler bugs, not user errors).
 - **`meta.headless` and the headless registry are Angular-only.** `defineComponent({ meta: { headless: true } })` flows through parse into `IRComponent.meta` (IR_VERSION 3, with a 2→3 migration). [`pipeline/compile.ts`](./src/pipeline/compile.ts) builds `CodegenContext.headlessRegistry` (lowered IR of imported headless siblings) **only when `angular` is a requested target**; the Angular emitter uses it to emit a second attribute-selector host `@Component` (dual selector) and collapse styled-over-headless components to zero wrappers. A headless root that isn't a single static element warns `INK0111` and keeps only the element-selector wrapper. The other six targets must stay byte-identical — never read `meta` or the registry outside [`codegen/targets/angular/`](./src/codegen/targets/angular/).
+- **`__fixtures__` is type-checked.** The fixtures are the compiler's authoring surface, so CI's Type Check job (`vp check --no-fmt --no-lint`) checks them like any other source — a feature that cannot be authored from a typed `.ink.tsx` file fails the build instead of shipping. A fixture that cannot type-check is opted out **one file at a time** in [`typecheck-exclusions.ts`](./typecheck-exclusions.ts), with its diagnostic code and reason; never by a directory-wide pattern. The list that governs the gate is `lint.ignorePatterns` in the root [`vite.config.ts`](../../vite.config.ts) — `exclude` in [`tsconfig.json`](./tsconfig.json) does **not** remove a file from it, it only strips the file of these `compilerOptions`.
 - **`preserveWhitespace` is marked but not yet consumed.** Parse threads it through every element nested under a whitespace-sensitive tag (`pre`/`textarea`/`script`/`style`); `IRElement`/`IRText` carry the optional flag, but no target reads it yet, so emitted output is unchanged until codegen opts in.
 
 ## Diagnostics
@@ -117,7 +118,11 @@ Run from this package: `vp test`. Run the full repo: `vp run -r test`. The bench
 
 ## Build
 
-`vp pack` produces a single ESM bundle (`dist/index.mjs`) + types (`dist/index.d.mts`). `vp pack --watch` for incremental rebuild during development.
+`vp pack` produces two ESM bundles + types: `dist/index.mjs` (the `.` export) and `dist/testing.mjs` (the `@inkline/compiler/testing` subpath). `vp pack --watch` for incremental rebuild during development.
+
+Two things keep the `testing` subpath honest, and both must move together — a `pack.entry` in [`vite.config.ts`](./vite.config.ts) and an `exports["./testing"]` condition in `package.json`. [`testing/subpath-export.test.ts`](./src/testing/subpath-export.test.ts) packs a tarball and imports it as a consumer would, so drift between the two fails CI instead of shipping.
+
+The framework runtimes and lint tools the harnesses reach for (`react`, `vue`, `svelte`, `solid-js`, `eslint`, `oxlint`, `tinybench`, …) are **optional peer dependencies**. Load them with `await import(…)`, never a static import: a static one both inlines the whole runtime into the published bundle and breaks the subpath for anyone who has not installed it. `src/__fixtures__/` ships in `files` because `compileFixture` and `scenarios` read it at runtime.
 
 The compiler ships **no runtime code** for components — it is library code consumed by the CLI ([`@inkline/cli`](../../tooling/cli/)), the build plugin ([`@inkline/plugin`](../plugin/)), and end users calling `compile()` programmatically.
 

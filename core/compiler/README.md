@@ -432,24 +432,26 @@ export default defineConfig({
 
 ### Options
 
-| Option          | Type                                          | Default      | Description                                                                                                                                                                                                              |
-| --------------- | --------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `targets`       | `TargetName[]`                                | (required)   | Targets to compile for.                                                                                                                                                                                                  |
-| `srcDir`        | `string`                                      | —            | Source root to strip from output paths (e.g. `"src"`). When set, directory structure below `srcDir` is preserved in the output. Without it, the deepest common prefix is used. Also available as `--src-dir` on the CLI. |
-| `outDir`        | `string`                                      | `"dist"`     | Output directory. Files are written to `<outDir>/<target>/`.                                                                                                                                                             |
-| `targetOutDir`  | `Partial<Record<TargetName, string>>`         | `{}`         | Per-target output directory override, replacing `<outDir>/<target>/` for the targets it names.                                                                                                                           |
-| `tsconfig`      | `string`                                      | —            | Path to a `tsconfig.json` whose ambient declarations (e.g. generated `*.d.ts` for virtual modules) are loaded into the per-file program, so `import type` from those modules resolves during prop analysis.              |
-| `barrels`       | `BarrelGroup[]`                               | (see note)   | Per-category re-export barrels written for each target. Read by `@inkline/cli` only — the compiler pipeline ignores it. Omitted, the CLI writes one `index.ts` per target containing every non-story component.          |
-| `sourceMap`     | `"external" \| "inline" \| "none"`            | `"external"` | Source map generation mode.                                                                                                                                                                                              |
-| `targetOptions` | `Record<TargetName, Record<string, unknown>>` | `{}`         | Per-target options. Unknown keys produce INK0080 warnings.                                                                                                                                                               |
-| `plugins`       | `Plugin[]`                                    | `[]`         | Compiler plugins.                                                                                                                                                                                                        |
-| `verbose`       | `boolean`                                     | `false`      | Log detailed plugin errors.                                                                                                                                                                                              |
-| `registry`      | `TargetRegistry`                              | built-in     | Custom target registry (advanced).                                                                                                                                                                                       |
+| Option          | Type                                          | Default      | Description                                                                                                                                                                                                                                                                                                 |
+| --------------- | --------------------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `targets`       | `TargetName[]`                                | (required)   | Targets to compile for.                                                                                                                                                                                                                                                                                     |
+| `srcDir`        | `string`                                      | —            | Source root to strip from output paths (e.g. `"src"`). When set, directory structure below `srcDir` is preserved in the output. Without it, the deepest common prefix is used. Also available as `--src-dir` on the CLI.                                                                                    |
+| `outDir`        | `string`                                      | `"dist"`     | Output directory. Files are written to `<outDir>/<target>/`.                                                                                                                                                                                                                                                |
+| `targetOutDir`  | `Partial<Record<TargetName, string>>`         | `{}`         | Per-target output directory override, replacing `<outDir>/<target>/` for the targets it names.                                                                                                                                                                                                              |
+| `tsconfig`      | `string`                                      | —            | Path to a `tsconfig.json` whose ambient declarations (e.g. generated `*.d.ts` for virtual modules) are loaded into the per-file program, so `import type` from those modules resolves during prop analysis.                                                                                                 |
+| `barrels`       | `BarrelGroup[]`                               | (see note)   | Per-category re-export barrels written for each target. Read by `@inkline/cli` only — the compiler pipeline ignores it. Omitted, the CLI writes one `index.ts` per target containing every non-story component.                                                                                             |
+| `sourceMap`     | `"external" \| "inline" \| "none"`            | `"external"` | Source map generation mode.                                                                                                                                                                                                                                                                                 |
+| `reportLevel`   | `"error" \| "warning" \| "info"`              | `"warning"`  | Lowest diagnostic severity reported, by `compile` and `check` alike. Read by `@inkline/cli` only — the compiler pipeline ignores it and always produces every diagnostic it finds. A level reports itself and everything above it, so the default `"warning"` withholds notes; `"info"` reports everything. |
+| `targetOptions` | `Record<TargetName, Record<string, unknown>>` | `{}`         | Per-target options. Unknown keys produce INK0080 warnings.                                                                                                                                                                                                                                                  |
+| `plugins`       | `Plugin[]`                                    | `[]`         | Compiler plugins.                                                                                                                                                                                                                                                                                           |
+| `verbose`       | `boolean`                                     | `false`      | Log detailed plugin errors.                                                                                                                                                                                                                                                                                 |
+| `registry`      | `TargetRegistry`                              | built-in     | Custom target registry (advanced).                                                                                                                                                                                                                                                                          |
 
 `@inkline/cli` validates the loaded config against a zod schema. Keys outside this set are ignored
 and reported as INK0081 / INK0082 warnings (with a suggested spelling when the key is close to a
-real one); values of the wrong type are reported as INK0083 and passed through unchanged. None of
-these fail the build.
+real one); these do not fail the build, at any depth. A value of the wrong type is reported as an
+INK0083 error and stops the command with exit code `2` before it reads any field — a value that is
+not the declared type cannot be consumed, and passing it through only moved the failure later.
 
 ### Available Targets
 
@@ -476,7 +478,7 @@ inkline <command> [options]
 
 Commands:
   compile <glob>   Compile .ink.tsx files and generate stories.
-  check <file>     Run diagnostics on a file without writing output.
+  check <glob>     Run diagnostics without writing output.
   init             Initialize an Inkline project.
   add <component>  Add a component to your project.
 ```
@@ -498,9 +500,24 @@ inkline compile src/IButton.ink.tsx --target react --source-map inline
 
 # Watch and recompile on change
 inkline compile "src/**/*.ink.tsx" --config inkline.config.ts --watch
+
+# Also report info notices, which the default `warning` floor withholds
+inkline compile "src/**/*.ink.tsx" --target react --report-level info
 ```
 
-Flags: `--target`, `--src-dir`, `--out-dir` (default `dist`), `--source-map` (`external` | `inline` | `none`, default `external`), `--config`, `--clean` (default `true`), `--watch`, `--verbose`. `--target` is required unless the config file sets `targets`. CLI flags override config file values.
+Flags: `--target`, `--src-dir`, `--out-dir` (default `dist`), `--source-map` (`external` | `inline` | `none`, default `external`), `--report-level` (`error` | `warning` | `info`, default `warning`), `--config`, `--clean` (default `true`), `--watch`, `--verbose`. `--target` is required unless the config file sets `targets`. CLI flags override config file values.
+
+A build closes with a summary of what it did. Because the default level withholds notes, the summary
+says how many rather than reporting a bare `0 notes`, which cannot be told apart from "there were
+none":
+
+```
+Compiled 67 files in 0.45s — 0 errors, 0 warnings, 0 notes (12 notes withheld at --report-level warning; re-run with --report-level info to list)
+```
+
+Notes are target-invariant advisories — `INK0045` tells you a fact about the Astro target, not about
+the edit you just made — so they are withheld by default in both modes. `--report-level info` lists
+them.
 
 ### Check
 
@@ -508,7 +525,21 @@ Report diagnostics without producing output:
 
 ```bash
 inkline check src/Counter.ink.tsx --target react
+
+# Globs, same as compile
+inkline check "src/**/*.ink.tsx" --config inkline.config.ts
 ```
+
+Flags: `--target`, `--config`, `--report-level`, `--verbose`. `check` accepts the same patterns as
+`compile`, reads the same config file, and reports through the same path at the same resolved level —
+so it reports exactly the diagnostics the build would report, collapsed the same way, closing with
+the same summary line:
+
+```
+Checked 67 files in 0.31s — 0 errors, 0 warnings, 0 notes (12 notes withheld at --report-level warning; re-run with --report-level info to list)
+```
+
+The only difference is that it writes nothing and skips source maps.
 
 ### Exit codes
 
@@ -534,14 +565,6 @@ Scaffold Inkline into the current project. Pass `--compiler` to also generate `i
 ```bash
 inkline init --framework react --compiler
 ```
-
-### Add
-
-```bash
-inkline add IButton
-```
-
-`add` is registered but not yet implemented — it currently prints a notice.
 
 ---
 
@@ -581,10 +604,11 @@ interface GeneratedFile {
 
 ### Working with the IR
 
-The compiler exposes its full intermediate representation for advanced use cases:
+The compiler exposes its full intermediate representation at `@inkline/compiler/ir`:
 
 ```ts
-import { compile, walkRenderTree } from "@inkline/compiler";
+import { compile } from "@inkline/compiler";
+import { walkRenderTree } from "@inkline/compiler/ir";
 
 const result = await compile({ fileName: "Counter.ink.tsx", source }, { targets: ["react"] });
 
@@ -617,7 +641,7 @@ for (const [componentId, graph] of module.graphs) {
 ### Transforming the IR
 
 ```ts
-import { transform, transformComponent, SKIP } from "@inkline/compiler";
+import { transform, transformComponent, SKIP } from "@inkline/compiler/ir";
 
 const transformed = transformComponent(component, {
   enter(node) {
@@ -810,12 +834,18 @@ for (const file of files) {
 
 ## Custom Targets
 
-Register a custom target for frameworks not built in:
+`name` must be one of the seven built-in `TargetName` values, and `resolveOptions` rejects anything
+outside `ALL_TARGETS` before it consults your registry — so this **overrides the implementation
+behind a built-in name**, it does not add a target for a framework that isn't built in. Adding a new
+framework is an in-repo contribution; see [`docs/adding-a-target.md`](../../docs/adding-a-target.md).
+
+Override a built-in target's rewrites or emit:
 
 ```ts
-import { defineTarget, createRegistry, builtinRegistry } from "@inkline/compiler";
-import type { IRComponent, CodegenContext, CodeModule } from "@inkline/compiler";
-import { cFile, cStmt, cImport, cJsxElement } from "@inkline/compiler";
+import { defineTarget, createRegistry } from "@inkline/compiler/codegen";
+import type { CodegenContext, CodeModule } from "@inkline/compiler/codegen";
+import { cFile, cStmt, cImport, cJsxElement } from "@inkline/compiler/codegen";
+import type { IRComponent } from "@inkline/compiler/ir";
 
 const myTarget = defineTarget({
   name: "react", // must be a valid TargetName
@@ -846,7 +876,9 @@ registry.register(myTarget);
 const result = await compile(input, { targets: ["react"], registry });
 ```
 
-See `docs/adding-a-target.md` for a complete walkthrough.
+`createRegistry()` starts empty, so every name in `targets` must be registered in it or `compile`
+throws INK0086. Spread a built-in (`{ ...reactTarget, rewrites: … }`) when you only want to change
+part of it.
 
 ---
 
@@ -874,7 +906,7 @@ The codes below are the ones most authors hit. For the complete, always-current 
 | INK0080 | warning  | Unknown key in `targetOptions`.                                                                                                         |
 | INK0081 | warning  | Unknown key in `inkline.config.*`. The key is ignored.                                                                                  |
 | INK0082 | warning  | Unknown key in `inkline.config.*` that looks like a typo, with the suggested spelling.                                                  |
-| INK0083 | warning  | Value in `inkline.config.*` has the wrong type. The value is passed through unchanged.                                                  |
+| INK0083 | error    | Value in `inkline.config.*` has the wrong type. The command stops before consuming it.                                                  |
 | INK0084 | error    | No compilation target specified.                                                                                                        |
 | INK0085 | error    | Unknown target. Lists the valid targets and suggests the closest match.                                                                 |
 | INK0086 | error    | Target is not present in the configured registry.                                                                                       |
@@ -913,6 +945,13 @@ import {
 | `runBenchSuite()`                                         | Run tinybench performance suite with baseline comparison.                                       |
 | `expectMappingAt(file, line, col)`                        | Assert a source-map mapping exists at a position.                                               |
 | `verifyIdentifierMappings(file, identifiers, tolerance?)` | Verify identifier positions round-trip through source maps.                                     |
+
+The framework runtimes and lint tools these harnesses drive — `react`, `react-dom`, `vue`,
+`@vue/server-renderer`, `solid-js`, `svelte`, `eslint`, `oxlint`, `tinybench` — are **optional peer
+dependencies**, loaded on demand. Install only the ones the harnesses you call actually need.
+
+Fixture _names_ are not part of the semver contract: they exist to serve this compiler's own test
+suite and may be added, renamed or removed in any release.
 
 ---
 

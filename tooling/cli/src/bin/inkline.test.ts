@@ -3,7 +3,7 @@ import { spawnSync } from "node:child_process";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { existsSync, rmSync, writeFileSync, mkdirSync, readFileSync } from "node:fs";
-import { renderUsage, defineCommand } from "citty";
+import { renderUsage } from "citty";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const CLI_PATH = resolve(__dirname, "inkline.ts");
@@ -42,22 +42,15 @@ function run(...args: string[]): {
 }
 
 describe("inkline CLI help", () => {
-  it("root help shows all commands", async () => {
-    const { default: root } = await import("../commands/compile.ts");
-    const main = defineCommand({
-      meta: { name: "inkline" },
-      subCommands: {
-        compile: () => Promise.resolve(root),
-        check: () => import("../commands/check.ts").then((m) => m.default),
-        init: () => import("../commands/init.ts").then((m) => m.default),
-        add: () => import("../commands/add.ts").then((m) => m.default),
-      },
-    });
-    const usage = await renderUsage(main);
-    expect(usage).toContain("compile");
-    expect(usage).toContain("check");
-    expect(usage).toContain("init");
-    expect(usage).toContain("add");
+  // Spawns the real binary rather than re-declaring the subcommand map, so the assertion is
+  // about what users see and cannot drift from `src/index.ts`.
+  it("root help shows the wired commands and nothing that is unimplemented", () => {
+    const { output, status } = run("--help");
+    expect(status).toBe(0);
+    expect(output).toContain("compile");
+    expect(output).toContain("check");
+    expect(output).toContain("init");
+    expect(output).not.toMatch(/\badd\b/);
   });
 
   it("compile help shows options", async () => {
@@ -139,6 +132,53 @@ describe("compile", () => {
       );
       expect(status).toBe(2);
       expect(existsSync(canary)).toBe(true);
+    } finally {
+      if (existsSync(TMP_OUT)) rmSync(TMP_OUT, { recursive: true });
+    }
+  });
+
+  /**
+   * The bad-target canary above guards the `resolveOptions` stop, which a wrong-typed config value
+   * never reaches. Before the config check moved ahead of `--clean`, `targetOutDir: { react: 42 }`
+   * validated as a warning, cleaned `vue` on the way past, and only then threw on `resolve(42)` —
+   * so a config that failed validation had already deleted a directory. Reordering the stop is the
+   * whole fix, and nothing else in the suite fails if it moves back: the command never compiles in
+   * either arrangement.
+   */
+  it("rejects a wrong-typed targetOutDir before --clean touches any output directory", () => {
+    const dir = resolve(TMP_OUT, "clean-guard-config");
+    const outDir = resolve(dir, "out");
+    const configPath = resolve(dir, "inkline.config.mjs");
+    const canaries = [
+      resolve(outDir, "react", "keep-me.txt"),
+      resolve(outDir, "vue", "keep-me.txt"),
+    ];
+    try {
+      for (const canary of canaries) {
+        mkdirSync(dirname(canary), { recursive: true });
+        writeFileSync(canary, "canary", "utf-8");
+      }
+      // `vue` is listed first so it would be cleaned before `react` throws on `resolve(42)`.
+      writeFileSync(
+        configPath,
+        'export default { targets: ["vue", "react"], targetOutDir: { react: 42 } };\n',
+        "utf-8",
+      );
+
+      const { output, status } = run(
+        "compile",
+        resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+        "--config",
+        configPath,
+        "--out-dir",
+        outDir,
+        "--clean",
+      );
+
+      expect(status).toBe(2);
+      expect(output).toContain("INK0083");
+      expect(output).not.toContain("TypeError");
+      for (const canary of canaries) expect(existsSync(canary)).toBe(true);
     } finally {
       if (existsSync(TMP_OUT)) rmSync(TMP_OUT, { recursive: true });
     }
@@ -440,9 +480,12 @@ describe("init", () => {
 });
 
 describe("add", () => {
-  it("prints not yet implemented", () => {
-    const { stdout, status } = run("add", "badge");
-    expect(status).toBe(0);
-    expect(stdout).toContain("not yet implemented");
+  // `add` was a no-op that printed "not yet implemented" and exited 0, so no script could
+  // detect it had done nothing. It is unregistered until the real feature lands.
+  it("is rejected as an unknown command with a non-zero exit", () => {
+    const { output, status } = run("add", "badge");
+    expect(status).not.toBe(0);
+    expect(output).toContain("Unknown command");
+    expect(output).not.toContain("not yet implemented");
   });
 });

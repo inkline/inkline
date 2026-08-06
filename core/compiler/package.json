@@ -14,7 +14,8 @@
     "directory": "core/compiler"
   },
   "files": [
-    "dist"
+    "dist",
+    "src/__fixtures__"
   ],
   "type": "module",
   "sideEffects": false,
@@ -22,6 +23,18 @@
     ".": {
       "types": "./dist/index.d.mts",
       "default": "./dist/index.mjs"
+    },
+    "./ir": {
+      "types": "./dist/ir.d.mts",
+      "default": "./dist/ir.mjs"
+    },
+    "./codegen": {
+      "types": "./dist/codegen.d.mts",
+      "default": "./dist/codegen.mjs"
+    },
+    "./testing": {
+      "types": "./dist/testing.d.mts",
+      "default": "./dist/testing.mjs"
     },
     "./package.json": "./package.json"
   },
@@ -69,6 +82,49 @@
     "vue-eslint-parser": "catalog:"
   },
   "peerDependencies": {
-    "typescript": ">=5.4 <8"
+    "@vue/server-renderer": ">=3.4",
+    "eslint": ">=9",
+    "oxlint": ">=1",
+    "react": ">=18",
+    "react-dom": ">=18",
+    "solid-js": ">=1.8",
+    "svelte": ">=5",
+    "tinybench": ">=6",
+    "typescript": ">=5.4 <8",
+    "vue": ">=3.4"
+  },
+  "peerDependenciesMeta": {
+    "@vue/server-renderer": {
+      "optional": true
+    },
+    "eslint": {
+      "optional": true
+    },
+    "oxlint": {
+      "optional": true
+    },
+    "react": {
+      "optional": true
+    },
+    "react-dom": {
+      "optional": true
+    },
+    "solid-js": {
+      "optional": true
+    },
+    "svelte": {
+      "optional": true
+    },
+    "tinybench": {
+      "optional": true
+    },
+    "vue": {
+      "optional": true
+    }
+  },
+  "inkline": {
+    "unstableExports": [
+      "./codegen"
+    ]
   }
 }

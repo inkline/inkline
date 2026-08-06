@@ -14,6 +14,16 @@ export const EXIT_USAGE_ERROR = 2;
  * is only shown under `--verbose`. Returns `false` when the error is something else, so callers
  * rethrow rather than swallow a real crash.
  */
+/**
+ * Stop the command after `loadInklineConfig` reported a config it cannot consume. The per-field
+ * diagnostics are already on stderr; this is the line that says the run ended because of them,
+ * which a list of diagnostics on its own does not.
+ */
+export function reportUnusableConfig(): void {
+  console.error("Error: the configuration is unusable, see the diagnostics above.");
+  process.exitCode = EXIT_USAGE_ERROR;
+}
+
 export function reportConfigError(error: unknown, verbose: boolean): boolean {
   if (!isInklineConfigError(error)) return false;
 

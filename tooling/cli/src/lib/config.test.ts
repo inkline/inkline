@@ -11,32 +11,36 @@ afterEach(() => {
   } catch {}
 });
 
+function writeConfig(source: string): string {
+  mkdirSync(TMP, { recursive: true });
+  const configPath = resolve(TMP, "inkline.config.mjs");
+  writeFileSync(configPath, source, "utf-8");
+  return configPath;
+}
+
 describe("loadInklineConfig", () => {
   it("returns empty object when no config file exists", async () => {
-    expect(await loadInklineConfig()).toEqual({});
+    expect(await loadInklineConfig()).toEqual({ config: {}, valid: true });
   });
 
   it("loads config from explicit path", async () => {
-    mkdirSync(TMP, { recursive: true });
-    const configPath = resolve(TMP, "inkline.config.mjs");
-    writeFileSync(configPath, `export default { targets: ["react"] };\n`, "utf-8");
-    const config = await loadInklineConfig(configPath);
+    const configPath = writeConfig(`export default { targets: ["react"] };\n`);
+    const { config, valid } = await loadInklineConfig(configPath);
     expect(config.targets).toEqual(["react"]);
+    expect(valid).toBe(true);
   });
 
   it("warns on an unrecognised key and keeps the config", async () => {
-    mkdirSync(TMP, { recursive: true });
-    const configPath = resolve(TMP, "inkline.config.mjs");
-    writeFileSync(
-      configPath,
+    const configPath = writeConfig(
       `export default { targets: ["react"], sourceMaps: "inline" };\n`,
-      "utf-8",
     );
     const spy = vi.spyOn(console, "warn").mockImplementation(() => {});
 
-    const config = await loadInklineConfig(configPath);
+    const { config, valid } = await loadInklineConfig(configPath);
 
     expect(config.targets).toEqual(["react"]);
+    // An unknown key is ignored, not consumed — it never makes the config unusable.
+    expect(valid).toBe(true);
     expect(spy).toHaveBeenCalledTimes(1);
     const message = spy.mock.calls[0]![0] as string;
     expect(message).toContain("INK0082");
@@ -49,41 +53,60 @@ describe("loadInklineConfig", () => {
     spy.mockRestore();
   });
 
-  it("warns on a wrong value type, keeps the config, and does not throw", async () => {
-    mkdirSync(TMP, { recursive: true });
-    const configPath = resolve(TMP, "inkline.config.mjs");
-    writeFileSync(configPath, `export default { targets: ["react"], verbose: "yes" };\n`, "utf-8");
-    const spy = vi.spyOn(console, "warn").mockImplementation(() => {});
+  it("reports a wrong value type as an error and marks the config unusable", async () => {
+    const configPath = writeConfig(`export default { targets: ["react"], verbose: "yes" };\n`);
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const error = vi.spyOn(console, "error").mockImplementation(() => {});
 
-    const config = await loadInklineConfig(configPath);
+    const { config, valid } = await loadInklineConfig(configPath);
 
+    // The config is still returned as loaded — nothing is rewritten — but the caller is told not to
+    // consume it.
     expect(config.verbose).toBe("yes");
-    expect(spy).toHaveBeenCalledTimes(1);
-    const message = spy.mock.calls[0]![0] as string;
+    expect(valid).toBe(false);
+    expect(warn).not.toHaveBeenCalled();
+    expect(error).toHaveBeenCalledTimes(1);
+    const message = error.mock.calls[0]![0] as string;
     expect(message).toContain("INK0083");
-    expect(message).toContain("warning");
+    expect(message).toContain("error");
     expect(message).toContain("verbose");
-    expect(process.exitCode).toBeFalsy();
 
-    spy.mockRestore();
+    warn.mockRestore();
+    error.mockRestore();
+  });
+
+  it("reports an unknown key and a wrong value type in one load", async () => {
+    const configPath = writeConfig(`export default { sourceMaps: "inline", targets: "react" };\n`);
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+    const error = vi.spyOn(console, "error").mockImplementation(() => {});
+
+    const { valid } = await loadInklineConfig(configPath);
+
+    expect(valid).toBe(false);
+    expect(warn).toHaveBeenCalledTimes(1);
+    expect(error).toHaveBeenCalledTimes(1);
+
+    warn.mockRestore();
+    error.mockRestore();
   });
 
   it("warns nothing for a valid config", async () => {
-    mkdirSync(TMP, { recursive: true });
-    const configPath = resolve(TMP, "inkline.config.mjs");
-    writeFileSync(configPath, `export default { targets: ["react"], outDir: "dist" };\n`, "utf-8");
+    const configPath = writeConfig(`export default { targets: ["react"], outDir: "dist" };\n`);
     const spy = vi.spyOn(console, "warn").mockImplementation(() => {});
 
-    await loadInklineConfig(configPath);
+    const { valid } = await loadInklineConfig(configPath);
 
+    expect(valid).toBe(true);
     expect(spy).not.toHaveBeenCalled();
     spy.mockRestore();
   });
 
   it("logs error and returns empty on failure", async () => {
     const spy = vi.spyOn(console, "error").mockImplementation(() => {});
-    const config = await loadInklineConfig("/nonexistent/inkline.config.ts");
+    const { config, valid } = await loadInklineConfig("/nonexistent/inkline.config.ts");
+    // Defaults are consumable, so a failed load is not the unusable-config case.
     expect(config).toEqual({});
+    expect(valid).toBe(true);
     spy.mockRestore();
   });
 });
