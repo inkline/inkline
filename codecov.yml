@@ -15,5 +15,17 @@
 # failing on unreachable compile-source lines. The real coverage threshold still
 # applies to normal `.ts`/`.tsx` source and to the local `vp test --coverage`
 # run.
+# Build/codegen scripts are developer tooling, not shipped source, and they enter the report
+# backwards: a script is only measured once a test imports it, so it is precisely the scripts whose
+# logic *is* unit-tested that drag their untestable `main()` argv dispatch and module-entry guard
+# into the denominator. `core/compiler/scripts/gen-aria-attributes.ts` is the live case — its
+# derivation logic is exported and covered, but the file still reports 60% (18/30 statements)
+# because `main()` cannot be meaningfully unit-tested, and that alone moved `codecov/patch` on
+# PR #562 from passing to 88% against a 94.98% target. `core/core` and `core/plugin` already get
+# this for free via `coverage.include: ["src/**/*.ts"]` in their vite configs; excluding here rather
+# than adding that include to `core/compiler` keeps the carve-out to build tooling, because setting
+# `include` there also pulls three uncovered *shipped* source files into the report and would hide a
+# real gap behind a config change (see UXF-136).
 ignore:
   - "**/*.ink.tsx"
+  - "**/scripts/**"
