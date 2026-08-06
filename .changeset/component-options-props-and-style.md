@@ -23,5 +23,6 @@ The constructor-to-type table matches the compiler's (`String`/`Number`/`Boolean
 
 The parser prefers `options.props` over the setup parameter's annotation, so declaring both would
 compile clean while emitting the options props and ignoring the annotation. The annotated-parameter
-overload now carries `props?: never`, rejecting that pairing at the type level. Options objects
-without a `props` map — the only form in use today — keep a typed setup parameter unchanged.
+overload now carries `props?: never`, so an annotation that _disagrees_ with the map is a type error
+instead. One that agrees still compiles, through the inferring overload. Options objects without a
+`props` map — the only form in use today — keep a typed setup parameter unchanged.

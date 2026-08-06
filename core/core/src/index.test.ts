@@ -71,6 +71,36 @@ describe("defineComponent", () => {
     );
     expect(Component({ size: 2, count: 1 })).toEqual([undefined, 2, 1, undefined]);
   });
+
+  // Negative guards for the two type-level rules this file's positive block cannot express.
+  // `@ts-expect-error` is itself the assertion: if either rule is widened away, the directive stops
+  // suppressing anything and `tsc` reports TS2578 ("unused '@ts-expect-error' directive"), so the
+  // regression turns CI red instead of passing silently. Each directive must sit immediately before
+  // the *argument* it covers — on the call line it does not span where the error is reported.
+  it("rejects a props map paired with a mismatched setup annotation", () => {
+    // The parser prefers `options.props` over the setup parameter's annotation, so this pairing
+    // would emit `color`/`size` while the body reads `totallyUnrelated`. `props?: never` on the
+    // annotated-parameter overload is what forbids it.
+    const Mismatch = defineComponent(
+      // @ts-expect-error - an options `props` map must not be paired with an annotated setup parameter
+      { props: { color: "blue", size: Number } },
+      (props: { totallyUnrelated: boolean }) => props.totallyUnrelated,
+    );
+    // Type-level only: with the error suppressed, resolution falls through to the inferring
+    // overload, so `Mismatch` is typed from the `props` map rather than the annotation.
+    expect(typeof Mismatch).toBe("function");
+  });
+
+  it("types a full shape carrying neither `type` nor `default` as `unknown`", () => {
+    const Component = defineComponent({ props: { x: { required: true } } }, (props) => {
+      // The compiler emits `x` untyped, so `unknown` is the honest authoring type. Without the
+      // narrowed arm in `PropValue`, `props.x` would be the declaration object `{ required: true }`.
+      // @ts-expect-error - `unknown` must not be assignable to a concrete type
+      const wrong: { required: true } = props.x;
+      return wrong;
+    });
+    expect(Component({ x: 1 })).toBe(1);
+  });
 });
 
 describe("createSignal", () => {
