@@ -31,6 +31,14 @@ export { default as IRadioGroupBase } from "./radio/headless/IRadioGroupBase.ink
 export { default as IRadioBase } from "./radio/headless/IRadioBase.ink.tsx";
 export { default as IRadioFieldBase } from "./radio/headless/IRadioFieldBase.ink.tsx";
 
+// Select ships as a single styled component (ISelect) that composes every headless part. The
+// headless parts remain individually exported for advanced/custom composition.
+export { default as ISelect } from "./select/styled/ISelect.ink.tsx";
+export { default as ISelectBase } from "./select/headless/ISelectBase.ink.tsx";
+export { default as ISelectTriggerBase } from "./select/headless/ISelectTriggerBase.ink.tsx";
+export { default as ISelectListboxBase } from "./select/headless/ISelectListboxBase.ink.tsx";
+export { default as ISelectOptionBase } from "./select/headless/ISelectOptionBase.ink.tsx";
+
 // Switch ships as a single styled component (ISwitch) that composes every headless part. The
 // headless parts remain individually exported for advanced/custom composition.
 export { default as ISwitch } from "./switch/styled/ISwitch.ink.tsx";

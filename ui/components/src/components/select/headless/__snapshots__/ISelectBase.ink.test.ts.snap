@@ -1,0 +1,109 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SelectBase > output matches snapshots 1`] = `
+{
+  "angular/ISelectBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface SelectBaseProps {
+  /** Id of the select container element. */
+  id?: string;
+}
+@Component({ standalone: true, selector: 'ink-select-base', host: { style: 'display: contents' }, template: \`<div [class]="'select-container' + (klass() ? ' ' + klass() : '')" [attr.id]="(id()) ?? null">
+<ng-content></ng-content>
+</div>\` })
+export class ISelectBaseComponent
+{
+klass = input<string>()
+id = input<string>()
+}
+@Component({ standalone: true, selector: 'div[ink-select-base]', host: { '[class]': "'select-container' + (klass() ? ' ' + klass() : '')", '[attr.id]': "(id()) ?? null" }, template: \`<ng-content></ng-content>\` })
+export class ISelectBaseHostComponent
+{
+klass = input<string>()
+id = input<string>()
+}
+",
+  "astro/ISelectBase.astro": "---
+export interface SelectBaseProps {
+  /** Id of the select container element. */
+  id?: string;
+}
+type Props = SelectBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { id, ...__attrs } = props;
+---
+<div {...__attrs} class={["select-container", __attrs.class].filter(Boolean).join(" ")} id={id}>
+<slot />
+</div>
+",
+  "qwik/ISelectBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface SelectBaseProps {
+  /** Id of the select container element. */
+  id?: string;
+}
+export const ISelectBase = component$((props: SelectBaseProps & Record<string, any>) =>
+{
+const { children, id, ...__attrs } = props
+return (
+<div {...__attrs} class={["select-container", props.class].filter(Boolean).join(" ")} id={props.id}>
+  <Slot />
+</div>
+)
+});
+",
+  "react/ISelectBase.tsx": "export interface SelectBaseProps {
+  /** Id of the select container element. */
+  id?: string;
+}
+export function ISelectBase(props: SelectBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, id, ...__attrs } = props
+return (
+<div {...__attrs} className={["select-container", props.className].filter(Boolean).join(" ")} id={props.id}>
+  {props.children}
+</div>
+)
+}
+",
+  "solid/ISelectBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface SelectBaseProps {
+  /** Id of the select container element. */
+  id?: string;
+}
+export default function ISelectBase(props: SelectBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children", "id"])
+return (
+<div {...__attrs} class={["select-container", props.class].filter(Boolean).join(" ")} id={props.id}>
+  {props.children}
+</div>
+)
+}
+",
+  "svelte/ISelectBase.svelte": "<script lang="ts">
+  export interface SelectBaseProps {
+    /** Id of the select container element. */
+    id?: string;
+  }
+  import type { Snippet } from "svelte";
+  let { id, children, ...__attrs }: SelectBaseProps & { children?: Snippet } & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={["select-container", __attrs.class].filter(Boolean).join(" ")} id={id}>
+  {@render children?.()}
+</div>
+",
+  "vue/ISelectBase.vue": "<script setup lang="ts">
+  export interface SelectBaseProps {
+    /** Id of the select container element. */
+    id?: string;
+  }
+  const props = defineProps<SelectBaseProps>()
+</script>
+<template>
+<div class="select-container" :id="id">
+  <slot />
+</div>
+</template>
+",
+}
+`;
