@@ -120,6 +120,46 @@ describe("formatDiagnostic source frame", () => {
     expect(msg).not.toContain("^^^^^^^^^^^^^");
   });
 
+  it("marks the clamp with a continuation line when the span ends on the next line", () => {
+    const multi = ["<Show>", "</Show>", ""].join("\n");
+    const loc = { ...locOf(multi, "<Show>"), length: multi.indexOf("</Show>") + 7 };
+
+    const msg = formatDiagnostic(makeDiag({ loc }), { source: multi });
+
+    expect(msg).toContain("\n  1 | <Show>\n    | ^^^^^^\n    | ...");
+  });
+
+  it("marks the clamp with a single continuation line when the span crosses several lines", () => {
+    const multi = ["  <Transition>", "    <For each={x} />", "    <Show />", "  </Transition>", ""];
+    const source = multi.join("\n");
+    const loc = { ...locOf(source, "<Transition>"), length: source.trimEnd().length - 2 };
+
+    const msg = formatDiagnostic(makeDiag({ loc }), { source });
+
+    // One marker, aligned with the caret run — not one per elided line.
+    expect(msg).toContain("\n  1 |   <Transition>\n    |   ^^^^^^^^^^^^\n    |   ...");
+    expect(msg.match(/\.\.\./g)).toHaveLength(1);
+  });
+
+  it("omits the continuation line for a span ending exactly at the line boundary", () => {
+    const multi = ["<Transition>", "  <For each={x} />", ""].join("\n");
+    const loc = locOf(multi, "<Transition>");
+
+    const msg = formatDiagnostic(makeDiag({ loc }), { source: multi });
+
+    expect(msg).toContain("\n  1 | <Transition>\n    | ^^^^^^^^^^^^");
+    expect(msg).not.toContain("...");
+  });
+
+  it("omits the continuation line when an overlong span has no next line to continue into", () => {
+    const eof = "const a = 1;";
+    const loc = { file: "a.ts", line: 1, column: 1, offset: 0, length: 999 };
+
+    const msg = formatDiagnostic(makeDiag({ loc }), { source: eof });
+
+    expect(msg).not.toContain("...");
+  });
+
   it("renders a single caret for a zero-length span", () => {
     const loc = { ...locOf(source, "<Show>"), length: 0 };
     const msg = formatDiagnostic(makeDiag({ loc }), { source });
