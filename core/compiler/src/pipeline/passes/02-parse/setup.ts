@@ -39,13 +39,48 @@ function isCallTo(expr: ts.Expression, name: string | undefined): expr is ts.Cal
 }
 
 /**
+ * The members of `defineEmits<T>()`'s type argument, or `undefined` when the compiler cannot read
+ * them statically.
+ *
+ * A named reference is resolved through the checker, but only as far as a declaration in the same
+ * file: each member's type node is kept verbatim as {@link IREventDeclaration.payloadType} and
+ * emitted into the generated component, where a type declared in another module is not in scope.
+ */
+function emitTypeMembers(
+  typeArg: ts.TypeNode,
+  sourceFile: ts.SourceFile,
+  checker: ts.TypeChecker,
+): readonly ts.TypeElement[] | undefined {
+  if (ts.isTypeLiteralNode(typeArg)) return typeArg.members;
+  // A generic instantiation (`Events<string>`) names a declaration whose members are the
+  // uninstantiated ones, so reading them verbatim would be wrong rather than merely incomplete.
+  if (!ts.isTypeReferenceNode(typeArg) || typeArg.typeArguments) return undefined;
+
+  let symbol = checker.getSymbolAtLocation(typeArg.typeName);
+  if (symbol && symbol.flags & ts.SymbolFlags.Alias) symbol = checker.getAliasedSymbol(symbol);
+
+  for (const decl of symbol?.declarations ?? []) {
+    if (decl.getSourceFile() !== sourceFile) continue;
+    if (ts.isTypeAliasDeclaration(decl) && ts.isTypeLiteralNode(decl.type))
+      return decl.type.members;
+    if (ts.isInterfaceDeclaration(decl)) return decl.members;
+  }
+  return undefined;
+}
+
+/**
  * Events declared by `defineEmits(["a","b"])` or `defineEmits<{ a: [...]; b: [...] }>()`.
  *
  * The type-argument form also carries each event's payload: the member type is the tuple of the
  * arguments `emit(name, …)` takes, so it is kept verbatim as {@link IREventDeclaration.payloadType}
  * for targets to lower. The runtime array form declares names only and stays untyped.
  */
-function declaredEmits(call: ts.CallExpression): { name: string; payloadType?: ts.TypeNode }[] {
+function declaredEmits(
+  call: ts.CallExpression,
+  sourceFile: ts.SourceFile,
+  checker: ts.TypeChecker,
+  ctx: PassContext,
+): { name: string; payloadType?: ts.TypeNode }[] {
   const declared: { name: string; payloadType?: ts.TypeNode }[] = [];
   const arg = call.arguments[0];
   if (arg && ts.isArrayLiteralExpression(arg)) {
@@ -54,8 +89,13 @@ function declaredEmits(call: ts.CallExpression): { name: string; payloadType?: t
     }
   }
   const typeArg = call.typeArguments?.[0];
-  if (typeArg && ts.isTypeLiteralNode(typeArg)) {
-    for (const member of typeArg.members) {
+  if (typeArg) {
+    const members = emitTypeMembers(typeArg, sourceFile, checker);
+    if (!members) {
+      ctx.diagnostics.push("INK0042", toLoc(typeArg, sourceFile));
+      return declared;
+    }
+    for (const member of members) {
       if (member.name && (ts.isIdentifier(member.name) || ts.isStringLiteral(member.name))) {
         const payloadType = ts.isPropertySignature(member) ? member.type : undefined;
         declared.push({ name: member.name.text, payloadType });
@@ -63,6 +103,31 @@ function declaredEmits(call: ts.CallExpression): { name: string; payloadType?: t
     }
   }
   return declared;
+}
+
+/**
+ * `<Slot>` is lowered from the component's render tree, so one reached only through a helper
+ * function or an effect body declares no slot and survives into the output verbatim. Refuse it —
+ * see INK0069.
+ */
+function reportSlotsOutsideRender(
+  body: ts.Block,
+  renderExpr: ts.Expression | undefined,
+  sourceFile: ts.SourceFile,
+  ctx: PassContext,
+): void {
+  const visit = (node: ts.Node): void => {
+    if (node === renderExpr) return;
+    if (
+      (ts.isJsxSelfClosingElement(node) || ts.isJsxOpeningElement(node)) &&
+      ts.isIdentifier(node.tagName) &&
+      node.tagName.text === "Slot"
+    ) {
+      ctx.diagnostics.push("INK0069", toLoc(node, sourceFile));
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(body);
 }
 
 function makeExprNode(expr: ts.Expression, sf: ts.SourceFile): IRExprNode {
@@ -301,7 +366,7 @@ export function parseSetup(
         if (isCallTo(init, emitsLocal)) {
           // const emit = defineEmits(["change"]) / defineEmits<{ change: [v: string] }>()
           if (ts.isIdentifier(decl.name)) emitName = decl.name.text;
-          for (const { name, payloadType } of declaredEmits(init)) {
+          for (const { name, payloadType } of declaredEmits(init, sourceFile, checker, ctx)) {
             events.push({ name, payloadType, loc: toLoc(decl, sourceFile) });
           }
           continue;
@@ -544,6 +609,10 @@ export function parseSetup(
     }
 
     setup.push({ stmt, defines: setupDeclaredNames(stmt), loc });
+  }
+
+  if (ts.isBlock(setupFn.body)) {
+    reportSlotsOutsideRender(setupFn.body, renderExpr, sourceFile, ctx);
   }
 
   return {

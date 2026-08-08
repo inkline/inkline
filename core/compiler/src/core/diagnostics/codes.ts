@@ -21,6 +21,17 @@ export const DIAGNOSTICS = {
     help: "Move dynamic options into the setup body" as const,
     url: "https://docs.inkline.dev/diagnostics/INK0041" as const,
   },
+  // The type argument is the only declaration of a component's events, and each member's type node
+  // is emitted verbatim into the generated component. A reference the compiler cannot read members
+  // from — or one whose members live in another module, and so are not in scope where they land —
+  // would compile to a component with zero events while the author's `emit("close")` calls survive
+  // as reads of a prop nothing declares. Refusing is the only honest option.
+  INK0042: {
+    severity: "error" as const,
+    title: "defineEmits type argument must resolve to an object type in this file" as const,
+    help: "Write the members inline — defineEmits<{ close: [] }>() — or reference a type alias or interface declared in the same file. A union, a generic instantiation, or a type imported from another module cannot be read at build time, and every event it declares would be dropped from the output." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0042" as const,
+  },
   INK0043: {
     severity: "error" as const,
     title: "defineModel must be a [getter, setter] tuple with a static name" as const,
@@ -126,6 +137,16 @@ export const DIAGNOSTICS = {
       "hasSlot() always returns true on the Qwik and Angular targets, which have no runtime slot-presence API" as const,
     help: "Gated content always renders there. Pair hasSlot with a CSS `:empty` rule so the empty wrapper collapses." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0068" as const,
+  },
+  // Slot placeholders are lowered from the component's render tree, so a `<Slot>` reached only
+  // through a helper function or an effect body declares no slot — and the element survives into the
+  // output verbatim, against a `Slot` the target never imports. Resolving it properly means inlining
+  // arbitrary functions; refusing costs the author one edit.
+  INK0069: {
+    severity: "error" as const,
+    title: "<Slot> must appear in the component's render output" as const,
+    help: 'Move the <Slot> into what the setup function returns. A <Slot> nested in a helper function or an effect is never reached, so it declares no slot and is emitted as an undefined element. To keep the markup factored out, declare the slot with const icon = defineSlot("icon") and render that value from the return instead.' as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0069" as const,
   },
   INK0070: {
     severity: "error" as const,
