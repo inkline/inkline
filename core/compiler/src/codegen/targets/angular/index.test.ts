@@ -21,6 +21,7 @@ import {
   makeComp,
   makeCtxWithExternalImport,
   mockExpr,
+  mockType,
   propsLabelDisabled,
   richComp,
   runInvariants,
@@ -506,6 +507,50 @@ describe("Angular additional branch coverage", () => {
     });
     const code = emitCode(makeComp("Page", ci));
     expect(code).toContain("(valueChange)=");
+  });
+
+  // An Angular `output<T>` carries exactly one value, so a multi-value payload tuple stays a tuple
+  // and the emit call packs its arguments to match — dropping them would lose data silently.
+  it("packs a multi-value emit into the tuple its output is typed with", () => {
+    const el = createElement({
+      tag: "button",
+      events: [
+        {
+          name: "click",
+          handler: createExpr({ expr: mockExpr(`() => emit("move", x, y)`) }),
+          loc,
+        },
+      ],
+    });
+    const code = emitCode(
+      makeComp("Mover", el, {
+        emitName: "emit",
+        events: [{ name: "move", payloadType: mockType("[a: string, b: number]"), loc }],
+      }),
+    );
+    expect(code).toContain("move = output<[a: string, b: number]>()");
+    expect(code).toContain("move.emit([x, y])");
+  });
+
+  it("types a valueless event as output<void>() and leaves its emit argument-free", () => {
+    const el = createElement({
+      tag: "button",
+      events: [
+        {
+          name: "click",
+          handler: createExpr({ expr: mockExpr(`() => emit("submit")`) }),
+          loc,
+        },
+      ],
+    });
+    const code = emitCode(
+      makeComp("Form", el, {
+        emitName: "emit",
+        events: [{ name: "submit", payloadType: mockType("[]"), loc }],
+      }),
+    );
+    expect(code).toContain("submit = output<void>()");
+    expect(code).toContain("submit.emit()");
   });
 
   it("self-closes a void element that has no attributes", () => {

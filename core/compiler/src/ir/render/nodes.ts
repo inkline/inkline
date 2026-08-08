@@ -247,6 +247,12 @@ export interface IRSlotDeclaration {
 
 export interface IREventDeclaration {
   readonly name: string;
+  /**
+   * The declared payload as an argument **tuple** — `defineEmits<{ change: [value: string] }>()`
+   * stores the `[value: string]` node, mirroring the arguments `emit("change", …)` takes. Absent for
+   * the runtime array form (`defineEmits(["change"])`) and for the options-API `events` object,
+   * which declare names only. Targets lower it themselves (see `payloadTupleElements`).
+   */
   readonly payloadType?: ts.TypeNode;
   readonly loc: SourceLocation;
 }

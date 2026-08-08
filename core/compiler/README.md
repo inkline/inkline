@@ -249,6 +249,14 @@ export default defineComponent(() => {
 Qwik, a `defineEmits`/`emit` pair in Vue, a callback prop in Svelte, and `this.change.emit(x)` from an
 `@Output()` in Angular. (Custom events are inert on the static Astro target — diagnostic `INK0045`.)
 
+The declared payload tuple is the arguments `emit` takes, and it carries through to each target's event
+channel: the callback prop becomes `onChange?: (value: string) => void`, Vue re-declares the same shape
+in its own `defineEmits<…>()`. Angular is the exception, because an `output<T>` carries exactly one
+value — so a single-value tuple unwraps (`change = output<string>()`), an empty one becomes
+`output<void>()`, and a multi-value tuple stays a tuple with the emit call packing its arguments
+(`emit("move", x, y)` → `this.move.emit([x, y])`). Declaring events with the runtime array form
+(`defineEmits(["change"])`) leaves them untyped.
+
 ### Slots
 
 A component declares its slots in the options object and renders them with the `<Slot>` component

@@ -20,9 +20,10 @@ describe("ModelInput: defineModel macro", () => {
 });
 
 describe("EmitButton: defineEmits", () => {
-  it("declares defineEmits and keeps the emit call", async () => {
+  it("declares a payload-typed defineEmits and keeps the emit call", async () => {
     const out = await compileTo("EmitButton", "vue");
-    expect(out).toContain('const emit = defineEmits(["press"])');
+    // Vue's macro takes the same shape the authoring API does, so the declaration carries over.
+    expect(out).toContain("const emit = defineEmits<{ press: [count: number] }>()");
     expect(out).toContain(`emit("press", 1)`);
   });
 });

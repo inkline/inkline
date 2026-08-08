@@ -199,7 +199,7 @@ return (
 `;
 
 exports[`react full output snapshots > EmitButton 1`] = `
-"export function EmitButton(props: { onPress?: (...args: any[]) => void } & React.HTMLAttributes<HTMLElement>)
+"export function EmitButton(props: { onPress?: (count: number) => void } & React.HTMLAttributes<HTMLElement>)
 {
 const { onPress, ...__attrs } = props
 return (

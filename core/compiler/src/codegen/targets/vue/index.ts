@@ -23,6 +23,7 @@ import {
   extractKeyBody,
   reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
+import { vueEmitsTypeArgument } from "../../shared/event-payload.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { setupLocalEmits } from "../../shared/setup-locals.ts";
 import { childrenArePhrasing } from "../../shared/phrasing.ts";
@@ -440,9 +441,13 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   }
 
   // `defineEmits` (a Vue macro) declares the component's custom events; `emit(…)` calls pass through.
+  // Declared payload tuples carry over as the macro's type argument (Vue takes the same shape the
+  // authoring API does); the runtime array form is the fallback when any event is untyped.
   if (component.emitName) {
+    const typeArg = vueEmitsTypeArgument(component.events);
     const names = component.events.map((e) => JSON.stringify(e.name)).join(", ");
-    scriptBody.unshift(cStmt({ body: `const ${component.emitName} = defineEmits([${names}])` }));
+    const macro = typeArg ? `defineEmits<${typeArg}>()` : `defineEmits([${names}])`;
+    scriptBody.unshift(cStmt({ body: `const ${component.emitName} = ${macro}` }));
   }
 
   // ── Module-level context definitions (non-setup <script>) ─────────
