@@ -1,0 +1,6 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nuxtjs",
+  "installCommand": "cd ../.. && pnpm install --frozen-lockfile --filter website...",
+  "buildCommand": "cd ../.. && NITRO_PRESET=vercel_static pnpm --filter website run generate"
+}
