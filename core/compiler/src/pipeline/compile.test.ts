@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { compile } from "./compile.ts";
 import type { Plugin } from "../plugin/types.ts";
-import type { GeneratedFile, Target } from "../codegen/context.ts";
+import { ALL_TARGETS, type GeneratedFile, type Target } from "../codegen/context.ts";
 import { createRegistry } from "../codegen/registry.ts";
 import { InklineConfigError } from "../core/diagnostics/error.ts";
 import { UNKNOWN_LOCATION } from "../ir/types.ts";
@@ -875,5 +875,85 @@ describe("named type imports from .ink files", () => {
       );
       expect(main!.contents, `${target} should not contain .ink`).not.toMatch(/\.ink[."']/);
     }
+  });
+});
+
+// `options.models` is a type-only channel: it teaches a parent's checker what `defineModel` creates
+// and nothing else. Nothing downstream of P4 may start reading it, so the guarantee is asserted the
+// only way that cannot rot — compile the same body twice, once with the key and once without, and
+// require byte-identical output on every target.
+describe("options.models is emit-invariant", () => {
+  const body = `() => {
+      const [open, setOpen] = defineModel<boolean>("open");
+      return <button type="button" onClick={() => setOpen(!open())}>{open() ? "on" : "off"}</button>;
+    }`;
+  const sourceFor = (options: string): string => `
+    import { defineComponent, defineModel } from "@inkline/core";
+    export default defineComponent(${options}${body});
+  `;
+
+  it("emits byte-identical files with and without the key on every target", async () => {
+    const withKey = await compile(
+      { fileName: "T.ink.tsx", source: sourceFor(`{ models: { open: Boolean } }, `) },
+      { targets: ALL_TARGETS },
+    );
+    const without = await compile(
+      { fileName: "T.ink.tsx", source: sourceFor("") },
+      { targets: ALL_TARGETS },
+    );
+
+    for (const target of ALL_TARGETS) {
+      const a = withKey.files[target]!;
+      const b = without.files[target]!;
+      expect(a.length, `${target} file count`).toBe(b.length);
+      for (const [i, file] of a.entries()) {
+        expect(file.path, `${target} file ${i} path`).toBe(b[i]!.path);
+        expect(file.contents, `${target} file ${i} contents`).toBe(b[i]!.contents);
+      }
+    }
+  });
+
+  it("an agreeing declaration adds no diagnostics", async () => {
+    const result = await compile(
+      { fileName: "T.ink.tsx", source: sourceFor(`{ models: { open: Boolean } }, `) },
+      { targets: ["react"] },
+    );
+    expect(result.diagnostics.map((d) => d.code)).not.toContain("INK0094");
+  });
+
+  it("reports INK0094 on drift without changing what is emitted", async () => {
+    const drifted = await compile(
+      {
+        fileName: "T.ink.tsx",
+        source: sourceFor(`{ models: { open: Boolean, expanded: Boolean } }, `),
+      },
+      { targets: ["react"] },
+    );
+    const clean = await compile(
+      { fileName: "T.ink.tsx", source: sourceFor("") },
+      {
+        targets: ["react"],
+      },
+    );
+
+    expect(drifted.diagnostics.map((d) => d.code)).toContain("INK0094");
+    expect(drifted.files.react![0]!.contents).toBe(clean.files.react![0]!.contents);
+  });
+
+  it("leaves INK0044 alone — a prop collision still reports, and only once", async () => {
+    const source = `
+      import { defineComponent, defineModel } from "@inkline/core";
+      export default defineComponent(
+        { models: { value: String } },
+        (props: { value?: string }) => {
+          const [value, setValue] = defineModel<string>("value");
+          return <input value={value()} onInput={() => setValue(props.value ?? "")} />;
+        },
+      );
+    `;
+    const result = await compile({ fileName: "T.ink.tsx", source }, { targets: ["react"] });
+    const codes = result.diagnostics.map((d) => d.code);
+    expect(codes.filter((c) => c === "INK0044")).toHaveLength(1);
+    expect(codes).not.toContain("INK0094");
   });
 });

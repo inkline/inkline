@@ -5,6 +5,7 @@ import {
   diagnoseCycles,
   validateAttrFallthrough,
   validateComponent,
+  validateDeclaredModels,
   validateSetupLocals,
 } from "./validate.ts";
 
@@ -26,6 +27,7 @@ export const analyzePass: Pass<IRModule, AnalyzedModule> = {
       validateComponent(component, ctx);
       validateAttrFallthrough(component, localComponents, ctx);
       validateSetupLocals(component, ctx);
+      validateDeclaredModels(component, ctx);
       diagnoseCycles(component, graph, ctx);
     }
 
@@ -38,5 +40,6 @@ export {
   validateComponent,
   validateAttrFallthrough,
   validateSetupLocals,
+  validateDeclaredModels,
   diagnoseCycles,
 } from "./validate.ts";

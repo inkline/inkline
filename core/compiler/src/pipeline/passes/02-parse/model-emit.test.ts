@@ -76,6 +76,68 @@ describe("defineModel parsing", () => {
     );
     expect(ctx.diagnostics.freeze().some((d) => d.code === "INK0044")).toBe(true);
   });
+
+  // The type-only `models` key is parsed in the same pass as INK0044's prop-collision check and must
+  // not interact with it — the collision is still the author's problem either way.
+  it("still warns (INK0044) when the collision is also declared in options.models", async () => {
+    const ctx = makeCtx();
+    await parse(
+      `
+        import { defineComponent, defineModel } from "@inkline/core";
+        export default defineComponent(
+          { models: { value: String } },
+          (props: { value?: string }) => {
+            const [value, setValue] = defineModel<string>("value");
+            return <input value={value()} onInput={(e) => setValue(props.value ?? "")} />;
+          },
+        );
+      `,
+      ctx,
+    );
+    expect(ctx.diagnostics.freeze().some((d) => d.code === "INK0044")).toBe(true);
+  });
+});
+
+describe("options.models parsing", () => {
+  it("records the declared entries without touching component.models", async () => {
+    const comp = (
+      await parse(`
+        import { defineComponent, defineModel } from "@inkline/core";
+        export default defineComponent({ models: { open: Boolean } }, () => {
+          const [open, setOpen] = defineModel<boolean>("open");
+          return <button onClick={() => setOpen(!open())}>{open() ? "on" : "off"}</button>;
+        });
+      `)
+    ).components[0]!;
+    expect(comp.declaredModels).toEqual([
+      expect.objectContaining({ name: "open", typeText: "boolean" }),
+    ]);
+    // The setup body stays the single source every target emits from.
+    expect(comp.models.map((m) => m.propName)).toEqual(["open"]);
+  });
+
+  it("leaves declaredModels undefined when the author wrote no models key", async () => {
+    const comp = (await parse(MODEL_SOURCE)).components[0]!;
+    expect(comp.declaredModels).toBeUndefined();
+  });
+
+  it("reads the type off a full { type, … } declaration", async () => {
+    const comp = (
+      await parse(`
+        import { defineComponent, defineModel } from "@inkline/core";
+        export default defineComponent(
+          { models: { count: { type: Number, required: true } } },
+          () => {
+            const [count, setCount] = defineModel<number>("count");
+            return <button onClick={() => setCount(count() + 1)}>{count()}</button>;
+          },
+        );
+      `)
+    ).components[0]!;
+    expect(comp.declaredModels![0]).toEqual(
+      expect.objectContaining({ name: "count", typeText: "number" }),
+    );
+  });
 });
 
 describe("defineEmits parsing", () => {
