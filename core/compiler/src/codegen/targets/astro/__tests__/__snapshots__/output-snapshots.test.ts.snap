@@ -109,6 +109,16 @@ const { ...__attrs } = props;
 "
 `;
 
+exports[`astro full output snapshots > DuplicateEvent 1`] = `
+"---
+type Props = Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<button {...__attrs} id="change" onClick={() => undefined} class={__attrs.class}>Change</button>
+"
+`;
+
 exports[`astro full output snapshots > DynamicList 1`] = `
 "---
 type Props = Record<string, any>

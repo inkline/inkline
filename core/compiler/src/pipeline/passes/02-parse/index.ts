@@ -5,13 +5,14 @@ import {
   type IRComponent,
   type IRContextDefinition,
   type IREffectDeclaration,
+  type IREventDeclaration,
   type IRExprNode,
   type IRModule,
   type IRProp,
   type PrimitiveUsage,
 } from "../../../ir/render/nodes.ts";
 import { walkRenderTree } from "../../../ir/render/visit.ts";
-import type { Pass } from "../../types.ts";
+import type { Pass, PassContext } from "../../types.ts";
 import type { TsProgramArtifact } from "../01-program.ts";
 import { bindPrimitives, type BindingTable } from "./bind-primitives.ts";
 import { extractDeps, extractDepsFromFunctionBody } from "./deps.ts";
@@ -65,7 +66,7 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         }
       }
       const props = baseProps;
-      const events = [...baseEvents, ...setupResult.events];
+      const events = mergeEventDeclarations(baseEvents, setupResult.events, ctx);
 
       const slots = [...(optionsResult?.slots ?? []), ...setupResult.slotDeclarations];
 
@@ -132,6 +133,42 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
     };
   },
 };
+
+/**
+ * Merge the two places an event can be declared — the options `events` object and `defineEmits` —
+ * into one declaration per name. Concatenating them let a name declared in both emit a duplicate
+ * channel downstream (`defineEmits(["change", "change"])` on the Vue target).
+ *
+ * Precedence is **last declaration wins**, which makes `defineEmits` beat the options object since
+ * setup is parsed after options. That direction is the only lossless one: the options `events` map
+ * is `Record<string, Record<string, never>>` and declares names only, while `defineEmits<{…}>()`
+ * also carries the payload tuple that targets lower into typed signatures. The winner keeps the
+ * first declaration's **position**, so emitted event order still follows the options object's
+ * reading order. The losing declaration is reported as INK0046 (warning, like the INK0044
+ * model/prop collision above) — deduping keeps the output correct, the diagnostic tells the author
+ * which of the two to delete.
+ */
+function mergeEventDeclarations(
+  optionsEvents: readonly IREventDeclaration[],
+  setupEvents: readonly IREventDeclaration[],
+  ctx: PassContext,
+): IREventDeclaration[] {
+  const merged: IREventDeclaration[] = [];
+  const positionByName = new Map<string, number>();
+
+  for (const event of [...optionsEvents, ...setupEvents]) {
+    const position = positionByName.get(event.name);
+    if (position === undefined) {
+      positionByName.set(event.name, merged.length);
+      merged.push(event);
+      continue;
+    }
+    ctx.diagnostics.push("INK0046", merged[position]!.loc, { name: event.name });
+    merged[position] = event;
+  }
+
+  return merged;
+}
 
 function resolveDeps(
   component: IRComponent,

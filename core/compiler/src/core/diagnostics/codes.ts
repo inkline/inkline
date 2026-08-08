@@ -40,6 +40,12 @@ export const DIAGNOSTICS = {
     help: "An .astro component renders once on the server; the model value is read-only and emitted events never fire. Use a framework island for interactivity." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0045" as const,
   },
+  INK0046: {
+    severity: "warning" as const,
+    title: "Event '{name}' is declared twice" as const,
+    help: "Declare each event once. The defineEmits declaration wins, since it is the only one that can carry a payload type; remove the redundant declaration reported here." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0046" as const,
+  },
   INK0010: {
     severity: "warning" as const,
     title: "Effect has no reactive dependencies; it runs once" as const,

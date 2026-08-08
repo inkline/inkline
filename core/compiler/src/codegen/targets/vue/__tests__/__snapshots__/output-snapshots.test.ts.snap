@@ -138,6 +138,16 @@ exports[`vue full output snapshots > DefineSlotBasic 1`] = `
 "
 `;
 
+exports[`vue full output snapshots > DuplicateEvent 1`] = `
+"<script setup lang="ts">
+  const emit = defineEmits(["change", "close"])
+</script>
+<template>
+<button id="change" @click='() => emit("change", "next")'>Change</button>
+</template>
+"
+`;
+
 exports[`vue full output snapshots > DynamicList 1`] = `
 "<script setup lang="ts">
   import { ref } from "vue";

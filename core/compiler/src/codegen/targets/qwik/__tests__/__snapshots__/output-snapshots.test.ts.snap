@@ -152,6 +152,18 @@ return (
 "
 `;
 
+exports[`qwik full output snapshots > DuplicateEvent 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
+export const DuplicateEvent = component$((props: { onChange$?: QRL<(value: string) => void>; onClose$?: QRL<(...args: any[]) => void> } & Record<string, any>) =>
+{
+const { onChange$, onClose$, ...__attrs } = props
+return (
+<button {...__attrs} id="change" class={props.class} onClick$={$(() => props.onChange$?.("next"))}>Change</button>
+)
+});
+"
+`;
+
 exports[`qwik full output snapshots > DynamicList 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const DynamicList = component$((props) =>
