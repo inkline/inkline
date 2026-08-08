@@ -121,6 +121,7 @@ export const NEW_FIXTURES = [
   "SlotInConditional",
   "ModelInput",
   "EmitButton",
+  "DuplicateEvent",
   "BoundField",
   "NativeBind",
   "MultiChildSlot",

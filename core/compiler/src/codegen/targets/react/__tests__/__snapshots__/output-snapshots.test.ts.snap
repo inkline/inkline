@@ -150,6 +150,17 @@ return (
 "
 `;
 
+exports[`react full output snapshots > DuplicateEvent 1`] = `
+"export function DuplicateEvent(props: { onChange?: (value: string) => void; onClose?: (...args: any[]) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const { onChange, onClose, ...__attrs } = props
+return (
+<button {...__attrs} id="change" className={props.className} onClick={() => props.onChange?.("next")}>Change</button>
+)
+}
+"
+`;
+
 exports[`react full output snapshots > DynamicList 1`] = `
 "import { useState, Fragment } from "react";
 export function DynamicList(props: React.HTMLAttributes<HTMLElement>)
