@@ -218,8 +218,8 @@ describe("parseSetup", () => {
       expect(ctx.diagnostics.freeze().map((d) => d.code)).toEqual(["INK0042"]);
     });
 
-    // The member type nodes are emitted verbatim into the generated component, where a type from
-    // another module is not in scope — so cross-file resolution is refused, not attempted.
+    // The named declaration's members are the uninstantiated ones, so reading them verbatim would
+    // be wrong rather than merely incomplete.
     it("refuses a generic instantiation (INK0042)", () => {
       const { ctx } = parseSetupFromSource(
         `() => {
@@ -228,6 +228,34 @@ describe("parseSetup", () => {
         }`,
         `type Events<T> = { change: [value: T] };`,
       );
+      expect(ctx.diagnostics.freeze().map((d) => d.code)).toEqual(["INK0042"]);
+    });
+
+    // UXF-165 review B1: `decl.members` is an interface's *own* members, so an inherited event was
+    // dropped silently — and the same-file check never sees a `Base` that lives in another module.
+    it("refuses an interface with a heritage clause (INK0042)", () => {
+      const { result, ctx } = parseSetupFromSource(
+        `() => {
+          const emit = defineEmits<DialogEvents>();
+          return <div/>;
+        }`,
+        `interface Base { open: [] } interface DialogEvents extends Base { close: [] }`,
+      );
+      expect(result.events).toHaveLength(0);
+      expect(ctx.diagnostics.freeze().map((d) => d.code)).toEqual(["INK0042"]);
+    });
+
+    // UXF-165 review B2: declaration merging spreads the members across several declarations, and
+    // only the first one found was read.
+    it("refuses a merged interface declaration (INK0042)", () => {
+      const { result, ctx } = parseSetupFromSource(
+        `() => {
+          const emit = defineEmits<Ev>();
+          return <div/>;
+        }`,
+        `interface Ev { close: [] } interface Ev { open: [] }`,
+      );
+      expect(result.events).toHaveLength(0);
       expect(ctx.diagnostics.freeze().map((d) => d.code)).toEqual(["INK0042"]);
     });
 

@@ -40,11 +40,19 @@ function isCallTo(expr: ts.Expression, name: string | undefined): expr is ts.Cal
 
 /**
  * The members of `defineEmits<T>()`'s type argument, or `undefined` when the compiler cannot read
- * them statically.
+ * all of them from a single declaration in this file.
  *
- * A named reference is resolved through the checker, but only as far as a declaration in the same
- * file: each member's type node is kept verbatim as {@link IREventDeclaration.payloadType} and
- * emitted into the generated component, where a type declared in another module is not in scope.
+ * The boundary is "the declaration I can read completely", not "the declaration I found". Each
+ * member's type node is kept verbatim as {@link IREventDeclaration.payloadType} and emitted into the
+ * generated component, so the declaration itself must be in this file. Beyond that, anything whose
+ * full member list lives somewhere other than that one declaration's body — a heritage clause, a
+ * second merged declaration, a generic instantiation — is refused rather than partially read: a
+ * dropped member is silent all the way to the emitted file, where `emit("open")` becomes a read of
+ * a prop nothing declares.
+ *
+ * Note the constraint is on the *declaration's* file, not on the types its members reference: a
+ * member typed `[v: P]` with `P` imported is accepted, and the import is forwarded to the output by
+ * `extractExternalImports`.
  */
 function emitTypeMembers(
   typeArg: ts.TypeNode,
@@ -59,11 +67,19 @@ function emitTypeMembers(
   let symbol = checker.getSymbolAtLocation(typeArg.typeName);
   if (symbol && symbol.flags & ts.SymbolFlags.Alias) symbol = checker.getAliasedSymbol(symbol);
 
-  for (const decl of symbol?.declarations ?? []) {
+  const declarations = symbol?.declarations ?? [];
+  // Declaration merging spreads one interface's members across several declarations, and a
+  // declaration in another file is unreadable regardless of where the others live — so the count
+  // is taken over *all* of them, not just the same-file ones.
+  if (declarations.length > 1) return undefined;
+
+  for (const decl of declarations) {
     if (decl.getSourceFile() !== sourceFile) continue;
     if (ts.isTypeAliasDeclaration(decl) && ts.isTypeLiteralNode(decl.type))
       return decl.type.members;
-    if (ts.isInterfaceDeclaration(decl)) return decl.members;
+    // `interface X extends Base` declares only its own members here; `Base` may not even be in this
+    // file, and the same-file check above never sees it.
+    if (ts.isInterfaceDeclaration(decl) && !decl.heritageClauses) return decl.members;
   }
   return undefined;
 }
@@ -109,6 +125,11 @@ function declaredEmits(
  * `<Slot>` is lowered from the component's render tree, so one reached only through a helper
  * function or an effect body declares no slot and survives into the output verbatim. Refuse it —
  * see INK0069.
+ *
+ * This covers the setup body *outside* the returned expression only. Being inside `renderExpr` is
+ * necessary but not sufficient for lowering to reach a `<Slot>`, so the render expression itself is
+ * skipped here and checked after lowering by `reportUnloweredSlots`, which can tell reached from
+ * merely present.
  */
 function reportSlotsOutsideRender(
   body: ts.Block,
