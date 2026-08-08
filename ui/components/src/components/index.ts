@@ -1,3 +1,13 @@
+// Avatar ships as a single styled component (IAvatar) composing the base and its status-badge part.
+// IAvatarGroup is its own family (a stacked-avatars container). Headless parts stay individually
+// exported for advanced/custom composition.
+export { default as IAvatar } from "./avatar/styled/IAvatar.ink.tsx";
+export { default as IAvatarBase } from "./avatar/headless/IAvatarBase.ink.tsx";
+export { default as IAvatarBadgeBase } from "./avatar/headless/IAvatarBadgeBase.ink.tsx";
+
+export { default as IAvatarGroup } from "./avatar-group/styled/IAvatarGroup.ink.tsx";
+export { default as IAvatarGroupBase } from "./avatar-group/headless/IAvatarGroupBase.ink.tsx";
+
 export { default as IBadge } from "./badge/styled/IBadge.ink.tsx";
 export { default as IBadgeBase } from "./badge/headless/IBadgeBase.ink.tsx";
 

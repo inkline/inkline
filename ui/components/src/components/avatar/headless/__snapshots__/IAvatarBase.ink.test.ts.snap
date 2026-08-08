@@ -1,0 +1,201 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AvatarBase > output matches snapshots 1`] = `
+{
+  "angular/IAvatarBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface AvatarBaseProps {
+  /** Image URL. When absent, the \`label\` / default-slot fallback shows instead. */
+  src?: string;
+  /**
+   * Alternative text for the image. Empty by default (decorative — the common case when a visible
+   * username sits beside the avatar); set it when the avatar is the only representation of the user.
+   */
+  alt?: string;
+  /** Fallback text, typically initials, shown when there is no image. Overridden by the default slot. */
+  label?: string;
+  /** Renders the \`badge\` slot as a status overlay. */
+  showBadge?: boolean;
+}
+@Component({ standalone: true, selector: 'ink-avatar-base', host: { style: 'display: contents' }, template: \`<div [class]="'avatar' + (klass() ? ' ' + klass() : '')">
+@if (!!src()) {
+<img [attr.src]="(src()) ?? null" [attr.alt]="(alt() ?? '') ?? null" />
+} @else {
+<ng-content>{{ label() }}</ng-content>
+}
+@if (!!showBadge()) {
+<ng-content select="[slot=badge]"></ng-content>
+}
+</div>\` })
+export class IAvatarBaseComponent
+{
+klass = input<string>()
+src = input<string>()
+alt = input<string>()
+label = input<string>()
+showBadge = input<boolean>()
+}
+@Component({ standalone: true, selector: 'div[ink-avatar-base]', host: { '[class]': "'avatar' + (klass() ? ' ' + klass() : '')" }, template: \`@if (!!src()) {
+<img [attr.src]="(src()) ?? null" [attr.alt]="(alt() ?? '') ?? null" />
+} @else {
+<ng-content>{{ label() }}</ng-content>
+}
+@if (!!showBadge()) {
+<ng-content select="[slot=badge]"></ng-content>
+}\` })
+export class IAvatarBaseHostComponent
+{
+klass = input<string>()
+src = input<string>()
+alt = input<string>()
+label = input<string>()
+showBadge = input<boolean>()
+}
+",
+  "astro/IAvatarBase.astro": "---
+export interface AvatarBaseProps {
+  /** Image URL. When absent, the \`label\` / default-slot fallback shows instead. */
+  src?: string;
+  /**
+   * Alternative text for the image. Empty by default (decorative — the common case when a visible
+   * username sits beside the avatar); set it when the avatar is the only representation of the user.
+   */
+  alt?: string;
+  /** Fallback text, typically initials, shown when there is no image. Overridden by the default slot. */
+  label?: string;
+  /** Renders the \`badge\` slot as a status overlay. */
+  showBadge?: boolean;
+}
+type Props = AvatarBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { src, alt, label, showBadge, ...__attrs } = props;
+---
+<div {...__attrs} class={["avatar", __attrs.class].filter(Boolean).join(" ")}>{!!src ? (<img src={src} alt={alt ?? ""} />) : (<slot>
+{label}
+</slot>)}{!!showBadge ? (<slot name="badge" />) : null}</div>
+",
+  "qwik/IAvatarBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface AvatarBaseProps {
+  /** Image URL. When absent, the \`label\` / default-slot fallback shows instead. */
+  src?: string;
+  /**
+   * Alternative text for the image. Empty by default (decorative — the common case when a visible
+   * username sits beside the avatar); set it when the avatar is the only representation of the user.
+   */
+  alt?: string;
+  /** Fallback text, typically initials, shown when there is no image. Overridden by the default slot. */
+  label?: string;
+  /** Renders the \`badge\` slot as a status overlay. */
+  showBadge?: boolean;
+}
+export const IAvatarBase = component$((props: AvatarBaseProps & Record<string, any>) =>
+{
+const { children, badge, src, alt, label, showBadge, ...__attrs } = props
+return (
+<div {...__attrs} class={["avatar", props.class].filter(Boolean).join(" ")}>
+  {!!props.src ? (<><img src={props.src} alt={props.alt ?? ""} /></>) : (<><Slot>{props.label}</Slot></>)}
+  {!!props.showBadge ? (<>{props.badge}</>) : null}
+</div>
+)
+});
+",
+  "react/IAvatarBase.tsx": "export interface AvatarBaseProps {
+  /** Image URL. When absent, the \`label\` / default-slot fallback shows instead. */
+  src?: string;
+  /**
+   * Alternative text for the image. Empty by default (decorative — the common case when a visible
+   * username sits beside the avatar); set it when the avatar is the only representation of the user.
+   */
+  alt?: string;
+  /** Fallback text, typically initials, shown when there is no image. Overridden by the default slot. */
+  label?: string;
+  /** Renders the \`badge\` slot as a status overlay. */
+  showBadge?: boolean;
+}
+export function IAvatarBase(props: AvatarBaseProps & { children?: React.ReactNode; badge?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, badge, src, alt, label, showBadge, ...__attrs } = props
+return (
+<div {...__attrs} className={["avatar", props.className].filter(Boolean).join(" ")}>
+  {!!props.src ? <img src={props.src} alt={props.alt ?? ""} /> : props.children ?? props.label}
+  {!!props.showBadge ? props.badge : null}
+</div>
+)
+}
+",
+  "solid/IAvatarBase.tsx": "import { splitProps, Show } from "solid-js";
+import type { JSX } from "solid-js";
+export interface AvatarBaseProps {
+  /** Image URL. When absent, the \`label\` / default-slot fallback shows instead. */
+  src?: string;
+  /**
+   * Alternative text for the image. Empty by default (decorative — the common case when a visible
+   * username sits beside the avatar); set it when the avatar is the only representation of the user.
+   */
+  alt?: string;
+  /** Fallback text, typically initials, shown when there is no image. Overridden by the default slot. */
+  label?: string;
+  /** Renders the \`badge\` slot as a status overlay. */
+  showBadge?: boolean;
+}
+export default function IAvatarBase(props: AvatarBaseProps & { children?: any; badge?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children", "badge", "src", "alt", "label", "showBadge"])
+return (
+<div {...__attrs} class={["avatar", props.class].filter(Boolean).join(" ")}>
+  <Show when={!!props.src} fallback={<>{props.children ?? props.label}</>}>
+    <img src={props.src} alt={props.alt ?? ""} />
+  </Show>
+  <Show when={!!props.showBadge}>
+    {props.badge}
+  </Show>
+</div>
+)
+}
+",
+  "svelte/IAvatarBase.svelte": "<script lang="ts">
+  export interface AvatarBaseProps {
+    /** Image URL. When absent, the \`label\` / default-slot fallback shows instead. */
+    src?: string;
+    /**
+     * Alternative text for the image. Empty by default (decorative — the common case when a visible
+     * username sits beside the avatar); set it when the avatar is the only representation of the user.
+     */
+    alt?: string;
+    /** Fallback text, typically initials, shown when there is no image. Overridden by the default slot. */
+    label?: string;
+    /** Renders the \`badge\` slot as a status overlay. */
+    showBadge?: boolean;
+  }
+  import type { Snippet } from "svelte";
+  let { src, alt, label, showBadge, children, badge: badgeSnippet, ...__attrs }: AvatarBaseProps & { children?: Snippet; badge?: Snippet } & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={["avatar", __attrs.class].filter(Boolean).join(" ")}>{#if !!src}<img src={src} alt={alt ?? ""} />{:else}{#if children}{@render children()}{:else}{label}{/if}{/if}{#if !!showBadge}{@render badgeSnippet?.()}{/if}</div>
+",
+  "vue/IAvatarBase.vue": "<script setup lang="ts">
+  export interface AvatarBaseProps {
+    /** Image URL. When absent, the \`label\` / default-slot fallback shows instead. */
+    src?: string;
+    /**
+     * Alternative text for the image. Empty by default (decorative — the common case when a visible
+     * username sits beside the avatar); set it when the avatar is the only representation of the user.
+     */
+    alt?: string;
+    /** Fallback text, typically initials, shown when there is no image. Overridden by the default slot. */
+    label?: string;
+    /** Renders the \`badge\` slot as a status overlay. */
+    showBadge?: boolean;
+  }
+  const props = defineProps<AvatarBaseProps>()
+</script>
+<template>
+<div class="avatar">
+  <img v-if="!!src" :src="src" :alt='alt ?? ""' />
+  <slot v-else>
+    {{ label }}
+  </slot>
+  <slot v-if="!!showBadge" name="badge" />
+</div>
+</template>
+",
+}
+`;

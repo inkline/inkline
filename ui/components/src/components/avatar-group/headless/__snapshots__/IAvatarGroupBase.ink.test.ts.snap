@@ -1,0 +1,86 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`AvatarGroupBase > output matches snapshots 1`] = `
+{
+  "angular/IAvatarGroupBase.component.ts": "import { Component, signal, computed, effect, input } from "@angular/core";
+export interface AvatarGroupBaseProps {}
+@Component({ standalone: true, selector: 'ink-avatar-group-base', host: { style: 'display: contents' }, template: \`<div [class]="'avatar-group' + (klass() ? ' ' + klass() : '')">
+<ng-content></ng-content>
+</div>\` })
+export class IAvatarGroupBaseComponent
+{
+klass = input<string>()
+}
+@Component({ standalone: true, selector: 'div[ink-avatar-group-base]', host: { '[class]': "'avatar-group' + (klass() ? ' ' + klass() : '')" }, template: \`<ng-content></ng-content>\` })
+export class IAvatarGroupBaseHostComponent
+{
+klass = input<string>()
+}
+",
+  "astro/IAvatarGroupBase.astro": "---
+export interface AvatarGroupBaseProps {}
+type Props = AvatarGroupBaseProps & Record<string, any>
+const props = Astro.props as Props;
+const { ...__attrs } = props;
+---
+<div {...__attrs} class={["avatar-group", __attrs.class].filter(Boolean).join(" ")}>
+<slot />
+</div>
+",
+  "qwik/IAvatarGroupBase.tsx": "import { component$, useSignal, useComputed$, useVisibleTask$, $, Slot } from "@qwik.dev/core";
+export interface AvatarGroupBaseProps {}
+export const IAvatarGroupBase = component$((props) =>
+{
+const { children, ...__attrs } = props
+return (
+<div {...__attrs} class={["avatar-group", props.class].filter(Boolean).join(" ")}>
+  <Slot />
+</div>
+)
+});
+",
+  "react/IAvatarGroupBase.tsx": "export interface AvatarGroupBaseProps {}
+export function IAvatarGroupBase(props: AvatarGroupBaseProps & { children?: React.ReactNode } & React.HTMLAttributes<HTMLElement>)
+{
+const { children, ...__attrs } = props
+return (
+<div {...__attrs} className={["avatar-group", props.className].filter(Boolean).join(" ")}>
+  {props.children}
+</div>
+)
+}
+",
+  "solid/IAvatarGroupBase.tsx": "import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export interface AvatarGroupBaseProps {}
+export default function IAvatarGroupBase(props: AvatarGroupBaseProps & { children?: any } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["children"])
+return (
+<div {...__attrs} class={["avatar-group", props.class].filter(Boolean).join(" ")}>
+  {props.children}
+</div>
+)
+}
+",
+  "svelte/IAvatarGroupBase.svelte": "<script lang="ts">
+  export interface AvatarGroupBaseProps {}
+  import type { Snippet } from "svelte";
+  let { children, ...__attrs }: AvatarGroupBaseProps & { children?: Snippet } & Record<string, any> = $props()
+</script>
+<div {...__attrs} class={["avatar-group", __attrs.class].filter(Boolean).join(" ")}>
+  {@render children?.()}
+</div>
+",
+  "vue/IAvatarGroupBase.vue": "<script setup lang="ts">
+  export interface AvatarGroupBaseProps {}
+  const props = defineProps<AvatarGroupBaseProps>()
+</script>
+<template>
+<div class="avatar-group">
+  <slot />
+</div>
+</template>
+",
+}
+`;
