@@ -8,6 +8,8 @@
     "build": "nuxt build",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "test": "vp test",
+    "test:build": "vp test --config vite.build.config.ts",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
