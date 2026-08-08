@@ -1,6 +1,6 @@
 {
   "name": "@inkline/storybook",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "description": "Single-source story definitions and shared Storybook configuration for Inkline's per-framework component packages.",
   "homepage": "https://github.com/inkline/inkline#readme",
