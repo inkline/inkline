@@ -205,4 +205,13 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   Diag_TransitionWithFor: [
     { name: "triggers INK0065", asserts: { expectedDiagnostics: ["INK0065"] } },
   ],
+
+  // ── UXF-165: the two constructs that used to compile silently ──
+  EmitsNamedType: [{ name: "resolves the named emit type", asserts: {} }],
+  Diag_EmitsUnreadableType: [
+    { name: "triggers INK0042", asserts: { expectedDiagnostics: ["INK0042"] } },
+  ],
+  Diag_SlotOutsideRender: [
+    { name: "triggers INK0069", asserts: { expectedDiagnostics: ["INK0069"] } },
+  ],
 };

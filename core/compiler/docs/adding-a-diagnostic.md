@@ -55,31 +55,33 @@ The catalog test in `src/core/diagnostics/codes.test.ts` verifies:
 
 ## Current diagnostic codes
 
-| Code    | Severity | Phase    | Title                                                   |
-| ------- | -------- | -------- | ------------------------------------------------------- |
-| INK0001 | error    | parse    | Namespace import of @inkline/core                       |
-| INK0010 | warning  | analyze  | Effect has no reactive dependencies                     |
-| INK0011 | warning  | analyze  | Memo has no reactive dependencies                       |
-| INK0020 | warning  | analyze  | Dynamic reactive read prevents static dep tracking      |
-| INK0030 | error    | analyze  | createMemo cycle detected                               |
-| INK0040 | error    | parse    | defineComponent must have a setup function              |
-| INK0041 | error    | parse    | defineComponent options must be a static object literal |
-| INK0050 | warning  | lower    | Missing key in iteration                                |
-| INK0060 | error    | lower    | `<Show>` requires a 'when' prop                         |
-| INK0061 | info     | lower    | Nullish-coalescing (??) in JSX is ambiguous             |
-| INK0062 | error    | lower    | `<For>` requires an 'each' prop                         |
-| INK0070 | error    | lower    | Component-ref forwarding not yet supported              |
-| INK0071 | error    | parse    | JSX spread attributes are not supported                 |
-| INK0072 | warning  | lower    | Unknown ARIA attribute                                  |
-| INK0073 | error    | lower    | Cannot two-way bind `$bind:<name>` on an element        |
-| INK0080 | warning  | config   | Unknown target option                                   |
-| INK0081 | warning  | config   | Unknown config key                                      |
-| INK0082 | warning  | config   | Unknown config key, with a suggested spelling           |
-| INK0083 | error    | config   | Config value has the wrong type                         |
-| INK0084 | error    | config   | No compilation target specified                         |
-| INK0085 | error    | config   | Unknown target                                          |
-| INK0086 | error    | config   | Target not present in the configured registry           |
-| INK0087 | error    | config   | Invalid diagnostic report level                         |
-| INK0090 | error    | plugin   | Plugin threw                                            |
-| INK0100 | error    | pipeline | Parse failure in component                              |
-| INK0110 | error    | pipeline | Internal compiler error                                 |
+| Code    | Severity | Phase        | Title                                                   |
+| ------- | -------- | ------------ | ------------------------------------------------------- |
+| INK0001 | error    | parse        | Namespace import of @inkline/core                       |
+| INK0010 | warning  | analyze      | Effect has no reactive dependencies                     |
+| INK0011 | warning  | analyze      | Memo has no reactive dependencies                       |
+| INK0020 | warning  | analyze      | Dynamic reactive read prevents static dep tracking      |
+| INK0030 | error    | analyze      | createMemo cycle detected                               |
+| INK0040 | error    | parse        | defineComponent must have a setup function              |
+| INK0041 | error    | parse        | defineComponent options must be a static object literal |
+| INK0042 | error    | parse        | defineEmits type argument is not fully readable         |
+| INK0050 | warning  | lower        | Missing key in iteration                                |
+| INK0060 | error    | lower        | `<Show>` requires a 'when' prop                         |
+| INK0061 | info     | lower        | Nullish-coalescing (??) in JSX is ambiguous             |
+| INK0062 | error    | lower        | `<For>` requires an 'each' prop                         |
+| INK0069 | error    | parse, lower | `<Slot>` lowering cannot reach                          |
+| INK0070 | error    | lower        | Component-ref forwarding not yet supported              |
+| INK0071 | error    | parse        | JSX spread attributes are not supported                 |
+| INK0072 | warning  | lower        | Unknown ARIA attribute                                  |
+| INK0073 | error    | lower        | Cannot two-way bind `$bind:<name>` on an element        |
+| INK0080 | warning  | config       | Unknown target option                                   |
+| INK0081 | warning  | config       | Unknown config key                                      |
+| INK0082 | warning  | config       | Unknown config key, with a suggested spelling           |
+| INK0083 | error    | config       | Config value has the wrong type                         |
+| INK0084 | error    | config       | No compilation target specified                         |
+| INK0085 | error    | config       | Unknown target                                          |
+| INK0086 | error    | config       | Target not present in the configured registry           |
+| INK0087 | error    | config       | Invalid diagnostic report level                         |
+| INK0090 | error    | plugin       | Plugin threw                                            |
+| INK0100 | error    | pipeline     | Parse failure in component                              |
+| INK0110 | error    | pipeline     | Internal compiler error                                 |
