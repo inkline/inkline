@@ -140,14 +140,15 @@ export const DIAGNOSTICS = {
     url: "https://docs.inkline.dev/diagnostics/INK0068" as const,
   },
   // Slot placeholders are lowered from the component's render tree, and lowering reaches a fixed set
-  // of shapes within it. A `<Slot>` it never reaches — one in a helper function or an effect, or one
-  // buried in a function nested inside the returned expression — declares no slot and survives into
-  // the output verbatim, against a `Slot` the target never imports. Resolving those properly means
-  // inlining arbitrary functions; refusing costs the author one edit.
+  // of shapes within it. A `<Slot>` it never reaches — one in a helper function, an effect or an IIFE,
+  // or one inside a ternary, a `&&`, or an attribute value — declares no slot and survives into the
+  // output verbatim, against a `Slot` the target never imports. The help enumerates both lists because
+  // several refused shapes are *in* the render output and ordinary JSX works in all of them, so the
+  // author cannot infer the reachable set from the failure.
   INK0069: {
     severity: "error" as const,
-    title: "<Slot> must appear in the component's render output" as const,
-    help: 'Move the <Slot> into the markup the setup function returns. A <Slot> the compiler cannot reach — one in a helper function or an effect, or one returned from a function nested inside the render expression — declares no slot and is emitted as an undefined element. To keep the markup factored out, declare the slot with const icon = defineSlot("icon") and render that value from the return instead.' as const,
+    title: "<Slot> must be reachable in the markup the setup function returns" as const,
+    help: 'Render the <Slot> directly from the return, or through <Show>, <For>, <Switch> or an arrow-function .map callback. A <Slot> the compiler cannot reach — one in a helper function, an effect or an IIFE, or one inside a ternary, a &&, or an attribute value — declares no slot and is emitted as an undefined element. Use <Show when={cond()}><Slot name="icon"/></Show> instead of {cond() && <Slot name="icon"/>}, and const icon = defineSlot("icon") when you need to factor the markup out and render the value from the return.' as const,
     url: "https://docs.inkline.dev/diagnostics/INK0069" as const,
   },
   INK0070: {
