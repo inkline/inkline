@@ -23,6 +23,14 @@
 @import "@uxfront/layer-docs/app/assets/css/main.css";
 
 /*
+ * `@source` re-scans this app's own content + config for utility classes: the
+ * layer's `@source` paths are package-relative (they resolve inside
+ * node_modules), so they never see the consumer's markdown or app.config.
+ */
+@source "../../../content/**/*";
+@source "../../app.config.ts";
+
+/*
  * Inkline brand palette. The layer-docs package ships neutral (palette-free);
  * this consumer supplies the purple scale and maps it onto Nuxt UI's
  * --ui-primary. The base hue is derived from the committed brand mark
