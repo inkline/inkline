@@ -2,7 +2,15 @@ import { describe, it, expect } from "vitest";
 import { spawnSync } from "node:child_process";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { existsSync, rmSync, writeFileSync, mkdirSync, readFileSync } from "node:fs";
+import {
+  existsSync,
+  rmSync,
+  writeFileSync,
+  mkdirSync,
+  readFileSync,
+  realpathSync,
+  symlinkSync,
+} from "node:fs";
 import { renderUsage } from "citty";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -258,6 +266,53 @@ describe("compile", () => {
         }
       });
     }
+
+    /**
+     * A second name for the working directory, built on purpose, because the guard's first version
+     * compared `resolve()`d strings and every other test here spells the project exactly the way
+     * `process.cwd()` reports it. macOS hands out such a second name by default — `/tmp` →
+     * `/private/tmp`, `/var` → `/private/var` — so `targetOutDir: { react: "/tmp/proj" }` walked
+     * past a guard that refuses the identical `/private/tmp/proj`, and took the sources, the README
+     * and the config with it.
+     */
+    it("refuses to clean the working directory named through a symlink", () => {
+      const root = resolve(TMP_OUT, "clean-guard-symlink");
+      const projectDir = resolve(root, "project");
+      const alias = resolve(root, "project-alias");
+      const canary = resolve(projectDir, "do-not-delete.txt");
+      const configPath = resolve(projectDir, "inkline.config.mjs");
+      try {
+        mkdirSync(projectDir, { recursive: true });
+        symlinkSync(projectDir, alias);
+        writeFileSync(canary, "canary", "utf-8");
+        // The alias must really be a different string, or the test proves nothing.
+        expect(alias).not.toBe(realpathSync(alias));
+        writeFileSync(
+          configPath,
+          `export default { targets: ["react"], targetOutDir: { react: ${JSON.stringify(alias)} } };\n`,
+          "utf-8",
+        );
+
+        const { output, status } = runIn(
+          projectDir,
+          "compile",
+          resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+          "--config",
+          configPath,
+          "--clean",
+        );
+
+        expect(status).toBe(2);
+        expect(output).toContain("refusing to clean");
+        expect(output).toContain("it is the current working directory");
+        expect(output).toContain("real path");
+        expect(output).toContain("Nothing was deleted");
+        expect(existsSync(canary)).toBe(true);
+        expect(existsSync(configPath)).toBe(true);
+      } finally {
+        if (existsSync(TMP_OUT)) rmSync(TMP_OUT, { recursive: true, force: true });
+      }
+    });
 
     // AC of the fix, and what stops the guard from being written as "inside outDir or nothing":
     // an absolute per-target override is a documented feature, and `ui/components/inkline.config.ts`

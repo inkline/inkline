@@ -18,12 +18,22 @@ Every target directory is now vetted before the first removal. Two tiers:
 
 - **No opt-out**: the filesystem root, the working directory, and any directory containing it are
   never cleaned, whoever named them.
-- **Containment in `outDir`**, applied to paths derived as `outDir/<target>`. This is what rejects
-  `outDir: ""`.
+- **The output tree must be a sane place and the target must be in it**, applied to paths derived as
+  `outDir/<target>`. This is what rejects `outDir: ""` and `outDir: "/"`. `outDir: "."` keeps
+  working; `outDir: ".."` and anything else above the project no longer does.
 
 An explicit `targetOutDir` entry is exempt from the second tier and still cleans normally: an
 absolute or relative per-target override pointing outside `outDir` is a documented feature and
 behaves exactly as before. It is not exempt from the first.
+
+Every comparison is made on **real paths**, with symlinks followed. Comparing resolved strings
+compares spellings, and a directory reachable by two names would then be guarded only under the one
+`process.cwd()` reports — macOS ships `/tmp` → `/private/tmp` and `/var` → `/private/var` by
+default, so `targetOutDir: { react: "/tmp/proj" }` would sail past a check that refuses the
+identical `/private/tmp/proj`. The target directory usually does not exist yet on a first build, so
+canonicalisation resolves the nearest existing ancestor and re-appends the remainder. Removal still
+operates on the path as written, so cleaning a symlinked output directory unlinks the link rather
+than its contents.
 
 A refusal names the target, the resolved path, the reason and the config key that produced it, then
 exits `2` having deleted nothing — including the targets listed before the bad one, because the
