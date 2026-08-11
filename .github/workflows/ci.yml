@@ -152,6 +152,7 @@ jobs:
         with:
           name: website-build
           path: apps/website/.output/public
+          include-hidden-files: true
           retention-days: 1
 
   lint:

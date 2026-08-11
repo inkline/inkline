@@ -5,8 +5,6 @@ navigation:
   title: Architecture
 ---
 
-# Architecture
-
 Inkline is a compiler, not a runtime. A single `.ink.tsx` source is parsed into a
 language-agnostic intermediate representation (IR), analyzed once, then emitted
 per target. The frameworks never share a runtime — each gets idiomatic,
