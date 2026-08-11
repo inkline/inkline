@@ -14,6 +14,7 @@ pays for the same lesson twice.
 | [004](./004-inkline-check-does-not-type-check.md)                     | `inkline check` does not type-check; `tsc` owns types                   | 2026-07-28 | Accepted   | cli, types, dx            |
 | [005](./005-generated-component-authoring-types.md)                   | Keep `InkComponent`'s index signature; generate authoring types         | 2026-08-06 | Superseded | core, compiler, authoring |
 | [006](./006-inferred-component-authoring-types.md)                    | Authoring types are inferred from `defineComponent`, not generated      | 2026-08-08 | Accepted   | core, compiler, authoring |
+| [007](./007-website-ships-as-a-static-site.md)                        | `apps/website` ships as a fully static site on Vercel                   | 2026-08-08 | Accepted   | website, deploy, infra    |
 
 ## Rules
 

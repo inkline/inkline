@@ -36,4 +36,42 @@ export default defineNuxtConfig({
       storybookBaseUrl: "",
     },
   },
+  nitro: {
+    vercel: {
+      config: {
+        // The layer ships `/` → `/llms.txt` content negotiation as a Nitro
+        // *request* plugin (server/plugins/llms-redirect.ts). A fully static
+        // deploy (ADR-007) has no Nitro runtime, so that plugin never executes.
+        // These two rules restore the same behaviour at the CDN edge: agents
+        // asking for markdown, and curl, get the llms.txt entry point; browsers
+        // get the rendered homepage. `(?i)` makes the match case-insensitive.
+        //
+        // Build Output API v3 routes must be declared here, not in vercel.json —
+        // once .vercel/output/config.json exists, Vercel ignores vercel.json's
+        // own routes/redirects entirely.
+        //
+        // Nitro types `routes` as a narrow 3-variant union that predates `has`
+        // and redirect routes; the Build Output API accepts both, and the
+        // emitted .vercel/output/config.json carries these two entries verbatim
+        // as routes[0] and routes[1]. Drop the directives below when nitropack
+        // widens the type — ts-expect-error errors once it is unnecessary.
+        routes: [
+          {
+            src: "/",
+            has: [{ type: "header", key: "accept", value: "(?i).*text/markdown.*" }],
+            status: 302,
+            // @ts-expect-error -- nitropack's route type allows only cache-control here
+            headers: { Location: "/llms.txt" },
+          },
+          {
+            src: "/",
+            has: [{ type: "header", key: "user-agent", value: "(?i)curl/.*" }],
+            status: 302,
+            // @ts-expect-error -- nitropack's route type allows only cache-control here
+            headers: { Location: "/llms.txt" },
+          },
+        ],
+      },
+    },
+  },
 });
