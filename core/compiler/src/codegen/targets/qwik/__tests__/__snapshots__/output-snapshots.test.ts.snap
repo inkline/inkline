@@ -202,7 +202,7 @@ return (
 
 exports[`qwik full output snapshots > EmitButton 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
-export const EmitButton = component$((props: { onPress$?: QRL<(...args: any[]) => void> } & Record<string, any>) =>
+export const EmitButton = component$((props: { onPress$?: QRL<(count: number) => void> } & Record<string, any>) =>
 {
 const { onPress$, ...__attrs } = props
 return (

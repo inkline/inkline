@@ -21,9 +21,12 @@ describe("ModelInput: defineModel → model()", () => {
 });
 
 describe("EmitButton: defineEmits → output()", () => {
-  it("declares an output and emits via .emit()", async () => {
+  it("declares a payload-typed output and emits via .emit()", async () => {
     const out = await compileTo("EmitButton", "angular");
-    expect(out).toContain("press = output()");
+    // `defineEmits<{ press: [count: number] }>()` — the single-element tuple unwraps to the one
+    // value an Angular output carries. A bare `output()` is `OutputEmitterRef<void>`, which the
+    // `emit(1)` below does not even type-check against.
+    expect(out).toContain("press = output<number>()");
     expect(out).toContain(`(click)="press.emit(1)"`);
   });
 });

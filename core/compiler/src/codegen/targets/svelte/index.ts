@@ -26,6 +26,7 @@ import {
   eventToCallbackProp,
   reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
+import { eventCallbackType } from "../../shared/event-payload.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { setupLocalEmits } from "../../shared/setup-locals.ts";
 import { childrenArePhrasing } from "../../shared/phrasing.ts";
@@ -467,7 +468,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   // event contributes a callback prop.
   const emissionTypeFields = [
     ...component.models.map((m) => `${m.propName}?: ${m.typeNode?.getText() ?? "unknown"}`),
-    ...component.events.map((ev) => `${eventToCallbackProp(ev.name)}?: (...args: any[]) => void`),
+    ...component.events.map((ev) => `${eventToCallbackProp(ev.name)}?: ${eventCallbackType(ev)}`),
   ];
   const extraTypeFields = [...emissionTypeFields, ...slotPropFields];
   const hasExtra = extraTypeFields.length > 0;

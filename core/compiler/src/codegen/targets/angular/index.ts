@@ -18,6 +18,7 @@ import {
   reactiveReadNames,
   foldConstTest,
 } from "../../shared/expr-rewrite.ts";
+import { angularOutputTypeArgument, packedPayloadEvents } from "../../shared/event-payload.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { setupLocalEmits } from "../../shared/setup-locals.ts";
 import { assertNever } from "../../../core/assert.ts";
@@ -491,7 +492,11 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     ...component.models.map((m) => [m.setterName, m.name]),
   ]);
   const emitRule = component.emitName
-    ? ({ local: component.emitName, style: "angular-output" } as const)
+    ? ({
+        local: component.emitName,
+        style: "angular-output",
+        packedPayloads: packedPayloadEvents(component.events),
+      } as const)
     : undefined;
   // Refs bound to a DOM element (`<input ref={x}>`) must unwrap to `this.x()?.nativeElement` in
   // class-body reads (see REWRITES.refAccess); a ref on a component instance keeps the raw `viewChild`
@@ -697,11 +702,13 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       body.push(cStmt({ body: `${m.name} = model${generic}(${opts})`, span: m.loc }));
     }
   }
-  // Custom events become `@Output()` emitters; `emit("x", …)` → `this.x.emit(…)`.
+  // Custom events become `@Output()` emitters; `emit("x", …)` → `this.x.emit(…)`. The declared
+  // payload tuple is unwrapped to the single value an `output<T>` carries — see
+  // `angularOutputTypeArgument` for the arity rules.
   if (component.events.length > 0) {
     angularImports.push("output");
     for (const ev of component.events) {
-      const generic = ev.payloadType ? `<${ev.payloadType.getText()}>` : "";
+      const generic = angularOutputTypeArgument(ev);
       body.push(cStmt({ body: `${ev.name} = output${generic}()`, span: ev.loc }));
     }
   }

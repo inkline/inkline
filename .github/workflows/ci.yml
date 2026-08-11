@@ -133,18 +133,20 @@ jobs:
         with:
           name: build-artifacts
 
-      # `generate`, not `build`: the site is statically hosted, and prerendering
-      # every route is what catches broken content, 404s and render errors — the
-      # class of defect a docs build should fail on.
+      # `generate`, not `build`: the site ships as a fully prerendered static
+      # bundle (docs/adrs/007-website-ships-as-a-static-site.md). Only `generate`
+      # emits robots.txt, sitemap.xml, 200.html and 404.html, so building the
+      # other way would leave CI green while the deploy artifact is missing
+      # exactly the files the deploy needs.
       - name: Build website
         run: pnpm --filter website run generate
         env:
           NODE_ENV: production
 
-      # `nuxt generate` emits `.output/public`; `apps/website/dist` is only a
-      # symlink to it and was never produced by `nuxt build`, so this step used
-      # to log "No files were found with the provided path" and upload nothing.
-      # `include-hidden-files` is required because `.output` is a dot-directory.
+      # `.output/public` is `generate`'s real output. The previous path,
+      # `apps/website/dist`, is an untracked symlink Nuxt only creates on
+      # `generate` — under `build` it never existed and this artifact uploaded
+      # nothing.
       - name: Upload website build
         uses: actions/upload-artifact@v4
         with:

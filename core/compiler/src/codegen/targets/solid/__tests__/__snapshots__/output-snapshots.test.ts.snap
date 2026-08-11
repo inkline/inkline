@@ -219,7 +219,7 @@ return (
 exports[`solid full output snapshots > EmitButton 1`] = `
 "import { splitProps } from "solid-js";
 import type { JSX } from "solid-js";
-export default function EmitButton(props: { onPress?: (...args: any[]) => void } & JSX.HTMLAttributes<HTMLElement>)
+export default function EmitButton(props: { onPress?: (count: number) => void } & JSX.HTMLAttributes<HTMLElement>)
 {
 const [, __attrs] = splitProps(props, ["onPress"])
 return (

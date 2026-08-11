@@ -1,8 +1,14 @@
 # ADR-005: Keep `InkComponent`'s index signature; type component props by generating the authoring surface from the compiler's IR
 
-Date: 2026-08-06 · Status: Accepted
+Date: 2026-08-06 · Status: Superseded
 Deciders: Project owner · Informed by: internal tracker UXF-135 (RFC + measurements), UXF-90 (typed authoring surface RFC), UXF-161 (feasibility spike), UXF-162 (delivery RFC, gated)
-Supersedes: — · Superseded by: —
+Supersedes: — · Superseded by: [ADR-006](./006-inferred-component-authoring-types.md)
+
+> **Superseded on 2026-08-08 by [ADR-006](./006-inferred-component-authoring-types.md).** Both halves
+> of the decision below changed: the index signature is removed, and the authoring surface is
+> **inferred** from `defineComponent` rather than **generated** by the compiler — §2's mechanism was
+> found not to exist. The fixture baseline of 16 stated below is also corrected to 14 in ADR-006.
+> This text is left exactly as it was decided; read ADR-006 for what is true now.
 
 Resolves the item [ADR-003](./003-typed-jsx-intrinsic-elements-from-a-vendored-upstream.md) deferred
 in its fourth commitment — _"Component props stay untyped. `InkComponent`'s `[attr: string]: any` is

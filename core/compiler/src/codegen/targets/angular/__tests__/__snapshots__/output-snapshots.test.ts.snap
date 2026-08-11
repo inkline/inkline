@@ -189,7 +189,7 @@ exports[`angular full output snapshots > EmitButton 1`] = `
 export class EmitButtonComponent
 {
 klass = input<string>()
-press = output()
+press = output<number>()
 }
 "
 `;

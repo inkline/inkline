@@ -38,24 +38,31 @@ function isCallTo(expr: ts.Expression, name: string | undefined): expr is ts.Cal
   );
 }
 
-/** Event names declared by `defineEmits(["a","b"])` or `defineEmits<{ a: [...]; b: [...] }>()`. */
-function declaredEmitNames(call: ts.CallExpression): string[] {
-  const names: string[] = [];
+/**
+ * Events declared by `defineEmits(["a","b"])` or `defineEmits<{ a: [...]; b: [...] }>()`.
+ *
+ * The type-argument form also carries each event's payload: the member type is the tuple of the
+ * arguments `emit(name, …)` takes, so it is kept verbatim as {@link IREventDeclaration.payloadType}
+ * for targets to lower. The runtime array form declares names only and stays untyped.
+ */
+function declaredEmits(call: ts.CallExpression): { name: string; payloadType?: ts.TypeNode }[] {
+  const declared: { name: string; payloadType?: ts.TypeNode }[] = [];
   const arg = call.arguments[0];
   if (arg && ts.isArrayLiteralExpression(arg)) {
     for (const el of arg.elements) {
-      if (ts.isStringLiteral(el)) names.push(el.text);
+      if (ts.isStringLiteral(el)) declared.push({ name: el.text });
     }
   }
   const typeArg = call.typeArguments?.[0];
   if (typeArg && ts.isTypeLiteralNode(typeArg)) {
     for (const member of typeArg.members) {
       if (member.name && (ts.isIdentifier(member.name) || ts.isStringLiteral(member.name))) {
-        names.push(member.name.text);
+        const payloadType = ts.isPropertySignature(member) ? member.type : undefined;
+        declared.push({ name: member.name.text, payloadType });
       }
     }
   }
-  return names;
+  return declared;
 }
 
 function makeExprNode(expr: ts.Expression, sf: ts.SourceFile): IRExprNode {
@@ -294,8 +301,8 @@ export function parseSetup(
         if (isCallTo(init, emitsLocal)) {
           // const emit = defineEmits(["change"]) / defineEmits<{ change: [v: string] }>()
           if (ts.isIdentifier(decl.name)) emitName = decl.name.text;
-          for (const name of declaredEmitNames(init)) {
-            events.push({ name, loc: toLoc(decl, sourceFile) });
+          for (const { name, payloadType } of declaredEmits(init)) {
+            events.push({ name, payloadType, loc: toLoc(decl, sourceFile) });
           }
           continue;
         }
