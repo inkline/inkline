@@ -14,9 +14,16 @@ function makeErrorDiagnostic(pluginName: string, err: unknown): Diagnostic {
 export class PluginRunner {
   constructor(private readonly plugins: readonly Plugin[]) {}
 
+  /**
+   * Plugins arrive from a config file, so `Plugin` describes what an author should write, not what
+   * the runner is handed — the CLI schema checks only the identifying fields and lets `hooks` ride
+   * along unvalidated (it holds functions). The optional chain is therefore load-bearing despite the
+   * type: a plugin entry with no `hooks` is a plugin that registers nothing, and registering nothing
+   * is a no-op, not a `TypeError` through compiler internals.
+   */
   async invokeIrPost(module: AnalyzedModule, ctx: PluginContext): Promise<void> {
     for (const plugin of this.plugins) {
-      const fn = plugin.hooks["ir:post"];
+      const fn = plugin.hooks?.["ir:post"];
       if (!fn) continue;
       try {
         await fn(module, ctx);
@@ -37,7 +44,8 @@ export class PluginRunner {
     let current = files;
     for (const plugin of this.plugins) {
       if (plugin.targets && !plugin.targets.includes(target)) continue;
-      const fn = plugin.hooks["code:post"];
+      // Same unvalidated-input guard as `invokeIrPost`.
+      const fn = plugin.hooks?.["code:post"];
       if (!fn) continue;
       try {
         const result = await fn(target, current, ctx);

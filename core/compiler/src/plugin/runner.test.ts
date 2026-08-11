@@ -31,6 +31,13 @@ function makeCtx(): PluginContext & { diags: Diagnostic[] } {
 const fileA: GeneratedFile = { path: "a.tsx", contents: "a" };
 const fileB: GeneratedFile = { path: "b.tsx", contents: "b" };
 
+/**
+ * What a config file can hand the runner: `plugins: [{ name: "p" }]` passes CLI validation because
+ * only the identifying fields are checked, so `hooks` reaches the runner as `undefined`. The cast is
+ * the point of the test — it reproduces input the type system never saw.
+ */
+const noHooksPlugin = { name: "no-hooks" } as unknown as Plugin;
+
 describe("PluginRunner", () => {
   describe("invokeIrPost", () => {
     it("calls plugins in registration order", async () => {
@@ -70,6 +77,23 @@ describe("PluginRunner", () => {
       const runner = new PluginRunner([p1, p2]);
       await runner.invokeIrPost(stubAnalyzed, makeCtx());
       expect(called).toEqual(["p2"]);
+    });
+
+    it("skips a plugin with no hooks field at all and keeps running the rest", async () => {
+      const called: string[] = [];
+      const p2: Plugin = {
+        name: "p2",
+        hooks: {
+          "ir:post": () => {
+            called.push("p2");
+          },
+        },
+      };
+      const runner = new PluginRunner([noHooksPlugin, p2]);
+      const ctx = makeCtx();
+      await expect(runner.invokeIrPost(stubAnalyzed, ctx)).resolves.toBeUndefined();
+      expect(called).toEqual(["p2"]);
+      expect(ctx.diags).toEqual([]);
     });
 
     it("awaits async plugins", async () => {
@@ -198,6 +222,18 @@ describe("PluginRunner", () => {
       const runner = new PluginRunner([p1]);
       const result = await runner.invokeCodePost("react", [fileA], makeCtx());
       expect(result).toEqual([fileB]);
+    });
+
+    it("skips a plugin with no hooks field at all and passes files through", async () => {
+      const p2: Plugin = {
+        name: "replacer",
+        hooks: { "code:post": () => [fileB] },
+      };
+      const runner = new PluginRunner([noHooksPlugin, p2]);
+      const ctx = makeCtx();
+      const result = await runner.invokeCodePost("react", [fileA], ctx);
+      expect(result).toEqual([fileB]);
+      expect(ctx.diags).toEqual([]);
     });
 
     it("threads replacement files to next plugin", async () => {
