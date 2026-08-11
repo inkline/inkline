@@ -88,6 +88,23 @@ describe("compile", () => {
     expect(output).not.toMatch(/\n\s+at /);
   });
 
+  // Character-exact pin of the flag path, kept because the config path now renders the same
+  // diagnostic from its own call site: the two are only "the same message" for as long as this
+  // exact rendering holds, and a `toContain` assertion would not notice it drifting.
+  it("renders the unknown-target diagnostic exactly", () => {
+    const { output } = run(
+      "compile",
+      resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+      "--target",
+      "reakt",
+    );
+    expect(output).toBe(
+      'error  INK0085  Unknown target "reakt"\n' +
+        '    help: Did you mean "react"? Available targets: react, solid, vue, svelte, angular, qwik, astro.\n' +
+        "    docs: https://docs.inkline.dev/diagnostics/INK0085\n",
+    );
+  });
+
   it("omits the suggestion when nothing is close", () => {
     const { output, status } = run(
       "compile",
@@ -198,6 +215,32 @@ describe("compile", () => {
       expect(existsSync(resolve(TMP_OUT, "react", "Counter.tsx"))).toBe(true);
     } finally {
       if (existsSync(TMP_OUT)) rmSync(TMP_OUT, { recursive: true });
+    }
+  });
+
+  // The reported defect: the flag path suggested and the config path did not. Asserted end to end
+  // rather than on `validateConfig` alone, because the asymmetry was only visible from outside.
+  it("suggests the closest target for a misspelled target in the config file", () => {
+    const configDir = resolve(TMP_OUT, "config-bad-target");
+    const configPath = resolve(configDir, "inkline.config.mjs");
+    try {
+      mkdirSync(configDir, { recursive: true });
+      writeFileSync(configPath, 'export default { targets: ["reakt"] };\n', "utf-8");
+
+      const { output, status } = run(
+        "compile",
+        resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+        "--config",
+        configPath,
+      );
+
+      expect(status).toBe(2);
+      expect(output).toContain("INK0085");
+      expect(output).toContain('Unknown target "reakt"');
+      expect(output).toContain('Did you mean "react"?');
+      expect(output).toContain("react, solid, vue, svelte, angular, qwik, astro");
+    } finally {
+      if (existsSync(configDir)) rmSync(configDir, { recursive: true });
     }
   });
 

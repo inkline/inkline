@@ -110,11 +110,53 @@ describe("validateConfig — value types", () => {
     expect(diag?.title).toContain("Invalid config value at reportLevel");
   });
 
-  it("reports an unknown target name", () => {
-    const [diag] = validateConfig({ targets: ["react", "reakt"] });
+  // The same diagnostic `--target reakt` raises, from the same suggester, so a misspelled target
+  // reads identically whichever way it was supplied. Still an error — `resolveOptions` refuses this
+  // config either way, and the stop is the behaviour, not the message.
+  it("reports an unknown target as INK0085 with a suggestion", () => {
+    const [diag, ...rest] = validateConfig({ targets: ["react", "reakt"] });
+
+    expect(rest).toEqual([]);
+    expect(diag?.code).toBe("INK0085");
+    expect(diag?.severity).toBe("error");
+    expect(diag?.title).toBe('Unknown target "reakt"');
+    expect(diag?.help).toBe(
+      'Did you mean "react"? Available targets: react, solid, vue, svelte, angular, qwik, astro.',
+    );
+  });
+
+  it("reports a transposed target name with a suggestion", () => {
+    const [diag] = validateConfig({ targets: ["raect"] });
+
+    expect(diag?.code).toBe("INK0085");
+    expect(diag?.help).toContain('Did you mean "react"?');
+  });
+
+  it("omits the suggestion for a target name that is close to nothing", () => {
+    const [diag] = validateConfig({ targets: ["nuxt"] });
+
+    expect(diag?.code).toBe("INK0085");
+    expect(diag?.title).toBe('Unknown target "nuxt"');
+    expect(diag?.help).not.toContain("Did you mean");
+  });
+
+  it("reports every unknown target in the list", () => {
+    const diags = validateConfig({ targets: ["reakt", "vue", "solidd"] });
+
+    expect(diags.map((d) => d.title)).toEqual([
+      'Unknown target "reakt"',
+      'Unknown target "solidd"',
+    ]);
+  });
+
+  // The enum rejects a non-string under the same zod code as a misspelling. This one is a
+  // wrong-typed value, and INK0083's help — "a value of the wrong type cannot be consumed" — is the
+  // true one; "did you mean" would not be.
+  it("reports a non-string target as a value-type error, not an unknown target", () => {
+    const [diag] = validateConfig({ targets: [42] });
 
     expect(diag?.code).toBe("INK0083");
-    expect(diag?.title).toContain("targets[1]");
+    expect(diag?.title).toContain("targets[0]");
   });
 
   it("reports a nested unknown key by path, as a non-fatal unknown key", () => {
@@ -135,12 +177,28 @@ describe("validateConfig — value types", () => {
     "reports an unknown %s target as a non-fatal unknown key",
     (key) => {
       const value = key === "targetOutDir" ? "out" : { jsx: true };
-      const [diag, ...rest] = validateConfig({ [key]: { preact: value } });
+      const [diag, ...rest] = validateConfig({ [key]: { webflow: value } });
 
       expect(rest).toEqual([]);
       expect(diag?.code).toBe("INK0081");
       expect(diag?.severity).toBe("warning");
-      expect(diag?.title).toBe(`Unknown config key: ${key}.preact`);
+      expect(diag?.title).toBe(`Unknown config key: ${key}.webflow`);
+    },
+  );
+
+  // These keys are target names, so a typo in one is matched against the targets rather than
+  // against the config keys — and stays a warning, because an entry for a target you no longer
+  // build is ignored, not consumed.
+  it.each(["targetOutDir", "targetOptions"] as const)(
+    "suggests the closest target for a misspelled %s key",
+    (key) => {
+      const value = key === "targetOutDir" ? "out" : { jsx: true };
+      const [diag, ...rest] = validateConfig({ [key]: { raect: value } });
+
+      expect(rest).toEqual([]);
+      expect(diag?.code).toBe("INK0082");
+      expect(diag?.severity).toBe("warning");
+      expect(diag?.title).toBe(`Unknown config key: ${key}.raect. Did you mean ${key}.react?`);
     },
   );
 

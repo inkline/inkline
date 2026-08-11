@@ -48,6 +48,7 @@ const ROOT_RUNTIME_EXPORTS = [
   "meetsLevel",
   "resolveOptions",
   "seedIncrementalState",
+  "suggestClosest",
 ] as const;
 
 /** One representative value per subpath, checked through the packed tarball below. */

@@ -72,3 +72,9 @@ export { definePlugin } from "./plugin/types.ts";
 export type { TargetName, GeneratedFile } from "./codegen/context.ts";
 export { ALL_TARGETS } from "./codegen/context.ts";
 export { builtinRegistry } from "./codegen/registry.ts";
+// Same reason as `createDiagnosticCollector` above: tooling that names an unknown target of its own
+// (the CLI, validating a config file) has to reach the same verdict this compiler reaches for
+// `--target`, and "did you mean" is only credible if one implementation answers for every input
+// path. Exported as the suggester, not the distance function — the threshold is the judgement call,
+// and a caller that supplies its own stops matching the compiler.
+export { suggestClosest } from "./core/suggest.ts";

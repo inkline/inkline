@@ -296,6 +296,23 @@ function angularSelector(componentName: string): string;
 
 `IBadge` → `ink-badge` · `IInputControlBase` → `ink-input-control-base` · `Label` → `ink-label`.
 
+### `suggestClosest(input, candidates)`
+
+The candidate closest to `input`, or `undefined` when nothing is close enough to be worth
+suggesting. The threshold scales with input length and a transposition counts as one edit, so
+`"reakt"` and `"raect"` both suggest `"react"` while `"nuxt"` suggests nothing.
+
+```ts
+function suggestClosest(input: string, candidates: readonly string[]): string | undefined;
+```
+
+Exported for the same reason as `createDiagnosticCollector` ([§5](#5-diagnostics)): tooling that
+names an unknown target of its own — the CLI, validating `targets` in a config file — has to reach
+the same verdict `resolveOptions` reaches for `--target`, and "did you mean" is only credible if one
+implementation answers for every input path. The distance function behind it is deliberately not
+exported: the threshold is the judgement call, and a caller supplying its own stops matching the
+compiler.
+
 ---
 
 ## 4. Plugin API
