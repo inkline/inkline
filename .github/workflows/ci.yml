@@ -133,16 +133,26 @@ jobs:
         with:
           name: build-artifacts
 
+      # `generate`, not `build`: the site ships as a fully prerendered static
+      # bundle (docs/adrs/007-website-ships-as-a-static-site.md). Only `generate`
+      # emits robots.txt, sitemap.xml, 200.html and 404.html, so building the
+      # other way would leave CI green while the deploy artifact is missing
+      # exactly the files the deploy needs.
       - name: Build website
-        run: pnpm --filter website run build
+        run: pnpm --filter website run generate
         env:
           NODE_ENV: production
 
+      # `.output/public` is `generate`'s real output. The previous path,
+      # `apps/website/dist`, is an untracked symlink Nuxt only creates on
+      # `generate` — under `build` it never existed and this artifact uploaded
+      # nothing.
       - name: Upload website build
         uses: actions/upload-artifact@v4
         with:
           name: website-build
-          path: apps/website/dist
+          path: apps/website/.output/public
+          include-hidden-files: true
           retention-days: 1
 
   lint:

@@ -146,6 +146,25 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   Diag_SetupLocalDrop: [
     { name: "triggers INK0121", asserts: { expectedDiagnostics: ["INK0121"] } },
   ],
+  // The three ways the type-only `models` map can drift from the setup body's defineModel calls.
+  Diag_ModelDeclaredOnly: [
+    {
+      name: "triggers INK0094 (declared, never created)",
+      asserts: { expectedDiagnostics: ["INK0094"] },
+    },
+  ],
+  Diag_ModelSetupOnly: [
+    {
+      name: "triggers INK0094 (created, never declared)",
+      asserts: { expectedDiagnostics: ["INK0094"] },
+    },
+  ],
+  Diag_ModelTypeDrift: [
+    {
+      name: "triggers INK0094 (declared type disagrees)",
+      asserts: { expectedDiagnostics: ["INK0094"] },
+    },
+  ],
   Diag_ComponentRef: [{ name: "compiles without error (ref forwarding supported)", asserts: {} }],
 
   // ── v1: Component refs ──
@@ -210,5 +229,14 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   ],
   Diag_TransitionWithFor: [
     { name: "triggers INK0065", asserts: { expectedDiagnostics: ["INK0065"] } },
+  ],
+
+  // ── UXF-165: the two constructs that used to compile silently ──
+  EmitsNamedType: [{ name: "resolves the named emit type", asserts: {} }],
+  Diag_EmitsUnreadableType: [
+    { name: "triggers INK0042", asserts: { expectedDiagnostics: ["INK0042"] } },
+  ],
+  Diag_SlotOutsideRender: [
+    { name: "triggers INK0069", asserts: { expectedDiagnostics: ["INK0069"] } },
   ],
 };

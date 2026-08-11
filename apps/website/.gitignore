@@ -8,6 +8,14 @@ dist
 dist-ssr
 *.local
 
+# Vercel: build output (.vercel/output) and CLI project link (.vercel/project.json)
+.vercel
+
+# Local env files — .env.example is the committed template
+.env
+.env.*
+!.env.example
+
 # Node dependencies
 node_modules
 
