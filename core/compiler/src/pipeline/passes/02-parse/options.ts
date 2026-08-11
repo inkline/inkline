@@ -1,6 +1,7 @@
 import * as ts from "typescript";
 import { DYNAMIC_DEPS } from "../../../ir/reactivity.ts";
 import type {
+  IRDeclaredModel,
   IREventDeclaration,
   IRExprNode,
   IRProp,
@@ -13,6 +14,8 @@ import { toLoc } from "./loc.ts";
 
 export interface ParsedOptions {
   readonly props?: IRProp[];
+  /** `undefined` when the author wrote no `models` key — absent is not the same as empty here. */
+  readonly declaredModels?: IRDeclaredModel[];
   readonly slots: IRSlotDeclaration[];
   readonly events: IREventDeclaration[];
   readonly styles: IRStyleBlock[];
@@ -40,6 +43,7 @@ export function parseOptions(
   ctx: PassContext,
 ): ParsedOptions {
   let props: IRProp[] | undefined;
+  let declaredModels: IRDeclaredModel[] | undefined;
   const slots: IRSlotDeclaration[] = [];
   const events: IREventDeclaration[] = [];
   const styles: IRStyleBlock[] = [];
@@ -52,6 +56,9 @@ export function parseOptions(
     switch (prop.name.text) {
       case "props":
         props = parsePropsFromObject(prop.initializer, componentId, sourceFile, ctx);
+        break;
+      case "models":
+        declaredModels = parseDeclaredModelsFromObject(prop.initializer, sourceFile);
         break;
       case "slots":
         slots.push(...parseSlotsFromObject(prop.initializer, sourceFile));
@@ -87,7 +94,44 @@ export function parseOptions(
     }
   }
 
-  return { props, slots, events, styles, runtime, headless };
+  return { props, declaredModels, slots, events, styles, runtime, headless };
+}
+
+/**
+ * Reads the type-only `models` map. Nothing downstream of this emits it — the entries exist only to
+ * be compared against the setup body's `defineModel` calls by P4 (INK0094).
+ */
+function parseDeclaredModelsFromObject(
+  value: ts.Expression,
+  sourceFile: ts.SourceFile,
+): IRDeclaredModel[] {
+  if (!ts.isObjectLiteralExpression(value)) return [];
+
+  const declared: IRDeclaredModel[] = [];
+
+  for (const member of value.properties) {
+    if (!ts.isPropertyAssignment(member) || !ts.isIdentifier(member.name)) continue;
+
+    const init = member.initializer;
+    // Same three forms as a prop declaration: a constructor reference, a full `{ type, … }` shape,
+    // or a bare default value.
+    const typeText = ts.isObjectLiteralExpression(init)
+      ? declaredShapeType(init)
+      : inferPropType(init);
+
+    declared.push({ name: member.name.text, typeText, loc: toLoc(member, sourceFile) });
+  }
+
+  return declared;
+}
+
+/** The `type:` of a full prop shape, resolved through the constructor table. */
+function declaredShapeType(obj: ts.ObjectLiteralExpression): string | undefined {
+  for (const prop of obj.properties) {
+    if (!ts.isPropertyAssignment(prop) || !ts.isIdentifier(prop.name)) continue;
+    if (prop.name.text === "type") return inferPropType(prop.initializer);
+  }
+  return undefined;
 }
 
 function parseStyleFromValue(
@@ -202,7 +246,7 @@ function isConstructorRef(node: ts.Expression): boolean {
   );
 }
 
-const CONSTRUCTOR_TYPES: Readonly<Record<string, string>> = {
+export const CONSTRUCTOR_TYPES: Readonly<Record<string, string>> = {
   String: "string",
   Number: "number",
   Boolean: "boolean",
