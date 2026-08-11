@@ -515,6 +515,13 @@ inkline compile "src/**/*.ink.tsx" --target react --report-level info
 
 Flags: `--target`, `--src-dir`, `--out-dir` (default `dist`), `--source-map` (`external` | `inline` | `none`, default `external`), `--report-level` (`error` | `warning` | `info`, default `warning`), `--config`, `--clean` (default `true`), `--watch`, `--verbose`. `--target` is required unless the config file sets `targets`. CLI flags override config file values.
 
+`--clean` removes each target's output directory before compiling, and refuses to run at all — with a
+message and a non-zero exit, having deleted nothing — if any of them resolves somewhere that is not an
+output directory: the filesystem root, the working directory, or a directory containing it. A path
+derived from `outDir` must additionally stay inside `outDir`, which is what stops `outDir: ""` from
+resolving targets outside your project. An explicit `targetOutDir` entry may point anywhere else you
+like and is cleaned normally. Use `--no-clean` to keep existing output.
+
 A build closes with a summary of what it did. Because the default level withholds notes, the summary
 says how many rather than reporting a bare `0 notes`, which cannot be told apart from "there were
 none":

@@ -44,12 +44,19 @@ export function matchBarrelGroup(
   );
 }
 
+/**
+ * The absolute directory a target's output goes to: its `targetOutDir` override if it has one,
+ * otherwise `outDir/<target>`. `cwd` defaults to the process's, which is what `resolve` would have
+ * used anyway; it is a parameter so that the `--clean` guard in `lib/clean.ts` can resolve the path
+ * and judge it against the same base instead of two that could disagree.
+ */
 export function resolveTargetDir(
   target: string,
   outDir: string,
   targetOutDir: Partial<Record<string, string>>,
+  cwd: string = process.cwd(),
 ): string {
-  return resolve(targetOutDir[target] ?? `${outDir}/${target}`);
+  return resolve(cwd, targetOutDir[target] ?? `${outDir}/${target}`);
 }
 
 /**

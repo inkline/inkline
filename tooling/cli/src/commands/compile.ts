@@ -31,6 +31,7 @@ import {
   type BarrelEntry,
   type BarrelMap,
 } from "../lib/barrel.ts";
+import { planClean } from "../lib/clean.ts";
 import { formatDiagnostic } from "../lib/diagnostics.ts";
 import {
   DEFAULT_REPORT_LEVEL,
@@ -229,9 +230,18 @@ export default defineCommand({
 
     const startedAt = performance.now();
 
+    // Vet every directory before removing any of them: a resolved path that is the working
+    // directory, an ancestor of it, or outside the output tree entirely is a config mistake, not a
+    // clean target. `planClean` explains which and the run stops without deleting anything.
     if (args.clean) {
-      for (const target of targets) {
-        rmSync(resolveTargetDir(target, outDir, targetOutDir), { recursive: true, force: true });
+      const plan = planClean(targets, outDir, targetOutDir);
+      if ("error" in plan) {
+        console.error(plan.error);
+        process.exitCode = EXIT_USAGE_ERROR;
+        return;
+      }
+      for (const dir of plan.dirs) {
+        rmSync(dir, { recursive: true, force: true });
       }
     }
 

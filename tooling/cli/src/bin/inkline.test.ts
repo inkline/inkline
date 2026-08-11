@@ -20,15 +20,29 @@ const FIXTURES_DIR = resolve(
 );
 const TMP_OUT = resolve(__dirname, "..", "..", ".tmp-cli-test");
 
+const PACKAGE_DIR = resolve(__dirname, "..", "..");
+
 function run(...args: string[]): {
   stdout: string;
   stderr: string;
   output: string;
   status: number;
 } {
+  return runIn(PACKAGE_DIR, ...args);
+}
+
+/**
+ * Run the CLI from a chosen working directory. Anything asserting on paths that resolve *from* the
+ * cwd — the `--clean` guard below — must run from a throwaway directory, not the package: a
+ * regression in the guard deletes whatever the cwd is.
+ */
+function runIn(
+  cwd: string,
+  ...args: string[]
+): { stdout: string; stderr: string; output: string; status: number } {
   const result = spawnSync(process.execPath, ["--import", "tsx", CLI_PATH, ...args], {
     encoding: "utf-8",
-    cwd: resolve(__dirname, "..", ".."),
+    cwd,
     timeout: 30_000,
   });
   const stdout = result.stdout ?? "";
@@ -182,6 +196,106 @@ describe("compile", () => {
     } finally {
       if (existsSync(TMP_OUT)) rmSync(TMP_OUT, { recursive: true });
     }
+  });
+
+  /**
+   * The two stops above catch a config that fails *validation*. These catch the one that passes it:
+   * `""` and `"/"` are valid `z.string()` values, so nothing upstream objects, and `--clean`
+   * (default on) used to hand the resolved path straight to `rmSync(…, { recursive: true, force:
+   * true })`. `targetOutDir: { react: "" }` resolved to the working directory and deleted the
+   * user's sources, README and the config itself before the command failed on its own missing input.
+   *
+   * Each case runs from its own throwaway directory and asserts both halves: the canary survives
+   * *and* the exit is non-zero. Only the first is a regression test — a `--clean` that silently
+   * declined to clean would also leave the canary, and that is not the fix.
+   */
+  describe("--clean path guard", () => {
+    const cases = [
+      {
+        name: "an empty targetOutDir (resolves to the working directory)",
+        config: 'export default { targets: ["react"], targetOutDir: { react: "" } };\n',
+        reason: "it is the current working directory",
+      },
+      {
+        name: "a root targetOutDir",
+        config: 'export default { targets: ["react"], targetOutDir: { react: "/" } };\n',
+        reason: "it is the filesystem root",
+      },
+      {
+        name: "an empty outDir (resolves the target outside the project)",
+        config: 'export default { targets: ["react"], outDir: "" };\n',
+        reason: "it is outside the output directory",
+      },
+    ];
+
+    for (const { name, config, reason } of cases) {
+      it(`refuses to clean and exits non-zero for ${name}`, () => {
+        const projectDir = resolve(TMP_OUT, "clean-guard", name.replace(/\W+/g, "-"));
+        const canary = resolve(projectDir, "do-not-delete.txt");
+        const configPath = resolve(projectDir, "inkline.config.mjs");
+        try {
+          mkdirSync(projectDir, { recursive: true });
+          writeFileSync(canary, "canary", "utf-8");
+          writeFileSync(configPath, config, "utf-8");
+
+          const { output, status } = runIn(
+            projectDir,
+            "compile",
+            resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+            "--config",
+            configPath,
+            "--clean",
+          );
+
+          expect(status).toBe(2);
+          expect(output).toContain("refusing to clean");
+          expect(output).toContain(reason);
+          expect(output).toContain("Nothing was deleted");
+          expect(existsSync(canary)).toBe(true);
+          expect(existsSync(configPath)).toBe(true);
+        } finally {
+          if (existsSync(TMP_OUT)) rmSync(TMP_OUT, { recursive: true, force: true });
+        }
+      });
+    }
+
+    // AC of the fix, and what stops the guard from being written as "inside outDir or nothing":
+    // an absolute per-target override is a documented feature, and `ui/components/inkline.config.ts`
+    // points every one of its targets outside `outDir`. Those still clean.
+    it("still cleans an absolute targetOutDir outside outDir", () => {
+      const projectDir = resolve(TMP_OUT, "clean-guard-override");
+      const reactDir = resolve(projectDir, "elsewhere", "react");
+      const configPath = resolve(projectDir, "inkline.config.mjs");
+      const stale = resolve(reactDir, "stale.tsx");
+      try {
+        mkdirSync(reactDir, { recursive: true });
+        writeFileSync(stale, "// stale", "utf-8");
+        writeFileSync(
+          configPath,
+          `export default {
+            targets: ["react"],
+            outDir: ${JSON.stringify(resolve(projectDir, "dist"))},
+            targetOutDir: { react: ${JSON.stringify(reactDir)} },
+          };\n`,
+          "utf-8",
+        );
+
+        const { status } = runIn(
+          projectDir,
+          "compile",
+          resolve(FIXTURES_DIR, "Counter.ink.tsx"),
+          "--config",
+          configPath,
+          "--clean",
+        );
+
+        expect(status).toBe(0);
+        expect(existsSync(stale)).toBe(false);
+        expect(existsSync(resolve(reactDir, "Counter.tsx"))).toBe(true);
+      } finally {
+        if (existsSync(TMP_OUT)) rmSync(TMP_OUT, { recursive: true, force: true });
+      }
+    });
   });
 
   it("compiles with --target react", () => {

@@ -39,6 +39,7 @@ When adding a command:
 | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
 | [`add-build-plugin.ts`](./src/lib/add-build-plugin.ts)               | Wire the inkline plugin into a bundler config via magicast (used by `init`).         |
 | [`barrel.ts`](./src/lib/barrel.ts)                                   | Generate framework-specific barrel files (re-export `index.ts`) for compiled output. |
+| [`clean.ts`](./src/lib/clean.ts)                                     | Vet the directories `--clean` removes before any of them is removed (see below).     |
 | [`common-prefix.ts`](./src/lib/common-prefix.ts)                     | Longest-common-prefix helper for input glob → output path resolution.                |
 | [`compile-options.ts`](./src/lib/compile-options.ts)                 | The one config → `compile()` options mapping, shared by `compile` and `check`.       |
 | [`config.ts`](./src/lib/config.ts)                                   | Bridge to [`@inkline/config-loader`](../../core/config-loader/) with CLI defaults.   |
@@ -54,6 +55,17 @@ When adding a command:
 | [`writer.ts`](./src/lib/writer.ts)                                   | Atomic file writes with source-map sidecar support.                                  |
 
 These are internal — no `exports` map entry. If you find yourself importing from `lib/` outside the CLI, lift the utility into a more appropriate package first.
+
+## `--clean` deletes; treat every path it is handed as hostile
+
+`--clean` defaults to **on** and its removal is `rmSync(dir, { recursive: true, force: true })`, which does not ask twice. `dir` comes from `resolveTargetDir` — a user string from `outDir` or `targetOutDir` — and `""` and `"/"` are perfectly valid `z.string()` values, so no schema change can catch them. `targetOutDir: { react: "" }` resolved to the working directory and deleted a user's sources, README and config before the command failed on its own missing input.
+
+Every candidate is therefore vetted by [`lib/clean.ts`](./src/lib/clean.ts) **before the first removal**, in two tiers:
+
+1. **Hard floor, no opt-out** — the filesystem root, the working directory, or any ancestor of it.
+2. **Containment in `outDir`**, applied only to derived `outDir/<target>` paths. An explicit `targetOutDir` entry is exempt from this tier and still cleans normally, because an absolute per-target override is a documented feature that [`ui/components/inkline.config.ts`](../../ui/components/inkline.config.ts) relies on. It is never exempt from tier 1.
+
+Two properties are load-bearing and each has a test that fails if it is lost: the check runs over **all** targets before **any** `rmSync`, so a bad third target cannot cost the user the first two; and a refusal is a message plus `EXIT_USAGE_ERROR`, never a silent skip — a `--clean` that quietly declined to clean resurfaces later as stale output nobody can explain. The regression tests live in [`bin/inkline.test.ts`](./src/bin/), run the CLI from a throwaway working directory, and assert the canary survives _and_ the exit is non-zero; asserting only the canary passes for the wrong reason.
 
 `report.ts` decides _which_ diagnostics are printed; `diagnostics.ts` decides _how_ one is rendered. The reporter must never build a message itself — it calls `formatDiagnostic` and passes the caller's source text through, so a change to the rendering (code frames, relative paths, color) reaches every path that prints a diagnostic.
 
