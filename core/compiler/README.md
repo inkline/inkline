@@ -455,6 +455,10 @@ export default defineConfig({
 | `verbose`       | `boolean`                                     | `false`      | Log detailed plugin errors.                                                                                                                                                                                                                                                                                 |
 | `registry`      | `TargetRegistry`                              | built-in     | Custom target registry (advanced).                                                                                                                                                                                                                                                                          |
 
+<!-- Declared gap: the paragraph below states INK0081/INK0082/INK0083 severities in prose, and the
+     row above states INK0080's. docs-tables.test.ts asserts tables only — prose is not covered.
+     Changing a severity in src/core/diagnostics/codes.ts means re-reading this section by hand. -->
+
 `@inkline/cli` validates the loaded config against a zod schema. Keys outside this set are ignored
 and reported as INK0081 / INK0082 warnings (with a suggested spelling when the key is close to a
 real one); these do not fail the build, at any depth. A value of the wrong type is reported as an
@@ -897,6 +901,10 @@ The compiler produces diagnostics at each pipeline stage. Errors prevent output;
 The codes below are the ones most authors hit. For the complete, always-current list, run
 `pnpm docs:diagnostics` in `core/compiler` — it prints a reference table generated from
 [`src/core/diagnostics/codes.ts`](./src/core/diagnostics/codes.ts), the single source of truth.
+
+<!-- The Severity column of the table below is asserted against DIAGNOSTICS by
+     src/core/diagnostics/docs-tables.test.ts. Rows may be added or removed freely — this table is
+     a deliberate subset — but every row must name a real code and its catalog severity. -->
 
 | Code    | Severity | Description                                                                                                                             |
 | ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
