@@ -9,6 +9,7 @@ This file is the entry point for any LLM agent or new contributor working in the
 ```bash
 vp install              # install + configure git hooks
 vp run ready            # build + check + test (mirrors the CI gate)
+pnpm run typecheck      # types only — build + type-check. Never `tsc` from the root.
 vp run dev              # start the docs website (alias for `vp run website#dev`)
 pnpm run storybook      # run all 7 framework Storybooks side-by-side
 ```
@@ -21,7 +22,8 @@ Run `vp env doctor` if anything about the toolchain looks wrong, and `vp help` f
 core/        @inkline/core (authoring primitives), @inkline/compiler,
              @inkline/plugin (unplugin), @inkline/config-loader, inkline (barrel)
 tooling/     @inkline/cli, @inkline/storybook, @inkline/test-utils,
-             @inkline/agents-check (docs link-integrity test)
+             @inkline/agents-check (docs link-integrity test),
+             @inkline/tsc-guard (root `tsc` bin — fails, points at the gate)
 testing/     @inkline/e2e (Playwright cross-framework visual-parity tests)
 ui/          @inkline/components (single source of truth) + 7 framework output packages
 apps/        website (docs site), storybook (unified aggregator for all 7 frameworks)

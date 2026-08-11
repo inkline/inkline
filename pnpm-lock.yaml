@@ -229,6 +229,9 @@ importers:
       '@changesets/cli':
         specifier: ^2.31.0
         version: 2.31.0(@types/node@26.1.1)
+      '@inkline/tsc-guard':
+        specifier: workspace:*
+        version: link:tooling/tsc-guard
       concurrently:
         specifier: 'catalog:'
         version: 10.0.3
@@ -687,6 +690,21 @@ importers:
       vue:
         specifier: 'catalog:'
         version: 3.5.38(@typescript/typescript6@6.0.2)
+
+  tooling/tsc-guard:
+    devDependencies:
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.13.2
+      typescript:
+        specifier: 'catalog:'
+        version: 7.0.2
+      vite-plus:
+        specifier: 'catalog:'
+        version: 0.1.24(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(esbuild@0.28.1)(happy-dom@20.10.3)(jiti@2.7.0)(jsdom@29.1.1)(less@4.4.2)(sass@1.99.0)(svelte@5.56.3(@typescript-eslint/types@8.61.0))(terser@5.48.0)(tsx@4.22.4)(typescript@7.0.2)(vite@8.0.10(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.2)(sass@1.99.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))(yaml@2.9.0)
+      vitest:
+        specifier: npm:@voidzero-dev/vite-plus-test@^0.1.24
+        version: '@voidzero-dev/vite-plus-test@0.1.24(@types/node@24.13.2)(@vitest/coverage-v8@4.1.8)(esbuild@0.28.1)(happy-dom@20.10.3)(jiti@2.7.0)(jsdom@29.1.1)(less@4.4.2)(sass@1.99.0)(terser@5.48.0)(tsx@4.22.4)(typescript@7.0.2)(vite@8.0.10(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.2)(sass@1.99.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))(yaml@2.9.0)'
 
   ui/angular:
     dependencies:
@@ -21552,7 +21570,7 @@ snapshots:
 
   '@types/http-proxy@1.17.17':
     dependencies:
-      '@types/node': 25.9.3
+      '@types/node': 26.1.1
 
   '@types/jsesc@2.5.1': {}
 
@@ -21666,7 +21684,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 25.9.3
+      '@types/node': 26.1.1
 
   '@typescript-eslint/parser@8.61.0(@typescript/typescript6@6.0.2)(eslint@9.39.4(jiti@2.7.0))':
     dependencies:
@@ -23750,7 +23768,7 @@ snapshots:
 
   buffer-image-size@0.6.4:
     dependencies:
-      '@types/node': 25.9.3
+      '@types/node': 26.1.1
 
   buffer@5.7.1:
     dependencies:
@@ -26665,7 +26683,7 @@ snapshots:
 
   jest-worker@27.5.1:
     dependencies:
-      '@types/node': 25.9.3
+      '@types/node': 26.1.1
       merge-stream: 2.0.0
       supports-color: 8.1.1
 

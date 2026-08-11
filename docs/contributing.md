@@ -70,11 +70,24 @@ This runs `pnpm run build && pnpm run check && pnpm run test` — the same shape
 
 If you only need part of the gate while iterating, use `vp check`, `vp lint`, `vp fmt --check`, or `vp test` independently. CI runs the same commands with stricter flags — see below.
 
+### Type-checking on its own
+
+```bash
+pnpm run typecheck
+```
+
+That is the whole supported surface, and it is exactly what CI's `typecheck` job runs. Two rules behind it, both learned the expensive way:
+
+- **Never run `tsc` from the repo root.** There is no root TypeScript install, so `npx tsc` reaches past the repo and resolves an unrelated `tsc` package from npm that checks nothing. The root ships a `tsc` bin ([`tooling/tsc-guard`](../tooling/tsc-guard/)) whose only job is to fail with this message instead of letting that happen.
+- **The build is not optional.** Package types resolve through each package's `exports` into `dist/`, so checking without building type-checks the code as it was _before_ your change and reports success. `pnpm run typecheck` builds first; the build is cached, so it is cheap when nothing changed.
+
+To run the real compiler against a single package, do it from inside that package — `cd <pkg> && node_modules/.bin/tsc --noEmit -p tsconfig.json` — where the package's own TypeScript and tsconfig are what resolve.
+
 ## Continuous integration
 
 Two workflows live under [`.github/workflows/`](../.github/workflows/):
 
-- [`ci.yml`](../.github/workflows/ci.yml) — runs on every push to `main` and every PR. Granular parallel jobs: `build`, `build-storybook`, `build-website`, `lint`, `typecheck`, `test`, and a non-blocking `visual-parity` (Playwright cross-framework screenshot diffing, sharded ×2 — deliberately not part of `ci-success`). Each downstream job depends only on `build` and reuses its artifacts. A final `ci-success` job aggregates the status. PR runs are cancelled when a new push arrives on the same ref; main runs are not.
+- [`ci.yml`](../.github/workflows/ci.yml) — runs on every push to `main` and every PR. Granular parallel jobs: `build`, `build-storybook`, `build-website`, `lint`, `typecheck`, `test`, and a non-blocking `visual-parity` (Playwright cross-framework screenshot diffing, sharded ×2 — deliberately not part of `ci-success`). Downstream jobs depend only on `build` and reuse its artifacts — except `typecheck`, which builds for itself so that the job is the same command a contributor runs and cannot check against a stale `dist/`. A final `ci-success` job aggregates the status. PR runs are cancelled when a new push arrives on the same ref; main runs are not.
 - [`changesets.yml`](../.github/workflows/changesets.yml) — runs on push to `main`. Uses `changesets/action` to maintain a "chore: update versions" PR. See [release-process.md](./release-process.md).
 
 CI uses Node 22. If you see local-only test passes / CI failures, first compare your local Node version against the workflow's `NODE_VERSION`.
