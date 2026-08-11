@@ -2,7 +2,16 @@
 
 Date: 2026-08-08 · Status: Accepted
 Deciders: Project owner · Informed by: internal tracker UXF-162 (delivery RFC + measurements), UXF-161 (feasibility spike), UXF-135 (blast-radius RFC)
-Supersedes: [ADR-005](./005-generated-component-authoring-types.md) · Superseded by: —
+Supersedes: [ADR-005](./005-generated-component-authoring-types.md) · Superseded by:
+[ADR-008](./008-authoring-surface-is-inferred-from-options-alone.md) **in part**
+
+> **Correction — see [ADR-008](./008-authoring-surface-is-inferred-from-options-alone.md).**
+> Decision 1 below, and the matching phrasing in Context, say the authoring type is derived from
+> `defineComponent`'s options **and setup body**. The setup body contributes nothing to TypeScript
+> inference; the surface comes from the options alone. ADR-008 also narrows the Option D uniqueness
+> claim in "The deferred alternative", and records why `options.models` is a constraint rather than a
+> preference. **Decisions 2–7 and every measured number below stand unchanged** — which is why this
+> ADR's status remains `Accepted`.
 
 [ADR-005](./005-generated-component-authoring-types.md) committed, in its second decision, to this:
 
