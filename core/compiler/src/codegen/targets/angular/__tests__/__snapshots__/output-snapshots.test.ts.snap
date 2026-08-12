@@ -139,6 +139,18 @@ klass = input<string>()
 "
 `;
 
+exports[`angular full output snapshots > DuplicateEvent 1`] = `
+"import { Component, signal, computed, effect, input, output } from "@angular/core";
+@Component({ standalone: true, selector: 'ink-duplicate-event', host: { style: 'display: contents' }, template: \`<button id="change" [class]="klass()" (click)="change.emit('next')">Change</button>\` })
+export class DuplicateEventComponent
+{
+klass = input<string>()
+change = output<string>()
+close = output()
+}
+"
+`;
+
 exports[`angular full output snapshots > DynamicList 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-dynamic-list', host: { style: 'display: contents' }, template: \`<div [class]="klass()">

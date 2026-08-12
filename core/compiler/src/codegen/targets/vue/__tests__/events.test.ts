@@ -37,3 +37,16 @@ describe("TypedEvent: onMouseMove reading e.clientX / e.clientY into a signal", 
     expect(out).toContain("{{ pos.x }}");
   });
 });
+
+// ---------------------------------------------------------------------------
+// DuplicateEvent: `change` declared in both the options `events` object and `defineEmits`.
+// Focus: the two declarations collapse into one channel. Vue is where the defect was visible —
+// the un-deduped merge emitted `defineEmits(["change", "change"])`, declaring the same emit twice.
+// ---------------------------------------------------------------------------
+describe("DuplicateEvent: the same event declared in options and defineEmits", () => {
+  it("Vue: emits one channel per name, in options-declaration order", async () => {
+    const out = await compileTo("DuplicateEvent", "vue");
+    expect(out).toContain('const emit = defineEmits(["change", "close"])');
+    expect(out).not.toContain('"change", "change"');
+  });
+});

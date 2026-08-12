@@ -5,6 +5,7 @@ import { slots } from "./slots.ts";
 import { controlFlow } from "./control-flow.ts";
 import { defineSlotLowering } from "./define-slot.ts";
 import { slotDeclarations } from "./slot-declarations.ts";
+import { unloweredSlots } from "./unlowered-slots.ts";
 import { twoWayBinding } from "./two-way-binding.ts";
 import { events } from "./events.ts";
 import { refs } from "./refs.ts";
@@ -24,6 +25,8 @@ function buildLowerings(module: IRModule): readonly Lowering[] {
     controlFlow,
     defineSlotLowering,
     slotDeclarations,
+    // Reports the `<Slot>`s the passes above left behind, so it must follow all of them.
+    unloweredSlots,
     attributeChecks(localComponents),
     twoWayBinding,
     events,

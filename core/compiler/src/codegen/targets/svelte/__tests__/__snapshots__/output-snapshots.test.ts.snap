@@ -91,6 +91,15 @@ exports[`svelte full output snapshots > DefineSlotBasic 1`] = `
 "
 `;
 
+exports[`svelte full output snapshots > DuplicateEvent 1`] = `
+"<script lang="ts">
+  interface Props { onChange?: (value: string) => void; onClose?: (...args: any[]) => void }
+  let { onChange, onClose, ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<button {...__attrs} id="change" class={__attrs.class} onclick={() => onChange?.("next")}>Change</button>
+"
+`;
+
 exports[`svelte full output snapshots > DynamicList 1`] = `
 "<script lang="ts">
   let { ...__attrs }: Record<string, any> = $props()

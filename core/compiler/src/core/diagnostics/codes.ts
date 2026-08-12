@@ -21,6 +21,18 @@ export const DIAGNOSTICS = {
     help: "Move dynamic options into the setup body" as const,
     url: "https://docs.inkline.dev/diagnostics/INK0041" as const,
   },
+  // The type argument is the only declaration of a component's events, and each member's type node
+  // is emitted verbatim into the generated component. Reading it partially is worse than not reading
+  // it at all: a member the compiler never saw is dropped from the props type while the author's
+  // `emit("open")` call survives as a read of a prop nothing declares, with no downstream check to
+  // catch the mismatch. So the bar is one declaration, in this file, listing every event itself.
+  INK0042: {
+    severity: "error" as const,
+    title:
+      "defineEmits type argument must resolve to one fully readable object type in this file" as const,
+    help: "Write the members inline — defineEmits<{ close: [] }>() — or reference a single type alias or interface declared in this file that lists every event itself. A union, a generic instantiation, an interface that extends another, an interface split across merged declarations, or a type imported from another module cannot be read in full at build time, and any event the compiler could not see would be dropped from the output." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0042" as const,
+  },
   INK0043: {
     severity: "error" as const,
     title: "defineModel must be a [getter, setter] tuple with a static name" as const,
@@ -39,6 +51,12 @@ export const DIAGNOSTICS = {
       "Two-way binding and custom events are not interactive on the static Astro target" as const,
     help: "An .astro component renders once on the server; the model value is read-only and emitted events never fire. Use a framework island for interactivity." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0045" as const,
+  },
+  INK0046: {
+    severity: "warning" as const,
+    title: "Event '{name}' is declared twice" as const,
+    help: "Declare each event once. The defineEmits declaration wins, since it is the only one that can carry a payload type; remove the redundant declaration reported here." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0046" as const,
   },
   INK0010: {
     severity: "warning" as const,
@@ -126,6 +144,18 @@ export const DIAGNOSTICS = {
       "hasSlot() always returns true on the Qwik and Angular targets, which have no runtime slot-presence API" as const,
     help: "Gated content always renders there. Pair hasSlot with a CSS `:empty` rule so the empty wrapper collapses." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0068" as const,
+  },
+  // Slot placeholders are lowered from the component's render tree, and lowering reaches a fixed set
+  // of shapes within it. A `<Slot>` it never reaches — one in a helper function, an effect or an IIFE,
+  // or one inside a ternary, a `&&`, or an attribute value — declares no slot and survives into the
+  // output verbatim, against a `Slot` the target never imports. The help enumerates both lists because
+  // several refused shapes are *in* the render output and ordinary JSX works in all of them, so the
+  // author cannot infer the reachable set from the failure.
+  INK0069: {
+    severity: "error" as const,
+    title: "<Slot> must be reachable in the markup the setup function returns" as const,
+    help: 'Render the <Slot> directly from the return, or through <Show>, <For>, <Switch> or an arrow-function .map callback. A <Slot> the compiler cannot reach — one in a helper function, an effect or an IIFE, or one inside a ternary, a &&, or an attribute value — declares no slot and is emitted as an undefined element. Use <Show when={cond()}><Slot name="icon"/></Show> instead of {cond() && <Slot name="icon"/>}, and const icon = defineSlot("icon") when you need to factor the markup out and render the value from the return.' as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0069" as const,
   },
   INK0070: {
     severity: "error" as const,

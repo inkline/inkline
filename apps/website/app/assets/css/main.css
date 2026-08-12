@@ -1,3 +1,25 @@
+/*
+ * Single Tailwind entry for the website.
+ *
+ * The brand `@theme` below only compiles into real `:root` custom properties
+ * when it lives inside a Tailwind pass, so this file imports the layer's
+ * palette-free base — which owns the one `@import "tailwindcss"` — rather than
+ * starting a pass of its own.
+ *
+ * This must stay the ONLY registered CSS entry. A second one — a bare
+ * `@import "tailwindcss"` here, or a layer registering its own base in `css:`
+ * alongside this file — opens a second Tailwind pass that re-emits every
+ * utility. That shipped here until `@uxfront/layer-docs@0.3.0`: `entry.css`
+ * measured 437,170 B raw / 55,295 B gzip against 224,261 B / 28,573 B for the
+ * single-pass build, on a render-blocking stylesheet, on every page for every
+ * visitor (UXF-118). The cost is payload, not layout — the duplicate pass was
+ * a superset of the first and emitted wholly after it, so the cascade survived
+ * by accident.
+ *
+ * Both halves — this file being a Tailwind entry, and there being exactly one
+ * of them — are asserted by `test/brand-palette-*.test.ts` against the layer's
+ * shared preset.
+ */
 @import "@uxfront/layer-docs/app/assets/css/main.css";
 
 /*
