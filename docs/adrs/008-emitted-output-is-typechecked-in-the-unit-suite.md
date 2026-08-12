@@ -211,7 +211,17 @@ Written now, cold:
 - **`angular` or `qwik` gains a tsconfig and framework devDependencies** → add it to the sweep.
 - **The exclusion list crosses ~35 entries, or any `[emit]` entry passes its first birthday** →
   the gate is documenting rot instead of preventing it. Escalate the underlying defects rather than
-  growing the list.
+  growing the list. This trigger is only checkable because the `[emit]` entries point at tracked
+  issues — internal tracker UXF-199 (element refs type as `never`), UXF-200 (`untrack` emitted
+  undeclared), UXF-201 (string `style` vs `CSSProperties`), UXF-202 (the systemic solid TS2322), all
+  filed 2026-08-12. **An `[emit]` entry added without an issue reference defeats this trigger and is
+  itself a defect.**
+- **Anyone proposes skipping, quarantining, or `it.skip`-ing `typecheck.test.ts`** → stop. The two
+  poison tests are the only thing separating this gate from the vacuous one it replaced, and
+  quarantining the file reverts it silently and invisibly — green suite, no gate. If the file is
+  flaky, fix the flake or delete the gate deliberately; do not let it decay into the exact failure
+  mode this ADR exists to prevent. This trigger was raised as the strongest argument against the
+  decision, and it is recorded here rather than answered away.
 - **The sweep exceeds ~30 s** → move it behind its own vitest project or CI shard rather than
   letting it tax every unit run. Baseline for this trigger is the re-measured **11.3 s**, leaving
   ~2.6× headroom. Worth stating plainly: against the draft's erroneous 68 s this trigger was already

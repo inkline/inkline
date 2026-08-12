@@ -18,8 +18,8 @@
  * - `angular` and `qwik` emit `.ts` / `.tsx` and could be swept, but have no tsconfig and their
  *   framework types (`@angular/core`, `@qwik.dev/core`) are not devDependencies of this package.
  * - `solid` emits `.tsx` and is otherwise ready, but 90 of the 98 fixtures that produce output fail,
- *   87 of them on the same repeated TS2322. Enabling it behind a 90-entry exclusion list would be a
- *   gate in name only; fix the systemic defect first, then add `solid` in that same PR.
+ *   87 of them on the same repeated TS2322 (UXF-202). Enabling it behind a 90-entry exclusion list
+ *   would be a gate in name only; fix the systemic defect first, then add `solid` in that same PR.
  */
 export const TYPECHECKED_TARGETS = ["react"] as const;
 
@@ -68,10 +68,16 @@ const EXCLUSIONS: Record<string, Record<string, string>> = {
     Diag_ModelTypeDrift: "TS18048 'props.count' possibly undefined — [emit], drift is the point",
 
     // ── [emit] no authoring-side counterpart: the emitted code is wrong ──
-    ElementRef: "TS2339 'focus' on type 'never' — [emit] `useRef(null)` drops the IR's elementType",
-    MultiRefs: "TS2339 'focus' on type 'never' — [emit] `useRef(null)` drops the IR's elementType",
-    UntrackBoundary: "TS2304 'untrack' — [emit] the call is emitted with no import; React has none",
-    PropDefaults: "TS2559 string vs CSSProperties — [emit] a string `style` prop is emitted as-is",
+    // Each of these is a tracked defect. An exclusion pointing at an untracked bug documents rot
+    // instead of preventing it, so an entry here without an issue reference is itself a defect.
+    ElementRef:
+      "TS2339 'focus' on type 'never' — [emit] `useRef(null)` drops the IR's elementType (UXF-199)",
+    MultiRefs:
+      "TS2339 'focus' on type 'never' — [emit] `useRef(null)` drops the IR's elementType (UXF-199)",
+    UntrackBoundary:
+      "TS2304 'untrack' — [emit] the call is emitted with no import; React has none (UXF-200)",
+    PropDefaults:
+      "TS2559 string vs CSSProperties — [emit] a string `style` prop is emitted as-is (UXF-201)",
   },
 };
 
