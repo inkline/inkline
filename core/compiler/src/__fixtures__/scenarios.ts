@@ -199,6 +199,12 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   DefineSlotBasic: [{ name: "renders structure", asserts: {} }],
   SlotInConditional: [{ name: "renders with conditional", asserts: {} }],
 
+  // ── Events ──
+  // Declared in both the options `events` object and `defineEmits`; INK0046 is a warning, so the
+  // fixture still compiles and keeps its conformance and per-target snapshot coverage — the
+  // diagnostic itself is asserted in `02-parse/index.test.ts`.
+  DuplicateEvent: [{ name: "collapses the duplicated event channel", asserts: {} }],
+
   // ── Scoped CSS ──
   ScopedStyle: [{ name: "renders with style", asserts: { textOf: { h1: "Hello" } } }],
 
@@ -223,5 +229,14 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   ],
   Diag_TransitionWithFor: [
     { name: "triggers INK0065", asserts: { expectedDiagnostics: ["INK0065"] } },
+  ],
+
+  // ── UXF-165: the two constructs that used to compile silently ──
+  EmitsNamedType: [{ name: "resolves the named emit type", asserts: {} }],
+  Diag_EmitsUnreadableType: [
+    { name: "triggers INK0042", asserts: { expectedDiagnostics: ["INK0042"] } },
+  ],
+  Diag_SlotOutsideRender: [
+    { name: "triggers INK0069", asserts: { expectedDiagnostics: ["INK0069"] } },
   ],
 };

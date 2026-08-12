@@ -74,9 +74,11 @@ restating it, so neither column is asserted.
 | INK0030 | error    | analyze  | createMemo cycle detected                                 |
 | INK0040 | error    | parse    | defineComponent must have a setup function                |
 | INK0041 | error    | parse    | defineComponent options must be a static object literal   |
+| INK0042 | error    | parse    | defineEmits type argument is not fully readable           |
 | INK0043 | error    | parse    | defineModel must be a [getter, setter] tuple, static name |
 | INK0044 | warning  | parse    | Model collides with a declared prop of the same name      |
 | INK0045 | info     | codegen  | Two-way binding and events are inert on the Astro target  |
+| INK0046 | warning  | parse    | Event is declared twice                                   |
 | INK0050 | warning  | lower    | Missing key in iteration                                  |
 | INK0060 | error    | lower    | `<Show>` requires a 'when' prop                           |
 | INK0061 | info     | lower    | Nullish-coalescing (??) in JSX is ambiguous               |
@@ -87,6 +89,7 @@ restating it, so neither column is asserted.
 | INK0066 | info     | codegen  | `<Transition>` on Angular needs manual animation setup    |
 | INK0067 | warning  | lower    | `<Slot>` name must be a string literal                    |
 | INK0068 | info     | codegen  | hasSlot() always returns true on Qwik and Angular         |
+| INK0069 | error    | lower    | `<Slot>` lowering cannot reach                            |
 | INK0070 | error    | lower    | Component-ref forwarding not yet supported                |
 | INK0071 | error    | parse    | JSX spread attributes are not supported                   |
 | INK0072 | warning  | lower    | Unknown ARIA attribute                                    |

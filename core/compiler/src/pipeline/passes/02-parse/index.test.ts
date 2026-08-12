@@ -291,4 +291,71 @@ describe("parsePass", () => {
   it("has name 'parse'", () => {
     expect(parsePass.name).toBe("parse");
   });
+
+  // An event declared in the options `events` object AND via `defineEmits` used to be concatenated,
+  // which emitted the name twice downstream (`defineEmits(["change", "change"])` on Vue).
+  describe("event declaration merge", () => {
+    async function parse(source: string) {
+      const ctx = makeCtx();
+      const artifact = await programPass.run({ fileName: "Events.ink.tsx", source }, ctx);
+      const module = parsePass.run(artifact, ctx);
+      const resolved = module instanceof Promise ? await module : module;
+      return { component: resolved.components[0]!, diagnostics: ctx.diagnostics.freeze() };
+    }
+
+    const collision = `
+      import { defineComponent, defineEmits } from "@inkline/core";
+      export default defineComponent({ events: { change: {}, close: {} } }, () => {
+        const emit = defineEmits<{ change: [value: string] }>();
+        return <button onClick={() => emit("change", "next")}>Go</button>;
+      });
+    `;
+
+    it("collapses a name declared in both options and defineEmits into one event", async () => {
+      const { component } = await parse(collision);
+      expect(component.events.map((e) => e.name)).toEqual(["change", "close"]);
+    });
+
+    it("keeps the defineEmits payload type for the collapsed event", async () => {
+      const { component } = await parse(collision);
+      // The options `events` map declares names only, so the setup declaration has to win or the
+      // payload tuple is lost.
+      expect(component.events.find((e) => e.name === "change")!.payloadType).toBeDefined();
+      expect(component.events.find((e) => e.name === "close")!.payloadType).toBeUndefined();
+    });
+
+    it("reports INK0046 at the losing declaration", async () => {
+      const { diagnostics } = await parse(collision);
+      const duplicate = diagnostics.filter((d) => d.code === "INK0046");
+      expect(duplicate).toHaveLength(1);
+      expect(duplicate[0]!.title).toContain("change");
+      // Points at `change: {}` inside the options object — the declaration to delete — not at the
+      // `defineEmits` line that wins.
+      expect(duplicate[0]!.loc.line).toBe(3);
+    });
+
+    it("leaves a component that declares events from a single source untouched", async () => {
+      const { component, diagnostics } = await parse(`
+        import { defineComponent, defineEmits } from "@inkline/core";
+        export default defineComponent(() => {
+          const emit = defineEmits<{ change: [value: string] }>();
+          return <button onClick={() => emit("change", "next")}>Go</button>;
+        });
+      `);
+      expect(component.events.map((e) => e.name)).toEqual(["change"]);
+      expect(diagnostics.filter((d) => d.code === "INK0046")).toHaveLength(0);
+    });
+
+    it("collapses a name repeated within defineEmits itself", async () => {
+      const { component, diagnostics } = await parse(`
+        import { defineComponent, defineEmits } from "@inkline/core";
+        export default defineComponent(() => {
+          const emit = defineEmits(["change", "change"]);
+          return <button onClick={() => emit("change")}>Go</button>;
+        });
+      `);
+      expect(component.events.map((e) => e.name)).toEqual(["change"]);
+      expect(diagnostics.filter((d) => d.code === "INK0046")).toHaveLength(1);
+    });
+  });
 });

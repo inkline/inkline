@@ -163,6 +163,19 @@ return (
 "
 `;
 
+exports[`solid full output snapshots > DuplicateEvent 1`] = `
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function DuplicateEvent(props: { onChange?: (value: string) => void; onClose?: (...args: any[]) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["onChange", "onClose"])
+return (
+<button {...__attrs} id="change" class={props.class} onclick={() => props.onChange?.("next")}>Change</button>
+)
+}
+"
+`;
+
 exports[`solid full output snapshots > DynamicList 1`] = `
 "import { createSignal, splitProps, For } from "solid-js";
 import type { JSX } from "solid-js";

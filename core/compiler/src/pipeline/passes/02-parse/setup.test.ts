@@ -17,9 +17,11 @@ function makeCtx(): PassContext {
   };
 }
 
-function parseSetupFromSource(code: string) {
+/** `preamble` is emitted between the import and the component, for file-scope type declarations. */
+function parseSetupFromSource(code: string, preamble = "") {
   const wrapped = `
-    import { createSignal, createMemo, createEffect, createRef, onMount, onCleanup, defineComponent } from "@inkline/core";
+    import { createSignal, createMemo, createEffect, createRef, onMount, onCleanup, defineComponent, defineEmits, Slot } from "@inkline/core";
+    ${preamble}
     const X = defineComponent(${code});
   `;
   const fileName = "test.tsx";
@@ -47,7 +49,7 @@ function parseSetupFromSource(code: string) {
   const ctx = makeCtx();
   const bindings = bindPrimitives(sf, ctx);
 
-  const varStmt = sf.statements[1] as ts.VariableStatement;
+  const varStmt = sf.statements.find(ts.isVariableStatement) as ts.VariableStatement;
   const init = varStmt.declarationList.declarations[0]!.initializer as ts.CallExpression;
   const setupFn = init.arguments[0] as ts.ArrowFunction;
 
@@ -174,6 +176,132 @@ describe("parseSetup", () => {
     // The stored expression should be the BinaryExpression 1 + 2, not the ArrowFunction.
     expect(ts.isArrowFunction(memoExpr)).toBe(false);
     expect(ts.isBinaryExpression(memoExpr)).toBe(true);
+  });
+
+  // UXF-165 / A4. `defineEmits<NamedType>()` used to fall through the type-literal check and declare
+  // zero events, while the author's `emit("close")` survived as a read of a prop nothing declares.
+  describe("defineEmits type argument", () => {
+    it("resolves a same-file type alias to its members", () => {
+      const { result, ctx } = parseSetupFromSource(
+        `() => {
+          const emit = defineEmits<MyEvents>();
+          return <div/>;
+        }`,
+        `type MyEvents = { close: []; resize: [width: number] };`,
+      );
+      expect(result.events.map((e) => e.name)).toEqual(["close", "resize"]);
+      expect(result.events[1]!.payloadType?.getText()).toBe("[width: number]");
+      expect(ctx.diagnostics.freeze()).toHaveLength(0);
+    });
+
+    it("resolves a same-file interface to its members", () => {
+      const { result, ctx } = parseSetupFromSource(
+        `() => {
+          const emit = defineEmits<MyEvents>();
+          return <div/>;
+        }`,
+        `interface MyEvents { close: []; }`,
+      );
+      expect(result.events.map((e) => e.name)).toEqual(["close"]);
+      expect(ctx.diagnostics.freeze()).toHaveLength(0);
+    });
+
+    it("refuses a type argument with no readable members (INK0042)", () => {
+      const { result, ctx } = parseSetupFromSource(
+        `() => {
+          const emit = defineEmits<Open | Close>();
+          return <div/>;
+        }`,
+        `type Open = { open: [] }; type Close = { close: [] };`,
+      );
+      expect(result.events).toHaveLength(0);
+      expect(ctx.diagnostics.freeze().map((d) => d.code)).toEqual(["INK0042"]);
+    });
+
+    // The named declaration's members are the uninstantiated ones, so reading them verbatim would
+    // be wrong rather than merely incomplete.
+    it("refuses a generic instantiation (INK0042)", () => {
+      const { ctx } = parseSetupFromSource(
+        `() => {
+          const emit = defineEmits<Events<string>>();
+          return <div/>;
+        }`,
+        `type Events<T> = { change: [value: T] };`,
+      );
+      expect(ctx.diagnostics.freeze().map((d) => d.code)).toEqual(["INK0042"]);
+    });
+
+    // UXF-165 review B1: `decl.members` is an interface's *own* members, so an inherited event was
+    // dropped silently — and the same-file check never sees a `Base` that lives in another module.
+    it("refuses an interface with a heritage clause (INK0042)", () => {
+      const { result, ctx } = parseSetupFromSource(
+        `() => {
+          const emit = defineEmits<DialogEvents>();
+          return <div/>;
+        }`,
+        `interface Base { open: [] } interface DialogEvents extends Base { close: [] }`,
+      );
+      expect(result.events).toHaveLength(0);
+      expect(ctx.diagnostics.freeze().map((d) => d.code)).toEqual(["INK0042"]);
+    });
+
+    // UXF-165 review B2: declaration merging spreads the members across several declarations, and
+    // only the first one found was read.
+    it("refuses a merged interface declaration (INK0042)", () => {
+      const { result, ctx } = parseSetupFromSource(
+        `() => {
+          const emit = defineEmits<Ev>();
+          return <div/>;
+        }`,
+        `interface Ev { close: [] } interface Ev { open: [] }`,
+      );
+      expect(result.events).toHaveLength(0);
+      expect(ctx.diagnostics.freeze().map((d) => d.code)).toEqual(["INK0042"]);
+    });
+
+    it("leaves the runtime array form untouched", () => {
+      const { result, ctx } = parseSetupFromSource(`() => {
+        const emit = defineEmits(["change"]);
+        return <div/>;
+      }`);
+      expect(result.events.map((e) => e.name)).toEqual(["change"]);
+      expect(result.events[0]!.payloadType).toBeUndefined();
+      expect(ctx.diagnostics.freeze()).toHaveLength(0);
+    });
+  });
+
+  // UXF-165 / A5. A `<Slot>` the render walk never reaches declared no slot and was emitted verbatim
+  // against a `Slot` no target imports.
+  describe("<Slot> outside the render tree", () => {
+    it("refuses a <Slot> in a helper function declaration (INK0069)", () => {
+      const { ctx } = parseSetupFromSource(`() => {
+        function renderIcon() {
+          return <Slot name="icon" />;
+        }
+        return <div>{renderIcon()}</div>;
+      }`);
+      expect(ctx.diagnostics.freeze().map((d) => d.code)).toEqual(["INK0069"]);
+    });
+
+    it("refuses a <Slot> in a setup-body arrow local (INK0069)", () => {
+      const { ctx } = parseSetupFromSource(`() => {
+        const renderIcon = () => <Slot name="icon" />;
+        return <div>{renderIcon()}</div>;
+      }`);
+      expect(ctx.diagnostics.freeze().map((d) => d.code)).toEqual(["INK0069"]);
+    });
+
+    it("accepts a <Slot> in the returned render tree", () => {
+      const { ctx } = parseSetupFromSource(`() => {
+        return <div><Slot name="icon" /></div>;
+      }`);
+      expect(ctx.diagnostics.freeze()).toHaveLength(0);
+    });
+
+    it("accepts a <Slot> in a concise arrow body", () => {
+      const { ctx } = parseSetupFromSource(`() => <div><Slot name="icon" /></div>`);
+      expect(ctx.diagnostics.freeze()).toHaveLength(0);
+    });
   });
 
   describe("defineSlot", () => {

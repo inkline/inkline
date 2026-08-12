@@ -31,3 +31,19 @@ describe("TypedEvent: onMouseMove reading e.clientX / e.clientY into a signal", 
     expect(out).toContain("{pos.x}");
   });
 });
+
+// ---------------------------------------------------------------------------
+// DuplicateEvent: `change` declared in both the options `events` object and `defineEmits`.
+// Focus: the merge keeps ONE callback prop per name, and the surviving declaration is the
+// `defineEmits` one — the only source that can carry a payload tuple. `close`, declared in the
+// options object alone, keeps the untyped fallback signature.
+// ---------------------------------------------------------------------------
+describe("DuplicateEvent: the same event declared in options and defineEmits", () => {
+  it("React: one callback prop per name; the defineEmits payload type wins", async () => {
+    const out = await compileTo("DuplicateEvent", "react");
+    expect(out).toContain(
+      "props: { onChange?: (value: string) => void; onClose?: (...args: any[]) => void }",
+    );
+    expect(out).toContain("const { onChange, onClose, ...__attrs } = props");
+  });
+});

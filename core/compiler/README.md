@@ -257,6 +257,13 @@ value — so a single-value tuple unwraps (`change = output<string>()`), an empt
 (`emit("move", x, y)` → `this.move.emit([x, y])`). Declaring events with the runtime array form
 (`defineEmits(["change"])`) leaves them untyped.
 
+Events can also be declared in the options object (`events: { change: {} }`), which names them without
+a payload. Declaring the same name in both places is redundant, not additive: the two declarations
+collapse into a single event channel, **the `defineEmits` declaration wins** — it is the only one that
+can carry a payload tuple — and the redundant options entry is reported as `INK0046` (a warning). The
+surviving declaration keeps the position of the first one, so emitted event order still follows the
+options object. Declare each event in one place or the other, never both.
+
 ### Slots
 
 A component declares its slots in the options object and renders them with the `<Slot>` component
