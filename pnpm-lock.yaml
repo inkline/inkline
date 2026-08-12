@@ -109,8 +109,8 @@ catalogs:
       specifier: ^8.61.0
       version: 8.61.0
     '@uxfront/layer-docs':
-      specifier: ^0.2.1
-      version: 0.2.1
+      specifier: ^0.3.0
+      version: 0.3.0
     '@vitejs/plugin-react':
       specifier: ^6.0.2
       version: 6.0.2
@@ -288,7 +288,7 @@ importers:
         version: 8.2.2(@nuxt/schema@4.4.8)(magicast@0.5.3)(nuxt@4.4.8(eb09a26a472bd3f66dc9f3ecfc64ce38))(vite@8.0.10(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.2)(sass@1.99.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))(vue@3.5.38(@typescript/typescript6@6.0.2))(zod@3.25.76)
       '@uxfront/layer-docs':
         specifier: 'catalog:'
-        version: 0.2.1(ba54c873c0f5dc410dd8d0d0d21df907)
+        version: 0.3.0(18ef11553ab9428307420b9bb5c446b8)
       better-sqlite3:
         specifier: ^12.10.1
         version: 12.11.1
@@ -7224,8 +7224,8 @@ packages:
     peerDependencies:
       vue: '>=3.5.18'
 
-  '@uxfront/layer-docs@0.2.1':
-    resolution: {integrity: sha512-gb9ErdeymmbX5EboFnnTXcfuexDtDXMNrEbqbm3+86Kuh+ee3wCFTLt+8sFroO16gv5T9R6r7a7bWMuHW1bvwg==}
+  '@uxfront/layer-docs@0.3.0':
+    resolution: {integrity: sha512-5LdPCxbzeVEVcYCoSmGFuuZRp524ifiCTALhgfES5bOLuEFNMWaYOUrb0OZUnR32eOIHiGyZMqNwHMOZ/Ebtgg==}
     peerDependencies:
       '@nuxt/content': ^3.14.0
       '@nuxt/image': ^1.11.0
@@ -7241,6 +7241,7 @@ packages:
       posthog-js: ^1.386.6
       tailwindcss: ^4.3.1
       typescript: ^6.0.3
+      vitest: ^4.1.10
       vue: ^3.5.38
     peerDependenciesMeta:
       '@nuxtjs/i18n':
@@ -7250,6 +7251,8 @@ packages:
       posthog-js:
         optional: true
       typescript:
+        optional: true
+      vitest:
         optional: true
 
   '@vercel/nft@1.10.2':
@@ -21803,7 +21806,7 @@ snapshots:
       unhead: 2.1.15
       vue: 3.5.38(@typescript/typescript6@6.0.2)
 
-  '@uxfront/layer-docs@0.2.1(ba54c873c0f5dc410dd8d0d0d21df907)':
+  '@uxfront/layer-docs@0.3.0(18ef11553ab9428307420b9bb5c446b8)':
     dependencies:
       '@nuxt/content': 3.15.0(@farmfe/core@1.7.11(@types/node@26.1.1))(@rspack/core@2.0.8(@swc/helpers@0.5.23))(better-sqlite3@12.11.1)(esbuild@0.28.1)(magicast@0.5.3)(rolldown@1.0.0-rc.17)(rollup@4.62.0)(valibot@1.4.1(@typescript/typescript6@6.0.2))(vite@8.0.10(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.2)(sass@1.99.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))(webpack@5.107.2(esbuild@0.28.1)(lightningcss@1.33.0)(postcss@8.5.19))
       '@nuxt/image': 1.11.0(db0@0.3.4(better-sqlite3@12.11.1))(ioredis@5.11.1)(magicast@0.5.3)
@@ -21827,6 +21830,7 @@ snapshots:
     optionalDependencies:
       '@nuxtjs/mdc': 0.22.2(magicast@0.5.3)
       typescript: '@typescript/typescript6@6.0.2'
+      vitest: 4.1.8(@types/node@26.1.1)(@vitest/coverage-v8@4.1.8)(happy-dom@20.10.3)(jsdom@29.1.1)(vite@8.0.10(@types/node@26.1.1)(esbuild@0.28.1)(jiti@2.7.0)(less@4.4.2)(sass@1.99.0)(terser@5.48.0)(tsx@4.22.4)(yaml@2.9.0))
     transitivePeerDependencies:
       - '@emotion/is-prop-valid'
       - react
