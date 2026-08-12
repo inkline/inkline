@@ -8,7 +8,6 @@
     "noEmit": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "types": ["@types/react"]
-  },
-  "include": ["../__emitted__/**/*.tsx"]
+    "types": ["react"]
+  }
 }

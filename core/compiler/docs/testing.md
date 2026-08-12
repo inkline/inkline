@@ -72,7 +72,11 @@ Compile a named fixture through the full pipeline for one or more targets. Retur
 
 ### `typecheckEmittedForTarget(conformance, files)`
 
-Run `tsc` against the emitted files using the target-specific tsconfig. Verifies that emitted code is type-safe.
+Typecheck the emitted files with the TypeScript compiler API, using the target-specific tsconfig. Returns `checkedFiles` — how many files actually reached the compiler — so a caller can tell a real pass from an empty run. A missing or unreadable tsconfig fails rather than passing.
+
+Only files `tsc` can read (`.ts`, `.tsx`) are checked; `.vue`, `.svelte` and `.astro` output needs `vue-tsc` / `svelte-check` / `astro check` and is not covered. Which targets and fixtures the sweep gates today, and why the rest are skipped, is recorded in [`src/testing/typecheck-fixtures.ts`](../src/testing/typecheck-fixtures.ts).
+
+Note that `compileToChecked` (`src/testing/codegen.ts`) is a different assertion: it checks that the _compiler_ emitted no error diagnostics, not that the _generated code_ typechecks. The two are independent — output can be diagnostic-clean and still not compile.
 
 ### `lintEmittedForTarget(conformance, files)`
 

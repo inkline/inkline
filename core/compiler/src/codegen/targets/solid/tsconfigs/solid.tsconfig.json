@@ -8,8 +8,6 @@
     "strict": true,
     "noEmit": true,
     "skipLibCheck": true,
-    "esModuleInterop": true,
-    "types": ["solid-js"]
-  },
-  "include": ["../__emitted__/**/*.tsx"]
+    "esModuleInterop": true
+  }
 }
