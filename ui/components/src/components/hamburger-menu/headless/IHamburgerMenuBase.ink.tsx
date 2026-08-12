@@ -9,21 +9,24 @@ export interface HamburgerMenuBaseProps {
   disabled?: boolean;
 }
 
-export default defineComponent({ meta: { headless: true } }, (props: HamburgerMenuBaseProps) => {
-  // Two-way disclosure state: an `open` prop + paired `update:open` event, so a parent can `$bind:open`.
-  const [open, setOpen] = defineModel<boolean>("open");
+export default defineComponent(
+  { models: { open: Boolean }, meta: { headless: true } },
+  (props: HamburgerMenuBaseProps) => {
+    // Two-way disclosure state: an `open` prop + paired `update:open` event, so a parent can `$bind:open`.
+    const [open, setOpen] = defineModel<boolean>("open");
 
-  return (
-    <button
-      class="hamburger-menu"
-      type="button"
-      aria-expanded={open() ? "true" : "false"}
-      aria-controls={props.ariaControls ?? ""}
-      aria-label={props.ariaLabel ?? "Toggle menu"}
-      disabled={props.disabled}
-      onClick={() => setOpen(!open())}
-    >
-      <span class="hamburger-menu-inner" aria-hidden="true" />
-    </button>
-  );
-});
+    return (
+      <button
+        class="hamburger-menu"
+        type="button"
+        aria-expanded={open() ? "true" : "false"}
+        aria-controls={props.ariaControls ?? ""}
+        aria-label={props.ariaLabel ?? "Toggle menu"}
+        disabled={props.disabled}
+        onClick={() => setOpen(!open())}
+      >
+        <span class="hamburger-menu-inner" aria-hidden="true" />
+      </button>
+    );
+  },
+);

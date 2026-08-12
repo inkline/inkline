@@ -40,35 +40,38 @@ export interface CheckboxControlBaseProps {
 // collapses to an empty binding there). Correct on all seven targets: React's host-only attribute
 // canonicalisation (INK-26 / #515) forwards the `readonly` prop verbatim across the styled→headless
 // boundary, so the value reaches this control everywhere.
-export default defineComponent({ meta: { headless: true } }, (props: CheckboxControlBaseProps) => {
-  const [checked, setChecked] = defineModel<boolean>("checked");
-  const controlRef = createRef<HTMLInputElement>();
+export default defineComponent(
+  { models: { checked: Boolean }, meta: { headless: true } },
+  (props: CheckboxControlBaseProps) => {
+    const [checked, setChecked] = defineModel<boolean>("checked");
+    const controlRef = createRef<HTMLInputElement>();
 
-  createEffect(() => {
-    const el = controlRef.current;
-    if (el) {
-      el.indeterminate = props.indeterminate ?? false;
-    }
-  });
-
-  return (
-    <input
-      ref={controlRef}
-      class="checkbox-field"
-      type="checkbox"
-      id={props.id}
-      name={props.name}
-      checked={checked() ?? false}
-      indeterminate={props.indeterminate ?? false}
-      disabled={props.disabled}
-      required={props.required}
-      aria-readonly={props.readonly ? "true" : undefined}
-      onClick={(e: { preventDefault: () => void }) => props.readonly && e.preventDefault()}
-      onChange={(e: { currentTarget: HTMLInputElement }) =>
-        props.readonly
-          ? (e.currentTarget.checked = checked() ?? false)
-          : setChecked(e.currentTarget.checked)
+    createEffect(() => {
+      const el = controlRef.current;
+      if (el) {
+        el.indeterminate = props.indeterminate ?? false;
       }
-    />
-  );
-});
+    });
+
+    return (
+      <input
+        ref={controlRef}
+        class="checkbox-field"
+        type="checkbox"
+        id={props.id}
+        name={props.name}
+        checked={checked() ?? false}
+        indeterminate={props.indeterminate ?? false}
+        disabled={props.disabled}
+        required={props.required}
+        aria-readonly={props.readonly ? "true" : undefined}
+        onClick={(e: { preventDefault: () => void }) => props.readonly && e.preventDefault()}
+        onChange={(e: { currentTarget: HTMLInputElement }) =>
+          props.readonly
+            ? (e.currentTarget.checked = checked() ?? false)
+            : setChecked(e.currentTarget.checked)
+        }
+      />
+    );
+  },
+);

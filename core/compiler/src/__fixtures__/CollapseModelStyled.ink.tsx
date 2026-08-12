@@ -7,8 +7,11 @@ export interface CollapseModelStyledProps extends CollapseModelBaseProps {
   variant?: "a" | "b";
 }
 
-export default defineComponent({ meta: { headless: true } }, (props: CollapseModelStyledProps) => {
-  const [open, _setOpen] = defineModel<boolean>("open");
-  const className = createMemo(() => (open() ? "cm--open" : "cm--closed"));
-  return <CollapseModelBase class={className()} $bind:open={open} disabled={props.disabled} />;
-});
+export default defineComponent(
+  { models: { open: Boolean }, meta: { headless: true } },
+  (props: CollapseModelStyledProps) => {
+    const [open, _setOpen] = defineModel<boolean>("open");
+    const className = createMemo(() => (open() ? "cm--open" : "cm--closed"));
+    return <CollapseModelBase class={className()} $bind:open={open} disabled={props.disabled} />;
+  },
+);

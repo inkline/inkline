@@ -94,6 +94,24 @@ The config in [`vite.config.ts`](./vite.config.ts) deliberately leaves `coverage
 5. Re-export from [`src/components/index.ts`](./src/components/index.ts) — the per-framework `.inkline/` barrels (`index.ts`, `headless.ts`, `stories.ts`) are generated automatically.
 6. Add a changeset for the seven framework packages (assuming a meaningful release).
 
+## Two-way models
+
+A setup body that calls `defineModel<T>("name")` **must also declare that model in the options object**:
+
+```tsx
+export default defineComponent(
+  { models: { checked: Boolean }, meta: { headless: true } },
+  (props: SwitchControlBaseProps) => {
+    const [checked, setChecked] = defineModel<boolean>("checked");
+    // …
+  },
+);
+```
+
+`options.models` is a type-only channel — no target reads it, so declaring it changes no emitted output. It exists so a _parent's_ type-checker sees `checked` and `$bind:checked` at JSX attribute position. Omit it and the compiler reports `INK0094`; the parent then binds a prop its checker never learned about.
+
+Every component here already declares its models. To migrate a batch, run `pnpm --filter @inkline/compiler run codemod:declare-models <files…>` (add `--dry-run` first) and then `vp fmt`.
+
 ## Pitfalls
 
 - **Do not edit anything under `ui/<framework>/.inkline/` or `ui/<framework>/.styleframe/`.** Both are rebuilt on every compile; your edits will be lost.

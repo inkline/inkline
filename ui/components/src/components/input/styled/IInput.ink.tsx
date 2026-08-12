@@ -37,7 +37,7 @@ export interface InputProps extends InputControlBaseProps {
  * via `$bind:value`. To attach controls outside the field, wrap them in `IFieldGroup`.
  */
 export default defineComponent(
-  { meta: { headless: true }, slots: { prefix: {}, suffix: {} } },
+  { models: { value: String }, meta: { headless: true }, slots: { prefix: {}, suffix: {} } },
   (props: InputProps) => {
     const [value, _setValue] = defineModel<string>("value");
 

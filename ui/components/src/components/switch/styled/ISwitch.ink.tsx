@@ -30,7 +30,7 @@ export interface SwitchProps extends SwitchControlBaseProps {
  * name. Space toggles natively and Enter is handled explicitly.
  */
 export default defineComponent(
-  { meta: { headless: true }, slots: { default: {} } },
+  { models: { checked: Boolean }, meta: { headless: true }, slots: { default: {} } },
   (props: SwitchProps) => {
     const [checked, _setChecked] = defineModel<boolean>("checked");
 

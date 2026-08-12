@@ -49,41 +49,44 @@ export interface RadioGroupProps extends RadioGroupBaseProps {
  * map to the styleframe recipe axes. Two-way `value` uses the binding idiom (`$bind:value`); on the
  * static Astro target it lowers to one-way (INK0045).
  */
-export default defineComponent({ meta: { headless: true } }, (props: RadioGroupProps) => {
-  const [value, setValue] = defineModel<string>("value");
+export default defineComponent(
+  { models: { value: String }, meta: { headless: true } },
+  (props: RadioGroupProps) => {
+    const [value, setValue] = defineModel<string>("value");
 
-  const items = createMemo(() => props.options ?? []);
-  const groupClassName = createMemo(() =>
-    radioGroupRecipe({ orientation: props.orientation, size: props.size }),
-  );
-  const radioClassName = createMemo(() => radioRecipe({ size: props.size }));
-  const fieldClassName = createMemo(() =>
-    radioFieldRecipe({ color: props.color, size: props.size }),
-  );
+    const items = createMemo(() => props.options ?? []);
+    const groupClassName = createMemo(() =>
+      radioGroupRecipe({ orientation: props.orientation, size: props.size }),
+    );
+    const radioClassName = createMemo(() => radioRecipe({ size: props.size }));
+    const fieldClassName = createMemo(() =>
+      radioFieldRecipe({ color: props.color, size: props.size }),
+    );
 
-  return (
-    <IRadioGroupBase
-      id={props.id}
-      label={props.label}
-      readonly={props.readonly}
-      class={groupClassName()}
-    >
-      <For each={items()} key={(option) => option.value}>
-        {(option) => (
-          <IRadioBase class={radioClassName()}>
-            <IRadioFieldBase
-              class={fieldClassName()}
-              name={props.name}
-              value={option.value}
-              checked={value() === option.value}
-              disabled={props.disabled || option.disabled}
-              readonly={props.readonly}
-              onChange={() => setValue(option.value)}
-            />
-            <span class="radio-label">{option.label ?? option.value}</span>
-          </IRadioBase>
-        )}
-      </For>
-    </IRadioGroupBase>
-  );
-});
+    return (
+      <IRadioGroupBase
+        id={props.id}
+        label={props.label}
+        readonly={props.readonly}
+        class={groupClassName()}
+      >
+        <For each={items()} key={(option) => option.value}>
+          {(option) => (
+            <IRadioBase class={radioClassName()}>
+              <IRadioFieldBase
+                class={fieldClassName()}
+                name={props.name}
+                value={option.value}
+                checked={value() === option.value}
+                disabled={props.disabled || option.disabled}
+                readonly={props.readonly}
+                onChange={() => setValue(option.value)}
+              />
+              <span class="radio-label">{option.label ?? option.value}</span>
+            </IRadioBase>
+          )}
+        </For>
+      </IRadioGroupBase>
+    );
+  },
+);

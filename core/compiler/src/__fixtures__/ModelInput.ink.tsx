@@ -1,6 +1,6 @@
 import { defineComponent, defineModel } from "@inkline/core";
 
-export default defineComponent(() => {
+export default defineComponent({ models: { value: String } }, () => {
   const [value, setValue] = defineModel<string>("value");
   return (
     <div>

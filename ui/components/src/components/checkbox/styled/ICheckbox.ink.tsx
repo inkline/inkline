@@ -30,7 +30,7 @@ export interface CheckboxProps extends CheckboxControlBaseProps {
  * `aria-readonly` and a click guard). The checked accent is the theme primary.
  */
 export default defineComponent(
-  { meta: { headless: true }, slots: { default: {} } },
+  { models: { checked: Boolean }, meta: { headless: true }, slots: { default: {} } },
   (props: CheckboxProps) => {
     const [checked, _setChecked] = defineModel<boolean>("checked");
 

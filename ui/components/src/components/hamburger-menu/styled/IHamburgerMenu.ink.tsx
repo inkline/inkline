@@ -19,25 +19,28 @@ export interface HamburgerMenuProps extends HamburgerMenuBaseProps {
   animation?: HamburgerMenuStylingProps["animation"];
 }
 
-export default defineComponent({ meta: { headless: true } }, (props: HamburgerMenuProps) => {
-  const [open, _setOpen] = defineModel<boolean>("open");
+export default defineComponent(
+  { models: { open: Boolean }, meta: { headless: true } },
+  (props: HamburgerMenuProps) => {
+    const [open, _setOpen] = defineModel<boolean>("open");
 
-  const className = createMemo(() =>
-    hamburgerMenuRecipe({
-      color: props.color,
-      size: props.size,
-      animation: props.animation,
-      active: open() ? "true" : "false",
-    }),
-  );
+    const className = createMemo(() =>
+      hamburgerMenuRecipe({
+        color: props.color,
+        size: props.size,
+        animation: props.animation,
+        active: open() ? "true" : "false",
+      }),
+    );
 
-  return (
-    <IHamburgerMenuBase
-      class={className()}
-      $bind:open={open}
-      ariaLabel={props.ariaLabel}
-      ariaControls={props.ariaControls}
-      disabled={props.disabled}
-    />
-  );
-});
+    return (
+      <IHamburgerMenuBase
+        class={className()}
+        $bind:open={open}
+        ariaLabel={props.ariaLabel}
+        ariaControls={props.ariaControls}
+        disabled={props.disabled}
+      />
+    );
+  },
+);

@@ -6,17 +6,20 @@ export interface CollapseModelBaseProps {
   disabled?: boolean;
 }
 
-export default defineComponent({ meta: { headless: true } }, (props: CollapseModelBaseProps) => {
-  const [open, setOpen] = defineModel<boolean>("open");
-  return (
-    <button
-      class="cm"
-      type="button"
-      aria-expanded={open() ? "true" : "false"}
-      disabled={props.disabled}
-      onClick={() => setOpen(!open())}
-    >
-      <span class="cm-inner" aria-hidden="true" />
-    </button>
-  );
-});
+export default defineComponent(
+  { models: { open: Boolean }, meta: { headless: true } },
+  (props: CollapseModelBaseProps) => {
+    const [open, setOpen] = defineModel<boolean>("open");
+    return (
+      <button
+        class="cm"
+        type="button"
+        aria-expanded={open() ? "true" : "false"}
+        disabled={props.disabled}
+        onClick={() => setOpen(!open())}
+      >
+        <span class="cm-inner" aria-hidden="true" />
+      </button>
+    );
+  },
+);
