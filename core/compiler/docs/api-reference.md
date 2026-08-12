@@ -189,12 +189,19 @@ interface InklineConfig {
   readonly verbose?: boolean; // default: false
   readonly registry?: TargetRegistry; // default: builtinRegistry
   readonly barrels?: readonly BarrelGroup[];
+  readonly reportLevel?: DiagnosticSeverity; // default: "warning"
   readonly tsconfig?: string;
 }
 ```
 
 - `barrels` is consumed by `@inkline/cli` only; the compiler pipeline ignores it. When omitted, the
   CLI writes a single `index.ts` barrel containing every non-story component.
+- `reportLevel` is the lowest diagnostic severity reported, by `compile` and `check` alike. Read by
+  `@inkline/cli` only — the compiler pipeline ignores it and always produces every diagnostic it
+  finds. A level reports itself and everything above it, so the default `"warning"` withholds notes;
+  `"info"` reports everything. Typed as `DiagnosticSeverity` ([§5](#5-diagnostics)); the CLI applies
+  the default, so the key does not appear on `ResolvedCompilerOptions`. Also available as
+  `--report-level` on the CLI, which overrides the config value.
 - `tsconfig` points at a `tsconfig.json` whose ambient declarations are loaded into the per-file
   TypeScript program, so `import type` from generated modules resolves during prop analysis.
   Inkline's own compiler options (`jsx`, `jsxImportSource`, …) are always forced on top.
