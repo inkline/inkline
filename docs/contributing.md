@@ -76,10 +76,10 @@ If you only need part of the gate while iterating, use `vp check`, `vp lint`, `v
 pnpm run typecheck
 ```
 
-That is the whole supported surface, and it is exactly what CI's `typecheck` job runs. Two rules behind it, both learned the expensive way:
+That is the whole supported surface, and it is exactly what CI's `typecheck` job runs. Two rules behind it:
 
-- **Never run `tsc` from the repo root.** There is no root TypeScript install, so `npx tsc` reaches past the repo and resolves an unrelated `tsc` package from npm that checks nothing. The root ships a `tsc` bin ([`tooling/tsc-guard`](../tooling/tsc-guard/)) whose only job is to fail with this message instead of letting that happen.
-- **The build is not optional.** Package types resolve through each package's `exports` into `dist/`, so checking without building type-checks the code as it was _before_ your change and reports success. `pnpm run typecheck` builds first; the build is cached, so it is cheap when nothing changed.
+- **The build is not optional.** Package types resolve through each package's `exports` into `dist/`, so checking without building type-checks the code as it was _before_ your change and reports **success**. That is not hypothetical — it is the reason this script exists. `pnpm run typecheck` builds first; the build is cached, so it is cheap when nothing changed.
+- **`tsc` from the repo root is not the gate, and is not even TypeScript.** There is no root TypeScript install, so `npx tsc` reaches past the repo and resolves an unrelated `tsc` package from npm. It exits non-zero, so it cannot be read as a pass, but its message is about npx rather than your code — ignore it and run the script above.
 
 To run the real compiler against a single package, do it from inside that package — `cd <pkg> && node_modules/.bin/tsc --noEmit -p tsconfig.json` — where the package's own TypeScript and tsconfig are what resolve.
 

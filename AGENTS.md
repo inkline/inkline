@@ -22,8 +22,7 @@ Run `vp env doctor` if anything about the toolchain looks wrong, and `vp help` f
 core/        @inkline/core (authoring primitives), @inkline/compiler,
              @inkline/plugin (unplugin), @inkline/config-loader, inkline (barrel)
 tooling/     @inkline/cli, @inkline/storybook, @inkline/test-utils,
-             @inkline/agents-check (docs link-integrity test),
-             @inkline/tsc-guard (root `tsc` bin — fails, points at the gate)
+             @inkline/agents-check (docs link-integrity test)
 testing/     @inkline/e2e (Playwright cross-framework visual-parity tests)
 ui/          @inkline/components (single source of truth) + 7 framework output packages
 apps/        website (docs site), storybook (unified aggregator for all 7 frameworks)

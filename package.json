@@ -32,7 +32,6 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.31.0",
-    "@inkline/tsc-guard": "workspace:*",
     "concurrently": "catalog:",
     "vite-plus": "catalog:",
     "wait-on": "^9.0.10"
