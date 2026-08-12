@@ -50,8 +50,8 @@ export interface InklineConfig {
    * Lowest diagnostic severity a build reports. Consumed by `@inkline/cli` only — the compiler
    * pipeline ignores this field and always produces every diagnostic it finds; this only decides
    * which of them are printed. A level reports itself and everything above it, so `"warning"`
-   * withholds `info` notes. Omitted, the CLI reports from `"info"` for a one-shot build and from
-   * `"warning"` under `--watch`, and `--report-level` overrides either.
+   * withholds `info` notes. Omitted, the CLI reports from `"warning"` — on `compile`, its `--watch`
+   * loop and `check` alike — and `--report-level` overrides it.
    */
   readonly reportLevel?: DiagnosticSeverity;
   /**
