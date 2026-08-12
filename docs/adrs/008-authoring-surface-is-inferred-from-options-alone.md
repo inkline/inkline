@@ -19,7 +19,7 @@ as written, B2 ships as decided, and the alternative discussed below is closed.
 
 ### Why a sentence is worth an ADR
 
-ADR-006's top *Bad* consequence already admits that `options.models` is "a hand-maintained duplicate
+ADR-006's top _Bad_ consequence already admits that `options.models` is "a hand-maintained duplicate
 of what the compiler already derives … That is a lie surface." But Decision 1 tells the next reader
 that inference reads the setup body — and if it did, the duplicate would be unnecessary. The record
 therefore reads as though the double-declaration objection had been considered and handled.
@@ -34,7 +34,7 @@ made once. Left standing, the sentence guarantees the same loop runs again.
 Reproduced for this record on `70a7735e4` against the repo's default-catalog TypeScript **7.0.2**
 (`pnpm-workspace.yaml:96`; the earlier UXF-176 run used the `ts6` catalog's 6.0.3 — same result on
 both). `defineComponent` was given the most permissive signature that could possibly work — generic
-in *both* argument positions, `<O extends ComponentOptions, S extends (props: any) => any>` — and fed
+in _both_ argument positions, `<O extends ComponentOptions, S extends (props: any) => any>` — and fed
 the real `IHamburgerMenuBase.ink.tsx` body, whose line 14 is
 `const [open, setOpen] = defineModel<boolean>("open")`. Assigning each inferred type to a
 `unique symbol` makes the compiler print what it inferred:
@@ -46,7 +46,7 @@ error TS2322: Type '"meta"' is not assignable to type 'unique symbol'.
 ```
 
 The third line is the whole answer. **The complete set of keys reachable from both inference sites is
-`"meta"`.** `open` appears nowhere. Note that the first line is *generous*: this variant returns the
+`"meta"`.** `open` appears nowhere. Note that the first line is _generous_: this variant returns the
 setup body's locals as an object, so the model's type is visible in the setup function's own type —
 and even then it never reaches the surface, because a component's authoring type is derived from the
 options, and `keyof O` is `"meta"`.
@@ -89,8 +89,8 @@ channel that would work is already occupied and inert — a setup body returns t
 
 ### Receipt 3 — why the duplication exists, and why it is a constraint
 
-The sharper form of the objection is not "derive it from `defineModel`" — it is *"why a new key at
-all; put `open?: boolean` in the props interface I already write."* That interface **already** flows
+The sharper form of the objection is not "derive it from `defineModel`" — it is _"why a new key at
+all; put `open?: boolean` in the props interface I already write."_ That interface **already** flows
 to the type for free, via the setup parameter annotation — the second inference site, and the
 options-taking overload every authored component without an `options.props` map resolves to
 (`core/core/src/index.ts:152-155`):
@@ -111,9 +111,9 @@ The compiler closes it, deliberately:
   declared prop.
 - `core/compiler/src/pipeline/passes/02-parse/index.ts:61-66` — every model whose name collides with
   a declared prop raises **INK0044** (`ctx.diagnostics.push` at `:64`; severity `warning`,
-  `core/compiler/src/core/diagnostics/codes.ts:30-35`): *"Model 'open' collides with a declared prop
+  `core/compiler/src/core/diagnostics/codes.ts:30-35`): _"Model 'open' collides with a declared prop
   of the same name … Remove the duplicate prop; defineModel already declares the prop and its update
-  event."*
+  event."_
 
 That is UXF-135 V2's exact measured failure mode, rejected once already and recorded in ADR-006. So
 the one channel TypeScript reads for free is the one the compiler forbids. `options.models` exists
@@ -142,7 +142,7 @@ sound and worth recording, because it is the case the recommendation itself name
 B2 is measured end to end and B3 is a verified type mechanism and nothing more; B2's +3 catches are
 measured and staged, and a spike delays every one of them; `defineModel<boolean>("open")` is named,
 greppable, and the shape Vue authors already know, so trading it for a destructured context
-parameter is an authoring-experience regression in a *different* direction; and B3 surrenders the
+parameter is an authoring-experience regression in a _different_ direction; and B3 surrenders the
 inertness of `options.models`, which is the property that made B2 lowering-safe across seven targets.
 
 ## Decision
@@ -206,7 +206,7 @@ from the whole-ADR supersede rule in [README.md](./README.md), and it is the fir
   someone auditing the chain will have to read to find out which is which.
 - **Receipt 1 is a probe, not the shipped code.** It measures `defineComponent` as it exists on
   `70a7735e4`, where the options-taking overload is not yet generic in `O` — the generic form arrives
-  with UXF-178. The finding is about where inference sites *can* exist at all, so it survives that
+  with UXF-178. The finding is about where inference sites _can_ exist at all, so it survives that
   change, but it will not have been re-run against the shipped signature until UXF-178 lands.
 - **B3 is closed on an unmeasured cost.** Its compiler and lowering price was never established;
   the decision to close it accepts that a cheap option may have been declined. Recorded plainly so
