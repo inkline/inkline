@@ -9,7 +9,7 @@ import { compileTo } from "../../../../testing/codegen.ts";
 describe("ElementRef: single template ref bound + focused on mount", () => {
   it("Solid: ref callback assigns the bare let var, hook calls .focus() directly", async () => {
     const out = await compileTo("ElementRef", "solid");
-    expect(out).toContain("let inputRef: HTMLElement | undefined");
+    expect(out).toContain("let inputRef: HTMLInputElement | undefined");
     expect(out).toContain("ref={(el) => inputRef = el}");
     // Solid refs hold the element directly, so no `.current`/`.value`.
     expect(out).toContain("onMount(() => { inputRef?.focus(); })");
@@ -24,8 +24,8 @@ describe("ElementRef: single template ref bound + focused on mount", () => {
 describe("MultiRefs: two independent refs on sibling elements", () => {
   it("Solid: each ref gets its own let var and callback binding", async () => {
     const out = await compileTo("MultiRefs", "solid");
-    expect(out).toContain("let inputRef: HTMLElement | undefined");
-    expect(out).toContain("let buttonRef: HTMLElement | undefined");
+    expect(out).toContain("let inputRef: HTMLInputElement | undefined");
+    expect(out).toContain("let buttonRef: HTMLButtonElement | undefined");
     expect(out).toContain("ref={(el) => inputRef = el}");
     expect(out).toContain("ref={(el) => buttonRef = el}");
   });

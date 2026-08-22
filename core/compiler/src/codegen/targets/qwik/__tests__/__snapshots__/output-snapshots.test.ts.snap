@@ -202,7 +202,7 @@ exports[`qwik full output snapshots > ElementRef 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ElementRef = component$((props) =>
 {
-const inputRef = useSignal(null)
+const inputRef = useSignal<HTMLInputElement | null>(null)
 useVisibleTask$(() => { inputRef.value?.focus(); })
 const { ...__attrs } = props
 return (
@@ -383,8 +383,8 @@ exports[`qwik full output snapshots > MultiRefs 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const MultiRefs = component$((props) =>
 {
-const inputRef = useSignal(null)
-const buttonRef = useSignal(null)
+const inputRef = useSignal<HTMLInputElement | null>(null)
+const buttonRef = useSignal<HTMLButtonElement | null>(null)
 useVisibleTask$(() => { inputRef.value?.focus(); })
 const { ...__attrs } = props
 return (

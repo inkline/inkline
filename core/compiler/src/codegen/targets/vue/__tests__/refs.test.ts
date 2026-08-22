@@ -10,7 +10,7 @@ import { compileTo } from "../../../../testing/codegen.ts";
 describe("ElementRef: single template ref bound + focused on mount", () => {
   it("Vue: ref(null) in <script setup>, string ref binding, onMounted using .value", async () => {
     const out = await compileTo("ElementRef", "vue");
-    expect(out).toContain("const inputRef = ref(null)");
+    expect(out).toContain("const inputRef = ref<HTMLInputElement | null>(null)");
     expect(out).toContain("onMounted(() => { inputRef.value?.focus(); })");
     // Vue binds template refs by name, not by expression.
     expect(out).toContain('<input placeholder="auto-focus" ref="inputRef" />');

@@ -81,6 +81,30 @@ describe("refs", () => {
     expect(ctx.diagnostics.freeze()).toHaveLength(0);
   });
 
+  it("infers elementType from element tag without resolved deps", () => {
+    // The real pipeline never resolves ref-binding deps, so an element ref binding arrives with an
+    // empty `deps` array just like a component-instance one. Keying off `deps[0].symbolId` left
+    // `elementType` undefined and every target emitted an untyped ref — React's `useRef(null)`
+    // widens to `RefObject<null>`, so `.current?.focus()` resolved against `never` (UXF-199).
+    const refExpr = createExpr({ expr: mockExpr("myRef") });
+    expect(refExpr.deps).toHaveLength(0);
+    const el = createElement({
+      tag: "input",
+      refs: [{ ref: refExpr, category: "element", loc: UNKNOWN_LOCATION }],
+    });
+    const decl: IRRefDeclaration = {
+      name: "myRef",
+      symbolId: refSymbolId,
+      category: "element",
+      loc: UNKNOWN_LOCATION,
+    };
+    const ctx = makeCtx();
+    const result = refs(makeComp(el, [decl]), ctx);
+    expect(result.refs[0]!.category).toBe("element");
+    expect(result.refs[0]!.elementType).toBe("HTMLInputElement");
+    expect(ctx.diagnostics.freeze()).toHaveLength(0);
+  });
+
   it("defaults to HTMLElement for unknown tags", () => {
     const refExpr = createExpr({
       expr: mockExpr("myRef"),

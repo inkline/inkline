@@ -124,7 +124,7 @@ exports[`svelte full output snapshots > ElementRef 1`] = `
 "<script lang="ts">
   let { ...__attrs }: Record<string, any> = $props()
   $effect(() => { inputRef?.focus(); })
-  let inputRef = $state<HTMLElement | null>(null)
+  let inputRef = $state<HTMLInputElement | null>(null)
 </script>
 <input bind:this={inputRef} {...__attrs} placeholder="auto-focus" class={__attrs.class} />
 "
@@ -251,8 +251,8 @@ exports[`svelte full output snapshots > MultiRefs 1`] = `
 "<script lang="ts">
   let { ...__attrs }: Record<string, any> = $props()
   $effect(() => { inputRef?.focus(); })
-  let inputRef = $state<HTMLElement | null>(null)
-  let buttonRef = $state<HTMLElement | null>(null)
+  let inputRef = $state<HTMLInputElement | null>(null)
+  let buttonRef = $state<HTMLButtonElement | null>(null)
 </script>
 <div {...__attrs} class={__attrs.class}><input bind:this={inputRef} placeholder="focus me" /><button bind:this={buttonRef}>Click</button></div>
 "
