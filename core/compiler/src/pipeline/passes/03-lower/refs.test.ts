@@ -155,6 +155,50 @@ describe("refs", () => {
     expect(ctx.diagnostics.freeze()).toHaveLength(0);
   });
 
+  it("leaves undeclared bindings and unbound declarations alone", () => {
+    // Both link steps resolve a binding's identifier text against the declaration table, so a
+    // binding naming something that is not a declared ref must not invent an entry, and a
+    // declaration the render tree never binds must come back untouched.
+    const el = createElement({
+      tag: "input",
+      refs: [
+        {
+          ref: createExpr({ expr: mockExpr("myRef") }),
+          category: "element",
+          loc: UNKNOWN_LOCATION,
+        },
+        {
+          ref: createExpr({ expr: mockExpr("stray") }),
+          category: "element",
+          loc: UNKNOWN_LOCATION,
+        },
+      ],
+      children: [
+        createComponentInstance({
+          reference: ident("Button"),
+          refs: [
+            {
+              ref: createExpr({ expr: mockExpr("stray") }),
+              category: "element",
+              loc: UNKNOWN_LOCATION,
+            },
+          ],
+        }),
+      ],
+    });
+    const unboundSymbolId = "t#T::ref::unbound@1" as SymbolId;
+    const decls: IRRefDeclaration[] = [
+      { name: "myRef", symbolId: refSymbolId, category: "element", loc: UNKNOWN_LOCATION },
+      { name: "unbound", symbolId: unboundSymbolId, category: "element", loc: UNKNOWN_LOCATION },
+    ];
+    const ctx = makeCtx();
+    const result = refs(makeComp(el, decls), ctx);
+    expect(result.refs).toHaveLength(2);
+    expect(result.refs[0]!.elementType).toBe("HTMLInputElement");
+    expect(result.refs[1]).toBe(decls[1]);
+    expect(ctx.diagnostics.freeze()).toHaveLength(0);
+  });
+
   it("returns same component when no refs", () => {
     const el = createElement({ tag: "div" });
     const comp = makeComp(el);

@@ -40,7 +40,7 @@ export function refs(component: IRComponent, _ctx: PassContext): IRComponent {
     enter(node) {
       if (node.kind === "Element") {
         for (const ref of node.refs) {
-          const symbolId = refIdByName.get(ref.ref.expr.getText()) ?? ref.ref.deps[0]?.symbolId;
+          const symbolId = refIdByName.get(ref.ref.expr.getText());
           if (symbolId) {
             // An unmapped tag leaves `elementType` undefined rather than falling back to
             // `HTMLElement`. React's `RefObject<T>` is invariant, so a ref typed `HTMLElement` on an
