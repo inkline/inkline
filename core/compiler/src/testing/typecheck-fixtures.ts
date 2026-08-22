@@ -74,8 +74,6 @@ const EXCLUSIONS: Record<string, Record<string, string>> = {
       "TS2339 'focus' on type 'never' — [emit] `useRef(null)` drops the IR's elementType (UXF-199)",
     MultiRefs:
       "TS2339 'focus' on type 'never' — [emit] `useRef(null)` drops the IR's elementType (UXF-199)",
-    UntrackBoundary:
-      "TS2304 'untrack' — [emit] the call is emitted with no import; React has none (UXF-200)",
     PropDefaults:
       "TS2559 string vs CSSProperties — [emit] a string `style` prop is emitted as-is (UXF-201)",
   },

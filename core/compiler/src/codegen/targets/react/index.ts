@@ -40,6 +40,9 @@ const REWRITES: RewriteRules = {
   reactiveRead: { kind: "strip-call" },
   setterStyle: { kind: "function-call" },
   refAccess: { kind: "field", field: "current" },
+  // React's dependency array is compiler-computed and already omits the reads made inside the
+  // `untrack` callback, so the wrapper inlines away; React has no `untrack` to emit it as.
+  untrack: { kind: "unwrap" },
   jsxAttrCasing: "react",
   eventNameCase: "camel",
   members: {
