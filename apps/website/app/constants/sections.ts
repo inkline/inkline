@@ -8,10 +8,11 @@ import type { DocsSectionDescriptor } from "@uxfront/layer-docs/content";
  * `content/docs/<folder>/` subtree and it appears everywhere automatically.
  *
  * Content-IA topology (additive, grows page-by-page as the library grows):
- *   Getting Started → Guide → Components → Customization
+ *   Getting Started → Components → Customization
  *
  * Only sections with authored content are declared, so the nav never shows an
- * empty tab. `Customization` lands with its first page.
+ * empty tab. `Guide` returns when it has component-library content; its one
+ * former page was compiler material and is parked in `content/_compiler/`.
  */
 export interface DocsSection extends DocsSectionDescriptor {
   /** Sub-header label. */
@@ -32,13 +33,6 @@ export const DOCS_SECTIONS: readonly DocsSection[] = [
     label: "Getting Started",
     icon: "i-lucide-rocket",
     folder: "01.getting-started",
-  },
-  {
-    key: "guide",
-    slug: "guide",
-    label: "Guide",
-    icon: "i-lucide-book-open",
-    folder: "02.guide",
   },
   {
     key: "components",

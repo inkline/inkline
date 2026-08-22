@@ -25,7 +25,16 @@ export default defineNuxtConfig({
   },
   routeRules: {
     "/docs": {
-      redirect: "/docs/getting-started/installation",
+      redirect: "/docs/getting-started",
+    },
+    // The Guide section held one page, about the compiler — not what /docs
+    // documents. Both URLs shipped, so they redirect rather than 404 until the
+    // compiler tree exists to own the page (parked in content/_compiler/).
+    "/docs/guide": {
+      redirect: { to: "/docs/getting-started", statusCode: 301 },
+    },
+    "/docs/guide/architecture": {
+      redirect: { to: "/docs/getting-started", statusCode: 301 },
     },
   },
   // Storybook embed host. Empty by default → the component falls back to the

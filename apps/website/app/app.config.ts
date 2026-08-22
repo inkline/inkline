@@ -24,7 +24,7 @@ export default defineAppConfig({
     links: [
       {
         label: "Docs",
-        to: "/docs/getting-started/installation",
+        to: "/docs/getting-started",
         activeMatch: "/docs",
       },
       {
