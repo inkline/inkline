@@ -14,13 +14,21 @@ export default defineAppConfig({
     // was assignable.) Delete this directive once the layer widens the type.
     titleTemplate: "%s - Inkline",
     description:
-      "Write-once, compile-everywhere UI components for React, Vue, Svelte, Solid, Angular, Qwik and Astro.",
+      "One component library, native in seven frameworks — the same UI components as React, Vue, Svelte, Solid, Angular, Qwik and Astro packages.",
   },
   header: {
     title: "Inkline",
-    // logo: { alt, light, dark } — no header wordmark asset exists in the live
-    // tree yet (only the icon favicon at public/favicon.svg). Text title is used
-    // until a wordmark lands.
+    // Wordmark lockup: the committed brand mark (the #863bff glyph from
+    // public/favicon.svg, the same one main.css derives the palette from) beside
+    // the product name in the site's own type stack. `AppHeaderLogo` renders the
+    // image *instead of* `header.title`, never alongside it, so the name has to
+    // live inside the asset. Two files because the text flips with the colour
+    // mode; the mark lightens to #a06bff on dark for contrast against --ui-bg.
+    logo: {
+      alt: "Inkline",
+      light: "/logotype-light.svg",
+      dark: "/logotype-dark.svg",
+    },
     links: [
       {
         label: "Docs",
@@ -46,9 +54,50 @@ export default defineAppConfig({
   },
   footer: {
     credits: `Copyright © ${new Date().getFullYear()} Inkline`,
-    links: [],
+    // Flat link row (`AppFooterCenter` renders one horizontal menu, not a
+    // sitemap). The conventional legal row — Privacy · Terms · License — is not
+    // shippable: there is no LICENSE file in the v5 tree and no /license,
+    // /privacy or /terms page, so every one of those would 404 (UXF-185). These
+    // three all resolve today.
+    links: [
+      { label: "Docs", to: "/docs/getting-started/installation" },
+      { label: "Components", to: "/docs/components/button" },
+      {
+        label: "Contributing",
+        to: "https://github.com/inkline/inkline/blob/main/.github/CONTRIBUTING.md",
+        target: "_blank",
+      },
+    ],
   },
-  // socials: {} — no verified handles in the live tree; add when confirmed.
+  // Verified accounts only. `AppFooterRight` maps every key to
+  // `i-simple-icons-${key}` and appends GitHub automatically from `github.url` —
+  // a `github` key here would render the icon twice. The legacy Discord invite
+  // (discord.gg/2w5UGnK) is dead, so there is no `discord` key to add.
+  socials: {
+    x: "https://x.com/inkline",
+  },
+  toc: {
+    // Right-rail panel under the page TOC, on docs pages only. The layer reads
+    // `title` and `links`; a `storybook` link is deliberately absent while
+    // storybook.inkline.io still serves the v4 Vue-only library (UXF-170).
+    bottom: {
+      title: "Resources",
+      links: [
+        {
+          icon: "i-lucide-star",
+          label: "Star on GitHub",
+          to: "https://github.com/inkline/inkline",
+          target: "_blank",
+        },
+        {
+          icon: "i-lucide-bug",
+          label: "Report an issue",
+          to: "https://github.com/inkline/inkline/issues/new/choose",
+          target: "_blank",
+        },
+      ],
+    },
+  },
   ui: {
     // `primary` must match the `--color-purple` scale in assets/css/main.css.
     colors: {

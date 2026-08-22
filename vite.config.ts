@@ -10,7 +10,19 @@ export default defineConfig({
     // header. Formatting it would make every re-sync diff unreadable and fail the integrity check;
     // keeping it byte-identical is what makes re-syncing a plain `diff`. The provenance and the
     // procedure are in that file's own header — see core/core/scripts/generate-jsx.mjs.
-    ignorePatterns: [".context/**", ".old/**", "ui/**/.styleframe/**", "core/core/src/vendor/**"],
+    //
+    // `apps/website/content/**` is MDC, not CommonMark. Its component blocks open with `::name`
+    // and carry YAML props between `---` fences; the markdown formatter reads those as a setext
+    // heading underline and rewrites every one into `## ::name`, which destroys the page. That is
+    // how the previous homepage lost its call to action — it was authored correctly and mangled
+    // on commit by the `staged` hook above (UXF-198).
+    ignorePatterns: [
+      ".context/**",
+      ".old/**",
+      "ui/**/.styleframe/**",
+      "core/core/src/vendor/**",
+      "apps/website/content/**",
+    ],
   },
   lint: {
     // This list is what CI's Type Check job honours: `vp check --no-fmt --no-lint` skips lint

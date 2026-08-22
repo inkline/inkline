@@ -17,7 +17,7 @@ export default defineNuxtConfig({
   },
   site: {
     url: "https://inkline.io",
-    name: "Inkline — Write-once, compile-everywhere UI components",
+    name: "Inkline — One component library, native in seven frameworks",
   },
   llms: {
     domain: "https://inkline.io",
