@@ -23,3 +23,9 @@ Svelte `$state<HTMLInputElement | null>(null)`, Solid `let ref: HTMLInputElement
 — the last two narrowing from their `HTMLElement` fallback. Angular and Astro do not read
 `elementType` and are byte-identical. Emitted runtime semantics are unchanged; only type
 arguments were added.
+
+The change is strictly additive: a tag the pass does not map leaves `elementType` undefined
+and emits exactly what it emitted before. It deliberately does not fall back to `HTMLElement`
+— React's `RefObject<T>` is invariant, so an `HTMLElement` ref on an element React declares
+more narrowly (`<h1>` → `HTMLHeadingElement`) is a hard `TS2322` at the ref site. Typing more
+tags is a matter of widening the map, never the fallback.

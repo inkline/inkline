@@ -105,25 +105,29 @@ describe("refs", () => {
     expect(ctx.diagnostics.freeze()).toHaveLength(0);
   });
 
-  it("defaults to HTMLElement for unknown tags", () => {
-    const refExpr = createExpr({
-      expr: mockExpr("myRef"),
-      deps: [{ symbolId: refSymbolId, kind: "ref", name: "myRef", path: [], conditional: false }],
-    });
-    const el = createElement({
-      tag: "custom-element",
-      refs: [{ ref: refExpr, category: "element", loc: UNKNOWN_LOCATION }],
-    });
-    const decl: IRRefDeclaration = {
-      name: "myRef",
-      symbolId: refSymbolId,
-      category: "element",
-      loc: UNKNOWN_LOCATION,
-    };
-    const ctx = makeCtx();
-    const result = refs(makeComp(el, [decl]), ctx);
-    expect(result.refs[0]!.elementType).toBe("HTMLElement");
-  });
+  it.each(["custom-element", "h1", "td", "option"])(
+    "leaves elementType undefined for the unmapped tag %s",
+    (tag) => {
+      // No fallback: React's `RefObject<T>` is invariant, so guessing `HTMLElement` for a tag React
+      // declares more narrowly (`h1` → `HTMLHeadingElement`) is a hard TS2322 at the ref site, where
+      // an undefined `elementType` merely emits the untyped ref the target emitted before (UXF-199).
+      const refExpr = createExpr({ expr: mockExpr("myRef") });
+      const el = createElement({
+        tag,
+        refs: [{ ref: refExpr, category: "element", loc: UNKNOWN_LOCATION }],
+      });
+      const decl: IRRefDeclaration = {
+        name: "myRef",
+        symbolId: refSymbolId,
+        category: "element",
+        loc: UNKNOWN_LOCATION,
+      };
+      const ctx = makeCtx();
+      const result = refs(makeComp(el, [decl]), ctx);
+      expect(result.refs[0]!.category).toBe("element");
+      expect(result.refs[0]!.elementType).toBeUndefined();
+    },
+  );
 
   it("classifies refs on ComponentInstance as component category (without resolved deps)", () => {
     // A component-instance ref binding carries an empty `deps` array in the real pipeline, so the

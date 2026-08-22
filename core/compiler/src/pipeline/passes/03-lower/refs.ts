@@ -42,9 +42,14 @@ export function refs(component: IRComponent, _ctx: PassContext): IRComponent {
         for (const ref of node.refs) {
           const symbolId = refIdByName.get(ref.ref.expr.getText()) ?? ref.ref.deps[0]?.symbolId;
           if (symbolId) {
+            // An unmapped tag leaves `elementType` undefined rather than falling back to
+            // `HTMLElement`. React's `RefObject<T>` is invariant, so a ref typed `HTMLElement` on an
+            // element React declares more narrowly (`<h1>` → `HTMLHeadingElement`) is a hard TS2322
+            // at the ref site — a guess that is wrong is worse than no guess, which just restores
+            // today's untyped output. Widen the map to type more tags; never widen the fallback.
             updates.set(symbolId, {
               category: "element",
-              elementType: TAG_TO_ELEMENT_TYPE[node.tag] ?? "HTMLElement",
+              elementType: TAG_TO_ELEMENT_TYPE[node.tag],
             });
           }
         }
