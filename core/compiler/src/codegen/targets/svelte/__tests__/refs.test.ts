@@ -10,7 +10,7 @@ import { compileTo } from "../../../../testing/codegen.ts";
 describe("ElementRef: single template ref bound + focused on mount", () => {
   it("Svelte: bind:this with a $state ref, $effect calls focus directly", async () => {
     const out = await compileTo("ElementRef", "svelte");
-    expect(out).toContain("let inputRef = $state<HTMLElement | null>(null)");
+    expect(out).toContain("let inputRef = $state<HTMLInputElement | null>(null)");
     expect(out).toContain("bind:this={inputRef}");
     expect(out).toContain("$effect(() => { inputRef?.focus(); })");
   });
@@ -24,8 +24,8 @@ describe("ElementRef: single template ref bound + focused on mount", () => {
 describe("MultiRefs: two independent refs on sibling elements", () => {
   it("Svelte: both refs use bind:this on their respective elements", async () => {
     const out = await compileTo("MultiRefs", "svelte");
-    expect(out).toContain("let inputRef = $state<HTMLElement | null>(null)");
-    expect(out).toContain("let buttonRef = $state<HTMLElement | null>(null)");
+    expect(out).toContain("let inputRef = $state<HTMLInputElement | null>(null)");
+    expect(out).toContain("let buttonRef = $state<HTMLButtonElement | null>(null)");
     expect(out).toContain('<input bind:this={inputRef} placeholder="focus me" />');
     expect(out).toContain("<button bind:this={buttonRef}>");
   });

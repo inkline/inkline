@@ -85,7 +85,7 @@ export interface CheckboxControlBaseProps {
 }
 export const ICheckboxControlBase = component$((props: CheckboxControlBaseProps & { checked?: boolean; onUpdateChecked$?: QRL<(value: boolean) => void> } & Record<string, any>) =>
 {
-const controlRef = useSignal(null)
+const controlRef = useSignal<HTMLInputElement | null>(null)
 useVisibleTask$(() => { const el = controlRef.value; if (el) { el.indeterminate = props.indeterminate ?? false; } })
 const { id, name, disabled, required, readonly, indeterminate, checked, onUpdateChecked$, ...__attrs } = props
 return (
@@ -110,7 +110,7 @@ export interface CheckboxControlBaseProps {
 }
 export function ICheckboxControlBase(props: CheckboxControlBaseProps & { checked?: boolean; onUpdateChecked?: (value: boolean) => void } & React.HTMLAttributes<HTMLElement>)
 {
-const controlRef = useRef(null)
+const controlRef = useRef<HTMLInputElement>(null)
 useEffect(() => { const el = controlRef.current; if (el) { el.indeterminate = props.indeterminate ?? false; } }, [controlRef.current, props.indeterminate])
 const { id, name, disabled, required, readonly, indeterminate, checked, onUpdateChecked, ...__attrs } = props
 return (
@@ -137,7 +137,7 @@ export interface CheckboxControlBaseProps {
 export default function ICheckboxControlBase(props: CheckboxControlBaseProps & { checked?: boolean; onUpdateChecked?: (value: boolean) => void } & JSX.HTMLAttributes<HTMLElement>)
 {
 createEffect(() => { const el = controlRef; if (el) { el.indeterminate = props.indeterminate ?? false; } })
-let controlRef: HTMLElement | undefined
+let controlRef: HTMLInputElement | undefined
 const [, __attrs] = splitProps(props, ["id", "name", "disabled", "required", "readonly", "indeterminate", "checked", "onUpdateChecked"])
 return (
 <input {...__attrs} class={["checkbox-field", props.class].filter(Boolean).join(" ")} type="checkbox" id={props.id} name={props.name} checked={props.checked ?? false} indeterminate={props.indeterminate ?? false} disabled={props.disabled} required={props.required} aria-readonly={props.readonly ? "true" : undefined} onclick={(e: { preventDefault: () => void }) => props.readonly && e.preventDefault()} onchange={(e: { currentTarget: HTMLInputElement }) => props.readonly ? (e.currentTarget.checked = props.checked ?? false) : props.onUpdateChecked?.(e.currentTarget.checked)} ref={(el) => controlRef = el} />
@@ -161,7 +161,7 @@ return (
   }
   let { id, name, disabled, required, readonly, indeterminate, checked = $bindable(), ...__attrs }: CheckboxControlBaseProps & { checked?: boolean } & Record<string, any> = $props()
   $effect(() => { const el = controlRef; if (el) { el.indeterminate = indeterminate ?? false; } })
-  let controlRef = $state<HTMLElement | null>(null)
+  let controlRef = $state<HTMLInputElement | null>(null)
 </script>
 <input bind:this={controlRef} {...__attrs} class={["checkbox-field", __attrs.class].filter(Boolean).join(" ")} type="checkbox" id={id} name={name} checked={checked ?? false} indeterminate={indeterminate ?? false} disabled={disabled} required={required} aria-readonly={readonly ? "true" : undefined} onclick={(e: { preventDefault: () => void }) => readonly && e.preventDefault()} onchange={(e: { currentTarget: HTMLInputElement }) => readonly ? (e.currentTarget.checked = checked ?? false) : checked = e.currentTarget.checked} />
 ",
@@ -183,7 +183,7 @@ return (
   }
   const props = defineProps<CheckboxControlBaseProps>()
   const checked = defineModel<boolean>("checked")
-  const controlRef = ref(null)
+  const controlRef = ref<HTMLInputElement | null>(null)
   watchEffect(() => { const el = controlRef.value; if (el) { el.indeterminate = props.indeterminate ?? false; } })
 </script>
 <template>

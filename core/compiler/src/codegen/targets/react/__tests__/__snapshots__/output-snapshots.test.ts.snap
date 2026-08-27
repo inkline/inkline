@@ -199,7 +199,7 @@ exports[`react full output snapshots > ElementRef 1`] = `
 "import { useRef, useEffect } from "react";
 export function ElementRef(props: React.HTMLAttributes<HTMLElement>)
 {
-const inputRef = useRef(null)
+const inputRef = useRef<HTMLInputElement>(null)
 useEffect(() => { inputRef.current?.focus(); }, [])
 const { ...__attrs } = props
 return (
@@ -374,8 +374,8 @@ exports[`react full output snapshots > MultiRefs 1`] = `
 "import { useRef, useEffect } from "react";
 export function MultiRefs(props: React.HTMLAttributes<HTMLElement>)
 {
-const inputRef = useRef(null)
-const buttonRef = useRef(null)
+const inputRef = useRef<HTMLInputElement>(null)
+const buttonRef = useRef<HTMLButtonElement>(null)
 useEffect(() => { inputRef.current?.focus(); }, [])
 const { ...__attrs } = props
 return (
