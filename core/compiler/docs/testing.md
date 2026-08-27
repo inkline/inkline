@@ -137,23 +137,30 @@ vp test src/codegen/targets/react --update
 vp test src/codegen/targets --update
 ```
 
-## CI scripts
+## Running a gate on its own
 
-The following task scripts are available for CI and local validation:
+The emitted-output typecheck and lint sweeps are not separate scripts: they are vitest suites inside the ordinary run, so `vp test` already covers them. CI runs them the same way — through the repo-wide unit-test job (`pnpm run test`, sharded across two runners), not a dedicated step. To run one sweep on its own, filter by path from `core/compiler`:
 
 ```bash
-# Type-check all emitted output against target tsconfigs
-vp run test:emitted-typecheck
+# Type-check emitted output against the target tsconfigs — react and solid only,
+# see `typecheckEmittedForTarget` above for what this gate does and does not cover
+vp test src/testing/typecheck.test.ts
 
-# Lint all emitted output against target eslint configs
-vp run test:emitted-lint
-
-# SSR-mount fixtures across targets and compare rendered output
-vp run test:runtime
-
-# Run performance benchmarks and compare against baseline
-vp run bench
+# Lint emitted output with each target's declared linter (`conformance.lint.tool`)
+vp test src/testing/lint.test.ts
 ```
+
+Benchmarks are a package script and are not part of CI — run them locally:
+
+```bash
+# Compare compile throughput against .bench-baseline.json; exits non-zero on a >10% drop
+vp run bench
+
+# Rewrite the baseline after an intentional change
+vp run bench --save-baseline
+```
+
+There is no fixture-wide SSR sweep. `mountForTarget` and `runScenarioAcrossTargets` are exported helpers with unit tests of their own; nothing mounts every fixture across every target. Cross-target rendered-output comparison happens in CI as the Playwright visual-parity job in [`testing/e2e`](../../../testing/e2e), not from this package.
 
 ## Adding a fixture
 
