@@ -2,7 +2,7 @@
 
 ## Overview
 
-The compiler test suite spans the `__fixtures__` components and all 7 targets, using snapshot-based output validation to ensure correctness of emitted code for every target framework.
+The compiler test suite spans the `__fixtures__` components and all 7 targets, using snapshot-based output validation of emitted code. Coverage is not uniform across gates: snapshot and conformance checks run for all 7 targets, while emitted-output typechecking sweeps react and solid only — see [`typecheckEmittedForTarget`](#typecheckemittedfortargetconformance-files) for what that gate does and does not cover.
 
 ## Running tests
 
@@ -72,11 +72,17 @@ Compile a named fixture through the full pipeline for one or more targets. Retur
 
 ### `typecheckEmittedForTarget(conformance, files)`
 
-Run `tsc` against the emitted files using the target-specific tsconfig. Verifies that emitted code is type-safe.
+Run the workspace `tsc` in a subprocess against the emitted files, using the target's absolute `typecheck.tsconfig`. A toolchain that cannot start — an empty, relative or missing tsconfig, no file plain `tsc` can read, or a non-zero exit with no parseable diagnostics — fails; it never reports a pass. What the gate covers, per [ADR-009](../../../docs/adrs/009-emitted-output-is-typechecked-by-a-subprocess-tsc.md):
+
+- **react and solid only.** `SWEPT_TARGETS` in [`src/testing/typecheck.test.ts`](../src/testing/typecheck.test.ts) names the two targets the fixture sweep runs over.
+- **vue and svelte cannot be covered by plain `tsc`.** They emit single-file components, and `tsc` reads `.ts`/`.tsx`/`.mts`/`.cts` only, so the helper returns a toolchain failure for them. Sweeping them needs `vue-tsc` / `svelte-check` as dependencies — open, internal tracker UXF-214.
+- **angular, qwik and astro declare `typecheck.tsconfig: ""`** and are outside the gate entirely.
+- **121 known-failing `(fixture, target)` pairs are quarantined** in [`src/testing/typecheck-fixtures.ts`](../src/testing/typecheck-fixtures.ts) — 29 react, 92 solid — each naming the TypeScript codes it suppresses. A staleness test fails when an excluded pair starts passing, so the list can only shrink; it is a burn-down, tracked as internal tracker UXF-211. Do not add to it to make a change green.
+- **The gate does not run from a published `@inkline/compiler`.** Target tsconfigs live under `src/codegen/targets/*/tsconfigs/`, outside `package.json#files` — open, internal tracker UXF-215.
 
 ### `lintEmittedForTarget(conformance, files)`
 
-Run eslint against the emitted files using the target-specific lint configuration. Verifies that emitted code passes lint rules.
+Run the target's declared linter against the emitted files using the target-specific lint configuration. The tool comes from `conformance.lint.tool` — oxlint for react, solid and qwik; eslint for angular, astro, svelte and vue — and only `.js`/`.jsx`/`.ts`/`.tsx` files (plus `.cjs`/`.mjs` variants) are passed to it. Verifies that emitted code passes lint rules.
 
 ### `mountForTarget(target, file, props?)`
 
