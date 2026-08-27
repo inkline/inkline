@@ -6,6 +6,13 @@ import type { Diagnostic } from "../core/diagnostics/codes.ts";
 import type { GeneratedFile, TargetConformanceSpec } from "../codegen/context.ts";
 import { PACKAGE_ROOT } from "./harness.ts";
 
+/**
+ * There is deliberately no `checkedFiles` count here. Its purpose would be to expose a vacuous
+ * `pass: true` — a verdict reached without `tsc` reading anything — and this shape has no such
+ * verdict to expose: a missing tsconfig and a file set `tsc` cannot read both return a failure,
+ * not a pass. The only `pass` that checks nothing is the empty-input early return below, which is
+ * a caller-side no-op. Adding the field would report a constant the callers cannot act on.
+ */
 export interface TypecheckResult {
   readonly pass: boolean;
   readonly diagnostics: readonly Diagnostic[];

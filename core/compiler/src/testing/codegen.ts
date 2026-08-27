@@ -60,7 +60,14 @@ export async function compileTo(fixture: string, target: TargetName): Promise<st
   return files![0]!.contents;
 }
 
-/** Like {@link compileTo}, but also asserts the compile produced no error diagnostics. */
+/**
+ * Like {@link compileTo}, but also asserts the compile produced no error diagnostics.
+ *
+ * "Checked" here means the *compiler* reported nothing, not that the generated code typechecks —
+ * output can be diagnostic-clean and still fail `tsc`. That assertion is a separate, independent
+ * gate: `typecheckEmittedForTarget` in `./typecheck.ts`, run over whole fixtures by
+ * `typecheck.test.ts` rather than per call site (ADR-009 §7).
+ */
 export async function compileToChecked(fixture: string, target: TargetName): Promise<string> {
   const result = await compiled(fixture, target);
   const files = result.files[target];

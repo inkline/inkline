@@ -10,13 +10,20 @@ import type { TargetName } from "../codegen/context.ts";
  *
  * Entries are quarantine, not permission: each one is a known defect the gate would otherwise
  * fail on, carrying the TypeScript codes it suppresses. `typecheck.test.ts` fails when an entry
- * stops being needed, so the list can only shrink. The burn-down is tracked separately; do not
- * add to it to make a change green.
+ * stops being needed, so the list can only shrink. The burn-down is tracked separately (UXF-211);
+ * do not add to it to make a change green.
+ *
+ * Every group carries which of the two kinds it is, because the two have different owners:
+ *   [harness] — the sweep compiles one fixture at a time, so a module living in *another* fixture
+ *               is never emitted and cannot resolve. Emitted output is fine; the sweep is the
+ *               limitation. Fixing these means compiling a fixture with its dependencies.
+ *   [emit]    — the emitted code is genuinely ill-typed. These are codegen bugs, and a group here
+ *               without an issue reference documents rot instead of preventing it.
  */
 export const EXCLUSIONS: Readonly<Partial<Record<TargetName, readonly string[]>>> = {
   react: [
-    // ── Cross-fixture references — a sweep limitation, not an emitted-output defect. The
-    // sweep typechecks one fixture's output in isolation, so components and modules that
+    // ── [harness] Cross-fixture references — a sweep limitation, not an emitted-output defect.
+    // The sweep typechecks one fixture's output in isolation, so components and modules that
     // live in *other* fixtures cannot resolve.
     "BoundField", // TS2304,TS2339,TS7006
     "CollapseInvalid", // TS2307
@@ -35,7 +42,8 @@ export const EXCLUSIONS: Readonly<Partial<Record<TargetName, readonly string[]>>
     "NamedSlotFill", // TS2304
     "StyledRecipe", // TS2307
 
-    // ── Event handlers read `.value` off an un-narrowed `EventTarget` (TS2339).
+    // ── [emit] Event handlers read `.value` off an un-narrowed `EventTarget` (TS2339). Mirrors
+    // an authoring-side exclusion: the fixtures' handler params are untyped by design.
     "ControlledTextarea", // TS2339
     "DynamicList", // TS2322,TS2339
     "FormField", // TS2339
@@ -48,17 +56,17 @@ export const EXCLUSIONS: Readonly<Partial<Record<TargetName, readonly string[]>>
     "ElementRef", // TS2339
     "MultiRefs", // TS2339
 
-    // ── `untrack` is used in emitted output but never imported (TS2304).
+    // ── [emit] `untrack` is used in emitted output but never imported (TS2304) — UXF-200.
     "UntrackBoundary", // TS2304
 
-    // ── Assorted — one fixture each, triage individually.
-    "Diag_ModelTypeDrift", // TS18048
-    "DynamicAccess", // TS7053
-    "PropDefaults", // TS2559
+    // ── [emit] Assorted — one fixture each, triage individually.
+    "Diag_ModelTypeDrift", // TS18048 — model drift is what the fixture exists to show
+    "DynamicAccess", // TS7053 — mirrors the authoring-side exclusion
+    "PropDefaults", // TS2559 — a string `style` prop emitted as-is against CSSProperties (UXF-201)
   ],
   solid: [
-    // ── Cross-fixture references — a sweep limitation, not an emitted-output defect. The
-    // sweep typechecks one fixture's output in isolation, so components and modules that
+    // ── [harness] Cross-fixture references — a sweep limitation, not an emitted-output defect.
+    // The sweep typechecks one fixture's output in isolation, so components and modules that
     // live in *other* fixtures cannot resolve.
     "BoundField", // TS2304,TS2322,TS7006
     "CollapseInvalid", // TS2307
@@ -77,8 +85,8 @@ export const EXCLUSIONS: Readonly<Partial<Record<TargetName, readonly string[]>>
     "NamedSlotFill", // TS2304,TS2322
     "StyledRecipe", // TS2307
 
-    // ── Attribute passthrough widens the root element type (TS2322). Props are typed
-    // `JSX.HTMLAttributes<HTMLElement>` and spread onto a concrete element whose `ref` is
+    // ── [emit] Attribute passthrough widens the root element type (TS2322) — UXF-202. Props are
+    // typed `JSX.HTMLAttributes<HTMLElement>` and spread onto a concrete element whose `ref` is
     // `HTMLDivElement`-typed, so contravariance breaks. One root cause, many fixtures.
     "AsyncData", // TS2322
     "BatchUpdates", // TS2322
@@ -139,9 +147,10 @@ export const EXCLUSIONS: Readonly<Partial<Record<TargetName, readonly string[]>>
     "TwoWayCheckbox", // TS2322
     "TwoWayNumber", // TS2322
     "TypedEvent", // TS2322
-    "UntrackBoundary", // TS2304,TS2322
+    "UntrackBoundary", // TS2304 (untrack unimported — UXF-200), TS2322
 
-    // ── Assorted — one fixture each, triage individually.
+    // ── [emit] Assorted — one fixture each, triage individually. The TS2322 entries here are
+    // the same passthrough root cause as above (UXF-202); the rest are unrelated and untriaged.
     "CollapseBase", // TS2322
     "CollapseModelBase", // TS2322
     "CollapseNestedInput", // TS2322
