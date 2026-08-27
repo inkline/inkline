@@ -16,11 +16,17 @@ pays for the same lesson twice.
 | [006](./006-inferred-component-authoring-types.md)                    | Authoring types are inferred from `defineComponent`, not generated      | 2026-08-08 | Accepted † | core, compiler, authoring |
 | [007](./007-website-ships-as-a-static-site.md)                        | `apps/website` ships as a fully static site on Vercel                   | 2026-08-08 | Accepted   | website, deploy, infra    |
 | [008](./008-authoring-surface-is-inferred-from-options-alone.md)      | The inferred surface comes from options alone, not the setup body       | 2026-08-11 | Accepted   | core, compiler, authoring |
+| [009](./009-emitted-output-is-typechecked-by-a-subprocess-tsc.md)     | Emitted output is typechecked by a subprocess `tsc`, on react and solid | 2026-08-27 | Accepted   | compiler, testing, types  |
 
 † ADR-006 is superseded **in part** by ADR-008 — its Decision 1 mechanism claim and its Option D
 uniqueness claim, only. Decisions 2–7 remain the live decisions, so its status stays `Accepted`
 rather than flipping. This is the sole exception to the superseding rule below, and it is noted at
 the top of ADR-006 itself.
+
+If you arrived here from a link to `008-emitted-output-is-typechecked-in-the-unit-suite.md`: that
+draft was never merged, its number was subsequently taken by ADR-008 above, and the decision it
+described was never implemented.
+[ADR-009](./009-emitted-output-is-typechecked-by-a-subprocess-tsc.md) records what actually shipped.
 
 ## Rules
 
