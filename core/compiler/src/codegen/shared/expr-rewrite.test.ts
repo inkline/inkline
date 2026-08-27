@@ -360,4 +360,22 @@ describe("rewriteExpr — additional expression forms", () => {
     );
     expect(result).toContain("for (const i of items)");
   });
+
+  describe("untrack: unwrap", () => {
+    const UNWRAP: RewriteRules = { ...STRIP, untrack: { kind: "unwrap" } };
+
+    it("inlines the callback body", () => {
+      expect(rewriteExpr(mockExpr("untrack(() => count())"), UNWRAP)).toBe("count");
+    });
+
+    it("wraps a block-bodied callback in an IIFE so it stays an expression", () => {
+      expect(rewriteExpr(mockExpr("untrack(() => { return count(); })"), UNWRAP)).toBe(
+        "(() => { return count; })()",
+      );
+    });
+
+    it("calls a callback passed by reference", () => {
+      expect(rewriteExpr(mockExpr("untrack(read)"), UNWRAP)).toBe("read()");
+    });
+  });
 });

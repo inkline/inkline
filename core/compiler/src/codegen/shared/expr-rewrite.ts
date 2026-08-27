@@ -129,6 +129,25 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
       }
       return walk(fn.body, rules);
     }
+    // `untrack(() => …)` on a target whose dependencies are computed statically: the reads inside
+    // the callback are already excluded from them, so the wrapper is inlined to its callback body.
+    // Emitting it verbatim would reference an identifier the output never imports.
+    if (
+      rules.untrack?.kind === "unwrap" &&
+      ts.isIdentifier(callee) &&
+      callee.text === "untrack" &&
+      expr.arguments.length === 1
+    ) {
+      const arg = expr.arguments[0]!;
+      if (ts.isArrowFunction(arg) || ts.isFunctionExpression(arg)) {
+        // A block body keeps its statements but must stay an expression, so it becomes an IIFE.
+        return ts.isBlock(arg.body)
+          ? `(() => ${walkBlock(arg.body, rules)})()`
+          : walk(arg.body, rules);
+      }
+      // `untrack(fn)` — a callback passed by reference is simply called.
+      return `${walk(arg, rules)}()`;
+    }
     // `hasSlot("name")` → the target's slot-presence check (e.g. `props.renderName != null`,
     // `!!$slots.name`, or `true` where slot presence isn't observable). A missing or non-literal
     // argument names the default slot.

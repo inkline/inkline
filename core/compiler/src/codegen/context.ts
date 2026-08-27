@@ -28,6 +28,22 @@ export type SetterStyleKind =
   | { readonly kind: "direct-assignment" }
   | { readonly kind: "method-call"; readonly method: string };
 
+/**
+ * How `untrack(() => …)` lowers. `untrack` is an authoring primitive with no counterpart in any
+ * emitted module, so a target that leaves this unset emits the call verbatim — an undeclared
+ * identifier. Every target needs one of these.
+ *
+ * `unwrap` inlines the callback: on a target whose dependencies the compiler computes statically
+ * (React's `useEffect` array), reads inside the callback are already absent from that array — the
+ * 02-parse dependency walk does not descend into nested functions — so the untracking is fully
+ * realised before codegen and the wrapper has nothing left to do at runtime.
+ *
+ * Targets that track dependencies at runtime (Solid, Vue, Svelte, Angular, Qwik) cannot unwrap:
+ * doing so would make the read tracked. They need their framework's own primitive plus its import
+ * (`untrack` in Solid/Svelte, `untracked` in Angular), which is a separate change per target.
+ */
+export type UntrackKind = { readonly kind: "unwrap" };
+
 export type RefAccessKind =
   | { readonly kind: "field"; readonly field: string }
   // `bare` reads the ref variable directly. `unwrap`, when set, appends `?.<unwrap>` to a class-body
@@ -51,6 +67,8 @@ export interface RewriteRules {
   readonly reactiveRead: ReactiveReadKind;
   readonly setterStyle: SetterStyleKind;
   readonly refAccess: RefAccessKind;
+  /** How `untrack(() => …)` lowers on this target — see {@link UntrackKind}. */
+  readonly untrack?: UntrackKind;
   readonly jsxAttrCasing: "react" | "html";
   readonly eventNameCase: "camel" | "kebab" | "lower";
   readonly members?: MemberRewriteRules;

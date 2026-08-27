@@ -38,6 +38,17 @@ describe("BatchUpdates: batch() helper inside an event handler", () => {
   });
 });
 
+describe("UntrackBoundary: untrack() inside an effect", () => {
+  it("React: the read is inlined and stays out of the deps array; no undefined `untrack`", async () => {
+    const out = await compileTo("UntrackBoundary", "react");
+    // React has no `untrack`, and the deps array already omits `log` — so the wrapper inlines to
+    // the read itself. Emitting `untrack(...)` would be an undeclared identifier in the module.
+    expect(out).toContain("useEffect(() => { const c = count; const l = log; console.log(c, l); }");
+    expect(out).toContain("}, [count])");
+    expect(out).not.toContain("untrack");
+  });
+});
+
 describe("ConditionalRead: memo with a conditional over three signals", () => {
   it("React: ternary memo lists all three reads as deps", async () => {
     const out = await compileTo("ConditionalRead", "react");
