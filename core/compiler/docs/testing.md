@@ -4,6 +4,8 @@
 
 The compiler test suite spans the `__fixtures__` components and all 7 targets, using snapshot-based output validation to ensure correctness of emitted code for every target framework.
 
+Coverage is not uniform across checks. Snapshot validation reaches all 7 targets; the emitted-output typecheck gate reaches react and solid only, and skips a quarantine list of known-failing fixtures within those two. See [Emitted-output typecheck coverage](#emitted-output-typecheck-coverage).
+
 ## Running tests
 
 ```bash
@@ -72,7 +74,9 @@ Compile a named fixture through the full pipeline for one or more targets. Retur
 
 ### `typecheckEmittedForTarget(conformance, files)`
 
-Run `tsc` against the emitted files using the target-specific tsconfig. Verifies that emitted code is type-safe.
+Run a subprocess `tsc` against the emitted files using the target-specific tsconfig, and report the resulting diagnostics. A toolchain that cannot start — an empty, relative or missing `tsconfig` path, or a file set plain `tsc` cannot read — is reported as a failure, never as a pass.
+
+This is the harness, not the gate. What the gate actually covers is in [Emitted-output typecheck coverage](#emitted-output-typecheck-coverage).
 
 ### `lintEmittedForTarget(conformance, files)`
 
@@ -97,6 +101,35 @@ Assert that a source map contains a mapping at the specified original source pos
 ### `verifyIdentifierMappings(file, identifiers, tolerance?)`
 
 Verify round-trip source-map accuracy for specific identifiers. Maps from original source to generated position and back, checking that the round-trip lands within the specified tolerance.
+
+## Emitted-output typecheck coverage
+
+The fixture sweep in [`src/testing/typecheck.test.ts`](../src/testing/typecheck.test.ts) compiles every `src/__fixtures__/*.ink.tsx` and runs `tsc` over the result — for **react and solid only**. Five of the seven targets have no emitted-output typecheck:
+
+| Target  | Emits     | Swept | Why not                                                            |
+| ------- | --------- | ----- | ------------------------------------------------------------------ |
+| react   | `.tsx`    | yes   | —                                                                  |
+| solid   | `.tsx`    | yes   | —                                                                  |
+| vue     | `.vue`    | no    | single-file component; plain `tsc` cannot read it (`vue-tsc`)      |
+| svelte  | `.svelte` | no    | single-file component; plain `tsc` cannot read it (`svelte-check`) |
+| angular | `.ts`     | no    | declares `typecheck.tsconfig: ""`                                  |
+| qwik    | `.tsx`    | no    | declares `typecheck.tsconfig: ""`                                  |
+| astro   | `.astro`  | no    | declares `typecheck.tsconfig: ""`                                  |
+
+Angular and qwik emit files `tsc` could read; they are outside the gate because their conformance spec declares no tsconfig, and a harness with no tsconfig fails rather than passes.
+
+The vue and svelte gap is pinned by a test — `<target> emits only files plain tsc cannot read` — so it cannot widen silently into a target that quietly stops being checked.
+
+### Quarantine
+
+Within react and solid the sweep skips a list of known-failing `(fixture, target)` pairs, held in [`src/testing/typecheck-fixtures.ts`](../src/testing/typecheck-fixtures.ts). Entries are quarantine, not permission: each records the TypeScript codes it suppresses, and the suite fails an entry that has started passing, so the list can only shrink. **That file is the only home for the current count** — read it there rather than trusting a number quoted elsewhere. The burn-down is tracked as UXF-211.
+
+### Where the decision lives
+
+The gate's rationale, its receipts, and what was deliberately left open are recorded in [ADR-009](../../../docs/adrs/009-emitted-output-is-typechecked-by-a-subprocess-tsc.md). Two questions are open and undecided there, not here:
+
+- **UXF-214** — whether to take on `vue-tsc` / `svelte-check` as dependencies so vue and svelte can be swept.
+- **UXF-215** — whether `@inkline/compiler/testing` is a public surface at all; the target tsconfigs the harness needs are not published.
 
 ## Conformance invariants
 
