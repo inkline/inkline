@@ -9,7 +9,7 @@ export const vueConformance: TargetConformanceSpec = {
   controlFlowImports: {},
   lint: { tool: "eslint", config: resolve(__dirname, "tsconfigs", "vue.eslint.config.js") },
   typecheck: {
-    tsconfig: "./tsconfigs/vue.tsconfig.json",
+    tsconfig: resolve(__dirname, "tsconfigs", "vue.tsconfig.json"),
     dtsImports: ["vue"],
   },
   invariants: [requireFileExtension(".vue")],
