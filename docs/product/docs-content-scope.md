@@ -276,14 +276,14 @@ And 2026-08-22, closing the follow-ups: **it is a UI library** (not "the beginni
 
 ## The split
 
-| | `/docs` — the component library | `/compiler` — the compiler |
-| --- | --- | --- |
-| audience | people who want a Button in their framework | people building their own component libraries |
-| packages | `@inkline/{react,vue,svelte,solid,angular,qwik,astro}` | `@inkline/{compiler,core,cli,plugin,config-loader}` |
-| entry action | `npm install @inkline/react` | `npm install @inkline/compiler` |
-| launch | **at launch** | after launch |
+|              | `/docs` — the component library                        | `/compiler` — the compiler                          |
+| ------------ | ------------------------------------------------------ | --------------------------------------------------- |
+| audience     | people who want a Button in their framework            | people building their own component libraries       |
+| packages     | `@inkline/{react,vue,svelte,solid,angular,qwik,astro}` | `@inkline/{compiler,core,cli,plugin,config-loader}` |
+| entry action | `npm install @inkline/react`                           | `npm install @inkline/compiler`                     |
+| launch       | **at launch**                                          | after launch                                        |
 
-The compiler is the *reason* the library can exist, not the pitch. On `/docs` it gets one muted link and nothing more.
+The compiler is the _reason_ the library can exist, not the pitch. On `/docs` it gets one muted link and nothing more.
 
 ## Revised `/docs` tree — 14 pages at launch (was 23)
 
@@ -309,9 +309,9 @@ content/
 
 **Moved to `/compiler`, out of the launch set:** `02.authoring/` (7) and `04.reference/` (3). Content unchanged and still correct — only the URL and the ship date move.
 
-**One page added, and it is not optional.** `03.theming.md` did not exist in the RFC above, because non-goal 3 deleted the whole theming surface as "styleframe's, link out". That deletion was right for a *reference* (tokens, utilities, modifiers — still 111 pages we do not own and will not write) and is wrong for a *how-to*. VERIFIED: all eight components style themselves through `@styleframe/theme` recipes (`ui/components/src/components/*/styled/*.styleframe.ts` → `useButtonRecipe`, `useInputRecipe`, …), and `@inkline/react` exposes `./css`. "How do I make the button match my brand" is the second question every library user asks, and today the docs have no answer at any depth. One page, ours to write; the token reference stays styleframe's.
+**One page added, and it is not optional.** `03.theming.md` did not exist in the RFC above, because non-goal 3 deleted the whole theming surface as "styleframe's, link out". That deletion was right for a _reference_ (tokens, utilities, modifiers — still 111 pages we do not own and will not write) and is wrong for a _how-to_. VERIFIED: all eight components style themselves through `@styleframe/theme` recipes (`ui/components/src/components/*/styled/*.styleframe.ts` → `useButtonRecipe`, `useInputRecipe`, …), and `@inkline/react` exposes `./css`. "How do I make the button match my brand" is the second question every library user asks, and today the docs have no answer at any depth. One page, ours to write; the token reference stays styleframe's.
 
-**Non-goal 1 is weakened and needs a re-read (not resolved here).** It rejected a v4→v5 migration guide on the grounds that "v5 is a compiler with no runtime — a different product". Under library positioning, v4's Vue-only component library and v5's seven-framework component library are *the same product*, and `<IButton>` maps to `<IButton>`. The counter-argument is now the catalog, not the category: v4 shipped ~30 components, v5 ships 8. Still v-next either way; the *rationale* in non-goal 1 no longer holds and should not be quoted as if it does.
+**Non-goal 1 is weakened and needs a re-read (not resolved here).** It rejected a v4→v5 migration guide on the grounds that "v5 is a compiler with no runtime — a different product". Under library positioning, v4's Vue-only component library and v5's seven-framework component library are _the same product_, and `<IButton>` maps to `<IButton>`. The counter-argument is now the catalog, not the category: v4 shipped ~30 components, v5 ships 8. Still v-next either way; the _rationale_ in non-goal 1 no longer holds and should not be quoted as if it does.
 
 ## The `/compiler` route — VERIFIED capability limit
 
@@ -324,13 +324,13 @@ The route does not exist. Neither do the two things that were drafted against it
 
 So "a separate `/compiler` route" is two different asks with two different price tags:
 
-| option | what it gives | cost |
-| --- | --- | --- |
-| **A** | `/docs/compiler/*` section — one entry in `sections.ts` | zero, but puts the compiler back in the library's nav |
-| **B — recommended** | `content/compiler.md` at `/compiler` (the advertisement) + `/docs/compiler/*` for the reference tree, added only when that tree ships | zero |
-| **C** | a true second root — `/compiler/[...slug]` + a second collection group | a `@uxfront/layer-docs` feature in the uxfront repo, cross-repo, gated on a layer release |
+| option              | what it gives                                                                                                                         | cost                                                                                      |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| **A**               | `/docs/compiler/*` section — one entry in `sections.ts`                                                                               | zero, but puts the compiler back in the library's nav                                     |
+| **B — recommended** | `content/compiler.md` at `/compiler` (the advertisement) + `/docs/compiler/*` for the reference tree, added only when that tree ships | zero                                                                                      |
+| **C**               | a true second root — `/compiler/[...slug]` + a second collection group                                                                | a `@uxfront/layer-docs` feature in the uxfront repo, cross-repo, gated on a layer release |
 
-**Recommend B.** The Operator's sentence is about *advertising* — B satisfies it literally, at zero cost, this week. C buys a second information architecture for a product that has no audience yet; revisit it when the compiler docs actually ship, not before.
+**Recommend B.** The Operator's sentence is about _advertising_ — B satisfies it literally, at zero cost, this week. C buys a second information architecture for a product that has no audience yet; revisit it when the compiler docs actually ship, not before.
 
 **Owner: the website owner** (`apps/website` — the same owner as the landing page, UXF-172). `content/compiler.md` is one page and rides with the landing rebuild; both the header `Compiler` link and the landing page's muted compiler line are dead links until it exists, so it ships in the same PR or the links do not ship. **This needs an issue and does not have one.**
 
@@ -347,13 +347,13 @@ So "a separate `/compiler` route" is two different asks with two different price
 
 ## Per-child verdicts
 
-| issue | verdict |
-| --- | --- |
-| **UXF-183** Getting Started | **Amended in place** — re-cut for the library flow: 4 pages → 5, install target `@inkline/compiler` → `@inkline/<framework>`, adds theming, absorbs the `02.guide` disposition. |
-| **UXF-181** Authoring (7) | **Re-homed to the compiler tree and deferred out of launch** — it documents `.ink.tsx` authoring, which is the compiler by definition. Content and sizing unchanged; stays `backlog`. |
-| **UXF-182** Reference (3) | **Re-homed to the compiler tree and deferred out of launch** — a library consumer installs from npm and never runs `inkline compile`, never writes an `inkline.config.ts`, and never sees an `INK00xx` diagnostic. Content unchanged; the `add`-command accuracy trap in §3 still applies. Stays `backlog`. |
-| **UXF-184** Components (9) | **Unchanged in content, promoted in priority** — it was one of four sections; it is now more than half the launch set and the only place the product's actual claim is demonstrated. Its two gates (the IR descriptor spike, the Storybook deploys) are now launch-critical rather than section-critical. |
-| **UXF-185** Changelog + license | **Unchanged but for one paragraph** — the `5.0.0` entry's lineage paragraph was scoped to say "v4 was a component library, v5 is a compiler, different products". That sentence is now false. v5 *is* a component library; the honest line is the catalog and the framework count, not the category. The `inkline@2.6.1` versioning explanation and the "Packages released" table are unaffected. |
+| issue                           | verdict                                                                                                                                                                                                                                                                                                                                                                                           |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **UXF-183** Getting Started     | **Amended in place** — re-cut for the library flow: 4 pages → 5, install target `@inkline/compiler` → `@inkline/<framework>`, adds theming, absorbs the `02.guide` disposition.                                                                                                                                                                                                                   |
+| **UXF-181** Authoring (7)       | **Re-homed to the compiler tree and deferred out of launch** — it documents `.ink.tsx` authoring, which is the compiler by definition. Content and sizing unchanged; stays `backlog`.                                                                                                                                                                                                             |
+| **UXF-182** Reference (3)       | **Re-homed to the compiler tree and deferred out of launch** — a library consumer installs from npm and never runs `inkline compile`, never writes an `inkline.config.ts`, and never sees an `INK00xx` diagnostic. Content unchanged; the `add`-command accuracy trap in §3 still applies. Stays `backlog`.                                                                                       |
+| **UXF-184** Components (9)      | **Unchanged in content, promoted in priority** — it was one of four sections; it is now more than half the launch set and the only place the product's actual claim is demonstrated. Its two gates (the IR descriptor spike, the Storybook deploys) are now launch-critical rather than section-critical.                                                                                         |
+| **UXF-185** Changelog + license | **Unchanged but for one paragraph** — the `5.0.0` entry's lineage paragraph was scoped to say "v4 was a component library, v5 is a compiler, different products". That sentence is now false. v5 _is_ a component library; the honest line is the catalog and the framework count, not the category. The `inkline@2.6.1` versioning explanation and the "Packages released" table are unaffected. |
 
 ## Revised minimum publishable set
 
@@ -362,13 +362,13 @@ So "a separate `/compiler` route" is two different asks with two different price
 Before the landing page goes live:
 
 1. **Getting Started, all 5 pages.** It is the CTA target. A hero that promises "install the package for your framework" landing on an empty section is the whole launch failing at the first click.
-2. **Components, all 9.** Eight components in seven frameworks *is* the product. Shipping a subset invites the reader to guess which ones are real.
+2. **Components, all 9.** Eight components in seven frameworks _is_ the product. Shipping a subset invites the reader to guess which ones are real.
 3. **`content/compiler.md`**, or the header `Compiler` link and the landing page's compiler line are cut from the same PR. No dead links.
 4. `license.md` and the `5.0.0` changelog entry, riding with the release.
 
 **Not required before launch:** Authoring, Reference, the `/docs/compiler` tree, everything already in the RFC's non-goals.
 
-**One dependency, recorded rather than argued.** VERIFIED: all seven framework packages are `0.0.0` locally and 404 on npm. This was survivable under a compiler pitch; under "install the package for your framework" it means UXF-183's own acceptance criterion — *every install command is executed before it is published* — cannot be satisfied until the packages publish. The Operator has been shown this and has accepted it as the normal state of a work-in-progress project. It is not a blocker on writing; it is a gate on claiming the install pages are verified, and it belongs to the release owner, not to docs.
+**One dependency, recorded rather than argued.** VERIFIED: all seven framework packages are `0.0.0` locally and 404 on npm. This was survivable under a compiler pitch; under "install the package for your framework" it means UXF-183's own acceptance criterion — _every install command is executed before it is published_ — cannot be satisfied until the packages publish. The Operator has been shown this and has accepted it as the normal state of a work-in-progress project. It is not a blocker on writing; it is a gate on claiming the install pages are verified, and it belongs to the release owner, not to docs.
 
 ## What this amendment does not change
 
