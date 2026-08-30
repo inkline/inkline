@@ -1,6 +1,6 @@
 # website
 
-The documentation and marketing site for Inkline. Private (`"private": true` in [`package.json`](./package.json)) — never published to npm. Deployed as a static site (deploy target out of scope here).
+The documentation and marketing site for Inkline. Private (`"private": true` in [`package.json`](./package.json)) — never published to npm. Deployed as a fully prerendered static site on Vercel, with zero serverless functions — see [ADR-007](../../docs/adrs/007-website-ships-as-a-static-site.md) and [`vercel.json`](./vercel.json).
 
 A Nuxt 4 + Nuxt Content app that **extends** the published [`@uxfront/layer-docs`](https://www.npmjs.com/package/@uxfront/layer-docs) layer. The theme supplies the shell (layout, left-nav, TOC, search, dark mode, mobile menu, i18n, content components); this app supplies only Inkline's brand, its section topology, and its markdown.
 
@@ -21,9 +21,10 @@ apps/website/
 │       └── StorybookEmbed.vue  # local MDC component: per-tab Storybook iframe
 └── content/
     ├── index.md
+    ├── _compiler/          # parked, unrouted — compiler pages awaiting /compiler
     └── docs/
-        ├── 01.getting-started/01.installation.md
-        ├── 02.guide/01.architecture.md
+        ├── 01.getting-started/  # 00.index, 01.installation, 02.first-component,
+        │                        # 03.theming, 04.framework-support
         └── 03.components/01.button.md
 ```
 
@@ -64,6 +65,14 @@ pnpm --filter website preview    # serve the built output locally
 ```
 
 The acceptance gate for this app is a clean `nitro prerender`: `nuxt generate` must finish with no errors.
+
+`generate` is the build that ships. `build` (node-server) is a local convenience only — it does not emit `robots.txt`, `sitemap.xml`, `200.html` or `404.html`, all of which the deploy needs.
+
+## Deploy
+
+Vercel, fully static. `vercel.json` sets `NITRO_PRESET=vercel_static`, which writes the Build Output API bundle to `.vercel/output` — `static/` only, no `functions/`. Copy `.env.example` to `.env` for local dev; every `NUXT_PUBLIC_*` is baked into the HTML at build time, so changing one on Vercel requires a rebuild, not a restart.
+
+The layer's `/` → `/llms.txt` content negotiation is a Nitro server plugin and cannot run here. It is re-expressed as edge rules in `nitro.vercel.config.routes` in [`nuxt.config.ts`](./nuxt.config.ts) — **not** in `vercel.json`, whose `routes`/`redirects` Vercel ignores once `.vercel/output/config.json` exists. Any future server-only behaviour the layer ships needs the same treatment or it silently no-ops; ADR-007 records this as a standing cost.
 
 ## Conventions
 

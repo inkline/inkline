@@ -9,7 +9,7 @@ export const reactConformance: TargetConformanceSpec = {
   controlFlowImports: {},
   lint: { tool: "oxlint", config: resolve(__dirname, "tsconfigs", "react.oxlintrc.json") },
   typecheck: {
-    tsconfig: "./tsconfigs/react.tsconfig.json",
+    tsconfig: resolve(__dirname, "tsconfigs", "react.tsconfig.json"),
     dtsImports: ["@types/react", "react"],
   },
   invariants: [requireFileExtension(".tsx")],

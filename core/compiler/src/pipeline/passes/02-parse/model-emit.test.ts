@@ -76,6 +76,68 @@ describe("defineModel parsing", () => {
     );
     expect(ctx.diagnostics.freeze().some((d) => d.code === "INK0044")).toBe(true);
   });
+
+  // The type-only `models` key is parsed in the same pass as INK0044's prop-collision check and must
+  // not interact with it — the collision is still the author's problem either way.
+  it("still warns (INK0044) when the collision is also declared in options.models", async () => {
+    const ctx = makeCtx();
+    await parse(
+      `
+        import { defineComponent, defineModel } from "@inkline/core";
+        export default defineComponent(
+          { models: { value: String } },
+          (props: { value?: string }) => {
+            const [value, setValue] = defineModel<string>("value");
+            return <input value={value()} onInput={(e) => setValue(props.value ?? "")} />;
+          },
+        );
+      `,
+      ctx,
+    );
+    expect(ctx.diagnostics.freeze().some((d) => d.code === "INK0044")).toBe(true);
+  });
+});
+
+describe("options.models parsing", () => {
+  it("records the declared entries without touching component.models", async () => {
+    const comp = (
+      await parse(`
+        import { defineComponent, defineModel } from "@inkline/core";
+        export default defineComponent({ models: { open: Boolean } }, () => {
+          const [open, setOpen] = defineModel<boolean>("open");
+          return <button onClick={() => setOpen(!open())}>{open() ? "on" : "off"}</button>;
+        });
+      `)
+    ).components[0]!;
+    expect(comp.declaredModels).toEqual([
+      expect.objectContaining({ name: "open", typeText: "boolean" }),
+    ]);
+    // The setup body stays the single source every target emits from.
+    expect(comp.models.map((m) => m.propName)).toEqual(["open"]);
+  });
+
+  it("leaves declaredModels undefined when the author wrote no models key", async () => {
+    const comp = (await parse(MODEL_SOURCE)).components[0]!;
+    expect(comp.declaredModels).toBeUndefined();
+  });
+
+  it("reads the type off a full { type, … } declaration", async () => {
+    const comp = (
+      await parse(`
+        import { defineComponent, defineModel } from "@inkline/core";
+        export default defineComponent(
+          { models: { count: { type: Number, required: true } } },
+          () => {
+            const [count, setCount] = defineModel<number>("count");
+            return <button onClick={() => setCount(count() + 1)}>{count()}</button>;
+          },
+        );
+      `)
+    ).components[0]!;
+    expect(comp.declaredModels![0]).toEqual(
+      expect.objectContaining({ name: "count", typeText: "number" }),
+    );
+  });
 });
 
 describe("defineEmits parsing", () => {
@@ -91,6 +153,36 @@ describe("defineEmits parsing", () => {
     ).components[0]!;
     expect(comp.emitName).toBe("emit");
     expect(comp.events.some((e) => e.name === "press")).toBe(true);
+  });
+
+  // `payloadType` is what every target types its event channel from. It was written nowhere for a
+  // release, which left Angular emitting a bare `output()`; assert the propagation so a silent
+  // regression fails here rather than in the emitted output.
+  it("carries the declared payload tuple onto the event", async () => {
+    const comp = (
+      await parse(`
+        import { defineComponent, defineEmits } from "@inkline/core";
+        export default defineComponent(() => {
+          const emit = defineEmits<{ press: [count: number]; submit: [] }>();
+          return <button onClick={() => emit("press", 1)}>Go</button>;
+        });
+      `)
+    ).components[0]!;
+    const payloads = Object.fromEntries(comp.events.map((e) => [e.name, e.payloadType?.getText()]));
+    expect(payloads).toEqual({ press: "[count: number]", submit: "[]" });
+  });
+
+  it("leaves the array form's events untyped", async () => {
+    const comp = (
+      await parse(`
+        import { defineComponent, defineEmits } from "@inkline/core";
+        export default defineComponent(() => {
+          const emit = defineEmits(["change"]);
+          return <button onClick={() => emit("change")}>Go</button>;
+        });
+      `)
+    ).components[0]!;
+    expect(comp.events[0]!.payloadType).toBeUndefined();
   });
 
   it("records events from the array form", async () => {

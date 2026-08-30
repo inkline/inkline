@@ -1,9 +1,11 @@
 import type { IRComponent, IRModule } from "../../../ir/render/nodes.ts";
 import type { PassContext } from "../../types.ts";
+import { attributeChecks } from "./attribute-checks.ts";
 import { slots } from "./slots.ts";
 import { controlFlow } from "./control-flow.ts";
 import { defineSlotLowering } from "./define-slot.ts";
 import { slotDeclarations } from "./slot-declarations.ts";
+import { unloweredSlots } from "./unlowered-slots.ts";
 import { twoWayBinding } from "./two-way-binding.ts";
 import { events } from "./events.ts";
 import { refs } from "./refs.ts";
@@ -13,20 +15,30 @@ import { staticMark } from "./static-mark.ts";
 
 type Lowering = (component: IRComponent, ctx: PassContext) => IRComponent;
 
-const lowerings: readonly Lowering[] = [
-  slots,
-  controlFlow,
-  defineSlotLowering,
-  slotDeclarations,
-  twoWayBinding,
-  events,
-  refs,
-  keyWarnings,
-  markRootFallthrough,
-  staticMark,
-];
+// `attributeChecks` needs the module's other components to resolve `$bind:` targets, so the chain is
+// built per module rather than once at module scope. It sits after `controlFlow` (which materialises
+// elements still hidden inside expressions) and before `twoWayBinding` (which desugars `$bind:` away).
+function buildLowerings(module: IRModule): readonly Lowering[] {
+  const localComponents = new Map(module.components.map((c) => [c.name, c]));
+  return [
+    slots,
+    controlFlow,
+    defineSlotLowering,
+    slotDeclarations,
+    // Reports the `<Slot>`s the passes above left behind, so it must follow all of them.
+    unloweredSlots,
+    attributeChecks(localComponents),
+    twoWayBinding,
+    events,
+    refs,
+    keyWarnings,
+    markRootFallthrough,
+    staticMark,
+  ];
+}
 
 export function lower(module: IRModule, ctx: PassContext): IRModule {
+  const lowerings = buildLowerings(module);
   const components = module.components.map((component) => {
     let current = component;
     for (const lowering of lowerings) {

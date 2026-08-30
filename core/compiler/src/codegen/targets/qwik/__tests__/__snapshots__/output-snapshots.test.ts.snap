@@ -152,6 +152,18 @@ return (
 "
 `;
 
+exports[`qwik full output snapshots > DuplicateEvent 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
+export const DuplicateEvent = component$((props: { onChange$?: QRL<(value: string) => void>; onClose$?: QRL<(...args: any[]) => void> } & Record<string, any>) =>
+{
+const { onChange$, onClose$, ...__attrs } = props
+return (
+<button {...__attrs} id="change" class={props.class} onClick$={$(() => props.onChange$?.("next"))}>Change</button>
+)
+});
+"
+`;
+
 exports[`qwik full output snapshots > DynamicList 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const DynamicList = component$((props) =>
@@ -190,7 +202,7 @@ exports[`qwik full output snapshots > ElementRef 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const ElementRef = component$((props) =>
 {
-const inputRef = useSignal(null)
+const inputRef = useSignal<HTMLInputElement | null>(null)
 useVisibleTask$(() => { inputRef.value?.focus(); })
 const { ...__attrs } = props
 return (
@@ -202,7 +214,7 @@ return (
 
 exports[`qwik full output snapshots > EmitButton 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $, QRL } from "@qwik.dev/core";
-export const EmitButton = component$((props: { onPress$?: QRL<(...args: any[]) => void> } & Record<string, any>) =>
+export const EmitButton = component$((props: { onPress$?: QRL<(count: number) => void> } & Record<string, any>) =>
 {
 const { onPress$, ...__attrs } = props
 return (
@@ -371,8 +383,8 @@ exports[`qwik full output snapshots > MultiRefs 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const MultiRefs = component$((props) =>
 {
-const inputRef = useSignal(null)
-const buttonRef = useSignal(null)
+const inputRef = useSignal<HTMLInputElement | null>(null)
+const buttonRef = useSignal<HTMLButtonElement | null>(null)
 useVisibleTask$(() => { inputRef.value?.focus(); })
 const { ...__attrs } = props
 return (

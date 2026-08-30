@@ -142,6 +142,24 @@ describe("fixture conformance matrix", () => {
         ).toHaveLength(0);
       });
 
+      // UXF-84 regression gate, run over the whole corpus rather than per code. `resolvePlaceholders`
+      // leaves an unmatched `{key}` verbatim, so a `help` string that grows a placeholder its push
+      // sites do not supply ships `{suggestion}` to the author instead of failing. The type system
+      // catches the omission only if `ExtractPlaceholders` sees it; this catches it either way.
+      // `\w+` is deliberate: legitimate braces in help text (`import { createSignal }`, `key={item.id}`)
+      // contain a space or a dot and do not match.
+      it("emits no unsubstituted {placeholder} tokens", async () => {
+        const compiled = await compileFixture(fixture, TARGETS);
+
+        for (const diagnostic of compiled.diagnostics) {
+          const rendered = `${diagnostic.title} ${diagnostic.help ?? ""}`;
+          expect(
+            rendered,
+            `${diagnostic.code} rendered with an unresolved placeholder`,
+          ).not.toMatch(/\{\w+\}/);
+        }
+      });
+
       if (!expectedDiags) {
         for (const targetName of TARGETS) {
           it(`passes conformance for ${targetName}`, async () => {

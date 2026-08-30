@@ -9,7 +9,7 @@ export const svelteConformance: TargetConformanceSpec = {
   controlFlowImports: {},
   lint: { tool: "eslint", config: resolve(__dirname, "tsconfigs", "svelte.eslint.config.js") },
   typecheck: {
-    tsconfig: "./tsconfigs/svelte.tsconfig.json",
+    tsconfig: resolve(__dirname, "tsconfigs", "svelte.tsconfig.json"),
     dtsImports: ["svelte"],
   },
   invariants: [requireFileExtension(".svelte")],

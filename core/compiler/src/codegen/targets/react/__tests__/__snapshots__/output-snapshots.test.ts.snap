@@ -150,6 +150,17 @@ return (
 "
 `;
 
+exports[`react full output snapshots > DuplicateEvent 1`] = `
+"export function DuplicateEvent(props: { onChange?: (value: string) => void; onClose?: (...args: any[]) => void } & React.HTMLAttributes<HTMLElement>)
+{
+const { onChange, onClose, ...__attrs } = props
+return (
+<button {...__attrs} id="change" className={props.className} onClick={() => props.onChange?.("next")}>Change</button>
+)
+}
+"
+`;
+
 exports[`react full output snapshots > DynamicList 1`] = `
 "import { useState, Fragment } from "react";
 export function DynamicList(props: React.HTMLAttributes<HTMLElement>)
@@ -188,7 +199,7 @@ exports[`react full output snapshots > ElementRef 1`] = `
 "import { useRef, useEffect } from "react";
 export function ElementRef(props: React.HTMLAttributes<HTMLElement>)
 {
-const inputRef = useRef(null)
+const inputRef = useRef<HTMLInputElement>(null)
 useEffect(() => { inputRef.current?.focus(); }, [])
 const { ...__attrs } = props
 return (
@@ -199,7 +210,7 @@ return (
 `;
 
 exports[`react full output snapshots > EmitButton 1`] = `
-"export function EmitButton(props: { onPress?: (...args: any[]) => void } & React.HTMLAttributes<HTMLElement>)
+"export function EmitButton(props: { onPress?: (count: number) => void } & React.HTMLAttributes<HTMLElement>)
 {
 const { onPress, ...__attrs } = props
 return (
@@ -363,8 +374,8 @@ exports[`react full output snapshots > MultiRefs 1`] = `
 "import { useRef, useEffect } from "react";
 export function MultiRefs(props: React.HTMLAttributes<HTMLElement>)
 {
-const inputRef = useRef(null)
-const buttonRef = useRef(null)
+const inputRef = useRef<HTMLInputElement>(null)
+const buttonRef = useRef<HTMLButtonElement>(null)
 useEffect(() => { inputRef.current?.focus(); }, [])
 const { ...__attrs } = props
 return (

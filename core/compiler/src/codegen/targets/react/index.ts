@@ -24,6 +24,7 @@ import {
   callbackPropRules,
   reactiveReadNames,
 } from "../../shared/expr-rewrite.ts";
+import { eventCallbackType } from "../../shared/event-payload.ts";
 import { emitComponentImports } from "../../shared/component-imports.ts";
 import { setupLocalEmits } from "../../shared/setup-locals.ts";
 import { childrenArePhrasing } from "../../shared/phrasing.ts";
@@ -443,7 +444,7 @@ function buildPropsType(component: IRComponent): string {
     emissionFields.push(`${eventToCallbackProp(`update:${m.propName}`)}?: (value: ${t}) => void`);
   }
   for (const ev of component.events) {
-    emissionFields.push(`${eventToCallbackProp(ev.name)}?: (...args: any[]) => void`);
+    emissionFields.push(`${eventToCallbackProp(ev.name)}?: ${eventCallbackType(ev)}`);
   }
   if (emissionFields.length > 0) {
     parts.push(`{ ${emissionFields.join("; ")} }`);

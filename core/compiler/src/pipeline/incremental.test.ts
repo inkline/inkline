@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { compileIncremental, createIncrementalState } from "./incremental.ts";
+import { compile } from "./compile.ts";
+import { compileIncremental, createIncrementalState, seedIncrementalState } from "./incremental.ts";
 
 const COUNTER_SOURCE = `
 import { createSignal, defineComponent } from "@inkline/core";
@@ -146,5 +147,57 @@ describe("compileIncremental", () => {
     expect(result.files.vue).toBeDefined();
     expect(result.files.react!.length).toBeGreaterThan(0);
     expect(result.files.vue!.length).toBeGreaterThan(0);
+  });
+});
+
+describe("seedIncrementalState", () => {
+  it("lets the next run skip files already compiled by a one-shot compile", async () => {
+    const result = await compile(
+      { fileName: "Counter.ink.tsx", source: COUNTER_SOURCE },
+      {
+        targets: ["react"],
+      },
+    );
+
+    const seeded = seedIncrementalState([
+      { fileName: "Counter.ink.tsx", source: COUNTER_SOURCE, result },
+    ]);
+
+    const next = await compileIncremental(
+      seeded,
+      [{ fileName: "Counter.ink.tsx", source: COUNTER_SOURCE }],
+      { targets: ["react"] },
+    );
+
+    expect(next.changed).toEqual([]);
+    expect(next.skipped).toEqual(["Counter.ink.tsx"]);
+    // The cached result is served, not an empty shell.
+    expect(next.files.react!.length).toBe(result.files.react!.length);
+  });
+
+  it("still recompiles a seeded file once its source changes", async () => {
+    const result = await compile(
+      { fileName: "Counter.ink.tsx", source: COUNTER_SOURCE },
+      {
+        targets: ["react"],
+      },
+    );
+
+    const seeded = seedIncrementalState([
+      { fileName: "Counter.ink.tsx", source: COUNTER_SOURCE, result },
+    ]);
+
+    const next = await compileIncremental(
+      seeded,
+      [{ fileName: "Counter.ink.tsx", source: COUNTER_SOURCE.replace("0", "42") }],
+      { targets: ["react"] },
+    );
+
+    expect(next.changed).toEqual(["Counter.ink.tsx"]);
+    expect(next.skipped).toEqual([]);
+  });
+
+  it("returns an empty state for no seeds", () => {
+    expect(seedIncrementalState([]).sourceHashes.size).toBe(0);
   });
 });

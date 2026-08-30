@@ -11,7 +11,7 @@ describe("ElementRef: single template ref bound + focused on mount", () => {
   it("React: useRef(null) + ref={inputRef}, onMount becomes a [] effect using .current", async () => {
     const out = await compileTo("ElementRef", "react");
     expect(out).toContain('import { useRef, useEffect } from "react";');
-    expect(out).toContain("const inputRef = useRef(null)");
+    expect(out).toContain("const inputRef = useRef<HTMLInputElement>(null)");
     expect(out).toContain("useEffect(() => { inputRef.current?.focus(); }, [])");
     expect(out).toContain("ref={inputRef}");
   });
@@ -25,8 +25,8 @@ describe("ElementRef: single template ref bound + focused on mount", () => {
 describe("MultiRefs: two independent refs on sibling elements", () => {
   it("React: both refs declared as useRef, each bound to its own element", async () => {
     const out = await compileTo("MultiRefs", "react");
-    expect(out).toContain("const inputRef = useRef(null)");
-    expect(out).toContain("const buttonRef = useRef(null)");
+    expect(out).toContain("const inputRef = useRef<HTMLInputElement>(null)");
+    expect(out).toContain("const buttonRef = useRef<HTMLButtonElement>(null)");
     expect(out).toContain('<input placeholder="focus me" ref={inputRef} />');
     expect(out).toContain("<button ref={buttonRef}>");
   });

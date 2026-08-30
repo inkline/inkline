@@ -24,6 +24,14 @@
       "types": "./dist/index.d.mts",
       "default": "./dist/index.mjs"
     },
+    "./ir": {
+      "types": "./dist/ir.d.mts",
+      "default": "./dist/ir.mjs"
+    },
+    "./codegen": {
+      "types": "./dist/codegen.d.mts",
+      "default": "./dist/codegen.mjs"
+    },
     "./testing": {
       "types": "./dist/testing.d.mts",
       "default": "./dist/testing.mjs"
@@ -39,6 +47,8 @@
     "test": "vp test",
     "check": "vp check",
     "bench": "node --experimental-strip-types --experimental-transform-types scripts/bench.ts",
+    "generate:aria": "node --experimental-strip-types --experimental-transform-types scripts/gen-aria-attributes.ts",
+    "generate:aria:check": "node --experimental-strip-types --experimental-transform-types scripts/gen-aria-attributes.ts --check",
     "docs:diagnostics": "node --experimental-strip-types --experimental-transform-types scripts/gen-diagnostics.ts",
     "prepublishOnly": "vp run build"
   },
@@ -113,5 +123,10 @@
     "vue": {
       "optional": true
     }
+  },
+  "inkline": {
+    "unstableExports": [
+      "./codegen"
+    ]
   }
 }

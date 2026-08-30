@@ -18,7 +18,7 @@ Every PR passes this gate. The gate exists to keep `main` releasable and the pub
 7. **Inkline contract risks** (the expensive ones):
    - IR node shape changed → `IR_VERSION` bumped + migration present?
    - Symbols minted after P4 / state stashed on IR nodes between passes?
-   - New diagnostic registered in `codes.ts` (right band, INK0001–INK0120) and surfaced, never thrown? Expected-notice baseline (INK0045/INK0068) not silently expanded?
+   - New diagnostic registered in `codes.ts` (right band, INK0001–INK0120) and surfaced, never thrown? Expected-notice baseline (INK0045/INK0068) not silently expanded? Both are `info` and the default `warning` floor withholds them, so checking that against a build takes `--report-level info`.
    - New primitive/IR node wired end-to-end (P2 parse + P3 lower + **every** target's emit)?
    - Emitted output still free of `@inkline/core` imports (the zero-runtime promise)?
    - Per-target test isolation respected (no `ALL_TARGETS` loops in `codegen/targets/<name>/` tests)?

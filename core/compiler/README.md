@@ -178,17 +178,16 @@ export default defineComponent(
 );
 ```
 
-> **Known limitation — this form does not type-check yet.**
-> `ComponentOptions` in [`@inkline/core`](../core/src/index.ts) does not declare a `props` key, and
-> `defineComponent` cannot infer the setup parameter's type from the options object. The compiler
-> handles the form correctly (see the `PropDefaults` fixture and the per-target `props.test.ts`
-> suites), but `tsc` reports `TS2353: 'props' does not exist in type 'ComponentOptions'` and
-> `TS2339: Property 'color' does not exist on type '{}'`. Until the authoring types catch up, use
-> the typed-parameter form above.
+`defineComponent` infers the setup parameter's type from the `props` map, so **leave the setup
+parameter unannotated** with this form — `props.color` is `string | undefined` (optional, defaulted)
+and `props.size` is `number` (required), matching what each target emits. A `props` map wins over a
+setup-parameter annotation in the parser, so an annotation that _disagrees_ with the map is rejected at
+the type level rather than silently ignored. One that agrees still compiles, but it is redundant and
+drifts the moment the map changes — declare props in one place or the other, never both.
 
-Everything that is _not_ a prop also goes in the options object — `slots`, `events`, `runtime`,
-`name`, and `meta`. Those keys are declared on `ComponentOptions` and type-check today, so they can
-be combined with a typed setup parameter:
+Everything that is _not_ a prop also goes in the options object — `slots`, `events`, `style`,
+`runtime`, `name`, and `meta`. Those keys do not drive prop inference, so they can be combined with a
+typed setup parameter:
 
 ```tsx
 export default defineComponent(
@@ -249,6 +248,21 @@ export default defineComponent(() => {
 `emit("change", x)` becomes a callback prop (`props.onChange?.(x)`) in React/Solid, a QRL callback in
 Qwik, a `defineEmits`/`emit` pair in Vue, a callback prop in Svelte, and `this.change.emit(x)` from an
 `@Output()` in Angular. (Custom events are inert on the static Astro target — diagnostic `INK0045`.)
+
+The declared payload tuple is the arguments `emit` takes, and it carries through to each target's event
+channel: the callback prop becomes `onChange?: (value: string) => void`, Vue re-declares the same shape
+in its own `defineEmits<…>()`. Angular is the exception, because an `output<T>` carries exactly one
+value — so a single-value tuple unwraps (`change = output<string>()`), an empty one becomes
+`output<void>()`, and a multi-value tuple stays a tuple with the emit call packing its arguments
+(`emit("move", x, y)` → `this.move.emit([x, y])`). Declaring events with the runtime array form
+(`defineEmits(["change"])`) leaves them untyped.
+
+Events can also be declared in the options object (`events: { change: {} }`), which names them without
+a payload. Declaring the same name in both places is redundant, not additive: the two declarations
+collapse into a single event channel, **the `defineEmits` declaration wins** — it is the only one that
+can carry a payload tuple — and the redundant options entry is reported as `INK0046` (a warning). The
+surviving declaration keeps the position of the first one, so emitted event order still follows the
+options object. Declare each event in one place or the other, never both.
 
 ### Slots
 
@@ -439,24 +453,30 @@ export default defineConfig({
 
 ### Options
 
-| Option          | Type                                          | Default      | Description                                                                                                                                                                                                              |
-| --------------- | --------------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `targets`       | `TargetName[]`                                | (required)   | Targets to compile for.                                                                                                                                                                                                  |
-| `srcDir`        | `string`                                      | —            | Source root to strip from output paths (e.g. `"src"`). When set, directory structure below `srcDir` is preserved in the output. Without it, the deepest common prefix is used. Also available as `--src-dir` on the CLI. |
-| `outDir`        | `string`                                      | `"dist"`     | Output directory. Files are written to `<outDir>/<target>/`.                                                                                                                                                             |
-| `targetOutDir`  | `Partial<Record<TargetName, string>>`         | `{}`         | Per-target output directory override, replacing `<outDir>/<target>/` for the targets it names.                                                                                                                           |
-| `tsconfig`      | `string`                                      | —            | Path to a `tsconfig.json` whose ambient declarations (e.g. generated `*.d.ts` for virtual modules) are loaded into the per-file program, so `import type` from those modules resolves during prop analysis.              |
-| `barrels`       | `BarrelGroup[]`                               | (see note)   | Per-category re-export barrels written for each target. Read by `@inkline/cli` only — the compiler pipeline ignores it. Omitted, the CLI writes one `index.ts` per target containing every non-story component.          |
-| `sourceMap`     | `"external" \| "inline" \| "none"`            | `"external"` | Source map generation mode.                                                                                                                                                                                              |
-| `targetOptions` | `Record<TargetName, Record<string, unknown>>` | `{}`         | Per-target options. Unknown keys produce INK0080 warnings.                                                                                                                                                               |
-| `plugins`       | `Plugin[]`                                    | `[]`         | Compiler plugins.                                                                                                                                                                                                        |
-| `verbose`       | `boolean`                                     | `false`      | Log detailed plugin errors.                                                                                                                                                                                              |
-| `registry`      | `TargetRegistry`                              | built-in     | Custom target registry (advanced).                                                                                                                                                                                       |
+| Option          | Type                                          | Default      | Description                                                                                                                                                                                                                                                                                                 |
+| --------------- | --------------------------------------------- | ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `targets`       | `TargetName[]`                                | (required)   | Targets to compile for.                                                                                                                                                                                                                                                                                     |
+| `srcDir`        | `string`                                      | —            | Source root to strip from output paths (e.g. `"src"`). When set, directory structure below `srcDir` is preserved in the output. Without it, the deepest common prefix is used. Also available as `--src-dir` on the CLI.                                                                                    |
+| `outDir`        | `string`                                      | `"dist"`     | Output directory. Files are written to `<outDir>/<target>/`.                                                                                                                                                                                                                                                |
+| `targetOutDir`  | `Partial<Record<TargetName, string>>`         | `{}`         | Per-target output directory override, replacing `<outDir>/<target>/` for the targets it names.                                                                                                                                                                                                              |
+| `tsconfig`      | `string`                                      | —            | Path to a `tsconfig.json` whose ambient declarations (e.g. generated `*.d.ts` for virtual modules) are loaded into the per-file program, so `import type` from those modules resolves during prop analysis.                                                                                                 |
+| `barrels`       | `BarrelGroup[]`                               | (see note)   | Per-category re-export barrels written for each target. Read by `@inkline/cli` only — the compiler pipeline ignores it. Omitted, the CLI writes one `index.ts` per target containing every non-story component.                                                                                             |
+| `sourceMap`     | `"external" \| "inline" \| "none"`            | `"external"` | Source map generation mode.                                                                                                                                                                                                                                                                                 |
+| `reportLevel`   | `"error" \| "warning" \| "info"`              | `"warning"`  | Lowest diagnostic severity reported, by `compile` and `check` alike. Read by `@inkline/cli` only — the compiler pipeline ignores it and always produces every diagnostic it finds. A level reports itself and everything above it, so the default `"warning"` withholds notes; `"info"` reports everything. |
+| `targetOptions` | `Record<TargetName, Record<string, unknown>>` | `{}`         | Per-target options. Unknown keys produce INK0080 warnings.                                                                                                                                                                                                                                                  |
+| `plugins`       | `Plugin[]`                                    | `[]`         | Compiler plugins.                                                                                                                                                                                                                                                                                           |
+| `verbose`       | `boolean`                                     | `false`      | Log detailed plugin errors.                                                                                                                                                                                                                                                                                 |
+| `registry`      | `TargetRegistry`                              | built-in     | Custom target registry (advanced).                                                                                                                                                                                                                                                                          |
+
+<!-- Declared gap: the paragraph below states INK0081/INK0082/INK0083 severities in prose, and the
+     row above states INK0080's. docs-tables.test.ts asserts tables only — prose is not covered.
+     Changing a severity in src/core/diagnostics/codes.ts means re-reading this section by hand. -->
 
 `@inkline/cli` validates the loaded config against a zod schema. Keys outside this set are ignored
 and reported as INK0081 / INK0082 warnings (with a suggested spelling when the key is close to a
-real one); values of the wrong type are reported as INK0083 and passed through unchanged. None of
-these fail the build.
+real one); these do not fail the build, at any depth. A value of the wrong type is reported as an
+INK0083 error and stops the command with exit code `2` before it reads any field — a value that is
+not the declared type cannot be consumed, and passing it through only moved the failure later.
 
 ### Available Targets
 
@@ -505,9 +525,24 @@ inkline compile src/IButton.ink.tsx --target react --source-map inline
 
 # Watch and recompile on change
 inkline compile "src/**/*.ink.tsx" --config inkline.config.ts --watch
+
+# Also report info notices, which the default `warning` floor withholds
+inkline compile "src/**/*.ink.tsx" --target react --report-level info
 ```
 
-Flags: `--target`, `--src-dir`, `--out-dir` (default `dist`), `--source-map` (`external` | `inline` | `none`, default `external`), `--config`, `--clean` (default `true`), `--watch`, `--verbose`. `--target` is required unless the config file sets `targets`. CLI flags override config file values.
+Flags: `--target`, `--src-dir`, `--out-dir` (default `dist`), `--source-map` (`external` | `inline` | `none`, default `external`), `--report-level` (`error` | `warning` | `info`, default `warning`), `--config`, `--clean` (default `true`), `--watch`, `--verbose`. `--target` is required unless the config file sets `targets`. CLI flags override config file values.
+
+A build closes with a summary of what it did. Because the default level withholds notes, the summary
+says how many rather than reporting a bare `0 notes`, which cannot be told apart from "there were
+none":
+
+```
+Compiled 67 files in 0.45s — 0 errors, 0 warnings, 0 notes (12 notes withheld at --report-level warning; re-run with --report-level info to list)
+```
+
+Notes are target-invariant advisories — `INK0045` tells you a fact about the Astro target, not about
+the edit you just made — so they are withheld by default in both modes. `--report-level info` lists
+them.
 
 ### Check
 
@@ -520,9 +555,16 @@ inkline check src/Counter.ink.tsx --target react
 inkline check "src/**/*.ink.tsx" --config inkline.config.ts
 ```
 
-Flags: `--target`, `--config`, `--verbose`. `check` accepts the same patterns as `compile` and reads
-the same config file, so it reports exactly the diagnostics the build would report — the only
-difference is that it writes nothing and skips source maps.
+Flags: `--target`, `--config`, `--report-level`, `--verbose`. `check` accepts the same patterns as
+`compile`, reads the same config file, and reports through the same path at the same resolved level —
+so it reports exactly the diagnostics the build would report, collapsed the same way, closing with
+the same summary line:
+
+```
+Checked 67 files in 0.31s — 0 errors, 0 warnings, 0 notes (12 notes withheld at --report-level warning; re-run with --report-level info to list)
+```
+
+The only difference is that it writes nothing and skips source maps.
 
 ### Exit codes
 
@@ -587,10 +629,11 @@ interface GeneratedFile {
 
 ### Working with the IR
 
-The compiler exposes its full intermediate representation for advanced use cases:
+The compiler exposes its full intermediate representation at `@inkline/compiler/ir`:
 
 ```ts
-import { compile, walkRenderTree } from "@inkline/compiler";
+import { compile } from "@inkline/compiler";
+import { walkRenderTree } from "@inkline/compiler/ir";
 
 const result = await compile({ fileName: "Counter.ink.tsx", source }, { targets: ["react"] });
 
@@ -623,7 +666,7 @@ for (const [componentId, graph] of module.graphs) {
 ### Transforming the IR
 
 ```ts
-import { transform, transformComponent, SKIP } from "@inkline/compiler";
+import { transform, transformComponent, SKIP } from "@inkline/compiler/ir";
 
 const transformed = transformComponent(component, {
   enter(node) {
@@ -816,12 +859,18 @@ for (const file of files) {
 
 ## Custom Targets
 
-Register a custom target for frameworks not built in:
+`name` must be one of the seven built-in `TargetName` values, and `resolveOptions` rejects anything
+outside `ALL_TARGETS` before it consults your registry — so this **overrides the implementation
+behind a built-in name**, it does not add a target for a framework that isn't built in. Adding a new
+framework is an in-repo contribution; see [`docs/adding-a-target.md`](../../docs/adding-a-target.md).
+
+Override a built-in target's rewrites or emit:
 
 ```ts
-import { defineTarget, createRegistry, builtinRegistry } from "@inkline/compiler";
-import type { IRComponent, CodegenContext, CodeModule } from "@inkline/compiler";
-import { cFile, cStmt, cImport, cJsxElement } from "@inkline/compiler";
+import { defineTarget, createRegistry } from "@inkline/compiler/codegen";
+import type { CodegenContext, CodeModule } from "@inkline/compiler/codegen";
+import { cFile, cStmt, cImport, cJsxElement } from "@inkline/compiler/codegen";
+import type { IRComponent } from "@inkline/compiler/ir";
 
 const myTarget = defineTarget({
   name: "react", // must be a valid TargetName
@@ -852,7 +901,9 @@ registry.register(myTarget);
 const result = await compile(input, { targets: ["react"], registry });
 ```
 
-See `docs/adding-a-target.md` for a complete walkthrough.
+`createRegistry()` starts empty, so every name in `targets` must be registered in it or `compile`
+throws INK0086. Spread a built-in (`{ ...reactTarget, rewrites: … }`) when you only want to change
+part of it.
 
 ---
 
@@ -863,6 +914,10 @@ The compiler produces diagnostics at each pipeline stage. Errors prevent output;
 The codes below are the ones most authors hit. For the complete, always-current list, run
 `pnpm docs:diagnostics` in `core/compiler` — it prints a reference table generated from
 [`src/core/diagnostics/codes.ts`](./src/core/diagnostics/codes.ts), the single source of truth.
+
+<!-- The Severity column of the table below is asserted against DIAGNOSTICS by
+     src/core/diagnostics/docs-tables.test.ts. Rows may be added or removed freely — this table is
+     a deliberate subset — but every row must name a real code and its catalog severity. -->
 
 | Code    | Severity | Description                                                                                                                             |
 | ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |
@@ -880,11 +935,12 @@ The codes below are the ones most authors hit. For the complete, always-current 
 | INK0080 | warning  | Unknown key in `targetOptions`.                                                                                                         |
 | INK0081 | warning  | Unknown key in `inkline.config.*`. The key is ignored.                                                                                  |
 | INK0082 | warning  | Unknown key in `inkline.config.*` that looks like a typo, with the suggested spelling.                                                  |
-| INK0083 | warning  | Value in `inkline.config.*` has the wrong type. The value is passed through unchanged.                                                  |
+| INK0083 | error    | Value in `inkline.config.*` has the wrong type. The command stops before consuming it.                                                  |
 | INK0084 | error    | No compilation target specified.                                                                                                        |
 | INK0085 | error    | Unknown target. Lists the valid targets and suggests the closest match.                                                                 |
 | INK0086 | error    | Target is not present in the configured registry.                                                                                       |
 | INK0090 | error    | A plugin threw an exception.                                                                                                            |
+| INK0094 | warning  | The options object's type-only `models` map disagrees with the setup body's `defineModel` calls.                                        |
 | INK0100 | error    | Parse failure in a component. That component is skipped; the others in the module still compile.                                        |
 
 Run `inkline check <file>` to check without producing output.

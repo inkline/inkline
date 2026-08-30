@@ -18,7 +18,7 @@ only its branding, section topology and content.
 
 ## ::u-button
 
-## to: /docs/getting-started/installation
+## to: /docs/getting-started
 
 Get started
 ::

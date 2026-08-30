@@ -23,6 +23,8 @@ This package exists so authoring code type-checks and produces predictable IR. T
 
 Implication: do not add real reactive behavior, real DOM rendering, or expensive logic to these stubs. Any "real" behavior must come from the per-framework code the compiler emits.
 
+The same applies to the dependency list. It has exactly one entry, `csstype`, which is types-only by construction — the published package contains `index.d.ts` and no JavaScript. The JSX element types below come from a vendored `.d.ts` in [`src/vendor/`](./src/vendor/), not from a package. Nothing from either reaches the output. **Do not add a runtime package to this package's `dependencies`**, for types or otherwise — that is what the vendored copy exists to avoid.
+
 ## Exports
 
 Two entry points, declared in [`package.json`](./package.json) `exports`:
@@ -51,6 +53,24 @@ Two entry points, declared in [`package.json`](./package.json) `exports`:
 | `Slot`, `Show`, `For`, `Switch`, `Match`, `Transition` | JSX components                        | Control-flow + slotting + transition. Lowered to IR nodes in compiler pass P3.                                                                                                                                                                      |
 | `Condition`                                            | `boolean \| null \| undefined`        | The type of `when` on `Show` and `Match`. Nullish is admitted so an optional flag prop forwards without `!!`; functions stay rejected so a missing `()` on a signal is still a type error.                                                          |
 
+### JSX surface (from `src/jsx-runtime.ts`)
+
+`JSX.IntrinsicElements` is **not** `any`. It is derived from a vendored upstream — [`src/vendor/jsx-intrinsics.d.ts`](./src/vendor/jsx-intrinsics.d.ts), a verbatim MIT-licensed copy of Solid's element types — through one alias:
+
+```ts
+type Inklinified<T> = { [K in keyof T]: Omit<T[K], InklineOwnedKeys> & InklineOwned };
+```
+
+Read that alias before touching this file — it is the whole contract, and the reasoning is
+[ADR-003](../../docs/adrs/003-typed-jsx-intrinsic-elements-from-a-vendored-upstream.md).
+
+- **The alias is the seam.** The public shape is "upstream element attributes, minus the keys Inkline redefines, plus `InklineOwned`". The vendored copy is today's source, not the contract. Replacing it with a generated surface is one `extends` clause — measured, not asserted: swapping the `solid-js` package for the vendored copy cost exactly that one line.
+- **Never hand-edit `src/vendor/`.** The directory is two generated files: [`manifest.json`](./src/vendor/manifest.json) and the `.d.ts` rendered from it by [`scripts/generate-jsx.mjs`](./scripts/generate-jsx.mjs). The copy is byte-identical to upstream below its header, which is what makes a re-sync a plain `diff`. The re-sync procedure and the rationale live in that header, next to the thing they describe; `pnpm --filter @inkline/core generate:jsx` runs it and `generate:jsx:check` proves nothing has drifted. Corrections belong in `InklineOwned`.
+- **`InklineOwned` is the only place Inkline overrides upstream.** `ref` is Inkline's `{ current }` object; `children` and `key` are compiler-opaque; `indeterminate` is a DOM property with no HTML attribute; every `` `$${string}` `` key is open so directives (`$bind:value`, `$if`, …) are unconstrained by construction. Directive _names_ are validated by compiler diagnostics, not by types.
+- **Component props are deliberately untyped.** `InkComponent` keeps `[attr: string]: any`, so a misspelled prop on an Inkline component still type-checks. Changing that is its own decision.
+
+`vp check` type-checks the 101 `.ink.tsx` fixtures in [`core/compiler/src/__fixtures__/`](../compiler/src/__fixtures__/) — they are the control that catches an upstream regression here. Neither `core/compiler/tsconfig.json` nor the root `vite.config.ts` `lint.ignorePatterns` may exclude them again; that list gates the type-check path too, so excluding them looks green while checking nothing.
+
 When you add a new primitive, **add the corresponding compiler binding** in [`core/compiler/src/pipeline/passes/02-parse/`](../compiler/src/pipeline/passes/02-parse/) (parse → IR) and [`core/compiler/src/pipeline/passes/03-lower/`](../compiler/src/pipeline/passes/03-lower/) (if it lowers to a different IR shape). A primitive without a compiler binding will be left as-is in output and likely break consumers.
 
 ## Build
@@ -65,6 +85,8 @@ Output: `dist/index.{mjs,d.mts}` + `dist/jsx-runtime.{mjs,d.mts}`.
 ## Tests
 
 [`src/index.test.ts`](./src/index.test.ts) and [`src/jsx-runtime.test.ts`](./src/jsx-runtime.test.ts) pin the stub contracts (identity/no-op shapes, tuple returns). Behavioral coverage lives in [`@inkline/compiler`](../compiler/) (compile + scenario tests assert what the _compiled_ output does). Keep tests here shallow — the runtime is intentionally inert.
+
+[`src/jsx-runtime.probes.test.ts`](./src/jsx-runtime.probes.test.ts) is the exception: it spawns `tsc` over twelve deliberate authoring mistakes and asserts which eight are caught **and** which four are not. Both halves are the contract — a change that starts catching one of the four fails too, so the documented blind spots can never go stale. Update the table only alongside the reasoning in ADR-003.
 
 ## See also
 

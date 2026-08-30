@@ -21,6 +21,18 @@ export const DIAGNOSTICS = {
     help: "Move dynamic options into the setup body" as const,
     url: "https://docs.inkline.dev/diagnostics/INK0041" as const,
   },
+  // The type argument is the only declaration of a component's events, and each member's type node
+  // is emitted verbatim into the generated component. Reading it partially is worse than not reading
+  // it at all: a member the compiler never saw is dropped from the props type while the author's
+  // `emit("open")` call survives as a read of a prop nothing declares, with no downstream check to
+  // catch the mismatch. So the bar is one declaration, in this file, listing every event itself.
+  INK0042: {
+    severity: "error" as const,
+    title:
+      "defineEmits type argument must resolve to one fully readable object type in this file" as const,
+    help: "Write the members inline — defineEmits<{ close: [] }>() — or reference a single type alias or interface declared in this file that lists every event itself. A union, a generic instantiation, an interface that extends another, an interface split across merged declarations, or a type imported from another module cannot be read in full at build time, and any event the compiler could not see would be dropped from the output." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0042" as const,
+  },
   INK0043: {
     severity: "error" as const,
     title: "defineModel must be a [getter, setter] tuple with a static name" as const,
@@ -39,6 +51,12 @@ export const DIAGNOSTICS = {
       "Two-way binding and custom events are not interactive on the static Astro target" as const,
     help: "An .astro component renders once on the server; the model value is read-only and emitted events never fire. Use a framework island for interactivity." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0045" as const,
+  },
+  INK0046: {
+    severity: "warning" as const,
+    title: "Event '{name}' is declared twice" as const,
+    help: "Declare each event once. The defineEmits declaration wins, since it is the only one that can carry a payload type; remove the redundant declaration reported here." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0046" as const,
   },
   INK0010: {
     severity: "warning" as const,
@@ -127,6 +145,18 @@ export const DIAGNOSTICS = {
     help: "Gated content always renders there. Pair hasSlot with a CSS `:empty` rule so the empty wrapper collapses." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0068" as const,
   },
+  // Slot placeholders are lowered from the component's render tree, and lowering reaches a fixed set
+  // of shapes within it. A `<Slot>` it never reaches — one in a helper function, an effect or an IIFE,
+  // or one inside a ternary, a `&&`, or an attribute value — declares no slot and survives into the
+  // output verbatim, against a `Slot` the target never imports. The help enumerates both lists because
+  // several refused shapes are *in* the render output and ordinary JSX works in all of them, so the
+  // author cannot infer the reachable set from the failure.
+  INK0069: {
+    severity: "error" as const,
+    title: "<Slot> must be reachable in the markup the setup function returns" as const,
+    help: 'Render the <Slot> directly from the return, or through <Show>, <For>, <Switch> or an arrow-function .map callback. A <Slot> the compiler cannot reach — one in a helper function, an effect or an IIFE, or one inside a ternary, a &&, or an attribute value — declares no slot and is emitted as an undefined element. Use <Show when={cond()}><Slot name="icon"/></Show> instead of {cond() && <Slot name="icon"/>}, and const icon = defineSlot("icon") when you need to factor the markup out and render the value from the return.' as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0069" as const,
+  },
   INK0070: {
     severity: "error" as const,
     title: "Component-ref forwarding is not yet supported" as const,
@@ -138,6 +168,28 @@ export const DIAGNOSTICS = {
     title: "JSX spread attributes are not supported" as const,
     help: "The spread is discarded. Enumerate the attributes explicitly on the element instead of spreading an object — the compiler must know every attribute name at build time." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0071" as const,
+  },
+  // Severity: warning, not error. The valid set is a *snapshot* of a spec Inkline does not own —
+  // `ARIA_ATTRIBUTES` is derived from the vendored JSX types — so a genuinely-new ARIA attribute the
+  // snapshot predates would fail the build of an author who did nothing wrong. Same one-way door as
+  // INK0081. The emitted output is unharmed either way: an unknown `aria-*` renders as written and
+  // is ignored by assistive technology, which costs accessibility, not correctness.
+  INK0072: {
+    severity: "warning" as const,
+    title: 'Unknown ARIA attribute "{name}"' as const,
+    help: "{suggestion}The attribute is emitted as written, so assistive technology ignores it. ARIA attribute names are a closed set — correct the spelling or remove it." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0072" as const,
+  },
+  // Severity: error, unlike its neighbour INK0072. `$bind:` is Inkline's own vocabulary, defined by
+  // this compiler's lowering and nothing else — there is no external spec to lag, so the valid set
+  // is known exactly and a false positive is a bug rather than a risk to price in. The failure is
+  // not cosmetic either: `<div $bind:nonsense={1} />` emits `onInput={(e) => 1(e.target.value)}`,
+  // which throws on the first input event. Emitting code known to be broken is worse than refusing.
+  INK0073: {
+    severity: "error" as const,
+    title: 'Cannot two-way bind "$bind:{name}" on <{tag}>' as const,
+    help: '$bind: lowers to a value attribute plus a writer, and <{tag}> has nothing to write "{name}" to — the generated handler would call the bound expression as a setter and throw at runtime. {suggestion}' as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0073" as const,
   },
   INK0080: {
     severity: "warning" as const,
@@ -158,9 +210,9 @@ export const DIAGNOSTICS = {
     url: "https://docs.inkline.dev/diagnostics/INK0082" as const,
   },
   INK0083: {
-    severity: "warning" as const,
+    severity: "error" as const,
     title: "Invalid config value at {path}: {message}" as const,
-    help: "The value is passed through unchanged. Correct it to the documented type." as const,
+    help: "The command stops here: a value of the wrong type cannot be consumed. Correct it to the documented type." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0083" as const,
   },
   INK0084: {
@@ -181,11 +233,23 @@ export const DIAGNOSTICS = {
     help: "The registry provides: {available}. Register the target with `createRegistry` + `defineTarget`, or drop it from `targets`." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0086" as const,
   },
+  INK0087: {
+    severity: "error" as const,
+    title: 'Invalid report level "{level}"' as const,
+    help: "Reporting levels, high to low: {levels}. A level reports itself and everything above it, so `warning` withholds notes. Set it with --report-level <level> or `reportLevel` in inkline.config.ts." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0087" as const,
+  },
   INK0090: {
     severity: "error" as const,
     title: "Plugin '{name}' threw: {message}" as const,
     help: "The hook is skipped and compilation continues without its contribution. Re-run with --verbose for the stack trace; a plugin should report recoverable problems with ctx.pushDiagnostic(diagnostic) rather than throwing." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0090" as const,
+  },
+  INK0094: {
+    severity: "warning" as const,
+    title: "Declared model '{name}' does not match the setup body: {reason}" as const,
+    help: "options.models is a type-only channel — the compiler emits models from the setup body's defineModel calls alone, so a drifted entry misleads a parent's type-checker while changing no output. Make the entry agree with its defineModel call, or drop it." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0094" as const,
   },
   INK0100: {
     severity: "error" as const,

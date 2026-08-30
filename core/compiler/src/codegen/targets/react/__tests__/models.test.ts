@@ -24,6 +24,6 @@ describe("EmitButton: defineEmits → callback prop", () => {
   it("rewrites emit(name, …) to props.on<Name>?.()", async () => {
     const out = await compileTo("EmitButton", "react");
     expect(out).toContain("props.onPress?.(1)");
-    expect(out).toContain("onPress?: (...args: any[]) => void");
+    expect(out).toContain("onPress?: (count: number) => void");
   });
 });

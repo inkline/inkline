@@ -28,11 +28,11 @@ export function refs(component: IRComponent, _ctx: PassContext): IRComponent {
   const updates = new Map<SymbolId, { category: IRRefCategory; elementType?: string }>();
 
   // A ref binding references its declaration by identifier (`ref={myRef}`). Unlike attribute and
-  // event expressions, ref-binding `deps` are never resolved by the parse deps pass, and a
-  // component-instance ref binding in particular carries an empty `deps` array — so keying off
+  // event expressions, ref-binding `deps` are never resolved by the parse deps pass — every ref
+  // binding, element and component-instance alike, carries an empty `deps` array — so keying off
   // `deps[0].symbolId` never resolves it and the declaration keeps the parser's `"element"` default
-  // (INK-15). Link the binding to its declaration through the identifier text instead, mirroring how
-  // the Angular target already derives its element-ref set from the render tree.
+  // with no `elementType` (INK-15). Link the binding to its declaration through the identifier text
+  // instead, mirroring how the Angular target derives its element-ref set from the render tree.
   const refIdByName = new Map<string, SymbolId>();
   for (const decl of component.refs) refIdByName.set(decl.name, decl.symbolId);
 
@@ -40,14 +40,16 @@ export function refs(component: IRComponent, _ctx: PassContext): IRComponent {
     enter(node) {
       if (node.kind === "Element") {
         for (const ref of node.refs) {
-          // Element refs still key off resolved `deps`: their `elementType` inference is a separate
-          // latent gap (deps are likewise empty here) whose fix would shift element-ref output, so
-          // it is intentionally left untouched by this categorization-only change.
-          const symbolId = ref.ref.deps[0]?.symbolId;
+          const symbolId = refIdByName.get(ref.ref.expr.getText());
           if (symbolId) {
+            // An unmapped tag leaves `elementType` undefined rather than falling back to
+            // `HTMLElement`. React's `RefObject<T>` is invariant, so a ref typed `HTMLElement` on an
+            // element React declares more narrowly (`<h1>` → `HTMLHeadingElement`) is a hard TS2322
+            // at the ref site — a guess that is wrong is worse than no guess, which just restores
+            // today's untyped output. Widen the map to type more tags; never widen the fallback.
             updates.set(symbolId, {
               category: "element",
-              elementType: TAG_TO_ELEMENT_TYPE[node.tag] ?? "HTMLElement",
+              elementType: TAG_TO_ELEMENT_TYPE[node.tag],
             });
           }
         }

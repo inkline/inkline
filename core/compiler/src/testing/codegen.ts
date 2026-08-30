@@ -121,6 +121,7 @@ export const NEW_FIXTURES = [
   "SlotInConditional",
   "ModelInput",
   "EmitButton",
+  "DuplicateEvent",
   "BoundField",
   "NativeBind",
   "MultiChildSlot",
@@ -136,6 +137,12 @@ export const loc = UNKNOWN_LOCATION;
 export function mockExpr(code: string): ts.Expression {
   const sf = ts.createSourceFile("t.ts", code, ts.ScriptTarget.Latest, true);
   return (sf.statements[0] as ts.ExpressionStatement).expression;
+}
+
+/** Parse a snippet of TS into a type node — for building IR declarations that carry one inline. */
+export function mockType(code: string): ts.TypeNode {
+  const sf = ts.createSourceFile(`t.ts`, `type T = ${code};`, ts.ScriptTarget.Latest, true);
+  return (sf.statements[0] as ts.TypeAliasDeclaration).type;
 }
 
 /** A minimal component (no state/memos/effects) with overridable fields. */

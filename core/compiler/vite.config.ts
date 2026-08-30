@@ -5,6 +5,8 @@ export default defineConfig({
   pack: {
     entry: {
       index: "src/index.ts",
+      ir: "src/ir/index.ts",
+      codegen: "src/codegen/index.ts",
       testing: "src/testing/index.ts",
     },
     dts: {

@@ -2,6 +2,7 @@ import * as ts from "typescript";
 import type { IRComponent, IRExprNode } from "../../../ir/render/nodes.ts";
 import { walkRenderTree } from "../../../ir/render/visit.ts";
 import { emittedSetupNames, setupLocalDefs } from "../../../ir/setup.ts";
+import { CONSTRUCTOR_TYPES } from "../02-parse/options.ts";
 import type { PassContext } from "../../types.ts";
 import type { ReactivityGraph } from "./graph.ts";
 
@@ -149,6 +150,63 @@ export function validateSetupLocals(component: IRComponent, ctx: PassContext): v
       if (!emitted.has(name) && referenced.has(name)) {
         ctx.diagnostics.push("INK0121", s.loc, { name });
       }
+    }
+  }
+}
+
+/**
+ * The type spellings `options.models` is able to express, so a disagreement with one of them is a
+ * real one. A model typed `MyShape` or `"a" | "b"` in the setup body has no `PropDeclaration` that
+ * says the same thing — `Object` is the closest available and is not wrong — so those are left
+ * alone rather than reported as drift.
+ */
+const COMPARABLE_TYPES: ReadonlySet<string> = new Set(Object.values(CONSTRUCTOR_TYPES));
+
+/**
+ * INK0094: the options object's `models` map disagrees with the `defineModel` calls in the setup
+ * body. `options.models` is a type-only channel — no target reads it — so nothing else would ever
+ * notice: a drifted entry teaches a parent's type-checker a shape the compiler will not emit, and
+ * compiles clean on both sides. Only components that opted into the channel are checked; a setup
+ * body with no `models` key is declaring nothing and is not drift.
+ */
+export function validateDeclaredModels(component: IRComponent, ctx: PassContext): void {
+  const declared = component.declaredModels;
+  if (!declared) return;
+
+  const actual = new Map(component.models.map((m) => [m.propName, m]));
+
+  for (const entry of declared) {
+    const model = actual.get(entry.name);
+    if (!model) {
+      ctx.diagnostics.push("INK0094", entry.loc, {
+        name: entry.name,
+        reason: `no defineModel("${entry.name}") call in the setup body creates it`,
+      });
+      continue;
+    }
+
+    const actualType = model.typeNode?.getText();
+    if (
+      entry.typeText &&
+      actualType &&
+      COMPARABLE_TYPES.has(entry.typeText) &&
+      COMPARABLE_TYPES.has(actualType) &&
+      entry.typeText !== actualType
+    ) {
+      ctx.diagnostics.push("INK0094", entry.loc, {
+        name: entry.name,
+        reason: `declared as ${entry.typeText}, but defineModel types it as ${actualType}`,
+      });
+    }
+  }
+
+  const declaredNames = new Set(declared.map((d) => d.name));
+  for (const model of component.models) {
+    if (!declaredNames.has(model.propName)) {
+      ctx.diagnostics.push("INK0094", model.loc, {
+        name: model.propName,
+        reason: "the setup body creates it, but options.models does not declare it",
+      });
     }
   }
 }

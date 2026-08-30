@@ -2,9 +2,124 @@ export interface Ref<T = any> {
   current: T | null;
 }
 
-interface ComponentOptions {
+/**
+ * Constructor reference whose bare use as an object-form prop value declares a *required* prop —
+ * the set the compiler treats as a type reference rather than a default value.
+ */
+export type PropConstructorRef =
+  | StringConstructor
+  | NumberConstructor
+  | BooleanConstructor
+  | ObjectConstructor
+  | ArrayConstructor
+  | FunctionConstructor
+  | SymbolConstructor;
+
+/** Every constructor reference the compiler can map to a type, including `Date`. */
+export type PropConstructor = PropConstructorRef | DateConstructor;
+
+/** Mirrors the compiler's constructor-to-type table. */
+type PropConstructorValue<C> = C extends StringConstructor
+  ? string
+  : C extends NumberConstructor
+    ? number
+    : C extends BooleanConstructor
+      ? boolean
+      : C extends DateConstructor
+        ? Date
+        : C extends ArrayConstructor
+          ? any[]
+          : C extends FunctionConstructor
+            ? (...args: any[]) => any
+            : C extends SymbolConstructor
+              ? symbol
+              : C extends ObjectConstructor
+                ? Record<string, any>
+                : never;
+
+/** Full object-form prop declaration: `{ type: Number, required: true, default: 0 }`. */
+export interface PropOptions {
+  type?: PropConstructor;
+  required?: boolean;
+  default?: unknown;
+}
+
+/** A bare default value: `{ color: "blue" }` declares an optional `string` prop defaulting to blue. */
+type PropDefaultValue =
+  | string
+  | number
+  | boolean
+  | bigint
+  | symbol
+  | null
+  | undefined
+  | readonly unknown[]
+  | ((...args: any[]) => any)
+  | Record<string, unknown>;
+
+/**
+ * One entry of the options object's `props` map — a constructor reference (required prop), a full
+ * `{ type, required, default }` shape, or a bare default value (optional prop).
+ */
+export type PropDeclaration = PropConstructor | PropOptions | PropDefaultValue;
+
+type IsRequiredProp<D> = D extends PropConstructorRef
+  ? true
+  : D extends { required: true }
+    ? true
+    : false;
+
+type PropValue<D> = D extends PropConstructor
+  ? PropConstructorValue<D>
+  : D extends { type: infer C }
+    ? C extends PropConstructor
+      ? PropConstructorValue<C>
+      : unknown
+    : D extends { default: infer V }
+      ? V
+      : // A full shape carrying neither `type` nor `default` (`{ required: true }`) declares no type
+        // at all — the compiler emits the prop untyped. Without this arm the declaration object
+        // itself would fall through as the prop's type.
+        D extends { required: boolean }
+        ? unknown
+        : D;
+
+type Simplify<T> = { [K in keyof T]: T[K] } & {};
+
+/**
+ * The props type an options-object `props` map declares, matching the shape each target emits:
+ * a bare constructor reference or `required: true` yields a non-optional member, everything else
+ * is optional (its default is applied by the generated component).
+ */
+export type InferProps<D> = Simplify<
+  {
+    [K in keyof D as IsRequiredProp<D[K]> extends true ? K : never]: PropValue<D[K]>;
+  } & {
+    [K in keyof D as IsRequiredProp<D[K]> extends true ? never : K]?: PropValue<D[K]>;
+  }
+>;
+
+export interface ComponentOptions {
+  /**
+   * Declares props with per-prop types, defaults, and a required flag. Types are inferred from a
+   * constructor reference (`Number` → `number`) or from the default value (`"blue"` → `string`).
+   * The setup parameter's type is inferred from this map, so it must not be annotated.
+   */
+  props?: Record<string, PropDeclaration>;
+  /**
+   * Declares the two-way models the setup body creates with `defineModel`, so a parent's
+   * type-checker can see them at JSX attribute position.
+   *
+   * **Type-only channel.** The compiler never reads this key — models are emitted from the setup
+   * body's `defineModel` calls alone — so declaring it changes no output on any target. That also
+   * means an entry can drift from what the setup body actually declares; the compiler reports the
+   * disagreement as `INK0094` rather than trusting either side.
+   */
+  models?: Record<string, PropDeclaration>;
   slots?: Record<string, { scoped?: boolean; required?: boolean }>;
   events?: Record<string, Record<string, never>>;
+  /** Scoped CSS for the component, as a plain string or template literal. */
+  style?: string;
   runtime?: "client" | "server" | "iso";
   name?: string;
   /**
@@ -16,13 +131,26 @@ interface ComponentOptions {
   meta?: { headless?: boolean };
 }
 
+type ComponentOptionsWithProps = ComponentOptions & {
+  props: Record<string, PropDeclaration>;
+};
+
 export type InkComponent<P = {}> = (
   props: P & { class?: string; children?: any; ref?: Ref; key?: any; [attr: string]: any },
 ) => any;
 
 export function defineComponent<P = {}>(setup: (props: P) => any): InkComponent<P>;
+export function defineComponent<O extends ComponentOptionsWithProps>(
+  options: O,
+  setup: (props: InferProps<O["props"]>) => any,
+): InkComponent<InferProps<O["props"]>>;
+/**
+ * `props?: never` keeps this overload off any options object carrying a `props` map. The parser
+ * prefers `options.props` over the setup parameter's annotation, so an options-object `props` map
+ * paired with a mismatched annotation would compile clean and emit props the body never reads.
+ */
 export function defineComponent<P = {}>(
-  options: ComponentOptions,
+  options: ComponentOptions & { props?: never },
   setup: (props: P) => any,
 ): InkComponent<P>;
 export function defineComponent<P = {}>(

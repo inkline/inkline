@@ -43,13 +43,6 @@ export const fixtureTypecheckExclusions = [
   // ── Compile-time-only imports with no on-disk counterpart. ──
   "RecipeNoArgs.ink.tsx", // TS2307 — imports `virtual:styleframe`, resolved by the styleframe plugin
   "StyledRecipe.ink.tsx", // TS2834 — imports `./recipe`, a recipe module the compiler synthesises
-
-  // ── Blocked on typings that are not on `main` yet. ──
-  // `ComponentOptions` declares neither `props` nor `style`; both keys are read by the options
-  // parser and both are fixed by https://github.com/inkline/inkline/pull/537 (UXF-97).
-  // Delete these two entries when that lands — they are the fixtures this gate exists for.
-  "PropDefaults.ink.tsx", // TS2353/TS2339 — options-object `props`
-  "ScopedStyle.ink.tsx", // TS2353 — options-object `style`
 ];
 
 /**

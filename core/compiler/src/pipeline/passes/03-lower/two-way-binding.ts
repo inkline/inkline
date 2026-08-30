@@ -17,27 +17,45 @@ interface BindingSpec {
   readonly valueExpr: string;
 }
 
+/**
+ * The native two-way vocabulary: every tag/attribute pair `$bind:` knows how to write back to, and
+ * the event + DOM read it lowers into. This table *is* the definition — INK0073 rejects what it does
+ * not contain, so the checker and the lowering cannot drift into disagreeing about which bindings
+ * exist. Adding a native binding is one entry here and nothing else.
+ */
+export const NATIVE_BINDINGS: Readonly<Record<string, Readonly<Record<string, BindingSpec>>>> = {
+  input: {
+    value: { eventName: "onInput", valueExpr: "e.target.value" },
+    checked: { eventName: "onChange", valueExpr: "e.target.checked" },
+  },
+  select: {
+    value: { eventName: "onChange", valueExpr: "e.target.value" },
+  },
+  textarea: {
+    value: { eventName: "onInput", valueExpr: "e.target.value" },
+  },
+};
+
+/** Fallback for tags INK0073 leaves ungated — custom elements, whose bindable surface is unknowable here. */
+const UNGATED_BINDING: BindingSpec = { eventName: "onInput", valueExpr: "e.target.value" };
+
 function resolveBindingSpec(
   tag: string,
   attrName: string,
   attrs: readonly IRAttribute[],
 ): BindingSpec {
-  if (attrName === "checked") {
-    return { eventName: "onChange", valueExpr: "e.target.checked" };
+  const spec = NATIVE_BINDINGS[tag]?.[attrName] ?? UNGATED_BINDING;
+
+  // `<input type="number">` is the one binding whose DOM read depends on a sibling attribute rather
+  // than on the tag/attribute pair alone, so it stays a rule instead of a table row.
+  if (spec.eventName === "onInput" && spec.valueExpr === "e.target.value") {
+    const typeAttr = attrs.find((a) => a.name === "type" && a.value.kind === "Static");
+    const inputType = typeAttr?.value.kind === "Static" ? String(typeAttr.value.value) : undefined;
+    if (inputType === "number")
+      return { eventName: "onInput", valueExpr: "e.target.valueAsNumber" };
   }
 
-  const typeAttr = attrs.find((a) => a.name === "type" && a.value.kind === "Static");
-  const inputType = typeAttr?.value.kind === "Static" ? String(typeAttr.value.value) : undefined;
-
-  if (tag === "select") {
-    return { eventName: "onChange", valueExpr: "e.target.value" };
-  }
-
-  if (inputType === "number") {
-    return { eventName: "onInput", valueExpr: "e.target.valueAsNumber" };
-  }
-
-  return { eventName: "onInput", valueExpr: "e.target.value" };
+  return spec;
 }
 
 function parseExpr(code: string): ts.Expression {
