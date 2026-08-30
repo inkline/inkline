@@ -41,6 +41,30 @@ describe("parseOptions", () => {
       expect(result.props![1]!.required).toBe(true);
     });
 
+    it.each(["String", "Number", "Boolean", "Object", "Array", "Function", "Symbol"])(
+      "reads a bare %s as a required type, not a default value",
+      (ctor) => {
+        const { obj, sf } = getObjectLiteral(`{ props: { p: ${ctor} } }`);
+        const result = parseOptions(obj, "test#X", sf, makeCtx());
+        const prop = result.props![0]!;
+        expect(prop.required).toBe(true);
+        expect(prop.defaultValue).toBeUndefined();
+      },
+    );
+
+    // `PropConstructorRef` in `@inkline/core` excludes `Date`, so `InferProps` types `{ when: Date }`
+    // as `when?: Date` — optional, and with no default. `Date` used to miss the constructor set
+    // entirely and fall through as a default *value*, emitting the constructor into a `Date` slot.
+    it("reads a bare Date as an optional type, not a default value", () => {
+      const { obj, sf } = getObjectLiteral(`{ props: { when: Date } }`);
+      const result = parseOptions(obj, "test#X", sf, makeCtx());
+      const prop = result.props![0]!;
+      expect(prop.name).toBe("when");
+      expect(prop.required).toBe(false);
+      expect(prop.typeText).toBe("Date");
+      expect(prop.defaultValue).toBeUndefined();
+    });
+
     it("parses full prop shape with type, required, and default", () => {
       const { obj, sf } = getObjectLiteral(
         `{ props: { count: { type: Number, required: true, default: 0 } } }`,

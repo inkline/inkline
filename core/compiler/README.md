@@ -156,12 +156,19 @@ default value's literal type (`"blue"` → `string`). Each target applies the de
 idiom — `withDefaults(defineProps<…>(), …)` on Vue, `mergeProps` on Solid, a destructured default on
 React/Svelte/Qwik/Astro, a seeded signal input (`input<string>('blue')`) on Angular.
 
+A bare constructor reference always declares the prop's _type_, never a default value. It also makes
+the prop required — with one exception, `Date`, which types the prop but leaves it optional. That
+line is drawn in `@inkline/core`: `PropConstructorRef` (bare use ⇒ required) excludes `Date`, while
+`PropConstructor` (accepted by `type:`) includes it, so `InferProps` reads `{ when: Date }` as
+`when?: Date`.
+
 ```tsx
 export default defineComponent(
   {
     props: {
       color: "blue", // default value, optional
       size: Number, // required, no default
+      when: Date, // typed `Date`, optional, no default
       count: { type: Number, required: true, default: 0 },
     },
     slots: {

@@ -57,3 +57,14 @@ describe("TextWithSiblings: text nodes adjacent to an element + a signal read", 
     expect(out).toContain("{{ name() }}");
   });
 });
+
+describe("PropDateType: object form `{ props: { when: Date, size: Number } }`", () => {
+  // A bare `Date` declares the prop's type, not a default value — so the signal input takes no
+  // initial value. `input<Date>(Date)` passed the constructor where a `Date` was required.
+  it("Angular: `when` is an optional signal input with no initial value", async () => {
+    const out = await compileTo("PropDateType", "angular");
+    expect(out).toContain("when = input<Date>()");
+    expect(out).toContain("size = input.required<number>()");
+    expect(out).not.toContain("input<Date>(Date)");
+  });
+});

@@ -118,6 +118,7 @@ export const EXCLUSIONS: Readonly<Partial<Record<TargetName, readonly string[]>>
     "NestedLoops", // TS2322
     "NestedSlots", // TS2322
     "OptionalSlot", // TS2322
+    "PropDateType", // TS2322
     "PropDefaults", // TS2322
     "RecipeNoArgs", // TS2322
     "RequiredProps", // TS2322

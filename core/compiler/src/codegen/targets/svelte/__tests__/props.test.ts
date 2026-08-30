@@ -24,3 +24,13 @@ describe("FragmentRoot: `<>...</>` root with no props", () => {
     expect(svelte).not.toContain("<>");
   });
 });
+
+describe("PropDateType: object form `{ props: { when: Date, size: Number } }`", () => {
+  // A bare `Date` declares the prop's type, not a default value — nothing seeds the destructure.
+  it("Svelte: `when` is an optional Date and the $props() destructure seeds no default", async () => {
+    const out = await compileTo("PropDateType", "svelte");
+    expect(out).toContain("interface Props { when?: Date; size: number }");
+    expect(out).toContain("let { when, size, ...__attrs }: Props & Record<string, any> = $props()");
+    expect(out).not.toContain("when = Date");
+  });
+});

@@ -188,7 +188,13 @@ function parsePropsFromObject(
       const id = ctx.symbols.mint({ componentId, kind: "prop", name, loc });
       const typeText = inferPropType(init);
       if (isConstructorRef(init)) {
-        props.push({ name, required: true, typeText, symbolId: id, loc });
+        props.push({
+          name,
+          required: !OPTIONAL_CONSTRUCTORS.has(init.text),
+          typeText,
+          symbolId: id,
+          loc,
+        });
       } else {
         props.push({
           name,
@@ -239,12 +245,21 @@ function parseFullPropShape(
   return { name, typeNode, defaultValue, required, symbolId: id, loc };
 }
 
-function isConstructorRef(node: ts.Expression): boolean {
-  if (!ts.isIdentifier(node)) return false;
-  return ["String", "Number", "Boolean", "Object", "Array", "Function", "Symbol"].includes(
-    node.text,
-  );
+/**
+ * A bare constructor reference declares the prop's *type*, never its default value: `size: Number`
+ * is a `number` prop, not a prop defaulting to the `Number` function. The accepted set is
+ * {@link CONSTRUCTOR_TYPES}, which `PropConstructor` in `@inkline/core` mirrors.
+ */
+function isConstructorRef(node: ts.Expression): node is ts.Identifier {
+  return ts.isIdentifier(node) && node.text in CONSTRUCTOR_TYPES;
 }
+
+/**
+ * Constructors whose bare use types the prop without making it required. `@inkline/core` draws the
+ * same line: `PropConstructorRef` — the set whose bare use declares a *required* prop — excludes
+ * `Date`, while `PropConstructor` includes it, so `{ when: Date }` infers `when?: Date`.
+ */
+const OPTIONAL_CONSTRUCTORS: ReadonlySet<string> = new Set(["Date"]);
 
 export const CONSTRUCTOR_TYPES: Readonly<Record<string, string>> = {
   String: "string",

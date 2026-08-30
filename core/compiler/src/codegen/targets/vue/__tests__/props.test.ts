@@ -58,3 +58,12 @@ describe("FragmentRoot: `<>...</>` root with no props", () => {
     expect(out).not.toContain("v-if");
   });
 });
+
+describe("PropDateType: object form `{ props: { when: Date, size: Number } }`", () => {
+  // A bare `Date` declares the prop's type, not a default value — so no `withDefaults` seed.
+  it("Vue: `when` is an optional Date and defineProps needs no withDefaults", async () => {
+    const out = await compileTo("PropDateType", "vue");
+    expect(out).toContain("const props = defineProps<{ when?: Date; size: number }>()");
+    expect(out).not.toContain("withDefaults");
+  });
+});

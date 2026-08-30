@@ -28,3 +28,14 @@ describe("FragmentRoot: `<>...</>` root with no props", () => {
     expect(solid).toContain("<>");
   });
 });
+
+describe("PropDateType: object form `{ props: { when: Date, size: Number } }`", () => {
+  // A bare `Date` declares the prop's type, not a default value — so no `mergeProps` seed.
+  it("Solid: `when` is an optional Date and no mergeProps default is emitted", async () => {
+    const out = await compileTo("PropDateType", "solid");
+    expect(out).toContain(
+      "export default function PropDateType(props: { when?: Date; size: number } & JSX.HTMLAttributes<HTMLElement>)",
+    );
+    expect(out).not.toContain("mergeProps");
+  });
+});

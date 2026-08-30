@@ -72,3 +72,17 @@ describe("TextWithSiblings: text nodes adjacent to an element + a signal read", 
     expect(out).toContain("!");
   });
 });
+
+describe("PropDateType: object form `{ props: { when: Date, size: Number } }`", () => {
+  // A bare `Date` declares the prop's TYPE, not a default value — `PropConstructorRef` in
+  // `@inkline/core` excludes `Date`, so `when` is optional and nothing seeds it. Emitting the
+  // constructor as the default put a `DateConstructor` in a `Date` slot on every target.
+  it("React: `when` is an optional Date and the destructure seeds no default", async () => {
+    const out = await compileTo("PropDateType", "react");
+    expect(out).toContain(
+      "export function PropDateType(props: { when?: Date; size: number } & React.HTMLAttributes<HTMLElement>)",
+    );
+    expect(out).toContain("const { when, size, ...__attrs } = props");
+    expect(out).not.toContain("when = Date");
+  });
+});

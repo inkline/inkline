@@ -34,3 +34,13 @@ describe("TextWithSiblings: text nodes adjacent to an element + a signal read", 
     expect(out).toContain("{name}");
   });
 });
+
+describe("PropDateType: object form `{ props: { when: Date, size: Number } }`", () => {
+  // A bare `Date` declares the prop's type, not a default value — nothing seeds the frontmatter.
+  it("Astro: `when` is an optional Date and the frontmatter destructure seeds no default", async () => {
+    const out = await compileTo("PropDateType", "astro");
+    expect(out).toContain("type Props = { when?: Date; size: number } & Record<string, any>");
+    expect(out).toContain("const { when, size, ...__attrs } = props;");
+    expect(out).not.toContain("when = Date");
+  });
+});
