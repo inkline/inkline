@@ -58,6 +58,7 @@ Not ADR material: implementation details inside one owner's lane, reversible def
 
 ## See also
 
+- [rfcs/](../rfcs/) — proposals argued on paper before the build. An accepted RFC ends in an ADR.
 - [conventions.md](../conventions.md) — code, file, test, and commit conventions.
 - [architecture.md](../architecture.md) — how `.ink.tsx` becomes seven framework outputs.
 - [scope.md](../scope.md) — capability boundaries and what is deferred.
