@@ -15,13 +15,20 @@ pays for the same lesson twice.
 | [005](./005-generated-component-authoring-types.md)                   | Keep `InkComponent`'s index signature; generate authoring types         | 2026-08-06 | Superseded | core, compiler, authoring |
 | [006](./006-inferred-component-authoring-types.md)                    | Authoring types are inferred from `defineComponent`, not generated      | 2026-08-08 | Accepted † | core, compiler, authoring |
 | [007](./007-website-ships-as-a-static-site.md)                        | `apps/website` ships as a fully static site on Vercel                   | 2026-08-08 | Accepted   | website, deploy, infra    |
-| [008](./008-authoring-surface-is-inferred-from-options-alone.md)      | The inferred surface comes from options alone, not the setup body       | 2026-08-11 | Accepted   | core, compiler, authoring |
+| [008](./008-authoring-surface-is-inferred-from-options-alone.md)      | The inferred surface comes from options alone, not the setup body       | 2026-08-11 | Accepted ‡ | core, compiler, authoring |
 | [009](./009-emitted-output-is-typechecked-by-a-subprocess-tsc.md)     | Emitted output is typechecked by a subprocess `tsc`, on react and solid | 2026-08-27 | Accepted   | compiler, testing, types  |
+| [010](./010-models-are-machine-written-from-definemodel.md)           | `options.models` is machine-written from `defineModel`                  | 2026-08-30 | Accepted   | core, compiler, authoring |
 
-† ADR-006 is superseded **in part** by ADR-008 — its Decision 1 mechanism claim and its Option D
-uniqueness claim, only. Decisions 2–7 remain the live decisions, so its status stays `Accepted`
-rather than flipping. This is the sole exception to the superseding rule below, and it is noted at
-the top of ADR-006 itself.
+† ADR-006 is superseded **in part** twice. By ADR-008 — its Decision 1 mechanism claim and its
+Option D uniqueness claim, only. By [ADR-010](./010-models-are-machine-written-from-definemodel.md) —
+its Decision 5 (Option D deferred), with Decision 3 amended so the `models` key is machine-written
+rather than author-written. Decisions 1, 2, 4, 6 and 7 remain live, so its status stays `Accepted`
+rather than flipping. Both scopes are noted at the top of ADR-006 itself.
+
+‡ ADR-008 is superseded **in part** by
+[ADR-010](./010-models-are-machine-written-from-definemodel.md) — the "Option D stays deferred"
+clause of its Decision 5, only. Decisions 1–4 stand, and Decision 1 is load-bearing for ADR-010, so
+its status stays `Accepted`. Noted at the top of ADR-008 itself.
 
 If you arrived here from a link to `008-emitted-output-is-typechecked-in-the-unit-suite.md`: that
 draft was never merged, its number was subsequently taken by ADR-008 above, and the decision it

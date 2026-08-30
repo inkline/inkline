@@ -2,7 +2,16 @@
 
 Date: 2026-08-11 · Status: Accepted
 Deciders: Project owner (decision 4, on 2026-08-11) · Informed by: internal tracker UXF-176 (probe + receipts), UXF-162 (delivery RFC), UXF-161 (feasibility spike)
-Supersedes: [ADR-006](./006-inferred-component-authoring-types.md) **in part** — its Decision 1 mechanism claim and its Option D uniqueness claim, only · Superseded by: —
+Supersedes: [ADR-006](./006-inferred-component-authoring-types.md) **in part** — its Decision 1 mechanism claim and its Option D uniqueness claim, only · Superseded by: [ADR-010](./010-models-are-machine-written-from-definemodel.md) **in part** — the "Option D stays deferred" clause of its Decision 5, only
+
+> **Superseded in part — see [ADR-010](./010-models-are-machine-written-from-definemodel.md).**
+> Decision 5 below restates ADR-006's "Option D stays deferred". That clause alone is superseded: on
+> 2026-08-30 D was priced against the pinned TypeScript 7 toolchain and closed on a measured blocker —
+> the native compiler ships no plugin entry point — with one named lift condition. **Decisions 1–4,
+> the rest of Decision 5, and Decision 6 stand unchanged**, and Decision 1 is load-bearing for
+> ADR-010, which is why this ADR's status remains `Accepted`. ADR-010 also records that Decision 2
+> stays true as written: Option E removes the author's hand from the duplication, not the duplication
+> itself.
 
 [ADR-006](./006-inferred-component-authoring-types.md) Decision 1 says:
 
