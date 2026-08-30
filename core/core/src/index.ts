@@ -107,13 +107,15 @@ export interface ComponentOptions {
    */
   props?: Record<string, PropDeclaration>;
   /**
-   * Declares the two-way models the setup body creates with `defineModel`, so a parent's
-   * type-checker can see them at JSX attribute position.
+   * The two-way models the setup body creates with `defineModel`, so a parent's type-checker can
+   * see them at JSX attribute position.
    *
-   * **Type-only channel.** The compiler never reads this key — models are emitted from the setup
-   * body's `defineModel` calls alone — so declaring it changes no output on any target. That also
-   * means an entry can drift from what the setup body actually declares; the compiler reports the
-   * disagreement as `INK0094` rather than trusting either side.
+   * **Machine-owned — never write or edit this by hand.** `inkline fix` derives every entry from
+   * the setup body's `defineModel` calls; the author writes the `defineModel` call and nothing
+   * else. It is a type-only channel, so the compiler never reads it and declaring it changes no
+   * output on any target — which is exactly why a hand-edited entry cannot be caught downstream.
+   * `INK0094` is that gate: any disagreement with the setup body is an error, cleared by running
+   * `inkline fix`.
    */
   models?: Record<string, PropDeclaration>;
   slots?: Record<string, { scoped?: boolean; required?: boolean }>;

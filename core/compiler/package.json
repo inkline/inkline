@@ -32,6 +32,10 @@
       "types": "./dist/codegen.d.mts",
       "default": "./dist/codegen.mjs"
     },
+    "./codemod": {
+      "types": "./dist/codemod.d.mts",
+      "default": "./dist/codemod.mjs"
+    },
     "./testing": {
       "types": "./dist/testing.d.mts",
       "default": "./dist/testing.mjs"
@@ -50,7 +54,6 @@
     "generate:aria": "node --experimental-strip-types --experimental-transform-types scripts/gen-aria-attributes.ts",
     "generate:aria:check": "node --experimental-strip-types --experimental-transform-types scripts/gen-aria-attributes.ts --check",
     "docs:diagnostics": "node --experimental-strip-types --experimental-transform-types scripts/gen-diagnostics.ts",
-    "codemod:declare-models": "node --experimental-strip-types --experimental-transform-types scripts/codemod-declare-models.ts",
     "prepublishOnly": "vp run build"
   },
   "devDependencies": {

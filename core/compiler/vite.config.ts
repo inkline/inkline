@@ -7,6 +7,7 @@ export default defineConfig({
       index: "src/index.ts",
       ir: "src/ir/index.ts",
       codegen: "src/codegen/index.ts",
+      codemod: "src/codemod/index.ts",
       testing: "src/testing/index.ts",
     },
     dts: {

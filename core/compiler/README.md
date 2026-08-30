@@ -560,6 +560,42 @@ Checked 67 files in 0.31s — 0 errors, 0 warnings, 0 notes (12 notes withheld a
 
 The only difference is that it writes nothing and skips source maps.
 
+### Fix
+
+`check` reports; `fix` repairs. It rewrites authored files to satisfy the diagnostics that have a
+mechanical answer — today that is `INK0094` alone:
+
+```bash
+inkline fix "src/**/*.ink.tsx"
+
+# Report what would change and write nothing; exits 1 if anything would
+inkline fix "src/**/*.ink.tsx" --check
+```
+
+`options.models` is machine-owned. The author writes `defineModel<T>("name")` in the setup body and
+nothing else; this derives the key from those calls — the same facts the compiler extracts at parse —
+adding, correcting, and removing entries. It is a text splice at AST offsets, not a reprint, so
+untouched lines stay byte-identical, and entries are compared by name and type rather than by their
+text, so a run after `vp fmt`, or a second run, changes nothing.
+
+Each changed file prints its edits, `+` added, `~` retyped, `-` removed:
+
+```
+src/components/switch/headless/ISwitchControlBase.ink.tsx  +checked: Boolean ~size: String→Number -expanded
+
+Updated 1 file(s), 3 model declaration(s), 67 scanned.
+```
+
+A clean run says so rather than printing nothing, which cannot be told apart from a bad glob:
+
+```
+Checked 67 file(s); options.models is up to date.
+```
+
+Never edit the `models` key by hand — it is a type-only channel that no target reads, so a hand-edited
+entry compiles clean on both sides while teaching a parent's checker a shape no target emits.
+`INK0094` is the gate that catches it; this command is how you clear it.
+
 ### Exit codes
 
 | Code | Meaning                                                                                           |
@@ -934,7 +970,7 @@ The codes below are the ones most authors hit. For the complete, always-current 
 | INK0085 | error    | Unknown target. Lists the valid targets and suggests the closest match.                                                                 |
 | INK0086 | error    | Target is not present in the configured registry.                                                                                       |
 | INK0090 | error    | A plugin threw an exception.                                                                                                            |
-| INK0094 | warning  | The options object's type-only `models` map disagrees with the setup body's `defineModel` calls.                                        |
+| INK0094 | error    | The machine-owned `models` map disagrees with the setup body's `defineModel` calls. Run `inkline fix`.                                  |
 | INK0100 | error    | Parse failure in a component. That component is skipped; the others in the module still compile.                                        |
 
 Run `inkline check <file>` to check without producing output.

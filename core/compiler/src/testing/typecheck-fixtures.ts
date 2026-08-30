@@ -12,6 +12,10 @@ import type { TargetName } from "../codegen/context.ts";
  * fail on, carrying the TypeScript codes it suppresses. `typecheck.test.ts` fails when an entry
  * stops being needed, so the list can only shrink. The burn-down is tracked separately; do not
  * add to it to make a change green.
+ *
+ * An entry also stops being needed when the fixture stops being swept at all: the sweep skips any
+ * fixture that compiles with an `error` diagnostic, so promoting a diagnostic's severity retires
+ * the quarantine entries of every fixture that now trips it.
  */
 export const EXCLUSIONS: Readonly<Partial<Record<TargetName, readonly string[]>>> = {
   react: [
@@ -48,7 +52,6 @@ export const EXCLUSIONS: Readonly<Partial<Record<TargetName, readonly string[]>>
     "UntrackBoundary", // TS2304
 
     // ── Assorted — one fixture each, triage individually.
-    "Diag_ModelTypeDrift", // TS18048
     "DynamicAccess", // TS7053
     "PropDefaults", // TS2559
   ],
@@ -143,9 +146,6 @@ export const EXCLUSIONS: Readonly<Partial<Record<TargetName, readonly string[]>>
     "CollapseNestedInput", // TS2322
     "ControlledSelect", // TS2322
     "DeclaredModels", // TS2322
-    "Diag_ModelDeclaredOnly", // TS2322
-    "Diag_ModelSetupOnly", // TS2322
-    "Diag_ModelTypeDrift", // TS18048,TS2322
     "DuplicateEvent", // TS2322
     "DynamicAccess", // TS7053
     "EffectCleanup", // TS2322

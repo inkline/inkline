@@ -16,6 +16,9 @@ All commands live in [`src/commands/`](./src/commands/) and are wired into the r
 | `inkline init`    | [`init.ts`](./src/commands/init.ts)       | Set up Inkline in an existing app: detect package manager/framework/bundler, run `styleframe init` + seed `styleframe.config.ts`, install deps, wire the build plugin. `--compiler` additionally scaffolds `inkline.config.ts` and an example component. |
 | `inkline compile` | [`compile.ts`](./src/commands/compile.ts) | Compile `.ink.tsx` globs to target frameworks and generate per-target Storybook story files. Accepts `--src-dir` to set the source root for output path resolution (also `srcDir` in config).                                                            |
 | `inkline check`   | [`check.ts`](./src/commands/check.ts)     | Run diagnostics without writing output: same globs and same config as `compile`, compiles with `sourceMap: "none"`, reports through the same [`report.ts`](./src/lib/report.ts) path, exits non-zero on any error.                                       |
+| `inkline fix`     | [`fix.ts`](./src/commands/fix.ts)         | Rewrite authored files to satisfy the fixable diagnostics — today `INK0094` alone, via [`@inkline/compiler/codemod`](../../core/compiler/src/codemod/). `--check` reports and writes nothing, exiting `EXIT_COMPILE_ERROR` if anything would change.     |
+
+`fix` is the only command that writes to source. It reads no config and compiles nothing: the transform is a text splice at AST offsets, so it needs neither a target nor a program. Keep it that way — a fix that had to compile first would be a second, divergent copy of `check`. The bundler plugin never calls it; compilation reads source, it does not mutate it.
 
 `check` is the correctness gate for `compile`, so it must compile against the same program **and report the same findings from it**. Two pairings enforce that, and both have drifted before:
 

@@ -54,6 +54,7 @@ const ROOT_RUNTIME_EXPORTS = [
 const SUBPATH_PROBES = {
   "./ir": { specifier: "@inkline/compiler/ir", name: "walkRenderTree" },
   "./codegen": { specifier: "@inkline/compiler/codegen", name: "defineTarget" },
+  "./codemod": { specifier: "@inkline/compiler/codemod", name: "declareModels" },
 } as const;
 
 function names(mod: Record<string, unknown>): string[] {
@@ -63,7 +64,7 @@ function names(mod: Record<string, unknown>): string[] {
 }
 
 describe("@inkline/compiler entry points", () => {
-  it("declares /ir and /codegen in package.json exports", () => {
+  it("declares /ir, /codegen and /codemod in package.json exports", () => {
     expect(manifest.exports["./ir"]).toEqual({
       types: "./dist/ir.d.mts",
       default: "./dist/ir.mjs",
@@ -71,6 +72,10 @@ describe("@inkline/compiler entry points", () => {
     expect(manifest.exports["./codegen"]).toEqual({
       types: "./dist/codegen.d.mts",
       default: "./dist/codegen.mjs",
+    });
+    expect(manifest.exports["./codemod"]).toEqual({
+      types: "./dist/codemod.d.mts",
+      default: "./dist/codemod.mjs",
     });
   });
 

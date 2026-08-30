@@ -103,7 +103,7 @@ restating it, so neither column is asserted.
 | INK0086 | error    | config   | Target not present in the configured registry             |
 | INK0087 | error    | config   | Invalid diagnostic report level                           |
 | INK0090 | error    | plugin   | Plugin threw                                              |
-| INK0094 | warning  | analyze  | Declared model does not match the setup body              |
+| INK0094 | error    | analyze  | Declared model does not match the setup body              |
 | INK0100 | error    | pipeline | Parse failure in component                                |
 | INK0110 | error    | pipeline | Internal compiler error                                   |
 | INK0111 | warning  | codegen  | Headless component root must be a single static element   |

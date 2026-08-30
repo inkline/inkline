@@ -246,9 +246,9 @@ export const DIAGNOSTICS = {
     url: "https://docs.inkline.dev/diagnostics/INK0090" as const,
   },
   INK0094: {
-    severity: "warning" as const,
+    severity: "error" as const,
     title: "Declared model '{name}' does not match the setup body: {reason}" as const,
-    help: "options.models is a type-only channel — the compiler emits models from the setup body's defineModel calls alone, so a drifted entry misleads a parent's type-checker while changing no output. Make the entry agree with its defineModel call, or drop it." as const,
+    help: "options.models is machine-owned: it is derived from the setup body's defineModel calls and nothing downstream reads it, so a drifted entry teaches a parent's type-checker a shape no target emits and compiles clean on both sides. Run `inkline fix` to rewrite the key; never edit it by hand." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0094" as const,
   },
   INK0100: {

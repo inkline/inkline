@@ -14,8 +14,6 @@ move, tracking the reformatted authored source). `INK0094` — the drift diagnos
 catch a `models` declaration disagreeing with the setup body — reports zero findings across the
 migrated corpus.
 
-Applied by `pnpm --filter @inkline/compiler run codemod:declare-models <files…>`, shipped as
-`scripts/codemod-declare-models.ts`. It reads the same facts the compiler extracts at P2, splices
-text at AST offsets rather than reprinting, and skips any `defineComponent` whose options already
-carry a `models` key — so the deliberately-drifted `Diag_Model*` fixtures are left intact and
-re-running it is a no-op.
+Applied by `inkline fix`, which reads the same facts the compiler extracts at P2 and splices text at
+AST offsets rather than reprinting. The deliberately-drifted `Diag_Model*` fixtures are left intact —
+they are `INK0094`'s own test corpus — and re-running the fix across the repo is a no-op.

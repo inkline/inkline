@@ -96,21 +96,28 @@ The config in [`vite.config.ts`](./vite.config.ts) deliberately leaves `coverage
 
 ## Two-way models
 
-A setup body that calls `defineModel<T>("name")` **must also declare that model in the options object**:
+**You write the `defineModel` call. Nothing else.** The `models` key you see in the options object is machine-owned — like a lockfile, it is visible in the file and maintained by tooling:
 
 ```tsx
 export default defineComponent(
-  { models: { checked: Boolean }, meta: { headless: true } },
+  { models: { checked: Boolean }, meta: { headless: true } }, // ← written by `inkline fix`
   (props: SwitchControlBaseProps) => {
-    const [checked, setChecked] = defineModel<boolean>("checked");
+    const [checked, setChecked] = defineModel<boolean>("checked"); // ← written by you
     // …
   },
 );
 ```
 
-`options.models` is a type-only channel — no target reads it, so declaring it changes no emitted output. It exists so a _parent's_ type-checker sees `checked` and `$bind:checked` at JSX attribute position. Omit it and the compiler reports `INK0094`; the parent then binds a prop its checker never learned about.
+Add, retype, or delete a `defineModel` call and then run the fix from the repo root:
 
-Every component here already declares its models. To migrate a batch, run `pnpm --filter @inkline/compiler run codemod:declare-models <files…>` (add `--dry-run` first) and then `vp fmt`.
+```bash
+node tooling/cli/dist/bin/inkline.mjs fix "ui/components/src/**/*.ink.tsx"
+vp fmt
+```
+
+It adds, corrects, and removes entries, and is a no-op when nothing changed. `--check` reports without writing (non-zero exit if anything would change).
+
+Why the key exists at all: it is a type-only channel — no target reads it, so it changes no emitted output — that teaches a _parent's_ type-checker to see `checked` and `$bind:checked` at JSX attribute position. Because nothing downstream reads it, a hand-edited entry would compile clean while lying to that checker, so `INK0094` makes any disagreement with the setup body an error. Never edit the key by hand; re-run the fix.
 
 ## Pitfalls
 
