@@ -12,7 +12,7 @@ Repo-wide conventions for code, tests, files, and commits. This document is a po
 | Build / dev / test driver | Vite+ (`vp` CLI)            | per-package [`vite.config.ts`](../vite.config.ts) + root [`vite.config.ts`](../vite.config.ts)         |
 | Linter                    | OXLint (via `vp lint`)      | root [`vite.config.ts`](../vite.config.ts) `lint` section                                              |
 | Formatter                 | Oxfmt (via `vp fmt`)        | root [`vite.config.ts`](../vite.config.ts) `fmt` section                                               |
-| Type checker              | `tsc` via `vp check`        | root [`tsconfig.json`](../tsconfig.json) + per-package extensions                                      |
+| Type checker              | `pnpm run typecheck`        | root [`tsconfig.json`](../tsconfig.json) + per-package extensions — never bare `tsc` from the root     |
 | Test runner               | Vitest                      | per-package `vite.config.ts` `test` section                                                            |
 | Versioning / publishing   | Changesets                  | [`.changeset/config.json`](../.changeset/config.json) — see [release-process.md](./release-process.md) |
 | Doc tooling               | Storybook 10, per framework | [`tooling/storybook/`](../tooling/storybook/) + per-framework Storybook configs                        |

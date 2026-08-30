@@ -6,6 +6,7 @@
   "scripts": {
     "ready": "pnpm run build && pnpm run check && pnpm run test",
     "check": "vp check",
+    "typecheck": "pnpm run build && vp check --no-fmt --no-lint",
     "validate": "vp validate",
     "test": "vp run -r test",
     "test:e2e": "pnpm --filter @inkline/e2e run test:e2e",
