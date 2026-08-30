@@ -25,7 +25,9 @@ apps/website/
     └── docs/
         ├── 01.getting-started/  # 00.index, 01.installation, 02.first-component,
         │                        # 03.theming, 04.framework-support
-        └── 03.components/01.button.md
+        └── 03.components/      # 00.index, 01.badge, 02.button, 03.checkbox,
+                                # 04.field-group, 05.hamburger-menu, 06.input,
+                                # 07.radio, 08.switch
 ```
 
 ## Shared vs. local
@@ -79,7 +81,8 @@ The layer's `/` → `/llms.txt` content negotiation is a Nitro server plugin and
 - `typescript` is pinned to `catalog:ts6` here: `@vue/compiler-sfc` breaks under the default TS7 catalog, so the docs app holds back to TS6.
 - `@uxfront/layer-docs` is covered by the `@uxfront/*` glob in the root `pnpm-workspace.yaml` `minimumReleaseAgeExclude` — the package was published recently and would otherwise trip pnpm's 24h supply-chain guard on install.
 - Content lives under `content/docs/<NN.section>/<NN.page>.md`; the numeric prefixes drive order and are stripped from the route. Sections must match `DOCS_SECTIONS` in `app/constants/sections.ts`.
-- Only document real, shipped components. The Button page mirrors `ui/components`'s `IButton` stories (story ids under `Components/Actions/Button`).
+- Only document real, shipped components. Each component page mirrors `ui/components`'s stories for that component; derive story ids with Storybook's own `toId(title, storyNameFromExport(export))` rather than kebab-casing export names by hand (`FieldGroup` → `fieldgroup`, `PrefixSuffix` → `prefix-suffix`, `ReadOnly` → `read-only`).
+- Props / events / slots tables are hand-authored and must trace to source: the component's `.ink.tsx` for its own props, and the generated `ui/components/.styleframe/styleframe.d.ts` for recipe-derived styling props. Recipe defaults are not in the `.d.ts` — read `defaultVariants` off the recipe object. For `defineModel` components, document the model prop *and* its `update:<prop>` event.
 
 ## Known gaps
 
