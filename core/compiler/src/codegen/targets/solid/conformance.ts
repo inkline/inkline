@@ -13,7 +13,7 @@ export const solidConformance: TargetConformanceSpec = {
   },
   lint: { tool: "oxlint", config: resolve(__dirname, "tsconfigs", "solid.oxlintrc.json") },
   typecheck: {
-    tsconfig: "./tsconfigs/solid.tsconfig.json",
+    tsconfig: resolve(__dirname, "tsconfigs", "solid.tsconfig.json"),
     dtsImports: ["solid-js"],
   },
   invariants: [requireFileExtension(".tsx"), requirePropsNotDestructured],

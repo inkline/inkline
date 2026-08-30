@@ -81,13 +81,15 @@ describe("refs", () => {
     expect(ctx.diagnostics.freeze()).toHaveLength(0);
   });
 
-  it("defaults to HTMLElement for unknown tags", () => {
-    const refExpr = createExpr({
-      expr: mockExpr("myRef"),
-      deps: [{ symbolId: refSymbolId, kind: "ref", name: "myRef", path: [], conditional: false }],
-    });
+  it("infers elementType from element tag without resolved deps", () => {
+    // The real pipeline never resolves ref-binding deps, so an element ref binding arrives with an
+    // empty `deps` array just like a component-instance one. Keying off `deps[0].symbolId` left
+    // `elementType` undefined and every target emitted an untyped ref — React's `useRef(null)`
+    // widens to `RefObject<null>`, so `.current?.focus()` resolved against `never` (UXF-199).
+    const refExpr = createExpr({ expr: mockExpr("myRef") });
+    expect(refExpr.deps).toHaveLength(0);
     const el = createElement({
-      tag: "custom-element",
+      tag: "input",
       refs: [{ ref: refExpr, category: "element", loc: UNKNOWN_LOCATION }],
     });
     const decl: IRRefDeclaration = {
@@ -98,8 +100,34 @@ describe("refs", () => {
     };
     const ctx = makeCtx();
     const result = refs(makeComp(el, [decl]), ctx);
-    expect(result.refs[0]!.elementType).toBe("HTMLElement");
+    expect(result.refs[0]!.category).toBe("element");
+    expect(result.refs[0]!.elementType).toBe("HTMLInputElement");
+    expect(ctx.diagnostics.freeze()).toHaveLength(0);
   });
+
+  it.each(["custom-element", "h1", "td", "option"])(
+    "leaves elementType undefined for the unmapped tag %s",
+    (tag) => {
+      // No fallback: React's `RefObject<T>` is invariant, so guessing `HTMLElement` for a tag React
+      // declares more narrowly (`h1` → `HTMLHeadingElement`) is a hard TS2322 at the ref site, where
+      // an undefined `elementType` merely emits the untyped ref the target emitted before (UXF-199).
+      const refExpr = createExpr({ expr: mockExpr("myRef") });
+      const el = createElement({
+        tag,
+        refs: [{ ref: refExpr, category: "element", loc: UNKNOWN_LOCATION }],
+      });
+      const decl: IRRefDeclaration = {
+        name: "myRef",
+        symbolId: refSymbolId,
+        category: "element",
+        loc: UNKNOWN_LOCATION,
+      };
+      const ctx = makeCtx();
+      const result = refs(makeComp(el, [decl]), ctx);
+      expect(result.refs[0]!.category).toBe("element");
+      expect(result.refs[0]!.elementType).toBeUndefined();
+    },
+  );
 
   it("classifies refs on ComponentInstance as component category (without resolved deps)", () => {
     // A component-instance ref binding carries an empty `deps` array in the real pipeline, so the
@@ -124,6 +152,50 @@ describe("refs", () => {
     const ctx = makeCtx();
     const result = refs(comp, ctx);
     expect(result.refs[0]!.category).toBe("component");
+    expect(ctx.diagnostics.freeze()).toHaveLength(0);
+  });
+
+  it("leaves undeclared bindings and unbound declarations alone", () => {
+    // Both link steps resolve a binding's identifier text against the declaration table, so a
+    // binding naming something that is not a declared ref must not invent an entry, and a
+    // declaration the render tree never binds must come back untouched.
+    const el = createElement({
+      tag: "input",
+      refs: [
+        {
+          ref: createExpr({ expr: mockExpr("myRef") }),
+          category: "element",
+          loc: UNKNOWN_LOCATION,
+        },
+        {
+          ref: createExpr({ expr: mockExpr("stray") }),
+          category: "element",
+          loc: UNKNOWN_LOCATION,
+        },
+      ],
+      children: [
+        createComponentInstance({
+          reference: ident("Button"),
+          refs: [
+            {
+              ref: createExpr({ expr: mockExpr("stray") }),
+              category: "element",
+              loc: UNKNOWN_LOCATION,
+            },
+          ],
+        }),
+      ],
+    });
+    const unboundSymbolId = "t#T::ref::unbound@1" as SymbolId;
+    const decls: IRRefDeclaration[] = [
+      { name: "myRef", symbolId: refSymbolId, category: "element", loc: UNKNOWN_LOCATION },
+      { name: "unbound", symbolId: unboundSymbolId, category: "element", loc: UNKNOWN_LOCATION },
+    ];
+    const ctx = makeCtx();
+    const result = refs(makeComp(el, decls), ctx);
+    expect(result.refs).toHaveLength(2);
+    expect(result.refs[0]!.elementType).toBe("HTMLInputElement");
+    expect(result.refs[1]).toBe(decls[1]);
     expect(ctx.diagnostics.freeze()).toHaveLength(0);
   });
 

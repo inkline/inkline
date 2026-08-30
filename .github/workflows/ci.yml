@@ -143,6 +143,18 @@ jobs:
         env:
           NODE_ENV: production
 
+      # Consumes the artifact the step above produced, which is why it lives
+      # here and not in the `test` job — that job never builds the website.
+      #
+      # Guards the single-Tailwind-pass invariant: the layer's base CSS and the
+      # app's brand CSS must reach the bundle as ONE entry. Two entries emit a
+      # duplicate of every utility (437,170 B raw / 55,295 B gzip against
+      # 224,261 B / 28,573 B when this last shipped here — UXF-118); zero
+      # entries ship no utilities at all. The guard asserts exactly one, so it
+      # catches both.
+      - name: Guard compiled CSS (single Tailwind pass)
+        run: pnpm --filter website run test:build
+
       # `.output/public` is `generate`'s real output. The previous path,
       # `apps/website/dist`, is an untracked symlink Nuxt only creates on
       # `generate` — under `build` it never existed and this artifact uploaded
@@ -189,10 +201,15 @@ jobs:
       - name: Check formatting
         run: npx vp fmt --check
 
+  # Deliberately does not reuse the `build` artifacts. Package types resolve through each package's
+  # `exports` into `dist/`, so a check run against someone else's `dist` is only as trustworthy as
+  # the coupling that delivered it — and the same check run locally against a stale `dist` reports
+  # success on the pre-change types. `pnpm run typecheck` builds first, which makes that impossible
+  # and makes this job byte-identical to what a contributor runs. It costs one extra build, in
+  # parallel with `build` rather than after it, so wall-clock is roughly unchanged.
   typecheck:
     name: Type Check
     runs-on: ubuntu-latest
-    needs: build
     timeout-minutes: 15
     steps:
       - name: Checkout
@@ -212,13 +229,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Download build artifacts
-        uses: actions/download-artifact@v4
-        with:
-          name: build-artifacts
-
       - name: Run type checking
-        run: npx vp check --no-fmt --no-lint
+        run: pnpm run typecheck
 
   test:
     name: Unit Tests (shard ${{ matrix.shard }})

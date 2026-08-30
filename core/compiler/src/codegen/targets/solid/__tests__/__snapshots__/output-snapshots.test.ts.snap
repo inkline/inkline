@@ -163,6 +163,19 @@ return (
 "
 `;
 
+exports[`solid full output snapshots > DuplicateEvent 1`] = `
+"import { splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function DuplicateEvent(props: { onChange?: (value: string) => void; onClose?: (...args: any[]) => void } & JSX.HTMLAttributes<HTMLElement>)
+{
+const [, __attrs] = splitProps(props, ["onChange", "onClose"])
+return (
+<button {...__attrs} id="change" class={props.class} onclick={() => props.onChange?.("next")}>Change</button>
+)
+}
+"
+`;
+
 exports[`solid full output snapshots > DynamicList 1`] = `
 "import { createSignal, splitProps, For } from "solid-js";
 import type { JSX } from "solid-js";
@@ -207,7 +220,7 @@ import type { JSX } from "solid-js";
 export default function ElementRef(props: JSX.HTMLAttributes<HTMLElement>)
 {
 onMount(() => { inputRef?.focus(); })
-let inputRef: HTMLElement | undefined
+let inputRef: HTMLInputElement | undefined
 const [, __attrs] = splitProps(props, [])
 return (
 <input {...__attrs} placeholder="auto-focus" class={props.class} ref={(el) => inputRef = el} />
@@ -416,8 +429,8 @@ import type { JSX } from "solid-js";
 export default function MultiRefs(props: JSX.HTMLAttributes<HTMLElement>)
 {
 onMount(() => { inputRef?.focus(); })
-let inputRef: HTMLElement | undefined
-let buttonRef: HTMLElement | undefined
+let inputRef: HTMLInputElement | undefined
+let buttonRef: HTMLButtonElement | undefined
 const [, __attrs] = splitProps(props, [])
 return (
 <div {...__attrs} class={props.class}>

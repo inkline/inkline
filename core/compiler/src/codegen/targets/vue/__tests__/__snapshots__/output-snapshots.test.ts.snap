@@ -138,6 +138,16 @@ exports[`vue full output snapshots > DefineSlotBasic 1`] = `
 "
 `;
 
+exports[`vue full output snapshots > DuplicateEvent 1`] = `
+"<script setup lang="ts">
+  const emit = defineEmits(["change", "close"])
+</script>
+<template>
+<button id="change" @click='() => emit("change", "next")'>Change</button>
+</template>
+"
+`;
+
 exports[`vue full output snapshots > DynamicList 1`] = `
 "<script setup lang="ts">
   import { ref } from "vue";
@@ -173,7 +183,7 @@ exports[`vue full output snapshots > EffectCleanup 1`] = `
 exports[`vue full output snapshots > ElementRef 1`] = `
 "<script setup lang="ts">
   import { ref, onMounted } from "vue";
-  const inputRef = ref(null)
+  const inputRef = ref<HTMLInputElement | null>(null)
   onMounted(() => { inputRef.value?.focus(); })
 </script>
 <template>
@@ -344,8 +354,8 @@ exports[`vue full output snapshots > MultiChildSlot 1`] = `
 exports[`vue full output snapshots > MultiRefs 1`] = `
 "<script setup lang="ts">
   import { ref, onMounted } from "vue";
-  const inputRef = ref(null)
-  const buttonRef = ref(null)
+  const inputRef = ref<HTMLInputElement | null>(null)
+  const buttonRef = ref<HTMLButtonElement | null>(null)
   onMounted(() => { inputRef.value?.focus(); })
 </script>
 <template>

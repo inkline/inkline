@@ -257,6 +257,13 @@ value — so a single-value tuple unwraps (`change = output<string>()`), an empt
 (`emit("move", x, y)` → `this.move.emit([x, y])`). Declaring events with the runtime array form
 (`defineEmits(["change"])`) leaves them untyped.
 
+Events can also be declared in the options object (`events: { change: {} }`), which names them without
+a payload. Declaring the same name in both places is redundant, not additive: the two declarations
+collapse into a single event channel, **the `defineEmits` declaration wins** — it is the only one that
+can carry a payload tuple — and the redundant options entry is reported as `INK0046` (a warning). The
+surviving declaration keeps the position of the first one, so emitted event order still follows the
+options object. Declare each event in one place or the other, never both.
+
 ### Slots
 
 A component declares its slots in the options object and renders them with the `<Slot>` component
@@ -454,6 +461,10 @@ export default defineConfig({
 | `plugins`       | `Plugin[]`                                    | `[]`         | Compiler plugins.                                                                                                                                                                                                                                                                                           |
 | `verbose`       | `boolean`                                     | `false`      | Log detailed plugin errors.                                                                                                                                                                                                                                                                                 |
 | `registry`      | `TargetRegistry`                              | built-in     | Custom target registry (advanced).                                                                                                                                                                                                                                                                          |
+
+<!-- Declared gap: the paragraph below states INK0081/INK0082/INK0083 severities in prose, and the
+     row above states INK0080's. docs-tables.test.ts asserts tables only — prose is not covered.
+     Changing a severity in src/core/diagnostics/codes.ts means re-reading this section by hand. -->
 
 `@inkline/cli` validates the loaded config against a zod schema. Keys outside this set are ignored
 and reported as INK0081 / INK0082 warnings (with a suggested spelling when the key is close to a
@@ -897,6 +908,10 @@ The compiler produces diagnostics at each pipeline stage. Errors prevent output;
 The codes below are the ones most authors hit. For the complete, always-current list, run
 `pnpm docs:diagnostics` in `core/compiler` — it prints a reference table generated from
 [`src/core/diagnostics/codes.ts`](./src/core/diagnostics/codes.ts), the single source of truth.
+
+<!-- The Severity column of the table below is asserted against DIAGNOSTICS by
+     src/core/diagnostics/docs-tables.test.ts. Rows may be added or removed freely — this table is
+     a deliberate subset — but every row must name a real code and its catalog severity. -->
 
 | Code    | Severity | Description                                                                                                                             |
 | ------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------- |

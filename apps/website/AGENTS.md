@@ -21,9 +21,10 @@ apps/website/
 │       └── StorybookEmbed.vue  # local MDC component: per-tab Storybook iframe
 └── content/
     ├── index.md
+    ├── _compiler/          # parked, unrouted — compiler pages awaiting /compiler
     └── docs/
-        ├── 01.getting-started/01.installation.md
-        ├── 02.guide/01.architecture.md
+        ├── 01.getting-started/  # 00.index, 01.installation, 02.first-component,
+        │                        # 03.theming, 04.framework-support
         └── 03.components/01.button.md
 ```
 
