@@ -276,22 +276,6 @@ export interface IRModelDeclaration {
   readonly loc: SourceLocation;
 }
 
-/**
- * One entry of the options object's `models` map — the type-only channel that lets a parent's
- * checker see what the setup body's `defineModel` creates. Deliberately plain data: it is compared
- * against {@link IRModelDeclaration} and never emitted.
- */
-export interface IRDeclaredModel {
-  /** The model's prop name — the map key, which the `defineModel` argument must match. */
-  readonly name: string;
-  /**
-   * The declared type, resolved through the same constructor table as props (`Number` → `number`).
-   * `undefined` when the declaration carries no type the compiler can name.
-   */
-  readonly typeText?: string;
-  readonly loc: SourceLocation;
-}
-
 export interface IRStateDeclaration {
   readonly name: string;
   readonly setterName: string;
@@ -401,13 +385,6 @@ export interface IRComponent {
   readonly slots: readonly IRSlotDeclaration[];
   readonly events: readonly IREventDeclaration[];
   readonly models: readonly IRModelDeclaration[];
-  /**
-   * The options object's `models` key, when the author wrote one. It exists so a parent's
-   * type-checker can see the setup body's models; **no target reads it and none may start** —
-   * `models` above stays the only source codegen consumes. Carried here solely so P4 can report
-   * drift between the two (INK0094).
-   */
-  readonly declaredModels?: readonly IRDeclaredModel[];
   /** Local name bound to the `defineEmits()` result, so codegen can rewrite `emit(name, …)` calls. */
   readonly emitName?: string;
   readonly state: readonly IRStateDeclaration[];

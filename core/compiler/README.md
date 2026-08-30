@@ -934,7 +934,6 @@ The codes below are the ones most authors hit. For the complete, always-current 
 | INK0085 | error    | Unknown target. Lists the valid targets and suggests the closest match.                                                                 |
 | INK0086 | error    | Target is not present in the configured registry.                                                                                       |
 | INK0090 | error    | A plugin threw an exception.                                                                                                            |
-| INK0094 | warning  | The options object's type-only `models` map disagrees with the setup body's `defineModel` calls.                                        |
 | INK0100 | error    | Parse failure in a component. That component is skipped; the others in the module still compile.                                        |
 
 Run `inkline check <file>` to check without producing output.

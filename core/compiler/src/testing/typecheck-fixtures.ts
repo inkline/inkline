@@ -48,7 +48,6 @@ export const EXCLUSIONS: Readonly<Partial<Record<TargetName, readonly string[]>>
     "UntrackBoundary", // TS2304
 
     // ── Assorted — one fixture each, triage individually.
-    "Diag_ModelTypeDrift", // TS18048
     "DynamicAccess", // TS7053
     "PropDefaults", // TS2559
   ],
@@ -142,10 +141,6 @@ export const EXCLUSIONS: Readonly<Partial<Record<TargetName, readonly string[]>>
     "CollapseModelBase", // TS2322
     "CollapseNestedInput", // TS2322
     "ControlledSelect", // TS2322
-    "DeclaredModels", // TS2322
-    "Diag_ModelDeclaredOnly", // TS2322
-    "Diag_ModelSetupOnly", // TS2322
-    "Diag_ModelTypeDrift", // TS18048,TS2322
     "DuplicateEvent", // TS2322
     "DynamicAccess", // TS7053
     "EffectCleanup", // TS2322

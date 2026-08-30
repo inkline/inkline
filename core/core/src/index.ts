@@ -106,16 +106,6 @@ export interface ComponentOptions {
    * The setup parameter's type is inferred from this map, so it must not be annotated.
    */
   props?: Record<string, PropDeclaration>;
-  /**
-   * Declares the two-way models the setup body creates with `defineModel`, so a parent's
-   * type-checker can see them at JSX attribute position.
-   *
-   * **Type-only channel.** The compiler never reads this key — models are emitted from the setup
-   * body's `defineModel` calls alone — so declaring it changes no output on any target. That also
-   * means an entry can drift from what the setup body actually declares; the compiler reports the
-   * disagreement as `INK0094` rather than trusting either side.
-   */
-  models?: Record<string, PropDeclaration>;
   slots?: Record<string, { scoped?: boolean; required?: boolean }>;
   events?: Record<string, Record<string, never>>;
   /** Scoped CSS for the component, as a plain string or template literal. */

@@ -146,25 +146,6 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   Diag_SetupLocalDrop: [
     { name: "triggers INK0121", asserts: { expectedDiagnostics: ["INK0121"] } },
   ],
-  // The three ways the type-only `models` map can drift from the setup body's defineModel calls.
-  Diag_ModelDeclaredOnly: [
-    {
-      name: "triggers INK0094 (declared, never created)",
-      asserts: { expectedDiagnostics: ["INK0094"] },
-    },
-  ],
-  Diag_ModelSetupOnly: [
-    {
-      name: "triggers INK0094 (created, never declared)",
-      asserts: { expectedDiagnostics: ["INK0094"] },
-    },
-  ],
-  Diag_ModelTypeDrift: [
-    {
-      name: "triggers INK0094 (declared type disagrees)",
-      asserts: { expectedDiagnostics: ["INK0094"] },
-    },
-  ],
   Diag_ComponentRef: [{ name: "compiles without error (ref forwarding supported)", asserts: {} }],
 
   // ── v1: Component refs ──
