@@ -7,7 +7,7 @@ The Vue 3 output of Inkline's component compilation.
 This package is **auto-generated**. To change a component, edit the corresponding `.ink.tsx` file in [`ui/components/src/components/`](../components/) and rebuild. See [`ui/components/AGENTS.md`](../components/AGENTS.md).
 
 - `.inkline/` — compiled Vue SFCs (`<script setup>` + Composition API) + `index.ts`/`headless.ts`/`stories.ts` barrels written by [`inkline compile`](../../tooling/cli/AGENTS.md). Never hand-edit.
-- `src/index.ts` — re-exports `.inkline/index.ts`. Do not extend with hand-written code.
+- `src/index.ts` — the build's `index` entry. Re-exports `.inkline/index.ts` and imports `virtual:styleframe.css` so Vite extracts the stylesheet to `dist/index.css` (what `./css` resolves to). Do not extend it beyond that.
 - `.styleframe/` — auto-generated styleframe artifacts. Never hand-edit.
 
 ## Public surface

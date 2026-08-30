@@ -7,7 +7,7 @@ The Svelte 5 output of Inkline's component compilation.
 This package is **auto-generated**. To change a component, edit the corresponding `.ink.tsx` file in [`ui/components/src/components/`](../components/) and rebuild. See [`ui/components/AGENTS.md`](../components/AGENTS.md).
 
 - `.inkline/` — compiled `.svelte` components using runes (`$state`, `$derived`, `$effect`) + `index.ts`/`headless.ts`/`stories.ts` barrels written by [`inkline compile`](../../tooling/cli/AGENTS.md). Never hand-edit.
-- `src/index.ts` — re-exports `.inkline/index.ts`.
+- `src/index.ts` — the build's `index` entry. Re-exports `.inkline/index.ts` and imports `virtual:styleframe.css` so Vite extracts the stylesheet to `dist/index.css` (what `./css` resolves to).
 - `.styleframe/` — auto-generated styleframe artifacts. Never hand-edit.
 
 ## Public surface

@@ -8,6 +8,7 @@ This package is **auto-generated**. To change a component, edit the correspondin
 
 - `.inkline/` — compiled `.astro` components + `index.ts`/`headless.ts`/`stories.ts` barrels written by [`inkline compile`](../../tooling/cli/AGENTS.md). Never hand-edit.
 - `src/index.ts` — re-exports `.inkline/index.ts`.
+- `src/css.ts` — entry of the CSS-only `vp build` that runs before `vp pack` (which never runs Vite plugins). Its extracted stylesheet is copied to `dist/index.css`, what `./css` resolves to.
 - `.styleframe/` — auto-generated styleframe artifacts. Never hand-edit.
 
 ## Public surface
