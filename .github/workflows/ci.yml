@@ -47,6 +47,17 @@ jobs:
         env:
           NODE_ENV: production
 
+      # Reads `ui/*/dist` off disk, which the step above produced and the artifact
+      # below deliberately excludes — so this cannot move to the `test` job, and
+      # `@inkline/packaging` defines no `test` script to stay out of that run.
+      #
+      # Asserts every file a published package's `exports` map names is actually in
+      # the tarball a publish would upload. Without it `exports` is a promise the
+      # build is never asked to keep: five packages declared `"./css"` against a
+      # stylesheet no step emitted, and CI stayed green through the release (UXF-212).
+      - name: Guard packaged exports (every exports target ships)
+        run: pnpm --filter @inkline/packaging run test:build
+
       - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
