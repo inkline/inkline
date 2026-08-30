@@ -44,10 +44,6 @@ export const EXCLUSIONS: Readonly<Partial<Record<TargetName, readonly string[]>>
     "NativeBind", // TS2339
     "TwoWayNumber", // TS2339
 
-    // ── Element refs type as `never` (TS2339) — UXF-199, fixed by #586, not yet on this branch.
-    "ElementRef", // TS2339
-    "MultiRefs", // TS2339
-
     // ── `untrack` is used in emitted output but never imported (TS2304).
     "UntrackBoundary", // TS2304
 
