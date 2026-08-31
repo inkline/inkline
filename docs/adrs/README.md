@@ -17,6 +17,7 @@ pays for the same lesson twice.
 | [007](./007-website-ships-as-a-static-site.md)                        | `apps/website` ships as a fully static site on Vercel                   | 2026-08-08 | Accepted   | website, deploy, infra    |
 | [008](./008-authoring-surface-is-inferred-from-options-alone.md)      | The inferred surface comes from options alone, not the setup body       | 2026-08-11 | Accepted   | core, compiler, authoring |
 | [009](./009-emitted-output-is-typechecked-by-a-subprocess-tsc.md)     | Emitted output is typechecked by a subprocess `tsc`, on react and solid | 2026-08-27 | Accepted   | compiler, testing, types  |
+| [010](./010-defineprops-joins-the-macro-family.md)                    | `defineProps` joins the macro family; the macro registry is formalized  | 2026-08-31 | Accepted   | core, compiler, authoring |
 
 † ADR-006 is superseded **in part** by ADR-008 — its Decision 1 mechanism claim and its Option D
 uniqueness claim, only. Decisions 2–7 remain the live decisions, so its status stays `Accepted`
@@ -58,6 +59,8 @@ Not ADR material: implementation details inside one owner's lane, reversible def
 
 ## See also
 
+- [../rfcs/README.md](../rfcs/README.md) — the arguments these decisions came out of. The RFC is the
+  argument, the ADR is the ruling.
 - [conventions.md](../conventions.md) — code, file, test, and commit conventions.
 - [architecture.md](../architecture.md) — how `.ink.tsx` becomes seven framework outputs.
 - [scope.md](../scope.md) — capability boundaries and what is deferred.
