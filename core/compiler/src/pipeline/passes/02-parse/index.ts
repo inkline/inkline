@@ -95,9 +95,6 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         slots,
         events,
         models: setupResult.models,
-        // Type-only: carried for the P4 drift check (INK0094), read by nothing else. `models` above
-        // stays the single source every target emits from.
-        declaredModels: optionsResult?.declaredModels,
         emitName: setupResult.emitName,
         state: setupResult.state,
         refs: setupResult.refs,

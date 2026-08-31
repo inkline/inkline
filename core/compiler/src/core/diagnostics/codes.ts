@@ -245,12 +245,6 @@ export const DIAGNOSTICS = {
     help: "The hook is skipped and compilation continues without its contribution. Re-run with --verbose for the stack trace; a plugin should report recoverable problems with ctx.pushDiagnostic(diagnostic) rather than throwing." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0090" as const,
   },
-  INK0094: {
-    severity: "warning" as const,
-    title: "Declared model '{name}' does not match the setup body: {reason}" as const,
-    help: "options.models is a type-only channel — the compiler emits models from the setup body's defineModel calls alone, so a drifted entry misleads a parent's type-checker while changing no output. Make the entry agree with its defineModel call, or drop it." as const,
-    url: "https://docs.inkline.dev/diagnostics/INK0094" as const,
-  },
   INK0100: {
     severity: "error" as const,
     title: "Parse failure in component '{name}': {message}" as const,

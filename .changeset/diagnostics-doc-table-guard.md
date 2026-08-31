@@ -20,8 +20,8 @@ falsification was caught by reading, not by CI.
   correctness but not completeness.
 - Both files must still contain a table at all, so deleting one cannot make the assertion vacuous.
 
-`docs/adding-a-diagnostic.md` was missing 13 codes (INK0043-45, INK0063-68, INK0094, INK0111,
-INK0120, INK0121); they are backfilled and the table is now complete.
+`docs/adding-a-diagnostic.md` was missing 12 codes (INK0043-45, INK0063-68, INK0111, INK0120,
+INK0121); they are backfilled and the table is now complete.
 
 Not covered, by design: the `Phase` and `Title` columns are editorial paraphrases rather than
 restatements of the catalog, and the config-validation prose in `README.md` names severities in

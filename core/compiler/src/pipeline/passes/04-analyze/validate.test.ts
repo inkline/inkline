@@ -2,12 +2,7 @@ import { describe, it, expect } from "vitest";
 import * as ts from "typescript";
 import { UNKNOWN_LOCATION } from "../../../ir/types.ts";
 import { DYNAMIC_DEPS, SymbolTable, type SymbolId } from "../../../ir/reactivity.ts";
-import type {
-  IRComponent,
-  IRExprNode,
-  IRMemoDeclaration,
-  IRModelDeclaration,
-} from "../../../ir/render/nodes.ts";
+import type { IRComponent, IRExprNode, IRMemoDeclaration } from "../../../ir/render/nodes.ts";
 import { createDiagnosticCollector } from "../../../core/diagnostics/collector.ts";
 import { resolveOptions } from "../../../core/options.ts";
 import { builtinRegistry } from "../../../codegen/registry.ts";
@@ -21,12 +16,7 @@ import {
   createText,
 } from "../../../ir/render/builders.ts";
 import { buildReactivityGraph } from "./graph.ts";
-import {
-  diagnoseCycles,
-  validateAttrFallthrough,
-  validateComponent,
-  validateDeclaredModels,
-} from "./validate.ts";
+import { diagnoseCycles, validateAttrFallthrough, validateComponent } from "./validate.ts";
 
 function mockExpr(code = "x"): ts.Expression {
   const sf = ts.createSourceFile("t.ts", code, ts.ScriptTarget.Latest, true);
@@ -411,134 +401,5 @@ describe("diagnoseCycles", () => {
     const graph = buildReactivityGraph(comp);
     diagnoseCycles(comp, graph, ctx);
     expect(ctx.diagnostics.freeze()).toHaveLength(0);
-  });
-});
-
-describe("validateDeclaredModels", () => {
-  function typeNode(text: string): ts.TypeNode {
-    const sf = ts.createSourceFile(`t.ts`, `let x: ${text};`, ts.ScriptTarget.Latest, true);
-    const decl = (sf.statements[0] as ts.VariableStatement).declarationList.declarations[0]!;
-    return decl.type!;
-  }
-
-  function model(propName: string, type?: string): IRModelDeclaration {
-    return {
-      name: propName,
-      setterName: `set${propName}`,
-      propName,
-      getterSymbolId: `${propName}-get` as SymbolId,
-      setterSymbolId: `${propName}-set` as SymbolId,
-      typeNode: type ? typeNode(type) : undefined,
-      loc: UNKNOWN_LOCATION,
-    };
-  }
-
-  function declared(name: string, typeText?: string) {
-    return { name, typeText, loc: UNKNOWN_LOCATION };
-  }
-
-  it("is silent when the author wrote no models key", () => {
-    const ctx = makeCtx();
-    validateDeclaredModels(makeComp({ models: [model("open", "boolean")] }), ctx);
-    expect(ctx.diagnostics.freeze()).toHaveLength(0);
-  });
-
-  it("is silent when both sides agree", () => {
-    const ctx = makeCtx();
-    validateDeclaredModels(
-      makeComp({
-        models: [model("open", "boolean")],
-        declaredModels: [declared("open", "boolean")],
-      }),
-      ctx,
-    );
-    expect(ctx.diagnostics.freeze()).toHaveLength(0);
-  });
-
-  it("pushes INK0094 for a name declared but never created", () => {
-    const ctx = makeCtx();
-    validateDeclaredModels(
-      makeComp({
-        models: [model("open", "boolean")],
-        declaredModels: [declared("open", "boolean"), declared("expanded", "boolean")],
-      }),
-      ctx,
-    );
-    const diags = ctx.diagnostics.freeze();
-    expect(diags).toHaveLength(1);
-    expect(diags[0]!.code).toBe("INK0094");
-    expect(diags[0]!.title).toContain("expanded");
-    expect(diags[0]!.title).toContain("no defineModel");
-  });
-
-  it("pushes INK0094 for a name created but never declared", () => {
-    const ctx = makeCtx();
-    validateDeclaredModels(
-      makeComp({
-        models: [model("open", "boolean"), model("size", "string")],
-        declaredModels: [declared("open", "boolean")],
-      }),
-      ctx,
-    );
-    const diags = ctx.diagnostics.freeze();
-    expect(diags).toHaveLength(1);
-    expect(diags[0]!.code).toBe("INK0094");
-    expect(diags[0]!.title).toContain("size");
-    expect(diags[0]!.title).toContain("does not declare it");
-  });
-
-  it("pushes INK0094 when the declared type disagrees", () => {
-    const ctx = makeCtx();
-    validateDeclaredModels(
-      makeComp({
-        models: [model("count", "number")],
-        declaredModels: [declared("count", "string")],
-      }),
-      ctx,
-    );
-    const diags = ctx.diagnostics.freeze();
-    expect(diags).toHaveLength(1);
-    expect(diags[0]!.code).toBe("INK0094");
-    expect(diags[0]!.title).toContain("declared as string");
-    expect(diags[0]!.title).toContain("types it as number");
-  });
-
-  // `options.models` can only spell constructor-derived types, so `Object` is the closest available
-  // declaration for a model typed `MyShape`. Flagging that would make the channel unusable.
-  it("does not flag a type options.models cannot express", () => {
-    const ctx = makeCtx();
-    validateDeclaredModels(
-      makeComp({
-        models: [model("value", "MyShape")],
-        declaredModels: [declared("value", "Record<string, any>")],
-      }),
-      ctx,
-    );
-    expect(ctx.diagnostics.freeze()).toHaveLength(0);
-  });
-
-  it("does not flag an untyped declaration or an untyped defineModel", () => {
-    const ctx = makeCtx();
-    validateDeclaredModels(
-      makeComp({
-        models: [model("a"), model("b", "number")],
-        declaredModels: [declared("a", "string"), declared("b")],
-      }),
-      ctx,
-    );
-    expect(ctx.diagnostics.freeze()).toHaveLength(0);
-  });
-
-  it("reports every drifted entry, not just the first", () => {
-    const ctx = makeCtx();
-    validateDeclaredModels(
-      makeComp({
-        models: [model("count", "number"), model("size", "string")],
-        declaredModels: [declared("count", "string"), declared("expanded", "boolean")],
-      }),
-      ctx,
-    );
-    const diags = ctx.diagnostics.freeze();
-    expect(diags.map((d) => d.code)).toEqual(["INK0094", "INK0094", "INK0094"]);
   });
 });
