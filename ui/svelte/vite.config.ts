@@ -14,12 +14,13 @@ export default defineConfig({
   build: {
     lib: {
       entry: {
-        index: "./.inkline/index.ts",
+        index: "./src/index.ts",
         headless: "./.inkline/headless.ts",
         stories: "./.inkline/stories.ts",
       },
       formats: ["es"],
       fileName: (_format, entryName) => `${entryName}.js`,
+      cssFileName: "index",
     },
     rollupOptions: {
       external: [/^@inkline\//, "svelte", /^svelte\//],

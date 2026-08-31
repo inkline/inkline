@@ -7,7 +7,7 @@ The React output of Inkline's component compilation.
 This package is **auto-generated**. To change a component, edit the corresponding `.ink.tsx` file in [`ui/components/src/components/`](../components/) and rebuild. See [`ui/components/AGENTS.md`](../components/AGENTS.md).
 
 - `.inkline/` — compiled React components + `index.ts`/`headless.ts`/`stories.ts` barrels written by [`inkline compile`](../../tooling/cli/AGENTS.md). Never hand-edit.
-- `src/index.ts` — a single line: `export * from "../.inkline/index.ts";`. Re-exports the generated output. Do not extend it with hand-written code; if you need a manual override, route it through `ui/components/` so all seven frameworks stay in sync.
+- `src/index.ts` — the build's `index` entry. Re-exports `.inkline/index.ts` and imports `virtual:styleframe.css` so Vite extracts the stylesheet to `dist/index.css` (what `./css` resolves to); lib mode keeps it out of the JS. Do not extend it beyond that; if you need a manual override, route it through `ui/components/` so all seven frameworks stay in sync.
 - `.styleframe/` — auto-generated styleframe artifacts. Never hand-edit.
 
 ## Public surface
