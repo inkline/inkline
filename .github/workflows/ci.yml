@@ -7,8 +7,16 @@ on:
     branches: [main]
   workflow_dispatch:
 
+# `main` gets one group per commit, so every commit gets its own verdict. Sharing a
+# group across main commits does not just serialize them: `cancel-in-progress: false`
+# makes a run sit *pending* behind the running one, and GitHub cancels an existing
+# pending run whenever a newer one is queued into the same group. A merge then lands
+# with no CI verdict at all and its breakage first shows up on the innocent commit
+# after it — which is exactly how UXF-221 happened (run 33042055422, 0 jobs, cancelled
+# one second after the next push). PR branches keep one group per ref, where
+# superseding a stale run is the point.
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.ref == 'refs/heads/main' && github.sha || '' }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 env:
@@ -352,3 +360,55 @@ jobs:
           if [[ "${{ contains(needs.*.result, 'failure') }}" == "true" ]]; then
             exit 1
           fi
+
+  # A red `main` emitted no signal at all: the only way to see one was to open the
+  # Actions tab, so UXF-221 sat red for ~2h before anyone noticed. This pushes the
+  # failure onto the issue board, which is where the work is already tracked. One
+  # open issue holds all of it — later failures comment on it rather than filing
+  # duplicates — so closing the issue is the deliberate "main is green again" act.
+  notify-main-failure:
+    name: Notify on red main
+    runs-on: ubuntu-latest
+    needs: ci-success
+    if: ${{ always() && needs.ci-success.result == 'failure' && github.event_name == 'push' }}
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - name: File or update the red-main issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const label = 'ci: red main';
+            const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+            const body = [
+              `CI failed on \`main\`.`,
+              ``,
+              `- Commit: ${context.sha}`,
+              `- Run: ${runUrl}`,
+              ``,
+              `A red \`main\` is an incident: revert the breaking commit, then land the fix through a normal PR.`,
+              `Close this issue once \`main\` is green again.`,
+            ].join('\n');
+
+            const open = await github.rest.issues.listForRepo({
+              ...context.repo,
+              state: 'open',
+              labels: label,
+              per_page: 1,
+            });
+
+            if (open.data.length > 0) {
+              await github.rest.issues.createComment({
+                ...context.repo,
+                issue_number: open.data[0].number,
+                body,
+              });
+            } else {
+              await github.rest.issues.create({
+                ...context.repo,
+                title: `CI is failing on main (${context.sha.slice(0, 7)})`,
+                labels: [label],
+                body,
+              });
+            }
