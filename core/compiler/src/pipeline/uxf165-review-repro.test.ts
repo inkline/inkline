@@ -21,7 +21,7 @@ async function react(source: string) {
 describe("UXF-165 AC1 — no silent path remains", () => {
   // ── BLOCKING ────────────────────────────────────────────────────────────────
   //
-  // `emitTypeMembers` (setup.ts:66) returns `decl.members` for an interface, which is its
+  // `emitTypeMembers` (02-parse/macros.ts) returns `decl.members` for an interface, which is its
   // OWN members only — inherited members are dropped. No diagnostic is raised, so the
   // component compiles with an event the author declared and the props type does not.
   // That is byte-for-byte the A4 miscompile UXF-165 exists to close.
@@ -49,7 +49,7 @@ export default defineComponent(() => {
     }
   });
 
-  // The same-file guard at setup.ts:63 is bypassed entirely when the cross-module type is
+  // The same-file guard in 02-parse/macros.ts is bypassed entirely when the cross-module type is
   // reached through a heritage clause rather than named directly. `import type { Base }`
   // named directly DOES produce INK0042 (verified) — `extends Base` does not.
   it("B2 — same-file interface merging drops the second declaration", async () => {
@@ -69,7 +69,7 @@ export default defineComponent(() => {
     }
   });
 
-  // `reportSlotsOutsideRender` (setup.ts:120) skips the entire `renderExpr` subtree, but
+  // `reportSlotsOutsideRender` (02-parse/setup.ts) skips the entire `renderExpr` subtree, but
   // lowering does not descend into every construct inside it. A `<Slot>` nested in an arrow
   // within the render expression is therefore neither lowered nor diagnosed — it survives
   // into the output verbatim against a `Slot` the target never imports. That is byte-for-byte

@@ -20,6 +20,7 @@ import { setupDeclaredNames } from "../../../ir/setup.ts";
 import type { PassContext } from "../../types.ts";
 import type { BindingTable } from "./bind-primitives.ts";
 import { toLoc } from "./loc.ts";
+import { bindMacros, macroForInitializer, type MacroContext } from "./macros.ts";
 import { ParseBindingScope } from "./scope.ts";
 
 function localFor(bindings: BindingTable, prim: PrimitiveName): string | undefined {
@@ -36,89 +37,6 @@ function isCallTo(expr: ts.Expression, name: string | undefined): expr is ts.Cal
     ts.isIdentifier(expr.expression) &&
     expr.expression.text === name
   );
-}
-
-/**
- * The members of `defineEmits<T>()`'s type argument, or `undefined` when the compiler cannot read
- * all of them from a single declaration in this file.
- *
- * The boundary is "the declaration I can read completely", not "the declaration I found". Each
- * member's type node is kept verbatim as {@link IREventDeclaration.payloadType} and emitted into the
- * generated component, so the declaration itself must be in this file. Beyond that, anything whose
- * full member list lives somewhere other than that one declaration's body — a heritage clause, a
- * second merged declaration, a generic instantiation — is refused rather than partially read: a
- * dropped member is silent all the way to the emitted file, where `emit("open")` becomes a read of
- * a prop nothing declares.
- *
- * Note the constraint is on the *declaration's* file, not on the types its members reference: a
- * member typed `[v: P]` with `P` imported is accepted, and the import is forwarded to the output by
- * `extractExternalImports`.
- */
-function emitTypeMembers(
-  typeArg: ts.TypeNode,
-  sourceFile: ts.SourceFile,
-  checker: ts.TypeChecker,
-): readonly ts.TypeElement[] | undefined {
-  if (ts.isTypeLiteralNode(typeArg)) return typeArg.members;
-  // A generic instantiation (`Events<string>`) names a declaration whose members are the
-  // uninstantiated ones, so reading them verbatim would be wrong rather than merely incomplete.
-  if (!ts.isTypeReferenceNode(typeArg) || typeArg.typeArguments) return undefined;
-
-  let symbol = checker.getSymbolAtLocation(typeArg.typeName);
-  if (symbol && symbol.flags & ts.SymbolFlags.Alias) symbol = checker.getAliasedSymbol(symbol);
-
-  const declarations = symbol?.declarations ?? [];
-  // Declaration merging spreads one interface's members across several declarations, and a
-  // declaration in another file is unreadable regardless of where the others live — so the count
-  // is taken over *all* of them, not just the same-file ones.
-  if (declarations.length > 1) return undefined;
-
-  for (const decl of declarations) {
-    if (decl.getSourceFile() !== sourceFile) continue;
-    if (ts.isTypeAliasDeclaration(decl) && ts.isTypeLiteralNode(decl.type))
-      return decl.type.members;
-    // `interface X extends Base` declares only its own members here; `Base` may not even be in this
-    // file, and the same-file check above never sees it.
-    if (ts.isInterfaceDeclaration(decl) && !decl.heritageClauses) return decl.members;
-  }
-  return undefined;
-}
-
-/**
- * Events declared by `defineEmits(["a","b"])` or `defineEmits<{ a: [...]; b: [...] }>()`.
- *
- * The type-argument form also carries each event's payload: the member type is the tuple of the
- * arguments `emit(name, …)` takes, so it is kept verbatim as {@link IREventDeclaration.payloadType}
- * for targets to lower. The runtime array form declares names only and stays untyped.
- */
-function declaredEmits(
-  call: ts.CallExpression,
-  sourceFile: ts.SourceFile,
-  checker: ts.TypeChecker,
-  ctx: PassContext,
-): { name: string; payloadType?: ts.TypeNode }[] {
-  const declared: { name: string; payloadType?: ts.TypeNode }[] = [];
-  const arg = call.arguments[0];
-  if (arg && ts.isArrayLiteralExpression(arg)) {
-    for (const el of arg.elements) {
-      if (ts.isStringLiteral(el)) declared.push({ name: el.text });
-    }
-  }
-  const typeArg = call.typeArguments?.[0];
-  if (typeArg) {
-    const members = emitTypeMembers(typeArg, sourceFile, checker);
-    if (!members) {
-      ctx.diagnostics.push("INK0042", toLoc(typeArg, sourceFile));
-      return declared;
-    }
-    for (const member of members) {
-      if (member.name && (ts.isIdentifier(member.name) || ts.isStringLiteral(member.name))) {
-        const payloadType = ts.isPropertySignature(member) ? member.type : undefined;
-        declared.push({ name: member.name.text, payloadType });
-      }
-    }
-  }
-  return declared;
 }
 
 /**
@@ -212,8 +130,6 @@ export function parseSetup(
   let renderExpr: ts.Expression | undefined;
 
   const signalLocal = localFor(bindings, "createSignal");
-  const modelLocal = localFor(bindings, "defineModel");
-  const emitsLocal = localFor(bindings, "defineEmits");
   const memoLocal = localFor(bindings, "createMemo");
   const effectLocal = localFor(bindings, "createEffect");
   const refLocal = localFor(bindings, "createRef");
@@ -222,7 +138,10 @@ export function parseSetup(
   const useContextLocal = localFor(bindings, "useContext");
   const mountLocal = localFor(bindings, "onMount");
   const cleanupLocal = localFor(bindings, "onCleanup");
-  const slotLocal = localFor(bindings, "defineSlot");
+
+  // `defineModel` / `defineEmits` / `defineSlot` / `hasSlot` are macros: each is declared once in
+  // the registry with its parse and its grammar rules, and dispatched from the loop below.
+  const macros = bindMacros(bindings);
 
   const body = ts.isBlock(setupFn.body) ? setupFn.body.statements : undefined;
   if (!body) {
@@ -251,6 +170,15 @@ export function parseSetup(
     if (!ts.isIdentifier(name)) return;
     const sym = checker.getSymbolAtLocation(name);
     if (sym) scope.register(sym, id, kind);
+  };
+
+  const macroCtx: MacroContext = {
+    componentId,
+    sourceFile,
+    checker,
+    pass: ctx,
+    scope,
+    registerBinding,
   };
 
   for (const stmt of body) {
@@ -330,65 +258,17 @@ export function parseSetup(
           continue;
         }
 
-        if (isCallTo(init, modelLocal)) {
-          // const [value, setValue] = defineModel("value") — a two-way-bindable prop + update event.
-          const elements = ts.isArrayBindingPattern(decl.name) ? decl.name.elements : undefined;
-          const first = elements?.[0];
-          const second = elements?.[1];
-          if (
-            !first ||
-            !second ||
-            !ts.isBindingElement(first) ||
-            !ts.isIdentifier(first.name) ||
-            !ts.isBindingElement(second) ||
-            !ts.isIdentifier(second.name)
-          ) {
-            ctx.diagnostics.push("INK0043", toLoc(decl, sourceFile));
-            continue;
-          }
-
-          const nameArg = init.arguments[0];
-          if (nameArg && !ts.isStringLiteral(nameArg)) {
-            ctx.diagnostics.push("INK0043", toLoc(nameArg, sourceFile));
-            continue;
-          }
-          const propName = nameArg && ts.isStringLiteral(nameArg) ? nameArg.text : "value";
-
-          const getterId = ctx.symbols.mint({
-            componentId,
-            kind: "signal",
-            name: first.name.text,
-            loc: toLoc(decl, sourceFile),
-          });
-          const setterId = ctx.symbols.mint({
-            componentId,
-            kind: "signal",
-            name: second.name.text,
-            loc: toLoc(decl, sourceFile),
-          });
-
-          ctx.symbols.linkSetter(getterId, setterId);
-          scope.markSetter(setterId);
-          registerBinding(first.name, getterId, "signal");
-          registerBinding(second.name, setterId, "signal");
-
-          models.push({
-            name: first.name.text,
-            setterName: second.name.text,
-            propName,
-            getterSymbolId: getterId,
-            setterSymbolId: setterId,
-            typeNode: init.typeArguments?.[0],
-            loc: toLoc(decl, sourceFile),
-          });
-          continue;
-        }
-
-        if (isCallTo(init, emitsLocal)) {
-          // const emit = defineEmits(["change"]) / defineEmits<{ change: [v: string] }>()
-          if (ts.isIdentifier(decl.name)) emitName = decl.name.text;
-          for (const { name, payloadType } of declaredEmits(init, sourceFile, checker, ctx)) {
-            events.push({ name, payloadType, loc: toLoc(decl, sourceFile) });
+        const macroCall = macroForInitializer(init, macros);
+        if (macroCall) {
+          const contribution = macroCall.macro.parse?.({ call: macroCall.call, decl }, macroCtx);
+          if (contribution) {
+            models.push(...(contribution.models ?? []));
+            events.push(...(contribution.events ?? []));
+            slotDeclarations.push(...(contribution.slots ?? []));
+            for (const [local, slot] of contribution.slotBindings ?? []) {
+              slotBindings.set(local, slot);
+            }
+            if (contribution.emitName !== undefined) emitName = contribution.emitName;
           }
           continue;
         }
@@ -501,34 +381,6 @@ export function parseSetup(
           continue;
         }
 
-        if (isCallTo(init, slotLocal)) {
-          if (!ts.isIdentifier(decl.name)) continue;
-
-          let slotName = "default";
-          if (init.arguments[0] && ts.isStringLiteral(init.arguments[0])) {
-            slotName = init.arguments[0].text;
-          }
-
-          const id = ctx.symbols.mint({
-            componentId,
-            kind: "slot",
-            name: slotName,
-            loc: toLoc(decl, sourceFile),
-          });
-
-          registerBinding(decl.name, id, "slot");
-          slotBindings.set(decl.name.text, slotName);
-
-          slotDeclarations.push({
-            name: slotName,
-            isScoped: false,
-            scopedProps: [],
-            required: false,
-            loc: toLoc(decl, sourceFile),
-          });
-          continue;
-        }
-
         if (isCallTo(init, useContextLocal)) {
           const contextArg = init.arguments[0];
           if (!contextArg) continue;
@@ -557,18 +409,19 @@ export function parseSetup(
         }
       }
 
+      // A statement whose declarations were all consumed above contributes no setup statement of its
+      // own — including one the branch refused (a malformed `defineModel`), which is reported, not
+      // re-emitted.
       if (
         !stmt.declarationList.declarations.some(
           (d) =>
             d.initializer &&
             (isCallTo(d.initializer, signalLocal) ||
-              isCallTo(d.initializer, modelLocal) ||
-              isCallTo(d.initializer, emitsLocal) ||
               isCallTo(d.initializer, memoLocal) ||
               isCallTo(d.initializer, refLocal) ||
               isCallTo(d.initializer, resourceLocal) ||
-              isCallTo(d.initializer, slotLocal) ||
-              isCallTo(d.initializer, useContextLocal)),
+              isCallTo(d.initializer, useContextLocal) ||
+              macroForInitializer(d.initializer, macros) !== undefined),
         )
       ) {
         setup.push({ stmt, defines: setupDeclaredNames(stmt), loc });
