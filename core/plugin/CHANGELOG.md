@@ -1,0 +1,81 @@
+# @inkline/plugin
+
+## 0.0.1
+
+### Patch Changes
+
+- c12188d: fix(plugin): drop the redundant default export from the barrel
+
+  `src/index.ts` exported `unplugin` as both a named and the default export, so bundling the barrel
+  warned `Entry module "src/index.ts" is using named and default exports together`. The default export
+  was redundant with the named `unplugin` (and unused — the per-bundler entries `@inkline/plugin/vite`
+  etc. supply the default plugins). The barrel now exports only the named `unplugin` / `unpluginFactory`,
+  clearing the warning without changing the per-bundler entries' CommonJS interop.
+
+- Updated dependencies [78ea062]
+- Updated dependencies [407c744]
+- Updated dependencies [407c744]
+- Updated dependencies [cb27b40]
+- Updated dependencies [407c744]
+- Updated dependencies [407c744]
+- Updated dependencies [407c744]
+- Updated dependencies [407c744]
+- Updated dependencies [407c744]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [287b326]
+- Updated dependencies [7958f10]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [993fa28]
+- Updated dependencies [b495727]
+- Updated dependencies [65c9f94]
+- Updated dependencies [3b8b6c2]
+- Updated dependencies [3b7f439]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [c12188d]
+- Updated dependencies [f5e3055]
+- Updated dependencies [af4684d]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [fedec47]
+- Updated dependencies [c3891ce]
+- Updated dependencies [c061e5e]
+- Updated dependencies [5424637]
+- Updated dependencies [af6996e]
+- Updated dependencies [85a4c81]
+- Updated dependencies [287b326]
+- Updated dependencies [c12188d]
+- Updated dependencies [17b446a]
+- Updated dependencies [58fcc23]
+- Updated dependencies [01a5207]
+- Updated dependencies [0c56912]
+- Updated dependencies [0cbb9a6]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [5e56c04]
+- Updated dependencies [d0c2ef8]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [420229e]
+- Updated dependencies [a161934]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [1b07d5f]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [49c624f]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [c12188d]
+- Updated dependencies [fcc2bf4]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [af4684d]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [3a61a4b]
+- Updated dependencies [c12188d]
+- Updated dependencies [c12188d]
+- Updated dependencies [a86ba6d]
+- Updated dependencies [c12188d]
+- Updated dependencies [32f1d2a]
+- Updated dependencies [0688298]
+- Updated dependencies [8480e72]
+- Updated dependencies [04a1350]
+- Updated dependencies [a86ba6d]
+  - @inkline/compiler@0.1.0
