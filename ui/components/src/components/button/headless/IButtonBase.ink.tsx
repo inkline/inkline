@@ -1,4 +1,4 @@
-import { defineComponent, defineProps, Slot, Show } from "@inkline/core";
+import { defineComponent, defineProps, defineSlot, Slot, Show } from "@inkline/core";
 
 export interface ButtonBaseProps {
   label?: string;
@@ -10,10 +10,10 @@ export interface ButtonBaseProps {
 export default defineComponent(
   {
     meta: { headless: true },
-    slots: { default: {} },
   },
   () => {
     const props = defineProps<ButtonBaseProps>();
+    const _defaultSlot = defineSlot();
 
     return (
       <button

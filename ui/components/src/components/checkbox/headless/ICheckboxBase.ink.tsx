@@ -1,4 +1,4 @@
-import { defineComponent, Slot } from "@inkline/core";
+import { defineComponent, defineSlot, Slot } from "@inkline/core";
 
 // The label wrapper: a single `<label>` root (so the styled layer's `class` falls through) that
 // nests the control + its text. Nesting the control inside the `<label>` gives implicit label
@@ -6,9 +6,10 @@ import { defineComponent, Slot } from "@inkline/core";
 export default defineComponent(
   {
     meta: { headless: true },
-    slots: { default: {} },
   },
   () => {
+    const _defaultSlot = defineSlot();
+
     return (
       <label class="checkbox">
         <Slot />

@@ -1,4 +1,4 @@
-import { defineComponent, defineProps, Slot } from "@inkline/core";
+import { defineComponent, defineProps, defineSlot, Slot } from "@inkline/core";
 
 export interface BadgeBaseProps {
   label?: string;
@@ -7,10 +7,10 @@ export interface BadgeBaseProps {
 export default defineComponent(
   {
     meta: { headless: true },
-    slots: { default: {} },
   },
   () => {
     const props = defineProps<BadgeBaseProps>();
+    const _defaultSlot = defineSlot();
 
     return (
       <div class="badge">

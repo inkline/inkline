@@ -1,4 +1,4 @@
-import { defineComponent, defineProps, Slot, createMemo } from "@inkline/core";
+import { defineComponent, defineProps, defineSlot, Slot, createMemo } from "@inkline/core";
 import IFieldGroupBase, { type FieldGroupBaseProps } from "../headless/IFieldGroupBase.ink.tsx";
 import {
   fieldGroupRecipe,
@@ -14,8 +14,9 @@ export interface FieldGroupProps extends FieldGroupBaseProps, FieldGroupStylingP
  * `prepend`/`append` addons used to serve). `orientation` and `block` map to the recipe's styling
  * axes.
  */
-export default defineComponent({ meta: { headless: true }, slots: { default: {} } }, () => {
+export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<FieldGroupProps>();
+  const _defaultSlot = defineSlot();
 
   const className = createMemo(() =>
     fieldGroupRecipe({ orientation: props.orientation, block: props.block }),

@@ -10,7 +10,15 @@ description: The .ink.tsx authoring API — defineComponent, the compiler macros
 Components are authored once against `@inkline/core` and compiled to 7 frameworks. **`@inkline/core` is authoring-time stubs** — identity functions and no-ops that exist so code type-checks and produces predictable IR. The compiler removes every reference during emission; no core runtime ships. Never add real reactive/DOM behavior to the stubs — real behavior comes from the per-framework code the compiler emits.
 
 ```tsx
-import { defineComponent, defineProps, createSignal, createMemo, Show, Slot } from "@inkline/core";
+import {
+  defineComponent,
+  defineProps,
+  defineSlot,
+  createSignal,
+  createMemo,
+  Show,
+  Slot,
+} from "@inkline/core";
 
 export interface ButtonBaseProps {
   label?: string;
@@ -18,9 +26,10 @@ export interface ButtonBaseProps {
 }
 
 export default defineComponent(
-  { meta: { headless: true }, slots: { default: {} } }, // options (slots, events, meta, name)
+  { meta: { headless: true } }, // options (events, meta, name)
   () => {
     const props = defineProps<ButtonBaseProps>(); // props — macro form, the primary style
+    const _defaultSlot = defineSlot(); // slots — macro form; the binding is the declaration
     const [count, setCount] = createSignal(0);
     const doubled = createMemo(() => count() * 2);
     return (
@@ -40,6 +49,8 @@ export default defineComponent(
 Macros — `defineProps` · `defineModel` · `defineEmits` · `defineSlot` · `hasSlot` — are read at build time and erased. Recognized **by binding, not by name**, so an alias still works and a same-named local function is left alone. Grammar: **top level of the setup body only** (INK0049; `hasSlot` is exempt — it is a query), **statically analyzable arguments only** (INK0048; `defineModel` reports INK0043 instead), **one declaration channel per concern** (props INK0047 = error; an event name in both channels is INK0046 = warning, `defineEmits` wins), **always erased**.
 
 Props have three channels and a component uses exactly one: `defineProps<T>()` / `defineProps({…})` (**primary style**, ADR-010 decision 5), the setup parameter's type annotation (kept because it is the only channel plain `tsc` sees), or the options `props` map (per-prop defaults). Two of them is INK0047.
+
+Slots have two channels: `defineSlot(name?)` (**primary style**, UXF-251) or the options `slots` map (the only channel that can express `scoped` / `required`). Unlike props and events, using both is **not** diagnosed — the two declarations merge into a duplicate. Declare each slot once. `defineSlot` is declaration-position: the result must be bound to a local, and an unbound `defineSlot();` declares nothing, silently — so keep the binding and prefix it with `_` when the body renders the slot with `<Slot>` instead of the local.
 
 **Name the `defineProps` binding `props`** — targets rewrite the props object under that fixed name, so any other name emits an undeclared identifier. Undiagnosed today. `defineProps` does **not** type the parent side; `<IButton colr="x" />` is still unchecked. The corpus under `ui/components` is still on the annotation form (house style is open, ADR-010 decision 8) — new components use the macro.
 

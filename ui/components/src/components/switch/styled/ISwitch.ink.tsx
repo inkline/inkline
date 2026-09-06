@@ -1,4 +1,11 @@
-import { defineComponent, defineProps, Slot, defineModel, createMemo } from "@inkline/core";
+import {
+  defineComponent,
+  defineProps,
+  defineSlot,
+  Slot,
+  defineModel,
+  createMemo,
+} from "@inkline/core";
 import ISwitchBase from "../headless/ISwitchBase.ink.tsx";
 import ISwitchControlBase, {
   type SwitchControlBaseProps,
@@ -29,8 +36,9 @@ export interface SwitchProps extends SwitchControlBaseProps {
  * control via `$bind:checked`; the label text (default slot or `label` prop) supplies the accessible
  * name. Space toggles natively and Enter is handled explicitly.
  */
-export default defineComponent({ meta: { headless: true }, slots: { default: {} } }, () => {
+export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<SwitchProps>();
+  const _defaultSlot = defineSlot();
 
   const [checked, _setChecked] = defineModel<boolean>("checked");
 
