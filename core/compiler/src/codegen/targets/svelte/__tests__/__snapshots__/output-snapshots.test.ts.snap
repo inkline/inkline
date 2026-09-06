@@ -285,6 +285,28 @@ exports[`svelte full output snapshots > PropDefaults 1`] = `
 "
 `;
 
+exports[`svelte full output snapshots > PropsMacroObject 1`] = `
+"<script lang="ts">
+  interface Props { label: string; color?: string }
+  let { label, color = "blue", ...__attrs }: Props & Record<string, any> = $props()
+</script>
+<span {...__attrs} class={[color, __attrs.class].filter(Boolean).join(" ")}>{label}</span>
+"
+`;
+
+exports[`svelte full output snapshots > PropsMacroType 1`] = `
+"<script lang="ts">
+  export interface PropsMacroTypeProps {
+    label: string;
+    size?: string;
+  }
+  let { label, size }: PropsMacroTypeProps = $props()
+</script>
+<h1>{label}</h1>
+<p>{size}</p>
+"
+`;
+
 exports[`svelte full output snapshots > SetupHandlers 1`] = `
 "<script lang="ts">
   let { ...__attrs }: Record<string, any> = $props()

@@ -58,6 +58,29 @@ export const DIAGNOSTICS = {
     help: "Declare each event once. The defineEmits declaration wins, since it is the only one that can carry a payload type; remove the redundant declaration reported here." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0046" as const,
   },
+  // Two props channels are an error rather than a precedence rule for the same reason the
+  // `props?: never` overload exists in `@inkline/core`: a mismatched pair compiles clean and lies.
+  // That overload already refuses the options/annotation pair in `tsc`; this refuses every pair in
+  // the compiler, including the two `tsc` cannot see, since a macro call is invisible to the
+  // overload set.
+  INK0047: {
+    severity: "error" as const,
+    title: "Props are declared through more than one channel" as const,
+    help: "Declare props once — with defineProps(), with the setup parameter's type annotation, or with the options object's props map. Keep one and delete the others." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0047" as const,
+  },
+  INK0048: {
+    severity: "error" as const,
+    title: "Macro argument must be statically analyzable" as const,
+    help: "Pass a literal the compiler can read at build time — a string, an array of string literals, or an object literal. A macro is erased from the output, so a value computed at runtime is gone by the time anything could read it." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0048" as const,
+  },
+  INK0049: {
+    severity: "error" as const,
+    title: "Macro must be called at the top level of the setup body" as const,
+    help: "Move the call to a top-level statement of the setup function. A macro is erased at build time, so one nested in a condition, a loop, or another function still declares unconditionally while reading as if it did not." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0049" as const,
+  },
   INK0010: {
     severity: "warning" as const,
     title: "Effect has no reactive dependencies; it runs once" as const,

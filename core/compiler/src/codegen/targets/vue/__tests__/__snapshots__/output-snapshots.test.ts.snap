@@ -401,6 +401,31 @@ exports[`vue full output snapshots > PropDefaults 1`] = `
 "
 `;
 
+exports[`vue full output snapshots > PropsMacroObject 1`] = `
+"<script setup lang="ts">
+  const props = withDefaults(defineProps<{ label: string; color?: string }>(), { color: "blue" })
+</script>
+<template>
+<span :class="color">{{ label }}</span>
+</template>
+"
+`;
+
+exports[`vue full output snapshots > PropsMacroType 1`] = `
+"<script setup lang="ts">
+  export interface PropsMacroTypeProps {
+    label: string;
+    size?: string;
+  }
+  const props = defineProps<PropsMacroTypeProps>()
+</script>
+<template>
+<h1>{{ label }}</h1>
+<p>{{ size }}</p>
+</template>
+"
+`;
+
 exports[`vue full output snapshots > SetupHandlers 1`] = `
 "<script setup lang="ts">
   import { ref } from "vue";

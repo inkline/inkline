@@ -45,16 +45,31 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         ? parseOptions(site.options, componentId, sourceFile, ctx)
         : undefined;
 
-      const baseProps =
-        optionsResult?.props ??
-        parsePropsFromParameterType(site.setupFn, componentId, sourceFile, ctx, checker);
-      const propsTypeText = getPropsTypeText(site.setupFn, sourceFile);
       const baseEvents = optionsResult?.events ?? [];
       const styles = optionsResult?.styles ?? [];
       const runtime = optionsResult?.runtime ?? "iso";
 
       // (d) setup
       const setupResult = parseSetup(site.setupFn, componentId, bindings, sourceFile, checker, ctx);
+
+      // (c′) props channel — R3: exactly one of `options.props`, `defineProps`, or the setup
+      // parameter's annotation declares the props. Only the winner is parsed, so a losing channel
+      // mints no symbols.
+      const hasAnnotation = site.setupFn.parameters[0]?.type !== undefined;
+      const channelCount =
+        (optionsResult?.props !== undefined ? 1 : 0) +
+        (setupResult.props !== undefined ? 1 : 0) +
+        (hasAnnotation ? 1 : 0);
+      if (channelCount > 1) ctx.diagnostics.push("INK0047", site.loc);
+
+      const baseProps =
+        optionsResult?.props ??
+        setupResult.props ??
+        parsePropsFromParameterType(site.setupFn, componentId, sourceFile, ctx, checker);
+      const propsTypeText =
+        optionsResult?.props === undefined && setupResult.props !== undefined
+          ? setupResult.propsTypeText
+          : getPropsTypeText(site.setupFn, sourceFile);
 
       // `component.models` is the single source of truth for two-way models — each target surfaces the
       // value prop + `update:<prop>` callback from it directly. We only warn (INK0044) when a model

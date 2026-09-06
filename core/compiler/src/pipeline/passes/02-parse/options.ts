@@ -120,7 +120,7 @@ function parseStyleFromValue(
   return undefined;
 }
 
-function parsePropsFromObject(
+export function parsePropsFromObject(
   value: ts.Expression,
   componentId: string,
   sourceFile: ts.SourceFile,
@@ -228,35 +228,40 @@ function inferPropType(init: ts.Expression): string | undefined {
   return undefined;
 }
 
-export function parsePropsFromParameterType(
-  setupFn: ts.ArrowFunction | ts.FunctionExpression,
+/**
+ * The props a type node declares — shared by the setup parameter's annotation and by
+ * `defineProps<T>()`, so both channels produce the same {@link IRProp}s for the same type.
+ *
+ * An inline object type is read member by member, which keeps each prop's own source position. A
+ * named type is resolved through the checker instead, so an interface imported from another module
+ * resolves to its members; those props have no position of their own and are anchored on `anchor`.
+ */
+export function parsePropsFromTypeNode(
+  typeNode: ts.TypeNode,
+  anchor: ts.Node,
   componentId: string,
   sourceFile: ts.SourceFile,
   ctx: PassContext,
   checker: ts.TypeChecker,
 ): IRProp[] {
-  const param = setupFn.parameters[0];
-  if (!param?.type) return [];
-
-  if (ts.isTypeLiteralNode(param.type)) {
+  if (ts.isTypeLiteralNode(typeNode)) {
     const props: IRProp[] = [];
 
-    for (const member of param.type.members) {
+    for (const member of typeNode.members) {
       if (!ts.isPropertySignature(member) || !ts.isIdentifier(member.name)) continue;
 
       const name = member.name.text;
       const required = !member.questionToken;
-      const typeNode = member.type;
       const loc = toLoc(member, sourceFile);
       const id = ctx.symbols.mint({ componentId, kind: "prop", name, loc });
 
-      props.push({ name, typeNode, required, symbolId: id, loc });
+      props.push({ name, typeNode: member.type, required, symbolId: id, loc });
     }
 
     return props;
   }
 
-  const type = checker.getTypeAtLocation(param);
+  const type = checker.getTypeAtLocation(anchor);
   if (type.flags & ts.TypeFlags.Any) return [];
 
   const props: IRProp[] = [];
@@ -266,12 +271,23 @@ export function parsePropsFromParameterType(
 
     const name = symbol.getName();
     const required = !decl.questionToken;
-    const typeNode = decl.type;
-    const loc = toLoc(param, sourceFile);
+    const loc = toLoc(anchor, sourceFile);
     const id = ctx.symbols.mint({ componentId, kind: "prop", name, loc });
-    props.push({ name, typeNode, required, symbolId: id, loc });
+    props.push({ name, typeNode: decl.type, required, symbolId: id, loc });
   }
   return props;
+}
+
+export function parsePropsFromParameterType(
+  setupFn: ts.ArrowFunction | ts.FunctionExpression,
+  componentId: string,
+  sourceFile: ts.SourceFile,
+  ctx: PassContext,
+  checker: ts.TypeChecker,
+): IRProp[] {
+  const param = setupFn.parameters[0];
+  if (!param?.type) return [];
+  return parsePropsFromTypeNode(param.type, param, componentId, sourceFile, ctx, checker);
 }
 
 function parseSlotsFromObject(

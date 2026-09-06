@@ -79,6 +79,9 @@ restating it, so neither column is asserted.
 | INK0044 | warning  | parse    | Model collides with a declared prop of the same name      |
 | INK0045 | info     | codegen  | Two-way binding and events are inert on the Astro target  |
 | INK0046 | warning  | parse    | Event is declared twice                                   |
+| INK0047 | error    | parse    | Props are declared through more than one channel          |
+| INK0048 | error    | parse    | Macro argument must be statically analyzable              |
+| INK0049 | error    | parse    | Macro must be called at the top level of the setup body   |
 | INK0050 | warning  | lower    | Missing key in iteration                                  |
 | INK0060 | error    | lower    | `<Show>` requires a 'when' prop                           |
 | INK0061 | info     | lower    | Nullish-coalescing (??) in JSX is ambiguous               |

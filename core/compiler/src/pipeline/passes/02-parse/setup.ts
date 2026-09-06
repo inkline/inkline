@@ -8,6 +8,7 @@ import type {
   IRLifecycle,
   IRMemoDeclaration,
   IRModelDeclaration,
+  IRProp,
   IRProvideDeclaration,
   IRRefDeclaration,
   IRResourceDeclaration,
@@ -20,7 +21,7 @@ import { setupDeclaredNames } from "../../../ir/setup.ts";
 import type { PassContext } from "../../types.ts";
 import type { BindingTable } from "./bind-primitives.ts";
 import { toLoc } from "./loc.ts";
-import { bindMacros, macroForInitializer, type MacroContext } from "./macros.ts";
+import { bindMacros, checkMacroGrammar, macroForInitializer, type MacroContext } from "./macros.ts";
 import { ParseBindingScope } from "./scope.ts";
 
 function localFor(bindings: BindingTable, prim: PrimitiveName): string | undefined {
@@ -89,6 +90,10 @@ export interface SetupResult {
   readonly events: IREventDeclaration[];
   /** Local name bound to the `defineEmits()` result, if any. */
   readonly emitName: string | undefined;
+  /** Props declared via `defineProps<T>()` / `defineProps({…})`, or `undefined` when unused. */
+  readonly props: IRProp[] | undefined;
+  /** The `defineProps<T>()` type argument's text, when it names a type. */
+  readonly propsTypeText: string | undefined;
   readonly memos: IRMemoDeclaration[];
   readonly refs: IRRefDeclaration[];
   readonly effects: IREffectDeclaration[];
@@ -116,6 +121,8 @@ export function parseSetup(
   const models: IRModelDeclaration[] = [];
   const events: IREventDeclaration[] = [];
   let emitName: string | undefined;
+  let props: IRProp[] | undefined;
+  let propsTypeText: string | undefined;
   const memos: IRMemoDeclaration[] = [];
   const refs: IRRefDeclaration[] = [];
   const effects: IREffectDeclaration[] = [];
@@ -139,9 +146,12 @@ export function parseSetup(
   const mountLocal = localFor(bindings, "onMount");
   const cleanupLocal = localFor(bindings, "onCleanup");
 
-  // `defineModel` / `defineEmits` / `defineSlot` / `hasSlot` are macros: each is declared once in
-  // the registry with its parse and its grammar rules, and dispatched from the loop below.
+  // `defineModel` / `defineEmits` / `defineSlot` / `defineProps` / `hasSlot` are macros: each is
+  // declared once in the registry with its parse and its grammar rules, and dispatched from the
+  // loop below. The grammar check runs over the whole body first, since the loop below only ever
+  // reaches a macro written in the one position it accepts.
   const macros = bindMacros(bindings);
+  checkMacroGrammar(setupFn, macros, sourceFile, ctx);
 
   const body = ts.isBlock(setupFn.body) ? setupFn.body.statements : undefined;
   if (!body) {
@@ -151,6 +161,8 @@ export function parseSetup(
       models,
       events,
       emitName,
+      props,
+      propsTypeText,
       memos,
       refs,
       effects,
@@ -269,6 +281,10 @@ export function parseSetup(
               slotBindings.set(local, slot);
             }
             if (contribution.emitName !== undefined) emitName = contribution.emitName;
+            if (contribution.props !== undefined) {
+              props = props ? [...props, ...contribution.props] : [...contribution.props];
+              propsTypeText ??= contribution.propsTypeText;
+            }
           }
           continue;
         }
@@ -494,6 +510,8 @@ export function parseSetup(
     models,
     events,
     emitName,
+    props,
+    propsTypeText,
     memos,
     refs,
     effects,

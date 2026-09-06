@@ -921,6 +921,9 @@ The codes below are the ones most authors hit. For the complete, always-current 
 | INK0020 | warning  | Dynamic reactive read (e.g., `obj[key()]`) prevents static dependency tracking. React targets fall back to recomputing on every render. |
 | INK0030 | error    | Circular dependency between memos detected.                                                                                             |
 | INK0040 | error    | `defineComponent` must receive a setup function.                                                                                        |
+| INK0047 | error    | Props are declared through more than one channel. Keep `defineProps()`, the setup parameter's annotation, or the options `props` map.   |
+| INK0048 | error    | A macro argument is not statically analyzable. Pass a literal the compiler can read at build time.                                      |
+| INK0049 | error    | A macro is called outside the top level of the setup body.                                                                              |
 | INK0050 | warning  | `<For>` loop is missing a `key` prop.                                                                                                   |
 | INK0060 | error    | `<Show>` requires a `when` prop.                                                                                                        |
 | INK0062 | error    | `<For>` requires an `each` prop.                                                                                                        |

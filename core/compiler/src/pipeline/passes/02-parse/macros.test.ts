@@ -31,9 +31,9 @@ function initializerOf(code: string): ts.Expression {
 }
 
 describe("the macro registry", () => {
-  // The grammar rules of design UXF-241 §4 are metadata in Phase 1 — nothing enforces them yet, and
-  // Phase 2 reads exactly this table to decide what INK0047–INK0049 check. Locking it here means a
-  // rule cannot drift silently between the two phases.
+  // The grammar rules of design UXF-241 §4 are what `checkMacroGrammar` reads to decide which call
+  // INK0048 and INK0049 apply to. Locking the table here means a rule cannot drift silently, and in
+  // particular that `defineModel` keeps reporting its own R2 under INK0043.
   it("carries R1–R4 for every macro", () => {
     expect(
       Object.fromEntries(MACROS.map((m) => [m.name, { position: m.position, ...m.rules }])),
@@ -41,28 +41,35 @@ describe("the macro registry", () => {
       defineModel: {
         position: "declaration",
         topLevelOnly: true,
-        staticArguments: true,
+        staticArguments: "macro",
         declares: "models",
         erased: true,
       },
       defineEmits: {
         position: "declaration",
         topLevelOnly: true,
-        staticArguments: true,
+        staticArguments: "registry",
         declares: "events",
         erased: true,
       },
       defineSlot: {
         position: "declaration",
         topLevelOnly: true,
-        staticArguments: true,
+        staticArguments: "registry",
         declares: "slots",
+        erased: true,
+      },
+      defineProps: {
+        position: "declaration",
+        topLevelOnly: true,
+        staticArguments: "registry",
+        declares: "props",
         erased: true,
       },
       hasSlot: {
         position: "expression",
         topLevelOnly: false,
-        staticArguments: true,
+        staticArguments: "registry",
         declares: undefined,
         erased: true,
       },
