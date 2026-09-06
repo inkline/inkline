@@ -1,4 +1,12 @@
-import { defineComponent, Slot, Show, defineModel, createMemo, hasSlot } from "@inkline/core";
+import {
+  defineComponent,
+  defineProps,
+  Slot,
+  Show,
+  defineModel,
+  createMemo,
+  hasSlot,
+} from "@inkline/core";
 import IInputBase from "../headless/IInputBase.ink.tsx";
 import IInputPrefixBase from "../headless/IInputPrefixBase.ink.tsx";
 import IInputSuffixBase from "../headless/IInputSuffixBase.ink.tsx";
@@ -38,7 +46,9 @@ export interface InputProps extends InputControlBaseProps {
  */
 export default defineComponent(
   { meta: { headless: true }, slots: { prefix: {}, suffix: {} } },
-  (props: InputProps) => {
+  () => {
+    const props = defineProps<InputProps>();
+
     const [value, _setValue] = defineModel<string>("value");
 
     const shellClassName = createMemo(() =>
