@@ -1,4 +1,4 @@
-import { defineComponent, defineEmits } from "@inkline/core";
+import { defineComponent, defineProps, defineEmits } from "@inkline/core";
 
 export interface RadioFieldBaseProps {
   /** Id of the native control. */
@@ -25,7 +25,9 @@ export interface RadioFieldBaseProps {
 // `input[ink-radio-field-base]`. Native radio gives `role="radio"`, `aria-checked` (from `checked`),
 // Arrow-key roving focus, and single-selection for free when siblings share a `name`. It is
 // controlled — `checked` is driven by the parent — and reports selection through a `change` event.
-export default defineComponent({ meta: { headless: true } }, (props: RadioFieldBaseProps) => {
+export default defineComponent({ meta: { headless: true } }, () => {
+  const props = defineProps<RadioFieldBaseProps>();
+
   // Selection is reported up as a semantic `change` event carrying this radio's value; the parent
   // group maps it to its two-way `value`. (Custom events are inert on static Astro — INK0045.)
   const emit = defineEmits<{ change: [value: string] }>();

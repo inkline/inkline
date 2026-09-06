@@ -1,4 +1,4 @@
-import { defineComponent, Slot } from "@inkline/core";
+import { defineComponent, defineProps, Slot } from "@inkline/core";
 
 export interface SwitchLabelBaseProps {}
 
@@ -6,13 +6,12 @@ export interface SwitchLabelBaseProps {}
 // recipe owns the gap and typography. Rendered unconditionally by the styled component and collapsed
 // via a `.switch-label:empty` CSS rule when no label is supplied, so an unlabelled switch leaves no
 // trailing gap on every target (no `hasSlot` needed).
-export default defineComponent(
-  { meta: { headless: true }, slots: { default: {} } },
-  (_props: SwitchLabelBaseProps) => {
-    return (
-      <span class="switch-label">
-        <Slot />
-      </span>
-    );
-  },
-);
+export default defineComponent({ meta: { headless: true }, slots: { default: {} } }, () => {
+  const _props = defineProps<SwitchLabelBaseProps>();
+
+  return (
+    <span class="switch-label">
+      <Slot />
+    </span>
+  );
+});

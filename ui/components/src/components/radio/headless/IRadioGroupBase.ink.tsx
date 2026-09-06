@@ -1,4 +1,4 @@
-import { defineComponent, Slot } from "@inkline/core";
+import { defineComponent, defineProps, Slot } from "@inkline/core";
 
 export interface RadioGroupBaseProps {
   /** Id of the group element. */
@@ -14,19 +14,18 @@ export interface RadioGroupBaseProps {
 // no state — the selected value lives on the styled `IRadioGroup`; mutual exclusivity comes from the
 // child radios sharing a native `name`. `readonly` is surfaced as `aria-readonly` here (the ARIA
 // state the `radiogroup` role supports); the interaction guard lives on each radio field.
-export default defineComponent(
-  { meta: { headless: true }, slots: { default: {} } },
-  (props: RadioGroupBaseProps) => {
-    return (
-      <div
-        class="radio-group"
-        role="radiogroup"
-        id={props.id}
-        aria-label={props.label}
-        aria-readonly={props.readonly ? "true" : undefined}
-      >
-        <Slot />
-      </div>
-    );
-  },
-);
+export default defineComponent({ meta: { headless: true }, slots: { default: {} } }, () => {
+  const props = defineProps<RadioGroupBaseProps>();
+
+  return (
+    <div
+      class="radio-group"
+      role="radiogroup"
+      id={props.id}
+      aria-label={props.label}
+      aria-readonly={props.readonly ? "true" : undefined}
+    >
+      <Slot />
+    </div>
+  );
+});
