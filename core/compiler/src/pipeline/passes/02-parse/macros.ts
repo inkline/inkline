@@ -3,32 +3,44 @@ import type { IRReactiveKind, SymbolId } from "../../../ir/reactivity.ts";
 import type {
   IREventDeclaration,
   IRModelDeclaration,
+  IRProp,
   IRSlotDeclaration,
   PrimitiveName,
 } from "../../../ir/render/nodes.ts";
 import type { PassContext } from "../../types.ts";
 import type { BindingTable } from "./bind-primitives.ts";
 import { toLoc } from "./loc.ts";
+import { parsePropsFromObject, parsePropsFromTypeNode } from "./options.ts";
 import type { ParseBindingScope } from "./scope.ts";
 
 /**
  * The concern a macro declares. Two channels declaring the same concern collide (R3) — models
- * against hand-declared props is INK0044, `defineEmits` against `options.events` is INK0046.
+ * against hand-declared props is INK0044, `defineEmits` against `options.events` is INK0046,
+ * `defineProps` against either other props channel is INK0047.
  */
-export type MacroConcern = "models" | "events" | "slots";
+export type MacroConcern = "models" | "events" | "slots" | "props";
+
+/**
+ * Who reports R2 for a macro.
+ *
+ * `registry` — the shared check in {@link checkMacroGrammar} reports INK0048.
+ * `macro` — the macro's own `parse` already refuses a non-static argument under a more specific
+ * code, so the shared check stays out of its way. `defineModel` is the one case: a dynamic name is
+ * INK0043, which also covers its binding shape, and replacing it would change existing behaviour.
+ */
+export type StaticArgumentsOwner = "registry" | "macro";
 
 /**
  * The uniform macro grammar (design UXF-241 §4), carried as data next to each macro.
  *
- * Phase 1 only records the rules; nothing checks them yet, and the diagnostics the design names
- * (INK0047–INK0049) belong to Phase 2. A rule stated here without a checker is therefore the
- * intended state, not an omission — the registry is where Phase 2 reads what to enforce.
+ * The registry is what {@link checkMacroGrammar} reads to enforce R1 and R2; R3 is enforced per
+ * concern by the parse pass, and R4 by codegen dropping every erased macro's statement.
  */
 export interface MacroRules {
   /** R1 — valid only as a top-level statement of the setup body, never nested in a function, conditional or loop. */
   readonly topLevelOnly: boolean;
-  /** R2 — arguments and type arguments must be statically analyzable. */
-  readonly staticArguments: boolean;
+  /** R2 — arguments and type arguments must be statically analyzable; the value names who reports it. */
+  readonly staticArguments: StaticArgumentsOwner;
   /** R3 — the concern declared, or `undefined` when the macro declares nothing. */
   readonly declares: MacroConcern | undefined;
   /** R4 — erased from the emitted output; no `@inkline/core` import survives it. */
@@ -69,6 +81,10 @@ export interface MacroContribution {
   readonly slotBindings?: readonly (readonly [local: string, slot: string])[];
   /** Local name bound to the macro's result, for `defineEmits`. */
   readonly emitName?: string;
+  /** Props declared by `defineProps`. */
+  readonly props?: readonly IRProp[];
+  /** The verbatim type argument of `defineProps<T>()`, when it names a type. */
+  readonly propsTypeText?: string;
 }
 
 export interface MacroDefinition {
@@ -165,7 +181,7 @@ function declaredEmits(
 const defineModelMacro: MacroDefinition = {
   name: "defineModel",
   position: "declaration",
-  rules: { topLevelOnly: true, staticArguments: true, declares: "models", erased: true },
+  rules: { topLevelOnly: true, staticArguments: "macro", declares: "models", erased: true },
   parse({ call, decl }, { componentId, sourceFile, pass, scope, registerBinding }) {
     // const [value, setValue] = defineModel("value") — a two-way-bindable prop + update event.
     const elements = ts.isArrayBindingPattern(decl.name) ? decl.name.elements : undefined;
@@ -227,7 +243,7 @@ const defineModelMacro: MacroDefinition = {
 const defineEmitsMacro: MacroDefinition = {
   name: "defineEmits",
   position: "declaration",
-  rules: { topLevelOnly: true, staticArguments: true, declares: "events", erased: true },
+  rules: { topLevelOnly: true, staticArguments: "registry", declares: "events", erased: true },
   parse({ call, decl }, { sourceFile, checker, pass }) {
     // const emit = defineEmits(["change"]) / defineEmits<{ change: [v: string] }>()
     const events: IREventDeclaration[] = declaredEmits(call, sourceFile, checker, pass).map(
@@ -240,7 +256,7 @@ const defineEmitsMacro: MacroDefinition = {
 const defineSlotMacro: MacroDefinition = {
   name: "defineSlot",
   position: "declaration",
-  rules: { topLevelOnly: true, staticArguments: true, declares: "slots", erased: true },
+  rules: { topLevelOnly: true, staticArguments: "registry", declares: "slots", erased: true },
   parse({ call, decl }, { componentId, sourceFile, pass, registerBinding }) {
     if (!ts.isIdentifier(decl.name)) return undefined;
 
@@ -274,6 +290,50 @@ const defineSlotMacro: MacroDefinition = {
 };
 
 /**
+ * `defineProps<T>()` / `defineProps({ … })` — the third props channel, declared at the call site.
+ *
+ * Both forms reuse the parsers the other two channels already use, so the same declaration produces
+ * the same {@link IRProp}s whichever channel writes it, and nothing below the parse pass changes.
+ * The type form also carries the type's name forward as `propsTypeText`, exactly as the setup
+ * parameter's annotation does, so targets that re-emit the props type keep doing so.
+ *
+ * The local the result is bound to is registered as the component's props object. Targets emit and
+ * rewrite that object under the fixed name `props`, so — as with the annotation channel today — a
+ * local under any other name reads through to the output unrewritten.
+ */
+const definePropsMacro: MacroDefinition = {
+  name: "defineProps",
+  position: "declaration",
+  rules: { topLevelOnly: true, staticArguments: "registry", declares: "props", erased: true },
+  parse({ call, decl }, { componentId, sourceFile, checker, pass, registerBinding }) {
+    const typeArg = call.typeArguments?.[0];
+    const arg = call.arguments[0];
+
+    let props: IRProp[] = [];
+    let propsTypeText: string | undefined;
+
+    if (typeArg) {
+      props = parsePropsFromTypeNode(typeArg, typeArg, componentId, sourceFile, pass, checker);
+      if (!ts.isTypeLiteralNode(typeArg)) propsTypeText = typeArg.getText(sourceFile);
+    } else if (arg) {
+      props = parsePropsFromObject(arg, componentId, sourceFile, pass);
+    }
+
+    if (ts.isIdentifier(decl.name)) {
+      const id = pass.symbols.mint({
+        componentId,
+        kind: "prop",
+        name: "props",
+        loc: toLoc(decl, sourceFile),
+      });
+      registerBinding(decl.name, id, "prop");
+    }
+
+    return { props, propsTypeText };
+  },
+};
+
+/**
  * `hasSlot("name")` is a predicate, not a declaration: it reads a slot the component declares
  * elsewhere and is rewritten to each target's slot-presence check during codegen
  * (`codegen/shared/expr-rewrite.ts`). Parse contributes nothing — the entry exists so the registry
@@ -282,7 +342,7 @@ const defineSlotMacro: MacroDefinition = {
 const hasSlotMacro: MacroDefinition = {
   name: "hasSlot",
   position: "expression",
-  rules: { topLevelOnly: false, staticArguments: true, declares: undefined, erased: true },
+  rules: { topLevelOnly: false, staticArguments: "registry", declares: undefined, erased: true },
 };
 
 /** Every compiler macro. Recognition is by binding, never by name — see {@link bindMacros}. */
@@ -290,6 +350,7 @@ export const MACROS: readonly MacroDefinition[] = [
   defineModelMacro,
   defineEmitsMacro,
   defineSlotMacro,
+  definePropsMacro,
   hasSlotMacro,
 ];
 
@@ -308,6 +369,76 @@ export function bindMacros(bindings: BindingTable): ReadonlyMap<string, MacroDef
     }
   }
   return bound;
+}
+
+/**
+ * Whether an argument is a literal the macro parsers can read at build time.
+ *
+ * The test is on the argument's own shape, which is exactly what each parser requires: a slot or
+ * event name must be a string, an event list an array of strings, a prop map an object literal. It
+ * deliberately does not recurse into an object literal's values — an object-form prop's `default` is
+ * an arbitrary expression that the compiler copies into the output verbatim, so it never has to be
+ * read.
+ */
+function isStaticMacroArgument(arg: ts.Expression): boolean {
+  if (ts.isStringLiteral(arg) || ts.isNoSubstitutionTemplateLiteral(arg)) return true;
+  if (ts.isObjectLiteralExpression(arg)) return true;
+  if (ts.isArrayLiteralExpression(arg)) return arg.elements.every(ts.isStringLiteral);
+  return false;
+}
+
+/**
+ * Enforce R1 (top level only, INK0049) and R2 (statically analyzable arguments, INK0048) over every
+ * macro call in the setup function, wherever it is written.
+ *
+ * The dispatch in {@link parseSetup} only ever sees a macro in the one position it accepts, so a
+ * nested call would otherwise be silently ignored: erased on some targets, emitted as a call to a
+ * stub on others, and in either case declaring nothing while reading as if it declared something.
+ * This walk is what makes both failures diagnosable.
+ */
+export function checkMacroGrammar(
+  setupFn: ts.ArrowFunction | ts.FunctionExpression,
+  macros: ReadonlyMap<string, MacroDefinition>,
+  sourceFile: ts.SourceFile,
+  ctx: PassContext,
+): void {
+  if (macros.size === 0) return;
+
+  // The calls the dispatch can reach: a top-level statement's own call, or the initializer of one
+  // of its declarations.
+  const topLevel = new Set<ts.CallExpression>();
+  if (ts.isBlock(setupFn.body)) {
+    for (const stmt of setupFn.body.statements) {
+      if (ts.isVariableStatement(stmt)) {
+        for (const decl of stmt.declarationList.declarations) {
+          if (decl.initializer && ts.isCallExpression(decl.initializer)) {
+            topLevel.add(decl.initializer);
+          }
+        }
+      } else if (ts.isExpressionStatement(stmt) && ts.isCallExpression(stmt.expression)) {
+        topLevel.add(stmt.expression);
+      }
+    }
+  }
+
+  const visit = (node: ts.Node): void => {
+    if (ts.isCallExpression(node) && ts.isIdentifier(node.expression)) {
+      const macro = macros.get(node.expression.text);
+      if (macro) {
+        if (macro.rules.topLevelOnly && !topLevel.has(node)) {
+          ctx.diagnostics.push("INK0049", toLoc(node, sourceFile));
+        }
+        if (macro.rules.staticArguments === "registry") {
+          for (const arg of node.arguments) {
+            if (!isStaticMacroArgument(arg))
+              ctx.diagnostics.push("INK0048", toLoc(arg, sourceFile));
+          }
+        }
+      }
+    }
+    ts.forEachChild(node, visit);
+  };
+  visit(setupFn.body);
 }
 
 /**

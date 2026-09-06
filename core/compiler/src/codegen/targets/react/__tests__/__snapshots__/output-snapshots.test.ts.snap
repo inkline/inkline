@@ -426,6 +426,34 @@ return (
 "
 `;
 
+exports[`react full output snapshots > PropsMacroObject 1`] = `
+"export function PropsMacroObject(props: { label: string; color?: string } & React.HTMLAttributes<HTMLElement>)
+{
+const { label, color = "blue", ...__attrs } = props
+return (
+<span {...__attrs} className={[color, props.className].filter(Boolean).join(" ")}>{props.label}</span>
+)
+}
+"
+`;
+
+exports[`react full output snapshots > PropsMacroType 1`] = `
+"export interface PropsMacroTypeProps {
+  label: string;
+  size?: string;
+}
+export function PropsMacroType(props: PropsMacroTypeProps)
+{
+return (
+<>
+  <h1>{props.label}</h1>
+  <p>{props.size}</p>
+</>
+)
+}
+"
+`;
+
 exports[`react full output snapshots > SetupHandlers 1`] = `
 "import { useState, Fragment } from "react";
 export function SetupHandlers(props: React.HTMLAttributes<HTMLElement>)

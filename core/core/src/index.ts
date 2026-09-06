@@ -151,6 +151,22 @@ export function defineComponent<P = {}>(
   return fn as unknown as InkComponent<P>;
 }
 
+/**
+ * Declare the component's props at the call site, as either `defineProps<ButtonProps>()` or
+ * `defineProps({ color: "blue" })`. Authoring stub only — the compiler reads the declaration and
+ * erases the call, so the returned object is never the one the generated component reads.
+ *
+ * A component declares props through exactly one channel: this macro, the setup parameter's type
+ * annotation, or the options object's `props` map. Two of them is INK0047.
+ */
+export function defineProps<P = {}>(): P;
+export function defineProps<D extends Record<string, PropDeclaration>>(
+  declarations: D,
+): InferProps<D>;
+export function defineProps(_declarations?: Record<string, PropDeclaration>): unknown {
+  return {};
+}
+
 export function createSignal<T>(initial: T): [get: () => T, set: (value: T) => void] {
   let value = initial;
   return [

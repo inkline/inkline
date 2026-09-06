@@ -406,6 +406,34 @@ size = input.required<number>()
 "
 `;
 
+exports[`angular full output snapshots > PropsMacroObject 1`] = `
+"import { Component, signal, computed, effect, input } from "@angular/core";
+@Component({ standalone: true, selector: 'ink-props-macro-object', host: { style: 'display: contents' }, template: \`<span [class]="(color()) + (klass() ? ' ' + klass() : '')">{{ label() }}</span>\` })
+export class PropsMacroObjectComponent
+{
+klass = input<string>()
+label = input.required<string>()
+color = input<string>('blue')
+}
+"
+`;
+
+exports[`angular full output snapshots > PropsMacroType 1`] = `
+"import { Component, signal, computed, effect, input } from "@angular/core";
+export interface PropsMacroTypeProps {
+  label: string;
+  size?: string;
+}
+@Component({ standalone: true, selector: 'ink-props-macro-type', host: { style: 'display: contents' }, template: \`<h1>{{ label() }}</h1>
+<p>{{ size() }}</p>\` })
+export class PropsMacroTypeComponent
+{
+label = input.required<string>()
+size = input<string>()
+}
+"
+`;
+
 exports[`angular full output snapshots > SetupHandlers 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-setup-handlers', host: { style: 'display: contents' }, template: \`<div [class]="klass()">

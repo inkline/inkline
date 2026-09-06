@@ -437,6 +437,36 @@ return (
 "
 `;
 
+exports[`qwik full output snapshots > PropsMacroObject 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export const PropsMacroObject = component$((props: { label: string; color?: string } & Record<string, any>) =>
+{
+const { label, color = "blue", ...__attrs } = props
+return (
+<span {...__attrs} class={[color, props.class].filter(Boolean).join(" ")}>{props.label}</span>
+)
+});
+"
+`;
+
+exports[`qwik full output snapshots > PropsMacroType 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export interface PropsMacroTypeProps {
+  label: string;
+  size?: string;
+}
+export const PropsMacroType = component$((props: PropsMacroTypeProps & Record<string, any>) =>
+{
+return (
+<>
+  <h1>{props.label}</h1>
+  <p>{props.size}</p>
+</>
+)
+});
+"
+`;
+
 exports[`qwik full output snapshots > SetupHandlers 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const SetupHandlers = component$((props) =>

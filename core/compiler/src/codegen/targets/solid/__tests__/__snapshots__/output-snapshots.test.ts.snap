@@ -486,6 +486,37 @@ return (
 "
 `;
 
+exports[`solid full output snapshots > PropsMacroObject 1`] = `
+"import { mergeProps, splitProps } from "solid-js";
+import type { JSX } from "solid-js";
+export default function PropsMacroObject(_props: { label: string; color?: string } & JSX.HTMLAttributes<HTMLElement>)
+{
+const props = mergeProps({ color: "blue" }, _props)
+const [, __attrs] = splitProps(props, ["label", "color"])
+return (
+<span {...__attrs} class={[props.color, props.class].filter(Boolean).join(" ")}>{props.label}</span>
+)
+}
+"
+`;
+
+exports[`solid full output snapshots > PropsMacroType 1`] = `
+"export interface PropsMacroTypeProps {
+  label: string;
+  size?: string;
+}
+export default function PropsMacroType(props: PropsMacroTypeProps)
+{
+return (
+<>
+  <h1>{props.label}</h1>
+  <p>{props.size}</p>
+</>
+)
+}
+"
+`;
+
 exports[`solid full output snapshots > SetupHandlers 1`] = `
 "import { createSignal, splitProps, For } from "solid-js";
 import type { JSX } from "solid-js";

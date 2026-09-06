@@ -22,6 +22,7 @@ export type PrimitiveName =
   | "defineSlot"
   | "defineModel"
   | "defineEmits"
+  | "defineProps"
   | "hasSlot";
 
 export interface PrimitiveUsage {

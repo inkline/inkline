@@ -327,6 +327,31 @@ const { color = "blue", size, ...__attrs } = props;
 "
 `;
 
+exports[`astro full output snapshots > PropsMacroObject 1`] = `
+"---
+type Props = { label: string; color?: string } & Record<string, any>
+const props = Astro.props as Props;
+const { label, color = "blue", ...__attrs } = props;
+---
+<span {...__attrs} class={[color, __attrs.class].filter(Boolean).join(" ")}>{label}</span>
+"
+`;
+
+exports[`astro full output snapshots > PropsMacroType 1`] = `
+"---
+export interface PropsMacroTypeProps {
+  label: string;
+  size?: string;
+}
+type Props = PropsMacroTypeProps
+const props = Astro.props as Props;
+const { label, size } = props;
+---
+<h1>{label}</h1>
+<p>{size}</p>
+"
+`;
+
 exports[`astro full output snapshots > SetupHandlers 1`] = `
 "---
 type Props = Record<string, any>

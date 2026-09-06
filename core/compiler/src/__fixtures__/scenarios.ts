@@ -220,4 +220,24 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   Diag_SlotOutsideRender: [
     { name: "triggers INK0069", asserts: { expectedDiagnostics: ["INK0069"] } },
   ],
+
+  // ── UXF-245: `defineProps` as a third props channel, plus macro discipline ──
+  // Both forms lower to the same `IRProp[]`, so the two fixtures below carry no assertions of their
+  // own — the conformance matrix compiles each for every target, and that is what proves the macro's
+  // props object stays the plain `props` the generated component reads through.
+  //
+  // The third form, a type argument naming an *imported* interface, lives under
+  // `02-parse/__fixtures__/` instead. Its output carries a relative import of a sibling module,
+  // which the per-fixture `tsc` sweep cannot resolve — it typechecks one fixture's output in
+  // isolation. Every cross-file fixture in this directory is quarantined in `typecheck-fixtures.ts`
+  // for that reason, and that list may only shrink.
+  PropsMacroType: [{ name: "declares props from a type argument", asserts: {} }],
+  PropsMacroObject: [{ name: "declares props from a declaration map", asserts: {} }],
+  Diag_PropsTwoChannels: [
+    { name: "triggers INK0047", asserts: { expectedDiagnostics: ["INK0047"] } },
+  ],
+  Diag_MacroDynamicArgument: [
+    { name: "triggers INK0048", asserts: { expectedDiagnostics: ["INK0048"] } },
+  ],
+  Diag_MacroNested: [{ name: "triggers INK0049", asserts: { expectedDiagnostics: ["INK0049"] } }],
 };
