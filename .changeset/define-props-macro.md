@@ -28,5 +28,7 @@ Three diagnostics come with it:
 - **INK0049** — a macro called outside the top level of the setup body. A nested macro still
   declares unconditionally while reading as if it did not.
 
-INK0048 and INK0049 apply to `defineEmits`, `defineSlot` and `hasSlot` as well. `defineModel` keeps
-reporting its own argument rule under INK0043 and is unchanged.
+Both new rules read the macro registry, so they cover the other macros too. INK0048 applies to
+`defineEmits`, `defineSlot` and `hasSlot`. INK0049 applies to `defineEmits`, `defineSlot` and
+`defineModel`; `hasSlot` is a query, not a declaration, so it stays legal anywhere in the setup body.
+`defineModel` keeps reporting its own argument rule under INK0043 and is unchanged.
