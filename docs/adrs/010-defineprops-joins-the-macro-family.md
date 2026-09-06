@@ -26,7 +26,7 @@ argument, the options and their receipts. What made the decision reasonable, com
   [ADR-008](./008-authoring-surface-is-inferred-from-options-alone.md) (setup-body statements are not
   an inference channel — physics, not tuning), and UXF-234 itself.
 
-The approval was given on UXF-241 as: *"The design is approved, going with void's recommendation."*
+The approval was given on UXF-241 as: _"The design is approved, going with void's recommendation."_
 
 > **Scope of that approval (labelled: inferred).** The sentence does not itself separate the three
 > questions the design asked in §8. It is recorded here as approving Option A and authorizing Phases
@@ -67,12 +67,12 @@ behind its own cut line. Phase 1 is the registry, with byte-identical fixture ou
 
 **7. Four shapes are closed. Do not re-spike them.**
 
-| Shape                                            | Closed by                                                                                   |
-| ------------------------------------------------ | ------------------------------------------------------------------------------------------- |
+| Shape                                            | Closed by                                                                                                |
+| ------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
 | Generated `.d.ts` sidecar / ambient declarations | [ADR-006](./006-inferred-component-authoring-types.md) receipts — module resolution makes it unreachable |
-| Type-only options key for models                 | UXF-234 / [#605](https://github.com/inkline/inkline/pull/605)                                |
-| Context-parameter models                         | [ADR-008](./008-authoring-surface-is-inferred-from-options-alone.md) decision 4              |
-| Models in the props interface                    | [ADR-008](./008-authoring-surface-is-inferred-from-options-alone.md) decision 3; INK0044 diagnoses it |
+| Type-only options key for models                 | UXF-234 / [#605](https://github.com/inkline/inkline/pull/605)                                            |
+| Context-parameter models                         | [ADR-008](./008-authoring-surface-is-inferred-from-options-alone.md) decision 4                          |
+| Models in the props interface                    | [ADR-008](./008-authoring-surface-is-inferred-from-options-alone.md) decision 3; INK0044 diagnoses it    |
 
 **8. Two questions are open, and this ADR decides neither.**
 
@@ -103,7 +103,7 @@ Recording these as open is the point. Neither is decided by approval of Phases 1
   still gets no type checking on `<IButton color=…>`, because `InkComponent`'s index signature
   stands. The road to it is Option D, and Option D is uncosted. Saying this plainly is the point:
   nobody should read "macro props" as "typed props".
-- **Two legal props grammars now exist** — until Phase 3 resolves house style, and *forever* if the
+- **Two legal props grammars now exist** — until Phase 3 resolves house style, and _forever_ if the
   annotation stays as the inference-compatible channel. That is a real consistency cost. It is
   priced against keeping the only TypeScript-visible channel alive, which is a deliberate trade, not
   an oversight.
@@ -121,7 +121,7 @@ Recording these as open is the point. Neither is decided by approval of Phases 1
   INK0046 → INK0050).
 - Corpus scale, verified on `24df22c1f`: 67 `defineComponent` files in `ui/components`, 24 of them
   carrying a `props: SomeType` annotation, 10 using `defineModel`.
-- *(Inferred, not measured.)* Macro-form fixtures added in Phase 2 enter the emitted-output
+- _(Inferred, not measured.)_ Macro-form fixtures added in Phase 2 enter the emitted-output
   typecheck sweep from [ADR-009](./009-emitted-output-is-typechecked-by-a-subprocess-tsc.md) on react
   and solid. New fixtures either pass that gate or need a quarantine entry with codes.
 
