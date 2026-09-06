@@ -17,10 +17,10 @@ import type { TsProgramArtifact } from "../01-program.ts";
 import { bindPrimitives, type BindingTable } from "./bind-primitives.ts";
 import { extractDeps, extractDepsFromFunctionBody } from "./deps.ts";
 import { toLoc } from "./loc.ts";
-import { PROPS_BINDING } from "./macros.ts";
 import { parseExpression } from "./jsx/index.ts";
 import { reportSpreadAttributes } from "./jsx/spread.ts";
 import { parseOptions, parsePropsFromParameterType } from "./options.ts";
+import { checkPropsBindingName } from "./props-binding.ts";
 import { findSites } from "./sites.ts";
 import { parseSetup } from "./setup.ts";
 
@@ -73,13 +73,10 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
           : getPropsTypeText(site.setupFn, sourceFile);
 
       // R5 — the props binding must be named `props`. For the options and annotation channels the
-      // binding is the setup parameter; the macro channel reports its own binding from `parse`. A
-      // binding pattern is a different rule (props must not be destructured) and is left alone here.
-      if (setupResult.props === undefined && baseProps.length > 0) {
-        const param = site.setupFn.parameters[0];
-        if (param && ts.isIdentifier(param.name) && param.name.text !== PROPS_BINDING) {
-          ctx.diagnostics.push("INK0074", toLoc(param.name, sourceFile), { name: param.name.text });
-        }
+      // binding is the setup parameter; the macro channel checks its own binding from `parse`.
+      const propsParam = site.setupFn.parameters[0];
+      if (setupResult.props === undefined && propsParam) {
+        checkPropsBindingName(propsParam.name, sourceFile, checker, ctx);
       }
 
       // `component.models` is the single source of truth for two-way models — each target surfaces the

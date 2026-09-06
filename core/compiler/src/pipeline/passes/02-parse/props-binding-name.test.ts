@@ -51,24 +51,72 @@ describe("a props binding not named `props`", () => {
   });
 
   // The headless components in `ui/components` call `defineProps<EmptyProps>()` only to name their
-  // props type, and bind the unread result to `_props` for the unused-variable rule. No prop is
-  // declared, so no read can reach the output — refusing the name here would fail four components
+  // props type, and bind the unread result to `_props` for the unused-variable rule. Nothing reads
+  // the binding, so nothing reaches the output — refusing the name here would fail four components
   // that emit nothing broken.
-  it("stays silent when the binding declares no props", async () => {
-    const source = `import { defineComponent, defineProps } from "@inkline/core";
-
+  it("stays silent when nothing reads the binding", async () => {
+    const codes = await compileSource(`
 export interface EmptyProps {}
 
 export default defineComponent(() => {
   const _props = defineProps<EmptyProps>();
   return <div />;
 });
-`;
-    const result = await compile(
-      { fileName: resolve(FIXTURES_DIR, "EmptyPropsBinding.ink.tsx"), source },
-      { targets: ALL_TARGETS },
-    );
+`);
 
-    expect(result.diagnostics.map((d) => d.code)).not.toContain("INK0074");
+    expect(codes).not.toContain("INK0074");
+  });
+
+  // The gate is a read of the binding, not a declared prop. A binding that declares no prop can
+  // still be read as a whole object, and that read reaches the output on all seven targets naming
+  // an identifier nothing declares — the same bug in a smaller cell.
+  it("reports a whole-object read of an empty props binding, both channels", async () => {
+    const macro = await compileSource(`
+export interface EmptyProps {}
+
+export default defineComponent(() => {
+  const _props = defineProps<EmptyProps>();
+  return <div title={String(_props)} />;
+});
+`);
+    const annotation = await compileSource(`
+export interface EmptyProps {}
+
+export default defineComponent((p: EmptyProps) => {
+  return <div title={String(p)} />;
+});
+`);
+
+    expect(macro).toContain("INK0074");
+    expect(annotation).toContain("INK0074");
+  });
+
+  // Symbol identity, not text, decides what counts as a read. A same-named local in a sibling
+  // component and a property of that name both resolve elsewhere, so neither may fire the rule.
+  it("does not count a same-named symbol elsewhere as a read", async () => {
+    const codes = await compileSource(`
+export interface EmptyProps {}
+
+export const Sibling = defineComponent(() => {
+  const p = { value: 1 };
+  return <div title={String(p.value)} />;
+});
+
+export default defineComponent((p: EmptyProps) => {
+  return <div title={String({ p: 1 }.p)} />;
+});
+`);
+
+    expect(codes).not.toContain("INK0074");
   });
 });
+
+async function compileSource(body: string): Promise<readonly string[]> {
+  const source = `import { defineComponent, defineProps } from "@inkline/core";\n${body}`;
+  const result = await compile(
+    { fileName: resolve(FIXTURES_DIR, "PropsBindingCase.ink.tsx"), source },
+    { targets: ALL_TARGETS },
+  );
+
+  return result.diagnostics.map((d) => d.code);
+}

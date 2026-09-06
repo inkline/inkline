@@ -24,7 +24,9 @@ parameter that carries the options or annotation channel's props. It is the four
 rule beside `INK0047`, and it enforces a rule the authoring guide already stated. Destructuring the
 binding stays a separate rule and is unaffected.
 
-The check is gated on a declared prop. A binding that declares no props cannot be read through into
-the output, so it stays legal — that keeps the headless components which call
-`defineProps<EmptyProps>()` only to name their props type, and bind the unread result to `_props`.
-No component or fixture changes behaviour.
+The check is gated on a **read** of the binding: only a read reaches the output, and a binding
+nothing reads is erased with its declaration. That keeps the headless components which call
+`defineProps<EmptyProps>()` only to name their props type and bind the unread result to `_props`,
+while still refusing `String(_props)` — a whole-object read of a binding that declares no prop,
+which reached the output on all seven targets under the narrower "declares a prop" gate. No
+component or fixture changes behaviour.
