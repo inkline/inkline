@@ -12,6 +12,9 @@ const props = defineProps<ButtonProps>(); // type form
 const props = defineProps({ color: "blue" }); // declaration-map form
 ```
 
+Name the binding `props`, as above: every target rewrites the props object under that fixed name, so
+a local under any other name reads through to the emitted component as an undeclared identifier.
+
 Both lower to the same `IRProp[]` the setup parameter's type annotation and the options object's
 `props` map already produce, so no target, lowering pass or IR node changes. The type argument is
 resolved with the checker, which covers an interface imported from another module. The declaration
