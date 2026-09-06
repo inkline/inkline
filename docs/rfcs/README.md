@@ -9,8 +9,8 @@ ADR that records its outcome.
 
 ## Index
 
-| #                                                        | Title                                          | Date       | Status  | Decided by                | Outcome                                                    |
-| -------------------------------------------------------- | ---------------------------------------------- | ---------- | ------- | ------------------------- | ---------------------------------------------------------- |
+| #                                                           | Title                                             | Date       | Status  | Decided by                | Outcome                                                      |
+| ----------------------------------------------------------- | ------------------------------------------------- | ---------- | ------- | ------------------------- | ------------------------------------------------------------ |
 | [0001](./0001-compiler-macros-for-the-authoring-surface.md) | Compiler macros for the Inkline authoring surface | 2026-08-31 | Decided | Project owner, 2026-08-31 | [ADR-010](../adrs/010-defineprops-joins-the-macro-family.md) |
 
 ## When an RFC is required
@@ -28,11 +28,11 @@ move on. Taste calls with no consequence gradient.
 
 ## Reversibility classes size the process
 
-| Class | Door                                            | Process                                             |
-| ----- | ----------------------------------------------- | --------------------------------------------------- |
-| 1     | Two-way. Flag it off, delete it, cheap to unwind | A paragraph in the issue. Recording is optional.     |
-| 2     | Expensive to reverse. Weeks to unwind           | RFC-light: the template below, 2-day comment window |
-| 3     | One-way. Public contracts, data semantics       | Full RFC, 3-day window, explicit owner sign-off      |
+| Class | Door                                             | Process                                             |
+| ----- | ------------------------------------------------ | --------------------------------------------------- |
+| 1     | Two-way. Flag it off, delete it, cheap to unwind | A paragraph in the issue. Recording is optional.    |
+| 2     | Expensive to reverse. Weeks to unwind            | RFC-light: the template below, 2-day comment window |
+| 3     | One-way. Public contracts, data semantics        | Full RFC, 3-day window, explicit owner sign-off     |
 
 Classify first. The class is itself reviewable. Most process pain comes from treating Class 1 like
 Class 3, or Class 3 like Class 1.
@@ -68,13 +68,15 @@ Author: · Reviewers: · Informed by:
 What hurts, who it hurts, and why now. Separate the constraints that are fixed from the
 constraints that are merely traditional.
 
-## Options considered   ← minimum two, each steelmanned
+## Options considered ← minimum two, each steelmanned
 
 ### Option A: <name>
+
 The case FOR, written so A's strongest advocate would sign it.
 How it works · what it costs · what it risks · who has done this before.
 
 ### Option B: <name>
+
 The same treatment. "Do nothing" is often a legitimate option, and keeping it
 honest keeps the urgency honest.
 

@@ -73,12 +73,12 @@ rules.
 
 **Grammar rules, uniform across all macros:**
 
-| Rule | Statement                                                                                                              |
-| ---- | ---------------------------------------------------------------------------------------------------------------------- |
-| R1   | A macro call is valid only as a top-level statement of the setup function body. Nested, conditional or looped → error.  |
-| R2   | Macro arguments must be statically analyzable. Anything dynamic → error. Today a non-literal `defineModel(name)` silently degrades. |
+| Rule | Statement                                                                                                                               |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| R1   | A macro call is valid only as a top-level statement of the setup function body. Nested, conditional or looped → error.                  |
+| R2   | Macro arguments must be statically analyzable. Anything dynamic → error. Today a non-literal `defineModel(name)` silently degrades.     |
 | R3   | One declaration channel per concern. A concern declared twice is an error, or a warning with a defined winner. Never silent precedence. |
-| R4   | Macros are erased. No `@inkline/core` import survives into any target's output. Already the invariant; a registry makes it checkable. |
+| R4   | Macros are erased. No `@inkline/core` import survives into any target's output. Already the invariant; a registry makes it checkable.   |
 
 **Implementation shape:** a small macro registry in `02-parse` — `{ name, parse(callSite, ctx) → IR
 contribution, rules }` — that `parseSetup` dispatches to, replacing the current per-macro `if`
@@ -113,7 +113,7 @@ export default defineComponent(() => {
 - **Author-facing types are exact.** `defineProps<T>(): T`; the object form returns `InferProps<D>`.
   Inside the body nothing changes versus the annotation form.
 - **Parent-facing types are unchanged** — untyped either way, because `InkComponent` still has the
-  index signature. Stated honestly: the annotation channel *could* one day feed `InkComponent<P>` if
+  index signature. Stated honestly: the annotation channel _could_ one day feed `InkComponent<P>` if
   that signature were removed. The macro channel never can, without Option D. This design keeps the
   annotation channel **legal** precisely so that door stays open.
 - **Channel exclusivity (R3):** a component uses exactly one of {macro, annotation,
@@ -147,7 +147,7 @@ surface types from the body macros. Parents get typed `<IButton color=…>`, inc
 event props.
 
 The honest case: this is the **only** route to parent-facing typing left after UXF-234, it is what
-Vue actually does, and macro-first authoring makes it *simpler* rather than harder — one grammar to
+Vue actually does, and macro-first authoring makes it _simpler_ rather than harder — one grammar to
 intercept instead of three channels.
 
 Against it: [ADR-006](../adrs/006-inferred-component-authoring-types.md)'s gate stands. **Option D's
@@ -156,23 +156,23 @@ an unpriced multi-week tail to a cheap grammar change. It stays a separately gat
 
 ### Considered and closed — do not re-spike
 
-| Shape                                          | Closed by                                              |
-| ---------------------------------------------- | ------------------------------------------------------ |
-| Generated `.d.ts` sidecar / ambient declarations | ADR-006 receipts. Module resolution makes it unreachable. |
+| Shape                                             | Closed by                                                      |
+| ------------------------------------------------- | -------------------------------------------------------------- |
+| Generated `.d.ts` sidecar / ambient declarations  | ADR-006 receipts. Module resolution makes it unreachable.      |
 | Type-only options key, author- or machine-written | UXF-234 / [#605](https://github.com/inkline/inkline/pull/605). |
-| Context-parameter models                        | ADR-008 decision 4. Declined by the owner on 2026-08-11. |
-| Props-interface models                          | ADR-008 decision 3. INK0044 forbids it mechanically.    |
+| Context-parameter models                          | ADR-008 decision 4. Declined by the owner on 2026-08-11.       |
+| Props-interface models                            | ADR-008 decision 3. INK0044 forbids it mechanically.           |
 
 ## Trade-off summary
 
-|                            | A — macro family                        | B — registry only              | C — A plus interception                  |
-| -------------------------- | --------------------------------------- | ------------------------------ | ---------------------------------------- |
-| Delivery cost              | Low. Two phases, additive, no IR change | Lowest. One refactor phase     | Unpriced. Multi-week tail, never costed  |
-| Operational cost           | One more stub, three diagnostics        | None beyond today              | A second toolchain to own and keep green |
-| Reversibility              | Two-way. Delete the macro               | Two-way. Revert the refactor   | One-way in practice. Editor integration  |
-| Risk, blast radius         | Low. Zero target change                 | Lowest                         | High. Touches the editor story           |
-| Delivers the request       | Yes                                     | No                             | Yes, and typed parents                   |
-| Improves parent-side types | No                                      | No                             | Yes — the only option that does          |
+|                            | A — macro family                        | B — registry only            | C — A plus interception                  |
+| -------------------------- | --------------------------------------- | ---------------------------- | ---------------------------------------- |
+| Delivery cost              | Low. Two phases, additive, no IR change | Lowest. One refactor phase   | Unpriced. Multi-week tail, never costed  |
+| Operational cost           | One more stub, three diagnostics        | None beyond today            | A second toolchain to own and keep green |
+| Reversibility              | Two-way. Delete the macro               | Two-way. Revert the refactor | One-way in practice. Editor integration  |
+| Risk, blast radius         | Low. Zero target change                 | Lowest                       | High. Touches the editor story           |
+| Delivers the request       | Yes                                     | No                           | Yes, and typed parents                   |
+| Improves parent-side types | No                                      | No                           | Yes — the only option that does          |
 
 ## Recommendation
 
@@ -180,11 +180,11 @@ an unpriced multi-week tail to a cheap grammar change. It stays a separately gat
 
 - **Phase 1 — macro registry.** Refactor, no behaviour change. Fold `defineModel`, `defineEmits`,
   `defineSlot` and `hasSlot` parsing into the registry. Existing tests hold; fixture outputs stay
-  byte-identical. *Cut line: if only this ships, the codebase is cleaner and nothing moved.*
+  byte-identical. _Cut line: if only this ships, the codebase is cleaner and nothing moved._
 - **Phase 2 — `defineProps` and macro discipline.** Both macro forms, plus INK0047 (multiple props
   channels), INK0048 (non-literal macro argument) and INK0049 (macro outside the setup top level).
   Core stub added, reusing `InferProps`. Additive — every existing component compiles unchanged.
-  *Cut line: the requested authoring surface exists; the corpus is untouched.*
+  _Cut line: the requested authoring surface exists; the corpus is untouched._
 - **Phase 3 — corpus migration.** A taste call for the owner. Spike the codemod on 5 components,
   measure, then migrate the 24 annotation files if it is mechanical. Fixtures are **not** migrated
   wholesale: both grammars stay covered deliberately, with macro-form fixtures added alongside.
@@ -200,14 +200,14 @@ the seam Option D would need anyway, so Phase 1 and 2 are not wasted work under 
 
 ## Open questions
 
-| # | Question                                                            | Owner         | Resolves by                                        |
-| - | ------------------------------------------------------------------- | ------------- | -------------------------------------------------- |
-| 1 | Phase 3 house style: migrate the corpus to macro-first, yes or no?   | Project owner | After the Phase 3 spike reports a number (UXF-247) |
-| 2 | Phase 4: fund the Option D costing spike, to get typed parent props? | Project owner | Unscheduled. The only remaining road to typed parents |
+| #   | Question                                                             | Owner         | Resolves by                                           |
+| --- | -------------------------------------------------------------------- | ------------- | ----------------------------------------------------- |
+| 1   | Phase 3 house style: migrate the corpus to macro-first, yes or no?   | Project owner | After the Phase 3 spike reports a number (UXF-247)    |
+| 2   | Phase 4: fund the Option D costing spike, to get typed parent props? | Project owner | Unscheduled. The only remaining road to typed parents |
 
 Both are open. Neither was decided on 2026-08-31, and neither blocks Phase 1.
 
-**Known risks carried into delivery** (design §7): checker resolution of *imported* type arguments at
+**Known risks carried into delivery** (design §7): checker resolution of _imported_ type arguments at
 the macro position — the same machinery as the annotation path, so low risk, but it must be verified
 with an imported-interface fixture in Phase 2. And INK0047's interaction with the `defineComponent`
 overloads: the `props?: never` guard needs a macro-aware equivalent at the type level, or the
