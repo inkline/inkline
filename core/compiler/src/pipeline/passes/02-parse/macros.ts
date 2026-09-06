@@ -21,6 +21,15 @@ import type { ParseBindingScope } from "./scope.ts";
 export type MacroConcern = "models" | "events" | "slots" | "props";
 
 /**
+ * The one name a component's props object may be bound to, whichever channel declares it.
+ *
+ * Every target emits and rewrites the props object under this name, and the rewriter matches it by
+ * text, so a binding under any other name is copied to the output unrewritten and names an
+ * identifier the generated component never declares. INK0074 refuses that binding.
+ */
+export const PROPS_BINDING = "props";
+
+/**
  * Who reports R2 for a macro.
  *
  * `registry` — the shared check in {@link checkMacroGrammar} reports INK0048.
@@ -298,8 +307,8 @@ const defineSlotMacro: MacroDefinition = {
  * parameter's annotation does, so targets that re-emit the props type keep doing so.
  *
  * The local the result is bound to is registered as the component's props object. Targets emit and
- * rewrite that object under the fixed name `props`, so — as with the annotation channel today — a
- * local under any other name reads through to the output unrewritten.
+ * rewrite that object under the fixed name `props`, so a local under any other name would read
+ * through to the output unrewritten — INK0074 refuses it.
  */
 const definePropsMacro: MacroDefinition = {
   name: "defineProps",
@@ -320,10 +329,17 @@ const definePropsMacro: MacroDefinition = {
     }
 
     if (ts.isIdentifier(decl.name)) {
+      // Gated on a declared prop, as the annotation channel's copy of this check is: with no props
+      // there is nothing to read through the binding, so no read can survive into the output. That
+      // keeps the headless components that call `defineProps<EmptyProps>()` only to name their
+      // props type — and bind the unread result to `_props` for the unused-variable rule — legal.
+      if (props.length > 0 && decl.name.text !== PROPS_BINDING) {
+        pass.diagnostics.push("INK0074", toLoc(decl.name, sourceFile), { name: decl.name.text });
+      }
       const id = pass.symbols.mint({
         componentId,
         kind: "prop",
-        name: "props",
+        name: PROPS_BINDING,
         loc: toLoc(decl, sourceFile),
       });
       registerBinding(decl.name, id, "prop");

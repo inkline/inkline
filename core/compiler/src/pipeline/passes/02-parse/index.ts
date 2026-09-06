@@ -17,6 +17,7 @@ import type { TsProgramArtifact } from "../01-program.ts";
 import { bindPrimitives, type BindingTable } from "./bind-primitives.ts";
 import { extractDeps, extractDepsFromFunctionBody } from "./deps.ts";
 import { toLoc } from "./loc.ts";
+import { PROPS_BINDING } from "./macros.ts";
 import { parseExpression } from "./jsx/index.ts";
 import { reportSpreadAttributes } from "./jsx/spread.ts";
 import { parseOptions, parsePropsFromParameterType } from "./options.ts";
@@ -70,6 +71,16 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         optionsResult?.props === undefined && setupResult.props !== undefined
           ? setupResult.propsTypeText
           : getPropsTypeText(site.setupFn, sourceFile);
+
+      // R5 — the props binding must be named `props`. For the options and annotation channels the
+      // binding is the setup parameter; the macro channel reports its own binding from `parse`. A
+      // binding pattern is a different rule (props must not be destructured) and is left alone here.
+      if (setupResult.props === undefined && baseProps.length > 0) {
+        const param = site.setupFn.parameters[0];
+        if (param && ts.isIdentifier(param.name) && param.name.text !== PROPS_BINDING) {
+          ctx.diagnostics.push("INK0074", toLoc(param.name, sourceFile), { name: param.name.text });
+        }
+      }
 
       // `component.models` is the single source of truth for two-way models — each target surfaces the
       // value prop + `update:<prop>` callback from it directly. We only warn (INK0044) when a model
