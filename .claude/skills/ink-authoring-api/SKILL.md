@@ -41,7 +41,7 @@ Macros — `defineProps` · `defineModel` · `defineEmits` · `defineSlot` · `h
 
 Props have three channels and a component uses exactly one: `defineProps<T>()` / `defineProps({…})` (**primary style**, ADR-010 decision 5), the setup parameter's type annotation (kept because it is the only channel plain `tsc` sees), or the options `props` map (per-prop defaults). Two of them is INK0047.
 
-**Name the `defineProps` binding `props`** — targets rewrite the props object under that fixed name, so any other name emits an undeclared identifier. Undiagnosed today. `defineProps` does **not** type the parent side; `<IButton colr="x" />` is still unchecked. The corpus under `ui/components` is still on the annotation form (house style is open, ADR-010 decision 8) — new components use the macro.
+**Name the `defineProps` binding `props`** — targets rewrite the props object under that fixed name, so any other name emits an undeclared identifier. Hard error INK0074, on the macro channel and the setup parameter alike; it fires on a **read** of the binding, matched on the symbol and not on the name, so an unread binding stays legal. `defineProps` does **not** type the parent side; `<IButton colr="x" />` is still unchecked. The corpus under `ui/components` is still on the annotation form (house style is open, ADR-010 decision 8) — new components use the macro.
 
 ## Primitives (all from `@inkline/core`)
 
@@ -72,7 +72,7 @@ Two-way: child declares `defineModel("value")`; parent binds `$bind:value={text}
 8. **`!!`, `Boolean()`, `??` sprinkled in JSX** that must stay lint-clean across 7 emitted outputs — prefer explicit conditionals; check the compiled output when in doubt.
 9. **Interface-extension styling props that the compiler can't enumerate.** The compiler only enumerates members of directly-named interfaces — when extending recipe prop types would collide (e.g. recipe `disabled: "true" | "false" | boolean` vs a native `boolean`), declare the styling props explicitly (see `input/styled/IInput.ink.tsx`).
 10. **Effects for derivation** — `createMemo` derives, `createEffect` is for real side effects only; an effect with no reactive reads runs once (INK0010).
-11. **Destructuring the props object** — reads stay `props.x` (Solid's reactive proxy; `requirePropsNotDestructured` enforces it on the output). A `defineProps` result bound to any name other than `props` is the same defect one step earlier, and nothing diagnoses it.
+11. **Destructuring the props object** — reads stay `props.x` (Solid's reactive proxy; `requirePropsNotDestructured` enforces it on the output). A props binding under any name other than `props` is the same defect one step earlier, and it is now hard error INK0074 — raised on a **read** of the binding, matched on the symbol and not on the name, for the `defineProps` macro and the setup parameter alike. An unread binding (`const _props = defineProps<EmptyProps>()` in a headless component) stays legal.
 
 ## Where the truth lives
 
