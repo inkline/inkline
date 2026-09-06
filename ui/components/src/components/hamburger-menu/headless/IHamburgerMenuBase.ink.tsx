@@ -1,4 +1,4 @@
-import { defineComponent, defineModel } from "@inkline/core";
+import { defineComponent, defineProps, defineModel } from "@inkline/core";
 
 export interface HamburgerMenuBaseProps {
   /** Accessible name for the icon-only toggle; sets `aria-label`. */
@@ -9,7 +9,9 @@ export interface HamburgerMenuBaseProps {
   disabled?: boolean;
 }
 
-export default defineComponent({ meta: { headless: true } }, (props: HamburgerMenuBaseProps) => {
+export default defineComponent({ meta: { headless: true } }, () => {
+  const props = defineProps<HamburgerMenuBaseProps>();
+
   // Two-way disclosure state: an `open` prop + paired `update:open` event, so a parent can `$bind:open`.
   const [open, setOpen] = defineModel<boolean>("open");
 

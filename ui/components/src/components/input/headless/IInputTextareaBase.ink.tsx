@@ -1,4 +1,4 @@
-import { defineComponent, defineModel } from "@inkline/core";
+import { defineComponent, defineProps, defineModel } from "@inkline/core";
 
 export interface InputTextareaBaseProps {
   /** Id of the native control. */
@@ -16,7 +16,9 @@ export interface InputTextareaBaseProps {
 // The native `<textarea>` control: a single static root, so it host-extracts to
 // `textarea[ink-input-textarea-base]`. The styled Input renders this instead of IInputControlBase
 // when `type === "textarea"`.
-export default defineComponent({ meta: { headless: true } }, (props: InputTextareaBaseProps) => {
+export default defineComponent({ meta: { headless: true } }, () => {
+  const props = defineProps<InputTextareaBaseProps>();
+
   // Two-way-bindable value: a `value` prop + an `update:value` event, so a parent can `$bind:value`.
   const [value, setValue] = defineModel<string>("value");
 

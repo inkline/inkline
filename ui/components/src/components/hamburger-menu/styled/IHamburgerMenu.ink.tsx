@@ -1,4 +1,4 @@
-import { defineComponent, defineModel, createMemo } from "@inkline/core";
+import { defineComponent, defineProps, defineModel, createMemo } from "@inkline/core";
 import IHamburgerMenuBase, {
   type HamburgerMenuBaseProps,
 } from "../headless/IHamburgerMenuBase.ink.tsx";
@@ -19,7 +19,9 @@ export interface HamburgerMenuProps extends HamburgerMenuBaseProps {
   animation?: HamburgerMenuStylingProps["animation"];
 }
 
-export default defineComponent({ meta: { headless: true } }, (props: HamburgerMenuProps) => {
+export default defineComponent({ meta: { headless: true } }, () => {
+  const props = defineProps<HamburgerMenuProps>();
+
   const [open, _setOpen] = defineModel<boolean>("open");
 
   const className = createMemo(() =>

@@ -1,4 +1,4 @@
-import { defineComponent, For, defineModel, createMemo } from "@inkline/core";
+import { defineComponent, defineProps, For, defineModel, createMemo } from "@inkline/core";
 import IRadioGroupBase, { type RadioGroupBaseProps } from "../headless/IRadioGroupBase.ink.tsx";
 import IRadioBase from "../headless/IRadioBase.ink.tsx";
 import IRadioFieldBase from "../headless/IRadioFieldBase.ink.tsx";
@@ -49,7 +49,9 @@ export interface RadioGroupProps extends RadioGroupBaseProps {
  * map to the styleframe recipe axes. Two-way `value` uses the binding idiom (`$bind:value`); on the
  * static Astro target it lowers to one-way (INK0045).
  */
-export default defineComponent({ meta: { headless: true } }, (props: RadioGroupProps) => {
+export default defineComponent({ meta: { headless: true } }, () => {
+  const props = defineProps<RadioGroupProps>();
+
   const [value, setValue] = defineModel<string>("value");
 
   const items = createMemo(() => props.options ?? []);

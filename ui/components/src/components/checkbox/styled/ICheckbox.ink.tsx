@@ -1,4 +1,4 @@
-import { defineComponent, Slot, defineModel, createMemo } from "@inkline/core";
+import { defineComponent, defineProps, Slot, defineModel, createMemo } from "@inkline/core";
 import ICheckboxBase from "../headless/ICheckboxBase.ink.tsx";
 import ICheckboxControlBase, {
   type CheckboxControlBaseProps,
@@ -29,30 +29,29 @@ export interface CheckboxProps extends CheckboxControlBaseProps {
  * a prop (the control applies it as a DOM property), as is `readonly` (the control expresses it with
  * `aria-readonly` and a click guard). The checked accent is the theme primary.
  */
-export default defineComponent(
-  { meta: { headless: true }, slots: { default: {} } },
-  (props: CheckboxProps) => {
-    const [checked, _setChecked] = defineModel<boolean>("checked");
+export default defineComponent({ meta: { headless: true }, slots: { default: {} } }, () => {
+  const props = defineProps<CheckboxProps>();
 
-    const wrapperClassName = createMemo(() => checkboxRecipe({ size: props.size }));
-    const fieldClassName = createMemo(() =>
-      checkboxFieldRecipe({ color: props.color, size: props.size }),
-    );
+  const [checked, _setChecked] = defineModel<boolean>("checked");
 
-    return (
-      <ICheckboxBase class={wrapperClassName()}>
-        <ICheckboxControlBase
-          class={fieldClassName()}
-          id={props.id}
-          name={props.name}
-          disabled={props.disabled}
-          required={props.required}
-          readonly={props.readonly}
-          indeterminate={props.indeterminate}
-          $bind:checked={checked}
-        />
-        <Slot>{props.label}</Slot>
-      </ICheckboxBase>
-    );
-  },
-);
+  const wrapperClassName = createMemo(() => checkboxRecipe({ size: props.size }));
+  const fieldClassName = createMemo(() =>
+    checkboxFieldRecipe({ color: props.color, size: props.size }),
+  );
+
+  return (
+    <ICheckboxBase class={wrapperClassName()}>
+      <ICheckboxControlBase
+        class={fieldClassName()}
+        id={props.id}
+        name={props.name}
+        disabled={props.disabled}
+        required={props.required}
+        readonly={props.readonly}
+        indeterminate={props.indeterminate}
+        $bind:checked={checked}
+      />
+      <Slot>{props.label}</Slot>
+    </ICheckboxBase>
+  );
+});

@@ -1,4 +1,4 @@
-import { defineComponent, defineModel, createRef, createEffect } from "@inkline/core";
+import { defineComponent, defineProps, defineModel, createRef, createEffect } from "@inkline/core";
 
 export interface CheckboxControlBaseProps {
   /** Id of the native control. */
@@ -40,7 +40,9 @@ export interface CheckboxControlBaseProps {
 // collapses to an empty binding there). Correct on all seven targets: React's host-only attribute
 // canonicalisation (INK-26 / #515) forwards the `readonly` prop verbatim across the styled→headless
 // boundary, so the value reaches this control everywhere.
-export default defineComponent({ meta: { headless: true } }, (props: CheckboxControlBaseProps) => {
+export default defineComponent({ meta: { headless: true } }, () => {
+  const props = defineProps<CheckboxControlBaseProps>();
+
   const [checked, setChecked] = defineModel<boolean>("checked");
   const controlRef = createRef<HTMLInputElement>();
 

@@ -1,4 +1,4 @@
-import { defineComponent, Slot, defineModel, createMemo } from "@inkline/core";
+import { defineComponent, defineProps, Slot, defineModel, createMemo } from "@inkline/core";
 import ISwitchBase from "../headless/ISwitchBase.ink.tsx";
 import ISwitchControlBase, {
   type SwitchControlBaseProps,
@@ -29,30 +29,29 @@ export interface SwitchProps extends SwitchControlBaseProps {
  * control via `$bind:checked`; the label text (default slot or `label` prop) supplies the accessible
  * name. Space toggles natively and Enter is handled explicitly.
  */
-export default defineComponent(
-  { meta: { headless: true }, slots: { default: {} } },
-  (props: SwitchProps) => {
-    const [checked, _setChecked] = defineModel<boolean>("checked");
+export default defineComponent({ meta: { headless: true }, slots: { default: {} } }, () => {
+  const props = defineProps<SwitchProps>();
 
-    const shellClassName = createMemo(() => switchRecipe({ size: props.size }));
-    const fieldClassName = createMemo(() =>
-      switchFieldRecipe({ color: props.color, size: props.size }),
-    );
+  const [checked, _setChecked] = defineModel<boolean>("checked");
 
-    return (
-      <ISwitchBase class={shellClassName()}>
-        <ISwitchControlBase
-          class={fieldClassName()}
-          id={props.id}
-          name={props.name}
-          $bind:checked={checked}
-          disabled={props.disabled}
-          readonly={props.readonly}
-        />
-        <ISwitchLabelBase>
-          <Slot>{props.label}</Slot>
-        </ISwitchLabelBase>
-      </ISwitchBase>
-    );
-  },
-);
+  const shellClassName = createMemo(() => switchRecipe({ size: props.size }));
+  const fieldClassName = createMemo(() =>
+    switchFieldRecipe({ color: props.color, size: props.size }),
+  );
+
+  return (
+    <ISwitchBase class={shellClassName()}>
+      <ISwitchControlBase
+        class={fieldClassName()}
+        id={props.id}
+        name={props.name}
+        $bind:checked={checked}
+        disabled={props.disabled}
+        readonly={props.readonly}
+      />
+      <ISwitchLabelBase>
+        <Slot>{props.label}</Slot>
+      </ISwitchLabelBase>
+    </ISwitchBase>
+  );
+});

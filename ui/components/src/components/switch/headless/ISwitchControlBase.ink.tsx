@@ -1,4 +1,4 @@
-import { defineComponent, defineModel } from "@inkline/core";
+import { defineComponent, defineProps, defineModel } from "@inkline/core";
 
 export interface SwitchControlBaseProps {
   /** Id of the native control. */
@@ -19,7 +19,9 @@ export interface SwitchControlBaseProps {
 // A single static root, so it host-extracts to `input[ink-switch-control-base]`. `role="switch"` +
 // `aria-checked` announce it as a switch; the browser toggles on Space natively, and Enter is
 // handled explicitly to complete the APG switch keyboard map.
-export default defineComponent({ meta: { headless: true } }, (props: SwitchControlBaseProps) => {
+export default defineComponent({ meta: { headless: true } }, () => {
+  const props = defineProps<SwitchControlBaseProps>();
+
   // Two-way-bindable on/off state: a `checked` prop + an `update:checked` event, so a parent can
   // `$bind:checked`.
   const [checked, setChecked] = defineModel<boolean>("checked");
