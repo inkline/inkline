@@ -59,8 +59,8 @@ export default defineComponent(
 
 Four things to notice:
 
-1. **`defineComponent` is the sole entry point.** It accepts either `(setup)` or `(options, setup)`. Use the options form when you need to declare slots, events, meta, or prop metadata.
-2. **Props are typed as a TypeScript parameter type** (`props: BadgeBaseProps`). The compiler reads the type to generate per-framework prop declarations.
+1. **`defineComponent` is the sole entry point.** It accepts either `(setup)` or `(options, setup)`. Use the options form when you need to declare slots, events, or meta.
+2. **This component declares its props with the setup parameter's type annotation** (`props: BadgeBaseProps`). That is one of three supported channels, and not the primary one — see "Declaring props" below.
 3. **`<Slot>` (imported from `@inkline/core`) renders a declared slot.** An unnamed `<Slot>` renders the default slot (the lowercase `<slot>` JSX intrinsic works too); `<Slot name="prefix" />` renders a named one. Declare each slot in the options object first. See [`core/compiler/README.md`](../core/compiler/README.md) → "Slots".
 4. **`meta: { headless: true }` marks a behavior-only component.** On Angular this makes the compiler emit an attribute-selector host component (and lets a styled wrapper collapse onto it) so no wrapper element ships — see [architecture.md](./architecture.md) → "Cross-framework strategy". The other six targets are unaffected. The headless root must be a single static element; a fragment or conditional root keeps the element-selector wrapper and emits `INK0111`.
 
@@ -115,12 +115,63 @@ Four things it deliberately does **not** catch, so you know where you are on you
 
 The full rationale, including why the surface is borrowed rather than written by hand and why it is vendored rather than depended on, is [ADR-003](./adrs/003-typed-jsx-intrinsic-elements-from-a-vendored-upstream.md).
 
+## Declaring props
+
+A component declares its props through exactly **one** of three channels:
+
+| Channel                                   | Use it when                                                                               |
+| ----------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `defineProps<T>()` / `defineProps({ … })` | Default. The declaration sits at the call site, with nothing to register anywhere else.   |
+| The setup parameter's type annotation     | A tool outside the compiler has to read the props type off the setup signature.           |
+| The options object's `props` map          | You are already passing an options object and want its per-prop defaults in the same map. |
+
+Declaring through two of them is `INK0047`, an error. A mismatched pair compiles clean and emits props the body never reads, so the compiler refuses the pair instead of picking a winner.
+
+`defineProps` is the documented primary style ([ADR-010](./adrs/010-defineprops-joins-the-macro-family.md), decision 5):
+
+```tsx
+import { defineComponent, defineProps, Slot } from "@inkline/core";
+
+export interface BadgeProps {
+  label?: string;
+}
+
+export default defineComponent({ slots: { default: {} }, meta: { headless: true } }, () => {
+  const props = defineProps<BadgeProps>();
+  return (
+    <div class="badge">
+      <Slot>{props.label}</Slot>
+    </div>
+  );
+});
+```
+
+The type argument may be an inline object type, or an `interface` / `type`, including one imported from another module. `defineProps({ … })` takes the same declaration map the options object's `props` key takes, which is the form to use when a prop needs a declared default.
+
+Two rules apply to the binding:
+
+- **Name it `props`.** Every target emits and rewrites the props object under that fixed name, so a local under any other name reads through to the output unrewritten — the emitted component then references an undeclared identifier. The compiler does not diagnose this yet.
+- **Never destructure it.** Solid passes props as a reactive proxy; destructuring snapshots the value once and freezes it. The Solid target enforces this with the `requirePropsNotDestructured` conformance invariant.
+
+**`defineProps` does not improve parent-side typing.** A consumer still gets no checking on `<IButton colr="light" />` — the same limitation listed under "Markup is type-checked" above. The road to typed parent props is Option D in [ADR-010](./adrs/010-defineprops-joins-the-macro-family.md), and it is uncosted.
+
+**The corpus has not been migrated.** Every component under `ui/components/` still uses the setup-parameter annotation, because the house-style question is open (ADR-010, decision 8). Both forms are legal; new components should prefer `defineProps`.
+
+### Macro grammar
+
+`defineProps`, `defineModel`, `defineEmits`, `defineSlot` and `hasSlot` are macros: the compiler reads them at build time and erases them. Three rules an author can hit:
+
+- **Call a macro at the top level of the setup body** — never in a condition, a loop, or a nested function. A macro is erased, so a nested call still declares unconditionally while reading as if it did not (`INK0049`). `hasSlot` is exempt: it is a query, not a declaration, so it is legal anywhere in the setup body.
+- **Pass statically analyzable arguments** — a string literal, an array of string literals, or an object literal (`INK0048`). `defineModel` reports its own argument rule under `INK0043`.
+- **One declaration channel per concern** — props are `INK0047`, an error; an event name declared in both `defineEmits` and the options `events` map is `INK0046`, a warning.
+
 ## Authoring primitives
 
 The full primitive set is documented in [`core/compiler/README.md`](../core/compiler/README.md). Quick reference:
 
 | Need                   | Primitive                       | From            |
 | ---------------------- | ------------------------------- | --------------- |
+| Props                  | `defineProps<T>()`              | `@inkline/core` |
 | Reactive state         | `createSignal(initial)`         | `@inkline/core` |
 | Two-way model          | `defineModel("value")`          | `@inkline/core` |
 | Custom events          | `defineEmits([...]) → emit`     | `@inkline/core` |

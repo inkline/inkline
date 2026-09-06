@@ -1,6 +1,6 @@
 ---
 name: ink-authoring-api
-description: The .ink.tsx authoring API — defineComponent, signals, control flow, slots, two-way binding, events — plus per-target rewrite behavior and the anti-patterns that reviewers reject on sight. Use whenever writing or reviewing .ink.tsx code.
+description: The .ink.tsx authoring API — defineComponent, the compiler macros (defineProps, defineModel, defineEmits, defineSlot, hasSlot), signals, control flow, slots, two-way binding, events — plus per-target rewrite behavior and the anti-patterns that reviewers reject on sight. Use whenever writing or reviewing .ink.tsx code.
 ---
 
 # The `.ink.tsx` authoring API
@@ -10,7 +10,7 @@ description: The .ink.tsx authoring API — defineComponent, signals, control fl
 Components are authored once against `@inkline/core` and compiled to 7 frameworks. **`@inkline/core` is authoring-time stubs** — identity functions and no-ops that exist so code type-checks and produces predictable IR. The compiler removes every reference during emission; no core runtime ships. Never add real reactive/DOM behavior to the stubs — real behavior comes from the per-framework code the compiler emits.
 
 ```tsx
-import { defineComponent, createSignal, createMemo, Show, Slot } from "@inkline/core";
+import { defineComponent, defineProps, createSignal, createMemo, Show, Slot } from "@inkline/core";
 
 export interface ButtonBaseProps {
   label?: string;
@@ -19,8 +19,8 @@ export interface ButtonBaseProps {
 
 export default defineComponent(
   { meta: { headless: true }, slots: { default: {} } }, // options (slots, events, meta, name)
-  (props: ButtonBaseProps) => {
-    // setup — props via the TS parameter type
+  () => {
+    const props = defineProps<ButtonBaseProps>(); // props — macro form, the primary style
     const [count, setCount] = createSignal(0);
     const doubled = createMemo(() => count() * 2);
     return (
@@ -35,9 +35,17 @@ export default defineComponent(
 );
 ```
 
+## Macros and the props channel
+
+Macros — `defineProps` · `defineModel` · `defineEmits` · `defineSlot` · `hasSlot` — are read at build time and erased. Recognized **by binding, not by name**, so an alias still works and a same-named local function is left alone. Grammar: **top level of the setup body only** (INK0049; `hasSlot` is exempt — it is a query), **statically analyzable arguments only** (INK0048; `defineModel` reports INK0043 instead), **one declaration channel per concern** (props INK0047 = error; an event name in both channels is INK0046 = warning, `defineEmits` wins), **always erased**.
+
+Props have three channels and a component uses exactly one: `defineProps<T>()` / `defineProps({…})` (**primary style**, ADR-010 decision 5), the setup parameter's type annotation (kept because it is the only channel plain `tsc` sees), or the options `props` map (per-prop defaults). Two of them is INK0047.
+
+**Name the `defineProps` binding `props`** — targets rewrite the props object under that fixed name, so any other name emits an undeclared identifier. Undiagnosed today. `defineProps` does **not** type the parent side; `<IButton colr="x" />` is still unchecked. The corpus under `ui/components` is still on the annotation form (house style is open, ADR-010 decision 8) — new components use the macro.
+
 ## Primitives (all from `@inkline/core`)
 
-`createSignal(initial) → [get, set]` · `createMemo(fn)` · `createEffect(fn)` (may return cleanup) · `createRef()` (`.current`, element refs only) · `onMount` / `onCleanup` · `batch` / `untrack` · `defineModel(name = "value")` (two-way prop + `update:<name>` event, returns a signal tuple) · `defineEmits<E>() → emit` (custom events) · `defineSlot` / `hasSlot(name?)` · `createResource` (deferred — no runtime yet).
+`createSignal(initial) → [get, set]` · `createMemo(fn)` · `createEffect(fn)` (may return cleanup) · `createRef()` (`.current`, element refs only) · `onMount` / `onCleanup` · `batch` / `untrack` · `defineProps<T>()` / `defineProps({…})` (props) · `defineModel(name = "value")` (two-way prop + `update:<name>` event, returns a signal tuple) · `defineEmits<E>() → emit` (custom events) · `defineSlot` / `hasSlot(name?)` · `createResource` (deferred — no runtime yet).
 
 Control flow is JSX, lowered in compiler pass P3: `<Show when fallback>` · `<For each key>` (**key is required** — INK0050 without it) · `<Switch>`/`<Match>` · `<Slot name?>` with fallback children (default slot: the lowercase `<slot>` intrinsic also works) · `<Transition>` (wraps one conditional element).
 
@@ -64,6 +72,7 @@ Two-way: child declares `defineModel("value")`; parent binds `$bind:value={text}
 8. **`!!`, `Boolean()`, `??` sprinkled in JSX** that must stay lint-clean across 7 emitted outputs — prefer explicit conditionals; check the compiled output when in doubt.
 9. **Interface-extension styling props that the compiler can't enumerate.** The compiler only enumerates members of directly-named interfaces — when extending recipe prop types would collide (e.g. recipe `disabled: "true" | "false" | boolean` vs a native `boolean`), declare the styling props explicitly (see `input/styled/IInput.ink.tsx`).
 10. **Effects for derivation** — `createMemo` derives, `createEffect` is for real side effects only; an effect with no reactive reads runs once (INK0010).
+11. **Destructuring the props object** — reads stay `props.x` (Solid's reactive proxy; `requirePropsNotDestructured` enforces it on the output). A `defineProps` result bound to any name other than `props` is the same defect one step earlier, and nothing diagnoses it.
 
 ## Where the truth lives
 

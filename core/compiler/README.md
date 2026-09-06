@@ -88,6 +88,7 @@ Components are authored in `.ink.tsx` files using a signal-based API imported fr
 | `untrack(() => expr)`         | Reads a signal without tracking it as a dependency.                 |
 | `batch(() => { ... })`        | Batches multiple signal updates into one reaction cycle.            |
 | `hasSlot(name?)`              | Whether a (named, or default) slot was filled. See [Slots](#slots). |
+| `defineProps<T>()`            | Declares the component's props. See [Props](#props).                |
 | `defineComponent(setup)`      | Wraps a setup function into a component definition.                 |
 
 ### Reactive Reads
@@ -107,15 +108,49 @@ The compiler tracks which signals each expression reads and maps them to the tar
 | `count()`     | `count`       | `count()`     | `count`           | `count`     |
 | `setCount(x)` | `setCount(x)` | `setCount(x)` | `count.value = x` | `count = x` |
 
+### Macros
+
+`defineProps`, `defineModel`, `defineEmits`, `defineSlot` and `hasSlot` are **macros**: identifiers
+imported from `@inkline/core` that the compiler reads at build time and then erases. They are
+recognized by binding, not by name — a macro imported under an alias is still recognized, and a local
+function that happens to share a macro's name is left alone.
+
+Four rules apply to every macro:
+
+1. **Call a macro at the top level of the setup body** — never inside a condition, a loop, or a
+   nested function. A macro is erased at build time, so a nested call still declares unconditionally
+   while reading as if it did not. Outside the top level is `INK0049`. `hasSlot` is the exception: it
+   is a query, not a declaration, so it is legal anywhere in the setup body.
+2. **Pass arguments the compiler can read statically** — a string literal, an array of string
+   literals, or an object literal. A value computed at runtime is gone before anything can read it.
+   Anything else is `INK0048`. (`defineModel` reports its own argument rule under `INK0043` instead.)
+3. **Declare each concern through one channel**, never silent precedence. Props come from
+   `defineProps`, the setup parameter's annotation, or the options `props` map — two of them is
+   `INK0047`, an error. Events come from `defineEmits` or the options `events` map — one name in both
+   is `INK0046`, a warning, and the `defineEmits` declaration wins.
+4. **Macros are erased.** No `@inkline/core` import survives into the emitted component.
+
 ### Props
 
-Props are declared by annotating the setup function's first parameter. The compiler reads that
-annotation — an inline type literal, or an `interface` / `type` in scope — and emits each target's
-native props declaration. Properties marked optional (`?`) are optional in the output; the rest are
-required.
+A component declares its props through exactly **one** of three channels: the `defineProps` macro,
+the setup function's first-parameter type annotation, or the options object's `props` map. All three
+produce the same declaration for every target. Using two of them is `INK0047`, an error — a
+mismatched pair compiles clean and emits props the body never reads.
+
+`defineProps` is the primary style: it declares the props at the call site, with nothing to register
+anywhere else.
+
+#### The type form
+
+`defineProps<T>()` takes the props type as a type argument — an inline object type, or an `interface`
+/ `type`, including one imported from another module. Properties marked optional (`?`) are optional
+in the output; the rest are required.
 
 ```tsx
-export default defineComponent((props: { label: string; disabled?: boolean }) => {
+import { defineComponent, defineProps } from "@inkline/core";
+
+export default defineComponent(() => {
+  const props = defineProps<{ label: string; disabled?: boolean }>();
   return <button disabled={props.disabled}>{props.label}</button>;
 });
 ```
@@ -124,13 +159,16 @@ Beyond one or two props, declare a named and exported interface so consumers can
 other components can extend it:
 
 ```tsx
+import { defineComponent, defineProps } from "@inkline/core";
+
 export interface ButtonProps {
   label?: string;
   type?: "button" | "submit" | "reset";
   disabled?: boolean;
 }
 
-export default defineComponent((props: ButtonProps) => {
+export default defineComponent(() => {
+  const props = defineProps<ButtonProps>();
   return (
     <button type={props.type ?? "button"} disabled={props.disabled}>
       {props.label}
@@ -140,23 +178,76 @@ export default defineComponent((props: ButtonProps) => {
 ```
 
 This form has no default-value declaration. Apply the default where the prop is read
-(`props.type ?? "button"` above) — one expression that compiles to every target. This is the form
-every component in [`ui/components`](../../ui/components/) uses.
+(`props.type ?? "button"` above) — one expression that compiles to every target.
 
-**Never destructure the props object when authoring.** Reads must stay `props.x`: Solid passes props
-as a reactive proxy, so destructuring it in your setup body snapshots the value once and freezes it.
-The Solid target enforces this on its output with the `requirePropsNotDestructured` conformance
-invariant.
+#### The declaration-map form
 
-**Options object** (for declared defaults):
-
-An options object passed as the first argument declares props with per-prop types, defaults, and a
-required flag. Types are inferred from a constructor reference (`Number` → `number`) or from the
-default value's literal type (`"blue"` → `string`). Each target applies the default in its own
+`defineProps({ … })` takes the map the options object's `props` key takes: per-prop types, defaults,
+and a required flag. Types are inferred from a constructor reference (`Number` → `number`) or from
+the default value's literal type (`"blue"` → `string`). Each target applies the default in its own
 idiom — `withDefaults(defineProps<…>(), …)` on Vue, `mergeProps` on Solid, a destructured default on
 React/Svelte/Qwik/Astro, a seeded signal input (`input<string>('blue')`) on Angular.
 
 ```tsx
+import { defineComponent, defineProps } from "@inkline/core";
+
+export default defineComponent(() => {
+  const props = defineProps({
+    color: "blue", // default value, optional
+    size: Number, // required, no default
+    count: { type: Number, required: true, default: 0 },
+  });
+  return <div style={`color: ${props.color}`}>{props.size}</div>;
+});
+```
+
+Use the type form when the props are a type consumers may want to import or extend; use the
+declaration-map form when a prop needs a declared default.
+
+#### Two rules for the binding
+
+**Name the binding `props`.** Every target emits and rewrites the props object under that fixed name,
+so a local under any other name reads through to the output unrewritten: `const p = defineProps<T>()`
+compiles, and the emitted component then references an undeclared `p`. The compiler does not
+diagnose this yet.
+
+**Never destructure it.** Reads must stay `props.x`: Solid passes props as a reactive proxy, so
+destructuring in the setup body snapshots the value once and freezes it. The Solid target enforces
+this on its output with the `requirePropsNotDestructured` conformance invariant.
+
+`defineProps` declares props for the component's **own** body. It does not type the parent side — a
+consumer still gets no checking on `<IButton colr="light" />`. See
+[ADR-010](../../docs/adrs/010-defineprops-joins-the-macro-family.md) for why.
+
+#### The setup-parameter annotation
+
+Annotating the setup function's first parameter declares the same props, and stays supported:
+
+```tsx
+import { defineComponent } from "@inkline/core";
+
+export interface ButtonProps {
+  label?: string;
+  disabled?: boolean;
+}
+
+export default defineComponent((props: ButtonProps) => {
+  return <button disabled={props.disabled}>{props.label}</button>;
+});
+```
+
+It is the only channel plain TypeScript can see, which is why it is kept. It is also the form every
+component in [`ui/components`](../../ui/components/) currently uses. Reach for it when a tool outside
+the compiler has to read the props type from the setup signature; reach for `defineProps` otherwise.
+
+#### The options `props` map
+
+The options object declares props under its `props` key, in the same map the macro's declaration-map
+form takes:
+
+```tsx
+import { defineComponent } from "@inkline/core";
+
 export default defineComponent(
   {
     props: {
@@ -180,22 +271,30 @@ export default defineComponent(
 
 `defineComponent` infers the setup parameter's type from the `props` map, so **leave the setup
 parameter unannotated** with this form — `props.color` is `string | undefined` (optional, defaulted)
-and `props.size` is `number` (required), matching what each target emits. A `props` map wins over a
-setup-parameter annotation in the parser, so an annotation that _disagrees_ with the map is rejected at
-the type level rather than silently ignored. One that agrees still compiles, but it is redundant and
-drifts the moment the map changes — declare props in one place or the other, never both.
+and `props.size` is `number` (required), matching what each target emits. An annotation next to a
+`props` map is a second channel, so the pair is `INK0047`. TypeScript rejects it too when the two
+disagree — the `props?: never` overload guard — but an annotation that _agrees_ with the map still
+type-checks, and the compiler is what reports it.
 
 Everything that is _not_ a prop also goes in the options object — `slots`, `events`, `style`,
-`runtime`, `name`, and `meta`. Those keys do not drive prop inference, so they can be combined with a
-typed setup parameter:
+`runtime`, `name`, and `meta`. Those keys do not drive prop inference, so an options object without a
+`props` map combines with either of the other two channels:
 
 ```tsx
-export default defineComponent(
-  { slots: { default: {} }, meta: { headless: true } },
-  (props: ButtonProps) => {
-    return <button disabled={props.disabled}>{props.label}</button>;
-  },
-);
+import { defineComponent, defineProps, Slot } from "@inkline/core";
+
+export interface BadgeProps {
+  label?: string;
+}
+
+export default defineComponent({ slots: { default: {} }, meta: { headless: true } }, () => {
+  const props = defineProps<BadgeProps>();
+  return (
+    <div class="badge">
+      <Slot>{props.label}</Slot>
+    </div>
+  );
+});
 ```
 
 ### Two-way binding and custom events
