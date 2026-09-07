@@ -358,4 +358,87 @@ describe("parsePass", () => {
       expect(diagnostics.filter((d) => d.code === "INK0046")).toHaveLength(1);
     });
   });
+
+  // The slots counterpart of the block above. Slots were the last of the three channels still
+  // concatenating, so a name declared in both places registered twice and every target emitted it
+  // twice.
+  describe("slot declaration merge", () => {
+    async function parse(source: string) {
+      const ctx = makeCtx();
+      const artifact = await programPass.run({ fileName: "Slots.ink.tsx", source }, ctx);
+      const module = parsePass.run(artifact, ctx);
+      const resolved = module instanceof Promise ? await module : module;
+      return { component: resolved.components[0]!, diagnostics: ctx.diagnostics.freeze() };
+    }
+
+    const collision = `
+      import { defineComponent, defineSlot, Slot } from "@inkline/core";
+      export default defineComponent({ slots: { header: { required: true }, footer: {} } }, () => {
+        defineSlot("header");
+        return <div><Slot name="header" /><Slot name="footer" /></div>;
+      });
+    `;
+
+    it("collapses a name declared in both options and defineSlot into one slot", async () => {
+      const { component } = await parse(collision);
+      expect(component.slots.map((s) => s.name)).toEqual(["header", "footer"]);
+    });
+
+    it("keeps the options entry's metadata for the collapsed slot", async () => {
+      const { component } = await parse(collision);
+      // `defineSlot` produces a plain declaration, so the options entry has to win or `required` is
+      // lost. This is the opposite direction from events, because the richer channel is the
+      // opposite one.
+      expect(component.slots.find((s) => s.name === "header")!.required).toBe(true);
+    });
+
+    it("reports INK0076 at the losing declaration", async () => {
+      const { diagnostics } = await parse(collision);
+      const duplicate = diagnostics.filter((d) => d.code === "INK0076");
+      expect(duplicate).toHaveLength(1);
+      expect(duplicate[0]!.title).toContain("header");
+      // Points at the `defineSlot("header")` call — the declaration to delete — not at the options
+      // entry that wins.
+      expect(duplicate[0]!.loc.line).toBe(4);
+    });
+
+    it("keeps the binding working when the options entry wins", async () => {
+      const { component } = await parse(`
+        import { defineComponent, defineSlot } from "@inkline/core";
+        export default defineComponent({ slots: { footer: {} } }, () => {
+          const footer = defineSlot("footer");
+          return <div>{footer}</div>;
+        });
+      `);
+      // `slotBindings` is a separate map, so the render tree still places the slot by its local
+      // whichever declaration survives the merge.
+      expect(component.slots.map((s) => s.name)).toEqual(["footer"]);
+      expect(component.slotBindings?.get("footer")).toBe("footer");
+    });
+
+    it("leaves a component that declares slots from a single source untouched", async () => {
+      const { component, diagnostics } = await parse(`
+        import { defineComponent, defineSlot, Slot } from "@inkline/core";
+        export default defineComponent(() => {
+          defineSlot("header");
+          return <div><Slot name="header" /></div>;
+        });
+      `);
+      expect(component.slots.map((s) => s.name)).toEqual(["header"]);
+      expect(diagnostics.filter((d) => d.code === "INK0076")).toHaveLength(0);
+    });
+
+    it("collapses a name repeated within the setup body itself", async () => {
+      const { component, diagnostics } = await parse(`
+        import { defineComponent, defineSlot, Slot } from "@inkline/core";
+        export default defineComponent(() => {
+          defineSlot("header");
+          defineSlot("header");
+          return <div><Slot name="header" /></div>;
+        });
+      `);
+      expect(component.slots.map((s) => s.name)).toEqual(["header"]);
+      expect(diagnostics.filter((d) => d.code === "INK0076")).toHaveLength(1);
+    });
+  });
 });

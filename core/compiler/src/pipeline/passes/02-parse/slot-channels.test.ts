@@ -4,9 +4,8 @@ import { ALL_TARGETS } from "../../../codegen/context.ts";
 
 // The corpus declares every slot with `defineSlot` (UXF-251). That migration rests on the two
 // channels being interchangeable for a plain declaration, and on the options key being *moved*
-// rather than duplicated — neither of which the compiler reports on, since the merge in
-// `02-parse/index.ts` concatenates without deduplicating. These cases pin both, plus the third
-// channel `<Slot>` opens on its own.
+// rather than duplicated — the second of which the merge in `02-parse/index.ts` now enforces with
+// INK0076. These cases pin both, plus the third channel `<Slot>` opens on its own.
 
 const HEAD = `import { defineComponent, defineProps, defineSlot, Slot } from "@inkline/core";
 export interface P { label?: string }
@@ -103,10 +102,16 @@ describe("slot declaration channels", () => {
     expect(await outputOf(BARE)).toEqual(await outputOf(BOUND));
   });
 
-  it("declaring through both channels duplicates the slot, silently", async () => {
-    // No diagnostic covers this (unlike props' INK0047), so converting a component means moving the
-    // declaration, never adding the macro alongside the options key.
-    expect(await slotsOf(BOTH)).toHaveLength(2);
+  it("declaring through both channels collapses to one slot and reports INK0076", async () => {
+    const result = await compile({ fileName: "T.ink.tsx", source: BOTH }, { targets: ["react"] });
+    expect(result.module!.module.components[0]!.slots).toHaveLength(1);
+
+    const duplicate = result.diagnostics.filter((d) => d.code === "INK0076");
+    expect(duplicate).toHaveLength(1);
+    expect(duplicate[0]!.title).toContain("default");
+    // Points at the `defineSlot()` call — the declaration to delete — not at the options key that
+    // wins, which is the only channel that can carry `required` or `scoped`.
+    expect(duplicate[0]!.loc.line).toBe(6);
   });
 
   it("removing the options key without the macro changes the declaration, not the output", async () => {

@@ -9,6 +9,7 @@ import {
   type IRExprNode,
   type IRModule,
   type IRProp,
+  type IRSlotDeclaration,
   type PrimitiveUsage,
 } from "../../../ir/render/nodes.ts";
 import { walkRenderTree } from "../../../ir/render/visit.ts";
@@ -91,7 +92,11 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
       const props = baseProps;
       const events = mergeEventDeclarations(baseEvents, setupResult.events, ctx);
 
-      const slots = [...(optionsResult?.slots ?? []), ...setupResult.slotDeclarations];
+      const slots = mergeSlotDeclarations(
+        optionsResult?.slots ?? [],
+        setupResult.slotDeclarations,
+        ctx,
+      );
 
       // Register props in the scope so `props.foo` resolves during dep extraction
       registerPropsInScope(site.setupFn, props, componentId, setupResult.scope, checker, ctx);
@@ -188,6 +193,40 @@ function mergeEventDeclarations(
     }
     ctx.diagnostics.push("INK0046", merged[position]!.loc, { name: event.name });
     merged[position] = event;
+  }
+
+  return merged;
+}
+
+/**
+ * Merge the two places a slot can be declared — the options `slots` object and `defineSlot` — into
+ * one declaration per name, the way {@link mergeEventDeclarations} does for events. Concatenating
+ * them registered the slot twice, and every target emitted the duplicate.
+ *
+ * Precedence is **first declaration wins**, the opposite of events, because the richer channel is
+ * the opposite one: the options entry carries `required` and `scoped`, while `defineSlot` produces a
+ * plain declaration from the call alone. Letting setup win would silently drop `required: true`.
+ * The binding is unaffected either way — `setupResult.slotBindings` is a separate map, so the render
+ * tree still places the slot by its local whichever declaration survives.
+ *
+ * The losing declaration is reported as INK0076 (a warning, like INK0046): the merge already keeps
+ * the output correct, and the diagnostic names which of the two to delete.
+ */
+function mergeSlotDeclarations(
+  optionsSlots: readonly IRSlotDeclaration[],
+  setupSlots: readonly IRSlotDeclaration[],
+  ctx: PassContext,
+): IRSlotDeclaration[] {
+  const merged: IRSlotDeclaration[] = [];
+  const declaredNames = new Set<string>();
+
+  for (const slot of [...optionsSlots, ...setupSlots]) {
+    if (declaredNames.has(slot.name)) {
+      ctx.diagnostics.push("INK0076", slot.loc, { name: slot.name });
+      continue;
+    }
+    declaredNames.add(slot.name);
+    merged.push(slot);
   }
 
   return merged;
