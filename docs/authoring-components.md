@@ -36,7 +36,7 @@ Consumers of `@inkline/{react,vue,…}` import the styled variant by default. Th
 From [`ui/components/src/components/badge/headless/IBadgeBase.ink.tsx`](../ui/components/src/components/badge/headless/IBadgeBase.ink.tsx):
 
 ```tsx
-import { defineComponent, Slot } from "@inkline/core";
+import { defineComponent, defineProps, defineSlot, Slot } from "@inkline/core";
 
 export interface BadgeBaseProps {
   label?: string;
@@ -45,9 +45,11 @@ export interface BadgeBaseProps {
 export default defineComponent(
   {
     meta: { headless: true },
-    slots: { default: {} },
   },
-  (props: BadgeBaseProps) => {
+  () => {
+    const props = defineProps<BadgeBaseProps>();
+    defineSlot();
+
     return (
       <div class="badge">
         <Slot>{props.label}</Slot>
@@ -59,33 +61,33 @@ export default defineComponent(
 
 Four things to notice:
 
-1. **`defineComponent` is the sole entry point.** It accepts either `(setup)` or `(options, setup)`. Use the options form when you need to declare slots, events, or meta.
-2. **This component declares its props with the setup parameter's type annotation** (`props: BadgeBaseProps`). That is one of three supported channels, and not the primary one — see "Declaring props" below.
-3. **`<Slot>` (imported from `@inkline/core`) renders a declared slot.** An unnamed `<Slot>` renders the default slot (the lowercase `<slot>` JSX intrinsic works too); `<Slot name="prefix" />` renders a named one. Declare each slot in the options object first. See [`core/compiler/README.md`](../core/compiler/README.md) → "Slots".
+1. **`defineComponent` is the sole entry point.** It accepts either `(setup)` or `(options, setup)`. Use the options form for the keys the macros do not cover — `meta` here.
+2. **`defineProps<T>()` declares the props.** That is one of three supported channels, and the primary one — see "Declaring props" below.
+3. **`defineSlot` declares a slot; `<Slot>` renders it.** Both are imported from `@inkline/core`. `defineSlot()` declares the default slot, which an unnamed `<Slot>` renders; `defineSlot("prefix")` declares a named one, which `<Slot name="prefix" />` renders. The options object's `slots` map is the alternative channel — reach for it when a slot needs `required` or `scoped`, which `defineSlot` does not carry. See [`core/compiler/README.md`](../core/compiler/README.md) → "Slots".
 4. **`meta: { headless: true }` marks a behavior-only component.** On Angular this makes the compiler emit an attribute-selector host component (and lets a styled wrapper collapse onto it) so no wrapper element ships — see [architecture.md](./architecture.md) → "Cross-framework strategy". The other six targets are unaffected. The headless root must be a single static element; a fragment or conditional root keeps the element-selector wrapper and emits `INK0111`.
 
 The styled variant ([`IBadge.ink.tsx`](../ui/components/src/components/badge/styled/IBadge.ink.tsx)) composes the headless one:
 
 ```tsx
-import { defineComponent, Slot, createMemo } from "@inkline/core";
+import { defineComponent, defineProps, defineSlot, Slot, createMemo } from "@inkline/core";
 import IBadgeBase, { type BadgeBaseProps } from "../headless/IBadgeBase.ink.tsx";
 import { badgeRecipe, type BadgeRecipeProps as BadgeStylingProps } from "virtual:styleframe";
 
 export interface BadgeProps extends BadgeBaseProps, BadgeStylingProps {}
 
-export default defineComponent(
-  { meta: { headless: true }, slots: { default: {} } },
-  (props: BadgeProps) => {
-    const className = createMemo(() =>
-      badgeRecipe({ color: props.color, variant: props.variant, size: props.size }),
-    );
-    return (
-      <IBadgeBase class={className()}>
-        <Slot>{props.label}</Slot>
-      </IBadgeBase>
-    );
-  },
-);
+export default defineComponent({ meta: { headless: true } }, () => {
+  const props = defineProps<BadgeProps>();
+  defineSlot();
+
+  const className = createMemo(() =>
+    badgeRecipe({ color: props.color, variant: props.variant, size: props.size }),
+  );
+  return (
+    <IBadgeBase class={className()}>
+      <Slot>{props.label}</Slot>
+    </IBadgeBase>
+  );
+});
 ```
 
 `badgeRecipe` is imported from `virtual:styleframe`; it maps the styling props (`color`, `variant`, `size`) to a class name. The recipe is registered in [`IBadge.styleframe.ts`](../ui/components/src/components/badge/styled/IBadge.styleframe.ts). `virtual:styleframe` is provided by the `styleframe` integration; the resolved classnames live in each framework's `.styleframe/` directory (auto-generated — never hand-edit).
