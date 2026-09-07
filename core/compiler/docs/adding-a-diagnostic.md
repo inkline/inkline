@@ -97,6 +97,7 @@ restating it, so neither column is asserted.
 | INK0071 | error    | parse    | JSX spread attributes are not supported                   |
 | INK0072 | warning  | lower    | Unknown ARIA attribute                                    |
 | INK0073 | error    | lower    | Cannot two-way bind `$bind:<name>` on an element          |
+| INK0074 | error    | parse    | The props binding is not named `props`                    |
 | INK0080 | warning  | config   | Unknown target option                                     |
 | INK0081 | warning  | config   | Unknown config key                                        |
 | INK0082 | warning  | config   | Unknown config key, with a suggested spelling             |

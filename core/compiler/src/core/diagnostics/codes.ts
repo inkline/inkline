@@ -214,6 +214,21 @@ export const DIAGNOSTICS = {
     help: '$bind: lowers to a value attribute plus a writer, and <{tag}> has nothing to write "{name}" to — the generated handler would call the bound expression as a setter and throw at runtime. {suggestion}' as const,
     url: "https://docs.inkline.dev/diagnostics/INK0073" as const,
   },
+  // The fourth props-channel rule, beside INK0047. It is numbered here rather than at INK0050 — the
+  // free slot next to its siblings — because INK0050 already belongs to the lowering pass; INK0071
+  // is the precedent for a parse code above the lowering block.
+  //
+  // Severity: error, not warning. Every target rewrites the props object under the fixed name
+  // `props`, so a read through any other local is copied to the output unrewritten and names an
+  // identifier the generated component never declares. That is broken code on all seven targets,
+  // and on the four that emit a template (Vue, Svelte, Astro, Angular) the reference lands where
+  // `tsc` cannot see it either — the first sign of it is a ReferenceError in the browser.
+  INK0074: {
+    severity: "error" as const,
+    title: 'The props binding is named "{name}", not "props"' as const,
+    help: "Rename the binding to props. Every target emits and rewrites the props object under that fixed name, so a read through any other name — {name}.label — is copied to the output unrewritten and names an identifier the generated component never declares. Write const props = defineProps<T>(), or (props: T) => … for the setup parameter." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0074" as const,
+  },
   INK0080: {
     severity: "warning" as const,
     title: "Unknown target option: {key}" as const,
