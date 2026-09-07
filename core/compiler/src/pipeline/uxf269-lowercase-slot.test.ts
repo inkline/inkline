@@ -40,8 +40,9 @@ export default defineComponent(() => {
 });
 `;
 
-// The exact snippet core/compiler/README.md teaches under "### Slots" (line 399). The documented
-// form is the broken one, which is why the mistake reaches five targets rather than none.
+// The snippet core/compiler/README.md taught under "### Slots" until #618 replaced it. The
+// documented form was the broken one, which is why the mistake reached five targets rather than
+// none — so the case is kept: it is what an author who copied the old README still has on disk.
 const DOCUMENTED = `import { defineComponent, Slot } from "@inkline/core";
 
 export default defineComponent({ slots: { default: {}, prefix: {} } }, () => {
