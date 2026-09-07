@@ -237,6 +237,32 @@ export const DIAGNOSTICS = {
     help: 'Bind the result — const props = defineProps<P>(), const emit = defineEmits(["change"]), const [value, setValue] = defineModel(). The binding is the only way to reach what the macro declares, and the call itself is erased from the output, so an unbound one reads as a declaration while being none. defineSlot is the exception: it declares its slot with or without a binding.' as const,
     url: "https://docs.inkline.dev/diagnostics/INK0075" as const,
   },
+  // The slots counterpart of INK0046, and a warning for the same reason: the two declarations
+  // collapse losslessly, so the output is correct without the author's help and refusing the build
+  // would be disproportionate. Unlike props (INK0047), where the two channels carry different shapes
+  // and no merge can be lossless, a slot declared twice is the same slot twice over.
+  INK0076: {
+    severity: "warning" as const,
+    title: "Slot '{name}' is declared twice" as const,
+    help: "Declare each slot once, then delete the declaration reported here — the first one wins, and this is the later one. Where the two sit on different channels, the options slots entry is the one read first, since it is the only one that can carry required or scoped." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0076" as const,
+  },
+  // The lowercase twin of INK0069, and an error rather than a warning because the construct is
+  // unimplementable on every target, not merely unsupported on some. On React, Solid, Svelte,
+  // Angular and Qwik a light-DOM `<slot>` is inert markup nothing ever projects into — the repo
+  // emits framework components, never custom-element classes, so no output of it lands in a shadow
+  // root. On Vue and Astro the same source *is* that target's own slot outlet, so one file means
+  // two different things while the component still declares no slot: no prop type, no fallback, no
+  // hasSlot. TypeScript reports nothing either — `slot` is a declared JSX intrinsic.
+  //
+  // Reported on the IR element, never on the emitted text: a correctly lowered `<Slot>` prints
+  // `<slot>` on Vue and Astro too, so codegen is past the point where the two are distinguishable.
+  INK0077: {
+    severity: "error" as const,
+    title: "<slot> is an ordinary element, not a slot outlet" as const,
+    help: 'Render a slot with the Slot component imported from "@inkline/core" — <Slot />, or <Slot name="icon" /> for a named one. A lowercase <slot> parses as a plain DOM element: it declares no slot, types no prop, and projects nothing on React, Solid, Svelte, Angular or Qwik.' as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0077" as const,
+  },
   INK0080: {
     severity: "warning" as const,
     title: "Unknown target option: {key}" as const,

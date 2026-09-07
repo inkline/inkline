@@ -132,7 +132,10 @@ Five rules apply to every macro:
 4. **Declare each concern through one channel**, never silent precedence. Props come from
    `defineProps`, the setup parameter's annotation, or the options `props` map — two of them is
    `INK0047`, an error. Events come from `defineEmits` or the options `events` map — one name in both
-   is `INK0046`, a warning, and the `defineEmits` declaration wins.
+   is `INK0046`, a warning, and the `defineEmits` declaration wins. Slots come from `defineSlot` or
+   the options `slots` map — one name declared twice is `INK0076`, a warning, whether the two
+   declarations sit on different channels or on the same one. The first declaration wins, so an
+   options entry beats `defineSlot`, since it is the only one that carries `required` and `scoped`.
 5. **Macros are erased.** No `@inkline/core` import survives into the emitted component.
 
 ### Props
@@ -383,9 +386,61 @@ options object. Declare each event in one place or the other, never both.
 
 ### Slots
 
-A component declares its slots in the options object and renders them with the `<Slot>` component
-(the default slot is the lowercase `<slot>` JSX intrinsic). A `<Slot>` may wrap fallback content,
-shown when the slot is empty.
+A component declares its slots with the `defineSlot` macro and renders them with the `<Slot>`
+component. A `<Slot>` may wrap fallback content, shown when the slot is empty.
+
+```tsx
+import { defineComponent, defineSlot, Slot } from "@inkline/core";
+
+export default defineComponent(() => {
+  defineSlot();
+  defineSlot("prefix");
+
+  return (
+    <div>
+      <span class="prefix">
+        <Slot name="prefix" />
+      </span>
+      <Slot>Default content</Slot>
+    </div>
+  );
+});
+```
+
+`defineSlot()` declares the default slot, `defineSlot("prefix")` a named one. The call is what
+declares the slot, so the bare statement above is the primary form — `defineSlot` is the one
+declaration macro that needs no binding (rule 2 above).
+
+Only the capitalized `<Slot>` renders a slot. A lowercase `<slot>` is an ordinary host element, not a
+slot outlet: it declares no slot and projects nothing. The compiler refuses it with `INK0077`.
+
+A consumer fills a named slot by passing JSX to a matching attribute (`<MyField prefix={<Icon />} />`);
+the compiler lowers it to each target's slot mechanism (a `render<Name>` prop on React/Solid, a
+`<template #name>` on Vue, a `{#snippet}` on Svelte, …).
+
+#### The binding
+
+Binding the call gives the render tree a name to place the slot by. The binding declares nothing on
+its own — it is an alias for one `<Slot>` render site:
+
+```tsx
+import { defineComponent, defineSlot } from "@inkline/core";
+
+export default defineComponent(() => {
+  const defaultSlot = defineSlot();
+
+  return <div class="body">{defaultSlot}</div>;
+});
+```
+
+`{defaultSlot}` and `<Slot />` emit the same code on every target. The alias is the weaker of the
+two: it carries no fallback content, so a slot that needs one must render as `<Slot>`. Name the const
+freely — the compiler matches the binding, not a fixed spelling.
+
+#### The options object
+
+Slots can also be declared in the options object's `slots` map. The channel is supported and
+produces the same declaration:
 
 ```tsx
 import { defineComponent, Slot } from "@inkline/core";
@@ -396,23 +451,25 @@ export default defineComponent({ slots: { default: {}, prefix: {} } }, () => {
       <span class="prefix">
         <Slot name="prefix" />
       </span>
-      <slot>Default content</slot>
+      <Slot>Default content</Slot>
     </div>
   );
 });
 ```
 
-A consumer fills a named slot by passing JSX to a matching attribute (`<MyField prefix={<Icon />} />`);
-the compiler lowers it to each target's slot mechanism (a `render<Name>` prop on React/Solid, a
-`<template #name>` on Vue, a `{#snippet}` on Svelte, …).
+Unlike props (`INK0047`) and events (`INK0046`), the two slot channels are **not** checked against
+each other: one name declared on both is registered twice, and nothing is reported. So when you move
+a component to `defineSlot`, delete the options entry — never add the macro beside it.
 
 **`hasSlot(name?)`** reports whether a slot was filled, so a component can omit a wrapper when its
 slot is empty (`hasSlot()` checks the default slot):
 
 ```tsx
-import { defineComponent, Show, Slot, hasSlot } from "@inkline/core";
+import { defineComponent, defineSlot, Show, Slot, hasSlot } from "@inkline/core";
 
-export default defineComponent({ slots: { prefix: {} } }, () => {
+export default defineComponent(() => {
+  defineSlot("prefix");
+
   return (
     <Show when={hasSlot("prefix")}>
       <span class="prefix">
@@ -1048,6 +1105,8 @@ The codes below are the ones most authors hit. For the complete, always-current 
 | INK0071 | error    | JSX spread attributes (`{...props}`) are not supported. Enumerate the attributes explicitly.                                            |
 | INK0074 | error    | The props binding is not named `props`. Every target rewrites the props object under that fixed name.                                   |
 | INK0075 | error    | A macro other than `defineSlot` is called without binding its result.                                                                   |
+| INK0076 | warning  | A slot name is declared twice, on either channel or on one. The first declaration wins; the later one is reported.                      |
+| INK0077 | error    | A lowercase `<slot>` is an ordinary element, not a slot outlet. Render a slot with `<Slot />`.                                          |
 | INK0080 | warning  | Unknown key in `targetOptions`.                                                                                                         |
 | INK0081 | warning  | Unknown key in `inkline.config.*`. The key is ignored.                                                                                  |
 | INK0082 | warning  | Unknown key in `inkline.config.*` that looks like a typo, with the suggested spelling.                                                  |

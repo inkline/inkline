@@ -99,6 +99,8 @@ restating it, so neither column is asserted.
 | INK0073 | error    | lower    | Cannot two-way bind `$bind:<name>` on an element          |
 | INK0074 | error    | parse    | The props binding is not named `props`                    |
 | INK0075 | error    | parse    | Macro declares nothing unless its result is bound         |
+| INK0076 | warning  | parse    | Slot is declared twice                                    |
+| INK0077 | error    | lower    | Lowercase `<slot>` is an ordinary element                 |
 | INK0080 | warning  | config   | Unknown target option                                     |
 | INK0081 | warning  | config   | Unknown config key                                        |
 | INK0082 | warning  | config   | Unknown config key, with a suggested spelling             |
