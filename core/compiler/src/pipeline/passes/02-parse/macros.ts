@@ -11,6 +11,7 @@ import type { PassContext } from "../../types.ts";
 import type { BindingTable } from "./bind-primitives.ts";
 import { toLoc } from "./loc.ts";
 import { parsePropsFromObject, parsePropsFromTypeNode } from "./options.ts";
+import { checkPropsBindingName, PROPS_BINDING } from "./props-binding.ts";
 import type { ParseBindingScope } from "./scope.ts";
 
 /**
@@ -329,8 +330,8 @@ const defineSlotMacro: MacroDefinition = {
  * parameter's annotation does, so targets that re-emit the props type keep doing so.
  *
  * The local the result is bound to is registered as the component's props object. Targets emit and
- * rewrite that object under the fixed name `props`, so — as with the annotation channel today — a
- * local under any other name reads through to the output unrewritten.
+ * rewrite that object under the fixed name `props`, so a read through a local under any other name
+ * would reach the output unrewritten — {@link checkPropsBindingName} refuses it.
  */
 const definePropsMacro: MacroDefinition = {
   name: "defineProps",
@@ -358,10 +359,11 @@ const definePropsMacro: MacroDefinition = {
     }
 
     if (ts.isIdentifier(decl.name)) {
+      checkPropsBindingName(decl.name, sourceFile, checker, pass);
       const id = pass.symbols.mint({
         componentId,
         kind: "prop",
-        name: "props",
+        name: PROPS_BINDING,
         loc: toLoc(decl, sourceFile),
       });
       registerBinding(decl.name, id, "prop");

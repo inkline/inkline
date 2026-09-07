@@ -212,9 +212,22 @@ declaration-map form when a prop needs a declared default.
 #### Two rules for the binding
 
 **Name the binding `props`.** Every target emits and rewrites the props object under that fixed name,
-so a local under any other name reads through to the output unrewritten: `const p = defineProps<T>()`
-compiles, and the emitted component then references an undeclared `p`. The compiler does not
-diagnose this yet.
+so a read through a binding under any other name is copied to the output unrewritten, and the emitted
+component references an identifier it never declares. `INK0074`, an error, refuses that binding on
+both the macro and the setup-parameter channels:
+
+```tsx
+const p = defineProps<ButtonProps>();
+return <button>{p.label}</button>;
+```
+
+> `INK0074` · error · The props binding is named "p", not "props"
+
+The rule fires on a **read** of the binding, and a read is matched on the binding's symbol, not on its
+name. Two consequences: a binding nothing reads is erased with its declaration, so it stays legal —
+this is what keeps `const _props = defineProps<EmptyProps>()` valid in a headless component that binds
+the result only to name its props type; and a same-named local in a sibling component is a different
+symbol, so it never triggers the rule.
 
 **Never destructure it.** Reads must stay `props.x`: Solid passes props as a reactive proxy, so
 destructuring in the setup body snapshots the value once and freezes it. The Solid target enforces
@@ -1033,6 +1046,7 @@ The codes below are the ones most authors hit. For the complete, always-current 
 | INK0062 | error    | `<For>` requires an `each` prop.                                                                                                        |
 | INK0070 | error    | Component-ref forwarding is not yet supported (v1).                                                                                     |
 | INK0071 | error    | JSX spread attributes (`{...props}`) are not supported. Enumerate the attributes explicitly.                                            |
+| INK0074 | error    | The props binding is not named `props`. Every target rewrites the props object under that fixed name.                                   |
 | INK0075 | error    | A macro other than `defineSlot` is called without binding its result.                                                                   |
 | INK0080 | warning  | Unknown key in `targetOptions`.                                                                                                         |
 | INK0081 | warning  | Unknown key in `inkline.config.*`. The key is ignored.                                                                                  |

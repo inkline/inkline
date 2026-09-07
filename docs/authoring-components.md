@@ -151,7 +151,7 @@ The type argument may be an inline object type, or an `interface` / `type`, incl
 
 Two rules apply to the binding:
 
-- **Name it `props`.** Every target emits and rewrites the props object under that fixed name, so a local under any other name reads through to the output unrewritten — the emitted component then references an undeclared identifier. The compiler does not diagnose this yet.
+- **Name it `props`.** Every target emits and rewrites the props object under that fixed name, so a read through a binding under any other name is copied to the output unrewritten — the emitted component then references an identifier it never declares. That is `INK0074`, an error, on the macro channel and the setup parameter alike. The rule fires on a **read** of the binding, matched on its symbol and not on its name: a binding nothing reads is erased with its declaration and stays legal, and a same-named local in a sibling component never triggers it.
 - **Never destructure it.** Solid passes props as a reactive proxy; destructuring snapshots the value once and freezes it. The Solid target enforces this with the `requirePropsNotDestructured` conformance invariant.
 
 **`defineProps` does not improve parent-side typing.** A consumer still gets no checking on `<IButton colr="light" />` — the same limitation listed under "Markup is type-checked" above. The road to typed parent props is Option D in [ADR-010](./adrs/010-defineprops-joins-the-macro-family.md), and it is uncosted.

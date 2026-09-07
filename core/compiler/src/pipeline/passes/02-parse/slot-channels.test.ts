@@ -55,6 +55,18 @@ export default defineComponent(() => {
 });
 `;
 
+/**
+ * A bare `defineSlot("footer")` the render tree never places. The one shape that separates the
+ * macro from the `<Slot>` inference: nothing else in the source names `footer`.
+ */
+const UNPLACED = `${HEAD}
+export default defineComponent(() => {
+  const props = defineProps<P>();
+  defineSlot("footer");
+  return <div>{props.label}</div>;
+});
+`;
+
 async function slotsOf(source: string) {
   const result = await compile({ fileName: "T.ink.tsx", source }, { targets: ["react"] });
   expect(result.diagnostics).toEqual([]);
@@ -105,5 +117,13 @@ describe("slot declaration channels", () => {
       { name: "default", isScoped: false, required: false, hasFallback: true },
     ]);
     expect(await outputOf(NEITHER)).toEqual(await outputOf(BARE));
+  });
+
+  // The discriminator. Every case above has a `<Slot>` that would infer the same declaration, so
+  // none of them proves the macro declared anything. Here nothing else names `footer`.
+  it("declares a slot the render tree never places", async () => {
+    expect(await slotsOf(UNPLACED)).toEqual([
+      { name: "footer", isScoped: false, required: false, hasFallback: false },
+    ]);
   });
 });
