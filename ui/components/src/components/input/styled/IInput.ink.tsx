@@ -47,8 +47,8 @@ export interface InputProps extends InputControlBaseProps {
  */
 export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<InputProps>();
-  const _prefixSlot = defineSlot("prefix");
-  const _suffixSlot = defineSlot("suffix");
+  defineSlot("prefix");
+  defineSlot("suffix");
 
   const [value, _setValue] = defineModel<string>("value");
 

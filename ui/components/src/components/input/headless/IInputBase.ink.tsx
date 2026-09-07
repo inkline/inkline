@@ -11,7 +11,7 @@ export default defineComponent(
   },
   () => {
     const props = defineProps<InputBaseProps>();
-    const _defaultSlot = defineSlot();
+    defineSlot();
 
     return (
       <div class="input" id={props.id}>

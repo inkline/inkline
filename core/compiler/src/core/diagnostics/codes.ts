@@ -229,6 +229,14 @@ export const DIAGNOSTICS = {
     help: "Rename the binding to props. Every target emits and rewrites the props object under that fixed name, so a read through any other name — {name}.label — is copied to the output unrewritten and names an identifier the generated component never declares. Write const props = defineProps<T>(), or (props: T) => … for the setup parameter." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0074" as const,
   },
+  // R1b, the binding rule, beside INK0049's R1. Both are macro-grammar codes, and this one sits
+  // above the lowering block for the same reason INK0074 does.
+  INK0075: {
+    severity: "error" as const,
+    title: "{name} declares nothing unless its result is bound" as const,
+    help: 'Bind the result — const props = defineProps<P>(), const emit = defineEmits(["change"]), const [value, setValue] = defineModel(). The binding is the only way to reach what the macro declares, and the call itself is erased from the output, so an unbound one reads as a declaration while being none. defineSlot is the exception: it declares its slot with or without a binding.' as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0075" as const,
+  },
   INK0080: {
     severity: "warning" as const,
     title: "Unknown target option: {key}" as const,

@@ -115,20 +115,25 @@ imported from `@inkline/core` that the compiler reads at build time and then era
 recognized by binding, not by name — a macro imported under an alias is still recognized, and a local
 function that happens to share a macro's name is left alone.
 
-Four rules apply to every macro:
+Five rules apply to every macro:
 
 1. **Call a macro at the top level of the setup body** — never inside a condition, a loop, or a
    nested function. A macro is erased at build time, so a nested call still declares unconditionally
    while reading as if it did not. Outside the top level is `INK0049`. `hasSlot` is the exception: it
    is a query, not a declaration, so it is legal anywhere in the setup body.
-2. **Pass arguments the compiler can read statically** — a string literal, an array of string
+2. **Bind the result** — `const props = defineProps<P>()`, `const emit = defineEmits(…)`,
+   `const [value, setValue] = defineModel()`. The binding is the only way to reach what the macro
+   declares, and the call itself is erased, so a bare `defineProps();` reads as a declaration while
+   being none. An unbound call is `INK0075`. `defineSlot` is the exception: it declares its slot from
+   the call alone, and its binding only gives the render tree a name to place the slot by.
+3. **Pass arguments the compiler can read statically** — a string literal, an array of string
    literals, or an object literal. A value computed at runtime is gone before anything can read it.
    Anything else is `INK0048`. (`defineModel` reports its own argument rule under `INK0043` instead.)
-3. **Declare each concern through one channel**, never silent precedence. Props come from
+4. **Declare each concern through one channel**, never silent precedence. Props come from
    `defineProps`, the setup parameter's annotation, or the options `props` map — two of them is
    `INK0047`, an error. Events come from `defineEmits` or the options `events` map — one name in both
    is `INK0046`, a warning, and the `defineEmits` declaration wins.
-4. **Macros are erased.** No `@inkline/core` import survives into the emitted component.
+5. **Macros are erased.** No `@inkline/core` import survives into the emitted component.
 
 ### Props
 
@@ -1042,6 +1047,7 @@ The codes below are the ones most authors hit. For the complete, always-current 
 | INK0070 | error    | Component-ref forwarding is not yet supported (v1).                                                                                     |
 | INK0071 | error    | JSX spread attributes (`{...props}`) are not supported. Enumerate the attributes explicitly.                                            |
 | INK0074 | error    | The props binding is not named `props`. Every target rewrites the props object under that fixed name.                                   |
+| INK0075 | error    | A macro other than `defineSlot` is called without binding its result.                                                                   |
 | INK0080 | warning  | Unknown key in `targetOptions`.                                                                                                         |
 | INK0081 | warning  | Unknown key in `inkline.config.*`. The key is ignored.                                                                                  |
 | INK0082 | warning  | Unknown key in `inkline.config.*` that looks like a typo, with the suggested spelling.                                                  |

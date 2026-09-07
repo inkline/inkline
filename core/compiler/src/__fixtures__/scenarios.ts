@@ -241,6 +241,19 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   ],
   Diag_MacroNested: [{ name: "triggers INK0049", asserts: { expectedDiagnostics: ["INK0049"] } }],
 
+  // ── UXF-254: a declaration macro other than `defineSlot` must bind its result ──
+  // One rule, three macros. Each declares something the body can only reach through the binding, so
+  // each must report the same code.
+  Diag_MacroUnboundProps: [
+    { name: "triggers INK0075 for defineProps", asserts: { expectedDiagnostics: ["INK0075"] } },
+  ],
+  Diag_MacroUnboundEmits: [
+    { name: "triggers INK0075 for defineEmits", asserts: { expectedDiagnostics: ["INK0075"] } },
+  ],
+  Diag_MacroUnboundModel: [
+    { name: "triggers INK0075 for defineModel", asserts: { expectedDiagnostics: ["INK0075"] } },
+  ],
+
   // ── UXF-249: the props binding must be named `props` ──
   // One rule, two channels. Both fixtures reach the same broken output — a read through a local the
   // generated component never declares — so both must report the same code, on every target.

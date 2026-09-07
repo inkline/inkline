@@ -13,7 +13,7 @@ export default defineComponent(
   },
   () => {
     const props = defineProps<ButtonBaseProps>();
-    const _defaultSlot = defineSlot();
+    defineSlot();
 
     return (
       <button

@@ -8,7 +8,7 @@ export default defineComponent(
     meta: { headless: true },
   },
   () => {
-    const _defaultSlot = defineSlot();
+    defineSlot();
 
     return (
       <label class="checkbox">

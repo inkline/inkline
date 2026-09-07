@@ -8,7 +8,7 @@ export interface ButtonProps extends ButtonBaseProps, ButtonStylingProps {
 
 export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<ButtonProps>();
-  const _defaultSlot = defineSlot();
+  defineSlot();
 
   const className = createMemo(() =>
     [

@@ -8,7 +8,7 @@ export interface SwitchLabelBaseProps {}
 // trailing gap on every target (no `hasSlot` needed).
 export default defineComponent({ meta: { headless: true } }, () => {
   const _props = defineProps<SwitchLabelBaseProps>();
-  const _defaultSlot = defineSlot();
+  defineSlot();
 
   return (
     <span class="switch-label">

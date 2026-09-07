@@ -16,7 +16,7 @@ export interface RadioGroupBaseProps {
 // state the `radiogroup` role supports); the interaction guard lives on each radio field.
 export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<RadioGroupBaseProps>();
-  const _defaultSlot = defineSlot();
+  defineSlot();
 
   return (
     <div

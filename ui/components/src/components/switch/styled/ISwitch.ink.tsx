@@ -38,7 +38,7 @@ export interface SwitchProps extends SwitchControlBaseProps {
  */
 export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<SwitchProps>();
-  const _defaultSlot = defineSlot();
+  defineSlot();
 
   const [checked, _setChecked] = defineModel<boolean>("checked");
 

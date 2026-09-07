@@ -7,7 +7,7 @@ export interface FieldGroupBaseProps {
 
 export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<FieldGroupBaseProps>();
-  const _defaultSlot = defineSlot();
+  defineSlot();
 
   return (
     <div class="field-group" id={props.id}>

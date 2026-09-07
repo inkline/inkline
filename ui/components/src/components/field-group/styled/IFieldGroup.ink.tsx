@@ -16,7 +16,7 @@ export interface FieldGroupProps extends FieldGroupBaseProps, FieldGroupStylingP
  */
 export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<FieldGroupProps>();
-  const _defaultSlot = defineSlot();
+  defineSlot();
 
   const className = createMemo(() =>
     fieldGroupRecipe({ orientation: props.orientation, block: props.block }),
