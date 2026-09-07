@@ -229,6 +229,24 @@ export const DIAGNOSTICS = {
     help: "Rename the binding to props. Every target emits and rewrites the props object under that fixed name, so a read through any other name — {name}.label — is copied to the output unrewritten and names an identifier the generated component never declares. Write const props = defineProps<T>(), or (props: T) => … for the setup parameter." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0074" as const,
   },
+  // The companion to INK0074: that code refuses a props binding under the wrong *name*, this one
+  // refuses a read of the correctly-named binding as a whole *object*. Both protect the same
+  // invariant — only `props.<name>` is rewritten per target — from the two directions it can break.
+  //
+  // Severity: error, matching INK0074, because two of the seven targets emit code that is wrong
+  // rather than merely different. The four `strip: true` targets emit no props object at all: on
+  // Angular the read is copied through and names a class member that is never declared, and inside
+  // a template `tsc` never sees it; on Svelte it is substituted with the destructured shape
+  // `{ label, ...__attrs }`, which silently carries every passed-through attribute and so returns a
+  // different object than the author wrote. Reconstructing the object per target was the
+  // alternative and was rejected: Angular would need a `computed()` over every signal input, and no
+  // component in the repo reads props whole.
+  INK0075: {
+    severity: "error" as const,
+    title: "The props object is read as a whole, not through a property" as const,
+    help: "Read the properties you need instead: props.label, or const { label } = props. Only props.<name> is rewritten for each target — a bare props reaches Angular as an undeclared class member and Svelte as the destructured shape, which also carries every passed-through attribute. To pass the props on, build the object explicitly from the properties you declared." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0075" as const,
+  },
   INK0080: {
     severity: "warning" as const,
     title: "Unknown target option: {key}" as const,

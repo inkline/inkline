@@ -204,7 +204,7 @@ export default defineComponent(() => {
 Use the type form when the props are a type consumers may want to import or extend; use the
 declaration-map form when a prop needs a declared default.
 
-#### Two rules for the binding
+#### Three rules for the binding
 
 **Name the binding `props`.** Every target emits and rewrites the props object under that fixed name,
 so a read through a binding under any other name is copied to the output unrewritten, and the emitted
@@ -223,6 +223,23 @@ name. Two consequences: a binding nothing reads is erased with its declaration, 
 this is what keeps `const _props = defineProps<EmptyProps>()` valid in a headless component that binds
 the result only to name its props type; and a same-named local in a sibling component is a different
 symbol, so it never triggers the rule.
+
+**Read it through a property.** Only `props.<name>` carries a member the rewriter can map to each
+target's props convention. Four targets emit no props object at all, so a read of the object itself —
+`String(props)`, `JSON.stringify(props)`, `{ ...props }` — has nothing to map: Angular copies it
+through as a class member it never declares, and Svelte substitutes the destructured shape, which
+also carries every passed-through attribute and so is not the object you wrote. `INK0075`, an error,
+refuses that read on both channels:
+
+```tsx
+const props = defineProps<ButtonProps>();
+return <button title={String(props)}>{props.label}</button>;
+```
+
+> `INK0075` · error · The props object is read as a whole, not through a property
+
+A misnamed binding read as a whole reports `INK0074` alone — one mistake, one error. To pass props
+on, build the object explicitly from the properties you declared.
 
 **Never destructure it.** Reads must stay `props.x`: Solid passes props as a reactive proxy, so
 destructuring in the setup body snapshots the value once and freezes it. The Solid target enforces
@@ -1042,6 +1059,7 @@ The codes below are the ones most authors hit. For the complete, always-current 
 | INK0070 | error    | Component-ref forwarding is not yet supported (v1).                                                                                     |
 | INK0071 | error    | JSX spread attributes (`{...props}`) are not supported. Enumerate the attributes explicitly.                                            |
 | INK0074 | error    | The props binding is not named `props`. Every target rewrites the props object under that fixed name.                                   |
+| INK0075 | error    | The props object is read as a whole. Only `props.<name>` is rewritten for each target.                                                  |
 | INK0080 | warning  | Unknown key in `targetOptions`.                                                                                                         |
 | INK0081 | warning  | Unknown key in `inkline.config.*`. The key is ignored.                                                                                  |
 | INK0082 | warning  | Unknown key in `inkline.config.*` that looks like a typo, with the suggested spelling.                                                  |

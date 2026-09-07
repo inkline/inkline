@@ -148,9 +148,10 @@ export default defineComponent({ slots: { default: {} }, meta: { headless: true 
 
 The type argument may be an inline object type, or an `interface` / `type`, including one imported from another module. `defineProps({ … })` takes the same declaration map the options object's `props` key takes, which is the form to use when a prop needs a declared default.
 
-Two rules apply to the binding:
+Three rules apply to the binding:
 
 - **Name it `props`.** Every target emits and rewrites the props object under that fixed name, so a read through a binding under any other name is copied to the output unrewritten — the emitted component then references an identifier it never declares. That is `INK0074`, an error, on the macro channel and the setup parameter alike. The rule fires on a **read** of the binding, matched on its symbol and not on its name: a binding nothing reads is erased with its declaration and stays legal, and a same-named local in a sibling component never triggers it.
+- **Read it through a property.** Only `props.<name>` carries a member the rewriter can map to each target's props convention. Four targets emit no props object at all, so a read of the object itself — `String(props)`, `JSON.stringify(props)`, `Object.keys(props)`, `{ ...props }` — has nothing to map: Angular copies it through as a class member it never declares, and Svelte substitutes the destructured shape, which also carries every passed-through attribute and so is not the object you wrote. That is `INK0075`, an error, on both channels. A binding that is both misnamed and read whole reports `INK0074` alone. To pass props on, build the object explicitly from the properties you declared.
 - **Never destructure it.** Solid passes props as a reactive proxy; destructuring snapshots the value once and freezes it. The Solid target enforces this with the `requirePropsNotDestructured` conformance invariant.
 
 **`defineProps` does not improve parent-side typing.** A consumer still gets no checking on `<IButton colr="light" />` — the same limitation listed under "Markup is type-checked" above. The road to typed parent props is Option D in [ADR-010](./adrs/010-defineprops-joins-the-macro-family.md), and it is uncosted.

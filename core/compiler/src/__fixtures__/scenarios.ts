@@ -256,4 +256,20 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
       asserts: { expectedDiagnostics: ["INK0074"] },
     },
   ],
+
+  // ── UXF-253: the props object may only be read through a property ──
+  // The companion rule to INK0074, and the same two-channel shape. The binding is named `props` in
+  // both, so INK0074 cannot fire; what breaks is the whole-object read itself.
+  Diag_PropsWholeRead: [
+    {
+      name: "triggers INK0075 for the macro channel",
+      asserts: { expectedDiagnostics: ["INK0075"] },
+    },
+  ],
+  Diag_PropsWholeReadParam: [
+    {
+      name: "triggers INK0075 for the annotation channel",
+      asserts: { expectedDiagnostics: ["INK0075"] },
+    },
+  ],
 };
