@@ -132,7 +132,10 @@ Five rules apply to every macro:
 4. **Declare each concern through one channel**, never silent precedence. Props come from
    `defineProps`, the setup parameter's annotation, or the options `props` map — two of them is
    `INK0047`, an error. Events come from `defineEmits` or the options `events` map — one name in both
-   is `INK0046`, a warning, and the `defineEmits` declaration wins.
+   is `INK0046`, a warning, and the `defineEmits` declaration wins. Slots come from `defineSlot` or
+   the options `slots` map — one name declared twice is `INK0076`, a warning, whether the two
+   declarations sit on different channels or on the same one. The first declaration wins, so an
+   options entry beats `defineSlot`, since it is the only one that carries `required` and `scoped`.
 5. **Macros are erased.** No `@inkline/core` import survives into the emitted component.
 
 ### Props
@@ -1102,6 +1105,7 @@ The codes below are the ones most authors hit. For the complete, always-current 
 | INK0071 | error    | JSX spread attributes (`{...props}`) are not supported. Enumerate the attributes explicitly.                                            |
 | INK0074 | error    | The props binding is not named `props`. Every target rewrites the props object under that fixed name.                                   |
 | INK0075 | error    | A macro other than `defineSlot` is called without binding its result.                                                                   |
+| INK0076 | warning  | A slot name is declared twice, on either channel or on one. The first declaration wins; the later one is reported.                      |
 | INK0080 | warning  | Unknown key in `targetOptions`.                                                                                                         |
 | INK0081 | warning  | Unknown key in `inkline.config.*`. The key is ignored.                                                                                  |
 | INK0082 | warning  | Unknown key in `inkline.config.*` that looks like a typo, with the suggested spelling.                                                  |
