@@ -244,7 +244,7 @@ export const DIAGNOSTICS = {
   INK0076: {
     severity: "warning" as const,
     title: "Slot '{name}' is declared twice" as const,
-    help: "Declare each slot once. The options slots entry wins, since it is the only one that can carry required or scoped; remove the redundant declaration reported here." as const,
+    help: "Declare each slot once, then delete the declaration reported here — the first one wins, and this is the later one. Where the two sit on different channels, the options slots entry is the one read first, since it is the only one that can carry required or scoped." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0076" as const,
   },
   INK0080: {

@@ -360,8 +360,9 @@ describe("parsePass", () => {
   });
 
   // The slots counterpart of the block above. Slots were the last of the three channels still
-  // concatenating, so a name declared in both places registered twice and every target emitted it
-  // twice.
+  // concatenating, so a name declared twice registered twice and every target emitted it twice.
+  // The merge dedupes by name alone, so it catches a repeat within one channel as well as across
+  // the two.
   describe("slot declaration merge", () => {
     async function parse(source: string) {
       const ctx = makeCtx();
@@ -373,7 +374,7 @@ describe("parsePass", () => {
 
     const collision = `
       import { defineComponent, defineSlot, Slot } from "@inkline/core";
-      export default defineComponent({ slots: { header: { required: true }, footer: {} } }, () => {
+      export default defineComponent({ slots: { header: { required: true, scoped: true }, footer: {} } }, () => {
         defineSlot("header");
         return <div><Slot name="header" /><Slot name="footer" /></div>;
       });
@@ -386,10 +387,12 @@ describe("parsePass", () => {
 
     it("keeps the options entry's metadata for the collapsed slot", async () => {
       const { component } = await parse(collision);
-      // `defineSlot` produces a plain declaration, so the options entry has to win or `required` is
-      // lost. This is the opposite direction from events, because the richer channel is the
-      // opposite one.
-      expect(component.slots.find((s) => s.name === "header")!.required).toBe(true);
+      // `defineSlot` produces a plain declaration, so the options entry has to win or `required` and
+      // `scoped` are lost. This is the opposite direction from events, because the richer channel is
+      // the opposite one. Both fields are pinned: they are the whole reason for the inversion.
+      const header = component.slots.find((s) => s.name === "header")!;
+      expect(header.required).toBe(true);
+      expect(header.isScoped).toBe(true);
     });
 
     it("reports INK0076 at the losing declaration", async () => {
