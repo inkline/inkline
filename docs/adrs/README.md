@@ -18,6 +18,7 @@ pays for the same lesson twice.
 | [008](./008-authoring-surface-is-inferred-from-options-alone.md)      | The inferred surface comes from options alone, not the setup body       | 2026-08-11 | Accepted   | core, compiler, authoring |
 | [009](./009-emitted-output-is-typechecked-by-a-subprocess-tsc.md)     | Emitted output is typechecked by a subprocess `tsc`, on react and solid | 2026-08-27 | Accepted   | compiler, testing, types  |
 | [010](./010-defineprops-joins-the-macro-family.md)                    | `defineProps` joins the macro family; the macro registry is formalized  | 2026-08-31 | Accepted   | core, compiler, authoring |
+| [011](./011-the-defineslot-binding-is-optional.md)                    | The `defineSlot` binding is optional                                    | 2026-09-07 | Accepted   | core, compiler, authoring |
 
 † ADR-006 is superseded **in part** by ADR-008 — its Decision 1 mechanism claim and its Option D
 uniqueness claim, only. Decisions 2–7 remain the live decisions, so its status stays `Accepted`
