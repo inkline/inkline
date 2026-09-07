@@ -2,7 +2,7 @@
 "@inkline/compiler": minor
 ---
 
-fix(compiler): refuse a lowercase `<slot>` element (`INK0076`)
+fix(compiler): refuse a lowercase `<slot>` element (`INK0077`)
 
 Lowering turns the capitalized `<Slot>` into a slot placeholder. A lowercase `<slot>` parses as an
 ordinary JSX intrinsic, so no pass ever looked at it: it declared no slot, typed no prop, and was
@@ -26,7 +26,7 @@ lands in a shadow root. On Vue and Astro the same source _is_ that target's own 
 rendered while the component still declared no slot: no prop type, no fallback wiring, no `hasSlot`.
 One file, two meanings, and neither is the one the author wrote.
 
-`INK0076` is now reported as an error, from the `unloweredSlots` lowering that already reports
+`INK0077` is now reported as an error, from the `unloweredSlots` lowering that already reports
 `INK0069`. It matches the IR element rather than the emitted text: Vue and Astro print `<slot>` for a
 correctly lowered `<Slot>` too, so by codegen the two are no longer distinguishable. A lowercase
 `<slot>` surviving inside an expression lowering never reached — an IIFE, say — is reported from the

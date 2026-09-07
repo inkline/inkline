@@ -58,7 +58,7 @@ Slots have two channels: `defineSlot(name?)` (**primary style**, UXF-251) or the
 
 `createSignal(initial) → [get, set]` · `createMemo(fn)` · `createEffect(fn)` (may return cleanup) · `createRef()` (`.current`, element refs only) · `onMount` / `onCleanup` · `batch` / `untrack` · `defineProps<T>()` / `defineProps({…})` (props) · `defineModel(name = "value")` (two-way prop + `update:<name>` event, returns a signal tuple) · `defineEmits<E>() → emit` (custom events) · `defineSlot` / `hasSlot(name?)` · `createResource` (deferred — no runtime yet).
 
-Control flow is JSX, lowered in compiler pass P3: `<Show when fallback>` · `<For each key>` (**key is required** — INK0050 without it) · `<Switch>`/`<Match>` · `<Slot name?>` with fallback children (capital S — a lowercase `<slot>` is INK0076) · `<Transition>` (wraps one conditional element).
+Control flow is JSX, lowered in compiler pass P3: `<Show when fallback>` · `<For each key>` (**key is required** — INK0050 without it) · `<Switch>`/`<Match>` · `<Slot name?>` with fallback children (capital S — a lowercase `<slot>` is INK0077) · `<Transition>` (wraps one conditional element).
 
 ## How reads rewrite per target (the compiler's job, but know it)
 

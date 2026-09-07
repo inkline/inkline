@@ -10,20 +10,20 @@
  *
  *   pnpm --filter @inkline/compiler exec vp test run src/pipeline/uxf269-lowercase-slot.test.ts
  *
- * The code is reserved, not decided: INK0076 is the next free number (INK0075 → INK0080). The
- * compiler owner renames this one constant if they pick another.
+ * The code is INK0077. The guard reserved INK0076, but #619 (UXF-252) landed it first for a slot
+ * declared twice, so this one took the next free number.
  */
 import { describe, it, expect } from "vitest";
 import { compile } from "./compile.ts";
 import { ALL_TARGETS, type TargetName } from "../codegen/context.ts";
 
-const CODE = "INK0076";
+const CODE = "INK0077";
 
 async function compileAll(source: string) {
   const res = await compile({ fileName: "/Probe.ink.tsx", source }, { targets: ALL_TARGETS });
   return {
-    // Widened to `string`: `DiagnosticCode` is a closed union and INK0076 is not in it yet, so the
-    // narrow type would fail to COMPILE rather than fail as a test. The guard has to run today.
+    // Widened to `string` so the guard stays runnable against a build where `DiagnosticCode`, a
+    // closed union, does not carry the code yet: it must FAIL as a test, not fail to compile.
     codes: res.diagnostics.map((d) => d.code as string),
     out: (target: TargetName) => (res.files[target] ?? []).map((f) => f.contents).join("\n"),
   };

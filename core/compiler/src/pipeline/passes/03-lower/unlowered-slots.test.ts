@@ -91,16 +91,16 @@ describe("unloweredSlots", () => {
     expect(codes(comp)).toEqual(["INK0069"]);
   });
 
-  it("refuses a lowercase <slot> element (INK0076)", () => {
+  it("refuses a lowercase <slot> element (INK0077)", () => {
     const comp = makeComp(
       createElement({ tag: "div", children: [createElement({ tag: "slot" })] }),
     );
-    expect(codes(comp)).toEqual(["INK0076"]);
+    expect(codes(comp)).toEqual(["INK0077"]);
   });
 
   it("refuses a lowercase <slot> left inside an expression node", () => {
     const comp = makeComp(createExpr({ expr: mockExpr(`(() => <slot name="icon" />)()`) }));
-    expect(codes(comp)).toEqual(["INK0076"]);
+    expect(codes(comp)).toEqual(["INK0077"]);
   });
 
   it("stays silent on a slot lowering already materialised", () => {

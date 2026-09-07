@@ -45,7 +45,7 @@ function reportSlotTags(expr: ts.Expression, sourceFile: ts.SourceFile, ctx: Pas
       ts.isIdentifier(node.tagName)
     ) {
       if (node.tagName.text === "Slot") ctx.diagnostics.push("INK0069", toLoc(node, sourceFile));
-      if (node.tagName.text === "slot") ctx.diagnostics.push("INK0076", toLoc(node, sourceFile));
+      if (node.tagName.text === "slot") ctx.diagnostics.push("INK0077", toLoc(node, sourceFile));
     }
     ts.forEachChild(node, visit);
   };
@@ -54,7 +54,7 @@ function reportSlotTags(expr: ts.Expression, sourceFile: ts.SourceFile, ctx: Pas
 
 /**
  * Refuses every slot tag that lowering never turned into a slot placeholder — INK0069 for `<Slot>`,
- * INK0076 for the lowercase `<slot>`.
+ * INK0077 for the lowercase `<slot>`.
  *
  * Two distinct ways a slot goes unlowered:
  *
@@ -69,7 +69,7 @@ function reportSlotTags(expr: ts.Expression, sourceFile: ts.SourceFile, ctx: Pas
  *    this runs and cannot be flagged.
  *  - **Never eligible.** `controlFlow` lowers the capitalized `Slot` only, so a lowercase `<slot>`
  *    parses as an ordinary intrinsic and reaches this point as a plain `IRElement` — see
- *    INK0076 for why that is an error on all seven targets. It is matched on the IR element rather
+ *    INK0077 for why that is an error on all seven targets. It is matched on the IR element rather
  *    than on the emitted text because Vue and Astro print `<slot>` for a correctly lowered `<Slot>`
  *    too; the IR is the last place the two are still distinguishable.
  *
@@ -84,7 +84,7 @@ export function unloweredSlots(component: IRComponent, ctx: PassContext): IRComp
   walkRenderTree(component.render, {
     enter(node) {
       if (node.kind === "Element" && node.tag === "slot") {
-        ctx.diagnostics.push("INK0076", node.loc);
+        ctx.diagnostics.push("INK0077", node.loc);
       }
     },
   });
