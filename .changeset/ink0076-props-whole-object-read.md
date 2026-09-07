@@ -2,7 +2,7 @@
 "@inkline/compiler": minor
 ---
 
-fix(compiler): refuse a whole-object read of `props` (`INK0075`)
+fix(compiler): refuse a whole-object read of `props` (`INK0076`)
 
 Only `props.<name>` carries a member the rewriter can map to each target's props convention. A read
 of the object itself has no member to map, and the four `strip: true` targets emit no props object
@@ -21,7 +21,7 @@ the first sign was a `ReferenceError` in the browser. Svelte emitted
 returned an object carrying every passed-through attribute, which is not the object the author
 wrote. React, Solid, Qwik, Astro and Vue were correct, which is what made the split silent.
 
-`INK0075` is now reported, as an error, for both channels — the `defineProps` binding and the setup
+`INK0076` is now reported, as an error, for both channels — the `defineProps` binding and the setup
 parameter — and from the parse pass, so all seven targets agree before any of them runs. It is the
 companion to `INK0074`: that code refuses the binding under the wrong _name_, this one refuses
 reading the correctly-named binding as a whole _object_. A binding that is both misnamed and read

@@ -4,7 +4,7 @@ import { ALL_TARGETS } from "../../../codegen/context.ts";
 import { compile } from "../../compile.ts";
 import { resolve } from "node:path";
 
-// INK0075 is reported by the parse pass, before any target runs, so "the same on all seven targets"
+// INK0076 is reported by the parse pass, before any target runs, so "the same on all seven targets"
 // is a property of where the check lives rather than of seven separate implementations. These tests
 // pin that, and pin the forms the rule must NOT fire on — that half is what keeps the corpus green.
 
@@ -15,9 +15,9 @@ const CHANNELS = [
 
 describe("a whole-object read of `props`", () => {
   for (const [channel, fixture] of CHANNELS) {
-    it(`reports INK0075 once for the ${channel} channel`, async () => {
+    it(`reports INK0076 once for the ${channel} channel`, async () => {
       const compiled = await compileFixture(fixture, ALL_TARGETS);
-      const reported = compiled.diagnostics.filter((d) => d.code === "INK0075");
+      const reported = compiled.diagnostics.filter((d) => d.code === "INK0076");
 
       expect(reported).toHaveLength(1);
       expect(reported[0]!.severity).toBe("error");
@@ -32,7 +32,7 @@ describe("a whole-object read of `props`", () => {
       );
 
       for (const [target, codes] of perTarget) {
-        expect(codes, target).toEqual(["INK0075"]);
+        expect(codes, target).toEqual(["INK0076"]);
       }
     });
   }
@@ -58,7 +58,7 @@ export default defineComponent(() => {
 });
 `);
 
-    expect(codes).toContain("INK0075");
+    expect(codes).toContain("INK0076");
   });
 
   it("reports each whole-object read separately", async () => {
@@ -73,7 +73,7 @@ export default defineComponent(() => {
 });
 `);
 
-    expect(codes.filter((c) => c === "INK0075")).toHaveLength(2);
+    expect(codes.filter((c) => c === "INK0076")).toHaveLength(2);
   });
 
   // The false-positive guard, and the reason the rule is scoped to a bare identifier: `props.<name>`
@@ -90,7 +90,7 @@ export default defineComponent(() => {
 });
 `);
 
-    expect(codes).not.toContain("INK0075");
+    expect(codes).not.toContain("INK0076");
   });
 
   // Destructuring names its members statically, so every target already lowers it to the same
@@ -109,7 +109,7 @@ export default defineComponent(() => {
 });
 `);
 
-    expect(codes).not.toContain("INK0075");
+    expect(codes).not.toContain("INK0076");
   });
 
   // A misnamed binding read as a whole is one mistake, and INK0074 already names it. Reporting both
@@ -127,7 +127,7 @@ export default defineComponent(() => {
 `);
 
     expect(codes).toContain("INK0074");
-    expect(codes).not.toContain("INK0075");
+    expect(codes).not.toContain("INK0076");
   });
 
   // Symbol identity, not text, decides what counts as a read — the same guard INK0074 carries. A
@@ -149,7 +149,7 @@ export default defineComponent(() => {
 });
 `);
 
-    expect(codes).not.toContain("INK0075");
+    expect(codes).not.toContain("INK0076");
   });
 
   // The headless components in `ui/components` bind `defineProps` only to name their props type and
@@ -164,7 +164,7 @@ export default defineComponent(() => {
 });
 `);
 
-    expect(codes).not.toContain("INK0075");
+    expect(codes).not.toContain("INK0076");
   });
 });
 

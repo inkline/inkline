@@ -21,7 +21,13 @@ import { setupDeclaredNames } from "../../../ir/setup.ts";
 import type { PassContext } from "../../types.ts";
 import type { BindingTable } from "./bind-primitives.ts";
 import { toLoc } from "./loc.ts";
-import { bindMacros, checkMacroGrammar, macroForInitializer, type MacroContext } from "./macros.ts";
+import {
+  bindMacros,
+  checkMacroGrammar,
+  macroForCall,
+  type MacroContext,
+  type MacroContribution,
+} from "./macros.ts";
 import { ParseBindingScope } from "./scope.ts";
 
 function localFor(bindings: BindingTable, prim: PrimitiveName): string | undefined {
@@ -193,6 +199,21 @@ export function parseSetup(
     registerBinding,
   };
 
+  const applyMacroContribution = (contribution: MacroContribution | undefined): void => {
+    if (!contribution) return;
+    models.push(...(contribution.models ?? []));
+    events.push(...(contribution.events ?? []));
+    slotDeclarations.push(...(contribution.slots ?? []));
+    for (const [local, slot] of contribution.slotBindings ?? []) {
+      slotBindings.set(local, slot);
+    }
+    if (contribution.emitName !== undefined) emitName = contribution.emitName;
+    if (contribution.props !== undefined) {
+      props = props ? [...props, ...contribution.props] : [...contribution.props];
+      propsTypeText ??= contribution.propsTypeText;
+    }
+  };
+
   for (const stmt of body) {
     const loc = toLoc(stmt, sourceFile);
 
@@ -270,22 +291,9 @@ export function parseSetup(
           continue;
         }
 
-        const macroCall = macroForInitializer(init, macros);
+        const macroCall = macroForCall(init, macros);
         if (macroCall) {
-          const contribution = macroCall.macro.parse?.({ call: macroCall.call, decl }, macroCtx);
-          if (contribution) {
-            models.push(...(contribution.models ?? []));
-            events.push(...(contribution.events ?? []));
-            slotDeclarations.push(...(contribution.slots ?? []));
-            for (const [local, slot] of contribution.slotBindings ?? []) {
-              slotBindings.set(local, slot);
-            }
-            if (contribution.emitName !== undefined) emitName = contribution.emitName;
-            if (contribution.props !== undefined) {
-              props = props ? [...props, ...contribution.props] : [...contribution.props];
-              propsTypeText ??= contribution.propsTypeText;
-            }
-          }
+          applyMacroContribution(macroCall.macro.parse?.({ call: macroCall.call, decl }, macroCtx));
           continue;
         }
 
@@ -437,7 +445,7 @@ export function parseSetup(
               isCallTo(d.initializer, refLocal) ||
               isCallTo(d.initializer, resourceLocal) ||
               isCallTo(d.initializer, useContextLocal) ||
-              macroForInitializer(d.initializer, macros) !== undefined),
+              macroForCall(d.initializer, macros) !== undefined),
         )
       ) {
         setup.push({ stmt, defines: setupDeclaredNames(stmt), loc });
@@ -447,6 +455,15 @@ export function parseSetup(
 
     if (ts.isExpressionStatement(stmt)) {
       const expr = stmt.expression;
+
+      // A macro written without a binding. `defineSlot();` declares its slot from here; the
+      // binding-required macros contribute nothing and are reported as INK0075. Either way the
+      // call is erased (R4), so the statement never reaches `setup`.
+      const macroStmt = macroForCall(expr, macros);
+      if (macroStmt) {
+        applyMacroContribution(macroStmt.macro.parse?.({ call: macroStmt.call }, macroCtx));
+        continue;
+      }
 
       if (isCallTo(expr, effectLocal) && expr.arguments[0]) {
         effects.push({

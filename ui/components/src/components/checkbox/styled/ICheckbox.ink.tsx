@@ -1,4 +1,11 @@
-import { defineComponent, defineProps, Slot, defineModel, createMemo } from "@inkline/core";
+import {
+  defineComponent,
+  defineProps,
+  defineSlot,
+  Slot,
+  defineModel,
+  createMemo,
+} from "@inkline/core";
 import ICheckboxBase from "../headless/ICheckboxBase.ink.tsx";
 import ICheckboxControlBase, {
   type CheckboxControlBaseProps,
@@ -29,8 +36,9 @@ export interface CheckboxProps extends CheckboxControlBaseProps {
  * a prop (the control applies it as a DOM property), as is `readonly` (the control expresses it with
  * `aria-readonly` and a click guard). The checked accent is the theme primary.
  */
-export default defineComponent({ meta: { headless: true }, slots: { default: {} } }, () => {
+export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<CheckboxProps>();
+  defineSlot();
 
   const [checked, _setChecked] = defineModel<boolean>("checked");
 

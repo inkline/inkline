@@ -130,14 +130,15 @@ Declaring through two of them is `INK0047`, an error. A mismatched pair compiles
 `defineProps` is the documented primary style ([ADR-010](./adrs/010-defineprops-joins-the-macro-family.md), decision 5):
 
 ```tsx
-import { defineComponent, defineProps, Slot } from "@inkline/core";
+import { defineComponent, defineProps, defineSlot, Slot } from "@inkline/core";
 
 export interface BadgeProps {
   label?: string;
 }
 
-export default defineComponent({ slots: { default: {} }, meta: { headless: true } }, () => {
+export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<BadgeProps>();
+  defineSlot();
   return (
     <div class="badge">
       <Slot>{props.label}</Slot>
@@ -151,20 +152,21 @@ The type argument may be an inline object type, or an `interface` / `type`, incl
 Three rules apply to the binding:
 
 - **Name it `props`.** Every target emits and rewrites the props object under that fixed name, so a read through a binding under any other name is copied to the output unrewritten — the emitted component then references an identifier it never declares. That is `INK0074`, an error, on the macro channel and the setup parameter alike. The rule fires on a **read** of the binding, matched on its symbol and not on its name: a binding nothing reads is erased with its declaration and stays legal, and a same-named local in a sibling component never triggers it.
-- **Read it through a property.** Only `props.<name>` carries a member the rewriter can map to each target's props convention. Four targets emit no props object at all, so a read of the object itself — `String(props)`, `JSON.stringify(props)`, `Object.keys(props)`, `{ ...props }` — has nothing to map: Angular copies it through as a class member it never declares, and Svelte substitutes the destructured shape, which also carries every passed-through attribute and so is not the object you wrote. That is `INK0075`, an error, on both channels. A binding that is both misnamed and read whole reports `INK0074` alone. To pass props on, build the object explicitly from the properties you declared.
+- **Read it through a property.** Only `props.<name>` carries a member the rewriter can map to each target's props convention. Four targets emit no props object at all, so a read of the object itself — `String(props)`, `JSON.stringify(props)`, `Object.keys(props)`, `{ ...props }` — has nothing to map: Angular copies it through as a class member it never declares, and Svelte substitutes the destructured shape, which also carries every passed-through attribute and so is not the object you wrote. That is `INK0076`, an error, on both channels. A binding that is both misnamed and read whole reports `INK0074` alone. To pass props on, build the object explicitly from the properties you declared.
 - **Never destructure it.** Solid passes props as a reactive proxy; destructuring snapshots the value once and freezes it. The Solid target enforces this with the `requirePropsNotDestructured` conformance invariant.
 
 **`defineProps` does not improve parent-side typing.** A consumer still gets no checking on `<IButton colr="light" />` — the same limitation listed under "Markup is type-checked" above. The road to typed parent props is Option D in [ADR-010](./adrs/010-defineprops-joins-the-macro-family.md), and it is uncosted.
 
-**The corpus has not been migrated.** Every component under `ui/components/` still uses the setup-parameter annotation, because the house-style question is open (ADR-010, decision 8). Both forms are legal; new components should prefer `defineProps`.
+**The corpus declares props and slots at the call site.** Every component under `ui/components/` uses `defineProps` (UXF-250) and `defineSlot` (UXF-251) — no options `props` or `slots` key remains. The other channels are still legal and still tested; write new components in the macro form.
 
 ### Macro grammar
 
-`defineProps`, `defineModel`, `defineEmits`, `defineSlot` and `hasSlot` are macros: the compiler reads them at build time and erases them. Three rules an author can hit:
+`defineProps`, `defineModel`, `defineEmits`, `defineSlot` and `hasSlot` are macros: the compiler reads them at build time and erases them. Four rules an author can hit:
 
 - **Call a macro at the top level of the setup body** — never in a condition, a loop, or a nested function. A macro is erased, so a nested call still declares unconditionally while reading as if it did not (`INK0049`). `hasSlot` is exempt: it is a query, not a declaration, so it is legal anywhere in the setup body.
+- **Bind the result** — `const props = defineProps<P>()`, `const emit = defineEmits(…)`, `const [value, setValue] = defineModel()`. The binding is the only way to reach what the macro declares, and the call itself is erased, so a bare `defineProps();` reads as a declaration while being none (`INK0075`). `defineSlot` is the exception: the call declares the slot on its own, and the binding only names it for the render tree. Write `defineSlot();` when the component renders the slot as `<Slot>`, and bind it when the render tree places the slot by name.
 - **Pass statically analyzable arguments** — a string literal, an array of string literals, or an object literal (`INK0048`). `defineModel` reports its own argument rule under `INK0043`.
-- **One declaration channel per concern** — props are `INK0047`, an error; an event name declared in both `defineEmits` and the options `events` map is `INK0046`, a warning.
+- **One declaration channel per concern** — props are `INK0047`, an error; an event name declared in both `defineEmits` and the options `events` map is `INK0046`, a warning. Slots have no such diagnostic: a name declared in both `defineSlot` and the options `slots` map is declared **twice**, silently. Declare each slot in one place.
 
 ## Authoring primitives
 
