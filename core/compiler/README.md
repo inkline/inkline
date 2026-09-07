@@ -457,9 +457,12 @@ export default defineComponent({ slots: { default: {}, prefix: {} } }, () => {
 });
 ```
 
-Unlike props (`INK0047`) and events (`INK0046`), the two slot channels are **not** checked against
-each other: one name declared on both is registered twice, and nothing is reported. So when you move
-a component to `defineSlot`, delete the options entry — never add the macro beside it.
+Like props (`INK0047`) and events (`INK0046`), the two slot channels are checked against each other.
+A name declared twice is `INK0076`, a warning — whether the two declarations sit on different
+channels or on the same one. The first declaration wins, and across channels that is the options
+entry, since it is the only one that carries `required` and `scoped`. So when you move a component to
+`defineSlot`, delete the options entry — never add the macro beside it, or the macro's declaration is
+the one dropped and reported.
 
 **`hasSlot(name?)`** reports whether a slot was filled, so a component can omit a wrapper when its
 slot is empty (`hasSlot()` checks the default slot):
