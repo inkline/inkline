@@ -20,6 +20,7 @@ import { toLoc } from "./loc.ts";
 import { parseExpression } from "./jsx/index.ts";
 import { reportSpreadAttributes } from "./jsx/spread.ts";
 import { parseOptions, parsePropsFromParameterType } from "./options.ts";
+import { checkPropsBindingName } from "./props-binding.ts";
 import { findSites } from "./sites.ts";
 import { parseSetup } from "./setup.ts";
 
@@ -70,6 +71,13 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         optionsResult?.props === undefined && setupResult.props !== undefined
           ? setupResult.propsTypeText
           : getPropsTypeText(site.setupFn, sourceFile);
+
+      // R5 — the props binding must be named `props`. For the options and annotation channels the
+      // binding is the setup parameter; the macro channel checks its own binding from `parse`.
+      const propsParam = site.setupFn.parameters[0];
+      if (setupResult.props === undefined && propsParam) {
+        checkPropsBindingName(propsParam.name, sourceFile, checker, ctx);
+      }
 
       // `component.models` is the single source of truth for two-way models — each target surfaces the
       // value prop + `update:<prop>` callback from it directly. We only warn (INK0044) when a model
