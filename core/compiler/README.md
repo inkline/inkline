@@ -233,7 +233,7 @@ symbol, so it never triggers the rule.
 target's props convention. Four targets emit no props object at all, so a read of the object itself —
 `String(props)`, `JSON.stringify(props)`, `{ ...props }` — has nothing to map: Angular copies it
 through as a class member it never declares, and Svelte substitutes the destructured shape, which
-also carries every passed-through attribute and so is not the object you wrote. `INK0075`, an error,
+also carries every passed-through attribute and so is not the object you wrote. `INK0076`, an error,
 refuses that read on both channels:
 
 ```tsx
@@ -241,7 +241,7 @@ const props = defineProps<ButtonProps>();
 return <button title={String(props)}>{props.label}</button>;
 ```
 
-> `INK0075` · error · The props object is read as a whole, not through a property
+> `INK0076` · error · The props object is read as a whole, not through a property
 
 A misnamed binding read as a whole reports `INK0074` alone — one mistake, one error. To pass props
 on, build the object explicitly from the properties you declared.

@@ -112,6 +112,26 @@ export default defineComponent(() => {
     expect(codes).not.toContain("INK0076");
   });
 
+  // `props["label"]` is not a property access, so the rule sees a bare read and refuses it. That is
+  // the safe half of the split — the form breaks on Angular exactly as `String(props)` does — but it
+  // is not the outcome UXF-262 wants: a static string index names its member, so the rewriter can map
+  // it, and UXF-262 tracks that as a rewrite. This test is here so the change lands deliberately. If
+  // you are fixing UXF-262, invert it to `not.toContain` — do not delete it.
+  it("refuses a static string index, pending the rewrite in UXF-262", async () => {
+    const codes = await compileSource(`
+export interface WholeProps {
+  label: string;
+}
+
+export default defineComponent(() => {
+  const props = defineProps<WholeProps>();
+  return <div title={props["label"]} />;
+});
+`);
+
+    expect(codes).toContain("INK0076");
+  });
+
   // A misnamed binding read as a whole is one mistake, and INK0074 already names it. Reporting both
   // would make the author fix the name only to be handed a second error for the same line.
   it("defers to INK0074 when the binding is also misnamed", async () => {
