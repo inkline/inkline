@@ -383,9 +383,9 @@ options object. Declare each event in one place or the other, never both.
 
 ### Slots
 
-A component declares its slots in the options object and renders them with the `<Slot>` component
-(the default slot is the lowercase `<slot>` JSX intrinsic). A `<Slot>` may wrap fallback content,
-shown when the slot is empty.
+A component declares its slots in the options object and renders them with the `<Slot>` component —
+the default slot is `<Slot />`, with no `name`. A `<Slot>` may wrap fallback content, shown when the
+slot is empty.
 
 ```tsx
 import { defineComponent, Slot } from "@inkline/core";
@@ -396,11 +396,14 @@ export default defineComponent({ slots: { default: {}, prefix: {} } }, () => {
       <span class="prefix">
         <Slot name="prefix" />
       </span>
-      <slot>Default content</slot>
+      <Slot>Default content</Slot>
     </div>
   );
 });
 ```
+
+Write `Slot` with a capital S. A lowercase `<slot>` is an ordinary DOM element, not a slot outlet:
+it declares no slot and projects nothing. The compiler refuses it with `INK0076`.
 
 A consumer fills a named slot by passing JSX to a matching attribute (`<MyField prefix={<Icon />} />`);
 the compiler lowers it to each target's slot mechanism (a `render<Name>` prop on React/Solid, a
