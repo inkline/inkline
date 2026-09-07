@@ -37,12 +37,14 @@ export default defineNuxtConfig({
       redirect: { to: "/docs/getting-started", statusCode: 301 },
     },
   },
-  // Storybook embed host. Empty by default → the component falls back to the
-  // documented per-framework convention (https://{framework}.storybook.inkline.io).
-  // Override at build time with NUXT_PUBLIC_STORYBOOK_BASE_URL, no code change.
+  // Storybook embed host for the layer's `StorybookEmbed`. The layer leaves this
+  // empty — the host is a consumer fact — so the per-framework convention lives
+  // here. `{framework}` is substituted per embed by the component. There is no
+  // deployed Storybook host committed yet (apps/website/AGENTS.md § Known gaps);
+  // override at build time with NUXT_PUBLIC_STORYBOOK_BASE_URL, no code change.
   runtimeConfig: {
     public: {
-      storybookBaseUrl: "",
+      storybookBaseUrl: "https://{framework}.storybook.inkline.io",
     },
   },
   nitro: {
