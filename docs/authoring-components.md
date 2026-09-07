@@ -138,7 +138,7 @@ export interface BadgeProps {
 
 export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<BadgeProps>();
-  const _defaultSlot = defineSlot();
+  defineSlot();
   return (
     <div class="badge">
       <Slot>{props.label}</Slot>
@@ -160,9 +160,10 @@ Two rules apply to the binding:
 
 ### Macro grammar
 
-`defineProps`, `defineModel`, `defineEmits`, `defineSlot` and `hasSlot` are macros: the compiler reads them at build time and erases them. Three rules an author can hit:
+`defineProps`, `defineModel`, `defineEmits`, `defineSlot` and `hasSlot` are macros: the compiler reads them at build time and erases them. Four rules an author can hit:
 
 - **Call a macro at the top level of the setup body** — never in a condition, a loop, or a nested function. A macro is erased, so a nested call still declares unconditionally while reading as if it did not (`INK0049`). `hasSlot` is exempt: it is a query, not a declaration, so it is legal anywhere in the setup body.
+- **Bind the result** — `const props = defineProps<P>()`, `const emit = defineEmits(…)`, `const [value, setValue] = defineModel()`. The binding is the only way to reach what the macro declares, and the call itself is erased, so a bare `defineProps();` reads as a declaration while being none (`INK0075`). `defineSlot` is the exception: the call declares the slot on its own, and the binding only names it for the render tree. Write `defineSlot();` when the component renders the slot as `<Slot>`, and bind it when the render tree places the slot by name.
 - **Pass statically analyzable arguments** — a string literal, an array of string literals, or an object literal (`INK0048`). `defineModel` reports its own argument rule under `INK0043`.
 - **One declaration channel per concern** — props are `INK0047`, an error; an event name declared in both `defineEmits` and the options `events` map is `INK0046`, a warning. Slots have no such diagnostic: a name declared in both `defineSlot` and the options `slots` map is declared **twice**, silently. Declare each slot in one place.
 

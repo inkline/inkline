@@ -39,6 +39,15 @@ export type StaticArgumentsOwner = "registry" | "macro";
 export interface MacroRules {
   /** R1 — valid only as a top-level statement of the setup body, never nested in a function, conditional or loop. */
   readonly topLevelOnly: boolean;
+  /**
+   * R1b — the result must be bound to a local, so a bare `defineProps();` statement is INK0075.
+   *
+   * The binding is the only way to reach what the macro declares — the props object, the emit
+   * function, the model's getter and setter — and the call itself is erased, so an unbound one
+   * reads as a declaration while being none. `defineSlot` is the exception: it declares its slot
+   * from the call alone, and its binding only gives the render tree a name to place the slot by.
+   */
+  readonly bindingRequired: boolean;
   /** R2 — arguments and type arguments must be statically analyzable; the value names who reports it. */
   readonly staticArguments: StaticArgumentsOwner;
   /** R3 — the concern declared, or `undefined` when the macro declares nothing. */
@@ -56,10 +65,13 @@ export interface MacroRules {
  */
 export type MacroPosition = "declaration" | "expression";
 
-/** One `const <name> = <macro>(…)` the registry was asked to read. */
+/**
+ * One macro call the registry was asked to read. `decl` is the declaration a
+ * `const <name> = <macro>(…)` call initializes, and is absent for a bare `<macro>(…);` statement.
+ */
 export interface MacroCallSite {
   readonly call: ts.CallExpression;
-  readonly decl: ts.VariableDeclaration;
+  readonly decl?: ts.VariableDeclaration;
 }
 
 /** Everything a macro's `parse` may read or mint. Symbols and scope are shared, so they stay side effects. */
@@ -181,9 +193,16 @@ function declaredEmits(
 const defineModelMacro: MacroDefinition = {
   name: "defineModel",
   position: "declaration",
-  rules: { topLevelOnly: true, staticArguments: "macro", declares: "models", erased: true },
+  rules: {
+    topLevelOnly: true,
+    bindingRequired: true,
+    staticArguments: "macro",
+    declares: "models",
+    erased: true,
+  },
   parse({ call, decl }, { componentId, sourceFile, pass, scope, registerBinding }) {
     // const [value, setValue] = defineModel("value") — a two-way-bindable prop + update event.
+    if (!decl) return undefined;
     const elements = ts.isArrayBindingPattern(decl.name) ? decl.name.elements : undefined;
     const first = elements?.[0];
     const second = elements?.[1];
@@ -243,9 +262,16 @@ const defineModelMacro: MacroDefinition = {
 const defineEmitsMacro: MacroDefinition = {
   name: "defineEmits",
   position: "declaration",
-  rules: { topLevelOnly: true, staticArguments: "registry", declares: "events", erased: true },
+  rules: {
+    topLevelOnly: true,
+    bindingRequired: true,
+    staticArguments: "registry",
+    declares: "events",
+    erased: true,
+  },
   parse({ call, decl }, { sourceFile, checker, pass }) {
     // const emit = defineEmits(["change"]) / defineEmits<{ change: [v: string] }>()
+    if (!decl) return undefined;
     const events: IREventDeclaration[] = declaredEmits(call, sourceFile, checker, pass).map(
       ({ name, payloadType }) => ({ name, payloadType, loc: toLoc(decl, sourceFile) }),
     );
@@ -253,38 +279,43 @@ const defineEmitsMacro: MacroDefinition = {
   },
 };
 
+/**
+ * `defineSlot()` / `defineSlot("name")` — the slot channel, declared in the setup body.
+ *
+ * The binding is optional, which makes this the one declaration macro legal as a bare statement.
+ * The call declares the slot; the binding only names it for the render tree, where `{footer}`
+ * lowers to the slot's placeholder (`03-lower/define-slot.ts`). A component that renders the slot
+ * as `<Slot name="footer">` instead never reads the local, so requiring one would be ceremony.
+ */
 const defineSlotMacro: MacroDefinition = {
   name: "defineSlot",
   position: "declaration",
-  rules: { topLevelOnly: true, staticArguments: "registry", declares: "slots", erased: true },
+  rules: {
+    topLevelOnly: true,
+    bindingRequired: false,
+    staticArguments: "registry",
+    declares: "slots",
+    erased: true,
+  },
   parse({ call, decl }, { componentId, sourceFile, pass, registerBinding }) {
-    if (!ts.isIdentifier(decl.name)) return undefined;
+    const binding = decl?.name;
+    if (binding && !ts.isIdentifier(binding)) return undefined;
 
     let slotName = "default";
     if (call.arguments[0] && ts.isStringLiteral(call.arguments[0])) {
       slotName = call.arguments[0].text;
     }
 
-    const id = pass.symbols.mint({
-      componentId,
-      kind: "slot",
-      name: slotName,
-      loc: toLoc(decl, sourceFile),
-    });
+    const loc = toLoc(decl ?? call, sourceFile);
 
-    registerBinding(decl.name, id, "slot");
+    if (binding) {
+      const id = pass.symbols.mint({ componentId, kind: "slot", name: slotName, loc });
+      registerBinding(binding, id, "slot");
+    }
 
     return {
-      slots: [
-        {
-          name: slotName,
-          isScoped: false,
-          scopedProps: [],
-          required: false,
-          loc: toLoc(decl, sourceFile),
-        },
-      ],
-      slotBindings: [[decl.name.text, slotName]],
+      slots: [{ name: slotName, isScoped: false, scopedProps: [], required: false, loc }],
+      slotBindings: binding ? [[binding.text, slotName]] : [],
     };
   },
 };
@@ -304,8 +335,15 @@ const defineSlotMacro: MacroDefinition = {
 const definePropsMacro: MacroDefinition = {
   name: "defineProps",
   position: "declaration",
-  rules: { topLevelOnly: true, staticArguments: "registry", declares: "props", erased: true },
+  rules: {
+    topLevelOnly: true,
+    bindingRequired: true,
+    staticArguments: "registry",
+    declares: "props",
+    erased: true,
+  },
   parse({ call, decl }, { componentId, sourceFile, checker, pass, registerBinding }) {
+    if (!decl) return undefined;
     const typeArg = call.typeArguments?.[0];
     const arg = call.arguments[0];
 
@@ -342,7 +380,13 @@ const definePropsMacro: MacroDefinition = {
 const hasSlotMacro: MacroDefinition = {
   name: "hasSlot",
   position: "expression",
-  rules: { topLevelOnly: false, staticArguments: "registry", declares: undefined, erased: true },
+  rules: {
+    topLevelOnly: false,
+    bindingRequired: false,
+    staticArguments: "registry",
+    declares: undefined,
+    erased: true,
+  },
 };
 
 /** Every compiler macro. Recognition is by binding, never by name — see {@link bindMacros}. */
@@ -388,13 +432,14 @@ function isStaticMacroArgument(arg: ts.Expression): boolean {
 }
 
 /**
- * Enforce R1 (top level only, INK0049) and R2 (statically analyzable arguments, INK0048) over every
- * macro call in the setup function, wherever it is written.
+ * Enforce R1 (top level only, INK0049), R1b (the result is bound, INK0075) and R2 (statically
+ * analyzable arguments, INK0048) over every macro call in the setup function, wherever it is
+ * written.
  *
- * The dispatch in {@link parseSetup} only ever sees a macro in the one position it accepts, so a
- * nested call would otherwise be silently ignored: erased on some targets, emitted as a call to a
- * stub on others, and in either case declaring nothing while reading as if it declared something.
- * This walk is what makes both failures diagnosable.
+ * The dispatch in {@link parseSetup} only ever sees a macro in a position it accepts, so a call
+ * written anywhere else would otherwise be silently ignored: erased on some targets, emitted as a
+ * call to a stub on others, and in either case declaring nothing while reading as if it declared
+ * something. This walk is what makes those failures diagnosable.
  */
 export function checkMacroGrammar(
   setupFn: ts.ArrowFunction | ts.FunctionExpression,
@@ -404,19 +449,20 @@ export function checkMacroGrammar(
 ): void {
   if (macros.size === 0) return;
 
-  // The calls the dispatch can reach: a top-level statement's own call, or the initializer of one
-  // of its declarations.
-  const topLevel = new Set<ts.CallExpression>();
+  // The two top-level shapes the dispatch can reach, kept apart because R1b turns on which one it
+  // is: the initializer of a top-level declaration, or a top-level statement's own call.
+  const bound = new Set<ts.CallExpression>();
+  const unbound = new Set<ts.CallExpression>();
   if (ts.isBlock(setupFn.body)) {
     for (const stmt of setupFn.body.statements) {
       if (ts.isVariableStatement(stmt)) {
         for (const decl of stmt.declarationList.declarations) {
           if (decl.initializer && ts.isCallExpression(decl.initializer)) {
-            topLevel.add(decl.initializer);
+            bound.add(decl.initializer);
           }
         }
       } else if (ts.isExpressionStatement(stmt) && ts.isCallExpression(stmt.expression)) {
-        topLevel.add(stmt.expression);
+        unbound.add(stmt.expression);
       }
     }
   }
@@ -425,8 +471,10 @@ export function checkMacroGrammar(
     if (ts.isCallExpression(node) && ts.isIdentifier(node.expression)) {
       const macro = macros.get(node.expression.text);
       if (macro) {
-        if (macro.rules.topLevelOnly && !topLevel.has(node)) {
+        if (macro.rules.topLevelOnly && !bound.has(node) && !unbound.has(node)) {
           ctx.diagnostics.push("INK0049", toLoc(node, sourceFile));
+        } else if (macro.rules.bindingRequired && unbound.has(node)) {
+          ctx.diagnostics.push("INK0075", toLoc(node, sourceFile), { name: macro.name });
         }
         if (macro.rules.staticArguments === "registry") {
           for (const arg of node.arguments) {
@@ -442,14 +490,19 @@ export function checkMacroGrammar(
 }
 
 /**
- * The declaration-position macro this initializer calls, if any. `expression` macros are excluded:
- * `const x = hasSlot("a")` declares nothing and stays an ordinary setup statement.
+ * The declaration-position macro this expression calls, if any — read both from a declaration's
+ * initializer and from a bare setup statement. `expression` macros are excluded: `hasSlot("a")`
+ * declares nothing and stays an ordinary setup statement wherever it is written.
+ *
+ * A binding-required macro is recognized in statement position too, so that the dispatch erases its
+ * statement (R4) rather than emitting it. {@link checkMacroGrammar} has already refused it under
+ * INK0075, and its `parse` contributes nothing without a declaration.
  */
-export function macroForInitializer(
-  init: ts.Expression,
+export function macroForCall(
+  expr: ts.Expression,
   macros: ReadonlyMap<string, MacroDefinition>,
 ): { macro: MacroDefinition; call: ts.CallExpression } | undefined {
-  if (!ts.isCallExpression(init) || !ts.isIdentifier(init.expression)) return undefined;
-  const macro = macros.get(init.expression.text);
-  return macro?.position === "declaration" ? { macro, call: init } : undefined;
+  if (!ts.isCallExpression(expr) || !ts.isIdentifier(expr.expression)) return undefined;
+  const macro = macros.get(expr.expression.text);
+  return macro?.position === "declaration" ? { macro, call: expr } : undefined;
 }

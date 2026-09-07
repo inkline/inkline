@@ -8,7 +8,7 @@ export interface SwitchBaseProps {}
 // falls through to it.
 export default defineComponent({ meta: { headless: true } }, () => {
   const _props = defineProps<SwitchBaseProps>();
-  const _defaultSlot = defineSlot();
+  defineSlot();
 
   return (
     <label class="switch">

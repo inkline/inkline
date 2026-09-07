@@ -10,7 +10,7 @@ export interface RadioBaseProps {
 // parent's recipe `class` falls through onto the `<label class="radio">`.
 export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<RadioBaseProps>();
-  const _defaultSlot = defineSlot();
+  defineSlot();
 
   return (
     <label class="radio" id={props.id}>

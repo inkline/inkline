@@ -38,7 +38,7 @@ export interface CheckboxProps extends CheckboxControlBaseProps {
  */
 export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<CheckboxProps>();
-  const _defaultSlot = defineSlot();
+  defineSlot();
 
   const [checked, _setChecked] = defineModel<boolean>("checked");
 

@@ -6,7 +6,7 @@ export interface BadgeProps extends BadgeBaseProps, BadgeStylingProps {}
 
 export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<BadgeProps>();
-  const _defaultSlot = defineSlot();
+  defineSlot();
 
   const className = createMemo(() =>
     badgeRecipe({ color: props.color, variant: props.variant, size: props.size }),

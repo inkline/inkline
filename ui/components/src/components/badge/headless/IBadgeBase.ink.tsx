@@ -10,7 +10,7 @@ export default defineComponent(
   },
   () => {
     const props = defineProps<BadgeBaseProps>();
-    const _defaultSlot = defineSlot();
+    defineSlot();
 
     return (
       <div class="badge">

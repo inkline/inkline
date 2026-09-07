@@ -214,6 +214,13 @@ export const DIAGNOSTICS = {
     help: '$bind: lowers to a value attribute plus a writer, and <{tag}> has nothing to write "{name}" to — the generated handler would call the bound expression as a setter and throw at runtime. {suggestion}' as const,
     url: "https://docs.inkline.dev/diagnostics/INK0073" as const,
   },
+  // INK0074 is taken on `main` by the props-binding-name check (UXF-249); this branch predates it.
+  INK0075: {
+    severity: "error" as const,
+    title: "{name} declares nothing unless its result is bound" as const,
+    help: 'Bind the result — const props = defineProps<P>(), const emit = defineEmits(["change"]), const [value, setValue] = defineModel(). The binding is the only way to reach what the macro declares, and the call itself is erased from the output, so an unbound one reads as a declaration while being none. defineSlot is the exception: it declares its slot with or without a binding.' as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0075" as const,
+  },
   INK0080: {
     severity: "warning" as const,
     title: "Unknown target option: {key}" as const,

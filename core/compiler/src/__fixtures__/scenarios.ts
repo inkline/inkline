@@ -240,4 +240,5 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
     { name: "triggers INK0048", asserts: { expectedDiagnostics: ["INK0048"] } },
   ],
   Diag_MacroNested: [{ name: "triggers INK0049", asserts: { expectedDiagnostics: ["INK0049"] } }],
+  Diag_MacroUnbound: [{ name: "triggers INK0075", asserts: { expectedDiagnostics: ["INK0075"] } }],
 };
