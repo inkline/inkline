@@ -1,4 +1,4 @@
-import { defineComponent, defineProps, Slot } from "@inkline/core";
+import { defineComponent, defineProps, defineSlot, Slot } from "@inkline/core";
 
 export interface SwitchBaseProps {}
 
@@ -6,8 +6,9 @@ export interface SwitchBaseProps {}
 // label toggles the field (implicit label association) and the label text supplies the accessible
 // name. Single static root, so it host-extracts to `label[ink-switch-base]` and the styled `class`
 // falls through to it.
-export default defineComponent({ meta: { headless: true }, slots: { default: {} } }, () => {
+export default defineComponent({ meta: { headless: true } }, () => {
   const _props = defineProps<SwitchBaseProps>();
+  const _defaultSlot = defineSlot();
 
   return (
     <label class="switch">

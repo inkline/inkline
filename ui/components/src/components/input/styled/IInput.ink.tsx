@@ -1,6 +1,7 @@
 import {
   defineComponent,
   defineProps,
+  defineSlot,
   Slot,
   Show,
   defineModel,
@@ -44,60 +45,59 @@ export interface InputProps extends InputControlBaseProps {
  * Qwik/Angular, which lack runtime slot presence). The two-way `value` is forwarded to the control
  * via `$bind:value`. To attach controls outside the field, wrap them in `IFieldGroup`.
  */
-export default defineComponent(
-  { meta: { headless: true }, slots: { prefix: {}, suffix: {} } },
-  () => {
-    const props = defineProps<InputProps>();
+export default defineComponent({ meta: { headless: true } }, () => {
+  const props = defineProps<InputProps>();
+  const _prefixSlot = defineSlot("prefix");
+  const _suffixSlot = defineSlot("suffix");
 
-    const [value, _setValue] = defineModel<string>("value");
+  const [value, _setValue] = defineModel<string>("value");
 
-    const shellClassName = createMemo(() =>
-      inputRecipe({
-        color: props.color,
-        variant: props.variant,
-        size: props.size,
-        invalid: props.invalid,
-        disabled: props.disabled,
-        readonly: props.readonly,
-      }),
-    );
+  const shellClassName = createMemo(() =>
+    inputRecipe({
+      color: props.color,
+      variant: props.variant,
+      size: props.size,
+      invalid: props.invalid,
+      disabled: props.disabled,
+      readonly: props.readonly,
+    }),
+  );
 
-    return (
-      <IInputBase class={shellClassName()}>
-        <Show when={hasSlot("prefix")}>
-          <IInputPrefixBase class={inputPrefixRecipe({ size: props.size })}>
-            <Slot name="prefix" />
-          </IInputPrefixBase>
-        </Show>
-        <Show
-          when={props.type === "textarea"}
-          fallback={
-            <IInputControlBase
-              id={props.id}
-              name={props.name}
-              type={props.type}
-              $bind:value={value}
-              placeholder={props.placeholder}
-              disabled={props.disabled}
-              readonly={props.readonly}
-            />
-          }
-        >
-          <IInputTextareaBase
+  return (
+    <IInputBase class={shellClassName()}>
+      <Show when={hasSlot("prefix")}>
+        <IInputPrefixBase class={inputPrefixRecipe({ size: props.size })}>
+          <Slot name="prefix" />
+        </IInputPrefixBase>
+      </Show>
+      <Show
+        when={props.type === "textarea"}
+        fallback={
+          <IInputControlBase
             id={props.id}
             name={props.name}
+            type={props.type}
             $bind:value={value}
             placeholder={props.placeholder}
             disabled={props.disabled}
             readonly={props.readonly}
           />
-        </Show>
-        <Show when={hasSlot("suffix")}>
-          <IInputSuffixBase class={inputSuffixRecipe({ size: props.size })}>
-            <Slot name="suffix" />
-          </IInputSuffixBase>
-        </Show>
-      </IInputBase>
-    );
-  },
-);
+        }
+      >
+        <IInputTextareaBase
+          id={props.id}
+          name={props.name}
+          $bind:value={value}
+          placeholder={props.placeholder}
+          disabled={props.disabled}
+          readonly={props.readonly}
+        />
+      </Show>
+      <Show when={hasSlot("suffix")}>
+        <IInputSuffixBase class={inputSuffixRecipe({ size: props.size })}>
+          <Slot name="suffix" />
+        </IInputSuffixBase>
+      </Show>
+    </IInputBase>
+  );
+});

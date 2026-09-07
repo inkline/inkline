@@ -130,14 +130,15 @@ Declaring through two of them is `INK0047`, an error. A mismatched pair compiles
 `defineProps` is the documented primary style ([ADR-010](./adrs/010-defineprops-joins-the-macro-family.md), decision 5):
 
 ```tsx
-import { defineComponent, defineProps, Slot } from "@inkline/core";
+import { defineComponent, defineProps, defineSlot, Slot } from "@inkline/core";
 
 export interface BadgeProps {
   label?: string;
 }
 
-export default defineComponent({ slots: { default: {} }, meta: { headless: true } }, () => {
+export default defineComponent({ meta: { headless: true } }, () => {
   const props = defineProps<BadgeProps>();
+  const _defaultSlot = defineSlot();
   return (
     <div class="badge">
       <Slot>{props.label}</Slot>
@@ -155,7 +156,7 @@ Two rules apply to the binding:
 
 **`defineProps` does not improve parent-side typing.** A consumer still gets no checking on `<IButton colr="light" />` — the same limitation listed under "Markup is type-checked" above. The road to typed parent props is Option D in [ADR-010](./adrs/010-defineprops-joins-the-macro-family.md), and it is uncosted.
 
-**The corpus has not been migrated.** Every component under `ui/components/` still uses the setup-parameter annotation, because the house-style question is open (ADR-010, decision 8). Both forms are legal; new components should prefer `defineProps`.
+**The corpus declares props and slots at the call site.** Every component under `ui/components/` uses `defineProps` (UXF-250) and `defineSlot` (UXF-251) — no options `props` or `slots` key remains. The other channels are still legal and still tested; write new components in the macro form.
 
 ### Macro grammar
 
@@ -163,7 +164,7 @@ Two rules apply to the binding:
 
 - **Call a macro at the top level of the setup body** — never in a condition, a loop, or a nested function. A macro is erased, so a nested call still declares unconditionally while reading as if it did not (`INK0049`). `hasSlot` is exempt: it is a query, not a declaration, so it is legal anywhere in the setup body.
 - **Pass statically analyzable arguments** — a string literal, an array of string literals, or an object literal (`INK0048`). `defineModel` reports its own argument rule under `INK0043`.
-- **One declaration channel per concern** — props are `INK0047`, an error; an event name declared in both `defineEmits` and the options `events` map is `INK0046`, a warning.
+- **One declaration channel per concern** — props are `INK0047`, an error; an event name declared in both `defineEmits` and the options `events` map is `INK0046`, a warning. Slots have no such diagnostic: a name declared in both `defineSlot` and the options `slots` map is declared **twice**, silently. Declare each slot in one place.
 
 ## Authoring primitives
 
