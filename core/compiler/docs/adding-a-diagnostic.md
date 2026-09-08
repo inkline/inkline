@@ -114,3 +114,5 @@ restating it, so neither column is asserted.
 | INK0111 | warning  | codegen  | Headless component root must be a single static element   |
 | INK0120 | warning  | analyze  | Attributes passed to a component cannot be inherited      |
 | INK0121 | error    | analyze  | Setup-body local is referenced but cannot be emitted      |
+| INK0122 | error    | parse    | Props destructuring binding names no single static prop   |
+| INK0123 | error    | parse    | Destructured props binding is not a declared prop         |

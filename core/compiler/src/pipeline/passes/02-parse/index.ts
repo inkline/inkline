@@ -23,7 +23,7 @@ import { reportSpreadAttributes } from "./jsx/spread.ts";
 import { parseOptions, parsePropsFromParameterType } from "./options.ts";
 import { checkPropsBindingName } from "./props-binding.ts";
 import { findSites } from "./sites.ts";
-import { parseSetup } from "./setup.ts";
+import { parseSetup, type PropAlias } from "./setup.ts";
 
 export const parsePass: Pass<TsProgramArtifact, IRModule> = {
   name: "parse",
@@ -89,7 +89,11 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
           ctx.diagnostics.push("INK0044", m.loc, { name: m.propName });
         }
       }
-      const props = baseProps;
+      // A default written in the setup-body destructuring (`const { size = "md" } = props`) is the
+      // prop's default. Folding it into `IRProp.defaultValue` is what makes the shape work on all
+      // seven targets at once: every target already emits that field under its own convention.
+      const props = applyDestructuringDefaults(baseProps, setupResult.propAliases, sourceFile);
+      const propAliases = resolvePropAliases(setupResult.propAliases, props, ctx);
       const events = mergeEventDeclarations(baseEvents, setupResult.events, ctx);
 
       const slots = mergeSlotDeclarations(
@@ -140,6 +144,7 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
         meta: optionsResult?.headless ? { headless: true } : undefined,
         targetOverrides: {},
         slotBindings: setupResult.slotBindings.size > 0 ? setupResult.slotBindings : undefined,
+        propAliases,
       };
 
       // (f) deps — walk all IRExprNodes and resolve deps
@@ -161,6 +166,71 @@ export const parsePass: Pass<TsProgramArtifact, IRModule> = {
     };
   },
 };
+
+function makeExprNode(expr: ts.Expression, sourceFile: ts.SourceFile): IRExprNode {
+  return {
+    kind: "Expression",
+    expr,
+    raw: expr.getText(sourceFile),
+    deps: DYNAMIC_DEPS,
+    isReactive: false,
+    emissionContext: "setup",
+    isDynamic: false,
+    loc: toLoc(expr, sourceFile),
+  };
+}
+
+/**
+ * Fold each default written in a props destructuring into the prop it names.
+ *
+ * A prop that already declares its own default keeps it: `props.size` is then never `undefined`, so
+ * the destructuring default would not run in the authored source either. A folded default also
+ * makes the prop optional — that is what a default means to every target's props type.
+ */
+function applyDestructuringDefaults(
+  props: readonly IRProp[],
+  aliases: readonly PropAlias[],
+  sourceFile: ts.SourceFile,
+): readonly IRProp[] {
+  const defaults = new Map<string, ts.Expression>();
+  for (const alias of aliases) {
+    if (alias.defaultValue && !defaults.has(alias.prop))
+      defaults.set(alias.prop, alias.defaultValue);
+  }
+  if (defaults.size === 0) return props;
+
+  return props.map((prop) => {
+    const expr = defaults.get(prop.name);
+    if (!expr || prop.defaultValue !== undefined) return prop;
+    return { ...prop, defaultValue: makeExprNode(expr, sourceFile), required: false };
+  });
+}
+
+/**
+ * Resolve the destructured locals against the props the winning channel declared.
+ *
+ * A binding that names no declared prop is refused as INK0123 and dropped: carrying it would put a
+ * rewrite rule on a name no target declares, which is the defect this map exists to close.
+ */
+function resolvePropAliases(
+  aliases: readonly PropAlias[],
+  props: readonly IRProp[],
+  ctx: PassContext,
+): ReadonlyMap<string, string> | undefined {
+  if (aliases.length === 0) return undefined;
+
+  const declared = new Set(props.map((p) => p.name));
+  const resolved = new Map<string, string>();
+  for (const alias of aliases) {
+    if (!declared.has(alias.prop)) {
+      ctx.diagnostics.push("INK0123", alias.loc, { name: alias.prop });
+      continue;
+    }
+    resolved.set(alias.local, alias.prop);
+  }
+
+  return resolved.size > 0 ? resolved : undefined;
+}
 
 /**
  * Merge the two places an event can be declared — the options `events` object and `defineEmits` —
@@ -360,18 +430,7 @@ function findContextDefinitions(
       contexts.push({
         name: decl.name.text,
         typeText,
-        defaultValue: defaultArg
-          ? {
-              kind: "Expression",
-              expr: defaultArg,
-              raw: defaultArg.getText(sourceFile),
-              deps: DYNAMIC_DEPS,
-              isReactive: false,
-              emissionContext: "setup",
-              isDynamic: false,
-              loc: toLoc(defaultArg, sourceFile),
-            }
-          : undefined,
+        defaultValue: defaultArg ? makeExprNode(defaultArg, sourceFile) : undefined,
         loc: toLoc(decl, sourceFile),
       });
     }

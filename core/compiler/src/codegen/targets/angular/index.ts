@@ -513,6 +513,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
 
   const baseRules: RewriteRules = {
     ...ctx.rewrites,
+    propAliases: component.propAliases,
     setters,
     emit: emitRule,
     reactiveReads: reactiveReadNames(component),

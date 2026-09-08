@@ -486,6 +486,27 @@ return (
 "
 `;
 
+exports[`solid full output snapshots > PropsDestructured 1`] = `
+"import { mergeProps } from "solid-js";
+export interface PropsDestructuredProps {
+  label: string;
+  size?: string;
+  tone?: string;
+}
+export default function PropsDestructured(_props: PropsDestructuredProps)
+{
+const props = mergeProps({ size: "md" }, _props)
+return (
+<>
+  <h1 title={props.label}>{props.label}</h1>
+  <p>{props.size}</p>
+  <span>{props.tone}</span>
+</>
+)
+}
+"
+`;
+
 exports[`solid full output snapshots > PropsMacroObject 1`] = `
 "import { mergeProps, splitProps } from "solid-js";
 import type { JSX } from "solid-js";

@@ -285,6 +285,21 @@ exports[`svelte full output snapshots > PropDefaults 1`] = `
 "
 `;
 
+exports[`svelte full output snapshots > PropsDestructured 1`] = `
+"<script lang="ts">
+  export interface PropsDestructuredProps {
+    label: string;
+    size?: string;
+    tone?: string;
+  }
+  let { label, size = "md", tone }: PropsDestructuredProps = $props()
+</script>
+<h1 title={label}>{label}</h1>
+<p>{size}</p>
+<span>{tone}</span>
+"
+`;
+
 exports[`svelte full output snapshots > PropsMacroObject 1`] = `
 "<script lang="ts">
   interface Props { label: string; color?: string }

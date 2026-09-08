@@ -437,6 +437,27 @@ return (
 "
 `;
 
+exports[`qwik full output snapshots > PropsDestructured 1`] = `
+"import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
+export interface PropsDestructuredProps {
+  label: string;
+  size?: string;
+  tone?: string;
+}
+export const PropsDestructured = component$((props: PropsDestructuredProps & Record<string, any>) =>
+{
+const { size = "md" } = props
+return (
+<>
+  <h1 title={props.label}>{props.label}</h1>
+  <p>{size}</p>
+  <span>{props.tone}</span>
+</>
+)
+});
+"
+`;
+
 exports[`qwik full output snapshots > PropsMacroObject 1`] = `
 "import { component$, useSignal, useComputed$, useVisibleTask$, $ } from "@qwik.dev/core";
 export const PropsMacroObject = component$((props: { label: string; color?: string } & Record<string, any>) =>

@@ -170,6 +170,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   ]);
   const rules: RewriteRules = {
     ...ctx.rewrites,
+    propAliases: component.propAliases,
     setters,
     reactiveReads: reactiveReadNames(component),
     emit: component.emitName ? { local: component.emitName, style: "noop" } : undefined,

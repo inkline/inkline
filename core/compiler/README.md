@@ -232,9 +232,28 @@ this is what keeps `const _props = defineProps<EmptyProps>()` valid in a headles
 the result only to name its props type; and a same-named local in a sibling component is a different
 symbol, so it never triggers the rule.
 
-**Never destructure it.** Reads must stay `props.x`: Solid passes props as a reactive proxy, so
-destructuring in the setup body snapshots the value once and freezes it. The Solid target enforces
-this on its output with the `requirePropsNotDestructured` conformance invariant.
+**Destructuring it is read, not emitted.** `const { label, size: dimension = "md" } = props` never
+reaches the output: parse consumes the statement and records each binding as an alias of the prop it
+names, so a read of `dimension` compiles to exactly what `props.size` compiles to on that target —
+`props.size` on React, Solid, Qwik and Astro, `size` in a Vue or Svelte template, `size()` on
+Angular. Solid therefore still reads through the reactive proxy, and the `requirePropsNotDestructured`
+conformance invariant on its output still holds.
+
+A default written in the pattern becomes the prop's default and makes the prop optional, applied in
+each target's own idiom; a default the prop already declares wins, because a declared default means
+the property is never `undefined` and the pattern's default would not run in the authored source
+either.
+
+Only a binding that names one static prop is supported. A rest element (`...rest`), a nested pattern
+(`{ a: { b } }`), and a computed key (`{ [k]: v }`) each name no single prop, so no target could
+declare them:
+
+> `INK0122` · error · Props destructuring supports only plain, renamed, and defaulted bindings
+
+A binding naming a prop the component never declared would put a rewrite rule on a name no target
+declares:
+
+> `INK0123` · error · Destructured props binding "missing" is not a declared prop
 
 `defineProps` declares props for the component's **own** body. It does not type the parent side — a
 consumer still gets no checking on `<IButton colr="light" />`. See

@@ -406,6 +406,25 @@ size = input.required<number>()
 "
 `;
 
+exports[`angular full output snapshots > PropsDestructured 1`] = `
+"import { Component, signal, computed, effect, input } from "@angular/core";
+export interface PropsDestructuredProps {
+  label: string;
+  size?: string;
+  tone?: string;
+}
+@Component({ standalone: true, selector: 'ink-props-destructured', host: { style: 'display: contents' }, template: \`<h1 [attr.title]="(label()) ?? null">{{ label() }}</h1>
+<p>{{ size() }}</p>
+<span>{{ tone() }}</span>\` })
+export class PropsDestructuredComponent
+{
+label = input.required<string>()
+size = input<string>('md')
+tone = input<string>()
+}
+"
+`;
+
 exports[`angular full output snapshots > PropsMacroObject 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-props-macro-object', host: { style: 'display: contents' }, template: \`<span [class]="(color()) + (klass() ? ' ' + klass() : '')">{{ label() }}</span>\` })

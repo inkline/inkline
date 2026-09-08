@@ -292,7 +292,12 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     ...component.models.map((m) => [m.setterName, m.name]),
   ]);
   const reads = reactiveReadNames(component);
-  const rules: RewriteRules = { ...ctx.rewrites, setters, reactiveReads: reads };
+  const rules: RewriteRules = {
+    ...ctx.rewrites,
+    propAliases: component.propAliases,
+    setters,
+    reactiveReads: reads,
+  };
   // The Vue template auto-unwraps refs, so resource data/loading/error are read by their bare names
   // (reactiveRead strip-call). Only the template needs this — the <script setup> reads them via
   // `.value`. Build the set of bound resource names and spread it into the template rules.
@@ -303,6 +308,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   );
   const templateRules: RewriteRules = {
     ...TEMPLATE_RULES,
+    propAliases: component.propAliases,
     setters,
     reactiveReads: reads,
     reactiveBindings: resourceReads,
@@ -419,8 +425,22 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
       ? [cImport({ module: "vue", named: unique.map((i) => ({ imported: i })) })]
       : [];
 
+  // Props carrying a default wrap defineProps in withDefaults, seeded with only those props and
+  // keeping the `const props` binding the <script> reads via `props.x`. This applies to both prop
+  // shapes: a named type argument (`defineProps<FooProps>()`) takes defaults just as the inline
+  // literal does, and a setup-body destructuring can put a default on either.
+  const propDefaults = component.props
+    .filter((p) => p.defaultValue)
+    .map((p) => `${p.name}: ${rewriteExpr(p.defaultValue!.expr, rules)}`);
+  const withDefaultsIfAny = (macro: string): string =>
+    propDefaults.length > 0
+      ? `const props = withDefaults(${macro}, { ${propDefaults.join(", ")} })`
+      : `const props = ${macro}`;
+
   if (component.propsTypeText) {
-    scriptBody.unshift(cStmt({ body: `const props = defineProps<${component.propsTypeText}>()` }));
+    scriptBody.unshift(
+      cStmt({ body: withDefaultsIfAny(`defineProps<${component.propsTypeText}>()`) }),
+    );
   } else if (component.props.length > 0) {
     const defs = component.props
       .map((p) => {
@@ -428,16 +448,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
         return `${p.name}${p.required ? "" : "?"}${type ? `: ${type}` : ""}`;
       })
       .join("; ");
-    // Object-form props carry defaults; wrap defineProps in withDefaults and seed only the props
-    // that declared one, keeping the `const props` binding the <script> reads via `props.x`.
-    const defaults = component.props
-      .filter((p) => p.defaultValue)
-      .map((p) => `${p.name}: ${rewriteExpr(p.defaultValue!.expr, rules)}`);
-    const body =
-      defaults.length > 0
-        ? `const props = withDefaults(defineProps<{ ${defs} }>(), { ${defaults.join(", ")} })`
-        : `const props = defineProps<{ ${defs} }>()`;
-    scriptBody.unshift(cStmt({ body }));
+    scriptBody.unshift(cStmt({ body: withDefaultsIfAny(`defineProps<{ ${defs} }>()`) }));
   }
 
   // `defineEmits` (a Vue macro) declares the component's custom events; `emit(…)` calls pass through.

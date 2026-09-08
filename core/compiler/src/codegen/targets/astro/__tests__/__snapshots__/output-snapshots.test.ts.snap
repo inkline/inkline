@@ -327,6 +327,23 @@ const { color = "blue", size, ...__attrs } = props;
 "
 `;
 
+exports[`astro full output snapshots > PropsDestructured 1`] = `
+"---
+export interface PropsDestructuredProps {
+  label: string;
+  size?: string;
+  tone?: string;
+}
+type Props = PropsDestructuredProps
+const props = Astro.props as Props;
+const { label, size = "md", tone } = props;
+---
+<h1 title={label}>{label}</h1>
+<p>{size}</p>
+<span>{tone}</span>
+"
+`;
+
 exports[`astro full output snapshots > PropsMacroObject 1`] = `
 "---
 type Props = { label: string; color?: string } & Record<string, any>

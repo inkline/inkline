@@ -129,6 +129,7 @@ export const NEW_FIXTURES = [
   "HasSlotFallback",
   "PropsMacroType",
   "PropsMacroObject",
+  "PropsDestructured",
 ] as const;
 
 // ── Unit emit: hand-built IR → emitted source ────────────────────────────────

@@ -99,6 +99,15 @@ export interface RewriteRules {
    */
   readonly propLocals?: ReadonlySet<string>;
   /**
+   * Locals the author bound by destructuring the props object (`const { label: text } = props`) —
+   * local name → prop name, taken from {@link IRComponent.propAliases}. A bare read of one of these
+   * is rewritten exactly as the matching `props.<prop>` read would be, under whichever of
+   * {@link selfPrefix}, {@link propSignals}, {@link MemberRewriteRules.props} and {@link propLocals}
+   * this target sets. Without it the local survives verbatim and names an identifier no target
+   * declares. The destructuring statement itself never reaches codegen — parse consumes it.
+   */
+  readonly propAliases?: ReadonlyMap<string, string>;
+  /**
    * Props are emitted as Angular signal inputs (`color = input<T>()`), so a `props.x` read must use
    * the call form: `this.color()` in a class body, `color()` in the template. Without it `props.x`
    * reads a plain field, which a `computed`/`effect` cannot track. Angular-only.

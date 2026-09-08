@@ -17,10 +17,12 @@ import type {
   IRStateDeclaration,
   PrimitiveName,
 } from "../../../ir/render/nodes.ts";
+import type { SourceLocation } from "../../../ir/types.ts";
 import { setupDeclaredNames } from "../../../ir/setup.ts";
 import type { PassContext } from "../../types.ts";
 import type { BindingTable } from "./bind-primitives.ts";
 import { toLoc } from "./loc.ts";
+import { PROPS_BINDING } from "./props-binding.ts";
 import {
   bindMacros,
   checkMacroGrammar,
@@ -89,6 +91,66 @@ function makeExprNode(expr: ts.Expression, sf: ts.SourceFile): IRExprNode {
   };
 }
 
+/** One binding of `const { <prop>: <local> = <defaultValue> } = props`. */
+export interface PropAlias {
+  readonly local: string;
+  readonly prop: string;
+  readonly defaultValue: ts.Expression | undefined;
+  readonly loc: SourceLocation;
+}
+
+/**
+ * The props object destructured in the setup body — `const { a, b: c = 1 } = props`.
+ *
+ * Matched on the initializer's *text* because `props` is the only name the binding may carry (R5,
+ * INK0074), and because that same text is what every target's rewriter matches a props read by.
+ * Returns the pattern, or `undefined` when the statement is anything else.
+ */
+function propsDestructuringPattern(
+  stmt: ts.VariableStatement,
+): ts.ObjectBindingPattern | undefined {
+  const decls = stmt.declarationList.declarations;
+  if (decls.length !== 1) return undefined;
+  const decl = decls[0]!;
+  if (!ts.isObjectBindingPattern(decl.name)) return undefined;
+  const init = decl.initializer;
+  if (!init || !ts.isIdentifier(init) || init.text !== PROPS_BINDING) return undefined;
+  return decl.name;
+}
+
+/**
+ * Read a props destructuring into `local → prop` pairs plus the default each binding declares.
+ *
+ * Only a binding that names one static prop is supported: a rest element (`...rest`), a nested
+ * pattern (`{ a: { b } }`), and a computed key (`{ [k]: v }`) each resolve to no single prop name,
+ * so no target could declare them. Each is refused as INK0122 and skipped — the rest of the pattern
+ * still compiles.
+ */
+function readPropAliases(
+  pattern: ts.ObjectBindingPattern,
+  sourceFile: ts.SourceFile,
+  ctx: PassContext,
+): PropAlias[] {
+  const aliases: PropAlias[] = [];
+
+  for (const el of pattern.elements) {
+    const key = el.propertyName;
+    const staticKey = key === undefined || ts.isIdentifier(key) || ts.isStringLiteral(key);
+    if (el.dotDotDotToken || !ts.isIdentifier(el.name) || !staticKey) {
+      ctx.diagnostics.push("INK0122", toLoc(el, sourceFile));
+      continue;
+    }
+    aliases.push({
+      local: el.name.text,
+      prop: key ? key.text : el.name.text,
+      defaultValue: el.initializer,
+      loc: toLoc(el, sourceFile),
+    });
+  }
+
+  return aliases;
+}
+
 export interface SetupResult {
   readonly state: IRStateDeclaration[];
   readonly models: IRModelDeclaration[];
@@ -100,6 +162,8 @@ export interface SetupResult {
   readonly props: IRProp[] | undefined;
   /** The `defineProps<T>()` type argument's text, when it names a type. */
   readonly propsTypeText: string | undefined;
+  /** Locals bound by `const { … } = props` in the setup body, in source order. */
+  readonly propAliases: readonly PropAlias[];
   readonly memos: IRMemoDeclaration[];
   readonly refs: IRRefDeclaration[];
   readonly effects: IREffectDeclaration[];
@@ -129,6 +193,7 @@ export function parseSetup(
   let emitName: string | undefined;
   let props: IRProp[] | undefined;
   let propsTypeText: string | undefined;
+  const propAliases: PropAlias[] = [];
   const memos: IRMemoDeclaration[] = [];
   const refs: IRRefDeclaration[] = [];
   const effects: IREffectDeclaration[] = [];
@@ -169,6 +234,7 @@ export function parseSetup(
       emitName,
       props,
       propsTypeText,
+      propAliases,
       memos,
       refs,
       effects,
@@ -223,6 +289,16 @@ export function parseSetup(
     }
 
     if (ts.isVariableStatement(stmt)) {
+      // `const { a, b: c = 1 } = props` declares no local of its own in the output: every target
+      // already surfaces the props under its own convention, so the statement is consumed here and
+      // each binding is recorded as an alias of the prop it names. Emitting it verbatim is not an
+      // option — most targets have no `props` object to destructure from.
+      const propsPattern = propsDestructuringPattern(stmt);
+      if (propsPattern) {
+        propAliases.push(...readPropAliases(propsPattern, sourceFile, ctx));
+        continue;
+      }
+
       for (const decl of stmt.declarationList.declarations) {
         if (!decl.initializer) continue;
         const init = decl.initializer;
@@ -529,6 +605,7 @@ export function parseSetup(
     emitName,
     props,
     propsTypeText,
+    propAliases,
     memos,
     refs,
     effects,

@@ -529,6 +529,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
   // Model getters read `props.<prop>`, model setters and `emit(…)` call `props.on…?.()` callbacks.
   const rules: RewriteRules = {
     ...ctx.rewrites,
+    propAliases: component.propAliases,
     ...callbackPropRules(component.models, component.emitName),
     reactiveReads: reactiveReadNames(component),
   };

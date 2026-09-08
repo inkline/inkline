@@ -410,6 +410,14 @@ export interface IRComponent {
   readonly meta?: { readonly headless?: boolean };
   readonly targetOverrides: Readonly<Partial<Record<TargetName, IRTargetOverride>>>;
   readonly slotBindings?: ReadonlyMap<string, string>;
+  /**
+   * Locals bound by `const { label: text = "x" } = props` — local name → prop name. Codegen
+   * rewrites a read of the local exactly as it rewrites `props.<prop>`, so the binding resolves on
+   * every target; the destructuring statement itself is consumed at parse and emitted by none. A
+   * default written in the pattern is folded into the prop's `defaultValue`, not carried here.
+   * Absent === the setup body never destructured `props`.
+   */
+  readonly propAliases?: ReadonlyMap<string, string>;
 }
 
 export interface IRTargetOverride {

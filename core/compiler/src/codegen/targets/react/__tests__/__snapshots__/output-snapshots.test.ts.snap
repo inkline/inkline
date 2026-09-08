@@ -426,6 +426,26 @@ return (
 "
 `;
 
+exports[`react full output snapshots > PropsDestructured 1`] = `
+"export interface PropsDestructuredProps {
+  label: string;
+  size?: string;
+  tone?: string;
+}
+export function PropsDestructured(props: PropsDestructuredProps)
+{
+const { size = "md" } = props
+return (
+<>
+  <h1 title={props.label}>{props.label}</h1>
+  <p>{size}</p>
+  <span>{props.tone}</span>
+</>
+)
+}
+"
+`;
+
 exports[`react full output snapshots > PropsMacroObject 1`] = `
 "export function PropsMacroObject(props: { label: string; color?: string } & React.HTMLAttributes<HTMLElement>)
 {

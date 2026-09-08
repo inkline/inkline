@@ -332,6 +332,18 @@ export const DIAGNOSTICS = {
     help: "Only const/let arrow or function expressions and function declarations are emitted as setup-body locals. Rewrite '{name}' as a `const {name} = (…) => …` handler or a `function {name}(…) {…}` declaration so the compiler can emit its definition." as const,
     url: "https://docs.inkline.dev/diagnostics/INK0121" as const,
   },
+  INK0122: {
+    severity: "error" as const,
+    title: "Props destructuring supports only plain, renamed, and defaulted bindings" as const,
+    help: "Write const { a, b: c, d = 1 } = props. A rest element, a nested pattern, or a computed key names no single static prop, so no target can declare the binding. Read those props through `props` instead." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0122" as const,
+  },
+  INK0123: {
+    severity: "error" as const,
+    title: "Destructured props binding '{name}' is not a declared prop" as const,
+    help: "Declare '{name}' in the component's props, or remove the binding. It resolves to no prop, so every target would read an identifier the generated component never declares." as const,
+    url: "https://docs.inkline.dev/diagnostics/INK0123" as const,
+  },
 } as const;
 
 export type DiagnosticCode = keyof typeof DIAGNOSTICS;

@@ -84,8 +84,39 @@ function unwrapBatchArrowBody(
   return undefined;
 }
 
+/**
+ * How this target reads the prop `name`, or `undefined` when it keeps the authored `props.<name>`.
+ *
+ * Shared by the two ways a prop is read — `props.name`, and a local the author destructured it into
+ * (`const { name: local } = props`). Both must resolve identically: the local *is* the prop.
+ */
+function propRead(name: string, rules: RewriteRules): string | undefined {
+  // Angular collapse: a headless child's root reads its OWN props; substitute each with the
+  // expression the styled wrapper passed for it, so the inlined host binds against the styled's
+  // real arguments instead of its same-named props. `null`/absent (the wrapper forwarded nothing)
+  // becomes `undefined` so it stays safe inside a larger expression (`x ?? 'y'`).
+  if (rules.collapse?.propArgs) {
+    const arg = rules.collapse.propArgs.get(name);
+    return arg == null ? "undefined" : arg;
+  }
+  // Angular signal inputs are read in call form (`this.color()` / `color()`).
+  const call = rules.propSignals ? "()" : "";
+  if (rules.selfPrefix) return `this.${name}${call}`;
+  if (rules.members?.props?.strip) return `${name}${call}`;
+  // A prop destructured into a local with a default (React) reads as the bare local so the default
+  // takes effect; otherwise `props.x` stays verbatim.
+  if (rules.propLocals?.has(name)) return name;
+  return undefined;
+}
+
 function walk(expr: ts.Expression, rules: RewriteRules): string {
   if (ts.isIdentifier(expr)) {
+    // A local bound by `const { label: text } = props` is a props read under another name, and the
+    // destructuring that declared it is consumed at parse — nothing in the output declares it. Its
+    // rule runs before every other identifier rule: in the setup scope the binding shadows any
+    // other meaning of that name.
+    const aliasedProp = rules.propAliases?.get(expr.text);
+    if (aliasedProp !== undefined) return propRead(aliasedProp, rules) ?? `props.${aliasedProp}`;
     const renamed = rules.rename?.[expr.text];
     if (renamed !== undefined) return renamed;
     // A bare reactive-value read (e.g. a resource `data`/`loading`) follows the target's reactive
@@ -231,21 +262,8 @@ function walk(expr: ts.Expression, rules: RewriteRules): string {
   if (ts.isPropertyAccessExpression(expr)) {
     if (ts.isIdentifier(expr.expression)) {
       if (expr.expression.text === "props") {
-        // Angular collapse: a headless child's root reads its OWN props; substitute each with the
-        // expression the styled wrapper passed for it, so the inlined host binds against the styled's
-        // real arguments instead of its same-named props. `null`/absent (the wrapper forwarded
-        // nothing) becomes `undefined` so it stays safe inside a larger expression (`x ?? 'y'`).
-        if (rules.collapse?.propArgs) {
-          const arg = rules.collapse.propArgs.get(expr.name.text);
-          return arg == null ? "undefined" : arg;
-        }
-        // Angular signal inputs are read in call form (`this.color()` / `color()`).
-        const call = rules.propSignals ? "()" : "";
-        if (rules.selfPrefix) return `this.${expr.name.text}${call}`;
-        if (rules.members?.props?.strip) return `${expr.name.text}${call}`;
-        // A prop destructured into a local with a default (React) reads as the bare local so the
-        // default takes effect; otherwise `props.x` stays verbatim.
-        if (rules.propLocals?.has(expr.name.text)) return expr.name.text;
+        const read = propRead(expr.name.text, rules);
+        if (read !== undefined) return read;
       }
       if (expr.expression.text === "slots" && rules.members?.slots?.strip) {
         return rules.members.slots.rename?.[expr.name.text] ?? expr.name.text;

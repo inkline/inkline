@@ -422,6 +422,7 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
     nameBindings.length > 0
       ? {
           ...ctx.rewrites,
+          propAliases: component.propAliases,
           setters,
           reactiveReads,
           emit: emitRule,
@@ -430,7 +431,13 @@ function emit(component: IRComponent, ctx: CodegenContext): CodeModule {
             props: { ...ctx.rewrites.members?.props, strip: true, whole: `{ ${nameBindings} }` },
           },
         }
-      : { ...ctx.rewrites, setters, reactiveReads, emit: emitRule };
+      : {
+          ...ctx.rewrites,
+          propAliases: component.propAliases,
+          setters,
+          reactiveReads,
+          emit: emitRule,
+        };
 
   // Destructure bindings carry each prop's default (`color = "blue"`) so `$props()` applies it; each
   // model becomes a `$bindable()` binding; each callback prop is a plain binding.
