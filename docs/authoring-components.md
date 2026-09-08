@@ -36,7 +36,7 @@ Consumers of `@inkline/{react,vue,…}` import the styled variant by default. Th
 From [`ui/components/src/components/badge/headless/IBadgeBase.ink.tsx`](../ui/components/src/components/badge/headless/IBadgeBase.ink.tsx):
 
 ```tsx
-import { defineComponent, Slot } from "@inkline/core";
+import { defineComponent, defineProps, defineSlot, Slot } from "@inkline/core";
 
 export interface BadgeBaseProps {
   label?: string;
@@ -45,9 +45,11 @@ export interface BadgeBaseProps {
 export default defineComponent(
   {
     meta: { headless: true },
-    slots: { default: {} },
   },
-  (props: BadgeBaseProps) => {
+  () => {
+    const props = defineProps<BadgeBaseProps>();
+    defineSlot();
+
     return (
       <div class="badge">
         <Slot>{props.label}</Slot>
@@ -59,33 +61,33 @@ export default defineComponent(
 
 Four things to notice:
 
-1. **`defineComponent` is the sole entry point.** It accepts either `(setup)` or `(options, setup)`. Use the options form when you need to declare slots, events, or meta.
-2. **This component declares its props with the setup parameter's type annotation** (`props: BadgeBaseProps`). That is one of three supported channels, and not the primary one — see "Declaring props" below.
-3. **`<Slot>` (imported from `@inkline/core`) renders a declared slot.** An unnamed `<Slot>` renders the default slot (the lowercase `<slot>` JSX intrinsic works too); `<Slot name="prefix" />` renders a named one. Declare each slot in the options object first. See [`core/compiler/README.md`](../core/compiler/README.md) → "Slots".
+1. **`defineComponent` is the sole entry point.** It accepts either `(setup)` or `(options, setup)`. Use the options form for the keys the macros do not cover — `meta` here.
+2. **`defineProps<T>()` declares the props.** That is one of three supported channels, and the primary one — see "Declaring props" below.
+3. **`defineSlot` declares a slot; `<Slot>` renders it.** Both are imported from `@inkline/core`. `defineSlot()` declares the default slot, which an unnamed `<Slot>` renders; `defineSlot("prefix")` declares a named one, which `<Slot name="prefix" />` renders. The options object's `slots` map is the alternative channel — reach for it when a slot needs `required` or `scoped`, which `defineSlot` does not carry. See [`core/compiler/README.md`](../core/compiler/README.md) → "Slots".
 4. **`meta: { headless: true }` marks a behavior-only component.** On Angular this makes the compiler emit an attribute-selector host component (and lets a styled wrapper collapse onto it) so no wrapper element ships — see [architecture.md](./architecture.md) → "Cross-framework strategy". The other six targets are unaffected. The headless root must be a single static element; a fragment or conditional root keeps the element-selector wrapper and emits `INK0111`.
 
 The styled variant ([`IBadge.ink.tsx`](../ui/components/src/components/badge/styled/IBadge.ink.tsx)) composes the headless one:
 
 ```tsx
-import { defineComponent, Slot, createMemo } from "@inkline/core";
+import { defineComponent, defineProps, defineSlot, Slot, createMemo } from "@inkline/core";
 import IBadgeBase, { type BadgeBaseProps } from "../headless/IBadgeBase.ink.tsx";
 import { badgeRecipe, type BadgeRecipeProps as BadgeStylingProps } from "virtual:styleframe";
 
 export interface BadgeProps extends BadgeBaseProps, BadgeStylingProps {}
 
-export default defineComponent(
-  { meta: { headless: true }, slots: { default: {} } },
-  (props: BadgeProps) => {
-    const className = createMemo(() =>
-      badgeRecipe({ color: props.color, variant: props.variant, size: props.size }),
-    );
-    return (
-      <IBadgeBase class={className()}>
-        <Slot>{props.label}</Slot>
-      </IBadgeBase>
-    );
-  },
-);
+export default defineComponent({ meta: { headless: true } }, () => {
+  const props = defineProps<BadgeProps>();
+  defineSlot();
+
+  const className = createMemo(() =>
+    badgeRecipe({ color: props.color, variant: props.variant, size: props.size }),
+  );
+  return (
+    <IBadgeBase class={className()}>
+      <Slot>{props.label}</Slot>
+    </IBadgeBase>
+  );
+});
 ```
 
 `badgeRecipe` is imported from `virtual:styleframe`; it maps the styling props (`color`, `variant`, `size`) to a class name. The recipe is registered in [`IBadge.styleframe.ts`](../ui/components/src/components/badge/styled/IBadge.styleframe.ts). `virtual:styleframe` is provided by the `styleframe` integration; the resolved classnames live in each framework's `.styleframe/` directory (auto-generated — never hand-edit).
@@ -152,7 +154,7 @@ The type argument may be an inline object type, or an `interface` / `type`, incl
 Three rules apply to the binding:
 
 - **Name it `props`.** Every target emits and rewrites the props object under that fixed name, so a read through a binding under any other name is copied to the output unrewritten — the emitted component then references an identifier it never declares. That is `INK0074`, an error, on the macro channel and the setup parameter alike. The rule fires on a **read** of the binding, matched on its symbol and not on its name: a binding nothing reads is erased with its declaration and stays legal, and a same-named local in a sibling component never triggers it.
-- **Read it through a property.** Only `props.<name>` carries a member the rewriter can map to each target's props convention. Four targets emit no props object at all, so a read of the object itself — `String(props)`, `JSON.stringify(props)`, `Object.keys(props)`, `{ ...props }` — has nothing to map: Angular copies it through as a class member it never declares, and Svelte substitutes the destructured shape, which also carries every passed-through attribute and so is not the object you wrote. That is `INK0076`, an error, on both channels. A binding that is both misnamed and read whole reports `INK0074` alone. To pass props on, build the object explicitly from the properties you declared.
+- **Read it through a property.** Only `props.<name>` carries a member the rewriter can map to each target's props convention. Four targets emit no props object at all, so a read of the object itself — `String(props)`, `JSON.stringify(props)`, `Object.keys(props)`, `{ ...props }` — has nothing to map: Angular copies it through as a class member it never declares, and Svelte substitutes the destructured shape, which also carries every passed-through attribute and so is not the object you wrote. That is `INK0077`, an error, on both channels. A binding that is both misnamed and read whole reports `INK0074` alone. To pass props on, build the object explicitly from the properties you declared.
 - **Never destructure it.** Solid passes props as a reactive proxy; destructuring snapshots the value once and freezes it. The Solid target enforces this with the `requirePropsNotDestructured` conformance invariant.
 
 **`defineProps` does not improve parent-side typing.** A consumer still gets no checking on `<IButton colr="light" />` — the same limitation listed under "Markup is type-checked" above. The road to typed parent props is Option D in [ADR-010](./adrs/010-defineprops-joins-the-macro-family.md), and it is uncosted.
@@ -166,7 +168,7 @@ Three rules apply to the binding:
 - **Call a macro at the top level of the setup body** — never in a condition, a loop, or a nested function. A macro is erased, so a nested call still declares unconditionally while reading as if it did not (`INK0049`). `hasSlot` is exempt: it is a query, not a declaration, so it is legal anywhere in the setup body.
 - **Bind the result** — `const props = defineProps<P>()`, `const emit = defineEmits(…)`, `const [value, setValue] = defineModel()`. The binding is the only way to reach what the macro declares, and the call itself is erased, so a bare `defineProps();` reads as a declaration while being none (`INK0075`). `defineSlot` is the exception: the call declares the slot on its own, and the binding only names it for the render tree. Write `defineSlot();` when the component renders the slot as `<Slot>`, and bind it when the render tree places the slot by name.
 - **Pass statically analyzable arguments** — a string literal, an array of string literals, or an object literal (`INK0048`). `defineModel` reports its own argument rule under `INK0043`.
-- **One declaration channel per concern** — props are `INK0047`, an error; an event name declared in both `defineEmits` and the options `events` map is `INK0046`, a warning. Slots have no such diagnostic: a name declared in both `defineSlot` and the options `slots` map is declared **twice**, silently. Declare each slot in one place.
+- **One declaration channel per concern** — props are `INK0047`, an error; an event name declared in both `defineEmits` and the options `events` map is `INK0046`, a warning. A slot name declared twice — in both `defineSlot` and the options `slots` map, or twice on one of them — is `INK0076`, a warning; the first declaration wins, so across channels the options entry survives. Declare each slot in one place.
 
 ## Authoring primitives
 

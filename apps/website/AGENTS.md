@@ -14,11 +14,8 @@ apps/website/
 ├── app/
 │   ├── app.config.ts       # brand fields, header links, docsTheme.frameworks (7)
 │   ├── assets/css/main.css # Inkline palette + --ui-primary; imports theme base CSS
-│   ├── constants/
-│   │   ├── sections.ts      # DOCS_SECTIONS — the nav/content topology
-│   │   └── storybook.ts     # per-framework Storybook base-URL helpers
-│   └── components/content/
-│       └── StorybookEmbed.vue  # local MDC component: per-tab Storybook iframe
+│   └── constants/
+│       └── sections.ts     # DOCS_SECTIONS — the nav/content topology
 └── content/
     ├── index.md
     ├── _compiler/          # parked, unrouted — compiler pages awaiting /compiler
@@ -30,14 +27,14 @@ apps/website/
 
 ## Shared vs. local
 
-- **From the theme (do NOT copy or edit here):** layout, search, i18n, navigation, config/routing modules, `BrowserFrame` / `Video` / `FrameworkSwitcher` content components, base CSS, Nuxt presets. If a build needs a theme change, flag it upstream — do not fork the package into this app.
-- **Local to this app:** brand fields in `app/app.config.ts`, palette in `app/assets/css/main.css` (`--ui-primary`), the `DOCS_SECTIONS` topology + `content.config.ts`, all markdown under `content/`, and Inkline-specific demo components (`StorybookEmbed.vue`).
+- **From the theme (do NOT copy or edit here):** layout, search, i18n, navigation, config/routing modules, `BrowserFrame` / `Video` / `FrameworkSwitcher` / `StorybookEmbed` content components, OG image templates, base CSS, Nuxt presets. If a build needs a theme change, flag it upstream — do not fork the package into this app.
+- **Local to this app:** brand fields in `app/app.config.ts`, palette in `app/assets/css/main.css` (`--ui-primary`), the `DOCS_SECTIONS` topology + `content.config.ts`, and all markdown under `content/`.
 
 ## Multi-framework component examples
 
 Component pages show the same story compiled for every framework via the theme's generalized `FrameworkSwitcher`. The tab list is declared once in `app/app.config.ts` under `docsTheme.frameworks` (react, vue, svelte, solid, angular, qwik, astro) and read by the switcher.
 
-Each tab embeds that framework's deployed Storybook story through the local `StorybookEmbed` component (ADR-002 option (b) — embed live stories, not committed code snippets):
+Each tab embeds that framework's deployed Storybook story through the theme's `StorybookEmbed` component (ADR-002 option (b) — embed live stories, not committed code snippets):
 
 ```md
 ::framework-switcher
@@ -48,7 +45,9 @@ Each tab embeds that framework's deployed Storybook story through the local `Sto
 ::
 ```
 
-`StorybookEmbed` builds its iframe `src` from `storybook.ts`. The base URL follows the convention `https://{framework}.storybook.inkline.io` and is overridable at runtime via `NUXT_PUBLIC_STORYBOOK_BASE_URL`. There is no canonical deployed Storybook host committed yet — see "Known gaps".
+`StorybookEmbed` builds its iframe `src` from `runtimeConfig.public.storybookBaseUrl`. The layer leaves that empty — the host is a consumer fact — so `nuxt.config.ts` sets the convention `https://{framework}.storybook.inkline.io`, overridable at build time via `NUXT_PUBLIC_STORYBOOK_BASE_URL`. There is no canonical deployed Storybook host committed yet — see "Known gaps".
+
+The embed mounts its iframe only once it nears the viewport, reserves its height up front (zero layout shift), and grows to fit the story. Auto-height and colour-mode sync need the `@uxfront/layer-docs/storybook` bridge installed on the Storybook side; without it the embed holds its default height and keeps its own theme — degraded, not broken. See "Known gaps".
 
 ## Running
 
@@ -80,10 +79,12 @@ The layer's `/` → `/llms.txt` content negotiation is a Nitro server plugin and
 - `@uxfront/layer-docs` is covered by the `@uxfront/*` glob in the root `pnpm-workspace.yaml` `minimumReleaseAgeExclude` — the package was published recently and would otherwise trip pnpm's 24h supply-chain guard on install.
 - Content lives under `content/docs/<NN.section>/<NN.page>.md`; the numeric prefixes drive order and are stripped from the route. Sections must match `DOCS_SECTIONS` in `app/constants/sections.ts`.
 - Only document real, shipped components. The Button page mirrors `ui/components`'s `IButton` stories (story ids under `Components/Actions/Button`).
+- OG images come from the layer, which registers `nuxt-og-image` itself. `nuxt-og-image`, `satori` and `@resvg/resvg-js` are therefore non-optional peers this app installs; without the rasteriser every card prerenders as `renderer.createImage error` and emits nothing. The card accent is resolved to a literal at build time by following `--ui-primary` to `--color-purple` in `app/assets/css/main.css` — satori has no CSS cascade, so a custom property would render as nothing.
 
 ## Known gaps
 
-- **Storybook host:** no deployed Storybook URL is committed anywhere in the repo (Storybook deploy is out of scope per `apps/storybook/AGENTS.md`; CI only uploads artifacts). The embeds point at the documented `https://{framework}.storybook.inkline.io` convention and are overridable via env. When a real host lands, set `NUXT_PUBLIC_STORYBOOK_BASE_URL` (or update `STORYBOOK_BASE_URL_TEMPLATE` in `app/constants/storybook.ts`).
+- **Storybook host:** no deployed Storybook URL is committed anywhere in the repo (Storybook deploy is out of scope per `apps/storybook/AGENTS.md`; CI only uploads artifacts). The embeds point at the documented `https://{framework}.storybook.inkline.io` convention and are overridable via env. When a real host lands, set `NUXT_PUBLIC_STORYBOOK_BASE_URL` (or update `runtimeConfig.public.storybookBaseUrl` in `nuxt.config.ts`).
+- **Storybook bridge not installed:** the per-framework Storybooks under `ui/*` do not yet call `installDocsEmbedPreviewBridge` from `@uxfront/layer-docs/storybook`, so embeds hold their default height and do not follow the page's colour mode. Worth doing alongside the Storybook deploy above — both halves are useless until a host exists.
 
 ## See also
 

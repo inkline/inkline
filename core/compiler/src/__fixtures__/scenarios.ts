@@ -275,14 +275,14 @@ export const scenarios: Readonly<Record<string, readonly Scenario[]>> = {
   // both, so INK0074 cannot fire; what breaks is the whole-object read itself.
   Diag_PropsWholeRead: [
     {
-      name: "triggers INK0076 for the macro channel",
-      asserts: { expectedDiagnostics: ["INK0076"] },
+      name: "triggers INK0077 for the macro channel",
+      asserts: { expectedDiagnostics: ["INK0077"] },
     },
   ],
   Diag_PropsWholeReadParam: [
     {
-      name: "triggers INK0076 for the annotation channel",
-      asserts: { expectedDiagnostics: ["INK0076"] },
+      name: "triggers INK0077 for the annotation channel",
+      asserts: { expectedDiagnostics: ["INK0077"] },
     },
   ],
 };

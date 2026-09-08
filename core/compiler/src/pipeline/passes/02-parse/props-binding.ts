@@ -44,7 +44,7 @@ export function checkPropsBindingName(
 }
 
 /**
- * R6 — the props binding may only be read through a property. Reports INK0076 when it is not.
+ * R6 — the props binding may only be read through a property. Reports INK0077 when it is not.
  *
  * Only `props.<name>` carries a member the rewriter can map to each target's props convention, so
  * only that form survives the four `strip: true` targets, which emit no props object at all. A bare
@@ -77,7 +77,7 @@ export function checkWholePropsRead(
       !isPropertyBase(node) &&
       !isDestructuredSource(node)
     ) {
-      ctx.diagnostics.push("INK0076", toLoc(node, sourceFile));
+      ctx.diagnostics.push("INK0077", toLoc(node, sourceFile));
     }
     ts.forEachChild(node, visit);
   };
