@@ -232,6 +232,49 @@ jobs:
       - name: Run type checking
         run: pnpm run typecheck
 
+  # The only check that reads a revision outside this branch, and so the only one that can catch a
+  # diagnostic code collision. Codes are claimed when a branch is authored and merged in whatever
+  # order review finishes, so two branches opened in the same window take the same number; every
+  # in-branch check (`codes.test.ts`, `docs-tables.test.ts`) compares the catalog to files in the
+  # same working tree and cannot see the other branch. #617 was renumbered twice this way.
+  #
+  # Depends on no other job: a git read plus a parse, so it answers in seconds rather than after
+  # the build.
+  diagnostic-codes:
+    name: Diagnostic Codes
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # `pull_request` checks out the *merge* commit by default. That commit already contains
+      # `main`, so its merge base with `origin/main` is `main` itself and the branch's new codes
+      # read as pre-existing — the check would pass on every collision it exists to catch. The head
+      # sha is the branch as its author pushed it, which is what has to be judged.
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      # Explicit rather than relying on what `fetch-depth: 0` happens to leave behind: the whole
+      # check is a comparison against `origin/main`, so that ref existing is not safe to assume.
+      - name: Fetch main
+        run: git fetch --no-tags origin +refs/heads/main:refs/remotes/origin/main
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check diagnostic codes against main
+        run: pnpm --filter @inkline/compiler run check:diagnostics
+
   test:
     name: Unit Tests (shard ${{ matrix.shard }})
     runs-on: ubuntu-latest
@@ -344,7 +387,17 @@ jobs:
   ci-success:
     name: CI Success
     runs-on: ubuntu-latest
-    needs: [build, build-storybook, build-website, lint, typecheck, test, visual-parity]
+    needs:
+      [
+        build,
+        build-storybook,
+        build-website,
+        lint,
+        typecheck,
+        diagnostic-codes,
+        test,
+        visual-parity,
+      ]
     if: always()
     steps:
       - name: Check job status

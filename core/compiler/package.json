@@ -50,6 +50,7 @@
     "generate:aria": "node --experimental-strip-types --experimental-transform-types scripts/gen-aria-attributes.ts",
     "generate:aria:check": "node --experimental-strip-types --experimental-transform-types scripts/gen-aria-attributes.ts --check",
     "docs:diagnostics": "node --experimental-strip-types --experimental-transform-types scripts/gen-diagnostics.ts",
+    "check:diagnostics": "node --experimental-strip-types --experimental-transform-types scripts/check-diagnostic-collisions.ts",
     "codemod:props": "node --experimental-strip-types --experimental-transform-types scripts/codemod-define-props.ts",
     "prepublishOnly": "vp run build"
   },

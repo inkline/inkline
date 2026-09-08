@@ -27,6 +27,25 @@ export const DIAGNOSTICS = {
 - **Help text**: required — the catalog test asserts a non-empty `help` on every code. Give the fix, not a restatement of the title: a corrected example the author can copy.
 - **URL**: link to `https://docs.inkline.dev/diagnostics/INKxxxx`.
 
+### Picking the number
+
+The next free code is only free relative to what your branch can see. Two branches opened in the
+same window both take it, and whichever merges second finds out at the merge conflict — #617 was
+renumbered twice this way, each renumber touching about eleven files after review had passed.
+
+CI's **Diagnostic Codes** job compares the codes your branch introduces against the `origin/main`
+tip, not against your merge base, and fails naming the code, the rule on `main` that holds it, and
+the next code free on both sides. Run it yourself before pushing:
+
+```sh
+git fetch origin main
+pnpm --filter @inkline/compiler check:diagnostics
+```
+
+Only a key of the `DIAGNOSTICS` object claims a code. Naming an existing code anywhere else — a
+`push("INK0075")` call site, a table row, a `url` value — is a reference, and never fails this
+check.
+
 ## 2. Push the diagnostic
 
 Use the typed `DiagnosticCollector.push()` method. TypeScript enforces the correct parameters:
