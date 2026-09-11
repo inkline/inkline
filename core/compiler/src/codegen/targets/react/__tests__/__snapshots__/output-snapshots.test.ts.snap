@@ -446,6 +446,27 @@ return (
 "
 `;
 
+exports[`react full output snapshots > PropsDestructuredMemo 1`] = `
+"import { useMemo, useEffect } from "react";
+export interface PropsDestructuredMemoProps {
+  label: string;
+  size?: string;
+}
+export function PropsDestructuredMemo(props: PropsDestructuredMemoProps)
+{
+const summary = useMemo(() => \`\${props.label}:\${props.size}\`, [])
+useEffect(() => { console.log(props.size); }, [])
+const { size = "md" } = props
+return (
+<>
+  <h1>{summary}</h1>
+  <p>{size}</p>
+</>
+)
+}
+"
+`;
+
 exports[`react full output snapshots > PropsMacroObject 1`] = `
 "export function PropsMacroObject(props: { label: string; color?: string } & React.HTMLAttributes<HTMLElement>)
 {

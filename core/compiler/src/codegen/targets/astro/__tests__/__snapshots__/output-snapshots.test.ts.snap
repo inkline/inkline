@@ -344,6 +344,22 @@ const { label, size = "md", tone } = props;
 "
 `;
 
+exports[`astro full output snapshots > PropsDestructuredMemo 1`] = `
+"---
+export interface PropsDestructuredMemoProps {
+  label: string;
+  size?: string;
+}
+type Props = PropsDestructuredMemoProps
+const props = Astro.props as Props;
+const { label, size = "md" } = props;
+const summary = \`\${label}:\${size}\`
+---
+<h1>{summary}</h1>
+<p>{size}</p>
+"
+`;
+
 exports[`astro full output snapshots > PropsMacroObject 1`] = `
 "---
 type Props = { label: string; color?: string } & Record<string, any>

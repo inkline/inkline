@@ -19,3 +19,15 @@ describe("PropsDestructured: plain, renamed, and renamed + defaulted props bindi
     expect(out).toContain("<span>{props.tone}</span>");
   });
 });
+
+// The counterpart of the memo limitation: `mergeProps` seeds the default on the props object
+// itself, so an alias read inside a memo or an effect still resolves to the default.
+describe("PropsDestructuredMemo: an alias inside a memo or an effect keeps the folded default", () => {
+  it("Solid: mergeProps seeds the default, so the memo and the effect read it", async () => {
+    const out = await compileTo("PropsDestructuredMemo", "solid");
+
+    expect(out).toContain('const props = mergeProps({ size: "md" }, _props)');
+    expect(out).toContain("const summary = createMemo(() => `${props.label}:${props.size}`)");
+    expect(out).toContain("createEffect(() => { console.log(props.size); })");
+  });
+});

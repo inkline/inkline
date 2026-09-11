@@ -130,6 +130,7 @@ export const NEW_FIXTURES = [
   "PropsMacroType",
   "PropsMacroObject",
   "PropsDestructured",
+  "PropsDestructuredMemo",
 ] as const;
 
 // ── Unit emit: hand-built IR → emitted source ────────────────────────────────

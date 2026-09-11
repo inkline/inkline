@@ -22,3 +22,15 @@ describe("PropsDestructured: plain, renamed, and renamed + defaulted props bindi
     expect(out).toContain("<span>{{ tone() }}</span>");
   });
 });
+
+// The counterpart of the memo limitation: the default seeds `input()`, the only declaration of
+// the prop, so a read inside a computed or an effect resolves to it.
+describe("PropsDestructuredMemo: an alias inside a computed or an effect keeps the folded default", () => {
+  it("Angular: the seeded input() carries the default, so the computed and the effect read it", async () => {
+    const out = await compileTo("PropsDestructuredMemo", "angular");
+
+    expect(out).toContain("size = input<string>('md')");
+    expect(out).toContain("summary = computed(() => `${this.label()}:${this.size()}`)");
+    expect(out).toContain("effect(() => { console.log(this.size()); })");
+  });
+});

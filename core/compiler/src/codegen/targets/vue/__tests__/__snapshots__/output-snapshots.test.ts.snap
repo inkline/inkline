@@ -418,6 +418,24 @@ exports[`vue full output snapshots > PropsDestructured 1`] = `
 "
 `;
 
+exports[`vue full output snapshots > PropsDestructuredMemo 1`] = `
+"<script setup lang="ts">
+  import { computed, watchEffect } from "vue";
+  export interface PropsDestructuredMemoProps {
+    label: string;
+    size?: string;
+  }
+  const props = withDefaults(defineProps<PropsDestructuredMemoProps>(), { size: "md" })
+  const summary = computed(() => \`\${props.label}:\${props.size}\`)
+  watchEffect(() => { console.log(props.size); })
+</script>
+<template>
+<h1>{{ summary }}</h1>
+<p>{{ size }}</p>
+</template>
+"
+`;
+
 exports[`vue full output snapshots > PropsMacroObject 1`] = `
 "<script setup lang="ts">
   const props = withDefaults(defineProps<{ label: string; color?: string }>(), { color: "blue" })

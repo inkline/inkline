@@ -18,3 +18,15 @@ describe("PropsDestructured: plain, renamed, and renamed + defaulted props bindi
     expect(out).toContain("<span>{tone}</span>");
   });
 });
+
+// The counterpart of the memo limitation: the frontmatter destructure carries the default and is
+// emitted above every derived value, so a read below it resolves to the default.
+describe("PropsDestructuredMemo: an alias below the frontmatter destructure keeps the folded default", () => {
+  it("Astro: the frontmatter destructure carries the default, so the derived value reads it", async () => {
+    const out = await compileTo("PropsDestructuredMemo", "astro");
+
+    expect(out).toContain('const { label, size = "md" } = props;');
+    expect(out).toContain("const summary = `${label}:${size}`");
+    expect(out.indexOf('size = "md"')).toBeLessThan(out.indexOf("const summary"));
+  });
+});

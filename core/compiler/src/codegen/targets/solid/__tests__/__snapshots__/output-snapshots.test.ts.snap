@@ -507,6 +507,27 @@ return (
 "
 `;
 
+exports[`solid full output snapshots > PropsDestructuredMemo 1`] = `
+"import { mergeProps, createMemo, createEffect } from "solid-js";
+export interface PropsDestructuredMemoProps {
+  label: string;
+  size?: string;
+}
+export default function PropsDestructuredMemo(_props: PropsDestructuredMemoProps)
+{
+const props = mergeProps({ size: "md" }, _props)
+const summary = createMemo(() => \`\${props.label}:\${props.size}\`)
+createEffect(() => { console.log(props.size); })
+return (
+<>
+  <h1>{summary()}</h1>
+  <p>{props.size}</p>
+</>
+)
+}
+"
+`;
+
 exports[`solid full output snapshots > PropsMacroObject 1`] = `
 "import { mergeProps, splitProps } from "solid-js";
 import type { JSX } from "solid-js";

@@ -235,14 +235,37 @@ symbol, so it never triggers the rule.
 **Destructuring it is read, not emitted.** `const { label, size: dimension = "md" } = props` never
 reaches the output: parse consumes the statement and records each binding as an alias of the prop it
 names, so a read of `dimension` compiles to exactly what `props.size` compiles to on that target —
-`props.size` on React, Solid, Qwik and Astro, `size` in a Vue or Svelte template, `size()` on
-Angular. Solid therefore still reads through the reactive proxy, and the `requirePropsNotDestructured`
-conformance invariant on its output still holds.
+`props.size` on React, Solid and Qwik; a bare `size` in a Vue or Svelte template and in Astro's
+frontmatter; `size()` on Angular. Solid therefore still reads through the reactive proxy, and the
+`requirePropsNotDestructured` conformance invariant on its output still holds.
 
 A default written in the pattern becomes the prop's default and makes the prop optional, applied in
 each target's own idiom; a default the prop already declares wins, because a declared default means
 the property is never `undefined` and the pattern's default would not run in the authored source
 either.
+
+**Inside a memo or an effect, React and Qwik drop the default.** Both targets apply a prop default
+with a rest destructure (`const { size = "md" } = props`) emitted below the memos and effects, so a
+rewrite to that local inside one would reference it in the temporal dead zone. The alias therefore
+rewrites to `props.size` there, and `props.size` is `undefined` when the caller omits the prop:
+
+```tsx
+const { size: dimension = "md" } = props;
+const summary = createMemo(() => `size:${dimension}`); // React/Qwik: `size:undefined`
+return <p>{dimension}</p>; // React/Qwik: `md`
+```
+
+Solid (`mergeProps`), Vue (`withDefaults`), Svelte, Astro and Angular seed the default on the props
+object or on the declaration itself, so the memo reads `"md"` on those five. This is the existing
+behaviour of a declared default read as `props.size` on React and Qwik — the alias inherits it, it
+is not new. Read the prop in the render body, or pass the value in, when a memo needs the default.
+
+**A destructured local is not a reactive dependency.** Dependency analysis runs on the authored name,
+so a memo or an effect whose only reads are destructured locals tracks nothing and React emits
+`useMemo(…, [])` — it computes once and never recomputes. `INK0011` (memo) and `INK0010` (effect)
+fire regardless of target, so the compiler still names it at build time, but the consequence is now
+silent staleness rather than the `ReferenceError` the same code raised before these bindings were
+resolved. Read `props.<name>` directly inside a memo or an effect to keep it tracked.
 
 Only a binding that names one static prop is supported. A rest element (`...rest`), a nested pattern
 (`{ a: { b } }`), and a computed key (`{ [k]: v }`) each name no single prop, so no target could

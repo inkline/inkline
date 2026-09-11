@@ -425,6 +425,24 @@ tone = input<string>()
 "
 `;
 
+exports[`angular full output snapshots > PropsDestructuredMemo 1`] = `
+"import { Component, signal, computed, effect, input } from "@angular/core";
+export interface PropsDestructuredMemoProps {
+  label: string;
+  size?: string;
+}
+@Component({ standalone: true, selector: 'ink-props-destructured-memo', host: { style: 'display: contents' }, template: \`<h1>{{ summary() }}</h1>
+<p>{{ size() }}</p>\` })
+export class PropsDestructuredMemoComponent
+{
+summary = computed(() => \`\${this.label()}:\${this.size()}\`)
+constructor() { effect(() => { console.log(this.size()); }) }
+label = input.required<string>()
+size = input<string>('md')
+}
+"
+`;
+
 exports[`angular full output snapshots > PropsMacroObject 1`] = `
 "import { Component, signal, computed, effect, input } from "@angular/core";
 @Component({ standalone: true, selector: 'ink-props-macro-object', host: { style: 'display: contents' }, template: \`<span [class]="(color()) + (klass() ? ' ' + klass() : '')">{{ label() }}</span>\` })

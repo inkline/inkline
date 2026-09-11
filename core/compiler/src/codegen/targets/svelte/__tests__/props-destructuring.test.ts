@@ -18,3 +18,15 @@ describe("PropsDestructured: plain, renamed, and renamed + defaulted props bindi
     expect(out).toContain("<span>{tone}</span>");
   });
 });
+
+// The counterpart of the memo limitation: the default sits on the `$props()` destructure, which
+// is the only declaration of the name, so a read inside a derived or an effect resolves to it.
+describe("PropsDestructuredMemo: an alias inside a derived or an effect keeps the folded default", () => {
+  it("Svelte: $props() carries the default, so the derived and the effect read it", async () => {
+    const out = await compileTo("PropsDestructuredMemo", "svelte");
+
+    expect(out).toContain('let { label, size = "md" }: PropsDestructuredMemoProps = $props()');
+    expect(out).toContain("let summary = $derived(`${label}:${size}`)");
+    expect(out).toContain("$effect(() => { console.log(size); })");
+  });
+});
