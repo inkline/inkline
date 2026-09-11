@@ -38,9 +38,9 @@ Parse now consumes the statement and records each binding as an alias of the pro
 `props.<prop>` read, under whichever convention the target uses — `props.label` on React, Solid and
 Qwik; a bare `label` in a Vue or Svelte template and in Astro's frontmatter; `label()` on Angular. A
 default written in the pattern is folded into the prop's `defaultValue` and makes the prop optional,
-so all seven targets apply it through the mechanism each already has: React's and Qwik's rest destructure, Solid's
-`mergeProps`, Vue's `withDefaults`, Svelte's `$props()` destructure, Astro's frontmatter
-destructure, and Angular's `input()` seed. A default the prop already declares wins, which matches
+so all seven targets apply it through the mechanism each already has: React's and Qwik's rest
+destructure, Solid's `mergeProps`, Vue's `withDefaults`, Svelte's `$props()` destructure, Astro's
+frontmatter destructure, and Angular's `input()` seed. A default the prop already declares wins, which matches
 the JS semantics — a declared default means the property is never `undefined`, so the pattern's
 default would not run in the authored source either.
 

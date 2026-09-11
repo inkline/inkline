@@ -234,15 +234,18 @@ symbol, so it never triggers the rule.
 
 **Destructuring it is read, not emitted.** `const { label, size: dimension = "md" } = props` never
 reaches the output: parse consumes the statement and records each binding as an alias of the prop it
-names, so a read of `dimension` compiles to exactly what `props.size` compiles to on that target —
-`props.size` on React, Solid and Qwik; a bare `size` in a Vue or Svelte template and in Astro's
-frontmatter; `size()` on Angular. Solid therefore still reads through the reactive proxy, and the
+names, so a read of the local compiles to exactly what the matching `props.<prop>` read compiles to
+on that target. For a prop carrying no default, a read of `label` gives `props.label` on React, Solid
+and Qwik; a bare `label` in a Vue or Svelte template and in Astro's frontmatter; `label()` on
+Angular. Solid therefore still reads through the reactive proxy, and the
 `requirePropsNotDestructured` conformance invariant on its output still holds.
 
 A default written in the pattern becomes the prop's default and makes the prop optional, applied in
 each target's own idiom; a default the prop already declares wins, because a declared default means
 the property is never `undefined` and the pattern's default would not run in the authored source
-either.
+either. React and Qwik apply a default with a rest destructure, so a render read of `dimension`
+compiles to a bare `size` on those two rather than to `props.size` — which is, again, exactly what a
+hand-written `props.size` compiles to in the same component.
 
 **Inside a memo or an effect, React and Qwik drop the default.** Both targets apply a prop default
 with a rest destructure (`const { size = "md" } = props`) emitted below the memos and effects, so a
