@@ -146,13 +146,10 @@ jobs:
       # Consumes the artifact the step above produced, which is why it lives
       # here and not in the `test` job — that job never builds the website.
       #
-      # Guards the single-Tailwind-pass invariant: the layer's base CSS and the
-      # app's brand CSS must reach the bundle as ONE entry. Two entries emit a
-      # duplicate of every utility (437,170 B raw / 55,295 B gzip against
-      # 224,261 B / 28,573 B when this last shipped here — UXF-118); zero
-      # entries ship no utilities at all. The guard asserts exactly one, so it
-      # catches both.
-      - name: Guard compiled CSS (single Tailwind pass)
+      # Checks the static site: every docs URL prerendered as a file, plus
+      # llms.txt, sitemap.xml, robots.txt, 200.html and 404.html, and no Docus
+      # assistant endpoint anywhere in it (test/site.build.test.ts).
+      - name: Check generated site
         run: pnpm --filter website run test:build
 
       # `.output/public` is `generate`'s real output. The previous path,
