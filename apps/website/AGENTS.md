@@ -75,7 +75,7 @@ pnpm --filter website test         # source tests: the brand palette, the embed 
 pnpm --filter website test:build   # after generate: the files the deploy needs, no assistant
 ```
 
-`generate` is the build that ships, and it fails on any page that doesn't prerender (`nitro.prerender.failOnError`). `build` (node-server) is a local convenience only: it emits no `robots.txt`, `sitemap.xml`, `200.html` or `404.html`, all of which the deploy needs.
+`generate` is the build that ships, and it fails on any page that doesn't prerender (`nitro.prerender.failOnError`). `build` (node-server) is a local convenience only: it emits no `robots.txt`, `200.html` or `404.html`, all of which the deploy needs.
 
 ## Deploy
 

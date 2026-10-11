@@ -45,7 +45,7 @@ describe("the generated site", () => {
   // The compiler pages are parked in content/_compiler/, so nothing about the
   // compiler reaches the homepage.
   it("keeps the compiler out of the homepage", () => {
-    expect(readFileSync(join(output, "index.html"), "utf8")).not.toContain("compile-everywhere");
+    expect(readFileSync(join(output, "index.html"), "utf8")).not.toMatch(/compil/i);
   });
 
   // The assistant needs a server route a static host doesn't have.

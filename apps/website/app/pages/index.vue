@@ -5,7 +5,7 @@ import { corridor, ink, prism, stack, tokens } from "@uxfront/scene/formations";
 import { DOCS_URL, GITHUB_URL } from "~/data/site";
 
 useUxHead({
-  title: "Inkline - UI components for seven frameworks",
+  title: "UI components for seven frameworks - Inkline",
   description:
     "Inkline is a UI component library with a native package for React, Vue, Svelte, Solid, Angular, Qwik and Astro, styled with Styleframe and accessible by default.",
   siteName: "Inkline",
@@ -59,7 +59,7 @@ const styling = [
 const accessibility = [
   {
     title: "Native elements",
-    text: "The Button renders a native button element, so focus, keyboard and form submission come with it.",
+    text: "The Button renders a native button element, so focus, Enter and Space come with it.",
   },
   {
     title: "Roles and states",
@@ -67,7 +67,7 @@ const accessibility = [
   },
   {
     title: "One pattern each",
-    text: "Each component follows the WAI-ARIA pattern for its widget, with the keyboard map it defines.",
+    text: "Each interactive component follows the WAI-ARIA pattern for its widget and its keyboard map.",
   },
   {
     title: "Same in every framework",

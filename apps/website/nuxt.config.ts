@@ -103,11 +103,13 @@ export default defineNuxtConfig({
     },
     vercel: {
       config: {
-        // Docus negotiates `/` → `/llms.txt` in a Nitro request handler. A fully
-        // static deploy (ADR-007) has no Nitro runtime, so it never runs. These
-        // two rules restore the same behaviour at the CDN edge: agents asking
-        // for markdown, and curl, get the llms.txt entry point; browsers get the
-        // rendered homepage. `(?i)` makes the match case-insensitive.
+        // Agents asking for markdown, and curl, get the llms.txt entry point at
+        // `/`; browsers get the rendered homepage. A fully static deploy
+        // (ADR-007) has no Nitro runtime to negotiate that, so it has to happen
+        // at the CDN edge. Docus's vercel-markdown-rewrite module now writes
+        // its own `^/$` → `/llms.txt` rewrites ahead of these two redirects, and
+        // those match first; these two stay as the fallback if Docus drops them.
+        // `(?i)` makes the match case-insensitive.
         //
         // Build Output API v3 routes must be declared here, not in vercel.json —
         // once .vercel/output/config.json exists, Vercel ignores vercel.json's
@@ -115,8 +117,8 @@ export default defineNuxtConfig({
         //
         // Nitro types `routes` as a narrow 3-variant union that predates `has`
         // and redirect routes; the Build Output API accepts both, and the
-        // emitted .vercel/output/config.json carries these two entries verbatim
-        // as routes[0] and routes[1]. Drop the directives below when nitropack
+        // emitted .vercel/output/config.json carries these two entries verbatim,
+        // after Docus's rewrites. Drop the directives below when nitropack
         // widens the type — ts-expect-error errors once it is unnecessary.
         routes: [
           {
