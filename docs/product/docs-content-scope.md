@@ -37,7 +37,7 @@ This was named the biggest lever — "a factor of up to 7 on content volume." **
 
 1. **Components are authored once.** `ui/components/src/components/` holds 8 components. `ui/react/src/index.ts` is one line: `export * from "../.inkline/index.ts"` — the framework packages are _generated_, not written. Same for the other six.
 2. **Stories are authored once.** There are **8** story files total (`ui/components/src/components/*/stories/*.ink.stories.ts`) and **zero** hand-written stories in any of `ui/{react,vue,svelte,solid,angular,qwik,astro}/src`. They compile per target.
-3. **The docs pattern already serves 7 frameworks from one page.** `apps/website/content/docs/03.components/01.button.md` is a single file containing `::framework-switcher` with seven `:storybook-embed` blocks, driven by `docsTheme.frameworks` in `app.config.ts`.
+3. **The docs pattern already serves 7 frameworks from one page.** `apps/website/content/docs/03.components/01.button.md` is a single file containing `::framework-switcher` with seven `:storybook-embed` blocks, one per framework slot, driven by `docsTheme.frameworks` in `app.config.ts`. The switcher shows the reader's pick from the Framework select; `StorybookEmbed` is the app's own, in `apps/website/app/components/content/`.
 
 So "does every page carry all 7 variants?" — **yes, and the marginal cost per framework is one line of MDC.** The factor-of-7 fear applies to _deployment_, not content.
 
@@ -154,7 +154,7 @@ Two merges do the heavy lifting and both are proven patterns already in the tree
 - **Framework setup as one switcher page** instead of seven. Same MDC pattern as `button.md`. Saves 6 pages without hiding a framework.
 - **Components & props as one authoring page.** They are one concept until the API grows.
 
-The landing page (`content/index.md`) is **not** counted here — it is UXF-172's. Its CTA should point at **`/docs/getting-started`**; that URL is stable in this tree and @palette can wire it without waiting.
+The homepage (`apps/website/app/pages/index.vue`) is **not** counted here — it is UXF-172's. Its CTA points at **`/docs/getting-started`**, a URL that is stable in this tree.
 
 ---
 
@@ -162,7 +162,7 @@ The landing page (`content/index.md`) is **not** counted here — it is UXF-172'
 
 ### Changelog — the Operator has confirmed inkline gets one
 
-**Mechanism is free.** **VERIFIED:** styleframe's `apps/docs/content.config.ts` calls `defineDocsCollections(DOCS_SECTIONS, { sitemap: true, changelog: true })`; inkline's passes no options at all. One argument, and `/changelog` + `/changelog/<version>` exist. Layer extraction is tracked separately and is not this document's problem.
+**Mechanism is small.** **VERIFIED:** styleframe's `apps/docs/content.config.ts` calls `defineDocsCollections(DOCS_SECTIONS, { sitemap: true, changelog: true })`. Inkline's site runs on Docus, which defines only the `docs` collection, so `/changelog` + `/changelog/<version>` take a `changelog` collection in a `content.config.ts` and two pages, the way Open Components builds its changelog. Layer extraction is tracked separately and is not this document's problem.
 
 **Recommendation — hybrid, two surfaces with different jobs:**
 
@@ -195,7 +195,7 @@ styleframe's 8 root pages are `cookies · figma · license · pricing · privacy
 | `pricing` / `pro` / `figma` / `scanner` | no              | No equivalents exist.                                             |
 
 > **🔷 Decision needed — Operator: is PostHog analytics enabled on `inkline.io` at launch?**
-> The layer ships a PostHog plugin (the one that killed hydration — UXF-168). If `posthog.key` is set in production, `privacy.md` and `cookies.md` are **legal requirements, not nice-to-haves** — 2 pages, largely adaptable from styleframe's. If analytics stay off, root pages collapse to `license.md` and this half of question 4 closes permanently.
+> `@uxfront/layer-docs` shipped a PostHog plugin up to 0.4.1 (the one that killed hydration — UXF-168); 0.7.1 ships none, so analytics would be added to the app itself. If analytics are enabled in production, `privacy.md` and `cookies.md` are **legal requirements, not nice-to-haves** — 2 pages, largely adaptable from styleframe's. If analytics stay off, root pages collapse to `license.md` and this half of question 4 closes permanently.
 >
 > This is the **same decision** as the success metric in §6. Answering it once resolves both.
 
@@ -213,8 +213,8 @@ No spec ships without one.
 
 ## 7. Kill criteria
 
-- **Fewer than 5 of 7 Storybooks deploy** (UXF-170). Seven tabs where four 404 is worse than three tabs that work. If this happens: reconfigure `docsTheme.frameworks` down to what actually deploys, and drop the seven-framework claim from the landing page and `seo.description` in the same PR. Documenting frameworks whose live examples 404 is a credibility loss, not a content gap.
-- **The MPS is not complete when the rest of the tree is ready to ship.** Ship the sections that are done and gate the nav on authored content only — the section descriptor in `apps/website/app/constants/sections.ts` already works this way by design ("Only sections with authored content are declared, so the nav never shows an empty tab"). Never ship a nav entry that leads nowhere.
+- **Fewer than 5 of 7 Storybooks deploy** (UXF-170). Seven frameworks where four 404 is worse than three that work. If this happens: reconfigure `docsTheme.frameworks` down to what actually deploys, and drop the seven-framework claim from the homepage and its description in the same PR. Documenting frameworks whose live examples 404 is a credibility loss, not a content gap.
+- **The MPS is not complete when the rest of the tree is ready to ship.** Ship the sections that are done and gate the nav on authored content only — Docus builds the sidebar from the pages under `apps/website/content/docs/`, so a section shows only once its folder holds a page. Never ship a nav entry that leads nowhere.
 - **Props tables cannot be verified against source.** If hand-maintained tables are the only option and no generation path exists, cut the Components section to a shorter live-demo-plus-link shape rather than shipping tables that will be wrong within one release.
 
 ---

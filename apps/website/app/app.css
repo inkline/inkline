@@ -1,0 +1,42 @@
+/* Docus imports this after Tailwind CSS and Nuxt UI, into the global stylesheet
+   the docs pages load. Keep it off `.ux-site`: the homepage loads it too. */
+
+/* Docus has Tailwind scan content/ and its own layer, not this app: add the
+   content components the docs pages render, in components/content/, and the
+   header overrides in components/app/. */
+@source "./components/content";
+@source "./components/app";
+
+/* Identifiers in a table's first column, like prop names, read as one word:
+   don't break them at their hyphens. */
+table td:first-child > code {
+  white-space: nowrap;
+}
+
+/*
+ * Inkline brand palette. The base hue is the brand mark's (public/favicon.svg,
+ * #863bff), with saturation and lightness eased for UI legibility across the
+ * scale. Pairs with `ui.colors.primary: "purple"` in app.config.ts: the scale
+ * name below must match that string for Nuxt UI to resolve its variants onto
+ * this scale instead of Tailwind's purple.
+ */
+@theme static {
+  --color-purple: hsl(263, 90%, 60%);
+  --color-purple-50: hsl(from var(--color-purple) h s 5%);
+  --color-purple-100: hsl(from var(--color-purple) h s 10%);
+  --color-purple-200: hsl(from var(--color-purple) h s 20%);
+  --color-purple-300: hsl(from var(--color-purple) h s 30%);
+  --color-purple-400: hsl(from var(--color-purple) h s 40%);
+  --color-purple-500: hsl(from var(--color-purple) h s 60%);
+  --color-purple-600: hsl(from var(--color-purple) h s 60%);
+  --color-purple-700: hsl(from var(--color-purple) h s 70%);
+  --color-purple-800: hsl(from var(--color-purple) h s 80%);
+  --color-purple-900: hsl(from var(--color-purple) h s 90%);
+  --color-purple-950: hsl(from var(--color-purple) h s 95%);
+}
+
+/* The brand purple itself in both colour modes. Unlayered, so it wins over
+   Nuxt UI's per-mode shade in `@layer theme`. */
+:root {
+  --ui-primary: var(--color-purple);
+}

@@ -5,7 +5,7 @@ import { defineConfig } from "vite-plus";
 export default defineConfig({
   test: {
     include: ["test/**/*.test.ts"],
-    // Compiled-output guards read `.output/` off disk, so they fail — correctly
+    // Build tests read `.output/` off disk, so they fail — correctly
     // — in a run that never built anything. They run via the `test:build`
     // script (see `vite.build.config.ts`) from the Build Website CI job.
     exclude: ["**/node_modules/**", "**/.output/**", "**/.nuxt/**", "test/**/*.build.test.ts"],
