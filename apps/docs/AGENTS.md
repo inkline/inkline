@@ -27,7 +27,7 @@ apps/website/
 │   ├── routes/sitemap.xml.ts # the homepage, then the docs pages
 │   ├── middleware/raw-markdown.ts  # /raw/<path>.md from each page's source
 │   └── lib/                  # headers, docs, raw
-├── test/                     # brand palette and embed helpers; site.build.test.ts after generate
+├── test/                     # brand palette, embed helpers, versions; site.build.test.ts after generate
 └── content/
     ├── _compiler/            # parked, unrouted: compiler pages awaiting /compiler
     └── docs/
@@ -67,7 +67,7 @@ The Button page embeds each framework's Storybook story inside its slot, through
 
 Both headers have a Version select that shows v5, this site, and lists the older docs sites: v4, v3 and v2, each at `https://v<n>.inkline.io/`. The list is `app/data/versions.ts`, and `app/components/app/VersionSelect.vue` renders it on Nuxt UI's `USelect`. Nuxt names it `AppVersionSelect`, after its folder. It sits in the homepage's `UxHeader` actions, in the docs header beside the links (`AppHeaderCTA`), and in the docs header's menu below 768px, under the Framework select (`AppHeaderBody`).
 
-Picking a version opens its site in the same tab. Only a click or Enter on an option picks one: the arrow keys move through the open list without leaving the page. Keep it off a native `<select>`, which fires `change` on each arrow key on Windows and Linux.
+Picking a version opens its site in the same tab. Only a click, or Enter or Space on an option, picks one: the arrow keys move through the open list without leaving the page. Keep it off a native `<select>`, which fires `change` on each arrow key on Windows and Linux.
 
 The homepage paints before Tailwind loads, so `app/pages/index.vue` styles the trigger like its header links. Those rules are unlayered and win over Nuxt UI's, whose text colour follows the docs' colour mode. The open list follows that colour mode, light or dark.
 

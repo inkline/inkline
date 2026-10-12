@@ -213,6 +213,7 @@ const accessibility = [
    are unlayered, so they also win over Nuxt UI's utilities once they load,
    which follow the docs' colour mode and could turn the text dark here. */
 .header-version :deep(button) {
+  position: relative;
   min-height: 2.75rem;
   padding: 0 1.5rem 0 0;
   border: 0;
@@ -234,7 +235,14 @@ const accessibility = [
   outline-offset: 4px;
 }
 
+/* Out of the flow at first paint too, so the trigger keeps its width when
+   Nuxt UI's styles load and the links beside it don't shift. */
 .header-version :deep([data-slot="trailing"]) {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-end: 0;
+  display: flex;
+  align-items: center;
   padding: 0;
 }
 
