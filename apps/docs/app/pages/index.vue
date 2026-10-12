@@ -109,6 +109,7 @@ const accessibility = [
             <UxGithubIcon class="header-icon" />
             <span class="header-label">GitHub</span>
           </a>
+          <span class="header-version"><AppVersionSelect /></span>
         </template>
       </UxHeader>
     </template>
@@ -206,6 +207,39 @@ const accessibility = [
 .header-icon {
   width: 1.125rem;
   height: 1.125rem;
+}
+
+/* The version select's trigger, styled like the links beside it. These rules
+   are unlayered, so they also win over Nuxt UI's utilities once they load,
+   which follow the docs' colour mode and could turn the text dark here. */
+.header-version :deep(button) {
+  min-height: 2.75rem;
+  padding: 0 1.5rem 0 0;
+  border: 0;
+  border-radius: 2px;
+  background: none;
+  font: inherit;
+  font-size: 0.875rem;
+  color: var(--ux-fg-2);
+  cursor: pointer;
+  transition: color 0.3s var(--ux-ease-out);
+}
+
+.header-version :deep(button:hover) {
+  color: var(--ux-fg);
+}
+
+.header-version :deep(button:focus-visible) {
+  outline: 1px solid var(--ux-fg);
+  outline-offset: 4px;
+}
+
+.header-version :deep([data-slot="trailing"]) {
+  padding: 0;
+}
+
+.header-version :deep(.iconify) {
+  color: inherit;
 }
 
 /* Phones can't fit the byline beside the links. The hero links to the docs just

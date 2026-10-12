@@ -48,6 +48,18 @@ describe("the generated site", () => {
     expect(readFileSync(join(output, "index.html"), "utf8")).not.toMatch(/compil/i);
   });
 
+  // A closed select prerenders its trigger only, so the options and their URLs
+  // are checked in versions.test.ts.
+  it.each(["index.html", "docs/getting-started.html"])(
+    "renders the Version select on %s, showing v5",
+    (file) => {
+      const html = readFileSync(join(output, file), "utf8");
+      const trigger = html.match(/<button[^>]*aria-label="Version"[^>]*>.*?<\/button>/s)?.[0];
+      expect(trigger).toMatch(/role="combobox"/);
+      expect(trigger?.replace(/<[^>]*>/g, "").trim()).toBe("v5");
+    },
+  );
+
   // The assistant needs a server route a static host doesn't have.
   it("ships no Docus assistant", () => {
     const hits = [...walk(output)].filter((file) =>

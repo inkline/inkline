@@ -16,10 +16,12 @@ apps/website/
 │   ├── error.vue             # UxErrorPage
 │   ├── pages/index.vue       # the homepage: UxSite, UxHeader, UxHero, UxChapter, UxFinale
 │   ├── components/
-│   │   ├── app/              # AppHeaderCTA, AppHeaderBody: the docs header's links
+│   │   ├── app/              # AppHeaderCTA, AppHeaderBody: the docs header's links;
+│   │   │                     # VersionSelect (<AppVersionSelect>): the version select
 │   │   └── content/          # StorybookEmbed, BrowserFrame: the embed port
 │   ├── composables/useHeaderLinks.ts
 │   ├── data/site.ts          # DOCS_URL, GITHUB_URL
+│   ├── data/versions.ts      # VERSIONS: v5 (this site), v4, v3, v2
 │   └── lib/storybookEmbed.ts # the embed's URL and message helpers
 ├── server/
 │   ├── routes/sitemap.xml.ts # the homepage, then the docs pages
@@ -61,6 +63,14 @@ The Button page embeds each framework's Storybook story inside its slot, through
 
 `@uxfront/layer-docs` dropped `StorybookEmbed` in 0.5.0, so this app carries a port of the 0.4.1 component: `app/components/content/StorybookEmbed.vue`, its helpers in `app/lib/storybookEmbed.ts`, and `BrowserFrame.vue`, a stand-in for the frame 0.7.1 and Docus no longer ship. The embed builds its iframe `src` from `runtimeConfig.public.storybookBaseUrl`, which `nuxt.config.ts` sets to `https://{framework}.storybook.inkline.io` and `NUXT_PUBLIC_STORYBOOK_BASE_URL` overrides at build time. It mounts the iframe only once it nears the viewport and reserves its height up front, so the page doesn't shift.
 
+## Version select
+
+Both headers have a Version select that shows v5, this site, and lists the older docs sites: v4, v3 and v2, each at `https://v<n>.inkline.io/`. The list is `app/data/versions.ts`, and `app/components/app/VersionSelect.vue` renders it on Nuxt UI's `USelect`. Nuxt names it `AppVersionSelect`, after its folder. It sits in the homepage's `UxHeader` actions, in the docs header beside the links (`AppHeaderCTA`), and in the docs header's menu below 768px, under the Framework select (`AppHeaderBody`).
+
+Picking a version opens its site in the same tab. Only a click or Enter on an option picks one: the arrow keys move through the open list without leaving the page. Keep it off a native `<select>`, which fires `change` on each arrow key on Windows and Linux.
+
+The homepage paints before Tailwind loads, so `app/pages/index.vue` styles the trigger like its header links. Those rules are unlayered and win over Nuxt UI's, whose text colour follows the docs' colour mode. The open list follows that colour mode, light or dark.
+
 ## Running
 
 ```bash
@@ -71,8 +81,8 @@ pnpm --filter website dev   # nuxt dev with HMR
 
 ```bash
 pnpm --filter website generate     # static prerender → .output/public
-pnpm --filter website test         # source tests: the brand palette, the embed helpers
-pnpm --filter website test:build   # after generate: the files the deploy needs, no assistant
+pnpm --filter website test         # source tests: the brand palette, the embed helpers, the versions
+pnpm --filter website test:build   # after generate: the files the deploy needs, the Version select, no assistant
 ```
 
 `generate` is the build that ships, and it fails on any page that doesn't prerender (`nitro.prerender.failOnError`). `build` (node-server) is a local convenience only: it emits no `robots.txt`, `200.html` or `404.html`, all of which the deploy needs.
