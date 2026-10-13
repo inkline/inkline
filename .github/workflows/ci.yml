@@ -153,14 +153,14 @@ jobs:
         run: pnpm --filter website run test:build
 
       # `.output/public` is `generate`'s real output. The previous path,
-      # `apps/website/dist`, is an untracked symlink Nuxt only creates on
+      # `apps/docs/dist`, is an untracked symlink Nuxt only creates on
       # `generate` — under `build` it never existed and this artifact uploaded
       # nothing.
       - name: Upload website build
         uses: actions/upload-artifact@v4
         with:
           name: website-build
-          path: apps/website/.output/public
+          path: apps/docs/.output/public
           include-hidden-files: true
           retention-days: 1
 

@@ -7,7 +7,7 @@ The site is a copy of the [Open Components](https://github.com/uxfront-com/open-
 ## Layout
 
 ```
-apps/website/
+apps/docs/
 ├── nuxt.config.ts            # extends layer-ui + layer-docs, site URL, redirects, Vercel edge rules
 ├── app/
 │   ├── app.vue               # mounts Docus under /docs, the homepage everywhere else

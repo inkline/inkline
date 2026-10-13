@@ -25,7 +25,7 @@ tooling/     @inkline/cli, @inkline/storybook, @inkline/test-utils,
              @inkline/agents-check (docs link-integrity test)
 testing/     @inkline/e2e (Playwright cross-framework visual-parity tests)
 ui/          @inkline/components (single source of truth) + 7 framework output packages
-apps/        website (docs site), storybook (unified aggregator for all 7 frameworks)
+apps/        docs (the docs site), storybook (unified aggregator for all 7 frameworks)
 docs/        architecture, conventions, contributing, release-process, authoring, maintenance
 docs/adrs/   architecture decision records — why the codebase is the way it is
 .changeset/  pending changesets — one markdown file per upcoming change
@@ -39,20 +39,20 @@ Workspace globs live in [`pnpm-workspace.yaml`](./pnpm-workspace.yaml). Dependen
 
 Per package — descend to the `AGENTS.md` nearest the file you're editing (LLM tools resolve nearest-wins):
 
-| Package                                                                                                        | When to look                                                             |
-| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
-| [`core/core/AGENTS.md`](./core/core/AGENTS.md)                                                                 | Authoring primitives, JSX runtime                                        |
-| [`core/compiler/AGENTS.md`](./core/compiler/AGENTS.md)                                                         | Pipeline, IR, codegen, plugin hooks                                      |
-| [`core/plugin/AGENTS.md`](./core/plugin/AGENTS.md)                                                             | Bundler integration (Vite, webpack, Rollup, esbuild, Rspack, Farm)       |
-| [`core/config-loader/AGENTS.md`](./core/config-loader/AGENTS.md)                                               | `inkline.config.ts` loading                                              |
-| [`core/inkline/AGENTS.md`](./core/inkline/AGENTS.md)                                                           | The public `inkline` barrel package                                      |
-| [`tooling/cli/AGENTS.md`](./tooling/cli/AGENTS.md)                                                             | `inkline compile`, `inkline check`, `inkline init`                       |
-| [`tooling/storybook/AGENTS.md`](./tooling/storybook/AGENTS.md)                                                 | Story authoring + per-target story generation                            |
-| [`tooling/test-utils/AGENTS.md`](./tooling/test-utils/AGENTS.md)                                               | Cross-target test harnesses                                              |
-| [`ui/components/AGENTS.md`](./ui/components/AGENTS.md)                                                         | **Where you author components** — the single source for all 7 frameworks |
-| [`ui/react/AGENTS.md`](./ui/react/AGENTS.md) and the six siblings                                              | Per-framework output packages — generated, do not hand-edit              |
-| [`apps/storybook/AGENTS.md`](./apps/storybook/AGENTS.md), [`apps/website/AGENTS.md`](./apps/website/AGENTS.md) | The two consumer apps                                                    |
-| [`testing/e2e/AGENTS.md`](./testing/e2e/AGENTS.md)                                                             | Playwright cross-framework visual-parity tests                           |
+| Package                                                                                                  | When to look                                                             |
+| -------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| [`core/core/AGENTS.md`](./core/core/AGENTS.md)                                                           | Authoring primitives, JSX runtime                                        |
+| [`core/compiler/AGENTS.md`](./core/compiler/AGENTS.md)                                                   | Pipeline, IR, codegen, plugin hooks                                      |
+| [`core/plugin/AGENTS.md`](./core/plugin/AGENTS.md)                                                       | Bundler integration (Vite, webpack, Rollup, esbuild, Rspack, Farm)       |
+| [`core/config-loader/AGENTS.md`](./core/config-loader/AGENTS.md)                                         | `inkline.config.ts` loading                                              |
+| [`core/inkline/AGENTS.md`](./core/inkline/AGENTS.md)                                                     | The public `inkline` barrel package                                      |
+| [`tooling/cli/AGENTS.md`](./tooling/cli/AGENTS.md)                                                       | `inkline compile`, `inkline check`, `inkline init`                       |
+| [`tooling/storybook/AGENTS.md`](./tooling/storybook/AGENTS.md)                                           | Story authoring + per-target story generation                            |
+| [`tooling/test-utils/AGENTS.md`](./tooling/test-utils/AGENTS.md)                                         | Cross-target test harnesses                                              |
+| [`ui/components/AGENTS.md`](./ui/components/AGENTS.md)                                                   | **Where you author components** — the single source for all 7 frameworks |
+| [`ui/react/AGENTS.md`](./ui/react/AGENTS.md) and the six siblings                                        | Per-framework output packages — generated, do not hand-edit              |
+| [`apps/storybook/AGENTS.md`](./apps/storybook/AGENTS.md), [`apps/docs/AGENTS.md`](./apps/docs/AGENTS.md) | The two consumer apps                                                    |
+| [`testing/e2e/AGENTS.md`](./testing/e2e/AGENTS.md)                                                       | Playwright cross-framework visual-parity tests                           |
 
 Per topic — read the relevant `docs/`:
 

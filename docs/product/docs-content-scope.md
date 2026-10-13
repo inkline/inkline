@@ -1,7 +1,7 @@
 # RFC: content scope for the Inkline v5 documentation site
 
 **Status:** proposed · **Owner:** product · **Tracking:** UXF-171 (item 3 of the UXF-158 gap audit)
-**Scope:** what `apps/website` documents at launch, and what it deliberately does not. No page is authored by this document.
+**Scope:** what `apps/docs` documents at launch, and what it deliberately does not. No page is authored by this document.
 
 > **Assumption in force — ASSUMED, labelled so it is cheap to reverse.**
 > "Ready for usage" means **public production launch**. The Operator was asked twice (Aug 6, Aug 8) and the question is still open; @trigger's call on Aug 8 was to stop stalling the tree and scope for public launch. If the answer comes back "internal preview", see [If this is a preview](#if-this-is-a-preview) — the honest recommendation collapses to _defer this entire workstream_, and this RFC is 20 minutes of reversal, not a rewrite.
@@ -37,7 +37,7 @@ This was named the biggest lever — "a factor of up to 7 on content volume." **
 
 1. **Components are authored once.** `ui/components/src/components/` holds 8 components. `ui/react/src/index.ts` is one line: `export * from "../.inkline/index.ts"` — the framework packages are _generated_, not written. Same for the other six.
 2. **Stories are authored once.** There are **8** story files total (`ui/components/src/components/*/stories/*.ink.stories.ts`) and **zero** hand-written stories in any of `ui/{react,vue,svelte,solid,angular,qwik,astro}/src`. They compile per target.
-3. **The docs pattern already serves 7 frameworks from one page.** `apps/website/content/docs/03.components/01.button.md` is a single file containing `::framework-switcher` with seven `:storybook-embed` blocks, one per framework slot, driven by `docsTheme.frameworks` in `app.config.ts`. The switcher shows the reader's pick from the Framework select; `StorybookEmbed` is the app's own, in `apps/website/app/components/content/`.
+3. **The docs pattern already serves 7 frameworks from one page.** `apps/docs/content/docs/03.components/01.button.md` is a single file containing `::framework-switcher` with seven `:storybook-embed` blocks, one per framework slot, driven by `docsTheme.frameworks` in `app.config.ts`. The switcher shows the reader's pick from the Framework select; `StorybookEmbed` is the app's own, in `apps/docs/app/components/content/`.
 
 So "does every page carry all 7 variants?" — **yes, and the marginal cost per framework is one line of MDC.** The factor-of-7 fear applies to _deployment_, not content.
 
@@ -154,7 +154,7 @@ Two merges do the heavy lifting and both are proven patterns already in the tree
 - **Framework setup as one switcher page** instead of seven. Same MDC pattern as `button.md`. Saves 6 pages without hiding a framework.
 - **Components & props as one authoring page.** They are one concept until the API grows.
 
-The homepage (`apps/website/app/pages/index.vue`) is **not** counted here — it is UXF-172's. Its CTA points at **`/docs/getting-started`**, a URL that is stable in this tree.
+The homepage (`apps/docs/app/pages/index.vue`) is **not** counted here — it is UXF-172's. Its CTA points at **`/docs/getting-started`**, a URL that is stable in this tree.
 
 ---
 
@@ -166,10 +166,10 @@ The homepage (`apps/website/app/pages/index.vue`) is **not** counted here — it
 
 **Recommendation — hybrid, two surfaces with different jobs:**
 
-| surface                           | audience                          | generated?                                | lives in                          |
-| --------------------------------- | --------------------------------- | ----------------------------------------- | --------------------------------- |
-| per-package `CHANGELOG.md`        | engineers, dependabot, `npm view` | **yes** — `changeset version` writes them | the repo, per package             |
-| `/changelog/<version>` site entry | users deciding whether to upgrade | **no** — hand-written at release time     | `apps/website/content/changelog/` |
+| surface                           | audience                          | generated?                                | lives in                       |
+| --------------------------------- | --------------------------------- | ----------------------------------------- | ------------------------------ |
+| per-package `CHANGELOG.md`        | engineers, dependabot, `npm view` | **yes** — `changeset version` writes them | the repo, per package          |
+| `/changelog/<version>` site entry | users deciding whether to upgrade | **no** — hand-written at release time     | `apps/docs/content/changelog/` |
 
 **Do not generate the site changelog from `CHANGELOG.md`.** Two reasons, both verified:
 
@@ -214,7 +214,7 @@ No spec ships without one.
 ## 7. Kill criteria
 
 - **Fewer than 5 of 7 Storybooks deploy** (UXF-170). Seven frameworks where four 404 is worse than three that work. If this happens: reconfigure `docsTheme.frameworks` down to what actually deploys, and drop the seven-framework claim from the homepage and its description in the same PR. Documenting frameworks whose live examples 404 is a credibility loss, not a content gap.
-- **The MPS is not complete when the rest of the tree is ready to ship.** Ship the sections that are done and gate the nav on authored content only — Docus builds the sidebar from the pages under `apps/website/content/docs/`, so a section shows only once its folder holds a page. Never ship a nav entry that leads nowhere.
+- **The MPS is not complete when the rest of the tree is ready to ship.** Ship the sections that are done and gate the nav on authored content only — Docus builds the sidebar from the pages under `apps/docs/content/docs/`, so a section shows only once its folder holds a page. Never ship a nav entry that leads nowhere.
 - **Props tables cannot be verified against source.** If hand-maintained tables are the only option and no generation path exists, cut the Components section to a shorter live-demo-plus-link shape rather than shipping tables that will be wrong within one release.
 
 ---
