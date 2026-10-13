@@ -65,7 +65,7 @@ The Button page embeds each framework's Storybook story inside its slot, through
 
 ## Version select
 
-Both headers have a Version select that shows v5, this site, and lists the older docs sites: v4, v3 and v2, each at `https://v<n>.inkline.io/`. The list is `app/data/versions.ts`, and `app/components/app/VersionSelect.vue` renders it on Nuxt UI's `USelect`. Nuxt names it `AppVersionSelect`, after its folder. It sits in the homepage's `UxHeader` actions, in the docs header beside the links (`AppHeaderCTA`), and in the docs header's menu below 768px, under the Framework select (`AppHeaderBody`).
+Both headers have a Version select that shows v5, this site, and lists the older docs sites: v4, v3 and v2, each at `https://v<n>.inkline.io/`. The list is `app/data/versions.ts`, and `app/components/app/VersionSelect.vue` renders it on Nuxt UI's `USelect`. Nuxt names it `AppVersionSelect`, after its folder. It sits before the GitHub link in the homepage's `UxHeader` actions and in the docs header (`AppHeaderCTA`), and in the docs header's menu below 768px, under the Framework select (`AppHeaderBody`).
 
 Picking a version opens its site in the same tab. Only a click, or Enter or Space on an option, picks one: the arrow keys move through the open list without leaving the page. Keep it off a native `<select>`, which fires `change` on each arrow key on Windows and Linux.
 

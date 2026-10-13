@@ -105,11 +105,11 @@ const accessibility = [
         </template>
         <template #actions>
           <NuxtLink class="header-link header-page" :to="DOCS_URL">Documentation</NuxtLink>
+          <span class="header-version"><AppVersionSelect /></span>
           <a class="header-link" :href="GITHUB_URL" aria-label="GitHub">
             <UxGithubIcon class="header-icon" />
             <span class="header-label">GitHub</span>
           </a>
-          <span class="header-version"><AppVersionSelect /></span>
         </template>
       </UxHeader>
     </template>
