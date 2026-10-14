@@ -4,11 +4,11 @@ export default defineAppConfig({
   // The docs' GitHub, "Edit this page" and "Report an issue" links. Docus reads
   // them from the git remote otherwise, which not every checkout has. `rootDir`
   // is the path from the repository root to this app: without it the edit links
-  // point at `content/`, not `apps/website/content/`, and 404.
+  // point at `content/`, not `apps/docs/content/`, and 404.
   github: {
     url: GITHUB_URL,
     branch: "main",
-    rootDir: "apps/website",
+    rootDir: "apps/docs",
   },
   docsTheme: {
     // Inkline ships these seven, in this order (ui/components/inkline.config.ts).
