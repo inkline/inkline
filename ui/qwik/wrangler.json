@@ -1,0 +1,8 @@
+{
+  "name": "inkline-storybook-qwik",
+  "compatibility_date": "2026-09-21",
+  "assets": {
+    "directory": "./storybook-static"
+  },
+  "previews": {}
+}
