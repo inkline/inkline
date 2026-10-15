@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import { readFile, rm, writeFile } from "node:fs/promises";
+import { join } from "node:path";
 import { SECURITY_HEADERS } from "./server/lib/headers";
 
 const SITE_URL = "https://inkline.io";
@@ -95,6 +98,14 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    // Cloudflare Workers Builds sets WORKERS_CI, and Nitro reads it to pick its
+    // `cloudflare-module` server preset, even under `nuxt generate`. That preset
+    // writes .wrangler/deploy/config.json, which Wrangler prefers over this app's
+    // wrangler.json. `cloudflare_pages_static` writes a static site to dist/ instead,
+    // with a _headers file built from routeRules. Only there: the local and CI
+    // `generate` keep the default preset, whose .output/public `test:build` reads.
+    // Vercel's NITRO_PRESET still wins, since `nuxt generate` passes it as an override.
+    preset: process.env.WORKERS_CI ? "cloudflare_pages_static" : undefined,
     prerender: {
       crawlLinks: true,
       // /docs only redirects, so crawling the docs starts from the introduction.
@@ -153,6 +164,21 @@ export default defineNuxtConfig({
         | { apiPath?: string }
         | undefined;
       delete assistant?.apiPath;
+    },
+    // Workers rejects the `/* /404.html 404` fallback the Cloudflare preset writes
+    // to _redirects (404 isn't a valid redirect status), failing the deploy.
+    // not_found_handling in wrangler.json serves 404.html instead. Registered here,
+    // not in nitro.hooks, so it runs after the preset's compiled hook instead of
+    // replacing it. Other presets write no _redirects, so it does nothing there.
+    "nitro:init"(nitro) {
+      nitro.hooks.hook("compiled", async () => {
+        const file = join(nitro.options.output.dir, "_redirects");
+        if (!existsSync(file)) return;
+        const rules = (await readFile(file, "utf8"))
+          .split("\n")
+          .filter((line) => line && !/\s404$/.test(line));
+        await (rules.length ? writeFile(file, rules.join("\n")) : rm(file));
+      });
     },
   },
 });

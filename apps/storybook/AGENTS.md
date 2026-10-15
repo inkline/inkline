@@ -13,6 +13,7 @@ apps/storybook/
 │   └── preview.ts      # Aggregator-level preview parameters
 ├── stories/
 │   └── Welcome.stories.ts   # Landing/welcome stories shown in the aggregator
+├── wrangler.json       # the `inkline-storybook` Cloudflare Worker: dist/ as static assets
 └── dist/               # storybook:build output (per CI)
 ```
 
@@ -31,7 +32,7 @@ refs: {
 ```
 
 - **In dev** (`pnpm storybook` here, or `pnpm run storybook` from the repo root), each `url` points to the corresponding framework's live Storybook on `localhost:<port>`.
-- **In production** (built by `pnpm storybook:build`), each `url` resolves through the config surface below. By default it is a relative path — the deployment is expected to host each framework's built `storybook-static` under that path. CI uploads them as separate artifacts; the deploy step (out of scope here) stitches them together.
+- **In production** (built by `pnpm storybook:build`), each `url` resolves through the config surface below. By default it is a relative path, which only resolves when one host serves each framework's built `storybook-static` under that path. Each framework deploys to a Worker of its own instead (see [Deploy](#deploy)), so the deployed build sets the ref URLs below.
 
 ## Configuring production ref domains
 
@@ -52,6 +53,25 @@ STORYBOOK_REF_QWIK="https://qwik-canary.storybook.inkline.io" pnpm storybook:bui
 ```
 
 Dev URLs (`localhost:<port>`) are unaffected by these variables.
+
+## Deploy
+
+Each Storybook deploys to its own Cloudflare Worker through Workers Builds. A `wrangler.json` beside each `package.json` names the Worker and serves the built Storybook as static assets:
+
+| Worker                      | Package          | Assets              |
+| --------------------------- | ---------------- | ------------------- |
+| `inkline-storybook`         | `apps/storybook` | `dist/`             |
+| `inkline-storybook-react`   | `ui/react`       | `storybook-static/` |
+| `inkline-storybook-vue`     | `ui/vue`         | `storybook-static/` |
+| `inkline-storybook-svelte`  | `ui/svelte`      | `storybook-static/` |
+| `inkline-storybook-solid`   | `ui/solid`       | `storybook-static/` |
+| `inkline-storybook-angular` | `ui/angular`     | `storybook-static/` |
+| `inkline-storybook-qwik`    | `ui/qwik`        | `storybook-static/` |
+| `inkline-storybook-astro`   | `ui/astro`       | `storybook-static/` |
+
+Set `STORYBOOK_REF_BASE_URL` (or the per-framework `STORYBOOK_REF_<FRAMEWORK>`) as a build variable on `inkline-storybook`, pointing at the framework Workers. The default `./react` paths don't resolve there, because nothing serves `./react` under the composed Worker.
+
+A framework Worker builds its package and its dependencies before its Storybook (`pnpm --filter "@inkline/<framework>..." build && pnpm run storybook:build`), since `prestorybook` doesn't run before `storybook:build`. Each Worker's root directory, build and deploy commands and variables live in the Cloudflare dashboard, not in the repo.
 
 ## Running
 

@@ -1,6 +1,6 @@
 # website
 
-The documentation and marketing site for Inkline. Private (`"private": true` in [`package.json`](./package.json)), so it's never published to npm. It deploys to Vercel as a fully prerendered static site with zero serverless functions: see [ADR-007](../../docs/adrs/007-website-ships-as-a-static-site.md) and [`vercel.json`](./vercel.json).
+The documentation and marketing site for Inkline. Private (`"private": true` in [`package.json`](./package.json)), so it's never published to npm. It deploys to Vercel and to Cloudflare Workers as a fully prerendered static site with zero serverless functions: see [ADR-007](../../docs/adrs/007-website-ships-as-a-static-site.md), [`vercel.json`](./vercel.json) and [`wrangler.json`](./wrangler.json).
 
 The site is a copy of the [Open Components](https://github.com/uxfront-com/open-components) site shell, on the same published packages: [`@uxfront/layer-ui`](https://www.npmjs.com/package/@uxfront/layer-ui) for the homepage kit, [`@uxfront/layer-docs`](https://www.npmjs.com/package/@uxfront/layer-docs) for the docs theme (Docus plus a framework switcher), [`@uxfront/ui`](https://www.npmjs.com/package/@uxfront/ui) for the homepage components and [`@uxfront/scene`](https://www.npmjs.com/package/@uxfront/scene) for its WebGL scene. This app supplies Inkline's brand, its homepage and its markdown.
 
@@ -8,7 +8,9 @@ The site is a copy of the [Open Components](https://github.com/uxfront-com/open-
 
 ```
 apps/docs/
-├── nuxt.config.ts            # extends layer-ui + layer-docs, site URL, redirects, Vercel edge rules
+├── nuxt.config.ts            # extends layer-ui + layer-docs, site URL, redirects, Vercel edge rules,
+│                             # the Cloudflare preset under WORKERS_CI
+├── wrangler.json             # the `inkline` Worker: dist/ as static assets
 ├── app/
 │   ├── app.vue               # mounts Docus under /docs, the homepage everywhere else
 │   ├── app.config.ts         # GitHub links, docsTheme (frameworks, wordmark, byline), ui colours
@@ -40,7 +42,7 @@ apps/docs/
 
 - **From the packages (don't copy or edit here):** Docus's header, sidebar, search, table of contents, colour mode, llms.txt, robots.txt and OG images; the layer's `FrameworkSwitcher`, Framework select and header wordmark; the homepage components and the scene. If a build needs a package change, flag it upstream rather than forking the package into this app.
 - **Copied from Open Components:** `app/app.vue`, `app/error.vue`, the header overrides in `app/components/app/`, `useHeaderLinks`, `server/`, and the generic parts of `nuxt.config.ts` and `app/app.config.ts`. Keep them close to the source, so a fix there carries over.
-- **Local to this app:** the brand (`app/app.config.ts`, `app/app.css`), the homepage, the embed port, the Vercel rules and all markdown under `content/`.
+- **Local to this app:** the brand (`app/app.config.ts`, `app/app.css`), the homepage, the embed port, the Vercel rules, the Cloudflare config and all markdown under `content/`.
 
 ## Docs content
 
@@ -89,11 +91,22 @@ pnpm --filter website test:build   # after generate: the files the deploy needs,
 
 ## Deploy
 
-Vercel, fully static. `vercel.json` sets `NITRO_PRESET=vercel_static`, which writes the Build Output API bundle to `.vercel/output`: `static/` only, no `functions/`. Copy `.env.example` to `.env` for local work. Every `NUXT_PUBLIC_*` value is baked into the HTML at build time, so changing one on Vercel takes a rebuild, not a restart.
+Two hosts build the same static site: Vercel and Cloudflare Workers Builds.
+
+On Vercel, it's fully static. `vercel.json` sets `NITRO_PRESET=vercel_static`, which writes the Build Output API bundle to `.vercel/output`: `static/` only, no `functions/`. Copy `.env.example` to `.env` for local work. Every `NUXT_PUBLIC_*` value is baked into the HTML at build time, so changing one on Vercel takes a rebuild, not a restart.
 
 Docus's server features have nothing to run on here, so they're off: `mcp.enabled: false` and `docus.assistant.enabled: false`, which also keeps the assistant's button out of the docs header when the build can reach an AI gateway (`VERCEL_OIDC_TOKEN`). A `nitro:config` hook drops the assistant's endpoint from the public runtime config, where Docus writes it even when it's off.
 
 The `/` → `/llms.txt` negotiation for agents and curl is two edge rules in `nitro.vercel.config.routes` in [`nuxt.config.ts`](./nuxt.config.ts), not in `vercel.json`, whose `routes` and `redirects` Vercel ignores once `.vercel/output/config.json` exists. On Vercel builds, Docus now writes the same negotiation as rewrites to `/llms.txt` and `/raw/<path>.md` ahead of those two rules. Any other server-only behaviour needs the same treatment or it does nothing; ADR-007 records this as a standing cost.
+
+On Cloudflare, Workers Builds runs `pnpm run generate` for the `inkline` Worker, and [`wrangler.json`](./wrangler.json) serves `dist/` as static assets, with `404.html` for any path that has no file (`not_found_handling`). Workers Builds sets `WORKERS_CI`, which Nitro reads to pick its `cloudflare-module` server preset, even under `nuxt generate`. That preset writes `.wrangler/deploy/config.json`, which Wrangler prefers over `wrangler.json`, so `nuxt.config.ts` sets `nitro.preset` to `cloudflare_pages_static` when `WORKERS_CI` is set:
+
+- It writes `dist/` with a `_headers` file built from `routeRules`, so the security headers and the `/_nuxt/**` cache carry over.
+- A `nitro:init` hook drops the `/* /404.html 404` line it writes to `_redirects`, because Workers rejects 404 as a redirect status and fails the deploy.
+- Keep `NITRO_PRESET` off the `inkline` Worker. `nuxt generate` passes it as an override that wins over `nitro.preset`, and Vercel relies on exactly that.
+- The pin applies only under `WORKERS_CI`, so the local and CI `generate` keep writing `.output/public`, which `test:build` reads.
+
+The `/` → `/llms.txt` negotiation is Vercel-only, so on Cloudflare `/` always serves the homepage. The Worker's root directory, build and deploy commands and variables live in the Cloudflare dashboard, not in the repo.
 
 ## Conventions
 
@@ -106,7 +119,7 @@ The `/` → `/llms.txt` negotiation for agents and curl is two edge rules in `ni
 
 ## Known gaps
 
-- **Storybook host:** no deployed Storybook URL is committed anywhere in the repo (Storybook deploy is out of scope per `apps/storybook/AGENTS.md`, and CI only uploads artifacts). The embeds point at the `https://{framework}.storybook.inkline.io` convention until a host lands; then set `NUXT_PUBLIC_STORYBOOK_BASE_URL` or update `runtimeConfig.public.storybookBaseUrl`.
+- **Storybook host:** each framework's Storybook deploys to its own Cloudflare Worker (see Deploy in [`apps/storybook/AGENTS.md`](../storybook/AGENTS.md)), but the `https://{framework}.storybook.inkline.io` domains the embeds point at aren't attached to those Workers yet. That's a custom-domain setting in the Cloudflare dashboard. To point the embeds at another host, set `NUXT_PUBLIC_STORYBOOK_BASE_URL` or update `runtimeConfig.public.storybookBaseUrl`.
 - **Storybook bridge:** auto-height and colour-mode sync need the Storybook to answer the messages in `app/lib/storybookEmbed.ts`. The bridge that did that, `@uxfront/layer-docs/storybook`, went away with 0.5.0, and the Storybooks under `ui/*` never installed it, so embeds hold their default height and their own theme.
 - **Agent discovery on a static host:** the lockfile holds Docus 5.13.0. Docus 5.14 adds `nuxt-agent-discovery` and a prerendered `/openapi.json` that describes each page's Markdown twin and the MCP endpoint, which is off here. Only what's prerendered survives on a static host, and its server routes are inert, so check what both claim when Docus is bumped.
 

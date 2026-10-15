@@ -1,0 +1,9 @@
+{
+  "name": "inkline",
+  "compatibility_date": "2026-09-21",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page"
+  },
+  "previews": {}
+}
