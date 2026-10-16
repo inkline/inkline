@@ -144,7 +144,7 @@ The compiler is tested at three levels, all using Vitest with co-located `*.test
 - **Codegen** — per-target snapshot and conformance tests under [`codegen/targets/`](../core/compiler/src/codegen/targets/).
 - **Scenarios** — fixture-driven cross-target equivalence. Fixtures live in [`core/compiler/src/__fixtures__/`](../core/compiler/src/__fixtures__/); scenarios assert DOM equivalence across all 7 targets after compile + mount.
 
-Above the compiler sits a fourth level: **visual parity (e2e)** — [`testing/e2e`](../testing/e2e/) is a Playwright suite that boots the composition Storybook and pixel-diffs every story across all 7 frameworks against the React baseline (`pnpm run test:e2e`; a non-blocking, sharded CI job). See [`testing/e2e/AGENTS.md`](../testing/e2e/AGENTS.md).
+Above the compiler sits a fourth level: **visual parity (e2e)** — [`testing/e2e`](../testing/e2e/) is a Playwright suite that boots the composition Storybook and pixel-diffs every story across all 7 frameworks against the React baseline (`pnpm run test:e2e`; a sharded CI job that `ci-success` requires). See [`testing/e2e/AGENTS.md`](../testing/e2e/AGENTS.md).
 
 The reusable harnesses (`compileFixture`, `mountForTarget`, `runScenarioAcrossTargets`, `typecheckEmittedForTarget`, `lintEmittedForTarget`, …) are exposed from [`@inkline/compiler/testing`](../core/compiler/src/testing/index.ts) and from [`@inkline/test-utils`](../tooling/test-utils/) for use in other packages.
 
