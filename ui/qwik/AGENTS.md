@@ -31,7 +31,7 @@ Runs on **port 6011**. `pnpm storybook` here or `pnpm run storybook:qwik` from t
 
 ## Build
 
-`vp build`. Output goes to `dist/` (`index.qwik.mjs`, `headless.qwik.mjs`, `stories.qwik.mjs`).
+`vp build --mode lib`. Output goes to `dist/` (`index.qwik.mjs`, `headless.qwik.mjs`, `stories.qwik.mjs`). Without `--mode lib`, Qwik's Vite plugin runs an app build, which writes none of these entries.
 
 ## See also
 

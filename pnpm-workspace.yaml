@@ -35,6 +35,7 @@ catalog:
   "@analogjs/vite-plugin-angular": ^2.6.1
   "@angular-eslint/eslint-plugin": ^21.4.0
   "@angular-eslint/template-parser": ^21.4.0
+  "@angular/animations": 21.2.17
   "@angular/build": ^21.2.15
   "@angular/cli": ^21.2.15
   "@angular/compiler": ^21.2.17
