@@ -30,7 +30,7 @@ export default defineConfig({
     },
     deps: { neverBundle: [/\.astro$/, /^@inkline\//, /^@storybook-astro\//] },
     copy: [
-      { from: "./.inkline/*.astro", to: "dist/" },
+      { from: "./.inkline/components/**/*.astro", to: "dist", flatten: false },
       { from: "./.styleframe/css/index.css", to: "dist/" },
     ],
   },

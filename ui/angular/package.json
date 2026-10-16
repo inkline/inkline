@@ -29,6 +29,7 @@
   "devDependencies": {
     "@analogjs/storybook-angular": "catalog:",
     "@analogjs/vite-plugin-angular": "catalog:",
+    "@angular/animations": "catalog:",
     "@angular/build": "catalog:",
     "@angular/cli": "catalog:",
     "@angular/compiler": "catalog:",

@@ -29,6 +29,8 @@ Peer dep: `@angular/core >= 17`.
 
 Runs on **port 6010**. `pnpm storybook` here or `pnpm run storybook:angular` from the repo root. Uses `@analogjs/storybook-angular` (the leftover `patches/@analogjs__storybook-angular@2.5.1.patch` is no longer applied since the 2.6.x bump).
 
+The Storybook shows the source components, not the published package, in dev and in a static build alike: [`.storybook/main.ts`](./.storybook/main.ts) aliases `@inkline/angular` to `.inkline/index.ts`, so Analog's plugin compiles them. `dist` is built without the Angular compiler (see the TODO in [`vite.config.ts`](./vite.config.ts)), so its classes carry no input metadata, and `@storybook/angular` would overwrite their signal inputs with plain values.
+
 ## Build
 
 `vp build`. Output goes to `dist/`.
