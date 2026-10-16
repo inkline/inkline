@@ -35,7 +35,7 @@ A generated story imports its meta component by name from the framework package,
 
 ## Static builds
 
-In a production build, the preset adds a Vite plugin that writes `_headers` into the Storybook output (`storybook-static/`). It sends `Access-Control-Allow-Origin: *` on `/index.json`, `/stories.json` and `/metadata.json`, so the composed Storybook on another Cloudflare Worker can read each framework's index. Dev servers don't need it, since the preset sets `server.cors` there. Why `*` is enough, and when to rebuild the composer: Deploy in [`apps/storybook/AGENTS.md`](../../apps/storybook/AGENTS.md).
+In a production build, the preset adds a Vite plugin that writes `_headers` into the Storybook output (`storybook-static/`). It sends `Access-Control-Allow-Origin: *` on `/index.json`, `/stories.json` and `/metadata.json`, so the composed Storybook on another Cloudflare Worker can read each framework's index. Dev servers don't need it: Storybook's dev server sends `Access-Control-Allow-Origin: *` on `/index.json` itself. Why `*` is enough, and when to rebuild the composer: Deploy in [`apps/storybook/AGENTS.md`](../../apps/storybook/AGENTS.md).
 
 ## Source map
 

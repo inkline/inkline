@@ -50,11 +50,15 @@ describe("createStorybookConfig", () => {
     expect(out.server).toEqual({ cors: { origin: true, credentials: true } });
   });
 
-  it("does NOT alias to source or set CORS in production builds", async () => {
+  it("adds only the _headers plugin in production builds, with no source alias or server.cors", async () => {
     const config = createStorybookConfig(base);
     const out = await config.viteFinal({}, { configType: "PRODUCTION" });
     expect(out.resolve).toBeUndefined();
     expect(out.server).toBeUndefined();
+    // The seven framework Storybooks pass no `vitePlugins`, so this is the config they all build with.
+    expect(out.plugins).toEqual([
+      expect.objectContaining({ name: "inkline:storybook-cors-headers", apply: "build" }),
+    ]);
   });
 
   it("appends vite plugins, preserving existing ones", async () => {

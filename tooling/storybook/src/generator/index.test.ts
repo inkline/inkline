@@ -197,7 +197,29 @@ describe("generate", () => {
     expect(reactButton).toContain('import { Button } from "@inkline/react";');
   });
 
-  it("fails when the Astro meta component has no single source file", async () => {
+  it("imports the Astro meta component by its path from a story in another folder", async () => {
+    const frameworks = [frameworkByTarget("astro")!];
+    const srcDir = join(outDir, "src");
+    mkdirSync(join(srcDir, "box", "stories"), { recursive: true });
+    mkdirSync(join(srcDir, "box", "styled"));
+    writeFileSync(
+      join(srcDir, "box", "stories", "IBox.ink.stories.ts"),
+      'export default { component: "IBox", title: "Box" };\nexport const Default = {};\n',
+    );
+    writeFileSync(join(srcDir, "box", "styled", "IBox.ink.tsx"), "export default {};\n");
+    await generate({ srcDir, rootDir: outDir, frameworks, storiesDir: ".inkline" });
+
+    const story = readFileSync(
+      join(outDir, "astro", ".inkline", "box", "stories", "IBox.stories.ts"),
+      "utf-8",
+    );
+    expect(story).toContain('import IBox from "../styled/IBox.astro";');
+  });
+
+  it.each([
+    ["none", [] as string[], /found 0/],
+    ["two", ["a", "b"], /found 2/],
+  ])("fails when the Astro meta component has %s source files", async (_, dirs, message) => {
     const frameworks = [frameworkByTarget("astro")!];
     const srcDir = join(outDir, "src");
     mkdirSync(srcDir);
@@ -205,9 +227,13 @@ describe("generate", () => {
       join(srcDir, "Box.ink.stories.ts"),
       'export default { component: "Box", title: "Box" };\nexport const Default = {};\n',
     );
-    await expect(generate({ srcDir, rootDir: outDir, frameworks })).rejects.toThrow(
-      /Box\.ink\.tsx/,
-    );
+    for (const dir of dirs) {
+      mkdirSync(join(srcDir, dir));
+      writeFileSync(join(srcDir, dir, "Box.ink.tsx"), "export default {};\n");
+    }
+    const run = generate({ srcDir, rootDir: outDir, frameworks });
+    await expect(run).rejects.toThrow(/Box\.ink\.tsx/);
+    await expect(run).rejects.toThrow(message);
   });
 
   it("outputs into .inkline dir with relative imports when storiesDir is .inkline", async () => {

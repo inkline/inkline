@@ -50,8 +50,8 @@ const DEFAULT_STORIES = ["../stories/**/*.stories.ts"] as const;
 
 /**
  * Cloudflare `_headers` for a static Storybook. The composed Storybook (`apps/storybook`) runs on
- * another Worker, so it fetches each framework's `index.json` (or the older `stories.json`) and
- * `metadata.json` across origins, and the browser blocks those reads without this header. `*` is
+ * another Worker, so it fetches each framework's `index.json`, `stories.json` and `metadata.json`
+ * across origins, and the browser blocks those reads without this header. `*` is
  * enough: the composer's build checks each ref's `iframe.html`, and then the ref is fetched with
  * `credentials: "omit"`. A ref that was down while the composer built is fetched with credentials,
  * which `*` doesn't allow, so rebuild the composer. `iframe.html` is framed, not fetched, so it
@@ -63,8 +63,9 @@ const CORS_HEADERS = ["/index.json", "/stories.json", "/metadata.json"]
 
 /**
  * Emits `_headers` into the preview build's output, which is the Storybook output directory.
- * A Vite plugin, rather than a `staticDirs` entry, keeps it to production builds (dev already
- * sets `server.cors`) and needs no file copied into this package's `dist`.
+ * A Vite plugin, rather than a `staticDirs` entry, keeps it to production builds and needs no file
+ * copied into this package's `dist`. Dev servers don't need it: Storybook's dev server sends
+ * `Access-Control-Allow-Origin: *` on `/index.json` itself.
  */
 const corsHeadersPlugin = {
   name: "inkline:storybook-cors-headers",

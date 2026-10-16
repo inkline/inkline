@@ -119,7 +119,7 @@ The `/` → `/llms.txt` negotiation is Vercel-only, so on Cloudflare `/` always 
 
 ## Known gaps
 
-- **Storybook host:** each framework's Storybook has a Worker config of its own (see Deploy in [`apps/storybook/AGENTS.md`](../storybook/AGENTS.md)), but the `https://{framework}.storybook.inkline.io` domains the embeds point at aren't attached to those Workers yet. That's a custom-domain setting in the Cloudflare dashboard. To point the embeds at another host, set `NUXT_PUBLIC_STORYBOOK_BASE_URL` or update `runtimeConfig.public.storybookBaseUrl`.
+- **Storybook host:** each framework's Storybook has a Worker config of its own (see Deploy in [`apps/storybook/AGENTS.md`](../storybook/AGENTS.md)), but the `https://{framework}.storybook.inkline.io` domains the embeds point at aren't attached to the framework Workers yet. That's a custom-domain setting in the Cloudflare dashboard. To point the embeds at another host, set `NUXT_PUBLIC_STORYBOOK_BASE_URL` or update `runtimeConfig.public.storybookBaseUrl`.
 - **Storybook bridge:** auto-height and colour-mode sync need the Storybook to answer the messages in `app/lib/storybookEmbed.ts`. The bridge that did that, `@uxfront/layer-docs/storybook`, went away with 0.5.0, and the Storybooks under `ui/*` never installed it, so embeds hold their default height and their own theme.
 - **Agent discovery on a static host:** the lockfile holds Docus 5.13.0. Docus 5.14 adds `nuxt-agent-discovery` and a prerendered `/openapi.json` that describes each page's Markdown twin and the MCP endpoint, which is off here. Only what's prerendered survives on a static host, and its server routes are inert, so check what both claim when Docus is bumped.
 
