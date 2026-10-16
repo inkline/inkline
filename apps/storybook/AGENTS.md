@@ -13,7 +13,7 @@ apps/storybook/
 │   └── preview.ts      # Aggregator-level preview parameters
 ├── stories/
 │   └── Welcome.stories.ts   # Landing/welcome stories shown in the aggregator
-├── wrangler.json       # the `inkline-storybook` Cloudflare Worker: dist/ as static assets
+├── wrangler.json       # the inkline-storybook Cloudflare Worker: dist/ as static assets
 └── dist/               # storybook:build output (per CI)
 ```
 
@@ -56,7 +56,7 @@ Dev URLs (`localhost:<port>`) are unaffected by these variables.
 
 ## Deploy
 
-Each Storybook deploys to its own Cloudflare Worker through Workers Builds. A `wrangler.json` beside each `package.json` names the Worker and serves the built Storybook as static assets:
+Each Storybook has a Cloudflare Worker config of its own, for Workers Builds. A `wrangler.json` beside each `package.json` names the Worker and serves the built Storybook as static assets:
 
 | Worker                      | Package          | Assets              |
 | --------------------------- | ---------------- | ------------------- |
@@ -69,7 +69,11 @@ Each Storybook deploys to its own Cloudflare Worker through Workers Builds. A `w
 | `inkline-storybook-qwik`    | `ui/qwik`        | `storybook-static/` |
 | `inkline-storybook-astro`   | `ui/astro`       | `storybook-static/` |
 
+Build `inkline-storybook` with `pnpm run storybook:build`. A bare `storybook build` fails in Workers Builds: it runs outside a package script, so `node_modules/.bin` isn't on `PATH`.
+
 Set `STORYBOOK_REF_BASE_URL` (or the per-framework `STORYBOOK_REF_<FRAMEWORK>`) as a build variable on `inkline-storybook`, pointing at the framework Workers. The default `./react` paths don't resolve there, because nothing serves `./react` under the composed Worker.
+
+The composed Storybook reads each framework's `index.json` from that framework's Worker, which is another origin, so the browser needs a CORS header on it. The shared preset in [`tooling/storybook`](../../tooling/storybook/AGENTS.md) writes a `_headers` file into every framework's `storybook-static/`, which sends `Access-Control-Allow-Origin: *` on `/index.json`, `/stories.json` and `/metadata.json`. `*` is enough because the composer's build checks each ref's `iframe.html`, and the browser then reads the ref without credentials. A ref that was down while the composer built is read with credentials, which `*` doesn't allow, so rebuild `inkline-storybook` once every framework Worker is live.
 
 A framework Worker builds its package and its dependencies before its Storybook (`pnpm --filter "@inkline/<framework>..." build && pnpm run storybook:build`), since `prestorybook` doesn't run before `storybook:build`. Each Worker's root directory, build and deploy commands and variables live in the Cloudflare dashboard, not in the repo.
 

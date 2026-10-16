@@ -75,13 +75,38 @@ describe("createStorybookConfig", () => {
     const withPlugin = await createStorybookConfig({
       ...base,
       vitePlugins: ["p"],
-    }).viteFinal({}, { configType: "PRODUCTION" });
+    }).viteFinal({}, { configType: "DEVELOPMENT" });
     expect(withPlugin.plugins).toEqual(["p"]);
 
     const withoutPlugin = await createStorybookConfig(base).viteFinal(
       {},
-      { configType: "PRODUCTION" },
+      { configType: "DEVELOPMENT" },
     );
     expect(withoutPlugin.plugins).toBeUndefined();
+  });
+
+  it("emits a _headers file that lets other origins fetch the index in production", async () => {
+    const out = await createStorybookConfig({ ...base, vitePlugins: ["p"] }).viteFinal(
+      { plugins: ["existing"] },
+      { configType: "PRODUCTION" },
+    );
+    expect(out.plugins).toEqual(["existing", "p", expect.objectContaining({ apply: "build" })]);
+
+    const emitted: unknown[] = [];
+    const plugin = out.plugins![2] as { generateBundle(this: unknown): void };
+    plugin.generateBundle.call({ emitFile: (file: unknown) => emitted.push(file) });
+    expect(emitted).toEqual([
+      {
+        type: "asset",
+        fileName: "_headers",
+        source:
+          "/index.json\n  Access-Control-Allow-Origin: *\n" +
+          "/stories.json\n  Access-Control-Allow-Origin: *\n" +
+          "/metadata.json\n  Access-Control-Allow-Origin: *\n",
+      },
+    ]);
+    expect(String((emitted[0] as { source: string }).source)).not.toMatch(
+      /x-frame-options|frame-ancestors/i,
+    );
   });
 });

@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
-import { mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import {
@@ -177,6 +177,37 @@ describe("generate", () => {
     const result = await generate({ srcDir: STORIES_DIR, rootDir: outDir });
     expect(result.files).toHaveLength(7 * 3);
     expect(result.files.some((f) => f.target === "astro")).toBe(true);
+  });
+
+  it("imports the Astro meta component from its compiled file, and the others from the package", async () => {
+    const frameworks = [frameworkByTarget("react")!, frameworkByTarget("astro")!];
+    await generate({ srcDir: STORIES_DIR, rootDir: outDir, frameworks, storiesDir: ".inkline" });
+
+    const astroButton = readFileSync(
+      join(outDir, "astro", ".inkline", "Button.stories.ts"),
+      "utf-8",
+    );
+    expect(astroButton).toContain('import Button from "./styled/Button.astro";');
+    expect(astroButton).not.toContain("@inkline/astro");
+
+    const reactButton = readFileSync(
+      join(outDir, "react", ".inkline", "Button.stories.ts"),
+      "utf-8",
+    );
+    expect(reactButton).toContain('import { Button } from "@inkline/react";');
+  });
+
+  it("fails when the Astro meta component has no single source file", async () => {
+    const frameworks = [frameworkByTarget("astro")!];
+    const srcDir = join(outDir, "src");
+    mkdirSync(srcDir);
+    writeFileSync(
+      join(srcDir, "Box.ink.stories.ts"),
+      'export default { component: "Box", title: "Box" };\nexport const Default = {};\n',
+    );
+    await expect(generate({ srcDir, rootDir: outDir, frameworks })).rejects.toThrow(
+      /Box\.ink\.tsx/,
+    );
   });
 
   it("outputs into .inkline dir with relative imports when storiesDir is .inkline", async () => {

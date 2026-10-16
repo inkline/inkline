@@ -6,6 +6,7 @@ export function renderCsf3(
   storyModule: LoadedStoryModule,
   framework: FrameworkConfig,
   renderImports: readonly ResolvedRenderImport[],
+  componentImport?: string,
 ): string {
   const { meta, stories } = storyModule;
   assertIdentifier(meta.component, "component");
@@ -21,7 +22,11 @@ export function renderCsf3(
     lines.push(framework.renderStory.frameworkImport);
   }
 
-  lines.push(`import { ${meta.component} } from "${framework.componentPackage}";`);
+  lines.push(
+    componentImport
+      ? `import ${meta.component} from "${componentImport}";`
+      : `import { ${meta.component} } from "${framework.componentPackage}";`,
+  );
 
   lines.push(...renderImportLines(renderImports, framework.hasDefaultExport));
 

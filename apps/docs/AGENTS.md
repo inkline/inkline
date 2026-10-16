@@ -10,7 +10,7 @@ The site is a copy of the [Open Components](https://github.com/uxfront-com/open-
 apps/docs/
 ├── nuxt.config.ts            # extends layer-ui + layer-docs, site URL, redirects, Vercel edge rules,
 │                             # the Cloudflare preset under WORKERS_CI
-├── wrangler.json             # the `inkline` Worker: dist/ as static assets
+├── wrangler.json             # the inkline Worker: dist/ as static assets
 ├── app/
 │   ├── app.vue               # mounts Docus under /docs, the homepage everywhere else
 │   ├── app.config.ts         # GitHub links, docsTheme (frameworks, wordmark, byline), ui colours
@@ -99,7 +99,7 @@ Docus's server features have nothing to run on here, so they're off: `mcp.enable
 
 The `/` → `/llms.txt` negotiation for agents and curl is two edge rules in `nitro.vercel.config.routes` in [`nuxt.config.ts`](./nuxt.config.ts), not in `vercel.json`, whose `routes` and `redirects` Vercel ignores once `.vercel/output/config.json` exists. On Vercel builds, Docus now writes the same negotiation as rewrites to `/llms.txt` and `/raw/<path>.md` ahead of those two rules. Any other server-only behaviour needs the same treatment or it does nothing; ADR-007 records this as a standing cost.
 
-On Cloudflare, Workers Builds runs `pnpm run generate` for the `inkline` Worker, and [`wrangler.json`](./wrangler.json) serves `dist/` as static assets, with `404.html` for any path that has no file (`not_found_handling`). Workers Builds sets `WORKERS_CI`, which Nitro reads to pick its `cloudflare-module` server preset, even under `nuxt generate`. That preset writes `.wrangler/deploy/config.json`, which Wrangler prefers over `wrangler.json`, so `nuxt.config.ts` sets `nitro.preset` to `cloudflare_pages_static` when `WORKERS_CI` is set:
+On Cloudflare, set the `inkline` Worker's build command to `pnpm run generate`. [`wrangler.json`](./wrangler.json) serves `dist/` as static assets, with `404.html` for any path that has no file (`not_found_handling`). Workers Builds sets `WORKERS_CI`, which Nitro reads to pick its `cloudflare-module` server preset, even under `nuxt generate`. That preset writes `.wrangler/deploy/config.json`, which Wrangler prefers over `wrangler.json`, so `nuxt.config.ts` sets `nitro.preset` to `cloudflare_pages_static` when `WORKERS_CI` is set:
 
 - It writes `dist/` with a `_headers` file built from `routeRules`, so the security headers and the `/_nuxt/**` cache carry over.
 - A `nitro:init` hook drops the `/* /404.html 404` line it writes to `_redirects`, because Workers rejects 404 as a redirect status and fails the deploy.
@@ -119,7 +119,7 @@ The `/` → `/llms.txt` negotiation is Vercel-only, so on Cloudflare `/` always 
 
 ## Known gaps
 
-- **Storybook host:** each framework's Storybook deploys to its own Cloudflare Worker (see Deploy in [`apps/storybook/AGENTS.md`](../storybook/AGENTS.md)), but the `https://{framework}.storybook.inkline.io` domains the embeds point at aren't attached to those Workers yet. That's a custom-domain setting in the Cloudflare dashboard. To point the embeds at another host, set `NUXT_PUBLIC_STORYBOOK_BASE_URL` or update `runtimeConfig.public.storybookBaseUrl`.
+- **Storybook host:** each framework's Storybook has a Worker config of its own (see Deploy in [`apps/storybook/AGENTS.md`](../storybook/AGENTS.md)), but the `https://{framework}.storybook.inkline.io` domains the embeds point at aren't attached to those Workers yet. That's a custom-domain setting in the Cloudflare dashboard. To point the embeds at another host, set `NUXT_PUBLIC_STORYBOOK_BASE_URL` or update `runtimeConfig.public.storybookBaseUrl`.
 - **Storybook bridge:** auto-height and colour-mode sync need the Storybook to answer the messages in `app/lib/storybookEmbed.ts`. The bridge that did that, `@uxfront/layer-docs/storybook`, went away with 0.5.0, and the Storybooks under `ui/*` never installed it, so embeds hold their default height and their own theme.
 - **Agent discovery on a static host:** the lockfile holds Docus 5.13.0. Docus 5.14 adds `nuxt-agent-discovery` and a prerendered `/openapi.json` that describes each page's Markdown twin and the MCP endpoint, which is off here. Only what's prerendered survives on a static host, and its server routes are inert, so check what both claim when Docus is bumped.
 

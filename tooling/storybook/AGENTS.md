@@ -31,6 +31,12 @@ Storybook UI on port 6006..6012
 
 Stories are authored once as `.ink.tsx` and rendered seven times.
 
+A generated story imports its meta component by name from the framework package, like `import { IButton } from "@inkline/react"`. Astro is the exception: its stories import the compiled `.astro` file's default export by its path from the story, like `import IButton from "../styled/IButton.astro"`. That's because `@storybook-astro/framework` prerenders a static build's stories only when their component path ends in `.astro`, so the package import leaves every story without HTML. The generator finds the file from the one `<component>.ink.tsx` under the source directory. `componentFromFile` in [`config.ts`](./src/generator/config.ts) turns this on for a target.
+
+## Static builds
+
+In a production build, the preset adds a Vite plugin that writes `_headers` into the Storybook output (`storybook-static/`). It sends `Access-Control-Allow-Origin: *` on `/index.json`, `/stories.json` and `/metadata.json`, so the composed Storybook on another Cloudflare Worker can read each framework's index. Dev servers don't need it, since the preset sets `server.cors` there. Why `*` is enough, and when to rebuild the composer: Deploy in [`apps/storybook/AGENTS.md`](../../apps/storybook/AGENTS.md).
+
 ## Source map
 
 ```

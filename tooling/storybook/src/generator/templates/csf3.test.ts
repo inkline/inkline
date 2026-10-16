@@ -188,6 +188,13 @@ describe("renderCsf3", () => {
     expect(out).toContain("export const Colors: Story = { render: () => ColorsStory };");
   });
 
+  it("imports the Astro meta component as the default export of its compiled file", () => {
+    const out = renderCsf3(buttonModule, astro, [], "../styled/Button.astro");
+    expect(out).toContain('import Button from "../styled/Button.astro";');
+    expect(out).not.toContain("@inkline/astro");
+    expect(out).toContain("  component: Button,");
+  });
+
   it("rejects an invalid component identifier", () => {
     const mod: LoadedStoryModule = {
       meta: { component: "My-Button", title: "X" },

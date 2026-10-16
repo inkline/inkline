@@ -169,7 +169,8 @@ export default defineNuxtConfig({
     // to _redirects (404 isn't a valid redirect status), failing the deploy.
     // not_found_handling in wrangler.json serves 404.html instead. Registered here,
     // not in nitro.hooks, so it runs after the preset's compiled hook instead of
-    // replacing it. Other presets write no _redirects, so it does nothing there.
+    // replacing it. The static and vercel_static presets this app also builds with
+    // write no _redirects, so it does nothing there.
     "nitro:init"(nitro) {
       nitro.hooks.hook("compiled", async () => {
         const file = join(nitro.options.output.dir, "_redirects");
