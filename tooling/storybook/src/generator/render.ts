@@ -7,10 +7,11 @@ export function renderStory(
   storyModule: LoadedStoryModule,
   framework: FrameworkConfig,
   renderImports: readonly ResolvedRenderImport[],
+  componentImport?: string,
 ): string {
   switch (framework.template) {
     case "csf3":
-      return renderCsf3(storyModule, framework, renderImports);
+      return renderCsf3(storyModule, framework, renderImports, componentImport);
     case "angular":
       return renderAngular(storyModule, framework, renderImports);
   }

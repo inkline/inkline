@@ -97,6 +97,35 @@ export async function loadStoryModule(absPath: string): Promise<LoadedStoryModul
   return { meta: mod.default, stories, sourcePath: absPath };
 }
 
+/**
+ * For a target with `componentFromFile`, the path from the generated story to the meta component's
+ * compiled file. The component's source is the one `<component>.ink.tsx` under `srcDir`.
+ */
+function resolveComponentImport(
+  storyModule: LoadedStoryModule,
+  srcDir: string,
+  framework: FrameworkConfig,
+  storyOutputRelDir: string,
+  generatedDir: string,
+): string | undefined {
+  if (!framework.componentFromFile) return undefined;
+
+  const { component } = storyModule.meta;
+  const sources = globSync(join(srcDir, "**", `${component}.ink.tsx`));
+  if (sources.length !== 1) {
+    throw new Error(
+      `Cannot import ${component} for the ${framework.target} stories in ${storyModule.sourcePath}: ` +
+        `expected one ${component}.ink.tsx under ${srcDir}, found ${sources.length}.`,
+    );
+  }
+
+  const compiledRel =
+    relative(resolve(srcDir), resolve(sources[0]!)).replace(/\.ink\.tsx$/, "") +
+    framework.compiledExtension;
+  const rel = relative(storyOutputRelDir, join(generatedDir, compiledRel));
+  return rel.startsWith(".") ? rel : "./" + rel;
+}
+
 export function resolveRenderImports(
   storyModule: LoadedStoryModule,
   srcDir: string,
@@ -161,7 +190,14 @@ export async function generate(options: GenerateOptions): Promise<GenerateResult
         storyOutputRelDir,
         generatedDir,
       );
-      const source = renderStory(storyModule, framework, renderImports);
+      const componentImport = resolveComponentImport(
+        storyModule,
+        options.srcDir,
+        framework,
+        storyOutputRelDir,
+        generatedDir,
+      );
+      const source = renderStory(storyModule, framework, renderImports, componentImport);
       keysByTarget.set(framework.target, extractStoryKeys(source));
 
       const outDir = join(options.rootDir, framework.target, storiesDir, relDir);

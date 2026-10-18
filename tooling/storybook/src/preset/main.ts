@@ -49,6 +49,35 @@ const DEFAULT_ADDONS = ["@storybook/addon-a11y", "@storybook/addon-docs"] as con
 const DEFAULT_STORIES = ["../stories/**/*.stories.ts"] as const;
 
 /**
+ * Cloudflare `_headers` for a static Storybook. The composed Storybook (`apps/storybook`) runs on
+ * another Worker, so it fetches each framework's `index.json`, `stories.json` and `metadata.json`
+ * across origins, and the browser blocks those reads without this header. `*` is
+ * enough: the composer's build checks each ref's `iframe.html`, and then the ref is fetched with
+ * `credentials: "omit"`. A ref that was down while the composer built is fetched with credentials,
+ * which `*` doesn't allow, so rebuild the composer. `iframe.html` is framed, not fetched, so it
+ * needs no CORS header, and nothing here may add `X-Frame-Options` or `frame-ancestors`.
+ */
+const CORS_HEADERS = ["/index.json", "/stories.json", "/metadata.json"]
+  .map((path) => `${path}\n  Access-Control-Allow-Origin: *\n`)
+  .join("");
+
+/**
+ * Emits `_headers` into the preview build's output, which is the Storybook output directory.
+ * A Vite plugin, rather than a `staticDirs` entry, keeps it to production builds and needs no file
+ * copied into this package's `dist`. Dev servers don't need it: Storybook's dev server sends
+ * `Access-Control-Allow-Origin: *` on `/index.json` itself.
+ */
+const corsHeadersPlugin = {
+  name: "inkline:storybook-cors-headers",
+  apply: "build",
+  generateBundle(this: {
+    emitFile(file: { type: "asset"; fileName: string; source: string }): void;
+  }) {
+    this.emitFile({ type: "asset", fileName: "_headers", source: CORS_HEADERS });
+  },
+};
+
+/**
  * Builds a per-framework Storybook `main.ts` config from a single shared
  * factory, so each framework's config stays a few declarative lines.
  */
@@ -89,6 +118,10 @@ export function createStorybookConfig(options: StorybookConfigOptions): Storyboo
 
       if (vitePlugins.length > 0) {
         next.plugins = [...(next.plugins ?? []), ...vitePlugins];
+      }
+
+      if (configType === "PRODUCTION") {
+        next.plugins = [...(next.plugins ?? []), corsHeadersPlugin];
       }
 
       return next;

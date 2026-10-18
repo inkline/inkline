@@ -17,6 +17,11 @@ export interface FrameworkConfig {
   readonly hasDefaultExport: boolean;
   readonly exportedNameSuffix?: string;
   readonly deferred?: boolean;
+  /**
+   * Import the meta component as the default export of its compiled file, by its path from the
+   * story, instead of by name from `componentPackage`.
+   */
+  readonly componentFromFile?: boolean;
 }
 
 export const FRAMEWORKS: readonly FrameworkConfig[] = [
@@ -127,6 +132,10 @@ export const FRAMEWORKS: readonly FrameworkConfig[] = [
       expression: "{name}",
     },
     hasDefaultExport: true,
+    // `@storybook-astro/framework` prerenders a static build's stories only when the index entry's
+    // `componentPath` ends in `.astro`, so `{ IButton } from "@inkline/astro"` leaves every story
+    // without HTML ("No prerendered HTML was found for story").
+    componentFromFile: true,
   },
 ];
 
