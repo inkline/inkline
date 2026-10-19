@@ -1,6 +1,6 @@
 {
   "name": "@inkline/test-utils",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Cross-target testing utilities for Inkline .ink.tsx components.",
   "homepage": "https://github.com/inkline/inkline#readme",
   "bugs": {
