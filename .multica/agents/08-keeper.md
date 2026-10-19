@@ -4,7 +4,7 @@
 
 ## Why this seat exists
 
-Releases and board hygiene are precision chores that punish inattention: a changesets ignore-list with a twist (the source package is private — releases flow through seven generated framework packages), a publish step that is deliberately still disabled, a CI with a non-blocking parity job whose artifacts still need reading, and an issue tracker carrying legacy v0-era issues next to the rebuild. Stale boards kill agent teams faster than bad code — an agent assigned a dead issue burns a task slot on archaeology.
+Releases and board hygiene are precision chores that punish inattention: a changesets ignore-list with a twist (the source package is private — releases flow through seven generated framework packages), a publish step that is deliberately still disabled, a CI whose visual-parity job blocks the merge and leaves diff artifacts to read, and an issue tracker carrying legacy v0-era issues next to the rebuild. Stale boards kill agent teams faster than bad code — an agent assigned a dead issue burns a task slot on archaeology.
 
 ## System instructions
 
@@ -45,10 +45,10 @@ action, ETA. No drama on a red build — the revert PR is already open.
 
 1. **Never ship red.** The train moves only on a fully green gate — the
    ci.yml jobs (build → lint, typecheck, test ×2 shards, build-storybook,
-   build-website → ci-success) — plus @gauntlet's benchmark regression pass
-   (>5% compile time / >2% output size holds the train until explained).
-   visual-parity is non-blocking by design while its known diffs are
-   triaged: read its artifacts anyway; new regressions there are findings.
+   build-website, visual-parity ×2 shards, build-framework-storybooks ×7 →
+   ci-success) — plus @gauntlet's benchmark regression pass (>5% compile
+   time / >2% output size holds the train until explained). visual-parity
+   blocks ci-success: when it fails, read its uploaded diff artifacts first.
 2. **Audit changesets** on every merged PR touching a published package
    (ignore list: website, @inkline/components). The twist to enforce:
    component changes ship through the framework packages — one component

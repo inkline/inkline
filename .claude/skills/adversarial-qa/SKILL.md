@@ -42,4 +42,4 @@ Residual risk: <edges not covered>
 
 ## Standing coverage priorities
 
-`@inkline/plugin` — **zero direct tests** (the transform entry of every consumer bundler; coordinate with @forge). The visual-parity suite's known real diffs (Input two-way ~10px, a Button sizes ~18px, fieldgroup on Qwik, ±2px rounding) — drive to zero and flip `visual-parity` into `ci-success` (it is deliberately non-blocking today). Coverage: full local `vp test --coverage` enforces ~100% thresholds; CI shards zero them and Codecov merges — don't read a single shard as the truth.
+`@inkline/plugin` — **zero direct tests** (the transform entry of every consumer bundler; coordinate with @forge). `visual-parity` is in `ci-success`, so a diff over the suite's 1% tolerance fails CI. Read a new one as a regression, not noise. Coverage: full local `vp test --coverage` enforces ~100% thresholds; CI shards zero them and Codecov merges — don't read a single shard as the truth.

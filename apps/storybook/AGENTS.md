@@ -114,19 +114,33 @@ Cross-framework visual-parity tests (Playwright) live in their own package, [`te
 
 ## Known rendering limitations
 
-As of 2026-06, six of the seven framework Storybooks render styled components (ones that
-compose other components and pull classes from a `virtual:styleframe` recipe) correctly:
-**React, Vue, Solid, Svelte, Astro, Angular**. One has an outstanding gap:
+All seven framework Storybooks render their stories, both on the dev servers and in the static
+builds their Workers deploy. Qwik and Angular need a workaround to get there, Astro's static build
+has a limit and a workaround, and the composed Storybook has a workaround of its own:
 
-- **Qwik** — the Qwik output is correct (components compile to resumable `componentQrl`s and
-  their QRL segments serve over HTTP), but `storybook-framework-qwik` (a canary build) on
-  Qwik 2.0-beta resumes an empty container. This is an upstream Storybook↔Qwik integration
-  issue, not a codegen problem.
-
-Angular styled rendering was fixed by the Angular-target redesign — kebab-case `ink-*`
-selectors, a `klass` input that merges a forwarded class onto each component's own root, and
-full `imports` declaration. Styled components are verified by `@angular/platform-server` SSR
-tests in [`@inkline/test-utils`](../../tooling/test-utils/).
+- **Qwik.** Qwik's Vite plugin breaks the static build, so
+  [`ui/qwik/.storybook/main.ts`](../../ui/qwik/.storybook/main.ts) patches it after the plugin
+  runs: it flattens the `.inkline/**` chunk names that Rolldown rejects, and drops Vite 8's
+  `native:import-analysis-build`, whose `__VITE_PRELOAD__` markers nothing replaces once Qwik's
+  plugin has removed `vite:build-import-analysis`. A Qwik story mounts paused and
+  resumes a moment later, so the visual-parity suite waits for `q:container="resumed"` before it
+  takes a screenshot ([`testing/e2e/storybook.ts`](../../testing/e2e/storybook.ts)).
+- **Angular.** A static build renders the compiled package in `ui/angular/dist`, not the source, so
+  build the package first. [`ui/angular/.storybook/main.ts`](../../ui/angular/.storybook/main.ts)
+  leaves Analog's build optimizer out of that build, because linking drops the class metadata that
+  `@storybook/angular` reads to build a story's template. More in
+  [`ui/angular/AGENTS.md`](../../ui/angular/AGENTS.md) → "Storybook". Styled components are also
+  covered by `@angular/platform-server` SSR tests in
+  [`@inkline/test-utils`](../../tooling/test-utils/).
+- **Astro.** A static build prerenders each story from its meta component with the story's `args`,
+  and ignores a story's `render`. So a story that only sets `args`, like
+  `components-actions-button--disabled`, renders as it should, while a `render` story, like
+  `components-actions-button--colors`, shows the same HTML as `--default`. That's
+  `@storybook-astro/framework`'s limit, and no change here reaches it. The stories import their
+  compiled `.astro` file so the static build prerenders them at all: see
+  [`tooling/storybook/AGENTS.md`](../../tooling/storybook/AGENTS.md).
+- **The composed Storybook.** A ref's story can stay under "Content is loading..." after it has
+  rendered. The manager addon in [The ref loader workaround](#the-ref-loader-workaround) clears it.
 
 ## See also
 

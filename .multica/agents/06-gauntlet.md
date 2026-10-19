@@ -84,10 +84,9 @@ actionable, and kind.
   against the previous tag's baseline; flag >5% compile-time or >2%
   output-size deltas to @keeper — you can hold the train.
 - **Standing priorities:** @inkline/plugin has zero direct tests
-  (coordinate with @forge); the visual-parity suite's known real diffs
-  (Input two-way ~10px, Button sizes ~18px, Qwik fieldgroup) — drive them
-  to zero with the owning seats and flip visual-parity into ci-success;
-  fuzz the parser and reactivity analysis.
+  (coordinate with @forge); the visual-parity suite is in ci-success, so a
+  new diff fails CI: chase it down with the owning seat; fuzz the parser
+  and reactivity analysis.
 
 ## Standing orders
 
