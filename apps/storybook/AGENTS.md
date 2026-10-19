@@ -116,12 +116,13 @@ Cross-framework visual-parity tests (Playwright) live in their own package, [`te
 
 All seven framework Storybooks render their stories, both on the dev servers and in the static
 builds their Workers deploy. Qwik and Angular need a workaround to get there, Astro's static build
-has one limit, and the composed Storybook has a workaround of its own:
+has a limit and a workaround, and the composed Storybook has a workaround of its own:
 
 - **Qwik.** Qwik's Vite plugin breaks the static build, so
   [`ui/qwik/.storybook/main.ts`](../../ui/qwik/.storybook/main.ts) patches it after the plugin
-  runs: it flattens the `.inkline/**` chunk names that Rolldown rejects, and removes the
-  `__VITE_PRELOAD__` markers that Qwik's plugin leaves in the chunks. A Qwik story mounts paused and
+  runs: it flattens the `.inkline/**` chunk names that Rolldown rejects, and drops Vite 8's
+  `native:import-analysis-build`, whose `__VITE_PRELOAD__` markers nothing replaces once Qwik's
+  plugin has removed `vite:build-import-analysis`. A Qwik story mounts paused and
   resumes a moment later, so the visual-parity suite waits for `q:container="resumed"` before it
   takes a screenshot ([`testing/e2e/storybook.ts`](../../testing/e2e/storybook.ts)).
 - **Angular.** A static build renders the compiled package in `ui/angular/dist`, not the source, so
