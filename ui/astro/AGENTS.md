@@ -29,6 +29,8 @@ Peer dep: `astro >= 4`.
 
 Runs on **port 6012**. `pnpm storybook` here or `pnpm run storybook:astro` from the repo root. Uses [`@storybook-astro/framework`](https://www.npmjs.com/package/@storybook-astro/framework).
 
+The static build is public, so [`.storybook/main.ts`](./.storybook/main.ts) keeps the build host's absolute paths out of `storybook-static`. It turns off Astro's dev toolbar, because the framework prerenders the stories through a Vite dev server, where the toolbar adds `data-astro-source-file` to every element. A build-only Vite plugin then strips the repo root from each component's `moduleId` in the client chunks. After `pnpm storybook:build`, `grep -rlF "$PWD" ui/astro/storybook-static` from the repo root finds nothing.
+
 ## Build
 
 `vp pack` (not `vp build` — unique to this package today). Output goes to `dist/`.
