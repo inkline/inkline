@@ -10,6 +10,7 @@ Private (`"private": true` in [`package.json`](./package.json)) — never publis
 apps/storybook/
 ├── .storybook/
 │   ├── main.ts         # framework: @storybook/react-vite + refs to all 7 per-framework Storybooks
+│   ├── manager.ts      # Workaround addon: clears a ref's loader once its story renders
 │   └── preview.ts      # Aggregator-level preview parameters
 ├── stories/
 │   └── Welcome.stories.ts   # Landing/welcome stories shown in the aggregator
@@ -53,6 +54,10 @@ STORYBOOK_REF_QWIK="https://qwik-canary.storybook.inkline.io" pnpm storybook:bui
 ```
 
 Dev URLs (`localhost:<port>`) are unaffected by these variables.
+
+## The ref loader workaround
+
+[`.storybook/manager.ts`](./.storybook/manager.ts) registers a small manager addon that marks a ref's preview as initialised once one of its stories renders. Without it, a ref's story sometimes stays under "Content is loading..." after it has rendered: Storybook's `updateRef` writes the whole refs map from a stale snapshot, so the ref's `previewInitialized` flag can be lost (seen in 10.4.4). Remove the file once Storybook fixes `updateRef` upstream.
 
 ## Deploy
 
