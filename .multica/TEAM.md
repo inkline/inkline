@@ -176,9 +176,9 @@ Grounded in what the codebase analysis actually found, ordered by leverage:
 
 **Wave 1 — visible wins (weeks 2–4)**
 
-4. **Visual parity to green** (@gauntlet finds, @atlas/@bridge/@palette fix): drive the known real diffs (Input two-way ~10px, Button sizes ~18px, Qwik fieldgroup, ±2px rounding) to zero, then flip `visual-parity` into `ci-success` — the core promise, enforced by CI.
+4. **Visual parity, kept green** (@gauntlet finds, @atlas/@bridge/@palette fix): `visual-parity` is in `ci-success`, so a diff on any of the seven targets fails the PR. That's the core promise, enforced by CI, so treat a new diff as a regression.
 5. **Catalog wave 1** (@palette, stories @herald): checkbox, radio, switch, select — recipe-ready upstream, form-critical downstream — through the five-phase pipeline.
-6. **Qwik Storybook rendering** (@bridge + @herald): the canary `storybook-framework-qwik` resumes an empty container — engage upstream or land a workaround; it's the one hole in the seven-up showcase.
+6. **Qwik Storybook rendering** (@bridge + @herald): Qwik stories render in dev and in the static build, through two patches to Qwik's Vite plugin in `ui/qwik/.storybook/main.ts`. Drop them once `storybook-framework-qwik` (a canary) or Qwik's plugin handles Rolldown chunk names and Vite 8's preload markers.
 7. **Website foundation** (@quill): replace the Vite starter placeholder with the real docs-site skeleton (stack decision via @maestro/Alex); drain the `.context/` component-docs queue into it.
 
 **Wave 2 — deepening (weeks 5–8)**

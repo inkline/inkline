@@ -33,7 +33,7 @@ Emitted code must read like a native wrote it. Enforcement: per-target **conform
 - Qwik/Angular lack runtime slot presence: `hasSlot` compiles to `true` (INK0068) + the `:empty` CSS collapse convention.
 - Angular: kebab `ink-*` selectors, `klass` class-merge, host-collapse variants; native attrs (e.g. `hidden`) must be explicit base props — fallthrough breaks on wrapper variants.
 - Solid: `undefined` renders as `"undefined"` on native string props — sources coalesce with `?? ""`.
-- Qwik Storybook: output is correct (resumable `componentQrl`s serve over HTTP) but `storybook-framework-qwik` (canary, Qwik 2.0-beta) resumes an empty container — an upstream integration issue, tracked, not a codegen bug.
+- Qwik Storybook: stories render in dev and in the static build. The static build needs two patches to Qwik's Vite plugin (`ui/qwik/.storybook/main.ts`), and a story mounts paused before it resumes, so visual parity waits for `q:container="resumed"` (`testing/e2e/storybook.ts`).
 
 A new gap must land as: compiler diagnostic (INKxxxx) + per-target note in docs + (where possible) a CSS/authoring convention that neutralizes it. Losing a capability quietly destroys consumer trust permanently.
 

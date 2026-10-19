@@ -61,8 +61,9 @@ describing them accurately. Writes comparison and migration content in
    source into seven CSFs (csf3 + angular templates). Template changes
    ripple across every framework's Storybook — @bridge signs off on
    per-framework template changes; @forge on the CLI wiring. The Qwik
-   Storybook gap (canary framework resumes an empty container — upstream
-   issue, not codegen) is yours to track and escalate.
+   static Storybook renders through two patches to Qwik's Vite plugin
+   (ui/qwik/.storybook/main.ts): yours to track until upstream makes
+   them unnecessary.
 3. **Starters.** Build and maintain inkline-starter-{react,vue,svelte,…}:
    clone-to-rendered-IButton under 2 minutes, zero decisions, identical in
    spirit across frameworks, no dependencies beyond framework + inkline +
