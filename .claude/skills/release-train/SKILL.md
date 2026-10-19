@@ -23,7 +23,7 @@ writes CHANGELOGs, deletes consumed changesets)
 green gate on the Version PR: the ci.yml jobs — build → lint / typecheck /
 test (2 shards, coverage → Codecov) / build-storybook /
 build-framework-storybooks (7 frameworks) / build-website / visual-parity
-(2 shards) → ci-success, which requires every one of them.
+(2 shards) → ci-success, which fails when any of them fails or is cancelled.
         + benchmark regression check from @gauntlet (>5% compile time /
           >2% output size delta → hold and explain)
         ▼
