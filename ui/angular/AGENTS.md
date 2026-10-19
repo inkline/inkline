@@ -23,7 +23,7 @@ From [`package.json`](./package.json) `exports`:
 
 **No `./css` export.** Each compiled component imports its own `.css` file as a side effect (`import "./IButton.css";`), so styles travel with the components through the consumer's bundler. If a downstream tool needs an aggregated CSS file, it must build one from the per-component artifacts.
 
-Peer dep: `@angular/core >= 17.2.0`.
+Peer dep: `@angular/core >= 17.3.0`.
 
 ## Storybook
 
@@ -33,7 +33,7 @@ In dev, the preset aliases `@inkline/angular` to `.inkline/index.ts`, so compone
 
 ## Build
 
-`vp build`, with Analog's Angular plugin compiling the components in partial mode ([`tsconfig.lib.json`](./tsconfig.lib.json) sets `compilationMode: "partial"`), as Angular libraries ship. The consuming app's Angular compiler links the declarations. The bundles go to `dist/fesm2022/`, because Analog's optimizer links only paths that match `/fesm20/`, so Vite apps on Analog's plugin link them too. The declarations go to `dist/.inkline/`, which the `types` conditions point at. `src/` stays out of `tsconfig.lib.json`, since the declarations of its `../.inkline` re-exports would point outside the package. The `@angular/core` peer range starts at the highest `minVersion` in `dist`.
+`vp build`, with Analog's Angular plugin compiling the components in partial mode ([`tsconfig.lib.json`](./tsconfig.lib.json) sets `compilationMode: "partial"`), as Angular libraries ship. The consuming app's Angular compiler links the declarations. The bundles go to `dist/fesm2022/`, because Analog's optimizer links only paths that match `/fesm20/`. The declarations go to `dist/.inkline/`, which the `types` conditions point at. `src/` stays out of `tsconfig.lib.json`, since the declarations of its `../.inkline` re-exports would point outside the package. The `@angular/core` peer range starts at the first release that exports every API the components import (`output()` came in 17.3.0), which is never below the highest `minVersion` in `dist`.
 
 ## Notable target behavior
 

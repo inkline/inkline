@@ -68,7 +68,7 @@
     "zone.js": "catalog:"
   },
   "peerDependencies": {
-    "@angular/core": ">=17.2.0"
+    "@angular/core": ">=17.3.0"
   },
   "prepublishOnly": "vp run build"
 }
