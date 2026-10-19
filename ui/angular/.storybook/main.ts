@@ -14,21 +14,21 @@ const config = createStorybookConfig({
   },
 });
 
-// The preset aliases `@inkline/angular` to its source only in dev, and a static build loads `dist`.
-// `dist` is built without the Angular compiler, so its classes carry no input metadata, and
-// `@storybook/angular` assigns each arg as a plain property, which overwrites the signal inputs
-// (`ctx.disabled is not a function`). Aliasing the source in every build lets Analog's plugin
-// compile the components, so the static Storybook shows the source components, not the package.
+// A static build loads `dist`, which holds partial Ivy declarations. Analog's build optimizer would
+// link them and drop their class metadata, but `@storybook/angular` reads that metadata to build a
+// story's template from its component, so every story without a template would fail with "Cannot
+// read properties of undefined (reading 'selector')". Without the optimizer, the JIT compiler the
+// Storybook already loads compiles the declarations at runtime and keeps the metadata.
+const optimizer = "@analogjs/vite-plugin-angular-optimizer";
+
 export default {
   ...config,
   async viteFinal(viteConfig, context) {
     const next = await config.viteFinal(viteConfig, context);
-    return {
-      ...next,
-      resolve: {
-        ...next.resolve,
-        alias: { ...next.resolve?.alias, "@inkline/angular": sourceEntry },
-      },
-    };
+    const plugins = (next.plugins ?? []).flat(Infinity);
+    if (!plugins.some((plugin) => plugin?.name === optimizer)) {
+      throw new Error(`${optimizer} not found: check the @analogjs/vite-plugin-angular version`);
+    }
+    return { ...next, plugins: plugins.filter((plugin) => plugin?.name !== optimizer) };
   },
 };

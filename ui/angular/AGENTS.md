@@ -23,17 +23,17 @@ From [`package.json`](./package.json) `exports`:
 
 **No `./css` export.** Each compiled component imports its own `.css` file as a side effect (`import "./IButton.css";`), so styles travel with the components through the consumer's bundler. If a downstream tool needs an aggregated CSS file, it must build one from the per-component artifacts.
 
-Peer dep: `@angular/core >= 17`.
+Peer dep: `@angular/core >= 17.3.0`.
 
 ## Storybook
 
 Runs on **port 6010**. `pnpm storybook` here or `pnpm run storybook:angular` from the repo root. Uses `@analogjs/storybook-angular` (the leftover `patches/@analogjs__storybook-angular@2.5.1.patch` is no longer applied since the 2.6.x bump).
 
-The Storybook shows the source components, not the published package, in dev and in a static build alike: [`.storybook/main.ts`](./.storybook/main.ts) aliases `@inkline/angular` to `.inkline/index.ts`, so Analog's plugin compiles them. `dist` is built without the Angular compiler (see the TODO in [`vite.config.ts`](./vite.config.ts)), so its classes carry no input metadata, and `@storybook/angular` would overwrite their signal inputs with plain values.
+In dev, the preset aliases `@inkline/angular` to `.inkline/index.ts`, so component edits reload without a build. A static build renders the package's `dist`, so build it first. [`.storybook/main.ts`](./.storybook/main.ts) removes Analog's build optimizer from that build: it would link the partial declarations and drop their class metadata, which `@storybook/angular` reads to build a story's template from its component. The JIT compiler the Storybook already loads compiles them at runtime instead.
 
 ## Build
 
-`vp build`. Output goes to `dist/`.
+`vp build`, with Analog's Angular plugin compiling the components in partial mode ([`tsconfig.lib.json`](./tsconfig.lib.json) sets `compilationMode: "partial"`), as Angular libraries ship. The consuming app's Angular compiler links the declarations. The bundles go to `dist/fesm2022/`, because Analog's optimizer links only paths that match `/fesm20/`. The declarations go to `dist/.inkline/`, which the `types` conditions point at. `src/` stays out of `tsconfig.lib.json`, since the declarations of its `../.inkline` re-exports would point outside the package. The `@angular/core` peer range starts at the first release that exports every API the components import (`output()` came in 17.3.0), which is never below the highest `minVersion` in `dist`.
 
 ## Notable target behavior
 
