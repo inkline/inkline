@@ -1,6 +1,6 @@
 {
   "name": "@inkline/config-loader",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Configuration loader for Inkline, backed by c12.",
   "homepage": "https://github.com/inkline/inkline#readme",
   "bugs": {

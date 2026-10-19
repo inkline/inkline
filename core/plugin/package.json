@@ -1,6 +1,6 @@
 {
   "name": "@inkline/plugin",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Build plugin for @inkline/compiler — compile .ink.tsx files to framework components (Vite, webpack, Rollup, esbuild, Rspack, Farm)",
   "files": [
     "dist"
