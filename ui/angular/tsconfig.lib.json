@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [".inkline/**/*.ts", ".styleframe/**/*.d.ts"],
+  "compilerOptions": {
+    "noEmit": false
+  },
+  "angularCompilerOptions": {
+    "compilationMode": "partial"
+  }
+}

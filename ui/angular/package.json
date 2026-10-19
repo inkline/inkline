@@ -6,10 +6,20 @@
   ],
   "type": "module",
   "sideEffects": false,
+  "typings": "./dist/.inkline/index.d.ts",
   "exports": {
-    ".": "./dist/index.js",
-    "./headless": "./dist/headless.js",
-    "./stories": "./dist/stories.js",
+    ".": {
+      "types": "./dist/.inkline/index.d.ts",
+      "default": "./dist/fesm2022/index.mjs"
+    },
+    "./headless": {
+      "types": "./dist/.inkline/headless.d.ts",
+      "default": "./dist/fesm2022/headless.mjs"
+    },
+    "./stories": {
+      "types": "./dist/.inkline/stories.d.ts",
+      "default": "./dist/fesm2022/stories.mjs"
+    },
     "./package.json": "./package.json"
   },
   "publishConfig": {
@@ -58,7 +68,7 @@
     "zone.js": "catalog:"
   },
   "peerDependencies": {
-    "@angular/core": ">=17"
+    "@angular/core": ">=17.2.0"
   },
   "prepublishOnly": "vp run build"
 }
