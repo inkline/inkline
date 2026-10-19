@@ -391,8 +391,10 @@ jobs:
       ]
     if: always()
     steps:
+      # `skipped` stays allowed, so a needed job that gains a job-level `if:` later
+      # doesn't fail the pipeline whenever it skips.
       - name: Check job status
         run: |
-          if [[ "${{ contains(needs.*.result, 'failure') }}" == "true" ]]; then
+          if [[ "${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}" == "true" ]]; then
             exit 1
           fi

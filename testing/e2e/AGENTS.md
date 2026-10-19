@@ -77,7 +77,8 @@ report + diff images to triage it.
 
 A blocking `visual-parity` job in [`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)
 (`needs: build`) runs both shards and uploads the Playwright report + diff images as artifacts. It is
-listed in `ci-success.needs`, so a parity failure fails the pipeline.
+listed in `ci-success.needs`, and `ci-success` fails when a needed job fails or is cancelled, so a
+parity failure fails the pipeline.
 
 ## See also
 
